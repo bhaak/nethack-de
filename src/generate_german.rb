@@ -24,7 +24,7 @@ enum Casus   { nominativ=1, genitiv=2, dativ=4, akkusativ=8 };
 enum Genus   { maskulin=1, feminin=2, neutrum=4 };
 enum Numerus { n_singular=1, n_plural=2 };
 enum Person  { erstePerson=1, zweitePerson=2, drittePerson=4 };
-enum Artikel { ohne=1, bestimmter=2, unbestimmter=4 };
+enum Artikel { ohne=1, bestimmter=2, unbestimmter=4, grundform=8 };
 
 struct substantiv {
 	const char  *wort;
@@ -134,9 +134,9 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pl
     casus[$gen][$sg] = "s"
   when "en" 
     casus[$nom][$sg] = ""
-    casus[$akk][$sg] = "n"
-    casus[$dat][$sg] = "n"
-    casus[$gen][$sg] = "n"
+    casus[$akk][$sg] = singularstamm[-1..-1]=='e' ? "n" : "en"
+    casus[$dat][$sg] = singularstamm[-1..-1]=='e' ? "n" : "en"
+    casus[$gen][$sg] = singularstamm[-1..-1]=='e' ? "n" : "en"
   when "" 
     casus[$nom][$sg] = ""
     casus[$akk][$sg] = ""
@@ -144,27 +144,29 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pl
     casus[$gen][$sg] = ""
   end
 
-  case nominativ_plural_endung
-  when "er" 
-    casus[$nom][$pl] = "er"
-    casus[$akk][$pl] = "er"
-    casus[$dat][$pl] = "ern"
-    casus[$gen][$pl] = "er"
-  when "e"
-    casus[$nom][$pl] = "e"
-    casus[$akk][$pl] = "e"
-    casus[$dat][$pl] = "en"
-    casus[$gen][$pl] = "e"
-  when "en"
-    casus[$nom][$pl] = "n"
-    casus[$akk][$pl] = "n"
-    casus[$dat][$pl] = "n"
-    casus[$gen][$pl] = "n"
-  when "" 
-    casus[$nom][$pl] = ""
-    casus[$akk][$pl] = ""
-    casus[$dat][$pl] = "n"
-    casus[$gen][$pl] = ""
+  if pluralstamm!="" then
+    case nominativ_plural_endung
+    when "er" 
+      casus[$nom][$pl] = "er"
+      casus[$akk][$pl] = "er"
+      casus[$dat][$pl] = "ern"
+      casus[$gen][$pl] = "er"
+    when "e"
+      casus[$nom][$pl] = "e"
+      casus[$akk][$pl] = "e"
+      casus[$dat][$pl] = "en"
+      casus[$gen][$pl] = "e"
+    when "en"
+      casus[$nom][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
+      casus[$akk][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
+      casus[$dat][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
+      casus[$gen][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
+    when "" 
+      casus[$nom][$pl] = ""
+      casus[$akk][$pl] = ""
+      casus[$dat][$pl] = pluralstamm[-1..-1]=='n' ? "" : "n"
+      casus[$gen][$pl] = ""
+    end
   end
 
   nomen = [];
@@ -179,7 +181,12 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pl
   if pluralstamm!="" then
     [$pl].each { |n|
       [$nom, $gen, $dat, $akk].each { |c|
-        nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner+'s', c, geschlecht, n);
+        nomen << Nomen.new(numerus[n]+
+                             casus[c][n],
+                           bezeichner+'s',
+                           c,
+                           geschlecht,
+                           n);
         #puts nomen[-1].to_struct
       }
     }
@@ -225,6 +232,8 @@ end
 def dekliniere_adjektiv(bezeichner, stamm)
   adjektive = [];
   [
+    # Grundform, nur Ausgabe des Stammes
+    Adjektiv.new(stamm, bezeichner,  [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl], "grundform"),
     # schwache Flexion (mit bestimmtem Artikel)
     Adjektiv.new(stamm+'e',  bezeichner,   $nom,       [$mal,$fem,$neu],           $sg, "bestimmter"),
     Adjektiv.new(stamm+'en', bezeichner,   $akk,        $mal,                      $sg, "bestimmter"),
@@ -261,6 +270,7 @@ end
 def ausgabe_adjectives
   puts "\nstruct adjektiv adjektive[] = {"
   [
+    "/* Potions, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
     dekliniere_adjektiv("ADJEKTIV_POT_PINK","rosarot"),
     "  /* eigentlich unveränderlich */",
@@ -289,6 +299,70 @@ def ausgabe_adjectives
     dekliniere_adjektiv("ADJEKTIV_POT_MURKY","trüb"),
     dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
     "",
+    "/* Spellbooks, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamentartig"), # Kandidat für 'aus Pergament'
+    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum'
+    dekliniere_adjektiv("ADJEKTIV_SPE_RAGGED", "ausgefranst"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", ""),
+    dekliniere_adjektiv("ADJEKTIV_SPE_MOTTLED", "fleckig"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_STAINED", "beschmutzt"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", ""), # Kandidat für 'aus Stoff'
+    dekliniere_adjektiv("ADJEKTIV_SPE_LEATHER", "ledern"), # Kandidat für 'aus Leder'
+    dekliniere_adjektiv("ADJEKTIV_SPE_WHITE", "weiß"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PINK", "rosarot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_RED", "rot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_ORANGE", "orangen"), # Kandidat für unveränderlich
+    dekliniere_adjektiv("ADJEKTIV_SPE_YELLOW", "gelb"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_VELVET", "samten"), # Kandidat für 'aus Samt'
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_GREEN", "hellgrün"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_GREEN", "dunkelgrün"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_TURQUOISE", "türkisfarben"), # Kandidat für unveränderlich
+    dekliniere_adjektiv("ADJEKTIV_SPE_CYAN", "tiefblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BLUE", "hellblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BLUE", "dunkelblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_INDIGO", "indigofarben"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_MAGENTA", "tiefrot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PURPLE", "purpurn"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_VIOLET", "violett"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_TAN", "hellbraun"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "hellbraun"), # kariert?
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BROWN", "hellbraun"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BROWN", "dunkelbraun"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GRAY", "grau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_WRINKLED", "zerknittert"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DUSTY", "verstaubt"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_BRONZE", "bronzen"), # oder 'bronzefarben'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_COPPER", "kupfern"), # oder 'kupferrot'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_SILVER", "silbern"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GOLD", "golden"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GLITTERING", "gleißend"), # LEO gibt glänzend,glanzvoll, gleißend, glitzernd, verlockend
+    dekliniere_adjektiv("ADJEKTIV_SPE_SHINING", "glänzend"), # oder 'blank'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_DULL", "matt"), # oder 'stumpf' oder 'trübe'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_THIN", "dünn"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_THICK", "dick"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_CANVAS", ""),
+    dekliniere_adjektiv("ADJEKTIV_SPE_HARDCOVER", "gebunden"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PLAIN", "unbedruckt"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_PAPYRUS", ""), # Kandidat für 'aus Papyrus'
+    "",
+    "/* Wands, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_WAND_GLASS", "gläsern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_CRYSTAL", "kristallen"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_COPPER", "kupfern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SILVER", "silbern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_IRON", "eisern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_STEEL", "stählern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_HEXAGONAL","sechseckig"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SHORT","kurz"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_RUNED","runenbeschriftet"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_LONG","lang"),
+    "/* 'gebogen' ist IMO besser als 'gekrümmt'*/",
+    dekliniere_adjektiv("ADJEKTIV_WAND_CURVED","gebogen"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_FORKED","gegabelt"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SPIKED","spitzig"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_JEWELED","juwelenbesetzt"),
+    "",
+    "/* Amulets, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
     dekliniere_adjektiv("ADJEKTIV_AMULET_SPHERICAL","kugelförmig"),
     dekliniere_adjektiv("ADJEKTIV_AMULET_OVAL","oval"),
@@ -452,12 +526,17 @@ def ausgabe_nouns
   #nomen << dekliniere_substantiv("NOUN_TOCHTER", "Tochter", "", "Töchter", "", "feminin")
   [
     dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin"),
+    dekliniere_substantiv("NOUN_POT_HEALING", "Heilung", "", "Heilung", "en", "feminin"),
+
+    dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
 
     dekliniere_substantiv("NOUN_WAND",      "Zauberstab",   "es", "Zauberstäb",   "e",  "maskulin"),
     dekliniere_substantiv("NOUN_AMULET",    "Amulett",      "es", "Amulett",      "e",  "neutrum"),
     dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle", "",   "Schriftrolle", "",   "feminin"),
     dekliniere_substantiv("NOUN_POTION",     "Trank",       "es", "Tränk",        "e",  "maskulin"),
-    dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",   "es", "Zauberbüch",   "er", "maskulin"),
+    dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",   "es", "Zauberbüch",   "er", "neutrum"),
+    dekliniere_substantiv("NOUN_RING",      "Ring",         "es", "Ring",         "e",  "maskulin"),
+    "",
     dekliniere_substantiv("NOUN_BLINDFOLD", "Augenbinde",   "",   "Augenbinde",   "en", "feminin"),
     "",
     "/* Wands, identified */",
@@ -491,10 +570,60 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GIANT_BEETLE", "Riesenkäfer", "s", "Riesenkäfer", "", "maskulin"),
     dekliniere_substantiv("NOUN_DOG", "Hund", "es", "Hund", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_BAG", "Beutel", "s", "Beutel", "", "maskulin"),
     dekliniere_substantiv("NOUN_LICHEN", "Flechte", "", "Flechte", "en", "feminin"),
     dekliniere_substantiv("NOUN_SEWER_RAT", "Kanalratte", "", "Kanalratte", "en", "feminin"),
     dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
-
+    "",
+    "/* Rings, unidentified */",
+    dekliniere_substantiv("RING_UNIDENTIFIED_WOODEN",     "Holz",      "es", "Hölz",      "er",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_GRANITE",    "Granit", "s",   "Granit", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_OPAL",       "Opal", "es",   "Opal", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_CLAY",       "Ton", "es",   "Ton", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_CORAL",      "Koralle", "",   "Koralle", "en",  "feminin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_BLACK_ONYX", "Onyx", "es",   "Onyx", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_MOONSTONE",  "Mondstein", "es",   "Mondstein", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_TIGER_EYE",  "Tigerauge", "es",   "Tigerauge", "en",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_JADE",       "Jade", "s",   "", "",  "feminin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_BRONZE",     "Bronze", "",   "Bronze", "en",  "feminin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_AGATE",      "Achat", "es",   "Achat", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_TOPAZ",      "Topas", "es",   "Topas", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_SAPPHIRE",   "Saphir", "s",   "Saphir", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_RUBY",       "Rubin", "s",   "Rubin", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_DIAMOND",    "Diamant", "en",   "Diamant", "en",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_PEARL",      "Perle", "",   "Perle", "en",  "feminin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_IRON",       "Eisen", "s",   "Eisen", "",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_BRASS",      "Messing", "s",   "Messing", "e",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_COPPER",     "Kupfer", "s",   "Kupfer", "",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_STEEL",      "Stahl", "es",   "Stahl", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_SILVER",     "Silber", "s",   "", "",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_GOLD",       "Gold", "es",   "", "e",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_IVORY",      "Elfenbein", "es",   "Elfenbein", "e",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_EMERALD",    "Smaragd", "es",   "Smaragd", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_WIRE",       "Draht", "es",   "Dräht", "e",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_ENGAGEMENT", "Verlobung", "",   "Verlobung", "en",  "feminin"),
+    "/* Don't want to do a special treatment for twisted and shiny, so these are replaced with other gems */ ",
+    dekliniere_substantiv("RING_UNIDENTIFIED_TWISTED",    "Lapislazuli", "",   "Lapislazuli", "",  "maskulin"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_SHINY",      "Zirkon", "s",   "Zirkon", "e",  "maskulin"),
+    "",
+    "/* Wands, unidentified */",
+    dekliniere_substantiv("MADE_OF_WAND_BALSA", "Balsaholz",  "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_MAPLE", "Ahornholz",  "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_PINE", "Kiefernholz", "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_OAK", "Eichenholz", "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_EBONY", "Ebenholz", "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_MARBLE", "Marmor", "s", "", "e", "maskulin"),
+    dekliniere_substantiv("MADE_OF_WAND_TIN", "Zinn", "es", "", "e", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_BRASS", "Messing", "s", "", "e", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_PLATINUM", "Platin", "s", "", "s", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_IRIDIUM", "Iridium", "s", "", "en", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_ZINC", "Zink", "es", "", "e", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_ALUMINIUM", "Aluminium", "s", "", "", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_URANIUM", "Uran", "s", "", "e", "neutrum"),
+    "",
+    "/* Spellbooks, unidentified */",
+    dekliniere_substantiv("MADE_OF_SPE_VELLUM", "Velum", "s", "", "s", "neutrum"),
+    "",
     # FIX ME: der blaue drache vs ein blauer drache oder Blaudrache?*/
     dekliniere_substantiv("NOUN_BLACK_DRAGON", "Schwarzdrache", "en", "Schwarzdrache", "en", "maskulin"),
 

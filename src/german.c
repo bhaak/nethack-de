@@ -56,11 +56,12 @@ void print_state()
 	default: printf("keine Person ");
 	}
 	switch (c_artikel) {
-	case ohne: printf("ohne Artikel"); break;
-	case bestimmter: printf("bestimmter Artikel"); break;
-	case unbestimmter: printf("unbestimmter Artikel"); break;
+	case ohne: printf("ohne Artikel "); break;
+	case bestimmter: printf("bestimmter Artikel "); break;
+	case unbestimmter: printf("unbestimmter Artikel "); break;
 	default: printf("kein Artikel ");
 	}
+	printf("corpse: %d", corpse);
 	printf("\n");
 }
 
@@ -252,11 +253,15 @@ int finde_naechstes_sustantiv(const char* text) {
 	
 		if (strncmp(tmp, "NOUN_",5)==0) {
 			int k=0;
+			//printf("1 ####################\n");
 			while (worte[k].wort!=NULL) {
-				if (strcmp(worte[k].typ, text)==0) {
+				//printf("2 #################### -%s- -%s-\n",worte[k].typ,text);
+				if (strcmp(worte[k].typ, tmp)==0) {
+					//printf("%s\n", worte[k].typ);
 					if (worte[k].casus && c_casus) {
 						c_genus = worte[k].genus;
 						c_numerus = worte[k].numerus;
+						break;
 					}
 				}
 				k++;
@@ -281,6 +286,9 @@ int next_token(const char* input, char* output, int pos) {
 	}
 	output[j] = '\0';
 
+#ifdef DEBUG
+	printf("next_token return: %s\n", output);
+#endif
 	return (strlen(output)>0);
 }
 
@@ -296,10 +304,14 @@ char* german(const char *line) {
 	int pos=0;
 	char tmp[TBUFSZ];
 	int insert_char = 1;
+	int open_parenthesis = 0;
+	char made_from[TBUFSZ] = "";
+	/* Should a nouns first letter be uppercase or lowercase. Used when building composites */
+	int noun_lowercase = 0;
 
 	output[0] = '\0';
 	
-	/* setze den Standard-Genus und -Numerus abhängig von der Spielerklasse */
+	/* set standard genus and numerus depending on character class */
 #ifdef PM_KNIGHT
 	if (Role_if(PM_HEALER)  ||
 			Role_if(PM_KNIGHT)  ||
@@ -322,7 +334,8 @@ char* german(const char *line) {
 	
 	/* a work around: search for the first apparent subject
 		 this gets values for the c_* variables, when there is
-		 no proper grammar structure, e.g in the inventory */
+		 no proper grammar structure, e.g in the inventory or 
+	   in the disoveries */
 	//print_state();
 	c_casus = nominativ;
 	finde_naechstes_subject(line);
@@ -336,7 +349,7 @@ char* german(const char *line) {
 		printf("line+pos: =%s=\n", line+pos);
 #endif
 		pos += strlen(tmp);
-		
+
 		/* printf("tmp: %s ",tmp); print_state(); */
 		if (strncmp("PRONOMEN_",tmp, 9)==0) {
 			strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
@@ -363,14 +376,44 @@ char* german(const char *line) {
 
 			strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
 
+		} else if (strncmp("RING_UNIDENTIFIED_", tmp, 18)==0) {
+			strcat(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular));
+
+			if (line[pos]!=')') {
+				insert_char = 0;
+				noun_lowercase = 1; 
+
+				/* check for linking element(Fugenelemente) */
+				/* Words ending in "ung" always have the linking element 's' */
+				if (strncmp("ung", &output[strlen(output)-3],3)==0) { strcat(output, "s"); }
+				/* crude heuristic, this works only because of the limited set of words,
+					 Koralle, Perle, Tigerauge get the linking element 'n', but Jade doesn't */
+				else if 
+					((strncmp("le", &output[strlen(output)-2],2)==0) ||
+					 (strncmp("ge", &output[strlen(output)-2],2)==0)) { strcat(output, "n"); }
+			}
+
 		} else if (strncmp("NOUN_", tmp, 5)==0) {
+			//printf("NOUN_: %s\n", tmp);
+			//print_state();
 			if (!strcmp("NOUN_CORPSE", tmp)==0) {
+				int beginning_of_appended_word = strlen(output);
+				// print_state();
 				strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+				if (noun_lowercase) {
+					noun_lowercase = 0;
+					output[beginning_of_appended_word] = tolower(output[beginning_of_appended_word]);
+				}
 
 				if (corpse) {
 					corpse = 0;
 					insert_char = 0;
 				}
+			}
+
+			if (strlen(made_from)>0) {
+				strcat(output, " aus ");
+				strcat(output, get_wort(made_from, akkusativ, maskulin|feminin|neutrum, n_singular));
 			}
 		} else if (strncmp("VERB_",tmp,4)==0) {
 #ifdef DEBUG
@@ -387,10 +430,21 @@ char* german(const char *line) {
 		} else if (strncmp("PARTIKEL_", tmp, 9)==0) {
 			//finde_naechstes_sustantiv(line+pos);
 			if (strcmp("PARTIKEL_OF", tmp)==0) {
+				finde_naechstes_sustantiv(line+pos);
+				//print_state();
+				//printf("%s\n",line+pos);
+				//print_state();
 				c_casus = genitiv;
 				strcat(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus));
 			} else {
 				strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+			}
+		} else if (strncmp("MADE_OF_", tmp, 8)==0) {
+			if (open_parenthesis) {
+				strcat(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular));
+			} else {
+				strcpy(made_from, tmp);
+				insert_char = 0;
 			}
 		} else {
 #ifdef DEBUG
@@ -398,7 +452,14 @@ char* german(const char *line) {
 #endif
 			strcat(output, tmp);
 		}
-		
+
+#ifdef DEBUG
+		printf("line[pos] %c\n", line[pos]);
+#endif	
+		/* handle cases like ' NOUN_POTION PARTIKEL_OF NOUN_POT_FULL_HEALING (ADJEKTIV_POT_SWIRLY)'
+			 ADJEKTIV_POT_SWIRLY should be translated only with the stem */
+		if (line[pos]=='(') { c_artikel = grundform; open_parenthesis = 1; }
+
 		int len=strlen(output);
 		//printf("insert_char: %d line[pos]: #%c# output[len]: #%c#\n",insert_char, line[pos], output[len]);
 		if (insert_char) {
@@ -425,7 +486,7 @@ char* german(const char *line) {
 	fprintf(file, "%s\n",output);
 	fclose(file);
 
-	return output;
+	return (char *)output;
 }
 
 void process(char *text[]) {
@@ -441,11 +502,33 @@ void process(char *text[]) {
 	printf("\n");
 }
 
-#ifdef PM_KNIGHT
-int main2() {
-#else
+#ifndef PM_KNIGHT
 int main() {
-#endif
+
+	char *textz[] = {"  NOUN_RING PARTIKEL_OF ADJEKTIV_RING_CONFLICT (RING_UNIDENTIFIED_ENGAGEMENT)",
+									 "  Ring des ADJEKTIV_RING_CONFLICT (Verlobung)"};
+	char *texty[] = {"X - ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_CORAL NOUN_RING",
+									 "X - ein Korallenring"};
+	char *textx[] = {"X - ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_WOODEN NOUN_RING",
+									 "X - ein Holzring"};
+	char *textw[] = {"X - ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_ENGAGEMENT NOUN_RING",
+									 "X - ein Verlobungsring"};
+	char *textv[] = {"N - ARTIKEL_UNBESTIMMTER MADE_OF_SPE_VELLUM NOUN_SPELLBOOK.",
+									 "N - ein Zauberbuch aus Velum."};
+	char *textu[] = {"NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP (MADE_OF_SPE_VELLUM)",
+									 "Zauberbuch des Schlafes (Velum)"};
+	char *textt[] = {"z - ARTIKEL_UNBESTIMMTER MADE_OF_WAND_MAPLE NOUN_WAND",
+									 "z - ein Zauberstab aus Ahornholz"};
+	char *texts[] = {"NOUN_WAND PARTIKEL_OF NOUN_WAND_LIGHT (MADE_OF_WAND_MAPLE)",
+									 "Zauberstab des Lichtes (Ahornholz)"};
+	char *textr[] = {"K - ARTIKEL_UNBESTIMMTER ADJEKTIV_WAND_CURVED NOUN_WAND",
+									 "K - ein gebogener Zauberstab"};
+	char *textq[] = {"  NOUN_POTION PARTIKEL_OF NOUN_POT_HEALING (ADJEKTIV_POT_SWIRLY)",
+									 "  Trank der Heilung (verwirbelt)"};
+	char *textp[] = {"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT ARTIKEL_UNBESTIMMTER NOUN_JACKAL NOUN_CORPSE.",
+									 "Du siehst hier die sterblichen Überreste eines Schakals."};
+	char *texto[] = {"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_BLINDNESS.",
+									 "v - ein nicht verfluchter Trank der Blindheit."};
 	char *textn[] = {"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_WAND PARTIKEL_OF NOUN_WAND_DEATH (0:4)",
 									 "v - ein verfluchter Zauberstab des Todes (0:4)"};
 	char *textm[] = {"t - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_CALLED vielleicht Wasser?",
@@ -455,9 +538,9 @@ int main() {
 	char *textk[] = {"l - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_BLINDFOLD",
 									 "l - eine nicht verfluchte Augenbinde"};
 	char *textj[] = {"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT 2 NOUN_LICHENs NOUN_CORPSE.", 
-									 "Du siehst hier die Leiche von 2 Flechten."};
+									 "Du siehst hier die sterblichen Überreste von 2 Flechten."};
 	char *texti[] = {"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT ARTIKEL_UNBESTIMMTER NOUN_LICHEN NOUN_CORPSE.",
-									 "Du siehst hier die Leiche einer Flechte."};
+									 "Du siehst hier die sterblichen Überreste einer Flechte."};
 	char *texth[] = {"ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_POT_SKY_BLUE NOUN_POTION",
 									 "Ein verfluchter himmelblauer Trank"};
 	char *textg[] = {"SUBJECT 3 ADJEKTIV_POT_SKY_BLUE NOUN_POTIONs",
@@ -492,8 +575,20 @@ int main() {
 	char *text1[] = {"SUBJECT PRONOMEN_PERSONAL VERB_HEAR gedämpfte Geräusche.",
 									 "Du hörst gedämpfte Geräusche."};
 	char *text0[] = {"SUBJECT ARTIKEL_BESTIMMTER NOUN_JACKAL VERB_BITE!",
-									 "Der Jackal beißt3!"};
+									 "Der Schakal beißt!"};
 
+	process(textz);
+	process(texty);
+	process(textx);
+	process(textw);
+	process(textv);
+	process(textu);
+	process(textt);
+	process(texts);
+	process(textr);
+	process(textq);
+	process(textp);
+	process(texto);
 	process(textn);
 	process(textm);
 	process(textl);
@@ -520,6 +615,7 @@ int main() {
 
 	return 0;
 }
+#endif
 
 /*
 [x] Leichname werden noch falsch behandelt.
@@ -530,7 +626,6 @@ You see here a NOUN_LICHEN NOUN_CORPSE.
 
 TO DO:
 Nachgestellte Teile wie "called","of"
-
 
 Es sind vermutlich einige Saetze mit separierten Verben nötig, wie ich das mache, weiss ich noch nicht.
 du finish eating the NOUN_LICHEN corpse.
@@ -579,4 +674,10 @@ Du siehst hier die sterblichen Überreste einer Flechte.
 
 horn of plenty -> Füllhorn
 Bag of holding -> Nimmervoller Beutel (oder  tragbares Loch)
+
+scare monster -> Kreaturenbann?
+
+Nwn
+
+
 */
