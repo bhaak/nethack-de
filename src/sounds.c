@@ -48,7 +48,8 @@ dosounds()
 
     if (level.flags.nfountains && !rn2(400)) {
 	static const char * const fountain_msg[4] = {
-		"bubbling water.",
+		"plätscherndes Wasser.",
+		//"bubbling water.",
 		"water falling on coins.",
 		"the splashing of a naiad.",
 		"a soda fountain!",
@@ -89,9 +90,12 @@ dosounds()
     }
     if (level.flags.has_swamp && !rn2(200)) {
 	static const char * const swamp_msg[3] = {
-		"hear mosquitoes!",
-		"smell marsh gas!",	/* so it's a smell...*/
-		"hear Donald Duck!",
+		"VERB_HEAR Moskitos!",
+		/*"hear mosquitoes!",*/
+		"VERB_SMELL Sumpfgas!",	/* so it's a smell...*/
+		/*		"smell marsh gas!",	*/
+		"VERB_HEAR Donald Duck!",
+		/*"hear Donald Duck!",*/
 	};
 	You(swamp_msg[rn2(2)+hallu]);
 	return;
@@ -122,10 +126,13 @@ dosounds()
 #endif /* AZTEC_C_WORKAROUND */
 		    {
 			if (gold_in_vault)
-			    You_hear(!hallu ? "someone counting money." :
+			    You_hear(!hallu ? " jemanden Geld zählen." :
 				"the quarterback calling the play.");
+			/* You_hear(!hallu ? "someone counting money." :
+				 "the quarterback calling the play.");*/
 			else
-			    You_hear("someone searching.");
+			    You_hear("jemanden suchen.");
+			/*You_hear("someone searching.");*/
 			break;
 		    }
 		    /* fall into... (yes, even for hallucination) */
@@ -167,7 +174,8 @@ dosounds()
 		mon_in_room(mtmp, MORGUE)) {
 		switch (rn2(2)+hallu) {
 		    case 0:
-			You("suddenly realize it is unnaturally quiet.");
+			You(" VERB_MERKEN plötzlich, wie widernatürlich ruhig es ist..");
+			/*You("suddenly realize it is unnaturally quiet.");*/
 			break;
 		    case 1:
 			pline_The("%s on the back of your %s stands up.",
@@ -231,7 +239,8 @@ dosounds()
 		!index(u.ushops, ROOM_INDEX(sroom) + ROOMOFFSET)) {
 	    static const char * const shop_msg[3] = {
 		    "someone cursing shoplifters.",
-		    "the chime of a cash register.",
+		    "den Klang einer Registrierkasse.",
+		    //"the chime of a cash register.",
 		    "Neiman and Marcus arguing!",
 	    };
 	    You_hear(shop_msg[rn2(2)+hallu]);

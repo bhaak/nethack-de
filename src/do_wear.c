@@ -915,7 +915,7 @@ register struct obj *otmp;
 	    }
 	} else if (was_blind) {
 	    changed = TRUE;	/* !Blind */
-	    You("can see again.");
+	    You("VERB_CAN wieder sehen.");
 	}
 	if (changed) {
 	    /* blindness has just been toggled */

@@ -54,20 +54,20 @@ register struct attack *mattk;
 	} else
 	    switch (mattk->aatyp) {
 		case AT_BITE:
-			pline("%s bites!", Monnam(mtmp));
+			pline("SUBJECT %s VERB_BITE!", Monnam(mtmp));
 			break;
 		case AT_KICK:
-			pline("%s kicks%c", Monnam(mtmp),
+			pline("SUBJECT %s VERB_KICK%c", Monnam(mtmp),
 				    thick_skinned(youmonst.data) ? '.' : '!');
 			break;
 		case AT_STNG:
-			pline("%s stings!", Monnam(mtmp));
+			pline("SUBJECT %s VERB_STING!", Monnam(mtmp));
 			break;
 		case AT_BUTT:
-			pline("%s butts!", Monnam(mtmp));
+			pline("SUBJECT %s VERB_BUTT!", Monnam(mtmp));
 			break;
 		case AT_TUCH:
-			pline("%s touches you!", Monnam(mtmp));
+			pline("SUBJECT %s VERB_TOUCH OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp));
 			break;
 		case AT_TENT:
 			pline("%s tentacles suck you!",
@@ -78,7 +78,7 @@ register struct attack *mattk;
 			pline("%s explodes!", Monnam(mtmp));
 			break;
 		default:
-			pline("%s hits!", Monnam(mtmp));
+			pline("SUBJECT %s VERB_HIT!", Monnam(mtmp));
 	    }
 }
 
@@ -95,9 +95,9 @@ register struct attack *mattk;
 	    pline("%s pretends to be friendly.", Monnam(mtmp));
 	else {
 	    if (!flags.verbose || !nearmiss)
-		pline("%s misses.", Monnam(mtmp));
+		pline("SUBJECT %s VERB_MISS.", Monnam(mtmp));
 	    else
-		pline("%s just misses!", Monnam(mtmp));
+		pline("SUBJECT %s VERB_MISS knapp!", Monnam(mtmp));
 	}
 	stop_occupation();
 }
@@ -128,7 +128,7 @@ struct attack *mattk;
 	} else {
 	    return (mattk->aatyp == AT_TUCH) ? "contact" :
 		   (mattk->aatyp == AT_GAZE) ? "gaze" :
-		   (mattk->aatyp == AT_BITE) ? "bite" : "sting";
+		   (mattk->aatyp == AT_BITE) ? "VERB_BITE" : "VERB_STING";
 	}
 }
 

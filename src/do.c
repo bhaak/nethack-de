@@ -201,7 +201,8 @@ const char *verb;
 		 * Stuff dropped near fountains always misses */
 		if (Blind && flags.soundok && ((x == u.ux) && (y == u.uy)) &&
 		    weight(obj) > 9) {
-		    pline("Splash!");
+		    pline("Pflatsch!");
+		    //pline("Splash!");
 		    map_background(x, y, 0);
 		    newsym(x, y);
 		}

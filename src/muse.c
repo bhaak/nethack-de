@@ -527,7 +527,7 @@ struct monst *mtmp;
 	int i, fleetim, how = 0;
 	struct obj *otmp = m.defensive;
 	boolean vis, vismon, oseen;
-	const char *mcsa = "%s can see again.";
+	const char *mcsa = "SUBJECT %s VERB_CAN wieder sehen.";
 
 	if ((i = precheck(mtmp, otmp)) != 0) return i;
 	vis = cansee(mtmp->mx, mtmp->my);

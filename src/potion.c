@@ -184,7 +184,8 @@ boolean talk;
 		if (Hallucination)
 		    pline("Far out!  Everything is all cosmic again!");
 		else
-		    You("can see again.");
+		    You("VERB_CAN wieder sehen.");
+		/* You("can see again."); */
 	    }
 	} else if (old && !xtime) {
 	    /* clearing temporary blindness without toggling blindness */

@@ -1781,6 +1781,7 @@ tty_putstr(window, attr, str)
     register char *ob;
     register const char *nb;
     register int i, j, n0;
+		char newstr[TBUFSZ];
 
     /* Assume there's a real problem if the window is missing --
      * probably a panic message
@@ -1789,6 +1790,7 @@ tty_putstr(window, attr, str)
 	tty_raw_print(str);
 	return;
     }
+
 
     if(str == (const char*)0 ||
 	((cw->flags & WIN_CANCELLED) && (cw->type != NHW_MESSAGE)))
@@ -1804,6 +1806,7 @@ tty_putstr(window, attr, str)
 #if defined(USER_SOUNDS) && defined(WIN32CON)
 	play_sound_for_message(str);
 #endif
+	//	str = (char *)german(strcpy(newstr,str));
 	update_topl(str);
 	break;
 
@@ -1867,6 +1870,7 @@ tty_putstr(window, attr, str)
 	break;
     case NHW_MENU:
     case NHW_TEXT:
+		str = (char *)german(strcpy(newstr,str));
 	if(cw->type == NHW_TEXT && cw->cury == ttyDisplay->rows-1) {
 	    /* not a menu, so save memory and output 1 page at a time */
 	    cw->maxcol = ttyDisplay->cols; /* force full-screen mode */
@@ -2040,10 +2044,12 @@ tty_add_menu(window, glyph, identifier, ch, gch, attr, str, preselected)
 	    impossible("Menu item too long (%d).", len);
 	    len = BUFSZ - 1;
 	}
+
 	Sprintf(buf, "%c - ", ch ? ch : '?');
 	(void) strncpy(buf+4, str, len);
 	buf[4+len] = '\0';
 	newstr = buf;
+	newstr = german(newstr);
     } else
 	newstr = str;
 

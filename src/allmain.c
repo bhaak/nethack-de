@@ -28,14 +28,14 @@ moveloop()
 
     flags.moonphase = phase_of_the_moon();
     if(flags.moonphase == FULL_MOON) {
-	You("are lucky!  Full moon tonight.");
+	You("VERB_HAVE NOUN_LUCK!  Heute Nacht ist Vollmond.");
 	change_luck(1);
     } else if(flags.moonphase == NEW_MOON) {
-	pline("Be careful!  New moon tonight.");
+	pline("Sei vorsichtig!  Heute Nacht ist Neumond.");
     }
     flags.friday13 = friday_13th();
     if (flags.friday13) {
-	pline("Watch out!  Bad things can happen on Friday the 13th.");
+	pline("Nimm dich in acht!  Schlimme Dinge können an einem Freitag den 13. passieren.");
 	change_luck(-1);
     }
 

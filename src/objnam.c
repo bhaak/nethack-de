@@ -105,27 +105,27 @@ register int otyp;
 		Strcpy(buf, "coin");
 		break;
 	case POTION_CLASS:
-		Strcpy(buf, "potion");
+		Strcpy(buf, "NOUN_POTION");
 		break;
 	case SCROLL_CLASS:
-		Strcpy(buf, "scroll");
+		Strcpy(buf, "NOUN_SCROLL");
 		break;
 	case WAND_CLASS:
-		Strcpy(buf, "wand");
+		Strcpy(buf, "NOUN_WAND");
 		break;
 	case SPBOOK_CLASS:
-		Strcpy(buf, "spellbook");
+		Strcpy(buf, "NOUN_SPELLBOOK");
 		break;
 	case RING_CLASS:
-		Strcpy(buf, "ring");
+		Strcpy(buf, "NOUN_RING");
 		break;
 	case AMULET_CLASS:
 		if(nn)
 			Strcpy(buf,actualn);
 		else
-			Strcpy(buf,"amulet");
+			Strcpy(buf,"NOUN_AMULET");
 		if(un)
-			Sprintf(eos(buf)," called %s",un);
+			Sprintf(eos(buf)," PARTIKEL_CALLED %s",un);
 		if(dn)
 			Sprintf(eos(buf)," (%s)",dn);
 		return(buf);
@@ -135,7 +135,7 @@ register int otyp;
 			if (GemStone(otyp))
 				Strcat(buf, " stone");
 			if(un)
-				Sprintf(eos(buf), " called %s", un);
+				Sprintf(eos(buf), " PARTIKEL_CALLED %s", un);
 			if(dn)
 				Sprintf(eos(buf), " (%s)", dn);
 		} else {
@@ -144,7 +144,7 @@ register int otyp;
 				Strcat(buf, (ocl->oc_material == MINERAL) ?
 						" stone" : " gem");
 			if(un)
-				Sprintf(eos(buf), " called %s", un);
+				Sprintf(eos(buf), " PARTIKEL_CALLED %s", un);
 		}
 		return(buf);
 	}
@@ -153,10 +153,10 @@ register int otyp;
 	    if (ocl->oc_unique)
 		Strcpy(buf, actualn); /* avoid spellbook of Book of the Dead */
 	    else
-		Sprintf(eos(buf), " of %s", actualn);
+		Sprintf(eos(buf), " PARTIKEL_OF %s", actualn);
 	}
 	if(un)
-		Sprintf(eos(buf), " called %s", un);
+		Sprintf(eos(buf), " PARTIKEL_CALLED %s", un);
 	if(dn)
 		Sprintf(eos(buf), " (%s)", dn);
 	return(buf);
@@ -216,7 +216,7 @@ fruitname(juice)
 boolean juice;	/* whether or not to append " juice" to the name */
 {
     char *buf = nextobuf();
-    const char *fruit_nam = strstri(pl_fruit, " of ");
+    const char *fruit_nam = strstri(pl_fruit, " PARTIKEL_OF ");
 
     if (fruit_nam)
 	fruit_nam += 4;		/* skip past " of " */
@@ -261,7 +261,7 @@ register struct obj *obj;
 	switch (obj->oclass) {
 	    case AMULET_CLASS:
 		if (!obj->dknown)
-			Strcpy(buf, "amulet");
+			Strcpy(buf, "NOUN_AMULET");
 		else if (typ == AMULET_OF_YENDOR ||
 			 typ == FAKE_AMULET_OF_YENDOR)
 			/* each must be identified individually */
@@ -269,9 +269,9 @@ register struct obj *obj;
 		else if (nn)
 			Strcpy(buf, actualn);
 		else if (un)
-			Sprintf(buf,"amulet called %s", un);
+			Sprintf(buf,"NOUN_AMULET PARTIKEL_CALLED %s", un);
 		else
-			Sprintf(buf,"%s amulet", dn);
+			Sprintf(buf,"%s NOUN_AMULET", dn);
 		break;
 	    case WEAPON_CLASS:
 		if (is_poisonable(obj) && obj->opoisoned)
@@ -287,7 +287,7 @@ register struct obj *obj;
 			Strcat(buf, actualn);
 		else if (un) {
 			Strcat(buf, dn ? dn : actualn);
-			Strcat(buf, " called ");
+			Strcat(buf, " PARTIKEL_CALLED ");
 			Strcat(buf, un);
 		} else
 			Strcat(buf, dn ? dn : actualn);
@@ -301,10 +301,10 @@ register struct obj *obj;
 	    case ARMOR_CLASS:
 		/* depends on order of the dragon scales objects */
 		if (typ >= GRAY_DRAGON_SCALES && typ <= YELLOW_DRAGON_SCALES) {
-			Sprintf(buf, "set of %s", actualn);
+			Sprintf(buf, "set PARTIKEL_OF %s", actualn);
 			break;
 		}
-		if(is_boots(obj) || is_gloves(obj)) Strcpy(buf,"pair of ");
+		if(is_boots(obj) || is_gloves(obj)) Strcpy(buf,"pair PARTIKEL_OF ");
 
 		if(obj->otyp >= ELVEN_SHIELD && obj->otyp <= ORCISH_SHIELD
 				&& !obj->dknown) {
@@ -330,7 +330,7 @@ register struct obj *obj;
 				Strcpy(buf,"shield");
 			else
 				Strcpy(buf,"armor");
-			Strcat(buf, " called ");
+			Strcat(buf, " PARTIKEL_CALLED ");
 			Strcat(buf, un);
 		} else	Strcat(buf, dn);
 		break;
@@ -355,9 +355,9 @@ register struct obj *obj;
 		    else if (obj->corpsenm == NON_PM)
 		        Strcpy(buf, "empty tin");
 		    else if (vegetarian(&mons[obj->corpsenm]))
-			Sprintf(eos(buf), " of %s", mons[obj->corpsenm].mname);
+			Sprintf(eos(buf), " PARTIKEL_OF %s", mons[obj->corpsenm].mname);
 		    else
-			Sprintf(eos(buf), " of %s meat", mons[obj->corpsenm].mname);
+			Sprintf(eos(buf), " PARTIKEL_OF %s meat", mons[obj->corpsenm].mname);
 		}
 		break;
 	    case COIN_CLASS:
@@ -366,13 +366,13 @@ register struct obj *obj;
 		break;
 	    case ROCK_CLASS:
 		if (typ == STATUE)
-		    Sprintf(buf, "%s%s of %s%s",
+		    Sprintf(buf, "%s%s PARTIKEL_OF %s%s",
 			(Role_if(PM_ARCHEOLOGIST) && (obj->spe & STATUE_HISTORIC)) ? "historic " : "" ,
 			actualn,
 			type_is_pname(&mons[obj->corpsenm]) ? "" :
 			  (mons[obj->corpsenm].geno & G_UNIQ) ? "the " :
 			    (index(vowels,*(mons[obj->corpsenm].mname)) ?
-								"an " : "a "),
+								"ARTIKEL_UNBESTIMMTER " : "ARTIKEL_UNBESTIMMTER "),
 			mons[obj->corpsenm].mname);
 		else Strcpy(buf, actualn);
 		break;
@@ -384,85 +384,85 @@ register struct obj *obj;
 		if (obj->dknown && obj->odiluted)
 			Strcpy(buf, "diluted ");
 		if(nn || un || !obj->dknown) {
-			Strcat(buf, "potion");
+			Strcat(buf, "NOUN_POTION");
 			if(!obj->dknown) break;
 			if(nn) {
-			    Strcat(buf, " of ");
+			    Strcat(buf, " PARTIKEL_OF ");
 			    if (typ == POT_WATER &&
 				obj->bknown && (obj->blessed || obj->cursed)) {
 				Strcat(buf, obj->blessed ? "holy " : "unholy ");
 			    }
 			    Strcat(buf, actualn);
 			} else {
-				Strcat(buf, " called ");
+				Strcat(buf, " PARTIKEL_CALLED ");
 				Strcat(buf, un);
 			}
 		} else {
 			Strcat(buf, dn);
-			Strcat(buf, " potion");
+			Strcat(buf, " NOUN_POTION");
 		}
 		break;
 	case SCROLL_CLASS:
-		Strcpy(buf, "scroll");
+		Strcpy(buf, "NOUN_SCROLL");
 		if(!obj->dknown) break;
 		if(nn) {
-			Strcat(buf, " of ");
+			Strcat(buf, " PARTIKEL_OF ");
 			Strcat(buf, actualn);
 		} else if(un) {
-			Strcat(buf, " called ");
+			Strcat(buf, " PARTIKEL_CALLED ");
 			Strcat(buf, un);
 		} else if (ocl->oc_magic) {
 			Strcat(buf, " labeled ");
 			Strcat(buf, dn);
 		} else {
 			Strcpy(buf, dn);
-			Strcat(buf, " scroll");
+			Strcat(buf, " NOUN_SCROLL");
 		}
 		break;
 	case WAND_CLASS:
 		if(!obj->dknown)
-			Strcpy(buf, "wand");
+			Strcpy(buf, "NOUN_WAND");
 		else if(nn)
-			Sprintf(buf, "wand of %s", actualn);
+			Sprintf(buf, "NOUN_WAND PARTIKEL_OF %s", actualn);
 		else if(un)
-			Sprintf(buf, "wand called %s", un);
+			Sprintf(buf, "NOUN_WAND PARTIKEL_CALLED %s", un);
 		else
-			Sprintf(buf, "%s wand", dn);
+			Sprintf(buf, "%s NOUN_WAND", dn);
 		break;
 	case SPBOOK_CLASS:
 		if (!obj->dknown) {
-			Strcpy(buf, "spellbook");
+			Strcpy(buf, "NOUN_SPELLBOOK");
 		} else if (nn) {
 			if (typ != SPE_BOOK_OF_THE_DEAD)
-			    Strcpy(buf, "spellbook of ");
+			    Strcpy(buf, "NOUN_SPELLBOOK PARTIKEL_OF ");
 			Strcat(buf, actualn);
 		} else if (un) {
-			Sprintf(buf, "spellbook called %s", un);
+			Sprintf(buf, "NOUN_SPELLBOOK PARTIKEL_CALLED %s", un);
 		} else
-			Sprintf(buf, "%s spellbook", dn);
+			Sprintf(buf, "%s NOUN_SPELLBOOK", dn);
 		break;
 	case RING_CLASS:
 		if(!obj->dknown)
-			Strcpy(buf, "ring");
+			Strcpy(buf, "NOUN_RING");
 		else if(nn)
-			Sprintf(buf, "ring of %s", actualn);
+			Sprintf(buf, "NOUN_RING PARTIKEL_OF %s", actualn);
 		else if(un)
-			Sprintf(buf, "ring called %s", un);
+			Sprintf(buf, "NOUN_RING PARTIKEL_CALLED %s", un);
 		else
-			Sprintf(buf, "%s ring", dn);
+			Sprintf(buf, "%s NOUN_RING", dn);
 		break;
 	case GEM_CLASS:
 	    {
 		const char *rock =
-			    (ocl->oc_material == MINERAL) ? "stone" : "gem";
+			    (ocl->oc_material == MINERAL) ? "NOUN_STONE" : "NOUN_GEM";
 		if (!obj->dknown) {
 		    Strcpy(buf, rock);
 		} else if (!nn) {
-		    if (un) Sprintf(buf,"%s called %s", rock, un);
+		    if (un) Sprintf(buf,"%s PARTIKEL_CALLED %s", rock, un);
 		    else Sprintf(buf, "%s %s", dn, rock);
 		} else {
 		    Strcpy(buf, actualn);
-		    if (GemStone(typ)) Strcat(buf, " stone");
+		    if (GemStone(typ)) Strcat(buf, " NOUN_STONE");
 		}
 		break;
 	    }
@@ -472,7 +472,7 @@ register struct obj *obj;
 	if (obj->quan != 1L) Strcpy(buf, makeplural(buf));
 
 	if (obj->onamelth && obj->dknown) {
-		Strcat(buf, " named ");
+		Strcat(buf, " PARTIKEL_NAMED ");
 nameit:
 		Strcat(buf, ONAME(obj));
 	}
@@ -579,11 +579,11 @@ register struct obj *obj;
 	if(obj->quan != 1L)
 		Sprintf(prefix, "%ld ", obj->quan);
 	else if (obj_is_pname(obj) || the_unique_obj(obj)) {
-		if (!strncmpi(bp, "the ", 4))
-		    bp += 4;
-		Strcpy(prefix, "the ");
+		if (!strncmpi(bp, "ARTIKEL_BESTIMMTER ", 19))
+		    bp += 19;
+		Strcpy(prefix, "ARTIKEL_BESTIMMTER ");
 	} else
-		Strcpy(prefix, "a ");
+		Strcpy(prefix, "ARTIKEL_UNBESTIMMTER ");
 
 #ifdef INVISIBLE_OBJECTS
 	if (obj->oinvis) Strcat(prefix,"invisible ");
@@ -597,9 +597,9 @@ register struct obj *obj;
 	     * always allow "uncursed potion of water"
 	     */
 	    if (obj->cursed)
-		Strcat(prefix, "cursed ");
+		Strcat(prefix, "ADJEKTIV_CURSED ");
 	    else if (obj->blessed)
-		Strcat(prefix, "blessed ");
+		Strcat(prefix, "ADJEKTIV_BLESSED ");
 	    else if ((!obj->known || !objects[obj->otyp].oc_charged ||
 		      (obj->oclass == ARMOR_CLASS ||
 		       obj->oclass == RING_CLASS))
@@ -619,7 +619,7 @@ register struct obj *obj;
 			&& obj->otyp != FAKE_AMULET_OF_YENDOR
 			&& obj->otyp != AMULET_OF_YENDOR
 			&& !Role_if(PM_PRIEST))
-		Strcat(prefix, "uncursed ");
+		Strcat(prefix, "ADJEKTIV_UNCURSED ");
 	}
 
 	if (obj->greased) Strcat(prefix, "greased ");
@@ -627,7 +627,8 @@ register struct obj *obj;
 	switch(obj->oclass) {
 	case AMULET_CLASS:
 		if(obj->owornmask & W_AMUL)
-			Strcat(bp, " (being worn)");
+			Strcat(bp, " (VERB_WORN)");
+		/* Strcat(bp, " (being worn)"); */
 		break;
 	case WEAPON_CLASS:
 		if(ispoisoned)
@@ -642,7 +643,7 @@ plus:
 	case ARMOR_CLASS:
 		if(obj->owornmask & W_ARMOR)
 			Strcat(bp, (obj == uskin) ? " (embedded in your skin)" :
-				" (being worn)");
+				" (VERB_WORN)");
 		goto plus;
 	case TOOL_CLASS:
 		/* weptools already get this done when we go to the +n code */
@@ -653,7 +654,7 @@ plus:
 				| W_SADDLE
 #endif
 				)) {
-			Strcat(bp, " (being worn)");
+			Strcat(bp, " (VERB_WORN)");
 			break;
 		}
 		if (obj->otyp == LEASH && obj->leashmon != 0) {
@@ -747,7 +748,7 @@ ring:
 
 	if((obj->owornmask & W_WEP) && !mrg_to_wielded) {
 		if (obj->quan != 1L) {
-			Strcat(bp, " (wielded)");
+			Strcat(bp, " (geführt)");
 		} else {
 			const char *hand_s = body_part(HAND);
 
@@ -760,9 +761,9 @@ ring:
 			Sprintf(eos(bp), " (wielded in other %s)",
 				body_part(HAND));
 		else
-			Strcat(bp, " (alternate weapon; not wielded)");
+			Strcat(bp, " (Zweitwaffe; nicht geführt)");
 	}
-	if(obj->owornmask & W_QUIVER) Strcat(bp, " (in quiver)");
+	if(obj->owornmask & W_QUIVER) Strcat(bp, " (im Köcher)");
 	if(obj->unpaid) {
 		xchar ox, oy; 
 		long quotedprice = unpaid_cost(obj);
@@ -935,9 +936,9 @@ register const char *str;
 		    strncmp(str, "unicorn", 7) &&
 		    strncmp(str, "uranium", 7) &&
 		    strncmp(str, "eucalyptus", 10))
-			Strcpy(buf, "an ");
+			Strcpy(buf, "ARTIKEL_UNBESTIMMTER ");
 		else
-			Strcpy(buf, "a ");
+			Strcpy(buf, "ARTIKEL_UNBESTIMMTER ");
 	}
 
 	Strcat(buf, str);
@@ -964,7 +965,7 @@ const char *str;
 	char *buf = nextobuf();
 	boolean insert_the = FALSE;
 
-	if (!strncmpi(str, "the ", 4)) {
+	if (!strncmpi(str, "ARTIKEL_BESTIMMTER ", 19)) {
 	    buf[0] = lowc(*str);
 	    Strcpy(&buf[1], str+1);
 	    return buf;
@@ -982,9 +983,9 @@ const char *str;
 		insert_the = TRUE;
 	    else if (tmp && index(str, ' ') < tmp) {	/* has spaces */
 		/* it needs an article if the name contains "of" */
-		tmp = strstri(str, " of ");
-		named = strstri(str, " named ");
-		called = strstri(str, " called ");
+		tmp = strstri(str, " PARTIKEL_OF ");
+		named = strstri(str, " PARTIKEL_NAMED ");
+		called = strstri(str, " PARTIKEL_CALLED ");
 		if (called && (!named || called < named)) named = called;
 
 		if (tmp && (!named || tmp < named))	/* found an "of" */
@@ -996,7 +997,7 @@ const char *str;
 	    }
 	}
 	if (insert_the)
-	    Strcpy(buf, "the ");
+	    Strcpy(buf, "ARTIKEL_BESTIMMTER ");
 	else
 	    buf[0] = '\0';
 	Strcat(buf, str);
@@ -1105,14 +1106,14 @@ register const char *verb;
 	 * present tense form so we don't duplicate this code elsewhere.
 	 */
 	if (subj) {
-	    if (!strncmpi(subj, "a ", 2) || !strncmpi(subj, "an ", 3))
+	    if (!strncmpi(subj, "ARTIKEL_UNBESTIMMTER ", 2) || !strncmpi(subj, "ARTIKEL_UNBESTIMMTER ", 3))
 		goto sing;
 	    spot = (const char *)0;
 	    for (sp = subj; (sp = index(sp, ' ')) != 0; ++sp) {
-		if (!strncmp(sp, " of ", 4) ||
+		if (!strncmp(sp, " PARTIKEL_OF ", 4) ||
 		    !strncmp(sp, " from ", 6) ||
-		    !strncmp(sp, " called ", 8) ||
-		    !strncmp(sp, " named ", 7) ||
+		    !strncmp(sp, " PARTIKEL_CALLED ", 8) ||
+		    !strncmp(sp, " PARTIKEL_NAMED ", 7) ||
 		    !strncmp(sp, " labeled ", 9)) {
 		    if (sp != subj) spot = sp - 1;
 		    break;
@@ -1295,8 +1296,8 @@ const char *oldstr;
 	for(spot=str; *spot; spot++) {
 		if (!strncmp(spot, " of ", 4)
 				|| !strncmp(spot, " labeled ", 9)
-				|| !strncmp(spot, " called ", 8)
-				|| !strncmp(spot, " named ", 7)
+				|| !strncmp(spot, " PARTIKEL_CALLED ", 8)
+				|| !strncmp(spot, " PARTIKEL_NAMED ", 7)
 				|| !strcmp(spot, " above") /* lurkers above */
 				|| !strncmp(spot, " versus ", 8)
 				|| !strncmp(spot, " from ", 6)
@@ -1943,11 +1944,11 @@ boolean from_user;
 		wand of wishing
 		elven cloak
 	*/
-	if ((p = strstri(bp, " named ")) != 0) {
+	if ((p = strstri(bp, " PARTIKEL_NAMED ")) != 0) {
 		*p = 0;
 		name = p+7;
 	}
-	if ((p = strstri(bp, " called ")) != 0) {
+	if ((p = strstri(bp, " PARTIKEL_CALLED ")) != 0) {
 		*p = 0;
 		un = p+8;
 		/* "helmet called telepathy" is not "helmet" (a specific type)

@@ -1743,16 +1743,16 @@ xkilled(mtmp, dest)
 	u.uconduct.killer++;
 
 	if (dest & 1) {
-	    const char *verb = nonliving(mtmp->data) ? "destroy" : "kill";
+	    const char *verb = nonliving(mtmp->data) ? "VERB_DESTROY" : "VERB_KILL";
 
 	    if (!wasinside && !canspotmon(mtmp))
-		You("%s it!", verb);
+		You("%s OBJECT es!", verb);
 	    else {
-		You("%s %s!", verb,
+		You("%s OBJECT %s!", verb,
 		    !mtmp->mtame ? mon_nam(mtmp) :
 			x_monnam(mtmp,
 				 mtmp->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
-				 "poor",
+				 "ADJEKTIV_POOR",
 				 mtmp->mnamelth ? SUPPRESS_SADDLE : 0,
 				 FALSE));
 	    }
@@ -1864,13 +1864,16 @@ cleanup:
 	/* adjust alignment points */
 	if (mtmp->m_id == quest_status.leader_m_id) {		/* REAL BAD! */
 	    adjalign(-(u.ualign.record+(int)ALIGNLIM/2));
-	    pline("That was %sa bad idea...",
-	    		u.uevent.qcompleted ? "probably " : "");
+	    pline("Das war %seine schlechte Idee...",
+	    		u.uevent.qcompleted ? "wahrscheinlich " : "");
+	    /*pline("That was %sa bad idea...",
+				u.uevent.qcompleted ? "probably " : "");*/
 	} else if (mdat->msound == MS_NEMESIS)	/* Real good! */
 	    adjalign((int)(ALIGNLIM/4));
 	else if (mdat->msound == MS_GUARDIAN) {	/* Bad */
 	    adjalign(-(int)(ALIGNLIM/8));
-	    if (!Hallucination) pline("That was probably a bad idea...");
+	    if (!Hallucination) pline("Das war wahrscheinlich eine schlechte Idee...");
+	    /* if (!Hallucination) pline("That was probably a bad idea..."); */
 	    else pline("Whoopsie-daisy!");
 	}else if (mtmp->ispriest) {
 		adjalign((p_coaligned(mtmp)) ? -2 : 2);

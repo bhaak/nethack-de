@@ -141,7 +141,7 @@
 
 #ifndef WIZARD		/* allow for compile-time or Makefile changes */
 # ifndef KR1ED
-#  define WIZARD  "wizard" /* the person allowed to use the -D option */
+#  define WIZARD  "bubi" /* the person allowed to use the -D option */
 # else
 #  define WIZARD
 #  define WIZARD_NAME "wizard"

@@ -2227,7 +2227,7 @@ boolean picked_some;
 {
 	struct obj *otmp;
 	struct trap *trap;
-	const char *verb = Blind ? "feel" : "see";
+	const char *verb = Blind ? "VERB_FEEL" : "VERB_SEE";
 	const char *dfeature = (char *)0;
 	char fbuf[BUFSZ], fbuf2[BUFSZ];
 	winid tmpwin;
@@ -2306,7 +2306,7 @@ boolean picked_some;
 #ifdef INVISIBLE_OBJECTS
 	    if (otmp->oinvis && !See_invisible) verb = "feel";
 #endif
-	    You("%s here %s.", verb, doname(otmp));
+	    You("%s hier OBJECT %s.", verb, doname(otmp));
 	    if (otmp->otyp == CORPSE) feel_cockatrice(otmp, FALSE);
 	} else {
 	    display_nhwindow(WIN_MESSAGE, FALSE);
@@ -2641,9 +2641,9 @@ long numused;
  * This must match the object class order.
  */
 STATIC_VAR NEARDATA const char *names[] = { 0,
-	"Illegal objects", "Weapons", "Armor", "Rings", "Amulets",
-	"Tools", "Comestibles", "Potions", "Scrolls", "Spellbooks",
-	"Wands", "Coins", "Gems", "Boulders/Statues", "Iron balls",
+	"Illegal objects", "NOUN_WEAPONs", "NOUN_ARMOR", "NOUN_RINGs", "NOUN_AMULETs",
+	"Tools", "Comestibles", "NOUN_POTIONs", "NOUN_SCROLLs", "NOUN_SPELLBOOKs",
+	"NOUN_WANDs", "Coins", "NOUN_GEMs", "Boulders/Statues", "Iron balls",
 	"Chains", "Venoms"
 };
 

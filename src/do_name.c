@@ -231,7 +231,7 @@ do_mname()
 	char qbuf[QBUFSZ];
 
 	if (Hallucination) {
-		You("would never recognize it anyway.");
+		You("VERB_würden es sowieso nicht wiedererkennen.");
 		return 0;
 	}
 	cc.x = u.ux;
@@ -276,7 +276,8 @@ do_mname()
 	(void)mungspaces(buf);
 
 	if (mtmp->data->geno & G_UNIQ)
-	    pline("%s doesn't like being called names!", Monnam(mtmp));
+		/* pline("%s doesn't like being called names!", Monnam(mtmp));*/
+		pline("%s mag keine Spitznamen!", Monnam(mtmp));
 	else
 	    (void) christen_monst(mtmp, buf);
 	return(0);
@@ -615,7 +616,7 @@ boolean called;
 
 	/* unseen monsters, etc.  Use "it" */
 	if (do_it) {
-	    Strcpy(buf, "it");
+	    Strcpy(buf, "NOUN_IT");
 	    return buf;
 	}
 
@@ -688,7 +689,7 @@ boolean called;
 		Sprintf(eos(buf), "%s ghost", s_suffix(name));
 		name_at_start = TRUE;
 	    } else if (called) {
-		Sprintf(eos(buf), "%s called %s", mdat->mname, name);
+		Sprintf(eos(buf), "%s genannt %s", mdat->mname, name);
 		name_at_start = (boolean)type_is_pname(mdat);
 	    } else if (is_mplayer(mdat) && (bp = strstri(name, " the ")) != 0) {
 		/* <name> the <adjective> <invisible> <saddled> <rank> */
@@ -732,17 +733,20 @@ boolean called;
 
 	    switch(article) {
 		case ARTICLE_YOUR:
-		    Strcpy(buf2, "your ");
+		    Strcpy(buf2, "ARTIKEL_POSSESSIV ");
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		    return buf;
 		case ARTICLE_THE:
-		    Strcpy(buf2, "the ");
+		    Strcpy(buf2, "ARTIKEL_BESTIMMTER ");
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		    return buf;
 		case ARTICLE_A:
-		    return(an(buf));
+			/* return(an(buf)); */
+		    Strcpy(buf2, "ARTIKEL_UNBESTIMMTER ");
+		    Strcat(buf2, buf);
+		    Strcpy(buf, buf2);
 		case ARTICLE_NONE:
 		default:
 		    return buf;

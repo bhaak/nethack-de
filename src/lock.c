@@ -86,13 +86,16 @@ picklock()	/* try to open/close a lock */
 	    }
 	    switch (xlock.door->doormask) {
 		case D_NODOOR:
-		    pline("This doorway has no door.");
+		    pline("Dieser Eingang hat keine Türe.");
+		    /* pline("This doorway has no door."); */
 		    return((xlock.usedtime = 0));
 		case D_ISOPEN:
-		    You("cannot lock an open door.");
+		    You("kannst keine offenen Türen verschliessen.");
+		    /* You("cannot lock an open door."); */
 		    return((xlock.usedtime = 0));
 		case D_BROKEN:
-		    pline("This door is broken.");
+		    pline("Diese Türe ist kaputt.");
+		    /* pline("This door is broken."); */
 		    return((xlock.usedtime = 0));
 	    }
 	}
@@ -150,8 +153,10 @@ forcelock()	/* try to force a locked chest */
 		/* for a +0 weapon, probability that it survives an unsuccessful
 		 * attempt to force the lock is (.992)^50 = .67
 		 */
-		pline("%sour %s broke!",
-		      (uwep->quan > 1L) ? "One of y" : "Y", xname(uwep));
+		pline("%s %s broke!",
+		      (uwep->quan > 1L) ? "One of your" : "Your", xname(uwep));
+		/*pline("%sour %s broke!",
+			(uwep->quan > 1L) ? "One of y" : "Y", xname(uwep));*/
 		useup(uwep);
 		You("give up your attempt to force the lock.");
 		exercise(A_DEX, TRUE);
@@ -378,19 +383,22 @@ pick_lock(pick) /* pick a lock with a given object */
 		    You("%s no lock on the drawbridge.",
 				Blind ? "feel" : "see");
 		else
-		    You("%s no door there.",
-				Blind ? "feel" : "see");
+		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.",
+				Blind ? "VERB_FEEL" : "VERB_SEE");
 		return(0);
 	    }
 	    switch (door->doormask) {
 		case D_NODOOR:
-		    pline("This doorway has no door.");
+		    pline("Dieser Eingang hat keine Türe.");
+		    /* pline("This doorway has no door."); */
 		    return(0);
 		case D_ISOPEN:
-		    You("cannot lock an open door.");
+		    You("kannst keine offenen Türen verschliessen.");
+		    /*You("cannot lock an open door.");*/
 		    return(0);
 		case D_BROKEN:
-		    pline("This door is broken.");
+		    pline("Diese Türe ist kaputt.");
+		    /* pline("This door is broken.");*/
 		    return(0);
 		default:
 #ifdef TOURIST
@@ -543,12 +551,12 @@ doopen()		/* try to open a door */
 	    const char *mesg;
 
 	    switch (door->doormask) {
-	    case D_BROKEN: mesg = " is broken"; break;
-	    case D_NODOOR: mesg = "way has no door"; break;
-	    case D_ISOPEN: mesg = " is already open"; break;
-	    default:	   mesg = " is locked"; break;
+	    case D_BROKEN: mesg = " Türe ist kaputt"; break;
+	    case D_NODOOR: mesg = "r Eingang hat keine Türe"; break;
+	    case D_ISOPEN: mesg = " Türe ist bereits offen"; break;
+	    default:	     mesg = " Türe ist verschlossen"; break;
 	    }
-	    pline("This door%s.", mesg);
+	    pline("Diese%s.", mesg);
 	    if (Blind) feel_location(cc.x,cc.y);
 	    return(0);
 	}
@@ -560,7 +568,7 @@ doopen()		/* try to open a door */
 
 	/* door is known to be CLOSED */
 	if (rnl(20) < (ACURRSTR+ACURR(A_DEX)+ACURR(A_CON))/3) {
-	    pline_The("door opens.");
+	    pline_The("NOUN_OBJ_DOOR VERB_OPEN.");
 	    if(door->doormask & D_TRAPPED) {
 		b_trapped("door", FINGER);
 		door->doormask = D_NODOOR;
@@ -644,25 +652,27 @@ doclose()		/* try to close a door */
 		if (door->typ == DRAWBRIDGE_DOWN)
 		    There("is no obvious way to close the drawbridge.");
 		else
-		    You("%s no door there.",
-				Blind ? "feel" : "see");
+		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.",
+				Blind ? "VERB_FEEL" : "VERB_SEE");
 		return(0);
 	}
 
 	if(door->doormask == D_NODOOR) {
-	    pline("This doorway has no door.");
+	    pline("Dieser Eingang hat keine Türe.");
 	    return(0);
 	}
 
 	if(obstructed(x, y)) return(0);
 
 	if(door->doormask == D_BROKEN) {
-	    pline("This door is broken.");
+	    pline("Diese Türe ist kaputt.");
+	    /*pline("This door is broken.");*/
 	    return(0);
 	}
 
 	if(door->doormask & (D_CLOSED | D_LOCKED)) {
-	    pline("This door is already closed.");
+	    pline("Diese Türe ist schon verschlossen.");
+	    /*pline("This door is already closed.");*/
 	    return(0);
 	}
 
@@ -672,7 +682,8 @@ doclose()		/* try to close a door */
 		&& !u.usteed
 #endif
 		) {
-		 pline("You're too small to push the door closed.");
+		 pline("SUBJECT PRONOMEN_PERSONAL VERB_SEIN zu klein um die Türe zuzuziehen.");
+		 /*pline("You're too small to push the door closed.");*/
 		 return(0);
 	    }
 	    if (
@@ -754,7 +765,8 @@ int x, y;
 		door->typ = DOOR;
 		door->doormask = D_CLOSED | (door->doormask & D_TRAPPED);
 		newsym(x,y);
-		if (cansee(x,y)) pline("A door appears in the wall!");
+		if (cansee(x,y)) pline("Eine Türe erscheint in der Wand!");
+		/* if (cansee(x,y)) pline("A door appears in the wall!"); */
 		if (otmp->otyp == WAN_OPENING || otmp->otyp == SPE_KNOCK)
 		    return TRUE;
 		break;		/* striking: continue door handling below */

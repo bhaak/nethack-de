@@ -45,9 +45,12 @@ struct monst *mon, *other_mon;
 	Strcpy(outbuf, mon_nam(mon));
 	if (mon == other_mon)
 	    switch (pronoun_gender(mon)) {
-	    case 0:	Strcpy(outbuf, "himself");  break;
-	    case 1:	Strcpy(outbuf, "herself");  break;
-	    default:	Strcpy(outbuf, "itself"); break;
+	    case 0:	Strcpy(outbuf, "sich selbst");  break;
+				//case 0:	Strcpy(outbuf, "himself");  break;
+	    case 1:	Strcpy(outbuf, "sich selbst");  break;
+				//case 1:	Strcpy(outbuf, "herself");  break;
+	    default:	Strcpy(outbuf, "sich selbst"); break;
+				//default:	Strcpy(outbuf, "itself"); break;
 	    }
 	return outbuf;
 }
@@ -85,7 +88,7 @@ missmm(magr, mdef, mattk)
 		if (mdef->m_ap_type) seemimic(mdef);
 		if (magr->m_ap_type) seemimic(magr);
 		fmt = (could_seduce(magr,mdef,mattk) && !magr->mcan) ?
-			"%s pretends to be friendly to" : "%s misses";
+			"SUBJECT %s pretends to be friendly to" : "SUBJECT %s VERB_MISS OBJECT";
 		Sprintf(buf, fmt, Monnam(magr));
 		pline("%s %s.", buf, mon_nam_too(mdef_name, mdef, magr));
 	} else  noises(magr, mattk);
@@ -134,7 +137,8 @@ fightm(mtmp)		/* have monsters fight each other */
 		if(monnear(mtmp,mon->mx,mon->my)) {
 		    if(!u.uswallow && (mtmp == u.ustuck)) {
 			if(!rn2(4)) {
-			    pline("%s releases you!", Monnam(mtmp));
+			    pline("SUBJECT %s releases you!", Monnam(mtmp));
+			    /* pline("SUBJECT %s releases you!", Monnam(mtmp)); */
 			    u.ustuck = 0;
 			} else
 			    break;
@@ -391,28 +395,28 @@ hitmm(magr, mdef, mattk)
 		    Strcpy(magr_name, Monnam(magr));
 		    switch (mattk->aatyp) {
 			case AT_BITE:
-				Sprintf(buf,"%s bites", magr_name);
+				Sprintf(buf,"SUBJECT %s VERB_BITE OBJECT", magr_name);
 				break;
 			case AT_STNG:
-				Sprintf(buf,"%s stings", magr_name);
+				Sprintf(buf,"SUBJECT %s VERB_STING OBJECT", magr_name);
 				break;
 			case AT_BUTT:
-				Sprintf(buf,"%s butts", magr_name);
+				Sprintf(buf,"SUBJECT %s VERB_BUTT OBJECT", magr_name);
 				break;
 			case AT_TUCH:
-				Sprintf(buf,"%s touches", magr_name);
+				Sprintf(buf,"SUBJECT %s VERB_TOUCH OBJECT", magr_name);
 				break;
 			case AT_TENT:
-				Sprintf(buf, "%s tentacles suck",
+				Sprintf(buf, "SUBJECT %s tentacles suck OBJECT",
 					s_suffix(magr_name));
 				break;
 			case AT_HUGS:
 				if (magr != u.ustuck) {
-				    Sprintf(buf,"%s squeezes", magr_name);
+				    Sprintf(buf,"SUBJECT %s VERB_SQUEEZE OBJECT", magr_name);
 				    break;
 				}
 			default:
-				Sprintf(buf,"%s hits", magr_name);
+				Sprintf(buf,"SUBJECT %s VERB_HIT OBJECT", magr_name);
 		    }
 		    pline("%s %s.", buf, mon_nam_too(mdef_name, mdef, magr));
 		}
@@ -748,7 +752,7 @@ mdamagem(magr, mdef, mattk)
 		    tmp = 0;
 		    break;
 		}
-		if (vis) pline("%s gets zapped!", Monnam(mdef));
+		if (vis) pline("SUBJECT %s gets zapped!", Monnam(mdef));
 		tmp += destroy_mitem(mdef, WAND_CLASS, AD_ELEC);
 		if (resists_elec(mdef)) {
 		    if (vis) pline_The("zap doesn't shock %s!", mon_nam(mdef));

@@ -1012,8 +1012,8 @@ int thrown;
 	if (!hittxt &&			/*( thrown => obj exists )*/
 	  (!destroyed || (thrown && m_shot.n > 1 && m_shot.o == obj->otyp))) {
 		if (thrown) hit(mshot_xname(obj), mon, exclam(tmp));
-		else if (!flags.verbose) You("hit it.");
-		else You("%s %s%s", Role_if(PM_BARBARIAN) ? "smite" : "hit",
+		else if (!flags.verbose) You("VERB_HIT es.");
+		else You("%s DO_%s%s", Role_if(PM_BARBARIAN) ? "smite" : "VERB_HIT",
 			 mon_nam(mon), canseemon(mon) ? exclam(tmp) : ".");
 	}
 
@@ -1907,9 +1907,9 @@ register struct attack *mattk;
 	if (could_seduce(&youmonst, mdef, mattk))
 		You("pretend to be friendly to %s.", mon_nam(mdef));
 	else if(canspotmon(mdef) && flags.verbose)
-		You("miss %s.", mon_nam(mdef));
+		You("VERB_MISS OBJECT %s.", mon_nam(mdef));
 	else
-		You("miss it.");
+		You("VERB_MISS es.");
 	if (!mdef->msleeping && mdef->mcanmove)
 		wakeup(mdef);
 }
@@ -2002,18 +2002,18 @@ use_weapon:
 				break;
 			    }
 			    if (mattk->aatyp == AT_KICK)
-				    You("kick %s.", mon_nam(mon));
+				    You("VERB_KICK OBJECT %s.", mon_nam(mon));
 			    else if (mattk->aatyp == AT_BITE)
-				    You("bite %s.", mon_nam(mon));
+				    You("VERB_BITE OBJECT %s.", mon_nam(mon));
 			    else if (mattk->aatyp == AT_STNG)
-				    You("sting %s.", mon_nam(mon));
+				    You("VERB_STING OBJECT %s.", mon_nam(mon));
 			    else if (mattk->aatyp == AT_BUTT)
-				    You("butt %s.", mon_nam(mon));
+				    You("VERB_BUTT OBJECT %s.", mon_nam(mon));
 			    else if (mattk->aatyp == AT_TUCH)
-				    You("touch %s.", mon_nam(mon));
+				    You("VERB_TOUCH OBJECT %s.", mon_nam(mon));
 			    else if (mattk->aatyp == AT_TENT)
 				    Your("tentacles suck %s.", mon_nam(mon));
-			    else You("hit %s.", mon_nam(mon));
+			    else You("VERB_HIT OBJECT %s.", mon_nam(mon));
 			    sum[i] = damageum(mon, mattk);
 			} else
 			    missum(mon, mattk);

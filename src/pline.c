@@ -51,10 +51,14 @@ pline VA_DECL(const char *, line)
 /* Do NOT use VA_START and VA_END in here... see above */
 
 	if (!line || !*line) return;
+
 	if (index(line, '%')) {
 	    Vsprintf(pbuf,line,VA_ARGS);
 	    line = pbuf;
 	}
+
+	line = german(line);
+
 	if (!iflags.window_inited) {
 	    raw_print(line);
 	    return;
@@ -116,7 +120,7 @@ You VA_DECL(const char *, line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "You ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SUBJECT PRONOMEN_PERSONAL ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -126,7 +130,7 @@ Your VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "Your ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SUBJECT ARTIKEL_POSSESSIV ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -136,7 +140,7 @@ You_feel VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "You feel ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_FEEL ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -147,7 +151,7 @@ You_cant VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "You can't ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_CAN nicht ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -157,7 +161,7 @@ pline_The VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "The ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SUBJECT ARTIKEL_BESTIMMTER ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -167,7 +171,7 @@ There VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "There ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "Dort ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -178,11 +182,11 @@ You_hear VA_DECL(const char *,line)
 	VA_START(line);
 	VA_INIT(line, const char *);
 	if (Underwater)
-		YouPrefix(tmp, "You barely hear ", line);
+		YouPrefix(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_HEAR kaum ", line);
 	else if (u.usleep)
 		YouPrefix(tmp, "You dream that you hear ", line);
 	else
-		YouPrefix(tmp, "You hear ", line);
+		YouPrefix(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_HEAR ", line);
 	vpline(strcat(tmp, line), VA_ARGS);
 	VA_END();
 }

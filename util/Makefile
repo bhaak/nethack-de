@@ -136,7 +136,7 @@ UTILSRCS = $(MAKESRC) panic.c $(SPLEVSRC) $(DGNCOMPSRC) $(RECOVSRC) $(DLBSRC)
 
 # files that define all monsters and objects
 CMONOBJ = ../src/monst.c ../src/objects.c
-OMONOBJ = $(OBJDIR)/monst.o $(OBJDIR)/objects.o
+OMONOBJ = $(OBJDIR)/mon-en.o $(OBJDIR)/obj-en.o
 # files that provide access to NetHack's names
 CNAMING = ../src/drawing.c ../src/decl.c $(CMONOBJ)
 ONAMING = $(OBJDIR)/drawing.o $(OBJDIR)/decl.o $(OMONOBJ)
@@ -369,10 +369,10 @@ $(OBJDIR)/drawing.o: ../src/drawing.c $(CONFIG_H)
 	$(CC) $(CFLAGS) -c ../src/drawing.c -o $@
 $(OBJDIR)/decl.o: ../src/decl.c $(CONFIG_H)
 	$(CC) $(CFLAGS) -c ../src/decl.c -o $@
-$(OBJDIR)/monst.o: ../src/monst.c $(CONFIG_H)
-	$(CC) $(CFLAGS) -c ../src/monst.c -o $@
-$(OBJDIR)/objects.o: ../src/objects.c $(CONFIG_H)
-	$(CC) $(CFLAGS) -c ../src/objects.c -o $@
+$(OBJDIR)/mon-en.o: ../src/monst.c ../src/mon-en.h $(CONFIG_H)
+	$(CC) $(CFLAGS) -c -DENGLISH -o$@ ../src/monst.c
+$(OBJDIR)/obj-en.o: ../src/objects.c ../src/obj-en.h $(CONFIG_H)
+	$(CC) $(CFLAGS) -c -DENGLISH -o$@ ../src/objects.c
 $(OBJDIR)/dlb.o: ../src/dlb.c $(HACK_H) ../include/dlb.h
 	$(CC) $(CFLAGS) -c ../src/dlb.c -o $@
 

@@ -592,7 +592,7 @@ char *buf;
 	const char *what;
 
 	if (kickobj) what = distant_name(kickobj,doname);
-	else if (IS_DOOR(maploc->typ)) what = "a door";
+	else if (IS_DOOR(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_OBJ_DOOR";
 	else if (IS_TREE(maploc->typ)) what = "a tree";
 	else if (IS_STWALL(maploc->typ)) what = "a wall";
 	else if (IS_ROCK(maploc->typ)) what = "a rock";
@@ -1040,7 +1040,7 @@ dumb:
 		boolean shopdoor = *in_rooms(x, y, SHOPBASE) ? TRUE : FALSE;
 		/* break the door */
 		if(maploc->doormask & D_TRAPPED) {
-		    if (flags.verbose) You("kick the door.");
+		    if (flags.verbose) You("VERB_KICK OBJECT ARTIKEL_BESTIMMTER NOUN_OBJ_DOOR.");
 		    exercise(A_STR, FALSE);
 		    maploc->doormask = D_NODOOR;
 		    b_trapped("door", FOOT);

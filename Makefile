@@ -15,7 +15,7 @@
 
 # make NetHack
 PREFIX	 = /usr
-GAME     = nethack
+GAME     = nethack-de
 # GAME     = nethack.prg
 GAMEUID  = games
 GAMEGRP  = bin
