@@ -532,10 +532,12 @@ def ausgabe_nouns
 
     dekliniere_substantiv("NOUN_WAND",      "Zauberstab",   "es", "Zauberstäb",   "e",  "maskulin"),
     dekliniere_substantiv("NOUN_AMULET",    "Amulett",      "es", "Amulett",      "e",  "neutrum"),
-    dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle", "",   "Schriftrolle", "",   "feminin"),
+    dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle", "",   "Schriftrolle", "en", "feminin"),
     dekliniere_substantiv("NOUN_POTION",     "Trank",       "es", "Tränk",        "e",  "maskulin"),
     dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",   "es", "Zauberbüch",   "er", "neutrum"),
     dekliniere_substantiv("NOUN_RING",      "Ring",         "es", "Ring",         "e",  "maskulin"),
+    "/* besser als Edelstein, Kleinod */",
+    dekliniere_substantiv("NOUN_GEM",       "Schmuckstein", "es", "Schmuckstein", "e",  "maskulin"),
     "",
     dekliniere_substantiv("NOUN_BLINDFOLD", "Augenbinde",   "",   "Augenbinde",   "en", "feminin"),
     "",
