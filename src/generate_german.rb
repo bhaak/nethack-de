@@ -169,20 +169,18 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pl
 
   nomen = [];
   [$sg].each { |n|
-    #[$nom, $gen, $dat, $akk].each { |c|
-    [$nom, $gen, $akk].each { |c|
+    [$nom, $gen, $dat, $akk].each { |c|
       nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner, c, geschlecht, n);
-      puts nomen[-1].to_struct
+      #puts nomen[-1].to_struct
     }
   }
 
   # pluralstamm="" -> no plural 
   if pluralstamm!="" then
     [$pl].each { |n|
-      #[$nom, $gen, $dat, $akk].each { |c|
-      [$nom, $gen, $akk].each { |c|
+      [$nom, $gen, $dat, $akk].each { |c|
         nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner+'s', c, geschlecht, n);
-        puts nomen[-1].to_struct
+        #puts nomen[-1].to_struct
       }
     }
   end
@@ -259,32 +257,150 @@ def dekliniere_adjektiv(bezeichner, stamm)
   adjektive
 end
 
-#puts
-#substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin")
-#puts
-# output_definitions
-# output_nouns
-# output_verbs
-# output_adjective
 
+def ausgabe_adjectives
+  puts "\nstruct adjektiv adjektive[] = {"
+  [
+    dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PINK","rosarot"),
+    "  /* eigentlich unveränderlich */",
+    dekliniere_adjektiv("ADJEKTIV_POT_ORANGE","orangen"),
+    dekliniere_adjektiv("ADJEKTIV_POT_YELLOW","gelb"),
+    dekliniere_adjektiv("ADJEKTIV_POT_EMERALD","smaragdgrün"),
+    dekliniere_adjektiv("ADJEKTIV_POT_DARK_GREEN","dunkelgrün"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CYAN","tiefblau"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SKY_BLUE","himmelblau"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BRILLIANT_BLUE","blauglänzend"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MAGENTA","tiefrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PURPLE_RED","purpurrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PUCE","dunkelbraun"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MILKY","milchig"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SWIRLY","verwirbelt"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BUBBLY","sprudelnd"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SMOKY","rauchig"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CLOUDY","unklar"),
+    dekliniere_adjektiv("ADJEKTIV_POT_EFFERVESCENT","übersprudelnd"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BLACK","schwarz"),
+    dekliniere_adjektiv("ADJEKTIV_POT_GOLDEN","golden"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BROWN","braun"),
+    dekliniere_adjektiv("ADJEKTIV_POT_FIZZY","zischend"),
+    dekliniere_adjektiv("ADJEKTIV_POT_DARK","dunkl"),
+    dekliniere_adjektiv("ADJEKTIV_POT_WHITE","weiß"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MURKY","trüb"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
+    "",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_SPHERICAL","kugelförmig"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_OVAL","oval"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_TRIANGULAR","dreieckig"),
+    "  /* oder besser pyramidenartig oder pyramidal?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_PYRAMIDAL","pyramidenförmig"),
+    "  /* oder besser rechteckig oder quadratisch?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_SQUARE","viereckig"),
+    "  /* oder besser konkav?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_CONCAVE","gewölbt"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_HEXAGONAL","sechseckig"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_OCTAGONAL","achteckig"),
+    "",
+    dekliniere_adjektiv("ADJEKTIV_CURSED","verflucht"),
+    dekliniere_adjektiv("ADJEKTIV_UNCURSED","nicht verflucht"),
+    "  /* blessed mit geheiligt oder gesegnet uebersetzen? */",
+    dekliniere_adjektiv("ADJEKTIV_BLESSED","geheiligt"),
+  ].each { |s| 
+    s.each { |a|
+      if a.is_a? String then
+        puts a
+      else
+        puts "  "+a.to_struct
+      end
+    }
+  }
+  puts "\n"
+  puts "  {NULL, NULL, 0, 0, 0, 0}\n};"
+end
+
+class Verb
+  attr_accessor :bezeichner, :konjugation, :casus
+  def initialize(bezeichner, stamm)
+    initialize(bezeichner, stamm+'st', stamm+'t', stamm+'t', $akk)
+  end
+
+  def initialize(bezeichner, stamm="", formen=['st','t','t'], casus=$akk)
+    @bezeichner = bezeichner;
+
+    @konjugation = Hash.new
+    @konjugation['zweite_singular'] = stamm+formen[0]
+    @konjugation['dritte_singular'] = stamm+formen[1]
+    @konjugation['zweite_plural']   = stamm+formen[2]
+    @casus = casus
+  end
+
+  def to_struct
+    a = Array.new
+    a << '{"'+@konjugation['zweite_singular']+ '", "'+@bezeichner+ '", zweitePerson, n_singular, '+ @casus+'},'
+    a << '{"'+@konjugation['dritte_singular']+'", "'+@bezeichner+'", drittePerson, n_singular, '+@casus+'},'
+    a << '{"'+@konjugation['zweite_plural']  +'", "'+@bezeichner+'", zweitePerson, n_plural,   '+@casus+'},'
+    return a
+  end
+end
+
+def konjugiere_verb(bezeichner, stamm)
+  return Verb.new(bezeichner, stamm)
+end
+
+def ausgabe_verbs
+  puts "\nstruct verb verben[] = {"
+  [
+    konjugiere_verb("VERB_FEEL","spür"),
+    konjugiere_verb("VERB_HEAR","hör"),
+    konjugiere_verb("VERB_MERKEN","merk"),
+    konjugiere_verb("VERB_SMELL","riech"),
+    konjugiere_verb("VERB_MISS","verfehl"),
+    konjugiere_verb("VERB_KILL","töte"),
+    "",
+    Verb.new("VERB_TOUCH","berühr"),
+    "",
+    Verb.new("VERB_SEIN", "", ["bist", "ist", "seid"]),
+    Verb.new("VERB_CAN", "", ["kannst", "kann", "könnt"]),
+    Verb.new("VERB_KICK", "", ["trittst", "tritt", "tretet"]),
+    Verb.new("VERB_BITE", "", ["beißt", "beißt", "beißt"]),
+    Verb.new("VERB_HIT", "", ["triffst", "trifft", "trefft"]),
+    Verb.new("VERB_SEE", "", ["siehst", "sieht", "seht"]),
+    "",
+    Verb.new("VERB_WORN", "getragen", ["", "", ""]),
+  ].each { |v|   
+    if v.is_a? String then
+      puts v
+    else
+      v.to_struct.each { |vf| puts "  "+vf }
+    end
+  }
+  puts "\n"
+	puts "  {NULL, NULL, 0, 0}\n};"
+end
 def ausgabe_nouns
   puts "\nstruct substantiv worte[] = {"
 
   [
-    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "der", $nom, $mal, $sg),
-    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "des", $gen, $mal, $sg),
-    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "dem", $dat, $mal, $sg),
-    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "den", $akk, $mal, $sg),
+    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "der", $nom,  $mal, $sg),
+    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "das", [$nom,$akk],  $neu, $sg),
+    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "des", $gen, [$mal,$neu], $sg),
+    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "dem", $dat, [$mal,$neu], $sg),
+    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "den", $akk,  $mal, $sg),
     "",
     unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "die", [$nom,$akk], $fem, $sg),
     unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "der", [$gen,$dat], $fem, $sg),
     "",
-    unregelmaessiges_wort("NOUN_CORPSE",  "die Leiche", [$nom,$akk], $fem, $sg),
-    unregelmaessiges_wort("NOUN_CORPSE",  "der Leiche", [$gen,$dat], $fem, $sg),
-    unregelmaessiges_wort("NOUN_CORPSE",  "die Leichen von", [$nom,$akk], $fem, $pl),
-    unregelmaessiges_wort("NOUN_CORPSE",  "den Leichen von", $dat, $fem, $pl),
-    unregelmaessiges_wort("NOUN_CORPSE",  "der Leichen von", $gen, $fem, $pl),
-    unregelmaessiges_wort("NOUN_CORPSE",  "der Leichen von", $gen, $fem, $pl),
+    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "die", [$nom,$akk], [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "der",  $gen,       [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "den",  $dat,       [$mal,$fem,$neu], $pl),
+    "",
+    unregelmaessiges_wort("NOUN_CORPSE",  "die sterblichen Überreste", [$nom,$akk], $fem, $sg),
+    unregelmaessiges_wort("NOUN_CORPSE",  "der sterblichen Überreste",  $gen,       $fem, $sg),
+    unregelmaessiges_wort("NOUN_CORPSE",  "den sterblichen Überresten", $dat,       $fem, $sg),
+    unregelmaessiges_wort("NOUN_CORPSE",  "die sterblichen Überreste von", [$nom,$akk], $fem, $pl),
+    unregelmaessiges_wort("NOUN_CORPSE",  "der sterblichen Überreste von",  $gen,       $fem, $pl),
+    unregelmaessiges_wort("NOUN_CORPSE",  "den sterblichen Überresten von", $dat,       $fem, $pl),
     "",
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "ein",   $nom, [$mal,$neu], $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "eines", $gen, [$mal,$neu], $sg),
@@ -343,7 +459,34 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_POTION",     "Trank",       "es", "Tränk",        "e",  "maskulin"),
     dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",   "es", "Zauberbüch",   "er", "maskulin"),
     dekliniere_substantiv("NOUN_BLINDFOLD", "Augenbinde",   "",   "Augenbinde",   "en", "feminin"),
-
+    "",
+    "/* Wands, identified */",
+    dekliniere_substantiv("NOUN_WAND_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),
+    #dekliniere_substantiv("NOUN_WAND_SECRET_DOOR_DETECTION", "Licht", "es", "Licht", "er", "neutrum"),
+    #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monstererschaffung", "", "Monstererschaffung", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_WAND_ENLIGHTENMENT", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_WISHING", "Wünschen", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_WAND_NOTHING", "Nichts", "", "", "", "neutrum"),
+    #dekliniere_substantiv("NOUN_WAND_STRIKING", "", "", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_WAND_MAKE_INVISIBLE", "Unsichtbarkeit", "", "Unsichtbarkeit", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_SLOW_MONSTER", "Verlangsamung", "", "Verlangsamung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_SPEED_MONSTER", "Hast", "", "Hast", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_WAND_UNDEAD_TURNING", "Hast", "", "Hast", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_WAND_CANCELLATION", "Vielgestaltigkeit", "", "Vielgestaltigkeit", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_TELEPORTATION", "Teleportation", "", "", "", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_OPENING", "Öffnung", "", "Öffnung", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_WAND_LOCKING", "Öffnung", "", "Öffnung", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_WAND_PROBING", "Öffnung", "", "Öffnung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_DIGGING", "Graben", "s", "", "", "neutrum"),
+    #dekliniere_substantiv("NOUN_WAND_MAGIC_MISSILE", "Graben", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_WAND_FIRE", "Feuer", "s", "Feuer", "", "neutrum"),
+    dekliniere_substantiv("NOUN_WAND_COLD", "Kälte", "", "", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_WAND_DEATH", "Tod", "es", "Tod", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_WAND_LIGHTNING", "Blitz", "es", "Blitz", "e", "maskulin"),
+    "",
     dekliniere_substantiv("NOUN_TROLL", "Troll",  "es", "Troll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GIANT_BEETLE", "Riesenkäfer", "s", "Riesenkäfer", "", "maskulin"),
     dekliniere_substantiv("NOUN_DOG", "Hund", "es", "Hund", "e", "maskulin"),
@@ -362,75 +505,19 @@ def ausgabe_nouns
 
   nomen.each {|n| 
     n.each { |w|
-      puts "  "+w.to_struct
+      if w.is_a? String
+        puts "  "+w
+      else
+        puts "  "+w.to_struct
+      end
     }
     puts "\n"
   }
   puts "  {NULL, NULL, 0, 0, 0}\n};"
 end
 
-def ausgabe_adjectives
-  puts "\nstruct adjektiv adjektive[] = {"
-  [
-    dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PINK","rosarot"),
-    "  /* eigentlich unveränderlich */",
-    dekliniere_adjektiv("ADJEKTIV_POT_ORANGE","orangen"),
-    dekliniere_adjektiv("ADJEKTIV_POT_YELLOW","gelb"),
-    dekliniere_adjektiv("ADJEKTIV_POT_EMERALD","smaragdgrün"),
-    dekliniere_adjektiv("ADJEKTIV_POT_DARK_GREEN","dunkelgrün"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CYAN","tiefblau"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SKY_BLUE","himmelblau"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BRILLIANT_BLUE","blauglänzend"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MAGENTA","tiefrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PURPLE_RED","purpurrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PUCE","dunkelbraun"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MILKY","milchig"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SWIRLY","verwirbelt"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BUBBLY","sprudelnd"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SMOKY","rauchig"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CLOUDY","unklar"),
-    dekliniere_adjektiv("ADJEKTIV_POT_EFFERVESCENT","übersprudelnd"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BLACK","schwarz"),
-    dekliniere_adjektiv("ADJEKTIV_POT_GOLDEN","golden"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BROWN","braun"),
-    dekliniere_adjektiv("ADJEKTIV_POT_FIZZY","zischend"),
-    dekliniere_adjektiv("ADJEKTIV_POT_DARK","dunkl"),
-    dekliniere_adjektiv("ADJEKTIV_POT_WHITE","weiß"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MURKY","trüb"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
-    "",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_SPHERICAL","kugelförmig"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_OVAL","oval"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_TRIANGULAR","dreieckig"),
-    "  /* oder besser pyramidenartig oder pyramidal?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_PYRAMIDAL","pyramidenförmig"),
-    "  /* oder besser rechteckig oder quadratisch?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_SQUARE","viereckig"),
-    "  /* oder besser konkav?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_CONCAVE","gewölbt"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_HEXAGONAL","sechseckig"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_OCTAGONAL","achteckig"),
-    "",
-    dekliniere_adjektiv("ADJEKTIV_CURSED","verflucht"),
-    dekliniere_adjektiv("ADJEKTIV_UNCURSED","nicht verflucht"),
-    "  /* blessed mit geheiligt oder gesegnet uebersetzen? /*",
-    dekliniere_adjektiv("ADJEKTIV_BLESSED","geheiligt"),
-  ].each { |s| 
-    s.each { |a|
-      if a.is_a? String then
-        puts a
-      else
-        puts "  "+a.to_struct
-      end
-    }
-  }
-  puts "\n"
-  puts "  {NULL, NULL, 0, 0, 0, 0}\n};"
-end
-
 # print everything
 ausgabe_definitions
 ausgabe_nouns
 ausgabe_adjectives
+ausgabe_verbs
