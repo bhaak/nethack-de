@@ -56,47 +56,40 @@ struct adjektiv {
 puts defs
 end
 
-
-
-class Nomen
-  attr_accessor :wort, :bezeichner, :casus, :geschlecht, :numerus
-  def initialize(w,b,c,g,n)
+class Adjektiv
+  attr_accessor :wort, :bezeichner, :casus, :geschlecht, :numerus, :artikel
+  def initialize(w,b,c,g,n,a)
     @wort = w
     @bezeichner = b
     @casus = Set.new
-    if c.kind_of?(Array) then
-      c.each { |ca| @casus << ca }
-    else
-      @casus << c
-    end
+    add_to_set(@casus, c)
 
     @geschlecht = Set.new
-    if g.kind_of?(Array) then
-      g.each { |ge| @geschlecht << ge }
-    else 
-      @geschlecht << g
-    end
+    add_to_set(@geschlecht, g)
 
     @numerus = Set.new
     if n.kind_of?(Array) then
-      n.each { |nu| @numerus << nu }
+      n.each { |el| @numerus << 'n_'+el }
     else
-      @numerus << n
+      @numerus << 'n_'+n
     end
+
+    @artikel = a
   end
 
   def add_to_set(set, array_or_string)
     if array_or_string.kind_of?(Array) then
       array_or_string.each { |el| set << el }
     else
-      set << n
+      set << array_or_string
     end
   end
 
   def merge?(other)
     return (other.wort == @wort  and other.bezeichner == @bezeichner and
-      other.geschlecht == @geschlecht and
-      other.numerus == @numerus)
+              other.geschlecht == @geschlecht and
+              other.numerus == @numerus and
+              other.artikel == @artikel)
   end
 
   def merge(other)
@@ -106,11 +99,13 @@ class Nomen
   end
 
   def to_struct
-    return '{"'+@wort+'", "'+@bezeichner+'", '+@casus.to_a.join("|")+', '+@geschlecht.to_a.join("|")+', '+@numerus.to_a.join("|")+'},'
+    return '{"'+@wort+'", "'+@bezeichner+'", '+@casus.to_a.join("|")+
+      ', '+@geschlecht.to_a.join("|")+', '+@numerus.to_a.join("|")+', '+@artikel+'},'
   end
 
   def to_s
-    return @wort+" "+@bezeichner+" "+@casus.to_a.join("|")+" "+@geschlecht.to_a.join("|")+" "+@numerus.to_a.join("|")
+    return @wort+" "+@bezeichner+" "+@casus.to_a.join("|")+
+      " "+@geschlecht.to_a.join("|")+" "+@numerus.to_a.join("|")+" ",@artikel
   end
 
 end
@@ -172,12 +167,11 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pl
     casus[$gen][$pl] = ""
   end
 
-
   nomen = [];
   [$sg].each { |n|
     #[$nom, $gen, $dat, $akk].each { |c|
     [$nom, $gen, $akk].each { |c|
-      nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner, c, geschlecht, 'n_'+n);
+      nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner, c, geschlecht, n);
       puts nomen[-1].to_struct
     }
   }
@@ -187,7 +181,7 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pl
     [$pl].each { |n|
       #[$nom, $gen, $dat, $akk].each { |c|
       [$nom, $gen, $akk].each { |c|
-        nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner+'s', c, geschlecht, 'n_'+n);
+        nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner+'s', c, geschlecht, n);
         puts nomen[-1].to_struct
       }
     }
@@ -210,9 +204,59 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pl
   nomen
 end
 
-
 def unregelmaessiges_wort(bezeichner, wort, casus, geschlecht, numerus)
   return Nomen.new(wort, bezeichner, casus, geschlecht, numerus)
+end
+
+class Nomen < Adjektiv
+  def initialize(w,b,c,g,n)
+    super(w,b,c,g,n,"")
+  end
+
+  def to_struct
+    return '{"'+@wort+'", "'+@bezeichner+'", '+@casus.to_a.join("|")+
+      ', '+@geschlecht.to_a.join("|")+', '+@numerus.to_a.join("|")+'},'
+  end
+
+  def to_s
+    return @wort+" "+@bezeichner+" "+@casus.to_a.join("|")+
+      " "+@geschlecht.to_a.join("|")+" "+@numerus.to_a.join("|")
+  end
+end
+
+def dekliniere_adjektiv(bezeichner, stamm)
+  adjektive = [];
+  [
+    # schwache Flexion (mit bestimmtem Artikel)
+    Adjektiv.new(stamm+'e',  bezeichner,   $nom,       [$mal,$fem,$neu],           $sg, "bestimmter"),
+    Adjektiv.new(stamm+'en', bezeichner,   $akk,        $mal,                      $sg, "bestimmter"),
+    Adjektiv.new(stamm+'e',  bezeichner,   $akk,       [$fem,$neu],                $sg, "bestimmter"),
+    Adjektiv.new(stamm+'en', bezeichner,  [$gen,$dat], [$mal,$fem,$neu],           $sg, "bestimmter"),
+    Adjektiv.new(stamm+'en', bezeichner,  [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], $pl, "bestimmter"),
+    # gemischte Flexion (mit ein, kein, Possessivpronomen u.a.)
+    Adjektiv.new(stamm+'er', bezeichner,   $nom,        $mal,            $sg, "unbestimmter"),
+    Adjektiv.new(stamm+'en', bezeichner,   $akk,        $mal,            $sg, "unbestimmter"),
+    Adjektiv.new(stamm+'e',  bezeichner,  [$nom,$akk],  $fem,            $sg, "unbestimmter"),
+    Adjektiv.new(stamm+'es', bezeichner,  [$nom,$akk],  $neu,            $sg, "unbestimmter"),
+    Adjektiv.new(stamm+'en', bezeichner,  [$gen,$dat], [$mal,$fem,$neu], $sg, "unbestimmter"),
+    Adjektiv.new(stamm+'en', bezeichner,  [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], $pl, "unbestimmter"),
+    # starke Flexion (ohne Artikel)
+    Adjektiv.new(stamm+'er', bezeichner,  $nom,       $mal,       $sg, "ohne"),
+    Adjektiv.new(stamm+'en', bezeichner, [$akk,$gen], $mal,       $sg, "ohne"),
+    Adjektiv.new(stamm+'em', bezeichner,  $dat,      [$mal,$neu], $sg, "ohne"),
+    Adjektiv.new(stamm+'es', bezeichner, [$nom,$akk], $neu,       $sg, "ohne"),
+    Adjektiv.new(stamm+'en', bezeichner,  $gen,       $neu,       $sg, "ohne"),
+    Adjektiv.new(stamm+'e',  bezeichner, [$nom,$akk], $fem,       $sg, "ohne"),
+    Adjektiv.new(stamm+'er', bezeichner, [$gen,$dat], $fem,       $sg, "ohne"),
+    Adjektiv.new(stamm+'e',  bezeichner, [$nom,$akk], [$mal,$fem,$neu], $pl, "ohne"),
+    Adjektiv.new(stamm+'er', bezeichner,  $gen,       [$mal,$fem,$neu], $pl, "ohne"),
+    Adjektiv.new(stamm+'en', bezeichner,  $dat,       [$mal,$fem,$neu], $pl, "ohne"),
+    ""
+  ].each { |a|
+    adjektive << a
+  }
+    
+  adjektive
 end
 
 #puts
@@ -285,7 +329,7 @@ def ausgabe_nouns
       puts "  "+n.to_struct
     end
   }
-  puts "/* ========= */"
+  puts "  /* ===================================================================== */"
 
   nomen = []
 
@@ -325,6 +369,68 @@ def ausgabe_nouns
   puts "  {NULL, NULL, 0, 0, 0}\n};"
 end
 
+def ausgabe_adjectives
+  puts "\nstruct adjektiv adjektive[] = {"
+  [
+    dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PINK","rosarot"),
+    "  /* eigentlich unveränderlich */",
+    dekliniere_adjektiv("ADJEKTIV_POT_ORANGE","orangen"),
+    dekliniere_adjektiv("ADJEKTIV_POT_YELLOW","gelb"),
+    dekliniere_adjektiv("ADJEKTIV_POT_EMERALD","smaragdgrün"),
+    dekliniere_adjektiv("ADJEKTIV_POT_DARK_GREEN","dunkelgrün"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CYAN","tiefblau"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SKY_BLUE","himmelblau"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BRILLIANT_BLUE","blauglänzend"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MAGENTA","tiefrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PURPLE_RED","purpurrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PUCE","dunkelbraun"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MILKY","milchig"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SWIRLY","verwirbelt"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BUBBLY","sprudelnd"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SMOKY","rauchig"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CLOUDY","unklar"),
+    dekliniere_adjektiv("ADJEKTIV_POT_EFFERVESCENT","übersprudelnd"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BLACK","schwarz"),
+    dekliniere_adjektiv("ADJEKTIV_POT_GOLDEN","golden"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BROWN","braun"),
+    dekliniere_adjektiv("ADJEKTIV_POT_FIZZY","zischend"),
+    dekliniere_adjektiv("ADJEKTIV_POT_DARK","dunkl"),
+    dekliniere_adjektiv("ADJEKTIV_POT_WHITE","weiß"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MURKY","trüb"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
+    "",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_SPHERICAL","kugelförmig"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_OVAL","oval"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_TRIANGULAR","dreieckig"),
+    "  /* oder besser pyramidenartig oder pyramidal?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_PYRAMIDAL","pyramidenförmig"),
+    "  /* oder besser rechteckig oder quadratisch?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_SQUARE","viereckig"),
+    "  /* oder besser konkav?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_CONCAVE","gewölbt"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_HEXAGONAL","sechseckig"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_OCTAGONAL","achteckig"),
+    "",
+    dekliniere_adjektiv("ADJEKTIV_CURSED","verflucht"),
+    dekliniere_adjektiv("ADJEKTIV_UNCURSED","nicht verflucht"),
+    "  /* blessed mit geheiligt oder gesegnet uebersetzen? /*",
+    dekliniere_adjektiv("ADJEKTIV_BLESSED","geheiligt"),
+  ].each { |s| 
+    s.each { |a|
+      if a.is_a? String then
+        puts a
+      else
+        puts "  "+a.to_struct
+      end
+    }
+  }
+  puts "\n"
+  puts "  {NULL, NULL, 0, 0, 0, 0}\n};"
+end
+
 # print everything
-#ausgabe_definitions
+ausgabe_definitions
 ausgabe_nouns
+ausgabe_adjectives
