@@ -125,6 +125,10 @@ static char obuf[BUFSIZ];	/* BUFSIZ is defined in stdio.h */
 static char winpanicstr[] = "Bad window id %d";
 char defmorestr[] = "--More--";
 
+#ifdef MENU_COLOR
+extern struct menucoloring *menu_colorings;
+#endif
+
 #ifdef CLIPPING
 # if defined(USE_TILES) && defined(MSDOS)
 boolean clipping = FALSE;	/* clipping on? */
@@ -162,7 +166,7 @@ STATIC_DCL void FDECL(invert_all, (winid,tty_menu_item *,tty_menu_item *, CHAR_P
 STATIC_DCL void FDECL(process_menu_window, (winid,struct WinDesc *));
 STATIC_DCL void FDECL(process_text_window, (winid,struct WinDesc *));
 STATIC_DCL tty_menu_item *FDECL(reverse, (tty_menu_item *));
-STATIC_DCL const char * FDECL(compress_str, (const char *));
+const char * FDECL(compress_str, (const char *));
 STATIC_DCL void FDECL(tty_putsym, (winid, int, int, CHAR_P));
 static char *FDECL(copy_of, (const char *));
 STATIC_DCL void FDECL(bail, (const char *));	/* __attribute__((noreturn)) */
@@ -1122,6 +1126,28 @@ invert_all(window, page_start, page_end, acc)
     }
 }
 
+#ifdef MENU_COLOR
+STATIC_OVL boolean
+get_menu_coloring(str, color, attr)
+char *str;
+int *color, *attr;
+{
+   struct menucoloring *tmpmc;
+   if (iflags.use_menu_color)
+     for (tmpmc = menu_colorings; tmpmc; tmpmc = tmpmc->next)
+# ifdef MENU_COLOR_REGEX
+       if (re_search(&tmpmc->match, str, strlen(str), 0, 9999, 0) >= 0) {
+# else
+       if (pmatch(tmpmc->match, str)) {
+# endif
+	  *color = tmpmc->color;
+	  *attr = tmpmc->attr;
+	 return TRUE;
+       }
+   return FALSE;
+}
+#endif /* MENU_COLOR */
+
 STATIC_OVL void
 process_menu_window(window, cw)
 winid window;
@@ -1198,6 +1224,10 @@ struct WinDesc *cw;
 		for (page_lines = 0, curr = page_start;
 			curr != page_end;
 			page_lines++, curr = curr->next) {
+#ifdef MENU_COLOR
+		   int color = NO_COLOR, attr = ATR_NONE;
+		   boolean menucolr = FALSE;
+#endif
 		    if (curr->selector)
 			*rp++ = curr->selector;
 
@@ -1213,6 +1243,13 @@ struct WinDesc *cw;
 		     * actually output the character.  We're faster doing
 		     * this.
 		     */
+#ifdef MENU_COLOR
+		   if (iflags.use_menu_color &&
+		       (menucolr = get_menu_coloring(curr->str, &color,&attr))) {
+		      term_start_attr(attr);
+		      if (color != NO_COLOR) term_start_color(color);
+		   } else
+#endif
 		    term_start_attr(curr->attr);
 		    for (n = 0, cp = curr->str;
 			  *cp && (int) ++ttyDisplay->curx < (int) ttyDisplay->cols;
@@ -1225,6 +1262,12 @@ struct WinDesc *cw;
 				(void) putchar('#'); /* count selected */
 			} else
 			    (void) putchar(*cp);
+#ifdef MENU_COLOR
+		   if (iflags.use_menu_color && menucolr) {
+		      if (color != NO_COLOR) term_end_color();
+		      term_end_attr(attr);
+		   } else
+#endif
 		    term_end_attr(curr->attr);
 		}
 	    } else {
@@ -1705,7 +1748,7 @@ tty_putsym(window, x, y, ch)
 }
 
 
-STATIC_OVL const char*
+const char*
 compress_str(str)
 const char *str;
 {

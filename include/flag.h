@@ -181,6 +181,9 @@ struct instance_flags {
 	char prevmsg_window;	/* type of old message window to use */
 	boolean  extmenu;	/* extended commands use menu interface */
 #endif
+#ifdef MENU_COLOR
+	boolean use_menu_color;	/* use color in menus; only if wc_color */
+#endif
 #ifdef MFLOPPY
 	boolean  checkspace;	/* check disk space before writing files */
 				/* (in iflags to allow restore after moving
@@ -213,6 +216,13 @@ struct instance_flags {
 #ifdef LAN_FEATURES
 	boolean lan_mail;	/* mail is initialized */
 	boolean lan_mail_fetched; /* mail is awaiting display */
+#endif
+#ifdef SHOW_BORN
+	boolean show_born;	/* show numbers of created monsters */
+#endif
+#ifdef PARANOID
+	boolean  paranoid_hit;  /* Ask for 'yes' when hitting peacefuls */
+	boolean  paranoid_quit; /* Ask for 'yes' when quitting */
 #endif
 /*
  * Window capability support.

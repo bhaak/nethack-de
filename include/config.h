@@ -167,11 +167,11 @@
 
 #ifdef UNIX
 /* path and file name extension for compression program */
-#define COMPRESS "/usr/bin/compress"	/* Lempel-Ziv compression */
-#define COMPRESS_EXTENSION ".Z"		/* compress's extension */
+//#define COMPRESS "/usr/bin/compress"	/* Lempel-Ziv compression */
+//#define COMPRESS_EXTENSION ".Z"		/* compress's extension */
 /* An example of one alternative you might want to use: */
-/* #define COMPRESS "/usr/local/bin/gzip" */	/* FSF gzip compression */
-/* #define COMPRESS_EXTENSION ".gz" */		/* normal gzip extension */
+#define COMPRESS "/usr/bin/gzip" 	/* FSF gzip compression */
+#define COMPRESS_EXTENSION ".gz" 		/* normal gzip extension */
 #endif
 
 #ifndef COMPRESS
@@ -350,6 +350,28 @@ typedef unsigned char	uchar;
  * bugs left here.
  */
 
+#ifdef TTY_GRAPHICS
+# define MENU_COLOR
+#endif
+#define USE_REGEX_MATCH
+/* if USE_REGEX_MATCH is defined, use regular expressions (GNU regex.h)
+ * otherwise use pmatch() to match menu color lines.
+ * pmatch() provides basic globbing: '*' and '?' wildcards.
+ */
+#define DUMP_LOG
+#define DEATH_EXPLORE 
+#define PARANOID 
+#define SHOW_BORN 
+#define LOG_MOVES
+
+#ifdef TTY_GRAPHICS
+# define MENU_COLOR
+# define MENU_COLOR_REGEX
+/* if MENU_COLOR_REGEX is defined, use regular expressions (GNU regex.h)
+ * otherwise use pmatch() to match menu color lines.
+ * pmatch() provides basic globbing: '*' and '?' wildcards.
+ */
+#endif
 /*#define GOLDOBJ */	/* Gold is kept on obj chains - Helge Hafting */
 
 /* End of Section 5 */

@@ -37,7 +37,7 @@
 #define NETWORK		/* if running on a networked system */
 			/* e.g. Suns sharing a playground through NFS */
 /* #define SUNOS4 */	/* SunOS 4.x */
-/* #define LINUX */	/* Another Unix clone */
+#define LINUX 	/* Another Unix clone */
 /* #define CYGWIN32 */	/* Unix on Win32 -- use with case sensitive defines */
 /* #define GENIX */	/* Yet Another Unix Clone */
 /* #define HISX */	/* Bull Unix for XPS Machines */
@@ -132,7 +132,7 @@
  * "extra output" method is used, but not all systems provide access to
  * a fine-grained timer.
  */
-/* #define TIMED_DELAY */	/* usleep() */
+ #define TIMED_DELAY 	/* usleep() */
 #endif
 
 /*
@@ -309,7 +309,7 @@
 
 #ifdef TIMED_DELAY
 # if defined(SUNOS4) || defined(LINUX) || (defined(BSD) && !defined(ULTRIX))
-# define msleep(k) usleep((k)*1000)
+# define msleep(k) usleep((k)*300)
 # endif
 # ifdef ULTRIX
 # define msleep(k) napms(k)
