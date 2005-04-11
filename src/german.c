@@ -29,6 +29,7 @@ enum Person  c_person = 0;
 enum Artikel c_artikel = 0;
 
 int corpse = 0;
+int partikel_of_as_mit = 0;
 
 void print_state()
 {
@@ -410,6 +411,8 @@ char* german(const char *line) {
 					insert_char = 0;
 				}
 			}
+			
+			if (strncmp("NOUN_TIN", tmp, 8)==0) { partikel_of_as_mit = 1; }
 
 			if (strlen(made_from)>0) {
 				strcat(output, " aus ");
@@ -431,11 +434,17 @@ char* german(const char *line) {
 			//finde_naechstes_sustantiv(line+pos);
 			if (strcmp("PARTIKEL_OF", tmp)==0) {
 				finde_naechstes_sustantiv(line+pos);
-				//print_state();
-				//printf("%s\n",line+pos);
-				//print_state();
-				c_casus = genitiv;
-				strcat(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus));
+				if (!partikel_of_as_mit) {
+					//print_state();
+					//printf("%s\n",line+pos);
+					//print_state();
+					c_casus = genitiv;
+					strcat(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus));
+				} else {
+					partikel_of_as_mit = 0;
+					strcat(output, "mit");
+					c_casus = nominativ; /* FIX ME: mit + Dativ-E hört sich das sehr seltsam an. */ 
+				}
 			} else {
 				strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
 			}
@@ -504,7 +513,9 @@ void process(char *text[]) {
 
 #ifndef PM_KNIGHT
 int main() {
-
+	
+	char *textA[] = {"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH.",
+									 "j - eine nicht verfluchte Dose mit Spinat."};
 	char *textz[] = {"  NOUN_RING PARTIKEL_OF ADJEKTIV_RING_CONFLICT (RING_UNIDENTIFIED_ENGAGEMENT)",
 									 "  Ring des ADJEKTIV_RING_CONFLICT (Verlobung)"};
 	char *texty[] = {"X - ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_CORAL NOUN_RING",
@@ -577,6 +588,7 @@ int main() {
 	char *text0[] = {"SUBJECT ARTIKEL_BESTIMMTER NOUN_JACKAL VERB_BITE!",
 									 "Der Schakal beißt!"};
 
+	process(textA);
 	process(textz);
 	process(texty);
 	process(textx);
