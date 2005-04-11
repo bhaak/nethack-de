@@ -1013,7 +1013,7 @@ int thrown;
 	  (!destroyed || (thrown && m_shot.n > 1 && m_shot.o == obj->otyp))) {
 		if (thrown) hit(mshot_xname(obj), mon, exclam(tmp));
 		else if (!flags.verbose) You("VERB_HIT es.");
-		else You("%s DO_%s%s", Role_if(PM_BARBARIAN) ? "smite" : "VERB_HIT",
+		else You("%s OBJECT %s%s", Role_if(PM_BARBARIAN) ? "smite" : "VERB_HIT",
 			 mon_nam(mon), canseemon(mon) ? exclam(tmp) : ".");
 	}
 
