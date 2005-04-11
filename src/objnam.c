@@ -351,7 +351,7 @@ register struct obj *obj;
 		Strcpy(buf, actualn);
 		if (typ == TIN && obj->known) {
 		    if(obj->spe > 0)
-			Strcat(buf, " of spinach");
+			Strcat(buf, " PARTIKEL_OF NOUN_SPINACH");
 		    else if (obj->corpsenm == NON_PM)
 		        Strcpy(buf, "empty tin");
 		    else if (vegetarian(&mons[obj->corpsenm]))
