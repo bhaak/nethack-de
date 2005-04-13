@@ -20,6 +20,7 @@ $neu = "neutrum"
 
 def ausgabe_definitions
   defs = "
+
 enum Casus   { nominativ=1, genitiv=2, dativ=4, akkusativ=8 };
 enum Genus   { maskulin=1, feminin=2, neutrum=4 };
 enum Numerus { n_singular=1, n_plural=2 };
@@ -161,6 +162,11 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pl
       casus[$akk][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
       casus[$dat][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
       casus[$gen][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
+    when "s"
+      casus[$nom][$pl] = "s"
+      casus[$akk][$pl] = "s"
+      casus[$dat][$pl] = "s"
+      casus[$gen][$pl] = "s"
     when "" 
       casus[$nom][$pl] = ""
       casus[$akk][$pl] = ""
@@ -525,6 +531,13 @@ def ausgabe_nouns
 
   #nomen << dekliniere_substantiv("NOUN_TOCHTER", "Tochter", "", "Töchter", "", "feminin")
   [
+    "/* Nouns that are neither in mons-de.h nor in obj-de.h */",
+    dekliniere_substantiv("NOUN_SPINACH","Spinat","es","Spinat","e","maskulin"),
+    dekliniere_substantiv("NOUN_OBJ_DOOR", "Türe", "", "Türe", "en", "feminin"),
+    "",
+    dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_BAG", "Beutel", "s", "Beutel", "", "maskulin"),
+    "",
     dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_POT_HEALING", "Heilung", "", "Heilung", "en", "feminin"),
 
@@ -568,15 +581,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_WAND_DEATH", "Tod", "es", "Tod", "e", "maskulin"),
     dekliniere_substantiv("NOUN_WAND_LIGHTNING", "Blitz", "es", "Blitz", "e", "maskulin"),
-    "",
-    dekliniere_substantiv("NOUN_TROLL", "Troll",  "es", "Troll", "e", "maskulin"),
-    dekliniere_substantiv("NOUN_GIANT_BEETLE", "Riesenkäfer", "s", "Riesenkäfer", "", "maskulin"),
-    dekliniere_substantiv("NOUN_DOG", "Hund", "es", "Hund", "e", "maskulin"),
-    dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
-    dekliniere_substantiv("NOUN_BAG", "Beutel", "s", "Beutel", "", "maskulin"),
-    dekliniere_substantiv("NOUN_LICHEN", "Flechte", "", "Flechte", "en", "feminin"),
-    dekliniere_substantiv("NOUN_SEWER_RAT", "Kanalratte", "", "Kanalratte", "en", "feminin"),
-    dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
     "",
     "/* Rings, unidentified */",
     dekliniere_substantiv("RING_UNIDENTIFIED_WOODEN",     "Holz",      "es", "Hölz",      "er",  "neutrum"),
@@ -650,7 +654,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_MEAT_STICK","?Salami?"
     #dekliniere_substantiv("NOUN_HUGE_CHUNK_OF_MEAT"
     dekliniere_substantiv("NOUN_MEAT_RING","Fleischring","es","Fleischring","e","maskulin"),
-    "/* Kelpwedel, Kelpblatt?",
+    "/* Kelpwedel, Kelpblatt? */",
     dekliniere_substantiv("NOUN_KELP_FROND","Seetangblatt","es","Seetangblätt","er","neutrum"),
     dekliniere_substantiv("NOUN_EUCALYPTUS_LEAF","Eukalyptusblatt","es","Eukalyptusblätt","er","neutrum"),
     dekliniere_substantiv("NOUN_APPLE","Apfel","s","Äpfel","","maskulin"),
@@ -676,7 +680,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_K_RATION","Kampfration","","Kampfration","en","feminin"),
     dekliniere_substantiv("NOUN_C_RATION","Notration","","Notration","en","feminin"),
     dekliniere_substantiv("NOUN_TIN","Dose","","Dose","en","feminin"),
-    dekliniere_substantiv("NOUN_SPINACH","Spinat","es","Spinat","e","maskulin"),
     "",
     "/* Coins */",
     dekliniere_substantiv("NOUN_GOLD_PIECE","Goldstück","es","Goldstück","e","neutrum"),
@@ -686,8 +689,400 @@ def ausgabe_nouns
     "",
     # FIX ME: der blaue drache vs ein blauer drache oder Blaudrache?*/
     dekliniere_substantiv("NOUN_BLACK_DRAGON", "Schwarzdrache", "en", "Schwarzdrache", "en", "maskulin"),
-
-    dekliniere_substantiv("NOUN_OBJ_DOOR", "Türe", "", "Türe", "en", "feminin")
+    "/* all monster names */",
+    dekliniere_substantiv("NOUN_GIANT_ANT","Riesenameise","","Riesenameise","en","feminin"),
+    dekliniere_substantiv("NOUN_KILLER_BEE","Killerbiene","","Killerbiene","en","feminin"),
+    dekliniere_substantiv("NOUN_SOLDIER_ANT","Ameisensoldat","en","Ameisensoldat","en","maskulin"),
+    dekliniere_substantiv("NOUN_FIRE_ANT","Feuerameise","","Feuerameise","en","feminin"),
+    dekliniere_substantiv("NOUN_GIANT_BEETLE", "Riesenkäfer", "s", "Riesenkäfer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_QUEEN_BEE","Bienenkönigin","","Bienenköniginn","en","feminin"),
+    #dekliniere_substantiv("NOUN_ACID_BLOB"
+    #dekliniere_substantiv("NOUN_QUIVERING_BLOB"
+    #dekliniere_substantiv("NOUN_GELATINOUS_CUBE"
+    #dekliniere_substantiv("NOUN_CHICKATRICE"
+    #dekliniere_substantiv("NOUN_COCKATRICE"
+    #dekliniere_substantiv("NOUN_PYROLISK"
+    dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_FOX","Fuchs","es","Füchs","e","maskulin"),
+    dekliniere_substantiv("NOUN_COYOTE","Kojote","en","Kojote","en","maskulin"),
+    dekliniere_substantiv("NOUN_WEREJACKAL", "Werschakal", "s", "Werschakal", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_LITTLE_DOG"
+    dekliniere_substantiv("NOUN_DOG", "Hund", "es", "Hund", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_LARGE_DOG"
+    dekliniere_substantiv("NOUN_DINGO","Dingo","s","Dingo","s","maskulin"),
+    dekliniere_substantiv("NOUN_WOLF","Wolf","es","Wölf","e","maskulin"),
+    dekliniere_substantiv("NOUN_WEREWOLF","Werwolf","es","Werwölf","e","maskulin"),
+    #dekliniere_substantiv("NOUN_WARG"
+    #dekliniere_substantiv("NOUN_WINTER_WOLF_CUB"
+    #dekliniere_substantiv("NOUN_WINTER_WOLF"
+    #dekliniere_substantiv("NOUN_HELL_HOUND_PUP"
+    #dekliniere_substantiv("NOUN_HELL_HOUND"
+    #dekliniere_substantiv("NOUN_CERBERUS"
+    #dekliniere_substantiv("NOUN_GAS_SPORE"
+    #dekliniere_substantiv("NOUN_FLOATING_EYE"
+    #dekliniere_substantiv("NOUN_FREEZING_SPHERE"
+    #dekliniere_substantiv("NOUN_FLAMING_SPHERE"
+    #dekliniere_substantiv("NOUN_SHOCKING_SPHERE"
+    #dekliniere_substantiv("NOUN_BEHOLDER"
+    #dekliniere_substantiv("NOUN_KITTEN"
+    dekliniere_substantiv("NOUN_HOUSECAT","Hauskatze","","Hauskatze","en","feminin"),
+    dekliniere_substantiv("NOUN_JAGUAR","Jaguar","s","Jaguar","e","maskulin"),
+    dekliniere_substantiv("NOUN_LYNX","Luchs","es","Luchs","e","maskulin"),
+    dekliniere_substantiv("NOUN_PANTHER","Panther","s","Panther","","maskulin"),
+    #dekliniere_substantiv("NOUN_LARGE_CAT"
+    dekliniere_substantiv("NOUN_TIGER","Tiger","s","Tiger","","maskulin"),
+    #dekliniere_substantiv("NOUN_GREMLIN"
+    #dekliniere_substantiv("NOUN_GARGOYLE"
+    #dekliniere_substantiv("NOUN_WINGED_GARGOYLE"
+    #dekliniere_substantiv("NOUN_HOBBIT"
+    #dekliniere_substantiv("NOUN_DWARF"
+    #dekliniere_substantiv("NOUN_BUGBEAR"
+    #dekliniere_substantiv("NOUN_DWARF_LORD"
+    #dekliniere_substantiv("NOUN_DWARF_KING"
+    #dekliniere_substantiv("NOUN_MIND_FLAYER"
+    #dekliniere_substantiv("NOUN_MASTER_MIND_FLAYER"
+    #dekliniere_substantiv("NOUN_MANES"
+    #dekliniere_substantiv("NOUN_HOMUNCULUS"
+    #dekliniere_substantiv("NOUN_IMP"
+    #dekliniere_substantiv("NOUN_LEMURE"
+    #dekliniere_substantiv("NOUN_QUASIT"
+    #dekliniere_substantiv("NOUN_TENGU"
+    #dekliniere_substantiv("NOUN_BLUE_JELLY"
+    #dekliniere_substantiv("NOUN_SPOTTED_JELLY"
+    #dekliniere_substantiv("NOUN_OCHRE_JELLY"
+    #dekliniere_substantiv("NOUN_KOBOLD"
+    #dekliniere_substantiv("NOUN_LARGE_KOBOLD"
+    #dekliniere_substantiv("NOUN_KOBOLD_LORD"
+    #dekliniere_substantiv("NOUN_KOBOLD_SHAMAN"
+    #dekliniere_substantiv("NOUN_LEPRECHAUN"
+    #dekliniere_substantiv("NOUN_SMALL_MIMIC"
+    #dekliniere_substantiv("NOUN_LARGE_MIMIC"
+    #dekliniere_substantiv("NOUN_GIANT_MIMIC"
+    #dekliniere_substantiv("NOUN_WOOD_NYMPH"
+    #dekliniere_substantiv("NOUN_WATER_NYMPH"
+    #dekliniere_substantiv("NOUN_MOUNTAIN_NYMPH"
+    "/* In reality goblin would be an appropriate translation for 'Kobold'. In tolkienspeek goblin is a synonym for orc.*/",
+    dekliniere_substantiv("NOUN_GOBLIN","Goblin","s","Goblin","","maskulin"),
+    #dekliniere_substantiv("NOUN_HOBGOBLIN"
+    dekliniere_substantiv("NOUN_ORC","Ork","s","Ork","s","maskulin"),
+    #dekliniere_substantiv("NOUN_HILL_ORC"
+    #dekliniere_substantiv("NOUN_MORDOR_ORC"
+    #dekliniere_substantiv("NOUN_URUK_HAI"
+    #dekliniere_substantiv("NOUN_ORC_SHAMAN"
+    #dekliniere_substantiv("NOUN_ORC_CAPTAIN"
+    #dekliniere_substantiv("NOUN_ROCK_PIERCER"
+    #dekliniere_substantiv("NOUN_IRON_PIERCER"
+    #dekliniere_substantiv("NOUN_GLASS_PIERCER"
+    #dekliniere_substantiv("NOUN_ROTHE"
+    #dekliniere_substantiv("NOUN_MUMAK"
+    #dekliniere_substantiv("NOUN_LEOCROTTA"
+    #dekliniere_substantiv("NOUN_WUMPUS"
+    #dekliniere_substantiv("NOUN_TITANOTHERE"
+    #dekliniere_substantiv("NOUN_BALUCHITHERIUM"
+    #dekliniere_substantiv("NOUN_MASTODON"
+    dekliniere_substantiv("NOUN_SEWER_RAT", "Kanalratte", "", "Kanalratte", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_GIANT_RAT"
+    #dekliniere_substantiv("NOUN_RABID_RAT"
+    #dekliniere_substantiv("NOUN_WERERAT"
+    dekliniere_substantiv("NOUN_WERERAT", "Werratte", "", "Werratte", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_ROCK_MOLE"
+    #dekliniere_substantiv("NOUN_WOODCHUCK"
+    #dekliniere_substantiv("NOUN_CAVE_SPIDER"
+    #dekliniere_substantiv("NOUN_CENTIPEDE"
+    #dekliniere_substantiv("NOUN_GIANT_SPIDER"
+    #dekliniere_substantiv("NOUN_SCORPION"
+    #dekliniere_substantiv("NOUN_LURKER_ABOVE"
+    #dekliniere_substantiv("NOUN_TRAPPER"
+    #dekliniere_substantiv("NOUN_WHITE_UNICORN"
+    #dekliniere_substantiv("NOUN_GRAY_UNICORN"
+    #dekliniere_substantiv("NOUN_BLACK_UNICORN"
+    dekliniere_substantiv("NOUN_PONY","Pony","s","Pony","s","neutrum"),
+    dekliniere_substantiv("NOUN_HORSE","Pferd","es","Pferd","e","neutrum"),
+    dekliniere_substantiv("NOUN_WARHORSE","Schlachtroß","es","Schlachtroß","e","neutrum"),
+    #dekliniere_substantiv("NOUN_FOG_CLOUD"
+    #dekliniere_substantiv("NOUN_DUST_VORTEX"
+    #dekliniere_substantiv("NOUN_ICE_VORTEX"
+    #dekliniere_substantiv("NOUN_ENERGY_VORTEX"
+    #dekliniere_substantiv("NOUN_STEAM_VORTEX"
+    #dekliniere_substantiv("NOUN_FIRE_VORTEX"
+    #dekliniere_substantiv("NOUN_BABY_LONG_WORM"
+    #dekliniere_substantiv("NOUN_BABY_PURPLE_WORM"
+    #dekliniere_substantiv("NOUN_LONG_WORM"
+    #dekliniere_substantiv("NOUN_PURPLE_WORM"
+    #dekliniere_substantiv("NOUN_GRID_BUG"
+    #dekliniere_substantiv("NOUN_XAN"
+    #dekliniere_substantiv("NOUN_YELLOW_LIGHT"
+    #dekliniere_substantiv("NOUN_BLACK_LIGHT"
+    #dekliniere_substantiv("NOUN_ZRUTY"
+    #dekliniere_substantiv("NOUN_COUATL"
+    #dekliniere_substantiv("NOUN_ALEAX"
+    #dekliniere_substantiv("NOUN_ANGEL"
+    #dekliniere_substantiv("NOUN_KI_RIN"
+    #dekliniere_substantiv("NOUN_ARCHON"
+    #dekliniere_substantiv("NOUN_BAT"
+    #dekliniere_substantiv("NOUN_GIANT_BAT"
+    #dekliniere_substantiv("NOUN_RAVEN"
+    #dekliniere_substantiv("NOUN_VAMPIRE_BAT"
+    #dekliniere_substantiv("NOUN_PLAINS_CENTAUR"
+    #dekliniere_substantiv("NOUN_FOREST_CENTAUR"
+    #dekliniere_substantiv("NOUN_MOUNTAIN_CENTAUR"
+    #dekliniere_substantiv("NOUN_BABY_GRAY_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_SILVER_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_SHIMMERING_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_RED_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_WHITE_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_ORANGE_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_BLACK_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_BLUE_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_GREEN_DRAGON"
+    #dekliniere_substantiv("NOUN_BABY_YELLOW_DRAGON"
+    #dekliniere_substantiv("NOUN_GRAY_DRAGON"
+    #dekliniere_substantiv("NOUN_SILVER_DRAGON"
+    #dekliniere_substantiv("NOUN_SHIMMERING_DRAGON"
+    #dekliniere_substantiv("NOUN_RED_DRAGON"
+    #dekliniere_substantiv("NOUN_WHITE_DRAGON"
+    #dekliniere_substantiv("NOUN_ORANGE_DRAGON"
+    #dekliniere_substantiv("NOUN_BLACK_DRAGON"
+    #dekliniere_substantiv("NOUN_BLUE_DRAGON"
+    #dekliniere_substantiv("NOUN_GREEN_DRAGON"
+    #dekliniere_substantiv("NOUN_YELLOW_DRAGON"
+    #dekliniere_substantiv("NOUN_STALKER"
+    #dekliniere_substantiv("NOUN_AIR_ELEMENTAL"
+    #dekliniere_substantiv("NOUN_FIRE_ELEMENTAL"
+    #dekliniere_substantiv("NOUN_EARTH_ELEMENTAL"
+    #dekliniere_substantiv("NOUN_WATER_ELEMENTAL"
+    dekliniere_substantiv("NOUN_LICHEN", "Flechte", "", "Flechte", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_BROWN_MOLD"
+    #dekliniere_substantiv("NOUN_YELLOW_MOLD"
+    #dekliniere_substantiv("NOUN_GREEN_MOLD"
+    #dekliniere_substantiv("NOUN_RED_MOLD"
+    #dekliniere_substantiv("NOUN_SHRIEKER"
+    #dekliniere_substantiv("NOUN_VIOLET_FUNGUS"
+    #dekliniere_substantiv("NOUN_GNOME"
+    #dekliniere_substantiv("NOUN_GNOME_LORD"
+    #dekliniere_substantiv("NOUN_GNOMISH_WIZARD"
+    #dekliniere_substantiv("NOUN_GNOME_KING"
+    #dekliniere_substantiv("NOUN_GIANT"
+    #dekliniere_substantiv("NOUN_STONE_GIANT"
+    #dekliniere_substantiv("NOUN_HILL_GIANT"
+    #dekliniere_substantiv("NOUN_FIRE_GIANT"
+    #dekliniere_substantiv("NOUN_FROST_GIANT"
+    #dekliniere_substantiv("NOUN_STORM_GIANT"
+    #dekliniere_substantiv("NOUN_ETTIN"
+    #dekliniere_substantiv("NOUN_TITAN"
+    #dekliniere_substantiv("NOUN_MINOTAUR"
+    #dekliniere_substantiv("NOUN_JABBERWOCK"
+    #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK"
+    #dekliniere_substantiv("NOUN_KEYSTONE_KOP"
+    #dekliniere_substantiv("NOUN_KOP_SERGEANT"
+    #dekliniere_substantiv("NOUN_KOP_LIEUTENANT"
+    #dekliniere_substantiv("NOUN_KOP_KAPTAIN"
+    #dekliniere_substantiv("NOUN_LICH"
+    #dekliniere_substantiv("NOUN_DEMILICH"
+    #dekliniere_substantiv("NOUN_MASTER_LICH"
+    #dekliniere_substantiv("NOUN_ARCH_LICH"
+    #dekliniere_substantiv("NOUN_KOBOLD_MUMMY"
+    #dekliniere_substantiv("NOUN_GNOME_MUMMY"
+    #dekliniere_substantiv("NOUN_ORC_MUMMY"
+    #dekliniere_substantiv("NOUN_DWARF_MUMMY"
+    #dekliniere_substantiv("NOUN_ELF_MUMMY"
+    #dekliniere_substantiv("NOUN_HUMAN_MUMMY"
+    #dekliniere_substantiv("NOUN_ETTIN_MUMMY"
+    #dekliniere_substantiv("NOUN_GIANT_MUMMY"
+    #dekliniere_substantiv("NOUN_RED_NAGA_HATCHLING"
+    #dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING"
+    #dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING"
+    #dekliniere_substantiv("NOUN_GUARDIAN_NAGA_HATCHLING"
+    #dekliniere_substantiv("NOUN_RED_NAGA"
+    #dekliniere_substantiv("NOUN_BLACK_NAGA"
+    #dekliniere_substantiv("NOUN_GOLDEN_NAGA"
+    #dekliniere_substantiv("NOUN_GUARDIAN_NAGA"
+    #dekliniere_substantiv("NOUN_OGRE"
+    #dekliniere_substantiv("NOUN_OGRE_LORD"
+    #dekliniere_substantiv("NOUN_OGRE_KING"
+    #dekliniere_substantiv("NOUN_GRAY_OOZE"
+    #dekliniere_substantiv("NOUN_BROWN_PUDDING"
+    #dekliniere_substantiv("NOUN_BLACK_PUDDING"
+    #dekliniere_substantiv("NOUN_GREEN_SLIME"
+    #dekliniere_substantiv("NOUN_QUANTUM_MECHANIC"
+    #dekliniere_substantiv("NOUN_RUST_MONSTER"
+    #dekliniere_substantiv("NOUN_DISENCHANTER"
+    #dekliniere_substantiv("NOUN_GARTER_SNAKE"
+    dekliniere_substantiv("NOUN_SNAKE","Schlange","","Schlange","en","feminin"),
+    #dekliniere_substantiv("NOUN_WATER_MOCCASIN"
+    #dekliniere_substantiv("NOUN_PIT_VIPER"
+    #dekliniere_substantiv("NOUN_PYTHON"
+    #dekliniere_substantiv("NOUN_COBRA"
+    dekliniere_substantiv("NOUN_TROLL", "Troll",  "es", "Troll", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_ICE_TROLL", "Eistroll",  "es", "Eistroll", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_ROCK_TROLL", "Steintroll",  "es", "Steintroll", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_WATER_TROLL", "Wassertroll",  "es", "Wassertroll", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_OLOG_HAI"
+    #dekliniere_substantiv("NOUN_UMBER_HULK"
+    dekliniere_substantiv("NOUN_VAMPIRE","Vampir","es","Vampir","e","maskulin"),
+    #dekliniere_substantiv("NOUN_VAMPIRE_LORD"
+    #dekliniere_substantiv("NOUN_VAMPIRE_MAGE"
+    #dekliniere_substantiv("NOUN_VLAD_THE_IMPALER"
+    #dekliniere_substantiv("NOUN_BARROW_WIGHT"
+    #dekliniere_substantiv("NOUN_WRAITH"
+    #dekliniere_substantiv("NOUN_NAZGUL"
+    #dekliniere_substantiv("NOUN_XORN"
+    #dekliniere_substantiv("NOUN_MONKEY"
+    #dekliniere_substantiv("NOUN_APE"
+    #dekliniere_substantiv("NOUN_OWLBEAR"
+    #dekliniere_substantiv("NOUN_YETI"
+    #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
+    #dekliniere_substantiv("NOUN_SASQUATCH"
+    #dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE"
+    #dekliniere_substantiv("NOUN_GNOME_ZOMBIE"
+    #dekliniere_substantiv("NOUN_ORC_ZOMBIE"
+    #dekliniere_substantiv("NOUN_DWARF_ZOMBIE"
+    #dekliniere_substantiv("NOUN_ELF_ZOMBIE"
+    #dekliniere_substantiv("NOUN_HUMAN_ZOMBIE"
+    #dekliniere_substantiv("NOUN_ETTIN_ZOMBIE"
+    #dekliniere_substantiv("NOUN_GIANT_ZOMBIE"
+    #dekliniere_substantiv("NOUN_GHOUL"
+    #dekliniere_substantiv("NOUN_SKELETON"
+    #dekliniere_substantiv("NOUN_STRAW_GOLEM"
+    #dekliniere_substantiv("NOUN_PAPER_GOLEM"
+    #dekliniere_substantiv("NOUN_ROPE_GOLEM"
+    #dekliniere_substantiv("NOUN_GOLD_GOLEM"
+    #dekliniere_substantiv("NOUN_LEATHER_GOLEM"
+    #dekliniere_substantiv("NOUN_WOOD_GOLEM"
+    #dekliniere_substantiv("NOUN_FLESH_GOLEM"
+    #dekliniere_substantiv("NOUN_CLAY_GOLEM"
+    #dekliniere_substantiv("NOUN_STONE_GOLEM"
+    #dekliniere_substantiv("NOUN_GLASS_GOLEM"
+    #dekliniere_substantiv("NOUN_IRON_GOLEM"
+    #dekliniere_substantiv("NOUN_HUMAN"
+    #dekliniere_substantiv("NOUN_ELF"
+    #dekliniere_substantiv("NOUN_WOODLAND_ELF"
+    #dekliniere_substantiv("NOUN_GREEN_ELF"
+    #dekliniere_substantiv("NOUN_GREY_ELF"
+    #dekliniere_substantiv("NOUN_ELF_LORD"
+    #dekliniere_substantiv("NOUN_ELVENKING"
+    #dekliniere_substantiv("NOUN_DOPPELGANGER"
+    #dekliniere_substantiv("NOUN_NURSE"
+    #dekliniere_substantiv("NOUN_SHOPKEEPER"
+    #dekliniere_substantiv("NOUN_GUARD"
+    #dekliniere_substantiv("NOUN_PRISONER"
+    #dekliniere_substantiv("NOUN_ORACLE"
+    #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
+    #dekliniere_substantiv("NOUN_HIGH_PRIEST"
+    #dekliniere_substantiv("NOUN_SOLDIER"
+    #dekliniere_substantiv("NOUN_SERGEANT"
+    #dekliniere_substantiv("NOUN_LIEUTENANT"
+    #dekliniere_substantiv("NOUN_CAPTAIN"
+    #dekliniere_substantiv("NOUN_WATCHMAN"
+    #dekliniere_substantiv("NOUN_WATCH_CAPTAIN"
+    #dekliniere_substantiv("NOUN_MEDUSA"
+    #dekliniere_substantiv("NOUN_WIZARD_OF_YENDOR"
+    #dekliniere_substantiv("NOUN_CROESUS"
+    #dekliniere_substantiv("NOUN_CHARON"
+    #dekliniere_substantiv("NOUN_GHOST"
+    #dekliniere_substantiv("NOUN_SHADE"
+    #dekliniere_substantiv("NOUN_WATER_DEMON"
+    #dekliniere_substantiv("NOUN_HORNED_DEVIL"
+    #dekliniere_substantiv("NOUN_SUCCUBUS"
+    #dekliniere_substantiv("NOUN_INCUBUS"
+    #dekliniere_substantiv("NOUN_ERINYS"
+    #dekliniere_substantiv("NOUN_BARBED_DEVIL"
+    #dekliniere_substantiv("NOUN_MARILITH"
+    #dekliniere_substantiv("NOUN_VROCK"
+    #dekliniere_substantiv("NOUN_HEZROU"
+    #dekliniere_substantiv("NOUN_BONE_DEVIL"
+    #dekliniere_substantiv("NOUN_ICE_DEVIL"
+    #dekliniere_substantiv("NOUN_NALFESHNEE"
+    #dekliniere_substantiv("NOUN_PIT_FIEND"
+    #dekliniere_substantiv("NOUN_BALROG"
+    #dekliniere_substantiv("NOUN_JUIBLEX"
+    #dekliniere_substantiv("NOUN_YEENOGHU"
+    #dekliniere_substantiv("NOUN_ORCUS"
+    #dekliniere_substantiv("NOUN_GERYON"
+    #dekliniere_substantiv("NOUN_DISPATER"
+    #dekliniere_substantiv("NOUN_BAALZEBUB"
+    #dekliniere_substantiv("NOUN_ASMODEUS"
+    #dekliniere_substantiv("NOUN_DEMOGORGON"
+    dekliniere_substantiv("NOUN_DEATH","Tod","es","Tod","e","maskulin"),
+    dekliniere_substantiv("NOUN_PESTILENCE","Pest","","","","feminin"),
+    #dekliniere_substantiv("NOUN_FAMINE"
+    #dekliniere_substantiv("NOUN_MAIL_DAEMON"
+    #dekliniere_substantiv("NOUN_DJINNI"
+    #dekliniere_substantiv("NOUN_SANDESTIN"
+    #dekliniere_substantiv("NOUN_JELLYFISH"
+    dekliniere_substantiv("NOUN_PIRANHA","Piranha","s","Piranha","s","maskulin"),
+    dekliniere_substantiv("NOUN_SHARK","Hai","es","Hai","e","maskulin"),
+    #dekliniere_substantiv("NOUN_GIANT_EEL"
+    #dekliniere_substantiv("NOUN_ELECTRIC_EEL"
+    #dekliniere_substantiv("NOUN_KRAKEN"
+    #dekliniere_substantiv("NOUN_NEWT"
+    #dekliniere_substantiv("NOUN_GECKO"
+    #dekliniere_substantiv("NOUN_IGUANA"
+    #dekliniere_substantiv("NOUN_BABY_CROCODILE"
+    #dekliniere_substantiv("NOUN_LIZARD"
+    #dekliniere_substantiv("NOUN_CHAMELEON"
+    dekliniere_substantiv("NOUN_CROCODILE","Krokodil","s","Krokodil","e","maskulin"),
+    #dekliniere_substantiv("NOUN_SALAMANDER"
+    #dekliniere_substantiv("NOUN_LONG_WORM_TAIL"
+    #dekliniere_substantiv("NOUN_ARCHEOLOGIST"
+    #dekliniere_substantiv("NOUN_BARBARIAN"
+    #dekliniere_substantiv("NOUN_CAVEMAN"
+    #dekliniere_substantiv("NOUN_CAVEWOMAN"
+    #dekliniere_substantiv("NOUN_HEALER"
+    #dekliniere_substantiv("NOUN_KNIGHT"
+    #dekliniere_substantiv("NOUN_MONK"
+    #dekliniere_substantiv("NOUN_PRIEST"
+    #dekliniere_substantiv("NOUN_PRIESTESS"
+    #dekliniere_substantiv("NOUN_RANGER"
+    #dekliniere_substantiv("NOUN_ROGUE"
+    #dekliniere_substantiv("NOUN_SAMURAI"
+    #dekliniere_substantiv("NOUN_TOURIST"
+    #dekliniere_substantiv("NOUN_VALKYRIE"
+    #dekliniere_substantiv("NOUN_WIZARD"
+    #dekliniere_substantiv("NOUN_LORD_CARNARVON"
+    #dekliniere_substantiv("NOUN_PELIAS"
+    #dekliniere_substantiv("NOUN_SHAMAN_KARNOV"
+    #dekliniere_substantiv("NOUN_EARENDIL"
+    #dekliniere_substantiv("NOUN_ELWING"
+    #dekliniere_substantiv("NOUN_HIPPOCRATES"
+    #dekliniere_substantiv("NOUN_KING_ARTHUR"
+    #dekliniere_substantiv("NOUN_GRAND_MASTER"
+    #dekliniere_substantiv("NOUN_ARCH_PRIEST"
+    #dekliniere_substantiv("NOUN_ORION"
+    #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
+    #dekliniere_substantiv("NOUN_LORD_SATO"
+    #dekliniere_substantiv("NOUN_TWOFLOWER"
+    #dekliniere_substantiv("NOUN_NORN"
+    #dekliniere_substantiv("NOUN_NEFERET_THE_GREEN"
+    #dekliniere_substantiv("NOUN_MINION_OF_HUHETOTL"
+    #dekliniere_substantiv("NOUN_THOTH_AMON"
+    #dekliniere_substantiv("NOUN_CHROMATIC_DRAGON"
+    #dekliniere_substantiv("NOUN_GOBLIN_KING"
+    #dekliniere_substantiv("NOUN_CYCLOPS"
+    #dekliniere_substantiv("NOUN_IXOTH"
+    #dekliniere_substantiv("NOUN_MASTER_KAEN"
+    #dekliniere_substantiv("NOUN_NALZOK"
+    #dekliniere_substantiv("NOUN_SCORPIUS"
+    #dekliniere_substantiv("NOUN_MASTER_ASSASSIN"
+    #dekliniere_substantiv("NOUN_ASHIKAGA_TAKAUJI"
+    #dekliniere_substantiv("NOUN_LORD_SURTUR"
+    #dekliniere_substantiv("NOUN_DARK_ONE"
+    #dekliniere_substantiv("NOUN_STUDENT"
+    #dekliniere_substantiv("NOUN_CHIEFTAIN"
+    #dekliniere_substantiv("NOUN_NEANDERTHAL"
+    #dekliniere_substantiv("NOUN_HIGH_ELF"
+    #dekliniere_substantiv("NOUN_ATTENDANT"
+    #dekliniere_substantiv("NOUN_PAGE"
+    #dekliniere_substantiv("NOUN_ABBOT"
+    #dekliniere_substantiv("NOUN_ACOLYTE"
+    #dekliniere_substantiv("NOUN_HUNTER"
+    #dekliniere_substantiv("NOUN_THUG"
+    #dekliniere_substantiv("NOUN_NINJA"
+    #dekliniere_substantiv("NOUN_ROSHI"
+    #dekliniere_substantiv("NOUN_GUIDE"
+    #dekliniere_substantiv("NOUN_WARRIOR"
+    #dekliniere_substantiv("NOUN_APPRENTICE"
+    ""
   ].each { |n|
     nomen << n
   }
@@ -706,7 +1101,9 @@ def ausgabe_nouns
 end
 
 # print everything
+puts "#ifndef _GERMAN_H\n#define _GERMAN_H 1\n#include <stddef.h>\n"
 ausgabe_definitions
 ausgabe_nouns
 ausgabe_adjectives
 ausgabe_verbs
+puts "#endif /* !_GERMAN_H */"
