@@ -357,7 +357,7 @@ register struct obj *obj;
 		    else if (vegetarian(&mons[obj->corpsenm]))
 			Sprintf(eos(buf), " PARTIKEL_OF %s", mons[obj->corpsenm].mname);
 		    else
-			Sprintf(eos(buf), " PARTIKEL_OF %s meat", mons[obj->corpsenm].mname);
+			Sprintf(eos(buf), " PARTIKEL_OF MODIFIER_MEAT %s", mons[obj->corpsenm].mname);
 		}
 		break;
 	    case COIN_CLASS:
