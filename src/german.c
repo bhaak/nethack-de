@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "hack.h"
+//#include "hack.h"
 #include "german.h"
 #define TBUFSZ 300
 
@@ -30,6 +30,7 @@ enum Artikel c_artikel = 0;
 
 int corpse = 0;
 int partikel_of_as_mit = 0;
+int modifier_meat = 0;
 
 void print_state()
 {
@@ -455,6 +456,9 @@ char* german(const char *line) {
 				strcpy(made_from, tmp);
 				insert_char = 0;
 			}
+		} else if (strcmp("MODIFIER_MEAT", tmp)==0) {
+			modifier_meat = 1;
+			insert_char = 0;
 		} else {
 #ifdef DEBUG
 			printf("Nichts zu holen mit %s\n", tmp);
@@ -511,7 +515,7 @@ void process(char *text[]) {
 	printf("\n");
 }
 
-#ifndef PM_KNIGHT
+#if 0
 int main() {
 	
 	char *textA[] = {"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH.",
@@ -534,6 +538,10 @@ int main() {
 									 "Zauberstab des Lichtes (Ahornholz)"};
 	char *textr[] = {"K - ARTIKEL_UNBESTIMMTER ADJEKTIV_WAND_CURVED NOUN_WAND",
 									 "K - ein gebogener Zauberstab"};
+	char *texts[] = {"  NOUN_WAND PARTIKEL_OF NOUN_WAND_LIGHT (MADE_OF_WAND_MAPLE)",
+									 "  Zauberstab des Lichtes (Ahornholz)"};
+	char *textu[] = {"  NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP (MADE_OF_SPE_VELLUM)",
+									 "  Zauberbuch des Schlafes (Velum)"};
 	char *textq[] = {"  NOUN_POTION PARTIKEL_OF NOUN_POT_HEALING (ADJEKTIV_POT_SWIRLY)",
 									 "  Trank der Heilung (verwirbelt)"};
 	char *textp[] = {"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT ARTIKEL_UNBESTIMMTER NOUN_JACKAL NOUN_CORPSE.",
@@ -588,6 +596,7 @@ int main() {
 	char *text0[] = {"SUBJECT ARTIKEL_BESTIMMTER NOUN_JACKAL VERB_BITE!",
 									 "Der Schakal beiﬂt!"};
 
+	//process(textB);
 	process(textA);
 	process(textz);
 	process(texty);
