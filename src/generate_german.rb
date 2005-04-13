@@ -441,6 +441,7 @@ def ausgabe_verbs
     Verb.new("VERB_TOUCH","berühr"),
     "",
     Verb.new("VERB_SEIN", "", ["bist", "ist", "seid"]),
+    Verb.new("VERB_HAVE", "", ["hast", "hat", "habt"]),
     Verb.new("VERB_CAN", "", ["kannst", "kann", "könnt"]),
     Verb.new("VERB_KICK", "", ["trittst", "tritt", "tretet"]),
     Verb.new("VERB_BITE", "", ["beißt", "beißt", "beißt"]),

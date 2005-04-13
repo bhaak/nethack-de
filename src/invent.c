@@ -1306,7 +1306,7 @@ unsigned *resultflags;
 		if (allowgold == 1)
 		    (*fn)(mkgoldobj(u.ugold));
 		else if (!u.ugold)
-		    You("have no gold.");
+		    You("VERB_HAVE kein Gold.");
 		allowgold = 2;
 #else
 		flags.botl = 1;
@@ -1637,7 +1637,7 @@ long quan;		/* if non-0, print this quantity, not obj->quan */
 		(txt ? txt : doname(obj)), cost, currency(cost));
 #ifndef GOLDOBJ
     } else if (obj && obj->oclass == COIN_CLASS) {
-	Sprintf(li, "%ld gold piece%s%s", obj->quan, plur(obj->quan),
+	Sprintf(li, "%ld NOUN_GOLD_PIECE%s%s", obj->quan, plur(obj->quan),
 		(dot ? "." : ""));
 #endif
     } else {
@@ -2472,15 +2472,15 @@ doprgold()
 	   take containers into account */
 #ifndef GOLDOBJ
 	if(!u.ugold)
-	    Your("wallet is empty.");
+	    Your("NOUN_WALLET ist leer.");
 	else
-	    Your("wallet contains %ld gold piece%s.", u.ugold, plur(u.ugold));
+	    Your("NOUN_WALLET enthält %ld NOUN_GOLD_PIECE%s.", u.ugold, plur(u.ugold));
 #else
         long umoney = money_cnt(invent);
 	if(!umoney)
-	    Your("wallet is empty.");
+	    Your("NOUN_WALLET ist leer.");
 	else
-	    Your("wallet contains %ld %s.", umoney, currency(umoney));
+	    Your("NOUN_WALLET enthält %ld %s.", umoney, currency(umoney));
 #endif
 	shopper_financial_report();
 	return 0;
