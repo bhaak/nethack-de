@@ -126,7 +126,7 @@ dosounds()
 #endif /* AZTEC_C_WORKAROUND */
 		    {
 			if (gold_in_vault)
-			    You_hear(!hallu ? " jemanden Geld zählen." :
+			    You_hear(!hallu ? "jemanden Geld zählen." :
 				"the quarterback calling the play.");
 			/* You_hear(!hallu ? "someone counting money." :
 				 "the quarterback calling the play.");*/

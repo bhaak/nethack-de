@@ -733,7 +733,7 @@ boolean called;
 
 	    switch(article) {
 		case ARTICLE_YOUR:
-		    Strcpy(buf2, "ARTIKEL_POSSESSIV ");
+		    Strcpy(buf2, "PRONOMEN_POSSESSIV ");
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		    return buf;

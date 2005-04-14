@@ -804,7 +804,7 @@ register const char *let,*word;
 	 * them is handled a bit differently (and also requires that we set
 	 * allowall in the caller)
 	 */
-	if(allowall && !strcmp(word, "read")) allowall = FALSE;
+	if(allowall && !strcmp(word, "VERB_READ")) allowall = FALSE;
 
 	/* another ugly check: show boulders (not statues) */
 	if(*let == WEAPON_CLASS &&
@@ -919,7 +919,7 @@ register const char *let,*word;
 	    } else {
 
 		/* "ugly check" for reading fortune cookies, part 2 */
-		if ((!strcmp(word, "read") &&
+		if ((!strcmp(word, "VERB_READ") &&
 		    (otmp->otyp == FORTUNE_COOKIE
 #ifdef TOURIST
 			|| otmp->otyp == T_SHIRT
@@ -2474,13 +2474,13 @@ doprgold()
 	if(!u.ugold)
 	    Your("NOUN_WALLET ist leer.");
 	else
-	    Your("NOUN_WALLET enthält %ld NOUN_GOLD_PIECE%s.", u.ugold, plur(u.ugold));
+	    Your("NOUN_WALLET VERB_CONTAIN OBJECT %ld NOUN_GOLD_PIECE%s.", u.ugold, plur(u.ugold));
 #else
         long umoney = money_cnt(invent);
 	if(!umoney)
 	    Your("NOUN_WALLET ist leer.");
 	else
-	    Your("NOUN_WALLET enthält %ld %s.", umoney, currency(umoney));
+	    Your("NOUN_WALLET VERB_CONTAIN %ld %s.", umoney, currency(umoney));
 #endif
 	shopper_financial_report();
 	return 0;

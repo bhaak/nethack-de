@@ -130,7 +130,7 @@ Your VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "SUBJECT ARTIKEL_POSSESSIV ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SUBJECT PRONOMEN_POSSESSIV ", line), VA_ARGS);
 	VA_END();
 }
 

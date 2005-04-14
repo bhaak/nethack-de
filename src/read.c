@@ -43,7 +43,7 @@ doread()
 
 	known = FALSE;
 	if(check_capacity((char *)0)) return (0);
-	scroll = getobj(readable, "read");
+	scroll = getobj(readable, "VERB_READ");
 	if(!scroll) return(0);
 
 	/* outrumor has its own blindness check */
@@ -95,7 +95,7 @@ doread()
 #endif	/* TOURIST */
 	} else if (scroll->oclass != SCROLL_CLASS
 		&& scroll->oclass != SPBOOK_CLASS) {
-	    pline(silly_thing_to, "read");
+	    pline(silly_thing_to, "VERB_READ");
 	    return(0);
 	} else if (Blind) {
 	    const char *what = 0;

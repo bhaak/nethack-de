@@ -190,9 +190,9 @@ struct obj *otmp;
 	otmp->bknown = savebknown;
 
 	if (vismon)
-	    pline("%s reads %s!", Monnam(mtmp), onambuf);
+	    pline("SUBJECT %s VERB_READ OBJECT %s!", Monnam(mtmp), onambuf);
 	else
-	    You_hear("%s reading %s.",
+	    You_hear("SUBJECT %s reading OBJECT %s.",
 		x_monnam(mtmp, ARTICLE_A, (char *)0,
 		    (SUPPRESS_IT|SUPPRESS_INVISIBLE|SUPPRESS_SADDLE), FALSE),
 		onambuf);

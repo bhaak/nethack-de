@@ -14,7 +14,7 @@
 # MAKE = make
 
 # make NetHack
-PREFIX	 = /usr
+PREFIX	 = /opt/nethack
 GAME     = nethack-de
 # GAME     = nethack.prg
 GAMEUID  = games

@@ -334,7 +334,7 @@ register int x,y;
 	    }
 	    if (sensed) {
 	    	char *et;
-	    	unsigned maxelen = BUFSZ - sizeof("You feel the words: \"\". ");
+	    	unsigned maxelen = BUFSZ - sizeof("Ihr fühlt die Worte: \"\". ");
 	    	if (strlen(ep->engr_txt) > maxelen) {
 	    		(void) strncpy(buf,  ep->engr_txt, (int)maxelen);
 			buf[maxelen] = '\0';
@@ -342,7 +342,7 @@ register int x,y;
 		} else
 			et = ep->engr_txt;
 		You("%s: \"%s\".",
-		      (Blind) ? "feel the words" : "read",  et);
+		      (Blind) ? "VERB_FEEL die Worte" : "VERB_READ",  et);
 		if(flags.run > 1) nomul(0);
 	    }
 	}
