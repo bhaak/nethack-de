@@ -74,7 +74,10 @@ START_TEST (test_corpses) {
 		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT ARTIKEL_UNBESTIMMTER NOUN_JACKAL NOUN_CORPSE.",
 		 "Du siehst hier die sterblichen Überreste eines Schakals."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT 2 NOUN_LICHENs NOUN_CORPSE.", 
-		 "Du siehst hier die sterblichen Überreste von 2 Flechten."}};
+		 "Du siehst hier die sterblichen Überreste von 2 Flechten."},
+	// SUBJECT PRONOMEN_PERSONAL finish eating OBJECT ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE"
+		{"SUBJECT PRONOMEN_PERSONAL VERB_EAT OBJECT ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE",
+		 ""}};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
@@ -129,6 +132,8 @@ START_TEST (test_complete_sentences) {
 		 "Ein Schwarzdrache verfehlt einen Schwarzdrachen."},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_BLACK_DRAGON VERB_HIT!",
 		 "Der Schwarzdrache trifft!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT ARTIKEL_UNBESTIMMTER NOUN_EGG.",
+		 "Du siehst hier ein Ei."},
 		{"SUBJECT PRONOMEN_POSSESSIV NOUN_WALLET ist leer.",
 		 "Deine Geldbörse ist leer."}};
 
@@ -153,6 +158,22 @@ START_TEST (test_level_sounds) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_verbs) {
+	char *text[][2] = {
+		{"NOUN_OOPS! SUBJECT ARTIKEL_BESTIMMTER 2 NOUN_GEMs VERB_OBJECT_DROPS zu Boden!",
+		 "Hoppla! Die 2 Schmucksteine fallen zu Boden!"},
+		{"SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_POT_SKY_BLUE NOUN_POTION VERB_OBJECT_DROPS zu Boden.",
+		 "Ein verfluchter himmelblauer Trank fällt zu Boden."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TRIPE_RATION SATZKLAMMER.",
+		 "Du lässt einen nicht verfluchten Pansen fallen."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT 2 ADJEKTIV_POT_BRILLIANT_BLUE NOUN_POTIONs SATZKLAMMER.",
+		 "Du lässt 2 blauglänzende Tränke fallen."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_OBJ_DOOR VERB_OPEN SATZKLAMMER.",
+		 "Die Türe geht auf."}
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
 
 START_TEST (test_tools) {
 	char *text[][2] = {
@@ -170,9 +191,9 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-  tcase_add_test(tc_core, test_tincontent);
-  tcase_add_test(tc_core, test_linking_elements);
-  tcase_add_test(tc_core, test_wands);
+  tcase_add_test(tc_core, test_verbs);
+	tcase_add_test(tc_core, test_linking_elements);
+	tcase_add_test(tc_core, test_wands);
   tcase_add_test(tc_core, test_spellbooks);
   tcase_add_test(tc_core, test_potions);
   tcase_add_test(tc_core, test_called_named_labeled);
@@ -181,6 +202,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_tools);
   tcase_add_test(tc_core, test_passiv);
   tcase_add_test(tc_core, test_complete_sentences);
+  tcase_add_test(tc_core, test_tincontent);
 
   return s;
 }

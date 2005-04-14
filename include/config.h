@@ -170,7 +170,7 @@
 //#define COMPRESS "/usr/bin/compress"	/* Lempel-Ziv compression */
 //#define COMPRESS_EXTENSION ".Z"		/* compress's extension */
 /* An example of one alternative you might want to use: */
-#define COMPRESS "/usr/bin/gzip" 	/* FSF gzip compression */
+#define COMPRESS "/bin/gzip" 	/* FSF gzip compression */
 #define COMPRESS_EXTENSION ".gz" 		/* normal gzip extension */
 #endif
 

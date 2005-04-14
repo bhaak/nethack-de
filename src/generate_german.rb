@@ -36,12 +36,13 @@ struct substantiv {
 };
 
 
-struct verb {
-	const char *verb;
-	const char *typ;
-	enum Person person;
+struct verb {           
+	const char *verb;     
+	const char *typ;     
+	const char *praeverb;
+	enum Person person;  
 	enum Numerus numerus;
-	enum Casus casus;
+	enum Casus casus;    
 };
 
 struct adjektiv {
@@ -401,25 +402,25 @@ end
 
 class Verb
   attr_accessor :bezeichner, :konjugation, :casus
-  def initialize(bezeichner, stamm)
-    initialize(bezeichner, stamm+'st', stamm+'t', stamm+'t', $akk)
-  end
 
-  def initialize(bezeichner, stamm="", formen=['st','t','t'], casus=$akk)
+  def initialize(bezeichner, stamm="", praeverb="", formen=['st','t','t','en'], casus=$akk)
     @bezeichner = bezeichner;
 
     @konjugation = Hash.new
     @konjugation['zweite_singular'] = stamm+formen[0]
     @konjugation['dritte_singular'] = stamm+formen[1]
     @konjugation['zweite_plural']   = stamm+formen[2]
+    @konjugation['dritte_plural']   = stamm+formen[3]
+    @praeverb = praeverb
     @casus = casus
   end
 
   def to_struct
     a = Array.new
-    a << '{"'+@konjugation['zweite_singular']+ '", "'+@bezeichner+ '", zweitePerson, n_singular, '+ @casus+'},'
-    a << '{"'+@konjugation['dritte_singular']+'", "'+@bezeichner+'", drittePerson, n_singular, '+@casus+'},'
-    a << '{"'+@konjugation['zweite_plural']  +'", "'+@bezeichner+'", zweitePerson, n_plural,   '+@casus+'},'
+    a << '{"'+@konjugation['zweite_singular']+'", "'+@bezeichner+'", "'+@praeverb+'", zweitePerson, n_singular, '+ @casus+'},'
+    a << '{"'+@konjugation['dritte_singular']+'", "'+@bezeichner+'", "'+@praeverb+'", drittePerson, n_singular, '+@casus+'},'
+    a << '{"'+@konjugation['zweite_plural']  +'", "'+@bezeichner+'", "'+@praeverb+'", zweitePerson, n_plural,   '+@casus+'},'
+    a << '{"'+@konjugation['dritte_plural']  +'", "'+@bezeichner+'", "'+@praeverb+'", drittePerson, n_plural,   '+@casus+'},'
     return a
   end
 end
@@ -437,20 +438,24 @@ def ausgabe_verbs
     konjugiere_verb("VERB_SMELL","riech"),
     konjugiere_verb("VERB_MISS","verfehl"),
     konjugiere_verb("VERB_KILL","töte"),
+    konjugiere_verb("VERB_TOUCH","berühr"),
     "",
-    Verb.new("VERB_TOUCH","berühr"),
+    "/* unregelmässige Verben */",
+    Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
+    Verb.new("VERB_HAVE", "", "", ["hast", "hat", "habt", "haben"]),
+    Verb.new("VERB_READ", "", "", ["liest", "liest", "lest","lesen"]),
+    Verb.new("VERB_CAN", "", "", ["kannst", "kann", "könnt","können"]),
+    Verb.new("VERB_KICK", "", "", ["trittst", "tritt", "tretet","treten"]),
+    Verb.new("VERB_BITE", "", "", ["beißt", "beißt", "beißt","beißen"]),
+    Verb.new("VERB_HIT", "", "", ["triffst", "trifft", "trefft", "treffen"]),
+    Verb.new("VERB_SEE", "", "", ["siehst", "sieht", "seht", "sehen"]),
+    Verb.new("VERB_CONTAIN", "", "", ["enthälst", "enthält", "enthaltet","enthalten"]),
+    Verb.new("VERB_OPEN", "", "auf", ["gehst", "geht", "geht","gehen"]),
+    Verb.new("VERB_EAT", "", "auf", ["isst", "isst", "esst","essen"]),
+    Verb.new("VERB_DROP", "", "fallen", ["lässt", "lässt", "lasst","lassen"]),    # "You drop a potion."
+    Verb.new("VERB_OBJECT_DROPS", "", "", ["fällst", "fällt", "fallt", "fallen"]), # e.g "A potion drops to the floor."
     "",
-    Verb.new("VERB_SEIN", "", ["bist", "ist", "seid"]),
-    Verb.new("VERB_HAVE", "", ["hast", "hat", "habt"]),
-    Verb.new("VERB_READ", "", ["liest", "liest", "lest"]),
-    Verb.new("VERB_CAN", "", ["kannst", "kann", "könnt"]),
-    Verb.new("VERB_KICK", "", ["trittst", "tritt", "tretet"]),
-    Verb.new("VERB_BITE", "", ["beißt", "beißt", "beißt"]),
-    Verb.new("VERB_HIT", "", ["triffst", "trifft", "trefft"]),
-    Verb.new("VERB_SEE", "", ["siehst", "sieht", "seht"]),
-    Verb.new("VERB_CONTAIN", "", ["enthälst", "enthält", "enthalten"]),
-    "",
-    Verb.new("VERB_WORN", "getragen", ["", "", ""]),
+    Verb.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
   ].each { |v|   
     if v.is_a? String then
       puts v
@@ -489,7 +494,7 @@ def ausgabe_nouns
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "eines", $gen, [$mal,$neu], $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einem", $dat, [$mal,$neu], $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einen", $akk,  $mal, $sg),
-    unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einen", $akk,  $neu, $sg),
+    unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "ein",   $akk,  $neu, $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "eine",  [$nom,$akk],  $fem, $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einer", [$gen,$dat],  $fem, $sg),
     "",
@@ -518,6 +523,8 @@ def ausgabe_nouns
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "dein",   $akk,  $neu,       $sg),
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "deine",  [$nom,$akk], $fem, $sg),
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "deiner", [$gen,$dat], $fem, $sg),
+    "",
+    unregelmaessiges_wort("NOUN_OOPS",  "Hoppla",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
     "",
     unregelmaessiges_wort("PARTIKEL_NAMED",  "genannt",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
     unregelmaessiges_wort("PARTIKEL_CALLED", "bezeichnet mit", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl])

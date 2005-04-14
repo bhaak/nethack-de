@@ -255,7 +255,7 @@ register struct obj *obj;
 	register struct obj *otmp,*otmp2;
 	register boolean ideed = TRUE;
 
-	You("drop %s down the drain.", doname(obj));
+	You("VERB_DROP OBJECT %s down the drain SATZKLAMMER.", doname(obj));
 	obj->in_use = TRUE;	/* block free identification via interrupt */
 	switch(obj->otyp) {	/* effects that can be noticed without eyes */
 	    case RIN_SEARCHING:
@@ -470,7 +470,7 @@ register struct obj *obj;
 
 			/* doname can call s_suffix, reusing its buffer */
 			Strcpy(buf, s_suffix(mon_nam(u.ustuck)));
-			You("drop %s into %s %s.", doname(obj), buf,
+			You("VERB_DROP %s into %s %s SATZKLAMMER.", doname(obj), buf,
 				mbodypart(u.ustuck, STOMACH));
 		}
 	} else {
@@ -482,7 +482,7 @@ register struct obj *obj;
 	    }
 #endif
 	    if (!can_reach_floor()) {
-		if(flags.verbose) You("drop %s.", doname(obj));
+		if(flags.verbose) You("VERB_DROP OBJECT %s SATZKLAMMER.", doname(obj));
 #ifndef GOLDOBJ
 		if (obj->oclass != COIN_CLASS || obj == invent) freeinv(obj);
 #else
@@ -494,7 +494,7 @@ register struct obj *obj;
 		return(1);
 	    }
 	    if (!IS_ALTAR(levl[u.ux][u.uy].typ) && flags.verbose)
-		You("drop %s.", doname(obj));
+		You("VERB_DROP OBJECT %s SATZKLAMMER.", doname(obj));
 	}
 	dropx(obj);
 	return(1);

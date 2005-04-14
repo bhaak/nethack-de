@@ -965,6 +965,9 @@ const char *str;
 	char *buf = nextobuf();
 	boolean insert_the = FALSE;
 
+#ifdef GERMAN
+	insert_the = TRUE; // TO DO german_the
+#else
 	if (!strncmpi(str, "ARTIKEL_BESTIMMTER ", 19)) {
 	    buf[0] = lowc(*str);
 	    Strcpy(&buf[1], str+1);
@@ -996,6 +999,7 @@ const char *str;
 		    insert_the = TRUE;
 	    }
 	}
+#endif
 	if (insert_the)
 	    Strcpy(buf, "ARTIKEL_BESTIMMTER ");
 	else
@@ -1095,6 +1099,9 @@ register const char *verb;
 	const char *sp, *spot;
 	const char * const *spec;
 
+#ifdef GERMAN
+		return strcpy(buf, verb);
+#else
 	/*
 	 * verb is given in plural (without trailing s).  Return as input
 	 * if subj appears to be plural.  Add special cases as necessary.
@@ -1175,6 +1182,7 @@ register const char *verb;
 	    Strcpy(buf, verb);
 	    Strcat(buf, "s");
 	}
+#endif
 
 	return buf;
 }

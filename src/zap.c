@@ -4121,10 +4121,10 @@ retry:
 					levl[u.ux][u.uy].typ < IRONBARS ||
 					levl[u.ux][u.uy].typ >= ICE) ?
 				       "Oops!  %s away from you!" :
-				       "Oops!  %s to the floor!",
+				       "NOUN_OOPS! SUBJECT %s zu Boden!",
 				       The(aobjnam(otmp,
 					     Is_airlevel(&u.uz) || u.uinwater ?
-						   "slip" : "drop")),
+						   "slip" : "VERB_OBJECT_DROPS")),
 				       (const char *)0);
 	    u.ublesscnt += rn1(100,50);  /* the gods take notice */
 	}

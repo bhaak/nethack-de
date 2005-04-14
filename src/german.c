@@ -31,6 +31,8 @@ enum Artikel c_artikel = 0;
 int corpse = 0;
 int partikel_of_as_mit = 0;
 int modifier_meat = 0;
+int beginning_of_sentence = 0;
+const char* verb_praeverb = "";
 
 void print_state()
 {
@@ -77,6 +79,7 @@ const char* get_verb(const char* verb, enum Person p, enum Numerus n) {
 				(verben[i].person  & p) && 
 				(verben[i].numerus & n)) {
 			verb_do_casus = verben[i].casus;
+			verb_praeverb = verben[i].praeverb;
 			return verben[i].verb;
 		}
 		i++;
@@ -139,9 +142,15 @@ int finde_naechstes_subject(const char* text) {
 			subject_numerus = pm_numerus;
 			subject_person  = pm_person;
 			
+#ifdef DEBUG
+			printf("finde_naechstes_subject: gefundenes subjelt: -%s-\n",tmp);
+#endif
 			return 0;
 		} else if (strncmp(tmp, "NOUN_",5)==0) {
 			analyze_this_as_subject(tmp);
+#ifdef DEBUG
+			printf("finde_naechstes_subject: gefundenes subjekt: -%s-\n",tmp);
+#endif
 			return 0;
 		} else {
 			i++;
@@ -192,6 +201,12 @@ int finde_naechstes_objekt(const char* text) {
 		}
 	}
 	return 1;
+}
+
+void clear_subject() {
+	subject_person=0;
+	subject_genus=0;
+	subject_numerus=0;
 }
 
 int analyze_this_as_subject(const char *text) {
@@ -294,6 +309,17 @@ int next_token(const char* input, char* output, int pos) {
 	return (strlen(output)>0);
 }
 
+int append(char* output, const char* input) {
+	strcat(output, input);
+	if (beginning_of_sentence) {
+		if (strlen(input)>0) {
+			int pos = strlen(output)-strlen(input);
+			output[pos] = toupper(output[pos]);
+		}
+		beginning_of_sentence = 0;
+	}
+}
+
 char output[TBUFSZ];
 
 char* german(const char *line) {
@@ -354,32 +380,34 @@ char* german(const char *line) {
 
 		/* printf("tmp: %s ",tmp); print_state(); */
 		if (strncmp("PRONOMEN_",tmp, 9)==0) {
-			strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+			append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
 
 		} else if (strcmp("SUBJECT",tmp)==0) {
+			clear_subject();
 			c_casus = nominativ;
 			finde_naechstes_subject(line+pos);
 			insert_char = 0;
+			beginning_of_sentence = 1;
 
 		} else if (strcmp("OBJECT",tmp)==0) {
 			finde_naechstes_objekt(line+pos);
 			insert_char = 0;
 
 			if (corpse) {
-				strcat(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, c_numerus));
+				append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, c_numerus));
 				verb_do_casus = genitiv; c_casus = genitiv;
 				insert_char = 1;
 			}
 		} else if (strncmp("ARTIKEL_", tmp, 8)==0) {
 			//finde_naechstes_sustantiv(line+pos);
-			
+
 			if (strcmp("ARTIKEL_BESTIMMTER", tmp)==0) { c_artikel = bestimmter; }
 			else if (strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) { c_artikel = unbestimmter; }
 
-			strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+			append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
 
 		} else if (strncmp("RING_UNIDENTIFIED_", tmp, 18)==0) {
-			strcat(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular));
+			append(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular));
 
 			if (line[pos]!=')') {
 				insert_char = 0;
@@ -387,12 +415,12 @@ char* german(const char *line) {
 
 				/* check for linking element(Fugenelemente) */
 				/* Words ending in "ung" always have the linking element 's' */
-				if (strncmp("ung", &output[strlen(output)-3],3)==0) { strcat(output, "s"); }
+				if (strncmp("ung", &output[strlen(output)-3],3)==0) { append(output, "s"); }
 				/* crude heuristic, this works only because of the limited set of words,
 					 Koralle, Perle, Tigerauge get the linking element 'n', but Jade doesn't */
 				else if 
 					((strncmp("le", &output[strlen(output)-2],2)==0) ||
-					 (strncmp("ge", &output[strlen(output)-2],2)==0)) { strcat(output, "n"); }
+					 (strncmp("ge", &output[strlen(output)-2],2)==0)) { append(output, "n"); }
 			}
 
 		} else if (strncmp("NOUN_", tmp, 5)==0) {
@@ -401,7 +429,7 @@ char* german(const char *line) {
 			if (!strcmp("NOUN_CORPSE", tmp)==0) {
 				int beginning_of_appended_word = strlen(output);
 				// print_state();
-				strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+				append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
 				if (noun_lowercase) {
 					noun_lowercase = 0;
 					output[beginning_of_appended_word] = tolower(output[beginning_of_appended_word]);
@@ -416,8 +444,8 @@ char* german(const char *line) {
 			if (strncmp("NOUN_TIN", tmp, 8)==0) { partikel_of_as_mit = 1; }
 
 			if (strlen(made_from)>0) {
-				strcat(output, " aus ");
-				strcat(output, get_wort(made_from, akkusativ, maskulin|feminin|neutrum, n_singular));
+				append(output, " aus ");
+				append(output, get_wort(made_from, akkusativ, maskulin|feminin|neutrum, n_singular));
 			}
 		} else if (strncmp("VERB_",tmp,4)==0) {
 #ifdef DEBUG
@@ -425,11 +453,11 @@ char* german(const char *line) {
 #endif
 			if (subject_person==0) { subject_person = zweitePerson; }
 			if (subject_numerus==0) { subject_numerus = n_singular; } // change to players choice
-			strcat(output, get_verb(tmp, subject_person, subject_numerus));
+			append(output, get_verb(tmp, subject_person, subject_numerus));
 
 		} else if (strncmp("ADJEKTIV_", tmp, 9)==0) {
 			//finde_naechstes_sustantiv(line+pos);
-			strcat(output, get_adjektiv(tmp, c_casus, c_genus, c_numerus, c_artikel));
+			append(output, get_adjektiv(tmp, c_casus, c_genus, c_numerus, c_artikel));
 
 		} else if (strncmp("PARTIKEL_", tmp, 9)==0) {
 			//finde_naechstes_sustantiv(line+pos);
@@ -440,18 +468,18 @@ char* german(const char *line) {
 					//printf("%s\n",line+pos);
 					//print_state();
 					c_casus = genitiv;
-					strcat(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus));
+					append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus));
 				} else {
 					partikel_of_as_mit = 0;
-					strcat(output, "mit");
+					append(output, "mit");
 					c_casus = nominativ; /* FIX ME: mit + Dativ-E hört sich das sehr seltsam an. */ 
 				}
 			} else {
-				strcat(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+				append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
 			}
 		} else if (strncmp("MADE_OF_", tmp, 8)==0) {
 			if (open_parenthesis) {
-				strcat(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular));
+				append(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular));
 			} else {
 				strcpy(made_from, tmp);
 				insert_char = 0;
@@ -459,11 +487,14 @@ char* german(const char *line) {
 		} else if (strcmp("MODIFIER_MEAT", tmp)==0) {
 			modifier_meat = 1;
 			insert_char = 0;
+		} else if (strcmp("SATZKLAMMER", tmp)==0) {
+			append(output, verb_praeverb);
+
 		} else {
 #ifdef DEBUG
 			printf("Nichts zu holen mit %s\n", tmp);
 #endif
-			strcat(output, tmp);
+			append(output, tmp);
 		}
 
 #ifdef DEBUG
