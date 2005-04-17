@@ -548,7 +548,7 @@ boolean polyspot;
 		mon->weapon_check = NO_WEAPON_WANTED;
 		obj_extract_self(obj);
 		if (cansee(mon->mx, mon->my)) {
-		    pline("%s drops %s.", Monnam(mon),
+		    pline("SUBJECT %s VERB_DROP OBJECT %s SATZKLAMMER.", Monnam(mon),
 			  distant_name(obj, doname));
 		    newsym(mon->mx, mon->my);
 		}

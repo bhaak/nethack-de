@@ -563,7 +563,7 @@ boolean is_pet;		/* If true, pet should keep wielded/worn items */
 			otmp->owornmask = 0L;
 		}
 		if (is_pet && cansee(omx, omy) && flags.verbose)
-			pline("%s drops %s.", Monnam(mtmp),
+			pline("SUBJECT %s VERB_DROP OBJECT %s SATZKLAMMER.", Monnam(mtmp),
 					distant_name(otmp, doname));
 		if (flooreffects(otmp, omx, omy, "fall")) continue;
 		place_object(otmp, omx, omy);
@@ -579,7 +579,7 @@ boolean is_pet;		/* If true, pet should keep wielded/worn items */
 		register long g = mtmp->mgold;
 		(void) mkgold(g, omx, omy);
 		if (is_pet && cansee(omx, omy) && flags.verbose)
-			pline("%s drops %ld gold piece%s.", Monnam(mtmp),
+			pline("SUBJECT %s VERB_DROP %ld NOUN_GOLD_PIECE%s.", Monnam(mtmp),
 				g, plur(g));
 		mtmp->mgold = 0L;
 	}
