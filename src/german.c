@@ -8,6 +8,23 @@
 
 //#define DEBUG 1
 
+/*
+
+EBNF
+satz       = subject verb [ object ];
+substantiv = artikel [ adjektiv ] "NOUN_.*" ;
+subjekt    = ( "SUBJECT" | "SUBJECT_IM_SATZ" ) ( personal_pronomen | substantiv ) ;
+objekt     = "OBJECT" ( personal_pronomen | substantiv ) ;
+personal_pronomen = "PRONOMEN_PERSONAL"
+adjektiv   = "ADJEKTIV_.*"
+artikel    = "ARTIKEL_BESTIMMTER" | "ARTIKEL_UNBESTIMMTER" | "PRONOMEN_POSSESSIV" | "PRONOMEN_KEIN"
+
+SUBJECT:				 Marks the subject and the beginning of a sentence
+SUBJECT_IM_SATZ: Marks the subject
+OBJECT: Direct object of the sentence
+VERB_.*: Predicate
+*/
+
 enum Genus subject_genus = 0;
 enum Numerus subject_numerus = 0;
 enum Person subject_person = 0;
@@ -382,12 +399,13 @@ char* german(const char *line) {
 		if (strncmp("PRONOMEN_",tmp, 9)==0) {
 			append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
 
-		} else if (strcmp("SUBJECT",tmp)==0) {
+		} else if (strncmp("SUBJECT",tmp,7)==0) {
 			clear_subject();
 			c_casus = nominativ;
 			finde_naechstes_subject(line+pos);
 			insert_char = 0;
-			beginning_of_sentence = 1;
+			/* SUBJECT marks also beginning of the sentence */
+			if (strcmp("SUBJECT_IM_SATZ",tmp)!=0) { beginning_of_sentence = 1; }
 
 		} else if (strcmp("OBJECT",tmp)==0) {
 			finde_naechstes_objekt(line+pos);
