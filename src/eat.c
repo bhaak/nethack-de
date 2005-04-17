@@ -723,8 +723,8 @@ register struct permonst *ptr;
 		debugpline("Trying to give poison resistance");
 #endif
 		if(!(HPoison_resistance & FROMOUTSIDE)) {
-			You_feel(Poison_resistance ?
-				 "especially healthy." : "healthy.");
+			Du_fuehlst_dich("%s", Poison_resistance ?
+					"außergewöhnlich gesund." : "gesund.");
 			HPoison_resistance |= FROMOUTSIDE;
 		}
 		break;
@@ -822,7 +822,7 @@ register int pm;
 			set_itimeout(&HInvis, (long)rn1(100, 50));
 			if (!Blind && !BInvis) self_invis_message();
 		} else {
-			if (!(HInvis & INTRINSIC)) You_feel("hidden!");
+			if (!(HInvis & INTRINSIC)) Du_fuehlst_dich("versteckt!");
 			HInvis |= FROMOUTSIDE;
 			HSee_invisible |= FROMOUTSIDE;
 		}
@@ -873,10 +873,10 @@ register int pm;
 		Your("velocity suddenly seems very uncertain!");
 		if (HFast & INTRINSIC) {
 			HFast &= ~INTRINSIC;
-			You("seem slower.");
+			You("VERB_SEEM langsamer SATZKLAMMER.");
 		} else {
 			HFast |= FROMOUTSIDE;
-			You("seem faster.");
+			You("VERB_SEEM schneller SATZKLAMMER.");
 		}
 		break;
 	    case PM_LIZARD:

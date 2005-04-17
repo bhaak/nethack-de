@@ -160,6 +160,14 @@ START_TEST (test_level_sounds) {
 
 START_TEST (test_verbs) {
 	char *text[][2] = {
+		{"SUBJECT PRONOMEN_PERSONAL VERB_DACHTEST, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV RING_UNIDENTIFIED_OPAL NOUN_RING im Spülbecken verloren VERB_HAETTEST, aber da liegt er doch!",
+		 "Du dachtest, dass du deinen Opalring im Spülbecken verloren hättest, aber da liegt er doch!"},
+		{"SUBJECT ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_BRONZE NOUN_RING VERB_LANDEN im Ausguss.",
+		 "Ein Bronzering landet im Ausguss."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_SEEM schneller SATZKLAMMER.",
+		 "Du scheinst schneller zu sein."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_SICH_FUEHLEN OBJECT PRONOMEN_PERSONAL außergewöhnlich gesund.",
+		 "Du fühlst dich außergewöhnlich gesund."},
 		{"NOUN_OOPS! SUBJECT ARTIKEL_BESTIMMTER 2 NOUN_GEMs VERB_OBJECT_DROPS zu Boden!",
 		 "Hoppla! Die 2 Schmucksteine fallen zu Boden!"},
 		{"SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_POT_SKY_BLUE NOUN_POTION VERB_OBJECT_DROPS zu Boden.",
