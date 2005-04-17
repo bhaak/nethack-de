@@ -140,7 +140,29 @@ You_feel VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_FEEL ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "You feel ", line), VA_ARGS);
+	VA_END();
+}
+
+/*VARARGS1*/
+void
+Du_spuerst VA_DECL(const char *,line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_SPUERST ", line), VA_ARGS);
+	VA_END();
+}
+
+/*VARARGS1*/
+void
+Du_fuehlst_dich VA_DECL(const char *,line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp,
+		"SUBJECT PRONOMEN_PERSONAL VERB_SICH_FUEHLEN OBJECT PRONOMEN_PERSONAL ",
+		line), VA_ARGS);
 	VA_END();
 }
 
