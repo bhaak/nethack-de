@@ -1,9 +1,8 @@
+require 'set'
 
-require 'set' #
-
-# where possible, use the genitive-e ("des Zauberbuches" vs. "des Zauberbuchs"
+# use the genitive-e ("des Zauberbuches" vs. "des Zauberbuchs"
 $genitiv_e = true;
-# where possible, use the dativ-e ("dem Zauberbuche" vs. "dem Zauberbuch"
+# use the dativ-e ("dem Zauberbuche" vs. "dem Zauberbuch"
 $dativ_e = true;
 
 $nom = "nominativ";
@@ -55,7 +54,7 @@ struct adjektiv {
 };
 "
 
-puts defs
+  puts defs
 end
 
 class Adjektiv
@@ -112,7 +111,8 @@ class Adjektiv
 
 end
 
-def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung, pluralstamm, nominativ_plural_endung, geschlecht)
+def dekliniere_substantiv(bezeichner, singularstamm,
+                          genitiv_singular_endung, pluralstamm, nominativ_plural_endung, geschlecht)
   casus = Hash.new
   casus[$nom] = Hash.new
   casus[$gen] = Hash.new
@@ -406,10 +406,14 @@ class Verb
   def initialize(bezeichner, stamm="", praeverb="", formen=['st','t','t','en'], casus=$akk)
     @bezeichner = bezeichner;
 
+    erweiterung = ""
+    # e-Erweiterung, wenn Stamm auf d oder t endet
+    if stamm=~ /[dt]$/ then erweiterung = "e" end
+
     @konjugation = Hash.new
-    @konjugation['zweite_singular'] = stamm+formen[0]
-    @konjugation['dritte_singular'] = stamm+formen[1]
-    @konjugation['zweite_plural']   = stamm+formen[2]
+    @konjugation['zweite_singular'] = stamm+erweiterung+formen[0]
+    @konjugation['dritte_singular'] = stamm+erweiterung+formen[1]
+    @konjugation['zweite_plural']   = stamm+erweiterung+formen[2]
     @konjugation['dritte_plural']   = stamm+formen[3]
     @praeverb = praeverb
     @casus = casus
@@ -432,9 +436,12 @@ end
 def ausgabe_verbs
   puts "\nstruct verb verben[] = {"
   [
+    konjugiere_verb("VERB_SICH_FUEHLEN","fühl"),
+    konjugiere_verb("VERB_MERKEN","merk"),
+    konjugiere_verb("VERB_LANDEN","land"),
+    "",
     konjugiere_verb("VERB_FEEL","spür"),
     konjugiere_verb("VERB_HEAR","hör"),
-    konjugiere_verb("VERB_MERKEN","merk"),
     konjugiere_verb("VERB_SMELL","riech"),
     konjugiere_verb("VERB_MISS","verfehl"),
     konjugiere_verb("VERB_KILL","töte"),
@@ -454,6 +461,10 @@ def ausgabe_verbs
     Verb.new("VERB_EAT", "", "auf", ["isst", "isst", "esst","essen"]),
     Verb.new("VERB_DROP", "", "fallen", ["lässt", "lässt", "lasst","lassen"]),    # "You drop a potion."
     Verb.new("VERB_OBJECT_DROPS", "", "", ["fällst", "fällt", "fallt", "fallen"]), # e.g "A potion drops to the floor."
+    Verb.new("VERB_SEEM","","zu sein", ["scheinst", "scheint","scheint", "scheinen"]),
+    "",
+    Verb.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
+    Verb.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
     "",
     Verb.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
   ].each { |v|   
@@ -761,7 +772,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_BLUE_JELLY"
     #dekliniere_substantiv("NOUN_SPOTTED_JELLY"
     #dekliniere_substantiv("NOUN_OCHRE_JELLY"
-    #dekliniere_substantiv("NOUN_KOBOLD"
+    dekliniere_substantiv("NOUN_KOBOLD","Kobold","es","Kobold","e","maskulin"),
     #dekliniere_substantiv("NOUN_LARGE_KOBOLD"
     #dekliniere_substantiv("NOUN_KOBOLD_LORD"
     #dekliniere_substantiv("NOUN_KOBOLD_SHAMAN"
@@ -1026,7 +1037,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GIANT_EEL"
     #dekliniere_substantiv("NOUN_ELECTRIC_EEL"
     #dekliniere_substantiv("NOUN_KRAKEN"
-    #dekliniere_substantiv("NOUN_NEWT"
+    dekliniere_substantiv("NOUN_NEWT","Molch","es","Molch","e","maskulin"),
     #dekliniere_substantiv("NOUN_GECKO"
     #dekliniere_substantiv("NOUN_IGUANA"
     #dekliniere_substantiv("NOUN_BABY_CROCODILE"
