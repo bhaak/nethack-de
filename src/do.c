@@ -255,11 +255,11 @@ register struct obj *obj;
 	register struct obj *otmp,*otmp2;
 	register boolean ideed = TRUE;
 
-	You("VERB_DROP OBJECT %s down the drain SATZKLAMMER.", doname(obj));
+	pline("SUBJECT %s VERB_LANDEN im Ausguss.", doname(obj));
 	obj->in_use = TRUE;	/* block free identification via interrupt */
 	switch(obj->otyp) {	/* effects that can be noticed without eyes */
 	    case RIN_SEARCHING:
-		You("thought your %s got lost in the sink, but there it is!",
+		You("VERB_DACHTEST, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV %s im Spülbecken verloren VERB_HAETTEST, aber da liegt er doch!",
 			xname(obj));
 		goto giveback;
 	    case RIN_SLOW_DIGESTION:
