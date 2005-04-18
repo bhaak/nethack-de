@@ -952,7 +952,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_MONKEY"
     #dekliniere_substantiv("NOUN_APE"
     #dekliniere_substantiv("NOUN_OWLBEAR"
-    #dekliniere_substantiv("NOUN_YETI"
+    dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
     #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
     #dekliniere_substantiv("NOUN_SASQUATCH"
     #dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE"
@@ -963,7 +963,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_HUMAN_ZOMBIE"
     #dekliniere_substantiv("NOUN_ETTIN_ZOMBIE"
     #dekliniere_substantiv("NOUN_GIANT_ZOMBIE"
-    #dekliniere_substantiv("NOUN_GHOUL"
+    dekliniere_substantiv("NOUN_GHOUL","Ghul","s","Ghul","e","maskulin"),
     #dekliniere_substantiv("NOUN_SKELETON"
     #dekliniere_substantiv("NOUN_STRAW_GOLEM"
     #dekliniere_substantiv("NOUN_PAPER_GOLEM"
