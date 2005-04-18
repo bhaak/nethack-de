@@ -6,7 +6,7 @@
 #include "german.h"
 #define TBUFSZ 300
 
-//#define DEBUG 1
+#define DEBUG 1
 
 /*
 
@@ -45,9 +45,9 @@ enum Numerus c_numerus = 0;
 enum Person  c_person = 0;
 enum Artikel c_artikel = 0;
 
-int corpse = 0;
+int modifier_corpse = 0;
+
 int partikel_of_as_mit = 0;
-int modifier_meat = 0;
 int beginning_of_sentence = 0;
 const char* verb_praeverb = "";
 
@@ -82,7 +82,7 @@ void print_state()
 	case unbestimmter: printf("unbestimmter Artikel "); break;
 	default: printf("kein Artikel ");
 	}
-	printf("corpse: %d", corpse);
+	printf("modifier_corpse: %d ", modifier_corpse);
 	printf("\n");
 }
 
@@ -211,9 +211,7 @@ int finde_naechstes_objekt(const char* text) {
 			printf("token nach NOUN_ -%s- %d\n",tmp2, strcmp("NOUN_CORPSE", tmp2));
 #endif
 			analyze_this_as_object(tmp);
-			if (strcmp(tmp2, "NOUN_CORPSE")==0) {
-				corpse = 1;
-			}
+
 			return 0;
 		}
 	}
@@ -337,6 +335,18 @@ int append(char* output, const char* input) {
 	}
 }
 
+void to_lowercase(char* string, int pos) {
+	string[pos] = tolower(string[pos]);
+}
+
+int append_kompositum(char* output, const char* firstpart, const char* secondpart) {
+	// TODO get Fugenelement for input
+	append(output, get_wort(firstpart, nominativ, maskulin|feminin|neutrum, n_singular));
+	int pos = strlen(output);
+	append(output, get_wort(secondpart, c_casus, maskulin|feminin|neutrum, n_singular|n_plural));
+	to_lowercase(output, pos);
+}
+
 char output[TBUFSZ];
 
 char* german(const char *line) {
@@ -348,6 +358,7 @@ char* german(const char *line) {
 
 	int pos=0;
 	char tmp[TBUFSZ];
+	char tmp2[TBUFSZ];
 	int insert_char = 1;
 	int open_parenthesis = 0;
 	char made_from[TBUFSZ] = "";
@@ -410,12 +421,7 @@ char* german(const char *line) {
 		} else if (strcmp("OBJECT",tmp)==0) {
 			finde_naechstes_objekt(line+pos);
 			insert_char = 0;
-
-			if (corpse) {
-				append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, c_numerus));
-				verb_do_casus = genitiv; c_casus = genitiv;
-				insert_char = 1;
-			}
+			
 		} else if (strncmp("ARTIKEL_", tmp, 8)==0) {
 			//finde_naechstes_sustantiv(line+pos);
 
@@ -442,22 +448,31 @@ char* german(const char *line) {
 			}
 
 		} else if (strncmp("NOUN_", tmp, 5)==0) {
-			//printf("NOUN_: %s\n", tmp);
-			//print_state();
-			if (!strcmp("NOUN_CORPSE", tmp)==0) {
+			printf("NOUN_: %s\n", tmp);
+			print_state();
+			//#if DEBUG
+			printf("token nach NOUN_: %s -%s- %d\n",tmp,tmp2, strncmp("NOUN_CORPSE", tmp2,11));
+			//#endif
+			print_state();
+
+			//if ((!strncmp("NOUN_CORPSE", tmp,11)==0)||(!strncmp("NOUN_MEAT",tmp,9)==0)) {
+			//if (!strncmp("NOUN_MEAT",tmp,9)==0) {
 				int beginning_of_appended_word = strlen(output);
 				// print_state();
-				append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+
+				next_token(line, tmp2, pos+1);
+				if (strncmp(tmp2, "NOUN_MEAT",9)==0) {
+					append_kompositum(output, tmp, "NOUN_MEAT");
+					insert_char = 0;
+					pos += 9;
+				} else {
+					append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+				}
+
 				if (noun_lowercase) {
 					noun_lowercase = 0;
 					output[beginning_of_appended_word] = tolower(output[beginning_of_appended_word]);
 				}
-
-				if (corpse) {
-					corpse = 0;
-					insert_char = 0;
-				}
-			}
 			
 			if (strncmp("NOUN_TIN", tmp, 8)==0) { partikel_of_as_mit = 1; }
 
@@ -502,9 +517,6 @@ char* german(const char *line) {
 				strcpy(made_from, tmp);
 				insert_char = 0;
 			}
-		} else if (strcmp("MODIFIER_MEAT", tmp)==0) {
-			modifier_meat = 1;
-			insert_char = 0;
 		} else if (strcmp("SATZKLAMMER", tmp)==0) {
 			append(output, verb_praeverb);
 

@@ -20,8 +20,10 @@ START_TEST (test_tincontent)
 {
 	char *text[][2] = {{"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH.",
 											"j - eine nicht verfluchte Dose mit Spinat."},
-										 {"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF MODIFIER_MEAT NOUN_FOX.",
-											"j - eine nicht verfluchte Dose mit Fuchsfleisch."}};
+										 {"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_FOX NOUN_MEAT.",
+											"j - eine nicht verfluchte Dose mit Fuchsfleisch."},
+										 {"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_COYOTE NOUN_MEAT.",
+											"j - eine nicht verfluchte Dose mit Kojotenfleisch."}};
 
 	check_strings(text, sizeof(text)/8);
 }
@@ -71,6 +73,12 @@ START_TEST (test_spellbooks) {
 
 START_TEST (test_corpses) {
 	char *text[][2] = {
+		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT 2 ADJEKTIV_UNCURSED NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
+		 "Du lässt die sterblichen Überreste von 2 nicht verfluchten Dingos fallen."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT 2 NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
+		 ""},
+		{"V - 2 NOUN_DINGO NOUN_CORPSEs",
+		 ""},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT ARTIKEL_UNBESTIMMTER NOUN_JACKAL NOUN_CORPSE.",
 		 "Du siehst hier die sterblichen Überreste eines Schakals."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT 2 NOUN_LICHENs NOUN_CORPSE.", 
@@ -199,7 +207,7 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-  tcase_add_test(tc_core, test_verbs);
+	tcase_add_test(tc_core, test_verbs);
 	tcase_add_test(tc_core, test_linking_elements);
 	tcase_add_test(tc_core, test_wands);
   tcase_add_test(tc_core, test_spellbooks);
