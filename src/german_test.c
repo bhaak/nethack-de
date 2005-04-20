@@ -73,19 +73,27 @@ START_TEST (test_spellbooks) {
 
 START_TEST (test_corpses) {
 	char *text[][2] = {
-		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT 2 ADJEKTIV_UNCURSED NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
+		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 ADJEKTIV_UNCURSED NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
 		 "Du lässt die sterblichen Überreste von 2 nicht verfluchten Dingos fallen."},
-		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT 2 NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
-		 ""},
-		{"V - 2 NOUN_DINGO NOUN_CORPSEs",
-		 ""},
-		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT ARTIKEL_UNBESTIMMTER NOUN_JACKAL NOUN_CORPSE.",
+		{"a - MODIFIER_CORPSE NOUN_COYOTE NOUN_CORPSE",
+		 "a - die sterblichen Überreste eines Kojoten"},
+		{"b - MODIFIER_CORPSE NOUN_FOX NOUN_CORPSE",
+		 "b - die sterblichen Überreste eines Fuchses"},
+		{"c - MODIFIER_CORPSE 2 NOUN_FOX NOUN_CORPSEs",
+		 "c - die sterblichen Überreste von 2 Füchsen"},
+		//{"d - MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER partly eaten NOUN_FOX NOUN_CORPSE",
+		// "c - die sterblichen Überreste von einem teilweise aufgegessen Fuchs"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 ADJEKTIV_UNCURSED NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
+		 "Du lässt die sterblichen Überreste von 2 nicht verfluchten Dingos fallen."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
+		 "Du lässt die sterblichen Überreste von 2 Dingos fallen."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER NOUN_JACKAL NOUN_CORPSE.",
 		 "Du siehst hier die sterblichen Überreste eines Schakals."},
-		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT 2 NOUN_LICHENs NOUN_CORPSE.", 
+		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT MODIFIER_CORPSE 2 NOUN_LICHEN NOUN_CORPSEs.", 
 		 "Du siehst hier die sterblichen Überreste von 2 Flechten."},
 	// SUBJECT PRONOMEN_PERSONAL finish eating OBJECT ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE"
-		{"SUBJECT PRONOMEN_PERSONAL VERB_EAT OBJECT ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE",
-		 ""}};
+		{"SUBJECT PRONOMEN_PERSONAL VERB_EAT OBJECT MODIFIER_CORPSE ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE",
+		 "Du isst die sterblichen Überreste des Goblins"}};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
@@ -207,18 +215,18 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-	tcase_add_test(tc_core, test_verbs);
+	/*tcase_add_test(tc_core, test_verbs);
 	tcase_add_test(tc_core, test_linking_elements);
 	tcase_add_test(tc_core, test_wands);
   tcase_add_test(tc_core, test_spellbooks);
   tcase_add_test(tc_core, test_potions);
   tcase_add_test(tc_core, test_called_named_labeled);
-  tcase_add_test(tc_core, test_corpses);
   tcase_add_test(tc_core, test_level_sounds);
   tcase_add_test(tc_core, test_tools);
   tcase_add_test(tc_core, test_passiv);
-  tcase_add_test(tc_core, test_complete_sentences);
-  tcase_add_test(tc_core, test_tincontent);
+  tcase_add_test(tc_core, test_complete_sentences);*/
+  tcase_add_test(tc_core, test_corpses);
+	//tcase_add_test(tc_core, test_tincontent);
 
   return s;
 }

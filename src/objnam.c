@@ -712,6 +712,9 @@ ring:
 		if (obj->oeaten)
 		    Strcat(prefix, "partly eaten ");
 		if (obj->otyp == CORPSE) {
+				Strcpy(tmpbuf, prefix);
+				Strcpy(prefix,"MODIFIER_CORPSE ");
+				Strcat(prefix, tmpbuf);
 		    if (mons[obj->corpsenm].geno & G_UNIQ) {
 			Sprintf(prefix, "%s%s ",
 				(type_is_pname(&mons[obj->corpsenm]) ?
