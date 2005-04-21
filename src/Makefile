@@ -740,7 +740,7 @@ german.h: generate_german.rb
 	ruby generate_german.rb >german.h
 german.o: german.c german.h
 german_test: german_test.c german.o german.h
-	$(CC) $(CFLAGS) german_test.c -lcheck -o german_test german.o
+	$(CC) -Wall $(CFLAGS) german_test.c -lcheck -o german_test german.o
 hack.o: hack.c $(HACK_H)
 hacklib.o: hacklib.c $(HACK_H)
 invent.o: invent.c $(HACK_H)
