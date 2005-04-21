@@ -175,15 +175,6 @@ int finde_naechstes_subject(const char* text) {
 			printf("finde_naechstes_subject: gefundenes subjekt: -%s-\n",tmp);
 #endif
 
-			next_token(text,tmp2,i+1);
-			if (strncmp(tmp2, "NOUN_CORPSE",11)==0) {
-				if (strncmp(tmp2, "NOUN_CORPSEs",12)==0) {
-					modifier_corpse = 2; 
-				} else {
-					modifier_corpse = 1; 
-				}
-			} 
-
 			return 0;
 		} else {
 			i++;
@@ -222,19 +213,7 @@ int finde_naechstes_objekt(const char* text) {
 			
 			return 0;
 		} else if (strncmp(tmp, "NOUN_",5)==0) {
-#if DEBUG
-			printf("token nach NOUN_ -%s- %d\n",tmp2, strcmp("NOUN_CORPSE", tmp2));
-#endif
 			analyze_this_as_object(tmp);
-
-			next_token(text,tmp2,i+1);
-			if (strncmp(tmp2, "NOUN_CORPSE",11)==0) {
-				if (strncmp(tmp2, "NOUN_CORPSEs",12)==0) {
-					modifier_corpse = 2; 
-				} else {
-					modifier_corpse = 1; 
-				}
-			}
 
 			return 0;
 		} else {
@@ -336,18 +315,40 @@ int next_token(const char* input, char* output, int pos) {
 #ifdef DEBUG
 	printf("next_token: -%s-\n", input+i);
 #endif
-
-	if (!isspace(input[i])) {
-		while (isalpha(input[i])||input[i]=='_') {
-			output[j++] = input[i++];
+	//do {
+		if (!isspace(input[i])) {
+			while (isalpha(input[i])||input[i]=='_') {
+				output[j++] = input[i++];
+			}
 		}
-	}
-	output[j] = '\0';
+		output[j] = '\0';
+		//printf("output: %s strlen: %d\n",output, strlen(output));
+		/*if (strlen(output)==0) { i++; }
+			} while (strlen(output)==0);*/
 
 #ifdef DEBUG
 	printf("next_token return: %s\n", output);
 #endif
 	return (strlen(output)>0);
+}
+
+/* returns true, when the token text is found within input */
+int find_token(const char* text, const char* input) {
+	int i=0;
+	char tmp[TBUFSZ];
+	
+	//printf("\nSchleife\n");
+
+	while (i<strlen(input)) {
+		next_token(input,tmp, i);
+		//printf("text: -%s- input: -%s-, tmp: -%s- i: %d\n", text, input, tmp, i);
+		if (strcmp(text, tmp)==0) { return 1;}
+		i += strlen(tmp);
+		if (strlen(tmp)==0) { i++;}
+	}
+	//printf("Schleife Ende \n");
+	//printf("return 0\n");
+	return 0;
 }
 
 int append(char* output, const char* input) {
@@ -448,43 +449,9 @@ char* german(const char *line) {
 			/* SUBJECT marks also beginning of the sentence */
 			if (strcmp("SUBJECT_IM_SATZ",tmp)!=0) { beginning_of_sentence = 1; }
 
-			if (modifier_corpse) {
-				append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, n_singular|n_plural));
-				if (modifier_corpse == 1) {
-					c_casus = genitiv; c_numerus = n_singular;
-					if (!strncmp("ARTIKEL_",line+pos+1,7)==0) {
-						append(output, " ");
-						append(output, get_wort("ARTIKEL_UNBESTIMMTER", c_casus, c_genus, c_numerus));
-					}
-				} else {
-					c_casus = dativ; c_numerus = n_plural;
-					append(output, " von");
-				}
-				
-				modifier_corpse = 0;
-				insert_char = 1;
-			}
-
 		} else if (strcmp("OBJECT",tmp)==0) {
 			finde_naechstes_objekt(line+pos);
 			insert_char = 0;
-
-			if (modifier_corpse) {
-				append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, n_singular|n_plural));
-				if (modifier_corpse == 1) {
-					c_casus = genitiv; c_numerus = n_singular;
-					if (!strncmp("ARTIKEL_",line+pos+1,7)==0) {
-						append(output, " ");
-						append(output, get_wort("ARTIKEL_UNBESTIMMTER", c_casus, c_genus, c_numerus));
-					}
-				} else {
-					c_casus = dativ; c_numerus = n_plural;
-					append(output, " von");
-				}
-				
-				modifier_corpse = 0;
-				insert_char = 1;
-			}
 
 		} else if (strncmp("ARTIKEL_", tmp, 8)==0) {
 			//finde_naechstes_sustantiv(line+pos);
@@ -510,8 +477,27 @@ char* german(const char *line) {
 					((strncmp("le", &output[strlen(output)-2],2)==0) ||
 					 (strncmp("ge", &output[strlen(output)-2],2)==0)) { append(output, "n"); }
 			}
+			
 		} else if (strncmp("NOUN_CORPSE", tmp, 11)==0) {
 			output[strlen(output)-1] = '\0';
+
+		} else if (strcmp("MODIFIER_CORPSE", tmp)==0) {
+			if (find_token("NOUN_CORPSE", line+pos)) { modifier_corpse = 1; }
+			else if (find_token("NOUN_CORPSEs", line+pos)) { modifier_corpse = 2; }
+
+			append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, n_singular|n_plural));
+			if (modifier_corpse == 1) {
+				c_casus = genitiv; c_numerus = n_singular;
+				if (!strncmp("ARTIKEL_",line+pos+1,7)==0) {
+					append(output, " ");
+					append(output, get_wort("ARTIKEL_UNBESTIMMTER", c_casus, c_genus, c_numerus));
+				}
+			} else {
+				c_casus = dativ; c_numerus = n_plural;
+				append(output, " von");
+			}
+			modifier_corpse = 0;
+			insert_char = 1;
 
 		} else if (strncmp("NOUN_", tmp, 5)==0) {
 #if DEBUG
