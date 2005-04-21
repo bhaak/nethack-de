@@ -1826,10 +1826,13 @@ boolean from_user;
 		register int l;
 
 		if (!bp || !*bp) goto any;
-		if (!strncmpi(bp, "an ", l=3) ||
-		    !strncmpi(bp, "a ", l=2)) {
+		if (!strncmpi(bp, "ein", l=2)) {
 			cnt = 1;
-		} else if (!strncmpi(bp, "the ", l=4)) {
+			/* FIXME: move following line, when all is translated */
+			do { bp++; } while(*(bp+l) != ' ');
+		} else if (!strncmpi(bp, "der ", l=4) ||
+		           !strncmpi(bp, "die ", l=4) ||
+		           !strncmpi(bp, "das ", l=4)) {
 			;	/* just increment `bp' by `l' below */
 		} else if (!cnt && digit(*bp) && strcmp(bp, "0")) {
 			cnt = atoi(bp);
@@ -1842,14 +1845,21 @@ boolean from_user;
 			while(digit(*bp)) bp++;
 			while(*bp == ' ') bp++;
 			l = 0;
-		} else if (!strncmpi(bp, "blessed ", l=8) ||
-			   !strncmpi(bp, "holy ", l=5)) {
+		} else if (!strncmpi(bp, "gesegnet", l=8) ||
+		     !strncmpi(bp, "geheiligt", l=9) ||
+			   !strncmpi(bp, "heilig", l=6)) {
 			blessed = 1;
-		} else if (!strncmpi(bp, "cursed ", l=7) ||
+			/* FIXME: move following line, when all is translated */
+			do { bp++; } while(*(bp+l) != ' ');
+		} else if (!strncmpi(bp, "verflucht", l=9) ||
 			   !strncmpi(bp, "unholy ", l=7)) {
 			iscursed = 1;
-		} else if (!strncmpi(bp, "uncursed ", l=9)) {
+			/* FIXME: move following line, when all is translated */
+			do { bp++; } while(*(bp+l) != ' ');
+		} else if (!strncmpi(bp, "nicht verflucht", l=15)) {
 			uncursed = 1;
+			/* FIXME: move following line, when all is translated */
+			do { bp++; } while(*(bp+l) != ' ');
 #ifdef INVISIBLE_OBJECTS
 		} else if (!strncmpi(bp, "invisible ", l=10)) {
 			isinvisible = 1;
@@ -1897,14 +1907,18 @@ boolean from_user;
 			very = 0;
 		} else if (!strncmpi(bp, "halb verspeis", l=13)) {
 			halfeaten = 1;
+			/* FIXME: move following line, when all is translated */
+			do { bp++; } while(*(bp+l) != ' ');
 		} else if (!strncmpi(bp, "historic ", l=9)) {
 			ishistoric = 1;
 		} else if (!strncmpi(bp, "diluted ", l=8)) {
 			isdiluted = 1;
 		} else if(!strncmpi(bp, "empty ", l=6)) {
 			contents = EMPTY;
-		} else break;
+		} else { pline("wishing, nicht erkannt: %s",bp); break; }
+		pline("wishing1, erkannt: %s",bp);
 		bp += l;
+		pline("wishing2, erkannt: %s",bp);
 	}
 	if(!cnt) cnt = 1;		/* %% what with "gems" etc. ? */
 	if (strlen(bp) > 1) {
@@ -2280,8 +2294,12 @@ srch:
 			uncursedf = 1;
 		} else if (!strncmpi(fp, "halb verspeis", l=13)) {
 			halfeatenf = 1;
-		} else break;
+		} else {
+			pline("wishing: unerkannt: %s\n",fp);
+			break;
+		}
 		fp += l;
+			pline("wishing: %s\n",fp);
 	    }
 
 	    for(f=ffruit; f; f = f->nextf) {
