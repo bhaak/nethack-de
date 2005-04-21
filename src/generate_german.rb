@@ -387,6 +387,10 @@ def ausgabe_adjectives
     dekliniere_adjektiv("ADJEKTIV_UNCURSED","nicht verflucht"),
     "  /* blessed mit geheiligt oder gesegnet uebersetzen? */",
     dekliniere_adjektiv("ADJEKTIV_BLESSED","geheiligt"),
+    "",
+    "/* sonstige Adjektive */",
+    dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
+    ""
   ].each { |s| 
     s.each { |a|
       if a.is_a? String then

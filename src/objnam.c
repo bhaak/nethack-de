@@ -710,7 +710,7 @@ ring:
 		break;
 	case FOOD_CLASS:
 		if (obj->oeaten)
-		    Strcat(prefix, "partly eaten ");
+		    Strcat(prefix, "halb ADJEKTIV_EATEN ");
 		if (obj->otyp == CORPSE) {
 				Strcpy(tmpbuf, prefix);
 				Strcpy(prefix,"MODIFIER_CORPSE ");
@@ -720,7 +720,7 @@ ring:
 				(type_is_pname(&mons[obj->corpsenm]) ?
 					"" : "the "),
 				s_suffix(mons[obj->corpsenm].mname));
-			if (obj->oeaten) Strcat(prefix, "partly eaten ");
+			if (obj->oeaten) Strcat(prefix, "halb ADJEKTIV_EATEN ");
 		    } else {
 			Strcat(prefix, mons[obj->corpsenm].mname);
 			Strcat(prefix, " ");
@@ -1895,7 +1895,7 @@ boolean from_user;
 			   !strncmpi(bp, "rotted ", l=7)) {
 			eroded2 = 1 + very;
 			very = 0;
-		} else if (!strncmpi(bp, "partly eaten ", l=13)) {
+		} else if (!strncmpi(bp, "halb verspeis", l=13)) {
 			halfeaten = 1;
 		} else if (!strncmpi(bp, "historic ", l=9)) {
 			ishistoric = 1;
@@ -2278,7 +2278,7 @@ srch:
 			iscursedf = 1;
 		} else if (!strncmpi(fp, "uncursed ", l=9)) {
 			uncursedf = 1;
-		} else if (!strncmpi(fp, "partly eaten ", l=13)) {
+		} else if (!strncmpi(fp, "halb verspeis", l=13)) {
 			halfeatenf = 1;
 		} else break;
 		fp += l;

@@ -2,6 +2,8 @@
 //#include "german.h"
 
 #include <stdlib.h>
+#include <string.h>
+
 
 char* german(const char *line);
 
@@ -81,8 +83,8 @@ START_TEST (test_corpses) {
 		 "b - die sterblichen Überreste eines Fuchses"},
 		{"c - MODIFIER_CORPSE 2 NOUN_FOX NOUN_CORPSEs",
 		 "c - die sterblichen Überreste von 2 Füchsen"},
-		//{"d - MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER partly eaten NOUN_FOX NOUN_CORPSE",
-		// "c - die sterblichen Überreste von einem teilweise aufgegessen Fuchs"},
+		{"d - MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER halb ADJEKTIV_EATEN NOUN_FOX NOUN_CORPSE",
+		 "d - die sterblichen Überreste eines halb verspeisten Fuchses"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 ADJEKTIV_UNCURSED NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
 		 "Du lässt die sterblichen Überreste von 2 nicht verfluchten Dingos fallen."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
@@ -215,7 +217,7 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-	/*tcase_add_test(tc_core, test_verbs);
+	tcase_add_test(tc_core, test_verbs);
 	tcase_add_test(tc_core, test_linking_elements);
 	tcase_add_test(tc_core, test_wands);
   tcase_add_test(tc_core, test_spellbooks);
@@ -224,7 +226,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_level_sounds);
   tcase_add_test(tc_core, test_tools);
   tcase_add_test(tc_core, test_passiv);
-  tcase_add_test(tc_core, test_complete_sentences);*/
+  tcase_add_test(tc_core, test_complete_sentences);
   tcase_add_test(tc_core, test_corpses);
 	//tcase_add_test(tc_core, test_tincontent);
 
