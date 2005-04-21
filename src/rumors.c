@@ -153,7 +153,8 @@ int mechanism;
 	    else if (Blind) {
 		if (mechanism == BY_COOKIE)
 			pline(fortune_msg);
-		pline("What a pity that you cannot read it!");
+		//pline("What a pity that you cannot read it!");
+		pline("Wie schade, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL es nicht lesen VERB_CAN!");
 	    	return;
 	    }
 	}
@@ -173,7 +174,8 @@ int mechanism;
 		pline(fortune_msg);
 		/* FALLTHRU */
 	    case BY_PAPER:
-		pline("It reads:");
+		//pline("It reads:");
+		pline("Da steht:");
 		break;
 	}
 	pline("%s", line);
