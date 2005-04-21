@@ -2051,7 +2051,8 @@ tty_add_menu(window, glyph, identifier, ch, gch, attr, str, preselected)
 	newstr = buf;
 	newstr = german(newstr);
     } else
-	newstr = str;
+	newstr = german(str);
+	//newstr = str;
 
     item = (tty_menu_item *) alloc(sizeof(tty_menu_item));
     item->identifier = *identifier;
