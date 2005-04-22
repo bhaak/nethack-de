@@ -874,10 +874,10 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GREEN_DRAGON"
     #dekliniere_substantiv("NOUN_YELLOW_DRAGON"
     #dekliniere_substantiv("NOUN_STALKER"
-    #dekliniere_substantiv("NOUN_AIR_ELEMENTAL"
-    #dekliniere_substantiv("NOUN_FIRE_ELEMENTAL"
-    #dekliniere_substantiv("NOUN_EARTH_ELEMENTAL"
-    #dekliniere_substantiv("NOUN_WATER_ELEMENTAL"
+    dekliniere_substantiv("NOUN_AIR_ELEMENTAL",   "Luftelementar",   "es", "Luftelementar",   "e", "neutrum"),
+    dekliniere_substantiv("NOUN_FIRE_ELEMENTAL",  "Feuerelementar",  "es", "Feuerelementar",  "e", "neutrum"),
+    dekliniere_substantiv("NOUN_EARTH_ELEMENTAL", "Erdelementar",    "es", "Erdelementar",    "e", "neutrum"),
+    dekliniere_substantiv("NOUN_WATER_ELEMENTAL", "Wasserelementar", "es", "Wasserelementar", "e", "neutrum"),
     dekliniere_substantiv("NOUN_LICHEN", "Flechte", "", "Flechte", "en", "feminin"),
     #dekliniere_substantiv("NOUN_BROWN_MOLD"
     #dekliniere_substantiv("NOUN_YELLOW_MOLD"
