@@ -889,12 +889,12 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GNOME_LORD"
     #dekliniere_substantiv("NOUN_GNOMISH_WIZARD"
     #dekliniere_substantiv("NOUN_GNOME_KING"
-    #dekliniere_substantiv("NOUN_GIANT"
-    #dekliniere_substantiv("NOUN_STONE_GIANT"
-    #dekliniere_substantiv("NOUN_HILL_GIANT"
-    #dekliniere_substantiv("NOUN_FIRE_GIANT"
-    #dekliniere_substantiv("NOUN_FROST_GIANT"
-    #dekliniere_substantiv("NOUN_STORM_GIANT"
+    dekliniere_substantiv("NOUN_GIANT",       "Riese", "en", "Riese", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_STONE_GIANT", "Steinriese", "en", "Steinriese", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_HILL_GIANT",  "Hügelriese", "en", "Hügelriese", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_FIRE_GIANT",  "Feuerriese", "en", "Feuerriese", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_FROST_GIANT", "Frostriese", "en", "Frostriese", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_STORM_GIANT", "Strumriese", "en", "Strumriese", "en", "maskulin"),
     #dekliniere_substantiv("NOUN_ETTIN"
     #dekliniere_substantiv("NOUN_TITAN"
     #dekliniere_substantiv("NOUN_MINOTAUR"
