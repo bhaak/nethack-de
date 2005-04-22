@@ -635,6 +635,7 @@ Nachgestellte Teile wie "called","of"
 
 Es sind vermutlich einige Saetze mit separierten Verben nötig, wie ich das mache, weiss ich noch nicht.
 du finish eating the NOUN_LICHEN corpse.
+	Addendum: aktuelle Idee: SATZKLAMMER steht für den Platz, an dem dei seaprierten Teile hinkommen.
 
 
 Das ist Deutsch, also sollten die Objekte auch umkehrbar sein.
