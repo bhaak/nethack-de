@@ -670,7 +670,7 @@ boolean called;
 #ifdef STEED
 	if (do_saddle && (mtmp->misc_worn_check & W_SADDLE) &&
 	    !Blind && !Hallucination)
-	    Strcat(buf, "saddled ");
+	    Strcat(buf, "ADJEKTIV_SADDLED ");
 #endif
 	if (buf[0] != 0)
 	    has_adjectives = TRUE;

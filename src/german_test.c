@@ -158,6 +158,15 @@ START_TEST (test_complete_sentences) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_complete_sentences2) {
+	char *text[][2] = {
+		{"ARTIKEL_BESTIMMTER NOUN_PONY ist nicht ADJEKTIV_SADDLED.",
+		 "Das Pony ist nicht gesattelt."}
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
 START_TEST (test_passiv) {
 	char *text[][2] = {
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_FOX VERB_PASSIV_DESTROY!", 
@@ -227,6 +236,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_tools);
   tcase_add_test(tc_core, test_passiv);
   tcase_add_test(tc_core, test_complete_sentences);
+  tcase_add_test(tc_core, test_complete_sentences2);
   tcase_add_test(tc_core, test_corpses);
 	//tcase_add_test(tc_core, test_tincontent);
 

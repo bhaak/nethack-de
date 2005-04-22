@@ -257,7 +257,8 @@ mount_steed(mtmp, force)
 	/* Is this a valid monster? */
 	otmp = which_armor(mtmp, W_SADDLE);
 	if (!otmp) {
-	    pline("%s is not saddled.", Monnam(mtmp));
+	    //pline("%s is not saddled.", Monnam(mtmp));
+	    pline("%s ist nicht ADJEKTIV_SADDLED.", Monnam(mtmp));
 	    return (FALSE);
 	}
 	ptr = mtmp->data;

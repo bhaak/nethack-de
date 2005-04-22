@@ -390,6 +390,7 @@ def ausgabe_adjectives
     "",
     "/* sonstige Adjektive */",
     dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
+    dekliniere_adjektiv("ADJEKTIV_SADDLED","gesattelt"),
     ""
   ].each { |s| 
     s.each { |a|
