@@ -125,6 +125,10 @@ const char* get_wort(const char* typ, enum Casus c, enum Genus g, enum Numerus n
 	return typ;
 }
 
+const char* get_substantiv(const char* typ, enum Casus c, enum Numerus n) {
+	return get_wort(typ, c, maskulin|feminin|neutrum, n);
+}
+
 const char* get_adjektiv(const char* typ, enum Casus c, enum Genus g, enum Numerus n, enum Artikel a) {
 	int i=0;
 	while (adjektive[i].wort!=NULL) {
@@ -512,7 +516,11 @@ char* german(const char *line) {
 				insert_char = 0;
 				pos += 9;
 			} else {
-				append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+				append(output, get_substantiv(tmp, c_casus, c_numerus));
+#if DEBUG
+				print_state();
+				printf("NOUN_: neues output: %s, tmp: =%s=, getwort: %s\n", output, tmp, get_wort(tmp, c_casus, c_genus, c_numerus));
+#endif
 			}
 			
 			if (noun_lowercase) {
@@ -543,10 +551,16 @@ char* german(const char *line) {
 			if (strcmp("PARTIKEL_OF", tmp)==0) {
 				finde_naechstes_sustantiv(line+pos);
 				if (!partikel_of_as_mit) {
-					//print_state();
-					//printf("%s\n",line+pos);
 					c_casus = genitiv;
-					append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus));
+
+					/* only add the definite article if there isn't another article */
+					next_token(line, tmp2, pos+1);
+					if (!strncmp("ARTIKEL_", tmp2, 8)==0) {
+						append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus));
+					} else {
+						insert_char = 0;
+					}
+
 				} else {
 					partikel_of_as_mit = 0;
 					append(output, "mit");
