@@ -577,7 +577,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RING",      "Ring",           "es", "Ring",           "e",  "maskulin"),
     dekliniere_substantiv("NOUN_AMULET",    "Amulett",        "es", "Amulett",        "e",  "neutrum"),
     dekliniere_substantiv("NOUN_TOOL",      "Werkzeug",       "es", "Werkzeug",       "e",  "neutrum"),
-    "/* This is wrong. 'Essbares' should be inflected like a adjective */",
+    "/* This is wrong. 'Essbares' should be inflected like an adjective */",
     dekliniere_substantiv("NOUN_COMESTIBLE","Essbare",        "",   "Essbare",        "s",  "neutrum"),
     dekliniere_substantiv("NOUN_POTION",    "Trank",          "es", "Tränk",          "e",  "maskulin"),
     dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle",   "",   "Schriftrolle",   "en", "feminin"),
