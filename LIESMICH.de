@@ -1,0 +1,38 @@
+Der Versuch einer deutschen Übersetzung von Nethack.
+
+Ich lasse mich bei dieser Übersetzung von drei grundlegenden
+Prinzipien leiten:
+
+1. Wenn irgendwie möglich soll kein Code verändert werden.
+2. Übersetzt werden soll "so wörtlich wie möglich und so frei wie
+   nötig".
+3. Die Sprache soll modernes Deutsch sein, nur mit wenigen Anleihen 
+   an altertümliche Formen und Formulierungen.
+
+Erläuterungen und Begründungen zu den 
+zu 1: Der Idealfall ist, wenn nur Zeichenketten verändert werden
+      müssen und der umliegende Code unberührt bleibt. Das ist
+      natürlich nicht überall möglich, aber ich versuche, die
+      Eingriffe in den Quellkode so gering wie möglich zu halten.
+
+			Damit soll erreicht werden, dass die Anpassungen für Bugfixes
+      und Versionssprünge so klein wie möglich ausfallen sollen.
+
+zu 2: Gemäss dem alten Lehrerspruch, den wir immer im Lateinunterricht
+      hören durften.
+
+			
+
+zu 3: Es war zu Beginn doch sehr verlockend für mich, Nethack-de auf
+      alt zu trimmen. Doch - wie hübsch Worte nach ältester
+      Rechtschreibung wie z.B. "Thüre" "Medicin" auch aussehen mögen
+      und wie poetisch "Isegrimm" und "Aar" sich anhören - ich habe
+			mich dagegen entschieden.	
+
+			Einerseits hätte das mein Wissen und meine Fähigkeiten bei weitem
+      überstiegen und eine halbherzige Übersetzung will ich nun auf
+			keinen Fall abliefern.
+	
+			Andererseits wollte ich mit einer etwas moderneren Übersetzung
+      auch Fremdsprachlern erlauben, in den Genuss eines deutschen
+			Nethacks zu kommen.
