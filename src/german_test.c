@@ -220,12 +220,52 @@ START_TEST (test_tools) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+
+START_TEST (test_statues) {
+	char *text[][2] = {
+		{"a - ARTIKEL_UNBESTIMMTER NOUN_STATUE PARTIKEL_OF ARTIKEL_UNBESTIMMTER NOUN_DINGO",
+		 "a - eine Statue eines Dingos"},
+		{"b - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_FIGURINE PARTIKEL_OF ARTIKEL_UNBESTIMMTER NOUN_DINGO",
+		 "b - eine nicht verfluchte Statuette eines Dingos"}};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
+/* copy from invent.c */
+char *names[] = { 0,
+  "Illegal objects", "NOUN_WEAPONs", "NOUN_ARMOR", "NOUN_RINGs", "NOUN_AMULETs",
+  "NOUN_TOOLs", "NOUN_COMESTIBLEs", "NOUN_POTIONs", "NOUN_SCROLLs", "NOUN_SPELLBOOKs",
+  "NOUN_WANDs", "NOUN_COINs", "NOUN_GEMs", "NOUN_BOULDERs, NOUN_STATUEs", "Iron balls",
+  "Chains", "Venoms"
+};
+
+START_TEST (test_inventory_names) {
+	char *text[][2] = {
+		{names[ 2], "Waffen"},
+		{names[ 3], "Schutzbekleidung"},
+		{names[ 4], "Ringe"},
+		{names[ 5], "Amulette"},
+		{names[ 6], "Werkzeuge"},
+		{names[ 7], "Essbares"},
+		{names[ 8], "Tränke"},
+		{names[ 9], "Schriftrollen"},
+		{names[10], "Zauberbücher"},
+		{names[11], "Zauberstäbe"},
+		{names[12], "Münzen"},
+		{names[13], "Schmucksteine"},
+		{names[14], "Felsbrocken, Statuen"}
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
 Suite *test_suite(void)
 {
   Suite *s = suite_create("all tests");
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
+	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	tcase_add_test(tc_core, test_linking_elements);
 	tcase_add_test(tc_core, test_wands);
@@ -236,9 +276,10 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_tools);
   tcase_add_test(tc_core, test_passiv);
   tcase_add_test(tc_core, test_complete_sentences);
-  tcase_add_test(tc_core, test_complete_sentences2);
+  //tcase_add_test(tc_core, test_complete_sentences2);
   tcase_add_test(tc_core, test_corpses);
 	//tcase_add_test(tc_core, test_tincontent);
+	tcase_add_test(tc_core, test_inventory_names);
 
   return s;
 }
