@@ -294,8 +294,8 @@ register struct obj *obj;
 		/* If we use an() here we'd have to remember never to use */
 		/* it whenever calling doname() or xname(). */
 		if (typ == FIGURINE)
-		    Sprintf(eos(buf), " of a%s %s",
-			index(vowels,*(mons[obj->corpsenm].mname)) ? "n" : "",
+		    Sprintf(eos(buf), " PARTIKEL_OF ARTIKEL_UNBESTIMMTER %s",
+			//index(vowels,*(mons[obj->corpsenm].mname)) ? "n" : "",
 			mons[obj->corpsenm].mname);
 		break;
 	    case ARMOR_CLASS:
