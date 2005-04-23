@@ -562,8 +562,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_OBJ_DOOR", "Türe", "", "Türe", "en", "feminin"),
     dekliniere_substantiv("NOUN_WALLET", "Geldbörse", "", "Geldbörse", "en", "feminin"),
     dekliniere_substantiv("NOUN_MEAT", "Fleisch", "es", "", "e", "neutrum"),
+    dekliniere_substantiv("NOUN_LUCK", "Glück", "es", "Glück", "e", "neutrum"),
     "",
-    dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
     dekliniere_substantiv("NOUN_BAG", "Beutel", "s", "Beutel", "", "maskulin"),
     "",
     dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin"),
@@ -571,17 +571,133 @@ def ausgabe_nouns
 
     dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
 
-    dekliniere_substantiv("NOUN_WAND",      "Zauberstab",   "es", "Zauberstäb",   "e",  "maskulin"),
-    dekliniere_substantiv("NOUN_AMULET",    "Amulett",      "es", "Amulett",      "e",  "neutrum"),
-    dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle", "",   "Schriftrolle", "en", "feminin"),
-    dekliniere_substantiv("NOUN_POTION",    "Trank",        "es", "Tränk",        "e",  "maskulin"),
-    dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",   "es", "Zauberbüch",   "er", "neutrum"),
-    dekliniere_substantiv("NOUN_RING",      "Ring",         "es", "Ring",         "e",  "maskulin"),
-    "/* besser als Edelstein, Kleinod */",
-    dekliniere_substantiv("NOUN_GEM",       "Schmuckstein", "es", "Schmuckstein", "e",  "maskulin"),
-    dekliniere_substantiv("NOUN_TOOLS",       "Schmuckstein", "es", "Schmuckstein", "e",  "maskulin"),
+    dekliniere_substantiv("NOUN_WEAPON",    "Waffe",          "",   "Waffe",          "en", "feminin"),
+    #dekliniere_substantiv("NOUN_ARMOR",     "Rüstung",        "",   "Rüstung",      "en", "feminin"),
+    dekliniere_substantiv("NOUN_ARMOR",     "Schutzbekleidung", "",   "Schutzbekleidung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RING",      "Ring",           "es", "Ring",           "e",  "maskulin"),
+    dekliniere_substantiv("NOUN_AMULET",    "Amulett",        "es", "Amulett",        "e",  "neutrum"),
+    dekliniere_substantiv("NOUN_TOOL",      "Werkzeug",       "es", "Werkzeug",       "e",  "neutrum"),
+    "/* This is wrong. 'Essbares' should be inflected like a adjective */",
+    dekliniere_substantiv("NOUN_COMESTIBLE","Essbare",        "",   "Essbare",        "s",  "neutrum"),
+    dekliniere_substantiv("NOUN_POTION",    "Trank",          "es", "Tränk",          "e",  "maskulin"),
+    dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle",   "",   "Schriftrolle",   "en", "feminin"),
+    dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",     "es", "Zauberbüch",     "er", "neutrum"),
+    dekliniere_substantiv("NOUN_WAND",      "Zauberstab",     "es", "Zauberstäb",     "e",  "maskulin"),
+    dekliniere_substantiv("NOUN_COIN",      "Münze",          "",   "Münze",          "en", "feminin"),
+    "/* besser als Edelstein, Kleinod? */",
+    dekliniere_substantiv("NOUN_GEM",       "Schmuckstein",   "es", "Schmuckstein",   "e",  "maskulin"),
+    dekliniere_substantiv("NOUN_BOULDER",   "Felsbrocken",    "s",  "Felsbrocken",    "",   "maskulin"),
+    dekliniere_substantiv("NOUN_STATUE",    "Statue",         "",   "Statue",         "en", "feminin"),
     "",
-    dekliniere_substantiv("NOUN_BLINDFOLD", "Augenbinde",   "",   "Augenbinde",   "en", "feminin"),
+    "/* Weapons, identified */",
+    #dekliniere_substantiv("NOUN_ARROW"
+    #dekliniere_substantiv("NOUN_ELVEN_ARROW"
+    #dekliniere_substantiv("NOUN_ORCISH_ARROW"
+    #dekliniere_substantiv("NOUN_SILVER_ARROW"
+    #dekliniere_substantiv("NOUN_YA"
+    #dekliniere_substantiv("NOUN_CROSSBOW_BOLT"
+    #dekliniere_substantiv("NOUN_DART"
+    #dekliniere_substantiv("NOUN_SHURIKEN"
+    #dekliniere_substantiv("NOUN_BOOMERANG"
+    #dekliniere_substantiv("NOUN_SPEAR"
+    #dekliniere_substantiv("NOUN_ELVEN_SPEAR"
+    #dekliniere_substantiv("NOUN_ORCISH_SPEAR"
+    #dekliniere_substantiv("NOUN_DWARVISH_SPEAR"
+    #dekliniere_substantiv("NOUN_SILVER_SPEAR"
+    #dekliniere_substantiv("NOUN_JAVELIN"
+    #dekliniere_substantiv("NOUN_TRIDENT"
+    #dekliniere_substantiv("NOUN_DAGGER"
+    #dekliniere_substantiv("NOUN_ELVEN_DAGGER"
+    #dekliniere_substantiv("NOUN_ORCISH_DAGGER"
+    #dekliniere_substantiv("NOUN_SILVER_DAGGER"
+    #dekliniere_substantiv("NOUN_ATHAME"
+    #dekliniere_substantiv("NOUN_SCALPEL"
+    #dekliniere_substantiv("NOUN_KNIFE"
+    #dekliniere_substantiv("NOUN_STILETTO"
+    #dekliniere_substantiv("NOUN_WORM_TOOTH"
+    #dekliniere_substantiv("NOUN_CRYSKNIFE"
+    #dekliniere_substantiv("NOUN_AXE"
+    #dekliniere_substantiv("NOUN_BATTLE_AXE"
+    #dekliniere_substantiv("NOUN_SHORT_SWORD"
+    #dekliniere_substantiv("NOUN_ELVEN_SHORT_SWORD"
+    #dekliniere_substantiv("NOUN_ORCISH_SHORT_SWORD"
+    #dekliniere_substantiv("NOUN_DWARVISH_SHORT_SWORD"
+    #dekliniere_substantiv("NOUN_SCIMITAR"
+    #dekliniere_substantiv("NOUN_SILVER_SABER"
+    #dekliniere_substantiv("NOUN_BROADSWORD"
+    #dekliniere_substantiv("NOUN_ELVEN_BROADSWORD"
+    #dekliniere_substantiv("NOUN_LONG_SWORD"
+    #dekliniere_substantiv("NOUN_TWO_HANDED_SWORD"
+    #dekliniere_substantiv("NOUN_KATANA"
+    #dekliniere_substantiv("NOUN_TSURUGI"
+    #dekliniere_substantiv("NOUN_RUNESWORD"
+    #dekliniere_substantiv("NOUN_PARTISAN"
+    #dekliniere_substantiv("NOUN_RANSEUR"
+    #dekliniere_substantiv("NOUN_SPETUM"
+    #dekliniere_substantiv("NOUN_GLAIVE"
+    #dekliniere_substantiv("NOUN_LANCE"
+    #dekliniere_substantiv("NOUN_HALBERD"
+    #dekliniere_substantiv("NOUN_BARDICHE"
+    #dekliniere_substantiv("NOUN_VOULGE"
+    #dekliniere_substantiv("NOUN_DWARVISH_MATTOCK"
+    #dekliniere_substantiv("NOUN_FAUCHARD"
+    #dekliniere_substantiv("NOUN_GUISARME"
+    #dekliniere_substantiv("NOUN_BILL_GUISARME"
+    #dekliniere_substantiv("NOUN_LUCERN_HAMMER"
+    #dekliniere_substantiv("NOUN_BEC_DE_CORBIN"
+    #dekliniere_substantiv("NOUN_MACE"
+    #dekliniere_substantiv("NOUN_MORNING_STAR"
+    #dekliniere_substantiv("NOUN_WAR_HAMMER"
+    #dekliniere_substantiv("NOUN_CLUB"
+    #dekliniere_substantiv("NOUN_RUBBER_HOSE"
+    #dekliniere_substantiv("NOUN_QUARTERSTAFF"
+    #dekliniere_substantiv("NOUN_AKLYS"
+    #dekliniere_substantiv("NOUN_FLAIL"
+    #dekliniere_substantiv("NOUN_BULLWHIP"
+    #dekliniere_substantiv("NOUN_BOW"
+    #dekliniere_substantiv("NOUN_ELVEN_BOW"
+    #dekliniere_substantiv("NOUN_ORCISH_BOW"
+    #dekliniere_substantiv("NOUN_YUMI"
+    #dekliniere_substantiv("NOUN_SLING"
+    #dekliniere_substantiv("NOUN_CROSSBOW"
+    "",
+    "/* Weapons, unidentified */",
+    #dekliniere_substantiv("NOUN_RUNED_ARROW"
+    #dekliniere_substantiv("NOUN_CRUDE_ARROW"
+    #dekliniere_substantiv("NOUN_BAMBOO_ARROW"
+    #dekliniere_substantiv("NOUN_THROWING_STAR"
+    #dekliniere_substantiv("NOUN_RUNED_SPEAR"
+    #dekliniere_substantiv("NOUN_CRUDE_SPEAR"
+    #dekliniere_substantiv("NOUN_STOUT_SPEAR"
+    #dekliniere_substantiv("NOUN_THROWING_SPEAR"
+    #dekliniere_substantiv("NOUN_RUNED_DAGGER"
+    #dekliniere_substantiv("NOUN_CRUDE_DAGGER"
+    #dekliniere_substantiv("NOUN_DOUBLE_HEADED_AXE"
+    #dekliniere_substantiv("NOUN_RUNED_SHORT_SWORD"
+    #dekliniere_substantiv("NOUN_CRUDE_SHORT_SWORD"
+    #dekliniere_substantiv("NOUN_BROAD_SHORT_SWORD"
+    #dekliniere_substantiv("NOUN_CURVED_SWORD"
+    #dekliniere_substantiv("NOUN_RUNED_BROADSWORD"
+    #dekliniere_substantiv("NOUN_SAMURAI_SWORD"
+    #dekliniere_substantiv("NOUN_LONG_SAMURAI_SWORD", "ADJEKTIV_LANG NOUN_SAMURAI_SWORD",
+    #dekliniere_substantiv("NOUN_VULGAR_POLEARM"
+    #dekliniere_substantiv("NOUN_HILTED_POLEARM"
+    #dekliniere_substantiv("NOUN_FORKED_POLEARM"
+    #dekliniere_substantiv("NOUN_SINGLE_EDGED_POLEARM"
+    #dekliniere_substantiv("NOUN_ANGLED_POLEAXE"
+    #dekliniere_substantiv("NOUN_LONG_POLEAXE"
+    #dekliniere_substantiv("NOUN_POLE_CLEAVER"
+    #dekliniere_substantiv("NOUN_BROAD_PICK"
+    #dekliniere_substantiv("NOUN_POLE_SICKLE"
+    #dekliniere_substantiv("NOUN_PRUNING_HOOK"
+    #dekliniere_substantiv("NOUN_HOOKED_POLEARM"
+    #dekliniere_substantiv("NOUN_PRONGED_POLEARM"
+    #dekliniere_substantiv("NOUN_BEAKED_POLEARM"
+    #dekliniere_substantiv("NOUN_STAFF"
+    #dekliniere_substantiv("NOUN_THONGED_CLUB"
+    #dekliniere_substantiv("NOUN_RUNED_BOW"
+    #dekliniere_substantiv("NOUN_CRUDE_BOW"
+    #dekliniere_substantiv("NOUN_LONG_BOW"
     "",
     "/* Wands, identified */",
     dekliniere_substantiv("NOUN_WAND_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),
@@ -656,11 +772,66 @@ def ausgabe_nouns
     dekliniere_substantiv("MADE_OF_WAND_ALUMINIUM", "Aluminium", "s", "", "", "neutrum"),
     dekliniere_substantiv("MADE_OF_WAND_URANIUM", "Uran", "s", "", "e", "neutrum"),
     "",
+    "/* Tools, identified */",
+    #dekliniere_substantiv("NOUN_LARGE_BOX", 
+    dekliniere_substantiv("NOUN_CHEST", "Truhe", "", "Truhe", "en", "feminin"),
+    dekliniere_substantiv("NOUN_ICE_BOX", "Kühltruhe", "", "Kühltruhe", "en", "feminin"),
+    dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_OILSKIN_SACK", 
+    #dekliniere_substantiv("NOUN_BAG_OF_HOLDING", 
+    #dekliniere_substantiv("NOUN_BAG_OF_TRICKS", 
+    #dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_SKELETON_KEY", "Passepartout", "s", "Generalschlüssel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_LOCK_PICK", "Dietrich", "s", "Dietrich", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_CREDIT_CARD", "Kreditkarte", "", "Kreditkarte", "en", "feminin"),
+    dekliniere_substantiv("NOUN_TALLOW_CANDLE", "Talglicht", "es", "Talglicht", "er", "neutrum"),
+    dekliniere_substantiv("NOUN_WAX_CANDLE", "Wachskerze", "", "Wachskerze", "en", "feminin"),
+    dekliniere_substantiv("NOUN_BRASS_LANTERN", "Laterne", "", "Laterne", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_OIL_LAMP", 
+    #dekliniere_substantiv("NOUN_MAGIC_LAMP", 
+    #dekliniere_substantiv("NOUN_EXPENSIVE_CAMERA", 
+    "/* FIX ME: NOUN_LOOKING_GLASS should be different from NOUN_MIRROR */",
+    dekliniere_substantiv("NOUN_MIRROR","Spiegel","","Spiegel","","maskulin"), # FIX ME
+    dekliniere_substantiv("NOUN_CRYSTAL_BALL", "Kristallkugel", "", "Kristallkugel", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_LENSES", 
+    dekliniere_substantiv("NOUN_BLINDFOLD", "Augenbinde",   "",   "Augenbinde",   "en", "feminin"),
+    dekliniere_substantiv("NOUN_TOWEL", "Handtuch", "es", "Handtüch", "er", "neutrum"),
+    dekliniere_substantiv("NOUN_SADDLE", "Sattel", "s", "Sättel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_LEASH", "Leine", "", "Leine", "en", "feminin"),
+    dekliniere_substantiv("NOUN_STETHOSCOPE", "Stethoskop", "s", "Stethoskop", "e", "neutrum"),
+    #dekliniere_substantiv("NOUN_TINNING_KIT", 
+    dekliniere_substantiv("NOUN_TIN_OPENER", "Dosenöffner", "s", "Dosenöffner", "", "maskulin"),
+    #dekliniere_substantiv("NOUN_CAN_OF_GREASE", 
+    dekliniere_substantiv("NOUN_FIGURINE", "Statuette", "", "Statuette", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_MAGIC_MARKER", 
+    "/* 'Landmine' is a more generic term. I think 'Tretmine' is the more exact terminus for the mines in Nethack. */",
+    dekliniere_substantiv("NOUN_LAND_MINE", "Tretmine", "", "Tretmine", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_BEARTRAP", 
+    #dekliniere_substantiv("NOUN_TIN_WHISTLE", 
+    #dekliniere_substantiv("NOUN_MAGIC_WHISTLE", 
+    #dekliniere_substantiv("NOUN_WOODEN_FLUTE", 
+    #dekliniere_substantiv("NOUN_MAGIC_FLUTE", 
+    #dekliniere_substantiv("NOUN_TOOLED_HORN", 
+    dekliniere_substantiv("NOUN_FROST_HORN", "Eishorn", "es", "Eishörn", "er", "neutrum"),
+    #dekliniere_substantiv("NOUN_FIRE_HORN", 
+    dekliniere_substantiv("NOUN_HORN_OF_PLENTY", "Füllhorn", "es", "Füllhorn", "er", "neutrum"),
+    #dekliniere_substantiv("NOUN_WOODEN_HARP", 
+    #dekliniere_substantiv("NOUN_MAGIC_HARP", 
+    dekliniere_substantiv("NOUN_BELL", "Glöckchen", "s", "Glöckchen", "", "neutrum"),
+    dekliniere_substantiv("NOUN_BUGLE", "Waldhorn", "es", "Waldhörn", "er", "neutrum"),
+    #dekliniere_substantiv("NOUN_LEATHER_DRUM", 
+    #dekliniere_substantiv("NOUN_DRUM_OF_EARTHQUAKE", 
+    #dekliniere_substantiv("NOUN_PICK_AXE", 
+    #dekliniere_substantiv("NOUN_GRAPPLING_HOOK", 
+    #dekliniere_substantiv("NOUN_UNICORN_HORN", 
+    #dekliniere_substantiv("NOUN_CANDELABRUM_OF_INVOCATION", 
+    #dekliniere_substantiv("NOUN_BELL_OF_OPENING", 
+    "", 
     "/* Tools, unidentified */",
 		dekliniere_substantiv("NOUN_BAG","Beutel","s","Beutel","","maskulin"),
     dekliniere_substantiv("NOUN_KEY","Schlüssel","s","Schlüssel","","maskulin"),
     dekliniere_substantiv("NOUN_CANDLE","Kerze","","Kerze","en","feminin"),
-    dekliniere_substantiv("NOUN_LAMP","Lampe","","Lampe","en","maskulin"),
+    dekliniere_substantiv("NOUN_LAMP","Lampe","","Lampe","en","feminin"),
     "/* FIX ME: NOUN_LOOKING_GLASS should be different from NOUN_MIRROR */",
     dekliniere_substantiv("NOUN_LOOKING_GLASS","Spiegel","","Spiegel","","maskulin"), # FIX ME
     #dekliniere_substantiv("NOUN_GLASS_ORB","","","","","maskulin"),
