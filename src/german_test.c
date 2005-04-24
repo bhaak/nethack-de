@@ -21,12 +21,15 @@ void check_strings(char* text[][2], int size) {
 
 START_TEST (test_tincontent)
 {
-	char *text[][2] = {{"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH.",
-											"j - eine nicht verfluchte Dose mit Spinat."},
-										 {"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_FOX NOUN_MEAT.",
-											"j - eine nicht verfluchte Dose mit Fuchsfleisch."},
-										 {"j - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_COYOTE NOUN_MEAT.",
-											"j - eine nicht verfluchte Dose mit Kojotenfleisch."}};
+	char *text[][2] = {{"a - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH.",
+											"a - eine nicht verfluchte Dose mit Spinat."},
+										 {"b - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_FOX NOUN_MEAT.",
+											"b - eine nicht verfluchte Dose mit Fuchsfleisch."},
+										 {"d - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_TIN PARTIKEL_OF NOUN_LARGE_DOG NOUN_MEAT.",
+											"d - eine nicht verfluchte Dose mit Hundefleisch."},
+										 {"c - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_COYOTE NOUN_MEAT.",
+											"c - eine verfluchte Dose mit Kojotenfleisch."}
+	};
 
 	check_strings(text, sizeof(text)/8);
 }
@@ -235,7 +238,7 @@ START_TEST (test_statues) {
 /* copy from invent.c */
 char *names[] = { 0,
   "Illegal objects", "NOUN_WEAPONs", "NOUN_ARMOR", "NOUN_RINGs", "NOUN_AMULETs",
-  "NOUN_TOOLs", "NOUN_COMESTIBLEs", "NOUN_POTIONs", "NOUN_SCROLLs", "NOUN_SPELLBOOKs",
+  "NOUN_TOOLs", "NOUN_COMESTIBLE", "NOUN_POTIONs", "NOUN_SCROLLs", "NOUN_SPELLBOOKs",
   "NOUN_WANDs", "NOUN_COINs", "NOUN_GEMs", "NOUN_BOULDERs, NOUN_STATUEs", "Iron balls",
   "Chains", "Venoms"
 };
@@ -286,7 +289,7 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
 	tcase_add_test(tc_core, test_wishing);
-	/*tcase_add_test(tc_core, test_statues);
+	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	tcase_add_test(tc_core, test_linking_elements);
 	tcase_add_test(tc_core, test_wands);
@@ -297,10 +300,10 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_tools);
   tcase_add_test(tc_core, test_passiv);
   tcase_add_test(tc_core, test_complete_sentences);
-  //tcase_add_test(tc_core, test_complete_sentences2);
+  tcase_add_test(tc_core, test_complete_sentences2);
   tcase_add_test(tc_core, test_corpses);
-	//tcase_add_test(tc_core, test_tincontent);
-	tcase_add_test(tc_core, test_inventory_names);*/
+	tcase_add_test(tc_core, test_tincontent);
+	tcase_add_test(tc_core, test_inventory_names);
 
   return s;
 }

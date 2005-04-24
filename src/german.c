@@ -59,12 +59,12 @@ void print_state()
 	case dativ: printf("Dativ "); break;
 	case akkusativ: printf("Akkusativ "); break;
 	default: printf("kein Kasus "); break;	
-}
+	}
 	switch (c_genus) {
 	case maskulin: printf("Maskulin "); break;
 	case feminin: printf("Feminin "); break;
 	case neutrum: printf("Neutrum "); break;
-	default: printf("kein Genus "); break;
+	default: printf("kein bestimmtes Genus %d ", c_genus); break;
 	}
 	switch (c_numerus) {
 	case n_singular: printf("Singular "); break;
@@ -108,7 +108,6 @@ void german2meta(char *str, char *output)
 	//ptr = strstr(ptr, " ");
 	//printf("%s\n",ptr+1);
 	strcpy(output, get_meta_substantiv(ptr, strlen(ptr)));
-
 }
 
 const char* get_verb(const char* verb, enum Person p, enum Numerus n) {
@@ -130,19 +129,21 @@ const char* get_verb(const char* verb, enum Person p, enum Numerus n) {
 	return verb;
 }
 
-const char* get_wort(const char* typ, enum Casus c, enum Genus g, enum Numerus n) {
+const char* get_wort(const char* typ, enum Casus c, enum Genus g, enum Numerus n, enum Artikel a) {
 	int i=0;
 	int len=strlen(typ);
 	// NOUN_FOXs -> NOUN_FOX
 	// NOUN_FOX  -> NOUN_FOX
 	if (typ[len]=='s') { len--; }
-	
+
 	while (worte[i].wort!=NULL) {
 		if ((strncmp(worte[i].typ, typ, len)==0) && 
 				(worte[i].casus   & c) && 
 				(worte[i].genus   & g) && 
-				(worte[i].numerus & n)) {
-			return worte[i].wort;
+				(worte[i].numerus & n) &&
+				(worte[i].artikel & a)) {
+			/* make sure, we don't return e.g NOUN_TIN_OPENER when searching NOUN_TIN */
+			if ((strlen(worte[i].typ)-len)<=1) { return worte[i].wort; }
 		}
 		i++;
 	}
@@ -150,19 +151,19 @@ const char* get_wort(const char* typ, enum Casus c, enum Genus g, enum Numerus n
 	return typ;
 }
 
-const char* get_substantiv(const char* typ, enum Casus c, enum Numerus n) {
-	return get_wort(typ, c, maskulin|feminin|neutrum, n);
+const char* get_substantiv(const char* typ, enum Casus c, enum Numerus n, enum Artikel a) {
+	return get_wort(typ, c, maskulin|feminin|neutrum, n, a);
 }
 
 const char* get_adjektiv(const char* typ, enum Casus c, enum Genus g, enum Numerus n, enum Artikel a) {
 	int i=0;
-	while (adjektive[i].wort!=NULL) {
-		if ((strcmp(adjektive[i].typ, typ)==0) && 
-				(adjektive[i].casus   & c) && 
-				(adjektive[i].genus   & g) && 
-				(adjektive[i].numerus & n) &&
-				(adjektive[i].artikel & a)) {
-			return adjektive[i].wort;
+	while (worte[i].wort!=NULL) {
+		if ((strcmp(worte[i].typ, typ)==0) && 
+				(worte[i].casus   & c) && 
+				(worte[i].genus   & g) && 
+				(worte[i].numerus & n) &&
+				(worte[i].artikel & a)) {
+			return worte[i].wort;
 		}
 		i++;
 	}
@@ -397,9 +398,9 @@ void to_lowercase(char* string, int pos) {
 
 int append_kompositum(char* output, const char* firstpart, const char* secondpart) {
 	// TODO get Fugenelement for input
-	append(output, get_wort(firstpart, nominativ, maskulin|feminin|neutrum, n_singular));
+	append(output, get_wort(firstpart, nominativ, maskulin|feminin|neutrum, n_singular, c_artikel));
 	int pos = strlen(output);
-	append(output, get_wort(secondpart, c_casus, maskulin|feminin|neutrum, n_singular|n_plural));
+	append(output, get_wort(secondpart, c_casus, maskulin|feminin|neutrum, n_singular|n_plural, c_artikel));
 	to_lowercase(output, pos);
 }
 
@@ -468,7 +469,7 @@ char* german(const char *line) {
 
 		/* printf("tmp: %s ",tmp); print_state(); */
 		if (strncmp("PRONOMEN_",tmp, 9)==0) {
-			append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+			append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 
 		} else if (strncmp("SUBJECT",tmp,7)==0) {
 			clear_subject();
@@ -488,10 +489,10 @@ char* german(const char *line) {
 			if (strcmp("ARTIKEL_BESTIMMTER", tmp)==0) { c_artikel = bestimmter; }
 			else if (strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) { c_artikel = unbestimmter; }
 
-			append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+			append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 
 		} else if (strncmp("RING_UNIDENTIFIED_", tmp, 18)==0) {
-			append(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular));
+			append(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular, c_artikel));
 
 			if (line[pos]!=')') {
 				insert_char = 0;
@@ -514,12 +515,12 @@ char* german(const char *line) {
 			if (find_token("NOUN_CORPSE", line+pos)) { modifier_corpse = 1; }
 			else if (find_token("NOUN_CORPSEs", line+pos)) { modifier_corpse = 2; }
 
-			append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, n_singular|n_plural));
+			append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, n_singular|n_plural, c_artikel));
 			if (modifier_corpse == 1) {
 				c_casus = genitiv; c_numerus = n_singular;
 				if (!strncmp("ARTIKEL_",line+pos+1,7)==0) {
 					append(output, " ");
-					append(output, get_wort("ARTIKEL_UNBESTIMMTER", c_casus, c_genus, c_numerus));
+					append(output, get_wort("ARTIKEL_UNBESTIMMTER", c_casus, c_genus, c_numerus, c_artikel));
 				}
 			} else {
 				c_casus = dativ; c_numerus = n_plural;
@@ -541,10 +542,10 @@ char* german(const char *line) {
 				insert_char = 0;
 				pos += 9;
 			} else {
-				append(output, get_substantiv(tmp, c_casus, c_numerus));
+				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
 #if DEBUG
 				print_state();
-				printf("NOUN_: neues output: %s, tmp: =%s=, getwort: %s\n", output, tmp, get_wort(tmp, c_casus, c_genus, c_numerus));
+				printf("NOUN_: neues output: %s, tmp: =%s=, getwort: %s\n", output, tmp, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 #endif
 			}
 			
@@ -557,7 +558,7 @@ char* german(const char *line) {
 
 			if (strlen(made_from)>0) {
 				append(output, " aus ");
-				append(output, get_wort(made_from, akkusativ, maskulin|feminin|neutrum, n_singular));
+				append(output, get_wort(made_from, akkusativ, maskulin|feminin|neutrum, n_singular, c_artikel));
 			}
 		} else if (strncmp("VERB_",tmp,4)==0) {
 #ifdef DEBUG
@@ -581,7 +582,7 @@ char* german(const char *line) {
 					/* only add the definite article if there isn't another article */
 					next_token(line, tmp2, pos+1);
 					if (!strncmp("ARTIKEL_", tmp2, 8)==0) {
-						append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus));
+						append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus, c_artikel));
 					} else {
 						insert_char = 0;
 					}
@@ -592,11 +593,11 @@ char* german(const char *line) {
 					c_casus = nominativ; /* FIX ME: mit + Dativ-E hört sich das sehr seltsam an. */ 
 				}
 			} else {
-				append(output, get_wort(tmp, c_casus, c_genus, c_numerus));
+				append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 			}
 		} else if (strncmp("MADE_OF_", tmp, 8)==0) {
 			if (open_parenthesis) {
-				append(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular));
+				append(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular, c_artikel));
 			} else {
 				strcpy(made_from, tmp);
 				insert_char = 0;

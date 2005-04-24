@@ -17,6 +17,11 @@ $mal = "maskulin"
 $fem = "feminin"
 $neu = "neutrum"
 
+$grundform = "grundform"
+$ohne = "ohne"
+$bestimmter = "bestimmter"
+$unbestimmter = "unbestimmter"
+
 def ausgabe_definitions
   defs = "
 
@@ -26,31 +31,31 @@ enum Numerus { n_singular=1, n_plural=2 };
 enum Person  { erstePerson=1, zweitePerson=2, drittePerson=4 };
 enum Artikel { ohne=1, bestimmter=2, unbestimmter=4, grundform=8 };
 
-struct substantiv {
+struct nominal_phrase {
+  struct substantiv_struct *substantiv;
+  struct adjektiv_struct *adjektiv;
+  const char *artikel;
+};
+
+/* used for nouns and adjectives, as there are nouns, 
+   that are inflected like adjectives */
+struct substantiv_oder_adjekiv_struct {
 	const char  *wort;
 	const char  *typ;
+  //const char  *fugenelement;
 	enum Casus   casus;
 	enum Genus   genus;
 	enum Numerus numerus;
+	enum Artikel artikel;
 };
 
-
-struct verb {           
+struct verb_struct {           
 	const char *verb;     
 	const char *typ;     
 	const char *praeverb;
 	enum Person person;  
 	enum Numerus numerus;
 	enum Casus casus;    
-};
-
-struct adjektiv {
-	const char  *wort;
-	const char  *typ;
-	enum Casus   casus;
-	enum Genus   genus;
-	enum Numerus numerus;
-	enum Artikel artikel;
 };
 "
 
@@ -111,8 +116,10 @@ class Adjektiv
 
 end
 
-def dekliniere_substantiv(bezeichner, singularstamm,
-                          genitiv_singular_endung, pluralstamm, nominativ_plural_endung, geschlecht)
+
+def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
+                          pluralstamm, nominativ_plural_endung, geschlecht)
+
   casus = Hash.new
   casus[$nom] = Hash.new
   casus[$gen] = Hash.new
@@ -223,17 +230,48 @@ end
 class Nomen < Adjektiv
   def initialize(w,b,c,g,n)
     super(w,b,c,g,n,"")
+    @artikel = [$ohne,$bestimmter,$unbestimmter,$grundform]
   end
 
   def to_struct
     return '{"'+@wort+'", "'+@bezeichner+'", '+@casus.to_a.join("|")+
-      ', '+@geschlecht.to_a.join("|")+', '+@numerus.to_a.join("|")+'},'
+      ', '+@geschlecht.to_a.join("|")+', '+@numerus.to_a.join("|")+
+      ', '+@artikel.join("|")+'},'
   end
 
   def to_s
     return @wort+" "+@bezeichner+" "+@casus.to_a.join("|")+
       " "+@geschlecht.to_a.join("|")+" "+@numerus.to_a.join("|")
   end
+end
+
+def dekliniere_adjektivisches_substantiv(bezeichner, stamm, artikel)
+  adjektive = [];
+  if artikel == $neu then
+    [
+      # Grundform, nur Ausgabe des Stammes
+      Adjektiv.new(stamm, bezeichner,  [$nom,$gen,$dat,$akk], [$neu], [$sg,$pl], "grundform"),
+      # schwache Flexion (mit bestimmtem Artikel)
+      Adjektiv.new(stamm+'e',  bezeichner,  [$nom,$akk], [$neu],           $sg, "bestimmter"),
+      Adjektiv.new(stamm+'en', bezeichner,  [$gen,$dat], [$neu],           $sg, "bestimmter"),
+      Adjektiv.new(stamm+'en', bezeichner+'s',  [$nom,$gen,$dat,$akk], [$neu], $pl, "bestimmter"),
+      # gemischte Flexion (mit ein, kein, Possessivpronomen u.a.)
+      Adjektiv.new(stamm+'es', bezeichner,  [$nom,$akk],  $neu,            $sg, "unbestimmter"),
+      Adjektiv.new(stamm+'en', bezeichner,  [$gen,$dat], [$neu], $sg, "unbestimmter"),
+      Adjektiv.new(stamm+'en', bezeichner+'s',  [$nom,$gen,$dat,$akk], [$neu], $pl, "unbestimmter"),
+      # starke Flexion (ohne Artikel)
+      Adjektiv.new(stamm+'em', bezeichner,  $dat,      [$neu], $sg, "ohne"),
+      Adjektiv.new(stamm+'es', bezeichner, [$nom,$akk], $neu,       $sg, "ohne"),
+      Adjektiv.new(stamm+'en', bezeichner,  $gen,       $neu,       $sg, "ohne"),
+      Adjektiv.new(stamm+'e',  bezeichner+'s', [$nom,$akk], [$neu], $pl, "ohne"),
+      Adjektiv.new(stamm+'er', bezeichner+'s',  $gen,       [$neu], $pl, "ohne"),
+      Adjektiv.new(stamm+'en', bezeichner+'s',  $dat,       [$neu], $pl, "ohne"),
+      ""
+    ].each { |a| adjektive << a }
+  else
+    raise "Maskulin und feminin für adjektivisches Substantiv nicht implementiert"
+  end
+  adjektive
 end
 
 def dekliniere_adjektiv(bezeichner, stamm)
@@ -275,123 +313,9 @@ end
 
 
 def ausgabe_adjectives
-  puts "\nstruct adjektiv adjektive[] = {"
+  puts "\nstruct adjektiv_struct adjektive[] = {"
   [
-    "/* Potions, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PINK","rosarot"),
-    "  /* eigentlich unveränderlich */",
-    dekliniere_adjektiv("ADJEKTIV_POT_ORANGE","orangen"),
-    dekliniere_adjektiv("ADJEKTIV_POT_YELLOW","gelb"),
-    dekliniere_adjektiv("ADJEKTIV_POT_EMERALD","smaragdgrün"),
-    dekliniere_adjektiv("ADJEKTIV_POT_DARK_GREEN","dunkelgrün"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CYAN","tiefblau"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SKY_BLUE","himmelblau"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BRILLIANT_BLUE","blauglänzend"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MAGENTA","tiefrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PURPLE_RED","purpurrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PUCE","dunkelbraun"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MILKY","milchig"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SWIRLY","verwirbelt"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BUBBLY","sprudelnd"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SMOKY","rauchig"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CLOUDY","unklar"),
-    dekliniere_adjektiv("ADJEKTIV_POT_EFFERVESCENT","übersprudelnd"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BLACK","schwarz"),
-    dekliniere_adjektiv("ADJEKTIV_POT_GOLDEN","golden"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BROWN","braun"),
-    dekliniere_adjektiv("ADJEKTIV_POT_FIZZY","zischend"),
-    dekliniere_adjektiv("ADJEKTIV_POT_DARK","dunkl"),
-    dekliniere_adjektiv("ADJEKTIV_POT_WHITE","weiß"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MURKY","trüb"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
-    "",
-    "/* Spellbooks, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamentartig"), # Kandidat für 'aus Pergament'
-    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum'
-    dekliniere_adjektiv("ADJEKTIV_SPE_RAGGED", "ausgefranst"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", ""),
-    dekliniere_adjektiv("ADJEKTIV_SPE_MOTTLED", "fleckig"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_STAINED", "beschmutzt"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", ""), # Kandidat für 'aus Stoff'
-    dekliniere_adjektiv("ADJEKTIV_SPE_LEATHER", "ledern"), # Kandidat für 'aus Leder'
-    dekliniere_adjektiv("ADJEKTIV_SPE_WHITE", "weiß"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_PINK", "rosarot"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_RED", "rot"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_ORANGE", "orangen"), # Kandidat für unveränderlich
-    dekliniere_adjektiv("ADJEKTIV_SPE_YELLOW", "gelb"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_VELVET", "samten"), # Kandidat für 'aus Samt'
-    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_GREEN", "hellgrün"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_GREEN", "dunkelgrün"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_TURQUOISE", "türkisfarben"), # Kandidat für unveränderlich
-    dekliniere_adjektiv("ADJEKTIV_SPE_CYAN", "tiefblau"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BLUE", "hellblau"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BLUE", "dunkelblau"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_INDIGO", "indigofarben"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_MAGENTA", "tiefrot"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_PURPLE", "purpurn"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_VIOLET", "violett"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_TAN", "hellbraun"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "hellbraun"), # kariert?
-    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BROWN", "hellbraun"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BROWN", "dunkelbraun"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_GRAY", "grau"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_WRINKLED", "zerknittert"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_DUSTY", "verstaubt"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_BRONZE", "bronzen"), # oder 'bronzefarben'?
-    dekliniere_adjektiv("ADJEKTIV_SPE_COPPER", "kupfern"), # oder 'kupferrot'?
-    dekliniere_adjektiv("ADJEKTIV_SPE_SILVER", "silbern"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_GOLD", "golden"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_GLITTERING", "gleißend"), # LEO gibt glänzend,glanzvoll, gleißend, glitzernd, verlockend
-    dekliniere_adjektiv("ADJEKTIV_SPE_SHINING", "glänzend"), # oder 'blank'?
-    dekliniere_adjektiv("ADJEKTIV_SPE_DULL", "matt"), # oder 'stumpf' oder 'trübe'?
-    dekliniere_adjektiv("ADJEKTIV_SPE_THIN", "dünn"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_THICK", "dick"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_CANVAS", ""),
-    dekliniere_adjektiv("ADJEKTIV_SPE_HARDCOVER", "gebunden"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_PLAIN", "unbedruckt"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_PAPYRUS", ""), # Kandidat für 'aus Papyrus'
-    "",
-    "/* Wands, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_WAND_GLASS", "gläsern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_CRYSTAL", "kristallen"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_COPPER", "kupfern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_SILVER", "silbern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_IRON", "eisern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_STEEL", "stählern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_HEXAGONAL","sechseckig"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_SHORT","kurz"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_RUNED","runenbeschriftet"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_LONG","lang"),
-    "/* 'gebogen' ist IMO besser als 'gekrümmt'*/",
-    dekliniere_adjektiv("ADJEKTIV_WAND_CURVED","gebogen"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_FORKED","gegabelt"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_SPIKED","spitzig"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_JEWELED","juwelenbesetzt"),
-    "",
-    "/* Amulets, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_SPHERICAL","kugelförmig"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_OVAL","oval"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_TRIANGULAR","dreieckig"),
-    "  /* oder besser pyramidenartig oder pyramidal?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_PYRAMIDAL","pyramidenförmig"),
-    "  /* oder besser rechteckig oder quadratisch?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_SQUARE","viereckig"),
-    "  /* oder besser konkav?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_CONCAVE","gewölbt"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_HEXAGONAL","sechseckig"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_OCTAGONAL","achteckig"),
-    "",
-    dekliniere_adjektiv("ADJEKTIV_CURSED","verflucht"),
-    dekliniere_adjektiv("ADJEKTIV_UNCURSED","nicht verflucht"),
-    "  /* blessed mit geheiligt oder gesegnet uebersetzen? */",
-    dekliniere_adjektiv("ADJEKTIV_BLESSED","geheiligt"),
-    "",
-    "/* sonstige Adjektive */",
-    dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
-    dekliniere_adjektiv("ADJEKTIV_SADDLED","gesattelt"),
-    ""
+
   ].each { |s| 
     s.each { |a|
       if a.is_a? String then
@@ -439,7 +363,7 @@ def konjugiere_verb(bezeichner, stamm)
 end
 
 def ausgabe_verbs
-  puts "\nstruct verb verben[] = {"
+  puts "\nstruct verb_struct verben[] = {"
   [
     konjugiere_verb("VERB_SICH_FUEHLEN","fühl"),
     konjugiere_verb("VERB_MERKEN","merk"),
@@ -483,7 +407,7 @@ def ausgabe_verbs
 	puts "  {NULL, NULL, 0, 0}\n};"
 end
 def ausgabe_nouns
-  puts "\nstruct substantiv worte[] = {"
+  puts "\nstruct substantiv_oder_adjekiv_struct worte[] = {"
 
   [
     unregelmaessiges_wort("ARTIKEL_BESTIMMTER", "der", $nom,  $mal, $sg),
@@ -578,7 +502,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_AMULET",    "Amulett",        "es", "Amulett",        "e",  "neutrum"),
     dekliniere_substantiv("NOUN_TOOL",      "Werkzeug",       "es", "Werkzeug",       "e",  "neutrum"),
     "/* This is wrong. 'Essbares' should be inflected like an adjective */",
-    dekliniere_substantiv("NOUN_COMESTIBLE","Essbare",        "",   "Essbare",        "s",  "neutrum"),
+    dekliniere_adjektivisches_substantiv("NOUN_COMESTIBLE","Essbar", "neutrum"),
     dekliniere_substantiv("NOUN_POTION",    "Trank",          "es", "Tränk",          "e",  "maskulin"),
     dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle",   "",   "Schriftrolle",   "en", "feminin"),
     dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",     "es", "Zauberbüch",     "er", "neutrum"),
@@ -901,7 +825,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ICE_BOX", "Kühltruhe", "", "Kühltruhe", "en", "feminin"),
     dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_OILSKIN_SACK", 
-    #dekliniere_substantiv("NOUN_BAG_OF_HOLDING", 
+    #dekli_meta_substantiv("NOUN_BAG_OF_HOLDING", "ADJEKTIV_NIMMERVOLL NOUN_BAG"),
     #dekliniere_substantiv("NOUN_BAG_OF_TRICKS", 
     #dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
     dekliniere_substantiv("NOUN_SKELETON_KEY", "Passepartout", "s", "Generalschlüssel", "", "maskulin"),
@@ -1402,6 +1326,123 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GUIDE"
     #dekliniere_substantiv("NOUN_WARRIOR"
     #dekliniere_substantiv("NOUN_APPRENTICE"
+    "",
+    "/* ======================================================= */",
+    "/* Adjektive */",
+    "/* Potions, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PINK","rosarot"),
+    "  /* eigentlich unveränderlich */",
+    dekliniere_adjektiv("ADJEKTIV_POT_ORANGE","orangen"),
+    dekliniere_adjektiv("ADJEKTIV_POT_YELLOW","gelb"),
+    dekliniere_adjektiv("ADJEKTIV_POT_EMERALD","smaragdgrün"),
+    dekliniere_adjektiv("ADJEKTIV_POT_DARK_GREEN","dunkelgrün"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CYAN","tiefblau"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SKY_BLUE","himmelblau"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BRILLIANT_BLUE","blauglänzend"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MAGENTA","tiefrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PURPLE_RED","purpurrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PUCE","dunkelbraun"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MILKY","milchig"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SWIRLY","verwirbelt"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BUBBLY","sprudelnd"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SMOKY","rauchig"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CLOUDY","unklar"),
+    dekliniere_adjektiv("ADJEKTIV_POT_EFFERVESCENT","übersprudelnd"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BLACK","schwarz"),
+    dekliniere_adjektiv("ADJEKTIV_POT_GOLDEN","golden"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BROWN","braun"),
+    dekliniere_adjektiv("ADJEKTIV_POT_FIZZY","zischend"),
+    dekliniere_adjektiv("ADJEKTIV_POT_DARK","dunkl"),
+    dekliniere_adjektiv("ADJEKTIV_POT_WHITE","weiß"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MURKY","trüb"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
+    "",
+    "/* Spellbooks, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamentartig"), # Kandidat für 'aus Pergament'
+    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum'
+    dekliniere_adjektiv("ADJEKTIV_SPE_RAGGED", "ausgefranst"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", ""),
+    dekliniere_adjektiv("ADJEKTIV_SPE_MOTTLED", "fleckig"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_STAINED", "beschmutzt"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", ""), # Kandidat für 'aus Stoff'
+    dekliniere_adjektiv("ADJEKTIV_SPE_LEATHER", "ledern"), # Kandidat für 'aus Leder'
+    dekliniere_adjektiv("ADJEKTIV_SPE_WHITE", "weiß"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PINK", "rosarot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_RED", "rot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_ORANGE", "orangen"), # Kandidat für unveränderlich
+    dekliniere_adjektiv("ADJEKTIV_SPE_YELLOW", "gelb"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_VELVET", "samten"), # Kandidat für 'aus Samt'
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_GREEN", "hellgrün"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_GREEN", "dunkelgrün"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_TURQUOISE", "türkisfarben"), # Kandidat für unveränderlich
+    dekliniere_adjektiv("ADJEKTIV_SPE_CYAN", "tiefblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BLUE", "hellblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BLUE", "dunkelblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_INDIGO", "indigofarben"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_MAGENTA", "tiefrot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PURPLE", "purpurn"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_VIOLET", "violett"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_TAN", "hellbraun"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "hellbraun"), # kariert?
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BROWN", "hellbraun"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BROWN", "dunkelbraun"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GRAY", "grau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_WRINKLED", "zerknittert"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DUSTY", "verstaubt"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_BRONZE", "bronzen"), # oder 'bronzefarben'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_COPPER", "kupfern"), # oder 'kupferrot'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_SILVER", "silbern"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GOLD", "golden"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GLITTERING", "gleißend"), # LEO gibt glänzend,glanzvoll, gleißend, glitzernd, verlockend
+    dekliniere_adjektiv("ADJEKTIV_SPE_SHINING", "glänzend"), # oder 'blank'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_DULL", "matt"), # oder 'stumpf' oder 'trübe'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_THIN", "dünn"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_THICK", "dick"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_CANVAS", ""),
+    dekliniere_adjektiv("ADJEKTIV_SPE_HARDCOVER", "gebunden"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PLAIN", "unbedruckt"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_PAPYRUS", ""), # Kandidat für 'aus Papyrus'
+    "",
+    "/* Wands, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_WAND_GLASS", "gläsern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_CRYSTAL", "kristallen"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_COPPER", "kupfern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SILVER", "silbern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_IRON", "eisern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_STEEL", "stählern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_HEXAGONAL","sechseckig"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SHORT","kurz"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_RUNED","runenbeschriftet"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_LONG","lang"),
+    "/* 'gebogen' ist IMO besser als 'gekrümmt'*/",
+    dekliniere_adjektiv("ADJEKTIV_WAND_CURVED","gebogen"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_FORKED","gegabelt"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SPIKED","spitzig"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_JEWELED","juwelenbesetzt"),
+    "",
+    "/* Amulets, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_SPHERICAL","kugelförmig"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_OVAL","oval"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_TRIANGULAR","dreieckig"),
+    "  /* oder besser pyramidenartig oder pyramidal?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_PYRAMIDAL","pyramidenförmig"),
+    "  /* oder besser rechteckig oder quadratisch?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_SQUARE","viereckig"),
+    "  /* oder besser konkav?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_CONCAVE","gewölbt"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_HEXAGONAL","sechseckig"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_OCTAGONAL","achteckig"),
+    "",
+    dekliniere_adjektiv("ADJEKTIV_CURSED","verflucht"),
+    dekliniere_adjektiv("ADJEKTIV_UNCURSED","nicht verflucht"),
+    "  /* blessed mit geheiligt oder gesegnet uebersetzen? */",
+    dekliniere_adjektiv("ADJEKTIV_BLESSED","geheiligt"),
+    "",
+    "/* sonstige Adjektive */",
+    dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
+    dekliniere_adjektiv("ADJEKTIV_SADDLED","gesattelt"),
     ""
   ].each { |n|
     nomen << n
@@ -1417,13 +1458,13 @@ def ausgabe_nouns
     }
     puts "\n"
   }
-  puts "  {NULL, NULL, 0, 0, 0}\n};"
+  puts "  {NULL, NULL, 0, 0, 0, 0}\n};"
 end
 
 # print everything
 puts "#ifndef _GERMAN_H\n#define _GERMAN_H 1\n#include <stddef.h>\n"
 ausgabe_definitions
 ausgabe_nouns
-ausgabe_adjectives
+#ausgabe_adjectives
 ausgabe_verbs
 puts "#endif /* !_GERMAN_H */"
