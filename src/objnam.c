@@ -1795,6 +1795,7 @@ boolean from_user;
 
 	char oclass;
 	char *un, *dn, *actualn;
+	char *german_str = nextobuf();
 	const char *name=0;
 
 	cnt = spe = spesgn = typ = very = rechrg =
@@ -1818,9 +1819,13 @@ boolean from_user;
 	/* allow wishing for "nothing" to preserve wishless conduct...
 	   [now requires "wand of nothing" if that's what was really wanted] */
 	if (!strcmpi(bp, "nothing") || !strcmpi(bp, "nil") ||
-	    !strcmpi(bp, "none")) return no_wish;
+	    !strcmpi(bp, "none") || 
+			!strcmpi(bp, "nichts")) return no_wish;
 	/* save the [nearly] unmodified choice string */
 	Strcpy(fruitbuf, bp);
+
+	Strcpy(german_str, bp);
+	german2meta(german_str);
 
 	for(;;) {
 		register int l;
@@ -1915,10 +1920,10 @@ boolean from_user;
 			isdiluted = 1;
 		} else if(!strncmpi(bp, "empty ", l=6)) {
 			contents = EMPTY;
-		} else { pline("wishing, nicht erkannt: %s",bp); break; }
-		pline("wishing1, erkannt: %s",bp);
+		} else { pline("wishing, NICHT erkannt: %s",bp); break; }
+		pline("wishing, erkannt: %s",bp);
 		bp += l;
-		pline("wishing2, erkannt: %s",bp);
+		pline("wishing, erkannt: %s",bp);
 	}
 	if(!cnt) cnt = 1;		/* %% what with "gems" etc. ? */
 	if (strlen(bp) > 1) {
