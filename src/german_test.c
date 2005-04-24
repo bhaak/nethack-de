@@ -6,6 +6,7 @@
 
 
 char* german(const char *line);
+void german2meta(char *str, char *result);
 
 void check_strings(char* text[][2], int size) {
 	int i;
@@ -259,13 +260,33 @@ START_TEST (test_inventory_names) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+void check_german2meta(char* text[][2], int size) {
+	int i;
+	char result[128];
+
+	for (i=0; i<size; i++) {
+		german2meta(text[i][0],result);
+		fail_unless((strcmp(result, text[i][1])==0),
+								"failed german2meta\nto convert: >%s<\nconverted:  >%s<\nexpected:   >%s<\n",
+								text[i][0],result,text[i][1]);}
+}
+
+START_TEST (test_wishing) {
+	char *text[][2] = {{"Augenbinde",  "NOUN_BLINDFOLD"},
+										 {"Augenbinden", "NOUN_BLINDFOLDs"},
+										 {"eine Augenbinden", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLDs"}};
+
+	check_german2meta(text, sizeof(text)/8);
+} END_TEST
+
 Suite *test_suite(void)
 {
   Suite *s = suite_create("all tests");
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-	tcase_add_test(tc_core, test_statues);
+	tcase_add_test(tc_core, test_wishing);
+	/*tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	tcase_add_test(tc_core, test_linking_elements);
 	tcase_add_test(tc_core, test_wands);
@@ -279,7 +300,7 @@ Suite *test_suite(void)
   //tcase_add_test(tc_core, test_complete_sentences2);
   tcase_add_test(tc_core, test_corpses);
 	//tcase_add_test(tc_core, test_tincontent);
-	tcase_add_test(tc_core, test_inventory_names);
+	tcase_add_test(tc_core, test_inventory_names);*/
 
   return s;
 }
