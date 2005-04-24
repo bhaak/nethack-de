@@ -1112,9 +1112,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCORPION", "Skorpion", "s", "Skorpion", "e", "maskulin"),
     dekliniere_substantiv("NOUN_LURKER_ABOVE", "Laurer", "s", "Laurer", "", "maskulin"),
     dekliniere_substantiv("NOUN_TRAPPER", "Fallensteller", "s", "Fallensteller", "", "maskulin"), 
-    #dekliniere_substantiv("NOUN_WHITE_UNICORN"
-    #dekliniere_substantiv("NOUN_GRAY_UNICORN"
-    #dekliniere_substantiv("NOUN_BLACK_UNICORN"
+    #dekliniere_substantiv("NOUN_WHITE_UNICORN",
+    #dekliniere_substantiv("NOUN_GRAY_UNICORN",
+    #dekliniere_substantiv("NOUN_BLACK_UNICORN",
     dekliniere_substantiv("NOUN_PONY","Pony","s","Pony","s","neutrum"),
     dekliniere_substantiv("NOUN_HORSE","Pferd","es","Pferd","e","neutrum"),
     dekliniere_substantiv("NOUN_WARHORSE","Schlachtroﬂ","es","Schlachtroﬂ","e","neutrum"),
