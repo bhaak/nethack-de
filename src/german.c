@@ -91,10 +91,7 @@ const char *get_meta_substantiv(char *wort, int len) {
 	int i=0;
 	
 	while (worte[i].wort!=NULL) {
-		if (strncmp(worte[i].wort, wort, len)==0) {
-			return worte[i].typ;
-		}
-		//printf(" %s\n", worte[i].wort);
+		if (strncmp(worte[i].wort, wort, len)==0) { return worte[i].typ; }
 		i++;
 	}
 	
@@ -107,10 +104,11 @@ void german2meta(char *str, char *output)
 	char *ptr = str;
 	output[0] = '\0';
 	
-	printf("\n%s\n",ptr);
+	//printf("\n%s\n",ptr);
 	//ptr = strstr(ptr, " ");
 	//printf("%s\n",ptr+1);
 	strcpy(output, get_meta_substantiv(ptr, strlen(ptr)));
+
 }
 
 const char* get_verb(const char* verb, enum Person p, enum Numerus n) {
