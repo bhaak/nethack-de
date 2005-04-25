@@ -51,6 +51,10 @@ int partikel_of_as_mit = 0;
 int beginning_of_sentence = 0;
 const char* verb_praeverb = "";
 
+enum Genus   beliebiger_genus   = maskulin|feminin|neutrum;
+enum Numerus beliebiger_numerus = n_singular|n_plural;
+enum Artikel beliebiger_artikel = ohne|bestimmter|unbestimmter|grundform;
+
 void print_state()
 {
 	switch (c_casus) {
@@ -152,7 +156,20 @@ const char* get_wort(const char* typ, enum Casus c, enum Genus g, enum Numerus n
 }
 
 const char* get_substantiv(const char* typ, enum Casus c, enum Numerus n, enum Artikel a) {
-	return get_wort(typ, c, maskulin|feminin|neutrum, n, a);
+	return get_wort(typ, c, beliebiger_genus, n, a);
+}
+
+const char* get_fugenelement(const char* typ) {
+	int i=0;
+
+	while (worte[i].wort!=NULL) {
+		if (strcmp(worte[i].typ, typ)==0) {
+			return worte[i].fugenelement;
+		}
+		i++;
+	}
+	
+	return "";
 }
 
 const char* get_adjektiv(const char* typ, enum Casus c, enum Genus g, enum Numerus n, enum Artikel a) {
@@ -399,6 +416,7 @@ void to_lowercase(char* string, int pos) {
 int append_kompositum(char* output, const char* firstpart, const char* secondpart) {
 	// TODO get Fugenelement for input
 	append(output, get_wort(firstpart, nominativ, maskulin|feminin|neutrum, n_singular, c_artikel));
+	append(output, get_fugenelement(firstpart));
 	int pos = strlen(output);
 	append(output, get_wort(secondpart, c_casus, maskulin|feminin|neutrum, n_singular|n_plural, c_artikel));
 	to_lowercase(output, pos);

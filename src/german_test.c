@@ -25,10 +25,10 @@ START_TEST (test_tincontent)
 											"a - eine nicht verfluchte Dose mit Spinat."},
 										 {"b - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_FOX NOUN_MEAT.",
 											"b - eine nicht verfluchte Dose mit Fuchsfleisch."},
-										 {"d - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_TIN PARTIKEL_OF NOUN_LARGE_DOG NOUN_MEAT.",
-											"d - eine nicht verfluchte Dose mit Hundefleisch."},
 										 {"c - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_COYOTE NOUN_MEAT.",
-											"c - eine verfluchte Dose mit Kojotenfleisch."}
+											"c - eine nicht verfluchte Dose mit Kojotenfleisch."},
+										 {"d - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_TIN PARTIKEL_OF NOUN_LARGE_DOG NOUN_MEAT.",
+											"d - eine verfluchte Dose mit Hundefleisch."}
 	};
 
 	check_strings(text, sizeof(text)/8);

@@ -42,7 +42,7 @@ struct nominal_phrase {
 struct substantiv_oder_adjekiv_struct {
 	const char  *wort;
 	const char  *typ;
-  //const char  *fugenelement;
+  const char  *fugenelement;
 	enum Casus   casus;
 	enum Genus   genus;
 	enum Numerus numerus;
@@ -81,6 +81,7 @@ class Adjektiv
     end
 
     @artikel = a
+    @fugenelemnt = ""
   end
 
   def add_to_set(set, array_or_string)
@@ -105,8 +106,11 @@ class Adjektiv
   end
 
   def to_struct
-    return '{"'+@wort+'", "'+@bezeichner+'", '+@casus.to_a.join("|")+
-      ', '+@geschlecht.to_a.join("|")+', '+@numerus.to_a.join("|")+', '+@artikel+'},'
+    return '{"'+@wort+'", "'+@bezeichner+'", '+'"'+@fugenelemnt+'", '+
+      @casus.to_a.join("|")+ ', '+
+      @geschlecht.to_a.join("|")+', '+
+      @numerus.to_a.join("|")+', '+
+      @artikel+'},'
   end
 
   def to_s
@@ -118,7 +122,7 @@ end
 
 
 def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
-                          pluralstamm, nominativ_plural_endung, geschlecht)
+                          pluralstamm, nominativ_plural_endung, geschlecht, fugenelement="")
 
   casus = Hash.new
   casus[$nom] = Hash.new
@@ -186,7 +190,7 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
   nomen = [];
   [$sg].each { |n|
     [$nom, $gen, $dat, $akk].each { |c|
-      nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner, c, geschlecht, n);
+      nomen << Nomen.new(numerus[n]+casus[c][n], bezeichner, c, geschlecht, n, fugenelement);
       #puts nomen[-1].to_struct
     }
   }
@@ -200,7 +204,8 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
                            bezeichner+'s',
                            c,
                            geschlecht,
-                           n);
+                           n,
+                           fugenelement);
         #puts nomen[-1].to_struct
       }
     }
@@ -223,20 +228,23 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
   nomen
 end
 
-def unregelmaessiges_wort(bezeichner, wort, casus, geschlecht, numerus)
-  return Nomen.new(wort, bezeichner, casus, geschlecht, numerus)
+def unregelmaessiges_wort(bezeichner, wort, casus, geschlecht, numerus, fugenelement="")
+  return Nomen.new(wort, bezeichner, casus, geschlecht, numerus, fugenelement)
 end
 
 class Nomen < Adjektiv
-  def initialize(w,b,c,g,n)
+  def initialize(w,b,c,g,n,fugenelement="")
     super(w,b,c,g,n,"")
     @artikel = [$ohne,$bestimmter,$unbestimmter,$grundform]
+    @fugenelement = fugenelement
   end
 
   def to_struct
-    return '{"'+@wort+'", "'+@bezeichner+'", '+@casus.to_a.join("|")+
-      ', '+@geschlecht.to_a.join("|")+', '+@numerus.to_a.join("|")+
-      ', '+@artikel.join("|")+'},'
+    return '{"'+@wort+'", "'+@bezeichner+'", '+'"'+@fugenelement+'", '+
+      @casus.to_a.join("|")+', '+
+      @geschlecht.to_a.join("|")+', '+
+      @numerus.to_a.join("|")+', '+
+      @artikel.join("|")+'},'
   end
 
   def to_s
@@ -483,28 +491,28 @@ def ausgabe_nouns
   [
     "/* Nouns that are neither in mons-de.h nor in obj-de.h */",
     dekliniere_substantiv("NOUN_SPINACH","Spinat","es","Spinat","e","maskulin"),
-    dekliniere_substantiv("NOUN_OBJ_DOOR", "Türe", "", "Türe", "en", "feminin"),
-    dekliniere_substantiv("NOUN_WALLET", "Geldbörse", "", "Geldbörse", "en", "feminin"),
-    dekliniere_substantiv("NOUN_MEAT", "Fleisch", "es", "", "e", "neutrum"),
-    dekliniere_substantiv("NOUN_LUCK", "Glück", "es", "Glück", "e", "neutrum"),
+    dekliniere_substantiv("NOUN_OBJ_DOOR", "Türe", "", "Türe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_WALLET", "Geldbörse", "", "Geldbörse", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_MEAT", "Fleisch", "es", "", "e", "neutrum", ""),
+    dekliniere_substantiv("NOUN_LUCK", "Glück", "es", "Glück", "e", "neutrum", "s"),
     "",
     dekliniere_substantiv("NOUN_BAG", "Beutel", "s", "Beutel", "", "maskulin"),
     "",
-    dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin"),
-    dekliniere_substantiv("NOUN_POT_HEALING", "Heilung", "", "Heilung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin", "s"),
+    dekliniere_substantiv("NOUN_POT_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
 
     dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
 
-    dekliniere_substantiv("NOUN_WEAPON",    "Waffe",          "",   "Waffe",          "en", "feminin"),
+    dekliniere_substantiv("NOUN_WEAPON",    "Waffe",          "",   "Waffe",          "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_ARMOR",     "Rüstung",        "",   "Rüstung",      "en", "feminin"),
-    dekliniere_substantiv("NOUN_ARMOR",     "Schutzbekleidung", "",   "Schutzbekleidung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_ARMOR",     "Schutzbekleidung", "",   "Schutzbekleidung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_RING",      "Ring",           "es", "Ring",           "e",  "maskulin"),
     dekliniere_substantiv("NOUN_AMULET",    "Amulett",        "es", "Amulett",        "e",  "neutrum"),
-    dekliniere_substantiv("NOUN_TOOL",      "Werkzeug",       "es", "Werkzeug",       "e",  "neutrum"),
+    dekliniere_substantiv("NOUN_TOOL",      "Werkzeug",       "es", "Werkzeug",       "e",  "neutrum", "s"),
     "/* This is wrong. 'Essbares' should be inflected like an adjective */",
     dekliniere_adjektivisches_substantiv("NOUN_COMESTIBLE","Essbar", "neutrum"),
     dekliniere_substantiv("NOUN_POTION",    "Trank",          "es", "Tränk",          "e",  "maskulin"),
-    dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle",   "",   "Schriftrolle",   "en", "feminin"),
+    dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle",   "",   "Schriftrolle",   "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",     "es", "Zauberbüch",     "er", "neutrum"),
     dekliniere_substantiv("NOUN_WAND",      "Zauberstab",     "es", "Zauberstäb",     "e",  "maskulin"),
     dekliniere_substantiv("NOUN_COIN",      "Münze",          "",   "Münze",          "en", "feminin"),
@@ -934,12 +942,12 @@ def ausgabe_nouns
     dekliniere_substantiv("MADE_OF_SPE_VELLUM", "Velum", "s", "", "s", "neutrum"),
     "",
     "/* all monster names */",
-    dekliniere_substantiv("NOUN_GIANT_ANT","Riesenameise","","Riesenameise","en","feminin"),
-    dekliniere_substantiv("NOUN_KILLER_BEE","Killerbiene","","Killerbiene","en","feminin"),
-    dekliniere_substantiv("NOUN_SOLDIER_ANT","Ameisensoldat","en","Ameisensoldat","en","maskulin"),
-    dekliniere_substantiv("NOUN_FIRE_ANT","Feuerameise","","Feuerameise","en","feminin"),
+    dekliniere_substantiv("NOUN_GIANT_ANT","Riesenameise","","Riesenameise","en","feminin","n"),
+    dekliniere_substantiv("NOUN_KILLER_BEE","Killerbiene","","Killerbiene","en","feminin","n"),
+    dekliniere_substantiv("NOUN_SOLDIER_ANT","Ameisensoldat","en","Ameisensoldat","en","maskulin", "en"),
+    dekliniere_substantiv("NOUN_FIRE_ANT","Feuerameise","","Feuerameise","en","feminin", "n"),
     dekliniere_substantiv("NOUN_GIANT_BEETLE", "Riesenkäfer", "s", "Riesenkäfer", "", "maskulin"),
-    dekliniere_substantiv("NOUN_QUEEN_BEE","Bienenkönigin","","Bienenköniginn","en","feminin"),
+    dekliniere_substantiv("NOUN_QUEEN_BEE","Bienenkönigin","","Bienenköniginn","en","feminin", "nen"),
     #dekliniere_substantiv("NOUN_ACID_BLOB"
     #dekliniere_substantiv("NOUN_QUIVERING_BLOB"
     #dekliniere_substantiv("NOUN_GELATINOUS_CUBE"
@@ -948,14 +956,14 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_PYROLISK"
     dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_FOX","Fuchs","es","Füchs","e","maskulin"),
-    dekliniere_substantiv("NOUN_COYOTE","Kojote","en","Kojote","en","maskulin"),
+    dekliniere_substantiv("NOUN_COYOTE","Kojote","en","Kojote","en","maskulin","n"),
     dekliniere_substantiv("NOUN_WEREJACKAL", "Werschakal", "s", "Werschakal", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_LITTLE_DOG"
-    dekliniere_substantiv("NOUN_DOG", "Hund", "es", "Hund", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_DOG", "Hund", "es", "Hund", "e", "maskulin","e"),
     #dekliniere_substantiv("NOUN_LARGE_DOG"
     dekliniere_substantiv("NOUN_DINGO","Dingo","s","Dingo","s","maskulin"),
-    dekliniere_substantiv("NOUN_WOLF","Wolf","es","Wölf","e","maskulin"),
-    dekliniere_substantiv("NOUN_WEREWOLF","Werwolf","es","Werwölf","e","maskulin"),
+    dekliniere_substantiv("NOUN_WOLF","Wolf","es","Wölf","e","maskulin", "s"),
+    dekliniere_substantiv("NOUN_WEREWOLF","Werwolf","es","Werwölf","e","maskulin", "s"),
     #dekliniere_substantiv("NOUN_WARG"
     #dekliniere_substantiv("NOUN_WINTER_WOLF_CUB"
     #dekliniere_substantiv("NOUN_WINTER_WOLF"
@@ -969,7 +977,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SHOCKING_SPHERE"
     #dekliniere_substantiv("NOUN_BEHOLDER"
     dekliniere_substantiv("NOUN_KITTEN", "Kätzchen", "s", "Kätzchen", "", "neutrum"),
-    dekliniere_substantiv("NOUN_HOUSECAT","Hauskatze","","Hauskatze","en","feminin"),
+    dekliniere_substantiv("NOUN_HOUSECAT","Hauskatze","","Hauskatze","en","feminin","n"),
     dekliniere_substantiv("NOUN_JAGUAR","Jaguar","s","Jaguar","e","maskulin"),
     dekliniere_substantiv("NOUN_LYNX","Luchs","es","Luchs","e","maskulin"),
     dekliniere_substantiv("NOUN_PANTHER","Panther","s","Panther","","maskulin"),
@@ -979,7 +987,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GARGOYLE"
     #dekliniere_substantiv("NOUN_WINGED_GARGOYLE"
     #dekliniere_substantiv("NOUN_HOBBIT"
-    dekliniere_substantiv("NOUN_DWARF","Zwerg","es","Zwerg","e","maskulin"),
+    dekliniere_substantiv("NOUN_DWARF","Zwerg","es","Zwerg","e","maskulin", "en"),
     #dekliniere_substantiv("NOUN_BUGBEAR"
     #dekliniere_substantiv("NOUN_DWARF_LORD"
     #dekliniere_substantiv("NOUN_DWARF_KING"
@@ -994,7 +1002,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_BLUE_JELLY"
     #dekliniere_substantiv("NOUN_SPOTTED_JELLY"
     #dekliniere_substantiv("NOUN_OCHRE_JELLY"
-    dekliniere_substantiv("NOUN_KOBOLD","Kobold","es","Kobold","e","maskulin"),
+    dekliniere_substantiv("NOUN_KOBOLD","Kobold","es","Kobold","e","maskulin", "s"),
     #dekliniere_substantiv("NOUN_LARGE_KOBOLD"
     #dekliniere_substantiv("NOUN_KOBOLD_LORD"
     #dekliniere_substantiv("NOUN_KOBOLD_SHAMAN"
@@ -1002,9 +1010,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SMALL_MIMIC"
     #dekliniere_substantiv("NOUN_LARGE_MIMIC"
     #dekliniere_substantiv("NOUN_GIANT_MIMIC"
-    dekliniere_substantiv("NOUN_WOOD_NYMPH",     "Baumnymphe",   "", "Baumnymphe",   "en", "feminin"),
-    dekliniere_substantiv("NOUN_WATER_NYMPH",    "Wassernymphe", "", "Wassernymphe", "en", "feminin"),
-    dekliniere_substantiv("NOUN_MOUNTAIN_NYMPH", "Bergnymphe",   "", "Bergnymphe",   "en", "feminin"),
+    dekliniere_substantiv("NOUN_WOOD_NYMPH",     "Baumnymphe",   "", "Baumnymphe",   "en", "feminin","n"),
+    dekliniere_substantiv("NOUN_WATER_NYMPH",    "Wassernymphe", "", "Wassernymphe", "en", "feminin","n"),
+    dekliniere_substantiv("NOUN_MOUNTAIN_NYMPH", "Bergnymphe",   "", "Bergnymphe",   "en", "feminin","n"),
     "/* In reality goblin would be an appropriate translation for 'Kobold'. In tolkienspeek goblin is a synonym for orc.*/",
     dekliniere_substantiv("NOUN_GOBLIN","Goblin","s","Goblin","","maskulin"),
     #dekliniere_substantiv("NOUN_HOBGOBLIN"
@@ -1024,10 +1032,10 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_TITANOTHERE"
     #dekliniere_substantiv("NOUN_BALUCHITHERIUM"
     dekliniere_substantiv("NOUN_MASTODON", "Mastodon", "es", "Mastodon", "en", "neutrum"),
-    dekliniere_substantiv("NOUN_SEWER_RAT", "Kanalratte", "", "Kanalratte", "en", "feminin"),
+    dekliniere_substantiv("NOUN_SEWER_RAT", "Kanalratte", "", "Kanalratte", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_GIANT_RAT"
     #dekliniere_substantiv("NOUN_RABID_RAT"
-    dekliniere_substantiv("NOUN_WERERAT", "Werratte", "", "Werratte", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WERERAT", "Werratte", "", "Werratte", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_ROCK_MOLE"
     dekliniere_substantiv("NOUN_WOODCHUCK", "Murmeltier", "es", "Murmeltier", "e", "neutrum"),
     #dekliniere_substantiv("NOUN_CAVE_SPIDER"
@@ -1040,7 +1048,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GRAY_UNICORN",
     #dekliniere_substantiv("NOUN_BLACK_UNICORN",
     dekliniere_substantiv("NOUN_PONY","Pony","s","Pony","s","neutrum"),
-    dekliniere_substantiv("NOUN_HORSE","Pferd","es","Pferd","e","neutrum"),
+    dekliniere_substantiv("NOUN_HORSE","Pferd","es","Pferd","e","neutrum", "e"),
     dekliniere_substantiv("NOUN_WARHORSE","Schlachtroß","es","Schlachtroß","e","neutrum"),
     #dekliniere_substantiv("NOUN_FOG_CLOUD"
     #dekliniere_substantiv("NOUN_DUST_VORTEX"
@@ -1079,41 +1087,41 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_BABY_BLUE_DRAGON"
     #dekliniere_substantiv("NOUN_BABY_GREEN_DRAGON"
     #dekliniere_substantiv("NOUN_BABY_YELLOW_DRAGON"
-    dekliniere_substantiv("NOUN_GRAY_DRAGON", "Graudrache", "en", "Graudrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_SILVER_DRAGON", "Silberdrache", "en", "Silberdrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_SHIMMERING_DRAGON", "Glanzdrache", "en", "Glanzdrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_RED_DRAGON", "Rotdrache", "en", "Rotdrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_WHITE_DRAGON", "Weißdrache", "en", "Weißdrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_ORANGE_DRAGON", "Orangedrache", "en", "Orangedrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_BLACK_DRAGON", "Schwarzdrache", "en", "Schwarzdrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_BLUE_DRAGON", "Blaudrache", "en", "Blaudrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_GREEN_DRAGON", "Gründrache", "en", "Gründrache", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_YELLOW_DRAGON", "Gelbdrache", "en", "Gelbdrache", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_GRAY_DRAGON", "Graudrache", "en", "Graudrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_SILVER_DRAGON", "Silberdrache", "en", "Silberdrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_SHIMMERING_DRAGON", "Glanzdrache", "en", "Glanzdrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_RED_DRAGON", "Rotdrache", "en", "Rotdrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_WHITE_DRAGON", "Weißdrache", "en", "Weißdrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_ORANGE_DRAGON", "Orangedrache", "en", "Orangedrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_BLACK_DRAGON", "Schwarzdrache", "en", "Schwarzdrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_BLUE_DRAGON", "Blaudrache", "en", "Blaudrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_GREEN_DRAGON", "Gründrache", "en", "Gründrache", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_YELLOW_DRAGON", "Gelbdrache", "en", "Gelbdrache", "en", "maskulin", "n"),
     #dekliniere_substantiv("NOUN_STALKER"
     dekliniere_substantiv("NOUN_STALKER", "Nachsteller", "s", "Nachsteller", "", "maskulin"),
     dekliniere_substantiv("NOUN_AIR_ELEMENTAL",   "Luftelementar",   "es", "Luftelementar",   "e", "neutrum"),
     dekliniere_substantiv("NOUN_FIRE_ELEMENTAL",  "Feuerelementar",  "es", "Feuerelementar",  "e", "neutrum"),
     dekliniere_substantiv("NOUN_EARTH_ELEMENTAL", "Erdelementar",    "es", "Erdelementar",    "e", "neutrum"),
     dekliniere_substantiv("NOUN_WATER_ELEMENTAL", "Wasserelementar", "es", "Wasserelementar", "e", "neutrum"),
-    dekliniere_substantiv("NOUN_LICHEN", "Flechte", "", "Flechte", "en", "feminin"),
+    dekliniere_substantiv("NOUN_LICHEN", "Flechte", "", "Flechte", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_BROWN_MOLD"
     #dekliniere_substantiv("NOUN_YELLOW_MOLD"
     #dekliniere_substantiv("NOUN_GREEN_MOLD"
     #dekliniere_substantiv("NOUN_RED_MOLD"
     #dekliniere_substantiv("NOUN_SHRIEKER"
     #dekliniere_substantiv("NOUN_VIOLET_FUNGUS"
-    dekliniere_substantiv("NOUN_GNOME", "Gnom", "en", "Gnom", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_GNOME", "Gnom", "en", "Gnom", "en", "maskulin", "en"),
     #dekliniere_substantiv("NOUN_GNOME_LORD"
     #dekliniere_substantiv("NOUN_GNOMISH_WIZARD"
     #dekliniere_substantiv("NOUN_GNOME_KING"
-    dekliniere_substantiv("NOUN_GIANT",       "Riese", "en", "Riese", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_STONE_GIANT", "Steinriese", "en", "Steinriese", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_HILL_GIANT",  "Hügelriese", "en", "Hügelriese", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_FIRE_GIANT",  "Feuerriese", "en", "Feuerriese", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_FROST_GIANT", "Frostriese", "en", "Frostriese", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_STORM_GIANT", "Strumriese", "en", "Strumriese", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_GIANT",       "Riese", "en", "Riese", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_STONE_GIANT", "Steinriese", "en", "Steinriese", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_HILL_GIANT",  "Hügelriese", "en", "Hügelriese", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_FIRE_GIANT",  "Feuerriese", "en", "Feuerriese", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_FROST_GIANT", "Frostriese", "en", "Frostriese", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_STORM_GIANT", "Strumriese", "en", "Strumriese", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_ETTIN", "Ettin", "", "Ettin", "", "maskulin"),
-    dekliniere_substantiv("NOUN_TITAN", "Titane", "en", "Titan", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_TITAN", "Titane", "en", "Titan", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_MINOTAUR","Minotaurus","","Minotaur","en","maskulin"),
     #dekliniere_substantiv("NOUN_JABBERWOCK"
     #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK"
@@ -1152,7 +1160,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_RUST_MONSTER"
     #dekliniere_substantiv("NOUN_DISENCHANTER"
     #dekliniere_substantiv("NOUN_GARTER_SNAKE"
-    dekliniere_substantiv("NOUN_SNAKE","Schlange","","Schlange","en","feminin"),
+    dekliniere_substantiv("NOUN_SNAKE","Schlange","","Schlange","en","feminin", "n"),
     #dekliniere_substantiv("NOUN_WATER_MOCCASIN"
     #dekliniere_substantiv("NOUN_PIT_VIPER"
     dekliniere_substantiv("NOUN_PYTHON", "Python", "s", "Python", "s", "feminin"),
@@ -1171,7 +1179,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_WRAITH"
     #dekliniere_substantiv("NOUN_NAZGUL"
     #dekliniere_substantiv("NOUN_XORN"
-    dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
     #dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"),
     #dekliniere_substantiv("NOUN_OWLBEAR"
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
@@ -1198,7 +1206,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_STONE_GOLEM"
     #dekliniere_substantiv("NOUN_GLASS_GOLEM"
     #dekliniere_substantiv("NOUN_IRON_GOLEM"
-    dekliniere_substantiv("NOUN_HUMAN", "Mensch", "en", "Mensch", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_HUMAN", "Mensch", "en", "Mensch", "en", "maskulin", "en"),
     #dekliniere_substantiv("NOUN_ELF"
     #dekliniere_substantiv("NOUN_WOODLAND_ELF"
     #dekliniere_substantiv("NOUN_GREEN_ELF"
@@ -1253,17 +1261,17 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_MAIL_DAEMON"
     dekliniere_substantiv("NOUN_DJINNI", "Dschinn", "es", "Dschinn", "", "maskulin"),
     #dekliniere_substantiv("NOUN_SANDESTIN"
-    dekliniere_substantiv("NOUN_JELLYFISH", "Qualle", "", "Qualle", "en", "feminin"),
+    dekliniere_substantiv("NOUN_JELLYFISH", "Qualle", "", "Qualle", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_PIRANHA","Piranha","s","Piranha","s","maskulin"),
     dekliniere_substantiv("NOUN_SHARK","Hai","es","Hai","e","maskulin"),
     dekliniere_substantiv("NOUN_GIANT_EEL", "Riesenaal", "es", "Riesenaal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELECTRIC_EEL", "Zitteraal", "es", "Zitteraal", "e", "maskulin"),
-    dekliniere_substantiv("NOUN_KRAKEN", "Krake", "en", "Krake", "en", "maskulin"),
-    dekliniere_substantiv("NOUN_NEWT", "Molch","es","Molch","e","maskulin"),
+    dekliniere_substantiv("NOUN_KRAKEN", "Krake", "en", "Krake", "en", "maskulin","n"),
+    dekliniere_substantiv("NOUN_NEWT", "Molch","es","Molch","e","maskulin", "s"),
     dekliniere_substantiv("NOUN_GECKO", "Gecko", "s", "Gecko", "s", "maskulin"),
     dekliniere_substantiv("NOUN_IGUANA", "Leguan", "s", "Leguan", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_BABY_CROCODILE"
-    dekliniere_substantiv("NOUN_LIZARD", "Eidechse", "", "Eidechse", "en", "feminin"),
+    dekliniere_substantiv("NOUN_LIZARD", "Eidechse", "", "Eidechse", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_CHAMELEON", "Chamäleon", "s", "Chamäleon", "s", "neutrum"),
     dekliniere_substantiv("NOUN_CROCODILE","Krokodil","s","Krokodil","e","maskulin"),
     dekliniere_substantiv("NOUN_SALAMANDER", "Salamander", "s", "Salamander", "", "maskulin"),
