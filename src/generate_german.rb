@@ -585,7 +585,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_MORNING_STAR"
     #dekliniere_substantiv("NOUN_WAR_HAMMER"
     #dekliniere_substantiv("NOUN_CLUB"
-    #dekliniere_substantiv("NOUN_RUBBER_HOSE"
+    dekliniere_substantiv("NOUN_RUBBER_HOSE", "Gartenschlauch", "es", "Gartenschläuch", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_QUARTERSTAFF"
     #dekliniere_substantiv("NOUN_AKLYS"
     #dekliniere_substantiv("NOUN_FLAIL"
@@ -839,7 +839,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_OILSKIN_SACK", 
     #dekli_meta_substantiv("NOUN_BAG_OF_HOLDING", "ADJEKTIV_NIMMERVOLL NOUN_BAG"),
     #dekliniere_substantiv("NOUN_BAG_OF_TRICKS", 
-    #dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
+    # dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
     dekliniere_substantiv("NOUN_SKELETON_KEY", "Passepartout", "s", "Generalschlüssel", "", "maskulin"),
     dekliniere_substantiv("NOUN_LOCK_PICK", "Dietrich", "s", "Dietrich", "e", "maskulin"),
     dekliniere_substantiv("NOUN_CREDIT_CARD", "Kreditkarte", "", "Kreditkarte", "en", "feminin"),
@@ -1130,9 +1130,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_JABBERWOCK"
     #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK"
     dekliniere_substantiv("NOUN_KEYSTONE_KOP", "Gendarm", "en", "Gendarmen", "en", "maskulin"), 
-    #dekliniere_substantiv("NOUN_KOP_SERGEANT" # Polizeimeister?
-    #dekliniere_substantiv("NOUN_KOP_LIEUTENANT"
-    #dekliniere_substantiv("NOUN_KOP_KAPTAIN"
+    dekliniere_substantiv("NOUN_KOP_SERGEANT", "Inspektor", "es", "Inspektor", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_KOP_LIEUTENANT", "Gruppeninspektor", "es", "Gruppeninspektor", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_KOP_KAPTAIN", "Chefinspektor", "es", "Chefinspektor", "en", "maskulin", "en"),
     #dekliniere_substantiv("NOUN_LICH"
     #dekliniere_substantiv("NOUN_DEMILICH"
     #dekliniere_substantiv("NOUN_MASTER_LICH"
@@ -1228,7 +1228,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SOLDIER", "Soldat", "en", "Soldat", "en", "maskulin", "en"),
     "/* 'Korporal' exists as a military in the Austrian 'Bundesheer' and\nthe Swiss Army. "+
     "'Leutnant' and 'Hauptmann' exist in these too and also in\nthe German 'Bundeswehr'.\n"+
-    "Although not exactly referring to the exactly same rank. */",
+    "Although not referring to the exactly same rank. */",
     dekliniere_substantiv("NOUN_SERGEANT", "Korporal", "s", "Korporal", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_LIEUTENANT", "Leutnant", "s", "Leutnant", "s", "maskulin", "s"),
     # dekliniere_substantiv("NOUN_CAPTAIN", "Hauptmann", "es", "Hauptmänn", "er", "maskulin", "s"),
