@@ -366,7 +366,7 @@ int next_token(const char* input, char* output, int pos) {
 #endif
 	//do {
 		if (!isspace(input[i])) {
-			while (isalpha(input[i])||input[i]=='_') {
+			while (isalnum(input[i])||input[i]=='_') {
 				output[j++] = input[i++];
 			}
 		}
