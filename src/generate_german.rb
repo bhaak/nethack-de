@@ -399,6 +399,10 @@ def ausgabe_verbs
     Verb.new("VERB_DROP", "", "fallen", ["lässt", "lässt", "lasst","lassen"]),    # "You drop a potion."
     Verb.new("VERB_OBJECT_DROPS", "", "", ["fällst", "fällt", "fallt", "fallen"]), # e.g "A potion drops to the floor."
     Verb.new("VERB_SEEM","","zu sein", ["scheinst", "scheint","scheint", "scheinen"]),
+    Verb.new("VERB_SCHLAGEN",  "","", ["schlägst", "schlägt","schlagen", "schlagt"]),
+    Verb.new("VERB_ZUSCHLAGEN","","zu", ["schlägst", "schlägt","schlagen", "schlagt"]),
+    Verb.new("VERB_STECHEN","","", ["stichst", "sticht","stecht", "stechen"]),
+    Verb.new("VERB_ZUSTECHEN","","zu", ["stichst", "sticht","stecht", "stechen"]),
     "",
     Verb.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
     Verb.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
@@ -446,6 +450,8 @@ def ausgabe_nouns
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "eine",  [$nom,$akk],  $fem, $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einer", [$gen,$dat],  $fem, $sg),
     "",
+    unregelmaessiges_wort("NOUN_IT",            "es",  [$nom,$akk], $neu, $sg),
+    "",
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "du",    $nom,       [$mal,$fem,$neu], $sg),
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "deiner",$gen,       [$mal,$fem,$neu], $sg),
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "dir",   $dat,       [$mal,$fem,$neu], $sg),
@@ -453,7 +459,19 @@ def ausgabe_nouns
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "Ihr",   $nom,       [$mal,$fem,$neu], $pl),
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "Euer",  $gen,       [$mal,$fem,$neu], $pl),
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "Euch",  [$akk,$dat],[$mal,$fem,$neu], $pl),
-    unregelmaessiges_wort("NOUN_IT",            "es",  [$nom,$akk], $neu, $sg),
+    "",
+    unregelmaessiges_wort("PRONOMEN_3P_M_PERSONAL",  "er",    $nom,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_M_PERSONAL",  "seiner",$gen,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_M_PERSONAL",  "ihm",   $dat,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_M_PERSONAL",  "ihn",   $akk,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_PERSONAL",  "sie",   $nom,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_PERSONAL",  "ihrer", $gen,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_PERSONAL",  "ihr",   $dat,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_PERSONAL",  "sie",   $akk,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_N_PERSONAL",  "es",    $nom,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_N_PERSONAL",  "seiner",$gen,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_N_PERSONAL",  "ihm",   $dat,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_N_PERSONAL",  "es",    $akk,       [$mal,$fem,$neu], $sg),
     "",
     unregelmaessiges_wort("PRONOMEN_KEIN",  "kein",   $nom, [$mal,$neu], $sg),
     unregelmaessiges_wort("PRONOMEN_KEIN",  "keine",  $nom,  $fem,       $sg),
@@ -474,6 +492,22 @@ def ausgabe_nouns
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "dein",   $akk,  $neu,       $sg),
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "deine",  [$nom,$akk], $fem, $sg),
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "deiner", [$gen,$dat], $fem, $sg),
+    "",
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "sein",   $nom, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seines", $gen, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seinem", $dat, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seinen", $akk,  $mal,       $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "sein",   $akk,  $neu,       $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seine",  [$nom,$akk], $fem, $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seiner", [$gen,$dat], $fem, $sg),
+    "",
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihr",   $nom, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihres", $gen, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihrem", $dat, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihren", $akk,  $mal,       $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihr",   $akk,  $neu,       $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihre",  [$nom,$akk], $fem, $sg),
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihrer", [$gen,$dat], $fem, $sg),
     "",
     unregelmaessiges_wort("NOUN_OOPS",  "Hoppla",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
     "",
@@ -554,7 +588,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CRYSKNIFE"
     #dekliniere_substantiv("NOUN_AXE"
     #dekliniere_substantiv("NOUN_BATTLE_AXE"
-    #dekliniere_substantiv("NOUN_SHORT_SWORD"
+    dekliniere_substantiv("NOUN_SHORT_SWORD", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_ELVEN_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_ORCISH_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_DWARVISH_SHORT_SWORD"
@@ -1130,7 +1164,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_JABBERWOCK"
     #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK"
     dekliniere_substantiv("NOUN_KEYSTONE_KOP", "Gendarm", "en", "Gendarmen", "en", "maskulin"), 
-    dekliniere_substantiv("NOUN_KOP_SERGEANT", "Inspektor", "es", "Inspektor", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_KOP_SERGEANT", "Inspektor", "s", "Inspektor", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOP_LIEUTENANT", "Gruppeninspektor", "es", "Gruppeninspektor", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOP_KAPTAIN", "Chefinspektor", "es", "Chefinspektor", "en", "maskulin", "en"),
     #dekliniere_substantiv("NOUN_LICH"
@@ -1233,7 +1267,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LIEUTENANT", "Leutnant", "s", "Leutnant", "s", "maskulin", "s"),
     # dekliniere_substantiv("NOUN_CAPTAIN", "Hauptmann", "es", "Hauptmänn", "er", "maskulin", "s"),
     dekliniere_substantiv("NOUN_CAPTAIN", "Hauptmann", "es", "Hauptleut", "e", "maskulin", "s"),
-    #dekliniere_substantiv("NOUN_WATCHMAN"
+    dekliniere_substantiv("NOUN_WATCHMAN", "Wachmann", "es", "Wachmänn", "er", "maskulin", "s"),
     #dekliniere_substantiv("NOUN_WATCH_CAPTAIN"
     #dekliniere_substantiv("NOUN_MEDUSA"
     #dekliniere_substantiv("NOUN_WIZARD_OF_YENDOR"

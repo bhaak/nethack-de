@@ -293,6 +293,15 @@ START_TEST (test_casus_and_modifier) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_possessiv) {
+	char *text[][2] = {
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_KOP_SERGEANT VERB_SCHLAGEN mit KASUS_DATIV PRONOMEN_3P_MN_POSSESSIV NOUN_RUBBER_HOSE nach KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_KOP_SERGEANT.",
+		 ""},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
 
 Suite *test_suite(void)
 {
@@ -300,7 +309,8 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-	tcase_add_test(tc_core, test_wishing);
+	tcase_add_test(tc_core, test_possessiv);
+	/*tcase_add_test(tc_core, test_wishing);
 	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	tcase_add_test(tc_core, test_linking_elements);
@@ -316,7 +326,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_tincontent);
 	tcase_add_test(tc_core, test_inventory_names);
-	tcase_add_test(tc_core, test_casus_and_modifier);
+	tcase_add_test(tc_core, test_casus_and_modifier);*/
 
   return s;
 }

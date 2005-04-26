@@ -488,11 +488,19 @@ struct Race urace =
 
 /* Table of all genders */
 const struct Gender genders[] = {
-	{"male",	"he",	"him",	"his",	"Mal",	ROLE_MALE},
-	{"female",	"she",	"her",	"her",	"Fem",	ROLE_FEMALE},
-	{"neuter",	"it",	"it",	"its",	"Ntr",	ROLE_NEUTER}
+	{"male",	"PRONOMEN_3P_M_PERSONAL",
+						"him",
+						"PRONOMEN_3P_MN_POSSESSIV",
+						"Mal",	ROLE_MALE},
+	{"female",	"PRONOMEN_3P_F_PERSONAL",
+							"her",
+							"PRONOMEN_3P_F_POSSESSIV",
+							"Fem",	ROLE_FEMALE},
+	{"neuter",	"PRONOMEN_3P_N_PERSONAL",
+							"it",
+							"PRONOMEN_3P_MN_POSSESSIV",
+							"Ntr",	ROLE_NEUTER}
 };
-
 
 /* Table of all alignments */
 const struct Align aligns[] = {
