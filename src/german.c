@@ -140,6 +140,8 @@ const char* get_wort(const char* typ, enum Casus c, enum Genus g, enum Numerus n
 	// NOUN_FOX  -> NOUN_FOX
 	if (typ[len]=='s') { len--; }
 
+	//print_state();
+
 	while (worte[i].wort!=NULL) {
 		if ((strncmp(worte[i].typ, typ, len)==0) && 
 				(worte[i].casus   & c) && 
@@ -625,6 +627,21 @@ char* german(const char *line) {
 			//printf("strlen %d\n", strlen(output)-1);
 			if (output[strlen(output)-1]!=' ') { append(output, " "); }
 			append(output, verb_praeverb);
+
+		} else if (strncmp("KASUS_", tmp, 6)==0) {
+			insert_char = 0;
+
+			if      (strcmp("KASUS_NOMINATIV", tmp)==0) { c_casus = nominativ; }
+			else if (strcmp("KASUS_GENITIV", tmp)==0)   { c_casus = genitiv; }
+			else if (strcmp("KASUS_DATIV", tmp)==0)     { c_casus = dativ; }
+			else if (strcmp("KASUS_AKKUSATIV", tmp)==0) { c_casus = akkusativ; }
+
+		} else if (strncmp("MODIFIER_", tmp, 9)==0) {
+			insert_char = 0;
+
+			if      (strcmp("MODIFIER_MASKULIN", tmp)==0) { c_genus = maskulin; }
+			else if (strcmp("MODIFIER_FEMININ", tmp)==0)  { c_genus = feminin; }
+			else if (strcmp("MODIFIER_NEUTRUM", tmp)==0)  { c_genus = neutrum; }
 
 		} else {
 #ifdef DEBUG

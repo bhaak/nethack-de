@@ -282,6 +282,18 @@ START_TEST (test_wishing) {
 	check_german2meta(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_casus_and_modifier) {
+	char *text[][2] = {
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_GENDARMERIE VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!",
+		 "Die Gendarmerie ist hinter dir her!"},
+		{"SUBJECT KASUS_GENITIV PRONOMEN_PERSONAL MODIFIER_FEMININ ARTIKEL_UNBESTIMMTER",
+		 "Deiner einer"}
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
+
 Suite *test_suite(void)
 {
   Suite *s = suite_create("all tests");
@@ -304,6 +316,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_tincontent);
 	tcase_add_test(tc_core, test_inventory_names);
+	tcase_add_test(tc_core, test_casus_and_modifier);
 
   return s;
 }
