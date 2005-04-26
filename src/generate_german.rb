@@ -1027,8 +1027,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_HOBBIT"
     dekliniere_substantiv("NOUN_DWARF","Zwerg","es","Zwerg","e","maskulin", "en"),
     #dekliniere_substantiv("NOUN_BUGBEAR"
-    #dekliniere_substantiv("NOUN_DWARF_LORD"
-    #dekliniere_substantiv("NOUN_DWARF_KING"
+    dekliniere_substantiv("NOUN_DWARF_LORD","Zwergenfürst","en","Zwergenfürst","en","maskulin", "en"),
+    dekliniere_substantiv("NOUN_DWARF_KING","Zwergenkönig","es","Zwergenkönig","e","maskulin"),
     #dekliniere_substantiv("NOUN_MIND_FLAYER"
     #dekliniere_substantiv("NOUN_MASTER_MIND_FLAYER"
     #dekliniere_substantiv("NOUN_MANES"
@@ -1042,7 +1042,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_OCHRE_JELLY"
     dekliniere_substantiv("NOUN_KOBOLD","Kobold","es","Kobold","e","maskulin", "s"),
     #dekliniere_substantiv("NOUN_LARGE_KOBOLD"
-    #dekliniere_substantiv("NOUN_KOBOLD_LORD"
+    dekliniere_substantiv("NOUN_KOBOLD_LORD", "Koboldfürst","en","Koboldfürst","en","maskulin", "en"),
     #dekliniere_substantiv("NOUN_KOBOLD_SHAMAN"
     #dekliniere_substantiv("NOUN_LEPRECHAUN"
     #dekliniere_substantiv("NOUN_SMALL_MIMIC"
@@ -1149,9 +1149,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SHRIEKER"
     #dekliniere_substantiv("NOUN_VIOLET_FUNGUS"
     dekliniere_substantiv("NOUN_GNOME", "Gnom", "en", "Gnom", "en", "maskulin", "en"),
-    #dekliniere_substantiv("NOUN_GNOME_LORD"
+    dekliniere_substantiv("NOUN_GNOME_LORD","Gnomenfürst","en","Gnomenfürst","en","maskulin", "en"),
     #dekliniere_substantiv("NOUN_GNOMISH_WIZARD"
-    #dekliniere_substantiv("NOUN_GNOME_KING"
+    dekliniere_substantiv("NOUN_GNOME_KING","Gnomenkönig","es","Gnomenkönig","e","maskulin"),
     dekliniere_substantiv("NOUN_GIANT",       "Riese", "en", "Riese", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_STONE_GIANT", "Steinriese", "en", "Steinriese", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_HILL_GIANT",  "Hügelriese", "en", "Hügelriese", "en", "maskulin", "n"),
@@ -1188,8 +1188,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GOLDEN_NAGA"
     #dekliniere_substantiv("NOUN_GUARDIAN_NAGA"
     dekliniere_substantiv("NOUN_OGRE", "Oger", "s", "Oger", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_OGRE_LORD"
-    #dekliniere_substantiv("NOUN_OGRE_KING"
+    dekliniere_substantiv("NOUN_OGRE_LORD","Ogerfürst","en","Ogerfürst","en","maskulin", "en"),
+    dekliniere_substantiv("NOUN_OGRE_KING","Ogerkönig","es","Ogerkönig","e","maskulin"),
     #dekliniere_substantiv("NOUN_GRAY_OOZE"
     #dekliniere_substantiv("NOUN_BROWN_PUDDING"
     #dekliniere_substantiv("NOUN_BLACK_PUDDING"
@@ -1340,7 +1340,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_ELWING"
     #dekliniere_substantiv("NOUN_HIPPOCRATES"
     #dekliniere_substantiv("NOUN_KING_ARTHUR"
-    #dekliniere_substantiv("NOUN_GRAND_MASTER"
+    dekliniere_substantiv("NOUN_GRAND_MASTER", "Großmeister", "s", "Großmeister", "", "maskulin"), 
     #dekliniere_substantiv("NOUN_ARCH_PRIEST"
     #dekliniere_substantiv("NOUN_ORION"
     #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
@@ -1351,7 +1351,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_MINION_OF_HUHETOTL"
     #dekliniere_substantiv("NOUN_THOTH_AMON"
     #dekliniere_substantiv("NOUN_CHROMATIC_DRAGON"
-    #dekliniere_substantiv("NOUN_GOBLIN_KING"
+    dekliniere_substantiv("NOUN_GOBLIN_KING","Goblinkönig","es","Goblinkönig","e","maskulin"),
     #dekliniere_substantiv("NOUN_CYCLOPS"
     #dekliniere_substantiv("NOUN_IXOTH"
     #dekliniere_substantiv("NOUN_MASTER_KAEN"
