@@ -446,10 +446,13 @@ def ausgabe_nouns
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "eine",  [$nom,$akk],  $fem, $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einer", [$gen,$dat],  $fem, $sg),
     "",
-    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "du",   $nom,       [$mal,$fem,$neu], $sg),
-    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "Ihr",  $nom,       [$mal,$fem,$neu], $pl),
-    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "dich", $akk,       [$mal,$fem,$neu], $sg),
-    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "Euch", $akk,       [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "du",    $nom,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "deiner",$gen,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "dir",   $dat,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "dich",  $akk,       [$mal,$fem,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "Ihr",   $nom,       [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "Euer",  $gen,       [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_PERSONAL",  "Euch",  [$akk,$dat],[$mal,$fem,$neu], $pl),
     unregelmaessiges_wort("NOUN_IT",            "es",  [$nom,$akk], $neu, $sg),
     "",
     unregelmaessiges_wort("PRONOMEN_KEIN",  "kein",   $nom, [$mal,$neu], $sg),
@@ -495,6 +498,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WALLET", "Geldbörse", "", "Geldbörse", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_MEAT", "Fleisch", "es", "", "e", "neutrum", ""),
     dekliniere_substantiv("NOUN_LUCK", "Glück", "es", "Glück", "e", "neutrum", "s"),
+    dekliniere_substantiv("NOUN_GENDARMERIE", "Gendarmerie", "", "Gendarmerie", "en", "feminin"), 
     "",
     dekliniere_substantiv("NOUN_BAG", "Beutel", "s", "Beutel", "", "maskulin"),
     "",
@@ -918,7 +922,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MELON","Melone","","Melone","en","feminin"),
     dekliniere_substantiv("NOUN_BANANA","Banane","","Banane","en","feminin"),
     dekliniere_substantiv("NOUN_CARROT","Karotte","","Karotte","en","feminin"),
-    "/* FIX ME: don't really like \"Zweig\" */",
+    "/* IMPROVE ME: don't really like \"Zweig\" */",
     dekliniere_substantiv("NOUN_SPRIG_OF_WOLFSBANE","Wolfseisenhutzweig","es","Wolfseisenhutzweig","e","maskulin"),
     dekliniere_substantiv("NOUN_CLOVE_OF_GARLIC","Knoblauchzehe","","Knoblauchzehe","en","feminin"),
     dekliniere_substantiv("NOUN_SLIME_MOLD","Schleimpilz","es","Schleimpilz","e","maskulin"),
@@ -1125,8 +1129,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MINOTAUR","Minotaurus","","Minotaur","en","maskulin"),
     #dekliniere_substantiv("NOUN_JABBERWOCK"
     #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK"
-    #dekliniere_substantiv("NOUN_KEYSTONE_KOP"
-    #dekliniere_substantiv("NOUN_KOP_SERGEANT"
+    dekliniere_substantiv("NOUN_KEYSTONE_KOP", "Gendarm", "en", "Gendarmen", "en", "maskulin"), 
+    #dekliniere_substantiv("NOUN_KOP_SERGEANT" # Polizeimeister?
     #dekliniere_substantiv("NOUN_KOP_LIEUTENANT"
     #dekliniere_substantiv("NOUN_KOP_KAPTAIN"
     #dekliniere_substantiv("NOUN_LICH"
@@ -1221,10 +1225,14 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_ORACLE"
     #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
     #dekliniere_substantiv("NOUN_HIGH_PRIEST"
-    #dekliniere_substantiv("NOUN_SOLDIER"
-    #dekliniere_substantiv("NOUN_SERGEANT"
-    #dekliniere_substantiv("NOUN_LIEUTENANT"
-    #dekliniere_substantiv("NOUN_CAPTAIN"
+    dekliniere_substantiv("NOUN_SOLDIER", "Soldat", "en", "Soldat", "en", "maskulin", "en"),
+    "/* 'Korporal' exists as a military in the Austrian 'Bundesheer' and\nthe Swiss Army. "+
+    "'Leutnant' and 'Hauptmann' exist in these too and also in\nthe German 'Bundeswehr'.\n"+
+    "Although not exactly referring to the exactly same rank. */",
+    dekliniere_substantiv("NOUN_SERGEANT", "Korporal", "s", "Korporal", "e", "maskulin", "s"),
+    dekliniere_substantiv("NOUN_LIEUTENANT", "Leutnant", "s", "Leutnant", "s", "maskulin", "s"),
+    # dekliniere_substantiv("NOUN_CAPTAIN", "Hauptmann", "es", "Hauptmänn", "er", "maskulin", "s"),
+    dekliniere_substantiv("NOUN_CAPTAIN", "Hauptmann", "es", "Hauptleut", "e", "maskulin", "s"),
     #dekliniere_substantiv("NOUN_WATCHMAN"
     #dekliniere_substantiv("NOUN_WATCH_CAPTAIN"
     #dekliniere_substantiv("NOUN_MEDUSA"
