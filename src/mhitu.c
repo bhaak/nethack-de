@@ -95,9 +95,9 @@ register struct attack *mattk;
 	    pline("%s pretends to be friendly.", Monnam(mtmp));
 	else {
 	    if (!flags.verbose || !nearmiss)
-		pline("SUBJECT %s VERB_MISS.", Monnam(mtmp));
+		pline("SUBJECT %s VERB_MISS OBJECT PRONOMEN_PERSONAL.", Monnam(mtmp));
 	    else
-		pline("SUBJECT %s VERB_MISS knapp!", Monnam(mtmp));
+		pline("SUBJECT %s VERB_MISS OBJECT PRONOMEN_PERSONAL knapp!", Monnam(mtmp));
 	}
 	stop_occupation();
 }
@@ -109,8 +109,10 @@ register struct obj *otemp;
 {
 	if (!flags.verbose || Blind || !mon_visible(mtmp))
 		return;
-	pline("%s %s %s %s.", Monnam(mtmp),
-	      (objects[otemp->otyp].oc_dir & PIERCE) ? "thrusts" : "swings",
+	pline("%s %s mit KASUS_DATIV %s %s SATZKLAMMER.", Monnam(mtmp),
+	      (objects[otemp->otyp].oc_dir & PIERCE) ?
+					"VERB_ZUSTECHEN" :
+					"VERB_ZUSCHLAGEN",
 	      mhis(mtmp), singular(otemp, xname));
 }
 

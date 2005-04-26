@@ -66,8 +66,8 @@ noises(magr, mattk)
 		far_noise = farq;
 		noisetime = moves;
 		You_hear("%s%s.",
-			(mattk->aatyp == AT_EXPL) ? "an explosion" : "some noises",
-			farq ? " in the distance" : "");
+			(mattk->aatyp == AT_EXPL) ? "eine Explosion" : "Geräusche",
+			farq ? " aus einiger Entfernung" : "");
 	}
 }
 
@@ -440,7 +440,7 @@ gazemm(magr, mdef, mattk)
 	if (magr->mcan || !magr->mcansee ||
 	    (magr->minvis && !perceives(mdef->data)) ||
 	    !mdef->mcansee || mdef->msleeping) {
-	    if(vis) pline("but nothing happens.");
+	    if(vis) pline("aber nichts passiert.");
 	    return(MM_MISS);
 	}
 	/* call mon_reflects 2x, first test, then, if visible, print message */
@@ -1253,8 +1253,11 @@ register struct obj *otemp;
 	char buf[BUFSZ];
 	if (!flags.verbose || Blind || !mon_visible(magr)) return;
 	Strcpy(buf, mon_nam(mdef));
-	pline("%s %s %s %s at %s.", Monnam(magr),
-	      (objects[otemp->otyp].oc_dir & PIERCE) ? "thrusts" : "swings",
+	pline("SUBJECT %s %s mit KASUS_DATIV %s %s nach KASUS_DATIV %s.",
+				Monnam(magr),
+	      (objects[otemp->otyp].oc_dir & PIERCE) ?
+					"VERB_STECHEN" :
+					"VERB_SCHLAGEN",
 	      mhis(magr), singular(otemp, xname), buf);
 }
 
