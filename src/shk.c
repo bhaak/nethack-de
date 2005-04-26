@@ -356,14 +356,15 @@ register boolean nearshop;
 	    if (nearshop) {
 		/* Create swarm around you, if you merely "stepped out" */
 		if (flags.verbose)
-		    pline_The("Keystone Kops appear!");
+		    pline_The("NOUN_KEYSTONE_KOPs VERB_APPEAR!");
 		mm.x = u.ux;
 		mm.y = u.uy;
 		makekops(&mm);
 		return;
 	    }
 	    if (flags.verbose)
-		 pline_The("Keystone Kops are after you!");
+		 pline_The("NOUN_GENDARMERIE VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!");
+		 //pline_The("Keystone Kops are after you!");
 	    /* Create swarm near down staircase (hinders return to level) */
 	    mm.x = xdnstair;
 	    mm.y = ydnstair;
