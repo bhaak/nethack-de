@@ -1256,7 +1256,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SHOPKEEPER"
     #dekliniere_substantiv("NOUN_GUARD"
     #dekliniere_substantiv("NOUN_PRISONER"
-    #dekliniere_substantiv("NOUN_ORACLE"
+    dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orkakel", "n", "neutrum"),
     #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
     #dekliniere_substantiv("NOUN_HIGH_PRIEST"
     dekliniere_substantiv("NOUN_SOLDIER", "Soldat", "en", "Soldat", "en", "maskulin", "en"),
@@ -1269,9 +1269,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CAPTAIN", "Hauptmann", "es", "Hauptleut", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_WATCHMAN", "Wachmann", "es", "Wachmänn", "er", "maskulin", "s"),
     #dekliniere_substantiv("NOUN_WATCH_CAPTAIN"
-    #dekliniere_substantiv("NOUN_MEDUSA"
+    dekliniere_substantiv("NOUN_MEDUSA", "Medusa", "", "", "", "feminin"),
     #dekliniere_substantiv("NOUN_WIZARD_OF_YENDOR"
-    #dekliniere_substantiv("NOUN_CROESUS"
+    dekliniere_substantiv("NOUN_CROESUS", "Krösus", "es", "Krösus", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_CHARON"
     #dekliniere_substantiv("NOUN_GHOST"
     #dekliniere_substantiv("NOUN_SHADE"
@@ -1318,20 +1318,20 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CROCODILE","Krokodil","s","Krokodil","e","maskulin"),
     dekliniere_substantiv("NOUN_SALAMANDER", "Salamander", "s", "Salamander", "", "maskulin"),
     #dekliniere_substantiv("NOUN_LONG_WORM_TAIL"
-    #dekliniere_substantiv("NOUN_ARCHEOLOGIST"
+    dekliniere_substantiv("NOUN_ARCHEOLOGIST", "Archäologe", "en", "Archäologe", "en", "maskulin", "n"),
     #dekliniere_substantiv("NOUN_BARBARIAN"
     #dekliniere_substantiv("NOUN_CAVEMAN"
     #dekliniere_substantiv("NOUN_CAVEWOMAN"
     #dekliniere_substantiv("NOUN_HEALER"
     #dekliniere_substantiv("NOUN_KNIGHT"
-    #dekliniere_substantiv("NOUN_MONK"
-    #dekliniere_substantiv("NOUN_PRIEST"
-    #dekliniere_substantiv("NOUN_PRIESTESS"
+    dekliniere_substantiv("NOUN_MONK", "Mönch", "es", "Mönch", "e", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_PRIEST", "Priester", "s", "Priester", "", "maskulin"),
+    dekliniere_substantiv("NOUN_PRIESTESS", "Priesterin", "", "Priesterinn", "en", "feminin","nen"),
     #dekliniere_substantiv("NOUN_RANGER"
     #dekliniere_substantiv("NOUN_ROGUE"
-    #dekliniere_substantiv("NOUN_SAMURAI"
-    #dekliniere_substantiv("NOUN_TOURIST"
-    #dekliniere_substantiv("NOUN_VALKYRIE"
+    dekliniere_substantiv("NOUN_SAMURAI", "Samurai", "", "Samurai", "", "maskulin"),
+    dekliniere_substantiv("NOUN_TOURIST", "Tourist", "en", "Tourist", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_VALKYRIE", "Walküre", "", "Walküre", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_WIZARD"
     #dekliniere_substantiv("NOUN_LORD_CARNARVON"
     #dekliniere_substantiv("NOUN_PELIAS"
@@ -1342,7 +1342,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_KING_ARTHUR"
     dekliniere_substantiv("NOUN_GRAND_MASTER", "Großmeister", "s", "Großmeister", "", "maskulin"), 
     #dekliniere_substantiv("NOUN_ARCH_PRIEST"
-    #dekliniere_substantiv("NOUN_ORION"
+    dekliniere_substantiv("NOUN_ORION", "Orion", "s", "", "", "maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
     #dekliniere_substantiv("NOUN_LORD_SATO"
     #dekliniere_substantiv("NOUN_TWOFLOWER"
