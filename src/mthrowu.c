@@ -511,7 +511,7 @@ struct monst *mtmp;
 
 	    if (canseemon(mtmp)) {
 		onm = xname(otmp);
-		pline("%s thrusts %s.", Monnam(mtmp),
+		pline("5678 %s thrusts %s.", Monnam(mtmp),
 		      obj_is_pname(otmp) ? the(onm) : an(onm));
 	    }
 
@@ -593,8 +593,8 @@ struct monst *mtmp;
 		onm = obj_is_pname(otmp) ? the(onm) : an(onm);
 	    }
 	    m_shot.s = ammo_and_launcher(otmp,mwep) ? TRUE : FALSE;
-	    pline("%s %s %s!", Monnam(mtmp),
-		  m_shot.s ? "shoots" : "throws", onm);
+	    pline("SUBJECT %s %s OBJECT %s!", Monnam(mtmp),
+		  m_shot.s ? "VERB_SCHIESSEN" : "VERB_SCHLEUDERN", onm);
 	    m_shot.o = otmp->otyp;
 	} else {
 	    m_shot.o = STRANGE_OBJECT;	/* don't give multishot feedback */
