@@ -383,6 +383,7 @@ def ausgabe_verbs
     konjugiere_verb("VERB_MISS","verfehl"),
     konjugiere_verb("VERB_KILL","töte"),
     konjugiere_verb("VERB_TOUCH","berühr"),
+    konjugiere_verb("VERB_SCHLEUDERN","schleuder"),
     "",
     "/* unregelmässige Verben */",
     Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
@@ -403,6 +404,7 @@ def ausgabe_verbs
     Verb.new("VERB_ZUSCHLAGEN","","zu", ["schlägst", "schlägt","schlagen", "schlagt"]),
     Verb.new("VERB_STECHEN","","", ["stichst", "sticht","stecht", "stechen"]),
     Verb.new("VERB_ZUSTECHEN","","zu", ["stichst", "sticht","stecht", "stechen"]),
+    Verb.new("VERB_SCHIESSEN", "", "", ["schießt", "schießt", "schießt","schießen"]),
     "",
     Verb.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
     Verb.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
@@ -1256,7 +1258,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SHOPKEEPER"
     #dekliniere_substantiv("NOUN_GUARD"
     #dekliniere_substantiv("NOUN_PRISONER"
-    dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orkakel", "n", "neutrum"),
+    dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orakel", "", "neutrum"),
     #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
     #dekliniere_substantiv("NOUN_HIGH_PRIEST"
     dekliniere_substantiv("NOUN_SOLDIER", "Soldat", "en", "Soldat", "en", "maskulin", "en"),
