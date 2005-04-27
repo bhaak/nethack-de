@@ -155,6 +155,8 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
     casus[$akk][$sg] = ""
     casus[$dat][$sg] = ""
     casus[$gen][$sg] = ""
+  else
+    raise "No inflection "+genitiv_singular_endung+" found for "+singularstamm
   end
 
   if pluralstamm!="" then
@@ -184,6 +186,8 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
       casus[$akk][$pl] = ""
       casus[$dat][$pl] = pluralstamm[-1..-1]=='n' ? "" : "n"
       casus[$gen][$pl] = ""
+    else
+      raise "No inflection "+nominativ_plural_endung+" found for "+pluralstamm
     end
   end
 
@@ -538,8 +542,6 @@ def ausgabe_nouns
     "",
     dekliniere_substantiv("NOUN_BAG", "Beutel", "s", "Beutel", "", "maskulin"),
     "",
-    dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin", "s"),
-    dekliniere_substantiv("NOUN_POT_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
 
     dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
 
@@ -558,8 +560,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_COIN",      "Münze",          "",   "Münze",          "en", "feminin"),
     "/* besser als Edelstein, Kleinod? */",
     dekliniere_substantiv("NOUN_GEM",       "Schmuckstein",   "es", "Schmuckstein",   "e",  "maskulin"),
-    dekliniere_substantiv("NOUN_BOULDER",   "Felsbrocken",    "s",  "Felsbrocken",    "",   "maskulin"),
-    dekliniere_substantiv("NOUN_STATUE",    "Statue",         "",   "Statue",         "en", "feminin"),
     "",
     "/* Weapons, identified */",
     #dekliniere_substantiv("NOUN_ARROW"
@@ -821,6 +821,36 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_DEATH", "Tod", "es", "Tod", "e", "maskulin"),
     dekliniere_substantiv("NOUN_WAND_LIGHTNING", "Blitz", "es", "Blitz", "e", "maskulin"),
     "",
+    "/* Rings, identified */",
+    #dekliniere_substantiv("ADJEKTIV_RING_ADORNMENT"
+    #dekliniere_substantiv("ADJEKTIV_RING_GAIN_STRENGTH"
+    #dekliniere_substantiv("ADJEKTIV_RING_GAIN_CONSTITUTION"
+    #dekliniere_substantiv("ADJEKTIV_RING_INCREASE_ACCURACY"
+    #dekliniere_substantiv("ADJEKTIV_RING_INCREASE_DAMAGE"
+    #dekliniere_substantiv("ADJEKTIV_RING_PROTECTION"
+    #dekliniere_substantiv("ADJEKTIV_RING_REGENERATION"
+    #dekliniere_substantiv("ADJEKTIV_RING_SEARCHING"
+    #dekliniere_substantiv("ADJEKTIV_RING_STEALTH"
+    #dekliniere_substantiv("ADJEKTIV_RING_SUSTAIN_ABILITY"
+    #dekliniere_substantiv("ADJEKTIV_RING_LEVITATION"
+    #dekliniere_substantiv("ADJEKTIV_RING_HUNGER"
+    #dekliniere_substantiv("ADJEKTIV_RING_AGGRAVATE_MONSTER"
+    #dekliniere_substantiv("ADJEKTIV_RING_CONFLICT"
+    #dekliniere_substantiv("ADJEKTIV_RING_WARNING"
+    #dekliniere_substantiv("ADJEKTIV_RING_POISON_RESISTANCE"
+    #dekliniere_substantiv("ADJEKTIV_RING_FIRE_RESISTANCE"
+    #dekliniere_substantiv("ADJEKTIV_RING_COLD_RESISTANCE"
+    #dekliniere_substantiv("ADJEKTIV_RING_SHOCK_RESISTANCE"
+    #dekliniere_substantiv("ADJEKTIV_RING_FREE_ACTION"
+    #dekliniere_substantiv("ADJEKTIV_RING_SLOW_DIGESTION"
+    #dekliniere_substantiv("ADJEKTIV_RING_TELEPORTATION"
+    #dekliniere_substantiv("ADJEKTIV_RING_TELEPORT_CONTROL"
+    #dekliniere_substantiv("ADJEKTIV_RING_POLYMORPH"
+    #dekliniere_substantiv("ADJEKTIV_RING_POLYMORPH_CONTROL"
+    #dekliniere_substantiv("ADJEKTIV_RING_INVISIBILITY"
+    #dekliniere_substantiv("ADJEKTIV_RING_SEE_INVISIBLE"
+    #dekliniere_substantiv("ADJEKTIV_RING_PROTECTION_FROM_SHAPE_CHANGERS"
+    "",
     "/* Rings, unidentified */",
     dekliniere_substantiv("RING_UNIDENTIFIED_WOODEN",     "Holz",      "es", "Hölz",      "er",  "neutrum"),
     dekliniere_substantiv("RING_UNIDENTIFIED_GRANITE",    "Granit", "s",   "Granit", "e",  "maskulin"),
@@ -852,20 +882,32 @@ def ausgabe_nouns
     dekliniere_substantiv("RING_UNIDENTIFIED_TWISTED",    "Lapislazuli", "",   "Lapislazuli", "",  "maskulin"),
     dekliniere_substantiv("RING_UNIDENTIFIED_SHINY",      "Zirkon", "s",   "Zirkon", "e",  "maskulin"),
     "",
-    "/* Wands, unidentified */",
-    dekliniere_substantiv("MADE_OF_WAND_BALSA", "Balsaholz",  "es", "", "er", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_MAPLE", "Ahornholz",  "es", "", "er", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_PINE", "Kiefernholz", "es", "", "er", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_OAK", "Eichenholz", "es", "", "er", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_EBONY", "Ebenholz", "es", "", "er", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_MARBLE", "Marmor", "s", "", "e", "maskulin"),
-    dekliniere_substantiv("MADE_OF_WAND_TIN", "Zinn", "es", "", "e", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_BRASS", "Messing", "s", "", "e", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_PLATINUM", "Platin", "s", "", "s", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_IRIDIUM", "Iridium", "s", "", "en", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_ZINC", "Zink", "es", "", "e", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_ALUMINIUM", "Aluminium", "s", "", "", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_URANIUM", "Uran", "s", "", "e", "neutrum"),
+    "/* Amulets, identified */",
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_ESP"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_LIFE_SAVING"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_STRANGULATION"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_RESTFUL_SLEEP"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_VERSUS_POISON"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_CHANGE"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_UNCHANGING"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_REFLECTION"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_MAGICAL_BREATHING"
+    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_YENDOR"
+    #dekliniere_substantiv("ADJEKTIV_FAKE_AMULET_OF_YENDOR"
+    "",
+    "/* Amulets, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_SPHERICAL","kugelförmig"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_OVAL","oval"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_TRIANGULAR","dreieckig"),
+    "  /* oder besser pyramidenartig oder pyramidal?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_PYRAMIDAL","pyramidenförmig"),
+    "  /* oder besser rechteckig oder quadratisch?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_SQUARE","viereckig"),
+    "  /* oder besser konkav?*/",
+    dekliniere_adjektiv("ADJEKTIV_AMULET_CONCAVE","gewölbt"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_HEXAGONAL","sechseckig"),
+    dekliniere_adjektiv("ADJEKTIV_AMULET_OCTAGONAL","achteckig"),
     "",
     "/* Tools, identified */",
     #dekliniere_substantiv("NOUN_LARGE_BOX", 
@@ -975,11 +1017,308 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_C_RATION","Notration","","Notration","en","feminin"),
     dekliniere_substantiv("NOUN_TIN","Dose","","Dose","en","feminin"),
     "",
+    "/* Potions, identified */",
+    #dekliniere_substantiv("NOUN_POT_GAIN_ABILITY"
+    #dekliniere_substantiv("NOUN_POT_RESTORE_ABILITY"
+    #dekliniere_substantiv("NOUN_POT_CONFUSION"
+    dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin", "s"),
+    #dekliniere_substantiv("NOUN_POT_PARALYSIS"
+    #dekliniere_substantiv("NOUN_POT_SPEED"
+    #dekliniere_substantiv("NOUN_POT_LEVITATION"
+    #dekliniere_substantiv("NOUN_POT_HALLUCINATION"
+    #dekliniere_substantiv("NOUN_POT_INVISIBILITY"
+    #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE"
+    #dekliniere_substantiv("NOUN_POT_HEALING"
+    dekliniere_substantiv("NOUN_POT_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
+    #dekliniere_substantiv("NOUN_POT_EXTRA_HEALING"
+    #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
+    #dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT"
+    #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION"
+    #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"
+    #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"
+    #dekliniere_substantiv("NOUN_POT_SLEEPING"
+    #dekliniere_substantiv("NOUN_POT_FULL_HEALING"
+    #dekliniere_substantiv("NOUN_POT_POLYMORPH"
+    #dekliniere_substantiv("NOUN_POT_BOOZE"
+    #dekliniere_substantiv("NOUN_POT_SICKNESS"
+    #dekliniere_substantiv("NOUN_POT_FRUIT_JUICE"
+    #dekliniere_substantiv("NOUN_POT_ACID"
+    #dekliniere_substantiv("NOUN_POT_OIL"
+    #dekliniere_substantiv("NOUN_POT_WATER"
+    "",
+    "/* Potions, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PINK","rosarot"),
+    "  /* eigentlich unveränderlich */",
+    dekliniere_adjektiv("ADJEKTIV_POT_ORANGE","orangen"),
+    dekliniere_adjektiv("ADJEKTIV_POT_YELLOW","gelb"),
+    dekliniere_adjektiv("ADJEKTIV_POT_EMERALD","smaragdgrün"),
+    dekliniere_adjektiv("ADJEKTIV_POT_DARK_GREEN","dunkelgrün"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CYAN","tiefblau"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SKY_BLUE","himmelblau"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BRILLIANT_BLUE","blauglänzend"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MAGENTA","tiefrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PURPLE_RED","purpurrot"),
+    dekliniere_adjektiv("ADJEKTIV_POT_PUCE","dunkelbraun"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MILKY","milchig"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SWIRLY","verwirbelt"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BUBBLY","sprudelnd"),
+    dekliniere_adjektiv("ADJEKTIV_POT_SMOKY","rauchig"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CLOUDY","unklar"),
+    dekliniere_adjektiv("ADJEKTIV_POT_EFFERVESCENT","übersprudelnd"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BLACK","schwarz"),
+    dekliniere_adjektiv("ADJEKTIV_POT_GOLDEN","golden"),
+    dekliniere_adjektiv("ADJEKTIV_POT_BROWN","braun"),
+    dekliniere_adjektiv("ADJEKTIV_POT_FIZZY","zischend"),
+    dekliniere_adjektiv("ADJEKTIV_POT_DARK","dunkl"),
+    dekliniere_adjektiv("ADJEKTIV_POT_WHITE","weiß"),
+    dekliniere_adjektiv("ADJEKTIV_POT_MURKY","trüb"),
+    dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
+    "",
+    "/* Scrolls, identified */",
+    #dekliniere_substantiv("NOUN_SCR_ENCHANT_ARMOR"
+    #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"
+    #dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER"
+    #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER"
+    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE"
+    #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"
+    #dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER"
+    #dekliniere_substantiv("NOUN_SCR_TAMING"
+    #dekliniere_substantiv("NOUN_SCR_GENOCIDE"
+    #dekliniere_substantiv("NOUN_SCR_LIGHT"
+    #dekliniere_substantiv("NOUN_SCR_TELEPORTATION"
+    #dekliniere_substantiv("NOUN_SCR_GOLD_DETECTION"
+    #dekliniere_substantiv("NOUN_SCR_FOOD_DETECTION"
+    #dekliniere_substantiv("NOUN_SCR_IDENTIFY"
+    #dekliniere_substantiv("NOUN_SCR_MAGIC_MAPPING"
+    #dekliniere_substantiv("NOUN_SCR_AMNESIA"
+    #dekliniere_substantiv("NOUN_SCR_FIRE"
+    #dekliniere_substantiv("NOUN_SCR_EARTH"
+    #dekliniere_substantiv("NOUN_SCR_PUNISHMENT"
+    #dekliniere_substantiv("NOUN_SCR_CHARGING"
+    #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD"
+    #dekliniere_substantiv("NOUN_SCR_MAIL"
+    #dekliniere_substantiv("NOUN_SCR_BLANK_PAPER"
+    "",
+    "/* Scrolls, unidentified */",
+    #dekliniere_substantiv("NOUN_SCR_ZELGO_MER"
+    #dekliniere_substantiv("NOUN_SCR_JUYED_AWK_YACC"
+    #dekliniere_substantiv("NOUN_SCR_NR_9"
+    #dekliniere_substantiv("NOUN_SCR_XIXAXA_XOXAXA_XUXAXA"
+    #dekliniere_substantiv("NOUN_SCR_PRATYAVAYAH"
+    #dekliniere_substantiv("NOUN_SCR_DAIYEN_FOOELS"
+    #dekliniere_substantiv("NOUN_SCR_LEP_GEX_VEN_ZEA"
+    #dekliniere_substantiv("NOUN_SCR_PRIRUTSENIE"
+    #dekliniere_substantiv("NOUN_SCR_ELBIB_YLOH"
+    #dekliniere_substantiv("NOUN_SCR_VERR_YED_HORRE"
+    #dekliniere_substantiv("NOUN_SCR_VENZAR_BORGAVVE"
+    #dekliniere_substantiv("NOUN_SCR_THARR"
+    #dekliniere_substantiv("NOUN_SCR_YUM_YUM"
+    #dekliniere_substantiv("NOUN_SCR_KERNOD_WEL"
+    #dekliniere_substantiv("NOUN_SCR_ELAM_EBOW"
+    #dekliniere_substantiv("NOUN_SCR_DUAM_XNAHT"
+    #dekliniere_substantiv("NOUN_SCR_ANDOVA_BEGARIN"
+    #dekliniere_substantiv("NOUN_SCR_KIRJE"
+    #dekliniere_substantiv("NOUN_SCR_VE_FORBRYDERNE"
+    #dekliniere_substantiv("NOUN_SCR_HACKEM_MUCHE"
+    #dekliniere_substantiv("NOUN_SCR_VELOX_NEB"
+    #dekliniere_substantiv("NOUN_SCR_FOOBIE_BLETCH"
+    #dekliniere_substantiv("NOUN_SCR_TEMOV"
+    #dekliniere_substantiv("NOUN_SCR_GARVEN_DEH"
+    #dekliniere_substantiv("NOUN_SCR_READ_ME"
+    #dekliniere_substantiv("NOUN_SCR_STAMPED"
+    #dekliniere_substantiv("NOUN_SCR_UNLABELED"
+    "",
+    "/* Spellbooks, identified */",
+    #dekliniere_substantiv("NOUN_SPE_DIG"
+    #dekliniere_substantiv("NOUN_SPE_MAGIC_MISSILE"
+    #dekliniere_substantiv("NOUN_SPE_FIREBALL"
+    #dekliniere_substantiv("NOUN_SPE_CONE_OF_COLD"
+    #dekliniere_substantiv("NOUN_SPE_SLEEP"
+    #dekliniere_substantiv("NOUN_SPE_FINGER_OF_DEATH"
+    #dekliniere_substantiv("NOUN_SPE_LIGHT"
+    #dekliniere_substantiv("NOUN_SPE_DETECT_MONSTERS"
+    #dekliniere_substantiv("NOUN_SPE_HEALING"
+    #dekliniere_substantiv("NOUN_SPE_KNOCK"
+    #dekliniere_substantiv("NOUN_SPE_FORCE_BOLT"
+    #dekliniere_substantiv("NOUN_SPE_CONFUSE_MONSTER"
+    #dekliniere_substantiv("NOUN_SPE_CURE_BLINDNESS"
+    #dekliniere_substantiv("NOUN_SPE_DRAIN_LIFE"
+    #dekliniere_substantiv("NOUN_SPE_SLOW_MONSTER"
+    #dekliniere_substantiv("NOUN_SPE_WIZARD_LOCK"
+    #dekliniere_substantiv("NOUN_SPE_CREATE_MONSTER"
+    #dekliniere_substantiv("NOUN_SPE_DETECT_FOOD"
+    #dekliniere_substantiv("NOUN_SPE_CAUSE_FEAR"
+    #dekliniere_substantiv("NOUN_SPE_CLAIRVOYANCE"
+    #dekliniere_substantiv("NOUN_SPE_CURE_SICKNESS"
+    #dekliniere_substantiv("NOUN_SPE_CHARM_MONSTER"
+    #dekliniere_substantiv("NOUN_SPE_HASTE_SELF"
+    #dekliniere_substantiv("NOUN_SPE_DETECT_UNSEEN"
+    #dekliniere_substantiv("NOUN_SPE_LEVITATION"
+    #dekliniere_substantiv("NOUN_SPE_EXTRA_HEALING"
+    #dekliniere_substantiv("NOUN_SPE_RESTORE_ABILITY"
+    #dekliniere_substantiv("NOUN_SPE_INVISIBILITY"
+    #dekliniere_substantiv("NOUN_SPE_DETECT_TREASURE"
+    #dekliniere_substantiv("NOUN_SPE_REMOVE_CURSE"
+    #dekliniere_substantiv("NOUN_SPE_MAGIC_MAPPING"
+    #dekliniere_substantiv("NOUN_SPE_IDENTIFY"
+    #dekliniere_substantiv("NOUN_SPE_TURN_UNDEAD"
+    #dekliniere_substantiv("NOUN_SPE_POLYMORPH"
+    #dekliniere_substantiv("NOUN_SPE_TELEPORT_AWAY"
+    #dekliniere_substantiv("NOUN_SPE_CREATE_FAMILIAR"
+    #dekliniere_substantiv("NOUN_SPE_CANCELLATION"
+    #dekliniere_substantiv("NOUN_SPE_PROTECTION"
+    #dekliniere_substantiv("NOUN_SPE_JUMPING"
+    #dekliniere_substantiv("NOUN_SPE_STONE_TO_FLESH"
+    #dekliniere_substantiv("NOUN_SPE_FLAME_SPHERE"
+    #dekliniere_substantiv("NOUN_SPE_FREEZE_SPHERE"
+    #dekliniere_substantiv("NOUN_SPE_BLANK_PAPER"
+    #dekliniere_substantiv("NOUN_SPE_BOOK_OF_THE_DEAD"
+    "",
+    "/* Spellbooks, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamentartig"), # Kandidat für 'aus Pergament'
+    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum'
+    dekliniere_substantiv("MADE_OF_SPE_VELLUM", "Velum", "s", "", "s", "neutrum"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_RAGGED", "ausgefranst"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", ""),
+    dekliniere_adjektiv("ADJEKTIV_SPE_MOTTLED", "fleckig"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_STAINED", "beschmutzt"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", ""), # Kandidat für 'aus Stoff'
+    dekliniere_adjektiv("ADJEKTIV_SPE_LEATHER", "ledern"), # Kandidat für 'aus Leder'
+    dekliniere_adjektiv("ADJEKTIV_SPE_WHITE", "weiß"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PINK", "rosarot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_RED", "rot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_ORANGE", "orangen"), # Kandidat für unveränderlich
+    dekliniere_adjektiv("ADJEKTIV_SPE_YELLOW", "gelb"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_VELVET", "samten"), # Kandidat für 'aus Samt'
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_GREEN", "hellgrün"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_GREEN", "dunkelgrün"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_TURQUOISE", "türkisfarben"), # Kandidat für unveränderlich
+    dekliniere_adjektiv("ADJEKTIV_SPE_CYAN", "tiefblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BLUE", "hellblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BLUE", "dunkelblau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_INDIGO", "indigofarben"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_MAGENTA", "tiefrot"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PURPLE", "purpurn"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_VIOLET", "violett"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_TAN", "hellbraun"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "hellbraun"), # kariert?
+    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BROWN", "hellbraun"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BROWN", "dunkelbraun"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GRAY", "grau"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_WRINKLED", "zerknittert"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DUSTY", "verstaubt"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_BRONZE", "bronzen"), # oder 'bronzefarben'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_COPPER", "kupfern"), # oder 'kupferrot'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_SILVER", "silbern"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GOLD", "golden"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_GLITTERING", "gleißend"), # LEO gibt glänzend,glanzvoll, gleißend, glitzernd, verlockend
+    dekliniere_adjektiv("ADJEKTIV_SPE_SHINING", "glänzend"), # oder 'blank'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_DULL", "matt"), # oder 'stumpf' oder 'trübe'?
+    dekliniere_adjektiv("ADJEKTIV_SPE_THIN", "dünn"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_THICK", "dick"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_CANVAS", ""),
+    dekliniere_adjektiv("ADJEKTIV_SPE_HARDCOVER", "gebunden"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PLAIN", "unbedruckt"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_PAPYRUS", ""), # Kandidat für 'aus Papyrus'
+    "",
+    "/* Spellbooks, unidentified */",
+    "",
+    "/* Wands, unidentified */",
+    dekliniere_adjektiv("ADJEKTIV_WAND_GLASS", "gläsern"),
+    dekliniere_substantiv("MADE_OF_WAND_BALSA", "Balsaholz",  "es", "", "er", "neutrum"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_CRYSTAL", "kristallen"),
+    dekliniere_substantiv("MADE_OF_WAND_MAPLE", "Ahornholz",  "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_PINE", "Kiefernholz", "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_OAK", "Eichenholz", "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_EBONY", "Ebenholz", "es", "", "er", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_MARBLE", "Marmor", "s", "", "e", "maskulin"),
+    dekliniere_substantiv("MADE_OF_WAND_TIN", "Zinn", "es", "", "e", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_BRASS", "Messing", "s", "", "e", "neutrum"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_COPPER", "kupfern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SILVER", "silbern"),
+    dekliniere_substantiv("MADE_OF_WAND_PLATINUM", "Platin", "s", "", "s", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_IRIDIUM", "Iridium", "s", "", "en", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_ZINC", "Zink", "es", "", "e", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_ALUMINIUM", "Aluminium", "s", "", "", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_URANIUM", "Uran", "s", "", "e", "neutrum"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_IRON", "eisern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_STEEL", "stählern"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_HEXAGONAL","sechseckig"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SHORT","kurz"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_RUNED","runenbeschriftet"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_LONG","lang"),
+    "/* 'gebogen' ist IMO besser als 'gekrümmt'*/",
+    dekliniere_adjektiv("ADJEKTIV_WAND_CURVED","gebogen"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_FORKED","gegabelt"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_SPIKED","spitzig"),
+    dekliniere_adjektiv("ADJEKTIV_WAND_JEWELED","juwelenbesetzt"),
+    "",
     "/* Coins */",
     dekliniere_substantiv("NOUN_GOLD_PIECE","Goldstück","es","Goldstück","e","neutrum"),
     "",
-    "/* Spellbooks, unidentified */",
-    dekliniere_substantiv("MADE_OF_SPE_VELLUM", "Velum", "s", "", "s", "neutrum"),
+    "/* Gems, identified */",
+    #dekliniere_substantiv("ADJEKTIV_GEM_DILITHIUM_CRYSTAL"
+    #dekliniere_substantiv("ADJEKTIV_GEM_DIAMOND"
+    #dekliniere_substantiv("ADJEKTIV_GEM_RUBY"
+    #dekliniere_substantiv("ADJEKTIV_GEM_JACINTH"
+    #dekliniere_substantiv("ADJEKTIV_GEM_SAPPHIRE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_BLACK_OPAL"
+    #dekliniere_substantiv("ADJEKTIV_GEM_EMERALD"
+    #dekliniere_substantiv("ADJEKTIV_GEM_TURQUOISE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_CITRINE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_AQUAMARINE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_AMBER"
+    #dekliniere_substantiv("ADJEKTIV_GEM_TOPAZ"
+    #dekliniere_substantiv("ADJEKTIV_GEM_JET"
+    #dekliniere_substantiv("ADJEKTIV_GEM_OPAL"
+    #dekliniere_substantiv("ADJEKTIV_GEM_CHRYSOBERYL"
+    #dekliniere_substantiv("ADJEKTIV_GEM_GARNET"
+    #dekliniere_substantiv("ADJEKTIV_GEM_AMETHYST"
+    #dekliniere_substantiv("ADJEKTIV_GEM_JASPER"
+    #dekliniere_substantiv("ADJEKTIV_GEM_FLUORITE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_OBSIDIAN"
+    #dekliniere_substantiv("ADJEKTIV_GEM_AGATE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_JADE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_WHITE_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_BLUE_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_RED_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_YELLOWISH_BROWN_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_ORANGE_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_YELLOW_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_BLACK_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_GREEN_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_VIOLET_GLASS"
+    #dekliniere_substantiv("ADJEKTIV_GEM_LUCKSTONE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_LOADSTONE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_TOUCHSTONE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_FLINT"
+    #dekliniere_substantiv("ADJEKTIV_GEM_ROCK"
+    "",
+    "/* Gems, unidentified */",
+    #dekliniere_substantiv("ADJEKTIV_GEM_WHITE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_RED"
+    #dekliniere_substantiv("ADJEKTIV_GEM_ORANGE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_BLUE"
+    #dekliniere_substantiv("ADJEKTIV_GEM_BLACK"
+    #dekliniere_substantiv("ADJEKTIV_GEM_GREEN"
+    #dekliniere_substantiv("ADJEKTIV_GEM_YELLOW"
+    #dekliniere_substantiv("ADJEKTIV_GEM_YELLOWISH_BROWN"
+    #dekliniere_substantiv("ADJEKTIV_GEM_VIOLET"
+    #dekliniere_substantiv("ADJEKTIV_GEM_GRAY"
+    "",
+    "/* Other objects, identified */",
+    dekliniere_substantiv("NOUN_BOULDER",   "Felsbrocken",    "s",  "Felsbrocken",    "",   "maskulin"),
+    dekliniere_substantiv("NOUN_STATUE",    "Statue",         "",   "Statue",         "en", "feminin"),
+    #dekliniere_substantiv("NOUN_HEAVY_IRON_BALL"
+    #dekliniere_substantiv("NOUN_IRON_CHAIN"
+    #dekliniere_substantiv("NOUN_BLINDING_VENOM"
+    "",
+    "/* Other objects, unidentified */",
+    #dekliniere_substantiv("NOUN_SPLASH_OF_VENOM"
+    #dekliniere_substantiv("NOUN_ACID_VENOM"
+    "",
+    "/* ======================================================= */",
     "",
     "/* all monster names */",
     dekliniere_substantiv("NOUN_GIANT_ANT","Riesenameise","","Riesenameise","en","feminin","n"),
@@ -1114,9 +1453,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GIANT_BAT", "Riesenfledermaus", "", "Riesenfledermäuse", "e", "feminin"),
     dekliniere_substantiv("NOUN_RAVEN", "Rabe", "en", "Rabe", "en", "maskulin"),
     dekliniere_substantiv("NOUN_VAMPIRE_BAT", "Vampirfledermaus", "", "Vampirfledermäuse", "e", "feminin"),
-    #dekliniere_substantiv("NOUN_PLAINS_CENTAUR"
-    #dekliniere_substantiv("NOUN_FOREST_CENTAUR"
-    #dekliniere_substantiv("NOUN_MOUNTAIN_CENTAUR"
+    dekliniere_substantiv("NOUN_PLAINS_CENTAUR", "Steppenkentaur", "en", "Steppenkentaur", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_FOREST_CENTAUR", "Waldkentaur", "en", "Waldkentaur", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_MOUNTAIN_CENTAUR", "Bergkentaur", "en", "Bergkentaur", "en", "maskulin", "en"),
     #dekliniere_substantiv("NOUN_BABY_GRAY_DRAGON"
     #dekliniere_substantiv("NOUN_BABY_SILVER_DRAGON"
     #dekliniere_substantiv("NOUN_BABY_SHIMMERING_DRAGON"
@@ -1270,7 +1609,7 @@ def ausgabe_nouns
     # dekliniere_substantiv("NOUN_CAPTAIN", "Hauptmann", "es", "Hauptmänn", "er", "maskulin", "s"),
     dekliniere_substantiv("NOUN_CAPTAIN", "Hauptmann", "es", "Hauptleut", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_WATCHMAN", "Wachmann", "es", "Wachmänn", "er", "maskulin", "s"),
-    #dekliniere_substantiv("NOUN_WATCH_CAPTAIN"
+    dekliniere_substantiv("NOUN_WATCH_CAPTAIN", "Wachkommandant", "en", "Wachkommandant", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_MEDUSA", "Medusa", "", "", "", "feminin"),
     #dekliniere_substantiv("NOUN_WIZARD_OF_YENDOR"
     dekliniere_substantiv("NOUN_CROESUS", "Krösus", "es", "Krösus", "e", "maskulin"),
@@ -1381,112 +1720,6 @@ def ausgabe_nouns
     "",
     "/* ======================================================= */",
     "/* Adjektive */",
-    "/* Potions, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PINK","rosarot"),
-    "  /* eigentlich unveränderlich */",
-    dekliniere_adjektiv("ADJEKTIV_POT_ORANGE","orangen"),
-    dekliniere_adjektiv("ADJEKTIV_POT_YELLOW","gelb"),
-    dekliniere_adjektiv("ADJEKTIV_POT_EMERALD","smaragdgrün"),
-    dekliniere_adjektiv("ADJEKTIV_POT_DARK_GREEN","dunkelgrün"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CYAN","tiefblau"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SKY_BLUE","himmelblau"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BRILLIANT_BLUE","blauglänzend"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MAGENTA","tiefrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PURPLE_RED","purpurrot"),
-    dekliniere_adjektiv("ADJEKTIV_POT_PUCE","dunkelbraun"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MILKY","milchig"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SWIRLY","verwirbelt"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BUBBLY","sprudelnd"),
-    dekliniere_adjektiv("ADJEKTIV_POT_SMOKY","rauchig"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CLOUDY","unklar"),
-    dekliniere_adjektiv("ADJEKTIV_POT_EFFERVESCENT","übersprudelnd"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BLACK","schwarz"),
-    dekliniere_adjektiv("ADJEKTIV_POT_GOLDEN","golden"),
-    dekliniere_adjektiv("ADJEKTIV_POT_BROWN","braun"),
-    dekliniere_adjektiv("ADJEKTIV_POT_FIZZY","zischend"),
-    dekliniere_adjektiv("ADJEKTIV_POT_DARK","dunkl"),
-    dekliniere_adjektiv("ADJEKTIV_POT_WHITE","weiß"),
-    dekliniere_adjektiv("ADJEKTIV_POT_MURKY","trüb"),
-    dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
-    "",
-    "/* Spellbooks, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamentartig"), # Kandidat für 'aus Pergament'
-    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum'
-    dekliniere_adjektiv("ADJEKTIV_SPE_RAGGED", "ausgefranst"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", ""),
-    dekliniere_adjektiv("ADJEKTIV_SPE_MOTTLED", "fleckig"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_STAINED", "beschmutzt"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", ""), # Kandidat für 'aus Stoff'
-    dekliniere_adjektiv("ADJEKTIV_SPE_LEATHER", "ledern"), # Kandidat für 'aus Leder'
-    dekliniere_adjektiv("ADJEKTIV_SPE_WHITE", "weiß"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_PINK", "rosarot"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_RED", "rot"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_ORANGE", "orangen"), # Kandidat für unveränderlich
-    dekliniere_adjektiv("ADJEKTIV_SPE_YELLOW", "gelb"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_VELVET", "samten"), # Kandidat für 'aus Samt'
-    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_GREEN", "hellgrün"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_GREEN", "dunkelgrün"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_TURQUOISE", "türkisfarben"), # Kandidat für unveränderlich
-    dekliniere_adjektiv("ADJEKTIV_SPE_CYAN", "tiefblau"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BLUE", "hellblau"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BLUE", "dunkelblau"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_INDIGO", "indigofarben"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_MAGENTA", "tiefrot"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_PURPLE", "purpurn"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_VIOLET", "violett"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_TAN", "hellbraun"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "hellbraun"), # kariert?
-    dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BROWN", "hellbraun"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BROWN", "dunkelbraun"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_GRAY", "grau"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_WRINKLED", "zerknittert"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_DUSTY", "verstaubt"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_BRONZE", "bronzen"), # oder 'bronzefarben'?
-    dekliniere_adjektiv("ADJEKTIV_SPE_COPPER", "kupfern"), # oder 'kupferrot'?
-    dekliniere_adjektiv("ADJEKTIV_SPE_SILVER", "silbern"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_GOLD", "golden"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_GLITTERING", "gleißend"), # LEO gibt glänzend,glanzvoll, gleißend, glitzernd, verlockend
-    dekliniere_adjektiv("ADJEKTIV_SPE_SHINING", "glänzend"), # oder 'blank'?
-    dekliniere_adjektiv("ADJEKTIV_SPE_DULL", "matt"), # oder 'stumpf' oder 'trübe'?
-    dekliniere_adjektiv("ADJEKTIV_SPE_THIN", "dünn"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_THICK", "dick"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_CANVAS", ""),
-    dekliniere_adjektiv("ADJEKTIV_SPE_HARDCOVER", "gebunden"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_PLAIN", "unbedruckt"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_PAPYRUS", ""), # Kandidat für 'aus Papyrus'
-    "",
-    "/* Wands, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_WAND_GLASS", "gläsern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_CRYSTAL", "kristallen"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_COPPER", "kupfern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_SILVER", "silbern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_IRON", "eisern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_STEEL", "stählern"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_HEXAGONAL","sechseckig"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_SHORT","kurz"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_RUNED","runenbeschriftet"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_LONG","lang"),
-    "/* 'gebogen' ist IMO besser als 'gekrümmt'*/",
-    dekliniere_adjektiv("ADJEKTIV_WAND_CURVED","gebogen"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_FORKED","gegabelt"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_SPIKED","spitzig"),
-    dekliniere_adjektiv("ADJEKTIV_WAND_JEWELED","juwelenbesetzt"),
-    "",
-    "/* Amulets, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_SPHERICAL","kugelförmig"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_OVAL","oval"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_TRIANGULAR","dreieckig"),
-    "  /* oder besser pyramidenartig oder pyramidal?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_PYRAMIDAL","pyramidenförmig"),
-    "  /* oder besser rechteckig oder quadratisch?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_SQUARE","viereckig"),
-    "  /* oder besser konkav?*/",
-    dekliniere_adjektiv("ADJEKTIV_AMULET_CONCAVE","gewölbt"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_HEXAGONAL","sechseckig"),
-    dekliniere_adjektiv("ADJEKTIV_AMULET_OCTAGONAL","achteckig"),
-    "",
     dekliniere_adjektiv("ADJEKTIV_CURSED","verflucht"),
     dekliniere_adjektiv("ADJEKTIV_UNCURSED","nicht verflucht"),
     "  /* blessed mit geheiligt oder gesegnet uebersetzen? */",
