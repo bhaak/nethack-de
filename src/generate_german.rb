@@ -562,82 +562,82 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GEM",       "Schmuckstein",   "es", "Schmuckstein",   "e",  "maskulin"),
     "",
     "/* Weapons, identified */",
-    #dekliniere_substantiv("NOUN_ARROW"
+    dekliniere_substantiv("NOUN_ARROW", "Pfeil", "es", "Pfeil", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ELVEN_ARROW"
     #dekliniere_substantiv("NOUN_ORCISH_ARROW"
-    #dekliniere_substantiv("NOUN_SILVER_ARROW"
+    dekliniere_substantiv("NOUN_SILVER_ARROW", "Silberpfeil", "es", "Silberpfeil", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_YA"
     #dekliniere_substantiv("NOUN_CROSSBOW_BOLT"
-    #dekliniere_substantiv("NOUN_DART"
+    dekliniere_substantiv("NOUN_DART", "Wurfpfeil", "es", "Wurfpfeil", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_SHURIKEN"
-    #dekliniere_substantiv("NOUN_BOOMERANG"
-    #dekliniere_substantiv("NOUN_SPEAR"
+    dekliniere_substantiv("NOUN_BOOMERANG", "Bumerang", "es", "Bumerang", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SPEAR", "Speer", "es", "Speer", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ELVEN_SPEAR"
     #dekliniere_substantiv("NOUN_ORCISH_SPEAR"
     #dekliniere_substantiv("NOUN_DWARVISH_SPEAR"
     #dekliniere_substantiv("NOUN_SILVER_SPEAR"
     #dekliniere_substantiv("NOUN_JAVELIN"
-    #dekliniere_substantiv("NOUN_TRIDENT"
-    #dekliniere_substantiv("NOUN_DAGGER"
+    dekliniere_substantiv("NOUN_TRIDENT", "Dreizack", "s", "Dreizack", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_DAGGER", "Dolch", "es", "Dolch", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ELVEN_DAGGER"
     #dekliniere_substantiv("NOUN_ORCISH_DAGGER"
     #dekliniere_substantiv("NOUN_SILVER_DAGGER"
     #dekliniere_substantiv("NOUN_ATHAME"
-    #dekliniere_substantiv("NOUN_SCALPEL"
-    #dekliniere_substantiv("NOUN_KNIFE"
-    #dekliniere_substantiv("NOUN_STILETTO"
+    dekliniere_substantiv("NOUN_SCALPEL", "Skalpell", "s", "Skalpell", "e", "neutrum"),
+    dekliniere_substantiv("NOUN_KNIFE", "Messer", "s", "Messer", "", "neutrum", "s"),
+    dekliniere_substantiv("NOUN_STILETTO", "Stilett", "s", "Stilett", "e", "neutrum"),
     #dekliniere_substantiv("NOUN_WORM_TOOTH"
     #dekliniere_substantiv("NOUN_CRYSKNIFE"
-    #dekliniere_substantiv("NOUN_AXE"
-    #dekliniere_substantiv("NOUN_BATTLE_AXE"
+    dekliniere_substantiv("NOUN_AXE", "Beil", "es", "Beil", "e", "neutrum"),
+    dekliniere_substantiv("NOUN_BATTLE_AXE", "Streitaxt", "", "Streitäxt", "e", "feminin"),
     dekliniere_substantiv("NOUN_SHORT_SWORD", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_ELVEN_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_ORCISH_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_DWARVISH_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_SCIMITAR"
     #dekliniere_substantiv("NOUN_SILVER_SABER"
-    #dekliniere_substantiv("NOUN_BROADSWORD"
+    dekliniere_substantiv("NOUN_BROADSWORD", "Breitschwert", "es", "Breitschwert", "er", "neutrum", "s"),
     #dekliniere_substantiv("NOUN_ELVEN_BROADSWORD"
-    #dekliniere_substantiv("NOUN_LONG_SWORD"
-    #dekliniere_substantiv("NOUN_TWO_HANDED_SWORD"
+    dekliniere_substantiv("NOUN_LONG_SWORD", "Langschwert", "es", "Langschwert", "er", "neutrum"),
+    dekliniere_substantiv("NOUN_TWO_HANDED_SWORD", "Zweihänder", "s", "Zweihänder", "", "maskulin"),
     #dekliniere_substantiv("NOUN_KATANA"
     #dekliniere_substantiv("NOUN_TSURUGI"
     #dekliniere_substantiv("NOUN_RUNESWORD"
-    #dekliniere_substantiv("NOUN_PARTISAN"
+    dekliniere_substantiv("NOUN_PARTISAN", "Partisane", "", "Partisane", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_RANSEUR"
-    #dekliniere_substantiv("NOUN_SPETUM"
-    #dekliniere_substantiv("NOUN_GLAIVE"
-    #dekliniere_substantiv("NOUN_LANCE"
-    #dekliniere_substantiv("NOUN_HALBERD"
+    #dekliniere_substantiv("NOUN_SPETUM" Korseke oder Runka (engl.: Spetum, ital.: Corsesca) http://www.die-dunkle-dimension.de/p-w1132.htm 
+    dekliniere_substantiv("NOUN_GLAIVE", "Glefe", "", "Glefe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_LANCE", "Lanze", "", "Lanze", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_HALBERD", "Hellebarde", "", "Hellebarde", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_BARDICHE"
     #dekliniere_substantiv("NOUN_VOULGE"
     #dekliniere_substantiv("NOUN_DWARVISH_MATTOCK"
-    #dekliniere_substantiv("NOUN_FAUCHARD"
-    #dekliniere_substantiv("NOUN_GUISARME"
+    dekliniere_substantiv("NOUN_FAUCHARD", "Kriegssense", "", "Kriegssense", "en", "feminin", "n"),
+    #dekliniere_substantiv("NOUN_GUISARME",
     #dekliniere_substantiv("NOUN_BILL_GUISARME"
-    #dekliniere_substantiv("NOUN_LUCERN_HAMMER"
+    #dekliniere_substantiv("NOUN_LUCERN_HAMMER", "Luzerner Hammer",
     #dekliniere_substantiv("NOUN_BEC_DE_CORBIN"
-    #dekliniere_substantiv("NOUN_MACE"
-    #dekliniere_substantiv("NOUN_MORNING_STAR"
-    #dekliniere_substantiv("NOUN_WAR_HAMMER"
-    #dekliniere_substantiv("NOUN_CLUB"
+    dekliniere_substantiv("NOUN_MACE", "Streitkolben", "s", "Streitkolben", "", "maskulin"),
+    dekliniere_substantiv("NOUN_MORNING_STAR", "Morgenstern", "es", "Morgenstern", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_WAR_HAMMER", "Kriegshammer", "s", "Kriegshämmer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_CLUB", "Keule", "", "Keule", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_RUBBER_HOSE", "Gartenschlauch", "es", "Gartenschläuch", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_QUARTERSTAFF"
-    #dekliniere_substantiv("NOUN_AKLYS"
-    #dekliniere_substantiv("NOUN_FLAIL"
-    #dekliniere_substantiv("NOUN_BULLWHIP"
-    #dekliniere_substantiv("NOUN_BOW"
+    dekliniere_substantiv("NOUN_QUARTERSTAFF", "Kampfstab", "es", "Kampfstäb", "e", "maskulin", "s"),
+    dekliniere_substantiv("NOUN_AKLYS", "Hakenspeer", "es", "Hakenspeer", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_FLAIL", "Dreschflegel", "s", "Dreschflegel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_BULLWHIP", "Peitsche", "", "Peitsche", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_BOW", "Bogen", "s", "Bogen", "", "maskulin"),
     #dekliniere_substantiv("NOUN_ELVEN_BOW"
     #dekliniere_substantiv("NOUN_ORCISH_BOW"
     #dekliniere_substantiv("NOUN_YUMI"
-    #dekliniere_substantiv("NOUN_SLING"
-    #dekliniere_substantiv("NOUN_CROSSBOW"
+    dekliniere_substantiv("NOUN_SLING", "Schleuder", "", "Schleuder", "en", "feminin"),
+    dekliniere_substantiv("NOUN_CROSSBOW", "Armbrust", "", "Armbrüste", "e", "feminin"),
     "",
     "/* Weapons, unidentified */",
     #dekliniere_substantiv("NOUN_RUNED_ARROW"
     #dekliniere_substantiv("NOUN_CRUDE_ARROW"
     #dekliniere_substantiv("NOUN_BAMBOO_ARROW"
-    #dekliniere_substantiv("NOUN_THROWING_STAR"
+    dekliniere_substantiv("NOUN_THROWING_STAR", "Wurfstern", "es", "Wurfstern", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_RUNED_SPEAR"
     #dekliniere_substantiv("NOUN_CRUDE_SPEAR"
     #dekliniere_substantiv("NOUN_STOUT_SPEAR"
@@ -648,9 +648,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_RUNED_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_CRUDE_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_BROAD_SHORT_SWORD"
-    #dekliniere_substantiv("NOUN_CURVED_SWORD"
+    dekliniere_substantiv("NOUN_CURVED_SWORD", "Krummschwert", "es", "Krummschwert", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_RUNED_BROADSWORD"
-    #dekliniere_substantiv("NOUN_SAMURAI_SWORD"
+    dekliniere_substantiv("NOUN_SAMURAI_SWORD", "Samuraischwert", "es", "Samuraischwert", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_LONG_SAMURAI_SWORD", "ADJEKTIV_LANG NOUN_SAMURAI_SWORD",
     #dekliniere_substantiv("NOUN_VULGAR_POLEARM"
     #dekliniere_substantiv("NOUN_HILTED_POLEARM"
@@ -665,11 +665,11 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_HOOKED_POLEARM"
     #dekliniere_substantiv("NOUN_PRONGED_POLEARM"
     #dekliniere_substantiv("NOUN_BEAKED_POLEARM"
-    #dekliniere_substantiv("NOUN_STAFF"
+    dekliniere_substantiv("NOUN_STAFF", "Stock", "es", "Stöcke", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_THONGED_CLUB"
-    #dekliniere_substantiv("NOUN_RUNED_BOW"
+    dekliniere_substantiv("NOUN_RUNED_BOW", "Runenbogen", "s", "Runenbogen", "", "maskulin"),
     #dekliniere_substantiv("NOUN_CRUDE_BOW"
-    #dekliniere_substantiv("NOUN_LONG_BOW"
+    dekliniere_substantiv("NOUN_LONG_BOW", "Langbogen", "s", "Langbogen", "", "maskulin"),
     "",
     "/* Armor, identified */",
     #dekliniere_substantiv("NOUN_ELVEN_LEATHER_HELM"
