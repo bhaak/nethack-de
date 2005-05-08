@@ -21,4 +21,9 @@ lines.each { |line|
     end
   end
 }
-puts count
+
+puts
+puts "Gesamtzahl:            "+sprintf("%4d", lines.size.to_s)
+puts "Nicht übersetzte Wort: "+sprintf("%4d", count.to_s)
+puts "Übersetzte Worte:      "+sprintf("%4d", lines.size-count)
+puts "Prozentual übersetzt:  "+sprintf("%2g", (lines.size-count)*100.0/lines.size)
