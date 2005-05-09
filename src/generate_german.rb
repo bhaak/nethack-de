@@ -1028,9 +1028,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_HALLUCINATION"
     #dekliniere_substantiv("NOUN_POT_INVISIBILITY"
     #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE"
-    #dekliniere_substantiv("NOUN_POT_HEALING"
-    dekliniere_substantiv("NOUN_POT_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_POT_EXTRA_HEALING"
+    dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
+    dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
     #dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT"
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION"
