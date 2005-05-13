@@ -310,7 +310,7 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
 	tcase_add_test(tc_core, test_possessiv);
-	/*tcase_add_test(tc_core, test_wishing);
+	tcase_add_test(tc_core, test_wishing);
 	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	tcase_add_test(tc_core, test_linking_elements);
@@ -326,7 +326,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_tincontent);
 	tcase_add_test(tc_core, test_inventory_names);
-	tcase_add_test(tc_core, test_casus_and_modifier);*/
+	tcase_add_test(tc_core, test_casus_and_modifier);
 
   return s;
 }

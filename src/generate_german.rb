@@ -594,29 +594,29 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_ELVEN_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_ORCISH_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_DWARVISH_SHORT_SWORD"
-    #dekliniere_substantiv("NOUN_SCIMITAR"
+    dekliniere_substantiv("NOUN_SCIMITAR", "Szimitar", "", "Szimitar", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_SILVER_SABER"
     dekliniere_substantiv("NOUN_BROADSWORD", "Breitschwert", "es", "Breitschwert", "er", "neutrum", "s"),
     #dekliniere_substantiv("NOUN_ELVEN_BROADSWORD"
     dekliniere_substantiv("NOUN_LONG_SWORD", "Langschwert", "es", "Langschwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_TWO_HANDED_SWORD", "Zweihänder", "s", "Zweihänder", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_KATANA"
-    #dekliniere_substantiv("NOUN_TSURUGI"
-    #dekliniere_substantiv("NOUN_RUNESWORD"
+    dekliniere_substantiv("NOUN_KATANA", "Katana", "", "Katana", "s", "neutrum"),
+    dekliniere_substantiv("NOUN_TSURUGI", "Tsurugi", "", "Tsurugi", "s", "neutrum"),
+    dekliniere_substantiv("NOUN_RUNESWORD", "Runenschwert", "es", "Runenschwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_PARTISAN", "Partisane", "", "Partisane", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_RANSEUR"
-    #dekliniere_substantiv("NOUN_SPETUM" Korseke oder Runka (engl.: Spetum, ital.: Corsesca) http://www.die-dunkle-dimension.de/p-w1132.htm 
+    dekliniere_substantiv("NOUN_RANSEUR", "Knebelspieß", "es", "Knebelspieß", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SPETUM", "Runka", "", "Runka", "s", "feminin"),
     dekliniere_substantiv("NOUN_GLAIVE", "Glefe", "", "Glefe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_LANCE", "Lanze", "", "Lanze", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_HALBERD", "Hellebarde", "", "Hellebarde", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_BARDICHE"
+    dekliniere_substantiv("NOUN_BARDICHE", "Bardiche", "", "Bardiche", "", "feminin", "n"),
     #dekliniere_substantiv("NOUN_VOULGE"
     #dekliniere_substantiv("NOUN_DWARVISH_MATTOCK"
     dekliniere_substantiv("NOUN_FAUCHARD", "Kriegssense", "", "Kriegssense", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_GUISARME",
     #dekliniere_substantiv("NOUN_BILL_GUISARME"
     #dekliniere_substantiv("NOUN_LUCERN_HAMMER", "Luzerner Hammer",
-    #dekliniere_substantiv("NOUN_BEC_DE_CORBIN"
+    dekliniere_substantiv("NOUN_BEC_DE_CORBIN", "Rabenschnabel", "s", "Rabenschnäbel", "", "maskulin"),
     dekliniere_substantiv("NOUN_MACE", "Streitkolben", "s", "Streitkolben", "", "maskulin"),
     dekliniere_substantiv("NOUN_MORNING_STAR", "Morgenstern", "es", "Morgenstern", "e", "maskulin"),
     dekliniere_substantiv("NOUN_WAR_HAMMER", "Kriegshammer", "s", "Kriegshämmer", "", "maskulin"),
@@ -1030,13 +1030,13 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE"
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
+    #dekliniere_substantiv("NOUN_POT_FULL_HEALING", "vollständige Heilung"
     #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
     #dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT"
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION"
     #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"
     #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"
     #dekliniere_substantiv("NOUN_POT_SLEEPING"
-    #dekliniere_substantiv("NOUN_POT_FULL_HEALING"
     #dekliniere_substantiv("NOUN_POT_POLYMORPH"
     #dekliniere_substantiv("NOUN_POT_BOOZE"
     #dekliniere_substantiv("NOUN_POT_SICKNESS"
@@ -1257,42 +1257,42 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GOLD_PIECE","Goldstück","es","Goldstück","e","neutrum"),
     "",
     "/* Gems, identified */",
-    #dekliniere_substantiv("ADJEKTIV_GEM_DILITHIUM_CRYSTAL"
-    #dekliniere_substantiv("ADJEKTIV_GEM_DIAMOND"
-    #dekliniere_substantiv("ADJEKTIV_GEM_RUBY"
-    #dekliniere_substantiv("ADJEKTIV_GEM_JACINTH"
-    #dekliniere_substantiv("ADJEKTIV_GEM_SAPPHIRE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_BLACK_OPAL"
-    #dekliniere_substantiv("ADJEKTIV_GEM_EMERALD"
-    #dekliniere_substantiv("ADJEKTIV_GEM_TURQUOISE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_CITRINE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_AQUAMARINE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_AMBER"
-    #dekliniere_substantiv("ADJEKTIV_GEM_TOPAZ"
-    #dekliniere_substantiv("ADJEKTIV_GEM_JET"
-    #dekliniere_substantiv("ADJEKTIV_GEM_OPAL"
-    #dekliniere_substantiv("ADJEKTIV_GEM_CHRYSOBERYL"
-    #dekliniere_substantiv("ADJEKTIV_GEM_GARNET"
-    #dekliniere_substantiv("ADJEKTIV_GEM_AMETHYST"
-    #dekliniere_substantiv("ADJEKTIV_GEM_JASPER"
-    #dekliniere_substantiv("ADJEKTIV_GEM_FLUORITE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_OBSIDIAN"
-    #dekliniere_substantiv("ADJEKTIV_GEM_AGATE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_JADE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_WHITE_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_BLUE_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_RED_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_YELLOWISH_BROWN_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_ORANGE_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_YELLOW_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_BLACK_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_GREEN_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_VIOLET_GLASS"
-    #dekliniere_substantiv("ADJEKTIV_GEM_LUCKSTONE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_LOADSTONE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_TOUCHSTONE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_FLINT"
-    #dekliniere_substantiv("ADJEKTIV_GEM_ROCK"
+    dekliniere_substantiv("NOUN_GEM_DILITHIUM_CRYSTAL", "Dilithiumkristall", "es", "Dilithiumkristall", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_DIAMOND", "Diamant", "en", "Diamant", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_RUBY", "Rubin", "s", "Rubin", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_GEM_JACINTH"
+    dekliniere_substantiv("NOUN_GEM_SAPPHIRE", "Saphir", "s", "Saphir", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_BLACK_OPAL", "Schwarzopal", "es", "Schwarzopal", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_EMERALD", "Smaragd", "es", "Smaragd", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_TURQUOISE", "Türkis", "es", "Türkis", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_CITRINE", "Zitrin", "s", "Zitrin", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_AQUAMARINE", "Aquamarin", "s", "Aquamarin", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_GEM_AMBER"
+    dekliniere_substantiv("NOUN_GEM_TOPAZ", "Topas", "es", "Topas", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_GEM_JET"
+    dekliniere_substantiv("NOUN_GEM_OPAL", "Opal", "es", "Opal", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_CHRYSOBERYL", "Chrysoberyll", "s", "Chrysoberyll", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_GARNET", "Granat", "es", "Granat", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_AMETHYST", "Amethyst", "es", "Amethyst", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_JASPER", "Jaspis", "", "Jaspiss", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_FLUORITE", "Flußspat", "es", "Flußspat", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_OBSIDIAN", "Obsidian", "s", "Obsidian", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_AGATE", "Achat", "es", "Achat", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_JADE", "Jadestein", "es", "Jadestein", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_GEM_WHITE_GLASS"
+    #dekliniere_substantiv("NOUN_GEM_BLUE_GLASS"
+    #dekliniere_substantiv("NOUN_GEM_RED_GLASS"
+    #dekliniere_substantiv("NOUN_GEM_YELLOWISH_BROWN_GLASS"
+    #dekliniere_substantiv("NOUN_GEM_ORANGE_GLASS"
+    #dekliniere_substantiv("NOUN_GEM_YELLOW_GLASS"
+    #dekliniere_substantiv("NOUN_GEM_BLACK_GLASS"
+    #dekliniere_substantiv("NOUN_GEM_GREEN_GLASS"
+    #dekliniere_substantiv("NOUN_GEM_VIOLET_GLASS"
+    dekliniere_substantiv("NOUN_GEM_LUCKSTONE", "Glücksstein", "es", "Glücksstein", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_GEM_LOADSTONE"
+    dekliniere_substantiv("NOUN_GEM_TOUCHSTONE", "Prüfstein", "es", "Prüfstein", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_FLINT", "Feuerstein", "es", "Feuerstein", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_ROCK", "Stein", "es", "Stein", "e", "maskulin"),
     "",
     "/* Gems, unidentified */",
     #dekliniere_substantiv("ADJEKTIV_GEM_WHITE"
