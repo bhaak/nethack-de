@@ -610,11 +610,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LANCE", "Lanze", "", "Lanze", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_HALBERD", "Hellebarde", "", "Hellebarde", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_BARDICHE", "Bardiche", "", "Bardiche", "", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_VOULGE"
-    #dekliniere_substantiv("NOUN_DWARVISH_MATTOCK"
+    dekliniere_substantiv("NOUN_VOULGE", "Helmbarte", "", "Helmbarte", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_DWARVISH_MATTOCK", "Zwergenhacke", "", "Zwergenhacke", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_FAUCHARD", "Kriegssense", "", "Kriegssense", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_GUISARME",
-    #dekliniere_substantiv("NOUN_BILL_GUISARME"
+    dekliniere_substantiv("NOUN_GUISARME", "Kuse", "", "Kuse", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_BILL_GUISARME", "Roﬂschinder", "s", "Roﬂschinder", "", "maskulin"),
     #dekliniere_substantiv("NOUN_LUCERN_HAMMER", "Luzerner Hammer",
     dekliniere_substantiv("NOUN_BEC_DE_CORBIN", "Rabenschnabel", "s", "Rabenschn‰bel", "", "maskulin"),
     dekliniere_substantiv("NOUN_MACE", "Streitkolben", "s", "Streitkolben", "", "maskulin"),
@@ -652,19 +652,20 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_RUNED_BROADSWORD"
     dekliniere_substantiv("NOUN_SAMURAI_SWORD", "Samuraischwert", "es", "Samuraischwert", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_LONG_SAMURAI_SWORD", "ADJEKTIV_LANG NOUN_SAMURAI_SWORD",
-    #dekliniere_substantiv("NOUN_VULGAR_POLEARM"
-    #dekliniere_substantiv("NOUN_HILTED_POLEARM"
-    #dekliniere_substantiv("NOUN_FORKED_POLEARM"
-    #dekliniere_substantiv("NOUN_SINGLE_EDGED_POLEARM"
-    #dekliniere_substantiv("NOUN_ANGLED_POLEAXE"
-    #dekliniere_substantiv("NOUN_LONG_POLEAXE"
-    #dekliniere_substantiv("NOUN_POLE_CLEAVER"
-    #dekliniere_substantiv("NOUN_BROAD_PICK"
-    #dekliniere_substantiv("NOUN_POLE_SICKLE"
-    #dekliniere_substantiv("NOUN_PRUNING_HOOK"
-    #dekliniere_substantiv("NOUN_HOOKED_POLEARM"
-    #dekliniere_substantiv("NOUN_PRONGED_POLEARM"
-    #dekliniere_substantiv("NOUN_BEAKED_POLEARM"
+    #dekliniere_substantiv("NOUN_VULGAR_POLEARM", "gewˆhnliche Stangenwaffe"
+    dekliniere_substantiv("NOUN_HILTED_POLEARM", "Stoﬂspieﬂ", "es", "Stoﬂspieﬂ", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_FORKED_POLEARM", "gegabelte Stangenwaffe"
+    dekliniere_substantiv("NOUN_SINGLE_EDGED_POLEARM", "Schwertspieﬂ", "es", "Schwertspieﬂ", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_ANGLED_POLEAXE", "abgewinkelte Stangenaxt"
+    #dekliniere_substantiv("NOUN_LONG_POLEAXE", "langes Stangenbeil"
+    dekliniere_substantiv("NOUN_POLE_CLEAVER", "Stangenbeil", "es", "Stangenbeil", "e", "neutrum"),
+    #dekliniere_substantiv("NOUN_BROAD_PICK", "Rodehacke", "", "Rodehacke", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_BROAD_PICK", "Breithacke", "", "Breithacke", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_POLE_SICKLE", "Stangensichel", "", "Stangensichel", "en", "feminin"),
+    dekliniere_substantiv("NOUN_PRUNING_HOOK", "Stangenmesser", "s", "Stangenmesser", "", "neutrum"),
+    dekliniere_substantiv("NOUN_HOOKED_POLEARM", "Hippe", "", "Hippe", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_PRONGED_POLEARM", "langer Streithammer"
+    #dekliniere_substantiv("NOUN_BEAKED_POLEARM", "spitzer Streithammer"
     dekliniere_substantiv("NOUN_STAFF", "Stock", "es", "Stˆcke", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_THONGED_CLUB"
     dekliniere_substantiv("NOUN_RUNED_BOW", "Runenbogen", "s", "Runenbogen", "", "maskulin"),
