@@ -31,12 +31,6 @@ enum Numerus { n_singular=1, n_plural=2 };
 enum Person  { erstePerson=1, zweitePerson=2, drittePerson=4 };
 enum Artikel { ohne=1, bestimmter=2, unbestimmter=4, grundform=8 };
 
-struct nominal_phrase {
-  struct substantiv_struct *substantiv;
-  struct adjektiv_struct *adjektiv;
-  const char *artikel;
-};
-
 /* used for nouns and adjectives, as there are nouns, 
    that are inflected like adjectives */
 struct substantiv_oder_adjekiv_struct {
@@ -120,20 +114,15 @@ class Adjektiv
 
 end
 
-
-def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
-                          pluralstamm, nominativ_plural_endung, geschlecht, fugenelement="")
+def substantiv_endung(singularstamm, genitiv_singular_endung,
+                      pluralstamm, nominativ_plural_endung)
 
   casus = Hash.new
   casus[$nom] = Hash.new
   casus[$gen] = Hash.new
   casus[$dat] = Hash.new
   casus[$akk] = Hash.new
-
-  numerus = Hash.new
-  numerus[$sg] = singularstamm
-  numerus[$pl] = pluralstamm
-
+  
   case genitiv_singular_endung
   when "es"
     casus[$nom][$sg] = ""
@@ -190,6 +179,19 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
       raise "No inflection "+nominativ_plural_endung+" found for "+pluralstamm
     end
   end
+
+  return casus
+end
+
+def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
+                          pluralstamm, nominativ_plural_endung, geschlecht, fugenelement="")
+
+  casus = substantiv_endung(singularstamm, genitiv_singular_endung,
+                            pluralstamm, nominativ_plural_endung)
+
+  numerus = Hash.new
+  numerus[$sg] = singularstamm
+  numerus[$pl] = pluralstamm
 
   nomen = [];
   [$sg].each { |n|
@@ -424,6 +426,127 @@ def ausgabe_verbs
   puts "\n"
 	puts "  {NULL, NULL, 0, 0}\n};"
 end
+
+
+def adjektiv_endung(adjektiv, kasus, geschlecht, numerus, artikel)
+  # behandle unveränderliche Adjektive hier
+  case adjektiv
+  when "Luzerner"
+    return ""
+  end
+
+  # $stderr.puts kasus + " " + geschlecht + " " + numerus + " " + artikel
+  # regelmässige Adjektive
+  case artikel
+  when $grundform, $ohne
+    case numerus
+    when $sg
+      case geschlecht
+      when $mal
+        case kasus
+        when $nom      then return "er"
+        when $akk,$gen then return "en"
+        when $dat      then return "em"
+        end
+      when $fem
+        case kasus
+        when $nom,$akk then return "e"
+        when $dat,$gen then return "er"
+        end
+      when $neu
+        case kasus
+        when $nom,$akk then return "es"
+        when $dat      then return "em"
+        when $gen      then return "en"
+        end
+      end
+    when $pl
+      case kasus
+      when $nom,$akk   then return "e"
+      when $dat        then return "en"
+      when $gen        then return "er"
+      end
+    end
+  when $bestimmter
+    case numerus
+    when $sg
+      case kasus
+      when $nom      then return "e"
+      when $dat,$gen then return "en"
+      when $akk
+        case geschlecht
+        when $mal      then return "en"
+        when $fem,$neu then return "e"
+        end
+      end
+    when $pl
+      return "en"
+    end
+  when $unbestimmter 
+    case numerus
+    when $sg
+      case kasus
+      when $dat,$gen then return "en"
+      when $nom,$akk
+        case geschlecht
+        when $mal 
+          case kasus
+          when $nom then return "er"
+          when $akk then return "en"
+          end
+        when $fem then return "e"
+        when $neu then return "es"
+        end
+      end
+    when $pl
+      return "en"
+    end
+  end
+
+  raise "Adjektivendung nicht gefunden: "+kasus+" "+geschlecht+" "+numerus+" "+artikel
+end
+
+def dekliniere_nominalphrase(bezeichner,
+                             adjektiv,
+                             singularstamm, genitiv_singular_endung,
+                             pluralstamm, nominativ_plural_endung,
+                             geschlecht,
+                             fugenelement="")
+  # Adjektiv.new(stamm, bezeichner,  [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl], "grundform"),
+
+  numerus = [$sg, $pl]
+  artikel = [$ohne,$bestimmter,$unbestimmter,$grundform]
+  kasus   = [$nom, $akk, $dat, $gen]
+
+  substantiv_casus = substantiv_endung(singularstamm, genitiv_singular_endung,
+                                       pluralstamm, nominativ_plural_endung)
+
+  singularformen = Array.new
+  pluralformen = Array.new
+  
+  artikel.each { |art|
+    kasus.each { |kas|
+      #$stderr.puts art+" "+kas+" "+adjektiv_endung(kas, geschlecht, $sg, art)+" "+
+        #singularstamm+substantiv_casus[kas][$sg]
+      #$stderr.puts art+" "+kas+" "+stamm+adjektiv_endung(kas, geschlecht, $pl, art)+" "+
+        #singularstamm+substantiv_casus[kas][$pl]
+
+      sg = adjektiv+adjektiv_endung(adjektiv, kas, geschlecht, $sg, art)+" "+
+        singularstamm+substantiv_casus[kas][$sg]
+      singularformen << unregelmaessiges_wort(bezeichner, sg, kas, geschlecht, $sg, fugenelement)
+      
+      if pluralstamm!="" then
+        pl = adjektiv+adjektiv_endung(adjektiv, kas, geschlecht, $pl, art)+" "+
+          singularstamm+substantiv_casus[kas][$pl]
+        pluralformen << unregelmaessiges_wort(bezeichner+"s", pl, kas, geschlecht, $pl, fugenelement)
+      end
+    }
+  }
+  #singularformen.each { |s| $stderr.puts s.to_struct } 
+  #$stderr.puts singularformen.class
+  return singularformen.concat(pluralformen)
+end
+
 def ausgabe_nouns
   puts "\nstruct substantiv_oder_adjekiv_struct worte[] = {"
 
@@ -615,7 +738,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_FAUCHARD", "Kriegssense", "", "Kriegssense", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_GUISARME", "Kuse", "", "Kuse", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_BILL_GUISARME", "Roßschinder", "s", "Roßschinder", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_LUCERN_HAMMER", "Luzerner Hammer",
+    dekliniere_nominalphrase("NOUN_LUCERN_HAMMER", "Luzerner", "Hammer", "s", "Hämmer", "", "maskulin"),
     dekliniere_substantiv("NOUN_BEC_DE_CORBIN", "Rabenschnabel", "s", "Rabenschnäbel", "", "maskulin"),
     dekliniere_substantiv("NOUN_MACE", "Streitkolben", "s", "Streitkolben", "", "maskulin"),
     dekliniere_substantiv("NOUN_MORNING_STAR", "Morgenstern", "es", "Morgenstern", "e", "maskulin"),
@@ -651,21 +774,21 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CURVED_SWORD", "Krummschwert", "es", "Krummschwert", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_RUNED_BROADSWORD"
     dekliniere_substantiv("NOUN_SAMURAI_SWORD", "Samuraischwert", "es", "Samuraischwert", "er", "neutrum"),
-    #dekliniere_substantiv("NOUN_LONG_SAMURAI_SWORD", "ADJEKTIV_LANG NOUN_SAMURAI_SWORD",
-    #dekliniere_substantiv("NOUN_VULGAR_POLEARM", "gewöhnliche Stangenwaffe"
+    dekliniere_nominalphrase("NOUN_LONG_SAMURAI_SWORD", "lang", "Samuraischwert", "es", "Samuraischwert", "er", "neutrum"),
+    dekliniere_nominalphrase("NOUN_VULGAR_POLEARM", "gewöhnlich", "Stangenwaffe", "", "Stangenwaffe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_HILTED_POLEARM", "Stoßspieß", "es", "Stoßspieß", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_FORKED_POLEARM", "gegabelte Stangenwaffe"
+    dekliniere_nominalphrase("NOUN_FORKED_POLEARM", "gegabelt", "Stangenwaffe", "", "Stangenwaffe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SINGLE_EDGED_POLEARM", "Schwertspieß", "es", "Schwertspieß", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_ANGLED_POLEAXE", "abgewinkelte Stangenaxt"
-    #dekliniere_substantiv("NOUN_LONG_POLEAXE", "langes Stangenbeil"
+    dekliniere_nominalphrase("NOUN_ANGLED_POLEAXE", "abgewinkelte", "Stangenaxt", "", "Stangenäxt", "e", "feminin"),
+    dekliniere_nominalphrase("NOUN_LONG_POLEAXE", "lang", "Stangenbeil", "es", "Stangenbeil", "e", "neutrum"),
     dekliniere_substantiv("NOUN_POLE_CLEAVER", "Stangenbeil", "es", "Stangenbeil", "e", "neutrum"),
     #dekliniere_substantiv("NOUN_BROAD_PICK", "Rodehacke", "", "Rodehacke", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_BROAD_PICK", "Breithacke", "", "Breithacke", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_POLE_SICKLE", "Stangensichel", "", "Stangensichel", "en", "feminin"),
     dekliniere_substantiv("NOUN_PRUNING_HOOK", "Stangenmesser", "s", "Stangenmesser", "", "neutrum"),
     dekliniere_substantiv("NOUN_HOOKED_POLEARM", "Hippe", "", "Hippe", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_PRONGED_POLEARM", "langer Streithammer"
-    #dekliniere_substantiv("NOUN_BEAKED_POLEARM", "spitzer Streithammer"
+    dekliniere_nominalphrase("NOUN_PRONGED_POLEARM", "lang", "Streithammer", "s", "Streithämmer", "", "maskulin"),
+    dekliniere_nominalphrase("NOUN_BEAKED_POLEARM", "spitz", "Streithammer", "s", "Streithämmer", "", "maskulin"),
     dekliniere_substantiv("NOUN_STAFF", "Stock", "es", "Stöcke", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_THONGED_CLUB"
     dekliniere_substantiv("NOUN_RUNED_BOW", "Runenbogen", "s", "Runenbogen", "", "maskulin"),
@@ -916,7 +1039,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ICE_BOX", "Kühltruhe", "", "Kühltruhe", "en", "feminin"),
     dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_OILSKIN_SACK", 
-    #dekli_meta_substantiv("NOUN_BAG_OF_HOLDING", "ADJEKTIV_NIMMERVOLL NOUN_BAG"),
+    dekliniere_nominalphrase("NOUN_BAG_OF_HOLDING", "Nimmervoll", "Beutel","s","Beutel","","maskulin"),
     #dekliniere_substantiv("NOUN_BAG_OF_TRICKS", 
     # dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
     dekliniere_substantiv("NOUN_SKELETON_KEY", "Passepartout", "s", "Generalschlüssel", "", "maskulin"),
@@ -1601,7 +1724,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
     #dekliniere_substantiv("NOUN_HIGH_PRIEST"
     dekliniere_substantiv("NOUN_SOLDIER", "Soldat", "en", "Soldat", "en", "maskulin", "en"),
-    "/* 'Korporal' exists as a military in the Austrian 'Bundesheer' and\nthe Swiss Army. "+
+    "/* 'Korporal' exists as a military term in the Austrian 'Bundesheer' and\nthe Swiss Army. "+
     "'Leutnant' and 'Hauptmann' exist in these too and also in\nthe German 'Bundeswehr'.\n"+
     "Although not referring to the exactly same rank. */",
     dekliniere_substantiv("NOUN_SERGEANT", "Korporal", "s", "Korporal", "e", "maskulin", "s"),
@@ -1728,7 +1851,10 @@ def ausgabe_nouns
     "/* sonstige Adjektive */",
     dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
     dekliniere_adjektiv("ADJEKTIV_SADDLED","gesattelt"),
-    ""
+    "",
+    "/* Adjektive und Substantive für Nominalphrasen */",
+    dekliniere_substantiv("NOUN_STANGENWAFFE","Stangenwaffe","","Stangenwaffe","en","feminin"),
+    dekliniere_adjektiv("ADJEKTIV_GEWOEHNLICH","gewöhnlich")
   ].each { |n|
     nomen << n
   }
@@ -1746,10 +1872,13 @@ def ausgabe_nouns
   puts "  {NULL, NULL, 0, 0, 0, 0}\n};"
 end
 
+def dekliniere_nominal_phrase(nominalphrase, adjektiv, substantiv)
+  return '  {"'+nominalphrase+'", "'+adjektiv+'", "'+substantiv+'"},'
+end
+
 # print everything
 puts "#ifndef _GERMAN_H\n#define _GERMAN_H 1\n#include <stddef.h>\n"
 ausgabe_definitions
 ausgabe_nouns
-#ausgabe_adjectives
 ausgabe_verbs
 puts "#endif /* !_GERMAN_H */"

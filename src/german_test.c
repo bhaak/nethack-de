@@ -302,6 +302,17 @@ START_TEST (test_possessiv) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_nominal_phrasen) {
+	char *text[][2] = {
+		{"NOUN_VULGAR_POLEARM", "Gewöhnliche Stangenwaffe"},
+		{"NOUN_BAG_OF_HOLDING", "Nimmervoller Beutel"},
+		{"NOUN_BAG_OF_HOLDING", "Nimmervoller Beutel"},
+		{"NOUN_LUCERN_HAMMER", "Luzerner Hammer"},
+		{"NOUN_LONG_SAMURAI_SWORDs", "Lange Samuraischwerter"},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
 
 Suite *test_suite(void)
 {
@@ -309,6 +320,7 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
+	tcase_add_test(tc_core, test_nominal_phrasen);
 	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_wishing);
 	tcase_add_test(tc_core, test_statues);
