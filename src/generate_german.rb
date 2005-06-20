@@ -1034,7 +1034,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_AMULET_OCTAGONAL","achteckig"),
     "",
     "/* Tools, identified */",
-    #dekliniere_substantiv("NOUN_LARGE_BOX", 
+    dekliniere_substantiv("NOUN_LARGE_BOX", "Kiste", "", "Kiste", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_CHEST", "Truhe", "", "Truhe", "en", "feminin"),
     dekliniere_substantiv("NOUN_ICE_BOX", "Kühltruhe", "", "Kühltruhe", "en", "feminin"),
     dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
@@ -1048,9 +1048,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TALLOW_CANDLE", "Talglicht", "es", "Talglicht", "er", "neutrum"),
     dekliniere_substantiv("NOUN_WAX_CANDLE", "Wachskerze", "", "Wachskerze", "en", "feminin"),
     dekliniere_substantiv("NOUN_BRASS_LANTERN", "Laterne", "", "Laterne", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_OIL_LAMP", 
-    #dekliniere_substantiv("NOUN_MAGIC_LAMP", 
-    #dekliniere_substantiv("NOUN_EXPENSIVE_CAMERA", 
+    dekliniere_substantiv("NOUN_OIL_LAMP", "Öllampe", "", "Öllampe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_MAGIC_LAMP", "Wunderlampe", "", "Wunderlampe", "en", "feminin", "n"),
+    dekliniere_nominalphrase("NOUN_EXPENSIVE_CAMERA", "teur", "Photoapparat", "es", "Photoapparat", "e", "maskulin", "s"),
     "/* FIX ME: NOUN_LOOKING_GLASS should be different from NOUN_MIRROR */",
     dekliniere_substantiv("NOUN_MIRROR","Spiegel","","Spiegel","","maskulin"), # FIX ME
     dekliniere_substantiv("NOUN_CRYSTAL_BALL", "Kristallkugel", "", "Kristallkugel", "en", "feminin"),
@@ -1154,7 +1154,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE"
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_POT_FULL_HEALING", "vollständige Heilung"
+    dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständige", "Heilung", "", "Heilung", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
     #dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT"
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION"
@@ -1546,9 +1546,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCORPION", "Skorpion", "s", "Skorpion", "e", "maskulin"),
     dekliniere_substantiv("NOUN_LURKER_ABOVE", "Laurer", "s", "Laurer", "", "maskulin"),
     dekliniere_substantiv("NOUN_TRAPPER", "Fallensteller", "s", "Fallensteller", "", "maskulin"), 
-    #dekliniere_substantiv("NOUN_WHITE_UNICORN",
-    #dekliniere_substantiv("NOUN_GRAY_UNICORN",
-    #dekliniere_substantiv("NOUN_BLACK_UNICORN",
+    dekliniere_nominalphrase("NOUN_WHITE_UNICORN", "weiß", "Einhorn", "es", "Einhörn", "er", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GRAY_UNICORN", "grau", "Einhorn", "es", "Einhörn", "er", "neutrum"),
+    dekliniere_nominalphrase("NOUN_BLACK_UNICORN", "schwarz", "Einhorn", "es", "Einhörn", "er", "neutrum"),
     dekliniere_substantiv("NOUN_PONY","Pony","s","Pony","s","neutrum"),
     dekliniere_substantiv("NOUN_HORSE","Pferd","es","Pferd","e","neutrum", "e"),
     dekliniere_substantiv("NOUN_WARHORSE","Schlachtroß","es","Schlachtroß","e","neutrum"),
@@ -1564,8 +1564,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_PURPLE_WORM"
     #dekliniere_substantiv("NOUN_GRID_BUG"
     #dekliniere_substantiv("NOUN_XAN"
-    #dekliniere_substantiv("NOUN_YELLOW_LIGHT",
-    #dekliniere_substantiv("NOUN_BLACK_LIGHT"
+    dekliniere_nominalphrase("NOUN_YELLOW_LIGHT", "gelb", "Licht", "es", "Licht", "er", "neutrum"),
+    dekliniere_nominalphrase("NOUN_BLACK_LIGHT", "schwarz", "Licht", "es", "Licht", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_ZRUTY"
     #dekliniere_substantiv("NOUN_COUATL"
     #dekliniere_substantiv("NOUN_ALEAX"
