@@ -643,6 +643,11 @@ char* german(const char *line) {
 			else if (strcmp("MODIFIER_FEMININ", tmp)==0)  { c_genus = feminin; }
 			else if (strcmp("MODIFIER_NEUTRUM", tmp)==0)  { c_genus = neutrum; }
 
+		} else if (strncmp("NUMERUS_", tmp, 8)==0) {
+			insert_char = 0;
+			if      (strcmp("NUMERUS_SINGULAR", tmp)==0) { c_numerus = n_singular; }
+			else if (strcmp("NUMERUS_PLURAL", tmp)==0)   { c_numerus = n_plural; }
+
 		} else {
 #ifdef DEBUG
 			printf("Nichts zu holen mit %s\n", tmp);
