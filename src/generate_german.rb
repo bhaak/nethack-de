@@ -662,13 +662,15 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MEAT", "Fleisch", "es", "", "e", "neutrum", ""),
     dekliniere_substantiv("NOUN_LUCK", "Glück", "es", "Glück", "e", "neutrum", "s"),
     dekliniere_substantiv("NOUN_GENDARMERIE", "Gendarmerie", "", "Gendarmerie", "en", "feminin"), 
+    dekliniere_substantiv("NOUN_PAAR", "Paar", "es", "Paar", "e", "neutrum"), 
     "",
-    dekliniere_substantiv("NOUN_BAG", "Beutel", "s", "Beutel", "", "maskulin"),
     "",
 
     dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
 
     dekliniere_substantiv("NOUN_WEAPON",    "Waffe",          "",   "Waffe",          "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_ARMOR",     "Rüstzeug",        "es",   "Rüstzeug",      "e", "neutrum", "s"),
+    #dekliniere_substantiv("NOUN_ARMOR",     "Rüstung",        "",   "Rüstung",      "en", "feminin"),
     #dekliniere_substantiv("NOUN_ARMOR",     "Rüstung",        "",   "Rüstung",      "en", "feminin"),
     dekliniere_substantiv("NOUN_ARMOR",     "Schutzbekleidung", "",   "Schutzbekleidung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_RING",      "Ring",           "es", "Ring",           "e",  "maskulin"),
@@ -807,43 +809,44 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_HELM_OF_BRILLIANCE"
     #dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT"
     #dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY"
-    #dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_RED_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_WHITE_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_ORANGE_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_BLACK_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_BLUE_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_GREEN_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_YELLOW_DRAGON_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_RED_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_WHITE_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_ORANGE_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_BLACK_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_BLUE_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_GREEN_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_YELLOW_DRAGON_SCALES"
-    #dekliniere_substantiv("NOUN_PLATE_MAIL"
+    dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALE_MAIL", "Graudrachen-Schuppenpanzer", "s", "Graudrachen-Schuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALE_MAIL", "Silberdrachen-Schuppenpanzer", "s", "Silberdrachen-Schuppenpanzer", "", "maskulin"),
+    #dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALE_MAIL", "Graudrachenschuppenpanzer", "s", "Graudrachenschuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_RED_DRAGON_SCALE_MAIL", "Rotdrachen-Schuppenpanzer", "s", "Rotdrachen-Schuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_WHITE_DRAGON_SCALE_MAIL", "Weißdrachen-Schuppenpanzer", "s", "Weißdrachen-Schuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_ORANGE_DRAGON_SCALE_MAIL", "Orangedrachen-Schuppenpanzer", "s", "Orangedrachen-Schuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_BLACK_DRAGON_SCALE_MAIL", "Schwarzdrachen-Schuppenpanzer", "s", "Schwarzdrachen-Schuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_BLUE_DRAGON_SCALE_MAIL", "Blaudrachen-Schuppenpanzer", "s", "Blaudrachen-Schuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_GREEN_DRAGON_SCALE_MAIL", "Gründrachen-Schuppenpanzer", "s", "Gründrachen-Schuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_YELLOW_DRAGON_SCALE_MAIL", "Gelbdrachen-Schuppenpanzer", "s", "Gelbdrachen-Schuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALES", "Graudrachen-Schuppe", "", "Graudrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALES", "Silberdrachen-Schuppe", "", "Silberdrachen-Schuppe", "en", "feminin", "n"),
+    #dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALES", "Graudrachen-Schuppe", "", "Graudrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_RED_DRAGON_SCALES", "Rotdrachen-Schuppe", "", "Rotdrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_WHITE_DRAGON_SCALES", "Weißdrachen-Schuppe", "", "Weißdrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_ORANGE_DRAGON_SCALES", "Orangedrachen-Schuppe", "", "Orangedrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_BLACK_DRAGON_SCALES", "Schwarzdrachen-Schuppe", "", "Schwarzdrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_BLUE_DRAGON_SCALES", "Gründrachen-Schuppe", "", "Gründrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_GREEN_DRAGON_SCALES", "Gründrachen-Schuppe", "", "Gründrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_YELLOW_DRAGON_SCALES", "Gelbdrachen-Schuppe", "", "Gelbdrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_PLATE_MAIL", "Plattenpanzer",  "s", "Plattenpanzer", "", "maskulin"),
     #dekliniere_substantiv("NOUN_CRYSTAL_PLATE_MAIL"
     #dekliniere_substantiv("NOUN_BRONZE_PLATE_MAIL"
-    #dekliniere_substantiv("NOUN_SPLINT_MAIL"
-    #dekliniere_substantiv("NOUN_BANDED_MAIL"
+    dekliniere_substantiv("NOUN_SPLINT_MAIL", "Schienenpanzer",  "s", "Schienenpanzer", "", "maskulin"),
+    #dekliniere_substantiv("NOUN_BANDED_MAIL", "Spangenharnisch",  "s", "Spangenharnisch", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_BANDED_MAIL", "Bänderpanzer",  "s", "Bänderpanzer", "", "maskulin"),
     #dekliniere_substantiv("NOUN_DWARVISH_MITHRIL_COAT"
     #dekliniere_substantiv("NOUN_ELVEN_MITHRIL_COAT"
-    #dekliniere_substantiv("NOUN_CHAIN_MAIL"
+    dekliniere_substantiv("NOUN_CHAIN_MAIL", "Kettenhemd", "es", "Kettenhemd", "en", "neutrum", "en"),
     #dekliniere_substantiv("NOUN_ORCISH_CHAIN_MAIL"
-    #dekliniere_substantiv("NOUN_SCALE_MAIL"
-    #dekliniere_substantiv("NOUN_STUDDED_LEATHER_ARMOR"
-    #dekliniere_substantiv("NOUN_RING_MAIL"
+    dekliniere_substantiv("NOUN_SCALE_MAIL", "Schuppenpanzer", "s", "Schuppenpanzer", "", "maskulin"),
+    dekliniere_nominalphrase("NOUN_STUDDED_LEATHER_ARMOR", "beschlagen", "Lederwams", "es", "Lederwäms", "er", "neutrum"),
+    dekliniere_substantiv("NOUN_RING_MAIL", "Ringpanzer", "s", "Ringpanzer", "", "maskulin"),
     #dekliniere_substantiv("NOUN_ORCISH_RING_MAIL"
-    #dekliniere_substantiv("NOUN_LEATHER_ARMOR"
-    #dekliniere_substantiv("NOUN_LEATHER_JACKET"
-    #dekliniere_substantiv("NOUN_HAWAIIAN_SHIRT"
-    #dekliniere_substantiv("NOUN_T_SHIRT"
+    dekliniere_substantiv("NOUN_LEATHER_ARMOR", "Lederpanzer", "s", "Lederpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_LEATHER_JACKET", "Lederjacke", "", "Lederjacke", "en", "neutrum", "en"),
+    dekliniere_substantiv("NOUN_HAWAIIAN_SHIRT", "Hawaiihemd", "es", "Hawaiihemd", "en", "neutrum", "en"),
+    dekliniere_substantiv("NOUN_T_SHIRT", "T-Shirt", "s", "T-Shirt", "s", "neutrum"),
     #dekliniere_substantiv("NOUN_MUMMY_WRAPPING"
     #dekliniere_substantiv("NOUN_ELVEN_CLOAK"
     #dekliniere_substantiv("NOUN_ORCISH_CLOAK"
@@ -903,7 +906,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_RED_EYED_SHIELD"
     #dekliniere_substantiv("NOUN_LARGE_ROUND_SHIELD"
     #dekliniere_substantiv("NOUN_POLISHED_SILVER_SHIELD"
-    #dekliniere_substantiv("NOUN_OLD_GLOVES"
+    dekliniere_nominalphrase("NOUN_OLD_GLOVES", "alt", "Handschuh", "es", "Handschuhe", "e", "feminin"),
     #dekliniere_substantiv("NOUN_PADDED_GLOVES"
     #dekliniere_substantiv("NOUN_RIDING_GLOVES"
     #dekliniere_substantiv("NOUN_FENCING_GLOVES"
