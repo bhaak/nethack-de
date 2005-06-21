@@ -301,14 +301,17 @@ register struct obj *obj;
 	    case ARMOR_CLASS:
 		/* depends on order of the dragon scales objects */
 		if (typ >= GRAY_DRAGON_SCALES && typ <= YELLOW_DRAGON_SCALES) {
-			Sprintf(buf, "set PARTIKEL_OF %s", actualn);
+			Sprintf(buf, "set of %s", actualn);
 			break;
 		}
-		if(is_boots(obj) || is_gloves(obj)) Strcpy(buf,"pair PARTIKEL_OF ");
+		/* CHECK ME: Ich bin nicht sicher, ob das stimmt. 
+		 * Sind die Substantive nach 'Paar' in einem bestimmten Fall,
+		 * oder in demselben wie 'Paar'? */
+		if(is_boots(obj) || is_gloves(obj)) Strcpy(buf,"NOUN_PAAR NUMERUS_PLURAL ");
 
 		if(obj->otyp >= ELVEN_SHIELD && obj->otyp <= ORCISH_SHIELD
 				&& !obj->dknown) {
-			Strcpy(buf, "shield");
+			Strcpy(buf, "NOUN_SHIELD");
 			break;
 		}
 		if(obj->otyp == SHIELD_OF_REFLECTION && !obj->dknown) {
@@ -319,15 +322,15 @@ register struct obj *obj;
 		if(nn)	Strcat(buf, actualn);
 		else if(un) {
 			if(is_boots(obj))
-				Strcat(buf,"boots");
+				Strcat(buf,"NUMERUS_PLURAL NOUN_BOOTS");
 			else if(is_gloves(obj))
-				Strcat(buf,"gloves");
+				Strcat(buf,"NUMERUS_PLURAL NOUN_GLOVES");
 			else if(is_cloak(obj))
-				Strcpy(buf,"cloak");
+				Strcpy(buf,"NOUN_CLOAK");
 			else if(is_helmet(obj))
-				Strcpy(buf,"helmet");
+				Strcpy(buf,"NOUN_HELMET");
 			else if(is_shield(obj))
-				Strcpy(buf,"shield");
+				Strcpy(buf,"NOUN_SHIELD");
 			else
 				Strcpy(buf,"armor");
 			Strcat(buf, " PARTIKEL_CALLED ");
