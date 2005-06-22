@@ -1511,17 +1511,17 @@ STATIC_DCL const struct o_range o_ranges[];
 
 /* wishable subranges of objects */
 STATIC_OVL NEARDATA const struct o_range o_ranges[] = {
-	{ "bag",	TOOL_CLASS,   SACK,	      BAG_OF_TRICKS },
-	{ "lamp",	TOOL_CLASS,   OIL_LAMP,	      MAGIC_LAMP },
-	{ "candle",	TOOL_CLASS,   TALLOW_CANDLE,  WAX_CANDLE },
-	{ "horn",	TOOL_CLASS,   TOOLED_HORN,    HORN_OF_PLENTY },
-	{ "shield",	ARMOR_CLASS,  SMALL_SHIELD,   SHIELD_OF_REFLECTION },
-	{ "helm",	ARMOR_CLASS,  ELVEN_LEATHER_HELM, HELM_OF_TELEPATHY },
-	{ "gloves",	ARMOR_CLASS,  LEATHER_GLOVES, GAUNTLETS_OF_DEXTERITY },
+	{ "NOUN_BAG",	TOOL_CLASS,   SACK,	      BAG_OF_TRICKS },
+	{ "NOUN_LAMP",	TOOL_CLASS,   OIL_LAMP,	      MAGIC_LAMP },
+	{ "NOUN_CANDLE",	TOOL_CLASS,   TALLOW_CANDLE,  WAX_CANDLE },
+	{ "NOUN_HORN",	TOOL_CLASS,   TOOLED_HORN,    HORN_OF_PLENTY },
+	{ "NOUN_SHIELD",	ARMOR_CLASS,  SMALL_SHIELD,   SHIELD_OF_REFLECTION },
+	{ "NOUN_HELMET",	ARMOR_CLASS,  ELVEN_LEATHER_HELM, HELM_OF_TELEPATHY },
+	{ "NOUN_GLOVES",	ARMOR_CLASS,  LEATHER_GLOVES, GAUNTLETS_OF_DEXTERITY },
 	{ "gauntlets",	ARMOR_CLASS,  LEATHER_GLOVES, GAUNTLETS_OF_DEXTERITY },
-	{ "boots",	ARMOR_CLASS,  LOW_BOOTS,      LEVITATION_BOOTS },
+	{ "NOUN_BOOTS",	ARMOR_CLASS,  LOW_BOOTS,      LEVITATION_BOOTS },
 	{ "shoes",	ARMOR_CLASS,  LOW_BOOTS,      IRON_SHOES },
-	{ "cloak",	ARMOR_CLASS,  MUMMY_WRAPPING, CLOAK_OF_DISPLACEMENT },
+	{ "NOUN_CLOAK",	ARMOR_CLASS,  MUMMY_WRAPPING, CLOAK_OF_DISPLACEMENT },
 #ifdef TOURIST
 	{ "shirt",	ARMOR_CLASS,  HAWAIIAN_SHIRT, T_SHIRT },
 #endif
@@ -2303,11 +2303,11 @@ srch:
 		} else if (!strncmpi(fp, "halb verspeis", l=13)) {
 			halfeatenf = 1;
 		} else {
-			pline("wishing: unerkannt: %s\n",fp);
+			pline("wishing: unerkannt: -%s-\n",fp);
 			break;
 		}
 		fp += l;
-			pline("wishing: %s\n",fp);
+			pline("wishing: =%s=\n",fp);
 	    }
 
 	    for(f=ffruit; f; f = f->nextf) {
@@ -2796,17 +2796,17 @@ struct obj *cloak;
     if (cloak) {
 	switch (cloak->otyp) {
 	case ROBE:
-	    return "robe";
+	    return "NOUN_ROBE";
 	case MUMMY_WRAPPING:
-	    return "wrapping";
+	    return "NOUN_WRAPPING";
 	case ALCHEMY_SMOCK:
 	    return (objects[cloak->otyp].oc_name_known &&
-			cloak->dknown) ? "smock" : "apron";
+			cloak->dknown) ? "NOUN_SMOCK" : "NOUN_APRON";
 	default:
 	    break;
 	}
     }
-    return "cloak";
+    return "NOUN_CLOAK";
 }
 
 const char *
