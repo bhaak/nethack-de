@@ -6,7 +6,7 @@ lines = file1.concat file2
 translated = []
 File.open("german.h") { |german| 
   translated = german.readlines.collect { |l|
-    if l =~ /\{"[^ ]*", ("[A-Z_]+")/ then
+    if l =~ /\{"[^"]*", ("[A-Z_]+")/ then
       $1
     end
   }.uniq
