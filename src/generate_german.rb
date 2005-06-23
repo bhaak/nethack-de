@@ -189,7 +189,7 @@ def substantiv_endung(singularstamm, genitiv_singular_endung,
 end
 
 def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
-                          pluralstamm, nominativ_plural_endung, geschlecht, fugenelement="")
+                          pluralstamm, nominativ_plural_endung, geschlecht, fugenelement="", zusatz="")
 
   casus = substantiv_endung(singularstamm, genitiv_singular_endung,
                             pluralstamm, nominativ_plural_endung)
@@ -235,7 +235,14 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
       }
     }
   }
-  
+
+  if zusatz!="" then
+    nomen.each { |n|
+      $stderr.puts n
+      n.append(zusatz)
+      $stderr.puts n
+    }
+  end
   nomen
 end
 
@@ -516,7 +523,8 @@ def dekliniere_nominalphrase(bezeichner,
                              singularstamm, genitiv_singular_endung,
                              pluralstamm, nominativ_plural_endung,
                              geschlecht,
-                             fugenelement="")
+                             fugenelement="",
+                             zusatz="")
   # Adjektiv.new(stamm, bezeichner,  [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl], "grundform"),
 
   numerus = [$sg, $pl]
@@ -547,9 +555,19 @@ def dekliniere_nominalphrase(bezeichner,
       end
     }
   }
+  formen = singularformen.concat(pluralformen)
+
+  if zusatz!="" then
+    formen.each { |n|
+      $stderr.puts n
+      n.append(zusatz)
+      $stderr.puts n
+    }
+  end
+
   #singularformen.each { |s| $stderr.puts s.to_struct } 
   #$stderr.puts singularformen.class
-  return singularformen.concat(pluralformen)
+  return formen
 end
 
 def ausgabe_nouns
@@ -821,7 +839,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY"
     dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALE_MAIL", "Graudrachen-Schuppenpanzer", "s", "Graudrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALE_MAIL", "Silberdrachen-Schuppenpanzer", "s", "Silberdrachen-Schuppenpanzer", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALE_MAIL", "Graudrachenschuppenpanzer", "s", "Graudrachenschuppenpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALE_MAIL", "Glanzdrachen-Schuppenpanzer", "s", "Glanzdrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_RED_DRAGON_SCALE_MAIL", "Rotdrachen-Schuppenpanzer", "s", "Rotdrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_WHITE_DRAGON_SCALE_MAIL", "Weiﬂdrachen-Schuppenpanzer", "s", "Weiﬂdrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_ORANGE_DRAGON_SCALE_MAIL", "Orangedrachen-Schuppenpanzer", "s", "Orangedrachen-Schuppenpanzer", "", "maskulin"),
@@ -831,7 +849,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_YELLOW_DRAGON_SCALE_MAIL", "Gelbdrachen-Schuppenpanzer", "s", "Gelbdrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALES", "Graudrachen-Schuppe", "", "Graudrachen-Schuppe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALES", "Silberdrachen-Schuppe", "", "Silberdrachen-Schuppe", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALES", "Graudrachen-Schuppe", "", "Graudrachen-Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALES", "Glanzdrachen-Schuppe", "", "Glanzdrachen-Schuppe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_RED_DRAGON_SCALES", "Rotdrachen-Schuppe", "", "Rotdrachen-Schuppe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_WHITE_DRAGON_SCALES", "Weiﬂdrachen-Schuppe", "", "Weiﬂdrachen-Schuppe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_ORANGE_DRAGON_SCALES", "Orangedrachen-Schuppe", "", "Orangedrachen-Schuppe", "en", "feminin", "n"),
@@ -883,7 +901,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_LOW_BOOTS"
     #dekliniere_substantiv("NOUN_IRON_SHOES"
     dekliniere_substantiv("NOUN_HIGH_BOOTS", "Schaftstiefel", "s", "Schaftstiefel", "", "maskulin"), 
-    #dekliniere_substantiv("NOUN_SPEED_BOOTS"
+    dekliniere_substantiv("NOUN_SPEED_BOOTS", "Haststiefel", "s", "Haststiefel", "", "maskulin"),
     dekliniere_substantiv("NOUN_WATER_WALKING_BOOTS", "Wasserl‰ufer", "s", "Wasserl‰ufer", "", "feminin"),
     #dekliniere_substantiv("NOUN_JUMPING_BOOTS"
     #dekliniere_substantiv("NOUN_ELVEN_BOOTS"
@@ -921,7 +939,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_RIDING_GLOVES"
     #dekliniere_substantiv("NOUN_FENCING_GLOVES"
     dekliniere_substantiv("NOUN_WALKING_SHOES", "Laufschuh", "es", "Laufschuhe", "e", "feminin"),
-    dekliniere_nominalphrase("NOUN_HARD_SHOES", "feste", "Schuh", "es", "Schuhe", "e", "feminin"),
+    dekliniere_nominalphrase("NOUN_HARD_SHOES", "hart", "Schuh", "es", "Schuhe", "e", "feminin"),
     #dekliniere_substantiv("NOUN_JACKBOOTS"
     dekliniere_substantiv("NOUN_COMBAT_BOOTS", "Kampfstiefel", "s", "Kampfstiefel", "", "maskulin"), 
     #dekliniere_substantiv("NOUN_JUNGLE_BOOTS"
@@ -1020,17 +1038,25 @@ def ausgabe_nouns
     dekliniere_substantiv("RING_UNIDENTIFIED_SHINY",      "Zirkon", "s",   "Zirkon", "e",  "maskulin"),
     "",
     "/* Amulets, identified */",
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_ESP"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_LIFE_SAVING"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_STRANGULATION"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_RESTFUL_SLEEP"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_VERSUS_POISON"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_CHANGE"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_UNCHANGING"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_REFLECTION"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_MAGICAL_BREATHING"
-    #dekliniere_substantiv("ADJEKTIV_AMULET_OF_YENDOR"
-    #dekliniere_substantiv("ADJEKTIV_FAKE_AMULET_OF_YENDOR"
+    dekliniere_substantiv("NOUN_AMULET_OF_ESP", "Amulett", "es", "Amulett", "e", "neutrum", "", 
+                          "der Auﬂersinnlichen Wahrnehmung"),
+    dekliniere_substantiv("NOUN_AMULET_OF_LIFE_SAVING", "Amulett", "es", "Amulett", "e", "neutrum", "", 
+                          "der Lebensrettung"),
+    dekliniere_substantiv("NOUN_AMULET_OF_STRANGULATION", "Amulett", "es", "Amulett", "e", "neutrum", "", 
+                          "der Strangulation"),
+    dekliniere_substantiv("NOUN_AMULET_OF_RESTFUL_SLEEP", "Amulett", "es", "Amulett", "e", "neutrum", "", 
+                          "des erholsamen Schlafes"),
+    dekliniere_substantiv("NOUN_AMULET_VERSUS_POISON", "Amulett", "es", "Amulett", "e", "neutrum", "",
+                          "gegen Gift"),
+    dekliniere_substantiv("NOUN_AMULET_OF_CHANGE", "Amulett", "es", "Amulett", "e", "neutrum", "",
+                          "der Wandlung"),
+    #dekliniere_substantiv("NOUN_AMULET_OF_UNCHANGING" "Unwandlung" ?
+    #dekliniere_substantiv("NOUN_AMULET_OF_REFLECTION" "Spiegelung" ?
+    #dekliniere_substantiv("NOUN_AMULET_OF_MAGICAL_BREATHING" "magischer Lebensodem", "magischer Odem" ?
+    dekliniere_substantiv("NOUN_AMULET_OF_YENDOR", "Amulett", "es", "Amulett", "e", "neutrum", "", 
+                          "von Yendor"),
+    dekliniere_nominalphrase("NOUN_FAKE_AMULET_OF_YENDOR", "billig", "Plastikimitat", "es", "Plastikimitat", "e",
+                             "neutrum", "", "des Amulettes von Yendor"),
     "",
     "/* Amulets, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_AMULET_CIRCULAR","rund"),
@@ -1887,6 +1913,7 @@ def ausgabe_nouns
 end
 
 def dekliniere_nominal_phrase(nominalphrase, adjektiv, substantiv)
+  raise "FEHLER"
   return '  {"'+nominalphrase+'", "'+adjektiv+'", "'+substantiv+'"},'
 end
 
