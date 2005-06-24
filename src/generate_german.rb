@@ -899,7 +899,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GAUNTLETS_OF_POWER"
     #dekliniere_substantiv("NOUN_GAUNTLETS_OF_DEXTERITY"
     #dekliniere_substantiv("NOUN_LOW_BOOTS"
-    #dekliniere_substantiv("NOUN_IRON_SHOES"
+    dekliniere_substantiv("NOUN_IRON_SHOES", "Eisenschuh", "es", "Eisenschuhe", "e", "feminin"),
     dekliniere_substantiv("NOUN_HIGH_BOOTS", "Schaftstiefel", "s", "Schaftstiefel", "", "maskulin"), 
     dekliniere_substantiv("NOUN_SPEED_BOOTS", "Haststiefel", "s", "Haststiefel", "", "maskulin"),
     dekliniere_substantiv("NOUN_WATER_WALKING_BOOTS", "Wasserläufer", "s", "Wasserläufer", "", "feminin"),
