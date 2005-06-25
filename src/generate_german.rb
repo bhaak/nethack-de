@@ -1434,16 +1434,16 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GEM_DILITHIUM_CRYSTAL", "Dilithiumkristall", "es", "Dilithiumkristall", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_DIAMOND", "Diamant", "en", "Diamant", "en", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_RUBY", "Rubin", "s", "Rubin", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_GEM_JACINTH"
+    dekliniere_substantiv("NOUN_GEM_JACINTH", "Hyazinth", "es", "Hyazinth", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_SAPPHIRE", "Saphir", "s", "Saphir", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_BLACK_OPAL", "Schwarzopal", "es", "Schwarzopal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_EMERALD", "Smaragd", "es", "Smaragd", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_TURQUOISE", "Türkis", "es", "Türkis", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_CITRINE", "Zitrin", "s", "Zitrin", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_AQUAMARINE", "Aquamarin", "s", "Aquamarin", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_GEM_AMBER"
+    dekliniere_substantiv("NOUN_GEM_AMBER", "Bernsteinperle", "", "Bernsteinperle", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_GEM_TOPAZ", "Topas", "es", "Topas", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_GEM_JET"
+    dekliniere_substantiv("NOUN_GEM_JET", "Gagat", "es", "Gagat", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_OPAL", "Opal", "es", "Opal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_CHRYSOBERYL", "Chrysoberyll", "s", "Chrysoberyll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_GARNET", "Granat", "es", "Granat", "e", "maskulin"),
@@ -1463,7 +1463,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_GEM_GREEN_GLASS", ["wertlos","grün"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
     dekliniere_nominalphrase("NOUN_GEM_VIOLET_GLASS", ["wertlos","violett"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
     dekliniere_substantiv("NOUN_GEM_LUCKSTONE", "Glücksstein", "es", "Glücksstein", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_GEM_LOADSTONE"
+    dekliniere_substantiv("NOUN_GEM_LOADSTONE", "Teufelsstein", "es", "Teufelsstein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_TOUCHSTONE", "Prüfstein", "es", "Prüfstein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_FLINT", "Feuerstein", "es", "Feuerstein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_ROCK", "Stein", "es", "Stein", "e", "maskulin"),
