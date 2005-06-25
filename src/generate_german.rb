@@ -238,9 +238,9 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
 
   if zusatz!="" then
     nomen.each { |n|
-      $stderr.puts n
+      #$stderr.puts n
       n.append(zusatz)
-      $stderr.puts n
+      #$stderr.puts n
     }
   end
   nomen
@@ -519,7 +519,7 @@ def adjektiv_endung(adjektiv, kasus, geschlecht, numerus, artikel)
 end
 
 def dekliniere_nominalphrase(bezeichner,
-                             adjektiv,
+                             adjektive, # Array oder String
                              singularstamm, genitiv_singular_endung,
                              pluralstamm, nominativ_plural_endung,
                              geschlecht,
@@ -530,6 +530,12 @@ def dekliniere_nominalphrase(bezeichner,
   numerus = [$sg, $pl]
   artikel = [$ohne,$bestimmter,$unbestimmter,$grundform]
   kasus   = [$nom, $akk, $dat, $gen]
+
+  if adjektive.kind_of?(String) then
+    adjektiv = [adjektive]
+  else
+    adjektiv = adjektive
+  end
 
   substantiv_casus = substantiv_endung(singularstamm, genitiv_singular_endung,
                                        pluralstamm, nominativ_plural_endung)
@@ -544,13 +550,17 @@ def dekliniere_nominalphrase(bezeichner,
       #$stderr.puts art+" "+kas+" "+stamm+adjektiv_endung(kas, geschlecht, $pl, art)+" "+
         #singularstamm+substantiv_casus[kas][$pl]
 
-      sg = adjektiv+adjektiv_endung(adjektiv, kas, geschlecht, $sg, art)+" "+
-        singularstamm+substantiv_casus[kas][$sg]
+      sg = adjektiv.collect {|adj|
+        adj+adjektiv_endung(adjektiv, kas, geschlecht, $sg, art)
+      }.join(" ")
+      sg = sg + " " + singularstamm+substantiv_casus[kas][$sg]
       singularformen << unregelmaessiges_wort(bezeichner, sg, kas, geschlecht, $sg, fugenelement)
       
       if pluralstamm!="" then
-        pl = adjektiv+adjektiv_endung(adjektiv, kas, geschlecht, $pl, art)+" "+
-          singularstamm+substantiv_casus[kas][$pl]
+        pl = adjektiv.collect {|adj|
+          adj+adjektiv_endung(adjektiv, kas, geschlecht, $pl, art)
+        }.join(" ")
+        pl = pl + " " + pluralstamm+substantiv_casus[kas][$pl]
         pluralformen << unregelmaessiges_wort(bezeichner+"s", pl, kas, geschlecht, $pl, fugenelement)
       end
     }
@@ -559,9 +569,9 @@ def dekliniere_nominalphrase(bezeichner,
 
   if zusatz!="" then
     formen.each { |n|
-      $stderr.puts n
+      #$stderr.puts n
       n.append(zusatz)
-      $stderr.puts n
+      #$stderr.puts n
     }
   end
 
@@ -1443,15 +1453,15 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GEM_OBSIDIAN", "Obsidian", "s", "Obsidian", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_AGATE", "Achat", "es", "Achat", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_JADE", "Jadestein", "es", "Jadestein", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_GEM_WHITE_GLASS"
-    #dekliniere_substantiv("NOUN_GEM_BLUE_GLASS"
-    #dekliniere_substantiv("NOUN_GEM_RED_GLASS"
-    #dekliniere_substantiv("NOUN_GEM_YELLOWISH_BROWN_GLASS"
-    #dekliniere_substantiv("NOUN_GEM_ORANGE_GLASS"
-    #dekliniere_substantiv("NOUN_GEM_YELLOW_GLASS"
-    #dekliniere_substantiv("NOUN_GEM_BLACK_GLASS"
-    #dekliniere_substantiv("NOUN_GEM_GREEN_GLASS"
-    #dekliniere_substantiv("NOUN_GEM_VIOLET_GLASS"
+    dekliniere_nominalphrase("NOUN_GEM_WHITE_GLASS", ["wertlos","weiß"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GEM_BLUE_GLASS", ["wertlos","blau"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GEM_RED_GLASS", ["wertlos","rot"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GEM_YELLOWISH_BROWN_GLASS", ["wertlos","gelblichbraun"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GEM_ORANGE_GLASS", ["wertlos","orangen"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GEM_YELLOW_GLASS", ["wertlos","gelb"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GEM_BLACK_GLASS", ["wertlos","schwarz"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GEM_GREEN_GLASS", ["wertlos","grün"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_GEM_VIOLET_GLASS", ["wertlos","violett"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
     dekliniere_substantiv("NOUN_GEM_LUCKSTONE", "Glücksstein", "es", "Glücksstein", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_GEM_LOADSTONE"
     dekliniere_substantiv("NOUN_GEM_TOUCHSTONE", "Prüfstein", "es", "Prüfstein", "e", "maskulin"),
@@ -1459,16 +1469,16 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GEM_ROCK", "Stein", "es", "Stein", "e", "maskulin"),
     "",
     "/* Gems, unidentified */",
-    #dekliniere_substantiv("ADJEKTIV_GEM_WHITE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_RED"
-    #dekliniere_substantiv("ADJEKTIV_GEM_ORANGE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_BLUE"
-    #dekliniere_substantiv("ADJEKTIV_GEM_BLACK"
-    #dekliniere_substantiv("ADJEKTIV_GEM_GREEN"
-    #dekliniere_substantiv("ADJEKTIV_GEM_YELLOW"
-    #dekliniere_substantiv("ADJEKTIV_GEM_YELLOWISH_BROWN"
-    #dekliniere_substantiv("ADJEKTIV_GEM_VIOLET"
-    #dekliniere_substantiv("ADJEKTIV_GEM_GRAY"
+    dekliniere_adjektiv("ADJEKTIV_GEM_WHITE", "weiß"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_RED", "rot"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_ORANGE", "orangen"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_BLUE", "blau"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_BLACK", "schwarz"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_GREEN", "grün"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_YELLOW", "gelb"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_YELLOWISH_BROWN", "gelblichbraun"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_VIOLET", "violett"),
+    dekliniere_adjektiv("ADJEKTIV_GEM_GRAY", "grau"),
     "",
     "/* Other objects, identified */",
     dekliniere_substantiv("NOUN_BOULDER",   "Felsbrocken",    "s",  "Felsbrocken",    "",   "maskulin"),
@@ -1910,11 +1920,6 @@ def ausgabe_nouns
     puts "\n"
   }
   puts "  {NULL, NULL, 0, 0, 0, 0}\n};"
-end
-
-def dekliniere_nominal_phrase(nominalphrase, adjektiv, substantiv)
-  raise "FEHLER"
-  return '  {"'+nominalphrase+'", "'+adjektiv+'", "'+substantiv+'"},'
 end
 
 # print everything
