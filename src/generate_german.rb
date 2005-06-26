@@ -426,6 +426,7 @@ def ausgabe_verbs
     "",
     Verb.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
     Verb.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
+    Verb.new("VERB_MOECHTEST", "", "", ["möchtest", "möchte", "möchtet","möchten"]),
     "",
     Verb.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
   ].each { |v|   
@@ -698,7 +699,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_PAAR", "Paar", "es", "Paar", "e", "neutrum"), 
     dekliniere_substantiv("NOUN_PAAR", "Paar", "es", "Paar", "e", "neutrum"), 
     dekliniere_substantiv("NOUN_BOOTS", "Stiefel", "s", "Stiefel", "", "maskulin"), 
-    dekliniere_substantiv("NOUN_GLOVES", "Handschuh", "es", "Handschuhe", "e", "feminin"),
+    dekliniere_substantiv("NOUN_GLOVES", "Handschuh", "es", "Handschuh", "e", "feminin"),
     dekliniere_substantiv("NOUN_CLOAK", "Mantel", "s", "Mäntel", "", "maskulin"),
     dekliniere_substantiv("NOUN_HELMET", "Helm", "es", "Helm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SHIELD", "Schild", "es", "Schild", "e", "maskulin"), 
@@ -908,16 +909,17 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GAUNTLETS_OF_FUMBLING"
     #dekliniere_substantiv("NOUN_GAUNTLETS_OF_POWER"
     #dekliniere_substantiv("NOUN_GAUNTLETS_OF_DEXTERITY"
-    #dekliniere_substantiv("NOUN_LOW_BOOTS"
-    dekliniere_substantiv("NOUN_IRON_SHOES", "Eisenschuh", "es", "Eisenschuhe", "e", "feminin"),
-    dekliniere_substantiv("NOUN_HIGH_BOOTS", "Schaftstiefel", "s", "Schaftstiefel", "", "maskulin"), 
+    dekliniere_nominalphrase("NOUN_LOW_BOOTS", "flach", "Schuh", "es", "Schuh", "e", "feminin"),
+    dekliniere_substantiv("NOUN_IRON_SHOES", "Eisenschuh", "es", "Eisenschuh", "e", "feminin"),
+    dekliniere_nominalphrase("NOUN_HIGH_BOOTS", "hoh", "Stiefel", "s", "Stiefel", "", "maskulin"), 
     dekliniere_substantiv("NOUN_SPEED_BOOTS", "Haststiefel", "s", "Haststiefel", "", "maskulin"),
     dekliniere_substantiv("NOUN_WATER_WALKING_BOOTS", "Wasserläufer", "s", "Wasserläufer", "", "feminin"),
-    #dekliniere_substantiv("NOUN_JUMPING_BOOTS"
+    dekliniere_substantiv("NOUN_JUMPING_BOOTS", "Springerstiefel", "s", "Springerstiefel", "", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_BOOTS", "Elbenstiefel", "s", "Elbenstiefel", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_KICKING_BOOTS"
-    #dekliniere_substantiv("NOUN_FUMBLE_BOOTS"
-    #dekliniere_substantiv("NOUN_LEVITATION_BOOTS"
+    #dekliniere_substantiv("NOUN_KICKING_BOOTS", "Treterstiefel", "s", "Treterstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_KICKING_BOOTS", "Allestreter", "s", "Allestreter", "", "feminin"),
+    dekliniere_substantiv("NOUN_FUMBLE_BOOTS", "Trampelstiefel", "s", "Trampelstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_LEVITATION_BOOTS", "Flugschuh", "es", "Fluschuh", "e", "feminin"),
     "",
     "/* Armor, unidentified */",
     #dekliniere_substantiv("NOUN_LEATHER_HAT"
@@ -944,20 +946,20 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_RED_EYED_SHIELD"
     #dekliniere_substantiv("NOUN_LARGE_ROUND_SHIELD"
     #dekliniere_substantiv("NOUN_POLISHED_SILVER_SHIELD"
-    dekliniere_nominalphrase("NOUN_OLD_GLOVES", "alt", "Handschuh", "es", "Handschuhe", "e", "feminin"),
+    dekliniere_nominalphrase("NOUN_OLD_GLOVES", "alt", "Handschuh", "es", "Handschuh", "e", "feminin"),
     #dekliniere_substantiv("NOUN_PADDED_GLOVES"
     #dekliniere_substantiv("NOUN_RIDING_GLOVES"
     #dekliniere_substantiv("NOUN_FENCING_GLOVES"
-    dekliniere_substantiv("NOUN_WALKING_SHOES", "Laufschuh", "es", "Laufschuhe", "e", "feminin"),
-    dekliniere_nominalphrase("NOUN_HARD_SHOES", "hart", "Schuh", "es", "Schuhe", "e", "feminin"),
-    #dekliniere_substantiv("NOUN_JACKBOOTS"
-    dekliniere_substantiv("NOUN_COMBAT_BOOTS", "Kampfstiefel", "s", "Kampfstiefel", "", "maskulin"), 
-    #dekliniere_substantiv("NOUN_JUNGLE_BOOTS"
-    dekliniere_substantiv("NOUN_HIKING_BOOTS", "Wanderstiefel", "s", "Wanderstiefel", "", "maskulin"), 
-    #dekliniere_substantiv("NOUN_MUD_BOOTS"
-    #dekliniere_substantiv("NOUN_BUCKLED_BOOTS"
-    dekliniere_substantiv("NOUN_RIDING_BOOTS", "Reitstiefel", "s", "Reitstiefel", "", "maskulin"), 
-    #dekliniere_substantiv("NOUN_SNOW_BOOTS" "Schneeschuhe"?
+    dekliniere_substantiv("NOUN_WALKING_SHOES", "Straßenschuh", "es", "Straßenschuh", "e", "feminin"),
+    dekliniere_nominalphrase("NOUN_HARD_SHOES", "hart", "Schuh", "es", "Schuh", "e", "feminin"),
+    dekliniere_substantiv("NOUN_JACKBOOTS", "Stulpenstiefel", "s", "Stulpenstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_COMBAT_BOOTS", "Kampfstiefel", "s", "Kampfstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_JUNGLE_BOOTS", "Dschungelstiefel", "s", "Dschungelstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_HIKING_BOOTS", "Wanderstiefel", "s", "Wanderstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_MUD_BOOTS", "Schlammstiefel", "s", "Schlammstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_BUCKLED_BOOTS", "Schnallenstiefel", "s", "Schnallenstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_RIDING_BOOTS", "Reitstiefel", "s", "Reitstiefel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_SNOW_BOOTS", "Schneestiefel", "s", "Schneestiefel", "", "maskulin"),
     "",
     "/* Wands, identified */",
     dekliniere_substantiv("NOUN_WAND_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),
