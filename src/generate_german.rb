@@ -726,7 +726,7 @@ def ausgabe_nouns
     "",
     "/* Weapons, identified */",
     dekliniere_substantiv("NOUN_ARROW", "Pfeil", "es", "Pfeil", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_ELVEN_ARROW"
+    dekliniere_substantiv("NOUN_ELVEN_ARROW", "Elbenpfeil", "es", "Elbenpfeil", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ORCISH_ARROW"
     dekliniere_substantiv("NOUN_SILVER_ARROW", "Silberpfeil", "es", "Silberpfeil", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_YA"
@@ -735,14 +735,14 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SHURIKEN"
     dekliniere_substantiv("NOUN_BOOMERANG", "Bumerang", "es", "Bumerang", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SPEAR", "Speer", "es", "Speer", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_ELVEN_SPEAR"
+    dekliniere_substantiv("NOUN_ELVEN_SPEAR", "Elbenspeer", "es", "Elbenspeer", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ORCISH_SPEAR"
     #dekliniere_substantiv("NOUN_DWARVISH_SPEAR"
     #dekliniere_substantiv("NOUN_SILVER_SPEAR"
     #dekliniere_substantiv("NOUN_JAVELIN"
     dekliniere_substantiv("NOUN_TRIDENT", "Dreizack", "s", "Dreizack", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DAGGER", "Dolch", "es", "Dolch", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_ELVEN_DAGGER"
+    dekliniere_substantiv("NOUN_ELVEN_DAGGER", "Elbendolch", "es", "Elbendolch", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ORCISH_DAGGER"
     #dekliniere_substantiv("NOUN_SILVER_DAGGER"
     #dekliniere_substantiv("NOUN_ATHAME"
@@ -754,13 +754,13 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_AXE", "Beil", "es", "Beil", "e", "neutrum"),
     dekliniere_substantiv("NOUN_BATTLE_AXE", "Streitaxt", "", "Streitäxt", "e", "feminin"),
     dekliniere_substantiv("NOUN_SHORT_SWORD", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
-    #dekliniere_substantiv("NOUN_ELVEN_SHORT_SWORD"
+    dekliniere_nominalphrase("NOUN_ELVEN_SHORT_SWORD", "elbisch", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_ORCISH_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_DWARVISH_SHORT_SWORD"
     dekliniere_substantiv("NOUN_SCIMITAR", "Szimitar", "", "Szimitar", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_SILVER_SABER"
     dekliniere_substantiv("NOUN_BROADSWORD", "Breitschwert", "es", "Breitschwert", "er", "neutrum", "s"),
-    #dekliniere_substantiv("NOUN_ELVEN_BROADSWORD"
+    dekliniere_nominalphrase("NOUN_ELVEN_BROADSWORD", "elbisch", "Breitschwert", "es", "Breitschwert", "er", "neutrum", "s"),
     dekliniere_substantiv("NOUN_LONG_SWORD", "Langschwert", "es", "Langschwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_TWO_HANDED_SWORD", "Zweihänder", "s", "Zweihänder", "", "maskulin"),
     dekliniere_substantiv("NOUN_KATANA", "Katana", "", "Katana", "s", "neutrum"),
@@ -790,7 +790,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_FLAIL", "Dreschflegel", "s", "Dreschflegel", "", "maskulin"),
     dekliniere_substantiv("NOUN_BULLWHIP", "Peitsche", "", "Peitsche", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_BOW", "Bogen", "s", "Bogen", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_ELVEN_BOW"
+    dekliniere_substantiv("NOUN_ELVEN_BOW", "Elbenbogen", "s", "Elbenbogen", "", "maskulin"),
     #dekliniere_substantiv("NOUN_ORCISH_BOW"
     #dekliniere_substantiv("NOUN_YUMI"
     dekliniere_substantiv("NOUN_SLING", "Schleuder", "", "Schleuder", "en", "feminin"),
@@ -799,7 +799,7 @@ def ausgabe_nouns
     "/* Weapons, unidentified */",
     #dekliniere_substantiv("NOUN_RUNED_ARROW"
     #dekliniere_substantiv("NOUN_CRUDE_ARROW"
-    #dekliniere_substantiv("NOUN_BAMBOO_ARROW"
+    dekliniere_substantiv("NOUN_BAMBOO_ARROW", "Bambuspfeil", "es", "Bambuspfeil", "e", "maskulin"),
     dekliniere_substantiv("NOUN_THROWING_STAR", "Wurfstern", "es", "Wurfstern", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_RUNED_SPEAR"
     #dekliniere_substantiv("NOUN_CRUDE_SPEAR"
@@ -836,7 +836,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LONG_BOW", "Langbogen", "s", "Langbogen", "", "maskulin"),
     "",
     "/* Armor, identified */",
-    #dekliniere_substantiv("NOUN_ELVEN_LEATHER_HELM"
+    dekliniere_nominalphrase("NOUN_ELVEN_LEATHER_HELM", "ledern", "Elbenhelm", "es", "Elbenhelm", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ORCISH_HELM"
     #dekliniere_substantiv("NOUN_DWARVISH_IRON_HELM"
     #dekliniere_substantiv("NOUN_FEDORA"
@@ -886,7 +886,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HAWAIIAN_SHIRT", "Hawaiihemd", "es", "Hawaiihemd", "en", "neutrum", "en"),
     dekliniere_substantiv("NOUN_T_SHIRT", "T-Shirt", "s", "T-Shirt", "s", "neutrum"),
     #dekliniere_substantiv("NOUN_MUMMY_WRAPPING"
-    #dekliniere_substantiv("NOUN_ELVEN_CLOAK"
+    dekliniere_substantiv("NOUN_ELVEN_CLOAK", "Elbenumhang", "es", "Elbenumhäng", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ORCISH_CLOAK"
     #dekliniere_substantiv("NOUN_DWARVISH_CLOAK"
     #dekliniere_substantiv("NOUN_OILSKIN_CLOAK"
@@ -898,7 +898,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CLOAK_OF_MAGIC_RESISTANCE"
     #dekliniere_substantiv("NOUN_CLOAK_OF_DISPLACEMENT"
     #dekliniere_substantiv("NOUN_SMALL_SHIELD"
-    #dekliniere_substantiv("NOUN_ELVEN_SHIELD"
+    dekliniere_substantiv("NOUN_ELVEN_SHIELD", "Elbenschild", "es", "Elbenschild", "e", "maskulin"), 
     #dekliniere_substantiv("NOUN_URUK_HAI_SHIELD"
     #dekliniere_substantiv("NOUN_ORCISH_SHIELD"
     #dekliniere_substantiv("NOUN_LARGE_SHIELD"
@@ -914,7 +914,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SPEED_BOOTS", "Haststiefel", "s", "Haststiefel", "", "maskulin"),
     dekliniere_substantiv("NOUN_WATER_WALKING_BOOTS", "Wasserläufer", "s", "Wasserläufer", "", "feminin"),
     #dekliniere_substantiv("NOUN_JUMPING_BOOTS"
-    #dekliniere_substantiv("NOUN_ELVEN_BOOTS"
+    dekliniere_substantiv("NOUN_ELVEN_BOOTS", "Elbenstiefel", "s", "Elbenstiefel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_KICKING_BOOTS"
     #dekliniere_substantiv("NOUN_FUMBLE_BOOTS"
     #dekliniere_substantiv("NOUN_LEVITATION_BOOTS"
@@ -1764,7 +1764,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GREEN_ELF"
     #dekliniere_substantiv("NOUN_GREY_ELF"
     #dekliniere_substantiv("NOUN_ELF_LORD"
-    #dekliniere_substantiv("NOUN_ELVENKING"
+    dekliniere_substantiv("NOUN_ELVENKING", "Elbenkönig", "es", "Elbenkönig", "e", "maskulin", "s"),
     #dekliniere_substantiv("NOUN_DOPPELGANGER"
     #dekliniere_substantiv("NOUN_NURSE",
     #dekliniere_substantiv("NOUN_SHOPKEEPER"
