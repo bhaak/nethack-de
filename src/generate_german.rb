@@ -1604,12 +1604,12 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_PONY","Pony","s","Pony","s","neutrum"),
     dekliniere_substantiv("NOUN_HORSE","Pferd","es","Pferd","e","neutrum", "e"),
     dekliniere_substantiv("NOUN_WARHORSE","Schlachtroß","es","Schlachtroß","e","neutrum"),
-    #dekliniere_substantiv("NOUN_FOG_CLOUD"
-    #dekliniere_substantiv("NOUN_DUST_VORTEX"
-    #dekliniere_substantiv("NOUN_ICE_VORTEX"
-    #dekliniere_substantiv("NOUN_ENERGY_VORTEX"
-    #dekliniere_substantiv("NOUN_STEAM_VORTEX"
-    #dekliniere_substantiv("NOUN_FIRE_VORTEX"
+    dekliniere_substantiv("NOUN_FOG_CLOUD", "Nebelwolke", "", "Nebelwolke", "en", "feminin"),
+    dekliniere_substantiv("NOUN_DUST_VORTEX", "Staubwirbel", "", "Staubwirbel", "n", "maskulin"),
+    dekliniere_substantiv("NOUN_ICE_VORTEX", "Eiswirbel", "", "Eiswirbel", "n", "maskulin"),
+    dekliniere_substantiv("NOUN_ENERGY_VORTEX", "Energiewirbel", "", "Energiewirbel", "n", "maskulin"),
+    dekliniere_substantiv("NOUN_STEAM_VORTEX", "Dampfwirbel", "", "Dampfwirbel", "n", "maskulin"),
+    dekliniere_substantiv("NOUN_FIRE_VORTEX", "Feuerwirbel", "", "Feuerwirbel", "n", "maskulin"),
     #dekliniere_substantiv("NOUN_BABY_LONG_WORM"
     #dekliniere_substantiv("NOUN_BABY_PURPLE_WORM"
     #dekliniere_substantiv("NOUN_LONG_WORM"
@@ -1767,14 +1767,14 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GREY_ELF"
     #dekliniere_substantiv("NOUN_ELF_LORD"
     dekliniere_substantiv("NOUN_ELVENKING", "Elbenkönig", "es", "Elbenkönig", "e", "maskulin", "s"),
-    #dekliniere_substantiv("NOUN_DOPPELGANGER"
-    #dekliniere_substantiv("NOUN_NURSE",
+    dekliniere_substantiv("NOUN_DOPPELGANGER", "Doppelgänger", "s", "Doppelgänger", "", "maskulin"),
+    dekliniere_substantiv("NOUN_NURSE", "Krankenschwester", "", "Krankenschwester", "en", "feminin"),
     #dekliniere_substantiv("NOUN_SHOPKEEPER"
-    #dekliniere_substantiv("NOUN_GUARD"
+    dekliniere_substantiv("NOUN_GUARD", "Wache", "", "Wache", "en", "feminin"),
     #dekliniere_substantiv("NOUN_PRISONER"
     dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orakel", "", "neutrum"),
     #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
-    #dekliniere_substantiv("NOUN_HIGH_PRIEST"
+    dekliniere_substantiv("NOUN_HIGH_PRIEST", "Hohepriester", "s", "Hohepriester", "", "maskulin"),
     dekliniere_substantiv("NOUN_SOLDIER", "Soldat", "en", "Soldat", "en", "maskulin", "en"),
     "/* 'Korporal' exists as a military term in the Austrian 'Bundesheer' and\nthe Swiss Army. "+
     "'Leutnant' and 'Hauptmann' exist in these too and also in\nthe German 'Bundeswehr'.\n"+
@@ -1857,7 +1857,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_HIPPOCRATES"
     #dekliniere_substantiv("NOUN_KING_ARTHUR"
     dekliniere_substantiv("NOUN_GRAND_MASTER", "Großmeister", "s", "Großmeister", "", "maskulin"), 
-    #dekliniere_substantiv("NOUN_ARCH_PRIEST"
+    #dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
+    dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin),
     dekliniere_substantiv("NOUN_ORION", "Orion", "s", "", "", "maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
     #dekliniere_substantiv("NOUN_LORD_SATO"
