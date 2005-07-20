@@ -846,8 +846,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_DENTED_POT"
     #dekliniere_substantiv("NOUN_HELMET"
     #dekliniere_substantiv("NOUN_HELM_OF_BRILLIANCE"
-    #dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT"
-    #dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY"
+    #dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT" # Helm der entgegengesetzten Gesinnung
+    #dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY" # Infravisionshelm?
     dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALE_MAIL", "Graudrachen-Schuppenpanzer", "s", "Graudrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALE_MAIL", "Silberdrachen-Schuppenpanzer", "s", "Silberdrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALE_MAIL", "Glanzdrachen-Schuppenpanzer", "s", "Glanzdrachen-Schuppenpanzer", "", "maskulin"),
@@ -906,9 +906,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_DWARVISH_ROUNDSHIELD", "Zwergen-Rundschild", "es", "Zwergen-Rundschild", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_SHIELD_OF_REFLECTION"
     #dekliniere_substantiv("NOUN_LEATHER_GLOVES"
-    #dekliniere_substantiv("NOUN_GAUNTLETS_OF_FUMBLING"
+    #dekliniere_substantiv("NOUN_GAUNTLETS_OF_FUMBLING" # Ungeschicklichkeitshandschuhe
     #dekliniere_substantiv("NOUN_GAUNTLETS_OF_POWER"
-    #dekliniere_substantiv("NOUN_GAUNTLETS_OF_DEXTERITY"
+    #dekliniere_substantiv("NOUN_GAUNTLETS_OF_DEXTERITY" # Geschicklichkeit, Gewandheit, Fertigkeit, Fingerfertigkeit
     dekliniere_nominalphrase("NOUN_LOW_BOOTS", "flach", "Schuh", "es", "Schuh", "e", "feminin"),
     dekliniere_substantiv("NOUN_IRON_SHOES", "Eisenschuh", "es", "Eisenschuh", "e", "feminin"),
     dekliniere_nominalphrase("NOUN_HIGH_BOOTS", "hoh", "Stiefel", "s", "Stiefel", "", "maskulin"), 
@@ -965,6 +965,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_WAND_SECRET_DOOR_DETECTION", "Licht", "es", "Licht", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monstererschaffung", "", "Monstererschaffung", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterherbeirufung",
     #dekliniere_substantiv("NOUN_WAND_ENLIGHTENMENT", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_WISHING", "Wünschen", "s", "", "", "neutrum"),
@@ -981,7 +982,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_WAND_LOCKING", "Öffnung", "", "Öffnung", "en", "feminin"),
     #dekliniere_substantiv("NOUN_WAND_PROBING", "Öffnung", "", "Öffnung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_DIGGING", "Graben", "s", "", "", "neutrum"),
-    #dekliniere_substantiv("NOUN_WAND_MAGIC_MISSILE", "Graben", "s", "", "", "neutrum"),
+    #dekliniere_substantiv("NOUN_WAND_MAGIC_MISSILE", "Graben", "s", "", "", "neutrum"),  # magische Geschosse
     dekliniere_substantiv("NOUN_WAND_FIRE", "Feuer", "s", "Feuer", "", "neutrum"),
     dekliniere_substantiv("NOUN_WAND_COLD", "Kälte", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
@@ -989,34 +990,34 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_LIGHTNING", "Blitz", "es", "Blitz", "e", "maskulin"),
     "",
     "/* Rings, identified */",
-    #dekliniere_substantiv("ADJEKTIV_RING_ADORNMENT"
-    #dekliniere_substantiv("ADJEKTIV_RING_GAIN_STRENGTH"
-    #dekliniere_substantiv("ADJEKTIV_RING_GAIN_CONSTITUTION"
-    #dekliniere_substantiv("ADJEKTIV_RING_INCREASE_ACCURACY"
-    #dekliniere_substantiv("ADJEKTIV_RING_INCREASE_DAMAGE"
-    #dekliniere_substantiv("ADJEKTIV_RING_PROTECTION"
-    #dekliniere_substantiv("ADJEKTIV_RING_REGENERATION"
-    #dekliniere_substantiv("ADJEKTIV_RING_SEARCHING"
-    #dekliniere_substantiv("ADJEKTIV_RING_STEALTH"
-    #dekliniere_substantiv("ADJEKTIV_RING_SUSTAIN_ABILITY"
-    #dekliniere_substantiv("ADJEKTIV_RING_LEVITATION"
-    #dekliniere_substantiv("ADJEKTIV_RING_HUNGER"
-    #dekliniere_substantiv("ADJEKTIV_RING_AGGRAVATE_MONSTER"
-    #dekliniere_substantiv("ADJEKTIV_RING_CONFLICT"
-    #dekliniere_substantiv("ADJEKTIV_RING_WARNING"
-    #dekliniere_substantiv("ADJEKTIV_RING_POISON_RESISTANCE"
-    #dekliniere_substantiv("ADJEKTIV_RING_FIRE_RESISTANCE"
-    #dekliniere_substantiv("ADJEKTIV_RING_COLD_RESISTANCE"
-    #dekliniere_substantiv("ADJEKTIV_RING_SHOCK_RESISTANCE"
-    #dekliniere_substantiv("ADJEKTIV_RING_FREE_ACTION"
-    #dekliniere_substantiv("ADJEKTIV_RING_SLOW_DIGESTION"
-    #dekliniere_substantiv("ADJEKTIV_RING_TELEPORTATION"
-    #dekliniere_substantiv("ADJEKTIV_RING_TELEPORT_CONTROL"
-    #dekliniere_substantiv("ADJEKTIV_RING_POLYMORPH"
-    #dekliniere_substantiv("ADJEKTIV_RING_POLYMORPH_CONTROL"
-    #dekliniere_substantiv("ADJEKTIV_RING_INVISIBILITY"
-    #dekliniere_substantiv("ADJEKTIV_RING_SEE_INVISIBLE"
-    #dekliniere_substantiv("ADJEKTIV_RING_PROTECTION_FROM_SHAPE_CHANGERS"
+    dekliniere_substantiv("NOUN_RING_ADORNMENT", "Zierde", "", "Zierde", "en", "feminin"), # der Verschönerung, Zierde, Verzierung
+    dekliniere_substantiv("NOUN_RING_GAIN_STRENGTH", "Stärke", "", "Stärke", "en", "feminin"), #  der Stärke, der Kraft, der Kampfkraft?
+    dekliniere_substantiv("NOUN_RING_GAIN_CONSTITUTION", "Konstitution", "", "Konstitution", "en", "feminin"), # Konstitution?
+    dekliniere_substantiv("NOUN_RING_INCREASE_ACCURACY", "Treffgenauigkeit", "", "Treffgenauigkeit", "en", "feminin"), # der Treffgenauigkeit, der Präzision, der groesseren Praezision
+    dekliniere_substantiv("NOUN_RING_INCREASE_DAMAGE", "Schaden", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_RING_PROTECTION", "Schutz", "es", "Schutz", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_RING_REGENERATION", "Regeneration", "", "Regeneration", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RING_SEARCHING", "Suchen", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_RING_STEALTH", "Schleichen", "s", "", "", "neutrum"),
+    #dekliniere_substantiv("NOUN_RING_SUSTAIN_ABILITY" 
+    dekliniere_substantiv("NOUN_RING_LEVITATION", "Levitation", "", "Levitation", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RING_HUNGER", "Hungern", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_RING_AGGRAVATE_MONSTER", "Monsterreizung", "", "Monsterreizung", "en", "feminin"), # ?Monsterreizung, Monsternanziehung?
+    dekliniere_substantiv("NOUN_RING_CONFLICT", "Konflikt", "es", "Konflikt", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_RING_WARNING", "Vorwarnung", "", "Vorwarnung", "en", "feminin"), # Warnung, Vorwarnung?
+    dekliniere_substantiv("NOUN_RING_POISON_RESISTANCE", "Giftresistenz", "", "Giftresistenz", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RING_FIRE_RESISTANCE", "Feuerresistenz", "", "Feuerresistenz", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RING_COLD_RESISTANCE", "Kälteresistenz", "", "Kälteresistenz", "en", "feminin"),
+    #dekliniere_substantiv("NOUN_RING_SHOCK_RESISTANCE"
+    dekliniere_substantiv("NOUN_RING_FREE_ACTION", "Bewegungsfreiheit", "", "Bewegungsfreiheit", "en", "feminin"), # Freiheit, Bewegungsfreiheit, freien Bewegung
+    dekliniere_nominalphrase("NOUN_RING_SLOW_DIGESTION", "langsam", "Verdauung", "", "Verdauung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RING_TELEPORTATION", "Teleportation", "", "Teleportation", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RING_TELEPORT_CONTROL", "Teleportationskontrolle", "", "Teleportationskontrolle", "en", "feminin"), 
+    dekliniere_substantiv("NOUN_RING_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin"), # der Transformation
+    dekliniere_substantiv("NOUN_RING_POLYMORPH_CONTROL", "Transformationskontrolle", "", "Transformationskontrolle", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RING_INVISIBILITY", "Unsichtbarkeit", "", "", "", "feminin"), # der Unsichtbarkeit
+    dekliniere_substantiv("NOUN_RING_SEE_INVISIBLE", "Enthüllung", "", "Enthüllung", "en", "feminin", " des Unsichtbaren"),
+    dekliniere_substantiv("NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "Schutz", "es", "Schutz", "en", "feminin", " vor Formwandlern"), # des Schutzes vor Gestaltwandlern
     "",
     "/* Rings, unidentified */",
     dekliniere_substantiv("RING_UNIDENTIFIED_WOODEN",     "Holz",      "es", "Hölz",      "er",  "neutrum"),
@@ -1207,7 +1208,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
     dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständige", "Heilung", "", "Heilung", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
-    #dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT"
+    #dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT" # Klarheit?
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION"
     #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"
     #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"
@@ -1217,7 +1218,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_SICKNESS"
     #dekliniere_substantiv("NOUN_POT_FRUIT_JUICE"
     #dekliniere_substantiv("NOUN_POT_ACID"
-    #dekliniere_substantiv("NOUN_POT_OIL"
+    #dekliniere_substantiv("NOUN_POT_OIL" # Öl, Brandöl
     #dekliniere_substantiv("NOUN_POT_WATER"
     "",
     "/* Potions, unidentified */",
@@ -1254,7 +1255,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"
     #dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER"
     #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER"
-    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE"
+    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE" # Fluch bannen
     #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"
     #dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER"
     #dekliniere_substantiv("NOUN_SCR_TAMING"
@@ -1306,7 +1307,7 @@ def ausgabe_nouns
     "",
     "/* Spellbooks, identified */",
     #dekliniere_substantiv("NOUN_SPE_DIG"
-    #dekliniere_substantiv("NOUN_SPE_MAGIC_MISSILE"
+    #dekliniere_substantiv("NOUN_SPE_MAGIC_MISSILE" # magische Geschosse
     #dekliniere_substantiv("NOUN_SPE_FIREBALL"
     #dekliniere_substantiv("NOUN_SPE_CONE_OF_COLD"
     #dekliniere_substantiv("NOUN_SPE_SLEEP"
@@ -1326,7 +1327,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SPE_CAUSE_FEAR"
     #dekliniere_substantiv("NOUN_SPE_CLAIRVOYANCE"
     #dekliniere_substantiv("NOUN_SPE_CURE_SICKNESS"
-    #dekliniere_substantiv("NOUN_SPE_CHARM_MONSTER"
+    #dekliniere_substantiv("NOUN_SPE_CHARM_MONSTER" # Monster bezaubern
     #dekliniere_substantiv("NOUN_SPE_HASTE_SELF"
     #dekliniere_substantiv("NOUN_SPE_DETECT_UNSEEN"
     #dekliniere_substantiv("NOUN_SPE_LEVITATION"
@@ -1342,9 +1343,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SPE_TELEPORT_AWAY"
     #dekliniere_substantiv("NOUN_SPE_CREATE_FAMILIAR"
     #dekliniere_substantiv("NOUN_SPE_CANCELLATION"
-    #dekliniere_substantiv("NOUN_SPE_PROTECTION"
+    #dekliniere_substantiv("NOUN_SPE_PROTECTION" # Schutz
     #dekliniere_substantiv("NOUN_SPE_JUMPING"
-    #dekliniere_substantiv("NOUN_SPE_STONE_TO_FLESH"
+    #dekliniere_substantiv("NOUN_SPE_STONE_TO_FLESH" # Stein zu Fleisch
     #dekliniere_substantiv("NOUN_SPE_FLAME_SPHERE"
     #dekliniere_substantiv("NOUN_SPE_FREEZE_SPHERE"
     #dekliniere_substantiv("NOUN_SPE_BLANK_PAPER"
@@ -1605,11 +1606,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HORSE","Pferd","es","Pferd","e","neutrum", "e"),
     dekliniere_substantiv("NOUN_WARHORSE","Schlachtroß","es","Schlachtroß","e","neutrum"),
     dekliniere_substantiv("NOUN_FOG_CLOUD", "Nebelwolke", "", "Nebelwolke", "en", "feminin"),
-    dekliniere_substantiv("NOUN_DUST_VORTEX", "Staubwirbel", "", "Staubwirbel", "n", "maskulin"),
-    dekliniere_substantiv("NOUN_ICE_VORTEX", "Eiswirbel", "", "Eiswirbel", "n", "maskulin"),
-    dekliniere_substantiv("NOUN_ENERGY_VORTEX", "Energiewirbel", "", "Energiewirbel", "n", "maskulin"),
-    dekliniere_substantiv("NOUN_STEAM_VORTEX", "Dampfwirbel", "", "Dampfwirbel", "n", "maskulin"),
-    dekliniere_substantiv("NOUN_FIRE_VORTEX", "Feuerwirbel", "", "Feuerwirbel", "n", "maskulin"),
+    dekliniere_substantiv("NOUN_DUST_VORTEX", "Staubwirbel", "s", "Staubwirbel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_ICE_VORTEX", "Eiswirbel", "s", "Eiswirbel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_ENERGY_VORTEX", "Energiewirbel", "s", "Energiewirbel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_STEAM_VORTEX", "Dampfwirbel", "s", "Dampfwirbel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_FIRE_VORTEX", "Feuerwirbel", "s", "Feuerwirbel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_BABY_LONG_WORM"
     #dekliniere_substantiv("NOUN_BABY_PURPLE_WORM"
     #dekliniere_substantiv("NOUN_LONG_WORM"
@@ -1858,7 +1859,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_KING_ARTHUR"
     dekliniere_substantiv("NOUN_GRAND_MASTER", "Großmeister", "s", "Großmeister", "", "maskulin"), 
     #dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
-    dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin),
+    dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin"),
     dekliniere_substantiv("NOUN_ORION", "Orion", "s", "", "", "maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
     #dekliniere_substantiv("NOUN_LORD_SATO"
