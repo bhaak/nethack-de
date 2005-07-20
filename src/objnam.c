@@ -448,7 +448,8 @@ register struct obj *obj;
 		if(!obj->dknown)
 			Strcpy(buf, "NOUN_RING");
 		else if(nn)
-			Sprintf(buf, "NOUN_RING PARTIKEL_OF %s", actualn);
+			//Sprintf(buf, "NOUN_RING PARTIKEL_OF %s", actualn);
+			Sprintf(buf, "NOUN_RING KASUS_GENITIV ARTIKEL_BESTIMMTER %s", actualn);
 		else if(un)
 			Sprintf(buf, "NOUN_RING PARTIKEL_CALLED %s", un);
 		else

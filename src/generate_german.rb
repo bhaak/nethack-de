@@ -552,14 +552,14 @@ def dekliniere_nominalphrase(bezeichner,
         #singularstamm+substantiv_casus[kas][$pl]
 
       sg = adjektiv.collect {|adj|
-        adj+adjektiv_endung(adjektiv, kas, geschlecht, $sg, art)
+        adj+adjektiv_endung(adj, kas, geschlecht, $sg, art)
       }.join(" ")
       sg = sg + " " + singularstamm+substantiv_casus[kas][$sg]
       singularformen << unregelmaessiges_wort(bezeichner, sg, kas, geschlecht, $sg, fugenelement)
       
       if pluralstamm!="" then
         pl = adjektiv.collect {|adj|
-          adj+adjektiv_endung(adjektiv, kas, geschlecht, $pl, art)
+          adj+adjektiv_endung(adj, kas, geschlecht, $pl, art)
         }.join(" ")
         pl = pl + " " + pluralstamm+substantiv_casus[kas][$pl]
         pluralformen << unregelmaessiges_wort(bezeichner+"s", pl, kas, geschlecht, $pl, fugenelement)

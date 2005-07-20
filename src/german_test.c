@@ -43,9 +43,21 @@ START_TEST (test_linking_elements) {
 		 "X - ein Holzring"},
 		/* Nouns ending in -ung have to get a 's' to link to the following noun */
 		{"X - ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_ENGAGEMENT NOUN_RING",
-		 "X - ein Verlobungsring"},
-		{"  NOUN_RING PARTIKEL_OF ADJEKTIV_RING_CONFLICT (RING_UNIDENTIFIED_ENGAGEMENT)",
-		 "  Ring des ADJEKTIV_RING_CONFLICT (Verlobung)"}};
+		 "X - ein Verlobungsring"}};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
+START_TEST (test_rings) {
+	char *text[][2] = {
+		{"  NOUN_RING KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_RING_CONFLICT (RING_UNIDENTIFIED_CLAY)",
+		 "  Ring des Konfliktes (Ton)"},
+		{"  NOUN_RING KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_RING_CONFLICT (RING_UNIDENTIFIED_ENGAGEMENT)",
+		 "  Ring des Konfliktes (Verlobung)"},
+		{"l - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_RING KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_RING_STEALTH.",
+		 "l - ein nicht verfluchter Ring des Schleichens."},
+		{"  NOUN_RING PARTIKEL_OF NOUN_RING_STEALTH (RING_UNIDENTIFIED_TWISTED)",
+		 "  Ring des Schleichens (Lapislazuli)"}};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
@@ -339,6 +351,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_tincontent);
 	tcase_add_test(tc_core, test_inventory_names);
 	tcase_add_test(tc_core, test_casus_and_modifier);
+	tcase_add_test(tc_core, test_rings);
 
   return s;
 }

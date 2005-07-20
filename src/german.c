@@ -323,12 +323,12 @@ int analyze_this_as_object(const char *text) {
 }
 
 
-int finde_naechstes_sustantiv(const char* text) {
+int finde_naechstes_substantiv(const char* text) {
 	int i=0;
 	char tmp[TBUFSZ];
 	char *substantiv;
 #ifdef DEBUG
-	printf("finde_naechstes_sustantiv: %s\n", text);
+	printf("finde_naechstes_substantiv: %s\n", text);
 #endif
 	while (i<strlen(text)) {
 		next_token(text,tmp, i);
@@ -504,7 +504,7 @@ char* german(const char *line) {
 			insert_char = 0;
 
 		} else if (strncmp("ARTIKEL_", tmp, 8)==0) {
-			//finde_naechstes_sustantiv(line+pos);
+			//finde_naechstes_substantiv(line+pos);
 
 			if (strcmp("ARTIKEL_BESTIMMTER", tmp)==0) { c_artikel = bestimmter; }
 			else if (strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) { c_artikel = unbestimmter; }
@@ -589,13 +589,13 @@ char* german(const char *line) {
 			append(output, get_verb(tmp, subject_person, subject_numerus));
 
 		} else if (strncmp("ADJEKTIV_", tmp, 9)==0) {
-			//finde_naechstes_sustantiv(line+pos);
+			//finde_naechstes_substantiv(line+pos);
 			append(output, get_adjektiv(tmp, c_casus, c_genus, c_numerus, c_artikel));
 
 		} else if (strncmp("PARTIKEL_", tmp, 9)==0) {
-			//finde_naechstes_sustantiv(line+pos);
+			//finde_naechstes_substantiv(line+pos);
 			if (strcmp("PARTIKEL_OF", tmp)==0) {
-				finde_naechstes_sustantiv(line+pos);
+				finde_naechstes_substantiv(line+pos);
 				if (!partikel_of_as_mit) {
 					c_casus = genitiv;
 
@@ -631,10 +631,10 @@ char* german(const char *line) {
 		} else if (strncmp("KASUS_", tmp, 6)==0) {
 			insert_char = 0;
 
-			if      (strcmp("KASUS_NOMINATIV", tmp)==0) { c_casus = nominativ; }
-			else if (strcmp("KASUS_GENITIV", tmp)==0)   { c_casus = genitiv; }
-			else if (strcmp("KASUS_DATIV", tmp)==0)     { c_casus = dativ; }
-			else if (strcmp("KASUS_AKKUSATIV", tmp)==0) { c_casus = akkusativ; }
+			if      (strcmp("KASUS_NOMINATIV", tmp)==0) { finde_naechstes_substantiv(line+pos); c_casus = nominativ; }
+			else if (strcmp("KASUS_GENITIV", tmp)==0)   { finde_naechstes_substantiv(line+pos); c_casus = genitiv; }
+			else if (strcmp("KASUS_DATIV", tmp)==0)     { finde_naechstes_substantiv(line+pos); c_casus = dativ; }
+			else if (strcmp("KASUS_AKKUSATIV", tmp)==0) { finde_naechstes_substantiv(line+pos); c_casus = akkusativ; }
 
 		} else if (strncmp("MODIFIER_", tmp, 9)==0) {
 			insert_char = 0;
