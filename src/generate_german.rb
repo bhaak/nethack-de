@@ -745,7 +745,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_DAGGER", "Dolch", "es", "Dolch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_DAGGER", "Elbendolch", "es", "Elbendolch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_DAGGER", "Orkdolch", "es", "Orkdolch", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_SILVER_DAGGER"
+    dekliniere_substantiv("NOUN_SILVER_DAGGER", "Silberdolch", "es", "Silberdolch", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_ATHAME"
     dekliniere_substantiv("NOUN_SCALPEL", "Skalpell", "s", "Skalpell", "e", "neutrum"),
     dekliniere_substantiv("NOUN_KNIFE", "Messer", "s", "Messer", "", "neutrum", "s"),
@@ -1198,12 +1198,12 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_RESTORE_ABILITY"
     #dekliniere_substantiv("NOUN_POT_CONFUSION"
     dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_POT_PARALYSIS"
-    #dekliniere_substantiv("NOUN_POT_SPEED"
-    #dekliniere_substantiv("NOUN_POT_LEVITATION"
-    #dekliniere_substantiv("NOUN_POT_HALLUCINATION"
-    #dekliniere_substantiv("NOUN_POT_INVISIBILITY"
-    #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE"
+    #dekliniere_substantiv("NOUN_POT_PARALYSIS" # der Lähmung, der Paralyse
+    #dekliniere_substantiv("NOUN_POT_SPEED" # Hast
+    #dekliniere_substantiv("NOUN_POT_LEVITATION" # Levitation
+    #dekliniere_substantiv("NOUN_POT_HALLUCINATION" # der Halluzination
+    #dekliniere_substantiv("NOUN_POT_INVISIBILITY" # Unsichtbarkeit
+    #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE" # Enthüllung des Unsichtbaren
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
     dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständige", "Heilung", "", "Heilung", "en", "feminin", "s"),
@@ -1212,12 +1212,12 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION"
     #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"
     #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"
-    #dekliniere_substantiv("NOUN_POT_SLEEPING"
-    #dekliniere_substantiv("NOUN_POT_POLYMORPH"
-    #dekliniere_substantiv("NOUN_POT_BOOZE"
+    #dekliniere_substantiv("NOUN_POT_SLEEPING" # des Schlafens
+    #dekliniere_substantiv("NOUN_POT_POLYMORPH" # Transformation
+    #dekliniere_substantiv("NOUN_POT_BOOZE" # Schnaps 
     #dekliniere_substantiv("NOUN_POT_SICKNESS"
-    #dekliniere_substantiv("NOUN_POT_FRUIT_JUICE"
-    #dekliniere_substantiv("NOUN_POT_ACID"
+    #dekliniere_substantiv("NOUN_POT_FRUIT_JUICE" # Fruchtsaft
+    #dekliniere_substantiv("NOUN_POT_ACID" # Säure
     #dekliniere_substantiv("NOUN_POT_OIL" # Öl, Brandöl
     #dekliniere_substantiv("NOUN_POT_WATER"
     "",

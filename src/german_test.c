@@ -119,7 +119,7 @@ START_TEST (test_corpses) {
 START_TEST (test_potions) {
 	char *text[][2] = {
 		{"  NOUN_POTION PARTIKEL_OF NOUN_POT_HEALING (ADJEKTIV_POT_SWIRLY)",
-		 "  Trank der Heilung (verwirbelt)"},
+		 "  Trank der Linderung (verwirbelt)"},
 		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_BLINDNESS.",
 		 "v - ein nicht verfluchter Trank der Blindheit."},
 		{"l - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_BLINDFOLD",
