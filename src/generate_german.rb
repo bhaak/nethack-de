@@ -739,7 +739,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ELVEN_SPEAR", "Elbenspeer", "es", "Elbenspeer", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_SPEAR", "Orkspeer", "es", "Orkspeer", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_SPEAR", "Zwergenspeer", "es", "Zwergenspeer", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_SILVER_SPEAR"
+    dekliniere_substantiv("NOUN_SILVER_SPEAR", "Silberspeer", "es", "Silberspeer", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_JAVELIN"
     dekliniere_substantiv("NOUN_TRIDENT", "Dreizack", "s", "Dreizack", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DAGGER", "Dolch", "es", "Dolch", "e", "maskulin"),
@@ -759,7 +759,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_ORCISH_SHORT_SWORD", "orksch", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_DWARVISH_SHORT_SWORD", "Zwergen-Kurzschwert", "es", "Zwergen-Kurzschwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_SCIMITAR", "Szimitar", "", "Szimitar", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_SILVER_SABER"
+    dekliniere_substantiv("NOUN_SILVER_SABER", "Silbersäbel", "s", "Silbersäbel", "", "maskulin"),
     dekliniere_substantiv("NOUN_BROADSWORD", "Breitschwert", "es", "Breitschwert", "er", "neutrum", "s"),
     dekliniere_nominalphrase("NOUN_ELVEN_BROADSWORD", "elbisch", "Breitschwert", "es", "Breitschwert", "er", "neutrum", "s"),
     dekliniere_substantiv("NOUN_LONG_SWORD", "Langschwert", "es", "Langschwert", "er", "neutrum"),
@@ -1194,9 +1194,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TIN","Dose","","Dose","en","feminin"),
     "",
     "/* Potions, identified */",
-    #dekliniere_substantiv("NOUN_POT_GAIN_ABILITY"
+    #dekliniere_substantiv("NOUN_POT_GAIN_ABILITY" 
     #dekliniere_substantiv("NOUN_POT_RESTORE_ABILITY"
-    #dekliniere_substantiv("NOUN_POT_CONFUSION"
+    #dekliniere_substantiv("NOUN_POT_CONFUSION" # der Verwirrung
     dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin", "s"),
     #dekliniere_substantiv("NOUN_POT_PARALYSIS" # der Lähmung, der Paralyse
     #dekliniere_substantiv("NOUN_POT_SPEED" # Hast
@@ -1211,15 +1211,15 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT" # Klarheit?
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION"
     #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"
-    #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"
+    #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY" # Energiegewinnung?
     #dekliniere_substantiv("NOUN_POT_SLEEPING" # des Schlafens
     #dekliniere_substantiv("NOUN_POT_POLYMORPH" # Transformation
     #dekliniere_substantiv("NOUN_POT_BOOZE" # Schnaps 
-    #dekliniere_substantiv("NOUN_POT_SICKNESS"
+    #dekliniere_substantiv("NOUN_POT_SICKNESS" Übelkeit
     #dekliniere_substantiv("NOUN_POT_FRUIT_JUICE" # Fruchtsaft
     #dekliniere_substantiv("NOUN_POT_ACID" # Säure
     #dekliniere_substantiv("NOUN_POT_OIL" # Öl, Brandöl
-    #dekliniere_substantiv("NOUN_POT_WATER"
+    #dekliniere_substantiv("NOUN_POT_WATER" # Wasser
     "",
     "/* Potions, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
