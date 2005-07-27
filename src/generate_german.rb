@@ -1517,14 +1517,14 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_DOG", "Hund", "es", "Hund", "e", "maskulin","e"),
     dekliniere_nominalphrase("NOUN_LARGE_DOG", "groß", "Hund", "es", "Hund", "e", "maskulin","e"),
     dekliniere_substantiv("NOUN_DINGO","Dingo","s","Dingo","s","maskulin"),
-    dekliniere_substantiv("NOUN_WOLF","Wolf","es","Wölf","e","maskulin", "s"),
+    dekliniere_substantiv("NOUN_WOLF", "Wolf", "es", "Wölf", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_WEREWOLF","Werwolf","es","Werwölf","e","maskulin", "s"),
-    #dekliniere_substantiv("NOUN_WARG"
-    #dekliniere_substantiv("NOUN_WINTER_WOLF_CUB"
-    #dekliniere_substantiv("NOUN_WINTER_WOLF"
-    #dekliniere_substantiv("NOUN_HELL_HOUND_PUP"
-    #dekliniere_substantiv("NOUN_HELL_HOUND"
-    #dekliniere_substantiv("NOUN_CERBERUS"
+    dekliniere_substantiv("NOUN_WARG", "Warg","", "Warg", "e", "maskulin"),
+    dekliniere_adjektivisches_substantiv("NOUN_WINTER_WOLF_CUB", "Schneewolfjung", "neutrum"),
+    dekliniere_substantiv("NOUN_WINTER_WOLF", "Schneewolf", "es", "Schneewölf", "e", "maskulin", "s"),
+    dekliniere_substantiv("NOUN_HELL_HOUND_PUP", "Höllenhundwelpe", "en", "Höllenhundwelpe", "en", "maskulin","e"),
+    dekliniere_substantiv("NOUN_HELL_HOUND", "Höllenhund", "es", "Höllenhund", "e", "maskulin","e"),
+    dekliniere_substantiv("NOUN_CERBERUS", "Zerberus", "", "Zerberuss", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_GAS_SPORE"
     #dekliniere_substantiv("NOUN_FLOATING_EYE"
     #dekliniere_substantiv("NOUN_FREEZING_SPHERE"
