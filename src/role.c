@@ -24,6 +24,7 @@
  *
  * God names use a leading underscore to flag goddesses.
  */
+/* http://www.tamoon.ch/titel.html */
 const struct Role roles[] = {
 {	{"Archeologist", 0}, {
 	{"Digger",      0},
