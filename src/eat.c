@@ -846,6 +846,7 @@ register int pm;
 		tmp += 20;
 		if (youmonst.data->mlet != S_MIMIC && !Unchanging) {
 		    char buf[BUFSZ];
+				// Du verfaellst der Versuchung eine Orange zu imitieren.
 		    You_cant("resist the temptation to mimic %s.",
 			Hallucination ? "an orange" : "a pile of gold");
 #ifdef STEED
@@ -1402,7 +1403,7 @@ struct obj *otmp;
 		else
 #ifdef UNIX
 		if (otmp->otyp == APPLE || otmp->otyp == PEAR) {
-		    if (!Hallucination) pline("Core dumped.");
+		    if (!Hallucination) pline("Core dumped."); // Kernbruch! ???
 		    else {
 /* This is based on an old Usenet joke, a fake a.out manual page */
 			int x = rnd(100);
