@@ -1525,12 +1525,12 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HELL_HOUND_PUP", "Höllenhundwelpe", "en", "Höllenhundwelpe", "en", "maskulin","e"),
     dekliniere_substantiv("NOUN_HELL_HOUND", "Höllenhund", "es", "Höllenhund", "e", "maskulin","e"),
     dekliniere_substantiv("NOUN_CERBERUS", "Zerberus", "", "Zerberuss", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_GAS_SPORE"
+    #dekliniere_substantiv("NOUN_GAS_SPORE" # Gasspore
     #dekliniere_substantiv("NOUN_FLOATING_EYE"
     #dekliniere_substantiv("NOUN_FREEZING_SPHERE"
     #dekliniere_substantiv("NOUN_FLAMING_SPHERE"
     #dekliniere_substantiv("NOUN_SHOCKING_SPHERE"
-    #dekliniere_substantiv("NOUN_BEHOLDER"
+    #dekliniere_substantiv("NOUN_BEHOLDER" # Betrachter
     dekliniere_substantiv("NOUN_KITTEN", "Kätzchen", "s", "Kätzchen", "", "neutrum"),
     dekliniere_substantiv("NOUN_HOUSECAT","Hauskatze","","Hauskatze","en","feminin","n"),
     dekliniere_substantiv("NOUN_JAGUAR","Jaguar","s","Jaguar","e","maskulin"),
@@ -1546,8 +1546,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_BUGBEAR"
     dekliniere_substantiv("NOUN_DWARF_LORD","Zwergenfürst","en","Zwergenfürst","en","maskulin", "en"),
     dekliniere_substantiv("NOUN_DWARF_KING","Zwergenkönig","es","Zwergenkönig","e","maskulin"),
-    #dekliniere_substantiv("NOUN_MIND_FLAYER"
-    #dekliniere_substantiv("NOUN_MASTER_MIND_FLAYER"
+    #dekliniere_substantiv("NOUN_MIND_FLAYER" # Gedankenschinder oder Gedankendieb
+    #dekliniere_substantiv("NOUN_MASTER_MIND_FLAYER" # Superhirnschinder oder Gedankenschinder
     #dekliniere_substantiv("NOUN_MANES"
     #dekliniere_substantiv("NOUN_HOMUNCULUS"
     #dekliniere_substantiv("NOUN_IMP"
@@ -1652,7 +1652,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BLUE_DRAGON", "Blaudrache", "en", "Blaudrache", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_GREEN_DRAGON", "Gründrache", "en", "Gründrache", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_YELLOW_DRAGON", "Gelbdrache", "en", "Gelbdrache", "en", "maskulin", "n"),
-    #dekliniere_substantiv("NOUN_STALKER"
+    #dekliniere_substantiv("NOUN_STALKER" # Pirscher?
     dekliniere_substantiv("NOUN_STALKER", "Nachsteller", "s", "Nachsteller", "", "maskulin"),
     dekliniere_substantiv("NOUN_AIR_ELEMENTAL",   "Luftelementar",   "es", "Luftelementar",   "e", "neutrum"),
     dekliniere_substantiv("NOUN_FIRE_ELEMENTAL",  "Feuerelementar",  "es", "Feuerelementar",  "e", "neutrum"),
@@ -1791,7 +1791,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CROESUS", "Krösus", "es", "Krösus", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_CHARON"
     #dekliniere_substantiv("NOUN_GHOST"
-    #dekliniere_substantiv("NOUN_SHADE"
+    #dekliniere_substantiv("NOUN_SHADE" # Nachtschatten?
     #dekliniere_substantiv("NOUN_WATER_DEMON"
     #dekliniere_substantiv("NOUN_HORNED_DEVIL"
     #dekliniere_substantiv("NOUN_SUCCUBUS"
