@@ -180,6 +180,11 @@ def substantiv_endung(singularstamm, genitiv_singular_endung,
       casus[$akk][$pl] = ""
       casus[$dat][$pl] = pluralstamm[-1..-1]=='n' ? "" : "n"
       casus[$gen][$pl] = ""
+    when "fremder" # foreign word conjugation
+      casus[$nom][$pl] = ""
+      casus[$akk][$pl] = ""
+      casus[$dat][$pl] = ""
+      casus[$gen][$pl] = ""
     else
       raise "No inflection "+nominativ_plural_endung+" found for "+pluralstamm
     end
@@ -1538,22 +1543,22 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_PANTHER","Panther","s","Panther","","maskulin"),
     dekliniere_nominalphrase("NOUN_LARGE_CAT", "groß", "Katze","","Katze","en","feminin","n"),
     dekliniere_substantiv("NOUN_TIGER","Tiger","s","Tiger","","maskulin"),
-    #dekliniere_substantiv("NOUN_GREMLIN"
-    #dekliniere_substantiv("NOUN_GARGOYLE"
-    #dekliniere_substantiv("NOUN_WINGED_GARGOYLE"
-    #dekliniere_substantiv("NOUN_HOBBIT"
+    dekliniere_substantiv("NOUN_GREMLIN", "Gremlin", "s", "Gremlin", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GARGOYLE", "Gargoyle", "s", "Gargoyle", "s", "maskulin"),
+    dekliniere_nominalphrase("NOUN_WINGED_GARGOYLE", "geflügelt", "Gargoyle", "s", "Gargoyle", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_HOBBIT", "Hobbit", "s", "Hobbit", "s", "maskulin"),
     dekliniere_substantiv("NOUN_DWARF","Zwerg","es","Zwerg","e","maskulin", "en"),
     #dekliniere_substantiv("NOUN_BUGBEAR"
     dekliniere_substantiv("NOUN_DWARF_LORD","Zwergenfürst","en","Zwergenfürst","en","maskulin", "en"),
     dekliniere_substantiv("NOUN_DWARF_KING","Zwergenkönig","es","Zwergenkönig","e","maskulin"),
     #dekliniere_substantiv("NOUN_MIND_FLAYER" # Gedankenschinder oder Gedankendieb
     #dekliniere_substantiv("NOUN_MASTER_MIND_FLAYER" # Superhirnschinder oder Gedankenschinder
-    #dekliniere_substantiv("NOUN_MANES"
-    #dekliniere_substantiv("NOUN_HOMUNCULUS"
-    #dekliniere_substantiv("NOUN_IMP"
-    #dekliniere_substantiv("NOUN_LEMURE"
-    #dekliniere_substantiv("NOUN_QUASIT"
-    #dekliniere_substantiv("NOUN_TENGU"
+    dekliniere_substantiv("NOUN_MANES", "Mane", "en", "Mane", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_HOMUNCULUS", "Homunculus", "", "Homunculi", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_IMP", "Imp", "", "Imp", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_LEMURE", "Lemur", "en", "Lemur", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_QUASIT", "Quasit", "", "Quasit", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_TENGU", "Tengu", "", "Tengu", "fremder", "maskulin"),
     #dekliniere_substantiv("NOUN_BLUE_JELLY"
     #dekliniere_substantiv("NOUN_SPOTTED_JELLY"
     #dekliniere_substantiv("NOUN_OCHRE_JELLY"
@@ -1620,11 +1625,11 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_YELLOW_LIGHT", "gelb", "Licht", "es", "Licht", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_BLACK_LIGHT", "schwarz", "Licht", "es", "Licht", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_ZRUTY"
-    #dekliniere_substantiv("NOUN_COUATL"
+    dekliniere_substantiv("NOUN_COUATL", "Coatl", "", "Coatl", "fremder", "maskulin"),
     #dekliniere_substantiv("NOUN_ALEAX"
     dekliniere_substantiv("NOUN_ANGEL", "Engel", "s", "Engel", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_KI_RIN"
-    #dekliniere_substantiv("NOUN_ARCHON"
+    dekliniere_substantiv("NOUN_KI_RIN", "Kirin", "s", "Kirin", "s", "neutrum"),
+    dekliniere_substantiv("NOUN_ARCHON", "Archon", "s", "Archont", "en", "maskulin"),
     dekliniere_substantiv("NOUN_BAT", "Fledermaus", "", "Fledermäuse", "e", "feminin"),
     dekliniere_substantiv("NOUN_GIANT_BAT", "Riesenfledermaus", "", "Riesenfledermäuse", "e", "feminin"),
     dekliniere_substantiv("NOUN_RAVEN", "Rabe", "en", "Rabe", "en", "maskulin"),
