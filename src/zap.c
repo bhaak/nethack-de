@@ -2863,11 +2863,12 @@ int dx, dy;
 			if(Fumbling || rn2(20) >= ACURR(A_DEX)) {
 				/* we hit ourselves */
 				(void) thitu(10, rnd(10), (struct obj *)0,
-					"boomerang");
+					"NOUN_BOOMERANG");
 				break;
 			} else {	/* we catch it */
 				tmp_at(DISP_END, 0);
-				You("skillfully catch the boomerang.");
+				/* EN You("skillfully catch the boomerang."); */
+				pline("Gekonnt SUBJECT_IM_SATZ VERB_FANGEN PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_BOOMERANG."); /* ?geschickt, gekonnt, formvollendet, meisterlich */
 				return(&youmonst);
 			}
 		}
