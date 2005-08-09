@@ -682,7 +682,8 @@ register struct permonst *ptr;
 		debugpline("Trying to give sleep resistance");
 #endif
 		if(!(HSleep_resistance & FROMOUTSIDE)) {
-			You_feel("wide awake.");
+			/* EN You_feel("wide awake."); */
+			Du_fuehlst_dich("hellwach.");
 			HSleep_resistance |= FROMOUTSIDE;
 		}
 		break;
