@@ -428,6 +428,7 @@ def ausgabe_verbs
     Verb.new("VERB_STECHEN","","", ["stichst", "sticht","stecht", "stechen"]),
     Verb.new("VERB_ZUSTECHEN","","zu", ["stichst", "sticht","stecht", "stechen"]),
     Verb.new("VERB_SCHIESSEN", "", "", ["schießt", "schießt", "schießt","schießen"]),
+    Verb.new("VERB_FANGEN", "", "", ["fängst", "fängt", "fangt","fangen"]),
     "",
     Verb.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
     Verb.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
@@ -980,7 +981,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_SLOW_MONSTER", "Verlangsamung", "", "Verlangsamung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_SPEED_MONSTER", "Hast", "", "Hast", "en", "feminin"),
     #dekliniere_substantiv("NOUN_WAND_UNDEAD_TURNING", "", "", "", "", "feminin"),
-    dekliniere_substantiv("NOUN_WAND_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_WAND_CANCELLATION", "Vielgestaltigkeit", "", "Vielgestaltigkeit", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_TELEPORTATION", "Teleportation", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_WAND_OPENING", "Öffnung", "", "Öffnung", "en", "feminin"),
@@ -988,6 +989,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_WAND_PROBING", "Öffnung", "", "Öffnung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_DIGGING", "Graben", "s", "", "", "neutrum"),
     #dekliniere_substantiv("NOUN_WAND_MAGIC_MISSILE", "Graben", "s", "", "", "neutrum"),  # magische Geschosse
+    dekliniere_nominalphrase("NOUN_WAND_MAGIC_MISSILE", "magisch", "Geschoss", "es", "Geschoss", "e", "neutrum"),  # magische Geschosse
     dekliniere_substantiv("NOUN_WAND_FIRE", "Feuer", "s", "Feuer", "", "neutrum"),
     dekliniere_substantiv("NOUN_WAND_COLD", "Kälte", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
@@ -1022,7 +1024,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RING_POLYMORPH_CONTROL", "Transformationskontrolle", "", "Transformationskontrolle", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_INVISIBILITY", "Unsichtbarkeit", "", "", "", "feminin"), # der Unsichtbarkeit
     dekliniere_substantiv("NOUN_RING_SEE_INVISIBLE", "Enthüllung", "", "Enthüllung", "en", "feminin", " des Unsichtbaren"),
-    dekliniere_substantiv("NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "Schutz", "es", "Schutz", "en", "feminin", " vor Formwandlern"), # des Schutzes vor Gestaltwandlern
+    dekliniere_substantiv("NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "Schutz", "es", "Schutz", "en", "feminin", "", " vor Formwandlern"), # des Schutzes vor Gestaltwandlern
     "",
     "/* Rings, unidentified */",
     dekliniere_substantiv("RING_UNIDENTIFIED_WOODEN",     "Holz",      "es", "Hölz",      "er",  "neutrum"),
@@ -1260,21 +1262,21 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"
     #dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER"
     #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER"
-    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE" # Fluch bannen
+    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE"   # Fluch bannen
     #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"
-    #dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER"
-    #dekliniere_substantiv("NOUN_SCR_TAMING"
-    #dekliniere_substantiv("NOUN_SCR_GENOCIDE"
-    #dekliniere_substantiv("NOUN_SCR_LIGHT"
-    #dekliniere_substantiv("NOUN_SCR_TELEPORTATION"
-    #dekliniere_substantiv("NOUN_SCR_GOLD_DETECTION"
-    #dekliniere_substantiv("NOUN_SCR_FOOD_DETECTION"
-    #dekliniere_substantiv("NOUN_SCR_IDENTIFY"
-    #dekliniere_substantiv("NOUN_SCR_MAGIC_MAPPING"
-    #dekliniere_substantiv("NOUN_SCR_AMNESIA"
-    #dekliniere_substantiv("NOUN_SCR_FIRE"
-    #dekliniere_substantiv("NOUN_SCR_EARTH"
-    #dekliniere_substantiv("NOUN_SCR_PUNISHMENT"
+    #dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER" # Monsterbeschwörung
+    #dekliniere_substantiv("NOUN_SCR_TAMING"         # Zähmens
+    #dekliniere_substantiv("NOUN_SCR_GENOCIDE"       # Genozid
+    #dekliniere_substantiv("NOUN_SCR_LIGHT"          # Licht
+    #dekliniere_substantiv("NOUN_SCR_TELEPORTATION"  # Teleportation
+    #dekliniere_substantiv("NOUN_SCR_GOLD_DETECTION" # Golderspüren
+    #dekliniere_substantiv("NOUN_SCR_FOOD_DETECTION" # Nahrungerspüren
+    #dekliniere_substantiv("NOUN_SCR_IDENTIFY"       # Identifizierung
+    #dekliniere_substantiv("NOUN_SCR_MAGIC_MAPPING"  # magisches Kartieren
+    #dekliniere_substantiv("NOUN_SCR_AMNESIA"        # Amnesie
+    #dekliniere_substantiv("NOUN_SCR_FIRE"           # Feuer
+    #dekliniere_substantiv("NOUN_SCR_EARTH"          # Erde
+    #dekliniere_substantiv("NOUN_SCR_PUNISHMENT"     # Bestrafung
     #dekliniere_substantiv("NOUN_SCR_CHARGING"
     #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD"
     #dekliniere_substantiv("NOUN_SCR_MAIL"
@@ -1311,50 +1313,50 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SCR_UNLABELED"
     "",
     "/* Spellbooks, identified */",
-    #dekliniere_substantiv("NOUN_SPE_DIG"
-    #dekliniere_substantiv("NOUN_SPE_MAGIC_MISSILE" # magische Geschosse
-    #dekliniere_substantiv("NOUN_SPE_FIREBALL"
-    #dekliniere_substantiv("NOUN_SPE_CONE_OF_COLD"
-    #dekliniere_substantiv("NOUN_SPE_SLEEP"
-    #dekliniere_substantiv("NOUN_SPE_FINGER_OF_DEATH"
-    #dekliniere_substantiv("NOUN_SPE_LIGHT"
-    #dekliniere_substantiv("NOUN_SPE_DETECT_MONSTERS"
-    #dekliniere_substantiv("NOUN_SPE_HEALING"
-    #dekliniere_substantiv("NOUN_SPE_KNOCK"
-    #dekliniere_substantiv("NOUN_SPE_FORCE_BOLT"
-    #dekliniere_substantiv("NOUN_SPE_CONFUSE_MONSTER"
-    #dekliniere_substantiv("NOUN_SPE_CURE_BLINDNESS"
-    #dekliniere_substantiv("NOUN_SPE_DRAIN_LIFE"
-    #dekliniere_substantiv("NOUN_SPE_SLOW_MONSTER"
-    #dekliniere_substantiv("NOUN_SPE_WIZARD_LOCK"
-    #dekliniere_substantiv("NOUN_SPE_CREATE_MONSTER"
-    #dekliniere_substantiv("NOUN_SPE_DETECT_FOOD"
-    #dekliniere_substantiv("NOUN_SPE_CAUSE_FEAR"
-    #dekliniere_substantiv("NOUN_SPE_CLAIRVOYANCE"
-    #dekliniere_substantiv("NOUN_SPE_CURE_SICKNESS"
-    #dekliniere_substantiv("NOUN_SPE_CHARM_MONSTER" # Monster bezaubern
-    #dekliniere_substantiv("NOUN_SPE_HASTE_SELF"
-    #dekliniere_substantiv("NOUN_SPE_DETECT_UNSEEN"
-    #dekliniere_substantiv("NOUN_SPE_LEVITATION"
-    #dekliniere_substantiv("NOUN_SPE_EXTRA_HEALING"
-    #dekliniere_substantiv("NOUN_SPE_RESTORE_ABILITY"
-    #dekliniere_substantiv("NOUN_SPE_INVISIBILITY"
-    #dekliniere_substantiv("NOUN_SPE_DETECT_TREASURE"
-    #dekliniere_substantiv("NOUN_SPE_REMOVE_CURSE"
-    #dekliniere_substantiv("NOUN_SPE_MAGIC_MAPPING"
-    #dekliniere_substantiv("NOUN_SPE_IDENTIFY"
-    #dekliniere_substantiv("NOUN_SPE_TURN_UNDEAD"
-    #dekliniere_substantiv("NOUN_SPE_POLYMORPH"
-    #dekliniere_substantiv("NOUN_SPE_TELEPORT_AWAY"
-    #dekliniere_substantiv("NOUN_SPE_CREATE_FAMILIAR"
-    #dekliniere_substantiv("NOUN_SPE_CANCELLATION"
-    #dekliniere_substantiv("NOUN_SPE_PROTECTION" # Schutz
-    #dekliniere_substantiv("NOUN_SPE_JUMPING"
-    #dekliniere_substantiv("NOUN_SPE_STONE_TO_FLESH" # Stein zu Fleisch
-    #dekliniere_substantiv("NOUN_SPE_FLAME_SPHERE"
-    #dekliniere_substantiv("NOUN_SPE_FREEZE_SPHERE"
-    #dekliniere_substantiv("NOUN_SPE_BLANK_PAPER"
-    #dekliniere_substantiv("NOUN_SPE_BOOK_OF_THE_DEAD"
+    dekliniere_substantiv("NOUN_SPE_DIG", "Graben", "s", "", "", "neutrum"), # Graben
+    dekliniere_nominalphrase("NOUN_SPE_MAGIC_MISSILE", "magisch", "Geschoss", "es", "Geschoss", "e", "neutrum"), # magische Geschosse
+    dekliniere_substantiv("NOUN_SPE_FIREBALL", "Feuerball", "es", "Feuerbäll", "e", "maskulin"),  # Feuerball
+    dekliniere_substantiv("NOUN_SPE_CONE_OF_COLD", "Kältekegel", "s", "Kältekegel", "", "maskulin"),     # Kältekegel
+    dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),            # Schlaf
+    dekliniere_substantiv("NOUN_SPE_FINGER_OF_DEATH", "Finger", "s", "Finger", "", "maskulin", "", "des Todes"),  # Finger des Todes
+    dekliniere_substantiv("NOUN_SPE_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),            # Licht
+    dekliniere_substantiv("NOUN_SPE_DETECT_MONSTERS", "Erspüren", "s", "", "", "neutrum", "", "von Monstern"),  # Monster finden, Monster erspüren
+    dekliniere_substantiv("NOUN_SPE_HEALING", "Linderung", "", "", "", "feminin", "s"),          # Linderung 
+    dekliniere_substantiv("NOUN_SPE_KNOCK", "Klopfen", "s", "", "", "neutrum"),            # Klopfens
+    dekliniere_substantiv("NOUN_SPE_FORCE_BOLT", "Kraftstoß", "es", "Kraftstöß", "e", "maskulin"), # Kraftstoss, Kraftschlag?, Energiestoss?
+    dekliniere_substantiv("NOUN_SPE_CONFUSE_MONSTER", "Monsterverwirrung", "", "Monsterverwirrung", "en", "feminin", "s"),  # Monsterverwirrung
+    dekliniere_substantiv("NOUN_SPE_CURE_BLINDNESS", "Kurieren", "s", "", "", "neutrum", "", "von Blindheit"), # Blindheitheilen
+    dekliniere_substantiv("NOUN_SPE_DRAIN_LIFE", "Lebensentzug", "es", "", "e", "maskulin", "s"), # Lebensentzug, Blutsauger?
+    dekliniere_substantiv("NOUN_SPE_SLOW_MONSTER", "Verlangsamung", "", "Verlangsamung", "en", "feminin", "s"), # Verlangsamung
+    dekliniere_substantiv("NOUN_SPE_WIZARD_LOCK", "Zauberverschluss", "es", "Zauberverschlüss", "e", "maskulin"), # Zauberverschluss
+    dekliniere_substantiv("NOUN_SPE_CREATE_MONSTER", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"), # Monsterbeschwörung
+    dekliniere_substantiv("NOUN_SPE_DETECT_FOOD", "Erspüren", "s", "", "", "neutrum", "", "von Nahrung"), # Esswaren, Speise, Lebensmittel, Essen erspüren
+    dekliniere_substantiv("NOUN_SPE_CAUSE_FEAR", "Furcht", "", "", "en", "feminin"),     # Furcht
+    dekliniere_substantiv("NOUN_SPE_CLAIRVOYANCE", "Hellsehen", "s", "", "", "neutrum"), # Hellsehen, Hellseherei?, Prophetie?
+    dekliniere_substantiv("NOUN_SPE_CURE_SICKNESS", "Kurieren", "s", "", "", "neutrum", "", "von Erkrankungen"), # Krankheit/Erkrankung heilen/kurieren
+    dekliniere_substantiv("NOUN_SPE_CHARM_MONSTER", "Monsterbezauberung", "", "Monsterbezauberung", "en", "feminin", "s"),    # Monster bezaubern
+    dekliniere_substantiv("NOUN_SPE_HASTE_SELF", "Selbsthast", "", "Selbsthast", "en", "feminin"),       # Selbsthast
+    dekliniere_substantiv("NOUN_SPE_DETECT_UNSEEN", "Erspüren", "s", "", "", "neutrum", "", "des Ungesehenen"),    # Ungesehenes erspüren
+    dekliniere_substantiv("NOUN_SPE_LEVITATION", "Levitation", "", "Levitation", "en", "feminin"),       # Levitation
+    dekliniere_substantiv("NOUN_SPE_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),    # Heilung
+    dekliniere_substantiv("NOUN_SPE_RESTORE_ABILITY", "Wiederherstellen", "s", "", "", "neutrum", "", "von Fertigkeiten"),  # Fertigkeit wiederherstellen # IMPROVE ME
+    dekliniere_substantiv("NOUN_SPE_INVISIBILITY", "Unsichtbarkeit", "", "", "", "feminin"),     # Unsichtbarkeit
+    dekliniere_substantiv("NOUN_SPE_DETECT_TREASURE", "Erspüren", "s", "", "", "neutrum", "", "von Schätzen"),  # Schätze erspüren
+    dekliniere_substantiv("NOUN_SPE_REMOVE_CURSE", "Fluchbannen", "s", "", "", "neutrum"),     # Fluchbannens
+    dekliniere_nominalphrase("NOUN_SPE_MAGIC_MAPPING", "magisch", "Kartieren", "s", "", "", "neutrum"), # magisches Kartieren/Kartographieren?
+    dekliniere_substantiv("NOUN_SPE_IDENTIFY", "Identifizierung", "", "Identifizierung", "en", "feminin", "s"), # Identifizierung
+    dekliniere_substantiv("NOUN_SPE_TURN_UNDEAD", "Untotenwandlung", "", "Untotenwandlung", "en", "feminin", "s"),      # Untotenwandlung, Untote umwandeln?
+    dekliniere_substantiv("NOUN_SPE_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"),        # Transformation
+    dekliniere_substantiv("NOUN_SPE_TELEPORT_AWAY", "Wegteleportieren", "s", "", "", "neutrum"), # Wegteleportieren
+    dekliniere_substantiv("NOUN_SPE_CREATE_FAMILIAR", "Haustierbeschwörung", "", "Haustierbeschwörung", "en", "feminin"), # ????beschwörung # IMPROVE ME, gefällt mir nicht so gut
+    dekliniere_substantiv("NOUN_SPE_CANCELLATION", "Löschung", "", "Löschung", "en", "feminin", "s"),     # Annullierung, Entwertung, Löschung, Widerruf
+    dekliniere_substantiv("NOUN_SPE_PROTECTION", "Schutz", "es", "Schutz", "e", "maskulin"),       # Schutz
+    dekliniere_substantiv("NOUN_SPE_JUMPING", "Springen", "s", "Springen", "", "neutrum"), # Springen
+    dekliniere_substantiv("NOUN_SPE_STONE_TO_FLESH", "Stein-zu-Fleisch", "", "", "", "maskulin"),   # Stein zu Fleisch
+    dekliniere_substantiv("NOUN_SPE_FLAME_SPHERE", "Flammenkugel", "", "Flammenkugel", "en", "feminin"), # Flammenkugel, Feuerkugel?, Flammensphäre?, Feuersphäre?
+    dekliniere_substantiv("NOUN_SPE_FREEZE_SPHERE", "Frostkugel", "", "Frostkugel", "en", "feminin"),    # Frostkugel, Frostsphäre?
+    dekliniere_nominalphrase("NOUN_SPE_BLANK_PAPER", "unbeschriftet", "Papier", "es", "Papier", "e", "neutrum"), # leeres Papier, unbeschriftetes Papier # FIX ME
+    dekliniere_substantiv("NOUN_SPE_BOOK_OF_THE_DEAD", "Buch", "es", "Büch", "er", "neutrum", "", "der Toten"), # "Das Buch der Toten"
     "",
     "/* Spellbooks, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamentartig"), # Kandidat für 'aus Pergament'
@@ -1841,7 +1843,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SALAMANDER", "Salamander", "s", "Salamander", "", "maskulin"),
     #dekliniere_substantiv("NOUN_LONG_WORM_TAIL"
     dekliniere_substantiv("NOUN_ARCHEOLOGIST", "Archäologe", "en", "Archäologe", "en", "maskulin", "n"),
-    #dekliniere_substantiv("NOUN_BARBARIAN"
+    dekliniere_substantiv("NOUN_BARBARIAN", "Barbar", "en", "Barbar", "en", "maskulin"),
     #dekliniere_substantiv("NOUN_CAVEMAN"
     #dekliniere_substantiv("NOUN_CAVEWOMAN"
     #dekliniere_substantiv("NOUN_HEALER"
