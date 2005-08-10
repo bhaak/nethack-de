@@ -972,7 +972,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_WAND_SECRET_DOOR_DETECTION", "Licht", "es", "Licht", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monstererschaffung", "", "Monstererschaffung", "en", "feminin"),
     #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterherbeirufung",
-    #dekliniere_substantiv("NOUN_WAND_ENLIGHTENMENT", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_WISHING", "Wünschen", "s", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_WAND_NOTHING", "Nichts", "", "", "", "neutrum"),
@@ -980,12 +980,12 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_MAKE_INVISIBLE", "Unsichtbarkeit", "", "Unsichtbarkeit", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_SLOW_MONSTER", "Verlangsamung", "", "Verlangsamung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_SPEED_MONSTER", "Hast", "", "Hast", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_WAND_UNDEAD_TURNING", "", "", "", "", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_UNDEAD_TURNING", "Untotenwandlung", "", "Untotenwandlung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_WAND_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_WAND_CANCELLATION", "Vielgestaltigkeit", "", "Vielgestaltigkeit", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_CANCELLATION", "Löschung", "", "Löschung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_WAND_TELEPORTATION", "Teleportation", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_WAND_OPENING", "Öffnung", "", "Öffnung", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_WAND_LOCKING", "Öffnung", "", "Öffnung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAND_LOCKING", "Schliessen", "s", "", "", "neutrum"),
     #dekliniere_substantiv("NOUN_WAND_PROBING", "Öffnung", "", "Öffnung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_DIGGING", "Graben", "s", "", "", "neutrum"),
     #dekliniere_substantiv("NOUN_WAND_MAGIC_MISSILE", "Graben", "s", "", "", "neutrum"),  # magische Geschosse
@@ -1203,30 +1203,30 @@ def ausgabe_nouns
     "/* Potions, identified */",
     #dekliniere_substantiv("NOUN_POT_GAIN_ABILITY" 
     #dekliniere_substantiv("NOUN_POT_RESTORE_ABILITY"
-    #dekliniere_substantiv("NOUN_POT_CONFUSION" # der Verwirrung
+    dekliniere_substantiv("NOUN_POT_CONFUSION", "Verwirrung", "", "Verwirrung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin", "s"),
     #dekliniere_substantiv("NOUN_POT_PARALYSIS" # der Lähmung, der Paralyse
-    #dekliniere_substantiv("NOUN_POT_SPEED" # Hast
-    #dekliniere_substantiv("NOUN_POT_LEVITATION" # Levitation
+    dekliniere_substantiv("NOUN_POT_SPEED", "Hast", "", "Hast", "en", "feminin"),
+    dekliniere_substantiv("NOUN_POT_LEVITATION", "Levitation", "", "Levitation", "en", "feminin"), 
     #dekliniere_substantiv("NOUN_POT_HALLUCINATION" # der Halluzination
-    #dekliniere_substantiv("NOUN_POT_INVISIBILITY" # Unsichtbarkeit
+    dekliniere_substantiv("NOUN_POT_INVISIBILITY", "Unsichtbarkeit", "", "Unsichtbarkeit", "en", "feminin"),
     #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE" # Enthüllung des Unsichtbaren
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
     dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständige", "Heilung", "", "Heilung", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
-    #dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT" # Klarheit?
-    #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION"
-    #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"
-    #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY" # Energiegewinnung?
-    #dekliniere_substantiv("NOUN_POT_SLEEPING" # des Schlafens
-    #dekliniere_substantiv("NOUN_POT_POLYMORPH" # Transformation
-    #dekliniere_substantiv("NOUN_POT_BOOZE" # Schnaps 
-    #dekliniere_substantiv("NOUN_POT_SICKNESS" Übelkeit
-    #dekliniere_substantiv("NOUN_POT_FRUIT_JUICE" # Fruchtsaft
-    #dekliniere_substantiv("NOUN_POT_ACID" # Säure
-    #dekliniere_substantiv("NOUN_POT_OIL" # Öl, Brandöl
-    #dekliniere_substantiv("NOUN_POT_WATER" # Wasser
+    dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),     # Erleuchtung, Klarheit?
+    #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION" # Monstererspüren
+    #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION" 
+    #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"       # Energiegewinnung?
+    dekliniere_substantiv("NOUN_POT_SLEEPING", "Schlaf", "es", "", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_POT_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"), 
+    #dekliniere_substantiv("NOUN_POT_BOOZE"             # Schnaps 
+    #dekliniere_substantiv("NOUN_POT_SICKNESS"          # Übelkeit
+    #dekliniere_substantiv("NOUN_POT_FRUIT_JUICE"       # Fruchtsaft
+    #dekliniere_substantiv("NOUN_POT_ACID"              # Säure
+    #dekliniere_substantiv("NOUN_POT_OIL"               # Öl, Brandöl
+    #dekliniere_substantiv("NOUN_POT_WATER"             # Wasser
     "",
     "/* Potions, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
@@ -1366,7 +1366,7 @@ def ausgabe_nouns
     #dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", ""),
     dekliniere_adjektiv("ADJEKTIV_SPE_MOTTLED", "fleckig"),
     dekliniere_adjektiv("ADJEKTIV_SPE_STAINED", "beschmutzt"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", ""), # Kandidat für 'aus Stoff'
+    dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", ""), # Kandidat für 'aus Stoff'
     dekliniere_adjektiv("ADJEKTIV_SPE_LEATHER", "ledern"), # Kandidat für 'aus Leder'
     dekliniere_adjektiv("ADJEKTIV_SPE_WHITE", "weiß"),
     dekliniere_adjektiv("ADJEKTIV_SPE_PINK", "rosarot"),
