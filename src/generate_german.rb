@@ -1359,24 +1359,25 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SPE_BOOK_OF_THE_DEAD", "Buch", "es", "Büch", "er", "neutrum", "", "der Toten"), # "Das Buch der Toten"
     "",
     "/* Spellbooks, unidentified */",
-    dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamentartig"), # Kandidat für 'aus Pergament'
-    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum'
-    dekliniere_substantiv("MADE_OF_SPE_VELLUM", "Velum", "s", "", "s", "neutrum"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamenten"), # pergamentartig?, Kandidat für 'aus Pergament'
+    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum' # IMPROVE ME
+    #dekliniere_substantiv("MADE_OF_SPE_VELLUM", "Velum", "s", "", "s", "neutrum"),
     dekliniere_adjektiv("ADJEKTIV_SPE_RAGGED", "ausgefranst"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", ""),
+    dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", "eselsohrig"),
     dekliniere_adjektiv("ADJEKTIV_SPE_MOTTLED", "fleckig"),
     dekliniere_adjektiv("ADJEKTIV_SPE_STAINED", "beschmutzt"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", ""), # Kandidat für 'aus Stoff'
+    #dekliniere_substantiv("MADE_OF_SPE_CLOTH", "Stoff", "es", "", "", "maskulin"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", "stoffartig"), # Kandidat für 'aus Stoff'
     dekliniere_adjektiv("ADJEKTIV_SPE_LEATHER", "ledern"), # Kandidat für 'aus Leder'
     dekliniere_adjektiv("ADJEKTIV_SPE_WHITE", "weiß"),
     dekliniere_adjektiv("ADJEKTIV_SPE_PINK", "rosarot"),
     dekliniere_adjektiv("ADJEKTIV_SPE_RED", "rot"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_ORANGE", "orangen"), # Kandidat für unveränderlich
+    dekliniere_adjektiv("ADJEKTIV_SPE_ORANGE", "orangen"), # Kandidat für unveränderliche Konjugation
     dekliniere_adjektiv("ADJEKTIV_SPE_YELLOW", "gelb"),
     dekliniere_adjektiv("ADJEKTIV_SPE_VELVET", "samten"), # Kandidat für 'aus Samt'
     dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_GREEN", "hellgrün"),
     dekliniere_adjektiv("ADJEKTIV_SPE_DARK_GREEN", "dunkelgrün"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_TURQUOISE", "türkisfarben"), # Kandidat für unveränderlich
+    dekliniere_adjektiv("ADJEKTIV_SPE_TURQUOISE", "türkisfarben"), # Kandidat für unveränderliche Konjugation
     dekliniere_adjektiv("ADJEKTIV_SPE_CYAN", "tiefblau"),
     dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BLUE", "hellblau"),
     dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BLUE", "dunkelblau"),
@@ -1384,8 +1385,8 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_SPE_MAGENTA", "tiefrot"),
     dekliniere_adjektiv("ADJEKTIV_SPE_PURPLE", "purpurn"),
     dekliniere_adjektiv("ADJEKTIV_SPE_VIOLET", "violett"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_TAN", "hellbraun"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "hellbraun"), # kariert?
+    dekliniere_adjektiv("ADJEKTIV_SPE_TAN", "braun"),
+    dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "gemustert"), # kariert?
     dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BROWN", "hellbraun"),
     dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BROWN", "dunkelbraun"),
     dekliniere_adjektiv("ADJEKTIV_SPE_GRAY", "grau"),
@@ -1400,10 +1401,10 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_SPE_DULL", "matt"), # oder 'stumpf' oder 'trübe'?
     dekliniere_adjektiv("ADJEKTIV_SPE_THIN", "dünn"),
     dekliniere_adjektiv("ADJEKTIV_SPE_THICK", "dick"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_CANVAS", ""),
+    dekliniere_adjektiv("ADJEKTIV_SPE_CANVAS", "seiden"),
     dekliniere_adjektiv("ADJEKTIV_SPE_HARDCOVER", "gebunden"),
     dekliniere_adjektiv("ADJEKTIV_SPE_PLAIN", "unbedruckt"),
-    #dekliniere_adjektiv("ADJEKTIV_SPE_PAPYRUS", ""), # Kandidat für 'aus Papyrus'
+    dekliniere_adjektiv("ADJEKTIV_SPE_PAPYRUS", "papyren"), # Kandidat für 'aus Papyrus'
     "",
     "/* Spellbooks, unidentified */",
     "",
