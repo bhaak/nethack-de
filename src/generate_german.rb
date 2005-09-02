@@ -1217,7 +1217,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
     dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),     # Erleuchtung, Klarheit?
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION" # Monstererspüren
-    #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION" 
+    #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"  # Objekterspürung, Objekterspürens
     #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"       # Energiegewinnung?
     dekliniere_substantiv("NOUN_POT_SLEEPING", "Schlaf", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_POT_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"), 
@@ -1277,7 +1277,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SCR_FIRE"           # Feuer
     #dekliniere_substantiv("NOUN_SCR_EARTH"          # Erde
     #dekliniere_substantiv("NOUN_SCR_PUNISHMENT"     # Bestrafung
-    #dekliniere_substantiv("NOUN_SCR_CHARGING"
+    #dekliniere_substantiv("NOUN_SCR_CHARGING"       # Laden
     #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD"
     #dekliniere_substantiv("NOUN_SCR_MAIL"
     #dekliniere_substantiv("NOUN_SCR_BLANK_PAPER"
@@ -1360,13 +1360,15 @@ def ausgabe_nouns
     "",
     "/* Spellbooks, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_SPE_PARCHMENT", "pergamenten"), # pergamentartig?, Kandidat für 'aus Pergament'
-    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum' # IMPROVE ME
     #dekliniere_substantiv("MADE_OF_SPE_VELLUM", "Velum", "s", "", "s", "neutrum"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velin"), # Kandidat für 'aus Velum' # IMPROVE ME
+    dekliniere_adjektiv("ADJEKTIV_SPE_VELLUM", "velinpapieren"), # Kandidat für 'aus Velum' # IMPROVE ME
     dekliniere_adjektiv("ADJEKTIV_SPE_RAGGED", "ausgefranst"),
     dekliniere_adjektiv("ADJEKTIV_SPE_DOG_EARED", "eselsohrig"),
     dekliniere_adjektiv("ADJEKTIV_SPE_MOTTLED", "fleckig"),
     dekliniere_adjektiv("ADJEKTIV_SPE_STAINED", "beschmutzt"),
     #dekliniere_substantiv("MADE_OF_SPE_CLOTH", "Stoff", "es", "", "", "maskulin"),
+    #dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", "stoffig"), # Kandidat für 'aus Stoff'
     dekliniere_adjektiv("ADJEKTIV_SPE_CLOTH", "stoffartig"), # Kandidat für 'aus Stoff'
     dekliniere_adjektiv("ADJEKTIV_SPE_LEATHER", "ledern"), # Kandidat für 'aus Leder'
     dekliniere_adjektiv("ADJEKTIV_SPE_WHITE", "weiß"),
@@ -1386,7 +1388,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_SPE_PURPLE", "purpurn"),
     dekliniere_adjektiv("ADJEKTIV_SPE_VIOLET", "violett"),
     dekliniere_adjektiv("ADJEKTIV_SPE_TAN", "braun"),
-    dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "gemustert"), # kariert?
+    dekliniere_adjektiv("ADJEKTIV_SPE_PLAID", "gemustert"), # kariert? Aber ein "kariertes Buch"?
     dekliniere_adjektiv("ADJEKTIV_SPE_LIGHT_BROWN", "hellbraun"),
     dekliniere_adjektiv("ADJEKTIV_SPE_DARK_BROWN", "dunkelbraun"),
     dekliniere_adjektiv("ADJEKTIV_SPE_GRAY", "grau"),
@@ -1511,9 +1513,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_FIRE_ANT","Feuerameise","","Feuerameise","en","feminin", "n"),
     dekliniere_substantiv("NOUN_GIANT_BEETLE", "Riesenkäfer", "s", "Riesenkäfer", "", "maskulin"),
     dekliniere_substantiv("NOUN_QUEEN_BEE","Bienenkönigin","","Bienenköniginn","en","feminin", "nen"),
-    #dekliniere_substantiv("NOUN_ACID_BLOB"
-    #dekliniere_substantiv("NOUN_QUIVERING_BLOB"
-    #dekliniere_substantiv("NOUN_GELATINOUS_CUBE"
+    #dekliniere_substantiv("NOUN_ACID_BLOB" # Säureklumpen?, Säureklotz??
+    #dekliniere_substantiv("NOUN_QUIVERING_BLOB" # zitternder/bebender Klumpen, Zitterklumpen
+    #dekliniere_substantiv("NOUN_GELATINOUS_CUBE" # Gelatinewürfel
     #dekliniere_substantiv("NOUN_CHICKATRICE"
     #dekliniere_substantiv("NOUN_COCKATRICE"
     #dekliniere_substantiv("NOUN_PYROLISK"
@@ -1534,11 +1536,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HELL_HOUND", "Höllenhund", "es", "Höllenhund", "e", "maskulin","e"),
     dekliniere_substantiv("NOUN_CERBERUS", "Zerberus", "", "Zerberuss", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_GAS_SPORE" # Gasspore
-    #dekliniere_substantiv("NOUN_FLOATING_EYE"
+    dekliniere_substantiv("NOUN_FLOATING_EYE", "Schwebauge", "es", "Schwebauge", "en", "neutrum", "n"),
     #dekliniere_substantiv("NOUN_FREEZING_SPHERE"
     #dekliniere_substantiv("NOUN_FLAMING_SPHERE"
     #dekliniere_substantiv("NOUN_SHOCKING_SPHERE"
-    #dekliniere_substantiv("NOUN_BEHOLDER" # Betrachter
+    dekliniere_substantiv("NOUN_BEHOLDER", "Betrachter", "s", "Betrachter", "", "maskulin"), # Betrachter
     dekliniere_substantiv("NOUN_KITTEN", "Kätzchen", "s", "Kätzchen", "", "neutrum"),
     dekliniere_substantiv("NOUN_HOUSECAT","Hauskatze","","Hauskatze","en","feminin","n"),
     dekliniere_substantiv("NOUN_JAGUAR","Jaguar","s","Jaguar","e","maskulin"),
@@ -1570,9 +1572,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_KOBOLD_LORD", "Koboldfürst","en","Koboldfürst","en","maskulin", "en"),
     #dekliniere_substantiv("NOUN_KOBOLD_SHAMAN"
     #dekliniere_substantiv("NOUN_LEPRECHAUN"
-    #dekliniere_substantiv("NOUN_SMALL_MIMIC"
-    #dekliniere_substantiv("NOUN_LARGE_MIMIC"
-    #dekliniere_substantiv("NOUN_GIANT_MIMIC"
+    dekliniere_nominalphrase("NOUN_SMALL_MIMIC","klein", "Imitator","","","","maskulin", "en"),
+    dekliniere_nominalphrase("NOUN_LARGE_MIMIC","groß", "Imitator","","","","maskulin", "en"),
+    dekliniere_nominalphrase("NOUN_GIANT_MIMIC","riesig", "Imitator","","","","maskulin", "en"),
+		# Riesenimitator ist etwas irreführend
+    #dekliniere_substantiv("NOUN_GIANT_MIMIC", "Riesenimitator","","Riesenimitator","","maskulin", "en"),
     dekliniere_substantiv("NOUN_WOOD_NYMPH",     "Baumnymphe",   "", "Baumnymphe",   "en", "feminin","n"),
     dekliniere_substantiv("NOUN_WATER_NYMPH",    "Wassernymphe", "", "Wassernymphe", "en", "feminin","n"),
     dekliniere_substantiv("NOUN_MOUNTAIN_NYMPH", "Bergnymphe",   "", "Bergnymphe",   "en", "feminin","n"),
