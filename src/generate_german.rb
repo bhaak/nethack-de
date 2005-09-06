@@ -1575,7 +1575,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_SMALL_MIMIC","klein", "Imitator","","","","maskulin", "en"),
     dekliniere_nominalphrase("NOUN_LARGE_MIMIC","groß", "Imitator","","","","maskulin", "en"),
     dekliniere_nominalphrase("NOUN_GIANT_MIMIC","riesig", "Imitator","","","","maskulin", "en"),
-		# Riesenimitator ist etwas irreführend
+		# Riesenimitator wäre etwas irreführend
     #dekliniere_substantiv("NOUN_GIANT_MIMIC", "Riesenimitator","","Riesenimitator","","maskulin", "en"),
     dekliniere_substantiv("NOUN_WOOD_NYMPH",     "Baumnymphe",   "", "Baumnymphe",   "en", "feminin","n"),
     dekliniere_substantiv("NOUN_WATER_NYMPH",    "Wassernymphe", "", "Wassernymphe", "en", "feminin","n"),
@@ -1675,7 +1675,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_YELLOW_MOLD"
     #dekliniere_substantiv("NOUN_GREEN_MOLD"
     #dekliniere_substantiv("NOUN_RED_MOLD"
-    #dekliniere_substantiv("NOUN_SHRIEKER"
+    #dekliniere_substantiv("NOUN_SHRIEKER" kreischen, schreien: Kreischer, Schreier, Schreihals, Krakeeler
     #dekliniere_substantiv("NOUN_VIOLET_FUNGUS"
     dekliniere_substantiv("NOUN_GNOME", "Gnom", "en", "Gnom", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_GNOME_LORD","Gnomenfürst","en","Gnomenfürst","en","maskulin", "en"),
@@ -1747,8 +1747,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_NAZGUL"
     #dekliniere_substantiv("NOUN_XORN"
     dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
-    #dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"),
-    #dekliniere_substantiv("NOUN_OWLBEAR"
+    dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"),
+    #dekliniere_substantiv("NOUN_OWLBEAR" # 
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
     #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
     #dekliniere_substantiv("NOUN_SASQUATCH"
