@@ -1748,10 +1748,11 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_XORN"
     dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"),
-    #dekliniere_substantiv("NOUN_OWLBEAR" # 
+    dekliniere_substantiv("NOUN_OWLBEAR", "Eulenbär", "en", "Eulenbär", "en", "maskulin"),
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
     #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
-    #dekliniere_substantiv("NOUN_SASQUATCH"
+    #dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatch", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatches", "fremder", "maskulin"),
     #dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE"
     #dekliniere_substantiv("NOUN_GNOME_ZOMBIE"
     #dekliniere_substantiv("NOUN_ORC_ZOMBIE"
