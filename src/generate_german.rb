@@ -1671,10 +1671,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_EARTH_ELEMENTAL", "Erdelementar",    "es", "Erdelementar",    "e", "neutrum"),
     dekliniere_substantiv("NOUN_WATER_ELEMENTAL", "Wasserelementar", "es", "Wasserelementar", "e", "neutrum"),
     dekliniere_substantiv("NOUN_LICHEN", "Flechte", "", "Flechte", "en", "feminin", "n"),
-    dekliniere_substantiv("NOUN_BROWN_MOLD", "Braunschimmel", "s", "Braunschimmel", ""),
-    dekliniere_substantiv("NOUN_YELLOW_MOLD", "Gelbschimmel", "s", "Gelbschimmel", ""),
-    dekliniere_substantiv("NOUN_GREEN_MOLD", "Grünschimmel", "s", "Grünschimmel", ""),
-    dekliniere_substantiv("NOUN_RED_MOLD", "Rotschimmel", "s", "Rotschimmel", ""),
+    dekliniere_substantiv("NOUN_BROWN_MOLD", "Braunschimmel", "s", "Braunschimmel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_YELLOW_MOLD", "Gelbschimmel", "s", "Gelbschimmel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_GREEN_MOLD", "Grünschimmel", "s", "Grünschimmel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_RED_MOLD", "Rotschimmel", "s", "Rotschimmel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_SHRIEKER" kreischen, schreien: Kreischer, Schreier, Schreihals, Krakeeler
     #dekliniere_substantiv("NOUN_VIOLET_FUNGUS"
     dekliniere_substantiv("NOUN_GNOME", "Gnom", "en", "Gnom", "en", "maskulin", "en"),
