@@ -848,7 +848,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_DWARVISH_IRON_HELM", "eisern", "Zwergenhelm", "es", "Zwergenhelm", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_FEDORA"
     #dekliniere_substantiv("NOUN_CORNUTHAUM"
-    #dekliniere_substantiv("NOUN_DUNCE_CAP"
+    #dekliniere_substantiv("NOUN_DUNCE_CAP" # Narrenkappe, Eselmütze
     #dekliniere_substantiv("NOUN_DENTED_POT"
     #dekliniere_substantiv("NOUN_HELMET"
     #dekliniere_substantiv("NOUN_HELM_OF_BRILLIANCE"
@@ -1605,9 +1605,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WERERAT", "Werratte", "", "Werratte", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_ROCK_MOLE"
     dekliniere_substantiv("NOUN_WOODCHUCK", "Murmeltier", "es", "Murmeltier", "e", "neutrum"),
-    #dekliniere_substantiv("NOUN_CAVE_SPIDER"
-    #dekliniere_substantiv("NOUN_CENTIPEDE"
-    #dekliniere_substantiv("NOUN_GIANT_SPIDER"
+    dekliniere_substantiv("NOUN_CAVE_SPIDER", "Höhlenspinne", "", "Höhlenspinne", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_CENTIPEDE", "Tausendfüßler", "s", "Tausendfüßler", "", "maskulin"),
+    dekliniere_substantiv("NOUN_GIANT_SPIDER", "Riesenspinne", "", "Riesenspinne", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SCORPION", "Skorpion", "s", "Skorpion", "e", "maskulin"),
     dekliniere_substantiv("NOUN_LURKER_ABOVE", "Laurer", "s", "Laurer", "", "maskulin"),
     dekliniere_substantiv("NOUN_TRAPPER", "Fallensteller", "s", "Fallensteller", "", "maskulin"), 
@@ -1671,10 +1671,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_EARTH_ELEMENTAL", "Erdelementar",    "es", "Erdelementar",    "e", "neutrum"),
     dekliniere_substantiv("NOUN_WATER_ELEMENTAL", "Wasserelementar", "es", "Wasserelementar", "e", "neutrum"),
     dekliniere_substantiv("NOUN_LICHEN", "Flechte", "", "Flechte", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_BROWN_MOLD"
-    #dekliniere_substantiv("NOUN_YELLOW_MOLD"
-    #dekliniere_substantiv("NOUN_GREEN_MOLD"
-    #dekliniere_substantiv("NOUN_RED_MOLD"
+    #dekliniere_substantiv("NOUN_BROWN_MOLD" # Braunschimmel
+    #dekliniere_substantiv("NOUN_YELLOW_MOLD" # Gelbschimmel
+    #dekliniere_substantiv("NOUN_GREEN_MOLD" # Grünschimmel
+    #dekliniere_substantiv("NOUN_RED_MOLD" # Rotschimmel
     #dekliniere_substantiv("NOUN_SHRIEKER" kreischen, schreien: Kreischer, Schreier, Schreihals, Krakeeler
     #dekliniere_substantiv("NOUN_VIOLET_FUNGUS"
     dekliniere_substantiv("NOUN_GNOME", "Gnom", "en", "Gnom", "en", "maskulin", "en"),
@@ -1690,7 +1690,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ETTIN", "Ettin", "", "Ettin", "", "maskulin"),
     dekliniere_substantiv("NOUN_TITAN", "Titane", "en", "Titan", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_MINOTAUR","Minotaurus","","Minotaur","en","maskulin"),
-    #dekliniere_substantiv("NOUN_JABBERWOCK"
+    #dekliniere_substantiv("NOUN_JABBERWOCK" # jammerwoch?
     #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK"
     dekliniere_substantiv("NOUN_KEYSTONE_KOP", "Gendarm", "en", "Gendarmen", "en", "maskulin"), 
     dekliniere_substantiv("NOUN_KOP_SERGEANT", "Inspektor", "s", "Inspektor", "en", "maskulin", "en"),
@@ -1783,7 +1783,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ELVENKING", "Elbenkönig", "es", "Elbenkönig", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_DOPPELGANGER", "Doppelgänger", "s", "Doppelgänger", "", "maskulin"),
     dekliniere_substantiv("NOUN_NURSE", "Krankenschwester", "", "Krankenschwester", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_SHOPKEEPER"
+    #dekliniere_substantiv("NOUN_SHOPKEEPER" # ?Händler
     dekliniere_substantiv("NOUN_GUARD", "Wache", "", "Wache", "en", "feminin"),
     #dekliniere_substantiv("NOUN_PRISONER"
     dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orakel", "", "neutrum"),
