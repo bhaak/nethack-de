@@ -1753,15 +1753,15 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
     #dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatches", "fremder", "maskulin"),
-    #dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE"
-    #dekliniere_substantiv("NOUN_GNOME_ZOMBIE"
-    #dekliniere_substantiv("NOUN_ORC_ZOMBIE"
-    #dekliniere_substantiv("NOUN_DWARF_ZOMBIE"
-    #dekliniere_substantiv("NOUN_ELF_ZOMBIE"
-    #dekliniere_substantiv("NOUN_HUMAN_ZOMBIE"
-    #dekliniere_substantiv("NOUN_ETTIN_ZOMBIE"
-    #dekliniere_substantiv("NOUN_GIANT_ZOMBIE"
-    dekliniere_substantiv("NOUN_GHOUL","Ghul","s","Ghul","e","maskulin"),
+    dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE", "Koboldzombie", "s", "Koboldzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GNOME_ZOMBIE", "Gnomenzombie", "s", "Gnomenzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_ORC_ZOMBIE", "Orkzombie", "s", "Orkzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_DWARF_ZOMBIE", "Zwergenzombie", "s", "Zwergenzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_ELF_ZOMBIE", "Elbenzombie", "s", "Elbenzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_HUMAN_ZOMBIE", "Menschenzombie", "s", "Menschenzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_ETTIN_ZOMBIE", "Ettinzombie", "s", "Ettinzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GIANT_ZOMBIE", "Riesenzombie", "s", "Riesenzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GHOUL", "Ghul", "s", "Ghul", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SKELETON", "Skelett", "es", "Skelett", "e", "neutrum"),
     #dekliniere_substantiv("NOUN_STRAW_GOLEM"
     #dekliniere_substantiv("NOUN_PAPER_GOLEM"
