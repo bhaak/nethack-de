@@ -746,7 +746,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ORCISH_SPEAR", "Orkspeer", "es", "Orkspeer", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_SPEAR", "Zwergenspeer", "es", "Zwergenspeer", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SILVER_SPEAR", "Silberspeer", "es", "Silberspeer", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_JAVELIN"
+    #dekliniere_substantiv("NOUN_JAVELIN" # check Wurfspieﬂ oder Pilum
     dekliniere_substantiv("NOUN_TRIDENT", "Dreizack", "s", "Dreizack", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DAGGER", "Dolch", "es", "Dolch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_DAGGER", "Elbendolch", "es", "Elbendolch", "e", "maskulin"),
@@ -808,10 +808,10 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CRUDE_ARROW"
     dekliniere_substantiv("NOUN_BAMBOO_ARROW", "Bambuspfeil", "es", "Bambuspfeil", "e", "maskulin"),
     dekliniere_substantiv("NOUN_THROWING_STAR", "Wurfstern", "es", "Wurfstern", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_RUNED_SPEAR"
+    dekliniere_substantiv("NOUN_RUNED_SPEAR", "Runenspeer", "es", "Runenspeer", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_CRUDE_SPEAR"
-    #dekliniere_substantiv("NOUN_STOUT_SPEAR"
-    #dekliniere_substantiv("NOUN_THROWING_SPEAR"
+    dekliniere_nominalphrase("NOUN_STOUT_SPEAR", "schwer", "Speer", "es", "Speer", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_THROWING_SPEAR", "Wurfspeer", "es", "Wurfspeer", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_RUNED_DAGGER"
     #dekliniere_substantiv("NOUN_CRUDE_DAGGER"
     #dekliniere_substantiv("NOUN_DOUBLE_HEADED_AXE"
@@ -829,7 +829,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_ANGLED_POLEAXE", "abgewinkelte", "Stangenaxt", "", "Stangen‰xt", "e", "feminin"),
     dekliniere_nominalphrase("NOUN_LONG_POLEAXE", "lang", "Stangenbeil", "es", "Stangenbeil", "e", "neutrum"),
     dekliniere_substantiv("NOUN_POLE_CLEAVER", "Stangenbeil", "es", "Stangenbeil", "e", "neutrum"),
-    #dekliniere_substantiv("NOUN_BROAD_PICK", "Rodehacke", "", "Rodehacke", "en", "feminin", "n"),
+    # dekliniere_substantiv("NOUN_BROAD_PICK", "Rodehacke", "", "Rodehacke", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_BROAD_PICK", "Breithacke", "", "Breithacke", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_POLE_SICKLE", "Stangensichel", "", "Stangensichel", "en", "feminin"),
     dekliniere_substantiv("NOUN_PRUNING_HOOK", "Stangenmesser", "s", "Stangenmesser", "", "neutrum"),
@@ -1763,17 +1763,18 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GIANT_ZOMBIE", "Riesenzombie", "s", "Riesenzombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_GHOUL", "Ghul", "s", "Ghul", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SKELETON", "Skelett", "es", "Skelett", "e", "neutrum"),
-    #dekliniere_substantiv("NOUN_STRAW_GOLEM"
-    #dekliniere_substantiv("NOUN_PAPER_GOLEM"
-    #dekliniere_substantiv("NOUN_ROPE_GOLEM"
-    #dekliniere_substantiv("NOUN_GOLD_GOLEM"
-    #dekliniere_substantiv("NOUN_LEATHER_GOLEM"
-    #dekliniere_substantiv("NOUN_WOOD_GOLEM"
-    #dekliniere_substantiv("NOUN_FLESH_GOLEM"
-    #dekliniere_substantiv("NOUN_CLAY_GOLEM"
-    #dekliniere_substantiv("NOUN_STONE_GOLEM"
-    #dekliniere_substantiv("NOUN_GLASS_GOLEM"
-    #dekliniere_substantiv("NOUN_IRON_GOLEM"
+    dekliniere_substantiv("NOUN_STRAW_GOLEM", "Strohgolem", "s", "Strohgolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_PAPER_GOLEM", "Papiergolem", "s", "Papiergolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_ROPE_GOLEM", "Seilgolem", "s", "Seilgolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GOLD_GOLEM", "Goldgolem", "s", "Goldgolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_LEATHER_GOLEM", "Ledergolem", "s", "Ledergolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_WOOD_GOLEM", "Holzgolem", "s", "Holzgolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_FLESH_GOLEM", "Fleischgolem", "s", "Fleischgolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_CLAY_GOLEM", "Lehmgolem", "s", "Lehmgolem", "s", "maskulin"),
+    # dekliniere_substantiv("NOUN_CLAY_GOLEM", "Tongolem", "s", "Tongolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_STONE_GOLEM", "Steingolem", "s", "Steingolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GLASS_GOLEM", "Glasgolem", "s", "Glasgolem", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_IRON_GOLEM", "Eisengolem", "s", "Eisengolem", "s", "maskulin"),
     dekliniere_substantiv("NOUN_HUMAN", "Mensch", "en", "Mensch", "en", "maskulin", "en"),
     #dekliniere_substantiv("NOUN_ELF"
     #dekliniere_substantiv("NOUN_WOODLAND_ELF"
