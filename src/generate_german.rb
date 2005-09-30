@@ -1700,14 +1700,14 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_DEMILICH"
     #dekliniere_substantiv("NOUN_MASTER_LICH"
     #dekliniere_substantiv("NOUN_ARCH_LICH"
-    #dekliniere_substantiv("NOUN_KOBOLD_MUMMY"
-    #dekliniere_substantiv("NOUN_GNOME_MUMMY"
-    #dekliniere_substantiv("NOUN_ORC_MUMMY"
-    #dekliniere_substantiv("NOUN_DWARF_MUMMY"
-    #dekliniere_substantiv("NOUN_ELF_MUMMY"
-    #dekliniere_substantiv("NOUN_HUMAN_MUMMY"
-    #dekliniere_substantiv("NOUN_ETTIN_MUMMY"
-    #dekliniere_substantiv("NOUN_GIANT_MUMMY"
+    dekliniere_substantiv("NOUN_KOBOLD_MUMMY", "Koboldsmumie", "", "Koboldsmumie", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_GNOME_MUMMY", "Gnomenmumie", "", "Gnomenmumie", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_ORC_MUMMY", "Orkmumie", "", "Orkmumie", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_DWARF_MUMMY", "Zwergenmumie", "", "Zwergenmumie", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_ELF_MUMMY", "Elbenmumie", "", "Elbenmumie", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_HUMAN_MUMMY", "Menschenmumie", "", "Menschenmumie", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_ETTIN_MUMMY", "Ettinmumie", "", "Ettinmumie", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_GIANT_MUMMY", "Riesenmumie", "", "Riesenmumie", "en", "maskulin", "n"),
     #dekliniere_substantiv("NOUN_RED_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING"
@@ -1753,7 +1753,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
     #dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatches", "fremder", "maskulin"),
-    dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE", "Koboldzombie", "s", "Koboldzombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE", "Koboldszombie", "s", "Koboldszombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_GNOME_ZOMBIE", "Gnomenzombie", "s", "Gnomenzombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_ORC_ZOMBIE", "Orkzombie", "s", "Orkzombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_DWARF_ZOMBIE", "Zwergenzombie", "s", "Zwergenzombie", "s", "maskulin"),
@@ -1776,11 +1776,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GLASS_GOLEM", "Glasgolem", "s", "Glasgolem", "s", "maskulin"),
     dekliniere_substantiv("NOUN_IRON_GOLEM", "Eisengolem", "s", "Eisengolem", "s", "maskulin"),
     dekliniere_substantiv("NOUN_HUMAN", "Mensch", "en", "Mensch", "en", "maskulin", "en"),
-    #dekliniere_substantiv("NOUN_ELF"
-    #dekliniere_substantiv("NOUN_WOODLAND_ELF"
-    #dekliniere_substantiv("NOUN_GREEN_ELF"
-    #dekliniere_substantiv("NOUN_GREY_ELF"
-    #dekliniere_substantiv("NOUN_ELF_LORD"
+    dekliniere_substantiv("NOUN_ELF", "Elb", "es", "Elb", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_WOODLAND_ELF", "Waldelb", "es", "Waldelb", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_GREEN_ELF", "Grünelb", "es", "Grünelb", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_GREY_ELF", "Grauelb", "es", "Grauelb", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_ELF_LORD", "Elbenfürst", "en", "Elbenfürst", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_ELVENKING", "Elbenkönig", "es", "Elbenkönig", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_DOPPELGANGER", "Doppelgänger", "s", "Doppelgänger", "", "maskulin"),
     dekliniere_substantiv("NOUN_NURSE", "Krankenschwester", "", "Krankenschwester", "en", "feminin"),
