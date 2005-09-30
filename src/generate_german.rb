@@ -804,7 +804,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CROSSBOW", "Armbrust", "", "Armbrüste", "e", "feminin"),
     "",
     "/* Weapons, unidentified */",
-    #dekliniere_substantiv("NOUN_RUNED_ARROW"
+    dekliniere_substantiv("NOUN_RUNED_ARROW", "Runenpfeil", "es", "Runenpfeil", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_CRUDE_ARROW"
     dekliniere_substantiv("NOUN_BAMBOO_ARROW", "Bambuspfeil", "es", "Bambuspfeil", "e", "maskulin"),
     dekliniere_substantiv("NOUN_THROWING_STAR", "Wurfstern", "es", "Wurfstern", "e", "maskulin"),
@@ -812,14 +812,14 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CRUDE_SPEAR"
     dekliniere_nominalphrase("NOUN_STOUT_SPEAR", "schwer", "Speer", "es", "Speer", "e", "maskulin"),
     dekliniere_substantiv("NOUN_THROWING_SPEAR", "Wurfspeer", "es", "Wurfspeer", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_RUNED_DAGGER"
+    dekliniere_substantiv("NOUN_RUNED_DAGGER", "Runendolch", "es", "Runendolch", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_CRUDE_DAGGER"
     #dekliniere_substantiv("NOUN_DOUBLE_HEADED_AXE"
-    #dekliniere_substantiv("NOUN_RUNED_SHORT_SWORD"
+    dekliniere_substantiv("NOUN_RUNED_SHORT_SWORD", "Runenkurzschwert", "es", "Runenkurzschwert", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_CRUDE_SHORT_SWORD"
     #dekliniere_substantiv("NOUN_BROAD_SHORT_SWORD"
     dekliniere_substantiv("NOUN_CURVED_SWORD", "Krummschwert", "es", "Krummschwert", "er", "neutrum"),
-    #dekliniere_substantiv("NOUN_RUNED_BROADSWORD"
+    dekliniere_substantiv("NOUN_RUNED_BROADSWORD", "Runenbreitschwert", "es", "Runenbreitschwert", "er", "neutrum", "s"),
     dekliniere_substantiv("NOUN_SAMURAI_SWORD", "Samuraischwert", "es", "Samuraischwert", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_LONG_SAMURAI_SWORD", "lang", "Samuraischwert", "es", "Samuraischwert", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_VULGAR_POLEARM", "gewöhnlich", "Stangenwaffe", "", "Stangenwaffe", "en", "feminin", "n"),
