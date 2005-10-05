@@ -79,10 +79,10 @@ START_TEST (test_wands) {
 
 START_TEST (test_spellbooks) {
 	char *text[][2] = {
-		{"N - ARTIKEL_UNBESTIMMTER MADE_OF_SPE_VELLUM NOUN_SPELLBOOK.",
-		 "N - ein Zauberbuch aus Velum."},
-		{"NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP (MADE_OF_SPE_VELLUM)",
-		 "Zauberbuch des Schlafes (Velum)"},
+		{"N - ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_VELLUM NOUN_SPELLBOOK.",
+		 "N - ein velinpapierenes Zauberbuch."},
+		{"NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP (ADJEKTIV_SPE_VELLUM)",
+		 "Zauberbuch des Schlafes (velinpapieren)"},
 		{"K - ARTIKEL_UNBESTIMMTER ADJEKTIV_WAND_CURVED NOUN_WAND",
 		 "K - ein gebogener Zauberstab"}};
 
@@ -174,10 +174,41 @@ START_TEST (test_potions) {
 		 "  Trank der Linderung (verwirbelt)"},
 		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_BLINDNESS.",
 		 "v - ein nicht verfluchter Trank der Blindheit."},
-		{"l - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_BLINDFOLD",
-		 "l - eine nicht verfluchte Augenbinde"},
 		{"SUBJECT 3 ADJEKTIV_POT_SKY_BLUE NOUN_POTIONs",
-		 "3 himmelblaue Tränke"}};
+		 "3 himmelblaue Tränke"},
+// NOUN_POT_GAIN_ABILITY"
+// NOUN_POT_RESTORE_ABILITY"
+		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_CONFUSION",
+		 "v - ein nicht verfluchter Trank der Verwirrung"},
+		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_BLINDNESS", "v - ein nicht verfluchter Trank der Blindheit"},
+// NOUN_POT_PARALYSIS" # der Lähmung, der Paralyse
+		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_SPEED", "v - ein nicht verfluchter Trank der Hast"},
+		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_LEVITATION", "v - ein nicht verfluchter Trank der Levitation"},
+// NOUN_POT_HALLUCINATION" # der Halluzination
+		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_INVISIBILITY", "v - ein nicht verfluchter Trank der Unsichtbarkeit"},
+// NOUN_POT_SEE_INVISIBLE" # Enthüllung des Unsichtbaren
+		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_HEALING", "v - ein nicht verfluchter Trank der Linderung"},
+		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_EXTRA_HEALING", "v - ein nicht verfluchter Trank der Heilung"},
+		//{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_FULL_HEALING", "v - ein nicht verfluchter Trank der vollständigen Heilung"},
+		//{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_GAIN_LEVEL", ""},
+// NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),     # Erleuchtung, Klarheit?
+// NOUN_POT_MONSTER_DETECTION" # Monstererspüren
+// NOUN_POT_OBJECT_DETECTION"  # Objekterspürung, Objekterspürens
+// NOUN_POT_GAIN_ENERGY"       # Energiegewinnung?
+// NOUN_POT_SICKNESS"          # Übelkeit
+		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_SLEEPING", "v - ein Trank des Schlafes"},
+		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_POLYMORPH", "v - ein Trank der Transformation"},
+		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_WATER",
+     "v - eine Flasche Wasser"},
+		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_BOOZE",
+     "v - eine Flasche Schnapps"},
+		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_FRUIT_JUICE",
+     "v - eine Flasche Fruchtsaft"},
+		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_ACID",
+     "v - eine Flasche Säure"},
+		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_OIL",
+     "v - eine Flasche Öl"}
+	};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST

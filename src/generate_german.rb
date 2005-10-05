@@ -1177,7 +1177,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_KELP_FROND","Seetangblatt","es","Seetangblätt","er","neutrum"),
     dekliniere_substantiv("NOUN_EUCALYPTUS_LEAF","Eukalyptusblatt","es","Eukalyptusblätt","er","neutrum"),
     dekliniere_substantiv("NOUN_APPLE","Apfel","s","Äpfel","","maskulin"),
-    #dekliniere_substantiv("NOUN_ORANGE","Apfelsine","","Apfelsine","en","feminin"),
+    # dekliniere_substantiv("NOUN_ORANGE","Apfelsine","","Apfelsine","en","feminin"),
     dekliniere_substantiv("NOUN_ORANGE","Orange","","Orange","en","feminin"),
     dekliniere_substantiv("NOUN_PEAR","Birne","","Birne","en","feminin"),
     dekliniere_substantiv("NOUN_MELON","Melone","","Melone","en","feminin"),
