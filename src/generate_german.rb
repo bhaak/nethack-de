@@ -878,7 +878,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CRYSTAL_PLATE_MAIL"
     #dekliniere_substantiv("NOUN_BRONZE_PLATE_MAIL"
     dekliniere_substantiv("NOUN_SPLINT_MAIL", "Schienenpanzer",  "s", "Schienenpanzer", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_BANDED_MAIL", "Spangenharnisch",  "s", "Spangenharnisch", "e", "maskulin"),
+    # dekliniere_substantiv("NOUN_BANDED_MAIL", "Spangenharnisch",  "s", "Spangenharnisch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_BANDED_MAIL", "Bänderpanzer",  "s", "Bänderpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_MITHRIL_COAT", "Zwergen-Mithrilhemd", "es", "Zwergen-Mithrilhemd", "en", "neutrum", "en"),
     dekliniere_substantiv("NOUN_ELVEN_MITHRIL_COAT", "Elben-Mithrilhemd", "es", "Elben-Mithrilhemd", "en", "neutrum", "en"),
@@ -1665,7 +1665,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GREEN_DRAGON", "Gründrache", "en", "Gründrache", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_YELLOW_DRAGON", "Gelbdrache", "en", "Gelbdrache", "en", "maskulin", "n"),
     #dekliniere_substantiv("NOUN_STALKER" # Pirscher?
-    dekliniere_substantiv("NOUN_STALKER", "Nachsteller", "s", "Nachsteller", "", "maskulin"),
+    #dekliniere_substantiv("NOUN_STALKER", "Nachsteller", "s", "Nachsteller", "", "maskulin"),
     dekliniere_substantiv("NOUN_AIR_ELEMENTAL",   "Luftelementar",   "es", "Luftelementar",   "e", "neutrum"),
     dekliniere_substantiv("NOUN_FIRE_ELEMENTAL",  "Feuerelementar",  "es", "Feuerelementar",  "e", "neutrum"),
     dekliniere_substantiv("NOUN_EARTH_ELEMENTAL", "Erdelementar",    "es", "Erdelementar",    "e", "neutrum"),
@@ -1804,13 +1804,13 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_WIZARD_OF_YENDOR"
     dekliniere_substantiv("NOUN_CROESUS", "Krösus", "es", "Krösus", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_CHARON"
-    #dekliniere_substantiv("NOUN_GHOST"
-    #dekliniere_substantiv("NOUN_SHADE" # Nachtschatten?
+    dekliniere_substantiv("NOUN_GHOST", "Gespenst", "es", "Gespenst", "er", "neutrum", "er"),
+    dekliniere_substantiv("NOUN_SHADE", "Nachtschatten", "s", "Nachtschatten", "", "maskulin"),
     #dekliniere_substantiv("NOUN_WATER_DEMON"
     #dekliniere_substantiv("NOUN_HORNED_DEVIL"
-    #dekliniere_substantiv("NOUN_SUCCUBUS"
-    #dekliniere_substantiv("NOUN_INCUBUS"
-    #dekliniere_substantiv("NOUN_ERINYS"
+    dekliniere_substantiv("NOUN_SUCCUBUS", "Sukkubus", "", "Sukkuben", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_INCUBUS", "Incubus", "", "Incuben", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_ERINYS", "Erinnye", "", "Erinnye", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_BARBED_DEVIL"
     #dekliniere_substantiv("NOUN_MARILITH"
     #dekliniere_substantiv("NOUN_VROCK"
