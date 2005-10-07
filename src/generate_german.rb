@@ -724,6 +724,7 @@ def ausgabe_nouns
     "/* This is wrong. 'Essbares' should be inflected like an adjective */",
     dekliniere_adjektivisches_substantiv("NOUN_COMESTIBLE","Essbar", "neutrum"),
     dekliniere_substantiv("NOUN_POTION",    "Trank",          "es", "Tränk",          "e",  "maskulin"),
+    dekliniere_substantiv("NOUN_FLASCHE",   "Flasche",        "",  "Flasche",         "en", "feminin"),
     dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle",   "",   "Schriftrolle",   "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SPELLBOOK", "Zauberbuch",     "es", "Zauberbüch",     "er", "neutrum"),
     dekliniere_substantiv("NOUN_WAND",      "Zauberstab",     "es", "Zauberstäb",     "e",  "maskulin"),
@@ -1123,7 +1124,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TIN_OPENER", "Dosenöffner", "s", "Dosenöffner", "", "maskulin"),
     #dekliniere_substantiv("NOUN_CAN_OF_GREASE", 
     dekliniere_substantiv("NOUN_FIGURINE", "Statuette", "", "Statuette", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_MAGIC_MARKER", 
+    #dekliniere_substantiv("NOUN_MAGIC_MARKER", # verzauberter Fueller?
     "/* 'Landmine' is a more generic term. I think 'Tretmine' is the more exact terminus for the mines in Nethack. */",
     dekliniere_substantiv("NOUN_LAND_MINE", "Tretmine", "", "Tretmine", "en", "feminin"),
     dekliniere_substantiv("NOUN_BEARTRAP", "Bärenfalle", "", "Bärenfalle", "en", "feminin", "n"),
@@ -1213,7 +1214,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE" # Enthüllung des Unsichtbaren
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
-    dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständige", "Heilung", "", "Heilung", "en", "feminin", "s"),
+    dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständig", "Heilung", "", "Heilung", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
     dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),     # Erleuchtung, Klarheit?
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION" # Monstererspüren
@@ -1221,12 +1222,12 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"       # Energiegewinnung?
     dekliniere_substantiv("NOUN_POT_SLEEPING", "Schlaf", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_POT_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"), 
-    #dekliniere_substantiv("NOUN_POT_BOOZE"             # Schnaps 
-    #dekliniere_substantiv("NOUN_POT_SICKNESS"          # Übelkeit
-    #dekliniere_substantiv("NOUN_POT_FRUIT_JUICE"       # Fruchtsaft
-    #dekliniere_substantiv("NOUN_POT_ACID"              # Säure
-    #dekliniere_substantiv("NOUN_POT_OIL"               # Öl, Brandöl
-    #dekliniere_substantiv("NOUN_POT_WATER"             # Wasser
+    dekliniere_substantiv("NOUN_POT_BOOZE", "Schnaps", "es", "Schnäpse", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_POT_SICKNESS", "Übelkeit", "", "Übelkeit", "en", "feminin"), # Übelkeit ?
+    dekliniere_substantiv("NOUN_POT_FRUIT_JUICE", "Fruchtsaft", "es", "Fruchsäft", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_POT_ACID", "Säure", "", "Säure", "en", "feminin"),
+    dekliniere_substantiv("NOUN_POT_OIL", "Öl", "es", "Öl", "e", "neutrum"), # Öl, Brandöl ?
+    dekliniere_substantiv("NOUN_POT_WATER", "Wasser", "s", "Wasser", "", "neutrum"),
     "",
     "/* Potions, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),

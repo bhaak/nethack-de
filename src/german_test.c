@@ -189,7 +189,7 @@ START_TEST (test_potions) {
 // NOUN_POT_SEE_INVISIBLE" # Enthüllung des Unsichtbaren
 		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_HEALING", "v - ein nicht verfluchter Trank der Linderung"},
 		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_EXTRA_HEALING", "v - ein nicht verfluchter Trank der Heilung"},
-		//{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_FULL_HEALING", "v - ein nicht verfluchter Trank der vollständigen Heilung"},
+		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_FULL_HEALING", "v - ein nicht verfluchter Trank der vollständigen Heilung"},
 		//{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_POTION PARTIKEL_OF NOUN_POT_GAIN_LEVEL", ""},
 // NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),     # Erleuchtung, Klarheit?
 // NOUN_POT_MONSTER_DETECTION" # Monstererspüren
@@ -200,8 +200,10 @@ START_TEST (test_potions) {
 		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_POLYMORPH", "v - ein Trank der Transformation"},
 		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_WATER",
      "v - eine Flasche Wasser"},
+		{"v - 2 NOUN_POTIONs PARTIKEL_OF NOUN_POT_WATER",
+     "v - 2 Flaschen Wasser"},
 		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_BOOZE",
-     "v - eine Flasche Schnapps"},
+     "v - eine Flasche Schnaps"},
 		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_FRUIT_JUICE",
      "v - eine Flasche Fruchtsaft"},
 		{"v - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_ACID",
@@ -341,7 +343,7 @@ char *names[] = { 0,
 START_TEST (test_inventory_names) {
 	char *text[][2] = {
 		{names[ 2], "Waffen"},
-		{names[ 3], "Schutzbekleidung"},
+		{names[ 3], "Rüstzeug"},
 		{names[ 4], "Ringe"},
 		{names[ 5], "Amulette"},
 		{names[ 6], "Werkzeuge"},

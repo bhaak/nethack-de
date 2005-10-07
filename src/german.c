@@ -358,9 +358,17 @@ int finde_naechstes_substantiv(const char* text) {
 	return 1;
 }
 
+// returns true, if token has a final lowercase s 
+int is_plural(char* token) {
+	return (token[strlen(token)-1] == 's');
+
+}
+
 int next_token(const char* input, char* output, int pos) {
 	int i=pos;
 	int j=0;
+	char tmp[TBUFSZ];
+
 #ifdef DEBUG
 	printf("next_token: -%s-\n", input+i);
 #endif
@@ -371,6 +379,24 @@ int next_token(const char* input, char* output, int pos) {
 			}
 		}
 		output[j] = '\0';
+
+    if (strncmp("NOUN_POTION", output, 11)==0) {
+			// get the token after NOUN_POTION PARTIKEL_OF
+			// jump over PARTIKEL_OF
+			next_token(input, tmp, pos+1+strlen(output));
+			int len_partikel_of = strlen(tmp);
+			next_token(input, tmp, pos+2+len_partikel_of+strlen(output));
+			//printf("Token nach Token nach NOUN_POTION: %s\n", tmp);
+			if ((strncmp(tmp, "NOUN_POT_WATER",14)==0) ||
+					(strncmp(tmp, "NOUN_POT_BOOZE",14)==0) ||
+					(strncmp(tmp, "NOUN_POT_ACID",13)==0) ||
+					(strncmp(tmp, "NOUN_POT_OIL",12)==0) ||
+					(strncmp(tmp, "NOUN_POT_FRUIT_JUICE",20)==0)) {
+				if (is_plural(output)) { strcpy(output, "NOUN_FLASCHEs"); }
+				else { strcpy(output, "NOUN_FLASCHE"); }
+			}
+		}
+		
 		//printf("output: %s strlen: %d\n",output, strlen(output));
 		/*if (strlen(output)==0) { i++; }
 			} while (strlen(output)==0);*/
@@ -561,6 +587,12 @@ char* german(const char *line) {
 				append_kompositum(output, tmp, "NOUN_MEAT");
 				insert_char = 0;
 				pos += 9;
+			} else if (strncmp("NOUN_FLASCHE", tmp, 12)==0) {
+				// jump over next token (PARTIKEL_OF)
+				int len_partikel_of = strlen(tmp2);
+			  pos += len_partikel_of+1;
+
+				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
 			} else {
 				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
 #if DEBUG
