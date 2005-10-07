@@ -287,6 +287,7 @@ int analyze_this_as_subject(const char *text) {
 				c_person  = drittePerson;
 				c_genus = worte[k].genus;
 				c_numerus = worte[k].numerus;
+				c_artikel = ohne;
 
 				subject_person  = drittePerson;
 				subject_genus   = worte[k].genus;
@@ -311,6 +312,7 @@ int analyze_this_as_object(const char *text) {
 				c_genus = worte[k].genus;
 				c_numerus = worte[k].numerus;
 				c_casus   = verb_do_casus; // TODO überprüfen, ob verb schon angetroffen
+				c_artikel = ohne;
 
 				do_genus = worte[k].genus;
 				do_numerus = worte[k].numerus;
@@ -619,6 +621,7 @@ char* german(const char *line) {
 			if (subject_person==0) { subject_person = zweitePerson; }
 			if (subject_numerus==0) { subject_numerus = n_singular; } // change to players choice
 			append(output, get_verb(tmp, subject_person, subject_numerus));
+			c_artikel = grundform; // für prädikativen Gebrauch nötig "Das Pferd ist gesattelt."
 
 		} else if (strncmp("ADJEKTIV_", tmp, 9)==0) {
 			//finde_naechstes_substantiv(line+pos);
@@ -634,6 +637,7 @@ char* german(const char *line) {
 					/* only add the definite article if there isn't another article */
 					next_token(line, tmp2, pos+1);
 					if (!strncmp("ARTIKEL_", tmp2, 8)==0) {
+						c_artikel = bestimmter;
 						append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, c_genus, c_numerus, c_artikel));
 					} else {
 						insert_char = 0;

@@ -261,7 +261,7 @@ START_TEST (test_complete_sentences) {
 
 START_TEST (test_complete_sentences2) {
 	char *text[][2] = {
-		{"ARTIKEL_BESTIMMTER NOUN_PONY ist nicht ADJEKTIV_SADDLED.",
+		{"ARTIKEL_BESTIMMTER NOUN_PONY VERB_SEIN nicht ADJEKTIV_SADDLED.",
 		 "Das Pony ist nicht gesattelt."}
 	};
 
