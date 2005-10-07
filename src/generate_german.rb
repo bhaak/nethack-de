@@ -58,7 +58,7 @@ end
 
 class Adjektiv
   attr_accessor :wort, :bezeichner, :casus, :geschlecht, :numerus, :artikel
-  def initialize(w,b,c,g,n,a)
+  def initialize(w,b,c,g,n,a,f="")
     @wort = w
     @bezeichner = b
     @casus = Set.new
@@ -74,8 +74,10 @@ class Adjektiv
       @numerus << 'n_'+n
     end
 
-    @artikel = a
-    @fugenelemnt = ""
+    @artikel = Set.new
+    add_to_set(@artikel, a)
+
+    @fugenelemnt = f
   end
 
   def add_to_set(set, array_or_string)
@@ -87,16 +89,18 @@ class Adjektiv
   end
 
   def merge?(other)
+    #return (other.wort == @wort  and other.bezeichner == @bezeichner and
+              #other.geschlecht == @geschlecht and
+              #other.numerus == @numerus and
+              #other.artikel == @artikel)
     return (other.wort == @wort  and other.bezeichner == @bezeichner and
               other.geschlecht == @geschlecht and
-              other.numerus == @numerus and
-              other.artikel == @artikel)
+              other.numerus == @numerus)
   end
 
   def merge(other)
-    other.casus.each { |c|
-      @casus << c
-    }
+    other.casus.each { |c| @casus << c }
+    other.artikel.each { |c| @artikel << c }
   end
 
   # hängt eine unveränderliche Zeichenkette an das deklinierte Wort an
@@ -109,12 +113,12 @@ class Adjektiv
       @casus.to_a.join("|")+ ', '+
       @geschlecht.to_a.join("|")+', '+
       @numerus.to_a.join("|")+', '+
-      @artikel+'},'
+      @artikel.to_a.join("|")+'},'
   end
 
   def to_s
     return @wort+" "+@bezeichner+" "+@casus.to_a.join("|")+
-      " "+@geschlecht.to_a.join("|")+" "+@numerus.to_a.join("|")+" ",@artikel
+      " "+@geschlecht.to_a.join("|")+" "+@numerus.to_a.join("|")+" ",@artikel.to_a.join("|")
   end
 
 end
@@ -258,7 +262,7 @@ end
 class Nomen < Adjektiv
   def initialize(w,b,c,g,n,fugenelement="")
     super(w,b,c,g,n,"")
-    @artikel = [$ohne,$bestimmter,$unbestimmter,$grundform]
+    @artikel = Set.new([$ohne,$bestimmter,$unbestimmter,$grundform])
     @fugenelement = fugenelement
   end
 
@@ -267,7 +271,7 @@ class Nomen < Adjektiv
       @casus.to_a.join("|")+', '+
       @geschlecht.to_a.join("|")+', '+
       @numerus.to_a.join("|")+', '+
-      @artikel.join("|")+'},'
+      @artikel.to_a.join("|")+'},'
   end
 
   def to_s
@@ -561,14 +565,16 @@ def dekliniere_nominalphrase(bezeichner,
         adj+adjektiv_endung(adj, kas, geschlecht, $sg, art)
       }.join(" ")
       sg = sg + " " + singularstamm+substantiv_casus[kas][$sg]
-      singularformen << unregelmaessiges_wort(bezeichner, sg, kas, geschlecht, $sg, fugenelement)
+      #singularformen << unregelmaessiges_wort(bezeichner, sg, kas, geschlecht, $sg, fugenelement)
+      singularformen << Adjektiv.new(sg, bezeichner, kas, geschlecht, $sg, art)
       
       if pluralstamm!="" then
         pl = adjektiv.collect {|adj|
           adj+adjektiv_endung(adj, kas, geschlecht, $pl, art)
         }.join(" ")
         pl = pl + " " + pluralstamm+substantiv_casus[kas][$pl]
-        pluralformen << unregelmaessiges_wort(bezeichner+"s", pl, kas, geschlecht, $pl, fugenelement)
+        #pluralformen << unregelmaessiges_wort(bezeichner+"s", pl, kas, geschlecht, $pl, fugenelement)
+        pluralformen << Adjektiv.new(pl, bezeichner+"s", kas, geschlecht, $pl, art)
       end
     }
   }
@@ -581,6 +587,20 @@ def dekliniere_nominalphrase(bezeichner,
       #$stderr.puts n
     }
   end
+
+  # probably unnecessarly O(n^3)
+  formen.each {
+    formen.each { |a| 
+      formen.each { |b|
+        if a!=b then
+          if b.merge?(a) then
+            b.merge(a)
+            formen.delete(a)
+          end
+        end
+      }
+    }
+  }
 
   #singularformen.each { |s| $stderr.puts s.to_struct } 
   #$stderr.puts singularformen.class
