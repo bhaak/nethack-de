@@ -28,7 +28,7 @@ START_TEST (test_tincontent)
 										 {"c - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_COYOTE NOUN_MEAT.",
 											"c - eine nicht verfluchte Dose mit Kojotenfleisch."},
 										 {"d - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_TIN PARTIKEL_OF NOUN_LARGE_DOG NOUN_MEAT.",
-											"d - eine verfluchte Dose mit Hundefleisch."}
+											"d - eine verfluchte Dose mit Fleisch vom grossen Hunde."}
 	};
 
 	check_strings(text, sizeof(text)/8);

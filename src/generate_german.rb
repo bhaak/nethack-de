@@ -700,8 +700,8 @@ def ausgabe_nouns
     "",
     unregelmaessiges_wort("NOUN_OOPS",  "Hoppla",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
     "",
-    unregelmaessiges_wort("PARTIKEL_NAMED",  "genannt",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
-    unregelmaessiges_wort("PARTIKEL_CALLED", "bezeichnet mit", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl])
+    unregelmaessiges_wort("PARTIKEL_NAMED",  "genannt",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # geannt, namens
+    unregelmaessiges_wort("PARTIKEL_CALLED", "bezeichnet mit", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]) # bezeichnet mit, genannt
   ].each { |n|
     if n.is_a? String then
       puts n
@@ -1122,7 +1122,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_BAG_OF_HOLDING", "Nimmervoll", "Beutel","s","Beutel","","maskulin"),
     #dekliniere_substantiv("NOUN_BAG_OF_TRICKS", 
     # dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
-    dekliniere_substantiv("NOUN_SKELETON_KEY", "Passepartout", "s", "Generalschlüssel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_SKELETON_KEY", "Passepartout", "s", "Passepartout", "", "maskulin"),
     dekliniere_substantiv("NOUN_LOCK_PICK", "Dietrich", "s", "Dietrich", "e", "maskulin"),
     dekliniere_substantiv("NOUN_CREDIT_CARD", "Kreditkarte", "", "Kreditkarte", "en", "feminin"),
     dekliniere_substantiv("NOUN_TALLOW_CANDLE", "Talglicht", "es", "Talglicht", "er", "neutrum"),
@@ -1142,7 +1142,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_STETHOSCOPE", "Stethoskop", "s", "Stethoskop", "e", "neutrum"),
     #dekliniere_substantiv("NOUN_TINNING_KIT", 
     dekliniere_substantiv("NOUN_TIN_OPENER", "Dosenöffner", "s", "Dosenöffner", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_CAN_OF_GREASE", 
+    #dekliniere_substantiv("NOUN_CAN_OF_GREASE",  # Fettdose?
     dekliniere_substantiv("NOUN_FIGURINE", "Statuette", "", "Statuette", "en", "feminin"),
     #dekliniere_substantiv("NOUN_MAGIC_MARKER", # verzauberter Fueller?
     "/* 'Landmine' is a more generic term. I think 'Tretmine' is the more exact terminus for the mines in Nethack. */",
@@ -1190,7 +1190,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TRIPE_RATION", "Pansen", "s",  "Pansen", "", "maskulin"),
     "/* NOUN_CORPSE is irregular and treated specially */",
     dekliniere_substantiv("NOUN_EGG","Ei","es","Ei","er","neutrum"),
-    #dekliniere_substantiv("NOUN_MEATBALL"
+    #dekliniere_substantiv("NOUN_MEATBALL" # Kloesschen, Fleischklops, Fleischball?
     #dekliniere_substantiv("NOUN_MEAT_STICK","?Salami?"
     #dekliniere_substantiv("NOUN_HUGE_CHUNK_OF_MEAT"
     dekliniere_substantiv("NOUN_MEAT_RING","Fleischring","es","Fleischring","e","maskulin"),
@@ -1279,14 +1279,14 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
     "",
     "/* Scrolls, identified */",
-    #dekliniere_substantiv("NOUN_SCR_ENCHANT_ARMOR"
-    #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"
+    #dekliniere_substantiv("NOUN_SCR_ENCHANT_ARMOR"   # Schriftrolle der verzauberten Rüstung?
+    #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"   # Schriftrolle der zerstörten Rüstung?
     #dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER"
-    #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER"
-    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE"   # Fluch bannen
-    #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"
+    #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER"   
+    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE"   # Schriftrolle des gebannten Fluches, des Fluchbannens, der Fluchbannung
+    #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"  # Schriftrolle der verzauberten Waffe?
     #dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER" # Monsterbeschwörung
-    #dekliniere_substantiv("NOUN_SCR_TAMING"         # Zähmens
+    #dekliniere_substantiv("NOUN_SCR_TAMING"         # Zähmens, Zähmung
     #dekliniere_substantiv("NOUN_SCR_GENOCIDE"       # Genozid
     #dekliniere_substantiv("NOUN_SCR_LIGHT"          # Licht
     #dekliniere_substantiv("NOUN_SCR_TELEPORTATION"  # Teleportation
@@ -1298,7 +1298,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SCR_FIRE"           # Feuer
     #dekliniere_substantiv("NOUN_SCR_EARTH"          # Erde
     #dekliniere_substantiv("NOUN_SCR_PUNISHMENT"     # Bestrafung
-    #dekliniere_substantiv("NOUN_SCR_CHARGING"       # Laden
+    #dekliniere_substantiv("NOUN_SCR_CHARGING"       # Laden, Ladungs??
     #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD"
     #dekliniere_substantiv("NOUN_SCR_MAIL"
     #dekliniere_substantiv("NOUN_SCR_BLANK_PAPER"
@@ -1312,7 +1312,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SCR_DAIYEN_FOOELS"
     #dekliniere_substantiv("NOUN_SCR_LEP_GEX_VEN_ZEA"
     #dekliniere_substantiv("NOUN_SCR_PRIRUTSENIE"
-    #dekliniere_substantiv("NOUN_SCR_ELBIB_YLOH"
+    #dekliniere_substantiv("NOUN_SCR_ELBIB_YLOH"      # "HEILIGE SCHRIFT" TFIRHCS EGILIEH"
     #dekliniere_substantiv("NOUN_SCR_VERR_YED_HORRE"
     #dekliniere_substantiv("NOUN_SCR_VENZAR_BORGAVVE"
     #dekliniere_substantiv("NOUN_SCR_THARR"
@@ -1537,9 +1537,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_ACID_BLOB" # Säureklumpen?, Säureklotz??
     #dekliniere_substantiv("NOUN_QUIVERING_BLOB" # zitternder/bebender Klumpen, Zitterklumpen
     #dekliniere_substantiv("NOUN_GELATINOUS_CUBE" # Gelatinewürfel
-    #dekliniere_substantiv("NOUN_CHICKATRICE"
-    #dekliniere_substantiv("NOUN_COCKATRICE"
-    #dekliniere_substantiv("NOUN_PYROLISK"
+    #dekliniere_substantiv("NOUN_CHICKATRICE" # BASILEA? soll gr. fuer Koenigin sein
+    #dekliniere_substantiv("NOUN_COCKATRICE"  # BASILISK gr. "kleiner Koenig"
+    #dekliniere_substantiv("NOUN_PYROLISK" # Pyrolisk
     dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_FOX","Fuchs","es","Füchs","e","maskulin"),
     dekliniere_substantiv("NOUN_COYOTE","Kojote","en","Kojote","en","maskulin","n"),
@@ -1685,7 +1685,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BLUE_DRAGON", "Blaudrache", "en", "Blaudrache", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_GREEN_DRAGON", "Gründrache", "en", "Gründrache", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_YELLOW_DRAGON", "Gelbdrache", "en", "Gelbdrache", "en", "maskulin", "n"),
-    #dekliniere_substantiv("NOUN_STALKER" # Pirscher?
+    dekliniere_substantiv("NOUN_STALKER", "Pirscher", "s", "Pirscher", "", "maskulin"), 
     #dekliniere_substantiv("NOUN_STALKER", "Nachsteller", "s", "Nachsteller", "", "maskulin"),
     dekliniere_substantiv("NOUN_AIR_ELEMENTAL",   "Luftelementar",   "es", "Luftelementar",   "e", "neutrum"),
     dekliniere_substantiv("NOUN_FIRE_ELEMENTAL",  "Feuerelementar",  "es", "Feuerelementar",  "e", "neutrum"),
@@ -1805,7 +1805,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ELVENKING", "Elbenkönig", "es", "Elbenkönig", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_DOPPELGANGER", "Doppelgänger", "s", "Doppelgänger", "", "maskulin"),
     dekliniere_substantiv("NOUN_NURSE", "Krankenschwester", "", "Krankenschwester", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_SHOPKEEPER" # ?Händler
+    #dekliniere_substantiv("NOUN_SHOPKEEPER" # Ladenbesitzer, ?Händler
     dekliniere_substantiv("NOUN_GUARD", "Wache", "", "Wache", "en", "feminin"),
     #dekliniere_substantiv("NOUN_PRISONER"
     dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orakel", "", "neutrum"),
