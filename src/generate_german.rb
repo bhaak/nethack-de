@@ -1091,8 +1091,8 @@ def ausgabe_nouns
                           "gegen Gift"),
     dekliniere_substantiv("NOUN_AMULET_OF_CHANGE", "Amulett", "es", "Amulett", "e", "neutrum", "",
                           "der Wandlung"),
-    #dekliniere_substantiv("NOUN_AMULET_OF_UNCHANGING" "Unwandlung" ?
-    #dekliniere_substantiv("NOUN_AMULET_OF_REFLECTION" "Spiegelung" ?
+    dekliniere_substantiv("NOUN_AMULET_OF_UNCHANGING", "Amulett", "es", "Amulett", "e", "neutrum", "", "der Unwandelbarkeit"), # Unwandlung?
+    dekliniere_substantiv("NOUN_AMULET_OF_REFLECTION", "Amulett", "es", "Amulett", "e", "neutrum", "", "der Spiegelung"),
     #dekliniere_substantiv("NOUN_AMULET_OF_MAGICAL_BREATHING" "magischer Lebensodem", "magischer Odem" ?
     dekliniere_substantiv("NOUN_AMULET_OF_YENDOR", "Amulett", "es", "Amulett", "e", "neutrum", "", 
                           "von Yendor"),
