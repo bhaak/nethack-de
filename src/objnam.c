@@ -279,7 +279,7 @@ register struct obj *obj;
 	    case VENOM_CLASS:
 	    case TOOL_CLASS:
 		if (typ == LENSES)
-			Strcpy(buf, "pair of ");
+			Strcpy(buf, "NOUN_PAAR NUMERUS_PLURAL ");
 
 		if (!obj->dknown)
 			Strcat(buf, dn ? dn : actualn);
