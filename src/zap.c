@@ -2567,8 +2567,8 @@ register const char *force;		/* usually either "." or "!" */
 	if((!cansee(bhitpos.x,bhitpos.y) && !canspotmon(mtmp) &&
 	     !(u.uswallow && mtmp == u.ustuck))
 	   || !flags.verbose)
-	    pline("%s %s it.", The(str), vtense(str, "hit"));
-	else pline("%s %s %s%s", The(str), vtense(str, "hit"),
+	    pline("SUBJECT %s %s OBJECT NOUN_IT.", The(str), vtense(str, "VERB_HIT"));
+	else pline("SUBJECT %s %s OBJECT %s%s", The(str), vtense(str, "VERB_HIT"),
 		   mon_nam(mtmp), force);
 }
 
@@ -2577,10 +2577,10 @@ miss(str,mtmp)
 register const char *str;
 register struct monst *mtmp;
 {
-	pline("%s %s %s.", The(str), vtense(str, "miss"),
+	pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"),
 	      ((cansee(bhitpos.x,bhitpos.y) || canspotmon(mtmp))
 	       && flags.verbose) ?
-	      mon_nam(mtmp) : "it");
+	      mon_nam(mtmp) : "NOUN_IT");
 }
 #endif /*OVL0*/
 #ifdef OVL1

@@ -411,6 +411,7 @@ def ausgabe_verbs
     konjugiere_verb("VERB_KILL","töte"),
     konjugiere_verb("VERB_TOUCH","berühr"),
     konjugiere_verb("VERB_SCHLEUDERN","schleuder"),
+    konjugiere_verb("VERB_ZERSPRINGEN","zerspring"),
     "",
     "/* unregelmässige Verben */",
     Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
@@ -439,6 +440,7 @@ def ausgabe_verbs
     Verb.new("VERB_MOECHTEST", "", "", ["möchtest", "möchte", "möchtet","möchten"]),
     "",
     Verb.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
+    Verb.new("VERB_ZERBRECHEN", "", "", ["zerbrichst", "zerbricht", "zerbrecht", "zerbrechen"]),
   ].each { |v|   
     if v.is_a? String then
       puts v

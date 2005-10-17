@@ -1149,7 +1149,7 @@ struct monst *mon;
        an arrow just landing short of any target (no message in that case),
        so will realize that there is a valid target here anyway. */
     if (!canseemon(mon) || (mon->m_ap_type && mon->m_ap_type != M_AP_MONSTER))
-	pline("SUBJECT %s VERB_MISS.OBJECT ", The(missile));
+	pline("SUBJECT %s VERB_HIT nicht.", The(missile));
     else
 	miss(missile, mon);
     if (!rn2(3)) wakeup(mon);
@@ -1643,7 +1643,7 @@ boolean in_view;
 {
 	const char *to_pieces;
 
-	to_pieces = "";
+	to_pieces = "VERB_ZERBRECHEN";
 	switch (obj->oclass == POTION_CLASS ? POT_WATER : obj->otyp) {
 		default: /* glass or crystal wand */
 		    if (obj->oclass != WAND_CLASS)
@@ -1656,13 +1656,16 @@ boolean in_view;
 		case EXPENSIVE_CAMERA:
 #endif
 			to_pieces = " into a thousand pieces";
+			to_pieces = "VERB_ZERSPRINGEN in tausend Stücke";
 			/*FALLTHRU*/
 		case POT_WATER:		/* really, all potions */
 			if (!in_view)
-			    You_hear("%s shatter!", something);
+			    //You_hear("%s shatter!", something);
+			    You_hear("%s zerbrechen!", something);
 			else
-			    pline("%s shatter%s%s!", Doname2(obj),
-				(obj->quan==1) ? "s" : "", to_pieces);
+			    //pline("%s shatter%s%s!", Doname2(obj),
+				//(obj->quan==1) ? "s" : "", to_pieces);
+			    pline("%s %s!", Doname2(obj), to_pieces);
 			break;
 		case EGG:
 		case MELON:
