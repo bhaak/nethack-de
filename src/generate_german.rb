@@ -872,11 +872,11 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_FEDORA"
     #dekliniere_substantiv("NOUN_CORNUTHAUM"
     #dekliniere_substantiv("NOUN_DUNCE_CAP" # Narrenkappe, Eselmütze
-    #dekliniere_substantiv("NOUN_DENTED_POT"
-    #dekliniere_substantiv("NOUN_HELMET"
+    #dekliniere_substantiv("NOUN_DENTED_POT" # verbeulter Topf
+    #dekliniere_substantiv("NOUN_HELMET" # Helm
     #dekliniere_substantiv("NOUN_HELM_OF_BRILLIANCE"
     #dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT" # Helm der entgegengesetzten Gesinnung
-    #dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY" # Infravisionshelm?
+    #dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY" # Helm der Telepathie
     dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALE_MAIL", "Graudrachen-Schuppenpanzer", "s", "Graudrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALE_MAIL", "Silberdrachen-Schuppenpanzer", "s", "Silberdrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALE_MAIL", "Glanzdrachen-Schuppenpanzer", "s", "Glanzdrachen-Schuppenpanzer", "", "maskulin"),
@@ -898,8 +898,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GREEN_DRAGON_SCALES", "Gründrachen-Schuppe", "", "Gründrachen-Schuppe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_YELLOW_DRAGON_SCALES", "Gelbdrachen-Schuppe", "", "Gelbdrachen-Schuppe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_PLATE_MAIL", "Plattenpanzer",  "s", "Plattenpanzer", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_CRYSTAL_PLATE_MAIL"
-    #dekliniere_substantiv("NOUN_BRONZE_PLATE_MAIL"
+    #dekliniere_substantiv("NOUN_CRYSTAL_PLATE_MAIL" # Kristallplattenpanzer, kristallener Plattenpanzer, Kristallpanzer
+    #dekliniere_substantiv("NOUN_BRONZE_PLATE_MAIL"  # Bronzeplattenpanzer, bronzener Plattenpanzer, Bronzepanzer
     dekliniere_substantiv("NOUN_SPLINT_MAIL", "Schienenpanzer",  "s", "Schienenpanzer", "", "maskulin"),
     # dekliniere_substantiv("NOUN_BANDED_MAIL", "Spangenharnisch",  "s", "Spangenharnisch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_BANDED_MAIL", "Bänderpanzer",  "s", "Bänderpanzer", "", "maskulin"),
@@ -920,12 +920,12 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ORCISH_CLOAK", "Orkmantel", "s", "Orkmäntel", "", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_CLOAK", "Zwergenmantel", "s", "Zwergenmäntel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_OILSKIN_CLOAK"
-    #dekliniere_substantiv("NOUN_ROBE"
-    #dekliniere_substantiv("NOUN_ALCHEMY_SMOCK"
-    #dekliniere_substantiv("NOUN_LEATHER_CLOAK"
-    #dekliniere_substantiv("NOUN_CLOAK_OF_PROTECTION"
-    #dekliniere_substantiv("NOUN_CLOAK_OF_INVISIBILITY"
-    #dekliniere_substantiv("NOUN_CLOAK_OF_MAGIC_RESISTANCE"
+    #dekliniere_substantiv("NOUN_ROBE"                      # Robe, Talar
+    #dekliniere_substantiv("NOUN_ALCHEMY_SMOCK"a            # Alchemistenkittel
+    #dekliniere_substantiv("NOUN_LEATHER_CLOAK"             # Ledermantel
+    #dekliniere_substantiv("NOUN_CLOAK_OF_PROTECTION"       # Umhang des Schutzes
+    #dekliniere_substantiv("NOUN_CLOAK_OF_INVISIBILITY"     # Umhang der Unsichtbarkeit
+    #dekliniere_substantiv("NOUN_CLOAK_OF_MAGIC_RESISTANCE" # Umhang der Magieresistenz
     #dekliniere_substantiv("NOUN_CLOAK_OF_DISPLACEMENT"
     #dekliniere_substantiv("NOUN_SMALL_SHIELD"
     dekliniere_substantiv("NOUN_ELVEN_SHIELD", "Elbenschild", "es", "Elbenschild", "e", "maskulin"),
@@ -951,11 +951,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEVITATION_BOOTS", "Flugschuh", "es", "Fluschuh", "e", "feminin"),
     "",
     "/* Armor, unidentified */",
-    #dekliniere_substantiv("NOUN_LEATHER_HAT" 
+    #dekliniere_substantiv("NOUN_LEATHER_HAT"  # Lederhut
     #dekliniere_substantiv("NOUN_IRON_SKULL_CAP"
     #dekliniere_substantiv("NOUN_HARD_HAT"
     #dekliniere_substantiv("NOUN_CONICAL_HAT"
-    #dekliniere_substantiv("NOUN_PLUMED_HELMET" # Normannehelm?
+    #dekliniere_substantiv("NOUN_PLUMED_HELMET" # Normannenhelm?
     #dekliniere_substantiv("NOUN_ETCHED_HELMET" # Kreuzhelm?
     #dekliniere_substantiv("NOUN_CRESTED_HELMET" # Wikingerhelm
     #dekliniere_substantiv("NOUN_VISORED_HELMET" # Visierhelm
@@ -967,9 +967,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_SLIPPERY_CLOAK"
     #dekliniere_substantiv("NOUN_APRON"          # Schürze
     #dekliniere_substantiv("NOUN_TATTERED_CAPE"
-    #dekliniere_substantiv("NOUN_OPERA_CLOAK"
+    #dekliniere_substantiv("NOUN_OPERA_CLOAK" # Opernumhang
     #dekliniere_substantiv("NOUN_ORNAMENTAL_COPE"
-    #dekliniere_substantiv("NOUN_PIECE_OF_CLOTH"
+    #dekliniere_substantiv("NOUN_PIECE_OF_CLOTH" # ein Stueck Stoff, ein Stueck Tuch
     #dekliniere_substantiv("NOUN_BLUE_AND_GREEN_SHIELD"
     #dekliniere_substantiv("NOUN_WHITE_HANDED_SHIELD"
     #dekliniere_substantiv("NOUN_RED_EYED_SHIELD"
@@ -1608,14 +1608,14 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_HOBGOBLIN"
     dekliniere_substantiv("NOUN_ORC","Ork","s","Ork","s","maskulin"),
     dekliniere_substantiv("NOUN_HILL_ORC","Hügelork","s","Hügelork","s","maskulin"),
-    #dekliniere_substantiv("NOUN_MORDOR_ORC"
-    #dekliniere_substantiv("NOUN_URUK_HAI"
+    #dekliniere_substantiv("NOUN_MORDOR_ORC"    # Mordorork
+    #dekliniere_substantiv("NOUN_URUK_HAI"      # Uruk Hai
     #dekliniere_substantiv("NOUN_ORC_SHAMAN"
     #dekliniere_substantiv("NOUN_ORC_CAPTAIN"
     #dekliniere_substantiv("NOUN_ROCK_PIERCER"
     #dekliniere_substantiv("NOUN_IRON_PIERCER"
     #dekliniere_substantiv("NOUN_GLASS_PIERCER"
-    #dekliniere_substantiv("NOUN_ROTHE"
+    #dekliniere_substantiv("NOUN_ROTHE"         # Rothé
     #dekliniere_substantiv("NOUN_MUMAK"
     #dekliniere_substantiv("NOUN_LEOCROTTA"
     #dekliniere_substantiv("NOUN_WUMPUS"
@@ -1699,7 +1699,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GREEN_MOLD", "Grünschimmel", "s", "Grünschimmel", "", "maskulin"),
     dekliniere_substantiv("NOUN_RED_MOLD", "Rotschimmel", "s", "Rotschimmel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_SHRIEKER" kreischen, schreien: Kreischer, Schreier, Schreihals, Krakeeler
-    #dekliniere_substantiv("NOUN_VIOLET_FUNGUS"
+    #dekliniere_substantiv("NOUN_VIOLET_FUNGUS" # Violetter Pilz
     dekliniere_substantiv("NOUN_GNOME", "Gnom", "en", "Gnom", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_GNOME_LORD","Gnomenfürst","en","Gnomenfürst","en","maskulin", "en"),
     #dekliniere_substantiv("NOUN_GNOMISH_WIZARD"
