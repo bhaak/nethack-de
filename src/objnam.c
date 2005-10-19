@@ -415,8 +415,13 @@ register struct obj *obj;
 			Strcat(buf, " PARTIKEL_CALLED ");
 			Strcat(buf, un);
 		} else if (ocl->oc_magic) {
-			Strcat(buf, " labeled ");
+			Strcat(buf, " PARTIKEL_LABELED ");
+			Strcat(buf, "\"");
+			//Strcat(buf, "»");
 			Strcat(buf, dn);
+			//Strcat(buf, "«");
+			Strcat(buf, "\"");
+			//printf("buf: %s\n", buf);
 		} else {
 			Strcpy(buf, dn);
 			Strcat(buf, " NOUN_SCROLL");

@@ -702,8 +702,9 @@ def ausgabe_nouns
     "",
     unregelmaessiges_wort("NOUN_OOPS",  "Hoppla",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
     "",
-    unregelmaessiges_wort("PARTIKEL_NAMED",  "genannt",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # geannt, namens
-    unregelmaessiges_wort("PARTIKEL_CALLED", "bezeichnet mit", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]) # bezeichnet mit, genannt
+    unregelmaessiges_wort("PARTIKEL_NAMED",   "namens", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # geannt, namens
+    unregelmaessiges_wort("PARTIKEL_CALLED",  "genannt", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # bezeichnet mit, genannt
+    unregelmaessiges_wort("PARTIKEL_LABELED", "beschriftet", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]) # bezeichnet mit, genannt
   ].each { |n|
     if n.is_a? String then
       puts n
@@ -969,7 +970,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_OPERA_CLOAK", "Opernumhang", "es", "Opernumhäng", "e", "maskulin", "s"),
     #dekliniere_substantiv("NOUN_ORNAMENTAL_COPE"
     #dekliniere_substantiv("NOUN_PIECE_OF_CLOTH" # ein Stueck Stoff, ein Stueck Tuch
-    #dekliniere_substantiv("NOUN_BLUE_AND_GREEN_SHIELD"
+    #dekliniere_nominalphrase("NOUN_BLUE_AND_GREEN_SHIELD", ["blau", "und grün"], "Schild", "es", "Schild", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_WHITE_HANDED_SHIELD"
     #dekliniere_substantiv("NOUN_RED_EYED_SHIELD"
     #dekliniere_substantiv("NOUN_LARGE_ROUND_SHIELD"
@@ -991,7 +992,7 @@ def ausgabe_nouns
     "",
     "/* Wands, identified */",
     dekliniere_substantiv("NOUN_WAND_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),
-    #dekliniere_substantiv("NOUN_WAND_SECRET_DOOR_DETECTION",
+    #dekliniere_substantiv("NOUN_WAND_SECRET_DOOR_DETECTION", # Geheimtürerspürung?
     #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monstererschaffung", "", "Monstererschaffung", "en", "feminin"),
     #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterherbeirufung",
     dekliniere_substantiv("NOUN_WAND_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),
@@ -1227,17 +1228,17 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_RESTORE_ABILITY"
     dekliniere_substantiv("NOUN_POT_CONFUSION", "Verwirrung", "", "Verwirrung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_POT_PARALYSIS" # der Lähmung, der Paralyse
+    dekliniere_substantiv("NOUN_POT_PARALYSIS", "Lähmung", "", "Lähmung", "en", "feminin", "s"), # der Lähmung, der Paralyse
     dekliniere_substantiv("NOUN_POT_SPEED", "Hast", "", "Hast", "en", "feminin"),
     dekliniere_substantiv("NOUN_POT_LEVITATION", "Levitation", "", "Levitation", "en", "feminin"), 
-    #dekliniere_substantiv("NOUN_POT_HALLUCINATION" # der Halluzination
+    dekliniere_substantiv("NOUN_POT_HALLUCINATION", "Halluzination", "", "Halluzination", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_INVISIBILITY", "Unsichtbarkeit", "", "Unsichtbarkeit", "en", "feminin"),
     #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE" # Enthüllung des Unsichtbaren
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
     dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständig", "Heilung", "", "Heilung", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL"
-    dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),     # Erleuchtung, Klarheit?
+    dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"), # Erleuchtung, Klarheit?
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION" # Monstererspüren
     #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"  # Objekterspürung, Objekterspürens
     #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"       # Energiegewinnung?
@@ -1282,78 +1283,77 @@ def ausgabe_nouns
     "/* Scrolls, identified */",
     #dekliniere_substantiv("NOUN_SCR_ENCHANT_ARMOR"   # Schriftrolle der verzauberten Rüstung?
     #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"   # Schriftrolle der zerstörten Rüstung?
-    #dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER"
+    dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER", "Monsterverwirrung", "", "Monsterverwirrung", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER"   
     #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE"   # Schriftrolle des gebannten Fluches, des Fluchbannens, der Fluchbannung
     #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"  # Schriftrolle der verzauberten Waffe?
-    #dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER" # Monsterbeschwörung
-    #dekliniere_substantiv("NOUN_SCR_TAMING"         # Zähmens, Zähmung
-    #dekliniere_substantiv("NOUN_SCR_GENOCIDE"       # Genozid
-    #dekliniere_substantiv("NOUN_SCR_LIGHT"          # Licht
-    #dekliniere_substantiv("NOUN_SCR_TELEPORTATION"  # Teleportation
-    #dekliniere_substantiv("NOUN_SCR_GOLD_DETECTION" # Golderspüren
-    #dekliniere_substantiv("NOUN_SCR_FOOD_DETECTION" # Nahrungerspüren
-    #dekliniere_substantiv("NOUN_SCR_IDENTIFY"       # Identifizierung
-    #dekliniere_substantiv("NOUN_SCR_MAGIC_MAPPING"  # magisches Kartieren
-    #dekliniere_substantiv("NOUN_SCR_AMNESIA"        # Amnesie
-    #dekliniere_substantiv("NOUN_SCR_FIRE"           # Feuer
-    #dekliniere_substantiv("NOUN_SCR_EARTH"          # Erde
-    #dekliniere_substantiv("NOUN_SCR_PUNISHMENT"     # Bestrafung
+    dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER", "Monsterbeschwörung", "", "", "en", "feminin", "s"),
+    dekliniere_substantiv("NOUN_SCR_TAMING", "Zähmung", "", "Zähmung", "en", "feminin", "s"), # Zähmens, Zähmung
+    dekliniere_substantiv("NOUN_SCR_GENOCIDE", "Genozid", "es", "", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_LIGHT", "Licht", "es", "", "er", "neutrum"), 
+    dekliniere_substantiv("NOUN_SCR_TELEPORTATION", "Teleportation", "", "", "en", "feminin", "s"),
+    dekliniere_substantiv("NOUN_SCR_GOLD_DETECTION", "Golderspürung", "", "", "", "feminin"),
+    dekliniere_substantiv("NOUN_SCR_FOOD_DETECTION", "Nahrungerspürung", "", "", "", "feminin"),
+    dekliniere_substantiv("NOUN_SCR_IDENTIFY", "Identifizierung", "", "", "en", "feminin", "s"),
+    dekliniere_nominalphrase("NOUN_SCR_MAGIC_MAPPING", "magisch", "Kartieren", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_SCR_AMNESIA", "Amnesie", "", "", "en", "feminin"),
+    dekliniere_substantiv("NOUN_SCR_FIRE", "Feuer", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_SCR_EARTH", "Erde", "", "", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_SCR_PUNISHMENT", "Bestrafung", "", "", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_SCR_CHARGING"       # Laden, Ladungs??
     #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD"
     #dekliniere_substantiv("NOUN_SCR_MAIL"
     #dekliniere_substantiv("NOUN_SCR_BLANK_PAPER"
     "",
     "/* Scrolls, unidentified */",
-    #dekliniere_substantiv("NOUN_SCR_ZELGO_MER"
-    #dekliniere_substantiv("NOUN_SCR_JUYED_AWK_YACC"
-    #dekliniere_substantiv("NOUN_SCR_NR_9"
-    #dekliniere_substantiv("NOUN_SCR_XIXAXA_XOXAXA_XUXAXA"
-    #dekliniere_substantiv("NOUN_SCR_PRATYAVAYAH"
-    #dekliniere_substantiv("NOUN_SCR_DAIYEN_FOOELS"
-    #dekliniere_substantiv("NOUN_SCR_LEP_GEX_VEN_ZEA"
-    #dekliniere_substantiv("NOUN_SCR_PRIRUTSENIE"
-    #dekliniere_substantiv("NOUN_SCR_ELBIB_YLOH"      # "HEILIGE SCHRIFT" TFIRHCS EGILIEH"
-    #dekliniere_substantiv("NOUN_SCR_VERR_YED_HORRE"
-    #dekliniere_substantiv("NOUN_SCR_VENZAR_BORGAVVE"
-    #dekliniere_substantiv("NOUN_SCR_THARR"
-    #dekliniere_substantiv("NOUN_SCR_YUM_YUM"
-    #dekliniere_substantiv("NOUN_SCR_KERNOD_WEL"
-    #dekliniere_substantiv("NOUN_SCR_ELAM_EBOW"
-    #dekliniere_substantiv("NOUN_SCR_DUAM_XNAHT"
-    #dekliniere_substantiv("NOUN_SCR_ANDOVA_BEGARIN"
-    #dekliniere_substantiv("NOUN_SCR_KIRJE"
-    #dekliniere_substantiv("NOUN_SCR_VE_FORBRYDERNE"
-    #dekliniere_substantiv("NOUN_SCR_HACKEM_MUCHE"
-    #dekliniere_substantiv("NOUN_SCR_VELOX_NEB"
-    #dekliniere_substantiv("NOUN_SCR_FOOBIE_BLETCH"
-    #dekliniere_substantiv("NOUN_SCR_TEMOV"
-    #dekliniere_substantiv("NOUN_SCR_GARVEN_DEH"
-    #dekliniere_substantiv("NOUN_SCR_READ_ME", "LIES MICH", "", "LIES MICH", "", "maskulin"),
-    #unregelmaessiges_wort("NOUN_SCR_READ_ME",  "LIES MICH",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
-    #dekliniere_substantiv("NOUN_SCR_STAMPED"
-    #dekliniere_substantiv("NOUN_SCR_UNLABELED"
+    dekliniere_substantiv("NOUN_SCR_ZELGO_MER", "ZELGO MER", "", "ZELGO MER", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_JUYED_AWK_YACC", "JUYED AWK YACC", "", "JUYED AWK YACC", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_NR_9", "NR 9", "", "NR 9", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_XIXAXA_XOXAXA_XUXAXA", "XIXAXA XOXAXA XUXAXA", "", "XIXAXA XOXAXA XUXAXA", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_PRATYAVAYAH", "PRATYAVAYAH", "", "PRATYAVAYAH", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_DAIYEN_FOOELS", "DAIYEN FOOELS", "", "DAIYEN FOOELS", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_LEP_GEX_VEN_ZEA", "LEP GEX VEN ZEA", "", "LEP GEX VEN ZEA", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_PRIRUTSENIE", "PRIRUTSENIE", "", "PRIRUTSENIE", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_ELBIB_YLOH",  "TFIRHCS EGILIEH", "", "TFIRHCS EGILIEH", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_VERR_YED_HORRE", "VERR YED HORRE", "", "VERR YED HORRE", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_VENZAR_BORGAVVE", "VENZAR BORGAVVE", "", "VENZAR BORGAVVE", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_THARR", "THARR", "", "THARR", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_YUM_YUM", "MJAM MJAM", "", "MJAM MJAM", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_KERNOD_WEL", "KERNOD WEL", "", "KERNOD WEL", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_ELAM_EBOW", "ELAM EBOW", "", "ELAM EBOW", "fremder", "maskulin"),
+    #dekliniere_substantiv("NOUN_SCR_DUAM_XNAHT", "", "", "", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_ANDOVA_BEGARIN", "ANDOVA BEGARIN", "", "ANDOVA BEGARIN", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_KIRJE", "KIRJE", "", "KIRJE", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_VE_FORBRYDERNE", "VE FORBRYDERNE", "", "VE FORBRYDERNE", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_HACKEM_MUCHE", "HACKEM MUCHE", "", "HACKEM MUCHE", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_VELOX_NEB", "VELOX NEB", "", "VELOX NEB", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_FOOBIE_BLETCH", "FOOBIE BLETCH", "", "FOOBIE BLETCH", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_TEMOV", "TEMOV", "", "TEMOV", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_GARVEN_DEH", "GARVEN DEH", "", "GARVEN DEH", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_READ_ME", "LIES MICH", "", "LIES MICH", "fremder", "maskulin"),
+    #dekliniere_substantiv("NOUN_SCR_STAMPED", "", "", "", "", "maskulin"),
+    #dekliniere_substantiv("NOUN_SCR_UNLABELED", "", "", "", "", "maskulin"),
     "",
     "/* Spellbooks, identified */",
-    dekliniere_substantiv("NOUN_SPE_DIG", "Graben", "s", "", "", "neutrum"), # Graben
+    dekliniere_substantiv("NOUN_SPE_DIG", "Graben", "s", "", "", "neutrum"),
     dekliniere_nominalphrase("NOUN_SPE_MAGIC_MISSILE", "magisch", "Geschoss", "es", "Geschoss", "e", "neutrum"), # magische Geschosse
-    dekliniere_substantiv("NOUN_SPE_FIREBALL", "Feuerball", "es", "Feuerbäll", "e", "maskulin"),  # Feuerball
-    dekliniere_substantiv("NOUN_SPE_CONE_OF_COLD", "Kältekegel", "s", "Kältekegel", "", "maskulin"),     # Kältekegel
-    dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),            # Schlaf
-    dekliniere_substantiv("NOUN_SPE_FINGER_OF_DEATH", "Finger", "s", "Finger", "", "maskulin", "", "des Todes"),  # Finger des Todes
-    dekliniere_substantiv("NOUN_SPE_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),            # Licht
+    dekliniere_substantiv("NOUN_SPE_FIREBALL", "Feuerball", "es", "Feuerbäll", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SPE_CONE_OF_COLD", "Kältekegel", "s", "Kältekegel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SPE_FINGER_OF_DEATH", "Finger", "s", "Finger", "", "maskulin", "", "des Todes"),
+    dekliniere_substantiv("NOUN_SPE_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),
     dekliniere_substantiv("NOUN_SPE_DETECT_MONSTERS", "Erspüren", "s", "", "", "neutrum", "", "von Monstern"),  # Monster finden, Monster erspüren
-    dekliniere_substantiv("NOUN_SPE_HEALING", "Linderung", "", "", "", "feminin", "s"),          # Linderung 
-    dekliniere_substantiv("NOUN_SPE_KNOCK", "Klopfen", "s", "", "", "neutrum"),            # Klopfens
+    dekliniere_substantiv("NOUN_SPE_HEALING", "Linderung", "", "", "", "feminin", "s"),
+    dekliniere_substantiv("NOUN_SPE_KNOCK", "Klopfen", "s", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_SPE_FORCE_BOLT", "Kraftstoß", "es", "Kraftstöß", "e", "maskulin"), # Kraftstoss, Kraftschlag?, Energiestoss?
-    dekliniere_substantiv("NOUN_SPE_CONFUSE_MONSTER", "Monsterverwirrung", "", "Monsterverwirrung", "en", "feminin", "s"),  # Monsterverwirrung
+    dekliniere_substantiv("NOUN_SPE_CONFUSE_MONSTER", "Monsterverwirrung", "", "Monsterverwirrung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SPE_CURE_BLINDNESS", "Kurieren", "s", "", "", "neutrum", "", "von Blindheit"), # Blindheitheilen
     dekliniere_substantiv("NOUN_SPE_DRAIN_LIFE", "Lebensentzug", "es", "", "e", "maskulin", "s"), # Lebensentzug, Blutsauger?
     dekliniere_substantiv("NOUN_SPE_SLOW_MONSTER", "Verlangsamung", "", "Verlangsamung", "en", "feminin", "s"), # Verlangsamung
     dekliniere_substantiv("NOUN_SPE_WIZARD_LOCK", "Zauberverschluss", "es", "Zauberverschlüss", "e", "maskulin"), # Zauberverschluss
     dekliniere_substantiv("NOUN_SPE_CREATE_MONSTER", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"), # Monsterbeschwörung
     dekliniere_substantiv("NOUN_SPE_DETECT_FOOD", "Erspüren", "s", "", "", "neutrum", "", "von Nahrung"), # Esswaren, Speise, Lebensmittel, Essen erspüren
-    dekliniere_substantiv("NOUN_SPE_CAUSE_FEAR", "Furcht", "", "", "en", "feminin"),     # Furcht
+    dekliniere_substantiv("NOUN_SPE_CAUSE_FEAR", "Furcht", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_SPE_CLAIRVOYANCE", "Hellsehen", "s", "", "", "neutrum"), # Hellsehen, Hellseherei?, Prophetie?
     dekliniere_substantiv("NOUN_SPE_CURE_SICKNESS", "Kurieren", "s", "", "", "neutrum", "", "von Erkrankungen"), # Krankheit/Erkrankung heilen/kurieren
     dekliniere_substantiv("NOUN_SPE_CHARM_MONSTER", "Monsterbezauberung", "", "Monsterbezauberung", "en", "feminin", "s"),    # Monster bezaubern
@@ -1734,10 +1734,10 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_GUARDIAN_NAGA_HATCHLING"
-    #dekliniere_substantiv("NOUN_RED_NAGA"
-    #dekliniere_substantiv("NOUN_BLACK_NAGA"
-    #dekliniere_substantiv("NOUN_GOLDEN_NAGA"
-    #dekliniere_substantiv("NOUN_GUARDIAN_NAGA"
+    #dekliniere_substantiv("NOUN_RED_NAGA" #Rotnaga, oder rote Naga
+    #dekliniere_substantiv("NOUN_BLACK_NAGA" # Schwarznaga
+    #dekliniere_substantiv("NOUN_GOLDEN_NAGA" # Goldnaga oder goldene Naga
+    #dekliniere_substantiv("NOUN_GUARDIAN_NAGA" # Wächternaga, Hüternaga
     dekliniere_substantiv("NOUN_OGRE", "Oger", "s", "Oger", "", "maskulin"),
     dekliniere_substantiv("NOUN_OGRE_LORD","Ogerfürst","en","Ogerfürst","en","maskulin", "en"),
     dekliniere_substantiv("NOUN_OGRE_KING","Ogerkönig","es","Ogerkönig","e","maskulin"),

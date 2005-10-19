@@ -648,6 +648,8 @@ char* german(const char *line) {
 					append(output, "mit");
 					c_casus = nominativ; /* FIX ME: mit + Dativ-E hört sich das sehr seltsam an. */ 
 				}
+			} else if (strcmp("PARTIKEL_LABELED", tmp)==0) {
+				insert_char = 0;
 			} else {
 				append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 			}

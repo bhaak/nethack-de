@@ -411,6 +411,27 @@ START_TEST (test_nominal_phrasen) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_scrolls) {
+	char *text[][2] = {
+		{"n - 2 NOUN_SCROLLs PARTIKEL_OF NOUN_SCR_FIRE",
+		 "n - 2 Schriftrollen des Feuers"},
+		 //"n - 2 Schriftrollen \"Feuer\""},
+		{"m - ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_LIGHT PARTIKEL_NAMED unbekannt",
+		 "m - eine Schriftrolle des Lichtes namens unbekannt"},
+		{"m - ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_LABELED \"NOUN_SCR_ELBIB_YLOH\" PARTIKEL_NAMED unbekannt",
+		 "m - eine Schriftrolle \"TFIRHCS EGILIEH\" namens unbekannt"},
+		{"p - ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_CALLED teuer",
+		 "p - eine Schriftrolle genannt teuer"},
+
+		{"q - ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_LABELED \"NOUN_SCR_READ_ME\".",
+		 "q - eine Schriftrolle \"LIES MICH\"."},
+		{"r - 3 NOUN_SCROLLs PARTIKEL_LABELED \"NOUN_SCR_READ_ME\".",
+		 "r - 3 Schriftrollen \"LIES MICH\"."}
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
 Suite *test_suite(void)
 {
   Suite *s = suite_create("all tests");
@@ -438,6 +459,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_inventory_names);
 	tcase_add_test(tc_core, test_casus_and_modifier);
 	tcase_add_test(tc_core, test_rings);
+	tcase_add_test(tc_core, test_scrolls);
 
   return s;
 }
