@@ -1827,9 +1827,16 @@ boolean from_user;
 	(void)mungspaces(bp);
 	/* allow wishing for "nothing" to preserve wishless conduct...
 	   [now requires "wand of nothing" if that's what was really wanted] */
-	if (!strcmpi(bp, "nothing") || !strcmpi(bp, "nil") ||
+	if (!strcmpi(bp, "nothing") ||
+			!strcmpi(bp, "nil") ||
 	    !strcmpi(bp, "none") || 
-			!strcmpi(bp, "nichts")) return no_wish;
+	    !strcmpi(bp, "nada") ||   // russki
+	    !strcmpi(bp, "rien") ||   // francais
+	    !strcmpi(bp, "niente") || // italiano
+	    !strcmpi(bp, "nüt") ||    // schwizerdütsch
+	    !strcmpi(bp, "nix") ||    // deutsch ugs
+			!strcmpi(bp, "nichts"))   // deutsch
+					return no_wish;
 	/* save the [nearly] unmodified choice string */
 	Strcpy(fruitbuf, bp);
 
@@ -1878,8 +1885,8 @@ boolean from_user;
 		} else if (!strncmpi(bp, "invisible ", l=10)) {
 			isinvisible = 1;
 #endif
-		} else if (!strncmpi(bp, "rustproof ", l=10) ||
-			   !strncmpi(bp, "erodeproof ", l=11) ||
+		} else if (!strncmpi(bp, "rustproof ", l=10) || 
+			   !strncmpi(bp, "erodeproof ", l=11) || 
 			   !strncmpi(bp, "corrodeproof ", l=13) ||
 			   !strncmpi(bp, "fixed ", l=6) ||
 			   !strncmpi(bp, "fireproof ", l=10) ||
