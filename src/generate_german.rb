@@ -785,7 +785,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BATTLE_AXE", "Streitaxt", "", "Streitäxt", "e", "feminin"),
     dekliniere_substantiv("NOUN_SHORT_SWORD", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_ELVEN_SHORT_SWORD", "elbisch", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
-    dekliniere_nominalphrase("NOUN_ORCISH_SHORT_SWORD", "orksch", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
+    dekliniere_nominalphrase("NOUN_ORCISH_SHORT_SWORD", "orkisch", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_DWARVISH_SHORT_SWORD", "Zwergen-Kurzschwert", "es", "Zwergen-Kurzschwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_SCIMITAR", "Szimitar", "", "Szimitar", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SILVER_SABER", "Silbersäbel", "s", "Silbersäbel", "", "maskulin"),
@@ -828,7 +828,7 @@ def ausgabe_nouns
     "",
     "/* Weapons, unidentified */",
     dekliniere_substantiv("NOUN_RUNED_ARROW", "Runenpfeil", "es", "Runenpfeil", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_CRUDE_ARROW"
+    #dekliniere_substantiv("NOUN_CRUDE_ARROW" # klobig, wuchtig, unfoermig, primitiv,  grobschlaechtig?, massig, plumb, 
     dekliniere_substantiv("NOUN_BAMBOO_ARROW", "Bambuspfeil", "es", "Bambuspfeil", "e", "maskulin"),
     dekliniere_substantiv("NOUN_THROWING_STAR", "Wurfstern", "es", "Wurfstern", "e", "maskulin"),
     dekliniere_substantiv("NOUN_RUNED_SPEAR", "Runenspeer", "es", "Runenspeer", "e", "maskulin"),
@@ -955,8 +955,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_IRON_SKULL_CAP"
     #dekliniere_substantiv("NOUN_HARD_HAT"
     #dekliniere_substantiv("NOUN_CONICAL_HAT"
-    #dekliniere_substantiv("NOUN_PLUMED_HELMET" # Normannenhelm?
-    #dekliniere_substantiv("NOUN_ETCHED_HELMET" # Kreuzhelm?
+    #dekliniere_substantiv("NOUN_PLUMED_HELMET" # Normannenhelm?, Spangenhelm?, Topfhelm?
+    #dekliniere_substantiv("NOUN_ETCHED_HELMET" # Kreuzhelm?, Bronzehelm?, Barbuta?, Eisenhut?
     dekliniere_substantiv("NOUN_CRESTED_HELMET", "Wikingerhelm", "es", "Wikingerhelm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_VISORED_HELMET", "Visierhelm", "es", "Visierhelm", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_CRUDE_CHAIN_MAIL"
@@ -1177,7 +1177,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LAMP","Lampe","","Lampe","en","feminin"),
     "/* FIX ME: NOUN_LOOKING_GLASS should be different from NOUN_MIRROR */",
     dekliniere_substantiv("NOUN_LOOKING_GLASS","Spiegel","","Spiegel","","maskulin"), # FIX ME
-    #dekliniere_substantiv("NOUN_GLASS_ORB","","","","","maskulin"),
+    #dekliniere_substantiv("NOUN_GLASS_ORB","","","","","maskulin"), # Glaskugel?
     dekliniere_substantiv("NOUN_WHISTLE","Pfeife","","Pfeife","en","feminin"),
     dekliniere_substantiv("NOUN_FLUTE","Flöte","","Flöte","en","feminin"),
     dekliniere_substantiv("NOUN_HORN","Horn","es","Hörn","er","neutrum"),
