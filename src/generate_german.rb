@@ -1653,9 +1653,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_XAN"
     dekliniere_nominalphrase("NOUN_YELLOW_LIGHT", "gelb", "Licht", "es", "Licht", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_BLACK_LIGHT", "schwarz", "Licht", "es", "Licht", "er", "neutrum"),
-    #dekliniere_substantiv("NOUN_ZRUTY"
+    dekliniere_substantiv("NOUN_ZRUTY", "Zruty", "s", "Zruty", "s", "maskulin"),
     dekliniere_substantiv("NOUN_COUATL", "Coatl", "", "Coatl", "fremder", "maskulin"),
-    #dekliniere_substantiv("NOUN_ALEAX"
+    dekliniere_substantiv("NOUN_ALEAX", "Aleax", "", "Aleax", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_ANGEL", "Engel", "s", "Engel", "", "maskulin"),
     dekliniere_substantiv("NOUN_KI_RIN", "Kirin", "s", "Kirin", "s", "neutrum"),
     dekliniere_substantiv("NOUN_ARCHON", "Archon", "s", "Archont", "en", "maskulin"),
