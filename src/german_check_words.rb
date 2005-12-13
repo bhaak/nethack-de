@@ -6,7 +6,7 @@ lines = file1.concat file2
 translated = []
 File.open("german.h") { |german| 
   translated = german.readlines.collect { |l|
-    if l =~ /\{"[^"]*", ("[A-Z_]+")/ then
+    if l =~ /\{"[^"]*", ("[A-Z0-9_]+")/ then
       $1
     end
   }.uniq
@@ -15,8 +15,8 @@ File.open("german.h") { |german|
 count = 0
 lines.each { |line|
   if line =~ /\#define.*NAM_.*(".*")/ then
-    if not translated.include? $1 then
-      puts $1+' nicht übersetzt!'
+    if translated.include? $1 then
+      puts $1#+' nicht übersetzt!'
       count += 1
     end
   end
