@@ -1120,7 +1120,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CHEST", "Truhe", "", "Truhe", "en", "feminin"),
     dekliniere_substantiv("NOUN_ICE_BOX", "Kühltruhe", "", "Kühltruhe", "en", "feminin"),
     dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_OILSKIN_SACK", 
+    #dekliniere_substantiv("NOUN_OILSKIN_SACK", # Wachstuch, Oilskin, Oelzeug, Regenhaut
     dekliniere_nominalphrase("NOUN_BAG_OF_HOLDING", "Nimmervoll", "Beutel","s","Beutel","","maskulin"),
     dekliniere_substantiv("NOUN_BAG_OF_TRICKS", "Trickbeutel", "s", "Trickbeutel","","maskulin"), 
     # dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
@@ -1571,7 +1571,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_LARGE_CAT", "groß", "Katze","","Katze","en","feminin","n"),
     dekliniere_substantiv("NOUN_TIGER","Tiger","s","Tiger","","maskulin"),
     dekliniere_substantiv("NOUN_GREMLIN", "Gremlin", "s", "Gremlin", "s", "maskulin"),
-    dekliniere_substantiv("NOUN_GARGOYLE", "Gargoyle", "s", "Gargoyle", "s", "maskulin"),
+    #dekliniere_substantiv("NOUN_GARGOYLE", "Gargoyle", "s", "Gargoyle", "s", "maskulin"), # Gargoyle?, Gargil?, Gargola?
     dekliniere_nominalphrase("NOUN_WINGED_GARGOYLE", "geflügelt", "Gargoyle", "s", "Gargoyle", "s", "maskulin"),
     dekliniere_substantiv("NOUN_HOBBIT", "Hobbit", "s", "Hobbit", "s", "maskulin"),
     dekliniere_substantiv("NOUN_DWARF","Zwerg","es","Zwerg","e","maskulin", "en"),
@@ -1608,15 +1608,15 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ORC","Ork","s","Ork","s","maskulin"),
     dekliniere_substantiv("NOUN_HILL_ORC","Hügelork","s","Hügelork","s","maskulin"),
     #dekliniere_substantiv("NOUN_MORDOR_ORC"    # Mordorork
-    #dekliniere_substantiv("NOUN_URUK_HAI"      # Uruk Hai
+    #dekliniere_substantiv("NOUN_URUK_HAI"      # Uruk-Hai
     #dekliniere_substantiv("NOUN_ORC_SHAMAN"
     #dekliniere_substantiv("NOUN_ORC_CAPTAIN"
     #dekliniere_substantiv("NOUN_ROCK_PIERCER"
     #dekliniere_substantiv("NOUN_IRON_PIERCER"
     #dekliniere_substantiv("NOUN_GLASS_PIERCER"
     #dekliniere_substantiv("NOUN_ROTHE"         # Rothé
-    #dekliniere_substantiv("NOUN_MUMAK"
-    #dekliniere_substantiv("NOUN_LEOCROTTA"
+    #dekliniere_substantiv("NOUN_MUMAK" # Olifant, Mûmak Mûmakil(pl)
+    #dekliniere_substantiv("NOUN_LEOCROTTA" # Leucrocotta? Leucrotta? Plinius 8.Buch der Natur
     #dekliniere_substantiv("NOUN_WUMPUS"
     #dekliniere_substantiv("NOUN_TITANOTHERE"
     #dekliniere_substantiv("NOUN_BALUCHITHERIUM"
@@ -1713,7 +1713,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TITAN", "Titane", "en", "Titan", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_MINOTAUR","Minotaurus","","Minotaur","en","maskulin"),
     #dekliniere_substantiv("NOUN_JABBERWOCK" # jammerwoch?
-    #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK"
+    #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK" # Vorpahljammerwoch?
     dekliniere_substantiv("NOUN_KEYSTONE_KOP", "Gendarm", "en", "Gendarmen", "en", "maskulin"), 
     dekliniere_substantiv("NOUN_KOP_SERGEANT", "Inspektor", "s", "Inspektor", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOP_LIEUTENANT", "Gruppeninspektor", "es", "Gruppeninspektor", "en", "maskulin", "en"),
@@ -1722,19 +1722,19 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_DEMILICH"
     #dekliniere_substantiv("NOUN_MASTER_LICH"
     #dekliniere_substantiv("NOUN_ARCH_LICH"
-    dekliniere_substantiv("NOUN_KOBOLD_MUMMY", "Koboldsmumie", "", "Koboldsmumie", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_GNOME_MUMMY", "Gnomenmumie", "", "Gnomenmumie", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_ORC_MUMMY", "Orkmumie", "", "Orkmumie", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_DWARF_MUMMY", "Zwergenmumie", "", "Zwergenmumie", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_ELF_MUMMY", "Elbenmumie", "", "Elbenmumie", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_HUMAN_MUMMY", "Menschenmumie", "", "Menschenmumie", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_ETTIN_MUMMY", "Ettinmumie", "", "Ettinmumie", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_GIANT_MUMMY", "Riesenmumie", "", "Riesenmumie", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_KOBOLD_MUMMY", "Koboldsmumie", "", "Koboldsmumie", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_GNOME_MUMMY", "Gnomenmumie", "", "Gnomenmumie", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_ORC_MUMMY", "Orkmumie", "", "Orkmumie", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_DWARF_MUMMY", "Zwergenmumie", "", "Zwergenmumie", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_ELF_MUMMY", "Elbenmumie", "", "Elbenmumie", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_HUMAN_MUMMY", "Menschenmumie", "", "Menschenmumie", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_ETTIN_MUMMY", "Ettinmumie", "", "Ettinmumie", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_GIANT_MUMMY", "Riesenmumie", "", "Riesenmumie", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_RED_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_GUARDIAN_NAGA_HATCHLING"
-    dekliniere_substantiv("NOUN_RED_NAGA", "Naga", "s", "Naga", "s", "feminin"), #Rotnaga, oder rote Naga
+    dekliniere_substantiv("NOUN_RED_NAGA", "Naga", "s", "Naga", "s", "feminin"), #Rotnaga, oder rote Naga, roter Naga?
     #dekliniere_substantiv("NOUN_BLACK_NAGA" # Schwarznaga
     #dekliniere_substantiv("NOUN_GOLDEN_NAGA" # Goldnaga oder goldene Naga
     #dekliniere_substantiv("NOUN_GUARDIAN_NAGA" # Wächternaga, Hüternaga
@@ -1758,15 +1758,15 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ICE_TROLL", "Eistroll",  "es", "Eistroll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ROCK_TROLL", "Steintroll",  "es", "Steintroll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_WATER_TROLL", "Wassertroll",  "es", "Wassertroll", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_OLOG_HAI"
+    #dekliniere_substantiv("NOUN_OLOG_HAI" # Olog-hai
     #dekliniere_substantiv("NOUN_UMBER_HULK"
     dekliniere_substantiv("NOUN_VAMPIRE","Vampir","es","Vampir","e","maskulin"),
     #dekliniere_substantiv("NOUN_VAMPIRE_LORD"
     #dekliniere_substantiv("NOUN_VAMPIRE_MAGE"
     #dekliniere_substantiv("NOUN_VLAD_THE_IMPALER"
-    #dekliniere_substantiv("NOUN_BARROW_WIGHT"
+    #dekliniere_substantiv("NOUN_BARROW_WIGHT" # Grabunhold?
     #dekliniere_substantiv("NOUN_WRAITH"
-    #dekliniere_substantiv("NOUN_NAZGUL"
+    #dekliniere_substantiv("NOUN_NAZGUL" Nazgûl
     #dekliniere_substantiv("NOUN_XORN"
     dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"),
@@ -1828,17 +1828,17 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CHARON"
     dekliniere_substantiv("NOUN_GHOST", "Gespenst", "es", "Gespenst", "er", "neutrum", "er"),
     dekliniere_substantiv("NOUN_SHADE", "Nachtschatten", "s", "Nachtschatten", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_WATER_DEMON"
-    #dekliniere_substantiv("NOUN_HORNED_DEVIL"
+    #dekliniere_substantiv("NOUN_WATER_DEMON" # Wasserteufel
+    #dekliniere_substantiv("NOUN_HORNED_DEVIL" # Hornteufel Malebranche
     dekliniere_substantiv("NOUN_SUCCUBUS", "Sukkubus", "", "Sukkuben", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_INCUBUS", "Incubus", "", "Incuben", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_ERINYS", "Erinnye", "", "Erinnye", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_BARBED_DEVIL"
-    #dekliniere_substantiv("NOUN_MARILITH"
+    #dekliniere_substantiv("NOUN_MARILITH" # die Marilith
     #dekliniere_substantiv("NOUN_VROCK"
-    #dekliniere_substantiv("NOUN_HEZROU"
-    #dekliniere_substantiv("NOUN_BONE_DEVIL"
-    #dekliniere_substantiv("NOUN_ICE_DEVIL"
+    #dekliniere_substantiv("NOUN_HEZROU" # der Heztou?
+    #dekliniere_substantiv("NOUN_BONE_DEVIL" # Knochenteufel
+    #dekliniere_substantiv("NOUN_ICE_DEVIL"  # Eisteufel Gelugon
     #dekliniere_substantiv("NOUN_NALFESHNEE"
     #dekliniere_substantiv("NOUN_PIT_FIEND"
     #dekliniere_substantiv("NOUN_BALROG"
@@ -1846,7 +1846,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_YEENOGHU"
     #dekliniere_substantiv("NOUN_ORCUS"
     #dekliniere_substantiv("NOUN_GERYON"
-    #dekliniere_substantiv("NOUN_DISPATER"
+    #dekliniere_substantiv("NOUN_DISPATER" # Dispater, Eigenname
     #dekliniere_substantiv("NOUN_BAALZEBUB"
     #dekliniere_substantiv("NOUN_ASMODEUS"
     #dekliniere_substantiv("NOUN_DEMOGORGON"
@@ -1941,6 +1941,7 @@ def ausgabe_nouns
     "/* sonstige Adjektive */",
     dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
     dekliniere_adjektiv("ADJEKTIV_SADDLED","gesattelt"),
+    dekliniere_adjektiv("ADJEKTIV_INVISIBLE","unsichtbar"),
     "",
     "/* Adjektive und Substantive für Nominalphrasen */",
     dekliniere_substantiv("NOUN_STANGENWAFFE","Stangenwaffe","","Stangenwaffe","en","feminin"),
