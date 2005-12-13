@@ -1648,7 +1648,11 @@ long quan;		/* if non-0, print this quantity, not obj->quan */
     }
     if (savequan) obj->quan = savequan;
 
-    return li;
+#ifdef GERMAN
+    return (char*)german(li);
+#else
+		return li;
+#endif
 }
 
 #endif /* OVL1 */
