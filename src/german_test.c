@@ -217,10 +217,12 @@ START_TEST (test_potions) {
 
 START_TEST (test_called_named_labeled) {
 	char *text[][2] = {
-		{"t - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_CALLED vielleicht Wasser?",
-		 "t - ein Trank bezeichnet mit vielleicht Wasser?"},
-		{"f - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_SACK PARTIKEL_NAMED Necessaire",
-		 "f - ein nicht verfluchter Sack genannt Necessaire"}};
+		{"a - ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_LABELED \"NOUN_SCR_READ_ME\"",
+		 "a - eine Schriftrolle \"LIES MICH\"" },
+		{"b - ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_CALLED vielleicht Wasser?",
+		 "b - ein Trank genannt vielleicht Wasser?"},
+		{"c - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_SACK PARTIKEL_NAMED Necessaire",
+		 "c - ein nicht verfluchter Sack namens Necessaire"}};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
@@ -392,6 +394,8 @@ START_TEST (test_casus_and_modifier) {
 
 START_TEST (test_possessiv) {
 	char *text[][2] = {
+		{"SUBJECT ARTIKEL_BESTIMMTER sex2: f NOUN_DOG VERB_SCHLAGEN mit KASUS_DATIV PRONOMEN_3P_F_POSSESSIV NOUN_BOW nach KASUS_DATIV ARTIKEL_BESTIMMTER sex2: m NOUN_DOG.",
+		 ""},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_KOP_SERGEANT VERB_SCHLAGEN mit KASUS_DATIV PRONOMEN_3P_MN_POSSESSIV NOUN_RUBBER_HOSE nach KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_KOP_SERGEANT.",
 		 ""},
 	};
