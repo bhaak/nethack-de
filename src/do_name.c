@@ -620,6 +620,26 @@ boolean called;
 	    return buf;
 	}
 
+	//printf("a: %s\n", mtmp->data->mname);
+	/*
+	if (is_male(mdat)) { Strcpy(buf, "sex: m "); }
+	else if (is_female(mdat)) { Strcpy(buf, "sex: f "); }
+	else if (is_neuter(mdat)) { Strcpy(buf, "sex: n "); }
+	else { Strcpy(buf, "sex: gar nix "); }
+
+	if (is_neuter(mdat)) { Strcpy(buf, "sex2: n "); }
+	else if (mtmp->female) { Strcpy(buf, "sex2: f "); }
+	else { Strcpy(buf, "sex2: m "); }
+
+	if (article == ARTICLE_YOUR) { Strcat(buf, " :article_your1:"); }
+	if (article == ARTICLE_THE)  { Strcat(buf, " :article_the1:"); }
+	if (article == ARTICLE_NONE) { Strcat(buf, " :article_none1:"); }
+
+
+ if (type_is_pname(mdat)) { Strcat(buf, " :name: "); }
+  else { Strcat(buf, " :kein name: "); }
+	*/
+
 	/* priests and minions: don't even use this function */
 	if (mtmp->ispriest || mtmp->isminion) {
 	    char priestnambuf[BUFSZ];
@@ -633,8 +653,8 @@ boolean called;
 	    name = priestname(mtmp, priestnambuf);
 	    EHalluc_resistance = save_prop;
 	    mtmp->minvis = save_invis;
-	    if (article == ARTICLE_NONE && !strncmp(name, "the ", 4))
-		name += 4;
+	    if (article == ARTICLE_NONE && !strncmp(name, "ARTIKEL_BESTIMMTER ", 19))
+		name += 19;
 	    return strcpy(buf, name);
 	}
 
@@ -647,7 +667,7 @@ boolean called;
 	    if (adjective && article == ARTICLE_THE) {
 		/* pathological case: "the angry Asidonhopo the blue dragon"
 		   sounds silly */
-		Strcpy(buf, "the ");
+		Strcpy(buf, "ARTIKEL_BESTIMMTER ");
 		Strcat(strcat(buf, adjective), " ");
 		Strcat(buf, shkname(mtmp));
 		return buf;
@@ -655,10 +675,11 @@ boolean called;
 	    Strcat(buf, shkname(mtmp));
 	    if (mdat == &mons[PM_SHOPKEEPER] && !do_invis)
 		return buf;
-	    Strcat(buf, " the ");
-	    if (do_invis)
-		Strcat(buf, "invisible ");
+	    Strcat(buf, ", ARTIKEL_BESTIMMTER ");
+	    if (do_invis) 
+		Strcat(buf, "ADJEKTIV_INVISIBLE ");
 	    Strcat(buf, mdat->mname);
+	    Strcat(buf, ",");
 	    return buf;
 	}
 
@@ -666,7 +687,7 @@ boolean called;
 	if (adjective)
 	    Strcat(strcat(buf, adjective), " ");
 	if (do_invis)
-	    Strcat(buf, "invisible ");
+	    Strcat(buf, "ADJEKTIV_INVISIBLE ");
 #ifdef STEED
 	if (do_saddle && (mtmp->misc_worn_check & W_SADDLE) &&
 	    !Blind && !Hallucination)
@@ -691,15 +712,15 @@ boolean called;
 	    } else if (called) {
 		Sprintf(eos(buf), "%s genannt %s", mdat->mname, name);
 		name_at_start = (boolean)type_is_pname(mdat);
-	    } else if (is_mplayer(mdat) && (bp = strstri(name, " the ")) != 0) {
+	    } else if (is_mplayer(mdat) && (bp = strstri(name, " ARTIKEL_BESTIMMTER ")) != 0) {
 		/* <name> the <adjective> <invisible> <saddled> <rank> */
 		char pbuf[BUFSZ];
 
 		Strcpy(pbuf, name);
-		pbuf[bp - name + 5] = '\0'; /* adjectives right after " the " */
+		pbuf[bp - name + 20] = '\0'; /* adjectives right after " the " */
 		if (has_adjectives)
 		    Strcat(pbuf, buf);
-		Strcat(pbuf, bp + 5);	/* append the rest of the name */
+		Strcat(pbuf, bp + 20);	/* append the rest of the name */
 		Strcpy(buf, pbuf);
 		article = ARTICLE_NONE;
 		name_at_start = TRUE;
@@ -719,12 +740,20 @@ boolean called;
 	    name_at_start = (boolean)type_is_pname(mdat);
 	}
 
+	/*
+		if (name_at_start) { Strcat(buf, " :name_at_start: "); }
+		if (has_adjectives) { Strcat(buf, " :has_adjectives: "); }
+		*/
+
 	if (name_at_start && (article == ARTICLE_YOUR || !has_adjectives)) {
+		/* Strcat(buf, " :1: "); */
 	    if (mdat == &mons[PM_WIZARD_OF_YENDOR])
 		article = ARTICLE_THE;
-	    else
+	    else {
 		article = ARTICLE_NONE;
+			}
 	} else if ((mdat->geno & G_UNIQ) && article == ARTICLE_A) {
+		/* Strcat(buf, " :2: "); */
 	    article = ARTICLE_THE;
 	}
 
@@ -733,21 +762,25 @@ boolean called;
 
 	    switch(article) {
 		case ARTICLE_YOUR:
-		    Strcpy(buf2, "PRONOMEN_POSSESSIV ");
+				/* Strcpy(buf2, " :ARTICLE_YOUR: "); */
+		    Strcat(buf2, "PRONOMEN_POSSESSIV ");
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		    return buf;
 		case ARTICLE_THE:
+				/* Strcat(buf2, " :ARTICLE_THE: "); */
 		    Strcpy(buf2, "ARTIKEL_BESTIMMTER ");
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		    return buf;
 		case ARTICLE_A:
+				/* Strcat(buf2, " :ARTICLE_A: "); */
 			/* return(an(buf)); */
 		    Strcpy(buf2, "ARTIKEL_UNBESTIMMTER ");
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		case ARTICLE_NONE:
+				/* Strcat(buf2, " :ARTICLE_NONE: "); */
 		default:
 		    return buf;
 	    }
