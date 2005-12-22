@@ -1712,8 +1712,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ETTIN", "Ettin", "", "Ettin", "", "maskulin"),
     dekliniere_substantiv("NOUN_TITAN", "Titane", "en", "Titan", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_MINOTAUR","Minotaurus","","Minotaur","en","maskulin"),
-    #dekliniere_substantiv("NOUN_JABBERWOCK" # jammerwoch?
-    #dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK" # Vorpahljammerwoch?
+    dekliniere_substantiv("NOUN_JABBERWOCK", "Jammerwoch", "s", "Jammerwoch", "", "maskulin"),
+    dekliniere_substantiv("NOUN_VORPAL_JABBERWOCK", "Vorpahljammerwoch", "s", "Vorpahljammerwoch", "", "maskulin"),
     dekliniere_substantiv("NOUN_KEYSTONE_KOP", "Gendarm", "en", "Gendarmen", "en", "maskulin"), 
     dekliniere_substantiv("NOUN_KOP_SERGEANT", "Inspektor", "s", "Inspektor", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOP_LIEUTENANT", "Gruppeninspektor", "es", "Gruppeninspektor", "en", "maskulin", "en"),
