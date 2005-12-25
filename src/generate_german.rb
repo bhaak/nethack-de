@@ -1193,7 +1193,7 @@ def ausgabe_nouns
     "/* NOUN_CORPSE is irregular and treated specially */",
     dekliniere_substantiv("NOUN_EGG","Ei","es","Ei","er","neutrum"),
     #dekliniere_substantiv("NOUN_MEATBALL" # Kloesschen, Fleischklops, Fleischball?
-    #dekliniere_substantiv("NOUN_MEAT_STICK","?Salami?"
+    #dekliniere_substantiv("NOUN_MEAT_STICK",Salami?
     #dekliniere_substantiv("NOUN_HUGE_CHUNK_OF_MEAT"
     dekliniere_substantiv("NOUN_MEAT_RING","Fleischring","es","Fleischring","e","maskulin"),
     "/* Kelpwedel, Kelpblatt? */",
@@ -1210,7 +1210,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SPRIG_OF_WOLFSBANE","Wolfseisenhutzweig","es","Wolfseisenhutzweig","e","maskulin"),
     dekliniere_substantiv("NOUN_CLOVE_OF_GARLIC","Knoblauchzehe","","Knoblauchzehe","en","feminin"),
     dekliniere_substantiv("NOUN_SLIME_MOLD","Schleimpilz","es","Schleimpilz","e","maskulin"),
-    #dekliniere_substantiv("NOUN_LUMP_OF_ROYAL_JELLY"
+    #dekliniere_substantiv("NOUN_LUMP_OF_ROYAL_JELLY" # Gelee Royale
     dekliniere_substantiv("NOUN_CREAM_PIE","Sahnetorte","","Sahnetorte","en","feminin"),
     dekliniere_substantiv("NOUN_CANDY_BAR","Schokoriegel","s","Schokoriegel","","maskulin"),
     dekliniere_substantiv("NOUN_FORTUNE_COOKIE","Glückskeks","es","Glückskeks","e","maskulin"),
@@ -1518,7 +1518,7 @@ def ausgabe_nouns
     "/* Other objects, identified */",
     dekliniere_substantiv("NOUN_BOULDER",   "Felsbrocken",    "s",  "Felsbrocken",    "",   "maskulin"),
     dekliniere_substantiv("NOUN_STATUE",    "Statue",         "",   "Statue",         "en", "feminin"),
-    #dekliniere_substantiv("NOUN_HEAVY_IRON_BALL"
+    #dekliniere_substantiv("NOUN_HEAVY_IRON_BALL" # schwere Eisenkugel
     dekliniere_substantiv("NOUN_IRON_CHAIN", "Eisenkette", "", "Eisenkette", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_BLINDING_VENOM"
     "",
@@ -1718,10 +1718,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_KOP_SERGEANT", "Inspektor", "s", "Inspektor", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOP_LIEUTENANT", "Gruppeninspektor", "es", "Gruppeninspektor", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOP_KAPTAIN", "Chefinspektor", "es", "Chefinspektor", "en", "maskulin", "en"),
-    #dekliniere_substantiv("NOUN_LICH"
-    #dekliniere_substantiv("NOUN_DEMILICH"
-    #dekliniere_substantiv("NOUN_MASTER_LICH"
-    #dekliniere_substantiv("NOUN_ARCH_LICH"
+    #dekliniere_substantiv("NOUN_LICH"        # Liechnam?, Leichnam?
+    #dekliniere_substantiv("NOUN_DEMILICH"    # Demiliechnam?, Halbliechnam?
+    #dekliniere_substantiv("NOUN_MASTER_LICH" # Meisterliechnam
+    #dekliniere_substantiv("NOUN_ARCH_LICH"   # Erzliechnam. Erzlichnam?
     dekliniere_substantiv("NOUN_KOBOLD_MUMMY", "Koboldsmumie", "", "Koboldsmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_GNOME_MUMMY", "Gnomenmumie", "", "Gnomenmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_ORC_MUMMY", "Orkmumie", "", "Orkmumie", "en", "feminin", "n"),
