@@ -1544,8 +1544,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ACID_BLOB", "Säureklumpen", "s", "Säureklumpen", "", "maskulin"), # Säureklumpen?, Säureklotz??
     dekliniere_substantiv("NOUN_QUIVERING_BLOB", "Zitterklumpen", "s", "Zitterklumpen", "", "maskulin"), # zitternder/bebender Klumpen, Zitterklumpen
     dekliniere_substantiv("NOUN_GELATINOUS_CUBE", "Gelatinewürfel", "s", "Gelatinewürfel", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_CHICKATRICE" # BASILEA? soll gr. fuer Koenigin sein
-    #dekliniere_substantiv("NOUN_COCKATRICE"  # BASILISK gr. "kleiner Koenig"
+    #dekliniere_substantiv("NOUN_CHICKATRICE" # BASILEA? soll gr. fuer Koenigin sein, Kikatrix? nach Adelung niedersächsisch kiken/küken (angelsächsisch cicen, englisch chicken) für Küchlein (neuhochdeutsch Küken)
+    #dekliniere_substantiv("NOUN_COCKATRICE"  # BASILISK gr. "kleiner Koenig", Cocatrix? mittelalterliches Latein -> http://www.bartleby.com/61/43/C0444300.html
     #dekliniere_substantiv("NOUN_PYROLISK" # Pyrolisk
     dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_FOX","Fuchs","es","Füchs","e","maskulin"),
@@ -1812,7 +1812,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ELVENKING", "Elbenkönig", "es", "Elbenkönig", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_DOPPELGANGER", "Doppelgänger", "s", "Doppelgänger", "", "maskulin"),
     dekliniere_substantiv("NOUN_NURSE", "Krankenschwester", "", "Krankenschwester", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_SHOPKEEPER" # Ladenbesitzer, ?Händler
+    dekliniere_substantiv("NOUN_SHOPKEEPER", "Ladenbesitzer", "s", "Ladenbesitzer", "", "maskulin"), # Ladenbesitzer, Ladeninhaber, Händler?
     dekliniere_substantiv("NOUN_GUARD", "Wache", "", "Wache", "en", "feminin"),
     #dekliniere_substantiv("NOUN_PRISONER"
     dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orakel", "", "neutrum"),
