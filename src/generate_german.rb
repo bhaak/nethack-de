@@ -165,15 +165,22 @@ def substantiv_endung(singularstamm, genitiv_singular_endung,
       casus[$dat][$pl] = "ern"
       casus[$gen][$pl] = "er"
     when "e"
+      endung = pluralstamm[-1..-1]
       casus[$nom][$pl] = pluralstamm[-1..-1]=='e' ? "" : "e"
       casus[$akk][$pl] = pluralstamm[-1..-1]=='e' ? "" : "e"
       casus[$dat][$pl] = pluralstamm[-1..-1]=='e' ? "" : "en"
       casus[$gen][$pl] = pluralstamm[-1..-1]=='e' ? "" : "e"
     when "en"
-      casus[$nom][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
-      casus[$akk][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
-      casus[$dat][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
-      casus[$gen][$pl] = pluralstamm[-1..-1]=='e' ? "n" : "en"
+      e_Tilgung = false
+      if pluralstamm[-1..-1] == "e"
+        e_Tilgung = true
+      elsif pluralstamm[-2..-1] == "el" or pluralstamm[-2..-1] == "er"
+        e_Tilgung = true
+      end
+      casus[$nom][$pl] = e_Tilgung ? "n" : "en"
+      casus[$akk][$pl] = e_Tilgung ? "n" : "en"
+      casus[$dat][$pl] = e_Tilgung ? "n" : "en"
+      casus[$gen][$pl] = e_Tilgung ? "n" : "en"
     when "s"
       casus[$nom][$pl] = "s"
       casus[$akk][$pl] = "s"
@@ -1211,7 +1218,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CLOVE_OF_GARLIC","Knoblauchzehe","","Knoblauchzehe","en","feminin"),
     dekliniere_substantiv("NOUN_SLIME_MOLD","Schleimpilz","es","Schleimpilz","e","maskulin"),
     dekliniere_substantiv("NOUN_LUMP_OF_ROYAL_JELLY", "Stück", "es", "Stück", "e", "neutrum", "", "Gelée Royale"), # Gelée Royale, Weiselfuttersaft Königinfuttersaft, Bienenmutterbrei
-    # dekliniere_substantiv("NOUN_LUMP_OF_ROYAL_JELLY", "Gelée Royale", "", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_CREAM_PIE","Sahnetorte","","Sahnetorte","en","feminin"),
     dekliniere_substantiv("NOUN_CANDY_BAR","Schokoriegel","s","Schokoriegel","","maskulin"),
     dekliniere_substantiv("NOUN_FORTUNE_COOKIE","Glückskeks","es","Glückskeks","e","maskulin"),
@@ -1535,9 +1541,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_FIRE_ANT","Feuerameise","","Feuerameise","en","feminin", "n"),
     dekliniere_substantiv("NOUN_GIANT_BEETLE", "Riesenkäfer", "s", "Riesenkäfer", "", "maskulin"),
     dekliniere_substantiv("NOUN_QUEEN_BEE","Bienenkönigin","","Bienenköniginn","en","feminin", "nen"),
-    #dekliniere_substantiv("NOUN_ACID_BLOB" # Säureklumpen?, Säureklotz??
-    #dekliniere_substantiv("NOUN_QUIVERING_BLOB" # zitternder/bebender Klumpen, Zitterklumpen
-    #dekliniere_substantiv("NOUN_GELATINOUS_CUBE" # Gelatinewürfel
+    dekliniere_substantiv("NOUN_ACID_BLOB", "Säureklumpen", "s", "Säureklumpen", "", "maskulin"), # Säureklumpen?, Säureklotz??
+    dekliniere_substantiv("NOUN_QUIVERING_BLOB", "Zitterklumpen", "s", "Zitterklumpen", "", "maskulin"), # zitternder/bebender Klumpen, Zitterklumpen
+    dekliniere_substantiv("NOUN_GELATINOUS_CUBE", "Gelatinewürfel", "s", "Gelatinewürfel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_CHICKATRICE" # BASILEA? soll gr. fuer Koenigin sein
     #dekliniere_substantiv("NOUN_COCKATRICE"  # BASILISK gr. "kleiner Koenig"
     #dekliniere_substantiv("NOUN_PYROLISK" # Pyrolisk
@@ -1557,7 +1563,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HELL_HOUND_PUP", "Höllenhundwelpe", "en", "Höllenhundwelpe", "en", "maskulin","e"),
     dekliniere_substantiv("NOUN_HELL_HOUND", "Höllenhund", "es", "Höllenhund", "e", "maskulin","e"),
     dekliniere_substantiv("NOUN_CERBERUS", "Zerberus", "", "Zerberuss", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_GAS_SPORE" # Gasspore
+    dekliniere_substantiv("NOUN_GAS_SPORE", "Gasspore", "", "Gasspore", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_FLOATING_EYE", "Schwebaug", "es", "Schwebaug", "en", "neutrum", "n"),
     #dekliniere_substantiv("NOUN_FREEZING_SPHERE"
     #dekliniere_substantiv("NOUN_FLAMING_SPHERE"
