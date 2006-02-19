@@ -1592,9 +1592,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEMURE", "Lemur", "en", "Lemur", "en", "maskulin"),
     dekliniere_substantiv("NOUN_QUASIT", "Quasit", "", "Quasit", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_TENGU", "Tengu", "", "Tengu", "fremder", "maskulin"),
-    #dekliniere_substantiv("NOUN_BLUE_JELLY"
-    #dekliniere_substantiv("NOUN_SPOTTED_JELLY"
-    #dekliniere_substantiv("NOUN_OCHRE_JELLY"
+    dekliniere_nominalphrase("NOUN_BLUE_JELLY", "blau", "Glibber", "s", "", "", "maskulin"), # Glibber, Gallert, Gelle
+    dekliniere_nominalphrase("NOUN_SPOTTED_JELLY", "gesprenkelt", "Glibber", "s", "", "", "maskulin"), # gefleckt, gepunktet
+    dekliniere_nominalphrase("NOUN_OCHRE_JELLY", "ockergelb", "Glibber", "s", "", "", "maskulin"), # ockergelb, beige, gelb, braun
     dekliniere_substantiv("NOUN_KOBOLD","Kobold","es","Kobold","e","maskulin", "s"),
     dekliniere_nominalphrase("NOUN_LARGE_KOBOLD","groß", "Kobold","es","Kobold","e","maskulin", "s"),
     dekliniere_substantiv("NOUN_KOBOLD_LORD", "Koboldfürst","en","Koboldfürst","en","maskulin", "en"),
