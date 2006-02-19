@@ -1210,14 +1210,14 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SPRIG_OF_WOLFSBANE","Wolfseisenhutzweig","es","Wolfseisenhutzweig","e","maskulin"),
     dekliniere_substantiv("NOUN_CLOVE_OF_GARLIC","Knoblauchzehe","","Knoblauchzehe","en","feminin"),
     dekliniere_substantiv("NOUN_SLIME_MOLD","Schleimpilz","es","Schleimpilz","e","maskulin"),
-    #dekliniere_substantiv("NOUN_LUMP_OF_ROYAL_JELLY" # Gelee Royale
+    dekliniere_substantiv("NOUN_LUMP_OF_ROYAL_JELLY", "Stück", "es", "Stück", "e", "neutrum", "", "Gelée Royale"), # Gelée Royale, Weiselfuttersaft Königinfuttersaft, Bienenmutterbrei
+    # dekliniere_substantiv("NOUN_LUMP_OF_ROYAL_JELLY", "Gelée Royale", "", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_CREAM_PIE","Sahnetorte","","Sahnetorte","en","feminin"),
     dekliniere_substantiv("NOUN_CANDY_BAR","Schokoriegel","s","Schokoriegel","","maskulin"),
     dekliniere_substantiv("NOUN_FORTUNE_COOKIE","Glückskeks","es","Glückskeks","e","maskulin"),
     dekliniere_substantiv("NOUN_PANCAKE","Pfannkuchen","s","Pfannkuchen","","maskulin"),
     dekliniere_substantiv("NOUN_LEMBAS_WAFER","Lembasbrot","es","Lembasbrot","e","maskulin"),
-    # cram, Lebensmittel aus HdR
-    #dekliniere_substantiv("NOUN_CRAM_RATION"
+    dekliniere_substantiv("NOUN_CRAM_RATION", "Ration", "", "Ration", "en", "feminin", "", "Cram"), # Zwergen-Lebensmittel aus HdR
     dekliniere_substantiv("NOUN_FOOD_RATION","Essensration","","Essensration","en","feminin"),
     dekliniere_substantiv("NOUN_K_RATION","Kampfration","","Kampfration","en","feminin"),
     dekliniere_substantiv("NOUN_C_RATION","Notration","","Notration","en","feminin"),
@@ -1518,7 +1518,7 @@ def ausgabe_nouns
     "/* Other objects, identified */",
     dekliniere_substantiv("NOUN_BOULDER",   "Felsbrocken",    "s",  "Felsbrocken",    "",   "maskulin"),
     dekliniere_substantiv("NOUN_STATUE",    "Statue",         "",   "Statue",         "en", "feminin"),
-    #dekliniere_substantiv("NOUN_HEAVY_IRON_BALL" # schwere Eisenkugel
+    dekliniere_nominalphrase("NOUN_HEAVY_IRON_BALL", "schwer", "Eisenkugel", "", "Eisenkugel", "en", "feminin"),
     dekliniere_substantiv("NOUN_IRON_CHAIN", "Eisenkette", "", "Eisenkette", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_BLINDING_VENOM"
     "",
@@ -1734,7 +1734,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING"
     #dekliniere_substantiv("NOUN_GUARDIAN_NAGA_HATCHLING"
-    dekliniere_substantiv("NOUN_RED_NAGA", "Naga", "s", "Naga", "s", "feminin"), #Rotnaga, oder rote Naga, roter Naga?
+    dekliniere_substantiv("NOUN_RED_NAGA", "Naga", "s", "Naga", "s", "feminin"), # Rotnaga, rote Naga, roter Naga?
     #dekliniere_substantiv("NOUN_BLACK_NAGA" # Schwarznaga
     #dekliniere_substantiv("NOUN_GOLDEN_NAGA" # Goldnaga oder goldene Naga
     #dekliniere_substantiv("NOUN_GUARDIAN_NAGA" # Wächternaga, Hüternaga
@@ -1768,7 +1768,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_WRAITH"
     #dekliniere_substantiv("NOUN_NAZGUL" Nazgûl
     #dekliniere_substantiv("NOUN_XORN"
-    dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
+    #dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"),
     dekliniere_substantiv("NOUN_OWLBEAR", "Eulenbär", "en", "Eulenbär", "en", "maskulin"),
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
