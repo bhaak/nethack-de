@@ -528,7 +528,7 @@ def adjektiv_endung(adjektiv, kasus, geschlecht, numerus, artikel)
     end
   end
 
-  raise "Adjektivendung nicht gefunden: "+kasus+" "+geschlecht+" "+numerus+" "+artikel
+  raise "Adjektivendung für " + adjektiv + " nicht gefunden: "+kasus+" "+geschlecht+" "+numerus+" "+artikel
 end
 
 def dekliniere_nominalphrase(bezeichner,
@@ -1741,10 +1741,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_OGRE", "Oger", "s", "Oger", "", "maskulin"),
     dekliniere_substantiv("NOUN_OGRE_LORD","Ogerfürst","en","Ogerfürst","en","maskulin", "en"),
     dekliniere_substantiv("NOUN_OGRE_KING","Ogerkönig","es","Ogerkönig","e","maskulin"),
-    #dekliniere_substantiv("NOUN_GRAY_OOZE"
-    #dekliniere_substantiv("NOUN_BROWN_PUDDING"
-    #dekliniere_substantiv("NOUN_BLACK_PUDDING"
-    #dekliniere_substantiv("NOUN_GREEN_SLIME"
+    dekliniere_nominalphrase("NOUN_GRAY_OOZE", "Grau", "Schlamm", "es", "Schlamm", "e", "maskulin"), # grauer Schleim, Schlick?
+    dekliniere_nominalphrase("NOUN_BROWN_PUDDING", "Braun", "Grütze", "", "Grütze", "en", "feminin"),
+    dekliniere_nominalphrase("NOUN_BLACK_PUDDING", "Schwarz", "Grütze", "", "Grütze", "en", "feminin"),
+    dekliniere_nominalphrase("NOUN_GREEN_SLIME", "Grün", "Schleim", "es", "Schleim", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_QUANTUM_MECHANIC"
     #dekliniere_substantiv("NOUN_RUST_MONSTER"
     #dekliniere_substantiv("NOUN_DISENCHANTER"
