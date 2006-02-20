@@ -782,7 +782,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ELVEN_DAGGER", "Elbendolch", "es", "Elbendolch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_DAGGER", "Orkdolch", "es", "Orkdolch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SILVER_DAGGER", "Silberdolch", "es", "Silberdolch", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_ATHAME"
+    dekliniere_substantiv("NOUN_ATHAME", "Athame", "", "Athame", "en", "feminin", "en"),
     dekliniere_substantiv("NOUN_SCALPEL", "Skalpell", "s", "Skalpell", "e", "neutrum"),
     dekliniere_substantiv("NOUN_KNIFE", "Messer", "s", "Messer", "", "neutrum", "s"),
     dekliniere_substantiv("NOUN_STILETTO", "Stilett", "s", "Stilett", "e", "neutrum"),
@@ -1544,9 +1544,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ACID_BLOB", "Säureklumpen", "s", "Säureklumpen", "", "maskulin"), # Säureklumpen?, Säureklotz??
     dekliniere_substantiv("NOUN_QUIVERING_BLOB", "Zitterklumpen", "s", "Zitterklumpen", "", "maskulin"), # zitternder/bebender Klumpen, Zitterklumpen
     dekliniere_substantiv("NOUN_GELATINOUS_CUBE", "Gelatinewürfel", "s", "Gelatinewürfel", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_CHICKATRICE" # BASILEA? soll gr. fuer Koenigin sein, Kikatrix? nach Adelung niedersächsisch kiken/küken (angelsächsisch cicen, englisch chicken) für Küchlein (neuhochdeutsch Küken)
-    #dekliniere_substantiv("NOUN_COCKATRICE"  # BASILISK gr. "kleiner Koenig", Cocatrix? mittelalterliches Latein -> http://www.bartleby.com/61/43/C0444300.html
-    #dekliniere_substantiv("NOUN_PYROLISK" # Pyrolisk
+    dekliniere_substantiv("NOUN_CHICKATRICE", "Kikatrix", "", "Kikatrices", "fremder", "neutrum"), # Kikatrix? nach Adelung niedersächsisch kiken/küken (angelsächsisch cicen, englisch chicken) für Küchlein (neuhochdeutsch Küken)
+    dekliniere_substantiv("NOUN_COCKATRICE", "Cocatrix", "", "Cocatrices", "fremder", "maskulin"), # Cocatrix? mittelalterliches Latein -> http://www.bartleby.com/61/43/C0444300.html
+    dekliniere_substantiv("NOUN_PYROLISK", "Pyrolisk", "en", "Pyrolisk", "en", "maskulin"),
     dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_FOX","Fuchs","es","Füchs","e","maskulin"),
     dekliniere_substantiv("NOUN_COYOTE","Kojote","en","Kojote","en","maskulin","n"),
@@ -1565,8 +1565,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CERBERUS", "Zerberus", "", "Zerberuss", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GAS_SPORE", "Gasspore", "", "Gasspore", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_FLOATING_EYE", "Schwebaug", "es", "Schwebaug", "en", "neutrum", "n"),
-    #dekliniere_substantiv("NOUN_FREEZING_SPHERE"
-    #dekliniere_substantiv("NOUN_FLAMING_SPHERE"
+    #dekliniere_substantiv("NOUN_FREEZING_SPHERE" # 
+    #dekliniere_substantiv("NOUN_FLAMING_SPHERE"  # brennende Kugel
     #dekliniere_substantiv("NOUN_SHOCKING_SPHERE"
     dekliniere_substantiv("NOUN_BEHOLDER", "Betrachter", "s", "Betrachter", "", "maskulin"), # Betrachter
     dekliniere_substantiv("NOUN_KITTEN", "Kätzchen", "s", "Kätzchen", "", "neutrum"),
@@ -1598,13 +1598,13 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_KOBOLD","Kobold","es","Kobold","e","maskulin", "s"),
     dekliniere_nominalphrase("NOUN_LARGE_KOBOLD","groß", "Kobold","es","Kobold","e","maskulin", "s"),
     dekliniere_substantiv("NOUN_KOBOLD_LORD", "Koboldfürst","en","Koboldfürst","en","maskulin", "en"),
-    #dekliniere_substantiv("NOUN_KOBOLD_SHAMAN"
+    dekliniere_substantiv("NOUN_KOBOLD_SHAMAN", "Koboldschamane", "en", "Koboldschamane", "en", "maskulin", "en"),
     #dekliniere_substantiv("NOUN_LEPRECHAUN"
     dekliniere_nominalphrase("NOUN_SMALL_MIMIC","klein", "Imitator","","","","maskulin", "en"),
     dekliniere_nominalphrase("NOUN_LARGE_MIMIC","groß", "Imitator","","","","maskulin", "en"),
     dekliniere_nominalphrase("NOUN_GIANT_MIMIC","riesig", "Imitator","","","","maskulin", "en"),
 		# Riesenimitator wäre etwas irreführend
-    #dekliniere_substantiv("NOUN_GIANT_MIMIC", "Riesenimitator","","Riesenimitator","","maskulin", "en"),
+    # dekliniere_substantiv("NOUN_GIANT_MIMIC", "Riesenimitator","","Riesenimitator","","maskulin", "en"),
     dekliniere_substantiv("NOUN_WOOD_NYMPH",     "Baumnymphe",   "", "Baumnymphe",   "en", "feminin","n"),
     dekliniere_substantiv("NOUN_WATER_NYMPH",    "Wassernymphe", "", "Wassernymphe", "en", "feminin","n"),
     dekliniere_substantiv("NOUN_MOUNTAIN_NYMPH", "Bergnymphe",   "", "Bergnymphe",   "en", "feminin","n"),
@@ -1613,19 +1613,19 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HOBGOBLIN", "Hobgoblin", "s", "Hobgoblin", "", "maskulin"),
     dekliniere_substantiv("NOUN_ORC","Ork","s","Ork","s","maskulin"),
     dekliniere_substantiv("NOUN_HILL_ORC","Hügelork","s","Hügelork","s","maskulin"),
-    #dekliniere_substantiv("NOUN_MORDOR_ORC"    # Mordorork
-    #dekliniere_substantiv("NOUN_URUK_HAI"      # Uruk-Hai
-    #dekliniere_substantiv("NOUN_ORC_SHAMAN"
-    #dekliniere_substantiv("NOUN_ORC_CAPTAIN"
-    #dekliniere_substantiv("NOUN_ROCK_PIERCER"
-    #dekliniere_substantiv("NOUN_IRON_PIERCER"
-    #dekliniere_substantiv("NOUN_GLASS_PIERCER"
-    #dekliniere_substantiv("NOUN_ROTHE"         # Rothé
-    #dekliniere_substantiv("NOUN_MUMAK" # Olifant, Mûmak Mûmakil(pl)
-    #dekliniere_substantiv("NOUN_LEOCROTTA" # Leucrocotta? Leucrotta? Plinius 8.Buch der Natur
-    #dekliniere_substantiv("NOUN_WUMPUS"
-    #dekliniere_substantiv("NOUN_TITANOTHERE"
-    #dekliniere_substantiv("NOUN_BALUCHITHERIUM"
+    dekliniere_substantiv("NOUN_MORDOR_ORC","Mordorork","s","Mordorork","s","maskulin"),
+    dekliniere_substantiv("NOUN_URUK_HAI","Uruk-Hai","","Uruk-Hai","fremder","maskulin"),
+    dekliniere_substantiv("NOUN_ORC_SHAMAN", "Orkschamane", "en", "Orkschamane", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_ORC_CAPTAIN", "Orkkommandant", "en", "Orkkommandant", "en", "maskulin", "en"), # Orkkommandant/hauptmann
+    dekliniere_substantiv("NOUN_ROCK_PIERCER", "Steinbohrer", "s", "Steinbohrer", "", "maskulin"),  # Steinbrecher?, Steinbohrer?, Steinschneider?
+    dekliniere_substantiv("NOUN_IRON_PIERCER", "Eisenbohrer", "s", "Eisenbohrer", "", "maskulin"),  # Eisenbrecher?, Eisenbohrer?, Eisenschneider?
+    dekliniere_substantiv("NOUN_GLASS_PIERCER", "Glasbohrer", "s", "Glasbohrer", "", "maskulin"), # Glasbrecher?, Glasbohrer?, Glasschneider?
+    dekliniere_substantiv("NOUN_ROTHE", "Rothé", "", "Rothé", "fremder", "feminin"),
+    dekliniere_substantiv("NOUN_MUMAK", "Mûmak", "s", "Mûmakil", "fremder", "neutrum"), # Olifant, Mûmak Mûmakil(pl)
+    dekliniere_substantiv("NOUN_LEOCROTTA", "Leocrotta", "", "Leocrottae", "fremder", "neutrum"),  # Leucrocotta? Leucrotta? Plinius 8.Buch der Natur
+    dekliniere_substantiv("NOUN_WUMPUS", "Wumpus", "", "Wumpi", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_TITANOTHERE", "Titanotherium", "", "Titanotheria", "fremder", "neutrum"),
+    dekliniere_substantiv("NOUN_BALUCHITHERIUM", "Baluchitherium", "", "Baluchitheria", "fremder", "neutrum"), # Paraceratherium, Baluchitherium, Indricotherium
     dekliniere_substantiv("NOUN_MASTODON", "Mastodon", "es", "Mastodon", "en", "neutrum"),
     dekliniere_substantiv("NOUN_SEWER_RAT", "Kanalratte", "", "Kanalratte", "en", "feminin", "n"),
     dekliniere_nominalphrase("NOUN_GIANT_RAT", "riesig", "Ratte", "", "Ratte", "en", "feminin", "n"),
@@ -1764,7 +1764,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ICE_TROLL", "Eistroll",  "es", "Eistroll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ROCK_TROLL", "Steintroll",  "es", "Steintroll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_WATER_TROLL", "Wassertroll",  "es", "Wassertroll", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_OLOG_HAI" # Olog-hai
+    dekliniere_substantiv("NOUN_OLOG_HAI","Olog-Hai","","Olog-Hai","fremder","maskulin"),
     #dekliniere_substantiv("NOUN_UMBER_HULK"
     dekliniere_substantiv("NOUN_VAMPIRE","Vampir","es","Vampir","e","maskulin"),
     #dekliniere_substantiv("NOUN_VAMPIRE_LORD"
