@@ -766,10 +766,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ELVEN_ARROW", "Elbenpfeil", "es", "Elbenpfeil", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_ARROW", "Orkpfeil", "es", "Orkpfeil", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SILVER_ARROW", "Silberpfeil", "es", "Silberpfeil", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_YA"
-    #dekliniere_substantiv("NOUN_CROSSBOW_BOLT"
+    dekliniere_substantiv("NOUN_YA", "Ya", "s", "Ya", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_CROSSBOW_BOLT", "Armbrustbolzen", "s", "Armbrustbolzen", "", "maskulin"),
     dekliniere_substantiv("NOUN_DART", "Wurfpfeil", "es", "Wurfpfeil", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_SHURIKEN"
+    dekliniere_substantiv("NOUN_SHURIKEN", "Shuriken", "", "Shuriken", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_BOOMERANG", "Bumerang", "es", "Bumerang", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SPEAR", "Speer", "es", "Speer", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_SPEAR", "Elbenspeer", "es", "Elbenspeer", "e", "maskulin"),
@@ -829,7 +829,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BOW", "Bogen", "s", "Bogen", "", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_BOW", "Elbenbogen", "s", "Elbenbogen", "", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_BOW", "Orkbogen", "s", "Orkbogen", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_YUMI"
+    dekliniere_substantiv("NOUN_YUMI", "Yumi", "", "Yumi", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_SLING", "Schleuder", "", "Schleuder", "en", "feminin"),
     dekliniere_substantiv("NOUN_CROSSBOW", "Armbrust", "", "Armbrüst", "e", "feminin"),
     "",
@@ -876,7 +876,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_ELVEN_LEATHER_HELM", "ledern", "Elbenhelm", "es", "Elbenhelm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_HELM", "Orkhelm", "es", "Orkhelm", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_DWARVISH_IRON_HELM", "eisern", "Zwergenhelm", "es", "Zwergenhelm", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_FEDORA"
+    #dekliniere_substantiv("NOUN_FEDORA" maskulin Akkusativ Fedora
     #dekliniere_substantiv("NOUN_CORNUTHAUM"
     #dekliniere_substantiv("NOUN_DUNCE_CAP" # Narrenkappe, Eselmütze
     dekliniere_nominalphrase("NOUN_DENTED_POT", "verbeult", "Topf", "es", "Töpf", "e", "maskulin"),
@@ -978,6 +978,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_ORNAMENTAL_COPE"
     #dekliniere_substantiv("NOUN_PIECE_OF_CLOTH" # ein Stueck Stoff, ein Stueck Tuch
     #dekliniere_nominalphrase("NOUN_BLUE_AND_GREEN_SHIELD", ["blau", "und grün"], "Schild", "es", "Schild", "e", "maskulin"),
+    #dekliniere_nominalphrase("NOUN_BLUE_AND_GREEN_SHIELD", ["blau-grün"], "Schild", "es", "Schild", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_WHITE_HANDED_SHIELD"
     #dekliniere_substantiv("NOUN_RED_EYED_SHIELD"
     #dekliniere_substantiv("NOUN_LARGE_ROUND_SHIELD"
