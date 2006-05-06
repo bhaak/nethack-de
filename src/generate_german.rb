@@ -1582,7 +1582,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_WINGED_GARGOYLE", "geflügelt", "Gargoyle", "s", "Gargoyle", "s", "maskulin"),
     dekliniere_substantiv("NOUN_HOBBIT", "Hobbit", "s", "Hobbit", "s", "maskulin"),
     dekliniere_substantiv("NOUN_DWARF","Zwerg","es","Zwerg","e","maskulin", "en"),
-    #dekliniere_substantiv("NOUN_BUGBEAR"
+    #dekliniere_substantiv("NOUN_BUGBEAR" Grottenschrat
     dekliniere_substantiv("NOUN_DWARF_LORD","Zwergenfürst","en","Zwergenfürst","en","maskulin", "en"),
     dekliniere_substantiv("NOUN_DWARF_KING","Zwergenkönig","es","Zwergenkönig","e","maskulin"),
     dekliniere_substantiv("NOUN_MIND_FLAYER", "Gedankendieb", "es", "Gedankendieb", "e", "maskulin", "s"), # Gedankenschinder, Gedankendieb
