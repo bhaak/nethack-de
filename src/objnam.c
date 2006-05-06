@@ -471,7 +471,10 @@ register struct obj *obj;
 		    else Sprintf(buf, "%s %s", dn, rock);
 		} else {
 		    Strcpy(buf, actualn);
+// "Stein" is already attached to the name of the stone where necessary
+#ifndef GERMAN
 		    if (GemStone(typ)) Strcat(buf, " NOUN_STONE");
+#endif
 		}
 		break;
 	    }

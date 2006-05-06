@@ -436,6 +436,21 @@ START_TEST (test_scrolls) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_gems) {
+	char *text[][2] = {
+		{"M - ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GREEN NOUN_GEM", "M - ein grüner Schmuckstein"},
+    {"N - ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_VIOLET NOUN_GEM", "N - ein violetter Schmuckstein"},
+    {"O - ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_STONE", "O - ein grauer Stein"},
+    {"P - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_GEM_GRAY NOUN_STONE", "P - ein verfluchter grauer Stein"},
+    {"Q - ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_STONE", "Q - ein grauer Stein"},
+    {"R - ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_STONE", "R - ein grauer Stein"},
+    {"S - ARTIKEL_UNBESTIMMTER NOUN_GEM_ROCK", "S - ein Stein"}
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
+
 Suite *test_suite(void)
 {
   Suite *s = suite_create("all tests");
@@ -464,6 +479,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_casus_and_modifier);
 	tcase_add_test(tc_core, test_rings);
 	tcase_add_test(tc_core, test_scrolls);
+	tcase_add_test(tc_core, test_gems);
 
   return s;
 }
