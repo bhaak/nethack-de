@@ -19,6 +19,7 @@ void check_strings(char* text[][2], int size) {
 								text[i][0],ret,text[i][1]);}
 }
 
+#if 0
 START_TEST (test_tincontent)
 {
 	char *text[][2] = {{"a - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH.",
@@ -361,6 +362,7 @@ START_TEST (test_inventory_names) {
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
+#endif
 
 void check_german2meta(char* text[][2], int size) {
 	int i;
@@ -376,11 +378,17 @@ void check_german2meta(char* text[][2], int size) {
 START_TEST (test_wishing) {
 	char *text[][2] = {{"Augenbinde",  "NOUN_BLINDFOLD"},
 										 {"Augenbinden", "NOUN_BLINDFOLDs"},
-										 {"eine Augenbinden", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLDs"}};
+										 {"eine Augenbinden", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLDs"},
+										 {"der Hund", "ARTIKEL_BESTIMMTER NOUN_DOG"},
+										 {"einen grauen Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
+										 {"einen geheiligter Rubin", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_GEM_RUBY"},
+										 {"ein geheiligter rubinroter Trank", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_POT_RUBY NOUN_POTION"},
+	};
 
 	check_german2meta(text, sizeof(text)/8);
 } END_TEST
 
+#if 0
 START_TEST (test_casus_and_modifier) {
 	char *text[][2] = {
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_GENDARMERIE VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!",
@@ -450,6 +458,7 @@ START_TEST (test_gems) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+#endif
 
 Suite *test_suite(void)
 {
@@ -457,6 +466,8 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
+	tcase_add_test(tc_core, test_wishing);
+	/*
   tcase_add_test(tc_core, test_identified_spellbooks);
 	tcase_add_test(tc_core, test_nominal_phrasen);
 	tcase_add_test(tc_core, test_possessiv);
@@ -480,6 +491,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_rings);
 	tcase_add_test(tc_core, test_scrolls);
 	tcase_add_test(tc_core, test_gems);
+	*/
 
   return s;
 }

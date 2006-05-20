@@ -1807,7 +1807,8 @@ boolean from_user;
 
 	char oclass;
 	char *un, *dn, *actualn;
-	char *german_str = nextobuf();
+	//char *german_str = nextobuf();
+	char german_str[BUFSZ];
 	const char *name=0;
 
 	cnt = spe = spesgn = typ = very = rechrg =
@@ -1843,20 +1844,27 @@ boolean from_user;
 	/* save the [nearly] unmodified choice string */
 	Strcpy(fruitbuf, bp);
 
-	Strcpy(german_str, bp);
-	german2meta(german_str);
-
+	//Strcpy(german_str, bp);
+	german2meta(bp, german_str);
+	printf("\n\ngerman2meta returned%s\n", german_str);
+	pline("wishing1: %s",bp);
+	pline("wishing2: %s",german_str);
+	bp = german_str;
+	pline("wishing3: %s",bp);
+	pline("wishing4: %s",german_str);
+	
 	for(;;) {
 		register int l;
 
+		pline("wishing5: %s", bp);
 		if (!bp || !*bp) goto any;
-		if (!strncmpi(bp, "ein", l=2)) {
+		if (!strncmpi(bp, "ARTIKEL_UNBESTIMMTER ", l=21)) {
 			cnt = 1;
 			/* FIXME: move following line, when all is translated */
-			do { bp++; } while(*(bp+l) != ' ');
-		} else if (!strncmpi(bp, "der ", l=4) ||
-		           !strncmpi(bp, "die ", l=4) ||
-		           !strncmpi(bp, "das ", l=4)) {
+			//do { bp++; } while(*(bp+l) != ' ');
+		} else if (!strncmpi(bp, "ARTIKEL_BESTIMMTER ", l=19) ||
+		           !strncmpi(bp, "ARTIKEL_BESTIMMTER ", l=19) ||
+		           !strncmpi(bp, " ARTIKEL_BESTIMMTER ", l=19)) {
 			;	/* just increment `bp' by `l' below */
 		} else if (!cnt && digit(*bp) && strcmp(bp, "0")) {
 			cnt = atoi(bp);
@@ -1869,21 +1877,16 @@ boolean from_user;
 			while(digit(*bp)) bp++;
 			while(*bp == ' ') bp++;
 			l = 0;
-		} else if (!strncmpi(bp, "gesegnet", l=8) ||
-		     !strncmpi(bp, "geheiligt", l=9) ||
-			   !strncmpi(bp, "heilig", l=6)) {
+		} else if (!strncmpi(bp, "ADJEKTIV_BLESSED ", l=17) ||
+		     !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17) ||
+			   !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17)) {
 			blessed = 1;
-			/* FIXME: move following line, when all is translated */
-			do { bp++; } while(*(bp+l) != ' ');
-		} else if (!strncmpi(bp, "verflucht", l=9) ||
-			   !strncmpi(bp, "unholy ", l=7)) {
+			printf("\n\nblessed %s\n", bp);
+		} else if (!strncmpi(bp, "ADJEKTIV_CURSED ", l=16) ||
+			   !strncmpi(bp, "ADJEKTIV_CURSED ", l=16)) {
 			iscursed = 1;
-			/* FIXME: move following line, when all is translated */
-			do { bp++; } while(*(bp+l) != ' ');
-		} else if (!strncmpi(bp, "nicht verflucht", l=15)) {
+		} else if (!strncmpi(bp, "ADJEKTIV_UNCURSED ", l=18)) {
 			uncursed = 1;
-			/* FIXME: move following line, when all is translated */
-			do { bp++; } while(*(bp+l) != ' ');
 #ifdef INVISIBLE_OBJECTS
 		} else if (!strncmpi(bp, "invisible ", l=10)) {
 			isinvisible = 1;
@@ -1931,7 +1934,7 @@ boolean from_user;
 			very = 0;
 		} else if (!strncmpi(bp, "halb verspeis", l=13)) {
 			halfeaten = 1;
-			/* FIXME: move following line, when all is translated */
+			/* FIXME: remove following line, when all is translated */
 			do { bp++; } while(*(bp+l) != ' ');
 		} else if (!strncmpi(bp, "historic ", l=9)) {
 			ishistoric = 1;

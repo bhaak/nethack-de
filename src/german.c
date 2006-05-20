@@ -90,16 +90,25 @@ void print_state()
 	printf("\n");
 }
 
-/* convert 'Fuchs' to 'NOUN_FOX' */
-const char *get_meta_substantiv(char *wort, int len) {
+/* Converts 'Fuchs' to 'NOUN_FOX'. Always returns the longest match. */
+struct substantiv_oder_adjekiv_struct *get_meta_substantiv(char *wort) {
 	int i=0;
-	
+	struct substantiv_oder_adjekiv_struct *ret = NULL;
+	int len = 0;
+	int tmp_len = 0;
+
 	while (worte[i].wort!=NULL) {
-		if (strncmp(worte[i].wort, wort, len)==0) { return worte[i].typ; }
+		tmp_len = strlen(worte[i].wort);
+		if (strncmp(worte[i].wort, wort, tmp_len)==0) {
+			if (tmp_len >= len) {
+				ret = &worte[i];
+				len = tmp_len;
+			}
+		}
 		i++;
 	}
 	
-	return wort;
+	return ret;
 }
 
 void german2meta(char *str, char *output)
@@ -107,11 +116,30 @@ void german2meta(char *str, char *output)
 	int i=0;
 	char *ptr = str;
 	output[0] = '\0';
+	int len=0;
 	
-	//printf("\n%s\n",ptr);
-	//ptr = strstr(ptr, " ");
-	//printf("%s\n",ptr+1);
-	strcpy(output, get_meta_substantiv(ptr, strlen(ptr)));
+	//printf("str: %s\n",str);
+	//printf("strlen(str): %d\n",strlen(str));
+	while (i < strlen(str)) {
+		//printf("i: %d\n",i);
+		//printf("1\n",i);
+		//printf("1.5 %s\n",str+i);
+		struct substantiv_oder_adjekiv_struct *wort = get_meta_substantiv(str+i);
+		//printf("2\n",i);
+		
+		if (wort == NULL) {
+			// No match. Advance one character and try again
+			strncat(output, str+i, 1);
+			i++;
+		} else {
+			// Found a match. Copy string and jump over word
+			//printf("3 wort->wort: %s\n",wort->typ);
+			strcat(output, wort->typ);
+			i = i + strlen(wort->wort);
+			//printf("4\n",i);
+		}
+	}
+	printf("\ngerman2meta %s\n", output);
 }
 
 const char* get_verb(const char* verb, enum Person p, enum Numerus n) {
@@ -479,10 +507,11 @@ char* german(const char *line) {
 			Role_if(PM_MONK)    ||
 			Role_if(PM_PRIEST)  ||
 			Role_if(PM_SAMURAI) ||
-			Role_if(PM_WIZARD)) {
+			Role_if(PM_WIZARD))
 #else
-	if (0) {
+	if (0)
 #endif
+	{
 		pm_genus   = maskulin; // change to players choice
 		pm_person  = zweitePerson;
 		pm_numerus = n_plural;
