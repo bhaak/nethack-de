@@ -739,6 +739,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HELMET", "Helm", "es", "Helm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SHIELD", "Schild", "es", "Schild", "e", "maskulin"), 
     dekliniere_substantiv("NOUN_STONE", "Stein", "es", "Stein", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SWORD", "Schwert", "es", "Schwert", "er", "neutrum"),
     "",
     "",
 
