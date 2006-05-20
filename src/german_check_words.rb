@@ -15,8 +15,8 @@ File.open("german.h") { |german|
 count = 0
 lines.each { |line|
   if line =~ /\#define.*NAM_.*(".*")/ then
-    if translated.include? $1 then
-      puts $1#+' nicht übersetzt!'
+    if not translated.include? $1 then
+      puts $1+' nicht übersetzt!'
       count += 1
     end
   end
