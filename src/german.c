@@ -565,6 +565,10 @@ char* german(const char *line) {
 
 			if (strcmp("ARTIKEL_BESTIMMTER", tmp)==0) { c_artikel = bestimmter; }
 			else if (strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) { c_artikel = unbestimmter; }
+			else if (strcmp("ARTIKEL_NULL",tmp)==0) {
+				c_artikel = ohne;
+				insert_char = 0;
+			}
 
 			append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 
@@ -639,6 +643,16 @@ char* german(const char *line) {
 			
 			if (strncmp("NOUN_TIN", tmp, 8)==0) { partikel_of_as_mit = 1; }
 
+			if (strncmp("NOUN_PAAR", tmp, 9)==0) {
+				if (c_casus == nominativ) {
+					c_casus = nominativ;
+				} else {
+					c_casus = genitiv;
+				}
+				c_numerus = n_plural;
+				c_artikel = ohne;
+			}
+			
 			if (strlen(made_from)>0) {
 				append(output, " aus ");
 				append(output, get_wort(made_from, akkusativ, maskulin|feminin|neutrum, n_singular, c_artikel));

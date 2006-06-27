@@ -650,6 +650,8 @@ def ausgabe_nouns
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "eine",  [$nom,$akk],  $fem, $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einer", [$gen,$dat],  $fem, $sg),
     "",
+    unregelmaessiges_wort("ARTIKEL_NULL", "", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
+    "",
     unregelmaessiges_wort("NOUN_IT",            "es",  [$nom,$akk], $neu, $sg),
     "",
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "du",    $nom,       [$mal,$fem,$neu], $sg),

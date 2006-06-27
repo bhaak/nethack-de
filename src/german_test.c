@@ -258,11 +258,11 @@ START_TEST (test_complete_sentences) {
 		 "Du siehst hier ein Ei."},
 		{"SUBJECT PRONOMEN_POSSESSIV NOUN_WALLET ist leer.",
 		 "Deine Geldbörse ist leer."},
-                {"SUBJECT PRONOMEN_PERSONAL VERB_ABBRECHEN OBJECT PRONOMEN_POSSESSIV NOUN_VERSUCH, die Büchse zu öffnen, SATZKLAMMER.",
-                 "Du brichst deinen Versuch, die Büchse zu öffnen, ab."},
-                {"KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ VERB_GELINGEN NOUN_IT, die Dose zu öffnen.",
-                  "Dir gelingt es, die Dose zu öffnen."},
-        };
+    {"SUBJECT PRONOMEN_PERSONAL VERB_ABBRECHEN OBJECT PRONOMEN_POSSESSIV NOUN_VERSUCH, die Büchse zu öffnen, SATZKLAMMER.",
+     "Du brichst deinen Versuch, die Büchse zu öffnen, ab."},
+    {"KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ VERB_GELINGEN NOUN_IT, die Dose zu öffnen.",
+     "Dir gelingt es, die Dose zu öffnen."},
+  };
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
@@ -464,6 +464,43 @@ START_TEST (test_gems) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_paar) {
+	char *text[][2] = {
+
+		// Paar + Nix
+		{"a - ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_OLD_GLOVES",
+		 "a - ein Paar alte Handschuhe"},
+		{"b - KASUS_GENITIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_OLD_GLOVES",
+		 "b - eines Paares alter Handschuhe"},
+		{"c - mit KASUS_DATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_OLD_GLOVES",
+		 "c - mit einem Paare alter Handschuhe"},
+		{"d - für KASUS_AKKUSATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_OLD_GLOVES",
+		 "d - für ein Paar alter Handschuhe"},
+
+		// Paar + Kasus von Paar
+		{"e - ARTIKEL_UNBESTIMMTER NOUN_PAAR NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
+		 "e - ein Paar alte Handschuhe"},
+		{"f - KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_PAAR NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
+		 "f - des Paares alter Handschuhe"},
+		{"g - mit KASUS_DATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_DATIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
+		 "g - mit einem Paare alten Handschuhen"},
+		{"h - für ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_AKKUSATIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
+		 "h - für ein Paar alte Handschuhe"},
+
+		// Paar + Genitiv
+		{"i - ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_GENITIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
+		 "i - ein Paar alter Handschuhe"},
+		{"j - KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_PAAR KASUS_GENITIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
+		 "j - des Paares alter Handschuhe"},
+		{"k - mit KASUS_DATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_GENITIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
+		 "k - mit einem Paare alter Handschuhe"},
+		{"l - für ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_GENITIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
+		 "l - für ein Paar alter Handschuhe"},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
 //#endif
 
 Suite *test_suite(void)
@@ -497,6 +534,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_rings);
 	tcase_add_test(tc_core, test_scrolls);
 	tcase_add_test(tc_core, test_gems);
+	tcase_add_test(tc_core, test_paar);
 
   return s;
 }

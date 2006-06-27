@@ -279,7 +279,7 @@ register struct obj *obj;
 	    case VENOM_CLASS:
 	    case TOOL_CLASS:
 		if (typ == LENSES)
-			Strcpy(buf, "NOUN_PAAR NUMERUS_PLURAL ");
+			Strcpy(buf, "NOUN_PAAR ");
 
 		if (!obj->dknown)
 			Strcat(buf, dn ? dn : actualn);
@@ -307,7 +307,7 @@ register struct obj *obj;
 		/* CHECK ME: Ich bin nicht sicher, ob das stimmt. 
 		 * Sind die Substantive nach 'Paar' in einem bestimmten Fall,
 		 * oder in demselben wie 'Paar'? */
-		if(is_boots(obj) || is_gloves(obj)) Strcpy(buf,"NOUN_PAAR NUMERUS_PLURAL ");
+		if(is_boots(obj) || is_gloves(obj)) Strcpy(buf,"NOUN_PAAR ");
 
 		if(obj->otyp >= ELVEN_SHIELD && obj->otyp <= ORCISH_SHIELD
 				&& !obj->dknown) {
