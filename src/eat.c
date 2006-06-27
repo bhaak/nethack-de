@@ -682,8 +682,7 @@ register struct permonst *ptr;
 		debugpline("Trying to give sleep resistance");
 #endif
 		if(!(HSleep_resistance & FROMOUTSIDE)) {
-			/* EN You_feel("wide awake."); */
-			Du_fuehlst_dich("hellwach.");
+			Du_fuehlst_dich("hellwach."); /* EN You_feel("wide awake."); */
 			HSleep_resistance |= FROMOUTSIDE;
 		}
 		break;
@@ -980,7 +979,7 @@ violated_vegetarian()
 {
     u.uconduct.unvegetarian++;
     if (Role_if(PM_MONK)) {
-	You_feel("guilty.");
+	Du_fuehlst_dich("schuldig."); /* EN You_feel("guilty."); */
 	adjalign(-1);
     }
     return;
@@ -998,7 +997,7 @@ opentin()		/* called during each move whilst opening a tin */
 					/* perhaps it was stolen? */
 		return(0);		/* %% probably we should use tinoid */
 	if(tin.usedtime++ >= 50) {
-		You("give up your attempt to open the tin.");
+		You("VERB_ABBRECHEN OBJECT PRONOMEN_POSSESSIV Versuch, die Büchse zu öffnen, SATZKLAMMER."); /* EN You("give up your attempt to open the tin."); */
 		return(0);
 	}
 	if(tin.usedtime < tin.reqtime)
@@ -1008,7 +1007,7 @@ opentin()		/* called during each move whilst opening a tin */
 		b_trapped("tin", 0);
 		goto use_me;
 	}
-	You("succeed in opening the tin.");
+        pline("KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ VERB_GELINGEN NOUN_IT, die Dose zu öffnen."); /* EN You("succeed in opening the tin."); */
 	if(tin.tin->spe != 1) {
 	    if (tin.tin->corpsenm == NON_PM) {
 		pline("It turns out to be empty.");
@@ -1043,7 +1042,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    victual.fullwarn = victual.eating = victual.doreset = FALSE;
 
 	    You("consume %s %s.", tintxts[r].txt,
-			mons[tin.tin->corpsenm].mname);
+			mons[tin.tin->corpsenm].mname); /* DE verzehrst %s %s. */
 
 	    /* KMH, conduct */
 	    u.uconduct.food++;
@@ -1120,7 +1119,7 @@ start_tin(otmp)		/* called when starting to open a tin */
 	register int tmp;
 
 	if (metallivorous(youmonst.data)) {
-		You("bite right into the metal tin...");
+		You("VERB_BITE einfach in die Metalldose ..."); /* EN You("bite right into the metal tin..."); */
 		tmp = 1;
 	} else if (nolimbs(youmonst.data)) {
 		You("cannot handle the tin properly to open it.");
@@ -1148,7 +1147,8 @@ start_tin(otmp)		/* called when starting to open a tin */
 		default:
 			goto no_opener;
 		}
-		pline("Using your %s you try to open the tin.",
+		/* pline("Mit(tels?) PRONOMEN_POSSESSIV %s VERB_VERSUCHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL die Dose zu öffnen.", */
+                pline("Using your %s you try to open the tin.",
 			aobjnam(uwep, (char *)0));
 	} else {
 no_opener:
@@ -1186,7 +1186,7 @@ struct obj *obj;
 {
 	pline("Blecch!  Rotten %s!", foodword(obj));
 	if(!rn2(4)) {
-		if (Hallucination) You_feel("rather trippy.");
+		if (Hallucination) Du_fuehlst_dich("ziemlich trippig."); /* EN You_feel("rather trippy."); */
 		else You_feel("rather %s.", body_part(LIGHT_HEADED));
 		make_confused(HConfusion + d(2,4),FALSE);
 	} else if(!rn2(4) && !Blind) {
@@ -1209,7 +1209,7 @@ struct obj *obj;
 		pline_The("world spins and %s %s.", what, where);
 		flags.soundok = 0;
 		nomul(-rnd(10));
-		nomovemsg = "You are conscious again.";
+		nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_SEIN wieder bei Bewusstsein."; /* EN "You are conscious again."; */
 		afternmv = Hear_again;
 		return(1);
 	}
@@ -1538,7 +1538,7 @@ struct obj *otmp;
 		if (!(HSleep_resistance & FROMOUTSIDE))
 		    accessory_has_effect(otmp);
 		if (!Sleep_resistance)
-		    You_feel("wide awake.");
+		    Du_fuehlst_dich("hellwach."); /* EN You_feel("wide awake."); */
 		HSleep_resistance |= FROMOUTSIDE;
 		break;
 	    case AMULET_OF_CHANGE:
@@ -1907,7 +1907,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	}
 	/* KMH -- Slow digestion is... indigestible */
 	if (otmp->otyp == RIN_SLOW_DIGESTION) {
-		pline("This ring is indigestible!");
+		pline("Dieser Ring ist unverdaulich!"); /* EN pline("This ring is indigestible!"); */
 		(void) rottenfood(otmp);
 		if (otmp->dknown && !objects[otmp->otyp].oc_name_known
 				&& !objects[otmp->otyp].oc_uname)
@@ -2186,6 +2186,7 @@ register int num;
 			victual.fullwarn = TRUE;
 			if (victual.canchoke && victual.reqtime > 1) {
 			    /* a one-gulp food will not survive a stop */
+                            /* DE Essen unterbrechen? */
 			    if (yn_function("Stop eating?",ynchars,'y')=='y') {
 				reset_eat();
 				nomovemsg = (char *)0;
