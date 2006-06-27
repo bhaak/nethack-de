@@ -1844,14 +1844,13 @@ boolean from_user;
 	/* save the [nearly] unmodified choice string */
 	Strcpy(fruitbuf, bp);
 
-	//Strcpy(german_str, bp);
 	german2meta(bp, german_str);
-	printf("\n\ngerman2meta returned%s\n", german_str);
-	pline("wishing1: %s",bp);
-	pline("wishing2: %s",german_str);
+	//printf("\n\ngerman2meta returned%s\n", german_str);
+	//pline("wishing1: %s",bp);
+	//pline("wishing2: %s",german_str);
 	bp = german_str;
-	pline("wishing3: %s",bp);
-	pline("wishing4: %s",german_str);
+	//pline("wishing3: %s",bp);
+	//pline("wishing4: %s",german_str);
 	
 	for(;;) {
 		register int l;
@@ -1932,10 +1931,8 @@ boolean from_user;
 			   !strncmpi(bp, "rotted ", l=7)) {
 			eroded2 = 1 + very;
 			very = 0;
-		} else if (!strncmpi(bp, "halb verspeis", l=13)) {
+		} else if (!strncmpi(bp, "halb ADJEKTIV_EATEN ", l=20)) {
 			halfeaten = 1;
-			/* FIXME: remove following line, when all is translated */
-			do { bp++; } while(*(bp+l) != ' ');
 		} else if (!strncmpi(bp, "historic ", l=9)) {
 			ishistoric = 1;
 		} else if (!strncmpi(bp, "diluted ", l=8)) {
