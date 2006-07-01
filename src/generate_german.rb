@@ -136,8 +136,13 @@ def substantiv_endung(singularstamm, genitiv_singular_endung,
   when "es"
     casus[$nom][$sg] = ""
     casus[$akk][$sg] = ""
-    casus[$dat][$sg] = $dativ_e ? "e" : ""
-    casus[$gen][$sg] = $genitiv_e ? "es" : "s"
+    if singularstamm[-1..-1]=='e' then
+      casus[$dat][$sg] = ""
+      casus[$gen][$sg] = "s"
+    else
+      casus[$dat][$sg] = $dativ_e ? "e" : ""
+      casus[$gen][$sg] = $genitiv_e ? "es" : "s"
+    end
   when "s" 
     casus[$nom][$sg] = ""
     casus[$akk][$sg] = ""
@@ -415,7 +420,7 @@ def ausgabe_verbs
     konjugiere_verb("VERB_HEAR","hör"),
     konjugiere_verb("VERB_SMELL","riech"),
     konjugiere_verb("VERB_MISS","verfehl"),
-    konjugiere_verb("VERB_KILL","töte"),
+    konjugiere_verb("VERB_KILL","töt"),
     konjugiere_verb("VERB_TOUCH","berühr"),
     konjugiere_verb("VERB_SCHLEUDERN","schleuder"),
     konjugiere_verb("VERB_ZERSPRINGEN","zerspring"),
@@ -649,8 +654,6 @@ def ausgabe_nouns
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "ein",   $akk,  $neu, $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "eine",  [$nom,$akk],  $fem, $sg),
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einer", [$gen,$dat],  $fem, $sg),
-    "",
-    unregelmaessiges_wort("ARTIKEL_NULL", "", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
     "",
     unregelmaessiges_wort("NOUN_IT",            "es",  [$nom,$akk], $neu, $sg),
     "",
@@ -1073,7 +1076,7 @@ def ausgabe_nouns
     dekliniere_substantiv("RING_UNIDENTIFIED_CORAL",      "Koralle", "",   "Koralle", "en",  "feminin"),
     dekliniere_substantiv("RING_UNIDENTIFIED_BLACK_ONYX", "Onyx", "es",   "Onyx", "e",  "maskulin"),
     dekliniere_substantiv("RING_UNIDENTIFIED_MOONSTONE",  "Mondstein", "es",   "Mondstein", "e",  "maskulin"),
-    dekliniere_substantiv("RING_UNIDENTIFIED_TIGER_EYE",  "Tigeraug", "es",   "Tigerauge", "en",  "neutrum"),
+    dekliniere_substantiv("RING_UNIDENTIFIED_TIGER_EYE",  "Tigerauge", "es",   "Tigerauge", "en",  "neutrum"),
     dekliniere_substantiv("RING_UNIDENTIFIED_JADE",       "Jade", "s",   "", "",  "feminin"),
     dekliniere_substantiv("RING_UNIDENTIFIED_BRONZE",     "Bronze", "",   "Bronze", "en",  "feminin"),
     dekliniere_substantiv("RING_UNIDENTIFIED_AGATE",      "Achat", "es",   "Achat", "e",  "maskulin"),
