@@ -565,12 +565,13 @@ char* german(const char *line) {
 
 			if (strcmp("ARTIKEL_BESTIMMTER", tmp)==0) { c_artikel = bestimmter; }
 			else if (strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) { c_artikel = unbestimmter; }
-			else if (strcmp("ARTIKEL_NULL",tmp)==0) {
+
+			if (strcmp("ARTIKEL_NULL",tmp)==0) {
 				c_artikel = ohne;
 				insert_char = 0;
+			} else {
+				append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 			}
-
-			append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 
 		} else if (strncmp("RING_UNIDENTIFIED_", tmp, 18)==0) {
 			append(output, get_wort(tmp, nominativ, maskulin|feminin|neutrum, n_singular, c_artikel));
