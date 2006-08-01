@@ -2497,13 +2497,20 @@ mercury
 	chameleon though, which assumes the shape of another creature
 	and goes in hunt of food, the mimic waits patiently for its
 	meals to come in search of it.
-*mind flayer
-	This creature has a humanoid body, tentacles around its
-	covered mouth, and three long fingers on each hand.  Mind
-	flayers are telepathic, and love to devour intelligent beings,
-	especially humans.  If they hit their victim with a tentacle,
-	the mind flayer will slowly drain it of all intelligence,
-	eventually killing its victim.
+#*mind flayer
+#	This creature has a humanoid body, tentacles around its
+#	covered mouth, and three long fingers on each hand.  Mind
+#	flayers are telepathic, and love to devour intelligent beings,
+#	especially humans.  If they hit their victim with a tentacle,
+#	the mind flayer will slowly drain it of all intelligence,
+#	eventually killing its victim.
+gedankendieb
+gedankenschinder
+	Dieses Geschöpf besitzt eine humanoiden Körper, einen tentakelbewehrten
+	Mund und drei lange Finger an jeder Hand. Gedankendiebe sind
+	telepathisch und lieben es intelligente Wesen zu verschlingen,
+	insbesondere Menschen. Berühren sie ihr Opfer mit einem Tentakel,
+	saugen sie ihm langsam die Intelligenz aus bis der Tod eintritt.
 mine*
 	Made by Dwarfs.  The Rule here is that the Mine is either long
 	deserted or at most is inhabited by a few survivors who will
