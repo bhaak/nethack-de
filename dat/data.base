@@ -2586,23 +2586,40 @@ mjollnir
 	Most molds are saprophytes.  Some species (e.g., penicillium)
 	are used in making cheese and antibiotics.
 		[ The Concise Columbia Encyclopedia ]
+#mol?ch
+#	And the Lord spake unto Moses, saying,
+#	Again, thou shalt say to the children of Israel, Whosoever
+#	he be of the children of Israel, or of the strangers that
+#	sojourn in Israel, that giveth any of his seed unto Molech;
+#	he shall surely be put to death: the people of the land shall
+#	stone him with stones.
+#	And I will set my face against that man, and will cut him off
+#	from among his people; because he hath given of his seed unto
+#	Molech, to defile my sanctuary, and to profane my holy name.
+#	And if the people of the land do any ways hide their eyes
+#	from the man, when he giveth of his seed unto Molech, and kill
+#	him not:
+#	Then I will set my face against that man, and against his
+#	family, and will cut him off, and all that go a whoring after
+#	him, to commit whoredom with Molech, from among their people.
+#		[ Leviticus 20:1-5 ]
 mol?ch
-	And the Lord spake unto Moses, saying,
-	Again, thou shalt say to the children of Israel, Whosoever
-	he be of the children of Israel, or of the strangers that
-	sojourn in Israel, that giveth any of his seed unto Molech;
-	he shall surely be put to death: the people of the land shall
-	stone him with stones.
-	And I will set my face against that man, and will cut him off
-	from among his people; because he hath given of his seed unto
-	Molech, to defile my sanctuary, and to profane my holy name.
-	And if the people of the land do any ways hide their eyes
-	from the man, when he giveth of his seed unto Molech, and kill
-	him not:
-	Then I will set my face against that man, and against his
-	family, and will cut him off, and all that go a whoring after
-	him, to commit whoredom with Molech, from among their people.
-		[ Leviticus 20:1-5 ]
+	Der Herr sprach zu Mose:  	
+	Sag zu den Israeliten: Jeder Mann unter den Israeliten oder
+	unter den Fremden in Israel, der eines seiner Kinder dem
+	Moloch gibt, wird mit dem Tod bestraft. Die Bürger des Landes
+	sollen ihn steinigen. 	
+	Ich richte mein Angesicht gegen einen solchen und merze ihn aus
+	seinem Volk aus, weil er eines seiner Kinder dem Moloch gegeben,
+	dadurch mein Heiligtum verunreinigt und meinen heiligen Namen
+	entweiht hat. 	
+	Falls die Bürger des Landes ihre Augen diesem Mann gegenüber
+	verschließen, wenn er eines seiner Kinder dem Moloch gibt, und
+	ihn nicht töten, 	
+	so richte ich mein Angesicht gegen ihn und seine Sippe und merze
+	sie aus der Mitte ihres Volkes aus, ihn und alle, die sich mit
+	ihm dem Molochdienst hingeben.
+	  [ Levitikus, 20,1-5 ]
 monk
 * monk
 grand master
@@ -3569,47 +3586,91 @@ slime mold
 	mass of protoplasm called a plasmodium, which creeps about
 	and feeds by amoeboid movement.
 		[ The Concise Columbia Encyclopedia ]
-sling
-	And it came to pass, when the Philistine arose, and came and
-	drew nigh to meet David, that David hasted, and ran toward
-	the army to meet the Philistine.
-	And David put his hand in his bag, and took thence a stone,
-	and slang it, and smote the Philistine in his forehead, that
-	the stone sunk into his forehead; and he fell upon his face
-	to the earth.
-	So David prevailed over the Philistine with a sling and with
-	a stone, and smote the Philistine, and slew him; but there
-	was no sword in the hand of David.
-		[ 1 Samuel 17:48-50 ]
-*snake
+#sling
+#	And it came to pass, when the Philistine arose, and came and
+#	drew nigh to meet David, that David hasted, and ran toward
+#	the army to meet the Philistine.
+#	And David put his hand in his bag, and took thence a stone,
+#	and slang it, and smote the Philistine in his forehead, that
+#	the stone sunk into his forehead; and he fell upon his face
+#	to the earth.
+#	So David prevailed over the Philistine with a sling and with
+#	a stone, and smote the Philistine, and slew him; but there
+#	was no sword in the hand of David.
+#		[ 1 Samuel 17:48-50 ]
+Schleuder
+	Als der Philister weiter vorrückte und immer näher an David
+	herankam, lief auch David von der Schlachtreihe (der
+	Israeliten) aus schnell dem Philister entgegen.
+	Er griff in seine Hirtentasche, nahm einen Stein heraus,
+	schleuderte ihn ab und traf den Philister an der Stirn. Der
+	Stein drang in die Stirn ein und der Philister fiel mit dem
+	Gesicht zu Boden.
+	So besiegte David den Philister mit einer Schleuder und einem
+	Stein; er traf den Philister und tötete ihn, ohne ein Schwert
+	in der Hand zu haben.
+		[ 1.Samuel 17,48-50 ]
+#*snake
+#serpent
+#water moccasin
+#python
+#pit viper
+#	Now the serpent was more subtle than any beast of the field
+#	which the Lord God had made.  And he said unto the woman, Yea,
+#	hath God said, Ye shall not eat of every tree of the garden?
+#	And the woman said unto the serpent, We may eat of the fruit of
+#	the trees of the garden:  but of the fruit of the tree which is
+#	in the midst of the garden, God hath said, Ye shall not eat of
+#	it, neither shall ye touch it, lest ye die.  And the serpent
+#	said unto the woman, Ye shall not surely die:  for God doth
+#	know that in the day ye eat thereof, then your eyes shall be
+#	opened, and ye shall be as gods, knowing good and evil.  And
+#	when the woman saw that the tree was good for food, and that it
+#	was pleasant to the eyes, and a tree to be desired to make one
+#	wise, she took of the fruit thereof, and did eat, and gave also
+#	unto her husband with her; and he did eat.
+#
+#	And the Lord God said unto the woman, What is this that thou
+#	hast done?  And the woman said, The serpent beguiled me, and I
+#	did eat.  And the Lord God said unto the serpent, Because thou
+#	hast done this, thou art cursed above all cattle, and above
+#	every beast of the field; upon thy belly shalt thou go, and
+#	dust shalt thou eat all the days of thy life:  And I will put
+#	enmity between thee and the woman, and between thy seed and her
+#	seed; it shall bruise thy head, and thou shalt bruise his heel.
+#		[ Genesis 3:1-6,13-15 ]
+*schlange
 serpent
 water moccasin
 python
 pit viper
-	Now the serpent was more subtle than any beast of the field
-	which the Lord God had made.  And he said unto the woman, Yea,
-	hath God said, Ye shall not eat of every tree of the garden?
-	And the woman said unto the serpent, We may eat of the fruit of
-	the trees of the garden:  but of the fruit of the tree which is
-	in the midst of the garden, God hath said, Ye shall not eat of
-	it, neither shall ye touch it, lest ye die.  And the serpent
-	said unto the woman, Ye shall not surely die:  for God doth
-	know that in the day ye eat thereof, then your eyes shall be
-	opened, and ye shall be as gods, knowing good and evil.  And
-	when the woman saw that the tree was good for food, and that it
-	was pleasant to the eyes, and a tree to be desired to make one
-	wise, she took of the fruit thereof, and did eat, and gave also
-	unto her husband with her; and he did eat.
+	Die Schlange war schlauer als alle Tiere des Feldes, die Gott,
+	der Herr, gemacht hatte. Sie sagte zu der Frau: Hat Gott wirklich
+	gesagt: Ihr dürft von keinem Baum des Gartens essen?  	
+	Die Frau entgegnete der Schlange: Von den Früchten der Bäume im
+	Garten dürfen wir essen; 	
+	nur von den Früchten des Baumes, der in der Mitte des Gartens
+	steht, hat Gott gesagt: Davon dürft ihr nicht essen und daran
+	dürft ihr nicht rühren, sonst werdet ihr sterben.
+	Darauf sagte die Schlange zur Frau: Nein, ihr werdet nicht sterben.
+	Gott weiß vielmehr: Sobald ihr davon esst, gehen euch die Augen
+	auf; ihr werdet wie Gott und erkennt Gut und Böse. 	
+	Da sah die Frau, dass es köstlich wäre, von dem Baum zu essen, dass
+	der Baum eine Augenweide war und dazu verlockte, klug zu werden.
+	Sie nahm von seinen Früchten und aß; sie gab auch ihrem Mann, der
+	bei ihr war, und auch er aß.
 
-	And the Lord God said unto the woman, What is this that thou
-	hast done?  And the woman said, The serpent beguiled me, and I
-	did eat.  And the Lord God said unto the serpent, Because thou
-	hast done this, thou art cursed above all cattle, and above
-	every beast of the field; upon thy belly shalt thou go, and
-	dust shalt thou eat all the days of thy life:  And I will put
-	enmity between thee and the woman, and between thy seed and her
-	seed; it shall bruise thy head, and thou shalt bruise his heel.
-		[ Genesis 3:1-6,13-15 ]
+	Gott, der Herr, sprach zu der Frau: Was hast du da getan? Die Frau
+	antwortete: Die Schlange hat mich verführt und so habe ich gegessen.  	
+	Da sprach Gott, der Herr, zur Schlange: Weil du das getan hast, bist
+	du verflucht / unter allem Vieh und allen Tieren des Feldes. / Auf
+	dem Bauch sollst du kriechen / und Staub fressen alle Tage deines
+	Lebens. 	
+	Feindschaft setze ich zwischen dich und die Frau, / zwischen deinen
+	Nachwuchs und ihren Nachwuchs. / Er trifft dich am Kopf / und du
+	triffst ihn an der Ferse.
+		[ Genesis 3,1-6;13-15 ]
+
 snickersnee
 	Ah, never shall I forget the cry,
 	    or the shriek that shrieked he,
