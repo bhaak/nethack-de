@@ -44,6 +44,8 @@ static void NDECL(wd_message);
 static boolean wiz_error_flag = FALSE;
 #endif
 
+static boolean run_testsuite = FALSE;
+
 int
 main(argc,argv)
 int argc;
@@ -283,6 +285,10 @@ not_recovered:
 		(void) pickup(1);
 	}
 
+	if (run_testsuite) {
+		exit(testsuite());
+	}
+
 	moveloop();
 	exit(EXIT_SUCCESS);
 	/*NOTREACHED*/
@@ -362,6 +368,8 @@ char *argv[];
 		case 'd':
 			if (!strncmpi(argv[0]+1, "DEC", 3))
 				switch_graphics(DEC_GRAPHICS);
+			else if (!strncmpi(argv[0]+1, "DEBUG", 5))
+				run_testsuite = TRUE;
 			break;
 		case 'p': /* profession (role) */
 			if (argv[0][2]) {
