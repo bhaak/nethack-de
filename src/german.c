@@ -111,7 +111,94 @@ struct substantiv_oder_adjekiv_struct *get_meta_substantiv(char *wort) {
 	return ret;
 }
 
+/* Converts 'Fuchs' to 'NOUN_FOX'. Always returns the longest match that starts with "with". */
+struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(char *wort, char *with) {
+	int i=0;
+	struct substantiv_oder_adjekiv_struct *ret = NULL;
+	int len = 0;
+	int tmp_len = 0;
+
+	while (worte[i].wort!=NULL) {
+		tmp_len = strlen(worte[i].wort);
+		if (strncmp(worte[i].typ, with, strlen(with))==0) {
+			if (strncmp(worte[i].wort, wort, tmp_len)==0) {
+				if (tmp_len >= len) {
+					ret = &worte[i];
+					len = tmp_len;
+				}
+			}
+		}
+		i++;
+	}
+	
+	return ret;
+}
+
+char *strstr2(char *haystack, char *needle1, char *needle2) {
+	char *pos = strstr(haystack, needle1);
+	if (pos != NULL) { return pos; }
+	pos = strstr(haystack, needle2);
+	return pos;
+}
+
+/* translates a german string to meta*/
 void german2meta(char *str, char *output)
+{
+	int i=0;
+	char *ptr = str;
+	output[0] = '\0';
+	int len=0;
+	int ring_gefunden = 0;
+	
+	printf("\ngerman2meta %s\n", str);
+	//printf("str: %s\n",str);
+	//printf("strlen(str): %d\n",strlen(str));
+	while (i < strlen(str)) {
+		//printf("i: %d\n",i);
+		//printf("1\n",i);
+		//printf("1.5 %s\n",str+i);
+		struct substantiv_oder_adjekiv_struct *wort = get_meta_substantiv(str+i);
+		//printf("2\n",i);
+
+		// gewisse Adjektive sind mehrdeutig, z.B. "rot"
+		// diese Adjektivce werden mittels den nachfolgenden Substantiven bestimmt
+		if (wort != NULL) {
+			if ((strncmp("ADJEKTIV_SPE_", wort->typ, 13)==0) ||
+					(strncmp("ADJEKTIV_POT_", wort->typ, 13)==0) ||
+					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0)) {
+				printf("%s\n", wort->typ);
+				if (strstr2(str+i, "Zauberbuch", "Zauberbüch")) {
+					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_SPE_");
+				} else if (strstr2(str+i, "Trank", "Tränk")) {
+					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_POT_");
+				}
+			}
+		}
+
+		if (wort == NULL) {
+			// No match. Advance one character and try again
+			strncat(output, str+i, 1);
+			i++;
+		} else {
+			// Found a match. Copy string and jump over word
+			//printf("3 wort->wort: %s\n",wort->typ);
+			if (strncmp("NOUN_RING", wort->typ, 9)==0) {
+				ring_gefunden = 1;
+			}
+
+			if (ring_gefunden && (strcmp("ARTIKEL_BESTIMMTER", wort->typ)==0)) {
+				strcat(output, "PARTIKEL_OF");
+				i = i + strlen(wort->wort);
+			} else {
+				strcat(output, wort->typ);
+				i = i + strlen(wort->wort);
+			}
+		}
+	}
+	printf("\ngerman2meta %s\n", output);
+}
+
+void german2meta_with(char *str, char *output, char *with)
 {
 	int i=0;
 	char *ptr = str;
@@ -594,6 +681,7 @@ char* german(const char *line) {
 			output[strlen(output)-1] = '\0';
 
 		} else if (strcmp("MODIFIER_CORPSE", tmp)==0) {
+		  // erzeugt: Leichnam eines Kobolds / Leichname von Kobolden
 			if (find_token("NOUN_CORPSE", line+pos)) { modifier_corpse = 1; }
 			else if (find_token("NOUN_CORPSEs", line+pos)) { modifier_corpse = 2; }
 

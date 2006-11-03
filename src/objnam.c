@@ -421,7 +421,7 @@ register struct obj *obj;
 			Strcat(buf, dn);
 			//Strcat(buf, "«");
 			Strcat(buf, "\"");
-			//printf("buf: %s\n", buf);
+			//fprintf(stderr, "buf: %s\n", buf);
 		} else {
 			Strcpy(buf, dn);
 			Strcat(buf, " NOUN_SCROLL");
@@ -1263,8 +1263,8 @@ struct obj *obj;
 }
 
 static const char *wrp[] = {
-	"wand", "ring", "potion", "scroll", "gem", "amulet",
-	"spellbook", "spell book",
+	"wand", "ring", "NOUN_POTION", "scroll", "gem", "amulet",
+	"NOUN_SPELLBOOK", "NOUN_SPELLBOOK",
 	/* for non-specific wishes */
 	"weapon", "armor", "armour", "tool", "food", "comestible",
 };
@@ -1826,6 +1826,8 @@ boolean from_user;
 	oclass = 0;
 	actualn = dn = un = 0;
 
+	fprintf(stderr, "readobjnam 1 oclass: %d\n", oclass);
+
 	if (!bp) goto any;
 	/* first, remove extra whitespace they may have typed */
 	(void)mungspaces(bp);
@@ -1845,7 +1847,7 @@ boolean from_user;
 	Strcpy(fruitbuf, bp);
 
 	german2meta(bp, german_str);
-	//printf("\n\ngerman2meta returned%s\n", german_str);
+	//fprintf(stderr, "\n\ngerman2meta returned%s\n", german_str);
 	//pline("wishing1: %s",bp);
 	//pline("wishing2: %s",german_str);
 	bp = german_str;
@@ -1855,7 +1857,7 @@ boolean from_user;
 	for(;;) {
 		register int l;
 
-		pline("wishing5: %s", bp);
+		//pline("wishing5: %s", bp);
 		if (!bp || !*bp) goto any;
 		if (!strncmpi(bp, "ARTIKEL_UNBESTIMMTER ", l=21)) {
 			cnt = 1;
@@ -1880,7 +1882,7 @@ boolean from_user;
 		     !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17) ||
 			   !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17)) {
 			blessed = 1;
-			printf("\n\nblessed %s\n", bp);
+			fprintf(stderr, "\n\nblessed %s\n", bp);
 		} else if (!strncmpi(bp, "ADJEKTIV_CURSED ", l=16) ||
 			   !strncmpi(bp, "ADJEKTIV_CURSED ", l=16)) {
 			iscursed = 1;
@@ -1939,10 +1941,10 @@ boolean from_user;
 			isdiluted = 1;
 		} else if(!strncmpi(bp, "empty ", l=6)) {
 			contents = EMPTY;
-		} else { pline("wishing, NICHT erkannt: %s",bp); break; }
-		pline("wishing, erkannt: %s",bp);
+		} else { /*pline("wishing, NICHT erkannt: %s",bp);*/ break; }
+		//pline("wishing, erkannt: %s",bp);
 		bp += l;
-		pline("wishing, erkannt: %s",bp);
+		//pline("wishing, erkannt: %s",bp);
 	}
 	if(!cnt) cnt = 1;		/* %% what with "gems" etc. ? */
 	if (strlen(bp) > 1) {
@@ -2121,11 +2123,11 @@ boolean from_user;
 		else blessed = 1;
 		goto typfnd;
 	}
-	if(unlabeled && !BSTRCMPI(bp, p-6, "scroll")) {
+	if(unlabeled && !BSTRCMPI(bp, p-11, "NOUN_SCROLL")) {
 		typ = SCR_BLANK_PAPER;
 		goto typfnd;
 	}
-	if(unlabeled && !BSTRCMPI(bp, p-9, "spellbook")) {
+	if(unlabeled && !BSTRCMPI(bp, p-14, "NOUN_SPELLBOOK")) {
 		typ = SPE_BLANK_PAPER;
 		goto typfnd;
 	}
@@ -2188,7 +2190,8 @@ boolean from_user;
 			oclass = wrpsym[i];
 			if(oclass != AMULET_CLASS) {
 			    bp += j;
-			    if(!strncmpi(bp, " of ", 4)) actualn = bp+4;
+			    if(!strncmpi(bp, " PARTIKEL_OF ", 13)) actualn = bp+13;
+			    if(!strncmpi(bp, " ARTIKEL_BESTIMMTER ", 20)) actualn = bp+20;
 			    /* else if(*bp) ?? */
 			} else
 			    actualn = bp;
@@ -2319,11 +2322,11 @@ srch:
 		} else if (!strncmpi(fp, "halb verspeis", l=13)) {
 			halfeatenf = 1;
 		} else {
-			pline("wishing: unerkannt: -%s-\n",fp);
+			//pline("wishing: unerkannt: -%s-\n",fp);
 			break;
 		}
 		fp += l;
-			pline("wishing: =%s=\n",fp);
+		//pline("wishing: =%s=\n",fp);
 	    }
 
 	    for(f=ffruit; f; f = f->nextf) {
@@ -2342,6 +2345,8 @@ srch:
 		}
 	    }
 	}
+
+	fprintf(stderr, "readobjnam 500 oclass: %d\n", oclass);
 
 	if(!oclass && actualn) {
 	    short objtyp;
@@ -2462,10 +2467,14 @@ srch:
 		}
 	}
 #endif
+	fprintf(stderr, "readobjnam 600 oclass: %d\n", oclass);
 	if(!oclass) return((struct obj *)0);
+	fprintf(stderr, "readobjnam 601 oclass: %d\n", oclass);
 any:
 	if(!oclass) oclass = wrpsym[rn2((int)sizeof(wrpsym))];
+	fprintf(stderr, "readobjnam 602 oclass: %d\n", oclass);
 typfnd:
+	fprintf(stderr, "readobjnam 603 oclass: %d\n", oclass);
 	if (typ) oclass = objects[typ].oc_class;
 
 	/* check for some objects that are not allowed */
@@ -2508,11 +2517,17 @@ typfnd:
 						)
 	    typ = OIL_LAMP;
 
+	fprintf(stderr, "readobjnam 630 oclass: %d\n", oclass);
 	if(typ) {
+		fprintf(stderr, "readobjnam 631 oclass: %d\n", oclass);
 		otmp = mksobj(typ, TRUE, FALSE);
+		fprintf(stderr, "readobjnam 632 oclass: %d\n", oclass);
 	} else {
+		fprintf(stderr, "readobjnam 633 oclass: %d\n", oclass);
 		otmp = mkobj(oclass, FALSE);
+		fprintf(stderr, "readobjnam 634 oclass: %d\n", oclass);
 		if (otmp) typ = otmp->otyp;
+		fprintf(stderr, "readobjnam 635 oclass: %d\n", oclass);
 	}
 
 	if (islit &&
@@ -2769,6 +2784,7 @@ typfnd:
 	otmp->owt = weight(otmp);
 	if (very && otmp->otyp == HEAVY_IRON_BALL) otmp->owt += 160;
 
+	fprintf(stderr, "readobjnam 1000 oclass: %d\n", oclass);
 	return(otmp);
 }
 

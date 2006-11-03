@@ -25,14 +25,18 @@ $unbestimmter = "unbestimmter"
 def ausgabe_definitions
   defs = "
 
+#include \"german.h\"
+/*
 enum Casus   { nominativ=1, genitiv=2, dativ=4, akkusativ=8 };
 enum Genus   { maskulin=1, feminin=2, neutrum=4 };
 enum Numerus { n_singular=1, n_plural=2 };
 enum Person  { erstePerson=1, zweitePerson=2, drittePerson=4 };
 enum Artikel { ohne=1, bestimmter=2, unbestimmter=4, grundform=8 };
+*/
 
 /* used for nouns and adjectives, as there are nouns, 
    that are inflected like adjectives */
+/*
 struct substantiv_oder_adjekiv_struct {
 	const char  *wort;
 	const char  *typ;
@@ -51,6 +55,7 @@ struct verb_struct {
 	enum Numerus numerus;
 	enum Casus casus;    
 };
+*/
 "
 
   puts defs
@@ -1448,8 +1453,6 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_SPE_PLAIN", "unbedruckt"),
     dekliniere_adjektiv("ADJEKTIV_SPE_PAPYRUS", "papyren"), # Kandidat für 'aus Papyrus'
     "",
-    "/* Spellbooks, unidentified */",
-    "",
     "/* Wands, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_WAND_GLASS", "gläsern"),
     dekliniere_substantiv("MADE_OF_WAND_BALSA", "Balsaholz",  "es", "", "er", "neutrum"),
@@ -1787,7 +1790,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_NAZGUL" Nazgûl
     #dekliniere_substantiv("NOUN_XORN"
     #dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"), # einer Menschenaffen stattdessen? Gibbon, Orang-Utan, Gorilla, Schimpanse. Gorilla scheint passend (ist auch der Vetegarischste der Menschenaffen)
     dekliniere_substantiv("NOUN_OWLBEAR", "Eulenbär", "en", "Eulenbär", "en", "maskulin"),
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
     #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
@@ -1982,8 +1985,8 @@ def ausgabe_nouns
 end
 
 # print everything
-puts "#ifndef _GERMAN_H\n#define _GERMAN_H 1\n#include <stddef.h>\n"
+#puts "#ifndef _GERMAN_H\n#define _GERMAN_H 1\n#include <stddef.h>\n"
 ausgabe_definitions
 ausgabe_nouns
 ausgabe_verbs
-puts "#endif /* !_GERMAN_H */"
+#puts "#endif /* !_GERMAN_H */"

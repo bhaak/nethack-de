@@ -151,8 +151,9 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/lib/gnome-libs/include -I../win/gnome
 # flags for debugging:
 # CFLAGS = -g -I../include
 
-CFLAGS = -O -I../include -DGERMAN
-LFLAGS = 
+CFLAGS = -I../include -DGERMAN -g #-fbounds-checking #-fprofile-arcs -ftest-coverage
+#LFLAGS = -fbounds-checking 
+LFLAGS = -lcheck
 
 # The Qt and Be window systems are written in C++, while the rest of
 # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
@@ -282,7 +283,7 @@ WINLIB = $(WINTTYLIB)
 # IRIX 4.0.x needs -lsun if NIS (YP) is being used for passwd file lookup
 # LIBS = -lsun
 #
-LIBS =
+LIBS = -lcheck
 
 # make NetHack
 GAME     = nethack
@@ -326,7 +327,7 @@ HACKCSRC = allmain.c alloc.c apply.c artifact.c attrib.c ball.c bones.c \
 	   rnd.c role.c rumors.c save.c shk.c shknam.c sit.c sounds.c sp_lev.c \
 	   spell.c steal.c steed.c teleport.c timeout.c topten.c track.c trap.c \
 	   u_init.c uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
-	   windows.c wizard.c worm.c worn.c write.c zap.c german.c
+	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c
 
 # all operating-system-dependent .c (for dependencies and such)
 SYSCSRC = ../sys/atari/tos.c ../sys/share/pcmain.c ../sys/share/pcsys.c \
@@ -383,7 +384,7 @@ HOBJ = monst.o objects.o allmain.o alloc.o apply.o artifact.o attrib.o ball.o \
 	role.o rumors.o save.o shk.o shknam.o sit.o sounds.o sp_lev.o spell.o \
 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
-	wizard.o worm.o worn.o write.o zap.o german.o \
+	wizard.o worm.o worn.o write.o zap.o german.o german_wishing_test.o german_vocabulary.o \
 	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o
 # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
 
@@ -735,12 +736,15 @@ explode.o: explode.c $(HACK_H)
 extralev.o: extralev.c $(HACK_H)
 files.o: files.c $(HACK_H) ../include/dlb.h
 fountain.o: fountain.c $(HACK_H)
-german.h: generate_german.rb
-	rm -f german.h
-	ruby generate_german.rb >german.h
-german.o: german.c german.h
-german_test: german_test.c german.o german.h
-	$(CC) -Wall $(CFLAGS) german_test.c -lcheck -o german_test german.o
+german_vocabulary.c: generate_german.rb
+	rm -f german_vocabulary.o
+	ruby generate_german.rb >german_vocabulary.c
+german_vocabulary.o: german_vocabulary.c german.h
+german.o: german.c german.h german_vocabulary.o
+german_test: german_test.c german.o german_vocabulary.o german.h
+	$(CC) -Wall $(CFLAGS) german_test.c -lcheck -o german_test german.o german_vocabulary.o
+german_wishing.o: german_wishing_test.c german.h
+
 hack.o: hack.c $(HACK_H)
 hacklib.o: hacklib.c $(HACK_H)
 invent.o: invent.c $(HACK_H)
