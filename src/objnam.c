@@ -458,7 +458,8 @@ register struct obj *obj;
 		else if(un)
 			Sprintf(buf, "NOUN_RING PARTIKEL_CALLED %s", un);
 		else
-			Sprintf(buf, "%s NOUN_RING", dn);
+			//Sprintf(buf, "%s NOUN_RING", dn);
+			Sprintf(buf, "NOUN_%s", dn);
 		break;
 	case GEM_CLASS:
 	    {

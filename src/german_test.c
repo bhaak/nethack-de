@@ -42,18 +42,21 @@ START_TEST (test_tincontent)
 }
 END_TEST
 
+#if 0
+/* nicht mehr per Programmcode gelöst */
 START_TEST (test_linking_elements) {
 	char *text[][2] = {
-		{"X - ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_CORAL NOUN_RING",
+		{"X - ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_CORAL NOUN_RING",
 		 "X - ein Korallenring"},
-		{"X - ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_WOODEN NOUN_RING",
+		{"X - ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_WOODEN NOUN_RING",
 		 "X - ein Holzring"},
-		/* Nouns ending in -ung have to get a 's' to link to the following noun */
-		{"X - ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_ENGAGEMENT NOUN_RING",
+		 /* Nouns ending in -ung have to get a 's' to link to the following noun */
+		{"X - ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_ENGAGEMENT NOUN_RING",
 		 "X - ein Verlobungsring"}};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
+#endif
 
 START_TEST (test_rings) {
 	char *text[][2] = {
@@ -405,7 +408,7 @@ START_TEST (test_german2meta) {
 										 {"Ring des Schleichens", "NOUN_RING PARTIKEL_OF NOUN_RING_STEALTH"},
 										 {"ein verfluchter grauer Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
 										 {"geheiligte lange Samuraischwerter", "ADJEKTIV_BLESSED NOUN_LONG_SAMURAI_SWORDs"},
-										 {"einen Perlenring", "ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_CORAL"},
+										 {"einen Perlenring", "ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_PEARL"},
 										 {"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
 	};
 
@@ -565,7 +568,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
-	tcase_add_test(tc_core, test_linking_elements);
+	//tcase_add_test(tc_core, test_linking_elements);
 	tcase_add_test(tc_core, test_wands);
   tcase_add_test(tc_core, test_spellbooks);
   tcase_add_test(tc_core, test_potions);
