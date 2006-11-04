@@ -1499,7 +1499,7 @@ def ausgabe_nouns
     dekliniere_substantiv("MADE_OF_WAND_PLATINUM", "Platin", "s", "", "s", "neutrum"),
     dekliniere_substantiv("MADE_OF_WAND_IRIDIUM", "Iridium", "s", "", "en", "neutrum"),
     dekliniere_substantiv("MADE_OF_WAND_ZINC", "Zink", "es", "", "e", "neutrum"),
-    dekliniere_substantiv("MADE_OF_WAND_ALUMINIUM", "Aluminium", "s", "", "", "neutrum"),
+    dekliniere_substantiv("MADE_OF_WAND_ALUMINUM", "Aluminium", "s", "", "", "neutrum"),
     dekliniere_substantiv("MADE_OF_WAND_URANIUM", "Uran", "s", "", "e", "neutrum"),
     dekliniere_adjektiv("ADJEKTIV_WAND_IRON", "eisern"),
     dekliniere_adjektiv("ADJEKTIV_WAND_STEEL", "stählern"),
