@@ -4602,8 +4602,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Zinke", "MADE_OF_WAND_ZINC", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Zink", "MADE_OF_WAND_ZINC", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Aluminiums", "MADE_OF_WAND_ALUMINIUM", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Aluminium", "MADE_OF_WAND_ALUMINIUM", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Aluminiums", "MADE_OF_WAND_ALUMINUM", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Aluminium", "MADE_OF_WAND_ALUMINUM", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Urans", "MADE_OF_WAND_URANIUM", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Uran", "MADE_OF_WAND_URANIUM", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},

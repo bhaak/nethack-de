@@ -149,6 +149,7 @@ void german2meta(char *str, char *output)
 	output[0] = '\0';
 	int len=0;
 	int ring_gefunden = 0;
+	int wand_gefunden = 0;
 	
 	printf("\ngerman2meta %s\n", str);
 	//printf("str: %s\n",str);
@@ -184,10 +185,22 @@ void german2meta(char *str, char *output)
 			//printf("3 wort->wort: %s\n",wort->typ);
 			if (strncmp("NOUN_RING", wort->typ, 9)==0) {
 				ring_gefunden = 1;
+			} else if (strncmp("NOUN_WAND", wort->typ, 9)==0) {
+				wand_gefunden = 1;
 			}
 
 			if (ring_gefunden && (strcmp("ARTIKEL_BESTIMMTER", wort->typ)==0)) {
 				strcat(output, "PARTIKEL_OF");
+				i = i + strlen(wort->wort);
+			} else if (wand_gefunden && (strncmp("MADE_OF_WAND_", wort->typ, 13)==0)) {
+				printf("MADE_OF_WAND 1 %s\n", output);
+				// "NOUN_WAND aus " löschen
+				output[strlen(output)-14] = '\0';
+				printf("MADE_OF_WAND 2 %s\n", output);
+				strcat(output, wort->typ);
+				printf("MADE_OF_WAND 3 %s\n", output);
+				strcat(output, " NOUN_WAND");
+				printf("MADE_OF_WAND 4 %s\n", output);
 				i = i + strlen(wort->wort);
 			} else {
 				strcat(output, wort->typ);

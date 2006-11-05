@@ -1264,7 +1264,7 @@ struct obj *obj;
 }
 
 static const char *wrp[] = {
-	"wand", "ring", "NOUN_POTION", "scroll", "gem", "amulet",
+	"NOUN_WAND", "NOUN_RING", "NOUN_POTION", "scroll", "gem", "amulet",
 	"NOUN_SPELLBOOK", "NOUN_SPELLBOOK",
 	/* for non-specific wishes */
 	"weapon", "armor", "armour", "tool", "food", "comestible",
@@ -2092,6 +2092,7 @@ boolean from_user;
 		}
 	}
 
+	printf("0####### dn: -%s-\n", dn);
 	/* Alternate spellings (pick-ax, silver sabre, &c) */
     {
 	struct alt_spellings *as = spellings;
@@ -2103,11 +2104,13 @@ boolean from_user;
 		}
 		as++;
 	}
+	printf("0####### dn: -%s-\n", dn);
 	/* can't use spellings list for this one due to shuffling */
 	if (!strcmpi(bp, "grey spellbook"))
 		*(bp + 2) = 'a';
     }
 
+	printf("0####### dn: -%s-\n", dn);
 	/* dragon scales - assumes order of dragons */
 	if(!strcmpi(bp, "scales") &&
 			mntmp >= PM_GRAY_DRAGON && mntmp <= PM_YELLOW_DRAGON) {
@@ -2116,6 +2119,7 @@ boolean from_user;
 		goto typfnd;
 	}
 
+	printf("6####### dn: -%s-\n", dn);
 	p = eos(bp);
 	if(!BSTRCMPI(bp, p-10, "holy water")) {
 		typ = POT_WATER;
@@ -2124,14 +2128,24 @@ boolean from_user;
 		else blessed = 1;
 		goto typfnd;
 	}
+	printf("7####### dn: -%s-\n", dn);
 	if(unlabeled && !BSTRCMPI(bp, p-11, "NOUN_SCROLL")) {
 		typ = SCR_BLANK_PAPER;
 		goto typfnd;
 	}
+	printf("8####### dn: -%s-\n", dn);
 	if(unlabeled && !BSTRCMPI(bp, p-14, "NOUN_SPELLBOOK")) {
 		typ = SPE_BLANK_PAPER;
 		goto typfnd;
 	}
+	printf("9####### dn: -%s-\n", dn);
+	printf("10###### -%s-\n", bp);
+	if(strncmp(bp, "NOUN_RING_UNIDENTIFIED_", 23)==0) {
+		bp += 5; dn = bp;
+		oclass = RING_CLASS;
+		goto srch;
+	}
+	printf("11###### %s\n", bp);
 	/*
 	 * NOTE: Gold pieces are handled as objects nowadays, and therefore
 	 * this section should probably be reconsidered as well as the entire
@@ -2161,6 +2175,7 @@ boolean from_user;
 		return (otmp);
 #endif
 	}
+	printf("2####### %s\n", bp);
 	if (strlen(bp) == 1 &&
 	   (i = def_char_to_objclass(*bp)) < MAXOCLASSES && i > ILLOBJ_CLASS
 #ifdef WIZARD
@@ -2170,8 +2185,10 @@ boolean from_user;
 #endif
 	    ) {
 		oclass = i;
+				printf("######## %d\n", bp);
 		goto any;
 	}
+	printf("3####### %s\n", bp);
 
 	/* Search for class names: XXXXX potion, scroll of XXXXX.  Avoid */
 	/* false hits on, e.g., rings for "ring mail". */
@@ -2187,26 +2204,39 @@ boolean from_user;
 	)
 	for (i = 0; i < (int)(sizeof wrpsym); i++) {
 		register int j = strlen(wrp[i]);
+		printf("4a###### %s\n", bp);
 		if(!strncmpi(bp, wrp[i], j)){
 			oclass = wrpsym[i];
-			if(oclass != AMULET_CLASS) {
+			printf("4####### %s\n", bp);
+			if (oclass != AMULET_CLASS) {
 			    bp += j;
 			    if(!strncmpi(bp, " PARTIKEL_OF ", 13)) actualn = bp+13;
 			    if(!strncmpi(bp, " ARTIKEL_BESTIMMTER ", 20)) actualn = bp+20;
 			    /* else if(*bp) ?? */
-			} else
+			} else {
 			    actualn = bp;
+			}
+			printf("6####### %s\n", bp);
 			goto srch;
 		}
 		if(!BSTRCMPI(bp, p-j, wrp[i])){
+			printf("7######## %s\n", wrp[i]);
+			
 			oclass = wrpsym[i];
 			p -= j;
 			*p = 0;
 			if(p > bp && p[-1] == ' ') p[-1] = 0;
 			actualn = dn = bp;
+
+			// TODO remove
+			if (oclass == RING_CLASS) {
+				Strcpy(bp, "NOUN_");
+				printf("######## %d\n", bp);
+			}
 			goto srch;
 		}
 	}
+	printf("7####### %s\n", bp);
 
 	/* "grey stone" check must be before general "stone" */
 	for (i = 0; i < SIZE(o_ranges); i++)
@@ -2245,10 +2275,13 @@ boolean from_user;
 	actualn = bp;
 	if (!dn) dn = actualn; /* ex. "skull cap" */
 srch:
+	printf("srch#### %s\n", dn);
 	/* check real names of gems first */
 	if(!oclass && actualn) {
 	    for(i = bases[GEM_CLASS]; i <= LAST_GEM; i++) {
 		register const char *zn;
+
+		printf("a####### %s\n", zn);
 
 		if((zn = OBJ_NAME(objects[i])) && !strcmpi(actualn, zn)) {
 		    typ = i;
@@ -2260,20 +2293,24 @@ srch:
 	while(i < NUM_OBJECTS && (!oclass || objects[i].oc_class == oclass)){
 		register const char *zn;
 
+		printf("b####### i: %d  %s\n", i, zn);
 		if (actualn && (zn = OBJ_NAME(objects[i])) != 0 &&
 			    wishymatch(actualn, zn, TRUE)) {
+			printf("c####### %s\n", zn);
 			typ = i;
 			goto typfnd;
 		}
 		if (dn && (zn = OBJ_DESCR(objects[i])) != 0 &&
 			    wishymatch(dn, zn, FALSE)) {
 			/* don't match extra descriptions (w/o real name) */
+			printf("d####### %s\n", zn);
 			if (!OBJ_NAME(objects[i])) return (struct obj *)0;
 			typ = i;
 			goto typfnd;
 		}
 		if (un && (zn = objects[i].oc_uname) != 0 &&
 			    wishymatch(un, zn, FALSE)) {
+			printf("d####### %s\n", zn);
 			typ = i;
 			goto typfnd;
 		}

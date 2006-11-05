@@ -77,6 +77,8 @@ START_TEST (test_rings) {
 
 START_TEST (test_wands) {
 	char *text[][2] = {
+		{"l - ARTIKEL_UNBESTIMMTER MADE_OF_WAND_ALUMINUM NOUN_WAND",
+		 "l - ein Zauberstab aus Aluminium"},
 		{"z - ARTIKEL_UNBESTIMMTER MADE_OF_WAND_MAPLE NOUN_WAND",
 		 "z - ein Zauberstab aus Ahornholz"},
 		{"  NOUN_WAND PARTIKEL_OF NOUN_WAND_LIGHT (MADE_OF_WAND_MAPLE)",
@@ -409,7 +411,9 @@ START_TEST (test_german2meta) {
 										 {"ein verfluchter grauer Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
 										 {"geheiligte lange Samuraischwerter", "ADJEKTIV_BLESSED NOUN_LONG_SAMURAI_SWORDs"},
 										 {"einen Perlenring", "ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_PEARL"},
-										 {"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
+										 {"ein geheiligter silberner Zauberstab", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_WAND_SILVER NOUN_WAND"},
+										 {"ein Zauberstab aus Platin", "ARTIKEL_UNBESTIMMTER MADE_OF_WAND_PLATINUM NOUN_WAND"},
+										 //{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
 	};
 
 	check_german2meta(text, sizeof(text)/8);
@@ -561,7 +565,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 
-	if (0) {
+	if (1) {
 	tcase_add_test(tc_core, test_paar);
   tcase_add_test(tc_core, test_identified_spellbooks);
 	tcase_add_test(tc_core, test_nominal_phrasen);
