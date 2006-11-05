@@ -413,6 +413,11 @@ START_TEST (test_german2meta) {
 										 {"einen Perlenring", "ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_PEARL"},
 										 {"ein geheiligter silberner Zauberstab", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_WAND_SILVER NOUN_WAND"},
 										 {"ein Zauberstab aus Platin", "ARTIKEL_UNBESTIMMTER MADE_OF_WAND_PLATINUM NOUN_WAND"},
+										 {"ein nicht verfluchtes Stethoskop", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_STETHOSCOPE"},
+										 {"5 nicht verfluchte Äpfel", "5 ADJEKTIV_UNCURSED NOUN_APPLEs"},
+										 {"ein nicht verfluchtes +1 Paar Lederhandschuhe", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED +1 NOUN_PAAR NOUN_LEATHER_GLOVESs"},
+										 {"eine Flasche Wasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_WATER"},
+										 {"Flaschen Wasser", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_WATER"},
 										 //{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
 	};
 
@@ -563,9 +568,9 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
 	tcase_add_test(tc_core, test_german2meta);
-	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 
 	if (1) {
+	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
   tcase_add_test(tc_core, test_identified_spellbooks);
 	tcase_add_test(tc_core, test_nominal_phrasen);

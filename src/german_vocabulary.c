@@ -2462,28 +2462,19 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schnapses", "NOUN_POT_BOOZE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schnapse", "NOUN_POT_BOOZE", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schnaps", "NOUN_POT_BOOZE", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Schnäpse", "NOUN_POT_BOOZEs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Schnäpsen", "NOUN_POT_BOOZEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Fruchtsaftes", "NOUN_POT_FRUIT_JUICE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fruchtsafte", "NOUN_POT_FRUIT_JUICE", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fruchtsaft", "NOUN_POT_FRUIT_JUICE", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Fruchsäfte", "NOUN_POT_FRUIT_JUICEs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Fruchsäften", "NOUN_POT_FRUIT_JUICEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Säure", "NOUN_POT_ACID", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Säuren", "NOUN_POT_ACIDs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Öles", "NOUN_POT_OIL", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Öle", "NOUN_POT_OIL", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Öl", "NOUN_POT_OIL", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Öle", "NOUN_POT_OILs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Ölen", "NOUN_POT_OILs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Wassers", "NOUN_POT_WATER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wasser", "NOUN_POT_WATER", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Wasser", "NOUN_POT_WATERs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Wassern", "NOUN_POT_WATERs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
 
   /* Potions, unidentified */

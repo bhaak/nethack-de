@@ -1297,12 +1297,12 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_POT_GAIN_ENERGY"       # Energiegewinnung?
     dekliniere_substantiv("NOUN_POT_SLEEPING", "Schlaf", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_POT_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"), 
-    dekliniere_substantiv("NOUN_POT_BOOZE", "Schnaps", "es", "Schnäps", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_POT_BOOZE", "Schnaps", "es", "", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_POT_SICKNESS", "Übelkeit", "", "Übelkeit", "en", "feminin"), # Übelkeit ?
-    dekliniere_substantiv("NOUN_POT_FRUIT_JUICE", "Fruchtsaft", "es", "Fruchsäft", "e", "maskulin"),
-    dekliniere_substantiv("NOUN_POT_ACID", "Säure", "", "Säure", "en", "feminin"),
-    dekliniere_substantiv("NOUN_POT_OIL", "Öl", "es", "Öl", "e", "neutrum"), # Öl, Brandöl ?
-    dekliniere_substantiv("NOUN_POT_WATER", "Wasser", "s", "Wasser", "", "neutrum"),
+    dekliniere_substantiv("NOUN_POT_FRUIT_JUICE", "Fruchtsaft", "es", "", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_POT_ACID", "Säure", "", "", "en", "feminin"),
+    dekliniere_substantiv("NOUN_POT_OIL", "Öl", "es", "", "e", "neutrum"), # Öl, Brandöl ?
+    dekliniere_substantiv("NOUN_POT_WATER", "Wasser", "s", "", "", "neutrum"),
     "",
     "/* Potions, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),

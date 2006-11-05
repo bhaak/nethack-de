@@ -202,6 +202,13 @@ void german2meta(char *str, char *output)
 				strcat(output, " NOUN_WAND");
 				printf("MADE_OF_WAND 4 %s\n", output);
 				i = i + strlen(wort->wort);
+			} else if (strncmp("NOUN_FLASCHE", wort->typ, 12)==0) {
+				if (is_plural(wort->typ)) {
+					strcat(output, "NOUN_POTIONs PARTIKEL_OF");
+				} else {
+					strcat(output, "NOUN_POTION PARTIKEL_OF");
+				}
+				i = i + strlen(wort->wort);
 			} else {
 				strcat(output, wort->typ);
 				i = i + strlen(wort->wort);
@@ -730,6 +737,8 @@ char* german(const char *line) {
 			  pos += len_partikel_of+1;
 
 				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
+				// Flüssigkeiten in Flaschen haben nur Singularform 
+				c_numerus = n_singular;
 			} else {
 				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
 #if DEBUG

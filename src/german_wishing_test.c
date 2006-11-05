@@ -48,11 +48,12 @@ START_TEST (test_wishing) {
 	//fprintf(stderr, "&obj: %d; nothing: %d\n", &obj, nothing);
 	//fail_if(&obj != &nothing);
 
-	if (1) {
+	if (0) {
 	fprintf(stderr, "\n3\n");
 	strcpy(buf, "Zauberbuch");
 	fprintf(stderr, "\n4\n");
 	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
 	fprintf(stderr, "\n5\n");
 	fprintf(stderr, "&obj: %d; &nothing: %d\n", &obj, &nothing);
 	fprintf(stderr, "obj: %d; nothing: %d\n", obj, nothing);
@@ -65,6 +66,7 @@ START_TEST (test_wishing) {
 
 	strcpy(buf, "eine Schriftrolle");
 	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
 	fail_unless(obj->oclass == SCROLL_CLASS);
 	fail_unless(obj->quan == 1);
 
@@ -83,31 +85,96 @@ START_TEST (test_wishing) {
 
 	strcpy(buf, "2 Zirkonringes");
 	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
 	typ = obj->otyp;
 	ocl = &objects[typ];
 	char *dn = OBJ_DESCR(*ocl);
-	fail_if(obj == NULL);
 	fail_unless(obj->oclass == RING_CLASS);
 	printf("\n21 dn: %s\n", dn);
 	fail_unless(obj->quan == 1);
 	fail_unless(strcmp("RING_UNIDENTIFIED_SHINY", dn)==0);
 	printf("\n22\n");
-	}
 
 	strcpy(buf, "ein geheiligter silberner Zauberstab");
 	printf("\n23\n");
 	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
 	typ = obj->otyp;
 	ocl = &objects[typ];
 	dn = OBJ_DESCR(*ocl);
 	printf("24 dn: %s\n", dn);
-	fail_if(obj == NULL);
 	fail_unless(obj->oclass == WAND_CLASS);
 	printf("25\n");
 	fail_unless(obj->quan == 1);
 	fail_unless(obj->blessed == 1);
 	fail_unless(strcmp("ADJEKTIV_WAND_SILVER", dn)==0);
 	printf("26\n");
+
+	strcpy(buf, "ein Stethoskop");
+	printf("\n27\n");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	printf("28 dn: %s\n", dn);
+	fail_unless(obj->oclass == TOOL_CLASS);
+	fail_unless(obj->quan == 1);
+	fail_unless(obj->blessed == 0);
+	fail_unless(obj->cursed == 0);
+	fail_unless(strcmp("NOUN_STETHOSCOPE", dn)==0);
+	printf("29\n");
+
+
+	strcpy(buf, "1 verfluchte Apfel");
+	printf("\n30\n");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	printf("31 dn: %s\n", dn);
+	fail_unless(obj->oclass == FOOD_CLASS);
+	printf("32\n");
+	fail_unless(obj->quan == 1);
+	fail_unless(obj->blessed == 0);
+	fail_unless(obj->cursed == 1);
+	fail_unless(strcmp("NOUN_APPLE", dn)==0);
+	printf("33\n");
+
+	strcpy(buf, "ein nicht verfluchtes +1 Paar Lederhandschuhe");
+	printf("\n40\n");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	//printf("41 dn: %s\n", dn);
+	fail_unless(obj->oclass == ARMOR_CLASS);
+	printf("42\n");
+	fail_unless(obj->quan == 1);
+	fail_unless(obj->blessed == 0);
+	fail_unless(obj->cursed == 0);
+	fail_unless(strcmp("NOUN_LEATHER_GLOVES", dn)==0);
+	printf("43\n");
+	}
+
+	strcpy(buf, "eine Flasche Wasser");
+	printf("\n50\n");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	//printf("51 dn: %s\n", dn);
+	fail_unless(obj->oclass == POTION_CLASS);
+	printf("52\n");
+	fail_unless(obj->quan == 1);
+	fail_unless(obj->blessed == 0);
+	fail_unless(obj->cursed == 0);
+	fail_unless(strcmp("NOUN_POT_WATER", dn)==0);
+	printf("53\n");
+
 } END_TEST
 
 Suite *test_suite(void)
