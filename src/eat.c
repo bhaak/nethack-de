@@ -1100,7 +1100,7 @@ opentin()		/* called during each move whilst opening a tin */
 
 	    if (!tin.tin->cursed)
 		pline("This makes you feel like %s!",
-		      Hallucination ? "Swee'pea" : "Popeye");
+		      Hallucination ? "Popi" : "Popeye"); /* EN  "Popi" : "Popeye" */
 	    lesshungry(600);
 	    gainstr(tin.tin, 0);
 	    u.uconduct.food++;
