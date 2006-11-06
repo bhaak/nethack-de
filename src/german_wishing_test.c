@@ -48,7 +48,7 @@ START_TEST (test_wishing) {
 	//fprintf(stderr, "&obj: %d; nothing: %d\n", &obj, nothing);
 	//fail_if(&obj != &nothing);
 
-	if (0) {
+	if (1) {
 	fprintf(stderr, "\n3\n");
 	strcpy(buf, "Zauberbuch");
 	fprintf(stderr, "\n4\n");
@@ -157,7 +157,6 @@ START_TEST (test_wishing) {
 	fail_unless(obj->cursed == 0);
 	fail_unless(strcmp("NOUN_LEATHER_GLOVES", dn)==0);
 	printf("43\n");
-	}
 
 	strcpy(buf, "eine Flasche Wasser");
 	printf("\n50\n");
@@ -174,6 +173,40 @@ START_TEST (test_wishing) {
 	fail_unless(obj->cursed == 0);
 	fail_unless(strcmp("NOUN_POT_WATER", dn)==0);
 	printf("53\n");
+
+	strcpy(buf, "Weihwasser");
+	printf("\n60\n");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	printf("61 dn: %s\n", dn);
+	fail_unless(obj->oclass == POTION_CLASS);
+	printf("62\n");
+	fail_unless(obj->quan == 1);
+	fail_unless(obj->blessed == 1);
+	fail_unless(obj->cursed == 0);
+	fail_unless(strcmp("NOUN_POT_WATER", dn)==0);
+	printf("63\n");
+	}
+
+	strcpy(buf, "eine Flasche Satanswasser");
+	printf("\n70\n");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	printf("71 dn: %s\n", dn);
+	fail_unless(obj->oclass == POTION_CLASS);
+	printf("72\n");
+	fail_unless(obj->quan == 1);
+	fail_unless(obj->blessed == 0);
+	fail_unless(obj->cursed == 1);
+	fail_unless(strcmp("NOUN_POT_WATER", dn)==0);
+	printf("73\n");
+
 
 } END_TEST
 

@@ -2476,6 +2476,12 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Wassers", "NOUN_POT_WATER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wasser", "NOUN_POT_WATER", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Weihwassers", "NOUN_POT_HOLY_WATER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Weihwasser", "NOUN_POT_HOLY_WATER", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Satanswassers", "NOUN_POT_UNHOLY_WATER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Satanswasser", "NOUN_POT_UNHOLY_WATER", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
 
   /* Potions, unidentified */
 

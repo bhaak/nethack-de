@@ -390,12 +390,13 @@ register struct obj *obj;
 			Strcat(buf, "NOUN_POTION");
 			if(!obj->dknown) break;
 			if(nn) {
-			    Strcat(buf, " PARTIKEL_OF ");
-			    if (typ == POT_WATER &&
-				obj->bknown && (obj->blessed || obj->cursed)) {
-				Strcat(buf, obj->blessed ? "holy " : "unholy ");
-			    }
-			    Strcat(buf, actualn);
+				Strcat(buf, " PARTIKEL_OF ");
+				if (typ == POT_WATER &&
+						obj->bknown && (obj->blessed || obj->cursed)) {
+					Strcat(buf, obj->blessed ? "NOUN_POT_HOLY_WATER" : "NOUN_POT_UNHOLY_WATER");
+				} else {
+					Strcat(buf, actualn);
+				}
 			} else {
 				Strcat(buf, " PARTIKEL_CALLED ");
 				Strcat(buf, un);
@@ -2130,7 +2131,20 @@ boolean from_user;
 	}
 
 	fprintf(stderr, "6####### dn: -%s-\n", dn);
+	fprintf(stderr, "6a####### bp: -%s-\n", bp);
 	p = eos(bp);
+	if(!BSTRCMPI(bp, p-21, "NOUN_POT_UNHOLY_WATER")) {
+		fprintf(stderr, "6ba###### bp: -%s-\n", bp);
+		typ = POT_WATER;
+		iscursed = 1; /* unholy water */
+		goto typfnd;
+	}
+	if(!BSTRCMPI(bp, p-19, "NOUN_POT_HOLY_WATER")) {
+		fprintf(stderr, "6bb###### bp: -%s-\n", bp);
+		typ = POT_WATER;
+		blessed = 1; /* holy water */
+		goto typfnd;
+	}
 	if(!BSTRCMPI(bp, p-10, "holy water")) {
 		typ = POT_WATER;
 		if ((p-bp) >= 12 && *(p-12) == 'u')
@@ -2220,13 +2234,15 @@ boolean from_user;
 			fprintf(stderr, "4####### %s\n", bp);
 			if (oclass != AMULET_CLASS) {
 			    bp += j;
+					fprintf(stderr, "5####### %s\n", bp);
 			    if(!strncmpi(bp, " PARTIKEL_OF ", 13)) actualn = bp+13;
+					fprintf(stderr, "5b###### %s\n", actualn);
 			    if(!strncmpi(bp, " ARTIKEL_BESTIMMTER ", 20)) actualn = bp+20;
 			    /* else if(*bp) ?? */
 			} else {
 			    actualn = bp;
 			}
-			fprintf(stderr, "6####### %s\n", bp);
+			fprintf(stderr, "6b###### %s\n", bp);
 			goto srch;
 		}
 		if(!BSTRCMPI(bp, p-j, wrp[i])){
@@ -2285,7 +2301,9 @@ boolean from_user;
 	actualn = bp;
 	if (!dn) dn = actualn; /* ex. "skull cap" */
 srch:
-	fprintf(stderr, "srch#### %s\n", dn);
+	fprintf(stderr, "srch#### dn:      %s\n", dn);
+	fprintf(stderr, "srch#### bp:      %s\n", bp);
+	fprintf(stderr, "srch#### actualn: %s\n", actualn);
 	/* check real names of gems first */
 	if(!oclass && actualn) {
 		fprintf(stderr, "a00#######\n");

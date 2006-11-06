@@ -1303,6 +1303,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_POT_ACID", "Säure", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_POT_OIL", "Öl", "es", "", "e", "neutrum"), # Öl, Brandöl ?
     dekliniere_substantiv("NOUN_POT_WATER", "Wasser", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_POT_HOLY_WATER", "Weihwasser", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_POT_UNHOLY_WATER", "Satanswasser", "s", "", "", "neutrum"),
     "",
     "/* Potions, unidentified */",
     dekliniere_adjektiv("ADJEKTIV_POT_RUBY","rubinrot"),
@@ -1622,7 +1624,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_LARGE_CAT", "groß", "Katze","","Katze","en","feminin","n"),
     dekliniere_substantiv("NOUN_TIGER","Tiger","s","Tiger","","maskulin"),
     dekliniere_substantiv("NOUN_GREMLIN", "Gremlin", "s", "Gremlin", "s", "maskulin"),
-    #dekliniere_substantiv("NOUN_GARGOYLE", "Gargoyle", "s", "Gargoyle", "s", "maskulin"), # Gargoyle?, Gargil?, Gargola?
+    #dekliniere_substantiv("NOUN_GARGOYLE", "Gargoyle", "s", "Gargoyle", "s", "maskulin"), # Gargoyle?, Gargil?, Gargula?, Gargyle?
     dekliniere_nominalphrase("NOUN_WINGED_GARGOYLE", "geflügelt", "Gargoyle", "s", "Gargoyle", "s", "maskulin"),
     dekliniere_substantiv("NOUN_HOBBIT", "Hobbit", "s", "Hobbit", "s", "maskulin"),
     dekliniere_substantiv("NOUN_DWARF","Zwerg","es","Zwerg","e","maskulin", "en"),

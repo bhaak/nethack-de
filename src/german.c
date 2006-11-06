@@ -528,7 +528,9 @@ int next_token(const char* input, char* output, int pos) {
 					(strncmp(tmp, "NOUN_POT_BOOZE",14)==0) ||
 					(strncmp(tmp, "NOUN_POT_ACID",13)==0) ||
 					(strncmp(tmp, "NOUN_POT_OIL",12)==0) ||
-					(strncmp(tmp, "NOUN_POT_FRUIT_JUICE",20)==0)) {
+					(strncmp(tmp, "NOUN_POT_FRUIT_JUICE",20)==0) ||
+					(strncmp(tmp, "NOUN_POT_HOLY_WATER",19)==0) ||
+					(strncmp(tmp, "NOUN_POT_UNHOLY_WATER",19)==0)) {
 				if (is_plural(output)) { strcpy(output, "NOUN_FLASCHEs"); }
 				else { strcpy(output, "NOUN_FLASCHE"); }
 			}
