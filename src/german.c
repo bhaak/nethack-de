@@ -166,12 +166,20 @@ void german2meta(char *str, char *output)
 		if (wort != NULL) {
 			if ((strncmp("ADJEKTIV_SPE_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_POT_", wort->typ, 13)==0) ||
-					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0)) {
-				printf("%s\n", wort->typ);
+					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0) ||
+					(strncmp("ADJEKTIV_WAND_", wort->typ, 14)==0) ||
+					(strncmp("ADJEKTIV_AMULET_", wort->typ, 16)==0)) {
+				printf("ADJEKTIV_ 1 %s\n", wort->typ);
+				printf("ADJEKTIV_ 2 %s\n", str+i);
 				if (strstr2(str+i, "Zauberbuch", "Zauberbüch")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_SPE_");
+					printf("ADJEKTIV_ 4 %s\n", wort->typ);
 				} else if (strstr2(str+i, "Trank", "Tränk")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_POT_");
+					printf("ADJEKTIV_ 5 %s\n", wort->typ);
+				} else if (strstr2(str+i, "Amulett", "Amulett")) {
+					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_AMULET_");
+					printf("ADJEKTIV_ 6 %s\n", wort->typ);
 				}
 			}
 		}
@@ -283,7 +291,7 @@ const char* get_wort(const char* typ, enum Casus c, enum Genus g, enum Numerus n
 				(worte[i].genus   & g) && 
 				(worte[i].numerus & n) &&
 				(worte[i].artikel & a)) {
-			/* make sure, we don't return e.g NOUN_TIN_OPENER when searching NOUN_TIN */
+			/* make sure, we don't return e.g NOUN_TIN_OPENER when searching NOUN_TIN by getting the longest match */
 			if ((strlen(worte[i].typ)-len)<=1) { return worte[i].wort; }
 		}
 		i++;

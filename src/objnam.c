@@ -1265,10 +1265,10 @@ struct obj *obj;
 }
 
 static const char *wrp[] = {
-	"NOUN_WAND", "NOUN_RING", "NOUN_POTION", "scroll", "gem", "amulet",
+	"NOUN_WAND", "NOUN_RING", "NOUN_POTION", "NOUN_SCROLL", "NOUN_GEM", "NOUN_AMULET",
 	"NOUN_SPELLBOOK", "NOUN_SPELLBOOK",
 	/* for non-specific wishes */
-	"weapon", "armor", "armour", "tool", "food", "comestible",
+	"NOUN_WEAPON", "NOUN_ARMOR", "NOUN_ARMOR", "NOUN_TOOL", "NOUN_FOOD", "NOUN_FOOD",
 };
 static const char wrpsym[] = {
 	WAND_CLASS, RING_CLASS, POTION_CLASS, SCROLL_CLASS, GEM_CLASS,
