@@ -125,6 +125,7 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"namens", "PARTIKEL_NAMED", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"genannt", "PARTIKEL_CALLED", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"beschriftet", "PARTIKEL_LABELED", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"von", "PARTIKEL_VON", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, unbestimmter|grundform|ohne|bestimmter},
   /* ===================================================================== */
   /* Nouns that are neither in mons-de.h nor in obj-de.h */
 
@@ -2305,6 +2306,14 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Pansen", "NOUN_TRIPE_RATIONs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   /* NOUN_CORPSE is irregular and treated specially */
+
+  {"Leiche", "NOUN_CORPSE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Leichen", "NOUN_CORPSEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Leichnams", "NOUN_CORPSE", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Leichnam", "NOUN_CORPSE", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Leichname", "NOUN_CORPSEs", "", genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Leichnamen", "NOUN_CORPSEs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Eies", "NOUN_EGG", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Eie", "NOUN_EGG", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
