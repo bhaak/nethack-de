@@ -723,7 +723,8 @@ def ausgabe_nouns
     "",
     unregelmaessiges_wort("PARTIKEL_NAMED",   "namens", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # geannt, namens
     unregelmaessiges_wort("PARTIKEL_CALLED",  "genannt", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # bezeichnet mit, genannt
-    unregelmaessiges_wort("PARTIKEL_LABELED", "beschriftet", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]) # bezeichnet mit, genannt
+    unregelmaessiges_wort("PARTIKEL_LABELED", "beschriftet", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # bezeichnet mit, genannt
+    unregelmaessiges_wort("PARTIKEL_VON", "von", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl])
   ].each { |n|
     if n.is_a? String then
       puts n
@@ -1245,6 +1246,8 @@ def ausgabe_nouns
     "/* Kutteln, Kaldaunen, Pansen, Wanst. I choose \"Pansen\". This is the name under which it is usually sold for pets. */",
     dekliniere_substantiv("NOUN_TRIPE_RATION", "Pansen", "s",  "Pansen", "", "maskulin"),
     "/* NOUN_CORPSE is irregular and treated specially */",
+    dekliniere_substantiv("NOUN_CORPSE","Leiche","","Leiche","en","feminin"),
+    dekliniere_substantiv("NOUN_CORPSE","Leichnam","s","Leichnam","e","feminin"),
     dekliniere_substantiv("NOUN_EGG","Ei","es","Ei","er","neutrum"),
     #dekliniere_substantiv("NOUN_MEATBALL" # Kloesschen, Fleischklops, Fleischball?
     #dekliniere_substantiv("NOUN_MEAT_STICK",Salami?

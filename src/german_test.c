@@ -424,7 +424,9 @@ START_TEST (test_german2meta) {
 										 {"Flaschen Wasser", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_WATER"},
 										 {"eine Flasche Weihwasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_HOLY_WATER"},
 										 {"eine Flasche Satanswasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_UNHOLY_WATER"},
-										 {"eine sechseckiges Amulett", "ARTIKEL_UNBESTIMMTER ADJEKTIV_WAND_HEXAGONAL NOUN_AMULET"},
+										 {"eine sechseckiges Amulett", "ARTIKEL_UNBESTIMMTER ADJEKTIV_AMULET_HEXAGONAL NOUN_AMULET"},
+										 {"die sterblichen Überreste einer Vampirfledermaus", "MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER NOUN_VAMPIRE_BAT NOUN_CORPSE"},
+										 {"Leichen von Vampirfledermäusen", "MODIFIER_CORPSE PARTIKEL_VON NOUN_VAMPIRE_BATs NOUN_CORPSE"},
 										 //{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
 	};
 

@@ -150,6 +150,7 @@ void german2meta(char *str, char *output)
 	int len=0;
 	int ring_gefunden = 0;
 	int wand_gefunden = 0;
+	int leiche_gefunden = 0;
 	
 	printf("\ngerman2meta %s\n", str);
 	//printf("str: %s\n",str);
@@ -216,6 +217,14 @@ void german2meta(char *str, char *output)
 				} else {
 					strcat(output, "NOUN_POTION PARTIKEL_OF");
 				}
+				i = i + strlen(wort->wort);
+			} else if (strncmp("NOUN_CORPSE", wort->typ, 11)==0) {
+				strcat(output, "MODIFIER_CORPSE");
+				i = i + strlen(wort->wort);
+				leiche_gefunden = 1;
+			} else if (leiche_gefunden && strncmp("NOUN_", wort->typ, 5)==0) {
+				strcat(output, wort->typ);
+				strcat(output, " NOUN_CORPSE");
 				i = i + strlen(wort->wort);
 			} else {
 				strcat(output, wort->typ);

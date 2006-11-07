@@ -48,7 +48,7 @@ START_TEST (test_wishing) {
 	//fprintf(stderr, "&obj: %d; nothing: %d\n", &obj, nothing);
 	//fail_if(&obj != &nothing);
 
-	if (0) {
+	if (1) {
 	strcpy(buf, "Zauberbuch");
 	obj = readobjnam(buf, &nothing, TRUE);
 	fail_if(obj == NULL);
@@ -177,22 +177,41 @@ START_TEST (test_wishing) {
 	fail_unless(obj->oclass == AMULET_CLASS);
 	fail_unless(obj->quan == 1);
 	fail_unless(strcmp("ADJEKTIV_AMULET_HEXAGONAL", dn)==0);
-	}
 
 	strcpy(buf, "ein Amulett der Strangulation");
-	printf("\n90\n");
 	obj = readobjnam(buf, &nothing, TRUE);
 	fail_if(obj == NULL);
 	typ = obj->otyp;
 	ocl = &objects[typ];
 	dn = OBJ_NAME(*ocl);
-	printf("91 dn: %s\n", dn);
 	fail_unless(obj->oclass == AMULET_CLASS);
-	printf("92\n");
 	fail_unless(obj->quan == 1);
 	fail_unless(strcmp("NOUN_AMULET_OF_STRANGULATION", dn)==0);
-	printf("93\n");
+	}
 
+	strcpy(buf, "die sterblichen Überreste einer Vampirfledermaus");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	fail_unless(obj->oclass == FOOD_CLASS);
+	fail_unless(obj->quan == 1);
+	fail_unless(strcmp("NOUN_CORPSE", dn)==0);
+
+	strcpy(buf, "die Leiche eines Schwebauges");
+	printf("\n110\n");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	printf("111 dn: %s\n", dn);
+	fail_unless(obj->oclass == FOOD_CLASS);
+	printf("112\n");
+	fail_unless(obj->quan == 1);
+	fail_unless(strcmp("NOUN_CORPSE", dn)==0);
+	printf("113\n");
 } END_TEST
 
 Suite *test_suite(void)

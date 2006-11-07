@@ -1865,7 +1865,9 @@ boolean from_user;
 
 		//pline("wishing5: %s", bp);
 		if (!bp || !*bp) goto any;
-		if (!strncmpi(bp, "ARTIKEL_UNBESTIMMTER ", l=21)) {
+		if (!strncmpi(bp, "MODIFIER_CORPSE ", l=16)) {
+		} else if (!strncmpi(bp, "PARTIKEL_VON ", l=13)) {
+		} else if (!strncmpi(bp, "ARTIKEL_UNBESTIMMTER ", l=21)) {
 			cnt = 1;
 			/* FIXME: move following line, when all is translated */
 			//do { bp++; } while(*(bp+l) != ' ');
@@ -1979,7 +1981,7 @@ boolean from_user;
 		}
 	    }
 	}
-	fprintf(stderr, "readobjnam 5\n");
+	fprintf(stderr, "readobjnam 5 %s\n", bp);
 /*
    otmp->spe is type schar; so we don't want spe to be any bigger or smaller.
    also, spe should always be positive  -- some cheaters may try to confuse
@@ -2322,7 +2324,8 @@ srch:
 	while(i < NUM_OBJECTS && (!oclass || objects[i].oc_class == oclass)){
 		register const char *zn;
 
-		//fprintf(stderr, "b####### i: %d  %s\n", i, zn);
+		//fprintf(stderr, "b####### i: %d an: %s\n", i, actualn);
+		fprintf(stderr, "b####### i: %d zn: %s\n", i, OBJ_NAME(objects[i]));
 		if (actualn && (zn = OBJ_NAME(objects[i])) != 0 &&
 			    wishymatch(actualn, zn, TRUE)) {
 			fprintf(stderr, "c####### %s\n", zn);
@@ -2672,6 +2675,7 @@ typfnd:
 		default: otmp->spe = spe;
 	}
 
+	fprintf(stderr, "readobjnam 700 typ: %d\n", typ);
 	/* set otmp->corpsenm or dragon scale [mail] */
 	if (mntmp >= LOW_PM) {
 		if (mntmp == PM_LONG_WORM_TAIL) mntmp = PM_LONG_WORM;
