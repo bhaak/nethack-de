@@ -943,7 +943,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ELVEN_CLOAK", "Elbenmantel", "s", "Elbenmäntel", "", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_CLOAK", "Orkmantel", "s", "Orkmäntel", "", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_CLOAK", "Zwergenmantel", "s", "Zwergenmäntel", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_OILSKIN_CLOAK"
+    dekliniere_substantiv("NOUN_OILSKIN_CLOAK", "Ölzeug", "es", "Ölzeug", "e", "neutrum"),
     dekliniere_substantiv("NOUN_ROBE", "Robe", "", "Robe", "en", "feminin", "n"), # Robe, Talar
     dekliniere_substantiv("NOUN_ALCHEMY_SMOCK", "Alchemistenkittel", "s", "Alchemistenkittel", "", "maskulin"),
     dekliniere_substantiv("NOUN_LEATHER_CLOAK", "Ledermantel", "s", "Ledermäntel", "", "maskulin"),
@@ -1175,7 +1175,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CHEST", "Truhe", "", "Truhe", "en", "feminin"),
     dekliniere_substantiv("NOUN_ICE_BOX", "Kühltruhe", "", "Kühltruhe", "en", "feminin"),
     dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_OILSKIN_SACK", # Wachstuch, Oilskin, Oelzeug, Regenhaut
+    dekliniere_substantiv("NOUN_OILSKIN_SACK","Ölzeugbeutel", "s", "Ölzeugbeutel", "", "maskulin"),  # Wachstuch, Oilskin, Oelzeug, Regenhaut
     dekliniere_nominalphrase("NOUN_BAG_OF_HOLDING", "Nimmervoll", "Beutel","s","Beutel","","maskulin"),
     dekliniere_substantiv("NOUN_BAG_OF_TRICKS", "Trickbeutel", "s", "Trickbeutel","","maskulin"), 
     # dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
