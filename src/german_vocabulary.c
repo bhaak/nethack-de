@@ -1048,6 +1048,12 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Zwergenmäntel", "NOUN_DWARVISH_CLOAKs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Zwergenmänteln", "NOUN_DWARVISH_CLOAKs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Ölzeuges", "NOUN_OILSKIN_CLOAK", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ölzeuge", "NOUN_OILSKIN_CLOAK", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ölzeug", "NOUN_OILSKIN_CLOAK", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ölzeuge", "NOUN_OILSKIN_CLOAKs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Ölzeugen", "NOUN_OILSKIN_CLOAKs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Robe", "NOUN_ROBE", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Roben", "NOUN_ROBEs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -2112,6 +2118,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Sack", "NOUN_SACK", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Säcke", "NOUN_SACKs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Säcken", "NOUN_SACKs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ölzeugbeutels", "NOUN_OILSKIN_SACK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ölzeugbeutel", "NOUN_OILSKIN_SACK", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ölzeugbeutel", "NOUN_OILSKIN_SACKs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Ölzeugbeuteln", "NOUN_OILSKIN_SACKs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Nimmervollen Beutels", "NOUN_BAG_OF_HOLDING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Nimmervolle Beutel", "NOUN_BAG_OF_HOLDING", "", nominativ, maskulin, n_singular, bestimmter},
