@@ -4,7 +4,7 @@ file2 = File.readlines("obj-de.h")
 lines = file1.concat file2
 
 translated = []
-File.open("german.h") { |german| 
+File.open("german_vocabulary.c") { |german| 
   translated = german.readlines.collect { |l|
     if l =~ /\{"[^"]*", ("[A-Z0-9_]+")/ then
       $1
