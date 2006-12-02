@@ -1924,7 +1924,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SHARK","Hai","es","Hai","e","maskulin"),
     dekliniere_substantiv("NOUN_GIANT_EEL", "Riesenaal", "es", "Riesenaal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELECTRIC_EEL", "Zitteraal", "es", "Zitteraal", "e", "maskulin"),
-    dekliniere_substantiv("NOUN_KRAKEN", "Krake", "en", "Krake", "en", "maskulin","n"),
+    dekliniere_substantiv("NOUN_KRAKEN", "Kraken", "en", "Krake", "en", "maskulin","n"),
     dekliniere_substantiv("NOUN_NEWT", "Molch","es","Molch","e","maskulin", "s"),
     dekliniere_substantiv("NOUN_GECKO", "Gecko", "s", "Gecko", "s", "maskulin"),
     dekliniere_substantiv("NOUN_IGUANA", "Leguan", "s", "Leguan", "e", "maskulin"),
