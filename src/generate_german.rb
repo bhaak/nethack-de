@@ -430,6 +430,8 @@ def ausgabe_verbs
     konjugiere_verb("VERB_SCHLEUDERN","schleuder"),
     konjugiere_verb("VERB_ZERSPRINGEN","zerspring"),
     konjugiere_verb("VERB_GELINGEN","geling"),
+    konjugiere_verb("VERB_MACHEN","mach"),
+    konjugiere_verb("VERB_VIBRIEREN","vibrier"),
     "",
     "/* unregelmässige Verben */",
     Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
@@ -453,6 +455,11 @@ def ausgabe_verbs
     Verb.new("VERB_SCHIESSEN", "", "", ["schießt", "schießt", "schießt","schießen"]),
     Verb.new("VERB_FANGEN", "", "", ["fängst", "fängt", "fangt","fangen"]),
     Verb.new("VERB_ABBRECHEN", "", "ab", ["brichst", "bricht", "brecht","brechen"]),
+    Verb.new("VERB_EINATMEN", "", "ein", ["atmest", "atmet", "atmet","atmen"]),
+    Verb.new("VERB_TRAGEN", "", "", ["trägst", "trägt", "tragt","tragen"]),
+    Verb.new("VERB_KOENNEN", "", "", ["kannst", "kann", "könnt","können"]),
+    Verb.new("VERB_ZITTERN", "", "", ["zitterst", "zittert", "zittert","zittern"]),
+    Verb.new("VERB_GLAENZEN", "", "", ["glänzt", "glänzt", "glänzt","glänzen"]),
     "",
     Verb.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
     Verb.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
@@ -1614,7 +1621,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HELL_HOUND", "Höllenhund", "es", "Höllenhund", "e", "maskulin","e"),
     dekliniere_substantiv("NOUN_CERBERUS", "Zerberus", "", "Zerberuss", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GAS_SPORE", "Gasspore", "", "Gasspore", "en", "feminin", "n"),
-    dekliniere_substantiv("NOUN_FLOATING_EYE", "Schwebaug", "es", "Schwebaug", "en", "neutrum", "n"),
+    dekliniere_substantiv("NOUN_FLOATING_EYE", "Schwebaug", "es", "Schwebaug", "en", "neutrum", "n"), # Schwebäugler?, Schwebäuger?, was mit Ocellus?, nuräeugler, flugäugler, flugauge,
     #dekliniere_substantiv("NOUN_FREEZING_SPHERE" # 
     #dekliniere_substantiv("NOUN_FLAMING_SPHERE"  # brennende Kugel
     #dekliniere_substantiv("NOUN_SHOCKING_SPHERE"

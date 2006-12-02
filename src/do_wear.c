@@ -16,22 +16,22 @@ static NEARDATA long taking_off = 0L;
 static NEARDATA int todelay;
 static boolean cancelled_don = FALSE;
 
-static NEARDATA const char see_yourself[] = "see yourself";
+static NEARDATA const char see_yourself[] = "PRONOMEN_PERSONAL sehen";
 static NEARDATA const char unknown_type[] = "Unknown type of %s (%d)";
-static NEARDATA const char c_armor[]  = "armor",
-			   c_suit[]   = "suit",
+static NEARDATA const char c_armor[]  = "NOUN_ARMOR",
+			   c_suit[]   = "NOUN_SUIT",
 #ifdef TOURIST
-			   c_shirt[]  = "shirt",
+			   c_shirt[]  = "NOUN_SHIRT",
 #endif
-			   c_cloak[]  = "cloak",
-			   c_gloves[] = "gloves",
-			   c_boots[]  = "boots",
-			   c_helmet[] = "helmet",
-			   c_shield[] = "shield",
-			   c_weapon[] = "weapon",
-			   c_sword[]  = "sword",
-			   c_axe[]    = "axe",
-			   c_that_[]  = "that";
+			   c_cloak[]  = "NOUN_CLOAK",
+			   c_gloves[] = "NOUN_GLOVES",
+			   c_boots[]  = "NOUN_BOOTS",
+			   c_helmet[] = "NOUN_HELMET",
+			   c_shield[] = "NOUN_SHIELD",
+			   c_weapon[] = "NOUN_WEAPON",
+			   c_sword[]  = "NOUN_SWORD",
+			   c_axe[]    = "NOUN_AXE",
+			   c_that_[]  = "das";
 
 static NEARDATA const long takeoff_order[] = { WORN_BLINDF, W_WEP,
 	WORN_SHIELD, WORN_GLOVES, LEFT_RING, RIGHT_RING, WORN_CLOAK,
@@ -75,7 +75,7 @@ register struct obj *otmp;
 	    how[0] = '\0';
 	    if (otmp->otyp == TOWEL)
 		Sprintf(how, " around your %s", body_part(HEAD));
-	    You("are now wearing %s%s.",
+	    You("VERB_TRAGEN jetzt OBJECT %s%s.", /* EN You("are now wearing %s%s.", */
 		obj_is_pname(otmp) ? the(xname(otmp)) : an(xname(otmp)),
 		how);
 	}
@@ -164,7 +164,7 @@ Boots_off()
 	case ELVEN_BOOTS:
 		if (!oldprop && !HStealth && !BStealth && !cancelled_don) {
 			makeknown(otyp);
-			You("sure are noisy.");
+			You("VERB_MACHEN vielleicht einen Lärm!"); /* EN You("sure are noisy."); */
 		}
 		break;
 	case FUMBLE_BOOTS:
@@ -211,8 +211,8 @@ Cloak_on()
 		/* Note: it's already being worn, so we have to cheat here. */
 		if ((HInvis || EInvis || pm_invisible(youmonst.data)) && !Blind) {
 		    newsym(u.ux,u.uy);
-		    You("can %s!",
-			See_invisible ? "no longer see through yourself"
+		    You("VERB_KOENNEN OBJECT %s!", /* EN You("can %s!", */
+			See_invisible ? "nicht mehr durch PRONOMEN_PERSONAL hindurchsehen" /* EN See_invisible ? "no longer see through yourself" */
 			: see_yourself);
 		}
 		break;
@@ -222,8 +222,9 @@ Cloak_on()
 		if (!oldprop && !HInvis && !Blind) {
 		    makeknown(uarmc->otyp);
 		    newsym(u.ux,u.uy);
-		    pline("Suddenly you can%s yourself.",
-			See_invisible ? " see through" : "not see");
+		    pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL%s OBJECT PRONOMEN_PERSONAL %ssehen.", /* EN pline("Suddenly you can%s yourself.", */
+							See_invisible ? " durch" : "",
+							See_invisible ? "durch" : "nicht "); /* EN See_invisible ? " see through" : "not see"); */
 		}
 		break;
 	case OILSKIN_CLOAK:
@@ -261,17 +262,17 @@ Cloak_off()
 	case MUMMY_WRAPPING:
 		if (Invis && !Blind) {
 		    newsym(u.ux,u.uy);
-		    You("can %s.",
-			See_invisible ? "see through yourself"
-			: "no longer see yourself");
+		    You("VERB_KOENNEN %s.", /* EN You("can %s.", */
+			See_invisible ? "durch OBJECT PRONOMEN_PERSONAL durchsehen" /* EN See_invisible ? "see through yourself" */
+		  : "OBJECT PRONOMEN_PERSONAL nicht länger sehen"); /* EN : "no longer see yourself"); */
 		}
 		break;
 	case CLOAK_OF_INVISIBILITY:
 		if (!oldprop && !HInvis && !Blind) {
 		    makeknown(CLOAK_OF_INVISIBILITY);
 		    newsym(u.ux,u.uy);
-		    pline("Suddenly you can %s.",
-			See_invisible ? "no longer see through yourself"
+		    pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s.", /* EN pline("Suddenly you can %s.", */
+			See_invisible ? "nicht mehr länger durch PRONOMEN_PERSONAL durchsehen" /* EN See_invisible ? "no longer see through yourself"); */
 			: see_yourself);
 		}
 		break;
@@ -319,10 +320,10 @@ Helmet_on()
 	case DUNCE_CAP:
 		if (!uarmh->cursed) {
 		    if (Blind)
-			pline("%s for a moment.", Tobjnam(uarmh, "vibrate"));
+			pline("%s einen Moment lang.", Tobjnam(uarmh, "VERB_ZITTERN")); /* EN pline("%s for a moment.", Tobjnam(uarmh, "vibrate")); */
 		    else
-			pline("%s %s for a moment.",
-			      Tobjnam(uarmh, "glow"), hcolor(NH_BLACK));
+			pline("%s %s einen Moment lang.", /* EN pline("%s %s for a moment.", */
+			      Tobjnam(uarmh, "VERB_GLAENZEN"), hcolor(NH_BLACK)); /* EN Tobjnam(uarmh, "glow"), hcolor(NH_BLACK)); */
 		    curse(uarmh);
 		}
 		flags.botl = 1;		/* reveal new alignment or INT & WIS */
@@ -557,14 +558,13 @@ Amulet_on()
 		/* Don't use same message as polymorph */
 		if (orig_sex != poly_gender()) {
 		    makeknown(AMULET_OF_CHANGE);
-		    You("are suddenly very %s!", flags.female ? "feminine"
-			: "masculine");
+		    You("VERB_SEIN plötzlich sehr %s!", flags.female ? "feminin" : "maskulin"); /* EN You("are suddenly very %s!", flags.female ? "feminine" : "masculine"); */
 		    flags.botl = 1;
 		} else
 		    /* already polymorphed into single-gender monster; only
 		       changed the character's base sex */
-		    You("don't feel like yourself.");
-		pline_The("amulet disintegrates!");
+		    You("VERB_FEEL OBJECT PRONOMEN_PERSONAL wie PRONOMEN_PERSONAL selbst."); /* EN You("don't feel like yourself."); */
+		pline_The("NOUN_AMULET löst sich auf!"); /* EN pline_The("amulet disintegrates!"); */
 		if (orig_sex == poly_gender() && uamul->dknown &&
 			!objects[AMULET_OF_CHANGE].oc_name_known &&
 			!objects[AMULET_OF_CHANGE].oc_uname)
@@ -608,7 +608,7 @@ Amulet_off()
 		    setworn((struct obj *)0, W_AMUL);
 		    if (!breathless(youmonst.data) && !amphibious(youmonst.data)
 						&& !Swimming) {
-			You("suddenly inhale an unhealthy amount of water!");
+			You("VERB_EINATMEN plötzlich eine ungesunde Dosis Dihydrogenmonoxid SATZKLAMMER!"); /* EN You("suddenly inhale an unhealthy amount of water!"); */
 		    	(void) drown();
 		    }
 		    return;
@@ -616,7 +616,7 @@ Amulet_off()
 		break;
 	case AMULET_OF_STRANGULATION:
 		if (Strangled) {
-			You("can breathe more easily!");
+			You("VERB_KOENNEN wieder besser atmen!"); /* EN You("can breathe more easily!"); */
 			Strangled = 0;
 		}
 		break;
@@ -681,7 +681,7 @@ register struct obj *obj;
 		if (Invis && !oldprop && !HSee_invisible &&
 				!perceives(youmonst.data) && !Blind) {
 		    newsym(u.ux,u.uy);
-		    pline("Suddenly you are transparent, but there!");
+		    pline("Plötzlich SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SEIN durchsichtig!"); /* EN pline("Suddenly you are transparent, but there!"); */
 		    makeknown(RIN_SEE_INVISIBLE);
 		}
 		break;
@@ -787,14 +787,14 @@ boolean gone;
 
 		if (Invisible && !Blind) {
 		    newsym(u.ux,u.uy);
-		    pline("Suddenly you cannot see yourself.");
+		    pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht mehr sehen."); /* EN pline("Suddenly you cannot see yourself."); */
 		    makeknown(RIN_SEE_INVISIBLE);
 		}
 		break;
 	case RIN_INVISIBILITY:
 		if (!Invis && !BInvis && !Blind) {
 		    newsym(u.ux,u.uy);
-		    Your("body seems to unfade%s.",
+		    Your("body seems to unfade%s.", // TODO
 			 See_invisible ? " completely" : "..");
 		    makeknown(RIN_INVISIBILITY);
 		}
@@ -875,13 +875,13 @@ register struct obj *otmp;
 
 	if (Blind && !already_blind) {
 	    changed = TRUE;
-	    if (flags.verbose) You_cant("see any more.");
+	    if (flags.verbose) You("VERB_KOENNEN nichts mehr sehen."); /* EN if (flags.verbose) You_cant("see any more."); */
 	    /* set ball&chain variables before the hero goes blind */
 	    if (Punished) set_bc(0);
 	} else if (already_blind && !Blind) {
 	    changed = TRUE;
 	    /* "You are now wearing the Eyes of the Overworld." */
-	    You("can see!");
+	    You("VERB_KOENNEN sehen!"); /* EN You("can see!"); */
 	}
 	if (changed) {
 	    /* blindness has just been toggled */
@@ -905,11 +905,11 @@ register struct obj *otmp;
 		/* "still cannot see" makes no sense when removing lenses
 		   since they can't have been the cause of your blindness */
 		if (otmp->otyp != LENSES)
-		    You("still cannot see.");
+		    You("VERB_KOENNEN immer noch nicht sehen."); /* EN You("still cannot see."); */
 	    } else {
 		changed = TRUE;	/* !was_blind */
 		/* "You were wearing the Eyes of the Overworld." */
-		You_cant("see anything now!");
+		You("VERB_KOENNEN jetzt nichts sehen!"); /* EN You_cant("see anything now!"); */
 		/* set ball&chain variables before the hero goes blind */
 		if (Punished) set_bc(0);
 	    }
@@ -991,7 +991,7 @@ dotakeoff()
 	if (!armorpieces) {
 	     /* assert( GRAY_DRAGON_SCALES > YELLOW_DRAGON_SCALE_MAIL ); */
 		if (uskin)
-		    pline_The("%s merged with your skin!",
+			pline_The("%s merged with your skin!", //TODO
 			      uskin->otyp >= GRAY_DRAGON_SCALES ?
 				"dragon scales are" : "dragon scale mail is");
 		else
@@ -1004,7 +1004,7 @@ dotakeoff()
 		otmp = getobj(clothes, "take off");
 	if (otmp == 0) return(0);
 	if (!(otmp->owornmask & W_ARMOR)) {
-		You("are not wearing that.");
+		You("VERB_TRAGEN das nicht."); /* EN You("are not wearing that."); */
 		return(0);
 	}
 	/* note: the `uskin' case shouldn't be able to happen here; dragons
@@ -1014,7 +1014,7 @@ dotakeoff()
 			  || ((otmp == uarmu) && (uarmc || uarm))
 #endif
 		) {
-	    You_cant("take that off.");
+	    You("VERB_KOENNEN das nicht ausziehen."); /* EN You_cant("take that off."); */
 	    return 0;
 	}
 
@@ -1041,6 +1041,7 @@ doremring()
 	MOREACC(ublindf);
 
 	if(!Accessories) {
+		// TODO
 		pline("Not wearing any accessories.%s", (iflags.cmdassist &&
 			    (uarm || uarmc ||
 #ifdef TOURIST
@@ -1053,7 +1054,7 @@ doremring()
 	if (Accessories != 1) otmp = getobj(accessories, "remove");
 	if(!otmp) return(0);
 	if(!(otmp->owornmask & (W_RING | W_AMUL | W_TOOL))) {
-		You("are not wearing that.");
+		You("VERB_TRAGEN das nicht."); /* EN You("are not wearing that."); */
 		return(0);
 	}
 
@@ -1089,9 +1090,9 @@ register struct obj *otmp;
 {
 	/* Curses, like chickens, come home to roost. */
 	if((otmp == uwep) ? welded(otmp) : (int)otmp->cursed) {
-		You("can't.  %s cursed.",
+		pline("VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht.  %s verflucht.", /* EN You("can't.  %s cursed.", */
 			(is_boots(otmp) || is_gloves(otmp) || otmp->quan > 1L)
-			? "They are" : "It is");
+			? "Sie sind" : "Es ist"); /* EN ? "They are" : "It is"); */
 		otmp->bknown = TRUE;
 		return(1);
 	}
@@ -1108,7 +1109,7 @@ register struct obj *otmp;
 	if(delay) {
 		nomul(delay);
 		if (is_helmet(otmp)) {
-			nomovemsg = "You finish taking off your helmet.";
+			nomovemsg = "You finish taking off your helmet."; // TODO
 			afternmv = Helmet_off;
 		     }
 		else if (is_gloves(otmp)) {
@@ -1154,14 +1155,16 @@ STATIC_OVL void
 already_wearing(cc)
 const char *cc;
 {
-	You("are already wearing %s%c", cc, (cc == c_that_) ? '!' : '.');
+	if (cc == c_that_) { You("VERB_TRAGEN %s schon!", cc); }
+	else { You("VERB_TRAGEN schon OBJECT %s.", cc); }
+	/* EN You("are already wearing %s%c", cc, (cc == c_that_) ? '!' : '.'); */
 }
 
 STATIC_OVL void
 already_wearing2(cc1, cc2)
 const char *cc1, *cc2;
 {
-	You_cant("wear %s because you're wearing %s there already.", cc1, cc2);
+	You("VERB_KOENNEN nicht OBJECT %s tragen, weil SUBJECT_IM_SATZ PRONOMEN_PERSONAL schon KASUS_AKKUSATIV %s VERB_TRAGEN.", cc1, cc2); // TODO /* EN You_cant("wear %s because you're wearing %s there already.", cc1, cc2); */
 }
 
 /*
@@ -1189,7 +1192,7 @@ boolean noisy;
 	    /* same exception for cloaks as used in m_dowear() */
 	    (which != c_cloak || youmonst.data->msize != MZ_SMALL) &&
 	    (racial_exception(&youmonst, otmp) < 1)) {
-	if (noisy) pline_The("%s will not fit on your body.", which);
+			if (noisy) pline_The("%s will not fit on your body.", which); //TODO
 	return 0;
     } else if (otmp->owornmask & W_ARMOR) {
 	if (noisy) already_wearing(c_that_);
@@ -1329,7 +1332,7 @@ dowear()
 	/* cantweararm checks for suits of armor */
 	/* verysmall or nohands checks for shields, gloves, etc... */
 	if ((verysmall(youmonst.data) || nohands(youmonst.data))) {
-		pline("Don't even bother.");
+		pline("Ist nichtmal einen Versuch wert."); /* EN pline("Don't even bother."); */
 		return(0);
 	}
 
@@ -1368,7 +1371,7 @@ dowear()
 		if(is_helmet(otmp)) afternmv = Helmet_on;
 		if(is_gloves(otmp)) afternmv = Gloves_on;
 		if(otmp == uarm) afternmv = Armor_on;
-		nomovemsg = "You finish your dressing maneuver.";
+		nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_BEENDEN OBJECT PRONOMEN_POSSESSIV NOUN_DRESSING_MANEUVER."; /* EN nomovemsg = "You finish your dressing maneuver."; */
 	} else {
 		if(is_cloak(otmp)) (void) Cloak_on();
 /*		if(is_shield(otmp)) (void) Shield_on(); */
@@ -1385,10 +1388,10 @@ doputon()
 	long mask = 0L;
 
 	if(uleft && uright && uamul && ublindf) {
-		Your("%s%s are full, and you're already wearing an amulet and %s.",
+		Your("%s%s sind voll und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_TRAGEN schon OBJECT ARTIKEL_UNBESTIMMTER NOUN_AMULET und KASUS_AKKUSATIV %s.", /* EN Your("%s%s are full, and you're already wearing an amulet and %s.", */
 			humanoid(youmonst.data) ? "ring-" : "",
-			makeplural(body_part(FINGER)),
-			ublindf->otyp==LENSES ? "some lenses" : "a blindfold");
+				 makeplural(body_part(FINGER)), // TODO
+			ublindf->otyp==LENSES ? "NOUN_LENSESs" : "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD"); /* EN ublindf->otyp==LENSES ? "some lense" : "a blindfold"); */
 		return(0);
 	}
 	otmp = getobj(accessories, "put on");
@@ -1409,11 +1412,11 @@ doputon()
 		setuqwep((struct obj *) 0);
 	if(otmp->oclass == RING_CLASS || otmp->otyp == MEAT_RING) {
 		if(nolimbs(youmonst.data)) {
-			You("cannot make the ring stick to your body.");
+			pline("Der Ring bleibt nirgends an KASUS_DATIV PRONOMEN_POSSESSIV Körper stecken."); /* EN You("cannot make the ring stick to your body."); */
 			return(0);
 		}
 		if(uleft && uright){
-			There("are no more %s%s to fill.",
+			There("are no more %s%s to fill.", // TODO
 				humanoid(youmonst.data) ? "ring-" : "",
 				makeplural(body_part(FINGER)));
 			return(0);
@@ -1424,7 +1427,7 @@ doputon()
 			char qbuf[QBUFSZ];
 			char answer;
 
-			Sprintf(qbuf, "Which %s%s, Right or Left?",
+			Sprintf(qbuf, "Which %s%s, Right or Left?", // TODO
 				humanoid(youmonst.data) ? "ring-" : "",
 				body_part(FINGER));
 			if(!(answer = yn_function(qbuf, "rl", '\0')))
@@ -1461,7 +1464,7 @@ doputon()
 		Ring_on(otmp);
 	} else if (otmp->oclass == AMULET_CLASS) {
 		if(uamul) {
-			already_wearing("an amulet");
+			already_wearing("ARTIKEL_UNBESTIMMTER NOUN_AMULET");
 			return(0);
 		}
 		if (otmp->oartifact && !touch_artifact(otmp, &youmonst))
@@ -1480,20 +1483,21 @@ doputon()
 					body_part(FACE));
 			else if (ublindf->otyp == BLINDFOLD) {
 				if (otmp->otyp == LENSES)
-					already_wearing2("lenses", "a blindfold");
+					already_wearing2("NOUN_LENSESs", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD"); /* EN already_wearing2("lenses", "a blindfold"); */
 				else
-					already_wearing("a blindfold");
+					already_wearing("ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD");
+									/* EN already_wearing("a blindfold"); */
 			} else if (ublindf->otyp == LENSES) {
 				if (otmp->otyp == BLINDFOLD)
-					already_wearing2("a blindfold", "some lenses");
+					already_wearing2("ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD", "NOUN_LENSESs"); /* EN already_wearing2("a blindfold", "some lenses"); */
 				else
-					already_wearing("some lenses");
+					already_wearing("NOUN_LENSESs"); /* EN already_wearing("some lenses"); */
 			} else
 				already_wearing(something); /* ??? */
 			return(0);
 		}
 		if (otmp->otyp != BLINDFOLD && otmp->otyp != TOWEL && otmp->otyp != LENSES) {
-			You_cant("wear that!");
+			You("VERB_KOENNEN das nicht tragen!"); /* EN You_cant("wear that!"); */
 			return(0);
 		}
 		if (otmp->oartifact && !touch_artifact(otmp, &youmonst))
@@ -1551,8 +1555,9 @@ glibr()
 	rightfall = (uright && !uright->cursed && (!welded(uwep)));
 	if (!uarmg && (leftfall || rightfall) && !nolimbs(youmonst.data)) {
 		/* changed so cursed rings don't fall off, GAN 10/30/86 */
-		Your("%s off your %s.",
-			(leftfall && rightfall) ? "rings slip" : "ring slips",
+		// TODO
+		Your("%s off your %s.", /* EN Your("%s off your %s.", */
+			(leftfall && rightfall) ? "rings slip" : "ring slips", /* EN (leftfall && rightfall) ? "rings slip" : "ring slips", */
 			(leftfall && rightfall) ? makeplural(body_part(FINGER)) :
 			body_part(FINGER));
 		xfl++;
@@ -1951,7 +1956,7 @@ doddoremarm()
 	return 0;
     } else if (!uwep && !uswapwep && !uquiver && !uamul && !ublindf &&
 		!uleft && !uright && !wearing_armor()) {
-	You("are not wearing anything.");
+	You("VERB_TRAGEN gar nichts."); /* EN You("are not wearing anything."); */
 	return 0;
     }
 
@@ -2004,7 +2009,7 @@ int retry;
 	    all_worn_categories = TRUE;
     }
 
-    n = query_objlist("What do you want to take off?", invent,
+    n = query_objlist("Was VERB_WOLLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausziehen?", invent, /* EN n = query_objlist("What do you want to take off?", invent, */
 			SIGNAL_NOMENU|USE_INVLET|INVORDER_SORT,
 			&pick_list, PICK_ANY,
 			all_worn_categories ? is_worn : is_worn_by_type);

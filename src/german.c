@@ -150,6 +150,8 @@ void german2meta(char *str, char *output)
 	int len=0;
 	int ring_gefunden = 0;
 	int wand_gefunden = 0;
+	int potion_gefunden = 0;
+	int spellbook_gefunden = 0;
 	int leiche_gefunden = 0;
 	
 	printf("\ngerman2meta %s\n", str);
@@ -162,14 +164,14 @@ void german2meta(char *str, char *output)
 		struct substantiv_oder_adjekiv_struct *wort = get_meta_substantiv(str+i);
 		//printf("2\n",i);
 
-		// gewisse Adjektive sind mehrdeutig, z.B. "rot"
-		// diese Adjektivce werden mittels den nachfolgenden Substantiven bestimmt
+		// gewisse Worte sind mehrdeutig, z.B. "rot", "Hast"
 		if (wort != NULL) {
 			if ((strncmp("ADJEKTIV_SPE_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_POT_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_WAND_", wort->typ, 14)==0) ||
 					(strncmp("ADJEKTIV_AMULET_", wort->typ, 16)==0)) {
+				// diese Adjektive werden mittels den nachfolgenden Substantiven bestimmt
 				printf("ADJEKTIV_ 1 %s\n", wort->typ);
 				printf("ADJEKTIV_ 2 %s\n", str+i);
 				if (strstr2(str+i, "Zauberbuch", "Zauberbüch")) {
@@ -181,6 +183,18 @@ void german2meta(char *str, char *output)
 				} else if (strstr2(str+i, "Amulett", "Amulett")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_AMULET_");
 					printf("ADJEKTIV_ 6 %s\n", wort->typ);
+				}
+			} else if (wand_gefunden) {
+				if ((strncmp("NOUN_SPE_", wort->typ, 9)==0) ||
+					  (strncmp("NOUN_POT_", wort->typ, 9)==0)) {
+					wort = get_meta_substantiv_with(str+i, "NOUN_WAND_");
+					printf("NOUN_WAND_ 1 %s\n", wort->typ);
+				}
+			} else if (potion_gefunden) {
+				if ((strncmp("NOUN_SPE_", wort->typ, 9)==0) ||
+					  (strncmp("NOUN_WAND_", wort->typ, 10)==0)) {
+					wort = get_meta_substantiv_with(str+i, "NOUN_POT_");
+					printf("NOUN_POT_ 1 %s\n", wort->typ);
 				}
 			}
 		}
@@ -196,9 +210,14 @@ void german2meta(char *str, char *output)
 				ring_gefunden = 1;
 			} else if (strncmp("NOUN_WAND", wort->typ, 9)==0) {
 				wand_gefunden = 1;
+			} else if (strncmp("NOUN_POTION", wort->typ, 11)==0) {
+				potion_gefunden = 1;
+			} else if (strncmp("NOUN_SPELLBOOK", wort->typ, 14)==0) {
+				spellbook_gefunden = 1;
 			}
 
-			if (ring_gefunden && (strcmp("ARTIKEL_BESTIMMTER", wort->typ)==0)) {
+			if ((ring_gefunden || wand_gefunden || potion_gefunden || spellbook_gefunden) &&
+			    (strcmp("ARTIKEL_BESTIMMTER", wort->typ)==0)) {
 				strcat(output, "PARTIKEL_OF");
 				i = i + strlen(wort->wort);
 			} else if (wand_gefunden && (strncmp("MADE_OF_WAND_", wort->typ, 13)==0)) {
