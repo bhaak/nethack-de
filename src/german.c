@@ -698,6 +698,11 @@ char* german(const char *line) {
 
 		/* printf("tmp: %s ",tmp); print_state(); */
 		if (strncmp("PRONOMEN_",tmp, 9)==0) {
+			if ((strcmp("PRONOMEN_KEIN", tmp)==0) ||
+					(strcmp("PRONOMEN_POSSESSIV", tmp)==0) ||
+					(strncmp("PRONOMEN_3P", tmp, 11)==0)) {
+				 c_artikel = unbestimmter;
+			}
 			append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 
 		} else if (strncmp("SUBJECT",tmp,7)==0) {

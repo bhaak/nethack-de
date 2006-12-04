@@ -293,6 +293,8 @@ START_TEST (test_complete_sentences2) {
 		 "Deine Ringe rutschen von deinen Fingern."},
 		{"SUBJECT PRONOMEN_POSSESSIV NOUN_SWORDs VERB_GLEITEN KASUS_DATIV PRONOMEN_PERSONAL aus KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_HANDs.",
 		 "Deine Schwerter gleiten dir aus den H‰nden."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_NEHMEN OBJECT MODIFIER_CORPSE NOUN_CHICKATRICE NOUN_CORPSE in KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE NOUN_HANDs.",
+		 "Du nimmst die sterblichen ‹berreste eines Kikatrix in deine bloﬂen H‰nde."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_BEENDEN OBJECT PRONOMEN_POSSESSIV NOUN_DRESSING_MANEUVER.",
 		 "Du beendest deinen Bekleidungsakt."}
 	};
@@ -587,9 +589,9 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-	tcase_add_test(tc_core, test_german2meta);
 
 	if (1) {
+	tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
   tcase_add_test(tc_core, test_identified_spellbooks);
@@ -630,4 +632,3 @@ int main() {
   srunner_free(sr);
   return (nf == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-
