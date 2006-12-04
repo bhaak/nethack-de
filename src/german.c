@@ -509,8 +509,15 @@ int finde_naechstes_substantiv(const char* text) {
 		printf("-%s-\n",tmp);
 #endif
 		i += strlen(tmp)+1;
-	
-		if (strncmp(tmp, "NOUN_",5)==0) {
+		
+		if (strcmp("PRONOMEN_PERSONAL", tmp)==0) {
+			// Personalpronomen, wir nehmen also die Eingaben des Spielers
+			c_genus   = pm_genus;
+			c_numerus = pm_numerus;
+			c_person  = pm_person;		
+
+			return 0;
+		} else if (strncmp(tmp, "NOUN_",5)==0) {
 			int k=0;
 			//printf("1 ####################\n");
 			while (worte[k].wort!=NULL) {

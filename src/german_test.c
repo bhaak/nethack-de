@@ -289,6 +289,10 @@ START_TEST (test_complete_sentences2) {
 	char *text[][2] = {
 		{"ARTIKEL_BESTIMMTER NOUN_PONY VERB_SEIN nicht ADJEKTIV_SADDLED.",
 		 "Das Pony ist nicht gesattelt."},
+		{"SUBJECT PRONOMEN_POSSESSIV NOUN_RINGs VERB_RUTSCHEN von KASUS_DATIV PRONOMEN_POSSESSIV NOUN_FINGERs.",
+		 "Deine Ringe rutschen von deinen Fingern."},
+		{"SUBJECT PRONOMEN_POSSESSIV NOUN_SWORDs VERB_GLEITEN KASUS_DATIV PRONOMEN_PERSONAL aus KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_HANDs.",
+		 "Deine Schwerter gleiten dir aus den Händen."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_BEENDEN OBJECT PRONOMEN_POSSESSIV NOUN_DRESSING_MANEUVER.",
 		 "Du beendest deinen Bekleidungsakt."}
 	};
@@ -626,3 +630,4 @@ int main() {
   srunner_free(sr);
   return (nf == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
+
