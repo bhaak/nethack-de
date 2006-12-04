@@ -61,7 +61,8 @@ off_msg(otmp)
 register struct obj *otmp;
 {
 	if(flags.verbose)
-	    You("were wearing %s.", doname(otmp));
+		// TODO
+	    You("were wearing %s.", doname(otmp)); /* EN You("were wearing %s.", doname(otmp)); */
 }
 
 /* for items that involve no delay */
@@ -74,7 +75,7 @@ register struct obj *otmp;
 
 	    how[0] = '\0';
 	    if (otmp->otyp == TOWEL)
-		Sprintf(how, " around your %s", body_part(HEAD));
+				Sprintf(how, " around your %s", body_part(HEAD)); // TODO
 	    You("VERB_TRAGEN jetzt OBJECT %s%s.", /* EN You("are now wearing %s%s.", */
 		obj_is_pname(otmp) ? the(xname(otmp)) : an(xname(otmp)),
 		how);
@@ -1555,9 +1556,8 @@ glibr()
 	rightfall = (uright && !uright->cursed && (!welded(uwep)));
 	if (!uarmg && (leftfall || rightfall) && !nolimbs(youmonst.data)) {
 		/* changed so cursed rings don't fall off, GAN 10/30/86 */
-		// TODO
-		Your("%s off your %s.", /* EN Your("%s off your %s.", */
-			(leftfall && rightfall) ? "rings slip" : "ring slips", /* EN (leftfall && rightfall) ? "rings slip" : "ring slips", */
+		Your("%s von KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN Your("%s off your %s.", */
+			(leftfall && rightfall) ? "NOUN_RINGs VERB_RUTSCHEN" : "NOUN_RING VERB_RUTSCHEN", /* EN (leftfall && rightfall) ? "rings slip" : "ring slips", */
 			(leftfall && rightfall) ? makeplural(body_part(FINGER)) :
 			body_part(FINGER));
 		xfl++;
@@ -1577,9 +1577,9 @@ glibr()
 	if (u.twoweap && otmp) {
 		otherwep = is_sword(otmp) ? c_sword :
 		    makesingular(oclass_names[(int)otmp->oclass]);
-		Your("%s %sslips from your %s.",
+		Your("%s VERB_RUTSCHEN %saus KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN Your("%s %sslips from your %s.", */
 			otherwep,
-			xfl ? "also " : "",
+			xfl ? "auch " : "", /* EN xfl ? "also " : "", */
 			makeplural(body_part(HAND)));
 		setuswapwep((struct obj *)0);
 		xfl++;
@@ -1596,9 +1596,9 @@ glibr()
 		if (otherwep && strcmp(thiswep, otherwep)) otherwep = 0;
 
 		/* changed so cursed weapons don't fall, GAN 10/30/86 */
-		Your("%s%s %sslips from your %s.",
-			otherwep ? "other " : "", thiswep,
-			xfl ? "also " : "",
+		Your("%s%s VERB_RUTSCHEN %saus KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN Your("%s%s %sslips from your %s.", */
+			otherwep ? "ADJEKTIV_ANDERE " : "", thiswep, /* EN otherwep ? "other " : "", thiswep, */
+			xfl ? "auch " : "", /* EN xfl ? "also " : "", */
 			makeplural(body_part(HAND)));
 		setuwep((struct obj *)0);
 		if (otmp->otyp != LOADSTONE || !otmp->cursed)
@@ -1692,7 +1692,7 @@ register struct obj *otmp;
 	/* special ring checks */
 	if (otmp == uright || otmp == uleft) {
 	    if (nolimbs(youmonst.data)) {
-		pline_The("ring is stuck.");
+		pline_The("NOUN_RING steckt fest."); /* EN pline_The("ring is stuck."); */
 		return 0;
 	    }
 	    why = 0;	/* the item which prevents ring removal */
@@ -1705,6 +1705,7 @@ register struct obj *otmp;
 	    }
 	    if (why) {
 		You("cannot %s to remove the ring.", buf);
+		/* EN You("cannot %s to remove the ring.", buf); */
 		why->bknown = TRUE;
 		return 0;
 	    }
