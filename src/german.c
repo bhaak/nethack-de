@@ -471,6 +471,11 @@ int analyze_this_as_subject(const char *text) {
 	return 0;
 }
 
+void clear_object() {
+	do_genus=0;
+	do_numerus=0;
+}
+
 int analyze_this_as_object(const char *text) {
 	int k;
 #ifdef DEBUG
@@ -870,6 +875,11 @@ char* german(const char *line) {
 			if (output[strlen(output)-1]!=' ') { append(output, " "); }
 			append(output, verb_praeverb);
 
+		} else if (strncmp("NEUER_SATZ", tmp, 6)==0) {
+			insert_char = 0;
+			
+			clear_subject();
+			clear_object();
 		} else if (strncmp("KASUS_", tmp, 6)==0) {
 			insert_char = 0;
 

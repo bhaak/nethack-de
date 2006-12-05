@@ -75,7 +75,7 @@ register struct obj *otmp;
 
 	    how[0] = '\0';
 	    if (otmp->otyp == TOWEL)
-				Sprintf(how, " around your %s", body_part(HEAD)); // TODO
+				Sprintf(how, " über KASUS_DATIV PRONOMEN_POSSESSIV %s", body_part(HEAD));
 	    You("VERB_TRAGEN jetzt OBJECT %s%s.", /* EN You("are now wearing %s%s.", */
 		obj_is_pname(otmp) ? the(xname(otmp)) : an(xname(otmp)),
 		how);
@@ -109,6 +109,7 @@ Boots_on()
 		/* though not better than potion speed */
 		if (!oldprop && !(HFast & TIMEOUT)) {
 			makeknown(uarmf->otyp);
+			// TODO
 			You_feel("yourself speed up%s.",
 				(oldprop || HFast) ? " a bit more" : "");
 		}
@@ -116,6 +117,7 @@ Boots_on()
 	case ELVEN_BOOTS:
 		if (!oldprop && !HStealth && !BStealth) {
 			makeknown(uarmf->otyp);
+			// TODO
 			You("walk very quietly.");
 		}
 		break;
@@ -150,6 +152,7 @@ Boots_off()
 	case SPEED_BOOTS:
 		if (!Very_fast && !cancelled_don) {
 			makeknown(otyp);
+			// TODO
 			You_feel("yourself slow down%s.",
 				Fast ? " a bit" : "");
 		}
@@ -165,6 +168,7 @@ Boots_off()
 	case ELVEN_BOOTS:
 		if (!oldprop && !HStealth && !BStealth && !cancelled_don) {
 			makeknown(otyp);
+			// TODO
 			You("VERB_MACHEN vielleicht einen Lärm!"); /* EN You("sure are noisy."); */
 		}
 		break;
@@ -441,7 +445,7 @@ Gloves_off()
 		touch_petrifies(&mons[uwep->corpsenm])) {
 	char kbuf[BUFSZ];
 
-	You("wield the %s in your bare %s.",
+	You("VERB_NEHMEN OBJECT %s in KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("wield the %s in your bare %s.", */
 	    corpse_xname(uwep, TRUE), makeplural(body_part(HAND)));
 	Strcpy(kbuf, an(corpse_xname(uwep, TRUE)));
 	instapetrify(kbuf);
@@ -453,7 +457,7 @@ Gloves_off()
 	touch_petrifies(&mons[uswapwep->corpsenm])) {
 	char kbuf[BUFSZ];
 
-	You("wield the %s in your bare %s.",
+	You("VERB_NEHMEN OBJECT %s in KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("wield the %s in your bare %s.", */
 	    corpse_xname(uswapwep, TRUE), body_part(HAND));
 
 	Strcpy(kbuf, an(corpse_xname(uswapwep, TRUE)));
@@ -575,7 +579,7 @@ Amulet_on()
 	    }
 	case AMULET_OF_STRANGULATION:
 		makeknown(AMULET_OF_STRANGULATION);
-		pline("It constricts your throat!");
+		pline("SUBJECT PRONOMEN_POSSESSIV NOUN_HALS VERB_ZUSCHNUEREN sich SATZKLAMMER!"); /* EN pline("It constricts your throat!"); */
 		Strangled = 6;
 		break;
 	case AMULET_OF_RESTFUL_SLEEP:
@@ -682,7 +686,7 @@ register struct obj *obj;
 		if (Invis && !oldprop && !HSee_invisible &&
 				!perceives(youmonst.data) && !Blind) {
 		    newsym(u.ux,u.uy);
-		    pline("Plötzlich SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SEIN durchsichtig!"); /* EN pline("Suddenly you are transparent, but there!"); */
+		    pline("Plötzlich VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL durchsichtig!"); /* EN pline("Suddenly you are transparent, but there!"); */
 		    makeknown(RIN_SEE_INVISIBLE);
 		}
 		break;
@@ -1043,13 +1047,13 @@ doremring()
 
 	if(!Accessories) {
 		// TODO
-		pline("Not wearing any accessories.%s", (iflags.cmdassist &&
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_TRAGEN keine Accessoires.%s", (iflags.cmdassist && /* EN pline("Not wearing any accessories.%s", (iflags.cmdassist && */
 			    (uarm || uarmc ||
 #ifdef TOURIST
 			     uarmu ||
 #endif
 			     uarms || uarmh || uarmg || uarmf)) ?
-		      "  Use 'T' command to take off armor." : "");
+		      "  Use 'T' command to take off armor." : ""); // TODO
 		return(0);
 	}
 	if (Accessories != 1) otmp = getobj(accessories, "remove");
@@ -1193,7 +1197,7 @@ boolean noisy;
 	    /* same exception for cloaks as used in m_dowear() */
 	    (which != c_cloak || youmonst.data->msize != MZ_SMALL) &&
 	    (racial_exception(&youmonst, otmp) < 1)) {
-			if (noisy) pline_The("%s will not fit on your body.", which); //TODO
+			if (noisy) pline_The("%s VERB_PASSEN nicht auf KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_BODY.", which); /* EN if (noisy) pline_The("%s will not fit on your body.", which); */
 	return 0;
     } else if (otmp->owornmask & W_ARMOR) {
 	if (noisy) already_wearing(c_that_);
@@ -1219,7 +1223,7 @@ boolean noisy;
 	} else if (Upolyd && has_horns(youmonst.data) && !is_flimsy(otmp)) {
 	    /* (flimsy exception matches polyself handling) */
 	    if (noisy)
-		pline_The("%s won't fit over your horn%s.",
+		pline_The("%s VERB_GEHEN nicht über KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_HORN%s.", /* EN pline_The("%s won't fit over your horn%s.", */
 			  c_helmet, plur(num_horns(youmonst.data)));
 	    err++;
 	} else
@@ -1230,14 +1234,14 @@ boolean noisy;
 	    err++;
 	} else if (uwep && bimanual(uwep)) {
 	    if (noisy) 
-		You("cannot wear a shield while wielding a two-handed %s.",
+		You("VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_SHIELD tragen, NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ZWEIHAENDIG %s VERB_FUEHREN.", /* EN You("cannot wear a shield while wielding a two-handed %s.", */
 		    is_sword(uwep) ? c_sword :
 		    (uwep->otyp == BATTLE_AXE) ? c_axe : c_weapon);
 	    err++;
 	} else if (u.twoweap) {
 	    if (noisy)
-		You("cannot wear a shield while wielding two weapons.");
-	    err++;
+		You("VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_SHIELD tragen, NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT zwei NOUN_WEAPONs VERB_FUEHREN."); /* EN You("cannot wear a shield while wielding two weapons."); */
+				err++;
 	} else
 	    *mask = W_ARMS;
     } else if (is_boots(otmp)) {
@@ -1245,21 +1249,21 @@ boolean noisy;
 	    if (noisy) already_wearing(c_boots);
 	    err++;
 	} else if (Upolyd && slithy(youmonst.data)) {
-	    if (noisy) You("have no feet...");	/* not body_part(FOOT) */
+	    if (noisy) You("VERB_HAVE keine Füsse ...");	/* not body_part(FOOT) */ /* EN if (noisy) You("have no feet..."); */
 	    err++;
 	} else if (Upolyd && youmonst.data->mlet == S_CENTAUR) {
 	    /* break_armor() pushes boots off for centaurs,
 	       so don't let dowear() put them back on... */
-	    if (noisy) pline("You have too many hooves to wear %s.",
+	    if (noisy) pline("SUBJECT PRONOMEN_PERSONAL VERB_HAVE zuviele Hufe um KASUS_AKKUSATIV %s zu tragen.", /* EN if (noisy) pline("You have too many hooves to wear %s.", */
 			     c_boots);	/* makeplural(body_part(FOOT)) yields
 					   "rear hooves" which sounds odd */
 	    err++;
 	} else if (u.utrap && (u.utraptype == TT_BEARTRAP ||
 				u.utraptype == TT_INFLOOR)) {
 	    if (u.utraptype == TT_BEARTRAP) {
-		if (noisy) Your("%s is trapped!", body_part(FOOT));
+		if (noisy) Your("%s ist gefangen!", body_part(FOOT)); /* EN if (noisy) Your("%s is trapped!", body_part(FOOT)); */
 	    } else {
-		if (noisy) Your("%s are stuck in the %s!",
+		if (noisy) Your("%s VERB_SEIN in KASUS_DATIV ARTIKEL_BESTIMMTER %s eingeklemmt!", /* EN if (noisy) Your("%s are stuck in the %s!", */
 				makeplural(body_part(FOOT)),
 				surface(u.ux, u.uy));
 	    }
@@ -1271,7 +1275,7 @@ boolean noisy;
 	    if (noisy) already_wearing(c_gloves);
 	    err++;
 	} else if (welded(uwep)) {
-	    if (noisy) You("cannot wear gloves over your %s.",
+	    if (noisy) You("VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_GLOVESs über KASUS_DATIV PRONOMEN_POSSESSIV %s tragen.", /* EN if (noisy) You("cannot wear gloves over your %s.", */
 			   is_sword(uwep) ? c_sword : c_weapon);
 	    err++;
 	} else
@@ -1282,7 +1286,7 @@ boolean noisy;
 	    if (uarmu) {
 		if (noisy) already_wearing(an(c_shirt));
 	    } else {
-		if (noisy) You_cant("wear that over your %s.",
+		if (noisy) You_cant("VERB_KOENNEN das nicht über KASUS_DATIV PRONOMEN_POSSESSIV %s tragen.", /* EN if (noisy) You_cant("wear that over your %s.", */
 			           (uarm && !uarmc) ? c_armor : cloak_simple_name(uarmc));
 	    }
 	    err++;
@@ -1297,10 +1301,10 @@ boolean noisy;
 	    *mask = W_ARMC;
     } else if (is_suit(otmp)) {
 	if (uarmc) {
-	    if (noisy) You("cannot wear armor over a %s.", cloak_simple_name(uarmc));
+	    if (noisy) You("VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_ARMOR über KASUS_DATIV ARTIKEL_UNBESTIMMTER %s tragen.", cloak_simple_name(uarmc)); /* EN if (noisy) You("cannot wear armor over a %s.", cloak_simple_name(uarmc)); */
 	    err++;
 	} else if (uarm) {
-	    if (noisy) already_wearing("some armor");
+	    if (noisy) already_wearing("ARTIKEL_UNBESTIMMTER NOUN_ARMOR"); /* EN if (noisy) already_wearing("some armor"); */
 	    err++;
 	} else
 	    *mask = W_ARM;
@@ -1348,9 +1352,11 @@ dowear()
 	if (otmp->otyp == HELM_OF_OPPOSITE_ALIGNMENT &&
 			qstart_level.dnum == u.uz.dnum) {	/* in quest */
 		if (u.ualignbase[A_CURRENT] == u.ualignbase[A_ORIGINAL])
-			You("narrowly avoid losing all chance at your goal.");
+			// TODO
+			You("narrowly avoid losing all chance at your goal."); /* EN You("narrowly avoid losing all chance at your goal."); */
 		else	/* converted */
-			You("are suddenly overcome with shame and change your mind.");
+			// TODO
+			You("are suddenly overcome with shame and change your mind."); /* EN You("are suddenly overcome with shame and change your mind."); */
 		u.ublessed = 0; /* lose your god's protection */
 		makeknown(otmp->otyp);
 		flags.botl = 1;
@@ -1446,6 +1452,7 @@ doputon()
 		} while(!mask);
 		if (uarmg && uarmg->cursed) {
 			uarmg->bknown = TRUE;
+			// TODO
 		    You("cannot remove your gloves to put on the ring.");
 			return(0);
 		}
@@ -1480,7 +1487,7 @@ doputon()
 	} else {	/* it's a blindfold, towel, or lenses */
 		if (ublindf) {
 			if (ublindf->otyp == TOWEL)
-				Your("%s is already covered by a towel.",
+				Your("%s VERB_SEIN schon von KASUS_DATIV ARTIKEL_UNBESTIMMTER NOUN_TOWEL bedeckt.", /* EN Your("%s is already covered by a towel.", */
 					body_part(FACE));
 			else if (ublindf->otyp == BLINDFOLD) {
 				if (otmp->otyp == LENSES)
@@ -1697,15 +1704,17 @@ register struct obj *otmp;
 	    }
 	    why = 0;	/* the item which prevents ring removal */
 	    if (welded(uwep) && (otmp == uright || bimanual(uwep))) {
+				// TODO 
 		Sprintf(buf, "free a weapon %s", body_part(HAND));
 		why = uwep;
 	    } else if (uarmg && uarmg->cursed) {
+				// TODO 
 		Sprintf(buf, "take off your %s", c_gloves);
 		why = uarmg;
 	    }
 	    if (why) {
-		You("cannot %s to remove the ring.", buf);
-		/* EN You("cannot %s to remove the ring.", buf); */
+				// TODO 
+		You("cannot %s to remove the ring.", buf); /* EN You("cannot %s to remove the ring.", buf); */
 		why->bknown = TRUE;
 		return 0;
 	    }
@@ -1713,11 +1722,13 @@ register struct obj *otmp;
 	/* special glove checks */
 	if (otmp == uarmg) {
 	    if (welded(uwep)) {
+				// TODO 
 		You("are unable to take off your %s while wielding that %s.",
 		    c_gloves, is_sword(uwep) ? c_sword : c_weapon);
 		uwep->bknown = TRUE;
 		return 0;
 	    } else if (Glib) {
+				// TODO 
 		You_cant("take off the slippery %s with your slippery %s.",
 			 c_gloves, makeplural(body_part(FINGER)));
 		return 0;
@@ -1726,11 +1737,12 @@ register struct obj *otmp;
 	/* special boot checks */
 	if (otmp == uarmf) {
 	    if (u.utrap && u.utraptype == TT_BEARTRAP) {
-		pline_The("bear trap prevents you from pulling your %s out.",
+				// TODO 
+		pline_The("NOUN_BEARTRAP VERB_HINDERN OBJECT PRONOMEN_PERSONAL daran, KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s rauszuziehen.", /* EN pline_The("bear trap prevents you from pulling your %s out.", */
 			  body_part(FOOT));
 		return 0;
 	    } else if (u.utrap && u.utraptype == TT_INFLOOR) {
-		You("are stuck in the %s, and cannot pull your %s out.",
+		You("VERB_STECKEN in KASUS_DATIV ARTIKEL_BESTIMMTER %s fest und VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s nicht rausziehen.", /* EN You("are stuck in the %s, and cannot pull your %s out.", */
 		    surface(u.ux, u.uy), makeplural(body_part(FOOT)));
 		return 0;
 	    }
@@ -1743,20 +1755,24 @@ register struct obj *otmp;
 		) {
 	    why = 0;	/* the item which prevents disrobing */
 	    if (uarmc && uarmc->cursed) {
+				// TODO 
 		Sprintf(buf, "remove your %s", cloak_simple_name(uarmc));
 		why = uarmc;
 #ifdef TOURIST
 	    } else if (otmp == uarmu && uarm && uarm->cursed) {
+				// TODO 
 		Sprintf(buf, "remove your %s", c_suit);
 		why = uarm;
 #endif
 	    } else if (welded(uwep) && bimanual(uwep)) {
+				// TODO 
 		Sprintf(buf, "release your %s",
 			is_sword(uwep) ? c_sword :
 			(uwep->otyp == BATTLE_AXE) ? c_axe : c_weapon);
 		why = uwep;
 	    }
 	    if (why) {
+				// TODO 
 		You("cannot %s to take off %s.", buf, the(xname(otmp)));
 		why->bknown = TRUE;
 		return 0;
@@ -1800,15 +1816,18 @@ do_takeoff()
 	if (taking_off == W_WEP) {
 	  if(!cursed(uwep)) {
 	    setuwep((struct obj *) 0);
+			// TODO
 	    You("are empty %s.", body_part(HANDED));
 	    u.twoweap = FALSE;
 	  }
 	} else if (taking_off == W_SWAPWEP) {
 	  setuswapwep((struct obj *) 0);
+			// TODO
 	  You("no longer have a second weapon readied.");
 	  u.twoweap = FALSE;
 	} else if (taking_off == W_QUIVER) {
 	  setuqwep((struct obj *) 0);
+			// TODO
 	  You("no longer have ammunition readied.");
 	} else if (taking_off == WORN_ARMOR) {
 	  otmp = uarm;
@@ -1951,6 +1970,7 @@ doddoremarm()
     int result = 0;
 
     if (taking_off || takeoff_mask) {
+			// TODO
 	You("continue %s.", disrobing);
 	set_occupation(take_off, disrobing, 0);
 	(void) take_off();
@@ -1994,6 +2014,7 @@ int retry;
 	all_worn_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
 	all_worn_categories = FALSE;
+			// TODO
 	n = query_category("What type of things do you want to take off?",
 			   invent, WORN_TYPES|ALL_TYPES, &pick_list, PICK_ANY);
 	if (!n) return 0;
@@ -2019,6 +2040,7 @@ int retry;
 	    (void) select_off(pick_list[i].item.a_obj);
 	free((genericptr_t) pick_list);
     } else if (n < 0 && flags.menu_style != MENU_COMBINATION) {
+			// TODO
 	There("is nothing else you can remove or unwield.");
     }
     return 0;
@@ -2034,38 +2056,46 @@ register struct obj *atmp;
 			(!obj_resists(otmp, 0, 90)))
 
 	if (DESTROY_ARM(uarmc)) {
+			// TODO
 		Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc));
 		(void) Cloak_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarm)) {
 		/* may be disintegrated by spell or dragon breath... */
 		if (donning(otmp)) cancel_don();
+			// TODO
 		Your("armor turns to dust and falls to the %s!",
 			surface(u.ux,u.uy));
 		(void) Armor_gone();
 		useup(otmp);
 #ifdef TOURIST
 	} else if (DESTROY_ARM(uarmu)) {
+			// TODO
 		Your("shirt crumbles into tiny threads and falls apart!");
 		useup(otmp);
 #endif
 	} else if (DESTROY_ARM(uarmh)) {
 		if (donning(otmp)) cancel_don();
+			// TODO
 		Your("helmet turns to dust and is blown away!");
 		(void) Helmet_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarmg)) {
 		if (donning(otmp)) cancel_don();
+			// TODO
 		Your("gloves vanish!");
 		(void) Gloves_off();
 		useup(otmp);
+			// TODO
 		selftouch("You");
 	} else if (DESTROY_ARM(uarmf)) {
 		if (donning(otmp)) cancel_don();
+			// TODO
 		Your("boots disintegrate!");
 		(void) Boots_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarms)) {
+			// TODO
 		Your("shield crumbles away!");
 		(void) Shield_off();
 		useup(otmp);

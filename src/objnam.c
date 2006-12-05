@@ -854,8 +854,7 @@ boolean ignore_oquan;	/* to force singular */
 {
 	char *nambuf = nextobuf();
 
-	Sprintf(nambuf, "%s corpse", mons[otmp->corpsenm].mname);
-
+	Sprintf(nambuf, "MODIFIER_CORPSE %s NOUN_CORPSE", mons[otmp->corpsenm].mname); /* EN Sprintf(nambuf, "%s corpse", mons[otmp->corpsenm].mname); */
 	if (ignore_oquan || otmp->quan < 2)
 	    return nambuf;
 	else

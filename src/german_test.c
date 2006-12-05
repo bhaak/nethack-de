@@ -295,6 +295,12 @@ START_TEST (test_complete_sentences2) {
 		 "Deine Schwerter gleiten dir aus den Händen."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_NEHMEN OBJECT MODIFIER_CORPSE NOUN_CHICKATRICE NOUN_CORPSE in KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE NOUN_HANDs.",
 		 "Du nimmst die sterblichen Überreste eines Kikatrix in deine bloßen Hände."},
+		{"SUBJECT PRONOMEN_POSSESSIV NOUN_HALS VERB_ZUSCHNUEREN sich SATZKLAMMER!",
+		 "Dein Hals schnürt sich zu!"},
+		{"Plötzlich VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL durchsichtig!",
+		 "Plötzlich bist du durchsichtig!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_SHIELD tragen, NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ZWEIHAENDIG NOUN_SWORD VERB_FUEHREN.",
+		 "Du kannst keinen Schild tragen, während du ein zweihändiges Schwert hälst."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_BEENDEN OBJECT PRONOMEN_POSSESSIV NOUN_DRESSING_MANEUVER.",
 		 "Du beendest deinen Bekleidungsakt."}
 	};
@@ -439,6 +445,7 @@ START_TEST (test_german2meta) {
 										 {"ein Zauberstab der Hast (0:4)", "ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_SPEED_MONSTER (0:4)"},
 										 {"Trank des Schlafes", "NOUN_POTION PARTIKEL_OF NOUN_POT_SLEEPING"},
 										 {"Zauberbuch des Schlafes", "NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP"},
+										 {"verfluchtes Schwert", "ADJEKTIV_CURSED NOUN_SWORD"},
 
 										 //{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
 	};
@@ -589,8 +596,9 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
+  tcase_add_test(tc_core, test_complete_sentences2);
 
-	if (1) {
+	if (0) {
 	tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
