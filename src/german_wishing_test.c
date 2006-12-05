@@ -200,6 +200,16 @@ START_TEST (test_wishing) {
 	fail_unless(strcmp("NOUN_CORPSE", dn)==0);
 
 	strcpy(buf, "die Leiche eines Schwebauges");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	fail_unless(obj->oclass == FOOD_CLASS);
+	fail_unless(obj->quan == 1);
+	fail_unless(strcmp("NOUN_CORPSE", dn)==0);
+
+	strcpy(buf, "ein verfluchtes Schwert");
 	printf("\n110\n");
 	obj = readobjnam(buf, &nothing, TRUE);
 	fail_if(obj == NULL);
@@ -207,10 +217,10 @@ START_TEST (test_wishing) {
 	ocl = &objects[typ];
 	dn = OBJ_NAME(*ocl);
 	printf("111 dn: %s\n", dn);
-	fail_unless(obj->oclass == FOOD_CLASS);
+	fail_unless(obj->oclass == WEAPON_CLASS);
 	printf("112\n");
 	fail_unless(obj->quan == 1);
-	fail_unless(strcmp("NOUN_CORPSE", dn)==0);
+	fail_unless(strcmp("NOUN_SWORD", dn)==0);
 	printf("113\n");
 } END_TEST
 

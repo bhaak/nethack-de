@@ -152,28 +152,28 @@ register int x, y;
 
 	if ((x == u.ux) && (y == u.uy) && u.uswallow &&
 		is_animal(u.ustuck->data))
-	    return "maw";
+	    return "NOUN_MAW"; /* EN return "maw"; */
 	else if (IS_AIR(lev->typ) && Is_airlevel(&u.uz))
-	    return "air";
+	    return "NOUN_AIR"; /* EN return "air"; */
 	else if (is_pool(x,y))
-	    return "water";
+	    return "NOUN_WATER"; /* EN return "water"; */
 	else if (is_ice(x,y))
-	    return "ice";
+	    return "NOUN_ICE"; /* EN return "ice"; */
 	else if (is_lava(x,y))
-	    return "lava";
+	    return "NOUN_LAVA"; /* EN return "lava"; */
 	else if (lev->typ == DRAWBRIDGE_DOWN)
-	    return "bridge";
+	    return "NOUN_BRIDGE"; /* EN return "bridge"; */
 	else if(IS_ALTAR(levl[x][y].typ))
-	    return "altar";
+	    return "NOUN_ALTAR"; /* EN return "altar"; */
 	else if(IS_GRAVE(levl[x][y].typ))
-	    return "headstone";
+	    return "NOUN_HEADSTONE"; /* EN return "headstone"; */
 	else if(IS_FOUNTAIN(levl[x][y].typ))
-	    return "fountain";
+	    return "NOUN_FOUNTAIN"; /* EN return "fountain"; */
 	else if ((IS_ROOM(lev->typ) && !Is_earthlevel(&u.uz)) ||
 		 IS_WALL(lev->typ) || IS_DOOR(lev->typ) || lev->typ == SDOOR)
-	    return "floor";
+	    return "NOUN_FLOOR"; /* EN return "floor"; */
 	else
-	    return "ground";
+	    return "NOUN_GROUND"; /* EN return "ground"; */
 }
 
 const char *
@@ -187,20 +187,20 @@ register int x, y;
 	 * see check_special_room()
 	 */
 	if (*in_rooms(x,y,VAULT))
-	    what = "vault's ceiling";
+	    what = "NOUN_vault's ceiling"; /* EN what = "vault's ceiling"; */
 	else if (*in_rooms(x,y,TEMPLE))
-	    what = "temple's ceiling";
+	    what = "NOUN_temple's ceiling"; /* EN what = "temple's ceiling"; */
 	else if (*in_rooms(x,y,SHOPBASE))
-	    what = "shop's ceiling";
+	    what = "NOUN_shop's ceiling"; /* EN what = "shop's ceiling"; */
 	else if (IS_AIR(lev->typ))
-	    what = "sky";
+	    what = "NOUN_SKY"; /* EN what = "sky"; */
 	else if (Underwater)
-	    what = "water's surface";
+	    what = "NOUN_WATER'S surface"; /* EN what = "water's surface"; */
 	else if ((IS_ROOM(lev->typ) && !Is_earthlevel(&u.uz)) ||
 		 IS_WALL(lev->typ) || IS_DOOR(lev->typ) || lev->typ == SDOOR)
-	    what = "ceiling";
+	    what = "NOUN_CEILING"; /* EN what = "ceiling"; */
 	else
-	    what = "rock above";
+	    what = "NOUN_ROCK_ABOVE"; /* EN what = "rock above"; */
 
 	return what;
 }
