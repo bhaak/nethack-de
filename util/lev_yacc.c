@@ -1,6 +1,6 @@
 #ifndef lint
 /*static char yysccsid[] = "from: @(#)yaccpar	1.9 (Berkeley) 02/21/93";*/
-static char yyrcsid[] = "$Id: skeleton.c,v 1.4 1993/12/21 18:45:32 jtc Exp $";
+static char yyrcsid[] = "$Id: skeleton.c,v 1.2 1997/06/23 02:51:17 tdukes Exp $";
 #endif
 #define YYBYACC 1
 #define YYMAJOR 1
@@ -914,6 +914,14 @@ YYSTYPE yyvs[YYSTACKSIZE];
 #define YYREJECT goto yyabort
 #define YYACCEPT goto yyaccept
 #define YYERROR goto yyerrlab
+#ifdef __cplusplus
+extern "C" { 
+char * getenv();
+int yylex();
+int yyparse();
+}
+
+#endif
 int
 #if defined(__STDC__)
 yyparse(void)
@@ -924,7 +932,9 @@ yyparse()
     register int yym, yyn, yystate;
 #if YYDEBUG
     register char *yys;
+#ifndef __cplusplus
     extern char *getenv();
+#endif
 
     if (yys = getenv("YYDEBUG"))
     {
@@ -2490,7 +2500,7 @@ case 222:
 			current_region.y2 = yyvsp[-1].i;
 		  }
 break;
-#line 2494 "y.tab.c"
+#line 2504 "y.tab.c"
     }
     yyssp -= yym;
     yystate = *yyssp;
