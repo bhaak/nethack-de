@@ -11,6 +11,7 @@ STATIC_VAR NEARDATA struct engr *head_engr;
 #ifdef OVLB
 /* random engravings */
 static const char *random_mesg[] = {
+	// TODO
 	"Elbereth",
 	/* trap engravings */
 	"Vlad was here", "ad aerarium",
@@ -187,15 +188,15 @@ register int x, y;
 	 * see check_special_room()
 	 */
 	if (*in_rooms(x,y,VAULT))
-	    what = "NOUN_vault's ceiling"; /* EN what = "vault's ceiling"; */
+	    what = "NOUN_VAULTS_CEILING"; /* EN what = "vault's ceiling"; */
 	else if (*in_rooms(x,y,TEMPLE))
-	    what = "NOUN_temple's ceiling"; /* EN what = "temple's ceiling"; */
+	    what = "NOUN_TEMPLES_CEILING"; /* EN what = "temple's ceiling"; */
 	else if (*in_rooms(x,y,SHOPBASE))
-	    what = "NOUN_shop's ceiling"; /* EN what = "shop's ceiling"; */
+	    what = "NOUN_SHOPS_CEILING"; /* EN what = "shop's ceiling"; */
 	else if (IS_AIR(lev->typ))
 	    what = "NOUN_SKY"; /* EN what = "sky"; */
 	else if (Underwater)
-	    what = "NOUN_WATER'S surface"; /* EN what = "water's surface"; */
+	    what = "NOUN_WATERS_SURFACE"; /* EN what = "water's surface"; */
 	else if ((IS_ROOM(lev->typ) && !Is_earthlevel(&u.uz)) ||
 		 IS_WALL(lev->typ) || IS_DOOR(lev->typ) || lev->typ == SDOOR)
 	    what = "NOUN_CEILING"; /* EN what = "ceiling"; */
@@ -289,8 +290,8 @@ register int x,y;
 	    case DUST:
 		if(!Blind) {
 			sensed = 1;
-			pline("%s is written here in the %s.", Something, /* EN pline("%s is written here in the %s.", Something, */
-				is_ice(x,y) ? "frost" : "dust"); /* EN is_ice(x,y) ? "frost" : "dust"); */
+			pline("SUBJECT %s VERB_SEIN hier in OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s geschrieben.", Something, /* EN pline("%s is written here in the %s.", Something, */
+				is_ice(x,y) ? "NOUN_FROST" : "NOUN_DUST"); /* EN is_ice(x,y) ? "frost" : "dust"); */
 		}
 		break;
 	    case ENGRAVE:

@@ -739,6 +739,7 @@ def ausgabe_nouns
     unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihrer", [$gen,$dat], $fem, $sg),
     "",
     unregelmaessiges_wort("NOUN_OOPS",  "Hoppla",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
+    unregelmaessiges_wort("NOUN_ETWAS", "etwas",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
     "",
     unregelmaessiges_wort("PARTIKEL_NAMED",   "namens", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # geannt, namens
     unregelmaessiges_wort("PARTIKEL_CALLED",  "genannt", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # bezeichnet mit, genannt
@@ -783,6 +784,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEG", "Bein", "es", "Bein", "e", "neutrum"),
     dekliniere_substantiv("NOUN_FACE", "Gesicht", "es", "Gesicht", "er", "neutrum"),
     "",
+    dekliniere_substantiv("NOUN_DUST", "Staub", "es", "Staub", "e", "maskulin"),
     "",
 
     dekliniere_substantiv("NOUN_SPE_SLEEP", "Schlaf", "es", "", "e", "maskulin"),
