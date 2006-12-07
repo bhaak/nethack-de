@@ -303,6 +303,8 @@ START_TEST (test_complete_sentences2) {
 		 "Du kannst keinen Schild tragen, während du ein zweihändiges Schwert führst."},
 		{"SUBJECT NOUN_ETWAS VERB_SEIN hier in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_DUST geschrieben.",
 		 "Etwas ist hier in den Staub geschrieben."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_HAVE OBJECT PRONOMEN_KEIN NOUN_HAND frei um damit zu schreiben!",
+		 "Du hast keine Hand frei um damit zu schreiben!"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_BEENDEN OBJECT PRONOMEN_POSSESSIV NOUN_DRESSING_MANEUVER.",
 		 "Du beendest deinen Bekleidungsakt."}
 	};

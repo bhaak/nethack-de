@@ -298,7 +298,7 @@ register int x,y;
 	    case HEADSTONE:
 		if (!Blind || can_reach_floor()) {
 			sensed = 1;
-			pline("%s is engraved here on the %s.", /* EN pline("%s is engraved here on the %s.", */
+			pline("%s ist hier in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s eingraviert/eingeritzt.", /* EN pline("%s is engraved here on the %s.", */
 				Something,
 				surface(x,y));
 		}
@@ -306,6 +306,7 @@ register int x,y;
 	    case BURN:
 		if (!Blind || can_reach_floor()) {
 			sensed = 1;
+			// TODO
 			pline("Some text has been %s into the %s here.", /* EN pline("Some text has been %s into the %s here.", */
 				is_ice(x,y) ? "melted" : "burned", /* EN is_ice(x,y) ? "melted" : "burned", */
 				surface(x,y));
@@ -314,7 +315,7 @@ register int x,y;
 	    case MARK:
 		if(!Blind) {
 			sensed = 1;
-			pline("There's some graffiti on the %s here.", /* EN pline("There's some graffiti on the %s here.", */
+			pline("Hier findet sich Graffiti auf KASUS_DATIV ARTIKEL_BESTIMMTER %s.", /* EN pline("There's some graffiti on the %s here.", */
 				surface(x,y));
 		}
 		break;
@@ -325,7 +326,7 @@ register int x,y;
 		 */
 		if(!Blind) {
 			sensed = 1;
-			You("see a message scrawled in blood here."); /* EN You("see a message scrawled in blood here."); */
+			You("VERB_SEE hier eine mit Blut geschriebene Nachricht."); /* EN You("see a message scrawled in blood here."); */
 		}
 		break;
 	    default:
@@ -342,8 +343,8 @@ register int x,y;
 			et = buf;
 		} else
 			et = ep->engr_txt;
-		You("%s: \"%s\".",
-		      (Blind) ? "VERB_FEEL die Worte" : "VERB_READ",  et);
+		pline("%s: \"%s\".", /* EN You("%s: \"%s\".", */
+		      (Blind) ? "SUBJECT PRONOMEN_PERSONAL VERB_FEEL die Worte" : "Da steht",  et); // TODO erspürst ?
 		if(flags.run > 1) nomul(0);
 	    }
 	}
@@ -474,7 +475,7 @@ doengrave()
 
 	if(u.uswallow) {
 		if (is_animal(u.ustuck->data)) {
-			pline("What would you write?  \"Jonah was here\"?"); /* EN pline("What would you write?  \"Jonah was here\"?"); */
+			// TODO pline("Was würdest du schreiben?  \"Jonas war hier\"?"); /* EN pline("What would you write?  \"Jonah was here\"?"); */
 			return(0);
 		} else if (is_whirly(u.ustuck->data)) {
 			You_cant("reach the %s.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */
@@ -482,10 +483,10 @@ doengrave()
 		} else
 			jello = TRUE;
 	} else if (is_lava(u.ux, u.uy)) {
-		You_cant("write on the lava!"); /* EN You_cant("write on the lava!"); */
+		You_cant("auf Lava schreiben!"); /* EN You_cant("write on the lava!"); */
 		return(0);
 	} else if (is_pool(u.ux,u.uy) || IS_FOUNTAIN(levl[u.ux][u.uy].typ)) {
-		You_cant("write on the water!"); /* EN You_cant("write on the water!"); */
+		You_cant("auf Wasser schreiben!"); /* EN You_cant("write on the water!"); */
 		return(0);
 	}
 	if(Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)/* in bubble */) {
@@ -512,11 +513,12 @@ doengrave()
 	 * while both your hands are tied up.
 	 */
 	if (!freehand() && otmp != uwep && !otmp->owornmask) {
-		You("have no free %s to write with!", body_part(HAND)); /* EN You("have no free %s to write with!", body_part(HAND)); */
+		You("VERB_HAVE OBJECT PRONOMEN_KEIN %s frei um damit zu schreiben!", body_part(HAND)); /* EN You("have no free %s to write with!", body_part(HAND)); */
 		return(0);
 	}
 
 	if (jello) {
+		// TODO
 		You("tickle %s with your %s.", mon_nam(u.ustuck), writer); /* EN You("tickle %s with your %s.", mon_nam(u.ustuck), writer); */
 		Your("message dissolves..."); /* EN Your("message dissolves..."); */
 		return(0);
