@@ -1370,7 +1370,7 @@ def ausgabe_nouns
     "",
     "/* Scrolls, identified */",
     #dekliniere_substantiv("NOUN_SCR_ENCHANT_ARMOR"   # Schriftrolle der verzauberten Rüstung?
-    #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"   # Schriftrolle der zerstörten Rüstung?
+    #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"   # Schriftrolle der zerstörten Rüstung?, beschädigten Rüstung?
     dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER", "Monsterverwirrung", "", "Monsterverwirrung", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER"   
     #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE"   # Schriftrolle des gebannten Fluches, des Fluchbannens, der Fluchbannung
@@ -1389,7 +1389,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCR_EARTH", "Erde", "", "", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SCR_PUNISHMENT", "Bestrafung", "", "", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_SCR_CHARGING"       # Laden, Ladungs??
-    #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD"
+    #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD" # Gaswolke?
     #dekliniere_substantiv("NOUN_SCR_MAIL"
     #dekliniere_substantiv("NOUN_SCR_BLANK_PAPER"
     "",
@@ -1542,7 +1542,6 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_WAND_SHORT","kurz"),
     dekliniere_adjektiv("ADJEKTIV_WAND_RUNED","runenbeschriftet"),
     dekliniere_adjektiv("ADJEKTIV_WAND_LONG","lang"),
-    "/* 'gebogen' ist IMO besser als 'gekrümmt'*/",
     dekliniere_adjektiv("ADJEKTIV_WAND_CURVED","gebogen"),
     dekliniere_adjektiv("ADJEKTIV_WAND_FORKED","gegabelt"),
     dekliniere_adjektiv("ADJEKTIV_WAND_SPIKED","spitzig"),
@@ -1645,9 +1644,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CERBERUS", "Zerberus", "", "Zerberuss", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GAS_SPORE", "Gasspore", "", "Gasspore", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_FLOATING_EYE", "Schwebaug", "es", "Schwebaug", "en", "neutrum", "n"), # Schwebäugler?, Schwebäuger?, was mit Ocellus?, nuräeugler, flugäugler, flugauge,
-    #dekliniere_substantiv("NOUN_FREEZING_SPHERE" # 
-    #dekliniere_substantiv("NOUN_FLAMING_SPHERE"  # brennende Kugel
-    #dekliniere_substantiv("NOUN_SHOCKING_SPHERE"
+    dekliniere_substantiv("NOUN_FREEZING_SPHERE", "Frostkugel", "", "Frostkugel", "en", "feminin"), # Frostkugel, Frostsphäre, Frostball
+    dekliniere_substantiv("NOUN_FLAMING_SPHERE", "Flammenkugel", "", "Flammenkugel", "en", "feminin"), # Flammenkugel, Flammensphäre, Flammenball
+    dekliniere_substantiv("NOUN_SHOCKING_SPHERE", "Elektrokugel", "", "Elektrokugel", "en", "feminin"), # Stosskugel?, Schlagkugel?, Stromkugel? Stromsphäre? Stromball? Elektrokugel?
     dekliniere_substantiv("NOUN_BEHOLDER", "Betrachter", "s", "Betrachter", "", "maskulin"), # Betrachter
     dekliniere_substantiv("NOUN_KITTEN", "Kätzchen", "s", "Kätzchen", "", "neutrum"),
     dekliniere_substantiv("NOUN_HOUSECAT","Hauskatze","","Hauskatze","en","feminin","n"),
