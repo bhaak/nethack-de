@@ -5,15 +5,18 @@ class Verb
   $praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
   
   def initialize(stamm)
-    @stamm = stamm
     @infinitiv = stamm + "en"
+
+    @praesens_stamm = stamm
+    @praeteritum_stamm = stamm
+    @perfekt_stamm = stamm
 
     @tempus  = :praesens  # praesens, praeteritum, perfekt, plusquamperfekt, futur, futur ii
     @modus   = :indikativ # indikativ, konjunktiv, imperativ
     @person  = 1          # 0, 1, 2
     @numerus = 0          # 0, 1
 
-    if @stamm[-1..-1]=='t' or @stamm[-1..-1]=='d' then
+    if stamm[-1..-1]=='t' or stamm[-1..-1]=='d' then
       @e_erweiterung = true
     # else if # verschlusslaut oder reibelaut + m oder n
     # e_erweiterung = true
@@ -22,42 +25,68 @@ class Verb
     end
   end
 
-  def set_singular
+  def singular
     @numerus = 0
+    return self
   end
 
-  def set_plural
+  def plural
     @numerus = 1
+    return self
   end
 
-  def set_indikativ
+  def indikativ
     @modus = :indikativ
+    return self
   end
 
-  def set_konjunktiv
+  def konjunktiv
     @modus = :konjunktiv
+    return self
   end
 
-  def set_praeteritum
+  def praesens
+    @tempus = :praesens
+    return self
+  end
+
+  def praeteritum
     @tempus = :praeteritum
+    return self
+  end
+
+  def erstePerson
+    @person = 0
+    return self
+  end
+
+  def zweitePerson
+    @person = 1
+    return self
+  end
+
+  def drittePerson
+    @person = 2
+    return self
   end
 
   def form
     if @tempus==:praesens && @modus==:indikativ then
-      return @stamm + endung($praesens_endung)
+      return @praesens_stamm + endung($praesens_endung)
     elsif @tempus==:praesens && @modus==:konjunktiv then
-      return @stamm + "e" + endung($praeteritum_endung)
+      return @praesens_stamm + "e" + endung($praeteritum_endung)
     elsif @tempus==:praeteritum && @modus==:indikativ then
-      return @stamm + "te" + endung($praeteritum_endung)
+      return @praeteritum_stamm + "te" + endung($praeteritum_endung)
     elsif @tempus==:praeteritum && @modus==:konjunktiv then
+      return @praeteritum_stamm + "te" + endung($praeteritum_endung)
     end
   end
 
   def imperativ
-    if @numerus == 0 then
-      return @stamm + (@e_erweiterung ? "e" : "")
+    if singular? then
+      return @praesens_stamm + (@e_erweiterung ? "e" : "")
     else
-      return @stamm + "t"
+      return @praesens_stamm + "t"
     end
   end
   
@@ -66,10 +95,81 @@ class Verb
   end
 
   def partizip_praesens
-    return @stamm + "end"
+    return @praesens_stamm + "end"
   end
   def partizip_perfekt
-    return "ge"+@stamm + "t"
+    return "ge"+@perfekt_stamm + "t"
+  end
+
+  def singular?
+    return @numerus == 0
+  end
+  def plural?
+    return @numerus == 1
+  end
+  def erstePerson?
+    return @person == 0
+  end
+  def zweitePerson?
+    return @person == 1
+  end
+  def drittePerson?
+    return @person == 2
+  end
+  def praesens?
+    return @tempus==:praesens
+  end
+  def praeteritum?
+    return @tempus==:praeteritum
+  end
+  def indikativ?
+      return @modus==:indikativ
+  end
+  def konjunktiv?
+    return @modus==:konjunktiv
+  end
+  def aktiv?
+    return true
+  end
+
+  def Verb.umlaute(stamm)
+    vokal = stamm.match(/[aou][^aeiou]/)
+    umlaut = ""
+    case vokal.to_s[0..0]
+    when "a": umlaut = "ä"
+    when "o": umlaut = "ö"
+    when "u": umlaut = "ü"
+    else
+      return stamm
+    end
+    return stamm.sub(/([^aeiou])[aou]([^aeiou])/, '\1'+umlaut+'\2')
+  end
+end
+
+class VerbUnregelmaessig < Verb
+  def form
+    if praeteritum? && konjunktiv? && aktiv? then
+      return Verb.umlaute(@praeteritum_stamm) + "te" + endung($praeteritum_endung)
+    end
+    return super
+  end
+end
+
+class VerbHaben < VerbUnregelmaessig
+  def initialize(stamm, praeteritum_stamm)
+    super(stamm)
+    @praeteritum_stamm = praeteritum_stamm
+  end
+
+  def form
+    if praesens? && indikativ? && singular? then
+      if zweitePerson? then
+        return "hast"
+      elsif drittePerson? then
+        return "hat"
+      end
+    end
+    return super
   end
 end
 
