@@ -2,14 +2,14 @@
 class Verb
   attr_reader :infinitiv
   $praesens_endung =    ["e", "st", "t", "en", "t", "en"]
-  $praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
+  $praeteritum_endung = ["",  "st", "",  "n", "t", "n"]
   
-  def initialize(stamm)
+  def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
     @infinitiv = stamm + "en"
 
     @praesens_stamm = stamm
-    @praeteritum_stamm = stamm
-    @perfekt_stamm = stamm
+    @praeteritum_stamm = praeteritum_stamm
+    @perfekt_stamm = perfekt_stamm
 
     @tempus  = :praesens  # praesens, praeteritum, perfekt, plusquamperfekt, futur, futur ii
     @modus   = :indikativ # indikativ, konjunktiv, imperativ
@@ -68,6 +68,10 @@ class Verb
   def drittePerson
     @person = 2
     return self
+  end
+
+  def personNummer
+    return @person+@numerus*3
   end
 
   def form
@@ -153,6 +157,10 @@ class VerbUnregelmaessig < Verb
     end
     return super
   end
+
+  def partizip_perfekt
+    return "ge"+@perfekt_stamm + "en"
+  end
 end
 
 class VerbHaben < VerbUnregelmaessig
@@ -171,8 +179,35 @@ class VerbHaben < VerbUnregelmaessig
     end
     return super
   end
+
+  def partizip_perfekt
+    return "gehabt"
+  end
 end
 
+class VerbSein < VerbUnregelmaessig
+  def initialize()
+    super("sei", "war", "wes")
+  end
+
+  def infinitiv
+    return "sein"
+  end
+
+  def form
+    p = personNummer
+    if praesens? && indikativ? then
+      return ["bin", "bist", "ist", "sind", "seid", "sind"][p]
+    elsif praesens? && konjunktiv? then
+      if singular? and (erstePerson? or drittePerson?) then
+        return "sei"
+      end
+    elsif praeteritum? && indikativ? then
+      return ["war", "warst", "war", "waren", "wart", "waren"][p]
+    end
+    return super
+  end
+end
 #machen = Verb.new("mach")
 #puts machen.form
 #puts machen.infinitiv

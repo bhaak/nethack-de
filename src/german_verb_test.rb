@@ -37,9 +37,9 @@ class TestVerb < Test::Unit::TestCase
 
     assert_equal("machst", machen.singular.form)
 
-    assert_equal("machest", machen.konjunktiv.form)
+    checkVerbPraesensKonjunktiv(machen, ["mache", "machest", "mache", "machen", "machet", "machen"])
 
-    assert_equal("machte", machen.erstePerson.indikativ.praeteritum.form)
+    assert_equal("machte", machen.erstePerson.singular.indikativ.praeteritum.form)
     assert_equal("machtest", machen.zweitePerson.indikativ.praeteritum.form)
     assert_equal("machte", machen.drittePerson.indikativ.praeteritum.form)
 
@@ -73,8 +73,55 @@ class TestVerb < Test::Unit::TestCase
 
     assert_equal("hättest", haben.zweitePerson.konjunktiv.praeteritum.form)
 
+    checkVerbPraesens(haben, ["habe", "hast", "hat", "haben", "habt", "haben"])
+    checkVerbPraesensKonjunktiv(haben, ["habe", "habest", "habe", "haben", "habet", "haben"])
+    checkVerbPraeteritum(haben, ["hatte", "hattest", "hatte", "hatten", "hattet", "hatten"])
+
     assert_equal("habend", haben.partizip_praesens)
     assert_equal("gehabt", haben.partizip_perfekt)
   end
 
+  def testSein
+    sein = VerbSein.new
+
+    checkVerbPraesens(sein, ["bin", "bist", "ist", "sind", "seid", "sind"])
+    checkVerbPraesensKonjunktiv(sein, ["sei", "seiest", "sei", "seien", "seiet", "seien"])
+    checkVerbPraeteritum(sein, ["war", "warst", "war", "waren", "wart", "waren"])
+
+    assert_equal("sein", sein.infinitiv)
+    assert_equal("sei", sein.singular.imperativ)
+    assert_equal("seit", sein.plural.imperativ)
+    assert_equal("seiend", sein.partizip_praesens)
+    assert_equal("gewesen", sein.partizip_perfekt)
+  end
+  
+  def checkVerbPraeteritum(verb, formen)
+    verb.praeteritum.indikativ
+    checkVerbFormen(verb, formen)
+  end
+
+  def checkVerbPraeteritumKonjunktiv(verb, formen)
+    verb.praeteritum.konjunktiv
+    checkVerbFormen(verb, formen)
+  end
+
+  def checkVerbPraesens(verb, formen)
+    verb.praesens.indikativ
+    checkVerbFormen(verb, formen)
+  end
+
+  def checkVerbPraesensKonjunktiv(verb, formen)
+    verb.praesens.konjunktiv
+    checkVerbFormen(verb, formen)
+  end
+
+  def checkVerbFormen(verb, formen)
+    assert_equal(formen[0], verb.singular.erstePerson.form)
+    assert_equal(formen[1], verb.singular.zweitePerson.form)
+    assert_equal(formen[2], verb.singular.drittePerson.form)
+
+    assert_equal(formen[3], verb.plural.erstePerson.form)
+    assert_equal(formen[4], verb.plural.zweitePerson.form)
+    assert_equal(formen[5], verb.plural.drittePerson.form)
+  end
 end
