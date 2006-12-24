@@ -1066,7 +1066,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_LOCKING", "Schliessen", "s", "", "", "neutrum"),
     #dekliniere_substantiv("NOUN_WAND_PROBING", # Prüfung
     dekliniere_substantiv("NOUN_WAND_DIGGING", "Graben", "s", "", "", "neutrum"),
-    #dekliniere_substantiv("NOUN_WAND_MAGIC_MISSILE", "Graben", "s", "", "", "neutrum"),  # magische Geschosse
     dekliniere_nominalphrase("NOUN_WAND_MAGIC_MISSILE", "magisch", "Geschoss", "es", "Geschoss", "e", "neutrum"),  # magische Geschosse
     dekliniere_substantiv("NOUN_WAND_FIRE", "Feuer", "s", "Feuer", "", "neutrum"),
     dekliniere_substantiv("NOUN_WAND_COLD", "Kälte", "", "", "en", "feminin"),
@@ -1093,7 +1092,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RING_POISON_RESISTANCE", "Giftresistenz", "", "Giftresistenz", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_FIRE_RESISTANCE", "Feuerresistenz", "", "Feuerresistenz", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_COLD_RESISTANCE", "Kälteresistenz", "", "Kälteresistenz", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_RING_SHOCK_RESISTANCE"
+    #dekliniere_substantiv("NOUN_RING_SHOCK_RESISTANCE" # Stromresistenz
     dekliniere_substantiv("NOUN_RING_FREE_ACTION", "Bewegungsfreiheit", "", "Bewegungsfreiheit", "en", "feminin"), # Freiheit, Bewegungsfreiheit, freien Bewegung
     dekliniere_nominalphrase("NOUN_RING_SLOW_DIGESTION", "langsam", "Verdauung", "", "Verdauung", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_TELEPORTATION", "Teleportation", "", "Teleportation", "en", "feminin"),
@@ -1227,11 +1226,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SADDLE", "Sattel", "s", "Sättel", "", "maskulin"),
     dekliniere_substantiv("NOUN_LEASH", "Leine", "", "Leine", "en", "feminin"),
     dekliniere_substantiv("NOUN_STETHOSCOPE", "Stethoskop", "s", "Stethoskop", "e", "neutrum"),
-    #dekliniere_substantiv("NOUN_TINNING_KIT", 
+    dekliniere_substantiv("NOUN_TINNING_KIT", "Eindosungs-Set", "s", "Eindosungs-Set", "s", "neutrum"),
     dekliniere_substantiv("NOUN_TIN_OPENER", "Dosenöffner", "s", "Dosenöffner", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_CAN_OF_GREASE",  # Fettdose?
+    dekliniere_substantiv("NOUN_CAN_OF_GREASE", "Fettdose", "", "Fettdose", "en", "feminin", "en"),
     dekliniere_substantiv("NOUN_FIGURINE", "Statuette", "", "Statuette", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_MAGIC_MARKER", # verzauberter Fueller?
+    #dekliniere_substantiv("NOUN_MAGIC_MARKER", # verzauberter Fueller? Zauberfueller?
     "/* 'Landmine' is a more generic term. I think 'Tretmine' is the more exact terminus for the mines in Nethack. */",
     dekliniere_substantiv("NOUN_LAND_MINE", "Tretmine", "", "Tretmine", "en", "feminin"),
     dekliniere_substantiv("NOUN_BEARTRAP", "Bärenfalle", "", "Bärenfalle", "en", "feminin", "n"),
