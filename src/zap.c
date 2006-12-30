@@ -108,7 +108,7 @@ struct obj *otmp;
 	boolean reveal_invis = FALSE;
 	boolean dbldam = Role_if(PM_KNIGHT) && u.uhave.questart;
 	int dmg, otyp = otmp->otyp;
-	const char *zap_type_text = "spell"; /* EN const char *zap_type_text = "spell"; */
+	const char *zap_type_text = "NOUN_SPELL"; /* EN const char *zap_type_text = "spell"; */
 	struct obj *obj;
 	boolean disguised_mimic = (mtmp->data->mlet == S_MIMIC &&
 				   mtmp->m_ap_type != M_AP_NOTHING);
@@ -118,7 +118,7 @@ struct obj *otmp;
 
 	switch(otyp) {
 	case WAN_STRIKING:
-		zap_type_text = "wand"; /* EN zap_type_text = "wand"; */
+		zap_type_text = "NOUN_WAND"; /* EN zap_type_text = "wand"; */
 		/* fall through */
 	case SPE_FORCE_BOLT:
 		reveal_invis = TRUE;
@@ -142,8 +142,8 @@ struct obj *otmp;
 			m_dowear(mtmp, FALSE); /* might want speed boots */
 			if (u.uswallow && (mtmp == u.ustuck) &&
 			    is_whirly(mtmp->data)) {
-				You("disrupt %s!", mon_nam(mtmp)); /* EN You("disrupt %s!", mon_nam(mtmp)); */
-				pline("A huge hole opens up..."); /* EN pline("A huge hole opens up..."); */
+				You("VERB_ZERTEILEN OBJECT %s!", mon_nam(mtmp)); /* EN You("disrupt %s!", mon_nam(mtmp)); */
+				pline("Ein riesiges Loch öffnet sich ..."); /* EN pline("A huge hole opens up..."); */
 				expels(mtmp, mtmp->data, TRUE);
 			}
 		}
