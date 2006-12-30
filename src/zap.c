@@ -2016,7 +2016,7 @@ boolean ordinary;
 		case SPE_SLEEP:
 		    if(Sleep_resistance) {
 			shieldeff(u.ux, u.uy);
-			You("don't feel sleepy!"); /* EN You("don't feel sleepy!"); */
+			You("VERB_FUEHLEN KASUS_DATIV PRONOMEN_PERSONAL nicht schläfrig."); /* EN You("don't feel sleepy."); */
 		    } else {
 			pline_The("sleep ray hits you!"); /* EN pline_The("sleep ray hits you!"); */
 			fall_asleep(-rnd(50), TRUE);
@@ -3100,7 +3100,7 @@ xchar sx, sy;
 	case ZT_SLEEP:
 	    if (Sleep_resistance) {
 		shieldeff(u.ux, u.uy);
-		You("don't feel sleepy.");
+		You("VERB_FUEHLEN KASUS_DATIV PRONOMEN_PERSONAL nicht schläfrig."); /* EN You("don't feel sleepy."); */
 	    } else {
 		fall_asleep(-d(nd,25), TRUE); /* sleep ray */
 	    }
