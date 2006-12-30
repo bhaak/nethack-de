@@ -1676,9 +1676,9 @@ makecorpse:			if (mons[obj->corpsenm].geno &
 smell:
 			if (herbivorous(youmonst.data) &&
 				!carnivorous(youmonst.data))
-			    Norep("You smell the odor of meat."); /* EN Norep("You smell the odor of meat."); */
+			    Norep("SUBJECT PRONOMEN_PERSONAL VERB_SMELL den Geruch von Fleisch."); /* EN Norep("You smell the odor of meat."); */
 			else
-			    Norep("You smell a delicious smell."); /* EN Norep("You smell a delicious smell."); */
+			    Norep("SUBJECT PRONOMEN_PERSONAL VERB_SMELL einen köstlichen Duft."); /* EN Norep("You smell a delicious smell."); */
 			break;
 		    case WEAPON_CLASS:	/* crysknife */
 		    	/* fall through */
@@ -3669,7 +3669,7 @@ boolean *shopdamage;
 		case ZT_FIRE:
 		    new_doormask = D_NODOOR;
 		    see_txt = "The door is consumed in flames!"; /* EN see_txt = "The door is consumed in flames!"; */
-		    sense_txt = "smell smoke."; /* EN sense_txt = "smell smoke."; */
+		    sense_txt = "VERB_SMELL Rauch."; /* EN sense_txt = "smell smoke."; */
 		    break;
 		case ZT_COLD:
 		    new_doormask = D_NODOOR;
@@ -3728,8 +3728,8 @@ boolean *shopdamage;
 	if(OBJ_AT(x, y) && abstype == ZT_FIRE)
 		if (burn_floor_paper(x, y, FALSE, type > 0) && couldsee(x, y)) {
 		    newsym(x,y);
-		    You("%s of smoke.", /* EN You("%s of smoke.", */
-			!Blind ? "see a puff" : "smell a whiff"); /* EN !Blind ? "see a puff" : "smell a whiff"); */
+		    You("%s.", /* EN You("%s of smoke.", */
+			!Blind ? "VERB_SEE eine Rauchwolke" : "VERB_SMELL Qualm"); /* EN !Blind ? "see a puff" : "smell a whiff"); */
 		}
 	if ((mon = m_at(x,y)) != 0) {
 		/* Cannot use wakeup() which also angers the monster */
