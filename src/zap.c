@@ -63,23 +63,23 @@ extern const char * const flash_types[];
 STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; /* EN STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; */
 
 const char * const flash_types[] = {	/* also used in buzzmu(mcastu.c) */
-	"magic missile",	/* Wands must be 0-9 */ /* EN "magic missile",	*/
-	"bolt of fire", /* EN "bolt of fire", */
-	"bolt of cold", /* EN "bolt of cold", */
-	"sleep ray", /* EN "sleep ray", */
-	"death ray", /* EN "death ray", */
-	"bolt of lightning", /* EN "bolt of lightning", */
+	"NOUN_MAGIC_MISSILE",	/* Wands must be 0-9 */ /* EN "magic missile",	*/
+	"NOUN_BOLT_OF_FIRE", /* EN "bolt of fire", */
+	"NOUN_BOLT_OF_COLD", /* EN "bolt of cold", */
+	"NOUN_SLEEP_RAY", /* EN "sleep ray", */
+	"NOUN_DEATH_RAY", /* EN "death ray", */
+	"NOUN_BOLT_OF_LIGHTNING", /* EN "bolt of lightning", */
 	"",
 	"",
 	"",
 	"",
 
-	"magic missile",	/* Spell equivalents must be 10-19 */ /* EN "magic missile",	*/
-	"fireball", /* EN "fireball", */
-	"cone of cold", /* EN "cone of cold", */
-	"sleep ray", /* EN "sleep ray", */
-	"finger of death", /* EN "finger of death", */
-	"bolt of lightning",	/* There is no spell, used for retribution */ /* EN "bolt of lightning",	*/
+	"NOUN_MAGIC_MISSILE",	/* Spell equivalents must be 10-19 */ /* EN "magic missile",	*/
+	"NOUN_FIREBALL", /* EN "fireball", */
+	"NOUN_CONE_OF_COLD", /* EN "cone of cold", */
+	"NOUN_SLEEP_RAY", /* EN "sleep ray", */
+	"NOUN_FINGER_OF_DEATH", /* EN "finger of death", */
+	"NOUN_BOLT_OF_LIGHTNING",	/* There is no spell, used for retribution */ /* EN "bolt of lightning",	*/
 	"",
 	"",
 	"",
