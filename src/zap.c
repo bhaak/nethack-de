@@ -3668,12 +3668,12 @@ boolean *shopdamage;
 		switch(abstype) {
 		case ZT_FIRE:
 		    new_doormask = D_NODOOR;
-		    see_txt = "The door is consumed in flames!"; /* EN see_txt = "The door is consumed in flames!"; */
+		    see_txt = "Die Türe geht in Flammen auf!"; /* EN see_txt = "The door is consumed in flames!"; */
 		    sense_txt = "VERB_SMELL Rauch."; /* EN sense_txt = "smell smoke."; */
 		    break;
 		case ZT_COLD:
 		    new_doormask = D_NODOOR;
-		    see_txt = "The door freezes and shatters!"; /* EN see_txt = "The door freezes and shatters!"; */
+		    see_txt = "Die Türe gefriert und zerbricht!"; /* EN see_txt = "The door freezes and shatters!"; */
 		    sense_txt = "VERB_FRIEREN."; /* EN sense_txt = "feel cold."; */
 		    break;
 		case ZT_DEATH:
@@ -3682,21 +3682,21 @@ boolean *shopdamage;
 			goto def_case;
 		    new_doormask = D_NODOOR;
 		    see_txt = "The door disintegrates!"; /* EN see_txt = "The door disintegrates!"; */
-		    hear_txt = "crashing wood."; /* EN hear_txt = "crashing wood."; */
+		    hear_txt = "knackendes Holz."; /* EN hear_txt = "crashing wood."; */
 		    break;
 		case ZT_LIGHTNING:
 		    new_doormask = D_BROKEN;
-		    see_txt = "The door splinters!"; /* EN see_txt = "The door splinters!"; */
-		    hear_txt = "crackling."; /* EN hear_txt = "crackling."; */
+		    see_txt = "Die Türe zersplittert!"; /* EN see_txt = "The door splinters!"; */
+		    hear_txt = "Geknacke."; /* EN hear_txt = "crackling."; */
 		    break;
 		default:
 		def_case:
 		    if(cansee(x,y)) {
-			pline_The("door absorbs %s %s!", /* EN pline_The("door absorbs %s %s!", */
-			      (type < 0) ? "the" : "your", /* EN (type < 0) ? "the" : "your", */
-			      abs(type) < ZT_SPELL(0) ? "bolt" : /* EN abs(type) < ZT_SPELL(0) ? "bolt" : */
-			      abs(type) < ZT_BREATH(0) ? "spell" : /* EN abs(type) < ZT_BREATH(0) ? "spell" : */
-			      "blast"); /* EN "blast"); */
+			pline_The("NOUN_OBJ_DOOR VERB_ABSORBIEREN OBJECT %s %s!", /* EN pline_The("door absorbs %s %s!", */
+			      (type < 0) ? "ARTIKEL_BESTIMMTER" : "PRONOMEN_POSSESSIV", /* EN (type < 0) ? "the" : "your", */
+						abs(type) < ZT_SPELL(0) ? "NOUN_BOLT" : /* EN abs(type) < ZT_SPELL(0) ? "bolt" : */
+			      abs(type) < ZT_BREATH(0) ? "NOUN_SPELL" : /* EN abs(type) < ZT_BREATH(0) ? "spell" : */
+						"blast"); /* EN "blast"); */ // TODO
 		    } else You_feel("vibrations."); /* EN } else You_feel("vibrations."); */
 		    break;
 		}
