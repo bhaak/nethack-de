@@ -60,7 +60,7 @@ STATIC_DCL int FDECL(spell_hit_bonus, (int));
 STATIC_VAR const char are_blinded_by_the_flash[];
 extern const char * const flash_types[];
 #else
-STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; /* EN STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; */
+STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; /* EN STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; */ // TODO
 
 const char * const flash_types[] = {	/* also used in buzzmu(mcastu.c) */
 	"NOUN_MAGIC_MISSILE",	/* Wands must be 0-9 */ /* EN "magic missile",	*/
@@ -85,6 +85,7 @@ const char * const flash_types[] = {	/* also used in buzzmu(mcastu.c) */
 	"",
 	"",
 
+	// TODO
 	"blast of missiles",	/* Dragon breath equivalents 20-29*/ /* EN "blast of missiles",	*/
 	"blast of fire", /* EN "blast of fire", */
 	"blast of frost", /* EN "blast of frost", */
@@ -332,7 +333,7 @@ struct obj *otmp;
 		    else {
 			mtmp->m_lev--;
 			if (canseemon(mtmp))
-			    pline("%s suddenly seems weaker!", Monnam(mtmp)); /* EN pline("%s suddenly seems weaker!", Monnam(mtmp)); */
+			    pline("%s VERB_SEEM plötzlich schwächer SATZKLAMMER!", Monnam(mtmp)); /* EN pline("%s suddenly seems weaker!", Monnam(mtmp)); */
 		    }
 		}
 		break;
@@ -378,7 +379,7 @@ struct monst *mtmp;
 		otmp->dknown = 1;	/* treat as "seen" */
 	    (void) display_minventory(mtmp, MINV_ALL, (char *)0);
 	} else {
-	    pline("%s is not carrying anything.", noit_Monnam(mtmp)); /* EN pline("%s is not carrying anything.", noit_Monnam(mtmp)); */
+	    pline("%s VERB_TRAGEN gar nichts.", noit_Monnam(mtmp)); /* EN pline("%s is not carrying anything.", noit_Monnam(mtmp)); */
 	}
 }
 

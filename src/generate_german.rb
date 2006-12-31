@@ -440,6 +440,7 @@ def ausgabe_verbs
     konjugiere_verb("VERB_ZERTEILEN","zerteil"),
     konjugiere_verb("VERB_OEFFNEN","öffn"),
     konjugiere_verb("VERB_BEENDEN","beend"),
+    konjugiere_verb("VERB_ERSCHEINEN","erschein"),
     "",
     "/* unregelmässige Verben */",
     Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
