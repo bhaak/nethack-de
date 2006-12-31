@@ -1019,6 +1019,7 @@ roguename() /* Name of a Rogue player */
 
 #ifdef OVL2
 
+// TODO
 static NEARDATA const char * const hcolors[] = {
 	"ultraviolet", "infrared", "bluish-orange",
 	"reddish-green", "dark white", "light black", "sky blue-pink",
