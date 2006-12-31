@@ -32,7 +32,6 @@ class TestVerb < Test::Unit::TestCase
     assert_equal("machen", machen.infinitiv)
 
     assert_equal("mach", machen.singular.imperativ)
-
     assert_equal("macht", machen.plural.imperativ)
 
     assert_equal("machst", machen.singular.form)
@@ -53,46 +52,47 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testHaben
-    haben = VerbHaben.new("hab", "hat")
+    haben = VerbHaben.new
 
     assert_equal("haben", haben.infinitiv)
-
     assert_equal("hab", haben.singular.imperativ)
-
     assert_equal("habt", haben.plural.imperativ)
-
-    assert_equal("habe", haben.singular.erstePerson.form)
-    assert_equal("hast", haben.singular.zweitePerson.form)
-    assert_equal("hat", haben.singular.drittePerson.form)
-
-    assert_equal("habest", haben.konjunktiv.zweitePerson.form)
-
-    assert_equal("hatte", haben.erstePerson.indikativ.praeteritum.form)
-    assert_equal("hattest", haben.zweitePerson.indikativ.praeteritum.form)
-    assert_equal("hatte", haben.drittePerson.indikativ.praeteritum.form)
-
-    assert_equal("hättest", haben.zweitePerson.konjunktiv.praeteritum.form)
+    assert_equal("habend", haben.partizip_praesens)
+    assert_equal("gehabt", haben.partizip_perfekt)
 
     checkVerbPraesens(haben, ["habe", "hast", "hat", "haben", "habt", "haben"])
     checkVerbPraesensKonjunktiv(haben, ["habe", "habest", "habe", "haben", "habet", "haben"])
     checkVerbPraeteritum(haben, ["hatte", "hattest", "hatte", "hatten", "hattet", "hatten"])
-
-    assert_equal("habend", haben.partizip_praesens)
-    assert_equal("gehabt", haben.partizip_perfekt)
+    checkVerbPraeteritumKonjunktiv(haben, ["hätte", "hättest", "hätte", "hätten", "hättet", "hätten"])
   end
 
   def testSein
     sein = VerbSein.new
-
-    checkVerbPraesens(sein, ["bin", "bist", "ist", "sind", "seid", "sind"])
-    checkVerbPraesensKonjunktiv(sein, ["sei", "seiest", "sei", "seien", "seiet", "seien"])
-    checkVerbPraeteritum(sein, ["war", "warst", "war", "waren", "wart", "waren"])
 
     assert_equal("sein", sein.infinitiv)
     assert_equal("sei", sein.singular.imperativ)
     assert_equal("seit", sein.plural.imperativ)
     assert_equal("seiend", sein.partizip_praesens)
     assert_equal("gewesen", sein.partizip_perfekt)
+
+    checkVerbPraesens(sein, ["bin", "bist", "ist", "sind", "seid", "sind"])
+    checkVerbPraesensKonjunktiv(sein, ["sei", "seiest", "sei", "seien", "seiet", "seien"])
+    checkVerbPraeteritum(sein, ["war", "warst", "war", "waren", "wart", "waren"])
+  end
+
+  def testWerden
+    verb = VerbWerden.new
+
+    assert_equal("werden", verb.infinitiv)
+    assert_equal("werde", verb.singular.imperativ)
+    assert_equal("werdet", verb.plural.imperativ)
+    assert_equal("werdend", verb.partizip_praesens)
+    assert_equal("geworden", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["werde", "wirst", "wird", "werden", "werdet", "werden"])
+    checkVerbPraesensKonjunktiv(verb, ["werde", "werdest", "werde", "werden", "werdet", "werden"])
+    checkVerbPraeteritum(verb, ["wurde", "wurdest", "wurde", "wurden", "wurdet", "wurden"])
+    checkVerbPraeteritumKonjunktiv(verb, ["würde", "würdest", "würde", "würden", "würdet", "würden"])
   end
   
   def checkVerbPraeteritum(verb, formen)

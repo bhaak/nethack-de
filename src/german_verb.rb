@@ -16,13 +16,19 @@ class Verb
     @person  = 1          # 0, 1, 2
     @numerus = 0          # 0, 1
 
+    @e_erweiterung = e_erweiterung?(@praesens_stamm)
+  end
+
+  def e_erweiterung?(stamm)
+    #puts "Stamm: "+stamm+"-"
     if stamm[-1..-1]=='t' or stamm[-1..-1]=='d' then
-      @e_erweiterung = true
+      return true
     # else if # verschlusslaut oder reibelaut + m oder n
     # e_erweiterung = true
     else
-      @e_erweiterung = false
+      return false
     end
+    #puts "e_erweiterung: "+@e_erweiterung.to_s+"-"
   end
 
   def singular
@@ -90,7 +96,7 @@ class Verb
     if singular? then
       return @praesens_stamm + (@e_erweiterung ? "e" : "")
     else
-      return @praesens_stamm + "t"
+      return @praesens_stamm + (@e_erweiterung ? "e" : "") + "t"
     end
   end
   
@@ -152,8 +158,10 @@ end
 
 class VerbUnregelmaessig < Verb
   def form
-    if praeteritum? && konjunktiv? && aktiv? then
-      return Verb.umlaute(@praeteritum_stamm) + "te" + endung($praeteritum_endung)
+    if praeteritum? && indikativ? && aktiv? then
+      return @praeteritum_stamm + endung($praeteritum_endung)
+    elsif praeteritum? && konjunktiv? && aktiv? then
+      return Verb.umlaute(@praeteritum_stamm) + (e_erweiterung?(@praeteritum_stamm) ? "e" : "") + endung($praeteritum_endung)
     end
     return super
   end
@@ -164,18 +172,22 @@ class VerbUnregelmaessig < Verb
 end
 
 class VerbHaben < VerbUnregelmaessig
-  def initialize(stamm, praeteritum_stamm)
-    super(stamm)
-    @praeteritum_stamm = praeteritum_stamm
+  def initialize
+    super("hab", "hat", "hab")
   end
 
   def form
+    p = personNummer
     if praesens? && indikativ? && singular? then
       if zweitePerson? then
         return "hast"
       elsif drittePerson? then
         return "hat"
       end
+    elsif praeteritum? && indikativ? then
+      return ["hatte", "hattest", "hatte", "hatten", "hattet", "hatten"][p]
+    elsif praeteritum? && konjunktiv? then
+      return ["hätte", "hättest", "hätte", "hätten", "hättet", "hätten"][p]
     end
     return super
   end
@@ -202,12 +214,54 @@ class VerbSein < VerbUnregelmaessig
       if singular? and (erstePerson? or drittePerson?) then
         return "sei"
       end
+    #elsif praeteritum? && indikativ? then
+      #return ["war", "warst", "war", "waren", "wart", "waren"][p]
+    end
+    return super
+  end
+end
+
+
+class VerbSein < VerbUnregelmaessig
+  def initialize()
+    super("sei", "war", "wes")
+  end
+
+  def infinitiv
+    return "sein"
+  end
+
+  def form
+    p = personNummer
+    if praesens? && indikativ? then
+      return ["bin", "bist", "ist", "sind", "seid", "sind"][p]
+    elsif praesens? && konjunktiv? then
+      if singular? and (erstePerson? or drittePerson?) then
+        return "sei"
+      end
     elsif praeteritum? && indikativ? then
       return ["war", "warst", "war", "waren", "wart", "waren"][p]
     end
     return super
   end
 end
-#machen = Verb.new("mach")
-#puts machen.form
-#puts machen.infinitiv
+
+class VerbWerden < VerbUnregelmaessig
+  def initialize()
+    super("werd", "wurde", "word")
+  end
+
+  def form
+    p = personNummer
+    if praesens? && indikativ? then
+      return ["werde", "wirst", "wird", "werden", "werdet", "werden"][p]
+    #elsif praesens? && konjunktiv? then
+      #if singular? and (erstePerson? or drittePerson?) then
+        #return "sei"
+      #end
+    #elsif praeteritum? && indikativ? then
+      #return ["war", "warst", "war", "waren", "wart", "waren"][p]
+    end
+    return super
+  end
+end
