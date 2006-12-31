@@ -185,7 +185,7 @@ struct obj *otmp;
 		       with their metabolism...) */
 		    if (mtmp->cham == CHAM_ORDINARY && !rn2(25)) {
 			if (canseemon(mtmp)) {
-			    pline("%s VERB_ERSCHAUDERN!", Monnam(mtmp)); /* EN pline("%s shudders!", Monnam(mtmp)); */
+			    pline("SUBJECT %s VERB_ERSCHAUDERN!", Monnam(mtmp)); /* EN pline("%s shudders!", Monnam(mtmp)); */
 			    makeknown(otyp);
 			}
 			/* dropped inventory shouldn't be hit by this zap */
@@ -218,7 +218,7 @@ struct obj *otmp;
 		Strcpy(nambuf, Monnam(mtmp));
 		mon_set_minvis(mtmp);
 		if (!oldinvis && knowninvisible(mtmp)) {
-		    pline("%s VERB_WERDEN durchsichtig!", nambuf); /* EN pline("%s turns transparent!", nambuf); */
+		    pline("SUBJECT %s VERB_WERDEN durchsichtig!", nambuf); /* EN pline("%s turns transparent!", nambuf); */
 		    makeknown(otyp);
 		}
 		break;
@@ -276,7 +276,7 @@ struct obj *otmp;
 			    newsym(mtmp->mx, mtmp->my);
 			} else
 			    mimic_hit_msg(mtmp, otyp);
-		    } else pline("%s VERB_SEE%s besser aus.", Monnam(mtmp), /* EN } else pline("%s looks%s better.", Monnam(mtmp), */
+		    } else pline("SUBJECT %s VERB_SEE%s besser aus.", Monnam(mtmp), /* EN } else pline("%s looks%s better.", Monnam(mtmp), */
 				 otyp == SPE_EXTRA_HEALING ? " viel" : "" ); /* EN otyp == SPE_EXTRA_HEALING ? " much" : "" ); */
 		}
 		if (mtmp->mtame || mtmp->mpeaceful) {
@@ -308,10 +308,10 @@ struct obj *otmp;
 		    /* turn into flesh golem */
 		    if (newcham(mtmp, &mons[PM_FLESH_GOLEM], FALSE, FALSE)) {
 			if (canseemon(mtmp))
-			    pline("%s ist Fleisch geworden!", name); /* EN pline("%s turns to flesh!", name); */
+			    pline("SUBJECT %s ist Fleisch geworden!", name); /* EN pline("%s turns to flesh!", name); */
 		    } else {
 			if (canseemon(mtmp))
-			    pline("%s VERB_SEE für einen Moment ziemlich fleischig aus.", /* EN pline("%s looks rather fleshy for a moment.", */
+			    pline("SUBJECT %s VERB_SEE für einen Moment ziemlich fleischig aus.", /* EN pline("%s looks rather fleshy for a moment.", */
 				  name);
 		    }
 		} else
@@ -333,7 +333,7 @@ struct obj *otmp;
 		    else {
 			mtmp->m_lev--;
 			if (canseemon(mtmp))
-			    pline("%s VERB_SEEM plötzlich schwächer SATZKLAMMER!", Monnam(mtmp)); /* EN pline("%s suddenly seems weaker!", Monnam(mtmp)); */
+			    pline("SUBJECT %s VERB_SEEM plötzlich schwächer SATZKLAMMER!", Monnam(mtmp)); /* EN pline("%s suddenly seems weaker!", Monnam(mtmp)); */
 		    }
 		}
 		break;
@@ -379,7 +379,7 @@ struct monst *mtmp;
 		otmp->dknown = 1;	/* treat as "seen" */
 	    (void) display_minventory(mtmp, MINV_ALL, (char *)0);
 	} else {
-	    pline("%s VERB_TRAGEN gar nichts.", noit_Monnam(mtmp)); /* EN pline("%s is not carrying anything.", noit_Monnam(mtmp)); */
+	    pline("SUBJECT %s VERB_TRAGEN gar nichts.", noit_Monnam(mtmp)); /* EN pline("%s is not carrying anything.", noit_Monnam(mtmp)); */
 	}
 }
 
@@ -656,7 +656,7 @@ register struct obj *obj;
 		    		    if (ghost->mtame)
 		    		    	savetame = ghost->mtame;
 		    		    if (canseemon(ghost))
-		    		  	pline("%s is suddenly drawn into its former body!", /* EN pline("%s is suddenly drawn into its former body!", */
+									pline("%s is suddenly drawn into its former body!", /* EN pline("%s is suddenly drawn into its former body!", */ // TODO
 						Monnam(ghost));
 				    mondead(ghost);
 				    recorporealization = TRUE;
@@ -760,11 +760,11 @@ struct monst *mon;
 		++res;
 		if (youseeit) {
 		    if (!once++) Strcpy(owner,
-					(mon == &youmonst) ? "Your" : /* EN (mon == &youmonst) ? "Your" : */
+					(mon == &youmonst) ? "PRONOMEN_POSSESSIV" : /* EN (mon == &youmonst) ? "Your" : */
 					s_suffix(Monnam(mon)));
-		    pline("%s %s suddenly comes alive!", owner, corpse); /* EN pline("%s %s suddenly comes alive!", owner, corpse); */
+		    pline("SUBJECT %s %s suddenly comes alive!", owner, corpse); /* EN pline("%s %s suddenly comes alive!", owner, corpse); */ // TODO
 		} else if (canseemon(mtmp2))
-		    pline("%s suddenly appears!", Amonnam(mtmp2)); /* EN pline("%s suddenly appears!", Amonnam(mtmp2)); */
+			pline("SUBJECT %s VERB_ERSCHEINEN plötzlich!", Amonnam(mtmp2)); /* EN pline("%s suddenly appears!", Amonnam(mtmp2)); */ //
 	    }
 	}
 	return res;
