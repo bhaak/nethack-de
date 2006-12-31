@@ -178,7 +178,10 @@ START_TEST (test_corpses) {
 		 "Du siehst hier die sterblichen Überreste von 2 Flechten."},
 	// SUBJECT PRONOMEN_PERSONAL finish eating OBJECT ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE"
 		{"SUBJECT PRONOMEN_PERSONAL VERB_EAT OBJECT MODIFIER_CORPSE ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE",
-		 "Du isst die sterblichen Überreste des Goblins"}};
+		 "Du isst die sterblichen Überreste des Goblins"},
+		{"SUBJECT PRONOMEN_POSSESSIV MODIFIER_CORPSE NOUN_GREY_ELF NOUN_CORPSE VERB_WERDEN plötzlich lebendig!",
+		 "Deine sterblichen Überreste eines Grauelbes werden plötzlich lebendig!"}
+	};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
@@ -605,9 +608,10 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
   tcase_add_test(tc_core, test_complete_sentences2);
+  tcase_add_test(tc_core, test_corpses);
 
-	if (0) {
-	tcase_add_test(tc_core, test_german2meta);
+	if (1) {
+		//tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
   tcase_add_test(tc_core, test_identified_spellbooks);

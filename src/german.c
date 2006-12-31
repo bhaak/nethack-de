@@ -396,6 +396,14 @@ int finde_naechstes_subject(const char* text) {
 #endif
 
 			return 0;
+		} else if (strncmp(tmp, "MODIFIER_CORPSE",15)==0) {
+			c_genus   = feminin;
+			c_numerus = n_plural;
+			c_person  = drittePerson;		
+
+			subject_genus   = feminin;
+			subject_numerus = n_plural;
+			subject_person  = drittePerson;
 		} else {
 			i++;
 		}
@@ -436,6 +444,11 @@ int finde_naechstes_objekt(const char* text) {
 			analyze_this_as_object(tmp);
 
 			return 0;
+		} else if (strncmp(tmp, "MODIFIER_CORPSE",15)==0) {
+			c_genus   = feminin;
+			c_numerus = n_plural;
+			c_person  = drittePerson;		
+			c_casus   = verb_do_casus; // TODO überprüfen, ob verb schon angetroffen
 		} else {
 			i++;
 		}
@@ -594,13 +607,43 @@ int next_token(const char* input, char* output, int pos) {
 	return (strlen(output)>0);
 }
 
+/* get the complete token */
+int previous_token(const char* input, char* output, int pos) {
+	int i=pos;
+	int j=0;
+	char tmp[TBUFSZ];
+
+#ifdef DEBUG
+	printf("previous_token1: -%s-\n", input);
+	printf("previous_token2: -%s-\n", input+i);
+#endif
+
+	// skip whitespace
+	do {
+		i--;
+	} while ((i>0) && (isspace(input[i])));
+	//printf("previous_token3: -%s-\n", input+i);
+
+	/* determine begin of token */
+	while ((i>0) && (isalnum(input[i])||input[i]=='_')) {
+		i--;
+	}
+	i++;
+
+	//printf("previous_token4: -%s-\n", input+i);
+
+	int ret = next_token(input, output, i);
+#ifdef DEBUG
+	printf("previous_token return: %s\n", output);
+#endif
+	return ret;
+}
+
 /* returns true, when the token text is found within input */
 int find_token(const char* text, const char* input) {
 	int i=0;
 	char tmp[TBUFSZ];
 	
-	//printf("\nSchleife\n");
-
 	while (i<strlen(input)) {
 		next_token(input,tmp, i);
 		//printf("text: -%s- input: -%s-, tmp: -%s- i: %d\n", text, input, tmp, i);
@@ -608,8 +651,7 @@ int find_token(const char* text, const char* input) {
 		i += strlen(tmp);
 		if (strlen(tmp)==0) { i++;}
 	}
-	//printf("Schleife Ende \n");
-	//printf("return 0\n");
+	//printf("find_token return 0\n");
 	return 0;
 }
 
@@ -757,10 +799,20 @@ char* german(const char *line) {
 
 		} else if (strcmp("MODIFIER_CORPSE", tmp)==0) {
 		  // erzeugt: Leichnam eines Kobolds / Leichname von Kobolden
+			// wenn keine PRONOMEN_POSSESSIV vor MODIFIER_CORPSE steht,
+			// wird der bestimmte Artikel eingefügt
 			if (find_token("NOUN_CORPSE", line+pos)) { modifier_corpse = 1; }
 			else if (find_token("NOUN_CORPSEs", line+pos)) { modifier_corpse = 2; }
 
+			//printf("\nprevious_token\n");
+			previous_token(line, tmp2, pos-strlen("MODIFIER_CORPSE"));
+			if (!strcmp("PRONOMEN_POSSESSIV", tmp2)==0) {
+				append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, feminin, n_plural, c_artikel));
+				append(output, " ");
+			}
+			
 			append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, n_singular|n_plural, c_artikel));
+			finde_naechstes_substantiv(line+pos);
 			if (modifier_corpse == 1) {
 				c_casus = genitiv; c_numerus = n_singular;
 				if (!strncmp("ARTIKEL_",line+pos+1,7)==0) {
