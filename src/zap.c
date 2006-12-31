@@ -184,7 +184,7 @@ struct obj *otmp;
 		       with their metabolism...) */
 		    if (mtmp->cham == CHAM_ORDINARY && !rn2(25)) {
 			if (canseemon(mtmp)) {
-			    pline("%s shudders!", Monnam(mtmp)); /* EN pline("%s shudders!", Monnam(mtmp)); */
+			    pline("%s VERB_ERSCHAUDERN!", Monnam(mtmp)); /* EN pline("%s shudders!", Monnam(mtmp)); */
 			    makeknown(otyp);
 			}
 			/* dropped inventory shouldn't be hit by this zap */
@@ -217,7 +217,7 @@ struct obj *otmp;
 		Strcpy(nambuf, Monnam(mtmp));
 		mon_set_minvis(mtmp);
 		if (!oldinvis && knowninvisible(mtmp)) {
-		    pline("%s turns transparent!", nambuf); /* EN pline("%s turns transparent!", nambuf); */
+		    pline("%s VERB_WERDEN durchsichtig!", nambuf); /* EN pline("%s turns transparent!", nambuf); */
 		    makeknown(otyp);
 		}
 		break;
@@ -238,8 +238,8 @@ struct obj *otmp;
 		wake = FALSE;	/* don't want immediate counterattack */
 		if (u.uswallow && mtmp == u.ustuck) {
 			if (is_animal(mtmp->data)) {
-				if (Blind) You_feel("a sudden rush of air!"); /* EN if (Blind) You_feel("a sudden rush of air!"); */
-				else pline("%s opens its mouth!", Monnam(mtmp)); /* EN else pline("%s opens its mouth!", Monnam(mtmp)); */
+				if (Blind) You("VERB_FEEL einen plötzlichen Luftzug!"); /* EN if (Blind) You_feel("a sudden rush of air!"); */
+				else pline("SUBJECT %s VERB_OEFFNEN OBJECT PRONOMEN_ NOUN_MUND!", Monnam(mtmp)); /* EN else pline("%s opens its mouth!", Monnam(mtmp)); */  // TODO
 			}
 			expels(mtmp, mtmp->data, TRUE);
 #ifdef STEED
@@ -275,8 +275,8 @@ struct obj *otmp;
 			    newsym(mtmp->mx, mtmp->my);
 			} else
 			    mimic_hit_msg(mtmp, otyp);
-		    } else pline("%s looks%s better.", Monnam(mtmp), /* EN } else pline("%s looks%s better.", Monnam(mtmp), */
-				 otyp == SPE_EXTRA_HEALING ? " much" : "" ); /* EN otyp == SPE_EXTRA_HEALING ? " much" : "" ); */
+		    } else pline("%s VERB_SEE%s besser aus.", Monnam(mtmp), /* EN } else pline("%s looks%s better.", Monnam(mtmp), */
+				 otyp == SPE_EXTRA_HEALING ? " viel" : "" ); /* EN otyp == SPE_EXTRA_HEALING ? " much" : "" ); */
 		}
 		if (mtmp->mtame || mtmp->mpeaceful) {
 		    adjalign(Role_if(PM_HEALER) ? 1 : sgn(u.ualign.type));
@@ -3090,7 +3090,7 @@ xchar sx, sy;
 	case ZT_COLD:
 	    if (Cold_resistance) {
 		shieldeff(sx, sy);
-		You("VERB_FRIEREN nichts."); /* EN You("don't feel cold."); */
+		You("VERB_FRIEREN nicht."); /* EN You("don't feel cold."); */
 		ugolemeffects(AD_COLD, d(nd, 6));
 	    } else {
 		dam = d(nd, 6);
