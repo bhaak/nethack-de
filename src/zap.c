@@ -1428,10 +1428,10 @@ no_unwear:
 			    !costly_spot(u.ux, u.uy))
 			make_angry_shk(shkp, ox, oy);
 		    else {
-			pline("%s gets angry!", Monnam(shkp)); /* EN pline("%s gets angry!", Monnam(shkp)); */
+			pline("%s VERB_WERDEN wütend!", Monnam(shkp)); /* EN pline("%s gets angry!", Monnam(shkp)); */ // TODO Eigenname
 			hot_pursuit(shkp);
 		    }
-		} else Norep("%s is furious!", Monnam(shkp)); /* EN } else Norep("%s is furious!", Monnam(shkp)); */
+		} else Norep("%s VERB_SEIN rasend!", Monnam(shkp)); /* EN } else Norep("%s is furious!", Monnam(shkp)); */ // TODO Eigenname
 	    }
 	}
 	delobj(obj);
@@ -1528,7 +1528,7 @@ struct obj *obj, *otmp;
 		obj->dknown = 1;
 		if (Is_container(obj) || obj->otyp == STATUE) {
 		    if (!obj->cobj)
-			pline("%s empty.", Tobjnam(obj, "are")); /* EN pline("%s empty.", Tobjnam(obj, "are")); */
+			pline("%s leer.", Tobjnam(obj, "VERB_SEIN")); /* EN pline("%s empty.", Tobjnam(obj, "are")); */
 		    else {
 			struct obj *o;
 			/* view contents (not recursively) */
@@ -1660,7 +1660,7 @@ makecorpse:			if (mons[obj->corpsenm].geno &
 			if (mon) {
 			    delobj(obj);
 			    if (cansee(mon->mx, mon->my))
-				pline_The("figurine animates!"); /* EN pline_The("figurine animates!"); */
+						pline_The("NOUN_FIGURINE animates!"); /* EN pline_The("figurine animates!"); */ // TODO
 			    break;
 			}
 			goto makecorpse;
@@ -1745,7 +1745,7 @@ register struct obj *wand;
 	if(wand->spe < 0 || (wand->spe == 0 && rn2(121)))
 		return 0;
 	if(wand->spe == 0)
-		You("wrest one last charge from the worn-out wand."); /* EN You("wrest one last charge from the worn-out wand."); */
+		You("VERB_WRINGEN das letzte bisschen Energie aus dem ausgeleierten/ausgelaugten Zauberstab."); /* EN You("wrest one last charge from the worn-out wand."); */
 	wand->spe--;
 	return 1;
 }
@@ -1778,7 +1778,7 @@ register struct obj *obj;
 		case WAN_WISHING:
 			known = TRUE;
 			if(Luck + rn2(5) < 0) {
-				pline("Unfortunately, nothing happens."); /* EN pline("Unfortunately, nothing happens."); */
+				pline("Unglücklicherweise passiert nichts."); /* EN pline("Unfortunately, nothing happens."); */
 				break;
 			}
 			makewish();
