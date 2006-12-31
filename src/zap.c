@@ -762,7 +762,7 @@ struct monst *mon;
 		    if (!once++) Strcpy(owner,
 					(mon == &youmonst) ? "PRONOMEN_POSSESSIV" : /* EN (mon == &youmonst) ? "Your" : */
 					s_suffix(Monnam(mon)));
-		    pline("SUBJECT %s %s suddenly comes alive!", owner, corpse); /* EN pline("%s %s suddenly comes alive!", owner, corpse); */ // TODO
+		    pline("SUBJECT %s %s VERB_WERDEN plötzlich lebendig!", owner, corpse); /* EN pline("%s %s suddenly comes alive!", owner, corpse); */ // TODO
 		} else if (canseemon(mtmp2))
 			pline("SUBJECT %s VERB_ERSCHEINEN plötzlich!", Amonnam(mtmp2)); /* EN pline("%s suddenly appears!", Amonnam(mtmp2)); */ //
 	    }
@@ -788,7 +788,7 @@ register struct obj *obj;
 		if (obj->unpaid) {
 		    shkp = shop_keeper(*u.ushops);
 		    if (!shkp) return;
-		    Norep("You cancel an unpaid object, you pay for it!"); /* EN Norep("You cancel an unpaid object, you pay for it!"); */
+		    Norep("You cancel an unpaid object, you pay for it!"); /* EN Norep("You cancel an unpaid object, you pay for it!"); */ // TODO
 		    bill_dummy_object(obj);
 		}
 		break;
@@ -797,7 +797,7 @@ register struct obj *obj;
 		shkp = shop_keeper(objroom);
 		if (!shkp || !inhishop(shkp)) return;
 		if (costly_spot(u.ux, u.uy) && objroom == *u.ushops) {
-		    Norep("You cancel it, you pay for it!"); /* EN Norep("You cancel it, you pay for it!"); */
+			Norep("You cancel it, you pay for it!"); /* EN Norep("You cancel it, you pay for it!"); */ // TODO
 		    bill_dummy_object(obj);
 		} else
 		    (void) stolen_value(obj, obj->ox, obj->oy, FALSE, FALSE);
