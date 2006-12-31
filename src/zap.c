@@ -307,10 +307,10 @@ struct obj *otmp;
 		    /* turn into flesh golem */
 		    if (newcham(mtmp, &mons[PM_FLESH_GOLEM], FALSE, FALSE)) {
 			if (canseemon(mtmp))
-			    pline("%s turns to flesh!", name); /* EN pline("%s turns to flesh!", name); */
+			    pline("%s ist Fleisch geworden!", name); /* EN pline("%s turns to flesh!", name); */
 		    } else {
 			if (canseemon(mtmp))
-			    pline("%s looks rather fleshy for a moment.", /* EN pline("%s looks rather fleshy for a moment.", */
+			    pline("%s VERB_SEE für einen Moment ziemlich fleischig aus.", /* EN pline("%s looks rather fleshy for a moment.", */
 				  name);
 		    }
 		} else
