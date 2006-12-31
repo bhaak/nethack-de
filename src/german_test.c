@@ -306,7 +306,11 @@ START_TEST (test_complete_sentences2) {
 		{"SUBJECT PRONOMEN_PERSONAL VERB_HAVE OBJECT PRONOMEN_KEIN NOUN_HAND frei um damit zu schreiben!",
 		 "Du hast keine Hand frei um damit zu schreiben!"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_BEENDEN OBJECT PRONOMEN_POSSESSIV NOUN_DRESSING_MANEUVER.",
-		 "Du beendest deinen Bekleidungsakt."}
+		 "Du beendest deinen Bekleidungsakt."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_OBJ_DOOR VERB_ABSORBIEREN OBJECT PRONOMEN_POSSESSIV NOUN_SPELL!",
+		 "Die Türe absorbiert deinen Spruch!"},
+		//{"SUBJECT ARTIKEL_BESTIMMTER NOUN_LONG_WORM VERB_OEFFNEN OBJECT PRONOMEN_POSSESSIV NOUN_HAND!",
+		//"Der Langwurm öffnet seinen Mund!"},
 	};
 
 	check_strings(text, sizeof(text)/8);
