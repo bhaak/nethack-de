@@ -348,11 +348,14 @@ START_TEST (test_complete_sentences3) {
 		 "Der Feuerblitz zischt an dir vorbei!"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_FRIEREN.",
 		 "Du frierst."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_ORACLE VERB_NEHMEN verächtlich OBJECT PRONOMEN_POSSESSIV ganzes Geld und VERB_SAGEN:",
+		 "Das Orakel nimmt verächtlich dein ganzes Geld und sagt:"},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_ORACLE VERB_MEDITIEREN einen Moment und VERB_VERKUENDEN dann:",
+		 "Das Orakel meditiert einen Moment und verkündet dann:"},
 	};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
- 
 
 
 START_TEST (test_passiv) {
@@ -392,7 +395,9 @@ START_TEST (test_verbs) {
 		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT 2 ADJEKTIV_POT_BRILLIANT_BLUE NOUN_POTIONs SATZKLAMMER.",
 		 "Du lässt 2 blauglänzende Tränke fallen."},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_OBJ_DOOR VERB_OPEN SATZKLAMMER.",
-		 "Die Türe geht auf."}
+		 "Die Türe geht auf."},
+		{"Hier ist niemand, den SUBJECT_IM_SATZ PRONOMEN_PERSONAL um Rat fragen MODIFIER_KONJUNKTIV_II VERB_KOENNEN.",
+		 "Hier ist niemand, den du um Rat fragen könntest."},
 	};
 
 	check_strings(text, sizeof(text)/8);

@@ -121,14 +121,15 @@ boolean exclude_cookie;
 		}
 		if ((endp = index(line, '\n')) != 0) *endp = 0;
 		Strcat(rumor_buf, xcrypt(line, xbuf));
-	    } while(count++ < 50 && exclude_cookie && (strstri(rumor_buf, "fortune") || strstri(rumor_buf, "pity")));
+		// CHECK ME: In rumors.fal darf diese Zeile nur die Treffer haben, die auch in der englischen Version sind.
+	    } while(count++ < 50 && exclude_cookie && (strstri(rumor_buf, "Glückskeks") || strstri(rumor_buf, "Schande"))); /* EN } while(count++ < 50 && exclude_cookie && (strstri(rumor_buf, "fortune") || strstri(rumor_buf, "pity"))); */
 	    (void) dlb_fclose(rumors);
 	    if (count >= 50)
 		impossible("Can't find non-cookie rumor?");
 	    else
 		exercise(A_WIS, (adjtruth > 0));
 	} else {
-		pline("Can't open rumors file!");
+		pline("Kann die Gerüchtedatei \"rumors\" nicht öffnen!"); /* EN pline("Can't open rumors file!"); */
 		true_rumor_size = -1;	/* don't try to open it again */
 	}
 	return rumor_buf;
@@ -140,7 +141,7 @@ int truth; /* 1=true, -1=false, 0=either */
 int mechanism;
 {
 	static const char fortune_msg[] =
-		"This cookie has a scrap of paper inside.";
+		"Dieser Keks enthält ein Papierzettelchen."; /* EN "This cookie has a scrap of paper inside."; */
 	const char *line;
 	char buf[BUFSZ];
 	boolean reading = (mechanism == BY_COOKIE ||
@@ -153,20 +154,19 @@ int mechanism;
 	    else if (Blind) {
 		if (mechanism == BY_COOKIE)
 			pline(fortune_msg);
-		//pline("What a pity that you cannot read it!");
-		pline("Wie schade, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL es nicht lesen VERB_CAN!");
+		pline("Wie schade, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL es nicht lesen VERB_CAN!"); /* EN pline("What a pity that you cannot read it!"); */
 	    	return;
 	    }
 	}
 	line = getrumor(truth, buf, reading ? FALSE : TRUE);
 	if (!*line)
-		line = "NetHack rumors file closed for renovation.";
+		line = "NetHacks Gerüchtedatei wegen Renovation geschlossen."; /* EN line = "NetHack rumors file closed for renovation."; */
 	switch (mechanism) {
 	    case BY_ORACLE:
 	 	/* Oracle delivers the rumor */
-		pline("True to her word, the Oracle %ssays: ",
-		  (!rn2(4) ? "offhandedly " : (!rn2(3) ? "casually " :
-		  (rn2(2) ? "nonchalantly " : ""))));
+		pline("Und dies war die Antwort, die das Orakel %sgab: ", /* EN pline("True to her word, the Oracle %ssays: ", */ // TODO DE
+		  (!rn2(4) ? "spontan " : (!rn2(3) ? "einfach " : /* EN (!rn2(4) ? "offhandedly " : (!rn2(3) ? "casually " : */
+		  (rn2(2) ? "locker " : "")))); /* EN (rn2(2) ? "nonchalantly " : "")))); */
 		verbalize("%s", line);
 		exercise(A_WIS, TRUE);
 		return;
@@ -174,8 +174,7 @@ int mechanism;
 		pline(fortune_msg);
 		/* FALLTHRU */
 	    case BY_PAPER:
-		//pline("It reads:");
-		pline("Da steht:");
+		pline("Da steht:"); /* EN pline("It reads:"); */
 		break;
 	}
 	pline("%s", line);
@@ -266,10 +265,10 @@ boolean delphi;
 		tmpwin = create_nhwindow(NHW_TEXT);
 		if (delphi)
 		    putstr(tmpwin, 0, special ?
-		          "The Oracle scornfully takes all your money and says:" :
-		          "The Oracle meditates for a moment and then intones:");
+		          "SUBJECT ARTIKEL_BESTIMMTER NOUN_ORACLE VERB_NEHMEN verächtlich OBJECT PRONOMEN_POSSESSIV ganzes Geld und VERB_SAGEN:" : /* EN "The Oracle scornfully takes all your money and says:" : */
+		          "SUBJECT ARTIKEL_BESTIMMTER NOUN_ORACLE VERB_MEDITIEREN einen Moment und VERB_VERKUENDEN dann:"); /* EN "The Oracle meditates for a moment and then intones:"); */
 		else
-		    putstr(tmpwin, 0, "The message reads:");
+		    putstr(tmpwin, 0, "Die Nachricht lautet:"); /* EN putstr(tmpwin, 0, "The message reads:"); */
 		putstr(tmpwin, 0, "");
 
 		while(dlb_fgets(line, COLNO, oracles) && strcmp(line,"---\n")) {
@@ -280,7 +279,7 @@ boolean delphi;
 		destroy_nhwindow(tmpwin);
 		(void) dlb_fclose(oracles);
 	} else {
-		pline("Can't open oracles file!");
+		pline("Kann die Orakeldatei \"oracles\" nicht öffnen!"); /* EN pline("Can't open oracles file!"); */
 		oracle_flg = -1;	/* don't try to open it again */
 	}
 }
@@ -299,22 +298,22 @@ register struct monst *oracl;
 	multi = 0;
 
 	if (!oracl) {
-		There("is no one here to consult.");
+		pline("Hier ist niemand, den SUBJECT_IM_SATZ PRONOMEN_PERSONAL um Rat fragen MODIFIER_KONJUNKTIV_II VERB_KOENNEN."); /* EN There("is no one here to consult."); */
 		return 0;
 	} else if (!oracl->mpeaceful) {
-		pline("%s is in no mood for consultations.", Monnam(oracl));
+		pline("SUBJECT %s VERB_SEIN nicht in der Stimmung für Konsultationen.", Monnam(oracl)); /* EN pline("%s is in no mood for consultations.", Monnam(oracl)); */
 		return 0;
 #ifndef GOLDOBJ
 	} else if (!u.ugold) {
 #else
 	} else if (!umoney) {
 #endif
-		You("have no money.");
+		You("VERB_HAVE kein Geld."); /* EN You("have no money."); */
 		return 0;
 	}
 
 	Sprintf(qbuf,
-		"\"Wilt thou settle for a minor consultation?\" (%d %s)",
+		"\"Wollt Ihr Euch mit einer kurzen Konsultation begnügen?\" (%d %s)", /* EN "\"Wilt thou settle for a minor consultation?\" (%d %s)", */
 		minor_cost, currency((long)minor_cost));
 	switch (ynq(qbuf)) {
 	    default:
@@ -326,7 +325,7 @@ register struct monst *oracl;
 #else
 		if (umoney < (long)minor_cost) {
 #endif
-		    You("don't even have enough money for that!");
+		    You("VERB_HAVE nicht einmal dafür genug Geld!"); /* EN You("don't even have enough money for that!"); */
 		    return 0;
 		}
 		u_pay = minor_cost;
@@ -339,7 +338,7 @@ register struct monst *oracl;
 #endif
 		    (oracle_cnt == 1 || oracle_flg < 0)) return 0;
 		Sprintf(qbuf,
-			"\"Then dost thou desire a major one?\" (%d %s)",
+			"\"Dann verlangt Ihr also nach einer ausführlichen Konsultation?\" (%d %s)", /* EN "\"Then dost thou desire a major one?\" (%d %s)", */
 			major_cost, currency((long)major_cost));
 		if (yn(qbuf) != 'y') return 0;
 #ifndef GOLDOBJ
