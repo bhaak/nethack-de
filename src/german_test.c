@@ -332,6 +332,22 @@ START_TEST (test_complete_sentences3) {
 	char *text[][2] = {
 		{"a - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED +0 NOUN_MUMMY_WRAPPINGs (VERB_WORN)",
 		 "a - nicht verfluchte +0 Mumienbinden (getragen)"},
+		{"Vor Schrecken VERB_ERSCHAUDERN SUBJECT_IM_SATZ PRONOMEN_PERSONAL.",
+		 "Vor Schrecken erschauderst du."},
+		{"SUBJECT PRONOMEN_POSSESSIV NOUN_AMULET erwärmt sich einen Moment lang und kühlt wieder ab.",
+		 "Dein Amulett erwärmt sich einen Moment lang und kühlt wieder ab."},
+		{"SUBJECT NOUN_BLUT VERB_TROPFEN OBJECT auf PRONOMEN_POSSESSIV NOUN_FACE.",
+		 "Blut tropft auf dein Gesicht."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_SAEURE VERB_BRENNEN!",
+		 "Die Säure brennt!"},
+		{"SUBJECT ARTIKEL_UNBESTIMMTER NOUN_SCROLL VERB_VERBRENNEN.",
+		 "Eine Schriftrolle verbrennt."},
+		{"Aus irgendeinem Grund VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht betroffen.",
+		 "Aus irgendeinem Grund bist du nicht betroffen."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_BOLT_OF_FIRE VERB_VORBEIZISCHEN an KASUS_DATIV PRONOMEN_PERSONAL SATZKLAMMER!",
+		 "Der Feuerblitz zischt an dir vorbei!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_FRIEREN.",
+		 "Du frierst."},
 	};
 
 	check_strings(text, sizeof(text)/8);
