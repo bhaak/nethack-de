@@ -318,6 +318,8 @@ START_TEST (test_complete_sentences2) {
 		 "Du haust dich selbst!"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_PLATZIEREN OBJECT ARTIKEL_UNBESTIMMTER NOUN_FIREBALL auf KASUS_DATIV PRONOMEN_PERSONAL selbst!",
 		 "Du platzierst einen Feuerball auf dir selbst!"},
+		{"OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ziemlich warm.",
+		 "Dir ist ziemlich warm."},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -614,7 +616,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_complete_sentences2);
   tcase_add_test(tc_core, test_corpses);
 
-	if (1) {
+	if (0) {
 		//tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);

@@ -947,6 +947,12 @@ char* german(const char *line) {
 			else if (strcmp("MODIFIER_FEMININ", tmp)==0)  { c_genus = feminin; }
 			else if (strcmp("MODIFIER_NEUTRUM", tmp)==0)  { c_genus = neutrum; }
 
+			else if (strcmp("MODIFIER_VERB_ZWEITE_PERSON", tmp)==0) { subject_person = zweitePerson; }
+			else if (strcmp("MODIFIER_VERB_DRITTE_PERSON", tmp)==0) { subject_person = drittePerson; }
+
+			else if (strcmp("MODIFIER_VERB_SINGULAR", tmp)==0) { subject_numerus = n_singular; }
+			else if (strcmp("MODIFIER_VERB_PLURAL", tmp)==0)   { subject_numerus = n_plural; }
+
 		} else if (strncmp("NUMERUS_", tmp, 8)==0) {
 			insert_char = 0;
 			if      (strcmp("NUMERUS_SINGULAR", tmp)==0) { c_numerus = n_singular; }

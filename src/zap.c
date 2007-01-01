@@ -1915,7 +1915,7 @@ boolean ordinary;
 		case FIRE_HORN:
 		    if (Fire_resistance) {
 			shieldeff(u.ux, u.uy);
-			You_feel("rather warm."); /* EN You_feel("rather warm."); */
+			pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ziemlich warm."); /* EN You_feel("rather warm."); */
 			ugolemeffects(AD_FIRE, d(12,6));
 		    } else {
 			pline("You've set yourself afire!"); /* EN pline("You've set yourself afire!"); */
