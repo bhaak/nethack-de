@@ -996,7 +996,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEATHER_JACKET", "Lederjacke", "", "Lederjacke", "en", "neutrum", "en"),
     dekliniere_substantiv("NOUN_HAWAIIAN_SHIRT", "Hawaiihemd", "es", "Hawaiihemd", "en", "neutrum", "en"),
     dekliniere_substantiv("NOUN_T_SHIRT", "T-Shirt", "s", "T-Shirt", "s", "neutrum"),
-    #dekliniere_substantiv("NOUN_MUMMY_WRAPPING"
+    dekliniere_substantiv("NOUN_MUMMY_WRAPPING", "Mumienbinde", "", "Mumienbinde", "en", "feminin", "en"),
     dekliniere_substantiv("NOUN_ELVEN_CLOAK", "Elbenmantel", "s", "Elbenmäntel", "", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_CLOAK", "Orkmantel", "s", "Orkmäntel", "", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_CLOAK", "Zwergenmantel", "s", "Zwergenmäntel", "", "maskulin"),

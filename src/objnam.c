@@ -318,6 +318,12 @@ register struct obj *obj;
 			Strcpy(buf, "smooth shield");
 			break;
 		}
+#ifdef GERMAN
+		if(obj->otyp == MUMMY_WRAPPING) {
+			Strcpy(buf, "NOUN_MUMMY_WRAPPINGs");
+			break;
+		}
+#endif
 
 		if(nn)	Strcat(buf, actualn);
 		else if(un) {

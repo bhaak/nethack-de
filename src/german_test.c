@@ -320,12 +320,24 @@ START_TEST (test_complete_sentences2) {
 		 "Du platzierst einen Feuerball auf dir selbst!"},
 		{"OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ziemlich warm.",
 		 "Dir ist ziemlich warm."},
-		{"SUBJECT NOUN_IT VERB_JUCKEN OBJECT PRONOMEN_PERSONAL stark unter OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_MUMMY_WRAPPING.",
-		 "ES juckt dich stark unter deinen Mumienbinden."},
+		{"SUBJECT NOUN_IT VERB_JUCKEN OBJECT PRONOMEN_PERSONAL stark unter OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_MUMMY_WRAPPINGs.",
+		 "Es juckt dich stark unter deinen Mumienbinden."},
 	};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
+ 
+
+START_TEST (test_complete_sentences3) {
+	char *text[][2] = {
+		{"a - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED +0 NOUN_MUMMY_WRAPPINGs (VERB_WORN)",
+		 "a - nicht verfluchte +0 Mumienbinden (getragen)"},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+ 
+
 
 START_TEST (test_passiv) {
 	char *text[][2] = {
@@ -615,8 +627,7 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-  tcase_add_test(tc_core, test_complete_sentences2);
-  tcase_add_test(tc_core, test_corpses);
+  tcase_add_test(tc_core, test_complete_sentences3);
 
 	if (0) {
 		//tcase_add_test(tc_core, test_german2meta);

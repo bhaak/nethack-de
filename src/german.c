@@ -770,7 +770,8 @@ char* german(const char *line) {
 			if (strcmp("ARTIKEL_BESTIMMTER", tmp)==0) { c_artikel = bestimmter; }
 			else if (strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) { c_artikel = unbestimmter; }
 
-			if (strcmp("ARTIKEL_NULL",tmp)==0) {
+			if ((strcmp("ARTIKEL_NULL",tmp)==0) || // Null-Artikel
+					(strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) && (c_numerus == n_plural)) { // unbestimmter Artikel im Plural
 				c_artikel = ohne;
 				insert_char = 0;
 			} else {
