@@ -445,6 +445,8 @@ def ausgabe_verbs
     konjugiere_verb("VERB_EXPLODIEREN","explodier"),
     konjugiere_verb("VERB_HAUEN","hau"),
     konjugiere_verb("VERB_PLATZIEREN","platzier"),
+    konjugiere_verb("VERB_IMITIEREN","imitier"),
+    konjugiere_verb("VERB_JUCKEN","juck"),
     "",
     "/* unregelmässige Verben */",
     Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),

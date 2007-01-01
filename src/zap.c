@@ -1918,7 +1918,7 @@ boolean ordinary;
 			pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ziemlich warm."); /* EN You_feel("rather warm."); */
 			ugolemeffects(AD_FIRE, d(12,6));
 		    } else {
-			pline("You've set yourself afire!"); /* EN pline("You've set yourself afire!"); */
+					pline("You've set yourself afire!"); /* EN pline("You've set yourself afire!"); */ // TODO
 			damage = d(12,6);
 		    }
 		    burn_away_slime();
@@ -1934,10 +1934,10 @@ boolean ordinary;
 		case FROST_HORN:
 		    if (Cold_resistance) {
 			shieldeff(u.ux, u.uy);
-			You_feel("a little chill."); /* EN You_feel("a little chill."); */
+			pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN etwas kühl."); /* EN You_feel("a little chill."); */
 			ugolemeffects(AD_COLD, d(12,6));
 		    } else {
-			You("imitate a popsicle!"); /* EN You("imitate a popsicle!"); */
+			You("VERB_IMITIEREN ein Eis am Stiel!"); /* EN You("imitate a popsicle!"); */
 			damage = d(12,6);
 		    }
 		    destroy_item(POTION_CLASS, AD_COLD);
@@ -1948,10 +1948,10 @@ boolean ordinary;
 		case SPE_MAGIC_MISSILE:
 		    if(Antimagic) {
 			shieldeff(u.ux, u.uy);
-			pline_The("missiles bounce!"); /* EN pline_The("missiles bounce!"); */
+			pline_The("missiles bounce!"); /* EN pline_The("missiles bounce!"); */ // TODO
 		    } else {
 			damage = d(4,6);
-			pline("Idiot!  You've shot yourself!"); /* EN pline("Idiot!  You've shot yourself!"); */
+			pline("Idiot!  You've shot yourself!"); /* EN pline("Idiot!  You've shot yourself!"); */ // TODO
 		    }
 		    break;
 
@@ -1970,7 +1970,7 @@ boolean ordinary;
 
 		case SPE_DRAIN_LIFE:
 			if (!Drain_resistance) {
-				losexp("life drainage"); /* EN losexp("life drainage"); */
+				losexp("life drainage"); /* EN losexp("life drainage"); */ // TODO
 				makeknown(obj->otyp);
 			}
 			damage = 0;	/* No additional damage */
@@ -1984,7 +1984,7 @@ boolean ordinary;
 
 		    if (BInvis && uarmc->otyp == MUMMY_WRAPPING) {
 			/* A mummy wrapping absorbs it and protects you */
-		        You_feel("rather itchy under your %s.", xname(uarmc)); /* EN You_feel("rather itchy under your %s.", xname(uarmc)); */
+		        pline("SUBJECT NOUN_IT VERB_JUCKEN OBJECT PRONOMEN_PERSONAL stark unter OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", xname(uarmc)); /* EN You_feel("rather itchy under your %s.", xname(uarmc)); */
 		        break;
 		    }
 		    if (ordinary || !rn2(10)) {	/* permanent */
