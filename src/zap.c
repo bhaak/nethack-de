@@ -1805,8 +1805,8 @@ backfire(otmp)
 struct obj *otmp;
 {
 	otmp->in_use = TRUE;	/* in case losehp() is fatal */
-	pline("%s suddenly explodes!", The(xname(otmp))); /* EN pline("%s suddenly explodes!", The(xname(otmp))); */
-	losehp(d(otmp->spe+2,6), "exploding wand", KILLED_BY_AN); /* EN losehp(d(otmp->spe+2,6), "exploding wand", KILLED_BY_AN); */
+	pline("SUBJECT %s VERB_EXPLODIEREN plötzlich!", The(xname(otmp))); /* EN pline("%s suddenly explodes!", The(xname(otmp))); */
+	losehp(d(otmp->spe+2,6), "exploding wand", KILLED_BY_AN); /* EN losehp(d(otmp->spe+2,6), "exploding wand", KILLED_BY_AN); */ // TODO
 	useup(otmp);
 }
 
@@ -1819,7 +1819,7 @@ dozap()
 	int	damage;
 
 	if(check_capacity((char *)0)) return(0);
-	obj = getobj(zap_syms, "zap"); /* EN obj = getobj(zap_syms, "zap"); */
+	obj = getobj(zap_syms, "zap"); /* EN obj = getobj(zap_syms, "zap"); */ // TODO
 	if(!obj) return(0);
 
 	check_unpaid(obj);
@@ -1832,12 +1832,12 @@ dozap()
 		return(1);
 	} else if(!(objects[obj->otyp].oc_dir == NODIR) && !getdir((char *)0)) {
 		if (!Blind)
-		    pline("%s glows and fades.", The(xname(obj))); /* EN pline("%s glows and fades.", The(xname(obj))); */
+			pline("%s glows and fades.", The(xname(obj))); /* EN pline("%s glows and fades.", The(xname(obj))); */ // TODO
 		/* make him pay for knowing !NODIR */
 	} else if(!u.dx && !u.dy && !u.dz && !(objects[obj->otyp].oc_dir == NODIR)) {
 	    if ((damage = zapyourself(obj, TRUE)) != 0) {
 		char buf[BUFSZ];
-		Sprintf(buf, "zapped %sself with a wand", uhim()); /* EN Sprintf(buf, "zapped %sself with a wand", uhim()); */
+		Sprintf(buf, "wirkte einen Stabzauber gegen sich selbst", uhim()); /* EN Sprintf(buf, "zapped %sself with a wand", uhim()); */
 		losehp(damage, buf, NO_KILLER_PREFIX);
 	    }
 	} else {
@@ -1854,7 +1854,7 @@ dozap()
 		current_wand = 0;
 	}
 	if (obj && obj->spe < 0) {
-	    pline("%s to dust.", Tobjnam(obj, "turn")); /* EN pline("%s to dust.", Tobjnam(obj, "turn")); */
+	    pline("%s zu Staub.", Tobjnam(obj, "VERB_ZERFALLEN")); /* EN pline("%s to dust.", Tobjnam(obj, "turn")); */
 	    useup(obj);
 	}
 	update_inventory();	/* maybe used a charge */
@@ -1875,10 +1875,10 @@ boolean ordinary;
 		case SPE_FORCE_BOLT:
 		    if(Antimagic) {
 			shieldeff(u.ux, u.uy);
-			pline("Boing!"); /* EN pline("Boing!"); */
+			pline("Boing!"); /* EN pline("Boing!"); */ // IMPROVE ME?
 		    } else {
 			if (ordinary) {
-			    You("bash yourself!"); /* EN You("bash yourself!"); */
+			    You("VERB_HAUEN OBJECT PRONOMEN_PERSONAL selbst!"); /* EN You("bash yourself!"); */
 			    damage = d(2,12);
 			} else
 			    damage = d(1 + obj->spe,6);
@@ -1889,12 +1889,12 @@ boolean ordinary;
 		case WAN_LIGHTNING:
 		    makeknown(WAN_LIGHTNING);
 		    if (!Shock_resistance) {
-			You("shock yourself!"); /* EN You("shock yourself!"); */
+					You("shock yourself!"); /* EN You("shock yourself!"); */ // TODO
 			damage = d(12,6);
 			exercise(A_CON, FALSE);
 		    } else {
 			shieldeff(u.ux, u.uy);
-			You("zap yourself, but seem unharmed."); /* EN You("zap yourself, but seem unharmed."); */
+			You("zap yourself, but seem unharmed."); /* EN You("zap yourself, but seem unharmed."); */ // TODO
 			ugolemeffects(AD_ELEC, d(12,6));
 		    }
 		    destroy_item(WAND_CLASS, AD_ELEC);
@@ -1907,7 +1907,7 @@ boolean ordinary;
 		    break;
 
 		case SPE_FIREBALL:
-		    You("explode a fireball on top of yourself!"); /* EN You("explode a fireball on top of yourself!"); */
+		    You("VERB_PLATZIEREN OBJECT ARTIKEL_UNBESTIMMTER NOUN_FIREBALL auf KASUS_DATIV PRONOMEN_PERSONAL selbst!"); /* EN You("explode a fireball on top of yourself!"); */
 		    explode(u.ux, u.uy, 11, d(6,6), WAND_CLASS, EXPL_FIERY);
 		    break;
 		case WAN_FIRE:

@@ -314,6 +314,10 @@ START_TEST (test_complete_sentences2) {
 		 "Die Türe absorbiert deinen Spruch!"},
 		//{"SUBJECT ARTIKEL_BESTIMMTER NOUN_LONG_WORM VERB_OEFFNEN OBJECT PRONOMEN_POSSESSIV NOUN_HAND!",
 		//"Der Langwurm öffnet seinen Mund!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_HAUEN OBJECT PRONOMEN_PERSONAL selbst!",
+		 "Du haust dich selbst!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_PLATZIEREN OBJECT ARTIKEL_UNBESTIMMTER NOUN_FIREBALL auf KASUS_DATIV PRONOMEN_PERSONAL selbst!",
+		 "Du platzierst einen Feuerball auf dir selbst!"},
 	};
 
 	check_strings(text, sizeof(text)/8);
