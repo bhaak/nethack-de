@@ -45,30 +45,35 @@ int x, y;
 STATIC_OVL const char *
 lock_action()
 {
-	/* "unlocking"+2 == "locking" */
-	static const char *actions[] = {
-		/* [0] */	"unlocking the door",
-		/* [1] */	"unlocking the chest",
-		/* [2] */	"unlocking the box",
-		/* [3] */	"picking the lock"
+	static const char *unlock_actions[] = {
+		/* [0] */	"unlocking the door", /* EN "unlocking the door" */ // TODO DE
+		/* [1] */	"unlocking the chest",/* EN "unlocking the chest" */ // TODO DE
+		/* [2] */	"unlocking the box", /* EN "unlocking the box" */ // TODO DE
+		/* [3] */	"picking the lock" /* "picking the lock" */ // TODO DE
+	};
+	static const char *lock_actions[] = {
+		/* [0] */	"locking the door", /* EN "locking the door" */ // TODO DE
+		/* [1] */	"locking the chest",/* EN "locking the chest" */ // TODO DE
+		/* [2] */	"locking the box", /* EN "locking the box" */ // TODO DE
+		/* [3] */	"unmoegliche Aktion"
 	};
 
 	/* if the target is currently unlocked, we're trying to lock it now */
 	if (xlock.door && !(xlock.door->doormask & D_LOCKED))
-		return actions[0]+2;	/* "locking the door" */
+		return lock_actions[0];	/* "locking the door" */
 	else if (xlock.box && !xlock.box->olocked)
-		return xlock.box->otyp == CHEST ? actions[1]+2 : actions[2]+2;
+		return xlock.box->otyp == CHEST ? lock_actions[1] : lock_actions[2];
 	/* otherwise we're trying to unlock it */
 	else if (xlock.picktyp == LOCK_PICK)
-		return actions[3];	/* "picking the lock" */
+		return unlock_actions[3];	/* "picking the lock" */
 #ifdef TOURIST
 	else if (xlock.picktyp == CREDIT_CARD)
-		return actions[3];	/* same as lock_pick */
+		return unlock_actions[3];	/* same as lock_pick */
 #endif
 	else if (xlock.door)
-		return actions[0];	/* "unlocking the door" */
+		return unlock_actions[0];	/* "unlocking the door" */
 	else
-		return xlock.box->otyp == CHEST ? actions[1] : actions[2];
+		return xlock.box->otyp == CHEST ? unlock_actions[1] : unlock_actions[2];
 }
 
 STATIC_PTR
@@ -86,32 +91,29 @@ picklock()	/* try to open/close a lock */
 	    }
 	    switch (xlock.door->doormask) {
 		case D_NODOOR:
-		    pline("Dieser Eingang hat keine Türe.");
-		    /* pline("This doorway has no door."); */
+		    pline("Dieser Eingang hat keine Türe."); /* EN pline("This doorway has no door."); */
 		    return((xlock.usedtime = 0));
 		case D_ISOPEN:
-		    You("kannst keine offenen Türen verschliessen.");
-		    /* You("cannot lock an open door."); */
+		    You("kannst keine offenen Türen verschliessen."); /* EN You("cannot lock an open door."); */
 		    return((xlock.usedtime = 0));
 		case D_BROKEN:
-		    pline("Diese Türe ist kaputt.");
-		    /* pline("This door is broken."); */
+		    pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */
 		    return((xlock.usedtime = 0));
 	    }
 	}
 
 	if (xlock.usedtime++ >= 50 || nohands(youmonst.data)) {
-	    You("give up your attempt at %s.", lock_action());
+	    You("give up your attempt at %s.", lock_action()); /* EN You("give up your attempt at %s.", lock_action()); */ // TODO DE
 	    exercise(A_DEX, TRUE);	/* even if you don't succeed */
 	    return((xlock.usedtime = 0));
 	}
 
 	if(rn2(100) >= xlock.chance) return(1);		/* still busy */
 
-	You("succeed in %s.", lock_action());
+	You("succeed in %s.", lock_action()); /* EN You("succeed in %s.", lock_action()); */ // TODO DE
 	if (xlock.door) {
 	    if(xlock.door->doormask & D_TRAPPED) {
-		    b_trapped("door", FINGER);
+		    b_trapped("door", FINGER); /* EN b_trapped("door", FINGER); */ // TODO DE
 		    xlock.door->doormask = D_NODOOR;
 		    unblock_point(u.ux+u.dx, u.uy+u.dy);
 		    if (*in_rooms(u.ux+u.dx, u.uy+u.dy, SHOPBASE))
@@ -140,7 +142,7 @@ forcelock()	/* try to force a locked chest */
 		return((xlock.usedtime = 0));		/* you or it moved */
 
 	if (xlock.usedtime++ >= 50 || !uwep || nohands(youmonst.data)) {
-	    You("give up your attempt to force the lock.");
+	    You("give up your attempt to force the lock."); /* EN You("give up your attempt to force the lock."); */ // TODO DE
 	    if(xlock.usedtime >= 50)		/* you made the effort */
 	      exercise((xlock.picktyp) ? A_DEX : A_STR, TRUE);
 	    return((xlock.usedtime = 0));
@@ -153,12 +155,12 @@ forcelock()	/* try to force a locked chest */
 		/* for a +0 weapon, probability that it survives an unsuccessful
 		 * attempt to force the lock is (.992)^50 = .67
 		 */
-		pline("%s %s broke!",
-		      (uwep->quan > 1L) ? "One of your" : "Your", xname(uwep));
+		pline("%s %s broke!", /* EN pline("%s %s broke!", */ // TODO DE
+		      (uwep->quan > 1L) ? "One of your" : "Your", xname(uwep)); /* EN (uwep->quan > 1L) ? "One of your" : "Your", xname(uwep)); */ // TODO DE
 		/*pline("%sour %s broke!",
 			(uwep->quan > 1L) ? "One of y" : "Y", xname(uwep));*/
 		useup(uwep);
-		You("give up your attempt to force the lock.");
+		You("give up your attempt to force the lock."); /* EN You("give up your attempt to force the lock."); */ // TODO DE
 		exercise(A_DEX, TRUE);
 		return((xlock.usedtime = 0));
 	    }
@@ -167,7 +169,7 @@ forcelock()	/* try to force a locked chest */
 
 	if(rn2(100) >= xlock.chance) return(1);		/* still busy */
 
-	You("succeed in forcing the lock.");
+	You("succeed in forcing the lock."); /* EN You("succeed in forcing the lock."); */ // TODO DE
 	xlock.box->olocked = 0;
 	xlock.box->obroken = 1;
 	if(!xlock.picktyp && !rn2(3)) {
@@ -178,7 +180,7 @@ forcelock()	/* try to force a locked chest */
 	    costly = (*u.ushops && costly_spot(u.ux, u.uy));
 	    shkp = costly ? shop_keeper(*u.ushops) : 0;
 
-	    pline("In fact, you've totally destroyed %s.",
+	    pline("In fact, you've totally destroyed %s.", /* EN pline("In fact, you've totally destroyed %s.", */ // TODO DE
 		  the(xname(xlock.box)));
 
 	    /* Put the contents on ground at the hero's feet. */
@@ -206,7 +208,7 @@ forcelock()	/* try to force a locked chest */
 	    if (costly)
 		loss += stolen_value(xlock.box, u.ux, u.uy,
 					     (boolean)shkp->mpeaceful, TRUE);
-	    if(loss) You("owe %ld %s for objects destroyed.", loss, currency(loss));
+	    if(loss) You("owe %ld %s for objects destroyed.", loss, currency(loss)); /* EN if(loss) You("owe %ld %s for objects destroyed.", loss, currency(loss)); */ // TODO DE
 	    delobj(xlock.box);
 	}
 	exercise((xlock.picktyp) ? A_DEX : A_STR, TRUE);
@@ -241,30 +243,30 @@ pick_lock(pick) /* pick a lock with a given object */
 
 	/* check whether we're resuming an interrupted previous attempt */
 	if (xlock.usedtime && picktyp == xlock.picktyp) {
-	    static char no_longer[] = "Unfortunately, you can no longer %s %s.";
+	    static char no_longer[] = "Unfortunately, you can no longer %s %s."; /* EN static char no_longer[] = "Unfortunately, you can no longer %s %s."; */ // TODO DE
 
 	    if (nohands(youmonst.data)) {
-		const char *what = (picktyp == LOCK_PICK) ? "pick" : "key";
+		const char *what = (picktyp == LOCK_PICK) ? "pick" : "key"; /* EN const char *what = (picktyp == LOCK_PICK) ? "pick" : "key"; */ // TODO DE
 #ifdef TOURIST
-		if (picktyp == CREDIT_CARD) what = "card";
+		if (picktyp == CREDIT_CARD) what = "card"; /* EN if (picktyp == CREDIT_CARD) what = "card"; */ // TODO DE
 #endif
-		pline(no_longer, "hold the", what);
+		pline(no_longer, "hold the", what); /* EN pline(no_longer, "hold the", what); */ // TODO DE
 		reset_pick();
 		return 0;
 	    } else if (xlock.box && !can_reach_floor()) {
-		pline(no_longer, "reach the", "lock");
+		pline(no_longer, "reach the", "lock"); /* EN pline(no_longer, "reach the", "lock"); */ // TODO DE
 		reset_pick();
 		return 0;
 	    } else {
 		const char *action = lock_action();
-		You("resume your attempt at %s.", action);
+		You("resume your attempt at %s.", action); /* EN You("resume your attempt at %s.", action); */ // TODO DE
 		set_occupation(picklock, action, 0);
 		return(1);
 	    }
 	}
 
 	if(nohands(youmonst.data)) {
-		You_cant("hold %s -- you have no hands!", doname(pick));
+		You_cant("hold %s -- you have no hands!", doname(pick)); /* EN You_cant("hold %s -- you have no hands!", doname(pick)); */ // TODO DE
 		return(0);
 	}
 
@@ -285,15 +287,15 @@ pick_lock(pick) /* pick a lock with a given object */
 	    int count;
 
 	    if (u.dz < 0) {
-		There("isn't any sort of lock up %s.",
-		      Levitation ? "here" : "there");
+		There("isn't any sort of lock up %s.", /* EN There("isn't any sort of lock up %s.", */ // TODO DE
+		      Levitation ? "here" : "there"); /* EN Levitation ? "here" : "there"); */ // TODO DE
 		return 0;
 	    } else if (is_lava(u.ux, u.uy)) {
-		pline("Doing that would probably melt your %s.",
+		pline("Doing that would probably melt your %s.", /* EN pline("Doing that would probably melt your %s.", */ // TODO DE
 		      xname(pick));
 		return 0;
 	    } else if (is_pool(u.ux, u.uy) && !Underwater) {
-		pline_The("water has no lock.");
+		pline_The("water has no lock."); /* EN pline_The("water has no lock."); */ // TODO DE
 		return 0;
 	    }
 
@@ -303,31 +305,31 @@ pick_lock(pick) /* pick a lock with a given object */
 		if (Is_box(otmp)) {
 		    ++count;
 		    if (!can_reach_floor()) {
-			You_cant("reach %s from up here.", the(xname(otmp)));
+			You_cant("reach %s from up here.", the(xname(otmp))); /* EN You_cant("reach %s from up here.", the(xname(otmp))); */ // TODO DE
 			return 0;
 		    }
 		    it = 0;
-		    if (otmp->obroken) verb = "fix";
-		    else if (!otmp->olocked) verb = "lock", it = 1;
-		    else if (picktyp != LOCK_PICK) verb = "unlock", it = 1;
-		    else verb = "pick";
-		    Sprintf(qbuf, "There is %s here, %s %s?",
-		    	    safe_qbuf("", sizeof("There is  here, unlock its lock?"),
-			    	doname(otmp), an(simple_typename(otmp->otyp)), "a box"),
-			    verb, it ? "it" : "its lock");
+		    if (otmp->obroken) verb = "fix"; /* EN if (otmp->obroken) verb = "fix"; */ // TODO DE
+		    else if (!otmp->olocked) verb = "lock", it = 1; /* EN else if (!otmp->olocked) verb = "lock", it = 1; */ // TODO DE
+		    else if (picktyp != LOCK_PICK) verb = "unlock", it = 1; /* EN else if (picktyp != LOCK_PICK) verb = "unlock", it = 1; */ // TODO DE
+		    else verb = "pick"; /* EN else verb = "pick"; */ // TODO DE
+		    Sprintf(qbuf, "There is %s here, %s %s?", /* EN Sprintf(qbuf, "There is %s here, %s %s?", */ // TODO DE
+		    	    safe_qbuf("", sizeof("There is  here, unlock its lock?"), /* EN safe_qbuf("", sizeof("There is  here, unlock its lock?"), */ // TODO DE
+			    	doname(otmp), an(simple_typename(otmp->otyp)), "a box"), /* EN doname(otmp), an(simple_typename(otmp->otyp)), "a box"), */ // TODO DE
+			    verb, it ? "it" : "its lock"); /* EN verb, it ? "it" : "its lock"); */ // TODO DE
 
 		    c = ynq(qbuf);
 		    if(c == 'q') return(0);
 		    if(c == 'n') continue;
 
 		    if (otmp->obroken) {
-			You_cant("fix its broken lock with %s.", doname(pick));
+			You_cant("fix its broken lock with %s.", doname(pick)); /* EN You_cant("fix its broken lock with %s.", doname(pick)); */ // TODO DE
 			return 0;
 		    }
 #ifdef TOURIST
 		    else if (picktyp == CREDIT_CARD && !otmp->olocked) {
 			/* credit cards are only good for unlocking */
-			You_cant("do that with %s.", doname(pick));
+			You_cant("do that with %s.", doname(pick)); /* EN You_cant("do that with %s.", doname(pick)); */ // TODO DE
 			return 0;
 		    }
 #endif
@@ -354,14 +356,14 @@ pick_lock(pick) /* pick a lock with a given object */
 		}
 	    if (c != 'y') {
 		if (!count)
-		    There("doesn't seem to be any sort of lock here.");
+		    There("doesn't seem to be any sort of lock here."); /* EN There("doesn't seem to be any sort of lock here."); */ // TODO DE
 		return(0);		/* decided against all boxes */
 	    }
 	} else {			/* pick the lock in a door */
 	    struct monst *mtmp;
 
 	    if (u.utrap && u.utraptype == TT_PIT) {
-		You_cant("reach over the edge of the pit.");
+		You_cant("reach over the edge of the pit."); /* EN You_cant("reach over the edge of the pit."); */ // TODO DE
 		return(0);
 	    }
 
@@ -372,46 +374,43 @@ pick_lock(pick) /* pick a lock with a given object */
 #ifdef TOURIST
 		if (picktyp == CREDIT_CARD &&
 		    (mtmp->isshk || mtmp->data == &mons[PM_ORACLE]))
-		    verbalize("No checks, no credit, no problem.");
+		    verbalize("No checks, no credit, no problem."); /* EN verbalize("No checks, no credit, no problem."); */ // TODO DE
 		else
 #endif
-		    pline("I don't think %s would appreciate that.", mon_nam(mtmp));
+		    pline("I don't think %s would appreciate that.", mon_nam(mtmp)); /* EN pline("I don't think %s would appreciate that.", mon_nam(mtmp)); */ // TODO DE
 		return(0);
 	    }
 	    if(!IS_DOOR(door->typ)) {
 		if (is_drawbridge_wall(cc.x,cc.y) >= 0)
-		    You("%s no lock on the drawbridge.",
-				Blind ? "feel" : "see");
+		    You("%s no lock on the drawbridge.", /* EN You("%s no lock on the drawbridge.", */ // TODO DE
+				Blind ? "feel" : "see"); /* EN Blind ? "feel" : "see"); */ // TODO DE
 		else
-		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.",
-				Blind ? "VERB_FEEL" : "VERB_SEE");
+		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.", /* EN You("%s no door there.", */
+				Blind ? "VERB_FEEL" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
 		return(0);
 	    }
 	    switch (door->doormask) {
 		case D_NODOOR:
-		    pline("Dieser Eingang hat keine Türe.");
-		    /* pline("This doorway has no door."); */
+		    pline("Dieser Eingang hat keine Türe."); /* EN pline("This doorway has no door."); */
 		    return(0);
 		case D_ISOPEN:
-		    You("kannst keine offenen Türen verschliessen.");
-		    /*You("cannot lock an open door.");*/
+		    You("kannst keine offenen Türen verschliessen."); /* EN You("cannot lock an open door."); */
 		    return(0);
 		case D_BROKEN:
-		    pline("Diese Türe ist kaputt.");
-		    /* pline("This door is broken.");*/
+		    pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */
 		    return(0);
 		default:
 #ifdef TOURIST
 		    /* credit cards are only good for unlocking */
 		    if(picktyp == CREDIT_CARD && !(door->doormask & D_LOCKED)) {
-			You_cant("lock a door with a credit card.");
+			You_cant("lock a door with a credit card."); /* EN You_cant("lock a door with a credit card."); */ // TODO DE
 			return(0);
 		    }
 #endif
 
-		    Sprintf(qbuf,"%sock it?",
+		    Sprintf(qbuf,"%sock it?", /* EN Sprintf(qbuf,"%sock it?", */ // TODO DE
 			(door->doormask & D_LOCKED) ? "Unl" : "L" );
-
+/* EN  */ // TODO DE
 		    c = yn(qbuf);
 		    if(c == 'n') return(0);
 
@@ -458,15 +457,15 @@ doforce()		/* try to force a chest with your weapon */
 	   || uwep->otyp == RUBBER_HOSE
 #endif
 	  ) {
-	    You_cant("force anything without a %sweapon.",
-		  (uwep) ? "proper " : "");
+	    You_cant("force anything without a %sweapon.", /* EN You_cant("force anything without a %sweapon.", */ // TODO DE
+		  (uwep) ? "proper " : ""); /* EN (uwep) ? "proper " : ""); */ // TODO DE
 	    return(0);
 	}
 
 	picktyp = is_blade(uwep);
 	if(xlock.usedtime && xlock.box && picktyp == xlock.picktyp) {
-	    You("resume your attempt to force the lock.");
-	    set_occupation(forcelock, "forcing the lock", 0);
+	    You("resume your attempt to force the lock."); /* EN You("resume your attempt to force the lock."); */ // TODO DE
+	    set_occupation(forcelock, "forcing the lock", 0); /* EN set_occupation(forcelock, "forcing the lock", 0); */ // TODO DE
 	    return(1);
 	}
 
@@ -475,23 +474,23 @@ doforce()		/* try to force a chest with your weapon */
 	for(otmp = level.objects[u.ux][u.uy]; otmp; otmp = otmp->nexthere)
 	    if(Is_box(otmp)) {
 		if (otmp->obroken || !otmp->olocked) {
-		    There("is %s here, but its lock is already %s.",
-			  doname(otmp), otmp->obroken ? "broken" : "unlocked");
+		    There("is %s here, but its lock is already %s.", /* EN There("is %s here, but its lock is already %s.", */ // TODO DE
+			  doname(otmp), otmp->obroken ? "broken" : "unlocked"); /* EN doname(otmp), otmp->obroken ? "broken" : "unlocked"); */ // TODO DE
 		    continue;
 		}
-		Sprintf(qbuf,"There is %s here, force its lock?",
-			safe_qbuf("", sizeof("There is  here, force its lock?"),
+		Sprintf(qbuf,"There is %s here, force its lock?", /* EN Sprintf(qbuf,"There is %s here, force its lock?", */ // TODO DE
+			safe_qbuf("", sizeof("There is  here, force its lock?"), /* EN safe_qbuf("", sizeof("There is  here, force its lock?"), */ // TODO DE
 				doname(otmp), an(simple_typename(otmp->otyp)),
-				"a box"));
+				"a box")); /* EN "a box")); */ // TODO DE
 
 		c = ynq(qbuf);
 		if(c == 'q') return(0);
 		if(c == 'n') continue;
 
 		if(picktyp)
-		    You("force your %s into a crack and pry.", xname(uwep));
+		    You("force your %s into a crack and pry.", xname(uwep)); /* EN You("force your %s into a crack and pry.", xname(uwep)); */ // TODO DE
 		else
-		    You("start bashing it with your %s.", xname(uwep));
+		    You("start bashing it with your %s.", xname(uwep)); /* EN You("start bashing it with your %s.", xname(uwep)); */ // TODO DE
 		xlock.box = otmp;
 		xlock.chance = objects[uwep->otyp].oc_wldam * 2;
 		xlock.picktyp = picktyp;
@@ -499,8 +498,8 @@ doforce()		/* try to force a chest with your weapon */
 		break;
 	    }
 
-	if(xlock.box)	set_occupation(forcelock, "forcing the lock", 0);
-	else		You("decide not to force the issue.");
+	if(xlock.box)	set_occupation(forcelock, "forcing the lock", 0); /* EN if(xlock.box)	set_occupation(forcelock, "forcing the lock", 0); */
+	else		You("decide not to force the issue."); /* EN else		You("decide not to force the issue."); */
 	return(1);
 }
 
@@ -512,12 +511,12 @@ doopen()		/* try to open a door */
 	struct monst *mtmp;
 
 	if (nohands(youmonst.data)) {
-	    You_cant("open anything -- you have no hands!");
+	    You_cant("open anything -- you have no hands!"); /* EN You_cant("open anything -- you have no hands!"); */
 	    return 0;
 	}
 
 	if (u.utrap && u.utraptype == TT_PIT) {
-	    You_cant("reach over the edge of the pit.");
+	    You_cant("reach over the edge of the pit."); /* EN You_cant("reach over the edge of the pit."); */
 	    return 0;
 	}
 
@@ -539,11 +538,11 @@ doopen()		/* try to open a door */
 
 	if(!IS_DOOR(door->typ)) {
 		if (is_db_wall(cc.x,cc.y)) {
-		    There("is no obvious way to open the drawbridge.");
+		    There("is no obvious way to open the drawbridge."); /* EN There("is no obvious way to open the drawbridge."); */ // TODO DE
 		    return(0);
 		}
-		You("%s no door there.",
-				Blind ? "feel" : "see");
+		You("%s no door there.", /* EN You("%s no door there.", */ // TODO DE
+				Blind ? "feel" : "see"); /* EN Blind ? "feel" : "see"); */ // TODO DE
 		return(0);
 	}
 
@@ -551,26 +550,26 @@ doopen()		/* try to open a door */
 	    const char *mesg;
 
 	    switch (door->doormask) {
-	    case D_BROKEN: mesg = " Türe ist kaputt"; break;
-	    case D_NODOOR: mesg = "r Eingang hat keine Türe"; break;
-	    case D_ISOPEN: mesg = " Türe ist bereits offen"; break;
-	    default:	     mesg = " Türe ist verschlossen"; break;
+	    case D_BROKEN: mesg = " Türe ist kaputt"; break; /* EN case D_BROKEN: mesg = " is broken"; break; */
+	    case D_NODOOR: mesg = "r Eingang hat keine Türe"; break; /* EN case D_NODOOR: mesg = "way has no door"; break; */
+	    case D_ISOPEN: mesg = " Türe ist bereits offen"; break; /* EN case D_ISOPEN: mesg = " is already open"; break; */
+	    default:	     mesg = " Türe ist verschlossen"; break; /* EN default:       mesg = " is locked"; break; */
 	    }
-	    pline("Diese%s.", mesg);
+	    pline("Diese%s.", mesg); /* EN pline("This door%s.", mesg); */
 	    if (Blind) feel_location(cc.x,cc.y);
 	    return(0);
 	}
 
 	if(verysmall(youmonst.data)) {
-	    pline("You're too small to pull the door open.");
+	    pline("You're too small to pull the door open."); /* EN pline("You're too small to pull the door open."); */ // TODO DE
 	    return(0);
 	}
 
 	/* door is known to be CLOSED */
 	if (rnl(20) < (ACURRSTR+ACURR(A_DEX)+ACURR(A_CON))/3) {
-	    pline_The("NOUN_OBJ_DOOR VERB_OPEN SATZKLAMMER.");
+	    pline_The("NOUN_OBJ_DOOR VERB_OPEN SATZKLAMMER."); /* EN pline_The("door opens."); */
 	    if(door->doormask & D_TRAPPED) {
-		b_trapped("door", FINGER);
+		b_trapped("door", FINGER); /* EN b_trapped("door", FINGER); */ // TODO DE
 		door->doormask = D_NODOOR;
 		if (*in_rooms(cc.x, cc.y, SHOPBASE)) add_damage(cc.x, cc.y, 0L);
 	    } else
@@ -582,7 +581,7 @@ doopen()		/* try to open a door */
 	    unblock_point(cc.x,cc.y);		/* vision: new see through there */
 	} else {
 	    exercise(A_STR, TRUE);
-	    pline_The("door resists!");
+	    pline_The("door resists!"); /* EN pline_The("door resists!"); */ // TODO DE
 	}
 
 	return(1);
@@ -597,14 +596,14 @@ register int x, y;
 
 	if(mtmp && mtmp->m_ap_type != M_AP_FURNITURE) {
 		if (mtmp->m_ap_type == M_AP_OBJECT) goto objhere;
-		pline("%s stands in the way!", !canspotmon(mtmp) ?
-			"Some creature" : Monnam(mtmp));
+		pline("%s stands in the way!", !canspotmon(mtmp) ?  /* EN pline("%s stands in the way!", !canspotmon(mtmp) ? */ // TODO DE
+			"Some creature" : Monnam(mtmp)); /* EN "Some creature" : Monnam(mtmp)); */ // TODO DE
 		if (!canspotmon(mtmp))
 		    map_invisible(mtmp->mx, mtmp->my);
 		return(TRUE);
 	}
 	if (OBJ_AT(x, y)) {
-objhere:	pline("%s's in the way.", Something);
+objhere:	pline("%s's in the way.", Something); /* EN objhere:	pline("%s's in the way.", Something); */ // TODO DE
 		return(TRUE);
 	}
 	return(FALSE);
@@ -618,12 +617,12 @@ doclose()		/* try to close a door */
 	struct monst *mtmp;
 
 	if (nohands(youmonst.data)) {
-	    You_cant("close anything -- you have no hands!");
+	    You_cant("close anything -- you have no hands!"); /* EN You_cant("close anything -- you have no hands!"); */ // TODO DE
 	    return 0;
 	}
 
 	if (u.utrap && u.utraptype == TT_PIT) {
-	    You_cant("reach over the edge of the pit.");
+	    You_cant("reach over the edge of the pit."); /* EN You_cant("reach over the edge of the pit."); */ // TODO DE
 	    return 0;
 	}
 
@@ -632,7 +631,7 @@ doclose()		/* try to close a door */
 	x = u.ux + u.dx;
 	y = u.uy + u.dy;
 	if((x == u.ux) && (y == u.uy)) {
-		You("are in the way!");
+		You("are in the way!"); /* EN You("are in the way!"); */ // TODO DE
 		return(1);
 	}
 
@@ -650,29 +649,27 @@ doclose()		/* try to close a door */
 
 	if(!IS_DOOR(door->typ)) {
 		if (door->typ == DRAWBRIDGE_DOWN)
-		    There("is no obvious way to close the drawbridge.");
+		    There("is no obvious way to close the drawbridge."); /* EN There("is no obvious way to close the drawbridge."); */ // TODO DE
 		else
-		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.",
-				Blind ? "VERB_FEEL" : "VERB_SEE");
+		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.", /* EN You("%s no door there.", */
+				Blind ? "VERB_FEEL" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
 		return(0);
 	}
 
 	if(door->doormask == D_NODOOR) {
-	    pline("Dieser Eingang hat keine Türe.");
+	    pline("Dieser Eingang hat keine Türe."); /* EN pline("This doorway has no door."); */
 	    return(0);
 	}
 
 	if(obstructed(x, y)) return(0);
 
 	if(door->doormask == D_BROKEN) {
-	    pline("Diese Türe ist kaputt.");
-	    /*pline("This door is broken.");*/
+	    pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */
 	    return(0);
 	}
 
 	if(door->doormask & (D_CLOSED | D_LOCKED)) {
-	    pline("Diese Türe ist schon verschlossen.");
-	    /*pline("This door is already closed.");*/
+	    pline("Diese Türe ist schon verschlossen."); /* EN pline("This door is already closed."); */
 	    return(0);
 	}
 
@@ -682,8 +679,7 @@ doclose()		/* try to close a door */
 		&& !u.usteed
 #endif
 		) {
-		 pline("SUBJECT PRONOMEN_PERSONAL VERB_SEIN zu klein um die Türe zuzuziehen.");
-		 /*pline("You're too small to push the door closed.");*/
+		 pline("SUBJECT PRONOMEN_PERSONAL VERB_SEIN zu klein um die Türe zuzuziehen."); /* EN pline("You're too small to push the door closed."); */
 		 return(0);
 	    }
 	    if (
@@ -691,7 +687,7 @@ doclose()		/* try to close a door */
 		 u.usteed ||
 #endif
 		rn2(25) < (ACURRSTR+ACURR(A_DEX)+ACURR(A_CON))/3) {
-		pline_The("door closes.");
+		pline_The("door closes."); /* EN pline_The("door closes."); */ // TODO DE
 		door->doormask = D_CLOSED;
 		if (Blind)
 		    feel_location(x,y);	/* the hero knows she closed it */
@@ -701,7 +697,7 @@ doclose()		/* try to close a door */
 	    }
 	    else {
 	        exercise(A_STR, TRUE);
-	        pline_The("door resists!");
+	        pline_The("door resists!"); /* EN pline_The("door resists!"); */ // TODO DE
 	    }
 	}
 
@@ -718,7 +714,7 @@ register struct obj *obj, *otmp;	/* obj *is* a box */
 	case WAN_LOCKING:
 	case SPE_WIZARD_LOCK:
 	    if (!obj->olocked) {	/* lock it; fix if broken */
-		pline("Klunk!");
+		pline("Klunk!"); /* EN pline("Klunk!"); */ // TODO DE
 		obj->olocked = 1;
 		obj->obroken = 0;
 		res = 1;
@@ -727,7 +723,7 @@ register struct obj *obj, *otmp;	/* obj *is* a box */
 	case WAN_OPENING:
 	case SPE_KNOCK:
 	    if (obj->olocked) {		/* unlock; couldn't be broken */
-		pline("Klick!");
+		pline("Klick!"); /* EN pline("Klick!"); */ // TODO DE
 		obj->olocked = 0;
 		res = 1;
 	    } else			/* silently fix if broken */
@@ -753,8 +749,8 @@ int x, y;
 	boolean res = TRUE;
 	int loudness = 0;
 	const char *msg = (const char *)0;
-	const char *dustcloud = "A cloud of dust";
-	const char *quickly_dissipates = "quickly dissipates";
+	const char *dustcloud = "A cloud of dust"; /* EN const char *dustcloud = "A cloud of dust"; */ // TODO DE
+	const char *quickly_dissipates = "quickly dissipates"; /* EN const char *quickly_dissipates = "quickly dissipates"; */ // TODO DE
 	
 	if (door->typ == SDOOR) {
 	    switch (otmp->otyp) {
@@ -765,8 +761,7 @@ int x, y;
 		door->typ = DOOR;
 		door->doormask = D_CLOSED | (door->doormask & D_TRAPPED);
 		newsym(x,y);
-		if (cansee(x,y)) pline("Eine Türe erscheint in der Wand!");
-		/* if (cansee(x,y)) pline("A door appears in the wall!"); */
+		if (cansee(x,y)) pline("Eine Türe erscheint in der Wand!"); /* EN if (cansee(x,y)) pline("A door appears in the wall!"); */
 		if (otmp->otyp == WAN_OPENING || otmp->otyp == SPE_KNOCK)
 		    return TRUE;
 		break;		/* striking: continue door handling below */
@@ -784,17 +779,17 @@ int x, y;
 	    if (Is_rogue_level(&u.uz)) {
 	    	boolean vis = cansee(x,y);
 		/* Can't have real locking in Rogue, so just hide doorway */
-		if (vis) pline("%s springs up in the older, more primitive doorway.",
+		if (vis) pline("%s springs up in the older, more primitive doorway.", /* EN if (vis) pline("%s springs up in the older, more primitive doorway.", */ // TODO DE
 			dustcloud);
 		else
-			You_hear("a swoosh.");
+			You_hear("a swoosh."); /* EN You_hear("a swoosh."); */ // TODO DE
 		if (obstructed(x,y)) {
-			if (vis) pline_The("cloud %s.",quickly_dissipates);
+			if (vis) pline_The("cloud %s.",quickly_dissipates); /* EN if (vis) pline_The("cloud %s.",quickly_dissipates); */ // TODO DE
 			return FALSE;
 		}
 		block_point(x, y);
 		door->typ = SDOOR;
-		if (vis) pline_The("doorway vanishes!");
+		if (vis) pline_The("doorway vanishes!"); /* EN if (vis) pline_The("doorway vanishes!"); */ // TODO DE
 		newsym(x,y);
 		return TRUE;
 	    }
@@ -805,24 +800,24 @@ int x, y;
 	    if (t_at(x,y)) {
 		/* maketrap() clears doormask, so it should be NODOOR */
 		pline(
-		"%s springs up in the doorway, but %s.",
+		"%s springs up in the doorway, but %s.", /* EN "%s springs up in the doorway, but %s.", */ // TODO DE
 		dustcloud, quickly_dissipates);
 		return FALSE;
 	    }
 
 	    switch (door->doormask & ~D_TRAPPED) {
 	    case D_CLOSED:
-		msg = "The door locks!";
+		msg = "The door locks!"; /* EN msg = "The door locks!"; */ // TODO DE
 		break;
 	    case D_ISOPEN:
-		msg = "The door swings shut, and locks!";
+		msg = "The door swings shut, and locks!"; /* EN msg = "The door swings shut, and locks!"; */ // TODO DE
 		break;
 	    case D_BROKEN:
-		msg = "The broken door reassembles and locks!";
+		msg = "The broken door reassembles and locks!"; /* EN msg = "The broken door reassembles and locks!"; */ // TODO DE
 		break;
 	    case D_NODOOR:
 		msg =
-		"A cloud of dust springs up and assembles itself into a door!";
+		"A cloud of dust springs up and assembles itself into a door!"; /* EN "A cloud of dust springs up and assembles itself into a door!"; */ // TODO DE
 		break;
 	    default:
 		res = FALSE;
@@ -835,7 +830,7 @@ int x, y;
 	case WAN_OPENING:
 	case SPE_KNOCK:
 	    if (door->doormask & D_LOCKED) {
-		msg = "The door unlocks!";
+		msg = "The door unlocks!"; /* EN msg = "The door unlocks!"; */ // TODO DE
 		door->doormask = D_CLOSED | (door->doormask & D_TRAPPED);
 	    } else res = FALSE;
 	    break;
@@ -847,9 +842,9 @@ int x, y;
 			(void) mb_trapped(m_at(x,y));
 		    else if (flags.verbose) {
 			if (cansee(x,y))
-			    pline("KABOOM!!  You see a door explode.");
+			    pline("KABOOM!!  You see a door explode."); /* EN pline("KABOOM!!  You see a door explode."); */ // TODO DE
 			else if (flags.soundok)
-			    You_hear("a distant explosion.");
+			    You_hear("a distant explosion."); /* EN You_hear("a distant explosion."); */ // TODO DE
 		    }
 		    door->doormask = D_NODOOR;
 		    unblock_point(x,y);
@@ -860,9 +855,9 @@ int x, y;
 		door->doormask = D_BROKEN;
 		if (flags.verbose) {
 		    if (cansee(x,y))
-			pline_The("door crashes open!");
+			pline_The("door crashes open!"); /* EN pline_The("door crashes open!"); */ // TODO DE
 		    else if (flags.soundok)
-			You_hear("a crashing sound.");
+			You_hear("a crashing sound."); /* EN You_hear("a crashing sound."); */ // TODO DE
 		}
 		unblock_point(x,y);
 		newsym(x,y);
@@ -898,7 +893,7 @@ struct obj *otmp;
 	long save_Blinded;
 
 	if (otmp->oclass == POTION_CLASS) {
-		You("%s %s shatter!", Blind ? "hear" : "see", an(bottlename()));
+		You("%s %s shatter!", Blind ? "hear" : "see", an(bottlename())); /* EN You("%s %s shatter!", Blind ? "hear" : "see", an(bottlename())); */ // TODO DE
 		if (!breathless(youmonst.data) || haseyes(youmonst.data))
 			potionbreathe(otmp);
 		return;
@@ -910,19 +905,19 @@ struct obj *otmp;
 	thing = singular(otmp, xname);
 	Blinded = save_Blinded;
 	switch (objects[otmp->otyp].oc_material) {
-	case PAPER:	disposition = "is torn to shreds";
+	case PAPER:	disposition = "is torn to shreds"; /* EN case PAPER:	disposition = "is torn to shreds"; */ // TODO DE
 		break;
-	case WAX:	disposition = "is crushed";
+	case WAX:	disposition = "is crushed"; /* EN case WAX:	disposition = "is crushed"; */ // TODO DE
 		break;
-	case VEGGY:	disposition = "is pulped";
+	case VEGGY:	disposition = "is pulped"; /* EN case VEGGY:	disposition = "is pulped"; */ // TODO DE
 		break;
-	case FLESH:	disposition = "is mashed";
+	case FLESH:	disposition = "is mashed"; /* EN case FLESH:	disposition = "is mashed"; */ // TODO DE
 		break;
-	case GLASS:	disposition = "shatters";
+	case GLASS:	disposition = "shatters"; /* EN case GLASS:	disposition = "shatters"; */ // TODO DE
 		break;
-	case WOOD:	disposition = "splinters to fragments";
+	case WOOD:	disposition = "splinters to fragments"; /* EN case WOOD:	disposition = "splinters to fragments"; */ // TODO DE
 		break;
-	default:	disposition = "is destroyed";
+	default:	disposition = "is destroyed"; /* EN default:	disposition = "is destroyed"; */ // TODO DE
 		break;
 	}
 	pline("%s %s!", An(thing), disposition);
