@@ -352,6 +352,12 @@ START_TEST (test_complete_sentences3) {
 		 "Das Orakel nimmt verächtlich dein ganzes Geld und sagt:"},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_ORACLE VERB_MEDITIEREN einen Moment und VERB_VERKUENDEN dann:",
 		 "Das Orakel meditiert einen Moment und verkündet dann:"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_BEMERKEN, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL kein Gold mehr VERB_HAVE!",
+		 "Du bemerkst, dass du kein Gold mehr hast!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_CAN OBJECT PRONOMEN_PERSONAL nicht richtig hinsetzen!",
+		 "Du kannst dich nicht richtig hinsetzen!"},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_THRON VERB_AUFLOESEN sich in ein Logikwölkchen SATZKLAMMER.",
+		 "Der Thron löst sich in ein Logikwölkchen auf."},
 	};
 
 	check_strings(text, sizeof(text)/8);
