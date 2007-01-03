@@ -164,7 +164,7 @@ int mechanism;
 	switch (mechanism) {
 	    case BY_ORACLE:
 	 	/* Oracle delivers the rumor */
-		pline("Und dies war die Antwort, die das Orakel %sgab: ", /* EN pline("True to her word, the Oracle %ssays: ", */ // TODO DE
+		pline("Und dies war die Antwort, die das Orakel %sgab: ", /* EN pline("True to her word, the Oracle %ssays: ", */
 		  (!rn2(4) ? "spontan " : (!rn2(3) ? "einfach " : /* EN (!rn2(4) ? "offhandedly " : (!rn2(3) ? "casually " : */
 		  (rn2(2) ? "locker " : "")))); /* EN (rn2(2) ? "nonchalantly " : "")))); */
 		verbalize("%s", line);
