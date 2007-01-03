@@ -1084,7 +1084,7 @@ water_friction()
 		u.dx = dx;
 		eff = TRUE;
 	}
-	if (eff) pline("Water turbulence affects your movements.");
+	if (eff) pline("Wasserturbulenzen beeinträchtigen KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_MOVEMENTs."); /* EN if (eff) pline("Water turbulence affects your movements."); */
 }
 
 void
