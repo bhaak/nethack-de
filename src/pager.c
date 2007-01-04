@@ -45,8 +45,10 @@ append_str(buf, new_str)
     if (strstri(buf, new_str)) return 0;
 
     space_left = BUFSZ - strlen(buf) - 1;
-    (void) strncat(buf, " or ", space_left);
-    (void) strncat(buf, new_str, space_left - 4);
+		//printf("space_left: %d\n", space_left);
+		if (space_left < strlen(new_str) + 22) { return 0; } // TODO DE Beschreibung von # funzt nicht richtig
+    (void) strncat(buf, " oder SUBJECT_IM_SATZ ", space_left); /* EN (void) strncat(buf, " or ", space_left); */
+    (void) strncat(buf, new_str, space_left - 22); /* EN (void) strncat(buf, new_str, space_left - 4); */
     return 1;
 }
 
@@ -633,8 +635,8 @@ do_look(quick)
 	    if (sym == (from_screen ? showsyms[i] : defsyms[i].sym) && *x_str) {
 		/* avoid "an air", "a water", or "a floor of a room" */
 		int article = (i == S_room) ? 2 :		/* 2=>"the" */
-			      !(strcmp(x_str, "air") == 0 ||	/* 1=>"an"  */
-				strcmp(x_str, "water") == 0);	/* 0=>(none)*/
+			      !(strcmp(x_str, "NOUN_AIR") == 0 ||	/* 1=>"an"  */ /* EN !(strcmp(x_str, "air") == 0 || */
+				strcmp(x_str, "NOUN_WATER") == 0);	/* 0=>(none)*/ /* EN strcmp(x_str, "water") == 0);	*/
 
 		if (!found) {
 		    if (is_cmap_trap(i)) {
