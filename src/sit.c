@@ -93,11 +93,11 @@ dosit()
 		    u.utrap += rnd(4);
 		    losehp(d(2,10), "Sitzen in Lava", KILLED_BY); /* EN losehp(d(2,10), "sitting in lava", KILLED_BY); */
 		} else if(u.utraptype == TT_INFLOOR) {
-		    You("VERB_CAN OBJECT PRONOMEN_PERSONAL nicht richtig hinsetzen!"); /* EN You_cant("maneuver to sit!"); */ // TODO DE
+		    You("VERB_CAN OBJECT PRONOMEN_PERSONAL nicht richtig hinsetzen!"); /* EN You_cant("maneuver to sit!"); */
 		    u.utrap++;
 		}
 	    } else {
-	        You("VERB_SETZEN OBJECT PRONOMEN_PERSONAL hin."); /* EN You("sit down."); */ // TODO DE
+	        You("VERB_SETZEN OBJECT PRONOMEN_PERSONAL hin."); /* EN You("sit down."); */
 		dotrap(trap, 0);
 	    }
 	} else if(Underwater || Is_waterlevel(&u.uz)) {
@@ -129,11 +129,11 @@ dosit()
 
 	} else if(typ == STAIRS) {
 
-	    You(sit_message, "NOUN_STUFEN"); /* EN You(sit_message, "stairs"); */
+	    You(sit_message, "NOUN_STUFEs"); /* EN You(sit_message, "stairs"); */
 
 	} else if(typ == LADDER) {
 
-	    You(sit_message, "NOUN_LEITER"); /* EN You(sit_message, "ladder"); */
+	    You(sit_message, "NOUN_LADDER"); /* EN You(sit_message, "ladder"); */
 
 	} else if (is_lava(u.ux, u.uy)) {
 
@@ -151,7 +151,7 @@ dosit()
 	} else if (is_ice(u.ux, u.uy)) {
 
 	    You(sit_message, defsyms[S_ice].explanation);
-	    if (!Cold_resistance) pline_The("NOUN_EIS fühlt sich kalt an."); /* EN if (!Cold_resistance) pline_The("ice feels cold."); */
+	    if (!Cold_resistance) pline_The("NOUN_ICE fühlt sich kalt an."); /* EN if (!Cold_resistance) pline_The("ice feels cold."); */
 
 	} else if (typ == DRAWBRIDGE_DOWN) {
 
@@ -164,16 +164,16 @@ dosit()
 		switch (rnd(13))  {
 		    case 1:
 			(void) adjattrib(rn2(A_MAX), -rn1(4,3), FALSE);
-			losehp(rnd(10), "cursed throne", KILLED_BY_AN); /* EN losehp(rnd(10), "cursed throne", KILLED_BY_AN); */ // TODO DE
+			losehp(rnd(10), "ADJEKTIV_CURSED NOUN_THRON", KILLED_BY_AN); /* EN losehp(rnd(10), "cursed throne", KILLED_BY_AN); */
 			break;
 		    case 2:
 			(void) adjattrib(rn2(A_MAX), 1, FALSE);
 			break;
 		    case 3:
-			pline("A%s electric shock shoots through your body!", /* EN pline("A%s electric shock shoots through your body!", */ // TODO DE
-			      (Shock_resistance) ? "n" : " massive"); /* EN (Shock_resistance) ? "n" : " massive"); */ // TODO DE
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER%s elektrischer NOUN_SCHLAG VERB_SCHIESSEN OBJECT durch PRONOMEN_POSSESSIV NOUN_BODY!", /* EN pline("A%s electric shock shoots through your body!", */
+			      (Shock_resistance) ? "" : " massiver"); /* EN (Shock_resistance) ? "n" : " massive"); */
 			losehp(Shock_resistance ? rnd(6) : rnd(30),
-			       "electric chair", KILLED_BY_AN); /* EN "electric chair", KILLED_BY_AN); */ // TODO DE
+			       "ADJEKTIV_ELEKTRISCH NOUN_STUHL", KILLED_BY_AN); /* EN "electric chair", KILLED_BY_AN); */
 			exercise(A_CON, FALSE);
 			break;
 		    case 4:
@@ -241,7 +241,7 @@ dosit()
 			break;
 		    case 11:
 			if (Luck < 0)  {
-			    Du_fuehlst_dich("bedroht."); /* EN You_feel("threatened."); */ // TODO DE
+			    Du_fuehlst_dich("bedroht."); /* EN You_feel("threatened."); */
 			    aggravate();
 			} else  {
 
@@ -267,7 +267,7 @@ dosit()
 		if (is_prince(youmonst.data))
 		    Du_fuehlst_dich("hier sehr wohl."); /* EN You_feel("very comfortable here."); */
 		else
-		    Du_fuehlst_dich("somehow out of place..."); /* EN You_feel("somehow out of place..."); */ // TODO DE
+		    Du_fuehlst_dich("irgendwie fehl am Platz ..."); /* EN You_feel("somehow out of place..."); */
 	    }
 
 	    if (!rn2(3) && IS_THRONE(levl[u.ux][u.uy].typ)) {
@@ -317,7 +317,7 @@ rndcurse()			/* curse a few inventory items at random! */
 	static const char mal_aura[] = "VERB_SPUEREN eine bösartige Aura um OBJECT %s."; /* EN static const char mal_aura[] = "feel a malignant aura surround %s."; */
 
 	if (uwep && (uwep->oartifact == ART_MAGICBANE) && rn2(20)) {
-	    You(mal_aura, "ARTIKEL_BESTIMMTER ADJEKTIV_MAGIE_ABSORBIEREND NOUN_KLINGE"); /* EN You(mal_aura, "the magic-absorbing blade"); */ // TODO DE
+	    You(mal_aura, "ARTIKEL_BESTIMMTER ADJEKTIV_MAGIE_ABSORBIEREND NOUN_KLINGE"); /* EN You(mal_aura, "the magic-absorbing blade"); */
 	    return;
 	}
 
@@ -388,7 +388,7 @@ attrcurse()			/* remove a random INTRINSIC ability */
 	switch(rnd(11)) {
 	case 1 : if (HFire_resistance & INTRINSIC) {
 			HFire_resistance &= ~INTRINSIC;
-			You_feel("warmer."); /* EN You_feel("warmer."); */ // TODO DE
+			Du_fuehlst_dich("wärmer."); /* EN You_feel("warmer."); */
 			break;
 		}
 	case 2 : if (HTeleportation & INTRINSIC) {
@@ -410,12 +410,12 @@ attrcurse()			/* remove a random INTRINSIC ability */
 		}
 	case 5 : if (HCold_resistance & INTRINSIC) {
 			HCold_resistance &= ~INTRINSIC;
-			You_feel("cooler."); /* EN You_feel("cooler."); */ // TODO DE
+			Du_fuehlst_dich("kühler."); /* EN You_feel("cooler."); */
 			break;
 		}
 	case 6 : if (HInvis & INTRINSIC) {
 			HInvis &= ~INTRINSIC;
-			You_feel("paranoid."); /* EN You_feel("paranoid."); */ // TODO DE
+			Du_fuehlst_dich("paranoid."); /* EN You_feel("paranoid."); */
 			break;
 		}
 	case 7 : if (HSee_invisible & INTRINSIC) {
@@ -431,7 +431,7 @@ attrcurse()			/* remove a random INTRINSIC ability */
 		}
 	case 9 : if (HStealth & INTRINSIC) {
 			HStealth &= ~INTRINSIC;
-			You_feel("clumsy."); /* EN You_feel("clumsy."); */ // TODO DE
+			Du_fuehlst_dich("tollpatschig."); /* EN You_feel("clumsy."); */
 			break;
 		}
 	case 10: if (HProtection & INTRINSIC) {
