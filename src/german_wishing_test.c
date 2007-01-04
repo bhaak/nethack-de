@@ -222,6 +222,12 @@ START_TEST (test_wishing) {
 	fail_unless(obj->quan == 1);
 	fail_unless(strcmp("NOUN_SWORD", dn)==0);
 	printf("113\n");
+
+
+  // Ring der Transformation
+  // Ring der Levitation
+	// Gluecksstein, Pruefstein
+	// alle Edelsteine wie Rubin und so
 } END_TEST
 
 Suite *test_suite(void)
