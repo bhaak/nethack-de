@@ -358,6 +358,12 @@ START_TEST (test_complete_sentences3) {
 		 "Du kannst dich nicht richtig hinsetzen!"},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_THRON VERB_AUFLOESEN sich in ein Logikwölkchen SATZKLAMMER.",
 		 "Der Thron löst sich in ein Logikwölkchen auf."},
+		{"ARTIKEL_UNBESTIMMTER NOUN_IRON_BARs oder SUBJECT_IM_SATZ ARTIKEL_UNBESTIMMTER NOUN_TREE",
+		 "Eisenstangen oder ein Baum"},
+		{"Wasserturbulenzen beeinträchtigen KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_MOVEMENTs.",
+		 "Wasserturbulenzen beeinträchtigen deine Bewegungen."},
+		{"SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ELEKTRISCH NOUN_SCHLAG VERB_SCHIESSEN OBJECT durch PRONOMEN_POSSESSIV NOUN_BODY!",
+		 ""},
 	};
 
 	check_strings(text, sizeof(text)/8);
