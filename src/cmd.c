@@ -402,10 +402,10 @@ extcmd_via_menu()	/* here after # - now show pick-list of possible commands */
 		    Sprintf(prompt, "%s [%s]", choices[i]->ef_txt,
 				choices[i]->ef_desc);
 		} else if (acount == 1) {
-		    Sprintf(prompt, "%s or %s", choices[i-1]->ef_txt,
+		    Sprintf(prompt, "%s oder %s", choices[i-1]->ef_txt, /* EN Sprintf(prompt, "%s or %s", choices[i-1]->ef_txt, */
 				choices[i]->ef_txt);
 		} else {
-		    Strcat(prompt," or ");
+			Strcat(prompt," oder "); /* EN Strcat(prompt," or "); */
 		    Strcat(prompt, choices[i]->ef_txt);
 		}
 		++acount;
@@ -2897,6 +2897,7 @@ const char *query,*resp;
 char def;
 {
 	char qbuf[QBUFSZ];
+	char returned_char;
 	unsigned truncspot, reduction = sizeof(" [N]  ?") + 1;
 
 	if (resp) reduction += strlen(resp) + sizeof(" () ");
@@ -2908,7 +2909,14 @@ char def;
 	(void) strncpy(qbuf, query, (int)truncspot);
 	qbuf[truncspot] = '\0';
 	Strcat(qbuf,"...");
+
 	return (*windowprocs.win_yn_function)(qbuf, resp, def);
+	/* // TODO DE
+	returned_char = (*windowprocs.win_yn_function)(qbuf, resp, def);
+	if (returned_char == 'j') { return 'y'; }
+	else if (returned_char == 'e') { return 'q'; }
+	else { return returned_char; }
+	*/
 }
 #endif
 
