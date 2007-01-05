@@ -3446,8 +3446,8 @@ boolean cant_mollify;
 	register boolean uinshp = (*u.ushops != '\0');
 	char qbuf[80];
 	register xchar x, y;
-	boolean dugwall = !strcmp(dmgstr, "dig into") ||	/* wand */ /* EN boolean dugwall = !strcmp(dmgstr, "dig into") ||	/* wand */ */ // TODO DE
-			  !strcmp(dmgstr, "damage");		/* pick-axe */ /* EN !strcmp(dmgstr, "damage");		/* pick-axe */ */ // TODO DE
+	boolean dugwall = !strcmp(dmgstr, "dig into") ||	/* wand */ /* EN boolean dugwall = !strcmp(dmgstr, "dig into") ||	 */ // TODO DE
+			  !strcmp(dmgstr, "damage");		/* pick-axe */ /* EN !strcmp(dmgstr, "damage");		 */ // TODO DE
 	struct damage *tmp_dam, *appear_here = 0;
 	/* any number >= (80*80)+(24*24) would do, actually */
 	long cost_of_damage = 0L;

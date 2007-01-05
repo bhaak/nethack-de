@@ -252,24 +252,24 @@ static struct Comp_Opt
 						MAXDCHARS+1, SET_IN_FILE },
 	{ "effects",  "the symbols to use in drawing special effects", /* EN { "effects",  "the symbols to use in drawing special effects", */ // TODO DE
 						MAXECHARS+1, SET_IN_FILE },
-	{ "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	/*WC*/ */ // TODO DE
-	{ "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		/*WC*/ /* EN { "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		/*WC*/ */ // TODO DE
+	{ "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	*/ // TODO DE
+	{ "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		/*WC*/ /* EN { "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		*/ // TODO DE
 	{ "font_message", "the font to use in the message window", /* EN { "font_message", "the font to use in the message window", */ // TODO DE
 						40, DISP_IN_GAME },		/*WC*/
-	{ "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
-	{ "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
-	{ "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
-	{ "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
-	{ "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
-	{ "font_status", "the font to use in status window", 40, DISP_IN_GAME }, /*WC*/ /* EN { "font_status", "the font to use in status window", 40, DISP_IN_GAME }, /*WC*/ */ // TODO DE
-	{ "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	 */ // TODO DE
+	{ "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	*/ // TODO DE
+	{ "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	*/ // TODO DE
+	{ "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	*/ // TODO DE
+	{ "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	*/ // TODO DE
+	{ "font_status", "the font to use in status window", 40, DISP_IN_GAME }, /*WC*/ /* EN { "font_status", "the font to use in status window", 40, DISP_IN_GAME }, */ // TODO DE
+	{ "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	*/ // TODO DE
 	{ "fruit",    "the name of a fruit you enjoy eating", /* EN { "fruit",    "the name of a fruit you enjoy eating", */ // TODO DE
 						PL_FSIZ, SET_IN_GAME },
 	{ "gender",   "your starting gender (male or female)", /* EN { "gender",   "your starting gender (male or female)", */ // TODO DE
 						8, DISP_IN_GAME },
 	{ "horsename", "the name of your (first) horse (e.g., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */ // TODO DE
 						PL_PSIZ, DISP_IN_GAME },
-	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/ // TODO DE
 	{ "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE }, /* EN { "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE }, */ // TODO DE
 	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
 						MENUTYPELEN, SET_IN_GAME },

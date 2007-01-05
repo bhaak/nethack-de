@@ -691,7 +691,7 @@ boolean so;
 	if (t1->hp <= 0) hpbuf[0] = '-', hpbuf[1] = '\0';
 	else Sprintf(hpbuf, "%d", t1->hp);
 	/* beginning of hp column after padding (not actually padded yet) */
-	hppos = COLNO - (sizeof("  Hp [max]")-1); /* sizeof(str) includes \0 */ /* EN hppos = COLNO - (sizeof("  Hp [max]")-1); /* sizeof(str) includes \0 */ */ // TODO DE
+	hppos = COLNO - (sizeof("  Hp [max]")-1); /* sizeof(str) includes \0 */ /* EN hppos = COLNO - (sizeof("  Hp [max]")-1);  */ // TODO DE
 	while (lngr >= hppos) {
 	    for(bp = eos(linebuf);
 		    !(*bp == ' ' && (bp-linebuf < hppos));
