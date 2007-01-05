@@ -60,28 +60,28 @@ int expltype;
 	    adtyp = AD_PHYS;
 	} else
 	switch (abs(type) % 10) {
-		case 0: str = "magical blast";
+		case 0: str = "magical blast"; /* EN case 0: str = "magical blast"; */ // TODO DE
 			adtyp = AD_MAGM;
 			break;
-		case 1: str =   olet == BURNING_OIL ?	"burning oil" :
-				olet == SCROLL_CLASS ?	"tower of flame" :
-							"fireball";
+		case 1: str =   olet == BURNING_OIL ?	"burning oil" : /* EN case 1: str =   olet == BURNING_OIL ?	"burning oil" : */ // TODO DE
+				olet == SCROLL_CLASS ?	"tower of flame" : /* EN olet == SCROLL_CLASS ?	"tower of flame" : */ // TODO DE
+							"fireball"; /* EN "fireball"; */ // TODO DE
 			adtyp = AD_FIRE;
 			break;
-		case 2: str = "ball of cold";
+		case 2: str = "ball of cold"; /* EN case 2: str = "ball of cold"; */ // TODO DE
 			adtyp = AD_COLD;
 			break;
-		case 4: str =  (olet == WAND_CLASS) ? "death field" :
-							"disintegration field";
+		case 4: str =  (olet == WAND_CLASS) ? "death field" : /* EN case 4: str =  (olet == WAND_CLASS) ? "death field" : */ // TODO DE
+							"disintegration field"; /* EN "disintegration field"; */ // TODO DE
 			adtyp = AD_DISN;
 			break;
-		case 5: str = "ball of lightning";
+		case 5: str = "ball of lightning"; /* EN case 5: str = "ball of lightning"; */ // TODO DE
 			adtyp = AD_ELEC;
 			break;
-		case 6: str = "poison gas cloud";
+		case 6: str = "poison gas cloud"; /* EN case 6: str = "poison gas cloud"; */ // TODO DE
 			adtyp = AD_DRST;
 			break;
-		case 7: str = "splash of acid";
+		case 7: str = "splash of acid"; /* EN case 7: str = "splash of acid"; */ // TODO DE
 			adtyp = AD_ACID;
 			break;
 		default: impossible("explosion base type %d?", type); return;
@@ -219,10 +219,10 @@ int expltype;
 		tmp_at(DISP_END, 0); /* clear the explosion */
 	} else {
 	    if (olet == MON_EXPLODE) {
-		str = "explosion";
+		str = "explosion"; /* EN str = "explosion"; */ // TODO DE
 		generic = TRUE;
 	    }
-	    if (flags.soundok) You_hear("a blast.");
+	    if (flags.soundok) You_hear("a blast."); /* EN if (flags.soundok) You_hear("a blast."); */ // TODO DE
 	}
 
     if (dam)
@@ -243,30 +243,30 @@ int expltype;
 		if (!mtmp) continue;
 		if (u.uswallow && mtmp == u.ustuck) {
 			if (is_animal(u.ustuck->data))
-				pline("%s gets %s!",
+				pline("%s gets %s!", /* EN pline("%s gets %s!", */ // TODO DE
 				      Monnam(u.ustuck),
-				      (adtyp == AD_FIRE) ? "heartburn" :
-				      (adtyp == AD_COLD) ? "chilly" :
+				      (adtyp == AD_FIRE) ? "heartburn" : /* EN (adtyp == AD_FIRE) ? "heartburn" : */ // TODO DE
+				      (adtyp == AD_COLD) ? "chilly" : /* EN (adtyp == AD_COLD) ? "chilly" : */ // TODO DE
 				      (adtyp == AD_DISN) ? ((olet == WAND_CLASS) ?
-				       "irradiated by pure energy" : "perforated") :
-				      (adtyp == AD_ELEC) ? "shocked" :
-				      (adtyp == AD_DRST) ? "poisoned" :
-				      (adtyp == AD_ACID) ? "an upset stomach" :
-				       "fried");
+				       "irradiated by pure energy" : "perforated") : /* EN "irradiated by pure energy" : "perforated") : */ // TODO DE
+				      (adtyp == AD_ELEC) ? "shocked" : /* EN (adtyp == AD_ELEC) ? "shocked" : */ // TODO DE
+				      (adtyp == AD_DRST) ? "poisoned" : /* EN (adtyp == AD_DRST) ? "poisoned" : */ // TODO DE
+				      (adtyp == AD_ACID) ? "an upset stomach" : /* EN (adtyp == AD_ACID) ? "an upset stomach" : */ // TODO DE
+				       "fried"); /* EN "fried"); */ // TODO DE
 			else
-				pline("%s gets slightly %s!",
+				pline("%s gets slightly %s!", /* EN pline("%s gets slightly %s!", */ // TODO DE
 				      Monnam(u.ustuck),
-				      (adtyp == AD_FIRE) ? "toasted" :
-				      (adtyp == AD_COLD) ? "chilly" :
+				      (adtyp == AD_FIRE) ? "toasted" : /* EN (adtyp == AD_FIRE) ? "toasted" : */ // TODO DE
+				      (adtyp == AD_COLD) ? "chilly" : /* EN (adtyp == AD_COLD) ? "chilly" : */ // TODO DE
 				      (adtyp == AD_DISN) ? ((olet == WAND_CLASS) ?
-				       "overwhelmed by pure energy" : "perforated") :
-				      (adtyp == AD_ELEC) ? "shocked" :
-				      (adtyp == AD_DRST) ? "intoxicated" :
-				      (adtyp == AD_ACID) ? "burned" :
-				       "fried");
+				       "overwhelmed by pure energy" : "perforated") : /* EN "overwhelmed by pure energy" : "perforated") : */ // TODO DE
+				      (adtyp == AD_ELEC) ? "shocked" : /* EN (adtyp == AD_ELEC) ? "shocked" : */ // TODO DE
+				      (adtyp == AD_DRST) ? "intoxicated" : /* EN (adtyp == AD_DRST) ? "intoxicated" : */ // TODO DE
+				      (adtyp == AD_ACID) ? "burned" : /* EN (adtyp == AD_ACID) ? "burned" : */ // TODO DE
+							 "fried"); /* EN "fried"); */ // TODO DE
 		} else if (cansee(i+x-1, j+y-1)) {
 		    if(mtmp->m_ap_type) seemimic(mtmp);
-		    pline("%s is caught in the %s!", Monnam(mtmp), str);
+		    pline("%s is caught in the %s!", Monnam(mtmp), str); /* EN pline("%s is caught in the %s!", Monnam(mtmp), str); */ // TODO DE
 		}
 
 		idamres += destroy_mitem(mtmp, SCROLL_CLASS, (int) adtyp);
@@ -287,7 +287,7 @@ int expltype;
 
 			if (resist(mtmp, olet, 0, FALSE)) {
 			    if (cansee(i+x-1,j+y-1))
-				pline("%s resists the %s!", Monnam(mtmp), str);
+				pline("%s resists the %s!", Monnam(mtmp), str); /* EN pline("%s resists the %s!", Monnam(mtmp), str); */ // TODO DE
 			    mdam = dam/2;
 			}
 			if (mtmp == u.ustuck)
@@ -310,12 +310,12 @@ int expltype;
 	if (uhurt) {
 		if ((type >= 0 || adtyp == AD_PHYS) &&	/* gas spores */
 				flags.verbose && olet != SCROLL_CLASS)
-			You("are caught in the %s!", str);
+			You("are caught in the %s!", str); /* EN You("are caught in the %s!", str); */ // TODO DE
 		/* do property damage first, in case we end up leaving bones */
 		if (adtyp == AD_FIRE) burn_away_slime();
 		if (Invulnerable) {
 		    damu = 0;
-		    You("are unharmed!");
+		    You("are unharmed!"); /* EN You("are unharmed!"); */ // TODO DE
 		} else if (Half_physical_damage && adtyp == AD_PHYS)
 		    damu = (damu+1) / 2;
 		if (adtyp == AD_FIRE) (void) burnarmor(&youmonst);
@@ -345,10 +345,10 @@ int expltype;
 			    killer_format = KILLED_BY_AN;
 			} else if (type >= 0 && olet != SCROLL_CLASS) {
 			    killer_format = NO_KILLER_PREFIX;
-			    Sprintf(killer_buf, "caught %sself in %s own %s",
+			    Sprintf(killer_buf, "caught %sself in %s own %s", /* EN Sprintf(killer_buf, "caught %sself in %s own %s", */ // TODO DE
 				    uhim(), uhis(), str);
-			} else if (!strncmpi(str,"tower of flame", 8) ||
-				   !strncmpi(str,"fireball", 8)) {
+			} else if (!strncmpi(str,"tower of flame", 8) || /* EN } else if (!strncmpi(str,"tower of flame", 8) || */ // TODO DE
+				   !strncmpi(str,"fireball", 8)) { /* EN !strncmpi(str,"fireball", 8)) { */ // TODO DE
 			    killer_format = KILLED_BY_AN;
 			    Strcpy(killer_buf, str);
 			} else {
@@ -365,9 +365,9 @@ int expltype;
 	}
 
 	if (shopdamage) {
-		pay_for_damage(adtyp == AD_FIRE ? "burn away" :
-			       adtyp == AD_COLD ? "shatter" :
-			       adtyp == AD_DISN ? "disintegrate" : "destroy",
+		pay_for_damage(adtyp == AD_FIRE ? "burn away" : /* EN pay_for_damage(adtyp == AD_FIRE ? "burn away" : */ // TODO DE
+			       adtyp == AD_COLD ? "shatter" : /* EN adtyp == AD_COLD ? "shatter" : */ // TODO DE
+			       adtyp == AD_DISN ? "disintegrate" : "destroy", /* EN adtyp == AD_DISN ? "disintegrate" : "destroy", */ // TODO DE
 			       FALSE);
 	}
 
@@ -437,7 +437,7 @@ struct obj *obj;			/* only scatter this obj        */
 			&& ((otmp->otyp == BOULDER) || (otmp->otyp == STATUE))
 			&& rn2(10)) {
 		if (otmp->otyp == BOULDER) {
-		    pline("%s apart.", Tobjnam(otmp, "break"));
+		    pline("%s apart.", Tobjnam(otmp, "break")); /* EN pline("%s apart.", Tobjnam(otmp, "break")); */ // TODO DE
 		    fracture_rock(otmp);
 		    place_object(otmp, sx, sy);
 		    if ((otmp = sobj_at(BOULDER, sx, sy)) != 0) {
@@ -450,7 +450,7 @@ struct obj *obj;			/* only scatter this obj        */
 
 		    if ((trap = t_at(sx,sy)) && trap->ttyp == STATUE_TRAP)
 			    deltrap(trap);
-		    pline("%s.", Tobjnam(otmp, "crumble"));
+		    pline("%s.", Tobjnam(otmp, "crumble")); /* EN pline("%s.", Tobjnam(otmp, "crumble")); */ // TODO DE
 		    (void) break_statue(otmp);
 		    place_object(otmp, sx, sy);	/* put fragments on floor */
 		}

@@ -233,7 +233,7 @@ find_branch(s, pd)
 	    for (br = branches; br; br = br->next) {
 		dnam = dungeons[br->end2.dnum].dname;
 		if (!strcmpi(dnam, s) ||
-			(!strncmpi(dnam, "The ", 4) && !strcmpi(dnam + 4, s)))
+			(!strncmpi(dnam, "The ", 4) && !strcmpi(dnam + 4, s))) /* EN (!strncmpi(dnam, "The ", 4) && !strcmpi(dnam + 4, s))) */ // TODO DE
 		    break;
 	    }
 	    i = br ? ((ledger_no(&br->end1) << 8) | ledger_no(&br->end2)) : -1;
@@ -601,6 +601,7 @@ struct level_map {
 	const char *lev_name;
 	d_level *lev_spec;
 } level_map[] = {
+	// TODO DE ?
 	{ "air",	&air_level },
 	{ "asmodeus",	&asmodeus_level },
 	{ "astral",	&astral_level },
@@ -864,10 +865,10 @@ init_dungeons()		/* initialize the "dungeon" structs */
 /*
  *	I hate hardwiring these names. :-(
  */
-	quest_dnum = dname_to_dnum("The Quest");
-	sokoban_dnum = dname_to_dnum("Sokoban");
-	mines_dnum = dname_to_dnum("The Gnomish Mines");
-	tower_dnum = dname_to_dnum("Vlad's Tower");
+	quest_dnum = dname_to_dnum("The Quest"); /* EN quest_dnum = dname_to_dnum("The Quest"); */ // TODO DE
+	sokoban_dnum = dname_to_dnum("Sokoban"); /* EN sokoban_dnum = dname_to_dnum("Sokoban"); */ // TODO DE
+	mines_dnum = dname_to_dnum("The Gnomish Mines"); /* EN mines_dnum = dname_to_dnum("The Gnomish Mines"); */ // TODO DE
+	tower_dnum = dname_to_dnum("Vlad's Tower"); /* EN tower_dnum = dname_to_dnum("Vlad's Tower"); */ // TODO DE
 
 	/* one special fixup for dummy surface level */
 	if ((x = find_level("dummy")) != 0) {
@@ -926,7 +927,7 @@ boolean noquest;
 
 	for(i = 0; i < n_dgns; i++) {
 	    if((tmp.dlevel = dungeons[i].dunlev_ureached) == 0) continue;
-	    if(!strcmp(dungeons[i].dname, "The Quest") && noquest) continue;
+	    if(!strcmp(dungeons[i].dname, "The Quest") && noquest) continue; /* EN if(!strcmp(dungeons[i].dname, "The Quest") && noquest) continue; */ // TODO DE
 
 	    tmp.dnum = i;
 	    if(depth(&tmp) > ret) ret = depth(&tmp);
@@ -1466,16 +1467,16 @@ const char *nam;
     char buf[BUFSZ];
 
     /* allow strings like "the oracle level" to find "oracle" */
-    if (!strncmpi(nam, "the ", 4)) nam += 4;
-    if ((p = strstri(nam, " level")) != 0 && p == eos((char*)nam) - 6) {
+    if (!strncmpi(nam, "the ", 4)) nam += 4; /* EN if (!strncmpi(nam, "the ", 4)) nam += 4; */ // TODO DE
+    if ((p = strstri(nam, " level")) != 0 && p == eos((char*)nam) - 6) { /* EN if ((p = strstri(nam, " level")) != 0 && p == eos((char*)nam) - 6) { */ // TODO DE
 	nam = strcpy(buf, nam);
 	*(eos(buf) - 6) = '\0';
     }
     /* hell is the old name, and wouldn't match; gehennom would match its
        branch, yielding the castle level instead of the valley of the dead */
-    if (!strcmpi(nam, "gehennom") || !strcmpi(nam, "hell")) {
-	if (In_V_tower(&u.uz)) nam = " to Vlad's tower";  /* branch to... */
-	else nam = "valley";
+    if (!strcmpi(nam, "gehennom") || !strcmpi(nam, "hell")) { /* EN if (!strcmpi(nam, "gehennom") || !strcmpi(nam, "hell")) { */ // TODO DE
+	if (In_V_tower(&u.uz)) nam = " to Vlad's tower";  /* branch to... */ /* EN if (In_V_tower(&u.uz)) nam = " to Vlad's tower";  */ // TODO DE
+	else nam = "valley"; /* EN else nam = "valley"; */ // TODO DE
     }
 
     if ((slev = find_level(nam)) != 0) {
@@ -1497,7 +1498,7 @@ const char *nam;
     } else {	/* not a specific level; try branch names */
 	idx = find_branch(nam, (struct proto_dungeon *)0);
 	/* "<branch> to Xyzzy" */
-	if (idx < 0 && (p = strstri(nam, " to ")) != 0)
+	if (idx < 0 && (p = strstri(nam, " to ")) != 0) /* EN if (idx < 0 && (p = strstri(nam, " to ")) != 0) */ // TODO DE
 	    idx = find_branch(p + 4, (struct proto_dungeon *)0);
 
 	if (idx >= 0) {
@@ -1527,10 +1528,10 @@ br_string(type)
     int type;
 {
     switch (type) {
-	case BR_PORTAL:	 return "Portal";
-	case BR_NO_END1: return "Connection";
-	case BR_NO_END2: return "One way stair";
-	case BR_STAIR:	 return "Stair";
+	case BR_PORTAL:	 return "Portal"; /* EN case BR_PORTAL:	 return "Portal"; */ // TODO DE
+	case BR_NO_END1: return "Connection"; /* EN case BR_NO_END1: return "Connection"; */ // TODO DE
+	case BR_NO_END2: return "One way stair"; /* EN case BR_NO_END2: return "One way stair"; */ // TODO DE
+	case BR_STAIR:	 return "Stair"; /* EN case BR_STAIR:	 return "Stair"; */ // TODO DE
     }
     return " (unknown)";
 }
@@ -1595,17 +1596,17 @@ boolean bymenu;
     for (i = 0, dptr = dungeons; i < n_dgns; i++, dptr++) {
 	nlev = dptr->num_dunlevs;
 	if (nlev > 1)
-	    Sprintf(buf, "%s: levels %d to %d", dptr->dname, dptr->depth_start,
+	    Sprintf(buf, "%s: levels %d to %d", dptr->dname, dptr->depth_start, /* EN Sprintf(buf, "%s: levels %d to %d", dptr->dname, dptr->depth_start, */ // TODO DE
 						dptr->depth_start + nlev - 1);
 	else
-	    Sprintf(buf, "%s: level %d", dptr->dname, dptr->depth_start);
+	    Sprintf(buf, "%s: level %d", dptr->dname, dptr->depth_start); /* EN Sprintf(buf, "%s: level %d", dptr->dname, dptr->depth_start); */ // TODO DE
 
 	/* Most entrances are uninteresting. */
 	if (dptr->entry_lev != 1) {
 	    if (dptr->entry_lev == nlev)
-		Strcat(buf, ", entrance from below");
+		Strcat(buf, ", entrance from below"); /* EN Strcat(buf, ", entrance from below"); */ // TODO DE
 	    else
-		Sprintf(eos(buf), ", entrance on %d",
+		Sprintf(eos(buf), ", entrance on %d", /* EN Sprintf(eos(buf), ", entrance on %d", */ // TODO DE
 			dptr->depth_start + dptr->entry_lev - 1);
 	}
 	if (bymenu) {
@@ -1626,7 +1627,7 @@ boolean bymenu;
 
 	    Sprintf(buf, "   %s: %d", slev->proto, depth(&slev->dlevel));
 	    if (Is_stronghold(&slev->dlevel))
-		Sprintf(eos(buf), " (tune %s)", tune);
+		Sprintf(eos(buf), " (tune %s)", tune); /* EN Sprintf(eos(buf), " (tune %s)", tune); */ // TODO DE
 	    if (bymenu) {
 	    	schar lev = depth(&slev->dlevel);
 		any.a_void = 0;
@@ -1651,10 +1652,10 @@ boolean bymenu;
 	    	if (bymenu) {
 		    any.a_void = 0;
 		    add_menu(win, NO_GLYPH, &any, 0, 0, ATR_BOLD,
-				"Floating branches", MENU_UNSELECTED);
+				"Floating branches", MENU_UNSELECTED); /* EN "Floating branches", MENU_UNSELECTED); */ // TODO DE
 	    	} else {
 		    putstr(win, 0, "");
-		    putstr(win, 0, "Floating branches");
+		    putstr(win, 0, "Floating branches"); /* EN putstr(win, 0, "Floating branches"); */ // TODO DE
 		}
 		first = FALSE;
 	    }
@@ -1677,7 +1678,7 @@ boolean bymenu;
 	menu_item *selected;
 	schar lev = 0;
 
-	end_menu(win, "Level teleport to where:");
+	end_menu(win, "Level teleport to where:"); /* EN end_menu(win, "Level teleport to where:"); */ // TODO DE
 	n = select_menu(win, PICK_ONE, &selected);
 	destroy_nhwindow(win);
 	if (n > 0) {

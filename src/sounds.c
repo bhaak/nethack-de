@@ -48,30 +48,29 @@ dosounds()
 
     if (level.flags.nfountains && !rn2(400)) {
 	static const char * const fountain_msg[4] = {
-		"plätscherndes Wasser.",
-		//"bubbling water.",
-		"water falling on coins.",
-		"the splashing of a naiad.",
-		"a soda fountain!",
+		"plätscherndes Wasser.", /* EN "bubbling water.", */
+		"water falling on coins.", /* EN "water falling on coins.", */ // TODO DE
+		"the splashing of a naiad.", /* EN "the splashing of a naiad.", */ // TODO DE
+		"a soda fountain!", /* EN "a soda fountain!", */ // TODO DE
 	};
 	You_hear(fountain_msg[rn2(3)+hallu]);
     }
 #ifdef SINK
     if (level.flags.nsinks && !rn2(300)) {
 	static const char * const sink_msg[3] = {
-		"a slow drip.",
-		"a gurgling noise.",
-		"dishes being washed!",
+		"a slow drip.", /* EN "a slow drip.", */ // TODO DE
+		"a gurgling noise.", /* EN "a gurgling noise.", */ // TODO DE
+		"dishes being washed!", /* EN "dishes being washed!", */ // TODO DE
 	};
 	You_hear(sink_msg[rn2(2)+hallu]);
     }
 #endif
     if (level.flags.has_court && !rn2(200)) {
 	static const char * const throne_msg[4] = {
-		"the tones of courtly conversation.",
-		"a sceptre pounded in judgment.",
-		"Someone shouts \"Off with %s head!\"",
-		"Queen Beruthiel's cats!",
+		"the tones of courtly conversation.", /* EN "the tones of courtly conversation.", */ // TODO DE
+		"a sceptre pounded in judgment.", /* EN "a sceptre pounded in judgment.", */ // TODO DE
+		"Someone shouts \"Off with %s head!\"", /* EN "Someone shouts \"Off with %s head!\"", */ // TODO DE
+		"Queen Beruthiel's cats!", /* EN "Queen Beruthiel's cats!", */ // TODO DE
 	};
 	for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
 	    if (DEADMONSTER(mtmp)) continue;
@@ -90,12 +89,9 @@ dosounds()
     }
     if (level.flags.has_swamp && !rn2(200)) {
 	static const char * const swamp_msg[3] = {
-		"VERB_HEAR Moskitos!",
-		/*"hear mosquitoes!",*/
-		"VERB_SMELL Sumpfgas!",	/* so it's a smell...*/
-		/*		"smell marsh gas!",	*/
-		"VERB_HEAR Donald Duck!",
-		/*"hear Donald Duck!",*/
+		"VERB_HEAR Moskitos!", /* EN "hear mosquitoes!",*/
+		"VERB_SMELL Sumpfgas!",	/* so it's a smell...*/ /* EN "smell marsh gas!",	*/
+		"VERB_HEAR Donald Duck!", /* EN "hear Donald Duck!",*/
 	};
 	You(swamp_msg[rn2(2)+hallu]);
 	return;
@@ -126,22 +122,19 @@ dosounds()
 #endif /* AZTEC_C_WORKAROUND */
 		    {
 			if (gold_in_vault)
-			    You_hear(!hallu ? "jemanden Geld zählen." :
-				"the quarterback calling the play.");
-			/* You_hear(!hallu ? "someone counting money." :
-				 "the quarterback calling the play.");*/
+			    You_hear(!hallu ? "jemanden Geld zählen." : /* EN You_hear(!hallu ? "someone counting money." : */
+				"the quarterback calling the play."); /* EN "the quarterback calling the play."); */ // TODO DE
 			else
-			    You_hear("jemanden suchen.");
-			/*You_hear("someone searching.");*/
+			    You_hear("jemanden suchen."); /* EN You_hear("someone searching."); */
 			break;
 		    }
 		    /* fall into... (yes, even for hallucination) */
 		}
 		case 0:
-		    You_hear("the footsteps of a guard on patrol.");
+		    You_hear("the footsteps of a guard on patrol."); /* EN You_hear("the footsteps of a guard on patrol."); */ // TODO DE
 		    break;
 		case 2:
-		    You_hear("Ebenezer Scrooge!");
+		    You_hear("Ebenezer Scrooge!"); /* EN You_hear("Ebenezer Scrooge!"); */ // TODO DE
 		    break;
 	    }
 	return;
@@ -153,14 +146,14 @@ dosounds()
 		mon_in_room(mtmp, BEEHIVE)) {
 		switch (rn2(2)+hallu) {
 		    case 0:
-			You_hear("a low buzzing.");
+			You_hear("a low buzzing."); /* EN You_hear("a low buzzing."); */ // TODO DE
 			break;
 		    case 1:
-			You_hear("an angry drone.");
+			You_hear("an angry drone."); /* EN You_hear("an angry drone."); */ // TODO DE
 			break;
 		    case 2:
-			You_hear("bees in your %sbonnet!",
-			    uarmh ? "" : "(nonexistent) ");
+			You_hear("bees in your %sbonnet!", /* EN You_hear("bees in your %sbonnet!", */ // TODO DE
+			    uarmh ? "" : "(nonexistent) "); /* EN uarmh ? "" : "(nonexistent) "); */ // TODO DE
 			break;
 		}
 		return;
@@ -174,15 +167,14 @@ dosounds()
 		mon_in_room(mtmp, MORGUE)) {
 		switch (rn2(2)+hallu) {
 		    case 0:
-			You(" VERB_MERKEN plötzlich, wie widernatürlich ruhig es ist..");
-			/*You("suddenly realize it is unnaturally quiet.");*/
+			You(" VERB_MERKEN plötzlich, wie widernatürlich ruhig es ist.."); /* EN You("suddenly realize it is unnaturally quiet.");*/
 			break;
 		    case 1:
-			pline_The("%s on the back of your %s stands up.",
+			pline_The("%s on the back of your %s stands up.", /* EN pline_The("%s on the back of your %s stands up.", */ // TODO DE
 				body_part(HAIR), body_part(NECK));
 			break;
 		    case 2:
-			pline_The("%s on your %s seems to stand up.",
+			pline_The("%s on your %s seems to stand up.", /* EN pline_The("%s on your %s seems to stand up.", */ // TODO DE
 				body_part(HAIR), body_part(HEAD));
 			break;
 		}
@@ -192,10 +184,10 @@ dosounds()
     }
     if (level.flags.has_barracks && !rn2(200)) {
 	static const char * const barracks_msg[4] = {
-		"blades being honed.",
-		"loud snoring.",
-		"dice being thrown.",
-		"General MacArthur!",
+		"blades being honed.", /* EN "blades being honed.", */ // TODO DE
+		"loud snoring.", /* EN "loud snoring.", */ // TODO DE
+		"dice being thrown.", /* EN "dice being thrown.", */ // TODO DE
+		"General MacArthur!", /* EN "General MacArthur!", */ // TODO DE
 	};
 	int count = 0;
 
@@ -203,8 +195,8 @@ dosounds()
 	    if (DEADMONSTER(mtmp)) continue;
 	    if (is_mercenary(mtmp->data) &&
 #if 0		/* don't bother excluding these */
-		!strstri(mtmp->data->mname, "watch") &&
-		!strstri(mtmp->data->mname, "guard") &&
+		!strstri(mtmp->data->mname, "watch") && /* EN !strstri(mtmp->data->mname, "watch") && */ // TODO DE
+		!strstri(mtmp->data->mname, "guard") && /* EN !strstri(mtmp->data->mname, "guard") && */ // TODO DE
 #endif
 		mon_in_room(mtmp, BARRACKS) &&
 		/* sleeping implies not-yet-disturbed (usually) */
@@ -216,9 +208,9 @@ dosounds()
     }
     if (level.flags.has_zoo && !rn2(200)) {
 	static const char * const zoo_msg[3] = {
-		"a sound reminiscent of an elephant stepping on a peanut.",
-		"a sound reminiscent of a seal barking.",
-		"Doctor Doolittle!",
+		"a sound reminiscent of an elephant stepping on a peanut.", /* EN "a sound reminiscent of an elephant stepping on a peanut.", */ // TODO DE
+		"a sound reminiscent of a seal barking.", /* EN "a sound reminiscent of a seal barking.", */ // TODO DE
+		"Doctor Doolittle!", /* EN "Doctor Doolittle!", */ // TODO DE
 	};
 	for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
 	    if (DEADMONSTER(mtmp)) continue;
@@ -238,10 +230,9 @@ dosounds()
 	if (tended_shop(sroom) &&
 		!index(u.ushops, ROOM_INDEX(sroom) + ROOMOFFSET)) {
 	    static const char * const shop_msg[3] = {
-		    "someone cursing shoplifters.",
-		    "den Klang einer Registrierkasse.",
-		    //"the chime of a cash register.",
-		    "Neiman and Marcus arguing!",
+		    "someone cursing shoplifters.", /* EN "someone cursing shoplifters.", */ // TODO DE
+		    "den Klang einer Registrierkasse.", /* EN "the chime of a cash register.", */
+		    "Neiman and Marcus arguing!", /* EN "Neiman and Marcus arguing!", */ // TODO DE
 	    };
 	    You_hear(shop_msg[rn2(2)+hallu]);
 	}
@@ -255,11 +246,11 @@ dosounds()
 	/* and don't produce silly effects when she's clearly visible */
 	if (mtmp && (hallu || !canseemon(mtmp))) {
 	    static const char * const ora_msg[5] = {
-		    "a strange wind.",		/* Jupiter at Dodona */
-		    "convulsive ravings.",	/* Apollo at Delphi */
-		    "snoring snakes.",		/* AEsculapius at Epidaurus */
-		    "someone say \"No more woodchucks!\"",
-		    "a loud ZOT!"		/* both rec.humor.oracle */
+		    "a strange wind.",		/* Jupiter at Dodona */ /* EN "a strange wind.",		*/ // TODO DE
+		    "convulsive ravings.",	/* Apollo at Delphi */ /* EN "convulsive ravings.",	 */ // TODO DE
+		    "snoring snakes.",		/* AEsculapius at Epidaurus */ /* EN "snoring snakes.",		 */ // TODO DE
+		    "someone say \"No more woodchucks!\"", /* EN "someone say \"No more woodchucks!\"", */ // TODO DE
+		    "a loud ZOT!"		/* both rec.humor.oracle */ /* EN "a loud ZOT!"		*/ // TODO DE
 	    };
 	    You_hear(ora_msg[rn2(3)+hallu*2]);
 	}
@@ -271,8 +262,8 @@ dosounds()
 #ifdef OVLB
 
 static const char * const h_sounds[] = {
-    "beep", "boing", "sing", "belche", "creak", "cough", "rattle",
-    "ululate", "pop", "jingle", "sniffle", "tinkle", "eep"
+    "beep", "boing", "sing", "belche", "creak", "cough", "rattle", /* EN "beep", "boing", "sing", "belche", "creak", "cough", "rattle", */ // TODO DE
+    "ululate", "pop", "jingle", "sniffle", "tinkle", "eep" /* EN "ululate", "pop", "jingle", "sniffle", "tinkle", "eep" */ // TODO DE
 };
 
 const char *
@@ -284,35 +275,35 @@ register struct monst *mtmp;
 	switch (mtmp->data->msound) {
 	case MS_MEW:
 	case MS_HISS:
-	    ret = "hiss";
+	    ret = "hiss"; /* EN ret = "hiss"; */ // TODO DE
 	    break;
 	case MS_BARK:
 	case MS_GROWL:
-	    ret = "growl";
+	    ret = "growl"; /* EN ret = "growl"; */ // TODO DE
 	    break;
 	case MS_ROAR:
-	    ret = "roar";
+	    ret = "roar"; /* EN ret = "roar"; */ // TODO DE
 	    break;
 	case MS_BUZZ:
-	    ret = "buzz";
+	    ret = "buzz"; /* EN ret = "buzz"; */ // TODO DE
 	    break;
 	case MS_SQEEK:
-	    ret = "squeal";
+	    ret = "squeal"; /* EN ret = "squeal"; */ // TODO DE
 	    break;
 	case MS_SQAWK:
-	    ret = "screech";
+	    ret = "screech"; /* EN ret = "screech"; */ // TODO DE
 	    break;
 	case MS_NEIGH:
-	    ret = "neigh";
+	    ret = "neigh"; /* EN ret = "neigh"; */ // TODO DE
 	    break;
 	case MS_WAIL:
-	    ret = "wail";
+	    ret = "wail"; /* EN ret = "wail"; */ // TODO DE
 	    break;
 	case MS_SILENT:
-		ret = "commotion";
+		ret = "commotion"; /* EN ret = "commotion"; */ // TODO DE
 		break;
 	default:
-		ret = "scream";
+		ret = "scream"; /* EN ret = "scream"; */ // TODO DE
 	}
 	return ret;
 }
@@ -354,23 +345,23 @@ register struct monst *mtmp;
 	yelp_verb = h_sounds[rn2(SIZE(h_sounds))];
     else switch (mtmp->data->msound) {
 	case MS_MEW:
-	    yelp_verb = "yowl";
+	    yelp_verb = "yowl"; /* EN yelp_verb = "yowl"; */ // TODO DE
 	    break;
 	case MS_BARK:
 	case MS_GROWL:
-	    yelp_verb = "yelp";
+	    yelp_verb = "yelp"; /* EN yelp_verb = "yelp"; */ // TODO DE
 	    break;
 	case MS_ROAR:
-	    yelp_verb = "snarl";
+	    yelp_verb = "snarl"; /* EN yelp_verb = "snarl"; */ // TODO DE
 	    break;
 	case MS_SQEEK:
-	    yelp_verb = "squeal";
+	    yelp_verb = "squeal"; /* EN yelp_verb = "squeal"; */ // TODO DE
 	    break;
 	case MS_SQAWK:
-	    yelp_verb = "screak";
+	    yelp_verb = "screak"; /* EN yelp_verb = "screak"; */ // TODO DE
 	    break;
 	case MS_WAIL:
-	    yelp_verb = "wail";
+	    yelp_verb = "wail"; /* EN yelp_verb = "wail"; */ // TODO DE
 	    break;
     }
     if (yelp_verb) {
@@ -396,13 +387,13 @@ register struct monst *mtmp;
     else switch (mtmp->data->msound) {
 	case MS_MEW:
 	case MS_GROWL:
-	    whimper_verb = "whimper";
+	    whimper_verb = "whimper"; /* EN whimper_verb = "whimper"; */ // TODO DE
 	    break;
 	case MS_BARK:
-	    whimper_verb = "whine";
+	    whimper_verb = "whine"; /* EN whimper_verb = "whine"; */ // TODO DE
 	    break;
 	case MS_SQEEK:
-	    whimper_verb = "squeal";
+	    whimper_verb = "squeal"; /* EN whimper_verb = "squeal"; */ // TODO DE
 	    break;
     }
     if (whimper_verb) {
@@ -427,7 +418,7 @@ register struct monst *mtmp;
     else if (mtmp->data->msound >= MS_HUMANOID) {
 	if (!canspotmon(mtmp))
 	    map_invisible(mtmp->mx, mtmp->my);
-	verbalize("I'm hungry.");
+	verbalize("I'm hungry."); /* EN verbalize("I'm hungry."); */ // TODO DE
     }
 }
 
@@ -485,47 +476,47 @@ register struct monst *mtmp;
 
 		if (mtmp->mtame) {
 			if (kindred) {
-				Sprintf(verbuf, "Good %s to you Master%s",
-					isnight ? "evening" : "day",
-					isnight ? "!" : ".  Why do we not rest?");
+				Sprintf(verbuf, "Good %s to you Master%s", /* EN Sprintf(verbuf, "Good %s to you Master%s", */ // TODO DE
+					isnight ? "evening" : "day", /* EN isnight ? "evening" : "day", */ // TODO DE
+					isnight ? "!" : ".  Why do we not rest?"); /* EN isnight ? "!" : ".  Why do we not rest?"); */ // TODO DE
 				verbl_msg = verbuf;
 		    	} else {
 		    	    Sprintf(verbuf,"%s%s",
-				nightchild ? "Child of the night, " : "",
+				nightchild ? "Child of the night, " : "", /* EN nightchild ? "Child of the night, " : "", */ // TODO DE
 				midnight() ?
-					"I can stand this craving no longer!" :
+					"I can stand this craving no longer!" : /* EN "I can stand this craving no longer!" : */ // TODO DE
 				isnight ?
-					"I beg you, help me satisfy this growing craving!" :
-					"I find myself growing a little weary.");
+					"I beg you, help me satisfy this growing craving!" : /* EN "I beg you, help me satisfy this growing craving!" : */ // TODO DE
+					"I find myself growing a little weary."); /* EN "I find myself growing a little weary."); */ // TODO DE
 				verbl_msg = verbuf;
 			}
 		} else if (mtmp->mpeaceful) {
 			if (kindred && isnight) {
-				Sprintf(verbuf, "Good feeding %s!",
-	    				flags.female ? "sister" : "brother");
+				Sprintf(verbuf, "Good feeding %s!", /* EN Sprintf(verbuf, "Good feeding %s!", */ // TODO DE
+	    				flags.female ? "sister" : "brother"); /* EN flags.female ? "sister" : "brother"); */ // TODO DE
 				verbl_msg = verbuf;
  			} else if (nightchild && isnight) {
 				Sprintf(verbuf,
-				    "How nice to hear you, child of the night!");
+				    "How nice to hear you, child of the night!"); /* EN "How nice to hear you, child of the night!"); */ // TODO DE
 				verbl_msg = verbuf;
 	    		} else
-		    		verbl_msg = "I only drink... potions.";
+		    		verbl_msg = "I only drink... potions."; /* EN verbl_msg = "I only drink... potions."; */ // TODO DE
     	        } else {
 			int vampindex;
 	    		static const char * const vampmsg[] = {
 			       /* These first two (0 and 1) are specially handled below */
-	    			"I vant to suck your %s!",
-	    			"I vill come after %s without regret!",
+	    			"I vant to suck your %s!", /* EN "I vant to suck your %s!", */ // TODO DE
+	    			"I vill come after %s without regret!", /* EN "I vill come after %s without regret!", */ // TODO DE
 		    	       /* other famous vampire quotes can follow here if desired */
 	    		};
 			if (kindred)
-			    verbl_msg = "This is my hunting ground that you dare to prowl!";
+			    verbl_msg = "This is my hunting ground that you dare to prowl!"; /* EN verbl_msg = "This is my hunting ground that you dare to prowl!"; */ // TODO DE
 			else if (youmonst.data == &mons[PM_SILVER_DRAGON] ||
 				 youmonst.data == &mons[PM_BABY_SILVER_DRAGON]) {
 			    /* Silver dragons are silver in color, not made of silver */
-			    Sprintf(verbuf, "%s! Your silver sheen does not frighten me!",
+			    Sprintf(verbuf, "%s! Your silver sheen does not frighten me!", /* EN Sprintf(verbuf, "%s! Your silver sheen does not frighten me!", */ // TODO DE
 					youmonst.data == &mons[PM_SILVER_DRAGON] ?
-					"Fool" : "Young Fool");
+					"Fool" : "Young Fool"); /* EN "Fool" : "Young Fool"); */ // TODO DE
 			    verbl_msg = verbuf; 
 			} else {
 			    vampindex = rn2(SIZE(vampmsg));
@@ -544,130 +535,130 @@ register struct monst *mtmp;
 	    break;
 	case MS_WERE:
 	    if (flags.moonphase == FULL_MOON && (night() ^ !rn2(13))) {
-		pline("%s throws back %s head and lets out a blood curdling %s!",
+		pline("%s throws back %s head and lets out a blood curdling %s!", /* EN pline("%s throws back %s head and lets out a blood curdling %s!", */ // TODO DE
 		      Monnam(mtmp), mhis(mtmp),
-		      ptr == &mons[PM_HUMAN_WERERAT] ? "shriek" : "howl");
+		      ptr == &mons[PM_HUMAN_WERERAT] ? "shriek" : "howl"); /* EN ptr == &mons[PM_HUMAN_WERERAT] ? "shriek" : "howl"); */ // TODO DE
 		wake_nearto(mtmp->mx, mtmp->my, 11*11);
 	    } else
 		pline_msg =
-		     "whispers inaudibly.  All you can make out is \"moon\".";
+		     "whispers inaudibly.  All you can make out is \"moon\"."; /* EN "whispers inaudibly.  All you can make out is \"moon\"."; */ // TODO DE
 	    break;
 	case MS_BARK:
 	    if (flags.moonphase == FULL_MOON && night()) {
-		pline_msg = "howls.";
+		pline_msg = "howls."; /* EN pline_msg = "howls."; */ // TODO DE
 	    } else if (mtmp->mpeaceful) {
 		if (mtmp->mtame &&
 			(mtmp->mconf || mtmp->mflee || mtmp->mtrapped ||
 			 moves > EDOG(mtmp)->hungrytime || mtmp->mtame < 5))
-		    pline_msg = "whines.";
+		    pline_msg = "whines."; /* EN pline_msg = "whines."; */ // TODO DE
 		else if (mtmp->mtame && EDOG(mtmp)->hungrytime > moves + 1000)
-		    pline_msg = "yips.";
+		    pline_msg = "yips."; /* EN pline_msg = "yips."; */ // TODO DE
 		else {
 		    if (mtmp->data != &mons[PM_DINGO])	/* dingos do not actually bark */
-			    pline_msg = "barks.";
+			    pline_msg = "barks."; /* EN pline_msg = "barks."; */ // TODO DE
 		}
 	    } else {
-		pline_msg = "growls.";
+		pline_msg = "growls."; /* EN pline_msg = "growls."; */ // TODO DE
 	    }
 	    break;
 	case MS_MEW:
 	    if (mtmp->mtame) {
 		if (mtmp->mconf || mtmp->mflee || mtmp->mtrapped ||
 			mtmp->mtame < 5)
-		    pline_msg = "yowls.";
+		    pline_msg = "yowls."; /* EN pline_msg = "yowls."; */ // TODO DE
 		else if (moves > EDOG(mtmp)->hungrytime)
-		    pline_msg = "meows.";
+		    pline_msg = "meows."; /* EN pline_msg = "meows."; */ // TODO DE
 		else if (EDOG(mtmp)->hungrytime > moves + 1000)
-		    pline_msg = "purrs.";
+		    pline_msg = "purrs."; /* EN pline_msg = "purrs."; */ // TODO DE
 		else
-		    pline_msg = "mews.";
+		    pline_msg = "mews."; /* EN pline_msg = "mews."; */ // TODO DE
 		break;
 	    } /* else FALLTHRU */
 	case MS_GROWL:
-	    pline_msg = mtmp->mpeaceful ? "snarls." : "growls!";
+	    pline_msg = mtmp->mpeaceful ? "snarls." : "growls!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "growls!"; */ // TODO DE
 	    break;
 	case MS_ROAR:
-	    pline_msg = mtmp->mpeaceful ? "snarls." : "roars!";
+	    pline_msg = mtmp->mpeaceful ? "snarls." : "roars!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "roars!"; */ // TODO DE
 	    break;
 	case MS_SQEEK:
-	    pline_msg = "squeaks.";
+	    pline_msg = "squeaks."; /* EN pline_msg = "squeaks."; */ // TODO DE
 	    break;
 	case MS_SQAWK:
 	    if (ptr == &mons[PM_RAVEN] && !mtmp->mpeaceful)
-	    	verbl_msg = "Nevermore!";
+	    	verbl_msg = "Nevermore!"; /* EN verbl_msg = "Nevermore!"; */ // TODO DE
 	    else
-	    	pline_msg = "squawks.";
+	    	pline_msg = "squawks."; /* EN pline_msg = "squawks."; */ // TODO DE
 	    break;
 	case MS_HISS:
 	    if (!mtmp->mpeaceful)
-		pline_msg = "hisses!";
+		pline_msg = "hisses!"; /* EN pline_msg = "hisses!"; */ // TODO DE
 	    else return 0;	/* no sound */
 	    break;
 	case MS_BUZZ:
-	    pline_msg = mtmp->mpeaceful ? "drones." : "buzzes angrily.";
+	    pline_msg = mtmp->mpeaceful ? "drones." : "buzzes angrily."; /* EN pline_msg = mtmp->mpeaceful ? "drones." : "buzzes angrily."; */ // TODO DE
 	    break;
 	case MS_GRUNT:
-	    pline_msg = "grunts.";
+	    pline_msg = "grunts."; /* EN pline_msg = "grunts."; */ // TODO DE
 	    break;
 	case MS_NEIGH:
 	    if (mtmp->mtame < 5)
-		pline_msg = "neighs.";
+		pline_msg = "neighs."; /* EN pline_msg = "neighs."; */ // TODO DE
 	    else if (moves > EDOG(mtmp)->hungrytime)
-		pline_msg = "whinnies.";
+		pline_msg = "whinnies."; /* EN pline_msg = "whinnies."; */ // TODO DE
 	    else
-		pline_msg = "whickers.";
+		pline_msg = "whickers."; /* EN pline_msg = "whickers."; */ // TODO DE
 	    break;
 	case MS_WAIL:
-	    pline_msg = "wails mournfully.";
+	    pline_msg = "wails mournfully."; /* EN pline_msg = "wails mournfully."; */ // TODO DE
 	    break;
 	case MS_GURGLE:
-	    pline_msg = "gurgles.";
+	    pline_msg = "gurgles."; /* EN pline_msg = "gurgles."; */ // TODO DE
 	    break;
 	case MS_BURBLE:
-	    pline_msg = "burbles.";
+	    pline_msg = "burbles."; /* EN pline_msg = "burbles."; */ // TODO DE
 	    break;
 	case MS_SHRIEK:
-	    pline_msg = "shrieks.";
+	    pline_msg = "shrieks."; /* EN pline_msg = "shrieks."; */ // TODO DE
 	    aggravate();
 	    break;
 	case MS_IMITATE:
-	    pline_msg = "imitates you.";
+	    pline_msg = "imitates you."; /* EN pline_msg = "imitates you."; */ // TODO DE
 	    break;
 	case MS_BONES:
-	    pline("%s rattles noisily.", Monnam(mtmp));
-	    You("freeze for a moment.");
+	    pline("%s rattles noisily.", Monnam(mtmp)); /* EN pline("%s rattles noisily.", Monnam(mtmp)); */ // TODO DE
+	    You("freeze for a moment."); /* EN You("freeze for a moment."); */ // TODO DE
 	    nomul(-2);
 	    break;
 	case MS_LAUGH:
 	    {
 		static const char * const laugh_msg[4] = {
-		    "giggles.", "chuckles.", "snickers.", "laughs.",
+		    "giggles.", "chuckles.", "snickers.", "laughs.", /* EN "giggles.", "chuckles.", "snickers.", "laughs.", */ // TODO DE
 		};
 		pline_msg = laugh_msg[rn2(4)];
 	    }
 	    break;
 	case MS_MUMBLE:
-	    pline_msg = "mumbles incomprehensibly.";
+	    pline_msg = "mumbles incomprehensibly."; /* EN pline_msg = "mumbles incomprehensibly."; */ // TODO DE
 	    break;
 	case MS_DJINNI:
 	    if (mtmp->mtame) {
-		verbl_msg = "Sorry, I'm all out of wishes.";
+		verbl_msg = "Sorry, I'm all out of wishes."; /* EN verbl_msg = "Sorry, I'm all out of wishes."; */ // TODO DE
 	    } else if (mtmp->mpeaceful) {
 		if (ptr == &mons[PM_WATER_DEMON])
-		    pline_msg = "gurgles.";
+		    pline_msg = "gurgles."; /* EN pline_msg = "gurgles."; */ // TODO DE
 		else
-		    verbl_msg = "I'm free!";
-	    } else verbl_msg = "This will teach you not to disturb me!";
+		    verbl_msg = "I'm free!"; /* EN verbl_msg = "I'm free!"; */ // TODO DE
+	    } else verbl_msg = "This will teach you not to disturb me!"; /* EN } else verbl_msg = "This will teach you not to disturb me!"; */ // TODO DE
 	    break;
 	case MS_BOAST:	/* giants */
 	    if (!mtmp->mpeaceful) {
 		switch (rn2(4)) {
-		case 0: pline("%s boasts about %s gem collection.",
+		case 0: pline("%s boasts about %s gem collection.", /* EN case 0: pline("%s boasts about %s gem collection.", */ // TODO DE
 			      Monnam(mtmp), mhis(mtmp));
 			break;
-		case 1: pline_msg = "complains about a diet of mutton.";
+		case 1: pline_msg = "complains about a diet of mutton."; /* EN case 1: pline_msg = "complains about a diet of mutton."; */ // TODO DE
 			break;
-	       default: pline_msg = "shouts \"Fee Fie Foe Foo!\" and guffaws.";
+	       default: pline_msg = "shouts \"Fee Fie Foe Foo!\" and guffaws."; /* EN default: pline_msg = "shouts \"Fee Fie Foe Foo!\" and guffaws."; */ // TODO DE
 			wake_nearto(mtmp->mx, mtmp->my, 7*7);
 			break;
 		}
@@ -683,48 +674,48 @@ register struct monst *mtmp;
 	    }
 	    /* Generic peaceful humanoid behaviour. */
 	    if (mtmp->mflee)
-		pline_msg = "wants nothing to do with you.";
+		pline_msg = "wants nothing to do with you."; /* EN pline_msg = "wants nothing to do with you."; */ // TODO DE
 	    else if (mtmp->mhp < mtmp->mhpmax/4)
-		pline_msg = "moans.";
+		pline_msg = "moans."; /* EN pline_msg = "moans."; */ // TODO DE
 	    else if (mtmp->mconf || mtmp->mstun)
-		verbl_msg = !rn2(3) ? "Huh?" : rn2(2) ? "What?" : "Eh?";
+		verbl_msg = !rn2(3) ? "Huh?" : rn2(2) ? "What?" : "Eh?"; /* EN verbl_msg = !rn2(3) ? "Huh?" : rn2(2) ? "What?" : "Eh?"; */ // TODO DE
 	    else if (!mtmp->mcansee)
-		verbl_msg = "I can't see!";
+		verbl_msg = "I can't see!"; /* EN verbl_msg = "I can't see!"; */ // TODO DE
 	    else if (mtmp->mtrapped) {
 		struct trap *t = t_at(mtmp->mx, mtmp->my);
 
 		if (t) t->tseen = 1;
-		verbl_msg = "I'm trapped!";
+		verbl_msg = "I'm trapped!"; /* EN verbl_msg = "I'm trapped!"; */ // TODO DE
 	    } else if (mtmp->mhp < mtmp->mhpmax/2)
-		pline_msg = "asks for a potion of healing.";
+		pline_msg = "asks for a potion of healing."; /* EN pline_msg = "asks for a potion of healing."; */ // TODO DE
 	    else if (mtmp->mtame && !mtmp->isminion &&
 						moves > EDOG(mtmp)->hungrytime)
-		verbl_msg = "I'm hungry.";
+		verbl_msg = "I'm hungry."; /* EN verbl_msg = "I'm hungry."; */ // TODO DE
 	    /* Specific monsters' interests */
 	    else if (is_elf(ptr))
-		pline_msg = "curses orcs.";
+		pline_msg = "curses orcs."; /* EN pline_msg = "curses orcs."; */ // TODO DE
 	    else if (is_dwarf(ptr))
-		pline_msg = "talks about mining.";
+		pline_msg = "talks about mining."; /* EN pline_msg = "talks about mining."; */ // TODO DE
 	    else if (likes_magic(ptr))
-		pline_msg = "talks about spellcraft.";
+		pline_msg = "talks about spellcraft."; /* EN pline_msg = "talks about spellcraft."; */ // TODO DE
 	    else if (ptr->mlet == S_CENTAUR)
-		pline_msg = "discusses hunting.";
+		pline_msg = "discusses hunting."; /* EN pline_msg = "discusses hunting."; */ // TODO DE
 	    else switch (monsndx(ptr)) {
 		case PM_HOBBIT:
 		    pline_msg = (mtmp->mhpmax - mtmp->mhp >= 10) ?
-				"complains about unpleasant dungeon conditions."
-				: "asks you about the One Ring.";
+				"complains about unpleasant dungeon conditions." /* EN "complains about unpleasant dungeon conditions." */ // TODO DE
+				: "asks you about the One Ring."; /* EN : "asks you about the One Ring."; */ // TODO DE
 		    break;
 		case PM_ARCHEOLOGIST:
-    pline_msg = "describes a recent article in \"Spelunker Today\" magazine.";
+    pline_msg = "describes a recent article in \"Spelunker Today\" magazine."; /* EN pline_msg = "describes a recent article in \"Spelunker Today\" magazine."; */ // TODO DE
 		    break;
 #ifdef TOURIST
 		case PM_TOURIST:
-		    verbl_msg = "Aloha.";
+		    verbl_msg = "Aloha."; /* EN verbl_msg = "Aloha."; */ // TODO DE
 		    break;
 #endif
 		default:
-		    pline_msg = "discusses dungeon exploration.";
+		    pline_msg = "discusses dungeon exploration."; /* EN pline_msg = "discusses dungeon exploration."; */ // TODO DE
 		    break;
 	    }
 	    break;
@@ -741,25 +732,25 @@ register struct monst *mtmp;
 #endif
 	    {
 		case 2:
-			verbl_msg = "Hello, sailor.";
+			verbl_msg = "Hello, sailor."; /* EN verbl_msg = "Hello, sailor."; */ // TODO DE
 			break;
 		case 1:
-			pline_msg = "comes on to you.";
+			pline_msg = "comes on to you."; /* EN pline_msg = "comes on to you."; */ // TODO DE
 			break;
 		default:
-			pline_msg = "cajoles you.";
+			pline_msg = "cajoles you."; /* EN pline_msg = "cajoles you."; */ // TODO DE
 	    }
 	    break;
 #ifdef KOPS
 	case MS_ARREST:
 	    if (mtmp->mpeaceful)
-		verbalize("Just the facts, %s.",
-		      flags.female ? "Ma'am" : "Sir");
+		verbalize("Just the facts, %s.", /* EN verbalize("Just the facts, %s.", */ // TODO DE
+		      flags.female ? "Ma'am" : "Sir"); /* EN flags.female ? "Ma'am" : "Sir"); */ // TODO DE
 	    else {
 		static const char * const arrest_msg[3] = {
-		    "Anything you say can be used against you.",
-		    "You're under arrest!",
-		    "Stop in the name of the Law!",
+		    "Anything you say can be used against you.", /* EN "Anything you say can be used against you.", */ // TODO DE
+		    "You're under arrest!", /* EN "You're under arrest!", */ // TODO DE
+				"Stop in the name of the Law!", /* EN "Stop in the name of the Law!", */ // TODO DE
 		};
 		verbl_msg = arrest_msg[rn2(3)];
 	    }
@@ -777,20 +768,20 @@ register struct monst *mtmp;
 	    break;
 	case MS_SPELL:
 	    /* deliberately vague, since it's not actually casting any spell */
-	    pline_msg = "seems to mutter a cantrip.";
+	    pline_msg = "seems to mutter a cantrip."; /* EN pline_msg = "seems to mutter a cantrip."; */ // TODO DE
 	    break;
 	case MS_NURSE:
 	    if (uwep && (uwep->oclass == WEAPON_CLASS || is_weptool(uwep)))
-		verbl_msg = "Put that weapon away before you hurt someone!";
+		verbl_msg = "Put that weapon away before you hurt someone!"; /* EN verbl_msg = "Put that weapon away before you hurt someone!"; */ // TODO DE
 	    else if (uarmc || uarm || uarmh || uarms || uarmg || uarmf)
 		verbl_msg = Role_if(PM_HEALER) ?
-			  "Doc, I can't help you unless you cooperate." :
-			  "Please undress so I can examine you.";
+			  "Doc, I can't help you unless you cooperate." : /* EN "Doc, I can't help you unless you cooperate." : */ // TODO DE
+			  "Please undress so I can examine you."; /* EN "Please undress so I can examine you."; */ // TODO DE
 #ifdef TOURIST
 	    else if (uarmu)
-		verbl_msg = "Take off your shirt, please.";
+		verbl_msg = "Take off your shirt, please."; /* EN verbl_msg = "Take off your shirt, please."; */ // TODO DE
 #endif
-	    else verbl_msg = "Relax, this won't hurt a bit.";
+	    else verbl_msg = "Relax, this won't hurt a bit."; /* EN else verbl_msg = "Relax, this won't hurt a bit."; */ // TODO DE
 	    break;
 	case MS_GUARD:
 #ifndef GOLDOBJ
@@ -798,20 +789,20 @@ register struct monst *mtmp;
 #else
 	    if (money_cnt(invent))
 #endif
-		verbl_msg = "Please drop that gold and follow me.";
+		verbl_msg = "Please drop that gold and follow me."; /* EN verbl_msg = "Please drop that gold and follow me."; */ // TODO DE
 	    else
-		verbl_msg = "Please follow me.";
+		verbl_msg = "Please follow me."; /* EN verbl_msg = "Please follow me."; */ // TODO DE
 	    break;
 	case MS_SOLDIER:
 	    {
 		static const char * const soldier_foe_msg[3] = {
-		    "Resistance is useless!",
-		    "You're dog meat!",
-		    "Surrender!",
+		    "Resistance is useless!", /* EN "Resistance is useless!", */ // TODO DE
+		    "You're dog meat!", /* EN "You're dog meat!", */ // TODO DE
+		    "Surrender!", /* EN "Surrender!", */ // TODO DE
 		},		  * const soldier_pax_msg[3] = {
-		    "What lousy pay we're getting here!",
-		    "The food's not fit for Orcs!",
-		    "My feet hurt, I've been on them all day!",
+		    "What lousy pay we're getting here!", /* EN "What lousy pay we're getting here!", */ // TODO DE
+		    "The food's not fit for Orcs!", /* EN "The food's not fit for Orcs!", */ // TODO DE
+				"My feet hurt, I've been on them all day!", /* EN "My feet hurt, I've been on them all day!", */ // TODO DE
 		};
 		verbl_msg = mtmp->mpeaceful ? soldier_pax_msg[rn2(3)]
 					    : soldier_foe_msg[rn2(3)];
@@ -819,8 +810,8 @@ register struct monst *mtmp;
 	    break;
 	case MS_RIDER:
 	    if (ptr == &mons[PM_DEATH] && !rn2(10))
-		pline_msg = "is busy reading a copy of Sandman #8.";
-	    else verbl_msg = "Who do you think you are, War?";
+		pline_msg = "is busy reading a copy of Sandman #8."; /* EN pline_msg = "is busy reading a copy of Sandman #8."; */ // TODO DE
+	    else verbl_msg = "Who do you think you are, War?"; /* EN else verbl_msg = "Who do you think you are, War?"; */ // TODO DE
 	    break;
     }
 
@@ -849,19 +840,19 @@ dochat()
     struct obj *otmp;
 
     if (is_silent(youmonst.data)) {
-	pline("As %s, you cannot speak.", an(youmonst.data->mname));
+	pline("As %s, you cannot speak.", an(youmonst.data->mname)); /* EN pline("As %s, you cannot speak.", an(youmonst.data->mname)); */ // TODO DE
 	return(0);
     }
     if (Strangled) {
-	You_cant("speak.  You're choking!");
+	You_cant("speak.  You're choking!"); /* EN You_cant("speak.  You're choking!"); */ // TODO DE
 	return(0);
     }
     if (u.uswallow) {
-	pline("They won't hear you out there.");
+	pline("They won't hear you out there."); /* EN pline("They won't hear you out there."); */ // TODO DE
 	return(0);
     }
     if (Underwater) {
-	Your("speech is unintelligible underwater.");
+	Your("speech is unintelligible underwater."); /* EN Your("speech is unintelligible underwater."); */ // TODO DE
 	return(0);
     }
 
@@ -877,7 +868,7 @@ dochat()
 	return(1);
     }
 
-    if (!getdir("Talk to whom? (in what direction)")) {
+    if (!getdir("Talk to whom? (in what direction)")) { /* EN if (!getdir("Talk to whom? (in what direction)")) { */ // TODO DE
 	/* decided not to chat */
 	return(0);
     }
@@ -887,7 +878,7 @@ dochat()
 	return (domonnoise(u.usteed));
 #endif
     if (u.dz) {
-	pline("They won't hear you %s there.", u.dz < 0 ? "up" : "down");
+	pline("They won't hear you %s there.", u.dz < 0 ? "up" : "down"); /* EN pline("They won't hear you %s there.", u.dz < 0 ? "up" : "down"); */ // TODO DE
 	return(0);
     }
 
@@ -901,7 +892,7 @@ dochat()
 	    return(1);
 	}
 */
-	pline("Talking to yourself is a bad habit for a dungeoneer.");
+	pline("Talking to yourself is a bad habit for a dungeoneer."); /* EN pline("Talking to yourself is a bad habit for a dungeoneer."); */ // TODO DE
 	return(0);
     }
 
@@ -918,7 +909,7 @@ dochat()
 	/* If it is unseen, the player can't tell the difference between
 	   not noticing him and just not existing, so skip the message. */
 	if (canspotmon(mtmp))
-	    pline("%s seems not to notice you.", Monnam(mtmp));
+	    pline("%s seems not to notice you.", Monnam(mtmp)); /* EN pline("%s seems not to notice you.", Monnam(mtmp)); */ // TODO DE
 	return(0);
     }
 
@@ -928,7 +919,7 @@ dochat()
     if (mtmp->mtame && mtmp->meating) {
 	if (!canspotmon(mtmp))
 	    map_invisible(mtmp->mx, mtmp->my);
-	pline("%s is eating noisily.", Monnam(mtmp));
+	pline("%s is eating noisily.", Monnam(mtmp)); /* EN pline("%s is eating noisily.", Monnam(mtmp)); */ // TODO DE
 	return (0);
     }
 

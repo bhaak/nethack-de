@@ -46,50 +46,50 @@ const char def_oc_syms[MAXOCLASSES] = {
 	VENOM_SYM
 };
 
-const char invisexplain[] = "remembered, unseen, creature";
+const char invisexplain[] = "remembered, unseen, creature"; // TODO DE
 
 /* Object descriptions.  Used in do_look(). */
 const char * const objexplain[] = {	/* these match def_oc_syms, above */
 /* 0*/	0,
 	"strange object",
-	"weapon",
-	"suit or piece of armor",
-	"ring",
-/* 5*/	"amulet",
-	"useful item (pick-axe, key, lamp...)",
-	"piece of food",
-	"potion",
-	"scroll",
-/*10*/	"spellbook",
-	"wand",
-	"pile of coins",
-	"gem or rock",
-	"boulder or statue",
-/*15*/	"iron ball",
-	"iron chain",
-	"splash of venom"
+	"NOUN_WEAPON",
+	"NOUN_SUIT oder NOUN_PIECE_OF_ARMOR",
+	"NOUN_RING",
+/* 5*/	"NOUN_AMULET",
+	"NOUN_USEFUL_ITEM (NOUN_PICK_AXE, NOUN_KEY, NOUN_LAMP ...)",
+	"NOUN_PIECE_OF_FOOD",
+	"NOUN_POTION",
+	"NOUN_SCROLL",
+/*10*/	"NOUN_SPELLBOOK",
+	"NOUN_WAND",
+	"NOUN_PILE_OF_COINs",
+	"NOUN_GEM oder NOUN_ROCK",
+	"NOUN_BOULDER oder NOUN_STATUE",
+/*15*/	"NOUN_IRON_BALL",
+	"NOUN_IRON_CHAIN",
+	"NOUN_SPLASH_OF_VENOM"
 };
 
 /* Object class names.  Used in object_detect(). */
 const char * const oclass_names[] = {
 /* 0*/	0,
 	"illegal objects",
-	"weapons",
-	"armor",
-	"rings",
-/* 5*/	"amulets",
-	"tools",
-	"food",
-	"potions",
-	"scrolls",
-/*10*/	"spellbooks",
-	"wands",
-	"coins",
-	"rocks",
-	"large stones",
-/*15*/	"iron balls",
-	"chains",
-	"venoms"
+	"NOUN_WEAPONs",
+	"NOUN_ARMORs",
+	"NOUN_RINGs",
+/* 5*/	"NOUN_AMULETs",
+	"NOUN_TOOLs",
+	"NOUN_FOODs",
+	"NOUN_POTIONs",
+	"NOUN_SCROLLs",
+/*10*/	"NOUN_SPELLBOOKs",
+	"NOUN_WANDs",
+	"NOUN_COINs",
+	"NOUN_ROCKs",
+	"NOUN_LARGE_STONEs",
+/*15*/	"NOUN_IRON_BALLs",
+	"NOUN_CHAINs",
+	"NOUN_VENOMs"
 };
 
 /* Default monster class symbols.  See monsym.h. */
@@ -163,39 +163,39 @@ const char def_monsyms[MAXMCLASSES] = {
  */
 const char * const monexplain[MAXMCLASSES] = {
     0,
-    "ant or other insect",	"blob",			"cockatrice",
-    "dog or other canine",	"eye or sphere",	"cat or other feline",
-    "gremlin",			"humanoid",		"imp or minor demon",
-    "jelly",			"kobold",		"leprechaun",
-    "mimic",			"nymph",		"orc",
-    "piercer",			"quadruped",		"rodent",
-    "arachnid or centipede",	"trapper or lurker above", "unicorn or horse",
-    "vortex",		"worm", "xan or other mythical/fantastic insect",
-    "light",			"zruty",
+    "NOUN_ANT oder ADJEKTIV_ANDERE NOUN_INSECT",	"NOUN_BLOB",			"NOUN_COCKATRICE",
+    "NOUN_DOG oder ADJEKTIV_ANDERE NOUN_CANINE",	"NOUN_EYE oder ADJEKTIV_ANDERE NOUN_SPHERE",	"NOUN_CAT oder ADJEKTIV_ANDERE NOUN_FELINE",
+    "NOUN_GREMLIN",			"NOUN_HUMANOID",		"NOUN_IMP oder NOUN_MINOR_DEMON",
+    "NOUN_JELLY",			"NOUN_KOBOLD",		"NOUN_LEPRECHAUN",
+    "NOUN_MIMIC",			"NOUN_NYMPH",		"NOUN_ORC",
+    "NOUN_PIERCER",			"NOUN_QUADRUPED",		"NOUN_RODENT",
+    "NOUN_ARACHNID oder NOUN_CENTIPEDE",	"NOUN_TRAPPER oder NOUN_LURKER_ABOVE", "NOUN_UNICORN oder NOUN_HORSE",
+    "NOUN_VORTEX",		"NOUN_WORM", "NOUN_XAN oder ADJEKTIV_ANDERE ADJEKTIV_MYTHICAL/ADJEKTIV_FANTASTIC NOUN_INSECT",
+    "NOUN_LIGHT",			"NOUN_ZRUTY",
 
-    "angelic being",		"bat or bird",		"centaur",
-    "dragon",			"elemental",		"fungus or mold",
-    "gnome",			"giant humanoid",	0,
-    "jabberwock",		"Keystone Kop",		"lich",
-    "mummy",			"naga",			"ogre",
-    "pudding or ooze",		"quantum mechanic",	"rust monster or disenchanter",
-    "snake",			"troll",		"umber hulk",
-    "vampire",			"wraith",		"xorn",
-    "apelike creature",		"zombie",
+    "NOUN_ANGELIC_BEING",		"NOUN_BAT oder NOUN_BIRD",		"NOUN_CENTAUR",
+    "NOUN_DRAGON",			"NOUN_ELEMENTAL",		"NOUN_FUNGUS oder NOUN_MOLD",
+    "NOUN_GNOME",			"NOUN_GIANT_HUMANOID",	0,
+    "NOUN_JABBERWOCK",		"NOUN_KEYSTONE_KOP",		"NOUN_LICH",
+    "NOUN_MUMMY",			"NOUN_NAGA",			"NOUN_OGRE",
+    "NOUN_PUDDING oder NOUN_OOZE",		"NOUN_QUANTUM_MECHANIC",	"NOUN_RUST_MONSTER oder NOUN_DISENCHANTER",
+    "NOUN_SNAKE",			"NOUN_TROLL",		"NOUN_UMBER_HULK",
+    "NOUN_VAMPIRE",			"NOUN_WRAITH",		"NOUN_XORN",
+    "NOUN_APELIKE_CREATURE",		"NOUN_ZOMBIE",
 
-    "human or elf",		"ghost",		"golem",
-    "major demon",		"sea monster",		"lizard",
-    "long worm tail",		"mimic"
+    "NOUN_HUMAN oder NOUN_ELF",		"NOUN_GHOST",		"NOUN_GOLEM",
+    "NOUN_MAJOR_DEMON",		"NOUN_SEA_MONSTER",		"NOUN_LIZARD",
+    "NOUN_LONG_WORM_TAIL",		"NOUN_MIMIC"
 };
 
 const struct symdef def_warnsyms[WARNCOUNT] = {
-	{'0', "unknown creature causing you worry", C(CLR_WHITE)},  	/* white warning  */
-	{'1', "unknown creature causing you concern", C(CLR_RED)},	/* pink warning   */
-	{'2', "unknown creature causing you anxiety", C(CLR_RED)},	/* red warning    */
-	{'3', "unknown creature causing you disquiet", C(CLR_RED)},	/* ruby warning   */
-	{'4', "unknown creature causing you alarm",
+	{'0', "unknown creature causing you worry", C(CLR_WHITE)},  	/* white warning  */ // TODO DE
+	{'1', "unknown creature causing you concern", C(CLR_RED)},	/* pink warning   */ // TODO DE
+	{'2', "unknown creature causing you anxiety", C(CLR_RED)},	/* red warning    */ // TODO DE
+	{'3', "unknown creature causing you disquiet", C(CLR_RED)},	/* ruby warning   */ // TODO DE
+	{'4', "unknown creature causing you alarm", // TODO DE
 						C(CLR_MAGENTA)},        /* purple warning */
-	{'5', "unknown creature causing you dread",
+	{'5', "unknown creature causing you dread", // TODO DE
 						C(CLR_BRIGHT_MAGENTA)}	/* black warning  */
 };
 
@@ -204,77 +204,77 @@ const struct symdef def_warnsyms[WARNCOUNT] = {
  *  Note:  {ibm|dec|mac}_graphics[] arrays also depend on this symbol order.
  */
 const struct symdef defsyms[MAXPCHARS] = {
-/* 0*/	{' ', "dark part of a room",C(NO_COLOR)},	/* stone */
-	{'|', "wall",		C(CLR_GRAY)},	/* vwall */
-	{'-', "wall",		C(CLR_GRAY)},	/* hwall */
-	{'-', "wall",		C(CLR_GRAY)},	/* tlcorn */
-	{'-', "wall",		C(CLR_GRAY)},	/* trcorn */
-	{'-', "wall",		C(CLR_GRAY)},	/* blcorn */
-	{'-', "wall",		C(CLR_GRAY)},	/* brcorn */
-	{'-', "wall",		C(CLR_GRAY)},	/* crwall */
-	{'-', "wall",		C(CLR_GRAY)},	/* tuwall */
-	{'-', "wall",		C(CLR_GRAY)},	/* tdwall */
-/*10*/	{'|', "wall",		C(CLR_GRAY)},	/* tlwall */
-	{'|', "wall",		C(CLR_GRAY)},	/* trwall */
-	{'.', "doorway",	C(CLR_GRAY)},	/* ndoor */
-	{'-', "open door",	C(CLR_BROWN)},	/* vodoor */
-	{'|', "open door",	C(CLR_BROWN)},	/* hodoor */
-	{'+', "closed door",	C(CLR_BROWN)},	/* vcdoor */
-	{'+', "closed door",	C(CLR_BROWN)},	/* hcdoor */
-	{'#', "iron bars",	C(HI_METAL)},	/* bars */
-	{'#', "tree",		C(CLR_GREEN)},	/* tree */
-	{'.', "floor of a room",C(CLR_GRAY)},	/* room */
-/*20*/	{'#', "corridor",	C(CLR_GRAY)},	/* dark corr */
-	{'#', "lit corridor",	C(CLR_GRAY)},	/* lit corr */
-	{'<', "staircase up",	C(CLR_GRAY)},	/* upstair */
-	{'>', "staircase down",	C(CLR_GRAY)},	/* dnstair */
-	{'<', "ladder up",	C(CLR_BROWN)},	/* upladder */
-	{'>', "ladder down",	C(CLR_BROWN)},	/* dnladder */
-	{'_', "altar",		C(CLR_GRAY)},	/* altar */
-	{'|', "grave",      C(CLR_GRAY)},   /* grave */
-	{'\\', "opulent throne",C(HI_GOLD)},	/* throne */
+/* 0*/	{' ', "NOUN_DARK_PART_OF_A_ROOM",C(NO_COLOR)},	/* stone */
+	{'|', "NOUN_WALL",		C(CLR_GRAY)},	/* vwall */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* hwall */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* tlcorn */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* trcorn */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* blcorn */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* brcorn */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* crwall */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* tuwall */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* tdwall */
+/*10*/	{'|', "NOUN_WALL",		C(CLR_GRAY)},	/* tlwall */
+	{'|', "NOUN_WALL",		C(CLR_GRAY)},	/* trwall */
+	{'.', "NOUN_DOORWAY",	C(CLR_GRAY)},	/* ndoor */
+	{'-', "NOUN_OPEN_DOOR",	C(CLR_BROWN)},	/* vodoor */
+	{'|', "NOUN_OPEN_DOOR",	C(CLR_BROWN)},	/* hodoor */
+	{'+', "NOUN_CLOSED_DOOR",	C(CLR_BROWN)},	/* vcdoor */
+	{'+', "NOUN_CLOSED_DOOR",	C(CLR_BROWN)},	/* hcdoor */
+	{'#', "NOUN_IRON_BARs",	C(HI_METAL)},	/* bars */
+	{'#', "NOUN_TREE",		C(CLR_GREEN)},	/* tree */
+	{'.', "NOUN_FLOOR_OF_A_ROOM",C(CLR_GRAY)},	/* room */
+/*20*/	{'#', "NOUN_CORRIDOR",	C(CLR_GRAY)},	/* dark corr */
+	{'#', "NOUN_LIT_CORRIDOR",	C(CLR_GRAY)},	/* lit corr */
+	{'<', "NOUN_STAIRCASE_UP",	C(CLR_GRAY)},	/* upstair */
+	{'>', "NOUN_STAIRCASE_DOWN",	C(CLR_GRAY)},	/* dnstair */
+	{'<', "NOUN_LADDER_UP",	C(CLR_BROWN)},	/* upladder */
+	{'>', "NOUN_LADDER_DOWN",	C(CLR_BROWN)},	/* dnladder */
+	{'_', "NOUN_ALTAR",		C(CLR_GRAY)},	/* altar */
+	{'|', "NOUN_GRAVE",      C(CLR_GRAY)},   /* grave */
+	{'\\', "NOUN_OPULENT_THRONE",C(HI_GOLD)},	/* throne */
 #ifdef SINKS
-	{'#', "sink",		C(CLR_GRAY)},	/* sink */
+	{'#', "NOUN_SINK",		C(CLR_GRAY)},	/* sink */
 #else
 	{'#', "",		C(CLR_GRAY)},	/* sink */
 #endif
-/*30*/	{'{', "fountain",	C(CLR_BLUE)},	/* fountain */
-	{'}', "water",		C(CLR_BLUE)},	/* pool */
-	{'.', "ice",		C(CLR_CYAN)},	/* ice */
-	{'}', "molten lava",	C(CLR_RED)},	/* lava */
-	{'.', "lowered drawbridge",C(CLR_BROWN)},	/* vodbridge */
-	{'.', "lowered drawbridge",C(CLR_BROWN)},	/* hodbridge */
-	{'#', "raised drawbridge",C(CLR_BROWN)},/* vcdbridge */
-	{'#', "raised drawbridge",C(CLR_BROWN)},/* hcdbridge */
-	{' ', "air",		C(CLR_CYAN)},	/* open air */
-	{'#', "cloud",		C(CLR_GRAY)},	/* [part of] a cloud */
-/*40*/	{'}', "water",		C(CLR_BLUE)},	/* under water */
-	{'^', "arrow trap",	C(HI_METAL)},	/* trap */
-	{'^', "dart trap",	C(HI_METAL)},	/* trap */
-	{'^', "falling rock trap",C(CLR_GRAY)},	/* trap */
-	{'^', "squeaky board",	C(CLR_BROWN)},	/* trap */
-	{'^', "bear trap",	C(HI_METAL)},	/* trap */
-	{'^', "land mine",	C(CLR_RED)},	/* trap */
-	{'^', "rolling boulder trap",	C(CLR_GRAY)},	/* trap */
-	{'^', "sleeping gas trap",C(HI_ZAP)},	/* trap */
-	{'^', "rust trap",	C(CLR_BLUE)},	/* trap */
-/*50*/	{'^', "fire trap",	C(CLR_ORANGE)},	/* trap */
-	{'^', "pit",		C(CLR_BLACK)},	/* trap */
-	{'^', "spiked pit",	C(CLR_BLACK)},	/* trap */
-	{'^', "hole",	C(CLR_BROWN)},	/* trap */
-	{'^', "trap door",	C(CLR_BROWN)},	/* trap */
-	{'^', "teleportation trap", C(CLR_MAGENTA)},	/* trap */
-	{'^', "level teleporter", C(CLR_MAGENTA)},	/* trap */
-	{'^', "magic portal",	C(CLR_BRIGHT_MAGENTA)},	/* trap */
+/*30*/	{'{', "NOUN_FOUNTAIN",	C(CLR_BLUE)},	/* fountain */
+	{'}', "NOUN_WATER",		C(CLR_BLUE)},	/* pool */
+	{'.', "NOUN_ICE",		C(CLR_CYAN)},	/* ice */
+	{'}', "NOUN_MOLTEN_LAVA",	C(CLR_RED)},	/* lava */
+	{'.', "NOUN_LOWERED_DRAWBRIDGE",C(CLR_BROWN)},	/* vodbridge */
+	{'.', "NOUN_LOWERED_DRAWBRIDGE",C(CLR_BROWN)},	/* hodbridge */
+	{'#', "NOUN_RAISED_DRAWBRIDGE",C(CLR_BROWN)},/* vcdbridge */
+	{'#', "NOUN_RAISED_DRAWBRIDGE",C(CLR_BROWN)},/* hcdbridge */
+	{' ', "NOUN_AIR",		C(CLR_CYAN)},	/* open air */
+	{'#', "NOUN_CLOUD",		C(CLR_GRAY)},	/* [part of] a cloud */
+/*40*/	{'}', "NOUN_WATER",		C(CLR_BLUE)},	/* under water */
+	{'^', "NOUN_ARROW_TRAP",	C(HI_METAL)},	/* trap */
+	{'^', "NOUN_DART_TRAP",	C(HI_METAL)},	/* trap */
+	{'^', "NOUN_FALLING_ROCK_TRAP",C(CLR_GRAY)},	/* trap */
+	{'^', "NOUN_SQUEAKY_BOARD",	C(CLR_BROWN)},	/* trap */
+	{'^', "NOUN_BEAR_TRAP",	C(HI_METAL)},	/* trap */
+	{'^', "NOUN_LAND_MINE",	C(CLR_RED)},	/* trap */
+	{'^', "NOUN_ROLLING_BOULDER_TRAP",	C(CLR_GRAY)},	/* trap */
+	{'^', "NOUN_SLEEPING_GAS_TRAP",C(HI_ZAP)},	/* trap */
+	{'^', "NOUN_RUST_TRAP",	C(CLR_BLUE)},	/* trap */
+/*50*/	{'^', "NOUN_FIRE_TRAP",	C(CLR_ORANGE)},	/* trap */
+	{'^', "NOUN_PIT",		C(CLR_BLACK)},	/* trap */
+	{'^', "NOUN_SPIKED_PIT",	C(CLR_BLACK)},	/* trap */
+	{'^', "NOUN_HOLE",	C(CLR_BROWN)},	/* trap */
+	{'^', "NOUN_TRAP_DOOR",	C(CLR_BROWN)},	/* trap */
+	{'^', "NOUN_TELEPORTATION_TRAP", C(CLR_MAGENTA)},	/* trap */
+	{'^', "NOUN_LEVEL_TELEPORTER", C(CLR_MAGENTA)},	/* trap */
+	{'^', "NOUN_MAGIC_PORTAL",	C(CLR_BRIGHT_MAGENTA)},	/* trap */
 	{'"', "web",		C(CLR_GRAY)},	/* web */
-	{'^', "statue trap",	C(CLR_GRAY)},	/* trap */
-/*60*/	{'^', "magic trap",	C(HI_ZAP)},	/* trap */
-	{'^', "anti-magic field", C(HI_ZAP)},	/* trap */
-	{'^', "polymorph trap",	C(CLR_BRIGHT_GREEN)},	/* trap */
-	{'|', "wall",		C(CLR_GRAY)},	/* vbeam */
-	{'-', "wall",		C(CLR_GRAY)},	/* hbeam */
-	{'\\',"wall",		C(CLR_GRAY)},	/* lslant */
-	{'/', "wall",		C(CLR_GRAY)},	/* rslant */
+	{'^', "NOUN_STATUE_TRAP",	C(CLR_GRAY)},	/* trap */
+/*60*/	{'^', "NOUN_MAGIC_TRAP",	C(HI_ZAP)},	/* trap */
+	{'^', "NOUN_ANTI_MAGIC_FIELD", C(HI_ZAP)},	/* trap */
+	{'^', "NOUN_POLYMORPH_TRAP",	C(CLR_BRIGHT_GREEN)},	/* trap */
+	{'|', "NOUN_WALL",		C(CLR_GRAY)},	/* vbeam */
+	{'-', "NOUN_WALL",		C(CLR_GRAY)},	/* hbeam */
+	{'\\',"NOUN_WALL",		C(CLR_GRAY)},	/* lslant */
+	{'/', "NOUN_WALL",		C(CLR_GRAY)},	/* rslant */
 	{'*', "",		C(CLR_WHITE)},	/* dig beam */
 	{'!', "",		C(CLR_WHITE)},	/* camera flash beam */
 	{')', "",		C(HI_WOOD)},	/* boomerang open left */

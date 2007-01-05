@@ -15,6 +15,7 @@ STATIC_DCL void FDECL(mk_mplayer_armor, (struct monst *, SHORT_P));
  * Same first name is entered once within each team.
  */
 static const char *developers[] = {
+// TODO DE
 	/* devteam */
 	"Dave", "Dean", "Eric", "Izchak", "Janet", "Jessie",
 	"Ken", "Kevin", "Michael", "Mike", "Pat", "Paul", "Steve", "Timo",
@@ -73,16 +74,16 @@ char *nam;
 
 	devnam = dev_name();
 	if (!devnam)
-	    Strcpy(nam, fmlkind ? "Eve" : "Adam");
-	else if (fmlkind && !!strcmp(devnam, "Janet"))
-	    Strcpy(nam, rn2(2) ? "Maud" : "Eve");
+	    Strcpy(nam, fmlkind ? "Eve" : "Adam"); /* EN Strcpy(nam, fmlkind ? "Eve" : "Adam"); */ // TODO DE
+	else if (fmlkind && !!strcmp(devnam, "Janet")) /* EN else if (fmlkind && !!strcmp(devnam, "Janet")) */ // TODO DE
+	    Strcpy(nam, rn2(2) ? "Maud" : "Eve"); /* EN Strcpy(nam, rn2(2) ? "Maud" : "Eve"); */ // TODO DE
 	else Strcpy(nam, devnam);
 
-	if (fmlkind || !strcmp(nam, "Janet"))
+	if (fmlkind || !strcmp(nam, "Janet")) /* EN if (fmlkind || !strcmp(nam, "Janet")) */ // TODO DE
 	    mtmp->female = 1;
 	else
 	    mtmp->female = 0;
-	Strcat(nam, " the ");
+	Strcat(nam, " the "); /* EN Strcat(nam, " the "); */ // TODO DE
 	Strcat(nam, rank_of((int)mtmp->m_lev,
 			    monsndx(mtmp->data),
 			    (boolean)mtmp->female));
@@ -320,6 +321,7 @@ mplayer_talk(mtmp)
 register struct monst *mtmp;
 {
 	static const char *same_class_msg[3] = {
+	// TODO DE
 		"I can't win, and neither will you!",
 		"You don't deserve to win!",
 		"Mine should be the honor, not yours!",
@@ -331,7 +333,7 @@ register struct monst *mtmp;
 
 	if(mtmp->mpeaceful) return; /* will drop to humanoid talk */
 
-	pline("Talk? -- %s",
+	pline("Talk? -- %s", /* EN pline("Talk? -- %s", */ // TODO DE
 		(mtmp->data == &mons[urole.malenum] ||
 		mtmp->data == &mons[urole.femalenum]) ?
 		same_class_msg[rn2(3)] : other_class_msg[rn2(3)]);

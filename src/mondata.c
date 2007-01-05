@@ -205,7 +205,7 @@ struct obj *obj;		/* aatyp == AT_WEAP, AT_SPIT */
 	    for ( ; o; o = o->nobj)
 		if ((o->owornmask & W_ARMH) &&
 		    (s = OBJ_DESCR(objects[o->otyp])) != (char *)0 &&
-		    !strcmp(s, "visored helmet"))
+		    !strcmp(s, "visored helmet")) /* EN !strcmp(s, "visored helmet")) */ // TODO DE
 		    return FALSE;
 	}
 
@@ -421,27 +421,28 @@ const char *in_str;
 
 	str = strcpy(buf, in_str);
 
-	if (!strncmp(str, "a ", 2)) str += 2;
-	else if (!strncmp(str, "an ", 3)) str += 3;
+	if (!strncmp(str, "a ", 2)) str += 2; /* EN if (!strncmp(str, "a ", 2)) str += 2; */ // TODO DE
+	else if (!strncmp(str, "an ", 3)) str += 3; /* EN else if (!strncmp(str, "an ", 3)) str += 3; */ // TODO DE
 
 	slen = strlen(str);
 	term = str + slen;
 
-	if ((s = strstri(str, "vortices")) != 0)
-	    Strcpy(s+4, "ex");
+	if ((s = strstri(str, "vortices")) != 0) /* EN if ((s = strstri(str, "vortices")) != 0) */ // TODO DE
+	    Strcpy(s+4, "ex"); /* EN Strcpy(s+4, "ex"); */ // TODO DE
 	/* be careful with "ies"; "priest", "zombies" */
-	else if (slen > 3 && !strcmpi(term-3, "ies") &&
-		    (slen < 7 || strcmpi(term-7, "zombies")))
+	else if (slen > 3 && !strcmpi(term-3, "ies") && /* EN else if (slen > 3 && !strcmpi(term-3, "ies") && */ // TODO DE
+		    (slen < 7 || strcmpi(term-7, "zombies"))) /* EN (slen < 7 || strcmpi(term-7, "zombies"))) */ // TODO DE
 	    Strcpy(term-3, "y");
 	/* luckily no monster names end in fe or ve with ves plurals */
-	else if (slen > 3 && !strcmpi(term-3, "ves"))
-	    Strcpy(term-3, "f");
+	else if (slen > 3 && !strcmpi(term-3, "ves")) /* EN else if (slen > 3 && !strcmpi(term-3, "ves")) */ // TODO DE
+	    Strcpy(term-3, "f"); /* EN Strcpy(term-3, "f"); */ // TODO DE
 
 	slen = strlen(str); /* length possibly needs recomputing */
 
     {
 	static const struct alt_spl { const char* name; short pm_val; }
 	    names[] = {
+			// TODO DE
 	    /* Alternate spellings */
 		{ "grey dragon",	PM_GRAY_DRAGON },
 		{ "baby grey dragon",	PM_BABY_GRAY_DRAGON },
@@ -660,6 +661,7 @@ struct monst *mtmp;
     else return(mtmp->data);
 }
 
+// TODO DE
 static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" };
 static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" };
 static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" };
@@ -720,16 +722,16 @@ struct attack *mattk;
     case PM_FLAMING_SPHERE:
     case PM_FIRE_VORTEX:
     case PM_FIRE_ELEMENTAL:
-	what = "already on fire";
+	what = "already on fire"; /* EN what = "already on fire"; */ // TODO DE
 	break;
     case PM_WATER_ELEMENTAL:
     case PM_FOG_CLOUD:
     case PM_STEAM_VORTEX:
-	what = "boiling";
+	what = "boiling"; /* EN what = "boiling"; */ // TODO DE
 	break;
     case PM_ICE_VORTEX:
     case PM_GLASS_GOLEM:
-	what = "melting";
+	what = "melting"; /* EN what = "melting"; */ // TODO DE
 	break;
     case PM_STONE_GOLEM:
     case PM_CLAY_GOLEM:
@@ -738,10 +740,10 @@ struct attack *mattk;
     case PM_EARTH_ELEMENTAL:
     case PM_DUST_VORTEX:
     case PM_ENERGY_VORTEX:
-	what = "heating up";
+	what = "heating up"; /* EN what = "heating up"; */ // TODO DE
 	break;
     default:
-	what = (mattk->aatyp == AT_HUGS) ? "being roasted" : "on fire";
+	what = (mattk->aatyp == AT_HUGS) ? "being roasted" : "on fire"; /* EN what = (mattk->aatyp == AT_HUGS) ? "being roasted" : "on fire"; */ // TODO DE
 	break;
     }
     return what;

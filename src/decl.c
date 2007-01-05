@@ -69,13 +69,13 @@ NEARDATA char tune[6] = DUMMY;
 const char *occtxt = DUMMY;
 const char quitchars[] = " \r\n\033";
 const char vowels[] = "aeiouAEIOU";
-const char ynchars[] = "yn";
-const char ynqchars[] = "ynq";
-const char ynaqchars[] = "ynaq";
-const char ynNaqchars[] = "yn#aq";
+const char ynchars[] = "yn"; /* EN const char ynchars[] = "yn"; */ // TODO DE
+const char ynqchars[] = "ynq"; /* EN const char ynqchars[] = "ynq"; */ // TODO DE
+const char ynaqchars[] = "ynaq"; /* EN const char ynaqchars[] = "ynaq"; */ // TODO DE
+const char ynNaqchars[] = "yn#aq"; /* EN const char ynNaqchars[] = "yn#aq"; */ // TODO DE
 NEARDATA long yn_number = 0L;
 
-const char disclosure_options[] = "iavgc";
+const char disclosure_options[] = "iavgc"; /* EN const char disclosure_options[] = "iavgc"; */ // TODO DE
 
 #if defined(MICRO) || defined(WIN32)
 char hackdir[PATHLEN];		/* where rumors, help, record are */
@@ -219,13 +219,13 @@ char dump_fn[PL_PSIZ] = DUMMY;
 #endif /* DUMP_LOG */
 
 NEARDATA struct c_color_names c_color_names = {
-	"black", "amber", "golden",
-	"light blue", "red", "green",
-	"silver", "blue", "purple",
-	"white"
+	"black", "amber", "golden", /* EN "black", "amber", "golden", */ // TODO DE
+	"light blue", "red", "green", /* EN "light blue", "red", "green", */ // TODO DE
+	"silver", "blue", "purple", /* EN "silver", "blue", "purple", */ // TODO DE
+	"white" /* EN "white" */ // TODO DE
 };
 
-const char *c_obj_colors[] = {
+const char *c_obj_colors[] = { // TODO DE
 	"black",		/* CLR_BLACK */
 	"red",			/* CLR_RED */
 	"green",		/* CLR_GREEN */
@@ -249,19 +249,19 @@ struct menucoloring *menu_colorings = 0;
 #endif
 
 struct c_common_strings c_common_strings = {
-	"Nothing happens.",		"That's enough tries!",
-	"That is a silly thing to %s.",	"shudder for a moment.",
-	"etwas", "NOUN_ETWAS", "You can move again.", "Never mind.",
-	"vision quickly clears."
+	"Nothing happens.",		"That's enough tries!", /* EN "Nothing happens.",		"That's enough tries!", */ // TODO DE
+	"That is a silly thing to %s.",	"shudder for a moment.", /* EN "That is a silly thing to %s.",	"shudder for a moment.", */ // TODO DE
+	"etwas", "NOUN_ETWAS", "You can move again.", "Never mind.", /* EN "etwas", "NOUN_ETWAS", "You can move again.", "Never mind.", */ // TODO DE
+	"vision quickly clears." /* EN "vision quickly clears." */ // TODO DE
 };
 
 /* NOTE: the order of these words exactly corresponds to the
    order of oc_material values #define'd in objclass.h. */
 const char *materialnm[] = {
-	"mysterious", "liquid", "wax", "organic", "flesh",
-	"paper", "cloth", "leather", "wooden", "bone", "dragonhide",
-	"iron", "metal", "copper", "silver", "gold", "platinum", "mithril",
-	"plastic", "glass", "gemstone", "stone"
+	"mysterious", "liquid", "wax", "organic", "flesh", /* EN "mysterious", "liquid", "wax", "organic", "flesh", */ // TODO DE
+	"paper", "cloth", "leather", "wooden", "bone", "dragonhide", /* EN "paper", "cloth", "leather", "wooden", "bone", "dragonhide", */ // TODO DE
+	"iron", "metal", "copper", "silver", "gold", "platinum", "mithril", /* EN "iron", "metal", "copper", "silver", "gold", "platinum", "mithril", */ // TODO DE
+	"plastic", "glass", "gemstone", "stone" /* EN "plastic", "glass", "gemstone", "stone" */ // TODO DE
 };
 
 /* Vision */

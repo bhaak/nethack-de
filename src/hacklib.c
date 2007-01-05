@@ -151,12 +151,12 @@ s_suffix(s)		/* return a name converted to possessive */
     Static char buf[BUFSZ];
 
     Strcpy(buf, s);
-    if(!strcmpi(buf, "it"))
-	Strcat(buf, "s");
-    else if(*(eos(buf)-1) == 's')
-	Strcat(buf, "'");
+    if(!strcmpi(buf, "it")) /* EN if(!strcmpi(buf, "it")) */ // TODO DE
+	Strcat(buf, "s"); /* EN Strcat(buf, "s"); */ // TODO DE
+    else if(*(eos(buf)-1) == 's') /* EN else if(*(eos(buf)-1) == 's') */ // TODO DE
+	Strcat(buf, "'"); /* EN Strcat(buf, "'"); */ // TODO DE
     else
-	Strcat(buf, "'s");
+	Strcat(buf, "'s"); /* EN Strcat(buf, "'s"); */ // TODO DE
     return buf;
 }
 

@@ -77,6 +77,7 @@ STATIC_DCL void FDECL(nsb_unmung_line,(char*));
 
 /* must fit with end.c; used in rip.c */
 NEARDATA const char * const killed_by_prefix[] = {
+// TODO DE
 	"killed by ", "choked on ", "poisoned by ", "died of ", "drowned in ",
 	"burned by ", "dissolved in ", "crushed to death by ", "petrified by ",
 	"turned to slime by ", "killed by ", "", "", "", "", ""
@@ -164,7 +165,7 @@ struct toptenentry *tt;
 		    if ((i = str2role(tt->plrole)) >= 0)
 			Strcpy(tt->plrole, roles[i].filecode);
 		    Strcpy(tt->plrace, "?");
-		    Strcpy(tt->plgend, (tt->plgend[0] == 'M') ? "Mal" : "Fem");
+		    Strcpy(tt->plgend, (tt->plgend[0] == 'M') ? "Mal" : "Fem"); /* EN Strcpy(tt->plgend, (tt->plgend[0] == 'M') ? "Mal" : "Fem"); */ // TODO DE
 		    Strcpy(tt->plalign, "?");
 		} else if (fscanf(rfile, fmt33,
 				tt->plrole, tt->plrace, tt->plgend,
@@ -366,8 +367,8 @@ int how;
 		char pbuf[BUFSZ];
 		topten_print("");
 		Sprintf(pbuf,
-	      "Since you were in %s mode, the score list will not be checked.",
-		    wizard ? "wizard" : "discover");
+	      "Since you were in %s mode, the score list will not be checked.", /* EN "Since you were in %s mode, the score list will not be checked.", */ // TODO DE
+		    wizard ? "wizard" : "discover"); /* EN wizard ? "wizard" : "discover"); */ // TODO DE
 		topten_print(pbuf);
 #ifdef DUMP_LOG
 		if (dump_fn[0]) {
@@ -438,7 +439,7 @@ int how;
 			HUP {
 			    char pbuf[BUFSZ];
 			    Sprintf(pbuf,
-			  "You didn't beat your previous score of %ld points.",
+			  "You didn't beat your previous score of %ld points.", /* EN "You didn't beat your previous score of %ld points.", */ // TODO DE
 				    t1->points);
 			    topten_print(pbuf);
 			    topten_print("");
@@ -470,7 +471,7 @@ int how;
 #else
 		(void) fclose(rfile);
 		if(!(rfile = fopen_datafile(RECORD, "w", SCOREPREFIX))){
-			HUP raw_print("Cannot write record file");
+			HUP raw_print("Cannot write record file"); /* EN HUP raw_print("Cannot write record file"); */ // TODO DE
 			unlock_file(RECORD);
 			free_ttlist(tt_head);
 			goto destroywin;
@@ -478,14 +479,14 @@ int how;
 #endif	/* UPDATE_RECORD_IN_PLACE */
 		if(!done_stopprint) if(rank0 > 0){
 		    if(rank0 <= 10) {
-			topten_print("You made the top ten list!");
+			topten_print("You made the top ten list!"); /* EN topten_print("You made the top ten list!"); */ // TODO DE
 #ifdef DUMP_LOG
-			dump("", "You made the top ten list!");
+			dump("", "You made the top ten list!"); /* EN dump("", "You made the top ten list!"); */ // TODO DE
 #endif
 		    } else {
 			char pbuf[BUFSZ];
 			Sprintf(pbuf,
-			  "You reached the %d%s place on the top %d list.",
+			  "You reached the %d%s place on the top %d list.", /* EN "You reached the %d%s place on the top %d list.", */ // TODO DE
 				rank0, ordin(rank0), ENTRYMAX);
 			topten_print(pbuf);
 #ifdef DUMP_LOG
@@ -579,10 +580,10 @@ outheader()
 	char linebuf[BUFSZ];
 	register char *bp;
 
-	Strcpy(linebuf, " No  Points     Name");
+	Strcpy(linebuf, " No  Points     Name"); /* EN Strcpy(linebuf, " No  Points     Name"); */ // TODO DE
 	bp = eos(linebuf);
 	while(bp < linebuf + COLNO - 9) *bp++ = ' ';
-	Strcpy(bp, "Hp [max]");
+	Strcpy(bp, "Hp [max]"); /* EN Strcpy(bp, "Hp [max]"); */ // TODO DE
 	topten_print(linebuf);
 #ifdef DUMP_LOG
 	dump("", linebuf);
@@ -619,65 +620,65 @@ boolean so;
 		Sprintf(eos(linebuf), "-%s ", t1->plalign);
 	else
 		Strcat(linebuf, " ");
-	if (!strncmp("escaped", t1->death, 7)) {
-	    Sprintf(eos(linebuf), "escaped the dungeon %s[max level %d]",
+	if (!strncmp("escaped", t1->death, 7)) { /* EN if (!strncmp("escaped", t1->death, 7)) { */ // TODO DE
+	    Sprintf(eos(linebuf), "escaped the dungeon %s[max level %d]", /* EN Sprintf(eos(linebuf), "escaped the dungeon %s[max level %d]", */ // TODO DE
 		    !strncmp(" (", t1->death + 7, 2) ? t1->death + 7 + 2 : "",
 		    t1->maxlvl);
 	    /* fixup for closing paren in "escaped... with...Amulet)[max..." */
 	    if ((bp = index(linebuf, ')')) != 0)
 		*bp = (t1->deathdnum == astral_level.dnum) ? '\0' : ' ';
 	    second_line = FALSE;
-	} else if (!strncmp("ascended", t1->death, 8)) {
-	    Sprintf(eos(linebuf), "ascended to demigod%s-hood",
-		    (t1->plgend[0] == 'F') ? "dess" : "");
+	} else if (!strncmp("ascended", t1->death, 8)) { /* EN } else if (!strncmp("ascended", t1->death, 8)) { */ // TODO DE
+	    Sprintf(eos(linebuf), "ascended to demigod%s-hood", /* EN Sprintf(eos(linebuf), "ascended to demigod%s-hood", */ // TODO DE
+		    (t1->plgend[0] == 'F') ? "dess" : ""); /* EN (t1->plgend[0] == 'F') ? "dess" : ""); */ // TODO DE
 	    second_line = FALSE;
 	} else {
-	    if (!strncmp(t1->death, "quit", 4)) {
-		Strcat(linebuf, "quit");
+	    if (!strncmp(t1->death, "quit", 4)) { /* EN if (!strncmp(t1->death, "quit", 4)) { */ // TODO DE
+		Strcat(linebuf, "quit"); /* EN Strcat(linebuf, "quit"); */ // TODO DE
 		second_line = FALSE;
-	    } else if (!strncmp(t1->death, "starv", 5)) {
-		Strcat(linebuf, "starved to death");
+	    } else if (!strncmp(t1->death, "starv", 5)) { /* EN } else if (!strncmp(t1->death, "starv", 5)) { */ // TODO DE
+		Strcat(linebuf, "starved to death"); /* EN Strcat(linebuf, "starved to death"); */ // TODO DE
 		second_line = FALSE;
-	    } else if (!strncmp(t1->death, "choked", 6)) {
-		Sprintf(eos(linebuf), "choked on h%s food",
-			(t1->plgend[0] == 'F') ? "er" : "is");
-	    } else if (!strncmp(t1->death, "poisoned", 8)) {
-		Strcat(linebuf, "was poisoned");
-	    } else if (!strncmp(t1->death, "crushed", 7)) {
-		Strcat(linebuf, "was crushed to death");
-	    } else if (!strncmp(t1->death, "petrified by ", 13)) {
-		Strcat(linebuf, "turned to stone");
-	    } else Strcat(linebuf, "died");
+	    } else if (!strncmp(t1->death, "choked", 6)) { /* EN } else if (!strncmp(t1->death, "choked", 6)) { */ // TODO DE
+		Sprintf(eos(linebuf), "choked on h%s food", /* EN Sprintf(eos(linebuf), "choked on h%s food", */ // TODO DE
+			(t1->plgend[0] == 'F') ? "er" : "is"); /* EN (t1->plgend[0] == 'F') ? "er" : "is"); */ // TODO DE
+	    } else if (!strncmp(t1->death, "poisoned", 8)) { /* EN } else if (!strncmp(t1->death, "poisoned", 8)) { */ // TODO DE
+		Strcat(linebuf, "was poisoned"); /* EN Strcat(linebuf, "was poisoned"); */ // TODO DE
+			} else if (!strncmp(t1->death, "crushed", 7)) { /* EN } else if (!strncmp(t1->death, "crushed", 7)) { */ // TODO DE
+		Strcat(linebuf, "was crushed to death"); /* EN Strcat(linebuf, "was crushed to death"); */ // TODO DE
+	    } else if (!strncmp(t1->death, "petrified by ", 13)) { /* EN } else if (!strncmp(t1->death, "petrified by ", 13)) { */ // TODO DE
+		Strcat(linebuf, "turned to stone"); /* EN Strcat(linebuf, "turned to stone"); */ // TODO DE
+	    } else Strcat(linebuf, "died"); /* EN } else Strcat(linebuf, "died"); */ // TODO DE
 
 	    if (t1->deathdnum == astral_level.dnum) {
-		const char *arg, *fmt = " on the Plane of %s";
+		const char *arg, *fmt = " on the Plane of %s"; /* EN const char *arg, *fmt = " on the Plane of %s"; */ // TODO DE
 
 		switch (t1->deathlev) {
 		case -5:
-			fmt = " on the %s Plane";
-			arg = "Astral";	break;
+			fmt = " on the %s Plane"; /* EN fmt = " on the %s Plane"; */ // TODO DE
+			arg = "Astral";	break; /* EN arg = "Astral";	break; */ // TODO DE
 		case -4:
-			arg = "Water";	break;
+			arg = "Water";	break; /* EN arg = "Water";	break; */ // TODO DE
 		case -3:
-			arg = "Fire";	break;
+			arg = "Fire";	break; /* EN arg = "Fire";	break; */ // TODO DE
 		case -2:
-			arg = "Air";	break;
+			arg = "Air";	break; /* EN arg = "Air";	break; */ // TODO DE
 		case -1:
-			arg = "Earth";	break;
+			arg = "Earth";	break; /* EN arg = "Earth";	break; */ // TODO DE
 		default:
-			arg = "Void";	break;
+			arg = "Void";	break; /* EN arg = "Void";	break; */ // TODO DE
 		}
 		Sprintf(eos(linebuf), fmt, arg);
 	    } else {
-		Sprintf(eos(linebuf), " in %s", dungeons[t1->deathdnum].dname);
+		Sprintf(eos(linebuf), " in %s", dungeons[t1->deathdnum].dname); /* EN Sprintf(eos(linebuf), " in %s", dungeons[t1->deathdnum].dname); */ // TODO DE
 		if (t1->deathdnum != knox_level.dnum)
-		    Sprintf(eos(linebuf), " on level %d", t1->deathlev);
+		    Sprintf(eos(linebuf), " on level %d", t1->deathlev); /* EN Sprintf(eos(linebuf), " on level %d", t1->deathlev); */ // TODO DE
 		if (t1->deathlev != t1->maxlvl)
-		    Sprintf(eos(linebuf), " [max %d]", t1->maxlvl);
+		    Sprintf(eos(linebuf), " [max %d]", t1->maxlvl); /* EN Sprintf(eos(linebuf), " [max %d]", t1->maxlvl); */ // TODO DE
 	    }
 
 	    /* kludge for "quit while already on Charon's boat" */
-	    if (!strncmp(t1->death, "quit ", 5))
+	    if (!strncmp(t1->death, "quit ", 5)) /* EN if (!strncmp(t1->death, "quit ", 5)) */ // TODO DE
 		Strcat(linebuf, t1->death + 4);
 	}
 	Strcat(linebuf, ".");
@@ -690,7 +691,7 @@ boolean so;
 	if (t1->hp <= 0) hpbuf[0] = '-', hpbuf[1] = '\0';
 	else Sprintf(hpbuf, "%d", t1->hp);
 	/* beginning of hp column after padding (not actually padded yet) */
-	hppos = COLNO - (sizeof("  Hp [max]")-1); /* sizeof(str) includes \0 */
+	hppos = COLNO - (sizeof("  Hp [max]")-1); /* sizeof(str) includes \0 */ /* EN hppos = COLNO - (sizeof("  Hp [max]")-1); /* sizeof(str) includes \0 */ */ // TODO DE
 	while (lngr >= hppos) {
 	    for(bp = eos(linebuf);
 		    !(*bp == ' ' && (bp-linebuf < hppos));
@@ -698,7 +699,7 @@ boolean so;
 		;
 	    /* special case: if about to wrap in the middle of maximum
 	       dungeon depth reached, wrap in front of it instead */
-	    if (bp > linebuf + 5 && !strncmp(bp - 5, " [max", 5)) bp -= 5;
+	    if (bp > linebuf + 5 && !strncmp(bp - 5, " [max", 5)) bp -= 5; /* EN if (bp > linebuf + 5 && !strncmp(bp - 5, " [max", 5)) bp -= 5; */ // TODO DE
 	    Strcpy(linebuf3, bp+1);
 	    *bp = 0;
 	    if (so) {
@@ -893,11 +894,11 @@ char **argv;
 		    (void) outentry(rank, t1, 0);
 	    }
 	} else {
-	    Sprintf(pbuf, "Cannot find any %sentries for ",
-				current_ver ? "current " : "");
-	    if (playerct < 1) Strcat(pbuf, "you.");
+	    Sprintf(pbuf, "Cannot find any %sentries for ", /* EN Sprintf(pbuf, "Cannot find any %sentries for ", */ // TODO DE
+				current_ver ? "current " : ""); /* EN current_ver ? "current " : ""); */ // TODO DE
+	    if (playerct < 1) Strcat(pbuf, "you."); /* EN if (playerct < 1) Strcat(pbuf, "you."); */ // TODO DE
 	    else {
-		if (playerct > 1) Strcat(pbuf, "any of ");
+		if (playerct > 1) Strcat(pbuf, "any of "); /* EN if (playerct > 1) Strcat(pbuf, "any of "); */ // TODO DE
 		for (i = 0; i < playerct; i++) {
 		    /* stop printing players if there are too many to fit */
 		    if (strlen(pbuf) + strlen(players[i]) + 2 >= BUFSZ) {
@@ -915,10 +916,10 @@ char **argv;
 		}
 	    }
 	    raw_print(pbuf);
-	    raw_printf("Usage: %s -s [-v] <playertypes> [maxrank] [playernames]",
+	    raw_printf("Usage: %s -s [-v] <playertypes> [maxrank] [playernames]", /* EN raw_printf("Usage: %s -s [-v] <playertypes> [maxrank] [playernames]", */ // TODO DE
 
 			 hname);
-	    raw_printf("Player types are: [-p role] [-r race]");
+	    raw_printf("Player types are: [-p role] [-r race]"); /* EN raw_printf("Player types are: [-p role] [-r race]"); */ // TODO DE
 	}
 	free_ttlist(tt_head);
 #ifdef	AMIGA

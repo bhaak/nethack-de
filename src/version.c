@@ -71,7 +71,7 @@ boolean complain;
 #endif
 	  ) {
 	    if (complain)
-		pline("Version mismatch for file \"%s\".", filename);
+		pline("Version mismatch for file \"%s\".", filename); /* EN pline("Version mismatch for file \"%s\".", filename); */ // TODO DE
 	    return FALSE;
 	} else if (
 #ifndef IGNORED_FEATURES
@@ -83,7 +83,7 @@ boolean complain;
 		   version_data->entity_count != VERSION_SANITY1 ||
 		   version_data->struct_sizes != VERSION_SANITY2) {
 	    if (complain)
-		pline("Configuration incompatibility for file \"%s\".",
+		pline("Configuration incompatibility for file \"%s\".", /* EN pline("Configuration incompatibility for file \"%s\".", */ // TODO DE
 		      filename);
 	    return FALSE;
 	}
@@ -105,7 +105,7 @@ const char *name;
     minit();		/* ZEROCOMP */
     if (rlen == 0) {
 	if (verbose) {
-	    pline("File \"%s\" is empty?", name);
+	    pline("File \"%s\" is empty?", name); /* EN pline("File \"%s\" is empty?", name); */ // TODO DE
 	    wait_synch();
 	}
 	return FALSE;

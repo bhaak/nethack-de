@@ -26,6 +26,7 @@
  */
 /* http://www.tamoon.ch/titel.html */
 const struct Role roles[] = {
+// TODO DE
 {	{"Archeologist", 0}, {
 	{"Digger",      0},
 	{"Field Worker",0},
@@ -52,6 +53,7 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },14,	/* Energy */
 	10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING,   -4
 },
+// TODO DE
 {	{"Barbarian", 0}, {
 	{"Plunderer",   "Plunderess"},
 	{"Pillager",    0},
@@ -78,6 +80,7 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },10,	/* Energy */
 	10, 14, 0, 0,  8, A_INT, SPE_HASTE_SELF,      -4
 },
+// TODO DE
 {	{"Caveman", "Cavewoman"}, {
 	{"Troglodyte",  0},
 	{"Aborigine",   0},
@@ -104,6 +107,7 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },10,	/* Energy */
 	0, 12, 0, 1,  8, A_INT, SPE_DIG,             -4
 },
+// TODO DE
 {	{"Healer", 0}, {
 	{"Rhizotomist",    0},
 	{"Empiric",        0},
@@ -129,6 +133,7 @@ const struct Role roles[] = {
 	{  1, 4,  0, 1,  0, 2 },20,	/* Energy */
 	10, 3,-3, 2, 10, A_WIS, SPE_CURE_SICKNESS,   -4
 },
+// TODO DE
 {	{"Knight", 0}, {
 	{"Gallant",     0},
 	{"Esquire",     0},
@@ -154,6 +159,7 @@ const struct Role roles[] = {
 	{  1, 4,  0, 1,  0, 2 },10,	/* Energy */
 	10, 8,-2, 0,  9, A_WIS, SPE_TURN_UNDEAD,     -4
 },
+// TODO DE
 {	{"Monk", 0}, {
 	{"Candidate",         0},
 	{"Novice",            0},
@@ -181,6 +187,7 @@ const struct Role roles[] = {
 	{  2, 2,  0, 2,  0, 2 },10,	/* Energy */
 	10, 8,-2, 2, 20, A_WIS, SPE_RESTORE_ABILITY, -4
 },
+// TODO DE
 {	{"Priest", "Priestess"}, {
 	{"Aspirant",    0},
 	{"Acolyte",     0},
@@ -209,6 +216,7 @@ const struct Role roles[] = {
 },
   /* Note:  Rogue precedes Ranger so that use of `-R' on the command line
      retains its traditional meaning. */
+// TODO DE
 {	{"Rogue", 0}, {
 	{"Footpad",     0},
 	{"Cutpurse",    0},
@@ -235,6 +243,7 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },11,	/* Energy */
 	10, 8, 0, 1,  9, A_INT, SPE_DETECT_TREASURE, -4
 },
+// TODO DE
 {	{"Ranger", 0}, {
 #if 0	/* OBSOLETE */
 	{"Edhel",       "Elleth"},
@@ -275,6 +284,7 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },12,	/* Energy */
 	10, 9, 2, 1, 10, A_INT, SPE_INVISIBILITY,   -4
 },
+// TODO DE
 {	{"Samurai", 0}, {
 	{"Hatamoto",    0},  /* Banner Knight */
 	{"Ronin",       0},  /* no allegiance */
@@ -301,6 +311,7 @@ const struct Role roles[] = {
 	10, 10, 0, 0,  8, A_INT, SPE_CLAIRVOYANCE,    -4
 },
 #ifdef TOURIST
+// TODO DE
 {	{"Tourist", 0}, {
 	{"Rambler",     0},
 	{"Sightseer",   0},
@@ -327,6 +338,7 @@ const struct Role roles[] = {
 	0, 5, 1, 2, 10, A_INT, SPE_CHARM_MONSTER,   -4
 },
 #endif
+// TODO DE
 {	{"Valkyrie", 0}, {
 	{"Stripling",   0},
 	{"Skirmisher",  0},
@@ -352,6 +364,7 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },10,	/* Energy */
 	0, 10,-2, 0,  9, A_WIS, SPE_CONE_OF_COLD,    -4
 },
+// TODO DE
 {	{"Wizard", 0}, {
 	{"Evoker",      0},
 	{"Conjurer",    0},
@@ -405,6 +418,7 @@ struct Role urole =
 
 /* Table of all races */
 const struct Race races[] = {
+// TODO DE
 {	"human", "human", "humanity", "Hum",
 	{"man", "woman"},
 	PM_HUMAN, NON_PM, PM_HUMAN_MUMMY, PM_HUMAN_ZOMBIE,
@@ -418,6 +432,7 @@ const struct Race races[] = {
 	{  2, 0,  0, 2,  1, 0 },	/* Hit points */
 	{  1, 0,  2, 0,  2, 0 }		/* Energy */
 },
+// TODO DE
 {	"elf", "elven", "elvenkind", "Elf",
 	{0, 0},
 	PM_ELF, NON_PM, PM_ELF_MUMMY, PM_ELF_ZOMBIE,
@@ -430,6 +445,7 @@ const struct Race races[] = {
 	{  1, 0,  0, 1,  1, 0 },	/* Hit points */
 	{  2, 0,  3, 0,  3, 0 }		/* Energy */
 },
+// TODO DE
 {	"dwarf", "dwarven", "dwarvenkind", "Dwa",
 	{0, 0},
 	PM_DWARF, NON_PM, PM_DWARF_MUMMY, PM_DWARF_ZOMBIE,
@@ -442,6 +458,7 @@ const struct Race races[] = {
 	{  4, 0,  0, 3,  2, 0 },	/* Hit points */
 	{  0, 0,  0, 0,  0, 0 }		/* Energy */
 },
+// TODO DE
 {	"gnome", "gnomish", "gnomehood", "Gno",
 	{0, 0},
 	PM_GNOME, NON_PM, PM_GNOME_MUMMY, PM_GNOME_ZOMBIE,
@@ -454,6 +471,7 @@ const struct Race races[] = {
 	{  1, 0,  0, 1,  0, 0 },	/* Hit points */
 	{  2, 0,  2, 0,  2, 0 }		/* Energy */
 },
+// TODO DE
 {	"orc", "orcish", "orcdom", "Orc",
 	{0, 0},
 	PM_ORC, NON_PM, PM_ORC_MUMMY, PM_ORC_ZOMBIE,
@@ -466,6 +484,7 @@ const struct Race races[] = {
 	{  1, 0,  0, 1,  0, 0 },	/* Hit points */
 	{  1, 0,  1, 0,  1, 0 }		/* Energy */
 },
+// TODO DE
 /* Array terminator */
 { 0, 0, 0, 0 }};
 
@@ -474,6 +493,7 @@ const struct Race races[] = {
  * choices.  This may be munged in role_init().
  */
 struct Race urace =
+// TODO DE
 {	"something", "undefined", "something", "Xxx",
 	{0, 0},
 	NON_PM, NON_PM, NON_PM, NON_PM,
@@ -489,6 +509,7 @@ struct Race urace =
 
 /* Table of all genders */
 const struct Gender genders[] = {
+// TODO DE
 	{"male",	"PRONOMEN_3P_M_PERSONAL",
 						"him",
 						"PRONOMEN_3P_MN_POSSESSIV",
@@ -505,6 +526,7 @@ const struct Gender genders[] = {
 
 /* Table of all alignments */
 const struct Align aligns[] = {
+// TODO DE
 	{"law",		"lawful",	"Law",	ROLE_LAWFUL,	A_LAWFUL},
 	{"balance",	"neutral",	"Neu",	ROLE_NEUTRAL,	A_NEUTRAL},
 	{"chaos",	"chaotic",	"Cha",	ROLE_CHAOTIC,	A_CHAOTIC},
@@ -1066,7 +1088,7 @@ promptsep(buf, num_post_attribs)
 char *buf;
 int num_post_attribs;
 {
-	const char *conj = "and ";
+	const char *conj = "and "; /* EN const char *conj = "and "; */ // TODO DE
 	if (num_post_attribs > 1
 	    && post_attribs < num_post_attribs && post_attribs > 1)
 	 	Strcat(buf, ","); 
@@ -1109,7 +1131,7 @@ int buflen, rolenum, racenum, gendnum, alignnum;
 {
 	int k, gendercount = 0, aligncount = 0;
 	char buf[BUFSZ];
-	static char err_ret[] = " character's";
+	static char err_ret[] = " character's"; /* EN static char err_ret[] = " character's"; */ // TODO DE
 	boolean donefirst = FALSE;
 
 	if (!suppliedbuf || buflen < 1) return err_ret;
@@ -1242,18 +1264,18 @@ build_plselection_prompt(buf, buflen, rolenum, racenum, gendnum, alignnum)
 char *buf;
 int buflen, rolenum, racenum, gendnum, alignnum;
 {
-	const char *defprompt = "Shall I pick a character for you? [ynq] ";
+	const char *defprompt = "Shall I pick a character for you? [ynq] "; /* EN const char *defprompt = "Shall I pick a character for you? [ynq] "; */ // TODO DE
 	int num_post_attribs = 0;
 	char tmpbuf[BUFSZ];
 	
 	if (buflen < QBUFSZ)
 		return (char *)defprompt;
 
-	Strcpy(tmpbuf, "Shall I pick ");
+	Strcpy(tmpbuf, "Shall I pick "); /* EN Strcpy(tmpbuf, "Shall I pick "); */ // TODO DE
 	if (racenum != ROLE_NONE || validrole(rolenum))
-		Strcat(tmpbuf, "your ");
+		Strcat(tmpbuf, "your "); /* EN Strcat(tmpbuf, "your "); */ // TODO DE
 	else {
-		Strcat(tmpbuf, "a ");
+		Strcat(tmpbuf, "a "); /* EN Strcat(tmpbuf, "a "); */ // TODO DE
 	}
 	/* <your> */
 
@@ -1272,22 +1294,22 @@ int buflen, rolenum, racenum, gendnum, alignnum;
 	if (post_attribs) {
 		if (pa[BP_RACE]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "race");
+			Strcat(buf, "race"); /* EN Strcat(buf, "race"); */ // TODO DE
 		}
 		if (pa[BP_ROLE]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "role");
+			Strcat(buf, "role"); /* EN Strcat(buf, "role"); */ // TODO DE
 		}
 		if (pa[BP_GEND]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "gender");
+			Strcat(buf, "gender"); /* EN Strcat(buf, "gender"); */ // TODO DE
 		}
 		if (pa[BP_ALIGN]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "alignment");
+			Strcat(buf, "alignment"); /* EN Strcat(buf, "alignment"); */ // TODO DE
 		}
 	}
-	Strcat(buf, " for you? [ynq] ");
+	Strcat(buf, " for you? [ynq] "); /* EN Strcat(buf, " for you? [ynq] "); */ // TODO DE
 	return buf;
 }
 
@@ -1474,7 +1496,7 @@ struct monst *mtmp;
 #endif
 	    		"Velkommen");   /* Norse */
 	default:
-	    return ("Hello");
+	    return ("Hello"); /* EN return ("Hello"); */ // TODO DE
 	}
 }
 
@@ -1493,7 +1515,7 @@ Goodbye()
 	case PM_VALKYRIE:
 	    return ("Farvel");          /* Norse */
 	default:
-	    return ("Goodbye");
+	    return ("Goodbye"); /* EN return ("Goodbye"); */ // TODO DE
 	}
 }
 

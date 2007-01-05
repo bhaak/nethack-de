@@ -118,7 +118,7 @@ boolean quietly;
 	    } else
 #endif /* GOLDOBJ */
 	    if (otmp->in_use) {
-		if (!quietly) pline("Finishing off %s...", xname(otmp));
+		if (!quietly) pline("Finishing off %s...", xname(otmp)); /* EN if (!quietly) pline("Finishing off %s...", xname(otmp)); */ // TODO DE
 		useup(otmp);
 	    }
 	}
@@ -360,7 +360,7 @@ unsigned int *stuckid, *steedid;	/* STEED */
 	if (uid != getuid()) {		/* strange ... */
 	    /* for wizard mode, issue a reminder; for others, treat it
 	       as an attempt to cheat and refuse to restore this file */
-	    pline("Saved game was not yours.");
+	    pline("Saved game was not yours."); /* EN pline("Saved game was not yours."); */ // TODO DE
 #ifdef WIZARD
 	    if (!wizard)
 #endif
@@ -382,7 +382,7 @@ unsigned int *stuckid, *steedid;	/* STEED */
 #endif
 	if(u.uhp <= 0 && (!Upolyd || u.mh <= 0)) {
 	    u.ux = u.uy = 0;	/* affects pline() [hence You()] */
-	    You("were not healthy enough to survive restoration.");
+	    You("were not healthy enough to survive restoration."); /* EN You("were not healthy enough to survive restoration."); */ // TODO DE
 	    /* wiz1_level.dlevel is used by mklev.c to see if lots of stuff is
 	     * uninitialized, so we only have to set it and not the other stuff.
 	     */
@@ -494,7 +494,7 @@ xchar ltmp;
 		/* The savelev can't proceed because the size required
 		 * is greater than the available disk space.
 		 */
-		pline("Not enough space on `%s' to restore your game.",
+		pline("Not enough space on `%s' to restore your game.", /* EN pline("Not enough space on `%s' to restore your game.", */ // TODO DE
 			levels);
 
 		/* Remove levels and bones that may have been created.
@@ -520,7 +520,7 @@ xchar ltmp;
 			return dorecover(fd);	/* 0 or 1 */
 		} else {
 # endif
-			pline("Be seeing you...");
+			pline("Be seeing you..."); /* EN pline("Be seeing you..."); */ // TODO DE
 			terminate(EXIT_SUCCESS);
 # ifndef AMIGA
 		}
@@ -586,15 +586,15 @@ register int fd;
 	clear_nhwindow(WIN_MAP);
 # endif
 	clear_nhwindow(WIN_MESSAGE);
-	You("return to level %d in %s%s.",
+	You("return to level %d in %s%s.", /* EN You("return to level %d in %s%s.", */ // TODO DE
 		depth(&u.uz), dungeons[u.uz.dnum].dname,
-		flags.debug ? " while in debug mode" :
-		flags.explore ? " while in explore mode" : "");
+		flags.debug ? " while in debug mode" : /* EN flags.debug ? " while in debug mode" : */ // TODO DE
+		flags.explore ? " while in explore mode" : ""); /* EN flags.explore ? " while in explore mode" : ""); */ // TODO DE
 	curs(WIN_MAP, 1, 1);
 	dotcnt = 0;
 	dotrow = 2;
 	if (strncmpi("X11", windowprocs.name, 3))
-    	  putstr(WIN_MAP, 0, "Restoring:");
+    	  putstr(WIN_MAP, 0, "Restoring:"); /* EN putstr(WIN_MAP, 0, "Restoring:"); */ // TODO DE
 #endif
 	while(1) {
 #ifdef ZEROCOMP
@@ -678,9 +678,9 @@ void
 trickery(reason)
 char *reason;
 {
-	pline("Strange, this map is not as I remember it.");
-	pline("Somebody is trying some trickery here...");
-	pline("This game is void.");
+	pline("Strange, this map is not as I remember it."); /* EN pline("Strange, this map is not as I remember it."); */ // TODO DE
+	pline("Somebody is trying some trickery here..."); /* EN pline("Somebody is trying some trickery here..."); */ // TODO DE
+	pline("This game is void."); /* EN pline("This game is void."); */ // TODO DE
 	killer = reason;
 	done(TRICKED);
 }
@@ -725,10 +725,10 @@ boolean ghostly;
 	    char trickbuf[BUFSZ];
 
 	    if (pid && pid != hpid)
-		Sprintf(trickbuf, "PID (%d) doesn't match saved PID (%d)!",
+		Sprintf(trickbuf, "PID (%d) doesn't match saved PID (%d)!", /* EN Sprintf(trickbuf, "PID (%d) doesn't match saved PID (%d)!", */ // TODO DE
 			hpid, pid);
 	    else
-		Sprintf(trickbuf, "This is level %d, not %d!", dlvl, lev);
+		Sprintf(trickbuf, "This is level %d, not %d!", dlvl, lev); /* EN Sprintf(trickbuf, "This is level %d, not %d!", dlvl, lev); */ // TODO DE
 #ifdef WIZARD
 	    if (wizard) pline(trickbuf);
 #endif
@@ -1072,7 +1072,7 @@ register unsigned int len;
 	rlen = read(fd, buf, (unsigned) len);
 	if((unsigned)rlen != len){
 #endif
-		pline("Read %d instead of %u bytes.", rlen, len);
+		pline("Read %d instead of %u bytes.", rlen, len); /* EN pline("Read %d instead of %u bytes.", rlen, len); */ // TODO DE
 		if(restoring) {
 			(void) close(fd);
 			(void) delete_savefile();

@@ -199,7 +199,7 @@ moveloop()
 			    } else if (!Upolyd && u.uhp > 1) {
 				u.uhp--;
 			    } else {
-				You("pass out from exertion!");
+				You("pass out from exertion!"); /* EN You("pass out from exertion!"); */ // TODO DE
 				exercise(A_CON, FALSE);
 				fall_asleep(-10, FALSE);
 			    }
@@ -363,11 +363,11 @@ moveloop()
 		u.utrap -= 1<<8;
 		if(u.utrap < 1<<8) {
 		    killer_format = KILLED_BY;
-		    killer = "molten lava";
-		    You("sink below the surface and die.");
+		    killer = "molten lava"; /* EN killer = "molten lava"; */ // TODO DE
+		    You("sink below the surface and die."); /* EN You("sink below the surface and die."); */ // TODO DE
 		    done(DISSOLVED);
 		} else if(didmove && !u.umoved) {
-		    Norep("You sink deeper into the lava.");
+		    Norep("You sink deeper into the lava."); /* EN Norep("You sink deeper into the lava."); */ // TODO DE
 		    u.utrap += rnd(4);
 		}
 	    }
@@ -566,8 +566,8 @@ boolean new_game;	/* false => restoring an old game */
 	     currentgend != flags.initgend))
 	Sprintf(eos(buf), " %s", genders[currentgend].adj);
 
-    pline(new_game ? "%s %s, welcome to NetHack!  You are a%s %s %s."
-		   : "%s %s, the%s %s %s, welcome back to NetHack!",
+    pline(new_game ? "%s %s, welcome to NetHack!  You are a%s %s %s." /* EN pline(new_game ? "%s %s, welcome to NetHack!  You are a%s %s %s." */ // TODO DE
+		   : "%s %s, the%s %s %s, welcome back to NetHack!", /* EN : "%s %s, the%s %s %s, welcome back to NetHack!", */ // TODO DE
 	  Hello((struct monst *) 0), plname, buf, urace.adj,
 	  (currentgend && urole.name.f) ? urole.name.f : urole.name.m);
 }

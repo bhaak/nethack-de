@@ -1412,9 +1412,9 @@ struct monst *mtmp, *victim;
 	    ptr = &mons[newtype];
 	    if (mvitals[newtype].mvflags & G_GENOD) {	/* allow G_EXTINCT */
 		if (sensemon(mtmp))
-		    pline("As %s grows up into %s, %s %s!", mon_nam(mtmp),
+		    pline("As %s grows up into %s, %s %s!", mon_nam(mtmp), /* EN pline("As %s grows up into %s, %s %s!", mon_nam(mtmp), */ // TODO DE
 			an(ptr->mname), mhe(mtmp),
-			nonliving(ptr) ? "expires" : "dies");
+			nonliving(ptr) ? "expires" : "dies"); /* EN nonliving(ptr) ? "expires" : "dies"); */ // TODO DE
 		set_mon_data(mtmp, ptr, -1);	/* keep mvitals[] accurate */
 		mondied(mtmp);
 		return (struct permonst *)0;

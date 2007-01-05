@@ -20,6 +20,7 @@ STATIC_DCL const char *breathwep[];
  * Keep consistent with breath weapons in zap.c, and AD_* in monattk.h.
  */
 STATIC_OVL NEARDATA const char *breathwep[] = {
+// TODO DE
 				"fragments",
 				"fire",
 				"frost",
@@ -53,32 +54,32 @@ const char *name;	/* if null, then format `obj' */
 	} else {
 	    knm = name;
 	    /* [perhaps ought to check for plural here to] */
-	    if (!strncmpi(name, "the ", 4) ||
-		    !strncmpi(name, "an ", 3) ||
-		    !strncmpi(name, "a ", 2)) kprefix = KILLED_BY;
+	    if (!strncmpi(name, "the ", 4) || /* EN if (!strncmpi(name, "the ", 4) || */ // TODO DE
+		    !strncmpi(name, "an ", 3) || /* EN !strncmpi(name, "an ", 3) || */ // TODO DE
+		    !strncmpi(name, "a ", 2)) kprefix = KILLED_BY; /* EN !strncmpi(name, "a ", 2)) kprefix = KILLED_BY; */ // TODO DE
 	}
 	onm = (obj && obj_is_pname(obj)) ? the(name) :
 			    (obj && obj->quan > 1L) ? name : an(name);
 	is_acid = (obj && obj->otyp == ACID_VENOM);
 
 	if(u.uac + tlev <= rnd(20)) {
-		if(Blind || !flags.verbose) pline("It misses.");
-		else You("are almost hit by %s.", onm);
+		if(Blind || !flags.verbose) pline("It misses."); /* EN if(Blind || !flags.verbose) pline("It misses."); */ // TODO DE
+		else You("are almost hit by %s.", onm); /* EN else You("are almost hit by %s.", onm); */ // TODO DE
 		return(0);
 	} else {
-		if(Blind || !flags.verbose) You("are hit!");
-		else You("are hit by %s%s", onm, exclam(dam));
+		if(Blind || !flags.verbose) You("are hit!"); /* EN if(Blind || !flags.verbose) You("are hit!"); */ // TODO DE
+		else You("are hit by %s%s", onm, exclam(dam)); /* EN else You("are hit by %s%s", onm, exclam(dam)); */ // TODO DE
 
 		if (obj && objects[obj->otyp].oc_material == SILVER
 				&& hates_silver(youmonst.data)) {
 			dam += rnd(20);
-			pline_The("silver sears your flesh!");
+			pline_The("silver sears your flesh!"); /* EN pline_The("silver sears your flesh!"); */ // TODO DE
 			exercise(A_CON, FALSE);
 		}
 		if (is_acid && Acid_resistance)
-			pline("It doesn't seem to hurt you.");
+			pline("It doesn't seem to hurt you."); /* EN pline("It doesn't seem to hurt you."); */ // TODO DE
 		else {
-			if (is_acid) pline("It burns!");
+			if (is_acid) pline("It burns!"); /* EN if (is_acid) pline("It burns!"); */ // TODO DE
 			if (Half_physical_damage) dam = (dam+1) / 2;
 			losehp(dam, knm, kprefix);
 			exercise(A_STR, FALSE);
@@ -118,7 +119,7 @@ int x,y;
 		if (down_gate(x, y) != -1)
 			objgone = ship_object(obj, x, y, FALSE);
 		if (!objgone) {
-			if (!flooreffects(obj,x,y,"fall")) { /* don't double-dip on damage */
+			if (!flooreffects(obj,x,y,"fall")) { /* don't double-dip on damage */ /* EN if (!flooreffects(obj,x,y,"fall")) { */ // TODO DE
 			    place_object(obj, x, y);
 			    if (!mtmp && x == u.ux && y == u.uy)
 				mtmp = &youmonst;
@@ -157,7 +158,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	if (tmp < rnd(20)) {
 	    if (!ismimic) {
 		if (vis) miss(distant_name(otmp, mshot_xname), mtmp);
-		else if (verbose) pline("It is missed.");
+		else if (verbose) pline("It is missed."); /* EN else if (verbose) pline("It is missed."); */ // TODO DE
 	    }
 	    if (!range) { /* Last position; object drops */
 		(void) drop_throw(otmp, 0, mtmp->mx, mtmp->my);
@@ -176,43 +177,43 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	    if (ismimic) seemimic(mtmp);
 	    mtmp->msleeping = 0;
 	    if (vis) hit(distant_name(otmp,mshot_xname), mtmp, exclam(damage));
-	    else if (verbose) pline("%s is hit%s", Monnam(mtmp), exclam(damage));
+	    else if (verbose) pline("%s is hit%s", Monnam(mtmp), exclam(damage)); /* EN else if (verbose) pline("%s is hit%s", Monnam(mtmp), exclam(damage)); */ // TODO DE
 
 	    if (otmp->opoisoned && is_poisonable(otmp)) {
 		if (resists_poison(mtmp)) {
-		    if (vis) pline_The("poison doesn't seem to affect %s.",
+		    if (vis) pline_The("poison doesn't seem to affect %s.", /* EN if (vis) pline_The("poison doesn't seem to affect %s.", */ // TODO DE
 				   mon_nam(mtmp));
 		} else {
 		    if (rn2(30)) {
 			damage += rnd(6);
 		    } else {
-			if (vis) pline_The("poison was deadly...");
+			if (vis) pline_The("poison was deadly..."); /* EN if (vis) pline_The("poison was deadly..."); */ // TODO DE
 			damage = mtmp->mhp;
 		    }
 		}
 	    }
 	    if (objects[otmp->otyp].oc_material == SILVER &&
 		    hates_silver(mtmp->data)) {
-		if (vis) pline_The("silver sears %s flesh!",
+		if (vis) pline_The("silver sears %s flesh!", /* EN if (vis) pline_The("silver sears %s flesh!", */ // TODO DE
 				s_suffix(mon_nam(mtmp)));
-		else if (verbose) pline("Its flesh is seared!");
+		else if (verbose) pline("Its flesh is seared!"); /* EN else if (verbose) pline("Its flesh is seared!"); */ // TODO DE
 	    }
 	    if (otmp->otyp == ACID_VENOM && cansee(mtmp->mx,mtmp->my)) {
 		if (resists_acid(mtmp)) {
 		    if (vis || verbose)
-			pline("%s is unaffected.", Monnam(mtmp));
+			pline("%s is unaffected.", Monnam(mtmp)); /* EN pline("%s is unaffected.", Monnam(mtmp)); */ // TODO DE
 		    damage = 0;
 		} else {
-		    if (vis) pline_The("acid burns %s!", mon_nam(mtmp));
-		    else if (verbose) pline("It is burned!");
+		    if (vis) pline_The("acid burns %s!", mon_nam(mtmp)); /* EN if (vis) pline_The("acid burns %s!", mon_nam(mtmp)); */ // TODO DE
+		    else if (verbose) pline("It is burned!"); /* EN else if (verbose) pline("It is burned!"); */ // TODO DE
 		}
 	    }
 	    mtmp->mhp -= damage;
 	    if (mtmp->mhp < 1) {
 		if (vis || verbose)
-		    pline("%s is %s!", Monnam(mtmp),
+		    pline("%s is %s!", Monnam(mtmp), /* EN pline("%s is %s!", Monnam(mtmp), */ // TODO DE
 			(nonliving(mtmp->data) || !canspotmon(mtmp))
-			? "destroyed" : "killed");
+			? "destroyed" : "killed"); /* EN ? "destroyed" : "killed"); */ // TODO DE
 		/* don't blame hero for unknown rolling boulder trap */
 		if (!flags.mon_moving &&
 		    (otmp->otyp != BOULDER || range >= 0 || !otmp->otrapped))
@@ -224,7 +225,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 		    (uchar)(otmp->otyp == BLINDING_VENOM ? AT_SPIT : AT_WEAP),
 		    otmp)) {
 		if (vis && mtmp->mcansee)
-		    pline("%s is blinded by %s.", Monnam(mtmp), the(xname(otmp)));
+		    pline("%s is blinded by %s.", Monnam(mtmp), the(xname(otmp))); /* EN pline("%s is blinded by %s.", Monnam(mtmp), the(xname(otmp))); */ // TODO DE
 		mtmp->mcansee = 0;
 		tmp = (int)mtmp->mblinded + rnd(25) + 20;
 		if (tmp > 127) tmp = 127;
@@ -285,10 +286,10 @@ m_throw(mon, x, y, dx, dy, range, obj)
 	if (singleobj->cursed && (dx || dy) && !rn2(7)) {
 	    if(canseemon(mon) && flags.verbose) {
 		if(is_ammo(singleobj))
-		    pline("%s misfires!", Monnam(mon));
+		    pline("%s misfires!", Monnam(mon)); /* EN pline("%s misfires!", Monnam(mon)); */ // TODO DE
 		else
-		    pline("%s as %s throws it!",
-			  Tobjnam(singleobj, "slip"), mon_nam(mon));
+		    pline("%s as %s throws it!", /* EN pline("%s as %s throws it!", */ // TODO DE
+			  Tobjnam(singleobj, "slip"), mon_nam(mon)); /* EN Tobjnam(singleobj, "slip"), mon_nam(mon)); */ // TODO DE
 	    }
 	    dx = rn2(3)-1;
 	    dy = rn2(3)-1;
@@ -330,17 +331,17 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			    singleobj->otyp <= LAST_GEM+9 /* 9 glass colors */
 			    && is_unicorn(youmonst.data)) {
 			if (singleobj->otyp > LAST_GEM) {
-			    You("catch the %s.", xname(singleobj));
-			    You("are not interested in %s junk.",
+			    You("catch the %s.", xname(singleobj)); /* EN You("catch the %s.", xname(singleobj)); */ // TODO DE
+			    You("are not interested in %s junk.", /* EN You("are not interested in %s junk.", */ // TODO DE
 				s_suffix(mon_nam(mon)));
 			    makeknown(singleobj->otyp);
 			    dropy(singleobj);
 			} else {
-			    You("accept %s gift in the spirit in which it was intended.",
+			    You("accept %s gift in the spirit in which it was intended.", /* EN You("accept %s gift in the spirit in which it was intended.", */ // TODO DE
 				s_suffix(mon_nam(mon)));
 			    (void)hold_another_object(singleobj,
-				"You catch, but drop, %s.", xname(singleobj),
-				"You catch:");
+				"You catch, but drop, %s.", xname(singleobj), /* EN "You catch, but drop, %s.", xname(singleobj), */ // TODO DE
+				"You catch:"); /* EN "You catch:"); */ // TODO DE
 			}
 			break;
 		    }
@@ -394,15 +395,15 @@ m_throw(mon, x, y, dx, dy, range, obj)
 					AT_SPIT : AT_WEAP), singleobj)) {
 			blindinc = rnd(25);
 			if(singleobj->otyp == CREAM_PIE) {
-			    if(!Blind) pline("Yecch!  You've been creamed.");
-			    else pline("There's %s sticky all over your %s.",
+			    if(!Blind) pline("Yecch!  You've been creamed."); /* EN if(!Blind) pline("Yecch!  You've been creamed."); */ // TODO DE
+			    else pline("There's %s sticky all over your %s.", /* EN else pline("There's %s sticky all over your %s.", */ // TODO DE
 				       something,
 				       body_part(FACE));
 			} else if(singleobj->otyp == BLINDING_VENOM) {
 			    int num_eyes = eyecount(youmonst.data);
 			    /* venom in the eyes */
-			    if(!Blind) pline_The("venom blinds you.");
-			    else Your("%s sting%s.",
+			    if(!Blind) pline_The("venom blinds you."); /* EN if(!Blind) pline_The("venom blinds you."); */ // TODO DE
+			    else Your("%s sting%s.", /* EN else Your("%s sting%s.", */ // TODO DE
 				      (num_eyes == 1) ? body_part(EYE) :
 						makeplural(body_part(EYE)),
 				      (num_eyes == 1) ? "s" : "");
@@ -511,7 +512,7 @@ struct monst *mtmp;
 
 	    if (canseemon(mtmp)) {
 		onm = xname(otmp);
-		pline("5678 %s thrusts %s.", Monnam(mtmp),
+		pline("5678 %s thrusts %s.", Monnam(mtmp), /* EN pline("5678 %s thrusts %s.", Monnam(mtmp), */ // TODO DE
 		      obj_is_pname(otmp) ? the(onm) : an(onm));
 	    }
 
@@ -593,8 +594,8 @@ struct monst *mtmp;
 		onm = obj_is_pname(otmp) ? the(onm) : an(onm);
 	    }
 	    m_shot.s = ammo_and_launcher(otmp,mwep) ? TRUE : FALSE;
-	    pline("SUBJECT %s %s OBJECT %s!", Monnam(mtmp),
-		  m_shot.s ? "VERB_SCHIESSEN" : "VERB_SCHLEUDERN", onm);
+	    pline("SUBJECT %s %s OBJECT %s!", Monnam(mtmp), /* EN pline("%s %s %s!", Monnam(mtmp), */
+		  m_shot.s ? "VERB_SCHIESSEN" : "VERB_SCHLEUDERN", onm); /* EN m_shot.s ? "shoots" : "throws", onm); */
 	    m_shot.o = otmp->otyp;
 	} else {
 	    m_shot.o = STRANGE_OBJECT;	/* don't give multishot feedback */
@@ -624,7 +625,7 @@ register struct attack *mattk;
 	if(mtmp->mcan) {
 
 	    if(flags.soundok)
-		pline("A dry rattle comes from %s throat.",
+		pline("A dry rattle comes from %s throat.", /* EN pline("A dry rattle comes from %s throat.", */ // TODO DE
 		                      s_suffix(mon_nam(mtmp)));
 	    return 0;
 	}
@@ -643,7 +644,7 @@ register struct attack *mattk;
 		}
 		if(!rn2(BOLT_LIM-distmin(mtmp->mx,mtmp->my,mtmp->mux,mtmp->muy))) {
 		    if (canseemon(mtmp))
-			pline("%s spits venom!", Monnam(mtmp));
+			pline("%s spits venom!", Monnam(mtmp)); /* EN pline("%s spits venom!", Monnam(mtmp)); */ // TODO DE
 		    m_throw(mtmp, mtmp->mx, mtmp->my, sgn(tbx), sgn(tby),
 			distmin(mtmp->mx,mtmp->my,mtmp->mux,mtmp->muy), otmp);
 		    nomul(0);
@@ -669,9 +670,9 @@ breamu(mtmp, mattk)			/* monster breathes at you (ranged) */
 	    if(mtmp->mcan) {
 		if(flags.soundok) {
 		    if(canseemon(mtmp))
-			pline("%s coughs.", Monnam(mtmp));
+			pline("%s coughs.", Monnam(mtmp)); /* EN pline("%s coughs.", Monnam(mtmp)); */ // TODO DE
 		    else
-			You_hear("a cough.");
+			You_hear("a cough."); /* EN You_hear("a cough."); */ // TODO DE
 		}
 		return(0);
 	    }
@@ -680,7 +681,7 @@ breamu(mtmp, mattk)			/* monster breathes at you (ranged) */
 		if((typ >= AD_MAGM) && (typ <= AD_ACID)) {
 
 		    if(canseemon(mtmp))
-			pline("%s breathes %s!", Monnam(mtmp),
+			pline("%s breathes %s!", Monnam(mtmp), /* EN pline("%s breathes %s!", Monnam(mtmp), */ // TODO DE
 			      breathwep[typ-1]);
 		    buzz((int) (-20 - (typ-1)), (int)mattk->damn,
 			 mtmp->mx, mtmp->my, sgn(tbx), sgn(tby));
@@ -807,13 +808,13 @@ int whodidit;	/* 1==hero, 0=other, -1==just check whether it'll pass thru */
 	    *obj_p = otmp = 0;		/* object is now gone */
 	    /* breakage makes its own noises */
 	else if (obj_type == BOULDER || obj_type == HEAVY_IRON_BALL)
-	    pline("Whang!");
+	    pline("Whang!"); /* EN pline("Whang!"); */ // TODO DE
 	else if (otmp->oclass == COIN_CLASS ||
 		objects[obj_type].oc_material == GOLD ||
 		objects[obj_type].oc_material == SILVER)
-	    pline("Clink!");
+	    pline("Clink!"); /* EN pline("Clink!"); */ // TODO DE
 	else
-	    pline("Clonk!");
+	    pline("Clonk!"); /* EN pline("Clonk!"); */ // TODO DE
     }
 
     return hits;

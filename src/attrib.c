@@ -13,10 +13,10 @@
 	/* part of the output on gain or loss of attribute */
 static
 const char	* const plusattr[] = {
-	"strong", "smart", "wise", "agile", "tough", "charismatic"
+	"strong", "smart", "wise", "agile", "tough", "charismatic" /* EN "strong", "smart", "wise", "agile", "tough", "charismatic" */ // TODO DE
 },
 		* const minusattr[] = {
-	"weak", "stupid", "foolish", "clumsy", "fragile", "repulsive"
+	"weak", "stupid", "foolish", "clumsy", "fragile", "repulsive" /* EN "weak", "stupid", "foolish", "clumsy", "fragile", "repulsive" */ // TODO DE
 };
 
 
@@ -27,70 +27,70 @@ const struct innate {
 	const char *gainstr, *losestr;
 }	arc_abil[] = { {	 1, &(HStealth), "", "" },
 		     {   1, &(HFast), "", "" },
-		     {  10, &(HSearching), "perceptive", "" },
+		     {  10, &(HSearching), "perceptive", "" }, /* EN {  10, &(HSearching), "perceptive", "" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
 	bar_abil[] = { {	 1, &(HPoison_resistance), "", "" },
-		     {   7, &(HFast), "quick", "slow" },
-		     {  15, &(HStealth), "stealthy", "" },
+		     {   7, &(HFast), "quick", "slow" }, /* EN {   7, &(HFast), "quick", "slow" }, */ // TODO DE
+		     {  15, &(HStealth), "stealthy", "" }, /* EN {  15, &(HStealth), "stealthy", "" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
-	cav_abil[] = { {	 7, &(HFast), "quick", "slow" },
-		     {	15, &(HWarning), "sensitive", "" },
+	cav_abil[] = { {	 7, &(HFast), "quick", "slow" }, /* EN cav_abil[] = { {	 7, &(HFast), "quick", "slow" }, */ // TODO DE
+		     {	15, &(HWarning), "sensitive", "" }, /* EN {	15, &(HWarning), "sensitive", "" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
 	hea_abil[] = { {	 1, &(HPoison_resistance), "", "" },
-		     {	15, &(HWarning), "sensitive", "" },
+		     {	15, &(HWarning), "sensitive", "" }, /* EN {	15, &(HWarning), "sensitive", "" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
-	kni_abil[] = { {	 7, &(HFast), "quick", "slow" },
+	kni_abil[] = { {	 7, &(HFast), "quick", "slow" }, /* EN kni_abil[] = { {	 7, &(HFast), "quick", "slow" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
 	mon_abil[] = { {   1, &(HFast), "", "" },
 		     {   1, &(HSleep_resistance), "", "" },
 		     {   1, &(HSee_invisible), "", "" },
-		     {   3, &(HPoison_resistance), "healthy", "" },
-		     {   5, &(HStealth), "stealthy", "" },
-		     {   7, &(HWarning), "sensitive", "" },
-		     {   9, &(HSearching), "perceptive", "unaware" },
-		     {  11, &(HFire_resistance), "cool", "warmer" },
-		     {  13, &(HCold_resistance), "warm", "cooler" },
-		     {  15, &(HShock_resistance), "insulated", "conductive" },
-		     {  17, &(HTeleport_control), "controlled","uncontrolled" },
+		     {   3, &(HPoison_resistance), "healthy", "" }, /* EN {   3, &(HPoison_resistance), "healthy", "" }, */ // TODO DE
+		     {   5, &(HStealth), "stealthy", "" }, /* EN {   5, &(HStealth), "stealthy", "" }, */ // TODO DE
+		     {   7, &(HWarning), "sensitive", "" }, /* EN {   7, &(HWarning), "sensitive", "" }, */ // TODO DE
+		     {   9, &(HSearching), "perceptive", "unaware" }, /* EN {   9, &(HSearching), "perceptive", "unaware" }, */ // TODO DE
+		     {  11, &(HFire_resistance), "cool", "warmer" }, /* EN {  11, &(HFire_resistance), "cool", "warmer" }, */ // TODO DE
+		     {  13, &(HCold_resistance), "warm", "cooler" }, /* EN {  13, &(HCold_resistance), "warm", "cooler" }, */ // TODO DE
+		     {  15, &(HShock_resistance), "insulated", "conductive" }, /* EN {  15, &(HShock_resistance), "insulated", "conductive" }, */ // TODO DE
+		     {  17, &(HTeleport_control), "controlled","uncontrolled" }, /* EN {  17, &(HTeleport_control), "controlled","uncontrolled" }, */ // TODO DE
 		     {   0, 0, 0, 0 } },
 
-	pri_abil[] = { {	15, &(HWarning), "sensitive", "" },
-		     {  20, &(HFire_resistance), "cool", "warmer" },
+	pri_abil[] = { {	15, &(HWarning), "sensitive", "" }, /* EN pri_abil[] = { {	15, &(HWarning), "sensitive", "" }, */ // TODO DE
+		     {  20, &(HFire_resistance), "cool", "warmer" }, /* EN {  20, &(HFire_resistance), "cool", "warmer" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
 	ran_abil[] = { {   1, &(HSearching), "", "" },
-		     {	 7, &(HStealth), "stealthy", "" },
+		     {	 7, &(HStealth), "stealthy", "" }, /* EN {	 7, &(HStealth), "stealthy", "" }, */ // TODO DE
 		     {	15, &(HSee_invisible), "", "" },
 		     {	 0, 0, 0, 0 } },
 
 	rog_abil[] = { {	 1, &(HStealth), "", ""  },
-		     {  10, &(HSearching), "perceptive", "" },
+		     {  10, &(HSearching), "perceptive", "" }, /* EN {  10, &(HSearching), "perceptive", "" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
 	sam_abil[] = { {	 1, &(HFast), "", "" },
-		     {  15, &(HStealth), "stealthy", "" },
+		     {  15, &(HStealth), "stealthy", "" }, /* EN {  15, &(HStealth), "stealthy", "" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
-	tou_abil[] = { {	10, &(HSearching), "perceptive", "" },
-		     {	20, &(HPoison_resistance), "hardy", "" },
+	tou_abil[] = { {	10, &(HSearching), "perceptive", "" }, /* EN tou_abil[] = { {	10, &(HSearching), "perceptive", "" }, */ // TODO DE
+		     {	20, &(HPoison_resistance), "hardy", "" }, /* EN {	20, &(HPoison_resistance), "hardy", "" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
 	val_abil[] = { {	 1, &(HCold_resistance), "", "" },
 		     {	 1, &(HStealth), "", "" },
-		     {   7, &(HFast), "quick", "slow" },
+		     {   7, &(HFast), "quick", "slow" }, /* EN {   7, &(HFast), "quick", "slow" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
-	wiz_abil[] = { {	15, &(HWarning), "sensitive", "" },
-		     {  17, &(HTeleport_control), "controlled","uncontrolled" },
+	wiz_abil[] = { {	15, &(HWarning), "sensitive", "" }, /* EN wiz_abil[] = { {	15, &(HWarning), "sensitive", "" }, */ // TODO DE
+		     {  17, &(HTeleport_control), "controlled","uncontrolled" }, /* EN {  17, &(HTeleport_control), "controlled","uncontrolled" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
 	/* Intrinsics conferred by race */
-	elf_abil[] = { {	4, &(HSleep_resistance), "awake", "tired" },
+	elf_abil[] = { {	4, &(HSleep_resistance), "awake", "tired" }, /* EN elf_abil[] = { {	4, &(HSleep_resistance), "awake", "tired" }, */ // TODO DE
 		     {	 0, 0, 0, 0 } },
 
 	orc_abil[] = { {	1, &(HPoison_resistance), "", "" },
@@ -111,14 +111,14 @@ adjattrib(ndx, incr, msgflg)
 	if ((ndx == A_INT || ndx == A_WIS)
 				&& uarmh && uarmh->otyp == DUNCE_CAP) {
 		if (msgflg == 0)
-		    Your("cap constricts briefly, then relaxes again.");
+		    Your("cap constricts briefly, then relaxes again."); /* EN Your("cap constricts briefly, then relaxes again."); */ // TODO DE
 		return FALSE;
 	}
 
 	if (incr > 0) {
 	    if ((AMAX(ndx) >= ATTRMAX(ndx)) && (ACURR(ndx) >= AMAX(ndx))) {
 		if (msgflg == 0 && flags.verbose)
-		    pline("You're already as %s as you can get.",
+		    pline("You're already as %s as you can get.", /* EN pline("You're already as %s as you can get.", */ // TODO DE
 			  plusattr[ndx]);
 		ABASE(ndx) = AMAX(ndx) = ATTRMAX(ndx); /* just in case */
 		return FALSE;
@@ -135,7 +135,7 @@ adjattrib(ndx, incr, msgflg)
 	} else {
 	    if (ABASE(ndx) <= ATTRMIN(ndx)) {
 		if (msgflg == 0 && flags.verbose)
-		    pline("You're already as %s as you can get.",
+		    pline("You're already as %s as you can get.", /* EN pline("You're already as %s as you can get.", */ // TODO DE
 			  minusattr[ndx]);
 		ABASE(ndx) = ATTRMIN(ndx); /* just in case */
 		return FALSE;
@@ -152,7 +152,7 @@ adjattrib(ndx, incr, msgflg)
 	}
 	if (msgflg <= 0)
 	    You_feel("%s%s!",
-		  (incr > 1 || incr < -1) ? "very ": "",
+		  (incr > 1 || incr < -1) ? "very ": "", /* EN (incr > 1 || incr < -1) ? "very ": "", */ // TODO DE
 		  (incr > 0) ? plusattr[ndx] : minusattr[ndx]);
 	flags.botl = 1;
 	if (moves > 1 && (ndx == A_STR || ndx == A_CON))
@@ -420,20 +420,20 @@ exerchk()
 		    /* then print an explanation */
 		    switch(i) {
 		    case A_STR: You((mod_val >0) ?
-				    "must have been exercising." :
-				    "must have been abusing your body.");
+				    "must have been exercising." : /* EN "must have been exercising." : */ // TODO DE
+				    "must have been abusing your body."); /* EN "must have been abusing your body."); */ // TODO DE
 				break;
 		    case A_WIS: You((mod_val >0) ?
-				    "must have been very observant." :
-				    "haven't been paying attention.");
+				    "must have been very observant." : /* EN "must have been very observant." : */ // TODO DE
+				    "haven't been paying attention."); /* EN "haven't been paying attention."); */ // TODO DE
 				break;
 		    case A_DEX: You((mod_val >0) ?
-				    "must have been working on your reflexes." :
-				    "haven't been working on reflexes lately.");
+				    "must have been working on your reflexes." : /* EN "must have been working on your reflexes." : */ // TODO DE
+				    "haven't been working on reflexes lately."); /* EN "haven't been working on reflexes lately."); */ // TODO DE
 				break;
 		    case A_CON: You((mod_val >0) ?
-				    "must be leading a healthy life-style." :
-				    "haven't been watching your health.");
+				    "must be leading a healthy life-style." : /* EN "must be leading a healthy life-style." : */ // TODO DE
+				    "haven't been watching your health."); /* EN "haven't been watching your health."); */ // TODO DE
 				break;
 		    }
 		}
@@ -592,15 +592,15 @@ int oldlevel, newlevel;
 				*(abil->ability) |= mask;
 			if(!(*(abil->ability) & INTRINSIC & ~mask)) {
 			    if(*(abil->gainstr))
-				You_feel("%s!", abil->gainstr);
+				You_feel("%s!", abil->gainstr); /* EN You_feel("%s!", abil->gainstr); */ // TODO DE
 			}
 		} else if (oldlevel >= abil->ulevel && newlevel < abil->ulevel) {
 			*(abil->ability) &= ~mask;
 			if(!(*(abil->ability) & INTRINSIC)) {
 			    if(*(abil->losestr))
-				You_feel("%s!", abil->losestr);
+				You_feel("%s!", abil->losestr); /* EN You_feel("%s!", abil->losestr); */ // TODO DE
 			    else if(*(abil->gainstr))
-				You_feel("less %s!", abil->gainstr);
+				You_feel("less %s!", abil->gainstr); /* EN You_feel("less %s!", abil->gainstr); */ // TODO DE
 			}
 		}
 	    if (prevabil != *(abil->ability))	/* it changed */

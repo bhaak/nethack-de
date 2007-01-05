@@ -69,9 +69,9 @@ const char *fmt, *arg;
 			(mvitals[urace.femalenum].mvflags & G_GENOD))) {
 	    /* intervening activity might have clobbered genocide info */
 	    killer = delayed_killer;
-	    if (!killer || !strstri(killer, "genocid")) {
+	    if (!killer || !strstri(killer, "genocid")) { /* EN if (!killer || !strstri(killer, "genocid")) { */ // TODO DE
 		killer_format = KILLED_BY;
-		killer = "self-genocide";
+		killer = "self-genocide"; /* EN killer = "self-genocide"; */ // TODO DE
 	    }
 	    done(GENOCIDED);
 	}
@@ -196,20 +196,20 @@ newman()
 		    if (u.uhpmax <= 0) u.uhpmax = 1;
 		} else {
 dead: /* we come directly here if their experience level went to 0 or less */
-		    Your("new form doesn't seem healthy enough to survive.");
+		    Your("new form doesn't seem healthy enough to survive."); /* EN Your("new form doesn't seem healthy enough to survive."); */ // TODO DE
 		    killer_format = KILLED_BY_AN;
-		    killer="unsuccessful polymorph";
+		    killer="unsuccessful polymorph"; /* EN killer="unsuccessful polymorph"; */ // TODO DE
 		    done(DIED);
 		    newuhs(FALSE);
 		    return; /* lifesaved */
 		}
 	}
 	newuhs(FALSE);
-	polyman("feel like a new %s!",
+	polyman("feel like a new %s!", /* EN polyman("feel like a new %s!", */ // TODO DE
 		(flags.female && urace.individual.f) ? urace.individual.f :
 		(urace.individual.m) ? urace.individual.m : urace.noun);
 	if (Slimed) {
-		Your("body transforms, but there is still slime on you.");
+		Your("body transforms, but there is still slime on you."); /* EN Your("body transforms, but there is still slime on you."); */ // TODO DE
 		Slimed = 10L;
 	}
 	flags.botl = 1;
@@ -234,7 +234,7 @@ boolean forcecontrol;
         if(!Polymorph_control && !forcecontrol && !draconian && !iswere && !isvamp) {
 	    if (rn2(20) > ACURR(A_CON)) {
 		You(shudder_for_moment);
-		losehp(rnd(30), "system shock", KILLED_BY_AN);
+		losehp(rnd(30), "system shock", KILLED_BY_AN); /* EN losehp(rnd(30), "system shock", KILLED_BY_AN); */ // TODO DE
 		exercise(A_CON, FALSE);
 		return;
 	    }
@@ -243,16 +243,16 @@ boolean forcecontrol;
 
 	if (Polymorph_control || forcecontrol) {
 		do {
-			getlin("Become what kind of monster? [type the name]",
+			getlin("Become what kind of monster? [type the name]", /* EN getlin("Become what kind of monster? [type the name]", */ // TODO DE
 				buf);
 			mntmp = name_to_mon(buf);
 			if (mntmp < LOW_PM)
-				pline("I've never heard of such monsters.");
+				pline("I've never heard of such monsters."); /* EN pline("I've never heard of such monsters."); */ // TODO DE
 			/* Note:  humans are illegal as monsters, but an
 			 * illegal monster forces newman(), which is what we
 			 * want if they specified a human.... */
 			else if (!polyok(&mons[mntmp]) && !your_race(&mons[mntmp]))
-				You("cannot polymorph into that.");
+				You("cannot polymorph into that."); /* EN You("cannot polymorph into that."); */ // TODO DE
 			else break;
 		} while(++tries < 5);
 		if (tries==5) pline(thats_enough_tries);
@@ -267,7 +267,7 @@ boolean forcecontrol;
 			mntmp = armor_to_dragon(uarm->otyp);
 			if (!(mvitals[mntmp].mvflags & G_GENOD)) {
 				/* allow G_EXTINCT */
-				You("merge with your scaly armor.");
+				You("merge with your scaly armor."); /* EN You("merge with your scaly armor."); */ // TODO DE
 				uskin = uarm;
 				uarm = (struct obj *)0;
 				/* save/restore hack */
@@ -307,7 +307,7 @@ boolean forcecontrol;
 		newman();
 	else if(!polymon(mntmp)) return;
 
-	if (!uarmg) selftouch("No longer petrify-resistant, you");
+	if (!uarmg) selftouch("No longer petrify-resistant, you"); /* EN if (!uarmg) selftouch("No longer petrify-resistant, you"); */ // TODO DE
 
  made_change:
 	new_light = Upolyd ? emits_light(youmonst.data) : 0;
@@ -332,7 +332,7 @@ int	mntmp;
 	int mlvl;
 
 	if (mvitals[mntmp].mvflags & G_GENOD) {	/* allow G_EXTINCT */
-		You_feel("rather %s-ish.",mons[mntmp].mname);
+		You_feel("rather %s-ish.",mons[mntmp].mname); /* EN You_feel("rather %s-ish.",mons[mntmp].mname); */ // TODO DE
 		exercise(A_WIS, TRUE);
 		return(0);
 	}
@@ -371,19 +371,19 @@ int	mntmp;
 	if (dochange) {
 		flags.female = !flags.female;
 		You("%s %s%s!",
-		    (u.umonnum != mntmp) ? "turn into a" : "feel like a new",
+		    (u.umonnum != mntmp) ? "turn into a" : "feel like a new", /* EN (u.umonnum != mntmp) ? "turn into a" : "feel like a new", */ // TODO DE
 		    (is_male(&mons[mntmp]) || is_female(&mons[mntmp])) ? "" :
-			flags.female ? "female " : "male ",
+			flags.female ? "female " : "male ", /* EN flags.female ? "female " : "male ", */ // TODO DE
 		    mons[mntmp].mname);
 	} else {
 		if (u.umonnum != mntmp)
-			You("turn into %s!", an(mons[mntmp].mname));
+			You("turn into %s!", an(mons[mntmp].mname)); /* EN You("turn into %s!", an(mons[mntmp].mname)); */ // TODO DE
 		else
-			You_feel("like a new %s!", mons[mntmp].mname);
+			You_feel("like a new %s!", mons[mntmp].mname); /* EN You_feel("like a new %s!", mons[mntmp].mname); */ // TODO DE
 	}
 	if (Stoned && poly_when_stoned(&mons[mntmp])) {
 		/* poly_when_stoned already checked stone golem genocide */
-		You("turn to stone!");
+		You("turn to stone!"); /* EN You("turn to stone!"); */ // TODO DE
 		mntmp = PM_STONE_GOLEM;
 		Stoned = 0;
 		delayed_killer = 0;
@@ -401,15 +401,15 @@ int	mntmp;
 	if (Stone_resistance && Stoned) { /* parnes@eniac.seas.upenn.edu */
 		Stoned = 0;
 		delayed_killer = 0;
-		You("no longer seem to be petrifying.");
+		You("no longer seem to be petrifying."); /* EN You("no longer seem to be petrifying."); */ // TODO DE
 	}
 	if (Sick_resistance && Sick) {
 		make_sick(0L, (char *) 0, FALSE, SICK_ALL);
-		You("no longer feel sick.");
+		You("no longer feel sick."); /* EN You("no longer feel sick."); */ // TODO DE
 	}
 	if (Slimed) {
 	    if (mntmp == PM_FIRE_VORTEX || mntmp == PM_FIRE_ELEMENTAL || mntmp == PM_SALAMANDER) {
-		pline_The("slime burns away!");
+		pline_The("slime burns away!"); /* EN pline_The("slime burns away!"); */ // TODO DE
 		Slimed = 0L;
 		flags.botl = 1;
 	    } else if (mntmp == PM_GREEN_SLIME) {
@@ -481,9 +481,9 @@ int	mntmp;
 	    		!Stone_resistance && rnl(3)) {
 	    	char buf[BUFSZ];
 
-	    	pline("No longer petrifying-resistant, you touch %s.",
+	    	pline("No longer petrifying-resistant, you touch %s.", /* EN pline("No longer petrifying-resistant, you touch %s.", */ // TODO DE
 	    			mon_nam(u.usteed));
-	    	Sprintf(buf, "riding %s", an(u.usteed->data->mname));
+	    	Sprintf(buf, "riding %s", an(u.usteed->data->mname)); /* EN Sprintf(buf, "riding %s", an(u.usteed->data->mname)); */ // TODO DE
 	    	instapetrify(buf);
  	    }
 	    if (!can_ride(u.usteed)) dismount_steed(DISMOUNT_POLY);
@@ -491,32 +491,32 @@ int	mntmp;
 #endif
 
 	if (flags.verbose) {
-	    static const char use_thec[] = "Use the command #%s to %s.";
-	    static const char monsterc[] = "monster";
+	    static const char use_thec[] = "Use the command #%s to %s."; /* EN static const char use_thec[] = "Use the command #%s to %s."; */ // TODO DE
+	    static const char monsterc[] = "monster"; /* EN static const char monsterc[] = "monster"; */ // TODO DE
 	    if (can_breathe(youmonst.data))
-		pline(use_thec,monsterc,"use your breath weapon");
+		pline(use_thec,monsterc,"use your breath weapon"); /* EN pline(use_thec,monsterc,"use your breath weapon"); */ // TODO DE
 	    if (attacktype(youmonst.data, AT_SPIT))
-		pline(use_thec,monsterc,"spit venom");
+		pline(use_thec,monsterc,"spit venom"); /* EN pline(use_thec,monsterc,"spit venom"); */ // TODO DE
 	    if (youmonst.data->mlet == S_NYMPH)
-		pline(use_thec,monsterc,"remove an iron ball");
+		pline(use_thec,monsterc,"remove an iron ball"); /* EN pline(use_thec,monsterc,"remove an iron ball"); */ // TODO DE
 	    if (attacktype(youmonst.data, AT_GAZE))
-		pline(use_thec,monsterc,"gaze at monsters");
+		pline(use_thec,monsterc,"gaze at monsters"); /* EN pline(use_thec,monsterc,"gaze at monsters"); */ // TODO DE
 	    if (is_hider(youmonst.data))
-		pline(use_thec,monsterc,"hide");
+		pline(use_thec,monsterc,"hide"); /* EN pline(use_thec,monsterc,"hide"); */ // TODO DE
 	    if (is_were(youmonst.data))
-		pline(use_thec,monsterc,"summon help");
+		pline(use_thec,monsterc,"summon help"); /* EN pline(use_thec,monsterc,"summon help"); */ // TODO DE
 	    if (webmaker(youmonst.data))
-		pline(use_thec,monsterc,"spin a web");
+		pline(use_thec,monsterc,"spin a web"); /* EN pline(use_thec,monsterc,"spin a web"); */ // TODO DE
 	    if (u.umonnum == PM_GREMLIN)
-		pline(use_thec,monsterc,"multiply in a fountain");
+		pline(use_thec,monsterc,"multiply in a fountain"); /* EN pline(use_thec,monsterc,"multiply in a fountain"); */ // TODO DE
 	    if (is_unicorn(youmonst.data))
-		pline(use_thec,monsterc,"use your horn");
+		pline(use_thec,monsterc,"use your horn"); /* EN pline(use_thec,monsterc,"use your horn"); */ // TODO DE
 	    if (is_mind_flayer(youmonst.data))
-		pline(use_thec,monsterc,"emit a mental blast");
+		pline(use_thec,monsterc,"emit a mental blast"); /* EN pline(use_thec,monsterc,"emit a mental blast"); */ // TODO DE
 	    if (youmonst.data->msound == MS_SHRIEK) /* worthless, actually */
-		pline(use_thec,monsterc,"shriek");
+		pline(use_thec,monsterc,"shriek"); /* EN pline(use_thec,monsterc,"shriek"); */ // TODO DE
 	    if (lays_eggs(youmonst.data) && flags.female)
-		pline(use_thec,"sit","lay an egg");
+		pline(use_thec,"sit","lay an egg"); /* EN pline(use_thec,"sit","lay an egg"); */ // TODO DE
 	}
 	/* you now know what an egg of your type looks like */
 	if (lays_eggs(youmonst.data)) {
@@ -531,27 +531,27 @@ int	mntmp;
 	    spoteffects(TRUE);
 	if (Passes_walls && u.utrap && u.utraptype == TT_INFLOOR) {
 	    u.utrap = 0;
-	    pline_The("rock seems to no longer trap you.");
+	    pline_The("rock seems to no longer trap you."); /* EN pline_The("rock seems to no longer trap you."); */ // TODO DE
 	} else if (likes_lava(youmonst.data) && u.utrap && u.utraptype == TT_LAVA) {
 	    u.utrap = 0;
-	    pline_The("lava now feels soothing.");
+			pline_The("lava now feels soothing."); /* EN pline_The("lava now feels soothing."); */ // TODO DE
 	}
 	if (amorphous(youmonst.data) || is_whirly(youmonst.data) || unsolid(youmonst.data)) {
 	    if (Punished) {
-		You("slip out of the iron chain.");
+		You("slip out of the iron chain."); /* EN You("slip out of the iron chain."); */ // TODO DE
 		unpunish();
 	    }
 	}
 	if (u.utrap && (u.utraptype == TT_WEB || u.utraptype == TT_BEARTRAP) &&
 		(amorphous(youmonst.data) || is_whirly(youmonst.data) || unsolid(youmonst.data) ||
 		  (youmonst.data->msize <= MZ_SMALL && u.utraptype == TT_BEARTRAP))) {
-	    You("are no longer stuck in the %s.",
-		    u.utraptype == TT_WEB ? "web" : "bear trap");
+	    You("are no longer stuck in the %s.", /* EN You("are no longer stuck in the %s.", */ // TODO DE
+		    u.utraptype == TT_WEB ? "web" : "bear trap"); /* EN u.utraptype == TT_WEB ? "web" : "bear trap"); */ // TODO DE
 	    /* probably should burn webs too if PM_FIRE_ELEMENTAL */
 	    u.utrap = 0;
 	}
 	if (webmaker(youmonst.data) && u.utrap && u.utraptype == TT_WEB) {
-	    You("orient yourself on the web.");
+	    You("orient yourself on the web."); /* EN You("orient yourself on the web."); */ // TODO DE
 	    u.utrap = 0;
 	}
 	flags.botl = 1;
@@ -571,47 +571,47 @@ break_armor()
     if (breakarm(youmonst.data)) {
 	if ((otmp = uarm) != 0) {
 		if (donning(otmp)) cancel_don();
-		You("break out of your armor!");
+		You("break out of your armor!"); /* EN You("break out of your armor!"); */ // TODO DE
 		exercise(A_STR, FALSE);
 		(void) Armor_gone();
 		useup(otmp);
 	}
 	if ((otmp = uarmc) != 0) {
 	    if(otmp->oartifact) {
-		Your("%s falls off!", cloak_simple_name(otmp));
+		Your("%s falls off!", cloak_simple_name(otmp)); /* EN Your("%s falls off!", cloak_simple_name(otmp)); */ // TODO DE
 		(void) Cloak_off();
 		dropx(otmp);
 	    } else {
-		Your("%s tears apart!", cloak_simple_name(otmp));
+		Your("%s tears apart!", cloak_simple_name(otmp)); /* EN Your("%s tears apart!", cloak_simple_name(otmp)); */ // TODO DE
 		(void) Cloak_off();
 		useup(otmp);
 	    }
 	}
 #ifdef TOURIST
 	if (uarmu) {
-		Your("shirt rips to shreds!");
+		Your("shirt rips to shreds!"); /* EN Your("shirt rips to shreds!"); */ // TODO DE
 		useup(uarmu);
 	}
 #endif
     } else if (sliparm(youmonst.data)) {
 	if (((otmp = uarm) != 0) && (racial_exception(&youmonst, otmp) < 1)) {
 		if (donning(otmp)) cancel_don();
-		Your("armor falls around you!");
+		Your("armor falls around you!"); /* EN Your("armor falls around you!"); */ // TODO DE
 		(void) Armor_gone();
 		dropx(otmp);
 	}
 	if ((otmp = uarmc) != 0) {
 		if (is_whirly(youmonst.data))
-			Your("%s falls, unsupported!", cloak_simple_name(otmp));
-		else You("shrink out of your %s!", cloak_simple_name(otmp));
+			Your("%s falls, unsupported!", cloak_simple_name(otmp)); /* EN Your("%s falls, unsupported!", cloak_simple_name(otmp)); */ // TODO DE
+		else You("shrink out of your %s!", cloak_simple_name(otmp)); /* EN else You("shrink out of your %s!", cloak_simple_name(otmp)); */ // TODO DE
 		(void) Cloak_off();
 		dropx(otmp);
 	}
 #ifdef TOURIST
 	if ((otmp = uarmu) != 0) {
 		if (is_whirly(youmonst.data))
-			You("seep right through your shirt!");
-		else You("become much too small for your shirt!");
+			You("seep right through your shirt!"); /* EN You("seep right through your shirt!"); */ // TODO DE
+		else You("become much too small for your shirt!"); /* EN else You("become much too small for your shirt!"); */ // TODO DE
 		setworn((struct obj *)0, otmp->owornmask & W_ARMU);
 		dropx(otmp);
 	}
@@ -623,12 +623,12 @@ break_armor()
 		char hornbuf[BUFSZ], yourbuf[BUFSZ];
 
 		/* Future possiblities: This could damage/destroy helmet */
-		Sprintf(hornbuf, "horn%s", plur(num_horns(youmonst.data)));
-		Your("%s %s through %s %s.", hornbuf, vtense(hornbuf, "pierce"),
+		Sprintf(hornbuf, "horn%s", plur(num_horns(youmonst.data))); /* EN Sprintf(hornbuf, "horn%s", plur(num_horns(youmonst.data))); */ // TODO DE
+		Your("%s %s through %s %s.", hornbuf, vtense(hornbuf, "pierce"), /* EN Your("%s %s through %s %s.", hornbuf, vtense(hornbuf, "pierce"), */ // TODO DE
 		     shk_your(yourbuf, otmp), xname(otmp));
 	    } else {
 		if (donning(otmp)) cancel_don();
-		Your("helmet falls to the %s!", surface(u.ux, u.uy));
+		Your("helmet falls to the %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE
 		(void) Helmet_off();
 		dropx(otmp);
 	    }
@@ -638,19 +638,19 @@ break_armor()
 	if ((otmp = uarmg) != 0) {
 	    if (donning(otmp)) cancel_don();
 	    /* Drop weapon along with gloves */
-	    You("drop your gloves%s!", uwep ? " and weapon" : "");
+	    You("drop your gloves%s!", uwep ? " and weapon" : ""); /* EN You("drop your gloves%s!", uwep ? " and weapon" : ""); */ // TODO DE
 	    drop_weapon(0);
 	    (void) Gloves_off();
 	    dropx(otmp);
 	}
 	if ((otmp = uarms) != 0) {
-	    You("can no longer hold your shield!");
+	    You("can no longer hold your shield!"); /* EN You("can no longer hold your shield!"); */ // TODO DE
 	    (void) Shield_off();
 	    dropx(otmp);
 	}
 	if ((otmp = uarmh) != 0) {
 	    if (donning(otmp)) cancel_don();
-	    Your("helmet falls to the %s!", surface(u.ux, u.uy));
+	    Your("helmet falls to the %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE
 	    (void) Helmet_off();
 	    dropx(otmp);
 	}
@@ -660,9 +660,9 @@ break_armor()
 	if ((otmp = uarmf) != 0) {
 	    if (donning(otmp)) cancel_don();
 	    if (is_whirly(youmonst.data))
-		Your("boots fall away!");
-	    else Your("boots %s off your feet!",
-			verysmall(youmonst.data) ? "slide" : "are pushed");
+		Your("boots fall away!"); /* EN Your("boots fall away!"); */ // TODO DE
+	    else Your("boots %s off your feet!", /* EN else Your("boots %s off your feet!", */ // TODO DE
+			verysmall(youmonst.data) ? "slide" : "are pushed"); /* EN verysmall(youmonst.data) ? "slide" : "are pushed"); */ // TODO DE
 	    (void) Boots_off();
 	    dropx(otmp);
 	}
@@ -684,8 +684,8 @@ int alone;
 	if (!alone || cantwield(youmonst.data)) {
 	    struct obj *wep = uwep;
 
-	    if (alone) You("find you must drop your weapon%s!",
-			   	u.twoweap ? "s" : "");
+	    if (alone) You("find you must drop your weapon%s!", /* EN if (alone) You("find you must drop your weapon%s!", */ // TODO DE
+			   	u.twoweap ? "s" : ""); /* EN u.twoweap ? "s" : ""); */ // TODO DE
 	    otmp2 = u.twoweap ? uswapwep : 0;
 	    uwepgone();
 	    if (!wep->cursed || wep->otyp != LOADSTONE)
@@ -708,23 +708,23 @@ rehumanize()
 	/* You can't revert back while unchanging */
 	if (Unchanging && (u.mh < 1)) {
 		killer_format = NO_KILLER_PREFIX;
-		killer = "killed while stuck in creature form";
+		killer = "killed while stuck in creature form"; /* EN killer = "killed while stuck in creature form"; */ // TODO DE
 		done(DIED);
 	}
 
 	if (emits_light(youmonst.data))
 	    del_light_source(LS_MONSTER, (genericptr_t)&youmonst);
-	polyman("return to %s form!", urace.adj);
+	polyman("return to %s form!", urace.adj); /* EN polyman("return to %s form!", urace.adj); */ // TODO DE
 
 	if (u.uhp < 1) {
 	    char kbuf[256];
 
-	    Sprintf(kbuf, "reverting to unhealthy %s form", urace.adj);
+	    Sprintf(kbuf, "reverting to unhealthy %s form", urace.adj); /* EN Sprintf(kbuf, "reverting to unhealthy %s form", urace.adj); */ // TODO DE
 	    killer_format = KILLED_BY;
 	    killer = kbuf;
 	    done(DIED);
 	}
-	if (!uarmg) selftouch("No longer petrify-resistant, you");
+	if (!uarmg) selftouch("No longer petrify-resistant, you"); /* EN if (!uarmg) selftouch("No longer petrify-resistant, you"); */ // TODO DE
 	nomul(0);
 
 	flags.botl = 1;
@@ -738,11 +738,11 @@ dobreathe()
 	struct attack *mattk;
 
 	if (Strangled) {
-	    You_cant("breathe.  Sorry.");
+	    You_cant("breathe.  Sorry."); /* EN You_cant("breathe.  Sorry."); */ // TODO DE
 	    return(0);
 	}
 	if (u.uen < 15) {
-	    You("don't have enough energy to breathe!");
+	    You("don't have enough energy to breathe!"); /* EN You("don't have enough energy to breathe!"); */ // TODO DE
 	    return(0);
 	}
 	u.uen -= 15;
@@ -776,7 +776,7 @@ int
 doremove()
 {
 	if (!Punished) {
-		You("are not chained to anything!");
+		You("are not chained to anything!"); /* EN You("are not chained to anything!"); */ // TODO DE
 		return(0);
 	}
 	unpunish();
@@ -790,11 +790,11 @@ dospinweb()
 
 	if (Levitation || Is_airlevel(&u.uz)
 	    || Underwater || Is_waterlevel(&u.uz)) {
-		You("must be on the ground to spin a web.");
+		You("must be on the ground to spin a web."); /* EN You("must be on the ground to spin a web."); */ // TODO DE
 		return(0);
 	}
 	if (u.uswallow) {
-		You("release web fluid inside %s.", mon_nam(u.ustuck));
+		You("release web fluid inside %s.", mon_nam(u.ustuck)); /* EN You("release web fluid inside %s.", mon_nam(u.ustuck)); */ // TODO DE
 		if (is_animal(u.ustuck->data)) {
 			expels(u.ustuck, u.ustuck->data, TRUE);
 			return(0);
@@ -813,55 +813,55 @@ dospinweb()
 				sweep[0] = '\0';
 				switch(u.ustuck->data->mattk[i].adtyp) {
 					case AD_FIRE:
-						Strcpy(sweep, "ignites and ");
+						Strcpy(sweep, "ignites and "); /* EN Strcpy(sweep, "ignites and "); */ // TODO DE
 						break;
 					case AD_ELEC:
-						Strcpy(sweep, "fries and ");
+						Strcpy(sweep, "fries and "); /* EN Strcpy(sweep, "fries and "); */ // TODO DE
 						break;
 					case AD_COLD:
 						Strcpy(sweep,
-						      "freezes, shatters and ");
+						      "freezes, shatters and "); /* EN "freezes, shatters and "); */ // TODO DE
 						break;
 				}
-				pline_The("web %sis swept away!", sweep);
+				pline_The("web %sis swept away!", sweep); /* EN pline_The("web %sis swept away!", sweep); */ // TODO DE
 			}
 			return(0);
 		}		     /* default: a nasty jelly-like creature */
-		pline_The("web dissolves into %s.", mon_nam(u.ustuck));
+		pline_The("web dissolves into %s.", mon_nam(u.ustuck)); /* EN pline_The("web dissolves into %s.", mon_nam(u.ustuck)); */ // TODO DE
 		return(0);
 	}
 	if (u.utrap) {
-		You("cannot spin webs while stuck in a trap.");
+		You("cannot spin webs while stuck in a trap."); /* EN You("cannot spin webs while stuck in a trap."); */ // TODO DE
 		return(0);
 	}
 	exercise(A_DEX, TRUE);
 	if (ttmp) switch (ttmp->ttyp) {
 		case PIT:
-		case SPIKED_PIT: You("spin a web, covering up the pit.");
+		case SPIKED_PIT: You("spin a web, covering up the pit."); /* EN case SPIKED_PIT: You("spin a web, covering up the pit."); */ // TODO DE
 			deltrap(ttmp);
 			bury_objs(u.ux, u.uy);
 			newsym(u.ux, u.uy);
 			return(1);
-		case SQKY_BOARD: pline_The("squeaky board is muffled.");
+		case SQKY_BOARD: pline_The("squeaky board is muffled."); /* EN case SQKY_BOARD: pline_The("squeaky board is muffled."); */ // TODO DE
 			deltrap(ttmp);
 			newsym(u.ux, u.uy);
 			return(1);
 		case TELEP_TRAP:
 		case LEVEL_TELEP:
 		case MAGIC_PORTAL:
-			Your("webbing vanishes!");
+			Your("webbing vanishes!"); /* EN Your("webbing vanishes!"); */ // TODO DE
 			return(0);
-		case WEB: You("make the web thicker.");
+		case WEB: You("make the web thicker."); /* EN case WEB: You("make the web thicker."); */ // TODO DE
 			return(1);
 		case HOLE:
 		case TRAPDOOR:
-			You("web over the %s.",
-			    (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole");
+			You("web over the %s.", /* EN You("web over the %s.", */ // TODO DE
+			    (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole"); /* EN (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole"); */ // TODO DE
 			deltrap(ttmp);
 			newsym(u.ux, u.uy);
 			return 1;
 		case ROLLING_BOULDER_TRAP:
-			You("spin a web, jamming the trigger.");
+			You("spin a web, jamming the trigger."); /* EN You("spin a web, jamming the trigger."); */ // TODO DE
 			deltrap(ttmp);
 			newsym(u.ux, u.uy);
 			return(1);
@@ -876,7 +876,7 @@ dospinweb()
 		case MAGIC_TRAP:
 		case ANTI_MAGIC:
 		case POLY_TRAP:
-			You("have triggered a trap!");
+			You("have triggered a trap!"); /* EN You("have triggered a trap!"); */ // TODO DE
 			dotrap(ttmp, 0);
 			return(1);
 		default:
@@ -1088,10 +1088,10 @@ domindblast()
 			continue;
 		u_sen = telepathic(mtmp->data) && !mtmp->mcansee;
 		if (u_sen || (telepathic(mtmp->data) && rn2(2)) || !rn2(10)) {
-			You("lock in on %s %s.", s_suffix(mon_nam(mtmp)),
-				u_sen ? "telepathy" :
-				telepathic(mtmp->data) ? "latent telepathy" :
-				"mind");
+			You("lock in on %s %s.", s_suffix(mon_nam(mtmp)), /* EN You("lock in on %s %s.", s_suffix(mon_nam(mtmp)), */ // TODO DE
+				u_sen ? "telepathy" : /* EN u_sen ? "telepathy" : */ // TODO DE
+				telepathic(mtmp->data) ? "latent telepathy" : /* EN telepathic(mtmp->data) ? "latent telepathy" : */ // TODO DE
+				"mind"); /* EN "mind"); */ // TODO DE
 			mtmp->mhp -= rnd(15);
 			if (mtmp->mhp <= 0)
 				killed(mtmp);
@@ -1103,7 +1103,7 @@ domindblast()
 STATIC_OVL void
 uunstick()
 {
-	pline("%s is no longer in your clutches.", Monnam(u.ustuck));
+	pline("%s is no longer in your clutches.", Monnam(u.ustuck)); /* EN pline("%s is no longer in your clutches.", Monnam(u.ustuck)); */ // TODO DE
 	u.ustuck = 0;
 }
 
@@ -1112,7 +1112,7 @@ skinback(silently)
 boolean silently;
 {
 	if (uskin) {
-		if (!silently) Your("skin returns to its original form.");
+		if (!silently) Your("skin returns to its original form."); /* EN if (!silently) Your("skin returns to its original form."); */ // TODO DE
 		uarm = uskin;
 		uskin = (struct obj *)0;
 		/* undo save/restore hack */
@@ -1129,10 +1129,12 @@ struct monst *mon;
 int part;
 {
 	static NEARDATA const char
-	*humanoid_parts[] = { "arm", "eye", "face", "finger",
-		"fingertip", "foot", "hand", "handed", "head", "leg",
-		"light headed", "neck", "spine", "toe", "hair",
-		"blood", "lung", "nose", "stomach"},
+		// TODO DE
+	*humanoid_parts[] = { "NOUN_ARM", "NOUN_EYE", "NOUN_FACE", "NOUN_FINGER", /* EN *humanoid_parts[] = { "arm", "eye", "face", "finger", */
+		"NOUN_FINGERTIP", "NOUN_FOOT", "NOUN_HAND", "handed", "NOUN_HEAD", "NOUN_LEG", /* EN "fingertip", "foot", "hand", "handed", "head", "leg", */
+		"light headed", "neck", "spine", "toe", "hair", /* EN "light headed", "neck", "spine", "toe", "hair", */
+		"blood", "lung", "nose", "stomach"}, /* EN "blood", "lung", "nose", "stomach"}, */
+		// TODO DE
 	*jelly_parts[] = { "pseudopod", "dark spot", "front",
 		"pseudopod extension", "pseudopod extremity",
 		"pseudopod root", "grasp", "grasped", "cerebral area",
@@ -1147,28 +1149,34 @@ int part;
 		"foot", "wing", "winged", "head", "leg",
 		"light headed", "neck", "spine", "toe",
 		"feathers", "blood", "lung", "bill", "stomach" },
+		// TODO DE
 	*horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip",
 		"rear hoof", "foreclaw", "hooved", "head", "rear leg",
 		"light headed", "neck", "backbone", "rear hoof tip",
 		"mane", "blood", "lung", "nose", "stomach"},
+		// TODO DE
 	*sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle",
 		"tentacle tip", "lower appendage", "tentacle", "tentacled",
 		"body", "lower tentacle", "rotational", "equator", "body",
 		"lower tentacle tip", "cilia", "life force", "retina",
 		"olfactory nerve", "interior" },
+		// TODO DE
 	*fungus_parts[] = { "mycelium", "visual area", "front", "hypha",
 		"hypha", "root", "strand", "stranded", "cap area",
 		"rhizome", "sporulated", "stalk", "root", "rhizome tip",
 		"spores", "juices", "gill", "gill", "interior" },
+		// TODO DE
 	*vortex_parts[] = { "region", "eye", "front", "minor current",
 		"minor current", "lower current", "swirl", "swirled",
 		"central core", "lower current", "addled", "center",
 		"currents", "edge", "currents", "life force",
 		"center", "leading edge", "interior" },
+		// TODO DE
 	*snake_parts[] = { "vestigial limb", "eye", "face", "large scale",
 		"large scale tip", "rear region", "scale gap", "scale gapped",
 		"head", "rear region", "light headed", "neck", "length",
 		"rear scale", "scales", "blood", "lung", "forked tongue", "stomach" },
+		// TODO DE
 	*fish_parts[] = { "fin", "eye", "premaxillary", "pelvic axillary",
 		"pelvic fin", "anal fin", "pectoral fin", "finned", "head", "peduncle",
 		"played out", "gills", "dorsal fin", "caudal fin",
@@ -1186,23 +1194,23 @@ int part;
 	if (part == HAND || part == HANDED) {	/* some special cases */
 	    if (mptr->mlet == S_DOG || mptr->mlet == S_FELINE ||
 		    mptr->mlet == S_YETI)
-		return part == HAND ? "paw" : "pawed";
+		return part == HAND ? "paw" : "pawed"; /* EN return part == HAND ? "paw" : "pawed"; */ // TODO DE
 	    if (humanoid(mptr) && attacktype(mptr, AT_CLAW) &&
 		    !index(not_claws, mptr->mlet) &&
 		    mptr != &mons[PM_STONE_GOLEM] &&
 		    mptr != &mons[PM_INCUBUS] && mptr != &mons[PM_SUCCUBUS])
-		return part == HAND ? "claw" : "clawed";
+		return part == HAND ? "claw" : "clawed"; /* EN return part == HAND ? "claw" : "clawed"; */ // TODO DE
 	}
 	if ((mptr == &mons[PM_MUMAK] || mptr == &mons[PM_MASTODON]) &&
 		part == NOSE)
-	    return "trunk";
+	    return "trunk"; /* EN return "trunk"; */ // TODO DE
 	if (mptr == &mons[PM_SHARK] && part == HAIR)
-	    return "skin";	/* sharks don't have scales */
+	    return "skin";	/* sharks don't have scales */ /* EN return "skin";	*/ // TODO DE
 	if (mptr == &mons[PM_JELLYFISH] && (part == ARM || part == FINGER ||
 	    part == HAND || part == FOOT || part == TOE))
-	    return "tentacle";
+	    return "tentacle"; /* EN return "tentacle"; */ // TODO DE
 	if (mptr == &mons[PM_FLOATING_EYE] && part == EYE)
-	    return "cornea";
+	    return "cornea"; /* EN return "cornea"; */ // TODO DE
 	if (humanoid(mptr) &&
 		(part == ARM || part == FINGER || part == FINGERTIP ||
 		    part == HAND || part == HANDED))
@@ -1213,10 +1221,10 @@ int part;
 		(mptr == &mons[PM_ROTHE] && part != HAIR))
 	    return horse_parts[part];
 	if (mptr->mlet == S_LIGHT) {
-		if (part == HANDED) return "rayed";
+		if (part == HANDED) return "rayed"; /* EN if (part == HANDED) return "rayed"; */ // TODO DE
 		else if (part == ARM || part == FINGER ||
-				part == FINGERTIP || part == HAND) return "ray";
-		else return "beam";
+				part == FINGERTIP || part == HAND) return "ray"; /* EN part == FINGERTIP || part == HAND) return "ray"; */ // TODO DE
+		else return "beam"; /* EN else return "beam"; */ // TODO DE
 	}
 	if (mptr->mlet == S_EEL && mptr != &mons[PM_JELLYFISH])
 	    return fish_parts[part];
@@ -1282,7 +1290,7 @@ int damtype, dam;
 		u.mh += heal;
 		if (u.mh > u.mhmax) u.mh = u.mhmax;
 		flags.botl = 1;
-		pline("Strangely, you feel better than before.");
+		pline("Strangely, you feel better than before."); /* EN pline("Strangely, you feel better than before."); */ // TODO DE
 		exercise(A_STR, TRUE);
 	}
 }

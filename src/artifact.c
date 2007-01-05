@@ -176,9 +176,9 @@ short *otyp;
     register const struct artifact *a;
     register const char *aname;
 
-    if(!strncmpi(name, "the ", 4)) name += 4;
+    if(!strncmpi(name, "the ", 4)) name += 4; /* EN if(!strncmpi(name, "the ", 4)) name += 4; */ // TODO DE
 
-    for (a = artilist+1; a->otyp; a++) {
+    for (a = artilist+1; a->otyp; a++) { /* EN for (a = artilist+1; a->otyp; a++) { */ // TODO DE
 	aname = a->name;
 	if(!strncmpi(aname, "the ", 4)) aname += 4;
 	if(!strcmpi(name, aname)) {
@@ -291,7 +291,7 @@ register const char *name;
 	register const char *aname;
 
 	if (!*name) return FALSE;
-	if (!strncmpi(name, "the ", 4)) name += 4;
+	if (!strncmpi(name, "the ", 4)) name += 4; /* EN if (!strncmpi(name, "the ", 4)) name += 4; */ // TODO DE
 
 		/* Since almost every artifact is SPFX_RESTR, it doesn't cost
 		   us much to do the string comparison before the spfx check.
@@ -300,7 +300,7 @@ register const char *name;
 	for (a = artilist+1; a->otyp; a++) {
 	    if (a->otyp != otmp->otyp) continue;
 	    aname = a->name;
-	    if (!strncmpi(aname, "the ", 4)) aname += 4;
+	    if (!strncmpi(aname, "the ", 4)) aname += 4; /* EN if (!strncmpi(aname, "the ", 4)) aname += 4; */ // TODO DE
 	    if (!strcmp(aname, name))
 		return ((boolean)((a->spfx & (SPFX_NOGEN|SPFX_RESTR)) != 0 ||
 			otmp->quan > 1L));
@@ -538,16 +538,16 @@ touch_artifact(obj,mon)
 	char buf[BUFSZ];
 
 	if (!yours) return 0;
-	You("are blasted by %s power!", s_suffix(the(xname(obj))));
+	You("are blasted by %s power!", s_suffix(the(xname(obj)))); /* EN You("are blasted by %s power!", s_suffix(the(xname(obj)))); */ // TODO DE
 	dmg = d((Antimagic ? 2 : 4), (self_willed ? 10 : 4));
-	Sprintf(buf, "touching %s", oart->name);
+	Sprintf(buf, "touching %s", oart->name); /* EN Sprintf(buf, "touching %s", oart->name); */ // TODO DE
 	losehp(dmg, buf, KILLED_BY);
 	exercise(A_WIS, FALSE);
     }
 
     /* can pick it up unless you're totally non-synch'd with the artifact */
     if (badclass && badalign && self_willed) {
-	if (yours) pline("%s your grasp!", Tobjnam(obj, "evade"));
+	if (yours) pline("%s your grasp!", Tobjnam(obj, "evade")); /* EN if (yours) pline("%s your grasp!", Tobjnam(obj, "evade")); */ // TODO DE
 	return 0;
     }
 
@@ -707,7 +707,7 @@ winid tmpwin;		/* supplied by dodiscover() */
 
     for (i = 0; i < NROFARTIFACTS; i++) {
 	if (artidisco[i] == 0) break;	/* empty slot implies end of list */
-	if (i == 0) putstr(tmpwin, ATR_INVERSE, "Artifacts");
+	if (i == 0) putstr(tmpwin, ATR_INVERSE, "Artifacts"); /* EN if (i == 0) putstr(tmpwin, ATR_INVERSE, "Artifacts"); */ // TODO DE
 	m = artidisco[i];
 	otyp = artilist[m].otyp;
 	Sprintf(buf, "  %s [%s %s]", artiname(m),
@@ -744,8 +744,8 @@ winid tmpwin;		/* supplied by dodiscover() */
 	 */
 #define MB_MAX_DIEROLL		8	/* rolls above this aren't magical */
 static const char * const mb_verb[2][4] = {
-	{ "probe", "stun", "scare", "cancel" },
-	{ "prod", "amaze", "tickle", "purge" },
+	{ "probe", "stun", "scare", "cancel" }, /* EN { "probe", "stun", "scare", "cancel" }, */ // TODO DE
+	{ "prod", "amaze", "tickle", "purge" }, /* EN { "prod", "amaze", "tickle", "purge" }, */ // TODO DE
 };
 #define MB_INDEX_PROBE		0
 #define MB_INDEX_STUN		1
@@ -809,7 +809,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
     verb = mb_verb[!!Hallucination][attack_indx];
     if (youattack || youdefend || vis) {
 	result = TRUE;
-	pline_The("magic-absorbing blade %s %s!",
+	pline_The("magic-absorbing blade %s %s!", /* EN pline_The("magic-absorbing blade %s %s!", */ // TODO DE
 		  vtense((const char *)0, verb), hittee);
 	/* assume probing has some sort of noticeable feedback
 	   even if it is being done by one monster to another */
@@ -833,7 +833,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 		if (youmonst.data != old_uasmon)
 		    *dmgptr = 0;    /* rehumanized, so no more damage */
 		if (u.uenmax > 0) {
-		    You("lose magical energy!");
+		    You("lose magical energy!"); /* EN You("lose magical energy!"); */ // TODO DE
 		    u.uenmax--;
 		    if (u.uen > 0) u.uen--;
 		    flags.botl = 1;
@@ -842,7 +842,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 		if (mdef->data == &mons[PM_CLAY_GOLEM])
 		    mdef->mhp = 1;	/* cancelled clay golems will die */
 		if (youattack && attacktype(mdef->data, AT_MAGC)) {
-		    You("absorb magical energy!");
+		    You("absorb magical energy!"); /* EN You("absorb magical energy!"); */ // TODO DE
 		    u.uenmax++;
 		    u.uen++;
 		    flags.botl = 1;
@@ -860,7 +860,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 		nomovemsg = "";
 		if (magr && magr == u.ustuck && sticks(youmonst.data)) {
 		    u.ustuck = (struct monst *)0;
-		    You("release %s!", mon_nam(magr));
+		    You("release %s!", mon_nam(magr)); /* EN You("release %s!", mon_nam(magr)); */ // TODO DE
 		}
 	    }
 	} else {
@@ -878,7 +878,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 
     case MB_INDEX_PROBE:
 	if (youattack && (mb->spe == 0 || !rn2(3 * abs(mb->spe)))) {
-	    pline_The("%s is insightful.", verb);
+	    pline_The("%s is insightful.", verb); /* EN pline_The("%s is insightful.", verb); */ // TODO DE
 	    /* pre-damage status */
 	    probe_monster(mdef);
 	}
@@ -905,7 +905,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
     if (youattack || youdefend || vis) {
 	(void) upstart(hittee);	/* capitalize */
 	if (resisted) {
-	    pline("%s %s!", hittee, vtense(hittee, "resist"));
+	    pline("%s %s!", hittee, vtense(hittee, "resist")); /* EN pline("%s %s!", hittee, vtense(hittee, "resist")); */ // TODO DE
 	    shieldeff(youdefend ? u.ux : mdef->mx,
 		      youdefend ? u.uy : mdef->my);
 	}
@@ -913,10 +913,10 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 	    char buf[BUFSZ];
 
 	    buf[0] = '\0';
-	    if (do_stun) Strcat(buf, "stunned");
-	    if (do_stun && do_confuse) Strcat(buf, " and ");
-	    if (do_confuse) Strcat(buf, "confused");
-	    pline("%s %s %s%c", hittee, vtense(hittee, "are"),
+	    if (do_stun) Strcat(buf, "stunned"); /* EN if (do_stun) Strcat(buf, "stunned"); */ // TODO DE
+	    if (do_stun && do_confuse) Strcat(buf, " and "); /* EN if (do_stun && do_confuse) Strcat(buf, " and "); */ // TODO DE
+	    if (do_confuse) Strcat(buf, "confused"); /* EN if (do_confuse) Strcat(buf, "confused"); */ // TODO DE
+	    pline("%s %s %s%c", hittee, vtense(hittee, "are"), /* EN pline("%s %s %s%c", hittee, vtense(hittee, "are"), */ // TODO DE
 		  buf, (do_stun && do_confuse) ? '!' : '.');
 	}
     }
@@ -946,7 +946,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	    || (youattack && u.uswallow && mdef == u.ustuck && !Blind);
 	boolean realizes_damage;
 	const char *wepdesc;
-	static const char you[] = "you";
+	static const char you[] = "you"; /* EN static const char you[] = "you"; */ // TODO DE
 	char hittee[BUFSZ];
 
 	Strcpy(hittee, youdefend ? you : mon_nam(mdef));
@@ -969,10 +969,10 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	/* the four basic attacks: fire, cold, shock and missiles */
 	if (attacks(AD_FIRE, otmp)) {
 	    if (realizes_damage)
-		pline_The("fiery blade %s %s%c",
+		pline_The("fiery blade %s %s%c", /* EN pline_The("fiery blade %s %s%c", */ // TODO DE
 			!spec_dbon_applies ? "hits" :
 			(mdef->data == &mons[PM_WATER_ELEMENTAL]) ?
-			"vaporizes part of" : "burns",
+			"vaporizes part of" : "burns", /* EN "vaporizes part of" : "burns", */ // TODO DE
 			hittee, !spec_dbon_applies ? '.' : '!');
 	    if (!rn2(4)) (void) destroy_mitem(mdef, POTION_CLASS, AD_FIRE);
 	    if (!rn2(4)) (void) destroy_mitem(mdef, SCROLL_CLASS, AD_FIRE);
@@ -982,16 +982,16 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	}
 	if (attacks(AD_COLD, otmp)) {
 	    if (realizes_damage)
-		pline_The("ice-cold blade %s %s%c",
-			!spec_dbon_applies ? "hits" : "freezes",
+		pline_The("ice-cold blade %s %s%c", /* EN pline_The("ice-cold blade %s %s%c", */ // TODO DE
+			!spec_dbon_applies ? "hits" : "freezes", /* EN !spec_dbon_applies ? "hits" : "freezes", */ // TODO DE
 			hittee, !spec_dbon_applies ? '.' : '!');
 	    if (!rn2(4)) (void) destroy_mitem(mdef, POTION_CLASS, AD_COLD);
 	    return realizes_damage;
 	}
 	if (attacks(AD_ELEC, otmp)) {
 	    if (realizes_damage)
-		pline_The("massive hammer hits%s %s%c",
-			  !spec_dbon_applies ? "" : "!  Lightning strikes",
+		pline_The("massive hammer hits%s %s%c", /* EN pline_The("massive hammer hits%s %s%c", */ // TODO DE
+			  !spec_dbon_applies ? "" : "!  Lightning strikes", /* EN !spec_dbon_applies ? "" : "!  Lightning strikes", */ // TODO DE
 			  hittee, !spec_dbon_applies ? '.' : '!');
 	    if (!rn2(5)) (void) destroy_mitem(mdef, RING_CLASS, AD_ELEC);
 	    if (!rn2(5)) (void) destroy_mitem(mdef, WAND_CLASS, AD_ELEC);
@@ -999,9 +999,9 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	}
 	if (attacks(AD_MAGM, otmp)) {
 	    if (realizes_damage)
-		pline_The("imaginary widget hits%s %s%c",
+		pline_The("imaginary widget hits%s %s%c", /* EN pline_The("imaginary widget hits%s %s%c", */ // TODO DE
 			  !spec_dbon_applies ? "" :
-				"!  A hail of magic missiles strikes",
+				"!  A hail of magic missiles strikes", /* EN "!  A hail of magic missiles strikes", */ // TODO DE
 			  hittee, !spec_dbon_applies ? '.' : '!');
 	    return realizes_damage;
 	}
@@ -1021,10 +1021,10 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	/* reverse from AD&D. */
 	if (spec_ability(otmp, SPFX_BEHEAD)) {
 	    if (otmp->oartifact == ART_TSURUGI_OF_MURAMASA && dieroll == 1) {
-		wepdesc = "The razor-sharp blade";
+		wepdesc = "The razor-sharp blade"; /* EN wepdesc = "The razor-sharp blade"; */ // TODO DE
 		/* not really beheading, but so close, why add another SPFX */
 		if (youattack && u.uswallow && mdef == u.ustuck) {
-		    You("slice %s wide open!", mon_nam(mdef));
+		    You("slice %s wide open!", mon_nam(mdef)); /* EN You("slice %s wide open!", mon_nam(mdef)); */ // TODO DE
 		    *dmgptr = 2 * mdef->mhp + FATAL_DAMAGE_MODIFIER;
 		    return TRUE;
 		}
@@ -1035,21 +1035,21 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 
 			if (bigmonst(mdef->data)) {
 				if (youattack)
-					You("slice deeply into %s!",
+					You("slice deeply into %s!", /* EN You("slice deeply into %s!", */ // TODO DE
 						mon_nam(mdef));
 				else if (vis)
-					pline("%s cuts deeply into %s!",
+					pline("%s cuts deeply into %s!", /* EN pline("%s cuts deeply into %s!", */ // TODO DE
 					      Monnam(magr), hittee);
 				*dmgptr *= 2;
 				return TRUE;
 			}
 			*dmgptr = 2 * mdef->mhp + FATAL_DAMAGE_MODIFIER;
-			pline("%s cuts %s in half!", wepdesc, mon_nam(mdef));
+			pline("%s cuts %s in half!", wepdesc, mon_nam(mdef)); /* EN pline("%s cuts %s in half!", wepdesc, mon_nam(mdef)); */ // TODO DE
 			otmp->dknown = TRUE;
 			return TRUE;
 		} else {
 			if (bigmonst(youmonst.data)) {
-				pline("%s cuts deeply into you!",
+				pline("%s cuts deeply into you!", /* EN pline("%s cuts deeply into you!", */ // TODO DE
 				      magr ? Monnam(magr) : wepdesc);
 				*dmgptr *= 2;
 				return TRUE;
@@ -1061,15 +1061,15 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			 * damage does not prevent death.
 			 */
 			*dmgptr = 2 * (Upolyd ? u.mh : u.uhp) + FATAL_DAMAGE_MODIFIER;
-			pline("%s cuts you in half!", wepdesc);
+			pline("%s cuts you in half!", wepdesc); /* EN pline("%s cuts you in half!", wepdesc); */ // TODO DE
 			otmp->dknown = TRUE;
 			return TRUE;
 		}
 	    } else if (otmp->oartifact == ART_VORPAL_BLADE &&
 			(dieroll == 1 || mdef->data == &mons[PM_JABBERWOCK])) {
 		static const char * const behead_msg[2] = {
-		     "%s beheads %s!",
-		     "%s decapitates %s!"
+		     "%s beheads %s!", /* EN "%s beheads %s!", */ // TODO DE
+		     "%s decapitates %s!" /* EN "%s decapitates %s!" */ // TODO DE
 		};
 
 		if (youattack && u.uswallow && mdef == u.ustuck)
@@ -1078,16 +1078,16 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 		if (!youdefend) {
 			if (!has_head(mdef->data) || notonhead || u.uswallow) {
 				if (youattack)
-					pline("Somehow, you miss %s wildly.",
+					pline("Somehow, you miss %s wildly.", /* EN pline("Somehow, you miss %s wildly.", */ // TODO DE
 						mon_nam(mdef));
 				else if (vis)
-					pline("Somehow, %s misses wildly.",
+					pline("Somehow, %s misses wildly.", /* EN pline("Somehow, %s misses wildly.", */ // TODO DE
 						mon_nam(magr));
 				*dmgptr = 0;
 				return ((boolean)(youattack || vis));
 			}
 			if (noncorporeal(mdef->data) || amorphous(mdef->data)) {
-				pline("%s slices through %s %s.", wepdesc,
+				pline("%s slices through %s %s.", wepdesc, /* EN pline("%s slices through %s %s.", wepdesc, */ // TODO DE
 				      s_suffix(mon_nam(mdef)),
 				      mbodypart(mdef,NECK));
 				return TRUE;
@@ -1099,20 +1099,20 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			return TRUE;
 		} else {
 			if (!has_head(youmonst.data)) {
-				pline("Somehow, %s misses you wildly.",
+				pline("Somehow, %s misses you wildly.", /* EN pline("Somehow, %s misses you wildly.", */ // TODO DE
 				      magr ? mon_nam(magr) : wepdesc);
 				*dmgptr = 0;
 				return TRUE;
 			}
 			if (noncorporeal(youmonst.data) || amorphous(youmonst.data)) {
-				pline("%s slices through your %s.",
+				pline("%s slices through your %s.", /* EN pline("%s slices through your %s.", */ // TODO DE
 				      wepdesc, body_part(NECK));
 				return TRUE;
 			}
 			*dmgptr = 2 * (Upolyd ? u.mh : u.uhp)
 				  + FATAL_DAMAGE_MODIFIER;
 			pline(behead_msg[rn2(SIZE(behead_msg))],
-			      wepdesc, "you");
+			      wepdesc, "you"); /* EN wepdesc, "you"); */ // TODO DE
 			otmp->dknown = TRUE;
 			/* Should amulets fall off? */
 			return TRUE;
@@ -1123,11 +1123,11 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 		if (!youdefend) {
 			if (vis) {
 			    if(otmp->oartifact == ART_STORMBRINGER)
-				pline_The("%s blade draws the life from %s!",
+				pline_The("%s blade draws the life from %s!", /* EN pline_The("%s blade draws the life from %s!", */ // TODO DE
 				      hcolor(NH_BLACK),
 				      mon_nam(mdef));
 			    else
-				pline("%s draws the life from %s!",
+				pline("%s draws the life from %s!", /* EN pline("%s draws the life from %s!", */ // TODO DE
 				      The(distant_name(otmp, xname)),
 				      mon_nam(mdef));
 			}
@@ -1146,16 +1146,16 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			int oldhpmax = u.uhpmax;
 
 			if (Blind)
-				You_feel("an %s drain your life!",
+				You_feel("an %s drain your life!", /* EN You_feel("an %s drain your life!", */ // TODO DE
 				    otmp->oartifact == ART_STORMBRINGER ?
-				    "unholy blade" : "object");
+				    "unholy blade" : "object"); /* EN "unholy blade" : "object"); */ // TODO DE
 			else if (otmp->oartifact == ART_STORMBRINGER)
-				pline_The("%s blade drains your life!",
+				pline_The("%s blade drains your life!", /* EN pline_The("%s blade drains your life!", */ // TODO DE
 				      hcolor(NH_BLACK));
 			else
-				pline("%s drains your life!",
+				pline("%s drains your life!", /* EN pline("%s drains your life!", */ // TODO DE
 				      The(distant_name(otmp, xname)));
-			losexp("life drainage");
+			losexp("life drainage"); /* EN losexp("life drainage"); */ // TODO DE
 			if (magr && magr->mhp < magr->mhpmax) {
 			    magr->mhp += (u.uhpmax - oldhpmax)/2;
 			    if (magr->mhp > magr->mhpmax) magr->mhp = magr->mhpmax;
@@ -1175,7 +1175,7 @@ doinvoke()
 {
     register struct obj *obj;
 
-    obj = getobj(invoke_types, "invoke");
+    obj = getobj(invoke_types, "invoke"); /* EN obj = getobj(invoke_types, "invoke"); */ // TODO DE
     if (!obj) return 0;
     if (obj->oartifact && !touch_artifact(obj, &youmonst)) return 1;
     return arti_invoke(obj);
@@ -1199,8 +1199,8 @@ arti_invoke(obj)
 	/* It's a special power, not "just" a property */
 	if(obj->age > monstermoves) {
 	    /* the artifact is tired :-) */
-	    You_feel("that %s %s ignoring you.",
-		     the(xname(obj)), otense(obj, "are"));
+	    You_feel("that %s %s ignoring you.", /* EN You_feel("that %s %s ignoring you.", */ // TODO DE
+		     the(xname(obj)), otense(obj, "are")); /* EN the(xname(obj)), otense(obj, "are")); */ // TODO DE
 	    /* and just got more so; patience is essential... */
 	    obj->age += (long) d(3,10);
 	    return 1;
@@ -1222,7 +1222,7 @@ arti_invoke(obj)
 
 	    if (Upolyd) healamt = (u.mhmax + 1 - u.mh) / 2;
 	    if (healamt || Sick || Slimed || Blinded > creamed)
-		You_feel("better.");
+		You_feel("better."); /* EN You_feel("better."); */ // TODO DE
 	    else
 		goto nothing_special;
 	    if (healamt > 0) {
@@ -1240,7 +1240,7 @@ arti_invoke(obj)
 	    if (epboost > 120) epboost = 120;		/* arbitrary */
 	    else if (epboost < 12) epboost = u.uenmax - u.uen;
 	    if(epboost) {
-		You_feel("re-energized.");
+		You_feel("re-energized."); /* EN You_feel("re-energized."); */ // TODO DE
 		u.uen += epboost;
 		flags.botl = 1;
 	    } else
@@ -1255,7 +1255,7 @@ arti_invoke(obj)
 	    break;
 	  }
 	case CHARGE_OBJ: {
-	    struct obj *otmp = getobj(recharge_type, "charge");
+	    struct obj *otmp = getobj(recharge_type, "charge"); /* EN struct obj *otmp = getobj(recharge_type, "charge"); */ // TODO DE
 	    boolean b_effect;
 
 	    if (!otmp) {
@@ -1289,7 +1289,7 @@ arti_invoke(obj)
 		num_ok_dungeons++;
 		last_ok_dungeon = i;
 	    }
-	    end_menu(tmpwin, "Open a portal to which dungeon?");
+	    end_menu(tmpwin, "Open a portal to which dungeon?"); /* EN end_menu(tmpwin, "Open a portal to which dungeon?"); */ // TODO DE
 	    if (num_ok_dungeons > 1) {
 		/* more than one entry; display menu for choices */
 		menu_item *selected;
@@ -1319,10 +1319,10 @@ arti_invoke(obj)
 		newlev.dlevel = dungeons[i].dunlev_ureached;
 	    if(u.uhave.amulet || In_endgame(&u.uz) || In_endgame(&newlev) ||
 	       newlev.dnum == u.uz.dnum) {
-		You_feel("very disoriented for a moment.");
+		You_feel("very disoriented for a moment."); /* EN You_feel("very disoriented for a moment."); */ // TODO DE
 	    } else {
-		if(!Blind) You("are surrounded by a shimmering sphere!");
-		else You_feel("weightless for a moment.");
+		if(!Blind) You("are surrounded by a shimmering sphere!"); /* EN if(!Blind) You("are surrounded by a shimmering sphere!"); */ // TODO DE
+		else You_feel("weightless for a moment."); /* EN else You_feel("weightless for a moment."); */ // TODO DE
 		goto_level(&newlev, FALSE, FALSE, FALSE);
 	    }
 	    break;
@@ -1345,8 +1345,8 @@ arti_invoke(obj)
 	    } else
 		otmp->quan += rnd(5);
 	    otmp->owt = weight(otmp);
-	    otmp = hold_another_object(otmp, "Suddenly %s out.",
-				       aobjnam(otmp, "fall"), (const char *)0);
+	    otmp = hold_another_object(otmp, "Suddenly %s out.", /* EN otmp = hold_another_object(otmp, "Suddenly %s out.", */ // TODO DE
+				       aobjnam(otmp, "fall"), (const char *)0); /* EN aobjnam(otmp, "fall"), (const char *)0); */ // TODO DE
 	    break;
 	  }
 	}
@@ -1358,8 +1358,8 @@ arti_invoke(obj)
 	if(on && obj->age > monstermoves) {
 	    /* the artifact is tired :-) */
 	    u.uprops[oart->inv_prop].extrinsic ^= W_ARTI;
-	    You_feel("that %s %s ignoring you.",
-		     the(xname(obj)), otense(obj, "are"));
+	    You_feel("that %s %s ignoring you.", /* EN You_feel("that %s %s ignoring you.", */ // TODO DE
+		     the(xname(obj)), otense(obj, "are")); /* EN the(xname(obj)), otense(obj, "are")); */ // TODO DE
 	    /* can't just keep repeatedly trying */
 	    obj->age += (long) d(3,10);
 	    return 1;
@@ -1373,13 +1373,13 @@ arti_invoke(obj)
 nothing_special:
 	    /* you had the property from some other source too */
 	    if (carried(obj))
-		You_feel("a surge of power, but nothing seems to happen.");
+		You_feel("a surge of power, but nothing seems to happen."); /* EN You_feel("a surge of power, but nothing seems to happen."); */ // TODO DE
 	    return 1;
 	}
 	switch(oart->inv_prop) {
 	case CONFLICT:
-	    if(on) You_feel("like a rabble-rouser.");
-	    else You_feel("the tension decrease around you.");
+	    if(on) You_feel("like a rabble-rouser."); /* EN if(on) You_feel("like a rabble-rouser."); */ // TODO DE
+	    else You_feel("the tension decrease around you."); /* EN else You_feel("the tension decrease around you."); */ // TODO DE
 	    break;
 	case LEVITATION:
 	    if(on) {
@@ -1391,10 +1391,10 @@ nothing_special:
 	    if (BInvis || Blind) goto nothing_special;
 	    newsym(u.ux, u.uy);
 	    if (on)
-		Your("body takes on a %s transparency...",
-		     Hallucination ? "normal" : "strange");
+		Your("body takes on a %s transparency...", /* EN Your("body takes on a %s transparency...", */ // TODO DE
+		     Hallucination ? "normal" : "strange"); /* EN Hallucination ? "normal" : "strange"); */ // TODO DE
 	    else
-		Your("body seems to unfade...");
+		Your("body seems to unfade..."); /* EN Your("body seems to unfade..."); */ // TODO DE
 	    break;
 	}
     }
@@ -1427,8 +1427,8 @@ arti_speak(obj)
 
 	line = getrumor(bcsign(obj), buf, TRUE);
 	if (!*line)
-		line = "NetHack rumors file closed for renovation.";
-	pline("%s:", Tobjnam(obj, "whisper"));
+		line = "NetHack rumors file closed for renovation."; /* EN line = "NetHack rumors file closed for renovation."; */ // TODO DE
+	pline("%s:", Tobjnam(obj, "whisper")); /* EN pline("%s:", Tobjnam(obj, "whisper")); */ // TODO DE
 	verbalize("%s", line);
 	return;
 }

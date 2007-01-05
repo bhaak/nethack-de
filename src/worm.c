@@ -368,7 +368,7 @@ cutworm(worm, x, y, weap)
 
     /* Sometimes the tail end dies. */
     if (rn2(3) || !(new_wnum = get_wormno())) {
-	You("cut part of the tail off of %s.", mon_nam(worm));
+	You("cut part of the tail off of %s.", mon_nam(worm)); /* EN You("cut part of the tail off of %s.", mon_nam(worm)); */ // TODO DE
 	toss_wsegs(new_tail, TRUE);
 	if (worm->mhp > 1) worm->mhp /= 2;
 	return;
@@ -425,7 +425,7 @@ cutworm(worm, x, y, weap)
 			 LS_MONSTER, (genericptr_t)new_worm);
 #endif
 
-    You("cut %s in half.", mon_nam(worm));
+    You("cut %s in half.", mon_nam(worm)); /* EN You("cut %s in half.", mon_nam(worm)); */ // TODO DE
 }
 
 

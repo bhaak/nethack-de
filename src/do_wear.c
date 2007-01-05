@@ -16,6 +16,7 @@ static NEARDATA long taking_off = 0L;
 static NEARDATA int todelay;
 static boolean cancelled_don = FALSE;
 
+// TODO DE
 static NEARDATA const char see_yourself[] = "PRONOMEN_PERSONAL sehen";
 static NEARDATA const char unknown_type[] = "Unknown type of %s (%d)";
 static NEARDATA const char c_armor[]  = "NOUN_ARMOR",

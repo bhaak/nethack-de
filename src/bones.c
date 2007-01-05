@@ -210,9 +210,9 @@ struct obj *corpse;
 		compress_bonesfile();
 #ifdef WIZARD
 		if (wizard) {
-		    if (yn("Bones file already exists.  Replace it?") == 'y') {
+		    if (yn("Bones file already exists.  Replace it?") == 'y') { /* EN if (yn("Bones file already exists.  Replace it?") == 'y') { */ // TODO DE
 			if (delete_bonesfile(&u.uz)) goto make_bones;
-			else pline("Cannot unlink old bones.");
+			else pline("Cannot unlink old bones."); /* EN else pline("Cannot unlink old bones."); */ // TODO DE
 		    }
 		}
 #endif
@@ -280,7 +280,7 @@ struct obj *corpse;
 		}
 		mtmp = christen_monst(mtmp, plname);
 		newsym(u.ux, u.uy);
-		Your("body rises from the dead as %s...",
+		Your("body rises from the dead as %s...", /* EN Your("body rises from the dead as %s...", */ // TODO DE
 			an(mons[u.ugrave_arise].mname));
 		display_nhwindow(WIN_MESSAGE, FALSE);
 		drop_upon_death(mtmp, (struct obj *)0);
@@ -350,7 +350,7 @@ struct obj *corpse;
 	    if (bytes_counted > freediskspace(bones)) { /* not enough room */
 # ifdef WIZARD
 		if (wizard)
-			pline("Insufficient space to create bones file.");
+			pline("Insufficient space to create bones file."); /* EN pline("Insufficient space to create bones file."); */ // TODO DE
 # endif
 		(void) close(fd);
 		cancel_bonesfile();
@@ -395,11 +395,11 @@ getbones()
 #ifdef WIZARD
 	    if (!wizard)
 #endif
-		pline("Discarding unuseable bones; no need to panic...");
+		pline("Discarding unuseable bones; no need to panic..."); /* EN pline("Discarding unuseable bones; no need to panic..."); */ // TODO DE
 	} else {
 #ifdef WIZARD
 		if(wizard)  {
-			if(yn("Get bones?") == 'n') {
+			if(yn("Get bones?") == 'n') { /* EN if(yn("Get bones?") == 'n') { */ // TODO DE
 				(void) close(fd);
 				compress_bonesfile();
 				return(0);
@@ -411,7 +411,7 @@ getbones()
 		if (strcmp(bonesid, oldbonesid) != 0) {
 			char errbuf[BUFSZ];
 
-			Sprintf(errbuf, "This is bones level '%s', not '%s'!",
+			Sprintf(errbuf, "This is bones level '%s', not '%s'!", /* EN Sprintf(errbuf, "This is bones level '%s', not '%s'!", */ // TODO DE
 				oldbonesid, bonesid);
 #ifdef WIZARD
 			if (wizard) {
@@ -446,7 +446,7 @@ getbones()
 
 #ifdef WIZARD
 	if(wizard) {
-		if(yn("Unlink bones?") == 'n') {
+		if(yn("Unlink bones?") == 'n') { /* EN if(yn("Unlink bones?") == 'n') { */ // TODO DE
 			compress_bonesfile();
 			return(ok);
 		}

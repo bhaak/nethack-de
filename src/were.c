@@ -22,12 +22,12 @@ register struct monst *mon;
 		    const char *howler;
 
 		    switch (monsndx(mon->data)) {
-		    case PM_WEREWOLF:	howler = "wolf";    break;
-		    case PM_WEREJACKAL: howler = "jackal";  break;
+		    case PM_WEREWOLF:	howler = "wolf";    break; /* EN case PM_WEREWOLF:	howler = "wolf";    break; */ // TODO DE
+		    case PM_WEREJACKAL: howler = "jackal";  break; /* EN case PM_WEREJACKAL: howler = "jackal";  break; */ // TODO DE
 		    default:		howler = (char *)0; break;
 		    }
 		    if (howler)
-			You_hear("a %s howling at the moon.", howler);
+			You_hear("a %s howling at the moon.", howler); /* EN You_hear("a %s howling at the moon.", howler); */ // TODO DE
 		}
 	    }
 	} else if (!rn2(30) || Protection_from_shape_changers) {
@@ -68,9 +68,9 @@ register struct monst *mon;
 	}
 
 	if(canseemon(mon) && !Hallucination)
-	    pline("%s changes into a %s.", Monnam(mon),
-			is_human(&mons[pm]) ? "human" :
-			mons[pm].mname+4);
+	    pline("%s changes into a %s.", Monnam(mon), /* EN pline("%s changes into a %s.", Monnam(mon), */ // TODO DE
+			is_human(&mons[pm]) ? "human" : /* EN is_human(&mons[pm]) ? "human" : */ // TODO DE
+			mons[pm].mname+4); /* EN mons[pm].mname+4); */ // TODO DE
 
 	set_mon_data(mon, &mons[pm], 0);
 	if (mon->msleeping || !mon->mcanmove) {
@@ -131,7 +131,7 @@ you_were()
 	if (Unchanging || (u.umonnum == u.ulycn)) return;
 	if (Polymorph_control) {
 	    /* `+4' => skip "were" prefix to get name of beast */
-	    Sprintf(qbuf, "Do you want to change into %s? ",
+	    Sprintf(qbuf, "Do you want to change into %s? ", /* EN Sprintf(qbuf, "Do you want to change into %s? ", */ // TODO DE
 		    an(mons[u.ulycn].mname+4));
 	    if(yn(qbuf) == 'n') return;
 	}
@@ -143,11 +143,11 @@ you_unwere(purify)
 boolean purify;
 {
 	if (purify) {
-	    You_feel("purified.");
+	    You_feel("purified."); /* EN You_feel("purified."); */ // TODO DE
 	    u.ulycn = NON_PM;	/* cure lycanthropy */
 	}
 	if (!Unchanging && is_were(youmonst.data) &&
-		(!Polymorph_control || yn("Remain in beast form?") == 'n'))
+		(!Polymorph_control || yn("Remain in beast form?") == 'n')) /* EN (!Polymorph_control || yn("Remain in beast form?") == 'n')) */ // TODO DE
 	    rehumanize();
 }
 

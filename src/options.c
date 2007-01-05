@@ -226,136 +226,136 @@ static struct Comp_Opt
 			 * a different format */
 	int optflags;
 } compopt[] = {
-	{ "align",    "your starting alignment (lawful, neutral, or chaotic)",
+	{ "align",    "your starting alignment (lawful, neutral, or chaotic)", /* EN { "align",    "your starting alignment (lawful, neutral, or chaotic)", */ // TODO DE
 						8, DISP_IN_GAME },
-	{ "align_message", "message window alignment", 20, DISP_IN_GAME }, 	/*WC*/
-	{ "align_status", "status window alignment", 20, DISP_IN_GAME }, 	/*WC*/
-	{ "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME },
-	{ "boulder",  "the symbol to use for displaying boulders",
+	{ "align_message", "message window alignment", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_message", "message window alignment", 20, DISP_IN_GAME }, 	*/ // TODO DE
+	{ "align_status", "status window alignment", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_status", "status window alignment", 20, DISP_IN_GAME }, 	*/ // TODO DE
+	{ "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, /* EN { "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, */ // TODO DE
+	{ "boulder",  "the symbol to use for displaying boulders", /* EN { "boulder",  "the symbol to use for displaying boulders", */ // TODO DE
 						1, SET_IN_GAME },
-	{ "catname",  "the name of your (first) cat (e.g., catname:Tabby)",
+	{ "catname",  "the name of your (first) cat (e.g., catname:Tabby)", /* EN { "catname",  "the name of your (first) cat (e.g., catname:Tabby)", */ // TODO DE
 						PL_PSIZ, DISP_IN_GAME },
-	{ "disclose", "the kinds of information to disclose at end of game",
+	{ "disclose", "the kinds of information to disclose at end of game", /* EN { "disclose", "the kinds of information to disclose at end of game", */ // TODO DE
 						sizeof(flags.end_disclose) * 2,
 						SET_IN_GAME },
-	{ "dogname",  "the name of your (first) dog (e.g., dogname:Fang)",
+	{ "dogname",  "the name of your (first) dog (e.g., dogname:Fang)", /* EN { "dogname",  "the name of your (first) dog (e.g., dogname:Fang)", */ // TODO DE
 						PL_PSIZ, DISP_IN_GAME },
 #ifdef DUMP_LOG
-	{ "dumpfile", "where to dump data (e.g., dumpfile:/tmp/dump.nh)",
+	{ "dumpfile", "where to dump data (e.g., dumpfile:/tmp/dump.nh)", /* EN { "dumpfile", "where to dump data (e.g., dumpfile:/tmp/dump.nh)", */ // TODO DE
 #ifdef DUMP_FN
 						PL_PSIZ, DISP_IN_GAME },
 #else
 						PL_PSIZ, SET_IN_GAME },
 #endif
 #endif
-	{ "dungeon",  "the symbols to use in drawing the dungeon map",
+	{ "dungeon",  "the symbols to use in drawing the dungeon map", /* EN { "dungeon",  "the symbols to use in drawing the dungeon map", */ // TODO DE
 						MAXDCHARS+1, SET_IN_FILE },
-	{ "effects",  "the symbols to use in drawing special effects",
+	{ "effects",  "the symbols to use in drawing special effects", /* EN { "effects",  "the symbols to use in drawing special effects", */ // TODO DE
 						MAXECHARS+1, SET_IN_FILE },
-	{ "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	/*WC*/
-	{ "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		/*WC*/
-	{ "font_message", "the font to use in the message window",
+	{ "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		/*WC*/ /* EN { "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		/*WC*/ */ // TODO DE
+	{ "font_message", "the font to use in the message window", /* EN { "font_message", "the font to use in the message window", */ // TODO DE
 						40, DISP_IN_GAME },		/*WC*/
-	{ "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	/*WC*/
-	{ "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	/*WC*/
-	{ "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	/*WC*/
-	{ "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	/*WC*/
-	{ "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	/*WC*/
-	{ "font_status", "the font to use in status window", 40, DISP_IN_GAME }, /*WC*/
-	{ "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	/*WC*/
-	{ "fruit",    "the name of a fruit you enjoy eating",
+	{ "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "font_status", "the font to use in status window", 40, DISP_IN_GAME }, /*WC*/ /* EN { "font_status", "the font to use in status window", 40, DISP_IN_GAME }, /*WC*/ */ // TODO DE
+	{ "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "fruit",    "the name of a fruit you enjoy eating", /* EN { "fruit",    "the name of a fruit you enjoy eating", */ // TODO DE
 						PL_FSIZ, SET_IN_GAME },
-	{ "gender",   "your starting gender (male or female)",
+	{ "gender",   "your starting gender (male or female)", /* EN { "gender",   "your starting gender (male or female)", */ // TODO DE
 						8, DISP_IN_GAME },
-	{ "horsename", "the name of your (first) horse (e.g., horsename:Silver)",
+	{ "horsename", "the name of your (first) horse (e.g., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */ // TODO DE
 						PL_PSIZ, DISP_IN_GAME },
-	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/
-	{ "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE },
-	{ "menustyle", "user interface for object selection",
+	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ */ // TODO DE
+	{ "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE }, /* EN { "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE }, */ // TODO DE
+	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
 						MENUTYPELEN, SET_IN_GAME },
-	{ "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE },
-	{ "menu_deselect_page", "deselect all items on this page of a menu",
+	{ "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_deselect_page", "deselect all items on this page of a menu", /* EN { "menu_deselect_page", "deselect all items on this page of a menu", */ // TODO DE
 						4, SET_IN_FILE },
-	{ "menu_first_page", "jump to the first page in a menu",
+	{ "menu_first_page", "jump to the first page in a menu", /* EN { "menu_first_page", "jump to the first page in a menu", */ // TODO DE
 						4, SET_IN_FILE },
-	{ "menu_invert_all", "invert all items in a menu", 4, SET_IN_FILE },
-	{ "menu_invert_page", "invert all items on this page of a menu",
+	{ "menu_invert_all", "invert all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_invert_all", "invert all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_invert_page", "invert all items on this page of a menu", /* EN { "menu_invert_page", "invert all items on this page of a menu", */ // TODO DE
 						4, SET_IN_FILE },
-	{ "menu_last_page", "jump to the last page in a menu", 4, SET_IN_FILE },
-	{ "menu_next_page", "goto the next menu page", 4, SET_IN_FILE },
-	{ "menu_previous_page", "goto the previous menu page", 4, SET_IN_FILE },
-	{ "menu_search", "search for a menu item", 4, SET_IN_FILE },
-	{ "menu_select_all", "select all items in a menu", 4, SET_IN_FILE },
-	{ "menu_select_page", "select all items on this page of a menu",
+	{ "menu_last_page", "jump to the last page in a menu", 4, SET_IN_FILE }, /* EN { "menu_last_page", "jump to the last page in a menu", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_next_page", "goto the next menu page", 4, SET_IN_FILE }, /* EN { "menu_next_page", "goto the next menu page", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_previous_page", "goto the previous menu page", 4, SET_IN_FILE }, /* EN { "menu_previous_page", "goto the previous menu page", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_search", "search for a menu item", 4, SET_IN_FILE }, /* EN { "menu_search", "search for a menu item", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_select_page", "select all items on this page of a menu", /* EN { "menu_select_page", "select all items on this page of a menu", */ // TODO DE
 						4, SET_IN_FILE },
-	{ "monsters", "the symbols to use for monsters",
+	{ "monsters", "the symbols to use for monsters", /* EN { "monsters", "the symbols to use for monsters", */ // TODO DE
 						MAXMCLASSES, SET_IN_FILE },
-	{ "msghistory", "number of top line messages to save",
+	{ "msghistory", "number of top line messages to save", /* EN { "msghistory", "number of top line messages to save", */ // TODO DE
 						5, DISP_IN_GAME },
 # ifdef TTY_GRAPHICS
-	{"msg_window", "the type of message window required",1, SET_IN_GAME},
+	{"msg_window", "the type of message window required",1, SET_IN_GAME}, /* EN {"msg_window", "the type of message window required",1, SET_IN_GAME}, */ // TODO DE
 # else
-	{"msg_window", "the type of message window required", 1, SET_IN_FILE},
+	{"msg_window", "the type of message window required", 1, SET_IN_FILE}, /* EN {"msg_window", "the type of message window required", 1, SET_IN_FILE}, */ // TODO DE
 # endif
-	{ "name",     "your character's name (e.g., name:Merlin-W)",
+	{ "name",     "your character's name (e.g., name:Merlin-W)", /* EN { "name",     "your character's name (e.g., name:Merlin-W)", */ // TODO DE
 						PL_NSIZ, DISP_IN_GAME },
-	{ "number_pad", "use the number pad", 1, SET_IN_GAME},
-	{ "objects",  "the symbols to use for objects",
+	{ "number_pad", "use the number pad", 1, SET_IN_GAME}, /* EN { "number_pad", "use the number pad", 1, SET_IN_GAME}, */ // TODO DE
+	{ "objects",  "the symbols to use for objects", /* EN { "objects",  "the symbols to use for objects", */ // TODO DE
 						MAXOCLASSES, SET_IN_FILE },
-	{ "packorder", "the inventory order of the items in your pack",
+	{ "packorder", "the inventory order of the items in your pack", /* EN { "packorder", "the inventory order of the items in your pack", */ // TODO DE
 						MAXOCLASSES, SET_IN_GAME },
 #ifdef CHANGE_COLOR
-	{ "palette",  "palette (00c/880/-fff is blue/yellow/reverse white)",
+	{ "palette",  "palette (00c/880/-fff is blue/yellow/reverse white)", /* EN { "palette",  "palette (00c/880/-fff is blue/yellow/reverse white)", */ // TODO DE
 						15 , SET_IN_GAME },
 # if defined(MAC)
-	{ "hicolor",  "same as palette, only order is reversed",
+	{ "hicolor",  "same as palette, only order is reversed", /* EN { "hicolor",  "same as palette, only order is reversed", */ // TODO DE
 						15, SET_IN_FILE },
 # endif
 #endif
-	{ "pettype",  "your preferred initial pet type", 4, DISP_IN_GAME },
-	{ "pickup_burden",  "maximum burden picked up before prompt",
+	{ "pettype",  "your preferred initial pet type", 4, DISP_IN_GAME }, /* EN { "pettype",  "your preferred initial pet type", 4, DISP_IN_GAME }, */ // TODO DE
+	{ "pickup_burden",  "maximum burden picked up before prompt", /* EN { "pickup_burden",  "maximum burden picked up before prompt", */ // TODO DE
 						20, SET_IN_GAME },
-	{ "pickup_types", "types of objects to pick up automatically",
+	{ "pickup_types", "types of objects to pick up automatically", /* EN { "pickup_types", "types of objects to pick up automatically", */ // TODO DE
 						MAXOCLASSES, SET_IN_GAME },
-	{ "player_selection", "choose character via dialog or prompts",
+	{ "player_selection", "choose character via dialog or prompts", /* EN { "player_selection", "choose character via dialog or prompts", */ // TODO DE
 						12, DISP_IN_GAME },
-	{ "race",     "your starting race (e.g., Human, Elf)",
+	{ "race",     "your starting race (e.g., Human, Elf)", /* EN { "race",     "your starting race (e.g., Human, Elf)", */ // TODO DE
 						PL_CSIZ, DISP_IN_GAME },
-	{ "role",     "your starting role (e.g., Barbarian, Valkyrie)",
+	{ "role",     "your starting role (e.g., Barbarian, Valkyrie)", /* EN { "role",     "your starting role (e.g., Barbarian, Valkyrie)", */ // TODO DE
 						PL_CSIZ, DISP_IN_GAME },
-	{ "runmode", "display frequency when `running' or `travelling'",
+	{ "runmode", "display frequency when `running' or `travelling'", /* EN { "runmode", "display frequency when `running' or `travelling'", */ // TODO DE
 						sizeof "teleport", SET_IN_GAME },
-	{ "scores",   "the parts of the score list you wish to see",
+	{ "scores",   "the parts of the score list you wish to see", /* EN { "scores",   "the parts of the score list you wish to see", */ // TODO DE
 						32, SET_IN_GAME },
-	{ "scroll_amount", "amount to scroll map when scroll_margin is reached",
+	{ "scroll_amount", "amount to scroll map when scroll_margin is reached", /* EN { "scroll_amount", "amount to scroll map when scroll_margin is reached", */ // TODO DE
 						20, DISP_IN_GAME }, /*WC*/
-	{ "scroll_margin", "scroll map when this far from the edge", 20, DISP_IN_GAME }, /*WC*/
+	{ "scroll_margin", "scroll map when this far from the edge", 20, DISP_IN_GAME }, /*WC*/ /* EN { "scroll_margin", "scroll map when this far from the edge", 20, DISP_IN_GAME }, */ // TODO DE
 #ifdef MSDOS
-	{ "soundcard", "type of sound card to use", 20, SET_IN_FILE },
+	{ "soundcard", "type of sound card to use", 20, SET_IN_FILE }, /* EN { "soundcard", "type of sound card to use", 20, SET_IN_FILE }, */ // TODO DE
 #endif
-	{ "suppress_alert", "suppress alerts about version-specific features",
+	{ "suppress_alert", "suppress alerts about version-specific features", /* EN { "suppress_alert", "suppress alerts about version-specific features", */ // TODO DE
 						8, SET_IN_GAME },
-	{ "tile_width", "width of tiles", 20, DISP_IN_GAME},	/*WC*/
-	{ "tile_height", "height of tiles", 20, DISP_IN_GAME},	/*WC*/
-	{ "tile_file", "name of tile file", 70, DISP_IN_GAME},	/*WC*/
-	{ "traps",    "the symbols to use in drawing traps",
+	{ "tile_width", "width of tiles", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_width", "width of tiles", 20, DISP_IN_GAME},	*/ // TODO DE
+	{ "tile_height", "height of tiles", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_height", "height of tiles", 20, DISP_IN_GAME},	*/ // TODO DE
+	{ "tile_file", "name of tile file", 70, DISP_IN_GAME},	/*WC*/ /* EN { "tile_file", "name of tile file", 70, DISP_IN_GAME},	*/ // TODO DE
+	{ "traps",    "the symbols to use in drawing traps", /* EN { "traps",    "the symbols to use in drawing traps", */ // TODO DE
 						MAXTCHARS+1, SET_IN_FILE },
-	{ "vary_msgcount", "show more old messages at a time", 20, DISP_IN_GAME }, /*WC*/
+	{ "vary_msgcount", "show more old messages at a time", 20, DISP_IN_GAME }, /*WC*/ /* EN { "vary_msgcount", "show more old messages at a time", 20, DISP_IN_GAME }, */ // TODO DE
 #ifdef MSDOS
-	{ "video",    "method of video updating", 20, SET_IN_FILE },
+	{ "video",    "method of video updating", 20, SET_IN_FILE }, /* EN { "video",    "method of video updating", 20, SET_IN_FILE }, */ // TODO DE
 #endif
 #ifdef VIDEOSHADES
-	{ "videocolors", "color mappings for internal screen routines",
+	{ "videocolors", "color mappings for internal screen routines", /* EN { "videocolors", "color mappings for internal screen routines", */ // TODO DE
 						40, DISP_IN_GAME },
-	{ "videoshades", "gray shades to map to black/gray/white",
+	{ "videoshades", "gray shades to map to black/gray/white", /* EN { "videoshades", "gray shades to map to black/gray/white", */ // TODO DE
 						32, DISP_IN_GAME },
 #endif
 #ifdef WIN32CON
-	{"subkeyvalue", "override keystroke value", 7, SET_IN_FILE},
+	{"subkeyvalue", "override keystroke value", 7, SET_IN_FILE}, /* EN {"subkeyvalue", "override keystroke value", 7, SET_IN_FILE}, */ // TODO DE
 #endif
-	{ "windowcolors",  "the foreground/background colors of windows",	/*WC*/
+	{ "windowcolors",  "the foreground/background colors of windows",	/*WC*/ /* EN { "windowcolors",  "the foreground/background colors of windows",	*/ // TODO DE
 						80, DISP_IN_GAME },
-	{ "windowtype", "windowing system to use", WINTYPELEN, DISP_IN_GAME },
+	{ "windowtype", "windowing system to use", WINTYPELEN, DISP_IN_GAME }, /* EN { "windowtype", "windowing system to use", WINTYPELEN, DISP_IN_GAME }, */ // TODO DE
 	{ (char *)0, (char *)0, 0, 0 }
 };
 
@@ -1143,7 +1143,7 @@ boolean tinitial, tfrom_file;
 
 	if (match_optname(opts, "female", 3, FALSE)) {
 		if(!initial && flags.female == negated)
-			pline("That is not anatomically possible.");
+			pline("That is not anatomically possible."); /* EN pline("That is not anatomically possible."); */ // TODO DE
 		else
 			flags.initgend = flags.female = !negated;
 		return;
@@ -1151,7 +1151,7 @@ boolean tinitial, tfrom_file;
 
 	if (match_optname(opts, "male", 4, FALSE)) {
 		if(!initial && flags.female != negated)
-			pline("That is not anatomically possible.");
+			pline("That is not anatomically possible."); /* EN pline("That is not anatomically possible."); */ // TODO DE
 		else
 			flags.initgend = flags.female = negated;
 		return;
@@ -1503,7 +1503,7 @@ boolean tinitial, tfrom_file;
 			num++;
 		    }
 		    if (num >= 100) {
-			pline("Doing that so many times isn't very fruitful.");
+			pline("Doing that so many times isn't very fruitful."); /* EN pline("Doing that so many times isn't very fruitful."); */ // TODO DE
 			return;
 		    }
 		}
@@ -2381,6 +2381,7 @@ static NEARDATA const char *menutype[] = {
 };
 
 static NEARDATA const char *burdentype[] = {
+// TODO DE
 	"unencumbered", "burdened", "stressed",
 	"strained", "overtaxed", "overloaded"
 };

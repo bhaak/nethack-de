@@ -126,7 +126,7 @@ const char *drainer;	/* cause of death, if drain should be fatal */
 	    if (resists_drli(&youmonst)) return;
 
 	if (u.ulevel > 1) {
-		pline("%s level %d.", Goodbye(), u.ulevel--);
+		pline("%s level %d.", Goodbye(), u.ulevel--); /* EN pline("%s level %d.", Goodbye(), u.ulevel--); */ // TODO DE
 		/* remove intrinsic abilities */
 		adjabil(u.ulevel + 1, u.ulevel);
 		reset_rndmonst(NON_PM);	/* new monster selection */
@@ -183,7 +183,7 @@ boolean incr;	/* true iff via incremental experience growth */
 {		/*	(false for potion of gain level)      */
 	register int num;
 
-	if (!incr) You_feel("more experienced.");
+	if (!incr) You_feel("more experienced."); /* EN if (!incr) You_feel("more experienced."); */ // TODO DE
 	num = newhp();
 	u.uhpmax += num;
 	u.uhp += num;
@@ -210,7 +210,7 @@ boolean incr;	/* true iff via incremental experience growth */
 	    }
 	    ++u.ulevel;
 	    if (u.ulevelmax < u.ulevel) u.ulevelmax = u.ulevel;
-	    pline("Welcome to experience level %d.", u.ulevel);
+	    pline("Welcome to experience level %d.", u.ulevel); /* EN pline("Welcome to experience level %d.", u.ulevel); */ // TODO DE
 	    adjabil(u.ulevel - 1, u.ulevel);	/* give new intrinsics */
 	    reset_rndmonst(NON_PM);		/* new monster selection */
 	}

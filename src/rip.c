@@ -24,9 +24,9 @@ extern const char * const killed_by_prefix[];	/* from topten.c */
 static const char *rip_txt[] = {
 "                       ----------",
 "                      /          \\",
-"                     /    REST    \\",
-"                    /      IN      \\",
-"                   /     PEACE      \\",
+"                     /    REST    \\", /* EN "                     /    REST    \\", */ // TODO DE
+"                    /      IN      \\", /* EN "                    /      IN      \\", */ // TODO DE
+"                   /     PEACE      \\", /* EN "                   /     PEACE      \\", */ // TODO DE
 "                  /                  \\",
 "                  |                  |", /* Name of player */
 "                  |                  |", /* Amount of $ */
@@ -109,9 +109,9 @@ int how;
 
 	/* Put $ on stone */
 #ifndef GOLDOBJ
-	Sprintf(buf, "%ld Au", u.ugold);
+	Sprintf(buf, "%ld Au", u.ugold); /* EN Sprintf(buf, "%ld Au", u.ugold); */ // TODO DE
 #else
-	Sprintf(buf, "%ld Au", done_money);
+	Sprintf(buf, "%ld Au", done_money); /* EN Sprintf(buf, "%ld Au", done_money); */ // TODO DE
 #endif
 	buf[STONE_LINE_LEN] = 0; /* It could be a *lot* of gold :-) */
 	center(GOLD_LINE, buf);

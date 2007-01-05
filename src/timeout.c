@@ -18,11 +18,11 @@ STATIC_DCL void FDECL(cleanup_burn, (genericptr_t,long));
 
 /* He is being petrified - dialogue by inmet!tower */
 static NEARDATA const char * const stoned_texts[] = {
-	"You are slowing down.",		/* 5 */
-	"Your limbs are stiffening.",		/* 4 */
-	"Your limbs have turned to stone.",	/* 3 */
-	"You have turned to stone.",		/* 2 */
-	"You are a statue."			/* 1 */
+	"You are slowing down.",		/* 5 */ /* EN "You are slowing down.",		*/ // TODO DE
+	"Your limbs are stiffening.",		/* 4 */ /* EN "Your limbs are stiffening.",		*/ // TODO DE
+	"Your limbs have turned to stone.",	/* 3 */ /* EN "Your limbs have turned to stone.",	*/ // TODO DE
+	"You have turned to stone.",		/* 2 */ /* EN "You have turned to stone.",		*/ // TODO DE
+	"You are a statue."			/* 1 */ /* EN "You are a statue."			*/ // TODO DE
 };
 
 STATIC_OVL void
@@ -41,11 +41,11 @@ stoned_dialogue()
 
 /* He is getting sicker and sicker prior to vomiting */
 static NEARDATA const char * const vomiting_texts[] = {
-	"are feeling mildly nauseated.",	/* 14 */
-	"feel slightly confused.",		/* 11 */
-	"can't seem to think straight.",	/* 8 */
-	"feel incredibly sick.",		/* 5 */
-	"suddenly vomit!"			/* 2 */
+	"are feeling mildly nauseated.",	/* 14 */ /* EN "are feeling mildly nauseated.",	*/ // TODO DE
+	"feel slightly confused.",		/* 11 */ /* EN "feel slightly confused.",		*/ // TODO DE
+	"can't seem to think straight.",	/* 8 */ /* EN "can't seem to think straight.",	*/ // TODO DE
+	"feel incredibly sick.",		/* 5 */ /* EN "feel incredibly sick.",		*/ // TODO DE
+	"suddenly vomit!"			/* 2 */ /* EN "suddenly vomit!"			*/ // TODO DE
 };
 
 STATIC_OVL void
@@ -73,19 +73,19 @@ vomiting_dialogue()
 }
 
 static NEARDATA const char * const choke_texts[] = {
-	"You find it hard to breathe.",
-	"You're gasping for air.",
-	"You can no longer breathe.",
-	"You're turning %s.",
-	"You suffocate."
+	"You find it hard to breathe.", /* EN "You find it hard to breathe.", */ // TODO DE
+	"You're gasping for air.", /* EN "You're gasping for air.", */ // TODO DE
+	"You can no longer breathe.", /* EN "You can no longer breathe.", */ // TODO DE
+	"You're turning %s.", /* EN "You're turning %s.", */ // TODO DE
+	"You suffocate." /* EN "You suffocate." */ // TODO DE
 };
 
 static NEARDATA const char * const choke_texts2[] = {
-	"Your %s is becoming constricted.",
-	"Your blood is having trouble reaching your brain.",
-	"The pressure on your %s increases.",
-	"Your consciousness is fading.",
-	"You suffocate."
+	"Your %s is becoming constricted.", /* EN "Your %s is becoming constricted.", */ // TODO DE
+	"Your blood is having trouble reaching your brain.", /* EN "Your blood is having trouble reaching your brain.", */ // TODO DE
+	"The pressure on your %s increases.", /* EN "The pressure on your %s increases.", */ // TODO DE
+	"Your consciousness is fading.", /* EN "Your consciousness is fading.", */ // TODO DE
+	"You suffocate." /* EN "You suffocate." */ // TODO DE
 };
 
 STATIC_OVL void
@@ -109,11 +109,11 @@ choke_dialogue()
 }
 
 static NEARDATA const char * const slime_texts[] = {
-	"You are turning a little %s.",           /* 5 */
-	"Your limbs are getting oozy.",              /* 4 */
-	"Your skin begins to peel away.",            /* 3 */
-	"You are turning into %s.",       /* 2 */
-	"You have become %s."             /* 1 */
+	"You are turning a little %s.",           /* 5 */ /* EN "You are turning a little %s.",           */ // TODO DE
+	"Your limbs are getting oozy.",              /* 4 */ /* EN "Your limbs are getting oozy.",              */ // TODO DE
+	"Your skin begins to peel away.",            /* 3 */ /* EN "Your skin begins to peel away.",            */ // TODO DE
+	"You are turning into %s.",       /* 2 */ /* EN "You are turning into %s.",       */ // TODO DE
+	"You have become %s."             /* 1 */ /* EN "You have become %s."             */ // TODO DE
 };
 
 STATIC_OVL void
@@ -130,7 +130,7 @@ slime_dialogue()
 		    if (!Blind)	/* [what if you're already green?] */
 			pline(str, hcolor(NH_GREEN));
 		} else
-		    pline(str, an(Hallucination ? rndmonnam() : "green slime"));
+		    pline(str, an(Hallucination ? rndmonnam() : "green slime")); /* EN pline(str, an(Hallucination ? rndmonnam() : "green slime")); */ // TODO DE
 	    } else
 		pline(str);
 	}
@@ -146,7 +146,7 @@ void
 burn_away_slime()
 {
 	if (Slimed) {
-	    pline_The("slime that covers you is burned away!");
+	    pline_The("slime that covers you is burned away!"); /* EN pline_The("slime that covers you is burned away!"); */ // TODO DE
 	    Slimed = 0L;
 	    flags.botl = 1;
 	}
@@ -202,15 +202,15 @@ nh_timeout()
 		u.uspellprot--;
 		find_ac();
 		if (!Blind)
-		    Norep("The %s haze around you %s.", hcolor(NH_GOLDEN),
-			  u.uspellprot ? "becomes less dense" : "disappears");
+		    Norep("The %s haze around you %s.", hcolor(NH_GOLDEN), /* EN Norep("The %s haze around you %s.", hcolor(NH_GOLDEN), */ // TODO DE
+			  u.uspellprot ? "becomes less dense" : "disappears"); /* EN u.uspellprot ? "becomes less dense" : "disappears"); */ // TODO DE
 	    }
 	}
 
 #ifdef STEED
 	if (u.ugallop) {
 	    if (--u.ugallop == 0L && u.usteed)
-	    	pline("%s stops galloping.", Monnam(u.usteed));
+	    	pline("%s stops galloping.", Monnam(u.usteed)); /* EN pline("%s stops galloping.", Monnam(u.usteed)); */ // TODO DE
 	}
 #endif
 
@@ -226,7 +226,7 @@ nh_timeout()
 				/* leaving killer_format would make it
 				   "petrified by petrification" */
 				killer_format = NO_KILLER_PREFIX;
-				killer = "killed by petrification";
+				killer = "killed by petrification"; /* EN killer = "killed by petrification"; */ // TODO DE
 			}
 			done(STONING);
 			break;
@@ -237,7 +237,7 @@ nh_timeout()
 			}
 			if (!killer) {
 				killer_format = NO_KILLER_PREFIX;
-				killer = "turned into green slime";
+				killer = "turned into green slime"; /* EN killer = "turned into green slime"; */ // TODO DE
 			}
 			done(TURNED_SLIME);
 			break;
@@ -245,7 +245,7 @@ nh_timeout()
 			make_vomiting(0L, TRUE);
 			break;
 		case SICK:
-			You("die from your illness.");
+			You("die from your illness."); /* EN You("die from your illness."); */ // TODO DE
 			killer_format = KILLED_BY_AN;
 			killer = u.usick_cause;
 			if ((m_idx = name_to_mon(killer)) >= LOW_PM) {
@@ -267,8 +267,8 @@ nh_timeout()
 			break;
 		case FAST:
 			if (!Very_fast)
-				You_feel("yourself slowing down%s.",
-							Fast ? " a bit" : "");
+				You_feel("yourself slowing down%s.", /* EN You_feel("yourself slowing down%s.", */ // TODO DE
+							Fast ? " a bit" : ""); /* EN Fast ? " a bit" : ""); */ // TODO DE
 			break;
 		case CONFUSION:
 			HConfusion = 1; /* So make_confused works properly */
@@ -289,8 +289,8 @@ nh_timeout()
 			newsym(u.ux,u.uy);
 			if (!Invis && !BInvis && !Blind) {
 			    You(!See_invisible ?
-				    "are no longer invisible." :
-				    "can no longer see through yourself.");
+				    "are no longer invisible." : /* EN "are no longer invisible." : */ // TODO DE
+				    "can no longer see through yourself."); /* EN "can no longer see through yourself."); */ // TODO DE
 			    stop_occupation();
 			}
 			break;
@@ -313,7 +313,7 @@ nh_timeout()
 			if (unconscious() || Sleep_resistance)
 				HSleeping += rnd(100);
 			else if (Sleeping) {
-				You("fall asleep.");
+				You("fall asleep."); /* EN You("fall asleep."); */ // TODO DE
 				sleeptime = rnd(20);
 				fall_asleep(-sleeptime, TRUE);
 				HSleeping += sleeptime + rnd(100);
@@ -324,7 +324,7 @@ nh_timeout()
 			break;
 		case STRANGLED:
 			killer_format = KILLED_BY;
-			killer = (u.uburied) ? "suffocation" : "strangulation";
+			killer = (u.uburied) ? "suffocation" : "strangulation"; /* EN killer = (u.uburied) ? "suffocation" : "strangulation"; */ // TODO DE
 			done(DIED);
 			break;
 		case FUMBLING:
@@ -339,7 +339,7 @@ nh_timeout()
 			     * to this number must be thoroughly play tested.
 			     */
 			    if ((inv_weight() > -500)) {
-				You("make a lot of noise!");
+				You("make a lot of noise!"); /* EN You("make a lot of noise!"); */ // TODO DE
 				wake_nearby();
 			    }
 			}
@@ -377,7 +377,7 @@ boolean wakeup_msg;
 	}
 	/* early wakeup from combat won't be possible until next monster turn */
 	u.usleep = monstermoves;
-	nomovemsg = wakeup_msg ? "You wake up." : You_can_move_again;
+	nomovemsg = wakeup_msg ? "You wake up." : You_can_move_again; /* EN nomovemsg = wakeup_msg ? "You wake up." : You_can_move_again; */ // TODO DE
 }
 
 /* Attach an egg hatch timeout to the given egg. */
@@ -515,25 +515,25 @@ long timeout;
 		case OBJ_INVENT:
 		    knows_egg = TRUE; /* true even if you are blind */
 		    if (!cansee_hatchspot)
-			You_feel("%s %s from your pack!", something,
-			    locomotion(mon->data, "drop"));
+			You_feel("%s %s from your pack!", something, /* EN You_feel("%s %s from your pack!", something, */ // TODO DE
+			    locomotion(mon->data, "drop")); /* EN locomotion(mon->data, "drop")); */ // TODO DE
 		    else
-			You("see %s %s out of your pack!",
-			    monnambuf, locomotion(mon->data, "drop"));
+			You("see %s %s out of your pack!", /* EN You("see %s %s out of your pack!", */ // TODO DE
+			    monnambuf, locomotion(mon->data, "drop")); /* EN monnambuf, locomotion(mon->data, "drop")); */ // TODO DE
 		    if (yours) {
-			pline("%s cries sound like \"%s%s\"",
-			    siblings ? "Their" : "Its",
-			    flags.female ? "mommy" : "daddy",
-			    egg->spe ? "." : "?");
+			pline("%s cries sound like \"%s%s\"", /* EN pline("%s cries sound like \"%s%s\"", */ // TODO DE
+			    siblings ? "Their" : "Its", /* EN siblings ? "Their" : "Its", */ // TODO DE
+			    flags.female ? "mommy" : "daddy", /* EN flags.female ? "mommy" : "daddy", */ // TODO DE
+			    egg->spe ? "." : "?"); /* EN egg->spe ? "." : "?"); */ // TODO DE
 		    } else if (mon->data->mlet == S_DRAGON) {
-			verbalize("Gleep!");		/* Mything eggs :-) */
+			verbalize("Gleep!");		/* Mything eggs :-) */ /* EN verbalize("Gleep!");		*/ // TODO DE
 		    }
 		    break;
 
 		case OBJ_FLOOR:
 		    if (cansee_hatchspot) {
 			knows_egg = TRUE;
-			You("see %s hatch.", monnambuf);
+			You("see %s hatch.", monnambuf); /* EN You("see %s hatch.", monnambuf); */ // TODO DE
 			redraw = TRUE;	/* update egg's map location */
 		    }
 		    break;
@@ -542,16 +542,16 @@ long timeout;
 		    if (cansee_hatchspot) {
 			/* egg carring monster might be invisible */
 			if (canseemon(egg->ocarry)) {
-			    Sprintf(carriedby, "%s pack",
+			    Sprintf(carriedby, "%s pack", /* EN Sprintf(carriedby, "%s pack", */ // TODO DE
 				     s_suffix(a_monnam(egg->ocarry)));
 			    knows_egg = TRUE;
 			}
 			else if (is_pool(mon->mx, mon->my))
-			    Strcpy(carriedby, "empty water");
+			    Strcpy(carriedby, "empty water"); /* EN Strcpy(carriedby, "empty water"); */ // TODO DE
 			else
-			    Strcpy(carriedby, "thin air");
-			You("see %s %s out of %s!", monnambuf,
-			    locomotion(mon->data, "drop"), carriedby);
+			    Strcpy(carriedby, "thin air"); /* EN Strcpy(carriedby, "thin air"); */ // TODO DE
+			You("see %s %s out of %s!", monnambuf, /* EN You("see %s %s out of %s!", monnambuf, */ // TODO DE
+			    locomotion(mon->data, "drop"), carriedby); /* EN locomotion(mon->data, "drop"), carriedby); */ // TODO DE
 		    }
 		    break;
 #if 0
@@ -639,44 +639,44 @@ slip_or_trip()
 		name; if not, look for rocks to trip over; trip over
 		anonymous "something" if there aren't any rocks.
 	     */
-	    pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them";
+	    pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; /* EN pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; */ // TODO DE
 	    what = !otmp->nexthere ? pronoun :
 		  (otmp->dknown || !Blind) ? doname(otmp) :
 		  ((otmp = sobj_at(ROCK, u.ux, u.uy)) == 0 ? something :
-		  (otmp->quan == 1L ? "a rock" : "some rocks"));
+		  (otmp->quan == 1L ? "a rock" : "some rocks")); /* EN (otmp->quan == 1L ? "a rock" : "some rocks")); */ // TODO DE
 	    if (Hallucination) {
 		what = strcpy(buf, what);
 		buf[0] = highc(buf[0]);
-		pline("Egads!  %s bite%s your %s!",
+		pline("Egads!  %s bite%s your %s!", /* EN pline("Egads!  %s bite%s your %s!", */ // TODO DE
 			what, (!otmp || otmp->quan == 1L) ? "s" : "",
 			body_part(FOOT));
 	    } else {
-		You("trip over %s.", what);
+		You("trip over %s.", what); /* EN You("trip over %s.", what); */ // TODO DE
 	    }
 	} else if (rn2(3) && is_ice(u.ux, u.uy)) {
-	    pline("%s %s%s on the ice.",
+	    pline("%s %s%s on the ice.", /* EN pline("%s %s%s on the ice.", */ // TODO DE
 #ifdef STEED
 		u.usteed ? upstart(x_monnam(u.usteed,
 				u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
 				(char *)0, SUPPRESS_SADDLE, FALSE)) :
 #endif
-		"You", rn2(2) ? "slip" : "slide", on_foot ? "" : "s");
+		"You", rn2(2) ? "slip" : "slide", on_foot ? "" : "s"); /* EN "You", rn2(2) ? "slip" : "slide", on_foot ? "" : "s"); */ // TODO DE
 	} else {
 	    if (on_foot) {
 		switch (rn2(4)) {
 		  case 1:
-			You("trip over your own %s.", Hallucination ?
-				"elbow" : makeplural(body_part(FOOT)));
+			You("trip over your own %s.", Hallucination ?  /* EN You("trip over your own %s.", Hallucination ? */ // TODO DE
+				"elbow" : makeplural(body_part(FOOT))); /* EN "elbow" : makeplural(body_part(FOOT))); */ // TODO DE
 			break;
 		  case 2:
-			You("slip %s.", Hallucination ?
-				"on a banana peel" : "and nearly fall");
+			You("slip %s.", Hallucination ?  /* EN You("slip %s.", Hallucination ? */ // TODO DE
+				"on a banana peel" : "and nearly fall"); /* EN "on a banana peel" : "and nearly fall"); */ // TODO DE
 			break;
 		  case 3:
-			You("flounder.");
+			You("flounder."); /* EN You("flounder."); */ // TODO DE
 			break;
 		  default:
-			You("stumble.");
+			You("stumble."); /* EN You("stumble."); */ // TODO DE
 			break;
 		}
 	    }
@@ -684,16 +684,16 @@ slip_or_trip()
 	    else {
 		switch (rn2(4)) {
 		  case 1:
-			Your("%s slip out of the stirrups.", makeplural(body_part(FOOT)));
+			Your("%s slip out of the stirrups.", makeplural(body_part(FOOT))); /* EN Your("%s slip out of the stirrups.", makeplural(body_part(FOOT))); */ // TODO DE
 			break;
 		  case 2:
-			You("let go of the reins.");
+			You("let go of the reins."); /* EN You("let go of the reins."); */ // TODO DE
 			break;
 		  case 3:
-			You("bang into the saddle-horn.");
+			You("bang into the saddle-horn."); /* EN You("bang into the saddle-horn."); */ // TODO DE
 			break;
 		  default:
-			You("slide to one side of the saddle.");
+			You("slide to one side of the saddle."); /* EN You("slide to one side of the saddle."); */ // TODO DE
 			break;
 		}
 		dismount_steed(DISMOUNT_FELL);
@@ -711,10 +711,10 @@ const char *tailer;
 	switch (obj->where) {
 	    case OBJ_INVENT:
 	    case OBJ_MINVENT:
-		pline("%s flickers%s.", Yname2(obj), tailer);
+		pline("%s flickers%s.", Yname2(obj), tailer); /* EN pline("%s flickers%s.", Yname2(obj), tailer); */ // TODO DE
 		break;
 	    case OBJ_FLOOR:
-		You("see %s flicker%s.", an(xname(obj)), tailer);
+		You("see %s flicker%s.", an(xname(obj)), tailer); /* EN You("see %s flicker%s.", an(xname(obj)), tailer); */ // TODO DE
 		break;
 	}
 }
@@ -727,15 +727,15 @@ struct obj *obj;
 	/* from adventure */
 	switch (obj->where) {
 	    case OBJ_INVENT:
-		Your("lantern is getting dim.");
+		Your("lantern is getting dim."); /* EN Your("lantern is getting dim."); */ // TODO DE
 		if (Hallucination)
-		    pline("Batteries have not been invented yet.");
+		    pline("Batteries have not been invented yet."); /* EN pline("Batteries have not been invented yet."); */ // TODO DE
 		break;
 	    case OBJ_FLOOR:
-		You("see a lantern getting dim.");
+		You("see a lantern getting dim."); /* EN You("see a lantern getting dim."); */ // TODO DE
 		break;
 	    case OBJ_MINVENT:
-		pline("%s lantern is getting dim.",
+		pline("%s lantern is getting dim.", /* EN pline("%s lantern is getting dim.", */ // TODO DE
 		    s_suffix(Monnam(obj->ocarry)));
 		break;
 	}
@@ -800,11 +800,11 @@ long timeout;
 			switch (obj->where) {
 			    case OBJ_INVENT:
 			    case OBJ_MINVENT:
-				pline("%s potion of oil has burnt away.",
+				pline("%s potion of oil has burnt away.", /* EN pline("%s potion of oil has burnt away.", */ // TODO DE
 				    whose);
 				break;
 			    case OBJ_FLOOR:
-				You("see a burning potion of oil go out.");
+				You("see a burning potion of oil go out."); /* EN You("see a burning potion of oil go out."); */ // TODO DE
 				need_newsym = TRUE;
 				break;
 			}
@@ -826,7 +826,7 @@ long timeout;
 				lantern_message(obj);
 			    else
 				see_lamp_flicker(obj,
-				    obj->age == 50L ? " considerably" : "");
+				    obj->age == 50L ? " considerably" : ""); /* EN obj->age == 50L ? " considerably" : ""); */ // TODO DE
 			}
 			break;
 
@@ -838,11 +838,11 @@ long timeout;
 				switch (obj->where) {
 				    case OBJ_INVENT:
 				    case OBJ_MINVENT:
-					pline("%s %s seems about to go out.",
+					pline("%s %s seems about to go out.", /* EN pline("%s %s seems about to go out.", */ // TODO DE
 					    whose, xname(obj));
 					break;
 				    case OBJ_FLOOR:
-					You("see %s about to go out.",
+					You("see %s about to go out.", /* EN You("see %s about to go out.", */ // TODO DE
 					    an(xname(obj)));
 					break;
 				}
@@ -857,17 +857,17 @@ long timeout;
 				case OBJ_INVENT:
 				case OBJ_MINVENT:
 				    if (obj->otyp == BRASS_LANTERN)
-					pline("%s lantern has run out of power.",
+					pline("%s lantern has run out of power.", /* EN pline("%s lantern has run out of power.", */ // TODO DE
 					    whose);
 				    else
-					pline("%s %s has gone out.",
+					pline("%s %s has gone out.", /* EN pline("%s %s has gone out.", */ // TODO DE
 					    whose, xname(obj));
 				    break;
 				case OBJ_FLOOR:
 				    if (obj->otyp == BRASS_LANTERN)
-					You("see a lantern run out of power.");
+					You("see a lantern run out of power."); /* EN You("see a lantern run out of power."); */ // TODO DE
 				    else
-					You("see %s go out.",
+					You("see %s go out.", /* EN You("see %s go out.", */ // TODO DE
 					    an(xname(obj)));
 				    break;
 			    }
@@ -898,15 +898,15 @@ long timeout;
 			    switch (obj->where) {
 				case OBJ_INVENT:
 				case OBJ_MINVENT:
-				    pline("%s %scandle%s getting short.",
+				    pline("%s %scandle%s getting short.", /* EN pline("%s %scandle%s getting short.", */ // TODO DE
 					whose,
-					menorah ? "candelabrum's " : "",
-					many ? "s are" : " is");
+					menorah ? "candelabrum's " : "", /* EN menorah ? "candelabrum's " : "", */ // TODO DE
+					many ? "s are" : " is"); /* EN many ? "s are" : " is"); */ // TODO DE
 				    break;
 				case OBJ_FLOOR:
-				    You("see %scandle%s getting short.",
-					    menorah ? "a candelabrum's " :
-						many ? "some " : "a ",
+				    You("see %scandle%s getting short.", /* EN You("see %scandle%s getting short.", */ // TODO DE
+					    menorah ? "a candelabrum's " : /* EN menorah ? "a candelabrum's " : */ // TODO DE
+						many ? "some " : "a ", /* EN many ? "some " : "a ", */ // TODO DE
 					    many ? "s" : "");
 				    break;
 			    }
@@ -918,16 +918,16 @@ long timeout;
 				case OBJ_INVENT:
 				case OBJ_MINVENT:
 				    pline(
-					"%s %scandle%s flame%s flicker%s low!",
+					"%s %scandle%s flame%s flicker%s low!", /* EN "%s %scandle%s flame%s flicker%s low!", */ // TODO DE
 					    whose,
-					    menorah ? "candelabrum's " : "",
+					    menorah ? "candelabrum's " : "", /* EN menorah ? "candelabrum's " : "", */ // TODO DE
 					    many ? "s'" : "'s",
 					    many ? "s" : "",
 					    many ? "" : "s");
 				    break;
 				case OBJ_FLOOR:
-				    You("see %scandle%s flame%s flicker low!",
-					    menorah ? "a candelabrum's " :
+				    You("see %scandle%s flame%s flicker low!", /* EN You("see %scandle%s flame%s flicker low!", */ // TODO DE
+					    menorah ? "a candelabrum's " : /* EN menorah ? "a candelabrum's " : */ // TODO DE
 						many ? "some " : "a ",
 					    many ? "s'" : "'s",
 					    many ? "s" : "");
@@ -942,12 +942,12 @@ long timeout;
 				switch (obj->where) {
 				    case OBJ_INVENT:
 				    case OBJ_MINVENT:
-					pline("%s candelabrum's flame%s.",
+					pline("%s candelabrum's flame%s.", /* EN pline("%s candelabrum's flame%s.", */ // TODO DE
 					    whose,
-					    many ? "s die" : " dies");
+					    many ? "s die" : " dies"); /* EN many ? "s die" : " dies"); */ // TODO DE
 					break;
 				    case OBJ_FLOOR:
-					You("see a candelabrum's flame%s die.",
+					You("see a candelabrum's flame%s die.", /* EN You("see a candelabrum's flame%s die.", */ // TODO DE
 						many ? "s" : "");
 					break;
 				}
@@ -955,18 +955,18 @@ long timeout;
 				switch (obj->where) {
 				    case OBJ_INVENT:
 				    case OBJ_MINVENT:
-					pline("%s %s %s consumed!",
+					pline("%s %s %s consumed!", /* EN pline("%s %s %s consumed!", */ // TODO DE
 					    whose,
 					    xname(obj),
-					    many ? "are" : "is");
+					    many ? "are" : "is"); /* EN many ? "are" : "is"); */ // TODO DE
 					break;
 				    case OBJ_FLOOR:
 					/*
 					You see some wax candles consumed!
 					You see a wax candle consumed!
 					*/
-					You("see %s%s consumed!",
-					    many ? "some " : "",
+					You("see %s%s consumed!", /* EN You("see %s%s consumed!", */ // TODO DE
+					    many ? "some " : "", /* EN many ? "some " : "", */ // TODO DE
 					    many ? xname(obj):an(xname(obj)));
 					need_newsym = TRUE;
 					break;
@@ -974,11 +974,11 @@ long timeout;
 
 				/* post message */
 				pline(Hallucination ?
-					(many ? "They shriek!" :
-						"It shrieks!") :
+					(many ? "They shriek!" : /* EN (many ? "They shriek!" : */ // TODO DE
+						"It shrieks!") : /* EN "It shrieks!") : */ // TODO DE
 					Blind ? "" :
-					    (many ? "Their flames die." :
-						    "Its flame dies."));
+					    (many ? "Their flames die." : /* EN (many ? "Their flames die." : */ // TODO DE
+						    "Its flame dies.")); /* EN "Its flame dies.")); */ // TODO DE
 			    }
 			}
 			end_burn(obj, FALSE);
@@ -1222,13 +1222,13 @@ do_storms()
 
     if(levl[u.ux][u.uy].typ == CLOUD) {
 	/* inside a cloud during a thunder storm is deafening */
-	pline("Kaboom!!!  Boom!!  Boom!!");
+	pline("Kaboom!!!  Boom!!  Boom!!"); /* EN pline("Kaboom!!!  Boom!!  Boom!!"); */ // TODO DE
 	if(!u.uinvulnerable) {
 	    stop_occupation();
 	    nomul(-3);
 	}
     } else
-	You_hear("a rumbling noise.");
+	You_hear("a rumbling noise."); /* EN You_hear("a rumbling noise."); */ // TODO DE
 }
 #endif /* OVL1 */
 

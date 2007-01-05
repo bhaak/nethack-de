@@ -385,7 +385,7 @@ boolean force_it;
 		yelp(mtmp);
 		return FALSE;
 	    } else {
-		Your("leash goes slack.");
+		Your("leash goes slack."); /* EN Your("leash goes slack."); */ // TODO DE
  release_it:
 		m_unleash(mtmp, FALSE);
 		return TRUE;
@@ -404,7 +404,7 @@ tele()
 #ifdef WIZARD
 		if (!wizard) {
 #endif
-		    pline("A mysterious force prevents you from teleporting!");
+		    pline("A mysterious force prevents you from teleporting!"); /* EN pline("A mysterious force prevents you from teleporting!"); */ // TODO DE
 		    return;
 #ifdef WIZARD
 		}
@@ -415,7 +415,7 @@ tele()
 	if (!Blinded) make_blinded(0L,FALSE);
 
 	if ((u.uhave.amulet || On_W_tower_level(&u.uz)) && !rn2(3)) {
-	    You_feel("disoriented for a moment.");
+	    You_feel("disoriented for a moment."); /* EN You_feel("disoriented for a moment."); */ // TODO DE
 	    return;
 	}
 	if ((Teleport_control && !Stunned)
@@ -424,20 +424,20 @@ tele()
 #endif
 					) {
 	    if (unconscious()) {
-		pline("Being unconscious, you cannot control your teleport.");
+		pline("Being unconscious, you cannot control your teleport."); /* EN pline("Being unconscious, you cannot control your teleport."); */ // TODO DE
 	    } else {
 #ifdef STEED
 		    char buf[BUFSZ];
-		    if (u.usteed) Sprintf(buf," and %s", mon_nam(u.usteed));
+		    if (u.usteed) Sprintf(buf," and %s", mon_nam(u.usteed)); /* EN if (u.usteed) Sprintf(buf," and %s", mon_nam(u.usteed)); */ // TODO DE
 #endif
-		    pline("To what position do you%s want to be teleported?",
+		    pline("To what position do you%s want to be teleported?", /* EN pline("To what position do you%s want to be teleported?", */ // TODO DE
 #ifdef STEED
 				u.usteed ? buf :
 #endif
 			   "");
 		    cc.x = u.ux;
 		    cc.y = u.uy;
-		    if (getpos(&cc, TRUE, "the desired position") < 0)
+				if (getpos(&cc, TRUE, "the desired position") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */ // TODO DE
 			return;	/* abort */
 		    /* possible extensions: introduce a small error if
 		       magic power is low; allow transfer to solid rock */
@@ -445,7 +445,7 @@ tele()
 			teleds(cc.x, cc.y, FALSE);
 			return;
 		    }
-		    pline("Sorry...");
+		    pline("Sorry..."); /* EN pline("Sorry..."); */ // TODO DE
 		}
 	}
 
@@ -463,8 +463,8 @@ dotele()
 
 	if (trap) {
 		if (trap->once) {
-			pline("This is a vault teleport, usable once only.");
-			if (yn("Jump in?") == 'n')
+			pline("This is a vault teleport, usable once only."); /* EN pline("This is a vault teleport, usable once only."); */ // TODO DE
+			if (yn("Jump in?") == 'n') /* EN if (yn("Jump in?") == 'n') */ // TODO DE
 				trap = 0;
 			else {
 				deltrap(trap);
@@ -472,8 +472,8 @@ dotele()
 			}
 		}
 		if (trap)
-			You("%s onto the teleportation trap.",
-			    locomotion(youmonst.data, "jump"));
+			You("%s onto the teleportation trap.", /* EN You("%s onto the teleportation trap.", */ // TODO DE
+			    locomotion(youmonst.data, "jump")); /* EN locomotion(youmonst.data, "jump")); */ // TODO DE
 	}
 	if (!trap) {
 	    boolean castit = FALSE;
@@ -493,8 +493,8 @@ dotele()
 #endif
 		    if (!castit) {
 			if (!Teleportation)
-			    You("don't know that spell.");
-			else You("are not able to teleport at will.");
+			    You("don't know that spell."); /* EN You("don't know that spell."); */ // TODO DE
+			else You("are not able to teleport at will."); /* EN else You("are not able to teleport at will."); */ // TODO DE
 			return(0);
 		    }
 #ifdef WIZARD
@@ -506,8 +506,8 @@ dotele()
 #ifdef WIZARD
 		if (!wizard) {
 #endif
-			You("lack the strength %s.",
-			    castit ? "for a teleport spell" : "to teleport");
+			You("lack the strength %s.", /* EN You("lack the strength %s.", */ // TODO DE
+			    castit ? "for a teleport spell" : "to teleport"); /* EN castit ? "for a teleport spell" : "to teleport"); */ // TODO DE
 			return 1;
 #ifdef WIZARD
 		}
@@ -522,14 +522,14 @@ dotele()
 		else
 #endif
 		{
-			You("lack the energy %s.",
-			    castit ? "for a teleport spell" : "to teleport");
+			You("lack the energy %s.", /* EN You("lack the energy %s.", */ // TODO DE
+			    castit ? "for a teleport spell" : "to teleport"); /* EN castit ? "for a teleport spell" : "to teleport"); */ // TODO DE
 			return 1;
 		}
 	    }
 
 	    if (check_capacity(
-			"Your concentration falters from carrying so much."))
+			"Your concentration falters from carrying so much.")) /* EN "Your concentration falters from carrying so much.")) */ // TODO DE
 		return 1;
 
 	    if (castit) {
@@ -573,7 +573,7 @@ level_tele()
 						&& !wizard
 #endif
 							) {
-	    You_feel("very disoriented for a moment.");
+	    You_feel("very disoriented for a moment."); /* EN You_feel("very disoriented for a moment."); */ // TODO DE
 	    return;
 	}
 	if ((Teleport_control && !Stunned)
@@ -584,26 +584,26 @@ level_tele()
 	    char qbuf[BUFSZ];
 	    int trycnt = 0;
 
-	    Strcpy(qbuf, "To what level do you want to teleport?");
+	    Strcpy(qbuf, "To what level do you want to teleport?"); /* EN Strcpy(qbuf, "To what level do you want to teleport?"); */ // TODO DE
 	    do {
 		if (++trycnt == 2) {
 #ifdef WIZARD
-			if (wizard) Strcat(qbuf, " [type a number or ? for a menu]");
+			if (wizard) Strcat(qbuf, " [type a number or ? for a menu]"); /* EN if (wizard) Strcat(qbuf, " [type a number or ? for a menu]"); */ // TODO DE
 			else
 #endif
-			Strcat(qbuf, " [type a number]");
+			Strcat(qbuf, " [type a number]"); /* EN Strcat(qbuf, " [type a number]"); */ // TODO DE
 		}
 		getlin(qbuf, buf);
 		if (!strcmp(buf,"\033")) {	/* cancelled */
 		    if (Confusion && rnl(5)) {
-			pline("Oops...");
+			pline("Oops..."); /* EN pline("Oops..."); */ // TODO DE
 			goto random_levtport;
 		    }
 		    return;
 		} else if (!strcmp(buf,"*")) {
 		    goto random_levtport;
 		} else if (Confusion && rnl(5)) {
-		    pline("Oops...");
+		    pline("Oops..."); /* EN pline("Oops..."); */ // TODO DE
 		    goto random_levtport;
 		}
 #ifdef WIZARD
@@ -620,13 +620,13 @@ level_tele()
 	    if (newlev == 0) {
 		if (trycnt >= 10)
 		    goto random_levtport;
-		if (ynq("Go to Nowhere.  Are you sure?") != 'y') return;
-		You("%s in agony as your body begins to warp...",
-		    is_silent(youmonst.data) ? "writhe" : "scream");
+		if (ynq("Go to Nowhere.  Are you sure?") != 'y') return; /* EN if (ynq("Go to Nowhere.  Are you sure?") != 'y') return; */ // TODO DE
+		You("%s in agony as your body begins to warp...", /* EN You("%s in agony as your body begins to warp...", */ // TODO DE
+		    is_silent(youmonst.data) ? "writhe" : "scream"); /* EN is_silent(youmonst.data) ? "writhe" : "scream"); */ // TODO DE
 		display_nhwindow(WIN_MESSAGE, FALSE);
-		You("cease to exist.");
+		You("cease to exist."); /* EN You("cease to exist."); */ // TODO DE
 		killer_format = NO_KILLER_PREFIX;
-		killer = "committed suicide";
+		killer = "committed suicide"; /* EN killer = "committed suicide"; */ // TODO DE
 		done(DIED);
 		return;
 	    }
@@ -666,7 +666,7 @@ level_tele()
 	    int llimit = dunlevs_in_dungeon(&u.uz);
 
 	    if (newlev >= 0 || newlev <= -llimit) {
-		You_cant("get there from here.");
+		You_cant("get there from here."); /* EN You_cant("get there from here."); */ // TODO DE
 		return;
 	    }
 	    newlevel.dnum = u.uz.dnum;
@@ -688,28 +688,28 @@ level_tele()
 		    in_mklev = FALSE;
 		}
 		if (newlev <= -10) {
-			You("arrive in heaven.");
-			verbalize("Thou art early, but we'll admit thee.");
+			You("arrive in heaven."); /* EN You("arrive in heaven."); */ // TODO DE
+			verbalize("Thou art early, but we'll admit thee."); /* EN verbalize("Thou art early, but we'll admit thee."); */ // TODO DE
 			killer_format = NO_KILLER_PREFIX;
-			killer = "went to heaven prematurely";
+			killer = "went to heaven prematurely"; /* EN killer = "went to heaven prematurely"; */ // TODO DE
 		} else if (newlev == -9) {
-			You_feel("deliriously happy. ");
-			pline("(In fact, you're on Cloud 9!) ");
+			You_feel("deliriously happy. "); /* EN You_feel("deliriously happy. "); */ // TODO DE
+			pline("(In fact, you're on Cloud 9!) "); /* EN pline("(In fact, you're on Cloud 9!) "); */ // TODO DE
 			display_nhwindow(WIN_MESSAGE, FALSE);
 		} else
-			You("are now high above the clouds...");
+			You("are now high above the clouds..."); /* EN You("are now high above the clouds..."); */ // TODO DE
 
 		if (killer) {
 		    ;		/* arrival in heaven is pending */
 		} else if (Levitation) {
-		    escape_by_flying = "float gently down to earth";
+		    escape_by_flying = "float gently down to earth"; /* EN escape_by_flying = "float gently down to earth"; */ // TODO DE
 		} else if (Flying) {
-		    escape_by_flying = "fly down to the ground";
+		    escape_by_flying = "fly down to the ground"; /* EN escape_by_flying = "fly down to the ground"; */ // TODO DE
 		} else {
-		    pline("Unfortunately, you don't know how to fly.");
-		    You("plummet a few thousand feet to your death.");
+		    pline("Unfortunately, you don't know how to fly."); /* EN pline("Unfortunately, you don't know how to fly."); */ // TODO DE
+		    You("plummet a few thousand feet to your death."); /* EN You("plummet a few thousand feet to your death."); */ // TODO DE
 		    Sprintf(buf,
-			  "teleported out of the dungeon and fell to %s death",
+			  "teleported out of the dungeon and fell to %s death", /* EN "teleported out of the dungeon and fell to %s death", */ // TODO DE
 			    uhis());
 		    killer = buf;
 		    killer_format = NO_KILLER_PREFIX;
@@ -726,7 +726,7 @@ level_tele()
 	    done(DIED);
 	    /* can only get here via life-saving (or declining to die in
 	       explore|debug mode); the hero has now left the dungeon... */
-	    escape_by_flying = "find yourself back on the surface";
+	    escape_by_flying = "find yourself back on the surface"; /* EN escape_by_flying = "find yourself back on the surface"; */ // TODO DE
 	    u.uz = lsav;	/* restore u.uz so escape code works */
 	}
 
@@ -754,7 +754,7 @@ level_tele()
 					dunlevs_in_dungeon(&u.uz) - 1)) {
 		newlev = dungeons[u.uz.dnum].depth_start +
 					dunlevs_in_dungeon(&u.uz) - 2;
-		pline("Sorry...");
+		pline("Sorry..."); /* EN pline("Sorry..."); */ // TODO DE
 	    }
 	    /* no teleporting out of quest dungeon */
 	    if (In_quest(&u.uz) && newlev < depth(&qstart_level))
@@ -786,20 +786,20 @@ register struct trap *ttmp;
 	/* problem: level teleport landing escapes the check */
 	if (!on_level(&u.uz, &u.uz0)) return;
 
-	You("activated a magic portal!");
+	You("activated a magic portal!"); /* EN You("activated a magic portal!"); */ // TODO DE
 
 	/* prevent the poor shnook, whose amulet was stolen while in
 	 * the endgame, from accidently triggering the portal to the
 	 * next level, and thus losing the game
 	 */
 	if (In_endgame(&u.uz) && !u.uhave.amulet) {
-	    You_feel("dizzy for a moment, but nothing happens...");
+	    You_feel("dizzy for a moment, but nothing happens..."); /* EN You_feel("dizzy for a moment, but nothing happens..."); */ // TODO DE
 	    return;
 	}
 
 	target_level = ttmp->dst;
 	schedule_goto(&target_level, FALSE, FALSE, 1,
-		      "You feel dizzy for a moment, but the sensation passes.",
+		      "You feel dizzy for a moment, but the sensation passes.", /* EN "You feel dizzy for a moment, but the sensation passes.", */ // TODO DE
 		      (char *)0);
 }
 
@@ -810,7 +810,7 @@ struct trap *trap;
 	if (In_endgame(&u.uz) || Antimagic) {
 		if (Antimagic)
 			shieldeff(u.ux, u.uy);
-		You_feel("a wrenching sensation.");
+		You_feel("a wrenching sensation."); /* EN You_feel("a wrenching sensation."); */ // TODO DE
 	} else if (!next_to_u()) {
 		You(shudder_for_moment);
 	} else if (trap->once) {
@@ -825,20 +825,20 @@ void
 level_tele_trap(trap)
 struct trap *trap;
 {
-	You("%s onto a level teleport trap!",
-		      Levitation ? (const char *)"float" :
-				  locomotion(youmonst.data, "step"));
+	You("%s onto a level teleport trap!", /* EN You("%s onto a level teleport trap!", */ // TODO DE
+		      Levitation ? (const char *)"float" : /* EN Levitation ? (const char *)"float" : */ // TODO DE
+				  locomotion(youmonst.data, "step")); /* EN locomotion(youmonst.data, "step")); */ // TODO DE
 	if (Antimagic) {
 	    shieldeff(u.ux, u.uy);
 	}
 	if (Antimagic || In_endgame(&u.uz)) {
-	    You_feel("a wrenching sensation.");
+	    You_feel("a wrenching sensation."); /* EN You_feel("a wrenching sensation."); */ // TODO DE
 	    return;
 	}
 	if (!Blind)
-	    You("are momentarily blinded by a flash of light.");
+	    You("are momentarily blinded by a flash of light."); /* EN You("are momentarily blinded by a flash of light."); */ // TODO DE
 	else
-	    You("are momentarily disoriented.");
+	    You("are momentarily disoriented."); /* EN You("are momentarily disoriented."); */ // TODO DE
 	deltrap(trap);
 	newsym(u.ux,u.uy);	/* get rid of trap symbol */
 	level_tele();
@@ -1012,7 +1012,7 @@ struct monst *mon;
 {
 	if (level.flags.noteleport) {
 		if (canseemon(mon))
-		    pline("A mysterious force prevents %s from teleporting!",
+		    pline("A mysterious force prevents %s from teleporting!", /* EN pline("A mysterious force prevents %s from teleporting!", */ // TODO DE
 			mon_nam(mon));
 		return TRUE;
 	}
@@ -1041,9 +1041,9 @@ int in_sight;
 
 	    if (in_sight) {
 		if (canseemon(mtmp))
-		    pline("%s seems disoriented.", monname);
+		    pline("%s seems disoriented.", monname); /* EN pline("%s seems disoriented.", monname); */ // TODO DE
 		else
-		    pline("%s suddenly disappears!", monname);
+		    pline("%s suddenly disappears!", monname); /* EN pline("%s suddenly disappears!", monname); */ // TODO DE
 		seetrap(trap);
 	    }
 	}
@@ -1071,8 +1071,8 @@ int in_sight;
 		    assign_level(&tolevel, &valley_level);
 		} else if (Is_botlevel(&u.uz)) {
 		    if (in_sight && trap->tseen)
-			pline("%s avoids the %s.", Monnam(mtmp),
-			(tt == HOLE) ? "hole" : "trap");
+			pline("%s avoids the %s.", Monnam(mtmp), /* EN pline("%s avoids the %s.", Monnam(mtmp), */ // TODO DE
+			(tt == HOLE) ? "hole" : "trap"); /* EN (tt == HOLE) ? "hole" : "trap"); */ // TODO DE
 		    return 0;
 		} else {
 		    get_level(&tolevel, depth(&u.uz) + 1);
@@ -1081,7 +1081,7 @@ int in_sight;
 		if (In_endgame(&u.uz) &&
 		    (mon_has_amulet(mtmp) || is_home_elemental(mptr))) {
 		    if (in_sight && mptr->mlet != S_ELEMENTAL) {
-			pline("%s seems to shimmer for a moment.",
+			pline("%s seems to shimmer for a moment.", /* EN pline("%s seems to shimmer for a moment.", */ // TODO DE
 							Monnam(mtmp));
 			seetrap(trap);
 		    }
@@ -1095,21 +1095,21 @@ int in_sight;
 
 		if (mon_has_amulet(mtmp) || In_endgame(&u.uz)) {
 		    if (in_sight)
-			pline("%s seems very disoriented for a moment.",
+			pline("%s seems very disoriented for a moment.", /* EN pline("%s seems very disoriented for a moment.", */ // TODO DE
 				Monnam(mtmp));
 		    return 0;
 		}
 		nlev = random_teleport_level();
 		if (nlev == depth(&u.uz)) {
 		    if (in_sight)
-			pline("%s shudders for a moment.", Monnam(mtmp));
+			pline("%s shudders for a moment.", Monnam(mtmp)); /* EN pline("%s shudders for a moment.", Monnam(mtmp)); */ // TODO DE
 		    return 0;
 		}
 		get_level(&tolevel, nlev);
 	    }
 
 	    if (in_sight) {
-		pline("Suddenly, %s disappears out of sight.", mon_nam(mtmp));
+		pline("Suddenly, %s disappears out of sight.", mon_nam(mtmp)); /* EN pline("Suddenly, %s disappears out of sight.", mon_nam(mtmp)); */ // TODO DE
 		seetrap(trap);
 	    }
 	    migrate_to_level(mtmp, ledger_no(&tolevel),
@@ -1149,7 +1149,7 @@ register struct obj *obj;
 		    within_bounded_area(tx, ty, dndest.nlx, dndest.nly,
 						dndest.nhx, dndest.nhy)))));
 
-	if (flooreffects(obj, tx, ty, "fall")) {
+	if (flooreffects(obj, tx, ty, "fall")) { /* EN if (flooreffects(obj, tx, ty, "fall")) { */ // TODO DE
 	    return;
 	} else if (otx == 0 && oty == 0) {
 	    ;	/* fell through a trap door; no update of old loc needed */
@@ -1235,11 +1235,11 @@ boolean give_feedback;
 
 	if (mtmp->ispriest && *in_rooms(mtmp->mx, mtmp->my, TEMPLE)) {
 	    if (give_feedback)
-		pline("%s resists your magic!", Monnam(mtmp));
+		pline("%s resists your magic!", Monnam(mtmp)); /* EN pline("%s resists your magic!", Monnam(mtmp)); */ // TODO DE
 	    return FALSE;
 	} else if (level.flags.noteleport && u.uswallow && mtmp == u.ustuck) {
 	    if (give_feedback)
-		You("are no longer inside %s!", mon_nam(mtmp));
+		You("are no longer inside %s!", mon_nam(mtmp)); /* EN You("are no longer inside %s!", mon_nam(mtmp)); */ // TODO DE
 	    unstuck(mtmp);
 	    rloc(mtmp);
 	} else if (is_rider(mtmp->data) && rn2(13) &&

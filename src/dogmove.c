@@ -160,8 +160,8 @@ boolean devour;
 	/* However, invisible monsters should still be "it" even though out of
 	   sight locations should not. */
 	if (cansee(x, y) || cansee(mtmp->mx, mtmp->my))
-	    pline("%s %s %s.", mon_visible(mtmp) ? noit_Monnam(mtmp) : "It",
-		  devour ? "devours" : "eats",
+	    pline("%s %s %s.", mon_visible(mtmp) ? noit_Monnam(mtmp) : "It", /* EN pline("%s %s %s.", mon_visible(mtmp) ? noit_Monnam(mtmp) : "It", */ // TODO DE
+		  devour ? "devours" : "eats", /* EN devour ? "devours" : "eats", */ // TODO DE
 		  (obj->oclass == FOOD_CLASS) ?
 			singular(obj, doname) : doname(obj));
 	/* It's a reward if it's DOGFOOD and the player dropped/threw it. */
@@ -178,7 +178,7 @@ boolean devour;
 	    obj->oerodeproof = 0;
 	    mtmp->mstun = 1;
 	    if (canseemon(mtmp) && flags.verbose) {
-		pline("%s spits %s out in disgust!",
+		pline("%s spits %s out in disgust!", /* EN pline("%s spits %s out in disgust!", */ // TODO DE
 		      Monnam(mtmp), distant_name(obj,doname));
 	    }
 	} else if (obj == uball) {
@@ -227,11 +227,11 @@ register struct edog *edog;
 		    mtmp->mhp = mtmp->mhpmax;
 		if (mtmp->mhp < 1) goto dog_died;
 		if (cansee(mtmp->mx, mtmp->my))
-		    pline("%s is confused from hunger.", Monnam(mtmp));
+		    pline("%s is confused from hunger.", Monnam(mtmp)); /* EN pline("%s is confused from hunger.", Monnam(mtmp)); */ // TODO DE
 		else if (couldsee(mtmp->mx, mtmp->my))
 		    beg(mtmp);
 		else
-		    You_feel("worried about %s.", y_monnam(mtmp));
+		    You_feel("worried about %s.", y_monnam(mtmp)); /* EN You_feel("worried about %s.", y_monnam(mtmp)); */ // TODO DE
 		stop_occupation();
 	    } else if (monstermoves > edog->hungrytime + 750 || mtmp->mhp < 1) {
  dog_died:
@@ -240,12 +240,12 @@ register struct edog *edog;
 		    && mtmp != u.usteed
 #endif
 		    )
-		    Your("leash goes slack.");
+		    Your("leash goes slack."); /* EN Your("leash goes slack."); */ // TODO DE
 		else if (cansee(mtmp->mx, mtmp->my))
-		    pline("%s starves.", Monnam(mtmp));
+		    pline("%s starves.", Monnam(mtmp)); /* EN pline("%s starves.", Monnam(mtmp)); */ // TODO DE
 		else
-		    You_feel("%s for a moment.",
-			Hallucination ? "bummed" : "sad");
+		    You_feel("%s for a moment.", /* EN You_feel("%s for a moment.", */ // TODO DE
+			Hallucination ? "bummed" : "sad"); /* EN Hallucination ? "bummed" : "sad"); */ // TODO DE
 		mondied(mtmp);
 		return(TRUE);
 	    }
@@ -303,7 +303,7 @@ int udist;
 		    if(rn2(20) < edog->apport+3) {
 			if (rn2(udist) || !rn2(edog->apport)) {
 			    if (cansee(omx, omy) && flags.verbose)
-				pline("%s picks up %s.", Monnam(mtmp),
+				pline("%s picks up %s.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */ // TODO DE
 				    distant_name(obj, doname));
 			    obj_extract_self(obj);
 			    newsym(omx,omy);
@@ -547,8 +547,8 @@ register int after;	/* this is extra fast monster movement */
 		 * it disappears, angrily, and sends in some nasties
 		 */
 		if (canspotmon(mtmp)) {
-		    pline("%s rebukes you, saying:", Monnam(mtmp));
-		    verbalize("Since you desire conflict, have some more!");
+		    pline("%s rebukes you, saying:", Monnam(mtmp)); /* EN pline("%s rebukes you, saying:", Monnam(mtmp)); */ // TODO DE
+		    verbalize("Since you desire conflict, have some more!"); /* EN verbalize("Since you desire conflict, have some more!"); */ // TODO DE
 		}
 		mongone(mtmp);
 		i = rnd(4);
@@ -566,7 +566,7 @@ register int after;	/* this is extra fast monster movement */
 	if (!Conflict && !mtmp->mconf &&
 	    mtmp == u.ustuck && !sticks(youmonst.data)) {
 	    unstuck(mtmp);	/* swallowed case handled above */
-	    You("get released!");
+	    You("get released!"); /* EN You("get released!"); */ // TODO DE
 	}
 	if (!nohands(mtmp->data) && !verysmall(mtmp->data)) {
 		allowflags |= OPENDOOR;
@@ -710,7 +710,7 @@ newdogpos:
 
 		if (info[chi] & ALLOW_U) {
 			if (mtmp->mleashed) { /* play it safe */
-				pline("%s breaks loose of %s leash!",
+				pline("%s breaks loose of %s leash!", /* EN pline("%s breaks loose of %s leash!", */ // TODO DE
 				      Monnam(mtmp), mhis(mtmp));
 				m_unleash(mtmp, FALSE);
 			}
@@ -741,7 +741,7 @@ newdogpos:
 		remove_monster(omx, omy);
 		place_monster(mtmp, nix, niy);
 		if (cursemsg[chi] && (cansee(omx,omy) || cansee(nix,niy)))
-			pline("%s moves only reluctantly.", Monnam(mtmp));
+			pline("%s moves only reluctantly.", Monnam(mtmp)); /* EN pline("%s moves only reluctantly.", Monnam(mtmp)); */ // TODO DE
 		for (j=MTSZ-1; j>0; j--) mtmp->mtrack[j] = mtmp->mtrack[j-1];
 		mtmp->mtrack[0].x = omx;
 		mtmp->mtrack[0].y = omy;

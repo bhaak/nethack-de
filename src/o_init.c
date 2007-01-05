@@ -233,7 +233,7 @@ find_skates()
     register const char *s;
 
     for (i = SPEED_BOOTS; i <= LEVITATION_BOOTS; i++)
-	if ((s = OBJ_DESCR(objects[i])) != 0 && !strcmp(s, "snow boots"))
+	if ((s = OBJ_DESCR(objects[i])) != 0 && !strcmp(s, "NOUN_SNOW_BOOTS")) /* EN if ((s = OBJ_DESCR(objects[i])) != 0 && !strcmp(s, "snow boots")) */
 	    return i;
 
     impossible("snow boots not found?");
@@ -374,7 +374,7 @@ dodiscovered()				/* free after Robert Viduya */
 	char buf[BUFSZ];
 
     tmpwin = create_nhwindow(NHW_MENU);
-    putstr(tmpwin, 0, "Discoveries");
+    putstr(tmpwin, 0, "Discoveries"); /* EN putstr(tmpwin, 0, "Discoveries"); */ // TODO DE
     putstr(tmpwin, 0, "");
 
     /* gather "unique objects" into a pseudo-class; note that they'll
@@ -382,7 +382,7 @@ dodiscovered()				/* free after Robert Viduya */
     for (i = dis = 0; i < SIZE(uniq_objs); i++)
 	if (objects[uniq_objs[i]].oc_name_known) {
 	    if (!dis++)
-		putstr(tmpwin, ATR_INVERSE, "Unique Items");
+		putstr(tmpwin, ATR_INVERSE, "Unique Items"); /* EN putstr(tmpwin, ATR_INVERSE, "Unique Items"); */ // TODO DE
 		Sprintf(buf, "  %s", OBJ_NAME(objects[uniq_objs[i]]));
 	    putstr(tmpwin, 0, buf);
 	    ++ct;
@@ -416,7 +416,7 @@ dodiscovered()				/* free after Robert Viduya */
 	}
     }
     if (ct == 0) {
-	You("haven't discovered anything yet...");
+	You("haven't discovered anything yet..."); /* EN You("haven't discovered anything yet..."); */ // TODO DE
     } else
 	display_nhwindow(tmpwin, TRUE);
     destroy_nhwindow(tmpwin);

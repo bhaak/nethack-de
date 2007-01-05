@@ -59,12 +59,12 @@ int
 dosave()
 {
 	clear_nhwindow(WIN_MESSAGE);
-	if(yn("Really save?") == 'n') {
+	if(yn("Really save?") == 'n') { /* EN if(yn("Really save?") == 'n') { */ // TODO DE
 		clear_nhwindow(WIN_MESSAGE);
 		if(multi > 0) nomul(0);
 	} else {
 		clear_nhwindow(WIN_MESSAGE);
-		pline("Saving...");
+		pline("Saving..."); /* EN pline("Saving..."); */ // TODO DE
 #if defined(UNIX) || defined(VMS) || defined(__EMX__)
 		program_state.done_hup = 0;
 #endif
@@ -73,7 +73,7 @@ dosave()
 			u.uhp = -1;		/* universal game's over indicator */
 			/* make sure they see the Saving message */
 			display_nhwindow(WIN_MESSAGE, TRUE);
-			exit_nhwindows("Be seeing you...");
+			exit_nhwindows("Be seeing you..."); /* EN exit_nhwindows("Be seeing you..."); */ // TODO DE
 			terminate(EXIT_SUCCESS);
 		} else (void)doredraw();
 	}
@@ -143,8 +143,8 @@ dosave0()
 	    if (fd > 0) {
 		(void) close(fd);
 		clear_nhwindow(WIN_MESSAGE);
-		There("seems to be an old save file.");
-		if (yn("Overwrite the old file?") == 'n') {
+		There("seems to be an old save file."); /* EN There("seems to be an old save file."); */ // TODO DE
+		if (yn("Overwrite the old file?") == 'n') { /* EN if (yn("Overwrite the old file?") == 'n') { */ // TODO DE
 		    compress(fq_save);
 		    return 0;
 		}
@@ -155,7 +155,7 @@ dosave0()
 
 	fd = create_savefile();
 	if(fd < 0) {
-		HUP pline("Cannot open save file.");
+		HUP pline("Cannot open save file."); /* EN HUP pline("Cannot open save file."); */ // TODO DE
 		(void) delete_savefile();	/* ab@unido */
 		return(0);
 	}
@@ -176,7 +176,7 @@ dosave0()
 	dotrow = 2;
 	curs(WIN_MAP, 1, 1);
 	if (strncmpi("X11", windowprocs.name, 3))
-	  putstr(WIN_MAP, 0, "Saving:");
+	  putstr(WIN_MAP, 0, "Saving:"); /* EN putstr(WIN_MAP, 0, "Saving:"); */ // TODO DE
 #endif
 #ifdef MFLOPPY
 	/* make sure there is enough disk space */
@@ -193,8 +193,8 @@ dosave0()
 	    fds = freediskspace(fq_save);
 	    if (needed > fds) {
 		HUP {
-		    There("is insufficient space on SAVE disk.");
-		    pline("Require %ld bytes but only have %ld.", needed, fds);
+		    There("is insufficient space on SAVE disk."); /* EN There("is insufficient space on SAVE disk."); */ // TODO DE
+		    pline("Require %ld bytes but only have %ld.", needed, fds); /* EN pline("Require %ld bytes but only have %ld.", needed, fds); */ // TODO DE
 		}
 		flushout();
 		(void) close(fd);
@@ -355,7 +355,7 @@ savestateinlock()
 		fd = open_levelfile(0, whynot);
 		if (fd < 0) {
 		    pline("%s", whynot);
-		    pline("Probably someone removed it.");
+		    pline("Probably someone removed it."); /* EN pline("Probably someone removed it."); */ // TODO DE
 		    killer = whynot;
 		    done(TRICKED);
 		    return;
@@ -364,7 +364,7 @@ savestateinlock()
 		(void) read(fd, (genericptr_t) &hpid, sizeof(hpid));
 		if (hackpid != hpid) {
 		    Sprintf(whynot,
-			    "Level #0 pid (%d) doesn't match ours (%d)!",
+			    "Level #0 pid (%d) doesn't match ours (%d)!", /* EN "Level #0 pid (%d) doesn't match ours (%d)!", */ // TODO DE
 			    hpid, hackpid);
 		    pline("%s", whynot);
 		    killer = whynot;

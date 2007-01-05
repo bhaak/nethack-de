@@ -67,11 +67,11 @@ amulet()
 		if(ttmp->ttyp == MAGIC_PORTAL) {
 		    int du = distu(ttmp->tx, ttmp->ty);
 		    if (du <= 9)
-			pline("%s hot!", Tobjnam(amu, "feel"));
+			pline("%s hot!", Tobjnam(amu, "feel")); /* EN pline("%s hot!", Tobjnam(amu, "feel")); */ // TODO DE
 		    else if (du <= 64)
-			pline("%s very warm.", Tobjnam(amu, "feel"));
+			pline("%s very warm.", Tobjnam(amu, "feel")); /* EN pline("%s very warm.", Tobjnam(amu, "feel")); */ // TODO DE
 		    else if (du <= 144)
-			pline("%s warm.", Tobjnam(amu, "feel"));
+			pline("%s warm.", Tobjnam(amu, "feel")); /* EN pline("%s warm.", Tobjnam(amu, "feel")); */ // TODO DE
 		    /* else, the amulet feels normal */
 		    break;
 		}
@@ -86,7 +86,7 @@ amulet()
 		mtmp->msleeping = 0;
 		if (distu(mtmp->mx,mtmp->my) > 2)
 		    You(
-    "get the creepy feeling that somebody noticed your taking the Amulet."
+    "get the creepy feeling that somebody noticed your taking the Amulet." /* EN "get the creepy feeling that somebody noticed your taking the Amulet." */ // TODO DE
 		    );
 		return;
 	    }
@@ -351,7 +351,7 @@ tactics(mtmp)
 
 			if ((otmp = on_ground(which_arti(targ))) != 0) {
 			    if (cansee(mtmp->mx, mtmp->my))
-				pline("%s picks up %s.",
+				pline("%s picks up %s.", /* EN pline("%s picks up %s.", */ // TODO DE
 				    Monnam(mtmp),
 				    (distu(mtmp->my, mtmp->my) <= 5) ?
 				     doname(otmp) : distant_name(otmp, doname));
@@ -478,11 +478,11 @@ resurrect()
 
 	if (!flags.no_of_wizards) {
 	    /* make a new Wizard */
-	    verb = "kill";
+	    verb = "kill"; /* EN verb = "kill"; */ // TODO DE
 	    mtmp = makemon(&mons[PM_WIZARD_OF_YENDOR], u.ux, u.uy, MM_NOWAIT);
 	} else {
 	    /* look for a migrating Wizard */
-	    verb = "elude";
+	    verb = "elude"; /* EN verb = "elude"; */ // TODO DE
 	    mmtmp = &migrating_mons;
 	    while ((mtmp = *mmtmp) != 0) {
 		if (mtmp->iswiz &&
@@ -511,8 +511,8 @@ resurrect()
 	if (mtmp) {
 		mtmp->msleeping = mtmp->mtame = mtmp->mpeaceful = 0;
 		set_malign(mtmp);
-		pline("A voice booms out...");
-		verbalize("So thou thought thou couldst %s me, fool.", verb);
+		pline("A voice booms out..."); /* EN pline("A voice booms out..."); */ // TODO DE
+		verbalize("So thou thought thou couldst %s me, fool.", verb); /* EN verbalize("So thou thought thou couldst %s me, fool.", verb); */ // TODO DE
 	}
 
 }
@@ -526,10 +526,10 @@ intervene()
 	/* cases 0 and 5 don't apply on the Astral level */
 	switch (which) {
 	    case 0:
-	    case 1:	You_feel("vaguely nervous.");
+	    case 1:	You_feel("vaguely nervous."); /* EN case 1:	You_feel("vaguely nervous."); */ // TODO DE
 			break;
 	    case 2:	if (!Blind)
-			    You("notice a %s glow surrounding you.",
+			    You("notice a %s glow surrounding you.", /* EN You("notice a %s glow surrounding you.", */ // TODO DE
 				  hcolor(NH_BLACK));
 			rndcurse();
 			break;
@@ -553,48 +553,48 @@ wizdead()
 }
 
 const char * const random_insult[] = {
-	"antic",
-	"blackguard",
-	"caitiff",
-	"chucklehead",
-	"coistrel",
-	"craven",
-	"cretin",
-	"cur",
-	"dastard",
-	"demon fodder",
-	"dimwit",
-	"dolt",
-	"fool",
-	"footpad",
-	"imbecile",
-	"knave",
-	"maledict",
-	"miscreant",
-	"niddering",
-	"poltroon",
-	"rattlepate",
-	"reprobate",
-	"scapegrace",
-	"varlet",
-	"villein",	/* (sic.) */
-	"wittol",
-	"worm",
-	"wretch",
+	"antic", /* EN "antic", */ // TODO DE
+	"blackguard", /* EN "blackguard", */ // TODO DE
+	"caitiff", /* EN "caitiff", */ // TODO DE
+	"chucklehead", /* EN "chucklehead", */ // TODO DE
+	"coistrel", /* EN "coistrel", */ // TODO DE
+	"craven", /* EN "craven", */ // TODO DE
+	"cretin", /* EN "cretin", */ // TODO DE
+	"cur", /* EN "cur", */ // TODO DE
+	"dastard", /* EN "dastard", */ // TODO DE
+	"demon fodder", /* EN "demon fodder", */ // TODO DE
+	"dimwit", /* EN "dimwit", */ // TODO DE
+	"dolt", /* EN "dolt", */ // TODO DE
+	"fool", /* EN "fool", */ // TODO DE
+	"footpad", /* EN "footpad", */ // TODO DE
+	"imbecile", /* EN "imbecile", */ // TODO DE
+	"knave", /* EN "knave", */ // TODO DE
+	"maledict", /* EN "maledict", */ // TODO DE
+	"miscreant", /* EN "miscreant", */ // TODO DE
+	"niddering", /* EN "niddering", */ // TODO DE
+	"poltroon", /* EN "poltroon", */ // TODO DE
+	"rattlepate", /* EN "rattlepate", */ // TODO DE
+	"reprobate", /* EN "reprobate", */ // TODO DE
+	"scapegrace", /* EN "scapegrace", */ // TODO DE
+	"varlet", /* EN "varlet", */ // TODO DE
+	"villein",	/* (sic.) */ /* EN "villein",	*/ // TODO DE
+	"wittol", /* EN "wittol", */ // TODO DE
+	"worm", /* EN "worm", */ // TODO DE
+	"wretch", /* EN "wretch", */ // TODO DE
 };
 
 const char * const random_malediction[] = {
-	"Hell shall soon claim thy remains,",
-	"I chortle at thee, thou pathetic",
-	"Prepare to die, thou",
-	"Resistance is useless,",
-	"Surrender or die, thou",
-	"There shall be no mercy, thou",
-	"Thou shalt repent of thy cunning,",
-	"Thou art as a flea to me,",
-	"Thou art doomed,",
-	"Thy fate is sealed,",
-	"Verily, thou shalt be one dead"
+	"Hell shall soon claim thy remains,", /* EN "Hell shall soon claim thy remains,", */ // TODO DE
+	"I chortle at thee, thou pathetic", /* EN "I chortle at thee, thou pathetic", */ // TODO DE
+	"Prepare to die, thou", /* EN "Prepare to die, thou", */ // TODO DE
+	"Resistance is useless,", /* EN "Resistance is useless,", */ // TODO DE
+	"Surrender or die, thou", /* EN "Surrender or die, thou", */ // TODO DE
+	"There shall be no mercy, thou", /* EN "There shall be no mercy, thou", */ // TODO DE
+	"Thou shalt repent of thy cunning,", /* EN "Thou shalt repent of thy cunning,", */ // TODO DE
+	"Thou art as a flea to me,", /* EN "Thou art as a flea to me,", */ // TODO DE
+	"Thou art doomed,", /* EN "Thou art doomed,", */ // TODO DE
+	"Thy fate is sealed,", /* EN "Thy fate is sealed,", */ // TODO DE
+	"Verily, thou shalt be one dead" /* EN "Verily, thou shalt be one dead" */ // TODO DE
 };
 
 /* Insult or intimidate the player */
@@ -604,20 +604,20 @@ register struct monst	*mtmp;
 {
 	if (mtmp->iswiz) {
 	    if (!rn2(5))  /* typical bad guy action */
-		pline("%s laughs fiendishly.", Monnam(mtmp));
+		pline("%s laughs fiendishly.", Monnam(mtmp)); /* EN pline("%s laughs fiendishly.", Monnam(mtmp)); */ // TODO DE
 	    else
 		if (u.uhave.amulet && !rn2(SIZE(random_insult)))
-		    verbalize("Relinquish the amulet, %s!",
+		    verbalize("Relinquish the amulet, %s!", /* EN verbalize("Relinquish the amulet, %s!", */ // TODO DE
 			  random_insult[rn2(SIZE(random_insult))]);
 		else if (u.uhp < 5 && !rn2(2))	/* Panic */
 		    verbalize(rn2(2) ?
-			  "Even now thy life force ebbs, %s!" :
-			  "Savor thy breath, %s, it be thy last!",
+			  "Even now thy life force ebbs, %s!" : /* EN "Even now thy life force ebbs, %s!" : */ // TODO DE
+			  "Savor thy breath, %s, it be thy last!", /* EN "Savor thy breath, %s, it be thy last!", */ // TODO DE
 			  random_insult[rn2(SIZE(random_insult))]);
 		else if (mtmp->mhp < 5 && !rn2(2))	/* Parthian shot */
 		    verbalize(rn2(2) ?
-			      "I shall return." :
-			      "I'll be back.");
+			      "I shall return." : /* EN "I shall return." : */ // TODO DE
+			      "I'll be back."); /* EN "I'll be back."); */ // TODO DE
 		else
 		    verbalize("%s %s!",
 			  random_malediction[rn2(SIZE(random_malediction))],
@@ -627,7 +627,7 @@ register struct monst	*mtmp;
 			      QT_ANGELIC);
 	} else {
 	    if (!rn2(5))
-		pline("%s casts aspersions on your ancestry.", Monnam(mtmp));
+		pline("%s casts aspersions on your ancestry.", Monnam(mtmp)); /* EN pline("%s casts aspersions on your ancestry.", Monnam(mtmp)); */ // TODO DE
 	    else
 	        com_pager(rn2(QTN_DEMONIC) + QT_DEMONIC);
 	}

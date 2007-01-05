@@ -115,14 +115,14 @@ boolean talk;
 #ifdef WIZARD
     if (wizard && talk) {
 	if (u.ualign.type != original_alignment) {
-	    You("are currently %s instead of %s.",
+	    You("are currently %s instead of %s.", /* EN You("are currently %s instead of %s.", */ // TODO DE
 		align_str(u.ualign.type), align_str(original_alignment));
 	} else if (u.ualignbase[A_CURRENT] != original_alignment) {
-	    You("have converted.");
+	    You("have converted."); /* EN You("have converted."); */ // TODO DE
 	} else if (u.ualign.record < MIN_QUEST_ALIGN) {
-	    You("are currently %d and require %d.",
+	    You("are currently %d and require %d.", /* EN You("are currently %d and require %d.", */ // TODO DE
 		u.ualign.record, MIN_QUEST_ALIGN);
-	    if (yn_function("adjust?", (char *)0, 'y') == 'y')
+	    if (yn_function("adjust?", (char *)0, 'y') == 'y') /* EN if (yn_function("adjust?", (char *)0, 'y') == 'y') */ // TODO DE
 		u.ualign.record = MIN_QUEST_ALIGN;
 	}
     }
@@ -149,7 +149,7 @@ boolean seal;
     struct trap *t;
     int portal_flag;
 
-    br = dungeon_branch("The Quest");
+    br = dungeon_branch("The Quest"); /* EN br = dungeon_branch("The Quest"); */ // TODO DE
     dest = (br->end1.dnum == u.uz.dnum) ? &br->end2 : &br->end1;
     portal_flag = u.uevent.qexpelled ? 0 :	/* returned via artifact? */
 		  !seal ? 1 : -1;
@@ -330,8 +330,8 @@ prisoner_speaks (mtmp)
 			(mtmp->mstrategy & STRAT_WAITMASK)) {
 	    /* Awaken the prisoner */
 	    if (canseemon(mtmp))
-	    	pline("%s speaks:", Monnam(mtmp));
-	    verbalize("I'm finally free!");
+	    	pline("%s speaks:", Monnam(mtmp)); /* EN pline("%s speaks:", Monnam(mtmp)); */ // TODO DE
+	    verbalize("I'm finally free!"); /* EN verbalize("I'm finally free!"); */ // TODO DE
 	    mtmp->mstrategy &= ~STRAT_WAITMASK;
 	    mtmp->mpeaceful = 1;
 

@@ -25,9 +25,9 @@ register struct monst *mtmp;
 {
 	if (flags.verbose) {
 	    if (cansee(mtmp->mx, mtmp->my))
-		pline("KABOOM!!  You see a door explode.");
+		pline("KABOOM!!  You see a door explode."); /* EN pline("KABOOM!!  You see a door explode."); */ // TODO DE
 	    else if (flags.soundok)
-		You_hear("a distant explosion.");
+		You_hear("a distant explosion."); /* EN You_hear("a distant explosion."); */ // TODO DE
 	}
 	wake_nearto(mtmp->mx, mtmp->my, 7*7);
 	mtmp->mstun = 1;
@@ -59,12 +59,12 @@ register struct monst *mtmp;
 
 		if(couldsee(mtmp->mx, mtmp->my)) {
 
-		  pline("%s yells:", Amonnam(mtmp));
+		  pline("%s yells:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */ // TODO DE
 		  if(levl[x][y].looted & D_WARNED) {
-			verbalize("Halt, thief!  You're under arrest!");
+			verbalize("Halt, thief!  You're under arrest!"); /* EN verbalize("Halt, thief!  You're under arrest!"); */ // TODO DE
 			(void) angry_guards(!(flags.soundok));
 		  } else {
-			verbalize("Hey, stop picking that lock!");
+			verbalize("Hey, stop picking that lock!"); /* EN verbalize("Hey, stop picking that lock!"); */ // TODO DE
 			levl[x][y].looted |=  D_WARNED;
 		  }
 		  stop_occupation();
@@ -217,7 +217,7 @@ boolean fleemsg;
 		expels(mtmp, mtmp->data, TRUE);
 	    else if (!sticks(youmonst.data)) {
 		unstuck(mtmp);	/* monster lets go when fleeing */
-		You("get released!");
+		You("get released!"); /* EN You("get released!"); */ // TODO DE
 	    }
 	}
 
@@ -232,7 +232,7 @@ boolean fleemsg;
 		mtmp->mfleetim = min(fleetime, 127);
 	    }
 	    if (!mtmp->mflee && fleemsg && canseemon(mtmp))
-		pline("%s turns to flee!", (Monnam(mtmp)));
+		pline("%s turns to flee!", (Monnam(mtmp))); /* EN pline("%s turns to flee!", (Monnam(mtmp))); */ // TODO DE
 	    mtmp->mflee = 1;
 	}
 }
@@ -382,7 +382,7 @@ register struct monst *mtmp;
 	if(nearby && mdat->msound == MS_BRIBE &&
 	   mtmp->mpeaceful && !mtmp->mtame && !u.uswallow) {
 		if (mtmp->mux != u.ux || mtmp->muy != u.uy) {
-			pline("%s whispers at thin air.",
+			pline("%s whispers at thin air.", /* EN pline("%s whispers at thin air.", */ // TODO DE
 			    cansee(mtmp->mux, mtmp->muy) ? Monnam(mtmp) : "It");
 
 			if (is_demon(youmonst.data)) {
@@ -391,7 +391,7 @@ register struct monst *mtmp;
 			} else {
 			    mtmp->minvis = mtmp->perminvis = 0;
 			    /* Why?  For the same reason in real demon talk */
-			    pline("%s gets angry!", Amonnam(mtmp));
+			    pline("%s gets angry!", Amonnam(mtmp)); /* EN pline("%s gets angry!", Amonnam(mtmp)); */ // TODO DE
 			    mtmp->mpeaceful = 0;
 			    /* since no way is an image going to pay it off */
 			}
@@ -406,26 +406,26 @@ register struct monst *mtmp;
 		struct monst *m2, *nmon = (struct monst *)0;
 
 		if (canseemon(mtmp))
-			pline("%s concentrates.", Monnam(mtmp));
+			pline("%s concentrates.", Monnam(mtmp)); /* EN pline("%s concentrates.", Monnam(mtmp)); */ // TODO DE
 		if (distu(mtmp->mx, mtmp->my) > BOLT_LIM * BOLT_LIM) {
-			You("sense a faint wave of psychic energy.");
+			You("sense a faint wave of psychic energy."); /* EN You("sense a faint wave of psychic energy."); */ // TODO DE
 			goto toofar;
 		}
-		pline("A wave of psychic energy pours over you!");
+		pline("A wave of psychic energy pours over you!"); /* EN pline("A wave of psychic energy pours over you!"); */ // TODO DE
 		if (mtmp->mpeaceful &&
 		    (!Conflict || resist(mtmp, RING_CLASS, 0, 0)))
-			pline("It feels quite soothing.");
+			pline("It feels quite soothing."); /* EN pline("It feels quite soothing."); */ // TODO DE
 		else {
 			register boolean m_sen = sensemon(mtmp);
 
 			if (m_sen || (Blind_telepat && rn2(2)) || !rn2(10)) {
 				int dmg;
-				pline("It locks on to your %s!",
-					m_sen ? "telepathy" :
-					Blind_telepat ? "latent telepathy" : "mind");
+				pline("It locks on to your %s!", /* EN pline("It locks on to your %s!", */ // TODO DE
+					m_sen ? "telepathy" : /* EN m_sen ? "telepathy" : */ // TODO DE
+					Blind_telepat ? "latent telepathy" : "mind"); /* EN Blind_telepat ? "latent telepathy" : "mind"); */ // TODO DE
 				dmg = rnd(15);
 				if (Half_spell_damage) dmg = (dmg+1) / 2;
-				losehp(dmg, "psychic blast", KILLED_BY_AN);
+				losehp(dmg, "psychic blast", KILLED_BY_AN); /* EN losehp(dmg, "psychic blast", KILLED_BY_AN); */ // TODO DE
 			}
 		}
 		for(m2=fmon; m2; m2 = nmon) {
@@ -437,7 +437,7 @@ register struct monst *mtmp;
 			if ((telepathic(m2->data) &&
 			    (rn2(2) || m2->mblinded)) || !rn2(10)) {
 				if (cansee(m2->mx, m2->my))
-				    pline("It locks on to %s.", mon_nam(m2));
+				    pline("It locks on to %s.", mon_nam(m2)); /* EN pline("It locks on to %s.", mon_nam(m2)); */ // TODO DE
 				m2->mhp -= rnd(15);
 				if (m2->mhp <= 0)
 				    monkilled(m2, "", AD_DRIN);
@@ -574,7 +574,7 @@ itsstuck(mtmp)
 register struct monst *mtmp;
 {
 	if (sticks(youmonst.data) && mtmp==u.ustuck && !u.uswallow) {
-		pline("%s cannot escape from you!", Monnam(mtmp));
+		pline("%s cannot escape from you!", Monnam(mtmp)); /* EN pline("%s cannot escape from you!", Monnam(mtmp)); */ // TODO DE
 		return(TRUE);
 	}
 	return(FALSE);
@@ -687,7 +687,7 @@ register int after;
 #ifdef MAIL
 	if(ptr == &mons[PM_MAIL_DAEMON]) {
 	    if(flags.soundok && canseemon(mtmp))
-		verbalize("I'm late!");
+		verbalize("I'm late!"); /* EN verbalize("I'm late!"); */ // TODO DE
 	    mongone(mtmp);
 	    return(2);
 	}
@@ -1058,10 +1058,10 @@ postmov:
 
 		    if(here->doormask & (D_LOCKED|D_CLOSED) && amorphous(ptr)) {
 			if (flags.verbose && canseemon(mtmp))
-			    pline("%s %s under the door.", Monnam(mtmp),
+			    pline("%s %s under the door.", Monnam(mtmp), /* EN pline("%s %s under the door.", Monnam(mtmp), */ // TODO DE
 				  (ptr == &mons[PM_FOG_CLOUD] ||
 				   ptr == &mons[PM_YELLOW_LIGHT])
-				  ? "flows" : "oozes");
+				  ? "flows" : "oozes"); /* EN ? "flows" : "oozes"); */ // TODO DE
 		    } else if(here->doormask & D_LOCKED && can_unlock) {
 			if(btrapped) {
 			    here->doormask = D_NODOOR;
@@ -1071,9 +1071,9 @@ postmov:
 			} else {
 			    if (flags.verbose) {
 				if (canseeit)
-				   You("see a door unlock and open.");
+				   You("see a door unlock and open."); /* EN You("see a door unlock and open."); */ // TODO DE
 				else if (flags.soundok)
-				   You_hear("a door unlock and open.");
+				   You_hear("a door unlock and open."); /* EN You_hear("a door unlock and open."); */ // TODO DE
 			    }
 			    here->doormask = D_ISOPEN;
 			    /* newsym(mtmp->mx, mtmp->my); */
@@ -1088,9 +1088,9 @@ postmov:
 			} else {
 			    if (flags.verbose) {
 				if (canseeit)
-				     You("see a door open.");
+				     You("see a door open."); /* EN You("see a door open."); */ // TODO DE
 				else if (flags.soundok)
-				     You_hear("a door open.");
+				     You_hear("a door open."); /* EN You_hear("a door open."); */ // TODO DE
 			    }
 			    here->doormask = D_ISOPEN;
 			    /* newsym(mtmp->mx, mtmp->my); */  /* done below */
@@ -1106,9 +1106,9 @@ postmov:
 			} else {
 			    if (flags.verbose) {
 				if (canseeit)
-				    You("see a door crash open.");
+				    You("see a door crash open."); /* EN You("see a door crash open."); */ // TODO DE
 				else if (flags.soundok)
-				    You_hear("a door crash open.");
+				    You_hear("a door crash open."); /* EN You_hear("a door crash open."); */ // TODO DE
 			    }
 			    if (here->doormask & D_LOCKED && !rn2(2))
 				    here->doormask = D_NODOOR;
@@ -1122,10 +1122,10 @@ postmov:
 		    }
 		} else if (levl[mtmp->mx][mtmp->my].typ == IRONBARS) {
 			if (flags.verbose && canseemon(mtmp))
-			    Norep("%s %s %s the iron bars.", Monnam(mtmp),
+			    Norep("%s %s %s the iron bars.", Monnam(mtmp), /* EN Norep("%s %s %s the iron bars.", Monnam(mtmp), */ // TODO DE
 				  /* pluralization fakes verb conjugation */
-				  makeplural(locomotion(ptr, "pass")),
-				  passes_walls(ptr) ? "through" : "between");
+				  makeplural(locomotion(ptr, "pass")), /* EN makeplural(locomotion(ptr, "pass")), */ // TODO DE
+				  passes_walls(ptr) ? "through" : "between"); /* EN passes_walls(ptr) ? "through" : "between"); */ // TODO DE
 		}
 
 		/* possibly dig */

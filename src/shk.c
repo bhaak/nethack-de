@@ -143,7 +143,7 @@ long amount;
     obj_extract_self(mongold);
 
     if (!merge_choice(invent, mongold) && inv_cnt() >= 52) {
-	You("have no room for the money!");
+	You("have no room for the money!"); /* EN You("have no room for the money!"); */ // TODO DE
 	dropy(mongold);
     } else {
 	addinv(mongold);
@@ -335,7 +335,7 @@ register boolean nearshop;
 	if(!shkp) return;
 
 	if (flags.soundok)
-	    pline("An alarm sounds!");
+	    pline("An alarm sounds!"); /* EN pline("An alarm sounds!"); */ // TODO DE
 
 	nokops = ((mvitals[PM_KEYSTONE_KOP].mvflags & G_GONE) &&
 		  (mvitals[PM_KOP_SERGEANT].mvflags & G_GONE) &&
@@ -344,7 +344,7 @@ register boolean nearshop;
 
 	if(!angry_guards(!flags.soundok) && nokops) {
 	    if(flags.verbose && flags.soundok)
-		pline("But no one seems to respond to it.");
+		pline("But no one seems to respond to it."); /* EN pline("But no one seems to respond to it."); */ // TODO DE
 	    return;
 	}
 
@@ -356,15 +356,14 @@ register boolean nearshop;
 	    if (nearshop) {
 		/* Create swarm around you, if you merely "stepped out" */
 		if (flags.verbose)
-		    pline_The("NOUN_KEYSTONE_KOPs VERB_APPEAR!");
+		    pline_The("NOUN_KEYSTONE_KOPs VERB_APPEAR!"); /* EN pline_The("Keystone Kops appear!"); */
 		mm.x = u.ux;
 		mm.y = u.uy;
 		makekops(&mm);
 		return;
 	    }
 	    if (flags.verbose)
-		 pline_The("NOUN_GENDARMERIE VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!");
-		 //pline_The("Keystone Kops are after you!");
+		 pline_The("NOUN_GENDARMERIE VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!"); /* EN pline_The("Keystone Kops are after you!"); */
 	    /* Create swarm near down staircase (hinders return to level) */
 	    mm.x = xdnstair;
 	    mm.y = ydnstair;
@@ -424,8 +423,8 @@ boolean newlev;
 	     * Try to intimidate him into paying his bill
 	     */
 	    verbalize(NOTANGRY(shkp) ?
-		      "%s!  Please pay before leaving." :
-		      "%s!  Don't you leave without paying!",
+		      "%s!  Please pay before leaving." : /* EN "%s!  Please pay before leaving." : */ // TODO DE
+		      "%s!  Don't you leave without paying!", /* EN "%s!  Don't you leave without paying!", */ // TODO DE
 		      plname);
 	    return;
 	}
@@ -477,11 +476,11 @@ struct monst *shkp;
 	eshkp = ESHK(shkp);
 	total = (addupbill(shkp) + eshkp->debit);
 	if (eshkp->credit >= total) {
-	    Your("credit of %ld %s is used to cover your shopping bill.",
+	    Your("credit of %ld %s is used to cover your shopping bill.", /* EN Your("credit of %ld %s is used to cover your shopping bill.", */ // TODO DE
 		 eshkp->credit, currency(eshkp->credit));
 	    total = 0L;		/* credit gets cleared by setpaid() */
 	} else {
-	    You("escaped the shop without paying!");
+	    You("escaped the shop without paying!"); /* EN You("escaped the shop without paying!"); */ // TODO DE
 	    total -= eshkp->credit;
 	}
 	setpaid(shkp);
@@ -489,7 +488,7 @@ struct monst *shkp;
 
 	/* by this point, we know an actual robbery has taken place */
 	eshkp->robbed += total;
-	You("stole %ld %s worth of merchandise.",
+	You("stole %ld %s worth of merchandise.", /* EN You("stole %ld %s worth of merchandise.", */ // TODO DE
 	    total, currency(total));
 	if (!Role_if(PM_ROGUE))	/* stealing is unlawful */
 	    adjalign(-sgn(u.ualign.type));
@@ -506,7 +505,7 @@ register char *enterstring;
 	register int rt;
 	register struct monst *shkp;
 	register struct eshk *eshkp;
-	static const char no_shk[] = "This shop appears to be deserted.";
+	static const char no_shk[] = "This shop appears to be deserted."; /* EN static const char no_shk[] = "This shop appears to be deserted."; */ // TODO DE
 	static char empty_shops[5];
 
 	if(!*enterstring)
@@ -548,24 +547,24 @@ register char *enterstring;
 	    return;	/* no dialog */
 
 	if (Invis) {
-	    pline("%s senses your presence.", shkname(shkp));
-	    verbalize("Invisible customers are not welcome!");
+	    pline("%s senses your presence.", shkname(shkp)); /* EN pline("%s senses your presence.", shkname(shkp)); */ // TODO DE
+	    verbalize("Invisible customers are not welcome!"); /* EN verbalize("Invisible customers are not welcome!"); */ // TODO DE
 	    return;
 	}
 
 	rt = rooms[*enterstring - ROOMOFFSET].rtype;
 
 	if (ANGRY(shkp)) {
-	    verbalize("So, %s, you dare return to %s %s?!",
+	    verbalize("So, %s, you dare return to %s %s?!", /* EN verbalize("So, %s, you dare return to %s %s?!", */ // TODO DE
 		      plname,
 		      s_suffix(shkname(shkp)),
 		      shtypes[rt - SHOPBASE].name);
 	} else if (eshkp->robbed) {
-	    pline("%s mutters imprecations against shoplifters.", shkname(shkp));
+	    pline("%s mutters imprecations against shoplifters.", shkname(shkp)); /* EN pline("%s mutters imprecations against shoplifters.", shkname(shkp)); */ // TODO DE
 	} else {
-	    verbalize("%s, %s!  Welcome%s to %s %s!",
+	    verbalize("%s, %s!  Welcome%s to %s %s!", /* EN verbalize("%s, %s!  Welcome%s to %s %s!", */ // TODO DE
 		      Hello(shkp), plname,
-		      eshkp->visitct++ ? " again" : "",
+		      eshkp->visitct++ ? " again" : "", /* EN eshkp->visitct++ ? " again" : "", */ // TODO DE
 		      s_suffix(shkname(shkp)),
 		      shtypes[rt - SHOPBASE].name);
 	}
@@ -580,30 +579,30 @@ register char *enterstring;
 	    if (pick || mattock) {
 		cnt = 1;	/* so far */
 		if (pick && mattock) {	/* carrying both types */
-		    tool = "digging tool";
+		    tool = "digging tool"; /* EN tool = "digging tool"; */ // TODO DE
 		    cnt = 2;	/* `more than 1' is all that matters */
 		} else if (pick) {
-		    tool = "pick-axe";
+		    tool = "pick-axe"; /* EN tool = "pick-axe"; */ // TODO DE
 		    /* hack: `pick' already points somewhere into inventory */
 		    while ((pick = pick->nobj) != 0)
 			if (pick->otyp == PICK_AXE) ++cnt;
 		} else {	/* assert(mattock != 0) */
-		    tool = "mattock";
+		    tool = "mattock"; /* EN tool = "mattock"; */ // TODO DE
 		    while ((mattock = mattock->nobj) != 0)
 			if (mattock->otyp == DWARVISH_MATTOCK) ++cnt;
 		    /* [ALI] Shopkeeper identifies mattock(s) */
 		    if (!Blind) makeknown(DWARVISH_MATTOCK);
 		}
 		verbalize(NOTANGRY(shkp) ?
-			  "Will you please leave your %s%s outside?" :
-			  "Leave the %s%s outside.",
+			  "Will you please leave your %s%s outside?" : /* EN "Will you please leave your %s%s outside?" : */ // TODO DE
+			  "Leave the %s%s outside.", /* EN "Leave the %s%s outside.", */ // TODO DE
 			  tool, plur(cnt));
 		should_block = TRUE;
 #ifdef STEED
 	    } else if (u.usteed) {
 		verbalize(NOTANGRY(shkp) ?
-			  "Will you please leave %s outside?" :
-			  "Leave %s outside.", y_monnam(u.usteed));
+			  "Will you please leave %s outside?" : /* EN "Will you please leave %s outside?" : */ // TODO DE
+			  "Leave %s outside.", y_monnam(u.usteed)); /* EN "Leave %s outside.", y_monnam(u.usteed)); */ // TODO DE
 		should_block = TRUE;
 #endif
 	    } else {
@@ -676,7 +675,7 @@ shopper_financial_report()
 
 	if (this_shkp &&
 	    !(ESHK(this_shkp)->credit || shop_debt(ESHK(this_shkp)))) {
-	    You("have no credit or debt in here.");
+	    You("have no credit or debt in here."); /* EN You("have no credit or debt in here."); */ // TODO DE
 	    this_shkp = 0;	/* skip first pass */
 	}
 
@@ -688,16 +687,16 @@ shopper_financial_report()
 		if ((shkp != this_shkp) ^ pass) continue;
 		eshkp = ESHK(shkp);
 		if ((amt = eshkp->credit) != 0)
-		    You("have %ld %s credit at %s %s.",
+		    You("have %ld %s credit at %s %s.", /* EN You("have %ld %s credit at %s %s.", */ // TODO DE
 			amt, currency(amt), s_suffix(shkname(shkp)),
 			shtypes[eshkp->shoptype - SHOPBASE].name);
 		else if (shkp == this_shkp)
-		    You("have no credit in here.");
+		    You("have no credit in here."); /* EN You("have no credit in here."); */ // TODO DE
 		if ((amt = shop_debt(eshkp)) != 0)
-		    You("owe %s %ld %s.",
+		    You("owe %s %ld %s.", /* EN You("owe %s %ld %s.", */ // TODO DE
 			shkname(shkp), amt, currency(amt));
 		else if (shkp == this_shkp)
-		    You("don't owe any money here.");
+		    You("don't owe any money here."); /* EN You("don't owe any money here."); */ // TODO DE
 	    }
 }
 
@@ -846,11 +845,11 @@ register struct monst *shkp;
 
 	if(credit == 0L) return(tmp);
 	if(credit >= tmp) {
-		pline_The("price is deducted from your credit.");
+		pline_The("price is deducted from your credit."); /* EN pline_The("price is deducted from your credit."); */ // TODO DE
 		ESHK(shkp)->credit -=tmp;
 		tmp = 0L;
 	} else {
-		pline_The("price is partially covered by your credit.");
+		pline_The("price is partially covered by your credit."); /* EN pline_The("price is partially covered by your credit."); */ // TODO DE
 		ESHK(shkp)->credit = 0L;
 		tmp -= credit;
 	}
@@ -896,7 +895,7 @@ register boolean killkops;
 #ifdef KOPS
 		kops_gone(TRUE);
 #else
-		You_feel("vaguely apprehensive.");
+		You_feel("vaguely apprehensive."); /* EN You_feel("vaguely apprehensive."); */ // TODO DE
 #endif
 		pacify_guards();
 	}
@@ -962,7 +961,7 @@ boolean verbosely;
 	    /* greed induced recovery... */
 	    if (verbosely && canspotmon(shkp))
 		pline("%s %s.", Monnam(shkp),
-		      shkp->msleeping ? "wakes up" : "can move again");
+		      shkp->msleeping ? "wakes up" : "can move again"); /* EN shkp->msleeping ? "wakes up" : "can move again"); */ // TODO DE
 	    shkp->msleeping = 0;
 	    shkp->mfrozen = 0;
 	    shkp->mcanmove = 1;
@@ -999,9 +998,9 @@ register boolean silentkops;
 					 MIGR_APPROX_XY, &eshkp->shd);
 		}
 		if (vanished)
-		    pline("Satisfied, %s suddenly disappears!", shk_nam);
+		    pline("Satisfied, %s suddenly disappears!", shk_nam); /* EN pline("Satisfied, %s suddenly disappears!", shk_nam); */ // TODO DE
 	} else if(wasmad)
-		pline("%s calms down.", Monnam(shkp));
+		pline("%s calms down.", Monnam(shkp)); /* EN pline("%s calms down.", Monnam(shkp)); */ // TODO DE
 
 	if(!angry_shk_exists()) {
 #ifdef KOPS
@@ -1052,14 +1051,14 @@ register xchar ox,oy;
 	if (isok(ox, oy) && cansee(ox, oy) && !cansee(sx, sy))
 		shkp->mx = ox,  shkp->my = oy;
 	pline("%s %s!", Monnam(shkp),
-	      !ANGRY(shkp) ? "gets angry" : "is furious");
+	      !ANGRY(shkp) ? "gets angry" : "is furious"); /* EN !ANGRY(shkp) ? "gets angry" : "is furious"); */ // TODO DE
 	shkp->mx = sx,  shkp->my = sy;
 	hot_pursuit(shkp);
 }
 
-STATIC_VAR const char no_money[] = "Moreover, you%s have no money.";
+STATIC_VAR const char no_money[] = "Moreover, you%s have no money."; /* EN STATIC_VAR const char no_money[] = "Moreover, you%s have no money."; */ // TODO DE
 STATIC_VAR const char not_enough_money[] =
-			    "Besides, you don't have enough to interest %s.";
+			    "Besides, you don't have enough to interest %s."; /* EN "Besides, you don't have enough to interest %s."; */ // TODO DE
 
 #else
 STATIC_VAR const char no_money[];
@@ -1119,12 +1118,12 @@ dopay()
 	}
 
 	if ((!sk && (!Blind || Blind_telepat)) || (!Blind && !seensk)) {
-      There("appears to be no shopkeeper here to receive your payment.");
+      There("appears to be no shopkeeper here to receive your payment."); /* EN There("appears to be no shopkeeper here to receive your payment."); */ // TODO DE
 		return(0);
 	}
 
 	if(!seensk) {
-		You_cant("see...");
+		You_cant("see..."); /* EN You_cant("see..."); */ // TODO DE
 		return(0);
 	}
 
@@ -1140,7 +1139,7 @@ dopay()
 			shkp; shkp = next_shkp(shkp->nmon, FALSE))
 		    if (canspotmon(shkp)) break;
 		if (shkp != resident && distu(shkp->mx, shkp->my) > 2) {
-		    pline("%s is not near enough to receive your payment.",
+		    pline("%s is not near enough to receive your payment.", /* EN pline("%s is not near enough to receive your payment.", */ // TODO DE
 					     Monnam(shkp));
 		    return(0);
 		}
@@ -1149,33 +1148,33 @@ dopay()
 		coord cc;
 		int cx, cy;
 
-		pline("Pay whom?");
+		pline("Pay whom?"); /* EN pline("Pay whom?"); */ // TODO DE
 		cc.x = u.ux;
 		cc.y = u.uy;
-		if (getpos(&cc, TRUE, "the creature you want to pay") < 0)
+		if (getpos(&cc, TRUE, "the creature you want to pay") < 0) /* EN if (getpos(&cc, TRUE, "the creature you want to pay") < 0) */ // TODO DE
 		    return 0;	/* player pressed ESC */
 		cx = cc.x;
 		cy = cc.y;
 		if(cx < 0) {
-		     pline("Try again...");
+		     pline("Try again..."); /* EN pline("Try again..."); */ // TODO DE
 		     return(0);
 		}
 		if(u.ux == cx && u.uy == cy) {
-		     You("are generous to yourself.");
+		     You("are generous to yourself."); /* EN You("are generous to yourself."); */ // TODO DE
 		     return(0);
 		}
 		mtmp = m_at(cx, cy);
 		if(!mtmp) {
-		     There("is no one there to receive your payment.");
+		     There("is no one there to receive your payment."); /* EN There("is no one there to receive your payment."); */ // TODO DE
 		     return(0);
 		}
 		if(!mtmp->isshk) {
-		     pline("%s is not interested in your payment.",
+		     pline("%s is not interested in your payment.", /* EN pline("%s is not interested in your payment.", */ // TODO DE
 				    Monnam(mtmp));
 		     return(0);
 		}
 		if (mtmp != resident && distu(mtmp->mx, mtmp->my) > 2) {
-		     pline("%s is too far to receive your payment.",
+		     pline("%s is too far to receive your payment.", /* EN pline("%s is too far to receive your payment.", */ // TODO DE
 				    Monnam(mtmp));
 		     return(0);
 		}
@@ -1198,7 +1197,7 @@ proceed:
 
 	if (!shkp->mcanmove) {	    /* still asleep or paralyzed */
 		pline("%s %s.", Monnam(shkp),
-		      rn2(2) ? "seems to be napping" : "doesn't respond");
+		      rn2(2) ? "seems to be napping" : "doesn't respond"); /* EN rn2(2) ? "seems to be napping" : "doesn't respond"); */ // TODO DE
 		return 0;
 	}
 
@@ -1207,15 +1206,15 @@ proceed:
                 umoney = money_cnt(invent);
 #endif
 		if(!ltmp)
-		    You("do not owe %s anything.", mon_nam(shkp));
+		    You("do not owe %s anything.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */ // TODO DE
 #ifndef GOLDOBJ
 		else if(!u.ugold) {
 #else
 		else if(!umoney) {
 #endif
-		    You("%shave no money.", stashed_gold ? "seem to " : "");
+		    You("%shave no money.", stashed_gold ? "seem to " : ""); /* EN You("%shave no money.", stashed_gold ? "seem to " : ""); */ // TODO DE
 		    if(stashed_gold)
-			pline("But you have some gold stashed away.");
+			pline("But you have some gold stashed away."); /* EN pline("But you have some gold stashed away."); */ // TODO DE
 		} else {
 #ifndef GOLDOBJ
 		    long ugold = u.ugold;
@@ -1223,25 +1222,25 @@ proceed:
 #else
 		    if(umoney > ltmp) {
 #endif
-			You("give %s the %ld gold piece%s %s asked for.",
+			You("give %s the %ld gold piece%s %s asked for.", /* EN You("give %s the %ld gold piece%s %s asked for.", */ // TODO DE
 			    mon_nam(shkp), ltmp, plur(ltmp), mhe(shkp));
 			pay(ltmp, shkp);
 		    } else {
-			You("give %s all your%s gold.", mon_nam(shkp),
-					stashed_gold ? " openly kept" : "");
+			You("give %s all your%s gold.", mon_nam(shkp), /* EN You("give %s all your%s gold.", mon_nam(shkp), */ // TODO DE
+					stashed_gold ? " openly kept" : ""); /* EN stashed_gold ? " openly kept" : ""); */ // TODO DE
 #ifndef GOLDOBJ
 			pay(u.ugold, shkp);
 #else
 			pay(umoney, shkp);
 #endif
-			if (stashed_gold) pline("But you have hidden gold!");
+			if (stashed_gold) pline("But you have hidden gold!"); /* EN if (stashed_gold) pline("But you have hidden gold!"); */ // TODO DE
 		    }
 #ifndef GOLDOBJ
 		    if((ugold < ltmp/2L) || (ugold < ltmp && stashed_gold))
 #else
 		    if((umoney < ltmp/2L) || (umoney < ltmp && stashed_gold))
 #endif
-			pline("Unfortunately, %s doesn't look satisfied.",
+			pline("Unfortunately, %s doesn't look satisfied.", /* EN pline("Unfortunately, %s doesn't look satisfied.", */ // TODO DE
 			      mhe(shkp));
 		    else
 			make_happy_shk(shkp, FALSE);
@@ -1255,15 +1254,15 @@ proceed:
                 umoney = money_cnt(invent);
 #endif
 		if(!ltmp && NOTANGRY(shkp)) {
-		    You("do not owe %s anything.", mon_nam(shkp));
+		    You("do not owe %s anything.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */ // TODO DE
 #ifndef GOLDOBJ
 		    if (!u.ugold)
 #else
 		    if (!umoney)
 #endif
-			pline(no_money, stashed_gold ? " seem to" : "");
+			pline(no_money, stashed_gold ? " seem to" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */ // TODO DE
 		} else if(ltmp) {
-		    pline("%s is after blood, not money!", Monnam(shkp));
+		    pline("%s is after blood, not money!", Monnam(shkp)); /* EN pline("%s is after blood, not money!", Monnam(shkp)); */ // TODO DE
 #ifndef GOLDOBJ
 		    if(u.ugold < ltmp/2L ||
 				(u.ugold < ltmp && stashed_gold)) {
@@ -1273,19 +1272,19 @@ proceed:
 				(umoney < ltmp && stashed_gold)) {
 			if (!umoney)
 #endif
-			    pline(no_money, stashed_gold ? " seem to" : "");
+			    pline(no_money, stashed_gold ? " seem to" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */ // TODO DE
 			else pline(not_enough_money, mhim(shkp));
 			return(1);
 		    }
-		    pline("But since %s shop has been robbed recently,",
+		    pline("But since %s shop has been robbed recently,", /* EN pline("But since %s shop has been robbed recently,", */ // TODO DE
 			  mhis(shkp));
-		    pline("you %scompensate %s for %s losses.",
+		    pline("you %scompensate %s for %s losses.", /* EN pline("you %scompensate %s for %s losses.", */ // TODO DE
 #ifndef GOLDOBJ
 			  (u.ugold < ltmp) ? 
 #else
 			  (umoney < ltmp) ? 
 #endif
-			  "partially " : "",
+			  "partially " : "", /* EN "partially " : "", */ // TODO DE
 			  mon_nam(shkp), mhis(shkp));
 #ifndef GOLDOBJ
 		    pay(u.ugold < ltmp ? u.ugold : ltmp, shkp);
@@ -1296,7 +1295,7 @@ proceed:
 		} else {
 		    /* shopkeeper is angry, but has not been robbed --
 		     * door broken, attacked, etc. */
-		    pline("%s is after your hide, not your money!",
+		    pline("%s is after your hide, not your money!", /* EN pline("%s is after your hide, not your money!", */ // TODO DE
 			  Monnam(shkp));
 #ifndef GOLDOBJ
 		    if(u.ugold < 1000L) {
@@ -1305,18 +1304,18 @@ proceed:
 		    if(umoney < 1000L) {
 			if (!umoney)
 #endif
-			    pline(no_money, stashed_gold ? " seem to" : "");
+			    pline(no_money, stashed_gold ? " seem to" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */ // TODO DE
 			else pline(not_enough_money, mhim(shkp));
 			return(1);
 		    }
-		    You("try to appease %s by giving %s 1000 gold pieces.",
+		    You("try to appease %s by giving %s 1000 gold pieces.", /* EN You("try to appease %s by giving %s 1000 gold pieces.", */ // TODO DE
 			x_monnam(shkp, ARTICLE_THE, "angry", 0, FALSE),
 			mhim(shkp));
 		    pay(1000L,shkp);
 		    if (strncmp(eshkp->customer, plname, PL_NSIZ) || rn2(3))
 			make_happy_shk(shkp, FALSE);
 		    else
-			pline("But %s is as angry as ever.", mon_nam(shkp));
+			pline("But %s is as angry as ever.", mon_nam(shkp)); /* EN pline("But %s is as angry as ever.", mon_nam(shkp)); */ // TODO DE
 		}
 		return(1);
 	}
@@ -1333,30 +1332,30 @@ proceed:
 #ifdef GOLDOBJ
                 umoney = money_cnt(invent);
 #endif
-		Sprintf(sbuf, "You owe %s %ld %s ",
+		Sprintf(sbuf, "You owe %s %ld %s ", /* EN Sprintf(sbuf, "You owe %s %ld %s ", */ // TODO DE
 					   shkname(shkp), dtmp, currency(dtmp));
 		if(loan) {
 		    if(loan == dtmp)
-			Strcat(sbuf, "you picked up in the store.");
+			Strcat(sbuf, "you picked up in the store."); /* EN Strcat(sbuf, "you picked up in the store."); */ // TODO DE
 		    else Strcat(sbuf,
-			   "for gold picked up and the use of merchandise.");
-		} else Strcat(sbuf, "for the use of merchandise.");
+			   "for gold picked up and the use of merchandise."); /* EN "for gold picked up and the use of merchandise."); */ // TODO DE
+		} else Strcat(sbuf, "for the use of merchandise."); /* EN } else Strcat(sbuf, "for the use of merchandise."); */ // TODO DE
 		pline(sbuf);
 #ifndef GOLDOBJ
 		if (u.ugold + eshkp->credit < dtmp) {
 #else
 		if (umoney + eshkp->credit < dtmp) {
 #endif
-		    pline("But you don't%s have enough gold%s.",
-			stashed_gold ? " seem to" : "",
-			eshkp->credit ? " or credit" : "");
+		    pline("But you don't%s have enough gold%s.", /* EN pline("But you don't%s have enough gold%s.", */ // TODO DE
+			stashed_gold ? " seem to" : "", /* EN stashed_gold ? " seem to" : "", */ // TODO DE
+			eshkp->credit ? " or credit" : ""); /* EN eshkp->credit ? " or credit" : ""); */ // TODO DE
 		    return(1);
 		} else {
 		    if (eshkp->credit >= dtmp) {
 			eshkp->credit -= dtmp;
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			Your("debt is covered by your credit.");
+			Your("debt is covered by your credit."); /* EN Your("debt is covered by your credit."); */ // TODO DE
 		    } else if (!eshkp->credit) {
 #ifndef GOLDOBJ
 			u.ugold -= dtmp;
@@ -1366,7 +1365,7 @@ proceed:
 #endif
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			You("pay that debt.");
+			You("pay that debt."); /* EN You("pay that debt."); */ // TODO DE
 			flags.botl = 1;
 		    } else {
 			dtmp -= eshkp->credit;
@@ -1379,8 +1378,8 @@ proceed:
 #endif
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			pline("That debt is partially offset by your credit.");
-			You("pay the remainder.");
+			pline("That debt is partially offset by your credit."); /* EN pline("That debt is partially offset by your credit."); */ // TODO DE
+			You("pay the remainder."); /* EN You("pay the remainder."); */ // TODO DE
 			flags.botl = 1;
 		    }
 		    paid = TRUE;
@@ -1395,9 +1394,9 @@ proceed:
             umoney = money_cnt(invent);
 	    if (!umoney && !eshkp->credit) {
 #endif
-		You("%shave no money or credit%s.",
-				    stashed_gold ? "seem to " : "",
-				    paid ? " left" : "");
+		You("%shave no money or credit%s.", /* EN You("%shave no money or credit%s.", */ // TODO DE
+				    stashed_gold ? "seem to " : "", /* EN stashed_gold ? "seem to " : "", */ // TODO DE
+				    paid ? " left" : ""); /* EN paid ? " left" : ""); */ // TODO DE
 		return(0);
 	    }
 #ifndef GOLDOBJ
@@ -1405,16 +1404,16 @@ proceed:
 #else
 	    if ((umoney + eshkp->credit) < cheapest_item(shkp)) {
 #endif
-		You("don't have enough money to buy%s the item%s you picked.",
-		    eshkp->billct > 1 ? " any of" : "", plur(eshkp->billct));
+		You("don't have enough money to buy%s the item%s you picked.", /* EN You("don't have enough money to buy%s the item%s you picked.", */ // TODO DE
+		    eshkp->billct > 1 ? " any of" : "", plur(eshkp->billct)); /* EN eshkp->billct > 1 ? " any of" : "", plur(eshkp->billct)); */ // TODO DE
 		if(stashed_gold)
-		    pline("Maybe you have some gold stashed away?");
+		    pline("Maybe you have some gold stashed away?"); /* EN pline("Maybe you have some gold stashed away?"); */ // TODO DE
 		return(0);
 	    }
 
 	    /* this isn't quite right; it itemizes without asking if the
 	     * single item on the bill is partly used up and partly unpaid */
-	    itemize = (eshkp->billct > 1 ? yn("Itemized billing?") == 'y' : 1);
+	    itemize = (eshkp->billct > 1 ? yn("Itemized billing?") == 'y' : 1); /* EN itemize = (eshkp->billct > 1 ? yn("Itemized billing?") == 'y' : 1); */ // TODO DE
 
 	    for (pass = 0; pass <= 1; pass++) {
 		tmp = 0;
@@ -1467,7 +1466,7 @@ proceed:
 	        update_inventory(); /* Done in dopayobj() if itemize. */
 	}
 	if(!ANGRY(shkp) && paid)
-	    verbalize("Thank you for shopping in %s %s!",
+	    verbalize("Thank you for shopping in %s %s!", /* EN verbalize("Thank you for shopping in %s %s!", */ // TODO DE
 		s_suffix(shkname(shkp)),
 		shtypes[eshkp->shoptype - SHOPBASE].name);
 	return(1);
@@ -1506,8 +1505,8 @@ boolean itemize;
 #else
 	if(itemize && umoney + ESHK(shkp)->credit == 0L){
 #endif
-		You("%shave no money or credit left.",
-			     stashed_gold ? "seem to " : "");
+		You("%shave no money or credit left.", /* EN You("%shave no money or credit left.", */ // TODO DE
+			     stashed_gold ? "seem to " : ""); /* EN stashed_gold ? "seem to " : ""); */ // TODO DE
 		return PAY_BROKE;
 	}
 	/* we may need to temporarily adjust the object, if part of the
@@ -1529,15 +1528,15 @@ boolean itemize;
 
 	if (itemize) {
 	    char qbuf[BUFSZ];
-	    Sprintf(qbuf,"%s for %ld %s.  Pay?", quan == 1L ?
+	    Sprintf(qbuf,"%s for %ld %s.  Pay?", quan == 1L ?  /* EN Sprintf(qbuf,"%s for %ld %s.  Pay?", quan == 1L ? */ // TODO DE
 		    Doname2(obj) : doname(obj), ltmp, currency(ltmp));
 	    if (yn(qbuf) == 'n') {
 		buy = PAY_SKIP;		/* don't want to buy */
 	    } else if (quan < bp->bquan && !consumed) { /* partly used goods */
 		obj->quan = bp->bquan - save_quan;	/* used up amount */
-		verbalize("%s for the other %s before buying %s.",
-			  ANGRY(shkp) ? "Pay" : "Please pay", xname(obj),
-			  save_quan > 1L ? "these" : "this one");
+		verbalize("%s for the other %s before buying %s.", /* EN verbalize("%s for the other %s before buying %s.", */ // TODO DE
+			  ANGRY(shkp) ? "Pay" : "Please pay", xname(obj), /* EN ANGRY(shkp) ? "Pay" : "Please pay", xname(obj), */ // TODO DE
+			  save_quan > 1L ? "these" : "this one"); /* EN save_quan > 1L ? "these" : "this one"); */ // TODO DE
 		buy = PAY_SKIP;		/* shk won't sell */
 	    }
 	}
@@ -1546,9 +1545,9 @@ boolean itemize;
 #else
 	if (buy == PAY_BUY && umoney + ESHK(shkp)->credit < ltmp) {
 #endif
-	    You("don't%s have gold%s enough to pay for %s.",
-		stashed_gold ? " seem to" : "",
-		(ESHK(shkp)->credit > 0L) ? " or credit" : "",
+	    You("don't%s have gold%s enough to pay for %s.", /* EN You("don't%s have gold%s enough to pay for %s.", */ // TODO DE
+		stashed_gold ? " seem to" : "", /* EN stashed_gold ? " seem to" : "", */ // TODO DE
+		(ESHK(shkp)->credit > 0L) ? " or credit" : "", /* EN (ESHK(shkp)->credit > 0L) ? " or credit" : "", */ // TODO DE
 		doname(obj));
 	    buy = itemize ? PAY_SKIP : PAY_CANT;
 	}
@@ -1562,8 +1561,8 @@ boolean itemize;
 
 	pay(ltmp, shkp);
 	shk_names_obj(shkp, obj, consumed ?
-			"paid for %s at a cost of %ld gold piece%s.%s" :
-			"bought %s for %ld gold piece%s.%s", ltmp, "");
+			"paid for %s at a cost of %ld gold piece%s.%s" : /* EN "paid for %s at a cost of %ld gold piece%s.%s" : */ // TODO DE
+			"bought %s for %ld gold piece%s.%s", ltmp, ""); /* EN "bought %s for %ld gold piece%s.%s", ltmp, ""); */ // TODO DE
 	obj->quan = save_quan;		/* restore original count */
 	/* quan => amount just bought, save_quan => remaining unpaid count */
 	if (consumed) {
@@ -1647,12 +1646,12 @@ int croaked;
 	/* already took everything you had.		*/
 	if (numsk > 1) {
 	    if (cansee(shkp->mx, shkp->my && croaked))
-		pline("%s %slooks at your corpse%s and %s.",
+		pline("%s %slooks at your corpse%s and %s.", /* EN pline("%s %slooks at your corpse%s and %s.", */ // TODO DE
 		      Monnam(shkp),
-		      !shkp->mcanmove ? "wakes up, " : "",
-		      !rn2(2) ? (shkp->female ? ", shakes her head," :
-			   ", shakes his head,") : "",
-		      !inhishop(shkp) ? "disappears" : "sighs");
+		      !shkp->mcanmove ? "wakes up, " : "", /* EN !shkp->mcanmove ? "wakes up, " : "", */ // TODO DE
+		      !rn2(2) ? (shkp->female ? ", shakes her head," : /* EN !rn2(2) ? (shkp->female ? ", shakes her head," : */ // TODO DE
+			   ", shakes his head,") : "", /* EN ", shakes his head,") : "", */ // TODO DE
+		      !inhishop(shkp) ? "disappears" : "sighs"); /* EN !inhishop(shkp) ? "disappears" : "sighs"); */ // TODO DE
 	    rouse_shk(shkp, FALSE);	/* wake shk for bones */    
 	    taken = (roomno == eshkp->shoproom);
 	    goto skip;
@@ -1664,7 +1663,7 @@ int croaked;
 	    !eshkp->billct && !eshkp->robbed && !eshkp->debit &&
 	     NOTANGRY(shkp) && !eshkp->following) {
 		if (invent)
-			pline("%s gratefully inherits all your possessions.",
+			pline("%s gratefully inherits all your possessions.", /* EN pline("%s gratefully inherits all your possessions.", */ // TODO DE
 				shkname(shkp));
 		set_repo_loc(eshkp);
 		goto clear;
@@ -1686,10 +1685,10 @@ int croaked;
 #endif
 		takes[0] = '\0';
 		if (!shkp->mcanmove)
-			Strcat(takes, "wakes up and ");
+			Strcat(takes, "wakes up and "); /* EN Strcat(takes, "wakes up and "); */ // TODO DE
 		if (distu(shkp->mx, shkp->my) > 2)
-			Strcat(takes, "comes and ");
-		Strcat(takes, "takes");
+			Strcat(takes, "comes and "); /* EN Strcat(takes, "comes and "); */ // TODO DE
+		Strcat(takes, "takes"); /* EN Strcat(takes, "takes"); */ // TODO DE
 
 #ifndef GOLDOBJ
 		if (loss > u.ugold || !loss || roomno == eshkp->shoproom) {
@@ -1704,7 +1703,7 @@ int croaked;
                         if (umoney > 0) money2mon(shkp, umoney);
 #endif
 			flags.botl = 1;
-			pline("%s %s all your possessions.",
+			pline("%s %s all your possessions.", /* EN pline("%s %s all your possessions.", */ // TODO DE
 			      shkname(shkp), takes);
 			taken = TRUE;
 			/* where to put player's invent (after disclosure) */
@@ -1717,12 +1716,12 @@ int croaked;
                         money2mon(shkp, loss);
 #endif
 			flags.botl = 1;
-			pline("%s %s the %ld %s %sowed %s.",
+			pline("%s %s the %ld %s %sowed %s.", /* EN pline("%s %s the %ld %s %sowed %s.", */ // TODO DE
 			      Monnam(shkp), takes,
 			      loss, currency(loss),
 			      strncmp(eshkp->customer, plname, PL_NSIZ) ?
-					"" : "you ",
-			      shkp->female ? "her" : "him");
+					"" : "you ", /* EN "" : "you ", */ // TODO DE
+			      shkp->female ? "her" : "him"); /* EN shkp->female ? "her" : "him"); */ // TODO DE
 			/* shopkeeper has now been paid in full */
 			pacify_shk(shkp);
 			eshkp->following = 0;
@@ -2087,7 +2086,7 @@ register boolean dummy;
 		return;
 
 	if (ESHK(shkp)->billct == BILLSZ) {
-		You("got that for free!");
+		You("got that for free!"); /* EN You("got that for free!"); */ // TODO DE
 		return;
 	}
 
@@ -2173,9 +2172,9 @@ const char *arg;
 	obj_name = doname(obj);
 	/* Use an alternate message when extra information is being provided */
 	if (was_unknown) {
-	    Sprintf(fmtbuf, "%%s; you %s", fmt);
+	    Sprintf(fmtbuf, "%%s; you %s", fmt); /* EN Sprintf(fmtbuf, "%%s; you %s", fmt); */ // TODO DE
 	    obj_name[0] = highc(obj_name[0]);
-	    pline(fmtbuf, obj_name, (obj->quan > 1) ? "them" : "it",
+	    pline(fmtbuf, obj_name, (obj->quan > 1) ? "them" : "it", /* EN pline(fmtbuf, obj_name, (obj->quan > 1) ? "them" : "it", */ // TODO DE
 		  amt, plur(amt), arg);
 	} else {
 	    You(fmt, obj_name, amt, plur(amt), arg);
@@ -2204,7 +2203,7 @@ register boolean ininv, dummy, silent;
 	      ) return;
 
 	if(ESHK(shkp)->billct == BILLSZ) {
-		You("got that for free!");
+		You("got that for free!"); /* EN You("got that for free!"); */ // TODO DE
 		return;
 	}
 
@@ -2256,37 +2255,37 @@ speak:
 	    char buf[BUFSZ];
 
 	    if(!ltmp) {
-		pline("%s has no interest in %s.", Monnam(shkp),
+		pline("%s has no interest in %s.", Monnam(shkp), /* EN pline("%s has no interest in %s.", Monnam(shkp), */ // TODO DE
 					     the(xname(obj)));
 		return;
 	    }
-	    Strcpy(buf, "\"For you, ");
-	    if (ANGRY(shkp)) Strcat(buf, "scum ");
+	    Strcpy(buf, "\"For you, "); /* EN Strcpy(buf, "\"For you, "); */ // TODO DE
+	    if (ANGRY(shkp)) Strcat(buf, "scum "); /* EN if (ANGRY(shkp)) Strcat(buf, "scum "); */ // TODO DE
 	    else {
 		static const char *honored[5] = {
-		  "good", "honored", "most gracious", "esteemed",
-		  "most renowned and sacred"
+		  "good", "honored", "most gracious", "esteemed", /* EN "good", "honored", "most gracious", "esteemed", */ // TODO DE
+		  "most renowned and sacred" /* EN "most renowned and sacred" */ // TODO DE
 		};
 		Strcat(buf, honored[rn2(4) + u.uevent.udemigod]);
-		if (!is_human(youmonst.data)) Strcat(buf, " creature");
+		if (!is_human(youmonst.data)) Strcat(buf, " creature"); /* EN if (!is_human(youmonst.data)) Strcat(buf, " creature"); */ // TODO DE
 		else
-		    Strcat(buf, (flags.female) ? " lady" : " sir");
+		    Strcat(buf, (flags.female) ? " lady" : " sir"); /* EN Strcat(buf, (flags.female) ? " lady" : " sir"); */ // TODO DE
 	    }
 	    if(ininv) {
 		long quan = obj->quan;
 		obj->quan = 1L; /* fool xname() into giving singular */
-		pline("%s; only %ld %s %s.\"", buf, ltmp,
+		pline("%s; only %ld %s %s.\"", buf, ltmp, /* EN pline("%s; only %ld %s %s.\"", buf, ltmp, */ // TODO DE
 			(quan > 1L) ? "per" : "for this", xname(obj));
 		obj->quan = quan;
 	    } else
-		pline("%s will cost you %ld %s%s.",
+		pline("%s will cost you %ld %s%s.", /* EN pline("%s will cost you %ld %s%s.", */
 			The(xname(obj)), ltmp, currency(ltmp),
-			(obj->quan > 1L) ? " each" : "");
+			(obj->quan > 1L) ? " each" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */ // TODO DE
 	} else if(!silent) {
-	    if(ltmp) pline_The("list price of %s is %ld %s%s.",
+	    if(ltmp) pline_The("list price of %s is %ld %s%s.", /* EN if(ltmp) pline_The("list price of %s is %ld %s%s.", */ // TODO DE
 				   the(xname(obj)), ltmp, currency(ltmp),
-				   (obj->quan > 1L) ? " each" : "");
-	    else pline("%s does not notice.", Monnam(shkp));
+				   (obj->quan > 1L) ? " each" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */ // TODO DE
+	    else pline("%s does not notice.", Monnam(shkp)); /* EN else pline("%s does not notice.", Monnam(shkp)); */ // TODO DE
 	}
 }
 
@@ -2479,31 +2478,31 @@ register boolean peaceful, silent;
 
 		if (credit_use) {
 		    if (ESHK(shkp)->credit) {
-			You("have %ld %s credit remaining.",
+			You("have %ld %s credit remaining.", /* EN You("have %ld %s credit remaining.", */ // TODO DE
 				 ESHK(shkp)->credit, currency(ESHK(shkp)->credit));
 			return value;
 		    } else if (!value) {
-			You("have no credit remaining.");
+			You("have no credit remaining."); /* EN You("have no credit remaining."); */ // TODO DE
 			return 0;
 		    }
 		    still = "still ";
 		}
 		if(obj->oclass == COIN_CLASS)
-		    You("%sowe %s %ld %s!", still,
+		    You("%sowe %s %ld %s!", still, /* EN You("%sowe %s %ld %s!", still, */ // TODO DE
 			mon_nam(shkp), value, currency(value));
 		else
-		    You("%sowe %s %ld %s for %s!", still,
+		    You("%sowe %s %ld %s for %s!", still, /* EN You("%sowe %s %ld %s for %s!", still, */ // TODO DE
 			mon_nam(shkp), value, currency(value),
-			obj->quan > 1L ? "them" : "it");
+			obj->quan > 1L ? "them" : "it"); /* EN obj->quan > 1L ? "them" : "it"); */ // TODO DE
 	    }
 	} else {
 	    ESHK(shkp)->robbed += value;
 
 	    if(!silent) {
 		if(cansee(shkp->mx, shkp->my)) {
-		    Norep("%s booms: \"%s, you are a thief!\"",
+		    Norep("%s booms: \"%s, you are a thief!\"", /* EN Norep("%s booms: \"%s, you are a thief!\"", */ // TODO DE
 				Monnam(shkp), plname);
-		} else  Norep("You hear a scream, \"Thief!\"");
+		} else  Norep("You hear a scream, \"Thief!\""); /* EN } else  Norep("You hear a scream, \"Thief!\""); */ // TODO DE
 	    }
 	    hot_pursuit(shkp);
 	    (void) angry_guards(FALSE);
@@ -2528,7 +2527,7 @@ int deliberate;
 	   This retains the old pre-query risk that slippery fingers while in
 	   shops entailed:  you drop it, you've lost it.
 	 */
-	sell_response = (deliberate != SELL_NORMAL) ? '\0' : 'a';
+	sell_response = (deliberate != SELL_NORMAL) ? '\0' : 'a'; /* EN sell_response = (deliberate != SELL_NORMAL) ? '\0' : 'a'; */ // TODO DE
 	sell_how = deliberate;
 	auto_credit = FALSE;
 }
@@ -2583,7 +2582,7 @@ xchar x, y;
 		} else obj->no_charge = 1;
 
 		if(!unpaid && (sell_how != SELL_DONTSELL))
-		    pline("%s seems uninterested.", Monnam(shkp));
+		    pline("%s seems uninterested.", Monnam(shkp)); /* EN pline("%s seems uninterested.", Monnam(shkp)); */ // TODO DE
 		return;
 	}
 
@@ -2592,7 +2591,7 @@ xchar x, y;
 	eshkp = ESHK(shkp);
 
 	if (ANGRY(shkp)) { /* they become shop-objects, no pay */
-		pline("Thank you, scum!");
+		pline("Thank you, scum!"); /* EN pline("Thank you, scum!"); */ // TODO DE
 		subfrombill(obj, shkp);
 		return;
 	}
@@ -2603,7 +2602,7 @@ xchar x, y;
 		if((eshkp->robbed -= offer < 0L))
 			eshkp->robbed = 0L;
 		if(offer) verbalize(
-  "Thank you for your contribution to restock this recently plundered shop.");
+  "Thank you for your contribution to restock this recently plundered shop."); /* EN "Thank you for your contribution to restock this recently plundered shop."); */ // TODO DE
 		subfrombill(obj, shkp);
 		return;
 	}
@@ -2618,8 +2617,8 @@ xchar x, y;
 			 else eshkp->loan = 0L;
 		    }
 		    eshkp->debit -= gltmp;
-		    Your("debt is %spaid off.",
-				eshkp->debit ? "partially " : "");
+		    Your("debt is %spaid off.", /* EN Your("debt is %spaid off.", */ // TODO DE
+				eshkp->debit ? "partially " : ""); /* EN eshkp->debit ? "partially " : ""); */ // TODO DE
 		} else {
 		    long delta = gltmp - eshkp->debit;
 
@@ -2627,9 +2626,9 @@ xchar x, y;
 		    if(eshkp->debit) {
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			Your("debt is paid off.");
+			Your("debt is paid off."); /* EN Your("debt is paid off."); */ // TODO DE
 		    }
-		    pline("%ld %s %s added to your credit.",
+		    pline("%ld %s %s added to your credit.", /* EN pline("%ld %s %s added to your credit.", */ // TODO DE
 				delta, currency(delta), delta > 1L ? "are" : "is");
 		}
 		if(offer) goto move_on;
@@ -2651,8 +2650,8 @@ move_on:
 	   || (obj->oclass == FOOD_CLASS && obj->oeaten)
 	   || (Is_candle(obj) &&
 		   obj->age < 20L * (long)objects[obj->otyp].oc_cost)) {
-		pline("%s seems uninterested%s.", Monnam(shkp),
-			cgold ? " in the rest" : "");
+		pline("%s seems uninterested%s.", Monnam(shkp), /* EN pline("%s seems uninterested%s.", Monnam(shkp), */ // TODO DE
+			cgold ? " in the rest" : ""); /* EN cgold ? " in the rest" : ""); */ // TODO DE
 		if (container)
 		    dropped_container(obj, shkp, FALSE);
 		obj->no_charge = 1;
@@ -2670,9 +2669,9 @@ move_on:
 		if (sell_how == SELL_NORMAL || auto_credit) {
 		    c = sell_response = 'y';
 		} else if (sell_response != 'n') {
-		    pline("%s cannot pay you at present.", Monnam(shkp));
+		    pline("%s cannot pay you at present.", Monnam(shkp)); /* EN pline("%s cannot pay you at present.", Monnam(shkp)); */ // TODO DE
 		    Sprintf(qbuf,
-			    "Will you accept %ld %s in credit for %s?",
+			    "Will you accept %ld %s in credit for %s?", /* EN "Will you accept %ld %s in credit for %s?", */ // TODO DE
 			    tmpcr, currency(tmpcr), doname(obj));
 		    /* won't accept 'a' response here */
 		    /* KLY - 3/2000 yes, we will, it's a damn nuisance
@@ -2687,10 +2686,10 @@ move_on:
 
 		if (c == 'y') {
 		    shk_names_obj(shkp, obj, (sell_how != SELL_NORMAL) ?
-			    "traded %s for %ld zorkmid%s in %scredit." :
-			"relinquish %s and acquire %ld zorkmid%s in %scredit.",
+			    "traded %s for %ld zorkmid%s in %scredit." : /* EN "traded %s for %ld zorkmid%s in %scredit." : */ // TODO DE
+			"relinquish %s and acquire %ld zorkmid%s in %scredit.", /* EN "relinquish %s and acquire %ld zorkmid%s in %scredit.", */ // TODO DE
 			    tmpcr,
-			    (eshkp->credit > 0L) ? "additional " : "");
+			    (eshkp->credit > 0L) ? "additional " : ""); /* EN (eshkp->credit > 0L) ? "additional " : ""); */ // TODO DE
 		    eshkp->credit += tmpcr;
 		    subfrombill(obj, shkp);
 		} else {
@@ -2715,12 +2714,12 @@ move_on:
 			(contained_cost(obj, shkp, 0L, FALSE, FALSE) !=
 			 contained_cost(obj, shkp, 0L, FALSE, TRUE));
 		    Sprintf(qbuf,
-			 "%s offers%s %ld gold piece%s for%s %s %s.  Sell %s?",
-			    Monnam(shkp), short_funds ? " only" : "",
+			 "%s offers%s %ld gold piece%s for%s %s %s.  Sell %s?", /* EN "%s offers%s %ld gold piece%s for%s %s %s.  Sell %s?", */ // TODO DE
+			    Monnam(shkp), short_funds ? " only" : "", /* EN Monnam(shkp), short_funds ? " only" : "", */ // TODO DE
 			    offer, plur(offer),
 			    (!ltmp && cltmp && only_partially_your_contents) ?
-			     " your items in" : (!ltmp && cltmp) ? " the contents of" : "",
-			    obj->unpaid ? "the" : "your", cxname(obj),
+			     " your items in" : (!ltmp && cltmp) ? " the contents of" : "", /* EN " your items in" : (!ltmp && cltmp) ? " the contents of" : "", */ // TODO DE
+			    obj->unpaid ? "the" : "your", cxname(obj), /* EN obj->unpaid ? "the" : "your", cxname(obj), */ // TODO DE
 			    (obj->quan == 1L &&
 			    !(!ltmp && cltmp && only_partially_your_contents)) ?
 			    "it" : "them");
@@ -2741,9 +2740,9 @@ move_on:
 			    pay(-offer, shkp);
 			    shk_names_obj(shkp, obj, (sell_how != SELL_NORMAL) ?
 				    (!ltmp && cltmp && only_partially_your_contents) ?
-			    	    "sold some items inside %s for %ld gold pieces%s.%s" :
-				    "sold %s for %ld gold piece%s.%s" :
-	       "relinquish %s and receive %ld gold piece%s in compensation.%s",
+			    	    "sold some items inside %s for %ld gold pieces%s.%s" : /* EN "sold some items inside %s for %ld gold pieces%s.%s" : */ // TODO DE
+				    "sold %s for %ld gold piece%s.%s" : /* EN "sold %s for %ld gold piece%s.%s" : */ // TODO DE
+	       "relinquish %s and receive %ld gold piece%s in compensation.%s", /* EN "relinquish %s and receive %ld gold piece%s in compensation.%s", */ // TODO DE
 				    offer, "");
 			    break;
 		 default:   impossible("invalid sell response");
@@ -2787,7 +2786,7 @@ int mode;		/* 0: deliver count 1: paged */
 	}
 
 	datawin = create_nhwindow(NHW_MENU);
-	putstr(datawin, 0, "Unpaid articles already used up:");
+	putstr(datawin, 0, "Unpaid articles already used up:"); /* EN putstr(datawin, 0, "Unpaid articles already used up:"); */ // TODO DE
 	putstr(datawin, 0, "");
 
 	totused = 0L;
@@ -2824,11 +2823,11 @@ int mode;		/* 0: deliver count 1: paged */
 	    if (totused) putstr(datawin, 0, "");
 	    totused += eshkp->debit;
 	    buf_p = xprname((struct obj *)0,
-			    "usage charges and/or other fees",
+			    "usage charges and/or other fees", /* EN "usage charges and/or other fees", */ // TODO DE
 			    GOLD_SYM, FALSE, eshkp->debit, 0L);
 	    putstr(datawin, 0, buf_p);
 	}
-	buf_p = xprname((struct obj *)0, "Total:", '*', FALSE, totused, 0L);
+	buf_p = xprname((struct obj *)0, "Total:", '*', FALSE, totused, 0L); /* EN buf_p = xprname((struct obj *)0, "Total:", '*', FALSE, totused, 0L); */ // TODO DE
 	putstr(datawin, 0, "");
 	putstr(datawin, 0, buf_p);
 	display_nhwindow(datawin, FALSE);
@@ -2893,11 +2892,11 @@ register xchar x, y;
 	    /* if it is the shk's pos, you hit and anger him */
 	    (shkp->mx != x || shkp->my != y)) {
 		if (mnearto(shkp, x, y, TRUE))
-		    verbalize("Out of my way, scum!");
+		    verbalize("Out of my way, scum!"); /* EN verbalize("Out of my way, scum!"); */ // TODO DE
 		if (cansee(x, y)) {
-		    pline("%s nimbly%s catches %s.",
+		    pline("%s nimbly%s catches %s.", /* EN pline("%s nimbly%s catches %s.", */ // TODO DE
 			  Monnam(shkp),
-			  (x == shkp->mx && y == shkp->my) ? "" : " reaches over and",
+			  (x == shkp->mx && y == shkp->my) ? "" : " reaches over and", /* EN (x == shkp->mx && y == shkp->my) ? "" : " reaches over and", */ // TODO DE
 			  the(xname(obj)));
 		    if (!canspotmon(shkp))
 			map_invisible(x, y);
@@ -3026,25 +3025,25 @@ register boolean croaked;
 	if (!did_repair)
 	    return;
 	if (saw_walls) {
-	    pline("Suddenly, %s section%s of wall close%s up!",
-		  (saw_walls == 1) ? "a" : (saw_walls <= 3) ?
-						  "some" : "several",
-		  (saw_walls == 1) ? "" : "s", (saw_walls == 1) ? "s" : "");
+	    pline("Suddenly, %s section%s of wall close%s up!", /* EN pline("Suddenly, %s section%s of wall close%s up!", */ // TODO DE
+		  (saw_walls == 1) ? "a" : (saw_walls <= 3) ?  /* EN (saw_walls == 1) ? "a" : (saw_walls <= 3) ? */ // TODO DE
+						  "some" : "several", /* EN "some" : "several", */ // TODO DE
+		  (saw_walls == 1) ? "" : "s", (saw_walls == 1) ? "s" : ""); /* EN (saw_walls == 1) ? "" : "s", (saw_walls == 1) ? "s" : ""); */ // TODO DE
 	    if (saw_door)
-		pline_The("shop door reappears!");
+		pline_The("shop door reappears!"); /* EN pline_The("shop door reappears!"); */ // TODO DE
 	    if (saw_floor)
-		pline_The("floor is repaired!");
+		pline_The("floor is repaired!"); /* EN pline_The("floor is repaired!"); */ // TODO DE
 	} else {
 	    if (saw_door)
-		pline("Suddenly, the shop door reappears!");
+		pline("Suddenly, the shop door reappears!"); /* EN pline("Suddenly, the shop door reappears!"); */ // TODO DE
 	    else if (saw_floor)
-		pline("Suddenly, the floor damage is gone!");
+		pline("Suddenly, the floor damage is gone!"); /* EN pline("Suddenly, the floor damage is gone!"); */ // TODO DE
 	    else if (saw_untrap)
-	        pline("Suddenly, the trap is removed from the floor!");
+	        pline("Suddenly, the trap is removed from the floor!"); /* EN pline("Suddenly, the trap is removed from the floor!"); */ // TODO DE
 	    else if (inside_shop(u.ux, u.uy) == ESHK(shkp)->shoproom)
-		You_feel("more claustrophobic than before.");
+		You_feel("more claustrophobic than before."); /* EN You_feel("more claustrophobic than before."); */ // TODO DE
 	    else if (flags.soundok && !rn2(10))
-		Norep("The dungeon acoustics noticeably change.");
+		Norep("The dungeon acoustics noticeably change."); /* EN Norep("The dungeon acoustics noticeably change."); */ // TODO DE
 	}
 	if (stop_picking)
 		stop_occupation();
@@ -3137,7 +3136,7 @@ boolean catchup;	/* restoring a level */
 		 *
 		 * Take the easy way out and put ball&chain under hero.
 		 */
-		verbalize("Get your junk out of my wall!");
+		verbalize("Get your junk out of my wall!"); /* EN verbalize("Get your junk out of my wall!"); */ // TODO DE
 		unplacebc();	/* pick 'em up */
 		placebc();	/* put 'em down */
 	    }
@@ -3208,24 +3207,24 @@ register struct monst *shkp;
 		if(ANGRY(shkp) ||
 		   (Conflict && !resist(shkp, RING_CLASS, 0, 0))) {
 			if(Displaced)
-			  Your("displaced image doesn't fool %s!",
+			  Your("displaced image doesn't fool %s!", /* EN Your("displaced image doesn't fool %s!", */ // TODO DE
 				mon_nam(shkp));
 			(void) mattacku(shkp);
 			return(0);
 		}
 		if(eshkp->following) {
 			if(strncmp(eshkp->customer, plname, PL_NSIZ)) {
-			    verbalize("%s, %s!  I was looking for %s.",
+			    verbalize("%s, %s!  I was looking for %s.", /* EN verbalize("%s, %s!  I was looking for %s.", */ // TODO DE
 				    Hello(shkp), plname, eshkp->customer);
 				    eshkp->following = 0;
 			    return(0);
 			}
 			if(moves > followmsg+4) {
-			    verbalize("%s, %s!  Didn't you forget to pay?",
+			    verbalize("%s, %s!  Didn't you forget to pay?", /* EN verbalize("%s, %s!  Didn't you forget to pay?", */ // TODO DE
 				    Hello(shkp), plname);
 			    followmsg = moves;
 			    if (!rn2(9)) {
-			      pline("%s doesn't like customers who don't pay.",
+			      pline("%s doesn't like customers who don't pay.", /* EN pline("%s doesn't like customers who don't pay.", */ // TODO DE
 				    Monnam(shkp));
 				rile_shk(shkp);
 			    }
@@ -3343,7 +3342,7 @@ register int fall;
 
     if(!inhishop(shkp)) {
 	if (Role_if(PM_KNIGHT)) {
-	    You_feel("like a common thief.");
+	    You_feel("like a common thief."); /* EN You_feel("like a common thief."); */ // TODO DE
 	    adjalign(-sgn(u.ualign.type));
 	}
 	return;
@@ -3353,14 +3352,14 @@ register int fall;
 	if (lang == 2) {
 	    if(u.utraptype == TT_PIT)
 		verbalize(
-			"Be careful, %s, or you might fall through the floor.",
-			flags.female ? "madam" : "sir");
+			"Be careful, %s, or you might fall through the floor.", /* EN "Be careful, %s, or you might fall through the floor.", */ // TODO DE
+			flags.female ? "madam" : "sir"); /* EN flags.female ? "madam" : "sir"); */ // TODO DE
 	    else
-		verbalize("%s, do not damage the floor here!",
-			flags.female ? "Madam" : "Sir");
+		verbalize("%s, do not damage the floor here!", /* EN verbalize("%s, do not damage the floor here!", */ // TODO DE
+			flags.female ? "Madam" : "Sir"); /* EN flags.female ? "Madam" : "Sir"); */ // TODO DE
 	}
 	if (Role_if(PM_KNIGHT)) {
-	    You_feel("like a common thief.");
+	    You_feel("like a common thief."); /* EN You_feel("like a common thief."); */ // TODO DE
 	    adjalign(-sgn(u.ualign.type));
 	}
     } else if(!um_dist(shkp->mx, shkp->my, 5) &&
@@ -3368,13 +3367,13 @@ register int fall;
 		(ESHK(shkp)->billct || ESHK(shkp)->debit)) {
 	    register struct obj *obj, *obj2;
 	    if (nolimbs(shkp->data)) {
-		grabs = "knocks off";
+		grabs = "knocks off"; /* EN grabs = "knocks off"; */ // TODO DE
 #if 0
 	       /* This is what should happen, but for balance
 	        * reasons, it isn't currently.
 	        */
 		if (lang == 2)
-		    pline("%s curses %s inability to grab your backpack!",
+		    pline("%s curses %s inability to grab your backpack!", /* EN pline("%s curses %s inability to grab your backpack!", */ // TODO DE
 			  shkname(shkp), mhim(shkp));
 		rile_shk(shkp);
 		return;
@@ -3385,16 +3384,16 @@ register int fall;
 		/* for some reason the shopkeeper can't come next to you */
 		if (distu(shkp->mx, shkp->my) > 2) {
 		    if (lang == 2)
-			pline("%s curses you in anger and frustration!",
+			pline("%s curses you in anger and frustration!", /* EN pline("%s curses you in anger and frustration!", */ // TODO DE
 			      shkname(shkp));
 		    rile_shk(shkp);
 		    return;
 		} else
-		    pline("%s %s, and %s your backpack!",
+		    pline("%s %s, and %s your backpack!", /* EN pline("%s %s, and %s your backpack!", */ // TODO DE
 			  shkname(shkp),
 			  makeplural(locomotion(shkp->data,"leap")), grabs);
 	    } else
-		pline("%s %s your backpack!", shkname(shkp), grabs);
+		pline("%s %s your backpack!", shkname(shkp), grabs); /* EN pline("%s %s your backpack!", shkname(shkp), grabs); */ // TODO DE
 
 	    for(obj = invent; obj; obj = obj2) {
 		obj2 = obj->nobj;
@@ -3447,8 +3446,8 @@ boolean cant_mollify;
 	register boolean uinshp = (*u.ushops != '\0');
 	char qbuf[80];
 	register xchar x, y;
-	boolean dugwall = !strcmp(dmgstr, "dig into") ||	/* wand */
-			  !strcmp(dmgstr, "damage");		/* pick-axe */
+	boolean dugwall = !strcmp(dmgstr, "dig into") ||	/* wand */ /* EN boolean dugwall = !strcmp(dmgstr, "dig into") ||	/* wand */ */ // TODO DE
+			  !strcmp(dmgstr, "damage");		/* pick-axe */ /* EN !strcmp(dmgstr, "damage");		/* pick-axe */ */ // TODO DE
 	struct damage *tmp_dam, *appear_here = 0;
 	/* any number >= (80*80)+(24*24) would do, actually */
 	long cost_of_damage = 0L;
@@ -3523,7 +3522,7 @@ boolean cant_mollify;
 	if(uinshp) {
 		if(um_dist(shkp->mx, shkp->my, 1) &&
 			!um_dist(shkp->mx, shkp->my, 3)) {
-		    pline("%s leaps towards you!", shkname(shkp));
+		    pline("%s leaps towards you!", shkname(shkp)); /* EN pline("%s leaps towards you!", shkname(shkp)); */ // TODO DE
 		    mnexto(shkp);
 		}
 		if(um_dist(shkp->mx, shkp->my, 1)) goto getcad;
@@ -3536,8 +3535,8 @@ boolean cant_mollify;
 	     */
 	    if (MON_AT(x, y)) {
 		if(flags.soundok) {
-		    You_hear("an angry voice:");
-		    verbalize("Out of my way, scum!");
+		    You_hear("an angry voice:"); /* EN You_hear("an angry voice:"); */ // TODO DE
+		    verbalize("Out of my way, scum!"); /* EN verbalize("Out of my way, scum!"); */ // TODO DE
 		    wait_synch();
 #if defined(UNIX) || defined(VMS)
 # if defined(SYSV) || defined(ULTRIX) || defined(VMS)
@@ -3558,20 +3557,20 @@ boolean cant_mollify;
 #endif
 				|| !rn2(50)) {
 		if(um_dist(x, y, 1) && !uinshp) {
-		    pline("%s shouts:", shkname(shkp));
-		    verbalize("Who dared %s my %s?", dmgstr,
-					 dugwall ? "shop" : "door");
+		    pline("%s shouts:", shkname(shkp)); /* EN pline("%s shouts:", shkname(shkp)); */ // TODO DE
+		    verbalize("Who dared %s my %s?", dmgstr, /* EN verbalize("Who dared %s my %s?", dmgstr, */ // TODO DE
+					 dugwall ? "shop" : "door"); /* EN dugwall ? "shop" : "door"); */ // TODO DE
 		} else {
 getcad:
-		    verbalize("How dare you %s my %s?", dmgstr,
-					 dugwall ? "shop" : "door");
+		    verbalize("How dare you %s my %s?", dmgstr, /* EN verbalize("How dare you %s my %s?", dmgstr, */ // TODO DE
+					 dugwall ? "shop" : "door"); /* EN dugwall ? "shop" : "door"); */ // TODO DE
 		}
 		hot_pursuit(shkp);
 		return;
 	}
 
-	if (Invis) Your("invisibility does not fool %s!", shkname(shkp));
-	Sprintf(qbuf,"\"Cad!  You did %ld %s worth of damage!\"  Pay? ",
+	if (Invis) Your("invisibility does not fool %s!", shkname(shkp)); /* EN if (Invis) Your("invisibility does not fool %s!", shkname(shkp)); */ // TODO DE
+	Sprintf(qbuf,"\"Cad!  You did %ld %s worth of damage!\"  Pay? ", /* EN Sprintf(qbuf,"\"Cad!  You did %ld %s worth of damage!\"  Pay? ", */ // TODO DE
 		 cost_of_damage, currency(cost_of_damage));
 	if(yn(qbuf) != 'n') {
 		cost_of_damage = check_credit(cost_of_damage, shkp);
@@ -3582,13 +3581,13 @@ getcad:
                 money2mon(shkp, cost_of_damage);
 #endif
 		flags.botl = 1;
-		pline("Mollified, %s accepts your restitution.",
+		pline("Mollified, %s accepts your restitution.", /* EN pline("Mollified, %s accepts your restitution.", */ // TODO DE
 			shkname(shkp));
 		/* move shk back to his home loc */
 		home_shk(shkp, FALSE);
 		pacify_shk(shkp);
 	} else {
-		verbalize("Oh, yes!  You'll pay!");
+		verbalize("Oh, yes!  You'll pay!"); /* EN verbalize("Oh, yes!  You'll pay!"); */ // TODO DE
 		hot_pursuit(shkp);
 		adjalign(-sgn(u.ualign.type));
 	}
@@ -3647,7 +3646,7 @@ register struct obj *first_obj;
     struct monst *shkp = shop_keeper(inside_shop(u.ux, u.uy));
 
     tmpwin = create_nhwindow(NHW_MENU);
-    putstr(tmpwin, 0, "Fine goods for sale:");
+    putstr(tmpwin, 0, "Fine goods for sale:"); /* EN putstr(tmpwin, 0, "Fine goods for sale:"); */ // TODO DE
     putstr(tmpwin, 0, "");
     for (otmp = first_obj; otmp; otmp = otmp->nexthere) {
 	if (otmp->oclass == COIN_CLASS) continue;
@@ -3656,10 +3655,10 @@ register struct obj *first_obj;
 	if (Has_contents(otmp))
 	    cost += contained_cost(otmp, shkp, 0L, FALSE, FALSE);
 	if (!cost) {
-	    Strcpy(price, "no charge");
+	    Strcpy(price, "no charge"); /* EN Strcpy(price, "no charge"); */ // TODO DE
 	} else {
 	    Sprintf(price, "%ld %s%s", cost, currency(cost),
-		    otmp->quan > 1L ? " each" : "");
+		    otmp->quan > 1L ? " each" : ""); /* EN otmp->quan > 1L ? " each" : ""); */ // TODO DE
 	}
 	Sprintf(buf, "%s, %s", doname(otmp), price);
 	putstr(tmpwin, 0, buf),  cnt++;
@@ -3674,7 +3673,7 @@ register struct obj *first_obj;
 	    cost = get_cost(first_obj, (struct monst *)0);
 	    if (Has_contents(first_obj))
 		cost += contained_cost(first_obj, shkp, 0L, FALSE, FALSE);
-	    pline("%s, price %ld %s%s%s", doname(first_obj),
+	    pline("%s, price %ld %s%s%s", doname(first_obj), /* EN pline("%s, price %ld %s%s%s", doname(first_obj), */ // TODO DE
 		cost, currency(cost), first_obj->quan > 1L ? " each" : "",
 		shk_embellish(first_obj, cost));
 	}
@@ -3695,17 +3694,17 @@ long cost;
 	switch (choice) {
 	    case 4:
 		if (cost < 10L) break; else o = itm->oclass;
-		if (o == FOOD_CLASS) return ", gourmets' delight!";
+		if (o == FOOD_CLASS) return ", gourmets' delight!"; /* EN if (o == FOOD_CLASS) return ", gourmets' delight!"; */ // TODO DE
 		if (objects[itm->otyp].oc_name_known
 		    ? objects[itm->otyp].oc_magic
 		    : (o == AMULET_CLASS || o == RING_CLASS   ||
 		       o == WAND_CLASS   || o == POTION_CLASS ||
 		       o == SCROLL_CLASS || o == SPBOOK_CLASS))
-		    return ", painstakingly developed!";
-		return ", superb craftsmanship!";
-	    case 3: return ", finest quality.";
-	    case 2: return ", an excellent choice.";
-	    case 1: return ", a real bargain.";
+		    return ", painstakingly developed!"; /* EN return ", painstakingly developed!"; */ // TODO DE
+		return ", superb craftsmanship!"; /* EN return ", superb craftsmanship!"; */ // TODO DE
+	    case 3: return ", finest quality."; /* EN case 3: return ", finest quality."; */ // TODO DE
+	    case 2: return ", an excellent choice."; /* EN case 2: return ", an excellent choice."; */ // TODO DE
+	    case 1: return ", a real bargain."; /* EN case 1: return ", a real bargain."; */ // TODO DE
 	   default: break;
 	}
     } else if (itm->oartifact) {
@@ -3718,15 +3717,15 @@ long cost;
 
 /* First 4 supplied by Ronen and Tamar, remainder by development team */
 const char *Izchak_speaks[]={
-    "%s says: 'These shopping malls give me a headache.'",
-    "%s says: 'Slow down.  Think clearly.'",
-    "%s says: 'You need to take things one at a time.'",
-    "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'",
-    "%s says that getting the devteam's agreement on anything is difficult.",
-    "%s says that he has noticed those who serve their deity will prosper.",
-    "%s says: 'Don't try to steal from me - I have friends in high places!'",
-    "%s says: 'You may well need something from this shop in the future.'",
-    "%s comments about the Valley of the Dead as being a gateway."
+    "%s says: 'These shopping malls give me a headache.'", /* EN "%s says: 'These shopping malls give me a headache.'", */ // TODO DE
+    "%s says: 'Slow down.  Think clearly.'", /* EN "%s says: 'Slow down.  Think clearly.'", */ // TODO DE
+    "%s says: 'You need to take things one at a time.'", /* EN "%s says: 'You need to take things one at a time.'", */ // TODO DE
+    "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", /* EN "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", */ // TODO DE
+    "%s says that getting the devteam's agreement on anything is difficult.", /* EN "%s says that getting the devteam's agreement on anything is difficult.", */ // TODO DE
+    "%s says that he has noticed those who serve their deity will prosper.", /* EN "%s says that he has noticed those who serve their deity will prosper.", */ // TODO DE
+    "%s says: 'Don't try to steal from me - I have friends in high places!'", /* EN "%s says: 'Don't try to steal from me - I have friends in high places!'", */ // TODO DE
+    "%s says: 'You may well need something from this shop in the future.'", /* EN "%s says: 'You may well need something from this shop in the future.'", */ // TODO DE
+    "%s comments about the Valley of the Dead as being a gateway." /* EN "%s comments about the Valley of the Dead as being a gateway." */ // TODO DE
 };
 
 void
@@ -3742,7 +3741,7 @@ struct monst *shkp;
 		   not actually a shk, which could happen if someone
 		   wishes for a shopkeeper statue and then animates it.
 		   (Note: shkname() would be "" in a case like this.) */
-		pline("%s asks whether you've seen any untended shops recently.",
+		pline("%s asks whether you've seen any untended shops recently.", /* EN pline("%s asks whether you've seen any untended shops recently.", */ // TODO DE
 		      Monnam(shkp));
 		/* [Perhaps we ought to check whether this conversation
 		   is taking place inside an untended shop, but a shopless
@@ -3752,47 +3751,47 @@ struct monst *shkp;
 
 	eshk = ESHK(shkp);
 	if (ANGRY(shkp))
-		pline("%s mentions how much %s dislikes %s customers.",
+		pline("%s mentions how much %s dislikes %s customers.", /* EN pline("%s mentions how much %s dislikes %s customers.", */ // TODO DE
 			shkname(shkp), mhe(shkp),
-			eshk->robbed ? "non-paying" : "rude");
+			eshk->robbed ? "non-paying" : "rude"); /* EN eshk->robbed ? "non-paying" : "rude"); */ // TODO DE
 	else if (eshk->following) {
 		if (strncmp(eshk->customer, plname, PL_NSIZ)) {
-		    verbalize("%s %s!  I was looking for %s.",
+		    verbalize("%s %s!  I was looking for %s.", /* EN verbalize("%s %s!  I was looking for %s.", */ // TODO DE
 			    Hello(shkp), plname, eshk->customer);
 		    eshk->following = 0;
 		} else {
-		    verbalize("%s %s!  Didn't you forget to pay?",
+		    verbalize("%s %s!  Didn't you forget to pay?", /* EN verbalize("%s %s!  Didn't you forget to pay?", */ // TODO DE
 			      Hello(shkp), plname);
 		}
 	} else if (eshk->billct) {
 		register long total = addupbill(shkp) + eshk->debit;
-		pline("%s says that your bill comes to %ld %s.",
+		pline("%s says that your bill comes to %ld %s.", /* EN pline("%s says that your bill comes to %ld %s.", */ // TODO DE
 		      shkname(shkp), total, currency(total));
 	} else if (eshk->debit)
-		pline("%s reminds you that you owe %s %ld %s.",
+		pline("%s reminds you that you owe %s %ld %s.", /* EN pline("%s reminds you that you owe %s %ld %s.", */ // TODO DE
 		      shkname(shkp), mhim(shkp),
 		      eshk->debit, currency(eshk->debit));
 	else if (eshk->credit)
-		pline("%s encourages you to use your %ld %s of credit.",
+		pline("%s encourages you to use your %ld %s of credit.", /* EN pline("%s encourages you to use your %ld %s of credit.", */ // TODO DE
 		      shkname(shkp), eshk->credit, currency(eshk->credit));
 	else if (eshk->robbed)
-		pline("%s complains about a recent robbery.", shkname(shkp));
+		pline("%s complains about a recent robbery.", shkname(shkp)); /* EN pline("%s complains about a recent robbery.", shkname(shkp)); */ // TODO DE
 #ifndef GOLDOBJ
 	else if (shkp->mgold < 50)
 #else
 	else if ((shkmoney = money_cnt(shkp->minvent)) < 50)
 #endif
-		pline("%s complains that business is bad.", shkname(shkp));
+		pline("%s complains that business is bad.", shkname(shkp)); /* EN pline("%s complains that business is bad.", shkname(shkp)); */ // TODO DE
 #ifndef GOLDOBJ
 	else if (shkp->mgold > 4000)
 #else
 	else if (shkmoney > 4000)
 #endif
-		pline("%s says that business is good.", shkname(shkp));
+		pline("%s says that business is good.", shkname(shkp)); /* EN pline("%s says that business is good.", shkname(shkp)); */ // TODO DE
 	else if (strcmp(shkname(shkp), "Izchak") == 0)
 		pline(Izchak_speaks[rn2(SIZE(Izchak_speaks))],shkname(shkp));
 	else
-		pline("%s talks about the problem of shoplifters.",shkname(shkp));
+		pline("%s talks about the problem of shoplifters.",shkname(shkp)); /* EN pline("%s talks about the problem of shoplifters.",shkname(shkp)); */ // TODO DE
 }
 
 #ifdef KOPS
@@ -3811,7 +3810,7 @@ register boolean silent;
 	    }
 	}
 	if (cnt && !silent)
-	    pline_The("Kop%s (disappointed) vanish%s into thin air.",
+	    pline_The("Kop%s (disappointed) vanish%s into thin air.", /* EN pline_The("Kop%s (disappointed) vanish%s into thin air.", */ // TODO DE
 		      plur(cnt), cnt == 1 ? "es" : "");
 }
 #endif	/* KOPS */
@@ -3898,15 +3897,15 @@ boolean altusage;
 
 	arg1 = arg2 = "";
 	if (otmp->oclass == SPBOOK_CLASS) {
-	    fmt = "%sYou owe%s %ld %s.";
-	    arg1 = rn2(2) ? "This is no free library, cad!  " : "";
-	    arg2 = ESHK(shkp)->debit > 0L ? " an additional" : "";
+	    fmt = "%sYou owe%s %ld %s."; /* EN fmt = "%sYou owe%s %ld %s."; */ // TODO DE
+	    arg1 = rn2(2) ? "This is no free library, cad!  " : ""; /* EN arg1 = rn2(2) ? "This is no free library, cad!  " : ""; */ // TODO DE
+	    arg2 = ESHK(shkp)->debit > 0L ? " an additional" : ""; /* EN arg2 = ESHK(shkp)->debit > 0L ? " an additional" : ""; */ // TODO DE
 	} else if (otmp->otyp == POT_OIL) {
-	    fmt = "%s%sThat will cost you %ld %s (Yendorian Fuel Tax).";
+	    fmt = "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."; /* EN fmt = "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."; */ // TODO DE
 	} else {
-	    fmt = "%s%sUsage fee, %ld %s.";
-	    if (!rn2(3)) arg1 = "Hey!  ";
-	    if (!rn2(3)) arg2 = "Ahem.  ";
+	    fmt = "%s%sUsage fee, %ld %s."; /* EN fmt = "%s%sUsage fee, %ld %s."; */ // TODO DE
+	    if (!rn2(3)) arg1 = "Hey!  "; /* EN if (!rn2(3)) arg1 = "Hey!  "; */ // TODO DE
+	    if (!rn2(3)) arg2 = "Ahem.  "; /* EN if (!rn2(3)) arg2 = "Ahem.  "; */ // TODO DE
 	}
 
 	if (shkp->mcanmove || !shkp->msleeping)
@@ -3939,18 +3938,18 @@ register long amount;
 	eshkp = ESHK(shkp);
 	if(eshkp->credit >= amount) {
 	    if(eshkp->credit > amount)
-		Your("credit is reduced by %ld %s.",
+		Your("credit is reduced by %ld %s.", /* EN Your("credit is reduced by %ld %s.", */ // TODO DE
 					amount, currency(amount));
-	    else Your("credit is erased.");
+	    else Your("credit is erased."); /* EN else Your("credit is erased."); */ // TODO DE
 	    eshkp->credit -= amount;
 	} else {
 	    delta = amount - eshkp->credit;
 	    if(eshkp->credit)
-		Your("credit is erased.");
+		Your("credit is erased."); /* EN Your("credit is erased."); */ // TODO DE
 	    if(eshkp->debit)
-		Your("debt increases by %ld %s.",
+		Your("debt increases by %ld %s.", /* EN Your("debt increases by %ld %s.", */ // TODO DE
 					delta, currency(delta));
-	    else You("owe %s %ld %s.",
+	    else You("owe %s %ld %s.", /* EN else You("owe %s %ld %s.", */ // TODO DE
 				shkname(shkp), delta, currency(delta));
 	    eshkp->debit += delta;
 	    eshkp->loan += delta;
@@ -3983,8 +3982,8 @@ register xchar x, y;
 	    && shkp->mcanmove && !shkp->msleeping
 	    && (ESHK(shkp)->debit || ESHK(shkp)->billct ||
 		ESHK(shkp)->robbed)) {
-		pline("%s%s blocks your way!", shkname(shkp),
-				Invis ? " senses your motion and" : "");
+		pline("%s%s blocks your way!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */ // TODO DE
+				Invis ? " senses your motion and" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
 		return(TRUE);
 	}
 	return(FALSE);
@@ -4022,8 +4021,8 @@ register xchar x, y;
 			|| u.usteed
 #endif
 	  )) {
-		pline("%s%s blocks your way!", shkname(shkp),
-				Invis ? " senses your motion and" : "");
+		pline("%s%s blocks your way!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */ // TODO DE
+				Invis ? " senses your motion and" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
 		return(TRUE);
 	}
 	return(FALSE);
@@ -4038,7 +4037,7 @@ char *buf;
 struct obj *obj;
 {
 	if (!shk_owns(buf, obj) && !mon_owns(buf, obj))
-	    Strcpy(buf, carried(obj) ? "your" : "the");
+	    Strcpy(buf, carried(obj) ? "your" : "the"); /* EN Strcpy(buf, carried(obj) ? "your" : "the"); */ // TODO DE
 	return buf;
 }
 
@@ -4064,7 +4063,7 @@ struct obj *obj;
 	    (obj->unpaid ||
 	     (obj->where==OBJ_FLOOR && !obj->no_charge && costly_spot(x,y)))) {
 	    shkp = shop_keeper(inside_shop(x, y));
-	    return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "the");
+	    return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "the"); /* EN return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "the"); */ // TODO DE
 	}
 	return (char *)0;
 }

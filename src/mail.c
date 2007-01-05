@@ -257,9 +257,9 @@ md_stop(stopp, startp)
 
 /* Let the mail daemon have a larger vocabulary. */
 static NEARDATA const char *mail_text[] = {
-    "Gangway!",
-    "Look out!",
-    "Pardon me!"
+    "Gangway!", /* EN "Gangway!", */ // TODO DE
+    "Look out!", /* EN "Look out!", */ // TODO DE
+    "Pardon me!" /* EN "Pardon me!" */ // TODO DE
 };
 #define md_exclamations()	(mail_text[rn2(3)])
 
@@ -319,7 +319,7 @@ md_rush(md,tx,ty)
 	if ((mon = m_at(fx,fy)) != 0)	/* save monster at this position */
 	    verbalize(md_exclamations());
 	else if (fx == u.ux && fy == u.uy)
-	    verbalize("Excuse me.");
+	    verbalize("Excuse me."); /* EN verbalize("Excuse me."); */ // TODO DE
 
 	place_monster(md,fx,fy);	/* put md down */
 	newsym(fx,fy);			/* see it */
@@ -344,7 +344,7 @@ md_rush(md,tx,ty)
     if ((mon = m_at(fx, fy)) != 0) {
 	place_monster(md, fx, fy);	/* display md with text below */
 	newsym(fx, fy);
-	verbalize("This place's too crowded.  I'm outta here.");
+	verbalize("This place's too crowded.  I'm outta here."); /* EN verbalize("This place's too crowded.  I'm outta here."); */ // TODO DE
 
 	if ((mon->mx != fx) || (mon->my != fy))	/* put mon back */
 	    place_worm_seg(mon, fx, fy);
@@ -382,12 +382,12 @@ struct mail_info *info;
     if (!md_rush(md, stop.x, stop.y)) goto go_back;
 
     message_seen = TRUE;
-    verbalize("%s, %s!  %s.", Hello(md), plname, info->display_txt);
+    verbalize("%s, %s!  %s.", Hello(md), plname, info->display_txt); /* EN verbalize("%s, %s!  %s.", Hello(md), plname, info->display_txt); */ // TODO DE
 
     if (info->message_typ) {
 	struct obj *obj = mksobj(SCR_MAIL, FALSE, FALSE);
 	if (distu(md->mx,md->my) > 2)
-	    verbalize("Catch!");
+	    verbalize("Catch!"); /* EN verbalize("Catch!"); */ // TODO DE
 	display_nhwindow(WIN_MESSAGE, FALSE);
 	if (info->object_nam) {
 	    obj = oname(obj, info->object_nam);
@@ -411,7 +411,7 @@ go_back:
     /* deliver some classes of messages even if no daemon ever shows up */
 give_up:
     if (!message_seen && info->message_typ == MSG_OTHER)
-	pline("Hark!  \"%s.\"", info->display_txt);
+	pline("Hark!  \"%s.\"", info->display_txt); /* EN pline("Hark!  \"%s.\"", info->display_txt); */ // TODO DE
 }
 
 # if !defined(UNIX) && !defined(VMS) && !defined(LAN_MAIL)
@@ -428,7 +428,7 @@ ckmailstatus()
 	}
 	if (--mustgetmail <= 0) {
 		static struct mail_info
-			deliver = {MSG_MAIL,"I have some mail for you",0,0};
+			deliver = {MSG_MAIL,"I have some mail for you",0,0}; /* EN deliver = {MSG_MAIL,"I have some mail for you",0,0}; */ // TODO DE
 		newmail(&deliver);
 		mustgetmail = -1;
 	}
@@ -440,20 +440,20 @@ readmail(otmp)
 struct obj *otmp;
 {
     static char *junk[] = {
-    "Please disregard previous letter.",
-    "Welcome to NetHack.",
+    "Please disregard previous letter.", /* EN "Please disregard previous letter.", */ // TODO DE
+    "Welcome to NetHack.", /* EN "Welcome to NetHack.", */ // TODO DE
 #ifdef AMIGA
-    "Only Amiga makes it possible.",
-    "CATS have all the answers.",
+    "Only Amiga makes it possible.", /* EN "Only Amiga makes it possible.", */ // TODO DE
+    "CATS have all the answers.", /* EN "CATS have all the answers.", */ // TODO DE
 #endif
-    "Report bugs to <devteam@nethack.org>.",
-    "Invitation: Visit the NetHack web site at http://www.nethack.org!"
+    "Report bugs to <devteam@nethack.org>.", /* EN "Report bugs to <devteam@nethack.org>.", */ // TODO DE  CHECK ME jedes Auftreten von  @nethack.org
+    "Invitation: Visit the NetHack web site at http://www.nethack.org!" /* EN "Invitation: Visit the NetHack web site at http://www.nethack.org!" */ // TODO DE
     };
 
     if (Blind) {
-	pline("Unfortunately you cannot see what it says.");
+	pline("Unfortunately you cannot see what it says."); /* EN pline("Unfortunately you cannot see what it says."); */ // TODO DE
     } else
-	pline("It reads:  \"%s\"", junk[rn2(SIZE(junk))]);
+	pline("It reads:  \"%s\"", junk[rn2(SIZE(junk))]); /* EN pline("It reads:  \"%s\"", junk[rn2(SIZE(junk))]); */ // TODO DE
 
 }
 
@@ -474,7 +474,7 @@ ckmailstatus()
 	laststattime = moves;
 	if(stat(mailbox, &nmstat)){
 #  ifdef PERMANENT_MAILBOX
-		pline("Cannot get status of MAIL=\"%s\" anymore.", mailbox);
+		pline("Cannot get status of MAIL=\"%s\" anymore.", mailbox); /* EN pline("Cannot get status of MAIL=\"%s\" anymore.", mailbox); */ // TODO DE
 		mailbox = 0;
 #  else
 		nmstat.st_mtime = 0;
@@ -483,10 +483,10 @@ ckmailstatus()
 		if (nmstat.st_size) {
 		    static struct mail_info deliver = {
 #  ifndef NO_MAILREADER
-			MSG_MAIL, "I have some mail for you",
+			MSG_MAIL, "I have some mail for you", /* EN MSG_MAIL, "I have some mail for you", */ // TODO DE
 #  else
 			/* suppress creation and delivery of scroll of mail */
-			MSG_OTHER, "You have some mail in the outside world",
+			MSG_OTHER, "You have some mail in the outside world", /* EN MSG_OTHER, "You have some mail in the outside world", */ // TODO DE
 #  endif
 			0, 0
 		    };
@@ -597,10 +597,10 @@ ckmailstatus()
 	if (lan_mail_check()) {
 		    static struct mail_info deliver = {
 #  ifndef NO_MAILREADER
-			MSG_MAIL, "I have some mail for you",
+			MSG_MAIL, "I have some mail for you", /* EN MSG_MAIL, "I have some mail for you", */ // TODO DE
 #  else
 			/* suppress creation and delivery of scroll of mail */
-			MSG_OTHER, "You have some mail in the outside world",
+			MSG_OTHER, "You have some mail in the outside world", /* EN MSG_OTHER, "You have some mail in the outside world", */ // TODO DE
 #  endif
 			0, 0
 		    };

@@ -9,11 +9,11 @@ extern const char *hu_stat[];	/* defined in eat.c */
 
 const char * const enc_stat[] = {
 	"",
-	"Burdened",
-	"Stressed",
-	"Strained",
-	"Overtaxed",
-	"Overloaded"
+	"Burdened", /* EN "Burdened", */ // TODO DE
+	"Stressed", /* EN "Stressed", */ // TODO DE
+	"Strained", /* EN "Strained", */ // TODO DE
+	"Overtaxed", /* EN "Overtaxed", */ // TODO DE
+	"Overloaded" /* EN "Overloaded" */ // TODO DE
 };
 
 STATIC_DCL void NDECL(bot1);
@@ -88,7 +88,7 @@ rank_of(lev, monnum, female)
 	/* Try the role name, instead */
 	if (female && role->name.f) return (role->name.f);
 	else if (role->name.m) return (role->name.m);
-	return ("Player");
+	return ("Player"); /* EN return ("Player"); */ // TODO DE
 }
 
 
@@ -181,7 +181,7 @@ bot1()
 	Strcpy(newbot1, plname);
 	if('a' <= newbot1[0] && newbot1[0] <= 'z') newbot1[0] += 'A'-'a';
 	newbot1[10] = 0;
-	Sprintf(nb = eos(newbot1)," the ");
+	Sprintf(nb = eos(newbot1)," the "); /* EN Sprintf(nb = eos(newbot1)," the "); */ // TODO DE
 
 	if (Upolyd) {
 		char mbot[BUFSZ];
@@ -213,10 +213,10 @@ bot1()
 	} else
 		Sprintf(nb = eos(nb), "St:%-1d ",ACURR(A_STR));
 	Sprintf(nb = eos(nb),
-		"Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d",
+		"Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d", // TODO DE
 		ACURR(A_DEX), ACURR(A_CON), ACURR(A_INT), ACURR(A_WIS), ACURR(A_CHA));
-	Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotic" :
-			(u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Lawful");
+	Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotic" : /* EN Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotic" : */ // TODO DE
+			(u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Lawful"); /* EN (u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Lawful"); */ // TODO DE
 #ifdef SCORE_ON_BOTL
 	if (flags.showscore)
 	    Sprintf(nb = eos(nb), " S:%ld", botl_score());
@@ -245,13 +245,13 @@ char *buf;
 	if (Is_knox(&u.uz))
 		Sprintf(buf, "%s ", dungeons[u.uz.dnum].dname);
 	else if (In_quest(&u.uz))
-		Sprintf(buf, "Home %d ", dunlev(&u.uz));
+		Sprintf(buf, "Home %d ", dunlev(&u.uz)); /* EN Sprintf(buf, "Home %d ", dunlev(&u.uz)); */ // TODO DE
 	else if (In_endgame(&u.uz))
 		Sprintf(buf,
-			Is_astralevel(&u.uz) ? "Astral Plane " : "End Game ");
+			Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); /* EN Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); */ // TODO DE
 	else {
 		/* ports with more room may expand this one */
-		Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz));
+		Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz)); /* EN Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz)); */ // TODO DE
 		ret = 0;
 	}
 	return ret;
@@ -301,17 +301,17 @@ bot2()
 		Sprintf(nb = eos(nb), " ");
 		Strcat(newbot2, hu_stat[u.uhs]);
 	}
-	if(Confusion)	   Sprintf(nb = eos(nb), " Conf");
+	if(Confusion)	   Sprintf(nb = eos(nb), " Conf"); /* EN if(Confusion)	   Sprintf(nb = eos(nb), " Conf"); */ // TODO DE
 	if(Sick) {
 		if (u.usick_type & SICK_VOMITABLE)
-			   Sprintf(nb = eos(nb), " FoodPois");
+			   Sprintf(nb = eos(nb), " FoodPois"); /* EN Sprintf(nb = eos(nb), " FoodPois"); */ // TODO DE
 		if (u.usick_type & SICK_NONVOMITABLE)
-			   Sprintf(nb = eos(nb), " Ill");
+			   Sprintf(nb = eos(nb), " Ill"); /* EN Sprintf(nb = eos(nb), " Ill"); */ // TODO DE
 	}
-	if(Blind)	   Sprintf(nb = eos(nb), " Blind");
-	if(Stunned)	   Sprintf(nb = eos(nb), " Stun");
-	if(Hallucination)  Sprintf(nb = eos(nb), " Hallu");
-	if(Slimed)         Sprintf(nb = eos(nb), " Slime");
+	if(Blind)	   Sprintf(nb = eos(nb), " Blind"); /* EN if(Blind)	   Sprintf(nb = eos(nb), " Blind"); */ // TODO DE
+	if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); /* EN if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); */ // TODO DE
+	if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); /* EN if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); */ // TODO DE
+	if(Slimed)         Sprintf(nb = eos(nb), " Slime"); /* EN if(Slimed)         Sprintf(nb = eos(nb), " Slime"); */ // TODO DE
 	if(cap > UNENCUMBERED)
 		Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
 #ifdef DUMP_LOG

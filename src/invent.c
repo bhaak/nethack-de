@@ -620,8 +620,8 @@ const char *
 currency(amount)
 long amount;
 {
-	if (amount == 1L) return "zorkmid";
-	else return "zorkmids";
+	if (amount == 1L) return "zorkmid"; /* EN if (amount == 1L) return "zorkmid"; */ // TODO DE
+	else return "zorkmids"; /* EN else return "zorkmids"; */ // TODO DE
 }
 
 boolean
@@ -734,7 +734,7 @@ STATIC_OVL boolean
 taking_off(action)
 const char *action;
 {
-    return !strcmp(action, "take off") || !strcmp(action, "remove");
+    return !strcmp(action, "take off") || !strcmp(action, "remove"); /* EN return !strcmp(action, "take off") || !strcmp(action, "remove"); */ // TODO DE
 }
 
 /* match the prompt for either 'W' or 'P' command */
@@ -742,7 +742,7 @@ STATIC_OVL boolean
 putting_on(action)
 const char *action;
 {
-    return !strcmp(action, "wear") || !strcmp(action, "put on");
+    return !strcmp(action, "wear") || !strcmp(action, "put on"); /* EN return !strcmp(action, "wear") || !strcmp(action, "put on"); */ // TODO DE
 }
 
 /*
@@ -787,7 +787,7 @@ register const char *let,*word;
 #endif
 
 	/* Equivalent of an "ugly check" for gold */
-	if (usegold && !strcmp(word, "eat") &&
+	if (usegold && !strcmp(word, "eat") && /* EN if (usegold && !strcmp(word, "eat") && */ // TODO DE
 	    (!metallivorous(youmonst.data)
 	     || youmonst.data == &mons[PM_RUST_MONSTER]))
 #ifndef GOLDOBJ
@@ -804,11 +804,11 @@ register const char *let,*word;
 	 * them is handled a bit differently (and also requires that we set
 	 * allowall in the caller)
 	 */
-	if(allowall && !strcmp(word, "VERB_READ")) allowall = FALSE;
+	if(allowall && !strcmp(word, "VERB_READ")) allowall = FALSE; /* EN if(allowall && !strcmp(word, "read")) allowall = FALSE; */
 
 	/* another ugly check: show boulders (not statues) */
 	if(*let == WEAPON_CLASS &&
-	   !strcmp(word, "throw") && throws_rocks(youmonst.data))
+	   !strcmp(word, "throw") && throws_rocks(youmonst.data)) /* EN !strcmp(word, "throw") && throws_rocks(youmonst.data)) */ // TODO DE
 	    useboulder = TRUE;
 
 	if(allownone) *bp++ = '-';
@@ -846,10 +846,10 @@ register const char *let,*word;
 		     (otmp->owornmask & (W_ARMOR | W_RING | W_AMUL | W_TOOL)))
 							/* already worn */
 #if 0	/* 3.4.1 -- include currently wielded weapon among the choices */
-		|| (!strcmp(word, "wield") &&
+		|| (!strcmp(word, "wield") && /* EN || (!strcmp(word, "wield") && */ // TODO DE
 		    (otmp->owornmask & W_WEP))
 #endif
-		|| (!strcmp(word, "ready") &&
+		|| (!strcmp(word, "ready") && /* EN || (!strcmp(word, "ready") && */ // TODO DE
 		    (otmp == uwep || (otmp == uswapwep && u.twoweap)))
 		    ) {
 			foo--;
@@ -863,27 +863,27 @@ register const char *let,*word;
 		    ((otmp->oclass == FOOD_CLASS && otmp->otyp != MEAT_RING) ||
 		    (otmp->oclass == TOOL_CLASS &&
 		     otyp != BLINDFOLD && otyp != TOWEL && otyp != LENSES)))
-		|| (!strcmp(word, "wield") &&
+		|| (!strcmp(word, "wield") && /* EN || (!strcmp(word, "wield") && */ // TODO DE
 		    (otmp->oclass == TOOL_CLASS && !is_weptool(otmp)))
-		|| (!strcmp(word, "eat") && !is_edible(otmp))
-		|| (!strcmp(word, "sacrifice") &&
+		|| (!strcmp(word, "eat") && !is_edible(otmp)) /* EN || (!strcmp(word, "eat") && !is_edible(otmp)) */ // TODO DE
+		|| (!strcmp(word, "sacrifice") && /* EN || (!strcmp(word, "sacrifice") && */ // TODO DE
 		    (otyp != CORPSE &&
 		     otyp != AMULET_OF_YENDOR && otyp != FAKE_AMULET_OF_YENDOR))
-		|| (!strcmp(word, "write with") &&
+		|| (!strcmp(word, "write with") && /* EN || (!strcmp(word, "write with") && */ // TODO DE
 		    (otmp->oclass == TOOL_CLASS &&
 		     otyp != MAGIC_MARKER && otyp != TOWEL))
-		|| (!strcmp(word, "tin") &&
+		|| (!strcmp(word, "tin") && /* EN || (!strcmp(word, "tin") && */ // TODO DE
 		    (otyp != CORPSE || !tinnable(otmp)))
-		|| (!strcmp(word, "rub") &&
+		|| (!strcmp(word, "rub") && /* EN || (!strcmp(word, "rub") && */ // TODO DE
 		    ((otmp->oclass == TOOL_CLASS &&
 		      otyp != OIL_LAMP && otyp != MAGIC_LAMP &&
 		      otyp != BRASS_LANTERN) ||
 		     (otmp->oclass == GEM_CLASS && !is_graystone(otmp))))
-		|| (!strncmp(word, "rub on the stone", 16) &&
+		|| (!strncmp(word, "rub on the stone", 16) && /* EN || (!strncmp(word, "rub on the stone", 16) && */ // TODO DE
 		    *let == GEM_CLASS &&	/* using known touchstone */
 		    otmp->dknown && objects[otyp].oc_name_known)
-		|| ((!strcmp(word, "use or apply") ||
-			!strcmp(word, "untrap with")) &&
+		|| ((!strcmp(word, "use or apply") || /* EN || ((!strcmp(word, "use or apply") || */ // TODO DE
+			!strcmp(word, "untrap with")) && /* EN !strcmp(word, "untrap with")) && */ // TODO DE
 		     /* Picks, axes, pole-weapons, bullwhips */
 		    ((otmp->oclass == WEAPON_CLASS && !is_pick(otmp) &&
 		      !is_axe(otmp) && !is_pole(otmp) && otyp != BULLWHIP) ||
@@ -895,7 +895,7 @@ register const char *let,*word;
 		     (otmp->oclass == FOOD_CLASS &&
 		      otyp != CREAM_PIE && otyp != EUCALYPTUS_LEAF) ||
 		     (otmp->oclass == GEM_CLASS && !is_graystone(otmp))))
-		|| (!strcmp(word, "invoke") &&
+		|| (!strcmp(word, "invoke") && /* EN || (!strcmp(word, "invoke") && */ // TODO DE
 		    (!otmp->oartifact && !objects[otyp].oc_unique &&
 		     (otyp != FAKE_AMULET_OF_YENDOR || otmp->known) &&
 		     otyp != CRYSTAL_BALL &&	/* #invoke synonym for apply */
@@ -904,9 +904,9 @@ register const char *let,*word;
 		     otyp != MIRROR && otyp != MAGIC_LAMP &&
 		     (otyp != OIL_LAMP ||	/* don't list known oil lamp */
 		      (otmp->dknown && objects[OIL_LAMP].oc_name_known))))
-		|| (!strcmp(word, "untrap with") &&
+		|| (!strcmp(word, "untrap with") && /* EN || (!strcmp(word, "untrap with") && */ // TODO DE
 		    (otmp->oclass == TOOL_CLASS && otyp != CAN_OF_GREASE))
-		|| (!strcmp(word, "charge") && !is_chargeable(otmp))
+		|| (!strcmp(word, "charge") && !is_chargeable(otmp)) /* EN || (!strcmp(word, "charge") && !is_chargeable(otmp)) */ // TODO DE
 		    )
 			foo--;
 		/* ugly check for unworn armor that can't be worn */
@@ -919,7 +919,7 @@ register const char *let,*word;
 	    } else {
 
 		/* "ugly check" for reading fortune cookies, part 2 */
-		if ((!strcmp(word, "VERB_READ") &&
+		if ((!strcmp(word, "VERB_READ") && /* EN if ((!strcmp(word, "read") && */
 		    (otmp->otyp == FORTUNE_COOKIE
 #ifdef TOURIST
 			|| otmp->otyp == T_SHIRT
@@ -942,17 +942,17 @@ register const char *let,*word;
 #else
 	if(!foo && !allowall && !allownone) {
 #endif
-		You("don't have anything %sto %s.",
-			foox ? "else " : "", word);
+		You("don't have anything %sto %s.", /* EN You("don't have anything %sto %s.", */ // TODO DE
+			foox ? "else " : "", word); /* EN foox ? "else " : "", word); */ // TODO DE
 		return((struct obj *)0);
 	}
 	for(;;) {
 		cnt = 0;
 		if (allowcnt == 2) allowcnt = 1;  /* abort previous count */
 		if(!buf[0]) {
-			Sprintf(qbuf, "What do you want to %s? [*]", word);
+			Sprintf(qbuf, "What do you want to %s? [*]", word); /* EN Sprintf(qbuf, "What do you want to %s? [*]", word); */ // TODO DE
 		} else {
-			Sprintf(qbuf, "What do you want to %s? [%s or ?*]",
+			Sprintf(qbuf, "What do you want to %s? [%s or ?*]", /* EN Sprintf(qbuf, "What do you want to %s? [%s or ?*]", */ // TODO DE
 				word, buf);
 		}
 #ifdef REDO
@@ -971,7 +971,7 @@ register const char *let,*word;
 			ilet = readchar();
 		}
 		if(digit(ilet)) {
-			pline("No count allowed with this command.");
+			pline("No count allowed with this command."); /* EN pline("No count allowed with this command."); */ // TODO DE
 			continue;
 		}
 		if(index(quitchars,ilet)) {
@@ -984,16 +984,16 @@ register const char *let,*word;
 		}
 		if(ilet == def_oc_syms[COIN_CLASS]) {
 			if (!usegold) {
-			    if (!strncmp(word, "rub on ", 7)) {
+			    if (!strncmp(word, "rub on ", 7)) { /* EN if (!strncmp(word, "rub on ", 7)) { */ // TODO DE
 				/* the dangers of building sentences... */
-				You("cannot rub gold%s.", word + 3);
+				You("cannot rub gold%s.", word + 3); /* EN You("cannot rub gold%s.", word + 3); */ // TODO DE
 			    } else {
-				You("cannot %s gold.", word);
+				You("cannot %s gold.", word); /* EN You("cannot %s gold.", word); */ // TODO DE
 			    }
 			    return(struct obj *)0;
 #ifndef GOLDOBJ
 			} else if (!allowgold) {
-				You("are not carrying any gold.");
+				You("are not carrying any gold."); /* EN You("are not carrying any gold."); */ // TODO DE
 				return(struct obj *)0;
 #endif
 			} 
@@ -1005,7 +1005,7 @@ register const char *let,*word;
 			 * from Larn.
 			 */
 			if(cnt < 0) {
-	pline_The("LRS would be very interested to know you have that much.");
+	pline_The("LRS would be very interested to know you have that much."); /* EN pline_The("LRS would be very interested to know you have that much."); */ // TODO DE
 				return(struct obj *)0;
 			}
 
@@ -1040,7 +1040,7 @@ register const char *let,*word;
 		    }
 		    /* they typed a letter (not a space) at the prompt */
 		}
-		if(allowcnt == 2 && !strcmp(word,"throw")) {
+		if(allowcnt == 2 && !strcmp(word,"throw")) { /* EN if(allowcnt == 2 && !strcmp(word,"throw")) { */ // TODO DE
 		    /* permit counts for throwing gold, but don't accept
 		     * counts for other things since the throw code will
 		     * split off a single item anyway */
@@ -1050,7 +1050,7 @@ register const char *let,*word;
 			allowcnt = 1;
 		    if(cnt == 0 && prezero) return((struct obj *)0);
 		    if(cnt > 1) {
-			You("can only throw one item at a time.");
+			You("can only throw one item at a time."); /* EN You("can only throw one item at a time."); */ // TODO DE
 			continue;
 		    }
 		}
@@ -1063,13 +1063,13 @@ register const char *let,*word;
 		for (otmp = invent; otmp; otmp = otmp->nobj)
 			if (otmp->invlet == ilet) break;
 		if(!otmp) {
-			You("don't have that object.");
+			You("don't have that object."); /* EN You("don't have that object."); */ // TODO DE
 #ifdef REDO
 			if (in_doagain) return((struct obj *) 0);
 #endif
 			continue;
 		} else if (cnt < 0 || otmp->quan < cnt) {
-			You("don't have that many!  You have only %ld.",
+			You("don't have that many!  You have only %ld.", /* EN You("don't have that many!  You have only %ld.", */ // TODO DE
 			    otmp->quan);
 #ifdef REDO
 			if (in_doagain) return((struct obj *) 0);
@@ -1094,7 +1094,7 @@ register const char *let,*word;
 		 * to drop one of several loadstones and having the loadstone
 		 * now be separate.
 		 */
-		if (!strcmp(word, "drop") &&
+		if (!strcmp(word, "drop") && /* EN if (!strcmp(word, "drop") && */ // TODO DE
 		    otmp->otyp == LOADSTONE && otmp->cursed)
 		    otmp->corpsenm = otmp->invlet;
 	    }
@@ -1114,25 +1114,25 @@ struct obj *otmp;
 	/* check for attempted use of accessory commands ('P','R') on armor
 	   and for corresponding armor commands ('W','T') on accessories */
 	if (ocls == ARMOR_CLASS) {
-	    if (!strcmp(word, "put on"))
-		s1 = "W", s2 = "wear", s3 = "";
-	    else if (!strcmp(word, "remove"))
-		s1 = "T", s2 = "take", s3 = " off";
+	    if (!strcmp(word, "put on")) /* EN if (!strcmp(word, "put on")) */ // TODO DE
+		s1 = "W", s2 = "wear", s3 = ""; /* EN s1 = "W", s2 = "wear", s3 = ""; */ // TODO DE
+	    else if (!strcmp(word, "remove")) /* EN else if (!strcmp(word, "remove")) */ // TODO DE
+		s1 = "T", s2 = "take", s3 = " off"; /* EN s1 = "T", s2 = "take", s3 = " off"; */ // TODO DE
 	} else if ((ocls == RING_CLASS || otyp == MEAT_RING) ||
 		ocls == AMULET_CLASS ||
 		(otyp == BLINDFOLD || otyp == TOWEL || otyp == LENSES)) {
-	    if (!strcmp(word, "wear"))
-		s1 = "P", s2 = "put", s3 = " on";
-	    else if (!strcmp(word, "take off"))
-		s1 = "R", s2 = "remove", s3 = "";
+	    if (!strcmp(word, "wear")) /* EN if (!strcmp(word, "wear")) */ // TODO DE
+		s1 = "P", s2 = "put", s3 = " on"; /* EN s1 = "P", s2 = "put", s3 = " on"; */ // TODO DE
+	    else if (!strcmp(word, "take off")) /* EN else if (!strcmp(word, "take off")) */ // TODO DE
+		s1 = "R", s2 = "remove", s3 = ""; /* EN s1 = "R", s2 = "remove", s3 = ""; */ // TODO DE
 	}
 	if (s1) {
-	    what = "that";
+	    what = "that"; /* EN what = "that"; */ // TODO DE
 	    /* quantity for armor and accessory objects is always 1,
 	       but some things should be referred to as plural */
 	    if (otyp == LENSES || is_gloves(otmp) || is_boots(otmp))
-		what = "those";
-	    pline("Use the '%s' command to %s %s%s.", s1, s2, what, s3);
+		what = "those"; /* EN what = "those"; */ // TODO DE
+			pline("Use the '%s' command to %s %s%s.", s1, s2, what, s3); /* EN pline("Use the '%s' command to %s %s%s.", s1, s2, what, s3); */ // TODO DE
 	} else {
 	    pline(silly_thing_to, word);
 	}
@@ -1205,7 +1205,7 @@ unsigned *resultflags;
 
 	if (resultflags) *resultflags = 0;
 #ifndef GOLDOBJ
-	allowgold = (u.ugold && !strcmp(word, "drop")) ? 1 : 0;
+	allowgold = (u.ugold && !strcmp(word, "drop")) ? 1 : 0; /* EN allowgold = (u.ugold && !strcmp(word, "drop")) ? 1 : 0; */ // TODO DE
 #endif
 	takeoff = ident = allflag = m_seen = FALSE;
 #ifndef GOLDOBJ
@@ -1213,14 +1213,14 @@ unsigned *resultflags;
 #else
 	if(!invent){
 #endif
-		You("have nothing to %s.", word);
+		You("have nothing to %s.", word); /* EN You("have nothing to %s.", word); */ // TODO DE
 		return(0);
 	}
 	add_valid_menu_class(0);	/* reset */
 	if (taking_off(word)) {
 	    takeoff = TRUE;
 	    filter = is_worn;
-	} else if (!strcmp(word, "identify")) {
+	} else if (!strcmp(word, "identify")) { /* EN } else if (!strcmp(word, "identify")) { */ // TODO DE
 	    ident = TRUE;
 	    filter = not_fully_identified;
 	}
@@ -1252,7 +1252,7 @@ unsigned *resultflags;
 	ilets[iletct] = '\0';
 
 	for (;;) {
-	    Sprintf(qbuf,"What kinds of thing do you want to %s? [%s]",
+	    Sprintf(qbuf,"What kinds of thing do you want to %s? [%s]", /* EN Sprintf(qbuf,"What kinds of thing do you want to %s? [%s]", */ // TODO DE
 		    word, ilets);
 	    getlin(qbuf, buf);
 	    if (buf[0] == '\033') return(0);
@@ -1280,23 +1280,23 @@ unsigned *resultflags;
 		if (index(extra_removeables, oc_of_sym)) {
 		    ;	/* skip rest of takeoff checks */
 		} else if (!index(removeables, oc_of_sym)) {
-		    pline("Not applicable.");
+		    pline("Not applicable."); /* EN pline("Not applicable."); */ // TODO DE
 		    return 0;
 		} else if (oc_of_sym == ARMOR_CLASS && !wearing_armor()) {
-		    You("are not wearing any armor.");
+		    You("are not wearing any armor."); /* EN You("are not wearing any armor."); */ // TODO DE
 		    return 0;
 		} else if (oc_of_sym == WEAPON_CLASS &&
 			!uwep && !uswapwep && !uquiver) {
-		    You("are not wielding anything.");
+		    You("are not wielding anything."); /* EN You("are not wielding anything."); */ // TODO DE
 		    return 0;
 		} else if (oc_of_sym == RING_CLASS && !uright && !uleft) {
-		    You("are not wearing rings.");
+		    You("are not wearing rings."); /* EN You("are not wearing rings."); */ // TODO DE
 		    return 0;
 		} else if (oc_of_sym == AMULET_CLASS && !uamul) {
-		    You("are not wearing an amulet.");
+		    You("are not wearing an amulet."); /* EN You("are not wearing an amulet."); */ // TODO DE
 		    return 0;
 		} else if (oc_of_sym == TOOL_CLASS && !ublindf) {
-		    You("are not wearing a blindfold.");
+		    You("are not wearing a blindfold."); /* EN You("are not wearing a blindfold."); */ // TODO DE
 		    return 0;
 		}
 	    }
@@ -1306,7 +1306,7 @@ unsigned *resultflags;
 		if (allowgold == 1)
 		    (*fn)(mkgoldobj(u.ugold));
 		else if (!u.ugold)
-		    You("VERB_HAVE kein Gold.");
+		    You("VERB_HAVE kein Gold."); /* EN You("have no gold."); */
 		allowgold = 2;
 #else
 		flags.botl = 1;
@@ -1333,7 +1333,7 @@ unsigned *resultflags;
 	    } else if (sym == 'm') {
 		m_seen = TRUE;
 	    } else if (oc_of_sym == MAXOCLASSES) {
-		You("don't have any %c's.", sym);
+		You("don't have any %c's.", sym); /* EN You("don't have any %c's.", sym); */ // TODO DE
 	    } else if (oc_of_sym != VENOM_CLASS) {	/* suppress venom */
 		if (!index(olets, oc_of_sym)) {
 		    add_valid_menu_class(oc_of_sym);
@@ -1391,8 +1391,8 @@ register int FDECL((*fn),(OBJ_P)), FDECL((*ckfn),(OBJ_P));
 	char qbuf[QBUFSZ];
 
 	takeoff = taking_off(word);
-	ident = !strcmp(word, "identify");
-	nodot = (!strcmp(word, "nodot") || !strcmp(word, "drop") ||
+	ident = !strcmp(word, "identify"); /* EN ident = !strcmp(word, "identify"); */ // TODO DE
+	nodot = (!strcmp(word, "nodot") || !strcmp(word, "drop") || /* EN nodot = (!strcmp(word, "nodot") || !strcmp(word, "drop") || */ // TODO DE
 		 ident || takeoff);
 	ininv = (*objchn == invent);
 	/* Changed so the askchain is interrogated in the order specified.
@@ -1463,8 +1463,8 @@ nextclass:
 	}
 	if (olets && *olets && *++olets)
 		goto nextclass;
-	if(!takeoff && (dud || cnt)) pline("That was all.");
-	else if(!dud && !cnt) pline("No applicable objects.");
+	if(!takeoff && (dud || cnt)) pline("That was all."); /* EN if(!takeoff && (dud || cnt)) pline("That was all."); */ // TODO DE
+	else if(!dud && !cnt) pline("No applicable objects."); /* EN else if(!dud && !cnt) pline("No applicable objects."); */ // TODO DE
 ret:
 	return(cnt);
 }
@@ -1507,8 +1507,8 @@ int id_limit;
     /* assumptions:  id_limit > 0 and at least one unID'd item is present */
 
     while (id_limit) {
-	Sprintf(buf, "What would you like to identify %s?",
-		first ? "first" : "next");
+	Sprintf(buf, "What would you like to identify %s?", /* EN Sprintf(buf, "What would you like to identify %s?", */ // TODO DE
+		first ? "first" : "next"); /* EN first ? "first" : "next"); */ // TODO DE
 	n = query_objlist(buf, invent, SIGNAL_NOMENU|USE_INVLET|INVORDER_SORT,
 		&pick_list, PICK_ANY, not_fully_identified);
 
@@ -1519,7 +1519,7 @@ int id_limit;
 	    free((genericptr_t) pick_list);
 	    mark_synch(); /* Before we loop to pop open another menu */
 	} else {
-	    if (n < 0) pline("That was all.");
+	    if (n < 0) pline("That was all."); /* EN if (n < 0) pline("That was all."); */ // TODO DE
 	    id_limit = 0; /* Stop now */
 	}
 	first = 0;
@@ -1540,7 +1540,7 @@ int id_limit;
 	if (not_fully_identified(obj)) ++unid_cnt, the_obj = obj;
 
     if (!unid_cnt) {
-	You("have already identified all of your possessions.");
+	You("have already identified all of your possessions."); /* EN You("have already identified all of your possessions."); */ // TODO DE
     } else if (!id_limit) {
 	/* identify everything */
 	if (unid_cnt == 1) {
@@ -1557,7 +1557,7 @@ int id_limit;
 	n = 0;
 	if (flags.menu_style == MENU_TRADITIONAL)
 	    do {
-		n = ggetobj("identify", identify, id_limit, FALSE, (unsigned *)0);
+		n = ggetobj("identify", identify, id_limit, FALSE, (unsigned *)0); /* EN n = ggetobj("identify", identify, id_limit, FALSE, (unsigned *)0); */ // TODO DE
 		if (n < 0) break; /* quit or no eligible items */
 	    } while ((id_limit -= n) > 0);
 	if (n == 0 || n < -1)
@@ -1637,7 +1637,7 @@ long quan;		/* if non-0, print this quantity, not obj->quan */
 		(txt ? txt : doname(obj)), cost, currency(cost));
 #ifndef GOLDOBJ
     } else if (obj && obj->oclass == COIN_CLASS) {
-	Sprintf(li, "%ld NOUN_GOLD_PIECE%s%s", obj->quan, plur(obj->quan),
+	Sprintf(li, "%ld NOUN_GOLD_PIECE%s%s", obj->quan, plur(obj->quan), /* EN Sprintf(li, "%ld gold piece%s%s", obj->quan, plur(obj->quan), */
 		(dot ? "." : ""));
 #endif
     } else {
@@ -1738,7 +1738,7 @@ long* out_cnt;
 	    win = WIN_INVEN;
 
 #ifdef DUMP_LOG
-	if (want_dump)   dump("", "Your inventory");
+	if (want_dump)   dump("", "Your inventory"); /* EN if (want_dump)   dump("", "Your inventory"); */ // TODO DE
 #endif
 
 	/*
@@ -1754,17 +1754,17 @@ long* out_cnt;
 	*/
 	if (!invent && !(flags.perm_invent && !lets && !want_reply)) {
 #ifndef GOLDOBJ
-	    pline("Not carrying anything%s.", u.ugold ? " except gold" : "");
+	    pline("Not carrying anything%s.", u.ugold ? " except gold" : ""); /* EN pline("Not carrying anything%s.", u.ugold ? " except gold" : ""); */ // TODO DE
 #else
-	    pline("Not carrying anything.");
+	    pline("Not carrying anything."); /* EN pline("Not carrying anything."); */ // TODO DE
 #endif
 #ifdef DUMP_LOG
 	    if (want_dump) {
 #ifdef GOLDOBJ
-	      dump("  ", "Not carrying anything");
+	      dump("  ", "Not carrying anything"); /* EN dump("  ", "Not carrying anything"); */ // TODO DE
 #else
-	      dump("  Not carrying anything",
-		   u.ugold ? " except gold." : ".");
+	      dump("  Not carrying anything", /* EN dump("  Not carrying anything", */ // TODO DE
+		   u.ugold ? " except gold." : "."); /* EN u.ugold ? " except gold." : "."); */ // TODO DE
 #endif
 	    }
 #endif
@@ -2054,14 +2054,14 @@ dotypeinv()
 	boolean billx = *u.ushops && doinvbill(0);
 	menu_item *pick_list;
 	boolean traditional = TRUE;
-	const char *prompt = "What type of object do you want an inventory of?";
+	const char *prompt = "What type of object do you want an inventory of?"; /* EN const char *prompt = "What type of object do you want an inventory of?"; */ // TODO DE
 
 #ifndef GOLDOBJ
 	if (!invent && !u.ugold && !billx) {
 #else
 	if (!invent && !billx) {
 #endif
-	    You("aren't carrying anything.");
+	    You("aren't carrying anything."); /* EN You("aren't carrying anything."); */ // TODO DE
 	    return 0;
 	}
 	unpaid_count = count_unpaid(invent);
@@ -2129,14 +2129,14 @@ dotypeinv()
 	    if (billx)
 		(void) doinvbill(1);
 	    else
-		pline("No used-up objects on your shopping bill.");
+		pline("No used-up objects on your shopping bill."); /* EN pline("No used-up objects on your shopping bill."); */ // TODO DE
 	    return 0;
 	}
 	if (c == 'u') {
 	    if (unpaid_count)
 		dounpaid();
 	    else
-		You("are not carrying any unpaid objects.");
+		You("are not carrying any unpaid objects."); /* EN You("are not carrying any unpaid objects."); */ // TODO DE
 	    return 0;
 	}
 	if (traditional) {
@@ -2144,7 +2144,7 @@ dotypeinv()
 	    if (oclass == COIN_CLASS) {
 		return doprgold();
 	    } else if (index(types, c) > index(types, '\033')) {
-		You("have no such objects.");
+		You("have no such objects."); /* EN You("have no such objects."); */ // TODO DE
 		return 0;
 	    }
 	    this_type = oclass;
@@ -2172,12 +2172,12 @@ char *buf;
 	    switch (lev->doormask) {
 	    case D_NODOOR:	cmap = S_ndoor; break;	/* "doorway" */
 	    case D_ISOPEN:	cmap = S_vodoor; break;	/* "open door" */
-	    case D_BROKEN:	dfeature = "broken door"; break;
+	    case D_BROKEN:	dfeature = "broken door"; break; /* EN case D_BROKEN:	dfeature = "broken door"; break; */ // TODO DE
 	    default:	cmap = S_vcdoor; break;	/* "closed door" */
 	    }
 	    /* override door description for open drawbridge */
 	    if (is_drawbridge_wall(x, y) >= 0)
-		dfeature = "open drawbridge portcullis",  cmap = -1;
+		dfeature = "open drawbridge portcullis",  cmap = -1; /* EN dfeature = "open drawbridge portcullis",  cmap = -1; */ // TODO DE
 	} else if (IS_FOUNTAIN(ltyp))
 	    cmap = S_fountain;				/* "fountain" */
 	else if (IS_THRONE(ltyp))
@@ -2187,13 +2187,13 @@ char *buf;
 	else if (is_ice(x,y))
 	    cmap = S_ice;				/* "ice" */
 	else if (is_pool(x,y))
-	    dfeature = "pool of water";
+	    dfeature = "pool of water"; /* EN dfeature = "pool of water"; */ // TODO DE
 #ifdef SINKS
 	else if (IS_SINK(ltyp))
 	    cmap = S_sink;				/* "sink" */
 #endif
 	else if (IS_ALTAR(ltyp)) {
-	    Sprintf(altbuf, "altar to %s (%s)", a_gname(),
+	    Sprintf(altbuf, "altar to %s (%s)", a_gname(), /* EN Sprintf(altbuf, "altar to %s (%s)", a_gname(), */ // TODO DE
 		    align_str(Amask2align(lev->altarmask & ~AM_SHRINE)));
 	    dfeature = altbuf;
 	} else if ((x == xupstair && y == yupstair) ||
@@ -2215,7 +2215,7 @@ char *buf;
 	else if (ltyp == TREE)
 	    cmap = S_tree;				/* "tree" */
 	else if (ltyp == IRONBARS)
-	    dfeature = "set of iron bars";
+	    dfeature = "set of iron bars"; /* EN dfeature = "set of iron bars"; */ // TODO DE
 
 	if (cmap >= 0) dfeature = defsyms[cmap].explanation;
 	if (dfeature) Strcpy(buf, dfeature);
@@ -2231,7 +2231,7 @@ boolean picked_some;
 {
 	struct obj *otmp;
 	struct trap *trap;
-	const char *verb = Blind ? "VERB_FEEL" : "VERB_SEE";
+	const char *verb = Blind ? "VERB_FEEL" : "VERB_SEE"; /* EN const char *verb = Blind ? "feel" : "see"; */
 	const char *dfeature = (char *)0;
 	char fbuf[BUFSZ], fbuf2[BUFSZ];
 	winid tmpwin;
@@ -2239,60 +2239,60 @@ boolean picked_some;
 
 	if (u.uswallow && u.ustuck) {
 	    struct monst *mtmp = u.ustuck;
-	    Sprintf(fbuf, "Contents of %s %s",
+	    Sprintf(fbuf, "Contents of %s %s", /* EN Sprintf(fbuf, "Contents of %s %s", */ // TODO DE
 		s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH));
 	    /* Skip "Contents of " by using fbuf index 12 */
-	    You("%s to %s what is lying in %s.",
-		Blind ? "try" : "look around", verb, &fbuf[12]);
+	    You("%s to %s what is lying in %s.", /* EN You("%s to %s what is lying in %s.", */ // TODO DE
+		Blind ? "try" : "look around", verb, &fbuf[12]); /* EN Blind ? "try" : "look around", verb, &fbuf[12]); */ // TODO DE
 	    otmp = mtmp->minvent;
 	    if (otmp) {
 		for ( ; otmp; otmp = otmp->nobj) {
 			/* If swallower is an animal, it should have become stone but... */
 			if (otmp->otyp == CORPSE) feel_cockatrice(otmp, FALSE);
 		}
-		if (Blind) Strcpy(fbuf, "You feel");
+		if (Blind) Strcpy(fbuf, "You feel"); /* EN if (Blind) Strcpy(fbuf, "You feel"); */ // TODO DE
 		Strcat(fbuf,":");
 	    	(void) display_minventory(mtmp, MINV_ALL, fbuf);
 	    } else {
-		You("%s no objects here.", verb);
+		You("%s no objects here.", verb); /* EN You("%s no objects here.", verb); */ // TODO DE
 	    }
 	    return(!!Blind);
 	}
 	if (!skip_objects && (trap = t_at(u.ux,u.uy)) && trap->tseen)
-		There("is %s here.",
+		There("is %s here.", /* EN There("is %s here.", */ // TODO DE
 			an(defsyms[trap_to_defsym(trap->ttyp)].explanation));
 
 	otmp = level.objects[u.ux][u.uy];
 	dfeature = dfeature_at(u.ux, u.uy, fbuf2);
-	if (dfeature && !strcmp(dfeature, "pool of water") && Underwater)
+	if (dfeature && !strcmp(dfeature, "pool of water") && Underwater) /* EN if (dfeature && !strcmp(dfeature, "pool of water") && Underwater) */ // TODO DE
 		dfeature = 0;
 
 	if (Blind) {
 		boolean drift = Is_airlevel(&u.uz) || Is_waterlevel(&u.uz);
-		if (dfeature && !strncmp(dfeature, "altar ", 6)) {
+		if (dfeature && !strncmp(dfeature, "altar ", 6)) { /* EN if (dfeature && !strncmp(dfeature, "altar ", 6)) { */ // TODO DE
 		    /* don't say "altar" twice, dfeature has more info */
-		    You("try to feel what is here.");
+		    You("try to feel what is here."); /* EN You("try to feel what is here."); */ // TODO DE
 		} else {
-		    You("try to feel what is %s%s.",
-			drift ? "floating here" : "lying here on the ",
+		    You("try to feel what is %s%s.", /* EN You("try to feel what is %s%s.", */ // TODO DE
+			drift ? "floating here" : "lying here on the ", /* EN drift ? "floating here" : "lying here on the ", */ // TODO DE
 			drift ? ""		: surface(u.ux, u.uy));
 		}
 		if (dfeature && !drift && !strcmp(dfeature, surface(u.ux,u.uy)))
 			dfeature = 0;		/* ice already identifed */
 		if (!can_reach_floor()) {
-			pline("But you can't reach it!");
+			pline("But you can't reach it!"); /* EN pline("But you can't reach it!"); */ // TODO DE
 			return(0);
 		}
 	}
 
 	if (dfeature)
-		Sprintf(fbuf, "There is %s here.", an(dfeature));
+		Sprintf(fbuf, "There is %s here.", an(dfeature)); /* EN Sprintf(fbuf, "There is %s here.", an(dfeature)); */ // TODO DE
 
 	if (!otmp || is_lava(u.ux,u.uy) || (is_pool(u.ux,u.uy) && !Underwater)) {
 		if (dfeature) pline(fbuf);
 		read_engr_at(u.ux, u.uy); /* Eric Backus */
 		if (!skip_objects && (Blind || !dfeature))
-		    You("%s no objects here.", verb);
+		    You("%s no objects here.", verb); /* EN You("%s no objects here.", verb); */ // TODO DE
 		return(!!Blind);
 	}
 	/* we know there is something here */
@@ -2300,17 +2300,17 @@ boolean picked_some;
 	if (skip_objects) {
 	    if (dfeature) pline(fbuf);
 	    read_engr_at(u.ux, u.uy); /* Eric Backus */
-	    There("are %s%s objects here.",
-		  (obj_cnt <= 10) ? "several" : "many",
-		  picked_some ? " more" : "");
+	    There("are %s%s objects here.", /* EN There("are %s%s objects here.", */ // TODO DE
+		  (obj_cnt <= 10) ? "several" : "many", /* EN (obj_cnt <= 10) ? "several" : "many", */ // TODO DE
+		  picked_some ? " more" : ""); /* EN picked_some ? " more" : ""); */ // TODO DE
 	} else if (!otmp->nexthere) {
 	    /* only one object */
 	    if (dfeature) pline(fbuf);
 	    read_engr_at(u.ux, u.uy); /* Eric Backus */
 #ifdef INVISIBLE_OBJECTS
-	    if (otmp->oinvis && !See_invisible) verb = "feel";
+	    if (otmp->oinvis && !See_invisible) verb = "feel"; /* EN if (otmp->oinvis && !See_invisible) verb = "feel"; */ // TODO DE
 #endif
-	    You("%s hier OBJECT %s.", verb, doname(otmp));
+	    You("%s hier OBJECT %s.", verb, doname(otmp)); /* EN You("%s here %s.", verb, doname(otmp)); */
 	    if (otmp->otyp == CORPSE) feel_cockatrice(otmp, FALSE);
 	} else {
 	    display_nhwindow(WIN_MESSAGE, FALSE);
@@ -2319,14 +2319,14 @@ boolean picked_some;
 		putstr(tmpwin, 0, fbuf);
 		putstr(tmpwin, 0, "");
 	    }
-	    putstr(tmpwin, 0, Blind ? "Things that you feel here:" :
-				      "Things that are here:");
+	    putstr(tmpwin, 0, Blind ? "Things that you feel here:" : /* EN putstr(tmpwin, 0, Blind ? "Things that you feel here:" : */ // TODO DE
+				      "Things that are here:"); /* EN "Things that are here:"); */ // TODO DE
 	    for ( ; otmp; otmp = otmp->nexthere) {
 		if (otmp->otyp == CORPSE && will_feel_cockatrice(otmp, FALSE)) {
 			char buf[BUFSZ];
 			felt_cockatrice = TRUE;
 			Strcpy(buf, doname(otmp));
-			Strcat(buf, "...");
+			Strcat(buf, "..."); /* EN Strcat(buf, "..."); */ // TODO DE
 			putstr(tmpwin, 0, buf);
 			break;
 		}
@@ -2367,12 +2367,12 @@ boolean force_touch;
 
 	if (will_feel_cockatrice(otmp, force_touch)) {
 	    if(poly_when_stoned(youmonst.data))
-			You("touched the %s corpse with your bare %s.",
+			You("touched the %s corpse with your bare %s.", /* EN You("touched the %s corpse with your bare %s.", */ // TODO DE
 				mons[otmp->corpsenm].mname, makeplural(body_part(HAND)));
 	    else
-			pline("Touching the %s corpse is a fatal mistake...",
+			pline("Touching the %s corpse is a fatal mistake...", /* EN pline("Touching the %s corpse is a fatal mistake...", */ // TODO DE
 				mons[otmp->corpsenm].mname);
-		Sprintf(kbuf, "%s corpse", an(mons[otmp->corpsenm].mname));
+		Sprintf(kbuf, "%s corpse", an(mons[otmp->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[otmp->corpsenm].mname)); */ // TODO DE
 		instapetrify(kbuf);
 	}
 }
@@ -2476,15 +2476,15 @@ doprgold()
 	   take containers into account */
 #ifndef GOLDOBJ
 	if(!u.ugold)
-	    Your("NOUN_WALLET ist leer.");
+	    Your("NOUN_WALLET ist leer."); /* EN Your("wallet is empty."); */
 	else
-	    Your("NOUN_WALLET VERB_CONTAIN OBJECT %ld NOUN_GOLD_PIECE%s.", u.ugold, plur(u.ugold));
+	    Your("NOUN_WALLET VERB_CONTAIN OBJECT %ld NOUN_GOLD_PIECE%s.", u.ugold, plur(u.ugold)); /* EN Your("wallet contains %ld gold piece%s.", u.ugold, plur(u.ugold)); */
 #else
         long umoney = money_cnt(invent);
 	if(!umoney)
-	    Your("NOUN_WALLET ist leer.");
+	    Your("NOUN_WALLET ist leer."); /* EN Your("wallet is empty."); */
 	else
-	    Your("NOUN_WALLET VERB_CONTAIN %ld %s.", umoney, currency(umoney));
+	    Your("NOUN_WALLET VERB_CONTAIN %ld %s.", umoney, currency(umoney)); /* EN Your("wallet contains %ld %s.", umoney, currency(umoney)); */
 #endif
 	shopper_financial_report();
 	return 0;
@@ -2497,7 +2497,7 @@ int
 doprwep()
 {
     if (!uwep) {
-	You("are empty %s.", body_part(HANDED));
+	You("are empty %s.", body_part(HANDED)); /* EN You("are empty %s.", body_part(HANDED)); */ // TODO DE
     } else {
 	prinv((char *)0, uwep, 0L);
 	if (u.twoweap) prinv((char *)0, uswapwep, 0L);
@@ -2509,7 +2509,7 @@ int
 doprarm()
 {
 	if(!wearing_armor())
-		You("are not wearing any armor.");
+		You("are not wearing any armor."); /* EN You("are not wearing any armor."); */ // TODO DE
 	else {
 #ifdef TOURIST
 		char lets[8];
@@ -2537,7 +2537,7 @@ int
 doprring()
 {
 	if(!uleft && !uright)
-		You("are not wearing any rings.");
+		You("are not wearing any rings."); /* EN You("are not wearing any rings."); */ // TODO DE
 	else {
 		char lets[3];
 		register int ct = 0;
@@ -2554,7 +2554,7 @@ int
 dopramulet()
 {
 	if (!uamul)
-		You("are not wearing an amulet.");
+		You("are not wearing an amulet."); /* EN You("are not wearing an amulet."); */ // TODO DE
 	else
 		prinv((char *)0, uamul, 0L);
 	return 0;
@@ -2585,7 +2585,7 @@ doprtool()
 	    if (tool_in_use(otmp))
 		lets[ct++] = obj_to_let(otmp);
 	lets[ct] = '\0';
-	if (!ct) You("are not using any tools.");
+	if (!ct) You("are not using any tools."); /* EN if (!ct) You("are not using any tools."); */ // TODO DE
 	else (void) display_inventory(lets, FALSE);
 	return 0;
 }
@@ -2603,7 +2603,7 @@ doprinuse()
 	    if (is_worn(otmp) || tool_in_use(otmp))
 		lets[ct++] = obj_to_let(otmp);
 	lets[ct] = '\0';
-	if (!ct) You("are not wearing or wielding anything.");
+	if (!ct) You("are not wearing or wielding anything."); /* EN if (!ct) You("are not wearing or wielding anything."); */ // TODO DE
 	else (void) display_inventory(lets, FALSE);
 	return 0;
 }
@@ -2657,7 +2657,7 @@ static NEARDATA const char oth_symbols[] = {
 };
 
 static NEARDATA const char *oth_names[] = {
-	"Bagged/Boxed items"
+	"Bagged/Boxed items" /* EN "Bagged/Boxed items" */ // TODO DE
 };
 
 static NEARDATA char *invbuf = (char *)0;
@@ -2680,14 +2680,14 @@ boolean unpaid;
 	else
 	    class_name = names[0];
 
-	len = strlen(class_name) + (unpaid ? sizeof "unpaid_" : sizeof "");
+	len = strlen(class_name) + (unpaid ? sizeof "unpaid_" : sizeof ""); /* EN len = strlen(class_name) + (unpaid ? sizeof "unpaid_" : sizeof ""); */ // TODO DE
 	if (len > invbufsiz) {
 	    if (invbuf) free((genericptr_t)invbuf);
 	    invbufsiz = len + 10; /* add slop to reduce incremental realloc */
 	    invbuf = (char *) alloc(invbufsiz);
 	}
 	if (unpaid)
-	    Strcat(strcpy(invbuf, "Unpaid "), class_name);
+	    Strcat(strcpy(invbuf, "Unpaid "), class_name); /* EN Strcat(strcpy(invbuf, "Unpaid "), class_name); */ // TODO DE
 	else
 	    Strcpy(invbuf, class_name);
 	return invbuf;
@@ -2731,7 +2731,7 @@ doorganize()	/* inventory organizer by Del Lamb */
 	if (!flags.invlet_constant) reassign();
 	/* get a pointer to the object the user wants to organize */
 	allowall[0] = ALL_CLASSES; allowall[1] = '\0';
-	if (!(obj = getobj(allowall,"adjust"))) return(0);
+	if (!(obj = getobj(allowall,"adjust"))) return(0); /* EN if (!(obj = getobj(allowall,"adjust"))) return(0); */ // TODO DE
 
 	/* initialize the list with all upper and lower case letters */
 	for (let = 'a', ix = 0;  let <= 'z';) alphabet[ix++] = let++;
@@ -2756,20 +2756,20 @@ doorganize()	/* inventory organizer by Del Lamb */
 
 	/* get new letter to use as inventory letter */
 	for (;;) {
-		Sprintf(qbuf, "Adjust letter to what [%s]?",buf);
+		Sprintf(qbuf, "Adjust letter to what [%s]?",buf); /* EN Sprintf(qbuf, "Adjust letter to what [%s]?",buf); */ // TODO DE
 		let = yn_function(qbuf, (char *)0, '\0');
 		if(index(quitchars,let)) {
 			pline(Never_mind);
 			return(0);
 		}
 		if (let == '@' || !letter(let))
-			pline("Select an inventory slot letter.");
+			pline("Select an inventory slot letter."); /* EN pline("Select an inventory slot letter."); */ // TODO DE
 		else
 			break;
 	}
 
 	/* change the inventory and print the resulting item */
-	adj_type = "Moving:";
+	adj_type = "Moving:"; /* EN adj_type = "Moving:"; */ // TODO DE
 
 	/*
 	 * don't use freeinv/addinv to avoid double-touching artifacts,
@@ -2779,13 +2779,13 @@ doorganize()	/* inventory organizer by Del Lamb */
 
 	for (otmp = invent; otmp;)
 		if (merged(&otmp,&obj)) {
-			adj_type = "Merging:";
+			adj_type = "Merging:"; /* EN adj_type = "Merging:"; */ // TODO DE
 			obj = otmp;
 			otmp = otmp->nobj;
 			extract_nobj(obj, &invent);
 		} else {
 			if (otmp->invlet == let) {
-				adj_type = "Swapping:";
+				adj_type = "Swapping:"; /* EN adj_type = "Swapping:"; */ // TODO DE
 				otmp->invlet = obj->invlet;
 			}
 			otmp = otmp->nobj;
@@ -2869,7 +2869,7 @@ char *title;
 #endif
 
 	Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)),
-		do_all ? "possessions" : "armament");
+		do_all ? "possessions" : "armament"); /* EN do_all ? "possessions" : "armament"); */ // TODO DE
 
 #ifndef GOLDOBJ
 	if (do_all ? (mon->minvent || mon->mgold)
@@ -2910,7 +2910,7 @@ char *title;
 
 	    set_uasmon();
 	} else {
-	    invdisp_nothing(title ? title : tmp, "(none)");
+	    invdisp_nothing(title ? title : tmp, "(none)"); /* EN invdisp_nothing(title ? title : tmp, "(none)"); */ // TODO DE
 	    n = 0;
 	}
 
@@ -2943,13 +2943,13 @@ register struct obj *obj;
 	int n;
 	menu_item *selected = 0;
 
-	Sprintf(tmp,"Contents of %s:", doname(obj));
+	Sprintf(tmp,"Contents of %s:", doname(obj)); /* EN Sprintf(tmp,"Contents of %s:", doname(obj)); */ // TODO DE
 
 	if (obj->cobj) {
 	    n = query_objlist(tmp, obj->cobj, INVORDER_SORT, &selected,
 			    PICK_NONE, allow_all);
 	} else {
-	    invdisp_nothing(tmp, "(empty)");
+	    invdisp_nothing(tmp, "(empty)"); /* EN invdisp_nothing(tmp, "(empty)"); */ // TODO DE
 	    n = 0;
 	}
 	if (n > 0) {
@@ -2995,7 +2995,7 @@ boolean as_if_seen;
 	if (n) {
 	    only.x = x;
 	    only.y = y;
-	    if (query_objlist("Things that are buried here:",
+	    if (query_objlist("Things that are buried here:", /* EN if (query_objlist("Things that are buried here:", */ // TODO DE
 			      level.buriedobjlist, INVORDER_SORT,
 			      &selected, PICK_NONE, only_here) > 0)
 		free((genericptr_t)selected);

@@ -61,39 +61,39 @@ STATIC_VAR NEARDATA const short skill_names_indices[P_NUM_SKILLS] = {
 
 /* note: entry [0] isn't used */
 STATIC_VAR NEARDATA const char * const odd_skill_names[] = {
-    "no skill",
-    "bare hands",		/* use barehands_or_martial[] instead */
-    "two weapon combat",
-    "riding",
-    "polearms",
-    "saber",
-    "hammer",
-    "whip",
-    "attack spells",
-    "healing spells",
-    "divination spells",
-    "enchantment spells",
-    "clerical spells",
-    "escape spells",
-    "matter spells",
+    "no skill", /* EN "no skill", */ // TODO DE
+    "bare hands",		/* use barehands_or_martial[] instead */ /* EN "bare hands",		 */ // TODO DE
+    "two weapon combat", /* EN "two weapon combat", */ // TODO DE
+    "riding", /* EN "riding", */ // TODO DE
+    "polearms", /* EN "polearms", */ // TODO DE
+    "saber", /* EN "saber", */ // TODO DE
+    "hammer", /* EN "hammer", */ // TODO DE
+    "whip", /* EN "whip", */ // TODO DE
+    "attack spells", /* EN "attack spells", */ // TODO DE
+    "healing spells", /* EN "healing spells", */ // TODO DE
+    "divination spells", /* EN "divination spells", */ // TODO DE
+    "enchantment spells", /* EN "enchantment spells", */ // TODO DE
+    "clerical spells", /* EN "clerical spells", */ // TODO DE
+    "escape spells", /* EN "escape spells", */ // TODO DE
+    "matter spells", /* EN "matter spells", */ // TODO DE
 };
 /* indexed vis `is_martial() */
 STATIC_VAR NEARDATA const char * const barehands_or_martial[] = {
-    "bare handed combat", "martial arts"
+    "bare handed combat", "martial arts" /* EN "bare handed combat", "martial arts" */ // TODO DE
 };
 
 STATIC_OVL void
 give_may_advance_msg(skill)
 int skill;
 {
-	You_feel("more confident in your %sskills.",
+	You_feel("more confident in your %sskills.", /* EN You_feel("more confident in your %sskills.", */ // TODO DE
 		skill == P_NONE ?
 			"" :
 		skill <= P_LAST_WEAPON ?
-			"weapon " :
+			"weapon " : /* EN "weapon " : */ // TODO DE
 		skill <= P_LAST_SPELL ?
-			"spell casting " :
-		"fighting ");
+			"spell casting " : /* EN "spell casting " : */ // TODO DE
+		"fighting "); /* EN "fighting "); */ // TODO DE
 }
 
 #endif	/* OVLB */
@@ -548,12 +548,12 @@ boolean polyspot;
 		mon->weapon_check = NO_WEAPON_WANTED;
 		obj_extract_self(obj);
 		if (cansee(mon->mx, mon->my)) {
-		    pline("SUBJECT %s VERB_DROP OBJECT %s SATZKLAMMER.", Monnam(mon),
+		    pline("SUBJECT %s VERB_DROP OBJECT %s SATZKLAMMER.", Monnam(mon), /* EN pline("%s drops %s.", Monnam(mon), */
 			  distant_name(obj, doname));
 		    newsym(mon->mx, mon->my);
 		}
 		/* might be dropping object into water or lava */
-		if (!flooreffects(obj, mon->mx, mon->my, "drop")) {
+		if (!flooreffects(obj, mon->mx, mon->my, "drop")) { /* EN if (!flooreffects(obj, mon->mx, mon->my, "drop")) { */ // TODO DE
 		    if (polyspot) bypass_obj(obj);
 		    place_object(obj, mon->mx, mon->my);
 		    stackobj(obj);
@@ -640,18 +640,18 @@ register struct monst *mon;
 			const char *mon_hand = mbodypart(mon, HAND);
 
 			if (bimanual(mw_tmp)) mon_hand = makeplural(mon_hand);
-			Sprintf(welded_buf, "%s welded to %s %s",
-				otense(mw_tmp, "are"),
+			Sprintf(welded_buf, "%s welded to %s %s", /* EN Sprintf(welded_buf, "%s welded to %s %s", */ // TODO DE
+				otense(mw_tmp, "are"), /* EN otense(mw_tmp, "are"), */ // TODO DE
 				mhis(mon), mon_hand);
 
 			if (obj->otyp == PICK_AXE) {
-			    pline("Since %s weapon%s %s,",
+			    pline("Since %s weapon%s %s,", /* EN pline("Since %s weapon%s %s,", */ // TODO DE
 				  s_suffix(mon_nam(mon)),
 				  plur(mw_tmp->quan), welded_buf);
-			    pline("%s cannot wield that %s.",
+			    pline("%s cannot wield that %s.", /* EN pline("%s cannot wield that %s.", */ // TODO DE
 				mon_nam(mon), xname(obj));
 			} else {
-			    pline("%s tries to wield %s.", Monnam(mon),
+			    pline("%s tries to wield %s.", Monnam(mon), /* EN pline("%s tries to wield %s.", Monnam(mon), */ // TODO DE
 				doname(obj));
 			    pline("%s %s %s!",
 				  s_suffix(Monnam(mon)),
@@ -666,11 +666,11 @@ register struct monst *mon;
 		setmnotwielded(mon, mw_tmp);
 		mon->weapon_check = NEED_WEAPON;
 		if (canseemon(mon)) {
-		    pline("%s wields %s!", Monnam(mon), doname(obj));
+		    pline("%s wields %s!", Monnam(mon), doname(obj)); /* EN pline("%s wields %s!", Monnam(mon), doname(obj)); */ // TODO DE
 		    if (obj->cursed && obj->otyp != CORPSE) {
-			pline("%s %s to %s %s!",
-			    Tobjnam(obj, "weld"),
-			    is_plural(obj) ? "themselves" : "itself",
+			pline("%s %s to %s %s!", /* EN pline("%s %s to %s %s!", */ // TODO DE
+			    Tobjnam(obj, "weld"), /* EN Tobjnam(obj, "weld"), */ // TODO DE
+			    is_plural(obj) ? "themselves" : "itself", /* EN is_plural(obj) ? "themselves" : "itself", */ // TODO DE
 			    s_suffix(mon_nam(mon)), mbodypart(mon,HAND));
 			obj->bknown = 1;
 		    }
@@ -678,8 +678,8 @@ register struct monst *mon;
 		if (artifact_light(obj) && !obj->lamplit) {
 		    begin_burn(obj, FALSE);
 		    if (canseemon(mon))
-			pline("%s brilliantly in %s %s!",
-			    Tobjnam(obj, "glow"), 
+			pline("%s brilliantly in %s %s!", /* EN pline("%s brilliantly in %s %s!", */ // TODO DE
+			    Tobjnam(obj, "glow"), /* EN Tobjnam(obj, "glow"),  */ // TODO DE
 			    s_suffix(mon_nam(mon)), mbodypart(mon,HAND));
 		}
 		obj->owornmask = W_WEP;
@@ -743,13 +743,13 @@ char *buf;
     const char *ptr;
 
     switch (P_SKILL(skill)) {
-	case P_UNSKILLED:    ptr = "Unskilled"; break;
-	case P_BASIC:	     ptr = "Basic";     break;
-	case P_SKILLED:	     ptr = "Skilled";   break;
-	case P_EXPERT:	     ptr = "Expert";    break;
+	case P_UNSKILLED:    ptr = "Unskilled"; break; /* EN case P_UNSKILLED:    ptr = "Unskilled"; break; */ // TODO DE
+	case P_BASIC:	     ptr = "Basic";     break; /* EN case P_BASIC:	     ptr = "Basic";     break; */ // TODO DE
+	case P_SKILLED:	     ptr = "Skilled";   break; /* EN case P_SKILLED:	     ptr = "Skilled";   break; */ // TODO DE
+	case P_EXPERT:	     ptr = "Expert";    break; /* EN case P_EXPERT:	     ptr = "Expert";    break; */ // TODO DE
 	/* these are for unarmed combat/martial arts only */
-	case P_MASTER:	     ptr = "Master";    break;
-	case P_GRAND_MASTER: ptr = "Grand Master"; break;
+	case P_MASTER:	     ptr = "Master";    break; /* EN case P_MASTER:	     ptr = "Master";    break; */ // TODO DE
+	case P_GRAND_MASTER: ptr = "Grand Master"; break; /* EN case P_GRAND_MASTER: ptr = "Grand Master"; break; */ // TODO DE
 	default:	     ptr = "Unknown";	break;
     }
     Strcpy(buf, ptr);
@@ -831,8 +831,8 @@ int skill;
     P_SKILL(skill)++;
     u.skill_record[u.skills_advanced++] = skill;
     /* subtly change the advance message to indicate no more advancement */
-    You("are now %s skilled in %s.",
-	P_SKILL(skill) >= P_MAX_SKILL(skill) ? "most" : "more",
+    You("are now %s skilled in %s.", /* EN You("are now %s skilled in %s.", */ // TODO DE
+	P_SKILL(skill) >= P_MAX_SKILL(skill) ? "most" : "more", /* EN P_SKILL(skill) >= P_MAX_SKILL(skill) ? "most" : "more", */ // TODO DE
 	P_NAME(skill));
 }
 
@@ -840,9 +840,9 @@ const static struct skill_range {
 	short first, last;
 	const char *name;
 } skill_ranges[] = {
-    { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Fighting Skills" },
-    { P_FIRST_WEAPON, P_LAST_WEAPON, "Weapon Skills" },
-    { P_FIRST_SPELL,  P_LAST_SPELL,  "Spellcasting Skills" },
+    { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Fighting Skills" }, /* EN { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Fighting Skills" }, */ // TODO DE
+    { P_FIRST_WEAPON, P_LAST_WEAPON, "Weapon Skills" }, /* EN { P_FIRST_WEAPON, P_LAST_WEAPON, "Weapon Skills" }, */ // TODO DE
+    { P_FIRST_SPELL,  P_LAST_SPELL,  "Spellcasting Skills" }, /* EN { P_FIRST_SPELL,  P_LAST_SPELL,  "Spellcasting Skills" }, */ // TODO DE
 };
 
 /*
@@ -890,7 +890,7 @@ int enhance_skill(boolean want_dump)
 #ifdef DUMP_LOG
 	if (!want_dump)
 #endif
-	if (wizard && yn("Advance skills without practice?") == 'y')
+	if (wizard && yn("Advance skills without practice?") == 'y') /* EN if (wizard && yn("Advance skills without practice?") == 'y') */ // TODO DE
 	    speedy = TRUE;
 #endif
 
@@ -908,7 +908,7 @@ int enhance_skill(boolean want_dump)
 
 #ifdef DUMP_LOG
 	    if (want_dump)
-	      dump("","Your skills at the end");
+	      dump("","Your skills at the end"); /* EN dump("","Your skills at the end"); */ // TODO DE
 	    else {
 #endif
 	    win = create_nhwindow(NHW_MENU);
@@ -920,17 +920,17 @@ int enhance_skill(boolean want_dump)
 		any.a_void = 0;
 		if (eventually_advance > 0) {
 		    Sprintf(buf,
-			    "(Skill%s flagged by \"*\" may be enhanced %s.)",
+			    "(Skill%s flagged by \"*\" may be enhanced %s.)", /* EN "(Skill%s flagged by \"*\" may be enhanced %s.)", */ // TODO DE
 			    plur(eventually_advance),
 			    (u.ulevel < MAXULEV) ?
-				"when you're more experienced" :
-				"if skill slots become available");
+				"when you're more experienced" : /* EN "when you're more experienced" : */ // TODO DE
+				"if skill slots become available"); /* EN "if skill slots become available"); */ // TODO DE
 		    add_menu(win, NO_GLYPH, &any, 0, 0, ATR_NONE,
 			     buf, MENU_UNSELECTED);
 		}
 		if (maxxed_cnt > 0) {
 		    Sprintf(buf,
-		  "(Skill%s flagged by \"#\" cannot be enhanced any further.)",
+		  "(Skill%s flagged by \"#\" cannot be enhanced any further.)", /* EN "(Skill%s flagged by \"#\" cannot be enhanced any further.)", */ // TODO DE
 			    plur(maxxed_cnt));
 		    add_menu(win, NO_GLYPH, &any, 0, 0, ATR_NONE,
 			     buf, MENU_UNSELECTED);
@@ -1020,11 +1020,11 @@ int enhance_skill(boolean want_dump)
 #endif
 	    }
 
-	    Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" :
-					   "Current skills:");
+	    Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" : /* EN Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" : */ // TODO DE
+					   "Current skills:"); /* EN "Current skills:"); */ // TODO DE
 #ifdef WIZARD
 	    if (wizard && !speedy)
-		Sprintf(eos(buf), "  (%d slot%s available)",
+		Sprintf(eos(buf), "  (%d slot%s available)", /* EN Sprintf(eos(buf), "  (%d slot%s available)", */ // TODO DE
 			u.weapon_slots, plur(u.weapon_slots));
 #endif
 #ifdef DUMP_LOG
@@ -1043,7 +1043,7 @@ int enhance_skill(boolean want_dump)
 		/* check for more skills able to advance, if so then .. */
 		for (n = i = 0; i < P_NUM_SKILLS; i++) {
 		    if (can_advance(i, speedy)) {
-			if (!speedy) You_feel("you could be more dangerous!");
+			if (!speedy) You_feel("you could be more dangerous!"); /* EN if (!speedy) You_feel("you could be more dangerous!"); */ // TODO DE
 			n++;
 			break;
 		    }
@@ -1372,9 +1372,9 @@ register struct obj *obj;
     if (artifact_light(obj) && obj->lamplit) {
 	end_burn(obj, FALSE);
 	if (canseemon(mon))
-	    pline("%s in %s %s %s glowing.", The(xname(obj)),
+	    pline("%s in %s %s %s glowing.", The(xname(obj)), /* EN pline("%s in %s %s %s glowing.", The(xname(obj)), */ // TODO DE
 		  s_suffix(mon_nam(mon)), mbodypart(mon,HAND),
-		  otense(obj, "stop"));
+		  otense(obj, "stop")); /* EN otense(obj, "stop")); */ // TODO DE
     }
     obj->owornmask &= ~W_WEP;
 }

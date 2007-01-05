@@ -81,44 +81,44 @@ register struct obj *pen;
 	const char *typeword;
 
 	if (nohands(youmonst.data)) {
-	    You("need hands to be able to write!");
+	    You("need hands to be able to write!"); /* EN You("need hands to be able to write!"); */ // TODO DE
 	    return 0;
 	} else if (Glib) {
-	    pline("%s from your %s.",
-		  Tobjnam(pen, "slip"), makeplural(body_part(FINGER)));
+	    pline("%s from your %s.", /* EN pline("%s from your %s.", */ // TODO DE
+		  Tobjnam(pen, "slip"), makeplural(body_part(FINGER))); /* EN Tobjnam(pen, "slip"), makeplural(body_part(FINGER))); */ // TODO DE
 	    dropx(pen);
 	    return 1;
 	}
 
 	/* get paper to write on */
-	paper = getobj(write_on,"write on");
+	paper = getobj(write_on,"write on"); /* EN paper = getobj(write_on,"write on"); */ // TODO DE
 	if(!paper)
 		return(0);
-	typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll";
+	typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll"; /* EN typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll"; */ // TODO DE
 	if(Blind && !paper->dknown) {
-		You("don't know if that %s is blank or not!", typeword);
+		You("don't know if that %s is blank or not!", typeword); /* EN You("don't know if that %s is blank or not!", typeword); */ // TODO DE
 		return(1);
 	}
 	paper->dknown = 1;
 	if(paper->otyp != SCR_BLANK_PAPER && paper->otyp != SPE_BLANK_PAPER) {
-		pline("That %s is not blank!", typeword);
+		pline("That %s is not blank!", typeword); /* EN pline("That %s is not blank!", typeword); */ // TODO DE
 		exercise(A_WIS, FALSE);
 		return(1);
 	}
 
 	/* what to write */
-	Sprintf(qbuf, "What type of %s do you want to write?", typeword);
+	Sprintf(qbuf, "What type of %s do you want to write?", typeword); /* EN Sprintf(qbuf, "What type of %s do you want to write?", typeword); */ // TODO DE
 	getlin(qbuf, namebuf);
 	(void)mungspaces(namebuf);	/* remove any excess whitespace */
 	if(namebuf[0] == '\033' || !namebuf[0])
 		return(1);
 	nm = namebuf;
-	if (!strncmpi(nm, "scroll ", 7)) nm += 7;
-	else if (!strncmpi(nm, "spellbook ", 10)) nm += 10;
-	if (!strncmpi(nm, "of ", 3)) nm += 3;
+	if (!strncmpi(nm, "scroll ", 7)) nm += 7; /* EN if (!strncmpi(nm, "scroll ", 7)) nm += 7; */ // TODO DE
+	else if (!strncmpi(nm, "spellbook ", 10)) nm += 10; /* EN else if (!strncmpi(nm, "spellbook ", 10)) nm += 10; */ // TODO DE
+	if (!strncmpi(nm, "of ", 3)) nm += 3; /* EN if (!strncmpi(nm, "of ", 3)) nm += 3; */ // TODO DE
 
-	if ((bp = strstri(nm, " armour")) != 0) {
-		(void)strncpy(bp, " armor ", 7);	/* won't add '\0' */
+	if ((bp = strstri(nm, " armour")) != 0) { /* EN if ((bp = strstri(nm, " armour")) != 0) { */ // TODO DE
+		(void)strncpy(bp, " armor ", 7);	/* won't add '\0' */ /* EN (void)strncpy(bp, " armor ", 7);	*/ // TODO DE
 		(void)mungspaces(bp + 1);	/* remove the extra space */
 	}
 
@@ -136,22 +136,22 @@ register struct obj *pen;
 		}
 	}
 
-	There("is no such %s!", typeword);
+	There("is no such %s!", typeword); /* EN There("is no such %s!", typeword); */ // TODO DE
 	return 1;
 found:
 
 	if (i == SCR_BLANK_PAPER || i == SPE_BLANK_PAPER) {
-		You_cant("write that!");
-		pline("It's obscene!");
+		You_cant("write that!"); /* EN You_cant("write that!"); */ // TODO DE
+		pline("It's obscene!"); /* EN pline("It's obscene!"); */ // TODO DE
 		return 1;
 	} else if (i == SPE_BOOK_OF_THE_DEAD) {
-		pline("No mere dungeon adventurer could write that.");
+		pline("No mere dungeon adventurer could write that."); /* EN pline("No mere dungeon adventurer could write that."); */ // TODO DE
 		return 1;
 	} else if (by_descr && paper->oclass == SPBOOK_CLASS &&
 		    !objects[i].oc_name_known) {
 		/* can't write unknown spellbooks by description */
 		pline(
-		  "Unfortunately you don't have enough information to go on.");
+		  "Unfortunately you don't have enough information to go on."); /* EN "Unfortunately you don't have enough information to go on."); */ // TODO DE
 		return 1;
 	}
 
@@ -167,7 +167,7 @@ found:
 	/* see if there's enough ink */
 	basecost = cost(new_obj);
 	if(pen->spe < basecost/2)  {
-		Your("marker is too dry to write that!");
+		Your("marker is too dry to write that!"); /* EN Your("marker is too dry to write that!"); */ // TODO DE
 		obfree(new_obj, (struct obj *) 0);
 		return(1);
 	}
@@ -180,14 +180,14 @@ found:
 	/* dry out marker */
 	if (pen->spe < actualcost) {
 		pen->spe = 0;
-		Your("marker dries out!");
+		Your("marker dries out!"); /* EN Your("marker dries out!"); */ // TODO DE
 		/* scrolls disappear, spellbooks don't */
 		if (paper->oclass == SPBOOK_CLASS) {
 			pline_The(
-		       "spellbook is left unfinished and your writing fades.");
+		       "spellbook is left unfinished and your writing fades."); /* EN "spellbook is left unfinished and your writing fades."); */ // TODO DE
 			update_inventory();	/* pen charges */
 		} else {
-			pline_The("scroll is now useless and disappears!");
+			pline_The("scroll is now useless and disappears!"); /* EN pline_The("scroll is now useless and disappears!"); */ // TODO DE
 			useup(paper);
 		}
 		obfree(new_obj, (struct obj *) 0);
@@ -199,19 +199,19 @@ found:
 	if(!(objects[new_obj->otyp].oc_name_known) &&
 	   !(objects[new_obj->otyp].oc_uname) &&
 	   (rnl(Role_if(PM_WIZARD) ? 3 : 15))) {
-		You("%s to write that!", by_descr ? "fail" : "don't know how");
+		You("%s to write that!", by_descr ? "fail" : "don't know how"); /* EN You("%s to write that!", by_descr ? "fail" : "don't know how"); */ // TODO DE
 		/* scrolls disappear, spellbooks don't */
 		if (paper->oclass == SPBOOK_CLASS) {
 			You(
-       "write in your best handwriting:  \"My Diary\", but it quickly fades.");
+       "write in your best handwriting:  \"My Diary\", but it quickly fades."); /* EN "write in your best handwriting:  \"My Diary\", but it quickly fades."); */ // TODO DE
 			update_inventory();	/* pen charges */
 		} else {
 			if (by_descr) {
 			    Strcpy(namebuf, OBJ_DESCR(objects[new_obj->otyp]));
 			    wipeout_text(namebuf, (6+MAXULEV - u.ulevel)/6, 0);
 			} else
-			    Sprintf(namebuf, "%s was here!", plname);
-			You("write \"%s\" and the scroll disappears.", namebuf);
+			    Sprintf(namebuf, "%s was here!", plname); /* EN Sprintf(namebuf, "%s was here!", plname); */ // TODO DE
+			You("write \"%s\" and the scroll disappears.", namebuf); /* EN You("write \"%s\" and the scroll disappears.", namebuf); */ // TODO DE
 			useup(paper);
 		}
 		obfree(new_obj, (struct obj *) 0);
@@ -224,7 +224,7 @@ found:
 	/* success */
 	if (new_obj->oclass == SPBOOK_CLASS) {
 		/* acknowledge the change in the object's description... */
-		pline_The("spellbook warps strangely, then turns %s.",
+		pline_The("spellbook warps strangely, then turns %s.", /* EN pline_The("spellbook warps strangely, then turns %s.", */ // TODO DE
 		      OBJ_DESCR(objects[new_obj->otyp]));
 	}
 	new_obj->blessed = (curseval > 0);
@@ -232,8 +232,8 @@ found:
 #ifdef MAIL
 	if (new_obj->otyp == SCR_MAIL) new_obj->spe = 1;
 #endif
-	new_obj = hold_another_object(new_obj, "Oops!  %s out of your grasp!",
-					       The(aobjnam(new_obj, "slip")),
+	new_obj = hold_another_object(new_obj, "Oops!  %s out of your grasp!", /* EN new_obj = hold_another_object(new_obj, "Oops!  %s out of your grasp!", */ // TODO DE
+					       The(aobjnam(new_obj, "slip")), /* EN The(aobjnam(new_obj, "slip")), */ // TODO DE
 					       (const char *)0);
 	return(1);
 }

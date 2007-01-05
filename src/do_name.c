@@ -21,19 +21,19 @@ const char *goal;
     boolean doing_what_is;
     winid tmpwin = create_nhwindow(NHW_MENU);
 
-    Sprintf(sbuf, "Use [%s] to move the cursor to %s.",
+    Sprintf(sbuf, "Use [%s] to move the cursor to %s.", /* EN Sprintf(sbuf, "Use [%s] to move the cursor to %s.", */ // TODO DE
 	    iflags.num_pad ? "2468" : "hjkl", goal);
     putstr(tmpwin, 0, sbuf);
-    putstr(tmpwin, 0, "Use [HJKL] to move the cursor 8 units at a time.");
-    putstr(tmpwin, 0, "Or enter a background symbol (ex. <).");
+    putstr(tmpwin, 0, "Use [HJKL] to move the cursor 8 units at a time."); /* EN putstr(tmpwin, 0, "Use [HJKL] to move the cursor 8 units at a time."); */ // TODO DE
+    putstr(tmpwin, 0, "Or enter a background symbol (ex. <)."); /* EN putstr(tmpwin, 0, "Or enter a background symbol (ex. <)."); */ // TODO DE
     /* disgusting hack; the alternate selection characters work for any
        getpos call, but they only matter for dowhatis (and doquickwhatis) */
     doing_what_is = (goal == what_is_an_unknown_object);
-    Sprintf(sbuf, "Type a .%s when you are at the right place.",
-            doing_what_is ? " or , or ; or :" : "");
+    Sprintf(sbuf, "Type a .%s when you are at the right place.", /* EN Sprintf(sbuf, "Type a .%s when you are at the right place.", */ // TODO DE
+            doing_what_is ? " or , or ; or :" : ""); /* EN doing_what_is ? " or , or ; or :" : ""); */ // TODO DE
     putstr(tmpwin, 0, sbuf);
     if (!force)
-	putstr(tmpwin, 0, "Type Space or Escape when you're done.");
+	putstr(tmpwin, 0, "Type Space or Escape when you're done."); /* EN putstr(tmpwin, 0, "Type Space or Escape when you're done."); */ // TODO DE
     putstr(tmpwin, 0, "");
     display_nhwindow(tmpwin, TRUE);
     destroy_nhwindow(tmpwin);
@@ -55,7 +55,7 @@ const char *goal;
     if(iflags.num_pad) sdp = ndir; else sdp = sdir;	/* DICE workaround */
 
     if (flags.verbose) {
-	pline("(For instructions type a ?)");
+	pline("(For instructions type a ?)"); /* EN pline("(For instructions type a ?)"); */ // TODO DE
 	msg_given = TRUE;
     }
     cx = cc->x;
@@ -155,19 +155,19 @@ const char *goal;
 			    }	/* column */
 			}	/* row */
 		    }		/* pass */
-		    pline("Can't find dungeon feature '%c'.", c);
+		    pline("Can't find dungeon feature '%c'.", c); /* EN pline("Can't find dungeon feature '%c'.", c); */ // TODO DE
 		    msg_given = TRUE;
 		    goto nxtc;
 		} else {
-		    pline("Unknown direction: '%s' (%s).",
+		    pline("Unknown direction: '%s' (%s).", /* EN pline("Unknown direction: '%s' (%s).", */ // TODO DE
 			  visctrl((char)c),
-			  !force ? "aborted" :
-			  iflags.num_pad ? "use 2468 or ." : "use hjkl or .");
+			  !force ? "aborted" : /* EN !force ? "aborted" : */ // TODO DE
+			  iflags.num_pad ? "use 2468 or ." : "use hjkl or ."); /* EN iflags.num_pad ? "use 2468 or ." : "use hjkl or ."); */ // TODO DE
 		    msg_given = TRUE;
 		} /* k => matching */
 	    } /* !quitchars */
 	    if (force) goto nxtc;
-	    pline("Done.");
+	    pline("Done."); /* EN pline("Done."); */ // TODO DE
 	    msg_given = FALSE;	/* suppress clear */
 	    cx = -1;
 	    cy = 0;
@@ -231,12 +231,12 @@ do_mname()
 	char qbuf[QBUFSZ];
 
 	if (Hallucination) {
-		You("VERB_würden es sowieso nicht wiedererkennen.");
+		You("VERB_würden es sowieso nicht wiedererkennen."); /* EN You("would never recognize it anyway."); */
 		return 0;
 	}
 	cc.x = u.ux;
 	cc.y = u.uy;
-	if (getpos(&cc, FALSE, "the monster you want to name") < 0 ||
+	if (getpos(&cc, FALSE, "the monster you want to name") < 0 || /* EN if (getpos(&cc, FALSE, "the monster you want to name") < 0 || */ // TODO DE
 			(cx = cc.x) < 0)
 		return 0;
 	cy = cc.y;
@@ -247,10 +247,10 @@ do_mname()
 		mtmp = u.usteed;
 	    else {
 #endif
-		pline("This %s creature is called %s and cannot be renamed.",
+		pline("This %s creature is called %s and cannot be renamed.", /* EN pline("This %s creature is called %s and cannot be renamed.", */ // TODO DE
 		ACURR(A_CHA) > 14 ?
-		(flags.female ? "beautiful" : "handsome") :
-		"ugly",
+		(flags.female ? "beautiful" : "handsome") : /* EN (flags.female ? "beautiful" : "handsome") : */ // TODO DE
+		"ugly", /* EN "ugly", */ // TODO DE
 		plname);
 		return(0);
 #ifdef STEED
@@ -264,20 +264,19 @@ do_mname()
 			|| mtmp->m_ap_type == M_AP_FURNITURE
 			|| mtmp->m_ap_type == M_AP_OBJECT
 			|| (mtmp->minvis && !See_invisible)))) {
-		pline("I see no monster there.");
+		pline("I see no monster there."); /* EN pline("I see no monster there."); */ // TODO DE
 		return(0);
 	}
 	/* special case similar to the one in lookat() */
 	(void) distant_monnam(mtmp, ARTICLE_THE, buf);
-	Sprintf(qbuf, "What do you want to call %s?", buf);
+	Sprintf(qbuf, "What do you want to call %s?", buf); /* EN Sprintf(qbuf, "What do you want to call %s?", buf); */ // TODO DE
 	getlin(qbuf,buf);
 	if(!*buf || *buf == '\033') return(0);
 	/* strip leading and trailing spaces; unnames monster if all spaces */
 	(void)mungspaces(buf);
 
 	if (mtmp->data->geno & G_UNIQ)
-		/* pline("%s doesn't like being called names!", Monnam(mtmp));*/
-		pline("%s mag keine Spitznamen!", Monnam(mtmp));
+		pline("%s mag keine Spitznamen!", Monnam(mtmp)); /* EN pline("%s doesn't like being called names!", Monnam(mtmp));*/
 	else
 	    (void) christen_monst(mtmp, buf);
 	return(0);
@@ -297,8 +296,8 @@ register struct obj *obj;
 	const char *aname;
 	short objtyp;
 
-	Sprintf(qbuf, "What do you want to name %s %s?",
-		is_plural(obj) ? "these" : "this", xname(obj));
+	Sprintf(qbuf, "What do you want to name %s %s?", /* EN Sprintf(qbuf, "What do you want to name %s %s?", */ // TODO DE
+		is_plural(obj) ? "these" : "this", xname(obj)); /* EN is_plural(obj) ? "these" : "this", xname(obj)); */ // TODO DE
 	getlin(qbuf, buf);
 	if(!*buf || *buf == '\033')	return;
 	/* strip leading and trailing spaces; unnames item if all spaces */
@@ -309,7 +308,7 @@ register struct obj *obj;
 		Strcpy(buf, aname);
 
 	if (obj->oartifact) {
-		pline_The("artifact seems to resist the attempt.");
+		pline_The("artifact seems to resist the attempt."); /* EN pline_The("artifact seems to resist the attempt."); */ // TODO DE
 		return;
 	} else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) {
 		int n = rn2((int)strlen(buf));
@@ -318,9 +317,9 @@ register struct obj *obj;
 		c1 = lowc(buf[n]);
 		do c2 = 'a' + rn2('z'-'a'); while (c1 == c2);
 		buf[n] = (buf[n] == c1) ? c2 : highc(c2);  /* keep same case */
-		pline("While engraving your %s slips.", body_part(HAND));
+		pline("While engraving your %s slips.", body_part(HAND)); /* EN pline("While engraving your %s slips.", body_part(HAND)); */ // TODO DE
 		display_nhwindow(WIN_MESSAGE, FALSE);
-		You("engrave: \"%s\".",buf);
+		You("engrave: \"%s\".",buf); /* EN You("engrave: \"%s\".",buf); */ // TODO DE
 	}
 	obj = oname(obj, buf);
 }
@@ -454,7 +453,7 @@ ddocall()
 #ifdef REDO
 		ch =
 #endif
-		ynq("Name an individual object?")) {
+		ynq("Name an individual object?")) { /* EN ynq("Name an individual object?")) { */ // TODO DE
 	case 'q':
 		break;
 	case 'y':
@@ -477,7 +476,7 @@ ddocall()
 			(void) xname(obj);
 
 			if (!obj->dknown) {
-				You("would never recognize another one.");
+				You("would never recognize another one."); /* EN You("would never recognize another one."); */ // TODO DE
 				return 0;
 			}
 			docall(obj);
@@ -502,7 +501,7 @@ register struct obj *obj;
 	otemp.oxlth = 0;
 	if (objects[otemp.otyp].oc_class == POTION_CLASS && otemp.corpsenm)
 	    /* kludge, meaning it's sink water */
-	    Sprintf(qbuf,"Call a stream of %s fluid:",
+	    Sprintf(qbuf,"Call a stream of %s fluid:", /* EN Sprintf(qbuf,"Call a stream of %s fluid:", */ // TODO DE
 		    OBJ_DESCR(objects[otemp.otyp]));
 	else
 	    Sprintf(qbuf, "Call %s:", an(xname(&otemp)));
@@ -535,6 +534,7 @@ register struct obj *obj;
 static const char * const ghostnames[] = {
 	/* these names should have length < PL_NSIZ */
 	/* Capitalize the names for aesthetics -dgk */
+	// TODO DE?
 	"Adri", "Andries", "Andreas", "Bert", "David", "Dirk", "Emile",
 	"Frans", "Fred", "Greg", "Hether", "Jay", "John", "Jon", "Karnov",
 	"Kay", "Kenny", "Kevin", "Maud", "Michiel", "Mike", "Peter", "Robert",
@@ -616,7 +616,7 @@ boolean called;
 
 	/* unseen monsters, etc.  Use "it" */
 	if (do_it) {
-	    Strcpy(buf, "NOUN_IT");
+	    Strcpy(buf, "NOUN_IT"); /* EN Strcpy(buf, "it"); */
 	    return buf;
 	}
 
@@ -653,7 +653,7 @@ boolean called;
 	    name = priestname(mtmp, priestnambuf);
 	    EHalluc_resistance = save_prop;
 	    mtmp->minvis = save_invis;
-	    if (article == ARTICLE_NONE && !strncmp(name, "ARTIKEL_BESTIMMTER ", 19))
+	    if (article == ARTICLE_NONE && !strncmp(name, "ARTIKEL_BESTIMMTER ", 19)) /* EN if (article == ARTICLE_NONE && !strncmp(name, "the ", 4)) */
 		name += 19;
 	    return strcpy(buf, name);
 	}
@@ -667,7 +667,7 @@ boolean called;
 	    if (adjective && article == ARTICLE_THE) {
 		/* pathological case: "the angry Asidonhopo the blue dragon"
 		   sounds silly */
-		Strcpy(buf, "ARTIKEL_BESTIMMTER ");
+		Strcpy(buf, "ARTIKEL_BESTIMMTER "); /* EN Strcpy(buf, "the "); */
 		Strcat(strcat(buf, adjective), " ");
 		Strcat(buf, shkname(mtmp));
 		return buf;
@@ -675,9 +675,9 @@ boolean called;
 	    Strcat(buf, shkname(mtmp));
 	    if (mdat == &mons[PM_SHOPKEEPER] && !do_invis)
 		return buf;
-	    Strcat(buf, ", ARTIKEL_BESTIMMTER ");
+	    Strcat(buf, ", ARTIKEL_BESTIMMTER "); /* EN Strcat(buf, " the "); */
 	    if (do_invis) 
-		Strcat(buf, "ADJEKTIV_INVISIBLE ");
+		Strcat(buf, "ADJEKTIV_INVISIBLE "); /* EN Strcat(buf, "invisible "); */
 	    Strcat(buf, mdat->mname);
 	    Strcat(buf, ",");
 	    return buf;
@@ -687,11 +687,11 @@ boolean called;
 	if (adjective)
 	    Strcat(strcat(buf, adjective), " ");
 	if (do_invis)
-	    Strcat(buf, "ADJEKTIV_INVISIBLE ");
+	    Strcat(buf, "ADJEKTIV_INVISIBLE "); /* EN Strcat(buf, "invisible "); */
 #ifdef STEED
 	if (do_saddle && (mtmp->misc_worn_check & W_SADDLE) &&
 	    !Blind && !Hallucination)
-	    Strcat(buf, "ADJEKTIV_SADDLED ");
+	    Strcat(buf, "ADJEKTIV_SADDLED "); /* EN Strcat(buf, "saddled "); */
 #endif
 	if (buf[0] != 0)
 	    has_adjectives = TRUE;
@@ -707,12 +707,12 @@ boolean called;
 	    char *name = NAME(mtmp);
 
 	    if (mdat == &mons[PM_GHOST]) {
-		Sprintf(eos(buf), "%s ghost", s_suffix(name));
+		Sprintf(eos(buf), "%s ghost", s_suffix(name)); /* EN Sprintf(eos(buf), "%s ghost", s_suffix(name)); */ // TODO DE
 		name_at_start = TRUE;
 	    } else if (called) {
-		Sprintf(eos(buf), "%s genannt %s", mdat->mname, name);
+		Sprintf(eos(buf), "%s genannt %s", mdat->mname, name); /* EN Sprintf(eos(buf), "%s called %s", mdat->mname, name); */
 		name_at_start = (boolean)type_is_pname(mdat);
-	    } else if (is_mplayer(mdat) && (bp = strstri(name, " ARTIKEL_BESTIMMTER ")) != 0) {
+	    } else if (is_mplayer(mdat) && (bp = strstri(name, " ARTIKEL_BESTIMMTER ")) != 0) { /* EN } else if (is_mplayer(mdat) && (bp = strstri(name, " the ")) != 0) { */
 		/* <name> the <adjective> <invisible> <saddled> <rank> */
 		char pbuf[BUFSZ];
 
@@ -763,13 +763,13 @@ boolean called;
 	    switch(article) {
 		case ARTICLE_YOUR:
 				/* Strcpy(buf2, " :ARTICLE_YOUR: "); */
-		    Strcat(buf2, "PRONOMEN_POSSESSIV ");
+		    Strcat(buf2, "PRONOMEN_POSSESSIV "); /* EN Strcpy(buf2, "your "); */
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		    return buf;
 		case ARTICLE_THE:
 				/* Strcat(buf2, " :ARTICLE_THE: "); */
-		    Strcpy(buf2, "ARTIKEL_BESTIMMTER ");
+		    Strcpy(buf2, "ARTIKEL_BESTIMMTER "); /* EN Strcpy(buf2, "the "); */
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		    return buf;
@@ -914,8 +914,8 @@ char *outbuf;
        its own obfuscation) */
     if (mon->data == &mons[PM_HIGH_PRIEST] && !Hallucination &&
 	    Is_astralevel(&u.uz) && distu(mon->mx, mon->my) > 2) {
-	Strcpy(outbuf, article == ARTICLE_THE ? "the " : "");
-	Strcat(outbuf, mon->female ? "high priestess" : "high priest");
+	Strcpy(outbuf, article == ARTICLE_THE ? "the " : ""); /* EN Strcpy(outbuf, article == ARTICLE_THE ? "the " : ""); */ // TODO DE
+	Strcat(outbuf, mon->female ? "high priestess" : "high priest"); /* EN Strcat(outbuf, mon->female ? "high priestess" : "high priest"); */ // TODO DE
     } else {
 	Strcpy(outbuf, x_monnam(mon, article, (char *)0, 0, TRUE));
     }
@@ -923,6 +923,7 @@ char *outbuf;
 }
 
 static const char * const bogusmons[] = {
+	// TODO DE
 	"jumbo shrimp", "giant pigmy", "gnu", "killer penguin",
 	"giant cockroach", "giant slug", "maggot", "pterodactyl",
 	"tyrannosaurus rex", "basilisk", "beholder", "nightmare",
@@ -1019,8 +1020,8 @@ roguename() /* Name of a Rogue player */
 
 #ifdef OVL2
 
-// TODO
 static NEARDATA const char * const hcolors[] = {
+// TODO DE
 	"ultraviolet", "infrared", "bluish-orange",
 	"reddish-green", "dark white", "light black", "sky blue-pink",
 	"salty", "sweet", "sour", "bitter",
@@ -1052,6 +1053,7 @@ rndcolor()
 /* Aliases for road-runner nemesis
  */
 static const char * const coynames[] = {
+// TODO DE
 	"Carnivorous Vulgaris","Road-Runnerus Digestus",
 	"Eatibus Anythingus"  ,"Famishus-Famishus",
 	"Eatibus Almost Anythingus","Eatius Birdius",

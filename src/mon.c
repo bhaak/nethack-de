@@ -196,7 +196,7 @@ register struct monst *mtmp;
 	    case PM_BLACK_UNICORN:
 		if (mtmp->mrevived && rn2(20)) {
 			if (canseemon(mtmp))
-			   pline("%s recently regrown horn crumbles to dust.",
+			   pline("%s recently regrown horn crumbles to dust.", /* EN pline("%s recently regrown horn crumbles to dust.", */ // TODO DE
 				s_suffix(Monnam(mtmp)));
 		} else
 			(void) mksobj_at(UNICORN_HORN, x, y, TRUE, FALSE);
@@ -401,7 +401,7 @@ register struct monst *mtmp;
     } else if (mtmp->data == &mons[PM_IRON_GOLEM] && inpool && !rn2(5)) {
 	int dam = d(2,6);
 	if (cansee(mtmp->mx,mtmp->my))
-	    pline("%s rusts.", Monnam(mtmp));
+	    pline("%s rusts.", Monnam(mtmp)); /* EN pline("%s rusts.", Monnam(mtmp)); */ // TODO DE
 	mtmp->mhp -= dam;
 	if (mtmp->mhpmax > dam) mtmp->mhpmax -= dam;
 	if (mtmp->mhp < 1) {
@@ -423,17 +423,17 @@ register struct monst *mtmp;
 		if (cansee(mtmp->mx,mtmp->my))
 		    pline("%s %s.", Monnam(mtmp),
 			  mtmp->data == &mons[PM_WATER_ELEMENTAL] ?
-			  "boils away" : "burns to a crisp");
+			  "boils away" : "burns to a crisp"); /* EN "boils away" : "burns to a crisp"); */ // TODO DE
 		mondead(mtmp);
 	    }
 	    else {
 		if (--mtmp->mhp < 1) {
 		    if (cansee(mtmp->mx,mtmp->my))
-			pline("%s surrenders to the fire.", Monnam(mtmp));
+			pline("%s surrenders to the fire.", Monnam(mtmp)); /* EN pline("%s surrenders to the fire.", Monnam(mtmp)); */ // TODO DE
 		    mondead(mtmp);
 		}
 		else if (cansee(mtmp->mx,mtmp->my))
-		    pline("%s burns slightly.", Monnam(mtmp));
+		    pline("%s burns slightly.", Monnam(mtmp)); /* EN pline("%s burns slightly.", Monnam(mtmp)); */ // TODO DE
 	    }
 	    if (mtmp->mhp > 0) {
 		(void) fire_damage(mtmp->minvent, FALSE, FALSE,
@@ -451,12 +451,12 @@ register struct monst *mtmp;
 	if (!is_clinger(mtmp->data)
 	    && !is_swimmer(mtmp->data) && !amphibious(mtmp->data)) {
 	    if (cansee(mtmp->mx,mtmp->my)) {
-		    pline("%s drowns.", Monnam(mtmp));
+		    pline("%s drowns.", Monnam(mtmp)); /* EN pline("%s drowns.", Monnam(mtmp)); */ // TODO DE
 	    }
 	    if (u.ustuck && u.uswallow && u.ustuck == mtmp) {
 	    /* This can happen after a purple worm plucks you off a
 		flying steed while you are over water. */
-		pline("%s sinks as water rushes in and flushes you out.",
+		pline("%s sinks as water rushes in and flushes you out.", /* EN pline("%s sinks as water rushes in and flushes you out.", */ // TODO DE
 			Monnam(mtmp));
 	    }
 	    mondead(mtmp);
@@ -670,7 +670,7 @@ meatmetal(mtmp)
 		touch_artifact(otmp,mtmp)) {
 		if (mtmp->data == &mons[PM_RUST_MONSTER] && otmp->oerodeproof) {
 		    if (canseemon(mtmp) && flags.verbose) {
-			pline("%s eats %s!",
+			pline("%s eats %s!", /* EN pline("%s eats %s!", */ // TODO DE
 				Monnam(mtmp),
 				distant_name(otmp,doname));
 		    }
@@ -678,17 +678,17 @@ meatmetal(mtmp)
 		    otmp->oerodeproof = 0;
 		    mtmp->mstun = 1;
 		    if (canseemon(mtmp) && flags.verbose) {
-			pline("%s spits %s out in disgust!",
+			pline("%s spits %s out in disgust!", /* EN pline("%s spits %s out in disgust!", */ // TODO DE
 			      Monnam(mtmp), distant_name(otmp,doname));
 		    }
 		/* KMH -- Don't eat indigestible/choking objects */
 		} else if (otmp->otyp != AMULET_OF_STRANGULATION &&
 				otmp->otyp != RIN_SLOW_DIGESTION) {
 		    if (cansee(mtmp->mx,mtmp->my) && flags.verbose)
-			pline("%s eats %s!", Monnam(mtmp),
+			pline("%s eats %s!", Monnam(mtmp), /* EN pline("%s eats %s!", Monnam(mtmp), */ // TODO DE
 				distant_name(otmp,doname));
 		    else if (flags.soundok && flags.verbose)
-			You_hear("a crunching sound.");
+			You_hear("a crunching sound."); /* EN You_hear("a crunching sound."); */ // TODO DE
 		    mtmp->meating = otmp->owt/2 + 1;
 		    /* Heal up to the object's weight in hp */
 		    if (mtmp->mhp < mtmp->mhpmax) {
@@ -719,7 +719,7 @@ meatmetal(mtmp)
 				ptr = mtmp->data;
 			    } else if (!resists_ston(mtmp)) {
 				if (canseemon(mtmp))
-				    pline("%s turns to stone!", Monnam(mtmp));
+				    pline("%s turns to stone!", Monnam(mtmp)); /* EN pline("%s turns to stone!", Monnam(mtmp)); */ // TODO DE
 				monstone(mtmp);
 				ptr = (struct permonst *)0;
 			    }
@@ -766,10 +766,10 @@ meatobj(mtmp)		/* for gelatinous cubes */
 		    continue;
 		++count;
 		if (cansee(mtmp->mx,mtmp->my) && flags.verbose)
-		    pline("%s eats %s!", Monnam(mtmp),
+		    pline("%s eats %s!", Monnam(mtmp), /* EN pline("%s eats %s!", Monnam(mtmp), */ // TODO DE
 			    distant_name(otmp, doname));
 		else if (flags.soundok && flags.verbose)
-		    You_hear("a slurping sound.");
+		    You_hear("a slurping sound."); /* EN You_hear("a slurping sound."); */ // TODO DE
 		/* Heal up to the object's weight in hp */
 		if (mtmp->mhp < mtmp->mhpmax) {
 		    mtmp->mhp += objects[otmp->otyp].oc_weight;
@@ -808,10 +808,10 @@ meatobj(mtmp)		/* for gelatinous cubes */
 				    otmp != uball && otmp != uchain) {
 		++ecount;
 		if (ecount == 1) {
-			Sprintf(buf, "%s engulfs %s.", Monnam(mtmp),
+			Sprintf(buf, "%s engulfs %s.", Monnam(mtmp), /* EN Sprintf(buf, "%s engulfs %s.", Monnam(mtmp), */ // TODO DE
 			    distant_name(otmp,doname));
 		} else if (ecount == 2)
-			Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp));
+			Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp)); /* EN Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp)); */ // TODO DE
 		obj_extract_self(otmp);
 		(void) mpickobj(mtmp, otmp);	/* slurp */
 	    }
@@ -822,9 +822,9 @@ meatobj(mtmp)		/* for gelatinous cubes */
 	    if (cansee(mtmp->mx, mtmp->my) && flags.verbose && buf[0])
 		pline("%s", buf);
 	    else if (flags.soundok && flags.verbose)
-	    	You_hear("%s slurping sound%s.",
-			ecount == 1 ? "a" : "several",
-			ecount == 1 ? "" : "s");
+	    	You_hear("%s slurping sound%s.", /* EN You_hear("%s slurping sound%s.", */ // TODO DE
+			ecount == 1 ? "a" : "several", /* EN ecount == 1 ? "a" : "several", */ // TODO DE
+			ecount == 1 ? "" : "s"); /* EN ecount == 1 ? "" : "s"); */ // TODO DE
 	}
 	return ((count > 0) || (ecount > 0)) ? 1 : 0;
 }
@@ -847,8 +847,8 @@ mpickgold(mtmp)
 #endif
 	if (cansee(mtmp->mx, mtmp->my) ) {
 	    if (flags.verbose && !mtmp->isgd)
-		pline("%s picks up some %s.", Monnam(mtmp),
-			mat_idx == GOLD ? "gold" : "money");
+		pline("%s picks up some %s.", Monnam(mtmp), /* EN pline("%s picks up some %s.", Monnam(mtmp), */ // TODO DE
+			mat_idx == GOLD ? "gold" : "money"); /* EN mat_idx == GOLD ? "gold" : "money"); */ // TODO DE
 	    newsym(mtmp->mx, mtmp->my);
 	}
     }
@@ -883,7 +883,7 @@ mpickstuff(mtmp, str)
 		if (otmp->oinvis && !perceives(mtmp->data)) continue;
 #endif
 		if (cansee(mtmp->mx,mtmp->my) && flags.verbose)
-			pline("%s picks up %s.", Monnam(mtmp),
+			pline("%s picks up %s.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */ // TODO DE
 			      (distu(mtmp->my, mtmp->my) <= 5) ?
 				doname(otmp) : distant_name(otmp, doname));
 		obj_extract_self(otmp);
@@ -1373,16 +1373,16 @@ struct monst *mtmp;
 		/* Nor do you check invisibility, because glowing and disinte- */
 		/* grating amulets are always visible. */
 		if (cansee(mtmp->mx, mtmp->my)) {
-			pline("But wait...");
-			pline("%s medallion begins to glow!",
+			pline("But wait..."); /* EN pline("But wait..."); */ // TODO DE
+			pline("%s medallion begins to glow!", /* EN pline("%s medallion begins to glow!", */ // TODO DE
 				s_suffix(Monnam(mtmp)));
 			makeknown(AMULET_OF_LIFE_SAVING);
 			if (attacktype(mtmp->data, AT_EXPL)
 			    || attacktype(mtmp->data, AT_BOOM))
-				pline("%s reconstitutes!", Monnam(mtmp));
+				pline("%s reconstitutes!", Monnam(mtmp)); /* EN pline("%s reconstitutes!", Monnam(mtmp)); */ // TODO DE
 			else
-				pline("%s looks much better!", Monnam(mtmp));
-			pline_The("medallion crumbles to dust!");
+				pline("%s looks much better!", Monnam(mtmp)); /* EN pline("%s looks much better!", Monnam(mtmp)); */ // TODO DE
+			pline_The("medallion crumbles to dust!"); /* EN pline_The("medallion crumbles to dust!"); */ // TODO DE
 		}
 		m_useup(mtmp, lifesave);
 		mtmp->mcanmove = 1;
@@ -1394,7 +1394,7 @@ struct monst *mtmp;
 		mtmp->mhp = mtmp->mhpmax;
 		if (mvitals[monsndx(mtmp->data)].mvflags & G_GENOD) {
 			if (cansee(mtmp->mx, mtmp->my))
-			    pline("Unfortunately %s is still genocided...",
+			    pline("Unfortunately %s is still genocided...", /* EN pline("Unfortunately %s is still genocided...", */ // TODO DE
 				mon_nam(mtmp));
 		} else
 			return;
@@ -1491,7 +1491,7 @@ boolean was_swallowed;			/* digestion */
 
 	if (mdat == &mons[PM_VLAD_THE_IMPALER] || mdat->mlet == S_LICH) {
 	    if (cansee(mon->mx, mon->my) && !was_swallowed)
-		pline("%s body crumbles into dust.", s_suffix(Monnam(mon)));
+		pline("%s body crumbles into dust.", s_suffix(Monnam(mon))); /* EN pline("%s body crumbles into dust.", s_suffix(Monnam(mon))); */ // TODO DE
 	    return FALSE;
 	}
 
@@ -1506,28 +1506,28 @@ boolean was_swallowed;			/* digestion */
 	    	else tmp = 0;
 		if (was_swallowed && magr) {
 		    if (magr == &youmonst) {
-			There("is an explosion in your %s!",
+			There("is an explosion in your %s!", /* EN There("is an explosion in your %s!", */ // TODO DE
 			      body_part(STOMACH));
-			Sprintf(killer_buf, "%s explosion",
+			Sprintf(killer_buf, "%s explosion", /* EN Sprintf(killer_buf, "%s explosion", */ // TODO DE
 				s_suffix(mdat->mname));
 			if (Half_physical_damage) tmp = (tmp+1) / 2;
 			losehp(tmp, killer_buf, KILLED_BY_AN);
 		    } else {
-			if (flags.soundok) You_hear("an explosion.");
+			if (flags.soundok) You_hear("an explosion."); /* EN if (flags.soundok) You_hear("an explosion."); */ // TODO DE
 			magr->mhp -= tmp;
 			if (magr->mhp < 1) mondied(magr);
 			if (magr->mhp < 1) { /* maybe lifesaved */
 			    if (canspotmon(magr))
-				pline("%s rips open!", Monnam(magr));
+				pline("%s rips open!", Monnam(magr)); /* EN pline("%s rips open!", Monnam(magr)); */ // TODO DE
 			} else if (canseemon(magr))
-			    pline("%s seems to have indigestion.",
+			    pline("%s seems to have indigestion.", /* EN pline("%s seems to have indigestion.", */ // TODO DE
 				  Monnam(magr));
 		    }
 
 		    return FALSE;
 		}
 
-	    	Sprintf(killer_buf, "%s explosion", s_suffix(mdat->mname));
+	    	Sprintf(killer_buf, "%s explosion", s_suffix(mdat->mname)); /* EN Sprintf(killer_buf, "%s explosion", s_suffix(mdat->mname)); */ // TODO DE
 	    	killer = killer_buf;
 	    	killer_format = KILLED_BY_AN;
 	    	explode(mon->mx, mon->my, -1, tmp, MON_EXPLODE, EXPL_NOXIOUS); 
@@ -1616,7 +1616,7 @@ register struct monst *mdef;
      (obj->otyp == STATUE && mons[obj->corpsenm].msize >= mdef->data->msize) ||
 #endif
 				obj_resists(obj, 0, 0)) {
-			if (flooreffects(obj, x, y, "fall")) continue;
+			if (flooreffects(obj, x, y, "fall")) continue; /* EN if (flooreffects(obj, x, y, "fall")) continue; */ // TODO DE
 			place_object(obj, x, y);
 		    } else {
 			if (obj->lamplit) end_burn(obj, TRUE);
@@ -1660,8 +1660,8 @@ register struct monst *mdef;
 	mondead(mdef);
 	if (wasinside) {
 		if (is_animal(mdef->data))
-			You("%s through an opening in the new %s.",
-				locomotion(youmonst.data, "jump"),
+			You("%s through an opening in the new %s.", /* EN You("%s through an opening in the new %s.", */ // TODO DE
+				locomotion(youmonst.data, "jump"), /* EN locomotion(youmonst.data, "jump"), */ // TODO DE
 				xname(otmp));
 	}
 }
@@ -1677,9 +1677,9 @@ int how;
 
 	if ((mdef->wormno ? worm_known(mdef) : cansee(mdef->mx, mdef->my))
 		&& fltxt)
-	    pline("%s is %s%s%s!", Monnam(mdef),
-			nonliving(mdef->data) ? "destroyed" : "killed",
-		    *fltxt ? " by the " : "",
+	    pline("%s is %s%s%s!", Monnam(mdef), /* EN pline("%s is %s%s%s!", Monnam(mdef), */ // TODO DE
+			nonliving(mdef->data) ? "destroyed" : "killed", /* EN nonliving(mdef->data) ? "destroyed" : "killed", */ // TODO DE
+		    *fltxt ? " by the " : "", /* EN *fltxt ? " by the " : "", */ // TODO DE
 		    fltxt
 		 );
 	else
@@ -1692,7 +1692,7 @@ int how;
 	    mondied(mdef);
 
 	if (be_sad && mdef->mhp <= 0)
-	    You("have a sad feeling for a moment, then it passes.");
+	    You("have a sad feeling for a moment, then it passes."); /* EN You("have a sad feeling for a moment, then it passes."); */ // TODO DE
 }
 
 void
@@ -1743,16 +1743,16 @@ xkilled(mtmp, dest)
 	u.uconduct.killer++;
 
 	if (dest & 1) {
-	    const char *verb = nonliving(mtmp->data) ? "VERB_DESTROY" : "VERB_KILL";
+	    const char *verb = nonliving(mtmp->data) ? "VERB_DESTROY" : "VERB_KILL"; /* EN const char *verb = nonliving(mtmp->data) ? "destroy" : "kill"; */
 
 	    if (!wasinside && !canspotmon(mtmp))
-		You("%s OBJECT es!", verb);
+		You("%s OBJECT es!", verb); /* EN You("%s it!", verb); */
 	    else {
-		You("%s OBJECT %s!", verb,
+		You("%s OBJECT %s!", verb, /* EN You("%s %s!", verb, */
 		    !mtmp->mtame ? mon_nam(mtmp) :
 			x_monnam(mtmp,
 				 mtmp->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
-				 "ADJEKTIV_POOR",
+				 "ADJEKTIV_POOR", /* EN "poor", */
 				 mtmp->mnamelth ? SUPPRESS_SADDLE : 0,
 				 FALSE));
 	    }
@@ -1782,7 +1782,7 @@ xkilled(mtmp, dest)
 		 * appears).
 		 */
 		stoned = FALSE;
-		if (!cansee(x,y)) pline("Maybe not...");
+		if (!cansee(x,y)) pline("Maybe not..."); /* EN if (!cansee(x,y)) pline("Maybe not..."); */ // TODO DE
 		return;
 	}
 
@@ -1845,7 +1845,7 @@ cleanup:
 	   u.ualign.type != A_CHAOTIC) {
 		HTelepat &= ~INTRINSIC;
 		change_luck(-2);
-		You("murderer!");
+		You("murderer!"); /* EN You("murderer!"); */ // TODO DE
 		if (Blind && !Blind_telepat)
 		    see_monsters(); /* Can't sense monsters any more. */
 	}
@@ -1853,7 +1853,7 @@ cleanup:
 	if (is_unicorn(mdat) &&
 				sgn(u.ualign.type) == sgn(mdat->maligntyp)) {
 		change_luck(-5);
-		You_feel("guilty...");
+		You_feel("guilty..."); /* EN You_feel("guilty..."); */ // TODO DE
 	}
 
 	/* give experience points */
@@ -1864,17 +1864,14 @@ cleanup:
 	/* adjust alignment points */
 	if (mtmp->m_id == quest_status.leader_m_id) {		/* REAL BAD! */
 	    adjalign(-(u.ualign.record+(int)ALIGNLIM/2));
-	    pline("Das war %seine schlechte Idee...",
-	    		u.uevent.qcompleted ? "wahrscheinlich " : "");
-	    /*pline("That was %sa bad idea...",
-				u.uevent.qcompleted ? "probably " : "");*/
+	    pline("Das war %seine schlechte Idee...", /* EN pline("That was %sa bad idea...", */
+	    		u.uevent.qcompleted ? "wahrscheinlich " : ""); /* EN u.uevent.qcompleted ? "probably " : ""); */
 	} else if (mdat->msound == MS_NEMESIS)	/* Real good! */
 	    adjalign((int)(ALIGNLIM/4));
 	else if (mdat->msound == MS_GUARDIAN) {	/* Bad */
 	    adjalign(-(int)(ALIGNLIM/8));
-	    if (!Hallucination) pline("Das war wahrscheinlich eine schlechte Idee...");
-	    /* if (!Hallucination) pline("That was probably a bad idea..."); */
-	    else pline("Whoopsie-daisy!");
+	    if (!Hallucination) pline("Das war wahrscheinlich eine schlechte Idee..."); /* EN if (!Hallucination) pline("That was probably a bad idea..."); */
+	    else pline("Whoopsie-daisy!"); /* EN else pline("Whoopsie-daisy!"); */ // TODO DE
 	}else if (mtmp->ispriest) {
 		adjalign((p_coaligned(mtmp)) ? -2 : 2);
 		/* cancel divine protection for killing your priest */
@@ -1884,8 +1881,8 @@ cleanup:
 	} else if (mtmp->mtame) {
 		adjalign(-15);	/* bad!! */
 		/* your god is mighty displeased... */
-		if (!Hallucination) You_hear("the rumble of distant thunder...");
-		else You_hear("the studio audience applaud!");
+		if (!Hallucination) You_hear("the rumble of distant thunder..."); /* EN if (!Hallucination) You_hear("the rumble of distant thunder..."); */ // TODO DE
+		else You_hear("the studio audience applaud!"); /* EN else You_hear("the studio audience applaud!"); */ // TODO DE
 	} else if (mtmp->mpeaceful)
 		adjalign(-5);
 
@@ -1902,13 +1899,13 @@ mon_to_stone(mtmp)
     if(mtmp->data->mlet == S_GOLEM) {
 	/* it's a golem, and not a stone golem */
 	if(canseemon(mtmp))
-	    pline("%s solidifies...", Monnam(mtmp));
+	    pline("%s solidifies...", Monnam(mtmp)); /* EN pline("%s solidifies...", Monnam(mtmp)); */ // TODO DE
 	if (newcham(mtmp, &mons[PM_STONE_GOLEM], FALSE, FALSE)) {
 	    if(canseemon(mtmp))
-		pline("Now it's %s.", an(mtmp->data->mname));
+		pline("Now it's %s.", an(mtmp->data->mname)); /* EN pline("Now it's %s.", an(mtmp->data->mname)); */ // TODO DE
 	} else {
 	    if(canseemon(mtmp))
-		pline("... and returns to normal.");
+		pline("... and returns to normal."); /* EN pline("... and returns to normal."); */ // TODO DE
 	}
     } else
 	impossible("Can't polystone %s!", a_monnam(mtmp));
@@ -1985,7 +1982,7 @@ boolean move_other;	/* make sure mtmp gets to x, y! so move m_at(x, y) */
 
 
 static const char *poiseff[] = {
-
+// TODO DE
 	" feel weaker", "r brain is on fire",
 	"r judgement is impaired", "r muscles won't obey you",
 	" feel very sick", " break out in hives"
@@ -1996,7 +1993,7 @@ poisontell(typ)
 
 	int	typ;
 {
-	pline("You%s.", poiseff[typ]);
+	pline("You%s.", poiseff[typ]); /* EN pline("You%s.", poiseff[typ]); */ // TODO DE
 }
 
 void
@@ -2008,24 +2005,24 @@ int  typ, fatal;
 	boolean thrown_weapon = (fatal < 0);
 
 	if (thrown_weapon) fatal = -fatal;
-	if(strcmp(string, "blast") && !thrown_weapon) {
+	if(strcmp(string, "blast") && !thrown_weapon) { /* EN if(strcmp(string, "blast") && !thrown_weapon) { */ // TODO DE
 	    /* 'blast' has already given a 'poison gas' message */
 	    /* so have "poison arrow", "poison dart", etc... */
 	    plural = (string[strlen(string) - 1] == 's')? 1 : 0;
 	    /* avoid "The" Orcus's sting was poisoned... */
-	    pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ",
-			string, plural ? "were" : "was");
+	    pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", /* EN pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", */ // TODO DE
+			string, plural ? "were" : "was"); /* EN string, plural ? "were" : "was"); */ // TODO DE
 	}
 
 	if(Poison_resistance) {
-		if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy);
-		pline_The("poison doesn't seem to affect you.");
+		if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); /* EN if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); */ // TODO DE
+		pline_The("poison doesn't seem to affect you."); /* EN pline_The("poison doesn't seem to affect you."); */ // TODO DE
 		return;
 	}
 	/* suppress killer prefix if it already has one */
-	if (!strncmpi(pname, "the ", 4) ||
-		!strncmpi(pname, "an ", 3) ||
-		!strncmpi(pname, "a ", 2) ||
+	if (!strncmpi(pname, "the ", 4) || /* EN if (!strncmpi(pname, "the ", 4) || */ // TODO DE
+		!strncmpi(pname, "an ", 3) || /* EN !strncmpi(pname, "an ", 3) || */ // TODO DE
+		!strncmpi(pname, "a ", 2) || /* EN !strncmpi(pname, "a ", 2) || */ // TODO DE
 	    /* ... or if it seems to be a proper name */
 		isupper(*pname)) {
 	    /*[ does this need a plural check too? ]*/
@@ -2034,7 +2031,7 @@ int  typ, fatal;
 	i = rn2(fatal + 20*thrown_weapon);
 	if(i == 0 && typ != A_CHA) {
 		u.uhp = -1;
-		pline_The("poison was deadly...");
+		pline_The("poison was deadly..."); /* EN pline_The("poison was deadly..."); */ // TODO DE
 	} else if(i <= 5) {
 		/* Check that a stat change was made */
 		if (adjattrib(typ, thrown_weapon ? -1 : -rn1(3,3), 1))
@@ -2048,7 +2045,7 @@ int  typ, fatal;
 		killer_format = kprefix;
 		killer = pname;
 		/* "Poisoned by a poisoned ___" is redundant */
-		done(strstri(pname, "poison") ? DIED : POISONING);
+		done(strstri(pname, "poison") ? DIED : POISONING); /* EN done(strstri(pname, "poison") ? DIED : POISONING); */ // TODO DE
 	}
 	(void) encumber_msg();
 }
@@ -2061,7 +2058,7 @@ register struct monst *mtmp;
 {
     if(mtmp->data->msound == MS_SHRIEK) {
 	if(flags.soundok) {
-	    pline("%s shrieks.", Monnam(mtmp));
+	    pline("%s shrieks.", Monnam(mtmp)); /* EN pline("%s shrieks.", Monnam(mtmp)); */ // TODO DE
 	    stop_occupation();
 	}
 	if (!rn2(10)) {
@@ -2101,7 +2098,7 @@ register struct monst *mtmp;
 		adjalign(-1);		/* attacking peaceful monsters is bad */
 	if (couldsee(mtmp->mx, mtmp->my)) {
 		if (humanoid(mtmp->data) || mtmp->isshk || mtmp->isgd)
-		    pline("%s gets angry!", Monnam(mtmp));
+		    pline("%s gets angry!", Monnam(mtmp)); /* EN pline("%s gets angry!", Monnam(mtmp)); */ // TODO DE
 		else if (flags.verbose && flags.soundok) growl(mtmp);
 	}
 
@@ -2119,7 +2116,7 @@ register struct monst *mtmp;
 		    if (canseemon(mon)) ++got_mad;
 		}
 	    if (got_mad && !Hallucination)
-		pline_The("%s appear%s to be angry too...",
+		pline_The("%s appear%s to be angry too...", /* EN pline_The("%s appear%s to be angry too...", */ // TODO DE
 		      got_mad == 1 ? q_guardian->mname :
 				    makeplural(q_guardian->mname),
 		      got_mad == 1 ? "s" : "");
@@ -2351,12 +2348,12 @@ struct monst *mon;
 		int tries = 0;
 		do {
 			Sprintf(pprompt,
-				"Change %s into what kind of monster? [type the name]",
+				"Change %s into what kind of monster? [type the name]", /* EN "Change %s into what kind of monster? [type the name]", */ // TODO DE
 				mon_nam(mon));
 			getlin(pprompt,buf);
 			mndx = name_to_mon(buf);
 			if (mndx < LOW_PM)
-				You("cannot polymorph %s into that.", mon_nam(mon));
+				You("cannot polymorph %s into that.", mon_nam(mon)); /* EN You("cannot polymorph %s into that.", mon_nam(mon)); */ // TODO DE
 			else break;
 		} while(++tries < 5);
 		if (tries==5) pline(thats_enough_tries);
@@ -2485,9 +2482,9 @@ boolean msg;		/* "The oldmon turns into a newmon!" */
 				if (!noncorporeal(mdat) && !amorphous(mdat) &&
 				    !is_whirly(mdat) &&
 				    (mdat != &mons[PM_YELLOW_LIGHT])) {
-					You("break out of %s%s!", mon_nam(mtmp),
+					You("break out of %s%s!", mon_nam(mtmp), /* EN You("break out of %s%s!", mon_nam(mtmp), */ // TODO DE
 					    (is_animal(mdat)?
-					    "'s stomach" : ""));
+					    "'s stomach" : "")); /* EN "'s stomach" : "")); */ // TODO DE
 					mtmp->mhp = 1;  /* almost dead */
 				}
 				expels(mtmp, olddata, FALSE);
@@ -2519,8 +2516,8 @@ boolean msg;		/* "The oldmon turns into a newmon!" */
 	if (msg) {
 	    uchar save_mnamelth = mtmp->mnamelth;
 	    mtmp->mnamelth = 0;
-	    pline("%s turns into %s!", oldname,
-		  mdat == &mons[PM_GREEN_SLIME] ? "slime" :
+	    pline("%s turns into %s!", oldname, /* EN pline("%s turns into %s!", oldname, */ // TODO DE
+		  mdat == &mons[PM_GREEN_SLIME] ? "slime" : /* EN mdat == &mons[PM_GREEN_SLIME] ? "slime" : */ // TODO DE
 		  x_monnam(mtmp, ARTICLE_A, (char*)0, SUPPRESS_SADDLE, FALSE));
 	    mtmp->mnamelth = save_mnamelth;
 	}
@@ -2528,7 +2525,7 @@ boolean msg;		/* "The oldmon turns into a newmon!" */
 	possibly_unwield(mtmp, polyspot);	/* might lose use of weapon */
 	mon_break_armor(mtmp, polyspot);
 	if (!(mtmp->misc_worn_check & W_ARMG))
-	    mselftouch(mtmp, "No longer petrify-resistant, ",
+	    mselftouch(mtmp, "No longer petrify-resistant, ", /* EN mselftouch(mtmp, "No longer petrify-resistant, ", */ // TODO DE
 			!flags.mon_moving);
 	m_dowear(mtmp, FALSE);
 
@@ -2720,7 +2717,7 @@ int damtype, dam;
 	    mon->mhp += dam;
 	    if (mon->mhp > mon->mhpmax) mon->mhp = mon->mhpmax;
 	    if (cansee(mon->mx, mon->my))
-		pline("%s seems healthier.", Monnam(mon));
+		pline("%s seems healthier.", Monnam(mon)); /* EN pline("%s seems healthier.", Monnam(mon)); */ // TODO DE
 	}
     }
 }
@@ -2751,16 +2748,16 @@ register boolean silent;
 	}
 	if(ct) {
 	    if(!silent) { /* do we want pline msgs? */
-		if(slct) pline_The("guard%s wake%s up!",
+		if(slct) pline_The("guard%s wake%s up!", /* EN if(slct) pline_The("guard%s wake%s up!", */ // TODO DE
 				 slct > 1 ? "s" : "", slct == 1 ? "s" : "");
 		if(nct || sct) {
-			if(nct) pline_The("guard%s get%s angry!",
+			if(nct) pline_The("guard%s get%s angry!", /* EN if(nct) pline_The("guard%s get%s angry!", */ // TODO DE
 				nct == 1 ? "" : "s", nct == 1 ? "s" : "");
 			else if(!Blind)
-				You("see %sangry guard%s approaching!",
+				You("see %sangry guard%s approaching!", /* EN You("see %sangry guard%s approaching!", */ // TODO DE
 				  sct == 1 ? "an " : "", sct > 1 ? "s" : "");
 		} else if(flags.soundok)
-			You_hear("the shrill sound of a guard's whistle.");
+			You_hear("the shrill sound of a guard's whistle."); /* EN You_hear("the shrill sound of a guard's whistle."); */ // TODO DE
 	    }
 	    return(TRUE);
 	}
@@ -2794,7 +2791,7 @@ short otyp;
 		break;
 	    case M_AP_OBJECT:
 		if (otyp == SPE_HEALING || otyp == SPE_EXTRA_HEALING) {
-		    pline("%s seems a more vivid %s than before.",
+		    pline("%s seems a more vivid %s than before.", /* EN pline("%s seems a more vivid %s than before.", */ // TODO DE
 				The(simple_typename(ap)),
 				c_obj_colors[objects[ap].oc_color]);
 		}

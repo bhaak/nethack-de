@@ -126,10 +126,10 @@ boolean talk;
 	mon = makemon(&mons[mnum], u.ux, u.uy, NO_MM_FLAGS);
     if (mon) {
 	if (talk) {
-	    pline_The("voice of %s booms:", align_gname(alignment));
-	    verbalize("Thou shalt pay for thy indiscretion!");
+	    pline_The("voice of %s booms:", align_gname(alignment)); /* EN pline_The("voice of %s booms:", align_gname(alignment)); */ // TODO DE
+	    verbalize("Thou shalt pay for thy indiscretion!"); /* EN verbalize("Thou shalt pay for thy indiscretion!"); */ // TODO DE
 	    if (!Blind)
-		pline("%s appears before you.", Amonnam(mon));
+		pline("%s appears before you.", Amonnam(mon)); /* EN pline("%s appears before you.", Amonnam(mon)); */ // TODO DE
 	}
 	mon->mpeaceful = FALSE;
 	/* don't call set_malign(); player was naughty */
@@ -145,7 +145,7 @@ register struct monst *mtmp;
 	long cash, demand, offer;
 
 	if (uwep && uwep->oartifact == ART_EXCALIBUR) {
-	    pline("%s looks very angry.", Amonnam(mtmp));
+	    pline("%s looks very angry.", Amonnam(mtmp)); /* EN pline("%s looks very angry.", Amonnam(mtmp)); */ // TODO DE
 	    mtmp->mpeaceful = mtmp->mtame = 0;
 	    set_malign(mtmp);
 	    newsym(mtmp->mx, mtmp->my);
@@ -155,12 +155,12 @@ register struct monst *mtmp;
 	/* Slight advantage given. */
 	if (is_dprince(mtmp->data) && mtmp->minvis) {
 	    mtmp->minvis = mtmp->perminvis = 0;
-	    if (!Blind) pline("%s appears before you.", Amonnam(mtmp));
+	    if (!Blind) pline("%s appears before you.", Amonnam(mtmp)); /* EN if (!Blind) pline("%s appears before you.", Amonnam(mtmp)); */ // TODO DE
 	    newsym(mtmp->mx,mtmp->my);
 	}
 	if (youmonst.data->mlet == S_DEMON) {	/* Won't blackmail their own. */
-	    pline("%s says, \"Good hunting, %s.\"",
-		  Amonnam(mtmp), flags.female ? "Sister" : "Brother");
+	    pline("%s says, \"Good hunting, %s.\"", /* EN pline("%s says, \"Good hunting, %s.\"", */ // TODO DE
+		  Amonnam(mtmp), flags.female ? "Sister" : "Brother"); /* EN Amonnam(mtmp), flags.female ? "Sister" : "Brother"); */ // TODO DE
 	    if (!tele_restrict(mtmp)) rloc(mtmp);
 	    return(1);
 	}
@@ -183,17 +183,17 @@ register struct monst *mtmp;
 	    if (mon_has_amulet(mtmp))
 		demand = cash + (long)rn1(1000,40);
 
-	    pline("%s demands %ld %s for safe passage.",
+	    pline("%s demands %ld %s for safe passage.", /* EN pline("%s demands %ld %s for safe passage.", */ // TODO DE
 		  Amonnam(mtmp), demand, currency(demand));
 
 	    if ((offer = bribe(mtmp)) >= demand) {
-		pline("%s vanishes, laughing about cowardly mortals.",
+		pline("%s vanishes, laughing about cowardly mortals.", /* EN pline("%s vanishes, laughing about cowardly mortals.", */ // TODO DE
 		      Amonnam(mtmp));
 	    } else if (offer > 0L && (long)rnd(40) > (demand - offer)) {
-		pline("%s scowls at you menacingly, then vanishes.",
+		pline("%s scowls at you menacingly, then vanishes.", /* EN pline("%s scowls at you menacingly, then vanishes.", */ // TODO DE
 		      Amonnam(mtmp));
 	    } else {
-		pline("%s gets angry...", Amonnam(mtmp));
+		pline("%s gets angry...", Amonnam(mtmp)); /* EN pline("%s gets angry...", Amonnam(mtmp)); */ // TODO DE
 		mtmp->mpeaceful = 0;
 		set_malign(mtmp);
 		return 0;
@@ -213,33 +213,33 @@ struct monst *mtmp;
 	long umoney = money_cnt(invent);
 #endif
 
-	getlin("How much will you offer?", buf);
+	getlin("How much will you offer?", buf); /* EN getlin("How much will you offer?", buf); */ // TODO DE
 	if (sscanf(buf, "%ld", &offer) != 1) offer = 0L;
 
 	/*Michael Paddon -- fix for negative offer to monster*/
 	/*JAR880815 - */
 	if (offer < 0L) {
-		You("try to shortchange %s, but fumble.",
+		You("try to shortchange %s, but fumble.", /* EN You("try to shortchange %s, but fumble.", */ // TODO DE
 			mon_nam(mtmp));
 		return 0L;
 	} else if (offer == 0L) {
-		You("refuse.");
+		You("refuse."); /* EN You("refuse."); */ // TODO DE
 		return 0L;
 #ifndef GOLDOBJ
 	} else if (offer >= u.ugold) {
-		You("give %s all your gold.", mon_nam(mtmp));
+		You("give %s all your gold.", mon_nam(mtmp)); /* EN You("give %s all your gold.", mon_nam(mtmp)); */ // TODO DE
 		offer = u.ugold;
 	} else {
-		You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer));
+		You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); /* EN You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); */ // TODO DE
 	}
 	u.ugold -= offer;
 	mtmp->mgold += offer;
 #else
 	} else if (offer >= umoney) {
-		You("give %s all your gold.", mon_nam(mtmp));
+		You("give %s all your gold.", mon_nam(mtmp)); /* EN You("give %s all your gold.", mon_nam(mtmp)); */ // TODO DE
 		offer = umoney;
 	} else {
-		You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer));
+		You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); /* EN You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); */ // TODO DE
 	}
 	(void) money2mon(mtmp, offer);
 #endif

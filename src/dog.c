@@ -67,7 +67,7 @@ boolean quietly;
 		    if (!quietly)
 			/* have just been given "You <do something with>
 			   the figurine and it transforms." message */
-			pline("... into a pile of dust.");
+			pline("... into a pile of dust."); /* EN pline("... into a pile of dust."); */ // TODO DE
 		    break;	/* mtmp is null */
 		}
 	    } else if (!rn2(3)) {
@@ -76,7 +76,7 @@ boolean quietly;
 		pm = rndmonst();
 		if (!pm) {
 		  if (!quietly)
-		    There("seems to be nothing available for a familiar.");
+		    There("seems to be nothing available for a familiar."); /* EN There("seems to be nothing available for a familiar."); */ // TODO DE
 		  break;
 		}
 	    }
@@ -84,7 +84,7 @@ boolean quietly;
 	    mtmp = makemon(pm, x, y, MM_EDOG|MM_IGNOREWATER);
 	    if (otmp && !mtmp) { /* monster was genocided or square occupied */
 	 	if (!quietly)
-		   pline_The("figurine writhes and then shatters into pieces!");
+		   pline_The("figurine writhes and then shatters into pieces!"); /* EN pline_The("figurine writhes and then shatters into pieces!"); */ // TODO DE
 		break;
 	    }
 	} while (!mtmp && --trycnt > 0);
@@ -104,7 +104,7 @@ boolean quietly;
 		mtmp->mtame = 0;	/* not tame after all */
 		if (chance == 2) { /* hostile (cursed figurine) */
 		    if (!quietly)
-		       You("get a bad feeling about this.");
+		       You("get a bad feeling about this."); /* EN You("get a bad feeling about this."); */ // TODO DE
 		    mtmp->mpeaceful = 0;
 		    set_malign(mtmp);
 		}
@@ -480,16 +480,16 @@ boolean pets_only;	/* true for ascension or final escape */
 		stay_behind = FALSE;
 		if (mtmp->mtame && mtmp->meating) {
 			if (canseemon(mtmp))
-			    pline("%s is still eating.", Monnam(mtmp));
+			    pline("%s is still eating.", Monnam(mtmp)); /* EN pline("%s is still eating.", Monnam(mtmp)); */ // TODO DE
 			stay_behind = TRUE;
 		} else if (mon_has_amulet(mtmp)) {
 			if (canseemon(mtmp))
-			    pline("%s seems very disoriented for a moment.",
+			    pline("%s seems very disoriented for a moment.", /* EN pline("%s seems very disoriented for a moment.", */ // TODO DE
 				Monnam(mtmp));
 			stay_behind = TRUE;
 		} else if (mtmp->mtame && mtmp->mtrapped) {
 			if (canseemon(mtmp))
-			    pline("%s is still trapped.", Monnam(mtmp));
+			    pline("%s is still trapped.", Monnam(mtmp)); /* EN pline("%s is still trapped.", Monnam(mtmp)); */ // TODO DE
 			stay_behind = TRUE;
 		}
 #ifdef STEED
@@ -497,10 +497,10 @@ boolean pets_only;	/* true for ascension or final escape */
 #endif
 		if (stay_behind) {
 			if (mtmp->mleashed) {
-				pline("%s leash suddenly comes loose.",
+				pline("%s leash suddenly comes loose.", /* EN pline("%s leash suddenly comes loose.", */ // TODO DE
 					humanoid(mtmp->data)
-					    ? (mtmp->female ? "Her" : "His")
-					    : "Its");
+					    ? (mtmp->female ? "Her" : "His") /* EN ? (mtmp->female ? "Her" : "His") */ // TODO DE
+					    : "Its"); /* EN : "Its"); */ // TODO DE
 				m_unleash(mtmp, FALSE);
 			}
 			continue;
@@ -539,7 +539,7 @@ boolean pets_only;	/* true for ascension or final escape */
 	    } else if (mtmp->mleashed) {
 		/* this can happen if your quest leader ejects you from the
 		   "home" level while a leashed pet isn't next to you */
-		pline("%s leash goes slack.", s_suffix(Monnam(mtmp)));
+		pline("%s leash goes slack.", s_suffix(Monnam(mtmp))); /* EN pline("%s leash goes slack.", s_suffix(Monnam(mtmp))); */ // TODO DE
 		m_unleash(mtmp, FALSE);
 	    }
 	}
@@ -751,11 +751,11 @@ register struct obj *obj;
 		    boolean big_corpse = (obj->otyp == CORPSE &&
 					  obj->corpsenm >= LOW_PM &&
 				mons[obj->corpsenm].msize > mtmp->data->msize);
-		    pline("%s catches %s%s",
+		    pline("%s catches %s%s", /* EN pline("%s catches %s%s", */ // TODO DE
 			  Monnam(mtmp), the(xname(obj)),
-			  !big_corpse ? "." : ", or vice versa!");
+			  !big_corpse ? "." : ", or vice versa!"); /* EN !big_corpse ? "." : ", or vice versa!"); */ // TODO DE
 		} else if (cansee(mtmp->mx,mtmp->my))
-		    pline("%s.", Tobjnam(obj, "stop"));
+		    pline("%s.", Tobjnam(obj, "stop")); /* EN pline("%s.", Tobjnam(obj, "stop")); */ // TODO DE
 		/* dog_eat expects a floor object */
 		place_object(obj, mtmp->mx, mtmp->my);
 		(void) dog_eat(mtmp, obj, mtmp->mx, mtmp->my, FALSE);
@@ -836,13 +836,13 @@ boolean was_dead;
 	if(!quietly && cansee(mtmp->mx, mtmp->my)) {
 	    if (haseyes(youmonst.data)) {
 		if (haseyes(mtmp->data))
-			pline("%s %s to look you in the %s.",
+			pline("%s %s to look you in the %s.", /* EN pline("%s %s to look you in the %s.", */ // TODO DE
 				Monnam(mtmp),
-				mtmp->mpeaceful ? "seems unable" :
-					    "refuses",
+				mtmp->mpeaceful ? "seems unable" : /* EN mtmp->mpeaceful ? "seems unable" : */ // TODO DE
+					    "refuses", /* EN "refuses", */ // TODO DE
 				body_part(EYE));
 		else 
-			pline("%s avoids your gaze.",
+			pline("%s avoids your gaze.", /* EN pline("%s avoids your gaze.", */ // TODO DE
 				Monnam(mtmp));
 	    }
 	}

@@ -99,7 +99,7 @@ pick_move:
 		    check_special_room(FALSE);
 		if(ib) {
 			if (cansee(mtmp->mx,mtmp->my))
-			    pline("%s picks up %s.", Monnam(mtmp),
+			    pline("%s picks up %s.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */ // TODO DE
 				distant_name(ib,doname));
 			obj_extract_self(ib);
 			(void) mpickobj(mtmp, ib);
@@ -165,7 +165,7 @@ register struct monst *priest;
 	   (Conflict && !resist(priest, RING_CLASS, 0, 0))) {
 		if(monnear(priest, u.ux, u.uy)) {
 			if(Displaced)
-				Your("displaced image doesn't fool %s!",
+				Your("displaced image doesn't fool %s!", /* EN Your("displaced image doesn't fool %s!", */ // TODO DE
 					mon_nam(priest));
 			(void) mattacku(priest);
 			return(0);
@@ -249,13 +249,13 @@ char *pname;		/* caller-supplied output buffer */
 {
 	const char *what = Hallucination ? rndmonnam() : mon->data->mname;
 
-	Strcpy(pname, "the ");
-	if (mon->minvis) Strcat(pname, "invisible ");
+	Strcpy(pname, "the "); /* EN Strcpy(pname, "the "); */ // TODO DE
+	if (mon->minvis) Strcat(pname, "invisible "); /* EN if (mon->minvis) Strcat(pname, "invisible "); */ // TODO DE
 	if (mon->ispriest || mon->data == &mons[PM_ALIGNED_PRIEST] ||
 					mon->data == &mons[PM_ANGEL]) {
 		/* use epri */
 		if (mon->mtame && mon->data == &mons[PM_ANGEL])
-			Strcat(pname, "guardian ");
+			Strcat(pname, "guardian "); /* EN Strcat(pname, "guardian "); */ // TODO DE
 		if (mon->data != &mons[PM_ALIGNED_PRIEST] &&
 				mon->data != &mons[PM_HIGH_PRIEST]) {
 			Strcat(pname, what);
@@ -263,23 +263,23 @@ char *pname;		/* caller-supplied output buffer */
 		}
 		if (mon->data != &mons[PM_ANGEL]) {
 			if (!mon->ispriest && EPRI(mon)->renegade)
-				Strcat(pname, "renegade ");
+				Strcat(pname, "renegade "); /* EN Strcat(pname, "renegade "); */ // TODO DE
 			if (mon->data == &mons[PM_HIGH_PRIEST])
-				Strcat(pname, "high ");
+				Strcat(pname, "high "); /* EN Strcat(pname, "high "); */ // TODO DE
 			if (Hallucination)
-				Strcat(pname, "poohbah ");
+				Strcat(pname, "poohbah "); /* EN Strcat(pname, "poohbah "); */ // TODO DE
 			else if (mon->female)
-				Strcat(pname, "priestess ");
+				Strcat(pname, "priestess "); /* EN Strcat(pname, "priestess "); */ // TODO DE
 			else
-				Strcat(pname, "priest ");
+				Strcat(pname, "priest "); /* EN Strcat(pname, "priest "); */ // TODO DE
 		}
-		Strcat(pname, "of ");
+		Strcat(pname, "of "); /* EN Strcat(pname, "of "); */ // TODO DE
 		Strcat(pname, halu_gname((int)EPRI(mon)->shralign));
 		return(pname);
 	}
 	/* use emin instead of epri */
 	Strcat(pname, what);
-	Strcat(pname, " of ");
+	Strcat(pname, " of "); /* EN Strcat(pname, " of "); */ // TODO DE
 	Strcat(pname, halu_gname(EMIN(mon)->min_align));
 	return(pname);
 }
@@ -344,22 +344,22 @@ register int roomno;
 		       the endgame; for the Sanctum, the next message names
 		       Moloch so suppress the "of Moloch" for him here too */
 		    if (sanctum && !Hallucination) priest->ispriest = 0;
-		    pline("%s intones:",
-			canseemon(priest) ? Monnam(priest) : "A nearby voice");
+		    pline("%s intones:", /* EN pline("%s intones:", */ // TODO DE
+			canseemon(priest) ? Monnam(priest) : "A nearby voice"); /* EN canseemon(priest) ? Monnam(priest) : "A nearby voice"); */ // TODO DE
 		    priest->ispriest = save_priest;
 		}
 		msg2 = 0;
 		if(sanctum && Is_sanctum(&u.uz)) {
 		    if(priest->mpeaceful) {
-			msg1 = "Infidel, you have entered Moloch's Sanctum!";
-			msg2 = "Be gone!";
+			msg1 = "Infidel, you have entered Moloch's Sanctum!"; /* EN msg1 = "Infidel, you have entered Moloch's Sanctum!"; */ // TODO DE
+			msg2 = "Be gone!"; /* EN msg2 = "Be gone!"; */ // TODO DE
 			priest->mpeaceful = 0;
 			set_malign(priest);
 		    } else
-			msg1 = "You desecrate this place by your presence!";
+			msg1 = "You desecrate this place by your presence!"; /* EN msg1 = "You desecrate this place by your presence!"; */ // TODO DE
 		} else {
-		    Sprintf(buf, "Pilgrim, you enter a %s place!",
-			    !shrined ? "desecrated" : "sacred");
+		    Sprintf(buf, "Pilgrim, you enter a %s place!", /* EN Sprintf(buf, "Pilgrim, you enter a %s place!", */ // TODO DE
+			    !shrined ? "desecrated" : "sacred"); /* EN !shrined ? "desecrated" : "sacred"); */ // TODO DE
 		    msg1 = buf;
 		}
 		if (can_speak) {
@@ -370,15 +370,15 @@ register int roomno;
 		    /* !tended -> !shrined */
 		    if (!shrined || !p_coaligned(priest) ||
 			    u.ualign.record <= ALGN_SINNED)
-			You("have a%s forbidding feeling...",
-				(!shrined) ? "" : " strange");
-		    else You("experience a strange sense of peace.");
+			You("have a%s forbidding feeling...", /* EN You("have a%s forbidding feeling...", */ // TODO DE
+				(!shrined) ? "" : " strange"); /* EN (!shrined) ? "" : " strange"); */ // TODO DE
+		    else You("experience a strange sense of peace."); /* EN else You("experience a strange sense of peace."); */ // TODO DE
 		}
 	    } else {
 		switch(rn2(3)) {
-		  case 0: You("have an eerie feeling..."); break;
-		  case 1: You_feel("like you are being watched."); break;
-		  default: pline("A shiver runs down your %s.",
+		  case 0: You("have an eerie feeling..."); break; /* EN case 0: You("have an eerie feeling..."); break; */ // TODO DE
+		  case 1: You_feel("like you are being watched."); break; /* EN case 1: You_feel("like you are being watched."); break; */ // TODO DE
+		  default: pline("A shiver runs down your %s.", /* EN default: pline("A shiver runs down your %s.", */ // TODO DE
 			body_part(SPINE)); break;
 		}
 		if(!rn2(5)) {
@@ -386,13 +386,13 @@ register int roomno;
 
 		    if(!(mtmp = makemon(&mons[PM_GHOST],u.ux,u.uy,NO_MM_FLAGS)))
 			return;
-		    pline("An enormous ghost appears next to you!");
+		    pline("An enormous ghost appears next to you!"); /* EN pline("An enormous ghost appears next to you!"); */ // TODO DE
 		    mtmp->mpeaceful = 0;
 		    set_malign(mtmp);
 		    if(flags.verbose)
-			You("are frightened to death, and unable to move.");
+			You("are frightened to death, and unable to move."); /* EN You("are frightened to death, and unable to move."); */ // TODO DE
 		    nomul(-3);
-		    nomovemsg = "You regain your composure.";
+		    nomovemsg = "You regain your composure."; /* EN nomovemsg = "You regain your composure."; */ // TODO DE
 	       }
 	   }
        }
@@ -409,7 +409,7 @@ register struct monst *priest;
 	u.uconduct.gnostic++;
 
 	if(priest->mflee || (!priest->ispriest && coaligned && strayed)) {
-	    pline("%s doesn't want anything to do with you!",
+	    pline("%s doesn't want anything to do with you!", /* EN pline("%s doesn't want anything to do with you!", */ // TODO DE
 				Monnam(priest));
 	    priest->mpeaceful = 0;
 	    return;
@@ -419,13 +419,13 @@ register struct monst *priest;
 	if(!histemple_at(priest,priest->mx,priest->my) ||
 		 !priest->mpeaceful || !priest->mcanmove || priest->msleeping) {
 	    static const char *cranky_msg[3] = {
-		"Thou wouldst have words, eh?  I'll give thee a word or two!",
-		"Talk?  Here is what I have to say!",
-		"Pilgrim, I would speak no longer with thee."
+		"Thou wouldst have words, eh?  I'll give thee a word or two!", /* EN "Thou wouldst have words, eh?  I'll give thee a word or two!", */ // TODO DE
+		"Talk?  Here is what I have to say!", /* EN "Talk?  Here is what I have to say!", */ // TODO DE
+		"Pilgrim, I would speak no longer with thee." /* EN "Pilgrim, I would speak no longer with thee." */ // TODO DE
 	    };
 
 	    if(!priest->mcanmove || priest->msleeping) {
-		pline("%s breaks out of %s reverie!",
+		pline("%s breaks out of %s reverie!", /* EN pline("%s breaks out of %s reverie!", */ // TODO DE
 		      Monnam(priest), mhis(priest));
 		priest->mfrozen = priest->msleeping = 0;
 		priest->mcanmove = 1;
@@ -438,7 +438,7 @@ register struct monst *priest;
 	/* you desecrated the temple and now you want to chat? */
 	if(priest->mpeaceful && *in_rooms(priest->mx, priest->my, TEMPLE) &&
 		  !has_shrine(priest)) {
-	    verbalize("Begone!  Thou desecratest this holy place with thy presence.");
+	    verbalize("Begone!  Thou desecratest this holy place with thy presence."); /* EN verbalize("Begone!  Thou desecratest this holy place with thy presence."); */ // TODO DE
 	    priest->mpeaceful = 0;
 	    return;
 	}
@@ -447,8 +447,8 @@ register struct monst *priest;
 	    if(coaligned && !strayed) {
 		if (priest->mgold > 0L) {
 		    /* Note: two bits is actually 25 cents.  Hmm. */
-		    pline("%s gives you %s for an ale.", Monnam(priest),
-			(priest->mgold == 1L) ? "one bit" : "two bits");
+		    pline("%s gives you %s for an ale.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */ // TODO DE
+			(priest->mgold == 1L) ? "one bit" : "two bits"); /* EN (priest->mgold == 1L) ? "one bit" : "two bits"); */ // TODO DE
 		    if (priest->mgold > 1L)
 			u.ugold = 2L;
 		    else
@@ -461,37 +461,37 @@ register struct monst *priest;
                 long pmoney = money_cnt(priest->minvent);
 		if (pmoney > 0L) {
 		    /* Note: two bits is actually 25 cents.  Hmm. */
-		    pline("%s gives you %s for an ale.", Monnam(priest),
-			(pmoney == 1L) ? "one bit" : "two bits");
+		    pline("%s gives you %s for an ale.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */ // TODO DE
+			(pmoney == 1L) ? "one bit" : "two bits"); /* EN (pmoney == 1L) ? "one bit" : "two bits"); */ // TODO DE
 		     money2u(priest, pmoney > 1L ? 2 : 1);
 #endif
 		} else
-		    pline("%s preaches the virtues of poverty.", Monnam(priest));
+		    pline("%s preaches the virtues of poverty.", Monnam(priest)); /* EN pline("%s preaches the virtues of poverty.", Monnam(priest)); */ // TODO DE
 		exercise(A_WIS, TRUE);
 	    } else
-		pline("%s is not interested.", Monnam(priest));
+		pline("%s is not interested.", Monnam(priest)); /* EN pline("%s is not interested.", Monnam(priest)); */ // TODO DE
 	    return;
 	} else {
 	    long offer;
 
-	    pline("%s asks you for a contribution for the temple.",
+	    pline("%s asks you for a contribution for the temple.", /* EN pline("%s asks you for a contribution for the temple.", */ // TODO DE
 			Monnam(priest));
 	    if((offer = bribe(priest)) == 0) {
-		verbalize("Thou shalt regret thine action!");
+		verbalize("Thou shalt regret thine action!"); /* EN verbalize("Thou shalt regret thine action!"); */ // TODO DE
 		if(coaligned) adjalign(-1);
 	    } else if(offer < (u.ulevel * 200)) {
 #ifndef GOLDOBJ
-		if(u.ugold > (offer * 2L)) verbalize("Cheapskate.");
+		if(u.ugold > (offer * 2L)) verbalize("Cheapskate."); /* EN if(u.ugold > (offer * 2L)) verbalize("Cheapskate."); */ // TODO DE
 #else
-		if(money_cnt(invent) > (offer * 2L)) verbalize("Cheapskate.");
+		if(money_cnt(invent) > (offer * 2L)) verbalize("Cheapskate."); /* EN if(money_cnt(invent) > (offer * 2L)) verbalize("Cheapskate."); */ // TODO DE
 #endif
 		else {
-		    verbalize("I thank thee for thy contribution.");
+		    verbalize("I thank thee for thy contribution."); /* EN verbalize("I thank thee for thy contribution."); */ // TODO DE
 		    /*  give player some token  */
 		    exercise(A_WIS, TRUE);
 		}
 	    } else if(offer < (u.ulevel * 400)) {
-		verbalize("Thou art indeed a pious individual.");
+		verbalize("Thou art indeed a pious individual."); /* EN verbalize("Thou art indeed a pious individual."); */ // TODO DE
 #ifndef GOLDOBJ
 		if(u.ugold < (offer * 2L)) {
 #else
@@ -499,19 +499,19 @@ register struct monst *priest;
 #endif
 		    if (coaligned && u.ualign.record <= ALGN_SINNED)
 			adjalign(1);
-		    verbalize("I bestow upon thee a blessing.");
+		    verbalize("I bestow upon thee a blessing."); /* EN verbalize("I bestow upon thee a blessing."); */ // TODO DE
 		    incr_itimeout(&HClairvoyant, rn1(500,500));
 		}
 	    } else if(offer < (u.ulevel * 600) &&
 		      u.ublessed < 20 &&
 		      (u.ublessed < 9 || !rn2(u.ublessed))) {
-		verbalize("Thy devotion has been rewarded.");
+		verbalize("Thy devotion has been rewarded."); /* EN verbalize("Thy devotion has been rewarded."); */ // TODO DE
 		if (!(HProtection & INTRINSIC))  {
 			HProtection |= FROMOUTSIDE;
 			if (!u.ublessed)  u.ublessed = rn1(3, 2);
 		} else u.ublessed++;
 	    } else {
-		verbalize("Thy selfless generosity is deeply appreciated.");
+		verbalize("Thy selfless generosity is deeply appreciated."); /* EN verbalize("Thy selfless generosity is deeply appreciated."); */ // TODO DE
 #ifndef GOLDOBJ
 		if(u.ugold < (offer * 2L) && coaligned) {
 #else
@@ -642,15 +642,15 @@ struct monst *priest;
 
 	switch(rn2(3)) {
 	case 0:
-	    pline("%s roars in anger:  \"Thou shalt suffer!\"",
+	    pline("%s roars in anger:  \"Thou shalt suffer!\"", /* EN pline("%s roars in anger:  \"Thou shalt suffer!\"", */ // TODO DE
 			a_gname_at(ax, ay));
 	    break;
 	case 1:
-	    pline("%s voice booms:  \"How darest thou harm my servant!\"",
+	    pline("%s voice booms:  \"How darest thou harm my servant!\"", /* EN pline("%s voice booms:  \"How darest thou harm my servant!\"", */ // TODO DE
 			s_suffix(a_gname_at(ax, ay)));
 	    break;
 	default:
-	    pline("%s roars:  \"Thou dost profane my shrine!\"",
+	    pline("%s roars:  \"Thou dost profane my shrine!\"", /* EN pline("%s roars:  \"Thou dost profane my shrine!\"", */ // TODO DE
 			a_gname_at(ax, ay));
 	    break;
 	}
