@@ -22,12 +22,12 @@ register struct monst *mon;
 		    const char *howler;
 
 		    switch (monsndx(mon->data)) {
-		    case PM_WEREWOLF:	howler = "wolf";    break; /* EN case PM_WEREWOLF:	howler = "wolf";    break; */ // TODO DE
-		    case PM_WEREJACKAL: howler = "jackal";  break; /* EN case PM_WEREJACKAL: howler = "jackal";  break; */ // TODO DE
+		    case PM_WEREWOLF:	howler = "NOUN_WOLF";    break; /* EN case PM_WEREWOLF:	howler = "wolf";    break; */
+		    case PM_WEREJACKAL: howler = "NOUN_JACKAL";  break; /* EN case PM_WEREJACKAL: howler = "jackal";  break; */
 		    default:		howler = (char *)0; break;
 		    }
 		    if (howler)
-			You_hear("a %s howling at the moon.", howler); /* EN You_hear("a %s howling at the moon.", howler); */ // TODO DE
+			You_hear("OBJECT ARTIKEL_UNBESTIMMTER %s den Mond anheulen.", howler); /* EN You_hear("a %s howling at the moon.", howler); */
 		}
 	    }
 	} else if (!rn2(30) || Protection_from_shape_changers) {
@@ -68,9 +68,9 @@ register struct monst *mon;
 	}
 
 	if(canseemon(mon) && !Hallucination)
-	    pline("%s changes into a %s.", Monnam(mon), /* EN pline("%s changes into a %s.", Monnam(mon), */ // TODO DE
-			is_human(&mons[pm]) ? "human" : /* EN is_human(&mons[pm]) ? "human" : */ // TODO DE
-			mons[pm].mname+4); /* EN mons[pm].mname+4); */ // TODO DE
+	    pline("%s VERB_VERWANDELN sich in OBJECT ARTIKEL_UNBESTIMMTER NOUN_%s.", Monnam(mon), /* EN pline("%s changes into a %s.", Monnam(mon), */
+			is_human(&mons[pm]) ? "MENSCH" : /* EN is_human(&mons[pm]) ? "human" : */
+			mons[pm].mname+9); /* EN mons[pm].mname+4); */
 
 	set_mon_data(mon, &mons[pm], 0);
 	if (mon->msleeping || !mon->mcanmove) {
@@ -131,8 +131,8 @@ you_were()
 	if (Unchanging || (u.umonnum == u.ulycn)) return;
 	if (Polymorph_control) {
 	    /* `+4' => skip "were" prefix to get name of beast */
-	    Sprintf(qbuf, "Do you want to change into %s? ", /* EN Sprintf(qbuf, "Do you want to change into %s? ", */ // TODO DE
-		    an(mons[u.ulycn].mname+4));
+	    Sprintf(qbuf, "VERB_WOLLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL in OBJECT ARTIKEL_UNBESTIMMTER NOUN_%s verwandeln?", /* EN Sprintf(qbuf, "Do you want to change into %s? ", */
+		    mons[u.ulycn].mname+9); /* EN an(mons[u.ulycn].mname+4)); */
 	    if(yn(qbuf) == 'n') return;
 	}
 	(void) polymon(u.ulycn);
@@ -143,11 +143,11 @@ you_unwere(purify)
 boolean purify;
 {
 	if (purify) {
-	    You_feel("purified."); /* EN You_feel("purified."); */ // TODO DE
+	    Du_fuehlst_dich("gereinigt."); /* EN You_feel("purified."); */
 	    u.ulycn = NON_PM;	/* cure lycanthropy */
 	}
 	if (!Unchanging && is_were(youmonst.data) &&
-		(!Polymorph_control || yn("Remain in beast form?") == 'n')) /* EN (!Polymorph_control || yn("Remain in beast form?") == 'n')) */ // TODO DE
+		(!Polymorph_control || yn("In Tierform verbleiben?") == 'n')) /* EN (!Polymorph_control || yn("Remain in beast form?") == 'n')) */
 	    rehumanize();
 }
 

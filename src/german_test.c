@@ -362,13 +362,29 @@ START_TEST (test_complete_sentences3) {
 		 "Eisenstangen oder ein Baum"},
 		{"Wasserturbulenzen beeinträchtigen KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_MOVEMENTs.",
 		 "Wasserturbulenzen beeinträchtigen deine Bewegungen."},
-		{"SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ELEKTRISCH NOUN_SCHLAG VERB_SCHIESSEN OBJECT durch PRONOMEN_POSSESSIV NOUN_BODY!",
-		 ""},
+		//{"SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ELEKTRISCH NOUN_SCHLAG VERB_SCHIESSEN OBJECT durch PRONOMEN_POSSESSIV NOUN_BODY!",
+		 //""},
+		//{"ARTIKEL_BESTIMMTER NOUN_DOG VERB_BEMERKEN OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_FOOD_RATION.", ""}
+		{"VERB_WOLLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL in OBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLF verwandeln?", ""}
+
 	};
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+
+START_TEST (test_hoeren) {
+	char *text[][2] = {
+		{"Nur schwach VERB_HEAR SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLFs den Mond anheulen.",
+		 "Nur schwach hörst du Wölfe den Mond anheulen."},
+		{"Im Traum VERB_HEAR SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLF den Mond anheulen.",
+		 "Im Traum hörst du einen Wolf den Mond anheulen."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_HEAR OBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLF den Mond anheulen.",
+		 "Du hörst einen Wolf den Mond anheulen."},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
 
 START_TEST (test_passiv) {
 	char *text[][2] = {
@@ -681,6 +697,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_passiv);
   tcase_add_test(tc_core, test_complete_sentences);
   tcase_add_test(tc_core, test_complete_sentences2);
+  tcase_add_test(tc_core, test_complete_sentences3);
   tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_tincontent);
 	tcase_add_test(tc_core, test_inventory_names);
@@ -689,6 +706,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_scrolls);
 	tcase_add_test(tc_core, test_gems);
 	tcase_add_test(tc_core, test_paar);
+  tcase_add_test(tc_core, test_hoeren);
 	}
 
   return s;
