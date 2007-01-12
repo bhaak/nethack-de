@@ -461,6 +461,8 @@ def ausgabe_verbs
     konjugiere_verb("VERB_LEGEN","leg"),
     konjugiere_verb("VERB_SPUEREN","spür"),
     konjugiere_verb("VERB_VERWANDELN","verwandel"),
+    konjugiere_verb("VERB_VERSUCHEN","versuch"),
+    konjugiere_verb("VERB_FINDEN","find"),
     "",
     "/* unregelmässige Verben */",
     Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
@@ -776,7 +778,12 @@ def ausgabe_nouns
     unregelmaessiges_wort("PARTIKEL_NAMED",   "namens", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # geannt, namens
     unregelmaessiges_wort("PARTIKEL_CALLED",  "genannt", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # bezeichnet mit, genannt
     unregelmaessiges_wort("PARTIKEL_LABELED", "beschriftet", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]), # bezeichnet mit, genannt
-    unregelmaessiges_wort("PARTIKEL_VON", "von", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl])
+    unregelmaessiges_wort("PARTIKEL_VON", "von", [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
+		"",
+    unregelmaessiges_wort("NOUN_JEMAND", "jemand", $nom, $mal, $sg),
+    unregelmaessiges_wort("NOUN_JEMAND", "jemandes", $gen, $mal, $sg),
+    unregelmaessiges_wort("NOUN_JEMAND", "jemandem", $dat, $mal, $sg),
+    unregelmaessiges_wort("NOUN_JEMAND", "jemanden", $akk, $mal, $sg),
   ].each { |n|
     if n.is_a? String then
       puts n

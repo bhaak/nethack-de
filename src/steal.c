@@ -246,9 +246,9 @@ char *objnambuf;
 nothing_to_steal:
 	    /* Not even a thousand men in armor can strip a naked man. */
 	    if(Blind)
-	      pline("Somebody tries to rob you, but finds nothing to steal."); /* EN pline("Somebody tries to rob you, but finds nothing to steal."); */ // TODO DE
+	      pline("SUBJECT NOUN_JEMAND VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL zu bestehlen aber VERB_FINDEN nichts."); /* EN pline("Somebody tries to rob you, but finds nothing to steal."); */
 	    else
-	      pline("%s tries to rob you, but there is nothing to steal!", /* EN pline("%s tries to rob you, but there is nothing to steal!", */ // TODO DE
+	      pline("SUBJECT %s VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL zu bestehlen, aber bei OBJECT KASUS_DATIV PRONOMEN_PERSONAL gibt es nichts zu holen!", /* EN pline("%s tries to rob you, but there is nothing to steal!", */
 		Monnam(mtmp));
 	    return(1);	/* let her flee */
 	}
