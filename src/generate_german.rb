@@ -2138,6 +2138,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_STUHL", "Stuhl", "es", "Stühl", "e", "maskulin"),
     dekliniere_substantiv("NOUN_MENSCH", "Mensch", "en", "Mensch", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_RAT", "Ratte", "", "Ratte", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_PURSE", "Portemonnaie", "s", "Portemonnaie", "s", "neutrum", ""),
 
     "/* ======================================================= */",
     "/* Adjektive */",

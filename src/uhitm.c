@@ -1398,7 +1398,7 @@ register struct attack *mattk;
 		if (mdef->mgold) {
 		    u.ugold += mdef->mgold;
 		    mdef->mgold = 0;
-		    Your("purse feels heavier."); /* EN Your("purse feels heavier."); */ // TODO DE
+		    Your("NOUN_PURSE fühlt sich schwerer an."); /* EN Your("purse feels heavier."); */
 		}
 #else
                 /* This you as a leprechaun, so steal
@@ -1409,7 +1409,7 @@ register struct attack *mattk;
 		        obj_extract_self(mongold);  
 		        if (merge_choice(invent, mongold) || inv_cnt() < 52) {
 			    addinv(mongold);
-			    Your("purse feels heavier."); /* EN Your("purse feels heavier."); */ // TODO DE
+			    Your("NOUN_PURSE fühlt sich schwerer."); /* EN Your("purse feels heavier."); */
 			} else {
                             You("grab %s's gold, but find no room in your knapsack.", mon_nam(mdef)); /* EN You("grab %s's gold, but find no room in your knapsack.", mon_nam(mdef)); */ // TODO DE
 			    dropy(mongold);

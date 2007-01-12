@@ -47,7 +47,7 @@ register struct monst *mtmp;
 	    mtmp->mgold += gold->quan;
 	    delobj(gold);
 	    newsym(u.ux, u.uy);
-	    pline("%s quickly snatches some gold from between your %s!", /* EN pline("%s quickly snatches some gold from between your %s!", */ // TODO DE
+	    pline("SUBJECT %s VERB_SCHNAPPEN sich etwas Gold, das zwischen OBJECT PRONOMEN_POSSESSIV %s liegt!", /* EN pline("%s quickly snatches some gold from between your %s!", */
 		    Monnam(mtmp), makeplural(body_part(FOOT)));
 	    if(!u.ugold || !rn2(5)) {
 		if (!tele_restrict(mtmp)) rloc(mtmp);
@@ -56,7 +56,7 @@ register struct monst *mtmp;
 	    }
 	} else if(u.ugold) {
 	    u.ugold -= (tmp = somegold());
-	    Your("purse feels lighter."); /* EN Your("purse feels lighter."); */ // TODO DE
+	    Your("NOUN_PURSE fühlt sich leichter an."); /* EN Your("purse feels lighter."); */
 	    mtmp->mgold += tmp;
 	if (!tele_restrict(mtmp)) rloc(mtmp);
 	    mtmp->mavenge = 1;
@@ -129,7 +129,7 @@ register struct monst *mtmp;
             if (tmp < ygold->quan) ygold = splitobj(ygold, tmp);
             freeinv(ygold);
             add_to_minv(mtmp, ygold);
-	    Your("purse feels lighter."); /* EN Your("purse feels lighter."); */ // TODO DE
+	    Your("NOUN_PURSE fühlt sich leichter an."); /* EN Your("purse feels lighter."); */
 	    if (!tele_restrict(mtmp)) rloc(mtmp);
 	    monflee(mtmp, 0, FALSE, FALSE);
 	    flags.botl = 1;
@@ -313,12 +313,13 @@ gotobj:
 		ostuck = (otmp->cursed && otmp->owornmask);
 
 	    if (ostuck || !can_carry(mtmp, otmp)) {
-		static const char * const how[] = { "steal","snatch","grab","take" }; /* EN static const char * const how[] = { "steal","snatch","grab","take" }; */ // TODO DE
+		static const char * const how[] = { "VERB_STEHLEN","VERB_PACKEN","VERB_SCHNAPPEN","VERB_NEHMEN" }; /* EN static const char * const how[] = { "steal","snatch","grab","take" }; */
  cant_take:
-		pline("%s tries to %s your %s but gives up.", /* EN pline("%s tries to %s your %s but gives up.", */ // TODO DE
-		      Monnam(mtmp), how[rn2(SIZE(how))],
+		pline("SUBJECT %s VERB_SUCHEN OBJECT PRONOMEN_POSSESSIV %s zu %s aber gibt auf.", /* EN pline("%s tries to %s your %s but gives up.", */
+		      Monnam(mtmp), /* EN Monnam(mtmp), how[rn2(SIZE(how))], */
 		      (otmp->owornmask & W_ARMOR) ? equipname(otmp) :
-		       cxname(otmp));
+		       cxname(otmp),
+					 how[rn2(SIZE(how))]);
 		/* the fewer items you have, the less likely the thief
 		   is going to stick around to try again (0) instead of
 		   running away (1) */
