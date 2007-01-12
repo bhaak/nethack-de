@@ -203,18 +203,18 @@ struct obj *wep;	/* uwep for attack(), null for kick_monster() */
 		}
 		if (canspotmon(mtmp)) {
 #ifdef PARANOID
-			Sprintf(qbuf, "Really attack %s? [no/yes]", /* EN Sprintf(qbuf, "Really attack %s? [no/yes]", */ // TODO DE
+			Sprintf(qbuf, "Wirklich KASUS_AKKUSATIV %s angreifen? [nein/ja]", /* EN Sprintf(qbuf, "Really attack %s? [no/yes]", */
 				mon_nam(mtmp));
 			if (iflags.paranoid_hit) {
 				getlin (qbuf, buf);
 				(void) lcase (buf);
-				if (strcmp (buf, "yes")) {
+				if (strcmp (buf, "ja")) { /* EN if (strcmp (buf, "yes")) { */
 				  flags.move = 0;
 				  return(TRUE);
 				}
 			} else {
 #endif
-			Sprintf(qbuf, "Really attack %s?", mon_nam(mtmp)); /* EN Sprintf(qbuf, "Really attack %s?", mon_nam(mtmp)); */ // TODO DE
+			Sprintf(qbuf, "Wirklich KASUS_AKKUSATIV %s angreifen?", mon_nam(mtmp)); /* EN Sprintf(qbuf, "Really attack %s?", mon_nam(mtmp)); */
 			if (yn(qbuf) != 'y') {
 				flags.move = 0;
 				return(TRUE);
