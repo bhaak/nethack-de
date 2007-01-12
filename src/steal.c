@@ -15,13 +15,13 @@ register struct obj *otmp;
 {
 	return (
 #ifdef TOURIST
-		(otmp == uarmu) ? "shirt" : /* EN (otmp == uarmu) ? "shirt" : */ // TODO DE
+		(otmp == uarmu) ? "NOUN_SHIRT" : /* EN (otmp == uarmu) ? "shirt" : */
 #endif
-		(otmp == uarmf) ? "boots" : /* EN (otmp == uarmf) ? "boots" : */ // TODO DE
-		(otmp == uarms) ? "shield" : /* EN (otmp == uarms) ? "shield" : */ // TODO DE
-		(otmp == uarmg) ? "gloves" : /* EN (otmp == uarmg) ? "gloves" : */ // TODO DE
+		(otmp == uarmf) ? "NOUN_BOOTs" : /* EN (otmp == uarmf) ? "boots" : */
+		(otmp == uarms) ? "NOUN_SHIELD" : /* EN (otmp == uarms) ? "shield" : */
+		(otmp == uarmg) ? "NOUN_GLOVEs" : /* EN (otmp == uarmg) ? "gloves" : */
 		(otmp == uarmc) ? cloak_simple_name(otmp) :
-		(otmp == uarmh) ? "helmet" : "armor"); /* EN (otmp == uarmh) ? "helmet" : "armor"); */ // TODO DE
+		(otmp == uarmh) ? "NOUN_HELMET" : "NOUN_ARMOR"); /* EN (otmp == uarmh) ? "helmet" : "armor"); */
 }
 
 #ifndef GOLDOBJ
@@ -116,7 +116,7 @@ register struct monst *mtmp;
             obj_extract_self(fgold);
 	    add_to_minv(mtmp, fgold);
 	    newsym(u.ux, u.uy);
-	    pline("%s quickly snatches some gold from between your %s!", /* EN pline("%s quickly snatches some gold from between your %s!", */ // TODO DE
+	    pline("SUBJECT %s VERB_SCHNAPPEN sich etwas Gold, das zwischen OBJECT PRONOMEN_POSSESSIV %s liegt!", /* EN pline("%s quickly snatches some gold from between your %s!", */
 		    Monnam(mtmp), makeplural(body_part(FOOT)));
 	    if(!ygold || !rn2(5)) {
 		if (!tele_restrict(mtmp)) rloc(mtmp);
@@ -157,7 +157,7 @@ stealarm()
 			if(otmp->unpaid)
 			    subfrombill(otmp, shop_keeper(*u.ushops));
 			freeinv(otmp);
-			pline("%s steals %s!", Monnam(mtmp), doname(otmp)); /* EN pline("%s steals %s!", Monnam(mtmp), doname(otmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_STEHLEN OBJECT %s!", Monnam(mtmp), doname(otmp)); /* EN pline("%s steals %s!", Monnam(mtmp), doname(otmp)); */
 			(void) mpickobj(mtmp,otmp);	/* may free otmp */
 			/* Implies seduction, "you gladly hand over ..."
 			   so we don't set mavenge bit here. */
