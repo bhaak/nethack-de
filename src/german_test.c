@@ -371,6 +371,8 @@ START_TEST (test_complete_sentences3) {
 		"Jemand versucht dich zu bestehlen aber findet nichts."},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_NYMPH VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL zu bestehlen, aber bei OBJECT KASUS_DATIV PRONOMEN_PERSONAL gibt es nichts zu holen!",
 		"Die Nymphe versucht dich zu bestehlen, aber bei dir gibt es nichts zu holen!"},
+		{"Der Gedanke an Piroschka VERB_LASSEN OBJECT PRONOMEN_PERSONAL alles vergessen.",
+		 "Der Gedanke an Piroschka lässt dich alles vergessen."},
 
 
 	};

@@ -508,6 +508,7 @@ def ausgabe_verbs
     Verb.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
     Verb.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
     Verb.new("VERB_MOECHTEST", "", "", ["möchtest", "möchte", "möchtet","möchten"]),
+    Verb.new("VERB_LASSEN", "", "", ["lässt", "lässt", "lassen","lasst"]),
     "",
     Verb.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
     Verb.new("VERB_ZERBRECHEN", "", "", ["zerbrichst", "zerbricht", "zerbrecht", "zerbrechen"]),
@@ -987,7 +988,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CLOAK_OF_PROTECTION", "Umhang", "es", "Umhäng", "e", "maskulin", "s", "des Schutzes"),
     dekliniere_substantiv("NOUN_CLOAK_OF_INVISIBILITY", "Umhang", "es", "Umhäng", "e", "maskulin", "s", "der Unsichtbarkeit"),
     dekliniere_substantiv("NOUN_CLOAK_OF_MAGIC_RESISTANCE", "Umhang", "es", "Umhäng", "e", "maskulin", "s", "der Magieresistenz"),
-    #dekliniere_substantiv("NOUN_CLOAK_OF_DISPLACEMENT"
+    #dekliniere_substantiv("NOUN_CLOAK_OF_DISPLACEMENT" # deplaziert?, verstellt?, disloziert?, verdraengt?, verschoben?, verrueckt?, versetzt, 
     dekliniere_nominalphrase("NOUN_SMALL_SHIELD", "klein", "Schild", "es", "Schild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_SHIELD", "Elbenschild", "es", "Elbenschild", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_URUK_HAI_SHIELD"

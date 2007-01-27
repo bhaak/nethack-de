@@ -1111,12 +1111,14 @@ register struct obj	*sobj;
 			(!confused || sobj->cursed ? ALL_MAP : 0) );
 		if (Hallucination) /* Ommmmmm! */
 			Your("mind releases itself from mundane concerns."); /* EN Your("mind releases itself from mundane concerns."); */ // TODO DE
+#ifndef GERMAN
 		else if (!strncmpi(plname, "Maud", 4))
-			pline("As your mind turns inward on itself, you forget everything else."); /* EN pline("As your mind turns inward on itself, you forget everything else."); */ // TODO DE
+			pline("As your mind turns inward on itself, you forget everything else."); /* EN pline("As your mind turns inward on itself, you forget everything else."); */
+#endif
 		else if (rn2(2))
-			pline("Who was that Maud person anyway?"); /* EN pline("Who was that Maud person anyway?"); */ // TODO DE
+			pline("Wer ist eigentlich Paul?"); /* EN pline("Who was that Maud person anyway?"); */
 		else
-			pline("Thinking of Maud you forget everything else."); /* EN pline("Thinking of Maud you forget everything else."); */ // TODO DE
+			pline("Der Gedanke an Piroschka VERB_LASSEN OBJECT PRONOMEN_PERSONAL alles vergessen."); /* EN pline("Thinking of Maud you forget everything else."); */ // TODO DE
 		exercise(A_WIS, FALSE);
 		break;
 	case SCR_FIRE:
