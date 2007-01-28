@@ -1810,10 +1810,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_KOP_SERGEANT", "Inspektor", "s", "Inspektor", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOP_LIEUTENANT", "Gruppeninspektor", "es", "Gruppeninspektor", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOP_KAPTAIN", "Chefinspektor", "es", "Chefinspektor", "en", "maskulin", "en"),
-    #dekliniere_substantiv("NOUN_LICH"        # Liechnam?, Leichnam?
-    #dekliniere_substantiv("NOUN_DEMILICH"    # Demiliechnam?, Halbliechnam?
-    #dekliniere_substantiv("NOUN_MASTER_LICH" # Meisterliechnam
-    #dekliniere_substantiv("NOUN_ARCH_LICH"   # Erzliechnam. Erzlichnam?
+    dekliniere_substantiv("NOUN_LICH", "Liechnam", "s", "Liechnam", "e", "maskulin", "en"), # Liechnam?, Leichnam? Lichnam? Liichnam? Lijchnam? Liehchnam?
+    dekliniere_substantiv("NOUN_DEMILICH", "Halbliechnam", "s", "Halbliechnam", "e", "maskulin", "en"), # Demiliechnam?, Halbliechnam?
+    dekliniere_substantiv("NOUN_MASTER_LICH", "Meisterliechnam", "s", "Meisterliechnam", "e", "maskulin", "en"), # Meisterliechnam
+    dekliniere_substantiv("NOUN_ARCH_LICH", "Erzliechnam", "s", "Erzliechnam", "e", "maskulin", "en"),
     dekliniere_substantiv("NOUN_KOBOLD_MUMMY", "Koboldsmumie", "", "Koboldsmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_GNOME_MUMMY", "Gnomenmumie", "", "Gnomenmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_ORC_MUMMY", "Orkmumie", "", "Orkmumie", "en", "feminin", "n"),
