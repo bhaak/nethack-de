@@ -1851,7 +1851,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ROCK_TROLL", "Steintroll",  "es", "Steintroll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_WATER_TROLL", "Wassertroll",  "es", "Wassertroll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_OLOG_HAI","Olog-Hai","","Olog-Hai","fremder","maskulin"),
-    #dekliniere_substantiv("NOUN_UMBER_HULK" # Erdkoloss, Umbraunkoloss?, Umberholk?, Umbraholk?, Umbraunholk?
+    dekliniere_substantiv("NOUN_UMBER_HULK", "Umberholk", "es", "Umberholk", "e","maskulin", "en"), # Erdkoloss, Umbraunkoloss?, Umberholk?, Umbraholk?, Umbraunholk? Umbrauner Holk? Umbrauner Koloss?
+    #dekliniere_nominalphrase("NOUN_UMBER_HULK", "Umbraun", "Holk", "es", "Holk", "e","maskulin", "en"),
     dekliniere_substantiv("NOUN_VAMPIRE","Vampir","es","Vampir","e","maskulin"),
     #dekliniere_substantiv("NOUN_VAMPIRE_LORD"
     #dekliniere_substantiv("NOUN_VAMPIRE_MAGE"
