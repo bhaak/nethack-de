@@ -1738,9 +1738,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_STEAM_VORTEX", "Dampfwirbel", "s", "Dampfwirbel", "", "maskulin"),
     dekliniere_substantiv("NOUN_FIRE_VORTEX", "Feuerwirbel", "s", "Feuerwirbel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_BABY_LONG_WORM"
-    #dekliniere_substantiv("NOUN_BABY_PURPLE_WORM"
+    dekliniere_substantiv("NOUN_BABY_PURPLE_WORM", "Purpurwürmchen", "s", "Purpurwürmchen", "", "neutrum"),
     #dekliniere_substantiv("NOUN_LONG_WORM"
-    #dekliniere_substantiv("NOUN_PURPLE_WORM"
+    dekliniere_substantiv("NOUN_PURPLE_WORM", "Purpurwurm", "es", "Purpurwürm", "er", "maskulin"),
     #dekliniere_substantiv("NOUN_GRID_BUG"
     #dekliniere_substantiv("NOUN_XAN"
     dekliniere_nominalphrase("NOUN_YELLOW_LIGHT", "gelb", "Licht", "es", "Licht", "er", "neutrum"),
@@ -1779,7 +1779,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GREEN_DRAGON", "Gründrache", "en", "Gründrache", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_YELLOW_DRAGON", "Gelbdrache", "en", "Gelbdrache", "en", "maskulin", "n"),
     # dekliniere_substantiv("NOUN_STALKER", "Nachsteller", "s", "Nachsteller", "", "maskulin"),
-    dekliniere_substantiv("NOUN_STALKER", "Pirscher", "s", "Pirscher", "", "maskulin"), 
+    dekliniere_substantiv("NOUN_STALKER", "Pirscher", "s", "Pirscher", "", "maskulin"), # Schleicher?
     dekliniere_substantiv("NOUN_AIR_ELEMENTAL",   "Luftelementar",   "es", "Luftelementar",   "e", "neutrum"),
     dekliniere_substantiv("NOUN_FIRE_ELEMENTAL",  "Feuerelementar",  "es", "Feuerelementar",  "e", "neutrum"),
     dekliniere_substantiv("NOUN_EARTH_ELEMENTAL", "Erdelementar",    "es", "Erdelementar",    "e", "neutrum"),
