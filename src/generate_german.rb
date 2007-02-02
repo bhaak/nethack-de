@@ -1737,9 +1737,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ENERGY_VORTEX", "Energiewirbel", "s", "Energiewirbel", "", "maskulin"),
     dekliniere_substantiv("NOUN_STEAM_VORTEX", "Dampfwirbel", "s", "Dampfwirbel", "", "maskulin"),
     dekliniere_substantiv("NOUN_FIRE_VORTEX", "Feuerwirbel", "s", "Feuerwirbel", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_BABY_LONG_WORM"
+    dekliniere_substantiv("NOUN_BABY_LONG_WORM", "Langwürmchen", "s", "Langwürmchen", "", "neutrum"),
     dekliniere_substantiv("NOUN_BABY_PURPLE_WORM", "Purpurwürmchen", "s", "Purpurwürmchen", "", "neutrum"),
-    #dekliniere_substantiv("NOUN_LONG_WORM"
+    dekliniere_substantiv("NOUN_LONG_WORM", "Langwurm", "es", "Langwürm", "er", "maskulin"),
     dekliniere_substantiv("NOUN_PURPLE_WORM", "Purpurwurm", "es", "Purpurwürm", "er", "maskulin"),
     #dekliniere_substantiv("NOUN_GRID_BUG"
     dekliniere_substantiv("NOUN_XAN", "Xan", "", "Xan", "", "maskulin"),
