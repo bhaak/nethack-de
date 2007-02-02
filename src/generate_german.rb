@@ -1838,8 +1838,8 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_BLACK_PUDDING", "Schwarz", "Grütze", "", "Grütze", "en", "feminin"),
     dekliniere_nominalphrase("NOUN_GREEN_SLIME", "Grün", "Schleim", "es", "Schleim", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_QUANTUM_MECHANIC"
-    #dekliniere_substantiv("NOUN_RUST_MONSTER"
-    #dekliniere_substantiv("NOUN_DISENCHANTER"
+    dekliniere_substantiv("NOUN_RUST_MONSTER", "Rostmonster", "s", "Rostmonster", "", "neutrum"),
+    dekliniere_substantiv("NOUN_DISENCHANTER", "Entzauberer", "s", "Entzauberer", "", "maskulin"),
     #dekliniere_substantiv("NOUN_GARTER_SNAKE"
     dekliniere_substantiv("NOUN_SNAKE","Schlange","","Schlange","en","feminin", "n"),
     #dekliniere_substantiv("NOUN_WATER_MOCCASIN"
