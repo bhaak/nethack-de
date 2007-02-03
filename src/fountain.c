@@ -28,9 +28,9 @@ dowatersnakes() /* Fountain of snakes! */
     if (!(mvitals[PM_WATER_MOCCASIN].mvflags & G_GONE)) {
 	if (!Blind)
 	    pline("An endless stream of %s pours forth!", /* EN pline("An endless stream of %s pours forth!", */ // TODO DE
-		  Hallucination ? makeplural(rndmonnam()) : "snakes"); /* EN Hallucination ? makeplural(rndmonnam()) : "snakes"); */ // TODO DE
+		  Hallucination ? makeplural(rndmonnam()) : "NOUN_SNAKEs"); /* EN Hallucination ? makeplural(rndmonnam()) : "snakes"); */
 	else
-			You_hear("%s hissing!", something); /* EN You_hear("%s hissing!", something); */ // TODO DE
+			You_hear("%s zischen!", something); /* EN You_hear("%s hissing!", something); */
 	while(num-- > 0)
 	    if((mtmp = makemon(&mons[PM_WATER_MOCCASIN],
 			u.ux, u.uy, NO_MM_FLAGS)) && t_at(mtmp->mx, mtmp->my))
@@ -75,7 +75,7 @@ dowaternymph() /* Water Nymph */
 		if (!Blind)
 		   You("attract %s!", a_monnam(mtmp)); /* EN You("attract %s!", a_monnam(mtmp)); */ // TODO DE
 		else
-		   You_hear("a seductive voice."); /* EN You_hear("a seductive voice."); */ // TODO DE
+		   You_hear("eine verf¸hrerische Stimme."); /* EN You_hear("a seductive voice."); */
 		mtmp->msleeping = 0;
 		if (t_at(mtmp->mx, mtmp->my))
 		    (void) mintrap(mtmp);
@@ -181,7 +181,7 @@ boolean isyou;
 		levl[x][y].typ = ROOM;
 		levl[x][y].looted = 0;
 		levl[x][y].blessedftn = 0;
-		if (cansee(x,y)) pline_The("fountain dries up!"); /* EN if (cansee(x,y)) pline_The("fountain dries up!"); */ // TODO DE
+		if (cansee(x,y)) pline_The("NOUN_FOUNTAIN versiegt!"); /* EN if (cansee(x,y)) pline_The("fountain dries up!"); */
 		/* The location is seen if the hero/monster is invisible */
 		/* or felt if the hero is blind.			 */
 		newsym(x, y);
@@ -199,14 +199,14 @@ drinkfountain()
 	register int fate = rnd(30);
 
 	if (Levitation) {
-		floating_above("fountain"); /* EN floating_above("fountain"); */ // TODO DE
+		floating_above("NOUN_FOUNTAIN"); /* EN floating_above("fountain"); */
 		return;
 	}
 
 	if (mgkftn && u.uluck >= 0 && fate >= 10) {
 		int i, ii, littleluck = (u.uluck < 4);
 
-		pline("Wow!  This makes you feel great!"); /* EN pline("Wow!  This makes you feel great!"); */ // TODO DE
+		pline("Wau!  This makes you VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL grossartig!"); /* EN pline("Wow!  This makes you feel great!"); */ // TODO DE
 		/* blessed restore ability */
 		for (ii = 0; ii < A_MAX; ii++)
 		    if (ABASE(ii) < AMAX(ii)) {
@@ -253,7 +253,7 @@ drinkfountain()
 
 		case 21: /* Poisonous */
 
-			pline_The("water is contaminated!"); /* EN pline_The("water is contaminated!"); */ // TODO DE
+			pline_The("NOUN_WATER ist kontaminiert!"); /* EN pline_The("water is contaminated!"); */
 			if (Poison_resistance) {
 			   pline(
 			      "Perhaps it is runoff from the nearby %s farm.", /* EN "Perhaps it is runoff from the nearby %s farm.", */ // TODO DE
@@ -279,7 +279,7 @@ drinkfountain()
 		case 24: /* Curse an item */ {
 			register struct obj *obj;
 
-			pline("This water's no good!"); /* EN pline("This water's no good!"); */ // TODO DE
+			pline("Dieses Wasser ist schlecht!"); /* EN pline("This water's no good!"); */
 			morehungry(rn1(20, 11));
 			exercise(A_CON, FALSE);
 			for(obj = invent; obj ; obj = obj->nobj)
@@ -352,7 +352,7 @@ dipfountain(obj)
 register struct obj *obj;
 {
 	if (Levitation) {
-		floating_above("fountain"); /* EN floating_above("fountain"); */ // TODO DE
+		floating_above("NOUN_FOUNTAIN"); /* EN floating_above("fountain"); */
 		return;
 	}
 
@@ -512,21 +512,21 @@ drinksink()
 	struct monst *mtmp;
 
 	if (Levitation) {
-		floating_above("sink"); /* EN floating_above("sink"); */ // TODO DE
+		floating_above("NOUN_SINK"); /* EN floating_above("sink"); */
 		return;
 	}
 	switch(rn2(20)) {
-		case 0: You("take a sip of very cold water."); /* EN case 0: You("take a sip of very cold water."); */ // TODO DE
+		case 0: You("VERB_NEHMEN einen Schluck sehr kalten Wassers."); /* EN case 0: You("take a sip of very cold water."); */
 			break;
-		case 1: You("take a sip of very warm water."); /* EN case 1: You("take a sip of very warm water."); */ // TODO DE
+		case 1: You("VERB_NEHMEN einen Schluck sehr warmen Wassers."); /* EN case 1: You("take a sip of very warm water."); */
 			break;
-		case 2: You("take a sip of scalding hot water."); /* EN case 2: You("take a sip of scalding hot water."); */ // TODO DE
+		case 2: You("VERB_NEHMEN einen Schluck siedend heiﬂen Wassers."); /* EN case 2: You("take a sip of scalding hot water."); */
 			if (Fire_resistance)
 				pline("It seems quite tasty."); /* EN pline("It seems quite tasty."); */ // TODO DE
 			else losehp(rnd(6), "sipping boiling water", KILLED_BY); /* EN else losehp(rnd(6), "sipping boiling water", KILLED_BY); */ // TODO DE
 			break;
 		case 3: if (mvitals[PM_SEWER_RAT].mvflags & G_GONE)
-				pline_The("sink seems quite dirty."); /* EN pline_The("sink seems quite dirty."); */ // TODO DE
+				pline_The("NOUN_SINK VERB_SEIN ziemlich dreckig."); /* EN pline_The("sink seems quite dirty."); */
 			else {
 				mtmp = makemon(&mons[PM_SEWER_RAT],
 						u.ux, u.uy, NO_MM_FLAGS);
@@ -554,7 +554,7 @@ drinksink()
 			obfree(otmp, (struct obj *)0);
 			break;
 		case 5: if (!(levl[u.ux][u.uy].looted & S_LRING)) {
-			    You("find a ring in the sink!"); /* EN You("find a ring in the sink!"); */ // TODO DE
+			    You("VERB_FINDEN einen Ring in OBJECT KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_SINK!"); /* EN You("find a ring in the sink!"); */
 			    (void) mkobj_at(RING_CLASS, u.ux, u.uy, TRUE);
 			    levl[u.ux][u.uy].looted |= S_LRING;
 			    exercise(A_WIS, TRUE);
@@ -579,7 +579,7 @@ drinksink()
 			break;
 		case 10: pline("This water contains toxic wastes!"); /* EN case 10: pline("This water contains toxic wastes!"); */ // TODO DE
 			if (!Unchanging) {
-				You("undergo a freakish metamorphosis!"); /* EN You("undergo a freakish metamorphosis!"); */ // TODO DE
+				You("VERB_DURCHLEBEN eine absonderliche Metamorphose!"); /* EN You("undergo a freakish metamorphosis!"); */
 				polyself(FALSE);
 			}
 			break;
@@ -592,8 +592,8 @@ drinksink()
 		   pline("From the murky drain, a hand reaches up... --oops--"); /* EN pline("From the murky drain, a hand reaches up... --oops--"); */ // TODO DE
 				break;
 			}
-		default: You("take a sip of %s water.", /* EN default: You("take a sip of %s water.", */ // TODO DE
-			rn2(3) ? (rn2(2) ? "cold" : "warm") : "hot"); /* EN rn2(3) ? (rn2(2) ? "cold" : "warm") : "hot"); */ // TODO DE
+		default: You("VERN_NEHMEN einen Schluck %s Wassers.", /* EN default: You("take a sip of %s water.", */
+			rn2(3) ? (rn2(2) ? "kalten" : "warmen") : "heiﬂen"); /* EN rn2(3) ? (rn2(2) ? "cold" : "warm") : "hot"); */
 	}
 }
 #endif /* SINKS */
