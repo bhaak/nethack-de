@@ -4037,7 +4037,7 @@ char *buf;
 struct obj *obj;
 {
 	if (!shk_owns(buf, obj) && !mon_owns(buf, obj))
-	    Strcpy(buf, carried(obj) ? "your" : "the"); /* EN Strcpy(buf, carried(obj) ? "your" : "the"); */ // TODO DE
+	    Strcpy(buf, carried(obj) ? "PRONOMEN_POSSESSIV" : "ARTIKEL_BESTIMMTER"); /* EN Strcpy(buf, carried(obj) ? "your" : "the"); */
 	return buf;
 }
 

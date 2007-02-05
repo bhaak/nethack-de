@@ -1276,7 +1276,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HARP","Harfe","","Harfe","en","feminin"),
     dekliniere_substantiv("NOUN_DRUM","Trommel","","Trommel","en","feminin"),
     #dekliniere_substantiv("NOUN_IRON_HOOK","","","","","maskulin"),
-    dekliniere_substantiv("NOUN_CANDELABRUM","Kronleuchter","s","Kronleuchter","","maskulin"),
+    dekliniere_substantiv("NOUN_CANDELABRUM","Armleuchter","s","Armleuchter","","maskulin"), # Kandelaber, Armleuchter
     dekliniere_substantiv("NOUN_SILVER_BELL","Silberglocke","","Silberglocke","en","feminin"),
     "",
     "/* Food */",
@@ -2156,7 +2156,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
     dekliniere_adjektiv("ADJEKTIV_SADDLED","gesattelt"),
     dekliniere_adjektiv("ADJEKTIV_INVISIBLE","unsichtbar"),
-    dekliniere_adjektiv("ADJEKTIV_BARE","bloﬂSUBJECT ARTIKEL_UNBESTIMMTER%s elektrischer NOUN_SHOCK VERB_SCHIESSEN OBJECT durch PRONOMEN_POSSESSIV NOUN_BODY!"),
+    dekliniere_adjektiv("ADJEKTIV_BARE","bloﬂ"),
     dekliniere_adjektiv("ADJEKTIV_ZWEIHAENDIG","zweih‰ndig"),
     dekliniere_adjektiv("ADJEKTIV_MAGIE_ABSORBIEREND","magie-absorbierend"),
     dekliniere_adjektiv("ADJEKTIV_ELEKTRISCH","elektrisch"),

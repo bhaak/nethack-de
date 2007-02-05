@@ -24,9 +24,9 @@ extern const char * const killed_by_prefix[];	/* from topten.c */
 static const char *rip_txt[] = {
 "                       ----------",
 "                      /          \\",
-"                     /    REST    \\", /* EN "                     /    REST    \\", */ // TODO DE
-"                    /      IN      \\", /* EN "                    /      IN      \\", */ // TODO DE
-"                   /     PEACE      \\", /* EN "                   /     PEACE      \\", */ // TODO DE
+"                     /    RUHE    \\", /* EN "                     /    REST    \\", */
+"                    /      IN      \\", /* EN "                    /      IN      \\", */
+"                   /    FRIEDEN     \\", /* EN "                   /     PEACE      \\", */
 "                  /                  \\",
 "                  |                  |", /* Name of player */
 "                  |                  |", /* Amount of $ */

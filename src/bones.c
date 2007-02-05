@@ -210,7 +210,7 @@ struct obj *corpse;
 		compress_bonesfile();
 #ifdef WIZARD
 		if (wizard) {
-		    if (yn("Bones file already exists.  Replace it?") == 'y') { /* EN if (yn("Bones file already exists.  Replace it?") == 'y') { */ // TODO DE
+		    if (yn("Bones-Datei existiert bereits.  Ersetzen?") == 'y') { /* EN if (yn("Bones file already exists.  Replace it?") == 'y') { */
 			if (delete_bonesfile(&u.uz)) goto make_bones;
 			else pline("Cannot unlink old bones."); /* EN else pline("Cannot unlink old bones."); */ // TODO DE
 		    }
@@ -350,7 +350,7 @@ struct obj *corpse;
 	    if (bytes_counted > freediskspace(bones)) { /* not enough room */
 # ifdef WIZARD
 		if (wizard)
-			pline("Insufficient space to create bones file."); /* EN pline("Insufficient space to create bones file."); */ // TODO DE
+			pline("Ungenügender Speicherplatz um Bones-Datei zu erzeugen."); /* EN pline("Insufficient space to create bones file."); */
 # endif
 		(void) close(fd);
 		cancel_bonesfile();
@@ -399,7 +399,7 @@ getbones()
 	} else {
 #ifdef WIZARD
 		if(wizard)  {
-			if(yn("Get bones?") == 'n') { /* EN if(yn("Get bones?") == 'n') { */ // TODO DE
+			if(yn("Bones holen?") == 'n') { /* EN if(yn("Get bones?") == 'n') { */
 				(void) close(fd);
 				compress_bonesfile();
 				return(0);

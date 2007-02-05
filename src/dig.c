@@ -229,7 +229,7 @@ dig()
 	} else { /* !digging.down */
 	    if (IS_TREE(lev->typ) && !may_dig(dpx,dpy) &&
 			dig_typ(uwep, dpx, dpy) == DIGTYP_TREE) {
-		pline("This tree seems to be petrified."); /* EN pline("This tree seems to be petrified."); */ // TODO DE
+		pline("Dieser Baum scheint versteinert zu sein."); /* EN pline("This tree seems to be petrified."); */ // TODO DE
 		return(0);
 	    }
 	    if (IS_ROCK(lev->typ) && !may_dig(dpx,dpy) &&
@@ -307,7 +307,7 @@ dig()
 
 		if ((obj = sobj_at(STATUE, dpx, dpy)) != 0) {
 			if (break_statue(obj))
-				digtxt = "The statue shatters."; /* EN digtxt = "The statue shatters."; */ // TODO DE
+				digtxt = "Die Statue zerbricht."; /* EN digtxt = "The statue shatters."; */
 			else
 				/* it was a statue trap; break_statue()
 				 * printed a message and updated the screen
@@ -322,7 +322,7 @@ dig()
 			    obj_extract_self(bobj);
 			    place_object(bobj, dpx, dpy);
 			}
-			digtxt = "The boulder falls apart."; /* EN digtxt = "The boulder falls apart."; */ // TODO DE
+			digtxt = "SUBJECT ARTIKEL_BESTIMMTER NOUN_BOULDER fällt auseinander."; /* EN digtxt = "The boulder falls apart."; */
 		} else if (lev->typ == STONE || lev->typ == SCORR ||
 				IS_TREE(lev->typ)) {
 			if(Is_earthlevel(&u.uz)) {
@@ -336,7 +336,7 @@ dig()
 			    }
 			}
 			if (IS_TREE(lev->typ)) {
-			    digtxt = "You cut down the tree."; /* EN digtxt = "You cut down the tree."; */ // TODO DE
+			    digtxt = "SUBJECT PRONOMEN_PERSONAL VERB_FALLEN den Baum."; /* EN digtxt = "You cut down the tree."; */
 			    lev->typ = ROOM;
 			    if (!rn2(5)) (void) rnd_treefruit_at(dpx, dpy);
 			} else {
@@ -400,7 +400,7 @@ dig()
 		}
 		if(IS_DOOR(lev->typ) && (lev->doormask & D_TRAPPED)) {
 			lev->doormask = D_NODOOR;
-			b_trapped("door", 0); /* EN b_trapped("door", 0); */ // TODO DE
+			b_trapped("NOUN_DOOR", 0); /* EN b_trapped("door", 0); */
 			newsym(dpx, dpy);
 		}
 cleanup:
@@ -411,14 +411,14 @@ cleanup:
 		return(0);
 	} else {		/* not enough effort has been spent yet */
 		static const char *const d_target[6] = {
-			"", "rock", "statue", "boulder", "door", "tree" /* EN "", "rock", "statue", "boulder", "door", "tree" */ // TODO DE
+			"", "NOUN_ROCK", "NOUN_STATUE", "NOUN_BOULDER", "NOUN_DOOR", "NOUN_TREE" /* EN "", "rock", "statue", "boulder", "door", "tree" */
 		};
 		int dig_target = dig_typ(uwep, dpx, dpy);
 
 		if (IS_WALL(lev->typ) || dig_target == DIGTYP_DOOR) {
 		    if(*in_rooms(dpx, dpy, SHOPBASE)) {
 			pline("This %s seems too hard to %s.", /* EN pline("This %s seems too hard to %s.", */ // TODO DE
-			      IS_DOOR(lev->typ) ? "door" : "wall", verb); /* EN IS_DOOR(lev->typ) ? "door" : "wall", verb); */ // TODO DE
+			      IS_DOOR(lev->typ) ? "NOUN_DOOR" : "NOUN_WALL", verb); /* EN IS_DOOR(lev->typ) ? "door" : "wall", verb); */
 			return(0);
 		    }
 		} else if (!IS_ROCK(lev->typ) && dig_target == DIGTYP_ROCK)
@@ -539,12 +539,12 @@ int ttyp;
 	if (ttyp == PIT) {
 
 	    if(madeby_u) {
-		You("dig a pit in the %s.", surface_type); /* EN You("dig a pit in the %s.", surface_type); */ // TODO DE
+		You("VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN You("dig a pit in the %s.", surface_type); */
 		if (shopdoor) pay_for_damage("ruin", FALSE); /* EN if (shopdoor) pay_for_damage("ruin", FALSE); */ // TODO DE
 	    } else if (!madeby_obj && canseemon(madeby))
 		pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); /* EN pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); */ // TODO DE
 	    else if (cansee(x, y) && flags.verbose)
-		pline("A pit appears in the %s.", surface_type); /* EN pline("A pit appears in the %s.", surface_type); */ // TODO DE
+		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT VERB_ERSCHEINEN OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A pit appears in the %s.", surface_type); */
 
 	    if(at_u) {
 		if (!wont_fall) {
@@ -568,12 +568,12 @@ int ttyp;
 	} else {	/* was TRAPDOOR now a HOLE*/
 
 	    if(madeby_u)
-		You("dig a hole through the %s.", surface_type); /* EN You("dig a hole through the %s.", surface_type); */ // TODO DE
+		You("VERB_GRABEN ein Loch OBJECT durch ARTIKEL_BESTIMMTER %s.", surface_type); /* EN You("dig a hole through the %s.", surface_type); */
 	    else if(!madeby_obj && canseemon(madeby))
-		pline("%s digs a hole through the %s.", /* EN pline("%s digs a hole through the %s.", */ // TODO DE
+		pline("SUBJECT %s VERB_GRABEN ein Loch OBJECT durch ARTIKEL_BESTIMMTER %s.", /* EN pline("%s digs a hole through the %s.", */
 		      Monnam(madeby), surface_type);
 	    else if(cansee(x, y) && flags.verbose)
-		pline("A hole appears in the %s.", surface_type); /* EN pline("A hole appears in the %s.", surface_type); */ // TODO DE
+		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_LOCH VERB_ERSCHEINEN OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A hole appears in the %s.", surface_type); */
 
 	    if (at_u) {
 		if (!u.ustuck && !wont_fall && !next_to_u()) {
@@ -630,7 +630,7 @@ int ttyp;
 			    assign_level(&tolevel, &valley_level);
 			} else if (Is_botlevel(&u.uz)) {
 			    if (canseemon(mtmp))
-				pline("%s avoids the trap.", Monnam(mtmp)); /* EN pline("%s avoids the trap.", Monnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s VERB_MEIDEN OBJECT ARTIKEL_BESTIMMTER NOUN_TRAP.", Monnam(mtmp)); /* EN pline("%s avoids the trap.", Monnam(mtmp)); */
 			    return;
 			} else {
 			    get_level(&tolevel, depth(&u.uz) + 1);
@@ -724,8 +724,8 @@ boolean pit_only;
 		/* if any objects were frozen here, they're released now */
 		unearth_objs(u.ux, u.uy);
 
-		pline("As you dig, the hole fills with %s!", /* EN pline("As you dig, the hole fills with %s!", */ // TODO DE
-		      typ == LAVAPOOL ? "lava" : "water"); /* EN typ == LAVAPOOL ? "lava" : "water"); */ // TODO DE
+		pline("Während SUBJECT PRONOMEN_PERSONAL VERB_GRABEN füllt sich das Loch mit KASUS_DATIV %s!", /* EN pline("As you dig, the hole fills with %s!", */
+		      typ == LAVAPOOL ? "NOUN_LAVA" : "NOUN_WATER"); /* EN typ == LAVAPOOL ? "lava" : "water"); */
 		if (!Levitation && !Flying) {
 		    if (typ == LAVAPOOL)
 			(void) lava_effects();
@@ -736,7 +736,7 @@ boolean pit_only;
 
 	/* the following two are here for the wand of digging */
 	} else if (IS_THRONE(lev->typ)) {
-		pline_The("throne is too hard to break apart."); /* EN pline_The("throne is too hard to break apart."); */ // TODO DE
+		pline_The("NOUN_THRONE is too hard to break apart."); /* EN pline_The("throne is too hard to break apart."); */ // TODO DE
 
 	} else if (IS_ALTAR(lev->typ)) {
 		pline_The("altar is too hard to break apart."); /* EN pline_The("altar is too hard to break apart."); */ // TODO DE
@@ -770,13 +770,13 @@ dig_up_grave()
 	exercise(A_WIS, FALSE);
 	if (Role_if(PM_ARCHEOLOGIST)) {
 	    adjalign(-sgn(u.ualign.type)*3);
-	    You_feel("like a despicable grave-robber!"); /* EN You_feel("like a despicable grave-robber!"); */ // TODO DE
+	    Du_fuehlst_dich("wie ein elender Grabräuber!"); /* EN You_feel("like a despicable grave-robber!"); */
 	} else if (Role_if(PM_SAMURAI)) {
 	    adjalign(-sgn(u.ualign.type));
 	    You("disturb the honorable dead!"); /* EN You("disturb the honorable dead!"); */ // TODO DE
 	} else if ((u.ualign.type == A_LAWFUL) && (u.ualign.record > -10)) {
 	    adjalign(-sgn(u.ualign.type));
-	    You("have violated the sanctity of this grave!"); /* EN You("have violated the sanctity of this grave!"); */ // TODO DE
+	    You("VERB_HAVE die Unverletzlichkeit dieses Grabes missachtet!"); /* EN You("have violated the sanctity of this grave!"); */
 	}
 
 	switch (rn2(5)) {
@@ -798,7 +798,7 @@ dig_up_grave()
 	    break;
 	default:
 	    /* No corpse */
-	    pline_The("grave seems unused.  Strange...."); /* EN pline_The("grave seems unused.  Strange...."); */ // TODO DE
+	    pline_The("NOUN_GRAVE sieht unbenutzt aus.  Seltsam ..."); /* EN pline_The("grave seems unused.  Strange...."); */
 	    break;
 	}
 	levl[u.ux][u.uy].typ = ROOM;
@@ -885,8 +885,8 @@ struct obj *obj;
 
 		dam = rnd(2) + dbon() + obj->spe;
 		if (dam <= 0) dam = 1;
-		You("hit yourself with %s.", yname(uwep)); /* EN You("hit yourself with %s.", yname(uwep)); */ // TODO DE
-		Sprintf(buf, "%s own %s", uhis(), /* EN Sprintf(buf, "%s own %s", uhis(), */ // TODO DE
+		You("VERB_HIT OBJECT PRONOMEN_PERSONAL selbst OBJECT mit KASUS_DATIV %s.", yname(uwep)); /* EN You("hit yourself with %s.", yname(uwep)); */
+		Sprintf(buf, "%s ADJEKTIV_EIGENE %s", uhis(), /* EN Sprintf(buf, "%s own %s", uhis(), */
 				OBJ_NAME(objects[obj->otyp]));
 		losehp(dam, buf, KILLED_BY);
 		flags.botl=1;
@@ -922,7 +922,7 @@ struct obj *obj;
 			    pline("Clang!"); /* EN pline("Clang!"); */ // TODO DE
 			    wake_nearby();
 			} else if (IS_TREE(lev->typ))
-			    You("need an axe to cut down a tree."); /* EN You("need an axe to cut down a tree."); */ // TODO DE
+			    You("VERB_BRAUCHEN eine Axt um einen Baum zu fällen."); /* EN You("need an axe to cut down a tree."); */
 			else if (IS_ROCK(lev->typ))
 			    You("need a pick to dig rock."); /* EN You("need a pick to dig rock."); */ // TODO DE
 			else if (!ispick && (sobj_at(STATUE, rx, ry) ||
@@ -1037,20 +1037,20 @@ watch_dig(mtmp, x, y, zap)
 
 	    if (mtmp) {
 		if(zap || digging.warned) {
-		    verbalize("Halt, vandal!  You're under arrest!"); /* EN verbalize("Halt, vandal!  You're under arrest!"); */ // TODO DE
+		    verbalize("Halt, Vandale!  Du bist verhaftet!"); /* EN verbalize("Halt, vandal!  You're under arrest!"); */
 		    (void) angry_guards(!(flags.soundok));
 		} else {
 		    const char *str;
 
 		    if (IS_DOOR(lev->typ))
-			str = "door"; /* EN str = "door"; */ // TODO DE
+			str = "NOUN_DOOR"; /* EN str = "door"; */
 		    else if (IS_TREE(lev->typ))
-			str = "tree"; /* EN str = "tree"; */ // TODO DE
+			str = "NOUN_TREE"; /* EN str = "tree"; */
 		    else if (IS_ROCK(lev->typ))
-			str = "wall"; /* EN str = "wall"; */ // TODO DE
+			str = "NOUN_WALL"; /* EN str = "wall"; */
 		    else
-			str = "fountain"; /* EN str = "fountain"; */ // TODO DE
-		    verbalize("Hey, stop damaging that %s!", str); /* EN verbalize("Hey, stop damaging that %s!", str); */ // TODO DE
+			str = "NOUN_FOUNTAIN"; /* EN str = "fountain"; */
+		    verbalize("Hey, hör auf KASUS_AKKUSATIV PRONOMEN_DEMONSTRATIV %s zu beschädigen!", str); /* EN verbalize("Hey, stop damaging that %s!", str); */
 		    digging.warned = TRUE;
 		}
 		if (is_digging())

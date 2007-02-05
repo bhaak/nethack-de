@@ -751,9 +751,9 @@ register struct obj *obj;
 		    boolean big_corpse = (obj->otyp == CORPSE &&
 					  obj->corpsenm >= LOW_PM &&
 				mons[obj->corpsenm].msize > mtmp->data->msize);
-		    pline("%s catches %s%s", /* EN pline("%s catches %s%s", */ // TODO DE
+		    pline("SUBJECT %s VERB_FANGEN OBJECT %s%s", /* EN pline("%s catches %s%s", */
 			  Monnam(mtmp), the(xname(obj)),
-			  !big_corpse ? "." : ", or vice versa!"); /* EN !big_corpse ? "." : ", or vice versa!"); */ // TODO DE
+			  !big_corpse ? "." : " oder umgekehrt!"); /* EN !big_corpse ? "." : ", or vice versa!"); */
 		} else if (cansee(mtmp->mx,mtmp->my))
 		    pline("%s.", Tobjnam(obj, "stop")); /* EN pline("%s.", Tobjnam(obj, "stop")); */ // TODO DE
 		/* dog_eat expects a floor object */

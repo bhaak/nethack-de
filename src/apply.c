@@ -169,7 +169,7 @@ int rx, ry, *resp;
 	if (Hallucination && sobj_at(CORPSE, rx, ry)) {
 	    /* (a corpse doesn't retain the monster's sex,
 	       so we're forced to use generic pronoun here) */
-	    You_hear("a voice say, \"It's dead, Jim.\""); /* EN You_hear("a voice say, \"It's dead, Jim.\""); */ // TODO DE
+	    You_hear("eine Stimme sagen: \"Er ist tot, Jim.\""); /* EN You_hear("a voice say, \"It's dead, Jim.\""); */
 	    *resp = 1;
 	    return TRUE;
 	} else if (Role_if(PM_HEALER) && ((otmp = sobj_at(CORPSE, rx, ry)) != 0 ||
@@ -182,7 +182,7 @@ int rx, ry, *resp;
 		    (rx == u.ux && ry == u.uy) ? "this" : "that");
 	    } else {
 		ttmp = t_at(rx, ry);
-		pline("%s appears to be in %s health for a statue.", /* EN pline("%s appears to be in %s health for a statue.", */ // TODO DE
+		pline("%s VERB_SCHEINEN in %s Gesundheit for a statue.", /* EN pline("%s appears to be in %s health for a statue.", */ // TODO DE
 		      The(mons[otmp->corpsenm].mname),
 		      (ttmp && ttmp->ttyp == STATUE_TRAP) ?
 			"extraordinary" : "excellent"); /* EN "extraordinary" : "excellent"); */ // TODO DE
@@ -211,10 +211,10 @@ use_stethoscope(obj)
 				!rn2(Role_if(PM_HEALER) ? 10 : 3));
 
 	if (nohands(youmonst.data)) {	/* should also check for no ears and/or deaf */
-		You("have no hands!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/ // TODO DE
+		You("VERB_HAVE OBJECT PRONOMEN_KEIN NOUN_HANDs!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/
 		return 0;
 	} else if (!freehand()) {
-		You("have no free %s.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */ // TODO DE
+		You("VERB_HABE OBJECT PRONOMEN_KEIN %s frei.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */
 		return 0;
 	}
 	if (!getdir((char *)0)) return 0;
@@ -252,10 +252,10 @@ use_stethoscope(obj)
 		else if (Is_stronghold(&u.uz))
 		    You_hear("the crackling of hellfire."); /* EN You_hear("the crackling of hellfire."); */ // TODO DE
 		else
-		    pline_The("%s seems healthy enough.", surface(u.ux,u.uy)); /* EN pline_The("%s seems healthy enough.", surface(u.ux,u.uy)); */ // TODO DE
+		    pline_The("%s VERB_SCHEINEN OBJECT KASUS_DATIV gesund genug.", surface(u.ux,u.uy)); /* EN pline_The("%s seems healthy enough.", surface(u.ux,u.uy)); */
 		return res;
 	} else if (obj->cursed && !rn2(2)) {
-		You_hear("your heart beat."); /* EN You_hear("your heart beat."); */ // TODO DE
+		You_hear("OBJECT PRONOMEN_POSSESSIV NOUN_HERZSCHLAG."); /* EN You_hear("your heart beat."); */
 		return res;
 	}
 	if (Stunned || (Confusion && !rn2(5))) confdir();
@@ -281,18 +281,18 @@ use_stethoscope(obj)
 	if (glyph_is_invisible(levl[rx][ry].glyph)) {
 		unmap_object(rx, ry);
 		newsym(rx, ry);
-		pline_The("invisible monster must have moved."); /* EN pline_The("invisible monster must have moved."); */ // TODO DE
+		pline_The("ADJEKTIV_UNSICHTBAR NOUN_MONSTER muss sich bewegt haben."); /* EN pline_The("invisible monster must have moved."); */
 	}
 	lev = &levl[rx][ry];
 	switch(lev->typ) {
 	case SDOOR:
-		You_hear(hollow_str, "door"); /* EN You_hear(hollow_str, "door"); */ // TODO DE
+		You_hear(hollow_str, "NOUN_DOOR"); /* EN You_hear(hollow_str, "door"); */
 		cvt_sdoor_to_door(lev);		/* ->typ = DOOR */
 		if (Blind) feel_location(rx,ry);
 		else newsym(rx,ry);
 		return res;
 	case SCORR:
-		You_hear(hollow_str, "passage"); /* EN You_hear(hollow_str, "passage"); */ // TODO DE
+		You_hear(hollow_str, "NOUN_PASSAGE"); /* EN You_hear(hollow_str, "passage"); */
 		lev->typ = CORR;
 		unblock_point(rx,ry);
 		if (Blind) feel_location(rx,ry);
@@ -301,7 +301,7 @@ use_stethoscope(obj)
 	}
 
 	if (!its_dead(rx, ry, &res))
-	    You("hear nothing special.");	/* not You_hear()  */ /* EN You("hear nothing special.");	*/ // TODO DE
+	    You("VERB_HOEREN nichts Besonderes.");	/* not You_hear()  */ /* EN You("hear nothing special.");	*/
 	return res;
 }
 
@@ -433,7 +433,7 @@ struct obj *obj;
 		    goto got_target;
 		}
 #endif
-		pline("Fesselspielchen?  Sehr witzig ..."); /* EN pline("Leash yourself?  Very funny..."); */ // TODO DE
+		pline("Fesselspielchen?  Sehr witzig ..."); /* EN pline("Leash yourself?  Very funny..."); */
 		return;
 	}
 
@@ -860,19 +860,19 @@ STATIC_OVL void
 use_candelabrum(obj)
 register struct obj *obj;
 {
-	const char *s = (obj->spe != 1) ? "candles" : "candle"; /* EN const char *s = (obj->spe != 1) ? "candles" : "candle"; */ // TODO DE
+	const char *s = (obj->spe != 1) ? "NOUN_CANDLEs" : "NOUN_CANDLE"; /* EN const char *s = (obj->spe != 1) ? "candles" : "candle"; */
 
 	if(Underwater) {
 		You("cannot make fire under water."); /* EN You("cannot make fire under water."); */ // TODO DE
 		return;
 	}
 	if(obj->lamplit) {
-		You("snuff the %s.", s); /* EN You("snuff the %s.", s); */ // TODO DE
+		You("VERB_AUSLOESCHEN OBJECT ARTIKEL_BESTIMMTER %s SATZKLAMMER.", s); /* EN You("snuff the %s.", s); */
 		end_burn(obj, TRUE);
 		return;
 	}
 	if(obj->spe <= 0) {
-		pline("This %s has no %s.", xname(obj), s); /* EN pline("This %s has no %s.", xname(obj), s); */ // TODO DE
+		pline("SUBJECT PRONOMEN_DEMONSTRATIV %s VERB_HAVE OBJECT PRONOMEN_KEIN %s.", xname(obj), s); /* EN pline("This %s has no %s.", xname(obj), s); */
 		return;
 	}
 	if(u.uswallow || obj->cursed) {
@@ -913,7 +913,7 @@ struct obj **optr;
 {
 	register struct obj *obj = *optr;
 	register struct obj *otmp;
-	const char *s = (obj->quan != 1) ? "candles" : "candle"; /* EN const char *s = (obj->quan != 1) ? "candles" : "candle"; */ // TODO DE
+	const char *s = (obj->quan != 1) ? "NOUN_CANDLEs" : "NOUN_CANDLE"; /* EN const char *s = (obj->quan != 1) ? "candles" : "candle"; */
 	char qbuf[QBUFSZ];
 
 	if(u.uswallow) {
@@ -1009,7 +1009,7 @@ struct obj *obj;
 		    obj->otyp == BRASS_LANTERN || obj->otyp == POT_OIL) {
 		(void) get_obj_location(obj, &x, &y, 0);
 		if (obj->where == OBJ_MINVENT ? cansee(x,y) : !Blind)
-		    pline("%s %s out!", Yname2(obj), otense(obj, "go")); /* EN pline("%s %s out!", Yname2(obj), otense(obj, "go")); */ // TODO DE
+		    pline("SUBJECT %s %s SATZKLAMMER!", Yname2(obj), otense(obj, "VERB_AUSGEHEN")); /* EN pline("%s %s out!", Yname2(obj), otense(obj, "go")); */
 		end_burn(obj, TRUE);
 		return TRUE;
 	    }
@@ -1069,9 +1069,9 @@ struct obj *obj;
 	if(obj->lamplit) {
 		if(obj->otyp == OIL_LAMP || obj->otyp == MAGIC_LAMP ||
 				obj->otyp == BRASS_LANTERN)
-		    pline("%s lamp is now off.", Shk_Your(buf, obj)); /* EN pline("%s lamp is now off.", Shk_Your(buf, obj)); */ // TODO DE
+		    pline("%s NOUN_LAMP VERB_SEIN jetzt aus.", Shk_Your(buf, obj)); /* EN pline("%s lamp is now off.", Shk_Your(buf, obj)); */
 		else
-		    You("snuff out %s.", yname(obj)); /* EN You("snuff out %s.", yname(obj)); */ // TODO DE
+		    You("VERB_AUSLOESCHEN OBJECT %s SATZKLAMMER.", yname(obj)); /* EN You("snuff out %s.", yname(obj)); */
 		end_burn(obj, TRUE);
 		return;
 	}
@@ -1080,7 +1080,7 @@ struct obj *obj;
 			|| (obj->otyp == MAGIC_LAMP && obj->spe == 0)) {
 		if (obj->otyp == BRASS_LANTERN)
 			Your("lamp has run out of power."); /* EN Your("lamp has run out of power."); */ // TODO DE
-		else pline("This %s has no oil.", xname(obj)); /* EN else pline("This %s has no oil.", xname(obj)); */ // TODO DE
+		else pline("SUBJECT PRONOMEN_DEMONSTRATIV %s VERB_HAVE kein Öl.", xname(obj)); /* EN else pline("This %s has no oil.", xname(obj)); */
 		return;
 	}
 	if (obj->cursed && !rn2(2)) {
@@ -1090,7 +1090,7 @@ struct obj *obj;
 		if(obj->otyp == OIL_LAMP || obj->otyp == MAGIC_LAMP ||
 				obj->otyp == BRASS_LANTERN) {
 		    check_unpaid(obj);
-		    pline("%s lamp is now on.", Shk_Your(buf, obj)); /* EN pline("%s lamp is now on.", Shk_Your(buf, obj)); */ // TODO DE
+		    pline("SUBJECT %s NOUN_LAMP VERB_BRENNEN jetzt.", Shk_Your(buf, obj)); /* EN pline("%s lamp is now on.", Shk_Your(buf, obj)); */
 		} else {	/* candle(s) */
 		    pline("%s flame%s %s%s", /* EN pline("%s flame%s %s%s", */ // TODO DE
 			s_suffix(Yname2(obj)),
@@ -1119,7 +1119,7 @@ light_cocktail(obj)
 	}
 
 	if (obj->lamplit) {
-	    You("snuff the lit potion."); /* EN You("snuff the lit potion."); */ // TODO DE
+	    You("VERB_LOESCHEN den entzündeten Trank."); /* EN You("snuff the lit potion."); */
 	    end_burn(obj, TRUE);
 	    /*
 	     * Free & add to re-merge potion.  This will average the
@@ -1130,7 +1130,7 @@ light_cocktail(obj)
 	    (void) addinv(obj);
 	    return;
 	} else if (Underwater) {
-	    There("is not enough oxygen to sustain a fire."); /* EN There("is not enough oxygen to sustain a fire."); */ // TODO DE
+	    pline("Hier gibt es nicht genug Sauerstoff um ein Feuer aufrechtzuerhalten."); /* EN There("is not enough oxygen to sustain a fire."); */
 	    return;
 	}
 
@@ -1141,7 +1141,7 @@ light_cocktail(obj)
 	     * for an item, but (Yendorian Fuel) Taxes are inevitable...
 	     */
 	    check_unpaid(obj);
-	    verbalize("That's in addition to the cost of the potion, of course."); /* EN verbalize("That's in addition to the cost of the potion, of course."); */ // TODO DE
+	    verbalize("Das ist natürlich zusätzlich zu den Kosten des Trankes."); /* EN verbalize("That's in addition to the cost of the potion, of course."); */
 	    bill_dummy_object(obj);
 	}
 	makeknown(obj->otyp);
@@ -1215,10 +1215,10 @@ int magic; /* 0=Physical, otherwise skill level */
 	if (!magic && (nolimbs(youmonst.data) || slithy(youmonst.data))) {
 		/* normally (nolimbs || slithy) implies !Jumping,
 		   but that isn't necessarily the case for knights */
-		You_cant("jump; you have no legs!"); /* EN You_cant("jump; you have no legs!"); */ // TODO DE
+		You_cant("springen. NEUER_SATZ PRONOMEN_PERSONAL VERB_HAVE keine Beine!"); /* EN You_cant("jump; you have no legs!"); */
 		return 0;
 	} else if (!magic && !Jumping) {
-		You_cant("jump very far."); /* EN You_cant("jump very far."); */ // TODO DE
+		You_cant("sehr weit springen."); /* EN You_cant("jump very far."); */
 		return 0;
 	} else if (u.uswallow) {
 		if (magic) {
@@ -1285,7 +1285,7 @@ int magic; /* 0=Physical, otherwise skill level */
 	pline("Where do you want to jump?"); /* EN pline("Where do you want to jump?"); */ // TODO DE
 	cc.x = u.ux;
 	cc.y = u.uy;
-	if (getpos(&cc, TRUE, "the desired position") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */ // TODO DE
+	if (getpos(&cc, TRUE, "die gewünschte Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */ // TODO DE
 		return 0;	/* user pressed ESC */
 	if (!magic && !(HJumping & ~INTRINSIC) && !EJumping &&
 			distu(cc.x, cc.y) != 5) {
@@ -1295,13 +1295,13 @@ int magic; /* 0=Physical, otherwise skill level */
 		pline("Illegal move!"); /* EN pline("Illegal move!"); */ // TODO DE
 		return 0;
 	} else if (distu(cc.x, cc.y) > (magic ? 6+magic*3 : 9)) {
-		pline("Too far!"); /* EN pline("Too far!"); */ // TODO DE
+		pline("Zu weit!"); /* EN pline("Too far!"); */
 		return 0;
 	} else if (!cansee(cc.x, cc.y)) {
 		You("cannot see where to land!"); /* EN You("cannot see where to land!"); */ // TODO DE
 		return 0;
 	} else if (!isok(cc.x, cc.y)) {
-		You("cannot jump there!"); /* EN You("cannot jump there!"); */ // TODO DE
+		You("VERB_KOENNEN nicht dorthin springen!"); /* EN You("cannot jump there!"); */
 		return 0;
 	} else {
 	    coord uc;
@@ -1417,7 +1417,7 @@ register struct obj *obj;
 	consume_obj_charge(obj, TRUE);
 
 	if ((can = mksobj(TIN, FALSE, FALSE)) != 0) {
-	    static const char you_buy_it[] = "You tin it, you bought it!"; /* EN static const char you_buy_it[] = "You tin it, you bought it!"; */ // TODO DE
+	    static const char you_buy_it[] = "Eingedost, eingekauft!"; /* EN static const char you_buy_it[] = "You tin it, you bought it!"; */
 
 	    can->corpsenm = corpse->corpsenm;
 	    can->cursed = obj->cursed;
@@ -1459,8 +1459,8 @@ struct obj *obj;
 	    case 1: make_blinded(Blinded + lcount, TRUE);
 		    break;
 	    case 2: if (!Confusion)
-			You("suddenly feel %s.", /* EN You("suddenly feel %s.", */ // TODO DE
-			    Hallucination ? "trippy" : "confused"); /* EN Hallucination ? "trippy" : "confused"); */ // TODO DE
+			Du_fuehlst_dich("plötzlich %s.", /* EN You("suddenly feel %s.", */
+			    Hallucination ? "trippig" : "verwirrt"); /* EN Hallucination ? "trippy" : "confused"); */
 		    make_confused(HConfusion + lcount, TRUE);
 		    break;
 	    case 3: make_stunned(HStun + lcount, TRUE);
@@ -2393,7 +2393,7 @@ use_pole (obj)
 	else if (P_SKILL(typ) == P_SKILLED) max_range = 5;
 	else max_range = 8;
 	if (distu(cc.x, cc.y) > max_range) {
-	    pline("Too far!"); /* EN pline("Too far!"); */ // TODO DE
+	    pline("Zu weit!"); /* EN pline("Too far!"); */ // TODO DE
 	    return (res);
 	} else if (distu(cc.x, cc.y) < min_range) {
 	    pline("Too close!"); /* EN pline("Too close!"); */ // TODO DE
@@ -2455,7 +2455,7 @@ struct obj *obj;
 				body_part(FACE));
 	}
 	if (obj->unpaid) {
-		verbalize("You used it, you bought it!"); /* EN verbalize("You used it, you bought it!"); */ // TODO DE
+		verbalize("Gebraucht, gekauft!"); /* EN verbalize("You used it, you bought it!"); */
 		bill_dummy_object(obj);
 	}
 	obj_extract_self(obj);
@@ -2496,7 +2496,7 @@ use_grapple (obj)
 	else if (P_SKILL(typ) == P_SKILLED) max_range = 5;
 	else max_range = 8;
 	if (distu(cc.x, cc.y) > max_range) {
-	    pline("Too far!"); /* EN pline("Too far!"); */ // TODO DE
+	    pline("Zu weit!"); /* EN pline("Too far!"); */ // TODO DE
 	    return (res);
 	} else if (!cansee(cc.x, cc.y)) {
 	    You(cant_see_spot);
@@ -2957,7 +2957,7 @@ doapply()
 			if (objects[otmp->otyp].oc_magic) do {
 			    otmp->otyp = rnd_class(POT_BOOZE, POT_WATER);
 			} while (otmp->otyp == POT_SICKNESS);
-			what = "A potion"; /* EN what = "A potion"; */ // TODO DE
+			what = "ARTIKEL_UNBESTIMMTER NOUN_POTION"; /* EN what = "A potion"; */ // TODO DE
 		    } else {
 			otmp = mkobj(FOOD_CLASS, FALSE);
 			if (otmp->otyp == FOOD_RATION && !rn2(7))
@@ -3001,7 +3001,7 @@ doapply()
 			res = use_pick_axe(obj);
 			break;
 		}
-		pline("Sorry, I don't know how to use that."); /* EN pline("Sorry, I don't know how to use that."); */ // TODO DE
+		pline("Sorry, ich weiss nicht wie das zu benutzen ist."); /* EN pline("Sorry, I don't know how to use that."); */ // TODO DE
 	xit:
 		nomul(0);
 		return 0;

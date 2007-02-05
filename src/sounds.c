@@ -131,10 +131,10 @@ dosounds()
 		    /* fall into... (yes, even for hallucination) */
 		}
 		case 0:
-		    You_hear("the footsteps of a guard on patrol."); /* EN You_hear("the footsteps of a guard on patrol."); */ // TODO DE
+		    You_hear("die Schritte einer patrouillierende Wache."); /* EN You_hear("the footsteps of a guard on patrol."); */ 
 		    break;
 		case 2:
-		    You_hear("Ebenezer Scrooge!"); /* EN You_hear("Ebenezer Scrooge!"); */ // TODO DE
+		    You_hear("Mac Moneysac!"); /* EN You_hear("Ebenezer Scrooge!"); */ /* gibt es eine bessere Verkörperung eines unsympatischen Geldsacks? */
 		    break;
 	    }
 	return;
@@ -146,7 +146,7 @@ dosounds()
 		mon_in_room(mtmp, BEEHIVE)) {
 		switch (rn2(2)+hallu) {
 		    case 0:
-			You_hear("a low buzzing."); /* EN You_hear("a low buzzing."); */ // TODO DE
+			You_hear("ein schwaches Summen."); /* EN You_hear("a low buzzing."); */ // TODO DE
 			break;
 		    case 1:
 			You_hear("an angry drone."); /* EN You_hear("an angry drone."); */ // TODO DE
@@ -195,8 +195,8 @@ dosounds()
 	    if (DEADMONSTER(mtmp)) continue;
 	    if (is_mercenary(mtmp->data) &&
 #if 0		/* don't bother excluding these */
-		!strstri(mtmp->data->mname, "watch") && /* EN !strstri(mtmp->data->mname, "watch") && */ // TODO DE
-		!strstri(mtmp->data->mname, "guard") && /* EN !strstri(mtmp->data->mname, "guard") && */ // TODO DE
+		!strstri(mtmp->data->mname, "NOUN_WATCH") && /* EN !strstri(mtmp->data->mname, "watch") && */
+		!strstri(mtmp->data->mname, "NOUN_GUARD") && /* EN !strstri(mtmp->data->mname, "guard") && */
 #endif
 		mon_in_room(mtmp, BARRACKS) &&
 		/* sleeping implies not-yet-disturbed (usually) */
@@ -210,7 +210,7 @@ dosounds()
 	static const char * const zoo_msg[3] = {
 		"a sound reminiscent of an elephant stepping on a peanut.", /* EN "a sound reminiscent of an elephant stepping on a peanut.", */ // TODO DE
 		"a sound reminiscent of a seal barking.", /* EN "a sound reminiscent of a seal barking.", */ // TODO DE
-		"Doctor Doolittle!", /* EN "Doctor Doolittle!", */ // TODO DE
+		"Doktor Dolittle!", /* EN "Doctor Doolittle!", */
 	};
 	for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
 	    if (DEADMONSTER(mtmp)) continue;
@@ -230,7 +230,7 @@ dosounds()
 	if (tended_shop(sroom) &&
 		!index(u.ushops, ROOM_INDEX(sroom) + ROOMOFFSET)) {
 	    static const char * const shop_msg[3] = {
-		    "someone cursing shoplifters.", /* EN "someone cursing shoplifters.", */ // TODO DE
+		    "jemanden Ladendiebe verfluchen.", /* EN "someone cursing shoplifters.", */
 		    "den Klang einer Registrierkasse.", /* EN "the chime of a cash register.", */
 		    "Neiman and Marcus arguing!", /* EN "Neiman and Marcus arguing!", */ // TODO DE
 	    };
@@ -275,35 +275,35 @@ register struct monst *mtmp;
 	switch (mtmp->data->msound) {
 	case MS_MEW:
 	case MS_HISS:
-	    ret = "hiss"; /* EN ret = "hiss"; */ // TODO DE
+	    ret = "VERB_HISS"; /* EN ret = "hiss"; */
 	    break;
 	case MS_BARK:
 	case MS_GROWL:
-	    ret = "growl"; /* EN ret = "growl"; */ // TODO DE
+	    ret = "VERB_GROWL"; /* EN ret = "growl"; */
 	    break;
 	case MS_ROAR:
-	    ret = "roar"; /* EN ret = "roar"; */ // TODO DE
+	    ret = "VERB_ROAR"; /* EN ret = "roar"; */
 	    break;
 	case MS_BUZZ:
-	    ret = "buzz"; /* EN ret = "buzz"; */ // TODO DE
+	    ret = "VERB_BUZZ"; /* EN ret = "buzz"; */
 	    break;
 	case MS_SQEEK:
-	    ret = "squeal"; /* EN ret = "squeal"; */ // TODO DE
+	    ret = "VERB_SQUEAL"; /* EN ret = "squeal"; */
 	    break;
 	case MS_SQAWK:
-	    ret = "screech"; /* EN ret = "screech"; */ // TODO DE
+	    ret = "VERB_SCREECH"; /* EN ret = "screech"; */
 	    break;
 	case MS_NEIGH:
-	    ret = "neigh"; /* EN ret = "neigh"; */ // TODO DE
+	    ret = "VERB_NEIGH"; /* EN ret = "neigh"; */
 	    break;
 	case MS_WAIL:
-	    ret = "wail"; /* EN ret = "wail"; */ // TODO DE
+	    ret = "VERB_WAIL"; /* EN ret = "wail"; */
 	    break;
 	case MS_SILENT:
-		ret = "commotion"; /* EN ret = "commotion"; */ // TODO DE
+		ret = "VERB_COMMOTION"; /* EN ret = "commotion"; */
 		break;
 	default:
-		ret = "scream"; /* EN ret = "scream"; */ // TODO DE
+		ret = "VERB_SCREAM"; /* EN ret = "scream"; */
 	}
 	return ret;
 }
@@ -345,23 +345,23 @@ register struct monst *mtmp;
 	yelp_verb = h_sounds[rn2(SIZE(h_sounds))];
     else switch (mtmp->data->msound) {
 	case MS_MEW:
-	    yelp_verb = "yowl"; /* EN yelp_verb = "yowl"; */ // TODO DE
+	    yelp_verb = "VERB_YOWL"; /* EN yelp_verb = "yowl"; */
 	    break;
 	case MS_BARK:
 	case MS_GROWL:
-	    yelp_verb = "yelp"; /* EN yelp_verb = "yelp"; */ // TODO DE
+	    yelp_verb = "VERB_YELP"; /* EN yelp_verb = "yelp"; */
 	    break;
 	case MS_ROAR:
-	    yelp_verb = "snarl"; /* EN yelp_verb = "snarl"; */ // TODO DE
+	    yelp_verb = "VERB_SNARL"; /* EN yelp_verb = "snarl"; */
 	    break;
 	case MS_SQEEK:
-	    yelp_verb = "squeal"; /* EN yelp_verb = "squeal"; */ // TODO DE
+	    yelp_verb = "VERB_SQUEAL"; /* EN yelp_verb = "squeal"; */
 	    break;
 	case MS_SQAWK:
-	    yelp_verb = "screak"; /* EN yelp_verb = "screak"; */ // TODO DE
+	    yelp_verb = "VERB_SCREAK"; /* EN yelp_verb = "screak"; */
 	    break;
 	case MS_WAIL:
-	    yelp_verb = "wail"; /* EN yelp_verb = "wail"; */ // TODO DE
+	    yelp_verb = "VERB_WAIL"; /* EN yelp_verb = "wail"; */
 	    break;
     }
     if (yelp_verb) {
@@ -387,13 +387,13 @@ register struct monst *mtmp;
     else switch (mtmp->data->msound) {
 	case MS_MEW:
 	case MS_GROWL:
-	    whimper_verb = "whimper"; /* EN whimper_verb = "whimper"; */ // TODO DE
+	    whimper_verb = "VERB_WHIMPER"; /* EN whimper_verb = "whimper"; */
 	    break;
 	case MS_BARK:
-	    whimper_verb = "whine"; /* EN whimper_verb = "whine"; */ // TODO DE
+	    whimper_verb = "VERB_WHINE"; /* EN whimper_verb = "whine"; */
 	    break;
 	case MS_SQEEK:
-	    whimper_verb = "squeal"; /* EN whimper_verb = "squeal"; */ // TODO DE
+	    whimper_verb = "VERB_SQUEAL"; /* EN whimper_verb = "squeal"; */
 	    break;
     }
     if (whimper_verb) {
@@ -418,7 +418,7 @@ register struct monst *mtmp;
     else if (mtmp->data->msound >= MS_HUMANOID) {
 	if (!canspotmon(mtmp))
 	    map_invisible(mtmp->mx, mtmp->my);
-	verbalize("I'm hungry."); /* EN verbalize("I'm hungry."); */ // TODO DE
+	verbalize("Ich habe Hunger."); /* EN verbalize("I'm hungry."); */
     }
 }
 
@@ -690,7 +690,7 @@ register struct monst *mtmp;
 		pline_msg = "asks for a potion of healing."; /* EN pline_msg = "asks for a potion of healing."; */ // TODO DE
 	    else if (mtmp->mtame && !mtmp->isminion &&
 						moves > EDOG(mtmp)->hungrytime)
-		verbl_msg = "I'm hungry."; /* EN verbl_msg = "I'm hungry."; */ // TODO DE
+		verbl_msg = "Ich habe Hunger."; /* EN verbl_msg = "I'm hungry."; */ // TODO DE
 	    /* Specific monsters' interests */
 	    else if (is_elf(ptr))
 		pline_msg = "curses orcs."; /* EN pline_msg = "curses orcs."; */ // TODO DE
@@ -844,7 +844,7 @@ dochat()
 	return(0);
     }
     if (Strangled) {
-	You_cant("speak.  You're choking!"); /* EN You_cant("speak.  You're choking!"); */ // TODO DE
+	You_cant("sprechen.  NEUER_SATZ SUBJECT PRONOMEN_PERSONAL VERB_ERSTICKEN!"); /* EN You_cant("speak.  You're choking!"); */
 	return(0);
     }
     if (u.uswallow) {
@@ -892,7 +892,7 @@ dochat()
 	    return(1);
 	}
 */
-	pline("Talking to yourself is a bad habit for a dungeoneer."); /* EN pline("Talking to yourself is a bad habit for a dungeoneer."); */ // TODO DE
+	pline("Selbstgespräche sind eine schlechte Angewohnheit für einen dungeoneer."); /* EN pline("Talking to yourself is a bad habit for a dungeoneer."); */ // TODO DE
 	return(0);
     }
 

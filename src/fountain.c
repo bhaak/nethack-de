@@ -16,7 +16,7 @@ void
 floating_above(what)
 const char *what;
 {
-    You("are floating high above the %s.", what); /* EN You("are floating high above the %s.", what); */ // TODO DE
+    You("VERB_SCHWEBEN hoch über OBJECT ARTIKEL_BESTIMMTER %s.", what); /* EN You("are floating high above the %s.", what); */
 }
 
 STATIC_OVL void
@@ -173,7 +173,7 @@ boolean isyou;
 		}
 #ifdef WIZARD
 		if (isyou && wizard) {
-			if (yn("Dry up fountain?") == 'n') /* EN if (yn("Dry up fountain?") == 'n') */ // TODO DE
+			if (yn("NOUN_FOUNTAIN austrocken?") == 'n') /* EN if (yn("Dry up fountain?") == 'n') */
 				return;
 		}
 #endif
@@ -206,7 +206,7 @@ drinkfountain()
 	if (mgkftn && u.uluck >= 0 && fate >= 10) {
 		int i, ii, littleluck = (u.uluck < 4);
 
-		pline("Wau!  This makes you VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL grossartig!"); /* EN pline("Wow!  This makes you feel great!"); */ // TODO DE
+		pline("Wau!  SUBJECT PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL grossartig!"); /* EN pline("Wow!  This makes you feel great!"); */
 		/* blessed restore ability */
 		for (ii = 0; ii < A_MAX; ii++)
 		    if (ABASE(ii) < AMAX(ii)) {
@@ -366,7 +366,7 @@ register struct obj *obj;
 		if (u.ualign.type != A_LAWFUL) {
 			/* Ha!  Trying to cheat her. */
 			pline("A freezing mist rises from the water and envelopes the sword."); /* EN pline("A freezing mist rises from the water and envelopes the sword."); */ // TODO DE
-			pline_The("fountain disappears!"); /* EN pline_The("fountain disappears!"); */ // TODO DE
+			pline_The("NOUN_FOUNTAIN VERB_VERSCHWINDEN!"); /* EN pline_The("fountain disappears!"); */
 			curse(obj);
 			if (obj->spe > -6 && !rn2(3)) obj->spe--;
 			obj->oerodeproof = FALSE;

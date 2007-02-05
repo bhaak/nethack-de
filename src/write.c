@@ -81,11 +81,11 @@ register struct obj *pen;
 	const char *typeword;
 
 	if (nohands(youmonst.data)) {
-	    You("need hands to be able to write!"); /* EN You("need hands to be able to write!"); */ // TODO DE
+	    You("VERB_BRAUCHEN Hände um schreiben zu können!"); /* EN You("need hands to be able to write!"); */
 	    return 0;
 	} else if (Glib) {
-	    pline("%s from your %s.", /* EN pline("%s from your %s.", */ // TODO DE
-		  Tobjnam(pen, "slip"), makeplural(body_part(FINGER))); /* EN Tobjnam(pen, "slip"), makeplural(body_part(FINGER))); */ // TODO DE
+	    pline("%s OBJECT KASUS_DATIV PRONOMEN_PERSONAL aus OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("%s from your %s.", */
+		  Tobjnam(pen, "VERB_RUTSCHEN"), makeplural(body_part(FINGER))); /* EN Tobjnam(pen, "slip"), makeplural(body_part(FINGER))); */
 	    dropx(pen);
 	    return 1;
 	}
@@ -94,7 +94,7 @@ register struct obj *pen;
 	paper = getobj(write_on,"write on"); /* EN paper = getobj(write_on,"write on"); */ // TODO DE
 	if(!paper)
 		return(0);
-	typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll"; /* EN typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll"; */ // TODO DE
+	typeword = (paper->oclass == SPBOOK_CLASS) ? "NOUN_SPELLBOOK" : "NOUN_SCROLL"; /* EN typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll"; */
 	if(Blind && !paper->dknown) {
 		You("don't know if that %s is blank or not!", typeword); /* EN You("don't know if that %s is blank or not!", typeword); */ // TODO DE
 		return(1);

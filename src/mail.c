@@ -257,9 +257,9 @@ md_stop(stopp, startp)
 
 /* Let the mail daemon have a larger vocabulary. */
 static NEARDATA const char *mail_text[] = {
-    "Gangway!", /* EN "Gangway!", */ // TODO DE
-    "Look out!", /* EN "Look out!", */ // TODO DE
-    "Pardon me!" /* EN "Pardon me!" */ // TODO DE
+    "Platz da!", /* EN "Gangway!", */
+    "Achtung!", /* EN "Look out!", */
+    "Verzeihung!" /* EN "Pardon me!" */
 };
 #define md_exclamations()	(mail_text[rn2(3)])
 
@@ -319,7 +319,7 @@ md_rush(md,tx,ty)
 	if ((mon = m_at(fx,fy)) != 0)	/* save monster at this position */
 	    verbalize(md_exclamations());
 	else if (fx == u.ux && fy == u.uy)
-	    verbalize("Excuse me."); /* EN verbalize("Excuse me."); */ // TODO DE
+	    verbalize("Entschuldigung."); /* EN verbalize("Excuse me."); */
 
 	place_monster(md,fx,fy);	/* put md down */
 	newsym(fx,fy);			/* see it */
@@ -400,7 +400,7 @@ struct mail_info *info;
 		/* Note: renaming object will discard the hidden command. */
 	    }
 	}
-	obj = hold_another_object(obj, "Oops!",
+	obj = hold_another_object(obj, "NOUN_OOPS!",
 				  (const char *)0, (const char *)0);
     }
 
