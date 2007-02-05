@@ -288,7 +288,7 @@ register int trouble;
 			Your("amulet vanishes!"); /* EN Your("amulet vanishes!"); */ // TODO DE
 			useup(uamul);
 		    }
-		    You("can breathe again."); /* EN You("can breathe again."); */ // TODO DE
+		    You("VERB_KOENNEN wieder atmen."); /* EN You("can breathe again."); */
 		    Strangled = 0;
 		    flags.botl = 1;
 		    break;
@@ -309,14 +309,14 @@ register int trouble;
 		    flags.botl = 1;
 		    break;
 	    case TROUBLE_SICK:
-		    You_feel("better."); /* EN You_feel("better."); */ // TODO DE
+		     Du_fuehlst_dich("besser."); /* EN You_feel("better."); */
 		    make_sick(0L, (char *) 0, FALSE, SICK_ALL);
 		    break;
 	    case TROUBLE_HIT:
 		    /* "fix all troubles" will keep trying if hero has
 		       5 or less hit points, so make sure they're always
 		       boosted to be more than that */
-		    You_feel("much better."); /* EN You_feel("much better."); */ // TODO DE
+		    Du_fuehlst_dich("viel besser."); /* EN You_feel("much better."); */
 		    if (Upolyd) {
 			u.mhmax += rnd(5);
 			if (u.mhmax <= 5) u.mhmax = 5+1;
@@ -371,7 +371,7 @@ register int trouble;
 	/*
 	 */
 	    case TROUBLE_PUNISHED:
-		    Your("chain disappears."); /* EN Your("chain disappears."); */ // TODO DE
+		    Your("NOUN_CHAIN VERB_VERSCHWINDEN."); /* EN Your("chain disappears."); */
 		    unpunish();
 		    break;
 	    case TROUBLE_FUMBLING:
@@ -402,7 +402,7 @@ decurse:
 		    break;
 	    case TROUBLE_POISONED:
 		    if (Hallucination)
-			pline("There's a tiger in your tank."); /* EN pline("There's a tiger in your tank."); */ // TODO DE
+			pline("SUBJECT PRONOMEN_PERSONAL VERB_HAVE den Tiger im Tank."); /* EN pline("There's a tiger in your tank."); */
 		    else
 			You_feel("in good health again."); /* EN You_feel("in good health again."); */ // TODO DE
 		    for(i=0; i<A_MAX; i++) {
@@ -623,12 +623,12 @@ at_your_feet(str)
 	if (Blind) str = Something;
 	if (u.uswallow) {
 	    /* barrier between you and the floor */
-	    pline("%s %s into %s %s.", str, vtense(str, "drop"), /* EN pline("%s %s into %s %s.", str, vtense(str, "drop"), */ // TODO DE
-		  s_suffix(mon_nam(u.ustuck)), mbodypart(u.ustuck, STOMACH));
+	    pline("SUBJECT %s %s in OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s OBJECT KASUS_GENITIV ARTIKEL_BESTIMMTER %s.", str, vtense(str, "VERB_FALLEN"), /* EN pline("%s %s into %s %s.", str, vtense(str, "drop"), */
+			mbodypart(u.ustuck, STOMACH), mon_nam(u.ustuck)); /* EN s_suffix(mon_nam(u.ustuck)), mbodypart(u.ustuck, STOMACH)); */
 	} else {
-	    pline("%s %s %s your %s!", str, /* EN pline("%s %s %s your %s!", str, */ // TODO DE
-		  Blind ? "lands" : vtense(str, "appear"), /* EN Blind ? "lands" : vtense(str, "appear"), */ // TODO DE
-		  Levitation ? "beneath" : "at", /* EN Levitation ? "beneath" : "at", */ // TODO DE
+	    pline("SUBJECT %s %s OBJECT %s KASUS_DATIV PRONOMEN_POSSESSIV %s!", str, /* EN pline("%s %s %s your %s!", str, */
+		  Blind ? "VERB_LANDEN" : vtense(str, "VERB_ERSCHEINEN"), /* EN Blind ? "lands" : vtense(str, "appear"), */
+		  Levitation ? "unter" : "zu", /* EN Levitation ? "beneath" : "at", */
 		  makeplural(body_part(FOOT)));
 	}
 }
@@ -685,7 +685,7 @@ gcrownu()
 	obj = mksobj(class_gift, TRUE, FALSE);
 	bless(obj);
 	obj->bknown = TRUE;
-	at_your_feet("A spellbook"); /* EN at_your_feet("A spellbook"); */ // TODO DE
+	at_your_feet("ARTIKEL_UNBESTIMMTER NOUN_SPELLBOOK"); /* EN at_your_feet("A spellbook"); */
 	dropy(obj);
 	u.ugifts++;
 	/* when getting a new book for known spell, enhance
@@ -708,7 +708,7 @@ gcrownu()
 	if (class_gift != STRANGE_OBJECT) {
 	    ;		/* already got bonus above */
 	} else if (obj && obj->otyp == LONG_SWORD && !obj->oartifact) {
-	    if (!Blind) Your("sword shines brightly for a moment."); /* EN if (!Blind) Your("sword shines brightly for a moment."); */ // TODO DE
+	    if (!Blind) Your("NOUN_SWORD leuchtet einen Augenblick lang hell auf."); /* EN if (!Blind) Your("sword shines brightly for a moment."); */
 	    obj = oname(obj, artiname(ART_EXCALIBUR));
 	    if (obj && obj->oartifact == ART_EXCALIBUR) u.ugifts++;
 	}
@@ -727,7 +727,7 @@ gcrownu()
 	    obj = mksobj(LONG_SWORD, FALSE, FALSE);
 	    obj = oname(obj, artiname(ART_VORPAL_BLADE));
 	    obj->spe = 1;
-	    at_your_feet("A sword"); /* EN at_your_feet("A sword"); */ // TODO DE
+	    at_your_feet("ARTIKEL_UNBESTIMMTER NOUN_SWORD"); /* EN at_your_feet("A sword"); */
 	    dropy(obj);
 	    u.ugifts++;
 	}
@@ -776,7 +776,7 @@ gcrownu()
 	unrestrict_weapon_skill(weapon_type(obj));
     } else if (class_gift == STRANGE_OBJECT) {
 	/* opportunity knocked, but there was nobody home... */
-	You_feel("unworthy."); /* EN You_feel("unworthy."); */ // TODO DE
+			Du_fuehlst_dich("unwürdig."); /* EN You_feel("unworthy."); */
     }
     update_inventory();
     return;
@@ -990,7 +990,7 @@ pleased(g_align)
 	    struct obj *otmp;
 	    int sp_no, trycnt = u.ulevel + 1;
 
-	    at_your_feet("An object"); /* EN at_your_feet("An object"); */ // TODO DE
+	    at_your_feet("ARTIKEL_UNBESTIMMTER NOUN_OBJEKT"); /* EN at_your_feet("An object"); */
 	    /* not yet known spells given preference over already known ones */
 	    /* Also, try to grant a spell for which there is a skill slot */
 	    otmp = mkobj(SPBOOK_CLASS, TRUE);
@@ -1166,7 +1166,7 @@ dosacrifice()
 
 	if (your_race(ptr)) {
 	    if (is_demon(youmonst.data)) {
-		You("find the idea very satisfying."); /* EN You("find the idea very satisfying."); */ // TODO DE
+		You("VERB_FINDEN diese Idee äusserst befriedigend."); /* EN You("find the idea very satisfying."); */
 		exercise(A_WIS, TRUE);
 	    } else if (u.ualign.type != A_CHAOTIC) {
 		    pline("You'll regret this infamous offense!"); /* EN pline("You'll regret this infamous offense!"); */ // TODO DE
@@ -1263,9 +1263,9 @@ dosacrifice()
     if (otmp->otyp == AMULET_OF_YENDOR) {
 	if (!Is_astralevel(&u.uz)) {
 	    if (Hallucination)
-		    You_feel("homesick."); /* EN You_feel("homesick."); */ // TODO DE
+		    You("VERB_HAVE Heimweh."); /* EN You_feel("homesick."); */
 	    else
-		    You_feel("an urge to return to the surface."); /* EN You_feel("an urge to return to the surface."); */ // TODO DE
+		    Du_spuerst("einen Drang an die Oberfläche zurückzukehren."); /* EN You_feel("an urge to return to the surface."); */
 	    return 1;
 	} else {
 	    /* The final Test.	Did you win? */
@@ -1474,7 +1474,7 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 		    if (otmp->cursed) uncurse(otmp);
 		    otmp->oerodeproof = TRUE;
 		    dropy(otmp);
-		    at_your_feet("An object"); /* EN at_your_feet("An object"); */ // TODO DE
+		    at_your_feet("ARTIKEL_UNBESTIMMTER NOUN_OBJEKT"); /* EN at_your_feet("An object"); */
 		    godvoice(u.ualign.type, "Use my gift wisely!"); /* EN godvoice(u.ualign.type, "Use my gift wisely!"); */ // TODO DE
 		    u.ugifts++;
 		    u.ublesscnt = rnz(300 + (50 * nartifacts));
@@ -1580,7 +1580,7 @@ dopray()
     }
 #endif
     nomul(-3);
-    nomovemsg = "You finish your prayer."; /* EN nomovemsg = "You finish your prayer."; */ // TODO DE
+    nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_BEENDEN OBJECT PRONOMEN_POSSESSIV NOUN_GEBET."; /* EN nomovemsg = "You finish your prayer."; */
     afternmv = prayer_done;
 
     if(p_type == 3 && !Inhell) {
@@ -1810,7 +1810,7 @@ const char *
 align_gtitle(alignment)
 aligntyp alignment;
 {
-    const char *gnam, *result = "god"; /* EN const char *gnam, *result = "god"; */ // TODO DE
+    const char *gnam, *result = "NOUN_GOTT"; /* EN const char *gnam, *result = "god"; */
 
     switch (alignment) {
      case A_LAWFUL:	gnam = urole.lgod; break;
@@ -1818,7 +1818,7 @@ aligntyp alignment;
      case A_CHAOTIC:	gnam = urole.cgod; break;
      default:		gnam = 0; break;
     }
-    if (gnam && *gnam == '_') result = "goddess"; /* EN if (gnam && *gnam == '_') result = "goddess"; */ // TODO DE
+    if (gnam && *gnam == '_') result = "NOUN_GOETTIN"; /* EN if (gnam && *gnam == '_') result = "goddess"; */
     return result;
 }
 
@@ -1829,7 +1829,7 @@ register int x, y;
     aligntyp altaralign = a_align(x,y);
 
     if(!strcmp(align_gname(altaralign), u_gname())) {
-	godvoice(altaralign, "How darest thou desecrate my altar!"); /* EN godvoice(altaralign, "How darest thou desecrate my altar!"); */ // TODO DE
+	godvoice(altaralign, "Wie kannst du es wagen meinen Altar zu entweihen!!"); /* EN godvoice(altaralign, "How darest thou desecrate my altar!"); */
 	(void) adjattrib(A_WIS, -1, FALSE);
     } else {
 	pline("A voice (could it be %s?) whispers:", /* EN pline("A voice (could it be %s?) whispers:", */ // TODO DE

@@ -373,7 +373,10 @@ START_TEST (test_complete_sentences3) {
 		"Die Nymphe versucht dich zu bestehlen, aber bei dir gibt es nichts zu holen!"},
 		{"Der Gedanke an Piroschka VERB_LASSEN OBJECT PRONOMEN_PERSONAL alles vergessen.",
 		 "Der Gedanke an Piroschka lässt dich alles vergessen."},
-
+		{"SUBJECT ARTIKEL_UNBESTIMMTER NOUN_OBJEKT VERB_ERSCHEINEN OBJECT vor KASUS_DATIV PRONOMEN_POSSESSIV NOUN_FOOTs!",
+		 "Ein Objekt erscheint vor deinen Füßen!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_HAVE den Tiger im Tank.",
+		 ""},
 
 	};
 
