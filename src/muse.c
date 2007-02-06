@@ -2150,7 +2150,7 @@ boolean stoning;
 	    Monnam(mon));
     }
     if (mon->mhp <= 0) {
-	pline("%s dies!", Monnam(mon)); /* EN pline("%s dies!", Monnam(mon)); */ // TODO DE
+	pline("SUBJECT %s VERB_STERBEN!", Monnam(mon)); /* EN pline("%s dies!", Monnam(mon)); */
 	if (by_you) xkilled(mon, 0);
 	else mondead(mon);
 	return;

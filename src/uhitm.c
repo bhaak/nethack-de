@@ -1464,7 +1464,7 @@ register struct attack *mattk;
 			pline("%s suddenly seems weaker!", Monnam(mdef)); /* EN pline("%s suddenly seems weaker!", Monnam(mdef)); */ // TODO DE
 			mdef->mhpmax -= xtmp;
 			if ((mdef->mhp -= xtmp) <= 0 || !mdef->m_lev) {
-				pline("%s dies!", Monnam(mdef)); /* EN pline("%s dies!", Monnam(mdef)); */ // TODO DE
+				pline("SUBJECT %s VERB_STERBEN!", Monnam(mdef)); /* EN pline("%s dies!", Monnam(mdef)); */
 				xkilled(mdef,0);
 			} else
 				mdef->m_lev--;

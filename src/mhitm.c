@@ -613,7 +613,7 @@ mdamagem(magr, mdef, mattk)
 		    if (vis)
 			pline("%s %s!", Monnam(magr),
 			      mdef->data == &mons[PM_FAMINE] ?
-				"belches feebly, shrivels up and dies" : /* EN "belches feebly, shrivels up and dies" : */ // TODO DE
+				"belches feebly, shrivels up and VERB_STERBEN" : /* EN "belches feebly, shrivels up and dies" : */ // TODO DE
 			      mdef->data == &mons[PM_PESTILENCE] ?
 				"coughs spasmodically and collapses" : /* EN "coughs spasmodically and collapses" : */ // TODO DE
 				"vomits violently and drops dead"); /* EN "vomits violently and drops dead"); */ // TODO DE

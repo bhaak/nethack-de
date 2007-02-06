@@ -2561,7 +2561,7 @@ register struct attack *mattk;
 
     assess_dmg:
 	if((mtmp->mhp -= tmp) <= 0) {
-		pline("%s dies!", Monnam(mtmp)); /* EN pline("%s dies!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_STERBEN!", Monnam(mtmp)); /* EN pline("%s dies!", Monnam(mtmp)); */
 		xkilled(mtmp,0);
 		if (mtmp->mhp > 0) return 1;
 		return 2;
