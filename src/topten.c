@@ -78,9 +78,10 @@ STATIC_DCL void FDECL(nsb_unmung_line,(char*));
 /* must fit with end.c; used in rip.c */
 NEARDATA const char * const killed_by_prefix[] = {
 // TODO DE
-	"killed by ", "choked on ", "poisoned by ", "died of ", "drowned in ",
-	"burned by ", "dissolved in ", "crushed to death by ", "petrified by ",
-	"turned to slime by ", "killed by ", "", "", "", "", ""
+	"getötet von KASUS_DATIV ", "erstickte an KASUS_DATIV ", "vergiftet durch KASUS_AKKUSATIV ", "starb an KASUS_DATIV ", "ertrank in KASUS_DATIV ", /* EN  "killed by ", "choked on ", "poisoned by ", "died of ", "drowned in ", */
+
+	"verbrannte durch KASUS_AKKUSATIV ", "aufgelöst in KASUS_DATIV ", "zerquetscht durch KASUS_AKKUSATIV ", "versteinerte durch KASUS_AKKUSATIV ", /* EN "burned by ", "dissolved in ", "crushed to death by ", "petrified by ", */
+	"verschleimte durch KASUS_AKKUSATIV ", "getötet von KASUS_DATIV ", "", "", "", "", "" /* EN "turned to slime by ", "killed by ", "", "", "", "", "" */
 };
 
 static winid toptenwin = WIN_ERR;
@@ -362,7 +363,8 @@ int how;
 	}
 #endif /* LOGFILE */
 
-	if (wizard || discover) {
+	//if (wizard || discover) {
+	if (0) { // TODO DE
 	    if (how != PANICKED) HUP {
 		char pbuf[BUFSZ];
 		topten_print("");
