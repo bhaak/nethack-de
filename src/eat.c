@@ -454,7 +454,7 @@ register int pm;
 		Sprintf(killer_buf, "tasting %s meat", mons[pm].mname); /* EN Sprintf(killer_buf, "tasting %s meat", mons[pm].mname); */ // TODO DE
 		killer_format = KILLED_BY;
 		killer = killer_buf;
-		You("turn to stone."); /* EN You("turn to stone."); */ // TODO DE
+		You("VERB_VERSTEINERN."); /* EN You("turn to stone."); */
 		done(STONING);
 		if (victual.piece)
 		    victual.eating = FALSE;

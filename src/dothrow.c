@@ -802,7 +802,7 @@ boolean hitsroof;
  petrify:
 		killer_format = KILLED_BY;
 		killer = "elementary physics";	/* "what goes up..." */ /* EN killer = "elementary physics";	*/ // TODO DE
-		You("turn to stone."); /* EN You("turn to stone."); */ // TODO DE
+		You("VERB_VERSTEINERN."); /* EN You("turn to stone."); */
 		if (obj) dropy(obj);	/* bypass most of hitfloor() */
 		done(STONING);
 		return obj ? TRUE : FALSE;

@@ -1903,7 +1903,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    stop_occupation();
 		    if(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))
 			break;
-		    You("turn to stone..."); /* EN You("turn to stone..."); */ // TODO DE
+		    You("VERB_VERSTEINERN ..."); /* EN You("turn to stone..."); */
 		    killer_format = KILLED_BY;
 		    killer = mtmp->data->mname;
 		    done(STONING);

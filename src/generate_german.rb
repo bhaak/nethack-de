@@ -512,6 +512,7 @@ def ausgabe_verbs
     "",
     Verb.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
     Verb.new("VERB_ZERBRECHEN", "", "", ["zerbrichst", "zerbricht", "zerbrecht", "zerbrechen"]),
+    Verb.new("VERB_VERSTEINERN", "", "", ["versteinerst", "versteinert", "versteinert", "versteinern"]),
   ].each { |v|   
     if v.is_a? String then
       puts v

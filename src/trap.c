@@ -2163,7 +2163,7 @@ const char *str;
 	if (Stone_resistance) return;
 	if (poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))
 	    return;
-	You("turn to stone..."); /* EN You("turn to stone..."); */ // TODO DE
+	You("VERB_VERSTEINERN ..."); /* EN You("turn to stone..."); */
 	killer_format = KILLED_BY;
 	killer = str;
 	done(STONING);

@@ -430,7 +430,7 @@ xchar x, y;
 	    You("kick the %s with your bare %s.", /* EN You("kick the %s with your bare %s.", */ // TODO DE
 		corpse_xname(kickobj, TRUE), makeplural(body_part(FOOT)));
 	    if (!(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
-		You("turn to stone..."); /* EN You("turn to stone..."); */ // TODO DE
+		You("VERB_VERSTEINERN ..."); /* EN You("turn to stone..."); */
 		killer_format = KILLED_BY;
 		/* KMH -- otmp should be kickobj */
 		Sprintf(kbuf, "kicking %s without boots", /* EN Sprintf(kbuf, "kicking %s without boots", */ // TODO DE

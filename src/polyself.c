@@ -383,7 +383,7 @@ int	mntmp;
 	}
 	if (Stoned && poly_when_stoned(&mons[mntmp])) {
 		/* poly_when_stoned already checked stone golem genocide */
-		You("turn to stone!"); /* EN You("turn to stone!"); */ // TODO DE
+		You("VERB_VERSTEINERN!"); /* EN You("turn to stone!"); */
 		mntmp = PM_STONE_GOLEM;
 		Stoned = 0;
 		delayed_killer = 0;
@@ -1031,7 +1031,7 @@ dogaze()
 			 "Gazing at the awake %s is not a very good idea.",
 			    l_monnam(mtmp));
 			/* as if gazing at a sleeping anything is fruitful... */
-			You("turn to stone...");
+			You("VERB_VERSTEINERN ...");
 			killer_format = KILLED_BY;
 			killer = "deliberately meeting Medusa's gaze";
 			done(STONING);

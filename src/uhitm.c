@@ -2177,7 +2177,7 @@ uchar aatyp;
 		    if (!Stone_resistance &&
 			    !(poly_when_stoned(youmonst.data) &&
 				polymon(PM_STONE_GOLEM))) {
-			You("turn to stone..."); /* EN You("turn to stone..."); */ // TODO DE
+			You("VERB_VERSTEINERN ..."); /* EN You("turn to stone..."); */
 			done_in_by(mon);
 			return 2;
 		    }
