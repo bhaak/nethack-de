@@ -2185,7 +2185,7 @@ boolean byplayer;
 	mon_adjust_speed(mon, -3, (struct obj *)0);
 
 	if (cansee(mon->mx, mon->my))
-		pline("%s turns to stone.", Monnam(mon)); /* EN pline("%s turns to stone.", Monnam(mon)); */ // TODO DE
+		pline("SUBJECT %s VERB_VERSTEINERN.", Monnam(mon)); /* EN pline("%s turns to stone.", Monnam(mon)); */
 	if (byplayer) {
 		stoned = TRUE;
 		xkilled(mon,0);

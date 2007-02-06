@@ -2457,7 +2457,7 @@ register struct attack *mattk;
 			mon_to_stone(mtmp);
 			return (1);
 		    }
-		    pline("%s turns to stone!", Monnam(mtmp)); /* EN pline("%s turns to stone!", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(mtmp)); /* EN pline("%s turns to stone!", Monnam(mtmp)); */
 		    stoned = 1;
 		    xkilled(mtmp, 0);
 		    if (mtmp->mhp > 0) return 1;

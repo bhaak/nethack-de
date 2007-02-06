@@ -719,7 +719,7 @@ meatmetal(mtmp)
 				ptr = mtmp->data;
 			    } else if (!resists_ston(mtmp)) {
 				if (canseemon(mtmp))
-				    pline("%s turns to stone!", Monnam(mtmp)); /* EN pline("%s turns to stone!", Monnam(mtmp)); */ // TODO DE
+				    pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(mtmp)); /* EN pline("%s turns to stone!", Monnam(mtmp)); */
 				monstone(mtmp);
 				ptr = (struct permonst *)0;
 			    }

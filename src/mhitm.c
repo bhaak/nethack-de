@@ -593,7 +593,7 @@ mdamagem(magr, mdef, mattk)
 		    mon_to_stone(magr);
 		    return MM_HIT; /* no damage during the polymorph */
 		}
-		if (vis) pline("%s turns to stone!", Monnam(magr)); /* EN if (vis) pline("%s turns to stone!", Monnam(magr)); */ // TODO DE
+		if (vis) pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(magr)); /* EN if (vis) pline("%s turns to stone!", Monnam(magr)); */
 		monstone(magr);
 		if (magr->mhp > 0) return 0;
 		else if (magr->mtame && !vis)
@@ -623,7 +623,7 @@ mdamagem(magr, mdef, mattk)
 			You(brief_feeling, "queasy"); /* EN You(brief_feeling, "queasy"); */ // TODO DE
 		    return MM_AGR_DIED;
 		}
-		if(flags.verbose && flags.soundok) verbalize("Burrrrp!"); /* EN if(flags.verbose && flags.soundok) verbalize("Burrrrp!"); */ // TODO DE
+		if(flags.verbose && flags.soundok) verbalize("Rüüülps!"); /* EN if(flags.verbose && flags.soundok) verbalize("Burrrrp!"); */
 		tmp = mdef->mhp;
 		/* Use up amulet of life saving */
 		if (!!(obj = mlifesaver(mdef))) m_useup(mdef, obj);
@@ -824,7 +824,7 @@ mdamagem(magr, mdef, mattk)
 			break;
 		}
 		if (!resists_ston(mdef)) {
-			if (vis) pline("%s turns to stone!", Monnam(mdef)); /* EN if (vis) pline("%s turns to stone!", Monnam(mdef)); */ // TODO DE
+			if (vis) pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(mdef)); /* EN if (vis) pline("%s turns to stone!", Monnam(mdef)); */
 			monstone(mdef);
  post_stone:		if (mdef->mhp > 0) return 0;
 			else if (mdef->mtame && !vis)
