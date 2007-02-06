@@ -513,6 +513,8 @@ def ausgabe_verbs
     Verb.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
     Verb.new("VERB_ZERBRECHEN", "", "", ["zerbrichst", "zerbricht", "zerbrecht", "zerbrechen"]),
     Verb.new("VERB_VERSTEINERN", "", "", ["versteinerst", "versteinert", "versteinert", "versteinern"]),
+    Verb.new("VERB_STERBEN", "", "", ["stirbst", "stirbt", "sterbt", "sterben"]),
+    Verb.new("VERB_VERHUNGERN", "", "", ["verhungerst", "verhungert", "verhungert", "verhungern"]),
   ].each { |v|   
     if v.is_a? String then
       puts v
@@ -2144,6 +2146,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MENSCH", "Mensch", "en", "Mensch", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_RAT", "Ratte", "", "Ratte", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_PURSE", "Portemonnaie", "s", "Portemonnaie", "s", "neutrum", ""),
+    "",
+    dekliniere_substantiv("NOUN_ERKRANKUNG", "Erkrankung", "", "Erkrankung", "en", "feminin", ""),
+    dekliniere_substantiv("NOUN_ERSCHOEPFUNG", "Erschöpfung", "", "Erschöpfung", "en", "feminin", ""),
+    dekliniere_substantiv("NOUN_HUNGERTOD", "Hungertod", "es", "Hungertod", "e", "maskulin", ""),
 
     "/* ======================================================= */",
     "/* Adjektive */",

@@ -268,7 +268,7 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 			You("choke over it."); /* EN You("choke over it."); */ // TODO DE
 			killer = "quick snack"; /* EN killer = "quick snack"; */ // TODO DE
 		}
-		You("die..."); /* EN You("die..."); */ // TODO DE
+		You("VERB_STERBEN ..."); /* EN You("die..."); */
 		done(CHOKING);
 	}
 }
@@ -2309,9 +2309,9 @@ boolean incr;
 			u.uhs = STARVED;
 			flags.botl = 1;
 			bot();
-			You("die from starvation."); /* EN You("die from starvation."); */ // TODO DE
+			You("VERB_VERHUNGERN."); /* EN You("die from starvation."); */
 			killer_format = KILLED_BY;
-			killer = "starvation"; /* EN killer = "starvation"; */ // TODO DE
+			killer = "NOUN_HUNGERTOD"; /* EN killer = "starvation"; */
 			done(STARVING);
 			/* if we return, we lifesaved, and that calls newuhs */
 			return;
@@ -2361,9 +2361,9 @@ boolean incr;
 		flags.botl = 1;
 		bot();
 		if ((Upolyd ? u.mh : u.uhp) < 1) {
-			You("die from hunger and exhaustion."); /* EN You("die from hunger and exhaustion."); */ // TODO DE
+			You("VERB_STERBEN vor Hunger und Erschöpfung."); /* EN You("die from hunger and exhaustion."); */
 			killer_format = KILLED_BY;
-			killer = "exhaustion"; /* EN killer = "exhaustion"; */ // TODO DE
+			killer = "NOUN_ERSCHOEPFUNG"; /* EN killer = "exhaustion"; */
 			done(STARVING);
 			return;
 		}

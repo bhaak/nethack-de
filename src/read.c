@@ -1523,7 +1523,7 @@ do_class_genocide()
 			    if (Upolyd && i == u.umonnum) {
 				u.mh = -1;
 				if (Unchanging) {
-				    if (!feel_dead++) You("die."); /* EN if (!feel_dead++) You("die."); */ // TODO DE
+				    if (!feel_dead++) You("VERB_STERBEN."); /* EN if (!feel_dead++) You("die."); */
 				    /* finish genociding this class of
 				       monsters before ultimately dying */
 				    gameover = TRUE;
@@ -1538,7 +1538,7 @@ do_class_genocide()
 				if (Upolyd) {
 				    if (!feel_dead++) You_feel("dead inside."); /* EN if (!feel_dead++) You_feel("dead inside."); */ // TODO DE
 				} else {
-				    if (!feel_dead++) You("die."); /* EN if (!feel_dead++) You("die."); */ // TODO DE
+				    if (!feel_dead++) You("VERB_STERBEN."); /* EN if (!feel_dead++) You("die."); */
 				    gameover = TRUE;
 				}
 			    }

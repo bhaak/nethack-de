@@ -245,7 +245,7 @@ nh_timeout()
 			make_vomiting(0L, TRUE);
 			break;
 		case SICK:
-			You("die from your illness."); /* EN You("die from your illness."); */ // TODO DE
+			You("VERB_STERBEN an OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_ERKRANKUNG."); /* EN You("die from your illness."); */
 			killer_format = KILLED_BY_AN;
 			killer = u.usick_cause;
 			if ((m_idx = name_to_mon(killer)) >= LOW_PM) {
@@ -256,7 +256,7 @@ nh_timeout()
 				   poisoners with titles rather than names */
 			    else if (mons[m_idx].geno & G_UNIQ) {
 				char buf[BUFSZ];
-				Sprintf(buf, "the %s", killer);
+				Sprintf(buf, "the %s", killer); /* EN Sprintf(buf, "the %s", killer); */ // TODO DE
 				Strcpy(u.usick_cause, buf);
 				killer_format = KILLED_BY;
 			    }

@@ -264,7 +264,7 @@ register struct monst *mtmp;
 	char buf[BUFSZ];
 	boolean distorted = (boolean)(Hallucination && canspotmon(mtmp));
 
-	You("die..."); /* EN You("die..."); */ // TODO DE
+	You("VERB_STERBEN ..."); /* EN You("die..."); */
 	mark_synch();	/* flush buffered screen output */
 	buf[0] = '\0';
 	killer_format = KILLED_BY_AN;
@@ -701,9 +701,9 @@ int how;
 			wizard ||
 #endif
 			discover) && (how <= GENOCIDED)) {
-		if(yn("Die?") == 'y') goto die; /* EN if(yn("Die?") == 'y') goto die; */ // TODO DE
-		pline("OK, so you don't %s.", /* EN pline("OK, so you don't %s.", */ // TODO DE
-			(how == CHOKING) ? "choke" : "die"); /* EN (how == CHOKING) ? "choke" : "die"); */ // TODO DE
+		if(yn("Sterben?") == 'y') goto die; /* EN if(yn("Die?") == 'y') goto die; */
+		pline("Okay, SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s also nicht.", /* EN pline("OK, so you don't %s.", */
+			(how == CHOKING) ? "VERB_ERSTICKEN" : "VERB_STERBEN"); /* EN (how == CHOKING) ? "choke" : "die"); */
 		if(u.uhpmax <= 0) u.uhpmax = u.ulevel * 8;	/* arbitrary */
 		savelife(how);
 		killer = 0;
