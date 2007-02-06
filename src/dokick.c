@@ -243,7 +243,7 @@ register struct obj *gold;
 	} else if (!mtmp->mcanmove) {
 		/* too light to do real damage */
 		if (canseemon(mtmp))
-		    pline_The("gold hits %s.", mon_nam(mtmp)); /* EN pline_The("gold hits %s.", mon_nam(mtmp)); */ // TODO DE
+		    pline_The("gold hits %s dog 246.", mon_nam(mtmp)); /* EN pline_The("gold hits %s.", mon_nam(mtmp)); */ // TODO DE
 	} else {
 #ifdef GOLDOBJ
                 long value = gold->quan * objects[gold->otyp].oc_cost;
@@ -254,7 +254,7 @@ register struct obj *gold;
 
 		/* greedy monsters catch gold */
 		if (cansee(mtmp->mx, mtmp->my))
-		    pline("%s catches the gold.", Monnam(mtmp)); /* EN pline("%s catches the gold.", Monnam(mtmp)); */ // TODO DE
+		    pline("%s VERB_FANGEN das Gold.", Monnam(mtmp)); /* EN pline("%s catches the gold.", Monnam(mtmp)); */
 #ifndef GOLDOBJ
 		mtmp->mgold += gold->quan;
 #endif
@@ -289,7 +289,7 @@ register struct obj *gold;
 		} else if (mtmp->ispriest) {
 			if (mtmp->mpeaceful)
 			    verbalize("Thank you for your contribution."); /* EN verbalize("Thank you for your contribution."); */ // TODO DE
-			else verbalize("Thanks, scum!"); /* EN else verbalize("Thanks, scum!"); */ // TODO DE
+			else verbalize("Danke, scum!"); /* EN else verbalize("Thanks, scum!"); */ // TODO DE
 		} else if (is_mercenary(mtmp->data)) {
 		    long goldreqd = 0L;
 
@@ -315,8 +315,8 @@ register struct obj *gold;
 			}
 		     }
 		     if (mtmp->mpeaceful)
-			    verbalize("That should do.  Now beat it!"); /* EN verbalize("That should do.  Now beat it!"); */ // TODO DE
-		     else verbalize("That's not enough, coward!"); /* EN else verbalize("That's not enough, coward!"); */ // TODO DE
+			    verbalize("Das dürfte reichen.  Jetzt mach dich vom Acker!"); /* EN verbalize("That should do.  Now beat it!"); */
+		     else verbalize("Das ist nicht genug, Schlappschwanz!"); /* EN else verbalize("That's not enough, coward!"); */
 		 }
 
 #ifndef GOLDOBJ
@@ -355,7 +355,7 @@ struct obj *obj;
 	    otmp2 = otmp->nobj;
 	    if (objects[otmp->otyp].oc_material == GLASS &&
 		otmp->oclass != GEM_CLASS && !obj_resists(otmp, 33, 100)) {
-		result = "shatter"; /* EN result = "shatter"; */ // TODO DE
+		result = "NOUN_SCHEPPERN"; /* EN result = "shatter"; */
 	    } else if (otmp->otyp == EGG && !rn2(3)) {
 		result = "cracking"; /* EN result = "cracking"; */ // TODO DE
 	    }
@@ -366,7 +366,7 @@ struct obj *obj;
 		 * but it's always exactly 1 that breaks */
 		if (otmp->otyp == EGG && otmp->spe && otmp->corpsenm >= LOW_PM)
 		    change_luck(-1);
-		You_hear("a muffled %s.", result); /* EN You_hear("a muffled %s.", result); */ // TODO DE
+		You_hear("ARTIKEL_UNBESTIMMTER ADJEKTIV_GEDAEMPFT %s.", result); /* EN You_hear("a muffled %s.", result); */
 		if (costly)
 		    loss += stolen_value(otmp, x, y,
 					 (boolean)shkp->mpeaceful, TRUE);
@@ -593,20 +593,20 @@ char *buf;
 
 	if (kickobj) what = distant_name(kickobj,doname);
 	else if (IS_DOOR(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_OBJ_DOOR"; /* EN else if (IS_DOOR(maploc->typ)) what = "a door"; */
-	else if (IS_TREE(maploc->typ)) what = "a tree"; /* EN else if (IS_TREE(maploc->typ)) what = "a tree"; */ // TODO DE
-	else if (IS_STWALL(maploc->typ)) what = "a wall"; /* EN else if (IS_STWALL(maploc->typ)) what = "a wall"; */ // TODO DE
-	else if (IS_ROCK(maploc->typ)) what = "a rock"; /* EN else if (IS_ROCK(maploc->typ)) what = "a rock"; */ // TODO DE
-	else if (IS_THRONE(maploc->typ)) what = "a throne"; /* EN else if (IS_THRONE(maploc->typ)) what = "a throne"; */ // TODO DE
-	else if (IS_FOUNTAIN(maploc->typ)) what = "a fountain"; /* EN else if (IS_FOUNTAIN(maploc->typ)) what = "a fountain"; */ // TODO DE
-	else if (IS_GRAVE(maploc->typ)) what = "a headstone"; /* EN else if (IS_GRAVE(maploc->typ)) what = "a headstone"; */ // TODO DE
+	else if (IS_TREE(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_TREE"; /* EN else if (IS_TREE(maploc->typ)) what = "a tree"; */
+	else if (IS_STWALL(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_WALL"; /* EN else if (IS_STWALL(maploc->typ)) what = "a wall"; */ 
+	else if (IS_ROCK(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_ROCK"; /* EN else if (IS_ROCK(maploc->typ)) what = "a rock"; */ 
+	else if (IS_THRONE(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_THRONE"; /* EN else if (IS_THRONE(maploc->typ)) what = "a throne"; */ 
+	else if (IS_FOUNTAIN(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_FOUNTAIN"; /* EN else if (IS_FOUNTAIN(maploc->typ)) what = "a fountain"; */ 
+	else if (IS_GRAVE(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_HEADSTONE"; /* EN else if (IS_GRAVE(maploc->typ)) what = "a headstone"; */
 #ifdef SINKS
-	else if (IS_SINK(maploc->typ)) what = "a sink"; /* EN else if (IS_SINK(maploc->typ)) what = "a sink"; */ // TODO DE
+	else if (IS_SINK(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_SINK"; /* EN else if (IS_SINK(maploc->typ)) what = "a sink"; */
 #endif
-	else if (IS_ALTAR(maploc->typ)) what = "an altar"; /* EN else if (IS_ALTAR(maploc->typ)) what = "an altar"; */ // TODO DE
-	else if (IS_DRAWBRIDGE(maploc->typ)) what = "the drawbridge"; /* EN else if (IS_DRAWBRIDGE(maploc->typ)) what = "the drawbridge"; */ // TODO DE
-	else if (maploc->typ == STAIRS) what = "the stairs"; /* EN else if (maploc->typ == STAIRS) what = "the stairs"; */ // TODO DE
-	else if (maploc->typ == LADDER) what = "a ladder"; /* EN else if (maploc->typ == LADDER) what = "a ladder"; */ // TODO DE
-	else if (maploc->typ == IRONBARS) what = "an iron bar"; /* EN else if (maploc->typ == IRONBARS) what = "an iron bar"; */ // TODO DE
+	else if (IS_ALTAR(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_ALTAR"; /* EN else if (IS_ALTAR(maploc->typ)) what = "an altar"; */
+	else if (IS_DRAWBRIDGE(maploc->typ)) what = "ARTIKEL_BESTIMMTER NOUN_DRAWBRIDGE"; /* EN else if (IS_DRAWBRIDGE(maploc->typ)) what = "the drawbridge"; */
+	else if (maploc->typ == STAIRS) what = "ARTIKEL_UNBESTIMMTER NOUN_STAIRS"; /* EN else if (maploc->typ == STAIRS) what = "the stairs"; */
+	else if (maploc->typ == LADDER) what = "ARTIKEL_UNBESTIMMTER NOUN_LADDER"; /* EN else if (maploc->typ == LADDER) what = "a ladder"; */
+	else if (maploc->typ == IRONBARS) what = "ARTIKEL_UNBESTIMMTER NOUN_IRON_BAR"; /* EN else if (maploc->typ == IRONBARS) what = "an iron bar"; */ 
 	else what = "something weird"; /* EN else what = "something weird"; */ // TODO DE
 	return strcat(strcpy(buf, "kicking "), what); /* EN return strcat(strcpy(buf, "kicking "), what); */ // TODO DE
 }
