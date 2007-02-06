@@ -3,6 +3,9 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#ifdef GERMAN
+# include "german.h"
+#endif
 
 STATIC_DCL void FDECL(center, (int, char *));
 
@@ -26,7 +29,7 @@ static const char *rip_txt[] = {
 "                      /          \\",
 "                     /    RUHE    \\", /* EN "                     /    REST    \\", */
 "                    /      IN      \\", /* EN "                    /      IN      \\", */
-"                   /    FRIEDEN     \\", /* EN "                   /     PEACE      \\", */
+"                   /     FRIEDEN    \\", /* EN "                   /     PEACE      \\", */
 "                  /                  \\",
 "                  |                  |", /* Name of player */
 "                  |                  |", /* Amount of $ */
@@ -133,6 +136,9 @@ int how;
 	}
 
 	/* Put death type on stone */
+#ifdef GERMAN
+	Strcpy(buf, german(buf));
+#endif
 	for (line=DEATH_LINE, dpx = buf; line<YEAR_LINE; line++) {
 		register int i,i0;
 		char tmpchar;
