@@ -258,7 +258,7 @@ lookat(x, y, buf, monbuf)
 	else if (is_pool(x,y))
 	    Strcat(buf, " in water"); /* EN Strcat(buf, " in water"); */ // TODO DE
 	else if (is_lava(x,y))
-	    Strcat(buf, " in molten lava");	/* [can this ever happen?] */ /* EN Strcat(buf, " in molten lava");	*/ // TODO DE
+	    Strcat(buf, " in KASUS_AKKUSATIV ADJEKTIV_FLUESSIG NOUN_LAVA");	/* [can this ever happen?] */ /* EN Strcat(buf, " in molten lava");	*/ // TODO DE
     } else if (glyph_is_trap(glyph)) {
 	int tnum = what_trap(glyph_to_trap(glyph));
 	Strcpy(buf, defsyms[trap_to_defsym(tnum)].explanation);

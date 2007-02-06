@@ -3902,7 +3902,7 @@ unconscious()
 		!strncmp(nomovemsg,"You are consci", 14)))); /* EN !strncmp(nomovemsg,"You are consci", 14)))); */ // TODO DE
 }
 
-static const char lava_killer[] = "molten lava"; /* EN static const char lava_killer[] = "molten lava"; */ // TODO DE
+static const char lava_killer[] = "ADJEKTIV_FLUESSIG NOUN_LAVA"; /* EN static const char lava_killer[] = "molten lava"; */ // TODO DE
 
 boolean
 lava_effects()

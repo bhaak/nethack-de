@@ -363,7 +363,7 @@ moveloop()
 		u.utrap -= 1<<8;
 		if(u.utrap < 1<<8) {
 		    killer_format = KILLED_BY;
-		    killer = "molten lava"; /* EN killer = "molten lava"; */ // TODO DE
+		    killer = "ADJEKTIV_FLUESSIG NOUN_LAVA"; /* EN killer = "molten lava"; */ // TODO DE
 		    You("sink below the surface and die."); /* EN You("sink below the surface and die."); */ // TODO DE
 		    done(DISSOLVED);
 		} else if(didmove && !u.umoved) {

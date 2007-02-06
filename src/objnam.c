@@ -948,7 +948,7 @@ register const char *str;
 	buf[0] = '\0';
 
 	if (strncmpi(str, "the ", 4) &&
-	    strcmp(str, "molten lava") &&
+	    strcmp(str, "ADJEKTIV_FLUESSIG NOUN_LAVA") &&
 	    strcmp(str, "iron bars") &&
 	    strcmp(str, "ice")) {
 		if (index(vowels, *str) &&
@@ -2494,7 +2494,7 @@ srch:
 		if (!BSTRCMP(bp, p-4, "lava")) {  /* also matches "molten lava" */ /* EN if (!BSTRCMP(bp, p-4, "lava")) {  */ // TODO DE
 			levl[u.ux][u.uy].typ = LAVAPOOL;
 			del_engr_at(u.ux, u.uy);
-			pline("A pool of molten lava."); /* EN pline("A pool of molten lava."); */ // TODO DE
+			pline("A pool of ADJEKTIV_FLUESSIG NOUN_LAVA."); /* EN pline("A pool of molten lava."); */ // TODO DE
 			if (!(Levitation || Flying)) (void) lava_effects();
 			newsym(u.ux, u.uy);
 			return &zeroobj;

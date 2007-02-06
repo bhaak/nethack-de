@@ -112,11 +112,11 @@ boolean pushing;
 		    vision_full_recalc = 1;
 		    You("find yourself on dry land again!"); /* EN You("find yourself on dry land again!"); */ // TODO DE
 		} else if (lava && distu(rx,ry) <= 2) {
-		    You("are hit by molten lava%c", /* EN You("are hit by molten lava%c", */ // TODO DE
+		    You("are hit by ADJEKTIV_FLUESSIG NOUN_LAVA%c", /* EN You("are hit by molten lava%c", */ // TODO DE
 			Fire_resistance ? '.' : '!');
 			burn_away_slime();
 		    losehp(d((Fire_resistance ? 1 : 3), 6),
-			   "molten lava", KILLED_BY); /* EN "molten lava", KILLED_BY); */ // TODO DE
+			   "ADJEKTIV_FLUESSIG NOUN_LAVA", KILLED_BY); /* EN "molten lava", KILLED_BY); */ // TODO DE
 		} else if (!fills_up && flags.verbose &&
 			   (pushing ? !Blind : cansee(rx,ry)))
 		    pline("It sinks without a trace!"); /* EN pline("It sinks without a trace!"); */ // TODO DE
