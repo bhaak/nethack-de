@@ -1204,7 +1204,7 @@ dopois:
 				!Is_medusa_level(&u.uz) &&
 				!Is_waterlevel(&u.uz);
 
-			    pline("%s drowns you...", Monnam(mtmp)); /* EN pline("%s drowns you...", Monnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s VERB_ERTRAENKEN OBJECT PRONOMEN_PERSONAL ...", Monnam(mtmp)); /* EN pline("%s drowns you...", Monnam(mtmp)); */
 			    killer_format = KILLED_BY_AN;
 			    Sprintf(buf, "%s by %s", /* EN Sprintf(buf, "%s by %s", */ // TODO DE
 				    moat ? "moat" : "pool of water", /* EN moat ? "moat" : "pool of water", */ // TODO DE
@@ -1226,7 +1226,7 @@ dopois:
 		if (uncancelled && !rn2(4) && u.ulycn == NON_PM &&
 			!Protection_from_shape_changers &&
 			!defends(AD_WERE,uwep)) {
-		    You_feel("feverish."); /* EN You_feel("feverish."); */ // TODO DE
+		    Du_fuehlst_dich("fiebrig."); /* EN You_feel("feverish."); */
 		    exercise(A_CON, FALSE);
 		    u.ulycn = monsndx(mdat);
 		}

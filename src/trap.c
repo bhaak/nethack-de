@@ -2851,12 +2851,12 @@ drown()
 	if (Amphibious || Swimming) {
 		if (Amphibious) {
 			if (flags.verbose)
-				pline("But you aren't drowning."); /* EN pline("But you aren't drowning."); */ // TODO DE
+				pline("Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_ERTRINKEN nicht."); /* EN pline("But you aren't drowning."); */
 			if (!Is_waterlevel(&u.uz)) {
 				if (Hallucination)
 					Your("keel hits the bottom."); /* EN Your("keel hits the bottom."); */ // TODO DE
 				else
-					You("touch bottom."); /* EN You("touch bottom."); */ // TODO DE
+					You("VERB_LAUFEN auf Grund."); /* EN You("touch bottom."); */
 			}
 		}
 		if (Punished) {
@@ -2914,26 +2914,26 @@ drown()
 		boolean succ = Is_waterlevel(&u.uz) ? TRUE :
 				emergency_disrobe(&lost);
 
-		You("try to crawl out of the water."); /* EN You("try to crawl out of the water."); */ // TODO DE
+		You("VERB_VERSUCHEN aus dem Wasser zu klettern."); /* EN You("try to crawl out of the water."); */
 		if (lost)
 			You("dump some of your gear to lose weight..."); /* EN You("dump some of your gear to lose weight..."); */ // TODO DE
 		if (succ) {
-			pline("Pheew!  That was close."); /* EN pline("Pheew!  That was close."); */ // TODO DE
+			pline("Verdammt!  War das knapp."); /* EN pline("Pheew!  That was close."); */
 			teleds(x,y,TRUE);
 			return(TRUE);
 		}
 		/* still too much weight */
-		pline("But in vain."); /* EN pline("But in vain."); */ // TODO DE
+		pline("Umsonst."); /* EN pline("But in vain."); */
 	}
 	u.uinwater = 1;
-	You("drown."); /* EN You("drown."); */ // TODO DE
+	You("VERB_ERTRINKEN."); /* EN You("drown."); */ 
 	killer_format = KILLED_BY_AN;
 	killer = (levl[u.ux][u.uy].typ == POOL || Is_medusa_level(&u.uz)) ?
 	    "pool of water" : "moat"; /* EN "pool of water" : "moat"; */ // TODO DE
 	done(DROWNING);
 	/* oops, we're still alive.  better get out of the water. */
 	while (!safe_teleds(TRUE)) {
-		pline("You're still drowning."); /* EN pline("You're still drowning."); */ // TODO DE
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_SEIN immer noch am Ertrinken."); /* EN pline("You're still drowning."); */
 		done(DROWNING);
 	}
 	if (u.uinwater) {
@@ -3967,7 +3967,7 @@ lava_effects()
 		pline("You're still burning."); /* EN pline("You're still burning."); */ // TODO DE
 		done(BURNING);
 	}
-	You("find yourself back on solid %s.", surface(u.ux, u.uy)); /* EN You("find yourself back on solid %s.", surface(u.ux, u.uy)); */ // TODO DE
+	You("VERB_SEIN wieder OBJECT KASUS_DATIV auf ADJEKTIV_FEST %s.", surface(u.ux, u.uy)); /* EN You("find yourself back on solid %s.", surface(u.ux, u.uy)); */
 	return(TRUE);
     }
 

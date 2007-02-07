@@ -443,7 +443,7 @@ int spellnum;
     case MGC_CURE_SELF:
 	if (mtmp->mhp < mtmp->mhpmax) {
 	    if (canseemon(mtmp))
-		pline("%s looks better.", Monnam(mtmp)); /* EN pline("%s looks better.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_AUSSEHEN besser SATZKLAMMER.", Monnam(mtmp)); /* EN pline("%s looks better.", Monnam(mtmp)); */
 	    /* note: player healing does 6d4; this used to do 1d8 */
 	    if ((mtmp->mhp += d(3,6)) > mtmp->mhpmax)
 		mtmp->mhp = mtmp->mhpmax;
@@ -630,7 +630,7 @@ int spellnum;
     case CLC_CURE_SELF:
 	if (mtmp->mhp < mtmp->mhpmax) {
 	    if (canseemon(mtmp))
-		pline("%s looks better.", Monnam(mtmp)); /* EN pline("%s looks better.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_AUSSEHEN besser SATZKLAMMER.", Monnam(mtmp)); /* EN pline("%s looks better.", Monnam(mtmp)); */
 	    /* note: player healing does 6d4; this used to do 1d8 */
 	    if ((mtmp->mhp += d(3,6)) > mtmp->mhpmax)
 		mtmp->mhp = mtmp->mhpmax;

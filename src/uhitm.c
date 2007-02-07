@@ -1571,7 +1571,7 @@ register struct attack *mattk;
 			/* Monsters don't wear amulets of magical breathing */
 			if (is_pool(u.ux,u.uy) && !is_swimmer(mdef->data) &&
 			    !amphibious(mdef->data)) {
-			    You("drown %s...", mon_nam(mdef)); /* EN You("drown %s...", mon_nam(mdef)); */ // TODO DE
+			    You("VERB_ERTRAENKEN OBJECT %s...", mon_nam(mdef)); /* EN You("drown %s...", mon_nam(mdef)); */
 			    tmp = mdef->mhp;
 			} else if(mattk->aatyp == AT_HUGS)
 			    pline("%s is being crushed.", Monnam(mdef)); /* EN pline("%s is being crushed.", Monnam(mdef)); */ // TODO DE

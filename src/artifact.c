@@ -1222,7 +1222,7 @@ arti_invoke(obj)
 
 	    if (Upolyd) healamt = (u.mhmax + 1 - u.mh) / 2;
 	    if (healamt || Sick || Slimed || Blinded > creamed)
-		You_feel("better."); /* EN You_feel("better."); */ // TODO DE
+		Du_fuehlst_dich("besser."); /* EN You_feel("better."); */
 	    else
 		goto nothing_special;
 	    if (healamt > 0) {

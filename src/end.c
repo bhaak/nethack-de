@@ -681,7 +681,7 @@ int how;
 		Your("medallion %s!", /* EN Your("medallion %s!", */ // TODO DE
 		      !Blind ? "begins to glow" : "feels warm"); /* EN !Blind ? "begins to glow" : "feels warm"); */ // TODO DE
 		if (how == CHOKING) You("vomit ..."); /* EN if (how == CHOKING) You("vomit ..."); */ // TODO DE
-		You_feel("much better!"); /* EN You_feel("much better!"); */ // TODO DE
+		Du_fuehlst_dich("viel besser!"); /* EN You_feel("much better!"); */
 		pline_The("medallion crumbles to dust!"); /* EN pline_The("medallion crumbles to dust!"); */ // TODO DE
 		if (uamul) useup(uamul);
 

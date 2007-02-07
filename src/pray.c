@@ -293,7 +293,7 @@ register int trouble;
 		    flags.botl = 1;
 		    break;
 	    case TROUBLE_LAVA:
-		    You("are back on solid ground."); /* EN You("are back on solid ground."); */ // TODO DE
+		    You("VERB_HAVE wieder festen Boden unter den Füßen."); /* EN You("are back on solid ground."); */
 		    /* teleport should always succeed, but if not,
 		     * just untrap them.
 		     */
@@ -418,9 +418,9 @@ decurse:
 		    int num_eyes = eyecount(youmonst.data);
 		    const char *eye = body_part(EYE);
 
-		    Your("%s feel%s better.", /* EN Your("%s feel%s better.", */ // TODO DE
+		    Your("%s VERB_GEHEN%s es besser.", /* EN Your("%s feel%s better.", */
 			 (num_eyes == 1) ? eye : makeplural(eye),
-			 (num_eyes == 1) ? "s" : "");
+			 (num_eyes == 1) ? "" : ""); /* EN (num_eyes == 1) ? "s" : ""); */
 		    u.ucreamed = 0;
 		    make_blinded(0L,FALSE);
 		    break;

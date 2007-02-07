@@ -451,7 +451,7 @@ register struct monst *mtmp;
 	if (!is_clinger(mtmp->data)
 	    && !is_swimmer(mtmp->data) && !amphibious(mtmp->data)) {
 	    if (cansee(mtmp->mx,mtmp->my)) {
-		    pline("%s drowns.", Monnam(mtmp)); /* EN pline("%s drowns.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_ERTRINKEN.", Monnam(mtmp)); /* EN pline("%s drowns.", Monnam(mtmp)); */
 	    }
 	    if (u.ustuck && u.uswallow && u.ustuck == mtmp) {
 	    /* This can happen after a purple worm plucks you off a
@@ -1381,7 +1381,7 @@ struct monst *mtmp;
 			    || attacktype(mtmp->data, AT_BOOM))
 				pline("%s reconstitutes!", Monnam(mtmp)); /* EN pline("%s reconstitutes!", Monnam(mtmp)); */ // TODO DE
 			else
-				pline("%s looks much better!", Monnam(mtmp)); /* EN pline("%s looks much better!", Monnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s VERB_AUSSEHEN viel besser SATZKLAMMER!", Monnam(mtmp)); /* EN pline("%s looks much better!", Monnam(mtmp)); */
 			pline_The("medallion crumbles to dust!"); /* EN pline_The("medallion crumbles to dust!"); */ // TODO DE
 		}
 		m_useup(mtmp, lifesave);

@@ -1290,7 +1290,7 @@ int damtype, dam;
 		u.mh += heal;
 		if (u.mh > u.mhmax) u.mh = u.mhmax;
 		flags.botl = 1;
-		pline("Strangely, you feel better than before."); /* EN pline("Strangely, you feel better than before."); */ // TODO DE
+		pline("Seltsamerweise VERB_SICH_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL besser als vorher."); /* EN pline("Strangely, you feel better than before."); */
 		exercise(A_STR, TRUE);
 	}
 }

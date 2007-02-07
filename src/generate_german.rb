@@ -2168,6 +2168,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_MAGIE_ABSORBIEREND","magie-absorbierend"),
     dekliniere_adjektiv("ADJEKTIV_ELEKTRISCH","elektrisch"),
     dekliniere_adjektiv("ADJEKTIV_FLUESSIG","flüssig"),
+    dekliniere_adjektiv("ADJEKTIV_FEST","fest"),
     "",
     "/* 'andere' ist eigentlich ein Pronomen, wird aber wie ein Adjektiv dekliniert */",
     dekliniere_adjektiv("ADJEKTIV_ANDERE","ander"),

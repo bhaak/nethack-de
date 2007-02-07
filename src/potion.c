@@ -110,7 +110,7 @@ int type;
 	    if (Sick_resistance) return;
 	    if (!old) {
 		/* newly sick */
-		You_feel("deathly sick."); /* EN You_feel("deathly sick."); */ // TODO DE
+		Du_fuehlst_dich("todkrank."); /* EN You_feel("deathly sick."); */
 	    } else {
 		/* already sick */
 		if (talk) You_feel("%s worse.", /* EN if (talk) You_feel("%s worse.", */ // TODO DE
@@ -123,7 +123,7 @@ int type;
 	    /* was sick, now not */
 	    u.usick_type &= ~type;
 	    if (u.usick_type) { /* only partly cured */
-		if (talk) You_feel("somewhat better."); /* EN if (talk) You_feel("somewhat better."); */ // TODO DE
+		if (talk) Du_fuehlst_dich("ein wenig besser."); /* EN if (talk) You_feel("somewhat better."); */
 		set_itimeout(&Sick, Sick * 2); /* approximation */
 	    } else {
 		if (talk) pline("What a relief!"); /* EN if (talk) pline("What a relief!"); */ // TODO DE
@@ -789,13 +789,13 @@ peffects(otmp)
 			u.uexp = rndexp(TRUE);
 		break;
 	case POT_HEALING:
-		You_feel("better."); /* EN You_feel("better."); */ // TODO DE
+		Du_fuehlst_dich("besser."); /* EN You_feel("better."); */
 		healup(d(6 + 2 * bcsign(otmp), 4),
 		       !otmp->cursed ? 1 : 0, !!otmp->blessed, !otmp->cursed);
 		exercise(A_CON, TRUE);
 		break;
 	case POT_EXTRA_HEALING:
-		You_feel("much better."); /* EN You_feel("much better."); */ // TODO DE
+		Du_fuehlst_dich("viel besser."); /* EN You_feel("much better."); */
 		healup(d(6 + 2 * bcsign(otmp), 8),
 		       otmp->blessed ? 5 : !otmp->cursed ? 2 : 0,
 		       !otmp->cursed, TRUE);

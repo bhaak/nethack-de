@@ -865,7 +865,7 @@ mon_tele:
 			mtmp->mblinded = 0;
 			if (vismon) pline(mcsa, Monnam(mtmp));
 		}
-		if (vismon) pline("%s looks much better.", Monnam(mtmp)); /* EN if (vismon) pline("%s looks much better.", Monnam(mtmp)); */ // TODO DE
+		if (vismon) pline("SUBJECT %s VERB_AUSSEHEN viel besser SATZKLAMMER.", Monnam(mtmp)); /* EN if (vismon) pline("%s looks much better.", Monnam(mtmp)); */
 		if (oseen) makeknown(POT_EXTRA_HEALING);
 		m_useup(mtmp, otmp);
 		return 2;
