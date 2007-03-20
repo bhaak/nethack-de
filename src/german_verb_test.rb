@@ -110,6 +110,37 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["ginge", "gingest", "ginge", "gingen", "ginget", "gingen"])
   end
 
+  def testFallen
+    verb = VerbUnregelmaessig.new("fall", "fiel", "fall")
+    verb.ablaut = true
+
+    assert_equal("fallen", verb.infinitiv)
+    assert_equal("fall", verb.singular.imperativ)
+    assert_equal("fallt", verb.plural.imperativ)
+    assert_equal("fallend", verb.partizip_praesens)
+    assert_equal("gefallen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["falle", "fällst", "fällt", "fallen", "fallt", "fallen"])
+    checkVerbPraesensKonjunktiv(verb, ["falle", "fallest", "falle", "fallen", "fallet", "fallen"])
+    checkVerbPraeteritum(verb, ["fiel", "fielst", "fiel", "fielen", "fielt", "fielen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["fiele", "fielest", "fiele", "fielen", "fielet", "fielen"])
+  end
+
+  def estVerb
+    verb = VerbUnregelmaessig.new("", "", "")
+
+    assert_equal("", verb.infinitiv)
+    assert_equal("", verb.singular.imperativ)
+    assert_equal("", verb.plural.imperativ)
+    assert_equal("", verb.partizip_praesens)
+    assert_equal("", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["", "", "", "", "", ""])
+    checkVerbPraesensKonjunktiv(verb, ["", "", "", "", "", ""])
+    checkVerbPraeteritum(verb, ["", "", "", "", "", ""])
+    checkVerbPraeteritumKonjunktiv(verb, ["", "", "", "", "", ""])
+  end
+
   def checkVerbPraeteritum(verb, formen)
     verb.praeteritum.indikativ
     checkVerbFormen(verb, formen)

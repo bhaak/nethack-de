@@ -158,9 +158,16 @@ class Verb
 end
 
 class VerbUnregelmaessig < Verb
+  attr_accessor :ablaut # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Listen/Umlaut-Irreg-Pres.html
   $praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
   def form
-    if praeteritum? && indikativ? && aktiv? then
+    if praesens? && indikativ? && aktiv? && singular? && (zweitePerson? || drittePerson?) then
+      if ablaut then
+        return Verb.umlaute(@praesens_stamm) + endung($praesens_endung)
+      else
+        return @praesens_stamm + endung($praesens_endung)
+      end
+    elsif praeteritum? && indikativ? && aktiv? then
       return @praeteritum_stamm + endung($praeteritum_endung)
     elsif praeteritum? && konjunktiv? && aktiv? then
       return Verb.umlaute(@praeteritum_stamm) + "e" + endung($konjunktiv_endung)
