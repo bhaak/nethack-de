@@ -3,6 +3,7 @@ class Verb
   attr_reader :infinitiv
   $praesens_endung =    ["e", "st", "t", "en", "t", "en"]
   $praeteritum_endung = ["",  "st", "",  "n", "t", "n"]
+  $konjunktiv_endung =  ["",  "st", "",  "n", "t", "n"]
   
   def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
     @infinitiv = stamm + "en"
@@ -84,7 +85,7 @@ class Verb
     if @tempus==:praesens && @modus==:indikativ then
       return @praesens_stamm + endung($praesens_endung)
     elsif @tempus==:praesens && @modus==:konjunktiv then
-      return @praesens_stamm + "e" + endung($praeteritum_endung)
+      return @praesens_stamm + "e" + endung($konjunktiv_endung)
     elsif @tempus==:praeteritum && @modus==:indikativ then
       return @praeteritum_stamm + "te" + endung($praeteritum_endung)
     elsif @tempus==:praeteritum && @modus==:konjunktiv then
@@ -157,11 +158,12 @@ class Verb
 end
 
 class VerbUnregelmaessig < Verb
+  $praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
   def form
     if praeteritum? && indikativ? && aktiv? then
       return @praeteritum_stamm + endung($praeteritum_endung)
     elsif praeteritum? && konjunktiv? && aktiv? then
-      return Verb.umlaute(@praeteritum_stamm) + (e_erweiterung?(@praeteritum_stamm) ? "e" : "") + endung($praeteritum_endung)
+      return Verb.umlaute(@praeteritum_stamm) + "e" + endung($konjunktiv_endung)
     end
     return super
   end
@@ -248,7 +250,7 @@ end
 
 class VerbWerden < VerbUnregelmaessig
   def initialize()
-    super("werd", "wurde", "word")
+    super("werd", "wurd", "word")
   end
 
   def form
@@ -259,8 +261,8 @@ class VerbWerden < VerbUnregelmaessig
       #if singular? and (erstePerson? or drittePerson?) then
         #return "sei"
       #end
-    #elsif praeteritum? && indikativ? then
-      #return ["war", "warst", "war", "waren", "wart", "waren"][p]
+    elsif praeteritum? && indikativ? then
+      return ["wurde", "wurdest", "wurde", "wurden", "wurdet", "wurden"][p]
     end
     return super
   end

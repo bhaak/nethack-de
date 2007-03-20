@@ -94,7 +94,22 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritum(verb, ["wurde", "wurdest", "wurde", "wurden", "wurdet", "wurden"])
     checkVerbPraeteritumKonjunktiv(verb, ["würde", "würdest", "würde", "würden", "würdet", "würden"])
   end
-  
+
+  def testGehen
+    verb = VerbUnregelmaessig.new("geh", "ging", "gang")
+
+    assert_equal("gehen", verb.infinitiv)
+    assert_equal("geh", verb.singular.imperativ)
+    assert_equal("geht", verb.plural.imperativ)
+    assert_equal("gehend", verb.partizip_praesens)
+    assert_equal("gegangen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["gehe", "gehst", "geht", "gehen", "geht", "gehen"])
+    checkVerbPraesensKonjunktiv(verb, ["gehe", "gehest", "gehe", "gehen", "gehet", "gehen"])
+    checkVerbPraeteritum(verb, ["ging", "gingst", "ging", "gingen", "gingt", "gingen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["ginge", "gingest", "ginge", "gingen", "ginget", "gingen"])
+  end
+
   def checkVerbPraeteritum(verb, formen)
     verb.praeteritum.indikativ
     checkVerbFormen(verb, formen)
