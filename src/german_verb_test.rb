@@ -112,7 +112,7 @@ class TestVerb < Test::Unit::TestCase
 
   def testFallen
     verb = VerbUnregelmaessig.new("fall", "fiel", "fall")
-    verb.ablaut = true
+    verb.umlaut = true
 
     assert_equal("fallen", verb.infinitiv)
     assert_equal("fall", verb.singular.imperativ)
@@ -124,6 +124,52 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["falle", "fallest", "falle", "fallen", "fallet", "fallen"])
     checkVerbPraeteritum(verb, ["fiel", "fielst", "fiel", "fielen", "fielt", "fielen"])
     checkVerbPraeteritumKonjunktiv(verb, ["fiele", "fielest", "fiele", "fielen", "fielet", "fielen"])
+  end
+
+  def testPrintVerb
+    #verb = VerbUnregelmaessig.new("öffn", "", "")
+    verb = Verb.new("mach")
+    #verb = VerbSein.new
+
+    puts
+    puts "Infinitiv: "+ verb.infinitiv
+    puts
+    puts "Imperativ"
+    puts "Singular:  "+ verb.singular.imperativ
+    puts "Plural:    "+ verb.plural.imperativ
+    puts
+    puts "Partizip Präsens: "+verb.partizip_praesens
+    puts "Partizip Perfekt: " + verb.partizip_perfekt
+    puts
+
+    puts "Präsens Indikativ"
+    verb.praesens.indikativ
+    printFormen(verb)
+    puts
+
+    puts "Präsens Konjunktiv"
+    verb.praesens.konjunktiv
+    printFormen(verb)
+    puts
+
+    puts "Präteritum Indikativ"
+    verb.praeteritum.indikativ
+    printFormen(verb)
+    puts
+
+    puts "Präteritum Konjunktiv"
+    verb.praeteritum.konjunktiv
+    printFormen(verb)
+    puts
+  end
+
+  def printFormen(verb)
+    puts "ich "+verb.singular.erstePerson.form
+    puts "du  "+verb.singular.zweitePerson.form
+    puts "er  "+verb.singular.drittePerson.form
+    puts "wir "+verb.plural.erstePerson.form
+    puts "ihr "+verb.plural.zweitePerson.form
+    puts "sie "+verb.plural.drittePerson.form
   end
 
   def estVerb
