@@ -128,11 +128,13 @@ class TestVerb < Test::Unit::TestCase
 
   def testPrintVerb
     #verb = VerbUnregelmaessig.new("öffn", "", "")
-    verb = Verb.new("mach")
+    #verb = Verb.new("amüsier")
+    verb = Verb.new("öffn")
     #verb = VerbSein.new
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
+    puts "E-Erweiterung: " + verb.e_erweiterung.to_s
     puts
     puts "Imperativ"
     puts "Singular:  "+ verb.singular.imperativ
@@ -171,6 +173,23 @@ class TestVerb < Test::Unit::TestCase
     puts "ihr "+verb.plural.zweitePerson.form
     puts "sie "+verb.plural.drittePerson.form
   end
+
+  def testOeffnen
+	  # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Texte/e-Erweiterung.html
+    verb = Verb.new("öffn")
+
+    assert_equal("öffnen", verb.infinitiv)
+    assert_equal("öffne", verb.singular.imperativ)
+    assert_equal("öffnet", verb.plural.imperativ)
+    assert_equal("öffnend", verb.partizip_praesens)
+    assert_equal("geöffnet", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["öffne", "öffnest", "öffnet", "öffnen", "öffnet", "öffnen"])
+    checkVerbPraesensKonjunktiv(verb, ["öffne", "öffnest", "öffne", "öffnen", "öffnet", "öffnen"])
+    checkVerbPraeteritum(verb, ["öffnete", "öffnetest", "öffnete", "öffneten", "öffnetet", "öffneten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["öffnete", "öffnetest", "öffnete", "öffneten", "öffnetet", "öffneten"])
+  end
+
 
   def estVerb
     verb = VerbUnregelmaessig.new("", "", "")

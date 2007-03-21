@@ -13,7 +13,7 @@
 # [ ] Ablaut in Stammformen
 
 class Verb
-  attr_reader :infinitiv
+  attr_reader :infinitiv, :e_erweiterung
   
   def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
     @infinitiv = stamm + "en"
@@ -37,13 +37,15 @@ class Verb
   def e_erweiterung?(stamm)
     #puts "Stamm: "+stamm+"-"
     if stamm[-1..-1]=='t' or stamm[-1..-1]=='d' then
-      return true
-    # else if # verschlusslaut oder reibelaut + m oder n
-    # e_erweiterung = true
+		  return true
+    # verschlusslaut oder reibelaut + m oder n
+		elsif stamm[-1..-1]=='m' or stamm[-1..-1]=='n' then
+		  if stamm[-2..-2]=='f' then # TODO
+			  e_erweiterung = true
+			end
     else
       return false
     end
-    #puts "e_erweiterung: "+@e_erweiterung.to_s+"-"
   end
 
   def singular
@@ -95,19 +97,24 @@ class Verb
     return @person+@numerus*3
   end
 
-  def form
-    if @tempus==:praesens && @modus==:indikativ then
-      return @praesens_stamm + endung(@praesens_endung)
+	def form
+	  e_erweiterung = @e_erweiterung ? "e" : ""
+		if @tempus==:praesens && @modus==:indikativ then
+			if zweitePerson? || (singular? && drittePerson?) then
+				return @praesens_stamm + (@e_erweiterung ? "e" : "") + endung(@praesens_endung)
+			else
+				return @praesens_stamm + endung(@praesens_endung)
+			end	
     elsif @tempus==:praesens && @modus==:konjunktiv then
       return @praesens_stamm + "e" + endung(@konjunktiv_endung)
     elsif @tempus==:praeteritum && @modus==:indikativ then
 			#puts "regelmaessig praeteritum " + endung(@praeteritum_endung)
 			#puts "@person: " + @person.to_s + " @numerus "+@numerus.to_s
 			#puts "praeteritum_endung " + @praeteritum_endung.join("-")
-      return @praeteritum_stamm + "te" + endung(@praeteritum_endung)
+			return @praeteritum_stamm + e_erweiterung + "te" + endung(@praeteritum_endung)
     elsif @tempus==:praeteritum && @modus==:konjunktiv then
 			#puts "regelmaessig praeteritum konjunktiv"
-      return @praeteritum_stamm + "te" + endung(@praeteritum_endung)
+      return @praeteritum_stamm + e_erweiterung + "te" + endung(@praeteritum_endung)
     end
   end
 
@@ -127,7 +134,7 @@ class Verb
     return @praesens_stamm + "end"
   end
   def partizip_perfekt
-    return "ge"+@perfekt_stamm + "t"
+    return "ge"+@perfekt_stamm + (@e_erweiterung ? "e" : "") + "t"
   end
 
   def singular?
