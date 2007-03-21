@@ -189,14 +189,19 @@ class VerbUnregelmaessig < Verb
   	@praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
   end
   def form
+    e_erweiterung = @e_erweiterung ? "e" : ""
     if praesens? && indikativ? && aktiv? && singular? && (zweitePerson? || drittePerson?) then
       if umlaut then
-        return Verb.umlaute(@praesens_stamm) + endung(@praesens_endung)
+        return Verb.umlaute(@praesens_stamm) + e_erweiterung + endung(@praesens_endung)
       else
-        return @praesens_stamm + endung(@praesens_endung)
+        return @praesens_stamm + e_erweiterung + endung(@praesens_endung)
       end
     elsif praeteritum? && indikativ? && aktiv? then
-      return @praeteritum_stamm + endung(@praeteritum_endung)
+      if plural? && zweitePerson? then
+        return @praeteritum_stamm + e_erweiterung + endung(@praeteritum_endung)
+      else
+        return @praeteritum_stamm + endung(@praeteritum_endung)
+      end
     elsif praeteritum? && konjunktiv? && aktiv? then
       return Verb.umlaute(@praeteritum_stamm) + "e" + endung(@konjunktiv_endung)
     end

@@ -129,7 +129,7 @@ class TestVerb < Test::Unit::TestCase
   def testPrintVerb
     #verb = VerbUnregelmaessig.new("öffn", "", "")
     #verb = Verb.new("amüsier")
-    verb = Verb.new("öffn")
+    verb = VerbUnregelmaessig.new("find", "fand", "fund")
     #verb = VerbSein.new
 
     puts
@@ -190,6 +190,20 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["öffnete", "öffnetest", "öffnete", "öffneten", "öffnetet", "öffneten"])
   end
 
+  def testFinden
+    verb = VerbUnregelmaessig.new("find", "fand", "fund")
+
+    assert_equal("finden", verb.infinitiv)
+    assert_equal("finde", verb.singular.imperativ)
+    assert_equal("findet", verb.plural.imperativ)
+    assert_equal("findend", verb.partizip_praesens)
+    assert_equal("gefunden", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["finde", "findest", "findet", "finden", "findet", "finden"])
+    checkVerbPraesensKonjunktiv(verb, ["finde", "findest", "finde", "finden", "findet", "finden"])
+    checkVerbPraeteritum(verb, ["fand", "fandst", "fand", "fanden", "fandet", "fanden"])
+    checkVerbPraeteritumKonjunktiv(verb, ["fände", "fändest", "fände", "fänden", "fändet", "fänden"])
+  end
 
   def estVerb
     verb = VerbUnregelmaessig.new("", "", "")
