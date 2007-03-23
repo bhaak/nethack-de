@@ -3,7 +3,7 @@
 # Besonderheiten http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Texte/Besonderheiten.html
 #
 # [ ] Trennbare Verben
-# [ ] e-Erweiterung
+# [X] e-Erweiterung
 # [ ] e-Tilgung
 # [ ] e-Tilgung im Konjunktiv II
 # [ ] e/i-Wechsel
@@ -100,7 +100,10 @@ class Verb
 	def form
 	  e_erweiterung = @e_erweiterung ? "e" : ""
 		if @tempus==:praesens && @modus==:indikativ then
-			if zweitePerson? || (singular? && drittePerson?) then
+      if zweitePerson? && singular? && ['s', 'ß', 'x', 'z'].include?(@praesens_stamm[-1..-1]) then
+        # "s-Verschmelzung"
+				return @praesens_stamm + 't'
+			elsif zweitePerson? || (singular? && drittePerson?) then
 				return @praesens_stamm + (@e_erweiterung ? "e" : "") + endung(@praesens_endung)
 			else
 				return @praesens_stamm + endung(@praesens_endung)

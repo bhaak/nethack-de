@@ -128,8 +128,8 @@ class TestVerb < Test::Unit::TestCase
 
   def testPrintVerb
     #verb = VerbUnregelmaessig.new("öffn", "", "")
-    #verb = Verb.new("amüsier")
-    verb = VerbUnregelmaessig.new("find", "fand", "fund")
+    verb = Verb.new("setz")
+    #verb = VerbUnregelmaessig.new("find", "fand", "fund")
     #verb = VerbSein.new
 
     puts
@@ -203,6 +203,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["finde", "findest", "finde", "finden", "findet", "finden"])
     checkVerbPraeteritum(verb, ["fand", "fandst", "fand", "fanden", "fandet", "fanden"])
     checkVerbPraeteritumKonjunktiv(verb, ["fände", "fändest", "fände", "fänden", "fändet", "fänden"])
+  end
+
+  def testSetzen
+    verb = Verb.new("setz")
+
+    assert_equal("setzen", verb.infinitiv)
+    assert_equal("setz", verb.singular.imperativ)
+    assert_equal("setzt", verb.plural.imperativ)
+    assert_equal("setzend", verb.partizip_praesens)
+    assert_equal("gesetzt", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["setze", "setzt", "setzt", "setzen", "setzt", "setzen"])
+    checkVerbPraesensKonjunktiv(verb, ["setze", "setzest", "setze", "setzen", "setzet", "setzen"])
+    checkVerbPraeteritum(verb, ["setzte", "setztest", "setzte", "setzten", "setztet", "setzten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["setzte", "setztest", "setzte", "setzten", "setztet", "setzten"])
   end
 
   def estVerb
