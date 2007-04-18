@@ -8,7 +8,7 @@
 # [ ] e-Tilgung im Konjunktiv II
 # [ ] e/i-Wechsel
 # [ ] Partizip mit/ohne ge-
-# [ ] s-Verschmelzung
+# [X] s-Verschmelzung
 # [ ] Umlaut im Präsens
 # [ ] Ablaut in Stammformen
 
@@ -97,11 +97,14 @@ class Verb
     return @person+@numerus*3
   end
 
+  def s_verschmelzung?(stamm)
+      return zweitePerson? && singular? && ['s', 'ß', 'x', 'z'].include?(stamm[-1..-1])
+  end
+
 	def form
 	  e_erweiterung = @e_erweiterung ? "e" : ""
 		if @tempus==:praesens && @modus==:indikativ then
-      if zweitePerson? && singular? && ['s', 'ß', 'x', 'z'].include?(@praesens_stamm[-1..-1]) then
-        # "s-Verschmelzung"
+      if s_verschmelzung?(@praesens_stamm) then
 				return @praesens_stamm + 't'
 			elsif zweitePerson? || (singular? && drittePerson?) then
 				return @praesens_stamm + (@e_erweiterung ? "e" : "") + endung(@praesens_endung)
@@ -194,6 +197,10 @@ class VerbUnregelmaessig < Verb
   def form
     e_erweiterung = @e_erweiterung ? "e" : ""
     if praesens? && indikativ? && aktiv? && singular? && (zweitePerson? || drittePerson?) then
+      if s_verschmelzung?(@praesens_stamm) then
+				return @praesens_stamm + 't'
+      end
+
       if umlaut then
         return Verb.umlaute(@praesens_stamm) + e_erweiterung + endung(@praesens_endung)
       else
@@ -202,6 +209,9 @@ class VerbUnregelmaessig < Verb
     elsif praeteritum? && indikativ? && aktiv? then
       if plural? && zweitePerson? then
         return @praeteritum_stamm + e_erweiterung + endung(@praeteritum_endung)
+      elsif s_verschmelzung?(@praeteritum_stamm) then
+        return @praeteritum_stamm + 'est'
+        # return @praeteritum_stamm + 't' # auch möglich
       else
         return @praeteritum_stamm + endung(@praeteritum_endung)
       end

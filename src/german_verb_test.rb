@@ -127,10 +127,8 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testPrintVerb
-    #verb = VerbUnregelmaessig.new("öffn", "", "")
-    verb = Verb.new("setz")
-    #verb = VerbUnregelmaessig.new("find", "fand", "fund")
-    #verb = VerbSein.new
+    verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
+    verb = VerbUnregelmaessig.new("frier", "fror", "fror")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
@@ -218,6 +216,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["setze", "setzest", "setze", "setzen", "setzet", "setzen"])
     checkVerbPraeteritum(verb, ["setzte", "setztest", "setzte", "setzten", "setztet", "setzten"])
     checkVerbPraeteritumKonjunktiv(verb, ["setzte", "setztest", "setzte", "setzten", "setztet", "setzten"])
+  end
+
+  def testHeissen
+    verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
+
+    assert_equal("heißen", verb.infinitiv)
+    assert_equal("heiß", verb.singular.imperativ)
+    assert_equal("heißt", verb.plural.imperativ)
+    assert_equal("heißend", verb.partizip_praesens)
+    assert_equal("geheißen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["heiße", "heißt", "heißt", "heißen", "heißt", "heißen"])
+    checkVerbPraesensKonjunktiv(verb, ["heiße", "heißest", "heiße", "heißen", "heißet", "heißen"])
+    checkVerbPraeteritum(verb, ["hieß", "hießest", "hieß", "hießen", "hießt", "hießen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["hieße", "hießest", "hieße", "hießen", "hießet", "hießen"])
   end
 
   def estVerb
