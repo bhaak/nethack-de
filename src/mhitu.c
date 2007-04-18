@@ -48,9 +48,10 @@ register struct attack *mattk;
 	/* If same gender, "engagingly" for nymph, normal msg for others */
 	if((compat = could_seduce(mtmp, &youmonst, mattk))
 			&& !mtmp->mcan && !mtmp->mspec_used) {
-		pline("%s %s you %s.", Monnam(mtmp), /* EN pline("%s %s you %s.", Monnam(mtmp), */ // TODO DE
-			Blind ? "talks to" : "smiles at", /* EN Blind ? "talks to" : "smiles at", */ // TODO DE
-			compat == 2 ? "engagingly" : "seductively"); /* EN compat == 2 ? "engagingly" : "seductively"); */ // TODO DE
+		pline("%s %s %s %s.", Monnam(mtmp), /* EN pline("%s %s you %s.", Monnam(mtmp), */
+			Blind ? "VERB_SPRECHEN" : "VERB_LAECHELN OBJECT PRONOMEN_PERSONAL", /* EN Blind ? "talks to" : "smiles at", */
+			compat == 2 ? "einnehmend" : "verführerisch", /* EN compat == 2 ? "engagingly" : "seductively"); */
+			Blind ? "mit OBJECT PRONOMEN_PERSONAL" : "an");
 	} else
 	    switch (mattk->aatyp) {
 		case AT_BITE:
@@ -75,7 +76,7 @@ register struct attack *mattk;
 			break;
 		case AT_EXPL:
 		case AT_BOOM:
-			pline("%s explodes!", Monnam(mtmp)); /* EN pline("%s explodes!", Monnam(mtmp)); */ // TODO DE
+			pline("%s VERB_EXPLODIEREN!", Monnam(mtmp)); /* EN pline("%s explodes!", Monnam(mtmp)); */
 			break;
 		default:
 			pline("SUBJECT %s VERB_HIT!", Monnam(mtmp)); /* EN pline("%s hits!", Monnam(mtmp)); */
@@ -92,7 +93,7 @@ register struct attack *mattk;
 	    map_invisible(mtmp->mx, mtmp->my);
 
 	if(could_seduce(mtmp, &youmonst, mattk) && !mtmp->mcan)
-	    pline("%s pretends to be friendly.", Monnam(mtmp)); /* EN pline("%s pretends to be friendly.", Monnam(mtmp)); */ // TODO DE
+	    pline("SUBJECT %s VERB_HERANMACHEN sich an OBJECT PRONOMEN_PERSONAL SATZKLAMMER.", Monnam(mtmp)); /* EN pline("%s pretends to be friendly.", Monnam(mtmp)); */
 	else {
 	    if (!flags.verbose || !nearmiss)
 		pline("SUBJECT %s VERB_MISS OBJECT PRONOMEN_PERSONAL.", Monnam(mtmp)); /* EN pline("%s misses.", Monnam(mtmp)); */
@@ -1068,7 +1069,7 @@ dopois:
 				    /* explicitly chose not to die;
 				       arbitrarily boost intelligence */
 				    ABASE(A_INT) = ATTRMIN(A_INT) + 2;
-				    You_feel("like a scarecrow."); /* EN You_feel("like a scarecrow."); */ // TODO DE
+				    Du_fuehlst_dich("wie eine Vogelscheuche."); /* EN You_feel("like a scarecrow."); */
 				    break;
 				}
 			    }
@@ -1315,7 +1316,7 @@ dopois:
 		hitmsg(mtmp, mattk);
 		if (mtmp->mcan) break;
 		if (u.umonnum == PM_IRON_GOLEM) {
-			You("rust!"); /* EN You("rust!"); */ // TODO DE
+			You("VERB_ROSTEN!"); /* EN You("rust!"); */
 			/* KMH -- this is okay with unchanging */
 			rehumanize();
 			break;
@@ -1768,7 +1769,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 	    You("get %s!", is_animal(mtmp->data)? "regurgitated" : "expelled"); /* EN You("get %s!", is_animal(mtmp->data)? "regurgitated" : "expelled"); */ // TODO DE
 	    if (flags.verbose && (is_animal(mtmp->data) ||
 		    (dmgtype(mtmp->data, AD_DGST) && Slow_digestion)))
-		pline("Obviously %s doesn't like your taste.", mon_nam(mtmp)); /* EN pline("Obviously %s doesn't like your taste.", mon_nam(mtmp)); */ // TODO DE
+		pline("Offensichtlich SUBJECT_IM_SATZ VERB_MOEGEN %s OBJECT PRONOMEN_POSSESSIV NOUN_GESCHMACK nicht.", mon_nam(mtmp)); /* EN pline("Obviously %s doesn't like your taste.", mon_nam(mtmp)); */
 	    expels(mtmp, mtmp->data, FALSE);
 	}
 	return(1);
@@ -1962,7 +1963,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    pline("%s attacks you with a fiery gaze!", Monnam(mtmp)); /* EN pline("%s attacks you with a fiery gaze!", Monnam(mtmp)); */ // TODO DE
 		    stop_occupation();
 		    if (Fire_resistance) {
-			pline_The("fire doesn't feel hot!"); /* EN pline_The("fire doesn't feel hot!"); */ // TODO DE
+			pline_The("NOUN_FEUER VERB_FUEHLEN sich nicht heiss an!"); /* EN pline_The("fire doesn't feel hot!"); */
 			dmg = 0;
 		    }
 		    burn_away_slime();
@@ -2301,11 +2302,11 @@ register struct monst *mon;
 			exercise(A_WIS, TRUE);
 			flags.botl = 1;
 			break;
-		case 3: pline("That was a very educational experience."); /* EN case 3: pline("That was a very educational experience."); */ // TODO DE
+		case 3: pline("Das war eine sehr lehrreiche Erfahrung."); /* EN case 3: pline("That was a very educational experience."); */
 			pluslvl(FALSE);
 			exercise(A_WIS, TRUE);
 			break;
-		case 4: You_feel("restored to health!"); /* EN case 4: You_feel("restored to health!"); */ // TODO DE
+		case 4: Du_fuehlst_dich("vollständig gesundet!"); /* EN case 4: You_feel("restored to health!"); */
 			u.uhp = u.uhpmax;
 			if (Upolyd) u.mh = u.mhmax;
 			exercise(A_STR, TRUE);
@@ -2316,9 +2317,9 @@ register struct monst *mon;
 
 	if (mon->mtame) /* don't charge */ ;
 	else if (rn2(20) < ACURR(A_CHA)) {
-		pline("%s demands that you pay %s, but you refuse...", /* EN pline("%s demands that you pay %s, but you refuse...", */ // TODO DE
-			noit_Monnam(mon),
-			Blind ? (fem ? "her" : "him") : mhim(mon)); /* EN Blind ? (fem ? "her" : "him") : mhim(mon)); */ // TODO DE
+		pline("%s verlangt Bezahlung, aber NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_WEIGERN OBJECT PRONOMEN_PERSONAL ...", /* EN pline("%s demands that you pay %s, but you refuse...", */
+					noit_Monnam(mon));
+					//Blind ? (fem ? "her" : "him") : mhim(mon)); /* EN Blind ? (fem ? "her" : "him") : mhim(mon)); */
 	} else if (u.umonnum == PM_LEPRECHAUN)
 		pline("%s tries to take your money, but fails...", /* EN pline("%s tries to take your money, but fails...", */ // TODO DE
 				noit_Monnam(mon));
@@ -2356,9 +2357,9 @@ register struct monst *mon;
 			if (!cost) cost = 1L;
 		}
 		if (cost > umoney) cost = umoney;
-		if (!cost) verbalize("It's on the house!"); /* EN if (!cost) verbalize("It's on the house!"); */ // TODO DE
+		if (!cost) verbalize("Das geht aufs Haus!"); /* EN if (!cost) verbalize("It's on the house!"); */
 		else { 
-		    pline("%s takes %ld %s for services rendered!", /* EN pline("%s takes %ld %s for services rendered!", */ // TODO DE
+		    pline("%s VERB_NEHMEN %ld %s für geleistete Dienste!", /* EN pline("%s takes %ld %s for services rendered!", */
 			    noit_Monnam(mon), cost, currency(cost));
                     money2mon(mon, cost);
 		    flags.botl = 1;
@@ -2480,7 +2481,7 @@ register struct attack *mattk;
 	if (rn2(3)) switch(youmonst.data->mattk[i].adtyp) {
 	    case AD_PHYS:
 	    	if (youmonst.data->mattk[i].aatyp == AT_BOOM) {
-	    	    You("explode!"); /* EN You("explode!"); */ // TODO DE
+	    	    You("VERB_EXPLODIEREN!"); /* EN You("explode!"); */
 	    	    /* KMH, balance patch -- this is okay with unchanging */
 	    	    rehumanize();
 	    	    goto assess_dmg;
