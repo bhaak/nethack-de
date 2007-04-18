@@ -93,7 +93,7 @@ use_towel(obj)
 	struct obj *obj;
 {
 	if(!freehand()) {
-		You("have no free %s!", body_part(HAND)); /* EN You("have no free %s!", body_part(HAND)); */ // TODO DE
+		You("VERB_HAVE PRONOMEN_KEIN ADJEKTIV_FREI %s!", body_part(HAND)); /* EN You("have no free %s!", body_part(HAND)); */
 		return 0;
 	} else if (obj->owornmask) {
 		You("cannot use it while you're wearing it!"); /* EN You("cannot use it while you're wearing it!"); */ // TODO DE

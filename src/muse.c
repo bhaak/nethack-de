@@ -1788,7 +1788,7 @@ skipmsg:
 		return 2;
 	case MUSE_POT_POLYMORPH:
 		mquaffmsg(mtmp, otmp);
-		if (vismon) pline("%s suddenly mutates!", Monnam(mtmp)); /* EN if (vismon) pline("%s suddenly mutates!", Monnam(mtmp)); */ // TODO DE
+		if (vismon) pline("SUBJECT %s VERB_MUTIEREN plötzlich!", Monnam(mtmp)); /* EN if (vismon) pline("%s suddenly mutates!", Monnam(mtmp)); */
 		(void) newcham(mtmp, muse_newcham_mon(mtmp), FALSE, FALSE);
 		if (oseen) makeknown(POT_POLYMORPH);
 		m_useup(mtmp, otmp);

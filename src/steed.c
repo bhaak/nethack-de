@@ -49,10 +49,10 @@ use_saddle(otmp)
 
 	/* Can you use it? */
 	if (nohands(youmonst.data)) {
-		You("have no hands!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/ // TODO DE
+		You("VERB_HAVE keine Hände!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/
 		return 0;
 	} else if (!freehand()) {
-		You("have no free %s.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */ // TODO DE
+		You("VERB_HABE OBJECT PRONOMEN_KEIN %s frei.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */
 		return 0;
 	}
 
@@ -75,14 +75,14 @@ use_saddle(otmp)
 	/* Is this a valid monster? */
 	if (mtmp->misc_worn_check & W_SADDLE ||
 			which_armor(mtmp, W_SADDLE)) {
-	    pline("%s doesn't need another one.", Monnam(mtmp)); /* EN pline("%s doesn't need another one.", Monnam(mtmp)); */ // TODO DE
+	    pline("%s VERB_BRAUCHEN nicht noch einen.", Monnam(mtmp)); /* EN pline("%s doesn't need another one.", Monnam(mtmp)); */
 	    return 1;
 	}
 	ptr = mtmp->data;
 	if (touch_petrifies(ptr) && !Stone_resistance) {
 	    char kbuf[BUFSZ];
 
-	    You("touch %s.", mon_nam(mtmp)); /* EN You("touch %s.", mon_nam(mtmp)); */ // TODO DE
+	    You("VERB_TOUCH OBJECT %s.", mon_nam(mtmp)); /* EN You("touch %s.", mon_nam(mtmp)); */
  	    if (!(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
 		Sprintf(kbuf, "attempting to saddle %s", an(mtmp->data->mname)); /* EN Sprintf(kbuf, "attempting to saddle %s", an(mtmp->data->mname)); */ // TODO DE
 		instapetrify(kbuf);
@@ -229,7 +229,7 @@ mount_steed(mtmp, force)
 
 	if (Upolyd && (!humanoid(youmonst.data) || verysmall(youmonst.data) ||
 			bigmonst(youmonst.data) || slithy(youmonst.data))) {
-	    You("won't fit on a saddle."); /* EN You("won't fit on a saddle."); */ // TODO DE
+	    You("VERB_PASSEN nicht auf einen Sattel."); /* EN You("won't fit on a saddle."); */
 	    return (FALSE);
 	}
 	if(!force && (near_capacity() > SLT_ENCUMBER)) {
@@ -264,7 +264,7 @@ mount_steed(mtmp, force)
 	if (touch_petrifies(ptr) && !Stone_resistance) {
 	    char kbuf[BUFSZ];
 
-	    You("touch %s.", mon_nam(mtmp)); /* EN You("touch %s.", mon_nam(mtmp)); */ // TODO DE
+	    You("VERB_TOUCH OBJECT %s.", mon_nam(mtmp)); /* EN You("touch %s.", mon_nam(mtmp)); */
 	    Sprintf(kbuf, "attempting to ride %s", an(mtmp->data->mname)); /* EN Sprintf(kbuf, "attempting to ride %s", an(mtmp->data->mname)); */ // TODO DE
 	    instapetrify(kbuf);
 	}
@@ -389,7 +389,7 @@ kick_steed()
 		else
 		    pline("%s rouses %sself!", He, mhim(u.usteed)); /* EN pline("%s rouses %sself!", He, mhim(u.usteed)); */ // TODO DE
 	    } else
-		pline("%s does not respond.", He); /* EN pline("%s does not respond.", He); */ // TODO DE
+		pline("SUBJECT %s VERB_REAGIEREN nicht.", He); /* EN pline("%s does not respond.", He); */
 	    return;
 	}
 
@@ -402,7 +402,7 @@ kick_steed()
 	    return;
 	}
 
-	pline("%s gallops!", Monnam(u.usteed)); /* EN pline("%s gallops!", Monnam(u.usteed)); */ // TODO DE
+	pline("SUBJECT %s VERB_GALOPPIEREN!", Monnam(u.usteed)); /* EN pline("%s gallops!", Monnam(u.usteed)); */
 	u.ugallop += rn1(20, 30);
 	return;
 }
@@ -486,7 +486,7 @@ dismount_steed(reason)
 		repair_leg_damage = FALSE;
 		break;
 	    case DISMOUNT_POLY:
-		You("can no longer ride %s.", mon_nam(u.usteed)); /* EN You("can no longer ride %s.", mon_nam(u.usteed)); */ // TODO DE
+		You("VERB_KOENNEN nicht mehr OBJECT %s reiten.", mon_nam(u.usteed)); /* EN You("can no longer ride %s.", mon_nam(u.usteed)); */
 		if (!have_spot) have_spot = landing_spot(&cc,reason,1);
 		break;
 	    case DISMOUNT_ENGULFED:
@@ -547,7 +547,7 @@ dismount_steed(reason)
 		if (!is_flyer(mdat) && !is_floater(mdat) && !is_clinger(mdat)) {
 		    if (is_pool(u.ux, u.uy)) {
 			if (!Underwater)
-			    pline("%s falls into the %s!", Monnam(mtmp), /* EN pline("%s falls into the %s!", Monnam(mtmp), */ // TODO DE
+			    pline("SUBJECT %s VERB_FALLEN in OBJECT in ARTIKEL_BESTIMMTER %s!", Monnam(mtmp), /* EN pline("%s falls into the %s!", Monnam(mtmp), */
 							surface(u.ux, u.uy));
 			if (!is_swimmer(mdat) && !amphibious(mdat)) {
 			    killed(mtmp);

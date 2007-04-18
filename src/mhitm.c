@@ -85,9 +85,9 @@ missmm(magr, mdef, mattk)
 		if (mdef->m_ap_type) seemimic(mdef);
 		if (magr->m_ap_type) seemimic(magr);
 		fmt = (could_seduce(magr,mdef,mattk) && !magr->mcan) ?
-			"SUBJECT %s pretends to be friendly to" : "SUBJECT %s VERB_MISS OBJECT"; /* EN  "%s pretends to be friendly to" : "%s misses"; */
+			"SUBJECT %s VERB_HERANMACHEN sich an OBJECT PRONOMEN_PERSONAL" : "SUBJECT %s VERB_MISS OBJECT"; /* EN  "%s pretends to be friendly to" : "%s misses"; */
 		Sprintf(buf, fmt, Monnam(magr));
-		pline("%s %s.", buf, mon_nam_too(mdef_name, mdef, magr));
+		pline("%s %s SATZKLAMMER.", buf, mon_nam_too(mdef_name, mdef, magr));
 	} else  noises(magr, mattk);
 }
 

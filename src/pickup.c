@@ -1474,7 +1474,7 @@ doloot()	/* loot a container on the floor or loot saddle from mon. */
 	return 0;
     }
     if (nohands(youmonst.data)) {
-	You("have no hands!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/ // TODO DE
+	You("VERB_HAVE keine Hände!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/
 	return 0;
     }
     cc.x = u.ux; cc.y = u.uy;
@@ -2038,10 +2038,10 @@ register int held;
 
 	emptymsg[0] = '\0';
 	if (nohands(youmonst.data)) {
-		You("have no hands!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/ // TODO DE
+		You("VERB_HAVE keine Hände!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/
 		return 0;
 	} else if (!freehand()) {
-		You("have no free %s.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */ // TODO DE
+		You("VERB_HAVE PRONOMEN_KEIN ADJEKTIV_FREI %s.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */
 		return 0;
 	}
 	if (obj->olocked) {

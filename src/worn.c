@@ -741,7 +741,7 @@ boolean polyspot;
 			!Stone_resistance && rnl(3)) {
 		char buf[BUFSZ];
 
-		You("touch %s.", mon_nam(u.usteed)); /* EN You("touch %s.", mon_nam(u.usteed)); */ // TODO DE
+		You("VERB_TOUCH OBJECT %s.", mon_nam(u.usteed)); /* EN You("touch %s.", mon_nam(u.usteed)); */
 		Sprintf(buf, "falling off %s", /* EN Sprintf(buf, "falling off %s", */ // TODO DE
 				an(u.usteed->data->mname));
 		instapetrify(buf);

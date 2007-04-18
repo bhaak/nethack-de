@@ -1905,7 +1905,7 @@ register struct monst *mdef;
 register struct attack *mattk;
 {
 	if (could_seduce(&youmonst, mdef, mattk))
-		You("pretend to be friendly to %s.", mon_nam(mdef)); /* EN You("pretend to be friendly to %s.", mon_nam(mdef)); */ // TODO DE
+		You("VERB_HERANMACHEN OBJECT PRONOMEN_PERSONAL an OBJECT %s SATZKLAMMER.%s.", mon_nam(mdef)); /* EN You("pretend to be friendly to %s.", mon_nam(mdef)); */
 	else if(canspotmon(mdef) && flags.verbose)
 		You("VERB_MISS OBJECT %s.", mon_nam(mdef)); /* EN  You("miss %s.", mon_nam(mdef)); */
 	else

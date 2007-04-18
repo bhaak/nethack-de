@@ -796,7 +796,7 @@ ring:
 		    costly_spot(ox, oy) &&
 		    (shkp = shop_keeper(*in_rooms(ox, oy, SHOPBASE))))
 			quotedprice += contained_cost(obj, shkp, 0L, FALSE, TRUE);
-		Sprintf(eos(bp), " (unpaid, %ld %s)", /* EN Sprintf(eos(bp), " (unpaid, %ld %s)", */ // TODO DE
+		Sprintf(eos(bp), " (unbezahlt, %ld %s)", /* EN Sprintf(eos(bp), " (unpaid, %ld %s)", */
 			quotedprice, currency(quotedprice));
 	}
 	if (!strncmp(prefix, "a ", 2) &&

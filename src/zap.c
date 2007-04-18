@@ -1785,7 +1785,7 @@ register struct obj *obj;
 			break;
 		case WAN_ENLIGHTENMENT:
 			known = TRUE;
-			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */
+			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ /* einsichtigt, kenntnisreich; bewandert; fachkundig; fundiert; kennerhaft; klug {adj}, belesen, kennerhaft, kenntnisreich, klug, sachkundig, unterrichtet, bewandert # selbst-erkennend?, selbst-einsichtig?, einsichtig? */
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			enlightenment(FALSE);
 			pline_The("feeling subsides."); /* EN pline_The("feeling subsides."); */
@@ -1878,7 +1878,7 @@ boolean ordinary;
 			pline("Boing!"); /* EN pline("Boing!"); */ // IMPROVE ME?
 		    } else {
 			if (ordinary) {
-			    You("VERB_HAUEN OBJECT PRONOMEN_PERSONAL selbst!"); /* EN You("bash yourself!"); */
+			    You("VERB_VERLETZEN OBJECT PRONOMEN_PERSONAL selbst!"); /* EN You("bash yourself!"); */
 			    damage = d(2,12);
 			} else
 			    damage = d(1 + obj->spe,6);
@@ -1894,7 +1894,7 @@ boolean ordinary;
 			exercise(A_CON, FALSE);
 		    } else {
 			shieldeff(u.ux, u.uy);
-			You("zap yourself, but seem unharmed."); /* EN You("zap yourself, but seem unharmed."); */ // TODO DE
+			You("zap yourself, but seem unharmed aber folgenlos."); /* EN You("zap yourself, but seem unharmed."); */ // TODO DE
 			ugolemeffects(AD_ELEC, d(12,6));
 		    }
 		    destroy_item(WAND_CLASS, AD_ELEC);
