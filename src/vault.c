@@ -54,7 +54,7 @@ register boolean forceshow;
 	}
 	if(grd->mhp <= 0) {
 	    pline_The("corridor disappears."); /* EN pline_The("corridor disappears."); */ // TODO DE
-	    if(IS_ROCK(levl[u.ux][u.uy].typ)) You("are encased in rock."); /* EN if(IS_ROCK(levl[u.ux][u.uy].typ)) You("are encased in rock."); */ // TODO DE
+	    if(IS_ROCK(levl[u.ux][u.uy].typ)) You("VERB_SEIN in Stein eingeschlossen."); /* EN if(IS_ROCK(levl[u.ux][u.uy].typ)) You("are encased in rock."); */
 	}
 	return(TRUE);
 }
@@ -246,7 +246,7 @@ fnd:
 			youmonst.mappearance != GOLD_PIECE)
 	    	verbalize("Hey! Who left that %s in here?", mimic_obj_name(&youmonst)); /* EN verbalize("Hey! Who left that %s in here?", mimic_obj_name(&youmonst)); */ // TODO DE
 	    /* You're mimicking some object or you're hidden. */
-	    pline("Puzzled, %s turns around and leaves.", mhe(guard)); /* EN pline("Puzzled, %s turns around and leaves.", mhe(guard)); */ // TODO DE
+	    pline("Verwirrt VERB_DREHEN %s sich um und VERB_GEHEN.", mhe(guard)); /* EN pline("Puzzled, %s turns around and leaves.", mhe(guard)); */
 	    mongone(guard);
 	    return;
 	}
@@ -273,17 +273,20 @@ fnd:
 		adjalign(-1);		/* Liar! */
 	}
 
-	if (!strcmpi(buf, "Croesus") || !strcmpi(buf, "Kroisos") /* EN if (!strcmpi(buf, "Croesus") || !strcmpi(buf, "Kroisos") */ // TODO DE
+	if (!strcmpi(buf, "Croesus") || !strcmpi(buf, "Kroisos") /* EN if (!strcmpi(buf, "Croesus") || !strcmpi(buf, "Kroisos") */
 #ifdef TOURIST
-		|| !strcmpi(buf, "Creosote") /* EN || !strcmpi(buf, "Creosote") */ // TODO DE
+		|| !strcmpi(buf, "Creosote") /* EN || !strcmpi(buf, "Creosote") */
+#endif
+#ifdef GERMAN
+		|| !strcmpi(buf, "Krösus") 
 #endif
 	    ) {
 	    if (!mvitals[PM_CROESUS].died) {
-		verbalize("Oh, yes, of course.  Sorry to have disturbed you."); /* EN verbalize("Oh, yes, of course.  Sorry to have disturbed you."); */ // TODO DE
+		verbalize("Oh, ja, natürlich.  Entschuldigen Sie die Störung."); /* EN verbalize("Oh, yes, of course.  Sorry to have disturbed you."); */ // TODO DE
 		mongone(guard);
 	    } else {
 		setmangry(guard);
-		verbalize("Back from the dead, are you?  I'll remedy that!"); /* EN verbalize("Back from the dead, are you?  I'll remedy that!"); */ // TODO DE
+		verbalize("Von den Toten auferstanden, was?  Dem kann ich abhelfen!"); /* EN verbalize("Back from the dead, are you?  I'll remedy that!"); */
 		/* don't want guard to waste next turn wielding a weapon */
 		if (!MON_WEP(guard)) {
 		    guard->weapon_check = NEED_HTH_WEAPON;
@@ -424,9 +427,9 @@ struct monst *grd;
 		pline_The("%s whispers an incantation.", g_monnam(grd)); /* EN pline_The("%s whispers an incantation.", g_monnam(grd)); */ // TODO DE
 	    else You_hear("a distant chant."); /* EN else You_hear("a distant chant."); */ // TODO DE
 	    if(movedgold)
-		pline("A mysterious force moves the gold into the vault."); /* EN pline("A mysterious force moves the gold into the vault."); */ // TODO DE
+		pline("Eine geheimnisvolle Macht schiebt das Gold in den Tresorraum."); /* EN pline("A mysterious force moves the gold into the vault."); */
 	    if(fixed)
-		pline_The("damaged vault's walls are magically restored!"); /* EN pline_The("damaged vault's walls are magically restored!"); */ // TODO DE
+		pline("Die beschädigten Wände des Tresorraums werden magisch repariert!"); /* EN pline_The("damaged vault's walls are magically restored!"); */
 	}
 }
 
@@ -499,7 +502,7 @@ register struct monst *grd;
 		if(egrd->warncnt == 7) {
 			m = grd->mx;
 			n = grd->my;
-			verbalize("You've been warned, knave!"); /* EN verbalize("You've been warned, knave!"); */ // TODO DE
+			verbalize("Ich hab dich Gauner gewarnt!"); /* EN verbalize("You've been warned, knave!"); */
 			mnexto(grd);
 			levl[m][n].typ = egrd->fakecorr[0].ftyp;
 			newsym(m,n);
@@ -559,7 +562,7 @@ letknow:
 			verbalize("Drop all your gold, scoundrel!"); /* EN verbalize("Drop all your gold, scoundrel!"); */ // TODO DE
 			return(0);
 		} else {
-			verbalize("So be it, rogue!"); /* EN verbalize("So be it, rogue!"); */ // TODO DE
+			verbalize("Sei's drum, Schurke!"); /* EN verbalize("So be it, rogue!"); */
 			grd->mpeaceful = 0;
 			return(-1);
 		}
@@ -590,7 +593,7 @@ letknow:
 		} else {
 		    /* just for insurance... */
 		    if (MON_AT(m, n) && m != grd->mx && n != grd->my) {
-			verbalize("Out of my way, scum!"); /* EN verbalize("Out of my way, scum!"); */ // TODO DE
+			verbalize("Steh mir nicht im Weg, du Sack!"); /* EN verbalize("Out of my way, scum!"); */
 			rloc(m_at(m, n));
 		    }
 		    remove_monster(grd->mx, grd->my);
@@ -599,8 +602,8 @@ letknow:
 		    mpickgold(grd);	/* does a newsym */
 		}
 		if(cansee(m,n))
-		    pline("%s%s picks up the gold.", Monnam(grd), /* EN pline("%s%s picks up the gold.", Monnam(grd), */ // TODO DE
-				grd->mpeaceful ? " calms down and" : ""); /* EN grd->mpeaceful ? " calms down and" : ""); */ // TODO DE
+		    pline("%s%s VERB_AUFHEBEN das Gold SATZKLAMMER.", Monnam(grd), /* EN pline("%s%s picks up the gold.", Monnam(grd), */
+				grd->mpeaceful ? " VERB_BERUHIGEN sich und" : ""); /* EN grd->mpeaceful ? " calms down and" : ""); */
 		if(x != grd->mx || y != grd->my) {
 		    remove_monster(grd->mx, grd->my);
 		    newsym(grd->mx, grd->my);
@@ -614,7 +617,7 @@ letknow:
 		}
 	}
 	if(um_dist(grd->mx, grd->my, 1) || egrd->gddone) {
-		if(!egrd->gddone && !rn2(10)) verbalize("Move along!"); /* EN if(!egrd->gddone && !rn2(10)) verbalize("Move along!"); */ // TODO DE
+		if(!egrd->gddone && !rn2(10)) verbalize("Weitergehen!"); /* EN if(!egrd->gddone && !rn2(10)) verbalize("Move along!"); */
 		restfakecorr(grd);
 		return(0);	/* didn't move */
 	}
@@ -723,7 +726,7 @@ cleanup:
 		if(!semi_dead && (in_fcorridor(grd, u.ux, u.uy) ||
 				     cansee(x, y))) {
 		    if (!disappear_msg_seen && see_guard)
-			pline("Suddenly, the %s disappears.", g_monnam(grd)); /* EN pline("Suddenly, the %s disappears.", g_monnam(grd)); */ // TODO DE
+			pline("Plötzlich VERB_VERSCHWINDEN SUBJECT_IM_SATZ ARTIKEL_BESTIMMTER %s.", g_monnam(grd)); /* EN pline("Suddenly, the %s disappears.", g_monnam(grd)); */
 		    return(1);
 		}
 		return(-2);
