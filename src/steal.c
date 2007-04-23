@@ -448,7 +448,7 @@ register struct obj *otmp;
 	attacktype(mtmp->data, AT_ENGL)) {
 	/* this is probably a burning object that you dropped or threw */
 	if (u.uswallow && mtmp == u.ustuck && !Blind)
-	    pline("%s out.", Tobjnam(otmp, "go")); /* EN pline("%s out.", Tobjnam(otmp, "go")); */ // TODO DE
+	    pline("%s SATZKLAMMER.", Tobjnam(otmp, "VERB_AUSGEHEN")); /* EN pline("%s out.", Tobjnam(otmp, "go")); */
 	snuff_otmp = TRUE;
     }
     /* Must do carrying effects on object prior to add_to_minv() */
@@ -566,7 +566,7 @@ boolean is_pet;		/* If true, pet should keep wielded/worn items */
 		if (is_pet && cansee(omx, omy) && flags.verbose)
 			pline("SUBJECT %s VERB_DROP OBJECT %s SATZKLAMMER.", Monnam(mtmp), /* EN  pline("%s drops %s.", Monnam(mtmp), */
 					distant_name(otmp, doname));
-		if (flooreffects(otmp, omx, omy, "fall")) continue; /* EN if (flooreffects(otmp, omx, omy, "fall")) continue; */ // TODO DE
+		if (flooreffects(otmp, omx, omy, "VERB_FALLEN")) continue; /* EN if (flooreffects(otmp, omx, omy, "fall")) continue; */
 		place_object(otmp, omx, omy);
 		stackobj(otmp);
 	}
