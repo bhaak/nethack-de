@@ -375,12 +375,16 @@ START_TEST (test_complete_sentences3) {
 		 "Der Gedanke an Piroschka lässt dich alles vergessen."},
 		{"SUBJECT ARTIKEL_UNBESTIMMTER NOUN_OBJEKT VERB_ERSCHEINEN OBJECT vor KASUS_DATIV PRONOMEN_POSSESSIV NOUN_FOOTs!",
 		 "Ein Objekt erscheint vor deinen Füßen!"},
+		{"Plötzlich VERB_VERSCHWINDEN SUBJECT_IM_SATZ ARTIKEL_BESTIMMTER NOUN_WOLF.",
+		 "Plötzlich verschwindet der Wolf."},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_FALLEN in eine Erdspalte!",
+		 "Du fällst in eine Erdspalte!"},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DOG VERB_ZUHOEREN fröhlich der Musik SATZKLAMMER und VERB_ERSCHEINEN danach ruhiger.",
+		 "Der Hund hört fröhlich der Musik zu und erscheint danach ruhiger."},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_SUCCUBUS VERB_HERANMACHEN sich an OBJECT PRONOMEN_PERSONAL SATZKLAMMER.",
 		 "Der Sukkubus macht sich an dich heran."},
 		{"Seltsamerweise VERB_SICH_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL besser als vorher.",
-		 ""},
-		{"Plötzlich VERB_VERSCHWINDEN SUBJECT_IM_SATZ ARTIKEL_BESTIMMTER NOUN_WOLF.",
-		 "Plötzlich verschwindet der Wolf."},
+		 "Seltsamerweise fühlst du dich besser als vorher."},
 
 	};
 

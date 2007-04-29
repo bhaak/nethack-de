@@ -123,12 +123,12 @@ int distance;
 		newsym(mtmp->mx, mtmp->my);
 		if (canseemon(mtmp)) {
 		    if (!could_see_mon)
-			You("notice %s, swaying with the music.", /* EN You("notice %s, swaying with the music.", */ // TODO DE
+			You("VERB_BEMERKEN OBJECT %s, die sich zur Musik bewegt.", /* EN You("notice %s, swaying with the music.", */
 			    a_monnam(mtmp));
 		    else
-			pline("%s freezes, then sways with the music%s.", /* EN pline("%s freezes, then sways with the music%s.", */ // TODO DE
+			pline("%s VERB_ERSTARREN, dann VERB_WIEGEN sie sich zur Musik%s.", /* EN pline("%s freezes, then sways with the music%s.", */
 			      Monnam(mtmp),
-			      was_peaceful ? "" : ", and now seems quieter"); /* EN was_peaceful ? "" : ", and now seems quieter"); */ // TODO DE
+			      was_peaceful ? "" : " und VERB_SCHEINEN jetzt ruhiger"); /* EN was_peaceful ? "" : ", and now seems quieter"); */
 		}
 	    }
 	    mtmp = mtmp->nmon;
@@ -153,7 +153,7 @@ int distance;
 		mtmp->mavenge = 0;
 		if (canseemon(mtmp))
 		    pline(
-		     "%s listens cheerfully to the music, then seems quieter.", /* EN "%s listens cheerfully to the music, then seems quieter.", */ // TODO DE
+		     "%s VERB_ZUHOEREN fröhlich der Musik SATZKLAMMER und VERB_ERSCHEINEN danach ruhiger.", /* EN "%s listens cheerfully to the music, then seems quieter.", */
 			  Monnam(mtmp));
 	    }
 	    mtmp = mtmp->nmon;
@@ -239,9 +239,9 @@ int force;
 			pline("%s is shaken loose from the ceiling!", /* EN pline("%s is shaken loose from the ceiling!", */ // TODO DE
 							    Amonnam(mtmp));
 		    else
-			You_hear("a thumping sound."); /* EN You_hear("a thumping sound."); */ // TODO DE
+			You_hear("ein dumpfes Geräusch."); /* EN You_hear("a thumping sound."); */
 		    if (x==u.ux && y==u.uy)
-			You("easily dodge the falling %s.", /* EN You("easily dodge the falling %s.", */ // TODO DE
+			You("VERB_AUSWEICHEN problemlos OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_FALLEND %s SATZKLAMMER.", /* EN You("easily dodge the falling %s.", */
 							    mon_nam(mtmp));
 		    newsym(x,y);
 		}
@@ -249,27 +249,27 @@ int force;
 	    if (!rn2(14 - force)) switch (levl[x][y].typ) {
 		  case FOUNTAIN : /* Make the fountain disappear */
 			if (cansee(x,y))
-				pline_The("fountain falls into a chasm."); /* EN pline_The("fountain falls into a chasm."); */ // TODO DE
+				pline_The("NOUN_FOUNTAIN fällt in eine Erdspalte."); /* EN pline_The("fountain falls into a chasm."); */
 			goto do_pit;
 #ifdef SINKS
 		  case SINK :
 			if (cansee(x,y))
-				pline_The("kitchen sink falls into a chasm."); /* EN pline_The("kitchen sink falls into a chasm."); */ // TODO DE
+				pline("Das Spülbecken fällt in eine Erdspalte."); /* EN pline_The("kitchen sink falls into a chasm."); */
 			goto do_pit;
 #endif
 		  case ALTAR :
 			if (Is_astralevel(&u.uz) || Is_sanctum(&u.uz)) break;
 
 			if (cansee(x,y))
-				pline_The("altar falls into a chasm."); /* EN pline_The("altar falls into a chasm."); */ // TODO DE
+				pline_The("NOUN_ALTAR fällt in eine Erdspalte."); /* EN pline_The("altar falls into a chasm."); */
 			goto do_pit;
 		  case GRAVE :
 			if (cansee(x,y))
-				pline_The("headstone topples into a chasm."); /* EN pline_The("headstone topples into a chasm."); */ // TODO DE
+				pline_The("NOUN_HEADSTONE VERB_STUERZEN in eine Erdspalte."); /* EN pline_The("headstone topples into a chasm."); */
 			goto do_pit;
 		  case THRONE :
 			if (cansee(x,y))
-				pline_The("throne falls into a chasm."); /* EN pline_The("throne falls into a chasm."); */ // TODO DE
+				pline_The("NOUN_THRONE fällt in eine Erdspalte."); /* EN pline_The("throne falls into a chasm."); */
 			/* Falls into next case */
 		  case ROOM :
 		  case CORR : /* Try to make a pit */
@@ -283,8 +283,8 @@ do_pit:		    chasm = maketrap(x,y,PIT);
 
 		    if ((otmp = sobj_at(BOULDER, x, y)) != 0) {
 			if (cansee(x, y))
-			   pline("KADOOM! The boulder falls into a chasm%s!", /* EN pline("KADOOM! The boulder falls into a chasm%s!", */ // TODO DE
-			      ((x == u.ux) && (y == u.uy)) ? " below you" : ""); /* EN ((x == u.ux) && (y == u.uy)) ? " below you" : ""); */ // TODO DE
+			   pline("KARACH! Der Felsbrocken fällt in eine Erdspalte%s!", /* EN pline("KADOOM! The boulder falls into a chasm%s!", */
+			      ((x == u.ux) && (y == u.uy)) ? " unter KASUS_DATIV PRONOMEN_PERSONAL" : ""); /* EN ((x == u.ux) && (y == u.uy)) ? " below you" : ""); */
 			if (mtmp)
 				mtmp->mtrapped = 0;
 			obj_extract_self(otmp);
@@ -299,9 +299,9 @@ do_pit:		    chasm = maketrap(x,y,PIT);
 			if(!is_flyer(mtmp->data) && !is_clinger(mtmp->data)) {
 			    mtmp->mtrapped = 1;
 			    if(cansee(x,y))
-				pline("%s falls into a chasm!", Monnam(mtmp)); /* EN pline("%s falls into a chasm!", Monnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s fällt in eine Erdspalte!", Monnam(mtmp)); /* EN pline("%s falls into a chasm!", Monnam(mtmp)); */
 			    else if (flags.soundok && humanoid(mtmp->data))
-				You_hear("a scream!"); /* EN You_hear("a scream!"); */ // TODO DE
+				You_hear("einen Schrei!"); /* EN You_hear("a scream!"); */
 			    mselftouch(mtmp, "Falling, ", TRUE); /* EN mselftouch(mtmp, "Falling, ", TRUE); */ // TODO DE
 			    if (mtmp->mhp > 0)
 				if ((mtmp->mhp -= rnd(6)) <= 0) {
@@ -319,13 +319,13 @@ do_pit:		    chasm = maketrap(x,y,PIT);
 		    } else if (x == u.ux && y == u.uy) {
 			    if (Levitation || Flying ||
 						is_clinger(youmonst.data)) {
-				    pline("A chasm opens up under you!"); /* EN pline("A chasm opens up under you!"); */ // TODO DE
-				    You("don't fall in!"); /* EN You("don't fall in!"); */ // TODO DE
+				    pline("Eine Erdspalte öffnet sich unter KASUS_DATIV PRONOMEN_PERSONAL!"); /* EN pline("A chasm opens up under you!"); */
+				    You("VERB_FALLEN nicht hinein!"); /* EN You("don't fall in!"); */
 			    } else {
-				    You("fall into a chasm!"); /* EN You("fall into a chasm!"); */ // TODO DE
+				    You("VERB_FALLEN in eine Erdspalte!"); /* EN You("fall into a chasm!"); */
 				    u.utrap = rn1(6,2);
 				    u.utraptype = TT_PIT;
-				    losehp(rnd(6),"fell into a chasm", /* EN losehp(rnd(6),"fell into a chasm", */ // TODO DE
+				    losehp(rnd(6),"fiel in eine Erdspalte", /* EN losehp(rnd(6),"fell into a chasm", */
 					NO_KILLER_PREFIX);
 				    selftouch("Falling, you"); /* EN selftouch("Falling, you"); */ // TODO DE
 			    }
@@ -379,7 +379,7 @@ struct obj *instr;
 	if (!do_spec)
 	    pline("What you produce is quite far from music..."); /* EN pline("What you produce is quite far from music..."); */ // TODO DE
 	else
-	    You("start playing %s.", the(xname(instr))); /* EN You("start playing %s.", the(xname(instr))); */ // TODO DE
+	    You("VERB_SPIELEN OBJECT %s.", the(xname(instr))); /* EN You("start playing %s.", the(xname(instr))); */
 
 	switch (instr->otyp) {
 	case MAGIC_FLUTE:		/* Make monster fall asleep */
@@ -439,8 +439,8 @@ struct obj *instr;
 	    } /* else FALLTHRU */
 	case WOODEN_HARP:		/* May calm Nymph */
 	    do_spec &= (rn2(ACURR(A_DEX)) + u.ulevel > 25);
-	    pline("%s %s.", The(xname(instr)),
-		  do_spec ? "produces a lilting melody" : "twangs"); /* EN do_spec ? "produces a lilting melody" : "twangs"); */ // TODO DE
+	    You("%s.", /* EN pline("%s %s.", The(xname(instr)), */
+		  do_spec ? "VERB_TRAELLERN eine kleine Melodie" : "VERB_KLIMPERN nur"); /* EN do_spec ? "produces a lilting melody" : "twangs"); */
 	    if (do_spec) calm_nymphs(u.ulevel * 3);
 	    exercise(A_DEX, TRUE);
 	    break;
@@ -448,8 +448,8 @@ struct obj *instr;
 	    if (do_spec && instr->spe > 0) {
 		consume_obj_charge(instr, TRUE);
 
-		You("produce a heavy, thunderous rolling!"); /* EN You("produce a heavy, thunderous rolling!"); */ // TODO DE
-		pline_The("entire dungeon is shaking around you!"); /* EN pline_The("entire dungeon is shaking around you!"); */ // TODO DE
+		You("VERB_VERURSACHEN ein gewaltiges Donnern!"); /* EN You("produce a heavy, thunderous rolling!"); */
+		pline_The("gesamte Grotte/Kaverne is shaking around you!"); /* EN pline_The("entire dungeon is shaking around you!"); */ // TODO DE
 		do_earthquake((u.ulevel - 1) / 3 + 1);
 		/* shake up monsters in a much larger radius... */
 		awaken_monsters(ROWNO * COLNO);
@@ -457,7 +457,7 @@ struct obj *instr;
 		break;
 	    } /* else FALLTHRU */
 	case LEATHER_DRUM:		/* Awaken monsters */
-	    You("beat a deafening row!"); /* EN You("beat a deafening row!"); */ // TODO DE
+	    You("VERB_MACHEN einen ohrenbetäubenden Krach!"); /* EN You("beat a deafening row!"); */
 	    awaken_monsters(u.ulevel * 40);
 	    exercise(A_WIS, FALSE);
 	    break;
@@ -482,14 +482,14 @@ struct obj *instr;
     boolean ok;
 
     if (Underwater) {
-	You_cant("play music underwater!"); /* EN You_cant("play music underwater!"); */ // TODO DE
+	You_cant(" unter Wasser musizieren!"); /* EN You_cant("play music underwater!"); */
 	return(0);
     }
     if (instr->otyp != LEATHER_DRUM && instr->otyp != DRUM_OF_EARTHQUAKE) {
-	c = yn("Improvise?"); /* EN c = yn("Improvise?"); */ // TODO DE
+	c = yn("Improvisieren?"); /* EN c = yn("Improvise?"); */ 
     }
     if (c == 'n') {
-	if (u.uevent.uheard_tune == 2 && yn("Play the passtune?") == 'y') { /* EN if (u.uevent.uheard_tune == 2 && yn("Play the passtune?") == 'y') { */ // TODO DE
+	if (u.uevent.uheard_tune == 2 && yn("Die Kennmelodie spielen?") == 'y') { /* EN if (u.uevent.uheard_tune == 2 && yn("Play the passtune?") == 'y') { */
 	    Strcpy(buf, tune);
 	} else {
 	    getlin("What tune are you playing? [5 notes, A-G]", buf); /* EN getlin("What tune are you playing? [5 notes, A-G]", buf); */ // TODO DE
