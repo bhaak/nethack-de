@@ -53,21 +53,21 @@ boolean undirected;
 	    const char *point_msg;  /* spellcasting monsters are impolite */
 
 	    if (undirected)
-		point_msg = "all around, then curses"; /* EN point_msg = "all around, then curses"; */ // TODO DE
+		point_msg = "rundherum, worauf er flucht"; /* EN point_msg = "all around, then curses"; */
 	    else if ((Invis && !perceives(mtmp->data) &&
 			(mtmp->mux != u.ux || mtmp->muy != u.uy)) ||
 		    (youmonst.m_ap_type == M_AP_OBJECT &&
 			youmonst.mappearance == STRANGE_OBJECT) ||
 		    u.uundetected)
-		point_msg = "and curses in your general direction"; /* EN point_msg = "and curses in your general direction"; */ // TODO DE
+		point_msg = "und VERB_FLUCHEN OBJECT KASUS_GENITIV in PRONOMEN_PERSONAL NOUN_RICHTUNG"; /* EN point_msg = "and curses in your general direction"; */
 	    else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
-		point_msg = "and curses at your displaced image"; /* EN point_msg = "and curses at your displaced image"; */ // TODO DE
+		point_msg = "auf PRONOMEN_PERSONAL und VERB_VERFLUCHEN PRONOMEN_POSSESSIV displaced NOUN_BILD"; /* EN point_msg = "and curses at your displaced image"; */ // TODO DE
 	    else
-		point_msg = "at you, then curses"; /* EN point_msg = "at you, then curses"; */ // TODO DE
+		point_msg = "auf PRONOMEN_PERSONAL, worauf er flucht"; /* EN point_msg = "at you, then curses"; */
 
-	    pline("%s points %s.", Monnam(mtmp), point_msg); /* EN pline("%s points %s.", Monnam(mtmp), point_msg); */ // TODO DE
+	    pline("%s VERB_DEUTEN OBJECT %s.", Monnam(mtmp), point_msg); /* EN pline("%s points %s.", Monnam(mtmp), point_msg); */
 	} else if ((!(moves % 4) || !rn2(4))) {
-	    if (flags.soundok) Norep("You hear a mumbled curse."); /* EN if (flags.soundok) Norep("You hear a mumbled curse."); */ // TODO DE
+	    if (flags.soundok) Norep("SUBJECT PRONOMEN_PERSONAL VERB_HOEREN einen gemurmelten Fluch."); /* EN if (flags.soundok) Norep("You hear a mumbled curse."); */
 	}
 }
 
@@ -221,29 +221,29 @@ castmu(mtmp, mattk, thinks_it_foundyou, foundyou)
 	   penalizing mspec_used. */
 	if (!foundyou && thinks_it_foundyou &&
 		!is_undirected_spell(mattk->adtyp, spellnum)) {
-	    pline("%s casts a spell at %s!", /* EN pline("%s casts a spell at %s!", */ // TODO DE
-		canseemon(mtmp) ? Monnam(mtmp) : "Something", /* EN canseemon(mtmp) ? Monnam(mtmp) : "Something", */ // TODO DE
+	    pline("SUBJECT %s VERB_WIRKEN einen Zauberspruch gegen %s!", /* EN pline("%s casts a spell at %s!", */
+		canseemon(mtmp) ? Monnam(mtmp) : "NOUN_ETWAS", /* EN canseemon(mtmp) ? Monnam(mtmp) : "Something", */
 		levl[mtmp->mux][mtmp->muy].typ == WATER
-		    ? "empty water" : "thin air"); /* EN ? "empty water" : "thin air"); */ // TODO DE
+		    ? "leeres Wasser" : "thin air"); /* EN ? "empty water" : "thin air"); */ // TODO DE
 	    return(0);
 	}
 
 	nomul(0);
 	if(rn2(ml*10) < (mtmp->mconf ? 100 : 20)) {	/* fumbled attack */
 	    if (canseemon(mtmp) && flags.soundok)
-		pline_The("air crackles around %s.", mon_nam(mtmp)); /* EN pline_The("air crackles around %s.", mon_nam(mtmp)); */ // TODO DE
+		pline_The("NOUN_AIR VERB_KNISTERN OBJECT rund um %s.", mon_nam(mtmp)); /* EN pline_The("air crackles around %s.", mon_nam(mtmp)); */
 	    return(0);
 	}
 	if (canspotmon(mtmp) || !is_undirected_spell(mattk->adtyp, spellnum)) {
-	    pline("%s casts a spell%s!", /* EN pline("%s casts a spell%s!", */ // TODO DE
-		  canspotmon(mtmp) ? Monnam(mtmp) : "Something", /* EN canspotmon(mtmp) ? Monnam(mtmp) : "Something", */ // TODO DE
+	    pline("SUBJECT %s VERB_WIRKEN einen Zauberspruch%s!", /* EN pline("%s casts a spell%s!", */
+		  canspotmon(mtmp) ? Monnam(mtmp) : "NOUN_ETWAS", /* EN canspotmon(mtmp) ? Monnam(mtmp) : "Something", */
 		  is_undirected_spell(mattk->adtyp, spellnum) ? "" :
 		  (Invisible && !perceives(mtmp->data) && 
 		   (mtmp->mux != u.ux || mtmp->muy != u.uy)) ?
-		  " at a spot near you" : /* EN " at a spot near you" : */ // TODO DE
+		  " gegen einen Punkt OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL" : /* EN " at a spot near you" : */
 		  (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy)) ?
-		  " at your displaced image" : /* EN " at your displaced image" : */ // TODO DE
-		  " at you"); /* EN " at you"); */ // TODO DE
+		  " OBJECT gegen PRONOMEN_POSSESSIV displaced NOUN_BILD" : /* EN " at your displaced image" : */ // TODO DE
+		  " OBJECT gegen PRONOMEN_PERSONAL"); /* EN " at you"); */
 	}
 
 /*
@@ -330,12 +330,12 @@ int spellnum;
 
     switch (spellnum) {
     case MGC_DEATH_TOUCH:
-	pline("Oh no, %s's using the touch of death!", mhe(mtmp)); /* EN pline("Oh no, %s's using the touch of death!", mhe(mtmp)); */ // TODO DE
+	pline("Oh nein, SUBJECT_IM_SATZ %s VERB_BENUTZEN the touch of death!", mhe(mtmp)); /* EN pline("Oh no, %s's using the touch of death!", mhe(mtmp)); */ // TODO DE
 	if (nonliving(youmonst.data) || is_demon(youmonst.data)) {
-	    You("seem no deader than before."); /* EN You("seem no deader than before."); */ // TODO DE
+	    You("VERB_SCHEINEN nicht toter als zuvor."); /* EN You("seem no deader than before."); */
 	} else if (!Antimagic && rn2(mtmp->m_lev) > 12) {
 	    if (Hallucination) {
-		You("have an out of body experience."); /* EN You("have an out of body experience."); */ // TODO DE
+		You("VERB_HAVE eine außerkörperliche Erfahrung."); /* EN You("have an out of body experience."); */
 	    } else {
 		killer_format = KILLED_BY_AN;
 		killer = "touch of death"; /* EN killer = "touch of death"; */ // TODO DE
@@ -343,7 +343,7 @@ int spellnum;
 	    }
 	} else {
 	    if (Antimagic) shieldeff(u.ux, u.uy);
-	    pline("Lucky for you, it didn't work!"); /* EN pline("Lucky for you, it didn't work!"); */ // TODO DE
+	    pline("Dein Glück, hat nicht geklappt!"); /* EN pline("Lucky for you, it didn't work!"); */
 	}
 	dmg = 0;
 	break;
@@ -458,7 +458,7 @@ int spellnum;
 	    dmg = (dmg + 1) / 2;
 	}
 	if (dmg <= 5)
-	    You("get a slight %sache.", body_part(HEAD)); /* EN You("get a slight %sache.", body_part(HEAD)); */ // TODO DE
+	    You("VERB_BEKOMMEN OBJECT ADJEKTIV_LEICHT %sSCHMERZEN.", body_part(HEAD)); /* EN You("get a slight %sache.", body_part(HEAD)); */
 	else if (dmg <= 10)
 	    Your("brain is on fire!"); /* EN Your("brain is on fire!"); */ // TODO DE
 	else if (dmg <= 20)

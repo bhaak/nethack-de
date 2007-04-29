@@ -467,6 +467,13 @@ def ausgabe_verbs
     konjugiere_verb("VERB_WUENSCHEN","wünsch"),
     konjugiere_verb("VERB_VERURSACHEN","verursach"),
     konjugiere_verb("VERB_SPIELEN","spiel"),
+    konjugiere_verb("VERB_ENTLOCKEN","entlock"),
+    konjugiere_verb("VERB_ERZEUGEN","erzeug"),
+    konjugiere_verb("VERB_ERTRINKEN","ertrink"),
+    konjugiere_verb("VERB_DEUTEN","deut"),
+    konjugiere_verb("VERB_FLUCHEN","fluch"),
+    konjugiere_verb("VERB_VERFLUCHEN","verfluch"),
+    konjugiere_verb("VERB_JUCKEN","juck"),
     "",
     "/* unregelmässige Verben */",
     Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
@@ -524,6 +531,8 @@ def ausgabe_verbs
     Verb.new("VERB_KLIMPERN", "", "", ["klimperst", "klimpert", "klimpert", "klimpern"]),
     Verb.new("VERB_ZUHOEREN", "", "zu", ["hörst", "hört", "hört","hören"]),
     Verb.new("VERB_HERANMACHEN", "", "heran", ["machst", "macht", "macht","machen"]),
+    Verb.new("VERB_LAUFEN", "", "", ["läufst", "läuft", "lauft","laufen"]),
+    Verb.new("VERB_KNISTERN", "", "", ["knisterst", "knistert", "knistert","knistern"]),
   ].each { |v|   
     if v.is_a? String then
       puts v
@@ -1805,7 +1814,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_VIOLET_FUNGUS", "violett", "Pilz", "es", "Pilz", "e", "maskulin", ""),
     dekliniere_substantiv("NOUN_GNOME", "Gnom", "en", "Gnom", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_GNOME_LORD","Gnomenfürst","en","Gnomenfürst","en","maskulin", "en"),
-    #dekliniere_substantiv("NOUN_GNOMISH_WIZARD"
+    dekliniere_substantiv("NOUN_GNOMISH_WIZARD", "Gnomenzauberer", "s", "Gnomenzauberer", "", "maskulin"),
     dekliniere_substantiv("NOUN_GNOME_KING","Gnomenkönig","es","Gnomenkönig","e","maskulin"),
     dekliniere_substantiv("NOUN_GIANT",       "Riese", "en", "Riese", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_STONE_GIANT", "Steinriese", "en", "Steinriese", "en", "maskulin", "n"),
@@ -2111,6 +2120,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_QUICKNESS", "Schnelligkeit", "", "Schnelligkeit", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_BLUT", "Blut", "es", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_SAEURE", "Säure", "", "Säure", "en", "feminin"),
+    dekliniere_substantiv("NOUN_RICHTUNG", "Richtung", "", "Richtung", "en", "feminin"),
+    dekliniere_substantiv("NOUN_BILD", "Bild", "es", "Bild", "er", "neutrum"),
     "",
     dekliniere_substantiv("NOUN_BOLT", "Blitz", "es", "Blitz", "e", "maskulin"),
     dekliniere_substantiv("NOUN_BOLT_OF_FIRE", "Feuerblitz", "es", "Feuerblitz", "e", "maskulin"),
@@ -2164,6 +2175,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HEADSTONE","Grabstein","es","Grabstein","e","maskulin"),
     dekliniere_substantiv("NOUN_THRONE","Thron","es","Thron","e","maskulin"),
 
+    dekliniere_substantiv("NOUN_THRONE","Thron","es","Thron","e","maskulin"),
+
+    dekliniere_substantiv("NOUN_HEADSCHMERZEN","Kopfschmerzen","es","Kopfschmerzen","en","maskulin"),
+
     "/* ======================================================= */",
     "/* Adjektive */",
     "/* ======================================================= */",
@@ -2182,6 +2197,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_ELEKTRISCH","elektrisch"),
     dekliniere_adjektiv("ADJEKTIV_FLUESSIG","flüssig"),
     dekliniere_adjektiv("ADJEKTIV_FEST","fest"),
+    dekliniere_adjektiv("ADJEKTIV_LEICHT","leicht"),
     "",
     "/* 'andere' ist eigentlich ein Pronomen, wird aber wie ein Adjektiv dekliniert */",
     dekliniere_adjektiv("ADJEKTIV_ANDERE","ander"),
