@@ -334,7 +334,7 @@ do_pit:		    chasm = maketrap(x,y,PIT);
 		  case DOOR : /* Make the door collapse */
 		    if (levl[x][y].doormask == D_NODOOR) goto do_pit;
 		    if (cansee(x,y))
-			pline_The("door collapses."); /* EN pline_The("door collapses."); */ // TODO DE
+			pline("Die Tür fällt auseinander."); /* EN pline_The("door collapses."); */
 		    if (*in_rooms(x, y, SHOPBASE))
 			add_damage(x, y, 0L);
 		    levl[x][y].doormask = D_NODOOR;
@@ -419,7 +419,7 @@ struct obj *instr;
 		break;
 	    } /* else FALLTHRU */
 	case TOOLED_HORN:		/* Awaken or scare monsters */
-	    You("produce a frightful, grave sound."); /* EN You("produce a frightful, grave sound."); */ // TODO DE
+	    You("VERB_ERZEUGEN a frightful, grave sound."); /* EN You("produce a frightful, grave sound."); */ // TODO DE
 	    awaken_monsters(u.ulevel * 30);
 	    exercise(A_WIS, FALSE);
 	    break;
@@ -432,7 +432,7 @@ struct obj *instr;
 	    if (do_spec && instr->spe > 0) {
 		consume_obj_charge(instr, TRUE);
 
-		pline("%s very attractive music.", Tobjnam(instr, "produce")); /* EN pline("%s very attractive music.", Tobjnam(instr, "produce")); */ // TODO DE
+		You("VERB_ENTLOCKEN OBJECT KASUS_DATIV %s äusserst angenehme Musik.",the(xname(instr))); /* EN pline("%s very attractive music.", Tobjnam(instr, "produce")); */
 		charm_monsters((u.ulevel - 1) / 3 + 1);
 		exercise(A_DEX, TRUE);
 		break;
@@ -482,7 +482,7 @@ struct obj *instr;
     boolean ok;
 
     if (Underwater) {
-	You_cant(" unter Wasser musizieren!"); /* EN You_cant("play music underwater!"); */
+	You_cant("unter Wasser musizieren!"); /* EN You_cant("play music underwater!"); */
 	return(0);
     }
     if (instr->otyp != LEATHER_DRUM && instr->otyp != DRUM_OF_EARTHQUAKE) {

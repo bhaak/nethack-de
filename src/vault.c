@@ -54,7 +54,7 @@ register boolean forceshow;
 	}
 	if(grd->mhp <= 0) {
 	    pline_The("corridor disappears."); /* EN pline_The("corridor disappears."); */ // TODO DE
-	    if(IS_ROCK(levl[u.ux][u.uy].typ)) You("VERB_SEIN in Stein eingeschlossen."); /* EN if(IS_ROCK(levl[u.ux][u.uy].typ)) You("are encased in rock."); */
+	    if(IS_ROCK(levl[u.ux][u.uy].typ)) You("VERB_SEIN in Stein eingeschlossen worden."); /* EN if(IS_ROCK(levl[u.ux][u.uy].typ)) You("are encased in rock."); */
 	}
 	return(TRUE);
 }

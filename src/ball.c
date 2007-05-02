@@ -29,14 +29,14 @@ ballfall()
 	}
 	if(gets_hit){
 		int dmg = rn1(7,25);
-		pline_The("iron ball falls on your %s.", /* EN pline_The("iron ball falls on your %s.", */ // TODO DE
+		pline_The("NOUN_IRON_BALL VERB_FALLEN OBJECT auf PRONOMEN_POSSESSIV %s.", /* EN pline_The("iron ball falls on your %s.", */
 			body_part(HEAD));
 		if (uarmh) {
 		    if(is_metallic(uarmh)) {
-			pline("Fortunately, you are wearing a hard helmet."); /* EN pline("Fortunately, you are wearing a hard helmet."); */ // TODO DE
+			pline("Glücklicherweise VERB_TRAGEN SUBJECT PRONOMEN_PERSONAL einen hard helmet."); /* EN pline("Fortunately, you are wearing a hard helmet."); */ // TODO DE
 			dmg = 3;
 		    } else if (flags.verbose)
-			Your("%s does not protect you.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */ // TODO DE
+			Your("%s VERB_SCHUETZEN OBJECT PRONOMEN_PERSONAL nicht.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */
 		}
 		losehp(dmg, "crunched in the head by an iron ball", /* EN losehp(dmg, "crunched in the head by an iron ball", */ // TODO DE
 			NO_KILLER_PREFIX);

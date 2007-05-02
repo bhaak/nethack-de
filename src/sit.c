@@ -217,7 +217,7 @@ dosit()
 			break;
 		    case 9:
 			pline("Eine Stimme ertönt:"); /* EN pline("A voice echoes:"); */
-	verbalize("A curse upon thee for sitting upon this most holy throne!"); /* EN verbalize("A curse upon thee for sitting upon this most holy throne!"); */ // TODO DE
+	verbalize("Sei verflucht for sitting upon this most holy throne!"); /* EN verbalize("A curse upon thee for sitting upon this most holy throne!"); */ // TODO DE
 			if (Luck > 0)  {
 			    make_blinded(Blinded + rn1(100,250),TRUE);
 			} else	    rndcurse();

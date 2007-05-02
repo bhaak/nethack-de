@@ -78,13 +78,13 @@ STATIC_OVL NEARDATA const char allobj[] = {
 STATIC_OVL boolean force_save_hs = FALSE;
 
 const char *hu_stat[] = {
-	"Satiated", /* EN "Satiated", */ // TODO DE
-	"        ", /* EN "        ", */ // TODO DE
-	"Hungry  ", /* EN "Hungry  ", */ // TODO DE
-	"Weak    ", /* EN "Weak    ", */ // TODO DE
-	"Fainting", /* EN "Fainting", */ // TODO DE
-	"Fainted ", /* EN "Fainted ", */ // TODO DE
-	"Starved "  /* EN "Starved "  */ // TODO DE
+	"satt        ", /* EN "Satiated", */
+	"            ", /* EN "        ", */
+	"hungrig     ", /* EN "Hungry  ", */
+	"flau        ", /* EN "Weak    ", */
+	"kollabierend", /* EN "Fainting", */
+	"bewusstlos  ", /* EN "Fainted ", */
+	"verhungert  "  /* EN "Starved "  */
 };
 
 #endif /* OVLB */
@@ -2419,9 +2419,9 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 	    if (youmonst.data != &mons[PM_RUST_MONSTER] &&
 		(gold = g_at(u.ux, u.uy)) != 0) {
 		if (gold->quan == 1L)
-		    Sprintf(qbuf, "There is 1 gold piece here; eat it?"); /* EN Sprintf(qbuf, "There is 1 gold piece here; eat it?"); */ // TODO DE
+		    Sprintf(qbuf, "Hier liegt 1 Goldstück; es essen?"); /* EN Sprintf(qbuf, "There is 1 gold piece here; eat it?"); */
 		else
-		    Sprintf(qbuf, "There are %ld gold pieces here; eat them?", /* EN Sprintf(qbuf, "There are %ld gold pieces here; eat them?", */ // TODO DE
+		    Sprintf(qbuf, "Hier liegen %ld Goldstücke; sie essen?", /* EN Sprintf(qbuf, "There are %ld gold pieces here; eat them?", */
 			    gold->quan);
 		if ((c = yn_function(qbuf, ynqchars, 'n')) == 'y') {
 		    return gold;

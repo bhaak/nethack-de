@@ -1004,7 +1004,7 @@ int thrown;
 		   && mon->mhp > 1 && !thrown && !mon->mcan
 		   /* && !destroyed  -- guaranteed by mhp > 1 */ ) {
 		if (clone_mon(mon)) {
-			pline("%s divides as you hit it!", Monnam(mon)); /* EN pline("%s divides as you hit it!", Monnam(mon)); */ // TODO DE
+			pline("%s teilt sich als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL es VERB_HIT!", Monnam(mon)); /* EN pline("%s divides as you hit it!", Monnam(mon)); */
 			hittxt = TRUE;
 		}
 	}

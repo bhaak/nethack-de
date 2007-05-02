@@ -182,7 +182,7 @@ int rx, ry, *resp;
 		    (rx == u.ux && ry == u.uy) ? "this" : "that");
 	    } else {
 		ttmp = t_at(rx, ry);
-		pline("%s VERB_SCHEINEN in %s Gesundheit for a statue.", /* EN pline("%s appears to be in %s health for a statue.", */ // TODO DE
+		pline("%s VERB_SCHEINEN für eine Statue bei %s Gesundheit zu sein.", /* EN pline("%s appears to be in %s health for a statue.", */
 		      The(mons[otmp->corpsenm].mname),
 		      (ttmp && ttmp->ttyp == STATUE_TRAP) ?
 			"extraordinary" : "excellent"); /* EN "extraordinary" : "excellent"); */ // TODO DE

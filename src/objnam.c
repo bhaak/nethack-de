@@ -555,7 +555,7 @@ char *prefix;
 			case 2:	Strcat(prefix, "very "); break; /* EN case 2:	Strcat(prefix, "very "); break; */ // TODO DE
 			case 3:	Strcat(prefix, "thoroughly "); break; /* EN case 3:	Strcat(prefix, "thoroughly "); break; */ // TODO DE
 		}			
-		Strcat(prefix, is_rustprone(obj) ? "rusty " : "burnt "); /* EN Strcat(prefix, is_rustprone(obj) ? "rusty " : "burnt "); */ // TODO DE
+		Strcat(prefix, is_rustprone(obj) ? "ADJEKTIV_ROSTIG " : "ADJEKTIV_ANGESENGT "); /* EN Strcat(prefix, is_rustprone(obj) ? "rusty " : "burnt "); */
 	}
 	if (obj->oeroded2 && !iscrys) {
 		switch (obj->oeroded2) {
@@ -2469,7 +2469,7 @@ srch:
 		}
 		if(!BSTRCMP(bp, p-6, "throne")) { /* EN if(!BSTRCMP(bp, p-6, "throne")) { */ // TODO DE
 			levl[u.ux][u.uy].typ = THRONE;
-			pline("A throne."); /* EN pline("A throne."); */ // TODO DE
+			pline("ARTIKEL_UNBESTIMMTER NOUN_THRONE."); /* EN pline("A throne."); */ // TODO DE
 			newsym(u.ux, u.uy);
 			return(&zeroobj);
 		}
@@ -2477,7 +2477,7 @@ srch:
 		if(!BSTRCMP(bp, p-4, "sink")) { /* EN if(!BSTRCMP(bp, p-4, "sink")) { */ // TODO DE
 			levl[u.ux][u.uy].typ = SINK;
 			level.flags.nsinks++;
-			pline("A sink."); /* EN pline("A sink."); */ // TODO DE
+			pline("ARTIKEL_UNBESTIMMTER NOUN_SINK."); /* EN pline("A sink."); */ // TODO DE
 			newsym(u.ux, u.uy);
 			return &zeroobj;
 		}
@@ -2515,7 +2515,7 @@ srch:
 		    else /* -1 - A_CHAOTIC, 0 - A_NEUTRAL, 1 - A_LAWFUL */
 			al = (!rn2(6)) ? A_NONE : rn2((int)A_LAWFUL+2) - 1;
 		    levl[u.ux][u.uy].altarmask = Align2amask( al );
-		    pline("%s altar.", An(align_str(al)));
+		    pline("%s NOUN_ALTAR.", An(align_str(al)));
 		    newsym(u.ux, u.uy);
 		    return(&zeroobj);
 		}

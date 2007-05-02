@@ -480,7 +480,7 @@ boolean pets_only;	/* true for ascension or final escape */
 		stay_behind = FALSE;
 		if (mtmp->mtame && mtmp->meating) {
 			if (canseemon(mtmp))
-			    pline("%s is still eating.", Monnam(mtmp)); /* EN pline("%s is still eating.", Monnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s VERB_ESSEN immer noch.", Monnam(mtmp)); /* EN pline("%s is still eating.", Monnam(mtmp)); */
 			stay_behind = TRUE;
 		} else if (mon_has_amulet(mtmp)) {
 			if (canseemon(mtmp))

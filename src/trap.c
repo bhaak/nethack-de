@@ -2821,12 +2821,12 @@ drown()
 	}
 
 	if (!u.uinwater) {
-	    You("%s into the water%c", /* EN You("%s into the water%c", */ // TODO DE
-		Is_waterlevel(&u.uz) ? "plunge" : "fall", /* EN Is_waterlevel(&u.uz) ? "plunge" : "fall", */ // TODO DE
+	    You("%s ins Wasser%c", /* EN You("%s into the water%c", */
+		Is_waterlevel(&u.uz) ? "VERB_TAUCHEN" : "VERB_FALLEN", /* EN Is_waterlevel(&u.uz) ? "plunge" : "fall", */
 		Amphibious || Swimming ? '.' : '!');
 	    if (!Swimming && !Is_waterlevel(&u.uz))
-		    You("sink like %s.", /* EN You("sink like %s.", */ // TODO DE
-			Hallucination ? "the Titanic" : "a rock"); /* EN Hallucination ? "the Titanic" : "a rock"); */ // TODO DE
+		    You("VERB_SINKEN wie %s.", /* EN You("sink like %s.", */
+			Hallucination ? "die Titanic" : "ein Stein"); /* EN Hallucination ? "the Titanic" : "a rock"); */
 	}
 
 	water_damage(invent, FALSE, FALSE);
@@ -2834,7 +2834,7 @@ drown()
 	if (u.umonnum == PM_GREMLIN && rn2(3))
 	    (void)split_mon(&youmonst, (struct monst *)0);
 	else if (u.umonnum == PM_IRON_GOLEM) {
-	    You("rust!"); /* EN You("rust!"); */ // TODO DE
+	    You("VERB_ROSTEN!"); /* EN You("rust!"); */
 	    i = d(2,6);
 	    if (u.mhmax > i) u.mhmax -= i;
 	    losehp(i, "rusting away", KILLED_BY); /* EN losehp(i, "rusting away", KILLED_BY); */ // TODO DE

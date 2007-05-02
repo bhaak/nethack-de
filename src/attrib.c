@@ -16,7 +16,7 @@ const char	* const plusattr[] = {
 	"strong", "smart", "wise", "agile", "tough", "charismatic" /* EN "strong", "smart", "wise", "agile", "tough", "charismatic" */ // TODO DE
 },
 		* const minusattr[] = {
-	"weak", "stupid", "foolish", "clumsy", "fragile", "repulsive" /* EN "weak", "stupid", "foolish", "clumsy", "fragile", "repulsive" */ // TODO DE
+	"weak", "dumm", "foolish", "clumsy", "fragile", "repulsive" /* EN "weak", "stupid", "foolish", "clumsy", "fragile", "repulsive" */ // TODO DE
 };
 
 
@@ -151,8 +151,8 @@ adjattrib(ndx, incr, msgflg)
 	    }
 	}
 	if (msgflg <= 0)
-	    You_feel("%s%s!",
-		  (incr > 1 || incr < -1) ? "very ": "", /* EN (incr > 1 || incr < -1) ? "very ": "", */ // TODO DE
+	    Du_fuehlst_dich("%s%s!",
+		  (incr > 1 || incr < -1) ? "sehr ": "", /* EN (incr > 1 || incr < -1) ? "very ": "", */
 		  (incr > 0) ? plusattr[ndx] : minusattr[ndx]);
 	flags.botl = 1;
 	if (moves > 1 && (ndx == A_STR || ndx == A_CON))

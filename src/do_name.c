@@ -247,10 +247,10 @@ do_mname()
 		mtmp = u.usteed;
 	    else {
 #endif
-		pline("This %s creature is called %s and cannot be renamed.", /* EN pline("This %s creature is called %s and cannot be renamed.", */ // TODO DE
+		pline("Diese %s Gestalt heisst %s und kann nicht umbenannt werden.", /* EN pline("This %s creature is called %s and cannot be renamed.", */
 		ACURR(A_CHA) > 14 ?
-		(flags.female ? "beautiful" : "handsome") : /* EN (flags.female ? "beautiful" : "handsome") : */ // TODO DE
-		"ugly", /* EN "ugly", */ // TODO DE
+		(flags.female ? "schöne" : "stattliche") : /* EN (flags.female ? "beautiful" : "handsome") : */
+		"hässliche", /* EN "ugly", */
 		plname);
 		return(0);
 #ifdef STEED
@@ -453,7 +453,7 @@ ddocall()
 #ifdef REDO
 		ch =
 #endif
-		ynq("Name an individual object?")) { /* EN ynq("Name an individual object?")) { */ // TODO DE
+		ynq("Ein einzelnes Objekt benamsen?")) { /* EN ynq("Name an individual object?")) { */
 	case 'q':
 		break;
 	case 'y':

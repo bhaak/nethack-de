@@ -4087,9 +4087,9 @@ makewish()
 	int tries = 0;
 
 	nothing = zeroobj;  /* lint suppression; only its address matters */
-	if (flags.verbose) You("may wish for an object."); /* EN if (flags.verbose) You("may wish for an object."); */
+	if (flags.verbose) You("VERB_DUERFEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL etwas wünschen."); /* EN if (flags.verbose) You("may wish for an object."); */
 retry:
-	getlin("For what do you wish?", buf); /* EN getlin("For what do you wish?", buf); */
+	getlin("Was SUBJECT_IM_SATZ VERB_WUENSCHEN PRONOMEN_PERSONAL OBJECT KASUS_DATIV PRONOMEN_PERSONAL?", buf); /* EN getlin("For what do you wish?", buf); */
 	if(buf[0] == '\033') buf[0] = 0;
 	/*
 	 *  Note: if they wished for and got a non-object successfully,

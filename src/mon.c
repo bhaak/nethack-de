@@ -401,7 +401,7 @@ register struct monst *mtmp;
     } else if (mtmp->data == &mons[PM_IRON_GOLEM] && inpool && !rn2(5)) {
 	int dam = d(2,6);
 	if (cansee(mtmp->mx,mtmp->my))
-	    pline("%s rusts.", Monnam(mtmp)); /* EN pline("%s rusts.", Monnam(mtmp)); */ // TODO DE
+	    pline("SUBJECT %s VERB_ROSTEN.", Monnam(mtmp)); /* EN pline("%s rusts.", Monnam(mtmp)); */
 	mtmp->mhp -= dam;
 	if (mtmp->mhpmax > dam) mtmp->mhpmax -= dam;
 	if (mtmp->mhp < 1) {
@@ -1845,7 +1845,7 @@ cleanup:
 	   u.ualign.type != A_CHAOTIC) {
 		HTelepat &= ~INTRINSIC;
 		change_luck(-2);
-		You("murderer!"); /* EN You("murderer!"); */ // TODO DE
+		You("Mörder!"); /* EN You("murderer!"); */
 		if (Blind && !Blind_telepat)
 		    see_monsters(); /* Can't sense monsters any more. */
 	}
@@ -1853,7 +1853,7 @@ cleanup:
 	if (is_unicorn(mdat) &&
 				sgn(u.ualign.type) == sgn(mdat->maligntyp)) {
 		change_luck(-5);
-		You_feel("guilty..."); /* EN You_feel("guilty..."); */ // TODO DE
+		Du_fuehlst_dich("schuldig ..."); /* EN You_feel("guilty..."); */
 	}
 
 	/* give experience points */
@@ -1882,7 +1882,7 @@ cleanup:
 		adjalign(-15);	/* bad!! */
 		/* your god is mighty displeased... */
 		if (!Hallucination) You_hear("the rumble of distant thunder..."); /* EN if (!Hallucination) You_hear("the rumble of distant thunder..."); */ // TODO DE
-		else You_hear("the studio audience applaud!"); /* EN else You_hear("the studio audience applaud!"); */ // TODO DE
+		else You_hear("das Studiopublikum appaudieren!"); /* EN else You_hear("the studio audience applaud!"); */
 	} else if (mtmp->mpeaceful)
 		adjalign(-5);
 
