@@ -166,7 +166,7 @@ void german2meta(char *str, char *output)
 
 		// gewisse Worte sind mehrdeutig, z.B. "rot", "Hast"
 		if (wort != NULL) {
-			//printf("2 word: %s; wand_gefunden: %d \n",wort->typ,wand_gefunden);
+			//printf("2 word: %s; potion_gefunden: %d \n",wort->typ,potion_gefunden);
 			if ((strncmp("ADJEKTIV_SPE_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_POT_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0) ||
@@ -187,24 +187,19 @@ void german2meta(char *str, char *output)
 				}
 			} else if (wand_gefunden) {
 				if ((strncmp("NOUN_", wort->typ, 4)==0)){
-					//if ((strncmp("NOUN_SPE_", wort->typ, 9)==0) ||
-				//(strncmp("NOUN_POT_", wort->typ, 9)==0)) {
 					wort = get_meta_substantiv_with(str+i, "NOUN_WAND_");
 					printf("NOUN_WAND_ 1 %s\n", wort->typ);
 				}
 			} else if (potion_gefunden) {
-				if ((strncmp("NOUN_SPE_", wort->typ, 9)==0) ||
-					  (strncmp("NOUN_WAND_", wort->typ, 10)==0)) {
+				if ((strncmp("NOUN_", wort->typ, 4)==0)){
 					wort = get_meta_substantiv_with(str+i, "NOUN_POT_");
 					printf("NOUN_POT_ 1 %s\n", wort->typ);
 				}
 			} else if (scroll_gefunden) {
-				if ((strncmp("NOUN_SPE_", wort->typ, 9)==0) ||
-				    (strncmp("NOUN_WAND_", wort->typ, 10)==0) ||
-				    (strncmp("NOUN_POT_", wort->typ, 9)==0)) {
+				if ((strncmp("NOUN_", wort->typ, 4)==0)){
 					wort = get_meta_substantiv_with(str+i, "NOUN_SCR_");
 					printf("NOUN_SCR_ 1 %s\n", wort->typ);
-                                }
+				}
 			}
 		}
 
@@ -252,6 +247,7 @@ void german2meta(char *str, char *output)
 					strcat(output, "NOUN_POTION PARTIKEL_OF");
 				}
 				i = i + strlen(wort->wort);
+				potion_gefunden = 1;
 			} else if (strncmp("NOUN_CORPSE", wort->typ, 11)==0) {
 				strcat(output, "MODIFIER_CORPSE");
 				i = i + strlen(wort->wort);
