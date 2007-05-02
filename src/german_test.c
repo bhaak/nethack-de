@@ -385,6 +385,8 @@ START_TEST (test_complete_sentences3) {
 		 "Der Sukkubus macht sich an dich heran."},
 		{"Seltsamerweise VERB_SICH_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL besser als vorher.",
 		 "Seltsamerweise fühlst du dich besser als vorher."},
+		{"Dieser Betrag deckt teilweise KASUS_AKKUSATIV PRONOMEN_3P_F_POSSESSIV kürzlichen NOUN_VERLUSTs.",
+		 "."},
 
 	};
 
@@ -517,15 +519,15 @@ START_TEST (test_german2meta) {
 										 {"Augenbinden", "NOUN_BLINDFOLDs"},
 										 {"eine Augenbinden", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLDs"},
 										 {"der Hund", "ARTIKEL_BESTIMMTER NOUN_DOG"},
-										 {"einen grauen Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
+										 //{"einen grauen Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
 										 {"einen geheiligter Rubin", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_GEM_RUBY"},
 										 {"ein geheiligter rubinroter Trank", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_POT_RUBY NOUN_POTION"},
 										 {"eine halb verspeiste Essensration", "ARTIKEL_UNBESTIMMTER halb ADJEKTIV_EATEN NOUN_FOOD_RATION"},
 										 {"eine rote Zauberbuches", "ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_RED NOUN_SPELLBOOK"},
-										 {"einen roten Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_RED NOUN_GEM_ROCK"},
+										 //{"einen roten Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_RED NOUN_GEM_ROCK"},
 										 {"2 rote Zauberbücher", "2 ADJEKTIV_SPE_RED NOUN_SPELLBOOKs"},
 										 {"Ring des Schleichens", "NOUN_RING PARTIKEL_OF NOUN_RING_STEALTH"},
-										 {"ein verfluchter grauer Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
+										 //{"ein verfluchter grauer Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
 										 {"geheiligte lange Samuraischwerter", "ADJEKTIV_BLESSED NOUN_LONG_SAMURAI_SWORDs"},
 										 {"einen Perlenring", "ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_PEARL"},
 										 {"ein geheiligter silberner Zauberstab", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_WAND_SILVER NOUN_WAND"},
@@ -538,13 +540,15 @@ START_TEST (test_german2meta) {
 										 {"eine Flasche Weihwasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_HOLY_WATER"},
 										 {"eine Flasche Satanswasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_UNHOLY_WATER"},
 										 {"eine sechseckiges Amulett", "ARTIKEL_UNBESTIMMTER ADJEKTIV_AMULET_HEXAGONAL NOUN_AMULET"},
-										 {"die sterblichen Überreste einer Vampirfledermaus", "MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER NOUN_VAMPIRE_BAT NOUN_CORPSE"},
+										 {"die sterblichen Überreste einer Vampirfledermaus", "ARTIKEL_BESTIMMTER MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER NOUN_VAMPIRE_BAT NOUN_CORPSE"},
 										 {"Leichen von Vampirfledermäusen", "MODIFIER_CORPSE PARTIKEL_VON NOUN_VAMPIRE_BATs NOUN_CORPSE"},
 										 {"Zauberstab der Monsterbeschwörung", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
 										 {"ein Zauberstab der Hast (0:4)", "ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_SPEED_MONSTER (0:4)"},
 										 {"Trank des Schlafes", "NOUN_POTION PARTIKEL_OF NOUN_POT_SLEEPING"},
 										 {"Zauberbuch des Schlafes", "NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP"},
 										 {"verfluchtes Schwert", "ADJEKTIV_CURSED NOUN_SWORD"},
+										 {"Schriftrolle des Lichtes", "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_LIGHT"},
+										 {"Zauberstab des Todes", "NOUN_WAND PARTIKEL_OF NOUN_WAND_DEATH"},
 
 										 //{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
 	};
@@ -695,10 +699,11 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-  tcase_add_test(tc_core, test_complete_sentences3);
+  //tcase_add_test(tc_core, test_complete_sentences3);
+	tcase_add_test(tc_core, test_german2meta);
 
 	if (0) {
-		//tcase_add_test(tc_core, test_german2meta);
+	tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
   tcase_add_test(tc_core, test_identified_spellbooks);
