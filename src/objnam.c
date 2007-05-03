@@ -471,7 +471,7 @@ register struct obj *obj;
 	case GEM_CLASS:
 	    {
 		const char *rock =
-			    (ocl->oc_material == MINERAL) ? "NOUN_STONE" : "NOUN_GEM";
+			    (ocl->oc_material == MINERAL) ? "NOUN_GEM_ROCK" : "NOUN_GEM";
 		if (!obj->dknown) {
 		    Strcpy(buf, rock);
 		} else if (!nn) {
@@ -481,7 +481,7 @@ register struct obj *obj;
 		    Strcpy(buf, actualn);
 // "Stein" is already attached to the name of the stone where necessary
 #ifndef GERMAN
-		    if (GemStone(typ)) Strcat(buf, " NOUN_STONE");
+		    if (GemStone(typ)) Strcat(buf, " stone");
 #endif
 		}
 		break;
@@ -1546,7 +1546,7 @@ STATIC_OVL NEARDATA const struct o_range o_ranges[] = {
 			ARMOR_CLASS,  GRAY_DRAGON_SCALES, YELLOW_DRAGON_SCALES },
 	{ "dragon scale mail",
 			ARMOR_CLASS,  GRAY_DRAGON_SCALE_MAIL, YELLOW_DRAGON_SCALE_MAIL },
-	{ "sword",	WEAPON_CLASS, SHORT_SWORD,    KATANA },
+	{ "NOUN_SWORD",	WEAPON_CLASS, SHORT_SWORD,    KATANA },
 #ifdef WIZARD
 	{ "venom",	VENOM_CLASS,  BLINDING_VENOM, ACID_VENOM },
 #endif
@@ -2236,11 +2236,11 @@ boolean from_user;
 	)
 	for (i = 0; i < (int)(sizeof wrpsym); i++) {
 		register int j = strlen(wrp[i]);
-		//fprintf(stderr, "4a###### %s\n", bp);
+		fprintf(stderr, "4a###### %s\n", bp);
 		if(!strncmpi(bp, wrp[i], j)){
 			oclass = wrpsym[i];
 			fprintf(stderr, "4####### %s\n", bp);
-			if (oclass != AMULET_CLASS) {
+			if ((oclass != AMULET_CLASS) && (oclass != GEM_CLASS)) { /* EN if (oclass != AMULET_CLASS) { */
 			    bp += j;
 					fprintf(stderr, "5####### %s\n", bp);
 			    if(!strncmpi(bp, " PARTIKEL_OF ", 13)) actualn = bp+13;
@@ -2279,11 +2279,19 @@ boolean from_user;
 		goto typfnd;
 	    }
 
-	if (!BSTRCMPI(bp, p-6, " stone")) {
-		p[-6] = 0;
+	if (!BSTRCMPI(bp, p-15, " NOUN_GEM_STONE")) { /* EN if (!BSTRCMPI(bp, p-6, " stone")) { */
+		p[-15] = 0;
 		oclass = GEM_CLASS;
 		dn = actualn = bp;
+		fprintf(stderr, "y####### dn:      %s\n", dn);
 		goto srch;
+#ifdef GERMAN
+	} else if (!BSTRCMPI(bp, bp+9, "NOUN_GEM_")) {
+		oclass = GEM_CLASS;
+		dn = actualn = bp;
+		fprintf(stderr, "z####### dn:      %s\n", dn);
+		goto srch;
+#endif
 	} else if (!strcmpi(bp, "looking glass")) {
 		;	/* avoid false hit on "* glass" */
 	} else if (!BSTRCMPI(bp, p-6, " glass") || !strcmpi(bp, "glass")) {

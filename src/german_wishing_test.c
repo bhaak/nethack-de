@@ -49,6 +49,17 @@ START_TEST (test_wishing) {
 	//fail_if(&obj != &nothing);
 
 	if (1) {
+	strcpy(buf, "ein blauer Schmuckstein");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	fail_unless(obj->oclass == GEM_CLASS);
+	fail_unless(obj->quan == 1);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_DESCR(*ocl);
+	printf("\ndn: %s\n", dn);
+	fail_unless(strcmp("ADJEKTIV_GEM_BLUE", dn)==0);
+
 	strcpy(buf, "Zauberbuch");
 	obj = readobjnam(buf, &nothing, TRUE);
 	fail_if(obj == NULL);
@@ -61,6 +72,17 @@ START_TEST (test_wishing) {
 	fail_if(obj == NULL);
 	fail_unless(obj->oclass == SCROLL_CLASS);
 	fail_unless(obj->quan == 1);
+
+	strcpy(buf, "Jadestein");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	fail_unless(obj->oclass == GEM_CLASS);
+	fail_unless(obj->quan == 1);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_DESCR(*ocl);
+	printf("\ndn: %s\n", dn);
+	fail_unless(strcmp("ADJEKTIV_GEM_GREEN", dn)==0);
 
 	strcpy(buf, "3 Steine");
 	obj = readobjnam(buf, &nothing, TRUE);
@@ -218,15 +240,18 @@ START_TEST (test_wishing) {
 	dn = OBJ_NAME(*ocl);
 	printf("111 dn: %s\n", dn);
 	fail_unless(obj->oclass == WEAPON_CLASS);
-	printf("112\n");
+	printf("112 obj->otyp: %d; SHORT_SWORD: %d; KATANA: %d\n", obj->otyp, SHORT_SWORD, KATANA);
 	fail_unless(obj->quan == 1);
-	fail_unless(strcmp("NOUN_SWORD", dn)==0);
+	fail_unless(obj->blessed == 0);
+	fail_unless(obj->cursed == 1);
+	fail_if(obj->otyp < SHORT_SWORD);
+	fail_if(obj->otyp > KATANA);
 	printf("113\n");
 
 
   // Ring der Transformation
   // Ring der Levitation
-	// Gluecksstein, Pruefstein
+	// Gluecksstein, Pruefstein, Teufelsstein
 	// alle Edelsteine wie Rubin und so
 } END_TEST
 
