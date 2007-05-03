@@ -46,15 +46,15 @@ STATIC_OVL const char *
 lock_action()
 {
 	static const char *unlock_actions[] = {
-		/* [0] */	"unlocking the door", /* EN "unlocking the door" */ // TODO DE
-		/* [1] */	"unlocking the chest",/* EN "unlocking the chest" */ // TODO DE
-		/* [2] */	"unlocking the box", /* EN "unlocking the box" */ // TODO DE
-		/* [3] */	"picking the lock" /* "picking the lock" */ // TODO DE
+		/* [0] */	"die Türe zu öffnen", /* EN "unlocking the door" */
+		/* [1] */	"die Truhe zu öffnen",/* EN "unlocking the chest" */
+		/* [2] */	"die Kiste zu öffnen", /* EN "unlocking the box" */
+		/* [3] */	"das Schloss zu knacken" /* "picking the lock" */
 	};
 	static const char *lock_actions[] = {
-		/* [0] */	"locking the door", /* EN "locking the door" */ // TODO DE
-		/* [1] */	"locking the chest",/* EN "locking the chest" */ // TODO DE
-		/* [2] */	"locking the box", /* EN "locking the box" */ // TODO DE
+		/* [0] */	"die Türe zu verschliessen", /* EN "locking the door" */
+		/* [1] */	"die Truhe zu verschliessen",/* EN "locking the chest" */
+		/* [2] */	"die Kiste zu verschliessen", /* EN "locking the box" */
 		/* [3] */	"unmoegliche Aktion"
 	};
 
@@ -110,10 +110,10 @@ picklock()	/* try to open/close a lock */
 
 	if(rn2(100) >= xlock.chance) return(1);		/* still busy */
 
-	You("succeed in %s.", lock_action()); /* EN You("succeed in %s.", lock_action()); */ // TODO DE
+	pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL VERB_GELINGEN SUBJECT NOUN_IT, %s.", lock_action()); /* EN You("succeed in %s.", lock_action()); */
 	if (xlock.door) {
 	    if(xlock.door->doormask & D_TRAPPED) {
-		    b_trapped("door", FINGER); /* EN b_trapped("door", FINGER); */ // TODO DE
+		    b_trapped("NOUN_OBJ_DOOR", FINGER); /* EN b_trapped("door", FINGER); */
 		    xlock.door->doormask = D_NODOOR;
 		    unblock_point(u.ux+u.dx, u.uy+u.dy);
 		    if (*in_rooms(u.ux+u.dx, u.uy+u.dy, SHOPBASE))
@@ -243,18 +243,18 @@ pick_lock(pick) /* pick a lock with a given object */
 
 	/* check whether we're resuming an interrupted previous attempt */
 	if (xlock.usedtime && picktyp == xlock.picktyp) {
-	    static char no_longer[] = "Unfortunately, you can no longer %s %s."; /* EN static char no_longer[] = "Unfortunately, you can no longer %s %s."; */ // TODO DE
+	    static char no_longer[] = "Bedauerlicherweise VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER %s nicht mehr %s."; /* EN static char no_longer[] = "Unfortunately, you can no longer %s %s."; */
 
 	    if (nohands(youmonst.data)) {
-		const char *what = (picktyp == LOCK_PICK) ? "pick" : "key"; /* EN const char *what = (picktyp == LOCK_PICK) ? "pick" : "key"; */ // TODO DE
+		const char *what = (picktyp == LOCK_PICK) ? "NOUN_LOCK_PICK" : "NOUN_KEY"; /* EN const char *what = (picktyp == LOCK_PICK) ? "pick" : "key"; */
 #ifdef TOURIST
-		if (picktyp == CREDIT_CARD) what = "card"; /* EN if (picktyp == CREDIT_CARD) what = "card"; */ // TODO DE
+		if (picktyp == CREDIT_CARD) what = "NOUN_CREDIT_CARD"; /* EN if (picktyp == CREDIT_CARD) what = "card"; */
 #endif
-		pline(no_longer, "hold the", what); /* EN pline(no_longer, "hold the", what); */ // TODO DE
+		pline(no_longer, what, "halten"); /* EN pline(no_longer, "hold the", what); */
 		reset_pick();
 		return 0;
 	    } else if (xlock.box && !can_reach_floor()) {
-		pline(no_longer, "reach the", "lock"); /* EN pline(no_longer, "reach the", "lock"); */ // TODO DE
+		pline(no_longer, "NOUN_LOCK", "erreichen"); /* EN pline(no_longer, "reach the", "lock"); */
 		reset_pick();
 		return 0;
 	    } else {
@@ -374,7 +374,7 @@ pick_lock(pick) /* pick a lock with a given object */
 #ifdef TOURIST
 		if (picktyp == CREDIT_CARD &&
 		    (mtmp->isshk || mtmp->data == &mons[PM_ORACLE]))
-		    verbalize("No checks, no credit, no problem."); /* EN verbalize("No checks, no credit, no problem."); */ // TODO DE
+		    verbalize("Keine Schecks, kein Kredit, keine Probleme."); /* EN verbalize("No checks, no credit, no problem."); */
 		else
 #endif
 		    pline("I don't think %s would appreciate that.", mon_nam(mtmp)); /* EN pline("I don't think %s would appreciate that.", mon_nam(mtmp)); */ // TODO DE
@@ -403,14 +403,13 @@ pick_lock(pick) /* pick a lock with a given object */
 #ifdef TOURIST
 		    /* credit cards are only good for unlocking */
 		    if(picktyp == CREDIT_CARD && !(door->doormask & D_LOCKED)) {
-			You_cant("lock a door with a credit card."); /* EN You_cant("lock a door with a credit card."); */ // TODO DE
+			You("VERB_KOENNEN keine Türe mit einer Kreditkarte abschliessen."); /* EN You_cant("lock a door with a credit card."); */
 			return(0);
 		    }
 #endif
 
 		    Sprintf(qbuf,"%sock it?", /* EN Sprintf(qbuf,"%sock it?", */ // TODO DE
-			(door->doormask & D_LOCKED) ? "Unl" : "L" );
-/* EN  */ // TODO DE
+			(door->doormask & D_LOCKED) ? "Unl" : "L" ); /* EN (door->doormask & D_LOCKED) ? "Unl" : "L" ); */ // TODO DE
 		    c = yn(qbuf);
 		    if(c == 'n') return(0);
 
@@ -511,7 +510,7 @@ doopen()		/* try to open a door */
 	struct monst *mtmp;
 
 	if (nohands(youmonst.data)) {
-	    You_cant("open anything -- you have no hands!"); /* EN You_cant("open anything -- you have no hands!"); */
+	    You("VERB_KOENNEN nichts öffnen - PRONOMEN_PERSONAL VERB_HAVE keine Hände!"); /* EN You_cant("open anything -- you have no hands!"); */
 	    return 0;
 	}
 
@@ -538,7 +537,7 @@ doopen()		/* try to open a door */
 
 	if(!IS_DOOR(door->typ)) {
 		if (is_db_wall(cc.x,cc.y)) {
-		    There("is no obvious way to open the drawbridge."); /* EN There("is no obvious way to open the drawbridge."); */ // TODO DE
+		    pline("Es gibt keinen offensichtlichen Weg die Zugbrücke zu öffnen."); /* EN There("is no obvious way to open the drawbridge."); */
 		    return(0);
 		}
 		You("%s no door there.", /* EN You("%s no door there.", */ // TODO DE
@@ -553,7 +552,7 @@ doopen()		/* try to open a door */
 	    case D_BROKEN: mesg = " Türe ist kaputt"; break; /* EN case D_BROKEN: mesg = " is broken"; break; */
 	    case D_NODOOR: mesg = "r Eingang hat keine Türe"; break; /* EN case D_NODOOR: mesg = "way has no door"; break; */
 	    case D_ISOPEN: mesg = " Türe ist bereits offen"; break; /* EN case D_ISOPEN: mesg = " is already open"; break; */
-	    default:	     mesg = " Türe ist verschlossen"; break; /* EN default:       mesg = " is locked"; break; */
+	    default:	   mesg = " Türe ist verschlossen"; break; /* EN default:       mesg = " is locked"; break; */
 	    }
 	    pline("Diese%s.", mesg); /* EN pline("This door%s.", mesg); */
 	    if (Blind) feel_location(cc.x,cc.y);
@@ -617,7 +616,7 @@ doclose()		/* try to close a door */
 	struct monst *mtmp;
 
 	if (nohands(youmonst.data)) {
-	    You_cant("close anything -- you have no hands!"); /* EN You_cant("close anything -- you have no hands!"); */ // TODO DE
+	    You("VERB_KOENNEN nichts schliessen - PRONOMEN_PERSONAL VERB_HAVE keine Hände!"); /* EN You_cant("close anything -- you have no hands!"); */
 	    return 0;
 	}
 
@@ -649,7 +648,7 @@ doclose()		/* try to close a door */
 
 	if(!IS_DOOR(door->typ)) {
 		if (door->typ == DRAWBRIDGE_DOWN)
-		    There("is no obvious way to close the drawbridge."); /* EN There("is no obvious way to close the drawbridge."); */ // TODO DE
+		    pline("Es gibt keinen offensichtlichen Weg die Zugbrücke zu schliessen."); /* EN There("is no obvious way to close the drawbridge."); */
 		else
 		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.", /* EN You("%s no door there.", */
 				Blind ? "VERB_FEEL" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
@@ -669,7 +668,7 @@ doclose()		/* try to close a door */
 	}
 
 	if(door->doormask & (D_CLOSED | D_LOCKED)) {
-	    pline("Diese Türe ist schon verschlossen."); /* EN pline("This door is already closed."); */
+	    pline("Diese Türe ist schon geschlossen."); /* EN pline("This door is already closed."); */
 	    return(0);
 	}
 
@@ -687,7 +686,7 @@ doclose()		/* try to close a door */
 		 u.usteed ||
 #endif
 		rn2(25) < (ACURRSTR+ACURR(A_DEX)+ACURR(A_CON))/3) {
-		pline_The("door closes."); /* EN pline_The("door closes."); */ // TODO DE
+		pline_The("NOUN_OBJ_DOOR VERB_SCHLIESSEN sich."); /* EN pline_The("door closes."); */
 		door->doormask = D_CLOSED;
 		if (Blind)
 		    feel_location(x,y);	/* the hero knows she closed it */
@@ -697,7 +696,7 @@ doclose()		/* try to close a door */
 	    }
 	    else {
 	        exercise(A_STR, TRUE);
-	        pline_The("door resists!"); /* EN pline_The("door resists!"); */ // TODO DE
+	        pline_The("NOUN_OBJ_DOOR rührt sich nicht!"); /* EN pline_The("door resists!"); */
 	    }
 	}
 
@@ -723,7 +722,7 @@ register struct obj *obj, *otmp;	/* obj *is* a box */
 	case WAN_OPENING:
 	case SPE_KNOCK:
 	    if (obj->olocked) {		/* unlock; couldn't be broken */
-		pline("Klick!"); /* EN pline("Klick!"); */ // TODO DE
+		pline("Klick!"); /* EN pline("Klick!"); */
 		obj->olocked = 0;
 		res = 1;
 	    } else			/* silently fix if broken */
@@ -789,7 +788,7 @@ int x, y;
 		}
 		block_point(x, y);
 		door->typ = SDOOR;
-		if (vis) pline_The("doorway vanishes!"); /* EN if (vis) pline_The("doorway vanishes!"); */ // TODO DE
+		if (vis) pline_The("NOUN_DOORWAY VERB_VERSCHWINDEN!"); /* EN if (vis) pline_The("doorway vanishes!"); */
 		newsym(x,y);
 		return TRUE;
 	    }
