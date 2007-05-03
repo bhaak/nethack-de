@@ -70,8 +70,8 @@ doread()
     "Oracle(TM) Fountains 10th Annual Wet T-Shirt Contest",
     "Hey, black dragon!  Disintegrate THIS!",
     "I'm With Stupid -->",
-    "Don't blame me, I voted for Izchak!",
-    "Don't Panic",				/* HHGTTG */
+    "Ich bin nicht schuld, ich war für Izchak!", /* EN "Don't blame me, I voted for Izchak!", */
+    "Keine Panik",				/* HHGTTG */ /* EN "Don't Panic", */
     "Furinkan High School Athletic Dept.",	/* Ranma 1/2 */
     "Hel-LOOO, Nurse!",			/* Animaniacs */
 	    };
@@ -79,12 +79,12 @@ doread()
 	    int erosion;
 
 	    if (Blind) {
-		You_cant("feel any Braille writing."); /* EN You_cant("feel any Braille writing."); */ // TODO DE
+		You("VERB_SPUEREN keine Brailleschrift."); /* EN You_cant("feel any Braille writing."); */
 		return 0;
 	    }
 	    u.uconduct.literate++;
 	    if(flags.verbose)
-		pline("It reads:"); /* EN pline("It reads:"); */ // TODO DE
+		pline("Da steht:"); /* EN pline("It reads:"); */
 	    Strcpy(buf, shirt_msgs[scroll->o_id % SIZE(shirt_msgs)]);
 	    erosion = greatest_erosion(scroll);
 	    if (erosion)
@@ -101,11 +101,11 @@ doread()
 	} else if (Blind) {
 	    const char *what = 0;
 	    if (scroll->oclass == SPBOOK_CLASS)
-		what = "mystic runes"; /* EN what = "mystic runes"; */ // TODO DE
+		what = "mystischen Runen"; /* EN what = "mystic runes"; */
 	    else if (!scroll->dknown)
-		what = "formula on the scroll"; /* EN what = "formula on the scroll"; */ // TODO DE
+		what = "Formel auf der Schriftrolle"; /* EN what = "formula on the scroll"; */
 	    if (what) {
-		pline("Being blind, you cannot read the %s.", what); /* EN pline("Being blind, you cannot read the %s.", what); */ // TODO DE
+		pline("Blind wie ein Maulwurf VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL die %s nicht lesen.", what); /* EN pline("Being blind, you cannot read the %s.", what); */
 		return(0);
 	    }
 	}
@@ -126,16 +126,16 @@ doread()
 	scroll->in_use = TRUE;	/* scroll, not spellbook, now being read */
 	if(scroll->otyp != SCR_BLANK_PAPER) {
 	  if(Blind)
-	    pline("As you %s the formula on it, the scroll disappears.", /* EN pline("As you %s the formula on it, the scroll disappears.", */ // TODO DE
-			is_silent(youmonst.data) ? "cogitate" : "pronounce"); /* EN is_silent(youmonst.data) ? "cogitate" : "pronounce"); */ // TODO DE
+	    pline("Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL die Zauberformel %s, verschwindet die Schriftrolle.", /* EN pline("As you %s the formula on it, the scroll disappears.", */
+			is_silent(youmonst.data) ? "VERB_VISUALISIEREN" : "VERB_AUSSPRECHEN"); /* EN is_silent(youmonst.data) ? "cogitate" : "pronounce"); */
 	  else
-	    pline("As you read the scroll, it disappears."); /* EN pline("As you read the scroll, it disappears."); */ // TODO DE
+	    pline("Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL die Schriftrolle VERB_READ, verschwindet sie."); /* EN pline("As you read the scroll, it disappears."); */
 	  if(confused) {
 	    if (Hallucination)
-		pline("Being so trippy, you screw up..."); /* EN pline("Being so trippy, you screw up..."); */ // TODO DE
+		pline("So breit wie SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SEIN, VERB_VERSAUEN PRONOMEN_PERSONAL es ..."); /* EN pline("Being so trippy, you screw up..."); */
 	    else
-		pline("Being confused, you mis%s the magic words...", /* EN pline("Being confused, you mis%s the magic words...", */ // TODO DE
-			is_silent(youmonst.data) ? "understand" : "pronounce"); /* EN is_silent(youmonst.data) ? "understand" : "pronounce"); */ // TODO DE
+		pline("So verwirrt wie SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SEIN, %s ...", /* EN pline("Being confused, you mis%s the magic words...", */
+			is_silent(youmonst.data) ? "VERB_MISSVERSTEHEN PRONOMEN_PERSONAL die magischen Worte" : "VERB_VERHASPELN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL"); /* EN is_silent(youmonst.data) ? "understand" : "pronounce"); */ 
 	  }
 	}
 	if(!seffects(scroll))  {
@@ -797,7 +797,7 @@ register struct obj	*sobj;
 		}
 		if(!sobj->cursed || !otmp || !otmp->cursed) {
 		    if(!destroy_arm(otmp)) {
-			strange_feeling(sobj,"Your skin itches."); /* EN strange_feeling(sobj,"Your skin itches."); */ // TODO DE
+			strange_feeling(sobj,"SUBJECT PRONOMEN_POSSESSIV NOUN_HAUT VERB_JUCKEN."); /* EN strange_feeling(sobj,"Your skin itches."); */
 			exercise(A_STR, FALSE);
 			exercise(A_CON, FALSE);
 			return(1);

@@ -3,7 +3,7 @@ require 'set'
 # use the genitive-e ("des Zauberbuches" vs. "des Zauberbuchs"
 $genitiv_e = true;
 # use the dativ-e ("dem Zauberbuche" vs. "dem Zauberbuch"
-$dativ_e = true;
+$dativ_e = false;
 
 $nom = "nominativ";
 $gen = "genitiv";
@@ -474,6 +474,8 @@ def ausgabe_verbs
     konjugiere_verb("VERB_FLUCHEN","fluch"),
     konjugiere_verb("VERB_VERFLUCHEN","verfluch"),
     konjugiere_verb("VERB_JUCKEN","juck"),
+    konjugiere_verb("VERB_ROSTEN","rost"),
+    konjugiere_verb("VERB_MISSVERSTEHEN","missversteh"),
     "",
     "/* unregelmässige Verben */",
     Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
@@ -533,6 +535,8 @@ def ausgabe_verbs
     Verb.new("VERB_HERANMACHEN", "", "heran", ["machst", "macht", "macht","machen"]),
     Verb.new("VERB_LAUFEN", "", "", ["läufst", "läuft", "lauft","laufen"]),
     Verb.new("VERB_KNISTERN", "", "", ["knisterst", "knistert", "knistert","knistern"]),
+    Verb.new("VERB_AUFHOEREN", "", "auf", ["hörst", "hört", "hört","hören"]),
+    Verb.new("VERB_VERHASPELN", "", "", ["verhaspelst", "verhaspelt","verhaspelt","verhaspeln"]),
   ].each { |v|   
     if v.is_a? String then
       puts v
@@ -785,6 +789,10 @@ def ausgabe_nouns
     unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "sein",   $akk,  $neu,       $sg),
     unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seine",  [$nom,$akk], $fem, $sg),
     unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seiner", [$gen,$dat], $fem, $sg),
+
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seine", [$nom,$akk], [$mal,$fem, $neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seinen", $dat, [$mal,$fem, $neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seiner", $gen, [$mal,$fem, $neu], $pl),
     "",
     unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihr",   $nom, [$mal,$neu], $sg),
     unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihres", $gen, [$mal,$neu], $sg),
@@ -793,6 +801,10 @@ def ausgabe_nouns
     unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihr",   $akk,  $neu,       $sg),
     unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihre",  [$nom,$akk], $fem, $sg),
     unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihrer", [$gen,$dat], $fem, $sg),
+
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihre",  [$nom,$akk], [$mal,$fem, $neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihrer", $gen, [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_3P_F_POSSESSIV", "ihren", $dat, [$mal,$fem,$neu], $pl),
     "",
     unregelmaessiges_wort("NOUN_OOPS",  "Hoppla",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
     unregelmaessiges_wort("NOUN_ETWAS", "etwas",        [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl]),
@@ -1612,7 +1624,8 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_GEM_VIOLET_GLASS", ["wertlos","violett"], "Glasstück", "es", "Glasstück", "e", "neutrum"),
     dekliniere_substantiv("NOUN_GEM_LUCKSTONE", "Glücksstein", "es", "Glücksstein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_LOADSTONE", "Teufelsstein", "es", "Teufelsstein", "e", "maskulin"),
-    dekliniere_substantiv("NOUN_GEM_TOUCHSTONE", "Prüfstein", "es", "Prüfstein", "e", "maskulin"), # Prüfstein, Probierstein
+    dekliniere_substantiv("NOUN_GEM_TOUCHSTONE", "Prüfstein", "es", "Prüfstein", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_GEM_TOUCHSTONE", "Probierstein", "es", "Probierstein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_FLINT", "Feuerstein", "es", "Feuerstein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GEM_ROCK", "Stein", "es", "Stein", "e", "maskulin"),
     "",
@@ -2077,7 +2090,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_PUDDING", "Grütze", "", "Grütze", "en", "feminin"),
     dekliniere_substantiv("NOUN_POLYMORPH_TRAP", "Transformationsfalle", "", "Transformationsfalle", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_QUADRUPED", "Vierbeiner", "s", "Vierbeiner", "", "maskulin"),
-    dekliniere_substantiv("NOUN_ROCK", "Stein", "es", "Stein", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_ROCK", "Stein", "es", "Stein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_RODENT", "Nagetier", "es", "Nagetier", "e", "neutrum"),
     dekliniere_substantiv("NOUN_RUST_TRAP", "Rostfalle", "", "Rostfalle", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SEA_MONSTER", "Seemonster", "s", "Seemonster", "", "neutrum"),
@@ -2111,7 +2124,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CLOAK", "Mantel", "s", "Mäntel", "", "maskulin"),
     dekliniere_substantiv("NOUN_HELMET", "Helm", "es", "Helm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SHIELD", "Schild", "es", "Schild", "e", "maskulin"), 
-    dekliniere_substantiv("NOUN_STONE", "Stein", "es", "Stein", "e", "maskulin"),
+    #dekliniere_substantiv("NOUN_STONE", "Stein", "es", "Stein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SWORD", "Schwert", "es", "Schwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_SPELL", "Spruch", "es", "Sprüch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_MEDALLION", "Medaillon", "s", "Medaillon", "s", "neutrum"),
@@ -2137,6 +2150,7 @@ def ausgabe_nouns
     "",
     dekliniere_substantiv("NOUN_HALS", "Hals", "es", "Häls", "e", "maskulin"),
     dekliniere_substantiv("NOUN_BODY", "Körper", "s", "Körper", "", "maskulin"),
+    dekliniere_substantiv("NOUN_HAUT", "Haut", "", "Häut", "e", "feminin"),
     "",
     dekliniere_substantiv("NOUN_VERSUCH", "Versuch", "es", "Versuch", "er", "maskulin"),
     dekliniere_substantiv("NOUN_FINGER", "Finger", "s", "Finger", "", "maskulin"),
@@ -2178,6 +2192,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_THRONE","Thron","es","Thron","e","maskulin"),
 
     dekliniere_substantiv("NOUN_HEADSCHMERZEN","Kopfschmerzen","es","Kopfschmerzen","en","maskulin"),
+    dekliniere_substantiv("NOUN_VERLUST","Verlust","es","Verlust","e","feminin"),
+    dekliniere_substantiv("NOUN_SPENDE","Spende","","Spende","en","feminin"),
+    dekliniere_substantiv("NOUN_KNACKEN","Knacken","s","Knacken","","neutrum"),
 
     "/* ======================================================= */",
     "/* Adjektive */",
@@ -2198,6 +2215,8 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_FLUESSIG","flüssig"),
     dekliniere_adjektiv("ADJEKTIV_FEST","fest"),
     dekliniere_adjektiv("ADJEKTIV_LEICHT","leicht"),
+    dekliniere_adjektiv("ADJEKTIV_ROSTIG","rostig"),
+    dekliniere_adjektiv("ADJEKTIV_NEU","neu"),
     "",
     "/* 'andere' ist eigentlich ein Pronomen, wird aber wie ein Adjektiv dekliniert */",
     dekliniere_adjektiv("ADJEKTIV_ANDERE","ander"),
