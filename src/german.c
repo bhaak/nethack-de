@@ -159,14 +159,14 @@ void german2meta(char *str, char *output)
 	//printf("str: %s\n",str);
 	//printf("strlen(str): %d\n",strlen(str));
 	while (i < strlen(str)) {
-		//printf("i: %d\n",i);
+		printf("i: %d\n",i);
 		printf("1 %s\n",str+i);
 		struct substantiv_oder_adjekiv_struct *wort = get_meta_substantiv(str+i);
 		printf("1.5 %s\n",str+i);
 
 		// gewisse Worte sind mehrdeutig, z.B. "rot", "Hast"
 		if (wort != NULL) {
-			//printf("2 word: %s; gem_gefunden: %d \n",wort->typ,gem_gefunden);
+			printf("2 word: %s; ring_gefunden: %d \n",wort->typ,ring_gefunden);
 			if ((strncmp("ADJEKTIV_SPE_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_POT_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0) ||
@@ -199,6 +199,11 @@ void german2meta(char *str, char *output)
 				if ((strncmp("NOUN_", wort->typ, 4)==0)){
 					wort = get_meta_substantiv_with(str+i, "NOUN_SCR_");
 					printf("NOUN_SCR_ 1 %s\n", wort->typ);
+				}
+			} else if (ring_gefunden) {
+				if ((strncmp("NOUN_", wort->typ, 4)==0)){
+					wort = get_meta_substantiv_with(str+i, "NOUN_RING_");
+					printf("NOUN_RING_ 1 %s\n", wort->typ);
 				}
 			}
 		}
