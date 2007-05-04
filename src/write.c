@@ -81,7 +81,7 @@ register struct obj *pen;
 	const char *typeword;
 
 	if (nohands(youmonst.data)) {
-	    You("VERB_BRAUCHEN HÃ¤nde um schreiben zu kÃ¶nnen!"); /* EN You("need hands to be able to write!"); */
+	    You("VERB_BRAUCHEN Hände um schreiben zu können!"); /* EN You("need hands to be able to write!"); */
 	    return 0;
 	} else if (Glib) {
 	    pline("%s OBJECT KASUS_DATIV PRONOMEN_PERSONAL aus OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("%s from your %s.", */

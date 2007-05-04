@@ -1281,10 +1281,10 @@ boolean telekinesis;	/* not picking it up directly by hand */
 	    if (obj->blessed) obj->blessed = 0;
 	    else if (!obj->spe && !obj->cursed) obj->spe = 1;
 	    else {
-		pline_The("scroll%s %s to dust as you %s %s up.", /* EN pline_The("scroll%s %s to dust as you %s %s up.", */ // TODO DE
-			plur(obj->quan), otense(obj, "turn"), /* EN plur(obj->quan), otense(obj, "turn"), */ // TODO DE
-			telekinesis ? "raise" : "pick", /* EN telekinesis ? "raise" : "pick", */ // TODO DE
-			(obj->quan == 1L) ? "it" : "them"); /* EN (obj->quan == 1L) ? "it" : "them"); */ // TODO DE
+		pline_The("NOUN_SCROLL%s %s zu Staub, als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL sie %s VERB_WOLLEN.", /* EN pline_The("scroll%s %s to dust as you %s %s up.", */
+			plur(obj->quan), otense(obj, "VERB_ZERFALLEN"), /* EN plur(obj->quan), otense(obj, "turn"), */
+			telekinesis ? "anheben" : "aufheben", /* EN telekinesis ? "raise" : "pick", */
+			(obj->quan == 1L) ? "it" : "them");
 		if (!(objects[SCR_SCARE_MONSTER].oc_name_known) &&
 				    !(objects[SCR_SCARE_MONSTER].oc_uname))
 		    docall(obj);
@@ -1499,12 +1499,12 @@ lootcont:
 		any = TRUE;
 
 		if (cobj->olocked) {
-		    pline("Hmmm, it seems to be locked."); /* EN pline("Hmmm, it seems to be locked."); */ // TODO DE
+		    pline("Hmmm, scheint verschlossen zu sein."); /* EN pline("Hmmm, it seems to be locked."); */
 		    continue;
 		}
 		if (cobj->otyp == BAG_OF_TRICKS) {
 		    int tmp;
-		    You("carefully open the bag..."); /* EN You("carefully open the bag..."); */ // TODO DE
+		    You("VERB_OEFFNEN vorsichtig OBJECT ARTIKEL_BESTIMMTER NOUN_BAG ..."); /* EN You("carefully open the bag..."); */
 		    pline("It develops a huge set of teeth and bites you!"); /* EN pline("It develops a huge set of teeth and bites you!"); */ // TODO DE
 		    tmp = rnd(10);
 		    if (Half_physical_damage) tmp = (tmp+1) / 2;
@@ -1514,7 +1514,7 @@ lootcont:
 		    continue;
 		}
 
-		You("carefully open %s...", the(xname(cobj))); /* EN You("carefully open %s...", the(xname(cobj))); */ // TODO DE
+		You("VERB_OEFFNEN vorsichtig OBJECT %s...", the(xname(cobj))); /* EN You("carefully open %s...", the(xname(cobj))); */
 		timepassed |= use_container(cobj, 0);
 		if (multi < 0) return 1;		/* chest trap */
 	    }
@@ -1651,7 +1651,7 @@ boolean *prev_loot;
 		x_monnam(mtmp, ARTICLE_THE, (char *)0, SUPPRESS_SADDLE, FALSE));
 	if ((c = yn_function(qbuf, ynqchars, 'n')) == 'y') {
 		if (nolimbs(youmonst.data)) {
-		    You_cant("do that without limbs."); /* not body_part(HAND) */ /* EN You_cant("do that without limbs."); */ // TODO DE
+		    pline("Das geht nicht ohne Gliedmassen."); /* not body_part(HAND) */ /* EN You_cant("do that without limbs."); */
 		    return (0);
 		}
 		if (otmp->cursed) {
@@ -2045,7 +2045,7 @@ register int held;
 		return 0;
 	}
 	if (obj->olocked) {
-	    pline("%s to be locked.", Tobjnam(obj, "seem")); /* EN pline("%s to be locked.", Tobjnam(obj, "seem")); */ // TODO DE
+	    pline("SUBJECT %s verschlossen zu sein.", Tobjnam(obj, "VERB_SCHEINEN")); /* EN pline("%s to be locked.", Tobjnam(obj, "seem")); */
 	    if (held) You("must put it down to unlock."); /* EN if (held) You("must put it down to unlock."); */ // TODO DE
 	    return 0;
 	} else if (obj->otrapped) {

@@ -62,8 +62,8 @@ boolean talk;
 
 	if (!xtime && old) {
 		if (talk)
-		    You_feel("less %s now.", /* EN You_feel("less %s now.", */ // TODO DE
-			Hallucination ? "trippy" : "confused"); /* EN Hallucination ? "trippy" : "confused"); */ // TODO DE
+		    Du_fuehlst_dich("jetzt weniger %s.", /* EN You_feel("less %s now.", */
+			Hallucination ? "trippig" : "verwirrt"); /* EN Hallucination ? "trippy" : "confused"); */
 	}
 	if ((xtime && !old) || (!xtime && old)) flags.botl = TRUE;
 
@@ -79,8 +79,8 @@ boolean talk;
 
 	if (!xtime && old) {
 		if (talk)
-		    You_feel("%s now.", /* EN You_feel("%s now.", */ // TODO DE
-			Hallucination ? "less wobbly" : "a bit steadier"); /* EN Hallucination ? "less wobbly" : "a bit steadier"); */ // TODO DE
+		    Du_fuehlst_dich("jetzt %s.", /* EN You_feel("%s now.", */
+			Hallucination ? "weniger schwabblig/wacklig" : "ein bisschen steadier"); /* EN Hallucination ? "less wobbly" : "a bit steadier"); */ // TODO DE
 	}
 	if (xtime && !old) {
 		if (talk) {
@@ -89,7 +89,7 @@ boolean talk;
 				You("wobble in the saddle."); /* EN You("wobble in the saddle."); */ // TODO DE
 			else
 #endif
-			You("%s...", stagger(youmonst.data, "stagger")); /* EN You("%s...", stagger(youmonst.data, "stagger")); */ // TODO DE
+			You("%s ...", stagger(youmonst.data, "NOUN_TORKELN")); /* EN You("%s...", stagger(youmonst.data, "stagger")); */
 		}
 	}
 	if ((!xtime && old) || (xtime && !old)) flags.botl = TRUE;
@@ -113,8 +113,8 @@ int type;
 		Du_fuehlst_dich("todkrank."); /* EN You_feel("deathly sick."); */
 	    } else {
 		/* already sick */
-		if (talk) You_feel("%s worse.", /* EN if (talk) You_feel("%s worse.", */ // TODO DE
-			      xtime <= Sick/2L ? "much" : "even"); /* EN xtime <= Sick/2L ? "much" : "even"); */ // TODO DE
+		if (talk) You_feel("%s schlechter.", /* EN if (talk) You_feel("%s worse.", */
+			      xtime <= Sick/2L ? "viel" : "noch"); /* EN xtime <= Sick/2L ? "much" : "even"); */
 	    }
 	    set_itimeout(&Sick, xtime);
 	    u.usick_type |= type;
@@ -152,13 +152,13 @@ boolean talk;
 	long old = Vomiting;
 
 	if(!xtime && old)
-	    if(talk) You_feel("much less nauseated now."); /* EN if(talk) You_feel("much less nauseated now."); */ // TODO DE
+	    if(talk) Dir_ist("jetzt viel weniger übel."); /* EN if(talk) You_feel("much less nauseated now."); */
 
 	set_itimeout(&Vomiting, xtime);
 }
 
-static const char vismsg[] = "vision seems to %s for a moment but is %s now."; /* EN static const char vismsg[] = "vision seems to %s for a moment but is %s now."; */ // TODO DE
-static const char eyemsg[] = "%s momentarily %s."; /* EN static const char eyemsg[] = "%s momentarily %s."; */ // TODO DE
+static const char vismsg[] = "NOUN_SEHKRAFT VERB_SCHEINEN sich kurz zu %s, aber sie ist jetzt wieder %s."; /* EN static const char vismsg[] = "vision seems to %s for a moment but is %s now."; */
+static const char eyemsg[] = "%s %s kurz."; /* EN static const char eyemsg[] = "%s momentarily %s."; */
 
 void
 make_blinded(xtime, talk)
@@ -182,7 +182,7 @@ boolean talk;
 	if (can_see_now && !u_could_see) {	/* regaining sight */
 	    if (talk) {
 		if (Hallucination)
-		    pline("Far out!  Everything is all cosmic again!"); /* EN pline("Far out!  Everything is all cosmic again!"); */ // TODO DE
+		    pline("Voll geil!  Alles ist wieder kosmisch!"); /* EN pline("Far out!  Everything is all cosmic again!"); */
 		else
 		    You("VERB_CAN wieder sehen."); /* EN You("can see again."); */
 	    }
@@ -195,10 +195,10 @@ boolean talk;
 		    Strcpy(buf, body_part(EYE));
 		    eyecnt = eyecount(youmonst.data);
 		    Your(eyemsg, (eyecnt == 1) ? buf : makeplural(buf),
-			 (eyecnt == 1) ? "itches" : "itch"); /* EN (eyecnt == 1) ? "itches" : "itch"); */ // TODO DE
+			 (eyecnt == 1) ? "VERB_JUCKEN" : "VERB_JUCKEN"); /* EN (eyecnt == 1) ? "itches" : "itch"); */
 		} else {	/* Eyes of the Overworld */
-		    Your(vismsg, "brighten", /* EN Your(vismsg, "brighten", */ // TODO DE
-			 Hallucination ? "sadder" : "normal"); /* EN Hallucination ? "sadder" : "normal"); */ // TODO DE
+		    Your(vismsg, "bessern", /* EN Your(vismsg, "brighten", */
+			 Hallucination ? "schlimmer" : "normal"); /* EN Hallucination ? "sadder" : "normal"); */
 		}
 	    }
 	}
@@ -206,9 +206,9 @@ boolean talk;
 	if (u_could_see && !can_see_now) {	/* losing sight */
 	    if (talk) {
 		if (Hallucination)
-		    pline("Oh, bummer!  Everything is dark!  Help!"); /* EN pline("Oh, bummer!  Everything is dark!  Help!"); */ // TODO DE
+		    pline("Oh, Mist!  Alles ist dunkel!  Hilfe!"); /* EN pline("Oh, bummer!  Everything is dark!  Help!"); */
 		else
-		    pline("A cloud of darkness falls upon you."); /* EN pline("A cloud of darkness falls upon you."); */ // TODO DE
+		    pline("Dunkelheit VERB_BRECHEN über OBJECT PRONOMEN_PERSONAL herein."); /* EN pline("A cloud of darkness falls upon you."); */
 	    }
 	    /* Before the hero goes blind, set the ball&chain variables. */
 	    if (Punished) set_bc(0);
@@ -221,10 +221,10 @@ boolean talk;
 		    Strcpy(buf, body_part(EYE));
 		    eyecnt = eyecount(youmonst.data);
 		    Your(eyemsg, (eyecnt == 1) ? buf : makeplural(buf),
-			 (eyecnt == 1) ? "twitches" : "twitch"); /* EN (eyecnt == 1) ? "twitches" : "twitch"); */ // TODO DE
+			 (eyecnt == 1) ? "VERB_ZUCKEN" : "VERB_ZUCKEN"); /* EN (eyecnt == 1) ? "twitches" : "twitch"); */
 		} else {	/* Eyes of the Overworld */
-		    Your(vismsg, "dim", /* EN Your(vismsg, "dim", */ // TODO DE
-			 Hallucination ? "happier" : "normal"); /* EN Hallucination ? "happier" : "normal"); */ // TODO DE
+		    Your(vismsg, "trüben", /* EN Your(vismsg, "dim", */
+			 Hallucination ? "zufriedenstellend" : "normal"); /* EN Hallucination ? "happier" : "normal"); */
 		}
 	    }
 	}
@@ -246,11 +246,12 @@ long mask;	/* nonzero if resistance status should change by mask */
 {
 	long old = HHallucination;
 	boolean changed = 0;
-	const char *message, *verb;
+	const char *message, *verb, *verbzusatz;
 
-	message = (!xtime) ? "Everything %s SO boring now." : /* EN message = (!xtime) ? "Everything %s SO boring now." : */ // TODO DE
-			     "Oh wow!  Everything %s so cosmic!"; /* EN "Oh wow!  Everything %s so cosmic!"; */ // TODO DE
-	verb = (!Blind) ? "looks" : "feels"; /* EN verb = (!Blind) ? "looks" : "feels"; */ // TODO DE
+	message = (!xtime) ? "Jetzt %s alles SO langweilig %s." : /* EN message = (!xtime) ? "Everything %s SO boring now." : */
+			     "Oh wow!  Alles %s so kosmisch %s!"; /* EN "Oh wow!  Everything %s so cosmic!"; */
+	verb = (!Blind) ? "sieht" : "fühlt sich"; /* EN verb = (!Blind) ? "looks" : "feels"; */
+	verbzusatz = (!Blind) ? "aus" : "an"; /* EN */
 
 	if (mask) {
 	    if (HHallucination) changed = TRUE;
@@ -272,9 +273,9 @@ long mask;	/* nonzero if resistance status should change by mask */
 
 		    Strcpy(buf, body_part(EYE));
 		    Your(eyemsg, (eyecnt == 1) ? buf : makeplural(buf),
-			 (eyecnt == 1) ? "itches" : "itch"); /* EN (eyecnt == 1) ? "itches" : "itch"); */ // TODO DE
+			 (eyecnt == 1) ? "VERB_JUCKEN" : "VERB_JUCKEN"); /* EN (eyecnt == 1) ? "itches" : "itch"); */
 		} else {	/* Grayswandir */
-		    Your(vismsg, "flatten", "normal"); /* EN Your(vismsg, "flatten", "normal"); */ // TODO DE
+		    Your(vismsg, "reduzieren", "normal"); /* EN Your(vismsg, "flatten", "normal"); */
 		}
 	    }
 	}
@@ -294,7 +295,7 @@ long mask;	/* nonzero if resistance status should change by mask */
 	    update_inventory();
 
 	    flags.botl = 1;
-	    if (talk) pline(message, verb);
+	    if (talk) pline(message, verb, verbzusatz); /* EN if (talk) pline(message, verb); */
 	}
 }
 
@@ -304,7 +305,7 @@ ghost_from_bottle()
 	struct monst *mtmp = makemon(&mons[PM_GHOST], u.ux, u.uy, NO_MM_FLAGS);
 
 	if (!mtmp) {
-		pline("This bottle turns out to be empty."); /* EN pline("This bottle turns out to be empty."); */ // TODO DE
+		pline("Diese Flasche stellt sich als leer heraus."); /* EN pline("This bottle turns out to be empty."); */
 		return;
 	}
 	if (Blind) {
@@ -314,9 +315,9 @@ ghost_from_bottle()
 	pline("As you open the bottle, an enormous %s emerges!", /* EN pline("As you open the bottle, an enormous %s emerges!", */ // TODO DE
 		Hallucination ? rndmonnam() : (const char *)"ghost"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */ // TODO DE
 	if(flags.verbose)
-	    You("are frightened to death, and unable to move."); /* EN You("are frightened to death, and unable to move."); */ // TODO DE
+	    You("VERB_SEIN zu Tode erschrocken und starr vor Angst."); /* EN You("are frightened to death, and unable to move."); */
 	nomul(-3);
-	nomovemsg = "You regain your composure."; /* EN nomovemsg = "You regain your composure."; */ // TODO DE
+	nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_GEWINNEN OBJECT PRONOMEN_PERSONAL NOUN_FASSUNG zurück."; /* EN nomovemsg = "You regain your composure."; */
 }
 
 /* "Quaffing is like drinking, except you spill more."  -- Terry Pratchett
@@ -328,7 +329,7 @@ dodrink()
 	const char *potion_descr;
 
 	if (Strangled) {
-		pline("If you can't breathe air, how can you drink liquid?"); /* EN pline("If you can't breathe air, how can you drink liquid?"); */ // TODO DE
+		pline("Wenn SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht atmen VERB_KOENNEN, wie VERB_WOLLEN PRONOMEN_PERSONAL dann trinken?"); /* EN pline("If you can't breathe air, how can you drink liquid?"); */
 		return 0;
 	}
 	/* Is there a fountain to drink from here? */
@@ -365,13 +366,13 @@ dodrink()
 
 	potion_descr = OBJ_DESCR(objects[otmp->otyp]);
 	if (potion_descr) {
-	    if (!strcmp(potion_descr, "milky") && /* EN if (!strcmp(potion_descr, "milky") && */ // TODO DE
+	    if (!strcmp(potion_descr, "ADJEKTIV_POT_MILKY") && /* EN if (!strcmp(potion_descr, "milky") && */
 		    flags.ghost_count < MAXMONNO &&
 		    !rn2(POTION_OCCUPANT_CHANCE(flags.ghost_count))) {
 		ghost_from_bottle();
 		useup(otmp);
 		return(1);
-	    } else if (!strcmp(potion_descr, "smoky") && /* EN } else if (!strcmp(potion_descr, "smoky") && */ // TODO DE
+	    } else if (!strcmp(potion_descr, "ADJEKTIV_POT_SMOKY") && /* EN } else if (!strcmp(potion_descr, "smoky") && */
 		    flags.djinni_count < MAXMONNO &&
 		    !rn2(POTION_OCCUPANT_CHANCE(flags.djinni_count))) {
 		djinni_from_bottle(otmp);
@@ -394,8 +395,8 @@ register struct obj *otmp;
 
 	if(nothing) {
 	    unkn++;
-	    You("have a %s feeling for a moment, then it passes.", /* EN You("have a %s feeling for a moment, then it passes.", */ // TODO DE
-		  Hallucination ? "normal" : "peculiar"); /* EN Hallucination ? "normal" : "peculiar"); */ // TODO DE
+	    You("VERB_HAVE kurz ein %s Gefühl, dann vergeht's.", /* EN You("have a %s feeling for a moment, then it passes.", */
+		  Hallucination ? "normales" : "sonderbares"); /* EN Hallucination ? "normal" : "peculiar"); */
 	}
 	if(otmp->dknown && !objects[otmp->otyp].oc_name_known) {
 		if(!unkn) {
@@ -448,7 +449,7 @@ peffects(otmp)
 		break;
 	case POT_WATER:
 		if(!otmp->blessed && !otmp->cursed) {
-		    pline("This tastes like water."); /* EN pline("This tastes like water."); */ // TODO DE
+		    pline("Das schmeckt nach Wasser."); /* EN pline("This tastes like water."); */
 		    u.uhunger += rnd(10);
 		    newuhs(FALSE);
 		    break;
@@ -457,7 +458,7 @@ peffects(otmp)
 		if(is_undead(youmonst.data) || is_demon(youmonst.data) ||
 				u.ualign.type == A_CHAOTIC) {
 		    if(otmp->blessed) {
-			pline("This burns like acid!"); /* EN pline("This burns like acid!"); */ // TODO DE
+			pline("Das brennt wie Säure!"); /* EN pline("This burns like acid!"); */
 			exercise(A_CON, FALSE);
 			if (u.ulycn >= LOW_PM) {
 			    Your("affinity to %s disappears!", /* EN Your("affinity to %s disappears!", */ // TODO DE
@@ -466,16 +467,16 @@ peffects(otmp)
 				you_unwere(FALSE);
 			    u.ulycn = NON_PM;	/* cure lycanthropy */
 			}
-			losehp(d(2,6), "potion of holy water", KILLED_BY_AN); /* EN losehp(d(2,6), "potion of holy water", KILLED_BY_AN); */ // TODO DE
+			losehp(d(2,6), "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_HOLY_WATER", KILLED_BY_AN); /* EN losehp(d(2,6), "potion of holy water", KILLED_BY_AN); */
 		    } else if(otmp->cursed) {
-			You_feel("quite proud of yourself."); /* EN You_feel("quite proud of yourself."); */ // TODO DE
+			Du_fuehlst_dich("ziemlich stolz auf KASUS_AKKUSATIV PRONOMEN_PERSONAL selbst."); /* EN You_feel("quite proud of yourself."); */
 			healup(d(2,6),0,0,0);
 			if (u.ulycn >= LOW_PM && !Upolyd) you_were();
 			exercise(A_CON, TRUE);
 		    }
 		} else {
 		    if(otmp->blessed) {
-			You_feel("full of awe."); /* EN You_feel("full of awe."); */ // TODO DE
+			Du_fuehlst_dich("voller Ehrfurcht."); /* EN You_feel("full of awe."); */
 			make_sick(0L, (char *) 0, TRUE, SICK_ALL);
 			exercise(A_WIS, TRUE);
 			exercise(A_CON, TRUE);
@@ -484,11 +485,11 @@ peffects(otmp)
 			/* make_confused(0L,TRUE); */
 		    } else {
 			if(u.ualign.type == A_LAWFUL) {
-			    pline("This burns like acid!"); /* EN pline("This burns like acid!"); */ // TODO DE
-			    losehp(d(2,6), "potion of unholy water", /* EN losehp(d(2,6), "potion of unholy water", */ // TODO DE
+			    pline("Das brennt wie Säure!"); /* EN pline("This burns like acid!"); */
+			    losehp(d(2,6), "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_UNHOLY_WATER", /* EN losehp(d(2,6), "potion of unholy water", */
 				KILLED_BY_AN);
 			} else
-			    You_feel("full of dread."); /* EN You_feel("full of dread."); */ // TODO DE
+			    Du_fuehlst_dich("voller Furcht."); /* EN You_feel("full of dread."); */
 			if (u.ulycn >= LOW_PM && !Upolyd) you_were();
 			exercise(A_CON, FALSE);
 		    }
@@ -496,9 +497,9 @@ peffects(otmp)
 		break;
 	case POT_BOOZE:
 		unkn++;
-		pline("Ooph!  This tastes like %s%s!", /* EN pline("Ooph!  This tastes like %s%s!", */ // TODO DE
-		      otmp->odiluted ? "watered down " : "", /* EN otmp->odiluted ? "watered down " : "", */ // TODO DE
-		      Hallucination ? "dandelion wine" : "liquid fire"); /* EN Hallucination ? "dandelion wine" : "liquid fire"); */ // TODO DE
+		pline("Uff!  Das schmeckt wie %s%s!", /* EN pline("Ooph!  This tastes like %s%s!", */
+		      otmp->odiluted ? "verwässertes " : "", /* EN otmp->odiluted ? "watered down " : "", */
+		      Hallucination ? "dandelion wine" : "Feuerwasser"); /* EN Hallucination ? "dandelion wine" : "liquid fire"); */ // TODO DE
 		if (!otmp->blessed)
 		    make_confused(itimeout_incr(HConfusion, d(3,8)), FALSE);
 		/* the whiskey makes us feel better */
@@ -507,15 +508,15 @@ peffects(otmp)
 		newuhs(FALSE);
 		exercise(A_WIS, FALSE);
 		if(otmp->cursed) {
-			You("pass out."); /* EN You("pass out."); */ // TODO DE
+			You("VERB_WERDEN ohnmächtig."); /* EN You("pass out."); */
 			multi = -rnd(15);
-			nomovemsg = "You awake with a headache."; /* EN nomovemsg = "You awake with a headache."; */ // TODO DE
+			nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_AUFWACHEN mit Kopfschmerzen SATZKLAMMER."; /* EN nomovemsg = "You awake with a headache."; */
 		}
 		break;
 	case POT_ENLIGHTENMENT:
 		if(otmp->cursed) {
 			unkn++;
-			You("have an uneasy feeling..."); /* EN You("have an uneasy feeling..."); */ // TODO DE
+			You("VERB_HAVE eine böse Vorahnung ..."); /* EN You("have an uneasy feeling..."); */
 			exercise(A_WIS, FALSE);
 		} else {
 			if (otmp->blessed) {
@@ -558,8 +559,8 @@ peffects(otmp)
 
 		unkn++;
 		if (otmp->cursed)
-		    pline("Yecch!  This tastes %s.", /* EN pline("Yecch!  This tastes %s.", */ // TODO DE
-			  Hallucination ? "overripe" : "rotten"); /* EN Hallucination ? "overripe" : "rotten"); */ // TODO DE
+		    pline("Iii!  Das schmeckt %s.", /* EN pline("Yecch!  This tastes %s.", */
+			  Hallucination ? "überreif" : "vergammelt"); /* EN Hallucination ? "overripe" : "rotten"); */
 		else
 		    pline(Hallucination ?
 		      "This tastes like 10%% real %s%s all-natural beverage." : /* EN "This tastes like 10%% real %s%s all-natural beverage." : */ // TODO DE
@@ -585,14 +586,14 @@ peffects(otmp)
 		see_monsters();	/* see invisible monsters */
 		newsym(u.ux,u.uy); /* see yourself! */
 		if (msg && !Blind) { /* Blind possible if polymorphed */
-		    You("can see through yourself, but you are visible!"); /* EN You("can see through yourself, but you are visible!"); */ // TODO DE
+		    You("VERB_KOENNEN durch OBJECT PRONOMEN_PERSONAL durchsehen, aber NEUER_SATZ SUBJECT PRONOMEN_PERSONAL VERB_SEIN sichtbar!"); /* EN You("can see through yourself, but you are visible!"); */
 		    unkn--;
 		}
 		break;
 	    }
 	case POT_PARALYSIS:
 		if (Free_action)
-		    You("stiffen momentarily."); /* EN You("stiffen momentarily."); */ // TODO DE
+		    You("VERB_VERSTEIFEN für einen Moment."); /* EN You("stiffen momentarily."); */
 		else {
 		    if (Levitation || Is_airlevel(&u.uz)||Is_waterlevel(&u.uz))
 			You("are motionlessly suspended."); /* EN You("are motionlessly suspended."); */ // TODO DE
@@ -610,9 +611,9 @@ peffects(otmp)
 		break;
 	case POT_SLEEPING:
 		if(Sleep_resistance || Free_action)
-		    You("yawn."); /* EN You("yawn."); */ // TODO DE
+		    You("VERB_GAEHNEN."); /* EN You("yawn."); */
 		else {
-		    You("suddenly fall asleep!"); /* EN You("suddenly fall asleep!"); */ // TODO DE
+		    You("VERB_EINSCHLAFEN plötzlich SATZKLAMMER!"); /* EN You("suddenly fall asleep!"); */
 		    fall_asleep(-rn1(10, 25 - 12*bcsign(otmp)), TRUE);
 		}
 		break;
@@ -639,7 +640,7 @@ peffects(otmp)
 			}
 		    }
 		    see_monsters();
-		    if (unkn) You_feel("lonely.");
+		    if (unkn) Du_fuehlst_dich("einsam."); /* EN if (unkn) You_feel("lonely."); */
 		    break;
 		}
 		if (monster_detect(otmp, 0))
@@ -653,7 +654,7 @@ peffects(otmp)
 		exercise(A_WIS, TRUE);
 		break;
 	case POT_SICKNESS:
-		pline("Yecch!  This stuff tastes like poison."); /* EN pline("Yecch!  This stuff tastes like poison."); */ // TODO DE
+		pline("Wuah!  Das Zeug schmeckt giftig."); /* EN pline("Yecch!  This stuff tastes like poison."); */
 		if (otmp->blessed) {
 		    pline("(But in fact it was mildly stale %s.)", /* EN pline("(But in fact it was mildly stale %s.)", */ // TODO DE
 			  fruitname(TRUE));
@@ -703,7 +704,7 @@ peffects(otmp)
 			pline("What a trippy feeling!"); /* EN pline("What a trippy feeling!"); */ // TODO DE
 			unkn++;
 		    } else
-			pline("Huh, What?  Where am I?"); /* EN pline("Huh, What?  Where am I?"); */ // TODO DE
+			pline("He, was?  Wo bin ich?"); /* EN pline("Huh, What?  Where am I?"); */
 		else	nothing++;
 		make_confused(itimeout_incr(HConfusion,
 					    rn1(7, 16 - 8 * bcsign(otmp))),
@@ -778,7 +779,7 @@ peffects(otmp)
 				goto_level(&newlevel, FALSE, FALSE, FALSE);
 			    }
 			}
-			else You("have an uneasy feeling."); /* EN else You("have an uneasy feeling."); */ // TODO DE
+			else You("VERB_HAVE eine dunkle Vorahnung ."); /* EN else You("have an uneasy feeling."); */
 			break;
 		}
 		pluslvl(FALSE);
@@ -804,7 +805,7 @@ peffects(otmp)
 		exercise(A_STR, TRUE);
 		break;
 	case POT_FULL_HEALING:
-		You_feel("completely healed."); /* EN You_feel("completely healed."); */ // TODO DE
+		Du_fuehlst_dich("völlig geheilt."); /* EN You_feel("completely healed."); */
 		healup(400, 4+4*bcsign(otmp), !otmp->cursed, TRUE);
 		/* Restore one lost level if blessed */
 		if (otmp->blessed && u.ulevel < u.ulevelmax) {
@@ -868,15 +869,15 @@ peffects(otmp)
 
 			if (otmp->lamplit) {
 			    if (likes_fire(youmonst.data)) {
-				pline("Ahh, a refreshing drink."); /* EN pline("Ahh, a refreshing drink."); */ // TODO DE
+				pline("Ah, ein erfrischender Trunk."); /* EN pline("Ahh, a refreshing drink."); */
 				good_for_you = TRUE;
 			    } else {
-				You("burn your %s.", body_part(FACE)); /* EN You("burn your %s.", body_part(FACE)); */ // TODO DE
+				You("VERB_BRENNEN OBJECT PRONOMEN_POSSESSIV %s.", body_part(FACE)); /* EN You("burn your %s.", body_part(FACE)); */
 				losehp(d(Fire_resistance ? 1 : 3, 4),
 				       "burning potion of oil", KILLED_BY_AN); /* EN "burning potion of oil", KILLED_BY_AN); */ // TODO DE
 			    }
 			} else if(otmp->cursed)
-			    pline("This tastes like castor oil."); /* EN pline("This tastes like castor oil."); */ // TODO DE
+			    pline("Das schmeckt wie Rizinusöl."); /* EN pline("This tastes like castor oil."); */
 			else
 			    pline("That was smooth!"); /* EN pline("That was smooth!"); */ // TODO DE
 			exercise(A_WIS, good_for_you);
@@ -1066,7 +1067,7 @@ boolean your_fault;
 	case POT_SLEEPING:
 		/* wakeup() doesn't rouse victims of temporary sleep */
 		if (sleep_monst(mon, rnd(12), POTION_CLASS)) {
-		    pline("%s falls asleep.", Monnam(mon)); /* EN pline("%s falls asleep.", Monnam(mon)); */ // TODO DE
+		    pline("SUBJECT %s VERB_EINSCHLAFEN SATZKLAMMER.", Monnam(mon)); /* EN pline("%s falls asleep.", Monnam(mon)); */
 		    slept_monst(mon);
 		}
 		break;
@@ -1262,7 +1263,7 @@ register struct obj *obj;
 		    nomul(-rnd(5));
 		    nomovemsg = You_can_move_again;
 		    exercise(A_DEX, FALSE);
-		} else You("stiffen momentarily."); /* EN } else You("stiffen momentarily."); */ // TODO DE
+		} else You("VERB_VERSTEIFEN für einen Moment."); /* EN } else You("stiffen momentarily."); */
 		break;
 	case POT_SLEEPING:
 		kn++;
@@ -1271,17 +1272,17 @@ register struct obj *obj;
 		    nomul(-rnd(5));
 		    nomovemsg = You_can_move_again;
 		    exercise(A_DEX, FALSE);
-		} else You("yawn."); /* EN } else You("yawn."); */ // TODO DE
+		} else You("VERB_GAEHNEN."); /* EN } else You("yawn."); */
 		break;
 	case POT_SPEED:
-		if (!Fast) Your("knees seem more flexible now."); /* EN if (!Fast) Your("knees seem more flexible now."); */ // TODO DE
+		if (!Fast) Your("NOUN_KNIEs VERB_SCHEINEN jetzt gelenkiger."); /* EN if (!Fast) Your("knees seem more flexible now."); */
 		incr_itimeout(&HFast, rnd(5));
 		exercise(A_DEX, TRUE);
 		break;
 	case POT_BLINDNESS:
 		if (!Blind && !u.usleep) {
 		    kn++;
-		    pline("It suddenly gets dark."); /* EN pline("It suddenly gets dark."); */ // TODO DE
+		    pline("Es wird plötzlich dunkel."); /* EN pline("It suddenly gets dark."); */
 		}
 		make_blinded(itimeout_incr(Blinded, rnd(5)), FALSE);
 		if (!Blind && !u.usleep) Your(vision_clears);
@@ -1439,9 +1440,9 @@ register struct obj *obj;
 	    case WEAPON_CLASS:
 		if (!obj->oerodeproof && is_rustprone(obj) &&
 		    (obj->oeroded < MAX_ERODE) && !rn2(2)) {
-			pline("%s %s some%s.", /* EN pline("%s %s some%s.", */ // TODO DE
-			      Your_buf, aobjnam(obj, "rust"), /* EN Your_buf, aobjnam(obj, "rust"), */ // TODO DE
-			      obj->oeroded ? " more" : "what"); /* EN obj->oeroded ? " more" : "what"); */ // TODO DE
+			pline("SUBJECT %s %s %s.", /* EN pline("%s %s some%s.", */
+			      Your_buf, aobjnam(obj, "VERB_ROSTEN"), /* EN Your_buf, aobjnam(obj, "rust"), */
+			      obj->oeroded ? "weiter" : "ein wenig"); /* EN obj->oeroded ? " more" : "what"); */
 			obj->oeroded++;
 			update_inventory();
 			return TRUE;
@@ -1452,7 +1453,7 @@ register struct obj *obj;
 		if (obj->otyp == POT_ACID) {
 			pline("It boils vigorously!"); /* EN pline("It boils vigorously!"); */ // TODO DE
 			You("are caught in the explosion!"); /* EN You("are caught in the explosion!"); */ // TODO DE
-			losehp(rnd(10), "elementary chemistry", KILLED_BY); /* EN losehp(rnd(10), "elementary chemistry", KILLED_BY); */ // TODO DE
+			losehp(rnd(10), "ADJEKTIV_ELEMENTAR NOUN_CHEMIE", KILLED_BY); /* EN losehp(rnd(10), "elementary chemistry", KILLED_BY); */
 			makeknown(obj->otyp);
 			update_inventory();
 			return (TRUE);
@@ -1656,7 +1657,7 @@ dodip()
 			prinv((char *)0, obj, 0L);
 			return 1;
 		} else {
-			pline("Nothing seems to happen."); /* EN pline("Nothing seems to happen."); */ // TODO DE
+			pline("Nichts scheint zu passieren."); /* EN pline("Nothing seems to happen."); */
 			goto poof;
 		}
 	    }
@@ -1815,8 +1816,8 @@ dodip()
 	    } else {
 		pline("%s %s less %s.", /* EN pline("%s %s less %s.", */ // TODO DE
 		      Yname2(obj), otense(obj, "are"), /* EN Yname2(obj), otense(obj, "are"), */ // TODO DE
-		      (obj->oeroded && obj->oeroded2) ? "corroded and rusty" : /* EN (obj->oeroded && obj->oeroded2) ? "corroded and rusty" : */ // TODO DE
-			obj->oeroded ? "rusty" : "corroded"); /* EN obj->oeroded ? "rusty" : "corroded"); */ // TODO DE
+		      (obj->oeroded && obj->oeroded2) ? "ADJEKTIV_CORRODED und ADJEKTIV_ROSTIG" : /* EN (obj->oeroded && obj->oeroded2) ? "corroded and rusty" : */
+			obj->oeroded ? "ADJEKTIV_ROSTIG" : "ADJEKTIV_CORRODED"); /* EN obj->oeroded ? "rusty" : "corroded"); */
 		if (obj->oeroded > 0) obj->oeroded--;
 		if (obj->oeroded2 > 0) obj->oeroded2--;
 		wisx = TRUE;
@@ -1844,10 +1845,10 @@ dodip()
 		obj->age = 0;
 	    }
 	    if (obj->age > 1000L) {
-		pline("%s %s full.", Yname2(obj), otense(obj, "are")); /* EN pline("%s %s full.", Yname2(obj), otense(obj, "are")); */ // TODO DE
+		pline("%s %s voll.", Yname2(obj), otense(obj, "VERB_SEIN")); /* EN pline("%s %s full.", Yname2(obj), otense(obj, "are")); */
 		potion->in_use = FALSE;	/* didn't go poof */
 	    } else {
-		You("fill %s with oil.", yname(obj)); /* EN You("fill %s with oil.", yname(obj)); */ // TODO DE
+		You("VERB_FUELLEN OBJECT %s mit Öl.", yname(obj)); /* EN You("fill %s with oil.", yname(obj)); */
 		check_unpaid(potion);	/* Yendorian Fuel Tax */
 		obj->age += 2*potion->age;	/* burns more efficiently */
 		if (obj->age > 1500L) obj->age = 1500L;
@@ -1921,7 +1922,7 @@ dodip()
 		return(1);
 	}
 
-	pline("Interesting..."); /* EN pline("Interesting..."); */ // TODO DE
+	pline("Interessant ..."); /* EN pline("Interesting..."); */
 	return(1);
 }
 
@@ -1934,7 +1935,7 @@ register struct obj *obj;
 	int chance;
 
 	if(!(mtmp = makemon(&mons[PM_DJINNI], u.ux, u.uy, NO_MM_FLAGS))){
-		pline("It turns out to be empty."); /* EN pline("It turns out to be empty."); */ // TODO DE
+		pline("Es stellt sich als leer heraus."); /* EN pline("It turns out to be empty."); */
 		return;
 	}
 
@@ -1963,8 +1964,8 @@ register struct obj *obj;
 		mtmp->mpeaceful = TRUE;
 		set_malign(mtmp);
 		break;
-	case 3 : verbalize("It is about time!"); /* EN case 3 : verbalize("It is about time!"); */ // TODO DE
-		pline("%s vanishes.", Monnam(mtmp)); /* EN pline("%s vanishes.", Monnam(mtmp)); */ // TODO DE
+	case 3 : verbalize("Wird auch langsam Zeit!"); /* EN case 3 : verbalize("It is about time!"); */
+		pline("SUBJECT %s VERB_VERSCHWINDEN.", Monnam(mtmp)); /* EN pline("%s vanishes.", Monnam(mtmp)); */
 		mongone(mtmp);
 		break;
 	default: verbalize("You disturbed me, fool!"); /* EN default: verbalize("You disturbed me, fool!"); */ // TODO DE

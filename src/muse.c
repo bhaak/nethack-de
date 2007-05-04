@@ -115,8 +115,8 @@ struct obj *obj;
 			mtmp->mpeaceful = 1;
 			set_malign(mtmp);
 		    } else {
-			verbalize("It is about time."); /* EN verbalize("It is about time."); */ // TODO DE
-			if (vis) pline("%s vanishes.", Monnam(mtmp)); /* EN if (vis) pline("%s vanishes.", Monnam(mtmp)); */ // TODO DE
+			verbalize("Wird auch Zeit."); /* EN verbalize("It is about time."); */ // TODO DE
+			if (vis) pline("%s VERB_VERSCHWINDEN.", Monnam(mtmp)); /* EN if (vis) pline("%s vanishes.", Monnam(mtmp)); */
 			mongone(mtmp);
 		    }
 		}
@@ -209,7 +209,7 @@ struct obj *otmp;
 {
 	if (canseemon(mtmp)) {
 		otmp->dknown = 1;
-		pline("%s drinks %s!", Monnam(mtmp), singular(otmp, doname)); /* EN pline("%s drinks %s!", Monnam(mtmp), singular(otmp, doname)); */ // TODO DE
+		pline("%s VERB_TRINKEN OBJECT %s!", Monnam(mtmp), singular(otmp, doname)); /* EN pline("%s drinks %s!", Monnam(mtmp), singular(otmp, doname)); */
 	} else
 		if (flags.soundok)
 			You_hear("a chugging sound."); /* EN You_hear("a chugging sound."); */ // TODO DE
@@ -735,7 +735,7 @@ mon_tele:
 			t = t_at(trapx,trapy);
 			pline("%s %s into a %s!", Monnam(mtmp), /* EN pline("%s %s into a %s!", Monnam(mtmp), */ // TODO DE
 			makeplural(locomotion(mtmp->data, "jump")), /* EN makeplural(locomotion(mtmp->data, "jump")), */ // TODO DE
-			t->ttyp == TRAPDOOR ? "trap door" : "hole"); /* EN t->ttyp == TRAPDOOR ? "trap door" : "hole"); */ // TODO DE
+			t->ttyp == TRAPDOOR ? "NOUN_TRAP_DOOR" : "NOUN_HOLE"); /* EN t->ttyp == TRAPDOOR ? "trap door" : "hole"); */
 			if (levl[trapx][trapy].typ == SCORR) {
 			    levl[trapx][trapy].typ = CORR;
 			    unblock_point(trapx, trapy);
@@ -781,26 +781,26 @@ mon_tele:
 		    migrate_to_level(mtmp, ledger_no(&u.uz) + 1,
 				     MIGR_RANDOM, (coord *)0);
 		} else {
-		    if (vismon) pline("%s escapes upstairs!", Monnam(mtmp)); /* EN if (vismon) pline("%s escapes upstairs!", Monnam(mtmp)); */ // TODO DE
+		    if (vismon) pline("%s VERB_FLIEHEN die Treppe hinauf!", Monnam(mtmp)); /* EN if (vismon) pline("%s escapes upstairs!", Monnam(mtmp)); */
 		    migrate_to_level(mtmp, ledger_no(&u.uz) - 1,
 				     MIGR_STAIRS_DOWN, (coord *)0);
 		}
 		return 2;
 	case MUSE_DOWNSTAIRS:
 		m_flee(mtmp);
-		if (vismon) pline("%s escapes downstairs!", Monnam(mtmp)); /* EN if (vismon) pline("%s escapes downstairs!", Monnam(mtmp)); */ // TODO DE
+		if (vismon) pline("%s VERB_FLIEHEN die Treppe hinab!", Monnam(mtmp)); /* EN if (vismon) pline("%s escapes downstairs!", Monnam(mtmp)); */
 		migrate_to_level(mtmp, ledger_no(&u.uz) + 1,
 				 MIGR_STAIRS_UP, (coord *)0);
 		return 2;
 	case MUSE_UP_LADDER:
 		m_flee(mtmp);
-		if (vismon) pline("%s escapes up the ladder!", Monnam(mtmp)); /* EN if (vismon) pline("%s escapes up the ladder!", Monnam(mtmp)); */ // TODO DE
+		if (vismon) pline("%s VERB_FLIEHEN die Leiter rauf!", Monnam(mtmp)); /* EN if (vismon) pline("%s escapes up the ladder!", Monnam(mtmp)); */
 		migrate_to_level(mtmp, ledger_no(&u.uz) - 1,
 				 MIGR_LADDER_DOWN, (coord *)0);
 		return 2;
 	case MUSE_DN_LADDER:
 		m_flee(mtmp);
-		if (vismon) pline("%s escapes down the ladder!", Monnam(mtmp)); /* EN if (vismon) pline("%s escapes down the ladder!", Monnam(mtmp)); */ // TODO DE
+		if (vismon) pline("%s VERB_FLIEHEN die Leiter runter!", Monnam(mtmp)); /* EN if (vismon) pline("%s escapes down the ladder!", Monnam(mtmp)); */
 		migrate_to_level(mtmp, ledger_no(&u.uz) + 1,
 				 MIGR_LADDER_UP, (coord *)0);
 		return 2;
@@ -810,14 +810,14 @@ mon_tele:
 		/* regular stairs, not sstairs.			*/
 		if (sstairs.up) {
 			if (vismon)
-			    pline("%s escapes upstairs!", Monnam(mtmp)); /* EN pline("%s escapes upstairs!", Monnam(mtmp)); */ // TODO DE
+			    pline("%s VERB_FLIEHEN die Treppe hinauf!", Monnam(mtmp)); /* EN pline("%s escapes upstairs!", Monnam(mtmp)); */
 			if(Inhell) {
 			    migrate_to_level(mtmp, ledger_no(&sstairs.tolev),
 					     MIGR_RANDOM, (coord *)0);
 			    return 2;
 			}
 		} else	if (vismon)
-		    pline("%s escapes downstairs!", Monnam(mtmp)); /* EN pline("%s escapes downstairs!", Monnam(mtmp)); */ // TODO DE
+		    pline("%s VERB_FLIEHEN die Treppe hinab!", Monnam(mtmp)); /* EN pline("%s escapes downstairs!", Monnam(mtmp)); */
 		migrate_to_level(mtmp, ledger_no(&sstairs.tolev),
 				 MIGR_SSTAIRS, (coord *)0);
 		return 2;
@@ -850,7 +850,7 @@ mon_tele:
 			mtmp->mblinded = 0;
 			if (vismon) pline(mcsa, Monnam(mtmp));
 		}
-		if (vismon) pline("%s looks better.", Monnam(mtmp)); /* EN if (vismon) pline("%s looks better.", Monnam(mtmp)); */ // TODO DE
+		if (vismon) pline("SUBJECT %s VERB_AUSSEHEN besser SATZKLAMMER.", Monnam(mtmp)); /* EN if (vismon) pline("%s looks better.", Monnam(mtmp)); */
 		if (oseen) makeknown(POT_HEALING);
 		m_useup(mtmp, otmp);
 		return 2;
@@ -887,7 +887,7 @@ mon_tele:
 		mon_consume_unstone(mtmp, otmp, FALSE, FALSE);
 		return 2;
 	case 0: return 0; /* i.e. an exploded wand */
-	default: impossible("%s wanted to perform action %d?", Monnam(mtmp), /* EN default: impossible("%s wanted to perform action %d?", Monnam(mtmp), */ // TODO DE
+	default: impossible("%s wanted to perform action %d?", Monnam(mtmp),
 			m.has_defense);
 		break;
 	}

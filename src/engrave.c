@@ -27,11 +27,11 @@ static const char *random_mesg[] = {
 	"notary sojak", /* Smokey Stover */
 	"For a good time call 8?7-5309",
 	"Please don't feed the animals.", /* Various zoos around the world */
-	"Madam, in Eden, I'm Adam.", /* A palindrome */
-	"Two thumbs up!", /* Siskel & Ebert */
+	"Ein Neger mit Gazelle zagt im Regen nie.", /* A palindrome */ /* EN "Madam, in Eden, I'm Adam.", */
+	"Und immer ein Bit über behalten!", /* die zwei Wolfgangs */ /* EN "Two thumbs up!", */ /* Siskel & Ebert */
 	"Hello, World!", /* The First C Program */
 #ifdef MAIL
-	"You've got mail!", /* AOL */
+	"Sie haben Post!", /* EN "You've got mail!", */ /* AOL */
 #endif
 	"As if!", /* Clueless */
 };
@@ -306,8 +306,7 @@ register int x,y;
 	    case BURN:
 		if (!Blind || can_reach_floor()) {
 			sensed = 1;
-			// TODO
-			pline("Some text has been %s into the %s here.", /* EN pline("Some text has been %s into the %s here.", */
+			pline("Some text has been %s into the %s here.", /* EN pline("Some text has been %s into the %s here.", */ // TODO DE
 				is_ice(x,y) ? "melted" : "burned", /* EN is_ice(x,y) ? "melted" : "burned", */
 				surface(x,y));
 		}
@@ -475,7 +474,7 @@ doengrave()
 
 	if(u.uswallow) {
 		if (is_animal(u.ustuck->data)) {
-			// TODO pline("Was würdest du schreiben?  \"Jonas war hier\"?"); /* EN pline("What would you write?  \"Jonah was here\"?"); */
+			pline("Was würdest du schreiben?  \"Jonas war hier\"?"); /* EN pline("What would you write?  \"Jonah was here\"?"); */ // TODO DE
 			return(0);
 		} else if (is_whirly(u.ustuck->data)) {
 			You_cant("reach the %s.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */
@@ -490,11 +489,11 @@ doengrave()
 		return(0);
 	}
 	if(Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)/* in bubble */) {
-		You_cant("write in thin air!"); /* EN You_cant("write in thin air!"); */
+		You_cant("write in thin air!"); /* EN You_cant("write in thin air!"); */ // TODO DE
 		return(0);
 	}
 	if (cantwield(youmonst.data)) {
-		You_cant("even hold anything!"); /* EN You_cant("even hold anything!"); */
+		You_cant("even hold anything!"); /* EN You_cant("even hold anything!"); */ // TODO DE
 		return(0);
 	}
 	if (check_capacity((char *)0)) return (0);
@@ -503,7 +502,7 @@ doengrave()
 	 * Edited by GAN 10/20/86 so as not to change weapon wielded.
 	 */
 
-	otmp = getobj(styluses, "write with"); /* EN otmp = getobj(styluses, "write with"); */
+	otmp = getobj(styluses, "write with"); /* EN otmp = getobj(styluses, "write with"); */ // TODO DE
 	if(!otmp) return(0);		/* otmp == zeroobj if fingers */
 
 	if (otmp == &zeroobj) writer = makeplural(body_part(FINGER));
@@ -518,8 +517,7 @@ doengrave()
 	}
 
 	if (jello) {
-		// TODO
-		You("tickle %s with your %s.", mon_nam(u.ustuck), writer); /* EN You("tickle %s with your %s.", mon_nam(u.ustuck), writer); */
+		You("tickle %s with your %s.", mon_nam(u.ustuck), writer); /* EN You("tickle %s with your %s.", mon_nam(u.ustuck), writer); */ // TODO DE
 		Your("message dissolves..."); /* EN Your("message dissolves..."); */
 		return(0);
 	}

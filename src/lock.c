@@ -580,7 +580,7 @@ doopen()		/* try to open a door */
 	    unblock_point(cc.x,cc.y);		/* vision: new see through there */
 	} else {
 	    exercise(A_STR, TRUE);
-	    pline_The("door resists!"); /* EN pline_The("door resists!"); */ // TODO DE
+	    pline_The("NOUN_OBJ_DOOR klemmt!"); /* EN pline_The("door resists!"); */
 	}
 
 	return(1);
@@ -595,14 +595,14 @@ register int x, y;
 
 	if(mtmp && mtmp->m_ap_type != M_AP_FURNITURE) {
 		if (mtmp->m_ap_type == M_AP_OBJECT) goto objhere;
-		pline("%s stands in the way!", !canspotmon(mtmp) ?  /* EN pline("%s stands in the way!", !canspotmon(mtmp) ? */ // TODO DE
-			"Some creature" : Monnam(mtmp)); /* EN "Some creature" : Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_STEHEN OBJECT KASUS_DATIV im Weg!", !canspotmon(mtmp) ?  /* EN pline("%s stands in the way!", !canspotmon(mtmp) ? */
+			"ARTIKEL_UNBESTIMMTER NOUN_CREATURE" : Monnam(mtmp)); /* EN "Some creature" : Monnam(mtmp)); */
 		if (!canspotmon(mtmp))
 		    map_invisible(mtmp->mx, mtmp->my);
 		return(TRUE);
 	}
 	if (OBJ_AT(x, y)) {
-objhere:	pline("%s's in the way.", Something); /* EN objhere:	pline("%s's in the way.", Something); */ // TODO DE
+objhere:	pline("SUBJECT %s VERB_STEHEN OBJECT KASUS_DATIV im Weg.", Something); /* EN objhere:	pline("%s's in the way.", Something); */
 		return(TRUE);
 	}
 	return(FALSE);

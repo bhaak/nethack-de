@@ -746,7 +746,7 @@ die:
 	 * smiling... :-)  -3.
 	 */
 	if (moves <= 1 && how < PANICKED)	/* You die... --More-- */
-	    pline("Do not pass go.  Do not collect 200 %s.", currency(200L)); /* EN pline("Do not pass go.  Do not collect 200 %s.", currency(200L)); */ // TODO DE
+	    pline("Gehe nicht über Los.  Ziehe nicht 4000 %s ein.", currency(4000L)); /* EN pline("Do not pass go.  Do not collect 200 %s.", currency(200L)); */
 
 	if (have_windows) wait_synch();	/* flush screen output */
 #ifndef NO_SIGNAL

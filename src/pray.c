@@ -278,7 +278,7 @@ register int trouble;
 		    delayed_killer = 0;
 		    break;
 	    case TROUBLE_SLIMED:
-		    pline_The("slime disappears."); /* EN pline_The("slime disappears."); */ // TODO DE
+		    pline("Der Schleim verschwindet."); /* EN pline_The("slime disappears."); */
 		    Slimed = 0;
 		    flags.botl = 1;
 		    delayed_killer = 0;
@@ -1108,7 +1108,7 @@ register struct obj *otmp;
 		break;
 	}
     else if (Blind && u.ualign.type == A_LAWFUL)
-	Your("sacrifice disappears!"); /* EN Your("sacrifice disappears!"); */ // TODO DE
+	Your("NOUN_SACRIFICE VERB_VERSCHWINDEN!"); /* EN Your("sacrifice disappears!"); */
     else Your("sacrifice is consumed in a %s!", /* EN else Your("sacrifice is consumed in a %s!", */ // TODO DE
 	      u.ualign.type == A_LAWFUL ? "flash of light" : "burst of flame"); /* EN u.ualign.type == A_LAWFUL ? "flash of light" : "burst of flame"); */ // TODO DE
     if (carried(otmp)) useup(otmp);
@@ -1125,7 +1125,7 @@ dosacrifice()
     aligntyp altaralign = a_align(u.ux,u.uy);
 
     if (!on_altar() || u.uswallow) {
-	You("are not standing on an altar."); /* EN You("are not standing on an altar."); */ // TODO DE
+	You("VERB_STEHEN nicht auf einem Altar."); /* EN You("are not standing on an altar."); */ // TODO DE
 	return 0;
     }
 
@@ -1265,7 +1265,7 @@ dosacrifice()
 	    if (Hallucination)
 		    You("VERB_HAVE Heimweh."); /* EN You_feel("homesick."); */
 	    else
-		    Du_spuerst("einen Drang an die Oberfläche zurückzukehren."); /* EN You_feel("an urge to return to the surface."); */
+		    Du_spuerst("den Drang an die Oberfläche zurückzukehren."); /* EN You_feel("an urge to return to the surface."); */
 	    return 1;
 	} else {
 	    /* The final Test.	Did you win? */
@@ -1586,7 +1586,7 @@ dopray()
     if(p_type == 3 && !Inhell) {
 	/* if you've been true to your god you can't die while you pray */
 	if (!Blind)
-	    You("are surrounded by a shimmering light."); /* EN You("are surrounded by a shimmering light."); */ // TODO DE
+	    You("VERB_SEIN von schimmerndem Licht umgeben."); /* EN You("are surrounded by a shimmering light."); */
 	u.uinvulnerable = TRUE;
     }
 

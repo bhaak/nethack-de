@@ -196,7 +196,7 @@ newman()
 		    if (u.uhpmax <= 0) u.uhpmax = 1;
 		} else {
 dead: /* we come directly here if their experience level went to 0 or less */
-		    Your("new form doesn't seem healthy enough to survive."); /* EN Your("new form doesn't seem healthy enough to survive."); */ // TODO DE
+		    Your("ADJEKTIV_NEU NOUN_GESTALT VERB_SCHEINEN nicht gesund genug zum Leben zu sein."); /* EN Your("new form doesn't seem healthy enough to survive."); */
 		    killer_format = KILLED_BY_AN;
 		    killer="unsuccessful polymorph"; /* EN killer="unsuccessful polymorph"; */ // TODO DE
 		    done(DIED);
@@ -205,7 +205,7 @@ dead: /* we come directly here if their experience level went to 0 or less */
 		}
 	}
 	newuhs(FALSE);
-	polyman("feel like a new %s!", /* EN polyman("feel like a new %s!", */ // TODO DE
+	polyman("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL wie ARTIKEL_UNBESTIMMTER ADJEKTIV_NEU %s!", /* EN polyman("feel like a new %s!", */
 		(flags.female && urace.individual.f) ? urace.individual.f :
 		(urace.individual.m) ? urace.individual.m : urace.noun);
 	if (Slimed) {
@@ -405,7 +405,7 @@ int	mntmp;
 	}
 	if (Sick_resistance && Sick) {
 		make_sick(0L, (char *) 0, FALSE, SICK_ALL);
-		You("no longer feel sick."); /* EN You("no longer feel sick."); */ // TODO DE
+		Dir_ist("nicht mehr übel."); /* EN You("no longer feel sick."); */
 	}
 	if (Slimed) {
 	    if (mntmp == PM_FIRE_VORTEX || mntmp == PM_FIRE_ELEMENTAL || mntmp == PM_SALAMANDER) {
@@ -578,18 +578,18 @@ break_armor()
 	}
 	if ((otmp = uarmc) != 0) {
 	    if(otmp->oartifact) {
-		Your("%s falls off!", cloak_simple_name(otmp)); /* EN Your("%s falls off!", cloak_simple_name(otmp)); */ // TODO DE
+		Your("%s VERB_FALLEN runter!", cloak_simple_name(otmp)); /* EN Your("%s falls off!", cloak_simple_name(otmp)); */
 		(void) Cloak_off();
 		dropx(otmp);
 	    } else {
-		Your("%s tears apart!", cloak_simple_name(otmp)); /* EN Your("%s tears apart!", cloak_simple_name(otmp)); */ // TODO DE
+		You("VERB_ZERREISSEN OBJECT PRONOMEN_PERSONAL %s!", cloak_simple_name(otmp)); /* EN Your("%s tears apart!", cloak_simple_name(otmp)); */
 		(void) Cloak_off();
 		useup(otmp);
 	    }
 	}
 #ifdef TOURIST
 	if (uarmu) {
-		Your("shirt rips to shreds!"); /* EN Your("shirt rips to shreds!"); */ // TODO DE
+		Your("NOUN_SHIRT VERB_WERDEN in Fetzen gerissen!"); /* EN Your("shirt rips to shreds!"); */
 		useup(uarmu);
 	}
 #endif
@@ -644,13 +644,13 @@ break_armor()
 	    dropx(otmp);
 	}
 	if ((otmp = uarms) != 0) {
-	    You("can no longer hold your shield!"); /* EN You("can no longer hold your shield!"); */ // TODO DE
+	    You("VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV NOUN_SHIELD nicht mehr halten!"); /* EN You("can no longer hold your shield!"); */
 	    (void) Shield_off();
 	    dropx(otmp);
 	}
 	if ((otmp = uarmh) != 0) {
 	    if (donning(otmp)) cancel_don();
-	    Your("helmet falls to the %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE
+	    Your("NOUN_HELMET VERB_FALLEN OBJECT auf ARTIKEL_BESTIMMTER %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */
 	    (void) Helmet_off();
 	    dropx(otmp);
 	}
@@ -661,8 +661,8 @@ break_armor()
 	    if (donning(otmp)) cancel_don();
 	    if (is_whirly(youmonst.data))
 		Your("boots fall away!"); /* EN Your("boots fall away!"); */ // TODO DE
-	    else Your("boots %s off your feet!", /* EN else Your("boots %s off your feet!", */ // TODO DE
-			verysmall(youmonst.data) ? "slide" : "are pushed"); /* EN verysmall(youmonst.data) ? "slide" : "are pushed"); */ // TODO DE
+	    else Your("NOUN_BOOTs %s off your feet!", /* EN else Your("boots %s off your feet!", */ // TODO DE
+			verysmall(youmonst.data) ? "VERB_RUTSCHEN" : "are pushed"); /* EN verysmall(youmonst.data) ? "slide" : "are pushed"); */ // TODO DE
 	    (void) Boots_off();
 	    dropx(otmp);
 	}
@@ -684,8 +684,8 @@ int alone;
 	if (!alone || cantwield(youmonst.data)) {
 	    struct obj *wep = uwep;
 
-	    if (alone) You("find you must drop your weapon%s!", /* EN if (alone) You("find you must drop your weapon%s!", */ // TODO DE
-			   	u.twoweap ? "s" : ""); /* EN u.twoweap ? "s" : ""); */ // TODO DE
+	    if (alone) You("VERB_MERKEN, NEUER_SATZ PRONOMEN_PERSONAL VERB_MUESSEN OBJECT PRONOMEN_POSSESSIV NOUN_WEAPON%s fallenlassen!", /* EN if (alone) You("find you must drop your weapon%s!", */
+			   	u.twoweap ? "s" : ""); /* EN u.twoweap ? "s" : ""); */
 	    otmp2 = u.twoweap ? uswapwep : 0;
 	    uwepgone();
 	    if (!wep->cursed || wep->otyp != LOADSTONE)
@@ -738,11 +738,11 @@ dobreathe()
 	struct attack *mattk;
 
 	if (Strangled) {
-	    You_cant("breathe.  Sorry."); /* EN You_cant("breathe.  Sorry."); */ // TODO DE
+	    You_cant("atmen.  Tut mir leid."); /* EN You_cant("breathe.  Sorry."); */
 	    return(0);
 	}
 	if (u.uen < 15) {
-	    You("don't have enough energy to breathe!"); /* EN You("don't have enough energy to breathe!"); */ // TODO DE
+	    You("VERB_HAVE nicht genug Energie zum Atmen!"); /* EN You("don't have enough energy to breathe!"); */
 	    return(0);
 	}
 	u.uen -= 15;
@@ -776,7 +776,7 @@ int
 doremove()
 {
 	if (!Punished) {
-		You("are not chained to anything!"); /* EN You("are not chained to anything!"); */ // TODO DE
+		You("VERB_SEIN an nichts angekettet!"); /* EN You("are not chained to anything!"); */
 		return(0);
 	}
 	unpunish();
@@ -876,7 +876,7 @@ dospinweb()
 		case MAGIC_TRAP:
 		case ANTI_MAGIC:
 		case POLY_TRAP:
-			You("have triggered a trap!"); /* EN You("have triggered a trap!"); */ // TODO DE
+			You("VERB_HAVE eine Falle ausgelöst!"); /* EN You("have triggered a trap!"); */
 			dotrap(ttmp, 0);
 			return(1);
 		default:
@@ -885,8 +885,8 @@ dospinweb()
 		}
 	else if (On_stairs(u.ux, u.uy)) {
 	    /* cop out: don't let them hide the stairs */
-	    Your("web fails to impede access to the %s.",
-		 (levl[u.ux][u.uy].typ == STAIRS) ? "stairs" : "ladder");
+	    Your("web fails to impede access to the %s.", /* EN Your("web fails to impede access to the %s.", */ // TODO DE
+		 (levl[u.ux][u.uy].typ == STAIRS) ? "stairs" : "ladder"); /* EN (levl[u.ux][u.uy].typ == STAIRS) ? "stairs" : "ladder"); */ // TODO DE
 	    return(1);
 		 
 	}
@@ -903,16 +903,16 @@ int
 dosummon()
 {
 	if (u.uen < 10) {
-	    You("lack the energy to send forth a call for help!");
+	    You("lack the energy to send forth a call for help!"); /* EN You("lack the energy to send forth a call for help!"); */ // TODO DE
 	    return(0);
 	}
 	u.uen -= 10;
 	flags.botl = 1;
 
-	You("call upon your brethren for help!");
+	You("call upon your brethren for help!"); /* EN You("call upon your brethren for help!"); */ // TODO DE
 	exercise(A_WIS, TRUE);
 	if (!were_summon(youmonst.data,TRUE))
-		pline("But none arrive.");
+		pline("But none arrive."); /* EN pline("But none arrive."); */ // TODO DE
 	return(1);
 }
 
@@ -932,17 +932,17 @@ dogaze()
 	    }
 	}
 	if (adtyp != AD_CONF && adtyp != AD_FIRE) {
-	    impossible("gaze attack %d?", adtyp);
+	    impossible("gaze attack %d?", adtyp); /* EN impossible("gaze attack %d?", adtyp); */ // TODO DE
 	    return 0;
 	}
 
 
 	if (Blind) {
-	    You_cant("see anything to gaze at.");
+	    You_cant("see anything to gaze at."); /* EN You_cant("see anything to gaze at."); */ // TODO DE
 	    return 0;
 	}
 	if (u.uen < 15) {
-	    You("lack the energy to use your special gaze!");
+	    You("lack the energy to use your special gaze!"); /* EN You("lack the energy to use your special gaze!"); */ // TODO DE
 	    return(0);
 	}
 	u.uen -= 15;
@@ -953,21 +953,21 @@ dogaze()
 	    if (canseemon(mtmp) && couldsee(mtmp->mx, mtmp->my)) {
 		looked++;
 		if (Invis && !perceives(mtmp->data))
-		    pline("%s seems not to notice your gaze.", Monnam(mtmp));
+		    pline("%s seems not to notice your gaze.", Monnam(mtmp)); /* EN pline("%s seems not to notice your gaze.", Monnam(mtmp)); */ // TODO DE
 		else if (mtmp->minvis && !See_invisible)
-		    You_cant("see where to gaze at %s.", Monnam(mtmp));
+		    You_cant("see where to gaze at %s.", Monnam(mtmp)); /* EN You_cant("see where to gaze at %s.", Monnam(mtmp)); */ // TODO DE
 		else if (mtmp->m_ap_type == M_AP_FURNITURE
 			|| mtmp->m_ap_type == M_AP_OBJECT) {
 		    looked--;
 		    continue;
 		} else if (flags.safe_dog && !Confusion && !Hallucination
 		  && mtmp->mtame) {
-		    You("avoid gazing at %s.", y_monnam(mtmp));
+		    You("avoid gazing at %s.", y_monnam(mtmp)); /* EN You("avoid gazing at %s.", y_monnam(mtmp)); */ // TODO DE
 		} else {
 		    if (flags.confirm && mtmp->mpeaceful && !Confusion
 							&& !Hallucination) {
-			Sprintf(qbuf, "Really %s %s?",
-			    (adtyp == AD_CONF) ? "confuse" : "attack",
+			Sprintf(qbuf, "Really %s %s?", /* EN Sprintf(qbuf, "Really %s %s?", */ // TODO DE
+			    (adtyp == AD_CONF) ? "confuse" : "attack", /* EN (adtyp == AD_CONF) ? "confuse" : "attack", */ // TODO DE
 			    mon_nam(mtmp));
 			if (yn(qbuf) != 'y') continue;
 			setmangry(mtmp);
@@ -982,16 +982,16 @@ dogaze()
 		     */
 		    if (adtyp == AD_CONF) {
 			if (!mtmp->mconf)
-			    Your("gaze confuses %s!", mon_nam(mtmp));
+			    Your("gaze confuses %s!", mon_nam(mtmp)); /* EN Your("gaze confuses %s!", mon_nam(mtmp)); */ // TODO DE
 			else
-			    pline("%s is getting more and more confused.",
+			    pline("%s is getting more and more confused.", /* EN pline("%s is getting more and more confused.", */ // TODO DE
 							Monnam(mtmp));
 			mtmp->mconf = 1;
 		    } else if (adtyp == AD_FIRE) {
 			int dmg = d(2,6);
-			You("attack %s with a fiery gaze!", mon_nam(mtmp));
+			You("attack %s with a fiery gaze!", mon_nam(mtmp)); /* EN You("attack %s with a fiery gaze!", mon_nam(mtmp)); */ // TODO DE
 			if (resists_fire(mtmp)) {
-			    pline_The("fire doesn't burn %s!", mon_nam(mtmp));
+			    pline_The("fire doesn't burn %s!", mon_nam(mtmp)); /* EN pline_The("fire doesn't burn %s!", mon_nam(mtmp)); */ // TODO DE
 			    dmg = 0;
 			}
 			if((int) u.ulevel > rn2(20))
@@ -1009,7 +1009,7 @@ dogaze()
 		    if (!DEADMONSTER(mtmp) &&
 			  (mtmp->data==&mons[PM_FLOATING_EYE]) && !mtmp->mcan) {
 			if (!Free_action) {
-			    You("are frozen by %s gaze!",
+			    You("are frozen by %s gaze!", /* EN You("are frozen by %s gaze!", */ // TODO DE
 					     s_suffix(mon_nam(mtmp)));
 			    nomul((u.ulevel > 6 || rn2(4)) ?
 				    -d((int)mtmp->m_lev+1,
@@ -1017,7 +1017,7 @@ dogaze()
 				    : -200);
 			    return 1;
 			} else
-			    You("stiffen momentarily under %s gaze.",
+			    You("stiffen momentarily under %s gaze.", /* EN You("stiffen momentarily under %s gaze.", */ // TODO DE
 				    s_suffix(mon_nam(mtmp)));
 		    }
 		    /* Technically this one shouldn't affect you at all because
@@ -1028,18 +1028,18 @@ dogaze()
 		    if (!DEADMONSTER(mtmp) &&
 			    (mtmp->data == &mons[PM_MEDUSA]) && !mtmp->mcan) {
 			pline(
-			 "Gazing at the awake %s is not a very good idea.",
+			 "Gazing at the awake %s is not a very good idea.", /* EN "Gazing at the awake %s is not a very good idea.", */ // TODO DE
 			    l_monnam(mtmp));
 			/* as if gazing at a sleeping anything is fruitful... */
 			You("VERB_VERSTEINERN ...");
 			killer_format = KILLED_BY;
-			killer = "deliberately meeting Medusa's gaze";
+			killer = "deliberately meeting Medusa's gaze"; /* EN killer = "deliberately meeting Medusa's gaze"; */ // TODO DE
 			done(STONING);
 		    }
 		}
 	    }
 	}
-	if (!looked) You("gaze at no place in particular.");
+	if (!looked) You("gaze at no place in particular."); /* EN if (!looked) You("gaze at no place in particular."); */ // TODO DE
 	return 1;
 }
 
@@ -1049,7 +1049,7 @@ dohide()
 	boolean ismimic = youmonst.data->mlet == S_MIMIC;
 
 	if (u.uundetected || (ismimic && youmonst.m_ap_type != M_AP_NOTHING)) {
-		You("are already hiding.");
+		You("VERB_VERSTECKEN OBJECT PRONOMEN_PERSONAL bereits."); /* EN You("are already hiding."); */
 		return(0);
 	}
 	if (ismimic) {
@@ -1068,14 +1068,14 @@ domindblast()
 	struct monst *mtmp, *nmon;
 
 	if (u.uen < 10) {
-	    You("concentrate but lack the energy to maintain doing so.");
+	    You("concentrate but lack the energy to maintain doing so."); /* EN You("concentrate but lack the energy to maintain doing so."); */ // TODO DE
 	    return(0);
 	}
 	u.uen -= 10;
 	flags.botl = 1;
 
-	You("concentrate.");
-	pline("A wave of psychic energy pours out.");
+	You("concentrate."); /* EN You("concentrate."); */ // TODO DE
+	pline("A wave of psychic energy pours out."); /* EN pline("A wave of psychic energy pours out."); */ // TODO DE
 	for(mtmp=fmon; mtmp; mtmp = nmon) {
 		int u_sen;
 

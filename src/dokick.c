@@ -154,7 +154,7 @@ register xchar x, y;
 		    Your("%s %s.", kick_passes_thru, mon_nam(mon));
 		    break;	/* skip any additional kicks */
 		} else if (tmp > rnd(20)) {
-		    You("kick %s.", mon_nam(mon)); /* EN You("kick %s.", mon_nam(mon)); */ // TODO DE
+		    You("VERB_KICK OBJECT %s.", mon_nam(mon)); /* EN You("kick %s.", mon_nam(mon)); */
 		    sum = damageum(mon, uattk);
 		    (void)passive(mon, (boolean)(sum > 0), (sum != 2), AT_KICK);
 		    if (sum == 2)
@@ -181,7 +181,7 @@ register xchar x, y;
 	if(i < (j*3)/10) {
 		if(!rn2((i < j/10) ? 2 : (i < j/5) ? 3 : 4)) {
 			if(martial() && !rn2(2)) goto doit;
-			Your("clumsy kick does no damage."); /* EN Your("clumsy kick does no damage."); */ // TODO DE
+			Your("ADJEKTIV_PLUMP NOUN_KICK VERB_VERURSACHEN keinen Schaden."); /* EN Your("clumsy kick does no damage."); */
 			(void) passive(mon, FALSE, 1, AT_KICK);
 			return;
 		}
@@ -243,7 +243,7 @@ register struct obj *gold;
 	} else if (!mtmp->mcanmove) {
 		/* too light to do real damage */
 		if (canseemon(mtmp))
-		    pline_The("gold hits %s dog 246.", mon_nam(mtmp)); /* EN pline_The("gold hits %s.", mon_nam(mtmp)); */ // TODO DE
+		    pline_The("NOUN_GOLD VERB_HIT OBJECT %s.", mon_nam(mtmp)); /* EN pline_The("gold hits %s.", mon_nam(mtmp)); */
 	} else {
 #ifdef GOLDOBJ
                 long value = gold->quan * objects[gold->otyp].oc_cost;
@@ -268,8 +268,8 @@ register struct obj *gold;
 				robbed -= value;
 #endif
 				if (robbed < 0) robbed = 0;
-				pline_The("amount %scovers %s recent losses.", /* EN pline_The("amount %scovers %s recent losses.", */ // TODO DE
-				      !robbed ? "" : "partially ", /* EN !robbed ? "" : "partially ", */ // TODO DE
+				pline("Dieser Betrag deckt%s KASUS_AKKUSATIV %s kürzlichen NOUN_VERLUSTs.", /* EN pline_The("amount %scovers %s recent losses.", */
+				      !robbed ? "" : " teilweise", /* EN !robbed ? "" : "partially ", */
 				      mhis(mtmp));
 				ESHK(mtmp)->robbed = robbed;
 				if(!robbed)
@@ -284,12 +284,12 @@ register struct obj *gold;
 				    You("have %ld %s in credit.", /* EN You("have %ld %s in credit.", */ // TODO DE
 					ESHK(mtmp)->credit,
 					currency(ESHK(mtmp)->credit));
-				} else verbalize("Thanks, scum!"); /* EN } else verbalize("Thanks, scum!"); */ // TODO DE
+				} else verbalize("Danke, Drecksack!"); /* EN } else verbalize("Thanks, scum!"); */
 			}
 		} else if (mtmp->ispriest) {
 			if (mtmp->mpeaceful)
-			    verbalize("Thank you for your contribution."); /* EN verbalize("Thank you for your contribution."); */ // TODO DE
-			else verbalize("Danke, scum!"); /* EN else verbalize("Thanks, scum!"); */ // TODO DE
+			    verbalize("Vielen Dank für KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_SPENDE."); /* EN verbalize("Thank you for your contribution."); */
+			else verbalize("Danke, Drecksack!"); /* EN else verbalize("Thanks, scum!"); */
 		} else if (is_mercenary(mtmp->data)) {
 		    long goldreqd = 0L;
 
@@ -316,7 +316,7 @@ register struct obj *gold;
 		     }
 		     if (mtmp->mpeaceful)
 			    verbalize("Das dürfte reichen.  Jetzt mach dich vom Acker!"); /* EN verbalize("That should do.  Now beat it!"); */
-		     else verbalize("Das ist nicht genug, Schlappschwanz!"); /* EN else verbalize("That's not enough, coward!"); */
+		     else verbalize("Das ist nicht genug, Feigling!"); /* EN else verbalize("That's not enough, coward!"); */
 		 }
 
 #ifndef GOLDOBJ
@@ -357,7 +357,7 @@ struct obj *obj;
 		otmp->oclass != GEM_CLASS && !obj_resists(otmp, 33, 100)) {
 		result = "NOUN_SCHEPPERN"; /* EN result = "shatter"; */
 	    } else if (otmp->otyp == EGG && !rn2(3)) {
-		result = "cracking"; /* EN result = "cracking"; */ // TODO DE
+		result = "NOUN_KNACKEN"; /* EN result = "cracking"; */
 	    }
 	    if (result) {
 		if (otmp->otyp == MIRROR) change_luck(-2);
@@ -366,7 +366,7 @@ struct obj *obj;
 		 * but it's always exactly 1 that breaks */
 		if (otmp->otyp == EGG && otmp->spe && otmp->corpsenm >= LOW_PM)
 		    change_luck(-1);
-		You_hear("ARTIKEL_UNBESTIMMTER ADJEKTIV_GEDAEMPFT %s.", result); /* EN You_hear("a muffled %s.", result); */
+		You_hear("dumpf ARTIKEL_UNBESTIMMTER %s.", result); /* EN You_hear("a muffled %s.", result); */
 		if (costly)
 		    loss += stolen_value(otmp, x, y,
 					 (boolean)shkp->mpeaceful, TRUE);
@@ -469,7 +469,7 @@ xchar x, y;
 	    if ((!martial() && rn2(20) > ACURR(A_DEX)) ||
 		    IS_ROCK(levl[u.ux][u.uy].typ) || closed_door(u.ux, u.uy)) {
 		if (Blind)
-		    pline("It doesn't come loose."); /* EN pline("It doesn't come loose."); */ // TODO DE
+		    pline("Es löst sich nicht."); /* EN pline("It doesn't come loose."); */
 		else
 		    pline("%s %sn't come loose.", /* EN pline("%s %sn't come loose.", */ // TODO DE
 			  The(distant_name(kickobj, xname)),
@@ -477,7 +477,7 @@ xchar x, y;
 		return (!rn2(3) || martial());
 	    }
 	    if (Blind)
-		pline("It comes loose."); /* EN pline("It comes loose."); */ // TODO DE
+		pline("Es löst sich."); /* EN pline("It comes loose."); */
 	    else
 		pline("%s %s loose.", /* EN pline("%s %s loose.", */ // TODO DE
 		      The(distant_name(kickobj, xname)),
@@ -505,7 +505,7 @@ xchar x, y;
 
 		if (kickobj->olocked) {
 		    if (!rn2(5) || (martial() && !rn2(2))) {
-			You("break open the lock!"); /* EN You("break open the lock!"); */ // TODO DE
+			You("VERB_AUFBRECHEN das Schloss SATZKLAMMER!"); /* EN You("break open the lock!"); */
 			kickobj->olocked = 0;
 			kickobj->obroken = 1;
 			if (otrp) (void) chest_trap(kickobj, LEG, FALSE);
@@ -513,7 +513,7 @@ xchar x, y;
 		    }
 		} else {
 		    if (!rn2(3) || (martial() && !rn2(2))) {
-			pline_The("lid slams open, then falls shut."); /* EN pline_The("lid slams open, then falls shut."); */ // TODO DE
+			pline("Der Deckel knallt auf und fällt wieder zu."); /* EN pline_The("lid slams open, then falls shut."); */
 			if (otrp) (void) chest_trap(kickobj, LEG, FALSE);
 			return(1);
 		    }
@@ -621,10 +621,10 @@ dokick()
 	char buf[BUFSZ];
 
 	if (nolimbs(youmonst.data) || slithy(youmonst.data)) {
-		You("have no legs to kick with."); /* EN You("have no legs to kick with."); */ // TODO DE
+		You("VERB_HAVE keine Beine zum Treten."); /* EN You("have no legs to kick with."); */
 		no_kick = TRUE;
 	} else if (verysmall(youmonst.data)) {
-		You("are too small to do any kicking."); /* EN You("are too small to do any kicking."); */ // TODO DE
+		You("VERB_SEIN zu klein um irgendwas zu treten."); /* EN You("are too small to do any kicking."); */
 		no_kick = TRUE;
 #ifdef STEED
 	} else if (u.usteed) {
@@ -643,9 +643,9 @@ dokick()
 
 		if (wl == BOTH_SIDES) bp = makeplural(bp);
 		Your("%s%s %s in no shape for kicking.", /* EN Your("%s%s %s in no shape for kicking.", */ // TODO DE
-		     (wl == LEFT_SIDE) ? "left " : /* EN (wl == LEFT_SIDE) ? "left " : */ // TODO DE
-			(wl == RIGHT_SIDE) ? "right " : "", /* EN (wl == RIGHT_SIDE) ? "right " : "", */ // TODO DE
-		     bp, (wl == BOTH_SIDES) ? "are" : "is"); /* EN bp, (wl == BOTH_SIDES) ? "are" : "is"); */ // TODO DE
+		     (wl == LEFT_SIDE) ? "ADJEKTIV_LINK " : /* EN (wl == LEFT_SIDE) ? "left " : */
+			(wl == RIGHT_SIDE) ? "ADJEKTIV_RECHT " : "", /* EN (wl == RIGHT_SIDE) ? "right " : "", */
+		     bp, (wl == BOTH_SIDES) ? "VERB_SEIN" : "VERB_SEIN"); /* EN bp, (wl == BOTH_SIDES) ? "are" : "is"); */
 		no_kick = TRUE;
 	} else if (near_capacity() > SLT_ENCUMBER) {
 		Your("load is too heavy to balance yourself for a kick."); /* EN Your("load is too heavy to balance yourself for a kick."); */ // TODO DE
@@ -654,7 +654,7 @@ dokick()
 		Your("legs cannot kick effectively."); /* EN Your("legs cannot kick effectively."); */ // TODO DE
 		no_kick = TRUE;
 	} else if (u.uinwater && !rn2(2)) {
-		Your("slow motion kick doesn't hit anything."); /* EN Your("slow motion kick doesn't hit anything."); */ // TODO DE
+		Your("NOUN_ZEITLUPENTRITT VERB_HIT überhaupt nichts."); /* EN Your("slow motion kick doesn't hit anything."); */
 		no_kick = TRUE;
 	} else if (u.utrap) {
 		switch (u.utraptype) {
@@ -663,7 +663,7 @@ dokick()
 			break;
 		    case TT_WEB:
 		    case TT_BEARTRAP:
-			You_cant("move your %s!", body_part(LEG)); /* EN You_cant("move your %s!", body_part(LEG)); */ // TODO DE
+			You("VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s nicht bewegen!", body_part(LEG)); /* EN You_cant("move your %s!", body_part(LEG)); */
 			break;
 		    default:
 			break;

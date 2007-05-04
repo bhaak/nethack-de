@@ -433,7 +433,7 @@ const char *verb;	/* "rub",&c */
 	     "Since your weapon is welded to your %s, you cannot %s %s %s.", /* EN "Since your weapon is welded to your %s, you cannot %s %s %s.", */ // TODO DE
 		  hand, verb, more_than_1 ? "those" : "that", xname(obj)); /* EN hand, verb, more_than_1 ? "those" : "that", xname(obj)); */ // TODO DE
 	} else {
-	    You_cant("do that."); /* EN You_cant("do that."); */ // TODO DE
+	    You("VERB_KOENNEN das nicht tun."); /* EN You_cant("do that."); */
 	}
 	return FALSE;
     }
@@ -625,12 +625,12 @@ boolean fade_scrolls;
 	    {
 		if (!Blind) {
 		    if (victim == &youmonst)
-			Your("%s.", aobjnam(target, "fade")); /* EN Your("%s.", aobjnam(target, "fade")); */ // TODO DE
+			Your("%s.", aobjnam(target, "VERB_FADE")); /* EN Your("%s.", aobjnam(target, "fade")); */
 		    else if (vismon)
 			pline("%s's %s.", Monnam(victim),
-			      aobjnam(target, "fade")); /* EN aobjnam(target, "fade")); */ // TODO DE
+			      aobjnam(target, "VERB_FADE")); /* EN aobjnam(target, "fade")); */
 		    else if (visobj)
-			pline_The("%s.", aobjnam(target, "fade")); /* EN pline_The("%s.", aobjnam(target, "fade")); */ // TODO DE
+			pline_The("%s.", aobjnam(target, "VERB_FADE")); /* EN pline_The("%s.", aobjnam(target, "fade")); */
 		}
 		target->otyp = SCR_BLANK_PAPER;
 		target->spe = 0;
@@ -648,19 +648,19 @@ boolean fade_scrolls;
 	    if (target->oerodeproof) target->rknown = TRUE;
 	} else if (erosion < MAX_ERODE) {
 	    if (victim == &youmonst)
-		Your("%s%s!", aobjnam(target, acid_dmg ? "corrode" : "rust"), /* EN Your("%s%s!", aobjnam(target, acid_dmg ? "corrode" : "rust"), */ // TODO DE
-		    erosion+1 == MAX_ERODE ? " completely" : /* EN erosion+1 == MAX_ERODE ? " completely" : */ // TODO DE
-		    erosion ? " further" : ""); /* EN erosion ? " further" : ""); */ // TODO DE
+		Your("%s%s!", aobjnam(target, acid_dmg ? "VERB_CORRODE" : "VERB_ROSTEN"), /* EN Your("%s%s!", aobjnam(target, acid_dmg ? "corrode" : "rust"), */
+		    erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */
+		    erosion ? " weiter" : ""); /* EN erosion ? " further" : ""); */
 	    else if (vismon)
-		pline("%s's %s%s!", Monnam(victim),
-		    aobjnam(target, acid_dmg ? "corrode" : "rust"), /* EN aobjnam(target, acid_dmg ? "corrode" : "rust"), */ // TODO DE
-		    erosion+1 == MAX_ERODE ? " completely" : /* EN erosion+1 == MAX_ERODE ? " completely" : */ // TODO DE
-		    erosion ? " further" : ""); /* EN erosion ? " further" : ""); */ // TODO DE
+		pline("%s's %s%s!", Monnam(victim), /* EN pline("%s's %s%s!", Monnam(victim), */ // TODO DE
+		    aobjnam(target, acid_dmg ? "VERB_CORRODE" : "VERB_ROSTEN"), /* EN aobjnam(target, acid_dmg ? "corrode" : "rust"), */
+		    erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */ // TODO DE
+		    erosion ? " weiter" : ""); /* EN erosion ? " further" : ""); */
 	    else if (visobj)
 		pline_The("%s%s!",
-		    aobjnam(target, acid_dmg ? "corrode" : "rust"), /* EN aobjnam(target, acid_dmg ? "corrode" : "rust"), */ // TODO DE
-		    erosion+1 == MAX_ERODE ? " completely" : /* EN erosion+1 == MAX_ERODE ? " completely" : */ // TODO DE
-		    erosion ? " further" : ""); /* EN erosion ? " further" : ""); */ // TODO DE
+		    aobjnam(target, acid_dmg ? "VERB_CORRODE" : "VERB_ROSTEN"), /* EN aobjnam(target, acid_dmg ? "corrode" : "rust"), */
+		    erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */
+		    erosion ? " weiter" : ""); /* EN erosion ? " further" : ""); */
 	    if (acid_dmg)
 		target->oeroded2++;
 	    else
@@ -668,17 +668,17 @@ boolean fade_scrolls;
 	} else {
 	    if (flags.verbose) {
 		if (victim == &youmonst)
-		    Your("%s completely %s.", /* EN Your("%s completely %s.", */ // TODO DE
+		    Your("%s völlig %s.", /* EN Your("%s completely %s.", */ // TODO DE
 			aobjnam(target, Blind ? "feel" : "look"), /* EN aobjnam(target, Blind ? "feel" : "look"), */ // TODO DE
-			acid_dmg ? "corroded" : "rusty"); /* EN acid_dmg ? "corroded" : "rusty"); */ // TODO DE
+			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_ROSTIG"); /* EN acid_dmg ? "corroded" : "rusty"); */
 		else if (vismon)
-		    pline("%s's %s completely %s.", Monnam(victim), /* EN pline("%s's %s completely %s.", Monnam(victim), */ // TODO DE
+		    pline("%s's %s völlig %s.", Monnam(victim), /* EN pline("%s's %s completely %s.", Monnam(victim), */ // TODO DE
 			aobjnam(target, "look"), /* EN aobjnam(target, "look"), */ // TODO DE
-			acid_dmg ? "corroded" : "rusty"); /* EN acid_dmg ? "corroded" : "rusty"); */ // TODO DE
+			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_ROSTIG"); /* EN acid_dmg ? "corroded" : "rusty"); */
 		else if (visobj)
-		    pline_The("%s completely %s.", /* EN pline_The("%s completely %s.", */ // TODO DE
+		    pline_The("%s völlig %s.", /* EN pline_The("%s completely %s.", */ // TODO DE
 			aobjnam(target, "look"), /* EN aobjnam(target, "look"), */ // TODO DE
-			acid_dmg ? "corroded" : "rusty"); /* EN acid_dmg ? "corroded" : "rusty"); */ // TODO DE
+			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_ROSTIG"); /* EN acid_dmg ? "corroded" : "rusty"); */
 	    }
 	}
 }
@@ -707,7 +707,7 @@ register int amount;
 	if(uwep->otyp == WORM_TOOTH && amount >= 0) {
 		uwep->otyp = CRYSKNIFE;
 		uwep->oerodeproof = 0;
-		Your("weapon seems sharper now."); /* EN Your("weapon seems sharper now."); */ // TODO DE
+		Your("NOUN_WEAPON VERB_SCHEINT jetzt schärfer."); /* EN Your("weapon seems sharper now."); */
 		uwep->cursed = 0;
 		if (otyp != STRANGE_OBJECT) makeknown(otyp);
 		return(1);
@@ -716,7 +716,7 @@ register int amount;
 	if(uwep->otyp == CRYSKNIFE && amount < 0) {
 		uwep->otyp = WORM_TOOTH;
 		uwep->oerodeproof = 0;
-		Your("weapon seems duller now."); /* EN Your("weapon seems duller now."); */ // TODO DE
+		Your("NOUN_WEAPON VERB_SCHEINT jetzt stumpfer."); /* EN Your("weapon seems duller now."); */
 		if (otyp != STRANGE_OBJECT && otmp->bknown) makeknown(otyp);
 		return(1);
 	}
@@ -757,17 +757,17 @@ register int amount;
 	 * spe dependent.  Give an obscure clue here.
 	 */
 	if (uwep->oartifact == ART_MAGICBANE && uwep->spe >= 0) {
-		Your("right %s %sches!", /* EN Your("right %s %sches!", */ // TODO DE
+		Your("ADJEKTIV_RECHT %s %s!", /* EN Your("right %s %sches!", */
 			body_part(HAND),
-			(((amount > 1) && (uwep->spe > 1)) ? "flin" : "it"));
+			(((amount > 1) && (uwep->spe > 1)) ? "VERB_ZUCKEN" : "VERB_JUCKEN")); /* EN (((amount > 1) && (uwep->spe > 1)) ? "flin" : "it")); */
 	}
 
 	/* an elven magic clue, cookie@keebler */
 	/* elven weapons vibrate warningly when enchanted beyond a limit */
 	if ((uwep->spe > 5)
 		&& (is_elven_weapon(uwep) || uwep->oartifact || !rn2(7)))
-	    Your("%s unexpectedly.", /* EN Your("%s unexpectedly.", */ // TODO DE
-		aobjnam(uwep, "suddenly vibrate")); /* EN aobjnam(uwep, "suddenly vibrate")); */ // TODO DE
+	    Your("%s unerwartet.", /* EN Your("%s unexpectedly.", */
+		aobjnam(uwep, "VERB_VIBRIEREN plötzlich")); /* EN aobjnam(uwep, "suddenly vibrate")); */
 
 	return(1);
 }
