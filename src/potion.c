@@ -351,14 +351,17 @@ dodrink()
 
 	/* Or are you surrounded by water? */
 	if (Underwater) {
-		if (yn("Drink the water around you?") == 'y') { /* EN if (yn("Drink the water around you?") == 'y') { */ // TODO DE
-// TODO DE Tiere paaren sich darin
-		    pline("Do you know what lives in this water!"); /* EN pline("Do you know what lives in this water!");  */ // TODO DE
+		if (yn("Das Wasser um KASUS_AKKUSATIV PRONOMEN_PERSONAL herum trinken?") == 'y') { /* EN if (yn("Drink the water around you?") == 'y') { */
+			if (Role_if(PM_ARCHEOLOGIST)) {
+		    pline("Nein, danke.  Fische lieben sich darin!");
+			} else {
+		    pline("VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL KASUS_DATIV PRONOMEN_PERSONAL überhaupt vorstellen, was in dem Wasser lebt?"); /* EN pline("Do you know what lives in this water!");  */
+			}
 			return 1;
 		}
 	}
 
-	otmp = getobj(beverages, "drink"); /* EN otmp = getobj(beverages, "drink"); */ // TODO DE
+	otmp = getobj(beverages, "VERB_TRINKEN"); /* EN otmp = getobj(beverages, "drink"); */
 	if(!otmp) return(0);
 	otmp->in_use = TRUE;		/* you've opened the stopper */
 

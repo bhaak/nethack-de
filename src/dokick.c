@@ -469,19 +469,19 @@ xchar x, y;
 	    if ((!martial() && rn2(20) > ACURR(A_DEX)) ||
 		    IS_ROCK(levl[u.ux][u.uy].typ) || closed_door(u.ux, u.uy)) {
 		if (Blind)
-		    pline("Es löst sich nicht."); /* EN pline("It doesn't come loose."); */
+		    pline("Es bleibt stecken."); /* EN pline("It doesn't come loose."); */
 		else
-		    pline("%s %sn't come loose.", /* EN pline("%s %sn't come loose.", */ // TODO DE
+		    pline("SUBJECT %s %s stecken.", /* EN pline("%s %sn't come loose.", */
 			  The(distant_name(kickobj, xname)),
-			  otense(kickobj, "do")); /* EN otense(kickobj, "do")); */ // TODO DE
+			  otense(kickobj, "VERB_BLEIBEN")); /* EN otense(kickobj, "do")); */ // TODO DE
 		return (!rn2(3) || martial());
 	    }
 	    if (Blind)
 		pline("Es löst sich."); /* EN pline("It comes loose."); */
 	    else
-		pline("%s %s loose.", /* EN pline("%s %s loose.", */ // TODO DE
+		pline("%s %s sich.", /* EN pline("%s %s loose.", */
 		      The(distant_name(kickobj, xname)),
-		      otense(kickobj, "come")); /* EN otense(kickobj, "come")); */ // TODO DE
+		      otense(kickobj, "VERB_LOESEN")); /* EN otense(kickobj, "come")); */
 	    obj_extract_self(kickobj);
 	    newsym(x, y);
 	    if (costly && (!costly_spot(u.ux, u.uy) ||
@@ -694,7 +694,7 @@ dokick()
 		case 0:  You_cant("move your %s!", body_part(LEG)); /* EN case 0:  You_cant("move your %s!", body_part(LEG)); */ // TODO DE
 			 break;
 		case 1:  if (is_animal(u.ustuck->data)) {
-				pline("%s burps loudly.", Monnam(u.ustuck)); /* EN pline("%s burps loudly.", Monnam(u.ustuck)); */ // TODO DE
+				pline("SUBJECT %s VERB_RUELPSEN laut.", Monnam(u.ustuck)); /* EN pline("%s burps loudly.", Monnam(u.ustuck)); */
 				break;
 			 }
 		default: Your("feeble kick has no effect."); break; /* EN default: Your("feeble kick has no effect."); break; */ // TODO DE
@@ -974,7 +974,7 @@ dokick()
 				      "Muddy waste pops up from the drain")); /* EN "Muddy waste pops up from the drain")); */ // TODO DE
 			if(!(maploc->looted & S_LRING)) { /* once per sink */
 			    if (!Blind)
-				You("see a ring shining in its midst."); /* EN You("see a ring shining in its midst."); */ // TODO DE
+				You("siehst mittendrin einen Ring glitzern."); /* EN You("see a ring shining in its midst."); */
 			    (void) mkobj_at(RING_CLASS, x, y, TRUE);
 			    newsym(x, y);
 			    exercise(A_DEX, TRUE);
@@ -991,7 +991,7 @@ dokick()
 		    if(!IS_STWALL(maploc->typ) && maploc->ladder == LA_DOWN)
 			goto dumb;
 ouch:
-		    pline("Ouch!  That hurts!"); /* EN pline("Ouch!  That hurts!"); */ // TODO DE
+		    pline("Aua!  Das tut weh!"); /* EN pline("Ouch!  That hurts!"); */
 		    exercise(A_DEX, FALSE);
 		    exercise(A_STR, FALSE);
 		    if (Blind) feel_location(x,y); /* we know we hit it */
@@ -1017,7 +1017,7 @@ ouch:
 dumb:
 		exercise(A_DEX, FALSE);
 		if (martial() || ACURR(A_DEX) >= 16 || rn2(3)) {
-			You("kick at empty space."); /* EN You("kick at empty space."); */ // TODO DE
+			You("VERB_KICK den Leerraum."); /* EN You("kick at empty space."); */
 			if (Blind) feel_location(x,y);
 		} else {
 			pline("Dumb move!  You strain a muscle."); /* EN pline("Dumb move!  You strain a muscle."); */ // TODO DE
@@ -1043,7 +1043,7 @@ dumb:
 		    if (flags.verbose) You("VERB_KICK OBJECT ARTIKEL_BESTIMMTER NOUN_OBJ_DOOR."); /* EN if (flags.verbose) You("kick the door."); */
 		    exercise(A_STR, FALSE);
 		    maploc->doormask = D_NODOOR;
-		    b_trapped("door", FOOT); /* EN b_trapped("door", FOOT); */ // TODO DE
+		    b_trapped("NOUN_DOOR", FOOT); /* EN b_trapped("door", FOOT); */ // TODO DE
 		} else if(ACURR(A_STR) > 18 && !rn2(5) && !shopdoor) {
 		    pline("As you kick the door, it shatters to pieces!"); /* EN pline("As you kick the door, it shatters to pieces!"); */ // TODO DE
 		    exercise(A_STR, TRUE);
@@ -1070,10 +1070,10 @@ dumb:
 			couldsee(mtmp->mx, mtmp->my) &&
 			mtmp->mpeaceful) {
 			if (canspotmon(mtmp))
-			    pline("%s yells:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s VERB_YELL:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */
 			else
-			    You_hear("someone yell:"); /* EN You_hear("someone yell:"); */ // TODO DE
-			verbalize("Halt, thief!  You're under arrest!"); /* EN verbalize("Halt, thief!  You're under arrest!"); */ // TODO DE
+			    You_hear("OBJECT NOUN_JEMAND VERB_YELL:"); /* EN You_hear("someone yell:"); */ // TODO DE
+			verbalize("Halt, Dieb!  Du bist verhaftet!"); /* EN verbalize("Halt, thief!  You're under arrest!"); */
 			(void) angry_guards(FALSE);
 			break;
 		    }
@@ -1089,11 +1089,11 @@ dumb:
 				mtmp->data == &mons[PM_WATCH_CAPTAIN]) &&
 			    mtmp->mpeaceful && couldsee(mtmp->mx, mtmp->my)) {
 			if (canspotmon(mtmp))
-			    pline("%s yells:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s VERB_YELL:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */
 			else
-			    You_hear("someone yell:"); /* EN You_hear("someone yell:"); */ // TODO DE
+			    You_hear("OBJECT NOUN_JEMAND VERB_YELL:"); /* EN You_hear("someone yell:"); */ // TODO DE
 			if(levl[x][y].looted & D_WARNED) {
-			    verbalize("Halt, vandal!  You're under arrest!"); /* EN verbalize("Halt, vandal!  You're under arrest!"); */ // TODO DE
+			    verbalize("Halt, Wandale!  Du bist verhaftet!"); /* EN verbalize("Halt, vandal!  You're under arrest!"); */
 			    (void) angry_guards(FALSE);
 			} else {
 			    verbalize("Hey, stop damaging that door!"); /* EN verbalize("Hey, stop damaging that door!"); */ // TODO DE

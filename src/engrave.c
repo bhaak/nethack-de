@@ -474,7 +474,7 @@ doengrave()
 
 	if(u.uswallow) {
 		if (is_animal(u.ustuck->data)) {
-			pline("Was würdest du schreiben?  \"Jonas war hier\"?"); /* EN pline("What would you write?  \"Jonah was here\"?"); */ // TODO DE
+			pline("Was willst du schreiben?  \"Jonas war hier\"?"); /* EN pline("What would you write?  \"Jonah was here\"?"); */ // TODO DE
 			return(0);
 		} else if (is_whirly(u.ustuck->data)) {
 			You_cant("reach the %s.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */

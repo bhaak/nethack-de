@@ -93,9 +93,9 @@ register boolean rockit;
     register xchar i;
     register boolean waslit = rm_waslit();
 
-    if(rockit) pline("Crash!  The ceiling collapses around you!"); /* EN if(rockit) pline("Crash!  The ceiling collapses around you!"); */ // TODO DE
-    else pline("A mysterious force %s cave around you!", /* EN else pline("A mysterious force %s cave around you!", */ // TODO DE
-	     (levl[u.ux][u.uy].typ == CORR) ? "creates a" : "extends the"); /* EN (levl[u.ux][u.uy].typ == CORR) ? "creates a" : "extends the"); */ // TODO DE
+    if(rockit) pline("Krach!  Die Decke um KASUS_AKKUSATIV PRONOMEN_PERSONAL herum stürzt ein!"); /* EN if(rockit) pline("Crash!  The ceiling collapses around you!"); */
+    else pline("Eine geheimnisvolle Macht %s Höhle KASUS_AKKUSATIV PRONOMEN_PERSONAL herum!", /* EN else pline("A mysterious force %s cave around you!", */
+	     (levl[u.ux][u.uy].typ == CORR) ? "erzeugt eine" : "erweitert die"); /* EN (levl[u.ux][u.uy].typ == CORR) ? "creates a" : "extends the"); */
     display_nhwindow(WIN_MESSAGE, TRUE);
 
     for(dist = 1; dist <= 2; dist++) {
@@ -539,10 +539,10 @@ int ttyp;
 	if (ttyp == PIT) {
 
 	    if(madeby_u) {
-		You("VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN You("dig a pit in the %s.", surface_type); */
+		You("VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT NEUES_OBJECT OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN You("dig a pit in the %s.", surface_type); */
 		if (shopdoor) pay_for_damage("ruin", FALSE); /* EN if (shopdoor) pay_for_damage("ruin", FALSE); */ // TODO DE
 	    } else if (!madeby_obj && canseemon(madeby))
-		pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); /* EN pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); */ // TODO DE
+		pline("SUBJECT %s VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER %s.", Monnam(madeby), surface_type); /* EN pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); */
 	    else if (cansee(x, y) && flags.verbose)
 		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT VERB_ERSCHEINEN OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A pit appears in the %s.", surface_type); */
 
@@ -573,7 +573,7 @@ int ttyp;
 		pline("SUBJECT %s VERB_GRABEN ein Loch OBJECT durch ARTIKEL_BESTIMMTER %s.", /* EN pline("%s digs a hole through the %s.", */
 		      Monnam(madeby), surface_type);
 	    else if(cansee(x, y) && flags.verbose)
-		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_LOCH VERB_ERSCHEINEN OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A hole appears in the %s.", surface_type); */
+		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_LOCH VERB_ERSCHEINEN OBJECT in ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A hole appears in the %s.", surface_type); */
 
 	    if (at_u) {
 		if (!u.ustuck && !wont_fall && !next_to_u()) {
@@ -724,7 +724,7 @@ boolean pit_only;
 		/* if any objects were frozen here, they're released now */
 		unearth_objs(u.ux, u.uy);
 
-		pline("Während SUBJECT PRONOMEN_PERSONAL VERB_GRABEN füllt sich das Loch mit KASUS_DATIV %s!", /* EN pline("As you dig, the hole fills with %s!", */
+		pline("Während SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_GRABEN füllt sich das Loch mit KASUS_DATIV %s!", /* EN pline("As you dig, the hole fills with %s!", */
 		      typ == LAVAPOOL ? "NOUN_LAVA" : "NOUN_WATER"); /* EN typ == LAVAPOOL ? "lava" : "water"); */
 		if (!Levitation && !Flying) {
 		    if (typ == LAVAPOOL)
@@ -787,7 +787,7 @@ dig_up_grave()
 	    	otmp->age -= 100;		/* this is an *OLD* corpse */;
 	    break;
 	case 2:
-	    if (!Blind) pline(Hallucination ? "Dude!  The living dead!" : /* EN if (!Blind) pline(Hallucination ? "Dude!  The living dead!" : */ // TODO DE
+	    if (!Blind) pline(Hallucination ? "Alter!  The living dead!" : /* EN if (!Blind) pline(Hallucination ? "Dude!  The living dead!" : */ // TODO DE
  			"The grave's owner is very upset!"); /* EN "The grave's owner is very upset!"); */ // TODO DE
  	    (void) makemon(mkclass(S_ZOMBIE,0), u.ux, u.uy, NO_MM_FLAGS);
 	    break;

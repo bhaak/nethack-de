@@ -40,9 +40,9 @@ STATIC_VAR const char * const blindgas[6];
 
 #else
 
-STATIC_VAR const char * const a_your[2] = { "a", "your" }; /* EN STATIC_VAR const char * const a_your[2] = { "a", "your" }; */ // TODO DE
-STATIC_VAR const char * const A_Your[2] = { "A", "Your" }; /* EN STATIC_VAR const char * const A_Your[2] = { "A", "Your" }; */ // TODO DE
-STATIC_VAR const char * const the_your[2] = { "the", "your" }; /* EN STATIC_VAR const char * const the_your[2] = { "the", "your" }; */ // TODO DE
+STATIC_VAR const char * const a_your[2] = { "ARTIKEL_UNBESTIMMTER", "PRONOMEN_POSSESSIV" }; /* EN STATIC_VAR const char * const a_your[2] = { "a", "your" }; */
+STATIC_VAR const char * const A_Your[2] = { "SUBJECT ARTIKEL_UNBESTIMMTER", "SUBJECT PRONOMEN_POSSESSIV" }; /* EN STATIC_VAR const char * const A_Your[2] = { "A", "Your" }; */
+STATIC_VAR const char * const the_your[2] = { "ARTIKEL_BESTIMMTER", "PRONOMEN_POSSESSIV" }; /* EN STATIC_VAR const char * const the_your[2] = { "the", "your" }; */
 STATIC_VAR const char tower_of_flame[] = "tower of flame"; /* EN STATIC_VAR const char tower_of_flame[] = "tower of flame"; */ // TODO DE
 STATIC_VAR const char * const A_gush_of_water_hits = "A gush of water hits"; /* EN STATIC_VAR const char * const A_gush_of_water_hits = "A gush of water hits"; */ // TODO DE
 STATIC_VAR const char * const blindgas[6] = 
@@ -122,7 +122,7 @@ int type;
 boolean print;
 struct monst *victim;
 {
-	static NEARDATA const char * const action[] = { "smoulder", "rust", "rot", "corrode" }; /* EN static NEARDATA const char * const action[] = { "smoulder", "rust", "rot", "corrode" }; */ // TODO DE
+	static NEARDATA const char * const action[] = { "smoulder", "VERB_ROSTEN", "rot", "corrode" }; /* EN static NEARDATA const char * const action[] = { "smoulder", "rust", "rot", "corrode" }; */ // TODO DE
 	static NEARDATA const char * const msg[] =  { "burnt", "rusted", "rotten", "corroded" }; /* EN static NEARDATA const char * const msg[] =  { "burnt", "rusted", "rotten", "corroded" }; */ // TODO DE
 	boolean vulnerable = FALSE;
 	boolean grprot = FALSE;
@@ -153,10 +153,10 @@ struct monst *victim;
 	if (!vulnerable) {
 	    if (flags.verbose) {
 		if (victim == &youmonst)
-		    Your("%s %s not affected.", ostr, vtense(ostr, "are")); /* EN Your("%s %s not affected.", ostr, vtense(ostr, "are")); */ // TODO DE
+		    Your("%s %s not affected.", ostr, vtense(ostr, "VERB_SEIN")); /* EN Your("%s %s not affected.", ostr, vtense(ostr, "are")); */ // TODO DE
 		else if (vismon)
-		    pline("%s's %s %s not affected.", Monnam(victim), ostr, /* EN pline("%s's %s %s not affected.", Monnam(victim), ostr, */ // TODO DE
-			  vtense(ostr, "are")); /* EN vtense(ostr, "are")); */ // TODO DE
+			pline("KASUS_GENITIV %s SUBJECT_IM_SATZ %s %s not affected. Rost 2", Monnam(victim), ostr, /* EN pline("%s's %s %s not affected.", Monnam(victim), ostr, */ // TODO DE
+			  vtense(ostr, "VERB_SEIN")); /* EN vtense(ostr, "are")); */
 	    }
 	} else if (erosion < MAX_ERODE) {
 	    if (grprot && otmp->greased) {
@@ -164,23 +164,23 @@ struct monst *victim;
 	    } else if (otmp->oerodeproof || (otmp->blessed && !rnl(4))) {
 		if (flags.verbose) {
 		    if (victim == &youmonst)
-			pline("Somehow, your %s %s not affected.", /* EN pline("Somehow, your %s %s not affected.", */ // TODO DE
-			      ostr, vtense(ostr, "are")); /* EN ostr, vtense(ostr, "are")); */ // TODO DE
+			pline("Somehow, your %s %s not affected. Rost 3", /* EN pline("Somehow, your %s %s not affected.", */ // TODO DE
+			      ostr, vtense(ostr, "VERB_SEIN")); /* EN ostr, vtense(ostr, "are")); */
 		    else if (vismon)
-			pline("Somehow, %s's %s %s not affected.", /* EN pline("Somehow, %s's %s %s not affected.", */ // TODO DE
-			      mon_nam(victim), ostr, vtense(ostr, "are")); /* EN mon_nam(victim), ostr, vtense(ostr, "are")); */ // TODO DE
+			pline("Somehow, %s's %s %s not affected. Rost 4", /* EN pline("Somehow, %s's %s %s not affected.", */ // TODO DE
+			      mon_nam(victim), ostr, vtense(ostr, "VERB_SEIN")); /* EN mon_nam(victim), ostr, vtense(ostr, "are")); */
 		}
 	    } else {
 		if (victim == &youmonst)
-		    Your("%s %s%s!", ostr,
+			Your("%s %s%s! Rost 5", ostr, /* EN Your("%s %s%s!", ostr, */
 			 vtense(ostr, action[type]),
 			 erosion+1 == MAX_ERODE ? " completely" : /* EN erosion+1 == MAX_ERODE ? " completely" : */ // TODO DE
 			    erosion ? " further" : ""); /* EN erosion ? " further" : ""); */ // TODO DE
 		else if (vismon)
-		    pline("%s's %s %s%s!", Monnam(victim), ostr,
+			pline("KASUS_GENITIV %s SUBJECT_IM_SATZ %s %s%s! Rost 6", Monnam(victim), ostr, /* EN pline("%s %s %s%s! Rost 6", Monnam(victim), ostr, */
 			vtense(ostr, action[type]),
-			erosion+1 == MAX_ERODE ? " completely" : /* EN erosion+1 == MAX_ERODE ? " completely" : */ // TODO DE
-			  erosion ? " further" : ""); /* EN erosion ? " further" : ""); */ // TODO DE
+			erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */
+			  erosion ? " weiter" : ""); /* EN erosion ? " further" : ""); */
 		if (is_primary)
 		    otmp->oeroded++;
 		else
@@ -190,13 +190,13 @@ struct monst *victim;
 	} else {
 	    if (flags.verbose) {
 		if (victim == &youmonst)
-		    Your("%s %s completely %s.", ostr, /* EN Your("%s %s completely %s.", ostr, */ // TODO DE
+		    Your("%s %s completely %s. Rost 7", ostr, /* EN Your("%s %s completely %s.", ostr, */ // TODO DE
 			 vtense(ostr, Blind ? "feel" : "look"), /* EN vtense(ostr, Blind ? "feel" : "look"), */ // TODO DE
 			 msg[type]);
 		else if (vismon)
-		    pline("%s's %s %s completely %s.", /* EN pline("%s's %s %s completely %s.", */ // TODO DE
-			  Monnam(victim), ostr,
-			  vtense(ostr, "look"), msg[type]); /* EN vtense(ostr, "look"), msg[type]); */ // TODO DE
+			pline("KASUS_GENITIV %s SUBJECT_IM_SATZ %s %s completely %s. Rost 8", /* EN pline("%s's %s %s completely %s.", */ // TODO DE
+						Monnam(victim), ostr,
+						vtense(ostr, "look"), msg[type]); /* EN vtense(ostr, "look"), msg[type]); */ // TODO DE
 	    }
 	}
 	return(TRUE);
@@ -213,15 +213,15 @@ struct monst *victim;
 
 	if (ostr) {
 	    if (victim == &youmonst)
-		Your("%s %s %s", ostr, vtense(ostr, "are"), txt); /* EN Your("%s %s %s", ostr, vtense(ostr, "are"), txt); */ // TODO DE
+		Your("%s %s %s", ostr, vtense(ostr, "VERB_SEIN"), txt); /* EN Your("%s %s %s", ostr, vtense(ostr, "are"), txt); */ // TODO DE
 	    else if (vismon)
-		pline("%s's %s %s %s", Monnam(victim),
-		    ostr, vtense(ostr, "are"), txt); /* EN ostr, vtense(ostr, "are"), txt); */ // TODO DE
+		pline("KASUS_GENITIV %s SUBJECT_IM_SATZ %s %s %s", Monnam(victim), /* EN pline("%s's %s %s %s", Monnam(victim), */
+		    ostr, vtense(ostr, "VERB_SEIN"), txt); /* EN ostr, vtense(ostr, "are"), txt); */
 	} else {
 	    if (victim == &youmonst)
-		Your("%s %s",aobjnam(otmp,"are"), txt); /* EN Your("%s %s",aobjnam(otmp,"are"), txt); */ // TODO DE
+		Your("%s %s",aobjnam(otmp,"VERB_SEIN"), txt); /* EN Your("%s %s",aobjnam(otmp,"are"), txt); */
 	    else if (vismon)
-		pline("%s's %s %s", Monnam(victim), aobjnam(otmp,"are"), txt); /* EN pline("%s's %s %s", Monnam(victim), aobjnam(otmp,"are"), txt); */ // TODO DE
+		pline("%s's %s %s", Monnam(victim), aobjnam(otmp,"VERB_SEIN"), txt); /* EN pline("%s's %s %s", Monnam(victim), aobjnam(otmp,"are"), txt); */ // TODO DE
 	}
 	if (!rn2(2)) {
 	    otmp->greased = 0;
@@ -1926,7 +1926,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			}
 			if (burn_floor_paper(mtmp->mx, mtmp->my, see_it, FALSE) &&
 				!see_it && distu(mtmp->mx, mtmp->my) <= 3*3)
-			    You("smell smoke."); /* EN You("smell smoke."); */ // TODO DE
+			    You("VERB_SMELL Rauch."); /* EN You("smell smoke."); */
 			if (is_ice(mtmp->mx,mtmp->my))
 			    melt_ice(mtmp->mx,mtmp->my);
 			if (see_it) seetrap(trap);
@@ -2454,7 +2454,7 @@ struct obj *box;	/* null for floor trap */
 		u.uhpmax -= rn2(min(u.uhpmax,num + 1)), flags.botl = 1;
 	}
 	if (!num)
-	    You("are uninjured."); /* EN You("are uninjured."); */ // TODO DE
+	    You("bist unverletzt."); /* EN You("are uninjured."); */
 	else
 	    losehp(num, tower_of_flame, KILLED_BY_AN);
 	burn_away_slime();
@@ -2465,7 +2465,7 @@ struct obj *box;	/* null for floor trap */
 	    destroy_item(POTION_CLASS, AD_FIRE);
 	}
 	if (!box && burn_floor_paper(u.ux, u.uy, see_it, TRUE) && !see_it)
-	    You("smell paper burning."); /* EN You("smell paper burning."); */ // TODO DE
+	    You("VERB_RIECHEN verbranntes Papier."); /* EN You("smell paper burning."); */
 	if (is_ice(u.ux, u.uy))
 	    melt_ice(u.ux, u.uy);
 }
@@ -2871,7 +2871,7 @@ drown()
 	}
 	if ((Teleportation || can_teleport(youmonst.data)) &&
 		    !u.usleep && (Teleport_control || rn2(3) < Luck+2)) {
-		You("attempt a teleport spell.");	/* utcsri!carroll */ /* EN You("attempt a teleport spell.");	*/ // TODO DE
+		You("VERB_VERSUCHEN einen Teleportationsspruch.");	/* utcsri!carroll */ /* EN You("attempt a teleport spell.");	*/
 		(void) dotele();
 		if(!is_pool(u.ux,u.uy))
 			return(TRUE);
@@ -2888,7 +2888,7 @@ drown()
 	/* if sleeping, wake up now so that we don't crawl out of water
 	   while still asleep; we can't do that the same way that waking
 	   due to combat is handled; note unmul() clears u.usleep */
-	if (u.usleep) unmul("Suddenly you wake up!"); /* EN if (u.usleep) unmul("Suddenly you wake up!"); */ // TODO DE
+	if (u.usleep) unmul("Plötzlich VERB_AUFWACHEN SUBJECT_IM_SATZ SATZKLAMMER!"); /* EN if (u.usleep) unmul("Suddenly you wake up!"); */
 	/* can't crawl if unable to move (crawl_ok flag stays false) */
 	if (multi < 0 || (Upolyd && !youmonst.data->mmove)) goto crawl;
 	/* look around for a place to crawl to */
@@ -3153,7 +3153,7 @@ struct monst *mtmp;
 		    mtmp->data->mlet != S_HUMAN) {
 		mtmp->mpeaceful = 1;
 		set_malign(mtmp);	/* reset alignment */
-		pline("%s is grateful.", Monnam(mtmp)); /* EN pline("%s is grateful.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_SEIN OBJECT KASUS_DATIV PRONOMEN_PERSONAL dankbar.", Monnam(mtmp)); /* EN pline("%s is grateful.", Monnam(mtmp)); */
 	    }
 	    /* Helping someone out of a trap is a nice thing to do,
 	     * A lawful may be rewarded, but not too often.  */
@@ -3185,7 +3185,7 @@ struct trap *ttmp;
 		reward_untrap(ttmp, mtmp);
 	} else {
 		if (ttmp->ttyp == BEAR_TRAP) {
-			You("disarm %s bear trap.", the_your[ttmp->madeby_u]); /* EN You("disarm %s bear trap.", the_your[ttmp->madeby_u]); */ // TODO DE
+			You("VERB_DISARM OBJECT %s NOUN_BEARTRAP.", the_your[ttmp->madeby_u]); /* EN You("disarm %s bear trap.", the_your[ttmp->madeby_u]); */
 			cnv_trap_obj(BEARTRAP, 1, ttmp);
 		} else /* if (ttmp->ttyp == WEB) */ {
 			You("succeed in removing %s web.", the_your[ttmp->madeby_u]); /* EN You("succeed in removing %s web.", the_your[ttmp->madeby_u]); */ // TODO DE
@@ -3203,7 +3203,7 @@ struct trap *ttmp;
 	int fails = try_disarm(ttmp, FALSE);
 
 	if (fails < 2) return fails;
-	You("disarm %s land mine.", the_your[ttmp->madeby_u]); /* EN You("disarm %s land mine.", the_your[ttmp->madeby_u]); */ // TODO DE
+	You("VERB_DISARM OBJECT %s NOUN_LAND_MINE.", the_your[ttmp->madeby_u]); /* EN You("disarm %s land mine.", the_your[ttmp->madeby_u]); */
 	cnv_trap_obj(LAND_MINE, 1, ttmp);
 	return 1;
 }
@@ -3254,7 +3254,7 @@ int otyp;
 	int fails = try_disarm(ttmp, FALSE);
 
 	if (fails < 2) return fails;
-	You("disarm %s trap.", the_your[ttmp->madeby_u]); /* EN You("disarm %s trap.", the_your[ttmp->madeby_u]); */ // TODO DE
+	You("NOUN_DISARM OBJECT %s NOUN_TRAP.", the_your[ttmp->madeby_u]); /* EN You("disarm %s trap.", the_your[ttmp->madeby_u]); */
 	cnv_trap_obj(otyp, 50-rnl(50), ttmp);
 	return 1;
 }
@@ -3449,7 +3449,7 @@ boolean force;
 			case PIT:
 			case SPIKED_PIT:
 				if (!u.dx && !u.dy) {
-				    You("are already on the edge of the pit."); /* EN You("are already on the edge of the pit."); */ // TODO DE
+				    You("VERB_STEHEN schon am Grubenrand."); /* EN You("are already on the edge of the pit."); */
 				    return 0;
 				}
 				if (!(mtmp = m_at(x,y))) {
@@ -3500,7 +3500,7 @@ boolean force;
 				rnd(75+level_difficulty()/2) > ch)) {
 				(void) chest_trap(otmp, FINGER, TRUE);
 			    } else {
-				You("disarm it!"); /* EN You("disarm it!"); */ // TODO DE
+				You("VERB_DISARM sie!"); /* EN You("disarm it!"); */
 				otmp->otrapped = 0;
 			    }
 			} else pline("That %s was not trapped.", xname(otmp)); /* EN } else pline("That %s was not trapped.", xname(otmp)); */ // TODO DE
@@ -3566,7 +3566,7 @@ boolean force;
 			/* (probably ought to charge for this damage...) */
 			if (*in_rooms(x, y, SHOPBASE)) add_damage(x, y, 0L);
 		    } else {
-			You("disarm it!"); /* EN You("disarm it!"); */ // TODO DE
+			You("VERB_DISARM sie!"); /* EN You("disarm it!"); */
 			levl[x][y].doormask &= ~D_TRAPPED;
 		    }
 		} else pline("This door was not trapped."); /* EN } else pline("This door was not trapped."); */ // TODO DE
@@ -3917,13 +3917,13 @@ lava_effects()
     if (!Fire_resistance) {
 	if(Wwalking) {
 	    dmg = d(6,6);
-	    pline_The("lava here burns you!"); /* EN pline_The("lava here burns you!"); */ // TODO DE
+	    pline_The("NOUN_LAVA VERB_VERBRENNEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL!"); /* EN pline_The("lava here burns you!"); */
 	    if(dmg < u.uhp) {
 		losehp(dmg, lava_killer, KILLED_BY);
 		goto burn_stuff;
 	    }
 	} else
-	    You("fall into the lava!"); /* EN You("fall into the lava!"); */ // TODO DE
+	    You("VERB_FALLEN in die Lava!"); /* EN You("fall into the lava!"); */
 
 	usurvive = Lifesaved || discover;
 #ifdef WIZARD
@@ -3964,7 +3964,7 @@ lava_effects()
 	You("burn to a crisp..."); /* EN You("burn to a crisp..."); */ // TODO DE
 	done(BURNING);
 	while (!safe_teleds(TRUE)) {
-		pline("You're still burning."); /* EN pline("You're still burning."); */ // TODO DE
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_BRENNEN noch."); /* EN pline("You're still burning."); */
 		done(BURNING);
 	}
 	You("VERB_SEIN wieder OBJECT KASUS_DATIV auf ADJEKTIV_FEST %s.", surface(u.ux, u.uy)); /* EN You("find yourself back on solid %s.", surface(u.ux, u.uy)); */

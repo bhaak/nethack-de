@@ -57,7 +57,7 @@ pline VA_DECL(const char *, line)
 	    line = pbuf;
 	}
 
-	line = german(line);
+	line = (char *)german(line);
 
 	if (!iflags.window_inited) {
 	    raw_print(line);
@@ -166,6 +166,18 @@ Du_fuehlst_dich VA_DECL(const char *,line)
 		line), VA_ARGS);
 	VA_END();
 }
+
+/*VARARGS1*/
+void
+Dir_ist VA_DECL(const char *,line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ", line), VA_ARGS);
+	VA_END();
+}
+
+
 #endif
 
 

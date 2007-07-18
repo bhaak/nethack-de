@@ -178,7 +178,7 @@ const char *verb;
 		if (*verb) {
 			if (Blind) {
 				if ((x == u.ux) && (y == u.uy))
-					You_hear("a CRASH! beneath you."); /* EN You_hear("a CRASH! beneath you."); */ // TODO DE
+					You_hear("ein KRACHEN! unter OBJECT KASUS_DATIV PRONOMEN_PERSONAL."); /* EN You_hear("a CRASH! beneath you."); */
 				else
 					You_hear("the boulder %s.", verb); /* EN You_hear("the boulder %s.", verb); */ // TODO DE
 			} else if (cansee(x, y)) {

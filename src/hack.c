@@ -85,7 +85,7 @@ moverock()
 #endif
 				    ) {
 	    if (Blind) feel_location(sx, sy);
-	    pline("You're too small to push that %s.", xname(otmp)); /* EN pline("You're too small to push that %s.", xname(otmp)); */ // TODO DE
+	    pline("SUBJECT VERB_SEIN zu klein um OBJECT PRONOMEN_BESTIMMTER %s zu schieben.", xname(otmp)); /* EN pline("You're too small to push that %s.", xname(otmp)); */
 	    goto cannot_push;
 	}
 	if (isok(rx,ry) && !IS_ROCK(levl[rx][ry].typ) &&
@@ -116,17 +116,17 @@ moverock()
 				    (ttmp->ttyp == SPIKED_PIT))))) {
 		if (Blind) feel_location(sx, sy);
 		if (canspotmon(mtmp))
-		    pline("There's %s on the other side.", a_monnam(mtmp)); /* EN pline("There's %s on the other side.", a_monnam(mtmp)); */ // TODO DE
+		    pline("Da VERB_SEIN SUBJECT_IM_SATZ %s auf der anderen Seite.", a_monnam(mtmp)); /* EN pline("There's %s on the other side.", a_monnam(mtmp)); */
 		else {
-		    You_hear("a monster behind %s.", the(xname(otmp))); /* EN You_hear("a monster behind %s.", the(xname(otmp))); */ // TODO DE
+		    You_hear("ARTICLE_UNBESTIMMTER NOUN_MONSTER hinter OBJECT KASUS_DATIV %s.", the(xname(otmp))); /* EN You_hear("a monster behind %s.", the(xname(otmp))); */
 		    map_invisible(rx, ry);
 		}
 		if (flags.verbose)
-		    pline("Perhaps that's why %s cannot move it.", /* EN pline("Perhaps that's why %s cannot move it.", */ // TODO DE
+		    pline("Vielleicht VERB_KOENNEN SUBJECT_IM_SATZ %s es deshalb nicht bewegen.", /* EN pline("Perhaps that's why %s cannot move it.", */
 #ifdef STEED
 				u.usteed ? y_monnam(u.usteed) :
 #endif
-				"you"); /* EN "you"); */ // TODO DE
+				"PRONOMEN_PERSONAL"); /* EN "you"); */
 		goto cannot_push;
 	    }
 
@@ -138,9 +138,9 @@ moverock()
 			place_object(otmp, rx, ry);
 			unblock_point(sx, sy);
 			newsym(sx, sy);
-			pline("KAABLAMM!!!  %s %s land mine.", /* EN pline("KAABLAMM!!!  %s %s land mine.", */ // TODO DE
-			      Tobjnam(otmp, "trigger"), /* EN Tobjnam(otmp, "trigger"), */ // TODO DE
-			      ttmp->madeby_u ? "your" : "a"); /* EN ttmp->madeby_u ? "your" : "a"); */ // TODO DE
+			pline("KABUUUM!!!  SUBJECT %s OBJECT %s NOUN_LAND_MINE SATZKLAMMER.", /* EN pline("KAABLAMM!!!  %s %s land mine.", */
+			      Tobjnam(otmp, "VERB_AUSLOESEN"), /* EN Tobjnam(otmp, "trigger"), */
+			      ttmp->madeby_u ? "PRONOMEN_POSSESIV" : "ARTICLE_UNBESTIMMTER"); /* EN ttmp->madeby_u ? "your" : "a"); */
 			blow_up_landmine(ttmp);
 			/* if the boulder remains, it should fill the pit */
 			fill_pit(u.ux, u.uy);
@@ -360,7 +360,7 @@ still_chewing(x,y)
 
     if (boulder) {
 	delobj(boulder);		/* boulder goes bye-bye */
-	You("eat the boulder.");	/* yum */ /* EN You("eat the boulder.");	*/ // TODO DE
+	You("VERB_ESSEN OBJECT ARTICLE_BESTIMMTER NOUN_BOULDER.");	/* yum */ /* EN You("eat the boulder."); */
 
 	/*
 	 *  The location could still block because of
@@ -2210,7 +2210,7 @@ const char *str;
 	if(str)
 	    pline(str);
 	else
-	    You_cant("do that while carrying so much stuff."); /* EN You_cant("do that while carrying so much stuff."); */ // TODO DE
+            pline("So überladen VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL das nicht machen."); /* EN You_cant("do that while carrying so much stuff."); */
 	return 1;
     }
     return 0;

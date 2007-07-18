@@ -385,9 +385,20 @@ START_TEST (test_complete_sentences3) {
 		 "Der Sukkubus macht sich an dich heran."},
 		{"Seltsamerweise VERB_SICH_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL besser als vorher.",
 		 "Seltsamerweise fühlst du dich besser als vorher."},
-		{"Dieser Betrag deckt teilweise KASUS_AKKUSATIV PRONOMEN_3P_F_POSSESSIV kürzlichen NOUN_VERLUSTs.",
-		 "."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DWARF VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER NOUN_FLOOR.",
+		 "Der Zwerg gräbt eine Grube in den Boden."},
+		{"Während SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_GRABEN füllt sich das Loch mit KASUS_DATIV NOUN_DOG!",
+		 ""},
+	};
 
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
+
+START_TEST (test_complete_sentences4) {
+	char *text[][2] = {
+		{"Nur schwach VERB_HEAR SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT NOUN_JEMAND VERB_YELL",
+		 "Nur schwach hörst du jemanden brüllen"},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -715,8 +726,8 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-  //tcase_add_test(tc_core, test_complete_sentences3);
-	tcase_add_test(tc_core, test_german2meta);
+  tcase_add_test(tc_core, test_complete_sentences4);
+	//tcase_add_test(tc_core, test_german2meta);
 
 	if (0) {
 	tcase_add_test(tc_core, test_german2meta);
@@ -738,6 +749,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_complete_sentences);
   tcase_add_test(tc_core, test_complete_sentences2);
   tcase_add_test(tc_core, test_complete_sentences3);
+  tcase_add_test(tc_core, test_complete_sentences4);
   tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_tincontent);
 	tcase_add_test(tc_core, test_inventory_names);
