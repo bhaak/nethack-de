@@ -7,7 +7,7 @@ class TestVerb < Test::Unit::TestCase
   @output_levels = Test::Unit::UI::VERBOSE
 
   def testVerb
-    machen = Verb.new("mach")
+    machen = Verb.verb("", "machen")
 
     assert(machen.singular.singular?)
     assert(machen.plural.plural?)
@@ -24,12 +24,14 @@ class TestVerb < Test::Unit::TestCase
     assert_equal("hät", Verb.umlaute("hat"))
     assert_equal("brauch", Verb.umlaute("brauch"))
     assert_equal("fäll", Verb.umlaute("fall"))
+    assert_equal("läuf", Verb.umlaute("lauf"))
   end
 
   def testRegelmaessigEinfacheZeiten
-    machen = Verb.new("mach")
+    machen = Verb.verb("", "machen")
 
     assert_equal("machen", machen.infinitiv)
+    assert_equal("VERB_MACHEN", machen.kennung)
 
     assert_equal("mach", machen.singular.imperativ)
     assert_equal("macht", machen.plural.imperativ)
@@ -52,7 +54,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testHaben
-    haben = VerbHaben.new
+    haben = Verb.verb("", "haben")
 
     assert_equal("haben", haben.infinitiv)
     assert_equal("hab", haben.singular.imperativ)
@@ -67,7 +69,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testSein
-    sein = VerbSein.new
+    sein = Verb.verb("", "sein")
 
     assert_equal("sein", sein.infinitiv)
     assert_equal("sei", sein.singular.imperativ)
@@ -81,7 +83,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testWerden
-    verb = VerbWerden.new
+    verb = Verb.verb("", "werden")
 
     assert_equal("werden", verb.infinitiv)
     assert_equal("werde", verb.singular.imperativ)
@@ -96,7 +98,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testGehen
-    verb = VerbUnregelmaessig.new("geh", "ging", "gang")
+    verb = Verb.verb("", "gehen")
 
     assert_equal("gehen", verb.infinitiv)
     assert_equal("geh", verb.singular.imperativ)
@@ -111,7 +113,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testFallen
-    verb = VerbUnregelmaessig.new("fall", "fiel", "fall")
+    verb = VerbUnregelmaessig.new("fall", "fiel", "fall") # TODO
     verb.umlaut = true
 
     assert_equal("fallen", verb.infinitiv)
@@ -129,6 +131,7 @@ class TestVerb < Test::Unit::TestCase
   def testPrintVerb
     verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
     verb = VerbUnregelmaessig.new("frier", "fror", "fror")
+    verb = VerbUnregelmaessig.new("lauf","lief","lauf")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
@@ -174,7 +177,7 @@ class TestVerb < Test::Unit::TestCase
 
   def testOeffnen
 	  # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Texte/e-Erweiterung.html
-    verb = Verb.new("öffn")
+    verb = Verb.verb("", "öffnen")
 
     assert_equal("öffnen", verb.infinitiv)
     assert_equal("öffne", verb.singular.imperativ)
@@ -189,7 +192,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testFinden
-    verb = VerbUnregelmaessig.new("find", "fand", "fund")
+    verb = Verb.verb("", "finden")
 
     assert_equal("finden", verb.infinitiv)
     assert_equal("finde", verb.singular.imperativ)
@@ -204,7 +207,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testSetzen
-    verb = Verb.new("setz")
+    verb = Verb.verb("", "setzen")
 
     assert_equal("setzen", verb.infinitiv)
     assert_equal("setz", verb.singular.imperativ)
@@ -219,7 +222,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testHeissen
-    verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
+    verb = Verb.verb("", "heißen")
 
     assert_equal("heißen", verb.infinitiv)
     assert_equal("heiß", verb.singular.imperativ)
@@ -231,6 +234,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["heiße", "heißest", "heiße", "heißen", "heißet", "heißen"])
     checkVerbPraeteritum(verb, ["hieß", "hießest", "hieß", "hießen", "hießt", "hießen"])
     checkVerbPraeteritumKonjunktiv(verb, ["hieße", "hießest", "hieße", "hießen", "hießet", "hießen"])
+  end
+
+  def testFangen
+    verb = Verb.verb("", "fangen")
+
+    assert_equal("fangen", verb.infinitiv)
+    assert_equal("fang", verb.singular.imperativ)
+    assert_equal("fangt", verb.plural.imperativ)
+    assert_equal("fangend", verb.partizip_praesens)
+    assert_equal("gefangen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["fange", "fängst", "fängt", "fangen", "fangt", "fangen"])
+    checkVerbPraesensKonjunktiv(verb, ["fange", "fangest", "fange", "fangen", "fanget", "fangen"])
+    checkVerbPraeteritum(verb, ["fing", "fingst", "fing", "fingen", "fingt", "fingen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["finge", "fingest", "finge", "fingen", "finget", "fingen"])
   end
 
   def estVerb

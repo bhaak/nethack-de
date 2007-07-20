@@ -14,6 +14,7 @@
 
 class Verb
   attr_reader :infinitiv, :e_erweiterung
+  attr_accessor :kennung
   
   def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
     @infinitiv = stamm + "en"
@@ -32,6 +33,8 @@ class Verb
     @numerus = 0          # 0, 1
 
     @e_erweiterung = e_erweiterung?(@praesens_stamm)
+
+    return self
   end
 
   def e_erweiterung?(stamm)
@@ -175,6 +178,10 @@ class Verb
   end
 
   def Verb.umlaute(stamm)
+    case stamm
+      when "lauf": return "läuf"
+    end
+      
     vokal = stamm.match(/[aou][^aeiou]/)
     umlaut = ""
     case vokal.to_s[0..0]
@@ -193,7 +200,16 @@ class VerbUnregelmaessig < Verb
   def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
     super(stamm, praeteritum_stamm, perfekt_stamm)
   	@praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
+
+    @umlaut = false
+    case stamm
+    when /back$/, /blas$/, /brat$/, /fahr$/, /fall$/, /fang$/, /grab$/,
+      /halt$/, /lad$/, /lass$/, /lauf$/, /rat$/, /sauf$/, /schlaf$/,
+      /schlag$/, /stoß$/, /trag$/, /wachs$/, /wasch$/
+      @umlaut = true
+    end
   end
+
   def form
     e_erweiterung = @e_erweiterung ? "e" : ""
     if praesens? && indikativ? && aktiv? && singular? && (zweitePerson? || drittePerson?) then
@@ -320,3 +336,31 @@ class VerbWerden < VerbUnregelmaessig
     return super
   end
 end
+
+def Verb.verb(kennung, infinitiv)
+  if kennung=="" then
+    kennung = "VERB_"+infinitiv.upcase
+  end
+  v = nil
+  
+  case infinitiv
+  when "werden": v = VerbWerden.new
+  when "sein":   v = VerbSein.new
+  when "haben":  v = VerbHaben.new
+  when "finden": v = VerbUnregelmaessig.new("find", "fand", "fund")
+  when "gehen":  v = VerbUnregelmaessig.new("geh", "ging", "gang")
+  when "heißen": v = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
+    #  au ie au
+  when "laufen": v = VerbUnregelmaessig.new("lauf", "lief", "lauf")
+  when "hauen":  v = VerbUnregelmaessig.new("hau", "hieb", "hau")
+    # a i a
+  when "fangen": v = VerbUnregelmaessig.new("fang", "fing", "fang")
+  when "empfangen": v = VerbUnregelmaessig.new("empfang", "empfing", "empfang")
+  else
+    v = Verb.new(infinitiv[0..-3])
+  end
+    
+  v.kennung = kennung
+  v
+end
+  
