@@ -944,6 +944,9 @@ char* german(const char *line) {
 			if (output[strlen(output)-1]!=' ') { append(output, " "); }
 			append(output, verb_praeverb);
 
+		} else if (strncmp("NEUES_OBJECT", tmp, 6)==0) {
+			insert_char = 0;
+			clear_object();
 		} else if (strncmp("NEUER_SATZ", tmp, 6)==0) {
 			insert_char = 0;
 			
