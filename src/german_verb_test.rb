@@ -251,6 +251,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["finge", "fingest", "finge", "fingen", "finget", "fingen"])
   end
 
+  def testKoennen
+    verb = Verb.verb("", "können")
+
+    assert_equal("können", verb.infinitiv)
+    assert_equal("", verb.singular.imperativ)
+    assert_equal("", verb.plural.imperativ)
+    assert_equal("könnend", verb.partizip_praesens)
+    assert_equal("gekonnt", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["kann", "kannst", "kann", "können", "könnt", "können"])
+    checkVerbPraesensKonjunktiv(verb, ["könne", "könnest", "könne", "können", "könnet", "können"])
+    checkVerbPraeteritum(verb, ["konnte", "konntest", "konnte", "konnten", "konntet", "konnten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["könnte", "könntest", "könnte", "könnten", "könntet", "könnten"])
+  end
+
   def estVerb
     verb = VerbUnregelmaessig.new("", "", "")
 

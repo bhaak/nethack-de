@@ -71,6 +71,12 @@ class Verb
     return self
   end
 
+  def konjunktiv_ii
+    praeteritum
+    @modus = :konjunktiv
+    return self
+  end
+
   def praesens
     @tempus = :praesens
     return self
@@ -337,6 +343,35 @@ class VerbWerden < VerbUnregelmaessig
   end
 end
 
+class VerbModal < Verb #Unregelmaessig
+  def initialize(stamm, praeteritum_stamm, perfekt_stamm)
+    super(stamm, praeteritum_stamm, perfekt_stamm)
+  end
+
+  def form
+    p = personNummer
+    if praesens? && indikativ? && singular? then
+      return ["kann", "kannst", "kann"][p]
+    #elsif praesens? && konjunktiv? then
+      #if singular? and (erstePerson? or drittePerson?) then
+        #return "sei"
+      #end
+    elsif praeteritum? && konjunktiv? then
+      #return ["wurde", "wurdest", "wurde", "wurden", "wurdet", "wurden"][p]
+      return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
+    end
+    return super
+  end
+
+  def partizip_perfekt
+    return "ge"+@perfekt_stamm+"t"
+  end
+
+  def imperativ
+    return ""
+  end
+end
+
 def Verb.verb(kennung, infinitiv)
   if kennung=="" then
     kennung = "VERB_"+infinitiv.upcase
@@ -347,6 +382,8 @@ def Verb.verb(kennung, infinitiv)
   when "werden": v = VerbWerden.new
   when "sein":   v = VerbSein.new
   when "haben":  v = VerbHaben.new
+    # Modalverben
+  when "können": v = VerbModal.new("könn", "konn", "konn")
   when "finden": v = VerbUnregelmaessig.new("find", "fand", "fund")
   when "gehen":  v = VerbUnregelmaessig.new("geh", "ging", "gang")
   when "heißen": v = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
