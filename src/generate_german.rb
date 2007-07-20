@@ -1,9 +1,11 @@
 require 'set'
 
+require 'german_verb'
+
 # use the genitive-e ("des Zauberbuches" vs. "des Zauberbuchs"
 $genitiv_e = true;
 # use the dativ-e ("dem Zauberbuche" vs. "dem Zauberbuch"
-$dativ_e = false;
+$dativ_e = true;
 
 $nom = "nominativ";
 $gen = "genitiv";
@@ -381,7 +383,7 @@ def ausgabe_adjectives
   puts "  {NULL, NULL, 0, 0, 0, 0}\n};"
 end
 
-class Verb
+class Verb_alt
   attr_accessor :bezeichner, :konjugation, :casus
 
   def initialize(bezeichner, stamm="", praeverb="", formen=['st','t','t','en'], casus=$akk)
@@ -411,11 +413,11 @@ class Verb
 end
 
 def konjugiere_verb(bezeichner, stamm)
-  return Verb.new(bezeichner, stamm)
+  return Verb_alt.new(bezeichner, stamm)
 end
 
 def ausgabe_verbs
-  puts "\nstruct verb_struct verben[] = {"
+  puts "\nstruct verb_alt_struct verben_alt[] = {"
   [
     konjugiere_verb("VERB_SICH_FUEHLEN","fühl"),
     konjugiere_verb("VERB_FUEHLEN","fühl"),
@@ -476,67 +478,73 @@ def ausgabe_verbs
     konjugiere_verb("VERB_JUCKEN","juck"),
     konjugiere_verb("VERB_ROSTEN","rost"),
     konjugiere_verb("VERB_MISSVERSTEHEN","missversteh"),
+    konjugiere_verb("VERB_SHRIEK","kreisch"),
+    konjugiere_verb("VERB_WAIL","wehklag"),
+    konjugiere_verb("VERB_YELL","brüll"),
+    konjugiere_verb("VERB_WUERDEN","würd"), # TODO
     "",
     "/* unregelmässige Verben */",
-    Verb.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
-    Verb.new("VERB_HAVE", "", "", ["hast", "hat", "habt", "haben"]),
-    Verb.new("VERB_READ", "", "", ["liest", "liest", "lest","lesen"]),
-    Verb.new("VERB_CAN", "", "", ["kannst", "kann", "könnt","können"]),
-    Verb.new("VERB_KICK", "", "", ["trittst", "tritt", "tretet","treten"]),
-    Verb.new("VERB_BITE", "", "", ["beißt", "beißt", "beißt","beißen"]),
-    Verb.new("VERB_HIT", "", "", ["triffst", "trifft", "trefft", "treffen"]),
-    Verb.new("VERB_SEE", "", "", ["siehst", "sieht", "seht", "sehen"]),
-    Verb.new("VERB_CONTAIN", "", "", ["enthälst", "enthält", "enthaltet","enthalten"]),
-    Verb.new("VERB_OPEN", "", "auf", ["gehst", "geht", "geht","gehen"]),
-    Verb.new("VERB_EAT", "", "auf", ["isst", "isst", "esst","essen"]),
-    Verb.new("VERB_DROP", "", "fallen", ["lässt", "lässt", "lasst","lassen"]),    # "You drop a potion."
-    Verb.new("VERB_OBJECT_DROPS", "", "", ["fällst", "fällt", "fallt", "fallen"]), # e.g "A potion drops to the floor."
-    Verb.new("VERB_SEEM","","zu sein", ["scheinst", "scheint","scheint", "scheinen"]),
-    Verb.new("VERB_SCHLAGEN",  "","", ["schlägst", "schlägt","schlagen", "schlagt"]),
-    Verb.new("VERB_ZUSCHLAGEN","","zu", ["schlägst", "schlägt","schlagen", "schlagt"]),
-    Verb.new("VERB_STECHEN","","", ["stichst", "sticht","stecht", "stechen"]),
-    Verb.new("VERB_ZUSTECHEN","","zu", ["stichst", "sticht","stecht", "stechen"]),
-    Verb.new("VERB_SCHIESSEN", "", "", ["schießt", "schießt", "schießt","schießen"]),
-    Verb.new("VERB_FANGEN", "", "", ["fängst", "fängt", "fangt","fangen"]),
-    Verb.new("VERB_ABBRECHEN", "", "ab", ["brichst", "bricht", "brecht","brechen"]),
-    Verb.new("VERB_EINATMEN", "", "ein", ["atmest", "atmet", "atmet","atmen"]),
-    Verb.new("VERB_TRAGEN", "", "", ["trägst", "trägt", "tragt","tragen"]),
-    Verb.new("VERB_KOENNEN", "", "", ["kannst", "kann", "könnt","können"]),
-    Verb.new("VERB_ZITTERN", "", "", ["zitterst", "zittert", "zittert","zittern"]),
-    Verb.new("VERB_GLAENZEN", "", "", ["glänzt", "glänzt", "glänzt","glänzen"]),
-    Verb.new("VERB_NEHMEN", "", "", ["nimmst", "nimmt", "nehmt","nehmen"]),
-    Verb.new("VERB_ZUSCHNUEREN", "", "zu", ["schnürst", "schnürt", "schnürt","schnüren"]),
-    Verb.new("VERB_PASSEN", "", "", ["passt", "passt", "passt","passen"]),
-    Verb.new("VERB_HALTEN", "", "", ["hälst", "hält", "haltet","halten"]),
-    Verb.new("VERB_HINDERN", "", "", ["hinderst", "hindert", "hindert","hindern"]),
-    Verb.new("VERB_WERDEN", "", "", ["wirst", "wird", "werdet", "werden"]),
-    Verb.new("VERB_ZERFALLEN", "", "", ["zerfällst", "zerfällt", "zerfallt", "zerfallen"]),
-    Verb.new("VERB_ERSCHAUDERN", "", "", ["erschauderst", "erschaudert", "erschaudert", "erschaudern"]),
-    Verb.new("VERB_VORBEIZISCHEN", "", "vorbei", ["zischst", "zischt", "zischt", "zischen"]),
-    Verb.new("VERB_SITZEN", "", "", ["sitzt", "sitzt", "sitzt", "sitzen"]),
-    Verb.new("VERB_SETZEN", "", "", ["setzt", "setzt", "setzt", "setzen"]),
-    Verb.new("VERB_AUFLOESEN", "", "auf", ["löst", "löst", "löst", "lösen"]),
-    Verb.new("VERB_WOLLEN", "", "", ["willst", "will", "wollt", "wollen"]),
+    Verb_alt.new("VERB_SEIN", "", "", ["bist", "ist", "seid", "sind"]),
+    Verb_alt.new("VERB_HAVE", "", "", ["hast", "hat", "habt", "haben"]),
+    Verb_alt.new("VERB_READ", "", "", ["liest", "liest", "lest","lesen"]),
+    Verb_alt.new("VERB_CAN", "", "", ["kannst", "kann", "könnt","können"]),
+    Verb_alt.new("VERB_KICK", "", "", ["trittst", "tritt", "tretet","treten"]),
+    Verb_alt.new("VERB_BITE", "", "", ["beißt", "beißt", "beißt","beißen"]),
+    Verb_alt.new("VERB_HIT", "", "", ["triffst", "trifft", "trefft", "treffen"]),
+    Verb_alt.new("VERB_SEE", "", "", ["siehst", "sieht", "seht", "sehen"]),
+    Verb_alt.new("VERB_CONTAIN", "", "", ["enthälst", "enthält", "enthaltet","enthalten"]),
+    Verb_alt.new("VERB_OPEN", "", "auf", ["gehst", "geht", "geht","gehen"]),
+    Verb_alt.new("VERB_EAT", "", "auf", ["isst", "isst", "esst","essen"]),
+    Verb_alt.new("VERB_DROP", "", "fallen", ["lässt", "lässt", "lasst","lassen"]),    # "You drop a potion."
+    Verb_alt.new("VERB_OBJECT_DROPS", "", "", ["fällst", "fällt", "fallt", "fallen"]), # e.g "A potion drops to the floor."
+    Verb_alt.new("VERB_SEEM","","zu sein", ["scheinst", "scheint","scheint", "scheinen"]),
+    Verb_alt.new("VERB_SCHLAGEN",  "","", ["schlägst", "schlägt","schlagen", "schlagt"]),
+    Verb_alt.new("VERB_ZUSCHLAGEN","","zu", ["schlägst", "schlägt","schlagen", "schlagt"]),
+    Verb_alt.new("VERB_STECHEN","","", ["stichst", "sticht","stecht", "stechen"]),
+    Verb_alt.new("VERB_ZUSTECHEN","","zu", ["stichst", "sticht","stecht", "stechen"]),
+    Verb_alt.new("VERB_SCHIESSEN", "", "", ["schießt", "schießt", "schießt","schießen"]),
+    Verb_alt.new("VERB_FANGEN", "", "", ["fängst", "fängt", "fangt","fangen"]),
+    Verb_alt.new("VERB_ABBRECHEN", "", "ab", ["brichst", "bricht", "brecht","brechen"]),
+    Verb_alt.new("VERB_EINATMEN", "", "ein", ["atmest", "atmet", "atmet","atmen"]),
+    Verb_alt.new("VERB_TRAGEN", "", "", ["trägst", "trägt", "tragt","tragen"]),
+    Verb_alt.new("VERB_KOENNEN", "", "", ["kannst", "kann", "könnt","können"]),
+    Verb_alt.new("VERB_ZITTERN", "", "", ["zitterst", "zittert", "zittert","zittern"]),
+    Verb_alt.new("VERB_GLAENZEN", "", "", ["glänzt", "glänzt", "glänzt","glänzen"]),
+    Verb_alt.new("VERB_NEHMEN", "", "", ["nimmst", "nimmt", "nehmt","nehmen"]),
+    Verb_alt.new("VERB_ZUSCHNUEREN", "", "zu", ["schnürst", "schnürt", "schnürt","schnüren"]),
+    Verb_alt.new("VERB_PASSEN", "", "", ["passt", "passt", "passt","passen"]),
+    Verb_alt.new("VERB_HALTEN", "", "", ["hälst", "hält", "haltet","halten"]),
+    Verb_alt.new("VERB_HINDERN", "", "", ["hinderst", "hindert", "hindert","hindern"]),
+    Verb_alt.new("VERB_WERDEN", "", "", ["wirst", "wird", "werdet", "werden"]),
+    Verb_alt.new("VERB_ZERFALLEN", "", "", ["zerfällst", "zerfällt", "zerfallt", "zerfallen"]),
+    Verb_alt.new("VERB_ERSCHAUDERN", "", "", ["erschauderst", "erschaudert", "erschaudert", "erschaudern"]),
+    Verb_alt.new("VERB_VORBEIZISCHEN", "", "vorbei", ["zischst", "zischt", "zischt", "zischen"]),
+    Verb_alt.new("VERB_SITZEN", "", "", ["sitzt", "sitzt", "sitzt", "sitzen"]),
+    Verb_alt.new("VERB_SETZEN", "", "", ["setzt", "setzt", "setzt", "setzen"]),
+    Verb_alt.new("VERB_AUFLOESEN", "", "auf", ["löst", "löst", "löst", "lösen"]),
+    Verb_alt.new("VERB_WOLLEN", "", "", ["willst", "will", "wollt", "wollen"]),
     "",
-    Verb.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
-    Verb.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
-    Verb.new("VERB_MOECHTEST", "", "", ["möchtest", "möchte", "möchtet","möchten"]),
-    Verb.new("VERB_LASSEN", "", "", ["lässt", "lässt", "lassen","lasst"]),
+    Verb_alt.new("VERB_DACHTEST", "", "", ["dachtest", "dachte", "dachtet","dachten"]),
+    Verb_alt.new("VERB_HAETTEST", "", "", ["hättest", "hätte", "hättet","hätten"]),
+    Verb_alt.new("VERB_MOECHTEST", "", "", ["möchtest", "möchte", "möchtet","möchten"]),
+    Verb_alt.new("VERB_LASSEN", "", "", ["lässt", "lässt", "lassen","lasst"]),
     "",
-    Verb.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
-    Verb.new("VERB_ZERBRECHEN", "", "", ["zerbrichst", "zerbricht", "zerbrecht", "zerbrechen"]),
-    Verb.new("VERB_VERSTEINERN", "", "", ["versteinerst", "versteinert", "versteinert", "versteinern"]),
-    Verb.new("VERB_STERBEN", "", "", ["stirbst", "stirbt", "sterbt", "sterben"]),
-    Verb.new("VERB_VERHUNGERN", "", "", ["verhungerst", "verhungert", "verhungert", "verhungern"]),
-    Verb.new("VERB_FALLEN", "", "", ["fällst", "fällt", "fallt", "fallen"]),
-    Verb.new("VERB_TRAELLERN", "", "", ["trällerst", "trällert", "trällert", "trällern"]),
-    Verb.new("VERB_KLIMPERN", "", "", ["klimperst", "klimpert", "klimpert", "klimpern"]),
-    Verb.new("VERB_ZUHOEREN", "", "zu", ["hörst", "hört", "hört","hören"]),
-    Verb.new("VERB_HERANMACHEN", "", "heran", ["machst", "macht", "macht","machen"]),
-    Verb.new("VERB_LAUFEN", "", "", ["läufst", "läuft", "lauft","laufen"]),
-    Verb.new("VERB_KNISTERN", "", "", ["knisterst", "knistert", "knistert","knistern"]),
-    Verb.new("VERB_AUFHOEREN", "", "auf", ["hörst", "hört", "hört","hören"]),
-    Verb.new("VERB_VERHASPELN", "", "", ["verhaspelst", "verhaspelt","verhaspelt","verhaspeln"]),
+    Verb_alt.new("VERB_WORN", "getragen", "", ["", "", "", ""]),
+    Verb_alt.new("VERB_ZERBRECHEN", "", "", ["zerbrichst", "zerbricht", "zerbrecht", "zerbrechen"]),
+    Verb_alt.new("VERB_VERSTEINERN", "", "", ["versteinerst", "versteinert", "versteinert", "versteinern"]),
+    Verb_alt.new("VERB_STERBEN", "", "", ["stirbst", "stirbt", "sterbt", "sterben"]),
+    Verb_alt.new("VERB_VERHUNGERN", "", "", ["verhungerst", "verhungert", "verhungert", "verhungern"]),
+    Verb_alt.new("VERB_FALLEN", "", "", ["fällst", "fällt", "fallt", "fallen"]),
+    Verb_alt.new("VERB_TRAELLERN", "", "", ["trällerst", "trällert", "trällert", "trällern"]),
+    Verb_alt.new("VERB_KLIMPERN", "", "", ["klimperst", "klimpert", "klimpert", "klimpern"]),
+    Verb_alt.new("VERB_ZUHOEREN", "", "zu", ["hörst", "hört", "hört","hören"]),
+    Verb_alt.new("VERB_HERANMACHEN", "", "heran", ["machst", "macht", "macht","machen"]),
+    Verb_alt.new("VERB_LAUFEN", "", "", ["läufst", "läuft", "lauft","laufen"]),
+    Verb_alt.new("VERB_KNISTERN", "", "", ["knisterst", "knistert", "knistert","knistern"]),
+    Verb_alt.new("VERB_AUFHOEREN", "", "auf", ["hörst", "hört", "hört","hören"]),
+    Verb_alt.new("VERB_VERHASPELN", "", "", ["verhaspelst", "verhaspelt","verhaspelt","verhaspeln"]),
+    Verb_alt.new("VERB_AUFHOEREN", "", "auf", ["hebst", "hebt", "hebt","heben"]),
+    Verb_alt.new("VERB_GRABEN", "", "", ["gräbst", "gräbt", "grabt","graben"]),
   ].each { |v|   
     if v.is_a? String then
       puts v
@@ -546,6 +554,50 @@ def ausgabe_verbs
   }
   puts "\n"
 	puts "  {NULL, NULL, 0, 0}\n};"
+
+  verben = [
+    Verb.verb("VERB_SEIN","sein"),
+    Verb.verb("VERB_HAVE","haben"),
+    Verb.verb("VERB_MACHEN","machen"),
+    Verb.verb("VERB_WERDEN","werden"),
+    Verb.verb("VERB_CAN","können"),
+    Verb.verb("VERB_HEAR","hören"),
+    Verb.verb("VERB_RUTSCHEN","rutschen"),
+    Verb.verb("VERB_GLEITEN","gleiten"),
+  ]
+
+  puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
+  verben.each {|v| puts '  {"'+v.infinitiv+'", "'+v.kennung+'"},' }
+	puts "  {NULL, NULL}\n};"
+
+  puts "\nstruct verb_partizip_struct verben_partizip[] = {"
+  verben.each {|v| puts '  {"'+v.partizip_praesens+'", "'+v.partizip_perfekt+'", "'+v.kennung+'"},' }
+	puts "  {NULL, NULL, NULL}\n};"
+
+
+  puts "\nstruct verb_struct verben[] = {"
+  verben.each { |v|
+    v.singular.indikativ.praesens
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "", erstePerson, n_singular, praesens, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "", zweitePerson, n_singular, praesens, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "", drittePerson, n_singular, praesens, akkusativ},'
+    v.plural.indikativ.praesens
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "", erstePerson, n_plural, praesens, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "", zweitePerson, n_plural, praesens, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "", drittePerson, n_plural, praesens, akkusativ},'
+    v.singular.konjunktiv_ii
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "", erstePerson, n_singular, konjunktiv_ii, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},'
+    v.plural.konjunktiv_ii
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "", erstePerson, n_plural, konjunktiv_ii, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},'
+  }
+	puts "  {NULL, NULL, NULL, 0, 0, 0, 0}\n};"
+
+  # {"graben", "VERB_GRABEN", "", drittePerson, n_plural, akkusativ},
+
 end
 
 
