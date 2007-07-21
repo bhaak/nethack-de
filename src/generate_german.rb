@@ -566,6 +566,7 @@ def ausgabe_verbs
     Verb.verb("VERB_KOENNEN","können"),
     Verb.verb("VERB_HEAR","hören"),
     Verb.verb("VERB_EAT","essen"),
+    Verb.verb("VERB_OPEN","gehen", "auf"),
     Verb.verb("VERB_RUTSCHEN","rutschen"),
     Verb.verb("VERB_GLEITEN","gleiten"),
     Verb.verb("VERB_BITE","beißen"),
@@ -584,7 +585,11 @@ def ausgabe_verbs
     Verb.verb("VERB_PLATZIEREN","platzieren"),
     Verb.verb("VERB_JUCKEN","jucken"),
     Verb.verb("VERB_DROP","lassen", "fallen"),
+    Verb.verb("VERB_OBJECT_DROPS","fallen"),
     Verb.verb("VERB_DENKEN","denken"),
+    Verb.verb("VERB_LANDEN","landen"),
+    Verb.verb("VERB_SEEM","scheinen", "zu sein"),
+    Verb.verb("VERB_SICH_FUEHLEN","fühlen"),
   ]
 
   puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"

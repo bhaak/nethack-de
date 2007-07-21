@@ -409,13 +409,14 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   v = nil
   
   case infinitiv
-  when "werden": v = VerbWerden.new
-  when "sein":   v = VerbSein.new
-  when "haben":  v = VerbHaben.new
-  when "denken": v = VerbSchwachUnregelmaessig.new("denk", "dach", "dach")
-  when "finden": v = VerbUnregelmaessig.new("find", "fand", "fund")
-  when "gehen":  v = VerbUnregelmaessig.new("geh", "ging", "gang")
-  when "heiﬂen": v = VerbUnregelmaessig.new("heiﬂ", "hieﬂ", "heiﬂ")
+  when "werden":   v = VerbWerden.new
+  when "sein":     v = VerbSein.new
+  when "haben":    v = VerbHaben.new
+  when "denken":   v = VerbSchwachUnregelmaessig.new("denk", "dach", "dach")
+  when "finden":   v = VerbUnregelmaessig.new("find", "fand", "fund")
+  when "gehen":    v = VerbUnregelmaessig.new("geh", "ging", "gang")
+  when "heiﬂen":   v = VerbUnregelmaessig.new("heiﬂ", "hieﬂ", "heiﬂ")
+  when "scheinen": v = VerbUnregelmaessig.new("schein", "schien", "schien")
     # e/i-Wechsel
   when "nehmen":  v = Verb_EI_Wechsel.new("nehm", "nahm", "nomm", "nimm")
   when "treten":  v = Verb_EI_Wechsel.new("tret", "trat", "tret", "tritt")

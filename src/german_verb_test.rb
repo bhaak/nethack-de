@@ -133,7 +133,7 @@ class TestVerb < Test::Unit::TestCase
     verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
     verb = VerbUnregelmaessig.new("frier", "fror", "fror")
     verb = VerbUnregelmaessig.new("lauf","lief","lauf")
-    verb = Verb.verb("","denken")
+    verb = Verb.verb("","scheinen")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
@@ -342,6 +342,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["denke", "denkest", "denke", "denken", "denket", "denken"])
     checkVerbPraeteritum(verb, ["dachte", "dachtest", "dachte", "dachten", "dachtet", "dachten"])
     checkVerbPraeteritumKonjunktiv(verb, ["dächte", "dächtest", "dächte", "dächten", "dächtet", "dächten"])
+  end
+
+  def testScheinen
+    verb = Verb.verb("", "scheinen")
+
+    assert_equal("scheinen", verb.infinitiv)
+    assert_equal("schein", verb.singular.imperativ)
+    assert_equal("scheint", verb.plural.imperativ)
+    assert_equal("scheinend", verb.partizip_praesens)
+    assert_equal("geschienen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["scheine", "scheinst", "scheint", "scheinen", "scheint", "scheinen"])
+    checkVerbPraesensKonjunktiv(verb, ["scheine", "scheinest", "scheine", "scheinen", "scheinet", "scheinen"])
+    checkVerbPraeteritum(verb, ["schien", "schienst", "schien", "schienen", "schient", "schienen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["schiene", "schienest", "schiene", "schienen", "schienet", "schienen"])
   end
 
   def estVerb
