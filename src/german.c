@@ -977,6 +977,11 @@ char* german(const char *line) {
 			else if (strcmp("MODIFIER_VERB_SINGULAR", tmp)==0) { subject_numerus = n_singular; }
 			else if (strcmp("MODIFIER_VERB_PLURAL", tmp)==0)   { subject_numerus = n_plural; }
 
+			else if (strcmp("MODIFIER_VERB_PRAESENS", tmp)==0) { verb_tempus_modus = praesens; }
+			else if (strcmp("MODIFIER_VERB_PRAETERITUM", tmp)==0) { verb_tempus_modus = praeteritum; }
+			else if (strcmp("MODIFIER_KONJUNKTIV", tmp)==0) { verb_tempus_modus = konjunktiv; }
+			else if (strcmp("MODIFIER_KONJUNKTIV_II", tmp)==0) { verb_tempus_modus = konjunktiv_ii; }
+
 		} else if (strncmp("NUMERUS_", tmp, 8)==0) {
 			insert_char = 0;
 			if      (strcmp("NUMERUS_SINGULAR", tmp)==0) { c_numerus = n_singular; }

@@ -363,12 +363,17 @@ class VerbModal < Verb
     return super
   end
 
-  def partizip_perfekt
-    return "ge"+@perfekt_stamm+"t"
-  end
-
   def imperativ
     return ""
+  end
+end
+
+class VerbSchwachUnregelmaessig < Verb
+  def form
+    if praeteritum? && konjunktiv? then
+      return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
+    end
+    return super
   end
 end
 
@@ -407,6 +412,10 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "werden": v = VerbWerden.new
   when "sein":   v = VerbSein.new
   when "haben":  v = VerbHaben.new
+  when "denken": v = VerbSchwachUnregelmaessig.new("denk", "dach", "dach")
+  when "finden": v = VerbUnregelmaessig.new("find", "fand", "fund")
+  when "gehen":  v = VerbUnregelmaessig.new("geh", "ging", "gang")
+  when "heißen": v = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
     # e/i-Wechsel
   when "nehmen":  v = Verb_EI_Wechsel.new("nehm", "nahm", "nomm", "nimm")
   when "treten":  v = Verb_EI_Wechsel.new("tret", "trat", "tret", "tritt")
@@ -416,9 +425,6 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "essen":   v = Verb_EI_Wechsel.new("ess", "aß", "gess", "iss")
     # Modalverben
   when "können": v = VerbModal.new("könn", "konn", "konn")
-  when "finden": v = VerbUnregelmaessig.new("find", "fand", "fund")
-  when "gehen":  v = VerbUnregelmaessig.new("geh", "ging", "gang")
-  when "heißen": v = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
     #  au ie au
   when "laufen": v = VerbUnregelmaessig.new("lauf", "lief", "lauf")
   when "hauen":  v = VerbUnregelmaessig.new("hau", "hieb", "hau")
@@ -429,6 +435,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "lassen": v = VerbUnregelmaessig.new("lass", "ließ", "lass")
   when "fallen": v = VerbUnregelmaessig.new("fall", "fiel", "fall")
   else
+    # regelmaessige Verben
     v = Verb.new(infinitiv[0..-3])
   end
     

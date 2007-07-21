@@ -438,7 +438,7 @@ START_TEST (test_level_sounds) {
 
 START_TEST (test_verbs) {
 	char *text[][2] = {
-		{"SUBJECT PRONOMEN_PERSONAL VERB_DACHTEST, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV RING_UNIDENTIFIED_OPAL NOUN_RING im Spülbecken verloren VERB_HAETTEST, aber da liegt er doch!",
+		{"SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_DENKEN, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV RING_UNIDENTIFIED_OPAL NOUN_RING im Spülbecken verloren MODIFIER_KONJUNKTIV_II VERB_HABEN, aber da liegt er doch!",
 		 "Du dachtest, dass du deinen Opalring im Spülbecken verloren hättest, aber da liegt er doch!"},
 		{"SUBJECT ARTIKEL_UNBESTIMMTER RING_UNIDENTIFIED_BRONZE NOUN_RING VERB_LANDEN im Ausguss.",
 		 "Ein Bronzering landet im Ausguss."},

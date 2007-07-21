@@ -558,6 +558,7 @@ def ausgabe_verbs
   verben = [
     Verb.verb("VERB_SEIN","sein"),
     Verb.verb("VERB_HAVE","haben"),
+    Verb.verb("VERB_HABEN","haben"),
     Verb.verb("VERB_MACHEN","machen"),
     Verb.verb("VERB_WERDEN","werden"),
     Verb.verb("VERB_NEHMEN","nehmen"),
@@ -583,6 +584,7 @@ def ausgabe_verbs
     Verb.verb("VERB_PLATZIEREN","platzieren"),
     Verb.verb("VERB_JUCKEN","jucken"),
     Verb.verb("VERB_DROP","lassen", "fallen"),
+    Verb.verb("VERB_DENKEN","denken"),
   ]
 
   puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
@@ -604,6 +606,16 @@ def ausgabe_verbs
     #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", erstePerson, n_plural, praesens, akkusativ},'
     puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", zweitePerson, n_plural, praesens, akkusativ},'
     puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", drittePerson, n_plural, praesens, akkusativ},'
+
+    v.singular.indikativ.praeteritum
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", erstePerson, n_singular, praeteritum, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", zweitePerson, n_singular, praeteritum, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", drittePerson, n_singular, praeteritum, akkusativ},'
+    v.plural.indikativ.praeteritum
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", erstePerson, n_plural, praeteritum, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", zweitePerson, n_plural, praeteritum, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", drittePerson, n_plural, praeteritum, akkusativ},'
+
     v.singular.konjunktiv_ii
     #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", erstePerson, n_singular, konjunktiv_ii, akkusativ},'
     puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", zweitePerson, n_singular, konjunktiv_ii, akkusativ},'

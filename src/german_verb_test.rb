@@ -133,7 +133,7 @@ class TestVerb < Test::Unit::TestCase
     verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
     verb = VerbUnregelmaessig.new("frier", "fror", "fror")
     verb = VerbUnregelmaessig.new("lauf","lief","lauf")
-    verb = Verb.verb("","essen")
+    verb = Verb.verb("","denken")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
@@ -327,6 +327,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["esse", "essest", "esse", "essen", "esset", "essen"])
     checkVerbPraeteritum(verb, ["aß", "aßest", "aß", "aßen", "aßt", "aßen"])
     checkVerbPraeteritumKonjunktiv(verb, ["äße", "äßest", "äße", "äßen", "äßet", "äßen"])
+  end
+
+  def testDenken
+    verb = Verb.verb("", "denken")
+
+    assert_equal("denken", verb.infinitiv)
+    assert_equal("denk", verb.singular.imperativ)
+    assert_equal("denkt", verb.plural.imperativ)
+    assert_equal("denkend", verb.partizip_praesens)
+    assert_equal("gedacht", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["denke", "denkst", "denkt", "denken", "denkt", "denken"])
+    checkVerbPraesensKonjunktiv(verb, ["denke", "denkest", "denke", "denken", "denket", "denken"])
+    checkVerbPraeteritum(verb, ["dachte", "dachtest", "dachte", "dachten", "dachtet", "dachten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["dächte", "dächtest", "dächte", "dächten", "dächtet", "dächten"])
   end
 
   def estVerb
