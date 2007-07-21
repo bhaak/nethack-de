@@ -14,7 +14,7 @@
 
 class Verb
   attr_reader :infinitiv, :e_erweiterung
-  attr_accessor :kennung
+  attr_accessor :kennung, :praeverb
   
   def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
     @infinitiv = stamm + "en"
@@ -186,6 +186,7 @@ class Verb
   def Verb.umlaute(stamm)
     case stamm
       when "lauf": return "l‰uf"
+      when "aﬂ": return "‰ﬂ"
     end
       
     vokal = stamm.match(/[aou][^aeiou]/)
@@ -220,7 +221,11 @@ class VerbUnregelmaessig < Verb
     e_erweiterung = @e_erweiterung ? "e" : ""
     if praesens? && indikativ? && aktiv? && singular? && (zweitePerson? || drittePerson?) then
       if s_verschmelzung?(@praesens_stamm) then
-				return @praesens_stamm + 't'
+				if umlaut then
+					return Verb.umlaute(@praesens_stamm) + 't'
+				else
+					return @praesens_stamm + 't'
+				end
       end
 
       if umlaut then
@@ -343,7 +348,7 @@ class VerbWerden < VerbUnregelmaessig
   end
 end
 
-class VerbModal < Verb #Unregelmaessig
+class VerbModal < Verb
   def initialize(stamm, praeteritum_stamm, perfekt_stamm)
     super(stamm, praeteritum_stamm, perfekt_stamm)
   end
@@ -352,12 +357,7 @@ class VerbModal < Verb #Unregelmaessig
     p = personNummer
     if praesens? && indikativ? && singular? then
       return ["kann", "kannst", "kann"][p]
-    #elsif praesens? && konjunktiv? then
-      #if singular? and (erstePerson? or drittePerson?) then
-        #return "sei"
-      #end
     elsif praeteritum? && konjunktiv? then
-      #return ["wurde", "wurdest", "wurde", "wurden", "wurdet", "wurden"][p]
       return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
     end
     return super
@@ -372,7 +372,32 @@ class VerbModal < Verb #Unregelmaessig
   end
 end
 
-def Verb.verb(kennung, infinitiv)
+class Verb_EI_Wechsel < VerbUnregelmaessig
+
+  def initialize(stamm, praeteritum_stamm, perfekt_stamm, ei_wechsel_stamm)
+    super(stamm, praeteritum_stamm, perfekt_stamm)
+    @ei_wechsel_stamm = ei_wechsel_stamm
+  end
+
+  def form
+    p = personNummer
+    if praesens? && indikativ? && singular? && zweitePerson? then
+			return @ei_wechsel_stamm + (s_verschmelzung?(@ei_wechsel_stamm) ? "t" : "st")
+    elsif praesens? && indikativ? && singular? && drittePerson? then
+      return @ei_wechsel_stamm + (@ei_wechsel_stamm[-1..-1]=='t' ? "" : "t")
+    end
+    return super
+  end
+
+  def imperativ
+    if singular? then
+      return @ei_wechsel_stamm
+    end
+    super
+  end
+end
+
+def Verb.verb(kennung, infinitiv, praeverb="")
   if kennung=="" then
     kennung = "VERB_"+infinitiv.upcase
   end
@@ -382,6 +407,13 @@ def Verb.verb(kennung, infinitiv)
   when "werden": v = VerbWerden.new
   when "sein":   v = VerbSein.new
   when "haben":  v = VerbHaben.new
+    # e/i-Wechsel
+  when "nehmen":  v = Verb_EI_Wechsel.new("nehm", "nahm", "nomm", "nimm")
+  when "treten":  v = Verb_EI_Wechsel.new("tret", "trat", "tret", "tritt")
+  when "treffen": v = Verb_EI_Wechsel.new("treff", "traf", "troff", "triff")
+  when "sehen":   v = Verb_EI_Wechsel.new("seh", "sah", "seh", "sieh")
+  when "brechen": v = Verb_EI_Wechsel.new("brech", "brach", "broch", "brich")
+  when "essen":   v = Verb_EI_Wechsel.new("ess", "aﬂ", "gess", "iss")
     # Modalverben
   when "kˆnnen": v = VerbModal.new("kˆnn", "konn", "konn")
   when "finden": v = VerbUnregelmaessig.new("find", "fand", "fund")
@@ -393,10 +425,14 @@ def Verb.verb(kennung, infinitiv)
     # a i a
   when "fangen": v = VerbUnregelmaessig.new("fang", "fing", "fang")
   when "empfangen": v = VerbUnregelmaessig.new("empfang", "empfing", "empfang")
+    # a ie a
+  when "lassen": v = VerbUnregelmaessig.new("lass", "lieﬂ", "lass")
+  when "fallen": v = VerbUnregelmaessig.new("fall", "fiel", "fall")
   else
     v = Verb.new(infinitiv[0..-3])
   end
     
+  v.praeverb = praeverb
   v.kennung = kennung
   v
 end

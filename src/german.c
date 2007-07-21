@@ -36,6 +36,7 @@ enum Person  pm_person = 0;
 enum Genus   do_genus = 0;
 enum Numerus do_numerus = 0;
 
+enum Tempus_Modus  verb_tempus_modus = 0;
 enum Casus  verb_do_casus = 0;
 
 /* c_ => current state */
@@ -301,7 +302,7 @@ void german2meta_with(char *str, char *output, char *with)
 	printf("\ngerman2meta %s\n", output);
 }
 
-const char* get_verb(const char* verb, enum Person p, enum Numerus n) {
+const char* get_verb(const char* verb, enum Person p, enum Numerus n, enum Tempus_Modus tm) {
 	int i=0;
 #ifdef DEBUG
 	printf("%s %d %d", verb, p, n);
@@ -309,7 +310,8 @@ const char* get_verb(const char* verb, enum Person p, enum Numerus n) {
 	while (verben[i].verb != NULL) {
 		if ((strcmp(verben[i].typ, verb)==0) && 
 				(verben[i].person  & p) && 
-				(verben[i].numerus & n)) {
+				(verben[i].numerus & n) &&
+				(verben[i].tempus_modus & tm)) {
 			verb_do_casus = verben[i].casus;
 			verb_praeverb = verben[i].praeverb;
 			return verben[i].verb;
@@ -703,6 +705,7 @@ char* german(const char *line) {
 	do_genus = 0; do_numerus = 0;
 	c_casus = 0; c_genus = 0; c_numerus = 0; c_person = 0; c_artikel = ohne;
 	verb_do_casus = 0; 
+	verb_tempus_modus = 0; 
 
 	int pos=0;
 	char tmp[TBUFSZ];
@@ -743,6 +746,7 @@ char* german(const char *line) {
 	   in the disoveries */
 	//print_state();
 	c_casus = nominativ;
+	verb_tempus_modus = praesens; 
 	finde_naechstes_subject(line);
 	//print_state();
 	while (pos<=strlen(line)) {
@@ -898,7 +902,7 @@ char* german(const char *line) {
 #endif
 			if (subject_person==0) { subject_person = zweitePerson; }
 			if (subject_numerus==0) { subject_numerus = n_singular; } // change to players choice
-			append(output, get_verb(tmp, subject_person, subject_numerus));
+			append(output, get_verb(tmp, subject_person, subject_numerus, verb_tempus_modus));
 			c_artikel = grundform; // für prädikativen Gebrauch nötig "Das Pferd ist gesattelt."
 
 		} else if (strncmp("ADJEKTIV_", tmp, 9)==0) {

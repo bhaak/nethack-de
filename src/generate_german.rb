@@ -560,10 +560,29 @@ def ausgabe_verbs
     Verb.verb("VERB_HAVE","haben"),
     Verb.verb("VERB_MACHEN","machen"),
     Verb.verb("VERB_WERDEN","werden"),
+    Verb.verb("VERB_NEHMEN","nehmen"),
     Verb.verb("VERB_CAN","können"),
+    Verb.verb("VERB_KOENNEN","können"),
     Verb.verb("VERB_HEAR","hören"),
+    Verb.verb("VERB_EAT","essen"),
     Verb.verb("VERB_RUTSCHEN","rutschen"),
     Verb.verb("VERB_GLEITEN","gleiten"),
+    Verb.verb("VERB_BITE","beißen"),
+    Verb.verb("VERB_KICK","treten"),
+    Verb.verb("VERB_KILL","töten"),
+    Verb.verb("VERB_MISS","verfehlen"),
+    Verb.verb("VERB_HIT","treffen"),
+    Verb.verb("VERB_SEE","sehen"),
+    Verb.verb("VERB_ABBRECHEN","brechen","ab"),
+    Verb.verb("VERB_ZUSCHNUEREN","schnüren","zu"),
+    Verb.verb("VERB_GELINGEN","gelingen"),
+    Verb.verb("VERB_FUEHREN","führen"),
+    Verb.verb("VERB_BEENDEN","beenden"),
+    Verb.verb("VERB_ABSORBIEREN","absorbieren"),
+    Verb.verb("VERB_HAUEN","hauen"),
+    Verb.verb("VERB_PLATZIEREN","platzieren"),
+    Verb.verb("VERB_JUCKEN","jucken"),
+    Verb.verb("VERB_DROP","lassen", "fallen"),
   ]
 
   puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
@@ -578,21 +597,21 @@ def ausgabe_verbs
   puts "\nstruct verb_struct verben[] = {"
   verben.each { |v|
     v.singular.indikativ.praesens
-    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "", erstePerson, n_singular, praesens, akkusativ},'
-    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "", zweitePerson, n_singular, praesens, akkusativ},'
-    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "", drittePerson, n_singular, praesens, akkusativ},'
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", erstePerson, n_singular, praesens, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", zweitePerson, n_singular, praesens, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", drittePerson, n_singular, praesens, akkusativ},'
     v.plural.indikativ.praesens
-    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "", erstePerson, n_plural, praesens, akkusativ},'
-    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "", zweitePerson, n_plural, praesens, akkusativ},'
-    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "", drittePerson, n_plural, praesens, akkusativ},'
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", erstePerson, n_plural, praesens, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", zweitePerson, n_plural, praesens, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", drittePerson, n_plural, praesens, akkusativ},'
     v.singular.konjunktiv_ii
-    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "", erstePerson, n_singular, konjunktiv_ii, akkusativ},'
-    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},'
-    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},'
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", erstePerson, n_singular, konjunktiv_ii, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", zweitePerson, n_singular, konjunktiv_ii, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", drittePerson, n_singular, konjunktiv_ii, akkusativ},'
     v.plural.konjunktiv_ii
-    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "", erstePerson, n_plural, konjunktiv_ii, akkusativ},'
-    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},'
-    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},'
+    #puts '  {"'+v.erstePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", erstePerson, n_plural, konjunktiv_ii, akkusativ},'
+    puts '  {"'+v.zweitePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", zweitePerson, n_plural, konjunktiv_ii, akkusativ},'
+    puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", drittePerson, n_plural, konjunktiv_ii, akkusativ},'
   }
 	puts "  {NULL, NULL, NULL, 0, 0, 0, 0}\n};"
 

@@ -24,7 +24,9 @@ class TestVerb < Test::Unit::TestCase
     assert_equal("hät", Verb.umlaute("hat"))
     assert_equal("brauch", Verb.umlaute("brauch"))
     assert_equal("fäll", Verb.umlaute("fall"))
+    assert_equal("läss", Verb.umlaute("lass"))
     assert_equal("läuf", Verb.umlaute("lauf"))
+    assert_equal("äß", Verb.umlaute("aß"))
   end
 
   def testRegelmaessigEinfacheZeiten
@@ -113,8 +115,7 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testFallen
-    verb = VerbUnregelmaessig.new("fall", "fiel", "fall") # TODO
-    verb.umlaut = true
+    verb = Verb.verb("","fallen")
 
     assert_equal("fallen", verb.infinitiv)
     assert_equal("fall", verb.singular.imperativ)
@@ -132,10 +133,12 @@ class TestVerb < Test::Unit::TestCase
     verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
     verb = VerbUnregelmaessig.new("frier", "fror", "fror")
     verb = VerbUnregelmaessig.new("lauf","lief","lauf")
+    verb = Verb.verb("","essen")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
     puts "E-Erweiterung: " + verb.e_erweiterung.to_s
+    #puts "Umlaut: " + verb.umlaut.to_s
     puts
     puts "Imperativ"
     puts "Singular:  "+ verb.singular.imperativ
@@ -266,8 +269,68 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["könnte", "könntest", "könnte", "könnten", "könntet", "könnten"])
   end
 
+  def testNehmen
+    verb = Verb.verb("","nehmen")
+
+    assert_equal("nehmen", verb.infinitiv)
+    assert_equal("nimm", verb.singular.imperativ)
+    assert_equal("nehmt", verb.plural.imperativ)
+    assert_equal("nehmend", verb.partizip_praesens)
+    assert_equal("genommen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["nehme", "nimmst", "nimmt", "nehmen", "nehmt", "nehmen"])
+    checkVerbPraesensKonjunktiv(verb, ["nehme", "nehmest", "nehme", "nehmen", "nehmet", "nehmen"])
+    checkVerbPraeteritum(verb, ["nahm", "nahmst", "nahm", "nahmen", "nahmt", "nahmen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["nähme", "nähmest", "nähme", "nähmen", "nähmet", "nähmen"])
+  end
+
+  def testTreten
+    verb = Verb.verb("", "treten")
+
+    assert_equal("treten", verb.infinitiv)
+    assert_equal("tritt", verb.singular.imperativ)
+    assert_equal("tretet", verb.plural.imperativ)
+    assert_equal("tretend", verb.partizip_praesens)
+    assert_equal("getreten", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["trete", "trittst", "tritt", "treten", "tretet", "treten"])
+    checkVerbPraesensKonjunktiv(verb, ["trete", "tretest", "trete", "treten", "tretet", "treten"])
+    checkVerbPraeteritum(verb, ["trat", "tratst", "trat", "traten", "tratet", "traten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["träte", "trätest", "träte", "träten", "trätet", "träten"])
+  end
+
+  def testLassen
+    verb = Verb.verb("", "lassen")
+
+    assert_equal("lassen", verb.infinitiv)
+    assert_equal("lass", verb.singular.imperativ)
+    assert_equal("lasst", verb.plural.imperativ)
+    assert_equal("lassend", verb.partizip_praesens)
+    assert_equal("gelassen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["lasse", "lässt", "lässt", "lassen", "lasst", "lassen"])
+    #checkVerbPraesensKonjunktiv(verb, ["", "", "", "", "", ""])
+    #checkVerbPraeteritum(verb, ["", "", "", "", "", ""])
+    #checkVerbPraeteritumKonjunktiv(verb, ["", "", "", "", "", ""])
+  end
+
+  def testEssen
+    verb = Verb.verb("", "essen")
+
+    assert_equal("essen", verb.infinitiv)
+    assert_equal("iss", verb.singular.imperativ)
+    assert_equal("esst", verb.plural.imperativ)
+    assert_equal("essend", verb.partizip_praesens)
+    assert_equal("gegessen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["esse", "isst", "isst", "essen", "esst", "essen"])
+    checkVerbPraesensKonjunktiv(verb, ["esse", "essest", "esse", "essen", "esset", "essen"])
+    checkVerbPraeteritum(verb, ["aß", "aßest", "aß", "aßen", "aßt", "aßen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["äße", "äßest", "äße", "äßen", "äßet", "äßen"])
+  end
+
   def estVerb
-    verb = VerbUnregelmaessig.new("", "", "")
+    verb = Verb.verb("", "en")
 
     assert_equal("", verb.infinitiv)
     assert_equal("", verb.singular.imperativ)
