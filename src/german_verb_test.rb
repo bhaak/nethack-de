@@ -133,7 +133,7 @@ class TestVerb < Test::Unit::TestCase
     verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
     verb = VerbUnregelmaessig.new("frier", "fror", "fror")
     verb = VerbUnregelmaessig.new("lauf","lief","lauf")
-    verb = Verb.verb("","verbrennen")
+    verb = Verb.verb("","spazieren")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
@@ -374,6 +374,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["brennte", "brenntest", "brennte", "brennten", "brenntet", "brennten"])
   end
 
+  def testVerbrennen
+    verb = Verb.verb("", "verbrennen")
+
+    assert_equal("verbrennen", verb.infinitiv)
+    assert_equal("verbrenn", verb.singular.imperativ)
+    assert_equal("verbrennt", verb.plural.imperativ)
+    assert_equal("verbrennend", verb.partizip_praesens)
+    assert_equal("verbrannt", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["verbrenne", "verbrennst", "verbrennt", "verbrennen", "verbrennt", "verbrennen"])
+    checkVerbPraesensKonjunktiv(verb, ["verbrenne", "verbrennest", "verbrenne", "verbrennen", "verbrennet", "verbrennen"])
+    checkVerbPraeteritum(verb, ["verbrannte", "verbranntest", "verbrannte", "verbrannten", "verbranntet", "verbrannten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["verbrennte", "verbrenntest", "verbrennte", "verbrennten", "verbrenntet", "verbrennten"])
+  end
+
   def estVerb
     verb = Verb.verb("", "en")
 
@@ -418,4 +433,5 @@ class TestVerb < Test::Unit::TestCase
     assert_equal(formen[4], verb.plural.zweitePerson.form)
     assert_equal(formen[5], verb.plural.drittePerson.form)
   end
+
 end

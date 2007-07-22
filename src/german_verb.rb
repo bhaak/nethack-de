@@ -6,18 +6,24 @@
 # [X] e-Erweiterung
 # [ ] e-Tilgung
 # [ ] e-Tilgung im Konjunktiv II
-# [ ] e/i-Wechsel
-# [ ] Partizip mit/ohne ge-
+# [X] e/i-Wechsel
+# [X] Partizip mit/ohne ge-
 # [X] s-Verschmelzung
-# [ ] Umlaut im Präsens
-# [ ] Ablaut in Stammformen
+# [X] Umlaut im Präsens
+# [X] Ablaut in Stammformen
 
 class Verb
   attr_reader :infinitiv, :e_erweiterung
   attr_accessor :kennung, :praeverb
   
   def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
-    @infinitiv = stamm + "en"
+    if stamm[-2..-1] == "en" then
+      @infinitiv = stamm
+      stamm = stamm[0..-3]
+    else
+      @infinitiv = stamm + "en"
+    end
+      
 
     @praesens_stamm = stamm
     @praeteritum_stamm = praeteritum_stamm
@@ -149,7 +155,17 @@ class Verb
     return @praesens_stamm + "end"
   end
   def partizip_perfekt
-    return "ge"+@perfekt_stamm + (@e_erweiterung ? "e" : "") + "t"
+    return ge+@perfekt_stamm + (@e_erweiterung ? "e" : "") + "t"
+  end
+
+  # liefert Partizip-Perfekt-Vorsilbe
+  def ge
+    if ((@infinitiv =~ /^(be|er|ent|ge|ver|zer)(.*)/ and $2.size > 5) or # Heuristik gegen falsche Treffer wie bei 'gehen' or
+        (@infinitiv =~ /(.*)ieren$/ and $1.size > 3)) then # Heuristik gegen falsche Treffer wie bei 'frieren'
+      return ""
+    else
+      return "ge"
+    end
   end
 
   def singular?
@@ -249,7 +265,7 @@ class VerbUnregelmaessig < Verb
   end
 
   def partizip_perfekt
-    return "ge"+@perfekt_stamm + "en"
+    return ge+@perfekt_stamm + "en"
   end
 end
 
@@ -377,7 +393,7 @@ class VerbSchwachUnregelmaessig < Verb
   def form
     if praeteritum? && konjunktiv? then
 			case infinitiv
-			when "brennen", "kennen"
+			when /brennen$/, "kennen"
       	return (@praesens_stamm) + "te" + endung(@konjunktiv_endung)
 			end
     	return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
@@ -427,7 +443,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "heißen":   v = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
   when "scheinen": v = VerbUnregelmaessig.new("schein", "schien", "schien")
 	# mit Rueckumlaut
-  when "brennen":  v = VerbSchwachUnregelmaessig.new("brenn", "brann", "brann")
+  when /(.*)brennen$/:  v = VerbSchwachUnregelmaessig.new(infinitiv, $1+"brann", $1+"brann")
     # e/i-Wechsel
   when "nehmen":  v = Verb_EI_Wechsel.new("nehm", "nahm", "nomm", "nimm")
   when "treten":  v = Verb_EI_Wechsel.new("tret", "trat", "tret", "tritt")
