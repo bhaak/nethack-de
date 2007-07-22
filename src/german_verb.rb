@@ -13,21 +13,36 @@
 # [X] Ablaut in Stammformen
 
 class Verb
-  attr_reader :infinitiv, :e_erweiterung
+  attr_reader :infinitiv, :e_erweiterung, :partizip_perfekt
   attr_accessor :kennung, :praeverb
   
-  def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
+  def initialize(stamm, praeteritum_stamm=stamm, partizip_perfekt="")
     if stamm[-2..-1] == "en" then
       @infinitiv = stamm
       stamm = stamm[0..-3]
     else
       @infinitiv = stamm + "en"
     end
-      
 
     @praesens_stamm = stamm
-    @praeteritum_stamm = praeteritum_stamm
-    @perfekt_stamm = perfekt_stamm
+
+    if praeteritum_stamm[-2..-1] == 'te' then
+      @praeteritum_stamm = praeteritum_stamm[0..-3]
+    elsif praeteritum_stamm[-1..-1] == 'e' then
+      @praeteritum_stamm = praeteritum_stamm[0..-2]
+    else
+      @praeteritum_stamm = praeteritum_stamm
+    end
+
+    @e_erweiterung = e_erweiterung?(@praesens_stamm)
+
+    if partizip_perfekt != "" then
+      @partizip_perfekt = partizip_perfekt
+    elsif @infinitiv =~ /....ieren$/ then
+      @partizip_perfekt = stamm + 't'
+    else
+      @partizip_perfekt = "ge" + stamm + (@e_erweiterung ? "e" : "") + "t"
+    end
 
 		@praesens_endung =    ["e", "st", "t", "en", "t", "en"]
   	@praeteritum_endung = ["",  "st", "",  "n", "t", "n"]
@@ -38,7 +53,6 @@ class Verb
     @person  = 1          # 0, 1, 2
     @numerus = 0          # 0, 1
 
-    @e_erweiterung = e_erweiterung?(@praesens_stamm)
 
     return self
   end
@@ -154,19 +168,6 @@ class Verb
   def partizip_praesens
     return @praesens_stamm + "end"
   end
-  def partizip_perfekt
-    return ge+@perfekt_stamm + (@e_erweiterung ? "e" : "") + "t"
-  end
-
-  # liefert Partizip-Perfekt-Vorsilbe
-  def ge
-    if ((@infinitiv =~ /^(be|er|ent|ge|ver|zer)(.*)/ and $2.size > 5) or # Heuristik gegen falsche Treffer wie bei 'gehen' or
-        (@infinitiv =~ /(.*)ieren$/ and $1.size > 3)) then # Heuristik gegen falsche Treffer wie bei 'frieren'
-      return ""
-    else
-      return "ge"
-    end
-  end
 
   def singular?
     return @numerus == 0
@@ -195,9 +196,6 @@ class Verb
   def konjunktiv?
     return @modus==:konjunktiv
   end
-  def aktiv?
-    return true
-  end
 
   def Verb.umlaute(stamm)
     case stamm
@@ -225,7 +223,7 @@ class VerbUnregelmaessig < Verb
   	@praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
 
     @umlaut = false
-    case stamm
+    case @praesens_stamm
     when /back$/, /blas$/, /brat$/, /fahr$/, /fall$/, /fang$/, /grab$/,
       /halt$/, /lad$/, /lass$/, /lauf$/, /rat$/, /sauf$/, /schlaf$/,
       /schlag$/, /stoß$/, /trag$/, /wachs$/, /wasch$/
@@ -235,7 +233,7 @@ class VerbUnregelmaessig < Verb
 
   def form
     e_erweiterung = @e_erweiterung ? "e" : ""
-    if praesens? && indikativ? && aktiv? && singular? && (zweitePerson? || drittePerson?) then
+    if praesens? && indikativ? && singular? && (zweitePerson? || drittePerson?) then
       if s_verschmelzung?(@praesens_stamm) then
 				if umlaut then
 					return Verb.umlaute(@praesens_stamm) + 't'
@@ -249,7 +247,7 @@ class VerbUnregelmaessig < Verb
       else
         return @praesens_stamm + e_erweiterung + endung(@praesens_endung)
       end
-    elsif praeteritum? && indikativ? && aktiv? then
+    elsif praeteritum? && indikativ? then
       if plural? && zweitePerson? then
         return @praeteritum_stamm + e_erweiterung + endung(@praeteritum_endung)
       elsif s_verschmelzung?(@praeteritum_stamm) then
@@ -258,20 +256,16 @@ class VerbUnregelmaessig < Verb
       else
         return @praeteritum_stamm + endung(@praeteritum_endung)
       end
-    elsif praeteritum? && konjunktiv? && aktiv? then
+    elsif praeteritum? && konjunktiv? then
       return Verb.umlaute(@praeteritum_stamm) + "e" + endung(@konjunktiv_endung)
     end
     return super
-  end
-
-  def partizip_perfekt
-    return ge+@perfekt_stamm + "en"
   end
 end
 
 class VerbHaben < VerbUnregelmaessig
   def initialize
-    super("hab", "hat", "hab")
+    super("haben", "hat", "gehabt")
   end
 
   def form
@@ -290,43 +284,13 @@ class VerbHaben < VerbUnregelmaessig
     return super
   end
 
-  def partizip_perfekt
-    return "gehabt"
-  end
 end
 
 class VerbSein < VerbUnregelmaessig
   def initialize()
-    super("sei", "war", "wes")
-  end
-
-  def infinitiv
-    return "sein"
-  end
-
-  def form
-    p = personNummer
-    if praesens? && indikativ? then
-      return ["bin", "bist", "ist", "sind", "seid", "sind"][p]
-    elsif praesens? && konjunktiv? then
-      if singular? and (erstePerson? or drittePerson?) then
-        return "sei"
-      end
-    #elsif praeteritum? && indikativ? then
-      #return ["war", "warst", "war", "waren", "wart", "waren"][p]
-    end
-    return super
-  end
-end
-
-
-class VerbSein < VerbUnregelmaessig
-  def initialize()
-    super("sei", "war", "wes")
-  end
-
-  def infinitiv
-    return "sein"
+    super("sein", "war", "gewesen")
+    @infinitiv = "sein"
+    @praesens_stamm = "sei"
   end
 
   def form
@@ -346,7 +310,7 @@ end
 
 class VerbWerden < VerbUnregelmaessig
   def initialize()
-    super("werd", "wurd", "word")
+    super("werden", "wurde", "geworden")
   end
 
   def form
@@ -365,10 +329,6 @@ class VerbWerden < VerbUnregelmaessig
 end
 
 class VerbModal < Verb
-  def initialize(stamm, praeteritum_stamm, perfekt_stamm)
-    super(stamm, praeteritum_stamm, perfekt_stamm)
-  end
-
   def form
     p = personNummer
     if praesens? && indikativ? && singular? then
@@ -437,38 +397,37 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "werden":   v = VerbWerden.new
   when "sein":     v = VerbSein.new
   when "haben":    v = VerbHaben.new
-  when "denken":   v = VerbSchwachUnregelmaessig.new("denk", "dach", "dach")
-  when "finden":   v = VerbUnregelmaessig.new("find", "fand", "fund")
-  when "gehen":    v = VerbUnregelmaessig.new("geh", "ging", "gang")
-  when "heißen":   v = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
-  when "scheinen": v = VerbUnregelmaessig.new("schein", "schien", "schien")
+  when "denken":   v = VerbSchwachUnregelmaessig.new("denken", "dachte", "gedacht")
+  when "gehen":    v = VerbUnregelmaessig.new("gehen", "ging", "gegangen")
+  when "heißen":   v = VerbUnregelmaessig.new("heißen", "hieß", "geheißen")
+  when "scheinen": v = VerbUnregelmaessig.new("scheinen", "schien", "geschienen")
 	# mit Rueckumlaut
-  when /(.*)brennen$/:  v = VerbSchwachUnregelmaessig.new(infinitiv, $1+"brann", $1+"brann")
+  when /(.*)brennen$/:  v = VerbSchwachUnregelmaessig.new(infinitiv, $1+"brannte", ($1==""?"ge":$1)+"brannt")
     # e/i-Wechsel
-  when "nehmen":  v = Verb_EI_Wechsel.new("nehm", "nahm", "nomm", "nimm")
-  when "treten":  v = Verb_EI_Wechsel.new("tret", "trat", "tret", "tritt")
-  when "treffen": v = Verb_EI_Wechsel.new("treff", "traf", "troff", "triff")
-  when "sehen":   v = Verb_EI_Wechsel.new("seh", "sah", "seh", "sieh")
-  when "brechen": v = Verb_EI_Wechsel.new("brech", "brach", "broch", "brich")
-  when "essen":   v = Verb_EI_Wechsel.new("ess", "aß", "gess", "iss")
+  when "nehmen":  v = Verb_EI_Wechsel.new("nehmen", "nahm", "genommen", "nimm")
+  when "treten":  v = Verb_EI_Wechsel.new("treten", "trat", "getreten", "tritt")
+  when "treffen": v = Verb_EI_Wechsel.new("treffen", "traf", "getroffen", "triff")
+  when "sehen":   v = Verb_EI_Wechsel.new("sehen", "sah", "gesehen", "sieh")
+  when "brechen": v = Verb_EI_Wechsel.new("brechen", "brach", "gebrochen", "brich")
+  when "essen":   v = Verb_EI_Wechsel.new("essen", "aß", "gegessen", "iss")
     # Modalverben
-  when "können": v = VerbModal.new("könn", "konn", "konn")
-  when "wollen": v = VerbModal.new("woll", "woll", "woll")
+  when "können": v = VerbModal.new("können", "konnte", "gekonnt")
+  when "wollen": v = VerbModal.new("wollen", "wollte", "gewollt")
     #  i a u
-  when "finden": v = VerbUnregelmaessig.new("find", "fand", "fund")
-  when "verschwinden": v = VerbUnregelmaessig.new("verschwind", "verschwand", "verschwund") # TODO
+  when "finden": v = VerbUnregelmaessig.new("finden", "fand", "gefunden")
+  when "verschwinden": v = VerbUnregelmaessig.new("verschwinden", "verschwand", "verschwunden") # TODO
     #  a u a
-  when "tragen": v = VerbUnregelmaessig.new("trag", "trug", "trag")
-  when "graben": v = VerbUnregelmaessig.new("grab", "grub", "grab")
+  when "tragen": v = VerbUnregelmaessig.new("tragen", "trug", "getragen")
+  when "graben": v = VerbUnregelmaessig.new("graben", "grub", "gegraben")
     #  au ie au
-  when "laufen": v = VerbUnregelmaessig.new("lauf", "lief", "lauf")
-  when "hauen":  v = VerbUnregelmaessig.new("hau", "hieb", "hau")
+  when "laufen": v = VerbUnregelmaessig.new("laufen", "lief", "gelaufen")
+  when "hauen":  v = VerbUnregelmaessig.new("hauen", "hieb", "gehauen")
     # a i a
-  when "fangen": v = VerbUnregelmaessig.new("fang", "fing", "fang")
-  when "empfangen": v = VerbUnregelmaessig.new("empfang", "empfing", "empfang")
+  when "fangen": v = VerbUnregelmaessig.new("fangen", "fing", "gefangen")
+  when "empfangen": v = VerbUnregelmaessig.new("empfangen", "empfing", "empfangen")
     # a ie a
-  when "lassen": v = VerbUnregelmaessig.new("lass", "ließ", "lass")
-  when "fallen": v = VerbUnregelmaessig.new("fall", "fiel", "fall")
+  when "lassen": v = VerbUnregelmaessig.new("lassen", "ließ", "gelassen")
+  when "fallen": v = VerbUnregelmaessig.new("fallen", "fiel", "gefallen")
   else
     # regelmaessige Verben
     v = Verb.new(infinitiv[0..-3])

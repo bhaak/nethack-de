@@ -389,6 +389,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["verbrennte", "verbrenntest", "verbrennte", "verbrennten", "verbrenntet", "verbrennten"])
   end
 
+  def testSpazieren
+    verb = Verb.verb("", "spazieren")
+
+    assert_equal("spazieren", verb.infinitiv)
+    assert_equal("spazier", verb.singular.imperativ)
+    assert_equal("spaziert", verb.plural.imperativ)
+    assert_equal("spazierend", verb.partizip_praesens)
+    assert_equal("spaziert", verb.partizip_perfekt)
+
+    #checkVerbPraesens(verb, ["", "", "", "", "", ""])
+    #checkVerbPraesensKonjunktiv(verb, ["", "", "", "", "", ""])
+    #checkVerbPraeteritum(verb, ["", "", "", "", "", ""])
+    #checkVerbPraeteritumKonjunktiv(verb, ["", "", "", "", "", ""])
+  end
+
   def estVerb
     verb = Verb.verb("", "en")
 
