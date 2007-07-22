@@ -37,6 +37,7 @@ enum Genus   do_genus = 0;
 enum Numerus do_numerus = 0;
 
 enum Tempus_Modus  verb_tempus_modus = 0;
+enum Partizip verb_partizip = 0;
 enum Casus  verb_do_casus = 0;
 
 /* c_ => current state */
@@ -45,6 +46,7 @@ enum Genus   c_genus = 0;
 enum Numerus c_numerus = 0;
 enum Person  c_person = 0;
 enum Artikel c_artikel = 0;
+
 
 int modifier_corpse = 0;
 
@@ -307,16 +309,31 @@ const char* get_verb(const char* verb, enum Person p, enum Numerus n, enum Tempu
 #ifdef DEBUG
 	printf("%s %d %d", verb, p, n);
 #endif
-	while (verben[i].verb != NULL) {
-		if ((strcmp(verben[i].typ, verb)==0) && 
-				(verben[i].person  & p) && 
-				(verben[i].numerus & n) &&
-				(verben[i].tempus_modus & tm)) {
-			verb_do_casus = verben[i].casus;
-			verb_praeverb = verben[i].praeverb;
-			return verben[i].verb;
+	if (verb_partizip > 0) {
+		// Partizipien
+		while (verben_partizip[i].typ != NULL) {
+			if (strcmp(verben_partizip[i].typ, verb)==0) {
+				if (verb_partizip == partizip_praesens) {
+					return verben_partizip[i].praesens;
+				} else if (verb_partizip == partizip_perfekt) {
+					return verben_partizip[i].perfekt;
+				}
+			}
+			i++;
 		}
-		i++;
+	} else {
+		// konjugierte Verbformen
+		while (verben[i].verb != NULL) {
+			if ((strcmp(verben[i].typ, verb)==0) && 
+					(verben[i].person  & p) && 
+					(verben[i].numerus & n) &&
+					(verben[i].tempus_modus & tm)) {
+				verb_do_casus = verben[i].casus;
+				verb_praeverb = verben[i].praeverb;
+				return verben[i].verb;
+			}
+			i++;
+		}
 	}
 
 	return verb;
@@ -478,6 +495,12 @@ void clear_subject() {
 	subject_person=0;
 	subject_genus=0;
 	subject_numerus=0;
+}
+
+void clear_verb() {
+	//verb_do_casus=0; // TODO
+	//verb_praeverb=""; // TODO
+	verb_partizip=0;
 }
 
 int analyze_this_as_subject(const char *text) {
@@ -774,6 +797,7 @@ char* german(const char *line) {
 
 		} else if (strncmp("SUBJECT",tmp,7)==0) {
 			clear_subject();
+			clear_verb();
 			c_casus = nominativ;
 			finde_naechstes_subject(line+pos);
 			insert_char = 0;
@@ -956,6 +980,7 @@ char* german(const char *line) {
 			
 			clear_subject();
 			clear_object();
+			clear_verb();
 		} else if (strncmp("KASUS_", tmp, 6)==0) {
 			insert_char = 0;
 
@@ -979,6 +1004,8 @@ char* german(const char *line) {
 
 			else if (strcmp("MODIFIER_VERB_PRAESENS", tmp)==0) { verb_tempus_modus = praesens; }
 			else if (strcmp("MODIFIER_VERB_PRAETERITUM", tmp)==0) { verb_tempus_modus = praeteritum; }
+			else if (strcmp("MODIFIER_VERB_PARTIZIP_PRAESENS", tmp)==0) { verb_partizip = partizip_praesens; }
+			else if (strcmp("MODIFIER_VERB_PARTIZIP_PERFEKT", tmp)==0) { verb_partizip = partizip_perfekt; }
 			else if (strcmp("MODIFIER_KONJUNKTIV", tmp)==0) { verb_tempus_modus = konjunktiv; }
 			else if (strcmp("MODIFIER_KONJUNKTIV_II", tmp)==0) { verb_tempus_modus = konjunktiv_ii; }
 

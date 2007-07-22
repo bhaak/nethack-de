@@ -133,7 +133,7 @@ class TestVerb < Test::Unit::TestCase
     verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
     verb = VerbUnregelmaessig.new("frier", "fror", "fror")
     verb = VerbUnregelmaessig.new("lauf","lief","lauf")
-    verb = Verb.verb("","scheinen")
+    verb = Verb.verb("","verbrennen")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
@@ -357,6 +357,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["scheine", "scheinest", "scheine", "scheinen", "scheinet", "scheinen"])
     checkVerbPraeteritum(verb, ["schien", "schienst", "schien", "schienen", "schient", "schienen"])
     checkVerbPraeteritumKonjunktiv(verb, ["schiene", "schienest", "schiene", "schienen", "schienet", "schienen"])
+  end
+
+  def testBrennen
+    verb = Verb.verb("", "brennen")
+
+    assert_equal("brennen", verb.infinitiv)
+    assert_equal("brenn", verb.singular.imperativ)
+    assert_equal("brennt", verb.plural.imperativ)
+    assert_equal("brennend", verb.partizip_praesens)
+    assert_equal("gebrannt", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["brenne", "brennst", "brennt", "brennen", "brennt", "brennen"])
+    checkVerbPraesensKonjunktiv(verb, ["brenne", "brennest", "brenne", "brennen", "brennet", "brennen"])
+    checkVerbPraeteritum(verb, ["brannte", "branntest", "brannte", "brannten", "branntet", "brannten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["brennte", "brenntest", "brennte", "brennten", "brenntet", "brennten"])
   end
 
   def estVerb

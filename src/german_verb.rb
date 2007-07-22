@@ -356,7 +356,12 @@ class VerbModal < Verb
   def form
     p = personNummer
     if praesens? && indikativ? && singular? then
-      return ["kann", "kannst", "kann"][p]
+      case infinitiv
+      when "können": return ["kann", "kannst", "kann"][p]
+      when "wollen": return ["will", "willst", "will"][p]
+      else
+        return super
+      end
     elsif praeteritum? && konjunktiv? then
       return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
     end
@@ -371,7 +376,11 @@ end
 class VerbSchwachUnregelmaessig < Verb
   def form
     if praeteritum? && konjunktiv? then
-      return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
+			case infinitiv
+			when "brennen", "kennen"
+      	return (@praesens_stamm) + "te" + endung(@konjunktiv_endung)
+			end
+    	return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
     end
     return super
   end
@@ -417,6 +426,8 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "gehen":    v = VerbUnregelmaessig.new("geh", "ging", "gang")
   when "heißen":   v = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
   when "scheinen": v = VerbUnregelmaessig.new("schein", "schien", "schien")
+	# mit Rueckumlaut
+  when "brennen":  v = VerbSchwachUnregelmaessig.new("brenn", "brann", "brann")
     # e/i-Wechsel
   when "nehmen":  v = Verb_EI_Wechsel.new("nehm", "nahm", "nomm", "nimm")
   when "treten":  v = Verb_EI_Wechsel.new("tret", "trat", "tret", "tritt")
@@ -426,6 +437,13 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "essen":   v = Verb_EI_Wechsel.new("ess", "aß", "gess", "iss")
     # Modalverben
   when "können": v = VerbModal.new("könn", "konn", "konn")
+  when "wollen": v = VerbModal.new("woll", "woll", "woll")
+    #  i a u
+  when "finden": v = VerbUnregelmaessig.new("find", "fand", "fund")
+  when "verschwinden": v = VerbUnregelmaessig.new("verschwind", "verschwand", "verschwund") # TODO
+    #  a u a
+  when "tragen": v = VerbUnregelmaessig.new("trag", "trug", "trag")
+  when "graben": v = VerbUnregelmaessig.new("grab", "grub", "grab")
     #  au ie au
   when "laufen": v = VerbUnregelmaessig.new("lauf", "lief", "lauf")
   when "hauen":  v = VerbUnregelmaessig.new("hau", "hieb", "hau")

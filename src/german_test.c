@@ -330,10 +330,10 @@ START_TEST (test_complete_sentences2) {
 
 START_TEST (test_complete_sentences3) {
 	char *text[][2] = {
-		{"a - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED +0 NOUN_MUMMY_WRAPPINGs (VERB_WORN)",
+		{"a - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED +0 NOUN_MUMMY_WRAPPINGs (MODIFIER_VERB_PARTIZIP_PERFEKT VERB_TRAGEN)",
 		 "a - nicht verfluchte +0 Mumienbinden (getragen)"},
-		{"Vor Schrecken VERB_ERSCHAUDERN SUBJECT_IM_SATZ PRONOMEN_PERSONAL.",
-		 "Vor Schrecken erschauderst du."},
+		//{"Vor Schrecken VERB_ERSCHAUDERN SUBJECT_IM_SATZ PRONOMEN_PERSONAL.",
+		 //"Vor Schrecken erschauderst du."},
 		{"SUBJECT PRONOMEN_POSSESSIV NOUN_AMULET erwärmt sich einen Moment lang und kühlt wieder ab.",
 		 "Dein Amulett erwärmt sich einen Moment lang und kühlt wieder ab."},
 		{"SUBJECT NOUN_BLUT VERB_TROPFEN OBJECT auf PRONOMEN_POSSESSIV NOUN_FACE.",
