@@ -1132,55 +1132,48 @@ int part;
 		// TODO DE
 	*humanoid_parts[] = { "NOUN_ARM", "NOUN_EYE", "NOUN_FACE", "NOUN_FINGER", /* EN *humanoid_parts[] = { "arm", "eye", "face", "finger", */
 		"NOUN_FINGERTIP", "NOUN_FOOT", "NOUN_HAND", "handed", "NOUN_HEAD", "NOUN_LEG", /* EN "fingertip", "foot", "hand", "handed", "head", "leg", */
-		"light headed", "neck", "spine", "toe", "hair", /* EN "light headed", "neck", "spine", "toe", "hair", */
-		"blood", "lung", "nose", "stomach"}, /* EN "blood", "lung", "nose", "stomach"}, */
-		// TODO DE
-	*jelly_parts[] = { "pseudopod", "dark spot", "front",
-		"pseudopod extension", "pseudopod extremity",
-		"pseudopod root", "grasp", "grasped", "cerebral area",
-		"lower pseudopod", "viscous", "middle", "surface",
-		"pseudopod extremity", "ripples", "juices",
-		"surface", "sensor", "stomach" },
-	*animal_parts[] = { "forelimb", "eye", "face", "foreclaw", "claw tip",
-		"rear claw", "foreclaw", "clawed", "head", "rear limb",
-		"light headed", "neck", "spine", "rear claw tip",
-		"fur", "blood", "lung", "nose", "stomach" },
-	*bird_parts[] = { "wing", "eye", "face", "wing", "wing tip",
-		"foot", "wing", "winged", "head", "leg",
-		"light headed", "neck", "spine", "toe",
-		"feathers", "blood", "lung", "bill", "stomach" },
-		// TODO DE
-	*horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip",
-		"rear hoof", "foreclaw", "hooved", "head", "rear leg",
-		"light headed", "neck", "backbone", "rear hoof tip",
-		"mane", "blood", "lung", "nose", "stomach"},
-		// TODO DE
-	*sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle",
-		"tentacle tip", "lower appendage", "tentacle", "tentacled",
-		"body", "lower tentacle", "rotational", "equator", "body",
-		"lower tentacle tip", "cilia", "life force", "retina",
-		"olfactory nerve", "interior" },
-		// TODO DE
-	*fungus_parts[] = { "mycelium", "visual area", "front", "hypha",
-		"hypha", "root", "strand", "stranded", "cap area",
-		"rhizome", "sporulated", "stalk", "root", "rhizome tip",
-		"spores", "juices", "gill", "gill", "interior" },
-		// TODO DE
-	*vortex_parts[] = { "region", "eye", "front", "minor current",
-		"minor current", "lower current", "swirl", "swirled",
-		"central core", "lower current", "addled", "center",
-		"currents", "edge", "currents", "life force",
-		"center", "leading edge", "interior" },
-		// TODO DE
-	*snake_parts[] = { "vestigial limb", "eye", "face", "large scale",
-		"large scale tip", "rear region", "scale gap", "scale gapped",
-		"head", "rear region", "light headed", "neck", "length",
-		"rear scale", "scales", "blood", "lung", "forked tongue", "stomach" },
-		// TODO DE
-	*fish_parts[] = { "fin", "eye", "premaxillary", "pelvic axillary",
-		"pelvic fin", "anal fin", "pectoral fin", "finned", "head", "peduncle",
-		"played out", "gills", "dorsal fin", "caudal fin",
-		"scales", "blood", "gill", "nostril", "stomach" };
+		"light headed", "neck", "spine", "toe", "hair", /* EN "light headed", "neck", "spine", "toe", "hair", */ // TODO DE
+		"blood", "lung", "nose", "stomach"}, /* EN "blood", "lung", "nose", "stomach"}, */ // TODO DE
+	*jelly_parts[] = { "pseudopod", "dark spot", "front", /* EN *jelly_parts[] = { "pseudopod", "dark spot", "front", */ // TODO DE
+		"pseudopod extension", "pseudopod extremity", /* EN "pseudopod extension", "pseudopod extremity", */ // TODO DE
+		"pseudopod root", "grasp", "grasped", "cerebral area", /* EN "pseudopod root", "grasp", "grasped", "cerebral area", */ // TODO DE
+		"lower pseudopod", "viscous", "middle", "surface", /* EN "lower pseudopod", "viscous", "middle", "surface", */ // TODO DE
+		"pseudopod extremity", "ripples", "juices", /* EN "pseudopod extremity", "ripples", "juices", */ // TODO DE
+		"surface", "sensor", "stomach" }, /* EN "surface", "sensor", "stomach" }, */ // TODO DE
+	*animal_parts[] = { "forelimb", "eye", "face", "foreclaw", "claw tip", /* EN *animal_parts[] = { "forelimb", "eye", "face", "foreclaw", "claw tip", */ // TODO DE
+		"rear claw", "foreclaw", "clawed", "NOUN_HEAD", "rear limb", /* EN "rear claw", "foreclaw", "clawed", "head", "rear limb", */ // TODO DE
+		"light headed", "neck", "spine", "rear claw tip", /* EN "light headed", "neck", "spine", "rear claw tip", */ // TODO DE
+		"fur", "blood", "lung", "nose", "stomach" }, /* EN "fur", "blood", "lung", "nose", "stomach" }, */ // TODO DE
+	*bird_parts[] = { "wing", "eye", "face", "wing", "wing tip", /* EN *bird_parts[] = { "wing", "eye", "face", "wing", "wing tip", */ // TODO DE
+		"foot", "wing", "winged", "NOUN_HEAD", "leg", /* EN "foot", "wing", "winged", "head", "leg", */ // TODO DE
+		"light headed", "neck", "spine", "toe", /* EN "light headed", "neck", "spine", "toe", */ // TODO DE
+		"feathers", "blood", "lung", "bill", "stomach" }, /* EN "feathers", "blood", "lung", "bill", "stomach" }, */ // TODO DE
+	*horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", /* EN *horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", */ // TODO DE
+		"rear hoof", "foreclaw", "hooved", "NOUN_HEAD", "rear leg", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */ // TODO DE
+		"light headed", "neck", "backbone", "rear hoof tip", /* EN "light headed", "neck", "backbone", "rear hoof tip", */ // TODO DE
+		"mane", "blood", "lung", "nose", "stomach"}, /* EN "mane", "blood", "lung", "nose", "stomach"}, */ // TODO DE
+	*sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", /* EN *sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", */ // TODO DE
+		"tentacle tip", "lower appendage", "tentacle", "tentacled", /* EN "tentacle tip", "lower appendage", "tentacle", "tentacled", */ // TODO DE
+		"body", "lower tentacle", "rotational", "equator", "body", /* EN "body", "lower tentacle", "rotational", "equator", "body", */ // TODO DE
+		"lower tentacle tip", "cilia", "life force", "retina", /* EN "lower tentacle tip", "cilia", "life force", "retina", */ // TODO DE
+		"olfactory nerve", "interior" }, /* EN "olfactory nerve", "interior" }, */ // TODO DE
+	*fungus_parts[] = { "mycelium", "visual area", "front", "hypha", /* EN *fungus_parts[] = { "mycelium", "visual area", "front", "hypha", */ // TODO DE
+		"hypha", "root", "strand", "stranded", "cap area", /* EN "hypha", "root", "strand", "stranded", "cap area", */ // TODO DE
+		"rhizome", "sporulated", "stalk", "root", "rhizome tip", /* EN "rhizome", "sporulated", "stalk", "root", "rhizome tip", */ // TODO DE
+		"spores", "juices", "gill", "gill", "interior" }, /* EN "spores", "juices", "gill", "gill", "interior" }, */ // TODO DE
+	*vortex_parts[] = { "region", "eye", "front", "minor current", /* EN *vortex_parts[] = { "region", "eye", "front", "minor current", */ // TODO DE
+		"minor current", "lower current", "swirl", "swirled", /* EN "minor current", "lower current", "swirl", "swirled", */ // TODO DE
+		"central core", "lower current", "addled", "center", /* EN "central core", "lower current", "addled", "center", */ // TODO DE
+		"currents", "edge", "currents", "life force", /* EN "currents", "edge", "currents", "life force", */ // TODO DE
+		"center", "leading edge", "interior" }, /* EN "center", "leading edge", "interior" }, */ // TODO DE
+	*snake_parts[] = { "vestigial limb", "eye", "face", "large scale", /* EN *snake_parts[] = { "vestigial limb", "eye", "face", "large scale", */ // TODO DE
+		"large scale tip", "rear region", "scale gap", "scale gapped", /* EN "large scale tip", "rear region", "scale gap", "scale gapped", */ // TODO DE
+		"NOUN_HEAD", "rear region", "light headed", "neck", "length", /* EN "head", "rear region", "light headed", "neck", "length", */ // TODO DE
+		"rear scale", "scales", "blood", "lung", "forked tongue", "stomach" }, /* EN "rear scale", "scales", "blood", "lung", "forked tongue", "stomach" }, */ // TODO DE
+	*fish_parts[] = { "fin", "eye", "premaxillary", "pelvic axillary", /* EN *fish_parts[] = { "fin", "eye", "premaxillary", "pelvic axillary", */ // TODO DE
+		"pelvic fin", "anal fin", "pectoral fin", "finned", "NOUN_HEAD", "peduncle", /* EN "pelvic fin", "anal fin", "pectoral fin", "finned", "head", "peduncle", */ // TODO DE
+		"played out", "gills", "dorsal fin", "caudal fin", /* EN "played out", "gills", "dorsal fin", "caudal fin", */ // TODO DE
+		"scales", "blood", "gill", "nostril", "stomach" }; /* EN "scales", "blood", "gill", "nostril", "stomach" }; */ // TODO DE
 	/* claw attacks are overloaded in mons[]; most humanoids with
 	   such attacks should still reference hands rather than claws */
 	static const char not_claws[] = {
