@@ -143,7 +143,7 @@ long amount;
     obj_extract_self(mongold);
 
     if (!merge_choice(invent, mongold) && inv_cnt() >= 52) {
-	You("have no room for the money!"); /* EN You("have no room for the money!"); */ // TODO DE
+	You("VERB_HAVE keinen Platz für das Geld!"); /* EN You("have no room for the money!"); */
 	dropy(mongold);
     } else {
 	addinv(mongold);
@@ -335,7 +335,7 @@ register boolean nearshop;
 	if(!shkp) return;
 
 	if (flags.soundok)
-	    pline("An alarm sounds!"); /* EN pline("An alarm sounds!"); */ // TODO DE
+	    pline("Ein Alarm wurde ausgelöst!"); /* EN pline("An alarm sounds!"); */
 
 	nokops = ((mvitals[PM_KEYSTONE_KOP].mvflags & G_GONE) &&
 		  (mvitals[PM_KOP_SERGEANT].mvflags & G_GONE) &&
@@ -344,7 +344,7 @@ register boolean nearshop;
 
 	if(!angry_guards(!flags.soundok) && nokops) {
 	    if(flags.verbose && flags.soundok)
-		pline("But no one seems to respond to it."); /* EN pline("But no one seems to respond to it."); */ // TODO DE
+		pline("Aber nienand scheint darauf zu reagieren."); /* EN pline("But no one seems to respond to it."); */
 	    return;
 	}
 
@@ -423,7 +423,7 @@ boolean newlev;
 	     * Try to intimidate him into paying his bill
 	     */
 	    verbalize(NOTANGRY(shkp) ?
-		      "%s!  Please pay before leaving." : /* EN "%s!  Please pay before leaving." : */ // TODO DE
+		      "%s!  Bitte zahl/zahlt bevor sie den Laden verlassen." : /* EN "%s!  Please pay before leaving." : */ // TODO DE
 		      "%s!  Don't you leave without paying!", /* EN "%s!  Don't you leave without paying!", */ // TODO DE
 		      plname);
 	    return;
@@ -505,7 +505,7 @@ register char *enterstring;
 	register int rt;
 	register struct monst *shkp;
 	register struct eshk *eshkp;
-	static const char no_shk[] = "This shop appears to be deserted."; /* EN static const char no_shk[] = "This shop appears to be deserted."; */ // TODO DE
+	static const char no_shk[] = "Dieser Laden erscheint verlassen."; /* EN static const char no_shk[] = "This shop appears to be deserted."; */
 	static char empty_shops[5];
 
 	if(!*enterstring)
@@ -547,8 +547,8 @@ register char *enterstring;
 	    return;	/* no dialog */
 
 	if (Invis) {
-	    pline("%s senses your presence.", shkname(shkp)); /* EN pline("%s senses your presence.", shkname(shkp)); */ // TODO DE
-	    verbalize("Invisible customers are not welcome!"); /* EN verbalize("Invisible customers are not welcome!"); */ // TODO DE
+	    pline("%s VERB_SPUEREN OBJECT PRONOMEN_POSSESSIV NOUN_GEGENWART.", shkname(shkp)); /* EN pline("%s senses your presence.", shkname(shkp)); */
+	    verbalize("Unsichtbare Kunden sind nicht willkommen!"); /* EN verbalize("Invisible customers are not welcome!"); */
 	    return;
 	}
 
@@ -579,29 +579,29 @@ register char *enterstring;
 	    if (pick || mattock) {
 		cnt = 1;	/* so far */
 		if (pick && mattock) {	/* carrying both types */
-		    tool = "digging tool"; /* EN tool = "digging tool"; */ // TODO DE
+		    tool = "NOUN_GRABWERKZEUG"; /* EN tool = "digging tool"; */
 		    cnt = 2;	/* `more than 1' is all that matters */
 		} else if (pick) {
-		    tool = "pick-axe"; /* EN tool = "pick-axe"; */ // TODO DE
+		    tool = "NOUN_PICK_AXE"; /* EN tool = "pick-axe"; */
 		    /* hack: `pick' already points somewhere into inventory */
 		    while ((pick = pick->nobj) != 0)
 			if (pick->otyp == PICK_AXE) ++cnt;
 		} else {	/* assert(mattock != 0) */
-		    tool = "mattock"; /* EN tool = "mattock"; */ // TODO DE
+		    tool = "NOUN_DWARVISH_MATTOCK"; /* EN tool = "mattock"; */
 		    while ((mattock = mattock->nobj) != 0)
 			if (mattock->otyp == DWARVISH_MATTOCK) ++cnt;
 		    /* [ALI] Shopkeeper identifies mattock(s) */
 		    if (!Blind) makeknown(DWARVISH_MATTOCK);
 		}
 		verbalize(NOTANGRY(shkp) ?
-			  "Will you please leave your %s%s outside?" : /* EN "Will you please leave your %s%s outside?" : */ // TODO DE
+			  "SUBJECT VERB_WUERDEN PRONOMEN_PERSONAL bitte OBJECT PRONOMEN_POSSESSIV %s%s draußen lassen?" : /* EN "Will you please leave your %s%s outside?" : */
 			  "Leave the %s%s outside.", /* EN "Leave the %s%s outside.", */ // TODO DE
 			  tool, plur(cnt));
 		should_block = TRUE;
 #ifdef STEED
 	    } else if (u.usteed) {
 		verbalize(NOTANGRY(shkp) ?
-			  "Will you please leave %s outside?" : /* EN "Will you please leave %s outside?" : */ // TODO DE
+			  "SUBJECT VERB_WUERDEN PRONOMEN_PERSONAL bitte OBJECT %s draußen lassen?" : /* EN "Will you please leave %s outside?" : */
 			  "Leave %s outside.", y_monnam(u.usteed)); /* EN "Leave %s outside.", y_monnam(u.usteed)); */ // TODO DE
 		should_block = TRUE;
 #endif
@@ -960,8 +960,8 @@ boolean verbosely;
 	if (!shkp->mcanmove) {
 	    /* greed induced recovery... */
 	    if (verbosely && canspotmon(shkp))
-		pline("%s %s.", Monnam(shkp),
-		      shkp->msleeping ? "wakes up" : "can move again"); /* EN shkp->msleeping ? "wakes up" : "can move again"); */ // TODO DE
+		pline("SUBJECT %s %s SATZKLAMMER.", Monnam(shkp), /* EN pline("%s %s.", Monnam(shkp), */
+		      shkp->msleeping ? "VERB_AUFWACHEN" : "can move again"); /* EN shkp->msleeping ? "wakes up" : "can move again"); */ // TODO DE
 	    shkp->msleeping = 0;
 	    shkp->mfrozen = 0;
 	    shkp->mcanmove = 1;
@@ -1050,8 +1050,8 @@ register xchar ox,oy;
 	sx = shkp->mx,  sy = shkp->my;
 	if (isok(ox, oy) && cansee(ox, oy) && !cansee(sx, sy))
 		shkp->mx = ox,  shkp->my = oy;
-	pline("%s %s!", Monnam(shkp),
-	      !ANGRY(shkp) ? "gets angry" : "is furious"); /* EN !ANGRY(shkp) ? "gets angry" : "is furious"); */ // TODO DE
+	pline("SUBJECT %s %s!", Monnam(shkp), /* EN pline("%s %s!", Monnam(shkp), */
+	      !ANGRY(shkp) ? "VERB_WERDEN wütend" : "VERB_SEIN rasend"); /* EN !ANGRY(shkp) ? "gets angry" : "is furious"); */
 	shkp->mx = sx,  shkp->my = sy;
 	hot_pursuit(shkp);
 }
@@ -1148,7 +1148,7 @@ dopay()
 		coord cc;
 		int cx, cy;
 
-		pline("Pay whom?"); /* EN pline("Pay whom?"); */ // TODO DE
+		pline("Wen bezahlen?"); /* EN pline("Pay whom?"); */
 		cc.x = u.ux;
 		cc.y = u.uy;
 		if (getpos(&cc, TRUE, "the creature you want to pay") < 0) /* EN if (getpos(&cc, TRUE, "the creature you want to pay") < 0) */ // TODO DE
