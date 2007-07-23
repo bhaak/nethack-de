@@ -404,6 +404,22 @@ class TestVerb < Test::Unit::TestCase
     #checkVerbPraeteritumKonjunktiv(verb, ["", "", "", "", "", ""])
   end
 
+  def testWerfen
+    verb = Verb.verb("", "werfen")
+
+    assert_equal("werfen", verb.infinitiv)
+    assert_equal("wirf", verb.singular.imperativ)
+    assert_equal("werft", verb.plural.imperativ)
+    assert_equal("werfend", verb.partizip_praesens)
+    assert_equal("geworfen", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["werfe", "wirfst", "wirft", "werfen", "werft", "werfen"])
+    checkVerbPraesensKonjunktiv(verb, ["werfe", "werfest", "werfe", "werfen", "werfet", "werfen"])
+    checkVerbPraeteritum(verb, ["warf", "warfst", "warf", "warfen", "warft", "warfen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["würfe", "würfest", "würfe", "würfen", "würfet", "würfen"])
+  end
+
+
   def estVerb
     verb = Verb.verb("", "en")
 
@@ -450,3 +466,4 @@ class TestVerb < Test::Unit::TestCase
   end
 
 end
+

@@ -257,8 +257,8 @@ class VerbUnregelmaessig < Verb
         return @praeteritum_stamm + endung(@praeteritum_endung)
       end
     elsif praeteritum? && konjunktiv? then
-      return Verb.umlaute(@praeteritum_stamm) + "e" + endung(@konjunktiv_endung)
-    end
+			return Verb.umlaute(@praeteritum_stamm) + "e" + endung(@konjunktiv_endung)
+		end
     return super
   end
 end
@@ -269,7 +269,6 @@ class VerbHaben < VerbUnregelmaessig
   end
 
   def form
-    p = personNummer
     if praesens? && indikativ? && singular? then
       if zweitePerson? then
         return "hast"
@@ -277,9 +276,9 @@ class VerbHaben < VerbUnregelmaessig
         return "hat"
       end
     elsif praeteritum? && indikativ? then
-      return ["hatte", "hattest", "hatte", "hatten", "hattet", "hatten"][p]
+      return ["hatte", "hattest", "hatte", "hatten", "hattet", "hatten"][personNummer]
     elsif praeteritum? && konjunktiv? then
-      return ["hätte", "hättest", "hätte", "hätten", "hättet", "hätten"][p]
+      return ["hätte", "hättest", "hätte", "hätten", "hättet", "hätten"][personNummer]
     end
     return super
   end
@@ -294,15 +293,14 @@ class VerbSein < VerbUnregelmaessig
   end
 
   def form
-    p = personNummer
     if praesens? && indikativ? then
-      return ["bin", "bist", "ist", "sind", "seid", "sind"][p]
+      return ["bin", "bist", "ist", "sind", "seid", "sind"][personNummer]
     elsif praesens? && konjunktiv? then
       if singular? and (erstePerson? or drittePerson?) then
         return "sei"
       end
     elsif praeteritum? && indikativ? then
-      return ["war", "warst", "war", "waren", "wart", "waren"][p]
+      return ["war", "warst", "war", "waren", "wart", "waren"][personNummer]
     end
     return super
   end
@@ -314,15 +312,10 @@ class VerbWerden < VerbUnregelmaessig
   end
 
   def form
-    p = personNummer
     if praesens? && indikativ? then
-      return ["werde", "wirst", "wird", "werden", "werdet", "werden"][p]
-    #elsif praesens? && konjunktiv? then
-      #if singular? and (erstePerson? or drittePerson?) then
-        #return "sei"
-      #end
+      return ["werde", "wirst", "wird", "werden", "werdet", "werden"][personNummer]
     elsif praeteritum? && indikativ? then
-      return ["wurde", "wurdest", "wurde", "wurden", "wurdet", "wurden"][p]
+      return ["wurde", "wurdest", "wurde", "wurden", "wurdet", "wurden"][personNummer]
     end
     return super
   end
@@ -330,11 +323,10 @@ end
 
 class VerbModal < Verb
   def form
-    p = personNummer
     if praesens? && indikativ? && singular? then
       case infinitiv
-      when "können": return ["kann", "kannst", "kann"][p]
-      when "wollen": return ["will", "willst", "will"][p]
+      when "können": return ["kann", "kannst", "kann"][personNummer]
+      when "wollen": return ["will", "willst", "will"][personNummer]
       else
         return super
       end
@@ -370,7 +362,6 @@ class Verb_EI_Wechsel < VerbUnregelmaessig
   end
 
   def form
-    p = personNummer
     if praesens? && indikativ? && singular? && zweitePerson? then
 			return @ei_wechsel_stamm + (s_verschmelzung?(@ei_wechsel_stamm) ? "t" : "st")
     elsif praesens? && indikativ? && singular? && drittePerson? then
@@ -385,6 +376,22 @@ class Verb_EI_Wechsel < VerbUnregelmaessig
     end
     super
   end
+end
+
+class Verb_Konjunktiv_II < Verb_EI_Wechsel
+
+  def initialize(stamm, praeteritum_stamm, perfekt_stamm, ei_wechsel_stamm, konjunktiv_ii_stamm)
+    super(stamm, praeteritum_stamm, perfekt_stamm, ei_wechsel_stamm)
+    @konjunktiv_ii_stamm = konjunktiv_ii_stamm
+  end
+
+  def form
+    if praeteritum? && konjunktiv? then
+				return @konjunktiv_ii_stamm + "e" + endung(@konjunktiv_endung)
+    end
+    return super
+  end
+
 end
 
 def Verb.verb(kennung, infinitiv, praeverb="")
@@ -402,7 +409,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "heißen":   v = VerbUnregelmaessig.new("heißen", "hieß", "geheißen")
   when "scheinen": v = VerbUnregelmaessig.new("scheinen", "schien", "geschienen")
 	# mit Rueckumlaut
-  when /(.*)brennen$/:  v = VerbSchwachUnregelmaessig.new(infinitiv, $1+"brannte", ($1==""?"ge":$1)+"brannt")
+  when /(.*)brennen$/:  v = VerbSchwachUnregelmaessig.new($1+"brennen", $1+"brannte", ge($1)+"brannt")
     # e/i-Wechsel
   when "nehmen":  v = Verb_EI_Wechsel.new("nehmen", "nahm", "genommen", "nimm")
   when "treten":  v = Verb_EI_Wechsel.new("treten", "trat", "getreten", "tritt")
@@ -416,6 +423,10 @@ def Verb.verb(kennung, infinitiv, praeverb="")
     #  i a u
   when "finden": v = VerbUnregelmaessig.new("finden", "fand", "gefunden")
   when "verschwinden": v = VerbUnregelmaessig.new("verschwinden", "verschwand", "verschwunden") # TODO
+		#  e a o
+  when "werfen": v = Verb_Konjunktiv_II.new("werfen", "warf", "geworfen", "wirf", "würf")
+    #  ei i i
+  when /(.*)gleiten$/:  v = VerbUnregelmaessig.new($1+"gleiten", $1+"glitt", ge($1)+"glitten")
     #  a u a
   when "tragen": v = VerbUnregelmaessig.new("tragen", "trug", "getragen")
   when "graben": v = VerbUnregelmaessig.new("graben", "grub", "gegraben")
@@ -428,6 +439,8 @@ def Verb.verb(kennung, infinitiv, praeverb="")
     # a ie a
   when "lassen": v = VerbUnregelmaessig.new("lassen", "ließ", "gelassen")
   when "fallen": v = VerbUnregelmaessig.new("fallen", "fiel", "gefallen")
+		# ie o o
+  when "fliegen": v = VerbUnregelmaessig.new("fliegen", "flog", "geflogen")
   else
     # regelmaessige Verben
     v = Verb.new(infinitiv[0..-3])
@@ -436,5 +449,9 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   v.praeverb = praeverb
   v.kennung = kennung
   v
+end
+
+def ge(vorsilbe)
+	return  (vorsilbe == "" ? "ge" : vorsilbe)
 end
   

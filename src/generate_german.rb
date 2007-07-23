@@ -570,6 +570,7 @@ def ausgabe_verbs
     # Sonstige Verben
     Verb.verb("VERB_HEAR","hören"),
     Verb.verb("VERB_ZUHOEREN","hören", "zu"),
+    Verb.verb("VERB_AUFHOEREN","hören", "auf"),
     Verb.verb("VERB_EAT","essen"),
     Verb.verb("VERB_OPEN","gehen", "auf"),
     Verb.verb("VERB_RUTSCHEN","rutschen"),
@@ -613,6 +614,11 @@ def ausgabe_verbs
     Verb.verb("VERB_FINDEN","finden"),
     Verb.verb("VERB_VERSCHWINDEN","verschwinden"),
     Verb.verb("VERB_GRABEN","graben"),
+    Verb.verb("VERB_FLIEGEN","fliegen"),
+    Verb.verb("VERB_SCHWEBEN","schweben"),
+    Verb.verb("VERB_YELL","brüllen"),
+    Verb.verb("VERB_SLIP","entgleiten"),
+    Verb.verb("VERB_WERFEN","werfen"),
   ]
 
   puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
