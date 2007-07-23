@@ -142,13 +142,7 @@ class Verb
 			end	
     elsif @tempus==:praesens && @modus==:konjunktiv then
       return @praesens_stamm + "e" + endung(@konjunktiv_endung)
-    elsif @tempus==:praeteritum && @modus==:indikativ then
-			#puts "regelmaessig praeteritum " + endung(@praeteritum_endung)
-			#puts "@person: " + @person.to_s + " @numerus "+@numerus.to_s
-			#puts "praeteritum_endung " + @praeteritum_endung.join("-")
-			return @praeteritum_stamm + e_erweiterung + "te" + endung(@praeteritum_endung)
-    elsif @tempus==:praeteritum && @modus==:konjunktiv then
-			#puts "regelmaessig praeteritum konjunktiv"
+    elsif @tempus==:praeteritum 
       return @praeteritum_stamm + e_erweiterung + "te" + endung(@praeteritum_endung)
     end
   end
