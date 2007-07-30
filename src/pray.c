@@ -332,7 +332,7 @@ register int trouble;
 		    flags.botl = 1;
 		    break;
 	    case TROUBLE_STUCK_IN_WALL:
-		    Your("surroundings change."); /* EN Your("surroundings change."); */ // TODO DE
+		    Your("NOUN_UMGEBUNG VERB_WECHSELN."); /* EN Your("surroundings change."); */
 		    /* no control, but works on no-teleport levels */
 		    (void) safe_teleds(FALSE);
 		    break;
@@ -352,7 +352,7 @@ register int trouble;
 		    }
 		    if (Upolyd && nohands(youmonst.data)) {
 			if (!Unchanging) {
-			    Your("shape becomes uncertain."); /* EN Your("shape becomes uncertain."); */ // TODO DE
+			    Du_bist_dir("OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_GESTALT unsicher."); /* EN Your("shape becomes uncertain."); */
 			    rehumanize();  /* "You return to {normal} form." */
 			} else if ((otmp = unchanger()) != 0 && otmp->cursed) {
 			    /* otmp is an amulet of unchanging */

@@ -177,6 +177,25 @@ Dir_ist VA_DECL(const char *,line)
 	VA_END();
 }
 
+/*VARARGS1*/
+void
+Du_bist VA_DECL(const char *, line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_SEIN ", line), VA_ARGS);
+	VA_END();
+}
+
+/*VARARGS1*/
+void
+Du_bist_dir VA_DECL(const char *, line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_SEIN OBJECT KASUS_DATIV PRONOMEN_PERSONAL ", line), VA_ARGS);
+	VA_END();
+}
 
 #endif
 
