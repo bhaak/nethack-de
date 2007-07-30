@@ -6,6 +6,48 @@ require 'german_verb'
 class TestVerb < Test::Unit::TestCase
   @output_levels = Test::Unit::UI::VERBOSE
 
+  def testPrintVerb
+    verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
+    verb = VerbUnregelmaessig.new("frier", "fror", "fror")
+    verb = VerbUnregelmaessig.new("lauf","lief","lauf")
+    verb = Verb.verb("","tuen")
+    verb = VerbUnregelmaessig.new("tuen","tat","getan")
+
+    puts
+    puts "Infinitiv: "+ verb.infinitiv
+    puts "E-Erweiterung: " + verb.e_erweiterung.to_s
+    #puts "Umlaut: " + verb.umlaut.to_s
+    puts
+    puts "Imperativ"
+    puts "Singular:  "+ verb.singular.imperativ
+    puts "Plural:    "+ verb.plural.imperativ
+    puts
+    puts "Partizip Präsens: "+verb.partizip_praesens
+    puts "Partizip Perfekt: " + verb.partizip_perfekt
+    puts
+
+    puts "Präsens Indikativ"
+    verb.praesens.indikativ
+    printFormen(verb)
+    puts
+
+    puts "Präsens Konjunktiv"
+    verb.praesens.konjunktiv
+    printFormen(verb)
+    puts
+
+    puts "Präteritum Indikativ"
+    verb.praeteritum.indikativ
+    printFormen(verb)
+    puts
+
+    puts "Präteritum Konjunktiv"
+    verb.praeteritum.konjunktiv
+    printFormen(verb)
+    puts
+  end
+
+
   def testVerb
     machen = Verb.verb("", "machen")
 
@@ -127,46 +169,6 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["falle", "fallest", "falle", "fallen", "fallet", "fallen"])
     checkVerbPraeteritum(verb, ["fiel", "fielst", "fiel", "fielen", "fielt", "fielen"])
     checkVerbPraeteritumKonjunktiv(verb, ["fiele", "fielest", "fiele", "fielen", "fielet", "fielen"])
-  end
-
-  def testPrintVerb
-    verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
-    verb = VerbUnregelmaessig.new("frier", "fror", "fror")
-    verb = VerbUnregelmaessig.new("lauf","lief","lauf")
-    verb = Verb.verb("","spazieren")
-
-    puts
-    puts "Infinitiv: "+ verb.infinitiv
-    puts "E-Erweiterung: " + verb.e_erweiterung.to_s
-    #puts "Umlaut: " + verb.umlaut.to_s
-    puts
-    puts "Imperativ"
-    puts "Singular:  "+ verb.singular.imperativ
-    puts "Plural:    "+ verb.plural.imperativ
-    puts
-    puts "Partizip Präsens: "+verb.partizip_praesens
-    puts "Partizip Perfekt: " + verb.partizip_perfekt
-    puts
-
-    puts "Präsens Indikativ"
-    verb.praesens.indikativ
-    printFormen(verb)
-    puts
-
-    puts "Präsens Konjunktiv"
-    verb.praesens.konjunktiv
-    printFormen(verb)
-    puts
-
-    puts "Präteritum Indikativ"
-    verb.praeteritum.indikativ
-    printFormen(verb)
-    puts
-
-    puts "Präteritum Konjunktiv"
-    verb.praeteritum.konjunktiv
-    printFormen(verb)
-    puts
   end
 
   def printFormen(verb)
@@ -419,20 +421,67 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["würfe", "würfest", "würfe", "würfen", "würfet", "würfen"])
   end
 
+  def testTraellern
+    verb = Verb.verb("", "trällern")
 
-  def estVerb
-    verb = Verb.verb("", "en")
+    assert_equal("trällern", verb.infinitiv)
+    assert_equal("trällere", verb.singular.imperativ)
+    assert_equal("trällert", verb.plural.imperativ)
+    assert_equal("trällernd", verb.partizip_praesens)
+    assert_equal("geträllert", verb.partizip_perfekt)
 
-    assert_equal("", verb.infinitiv)
-    assert_equal("", verb.singular.imperativ)
-    assert_equal("", verb.plural.imperativ)
-    assert_equal("", verb.partizip_praesens)
-    assert_equal("", verb.partizip_perfekt)
+    checkVerbPraesens(verb, ["trällere", "trällerst", "trällert", "trällern", "trällert", "trällern"])
+    checkVerbPraesensKonjunktiv(verb, ["trällere", "trällerst", "trällere", "trällern", "trällert", "trällern"])
+    checkVerbPraeteritum(verb, ["trällerte", "trällertest", "trällerte", "trällerten", "trällertet", "trällerten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["trällerte", "trällertest", "trällerte", "trällerten", "trällertet", "trällerten"])
+  end
 
-    checkVerbPraesens(verb, ["", "", "", "", "", ""])
-    checkVerbPraesensKonjunktiv(verb, ["", "", "", "", "", ""])
-    checkVerbPraeteritum(verb, ["", "", "", "", "", ""])
-    checkVerbPraeteritumKonjunktiv(verb, ["", "", "", "", "", ""])
+  def testVerwandeln
+    verb = Verb.verb("", "verwandeln")
+
+    assert_equal("verwandeln", verb.infinitiv)
+    assert_equal("verwandele", verb.singular.imperativ)
+    #assert_equal("verwandle", verb.singular.imperativ)
+    assert_equal("verwandelt", verb.plural.imperativ)
+    assert_equal("verwandelnd", verb.partizip_praesens)
+    #assert_equal("verwandelt", verb.partizip_perfekt)
+
+    #checkVerbPraesens(verb, ["verwandle", "verwandelst", "verwandelt", "verwandeln", "verwandelt", "verwandeln"])
+    #checkVerbPraesensKonjunktiv(verb, ["verwandle", "verwandelst", "verwandle", "verwandeln", "verwandelt", "verwandeln"])
+    checkVerbPraesens(verb, ["verwandele", "verwandelst", "verwandelt", "verwandeln", "verwandelt", "verwandeln"])
+    checkVerbPraesensKonjunktiv(verb, ["verwandele", "verwandelst", "verwandele", "verwandeln", "verwandelt", "verwandeln"])
+    checkVerbPraeteritum(verb, ["verwandelte", "verwandeltest", "verwandelte", "verwandelten", "verwandeltet", "verwandelten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["verwandelte", "verwandeltest", "verwandelte", "verwandelten", "verwandeltet", "verwandelten"])
+  end
+	
+  def testVerletzen
+    verb = Verb.verb("", "verletzen")
+
+    assert_equal("verletzen", verb.infinitiv)
+    assert_equal("verletz", verb.singular.imperativ)
+    assert_equal("verletzt", verb.plural.imperativ)
+    assert_equal("verletzend", verb.partizip_praesens)
+    assert_equal("verletzt", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["verletze", "verletzt", "verletzt", "verletzen", "verletzt", "verletzen"])
+    checkVerbPraesensKonjunktiv(verb, ["verletze", "verletzest", "verletze", "verletzen", "verletzet", "verletzen"])
+    checkVerbPraeteritum(verb, ["verletzte", "verletztest", "verletzte", "verletzten", "verletztet", "verletzte"])
+    checkVerbPraeteritumKonjunktiv(verb, ["verletzte", "verletztest", "verletzte", "verletzten", "verletztet", "verletzte"])
+  end
+
+  def testWeigern
+    verb = Verb.verb("", "weigern")
+
+    assert_equal("weigern", verb.infinitiv)
+    assert_equal("weigere", verb.singular.imperativ)
+    assert_equal("weigert", verb.plural.imperativ)
+    assert_equal("weigernd", verb.partizip_praesens)
+    assert_equal("geweigert", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["weigere", "weigerst", "weigert", "weigern", "weigert", "weigern"])
+    checkVerbPraesensKonjunktiv(verb, ["weigere", "weigerst", "weigere", "weigern", "weigert", "weigern"])
+    checkVerbPraeteritum(verb, ["weigerte", "weigertest", "weigerte", "weigerten", "weigertet", "weigerten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["weigerte", "weigertest", "weigerte", "weigerten", "weigertet", "weigerten"])
   end
 
   def checkVerbPraeteritum(verb, formen)

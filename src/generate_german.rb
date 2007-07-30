@@ -547,9 +547,9 @@ def ausgabe_verbs
     Verb_alt.new("VERB_GRABEN", "", "", ["gräbst", "gräbt", "grabt","graben"]),
   ].each { |v|   
     if v.is_a? String then
-      puts v
+      # puts v
     else
-      v.to_struct.each { |vf| puts "  "+vf }
+      # v.to_struct.each { |vf| puts "  "+vf }
     end
   }
   puts "\n"
@@ -619,6 +619,47 @@ def ausgabe_verbs
     Verb.verb("VERB_YELL","brüllen"),
     Verb.verb("VERB_SLIP","entgleiten"),
     Verb.verb("VERB_WERFEN","werfen"),
+
+		Verb.verb("VERB_SPIELEN","spielen"),
+		Verb.verb("VERB_SPRECHEN","sprechen"),
+		Verb.verb("VERB_SPUEREN","spüren"),
+		Verb.verb("VERB_STECHEN","stechen"),
+		Verb.verb("VERB_STECKEN","stecken"),
+		Verb.verb("VERB_STEHEN","stehen"),
+		Verb.verb("VERB_STEHLEN","stehlen"),
+		Verb.verb("VERB_STERBEN","sterben"),
+		Verb.verb("VERB_STUERZEN","stürzen"),
+		Verb.verb("VERB_SUCHEN","suchen"),
+		Verb.verb("VERB_TAUCHEN","tauchen"),
+		Verb.verb("VERB_TRAELLERN","trällern"),
+		Verb.verb("VERB_TRINKEN","trinken"),
+		Verb.verb("VERB_VERFLUCHEN","verfluchen"),
+		Verb.verb("VERB_VERHASPELN","verhaspeln"),
+		Verb.verb("VERB_VERHUNGERN","verhungern"),
+		Verb.verb("VERB_VERLETZEN","verletzen"),
+		Verb.verb("VERB_VERSAUEN","versauen"),
+		Verb.verb("VERB_VERSTECKEN","verstecken"),
+		Verb.verb("VERB_VERSTEIFEN","versteifen"),
+		Verb.verb("VERB_VERSTEINERN","versteinern"),
+		Verb.verb("VERB_VERURSACHEN","verursachen"),
+		Verb.verb("VERB_VERWANDELN","verwandeln"),
+		Verb.verb("VERB_VIBRIEREN","vibrieren"),
+		Verb.verb("VERB_VISUALISIEREN","visualisieren"),
+		Verb.verb("VERB_WEIGERN","weigern"),
+		Verb.verb("VERB_WIEGEN","wiegen"),
+		Verb.verb("VERB_WIRKEN","wirken"),
+		Verb.verb("VERB_WRINGEN","wringen"),
+		Verb.verb("VERB_WUENSCHEN","wünschen"),
+		Verb.verb("VERB_ZERBRECHEN","zerbrechen"),
+		Verb.verb("VERB_ZERFALLEN","zerfallen"),
+		Verb.verb("VERB_ZERREISSEN","zerreissen"),
+		Verb.verb("VERB_ZERSPRINGEN","zerspringen"),
+		Verb.verb("VERB_ZERTEILEN","zerteilen"),
+		Verb.verb("VERB_ZITTERN","zittern"),
+		Verb.verb("VERB_ZUCKEN","zucken"),
+		Verb.verb("VERB_ZUSCHLAGEN","schlagen","zu"),
+		Verb.verb("VERB_ZUSTECHEN","stechen","zu"),
+		Verb.verb("VERN_NEHMEN","nehmen")
   ]
 
   puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
@@ -2312,6 +2353,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_VERLUST","Verlust","es","Verlust","e","feminin"),
     dekliniere_substantiv("NOUN_SPENDE","Spende","","Spende","en","feminin"),
     dekliniere_substantiv("NOUN_KNACKEN","Knacken","s","Knacken","","neutrum"),
+    dekliniere_substantiv("NOUN_GESTALT","Gestalt","","Gestalt","en","feminin"),
 
     "/* ======================================================= */",
     "/* Adjektive */",
