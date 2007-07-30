@@ -99,7 +99,6 @@ terme = [
 "FL",
 "FONT",
 "FOUNTAIN",
-"GEM_CLASS",
 "GRAPHICS",
 "HACKDIR",
 "HACKOPTIONS",
@@ -248,7 +247,19 @@ terme = [
 "(LEFT|RIGHT)_SIDE",
 "KILLED_BY",
 "KILLED_BY_AN",
-"MENU_UNSELECTED"]
+"MENU_UNSELECTED",
+"V_",
+"(WEAPON|WAND|GEM)_CLASS",
+"WAX",
+"WC",
+"WINTYPELEN",
+"WIN_MAP",
+"WOOD",
+"WOODEN_HARP",
+"WORN_TYPES",
+"W_RING.",
+"ZT_(COLD|DEATH|FIRE)"
+]
 
 regexp = Regexp.new("^("+terme.join('|')+")$")
 t = t.flatten.reject {|e|

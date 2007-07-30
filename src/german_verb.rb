@@ -44,7 +44,7 @@ class Verb
 
     if partizip_perfekt != "" then
       @partizip_perfekt = partizip_perfekt
-    elsif @infinitiv =~ /....ieren$/ then
+    elsif @infinitiv =~ /...ieren$/ then
       @partizip_perfekt = stamm + 't'
     else
       @partizip_perfekt = "ge" + stamm + (@e_erweiterung ? "e" : "") + "t"
@@ -432,17 +432,18 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)springen$/: v = VerbUnregelmaessig.new($1+"springen", $1+"sprang", ge($1)+"sprungen")
   when "finden": v = VerbUnregelmaessig.new("finden", "fand", "gefunden")
   when "wringen": v = VerbUnregelmaessig.new("wringen", "wrang", "gewrungen")
-  when "trinken": v = VerbUnregelmaessig.new("trinken", "trank", "getrunken")
+  when /(.*)trinken/: v = VerbUnregelmaessig.new($1+"trinken", $1+"trank", ge($1)+"trunken")
   when /(.*)schwinden$/: v = VerbUnregelmaessig.new($1+"schwinden", $1+"schwand", ge($1)+"schwunden")
 		#  e a o
   when "werfen": v = Verb_Konjunktiv_II.new("werfen", "warf", "geworfen", "wirf", "würf")
   when "sterben": v = Verb_Konjunktiv_II.new("sterben", "starb", "gestobren", "stirb", "stürb")
+  when /(.*)sterben$/: v = Verb_Konjunktiv_II.new($1+"sterben", $1+"starb", ge($1)+"storben", $1+"stirb", $1+"stürb")
   when "nehmen": v = Verb_EI_Wechsel.new("nehmen", "nahm", "genommen", "nimm")
   when "sprechen": v = Verb_EI_Wechsel.new("sprechen", "sprach", "gesprochen", "sprich")
   when "stechen": v = Verb_EI_Wechsel.new("stechen", "stach", "gestochen", "sticht")
   when "stehlen": v = Verb_Konjunktiv_II.new("stehlen", "stahl", "gestohlen", "stiehl", "stöhl")
 		#  e a o
-  when "stehen": v = Verb_Konjunktiv_II.new("stehen", "stand", "gestanden", "steh", "stünd")
+  when /(.*)stehen/: v = Verb_Konjunktiv_II.new($1+"stehen", $1+"stand", ge($1)+"standen", $1+"steh", $1+"stünd")
     #  ei i i
   when /(.*)gleiten$/:  v = VerbUnregelmaessig.new($1+"gleiten", $1+"glitt", ge($1)+"glitten")
   when /(.*)reißen$/:  v = VerbUnregelmaessig.new($1+"reißen", $1+"riss", ge($1)+"rissen")
