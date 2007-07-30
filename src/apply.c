@@ -214,7 +214,7 @@ use_stethoscope(obj)
 		You("VERB_HAVE OBJECT PRONOMEN_KEIN NOUN_HANDs!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/
 		return 0;
 	} else if (!freehand()) {
-		You("VERB_HABE OBJECT PRONOMEN_KEIN %s frei.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */
+		You("VERB_HAVE OBJECT PRONOMEN_KEIN %s frei.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */
 		return 0;
 	}
 	if (!getdir((char *)0)) return 0;

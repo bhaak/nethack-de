@@ -3254,7 +3254,7 @@ int otyp;
 	int fails = try_disarm(ttmp, FALSE);
 
 	if (fails < 2) return fails;
-	You("NOUN_DISARM OBJECT %s NOUN_TRAP.", the_your[ttmp->madeby_u]); /* EN You("disarm %s trap.", the_your[ttmp->madeby_u]); */
+	You("VERB_DISARM OBJECT %s NOUN_TRAP.", the_your[ttmp->madeby_u]); /* EN You("disarm %s trap.", the_your[ttmp->madeby_u]); */
 	cnv_trap_obj(otyp, 50-rnl(50), ttmp);
 	return 1;
 }

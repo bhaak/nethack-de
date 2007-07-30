@@ -52,7 +52,7 @@ use_saddle(otmp)
 		You("VERB_HAVE keine Hände!");	/* not `body_part(HAND)' */ /* EN You("have no hands!");	*/
 		return 0;
 	} else if (!freehand()) {
-		You("VERB_HABE OBJECT PRONOMEN_KEIN %s frei.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */
+		You("VERB_HAVE OBJECT PRONOMEN_KEIN %s frei.", body_part(HAND)); /* EN You("have no free %s.", body_part(HAND)); */
 		return 0;
 	}
 

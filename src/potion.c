@@ -89,7 +89,7 @@ boolean talk;
 				You("wobble in the saddle."); /* EN You("wobble in the saddle."); */ // TODO DE
 			else
 #endif
-			You("%s ...", stagger(youmonst.data, "NOUN_TORKELN")); /* EN You("%s...", stagger(youmonst.data, "stagger")); */
+			You("%s ...", stagger(youmonst.data, "VERB_TORKELN")); /* EN You("%s...", stagger(youmonst.data, "stagger")); */
 		}
 	}
 	if ((!xtime && old) || (xtime && !old)) flags.botl = TRUE;

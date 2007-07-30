@@ -630,7 +630,7 @@ register struct monst *mtmp;
 	    aggravate();
 	    break;
 	case MS_IMITATE:
-	    pline_msg = "VERB_IMITATE OBJECT PRONOMEN_PERSONAL."; /* EN pline_msg = "imitates you."; */
+	    pline_msg = "VERB_IMITIEREN OBJECT PRONOMEN_PERSONAL."; /* EN pline_msg = "imitates you."; */
 	    break;
 	case MS_BONES:
 	    pline("%s rattles noisily.", Monnam(mtmp)); /* EN pline("%s rattles noisily.", Monnam(mtmp)); */ // TODO DE

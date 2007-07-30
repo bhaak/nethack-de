@@ -707,7 +707,7 @@ register int amount;
 	if(uwep->otyp == WORM_TOOTH && amount >= 0) {
 		uwep->otyp = CRYSKNIFE;
 		uwep->oerodeproof = 0;
-		Your("NOUN_WEAPON VERB_SCHEINT jetzt schärfer."); /* EN Your("weapon seems sharper now."); */
+		Your("NOUN_WEAPON VERB_SCHEINEN jetzt schärfer."); /* EN Your("weapon seems sharper now."); */
 		uwep->cursed = 0;
 		if (otyp != STRANGE_OBJECT) makeknown(otyp);
 		return(1);
@@ -716,7 +716,7 @@ register int amount;
 	if(uwep->otyp == CRYSKNIFE && amount < 0) {
 		uwep->otyp = WORM_TOOTH;
 		uwep->oerodeproof = 0;
-		Your("NOUN_WEAPON VERB_SCHEINT jetzt stumpfer."); /* EN Your("weapon seems duller now."); */
+		Your("NOUN_WEAPON VERB_SCHEINEN jetzt stumpfer."); /* EN Your("weapon seems duller now."); */
 		if (otyp != STRANGE_OBJECT && otmp->bknown) makeknown(otyp);
 		return(1);
 	}
