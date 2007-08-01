@@ -397,8 +397,10 @@ START_TEST (test_complete_sentences3) {
 
 START_TEST (test_complete_sentences4) {
 	char *text[][2] = {
-		{"Nur schwach VERB_HEAR SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT NOUN_JEMAND VERB_YELL",
+		{"Nur schwach VERB_HEAR SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT NOUN_JEMAND MODIFIER_VERB_INFINITIV VERB_YELL",
 		 "Nur schwach hörst du jemanden brüllen"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_SEIN und PRONOMEN_PERSONAL VERB_HAVE.",
+		 "Du bist und du hast."},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -726,10 +728,9 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-  //tcase_add_test(tc_core, test_complete_sentences4);
-	//tcase_add_test(tc_core, test_german2meta);
+  tcase_add_test(tc_core, test_complete_sentences4);
 
-	if (1) {
+	if (0) {
 	tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);

@@ -39,6 +39,7 @@ enum Numerus do_numerus = 0;
 enum Tempus_Modus  verb_tempus_modus = 0;
 enum Partizip verb_partizip = 0;
 enum Casus  verb_do_casus = 0;
+int verb_infinitiv = 0;
 
 /* c_ => current state */
 enum Casus   c_casus = 0;
@@ -309,7 +310,15 @@ const char* get_verb(const char* verb, enum Person p, enum Numerus n, enum Tempu
 #ifdef DEBUG
 	printf("%s %d %d", verb, p, n);
 #endif
-	if (verb_partizip > 0) {
+	if (verb_infinitiv) {
+		// Infinitiv
+		while (verben_infinitiv[i].typ != NULL) {
+			if (strcmp(verben_infinitiv[i].typ, verb)==0) {
+				return verben_infinitiv[i].verb;
+			}
+			i++;
+		}
+	} else if (verb_partizip > 0) {
 		// Partizipien
 		while (verben_partizip[i].typ != NULL) {
 			if (strcmp(verben_partizip[i].typ, verb)==0) {
@@ -501,6 +510,7 @@ void clear_verb() {
 	//verb_do_casus=0; // TODO
 	//verb_praeverb=""; // TODO
 	verb_partizip=0;
+	verb_infinitiv=0;
 }
 
 int analyze_this_as_subject(const char *text) {
@@ -736,7 +746,7 @@ char* german(const char *line) {
 	int insert_char = 1;
 	int open_parenthesis = 0;
 	char made_from[TBUFSZ] = "";
-	/* Should a nouns first letter be uppercase or lowercase. Used when building composites */
+	/* Should a noun's first letter be uppercase or lowercase. Used when building composites */
 	int noun_lowercase = 0;
 
 	output[0] = '\0';
@@ -1008,6 +1018,7 @@ char* german(const char *line) {
 			else if (strcmp("MODIFIER_VERB_PARTIZIP_PERFEKT", tmp)==0) { verb_partizip = partizip_perfekt; }
 			else if (strcmp("MODIFIER_KONJUNKTIV", tmp)==0) { verb_tempus_modus = konjunktiv; }
 			else if (strcmp("MODIFIER_KONJUNKTIV_II", tmp)==0) { verb_tempus_modus = konjunktiv_ii; }
+			else if (strcmp("MODIFIER_VERB_INFINITIV", tmp)==0) { verb_infinitiv = 1; }
 
 		} else if (strncmp("NUMERUS_", tmp, 8)==0) {
 			insert_char = 0;
