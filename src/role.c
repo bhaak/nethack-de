@@ -418,9 +418,8 @@ struct Role urole =
 
 /* Table of all races */
 const struct Race races[] = {
-// TODO DE
-{	"human", "human", "humanity", "Hum",
-	{"man", "woman"},
+{	"NOUN_HUMAN", "ADJEKTIV_MENSCHLICH", "NOUN_HUMANITY", "Hum", /* EN {	"human", "human", "humanity", "Hum", */
+	{"NOUN_MAN", "NOUN_WOMAN"},
 	PM_HUMAN, NON_PM, PM_HUMAN_MUMMY, PM_HUMAN_ZOMBIE,
 	MH_HUMAN | ROLE_MALE|ROLE_FEMALE |
 	  ROLE_LAWFUL|ROLE_NEUTRAL|ROLE_CHAOTIC,
@@ -433,7 +432,7 @@ const struct Race races[] = {
 	{  1, 0,  2, 0,  2, 0 }		/* Energy */
 },
 // TODO DE
-{	"elf", "elven", "elvenkind", "Elf",
+{	"NOUN_ELF", "ADJEKTIV_ELBISCH", "NOUN_ELVENKIND", "Elf", /* EN {	"elf", "elven", "elvenkind", "Elf", */
 	{0, 0},
 	PM_ELF, NON_PM, PM_ELF_MUMMY, PM_ELF_ZOMBIE,
 	MH_ELF | ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
@@ -446,7 +445,7 @@ const struct Race races[] = {
 	{  2, 0,  3, 0,  3, 0 }		/* Energy */
 },
 // TODO DE
-{	"dwarf", "dwarven", "dwarvenkind", "Dwa",
+{	"NOUN_DWARF", "ADJEKTIV_ZWERGISCH", "NOUN_DWARVENKIND", "Dwa", /* EN {	"dwarf", "dwarven", "dwarvenkind", "Dwa", */
 	{0, 0},
 	PM_DWARF, NON_PM, PM_DWARF_MUMMY, PM_DWARF_ZOMBIE,
 	MH_DWARF | ROLE_MALE|ROLE_FEMALE | ROLE_LAWFUL,
@@ -459,7 +458,7 @@ const struct Race races[] = {
 	{  0, 0,  0, 0,  0, 0 }		/* Energy */
 },
 // TODO DE
-{	"gnome", "gnomish", "gnomehood", "Gno",
+{	"NOUN_GNOME", "ADJEKTIV_GNOMISCH", "NOUN_GNOMEHOOD", "Gno", /* EN {	"gnome", "gnomish", "gnomehood", "Gno", */
 	{0, 0},
 	PM_GNOME, NON_PM, PM_GNOME_MUMMY, PM_GNOME_ZOMBIE,
 	MH_GNOME | ROLE_MALE|ROLE_FEMALE | ROLE_NEUTRAL,
@@ -472,7 +471,7 @@ const struct Race races[] = {
 	{  2, 0,  2, 0,  2, 0 }		/* Energy */
 },
 // TODO DE
-{	"orc", "orcish", "orcdom", "Orc",
+{	"NOUN_ORC", "ADJEKTIV_ORKSCH", "NOUN_ORCDOM", "Orc", /* EN {	"orc", "orcish", "orcdom", "Orc", */
 	{0, 0},
 	PM_ORC, NON_PM, PM_ORC_MUMMY, PM_ORC_ZOMBIE,
 	MH_ORC | ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
@@ -484,7 +483,6 @@ const struct Race races[] = {
 	{  1, 0,  0, 1,  0, 0 },	/* Hit points */
 	{  1, 0,  1, 0,  1, 0 }		/* Energy */
 },
-// TODO DE
 /* Array terminator */
 { 0, 0, 0, 0 }};
 
@@ -493,7 +491,6 @@ const struct Race races[] = {
  * choices.  This may be munged in role_init().
  */
 struct Race urace =
-// TODO DE
 {	"something", "undefined", "something", "Xxx",
 	{0, 0},
 	NON_PM, NON_PM, NON_PM, NON_PM,

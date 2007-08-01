@@ -2428,6 +2428,13 @@ def ausgabe_nouns
 		dekliniere_substantiv("NOUN_UMGEBUNG","Umgebung","","Umgebung","en","feminin"),
 		dekliniere_substantiv("NOUN_ZEITLUPENTRITT","Zeitlupentritt","es","Zeitlupentritt","e","maskulin"),
 
+    dekliniere_substantiv("NOUN_HUMANITY","Menschheit","","","","feminin"),
+    dekliniere_substantiv("NOUN_ELVENKIND","Elbenheit","","","","feminin"),
+    dekliniere_substantiv("NOUN_DWARVENKIND","Zwergenheit","","","","feminin"),
+    dekliniere_substantiv("NOUN_GNOMEHOOD","Gnomenheit","","","","feminin"),
+    dekliniere_substantiv("NOUN_ORCDOM","Orkenheit","","","","feminin"),
+
+
     "/* ======================================================= */",
     "/* Adjektive */",
     "/* ======================================================= */",
