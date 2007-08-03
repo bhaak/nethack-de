@@ -160,6 +160,11 @@ def substantiv_endung(singularstamm, genitiv_singular_endung,
     casus[$akk][$sg] = singularstamm[-1..-1]=='e' ? "n" : "en"
     casus[$dat][$sg] = singularstamm[-1..-1]=='e' ? "n" : "en"
     casus[$gen][$sg] = singularstamm[-1..-1]=='e' ? "n" : "en"
+  when "ens" 
+    casus[$nom][$sg] = ""
+    casus[$akk][$sg] = singularstamm[-1..-1]=='e' ? "n" : "en"
+    casus[$dat][$sg] = singularstamm[-1..-1]=='e' ? "n" : "en"
+    casus[$gen][$sg] = singularstamm[-1..-1]=='e' ? "ns" : "ens"
   when "" 
     casus[$nom][$sg] = ""
     casus[$akk][$sg] = ""
@@ -569,6 +574,7 @@ def ausgabe_verbs
     Verb.verb("VERB_WOLLEN","wollen"),
     # Sonstige Verben
     Verb.verb("VERB_HEAR","hören"),
+    Verb.verb("VERB_READ","lesen"),
 		Verb.verb("VERB_HOEREN", "hören"),
     Verb.verb("VERB_ZUHOEREN","hören", "zu"),
     Verb.verb("VERB_AUFHOEREN","hören", "auf"),
@@ -660,7 +666,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_ZUCKEN","zucken"),
 		Verb.verb("VERB_ZUSCHLAGEN","schlagen","zu"),
 		Verb.verb("VERB_ZUSTECHEN","stechen","zu"),
-		Verb.verb("VERN_NEHMEN","nehmen"),
+		Verb.verb("VERB_NEHMEN","nehmen"),
 
 		Verb.verb("VERB_BENUTZEN", "benutzen"),
 		Verb.verb("VERB_BERUHIGEN", "beruhigen"),
@@ -703,6 +709,13 @@ def ausgabe_verbs
 		Verb.verb("VERB_RUELPSEN", "rülpsen"),
 		Verb.verb("VERB_SCHNAPPEN", "schnappen"),
 		Verb.verb("VERB_SCHUETZEN", "schützen"),
+		Verb.verb("VERB_OFFER", "opfern"),
+		Verb.verb("VERB_LEUCHTEN", "leuchten"),
+		Verb.verb("VERB_AUFLEUCHTEN", "leuchten","auf"),
+		Verb.verb("VERB_SONNEN", "sonnen"),
+		Verb.verb("VERB_GEBEN", "geben"),
+		Verb.verb("VERB_UMGEBEN", "umgeben"),
+		Verb.verb("VERB_BETEN", "beten"),
 
   ]
 
@@ -1034,9 +1047,9 @@ def ausgabe_nouns
   [
     "/* generic terms */",
     dekliniere_substantiv("NOUN_WEAPON",    "Waffe",          "",   "Waffe",          "en", "feminin", "n"),
-    dekliniere_substantiv("NOUN_ARMOR",     "Rüstzeug",        "es",   "Rüstzeug",      "e", "neutrum", "s"),
-    #dekliniere_substantiv("NOUN_ARMOR",     "Rüstung",        "",   "Rüstung",      "en", "feminin"),
-    dekliniere_substantiv("NOUN_ARMOR",     "Schutzbekleidung", "",   "Schutzbekleidung", "en", "feminin", "s"),
+    dekliniere_substantiv("NOUN_ARMOR",     "Rüstung",        "",   "Rüstung",      "en", "feminin"),
+    #dekliniere_substantiv("NOUN_ARMOR",     "Rüstzeug",        "es",   "Rüstzeug",      "e", "neutrum", "s"),
+    #dekliniere_substantiv("NOUN_ARMOR",     "Schutzbekleidung", "",   "Schutzbekleidung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_RING",      "Ring",           "es", "Ring",           "e",  "maskulin"),
     dekliniere_substantiv("NOUN_AMULET",    "Amulett",        "es", "Amulett",        "e",  "neutrum"),
     dekliniere_substantiv("NOUN_TOOL",      "Werkzeug",       "es", "Werkzeug",       "e",  "neutrum", "s"),
@@ -2415,8 +2428,10 @@ def ausgabe_nouns
 		dekliniere_substantiv("NOUN_GOLD","Gold","es","","","neutrum"),
 		dekliniere_substantiv("NOUN_GRABWERKZEUG","Grabwerkzeug","es","Grabwerkzeug","e","neutrum"),
 		dekliniere_substantiv("NOUN_HERZSCHLAG","Herzschlag","es","Herzschläg","e","maskulin"),
+		dekliniere_substantiv("NOUN_HERZ","Herz","ens","Herz","en","neutrum"),
 		dekliniere_substantiv("NOUN_KNIE","Knie","s","Knie","","neutrum"),
 		dekliniere_substantiv("NOUN_LIGHT","Licht","es","Licht","er","neutrum"),
+		dekliniere_substantiv("NOUN_LICHT","Licht","es","Licht","er","neutrum"),
 		dekliniere_substantiv("NOUN_LOCH","Loch","es","Löch","er","neutrum"),
 		dekliniere_substantiv("NOUN_MUND","Mund","es","Münd","er","maskulin"),
 		dekliniere_substantiv("NOUN_PASSAGE","Korridor","s","Korridor","e","maskulin"),
@@ -2427,6 +2442,9 @@ def ausgabe_nouns
 		dekliniere_substantiv("NOUN_STIMME","Stimme","","Stimme","en","feminin"),
 		dekliniere_substantiv("NOUN_UMGEBUNG","Umgebung","","Umgebung","en","feminin"),
 		dekliniere_substantiv("NOUN_ZEITLUPENTRITT","Zeitlupentritt","es","Zeitlupentritt","e","maskulin"),
+		dekliniere_substantiv("NOUN_WOLKE","Wolke","","Wolke","en","feminin"),
+		dekliniere_substantiv("NOUN_RAUCHWOLKE","Rauchwolke","","Rauchwolke","en","feminin"),
+		dekliniere_substantiv("NOUN_RAUCH","Rauch","es","","","maskulin"),
 
     dekliniere_substantiv("NOUN_HUMANITY","Menschheit","","","","feminin"),
     dekliniere_substantiv("NOUN_ELVENKIND","Elbenheit","","","","feminin"),
@@ -2434,6 +2452,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GNOMEHOOD","Gnomenheit","","","","feminin"),
     dekliniere_substantiv("NOUN_ORCDOM","Orkenheit","","","","feminin"),
 
+		dekliniere_substantiv("NOUN_LEUCHTEN","Leuchten","s","","","neutrum"),
+		dekliniere_substantiv("NOUN_AURA","Aura","","","","feminin"),
+		dekliniere_substantiv("NOUN_OHR","Ohr","es","Ohr","en","neutrum"),
+		dekliniere_substantiv("NOUN_GEFOLGSCHAFT","Gefolgschaft","","Gefolgschaft","en","feminin"),
 
     "/* ======================================================= */",
     "/* Adjektive */",
@@ -2463,6 +2485,32 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_LEICHT","leicht"),
     dekliniere_adjektiv("ADJEKTIV_ROSTIG","rostig"),
     dekliniere_adjektiv("ADJEKTIV_NEU","neu"),
+    dekliniere_adjektiv("ADJEKTIV_EXPLODIERT","explodiert"),
+    "",
+    "/* Farbennamen */",
+    dekliniere_adjektiv("ADJEKTIV_BLACK","schwarz"),
+    dekliniere_adjektiv("ADJEKTIV_AMBER","bernsteinfarben"),
+    dekliniere_adjektiv("ADJEKTIV_GOLDEN","golden"),
+    dekliniere_adjektiv("ADJEKTIV_LIGHT_BLUE","hellblau"),
+    dekliniere_adjektiv("ADJEKTIV_RED","rot"),
+    dekliniere_adjektiv("ADJEKTIV_GREEN","grün"),
+    dekliniere_adjektiv("ADJEKTIV_SILVER","silbern"),
+    dekliniere_adjektiv("ADJEKTIV_BLUE","blau"),
+    dekliniere_adjektiv("ADJEKTIV_PURPLE","purpurn"),
+    dekliniere_adjektiv("ADJEKTIV_WHITE","weiß"),
+
+    dekliniere_adjektiv("ADJEKTIV_BROWN","braun"),
+    dekliniere_adjektiv("ADJEKTIV_MAGENTA","tiefrot"),
+    dekliniere_adjektiv("ADJEKTIV_CYAN","türkis"),
+    dekliniere_adjektiv("ADJEKTIV_GRAY","grau"),
+    dekliniere_adjektiv("ADJEKTIV_TRANSPARENT","durchsichtig"),
+    dekliniere_adjektiv("ADJEKTIV_ORANGE","orangen"),
+    dekliniere_adjektiv("ADJEKTIV_BRIGHT_GREEN","knallgrün"),
+    dekliniere_adjektiv("ADJEKTIV_YELLOW","gelb"),
+    dekliniere_adjektiv("ADJEKTIV_BRIGHT_BLUE","knallblau"),
+    dekliniere_adjektiv("ADJEKTIV_BRIGHT_MAGENTA","knallrot"),
+    dekliniere_adjektiv("ADJEKTIV_BRIGHT_CYAN","blaugrün"),
+
     "",
     "/* 'andere' ist eigentlich ein Pronomen, wird aber wie ein Adjektiv dekliniert */",
     dekliniere_adjektiv("ADJEKTIV_ANDERE","ander"),

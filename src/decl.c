@@ -219,29 +219,29 @@ char dump_fn[PL_PSIZ] = DUMMY;
 #endif /* DUMP_LOG */
 
 NEARDATA struct c_color_names c_color_names = {
-	"black", "amber", "golden", /* EN "black", "amber", "golden", */ // TODO DE
-	"light blue", "red", "green", /* EN "light blue", "red", "green", */ // TODO DE
-	"silver", "blue", "purple", /* EN "silver", "blue", "purple", */ // TODO DE
-	"white" /* EN "white" */ // TODO DE
+	"ADJEKTIV_BLACK", "ADJEKTIV_AMBER", "ADJEKTIV_GOLDEN", /* EN "black", "amber", "golden", */
+	"ADJEKTIV_LIGHT_BLUE", "ADJEKTIV_RED", "ADJEKTIV_GREEN", /* EN "light blue", "red", "green", */
+	"ADJEKTIV_SILVER", "ADJEKTIV_BLUE", "ADJEKTIV_PURPLE", /* EN "silver", "blue", "purple", */
+	"ADJEKTIV_WHITE" /* EN "white" */
 };
 
-const char *c_obj_colors[] = { // TODO DE
-	"black",		/* CLR_BLACK */
-	"red",			/* CLR_RED */
-	"green",		/* CLR_GREEN */
-	"brown",		/* CLR_BROWN */
-	"blue",			/* CLR_BLUE */
-	"magenta",		/* CLR_MAGENTA */
-	"cyan",			/* CLR_CYAN */
-	"gray",			/* CLR_GRAY */
-	"transparent",		/* no_color */
-	"orange",		/* CLR_ORANGE */
-	"bright green",		/* CLR_BRIGHT_GREEN */
-	"yellow",		/* CLR_YELLOW */
-	"bright blue",		/* CLR_BRIGHT_BLUE */
-	"bright magenta",	/* CLR_BRIGHT_MAGENTA */
-	"bright cyan",		/* CLR_BRIGHT_CYAN */
-	"white",		/* CLR_WHITE */
+const char *c_obj_colors[] = {
+	"ADJEKTIV_BLACK",		/* CLR_BLACK */
+	"ADJEKTIV_RED",			/* CLR_RED */
+	"ADJEKTIV_GREEN",		/* CLR_GREEN */
+	"ADJEKTIV_BROWN",		/* CLR_BROWN */
+	"ADJEKTIV_BLUE",			/* CLR_BLUE */
+	"ADJEKTIV_MAGENTA",		/* CLR_MAGENTA */
+	"ADJEKTIV_CYAN",			/* CLR_CYAN */
+	"ADJEKTIV_GRAY",			/* CLR_GRAY */
+	"ADJEKTIV_TRANSPARENT",		/* no_color */
+	"ADJEKTIV_ORANGE",		/* CLR_ORANGE */
+	"ADJEKTIV_BRIGHT_GREEN",		/* CLR_BRIGHT_GREEN */
+	"ADJEKTIV_YELLOW",		/* CLR_YELLOW */
+	"ADJEKTIV_BRIGHT_BLUE",		/* CLR_BRIGHT_BLUE */
+	"ADJEKTIV_BRIGHT_MAGENTA",	/* CLR_BRIGHT_MAGENTA */
+	"ADJEKTIV_BRIGHT_CYAN",		/* CLR_BRIGHT_CYAN */
+	"ADJEKTIV_WHITE",		/* CLR_WHITE */
 };
 
 #ifdef MENU_COLOR
