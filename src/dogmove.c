@@ -244,8 +244,8 @@ register struct edog *edog;
 		else if (cansee(mtmp->mx, mtmp->my))
 		    pline("%s starves.", Monnam(mtmp)); /* EN pline("%s starves.", Monnam(mtmp)); */ // TODO DE
 		else
-		    You_feel("%s for a moment.", /* EN You_feel("%s for a moment.", */ // TODO DE
-			Hallucination ? "bummed" : "sad"); /* EN Hallucination ? "bummed" : "sad"); */ // TODO DE
+		    Du_fuehlst_dich("einen Moment lang %s.", /* EN You_feel("%s for a moment.", */
+			Hallucination ? "deprimiert" : "traurig"); /* EN Hallucination ? "bummed" : "sad"); */
 		mondied(mtmp);
 		return(TRUE);
 	    }

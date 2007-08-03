@@ -725,6 +725,7 @@ boolean called;
 		article = ARTICLE_NONE;
 		name_at_start = TRUE;
 	    } else {
+	        //printf("name_at_start\n");
 		Strcat(buf, name);
 		name_at_start = TRUE;
 	    }
@@ -763,7 +764,7 @@ boolean called;
 	    switch(article) {
 		case ARTICLE_YOUR:
 				/* Strcpy(buf2, " :ARTICLE_YOUR: "); */
-		    Strcat(buf2, "PRONOMEN_POSSESSIV "); /* EN Strcpy(buf2, "your "); */
+		    Strcpy(buf2, "PRONOMEN_POSSESSIV "); /* EN Strcpy(buf2, "your "); */
 		    Strcat(buf2, buf);
 		    Strcpy(buf, buf2);
 		    return buf;

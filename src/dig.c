@@ -524,7 +524,7 @@ int ttyp;
 	/* maketrap() might change it, also, in this situation,
 	   surface() returns an inappropriate string for a grave */
 	if (IS_GRAVE(lev->typ))
-	    Strcpy(surface_type, "grave");
+	    Strcpy(surface_type, "NOUN_GRAVE"); /* EN Strcpy(surface_type, "grave"); */
 	else
 	    Strcpy(surface_type, surface(x,y));
 	shopdoor = IS_DOOR(lev->typ) && *in_rooms(x, y, SHOPBASE);
@@ -873,7 +873,7 @@ struct obj *obj;
 	if (u.uswallow && attack(u.ustuck)) {
 		;  /* return(1) */
 	} else if (Underwater) {
-		pline("Turbulence torpedoes your %s attempts.", verbing); /* EN pline("Turbulence torpedoes your %s attempts.", verbing); */ // TODO DE
+		pline("Turbulenzen torpedieren KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_VERSUCHs %s.", verbing); /* EN pline("Turbulence torpedoes your %s attempts.", verbing); */
 	} else if(u.dz < 0) {
 		if(Levitation)
 			You("don't have enough leverage."); /* EN You("don't have enough leverage."); */ // TODO DE

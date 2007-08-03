@@ -735,7 +735,7 @@ ring:
 				Strcpy(prefix,"MODIFIER_CORPSE ");
 				Strcat(prefix, tmpbuf);
 		    if (mons[obj->corpsenm].geno & G_UNIQ) {
-			Sprintf(prefix, "%s%s ",
+			Sprintf(prefix, "MODIFIER_CORPSE %s%s ",
 				(type_is_pname(&mons[obj->corpsenm]) ?
 					"" : "the "), /* EN "" : "the "), */ // TODO DE
 				s_suffix(mons[obj->corpsenm].mname));

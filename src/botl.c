@@ -88,7 +88,7 @@ rank_of(lev, monnum, female)
 	/* Try the role name, instead */
 	if (female && role->name.f) return (role->name.f);
 	else if (role->name.m) return (role->name.m);
-	return ("Player"); /* EN return ("Player"); */ // TODO DE
+	return ("Spieler"); /* EN return ("Player"); */
 }
 
 
@@ -301,16 +301,16 @@ bot2()
 		Sprintf(nb = eos(nb), " ");
 		Strcat(newbot2, hu_stat[u.uhs]);
 	}
-	if(Confusion)	   Sprintf(nb = eos(nb), " Conf"); /* EN if(Confusion)	   Sprintf(nb = eos(nb), " Conf"); */ // TODO DE
+	if(Confusion)	   Sprintf(nb = eos(nb), " konf"); /* EN if(Confusion)	   Sprintf(nb = eos(nb), " Conf"); */
 	if(Sick) {
 		if (u.usick_type & SICK_VOMITABLE)
 			   Sprintf(nb = eos(nb), " FoodPois"); /* EN Sprintf(nb = eos(nb), " FoodPois"); */ // TODO DE
 		if (u.usick_type & SICK_NONVOMITABLE)
-			   Sprintf(nb = eos(nb), " Ill"); /* EN Sprintf(nb = eos(nb), " Ill"); */ // TODO DE
+			   Sprintf(nb = eos(nb), " krank"); /* EN Sprintf(nb = eos(nb), " Ill"); */
 	}
-	if(Blind)	   Sprintf(nb = eos(nb), " Blind"); /* EN if(Blind)	   Sprintf(nb = eos(nb), " Blind"); */ // TODO DE
+	if(Blind)	   Sprintf(nb = eos(nb), " blind"); /* EN if(Blind)	   Sprintf(nb = eos(nb), " Blind"); */
 	if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); /* EN if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); */ // TODO DE
-	if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); /* EN if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); */ // TODO DE
+	if(Hallucination)  Sprintf(nb = eos(nb), " hallu"); /* EN if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); */ // TODO DE
 	if(Slimed)         Sprintf(nb = eos(nb), " Slime"); /* EN if(Slimed)         Sprintf(nb = eos(nb), " Slime"); */ // TODO DE
 	if(cap > UNENCUMBERED)
 		Sprintf(nb = eos(nb), " %s", enc_stat[cap]);

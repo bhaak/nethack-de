@@ -511,10 +511,10 @@ dismount_steed(reason)
 		    return;
 		}
 		if (!mtmp->mnamelth) {
-			pline("You've been through the dungeon on %s with no name.", /* EN pline("You've been through the dungeon on %s with no name.", */ // TODO DE
+			pline("SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_GEHEN durch die Höhle auf nem/ner %s ohne Namen.", /* EN pline("You've been through the dungeon on %s with no name.", */ // TODO DE  du gingst durch die Wueste aufm Pferd ohne Namen
 				an(mtmp->data->mname));
 			if (Hallucination)
-				pline("It felt good to get out of the rain."); /* EN pline("It felt good to get out of the rain."); */ // TODO DE
+				pline("Es war schön, nicht mehr im Regen zu sein."); /* EN pline("It felt good to get out of the rain."); */
 		} else
 			You("dismount %s.", mon_nam(mtmp)); /* EN You("dismount %s.", mon_nam(mtmp)); */ // TODO DE
 	}

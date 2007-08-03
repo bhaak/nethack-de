@@ -205,7 +205,7 @@ dead: /* we come directly here if their experience level went to 0 or less */
 		}
 	}
 	newuhs(FALSE);
-	polyman("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL wie ARTIKEL_UNBESTIMMTER ADJEKTIV_NEU %s!", /* EN polyman("feel like a new %s!", */
+	polyman("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL wie NEUES_OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_NEU %s!", /* EN polyman("feel like a new %s!", */
 		(flags.female && urace.individual.f) ? urace.individual.f :
 		(urace.individual.m) ? urace.individual.m : urace.noun);
 	if (Slimed) {
@@ -714,7 +714,7 @@ rehumanize()
 
 	if (emits_light(youmonst.data))
 	    del_light_source(LS_MONSTER, (genericptr_t)&youmonst);
-	polyman("return to %s form!", urace.adj); /* EN polyman("return to %s form!", urace.adj); */ // TODO DE
+	polyman("VERB_HAVE wieder OBJECT %s NOUN_GESTALT!", urace.adj); /* EN polyman("return to %s form!", urace.adj); */ /* 'Zwergenform, Menschengestalt besser? */
 
 	if (u.uhp < 1) {
 	    char kbuf[256];
