@@ -44,13 +44,13 @@ STATIC_DCL boolean FDECL(blocked_boulder,(int,int));
  *	responsible for the theft of the Amulet from Marduk, the Creator.
  *	Moloch is unaligned.
  */
-static const char	*Moloch = "Moloch"; /* EN static const char	*Moloch = "Moloch"; */ // TODO DE
+static const char	*Moloch = "Moloch"; /* EN static const char	*Moloch = "Moloch"; */
 
 static const char *godvoices[] = {
-    "booms out", /* EN "booms out", */ // TODO DE
-    "thunders", /* EN "thunders", */ // TODO DE
-    "rings out", /* EN "rings out", */ // TODO DE
-    "booms", /* EN "booms", */ // TODO DE
+    "erschallt", /* EN "booms out", */
+    "donnert", /* EN "thunders", */
+    "echot in KASUS_DATIV PRONOMEN_POSSESSIV NOUN_OHRs", /* EN "rings out", */
+    "dröhnt", /* EN "booms", */
 };
 
 /* values calculated when prayer starts, and used when completed */
@@ -267,12 +267,12 @@ register int trouble;
 	int i;
 	struct obj *otmp = 0;
 	const char *what = (const char *)0;
-	static NEARDATA const char leftglow[] = "left ring softly glows", /* EN static NEARDATA const char leftglow[] = "left ring softly glows", */ // TODO DE
-				   rightglow[] = "right ring softly glows"; /* EN rightglow[] = "right ring softly glows"; */ // TODO DE
+	static NEARDATA const char leftglow[] = "ADJEKTIV_LINK NOUN_RING VERB_LEUCHTEN schwach", /* EN static NEARDATA const char leftglow[] = "left ring softly glows", */
+				   rightglow[] = "ADJEKTIV_RIGHT NOUN_RING VERB_LEUCHTEN schwach"; /* EN rightglow[] = "right ring softly glows"; */
 
 	switch (trouble) {
 	    case TROUBLE_STONED:
-		    You_feel("more limber."); /* EN You_feel("more limber."); */ // TODO DE
+		    Du_fuehlst_dich("lockerer."); /* EN You_feel("more limber."); */
 		    Stoned = 0;
 		    flags.botl = 1;
 		    delayed_killer = 0;
@@ -285,7 +285,7 @@ register int trouble;
 		    break;
 	    case TROUBLE_STRANGLED:
 		    if (uamul && uamul->otyp == AMULET_OF_STRANGULATION) {
-			Your("amulet vanishes!"); /* EN Your("amulet vanishes!"); */ // TODO DE
+			Your("NOUN_AMULET VERB_VERSCHWINDEN!"); /* EN Your("amulet vanishes!"); */
 			useup(uamul);
 		    }
 		    You("VERB_KOENNEN wieder atmen."); /* EN You("can breathe again."); */
@@ -293,7 +293,7 @@ register int trouble;
 		    flags.botl = 1;
 		    break;
 	    case TROUBLE_LAVA:
-		    You("VERB_HAVE wieder festen Boden unter den Füßen."); /* EN You("are back on solid ground."); */
+		    You("VERB_HABEN wieder festen Boden unter den Füßen."); /* EN You("are back on solid ground."); */
 		    /* teleport should always succeed, but if not,
 		     * just untrap them.
 		     */
@@ -394,7 +394,7 @@ decurse:
 		    uncurse(otmp);
 		    if (!Blind) {
 			Your("%s %s.", what ? what :
-				(const char *)aobjnam(otmp, "softly glow"), /* EN (const char *)aobjnam(otmp, "softly glow"), */ // TODO DE
+				(const char *)aobjnam(otmp, "VERB_LEUCHTEN schwach"), /* EN (const char *)aobjnam(otmp, "softly glow"), */
 			     hcolor(NH_AMBER));
 			otmp->bknown = TRUE;
 		    }
@@ -404,7 +404,7 @@ decurse:
 		    if (Hallucination)
 			pline("SUBJECT PRONOMEN_PERSONAL VERB_HAVE den Tiger im Tank."); /* EN pline("There's a tiger in your tank."); */
 		    else
-			You_feel("in good health again."); /* EN You_feel("in good health again."); */ // TODO DE
+			Du_fuehlst_dich("wieder wohlauf."); /* EN You_feel("in good health again."); */
 		    for(i=0; i<A_MAX; i++) {
 			if(ABASE(i) < AMAX(i)) {
 				ABASE(i) = AMAX(i);
@@ -435,7 +435,7 @@ decurse:
 		    make_confused(0L,TRUE);
 		    break;
 	    case TROUBLE_HALLUCINATION:
-		    pline ("Looks like you are back in Kansas."); /* EN pline ("Looks like you are back in Kansas."); */ // TODO DE
+		    pline ("Sieht so aus, als MODIFIER_KONJUNKTIV_II VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wieder daheim in Kansas."); /* EN pline ("Looks like you are back in Kansas."); */ // IMPROVE ME
 		    make_hallucinated(0L,FALSE,0L);
 		    break;
 #ifdef STEED
@@ -443,9 +443,9 @@ decurse:
 		    otmp = which_armor(u.usteed, W_SADDLE);
 		    uncurse(otmp);
 		    if (!Blind) {
-			pline("%s %s %s.",
-			      s_suffix(upstart(y_monnam(u.usteed))),
-			      aobjnam(otmp, "softly glow"), /* EN aobjnam(otmp, "softly glow"), */ // TODO DE
+			pline("%s %s %s.", // TODO DE
+			      s_suffix(upstart(y_monnam(u.usteed))), // TODO DE
+			      aobjnam(otmp, "VERB_LEUCHTEN schwach"), /* EN aobjnam(otmp, "softly glow"), */
 			      hcolor(NH_AMBER));
 			otmp->bknown = TRUE;
 		    }
@@ -521,16 +521,16 @@ aligntyp resp_god;
 	    if (!Disint_resistance)
 		fry_by_god(resp_god);
 	    else {
-		You("bask in its %s glow for a minute...", NH_BLACK); /* EN You("bask in its %s glow for a minute...", NH_BLACK); */ // TODO DE
-		godvoice(resp_god, "I believe it not!"); /* EN godvoice(resp_god, "I believe it not!"); */ // TODO DE
+		You("VERB_SONNEN OBJECT PRONOMEN_PERSONAL ein wenig in NEUES_OBJECT KASUS_DATIV PRONOMEN_3P_MN_POSSESSIV %s NOUN_LICHT ...", NH_BLACK); /* EN You("bask in its %s glow for a minute...", NH_BLACK); */
+		godvoice(resp_god, "Ich fass es nicht!"); /* EN godvoice(resp_god, "I believe it not!"); */
 	    }
 	    if (Is_astralevel(&u.uz) || Is_sanctum(&u.uz)) {
 		/* one more try for high altars */
-		verbalize("Thou cannot escape my wrath, mortal!"); /* EN verbalize("Thou cannot escape my wrath, mortal!"); */ // TODO DE
+		verbalize("Du kannst meinem Zorn nicht entkommen, mortal!"); /* EN verbalize("Thou cannot escape my wrath, mortal!"); */ // TODO DE
 		summon_minion(resp_god, FALSE);
 		summon_minion(resp_god, FALSE);
 		summon_minion(resp_god, FALSE);
-		verbalize("Destroy %s, my servants!", uhim()); /* EN verbalize("Destroy %s, my servants!", uhim()); */ // TODO DE
+		verbalize("Zerstört KASUS_AKKUSATIV %s, my servants!", uhim()); /* EN verbalize("Destroy %s, my servants!", uhim()); */ // TODO DE
 	    }
 	}
 }
@@ -543,7 +543,7 @@ aligntyp resp_god;
 
 	You("fry to a crisp."); /* EN You("fry to a crisp."); */ // TODO DE
 	killer_format = KILLED_BY;
-	Sprintf(killerbuf, "the wrath of %s", align_gname(resp_god)); /* EN Sprintf(killerbuf, "the wrath of %s", align_gname(resp_god)); */ // TODO DE
+	Sprintf(killerbuf, "der Zorn von %s", align_gname(resp_god)); /* EN Sprintf(killerbuf, "the wrath of %s", align_gname(resp_god)); */
 	killer = killerbuf;
 	done(DIED);
 }
@@ -569,8 +569,8 @@ aligntyp resp_god;
 
 	switch (rn2(maxanger)) {
 	    case 0:
-	    case 1:	You_feel("that %s is %s.", align_gname(resp_god), /* EN case 1:	You_feel("that %s is %s.", align_gname(resp_god), */ // TODO DE
-			    Hallucination ? "bummed" : "displeased"); /* EN Hallucination ? "bummed" : "displeased"); */ // TODO DE
+	    case 1:	You("VERB_FUEHLEN, dass %s %s ist.", align_gname(resp_god), /* EN case 1:	You_feel("that %s is %s.", align_gname(resp_god), */
+			    Hallucination ? "entmutigt" : "displeased/ungehalten?"); /* EN Hallucination ? "bummed" : "displeased"); */ // TODO DE
 			break;
 	    case 2:
 	    case 3:
@@ -592,17 +592,17 @@ aligntyp resp_god;
 	    case 4:
 	    case 5:	gods_angry(resp_god);
 			if (!Blind && !Antimagic)
-			    pline("%s glow surrounds you.", /* EN pline("%s glow surrounds you.", */ // TODO DE
+			    pline("SUBJECT %s NOUN_LEUCHTEN VERB_UMGEBEN OBJECT PRONOMEN_PERSONAL.", /* EN pline("%s glow surrounds you.", */
 				  An(hcolor(NH_BLACK)));
 			rndcurse();
 			break;
 	    case 7:
 	    case 8:	godvoice(resp_god,(char *)0);
-			verbalize("Thou durst %s me?", /* EN verbalize("Thou durst %s me?", */ // TODO DE
+			verbalize("Du wagst es mich %s?", /* EN verbalize("Thou durst %s me?", */
 				  (on_altar() &&
 				   (a_align(u.ux,u.uy) != resp_god)) ?
-				  "scorn":"call upon"); /* EN "scorn":"call upon"); */ // TODO DE
-			pline("\"Then die, %s!\"", /* EN pline("\"Then die, %s!\"", */ // TODO DE
+				  "zu schmähen":"anzurufen"); /* EN "scorn":"call upon"); */
+			pline("\"Dann stirb, %s!\"", /* EN pline("\"Then die, %s!\"", */
 			      youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */ // TODO DE
 			summon_minion(resp_god, FALSE);
 			break;
@@ -740,11 +740,11 @@ gcrownu()
       {
 	char swordbuf[BUFSZ];
 
-	Sprintf(swordbuf, "%s sword", hcolor(NH_BLACK)); /* EN Sprintf(swordbuf, "%s sword", hcolor(NH_BLACK)); */ // TODO DE
+	Sprintf(swordbuf, "%s NOUN_SWORD", hcolor(NH_BLACK)); /* EN Sprintf(swordbuf, "%s sword", hcolor(NH_BLACK)); */
 	if (class_gift != STRANGE_OBJECT) {
 	    ;		/* already got bonus above */
 	} else if (in_hand) {
-	    Your("%s hums ominously!", swordbuf); /* EN Your("%s hums ominously!", swordbuf); */ // TODO DE
+	    Your("%s summt verdächtig!", swordbuf); /* EN Your("%s hums ominously!", swordbuf); */
 	    obj->dknown = TRUE;
 	} else if (!already_exists) {
 	    obj = mksobj(RUNESWORD, FALSE, FALSE);
@@ -863,7 +863,7 @@ pleased(g_align)
 		    uncurse(uwep);
 		    uwep->bknown = TRUE;
 		    if (!Blind)
-			Your("%s %s%s.", aobjnam(uwep, "softly glow"), /* EN Your("%s %s%s.", aobjnam(uwep, "softly glow"), */ // TODO DE
+			Your("%s %s%s.", aobjnam(uwep, "VERB_LEUCHTEN schwach"), /* EN Your("%s %s%s.", aobjnam(uwep, "softly glow"), */
 			     hcolor(NH_AMBER), repair_buf);
 		    else You_feel("the power of %s over your %s.", /* EN else You_feel("the power of %s over your %s.", */ // TODO DE
 			u_gname(), xname(uwep));
@@ -872,8 +872,8 @@ pleased(g_align)
 		    bless(uwep);
 		    uwep->bknown = TRUE;
 		    if (!Blind)
-			Your("%s with %s aura%s.", /* EN Your("%s with %s aura%s.", */ // TODO DE
-			     aobjnam(uwep, "softly glow"), /* EN aobjnam(uwep, "softly glow"), */ // TODO DE
+			Your("%s mit OBJECT KASUS_DATIV %s NOUN_AURA%s.", /* EN Your("%s with %s aura%s.", */ 
+			     aobjnam(uwep, "VERB_LEUCHTEN schwach"), /* EN aobjnam(uwep, "softly glow"), */
 			     an(hcolor(NH_LIGHT_BLUE)), repair_buf);
 		    else You_feel("the blessing of %s over your %s.", /* EN else You_feel("the blessing of %s over your %s.", */ // TODO DE
 			u_gname(), xname(uwep));
@@ -898,14 +898,14 @@ pleased(g_align)
 	    if (!u.uevent.uopened_dbridge) {
 		if (u.uevent.uheard_tune < 1) {
 		    godvoice(g_align,(char *)0);
-		    verbalize("Hark, %s!", /* EN verbalize("Hark, %s!", */ // TODO DE
+		    verbalize("Höre, %s!", /* EN verbalize("Hark, %s!", */
 			  youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */ // TODO DE
 		    verbalize(
 			"To enter the castle, thou must play the right tune!"); /* EN "To enter the castle, thou must play the right tune!"); */ // TODO DE
 		    u.uevent.uheard_tune++;
 		    break;
 		} else if (u.uevent.uheard_tune < 2) {
-		    You_hear("a divine music..."); /* EN You_hear("a divine music..."); */ // TODO DE
+		    You_hear("eine göttliche Musik ..."); /* EN You_hear("a divine music..."); */
 		    pline("It sounds like:  \"%s\".", tune); /* EN pline("It sounds like:  \"%s\".", tune); */ // TODO DE
 		    u.uevent.uheard_tune++;
 		    break;
@@ -914,7 +914,7 @@ pleased(g_align)
 	    /* Otherwise, falls into next case */
 	case 2:
 	    if (!Blind)
-		You("are surrounded by %s glow.", an(hcolor(NH_GOLDEN))); /* EN You("are surrounded by %s glow.", an(hcolor(NH_GOLDEN))); */ // TODO DE
+		Dich("umgibt SUBJECT_IM_SATZ %s NOUN_LEUCHTEN.", an(hcolor(NH_GOLDEN))); /* EN You("are surrounded by %s glow.", an(hcolor(NH_GOLDEN))); */
 	    /* if any levels have been lost (and not yet regained),
 	       treat this effect like blessed full healing */
 	    if (u.ulevel < u.ulevelmax) {
@@ -937,14 +937,14 @@ pleased(g_align)
 	    int any = 0;
 
 	    if (Blind)
-		You_feel("the power of %s.", u_gname()); /* EN You_feel("the power of %s.", u_gname()); */ // TODO DE
-	    else You("are surrounded by %s aura.", /* EN else You("are surrounded by %s aura.", */ // TODO DE
+		You("VERB_SPUEREN die Macht von %s.", u_gname()); /* EN You_feel("the power of %s.", u_gname()); */
+	    else Dich("umgibt %s NOUN_AURA.", /* EN else You("are surrounded by %s aura.", */
 		     an(hcolor(NH_LIGHT_BLUE)));
 	    for(otmp=invent; otmp; otmp=otmp->nobj) {
 		if (otmp->cursed) {
 		    uncurse(otmp);
 		    if (!Blind) {
-			Your("%s %s.", aobjnam(otmp, "softly glow"), /* EN Your("%s %s.", aobjnam(otmp, "softly glow"), */ // TODO DE
+			Your("%s %s.", aobjnam(otmp, "VERB_LEUCHTEN schwach"), /* EN Your("%s %s.", aobjnam(otmp, "softly glow"), */
 			     hcolor(NH_AMBER));
 			otmp->bknown = TRUE;
 			++any;
@@ -955,26 +955,26 @@ pleased(g_align)
 	    break;
 	}
 	case 5: {
-	    const char *msg="\"and thus I grant thee the gift of %s!\""; /* EN const char *msg="\"and thus I grant thee the gift of %s!\""; */ // TODO DE
-	    godvoice(u.ualign.type, "Thou hast pleased me with thy progress,"); /* EN godvoice(u.ualign.type, "Thou hast pleased me with thy progress,"); */ // TODO DE
+	    const char *msg="\"Deshalb verleihe ich dir %s!\""; /* EN const char *msg="\"and thus I grant thee the gift of %s!\""; */
+	    godvoice(u.ualign.type, "Deine Fortschritte haben mich erfreut. "); /* EN godvoice(u.ualign.type, "Thou hast pleased me with thy progress,"); */
 	    if (!(HTelepat & INTRINSIC))  {
 		HTelepat |= FROMOUTSIDE;
-		pline(msg, "Telepathy"); /* EN pline(msg, "Telepathy"); */ // TODO DE
+		pline(msg, "die Gabe der Telepathie"); /* EN pline(msg, "Telepathy"); */
 		if (Blind) see_monsters();
 	    } else if (!(HFast & INTRINSIC))  {
 		HFast |= FROMOUTSIDE;
-		pline(msg, "Speed"); /* EN pline(msg, "Speed"); */ // TODO DE
+		pline(msg, "die Gabe der Hast"); /* EN pline(msg, "Speed"); */
 	    } else if (!(HStealth & INTRINSIC))  {
 		HStealth |= FROMOUTSIDE;
-		pline(msg, "Stealth"); /* EN pline(msg, "Stealth"); */ // TODO DE
+		pline(msg, "die Gabe des Schleichens"); /* EN pline(msg, "Stealth"); */
 	    } else {
 		if (!(HProtection & INTRINSIC))  {
 		    HProtection |= FROMOUTSIDE;
 		    if (!u.ublessed)  u.ublessed = rn1(3, 2);
 		} else u.ublessed++;
-		pline(msg, "my protection"); /* EN pline(msg, "my protection"); */ // TODO DE
+		pline(msg, "das Geschenk meines Schutzes"); /* EN pline(msg, "my protection"); */
 	    }
-	    verbalize("Use it wisely in my name!"); /* EN verbalize("Use it wisely in my name!"); */ // TODO DE
+	    verbalize("Gebrauche es weise in meinem Namen!"); /* EN verbalize("Use it wisely in my name!"); */
 	    break;
 	}
 	case 7:
@@ -1048,10 +1048,10 @@ water_prayer(bless_water)
 	    other = TRUE;
     }
     if(!Blind && changed) {
-	pline("%s potion%s on the altar glow%s %s for a moment.", /* EN pline("%s potion%s on the altar glow%s %s for a moment.", */ // TODO DE
-	      ((other && changed > 1L) ? "Some of the" : /* EN ((other && changed > 1L) ? "Some of the" : */ // TODO DE
-					(other ? "One of the" : "The")), /* EN (other ? "One of the" : "The")), */ // TODO DE
-	      ((other || changed > 1L) ? "s" : ""), (changed > 1L ? "" : "s"),
+	pline("SUBJECT %s NOUN_POTION%s auf dem Altar VERB_LEUCHTEN%s einen Augenblick lang %s auf.", /* EN pline("%s potion%s on the altar glow%s %s for a moment.", */
+	      ((other && changed > 1L) ? "Einige der" : /* EN ((other && changed > 1L) ? "Some of the" : */
+					(other ? "Einer der" : "ARTIKEL_BESTIMMTER")), /* EN (other ? "One of the" : "The")), */
+	      ((other || changed > 1L) ? "s" : ""), (changed > 1L ? "" : ""), /* EN ((other || changed > 1L) ? "s" : ""), (changed > 1L ? "" : "s"), */
 	      (bless_water ? hcolor(NH_LIGHT_BLUE) : hcolor(NH_BLACK)));
     }
     return((boolean)(changed > 0L));
@@ -1068,7 +1068,7 @@ godvoice(g_align, words)
     else
 	words = "";
 
-    pline_The("voice of %s %s: %s%s%s", align_gname(g_align), /* EN pline_The("voice of %s %s: %s%s%s", align_gname(g_align), */ // TODO DE
+    pline_The("NOUN_STIMME von %s %s: %s%s%s", align_gname(g_align), /* EN pline_The("voice of %s %s: %s%s%s", align_gname(g_align), */
 	  godvoices[rn2(SIZE(godvoices))], quot, words, quot);
 }
 
@@ -1076,7 +1076,7 @@ STATIC_OVL void
 gods_angry(g_align)
     aligntyp g_align;
 {
-    godvoice(g_align, "Thou hast angered me."); /* EN godvoice(g_align, "Thou hast angered me."); */ // TODO DE
+    godvoice(g_align, "Du hast mich verärgert."); /* EN godvoice(g_align, "Thou hast angered me."); */
 }
 
 /* The g_align god is upset with you. */
@@ -1109,7 +1109,7 @@ register struct obj *otmp;
 	}
     else if (Blind && u.ualign.type == A_LAWFUL)
 	Your("NOUN_SACRIFICE VERB_VERSCHWINDEN!"); /* EN Your("sacrifice disappears!"); */
-    else Your("sacrifice is consumed in a %s!", /* EN else Your("sacrifice is consumed in a %s!", */ // TODO DE
+    else Your("NOUN_SACRIFICE is consumed in a %s!", /* EN else Your("sacrifice is consumed in a %s!", */ // TODO DE
 	      u.ualign.type == A_LAWFUL ? "flash of light" : "burst of flame"); /* EN u.ualign.type == A_LAWFUL ? "flash of light" : "burst of flame"); */ // TODO DE
     if (carried(otmp)) useup(otmp);
     else useupf(otmp, 1L);
@@ -1125,7 +1125,7 @@ dosacrifice()
     aligntyp altaralign = a_align(u.ux,u.uy);
 
     if (!on_altar() || u.uswallow) {
-	You("VERB_STEHEN nicht auf einem Altar."); /* EN You("are not standing on an altar."); */ // TODO DE
+	You("VERB_STEHEN nicht auf einem Altar."); /* EN You("are not standing on an altar."); */
 	return 0;
     }
 
@@ -1175,7 +1175,7 @@ dosacrifice()
 
 	    if (altaralign != A_CHAOTIC && altaralign != A_NONE) {
 		/* curse the lawful/neutral altar */
-		pline_The("altar is stained with %s blood.", urace.adj); /* EN pline_The("altar is stained with %s blood.", urace.adj); */ // TODO DE
+		pline_The("NOUN_ALTAR VERB_SEIN von OBJECT KASUS_DATIV %s NOUN_BLUT besudelt.", urace.adj); /* EN pline_The("altar is stained with %s blood.", urace.adj); */
 		if(!Is_astralevel(&u.uz))
 		    levl[u.ux][u.uy].altarmask = AM_CHAOTIC;
 		angry_priest();
@@ -1187,25 +1187,25 @@ dosacrifice()
 		/* is equivalent to demon summoning */
 		if (altaralign == A_CHAOTIC && u.ualign.type != A_CHAOTIC) {
 		    pline(
-		     "The blood floods the altar, which vanishes in %s cloud!", /* EN "The blood floods the altar, which vanishes in %s cloud!", */ // TODO DE
-			  an(hcolor(NH_BLACK)));
+		     "Das Blut fließt über den Altar, der in einer Wolke aus KASUS_DATIV %s NOUN_RAUCH verschwindet!", /* EN "The blood floods the altar, which vanishes in %s cloud!", */
+			  hcolor(NH_BLACK)); /* EN an(hcolor(NH_BLACK))); */
 		    levl[u.ux][u.uy].typ = ROOM;
 		    levl[u.ux][u.uy].altarmask = 0;
 		    newsym(u.ux, u.uy);
 		    angry_priest();
-		    demonless_msg = "cloud dissipates"; /* EN demonless_msg = "cloud dissipates"; */ // TODO DE
+		    demonless_msg = "NOUN_RAUCHWOLKE VERB_AUFLOESEN sich SATZKLAMMER"; /* EN demonless_msg = "cloud dissipates"; */
 		} else {
 		    /* either you're chaotic or altar is Moloch's or both */
-		    pline_The("blood covers the altar!"); /* EN pline_The("blood covers the altar!"); */ // TODO DE
+		    pline("Das Blut bedeckt den Altar!"); /* EN pline_The("blood covers the altar!"); */
 		    change_luck(altaralign == A_NONE ? -2 : 2);
-		    demonless_msg = "blood coagulates"; /* EN demonless_msg = "blood coagulates"; */ // TODO DE
+		    demonless_msg = "NOUN_BLUT gerinnt"; /* EN demonless_msg = "blood coagulates"; */
 		}
 		if ((pm = dlord(altaralign)) != NON_PM &&
 		    (dmon = makemon(&mons[pm], u.ux, u.uy, NO_MM_FLAGS))) {
-		    You("have summoned %s!", a_monnam(dmon)); /* EN You("have summoned %s!", a_monnam(dmon)); */ // TODO DE
+		    You("VERB_HAVE OBJECT %s beschworen!", a_monnam(dmon)); /* EN You("have summoned %s!", a_monnam(dmon)); */
 		    if (sgn(u.ualign.type) == sgn(dmon->data->maligntyp))
 			dmon->mpeaceful = TRUE;
-		    You("are terrified, and unable to move."); /* EN You("are terrified, and unable to move."); */ // TODO DE
+		    Your("NOUN_HERZ rast und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SEIN starr vor Angst."); /* EN You("are terrified, and unable to move."); */
 		    nomul(-3);
 		} else pline_The("%s.", demonless_msg);
 	    }
@@ -1225,7 +1225,7 @@ dosacrifice()
 		    && mtmp->mtame) {
 	    /* mtmp is a temporary pointer to a tame monster's attributes,
 	     * not a real monster */
-	    pline("So this is how you repay loyalty?"); /* EN pline("So this is how you repay loyalty?"); */ // TODO DE
+	    pline("So also SUBJECT_IM_SATZ VERB_BELOHNEN PRONOMEN_PERSONAL Treue?"); /* EN pline("So this is how you repay loyalty?"); */
 	    adjalign(-3);
 	    value = -1;
 	    HAggravate_monster |= FROMOUTSIDE;
@@ -1237,7 +1237,7 @@ dosacrifice()
 
 	    /* If same as altar, always a very bad action. */
 	    if (unicalign == altaralign) {
-		pline("Such an action is an insult to %s!", /* EN pline("Such an action is an insult to %s!", */ // TODO DE
+		pline("Solch eine Tat ist eine Beleidigung %s!", /* EN pline("Such an action is an insult to %s!", */
 		      (unicalign == A_CHAOTIC)
 		      ? "chaos" : unicalign ? "law" : "balance"); /* EN ? "chaos" : unicalign ? "law" : "balance"); */ // TODO DE
 		(void) adjattrib(A_WIS, -1, TRUE);
@@ -1273,26 +1273,26 @@ dosacrifice()
 	    u.uevent.ascended = 1;
 	    if(carried(otmp)) useup(otmp); /* well, it's gone now */
 	    else useupf(otmp, 1L);
-	    You("offer the Amulet of Yendor to %s...", a_gname()); /* EN You("offer the Amulet of Yendor to %s...", a_gname()); */ // TODO DE
+	    You("VERB_OFFER %s OBJECT ARTIKEL_BESTIMMTER NOUN_AMULET_OF_YENDOR ...", a_gname()); /* EN You("offer the Amulet of Yendor to %s...", a_gname()); */
 	    if (u.ualign.type != altaralign) {
 		/* And the opposing team picks you up and
 		   carries you off on their shoulders */
 		adjalign(-99);
-		pline("%s accepts your gift, and gains dominion over %s...", /* EN pline("%s accepts your gift, and gains dominion over %s...", */ // TODO DE
+		pline("%s nimmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GESCHENK an, and gains dominion over %s...", /* EN pline("%s accepts your gift, and gains dominion over %s...", */ // TODO DE
 		      a_gname(), u_gname());
-		pline("%s is enraged...", u_gname()); /* EN pline("%s is enraged...", u_gname()); */ // TODO DE
-		pline("Fortunately, %s permits you to live...", a_gname()); /* EN pline("Fortunately, %s permits you to live...", a_gname()); */ // TODO DE
-		pline("A cloud of %s smoke surrounds you...", /* EN pline("A cloud of %s smoke surrounds you...", */ // TODO DE
-		      hcolor((const char *)"orange")); /* EN hcolor((const char *)"orange")); */ // TODO DE
+		pline("%s tobt ...", u_gname()); /* EN pline("%s is enraged...", u_gname()); */
+		pline("Zum Glück erlaubt %s KASUS_DATIV PRONOMEN_PERSONAL weiterzuleben ...", a_gname()); /* EN pline("Fortunately, %s permits you to live...", a_gname()); */
+		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLKE aus OBJECT KASUS_DATIV %s NOUN_RAUCH VERB_UMGEBEN NEUES_OBJECT PRONOMEN_PERSONAL ...", /* EN pline("A cloud of %s smoke surrounds you...", */
+		      hcolor((const char *)"ADJEKTIV_ORANGE")); /* EN hcolor((const char *)"orange")); */
 		done(ESCAPED);
 	    } else { /* super big win */
 		adjalign(10);
-pline("An invisible choir sings, and you are bathed in radiance..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */ // TODO DE
+pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL bathed in radiance..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */ // TODO DE
 		godvoice(altaralign, "Congratulations, mortal!"); /* EN godvoice(altaralign, "Congratulations, mortal!"); */ // TODO DE
 		display_nhwindow(WIN_MESSAGE, FALSE);
-verbalize("In return for thy service, I grant thee the gift of Immortality!"); /* EN verbalize("In return for thy service, I grant thee the gift of Immortality!"); */ // TODO DE
-		You("ascend to the status of Demigod%s...", /* EN You("ascend to the status of Demigod%s...", */ // TODO DE
-		    flags.female ? "dess" : ""); /* EN flags.female ? "dess" : ""); */ // TODO DE
+verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /* EN verbalize("In return for thy service, I grant thee the gift of Immortality!"); */
+		You("ascend to the status of NOUN_HALB%s ...", /* EN You("ascend to the status of Demigod%s...", */ // TODO DE
+		    flags.female ? "GOTT" : "GOETTIN"); /* EN flags.female ? "dess" : ""); */
 		done(ASCENDED);
 	    }
 	}
@@ -1300,10 +1300,10 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 
     if (otmp->otyp == FAKE_AMULET_OF_YENDOR) {
 	    if (flags.soundok)
-		You_hear("a nearby thunderclap."); /* EN You_hear("a nearby thunderclap."); */ // TODO DE
+		You_hear("einen nahen Donnerschlag."); /* EN You_hear("a nearby thunderclap."); */
 	    if (!otmp->known) {
-		You("realize you have made a %s.", /* EN You("realize you have made a %s.", */ // TODO DE
-		    Hallucination ? "boo-boo" : "mistake"); /* EN Hallucination ? "boo-boo" : "mistake"); */ // TODO DE
+		You("VERB_BEGREIFEN, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL einen %s VERB_HABEN.", /* EN You("realize you have made a %s.", */
+		    Hallucination ? "Bock geschossen" : "Fehler gemacht"); /* EN Hallucination ? "boo-boo" : "mistake"); */
 		otmp->known = TRUE;
 		change_luck(-1);
 		return 1;
@@ -1327,8 +1327,8 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 	 * REAL BAD NEWS!!! High altars cannot be converted.  Even an attempt
 	 * gets the god who owns it truely pissed off.
 	 */
-	You_feel("the air around you grow charged..."); /* EN You_feel("the air around you grow charged..."); */ // TODO DE
-	pline("Suddenly, you realize that %s has noticed you...", a_gname()); /* EN pline("Suddenly, you realize that %s has noticed you...", a_gname()); */ // TODO DE
+	You("VERB_SPUEREN, dass die Luft um OBJECT PRONOMEN_PERSONAL sich auflädt ..."); /* EN You_feel("the air around you grow charged..."); */
+	pline("Plötzlich SUBJECT_IM_SATZ VERB_BEMERKEN PRONOMEN_PERSONAL, dass NEUER_SATZ PRONOMEN_PERSONAL %s aufgefallen VERB_SEIN ...", a_gname()); /* EN pline("Suddenly, you realize that %s has noticed you...", a_gname()); */
 	godvoice(altaralign, "So, mortal!  You dare desecrate my High Temple!"); /* EN godvoice(altaralign, "So, mortal!  You dare desecrate my High Temple!"); */ // TODO DE
 	/* Throw everything we have at the player */
 	god_zaps_you(altaralign);
@@ -1348,7 +1348,7 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 		   altaralign != A_NONE) {
 		    You("have a strong feeling that %s is angry...", u_gname()); /* EN You("have a strong feeling that %s is angry...", u_gname()); */ // TODO DE
 		    consume_offering(otmp);
-		    pline("%s accepts your allegiance.", a_gname()); /* EN pline("%s accepts your allegiance.", a_gname()); */ // TODO DE
+		    pline("%s akzeptiert KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GEFOLGSCHAFT.", a_gname()); /* EN pline("%s accepts your allegiance.", a_gname()); */
 
 		    /* The player wears a helm of opposite alignment? */
 		    if (uarmh && uarmh->otyp == HELM_OF_OPPOSITE_ALIGNMENT)
@@ -1375,11 +1375,11 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 		return(1);
 	    } else {
 		consume_offering(otmp);
-		You("sense a conflict between %s and %s.", /* EN You("sense a conflict between %s and %s.", */ // TODO DE
+		You("VERB_SPUEREN einen Konflikt zwischen %s und %s.", /* EN You("sense a conflict between %s and %s.", */
 		    u_gname(), a_gname());
 		if (rn2(8 + u.ulevel) > 5) {
 		    struct monst *pri;
-		    You_feel("the power of %s increase.", u_gname()); /* EN You_feel("the power of %s increase.", u_gname()); */ // TODO DE
+		    You("VERB_FUEHLEN, dass die Macht von %s wächst.", u_gname()); /* EN You_feel("the power of %s increase.", u_gname()); */
 		    exercise(A_WIS, TRUE);
 		    change_luck(1);
 		    /* Yes, this is supposed to be &=, not |= */
@@ -1388,10 +1388,10 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 		    levl[u.ux][u.uy].altarmask =
 			levl[u.ux][u.uy].altarmask | (Align2amask(u.ualign.type));
 		    if (!Blind)
-			pline_The("altar glows %s.", /* EN pline_The("altar glows %s.", */ // TODO DE
+			pline_The("NOUN_ALTAR VERB_ERSTRAHLEN in OBJECT KASUS_DATIV %s NOUN_LICHT.", /* EN pline_The("altar glows %s.", */
 			      hcolor(
 			      u.ualign.type == A_LAWFUL ? NH_WHITE :
-			      u.ualign.type ? NH_BLACK : (const char *)"gray")); /* EN u.ualign.type ? NH_BLACK : (const char *)"gray")); */ // TODO DE
+			      u.ualign.type ? NH_BLACK : (const char *)"ADJEKTIV_GRAY")); /* EN u.ualign.type ? NH_BLACK : (const char *)"gray")); */
 
 		    if (rnl(u.ulevel) > 6 && u.ualign.record > 0 &&
 		       rnd(u.ualign.record) > (3*ALIGNLIM)/4)
@@ -1401,7 +1401,7 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 		       !p_coaligned(pri))
 			angry_priest();
 		} else {
-		    pline("Unluckily, you feel the power of %s decrease.", /* EN pline("Unluckily, you feel the power of %s decrease.", */ // TODO DE
+		    pline("Bedauerlicherweise SUBJECT_IM_SATZ VERB_FUEHLEN PRONOMEN_PERSONAL, wie die Macht von %s schrumpft.", /* EN pline("Unluckily, you feel the power of %s decrease.", */
 			  u_gname());
 		    change_luck(-1);
 		    exercise(A_WIS, FALSE);
@@ -1448,9 +1448,9 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 	    if(u.ublesscnt != saved_cnt) {
 		if (u.ublesscnt) {
 		    if (Hallucination)
-			You("realize that the gods are not like you and I."); /* EN You("realize that the gods are not like you and I."); */ // TODO DE
+			You("VERB_BEGREIFEN, dass die Götter nicht  the gods are not like you and I."); /* EN You("realize that the gods are not like you and I."); */ // TODO DE
 		    else
-			You("have a hopeful feeling."); /* EN You("have a hopeful feeling."); */ // TODO DE
+			pline("Hoffnung regt sich in KASUS_DATIV PRONOMEN_PERSONAL."); /* EN You("have a hopeful feeling."); */
 		    if ((int)u.uluck < 0) change_luck(1);
 		} else {
 		    if (Hallucination)
@@ -1475,7 +1475,7 @@ verbalize("In return for thy service, I grant thee the gift of Immortality!"); /
 		    otmp->oerodeproof = TRUE;
 		    dropy(otmp);
 		    at_your_feet("ARTIKEL_UNBESTIMMTER NOUN_OBJEKT"); /* EN at_your_feet("An object"); */
-		    godvoice(u.ualign.type, "Use my gift wisely!"); /* EN godvoice(u.ualign.type, "Use my gift wisely!"); */ // TODO DE
+		    godvoice(u.ualign.type, "Gebrauche mein Geschenk weise!"); /* EN godvoice(u.ualign.type, "Use my gift wisely!"); */
 		    u.ugifts++;
 		    u.ublesscnt = rnz(300 + (50 * nartifacts));
 		    exercise(A_WIS, TRUE);
@@ -1513,13 +1513,13 @@ boolean praying;	/* false means no messages should be given */
 
     if (is_demon(youmonst.data) && (p_aligntyp != A_CHAOTIC)) {
 	if (praying)
-	    pline_The("very idea of praying to a %s god is repugnant to you.", /* EN pline_The("very idea of praying to a %s god is repugnant to you.", */ // TODO DE
+	    pline("Schon der Gedanke an einen %s Gott zu beten weckt Ekel in KASUS_DATIV PRONOMEN_PERSONAL.", /* EN pline_The("very idea of praying to a %s god is repugnant to you.", */
 		  p_aligntyp ? "lawful" : "neutral"); /* EN p_aligntyp ? "lawful" : "neutral"); */ // TODO DE
 	return FALSE;
     }
 
     if (praying)
-	You("begin praying to %s.", align_gname(p_aligntyp)); /* EN You("begin praying to %s.", align_gname(p_aligntyp)); */ // TODO DE
+	You("VERB_BETEN zu %s.", align_gname(p_aligntyp)); /* EN You("begin praying to %s.", align_gname(p_aligntyp)); */
 
     if (u.ualign.type && u.ualign.type == -p_aligntyp)
 	alignment = -u.ualign.record;		/* Opposite alignment altar */
@@ -1555,7 +1555,7 @@ dopray()
 {
     /* Confirm accidental slips of Alt-P */
     if (flags.prayconfirm)
-	if (yn("Are you sure you want to pray?") == 'n') /* EN if (yn("Are you sure you want to pray?") == 'n') */ // TODO DE
+	if (yn("SUBJECT VERB_WOLLEN PRONOMEN_PERSONAL wirklich beten?") == 'n') /* EN if (yn("Are you sure you want to pray?") == 'n') */
 	    return 0;
 
     u.uconduct.gnostic++;
@@ -1832,7 +1832,7 @@ register int x, y;
 	godvoice(altaralign, "Wie kannst du es wagen meinen Altar zu entweihen!!"); /* EN godvoice(altaralign, "How darest thou desecrate my altar!"); */
 	(void) adjattrib(A_WIS, -1, FALSE);
     } else {
-	pline("A voice (could it be %s?) whispers:", /* EN pline("A voice (could it be %s?) whispers:", */ // TODO DE
+	pline("Eine Stimme (möglicherweise %s?) flüstert:", /* EN pline("A voice (could it be %s?) whispers:", */
 	      align_gname(altaralign));
 	verbalize("Thou shalt pay, infidel!"); /* EN verbalize("Thou shalt pay, infidel!"); */ // TODO DE
 	change_luck(-1);
