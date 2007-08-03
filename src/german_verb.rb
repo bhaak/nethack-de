@@ -428,6 +428,9 @@ def Verb.verb(kennung, infinitiv, praeverb="")
     # Modalverben
   when "können": v = VerbModal.new("können", "konnte", "gekonnt")
   when "wollen": v = VerbModal.new("wollen", "wollte", "gewollt")
+    #  e a e
+  when /(.*)geben$/: v = Verb_Konjunktiv_II.new($1+"geben", $1+"gab", ge($1)+"geben", $1+"gib", $1+"gäb")
+  when /(.*)lesen$/: v = Verb_EI_Wechsel.new($1+"lesen", $1+"las", ge($1)+"lesen", $1+"lies")
     #  i a u
   when /(.*)springen$/: v = VerbUnregelmaessig.new($1+"springen", $1+"sprang", ge($1)+"sprungen")
   when "finden": v = VerbUnregelmaessig.new("finden", "fand", "gefunden")

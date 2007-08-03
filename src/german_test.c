@@ -401,6 +401,10 @@ START_TEST (test_complete_sentences4) {
 		 "Nur schwach hörst du jemanden brüllen"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_SEIN und PRONOMEN_PERSONAL VERB_HAVE.",
 		 "Du bist und du hast."},
+		{"getötet von KASUS_DATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_EXPLODIERT NOUN_CRYSTAL_BALL",
+		 "getötet von einer explodierten Kristallkugel"},
+		{"Sieht so aus, als MODIFIER_KONJUNKTIV_II VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wieder daheim in Kansas.",
+		 ""},
 	};
 
 	check_strings(text, sizeof(text)/8);

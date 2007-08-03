@@ -736,7 +736,7 @@ explode.o: explode.c $(HACK_H)
 extralev.o: extralev.c $(HACK_H)
 files.o: files.c $(HACK_H) ../include/dlb.h
 fountain.o: fountain.c $(HACK_H)
-german_vocabulary.c: generate_german.rb
+german_vocabulary.c: generate_german.rb german_verb.rb
 	rm -f german_vocabulary.o
 	ruby generate_german.rb >german_vocabulary.c
 german_vocabulary.o: german_vocabulary.c german.h
