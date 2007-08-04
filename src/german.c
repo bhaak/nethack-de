@@ -779,7 +779,8 @@ char* german(const char *line) {
 	   in the disoveries */
 	//print_state();
 	c_casus = nominativ;
-	verb_tempus_modus = praesens; 
+	verb_tempus_modus = praesens;
+	verb_do_casus = akkusativ;
 	finde_naechstes_subject(line);
 	//print_state();
 	while (pos<=strlen(line)) {

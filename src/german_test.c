@@ -1,5 +1,6 @@
 #include <check.h>
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -403,6 +404,8 @@ START_TEST (test_complete_sentences4) {
 		 "Du bist und du hast."},
 		{"getötet von KASUS_DATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_EXPLODIERT NOUN_CRYSTAL_BALL",
 		 "getötet von einer explodierten Kristallkugel"},
+		{"Wie schade, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_CRYSTAL_BALL nicht sehen VERB_KOENNEN.",
+		 "Wie schade, dass du die Kristallkugel nicht sehen kannst."},
 		{"Sieht so aus, als MODIFIER_KONJUNKTIV_II VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wieder daheim in Kansas.",
 		 ""},
 	};
@@ -769,13 +772,21 @@ Suite *test_suite(void)
   return s;
 }
 
-int main() {
-  int nf;
-  Suite *s = test_suite();
-  SRunner *sr = srunner_create(s);
-  srunner_run_all(sr, CK_VERBOSE);
-  //srunner_run_all(sr, CK_NORMAL);
-  nf = srunner_ntests_failed(sr);
-  srunner_free(sr);
-  return (nf == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
+int main(int argc, char *argv[]) {
+	if (argc == 1) {
+  	int nf;
+  	Suite *s = test_suite();
+  	SRunner *sr = srunner_create(s);
+  	srunner_run_all(sr, CK_VERBOSE);
+  	//srunner_run_all(sr, CK_NORMAL);
+  	nf = srunner_ntests_failed(sr);
+  	srunner_free(sr);
+  	return (nf == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
+	} else {
+		int i;
+		for (i=0; i<argc; i++) {
+			printf("%s\n",german(argv[i]));
+		}
+		return EXIT_SUCCESS;
+	}
 }
