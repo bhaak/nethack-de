@@ -209,8 +209,8 @@ register struct obj *sobj;
 	if (sobj) {
 		char buf[BUFSZ];
 		if (youmonst.data == &mons[PM_GOLD_GOLEM]) {
-			Sprintf(buf, "You feel like a million %s!", /* EN Sprintf(buf, "You feel like a million %s!", */ // TODO DE
-				currency(2L));
+			Sprintf(buf, "SUBJECT VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL wie ein Goldesel!");/* EN Sprintf(buf, "You feel like a million %s!", */
+				/* EN currency(2L)); */
 		} else if (hidden_gold() ||
 #ifndef GOLDOBJ
 				u.ugold)
@@ -227,7 +227,7 @@ register struct obj *sobj;
     }
     /* only under me - no separate display required */
     if (stale) docrt();
-    You("notice some gold between your %s.", makeplural(body_part(FOOT))); /* EN You("notice some gold between your %s.", makeplural(body_part(FOOT))); */ // TODO DE
+    You("VERB_BEMERKEN etwas Gold zwischen OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", makeplural(body_part(FOOT))); /* EN You("notice some gold between your %s.", makeplural(body_part(FOOT))); */
     return(0);
 
 outgoldmap:
@@ -278,7 +278,7 @@ outgoldmap:
     }
     
     newsym(u.ux,u.uy);
-    You_feel("very greedy, and sense gold!"); /* EN You_feel("very greedy, and sense gold!"); */ // TODO DE
+    Du_fuehlst_dich("sehr gierig und VERB_ENTDECKEN Gold!"); /* EN You_feel("very greedy, and sense gold!"); */
     exercise(A_WIS, TRUE);
     display_nhwindow(WIN_MAP, TRUE);
     docrt();
@@ -299,7 +299,7 @@ register struct obj	*sobj;
     register int ct = 0, ctu = 0;
     boolean confused = (Confusion || (sobj && sobj->cursed)), stale;
     char oclass = confused ? POTION_CLASS : FOOD_CLASS;
-    const char *what = confused ? something : "food";
+    const char *what = confused ? something : "NOUN_COMESTIBLE"; /* EN const char *what = confused ? something : "food"; */
     int uw = u.uinwater;
 
     stale = clear_stale_map(oclass, 0);
@@ -322,7 +322,7 @@ register struct obj	*sobj;
 	known = stale && !confused;
 	if (stale) {
 	    docrt();
-	    You("sense a lack of %s nearby.", what); /* EN You("sense a lack of %s nearby.", what); */ // TODO DE
+	    You("VERB_SPUEREN in der Nähe einen Mangel an OBJECT KASUS_DATIV %s.", what); /* EN You("sense a lack of %s nearby.", what); */
 	    if (sobj && sobj->blessed) {
 		if (!u.uedibility) Your("%s starts to tingle.", body_part(NOSE)); /* EN if (!u.uedibility) Your("%s starts to tingle.", body_part(NOSE)); */ // TODO DE
 		u.uedibility = 1;
@@ -420,7 +420,7 @@ int		class;		/* an object class, 0 for all */
     if (Hallucination || (Confusion && class == SCROLL_CLASS))
 	stuff = something;
     else
-	stuff = class ? oclass_names[class] : "objects"; /* EN stuff = class ? oclass_names[class] : "objects"; */ // TODO DE
+	stuff = class ? oclass_names[class] : "NOUN_OBJECTs"; /* EN stuff = class ? oclass_names[class] : "objects"; */
 
     if (do_dknown) for(obj = invent; obj; obj = obj->nobj) do_dknown_of(obj);
 
@@ -461,7 +461,7 @@ int		class;		/* an object class, 0 for all */
     if (!clear_stale_map(!class ? ALL_CLASSES : class, 0) && !ct) {
 	if (!ctu) {
 	    if (detector)
-		strange_feeling(detector, "You feel a lack of something."); /* EN strange_feeling(detector, "You feel a lack of something."); */ // TODO DE
+		strange_feeling(detector, "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN, dass in der Nähe etwas fehlt."); /* EN strange_feeling(detector, "You feel a lack of something."); */
 	    return 1;
 	}
 
@@ -545,7 +545,7 @@ int		class;		/* an object class, 0 for all */
     }
 
     newsym(u.ux,u.uy);
-    You("detect the %s of %s.", ct ? "presence" : "absence", stuff); /* EN You("detect the %s of %s.", ct ? "presence" : "absence", stuff); */ // TODO DE
+    You("VERB_ENTDECKEN OBJECT ARTIKEL_BESTIMMTER %s von NEUES_OBJECT KASUS_DATIV %s.", ct ? "NOUN_ANWESENHEIT" : "NOUN_ABWESENHEIT", stuff); /* EN You("detect the %s of %s.", ct ? "presence" : "absence", stuff); */
     display_nhwindow(WIN_MAP, TRUE);
     /*
      * What are we going to do when the hero does an object detect while blind
@@ -589,7 +589,7 @@ int mclass;			/* monster class, 0 for all */
 	if (otmp)
 	    strange_feeling(otmp, Hallucination ?
 			    "You get the heebie jeebies." : /* EN "You get the heebie jeebies." : */ // TODO DE
-			    "You feel threatened."); /* EN "You feel threatened."); */ // TODO DE
+			    "SUBJECT PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL bedroht."); /* EN "You feel threatened."); */
 	return 1;
     } else {
 	boolean woken = FALSE;
@@ -608,9 +608,9 @@ int mclass;			/* monster class, 0 for all */
 	    }
 	}
 	display_self();
-	You("sense the presence of monsters."); /* EN You("sense the presence of monsters."); */ // TODO DE
+	You("VERB_SPUEREN die Anwesenheit von Monstern."); /* EN You("sense the presence of monsters."); */
 	if (woken)
-	    pline("Monsters sense the presence of you."); /* EN pline("Monsters sense the presence of you."); */ // TODO DE
+	    pline("Die Monster spüren KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_ANWESENHEIT."); /* EN pline("Monsters sense the presence of you."); */
 	display_nhwindow(WIN_MAP, TRUE);
 	docrt();
 	if (Underwater) under_water(2);
@@ -688,12 +688,12 @@ register struct obj *sobj;
     }
     if (!found) {
 	char buf[42];
-	Sprintf(buf, "Your %s stop itching.", makeplural(body_part(TOE))); /* EN Sprintf(buf, "Your %s stop itching.", makeplural(body_part(TOE))); */ // TODO DE
+	Sprintf(buf, "SUBJECT PRONOMEN_POSSESSIV %s VERB_JUCKEN nicht mehr.", makeplural(body_part(TOE))); /* EN Sprintf(buf, "Your %s stop itching.", makeplural(body_part(TOE))); */
 	strange_feeling(sobj,buf);
 	return(1);
     }
     /* traps exist, but only under me - no separate display required */
-    Your("%s itch.", makeplural(body_part(TOE))); /* EN Your("%s itch.", makeplural(body_part(TOE))); */ // TODO DE
+    Your("%s VERB_JUCKEN.", makeplural(body_part(TOE))); /* EN Your("%s itch.", makeplural(body_part(TOE))); */
     return(0);
 outtrapmap:
     cls();
@@ -713,7 +713,7 @@ outtrapmap:
     }
 
     newsym(u.ux,u.uy);
-    You_feel("%s.", sobj && sobj->cursed ? "very greedy" : "entrapped"); /* EN You_feel("%s.", sobj && sobj->cursed ? "very greedy" : "entrapped"); */ // TODO DE
+    Du_fuehlst_dich("%s.", sobj && sobj->cursed ? "äusserst gierig" : "gefangen"); /* EN You_feel("%s.", sobj && sobj->cursed ? "very greedy" : "entrapped"); */
     display_nhwindow(WIN_MAP, TRUE);
     docrt();
     u.uinwater = uw;
@@ -731,37 +731,37 @@ d_level *where;
 
     if (ll < 0) {
 	if (ll < (-8 - rn2(3)))
-	    if (!indun)	return "far away"; /* EN if (!indun)	return "far away"; */ // TODO DE
-	    else	return "far below"; /* EN else	return "far below"; */ // TODO DE
+	    if (!indun)	return "weit weg"; /* EN if (!indun)	return "far away"; */
+	    else	return "tief unten"; /* EN else	return "far below"; */
 	else if (ll < -1)
-	    if (!indun)	return "away below you"; /* EN if (!indun)	return "away below you"; */ // TODO DE
-	    else	return "below you"; /* EN else	return "below you"; */ // TODO DE
+	    if (!indun)	return "entfernt unter OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN if (!indun)	return "away below you"; */
+	    else	return "unter OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "below you"; */
 	else
-	    if (!indun)	return "in the distance"; /* EN if (!indun)	return "in the distance"; */ // TODO DE
-	    else	return "just below"; /* EN else	return "just below"; */ // TODO DE
+	    if (!indun)	return "entfernt"; /* EN if (!indun)	return "in the distance"; */
+	    else	return "gerade unter OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "just below"; */
     } else if (ll > 0) {
 	if (ll > (8 + rn2(3)))
-	    if (!indun)	return "far away"; /* EN if (!indun)	return "far away"; */ // TODO DE
-	    else	return "far above"; /* EN else	return "far above"; */ // TODO DE
+	    if (!indun)	return "weit weg"; /* EN if (!indun)	return "far away"; */
+	    else	return "weit über OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "far above"; */
 	else if (ll > 1)
-	    if (!indun)	return "away above you"; /* EN if (!indun)	return "away above you"; */ // TODO DE
-	    else	return "above you"; /* EN else	return "above you"; */ // TODO DE
+	    if (!indun)	return "entfernt über OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN if (!indun)	return "away above you"; */
+	    else	return "über OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "above you"; */
 	else
-	    if (!indun)	return "in the distance"; /* EN if (!indun)	return "in the distance"; */ // TODO DE
-	    else	return "just above"; /* EN else	return "just above"; */ // TODO DE
+	    if (!indun)	return "entfernt"; /* EN if (!indun)	return "in the distance"; */ 
+	    else	return "gerade über OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "just above"; */
     } else
-	    if (!indun)	return "in the distance"; /* EN if (!indun)	return "in the distance"; */ // TODO DE
-	    else	return "near you"; /* EN else	return "near you"; */ // TODO DE
+	    if (!indun)	return "entfernt"; /* EN if (!indun)	return "in the distance"; */
+	    else	return "in OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_NAEHE"; /* EN else	return "near you"; */
 }
 
 static const struct {
     const char *what;
     d_level *where;
 } level_detects[] = {
-  { "Delphi", &oracle_level }, /* EN { "Delphi", &oracle_level }, */ // TODO DE
-  { "Medusa's lair", &medusa_level }, /* EN { "Medusa's lair", &medusa_level }, */ // TODO DE
-  { "a castle", &stronghold_level }, /* EN { "a castle", &stronghold_level }, */ // TODO DE
-  { "the Wizard of Yendor's tower", &wiz1_level }, /* EN { "the Wizard of Yendor's tower", &wiz1_level }, */ // TODO DE
+  { "Delphi", &oracle_level }, /* EN { "Delphi", &oracle_level }, */
+  { "Medusas Versteck", &medusa_level }, /* EN { "Medusa's lair", &medusa_level }, */
+  { "ein Schloss", &stronghold_level }, /* EN { "a castle", &stronghold_level }, */
+  { "den Turm des Zauberers von Yendor", &wiz1_level }, /* EN { "the Wizard of Yendor's tower", &wiz1_level }, */
 };
 
 void
@@ -772,7 +772,7 @@ struct obj *obj;
     int oops;
 
     if (Blind) {
-	pline("Too bad you can't see %s.", the(xname(obj))); /* EN pline("Too bad you can't see %s.", the(xname(obj))); */ // TODO DE
+	pline("Wie schade, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s nicht sehen VERB_KOENNEN.", the(xname(obj))); /* EN pline("Too bad you can't see %s.", the(xname(obj))); */
 	return;
     }
     oops = (rnd(20) > ACURR(A_INT) || obj->cursed);
@@ -780,25 +780,25 @@ struct obj *obj;
 	switch (rnd(obj->oartifact ? 4 : 5)) {
 	case 1 : pline("%s too much to comprehend!", Tobjnam(obj, "are")); /* EN case 1 : pline("%s too much to comprehend!", Tobjnam(obj, "are")); */ // TODO DE
 	    break;
-	case 2 : pline("%s you!", Tobjnam(obj, "confuse")); /* EN case 2 : pline("%s you!", Tobjnam(obj, "confuse")); */ // TODO DE
+	case 2 : pline("SUBJECT %s OBJECT PRONOMEN_PERSONAL!", Tobjnam(obj, "VERB_CONFUSE")); /* EN case 2 : pline("%s you!", Tobjnam(obj, "confuse")); */
 	    make_confused(HConfusion + rnd(100),FALSE);
 	    break;
 	case 3 : if (!resists_blnd(&youmonst)) {
-		pline("%s your vision!", Tobjnam(obj, "damage")); /* EN pline("%s your vision!", Tobjnam(obj, "damage")); */ // TODO DE
+		pline("SUBJECT %s OBJECT PRONOMEN_POSSESSIV NOUN_SEHKRAFT!", Tobjnam(obj, "VERB_SCHAEDIGEN")); /* EN pline("%s your vision!", Tobjnam(obj, "damage")); */
 		make_blinded(Blinded + rnd(100),FALSE);
 		if (!Blind) Your(vision_clears);
 	    } else {
-		pline("%s your vision.", Tobjnam(obj, "assault")); /* EN pline("%s your vision.", Tobjnam(obj, "assault")); */ // TODO DE
+		pline("SUBJECT %s OBJECT PRONOMEN_POSSESSIV NOUN_SEHKRAFT.", Tobjnam(obj, "VERB_ANGREIFEN")); /* EN pline("%s your vision.", Tobjnam(obj, "assault")); */
 		You("are unaffected!"); /* EN You("are unaffected!"); */ // TODO DE
 	    }
 	    break;
 	case 4 : pline("%s your mind!", Tobjnam(obj, "zap")); /* EN case 4 : pline("%s your mind!", Tobjnam(obj, "zap")); */ // TODO DE
 	    make_hallucinated(HHallucination + rnd(100),FALSE,0L);
 	    break;
-	case 5 : pline("%s!", Tobjnam(obj, "explode")); /* EN case 5 : pline("%s!", Tobjnam(obj, "explode")); */ // TODO DE
+	case 5 : pline("%s!", Tobjnam(obj, "VERB_EXPLODIEREN")); /* EN case 5 : pline("%s!", Tobjnam(obj, "explode")); */
 	    useup(obj);
 	    obj = 0;	/* it's gone */
-	    losehp(rnd(30), "exploding crystal ball", KILLED_BY_AN); /* EN losehp(rnd(30), "exploding crystal ball", KILLED_BY_AN); */ // TODO DE
+	    losehp(rnd(30), "ADJEKTIV_EXPLODIERT NOUN_CRYSTAL_BALL", KILLED_BY_AN); /* EN losehp(rnd(30), "exploding crystal ball", KILLED_BY_AN); */
 	    break;
 	}
 	if (obj) consume_obj_charge(obj, TRUE);
@@ -807,22 +807,22 @@ struct obj *obj;
 
     if (Hallucination) {
 	if (!obj->spe) {
-	    pline("All you see is funky %s haze.", hcolor((char *)0)); /* EN pline("All you see is funky %s haze.", hcolor((char *)0)); */ // TODO DE
+	    pline("SUBJECT PRONOMEN_PERSONAL VERB_SEE nichts als OBJECT irre %s NOUN_DUNST.", hcolor((char *)0)); /* EN pline("All you see is funky %s haze.", hcolor((char *)0)); */
 	} else {
 	    switch(rnd(6)) {
 	    case 1 : You("grok some groovy globs of incandescent lava."); /* EN case 1 : You("grok some groovy globs of incandescent lava."); */ // TODO DE
 		break;
-	    case 2 : pline("Whoa!  Psychedelic colors, %s!", /* EN case 2 : pline("Whoa!  Psychedelic colors, %s!", */ // TODO DE
-			   poly_gender() == 1 ? "babe" : "dude"); /* EN poly_gender() == 1 ? "babe" : "dude"); */ // TODO DE
+	    case 2 : pline("Wahnsinn!  Psychedelische Farben, %s!", /* EN case 2 : pline("Whoa!  Psychedelic colors, %s!", */
+			   poly_gender() == 1 ? "Torte" : "Alter"); /* EN poly_gender() == 1 ? "babe" : "dude"); */
 		break;
-	    case 3 : pline_The("crystal pulses with sinister %s light!", /* EN case 3 : pline_The("crystal pulses with sinister %s light!", */ // TODO DE
+	    case 3 : pline_The("NOUN_KRISTALL VERB_PULSIEREN in OBJECT KASUS_DATIV ARTIKEL_UNBESTIMMTER bedrohlich %s NOUN_LICHT!", /* EN case 3 : pline_The("crystal pulses with sinister %s light!", */
 				hcolor((char *)0));
 		break;
-	    case 4 : You("see goldfish swimming above fluorescent rocks."); /* EN case 4 : You("see goldfish swimming above fluorescent rocks."); */ // TODO DE
+	    case 4 : You("VERB_SEE Goldfische über fluoreszierenden Steinen schwimmen."); /* EN case 4 : You("see goldfish swimming above fluorescent rocks."); */
 		break;
-	    case 5 : You("see tiny snowflakes spinning around a miniature farmhouse."); /* EN case 5 : You("see tiny snowflakes spinning around a miniature farmhouse."); */ // TODO DE
+	    case 5 : You("VERB_SEE kleine Schneeflöckchen um ein Minimatterhorn tanzen."); /* EN case 5 : You("see tiny snowflakes spinning around a miniature farmhouse."); */ // ein bisschen heimatliche Gefühle 
 		break;
-	    default: pline("Oh wow... like a kaleidoscope!"); /* EN default: pline("Oh wow... like a kaleidoscope!"); */ // TODO DE
+	    default: pline("Oh Wahnsinn ... wie ein Kaleidoskop!"); /* EN default: pline("Oh wow... like a kaleidoscope!"); */
 		break;
 	    }
 	    consume_obj_charge(obj, TRUE);
@@ -831,17 +831,17 @@ struct obj *obj;
     }
 
     /* read a single character */
-    if (flags.verbose) You("may look for an object or monster symbol."); /* EN if (flags.verbose) You("may look for an object or monster symbol."); */ // TODO DE
-    ch = yn_function("What do you look for?", (char *)0, '\0'); /* EN ch = yn_function("What do you look for?", (char *)0, '\0'); */ // TODO DE
+    if (flags.verbose) You("VERB_DUERFEN nach einem Objekt oder Monstersymbol suchen."); /* EN if (flags.verbose) You("may look for an object or monster symbol."); */
+    ch = yn_function("Was VERB_SUCHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL?", (char *)0, '\0'); /* EN ch = yn_function("What do you look for?", (char *)0, '\0'); */
     if (index(quitchars,ch)) {
 	if (flags.verbose) pline(Never_mind);
 	return;
     }
-    You("peer into %s...", the(xname(obj))); /* EN You("peer into %s...", the(xname(obj))); */ // TODO DE
+    You("VERB_BLICKEN in %s ...", the(xname(obj))); /* EN You("peer into %s...", the(xname(obj))); */
     nomul(-rnd(10));
     nomovemsg = "";
     if (obj->spe <= 0)
-	pline_The("vision is unclear."); /* EN pline_The("vision is unclear."); */ // TODO DE
+	pline_The("NOUN_BLICK VERB_SEIN getrübt."); /* EN pline_The("vision is unclear."); */
     else {
 	int class;
 	int ret = 0;
@@ -860,9 +860,9 @@ struct obj *obj;
 		default:
 		    {
 		    int i = rn2(SIZE(level_detects));
-		    You("see %s, %s.", /* EN You("see %s, %s.", */ // TODO DE
-			level_detects[i].what,
-			level_distance(level_detects[i].where));
+		    You("VERB_SEE %s %s.", /* EN You("see %s, %s.", */
+			level_distance(level_detects[i].where), /* EN level_detects[i].what, */
+			level_detects[i].what); /* EN level_distance(level_detects[i].where)); */
 		    }
 		    ret = 0;
 		    break;
@@ -870,8 +870,8 @@ struct obj *obj;
 
 	if (ret) {
 	    if (!rn2(100))  /* make them nervous */
-		You("see the Wizard of Yendor gazing out at you."); /* EN You("see the Wizard of Yendor gazing out at you."); */ // TODO DE
-	    else pline_The("vision is unclear."); /* EN else pline_The("vision is unclear."); */ // TODO DE
+		You("VERB_SEE, wie der Zauberer von Yendor OBJECT PRONOMEN_PERSONAL anstarrt."); /* EN You("see the Wizard of Yendor gazing out at you."); */
+	    else pline_The("NOUN_BLICK VERB_SEIN getrübt."); /* EN else pline_The("vision is unclear."); */
 	}
     }
     return;
@@ -1038,10 +1038,10 @@ genericptr_t num;
 		    cvt_sdoor_to_door(&levl[zx][zy]);	/* .typ = DOOR */
 		if(levl[zx][zy].doormask & D_TRAPPED) {
 		    if(distu(zx, zy) < 3) b_trapped("door", 0); /* EN if(distu(zx, zy) < 3) b_trapped("door", 0); */ // TODO DE
-		    else Norep("You %s an explosion!", /* EN else Norep("You %s an explosion!", */ // TODO DE
-				cansee(zx, zy) ? "see" : /* EN cansee(zx, zy) ? "see" : */ // TODO DE
-				   (flags.soundok ? "hear" : /* EN (flags.soundok ? "hear" : */ // TODO DE
-						"feel the shock of")); /* EN "feel the shock of")); */ // TODO DE
+		    else Norep("SUBJECT PRONOMEN_PERSONAL %s Explosion!", /* EN else Norep("You %s an explosion!", */
+				cansee(zx, zy) ? "VERB_SEE eine" : /* EN cansee(zx, zy) ? "see" : */
+				   (flags.soundok ? "VERB_HEAR eine" : /* EN (flags.soundok ? "hear" : */
+						"VERB_SPUEREN die Druckwelle einer")); /* EN "feel the shock of")); */
 		    wake_nearto(zx, zy, 11*11);
 		    levl[zx][zy].doormask = D_NODOOR;
 		} else
@@ -1117,7 +1117,7 @@ struct trap *trap;
 	cleared = TRUE;
     }
 
-    You("find %s.", an(defsyms[trap_to_defsym(tt)].explanation)); /* EN You("find %s.", an(defsyms[trap_to_defsym(tt)].explanation)); */ // TODO DE
+    You("NOUN_FINDEN OBJECT %s.", an(defsyms[trap_to_defsym(tt)].explanation)); /* EN You("find %s.", an(defsyms[trap_to_defsym(tt)].explanation)); */
 
     if (cleared) {
 	display_nhwindow(WIN_MAP, TRUE);	/* wait */
@@ -1144,7 +1144,7 @@ register int aflag;
 
 	if(u.uswallow) {
 		if (!aflag)
-			pline("What are you looking for?  The exit?"); /* EN pline("What are you looking for?  The exit?"); */ // TODO DE
+			pline("Was VERB_SUCHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL?  Den Notausgang?"); /* EN pline("What are you looking for?  The exit?"); */
 	} else {
 	    int fund = (uwep && uwep->oartifact &&
 		    spec_ability(uwep, SPFX_SEARCH)) ?
@@ -1194,7 +1194,7 @@ register int aflag;
 					map_invisible(x, y);
 				    }
 				} else if (!sensemon(mtmp))
-				    You("find %s.", a_monnam(mtmp)); /* EN You("find %s.", a_monnam(mtmp)); */ // TODO DE
+				    You("NOUN_FINDEN OBJECT %s.", a_monnam(mtmp)); /* EN You("find %s.", a_monnam(mtmp)); */
 				return(1);
 			    }
 			    if(!canspotmon(mtmp)) {

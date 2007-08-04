@@ -716,6 +716,10 @@ def ausgabe_verbs
 		Verb.verb("VERB_GEBEN", "geben"),
 		Verb.verb("VERB_UMGEBEN", "umgeben"),
 		Verb.verb("VERB_BETEN", "beten"),
+		Verb.verb("VERB_SCHAEDIGEN", "schädigen"),
+		Verb.verb("VERB_ENTDECKEN", "entdecken"),
+		Verb.verb("VERB_BLICKEN", "blicken"),
+		Verb.verb("VERB_PULSIEREN", "pulsieren"),
 
   ]
 
@@ -758,8 +762,6 @@ def ausgabe_verbs
     puts '  {"'+v.drittePerson.form+'", "'+v.kennung+'", "'+v.praeverb+'", drittePerson, n_plural, konjunktiv_ii, akkusativ},'
   }
 	puts "  {NULL, NULL, NULL, 0, 0, 0, 0}\n};"
-
-  # {"graben", "VERB_GRABEN", "", drittePerson, n_plural, akkusativ},
 
 end
 
@@ -2444,7 +2446,9 @@ def ausgabe_nouns
 		dekliniere_substantiv("NOUN_ZEITLUPENTRITT","Zeitlupentritt","es","Zeitlupentritt","e","maskulin"),
 		dekliniere_substantiv("NOUN_WOLKE","Wolke","","Wolke","en","feminin"),
 		dekliniere_substantiv("NOUN_RAUCHWOLKE","Rauchwolke","","Rauchwolke","en","feminin"),
-		dekliniere_substantiv("NOUN_RAUCH","Rauch","es","","","maskulin"),
+		dekliniere_substantiv("NOUN_RAUCHWOLKE","Rauchwolke","","Rauchwolke","en","feminin"),
+		dekliniere_substantiv("NOUN_DUNST","Dunst","es","Dünst","e","feminin"),
+		dekliniere_substantiv("NOUN_KRISTALL","Kristall","es","Kristall","e","maskulin"),
 
     dekliniere_substantiv("NOUN_HUMANITY","Menschheit","","","","feminin"),
     dekliniere_substantiv("NOUN_ELVENKIND","Elbenheit","","","","feminin"),
@@ -2456,6 +2460,11 @@ def ausgabe_nouns
 		dekliniere_substantiv("NOUN_AURA","Aura","","","","feminin"),
 		dekliniere_substantiv("NOUN_OHR","Ohr","es","Ohr","en","neutrum"),
 		dekliniere_substantiv("NOUN_GEFOLGSCHAFT","Gefolgschaft","","Gefolgschaft","en","feminin"),
+		dekliniere_substantiv("NOUN_ANWESENHEIT","Anwesenheit","","","","feminin"),
+		dekliniere_substantiv("NOUN_ABWESENHEIT","Abwesenheit","","","","feminin"),
+		dekliniere_substantiv("NOUN_SEHKRAFT","Sehkraft","","","","feminin"),
+		dekliniere_substantiv("NOUN_OBJECT","Objekt","es","Objekt","e","neutrum"),
+		dekliniere_substantiv("NOUN_NAEHE","Nähe","","","","feminin"),
 
     "/* ======================================================= */",
     "/* Adjektive */",
