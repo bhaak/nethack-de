@@ -328,6 +328,7 @@ def dekliniere_adjektivisches_substantiv(bezeichner, stamm, artikel)
       ""
     ].each { |a| adjektive << a }
   else
+		# TODO
     raise "Maskulin und feminin für adjektivisches Substantiv nicht implementiert"
   end
   adjektive
@@ -720,6 +721,8 @@ def ausgabe_verbs
 		Verb.verb("VERB_ENTDECKEN", "entdecken"),
 		Verb.verb("VERB_BLICKEN", "blicken"),
 		Verb.verb("VERB_PULSIEREN", "pulsieren"),
+		Verb.verb("VERB_ENTSORGEN", "entsorgen"),
+		Verb.verb("VERB_GRAUEN", "grauen"),
 
   ]
 
@@ -1055,8 +1058,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RING",      "Ring",           "es", "Ring",           "e",  "maskulin"),
     dekliniere_substantiv("NOUN_AMULET",    "Amulett",        "es", "Amulett",        "e",  "neutrum"),
     dekliniere_substantiv("NOUN_TOOL",      "Werkzeug",       "es", "Werkzeug",       "e",  "neutrum", "s"),
-    "/* This is wrong. 'Essbares' should be inflected like an adjective */",
     dekliniere_adjektivisches_substantiv("NOUN_COMESTIBLE","Essbar", "neutrum"),
+    dekliniere_adjektivisches_substantiv("NOUN_ESSBARES","Essbar", "neutrum"),
     dekliniere_substantiv("NOUN_POTION",    "Trank",          "es", "Tränk",          "e",  "maskulin"),
     dekliniere_substantiv("NOUN_FLASCHE",   "Flasche",        "",  "Flasche",         "en", "feminin"),
     dekliniere_substantiv("NOUN_SCROLL",    "Schriftrolle",   "",   "Schriftrolle",   "en", "feminin", "n"),
@@ -1638,7 +1641,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCR_LIGHT", "Licht", "es", "", "er", "neutrum"), 
     dekliniere_substantiv("NOUN_SCR_TELEPORTATION", "Teleportation", "", "", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SCR_GOLD_DETECTION", "Golderspürung", "", "", "", "feminin"),
-    dekliniere_substantiv("NOUN_SCR_FOOD_DETECTION", "Nahrungerspürung", "", "", "", "feminin"),
+    dekliniere_substantiv("NOUN_SCR_FOOD_DETECTION", "Nahrungserspürung", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_SCR_IDENTIFY", "Identifizierung", "", "", "en", "feminin", "s"),
     dekliniere_nominalphrase("NOUN_SCR_MAGIC_MAPPING", "magisch", "Kartieren", "s", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_SCR_AMNESIA", "Amnesie", "", "", "en", "feminin"),
@@ -2465,6 +2468,7 @@ def ausgabe_nouns
 		dekliniere_substantiv("NOUN_SEHKRAFT","Sehkraft","","","","feminin"),
 		dekliniere_substantiv("NOUN_OBJECT","Objekt","es","Objekt","e","neutrum"),
 		dekliniere_substantiv("NOUN_NAEHE","Nähe","","","","feminin"),
+		dekliniere_substantiv("NOUN_GEISTESSCHAERFE","Geistesschärfe","","Geistesschärfe","en","feminin"),
 
     "/* ======================================================= */",
     "/* Adjektive */",

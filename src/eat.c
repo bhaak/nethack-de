@@ -130,23 +130,23 @@ init_uhunger()
 
 static const struct { const char *txt; int nut; } tintxts[] = {
 	{"deep fried",	 60}, /* EN {"deep fried",	 60}, */ // TODO DE
-	{"pickled",	 40}, /* EN {"pickled",	 40}, */ // TODO DE
+	{"eingelegt",	 40}, /* EN {"pickled",	 40}, */ // TODO DE
 	{"soup made from", 20}, /* EN {"soup made from", 20}, */ // TODO DE
-	{"pureed",	500}, /* EN {"pureed",	500}, */ // TODO DE
+	{"püriert",	500}, /* EN {"pureed",	500}, */ // TODO DE
 #define ROTTEN_TIN 4
-	{"rotten",	-50}, /* EN {"rotten",	-50}, */ // TODO DE
+	{"vergammelt",	-50}, /* EN {"rotten",	-50}, */ // TODO DE
 #define HOMEMADE_TIN 5
-	{"homemade",	 50}, /* EN {"homemade",	 50}, */ // TODO DE
+	{"hausgemacht",	 50}, /* EN {"homemade",	 50}, */ // TODO DE
 	{"stir fried",   80}, /* EN {"stir fried",   80}, */ // TODO DE
-	{"candied",      100}, /* EN {"candied",      100}, */ // TODO DE
-	{"boiled",       50}, /* EN {"boiled",       50}, */ // TODO DE
-	{"dried",        55}, /* EN {"dried",        55}, */ // TODO DE
+	{"kandiert",      100}, /* EN {"candied",      100}, */ // TODO DE
+	{"gesiedet/gekocht",       50}, /* EN {"boiled",       50}, */ // TODO DE
+	{"gedoerrt/getrocknet",        55}, /* EN {"dried",        55}, */ // TODO DE
 	{"szechuan",     70}, /* EN {"szechuan",     70}, */ // TODO DE
 #define FRENCH_FRIED_TIN 11
-	{"french fried", 40}, /* EN {"french fried", 40}, */ // TODO DE
-	{"sauteed",      95}, /* EN {"sauteed",      95}, */ // TODO DE
-	{"broiled",      80}, /* EN {"broiled",      80}, */ // TODO DE
-	{"smoked",       50}, /* EN {"smoked",       50}, */ // TODO DE
+	{"frittiert", 40}, /* EN {"french fried", 40}, */ // TODO DE
+	{"sautiert",      95}, /* EN {"sauteed",      95}, */ // TODO DE
+	{"gebraten",      80}, /* EN {"broiled",      80}, */ // TODO DE // 	braten |briet, gebraten|	i i	to broil	 	erhitzen |erhitzte, erhitzt|	i i	to broil	 	grillen |grillte, gegrillt|	i i	to broil	 	kochen |kochte, gekocht|	i i	to broil	 	großer Hitze aussetzen
+	{"geraeuchert",       50}, /* EN {"smoked",       50}, */ // TODO DE
 	{"", 0}
 };
 #define TTSZ	SIZE(tintxts)
@@ -231,7 +231,7 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 			return;
 	} else if (Role_if(PM_KNIGHT) && u.ualign.type == A_LAWFUL) {
 			adjalign(-1);		/* gluttony is unchivalrous */
-			You_feel("like a glutton!"); /* EN You_feel("like a glutton!"); */ // TODO DE
+			Du_fuehlst_dich("wie ein Vielfraß!"); /* EN You_feel("like a glutton!"); */
 	}
 
 	exercise(A_CON, FALSE);
@@ -253,9 +253,9 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 		 * high score list & tombstone.  So plan accordingly.
 		 */
 		if(food) {
-			You("choke over your %s.", foodword(food)); /* EN You("choke over your %s.", foodword(food)); */ // TODO DE
+			You("VERB_ERSTICKEN an OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", foodword(food)); /* EN You("choke over your %s.", foodword(food)); */
 			if (food->oclass == COIN_CLASS) {
-				killer = "a very rich meal"; /* EN killer = "a very rich meal"; */ // TODO DE
+				killer = "ARTIKEL_UNBESTIMMTER sehr ADJEKTIV_REICH NOUN_MAHL"; /* EN killer = "a very rich meal"; */
 			} else {
 				killer = food_xname(food, FALSE);
 				if (food->otyp == CORPSE &&
@@ -265,8 +265,8 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 				}
 			}
 		} else {
-			You("choke over it."); /* EN You("choke over it."); */ // TODO DE
-			killer = "quick snack"; /* EN killer = "quick snack"; */ // TODO DE
+			You("VERB_ERSTICKEN daran."); /* EN You("choke over it."); */
+			killer = "ADJEKTIV_KLEIN NOUN_SNACK"; /* EN killer = "quick snack"; */
 		}
 		You("VERB_STERBEN ..."); /* EN You("die..."); */
 		done(CHOKING);
@@ -500,7 +500,7 @@ register int pm;
 			youmonst.data != &mons[PM_FIRE_ELEMENTAL] &&
 			youmonst.data != &mons[PM_SALAMANDER] &&
 			youmonst.data != &mons[PM_GREEN_SLIME]) {
-		    You("don't feel very well."); /* EN You("don't feel very well."); */ // TODO DE
+		    Du_fuehlst_dich("nicht so gut."); /* EN You("don't feel very well."); */
 		    Slimed = 10L;
 		    flags.botl = 1;
 		}
@@ -518,10 +518,10 @@ fix_petrification()
 	Stoned = 0;
 	delayed_killer = 0;
 	if (Hallucination)
-	    pline("What a pity - you just ruined a future piece of %sart!", /* EN pline("What a pity - you just ruined a future piece of %sart!", */ // TODO DE
-		  ACURR(A_CHA) > 15 ? "fine " : ""); /* EN ACURR(A_CHA) > 15 ? "fine " : ""); */ // TODO DE
+	    pline("Eine Schande! SUBJECT PRONOMEN_PERSONAL VERB_HAVE gerade ein angehendes %sKunstwerk ruiniert!!", /* EN pline("What a pity - you just ruined a future piece of %sart!", */
+		  ACURR(A_CHA) > 15 ? " und schönes " : ""); /* EN ACURR(A_CHA) > 15 ? "fine " : ""); */
 	else
-	    You_feel("limber!");
+	    Du_fuehlst_dich("locker!"); /* EN You_feel("limber!"); */
 }
 
 /*
@@ -691,7 +691,7 @@ register struct permonst *ptr;
 		debugpline("Trying to give cold resistance");
 #endif
 		if(!(HCold_resistance & FROMOUTSIDE)) {
-			You_feel("full of hot air."); /* EN You_feel("full of hot air."); */ // TODO DE
+			Du_fuehlst_dich("voll heißer Luft."); /* EN You_feel("full of hot air."); */
 			HCold_resistance |= FROMOUTSIDE;
 		}
 		break;
@@ -723,7 +723,7 @@ register struct permonst *ptr;
 		debugpline("Trying to give poison resistance");
 #endif
 		if(!(HPoison_resistance & FROMOUTSIDE)) {
-			Du_fuehlst_dich("%s", Poison_resistance ? // TODO DE You_feel
+			Du_fuehlst_dich("%s", Poison_resistance ? /* You_feel(Poison_resistance ? */
 					"außergewöhnlich gesund." : "gesund."); /* EN "especially healthy." : "healthy."); */
 			HPoison_resistance |= FROMOUTSIDE;
 		}
@@ -733,8 +733,8 @@ register struct permonst *ptr;
 		debugpline("Trying to give teleport");
 #endif
 		if(!(HTeleportation & FROMOUTSIDE)) {
-			You_feel(Hallucination ? "diffuse." : /* EN You_feel(Hallucination ? "diffuse." : */ // TODO DE
-			    "very jumpy."); /* EN "very jumpy."); */ // TODO DE
+			Du_fuehlst_dich(Hallucination ? "diffuse." : /* EN You_feel(Hallucination ? "diffuse." : */ // TODO DE
+			    "sehr sprunghaft."); /* EN "very jumpy."); */
 			HTeleportation |= FROMOUTSIDE;
 		}
 		break;
@@ -756,7 +756,7 @@ register struct permonst *ptr;
 		if(!(HTelepat & FROMOUTSIDE)) {
 			You_feel(Hallucination ?
 			    "in touch with the cosmos." : /* EN "in touch with the cosmos." : */ // TODO DE
-			    "a strange mental acuity."); /* EN "a strange mental acuity."); */ // TODO DE
+			    "eine seltsame Steigerung OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_GEISTESSCHAERFE."); /* EN "a strange mental acuity."); */
 			HTelepat |= FROMOUTSIDE;
 			/* If blind, make sure monsters show up. */
 			if (Blind) see_monsters();
@@ -792,7 +792,7 @@ register int pm;
 			u.uen = u.uenmax;
 		    }
 		    if (old_uen != u.uen) {
-			    You_feel("a mild buzz."); /* EN You_feel("a mild buzz."); */ // TODO DE
+			    Du_spuerst("einen sanften Stromstoß."); /* EN You_feel("a mild buzz."); */
 			    flags.botl = 1;
 		    }
 		}
@@ -847,16 +847,16 @@ register int pm;
 		if (youmonst.data->mlet != S_MIMIC && !Unchanging) {
 		    char buf[BUFSZ];
 				// Du verfaellst der Versuchung eine Orange zu imitieren.
-		    You_cant("resist the temptation to mimic %s.", /* EN You_cant("resist the temptation to mimic %s.", */ // TODO DE
-			Hallucination ? "an orange" : "a pile of gold"); /* EN Hallucination ? "an orange" : "a pile of gold"); */ // TODO DE
+		    You("VERB_KOENNEN der Versuchung nicht widerstehen, %s zu imitieren.", /* EN You_cant("resist the temptation to mimic %s.", */
+			Hallucination ? "eine Banane" : "einen Haufen Gold"); /* EN Hallucination ? "an orange" : "a pile of gold"); */
 #ifdef STEED
                     /* A pile of gold can't ride. */
 		    if (u.usteed) dismount_steed(DISMOUNT_FELL);
 #endif
 		    nomul(-tmp);
 		    Sprintf(buf, Hallucination ?
-			"You suddenly dread being peeled and mimic %s again!" : /* EN "You suddenly dread being peeled and mimic %s again!" : */ // TODO DE
-			"You now prefer mimicking %s again.", /* EN "You now prefer mimicking %s again.", */ // TODO DE
+			"OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_GRAUEN plötzlich davor geschält zu werden und MODIFIER_VERB_ZWEITE_PERSON VERB_IMITIEREN sicherheitshalber wieder NEUES_OBJECT KASUS_AKKUSATIV %s!" : /* EN "You suddenly dread being peeled and mimic %s again!" : */
+			"SUBJECT PRONOMEN_PERSONAL VERB_IMITIEREN jetzt lieber wieder %s.", /* EN "You now prefer mimicking %s again.", */
 			an(Upolyd ? youmonst.data->mname : urace.noun));
 		    eatmbuf = strcpy((char *) alloc(strlen(buf) + 1), buf);
 		    nomovemsg = eatmbuf;
@@ -871,7 +871,7 @@ register int pm;
 		}
 		break;
 	    case PM_QUANTUM_MECHANIC:
-		Your("velocity suddenly seems very uncertain!"); /* EN Your("velocity suddenly seems very uncertain!"); */ // TODO DE
+		Your("NOUN_GESCHWINDIGKEIT VERB_ERSCHEINEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL plötzlich sehr unbestimmt!"); /* EN Your("velocity suddenly seems very uncertain!"); */
 		if (HFast & INTRINSIC) {
 			HFast &= ~INTRINSIC;
 			You("VERB_SEEM langsamer SATZKLAMMER."); /* EN You("seem slower."); */
@@ -888,7 +888,7 @@ register int pm;
 	    case PM_DOPPELGANGER:
 	 /* case PM_SANDESTIN: */
 		if (!Unchanging) {
-		    You_feel("a change coming over you."); /* EN You_feel("a change coming over you."); */ // TODO DE
+		    Du_spuerst("einen Wandel über OBJECT PRONOMEN_PERSONAL kommen."); /* EN You_feel("a change coming over you."); */
 		    polyself(FALSE);
 		}
 		break;
@@ -896,13 +896,13 @@ register int pm;
 	    case PM_MASTER_MIND_FLAYER:
 		if (ABASE(A_INT) < ATTRMAX(A_INT)) {
 			if (!rn2(2)) {
-				pline("Yum! That was real brain food!"); /* EN pline("Yum! That was real brain food!"); */ // TODO DE
+				pline("Lecker! Das war richtiges Hirnfutter!"); /* EN pline("Yum! That was real brain food!"); */
 				(void) adjattrib(A_INT, 1, FALSE);
 				break;	/* don't give them telepathy, too */
 			}
 		}
 		else {
-			pline("For some reason, that tasted bland."); /* EN pline("For some reason, that tasted bland."); */ // TODO DE
+			pline("Aus irgendeinem Grund schmeckte das fad."); /* EN pline("For some reason, that tasted bland."); */
 		}
 		/* fall through to default case */
 	    default: {
@@ -911,7 +911,7 @@ register int pm;
 
 		if (dmgtype(ptr, AD_STUN) || dmgtype(ptr, AD_HALU) ||
 		    pm == PM_VIOLET_FUNGUS) {
-			pline ("Oh wow!  Great stuff!"); /* EN pline ("Oh wow!  Great stuff!"); */ // TODO DE
+			pline ("Oh wow!  Das war ein Spitzenzeug!"); /* EN pline ("Oh wow!  Great stuff!"); */
 			make_hallucinated(HHallucination + 200,FALSE,0L);
 		}
 		if(is_giant(ptr)) gainstr((struct obj *)0, 0);
@@ -1004,13 +1004,13 @@ opentin()		/* called during each move whilst opening a tin */
 		return(1);		/* still busy */
 	if(tin.tin->otrapped ||
 	   (tin.tin->cursed && tin.tin->spe != -1 && !rn2(8))) {
-		b_trapped("tin", 0); /* EN b_trapped("tin", 0); */ // TODO DE
+		b_trapped("NOUN_TIN", 0); /* EN b_trapped("tin", 0); */
 		goto use_me;
 	}
         pline("KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ VERB_GELINGEN NOUN_IT, die Dose zu öffnen."); /* EN You("succeed in opening the tin."); */
 	if(tin.tin->spe != 1) {
 	    if (tin.tin->corpsenm == NON_PM) {
-		pline("It turns out to be empty."); /* EN pline("It turns out to be empty."); */ // TODO DE
+		pline("Sie entpuppt sich als leer."); /* EN pline("It turns out to be empty."); */
 		tin.tin->dknown = tin.tin->known = TRUE;
 		goto use_me;
 	    }
@@ -1030,18 +1030,18 @@ opentin()		/* called during each move whilst opening a tin */
 		if (mons[tin.tin->corpsenm].geno & G_UNIQ)
 		    which = type_is_pname(&mons[tin.tin->corpsenm]) ? 1 : 2;
 	    }
-	    if (which == 0) what = makeplural(what);
-	    pline("It smells like %s%s.", (which == 2) ? "the " : "", what); /* EN pline("It smells like %s%s.", (which == 2) ? "the " : "", what); */ // TODO DE
-	    if (yn("Eat it?") == 'n') { /* EN if (yn("Eat it?") == 'n') { */ // TODO DE
+	    /* EN if (which == 0) what = makeplural(what); */
+	    pline("Es riecht nach %s%s.", (which == 2) ? "ARTIKEL_BESTIMMTER " : "", what); /* EN pline("It smells like %s%s.", (which == 2) ? "the " : "", what); */
+	    if (yn("Essen?") == 'n') { /* EN if (yn("Eat it?") == 'n') { */
 		if (!Hallucination) tin.tin->dknown = tin.tin->known = TRUE;
-		if (flags.verbose) You("discard the open tin."); /* EN if (flags.verbose) You("discard the open tin."); */ // TODO DE
+		if (flags.verbose) You("VERB_ENTSORGEN die offene Dose."); /* EN if (flags.verbose) You("discard the open tin."); */
 		goto use_me;
 	    }
 	    /* in case stop_occupation() was called on previous meal */
 	    victual.piece = (struct obj *)0;
 	    victual.fullwarn = victual.eating = victual.doreset = FALSE;
 
-	    You("consume %s %s.", tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */ // TODO DE
+	    You("VERB_CONSUME %s %s.", tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */
 			mons[tin.tin->corpsenm].mname); /* DE verzehrst %s %s. */
 
 	    /* KMH, conduct */
@@ -1075,16 +1075,16 @@ opentin()		/* called during each move whilst opening a tin */
 	    }
 	} else {
 	    if (tin.tin->cursed)
-		pline("It contains some decaying%s%s substance.", /* EN pline("It contains some decaying%s%s substance.", */ // TODO DE
+		pline("Sie enthält irgendeine verrottende%s%s Substanz.", /* EN pline("It contains some decaying%s%s substance.", */
 			Blind ? "" : " ", Blind ? "" : hcolor(NH_GREEN));
 	    else
-		pline("It contains spinach."); /* EN pline("It contains spinach."); */ // TODO DE
+		pline("Sie enthält Spinat."); /* EN pline("It contains spinach."); */
 
-	    if (yn("Eat it?") == 'n') { /* EN if (yn("Eat it?") == 'n') { */ // TODO DE
+	    if (yn("Essen?") == 'n') { /* EN if (yn("Eat it?") == 'n') { */
 		if (!Hallucination && !tin.tin->cursed)
 		    tin.tin->dknown = tin.tin->known = TRUE;
 		if (flags.verbose)
-		    You("discard the open tin."); /* EN You("discard the open tin."); */ // TODO DE
+		    You("VERB_ENTSORGEN die offene Dose."); /* EN You("discard the open tin."); */
 		goto use_me;
 	    }
 
@@ -1122,10 +1122,10 @@ start_tin(otmp)		/* called when starting to open a tin */
 		You("VERB_BITE einfach in die Metalldose ..."); /* EN You("bite right into the metal tin..."); */
 		tmp = 1;
 	} else if (nolimbs(youmonst.data)) {
-		You("cannot handle the tin properly to open it."); /* EN You("cannot handle the tin properly to open it."); */ // TODO DE
+		You("VERB_KOENNEN die Dose nicht halten um sie zu öffnen."); /* EN You("cannot handle the tin properly to open it."); */
 		return;
 	} else if (otmp->blessed) {
-		pline_The("tin opens like magic!"); /* EN pline_The("tin opens like magic!"); */ // TODO DE
+		pline_The("NOUN_TIN VERB_OEFFNEN sich wie von Zauberhand!"); /* EN pline_The("tin opens like magic!"); */
 		tmp = 1;
 	} else if(uwep) {
 		switch(uwep->otyp) {
@@ -1152,9 +1152,9 @@ start_tin(otmp)		/* called when starting to open a tin */
 			aobjnam(uwep, (char *)0));
 	} else {
 no_opener:
-		pline("It is not so easy to open this tin."); /* EN pline("It is not so easy to open this tin."); */ // TODO DE
+		pline("Es ist nicht ganz einfach diese Dose zu öffnen."); /* EN pline("It is not so easy to open this tin."); */
 		if(Glib) {
-			pline_The("tin slips from your %s.", /* EN pline_The("tin slips from your %s.", */ // TODO DE
+			pline_The("NOUN_TIN VERB_RUTSCHEN aus OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline_The("tin slips from your %s.", */
 			      makeplural(body_part(FINGER)));
 			if(otmp->quan > 1L) {
 			    otmp = splitobj(otmp, 1L);
@@ -1187,26 +1187,26 @@ struct obj *obj;
 	pline("Blecch!  Rotten %s!", foodword(obj)); /* EN pline("Blecch!  Rotten %s!", foodword(obj)); */ // TODO DE
 	if(!rn2(4)) {
 		if (Hallucination) Du_fuehlst_dich("ziemlich trippig."); /* EN You_feel("rather trippy."); */
-		else You_feel("rather %s.", body_part(LIGHT_HEADED)); /* EN else You_feel("rather %s.", body_part(LIGHT_HEADED)); */ // TODO DE
+		else Du_fuehlst_dich("ziemlich %s.", body_part(LIGHT_HEADED)); /* EN else You_feel("rather %s.", body_part(LIGHT_HEADED)); */
 		make_confused(HConfusion + d(2,4),FALSE);
 	} else if(!rn2(4) && !Blind) {
-		pline("Everything suddenly goes dark."); /* EN pline("Everything suddenly goes dark."); */ // TODO DE
+		Dir_wird("schwarz vor Augen."); /* EN pline("Everything suddenly goes dark."); */
 		make_blinded((long)d(2,10),FALSE);
 		if (!Blind) Your(vision_clears);
 	} else if(!rn2(3)) {
 		const char *what, *where;
 		if (!Blind)
-		    what = "goes",  where = "dark"; /* EN what = "goes",  where = "dark"; */ // TODO DE
+		    what = "OBJECT KASUS_DATIV PRONOMEN_PERSONAL",  where = "MODIFIER_VERB_DRITTE_PERSON VERB_WERDEN schwarz vor Augen"; /* EN what = "goes",  where = "dark"; */
 		else if (Levitation || Is_airlevel(&u.uz) ||
 			 Is_waterlevel(&u.uz))
 		    what = "you lose control of",  where = "yourself"; /* EN what = "you lose control of",  where = "yourself"; */ // TODO DE
 		else
-		    what = "you slap against the", where = /* EN what = "you slap against the", where = */ // TODO DE
+		    what = "SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_KNALLEN auf OBJECT ARTIKEL_BESTIMMTER", where = /* EN what = "you slap against the", where = */
 #ifdef STEED
-			   (u.usteed) ? "saddle" : /* EN (u.usteed) ? "saddle" : */ // TODO DE
+			   (u.usteed) ? "NOUN_SADDLE" : /* EN (u.usteed) ? "saddle" : */
 #endif
 			   surface(u.ux,u.uy);
-		pline_The("world spins and %s %s.", what, where); /* EN pline_The("world spins and %s %s.", what, where); */ // TODO DE
+		pline("Alles dreht sich und %s %s.", what, where); /* EN pline_The("world spins and %s %s.", what, where); */
 		flags.soundok = 0;
 		nomul(-rnd(10));
 		nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_SEIN wieder bei Bewusstsein."; /* EN nomovemsg = "You are conscious again."; */
@@ -1242,7 +1242,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 	if (mnum != PM_ACID_BLOB && !stoneable && rotted > 5L) {
 		pline("Ulch - that %s was tainted!", /* EN pline("Ulch - that %s was tainted!", */ // TODO DE
 		      mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : /* EN mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : */ // TODO DE
-		      !vegetarian(&mons[mnum]) ? "meat" : "protoplasm"); /* EN !vegetarian(&mons[mnum]) ? "meat" : "protoplasm"); */ // TODO DE
+		      !vegetarian(&mons[mnum]) ? "NOUN_FLEISCH" : "NOUN_PROTOPLASMA"); /* EN !vegetarian(&mons[mnum]) ? "meat" : "protoplasm"); */
 		if (Sick_resistance) {
 			pline("It doesn't seem at all sickening, though..."); /* EN pline("It doesn't seem at all sickening, though..."); */ // TODO DE
 		} else {
@@ -1266,7 +1266,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		return(2);
 	} else if (acidic(&mons[mnum]) && !Acid_resistance) {
 		tp++;
-		You("have a very bad case of stomach acid."); /* not body_part() */ /* EN You("have a very bad case of stomach acid."); */ // TODO DE
+		You("VERB_HAVE einen akuten Anfall von Sodbrennen."); /* not body_part() */ /* EN You("have a very bad case of stomach acid."); */
 		losehp(rnd(15), "acidic corpse", KILLED_BY_AN); /* EN losehp(rnd(15), "acidic corpse", KILLED_BY_AN); */ // TODO DE
 	} else if (poisonous(&mons[mnum]) && rn2(5)) {
 		tp++;
@@ -1279,8 +1279,8 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 	} else if ((rotted > 5L || (rotted > 3L && rn2(5)))
 					&& !Sick_resistance) {
 		tp++;
-		You_feel("%ssick.", (Sick) ? "very " : ""); /* EN You_feel("%ssick.", (Sick) ? "very " : ""); */ // TODO DE
-		losehp(rnd(8), "cadaver", KILLED_BY_AN); /* EN losehp(rnd(8), "cadaver", KILLED_BY_AN); */ // TODO DE
+		Du_fuehlst_dich("%skrank.", (Sick) ? "sehr " : ""); /* EN You_feel("%ssick.", (Sick) ? "very " : ""); */
+		losehp(rnd(8), "NOUN_KADAVER", KILLED_BY_AN); /* EN losehp(rnd(8), "cadaver", KILLED_BY_AN); */
 	}
 
 	/* delay is weight dependent */
@@ -1310,7 +1310,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		  (vegan(&mons[mnum]) ?
 		   (!carnivorous(youmonst.data) && herbivorous(youmonst.data)) :
 		   (carnivorous(youmonst.data) && !herbivorous(youmonst.data)))
-		  ? "is delicious" : "tastes terrible"); /* EN ? "is delicious" : "tastes terrible"); */ // TODO DE
+		  ? "ist delikat" : "schmeckt schrecklich"); /* EN ? "is delicious" : "tastes terrible"); */
 	}
 
 	return(retcode);
@@ -1346,7 +1346,7 @@ start_eating(otmp)		/* called as you start to eat */
 	    return;
 	}
 
-	Sprintf(msgbuf, "eating %s", food_xname(otmp, TRUE)); /* EN Sprintf(msgbuf, "eating %s", food_xname(otmp, TRUE)); */ // TODO DE
+	Sprintf(msgbuf, "%s zu essen", food_xname(otmp, TRUE)); /* EN Sprintf(msgbuf, "eating %s", food_xname(otmp, TRUE)); */
 	set_occupation(eatfood, msgbuf, 0);
 }
 
@@ -1362,19 +1362,19 @@ struct obj *otmp;
 	switch(otmp->otyp) {
 	    case FOOD_RATION:
 		if(u.uhunger <= 200)
-		    pline(Hallucination ? "Oh wow, like, superior, man!" : /* EN pline(Hallucination ? "Oh wow, like, superior, man!" : */ // TODO DE
-			  "That food really hit the spot!"); /* EN "That food really hit the spot!"); */ // TODO DE
-		else if(u.uhunger <= 700) pline("That satiated your %s!", /* EN else if(u.uhunger <= 700) pline("That satiated your %s!", */ // TODO DE
+		    pline(Hallucination ? "Oh wow, irgendwie, spitzenmässig, Mann!" : /* EN pline(Hallucination ? "Oh wow, like, superior, man!" : */
+			  "Dieses Essen war genau das Richtige!"); /* EN "That food really hit the spot!"); */
+		else if(u.uhunger <= 700) pline("Das sättigte KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s!", /* EN else if(u.uhunger <= 700) pline("That satiated your %s!", */
 						body_part(STOMACH));
 		break;
 	    case TRIPE_RATION:
 		if (carnivorous(youmonst.data) && !humanoid(youmonst.data))
-		    pline("That tripe ration was surprisingly good!"); /* EN pline("That tripe ration was surprisingly good!"); */ // TODO DE
+		    pline("That NOUN_TRIPE_RATION war überraschend gut!"); /* EN pline("That tripe ration was surprisingly good!"); */ // TODO DE
 		else if (maybe_polyd(is_orc(youmonst.data), Race_if(PM_ORC)))
 		    pline(Hallucination ? "Tastes great! Less filling!" : /* EN pline(Hallucination ? "Tastes great! Less filling!" : */ // TODO DE
-			  "Mmm, tripe... not bad!"); /* EN "Mmm, tripe... not bad!"); */ // TODO DE
+			  "Hmm, NOUN_TRIPE_RATION ... nicht schlecht!"); /* EN "Mmm, tripe... not bad!"); */
 		else {
-		    pline("Yak - dog food!"); /* EN pline("Yak - dog food!"); */ // TODO DE
+		    pline("*würg* Hundefutter!"); /* EN pline("Yak - dog food!"); */
 		    more_experienced(1,0);
 		    newexplevel();
 		    /* not cannibalism, but we use similar criteria
@@ -1404,7 +1404,7 @@ struct obj *otmp;
 		else
 #ifdef UNIX
 		if (otmp->otyp == APPLE || otmp->otyp == PEAR) {
-		    if (!Hallucination) pline("Core dumped."); // Kernbruch! ???  /* EN if (!Hallucination) pline("Core dumped."); */ // TODO DE
+		    if (!Hallucination) pline("Core dumped.");
 		    else {
 /* This is based on an old Usenet joke, a fake a.out manual page */
 			int x = rnd(100);
@@ -1418,21 +1418,21 @@ struct obj *otmp;
 #endif
 #ifdef MAC	/* KMH -- Why should Unix have all the fun? */
 		if (otmp->otyp == APPLE) {
-			pline("Delicious!  Must be a Macintosh!"); /* EN pline("Delicious!  Must be a Macintosh!"); */ // TODO DE
+			pline("Exzellent!  Muss ein Mac sein!"); /* EN pline("Delicious!  Must be a Macintosh!"); */
 		} else
 #endif
 		if (otmp->otyp == EGG && stale_egg(otmp)) {
-		    pline("Ugh.  Rotten egg.");	/* perhaps others like it */ /* EN pline("Ugh.  Rotten egg.");	 */ // TODO DE
+		    pline("Pfui Teufel.  Ein verfaultes Ei."); /* perhaps others like it */ /* EN pline("Ugh.  Rotten egg.");*/
 		    make_vomiting(Vomiting+d(10,4), TRUE);
 		} else
  give_feedback:
-		    pline("This %s is %s", singular(otmp, xname), /* EN pline("This %s is %s", singular(otmp, xname), */ // TODO DE
-		      otmp->cursed ? (Hallucination ? "grody!" : "terrible!") : /* EN otmp->cursed ? (Hallucination ? "grody!" : "terrible!") : */ // TODO DE
+		    pline("SUBJECT PRONOMEN_DIESER %s schmeckt %s", singular(otmp, xname), /* EN pline("This %s is %s", singular(otmp, xname), */
+		      otmp->cursed ? (Hallucination ? "voll kacke!" : "gräßlich!") : /* EN otmp->cursed ? (Hallucination ? "grody!" : "terrible!") : */
 		      (otmp->otyp == CRAM_RATION
 		      || otmp->otyp == K_RATION
 		      || otmp->otyp == C_RATION)
-		      ? "bland." : /* EN ? "bland." : */ // TODO DE
-		      Hallucination ? "gnarly!" : "delicious!"); /* EN Hallucination ? "gnarly!" : "delicious!"); */ // TODO DE
+		      ? "fade." : /* EN ? "bland." : */
+		      Hallucination ? "voll korrekt!" : "deliziös!"); /* EN Hallucination ? "gnarly!" : "delicious!"); */
 		break;
 	}
 }
@@ -1442,7 +1442,7 @@ accessory_has_effect(otmp)
 struct obj *otmp;
 {
 	pline("Magic spreads through your body as you digest the %s.", /* EN pline("Magic spreads through your body as you digest the %s.", */ // TODO DE
-	    otmp->oclass == RING_CLASS ? "ring" : "amulet"); /* EN otmp->oclass == RING_CLASS ? "ring" : "amulet"); */ // TODO DE
+	    otmp->oclass == RING_CLASS ? "NOUN_RING" : "NOUN_AMULET"); /* EN otmp->oclass == RING_CLASS ? "ring" : "amulet"); */
 }
 
 STATIC_OVL void
@@ -1477,7 +1477,7 @@ struct obj *otmp;
 		    if (Invis && !oldprop && !ESee_invisible &&
 				!perceives(youmonst.data) && !Blind) {
 			newsym(u.ux,u.uy);
-			pline("Suddenly you can see yourself."); /* EN pline("Suddenly you can see yourself."); */ // TODO DE
+			pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL sehen."); /* EN pline("Suddenly you can see yourself."); */
 			makeknown(typ);
 		    }
 		    break;
@@ -1545,8 +1545,8 @@ struct obj *otmp;
 		accessory_has_effect(otmp);
 		makeknown(typ);
 		change_sex();
-		You("are suddenly very %s!", /* EN You("are suddenly very %s!", */ // TODO DE
-		    flags.female ? "feminine" : "masculine"); /* EN flags.female ? "feminine" : "masculine"); */ // TODO DE
+		You("VERB_SEIN plötzlich sehr %s!", /* EN You("are suddenly very %s!", */
+		    flags.female ? "feminin" : "maskulin"); /* EN flags.female ? "feminine" : "masculine"); */
 		flags.botl = 1;
 		break;
 	    case AMULET_OF_STRANGULATION: /* bad idea! */
@@ -1611,7 +1611,7 @@ eatspecial() /* called after eating non-food */
 	}
 	if ((otmp->otyp == FLINT) && !otmp->cursed)
 	{
-		pline("Yabba-dabba delicious!"); /* EN pline("Yabba-dabba delicious!"); */ // TODO DE
+		pline("Jabba-dabba-köstlich!"); /* EN pline("Yabba-dabba delicious!"); */
 		exercise(A_CON, TRUE);
 	}
 
@@ -1638,7 +1638,7 @@ STATIC_OVL const char *
 foodword(otmp)
 register struct obj *otmp;
 {
-	if (otmp->oclass == FOOD_CLASS) return "food"; /* EN if (otmp->oclass == FOOD_CLASS) return "food"; */ // TODO DE
+	if (otmp->oclass == FOOD_CLASS) return "NOUN_ESSBARES"; /* EN if (otmp->oclass == FOOD_CLASS) return "food"; */
 	if (otmp->oclass == GEM_CLASS &&
 	    objects[otmp->otyp].oc_material == GLASS &&
 	    otmp->dknown)
@@ -1692,7 +1692,7 @@ register struct obj *otmp;
 			!(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
 			if (!Stoned) Stoned = 5;
 			killer_format = KILLED_BY_AN;
-			Sprintf(killer_buf, "%s egg", mons[otmp->corpsenm].mname); /* EN Sprintf(killer_buf, "%s egg", mons[otmp->corpsenm].mname); */ // TODO DE
+			Sprintf(killer_buf, "NOUN_EGG KASUS_GENITIV %s", mons[otmp->corpsenm].mname); /* EN Sprintf(killer_buf, "%s egg", mons[otmp->corpsenm].mname); */
 			delayed_killer = killer_buf;
 		    }
 		}
@@ -1728,10 +1728,10 @@ struct obj *otmp;
 	    mnum = otmp->corpsenm;
 	long rotted = 0L;
 
-	Strcpy(foodsmell, Tobjnam(otmp, "smell")); /* EN Strcpy(foodsmell, Tobjnam(otmp, "smell")); */ // TODO DE
+	Strcpy(foodsmell, Tobjnam(otmp, "VERB_SMELL")); /* EN Strcpy(foodsmell, Tobjnam(otmp, "smell")); */ // TODO DE
 	Strcpy(it_or_they, (otmp->quan == 1L) ? "it" : "they"); /* EN Strcpy(it_or_they, (otmp->quan == 1L) ? "it" : "they"); */ // TODO DE
-	Sprintf(eat_it_anyway, "Eat %s anyway?", /* EN Sprintf(eat_it_anyway, "Eat %s anyway?", */ // TODO DE
-		(otmp->quan == 1L) ? "it" : "one"); /* EN (otmp->quan == 1L) ? "it" : "one"); */ // TODO DE
+	Sprintf(eat_it_anyway, "Trotzdem %sessen?", /* EN Sprintf(eat_it_anyway, "Eat %s anyway?", */
+		(otmp->quan == 1L) ? "" : "eines"); /* EN (otmp->quan == 1L) ? "it" : "one"); */
 
 	if (cadaver || otmp->otyp == EGG || otmp->otyp == TIN) {
 		/* These checks must match those in eatcorpse() */
@@ -1859,9 +1859,9 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	if (u.uedibility) {
 		int res = edibility_prompts(otmp);
 		if (res) {
-		    Your("%s stops tingling and your sense of smell returns to normal.", /* EN Your("%s stops tingling and your sense of smell returns to normal.", */ // TODO DE
-			body_part(NOSE));
-		    u.uedibility = 0;
+		    // Your("%s stops tingling and your sense of smell returns to normal.", /* EN Your("%s stops tingling and your sense of smell returns to normal.", */ // TODO DE
+			//body_part(NOSE));
+		    //u.uedibility = 0; // REMOVE ME
 		    if (res == 1) return 0;
 		}
 	}
@@ -1872,7 +1872,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	 * metallic meal, etc....
 	 */
 	if (!is_edible(otmp)) {
-	    You("cannot eat that!"); /* EN You("cannot eat that!"); */ // TODO DE
+	    You("VERB_KOENNEN das nicht essen!"); /* EN You("cannot eat that!"); */
 	    return 0;
 	} else if ((otmp->owornmask & (W_ARMOR|W_TOOL|W_AMUL
 #ifdef STEED
@@ -1880,7 +1880,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 #endif
 			)) != 0) {
 	    /* let them eat rings */
-	    You_cant("eat %s you're wearing.", something); /* EN You_cant("eat %s you're wearing.", something); */ // TODO DE
+	    You_cant("OBJECT %s essen, dass NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL gerade VERB_TRAGEN.", something); /* EN You_cant("eat %s you're wearing.", something); */
 	    return 0;
 	}
 	if (is_metallic(otmp) &&
@@ -2179,7 +2179,7 @@ register int num;
 	    if (u.uhunger >= 1500) {
 		if (!victual.eating || (victual.eating && !victual.fullwarn)) {
 		    pline("You're having a hard time getting all of it down."); /* EN pline("You're having a hard time getting all of it down."); */ // TODO DE
-		    nomovemsg = "You're finally finished."; /* EN nomovemsg = "You're finally finished."; */ // TODO DE
+		    nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_SEIN endlich fertig."; /* EN nomovemsg = "You're finally finished."; */
 		    if (!victual.eating)
 			multi = -2;
 		    else {
@@ -2187,7 +2187,7 @@ register int num;
 			if (victual.canchoke && victual.reqtime > 1) {
 			    /* a one-gulp food will not survive a stop */
                             /* DE Essen unterbrechen? */
-			    if (yn_function("Stop eating?",ynchars,'y')=='y') { /* EN if (yn_function("Stop eating?",ynchars,'y')=='y') { */ // TODO DE
+			    if (yn_function("Aufhören zu essen?",ynchars,'y')=='y') { /* EN if (yn_function("Stop eating?",ynchars,'y')=='y') { */
 				reset_eat();
 				nomovemsg = (char *)0;
 			    }
@@ -2384,7 +2384,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 	register struct obj *otmp;
 	char qbuf[QBUFSZ];
 	char c;
-	boolean feeding = (!strcmp(verb, "eat")); /* EN boolean feeding = (!strcmp(verb, "eat")); */ // TODO DE
+	boolean feeding = (!strcmp(verb, "VERB_EAT")); /* EN boolean feeding = (!strcmp(verb, "eat")); */
 
 	/* if we can't touch floor objects then use invent food only */
 	if (!can_reach_floor() ||

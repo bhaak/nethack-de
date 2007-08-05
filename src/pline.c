@@ -179,6 +179,16 @@ Dir_ist VA_DECL(const char *,line)
 
 /*VARARGS1*/
 void
+Dir_wird VA_DECL(const char *,line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_WERDEN ", line), VA_ARGS);
+	VA_END();
+}
+
+/*VARARGS1*/
+void
 Dich VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
