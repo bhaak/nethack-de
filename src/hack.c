@@ -2210,7 +2210,7 @@ const char *str;
 	if(str)
 	    pline(str);
 	else
-            pline("So Ã¼berladen VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL das nicht machen."); /* EN You_cant("do that while carrying so much stuff."); */
+            pline("So überladen VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL das nicht machen."); /* EN You_cant("do that while carrying so much stuff."); */
 	return 1;
     }
     return 0;

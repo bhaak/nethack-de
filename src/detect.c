@@ -322,7 +322,7 @@ register struct obj	*sobj;
 	known = stale && !confused;
 	if (stale) {
 	    docrt();
-	    You("VERB_SPUEREN in der NÃ¤he einen Mangel an OBJECT KASUS_DATIV %s.", what); /* EN You("sense a lack of %s nearby.", what); */
+	    You("VERB_SPUEREN in der Nähe einen Mangel an OBJECT KASUS_DATIV %s.", what); /* EN You("sense a lack of %s nearby.", what); */
 	    if (sobj && sobj->blessed) {
 		if (!u.uedibility) Your("%s starts to tingle.", body_part(NOSE)); /* EN if (!u.uedibility) Your("%s starts to tingle.", body_part(NOSE)); */ // TODO DE
 		u.uedibility = 1;
@@ -461,7 +461,7 @@ int		class;		/* an object class, 0 for all */
     if (!clear_stale_map(!class ? ALL_CLASSES : class, 0) && !ct) {
 	if (!ctu) {
 	    if (detector)
-		strange_feeling(detector, "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN, dass in der NÃ¤he etwas fehlt."); /* EN strange_feeling(detector, "You feel a lack of something."); */
+		strange_feeling(detector, "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN, dass in der Nähe etwas fehlt."); /* EN strange_feeling(detector, "You feel a lack of something."); */
 	    return 1;
 	}
 
@@ -610,7 +610,7 @@ int mclass;			/* monster class, 0 for all */
 	display_self();
 	You("VERB_SPUEREN die Anwesenheit von Monstern."); /* EN You("sense the presence of monsters."); */
 	if (woken)
-	    pline("Die Monster spÃ¼ren KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_ANWESENHEIT."); /* EN pline("Monsters sense the presence of you."); */
+	    pline("Die Monster spüren KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_ANWESENHEIT."); /* EN pline("Monsters sense the presence of you."); */
 	display_nhwindow(WIN_MAP, TRUE);
 	docrt();
 	if (Underwater) under_water(2);
@@ -713,7 +713,7 @@ outtrapmap:
     }
 
     newsym(u.ux,u.uy);
-    Du_fuehlst_dich("%s.", sobj && sobj->cursed ? "Ã¤usserst gierig" : "gefangen"); /* EN You_feel("%s.", sobj && sobj->cursed ? "very greedy" : "entrapped"); */
+    Du_fuehlst_dich("%s.", sobj && sobj->cursed ? "äusserst gierig" : "gefangen"); /* EN You_feel("%s.", sobj && sobj->cursed ? "very greedy" : "entrapped"); */
     display_nhwindow(WIN_MAP, TRUE);
     docrt();
     u.uinwater = uw;
@@ -742,13 +742,13 @@ d_level *where;
     } else if (ll > 0) {
 	if (ll > (8 + rn2(3)))
 	    if (!indun)	return "weit weg"; /* EN if (!indun)	return "far away"; */
-	    else	return "weit Ã¼ber OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "far above"; */
+	    else	return "weit über OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "far above"; */
 	else if (ll > 1)
-	    if (!indun)	return "entfernt Ã¼ber OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN if (!indun)	return "away above you"; */
-	    else	return "Ã¼ber OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "above you"; */
+	    if (!indun)	return "entfernt über OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN if (!indun)	return "away above you"; */
+	    else	return "über OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "above you"; */
 	else
 	    if (!indun)	return "entfernt"; /* EN if (!indun)	return "in the distance"; */ 
-	    else	return "gerade Ã¼ber OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "just above"; */
+	    else	return "gerade über OBJECT KASUS_DATIV PRONOMEN_PERSONAL"; /* EN else	return "just above"; */
     } else
 	    if (!indun)	return "entfernt"; /* EN if (!indun)	return "in the distance"; */
 	    else	return "in OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_NAEHE"; /* EN else	return "near you"; */
@@ -818,9 +818,9 @@ struct obj *obj;
 	    case 3 : pline_The("NOUN_KRISTALL VERB_PULSIEREN in OBJECT KASUS_DATIV ARTIKEL_UNBESTIMMTER bedrohlich %s NOUN_LICHT!", /* EN case 3 : pline_The("crystal pulses with sinister %s light!", */
 				hcolor((char *)0));
 		break;
-	    case 4 : You("VERB_SEE Goldfische Ã¼ber fluoreszierenden Steinen schwimmen."); /* EN case 4 : You("see goldfish swimming above fluorescent rocks."); */
+	    case 4 : You("VERB_SEE Goldfische über fluoreszierenden Steinen schwimmen."); /* EN case 4 : You("see goldfish swimming above fluorescent rocks."); */
 		break;
-	    case 5 : You("VERB_SEE kleine SchneeflÃ¶ckchen um ein Minimatterhorn tanzen."); /* EN case 5 : You("see tiny snowflakes spinning around a miniature farmhouse."); */ // ein bisschen heimatliche GefÃ¼hle 
+	    case 5 : You("VERB_SEE kleine Schneeflöckchen um ein Minimatterhorn tanzen."); /* EN case 5 : You("see tiny snowflakes spinning around a miniature farmhouse."); */ // ein bisschen heimatliche Gefühle 
 		break;
 	    default: pline("Oh Wahnsinn ... wie ein Kaleidoskop!"); /* EN default: pline("Oh wow... like a kaleidoscope!"); */
 		break;
@@ -841,7 +841,7 @@ struct obj *obj;
     nomul(-rnd(10));
     nomovemsg = "";
     if (obj->spe <= 0)
-	pline_The("NOUN_BLICK VERB_SEIN getrÃ¼bt."); /* EN pline_The("vision is unclear."); */
+	pline_The("NOUN_BLICK VERB_SEIN getrübt."); /* EN pline_The("vision is unclear."); */
     else {
 	int class;
 	int ret = 0;
@@ -871,7 +871,7 @@ struct obj *obj;
 	if (ret) {
 	    if (!rn2(100))  /* make them nervous */
 		You("VERB_SEE, wie der Zauberer von Yendor OBJECT PRONOMEN_PERSONAL anstarrt."); /* EN You("see the Wizard of Yendor gazing out at you."); */
-	    else pline_The("NOUN_BLICK VERB_SEIN getrÃ¼bt."); /* EN else pline_The("vision is unclear."); */
+	    else pline_The("NOUN_BLICK VERB_SEIN getrübt."); /* EN else pline_The("vision is unclear."); */
 	}
     }
     return;
