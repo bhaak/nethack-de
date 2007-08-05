@@ -160,28 +160,30 @@ START_TEST (test_identified_spellbooks) {
 START_TEST (test_corpses) {
 	char *text[][2] = {
 		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 ADJEKTIV_UNCURSED NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
-		 "Du lässt die sterblichen Überreste von 2 nicht verfluchten Dingos fallen."},
+		 "Du lässt Kadaver von 2 nicht verfluchten Dingos fallen."},
 		{"a - MODIFIER_CORPSE NOUN_COYOTE NOUN_CORPSE",
-		 "a - die sterblichen Überreste eines Kojoten"},
+		 "a - der Kadaver eines Kojoten"},
 		{"b - MODIFIER_CORPSE NOUN_FOX NOUN_CORPSE",
-		 "b - die sterblichen Überreste eines Fuchses"},
+		 "b - der Kadaver eines Fuchses"},
 		{"c - MODIFIER_CORPSE 2 NOUN_FOX NOUN_CORPSEs",
-		 "c - die sterblichen Überreste von 2 Füchsen"},
+		 "c - Kadaver von 2 Füchsen"},
 		{"d - MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER halb ADJEKTIV_EATEN NOUN_FOX NOUN_CORPSE",
-		 "d - die sterblichen Überreste eines halb verspeisten Fuchses"},
+		 "d - der Kadaver eines halb verspeisten Fuchses"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 ADJEKTIV_UNCURSED NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
-		 "Du lässt die sterblichen Überreste von 2 nicht verfluchten Dingos fallen."},
+		 "Du lässt Kadaver von 2 nicht verfluchten Dingos fallen."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
-		 "Du lässt die sterblichen Überreste von 2 Dingos fallen."},
+		 "Du lässt Kadaver von 2 Dingos fallen."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER NOUN_JACKAL NOUN_CORPSE.",
-		 "Du siehst hier die sterblichen Überreste eines Schakals."},
+		 "Du siehst hier den Kadaver eines Schakals."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_SEE hier OBJECT MODIFIER_CORPSE 2 NOUN_LICHEN NOUN_CORPSEs.", 
-		 "Du siehst hier die sterblichen Überreste von 2 Flechten."},
+		 "Du siehst hier Kadaver von 2 Flechten."},
 	// SUBJECT PRONOMEN_PERSONAL finish eating OBJECT ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE"
 		{"SUBJECT PRONOMEN_PERSONAL VERB_EAT OBJECT MODIFIER_CORPSE ARTIKEL_BESTIMMTER NOUN_GOBLIN NOUN_CORPSE",
-		 "Du isst die sterblichen Überreste des Goblins"},
+		 "Du isst den Kadaver des Goblins"},
 		{"SUBJECT PRONOMEN_POSSESSIV MODIFIER_CORPSE NOUN_GREY_ELF NOUN_CORPSE VERB_WERDEN plötzlich lebendig!",
-		 "Deine sterblichen Überreste eines Grauelbes werden plötzlich lebendig!"}
+		 "Dein Kadaver eines Grauelbes wird plötzlich lebendig!"},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_CORPSE VERB_SMELL verdorben!",
+		 "Der Kadaver riecht verdorben!"}
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -298,7 +300,7 @@ START_TEST (test_complete_sentences2) {
 		{"SUBJECT PRONOMEN_POSSESSIV NOUN_SWORDs VERB_GLEITEN KASUS_DATIV PRONOMEN_PERSONAL aus KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_HANDs.",
 		 "Deine Schwerter gleiten dir aus den Händen."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_NEHMEN OBJECT MODIFIER_CORPSE NOUN_CHICKATRICE NOUN_CORPSE in KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE NOUN_HANDs.",
-		 "Du nimmst die sterblichen Überreste eines Kikatrix in deine bloßen Hände."},
+		 "Du nimmst den Kadaver eines Kikatrix in deine bloßen Hände."},
 		{"SUBJECT PRONOMEN_POSSESSIV NOUN_HALS VERB_ZUSCHNUEREN sich SATZKLAMMER!",
 		 "Dein Hals schnürt sich zu!"},
 		{"Plötzlich VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL durchsichtig!",
@@ -735,10 +737,10 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-  tcase_add_test(tc_core, test_complete_sentences4);
+  //tcase_add_test(tc_core, test_complete_sentences4);
 
-	if (0) {
-	tcase_add_test(tc_core, test_german2meta);
+	if (1) {
+	//tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
   tcase_add_test(tc_core, test_identified_spellbooks);
@@ -760,7 +762,7 @@ Suite *test_suite(void)
   //tcase_add_test(tc_core, test_complete_sentences4);
   tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_tincontent);
-	tcase_add_test(tc_core, test_inventory_names);
+	//tcase_add_test(tc_core, test_inventory_names);
 	tcase_add_test(tc_core, test_casus_and_modifier);
 	tcase_add_test(tc_core, test_rings);
 	tcase_add_test(tc_core, test_scrolls);

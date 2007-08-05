@@ -430,24 +430,16 @@ int finde_naechstes_subject(const char* text) {
 			subject_person  = pm_person;
 			
 #ifdef DEBUG
-			printf("finde_naechstes_subject: gefundenes subjelt: -%s-\n",tmp);
+			printf("finde_naechstes_subject 1: gefundenes subjekt: -%s-\n",tmp);
 #endif
 			return 0;
 		} else if (strncmp(tmp, "NOUN_",5)==0) {
 			analyze_this_as_subject(tmp);
 #ifdef DEBUG
-			printf("finde_naechstes_subject: gefundenes subjekt: -%s-\n",tmp);
+			printf("finde_naechstes_subject 2: gefundenes subjekt: -%s-\n",tmp);
 #endif
 
 			return 0;
-		} else if (strncmp(tmp, "MODIFIER_CORPSE",15)==0) {
-			c_genus   = feminin;
-			c_numerus = n_plural;
-			c_person  = drittePerson;		
-
-			subject_genus   = feminin;
-			subject_numerus = n_plural;
-			subject_person  = drittePerson;
 		} else {
 			i++;
 		}
@@ -504,6 +496,15 @@ void clear_subject() {
 	subject_person=0;
 	subject_genus=0;
 	subject_numerus=0;
+
+	modifier_corpse = 0;
+}
+
+void clear_object() {
+	do_genus=0;
+	do_numerus=0;
+
+	modifier_corpse = 0;
 }
 
 void clear_verb() {
@@ -533,11 +534,6 @@ int analyze_this_as_subject(const char *text) {
 		return 1;
 	}
 	return 0;
-}
-
-void clear_object() {
-	do_genus=0;
-	do_numerus=0;
 }
 
 int analyze_this_as_object(const char *text) {
@@ -851,23 +847,36 @@ char* german(const char *line) {
 			}
 			
 		} else if (strncmp("NOUN_CORPSE", tmp, 11)==0) {
-			output[strlen(output)-1] = '\0';
+			if (modifier_corpse > 0) {
+				output[strlen(output)-1] = '\0';
+			} else {
+				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
+			}
 
 		} else if (strcmp("MODIFIER_CORPSE", tmp)==0) {
+			enum Numerus corpse_numerus;
+
 		  // erzeugt: Leichnam eines Kobolds / Leichname von Kobolden
 			// wenn keine PRONOMEN_POSSESSIV vor MODIFIER_CORPSE steht,
 			// wird der bestimmte Artikel eingefügt
-			if (find_token("NOUN_CORPSE", line+pos)) { modifier_corpse = 1; }
-			else if (find_token("NOUN_CORPSEs", line+pos)) { modifier_corpse = 2; }
+			if (find_token("NOUN_CORPSE", line+pos)) {
+				modifier_corpse = 1;
+				corpse_numerus = n_singular;
+			} else if (find_token("NOUN_CORPSEs", line+pos)) {
+				modifier_corpse = 2;
+				corpse_numerus = n_plural;
+			}
 
 			//printf("\nprevious_token\n");
 			previous_token(line, tmp2, pos-strlen("MODIFIER_CORPSE"));
-			if (!strcmp("PRONOMEN_POSSESSIV", tmp2)==0) {
-				append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, feminin, n_plural, c_artikel));
+			if ((!strcmp("PRONOMEN_POSSESSIV", tmp2)==0) &&
+					(corpse_numerus == n_singular)){
+				// "maskulin" hardkodiert, muss mit NOUN_CORPSE übereinstimmen
+				append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, maskulin, corpse_numerus, c_artikel));
 				append(output, " ");
 			}
 			
-			append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, n_singular|n_plural, c_artikel));
+			append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, corpse_numerus, c_artikel));
 			finde_naechstes_substantiv(line+pos);
 			if (modifier_corpse == 1) {
 				c_casus = genitiv; c_numerus = n_singular;
@@ -879,7 +888,7 @@ char* german(const char *line) {
 				c_casus = dativ; c_numerus = n_plural;
 				append(output, " von");
 			}
-			modifier_corpse = 0;
+			//modifier_corpse = 0;
 			insert_char = 1;
 
 		} else if (strncmp("NOUN_", tmp, 5)==0) {
