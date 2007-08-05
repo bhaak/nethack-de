@@ -288,7 +288,7 @@ castmu(mtmp, mattk, thinks_it_foundyou, foundyou)
 		You("are hit by a shower of missiles!"); /* EN You("are hit by a shower of missiles!"); */ // TODO DE
 		if(Antimagic) {
 			shieldeff(u.ux, u.uy);
-			pline_The("missiles bounce off!"); /* EN pline_The("missiles bounce off!"); */ // TODO DE
+			pline_The("NOUN_MISSILEs VERB_ABPRALLEN SATZKLAMMER!"); /* EN pline_The("missiles bounce off!"); */
 			dmg = 0;
 		} else dmg = d((int)mtmp->m_lev/2 + 1,6);
 		break;
@@ -514,7 +514,7 @@ int spellnum;
 	boolean reflects;
 
 	pline("A bolt of lightning strikes down at you from above!"); /* EN pline("A bolt of lightning strikes down at you from above!"); */ // TODO DE
-	reflects = ureflects("It bounces off your %s%s.", ""); /* EN reflects = ureflects("It bounces off your %s%s.", ""); */ // TODO DE
+	reflects = ureflects("Er wird von KASUS_DATIV PRONOMEN_POSSESSIV %s%s abgelenkt.", ""); /* EN reflects = ureflects("It bounces off your %s%s.", ""); */
 	if (reflects || Shock_resistance) {
 	    shieldeff(u.ux, u.uy);
 	    dmg = 0;

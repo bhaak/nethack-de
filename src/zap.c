@@ -1948,7 +1948,7 @@ boolean ordinary;
 		case SPE_MAGIC_MISSILE:
 		    if(Antimagic) {
 			shieldeff(u.ux, u.uy);
-			pline_The("missiles bounce!"); /* EN pline_The("missiles bounce!"); */ // TODO DE
+			pline_The("NOUN_MISSILEs VERB_ABPRALLEN SATZKLAMMER!"); /* EN pline_The("missiles bounce!"); */
 		    } else {
 			damage = d(4,6);
 			pline("Idiot!  You've shot yourself!"); /* EN pline("Idiot!  You've shot yourself!"); */ // TODO DE
@@ -3066,7 +3066,7 @@ xchar sx, sy;
 	case ZT_MAGIC_MISSILE:
 	    if (Antimagic) {
 		shieldeff(sx, sy);
-		pline_The("missiles bounce off!"); /* EN pline_The("missiles bounce off!"); */ // TODO DE
+		pline_The("NOUN_MISSILEs VERB_ABPRALLEN SATZKLAMMER!"); /* EN pline_The("missiles bounce off!"); */
 	    } else {
 		dam = d(nd,6);
 		exercise(A_STR, FALSE);
@@ -3472,7 +3472,7 @@ register int dx,dy;
 	    bounce = 0;
 	    range--;
 	    if(range && isok(lsx, lsy) && cansee(lsx,lsy))
-				pline("%s bounces!", The(fltxt)); /* EN pline("%s bounces!", The(fltxt)); */ // TODO DE
+				pline("SUBJECT %s VERB_ABPRALLEN SATZKLAMMER!", The(fltxt)); /* EN pline("%s bounces!", The(fltxt)); */
 	    if(!dx || !dy || !rn2(20)) {
 		dx = -dx;
 		dy = -dy;

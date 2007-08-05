@@ -724,6 +724,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_PULSIEREN", "pulsieren"),
 		Verb.verb("VERB_ENTSORGEN", "entsorgen"),
 		Verb.verb("VERB_GRAUEN", "grauen"),
+		Verb.verb("VERB_ABPRALLEN", "prallen", "ab"),
 
   ]
 
