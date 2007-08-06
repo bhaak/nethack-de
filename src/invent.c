@@ -2231,7 +2231,7 @@ boolean picked_some;
 {
 	struct obj *otmp;
 	struct trap *trap;
-	const char *verb = Blind ? "VERB_FEEL" : "VERB_SEE"; /* EN const char *verb = Blind ? "feel" : "see"; */
+	const char *verb = Blind ? "VERB_SPUEREN" : "VERB_SEE"; /* EN const char *verb = Blind ? "feel" : "see"; */
 	const char *dfeature = (char *)0;
 	char fbuf[BUFSZ], fbuf2[BUFSZ];
 	winid tmpwin;

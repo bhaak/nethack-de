@@ -386,7 +386,7 @@ pick_lock(pick) /* pick a lock with a given object */
 				Blind ? "feel" : "see"); /* EN Blind ? "feel" : "see"); */ // TODO DE
 		else
 		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.", /* EN You("%s no door there.", */
-				Blind ? "VERB_FEEL" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
+				Blind ? "VERB_SPUEREN" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
 		return(0);
 	    }
 	    switch (door->doormask) {
@@ -651,7 +651,7 @@ doclose()		/* try to close a door */
 		    pline("Es gibt keinen offensichtlichen Weg die Zugbrücke zu schliessen."); /* EN There("is no obvious way to close the drawbridge."); */
 		else
 		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.", /* EN You("%s no door there.", */
-				Blind ? "VERB_FEEL" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
+				Blind ? "VERB_SPUEREN" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
 		return(0);
 	}
 

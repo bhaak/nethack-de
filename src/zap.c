@@ -239,7 +239,7 @@ struct obj *otmp;
 		wake = FALSE;	/* don't want immediate counterattack */
 		if (u.uswallow && mtmp == u.ustuck) {
 			if (is_animal(mtmp->data)) {
-				if (Blind) You("VERB_FEEL einen plötzlichen Luftzug!"); /* EN if (Blind) You_feel("a sudden rush of air!"); */
+				if (Blind) You("VERB_SPUEREN einen plötzlichen Luftzug!"); /* EN if (Blind) You_feel("a sudden rush of air!"); */
 				else pline("SUBJECT %s VERB_OEFFNEN OBJECT PRONOMEN_ NOUN_MUND!", Monnam(mtmp)); /* EN else pline("%s opens its mouth!", Monnam(mtmp)); */  // TODO DE
 			}
 			expels(mtmp, mtmp->data, TRUE);

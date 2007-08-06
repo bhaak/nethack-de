@@ -569,7 +569,7 @@ Amulet_on()
 		} else
 		    /* already polymorphed into single-gender monster; only
 		       changed the character's base sex */
-		    You("VERB_FEEL OBJECT PRONOMEN_PERSONAL wie PRONOMEN_PERSONAL selbst."); /* EN You("don't feel like yourself."); */
+		    You("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL nicht wie NEUES_OBJECT KASUS_NOMINATIV PRONOMEN_PERSONAL selbst."); /* EN You("don't feel like yourself."); */
 		pline_The("NOUN_AMULET löst sich auf!"); /* EN pline_The("amulet disintegrates!"); */
 		if (orig_sex == poly_gender() && uamul->dknown &&
 			!objects[AMULET_OF_CHANGE].oc_name_known &&
@@ -793,7 +793,7 @@ boolean gone;
 
 		if (Invisible && !Blind) {
 		    newsym(u.ux,u.uy);
-		    pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht mehr sehen."); /* EN pline("Suddenly you cannot see yourself."); */
+		    pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL nicht mehr sehen."); /* EN pline("Suddenly you cannot see yourself."); */
 		    makeknown(RIN_SEE_INVISIBLE);
 		}
 		break;

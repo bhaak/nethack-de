@@ -343,7 +343,7 @@ register int x,y;
 		} else
 			et = ep->engr_txt;
 		pline("%s: \"%s\".", /* EN You("%s: \"%s\".", */
-		      (Blind) ? "SUBJECT PRONOMEN_PERSONAL VERB_FEEL die Worte" : "Da steht",  et); // TODO erspürst ?
+		      (Blind) ? "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN die Worte" : "Da steht",  et); // TODO erspürst ?
 		if(flags.run > 1) nomul(0);
 	    }
 	}
