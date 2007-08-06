@@ -725,6 +725,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_ENTSORGEN", "entsorgen"),
 		Verb.verb("VERB_GRAUEN", "grauen"),
 		Verb.verb("VERB_ABPRALLEN", "prallen", "ab"),
+		Verb.verb("VERB_LIEGEN", "liegen"),
 
   ]
 
@@ -2163,6 +2164,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orakel", "", "neutrum"),
     #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
     dekliniere_substantiv("NOUN_HIGH_PRIEST", "Hohepriester", "s", "Hohepriester", "", "maskulin"),
+    dekliniere_substantiv("NOUN_HIGH_PRIESTESS", "Hohepriesterin", "", "Hohepriesterinn", "en", "feminin","nen"),
     dekliniere_substantiv("NOUN_SOLDIER", "Soldat", "en", "Soldat", "en", "maskulin", "en"),
     "/* 'Korporal' exists as a military term in the Austrian 'Bundesheer' and\nthe Swiss Army. "+
     "'Leutnant' and 'Hauptmann' exist in these too and also in\nthe German 'Bundeswehr'.\n"+
@@ -2472,6 +2474,7 @@ def ausgabe_nouns
 		dekliniere_substantiv("NOUN_OBJECT","Objekt","es","Objekt","e","neutrum"),
 		dekliniere_substantiv("NOUN_NAEHE","Nähe","","","","feminin"),
 		dekliniere_substantiv("NOUN_GEISTESSCHAERFE","Geistesschärfe","","Geistesschärfe","en","feminin"),
+		dekliniere_substantiv("NOUN_FRESSLUST","Fresslust","","Fresslüst","e","feminin"),
 
     "/* ======================================================= */",
     "/* Adjektive */",

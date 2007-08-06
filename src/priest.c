@@ -249,13 +249,13 @@ char *pname;		/* caller-supplied output buffer */
 {
 	const char *what = Hallucination ? rndmonnam() : mon->data->mname;
 
-	Strcpy(pname, "the "); /* EN Strcpy(pname, "the "); */ // TODO DE
-	if (mon->minvis) Strcat(pname, "invisible "); /* EN if (mon->minvis) Strcat(pname, "invisible "); */ // TODO DE
+	Strcpy(pname, "ARTIKEL_BESTIMMTER "); /* EN Strcpy(pname, "the "); */
+	if (mon->minvis) Strcat(pname, "ADJEKTIV_INVISIBLE "); /* EN if (mon->minvis) Strcat(pname, "invisible "); */
 	if (mon->ispriest || mon->data == &mons[PM_ALIGNED_PRIEST] ||
 					mon->data == &mons[PM_ANGEL]) {
 		/* use epri */
 		if (mon->mtame && mon->data == &mons[PM_ANGEL])
-			Strcat(pname, "guardian "); /* EN Strcat(pname, "guardian "); */ // TODO DE
+			Strcat(pname, "NOUN_GUARDIAN "); /* EN Strcat(pname, "guardian "); */
 		if (mon->data != &mons[PM_ALIGNED_PRIEST] &&
 				mon->data != &mons[PM_HIGH_PRIEST]) {
 			Strcat(pname, what);
@@ -263,23 +263,27 @@ char *pname;		/* caller-supplied output buffer */
 		}
 		if (mon->data != &mons[PM_ANGEL]) {
 			if (!mon->ispriest && EPRI(mon)->renegade)
-				Strcat(pname, "renegade "); /* EN Strcat(pname, "renegade "); */ // TODO DE
+				Strcat(pname, "ADJEKTIV_RENEGADE "); /* EN Strcat(pname, "renegade "); */
 			if (mon->data == &mons[PM_HIGH_PRIEST])
-				Strcat(pname, "high "); /* EN Strcat(pname, "high "); */ // TODO DE
-			if (Hallucination)
-				Strcat(pname, "poohbah "); /* EN Strcat(pname, "poohbah "); */ // TODO DE
-			else if (mon->female)
-				Strcat(pname, "priestess "); /* EN Strcat(pname, "priestess "); */ // TODO DE
+				Strcat(pname, "NOUN_HIGH_"); /* EN Strcat(pname, "high "); */
+#ifdef GERMAN
 			else
-				Strcat(pname, "priest "); /* EN Strcat(pname, "priest "); */ // TODO DE
+				Strcat(pname, "NOUN_");
+#endif
+			if (Hallucination)
+				Strcat(pname, "POOHBAH "); /* EN Strcat(pname, "poohbah "); */ /* NOUN_HIGH_POOHBAH, NOUN_POOHBAH */
+			else if (mon->female)
+				Strcat(pname, "PRIESTESS "); /* EN Strcat(pname, "priestess "); */ /* NOUN_HIGH_PRIESTESS, NOUN_PRIESTESS */
+			else
+				Strcat(pname, "PRIEST "); /* EN Strcat(pname, "priest "); */ /* NOUN_HIGH_PRIEST, NOUN_PRIEST */
 		}
-		Strcat(pname, "of "); /* EN Strcat(pname, "of "); */ // TODO DE
+		Strcat(pname, "KASUS_GENITIV ARTIKEL_BESTIMMTER "); /* EN Strcat(pname, "of "); */
 		Strcat(pname, halu_gname((int)EPRI(mon)->shralign));
 		return(pname);
 	}
 	/* use emin instead of epri */
 	Strcat(pname, what);
-	Strcat(pname, " of "); /* EN Strcat(pname, " of "); */ // TODO DE
+	Strcat(pname, " KASUS_GENITIV ARTIKEL_BESTIMMTER "); /* EN Strcat(pname, " of "); */
 	Strcat(pname, halu_gname(EMIN(mon)->min_align));
 	return(pname);
 }
@@ -352,14 +356,14 @@ register int roomno;
 		if(sanctum && Is_sanctum(&u.uz)) {
 		    if(priest->mpeaceful) {
 			msg1 = "Infidel, you have entered Moloch's Sanctum!"; /* EN msg1 = "Infidel, you have entered Moloch's Sanctum!"; */ // TODO DE
-			msg2 = "Be gone!"; /* EN msg2 = "Be gone!"; */ // TODO DE
+			msg2 = "Hinfort!"; /* EN msg2 = "Be gone!"; */
 			priest->mpeaceful = 0;
 			set_malign(priest);
 		    } else
-			msg1 = "You desecrate this place by your presence!"; /* EN msg1 = "You desecrate this place by your presence!"; */ // TODO DE
+			msg1 = "Du entweihst diesen Ort mit deiner Anwesenheit!"; /* EN msg1 = "You desecrate this place by your presence!"; */
 		} else {
-		    Sprintf(buf, "Pilgrim, you enter a %s place!", /* EN Sprintf(buf, "Pilgrim, you enter a %s place!", */ // TODO DE
-			    !shrined ? "desecrated" : "sacred"); /* EN !shrined ? "desecrated" : "sacred"); */ // TODO DE
+		    Sprintf(buf, "%s, du betrittst einen %s Ort!", flags.female ? "Pilgerin" : "Pilger", /* EN Sprintf(buf, "Pilgrim, you enter a %s place!", */
+			    !shrined ? "entweihten" : "geheiligten"); /* EN !shrined ? "desecrated" : "sacred"); */
 		    msg1 = buf;
 		}
 		if (can_speak) {
@@ -370,9 +374,9 @@ register int roomno;
 		    /* !tended -> !shrined */
 		    if (!shrined || !p_coaligned(priest) ||
 			    u.ualign.record <= ALGN_SINNED)
-			You("have a%s forbidding feeling...", /* EN You("have a%s forbidding feeling...", */ // TODO DE
-				(!shrined) ? "" : " strange"); /* EN (!shrined) ? "" : " strange"); */ // TODO DE
-		    else You("experience a strange sense of peace."); /* EN else You("experience a strange sense of peace."); */ // TODO DE
+			You("VERB_HAVE ein%s Gefühl des forbidding feeling...", /* EN You("have a%s forbidding feeling...", */ // TODO DE
+				(!shrined) ? "" : " seltsames"); /* EN (!shrined) ? "" : " strange"); */ 
+		    else You("VERB_SEIN von einem seltsamen Gefühl der Ruhe und des Friedens erfüllt."); /* EN else You("experience a strange sense of peace."); */
 		}
 	    } else {
 		switch(rn2(3)) {
@@ -409,7 +413,7 @@ register struct monst *priest;
 	u.uconduct.gnostic++;
 
 	if(priest->mflee || (!priest->ispriest && coaligned && strayed)) {
-	    pline("%s doesn't want anything to do with you!", /* EN pline("%s doesn't want anything to do with you!", */ // TODO DE
+	    pline("SUBJECT %s doesn't want anything to do with you!", /* EN pline("%s doesn't want anything to do with you!", */ // TODO DE
 				Monnam(priest));
 	    priest->mpeaceful = 0;
 	    return;
@@ -438,7 +442,7 @@ register struct monst *priest;
 	/* you desecrated the temple and now you want to chat? */
 	if(priest->mpeaceful && *in_rooms(priest->mx, priest->my, TEMPLE) &&
 		  !has_shrine(priest)) {
-	    verbalize("Begone!  Thou desecratest this holy place with thy presence."); /* EN verbalize("Begone!  Thou desecratest this holy place with thy presence."); */ // TODO DE
+	    verbalize("Hinfort!  Du entweihst diese Heilige Stätte mit deiner Anwesenheit."); /* EN verbalize("Begone!  Thou desecratest this holy place with thy presence."); */
 	    priest->mpeaceful = 0;
 	    return;
 	}
@@ -447,7 +451,7 @@ register struct monst *priest;
 	    if(coaligned && !strayed) {
 		if (priest->mgold > 0L) {
 		    /* Note: two bits is actually 25 cents.  Hmm. */
-		    pline("%s gives you %s for an ale.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */ // TODO DE
+		    pline("SUBJECT %s VERB_GEBEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL %s für ein Calanda.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */
 			(priest->mgold == 1L) ? "one bit" : "two bits"); /* EN (priest->mgold == 1L) ? "one bit" : "two bits"); */ // TODO DE
 		    if (priest->mgold > 1L)
 			u.ugold = 2L;
@@ -461,37 +465,37 @@ register struct monst *priest;
                 long pmoney = money_cnt(priest->minvent);
 		if (pmoney > 0L) {
 		    /* Note: two bits is actually 25 cents.  Hmm. */
-		    pline("%s gives you %s for an ale.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */ // TODO DE
+		    pline("%s VERB_GEBEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL %s für ein Calanda.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */
 			(pmoney == 1L) ? "one bit" : "two bits"); /* EN (pmoney == 1L) ? "one bit" : "two bits"); */ // TODO DE
 		     money2u(priest, pmoney > 1L ? 2 : 1);
 #endif
 		} else
-		    pline("%s preaches the virtues of poverty.", Monnam(priest)); /* EN pline("%s preaches the virtues of poverty.", Monnam(priest)); */ // TODO DE
+		    pline("SUBJECT %s VERB_PREDIGEN über die Tugend der Armut.", Monnam(priest)); /* EN pline("%s preaches the virtues of poverty.", Monnam(priest)); */
 		exercise(A_WIS, TRUE);
 	    } else
-		pline("%s is not interested.", Monnam(priest)); /* EN pline("%s is not interested.", Monnam(priest)); */ // TODO DE
+		pline("SUBJECT %s VERB_SEIN nicht interessiert.", Monnam(priest)); /* EN pline("%s is not interested.", Monnam(priest)); */
 	    return;
 	} else {
 	    long offer;
 
-	    pline("%s asks you for a contribution for the temple.", /* EN pline("%s asks you for a contribution for the temple.", */ // TODO DE
+	    pline("SUBJECT %s VERB_BITTEN OBJECT PRONOMEN_PERSONAL um eine Spende für Tempel.", /* EN pline("%s asks you for a contribution for the temple.", */
 			Monnam(priest));
 	    if((offer = bribe(priest)) == 0) {
-		verbalize("Thou shalt regret thine action!"); /* EN verbalize("Thou shalt regret thine action!"); */ // TODO DE
+		verbalize("Du wirst deine Taten bereuen!"); /* EN verbalize("Thou shalt regret thine action!"); */
 		if(coaligned) adjalign(-1);
 	    } else if(offer < (u.ulevel * 200)) {
 #ifndef GOLDOBJ
-		if(u.ugold > (offer * 2L)) verbalize("Cheapskate."); /* EN if(u.ugold > (offer * 2L)) verbalize("Cheapskate."); */ // TODO DE
+		if(u.ugold > (offer * 2L)) verbalize("Geizkragen."); /* EN if(u.ugold > (offer * 2L)) verbalize("Cheapskate."); */
 #else
-		if(money_cnt(invent) > (offer * 2L)) verbalize("Cheapskate."); /* EN if(money_cnt(invent) > (offer * 2L)) verbalize("Cheapskate."); */ // TODO DE
+		if(money_cnt(invent) > (offer * 2L)) verbalize("Geizkragen."); /* EN if(money_cnt(invent) > (offer * 2L)) verbalize("Cheapskate."); */
 #endif
 		else {
-		    verbalize("I thank thee for thy contribution."); /* EN verbalize("I thank thee for thy contribution."); */ // TODO DE
+		    verbalize("Ich danke dir für deine Spende."); /* EN verbalize("I thank thee for thy contribution."); */
 		    /*  give player some token  */
 		    exercise(A_WIS, TRUE);
 		}
 	    } else if(offer < (u.ulevel * 400)) {
-		verbalize("Thou art indeed a pious individual."); /* EN verbalize("Thou art indeed a pious individual."); */ // TODO DE
+		verbalize("Du bist wirklich ein gottesfürchtiges Individuum."); /* EN verbalize("Thou art indeed a pious individual."); */
 #ifndef GOLDOBJ
 		if(u.ugold < (offer * 2L)) {
 #else
