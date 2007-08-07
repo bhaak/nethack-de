@@ -466,6 +466,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
 		# ie o o
   when "fliegen": v = VerbUnregelmaessig.new("fliegen", "flog", "geflogen")
   when "wiegen": v = VerbUnregelmaessig.new("wiegen", "wog", "gewogen")
+  when /(.*)schieﬂen$/: v = VerbUnregelmaessig.new($1+"schieﬂen", $1+"schoss", ge($1)+"schossen")
   else
     # regelmaessige Verben
     v = Verb.new(infinitiv)

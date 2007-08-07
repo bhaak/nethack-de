@@ -159,6 +159,14 @@ START_TEST (test_identified_spellbooks) {
 
 START_TEST (test_corpses) {
 	char *text[][2] = {
+		{"MODIFIER_CORPSE MODIFIER_EIGENNAME NOUN_MEDUSA halb ADJEKTIV_EATEN NOUN_CORPSE!",
+		 "Medusas halb verspeister Kadaver!"},
+		{"OBJECT MODIFIER_CORPSE MODIFIER_EIGENNAME NOUN_MEDUSA halb ADJEKTIV_EATEN NOUN_CORPSE!",
+		 "Medusas halb verspeisten Kadaver!"},
+		{"SUBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE ARTIKEL_BESTIMMTER NOUN_ORACLE NOUN_CORPSE schmeckt schrecklich!",
+		 "Der Kadaver des Orakels schmeckt schrecklich!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_AUFHOEREN SATZKLAMMER, KASUS_AKKUSATIV MODIFIER_CORPSE ARTIKEL_BESTIMMTER NOUN_ORACLE NOUN_CORPSE zu essen.",
+		 "Du hörst auf, den Kadaver des Orakels zu essen."},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT MODIFIER_CORPSE 2 ADJEKTIV_UNCURSED NOUN_DINGO NOUN_CORPSEs SATZKLAMMER.",
 		 "Du lässt Kadaver von 2 nicht verfluchten Dingos fallen."},
 		{"a - MODIFIER_CORPSE NOUN_COYOTE NOUN_CORPSE",
@@ -183,7 +191,9 @@ START_TEST (test_corpses) {
 		{"SUBJECT PRONOMEN_POSSESSIV MODIFIER_CORPSE NOUN_GREY_ELF NOUN_CORPSE VERB_WERDEN plötzlich lebendig!",
 		 "Dein Kadaver eines Grauelbes wird plötzlich lebendig!"},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_CORPSE VERB_SMELL verdorben!",
-		 "Der Kadaver riecht verdorben!"}
+		 "Der Kadaver riecht verdorben!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_AUFHOEREN SATZKLAMMER, KASUS_AKKUSATIV ARTIKEL_BESTIMMTER MODIFIER_CORPSE NOUN_MINOTAUR NOUN_CORPSE zu essen.",
+		 "Du hörst auf, den Kadaver eines Minotaurus zu essen."}
 	};
 
 	check_strings(text, sizeof(text)/8);

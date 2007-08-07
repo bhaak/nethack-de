@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-//#include "hack.h"
+//#include <hack.h>
 #include "german.h"
 #define TBUFSZ 300
 
@@ -411,6 +411,7 @@ int finde_naechstes_subject(const char* text) {
 	char tmp2[TBUFSZ];
 #ifdef DEBUG
 	printf("finde_naechstes_subject: %s\n", text);
+	print_state();
 #endif
 	while (i<strlen(text)) {
 		next_token(text,tmp, i);
@@ -433,6 +434,21 @@ int finde_naechstes_subject(const char* text) {
 			printf("finde_naechstes_subject 1: gefundenes subjekt: -%s-\n",tmp);
 #endif
 			return 0;
+		} else if (strncmp(tmp, "MODIFIER_CORPSE",15)==0) {
+			c_genus   = maskulin;
+			c_person  = drittePerson;
+			subject_genus   = maskulin;
+			subject_person  = drittePerson;
+
+			if (find_token("NOUN_CORPSE", text)) {
+				c_numerus = n_singular;
+				subject_numerus = n_singular;
+			} else if (find_token("NOUN_CORPSEs", text)) {
+				c_numerus = n_plural;
+				subject_numerus = n_plural;
+			}
+
+
 		} else if (strncmp(tmp, "NOUN_",5)==0) {
 			analyze_this_as_subject(tmp);
 #ifdef DEBUG
@@ -457,11 +473,12 @@ int finde_naechstes_objekt(const char* text) {
 	char *subject;
 #ifdef DEBUG
 	printf("finde_naechstes_objekt: %s\n", text);
+	print_state();
 #endif
 	while (i<strlen(text)) {
 		next_token(text,tmp, i);
 #ifdef DEBUG
-		printf("-%s-\n",tmp);
+		printf("finde_naechstes_objekt: -%s-\n",tmp);
 #endif
 		i += strlen(tmp);
 	
@@ -481,10 +498,16 @@ int finde_naechstes_objekt(const char* text) {
 
 			return 0;
 		} else if (strncmp(tmp, "MODIFIER_CORPSE",15)==0) {
-			c_genus   = feminin;
-			c_numerus = n_plural;
+			c_genus   = maskulin;
 			c_person  = drittePerson;		
 			c_casus   = verb_do_casus; // TODO überprüfen, ob verb schon angetroffen
+			c_artikel = ohne;
+			if (find_token("NOUN_CORPSE", text)) {
+				c_numerus = n_singular;
+			} else if (find_token("NOUN_CORPSEs", text)) {
+				c_numerus = n_plural;
+			}
+			return 0;
 		} else {
 			i++;
 		}
@@ -581,6 +604,15 @@ int finde_naechstes_substantiv(const char* text) {
 			c_numerus = pm_numerus;
 			c_person  = pm_person;		
 
+			return 0;
+		} else if (strncmp(tmp, "MODIFIER_CORPSE",15)==0) {
+			c_genus   = maskulin;
+			c_person  = drittePerson;		
+			if (find_token("NOUN_CORPSE", text)) {
+				c_numerus = n_singular;
+			} else if (find_token("NOUN_CORPSEs", text)) {
+				c_numerus = n_plural;
+			}
 			return 0;
 		} else if (strncmp(tmp, "NOUN_",5)==0) {
 			int k=0;
@@ -756,7 +788,7 @@ char* german(const char *line) {
 			Role_if(PM_SAMURAI) ||
 			Role_if(PM_WIZARD))
 #else
-	if (0)
+	if (1)
 #endif
 	{
 		pm_genus   = maskulin; // change to players choice
@@ -773,17 +805,15 @@ char* german(const char *line) {
 		 this gets values for the c_* variables, when there is
 		 no proper grammar structure, e.g in the inventory or 
 	   in the disoveries */
-	//print_state();
 	c_casus = nominativ;
 	verb_tempus_modus = praesens;
 	verb_do_casus = akkusativ;
 	finde_naechstes_subject(line);
-	//print_state();
 	while (pos<=strlen(line)) {
-		//print_state();
 		insert_char = 1;
 		next_token(line, tmp, pos);
 #ifdef DEBUG
+		print_state();
 		printf("tmp     : =%s=\n", tmp);
 		printf("line+pos: =%s=\n", line+pos);
 #endif
@@ -867,26 +897,44 @@ char* german(const char *line) {
 				corpse_numerus = n_plural;
 			}
 
+			//print_state();
 			//printf("\nprevious_token\n");
-			previous_token(line, tmp2, pos-strlen("MODIFIER_CORPSE"));
-			if ((!strcmp("PRONOMEN_POSSESSIV", tmp2)==0) &&
-					(corpse_numerus == n_singular)){
-				// "maskulin" hardkodiert, muss mit NOUN_CORPSE übereinstimmen
-				append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, maskulin, corpse_numerus, c_artikel));
-				append(output, " ");
-			}
-			
-			append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, corpse_numerus, c_artikel));
-			finde_naechstes_substantiv(line+pos);
-			if (modifier_corpse == 1) {
-				c_casus = genitiv; c_numerus = n_singular;
-				if (!strncmp("ARTIKEL_",line+pos+1,7)==0) {
-					append(output, " ");
-					append(output, get_wort("ARTIKEL_UNBESTIMMTER", c_casus, c_genus, c_numerus, c_artikel));
-				}
+			next_token(line, tmp2, pos+1);
+			//printf("\nnext_token %s\n",tmp2);
+			if (strcmp("MODIFIER_EIGENNAME", tmp2)==0) {
+				pos += strlen("MODIFIER_EIGENNAME")+1;
+				next_token(line, tmp2, pos+1);
+				//printf("\nnext_token %s\n",tmp2);
+
+				append(output, get_wort(tmp2, genitiv, beliebiger_genus, n_singular, beliebiger_artikel));
+				pos += strlen(tmp2)+1;
+
+				modifier_corpse = 0;
+
 			} else {
-				c_casus = dativ; c_numerus = n_plural;
-				append(output, " von");
+				previous_token(line, tmp2, pos-strlen("MODIFIER_CORPSE"));
+				if ((!strcmp("PRONOMEN_POSSESSIV", tmp2)==0) &&
+						(!strncmp("ARTIKEL_", tmp2, 8)==0) &&
+						(corpse_numerus == n_singular)){
+					// "maskulin" hardkodiert, muss mit NOUN_CORPSE übereinstimmen
+					append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, maskulin, corpse_numerus, c_artikel));
+					append(output, " ");
+				}
+			
+				append(output, get_wort("NOUN_CORPSE", c_casus, maskulin|feminin|neutrum, corpse_numerus, c_artikel));
+				finde_naechstes_substantiv(line+pos);
+				if (modifier_corpse == 1) {
+					c_casus = genitiv; c_numerus = n_singular;
+					if ((!strncmp("ARTIKEL_",line+pos+1,8)==0) &&
+							(!strncmp("KASUS_",line+pos+1,6)==0) &&
+							(!strncmp("MODIFIER_EIGENNAME",line+pos+1,18)==0)) {
+						append(output, " ");
+						append(output, get_wort("ARTIKEL_UNBESTIMMTER", c_casus, c_genus, c_numerus, c_artikel));
+					}
+				} else {
+					c_casus = dativ; c_numerus = n_plural;
+					append(output, " von");
+				}
 			}
 			//modifier_corpse = 0;
 			insert_char = 1;
@@ -1029,6 +1077,10 @@ char* german(const char *line) {
 			else if (strcmp("MODIFIER_KONJUNKTIV", tmp)==0) { verb_tempus_modus = konjunktiv; }
 			else if (strcmp("MODIFIER_KONJUNKTIV_II", tmp)==0) { verb_tempus_modus = konjunktiv_ii; }
 			else if (strcmp("MODIFIER_VERB_INFINITIV", tmp)==0) { verb_infinitiv = 1; }
+			else if (strcmp("MODIFIER_EIGENNAME", tmp)==0) { }
+			else {
+				fprintf(stderr, "Unbekannter Modifier %s\n",tmp);
+			}
 
 		} else if (strncmp("NUMERUS_", tmp, 8)==0) {
 			insert_char = 0;
@@ -1069,7 +1121,7 @@ char* german(const char *line) {
 		output[0] = toupper(output[0]);
 	}
 
-	FILE *file = fopen("/tmp/log", "a");
+	FILE *file = fopen("/tmp/nethack-de.log", "a");
 	fprintf(file, "%s\n",line);
 	fprintf(file, "%s\n",output);
 	fclose(file);

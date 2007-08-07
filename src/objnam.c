@@ -729,18 +729,17 @@ ring:
 		break;
 	case FOOD_CLASS:
 		if (obj->oeaten)
-		    Strcat(prefix, "halb ADJEKTIV_EATEN ");
+		    Strcat(prefix, "halb ADJEKTIV_EATEN "); /* EN Strcat(prefix, "partly eaten "); */
 		if (obj->otyp == CORPSE) {
-				Strcpy(tmpbuf, prefix);
-				Strcpy(prefix,"MODIFIER_CORPSE ");
-				Strcat(prefix, tmpbuf);
 		    if (mons[obj->corpsenm].geno & G_UNIQ) {
-			Sprintf(prefix, "MODIFIER_CORPSE %s%s ",
+			Sprintf(prefix, "MODIFIER_CORPSE %s %s %s", /* EN Sprintf(prefix, "%s%s ", */
 				(type_is_pname(&mons[obj->corpsenm]) ?
-					"" : "the "), /* EN "" : "the "), */ // TODO DE
-				s_suffix(mons[obj->corpsenm].mname));
-			if (obj->oeaten) Strcat(prefix, "halb ADJEKTIV_EATEN ");
+					"MODIFIER_EIGENNAME" : "ARTIKEL_BESTIMMTER"), /* EN "" : "the "), */
+				mons[obj->corpsenm].mname, /* EN s_suffix(mons[obj->corpsenm].mname)); */
+				(obj->oeaten) ? "halb ADJEKTIV_EATEN " : "");
+			 /* EN if (obj->oeaten) Strcat(prefix, "partly eaten "); */
 		    } else {
+			Strcat(prefix, "MODIFIER_CORPSE "); /* EN */
 			Strcat(prefix, mons[obj->corpsenm].mname);
 			Strcat(prefix, " ");
 		    }
@@ -755,7 +754,7 @@ ring:
 			Strcat(prefix, mons[obj->corpsenm].mname);
 			Strcat(prefix, " ");
 			if (obj->spe)
-			    Strcat(bp, " (laid by you)"); /* EN Strcat(bp, " (laid by you)"); */ // TODO DE
+			    Strcat(bp, " (selbstgelegt)"); /* EN Strcat(bp, " (laid by you)"); */
 		    }
 		}
 		if (obj->otyp == MEAT_RING) goto ring;
@@ -859,7 +858,7 @@ boolean ignore_oquan;	/* to force singular */
 {
 	char *nambuf = nextobuf();
 
-	Sprintf(nambuf, "MODIFIER_CORPSE %s NOUN_CORPSE", mons[otmp->corpsenm].mname); /* EN Sprintf(nambuf, "%s corpse", mons[otmp->corpsenm].mname); */
+	Sprintf(nambuf, "MODIFIER_CORPSE %s NOUN_CORPSE 1", mons[otmp->corpsenm].mname); /* EN Sprintf(nambuf, "%s corpse", mons[otmp->corpsenm].mname); */
 	if (ignore_oquan || otmp->quan < 2)
 	    return nambuf;
 	else
@@ -2165,7 +2164,7 @@ boolean from_user;
 		typ = SCR_BLANK_PAPER;
 		goto typfnd;
 	}
-	fprintf("8####### dn: -%s-\n", dn); // DE DEBUG
+	fprintf(stderr, "8####### dn: -%s-\n", dn); // DE DEBUG
 	if(unlabeled && !BSTRCMPI(bp, p-14, "NOUN_SPELLBOOK")) {
 		typ = SPE_BLANK_PAPER;
 		goto typfnd;
