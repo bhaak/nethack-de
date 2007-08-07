@@ -64,7 +64,7 @@ noises(magr, mattk)
 		noisetime = moves;
 		You_hear("%s%s.",
 			(mattk->aatyp == AT_EXPL) ? "eine Explosion" : "Geräusche", /* EN (mattk->aatyp == AT_EXPL) ? "an explosion" : "some noises", */
-			farq ? " aus einiger Entfernung" : ""); /* EN farq ? " in the distance" : ""); */
+			farq ? " in einiger Entfernung" : ""); /* EN farq ? " in the distance" : ""); */
 	}
 }
 
@@ -403,7 +403,7 @@ hitmm(magr, mdef, mattk)
 				Sprintf(buf,"SUBJECT %s VERB_TOUCH OBJECT", magr_name); /* EN Sprintf(buf,"%s touches", magr_name); */
 				break;
 			case AT_TENT:
-				Sprintf(buf, "SUBJECT %s tentacles suck OBJECT", /* EN Sprintf(buf, "%s tentacles suck", */
+				Sprintf(buf, "SUBJECT %s tentacles suck OBJECT", /* EN Sprintf(buf, "%s tentacles suck", */ // TODO DE
 					s_suffix(magr_name));
 				break;
 			case AT_HUGS:

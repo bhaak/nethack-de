@@ -208,7 +208,7 @@ boolean talk;
 		if (Hallucination)
 		    pline("Oh, Mist!  Alles ist dunkel!  Hilfe!"); /* EN pline("Oh, bummer!  Everything is dark!  Help!"); */
 		else
-		    pline("Dunkelheit VERB_BRECHEN über OBJECT PRONOMEN_PERSONAL herein."); /* EN pline("A cloud of darkness falls upon you."); */
+		    pline("SUBJECT NOUN_DUNKELHEIT VERB_BRECHEN über OBJECT PRONOMEN_PERSONAL herein."); /* EN pline("A cloud of darkness falls upon you."); */
 	    }
 	    /* Before the hero goes blind, set the ball&chain variables. */
 	    if (Punished) set_bc(0);
@@ -313,7 +313,7 @@ ghost_from_bottle()
 		return;
 	}
 	pline("As you open the bottle, an enormous %s emerges!", /* EN pline("As you open the bottle, an enormous %s emerges!", */ // TODO DE
-		Hallucination ? rndmonnam() : (const char *)"ghost"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */ // TODO DE
+		Hallucination ? rndmonnam() : (const char *)"NOUN_GHOST"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */
 	if(flags.verbose)
 	    You("VERB_SEIN zu Tode erschrocken und starr vor Angst."); /* EN You("are frightened to death, and unable to move."); */
 	nomul(-3);
@@ -464,7 +464,7 @@ peffects(otmp)
 			pline("Das brennt wie Säure!"); /* EN pline("This burns like acid!"); */
 			exercise(A_CON, FALSE);
 			if (u.ulycn >= LOW_PM) {
-			    Your("affinity to %s disappears!", /* EN Your("affinity to %s disappears!", */ // TODO DE
+			    Your("NOUN_VERBUNDENHEIT mit OBJECT KASUS_DATIV %s VERB_VERSCHWINDEN!", /* EN Your("affinity to %s disappears!", */
 				 makeplural(mons[u.ulycn].mname));
 			    if (youmonst.data == &mons[u.ulycn])
 				you_unwere(FALSE);
@@ -529,14 +529,14 @@ peffects(otmp)
 			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ // TODO DE
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			enlightenment(0);
-			pline_The("feeling subsides."); /* EN pline_The("feeling subsides."); */ // TODO DE
+			pline("Das Gefühl lässt nach."); /* EN pline_The("feeling subsides."); */
 			exercise(A_WIS, TRUE);
 		}
 		break;
 	case SPE_INVISIBILITY:
 		/* spell cannot penetrate mummy wrapping */
 		if (BInvis && uarmc->otyp == MUMMY_WRAPPING) {
-			You_feel("rather itchy under your %s.", xname(uarmc)); /* EN You_feel("rather itchy under your %s.", xname(uarmc)); */ // TODO DE
+			Du_fuehlst_dich("rather itchy under your %s.", xname(uarmc)); /* EN You_feel("rather itchy under your %s.", xname(uarmc)); */ // TODO DE
 			break;
 		}
 		/* FALLTHRU */
@@ -550,7 +550,7 @@ peffects(otmp)
 		else incr_itimeout(&HInvis, rn1(15,31));
 		newsym(u.ux,u.uy);	/* update position */
 		if(otmp->cursed) {
-		    pline("For some reason, you feel your presence is known."); /* EN pline("For some reason, you feel your presence is known."); */ // TODO DE
+		    pline("Aus irgendeinem Grund VERB_SPUEREN SUBJECT_IM_SATZ PRONOMEN_PERSONAL, dass NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_ANWESENHEIT bekannt VERB_SEIN."); /* EN pline("For some reason, you feel your presence is known."); */
 		    aggravate();
 		}
 		break;
@@ -882,7 +882,7 @@ peffects(otmp)
 			} else if(otmp->cursed)
 			    pline("Das schmeckt wie Rizinusöl."); /* EN pline("This tastes like castor oil."); */
 			else
-			    pline("That was smooth!"); /* EN pline("That was smooth!"); */ // TODO DE
+			    pline("Das ging runter wie Öl!"); /* EN pline("That was smooth!"); */
 			exercise(A_WIS, good_for_you);
 		}
 		break;
@@ -901,7 +901,7 @@ peffects(otmp)
 		unkn++; /* holy/unholy water can burn like acid too */
 		break;
 	case POT_POLYMORPH:
-		You_feel("a little %s.", Hallucination ? "normal" : "strange"); /* EN You_feel("a little %s.", Hallucination ? "normal" : "strange"); */ // TODO DE
+		Du_fuehlst_dich("etwas %s.", Hallucination ? "normal" : "seltsam"); /* EN You_feel("a little %s.", Hallucination ? "normal" : "strange"); */
 		if (!Unchanging) polyself(FALSE);
 		break;
 	default:
@@ -937,8 +937,8 @@ register struct obj *obj;
 register const char *txt;
 {
 	if (flags.beginner || !txt)
-		You("have a %s feeling for a moment, then it passes.", /* EN You("have a %s feeling for a moment, then it passes.", */ // TODO DE
-		Hallucination ? "normal" : "strange"); /* EN Hallucination ? "normal" : "strange"); */ // TODO DE
+		You("VERB_HAVE kurz ein %s Gefühl, dann vergeht's.", /* EN You("have a %s feeling for a moment, then it passes.", */
+		Hallucination ? "normales" : "seltsames"); /* EN Hallucination ? "normal" : "strange"); */
 	else
 		pline(txt);
 
@@ -979,7 +979,7 @@ boolean your_fault;
 		losehp(rnd(2), "thrown potion", KILLED_BY_AN); /* EN losehp(rnd(2), "thrown potion", KILLED_BY_AN); */ // TODO DE
 	} else {
 		distance = distu(mon->mx,mon->my);
-		if (!cansee(mon->mx,mon->my)) pline("Crash!"); /* EN if (!cansee(mon->mx,mon->my)) pline("Crash!"); */ // TODO DE
+		if (!cansee(mon->mx,mon->my)) pline("Klirr!"); /* EN if (!cansee(mon->mx,mon->my)) pline("Crash!"); */
 		else {
 		    char *mnam = mon_nam(mon);
 		    char buf[BUFSZ];
@@ -1009,7 +1009,7 @@ boolean your_fault;
 		    splatter_burning_oil(u.ux, u.uy);
 		break;
 	case POT_POLYMORPH:
-		You_feel("a little %s.", Hallucination ? "normal" : "strange"); /* EN You_feel("a little %s.", Hallucination ? "normal" : "strange"); */ // TODO DE
+		Du_fuehlst_dich("etwas %s.", Hallucination ? "normal" : "seltsam"); /* EN You_feel("a little %s.", Hallucination ? "normal" : "strange"); */
 		if (!Unchanging && !Antimagic) polyself(FALSE);
 		break;
 	case POT_ACID:
@@ -1122,7 +1122,7 @@ boolean your_fault;
 		    (void)split_mon(mon, (struct monst *)0);
 		} else if(mon->data == &mons[PM_IRON_GOLEM]) {
 		    if (canseemon(mon))
-			pline("%s rusts.", Monnam(mon)); /* EN pline("%s rusts.", Monnam(mon)); */ // TODO DE
+			pline("SUBJECT %s VERB_ROSTEN.", Monnam(mon)); /* EN pline("%s rusts.", Monnam(mon)); */
 		    mon->mhp -= d(1,6);
 		    /* should only be by you */
 		    if (mon->mhp < 1) killed(mon);
@@ -1445,7 +1445,7 @@ register struct obj *obj;
 		    (obj->oeroded < MAX_ERODE) && !rn2(2)) {
 			pline("SUBJECT %s %s %s.", /* EN pline("%s %s some%s.", */
 			      Your_buf, aobjnam(obj, "VERB_ROSTEN"), /* EN Your_buf, aobjnam(obj, "rust"), */
-			      obj->oeroded ? "weiter" : "ein wenig"); /* EN obj->oeroded ? " more" : "what"); */
+			      obj->oeroded ? "noch mehr" : "ein wenig"); /* EN obj->oeroded ? " more" : "what"); */
 			obj->oeroded++;
 			update_inventory();
 			return TRUE;
@@ -1487,8 +1487,8 @@ register struct obj *obj;
 		    ) {
 			if (!Blind) {
 				boolean oq1 = obj->quan == 1L;
-				pline_The("scroll%s %s.", /* EN pline_The("scroll%s %s.", */ // TODO DE
-						oq1 ? "" : "s", otense(obj, "fade")); /* EN oq1 ? "" : "s", otense(obj, "fade")); */ // TODO DE
+				pline_The("NOUN_SCROLL%s %s.", /* EN pline_The("scroll%s %s.", */
+						oq1 ? "" : "s", otense(obj, "VERB_VERBLASSEN")); /* EN oq1 ? "" : "s", otense(obj, "fade")); */
 			}
 			if(obj->unpaid && costly_spot(u.ux, u.uy)) {
 			    You("erase it, you pay for it."); /* EN You("erase it, you pay for it."); */ // TODO DE
@@ -1508,8 +1508,8 @@ register struct obj *obj;
 			} else {
 			    if (!Blind) {
 				    boolean oq1 = obj->quan == 1L;
-				    pline_The("spellbook%s %s.", /* EN pline_The("spellbook%s %s.", */ // TODO DE
-					oq1 ? "" : "s", otense(obj, "fade")); /* EN oq1 ? "" : "s", otense(obj, "fade")); */ // TODO DE
+				    pline_The("NOUN_SPELLBOOK%s %s.", /* EN pline_The("spellbook%s %s.", */
+					oq1 ? "" : "s", otense(obj, "VERB_VERBLASSEN")); /* EN oq1 ? "" : "s", otense(obj, "fade")); */
 			    }
 			    if(obj->unpaid && costly_spot(u.ux, u.uy)) {
 			        You("erase it, you pay for it."); /* EN You("erase it, you pay for it."); */ // TODO DE
@@ -1521,7 +1521,7 @@ register struct obj *obj;
 			return TRUE;
 		}
 	}
-	pline("%s %s wet.", Your_buf, aobjnam(obj,"get")); /* EN pline("%s %s wet.", Your_buf, aobjnam(obj,"get")); */ // TODO DE
+	pline("SUBJECT %s %s wet.", Your_buf, aobjnam(obj,"VERB_WERDEN")); /* EN pline("%s %s wet.", Your_buf, aobjnam(obj,"get")); */
 	return FALSE;
 }
 
@@ -1817,8 +1817,8 @@ dodip()
 		pline("%s %s with an oily sheen.", /* EN pline("%s %s with an oily sheen.", */ // TODO DE
 		      Yname2(obj), otense(obj, "gleam")); /* EN Yname2(obj), otense(obj, "gleam")); */ // TODO DE
 	    } else {
-		pline("%s %s less %s.", /* EN pline("%s %s less %s.", */ // TODO DE
-		      Yname2(obj), otense(obj, "are"), /* EN Yname2(obj), otense(obj, "are"), */ // TODO DE
+		pline("SUBJECT %s %s weniger %s.", /* EN pline("%s %s less %s.", */
+		      Yname2(obj), otense(obj, "VERB_SEIN"), /* EN Yname2(obj), otense(obj, "are"), */
 		      (obj->oeroded && obj->oeroded2) ? "ADJEKTIV_CORRODED und ADJEKTIV_ROSTIG" : /* EN (obj->oeroded && obj->oeroded2) ? "corroded and rusty" : */
 			obj->oeroded ? "ADJEKTIV_ROSTIG" : "ADJEKTIV_CORRODED"); /* EN obj->oeroded ? "rusty" : "corroded"); */
 		if (obj->oeroded > 0) obj->oeroded--;
@@ -1848,7 +1848,7 @@ dodip()
 		obj->age = 0;
 	    }
 	    if (obj->age > 1000L) {
-		pline("%s %s voll.", Yname2(obj), otense(obj, "VERB_SEIN")); /* EN pline("%s %s full.", Yname2(obj), otense(obj, "are")); */
+		pline("SUBJECT %s %s voll.", Yname2(obj), otense(obj, "VERB_SEIN")); /* EN pline("%s %s full.", Yname2(obj), otense(obj, "are")); */
 		potion->in_use = FALSE;	/* didn't go poof */
 	    } else {
 		You("VERB_FUELLEN OBJECT %s mit Öl.", yname(obj)); /* EN You("fill %s with oil.", yname(obj)); */
@@ -1956,14 +1956,14 @@ register struct obj *obj;
 	/* 0,1,2,3,4:  b=80%,5,5,5,5; nc=20%,20,20,20,20; c=5%,5,5,5,80 */
 
 	switch (chance) {
-	case 0 : verbalize("I am in your debt.  I will grant one wish!"); /* EN case 0 : verbalize("I am in your debt.  I will grant one wish!"); */ // TODO DE
+	case 0 : verbalize("Ich stehe tief in KASUS_DATIV PRONOMEN_POSSESSIV NOUN_SCHULD. NEUER_SATZ Ich gewähre KASUS_DATIV PRONOMEN_PERSONAL einen Wunsch!"); /* EN case 0 : verbalize("I am in your debt.  I will grant one wish!"); */
 		makewish();
 		mongone(mtmp);
 		break;
-	case 1 : verbalize("Thank you for freeing me!"); /* EN case 1 : verbalize("Thank you for freeing me!"); */ // TODO DE
+	case 1 : verbalize("Ich danke KASUS_DATIV PRONOMEN_PERSONAL für meine Befreiung!"); /* EN case 1 : verbalize("Thank you for freeing me!"); */
 		(void) tamedog(mtmp, (struct obj *)0);
 		break;
-	case 2 : verbalize("You freed me!"); /* EN case 2 : verbalize("You freed me!"); */ // TODO DE
+	case 2 : verbalize("SUBJECT PRONOMEN_PERSONAL VERB_HABEN mich befreit!"); /* EN case 2 : verbalize("You freed me!"); */
 		mtmp->mpeaceful = TRUE;
 		set_malign(mtmp);
 		break;

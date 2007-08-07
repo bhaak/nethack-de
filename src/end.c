@@ -272,25 +272,25 @@ register struct monst *mtmp;
 	   priest" alone isn't */
 	if ((mtmp->data->geno & G_UNIQ) != 0 && !(mtmp->data == &mons[PM_HIGH_PRIEST] && !mtmp->ispriest)) {
 	    if (!type_is_pname(mtmp->data))
-		Strcat(buf, "the "); /* EN Strcat(buf, "the "); */ // TODO DE
+		Strcat(buf, "ARTIKEL_BESTIMMTER "); /* EN Strcat(buf, "the "); */
 	    killer_format = KILLED_BY;
 	}
 	/* _the_ <invisible> <distorted> ghost of Dudley */
 	if (mtmp->data == &mons[PM_GHOST] && mtmp->mnamelth) {
-		Strcat(buf, "the "); /* EN Strcat(buf, "the "); */ // TODO DE
+		Strcat(buf, "ARTIKEL_BESTIMMTER "); /* EN Strcat(buf, "the "); */
 		killer_format = KILLED_BY;
 	}
 	if (mtmp->minvis)
-		Strcat(buf, "invisible "); /* EN Strcat(buf, "invisible "); */ // TODO DE
+		Strcat(buf, "ADJEKTIV_INVISIBLE "); /* EN Strcat(buf, "invisible "); */ 
 	if (distorted)
 		Strcat(buf, "hallucinogen-distorted "); /* EN Strcat(buf, "hallucinogen-distorted "); */
 
 	if(mtmp->data == &mons[PM_GHOST]) {
-		Strcat(buf, "ghost"); /* EN Strcat(buf, "ghost"); */ // TODO DE
+		Strcat(buf, "NOUN_GHOST"); /* EN Strcat(buf, "ghost"); */
 		if (mtmp->mnamelth) Sprintf(eos(buf), " of %s", NAME(mtmp)); /* EN if (mtmp->mnamelth) Sprintf(eos(buf), " of %s", NAME(mtmp)); */ // TODO DE
 	} else if(mtmp->isshk) {
-		Sprintf(eos(buf), "%s %s, the shopkeeper", /* EN Sprintf(eos(buf), "%s %s, the shopkeeper", */ // TODO DE
-			(mtmp->female ? "Ms." : "Mr."), shkname(mtmp)); /* EN (mtmp->female ? "Ms." : "Mr."), shkname(mtmp)); */ // TODO DE
+		Sprintf(eos(buf), "%s%s, ARTIKEL_BESTIMMTER NOUN_SHOPKEEPER", /* EN Sprintf(eos(buf), "%s %s, the shopkeeper", */
+			(mtmp->female ? "" : ""), shkname(mtmp)); /* EN (mtmp->female ? "Ms." : "Mr."), shkname(mtmp)); */
 		killer_format = KILLED_BY;
 	} else if (mtmp->ispriest || mtmp->isminion) {
 		/* m_monnam() suppresses "the" prefix plus "invisible", and
@@ -619,8 +619,8 @@ winid endwin;
 		makeknown(otmp->otyp);
 		otmp->known = otmp->dknown = otmp->bknown = otmp->rknown = 1;
 		/* assumes artifacts don't have quan > 1 */
-		Sprintf(pbuf, "%s%s (worth %ld %s and %ld points)", /* EN Sprintf(pbuf, "%s%s (worth %ld %s and %ld points)", */ // TODO DE
-			the_unique_obj(otmp) ? "The " : "",
+		Sprintf(pbuf, "%s%s (wert %ld %s und %ld Punkte)", /* EN Sprintf(pbuf, "%s%s (worth %ld %s and %ld points)", */ // TODO DE
+			the_unique_obj(otmp) ? "ARTIKEL_BESTIMMTER " : "", /* EN the_unique_obj(otmp) ? "The " : "", */
 			otmp->oartifact ? artifact_name(xname(otmp), &dummy) :
 				OBJ_NAME(objects[otmp->otyp]),
 			value, currency(value), points);
@@ -882,7 +882,7 @@ die:
 /* changing kilbuf really changes killer. we do it this way because
    killer is declared a (const char *)
 */
-	if (u.uhave.amulet) Strcat(kilbuf, " (with the Amulet)"); /* EN if (u.uhave.amulet) Strcat(kilbuf, " (with the Amulet)"); */ // TODO DE
+	if (u.uhave.amulet) Strcat(kilbuf, " (mit dem Amulet)"); /* EN if (u.uhave.amulet) Strcat(kilbuf, " (with the Amulet)"); */
 	else if (how == ESCAPED) {
 	    if (Is_astralevel(&u.uz))	/* offered Amulet to wrong deity */
 		Strcat(kilbuf, " (in celestial disgrace)"); /* EN Strcat(kilbuf, " (in celestial disgrace)"); */ // TODO DE
@@ -891,11 +891,11 @@ die:
 		/* don't bother counting to see whether it should be plural */
 	}
 
-	Sprintf(pbuf, "%s %s the %s...", Goodbye(), plname, /* EN Sprintf(pbuf, "%s %s the %s...", Goodbye(), plname, */ // TODO DE
+	Sprintf(pbuf, "%s %s ARTIKEL_BESTIMMTER %s...", Goodbye(), plname, /* EN Sprintf(pbuf, "%s %s the %s...", Goodbye(), plname, */ // TODO DE
 		how != ASCENDED ?
 		(const char *) ((flags.female && urole.name.f) ?
 				urole.name.f : urole.name.m) :
-		(const char *) (flags.female ? "Demigoddess" : "Demigod")); /* EN (const char *) (flags.female ? "Demigoddess" : "Demigod")); */ // TODO DE
+		(const char *) (flags.female ? "NOUN_HALBGOETTIN" : "NOUN_HALBGOTT")); /* EN (const char *) (flags.female ? "Demigoddess" : "Demigod")); */
 	if (!done_stopprint) {
 	    putstr(endwin, 0, pbuf);
 	    putstr(endwin, 0, "");
@@ -1008,8 +1008,8 @@ die:
 			    In_quest(&u.uz) ? dunlev(&u.uz) : depth(&u.uz));
 	    }
 
-	    Sprintf(eos(pbuf), " with %ld point%s,", /* EN Sprintf(eos(pbuf), " with %ld point%s,", */ // TODO DE
-		    u.urexp, plur(u.urexp));
+	    Sprintf(eos(pbuf), " mit %ld Punkt%s,", /* EN Sprintf(eos(pbuf), " with %ld point%s,", */
+		    u.urexp, (u.urexp == 1) ? "" : "en"); /* EN u.urexp, plur(u.urexp)); */
 	    putstr(endwin, 0, pbuf);
 #ifdef DUMP_LOG
 	    if (dump_fp) dump("", pbuf);
@@ -1207,10 +1207,10 @@ boolean want_dump;
 				mons[i].mname);
 			if (nkilled > 1) {
 			    switch (nkilled) {
-				case 2:  Sprintf(eos(buf)," (twice)");  break; /* EN case 2:  Sprintf(eos(buf)," (twice)");  break; */ // TODO DE
-				case 3:  Sprintf(eos(buf)," (thrice)");  break; /* EN case 3:  Sprintf(eos(buf)," (thrice)");  break; */ // TODO DE
-				default: Sprintf(eos(buf)," (%d time%s)", /* EN default: Sprintf(eos(buf)," (%d time%s)", */ // TODO DE
-						 nkilled, plur(nkilled));
+				case 2:  Sprintf(eos(buf)," (zweimal)");  break; /* EN case 2:  Sprintf(eos(buf)," (twice)");  break; */
+				case 3:  Sprintf(eos(buf)," (dreimal)");  break; /* EN case 3:  Sprintf(eos(buf)," (thrice)");  break; */
+				default: Sprintf(eos(buf)," (%d mal)", /* EN default: Sprintf(eos(buf)," (%d time%s)", */
+						 nkilled); /* EN nkilled, plur(nkilled)); */
 					 break;
 			    }
 			}
@@ -1224,7 +1224,7 @@ boolean want_dump;
 				    nkilled, makeplural(mons[i].mname));
 #ifdef SHOW_BORN
 			if (iflags.show_born && nkilled != mvitals[i].born)
-			    Sprintf(buf + strlen(buf), " (%d created)", /* EN Sprintf(buf + strlen(buf), " (%d created)", */ // TODO DE
+			    Sprintf(buf + strlen(buf), " (%d erzeugt)", /* EN Sprintf(buf + strlen(buf), " (%d created)", */
 				    (int) mvitals[i].born);
 #endif
 		    }

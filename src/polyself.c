@@ -196,7 +196,7 @@ newman()
 		    if (u.uhpmax <= 0) u.uhpmax = 1;
 		} else {
 dead: /* we come directly here if their experience level went to 0 or less */
-		    Your("ADJEKTIV_NEU NOUN_GESTALT VERB_SCHEINEN nicht gesund genug zum Leben zu sein."); /* EN Your("new form doesn't seem healthy enough to survive."); */
+		    Your("ADJEKTIV_NEU NOUN_GESTALT VERB_SCHEINEN nicht ausreichend lebensfähig zu sein."); /* EN Your("new form doesn't seem healthy enough to survive."); */
 		    killer_format = KILLED_BY_AN;
 		    killer="unsuccessful polymorph"; /* EN killer="unsuccessful polymorph"; */ // TODO DE
 		    done(DIED);

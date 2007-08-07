@@ -203,7 +203,7 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 			 * invisible.
 			 */
 			Monnam(mtmp),
-			Invis ? "invisible " : ""); /* EN Invis ? "invisible " : ""); */ // TODO DE
+			Invis ? "ADJEKTIV_INVISIBLE " : ""); /* EN Invis ? "invisible " : ""); */
 
 	} else if (Underwater) {
 	    /* monsters may miss especially on water level where
@@ -225,7 +225,7 @@ boolean message;
 {
 	if (message) {
 		if (is_animal(mdat))
-			You("get regurgitated!"); /* EN You("get regurgitated!"); */ // TODO DE
+			You("VERB_WERDEN herausgewürgt!"); /* EN You("get regurgitated!"); */
 		else {
 			char blast[40];
 			register int i;
@@ -492,14 +492,14 @@ mattacku(mtmp)
 
 	    if(!rn2(10) && !mtmp->mcan) {
 		if(youseeit) {
-			pline("%s summons help!", Monnam(mtmp)); /* EN pline("%s summons help!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s ruft um Hilfe!", Monnam(mtmp)); /* EN pline("%s summons help!", Monnam(mtmp)); */
 		} else
-			You_feel("hemmed in."); /* EN You_feel("hemmed in."); */ // TODO DE
+			Du_fuehlst_dich("umzingelt."); /* EN You_feel("hemmed in."); */
 		/* Technically wrong; we really should check if you can see the
 		 * help, but close enough...
 		 */
 		if (!were_summon(mdat,FALSE) && youseeit)
-		    pline("But none comes."); /* EN pline("But none comes."); */ // TODO DE
+		    pline("Aber niemand kommt."); /* EN pline("But none comes."); */
 	    }
 	}
 
@@ -870,11 +870,11 @@ hitmu(mtmp, mattk)
 		    if (Blind && !obj->dknown)
 			what = something;
 		    else if (is_pool(mtmp->mx, mtmp->my) && !Underwater)
-			what = "the water"; /* EN what = "the water"; */ // TODO DE
+			what = "dem Wasser"; /* EN what = "the water"; */
 		    else
 			what = doname(obj);
 
-		    pline("%s was hidden under %s!", Amonnam(mtmp), what); /* EN pline("%s was hidden under %s!", Amonnam(mtmp), what); */ // TODO DE
+		    pline("SUBJECT %s VERB_VERSTECKEN sich unter KASUS_DATIV %s!", Amonnam(mtmp), what); /* EN pline("%s was hidden under %s!", Amonnam(mtmp), what); */
 		}
 		newsym(mtmp->mx, mtmp->my);
 	    }
@@ -1012,7 +1012,7 @@ hitmu(mtmp, mattk)
 		break;
 	    case AD_BLND:
 		if (can_blnd(mtmp, &youmonst, mattk->aatyp, (struct obj*)0)) {
-		    if (!Blind) pline("%s blinds you!", Monnam(mtmp)); /* EN if (!Blind) pline("%s blinds you!", Monnam(mtmp)); */ // TODO DE
+		    if (!Blind) pline("SUBJECT %s VERB_BLENDEN OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp)); /* EN if (!Blind) pline("%s blinds you!", Monnam(mtmp)); */
 		    make_blinded(Blinded+(long)dmg,FALSE);
 		    if (!Blind) Your(vision_clears);
 		}
@@ -1077,7 +1077,7 @@ dopois:
 			    if (lifesaved)
 				pline("Unfortunately your brain is still gone."); /* EN pline("Unfortunately your brain is still gone."); */ // TODO DE
 			    else
-				Your("last thought fades away."); /* EN Your("last thought fades away."); */ // TODO DE
+				Your("ADJEKTIV_LETZT NOUN_GEDANKENs fades away."); /* EN Your("last thought fades away."); */ // TODO DE
 			    killer = "brainlessness"; /* EN killer = "brainlessness"; */ // TODO DE
 			    killer_format = KILLED_BY;
 			    done(DIED);
@@ -1113,7 +1113,7 @@ dopois:
 		break;
 	    case AD_LEGS:
 		{ register long side = rn2(2) ? RIGHT_SIDE : LEFT_SIDE;
-		  const char *sidestr = (side == RIGHT_SIDE) ? "right" : "left"; /* EN const char *sidestr = (side == RIGHT_SIDE) ? "right" : "left"; */ // TODO DE
+		  const char *sidestr = (side == RIGHT_SIDE) ? "ADJEKTIV_RECHT" : "ADJEKTIV_LINK"; /* EN const char *sidestr = (side == RIGHT_SIDE) ? "right" : "left"; */
 
 		/* This case is too obvious to ignore, but Nethack is not in
 		 * general very good at considering height--most short monsters
@@ -1397,7 +1397,7 @@ dopois:
 		if(!night() && mdat == &mons[PM_GREMLIN]) break;
 		if(!mtmp->mcan && !rn2(10)) {
 		    if (flags.soundok) {
-			if (Blind) You_hear("laughter."); /* EN if (Blind) You_hear("laughter."); */ // TODO DE
+			if (Blind) Du_hoerst("Gelächter."); /* EN if (Blind) You_hear("laughter."); */
 			else       pline("%s chuckles.", Monnam(mtmp)); /* EN else       pline("%s chuckles.", Monnam(mtmp)); */ // TODO DE
 		    }
 		    if (u.umonnum == PM_CLAY_GOLEM) {

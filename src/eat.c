@@ -204,9 +204,9 @@ boolean the_pfx;
 	if (food->otyp == CORPSE && (mons[mnum].geno & G_UNIQ)) {
 	    /* grab xname()'s modifiable return buffer for our own use */
 	    char *bufp = xname(food);
-	    Sprintf(bufp, "%s%s corpse", /* EN Sprintf(bufp, "%s%s corpse", */ // TODO DE
-		    (the_pfx && !type_is_pname(&mons[mnum])) ? "the " : "", /* EN (the_pfx && !type_is_pname(&mons[mnum])) ? "the " : "", */ // TODO DE
-		    s_suffix(mons[mnum].mname));
+	    Sprintf(bufp, "MODIFIER_CORPSE %s%s NOUN_CORPSE 2", /* EN Sprintf(bufp, "%s%s corpse", */
+		    (!type_is_pname(&mons[mnum])) ? "ARTIKEL_BESTIMMTER " : "MODIFIER_EIGENNAME ", /* EN (the_pfx && !type_is_pname(&mons[mnum])) ? "the " : "", */
+		    mons[mnum].mname); /* EN s_suffix(mons[mnum].mname)); */
 	    result = bufp;
 	} else {
 	    /* the ordinary case */
@@ -257,10 +257,10 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 			if (food->oclass == COIN_CLASS) {
 				killer = "ARTIKEL_UNBESTIMMTER sehr ADJEKTIV_REICH NOUN_MAHL"; /* EN killer = "a very rich meal"; */
 			} else {
-				killer = food_xname(food, FALSE);
+				killer = food_xname(food, FALSE); 
 				if (food->otyp == CORPSE &&
 				    (mons[food->corpsenm].geno & G_UNIQ)) {
-				    killer = the(killer);
+				    /* EN killer = the(killer); */
 				    killer_format = KILLED_BY;
 				}
 			}
@@ -1304,8 +1304,8 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		    
 	    if (!retcode) consume_oeaten(otmp, 2);	/* oeaten >>= 2 */
 	} else {
-	    pline("%s%s %s!",
-		  !uniq ? "This " : !type_is_pname(&mons[mnum]) ? "The " : "", /* EN !uniq ? "This " : !type_is_pname(&mons[mnum]) ? "The " : "", */ // TODO DE
+	    pline("SUBJECT %s%s %s!", /* EN pline("%s%s %s!", */
+		  !uniq ? "PRONOMEN_DIESER " : !type_is_pname(&mons[mnum]) ? "ARTIKEL_BESTIMMTER " : "", /* EN !uniq ? "This " : !type_is_pname(&mons[mnum]) ? "The " : "", */ // TODO DE
 		  food_xname(otmp, FALSE),
 		  (vegan(&mons[mnum]) ?
 		   (!carnivorous(youmonst.data) && herbivorous(youmonst.data)) :
@@ -1346,7 +1346,7 @@ start_eating(otmp)		/* called as you start to eat */
 	    return;
 	}
 
-	Sprintf(msgbuf, "%s zu essen", food_xname(otmp, TRUE)); /* EN Sprintf(msgbuf, "eating %s", food_xname(otmp, TRUE)); */
+	Sprintf(msgbuf, "KASUS_AKKUSATIV %s zu essen", food_xname(otmp, TRUE)); /* EN Sprintf(msgbuf, "eating %s", food_xname(otmp, TRUE)); */
 	set_occupation(eatfood, msgbuf, 0);
 }
 
@@ -2300,7 +2300,7 @@ boolean incr;
 				You("faint from lack of food."); /* EN You("faint from lack of food."); */ // TODO DE
 				flags.soundok = 0;
 				nomul(-10+(u.uhunger/10));
-				nomovemsg = "You regain consciousness."; /* EN nomovemsg = "You regain consciousness."; */ // TODO DE
+				nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_ERLANGEN wieder das Bewusstsein."; /* EN nomovemsg = "You regain consciousness."; */
 				afternmv = unfaint;
 				newhs = FAINTED;
 			}
@@ -2326,12 +2326,12 @@ boolean incr;
 		switch(newhs){
 		case HUNGRY:
 			if (Hallucination) {
-			    You((!incr) ?
-				"now have a lesser case of the munchies." : /* EN "now have a lesser case of the munchies." : */ // TODO DE
-				"are getting the munchies."); /* EN "are getting the munchies."); */ // TODO DE
+			    pline((!incr) ?
+				"SUBJECT PRONOMEN_POSSESSIV NOUN_FRESSLUST hat etwas abgenommen." : /* EN "now have a lesser case of the munchies." : */
+				"SUBJECT PRONOMEN_PERSONAL VERB_KRIEGEN voll den Fressflash."); /* EN "are getting the munchies."); */
 			} else
-			    You((!incr) ? "only feel hungry now." : /* EN You((!incr) ? "only feel hungry now." : */ // TODO DE
-				  (u.uhunger < 145) ? "feel hungry." : /* EN (u.uhunger < 145) ? "feel hungry." : */ // TODO DE
+			    You((!incr) ? "VERB_SEIN jetzt nur noch hungrig." : /* EN You((!incr) ? "only feel hungry now." : */
+				  (u.uhunger < 145) ? "VERB_SEIN hungrig." : /* EN (u.uhunger < 145) ? "feel hungry." : */
 				   "are beginning to feel hungry."); /* EN "are beginning to feel hungry."); */ // TODO DE
 			if (incr && occupation &&
 			    (occupation != eatfood && occupation != opentin))
@@ -2340,8 +2340,8 @@ boolean incr;
 		case WEAK:
 			if (Hallucination)
 			    pline((!incr) ?
-				  "You still have the munchies." : /* EN "You still have the munchies." : */ // TODO DE
-      "The munchies are interfering with your motor capabilities."); /* EN "The munchies are interfering with your motor capabilities."); */ // TODO DE
+				  "SUBJECT PRONOMEN_PERSONAL VERB_SEIN dem Fressflash noch nicht entkommen." : /* EN "You still have the munchies." : */
+      "Wegen des Fressflashs VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht mehr gerade gehen."); /* EN "The munchies are interfering with your motor capabilities."); */
 			else if (incr &&
 				(Role_if(PM_WIZARD) || Race_if(PM_ELF) ||
 				 Role_if(PM_VALKYRIE)))
@@ -2437,10 +2437,10 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 		(otmp->otyp==CORPSE && (corpsecheck == 1 || tinnable(otmp))) :
 		    feeding ? (otmp->oclass != COIN_CLASS && is_edible(otmp)) :
 						otmp->oclass==FOOD_CLASS) {
-			Sprintf(qbuf, "There %s %s here; %s %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */ // TODO DE
-				otense(otmp, "are"), /* EN otense(otmp, "are"), */ // TODO DE
+			Sprintf(qbuf, "Hier %s %s; %s %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */
+				otense(otmp, "VERB_LIEGEN"), /* EN otense(otmp, "are"), */
 				doname(otmp), verb,
-				(otmp->quan == 1L) ? "it" : "one"); /* EN (otmp->quan == 1L) ? "it" : "one"); */ // TODO DE
+				(otmp->quan == 1L) ? "es" : "eines"); /* EN (otmp->quan == 1L) ? "it" : "one"); */
 			if((c = yn_function(qbuf,ynqchars,'n')) == 'y')
 				return(otmp);
 			else if(c == 'q')
@@ -2456,7 +2456,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 				(const char *)comestibles, verb);
 	if (corpsecheck && otmp)
 	    if (otmp->otyp != CORPSE || (corpsecheck == 2 && !tinnable(otmp))) {
-		You_cant("%s that!", verb); /* EN You_cant("%s that!", verb); */ // TODO DE
+		You("VERB_KOENNEN das nicht MODIFIER_VERB_INFINITIV %s!", verb); /* EN You_cant("%s that!", verb); */
 		return (struct obj *)0;
 	    }
 	return otmp;

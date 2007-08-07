@@ -1053,7 +1053,7 @@ int thrown;
 			mon->mconf = 1;
 			if (!mon->mstun && mon->mcanmove && !mon->msleeping &&
 				canseemon(mon))
-			    pline("%s appears confused.", Monnam(mon)); /* EN pline("%s appears confused.", Monnam(mon)); */ // TODO DE
+			    pline("SUBJECT %s VERB_ERSCHEINEN verwirrt.", Monnam(mon)); /* EN pline("%s appears confused.", Monnam(mon)); */
 		}
 	}
 
@@ -1528,7 +1528,7 @@ register struct attack *mattk;
 		    break;
 		}
 
-		You("eat %s brain!", s_suffix(mon_nam(mdef))); /* EN You("eat %s brain!", s_suffix(mon_nam(mdef))); */ // TODO DE
+		You("VERB_EAT %s brain!", s_suffix(mon_nam(mdef))); /* EN You("eat %s brain!", s_suffix(mon_nam(mdef))); */ // TODO DE
 		u.uconduct.food++;
 		if (touch_petrifies(mdef->data) && !Stone_resistance && !Stoned) {
 		    Stoned = 5;
@@ -1656,7 +1656,7 @@ register struct attack *mattk;
 {
 	register int tmp = d((int)mattk->damn, (int)mattk->damd);
 
-	You("explode!"); /* EN You("explode!"); */ // TODO DE
+	You("VERB_EXPLODIEREN!"); /* EN You("explode!"); */
 	switch(mattk->adtyp) {
 	    boolean resistance; /* only for cold/fire/elec */
 
@@ -1714,7 +1714,7 @@ struct monst *mdef;
 		tmp_at(DISP_ALWAYS, mon_to_glyph(&youmonst));
 		tmp_at(mdef->mx, mdef->my);
 	}
-	You("engulf %s!", mon_nam(mdef)); /* EN You("engulf %s!", mon_nam(mdef)); */ // TODO DE
+	You("VERB_VERSCHLINGEN OBJECT %s!", mon_nam(mdef)); /* EN You("engulf %s!", mon_nam(mdef)); */
 	delay_output();
 	delay_output();
 }
@@ -1807,7 +1807,7 @@ register struct attack *mattk;
 				 * attacked (which uses his real location) or
 				 * if his See_invisible wears off
 				 */
-				You("digest %s.", mon_nam(mdef)); /* EN You("digest %s.", mon_nam(mdef)); */ // TODO DE
+				You("VERB_VERDAUEN OBJECT %s.", mon_nam(mdef)); /* EN You("digest %s.", mon_nam(mdef)); */
 				if (Slow_digestion) tmp *= 2;
 				nomul(-tmp);
 				nomovemsg = msgbuf;
