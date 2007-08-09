@@ -151,8 +151,9 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/lib/gnome-libs/include -I../win/gnome
 # flags for debugging:
 # CFLAGS = -g -I../include
 
-CFLAGS = -O -I../include
-LFLAGS = 
+CFLAGS = -I../include -DGERMAN -g # -fbounds-checking #-fprofile-arcs -ftest-coverage
+LFLAGS = -lcheck 
+# LFLAGS = -lcheck
 
 # The Qt and Be window systems are written in C++, while the rest of
 # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
@@ -282,7 +283,7 @@ WINLIB = $(WINTTYLIB)
 # IRIX 4.0.x needs -lsun if NIS (YP) is being used for passwd file lookup
 # LIBS = -lsun
 #
-LIBS =
+LIBS = -lcheck
 
 # make NetHack
 GAME     = nethack
@@ -326,7 +327,7 @@ HACKCSRC = allmain.c alloc.c apply.c artifact.c attrib.c ball.c bones.c \
 	   rnd.c role.c rumors.c save.c shk.c shknam.c sit.c sounds.c sp_lev.c \
 	   spell.c steal.c steed.c teleport.c timeout.c topten.c track.c trap.c \
 	   u_init.c uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
-	   windows.c wizard.c worm.c worn.c write.c zap.c
+	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c
 
 # all operating-system-dependent .c (for dependencies and such)
 SYSCSRC = ../sys/atari/tos.c ../sys/share/pcmain.c ../sys/share/pcsys.c \
@@ -367,9 +368,9 @@ HSOURCES = $(HACKINCL) date.h onames.h pm.h vis_tab.h\
 		lev_comp.h dgn_comp.h dgn_file.h
 
 # the following .o's _must_ be made before any others (for makedefs)
-FIRSTOBJ = monst.o objects.o
+FIRSTOBJ = mon-en.o obj-en.o
 
-HOBJ = $(FIRSTOBJ) allmain.o alloc.o apply.o artifact.o attrib.o ball.o \
+HOBJ = monst.o objects.o allmain.o alloc.o apply.o artifact.o attrib.o ball.o \
 	bones.o botl.o cmd.o dbridge.o decl.o detect.o dig.o display.o dlb.o \
 	do.o do_name.o do_wear.o dog.o dogmove.o dokick.o dothrow.o \
 	drawing.o dungeon.o eat.o end.o engrave.o exper.o explode.o \
@@ -383,11 +384,11 @@ HOBJ = $(FIRSTOBJ) allmain.o alloc.o apply.o artifact.o attrib.o ball.o \
 	role.o rumors.o save.o shk.o shknam.o sit.o sounds.o sp_lev.o spell.o \
 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
-	wizard.o worm.o worn.o write.o zap.o \
+	wizard.o worm.o worn.o write.o zap.o german.o german_wishing_test.o german_vocabulary.o \
 	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o
 # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
 
-$(GAME):	$(SYSTEM)
+$(GAME):	$(FIRSTOBJ) $(SYSTEM)
 	@echo "$(GAME) is up to date."
 
 Sysunix:	$(HOBJ) Makefile
@@ -451,12 +452,21 @@ all:	$(GAME)
 
 # special rules, to force update of makedefs, real dependencies should be
 # below in the 'make depend' output.
-monst.o:
-	$(CC) $(CFLAGS) -c monst.c
+#
+# I18N:  These are built with the -DENGLISH flag, producing versions of the
+# object files using the original English terms.  monst.o and objects.o are
+# built using the selected language.
+mon-en.o: monst.c $(CONFIG_H) ../include/permonst.h ../include/align.h \
+		../include/monattk.h ../include/monflag.h ../include/monsym.h \
+		../include/dungeon.h ../include/eshk.h ../include/vault.h \
+		../include/epri.h ../include/color.h mon-en.h
+	$(CC) $(CFLAGS) -DENGLISH -c monst.c -o mon-en.o
 	@rm -f $(MAKEDEFS)
 
-objects.o:
-	$(CC) $(CFLAGS) -c objects.c
+obj-en.o: objects.c $(CONFIG_H) ../include/obj.h ../include/objclass.h \
+		../include/prop.h ../include/skills.h ../include/color.h \
+		obj-en.h
+	$(CC) $(CFLAGS) -DENGLISH -c objects.c -o obj-en.o
 	@rm -f $(MAKEDEFS)
 
 # Qt windowport meta-object-compiler output
@@ -726,6 +736,15 @@ explode.o: explode.c $(HACK_H)
 extralev.o: extralev.c $(HACK_H)
 files.o: files.c $(HACK_H) ../include/dlb.h
 fountain.o: fountain.c $(HACK_H)
+german_vocabulary.c: generate_german.rb german_verb.rb
+	rm -f german_vocabulary.o
+	ruby generate_german.rb >german_vocabulary.c
+german_vocabulary.o: german_vocabulary.c german.h
+german.o: german.c german.h german_vocabulary.o
+german_test: german_test.c german.o german_vocabulary.o german.h
+	$(CC) -Wall $(CFLAGS) german_test.c -lcheck -o german_test german.o german_vocabulary.o
+german_wishing.o: german_wishing_test.c german.h
+
 hack.o: hack.c $(HACK_H)
 hacklib.o: hacklib.c $(HACK_H)
 invent.o: invent.c $(HACK_H)
@@ -751,14 +770,14 @@ monmove.o: monmove.c $(HACK_H) ../include/mfndpos.h ../include/artifact.h \
 monst.o: monst.c $(CONFIG_H) ../include/permonst.h ../include/align.h \
 		../include/monattk.h ../include/monflag.h ../include/monsym.h \
 		../include/dungeon.h ../include/eshk.h ../include/vault.h \
-		../include/epri.h ../include/color.h
+		../include/epri.h ../include/color.h mon-de.h
 mplayer.o: mplayer.c $(HACK_H)
 mthrowu.o: mthrowu.c $(HACK_H)
 muse.o: muse.c $(HACK_H) ../include/edog.h
 music.o: music.c $(HACK_H) #interp.c
 o_init.o: o_init.c $(HACK_H) ../include/lev.h
 objects.o: objects.c $(CONFIG_H) ../include/obj.h ../include/objclass.h \
-		../include/prop.h ../include/skills.h ../include/color.h
+		../include/prop.h ../include/skills.h ../include/color.h obj-de.h
 objnam.o: objnam.c $(HACK_H)
 options.o: options.c $(CONFIG_H) ../include/objclass.h ../include/flag.h \
 		$(HACK_H) ../include/tcap.h
