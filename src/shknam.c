@@ -182,28 +182,29 @@ static const char * const shkgeneral[] = {
  * (by testing the sign) whether to use mkobj() or mksobj().
  */
 
+// -laden, -handlung, -geschaeft, -shop, -lager, -filiale, -kaufhaus
 const struct shclass shtypes[] = {
-	{"general store", RANDOM_CLASS, 44, /* EN {"general store", RANDOM_CLASS, 44, */ // TODO DE
+	{"NOUN_KRAMLADEN", RANDOM_CLASS, 44, /* EN {"general store", RANDOM_CLASS, 44, */
 	    D_SHOP, {{100, RANDOM_CLASS}, {0, 0}, {0, 0}}, shkgeneral},
 	{"used armor dealership", ARMOR_CLASS, 14, /* EN {"used armor dealership", ARMOR_CLASS, 14, */ // TODO DE
 	    D_SHOP, {{90, ARMOR_CLASS}, {10, WEAPON_CLASS}, {0, 0}},
 	     shkarmors},
-	{"second-hand bookstore", SCROLL_CLASS, 10, D_SHOP, /* EN {"second-hand bookstore", SCROLL_CLASS, 10, D_SHOP, */ // TODO DE
+	{"NOUN_ANTIQUARIAT", SCROLL_CLASS, 10, D_SHOP, /* EN {"second-hand bookstore", SCROLL_CLASS, 10, D_SHOP, */
 	    {{90, SCROLL_CLASS}, {10, SPBOOK_CLASS}, {0, 0}}, shkbooks},
-	{"liquor emporium", POTION_CLASS, 10, D_SHOP, /* EN {"liquor emporium", POTION_CLASS, 10, D_SHOP, */ // TODO DE
+	{"NOUN_SPIRITUOSENHANDLUNG", POTION_CLASS, 10, D_SHOP, /* EN {"liquor emporium", POTION_CLASS, 10, D_SHOP, */
 	    {{100, POTION_CLASS}, {0, 0}, {0, 0}}, shkliquors},
 	{"antique weapons outlet", WEAPON_CLASS, 5, D_SHOP, /* EN {"antique weapons outlet", WEAPON_CLASS, 5, D_SHOP, */ // TODO DE
 	    {{90, WEAPON_CLASS}, {10, ARMOR_CLASS}, {0, 0}}, shkweapons},
-	{"delicatessen", FOOD_CLASS, 5, D_SHOP, /* EN {"delicatessen", FOOD_CLASS, 5, D_SHOP, */ // TODO DE
+	{"NOUN_DELIKATESSENLADEN", FOOD_CLASS, 5, D_SHOP, /* EN {"delicatessen", FOOD_CLASS, 5, D_SHOP, */
 	    {{83, FOOD_CLASS}, {5, -POT_FRUIT_JUICE}, {4, -POT_BOOZE},
 	     {5, -POT_WATER}, {3, -ICE_BOX}}, shkfoods},
-	{"jewelers", RING_CLASS, 3, D_SHOP, /* EN {"jewelers", RING_CLASS, 3, D_SHOP, */ // TODO DE
+	{"NOUN_JUWELIERLADEN", RING_CLASS, 3, D_SHOP, /* EN {"jewelers", RING_CLASS, 3, D_SHOP, */
 	    {{85, RING_CLASS}, {10, GEM_CLASS}, {5, AMULET_CLASS}, {0, 0}},
 	    shkrings},
 	{"quality apparel and accessories", WAND_CLASS, 3, D_SHOP, /* EN {"quality apparel and accessories", WAND_CLASS, 3, D_SHOP, */ // TODO DE
 	    {{90, WAND_CLASS}, {5, -LEATHER_GLOVES}, {5, -ELVEN_CLOAK}, {0, 0}},
 	     shkwands},
-	{"hardware store", TOOL_CLASS, 3, D_SHOP, /* EN {"hardware store", TOOL_CLASS, 3, D_SHOP, */ // TODO DE
+	{"NOUN_EISENWARENHANDLUNG", TOOL_CLASS, 3, D_SHOP, /* EN {"hardware store", TOOL_CLASS, 3, D_SHOP, */
 	    {{100, TOOL_CLASS}, {0, 0}, {0, 0}}, shktools},
 	/* Actually shktools is ignored; the code specifically chooses a
 	 * random implementor name (along with candle shops having
@@ -215,7 +216,7 @@ const struct shclass shtypes[] = {
 	 * probability of zero.  They are only created via the special level
 	 * loader.
 	 */
-	{"lighting store", TOOL_CLASS, 0, D_SHOP, /* EN {"lighting store", TOOL_CLASS, 0, D_SHOP, */ // TODO DE
+	{"NOUN_LICHTFACHMARKT", TOOL_CLASS, 0, D_SHOP, /* EN {"lighting store", TOOL_CLASS, 0, D_SHOP, */
 	    {{32, -WAX_CANDLE}, {50, -TALLOW_CANDLE},
 	     {5, -BRASS_LANTERN}, {10, -OIL_LAMP}, {3, -MAGIC_LAMP}}, shklight},
 	{(char *)0, 0, 0, 0, {{0, 0}, {0, 0}, {0, 0}}, 0}
