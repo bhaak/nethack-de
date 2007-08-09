@@ -591,6 +591,7 @@ def ausgabe_verbs
     Verb.verb("VERB_HIT","treffen"),
     Verb.verb("VERB_SEE","sehen"),
     Verb.verb("VERB_ABBRECHEN","brechen","ab"),
+    Verb.verb("VERB_BRECHEN","brechen"),
     Verb.verb("VERB_ZUSCHNUEREN","schnüren","zu"),
     Verb.verb("VERB_GELINGEN","gelingen"),
     Verb.verb("VERB_FUEHREN","führen"),
@@ -726,6 +727,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_GRAUEN", "grauen"),
 		Verb.verb("VERB_ABPRALLEN", "prallen", "ab"),
 		Verb.verb("VERB_LIEGEN", "liegen"),
+		Verb.verb("VERB_SCHIESSEN", "schiessen"),
 
   ]
 
@@ -2470,11 +2472,14 @@ def ausgabe_nouns
 		dekliniere_substantiv("NOUN_GEFOLGSCHAFT","Gefolgschaft","","Gefolgschaft","en","feminin"),
 		dekliniere_substantiv("NOUN_ANWESENHEIT","Anwesenheit","","","","feminin"),
 		dekliniere_substantiv("NOUN_ABWESENHEIT","Abwesenheit","","","","feminin"),
+		dekliniere_substantiv("NOUN_DUNKELHEIT","Dunkelheit","","","","feminin"),
 		dekliniere_substantiv("NOUN_SEHKRAFT","Sehkraft","","","","feminin"),
 		dekliniere_substantiv("NOUN_OBJECT","Objekt","es","Objekt","e","neutrum"),
 		dekliniere_substantiv("NOUN_NAEHE","Nähe","","","","feminin"),
 		dekliniere_substantiv("NOUN_GEISTESSCHAERFE","Geistesschärfe","","Geistesschärfe","en","feminin"),
 		dekliniere_substantiv("NOUN_FRESSLUST","Fresslust","","Fresslüst","e","feminin"),
+		dekliniere_substantiv("NOUN_VERBUNDENHEIT","Verbundenheit","","Verbundenheit","en","feminin"),
+		dekliniere_substantiv("NOUN_SCHULD","Schuld","","Schuld","en","feminin"),
 
     "/* ======================================================= */",
     "/* Adjektive */",

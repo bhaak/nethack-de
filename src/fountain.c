@@ -50,7 +50,7 @@ dowaterdemon() /* Water demon */
 	    if (!Blind)
 		You("unleash %s!", a_monnam(mtmp)); /* EN You("unleash %s!", a_monnam(mtmp)); */ // TODO DE
 	    else
-		You_feel("the presence of evil."); /* EN You_feel("the presence of evil."); */ // TODO DE
+		Du_spuerst("die Präsenz des Bösen."); /* EN You_feel("the presence of evil."); */
 
 	/* Give those on low levels a (slightly) better chance of survival */
 	    if (rnd(100) > (80 + level_difficulty())) {

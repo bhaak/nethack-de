@@ -457,7 +457,7 @@ hurtle_step(arg, x, y)
 	if (IS_ROCK(levl[x][y].typ) || closed_door(x,y)) {
 	    const char *s;
 
-	    pline("Ouch!"); /* EN pline("Ouch!"); */ // TODO DE
+	    pline("Autsch!"); /* EN pline("Ouch!"); */
 	    if (IS_TREE(levl[x][y].typ))
 		s = "bumping into a tree"; /* EN s = "bumping into a tree"; */ // TODO DE
 	    else if (IS_ROCK(levl[x][y].typ))
@@ -468,12 +468,12 @@ hurtle_step(arg, x, y)
 	    return FALSE;
 	}
 	if (levl[x][y].typ == IRONBARS) {
-	    You("crash into some iron bars.  Ouch!"); /* EN You("crash into some iron bars.  Ouch!"); */ // TODO DE
+	    You("crash into some iron bars.  Autsch!"); /* EN You("crash into some iron bars.  Ouch!"); */ // TODO DE
 	    losehp(rnd(2+*range), "crashing into iron bars", KILLED_BY); /* EN losehp(rnd(2+*range), "crashing into iron bars", KILLED_BY); */ // TODO DE
 	    return FALSE;
 	}
 	if ((obj = sobj_at(BOULDER,x,y)) != 0) {
-	    You("bump into a %s.  Ouch!", xname(obj)); /* EN You("bump into a %s.  Ouch!", xname(obj)); */ // TODO DE
+	    You("bump into a %s.  Autsch!", xname(obj)); /* EN You("bump into a %s.  Ouch!", xname(obj)); */ // TODO DE
 	    losehp(rnd(2+*range), "bumping into a boulder", KILLED_BY); /* EN losehp(rnd(2+*range), "bumping into a boulder", KILLED_BY); */ // TODO DE
 	    return FALSE;
 	}
@@ -616,12 +616,12 @@ hurtle(dx, dy, range, verbose)
 
     nomul(-range);
     if (verbose)
-	You("%s in the opposite direction.", range > 1 ? "hurtle" : "float"); /* EN You("%s in the opposite direction.", range > 1 ? "hurtle" : "float"); */ // TODO DE
+	You("%s in die entgegengesetzte Richtung.", range > 1 ? "VERB_FLIEGEN" : "VERB_SCHWEBEN"); /* EN You("%s in the opposite direction.", range > 1 ? "hurtle" : "float"); */
     /* if we're in the midst of shooting multiple projectiles, stop */
     if (m_shot.i < m_shot.n) {
 	/* last message before hurtling was "you shoot N arrows" */
-	You("stop %sing after the first %s.", /* EN You("stop %sing after the first %s.", */ // TODO DE
-	    m_shot.s ? "shoot" : "throw", m_shot.s ? "shot" : "toss"); /* EN m_shot.s ? "shoot" : "throw", m_shot.s ? "shot" : "toss"); */ // TODO DE
+	You("VERB_AUFHOEREN nach dem ersten %s SATZKLAMMER zu %s.", /* EN You("stop %sing after the first %s.", */ // TODO DE
+	    m_shot.s ? "Schuss" : "Wurf", m_shot.s ? "schießen" : "werfen"); /* EN m_shot.s ? "shoot" : "throw", m_shot.s ? "shot" : "toss"); */
 	m_shot.n = m_shot.i;	/* make current shot be the last */
     }
     if (In_sokoban(&u.uz))
@@ -718,16 +718,16 @@ boolean hitsroof;
 
     if (hitsroof) {
 	if (breaktest(obj)) {
-		pline("%s hits the %s.", Doname2(obj), ceiling(u.ux, u.uy)); /* EN pline("%s hits the %s.", Doname2(obj), ceiling(u.ux, u.uy)); */ // TODO DE
+		pline("SUBJECT %s VERB_HIT OBJECT ARTIKEL_BESTIMMTER %s.", Doname2(obj), ceiling(u.ux, u.uy)); /* EN pline("%s hits the %s.", Doname2(obj), ceiling(u.ux, u.uy)); */
 		breakmsg(obj, !Blind);
 		breakobj(obj, u.ux, u.uy, TRUE, TRUE);
 		return FALSE;
 	}
 	almost = "";
     } else {
-	almost = " almost"; /* EN almost = " almost"; */ // TODO DE
+	almost = " beinahe"; /* EN almost = " almost"; */
     }
-    pline("%s%s hits the %s, then falls back on top of your %s.", /* EN pline("%s%s hits the %s, then falls back on top of your %s.", */ // TODO DE
+    pline("SUBJECT %s VERB_HIT%s OBJECT ARTIKEL_BESTIMMTER %s, dann fällt es NEUES_OBJECT KASUS_DATIV PRONOMEN_PERSONAL auf NEUES_OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", /* EN pline("%s%s hits the %s, then falls back on top of your %s.", */
 	  Doname2(obj), almost, ceiling(u.ux,u.uy), body_part(HEAD));
 
     /* object now hits you */
@@ -757,7 +757,7 @@ boolean hitsroof;
 		pline("You've got it all over your %s!", body_part(FACE)); /* EN pline("You've got it all over your %s!", body_part(FACE)); */ // TODO DE
 		if (blindinc) {
 		    if (otyp == BLINDING_VENOM && !Blind)
-			pline("It blinds you!"); /* EN pline("It blinds you!"); */ // TODO DE
+			pline("Es blendet KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("It blinds you!"); */
 		    u.ucreamed += blindinc;
 		    make_blinded(Blinded + (long)blindinc, FALSE);
 		    if (!Blind) Your(vision_clears);
@@ -792,7 +792,7 @@ boolean hitsroof;
 	if (uarmh) {
 	    if (less_damage && dmg < (Upolyd ? u.mh : u.uhp)) {
 		if (!artimsg)
-		    pline("Fortunately, you are wearing a hard helmet."); /* EN pline("Fortunately, you are wearing a hard helmet."); */ // TODO DE
+		    pline("SUBJECT Glücklicherweise VERB_TRAGEN PRONOMEN_PERSONAL einen schützenden Helm."); /* EN pline("Fortunately, you are wearing a hard helmet."); */
 	    } else if (flags.verbose &&
 		    !(obj->otyp == CORPSE && touch_petrifies(&mons[obj->corpsenm])))
 		Your("%s does not protect you.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */ // TODO DE
@@ -866,7 +866,7 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 		if (obj->greased || throwing_weapon(obj))
 		    /* BUG: this message is grammatically incorrect if obj has
 		       a plural name; greased gloves or boots for instance. */
-		    pline("%s as you throw it!", Tobjnam(obj, "slip")); /* EN pline("%s as you throw it!", Tobjnam(obj, "slip")); */ // TODO DE
+			pline("SUBJECT %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL (es) VERB_WERFEN!", Tobjnam(obj, "VERB_SLIP")); /* EN pline("%s as you throw it!", Tobjnam(obj, "slip")); */ // TODo DE
 		else slipok = FALSE;
 	    }
 	    if (slipok) {

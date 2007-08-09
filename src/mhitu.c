@@ -1397,7 +1397,7 @@ dopois:
 		if(!night() && mdat == &mons[PM_GREMLIN]) break;
 		if(!mtmp->mcan && !rn2(10)) {
 		    if (flags.soundok) {
-			if (Blind) Du_hoerst("Gelächter."); /* EN if (Blind) You_hear("laughter."); */
+			if (Blind) You_hear("Gelächter."); /* EN if (Blind) You_hear("laughter."); */
 			else       pline("%s chuckles.", Monnam(mtmp)); /* EN else       pline("%s chuckles.", Monnam(mtmp)); */ // TODO DE
 		    }
 		    if (u.umonnum == PM_CLAY_GOLEM) {

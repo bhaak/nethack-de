@@ -1523,12 +1523,12 @@ register struct attack *mattk;
 		if (m_slips_free(mdef, mattk)) break;
 
 		if ((mdef->misc_worn_check & W_ARMH) && rn2(8)) {
-		    pline("%s helmet blocks your attack to %s head.", /* EN pline("%s helmet blocks your attack to %s head.", */ // TODO DE
-			  s_suffix(Monnam(mdef)), mhis(mdef));
+		    pline("SUBJECT ARTIKEL_BESTIMMTER NOUN_HELMET %s blockt OBJECT PRONOMEN_POSSESSIV NOUN_ATTACK auf %s NOUN_KOPF.", /* EN pline("%s helmet blocks your attack to %s head.", */ // TODO DE
+			  genitivattribut(mdef), mhis(mdef)); /* EN s_suffix(Monnam(mdef)), mhis(mdef)); */
 		    break;
 		}
 
-		You("VERB_EAT %s brain!", s_suffix(mon_nam(mdef))); /* EN You("eat %s brain!", s_suffix(mon_nam(mdef))); */ // TODO DE
+		You("VERB_EAT das Gehirn %s!", genitivattribut(mdef)); /* EN You("eat %s brain!", s_suffix(mon_nam(mdef))); */
 		u.uconduct.food++;
 		if (touch_petrifies(mdef->data) && !Stone_resistance && !Stoned) {
 		    Stoned = 5;
