@@ -48,6 +48,9 @@
 #define MS_SPELL	37	/* spellcaster not matching any of the above */
 #define MS_WERE		38	/* lycanthrope in human form */
 #define MS_BOAST	39	/* giants */
+#ifdef GERMAN
+# define MS_GNOME	40	/* gnomes */
+#endif
 
 
 #define MR_FIRE		0x01	/* resists fire */

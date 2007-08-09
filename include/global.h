@@ -322,7 +322,7 @@ struct version_info {
 #define DOORMAX		120	/* max number of doors per level */
 
 #define BUFSZ		256	/* for getlin buffers */
-#define QBUFSZ		128	/* for building question text */
+#define QBUFSZ		256	/* for building question text */ /* EN #define QBUFSZ		128	*/ // TODO DE
 #define TBUFSZ		300	/* toplines[] buffer max msg: 3 81char names */
 				/* plus longest prefix plus a few extra words */
 
