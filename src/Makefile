@@ -152,8 +152,7 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/lib/gnome-libs/include -I../win/gnome
 # CFLAGS = -g -I../include
 
 CFLAGS = -I../include -DGERMAN -g # -fbounds-checking #-fprofile-arcs -ftest-coverage
-LFLAGS = -lcheck 
-# LFLAGS = -lcheck
+LFLAGS =
 
 # The Qt and Be window systems are written in C++, while the rest of
 # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
@@ -739,9 +738,9 @@ fountain.o: fountain.c $(HACK_H)
 german_vocabulary.c: generate_german.rb german_verb.rb
 	rm -f german_vocabulary.o
 	ruby generate_german.rb >german_vocabulary.c
-german_vocabulary.o: german_vocabulary.c german.h
-german.o: german.c german.h german_vocabulary.o
-german_test: german_test.c german.o german_vocabulary.o german.h
+german_vocabulary.o: german_vocabulary.c ../include/german.h
+german.o: german.c german_vocabulary.o ../include/german.h
+german_test: german_test.c german.o german_vocabulary.o ../include/german.h
 	$(CC) -Wall $(CFLAGS) german_test.c -lcheck -o german_test german.o german_vocabulary.o
 german_wishing.o: german_wishing_test.c german.h
 
