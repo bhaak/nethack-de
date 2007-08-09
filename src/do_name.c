@@ -1082,4 +1082,27 @@ char *buf;
 }
 #endif /* OVL2 */
 
+#ifdef GERMAN
+char *
+genitivattribut(mtmp)		/* return a name converted to possessive */
+struct monst *mtmp;
+{
+    static char buf[BUFSZ];
+
+		if (type_is_pname(mtmp->data)) {
+      /* Eigename */
+      Strcpy(buf, "KASUS_GENITIV ARTIKEL_BESTIMMTER ");
+		} else if ((mtmp->isshk && !Hallucination)) {
+      /* Ladenbesitzer */
+      Strcpy(buf, "KASUS_GENITIV ");
+	    //Strcat(buf, mtmp->female ? "der " : "des ");
+	    Strcat(buf, "von ");
+		} else {
+      Strcpy(buf, "KASUS_GENITIV ");
+	  }
+	  Strcat(buf, mon_nam(mtmp));
+    return buf;
+}
+#endif
+
 /*do_name.c*/
