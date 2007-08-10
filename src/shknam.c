@@ -182,18 +182,18 @@ static const char * const shkgeneral[] = {
  * (by testing the sign) whether to use mkobj() or mksobj().
  */
 
-// -laden, -handlung, -geschaeft, -shop, -lager, -filiale, -kaufhaus
+// -laden, -handlung, -geschaeft, -shop, -lager, -filiale, -kaufhaus, 
 const struct shclass shtypes[] = {
 	{"NOUN_KRAMLADEN", RANDOM_CLASS, 44, /* EN {"general store", RANDOM_CLASS, 44, */
 	    D_SHOP, {{100, RANDOM_CLASS}, {0, 0}, {0, 0}}, shkgeneral},
-	{"used armor dealership", ARMOR_CLASS, 14, /* EN {"used armor dealership", ARMOR_CLASS, 14, */ // TODO DE
+	{"NOUN_SCHUTZBEKLEIDUNGSFACHGESCHAEFT", ARMOR_CLASS, 14, /* EN {"used armor dealership", ARMOR_CLASS, 14, */
 	    D_SHOP, {{90, ARMOR_CLASS}, {10, WEAPON_CLASS}, {0, 0}},
 	     shkarmors},
-	{"NOUN_ANTIQUARIAT", SCROLL_CLASS, 10, D_SHOP, /* EN {"second-hand bookstore", SCROLL_CLASS, 10, D_SHOP, */
+	{"NOUN_BUECHERFLOHMARKT", SCROLL_CLASS, 10, D_SHOP, /* EN {"second-hand bookstore", SCROLL_CLASS, 10, D_SHOP, */
 	    {{90, SCROLL_CLASS}, {10, SPBOOK_CLASS}, {0, 0}}, shkbooks},
 	{"NOUN_SPIRITUOSENHANDLUNG", POTION_CLASS, 10, D_SHOP, /* EN {"liquor emporium", POTION_CLASS, 10, D_SHOP, */
 	    {{100, POTION_CLASS}, {0, 0}, {0, 0}}, shkliquors},
-	{"antique weapons outlet", WEAPON_CLASS, 5, D_SHOP, /* EN {"antique weapons outlet", WEAPON_CLASS, 5, D_SHOP, */ // TODO DE
+	{"NOUN_ANTIKWAFFENLAGER", WEAPON_CLASS, 5, D_SHOP, /* EN {"antique weapons outlet", WEAPON_CLASS, 5, D_SHOP, */
 	    {{90, WEAPON_CLASS}, {10, ARMOR_CLASS}, {0, 0}}, shkweapons},
 	{"NOUN_DELIKATESSENLADEN", FOOD_CLASS, 5, D_SHOP, /* EN {"delicatessen", FOOD_CLASS, 5, D_SHOP, */
 	    {{83, FOOD_CLASS}, {5, -POT_FRUIT_JUICE}, {4, -POT_BOOZE},
@@ -201,7 +201,7 @@ const struct shclass shtypes[] = {
 	{"NOUN_JUWELIERLADEN", RING_CLASS, 3, D_SHOP, /* EN {"jewelers", RING_CLASS, 3, D_SHOP, */
 	    {{85, RING_CLASS}, {10, GEM_CLASS}, {5, AMULET_CLASS}, {0, 0}},
 	    shkrings},
-	{"quality apparel and accessories", WAND_CLASS, 3, D_SHOP, /* EN {"quality apparel and accessories", WAND_CLASS, 3, D_SHOP, */ // TODO DE
+	{"NOUN_BOUTIQUE", WAND_CLASS, 3, D_SHOP, /* EN {"quality apparel and accessories", WAND_CLASS, 3, D_SHOP, */
 	    {{90, WAND_CLASS}, {5, -LEATHER_GLOVES}, {5, -ELVEN_CLOAK}, {0, 0}},
 	     shkwands},
 	{"NOUN_EISENWARENHANDLUNG", TOOL_CLASS, 3, D_SHOP, /* EN {"hardware store", TOOL_CLASS, 3, D_SHOP, */
@@ -210,7 +210,7 @@ const struct shclass shtypes[] = {
 	 * random implementor name (along with candle shops having
 	 * random shopkeepers)
 	 */
-	{"rare books", SPBOOK_CLASS, 3, D_SHOP, /* EN {"rare books", SPBOOK_CLASS, 3, D_SHOP, */ // TODO DE
+	{"NOUN_ANTIQUARIAT", SPBOOK_CLASS, 3, D_SHOP, /* EN {"rare books", SPBOOK_CLASS, 3, D_SHOP, */
 	    {{90, SPBOOK_CLASS}, {10, SCROLL_CLASS}, {0, 0}}, shkbooks},
 	/* Shops below this point are "unique".  That is they must all have a
 	 * probability of zero.  They are only created via the special level
@@ -465,7 +465,7 @@ register struct mkroom *sroom;
 	    else if(inside_shop(sx-1,sy)) m++;
 	    if(inside_shop(sx,sy+1)) n--;
 	    else if(inside_shop(sx,sy-1)) n++;
-	    Sprintf(buf, "Closed for inventory"); /* EN Sprintf(buf, "Closed for inventory"); */ // TODO DE
+	    Sprintf(buf, "Wegen Inventur geschlossen"); /* EN Sprintf(buf, "Closed for inventory"); */
 	    make_engr_at(m, n, buf, 0L, DUST);
     }
 

@@ -562,7 +562,7 @@ register char *enterstring;
 	} else if (eshkp->robbed) {
 	    pline("%s mutters imprecations against shoplifters.", shkname(shkp)); /* EN pline("%s mutters imprecations against shoplifters.", shkname(shkp)); */ // TODO DE
 	} else {
-	    verbalize("%s, %s!  Welcome%s to %s %s!", /* EN verbalize("%s, %s!  Welcome%s to %s %s!", */ // TODO DE
+	    verbalize("%s, %s!  Herzlich willkommen%s in %s %s!", /* EN verbalize("%s, %s!  Welcome%s to %s %s!", */
 		      Hello(shkp), plname,
 		      eshkp->visitct++ ? " again" : "", /* EN eshkp->visitct++ ? " again" : "", */ // TODO DE
 		      s_suffix(shkname(shkp)),
