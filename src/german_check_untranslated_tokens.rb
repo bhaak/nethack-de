@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 file1 = File.readlines("mon-de.h")
 file2 = File.readlines("obj-de.h")
 
