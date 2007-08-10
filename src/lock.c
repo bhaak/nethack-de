@@ -94,7 +94,7 @@ picklock()	/* try to open/close a lock */
 		    pline("Dieser Eingang hat keine Türe."); /* EN pline("This doorway has no door."); */
 		    return((xlock.usedtime = 0));
 		case D_ISOPEN:
-		    You("kannst keine offenen Türen abschliessen."); /* EN You("cannot lock an open door."); */
+		    You("VERB_KOENNEN keine offenen Türen abschliessen."); /* EN You("cannot lock an open door."); */
 		    return((xlock.usedtime = 0));
 		case D_BROKEN:
 		    pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */
@@ -394,7 +394,7 @@ pick_lock(pick) /* pick a lock with a given object */
 		    pline("Dieser Eingang hat keine Türe."); /* EN pline("This doorway has no door."); */
 		    return(0);
 		case D_ISOPEN:
-		    You("kannst keine offenen Türen verschliessen."); /* EN You("cannot lock an open door."); */
+		    You("VERB_KOENNEN keine offenen Türen verschliessen."); /* EN You("cannot lock an open door."); */
 		    return(0);
 		case D_BROKEN:
 		    pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */

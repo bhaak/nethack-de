@@ -526,6 +526,11 @@ long timeout;
 			    flags.female ? "mommy" : "daddy", /* EN flags.female ? "mommy" : "daddy", */ // TODO DE
 			    egg->spe ? "." : "?"); /* EN egg->spe ? "." : "?"); */ // TODO DE
 		    } else if (mon->data->mlet == S_DRAGON) {
+#ifdef GERMAN
+					if (monsndx(mon->data) == PM_BABY_GREEN_DRAGON) {
+					  verbalize("Ich will Feuerwehrmann werden!"); /* Grisù */ 
+					} else 
+#endif
 			verbalize("Gleep!");		/* Mything eggs :-) */ /* EN verbalize("Gleep!");		*/ // TODO DE
 		    }
 		    break;
@@ -533,7 +538,7 @@ long timeout;
 		case OBJ_FLOOR:
 		    if (cansee_hatchspot) {
 			knows_egg = TRUE;
-			You("see %s hatch.", monnambuf); /* EN You("see %s hatch.", monnambuf); */ // TODO DE
+			You("VERB_BEOBACHTEN OBJECT %s beim Schlüpfen.", monnambuf); /* EN You("see %s hatch.", monnambuf); */
 			redraw = TRUE;	/* update egg's map location */
 		    }
 		    break;
@@ -665,18 +670,18 @@ slip_or_trip()
 	    if (on_foot) {
 		switch (rn2(4)) {
 		  case 1:
-			You("trip over your own %s.", Hallucination ?  /* EN You("trip over your own %s.", Hallucination ? */ // TODO DE
-				"elbow" : makeplural(body_part(FOOT))); /* EN "elbow" : makeplural(body_part(FOOT))); */ // TODO DE
+			You("VERB_STOLPERN über OBJECT PRONOMEN_POSSESSIV ADJEKTIV_EIGENE %s.", Hallucination ?  /* EN You("trip over your own %s.", Hallucination ? */
+				"NOUN_ELLBOGEN" : makeplural(body_part(FOOT))); /* EN "elbow" : makeplural(body_part(FOOT))); */
 			break;
 		  case 2:
-			You("slip %s.", Hallucination ?  /* EN You("slip %s.", Hallucination ? */ // TODO DE
-				"on a banana peel" : "and nearly fall"); /* EN "on a banana peel" : "and nearly fall"); */ // TODO DE
+			You("VERB_AUSRUTSCHEN %s.", Hallucination ?  /* EN You("slip %s.", Hallucination ? */
+				"auf einer Bananenschale SATZKLAMMER" : "SATKLAMMER und nearly fall"); /* EN "on a banana peel" : "and nearly fall"); */
 			break;
 		  case 3:
-			You("flounder."); /* EN You("flounder."); */ // TODO DE
+			You("VERB_STRAUCHELN."); /* EN You("flounder."); */
 			break;
 		  default:
-			You("stumble."); /* EN You("stumble."); */ // TODO DE
+			You("VERB_STOLPERN."); /* EN You("stumble."); */
 			break;
 		}
 	    }
@@ -711,10 +716,10 @@ const char *tailer;
 	switch (obj->where) {
 	    case OBJ_INVENT:
 	    case OBJ_MINVENT:
-		pline("%s flickers%s.", Yname2(obj), tailer); /* EN pline("%s flickers%s.", Yname2(obj), tailer); */ // TODO DE
+		pline("SUBJECT %s%s VERB_FLACKERN.", Yname2(obj), tailer); /* EN pline("%s flickers%s.", Yname2(obj), tailer); */
 		break;
 	    case OBJ_FLOOR:
-		You("see %s flicker%s.", an(xname(obj)), tailer); /* EN You("see %s flicker%s.", an(xname(obj)), tailer); */ // TODO DE
+		You("VERB_SEE %s%s flackern.", an(xname(obj)), tailer); /* EN You("see %s flicker%s.", an(xname(obj)), tailer); */
 		break;
 	}
 }
@@ -729,7 +734,7 @@ struct obj *obj;
 	    case OBJ_INVENT:
 		Your("lantern is getting dim."); /* EN Your("lantern is getting dim."); */ // TODO DE
 		if (Hallucination)
-		    pline("Batteries have not been invented yet."); /* EN pline("Batteries have not been invented yet."); */ // TODO DE
+		    pline("Leider gibt es noch keine Batterien."); /* EN pline("Batteries have not been invented yet."); */
 		break;
 	    case OBJ_FLOOR:
 		You("see a lantern getting dim."); /* EN You("see a lantern getting dim."); */ // TODO DE
@@ -826,7 +831,7 @@ long timeout;
 				lantern_message(obj);
 			    else
 				see_lamp_flicker(obj,
-				    obj->age == 50L ? " considerably" : ""); /* EN obj->age == 50L ? " considerably" : ""); */ // TODO DE
+				    obj->age == 50L ? " heftig" : ""); /* EN obj->age == 50L ? " considerably" : ""); */
 			}
 			break;
 
