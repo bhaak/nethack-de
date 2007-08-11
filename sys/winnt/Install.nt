@@ -97,7 +97,10 @@ I. Dispelling the Myths:
 
         o Microsoft Visual C++ V6.0 SP3 or greater
         o Borland C 5.5.1
-        o MinGW 2.0 (with GCC 3.2)
+        o MinGW 2.0 (with GCC 3.2), 
+          running make in the Windows shell, cmd.exe
+        o MinGW 3.1 (withh GCC 3.4), 
+          running make in the Cygwin shell
 
     The Microsoft Visual C Makefile was created for use with MS NMAKE 
     which is provided with the Microsoft compiler. The supplied Makefile
@@ -109,6 +112,9 @@ I. Dispelling the Myths:
 
     The GCC Makefile was created for use with GNU Make version 3.79.1,
     which comes with the MinGW package.
+
+    The MinGW/GCC/Cygwin makefile was adapted from the GCC Makefile,
+    using GNU Make version 3.80.
 
     You may find it useful to obtain copies of lex (flex) and yacc
     (bison, or byacc).  While not strictly necessary to compile nethack,
@@ -222,6 +228,9 @@ Compiling
     For GCC:
         mingw32-make -f Makefile.gcc install
 
+    For GCC on Cygwin:
+    	make -f Makefile.cyg install
+
     If you get any errors along the way then something has not been set
     up correctly. The time it takes to compile depends on your
     particular machine of course, but you should be able to go for lunch
@@ -246,6 +255,9 @@ Notes:
 
     For GCC:
         mingw32-make -f Makefile.gcc
+
+    For GCC on Cygwin:
+    	make -f Makefile.cyg install
 
     If you add, delete, or reorder monsters or objects, or you change
     the format of saved level files, delete any save and bones files.
