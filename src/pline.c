@@ -9,6 +9,10 @@
 #include "edog.h"
 #endif
 
+#ifdef GERMAN
+#include "german.h"
+#endif
+
 #ifdef OVLB
 
 static boolean no_repeat = FALSE;

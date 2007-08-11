@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+#include "german.h"
+#endif
+
 #define NOINVSYM	'#'
 #define CONTAINED_SYM	'>'	/* designator for inside a container */
 

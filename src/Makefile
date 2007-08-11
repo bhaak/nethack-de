@@ -151,7 +151,7 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/lib/gnome-libs/include -I../win/gnome
 # flags for debugging:
 # CFLAGS = -g -I../include
 
-CFLAGS = -I../include -DGERMAN -g # -fbounds-checking #-fprofile-arcs -ftest-coverage
+CFLAGS = -Wall -I../include -DGERMAN -g # -fbounds-checking #-fprofile-arcs -ftest-coverage
 LFLAGS =
 
 # The Qt and Be window systems are written in C++, while the rest of

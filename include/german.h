@@ -12,7 +12,7 @@ enum Partizip { partizip_praesens=1, partizip_perfekt=2 };
 
 /* used for nouns and adjectives, as there are nouns, 
    that are inflected like adjectives */
-extern struct substantiv_oder_adjekiv_struct {
+struct substantiv_oder_adjekiv_struct {
 	const char  *wort;
 	const char  *typ;
   const char  *fugenelement;
@@ -22,7 +22,7 @@ extern struct substantiv_oder_adjekiv_struct {
 	enum Artikel artikel;
 };
 
-extern struct verb_alt_struct {
+struct verb_alt_struct {
 	const char *verb;
 	const char *typ;
 	const char *praeverb;
@@ -31,7 +31,7 @@ extern struct verb_alt_struct {
 	enum Casus casus;
 };
 
-extern struct verb_struct {
+struct verb_struct {
 	const char *verb;
 	const char *typ;
 	const char *praeverb;
@@ -41,12 +41,12 @@ extern struct verb_struct {
 	enum Casus casus;
 };
 
-extern struct verb_infinitiv_struct {
+struct verb_infinitiv_struct {
 	const char *verb;
 	const char *typ;
 };
 
-extern struct verb_partizip_struct {
+struct verb_partizip_struct {
 	const char *praesens;
 	const char *perfekt;
 	const char *typ;
@@ -59,8 +59,7 @@ extern struct verb_struct verben[];
 
 
 char* german(const char *line);
-void german2meta(char *str, char *result);
-struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(char *wort, char *with);
-
+void german2meta(const char *str, char *result);
+struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(const char *wort, char *with);
 
 #endif /* !_GERMAN_H */

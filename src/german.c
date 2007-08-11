@@ -1,6 +1,8 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 //#include <hack.h>
 #include "german.h"
@@ -94,8 +96,104 @@ void print_state()
 	printf("\n");
 }
 
+
+// returns true, if token has a final lowercase s 
+int is_plural(const char* token) {
+	return (token[strlen(token)-1] == 's');
+
+}
+int next_token(const char* input, char* output, int pos) {
+	int i=pos;
+	int j=0;
+	char tmp[TBUFSZ];
+
+#ifdef DEBUG
+	printf("next_token: -%s-\n", input+i);
+#endif
+	//do {
+		if (!isspace(input[i])) {
+			while (isalnum(input[i])||input[i]=='_') {
+				output[j++] = input[i++];
+			}
+		}
+		output[j] = '\0';
+
+    if (strncmp("NOUN_POTION", output, 11)==0) {
+			// get the token after NOUN_POTION PARTIKEL_OF
+			// jump over PARTIKEL_OF
+			next_token(input, tmp, pos+1+strlen(output));
+			int len_partikel_of = strlen(tmp);
+			next_token(input, tmp, pos+2+len_partikel_of+strlen(output));
+			//printf("Token nach Token nach NOUN_POTION: %s\n", tmp);
+			if ((strncmp(tmp, "NOUN_POT_WATER",14)==0) ||
+					(strncmp(tmp, "NOUN_POT_BOOZE",14)==0) ||
+					(strncmp(tmp, "NOUN_POT_ACID",13)==0) ||
+					(strncmp(tmp, "NOUN_POT_OIL",12)==0) ||
+					(strncmp(tmp, "NOUN_POT_FRUIT_JUICE",20)==0) ||
+					(strncmp(tmp, "NOUN_POT_HOLY_WATER",19)==0) ||
+					(strncmp(tmp, "NOUN_POT_UNHOLY_WATER",19)==0)) {
+				if (is_plural(output)) { strcpy(output, "NOUN_FLASCHEs"); }
+				else { strcpy(output, "NOUN_FLASCHE"); }
+			}
+		}
+		
+		//printf("output: %s strlen: %d\n",output, strlen(output));
+		/*if (strlen(output)==0) { i++; }
+			} while (strlen(output)==0);*/
+
+#ifdef DEBUG
+	printf("next_token return: %s\n", output);
+#endif
+	return (strlen(output)>0);
+}
+
+/* get the complete token */
+int previous_token(const char* input, char* output, int pos) {
+	int i=pos;
+
+#ifdef DEBUG
+	printf("previous_token1: -%s-\n", input);
+	printf("previous_token2: -%s-\n", input+i);
+#endif
+
+	// skip whitespace
+	do {
+		i--;
+	} while ((i>0) && (isspace(input[i])));
+	//printf("previous_token3: -%s-\n", input+i);
+
+	/* determine begin of token */
+	while ((i>0) && (isalnum(input[i])||input[i]=='_')) {
+		i--;
+	}
+	i++;
+
+	//printf("previous_token4: -%s-\n", input+i);
+
+	int ret = next_token(input, output, i);
+#ifdef DEBUG
+	printf("previous_token return: %s\n", output);
+#endif
+	return ret;
+}
+
+/* returns true, when the token text is found within input */
+int find_token(const char* text, const char* input) {
+	int i=0;
+	char tmp[TBUFSZ];
+	
+	while (i<strlen(input)) {
+		next_token(input,tmp, i);
+		//printf("text: -%s- input: -%s-, tmp: -%s- i: %d\n", text, input, tmp, i);
+		if (strcmp(text, tmp)==0) { return 1;}
+		i += strlen(tmp);
+		if (strlen(tmp)==0) { i++;}
+	}
+	//printf("find_token return 0\n");
+	return 0;
+}
 /* Converts 'Fuchs' to 'NOUN_FOX'. Always returns the longest match. */
-struct substantiv_oder_adjekiv_struct *get_meta_substantiv(char *wort) {
+struct substantiv_oder_adjekiv_struct *get_meta_substantiv(const char *wort) {
 	int i=0;
 	struct substantiv_oder_adjekiv_struct *ret = NULL;
 	int len = 0;
@@ -116,7 +214,7 @@ struct substantiv_oder_adjekiv_struct *get_meta_substantiv(char *wort) {
 }
 
 /* Converts 'Fuchs' to 'NOUN_FOX'. Always returns the longest match that starts with "with". */
-struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(char *wort, char *with) {
+struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(const char *wort, char *with) {
 	int i=0;
 	struct substantiv_oder_adjekiv_struct *ret = NULL;
 	int len = 0;
@@ -138,7 +236,7 @@ struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(char *wort, char
 	return ret;
 }
 
-char *strstr2(char *haystack, char *needle1, char *needle2) {
+char *strstr2(const char *haystack, const char *needle1, const char *needle2) {
 	char *pos = strstr(haystack, needle1);
 	if (pos != NULL) { return pos; }
 	pos = strstr(haystack, needle2);
@@ -146,12 +244,10 @@ char *strstr2(char *haystack, char *needle1, char *needle2) {
 }
 
 /* translates a german string to meta*/
-void german2meta(char *str, char *output)
+void german2meta(const char *str, char *output)
 {
 	int i=0;
-	char *ptr = str;
 	output[0] = '\0';
-	int len=0;
 	int ring_gefunden = 0;
 	int wand_gefunden = 0;
 	int potion_gefunden = 0;
@@ -277,9 +373,7 @@ void german2meta(char *str, char *output)
 void german2meta_with(char *str, char *output, char *with)
 {
 	int i=0;
-	char *ptr = str;
 	output[0] = '\0';
-	int len=0;
 	
 	//printf("str: %s\n",str);
 	//printf("strlen(str): %d\n",strlen(str));
@@ -405,10 +499,55 @@ const char* get_adjektiv(const char* typ, enum Casus c, enum Genus g, enum Numer
 	return typ;
 }
 
+int analyze_this_as_subject(const char *text) {
+	int k;
+	if ((subject_person==0) || (subject_genus==0) || (subject_numerus==0)) {
+		k=0;
+		while (worte[k].wort!=NULL) {
+			if (strcmp(worte[k].typ, text)==0) {
+				c_person  = drittePerson;
+				c_genus = worte[k].genus;
+				c_numerus = worte[k].numerus;
+				c_artikel = ohne;
+
+				subject_person  = drittePerson;
+				subject_genus   = worte[k].genus;
+				subject_numerus = worte[k].numerus;
+			}
+			k++;
+		}
+		return 1;
+	}
+	return 0;
+}
+
+int analyze_this_as_object(const char *text) {
+	int k;
+#ifdef DEBUG
+	printf("analyze_this_as_object: %s\n", text);
+#endif
+	if ((do_genus==0) || (do_numerus==0)) {
+		k=0;
+		while (worte[k].wort!=NULL) {
+			if (strcmp(worte[k].typ, text)==0) {
+				c_genus = worte[k].genus;
+				c_numerus = worte[k].numerus;
+				c_casus   = verb_do_casus; // TODO überprüfen, ob verb schon angetroffen
+				c_artikel = ohne;
+
+				do_genus = worte[k].genus;
+				do_numerus = worte[k].numerus;
+			}
+			k++;
+		}
+		return 1;
+	}
+	return 0;
+}
+
 int finde_naechstes_subject(const char* text) {
 	int i=0;
 	char tmp[TBUFSZ];
-	char tmp2[TBUFSZ];
 #ifdef DEBUG
 	printf("finde_naechstes_subject: %s\n", text);
 	print_state();
@@ -448,7 +587,6 @@ int finde_naechstes_subject(const char* text) {
 				subject_numerus = n_plural;
 			}
 
-
 		} else if (strncmp(tmp, "NOUN_",5)==0) {
 			analyze_this_as_subject(tmp);
 #ifdef DEBUG
@@ -464,13 +602,9 @@ int finde_naechstes_subject(const char* text) {
 }
 
 
-
-
 int finde_naechstes_objekt(const char* text) {
 	int i=0;
 	char tmp[TBUFSZ];
-	char tmp2[TBUFSZ];
-	char *subject;
 #ifdef DEBUG
 	printf("finde_naechstes_objekt: %s\n", text);
 	print_state();
@@ -537,57 +671,9 @@ void clear_verb() {
 	verb_infinitiv=0;
 }
 
-int analyze_this_as_subject(const char *text) {
-	int k;
-	if ((subject_person==0) || (subject_genus==0) || (subject_numerus==0)) {
-		k=0;
-		while (worte[k].wort!=NULL) {
-			if (strcmp(worte[k].typ, text)==0) {
-				c_person  = drittePerson;
-				c_genus = worte[k].genus;
-				c_numerus = worte[k].numerus;
-				c_artikel = ohne;
-
-				subject_person  = drittePerson;
-				subject_genus   = worte[k].genus;
-				subject_numerus = worte[k].numerus;
-			}
-			k++;
-		}
-		return 1;
-	}
-	return 0;
-}
-
-int analyze_this_as_object(const char *text) {
-	int k;
-#ifdef DEBUG
-	printf("analyze_this_as_object: %s\n", text);
-#endif
-	if ((do_genus==0) || (do_numerus==0)) {
-		k=0;
-		while (worte[k].wort!=NULL) {
-			if (strcmp(worte[k].typ, text)==0) {
-				c_genus = worte[k].genus;
-				c_numerus = worte[k].numerus;
-				c_casus   = verb_do_casus; // TODO überprüfen, ob verb schon angetroffen
-				c_artikel = ohne;
-
-				do_genus = worte[k].genus;
-				do_numerus = worte[k].numerus;
-			}
-			k++;
-		}
-		return 1;
-	}
-	return 0;
-}
-
-
 int finde_naechstes_substantiv(const char* text) {
 	int i=0;
 	char tmp[TBUFSZ];
-	char *substantiv;
 #ifdef DEBUG
 	printf("finde_naechstes_substantiv: %s\n", text);
 #endif
@@ -635,106 +721,7 @@ int finde_naechstes_substantiv(const char* text) {
 	return 1;
 }
 
-// returns true, if token has a final lowercase s 
-int is_plural(char* token) {
-	return (token[strlen(token)-1] == 's');
-
-}
-
-int next_token(const char* input, char* output, int pos) {
-	int i=pos;
-	int j=0;
-	char tmp[TBUFSZ];
-
-#ifdef DEBUG
-	printf("next_token: -%s-\n", input+i);
-#endif
-	//do {
-		if (!isspace(input[i])) {
-			while (isalnum(input[i])||input[i]=='_') {
-				output[j++] = input[i++];
-			}
-		}
-		output[j] = '\0';
-
-    if (strncmp("NOUN_POTION", output, 11)==0) {
-			// get the token after NOUN_POTION PARTIKEL_OF
-			// jump over PARTIKEL_OF
-			next_token(input, tmp, pos+1+strlen(output));
-			int len_partikel_of = strlen(tmp);
-			next_token(input, tmp, pos+2+len_partikel_of+strlen(output));
-			//printf("Token nach Token nach NOUN_POTION: %s\n", tmp);
-			if ((strncmp(tmp, "NOUN_POT_WATER",14)==0) ||
-					(strncmp(tmp, "NOUN_POT_BOOZE",14)==0) ||
-					(strncmp(tmp, "NOUN_POT_ACID",13)==0) ||
-					(strncmp(tmp, "NOUN_POT_OIL",12)==0) ||
-					(strncmp(tmp, "NOUN_POT_FRUIT_JUICE",20)==0) ||
-					(strncmp(tmp, "NOUN_POT_HOLY_WATER",19)==0) ||
-					(strncmp(tmp, "NOUN_POT_UNHOLY_WATER",19)==0)) {
-				if (is_plural(output)) { strcpy(output, "NOUN_FLASCHEs"); }
-				else { strcpy(output, "NOUN_FLASCHE"); }
-			}
-		}
-		
-		//printf("output: %s strlen: %d\n",output, strlen(output));
-		/*if (strlen(output)==0) { i++; }
-			} while (strlen(output)==0);*/
-
-#ifdef DEBUG
-	printf("next_token return: %s\n", output);
-#endif
-	return (strlen(output)>0);
-}
-
-/* get the complete token */
-int previous_token(const char* input, char* output, int pos) {
-	int i=pos;
-	int j=0;
-	char tmp[TBUFSZ];
-
-#ifdef DEBUG
-	printf("previous_token1: -%s-\n", input);
-	printf("previous_token2: -%s-\n", input+i);
-#endif
-
-	// skip whitespace
-	do {
-		i--;
-	} while ((i>0) && (isspace(input[i])));
-	//printf("previous_token3: -%s-\n", input+i);
-
-	/* determine begin of token */
-	while ((i>0) && (isalnum(input[i])||input[i]=='_')) {
-		i--;
-	}
-	i++;
-
-	//printf("previous_token4: -%s-\n", input+i);
-
-	int ret = next_token(input, output, i);
-#ifdef DEBUG
-	printf("previous_token return: %s\n", output);
-#endif
-	return ret;
-}
-
-/* returns true, when the token text is found within input */
-int find_token(const char* text, const char* input) {
-	int i=0;
-	char tmp[TBUFSZ];
-	
-	while (i<strlen(input)) {
-		next_token(input,tmp, i);
-		//printf("text: -%s- input: -%s-, tmp: -%s- i: %d\n", text, input, tmp, i);
-		if (strcmp(text, tmp)==0) { return 1;}
-		i += strlen(tmp);
-		if (strlen(tmp)==0) { i++;}
-	}
-	//printf("find_token return 0\n");
-	return 0;
-}
-
-int append(char* output, const char* input) {
+void append(char* output, const char* input) {
 	strcat(output, input);
 	if (beginning_of_sentence) {
 		if (strlen(input)>0) {
@@ -749,7 +736,7 @@ void to_lowercase(char* string, int pos) {
 	string[pos] = tolower(string[pos]);
 }
 
-int append_kompositum(char* output, const char* firstpart, const char* secondpart) {
+void append_kompositum(char* output, const char* firstpart, const char* secondpart) {
 	// TODO get Fugenelement for input
 	append(output, get_wort(firstpart, nominativ, maskulin|feminin|neutrum, n_singular, c_artikel));
 	append(output, get_fugenelement(firstpart));
@@ -852,7 +839,7 @@ char* german(const char *line) {
 			else if (strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) { c_artikel = unbestimmter; }
 
 			if ((strcmp("ARTIKEL_NULL",tmp)==0) || // Null-Artikel
-					(strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) && (c_numerus == n_plural)) { // unbestimmter Artikel im Plural
+					((strcmp("ARTIKEL_UNBESTIMMTER",tmp)==0) && (c_numerus == n_plural))) { // unbestimmter Artikel im Plural
 				c_artikel = ohne;
 				insert_char = 0;
 			} else {

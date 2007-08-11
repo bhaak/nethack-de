@@ -3811,7 +3811,7 @@ register boolean silent;
 	}
 	if (cnt && !silent)
 	    pline_The("Kop%s (entäuscht) VERB_LOESEN sich in Luft SATZKLAMMER.", /* EN pline_The("Kop%s (disappointed) vanish%s into thin air.", */ // TODO DE
-		      plur(cnt), cnt == 1 ? "es" : "");
+		      plur(cnt)); /* EN plur(cnt), cnt == 1 ? "es" : ""); */
 }
 #endif	/* KOPS */
 

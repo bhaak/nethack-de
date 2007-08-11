@@ -1527,6 +1527,16 @@ E const char *FDECL(align_str, (ALIGNTYP_P));
 E void FDECL(mstatusline, (struct monst *));
 E void NDECL(ustatusline);
 E void NDECL(self_invis_message);
+#ifdef GERMAN
+E void VDECL(Du_spuerst, (const char *,...)) PRINTF_F(1,2);
+E void VDECL(Du_fuehlst_dich, (const char *,...)) PRINTF_F(1,2);
+E void VDECL(Du_bist, (const char *,...)) PRINTF_F(1,2);
+E void VDECL(Du_bist_dir, (const char *,...)) PRINTF_F(1,2);
+E void VDECL(Du_spuerst, (const char *,...)) PRINTF_F(1,2);
+E void VDECL(Dir_ist, (const char *,...)) PRINTF_F(1,2);
+E void VDECL(Dir_wird, (const char *,...)) PRINTF_F(1,2);
+E void VDECL(Dich, (const char *,...)) PRINTF_F(1,2);
+#endif
 
 /* ### polyself.c ### */
 
