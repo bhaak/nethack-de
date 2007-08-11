@@ -16,6 +16,10 @@
 #include "patchlevel.h"
 #endif
 
+#ifdef GERMAN
+#include "german.h"
+#endif
+
 #ifdef TTY_GRAPHICS
 
 #ifdef MAC
