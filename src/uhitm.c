@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+#include "german.h"
+#endif
+
 STATIC_DCL boolean FDECL(known_hitum, (struct monst *,int *,struct attack *));
 STATIC_DCL void FDECL(steal_it, (struct monst *, struct attack *));
 STATIC_DCL boolean FDECL(hitum, (struct monst *,int,struct attack *));
