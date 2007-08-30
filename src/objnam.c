@@ -2511,13 +2511,13 @@ srch:
 		    aligntyp al;
 
 		    levl[u.ux][u.uy].typ = ALTAR;
-		    if(!strncmpi(bp, "chaotic ", 8)) /* EN if(!strncmpi(bp, "chaotic ", 8)) */ // TODO DE
+		    if(!strncmpi(bp, "ADJEKTIV_CHAOTIC ", 8)) /* EN if(!strncmpi(bp, "chaotic ", 8)) */
 			al = A_CHAOTIC;
-		    else if(!strncmpi(bp, "neutral ", 8)) /* EN else if(!strncmpi(bp, "neutral ", 8)) */ // TODO DE
+		    else if(!strncmpi(bp, "ADJEKTIV_NEUTRAL ", 8)) /* EN else if(!strncmpi(bp, "neutral ", 8)) */
 			al = A_NEUTRAL;
-		    else if(!strncmpi(bp, "lawful ", 7)) /* EN else if(!strncmpi(bp, "lawful ", 7)) */ // TODO DE
+		    else if(!strncmpi(bp, "ADJEKTIV_LAWFUL ", 7)) /* EN else if(!strncmpi(bp, "lawful ", 7)) */
 			al = A_LAWFUL;
-		    else if(!strncmpi(bp, "unaligned ", 10)) /* EN else if(!strncmpi(bp, "unaligned ", 10)) */ // TODO DE
+		    else if(!strncmpi(bp, "ADJEKTIV_UNALIGNED ", 10)) /* EN else if(!strncmpi(bp, "unaligned ", 10)) */
 			al = A_NONE;
 		    else /* -1 - A_CHAOTIC, 0 - A_NEUTRAL, 1 - A_LAWFUL */
 			al = (!rn2(6)) ? A_NONE : rn2((int)A_LAWFUL+2) - 1;

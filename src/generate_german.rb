@@ -2557,6 +2557,13 @@ def ausgabe_nouns
     "/* Adjektive und Substantive für Nominalphrasen */",
     dekliniere_substantiv("NOUN_STANGENWAFFE","Stangenwaffe","","Stangenwaffe","en","feminin"),
     dekliniere_adjektiv("ADJEKTIV_GEWOEHNLICH","gewöhnlich")
+
+    "/* Gesinnungsadjektive */",
+    dekliniere_adjektiv("ADJEKTIV_CHAOTIC", "chaotisch"),
+    dekliniere_adjektiv("ADJEKTIV_NEUTRAL", "neutral"),
+    dekliniere_adjektiv("ADJEKTIV_LAWFUL", "rechtschaffen"),
+    dekliniere_adjektiv("ADJEKTIV_UNALIGNED", "frei"),
+    dekliniere_adjektiv("ADJEKTIV_UNKNOWN", "unbekannt"),
   ].each { |n|
     nomen << n
   }

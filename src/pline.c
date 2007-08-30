@@ -346,12 +346,12 @@ align_str(alignment)
     aligntyp alignment;
 {
     switch ((int)alignment) {
-	case A_CHAOTIC: return "chaotic"; /* EN case A_CHAOTIC: return "chaotic"; */ // TODO DE
-	case A_NEUTRAL: return "neutral"; /* EN case A_NEUTRAL: return "neutral"; */ // TODO DE
-	case A_LAWFUL:	return "lawful"; /* EN case A_LAWFUL:	return "lawful"; */ // TODO DE
-	case A_NONE:	return "unaligned"; /* EN case A_NONE:	return "unaligned"; */ // TODO DE
+	case A_CHAOTIC: return "ADJEKTIV_CHAOTIC"; /* EN case A_CHAOTIC: return "chaotic"; */
+	case A_NEUTRAL: return "ADJEKTIV_NEUTRAL"; /* EN case A_NEUTRAL: return "neutral"; */
+	case A_LAWFUL:	return "ADJEKTIV_LAWFUL"; /* EN case A_LAWFUL:	return "lawful"; */
+	case A_NONE:	return "ADJEKTIV_UNALIGNED"; /* EN case A_NONE:	return "unaligned"; */
     }
-    return "unknown"; /* EN return "unknown"; */ // TODO DE
+    return "ADJEKTIV_UNKNOWN"; /* EN return "unknown"; */
 }
 
 void
@@ -371,7 +371,7 @@ register struct monst *mtmp;
 		A_NEUTRAL;
 
 	info[0] = 0;
-	if (mtmp->mtame) {	  Strcat(info, ", tame"); /* EN if (mtmp->mtame) {	  Strcat(info, ", tame"); */ // TODO DE
+	if (mtmp->mtame) {	  Strcat(info, ", zahm"); /* EN if (mtmp->mtame) {	  Strcat(info, ", tame"); */
 #ifdef WIZARD
 	    if (wizard) {
 		Sprintf(eos(info), " (%d", mtmp->mtame);
@@ -382,12 +382,12 @@ register struct monst *mtmp;
 	    }
 #endif
 	}
-	else if (mtmp->mpeaceful) Strcat(info, ", peaceful"); /* EN else if (mtmp->mpeaceful) Strcat(info, ", peaceful"); */ // TODO DE
+	else if (mtmp->mpeaceful) Strcat(info, ", friedlich"); /* EN else if (mtmp->mpeaceful) Strcat(info, ", peaceful"); */
 	if (mtmp->meating)	  Strcat(info, ", eating"); /* EN if (mtmp->meating)	  Strcat(info, ", eating"); */ // TODO DE
 	if (mtmp->mcan)		  Strcat(info, ", cancelled"); /* EN if (mtmp->mcan)		  Strcat(info, ", cancelled"); */ // TODO DE
-	if (mtmp->mconf)	  Strcat(info, ", confused"); /* EN if (mtmp->mconf)	  Strcat(info, ", confused"); */ // TODO DE
+	if (mtmp->mconf)	  Strcat(info, ", verwirrt"); /* EN if (mtmp->mconf)	  Strcat(info, ", confused"); */
 	if (mtmp->mblinded || !mtmp->mcansee)
-				  Strcat(info, ", blind"); /* EN Strcat(info, ", blind"); */ // TODO DE
+				  Strcat(info, ", blind"); /* EN Strcat(info, ", blind"); */
 	if (mtmp->mstun)	  Strcat(info, ", stunned"); /* EN if (mtmp->mstun)	  Strcat(info, ", stunned"); */ // TODO DE
 	if (mtmp->msleeping)	  Strcat(info, ", asleep"); /* EN if (mtmp->msleeping)	  Strcat(info, ", asleep"); */ // TODO DE
 #if 0	/* unfortunately mfrozen covers temporary sleep and being busy
