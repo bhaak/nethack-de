@@ -41,9 +41,9 @@ ENDMAP
 # mimicing stairwells.
 RANDOM_PLACES: (33,0), (0,12), (25,20), (75,05)
 STAIR:place[0],down
-MONSTER:'m',"giant mimic", place[1], m_feature "staircase down"
-MONSTER:'m',"large mimic", place[2], m_feature "staircase down"
-MONSTER:'m',"small mimic", place[3], m_feature "staircase down"
+MONSTER:'m',"giant mimic", place[1], m_feature "NOUN_STAIRCASE_DOWN"
+MONSTER:'m',"large mimic", place[2], m_feature "NOUN_STAIRCASE_DOWN"
+MONSTER:'m',"small mimic", place[3], m_feature "NOUN_STAIRCASE_DOWN"
 # Portal arrival point
 BRANCH:(19,09,19,09),(0,0,0,0)
 # Doors (secret)
