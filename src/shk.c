@@ -564,7 +564,7 @@ register char *enterstring;
 	} else {
 	    verbalize("%s, %s!  Herzlich willkommen%s in %s %s!", /* EN verbalize("%s, %s!  Welcome%s to %s %s!", */
 		      Hello(shkp), plname,
-		      eshkp->visitct++ ? " again" : "", /* EN eshkp->visitct++ ? " again" : "", */ // TODO DE
+		      eshkp->visitct++ ? " zurück" : "", /* EN eshkp->visitct++ ? " again" : "", */
 		      s_suffix(shkname(shkp)),
 		      shtypes[rt - SHOPBASE].name);
 	}
@@ -1000,7 +1000,7 @@ register boolean silentkops;
 		if (vanished)
 		    pline("Satisfied, %s suddenly disappears!", shk_nam); /* EN pline("Satisfied, %s suddenly disappears!", shk_nam); */ // TODO DE
 	} else if(wasmad)
-		pline("%s calms down.", Monnam(shkp)); /* EN pline("%s calms down.", Monnam(shkp)); */ // TODO DE
+		pline("%s beruhigt sich wieder.", Monnam(shkp)); /* EN pline("%s calms down.", Monnam(shkp)); */
 
 	if(!angry_shk_exists()) {
 #ifdef KOPS

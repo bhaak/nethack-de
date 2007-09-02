@@ -53,7 +53,7 @@ register boolean forceshow;
 		EGD(grd)->fcbeg++;
 	}
 	if(grd->mhp <= 0) {
-	    pline_The("corridor disappears."); /* EN pline_The("corridor disappears."); */ // TODO DE
+	    pline_The("NOUN_KORRIDOR VERB_VERSCHWINDEN."); /* EN pline_The("corridor disappears."); */
 	    if(IS_ROCK(levl[u.ux][u.uy].typ)) You("VERB_SEIN in Stein eingeschlossen worden."); /* EN if(IS_ROCK(levl[u.ux][u.uy].typ)) You("are encased in rock."); */
 	}
 	return(TRUE);
@@ -254,7 +254,7 @@ fnd:
 	    /* [we ought to record whether this this message has already
 	       been given in order to vary it upon repeat visits, but
 	       discarding the monster and its egd data renders that hard] */
-	    verbalize("I'll be back when you're ready to speak to me!"); /* EN verbalize("I'll be back when you're ready to speak to me!"); */ // TODO DE
+	    verbalize("Ich komme wieder, wenn SUBJECT_IM_SATZ PRONOMEN_PERSONAL bereit VERB_SEIN, mit mir zu sprechen!"); /* EN verbalize("I'll be back when you're ready to speak to me!"); */
 	    mongone(guard);
 	    return;
 	}
@@ -263,7 +263,7 @@ fnd:
 	if (multi > 0) { nomul(0); unmul((char *)0); }
 	trycount = 5;
 	do {
-	    getlin("\"Hello stranger, who are you?\" -", buf); /* EN getlin("\"Hello stranger, who are you?\" -", buf); */ // TODO DE
+	    getlin("\"Hallo Fremder, wer SUBJECT_IM_SATZ VERB_SEIN PRONOMEN_PERSONAL?\" -", buf); /* EN getlin("\"Hello stranger, who are you?\" -", buf); */
 	    (void) mungspaces(buf);
 	} while (!letter(buf[0]) && --trycount > 0);
 
@@ -282,7 +282,7 @@ fnd:
 #endif
 	    ) {
 	    if (!mvitals[PM_CROESUS].died) {
-		verbalize("Oh, ja, natürlich.  Entschuldigen Sie die Störung."); /* EN verbalize("Oh, yes, of course.  Sorry to have disturbed you."); */ // TODO DE
+		verbalize("Oh, ja, natürlich.  Entschuldigen Sie die Störung."); /* EN verbalize("Oh, yes, of course.  Sorry to have disturbed you."); */
 		mongone(guard);
 	    } else {
 		setmangry(guard);
@@ -295,7 +295,7 @@ fnd:
 	    }
 	    return;
 	}
-	verbalize("I don't know you."); /* EN verbalize("I don't know you."); */ // TODO DE
+	verbalize("Ich kenne KASUS_AKKUSATIV PRONOMEN_PERSONAL nicht."); /* EN verbalize("I don't know you."); */
 #ifndef GOLDOBJ
 	if (!u.ugold && !hidden_gold())
 	    verbalize("Please follow me."); /* EN verbalize("Please follow me."); */ // TODO DE

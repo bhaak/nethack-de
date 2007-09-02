@@ -288,7 +288,7 @@ giveback:
 		break;
 	    case RIN_GAIN_STRENGTH:
 		pline_The("water flow seems %ser now.", /* EN pline_The("water flow seems %ser now.", */ // TODO DE
-			(obj->spe<0) ? "weak" : "strong"); /* EN (obj->spe<0) ? "weak" : "strong"); */ // TODO DE
+			(obj->spe<0) ? "schwächer" : "stärker"); /* EN (obj->spe<0) ? "weak" : "strong"); */
 		break;
 	    case RIN_GAIN_CONSTITUTION:
 		pline_The("water flow seems %ser now.", /* EN pline_The("water flow seems %ser now.", */ // TODO DE

@@ -478,11 +478,11 @@ resurrect()
 
 	if (!flags.no_of_wizards) {
 	    /* make a new Wizard */
-	    verb = "kill"; /* EN verb = "kill"; */ // TODO DE
+	    verb = "mich töten"; /* EN verb = "kill"; */
 	    mtmp = makemon(&mons[PM_WIZARD_OF_YENDOR], u.ux, u.uy, MM_NOWAIT);
 	} else {
 	    /* look for a migrating Wizard */
-	    verb = "elude"; /* EN verb = "elude"; */ // TODO DE
+	    verb = "mir entkommen"; /* EN verb = "elude"; */
 	    mmtmp = &migrating_mons;
 	    while ((mtmp = *mmtmp) != 0) {
 		if (mtmp->iswiz &&
@@ -512,7 +512,7 @@ resurrect()
 		mtmp->msleeping = mtmp->mtame = mtmp->mpeaceful = 0;
 		set_malign(mtmp);
 		pline("A voice booms out..."); /* EN pline("A voice booms out..."); */ // TODO DE
-		verbalize("So thou thought thou couldst %s me, fool.", verb); /* EN verbalize("So thou thought thou couldst %s me, fool.", verb); */ // TODO DE
+		verbalize("Du hast also gedacht, du Trottel könntest %s.", verb); /* EN verbalize("So thou thought thou couldst %s me, fool.", verb); */
 	}
 
 }

@@ -383,13 +383,13 @@ register struct monst *mtmp;
 #endif
 	}
 	else if (mtmp->mpeaceful) Strcat(info, ", friedlich"); /* EN else if (mtmp->mpeaceful) Strcat(info, ", peaceful"); */
-	if (mtmp->meating)	  Strcat(info, ", eating"); /* EN if (mtmp->meating)	  Strcat(info, ", eating"); */ // TODO DE
+	if (mtmp->meating)	  Strcat(info, ", isst"); /* EN if (mtmp->meating)	  Strcat(info, ", eating"); */
 	if (mtmp->mcan)		  Strcat(info, ", cancelled"); /* EN if (mtmp->mcan)		  Strcat(info, ", cancelled"); */ // TODO DE
 	if (mtmp->mconf)	  Strcat(info, ", verwirrt"); /* EN if (mtmp->mconf)	  Strcat(info, ", confused"); */
 	if (mtmp->mblinded || !mtmp->mcansee)
 				  Strcat(info, ", blind"); /* EN Strcat(info, ", blind"); */
 	if (mtmp->mstun)	  Strcat(info, ", stunned"); /* EN if (mtmp->mstun)	  Strcat(info, ", stunned"); */ // TODO DE
-	if (mtmp->msleeping)	  Strcat(info, ", asleep"); /* EN if (mtmp->msleeping)	  Strcat(info, ", asleep"); */ // TODO DE
+	if (mtmp->msleeping)	  Strcat(info, ", schläft"); /* EN if (mtmp->msleeping)	  Strcat(info, ", asleep"); */
 #if 0	/* unfortunately mfrozen covers temporary sleep and being busy
 	   (donning armor, for instance) as well as paralysis */
 	else if (mtmp->mfrozen)	  Strcat(info, ", paralyzed");
@@ -399,15 +399,15 @@ register struct monst *mtmp;
 #endif
 				  /* [arbitrary reason why it isn't moving] */
 	else if (mtmp->mstrategy & STRAT_WAITMASK)
-				  Strcat(info, ", meditating"); /* EN Strcat(info, ", meditating"); */ // TODO DE
+				  Strcat(info, ", meditiert"); /* EN Strcat(info, ", meditating"); */
 	else if (mtmp->mflee)	  Strcat(info, ", scared"); /* EN else if (mtmp->mflee)	  Strcat(info, ", scared"); */ // TODO DE
-	if (mtmp->mtrapped)	  Strcat(info, ", trapped"); /* EN if (mtmp->mtrapped)	  Strcat(info, ", trapped"); */ // TODO DE
+	if (mtmp->mtrapped)	  Strcat(info, ", gefangen"); /* EN if (mtmp->mtrapped)	  Strcat(info, ", trapped"); */
 	if (mtmp->mspeed)	  Strcat(info,
-					mtmp->mspeed == MFAST ? ", fast" : /* EN mtmp->mspeed == MFAST ? ", fast" : */ // TODO DE
-					mtmp->mspeed == MSLOW ? ", slow" : /* EN mtmp->mspeed == MSLOW ? ", slow" : */ // TODO DE
-					", ???? speed"); /* EN ", ???? speed"); */ // TODO DE
+					mtmp->mspeed == MFAST ? ", schnell" : /* EN mtmp->mspeed == MFAST ? ", fast" : */
+					mtmp->mspeed == MSLOW ? ", langsam" : /* EN mtmp->mspeed == MSLOW ? ", slow" : */
+					", ???? Geschwindigkeit"); /* EN ", ???? speed"); */
 	if (mtmp->mundetected)	  Strcat(info, ", concealed"); /* EN if (mtmp->mundetected)	  Strcat(info, ", concealed"); */ // TODO DE
-	if (mtmp->minvis)	  Strcat(info, ", invisible"); /* EN if (mtmp->minvis)	  Strcat(info, ", invisible"); */ // TODO DE
+	if (mtmp->minvis)	  Strcat(info, ", unsichtbar"); /* EN if (mtmp->minvis)	  Strcat(info, ", invisible"); */
 	if (mtmp == u.ustuck)	  Strcat(info, /* EN if (mtmp == u.ustuck)	  Strcat(info, */ // TODO DE
 			(sticks(youmonst.data)) ? ", held by you" : /* EN (sticks(youmonst.data)) ? ", held by you" : */ // TODO DE
 				u.uswallow ? (is_animal(u.ustuck->data) ?
@@ -453,9 +453,9 @@ ustatusline()
 	if (Slimed)		Strcat(info, ", becoming slimy"); /* EN if (Slimed)		Strcat(info, ", becoming slimy"); */ // TODO DE
 	if (Strangled)		Strcat(info, ", being strangled"); /* EN if (Strangled)		Strcat(info, ", being strangled"); */ // TODO DE
 	if (Vomiting)		Strcat(info, ", nauseated"); /* !"nauseous" */ /* EN if (Vomiting)		Strcat(info, ", nauseated"); */ // TODO DE
-	if (Confusion)		Strcat(info, ", confused"); /* EN if (Confusion)		Strcat(info, ", confused"); */ // TODO DE
+	if (Confusion)		Strcat(info, ", verwirrt"); /* EN if (Confusion)		Strcat(info, ", confused"); */
 	if (Blind) {
-	    Strcat(info, ", blind"); /* EN Strcat(info, ", blind"); */ // TODO DE
+	    Strcat(info, ", blind"); /* EN Strcat(info, ", blind"); */
 	    if (u.ucreamed) {
 		if ((long)u.ucreamed < Blinded || Blindfolded
 						|| !haseyes(youmonst.data))

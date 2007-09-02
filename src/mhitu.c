@@ -1108,7 +1108,7 @@ dopois:
 	    case AD_DRLI:
 		hitmsg(mtmp, mattk);
 		if (uncancelled && !rn2(3) && !Drain_resistance) {
-		    losexp("life drainage"); /* EN losexp("life drainage"); */ // TODO DE
+		    losexp("Lebensenergieentzug?/life drainage"); /* EN losexp("life drainage"); */ // TODO DE
 		}
 		break;
 	    case AD_LEGS:

@@ -2464,27 +2464,27 @@ srch:
 		}
 		/* or some other dungeon features -dlc */
 		p = eos(bp);
-		if(!BSTRCMP(bp, p-8, "fountain")) { /* EN if(!BSTRCMP(bp, p-8, "fountain")) { */ // TODO DE
+		if(!BSTRCMP(bp, p-13, "NOUN_FOUNTAIN")) { /* EN if(!BSTRCMP(bp, p-8, "fountain")) { */
 			levl[u.ux][u.uy].typ = FOUNTAIN;
 			level.flags.nfountains++;
-			if(!strncmpi(bp, "magic ", 6)) /* EN if(!strncmpi(bp, "magic ", 6)) */ // TODO DE
+			if(!strncmpi(bp, "ADJEKTIV_MAGISCH ", 6)) /* EN if(!strncmpi(bp, "magic ", 6)) */
 				levl[u.ux][u.uy].blessedftn = 1;
-			pline("A %sfountain.", /* EN pline("A %sfountain.", */ // TODO DE
-			      levl[u.ux][u.uy].blessedftn ? "magic " : ""); /* EN levl[u.ux][u.uy].blessedftn ? "magic " : ""); */ // TODO DE
+			pline("ARTIKEL_UNBESTIMMTER %sNOUN_FOUNTAIN.", /* EN pline("A %sfountain.", */
+			      levl[u.ux][u.uy].blessedftn ? "ADJEKTIV_MAGISCH " : ""); /* EN levl[u.ux][u.uy].blessedftn ? "magic " : ""); */
 			newsym(u.ux, u.uy);
 			return(&zeroobj);
 		}
-		if(!BSTRCMP(bp, p-6, "throne")) { /* EN if(!BSTRCMP(bp, p-6, "throne")) { */ // TODO DE
+		if(!BSTRCMP(bp, p-11, "NOUN_THRONE")) { /* EN if(!BSTRCMP(bp, p-6, "throne")) { */
 			levl[u.ux][u.uy].typ = THRONE;
-			pline("ARTIKEL_UNBESTIMMTER NOUN_THRONE."); /* EN pline("A throne."); */ // TODO DE
+			pline("ARTIKEL_UNBESTIMMTER NOUN_THRONE."); /* EN pline("A throne."); */
 			newsym(u.ux, u.uy);
 			return(&zeroobj);
 		}
 # ifdef SINKS
-		if(!BSTRCMP(bp, p-4, "sink")) { /* EN if(!BSTRCMP(bp, p-4, "sink")) { */ // TODO DE
+		if(!BSTRCMP(bp, p-9, "NOUN_SINK")) { /* EN if(!BSTRCMP(bp, p-4, "sink")) { */
 			levl[u.ux][u.uy].typ = SINK;
 			level.flags.nsinks++;
-			pline("ARTIKEL_UNBESTIMMTER NOUN_SINK."); /* EN pline("A sink."); */ // TODO DE
+			pline("ARTIKEL_UNBESTIMMTER NOUN_SINK."); /* EN pline("A sink."); */
 			newsym(u.ux, u.uy);
 			return &zeroobj;
 		}
@@ -2507,7 +2507,7 @@ srch:
 			return &zeroobj;
 		}
 
-		if(!BSTRCMP(bp, p-5, "altar")) { /* EN if(!BSTRCMP(bp, p-5, "altar")) { */ // TODO DE
+		if(!BSTRCMP(bp, p-10, "NOUN_ALTAR")) { /* EN if(!BSTRCMP(bp, p-5, "altar")) { */
 		    aligntyp al;
 
 		    levl[u.ux][u.uy].typ = ALTAR;
