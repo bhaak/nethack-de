@@ -2496,6 +2496,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCHUTZBEKLEIDUNGSFACHGESCHAEFT","Schutzbekleidungsfachgeschäft","es","","e","neutrum"),
     dekliniere_substantiv("NOUN_SPIRITUOSENHANDLUNG","Spirituosenhandlung","","","en","feminin"),
 
+    "/* Shopbezeichnungen */",
+    dekliniere_substantiv("NOUN_HEILER","Heiler","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_HEILERIN","Heilerin","","","","feminin"),
+
     "/* ======================================================= */",
     "/* Adjektive */",
     "/* ======================================================= */",
@@ -2525,6 +2529,8 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_ROSTIG","rostig"),
     dekliniere_adjektiv("ADJEKTIV_NEU","neu"),
     dekliniere_adjektiv("ADJEKTIV_EXPLODIERT","explodiert"),
+    dekliniere_adjektiv("ADJEKTIV_MAGISCH","magisch"),
+    dekliniere_adjektiv("ADJEKTIV_VERLETZT","verletzt"),
     "",
     "/* Farbennamen */",
     dekliniere_adjektiv("ADJEKTIV_BLACK","schwarz"),
@@ -2556,7 +2562,7 @@ def ausgabe_nouns
     "",
     "/* Adjektive und Substantive für Nominalphrasen */",
     dekliniere_substantiv("NOUN_STANGENWAFFE","Stangenwaffe","","Stangenwaffe","en","feminin"),
-    dekliniere_adjektiv("ADJEKTIV_GEWOEHNLICH","gewöhnlich")
+    dekliniere_adjektiv("ADJEKTIV_GEWOEHNLICH","gewöhnlich"),
 
     "/* Gesinnungsadjektive */",
     dekliniere_adjektiv("ADJEKTIV_CHAOTIC", "chaotisch"),

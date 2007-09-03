@@ -27,7 +27,7 @@
 /* http://www.tamoon.ch/titel.html */
 const struct Role roles[] = {
 // TODO DE
-{	{"Archeologist", 0}, {
+{	{"NOUN_ARCHAEOLOGE", "NOUN_ARCHAEOLOGIN"}, { /* EN {	{"Archeologist", 0}, { */
 	{"Digger",      0},
 	{"Field Worker",0},
 	{"Investigator",0},
@@ -54,7 +54,7 @@ const struct Role roles[] = {
 	10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING,   -4
 },
 // TODO DE
-{	{"Barbarian", 0}, {
+{	{"NOUN_BARBAR", "NOUN_BARBARIN"}, { /* EN {	{"Barbarian", 0}, { */
 	{"Plunderer",   "Plunderess"},
 	{"Pillager",    0},
 	{"Bandit",      0},
@@ -108,7 +108,7 @@ const struct Role roles[] = {
 	0, 12, 0, 1,  8, A_INT, SPE_DIG,             -4
 },
 // TODO DE
-{	{"Healer", 0}, {
+{	{"NOUN_HEILER", "NOUN_HEILERIN"}, { /* EN {	{"Healer", 0}, { */
 	{"Rhizotomist",    0},
 	{"Empiric",        0},
 	{"Embalmer",       0},
@@ -134,7 +134,7 @@ const struct Role roles[] = {
 	10, 3,-3, 2, 10, A_WIS, SPE_CURE_SICKNESS,   -4
 },
 // TODO DE
-{	{"Knight", 0}, {
+{	{"NOUN_PALADIN", 0}, { /* EN {	{"Knight", 0}, { */
 	{"Gallant",     0},
 	{"Esquire",     0},
 	{"Bachelor",    0},
@@ -160,7 +160,7 @@ const struct Role roles[] = {
 	10, 8,-2, 0,  9, A_WIS, SPE_TURN_UNDEAD,     -4
 },
 // TODO DE
-{	{"Monk", 0}, {
+{	{"NOUN_MOENCH", 0}, { /* EN {	{"Monk", 0}, { */
 	{"Candidate",         0},
 	{"Novice",            0},
 	{"Initiate",          0},
@@ -188,7 +188,7 @@ const struct Role roles[] = {
 	10, 8,-2, 2, 20, A_WIS, SPE_RESTORE_ABILITY, -4
 },
 // TODO DE
-{	{"Priest", "Priestess"}, {
+{	{"NOUN_PRIESTER", "NOUN_PRIESTERIN"}, { /* EN {	{"Priest", "Priestess"}, { */
 	{"Aspirant",    0},
 	{"Acolyte",     0},
 	{"Adept",       0},
@@ -285,7 +285,7 @@ const struct Role roles[] = {
 	10, 9, 2, 1, 10, A_INT, SPE_INVISIBILITY,   -4
 },
 // TODO DE
-{	{"Samurai", 0}, {
+{	{"NOUN_SAMURAI", "NOUN_SAMURAIIN"}, { /* EN {	{"Samurai", 0}, { */
 	{"Hatamoto",    0},  /* Banner Knight */
 	{"Ronin",       0},  /* no allegiance */
 	{"Ninja",       "Kunoichi"},  /* secret society */
@@ -312,7 +312,7 @@ const struct Role roles[] = {
 },
 #ifdef TOURIST
 // TODO DE
-{	{"Tourist", 0}, {
+{	{"NOUN_TOURIST", "NOUN_TOURISTIN"}, { /* EN {	{"Tourist", 0}, { */
 	{"Rambler",     0},
 	{"Sightseer",   0},
 	{"Excursionist",0},
@@ -1085,7 +1085,7 @@ promptsep(buf, num_post_attribs)
 char *buf;
 int num_post_attribs;
 {
-	const char *conj = "and "; /* EN const char *conj = "and "; */ // TODO DE
+	const char *conj = "und "; /* EN const char *conj = "and "; */
 	if (num_post_attribs > 1
 	    && post_attribs < num_post_attribs && post_attribs > 1)
 	 	Strcat(buf, ","); 
@@ -1291,19 +1291,19 @@ int buflen, rolenum, racenum, gendnum, alignnum;
 	if (post_attribs) {
 		if (pa[BP_RACE]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "race"); /* EN Strcat(buf, "race"); */ // TODO DE
+			Strcat(buf, "Volk"); /* EN Strcat(buf, "race"); */ // TODO DE
 		}
 		if (pa[BP_ROLE]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "role"); /* EN Strcat(buf, "role"); */ // TODO DE
+			Strcat(buf, "Rolle"); /* EN Strcat(buf, "role"); */ // TODO DE
 		}
 		if (pa[BP_GEND]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "gender"); /* EN Strcat(buf, "gender"); */ // TODO DE
+			Strcat(buf, "Geschlecht"); /* EN Strcat(buf, "gender"); */ // TODO DE
 		}
 		if (pa[BP_ALIGN]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "alignment"); /* EN Strcat(buf, "alignment"); */ // TODO DE
+			Strcat(buf, "Gesinnung"); /* EN Strcat(buf, "alignment"); */ // TODO DE
 		}
 	}
 	Strcat(buf, " for you? [ynq] "); /* EN Strcat(buf, " for you? [ynq] "); */ // TODO DE
@@ -1493,7 +1493,7 @@ struct monst *mtmp;
 #endif
 	    		"Velkommen");   /* Norse */
 	default:
-	    return ("Hello"); /* EN return ("Hello"); */ // TODO DE
+	    return ("Hallo"); /* EN return ("Hello"); */
 	}
 }
 
