@@ -404,7 +404,7 @@ tele()
 #ifdef WIZARD
 		if (!wizard) {
 #endif
-		    pline("A mysterious force prevents you from teleporting!"); /* EN pline("A mysterious force prevents you from teleporting!"); */ // TODO DE
+		    pline("Eine geheimnisvolle Macht hindert KASUS_AKKUSATIV PRONOMEN_PERSONAL am Teleportieren!"); /* EN pline("A mysterious force prevents you from teleporting!"); */
 		    return;
 #ifdef WIZARD
 		}
@@ -424,20 +424,20 @@ tele()
 #endif
 					) {
 	    if (unconscious()) {
-		pline("Being unconscious, you cannot control your teleport."); /* EN pline("Being unconscious, you cannot control your teleport."); */ // TODO DE
+		pline("Bewusstlos VERB_KOENNEN SUBJEKT_IM_SATZ PRONOMEN_PERSONAL die Teleportation nicht kontrollieren."); /* EN pline("Being unconscious, you cannot control your teleport."); */
 	    } else {
 #ifdef STEED
 		    char buf[BUFSZ];
-		    if (u.usteed) Sprintf(buf," and %s", mon_nam(u.usteed)); /* EN if (u.usteed) Sprintf(buf," and %s", mon_nam(u.usteed)); */ // TODO DE
+		    if (u.usteed) Sprintf(buf," und %s", mon_nam(u.usteed)); /* EN if (u.usteed) Sprintf(buf," and %s", mon_nam(u.usteed)); */
 #endif
-		    pline("To what position do you%s want to be teleported?", /* EN pline("To what position do you%s want to be teleported?", */ // TODO DE
+		    pline("Zu welcher Stelle MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL%s teleportieren?", /* EN pline("To what position do you%s want to be teleported?", */
 #ifdef STEED
 				u.usteed ? buf :
 #endif
 			   "");
 		    cc.x = u.ux;
 		    cc.y = u.uy;
-				if (getpos(&cc, TRUE, "the desired position") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */ // TODO DE
+				if (getpos(&cc, TRUE, "die gewünschte Position") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */
 			return;	/* abort */
 		    /* possible extensions: introduce a small error if
 		       magic power is low; allow transfer to solid rock */
@@ -445,7 +445,7 @@ tele()
 			teleds(cc.x, cc.y, FALSE);
 			return;
 		    }
-		    pline("Sorry..."); /* EN pline("Sorry..."); */ // TODO DE
+		    pline("Tschuldigung ..."); /* EN pline("Sorry..."); */
 		}
 	}
 
@@ -463,8 +463,8 @@ dotele()
 
 	if (trap) {
 		if (trap->once) {
-			pline("This is a vault teleport, usable once only."); /* EN pline("This is a vault teleport, usable once only."); */ // TODO DE
-			if (yn("Jump in?") == 'n') /* EN if (yn("Jump in?") == 'n') */ // TODO DE
+			pline("This is a vault teleport, nur einmaliger Gebrauch."); /* EN pline("This is a vault teleport, usable once only."); */
+			if (yn("Reinspringen?") == 'n') /* EN if (yn("Jump in?") == 'n') */
 				trap = 0;
 			else {
 				deltrap(trap);
@@ -472,8 +472,8 @@ dotele()
 			}
 		}
 		if (trap)
-			You("%s onto the teleportation trap.", /* EN You("%s onto the teleportation trap.", */ // TODO DE
-			    locomotion(youmonst.data, "jump")); /* EN locomotion(youmonst.data, "jump")); */ // TODO DE
+			You("%s in die Teleportationsfalle.", /* EN You("%s onto the teleportation trap.", */
+			    locomotion(youmonst.data, "VERB_SPRINGEN")); /* EN locomotion(youmonst.data, "jump")); */
 	}
 	if (!trap) {
 	    boolean castit = FALSE;
@@ -493,8 +493,8 @@ dotele()
 #endif
 		    if (!castit) {
 			if (!Teleportation)
-			    You("don't know that spell."); /* EN You("don't know that spell."); */ // TODO DE
-			else You("are not able to teleport at will."); /* EN else You("are not able to teleport at will."); */ // TODO DE
+			    You("VERB_KENNEN den Spruch nicht."); /* EN You("don't know that spell."); */
+			else You("VERB_KOENNEN nicht willentlich teleportieren."); /* EN else You("are not able to teleport at will."); */
 			return(0);
 		    }
 #ifdef WIZARD
@@ -506,8 +506,8 @@ dotele()
 #ifdef WIZARD
 		if (!wizard) {
 #endif
-			You("lack the strength %s.", /* EN You("lack the strength %s.", */ // TODO DE
-			    castit ? "for a teleport spell" : "to teleport"); /* EN castit ? "for a teleport spell" : "to teleport"); */ // TODO DE
+			You("VERB_FEHLEN die Kraft %s.", /* EN You("lack the strength %s.", */
+			    castit ? "für einen Teleportationsspruch" : "um zu teleportieren"); /* EN castit ? "for a teleport spell" : "to teleport"); */
 			return 1;
 #ifdef WIZARD
 		}
@@ -522,8 +522,8 @@ dotele()
 		else
 #endif
 		{
-			You("lack the energy %s.", /* EN You("lack the energy %s.", */ // TODO DE
-			    castit ? "for a teleport spell" : "to teleport"); /* EN castit ? "for a teleport spell" : "to teleport"); */ // TODO DE
+			You("VERB_FEHLEN die Energie %s.", /* EN You("lack the energy %s.", */
+			    castit ? "für einen Teleportationsspruch" : "um zu teleportieren"); /* EN castit ? "for a teleport spell" : "to teleport"); */
 			return 1;
 		}
 	    }
@@ -596,14 +596,14 @@ level_tele()
 		getlin(qbuf, buf);
 		if (!strcmp(buf,"\033")) {	/* cancelled */
 		    if (Confusion && rnl(5)) {
-			pline("Oops..."); /* EN pline("Oops..."); */ // TODO DE
+			pline("NOUN_OOPS ..."); /* EN pline("Oops..."); */
 			goto random_levtport;
 		    }
 		    return;
 		} else if (!strcmp(buf,"*")) {
 		    goto random_levtport;
 		} else if (Confusion && rnl(5)) {
-		    pline("Oops..."); /* EN pline("Oops..."); */ // TODO DE
+		    pline("NOUN_OOPS ..."); /* EN pline("Oops..."); */
 		    goto random_levtport;
 		}
 #ifdef WIZARD
@@ -626,7 +626,7 @@ level_tele()
 		display_nhwindow(WIN_MESSAGE, FALSE);
 		You("cease to exist."); /* EN You("cease to exist."); */ // TODO DE
 		killer_format = NO_KILLER_PREFIX;
-		killer = "committed suicide"; /* EN killer = "committed suicide"; */ // TODO DE
+		killer = "beging Selbstmord"; /* EN killer = "committed suicide"; */
 		done(DIED);
 		return;
 	    }
@@ -688,10 +688,10 @@ level_tele()
 		    in_mklev = FALSE;
 		}
 		if (newlev <= -10) {
-			You("arrive in heaven."); /* EN You("arrive in heaven."); */ // TODO DE
+			You("VERB_STEHEN vor der Himmelspforte."); /* EN You("arrive in heaven."); */
 			verbalize("Thou art early, but we'll admit thee."); /* EN verbalize("Thou art early, but we'll admit thee."); */ // TODO DE
 			killer_format = NO_KILLER_PREFIX;
-			killer = "went to heaven prematurely"; /* EN killer = "went to heaven prematurely"; */ // TODO DE
+			killer = "kam frühzeitig in den Himmel"; /* EN killer = "went to heaven prematurely"; */
 		} else if (newlev == -9) {
 			You_feel("deliriously happy. "); /* EN You_feel("deliriously happy. "); */ // TODO DE
 			pline("(In fact, you're on Cloud 9!) "); /* EN pline("(In fact, you're on Cloud 9!) "); */ // TODO DE
@@ -754,7 +754,7 @@ level_tele()
 					dunlevs_in_dungeon(&u.uz) - 1)) {
 		newlev = dungeons[u.uz.dnum].depth_start +
 					dunlevs_in_dungeon(&u.uz) - 2;
-		pline("Sorry..."); /* EN pline("Sorry..."); */ // TODO DE
+		pline("Tschuldigung ..."); /* EN pline("Sorry..."); */
 	    }
 	    /* no teleporting out of quest dungeon */
 	    if (In_quest(&u.uz) && newlev < depth(&qstart_level))
@@ -1012,7 +1012,7 @@ struct monst *mon;
 {
 	if (level.flags.noteleport) {
 		if (canseemon(mon))
-		    pline("A mysterious force prevents %s from teleporting!", /* EN pline("A mysterious force prevents %s from teleporting!", */ // TODO DE
+		    pline("Eine geheimnisvolle Macht hindert KASUS_AKKUSATIV %s am Teleportieren!", /* EN pline("A mysterious force prevents %s from teleporting!", */
 			mon_nam(mon));
 		return TRUE;
 	}
