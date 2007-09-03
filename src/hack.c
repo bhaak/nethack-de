@@ -118,7 +118,7 @@ moverock()
 		if (canspotmon(mtmp))
 		    pline("Da VERB_SEIN SUBJECT_IM_SATZ %s auf der anderen Seite.", a_monnam(mtmp)); /* EN pline("There's %s on the other side.", a_monnam(mtmp)); */
 		else {
-		    You_hear("ARTICLE_UNBESTIMMTER NOUN_MONSTER hinter OBJECT KASUS_DATIV %s.", the(xname(otmp))); /* EN You_hear("a monster behind %s.", the(xname(otmp))); */
+		    You_hear("ARTIKEL_UNBESTIMMTER NOUN_MONSTER hinter OBJECT KASUS_DATIV %s.", the(xname(otmp))); /* EN You_hear("a monster behind %s.", the(xname(otmp))); */
 		    map_invisible(rx, ry);
 		}
 		if (flags.verbose)
@@ -140,7 +140,7 @@ moverock()
 			newsym(sx, sy);
 			pline("KABUUUM!!!  SUBJECT %s OBJECT %s NOUN_LAND_MINE SATZKLAMMER.", /* EN pline("KAABLAMM!!!  %s %s land mine.", */
 			      Tobjnam(otmp, "VERB_AUSLOESEN"), /* EN Tobjnam(otmp, "trigger"), */
-			      ttmp->madeby_u ? "PRONOMEN_POSSESIV" : "ARTICLE_UNBESTIMMTER"); /* EN ttmp->madeby_u ? "your" : "a"); */
+			      ttmp->madeby_u ? "PRONOMEN_POSSESIV" : "ARTIKEL_UNBESTIMMTER"); /* EN ttmp->madeby_u ? "your" : "a"); */
 			blow_up_landmine(ttmp);
 			/* if the boulder remains, it should fill the pit */
 			fill_pit(u.ux, u.uy);
@@ -360,7 +360,7 @@ still_chewing(x,y)
 
     if (boulder) {
 	delobj(boulder);		/* boulder goes bye-bye */
-	You("VERB_ESSEN OBJECT ARTICLE_BESTIMMTER NOUN_BOULDER.");	/* yum */ /* EN You("eat the boulder."); */
+	You("VERB_ESSEN OBJECT ARTIKEL_BESTIMMTER NOUN_BOULDER.");	/* yum */ /* EN You("eat the boulder."); */
 
 	/*
 	 *  The location could still block because of
