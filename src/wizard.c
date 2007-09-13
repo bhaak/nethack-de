@@ -86,7 +86,7 @@ amulet()
 		mtmp->msleeping = 0;
 		if (distu(mtmp->mx,mtmp->my) > 2)
 		    You(
-    "get the creepy feeling that somebody noticed your taking the Amulet." /* EN "get the creepy feeling that somebody noticed your taking the Amulet." */ // TODO DE
+    "VERB_BEKOMMEN das ungute Gefühl, dass jemand den Diebstahl des Amuletts bemerkt hat." /* EN "get the creepy feeling that somebody noticed your taking the Amulet." */
 		    );
 		return;
 	    }

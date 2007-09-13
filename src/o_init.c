@@ -374,7 +374,7 @@ dodiscovered()				/* free after Robert Viduya */
 	char buf[BUFSZ];
 
     tmpwin = create_nhwindow(NHW_MENU);
-    putstr(tmpwin, 0, "Discoveries"); /* EN putstr(tmpwin, 0, "Discoveries"); */ // TODO DE
+    putstr(tmpwin, 0, "Kenntnisse"); /* EN putstr(tmpwin, 0, "Discoveries"); */
     putstr(tmpwin, 0, "");
 
     /* gather "unique objects" into a pseudo-class; note that they'll
@@ -416,7 +416,7 @@ dodiscovered()				/* free after Robert Viduya */
 	}
     }
     if (ct == 0) {
-	You("haven't discovered anything yet..."); /* EN You("haven't discovered anything yet..."); */ // TODO DE
+	You("VERB_HABEN noch nichts entdeckt ..."); /* EN You("haven't discovered anything yet..."); */
     } else
 	display_nhwindow(tmpwin, TRUE);
     destroy_nhwindow(tmpwin);

@@ -1077,7 +1077,7 @@ dopois:
 			    if (lifesaved)
 				pline("Unfortunately your brain is still gone."); /* EN pline("Unfortunately your brain is still gone."); */ // TODO DE
 			    else
-				Your("ADJEKTIV_LETZT NOUN_GEDANKENs fades away."); /* EN Your("last thought fades away."); */ // TODO DE
+				Your("ADJEKTIV_LETZT NOUN_GEDANKEs fades away."); /* EN Your("last thought fades away."); */ // TODO DE
 			    killer = "brainlessness"; /* EN killer = "brainlessness"; */ // TODO DE
 			    killer_format = KILLED_BY;
 			    done(DIED);
@@ -2530,8 +2530,8 @@ register struct attack *mattk;
 	    case AD_STUN: /* Yellow mold */
 		if (!mtmp->mstun) {
 		    mtmp->mstun = 1;
-		    pline("%s %s.", Monnam(mtmp),
-			  makeplural(stagger(mtmp->data, "stagger"))); /* EN makeplural(stagger(mtmp->data, "stagger"))); */ // TODO DE
+		    pline("SUBJECT %s %s.", Monnam(mtmp), /* EN pline("%s %s.", Monnam(mtmp), */
+			  makeplural(stagger(mtmp->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mtmp->data, "stagger"))); */
 		}
 		tmp = 0;
 		break;

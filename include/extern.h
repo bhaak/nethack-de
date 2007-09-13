@@ -1536,6 +1536,7 @@ E void VDECL(Du_spuerst, (const char *,...)) PRINTF_F(1,2);
 E void VDECL(Dir_ist, (const char *,...)) PRINTF_F(1,2);
 E void VDECL(Dir_wird, (const char *,...)) PRINTF_F(1,2);
 E void VDECL(Dich, (const char *,...)) PRINTF_F(1,2);
+E void VDECL(Dir, (const char *,...)) PRINTF_F(1,2);
 #endif
 
 /* ### polyself.c ### */

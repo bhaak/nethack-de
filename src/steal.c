@@ -17,7 +17,7 @@ register struct obj *otmp;
 #ifdef TOURIST
 		(otmp == uarmu) ? "NOUN_SHIRT" : /* EN (otmp == uarmu) ? "shirt" : */
 #endif
-		(otmp == uarmf) ? "NOUN_BOOTs" : /* EN (otmp == uarmf) ? "boots" : */
+		(otmp == uarmf) ? "NOUN_BOOTSs" : /* EN (otmp == uarmf) ? "boots" : */
 		(otmp == uarms) ? "NOUN_SHIELD" : /* EN (otmp == uarms) ? "shield" : */
 		(otmp == uarmg) ? "NOUN_GLOVEs" : /* EN (otmp == uarmg) ? "gloves" : */
 		(otmp == uarmc) ? cloak_simple_name(otmp) :

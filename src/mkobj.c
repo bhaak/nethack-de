@@ -128,10 +128,10 @@ boolean artif;
 	i = bases[(int)oclass];
 	while((prob -= objects[i].oc_prob) > 0) i++;
 
-	fprintf(stderr, "mkobj 1\n");
+	// fprintf(stderr, "mkobj 1\n");
 	if(objects[i].oc_class != oclass || !OBJ_NAME(objects[i]))
 		panic("probtype error, oclass=%d i=%d", (int) oclass, i);
-	fprintf(stderr, "mkobj 2\n");
+	// fprintf(stderr, "mkobj 2\n");
 
 	return(mksobj(i, TRUE, artif));
 }

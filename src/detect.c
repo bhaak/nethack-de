@@ -1117,7 +1117,7 @@ struct trap *trap;
 	cleared = TRUE;
     }
 
-    You("NOUN_FINDEN OBJECT %s.", an(defsyms[trap_to_defsym(tt)].explanation)); /* EN You("find %s.", an(defsyms[trap_to_defsym(tt)].explanation)); */
+    You("VERB_FINDEN OBJECT %s.", an(defsyms[trap_to_defsym(tt)].explanation)); /* EN You("find %s.", an(defsyms[trap_to_defsym(tt)].explanation)); */
 
     if (cleared) {
 	display_nhwindow(WIN_MAP, TRUE);	/* wait */
@@ -1194,7 +1194,7 @@ register int aflag;
 					map_invisible(x, y);
 				    }
 				} else if (!sensemon(mtmp))
-				    You("NOUN_FINDEN OBJECT %s.", a_monnam(mtmp)); /* EN You("find %s.", a_monnam(mtmp)); */
+				    You("VERB_FINDEN OBJECT %s.", a_monnam(mtmp)); /* EN You("find %s.", a_monnam(mtmp)); */
 				return(1);
 			    }
 			    if(!canspotmon(mtmp)) {

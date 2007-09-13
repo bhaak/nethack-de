@@ -203,6 +203,16 @@ Dich VA_DECL(const char *,line)
 
 /*VARARGS1*/
 void
+Dir VA_DECL(const char *,line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL ", line), VA_ARGS);
+	VA_END();
+}
+
+/*VARARGS1*/
+void
 Du_bist VA_DECL(const char *, line)
 	char *tmp;
 	VA_START(line);

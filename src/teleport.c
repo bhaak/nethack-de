@@ -424,7 +424,7 @@ tele()
 #endif
 					) {
 	    if (unconscious()) {
-		pline("Bewusstlos VERB_KOENNEN SUBJEKT_IM_SATZ PRONOMEN_PERSONAL die Teleportation nicht kontrollieren."); /* EN pline("Being unconscious, you cannot control your teleport."); */
+		pline("Bewusstlos VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL die Teleportation nicht kontrollieren."); /* EN pline("Being unconscious, you cannot control your teleport."); */
 	    } else {
 #ifdef STEED
 		    char buf[BUFSZ];

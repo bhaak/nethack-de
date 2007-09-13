@@ -209,7 +209,7 @@ dead: /* we come directly here if their experience level went to 0 or less */
 		(flags.female && urace.individual.f) ? urace.individual.f :
 		(urace.individual.m) ? urace.individual.m : urace.noun);
 	if (Slimed) {
-		Your("body transforms, but there is still slime on you."); /* EN Your("body transforms, but there is still slime on you."); */ // TODO DE
+		Your("NOUN_KOERPER VERB_TRANSFORMIEREN sich, aber NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_HABEN immer noch Schleim auf OBJECT PRONOMEN_PERSONAL."); /* EN Your("body transforms, but there is still slime on you."); */
 		Slimed = 10L;
 	}
 	flags.botl = 1;
@@ -661,7 +661,7 @@ break_armor()
 	    if (donning(otmp)) cancel_don();
 	    if (is_whirly(youmonst.data))
 		Your("boots fall away!"); /* EN Your("boots fall away!"); */ // TODO DE
-	    else Your("NOUN_BOOTs %s off your feet!", /* EN else Your("boots %s off your feet!", */ // TODO DE
+	    else Your("NOUN_BOOTSs %s off your feet!", /* EN else Your("boots %s off your feet!", */ // TODO DE
 			verysmall(youmonst.data) ? "VERB_RUTSCHEN" : "are pushed"); /* EN verysmall(youmonst.data) ? "slide" : "are pushed"); */ // TODO DE
 	    (void) Boots_off();
 	    dropx(otmp);

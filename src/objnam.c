@@ -647,7 +647,7 @@ register struct obj *obj;
 	switch(obj->oclass) {
 	case AMULET_CLASS:
 		if(obj->owornmask & W_AMUL)
-			Strcat(bp, " (VERB_WORN)"); /* EN Strcat(bp, " (being worn)"); */
+			Strcat(bp, " (ADJEKTIV_GETRAGEN)"); /* EN Strcat(bp, " (being worn)"); */
 		break;
 	case WEAPON_CLASS:
 		if(ispoisoned)
@@ -662,7 +662,7 @@ plus:
 	case ARMOR_CLASS:
 		if(obj->owornmask & W_ARMOR)
 			Strcat(bp, (obj == uskin) ? " (embedded in your skin)" : /* EN Strcat(bp, (obj == uskin) ? " (embedded in your skin)" : */ // TODO DE
-				" (VERB_WORN)");
+				" (ADJEKTIV_GETRAGEN)");
 		goto plus;
 	case TOOL_CLASS:
 		/* weptools already get this done when we go to the +n code */
@@ -673,7 +673,7 @@ plus:
 				| W_SADDLE
 #endif
 				)) {
-			Strcat(bp, " (VERB_WORN)");
+			Strcat(bp, " (ADJEKTIV_GETRAGEN)");
 			break;
 		}
 		if (obj->otyp == LEASH && obj->leashmon != 0) {

@@ -1235,7 +1235,7 @@ boolean noisy;
 	    err++;
 	} else if (uwep && bimanual(uwep)) {
 	    if (noisy) 
-		You("VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_SHIELD tragen, NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ZWEIHAENDIG %s VERB_FUEHREN.", /* EN You("cannot wear a shield while wielding a two-handed %s.", */
+		You("VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_SHIELD tragen, NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ZWEIHAENDISCH %s VERB_FUEHREN.", /* EN You("cannot wear a shield while wielding a two-handed %s.", */
 		    is_sword(uwep) ? c_sword :
 		    (uwep->otyp == BATTLE_AXE) ? c_axe : c_weapon);
 	    err++;

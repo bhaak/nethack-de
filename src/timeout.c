@@ -716,7 +716,7 @@ const char *tailer;
 	switch (obj->where) {
 	    case OBJ_INVENT:
 	    case OBJ_MINVENT:
-		pline("SUBJECT %s%s VERB_FLACKERN.", Yname2(obj), tailer); /* EN pline("%s flickers%s.", Yname2(obj), tailer); */
+		pline("SUBJECT %s VERB_FLACKERN%s.", Yname2(obj), tailer); /* EN pline("%s flickers%s.", Yname2(obj), tailer); */
 		break;
 	    case OBJ_FLOOR:
 		You("VERB_SEE %s%s flackern.", an(xname(obj)), tailer); /* EN You("see %s flicker%s.", an(xname(obj)), tailer); */

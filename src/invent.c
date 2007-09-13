@@ -624,8 +624,8 @@ const char *
 currency(amount)
 long amount;
 {
-	if (amount == 1L) return "zorkmid"; /* EN if (amount == 1L) return "zorkmid"; */ // TODO DE
-	else return "zorkmids"; /* EN else return "zorkmids"; */ // TODO DE
+	if (amount == 1L) return "Zorkmid"; /* EN if (amount == 1L) return "zorkmid"; */
+	else return "Zorkmid"; /* EN else return "zorkmids"; */
 }
 
 boolean
