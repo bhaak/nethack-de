@@ -73,7 +73,7 @@ use_camera(obj)
 		You("take a picture of %s %s.", s_suffix(mon_nam(u.ustuck)), /* EN You("take a picture of %s %s.", s_suffix(mon_nam(u.ustuck)), */ // TODO DE
 		    mbodypart(u.ustuck, STOMACH));
 	} else if (u.dz) {
-		You("take a picture of the %s.", /* EN You("take a picture of the %s.", */ // TODO DE
+		You("VERB_FOTOGRAFIEREN OBJECT ARTIKEL_BESTIMMTER %s.", /* EN You("take a picture of the %s.", */
 			(u.dz > 0) ? surface(u.ux,u.uy) : ceiling(u.ux,u.uy));
 	} else if (!u.dx && !u.dy) {
 		(void) zapyourself(obj, TRUE);
@@ -105,18 +105,18 @@ use_towel(obj)
 		    old = Glib;
 		    Glib += rn1(10, 3);
 		    Your("%s %s!", makeplural(body_part(HAND)),
-			(old ? "are filthier than ever" : "get slimy")); /* EN (old ? "are filthier than ever" : "get slimy")); */ // TODO DE
+			(old ? "VERB_SEIN dreckiger denn je" : "VERB_WERDEN ganz glibberig")); /* EN (old ? "are filthier than ever" : "get slimy")); */
 		    return 1;
 		case 1:
 		    if (!ublindf) {
 			old = u.ucreamed;
 			u.ucreamed += rn1(10, 3);
-			pline("Yecch! Your %s %s gunk on it!", body_part(FACE), /* EN pline("Yecch! Your %s %s gunk on it!", body_part(FACE), */ // TODO DE
-			      (old ? "has more" : "now has")); /* EN (old ? "has more" : "now has")); */ // TODO DE
+			pline("Eklig! SUBJECT PRONOMEN_PERSONAL VERB_HABEN %s Schnodder auf OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s!",  /* EN pline("Yecch! Your %s %s gunk on it!", body_part(FACE), */
+			      (old ? "noch mehr" : "jetzt"), body_part(FACE)); /* EN (old ? "has more" : "now has")); */
 			make_blinded(Blinded + (long)u.ucreamed - old, TRUE);
 		    } else {
 			const char *what = (ublindf->otyp == LENSES) ?
-					    "lenses" : "blindfold"; /* EN "lenses" : "blindfold"; */ // TODO DE
+					    "NOUN_LENSESs" : "NOUN_BLINDFOLD"; /* EN "lenses" : "blindfold"; */
 			if (ublindf->cursed) {
 			    You("push your %s %s.", what, /* EN You("push your %s %s.", what, */ // TODO DE
 				rn2(2) ? "cock-eyed" : "crooked"); /* EN rn2(2) ? "cock-eyed" : "crooked"); */ // TODO DE
@@ -135,23 +135,23 @@ use_towel(obj)
 
 	if (Glib) {
 		Glib = 0;
-		You("wipe off your %s.", makeplural(body_part(HAND))); /* EN You("wipe off your %s.", makeplural(body_part(HAND))); */ // TODO DE
+		You("VERB_SAEUBERN OBJECT PRONOMEN_POSSESSIV %s.", makeplural(body_part(HAND))); /* EN You("wipe off your %s.", makeplural(body_part(HAND))); */
 		return 1;
 	} else if(u.ucreamed) {
 		Blinded -= u.ucreamed;
 		u.ucreamed = 0;
 
 		if (!Blinded) {
-			pline("You've got the glop off."); /* EN pline("You've got the glop off."); */ // TODO DE
+			pline("SUBJECT PRONOMEN_PERSONAL VERB_HABEN den Rotz abbekommen."); /* EN pline("You've got the glop off."); */
 			Blinded = 1;
 			make_blinded(0L,TRUE);
 		} else {
-			Your("%s feels clean now.", body_part(FACE)); /* EN Your("%s feels clean now.", body_part(FACE)); */ // TODO DE
+			Your("%s VERB_FUEHLEN sich jetzt sauber an.", body_part(FACE)); /* EN Your("%s feels clean now.", body_part(FACE)); */
 		}
 		return 1;
 	}
 
-	Your("%s and %s are already clean.", /* EN Your("%s and %s are already clean.", */ // TODO DE
+	Your("%s und SUBJECT_IM_SATZ PRONOMEN_POSSESSIV %s VERB_SEIN bereits sauber.", /* EN Your("%s and %s are already clean.", */
 		body_part(FACE), makeplural(body_part(HAND)));
 
 	return 0;
@@ -178,14 +178,14 @@ int rx, ry, *resp;
 	       if both types are present, but it's not worth the effort */
 	    if (vobj_at(rx, ry)->otyp == STATUE) otmp = vobj_at(rx, ry);
 	    if (otmp->otyp == CORPSE) {
-		You("determine that %s unfortunate being is dead.", /* EN You("determine that %s unfortunate being is dead.", */ // TODO DE
-		    (rx == u.ux && ry == u.uy) ? "this" : "that");
+		You("VERB_STELLEN fest, dass NEUER_SATZ %s bedauernswerte Wesen tot ist.", /* EN You("determine that %s unfortunate being is dead.", */
+		    (rx == u.ux && ry == u.uy) ? "dieses" : "jenes");
 	    } else {
 		ttmp = t_at(rx, ry);
 		pline("%s VERB_SCHEINEN für eine Statue bei %s Gesundheit zu sein.", /* EN pline("%s appears to be in %s health for a statue.", */
 		      The(mons[otmp->corpsenm].mname),
 		      (ttmp && ttmp->ttyp == STATUE_TRAP) ?
-			"extraordinary" : "excellent"); /* EN "extraordinary" : "excellent"); */ // TODO DE
+			"außerordentlich guter" : "exzellenter"); /* EN "extraordinary" : "excellent"); */
 	    }
 	    return TRUE;
 	}
@@ -227,7 +227,7 @@ use_stethoscope(obj)
 #ifdef STEED
 	if (u.usteed && u.dz > 0) {
 		if (interference) {
-			pline("%s interferes.", Monnam(u.ustuck)); /* EN pline("%s interferes.", Monnam(u.ustuck)); */ // TODO DE
+			pline("SUBJECT %s VERB_BEHINDERN OBJECT PRONOMEN_PERSONAL.", Monnam(u.ustuck)); /* EN pline("%s interferes.", Monnam(u.ustuck)); */
 			mstatusline(u.ustuck);
 		} else
 			mstatusline(u.usteed);
@@ -238,19 +238,19 @@ use_stethoscope(obj)
 		mstatusline(u.ustuck);
 		return res;
 	} else if (u.uswallow && interference) {
-		pline("%s interferes.", Monnam(u.ustuck)); /* EN pline("%s interferes.", Monnam(u.ustuck)); */ // TODO DE
+		pline("SUBJECT %s VERB_BEHINDERN OBJECT PRONOMEN_PERSONAL.", Monnam(u.ustuck)); /* EN pline("%s interferes.", Monnam(u.ustuck)); */
 		mstatusline(u.ustuck);
 		return res;
 	} else if (u.dz) {
 		if (Underwater)
-		    You_hear("faint splashing."); /* EN You_hear("faint splashing."); */ // TODO DE
+		    You_hear("schwaches Geplätscher."); /* EN You_hear("faint splashing."); */
 		else if (u.dz < 0 || !can_reach_floor())
-		    You_cant("reach the %s.", /* EN You_cant("reach the %s.", */ // TODO DE
+		    pline("SUBJECT ARTIKEL_BESTIMMTER %s ist nicht erreichbar.", /* EN You_cant("reach the %s.", */
 			(u.dz > 0) ? surface(u.ux,u.uy) : ceiling(u.ux,u.uy));
 		else if (its_dead(u.ux, u.uy, &res))
 		    ;	/* message already given */
 		else if (Is_stronghold(&u.uz))
-		    You_hear("the crackling of hellfire."); /* EN You_hear("the crackling of hellfire."); */ // TODO DE
+		    You_hear("prasselden Höllenfeuer."); /* EN You_hear("the crackling of hellfire."); */
 		else
 		    pline_The("%s VERB_SCHEINEN OBJECT KASUS_DATIV gesund genug.", surface(u.ux,u.uy)); /* EN pline_The("%s seems healthy enough.", surface(u.ux,u.uy)); */
 		return res;
@@ -265,7 +265,7 @@ use_stethoscope(obj)
 	}
 	rx = u.ux + u.dx; ry = u.uy + u.dy;
 	if (!isok(rx,ry)) {
-		You_hear("a faint typing noise."); /* EN You_hear("a faint typing noise."); */ // TODO DE
+		You_hear("ein schwaches Tippgeräusch."); /* EN You_hear("a faint typing noise."); */
 		return 0;
 	}
 	if ((mtmp = m_at(rx,ry)) != 0) {
@@ -451,18 +451,18 @@ struct obj *obj;
 	    if(!spotmon)
 		There("is no creature there."); /* EN There("is no creature there."); */ // TODO DE
 	    else
-		pline("%s %s leashed!", Monnam(mtmp), (!obj->leashmon) ?  /* EN pline("%s %s leashed!", Monnam(mtmp), (!obj->leashmon) ? */ // TODO DE
-				"cannot be" : "is not"); /* EN "cannot be" : "is not"); */ // TODO DE
+		pline("SUBJECT %s %s!", Monnam(mtmp), (!obj->leashmon) ?  /* EN pline("%s %s leashed!", Monnam(mtmp), (!obj->leashmon) ? */
+				"VERB_KOENNEN nicht angeleint werden" : "VERB_SEIN nicht angeleint"); /* EN "cannot be" : "is not"); */
 	    return;
 	}
 	if(!obj->leashmon) {
 		if(mtmp->mleashed) {
-			pline("This %s is already leashed.", /* EN pline("This %s is already leashed.", */ // TODO DE
-			      spotmon ? l_monnam(mtmp) : "monster"); /* EN spotmon ? l_monnam(mtmp) : "monster"); */ // TODO DE
+			pline("SUBJECT PRONOMEN_DIESER %s VERB_SEIN bereits angeleint.", /* EN pline("This %s is already leashed.", */
+			      spotmon ? l_monnam(mtmp) : "NOUN_MONSTER"); /* EN spotmon ? l_monnam(mtmp) : "monster"); */
 			return;
 		}
-		You("slip the leash around %s%s.", /* EN You("slip the leash around %s%s.", */ // TODO DE
-		    spotmon ? "your " : "", l_monnam(mtmp));
+		You("VERB_NEHMEN OBJECT %s%s an die Leine.", /* EN You("slip the leash around %s%s.", */
+		    spotmon ? "PRONOMEN_POSSESSIV " : "", l_monnam(mtmp));
 		mtmp->mleashed = 1;
 		obj->leashmon = (int)mtmp->m_id;
 		mtmp->msleeping = 0;
@@ -473,14 +473,14 @@ struct obj *obj;
 		return;
 	} else {
 		if(obj->cursed) {
-			pline_The("leash would not come off!"); /* EN pline_The("leash would not come off!"); */ // TODO DE
+			You("VERB_BEKOMMEN die Leine nicht ab!"); /* EN pline_The("leash would not come off!"); */
 			obj->bknown = TRUE;
 			return;
 		}
 		mtmp->mleashed = 0;
 		obj->leashmon = 0;
-		You("remove the leash from %s%s.", /* EN You("remove the leash from %s%s.", */ // TODO DE
-		    spotmon ? "your " : "", l_monnam(mtmp)); /* EN spotmon ? "your " : "", l_monnam(mtmp)); */ // TODO DE
+		You("VERB_NEHMEN OBJECT KASUS_DATIV %s%s die Leine ab.", /* EN You("remove the leash from %s%s.", */
+		    spotmon ? "PRONOMEN_POSSESSIV " : "", l_monnam(mtmp)); /* EN spotmon ? "your " : "", l_monnam(mtmp)); */
 	}
 	return;
 }
@@ -581,7 +581,7 @@ register xchar x, y;
 			pline("%s leash snaps loose!", s_suffix(Monnam(mtmp))); /* EN pline("%s leash snaps loose!", s_suffix(Monnam(mtmp))); */ // TODO DE
 			m_unleash(mtmp, FALSE);
 		    } else {
-			You("pull on the leash."); /* EN You("pull on the leash."); */ // TODO DE
+			You("VERB_ZIEHEN an der Leine."); /* EN You("pull on the leash."); */
 			if (mtmp->data->msound != MS_SILENT)
 			    switch (rn2(3)) {
 			    case 0:  growl(mtmp);   break;
@@ -599,7 +599,7 @@ register xchar x, y;
 
 #define WEAK	3	/* from eat.c */
 
-static const char look_str[] = "look %s."; /* EN static const char look_str[] = "look %s."; */ // TODO DE
+static const char look_str[] = "VERB_AUSSEHEN %s SATZKLAMMER."; /* EN static const char look_str[] = "look %s."; */
 
 STATIC_OVL int
 use_mirror(obj)
@@ -620,30 +620,30 @@ struct obj *obj;
 		    if (u.umonnum == PM_FLOATING_EYE) {
 			if (!Free_action) {
 			pline(Hallucination ?
-			      "Yow!  The mirror stares back!" : /* EN "Yow!  The mirror stares back!" : */ // TODO DE
+			      "Hey!  Der Spiegel starrt zurück!" : /* EN "Yow!  The mirror stares back!" : */
 			      "Yikes!  You've frozen yourself!"); /* EN "Yikes!  You've frozen yourself!"); */ // TODO DE
 			nomul(-rnd((MAXULEV+6) - u.ulevel));
 			} else You("stiffen momentarily under your gaze."); /* EN } else You("stiffen momentarily under your gaze."); */ // TODO DE
 		    } else if (youmonst.data->mlet == S_VAMPIRE)
-			You("don't have a reflection."); /* EN You("don't have a reflection."); */ // TODO DE
+			You("VERB_HABEN kein Spiegelbild."); /* EN You("don't have a reflection."); */
 		    else if (u.umonnum == PM_UMBER_HULK) {
-			pline("Huh?  That doesn't look like you!"); /* EN pline("Huh?  That doesn't look like you!"); */ // TODO DE
+			pline("Hm?  Das Spiegelbild sieht KASUS_DATIV PRONOMEN_PERSONAL gar nicht ähnlich!"); /* EN pline("Huh?  That doesn't look like you!"); */
 			make_confused(HConfusion + d(3,4),FALSE);
 		    } else if (Hallucination)
 			You(look_str, hcolor((char *)0));
 		    else if (Sick)
-			You(look_str, "peaked"); /* EN You(look_str, "peaked"); */ // TODO DE
+			You(look_str, "blass"); /* EN You(look_str, "peaked"); */
 		    else if (u.uhs >= WEAK)
-			You(look_str, "undernourished"); /* EN You(look_str, "undernourished"); */ // TODO DE
-		    else You("look as %s as ever.", /* EN else You("look as %s as ever.", */ // TODO DE
+			You(look_str, "unterernährt"); /* EN You(look_str, "undernourished"); */
+		    else You("VERB_AUSSEHEN so %s SATZKLAMMER wie eh und je.", /* EN else You("look as %s as ever.", */
 				ACURR(A_CHA) > 14 ?
 				(poly_gender()==1 ? "beautiful" : "handsome") : /* EN (poly_gender()==1 ? "beautiful" : "handsome") : */ // TODO DE
-				"ugly"); /* EN "ugly"); */ // TODO DE
+				"hässlich"); /* EN "ugly"); */
 		} else {
-			You_cant("see your %s %s.", /* EN You_cant("see your %s %s.", */ // TODO DE
+			You("VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s %s nicht sehen.", /* EN You_cant("see your %s %s.", */
 				ACURR(A_CHA) > 14 ?
 				(poly_gender()==1 ? "beautiful" : "handsome") : /* EN (poly_gender()==1 ? "beautiful" : "handsome") : */ // TODO DE
-				"ugly", /* EN "ugly", */ // TODO DE
+				"hässlich", /* EN "ugly", */ // TODO DE
 				body_part(FACE));
 		}
 		return 1;
@@ -676,21 +676,21 @@ struct obj *obj;
 	mlet = mtmp->data->mlet;
 	if (mtmp->msleeping) {
 		if (vis)
-		    pline ("%s is too tired to look at your mirror.", /* EN pline ("%s is too tired to look at your mirror.", */ // TODO DE
+		    pline ("SUBJECT %s VERB_SEIN zu müde um OBJECT PRONOMEN_POSSESSIV NOUN_MIRROR anzuschauen.", /* EN pline ("%s is too tired to look at your mirror.", */
 			    Monnam(mtmp));
 	} else if (!mtmp->mcansee) {
 	    if (vis)
-		pline("%s can't see anything right now.", Monnam(mtmp)); /* EN pline("%s can't see anything right now.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_KOENNEN im Moment gar nichts sehen.", Monnam(mtmp)); /* EN pline("%s can't see anything right now.", Monnam(mtmp)); */
 	/* some monsters do special things */
 	} else if (mlet == S_VAMPIRE || mlet == S_GHOST) {
 	    if (vis)
-		pline ("%s doesn't have a reflection.", Monnam(mtmp)); /* EN pline ("%s doesn't have a reflection.", Monnam(mtmp)); */ // TODO DE
+		pline ("SUBJECT %s VERB_HABEN kein Spiegelbild.", Monnam(mtmp)); /* EN pline ("%s doesn't have a reflection.", Monnam(mtmp)); */
 	} else if(!mtmp->mcan && !mtmp->minvis &&
 					mtmp->data == &mons[PM_MEDUSA]) {
 		if (mon_reflects(mtmp, "The gaze is reflected away by %s %s!")) /* EN if (mon_reflects(mtmp, "The gaze is reflected away by %s %s!")) */ // TODO DE
 			return 1;
 		if (vis)
-			pline("%s is turned to stone!", Monnam(mtmp)); /* EN pline("%s is turned to stone!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(mtmp)); /* EN pline("%s is turned to stone!", Monnam(mtmp)); */
 		stoned = TRUE;
 		killed(mtmp);
 	} else if(!mtmp->mcan && !mtmp->minvis &&
@@ -698,8 +698,8 @@ struct obj *obj;
 		int tmp = d((int)mtmp->m_lev, (int)mtmp->data->mattk[0].damd);
 		if (!rn2(4)) tmp = 120;
 		if (vis)
-			pline("%s is frozen by its reflection.", Monnam(mtmp)); /* EN pline("%s is frozen by its reflection.", Monnam(mtmp)); */
-		else You_hear("%s stop moving.",something); /* EN else You_hear("%s stop moving.",something); */
+			pline("%s is frozen by its reflection.", Monnam(mtmp)); /* EN pline("%s is frozen by its reflection.", Monnam(mtmp)); */ // TODO DE
+		else You_hear("%s stop moving.",something); /* EN else You_hear("%s stop moving.",something); */ // TODO DE
 		mtmp->mcanmove = 0;
 		if ( (int) mtmp->mfrozen + tmp > 127)
 			mtmp->mfrozen = 127;
@@ -707,14 +707,14 @@ struct obj *obj;
 	} else if(!mtmp->mcan && !mtmp->minvis &&
 					mtmp->data == &mons[PM_UMBER_HULK]) {
 		if (vis)
-			pline ("%s confuses itself!", Monnam(mtmp)); /* EN pline ("%s confuses itself!", Monnam(mtmp)); */
+			pline ("SUBJECT %s VERB_VERWIRREN sich selbst!", Monnam(mtmp)); /* EN pline ("%s confuses itself!", Monnam(mtmp)); */
 		mtmp->mconf = 1;
 	} else if(!mtmp->mcan && !mtmp->minvis && (mlet == S_NYMPH
 				     || mtmp->data==&mons[PM_SUCCUBUS])) {
 		if (vis) {
-		    pline ("%s admires herself in your mirror.", Monnam(mtmp)); /* EN pline ("%s admires herself in your mirror.", Monnam(mtmp)); */
-		    pline ("She takes it!"); /* EN pline ("She takes it!"); */
-		} else pline ("It steals your mirror!"); /* EN } else pline ("It steals your mirror!"); */
+		    pline ("%s admires herself in your mirror.", Monnam(mtmp)); /* EN pline ("%s admires herself in your mirror.", Monnam(mtmp)); */ // TODO DE
+		    pline ("She takes it!"); /* EN pline ("She takes it!"); */ // TODO DE
+		} else pline ("SUBJECT NOUN_JEMAND VERB_STEHLEN OBJECT PRONOMEN_POSSESSIV NOUN_MIRROR!"); /* EN } else pline ("It steals your mirror!"); */
 		setnotworn(obj); /* in case mirror was wielded */
 		freeinv(obj);
 		(void) mpickobj(mtmp,obj);
@@ -722,17 +722,17 @@ struct obj *obj;
 	} else if (!is_unicorn(mtmp->data) && !humanoid(mtmp->data) &&
 			(!mtmp->minvis || perceives(mtmp->data)) && rn2(5)) {
 		if (vis)
-		    pline("%s is frightened by its reflection.", Monnam(mtmp)); /* EN pline("%s is frightened by its reflection.", Monnam(mtmp)); */
+		    pline("%s is frightened by its reflection.", Monnam(mtmp)); /* EN pline("%s is frightened by its reflection.", Monnam(mtmp)); */ // TODO DE
 		monflee(mtmp, d(2,4), FALSE, FALSE);
 	} else if (!Blind) {
 		if (mtmp->minvis && !See_invisible)
 		    ;
 		else if ((mtmp->minvis && !perceives(mtmp->data))
 			 || !haseyes(mtmp->data))
-		    pline("%s doesn't seem to notice its reflection.", /* EN pline("%s doesn't seem to notice its reflection.", */
+		    pline("%s doesn't seem to notice its reflection.", /* EN pline("%s doesn't seem to notice its reflection.", */ // TODO DE
 			Monnam(mtmp));
 		else
-		    pline("%s ignores %s reflection.", /* EN pline("%s ignores %s reflection.", */
+		    pline("%s ignores %s reflection.", /* EN pline("%s ignores %s reflection.", */ // TODO DE
 			  Monnam(mtmp), mhis(mtmp));
 	}
 	return 1;
@@ -749,17 +749,17 @@ struct obj **optr;
 		invoking = (obj->otyp == BELL_OF_OPENING &&
 			 invocation_pos(u.ux, u.uy) && !On_stairs(u.ux, u.uy));
 
-	You("ring %s.", the(xname(obj))); /* EN You("ring %s.", the(xname(obj))); */
+	You("VERB_LAEUTEN OBJECT %s.", the(xname(obj))); /* EN You("ring %s.", the(xname(obj))); */
 
 	if (Underwater || (u.uswallow && ordinary)) {
 #ifdef	AMIGA
 	    amii_speaker( obj, "AhDhGqEqDhEhAqDqFhGw", AMII_MUFFLED_VOLUME );
 #endif
-	    pline("But the sound is muffled."); /* EN pline("But the sound is muffled."); */
+	    pline("But the sound is muffled."); /* EN pline("But the sound is muffled."); */ // TODO DE
 
 	} else if (invoking && ordinary) {
 	    /* needs to be recharged... */
-	    pline("But it makes no sound."); /* EN pline("But it makes no sound."); */
+	    pline("Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_HOEREN keinen Ton."); /* EN pline("But it makes no sound."); */
 	    learno = TRUE;	/* help player figure out why */
 
 	} else if (ordinary) {
@@ -833,7 +833,7 @@ struct obj **optr;
 		res += openit();
 		switch (res) {
 		  case 0:  pline(nothing_happens); break;
-		  case 1:  pline("%s opens...", Something); /* EN case 1:  pline("%s opens...", Something); */ // TODO DE
+		  case 1:  pline("SUBJECT %s VERB_OEFFNEN sich ...", Something); /* EN case 1:  pline("%s opens...", Something); */
 			   learno = TRUE; break;
 		  default: pline("Things open around you..."); /* EN default: pline("Things open around you..."); */ // TODO DE
 			   learno = TRUE; break;
@@ -863,7 +863,7 @@ register struct obj *obj;
 	const char *s = (obj->spe != 1) ? "NOUN_CANDLEs" : "NOUN_CANDLE"; /* EN const char *s = (obj->spe != 1) ? "candles" : "candle"; */
 
 	if(Underwater) {
-		You("cannot make fire under water."); /* EN You("cannot make fire under water."); */ // TODO DE
+		You("VERB_KOENNEN kein Feuer unter Wasser machen."); /* EN You("cannot make fire under water."); */
 		return;
 	}
 	if(obj->lamplit) {
@@ -877,13 +877,13 @@ register struct obj *obj;
 	}
 	if(u.uswallow || obj->cursed) {
 		if (!Blind)
-		    pline_The("%s %s for a moment, then %s.", /* EN pline_The("%s %s for a moment, then %s.", */ // TODO DE
-			      s, vtense(s, "flicker"), vtense(s, "die")); /* EN s, vtense(s, "flicker"), vtense(s, "die")); */ // TODO DE
+		    pline_The("%s %s einen Moment lang, then %s.", /* EN pline_The("%s %s for a moment, then %s.", */ // TODO DE
+			      s, vtense(s, "VERB_FLACKERN"), vtense(s, "die")); /* EN s, vtense(s, "flicker"), vtense(s, "die")); */ // TODO DE
 		return;
 	}
 	if(obj->spe < 7) {
-		There("%s only %d %s in %s.", /* EN There("%s only %d %s in %s.", */ // TODO DE
-		      vtense(s, "are"), obj->spe, s, the(xname(obj))); /* EN vtense(s, "are"), obj->spe, s, the(xname(obj))); */ // TODO DE
+		pline("Es %s nur OBJECT %d %s in %s.", /* EN There("%s only %d %s in %s.", */ // TODO DE
+		      vtense(s, "VERB_STECKEN"), obj->spe, s, the(xname(obj))); /* EN vtense(s, "are"), obj->spe, s, the(xname(obj))); */
 		if (!Blind)
 		    pline("%s lit.  %s dimly.", /* EN pline("%s lit.  %s dimly.", */ // TODO DE
 			  obj->spe == 1 ? "It is" : "They are", /* EN obj->spe == 1 ? "It is" : "They are", */ // TODO DE
@@ -1063,7 +1063,7 @@ struct obj *obj;
 	char buf[BUFSZ];
 
 	if(Underwater) {
-		pline("This is not a diving lamp."); /* EN pline("This is not a diving lamp."); */ // TODO DE
+		pline("Das ist keine Tauchlampe."); /* EN pline("This is not a diving lamp."); */
 		return;
 	}
 	if(obj->lamplit) {
@@ -1084,8 +1084,8 @@ struct obj *obj;
 		return;
 	}
 	if (obj->cursed && !rn2(2)) {
-		pline("%s for a moment, then %s.", /* EN pline("%s for a moment, then %s.", */ // TODO DE
-		      Tobjnam(obj, "flicker"), otense(obj, "die")); /* EN Tobjnam(obj, "flicker"), otense(obj, "die")); */ // TODO DE
+		pline("SUBJECT %s for a moment, dann %s.", /* EN pline("%s for a moment, then %s.", */ // TODO DE
+		      Tobjnam(obj, "VERB_FLACKERN"), otense(obj, "die")); /* EN Tobjnam(obj, "flicker"), otense(obj, "die")); */ // TODO DE
 	} else {
 		if(obj->otyp == OIL_LAMP || obj->otyp == MAGIC_LAMP ||
 				obj->otyp == BRASS_LANTERN) {
@@ -1193,8 +1193,8 @@ dorub()
 	    else pline(nothing_happens);
 	} else if (obj->otyp == BRASS_LANTERN) {
 	    /* message from Adventure */
-	    pline("Rubbing the electric lamp is not particularly rewarding."); /* EN pline("Rubbing the electric lamp is not particularly rewarding."); */ // TODO DE
-	    pline("Anyway, nothing exciting happens."); /* EN pline("Anyway, nothing exciting happens."); */ // TODO DE
+	    pline("Die elektrische Lampe zu reiben ist nicht besonders befriedigend."); /* EN pline("Rubbing the electric lamp is not particularly rewarding."); */
+	    pline("Jedenfalls, nichts Aufregendes passiert."); /* EN pline("Anyway, nothing exciting happens."); */
 	} else pline(nothing_happens);
 	return 1;
 }
@@ -1222,7 +1222,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		return 0;
 	} else if (u.uswallow) {
 		if (magic) {
-			You("bounce around a little."); /* EN You("bounce around a little."); */ // TODO DE
+			You("VERB_HUEPFEN ein bisschen herum."); /* EN You("bounce around a little."); */
 			return 1;
 		}
 		pline("You've got to be kidding!"); /* EN pline("You've got to be kidding!"); */ // TODO DE
@@ -1232,7 +1232,7 @@ int magic; /* 0=Physical, otherwise skill level */
 			You("swish around a little."); /* EN You("swish around a little."); */ // TODO DE
 			return 1;
 		}
-		pline("This calls for swimming, not jumping!"); /* EN pline("This calls for swimming, not jumping!"); */ // TODO DE
+		pline("Schwimmen ist angesagt, nicht springen!"); /* EN pline("This calls for swimming, not jumping!"); */
 		return 0;
 	} else if (u.ustuck) {
 		if (u.ustuck->mtame && !Conflict && !u.ustuck->mconf) {
@@ -1277,12 +1277,12 @@ int magic; /* 0=Physical, otherwise skill level */
 	}
 #ifdef STEED
 	else if (u.usteed && u.utrap) {
-		pline("%s is stuck in a trap.", Monnam(u.usteed)); /* EN pline("%s is stuck in a trap.", Monnam(u.usteed)); */ // TODO DE
+		pline("SUBJECT %s VERB_STECKEN in einer Falle fest.", Monnam(u.usteed)); /* EN pline("%s is stuck in a trap.", Monnam(u.usteed)); */
 		return (0);
 	}
 #endif
 
-	pline("Where do you want to jump?"); /* EN pline("Where do you want to jump?"); */ // TODO DE
+	pline("SUBJECT Wohin VERB_WOLLEN PRONOMEN_PERSONAL springen?"); /* EN pline("Where do you want to jump?"); */
 	cc.x = u.ux;
 	cc.y = u.uy;
 	if (getpos(&cc, TRUE, "die gewünschte Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */ // TODO DE
@@ -1574,7 +1574,7 @@ struct obj *obj;
 		  (did_prop + did_attr) == (trouble_count + unfixable_trbl) ?
 		  "great" : "better"); /* EN "great" : "better"); */ // TODO DE
 	else if (!did_prop)
-	    pline("Nothing seems to happen."); /* EN pline("Nothing seems to happen."); */ // TODO DE
+	    pline("Es scheint nichts zu passieren."); /* EN pline("Nothing seems to happen."); */
 
 	flags.botl = (did_attr || did_prop);
 #undef PROP_COUNT
@@ -1889,7 +1889,7 @@ struct obj *tstone;
 	pline(scritch);
 	return;
     } else if (Hallucination) {
-	pline("Oh wow, man: Fractals!"); /* EN pline("Oh wow, man: Fractals!"); */ // TODO DE
+	pline("Verschärft, Mann: Fraktale!"); /* EN pline("Oh wow, man: Fractals!"); */
 	return;
     }
 
@@ -2163,7 +2163,7 @@ struct obj *obj;
 	    /* Have a shot at snaring something on the floor */
 	    otmp = level.objects[u.ux][u.uy];
 	    if (otmp && otmp->otyp == CORPSE && otmp->corpsenm == PM_HORSE) {
-		pline("Why beat a dead horse?"); /* EN pline("Why beat a dead horse?"); */ // TODO DE
+		pline("SUBJECT PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_KOENNEN genausogut darauf herumreiten."); /* EN pline("Why beat a dead horse?"); */
 		return 1;
 	    }
 	    if (otmp && proficient) {
@@ -2241,7 +2241,7 @@ struct obj *obj;
     } else if (mtmp) {
 	if (!canspotmon(mtmp) &&
 		!glyph_is_invisible(levl[rx][ry].glyph)) {
-	   pline("A monster is there that you couldn't see."); /* EN pline("A monster is there that you couldn't see."); */ // TODO DE
+	   pline("Ein Monster ist dort, das SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht sehen VERB_KOENNEN."); /* EN pline("A monster is there that you couldn't see."); */
 	   map_invisible(rx, ry);
 	}
 	otmp = MON_WEP(mtmp);	/* can be null */
@@ -2393,10 +2393,10 @@ use_pole (obj)
 	else if (P_SKILL(typ) == P_SKILLED) max_range = 5;
 	else max_range = 8;
 	if (distu(cc.x, cc.y) > max_range) {
-	    pline("Zu weit!"); /* EN pline("Too far!"); */ // TODO DE
+	    pline("Zu weit weg!"); /* EN pline("Too far!"); */
 	    return (res);
 	} else if (distu(cc.x, cc.y) < min_range) {
-	    pline("Too close!"); /* EN pline("Too close!"); */ // TODO DE
+	    pline("Zu nah!"); /* EN pline("Too close!"); */
 	    return (res);
 	} else if (!cansee(cc.x, cc.y) &&
 		   ((mtmp = m_at(cc.x, cc.y)) == (struct monst *)0 ||
@@ -2437,7 +2437,7 @@ struct obj *obj;
 		obj = splitobj(obj, 1L);
 	}
 	if (Hallucination)
-		You("give yourself a facial."); /* EN You("give yourself a facial."); */ // TODO DE
+		You("VERB_MACHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL eine Gesichtspackung."); /* EN You("give yourself a facial."); */
 	else
 		pline("You immerse your %s in %s%s.", body_part(FACE), /* EN pline("You immerse your %s in %s%s.", body_part(FACE), */ // TODO DE
 			several ? "one of " : "", /* EN several ? "one of " : "", */ // TODO DE
