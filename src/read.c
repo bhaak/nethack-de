@@ -1139,7 +1139,7 @@ register struct obj	*sobj;
 			else You_feel("a pleasant warmth in your %s.", /* EN else You_feel("a pleasant warmth in your %s.", */ // TODO DE
 				makeplural(body_part(HAND)));
 		    } else {
-			pline_The("scroll catches fire and you burn your %s.", /* EN pline_The("scroll catches fire and you burn your %s.", */ // TODO DE
+			pline_The("NOUN_SCROLL VERB_FANGEN Feuer und you burn your %s.", /* EN pline_The("scroll catches fire and you burn your %s.", */ // TODO DE
 				makeplural(body_part(HAND)));
 			losehp(1, "scroll of fire", KILLED_BY_AN); /* EN losehp(1, "scroll of fire", KILLED_BY_AN); */ // TODO DE
 		    }

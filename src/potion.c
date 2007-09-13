@@ -89,7 +89,7 @@ boolean talk;
 				You("wobble in the saddle."); /* EN You("wobble in the saddle."); */ // TODO DE
 			else
 #endif
-			You("%s ...", stagger(youmonst.data, "VERB_TORKELN")); /* EN You("%s...", stagger(youmonst.data, "stagger")); */
+			You("%s ...", stagger(youmonst.data, "VERB_STAGGER")); /* EN You("%s...", stagger(youmonst.data, "stagger")); */
 		}
 	}
 	if ((!xtime && old) || (xtime && !old)) flags.botl = TRUE;
@@ -309,10 +309,10 @@ ghost_from_bottle()
 		return;
 	}
 	if (Blind) {
-		pline("As you open the bottle, %s emerges.", something); /* EN pline("As you open the bottle, %s emerges.", something); */ // TODO DE
+		pline("Als PRONOMEN_PERSONAL die Flasche VERB_OEFFNEN, NEUER_SATZ SUBJECT_IM_SATZ VERB_ENTWEICHEN %s.", something); /* EN pline("As you open the bottle, %s emerges.", something); */
 		return;
 	}
-	pline("As you open the bottle, an enormous %s emerges!", /* EN pline("As you open the bottle, an enormous %s emerges!", */ // TODO DE
+	pline("Als PRONOMEN_PERSONAL die Flasche VERB_OEFFNEN, NEUER_SATZ SUBJECT_IM_SATZ VERB_ENTWEICHEN ARTIKEL_UNBESTIMMTER ADJEKTIV_RIESIG %s!", /* EN pline("As you open the bottle, an enormous %s emerges!", */
 		Hallucination ? rndmonnam() : (const char *)"NOUN_GHOST"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */
 	if(flags.verbose)
 	    You("VERB_SEIN zu Tode erschrocken und starr vor Angst."); /* EN You("are frightened to death, and unable to move."); */
@@ -353,7 +353,7 @@ dodrink()
 	if (Underwater) {
 		if (yn("Das Wasser um KASUS_AKKUSATIV PRONOMEN_PERSONAL herum trinken?") == 'y') { /* EN if (yn("Drink the water around you?") == 'y') { */
 			if (Role_if(PM_ARCHEOLOGIST)) {
-		    pline("Nein, danke.  Fische lieben sich darin!");
+		    pline("Nein, danke.  Fische lieben sich darin!"); /* Indiana-Jones-Referenz */
 			} else {
 		    pline("VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL KASUS_DATIV PRONOMEN_PERSONAL überhaupt vorstellen, was in dem Wasser lebt?"); /* EN pline("Do you know what lives in this water!");  */
 			}
@@ -1900,11 +1900,11 @@ dodip()
 		} else {
 		    singlepotion->dknown = !Hallucination;
 		    if (mixture == POT_WATER && singlepotion->dknown)
-			Sprintf(newbuf, "clears"); /* EN Sprintf(newbuf, "clears"); */ // TODO DE
+			Sprintf(newbuf, "VERB_KLAEREN sich"); /* EN Sprintf(newbuf, "clears"); */
 		    else
-			Sprintf(newbuf, "turns %s", /* EN Sprintf(newbuf, "turns %s", */ // TODO DE
+			Sprintf(newbuf, "VERB_WERDEN %s", /* EN Sprintf(newbuf, "turns %s", */
 				hcolor(OBJ_DESCR(objects[mixture])));
-		    pline_The("%spotion%s %s.", oldbuf, /* EN pline_The("%spotion%s %s.", oldbuf, */ // TODO DE
+		    pline_The("%sNOUN_POTION%s %s.", oldbuf, /* EN pline_The("%spotion%s %s.", oldbuf, */
 			      more_than_one ? " that you dipped into" : "", /* EN more_than_one ? " that you dipped into" : "", */ // TODO DE
 			      newbuf);
 		    if(!objects[old_otyp].oc_uname &&
@@ -1943,11 +1943,11 @@ register struct obj *obj;
 	}
 
 	if (!Blind) {
-		pline("In a cloud of smoke, %s emerges!", a_monnam(mtmp)); /* EN pline("In a cloud of smoke, %s emerges!", a_monnam(mtmp)); */ // TODO DE
-		pline("%s speaks.", Monnam(mtmp)); /* EN pline("%s speaks.", Monnam(mtmp)); */ // TODO DE
+		pline("In a cloud of smoke, %s VERB_ENTWEICHEN!", a_monnam(mtmp)); /* EN pline("In a cloud of smoke, %s emerges!", a_monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_SPRECHEN.", Monnam(mtmp)); /* EN pline("%s speaks.", Monnam(mtmp)); */
 	} else {
-		You("smell acrid fumes."); /* EN You("smell acrid fumes."); */ // TODO DE
-		pline("%s speaks.", Something); /* EN pline("%s speaks.", Something); */ // TODO DE
+		You("VERB_SMELL beißenden Qualm."); /* EN You("smell acrid fumes."); */
+		pline("SUBJECT %s VERB_SPRECHEN.", Something); /* EN pline("%s speaks.", Something); */
 	}
 
 	chance = rn2(5);
@@ -1997,7 +1997,7 @@ struct monst *mon,	/* monster being split */
 		mtmp2->mhpmax = u.mhmax / 2;
 		u.mhmax -= mtmp2->mhpmax;
 		flags.botl = 1;
-		You("multiply%s!", reason); /* EN You("multiply%s!", reason); */ // TODO DE
+		You("VERB_VERMEHREN OBJECT PRONOMEN_PERSONAL%s!", reason); /* EN You("multiply%s!", reason); */
 	    }
 	} else {
 	    mtmp2 = clone_mon(mon);
@@ -2005,7 +2005,7 @@ struct monst *mon,	/* monster being split */
 		mtmp2->mhpmax = mon->mhpmax / 2;
 		mon->mhpmax -= mtmp2->mhpmax;
 		if (canspotmon(mon))
-		    pline("%s multiplies%s!", Monnam(mon), reason); /* EN pline("%s multiplies%s!", Monnam(mon), reason); */ // TODO DE
+		    pline("%s VERB_VERMEHREN sich%s!", Monnam(mon), reason); /* EN pline("%s multiplies%s!", Monnam(mon), reason); */
 	    }
 	}
 	return mtmp2;

@@ -445,11 +445,17 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "sprechen": v = Verb_EI_Wechsel.new("sprechen", "sprach", "gesprochen", "sprich")
   when "stechen": v = Verb_EI_Wechsel.new("stechen", "stach", "gestochen", "sticht")
   when "stehlen": v = Verb_Konjunktiv_II.new("stehlen", "stahl", "gestohlen", "stiehl", "stˆhl")
-		#  e a o
+		#  e a a
   when /(.*)stehen/: v = Verb_Konjunktiv_II.new($1+"stehen", $1+"stand", ge($1)+"standen", $1+"steh", $1+"st¸nd")
+		#  e o o
+  when "bewegen": v = VerbUnregelmaessig.new("bewegen", "bewog", "bewogen")
     #  ei i i
   when /(.*)gleiten$/:  v = VerbUnregelmaessig.new($1+"gleiten", $1+"glitt", ge($1)+"glitten")
   when /(.*)reiﬂen$/:  v = VerbUnregelmaessig.new($1+"reiﬂen", $1+"riss", ge($1)+"rissen")
+  when /(.*)weichen$/:  v = VerbUnregelmaessig.new($1+"weichen", $1+"wich", ge($1)+"wichen")
+  when /(.*)greifen$/:  v = VerbUnregelmaessig.new($1+"greifen", $1+"griff", ge($1)+"griffen")
+    #  a i i
+  when "fangen": v = VerbUnregelmaessig.new("fangen", "fing", "gefangen")
     #  a u a
   when "tragen": v = VerbUnregelmaessig.new("tragen", "trug", "getragen")
   when "graben": v = VerbUnregelmaessig.new("graben", "grub", "gegraben")
@@ -463,11 +469,13 @@ def Verb.verb(kennung, infinitiv, praeverb="")
     # a ie a
   when "lassen": v = VerbUnregelmaessig.new("lassen", "lieﬂ", "gelassen")
   when /(.*)fallen$/: v = VerbUnregelmaessig.new($1+"fallen", $1+"fiel", ge($1)+"fallen")
+  when /(.*)schlafen$/: v = VerbUnregelmaessig.new($1+"schlafen", $1+"schlief", ge($1)+"schlafen")
 		# ie o o
   when "fliegen": v = VerbUnregelmaessig.new("fliegen", "flog", "geflogen")
   when "wiegen": v = VerbUnregelmaessig.new("wiegen", "wog", "gewogen")
   when /(.*)schieﬂen$/: v = VerbUnregelmaessig.new($1+"schieﬂen", $1+"schoss", ge($1)+"schossen")
   when /(.*)schlieﬂen$/: v = VerbUnregelmaessig.new($1+"schlieﬂen", $1+"schloss", ge($1)+"schlossen")
+  when /(.*)fliehen$/: v = VerbUnregelmaessig.new($1+"fliehen", $1+"floh", ge($1)+"flohen")
   else
     # regelmaessige Verben
     v = Verb.new(infinitiv)

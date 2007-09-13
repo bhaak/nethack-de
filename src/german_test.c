@@ -315,7 +315,7 @@ START_TEST (test_complete_sentences2) {
 		 "Dein Hals schnürt sich zu!"},
 		{"Plötzlich VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL durchsichtig!",
 		 "Plötzlich bist du durchsichtig!"},
-		{"SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_SHIELD tragen, NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ZWEIHAENDIG NOUN_SWORD VERB_FUEHREN.",
+		{"SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_SHIELD tragen, NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ZWEIHAENDISCH NOUN_SWORD VERB_FUEHREN.",
 		 "Du kannst keinen Schild tragen, während du ein zweihändiges Schwert führst."},
 		{"SUBJECT NOUN_ETWAS VERB_SEIN hier in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_DUST geschrieben.",
 		 "Etwas ist hier in den Staub geschrieben."},
@@ -739,6 +739,17 @@ START_TEST (test_paar) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_satzklammer) {
+	char *text[][2] = {
+		{"SUBJECT PRONOMEN_POSSESSIV NOUN_HELMET VERB_ANFUEHLEN sich völlig verrostet SATZKLAMMER.", 
+		 "Dein Helm fühlt sich völlig verrostet an."},
+    {"KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_GNOME SUBJECT_IM_SATZ NOUN_HELMET VERB_AUSSEHEN völlig verrostet SATZKLAMMER.",
+		 "Des Gnomen Helm sieht völlig verrostet aus."},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
 //#endif
 
 Suite *test_suite(void)
@@ -748,6 +759,7 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
   //tcase_add_test(tc_core, test_complete_sentences4);
+  tcase_add_test(tc_core, test_satzklammer);
 
 	if (1) {
 	//tcase_add_test(tc_core, test_german2meta);

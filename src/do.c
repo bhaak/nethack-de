@@ -180,13 +180,13 @@ const char *verb;
 				if ((x == u.ux) && (y == u.uy))
 					You_hear("ein KRACHEN! unter OBJECT KASUS_DATIV PRONOMEN_PERSONAL."); /* EN You_hear("a CRASH! beneath you."); */
 				else
-					You_hear("the boulder %s.", verb); /* EN You_hear("the boulder %s.", verb); */ // TODO DE
+					You_hear("OBJECT ARTIKEL_BESTIMMTER NOUN_BOULDER MODIFIER_VERB_INFINITIV %s.", verb); /* EN You_hear("the boulder %s.", verb); */
 			} else if (cansee(x, y)) {
-				pline_The("boulder %s%s.", /* EN pline_The("boulder %s%s.", */ // TODO DE
-				    t->tseen ? "" : "triggers and ", /* EN t->tseen ? "" : "triggers and ", */ // TODO DE
-				    t->ttyp == TRAPDOOR ? "plugs a trap door" : /* EN t->ttyp == TRAPDOOR ? "plugs a trap door" : */ // TODO DE
-				    t->ttyp == HOLE ? "plugs a hole" : /* EN t->ttyp == HOLE ? "plugs a hole" : */ // TODO DE
-				    "fills a pit"); /* EN "fills a pit"); */ // TODO DE
+				pline_The("NOUN_BOULDER %s%s.", /* EN pline_The("boulder %s%s.", */
+				    t->tseen ? "" : "VERB_AKTIVIEREN und ", /* EN t->tseen ? "" : "triggers and ", */
+				    t->ttyp == TRAPDOOR ? "VERB_VERSCHLIESSEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR" : /* EN t->ttyp == TRAPDOOR ? "plugs a trap door" : */ // TODO DE
+				    t->ttyp == HOLE ? "VERB_VERSCHLIESSEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_HOLE" : /* EN t->ttyp == HOLE ? "plugs a hole" : */
+				    "VERB_FUELLEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT"); /* EN "fills a pit"); */
 			}
 		}
 		deltrap(t);
@@ -229,8 +229,8 @@ doaltarobj(obj)  /* obj is an object dropped on an altar */
 			doname(obj), otense(obj, "hit")); /* EN doname(obj), otense(obj, "hit")); */ // TODO DE
 		if (!Hallucination) obj->bknown = 1;
 	} else {
-		pline("%s %s on the altar.", Doname2(obj), /* EN pline("%s %s on the altar.", Doname2(obj), */ // TODO DE
-			otense(obj, "land")); /* EN otense(obj, "land")); */ // TODO DE
+		pline("SUBJECT %s %s auf dem Altar.", Doname2(obj), /* EN pline("%s %s on the altar.", Doname2(obj), */
+			otense(obj, "VERB_LANDEN")); /* EN otense(obj, "land")); */
 		obj->bknown = 1;
 	}
 }
@@ -281,7 +281,7 @@ giveback:
 		pline("Static electricity surrounds the sink."); /* EN pline("Static electricity surrounds the sink."); */ // TODO DE
 		break;
 	    case RIN_CONFLICT:
-		You_hear("loud noises coming from the drain."); /* EN You_hear("loud noises coming from the drain."); */ // TODO DE
+		You_hear("laute Geräusche aus dem Abfluss dringen."); /* EN You_hear("loud noises coming from the drain."); */
 		break;
 	    case RIN_SUSTAIN_ABILITY:	/* KMH */
 		pline_The("water flow seems fixed."); /* EN pline_The("water flow seems fixed."); */ // TODO DE
@@ -1077,11 +1077,11 @@ boolean at_stairs, falling, portal;
 		fd = open_levelfile(new_ledger, whynot);
 		if (fd < 0) {
 			pline("%s", whynot);
-			pline("Probably someone removed it."); /* EN pline("Probably someone removed it."); */ // TODO DE
+			pline("Wahrscheinlich hat jemand die Datei entfernt."); /* EN pline("Probably someone removed it."); */
 			killer = whynot;
 			done(TRICKED);
 			/* we'll reach here if running in wizard mode */
-			error("Cannot continue this game."); /* EN error("Cannot continue this game."); */ // TODO DE
+			error("Kann das Spiel nicht fortsetzen."); /* EN error("Cannot continue this game."); */
 		}
 		minit();	/* ZEROCOMP */
 		getlev(fd, hackpid, new_ledger, FALSE);
@@ -1122,9 +1122,9 @@ boolean at_stairs, falling, portal;
 		/* Remove bug which crashes with levitation/punishment  KAA */
 		if (Punished && !Levitation) {
 			pline("With great effort you climb the %s.", /* EN pline("With great effort you climb the %s.", */ // TODO DE
-				at_ladder ? "ladder" : "stairs"); /* EN at_ladder ? "ladder" : "stairs"); */ // TODO DE
+				at_ladder ? "NOUN_LADDER" : "NOUN_STAIRS"); /* EN at_ladder ? "ladder" : "stairs"); */
 		} else if (at_ladder)
-		    You("climb up the ladder."); /* EN You("climb up the ladder."); */ // TODO DE
+		    You("VERB_HINAUFSTEIGEN OBJECT ARTIKEL_BESTIMMTER NOUN_LADDER SATZKLAMMER."); /* EN You("climb up the ladder."); */
 	    } else {	/* down */
 		if (at_ladder) {
 		    u_on_newpos(xupladder, yupladder);
@@ -1137,7 +1137,7 @@ boolean at_stairs, falling, portal;
 			at_ladder ? "ladder" : "stairs"); /* EN at_ladder ? "ladder" : "stairs"); */ // TODO DE
 		else if (u.dz &&
 		    (near_capacity() > UNENCUMBERED || Punished || Fumbling)) {
-		    You("fall down the %s.", at_ladder ? "ladder" : "stairs"); /* EN You("fall down the %s.", at_ladder ? "ladder" : "stairs"); */ // TODO DE
+		    You("VERB_FALLEN OBJECT ARTIKEL_BESTIMMTER %s hinunter.", at_ladder ? "NOUN_LADDER" : "NOUN_STAIRS"); /* EN You("fall down the %s.", at_ladder ? "ladder" : "stairs"); */
 		    if (Punished) {
 			drag_down();
 			if (carried(uball)) {
@@ -1159,7 +1159,7 @@ boolean at_stairs, falling, portal;
 			losehp(rnd(3), "falling downstairs", KILLED_BY); /* EN losehp(rnd(3), "falling downstairs", KILLED_BY); */ // TODO DE
 		    selftouch("Falling, you"); /* EN selftouch("Falling, you"); */ // TODO DE
 		} else if (u.dz && at_ladder)
-		    You("climb down the ladder."); /* EN You("climb down the ladder."); */ // TODO DE
+		    You("VERB_KLETTERN OBJECT ARTIKEL_BESTIMMTER NOUN_LADDER hinunter."); /* EN You("climb down the ladder."); */
 	    }
 	} else {	/* trap door or level_tele or In_endgame */
 	    if (was_in_W_tower && On_W_tower_level(&u.uz))

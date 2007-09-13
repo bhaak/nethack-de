@@ -441,7 +441,7 @@ struct attack *uattk;
 	if (override_confirmation) {
 	    /* this may need to be generalized if weapons other than
 	       Stormbringer acquire similar anti-social behavior... */
-	    if (flags.verbose) Your("bloodthirsty blade attacks!"); /* EN if (flags.verbose) Your("bloodthirsty blade attacks!"); */ // TODO DE
+	    if (flags.verbose) Your("ADJEKTIV_BLUTRUENSTIG NOUN_BLADE VERB_ANGREIFEN SATZKLAMMER!"); /* EN if (flags.verbose) Your("bloodthirsty blade attacks!"); */
 	}
 
 	if(!*mhit) {
@@ -716,7 +716,7 @@ int thrown;
 			break;
 		    case MIRROR:
 			if (breaktest(obj)) {
-			    You("break %s mirror.  That's bad luck!", /* EN You("break %s mirror.  That's bad luck!", */ // TODO DE
+			    You("VERB_ZERBRECHEN OBJECT %s NOUN_MIRROR.  Das bedeutet Unglück!", /* EN You("break %s mirror.  That's bad luck!", */
 				shk_your(yourbuf, obj));
 			    change_luck(-2);
 			    useup(obj);
@@ -729,7 +729,7 @@ int thrown;
 			break;
 #ifdef TOURIST
 		    case EXPENSIVE_CAMERA:
-			You("succeed in destroying %s camera.  Congratulations!", /* EN You("succeed in destroying %s camera.  Congratulations!", */ // TODO DE
+			Dir("gelingt es, NEUES_OBJECT KASUS_AKKUSATIV %s NOUN_KAMERA zu zerstören.  Gratulation!", /* EN You("succeed in destroying %s camera.  Congratulations!", */
 			        shk_your(yourbuf, obj));
 			useup(obj);
 			return(TRUE);
@@ -981,7 +981,7 @@ int thrown;
 			!bigmonst(mdat) && !thick_skinned(mdat)) {
 		if (canspotmon(mon))
 		    pline("%s %s from your powerful strike!", Monnam(mon), /* EN pline("%s %s from your powerful strike!", Monnam(mon), */ // TODO DE
-			  makeplural(stagger(mon->data, "stagger"))); /* EN makeplural(stagger(mon->data, "stagger"))); */ // TODO DE
+			  makeplural(stagger(mon->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mon->data, "stagger"))); */
 		/* avoid migrating a dead monster */
 		if (mon->mhp > tmp) {
 		    mhurtle(mon, u.dx, u.dy, 1);
@@ -1027,11 +1027,11 @@ int thrown;
 
 		if (canspotmon(mon)) {
 		    if (barehand_silver_rings == 1)
-			fmt = "Your silver ring sears %s!"; /* EN fmt = "Your silver ring sears %s!"; */ // TODO DE
+			fmt = "SUBJECT PRONOMEN_POSSESSIV ADJEKTIV_SILVER NOUN_RING VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "Your silver ring sears %s!"; */
 		    else if (barehand_silver_rings == 2)
-			fmt = "Your silver rings sear %s!"; /* EN fmt = "Your silver rings sear %s!"; */ // TODO DE
+			fmt = "SUBJECT PRONOMEN_POSSESSIV ADJEKTIV_SILVER NOUN_RINGs VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "Your silver rings sear %s!"; */
 		    else
-			fmt = "The silver sears %s!"; /* EN fmt = "The silver sears %s!"; */ // TODO DE
+			fmt = "SUBJECT ARTIKEL_BESTIMMTER NOUN_SILBER VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "The silver sears %s!"; */
 		} else {
 		    *whom = highc(*whom);	/* "it" -> "It" */
 		    fmt = "%s is seared!"; /* EN fmt = "%s is seared!"; */ // TODO DE
@@ -1045,7 +1045,7 @@ int thrown;
 	if (needpoismsg)
 		pline_The("poison doesn't seem to affect %s.", mon_nam(mon)); /* EN pline_The("poison doesn't seem to affect %s.", mon_nam(mon)); */ // TODO DE
 	if (poiskilled) {
-		pline_The("poison was deadly..."); /* EN pline_The("poison was deadly..."); */ // TODO DE
+		pline("Das Gift war tödlich ..."); /* EN pline_The("poison was deadly..."); */
 		if (!already_killed) xkilled(mon, 0);
 		return FALSE;
 	} else if (destroyed) {
@@ -1293,8 +1293,8 @@ register struct attack *mattk;
 	switch(mattk->adtyp) {
 	    case AD_STUN:
 		if(!Blind)
-		    pline("%s %s for a moment.", Monnam(mdef), /* EN pline("%s %s for a moment.", Monnam(mdef), */ // TODO DE
-			  makeplural(stagger(mdef->data, "stagger"))); /* EN makeplural(stagger(mdef->data, "stagger"))); */ // TODO DE
+		    pline("SUBJECT %s %s einen Moment lang.", Monnam(mdef), /* EN pline("%s %s for a moment.", Monnam(mdef), */
+			  makeplural(stagger(mdef->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mdef->data, "stagger"))); */
 		mdef->mstun = 1;
 		goto physical;
 	    case AD_LEGS:
@@ -1413,9 +1413,9 @@ register struct attack *mattk;
 		        obj_extract_self(mongold);  
 		        if (merge_choice(invent, mongold) || inv_cnt() < 52) {
 			    addinv(mongold);
-			    Your("NOUN_PURSE fühlt sich schwerer."); /* EN Your("purse feels heavier."); */
+			    Your("NOUN_PURSE fühlt sich schwerer an."); /* EN Your("purse feels heavier."); */
 			} else {
-                            You("grab %s's gold, but find no room in your knapsack.", mon_nam(mdef)); /* EN You("grab %s's gold, but find no room in your knapsack.", mon_nam(mdef)); */ // TODO DE
+                            You("VERB_SCHNAPPEN %s NOUN_GOLD, aber VERB_FINDEN keinen Platz in OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_RUCKSACK.", s_suffix(mon_nam(mdef))); /* EN You("grab %s's gold, but find no room in your knapsack.", mon_nam(mdef)); */ // TODO DE
 			    dropy(mongold);
 		        }
 		    }
@@ -1433,13 +1433,13 @@ register struct attack *mattk;
 		    Strcpy(nambuf, Monnam(mdef));
 		    if (u_teleport_mon(mdef, FALSE) &&
 			    u_saw_mon && !canseemon(mdef))
-			pline("%s suddenly disappears!", nambuf); /* EN pline("%s suddenly disappears!", nambuf); */ // TODO DE
+			pline("SUBJECT %s VERB_VERSCHWINDEN plötzlich!", nambuf); /* EN pline("%s suddenly disappears!", nambuf); */
 		}
 		break;
 	    case AD_BLND:
 		if (can_blnd(&youmonst, mdef, mattk->aatyp, (struct obj*)0)) {
 		    if(!Blind && mdef->mcansee)
-			pline("%s is blinded.", Monnam(mdef)); /* EN pline("%s is blinded.", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_SEIN geblendet.", Monnam(mdef)); /* EN pline("%s is blinded.", Monnam(mdef)); */
 		    mdef->mcansee = 0;
 		    tmp += mdef->mblinded;
 		    if (tmp > 127) tmp = 127;
@@ -1457,7 +1457,7 @@ register struct attack *mattk;
 			/* Don't return yet; keep hp<1 and tmp=0 for pet msg */
 		    } else {
 			mdef->mcan = 1;
-			You("chuckle."); /* EN You("chuckle."); */ // TODO DE
+			You("VERB_CHUCKLE."); /* EN You("chuckle."); */
 		    }
 		}
 		tmp = 0;
@@ -1500,13 +1500,13 @@ register struct attack *mattk;
 	    case AD_DRDX:
 	    case AD_DRCO:
 		if (!negated && !rn2(8)) {
-		    Your("%s was poisoned!", mpoisons_subj(&youmonst, mattk)); /* EN Your("%s was poisoned!", mpoisons_subj(&youmonst, mattk)); */ // TODO DE
+		    Your("%s war vergiftet!", mpoisons_subj(&youmonst, mattk)); /* EN Your("%s was poisoned!", mpoisons_subj(&youmonst, mattk)); */
 		    if (resists_poison(mdef))
 			pline_The("poison doesn't seem to affect %s.", /* EN pline_The("poison doesn't seem to affect %s.", */ // TODO DE
 				mon_nam(mdef));
 		    else {
 			if (!rn2(10)) {
-			    Your("poison was deadly..."); /* EN Your("poison was deadly..."); */ // TODO DE
+			    Your("NOUN_POISON war tödlich ..."); /* EN Your("poison was deadly..."); */
 			    tmp = mdef->mhp;
 			} else tmp += rn1(10,6);
 		    }
@@ -1518,7 +1518,7 @@ register struct attack *mattk;
 		    tmp = 0;
 		    if (!Unchanging && mdef->data == &mons[PM_GREEN_SLIME]) {
 			if (!Slimed) {
-			    You("suck in some slime and don't feel very well."); /* EN You("suck in some slime and don't feel very well."); */ // TODO DE
+			    You("VERB_SCHLUCKEN etwas Schleim und VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL nicht mehr so gut."); /* EN You("suck in some slime and don't feel very well."); */
 			    Slimed = 10L;
 			}
 		    }
@@ -1544,7 +1544,7 @@ register struct attack *mattk;
 		if (!vegetarian(mdef->data))
 		    violated_vegetarian();
 		if (mindless(mdef->data)) {
-		    pline("%s doesn't notice.", Monnam(mdef)); /* EN pline("%s doesn't notice.", Monnam(mdef)); */ // TODO DE
+		    pline("SUBJECT %s VERB_MERKEN nix.", Monnam(mdef)); /* EN pline("%s doesn't notice.", Monnam(mdef)); */
 		    break;
 		}
 		tmp += rnd(10);
@@ -1609,7 +1609,7 @@ register struct attack *mattk;
 				mdef->data != &mons[PM_FIRE_ELEMENTAL] &&
 				mdef->data != &mons[PM_SALAMANDER] &&
 				mdef->data != &mons[PM_GREEN_SLIME]) {
-		    You("turn %s into slime.", mon_nam(mdef)); /* EN You("turn %s into slime.", mon_nam(mdef)); */ // TODO DE
+		    You("VERB_VERSCHLEIMEN OBJECT %s.", mon_nam(mdef)); /* EN You("turn %s into slime.", mon_nam(mdef)); */
 		    (void) newcham(mdef, &mons[PM_GREEN_SLIME], FALSE, FALSE);
 		    tmp = 0;
 		}
@@ -1909,7 +1909,7 @@ register struct monst *mdef;
 register struct attack *mattk;
 {
 	if (could_seduce(&youmonst, mdef, mattk))
-		You("VERB_HERANMACHEN OBJECT PRONOMEN_PERSONAL an OBJECT %s SATZKLAMMER.%s.", mon_nam(mdef)); /* EN You("pretend to be friendly to %s.", mon_nam(mdef)); */
+		You("VERB_HERANMACHEN OBJECT PRONOMEN_PERSONAL an OBJECT %s SATZKLAMMER.", mon_nam(mdef)); /* EN You("pretend to be friendly to %s.", mon_nam(mdef)); */
 	else if(canspotmon(mdef) && flags.verbose)
 		You("VERB_MISS OBJECT %s.", mon_nam(mdef)); /* EN  You("miss %s.", mon_nam(mdef)); */
 	else

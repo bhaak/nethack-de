@@ -268,7 +268,7 @@ register int trouble;
 	struct obj *otmp = 0;
 	const char *what = (const char *)0;
 	static NEARDATA const char leftglow[] = "ADJEKTIV_LINK NOUN_RING VERB_LEUCHTEN schwach", /* EN static NEARDATA const char leftglow[] = "left ring softly glows", */
-				   rightglow[] = "ADJEKTIV_RIGHT NOUN_RING VERB_LEUCHTEN schwach"; /* EN rightglow[] = "right ring softly glows"; */
+				   rightglow[] = "ADJEKTIV_RECHT NOUN_RING VERB_LEUCHTEN schwach"; /* EN rightglow[] = "right ring softly glows"; */
 
 	switch (trouble) {
 	    case TROUBLE_STONED:
@@ -662,7 +662,7 @@ gcrownu()
 	u.uevent.uhand_of_elbereth = 2;
 	in_hand = (uwep && uwep->oartifact == ART_VORPAL_BLADE);
 	already_exists = exist_artifact(LONG_SWORD, artiname(ART_VORPAL_BLADE));
-	verbalize("Thou shalt be my Envoy of Balance!"); /* EN verbalize("Thou shalt be my Envoy of Balance!"); */ // TODO DE
+	verbalize("Du sollst mein Bote/Gesandter des Ausgleichs sein!"); /* EN verbalize("Thou shalt be my Envoy of Balance!"); */ // TODO DE
 	break;
     case A_CHAOTIC:
 	u.uevent.uhand_of_elbereth = 3;
@@ -1098,19 +1098,19 @@ register struct obj *otmp;
     if (Hallucination)
 	switch (rn2(3)) {
 	    case 0:
-		Your("sacrifice sprouts wings and a propeller and roars away!"); /* EN Your("sacrifice sprouts wings and a propeller and roars away!"); */ // TODO DE
+		pline("SUBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_SACRIFICE wachsen Flügel und ein Propeller und es düst davon!"); /* EN Your("sacrifice sprouts wings and a propeller and roars away!"); */
 		break;
 	    case 1:
-		Your("sacrifice puffs up, swelling bigger and bigger, and pops!"); /* EN Your("sacrifice puffs up, swelling bigger and bigger, and pops!"); */ // TODO DE
+		Your("NOUN_SACRIFICE schwillt an, wird größer und größer und platzt!"); /* EN Your("sacrifice puffs up, swelling bigger and bigger, and pops!"); */
 		break;
 	    case 2:
-		Your("sacrifice collapses into a cloud of dancing particles and fades away!"); /* EN Your("sacrifice collapses into a cloud of dancing particles and fades away!"); */ // TODO DE
+		Your("NOUN_SACRIFICE zerfällt in eine Wolke tanzender Funken, die langsam verblassen!"); /* EN Your("sacrifice collapses into a cloud of dancing particles and fades away!"); */
 		break;
 	}
     else if (Blind && u.ualign.type == A_LAWFUL)
 	Your("NOUN_SACRIFICE VERB_VERSCHWINDEN!"); /* EN Your("sacrifice disappears!"); */
-    else Your("NOUN_SACRIFICE is consumed in a %s!", /* EN else Your("sacrifice is consumed in a %s!", */ // TODO DE
-	      u.ualign.type == A_LAWFUL ? "flash of light" : "burst of flame"); /* EN u.ualign.type == A_LAWFUL ? "flash of light" : "burst of flame"); */ // TODO DE
+    else pline("%s KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_SACRIFICE!", /* EN else Your("sacrifice is consumed in a %s!", */
+	      u.ualign.type == A_LAWFUL ? "Ein Lichtblitz verzehrt" : "Feurige Flammen verzehren"); /* EN u.ualign.type == A_LAWFUL ? "flash of light" : "burst of flame"); */
     if (carried(otmp)) useup(otmp);
     else useupf(otmp, 1L);
     exercise(A_WIS, TRUE);
@@ -1169,7 +1169,7 @@ dosacrifice()
 		You("VERB_FINDEN diese Idee äusserst befriedigend."); /* EN You("find the idea very satisfying."); */
 		exercise(A_WIS, TRUE);
 	    } else if (u.ualign.type != A_CHAOTIC) {
-		    pline("You'll regret this infamous offense!"); /* EN pline("You'll regret this infamous offense!"); */ // TODO DE
+		    pline("SUBJECT PRONOMEN_PERSONAL VERB_WERDEN diese infame Beleidigung noch bereuen!"); /* EN pline("You'll regret this infamous offense!"); */
 		    exercise(A_WIS, FALSE);
 	    }
 
@@ -1237,9 +1237,9 @@ dosacrifice()
 
 	    /* If same as altar, always a very bad action. */
 	    if (unicalign == altaralign) {
-		pline("Solch eine Tat ist eine Beleidigung %s!", /* EN pline("Such an action is an insult to %s!", */
+		pline("Solch eine Tat ist eine Beleidigung KASUS_GENITIV ARTIKEL_BESTIMMTER %s!", /* EN pline("Such an action is an insult to %s!", */
 		      (unicalign == A_CHAOTIC)
-		      ? "chaos" : unicalign ? "law" : "balance"); /* EN ? "chaos" : unicalign ? "law" : "balance"); */ // TODO DE
+		      ? "NOUN_CHAOS" : unicalign ? "NOUN_LAW" : "NOUN_BALANCE"); /* EN ? "chaos" : unicalign ? "law" : "balance"); */
 		(void) adjattrib(A_WIS, -1, TRUE);
 		value = -5;
 	    } else if (u.ualign.type == altaralign) {
@@ -1278,7 +1278,7 @@ dosacrifice()
 		/* And the opposing team picks you up and
 		   carries you off on their shoulders */
 		adjalign(-99);
-		pline("%s nimmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GESCHENK an, and gains dominion over %s...", /* EN pline("%s accepts your gift, and gains dominion over %s...", */ // TODO DE
+		pline("%s nimmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GESCHENK an und erlangt die Herrschaft über %s ...", /* EN pline("%s accepts your gift, and gains dominion over %s...", */
 		      a_gname(), u_gname());
 		pline("%s tobt ...", u_gname()); /* EN pline("%s is enraged...", u_gname()); */
 		pline("Zum Glück erlaubt %s KASUS_DATIV PRONOMEN_PERSONAL weiterzuleben ...", a_gname()); /* EN pline("Fortunately, %s permits you to live...", a_gname()); */
@@ -1366,7 +1366,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		} else {
 		    u.ugangr += 3;
 		    adjalign(-5);
-		    pline("%s rejects your sacrifice!", a_gname()); /* EN pline("%s rejects your sacrifice!", a_gname()); */ // TODO DE
+		    pline("%s weist KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_SACRIFICE zurück!", a_gname()); /* EN pline("%s rejects your sacrifice!", a_gname()); */
 		    godvoice(altaralign, "Suffer, infidel!"); /* EN godvoice(altaralign, "Suffer, infidel!"); */ // TODO DE
 		    change_luck(-5);
 		    (void) adjattrib(A_WIS, -2, TRUE);
@@ -1514,7 +1514,7 @@ boolean praying;	/* false means no messages should be given */
     if (is_demon(youmonst.data) && (p_aligntyp != A_CHAOTIC)) {
 	if (praying)
 	    pline("Schon der Gedanke an einen %s Gott zu beten weckt Ekel in KASUS_DATIV PRONOMEN_PERSONAL.", /* EN pline_The("very idea of praying to a %s god is repugnant to you.", */
-		  p_aligntyp ? "lawful" : "neutral"); /* EN p_aligntyp ? "lawful" : "neutral"); */ // TODO DE
+		  p_aligntyp ? "ADJEKTIV_LAWFUL" : "ADJEKTIV_NEUTRAL"); /* EN p_aligntyp ? "lawful" : "neutral"); */
 	return FALSE;
     }
 

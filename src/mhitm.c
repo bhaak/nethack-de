@@ -656,8 +656,8 @@ mdamagem(magr, mdef, mattk)
 	    case AD_STUN:
 		if (magr->mcan) break;
 		if (canseemon(mdef))
-		    pline("%s %s for a moment.", Monnam(mdef), /* EN pline("%s %s for a moment.", Monnam(mdef), */ // TODO DE
-			  makeplural(stagger(mdef->data, "stagger"))); /* EN makeplural(stagger(mdef->data, "stagger"))); */ // TODO DE
+		    pline("%s %s einen Moment lang.", Monnam(mdef), /* EN pline("%s %s for a moment.", Monnam(mdef), */
+			  makeplural(stagger(mdef->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mdef->data, "stagger"))); */
 		mdef->mstun = 1;
 		goto physical;
 	    case AD_LEGS:
@@ -1358,8 +1358,8 @@ int mdead;
 		if (!magr->mstun) {
 		    magr->mstun = 1;
 		    if (canseemon(magr))
-			pline("%s %s...", Monnam(magr), /* EN pline("%s %s...", Monnam(magr), */ // TODO DE
-			      makeplural(stagger(magr->data, "stagger"))); /* EN makeplural(stagger(magr->data, "stagger"))); */ // TODO DE
+			pline("SUBJECT %s %s ...", Monnam(magr), /* EN pline("%s %s...", Monnam(magr), */
+			      makeplural(stagger(magr->data, "VERB_STAGGER"))); /* EN makeplural(stagger(magr->data, "stagger"))); */
 		}
 		tmp = 0;
 		break;

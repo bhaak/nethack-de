@@ -69,9 +69,9 @@ struct monst *victim;
 	    item = (victim == &youmonst) ? uarmh : which_armor(victim, W_ARMH);
 	    if (item) {
 		mat_idx = objects[item->otyp].oc_material;
-	    	Sprintf(buf,"%s helmet", materialnm[mat_idx] ); /* EN Sprintf(buf,"%s helmet", materialnm[mat_idx] ); */ // TODO DE
+	    	Sprintf(buf,"%s NOUN_HELMET", materialnm[mat_idx] ); /* EN Sprintf(buf,"%s helmet", materialnm[mat_idx] ); */
 	    }
-	    if (!burn_dmg(item, item ? buf : "helmet")) continue; /* EN if (!burn_dmg(item, item ? buf : "helmet")) continue; */ // TODO DE
+	    if (!burn_dmg(item, item ? buf : "NOUN_HELMET")) continue; /* EN if (!burn_dmg(item, item ? buf : "helmet")) continue; */
 	    break;
 	case 1:
 	    item = (victim == &youmonst) ? uarmc : which_armor(victim, W_ARMC);
@@ -123,7 +123,10 @@ boolean print;
 struct monst *victim;
 {
 	static NEARDATA const char * const action[] = { "smoulder", "VERB_ROSTEN", "rot", "corrode" }; /* EN static NEARDATA const char * const action[] = { "smoulder", "rust", "rot", "corrode" }; */ // TODO DE
-	static NEARDATA const char * const msg[] =  { "burnt", "rusted", "rotten", "corroded" }; /* EN static NEARDATA const char * const msg[] =  { "burnt", "rusted", "rotten", "corroded" }; */ // TODO DE
+#ifdef GERMAN
+	static NEARDATA const char * const action_completely[] = { "smoulder", "VERB_VERROSTEN", "rot", "corrode" }; // TODO DE
+#endif
+	static NEARDATA const char * const msg[] =  { "burnt", "verrostet", "rotten", "corroded" }; /* EN static NEARDATA const char * const msg[] =  { "burnt", "rusted", "rotten", "corroded" }; */ // TODO DE
 	boolean vulnerable = FALSE;
 	boolean grprot = FALSE;
 	boolean is_primary = TRUE;
@@ -172,13 +175,13 @@ struct monst *victim;
 		}
 	    } else {
 		if (victim == &youmonst)
-			Your("%s %s%s! Rost 5", ostr, /* EN Your("%s %s%s!", ostr, */
-			 vtense(ostr, action[type]),
-			 erosion+1 == MAX_ERODE ? " completely" : /* EN erosion+1 == MAX_ERODE ? " completely" : */ // TODO DE
-			    erosion ? " further" : ""); /* EN erosion ? " further" : ""); */ // TODO DE
+			Your("%s %s%s!", ostr, /* EN Your("%s %s%s!", ostr, */
+			 erosion+1 == MAX_ERODE ? vtense(ostr, action_completely[type]) : vtense(ostr, action[type]), /* EN vtense(ostr, action[type]), */
+			 erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */
+			    erosion ? " weiter" : ""); /* EN erosion ? " further" : ""); */
 		else if (vismon)
 			pline("KASUS_GENITIV %s SUBJECT_IM_SATZ %s %s%s! Rost 6", Monnam(victim), ostr, /* EN pline("%s %s %s%s! Rost 6", Monnam(victim), ostr, */
-			vtense(ostr, action[type]),
+			 erosion+1 == MAX_ERODE ? vtense(ostr, action_completely[type]) : vtense(ostr, action[type]), /* EN vtense(ostr, action[type]), */
 			erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */
 			  erosion ? " weiter" : ""); /* EN erosion ? " further" : ""); */
 		if (is_primary)
@@ -190,13 +193,13 @@ struct monst *victim;
 	} else {
 	    if (flags.verbose) {
 		if (victim == &youmonst)
-		    Your("%s %s completely %s. Rost 7", ostr, /* EN Your("%s %s completely %s.", ostr, */ // TODO DE
-			 vtense(ostr, Blind ? "feel" : "look"), /* EN vtense(ostr, Blind ? "feel" : "look"), */ // TODO DE
+		    Your("%s %s völlig %s SATZKLAMMER.", ostr, /* EN Your("%s %s completely %s.", ostr, */
+			 vtense(ostr, Blind ? "VERB_ANFUEHLEN sich" : "VERB_AUSSEHEN"), /* EN vtense(ostr, Blind ? "feel" : "look"), */
 			 msg[type]);
 		else if (vismon)
-			pline("KASUS_GENITIV %s SUBJECT_IM_SATZ %s %s completely %s. Rost 8", /* EN pline("%s's %s %s completely %s.", */ // TODO DE
+			pline("KASUS_GENITIV %s SUBJECT_IM_SATZ %s %s völlig %s SATZKLAMMER.", /* EN pline("%s's %s %s completely %s.", */
 						Monnam(victim), ostr,
-						vtense(ostr, "look"), msg[type]); /* EN vtense(ostr, "look"), msg[type]); */ // TODO DE
+						vtense(ostr, "VERB_AUSSEHEN"), msg[type]); /* EN vtense(ostr, "look"), msg[type]); */
 	    }
 	}
 	return(TRUE);
@@ -812,7 +815,7 @@ unsigned trflags;
 		    case 0:
 			pline("%s you on the %s!", A_gush_of_water_hits, /* EN pline("%s you on the %s!", A_gush_of_water_hits, */ // TODO DE
 				    body_part(HEAD));
-			(void) rust_dmg(uarmh, "helmet", 1, TRUE, &youmonst); /* EN (void) rust_dmg(uarmh, "helmet", 1, TRUE, &youmonst); */ // TODO DE
+			(void) rust_dmg(uarmh, "NOUN_HELMET", 1, TRUE, &youmonst); /* EN (void) rust_dmg(uarmh, "helmet", 1, TRUE, &youmonst); */
 			break;
 		    case 1:
 			pline("%s your left %s!", A_gush_of_water_hits, /* EN pline("%s your left %s!", A_gush_of_water_hits, */ // TODO DE
@@ -1151,7 +1154,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 			(void)keep_saddle_with_steedcorpse(steed_mid, fobj, saddle);
 #endif
 		newsym(u.ux,u.uy);		/* update trap symbol */
-		losehp(rnd(16), "land mine", KILLED_BY_AN); /* EN losehp(rnd(16), "land mine", KILLED_BY_AN); */ // TODO DE
+		losehp(rnd(16), "NOUN_LAND_MINE", KILLED_BY_AN); /* EN losehp(rnd(16), "land mine", KILLED_BY_AN); */
 		/* fall recursively into the pit... */
 		if ((trap = t_at(u.ux, u.uy)) != 0) dotrap(trap, RECURSIVETRAP);
 		fill_pit(u.ux, u.uy);
@@ -1358,7 +1361,7 @@ int style;
 	    case ROLL|LAUNCH_UNSEEN:
 			if (otyp == BOULDER) {
 			    You_hear(Hallucination ?
-				     "someone bowling." : /* EN "someone bowling." : */ // TODO DE
+				     "jemanden kegeln." : /* EN "someone bowling." : */
 				     "rumbling in the distance."); /* EN "rumbling in the distance."); */ // TODO DE
 			}
 			style &= ~LAUNCH_UNSEEN;
@@ -1824,7 +1827,7 @@ register struct monst *mtmp;
 				pline("%s %s on the %s!", A_gush_of_water_hits, /* EN pline("%s %s on the %s!", A_gush_of_water_hits, */ // TODO DE
 				    mon_nam(mtmp), mbodypart(mtmp, HEAD));
 			    target = which_armor(mtmp, W_ARMH);
-			    (void) rust_dmg(target, "helmet", 1, TRUE, mtmp); /* EN (void) rust_dmg(target, "helmet", 1, TRUE, mtmp); */ // TODO DE
+			    (void) rust_dmg(target, "NOUN_HELMET", 1, TRUE, mtmp); /* EN (void) rust_dmg(target, "helmet", 1, TRUE, mtmp); */
 			    break;
 			case 1:
 			    if (in_sight)
@@ -1871,7 +1874,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 				if (in_sight)
 				    pline("%s falls to pieces!", Monnam(mtmp)); /* EN pline("%s falls to pieces!", Monnam(mtmp)); */ // TODO DE
 				else if(mtmp->mtame)
-				    pline("May %s rust in peace.", /* EN pline("May %s rust in peace.", */ // TODO DE
+				    pline("Möge %s in Frieden rosten.", /* EN pline("May %s rust in peace.", */
 								mon_nam(mtmp));
 				mondied(mtmp);
 				if (mtmp->mhp <= 0)
@@ -2239,14 +2242,14 @@ float_up()
 	if(u.utrap) {
 		if(u.utraptype == TT_PIT) {
 			u.utrap = 0;
-			You("float up, out of the pit!"); /* EN You("float up, out of the pit!"); */ // TODO DE
+			You("VERB_SCHWEBEN hoch, raus aus der Grube!"); /* EN You("float up, out of the pit!"); */
 			vision_full_recalc = 1;	/* vision limits change */
 			fill_pit(u.ux, u.uy);
 		} else if (u.utraptype == TT_INFLOOR) {
 			Your("body pulls upward, but your %s are still stuck.", /* EN Your("body pulls upward, but your %s are still stuck.", */ // TODO DE
 			     makeplural(body_part(LEG)));
 		} else {
-			You("float up, only your %s is still stuck.", /* EN You("float up, only your %s is still stuck.", */ // TODO DE
+			You("VERB_SCHWEBEN hoch, jedoch your %s is still stuck.", /* EN You("float up, only your %s is still stuck.", */ // TODO DE
 				body_part(LEG));
 		}
 	}
@@ -2349,7 +2352,7 @@ long hmask, emask;     /* might cancel timeout */
 	    if(Is_airlevel(&u.uz))
 		You("begin to tumble in place."); /* EN You("begin to tumble in place."); */ // TODO DE
 	    else if (Is_waterlevel(&u.uz) && !no_msg)
-		You_feel("heavier."); /* EN You_feel("heavier."); */ // TODO DE
+		Du_fuehlst_dich("schwerer."); /* EN You_feel("heavier."); */
 	    /* u.uinwater msgs already in spoteffects()/drown() */
 	    else if (!u.uinwater && !no_msg) {
 #ifdef STEED
@@ -2482,13 +2485,13 @@ domagictrap()
 	  register int cnt = rnd(4);
 
 	  if (!resists_blnd(&youmonst)) {
-		You("are momentarily blinded by a flash of light!"); /* EN You("are momentarily blinded by a flash of light!"); */ // TODO DE
+		You("VERB_WERDEN kurz von einem Lichtblitz geblendet!"); /* EN You("are momentarily blinded by a flash of light!"); */
 		make_blinded((long)rn1(5,10),FALSE);
 		if (!Blind) Your(vision_clears);
 	  } else if (!Blind) {
-		You("see a flash of light!"); /* EN You("see a flash of light!"); */ // TODO DE
+		You("VERB_SEHEN einen Lichtblitz!"); /* EN You("see a flash of light!"); */
 	  }  else
-		You_hear("a deafening roar!"); /* EN You_hear("a deafening roar!"); */ // TODO DE
+		You_hear("ein ohrenbetäubendes Getöse!"); /* EN You_hear("a deafening roar!"); */
 	  while(cnt--)
 		(void) makemon((struct permonst *) 0, u.ux, u.uy, NO_MM_FLAGS);
 	}
@@ -2505,7 +2508,7 @@ domagictrap()
 
 	     /* odd feelings */
 	     case 13:	pline("A shiver runs up and down your %s!", /* EN case 13:	pline("A shiver runs up and down your %s!", */ // TODO DE
-			      body_part(SPINE));
+			      body_part(SPINE)); /* EN body_part(SPINE)); */ // TODO DE
 			break;
 	     case 14:	You_hear(Hallucination ?
 				"the moon howling at you." : /* EN "the moon howling at you." : */ // TODO DE
@@ -2525,10 +2528,10 @@ domagictrap()
 	     case 16:   Your("pack shakes violently!"); /* EN case 16:   Your("pack shakes violently!"); */ // TODO DE
 			break;
 	     case 17:	You(Hallucination ?
-				"smell hamburgers." : /* EN "smell hamburgers." : */ // TODO DE
-				"smell charred flesh."); /* EN "smell charred flesh."); */ // TODO DE
+				"VERB_SMELL Hamburger." : /* EN "smell hamburgers." : */
+				"VERB_SMELL verkohltes Fleisch."); /* EN "smell charred flesh."); */
 			break;
-	     case 18:	You_feel("tired."); /* EN case 18:	You_feel("tired."); */ // TODO DE
+	     case 18:	Du_fuehlst_dich("müde."); /* EN case 18:	You_feel("tired."); */
 			break;
 
 	     /* very occasionally something nice happens. */
@@ -2608,9 +2611,9 @@ xchar x, y;
 	    if (!force && (Luck + 5) > rn2(chance))
 		continue;
 	    /* Container is burnt up - dump contents out */
-	    if (in_sight) pline("%s catches fire and burns.", Yname2(obj)); /* EN if (in_sight) pline("%s catches fire and burns.", Yname2(obj)); */ // TODO DE
+	    if (in_sight) pline("SUBJECT %s VERB_FANGEN Feuer und VERB_VERBRENNEN.", Yname2(obj)); /* EN if (in_sight) pline("%s catches fire and burns.", Yname2(obj)); */
 	    if (Has_contents(obj)) {
-		if (in_sight) pline("Its contents fall out."); /* EN if (in_sight) pline("Its contents fall out."); */ // TODO DE
+		if (in_sight) pline("Der Inhalt KASUS_GENITIV %s fällt raus.", the(xname(obj))); /* EN if (in_sight) pline("Its contents fall out."); */
 		for (otmp = obj->cobj; otmp; otmp = ncobj) {
 		    ncobj = otmp->nobj;
 		    obj_extract_self(otmp);
@@ -2651,7 +2654,7 @@ xchar x, y;
 	} else if (is_flammable(obj) && obj->oeroded < MAX_ERODE &&
 		   !(obj->oerodeproof || (obj->blessed && !rnl(4)))) {
 	    if (in_sight) {
-		pline("%s %s%s.", Yname2(obj), otense(obj, "burn"), /* EN pline("%s %s%s.", Yname2(obj), otense(obj, "burn"), */ // TODO DE
+		pline("SUBJECT %s %s%s.", Yname2(obj), otense(obj, "burn"), /* EN pline("%s %s%s.", Yname2(obj), otense(obj, "burn"), */ // TODO DE
 		      obj->oeroded+1 == MAX_ERODE ? " completely" : /* EN obj->oeroded+1 == MAX_ERODE ? " completely" : */ // TODO DE
 		      obj->oeroded ? " further" : ""); /* EN obj->oeroded ? " further" : ""); */ // TODO DE
 	    }
@@ -2660,7 +2663,7 @@ xchar x, y;
     }
 
     if (retval && !in_sight)
-	You("smell smoke."); /* EN You("smell smoke."); */ // TODO DE
+	You("VERB_SMELL Rauch."); /* EN You("smell smoke."); */
     return retval;
 }
 
@@ -2708,7 +2711,7 @@ register boolean force, here;
 		} else if (obj->oclass == POTION_CLASS) {
 			if (obj->otyp == POT_ACID) {
 				/* damage player/monster? */
-				pline("A potion explodes!"); /* EN pline("A potion explodes!"); */ // TODO DE
+				pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_POTION VERB_EXPLODIEREN!"); /* EN pline("A potion explodes!"); */
 				delobj(obj);
 				continue;
 			} else if (obj->odiluted) {
@@ -2775,7 +2778,7 @@ boolean *lostsome;
 	    if (!otmp) {
 		/* Nothing available left to drop; try gold */
 		if (u.ugold) {
-		    pline("In desperation, you drop your purse."); /* EN pline("In desperation, you drop your purse."); */ // TODO DE
+		    pline("Aus schierer Verzweiflung VERB_LASSEN SUBJECT PRONOMEN_PERSONAL OBJECT NOUN_PURSE fallen."); /* EN pline("In desperation, you drop your purse."); */
 		    /* Hack: gold is not in the inventory, so make a gold object
 		     * and put it at the head of the inventory list.
 		     */
@@ -3741,10 +3744,10 @@ boolean disarm;
 				pline("What a groovy feeling!"); /* EN pline("What a groovy feeling!"); */ // TODO DE
 			    else if (Blind)
 				You("%s and get dizzy...", /* EN You("%s and get dizzy...", */ // TODO DE
-				    stagger(youmonst.data, "stagger")); /* EN stagger(youmonst.data, "stagger")); */ // TODO DE
+				    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
 			    else
 				You("%s and your vision blurs...", /* EN You("%s and your vision blurs...", */ // TODO DE
-				    stagger(youmonst.data, "stagger")); /* EN stagger(youmonst.data, "stagger")); */ // TODO DE
+				    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
 			}
 			make_stunned(HStun + rn1(7, 16),FALSE);
 			make_hallucinated(HHallucination + rn1(5, 16),FALSE,0L);

@@ -356,7 +356,7 @@ register boolean nearshop;
 	    if (nearshop) {
 		/* Create swarm around you, if you merely "stepped out" */
 		if (flags.verbose)
-		    pline_The("NOUN_KEYSTONE_KOPs VERB_APPEAR!"); /* EN pline_The("Keystone Kops appear!"); */
+		    pline("Auftritt KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_KEYSTONE_KOPs!"); /* EN pline_The("Keystone Kops appear!"); */
 		mm.x = u.ux;
 		mm.y = u.uy;
 		makekops(&mm);
@@ -505,7 +505,7 @@ register char *enterstring;
 	register int rt;
 	register struct monst *shkp;
 	register struct eshk *eshkp;
-	static const char no_shk[] = "Dieser Laden erscheint verlassen."; /* EN static const char no_shk[] = "This shop appears to be deserted."; */
+	static const char no_shk[] = "Dieser Laden scheint verlassen."; /* EN static const char no_shk[] = "This shop appears to be deserted."; */
 	static char empty_shops[5];
 
 	if(!*enterstring)
@@ -675,7 +675,7 @@ shopper_financial_report()
 
 	if (this_shkp &&
 	    !(ESHK(this_shkp)->credit || shop_debt(ESHK(this_shkp)))) {
-	    You("have no credit or debt in here."); /* EN You("have no credit or debt in here."); */ // TODO DE
+	    You("VERB_HABEN hier keinen Kredit oder Schulden."); /* EN You("have no credit or debt in here."); */
 	    this_shkp = 0;	/* skip first pass */
 	}
 
@@ -687,16 +687,16 @@ shopper_financial_report()
 		if ((shkp != this_shkp) ^ pass) continue;
 		eshkp = ESHK(shkp);
 		if ((amt = eshkp->credit) != 0)
-		    You("have %ld %s credit at %s %s.", /* EN You("have %ld %s credit at %s %s.", */ // TODO DE
+		    You("VERB_HABEN Kredit in der Höhe von %ld %s in OBJECT KASUS_DATIV %s %s.", /* EN You("have %ld %s credit at %s %s.", */
 			amt, currency(amt), s_suffix(shkname(shkp)),
 			shtypes[eshkp->shoptype - SHOPBASE].name);
 		else if (shkp == this_shkp)
-		    You("have no credit in here."); /* EN You("have no credit in here."); */ // TODO DE
+		    You("VERB_HABEN hier keinen Kredit."); /* EN You("have no credit in here."); */
 		if ((amt = shop_debt(eshkp)) != 0)
-		    You("owe %s %ld %s.", /* EN You("owe %s %ld %s.", */ // TODO DE
+		    You("VERB_OWE OBJECT KASUS_DATIV %s %ld %s.", /* EN You("owe %s %ld %s.", */
 			shkname(shkp), amt, currency(amt));
 		else if (shkp == this_shkp)
-		    You("don't owe any money here."); /* EN You("don't owe any money here."); */ // TODO DE
+		    You("VERB_HABEN hier keine Schulden."); /* EN You("don't owe any money here."); */
 	    }
 }
 
@@ -1056,7 +1056,7 @@ register xchar ox,oy;
 	hot_pursuit(shkp);
 }
 
-STATIC_VAR const char no_money[] = "Moreover, you%s have no money."; /* EN STATIC_VAR const char no_money[] = "Moreover, you%s have no money."; */ // TODO DE
+STATIC_VAR const char no_money[] = "Zudem %s PRONOMEN_PERSONAL kein Geld%s."; /* EN STATIC_VAR const char no_money[] = "Moreover, you%s have no money."; */
 STATIC_VAR const char not_enough_money[] =
 			    "Besides, you don't have enough to interest %s."; /* EN "Besides, you don't have enough to interest %s."; */ // TODO DE
 
@@ -1123,7 +1123,7 @@ dopay()
 	}
 
 	if(!seensk) {
-		You_cant("see..."); /* EN You_cant("see..."); */ // TODO DE
+		You("VERB_KOENNEN nichts sehen ..."); /* EN You_cant("see..."); */
 		return(0);
 	}
 
@@ -1206,13 +1206,13 @@ proceed:
                 umoney = money_cnt(invent);
 #endif
 		if(!ltmp)
-		    You("do not owe %s anything.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */ // TODO DE
+		    You("VERB_OWE %s nichts.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */
 #ifndef GOLDOBJ
 		else if(!u.ugold) {
 #else
 		else if(!umoney) {
 #endif
-		    You("%shave no money.", stashed_gold ? "seem to " : ""); /* EN You("%shave no money.", stashed_gold ? "seem to " : ""); */ // TODO DE
+		    You("%skein Geld%s.", stashed_gold ? "VERB_SCHEINEN " : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN You("%shave no money.", stashed_gold ? "seem to " : ""); */
 		    if(stashed_gold)
 			pline("But you have some gold stashed away."); /* EN pline("But you have some gold stashed away."); */ // TODO DE
 		} else {
@@ -1254,15 +1254,15 @@ proceed:
                 umoney = money_cnt(invent);
 #endif
 		if(!ltmp && NOTANGRY(shkp)) {
-		    You("do not owe %s anything.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */ // TODO DE
+		    You("VERB_OWE %s nichts.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */
 #ifndef GOLDOBJ
 		    if (!u.ugold)
 #else
 		    if (!umoney)
 #endif
-			pline(no_money, stashed_gold ? " seem to" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */ // TODO DE
+			pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "", stashed_gold ? "" : " zu haben"); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
 		} else if(ltmp) {
-		    pline("%s is after blood, not money!", Monnam(shkp)); /* EN pline("%s is after blood, not money!", Monnam(shkp)); */ // TODO DE
+		    pline("%s will Blut sehen kein Geld!", Monnam(shkp)); /* EN pline("%s is after blood, not money!", Monnam(shkp)); */
 #ifndef GOLDOBJ
 		    if(u.ugold < ltmp/2L ||
 				(u.ugold < ltmp && stashed_gold)) {
@@ -1272,7 +1272,7 @@ proceed:
 				(umoney < ltmp && stashed_gold)) {
 			if (!umoney)
 #endif
-			    pline(no_money, stashed_gold ? " seem to" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */ // TODO DE
+			    pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "", stashed_gold ? "" : " zu haben"); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
 			else pline(not_enough_money, mhim(shkp));
 			return(1);
 		    }
@@ -1304,7 +1304,7 @@ proceed:
 		    if(umoney < 1000L) {
 			if (!umoney)
 #endif
-			    pline(no_money, stashed_gold ? " seem to" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */ // TODO DE
+			    pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "", stashed_gold ? "" : " zu haben"); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
 			else pline(not_enough_money, mhim(shkp));
 			return(1);
 		    }
@@ -1663,7 +1663,7 @@ int croaked;
 	    !eshkp->billct && !eshkp->robbed && !eshkp->debit &&
 	     NOTANGRY(shkp) && !eshkp->following) {
 		if (invent)
-			pline("%s gratefully inherits all your possessions.", /* EN pline("%s gratefully inherits all your possessions.", */ // TODO DE
+			pline("%s VERB_NEHMEN dankbar KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_HABE an sich.", /* EN pline("%s gratefully inherits all your possessions.", */
 				shkname(shkp));
 		set_repo_loc(eshkp);
 		goto clear;
@@ -1685,10 +1685,10 @@ int croaked;
 #endif
 		takes[0] = '\0';
 		if (!shkp->mcanmove)
-			Strcat(takes, "wakes up and "); /* EN Strcat(takes, "wakes up and "); */ // TODO DE
+			Strcat(takes, "VERB_AUFWACHEN SATZKLAMMER und "); /* EN Strcat(takes, "wakes up and "); */
 		if (distu(shkp->mx, shkp->my) > 2)
-			Strcat(takes, "comes and "); /* EN Strcat(takes, "comes and "); */ // TODO DE
-		Strcat(takes, "takes"); /* EN Strcat(takes, "takes"); */ // TODO DE
+			Strcat(takes, "VERB_KOMMEN und "); /* EN Strcat(takes, "comes and "); */
+		Strcat(takes, "VERB_NEHMEN"); /* EN Strcat(takes, "takes"); */
 
 #ifndef GOLDOBJ
 		if (loss > u.ugold || !loss || roomno == eshkp->shoproom) {
@@ -1703,7 +1703,7 @@ int croaked;
                         if (umoney > 0) money2mon(shkp, umoney);
 #endif
 			flags.botl = 1;
-			pline("%s %s all your possessions.", /* EN pline("%s %s all your possessions.", */ // TODO DE
+			pline("%s MODIFIER_VERB_DRITTE_PERSON %s OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_HABE.", /* EN pline("%s %s all your possessions.", */
 			      shkname(shkp), takes);
 			taken = TRUE;
 			/* where to put player's invent (after disclosure) */
@@ -2255,7 +2255,7 @@ speak:
 	    char buf[BUFSZ];
 
 	    if(!ltmp) {
-		pline("%s has no interest in %s.", Monnam(shkp), /* EN pline("%s has no interest in %s.", Monnam(shkp), */ // TODO DE
+		pline("%s hat kein Interesse an KASUS_DATIV %s.", Monnam(shkp), /* EN pline("%s has no interest in %s.", Monnam(shkp), */
 					     the(xname(obj)));
 		return;
 	    }
@@ -4063,7 +4063,7 @@ struct obj *obj;
 	    (obj->unpaid ||
 	     (obj->where==OBJ_FLOOR && !obj->no_charge && costly_spot(x,y)))) {
 	    shkp = shop_keeper(inside_shop(x, y));
-	    return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "the"); /* EN return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "the"); */ // TODO DE
+	    return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "ARTIKEL_BESTIMMTER"); /* EN return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "the"); */
 	}
 	return (char *)0;
 }

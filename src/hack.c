@@ -75,7 +75,7 @@ moverock()
 	nomul(0);
 	if (Levitation || Is_airlevel(&u.uz)) {
 	    if (Blind) feel_location(sx, sy);
-	    You("don't have enough leverage to push %s.", the(xname(otmp))); /* EN You("don't have enough leverage to push %s.", the(xname(otmp))); */ // TODO DE
+	    Dir("VERB_FEHLEN die nötige Hebelwirkung um OBJECT %s zu verschieben.", the(xname(otmp))); /* EN You("don't have enough leverage to push %s.", the(xname(otmp))); */
 	    /* Give them a chance to climb over it? */
 	    return -1;
 	}
@@ -102,12 +102,12 @@ moverock()
 		/* KMH -- Sokoban doesn't let you push boulders diagonally */
 	    if (In_sokoban(&u.uz) && u.dx && u.dy) {
 	    	if (Blind) feel_location(sx,sy);
-	    	pline("%s won't roll diagonally on this %s.", /* EN pline("%s won't roll diagonally on this %s.", */ // TODO DE
+	    	pline("SUBJECT %s VERB_KOENNEN nicht diagonal auf OBJECT KASUS_DATIV PRONOMEN_DIESER %s gewälzt werden.", /* EN pline("%s won't roll diagonally on this %s.", */
 	        		The(xname(otmp)), surface(sx, sy));
 	    	goto cannot_push;
 	    }
 
-	    if (revive_nasty(rx, ry, "You sense movement on the other side.")) /* EN if (revive_nasty(rx, ry, "You sense movement on the other side.")) */ // TODO DE
+	    if (revive_nasty(rx, ry, "SUBJECT PRONOMEN_PERSONAL VERB_BEMERKEN auf der anderen Seite Bewegungen.")) /* EN if (revive_nasty(rx, ry, "You sense movement on the other side.")) */
 		return (-1);
 
 	    if (mtmp && !noncorporeal(mtmp->data) &&
@@ -163,15 +163,15 @@ moverock()
 		case HOLE:
 		case TRAPDOOR:
 		    if (Blind)
-			pline("Kerplunk!  You no longer feel %s.", /* EN pline("Kerplunk!  You no longer feel %s.", */ // TODO DE
+			pline("Kablank!  SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN OBJECT %s nicht mehr.", /* EN pline("Kerplunk!  You no longer feel %s.", */
 				the(xname(otmp)));
 		    else
-			pline("%s%s and %s a %s in the %s!", /* EN pline("%s%s and %s a %s in the %s!", */ // TODO DE
+			pline("SUBJECT %s%s und %s OBJECT ARTIKEL_UNBESTIMMTER %s NEUES_OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s!", /* EN pline("%s%s and %s a %s in the %s!", */ // TODO DE
 			  Tobjnam(otmp,
-			   (ttmp->ttyp == TRAPDOOR) ? "trigger" : "fall"), /* EN (ttmp->ttyp == TRAPDOOR) ? "trigger" : "fall"), */ // TODO DE
-			  (ttmp->ttyp == TRAPDOOR) ? nul : " into", /* EN (ttmp->ttyp == TRAPDOOR) ? nul : " into", */ // TODO DE
-			  otense(otmp, "plug"), /* EN otense(otmp, "plug"), */ // TODO DE
-			  (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole", /* EN (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole", */ // TODO DE
+			   (ttmp->ttyp == TRAPDOOR) ? "VERB_AKTIVIEREN" : "VERB_FALLEN"), /* EN (ttmp->ttyp == TRAPDOOR) ? "trigger" : "fall"), */
+			  (ttmp->ttyp == TRAPDOOR) ? nul : " runter", /* EN (ttmp->ttyp == TRAPDOOR) ? nul : " into", */
+			  otense(otmp, "VERB_VERSCHLIESSEN"), /* EN otense(otmp, "plug"), */
+			  (ttmp->ttyp == TRAPDOOR) ? "NOUN_TRAP_DOOR" : "NOUN_LOCH", /* EN (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole", */
 			  surface(rx, ry));
 		    deltrap(ttmp);
 		    delobj(otmp);
@@ -182,7 +182,7 @@ moverock()
 		case TELEP_TRAP:
 #ifdef STEED
 		    if (u.usteed)
-			pline("%s pushes %s and suddenly it disappears!", /* EN pline("%s pushes %s and suddenly it disappears!", */ // TODO DE
+			pline("SUBJECT %s pushes %s and suddenly it disappears!", /* EN pline("%s pushes %s and suddenly it disappears!", */ // TODO DE
 			      upstart(y_monnam(u.usteed)), the(xname(otmp)));
 		    else
 #endif
@@ -231,13 +231,13 @@ moverock()
 		if (!u.usteed) {
 #endif
 		  if (moves > lastmovetime+2 || moves < lastmovetime)
-		    pline("With %s effort you move %s.", /* EN pline("With %s effort you move %s.", */ // TODO DE
-			  throws_rocks(youmonst.data) ? "little" : "great", /* EN throws_rocks(youmonst.data) ? "little" : "great", */ // TODO DE
+		    pline("Mit %s Kraftaufwand VERB_BEWEGEN PRONOMEN_PERSONAL OBJECT %s.", /* EN pline("With %s effort you move %s.", */
+			  throws_rocks(youmonst.data) ? "geringem" : "großem", /* EN throws_rocks(youmonst.data) ? "little" : "great", */
 			  the(xname(otmp)));
 		  exercise(A_STR, TRUE);
 #ifdef STEED
 		} else 
-		    pline("%s moves %s.", /* EN pline("%s moves %s.", */ // TODO DE
+		    pline("SUBJECT %s VERB_BEWEGEN OBJECT %s.", /* EN pline("%s moves %s.", */
 			  upstart(y_monnam(u.usteed)), the(xname(otmp)));
 #endif
 		lastmovetime = moves;
@@ -445,7 +445,7 @@ register xchar ox, oy;
 }
 
 #ifdef SINKS
-static NEARDATA const char fell_on_sink[] = "fell onto a sink"; /* EN static NEARDATA const char fell_on_sink[] = "fell onto a sink"; */ // TODO DE
+static NEARDATA const char fell_on_sink[] = "stürzte auf eine Spüle"; /* EN static NEARDATA const char fell_on_sink[] = "fell onto a sink"; */
 
 STATIC_OVL void
 dosinkfall()
@@ -469,7 +469,7 @@ dosinkfall()
 	    selftouch("Falling, you"); /* EN selftouch("Falling, you"); */ // TODO DE
 	    for (obj = level.objects[u.ux][u.uy]; obj; obj = obj->nexthere)
 		if (obj->oclass == WEAPON_CLASS || is_weptool(obj)) {
-		    You("fell on %s.", doname(obj)); /* EN You("fell on %s.", doname(obj)); */ // TODO DE
+		    You("VERB_STUERZEN auf OBJECT %s.", doname(obj)); /* EN You("fell on %s.", doname(obj)); */
 		    losehp(rnd(3), fell_on_sink, NO_KILLER_PREFIX);
 		    exercise(A_CON, FALSE);
 		}
@@ -575,9 +575,9 @@ int mode;
 	} else {
 	    if (mode == DO_MOVE) {
 		if (Is_stronghold(&u.uz) && is_db_wall(x,y))
-		    pline_The("drawbridge is up!"); /* EN pline_The("drawbridge is up!"); */ // TODO DE
+		    pline_The("NOUN_DRAWBRIDGE ist oben!"); /* EN pline_The("drawbridge is up!"); */
 		if (Passes_walls && !may_passwall(x,y) && In_sokoban(&u.uz))
-		    pline_The("Sokoban walls resist your ability."); /* EN pline_The("Sokoban walls resist your ability."); */ // TODO DE
+		    pline_The("NOUN_WALLs Sokobans widerstehen your ability."); /* EN pline_The("Sokoban walls resist your ability."); */ // TODO DE
 	    }
 	    return FALSE;
 	}
@@ -1823,10 +1823,10 @@ dopickup()
 	if(is_pool(u.ux, u.uy)) {
 	    if (Wwalking || is_floater(youmonst.data) || is_clinger(youmonst.data)
 			|| (Flying && !Breathless)) {
-		You("cannot dive into the water to pick things up."); /* EN You("cannot dive into the water to pick things up."); */ // TODO DE
+		You("VERB_KOENNEN nicht ins Wasser tauchen um Dinge aufzuheben."); /* EN You("cannot dive into the water to pick things up."); */
 		return(0);
 	    } else if (!Underwater) {
-		You_cant("even see the bottom, let alone pick up %s.", /* EN You_cant("even see the bottom, let alone pick up %s.", */ // TODO DE
+		You_cant("nicht einmal den Grund sehen, geschweige den OBJECT %s aufheben.", /* EN You_cant("even see the bottom, let alone pick up %s.", */
 				something);
 		return(0);
 	    }
@@ -1834,7 +1834,7 @@ dopickup()
 	if (is_lava(u.ux, u.uy)) {
 	    if (Wwalking || is_floater(youmonst.data) || is_clinger(youmonst.data)
 			|| (Flying && !Breathless)) {
-		You_cant("reach the bottom to pick things up."); /* EN You_cant("reach the bottom to pick things up."); */ // TODO DE
+		pline("Der Grund ist zu tief unten um etwas aufzunehmen."); /* EN You_cant("reach the bottom to pick things up."); */
 		return(0);
 	    } else if (!likes_lava(youmonst.data)) {
 		You("would burn to a crisp trying to pick things up."); /* EN You("would burn to a crisp trying to pick things up."); */ // TODO DE
@@ -1842,7 +1842,7 @@ dopickup()
 	    }
 	}
 	if(!OBJ_AT(u.ux, u.uy)) {
-		There("is nothing here to pick up."); /* EN There("is nothing here to pick up."); */ // TODO DE
+		pline("Hier gibt es nichts aufzuheben."); /* EN There("is nothing here to pick up."); */
 		return(0);
 	}
 	if (!can_reach_floor()) {
@@ -1852,7 +1852,7 @@ dopickup()
 			y_monnam(u.usteed));
 		else
 #endif
-		You("cannot reach the %s.", surface(u.ux,u.uy)); /* EN You("cannot reach the %s.", surface(u.ux,u.uy)); */ // TODO DE
+		pline("SUBJECT ARTIKEL_BESTIMMTER %s ist unerreichbar.", surface(u.ux,u.uy)); /* EN You("cannot reach the %s.", surface(u.ux,u.uy)); */
 		return(0);
 	}
 	return (pickup(-count));

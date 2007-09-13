@@ -82,7 +82,7 @@ struct obj *obj;
 			if (vis) pline(empty);
 		    } else {
 			if (vis) {
-			    pline("As %s opens the bottle, an enormous %s emerges!", /* EN pline("As %s opens the bottle, an enormous %s emerges!", */ // TODO DE
+			    pline("As %s opens the bottle, an enormous %s VERB_ENTWEICHEN!", /* EN pline("As %s opens the bottle, an enormous %s emerges!", */ // TODO DE
 			       mon_nam(mon),
 			       Hallucination ? rndmonnam() : (const char *)"ghost"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */ // TODO DE
 			    pline("%s is frightened to death, and unable to move.", /* EN pline("%s is frightened to death, and unable to move.", */ // TODO DE
@@ -105,7 +105,7 @@ struct obj *obj;
 		    if (vis) pline(empty);
 		} else {
 		    if (vis)
-			pline("In a cloud of smoke, %s emerges!", /* EN pline("In a cloud of smoke, %s emerges!", */ // TODO DE
+			pline("In a cloud of smoke, %s VERB_ENTWEICHEN!", /* EN pline("In a cloud of smoke, %s emerges!", */ // TODO DE
 							a_monnam(mtmp));
 		    pline("%s speaks.", vis ? Monnam(mtmp) : Something); /* EN pline("%s speaks.", vis ? Monnam(mtmp) : Something); */ // TODO DE
 		/* I suspect few players will be upset that monsters */

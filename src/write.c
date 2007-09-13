@@ -96,12 +96,12 @@ register struct obj *pen;
 		return(0);
 	typeword = (paper->oclass == SPBOOK_CLASS) ? "NOUN_SPELLBOOK" : "NOUN_SCROLL"; /* EN typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll"; */
 	if(Blind && !paper->dknown) {
-		You("don't know if that %s is blank or not!", typeword); /* EN You("don't know if that %s is blank or not!", typeword); */ // TODO DE
+		You("VERB_WISSEN nicht, ob NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_DIESER %s unbeschriftet VERB_SEIN!", typeword); /* EN You("don't know if that %s is blank or not!", typeword); */
 		return(1);
 	}
 	paper->dknown = 1;
 	if(paper->otyp != SCR_BLANK_PAPER && paper->otyp != SPE_BLANK_PAPER) {
-		pline("That %s is not blank!", typeword); /* EN pline("That %s is not blank!", typeword); */ // TODO DE
+		pline("SUBJECT ARTIKEL_BESTIMMER %s ist schon beschriftet!", typeword); /* EN pline("That %s is not blank!", typeword); */
 		exercise(A_WIS, FALSE);
 		return(1);
 	}
@@ -136,7 +136,7 @@ register struct obj *pen;
 		}
 	}
 
-	There("is no such %s!", typeword); /* EN There("is no such %s!", typeword); */ // TODO DE
+	pline("Es gibt keine _solches_ %s!", typeword); /* EN There("is no such %s!", typeword); */ // TODO DE
 	return 1;
 found:
 

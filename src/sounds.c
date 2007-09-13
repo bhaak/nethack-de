@@ -686,9 +686,9 @@ register struct monst *mtmp;
 	    else if (mtmp->mhp < mtmp->mhpmax/4)
 		pline_msg = "stöhnt."; /* EN pline_msg = "moans."; */
 	    else if (mtmp->mconf || mtmp->mstun)
-		verbl_msg = !rn2(3) ? "Huh?" : rn2(2) ? "What?" : "Eh?"; /* EN verbl_msg = !rn2(3) ? "Huh?" : rn2(2) ? "What?" : "Eh?"; */ // TODO DE
+		verbl_msg = !rn2(3) ? "Häh?" : rn2(2) ? "Was?" : "Öh?"; /* EN verbl_msg = !rn2(3) ? "Huh?" : rn2(2) ? "What?" : "Eh?"; */
 	    else if (!mtmp->mcansee)
-		verbl_msg = "I can't see!"; /* EN verbl_msg = "I can't see!"; */ // TODO DE
+		verbl_msg = "Ich kann nicht sehen!"; /* EN verbl_msg = "I can't see!"; */
 	    else if (mtmp->mtrapped) {
 		struct trap *t = t_at(mtmp->mx, mtmp->my);
 

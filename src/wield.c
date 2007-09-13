@@ -137,9 +137,9 @@ struct obj *wep;
 	    Sprintf(kbuf, "%s corpse", an(mons[wep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[wep->corpsenm].mname)); */ // TODO DE
 	    instapetrify(kbuf);
 	} else if (uarms && bimanual(wep))
-	    You("cannot wield a two-handed %s while wearing a shield.", /* EN You("cannot wield a two-handed %s while wearing a shield.", */ // TODO DE
-		is_sword(wep) ? "sword" : /* EN is_sword(wep) ? "sword" : */ // TODO DE
-		    wep->otyp == BATTLE_AXE ? "axe" : "weapon"); /* EN wep->otyp == BATTLE_AXE ? "axe" : "weapon"); */ // TODO DE
+	    You("VERB_KOENNEN OBJECT PRONOMEN_KEIN ADJEKTIV_ZWEIHAENDISCH %s führen und gleichzeitig einen Schild tragen.", /* EN You("cannot wield a two-handed %s while wearing a shield.", */
+		is_sword(wep) ? "NOUN_SWORD" : /* EN is_sword(wep) ? "sword" : */
+		    wep->otyp == BATTLE_AXE ? "NOUN_AXE" : "NOUN_WEAPON"); /* EN wep->otyp == BATTLE_AXE ? "axe" : "weapon"); */
 	else if (wep->oartifact && !touch_artifact(wep, &youmonst)) {
 	    res++;	/* takes a turn even though it doesn't get wielded */
 	} else {
@@ -194,7 +194,7 @@ struct obj *wep;
 
 		if ((this_shkp = shop_keeper(inside_shop(u.ux, u.uy))) !=
 		    (struct monst *)0) {
-		    pline("%s says \"You be careful with my %s!\"", /* EN pline("%s says \"You be careful with my %s!\"", */ // TODO DE
+		    pline("%s sagt \"You be careful with my %s!\"", /* EN pline("%s says \"You be careful with my %s!\"", */ // TODO DE
 			  shkname(this_shkp),
 			  xname(wep));
 		}
@@ -318,7 +318,7 @@ doswapweapon()
 		if (uswapwep)
 			prinv((char *)0, uswapwep, 0L);
 		else
-			You("have no secondary weapon readied."); /* EN You("have no secondary weapon readied."); */ // TODO DE
+			You("VERB_HABEN keine Zweitwaffe parat."); /* EN You("have no secondary weapon readied."); */
 	}
 
 	if (u.twoweap && !can_twoweapon())
@@ -527,7 +527,7 @@ dotwoweapon()
 {
 	/* You can always toggle it off */
 	if (u.twoweap) {
-		You("switch to your primary weapon."); /* EN You("switch to your primary weapon."); */ // TODO DE
+		You("VERB_WECHSELN zu OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_ERSTWAFFE."); /* EN You("switch to your primary weapon."); */
 		u.twoweap = 0;
 		update_inventory();
 		return (0);
@@ -536,7 +536,7 @@ dotwoweapon()
 	/* May we use two weapons? */
 	if (can_twoweapon()) {
 		/* Success! */
-		You("begin two-weapon combat."); /* EN You("begin two-weapon combat."); */ // TODO DE
+		You("VERB_KAEMPFEN ab jetzt beidhändig."); /* EN You("begin two-weapon combat."); */
 		u.twoweap = 1;
 		update_inventory();
 		return (rnd(20) > ACURR(A_DEX));
@@ -586,7 +586,7 @@ void
 untwoweapon()
 {
 	if (u.twoweap) {
-		You("can no longer use two weapons at once."); /* EN You("can no longer use two weapons at once."); */ // TODO DE
+		You("VERB_KOENNEN nicht mehr länger zwei Waffen gleichzeitig benutzen."); /* EN You("can no longer use two weapons at once."); */
 		u.twoweap = FALSE;
 		update_inventory();
 	}
@@ -707,7 +707,7 @@ register int amount;
 	if(uwep->otyp == WORM_TOOTH && amount >= 0) {
 		uwep->otyp = CRYSKNIFE;
 		uwep->oerodeproof = 0;
-		Your("NOUN_WEAPON VERB_SCHEINEN jetzt schärfer."); /* EN Your("weapon seems sharper now."); */
+		Your("NOUN_WEAPON VERB_SCHEINEN jetzt schärfer zu sein."); /* EN Your("weapon seems sharper now."); */
 		uwep->cursed = 0;
 		if (otyp != STRANGE_OBJECT) makeknown(otyp);
 		return(1);
@@ -716,7 +716,7 @@ register int amount;
 	if(uwep->otyp == CRYSKNIFE && amount < 0) {
 		uwep->otyp = WORM_TOOTH;
 		uwep->oerodeproof = 0;
-		Your("NOUN_WEAPON VERB_SCHEINEN jetzt stumpfer."); /* EN Your("weapon seems duller now."); */
+		Your("NOUN_WEAPON VERB_SCHEINEN jetzt stumpfer zu sein."); /* EN Your("weapon seems duller now."); */
 		if (otyp != STRANGE_OBJECT && otmp->bknown) makeknown(otyp);
 		return(1);
 	}

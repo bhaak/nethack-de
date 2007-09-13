@@ -153,7 +153,7 @@ register int x, y;
 
 	if ((x == u.ux) && (y == u.uy) && u.uswallow &&
 		is_animal(u.ustuck->data))
-	    return "NOUN_MAW"; /* EN return "maw"; */
+	    return "NOUN_MAGENINNERE"; /* EN return "maw"; */
 	else if (IS_AIR(lev->typ) && Is_airlevel(&u.uz))
 	    return "NOUN_AIR"; /* EN return "air"; */
 	else if (is_pool(x,y))
@@ -306,9 +306,9 @@ register int x,y;
 	    case BURN:
 		if (!Blind || can_reach_floor()) {
 			sensed = 1;
-			pline("Some text has been %s into the %s here.", /* EN pline("Some text has been %s into the %s here.", */ // TODO DE
-				is_ice(x,y) ? "melted" : "burned", /* EN is_ice(x,y) ? "melted" : "burned", */
-				surface(x,y));
+			pline("Worte wurden hier KASUS_AKKUSATIV _in_ ARTIKEL_BESTIMMTER %s %s.", /* EN pline("Some text has been %s into the %s here.", */ // TODO DE
+				surface(x,y), /* EN is_ice(x,y) ? "melted" : "burned", */
+				is_ice(x,y) ? "eingeschmolzen" : "eingebrannt"); /* EN surface(x,y)); */
 		}
 		break;
 	    case MARK:
@@ -335,7 +335,7 @@ register int x,y;
 	    }
 	    if (sensed) {
 	    	char *et;
-	    	unsigned maxelen = BUFSZ - sizeof("Ihr fühlt die Worte: \"\". ");
+	    	unsigned maxelen = BUFSZ - sizeof("Ihr fühlt die Worte: \"\". "); // TODO DE EN
 	    	if (strlen(ep->engr_txt) > maxelen) {
 	    		(void) strncpy(buf,  ep->engr_txt, (int)maxelen);
 			buf[maxelen] = '\0';
@@ -343,7 +343,7 @@ register int x,y;
 		} else
 			et = ep->engr_txt;
 		pline("%s: \"%s\".", /* EN You("%s: \"%s\".", */
-		      (Blind) ? "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN die Worte" : "Da steht",  et); // TODO erspürst ?
+		      (Blind) ? "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN die Worte" : "Da steht",  et); // TODO erspürst ? TODO DE EN
 		if(flags.run > 1) nomul(0);
 	    }
 	}
@@ -474,10 +474,10 @@ doengrave()
 
 	if(u.uswallow) {
 		if (is_animal(u.ustuck->data)) {
-			pline("Was willst du schreiben?  \"Jonas war hier\"?"); /* EN pline("What would you write?  \"Jonah was here\"?"); */ // TODO DE
+			pline("Was VERB_WOLLEN PRONOMEN_PERSONAL schreiben?  \"Jonas war hier\"?"); /* EN pline("What would you write?  \"Jonah was here\"?"); */
 			return(0);
 		} else if (is_whirly(u.ustuck->data)) {
-			You_cant("reach the %s.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */
+			You_cant("reach the %s.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */ // TODO DE
 			return(0);
 		} else
 			jello = TRUE;
@@ -628,14 +628,14 @@ doengrave()
 		    case WAN_SLOW_MONSTER:
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "The bugs on the %s slow down!", /* EN "The bugs on the %s slow down!", */ // TODO DE
+				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s wuseln langsamer!", /* EN "The bugs on the %s slow down!", */
 				   surface(u.ux, u.uy));
 			}
 			break;
 		    case WAN_SPEED_MONSTER:
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "The bugs on the %s speed up!", /* EN "The bugs on the %s speed up!", */ // TODO DE
+				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s wuseln schneller!", /* EN "The bugs on the %s speed up!", */
 				   surface(u.ux, u.uy));
 			}
 			break;
@@ -670,7 +670,7 @@ doengrave()
 		    case WAN_DEATH:
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "The bugs on the %s stop moving!", /* EN "The bugs on the %s stop moving!", */ // TODO DE
+				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s bleiben stehen!", /* EN "The bugs on the %s stop moving!", */
 				   surface(u.ux, u.uy));
 			}
 			break;
@@ -854,7 +854,7 @@ doengrave()
 	/* Something has changed the engraving here */
 	if (*buf) {
 	    make_engr_at(u.ux, u.uy, buf, moves, type);
-	    pline_The("engraving now reads: \"%s\".", buf); /* EN pline_The("engraving now reads: \"%s\".", buf); */ // TODO DE
+	    pline_The("Inschrift now reads: \"%s\".", buf); /* EN pline_The("engraving now reads: \"%s\".", buf); */ // TODO DE
 	    ptext = FALSE;
 	}
 

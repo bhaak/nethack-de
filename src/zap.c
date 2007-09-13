@@ -3801,13 +3801,13 @@ register struct obj *obj;
 	return TRUE;
 }
 
- const char * const destroy_strings[] = {	/* also used in trap.c */ // TODO DE
-	"freezes and shatters", "freeze and shatter", "shattered potion", /* EN "freezes and shatters", "freeze and shatter", "shattered potion", */
-	"boils and explodes", "boil and explode", "boiling potion", /* EN "boils and explodes", "boil and explode", "boiling potion", */
-	"catches fire and burns", "catch fire and burn", "burning scroll", /* EN "catches fire and burns", "catch fire and burn", "burning scroll", */
-	"catches fire and burns", "catch fire and burn", "burning book", /* EN "catches fire and burns", "catch fire and burn", "burning book", */
-	"turns to dust and vanishes", "turn to dust and vanish", "", /* EN "turns to dust and vanishes", "turn to dust and vanish", "", */
-	"breaks apart and explodes", "break apart and explode", "exploding wand" /* EN "breaks apart and explodes", "break apart and explode", "exploding wand" */
+ const char * const destroy_strings[] = {	/* also used in trap.c */
+	"freezes and shatters", "freeze and shatter", "shattered potion", /* EN "freezes and shatters", "freeze and shatter", "shattered potion", */ // TODO DE
+	"boils and explodes", "boil and explode", "boiling potion", /* EN "boils and explodes", "boil and explode", "boiling potion", */ // TODO DE
+	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "burning scroll", /* EN "catches fire and burns", "catch fire and burn", "burning scroll", */ // TODO DE
+	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "burning book", /* EN "catches fire and burns", "catch fire and burn", "burning book", */ // TODO DE
+	"VERB_ZERFALLEN zu Staub und VERB_VERSCHWINDEN", "VERB_ZERFALLEN zu Staub und VERB_VERSCHWINDEN", "", /* EN "turns to dust and vanishes", "turn to dust and vanish", "", */
+	"breaks apart and explodes", "break apart and explode", "exploding wand" /* EN "breaks apart and explodes", "break apart and explode", "exploding wand" */ // TODO DE
 };
 
 void

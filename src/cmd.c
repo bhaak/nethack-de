@@ -416,7 +416,7 @@ extcmd_via_menu()	/* here after # - now show pick-list of possible commands */
 		any.a_char = prevaccelerator;
 		add_menu(win, NO_GLYPH, &any, any.a_char, 0, ATR_NONE, buf, FALSE);
 	    }
-	    Sprintf(prompt, "Extended Command: %s", cbuf); /* EN Sprintf(prompt, "Extended Command: %s", cbuf); */ // TODO DE
+	    Sprintf(prompt, "Erweiterte Befehle: %s", cbuf); /* EN Sprintf(prompt, "Extended Command: %s", cbuf); */
 	    end_menu(win, prompt);
 	    n = select_menu(win, PICK_ONE, &pick_list);
 	    destroy_nhwindow(win);
@@ -466,7 +466,7 @@ domonability()
 	    use_unicorn_horn((struct obj *)0);
 	    return 1;
 	} else if (youmonst.data->msound == MS_SHRIEK) {
-	    You("shriek."); /* EN You("shriek."); */ // TODO DE
+	    You("VERB_SHRIEK."); /* EN You("shriek."); */
 	    if(u.uburied)
 		pline("Unfortunately sound does not carry well through rock."); /* EN pline("Unfortunately sound does not carry well through rock."); */ // TODO DE
 	    else aggravate();
@@ -508,7 +508,7 @@ wiz_wish()	/* Unlimited wishes for debug mode by Paul Polderman */
 	    flags.verbose = save_verbose;
 	    (void) encumber_msg();
 	} else
-	    pline("Nicht verfügbares Kommando '^W'."); /* EN pline("Unavailable command '^W'."); */
+	    pline("Nicht verfügbarer Befehl '^W'."); /* EN pline("Unavailable command '^W'."); */
 	return 0;
 }
 
@@ -517,7 +517,7 @@ STATIC_PTR int
 wiz_identify()
 {
 	if (wizard)	identify_pack(0);
-	else		pline("Nicht verfügbares Kommando '^I'."); /* EN else		pline("Unavailable command '^I'."); */
+	else		pline("Nicht verfügbarer Befehl '^I'."); /* EN else		pline("Unavailable command '^I'."); */
 	return 0;
 }
 
@@ -539,7 +539,7 @@ wiz_map()
 	    HConfusion = save_Hconf;
 	    HHallucination = save_Hhallu;
 	} else
-	    pline("Nicht verfügbares Kommando '^F'."); /* EN pline("Unavailable command '^F'."); */
+	    pline("Nicht verfügbarer Befehl '^F'."); /* EN pline("Unavailable command '^F'."); */
 	return 0;
 }
 
@@ -548,7 +548,7 @@ STATIC_PTR int
 wiz_genesis()
 {
 	if (wizard)	(void) create_particular();
-	else		pline("Nicht verfügbares Kommando '^G'."); /* EN else		pline("Unavailable command '^G'."); */
+	else		pline("Nicht verfügbarer Befehl '^G'."); /* EN else		pline("Unavailable command '^G'."); */
 	return 0;
 }
 
@@ -557,7 +557,7 @@ STATIC_PTR int
 wiz_where()
 {
 	if (wizard) (void) print_dungeon(FALSE);
-	else	    pline("Nicht verfügbares Kommando '^O'."); /* EN else	    pline("Unavailable command '^O'."); */
+	else	    pline("Nicht verfügbarer Befehl '^O'."); /* EN else	    pline("Unavailable command '^O'."); */
 	return 0;
 }
 
@@ -566,7 +566,7 @@ STATIC_PTR int
 wiz_detect()
 {
 	if(wizard)  (void) findit();
-	else	    pline("Nicht verfügbares Kommando '^E'."); /* EN else	    pline("Unavailable command '^E'."); */
+	else	    pline("Nicht verfügbarer Befehl '^E'."); /* EN else	    pline("Unavailable command '^E'."); */
 	return 0;
 }
 
@@ -575,7 +575,7 @@ STATIC_PTR int
 wiz_level_tele()
 {
 	if (wizard)	level_tele();
-	else		pline("Nicht verfügbares Kommando '^V'."); /* EN else		pline("Unavailable command '^V'."); */
+	else		pline("Nicht verfügbarer Befehl '^V'."); /* EN else		pline("Unavailable command '^V'."); */
 	return 0;
 }
 
@@ -615,7 +615,7 @@ wiz_level_change()
 	}
 	if (newlevel < 1) newlevel = 1;
 	while (u.ulevel > newlevel)
-	    losexp("#levelchange"); /* EN losexp("#levelchange"); */ // TODO DE
+	    losexp("#levelchange");
     } else {
 	if (u.ulevel >= MAXULEV) {
 	    You("are already as experienced as you can get."); /* EN You("are already as experienced as you can get."); */ // TODO DE
@@ -776,7 +776,7 @@ static const char
 	can[]  = "VERB_KOENNEN ",  could[] = "MODIFIER_VERB_PRAETERITUM VERB_KOENNEN "; /* EN can[]  = "can ",  could[] = "could "; */
 static const char
 	have_been[]  = "VERB_SEIN gewesen ", /* EN have_been[]  = "have been ", */
-	have_never[] = "VERB_HABEN niemals ", never[] = "nie "; /* EN have_never[] = "have never ", never[] = "never "; */
+	have_never[] = "VERB_HABEN niemals ", never[] = "VERB_HABEN nie "; /* EN have_never[] = "have never ", never[] = "never "; */
 
 #define enl_msg(prefix,present,past,suffix) \
 			enlght_line(prefix, final ? past : present, suffix)
@@ -785,7 +785,11 @@ static const char
 #define you_can(attr)	enl_msg(You_,can,could,attr)
 #define you_have_been(goodthing) enl_msg(You_,have_been,were,goodthing)
 #define you_have_never(badthing) enl_msg(You_,have_never,never,badthing)
+#ifdef GERMAN
+#define you_have_X(something)	enl_msg(You_,have,have,something)
+#else
 #define you_have_X(something)	enl_msg(You_,have,(const char *)"",something)
+#endif
 #ifdef GERMAN
 #define you(attr)	enl_msg(You_,"","MODIFIER_VERB_PRAETERITUM ",attr)
 #endif
@@ -900,7 +904,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 		if (Hallucination) you_are("hallucinating"); /* EN if (Hallucination) you_are("hallucinating"); */ // TODO DE
 		if (Stunned) you_are("stunned"); /* EN if (Stunned) you_are("stunned"); */ // TODO DE
 		if (Confusion) you_are("confused"); /* EN if (Confusion) you_are("confused"); */ // TODO DE
-		if (Blinded) you_are("blinded"); /* EN if (Blinded) you_are("blinded"); */ // TODO DE
+		if (Blinded) you_are("geblendet"); /* EN if (Blinded) you_are("blinded"); */
 		if (Sick) {
 			if (u.usick_type & SICK_VOMITABLE)
 				you_are("sick from food poisoning"); /* EN you_are("sick from food poisoning"); */ // TODO DE
@@ -940,7 +944,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Blind_telepat) you_are("telepathisch begabt"); /* EN if (Blind_telepat) you_are("telepathic"); */
 	if (Warning) you_are("gewarnt"); /* EN if (Warning) you_are("warned"); */
 	if (Warn_of_mon && flags.warntype) {
-		Sprintf(buf, "aware of the presence of %s", /* EN Sprintf(buf, "aware of the presence of %s", */ // TODO DE
+		Sprintf(buf, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL der Anwesenheit von KASUS_DATIV %s bewusst", /* EN Sprintf(buf, "aware of the presence of %s", */
 			(flags.warntype & M2_ORC) ? "NOUN_ORCs" : /* EN (flags.warntype & M2_ORC) ? "orcs" : */
 			(flags.warntype & M2_DEMON) ? "demons" : /* EN (flags.warntype & M2_DEMON) ? "demons" : */ // TODO DE
 			something); 
@@ -1014,7 +1018,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	    you_have(enlght_combatinc("to hit", u.uhitinc, final, buf)); /* EN you_have(enlght_combatinc("to hit", u.uhitinc, final, buf)); */ // TODO DE
 	if (u.udaminc)
 	    you_have(enlght_combatinc("damage", u.udaminc, final, buf)); /* EN you_have(enlght_combatinc("damage", u.udaminc, final, buf)); */ // TODO DE
-	if (Slow_digestion) you_have("slower digestion"); /* EN if (Slow_digestion) you_have("slower digestion"); */ // TODO DE
+	if (Slow_digestion) you_have("verlangsamte Verdauung"); /* EN if (Slow_digestion) you_have("slower digestion"); */
 	if (Regeneration) enl_msg("You regenerate", "", "d", ""); /* EN if (Regeneration) enl_msg("You regenerate", "", "d", ""); */ // TODO DE
 	if (u.uspellprot || Protection) {
 	    int prot = 0;
@@ -1057,25 +1061,25 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	/*** Miscellany ***/
 	if (Luck) {
 	    ltmp = abs((int)Luck);
-	    Sprintf(buf, "%s%slucky",
-		    ltmp >= 10 ? "extremely " : ltmp >= 5 ? "very " : "", /* EN ltmp >= 10 ? "extremely " : ltmp >= 5 ? "very " : "", */ // TODO DE
-		    Luck < 0 ? "un" : "");
+	    Sprintf(buf, "%s%s", /* EN Sprintf(buf, "%s%slucky", */
+		    ltmp >= 10 ? "außerordentliches " : ltmp >= 5 ? "sehr viel " : "", /* EN ltmp >= 10 ? "extremely " : ltmp >= 5 ? "very " : "", */
+				Luck < 0 ? "Pech" : "Glück"); /* EN Luck < 0 ? "un" : ""); */
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", Luck);
 #endif
-	    you_are(buf);
+	    you_have(buf); /* EN you_are(buf); */
 	}
 #ifdef WIZARD
 	 else if (wizard) enl_msg("Your luck ", "is", "was", " zero"); /* EN else if (wizard) enl_msg("Your luck ", "is", "was", " zero"); */ // TODO DE
 #endif
-	if (u.moreluck > 0) you_have("extra luck"); /* EN if (u.moreluck > 0) you_have("extra luck"); */ // TODO DE
-	else if (u.moreluck < 0) you_have("reduced luck"); /* EN else if (u.moreluck < 0) you_have("reduced luck"); */ // TODO DE
+	if (u.moreluck > 0) you_have("besonders viel Glück"); /* EN if (u.moreluck > 0) you_have("extra luck"); */
+	else if (u.moreluck < 0) you_have("weniger Glück"); /* EN else if (u.moreluck < 0) you_have("reduced luck"); */
 	if (carrying(LUCKSTONE) || stone_luck(TRUE)) {
 	    ltmp = stone_luck(FALSE);
 	    if (ltmp <= 0)
-		enl_msg("Bad luck ", "does", "did", " not time out for you"); /* EN enl_msg("Bad luck ", "does", "did", " not time out for you"); */ // TODO DE
+		enl_msg("SUBJECT POSSESSIV_PRONOMEN NOUN_PECHSTRAEHNE ", "bricht", "brach", " nicht ab"); /* EN enl_msg("Bad luck ", "does", "did", " not time out for you"); */
 	    if (ltmp >= 0)
-		enl_msg("Good luck ", "does", "did", " not time out for you"); /* EN enl_msg("Good luck ", "does", "did", " not time out for you"); */ // TODO DE
+		enl_msg("SUBJECT POSSESSIV_PRONOMEN NOUN_GLUECKSSTRAEHNE ", "bricht", "brach", " nicht ab"); /* EN enl_msg("Good luck ", "does", "did", " not time out for you"); */
 	}
 
 	if (u.ugangr) {
@@ -1160,6 +1164,9 @@ int final;
 	};
 	char *youwere = "  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_SEIN "; /* EN char *youwere = "  You were "; */
 	char *youhad  = "  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_HABEN "; /* EN char *youhad  = "  You had "; */
+#ifdef GERMAN
+	char *youcould  = "  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN "; /* EN char *youhad  = "  You had "; */
+#endif
 
 	dump("", "Final attributes"); /* EN dump("", "Final attributes"); */ // TODO DE
 
@@ -1212,21 +1219,21 @@ int final;
 	if (Acid_resistance) dump(youwere, "säureresistent"); /* EN if (Acid_resistance) dump(youwere, "acid resistant"); */
 	if (Stone_resistance) dump(youwere, "petrification resistant"); /* EN if (Stone_resistance) dump(youwere, "petrification resistant"); */ // TODO DE
 	if (Invulnerable) dump(youwere, "unverwundbar"); /* EN if (Invulnerable) dump(youwere, "invulnerable"); */
-	if (u.uedibility) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "recognize detrimental food"); /* EN if (u.uedibility) dump("  You could ", "recognize detrimental food"); */ // TODO DE
+	if (u.uedibility) dump(youcould, "recognize detrimental food"); /* EN if (u.uedibility) dump("  You could ", "recognize detrimental food"); */ // TODO DE
 
 	/*** Troubles ***/
 	if (Halluc_resistance) 	dump("  ", "You resisted hallucinations"); /* EN if (Halluc_resistance) 	dump("  ", "You resisted hallucinations"); */ // TODO DE
 	if (Hallucination) dump(youwere, "hallucinating"); /* EN if (Hallucination) dump(youwere, "hallucinating"); */ // TODO DE
 	if (Stunned) dump(youwere, "stunned"); /* EN if (Stunned) dump(youwere, "stunned"); */ // TODO DE
 	if (Confusion) dump(youwere, "confused"); /* EN if (Confusion) dump(youwere, "confused"); */ // TODO DE
-	if (Blinded) dump(youwere, "blinded"); /* EN if (Blinded) dump(youwere, "blinded"); */ // TODO DE
+	if (Blinded) dump(youwere, "geblendet"); /* EN if (Blinded) dump(youwere, "blinded"); */
 	if (Sick) {
 		if (u.usick_type & SICK_VOMITABLE)
 			dump(youwere, "krank durch eine Lebensmittelvergiftung"); /* EN dump(youwere, "sick from food poisoning"); */
 		if (u.usick_type & SICK_NONVOMITABLE)
 			dump(youwere, "sick from illness"); /* EN dump(youwere, "sick from illness"); */ // TODO DE
 	}
-	if (Stoned) dump(youwere, "am Verschleimen"); /* EN if (Stoned) dump(youwere, "turning to stone"); */
+	if (Stoned) dump(youwere, "am Versteinern"); /* EN if (Stoned) dump(youwere, "turning to stone"); */
 	if (Slimed) dump(youwere, "am Verschleimen"); /* EN if (Slimed) dump(youwere, "turning into slime"); */
 	if (Strangled)
 		dump(youwere, (u.uburied) ? "buried" : "being strangled"); /* EN dump(youwere, (u.uburied) ? "buried" : "being strangled"); */ // TODO DE
@@ -1260,7 +1267,7 @@ int final;
 	if (Blind_telepat) dump("  ", "SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_SEIN telepathisch begabt"); /* EN if (Blind_telepat) dump("  ", "You were telepathic"); */
 	if (Warning) dump("  ", "SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_SEIN gewarnt"); /* EN if (Warning) dump("  ", "You were warned"); */
 	if (Warn_of_mon && flags.warntype) {
-		Sprintf(buf, "aware of the presence of %s", /* EN Sprintf(buf, "aware of the presence of %s", */ // TODO DE
+		Sprintf(buf, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL der Anwesenheit von KASUS_DATIV %s bewusst", /* EN Sprintf(buf, "aware of the presence of %s", */
 			(flags.warntype & M2_ORC) ? "NOUN_ORCs" : /* EN (flags.warntype & M2_ORC) ? "orcs" : */
 			(flags.warntype & M2_DEMON) ? "demons" : /* EN (flags.warntype & M2_DEMON) ? "demons" : */ // TODO DE
 			something); 
@@ -1296,18 +1303,18 @@ int final;
 	if (Conflict) dump("  ", "You caused conflict"); /* EN if (Conflict) dump("  ", "You caused conflict"); */ // TODO DE
 
 	/*** Transportation ***/
-	if (Jumping) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "springen"); /* EN if (Jumping) dump("  You could ", "jump"); */
-	if (Teleportation) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "teleportieren"); /* EN if (Teleportation) dump("  You could ", "teleport"); */
+	if (Jumping) dump(youcould, "springen"); /* EN if (Jumping) dump("  You could ", "jump"); */
+	if (Teleportation) dump(youcould, "teleportieren"); /* EN if (Teleportation) dump("  You could ", "teleport"); */
 	if (Teleport_control) dump(youhad, "teleport control"); /* EN if (Teleport_control) dump(youhad, "teleport control"); */ // TODO DE
 	if (Lev_at_will) dump(youwere, "levitating, at will"); /* EN if (Lev_at_will) dump(youwere, "levitating, at will"); */ // TODO DE
 	else if (Levitation)
 	  dump(youwere, "levitating");	/* without control */ /* EN dump(youwere, "levitating");	*/ // TODO DE
-	else if (Flying) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "fliegen"); /* EN else if (Flying) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "fly"); */
-	if (Wwalking) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "walk on water"); /* EN if (Wwalking) dump("  You could ", "walk on water"); */ // TODO DE
-	if (Swimming) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "schwimmen"); /* EN if (Swimming) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "swim"); */
-	if (Breathless) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "survive without air"); /* EN if (Breathless) dump("  You could ", "survive without air"); */ // TODO DE
-	else if (Amphibious) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "Wasser atmen"); /* EN else if (Amphibious) dump("  You could ", "breathe water"); */
-	if (Passes_walls) dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "durch Wände gehen"); /* EN if (Passes_walls) dump("  You could ", "walk through walls"); */
+	else if (Flying) dump(youcould, "fliegen"); /* EN else if (Flying) dump("  You could ", "fly"); */
+	if (Wwalking) dump(youcould, "walk on water"); /* EN if (Wwalking) dump("  You could ", "walk on water"); */ // TODO DE
+	if (Swimming) dump(youcould, "schwimmen"); /* EN if (Swimming) dump("  You could ", "swim"); */
+	if (Breathless) dump(youcould, "survive without air"); /* EN if (Breathless) dump("  You could ", "survive without air"); */ // TODO DE
+	else if (Amphibious) dump(youcould, "Wasser atmen"); /* EN else if (Amphibious) dump("  You could ", "breathe water"); */
+	if (Passes_walls) dump(youcould, "durch Wände gehen"); /* EN if (Passes_walls) dump("  You could ", "walk through walls"); */
 #ifdef STEED
 	if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) { /* EN if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) { */ // TODO DE
 	    Sprintf(buf, "riding %s", y_monnam(u.usteed)); /* EN Sprintf(buf, "riding %s", y_monnam(u.usteed)); */ // TODO DE
@@ -1334,7 +1341,7 @@ int final;
 	if (u.udaminc)
 	    dump(youhad,
 		enlght_combatinc("damage", u.udaminc, final, buf)); /* EN enlght_combatinc("damage", u.udaminc, final, buf)); */ // TODO DE
-	if (Slow_digestion) dump(youhad, "slower digestion"); /* EN if (Slow_digestion) dump(youhad, "slower digestion"); */ // TODO DE
+	if (Slow_digestion) dump(youhad, "eine verlangsamte Verdauung"); /* EN if (Slow_digestion) dump(youhad, "slower digestion"); */
 	if (Regeneration) dump("  ", "You regenerated"); /* EN if (Regeneration) dump("  ", "You regenerated"); */ // TODO DE
 	if (u.uspellprot || Protection) {
 	    int prot = 0;
@@ -1367,28 +1374,28 @@ int final;
 	    dump(youwere, buf);
 	}
 	if (Unchanging)
-	  dump("  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN ", "not change from your current form"); /* EN dump("  You could ", "not change from your current form"); */ // TODO DE
+	  dump(youcould, "not change from your current form"); /* EN dump("  You could ", "not change from your current form"); */ // TODO DE
 	if (Fast) dump(youwere, Very_fast ? "very fast" : "fast"); /* EN if (Fast) dump(youwere, Very_fast ? "very fast" : "fast"); */ // TODO DE
 	if (Reflecting) dump(youhad, "reflection"); /* EN if (Reflecting) dump(youhad, "reflection"); */ // TODO DE
 	if (Free_action) dump(youhad, "free action"); /* EN if (Free_action) dump(youhad, "free action"); */ // TODO DE
 	if (Fixed_abil) dump(youhad, "fixed abilities"); /* EN if (Fixed_abil) dump(youhad, "fixed abilities"); */ // TODO DE
 	if (Lifesaved)
-		dump("  ", "Your life would have been saved"); /* EN dump("  ", "Your life would have been saved"); */ // TODO DE
+		dump("  ", "SUBJECT POSSESSIV_PRONOMEN NOUN_LEBEN wäre gerettet worden"); /* EN dump("  ", "Your life would have been saved"); */
 	if (u.twoweap) dump(youwere, "wielding two weapons at once"); /* EN if (u.twoweap) dump(youwere, "wielding two weapons at once"); */ // TODO DE
 
 	/*** Miscellany ***/
 	if (Luck) {
 	    ltmp = abs((int)Luck);
-	    Sprintf(buf, "%s%slucky (%d)", /* EN Sprintf(buf, "%s%slucky (%d)", */ // TODO DE
-		    ltmp >= 10 ? "extremely " : ltmp >= 5 ? "very " : "", /* EN ltmp >= 10 ? "extremely " : ltmp >= 5 ? "very " : "", */ // TODO DE
-		    Luck < 0 ? "un" : "", Luck); /* EN Luck < 0 ? "un" : "", Luck); */ // TODO DE
-	    dump(youwere, buf);
+	    Sprintf(buf, "%s%s (%d)", /* EN Sprintf(buf, "%s%slucky (%d)", */
+		    ltmp >= 10 ? "außerordentliches " : ltmp >= 5 ? "sehr viel " : "", /* EN ltmp >= 10 ? "extremely " : ltmp >= 5 ? "very " : "", */
+		    Luck < 0 ? "Pech" : "Glück", Luck); /* EN Luck < 0 ? "un" : "", Luck); */
+	    dump(youhad, buf); /* EN dump(youwere, buf); */
 	}
 #ifdef WIZARD
 	 else if (wizard) dump("  ", "Your luck was zero"); /* EN else if (wizard) dump("  ", "Your luck was zero"); */ // TODO DE
 #endif
-	if (u.moreluck > 0) dump(youhad, "extra luck"); /* EN if (u.moreluck > 0) dump(youhad, "extra luck"); */ // TODO DE
-	else if (u.moreluck < 0) dump(youhad, "reduced luck"); /* EN else if (u.moreluck < 0) dump(youhad, "reduced luck"); */ // TODO DE
+	if (u.moreluck > 0) dump(youhad, "besonders viel Glück"); /* EN if (u.moreluck > 0) dump(youhad, "extra luck"); */
+	else if (u.moreluck < 0) dump(youhad, "weniger Glück"); /* EN else if (u.moreluck < 0) dump(youhad, "reduced luck"); */
 	if (carrying(LUCKSTONE) || stone_luck(TRUE)) {
 	    ltmp = stone_luck(FALSE);
 	    if (ltmp <= 0)
@@ -1469,56 +1476,56 @@ minimal_enlightenment()
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Starting", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Starting", FALSE); */ // TODO DE
 
 	/* Starting name, race, role, gender */
-	Sprintf(buf, fmtstr, "name", plname); /* EN Sprintf(buf, fmtstr, "name", plname); */ // TODO DE
+	Sprintf(buf, fmtstr, "NOUN_NAME", plname); /* EN Sprintf(buf, fmtstr, "name", plname); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
-	Sprintf(buf, fmtstr, "race", urace.noun); /* EN Sprintf(buf, fmtstr, "race", urace.noun); */ // TODO DE
+	Sprintf(buf, fmtstr, "NOUN_RACE", urace.noun); /* EN Sprintf(buf, fmtstr, "race", urace.noun); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
-	Sprintf(buf, fmtstr, "role", /* EN Sprintf(buf, fmtstr, "role", */ // TODO DE
+	Sprintf(buf, fmtstr, "NOUN_ROLE", /* EN Sprintf(buf, fmtstr, "role", */
 		(flags.initgend && urole.name.f) ? urole.name.f : urole.name.m);
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
-	Sprintf(buf, fmtstr, "gender", genders[flags.initgend].adj); /* EN Sprintf(buf, fmtstr, "gender", genders[flags.initgend].adj); */ // TODO DE
+	Sprintf(buf, fmtstr, "NOUN_GENDER", genders[flags.initgend].adj); /* EN Sprintf(buf, fmtstr, "gender", genders[flags.initgend].adj); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	/* Starting alignment */
-	Sprintf(buf, fmtstr, "alignment", align_str(u.ualignbase[A_ORIGINAL])); /* EN Sprintf(buf, fmtstr, "alignment", align_str(u.ualignbase[A_ORIGINAL])); */ // TODO DE
+	Sprintf(buf, fmtstr, "NOUN_ALIGNMENT", align_str(u.ualignbase[A_ORIGINAL])); /* EN Sprintf(buf, fmtstr, "alignment", align_str(u.ualignbase[A_ORIGINAL])); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	/* Current name, race, role, gender */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "", FALSE);
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Current", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Current", FALSE); */ // TODO DE
-	Sprintf(buf, fmtstr, "race", Upolyd ? youmonst.data->mname : urace.noun); /* EN Sprintf(buf, fmtstr, "race", Upolyd ? youmonst.data->mname : urace.noun); */ // TODO DE
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Current", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Current", FALSE); */
+	Sprintf(buf, fmtstr, "NOUN_RACE", Upolyd ? youmonst.data->mname : urace.noun); /* EN Sprintf(buf, fmtstr, "race", Upolyd ? youmonst.data->mname : urace.noun); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	if (Upolyd) {
-	    Sprintf(buf, fmtstr, "role (base)", /* EN Sprintf(buf, fmtstr, "role (base)", */ // TODO DE
+	    Sprintf(buf, fmtstr, "NOUN_ROLE (base)", /* EN Sprintf(buf, fmtstr, "role (base)", */ // TODO DE
 		(u.mfemale && urole.name.f) ? urole.name.f : urole.name.m);
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	} else {
-	    Sprintf(buf, fmtstr, "role", /* EN Sprintf(buf, fmtstr, "role", */ // TODO DE
+	    Sprintf(buf, fmtstr, "NOUN_ROLE", /* EN Sprintf(buf, fmtstr, "role", */
 		(flags.female && urole.name.f) ? urole.name.f : urole.name.m);
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	}
 	/* don't want poly_gender() here; it forces `2' for non-humanoids */
 	genidx = is_neuter(youmonst.data) ? 2 : flags.female;
-	Sprintf(buf, fmtstr, "gender", genders[genidx].adj); /* EN Sprintf(buf, fmtstr, "gender", genders[genidx].adj); */ // TODO DE
+	Sprintf(buf, fmtstr, "NOUN_GENDER", genders[genidx].adj); /* EN Sprintf(buf, fmtstr, "gender", genders[genidx].adj); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	if (Upolyd && (int)u.mfemale != genidx) {
-	    Sprintf(buf, fmtstr, "gender (base)", genders[u.mfemale].adj); /* EN Sprintf(buf, fmtstr, "gender (base)", genders[u.mfemale].adj); */ // TODO DE
+	    Sprintf(buf, fmtstr, "NOUN_GENDER (base)", genders[u.mfemale].adj); /* EN Sprintf(buf, fmtstr, "gender (base)", genders[u.mfemale].adj); */
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	}
 
 	/* Current alignment */
-	Sprintf(buf, fmtstr, "alignment", align_str(u.ualign.type)); /* EN Sprintf(buf, fmtstr, "alignment", align_str(u.ualign.type)); */ // TODO DE
+	Sprintf(buf, fmtstr, "NOUN_ALIGNMENT", align_str(u.ualign.type)); /* EN Sprintf(buf, fmtstr, "alignment", align_str(u.ualign.type)); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	/* Deity list */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "", FALSE);
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Deities", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Deities", FALSE); */ // TODO DE
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "NOUN_DEITIES", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Deities", FALSE); */ // TODO DE
 	Sprintf(buf2, deity_fmtstr, align_gname(A_CHAOTIC),
 	    (u.ualignbase[A_ORIGINAL] == u.ualign.type
 		&& u.ualign.type == A_CHAOTIC) ? " (s,c)" : /* EN && u.ualign.type == A_CHAOTIC) ? " (s,c)" : */ // TODO DE
 	    (u.ualignbase[A_ORIGINAL] == A_CHAOTIC)       ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_CHAOTIC)       ? " (s)" : */ // TODO DE
 	    (u.ualign.type   == A_CHAOTIC)       ? " (c)" : ""); /* EN (u.ualign.type   == A_CHAOTIC)       ? " (c)" : ""); */ // TODO DE
-	Sprintf(buf, fmtstr, "Chaotic", buf2); /* EN Sprintf(buf, fmtstr, "Chaotic", buf2); */ // TODO DE
+	Sprintf(buf, fmtstr, "ADJEKTIV_CHAOTIC", buf2); /* EN Sprintf(buf, fmtstr, "Chaotic", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	Sprintf(buf2, deity_fmtstr, align_gname(A_NEUTRAL),
@@ -1526,7 +1533,7 @@ minimal_enlightenment()
 		&& u.ualign.type == A_NEUTRAL) ? " (s,c)" : /* EN && u.ualign.type == A_NEUTRAL) ? " (s,c)" : */ // TODO DE
 	    (u.ualignbase[A_ORIGINAL] == A_NEUTRAL)       ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_NEUTRAL)       ? " (s)" : */ // TODO DE
 	    (u.ualign.type   == A_NEUTRAL)       ? " (c)" : ""); /* EN (u.ualign.type   == A_NEUTRAL)       ? " (c)" : ""); */ // TODO DE
-	Sprintf(buf, fmtstr, "Neutral", buf2); /* EN Sprintf(buf, fmtstr, "Neutral", buf2); */ // TODO DE
+	Sprintf(buf, fmtstr, "ADJEKTIV_NEUTRAL", buf2); /* EN Sprintf(buf, fmtstr, "Neutral", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	Sprintf(buf2, deity_fmtstr, align_gname(A_LAWFUL),
@@ -1534,7 +1541,7 @@ minimal_enlightenment()
 		u.ualign.type == A_LAWFUL)  ? " (s,c)" : /* EN u.ualign.type == A_LAWFUL)  ? " (s,c)" : */ // TODO DE
 	    (u.ualignbase[A_ORIGINAL] == A_LAWFUL)        ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_LAWFUL)        ? " (s)" : */ // TODO DE
 	    (u.ualign.type   == A_LAWFUL)        ? " (c)" : ""); /* EN (u.ualign.type   == A_LAWFUL)        ? " (c)" : ""); */ // TODO DE
-	Sprintf(buf, fmtstr, "Lawful", buf2); /* EN Sprintf(buf, fmtstr, "Lawful", buf2); */ // TODO DE
+	Sprintf(buf, fmtstr, "ADJEKTIV_LAWFUL", buf2); /* EN Sprintf(buf, fmtstr, "Lawful", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	end_menu(tmpwin, "Base Attributes"); /* EN end_menu(tmpwin, "Base Attributes"); */ // TODO DE
@@ -1579,12 +1586,12 @@ int final;
 	    enl_msg(You_, "VERB_KOMMEN ohne Nahrung aus", "VERB_SEIN ohne Nahrung ausgekommen", ""); /* EN enl_msg(You_, "have gone", "went", " without food"); */
 	    /* But beverages are okay */
 	else if (!u.uconduct.unvegan)
-	    you_have_X("eine strenge veganische Diät befolgt"); /* EN you_have_X("followed a strict vegan diet"); */
+	    you_have_X("eine streng vegane Diät befolgt"); /* EN you_have_X("followed a strict vegan diet"); */
 	else if (!u.uconduct.unvegetarian)
-	    you_have_been("vegetarian"); /* EN you_have_been("vegetarian"); */ // TODO DE
+	    you_have_been("ein Vegetarier"); /* EN you_have_been("vegetarian"); */
 
 	if (!u.uconduct.gnostic)
-	    you_have_been("an atheist"); /* EN you_have_been("an atheist"); */ // TODO DE
+	    you_have_been("ein Atheist"); /* EN you_have_been("an atheist"); */
 
 	if (!u.uconduct.weaphit)
 	    you_have_never("hit with a wielded weapon"); /* EN you_have_never("hit with a wielded weapon"); */ // TODO DE
@@ -1596,10 +1603,10 @@ int final;
 	}
 #endif
 	if (!u.uconduct.killer)
-	    you_have_been("a pacifist"); /* EN you_have_been("a pacifist"); */ // TODO DE
+	    you_have_been("ein Pazifist"); /* EN you_have_been("a pacifist"); */
 
 	if (!u.uconduct.literate)
-	    you_are("ein Analphabet"); /* EN you_have_been("illiterate"); */
+	    you_have_been("ein Analphabet"); /* EN you_have_been("illiterate"); */
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "read items or engraved %ld time%s", /* EN Sprintf(buf, "read items or engraved %ld time%s", */ // TODO DE
@@ -1610,7 +1617,7 @@ int final;
 
 	ngenocided = num_genocides();
 	if (ngenocided == 0) {
-	    you_have_never("genocided any monsters"); /* EN you_have_never("genocided any monsters"); */ // TODO DE
+	    you_have_never("irgendwelche Wesen ausgerottet"); /* EN you_have_never("genocided any monsters"); */
 	} else {
 	    Sprintf(buf, "genocided %d type%s of monster%s", /* EN Sprintf(buf, "genocided %d type%s of monster%s", */ // TODO DE
 		    ngenocided, plur(ngenocided), plur(ngenocided));
@@ -1665,10 +1672,10 @@ int final;
 	dump("", "Freiwillige Gebaren"); /* EN dump("", "Voluntary challenges"); */
 
 	if (!u.uconduct.food)
-	    dump("", "  You went without food"); /* EN dump("", "  You went without food"); */ // TODO DE
+	    dump("", "  SUBJECT PRONOMEN_PERSONAL VERB_SEIN ohne Nahrung ausgekommen"); /* EN dump("", "  You went without food"); */
 	    /* But beverages are okay */
 	else if (!u.uconduct.unvegan)
-	    dump("", "  You followed a strict vegan diet"); /* EN dump("", "  You followed a strict vegan diet"); */ // TODO DE
+	    dump("", "  SUBJECT PRONOMEN_PERSONAL eine streng vegane Diät befolgt"); /* EN dump("", "  You followed a strict vegan diet"); */
 	else if (!u.uconduct.unvegetarian)
 	    dump("", "  You were a vegetarian"); /* EN dump("", "  You were a vegetarian"); */ // TODO DE
 	else if (Role_if(PM_MONK) && u.uconduct.unvegetarian < 10) {
@@ -1709,7 +1716,7 @@ int final;
 
 	ngenocided = num_genocides();
 	if (ngenocided == 0) {
-	    dump("", "  You never genocided any monsters"); /* EN dump("", "  You never genocided any monsters"); */ // TODO DE
+	    dump("", "  SUBJECT PRONOMEN_PERSONAL VERB_HAVE niemals irgendwelche Wesen ausgerottet"); /* EN dump("", "  You never genocided any monsters"); */
 	} else {
 	    Sprintf(buf, "genocided %d type%s of monster%s", /* EN Sprintf(buf, "genocided %d type%s of monster%s", */ // TODO DE
 		    ngenocided, plur(ngenocided), plur(ngenocided));

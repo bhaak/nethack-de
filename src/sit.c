@@ -257,7 +257,7 @@ dosit()
 			}
 			break;
 		    case 13:
-			Your("mind turns into a pretzel!"); /* EN Your("mind turns into a pretzel!"); */ // TODO DE
+			Your("NOUN_VERSTAND verknotet sich zu einer Bretzel!"); /* EN Your("mind turns into a pretzel!"); */
 			make_confused(HConfusion + rn1(7,16),FALSE);
 			break;
 		    default:	impossible("throne effect"); /* EN default:	impossible("throne effect"); */ // TODO DE
@@ -304,7 +304,7 @@ dosit()
 	} else if (u.uswallow)
 		pline("Hier gibt es keine Sitzmöglichkeiten!"); /* EN There("are no seats in here!"); */
 	else
-		pline("Having fun sitting on the %s?", surface(u.ux,u.uy)); /* EN pline("Having fun sitting on the %s?", surface(u.ux,u.uy)); */ // TODO DE
+		pline("Spass daran, auf KASUS_DATIV ARTIKEL_BESTIMMTER %s zu sitzen?", surface(u.ux,u.uy)); /* EN pline("Having fun sitting on the %s?", surface(u.ux,u.uy)); */
 	return(1);
 }
 
@@ -426,7 +426,7 @@ attrcurse()			/* remove a random INTRINSIC ability */
 		}
 	case 8 : if (HFast & INTRINSIC) {
 			HFast &= ~INTRINSIC;
-			You_feel("slower."); /* EN You_feel("slower."); */ // TODO DE
+			Du_fuehlst_dich("langsamer."); /* EN You_feel("slower."); */
 			break;
 		}
 	case 9 : if (HStealth & INTRINSIC) {

@@ -226,13 +226,13 @@ ask_again:
 			    oclasses[oclassct] = '\0';
 			} else {
 			    if (!where)
-				where = !strcmp(action,"pick up")  ? "here" : /* EN where = !strcmp(action,"pick up")  ? "here" : */ // TODO DE
+				where = !strcmp(action,"pick up")  ? "Hier" : /* EN where = !strcmp(action,"pick up")  ? "here" : */ // TODO DE
 					!strcmp(action,"take out") ?  /* EN !strcmp(action,"take out") ? */ // TODO DE
-							    "inside" : ""; /* EN "inside" : ""; */ // TODO DE
+							    "Da drinnen" : ""; /* EN "inside" : ""; */
 			    if (*where)
-				There("are no %c's %s.", sym, where); /* EN There("are no %c's %s.", sym, where); */ // TODO DE
+				pline("%s VERB_SEIN keine %cs.", where, sym); /* EN There("are no %c's %s.", sym, where); */
 			    else
-				You("have no %c's.", sym); /* EN You("have no %c's.", sym); */ // TODO DE
+				You("VERB_HABEN keine %cs.", sym); /* EN You("have no %c's.", sym); */
 			    not_everything = TRUE;
 			}
 		    }
@@ -421,7 +421,7 @@ int what;		/* should be a long */
 		}
 		if (notake(youmonst.data)) {
 		    if (!autopickup)
-			You("are physically incapable of picking anything up."); /* EN You("are physically incapable of picking anything up."); */ // TODO DE
+			You("VERB_SEIN körperlich außer Stande etwas aufzuheben."); /* EN You("are physically incapable of picking anything up."); */
 		    else
 			check_here(FALSE);
 		    return (0);
@@ -540,7 +540,7 @@ menu_pickup:
 		    char qbuf[BUFSZ];
 		    Sprintf(qbuf, "Pick up %s?", /* EN Sprintf(qbuf, "Pick up %s?", */ // TODO DE
 			safe_qbuf("", sizeof("Pick up ?"), doname(obj), /* EN safe_qbuf("", sizeof("Pick up ?"), doname(obj), */ // TODO DE
-					an(simple_typename(obj->otyp)), "something")); /* EN an(simple_typename(obj->otyp)), "something")); */ // TODO DE
+					an(simple_typename(obj->otyp)), "NOUN_SOMETHING")); /* EN an(simple_typename(obj->otyp)), "something")); */
 		    switch ((obj->quan < 2L) ? ynaq(qbuf) : ynNaq(qbuf)) {
 		    case 'q': goto end_query;	/* out 2 levels */
 		    case 'n': continue;
@@ -864,28 +864,28 @@ int how;			/* type of query */
 		any.a_void = 0;
 		any.a_int = 'B';
 		add_menu(win, NO_GLYPH, &any, invlet, 0, ATR_NONE,
-			"Items known to be Blessed", MENU_UNSELECTED); /* EN "Items known to be Blessed", MENU_UNSELECTED); */ // TODO DE
+			"Als geheiligt bekannte Gegenstände", MENU_UNSELECTED); /* EN "Items known to be Blessed", MENU_UNSELECTED); */
 	}
 	if (do_cursed) {
 		invlet = 'C';
 		any.a_void = 0;
 		any.a_int = 'C';
 		add_menu(win, NO_GLYPH, &any, invlet, 0, ATR_NONE,
-			"Items known to be Cursed", MENU_UNSELECTED); /* EN "Items known to be Cursed", MENU_UNSELECTED); */ // TODO DE
+			"Als verflucht bekannte Gegenstände", MENU_UNSELECTED); /* EN "Items known to be Cursed", MENU_UNSELECTED); */
 	}
 	if (do_uncursed) {
 		invlet = 'U';
 		any.a_void = 0;
 		any.a_int = 'U';
 		add_menu(win, NO_GLYPH, &any, invlet, 0, ATR_NONE,
-			"Items known to be Uncursed", MENU_UNSELECTED); /* EN "Items known to be Uncursed", MENU_UNSELECTED); */ // TODO DE
+			"Als nicht verflucht bekannte Gegenstände", MENU_UNSELECTED); /* EN "Items known to be Uncursed", MENU_UNSELECTED); */
 	}
 	if (do_buc_unknown) {
 		invlet = 'X';
 		any.a_void = 0;
 		any.a_int = 'X';
 		add_menu(win, NO_GLYPH, &any, invlet, 0, ATR_NONE,
-			"Items of unknown B/C/U status", /* EN "Items of unknown B/C/U status", */ // TODO DE
+			"Gegenstände mit unbekanntem Status", /* EN "Items of unknown B/C/U status", */
 			MENU_UNSELECTED);
 	}
 	end_menu(win, qstr);
@@ -1266,7 +1266,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 			char kbuf[BUFSZ];
 
 			Strcpy(kbuf, an(corpse_xname(obj, TRUE)));
-			pline("Touching %s is a fatal mistake.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */ // TODO DE
+			pline("Touching %s ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */ // TODO DE
 			instapetrify(kbuf);
 		    return -1;
 		}
@@ -1367,7 +1367,7 @@ encumber_msg()
 	case 2: You("rebalance your load.  Movement is difficult."); /* EN case 2: You("rebalance your load.  Movement is difficult."); */ // TODO DE
 		break;
 	case 3: You("%s under your heavy load.  Movement is very hard.", /* EN case 3: You("%s under your heavy load.  Movement is very hard.", */ // TODO DE
-		    stagger(youmonst.data, "stagger")); /* EN stagger(youmonst.data, "stagger")); */ // TODO DE
+		    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
 		break;
 	default: You("%s move a handspan with this load!", /* EN default: You("%s move a handspan with this load!", */ // TODO DE
 		     newcap == 4 ? "can barely" : "can't even"); /* EN newcap == 4 ? "can barely" : "can't even"); */ // TODO DE
@@ -1383,7 +1383,7 @@ encumber_msg()
 	case 2: You("rebalance your load.  Movement is still difficult."); /* EN case 2: You("rebalance your load.  Movement is still difficult."); */ // TODO DE
 		break;
 	case 3: You("%s under your load.  Movement is still very hard.", /* EN case 3: You("%s under your load.  Movement is still very hard.", */ // TODO DE
-		    stagger(youmonst.data, "stagger")); /* EN stagger(youmonst.data, "stagger")); */ // TODO DE
+		    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
 		break;
 	}
 	flags.botl = 1;

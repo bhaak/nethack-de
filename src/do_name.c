@@ -167,7 +167,7 @@ const char *goal;
 		} /* k => matching */
 	    } /* !quitchars */
 	    if (force) goto nxtc;
-	    pline("Done."); /* EN pline("Done."); */ // TODO DE
+	    pline("Fertig."); /* EN pline("Done."); */
 	    msg_given = FALSE;	/* suppress clear */
 	    cx = -1;
 	    cy = 0;
@@ -264,7 +264,7 @@ do_mname()
 			|| mtmp->m_ap_type == M_AP_FURNITURE
 			|| mtmp->m_ap_type == M_AP_OBJECT
 			|| (mtmp->minvis && !See_invisible)))) {
-		pline("I see no monster there."); /* EN pline("I see no monster there."); */ // TODO DE
+		pline("Ich kann dort kein Monster erkennen."); /* EN pline("I see no monster there."); */
 		return(0);
 	}
 	/* special case similar to the one in lookat() */
@@ -675,11 +675,10 @@ boolean called;
 	    Strcat(buf, shkname(mtmp));
 	    if (mdat == &mons[PM_SHOPKEEPER] && !do_invis)
 		return buf;
-	    Strcat(buf, ", ARTIKEL_BESTIMMTER "); /* EN Strcat(buf, " the "); */
+	    Strcat(buf, " ARTIKEL_BESTIMMTER "); /* EN Strcat(buf, " the "); */
 	    if (do_invis) 
 		Strcat(buf, "ADJEKTIV_INVISIBLE "); /* EN Strcat(buf, "invisible "); */
 	    Strcat(buf, mdat->mname);
-	    Strcat(buf, ",");
 	    return buf;
 	}
 
@@ -1089,12 +1088,16 @@ struct monst *mtmp;
 {
     static char buf[BUFSZ];
 
-		if (type_is_pname(mtmp->data)) {
+		if (Blind) {
+		  /* blind */
+	    Strcpy(buf, "von irgendwas");
+			return buf;
+		} else if (type_is_pname(mtmp->data)) {
       /* Eigename */
       Strcpy(buf, "KASUS_GENITIV ARTIKEL_BESTIMMTER ");
 		} else if ((mtmp->isshk && !Hallucination)) {
       /* Ladenbesitzer */
-      Strcpy(buf, "KASUS_GENITIV ");
+      Strcpy(buf, "KASUS_DATIV ");
 	    //Strcat(buf, mtmp->female ? "der " : "des ");
 	    Strcat(buf, "von ");
 		} else {
