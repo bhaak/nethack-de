@@ -2346,18 +2346,24 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CROCODILE","Krokodil","s","Krokodil","e","neutrum"),
     dekliniere_substantiv("NOUN_SALAMANDER", "Salamander", "s", "Salamander", "", "maskulin"),
     #dekliniere_substantiv("NOUN_LONG_WORM_TAIL"
-    dekliniere_substantiv("NOUN_ARCHEOLOGIST", "Archäologe", "en", "Archäologe", "en", "maskulin", "n"),
-    dekliniere_substantiv("NOUN_BARBARIAN", "Barbar", "en", "Barbar", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_ARCHAEOLOGE", "Archäologe", "en", "Archäologe", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_ARCHAEOLOGIN", "Archäologin", "", "Archäologinn", "en", "feminin"),
+    dekliniere_substantiv("NOUN_BARBAR", "Barbar", "en", "Barbar", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_BARBARIN", "Barbarin", "", "Barbarinn", "en", "feminin"),
     #dekliniere_substantiv("NOUN_CAVEMAN"
     #dekliniere_substantiv("NOUN_CAVEWOMAN"
-    #dekliniere_substantiv("NOUN_HEALER"
+    dekliniere_substantiv("NOUN_HEILER","Heiler","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_HEILERIN","Heilerin","","","","feminin"),
     #dekliniere_substantiv("NOUN_KNIGHT"
     dekliniere_substantiv("NOUN_MONK", "Mönch", "es", "Mönch", "e", "maskulin", "en"),
     dekliniere_substantiv("NOUN_PRIEST", "Priester", "s", "Priester", "", "maskulin"),
     dekliniere_substantiv("NOUN_PRIESTESS", "Priesterin", "", "Priesterinn", "en", "feminin","nen"),
+    dekliniere_substantiv("NOUN_PRIESTER", "Priester", "s", "Priester", "", "maskulin"),
+    dekliniere_substantiv("NOUN_PRIESTERIN", "Priesterin", "", "Priesterinn", "en", "feminin","nen"),
     #dekliniere_substantiv("NOUN_RANGER"
     #dekliniere_substantiv("NOUN_ROGUE"
     dekliniere_substantiv("NOUN_SAMURAI", "Samurai", "", "Samurai", "", "maskulin"),
+    dekliniere_substantiv("NOUN_SAMURAIIN", "Samurai", "", "Samurai", "", "feminin"),
     dekliniere_substantiv("NOUN_TOURIST", "Tourist", "en", "Tourist", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_TOURISTIN", "Touristin", "", "Touristinn", "en", "feminin", "nen"),
     dekliniere_substantiv("NOUN_VALKYRIE", "Walküre", "", "Walküre", "en", "feminin", "n"),
@@ -2608,6 +2614,11 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_LAW","","","","",""),
     #dekliniere_substantiv("NOUN_BALANCE","","","","",""),
     #dekliniere_substantiv("NOUN_CHAOS","","","","",""),
+    dekliniere_substantiv("NOUN_RACE","Volk","es","Völk","er","neutrum"),
+    dekliniere_substantiv("NOUN_ROLE","Klasse","","Klasse","en","feminin"),
+    dekliniere_substantiv("NOUN_GENDER","Geschlecht","es","","","neutrum"),
+    dekliniere_substantiv("NOUN_NAME","Name","ens","Name","en","maskulin"),
+    dekliniere_substantiv("NOUN_CHARACTER","Charakter","s","Charakter","e","maskulin"),
 
     dekliniere_substantiv("NOUN_BLADE","Klinge","","Klinge","en","feminin"),
     dekliniere_substantiv("NOUN_ELLBOGEN","Ellbogen","s","Ellbogen","","maskulin"),
@@ -2627,7 +2638,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEBEN","Leben","s","Leben","","neutrum"),
     dekliniere_substantiv("NOUN_MAHL","Mahl","es","Mahl","e","neutrum"),
     dekliniere_substantiv("NOUN_MONSTER","Monster","s","Monster","","neutrum"),
-    dekliniere_substantiv("NOUN_NAME","Name","ens","Name","en","maskulin"),
     dekliniere_substantiv("NOUN_POISON","Gift","es","Gift","e","neutrum"),
     dekliniere_substantiv("NOUN_PROTOPLASMA","Protoplasma","s","Protoplasm","en","neutrum"),
     dekliniere_substantiv("NOUN_RAUCH","Rauch","s","","","maskulin"),
@@ -2648,10 +2658,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LICHTFACHMARKT","Lichtfachmarkt","es","","e","maskulin"),
     dekliniere_substantiv("NOUN_SCHUTZBEKLEIDUNGSFACHGESCHAEFT","Schutzbekleidungsfachgeschäft","es","","e","neutrum"),
     dekliniere_substantiv("NOUN_SPIRITUOSENHANDLUNG","Spirituosenhandlung","","","en","feminin"),
-
-    "/* Shopbezeichnungen */",
-    dekliniere_substantiv("NOUN_HEILER","Heiler","s","","","maskulin"),
-    dekliniere_substantiv("NOUN_HEILERIN","Heilerin","","","","feminin"),
 
     "/* ======================================================= */",
     "/* Adjektive */",

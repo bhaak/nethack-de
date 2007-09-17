@@ -9,10 +9,6 @@
 #include "edog.h"
 #endif
 
-#ifdef GERMAN
-#include "german.h"
-#endif
-
 #ifdef OVLB
 
 static boolean no_repeat = FALSE;
@@ -60,8 +56,6 @@ pline VA_DECL(const char *, line)
 	    Vsprintf(pbuf,line,VA_ARGS);
 	    line = pbuf;
 	}
-
-	line = (char *)german(line);
 
 	if (!iflags.window_inited) {
 	    raw_print(line);

@@ -81,7 +81,7 @@ const struct Role roles[] = {
 	10, 14, 0, 0,  8, A_INT, SPE_HASTE_SELF,      -4
 },
 // TODO DE
-{	{"Caveman", "Cavewoman"}, {
+{	{"NOUN_CAVEMAN", "NOUN_CAVEWOMAN"}, { /* EN {	{"Caveman", "Cavewoman"}, { */
 	{"Troglodyte",  0},
 	{"Aborigine",   0},
 	{"Wanderer",    0},
@@ -134,32 +134,6 @@ const struct Role roles[] = {
 	10, 3,-3, 2, 10, A_WIS, SPE_CURE_SICKNESS,   -4
 },
 // TODO DE
-{	{"NOUN_PALADIN", 0}, { /* EN {	{"Knight", 0}, { */
-	{"Gallant",     0},
-	{"Esquire",     0},
-	{"Bachelor",    0},
-	{"Sergeant",    0},
-	{"Knight",      0},
-	{"Banneret",    0},
-	{"Chevalier",   "Chevaliere"},
-	{"Seignieur",   "Dame"},
-	{"Paladin",     0} },
-	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
-	"Kni", "Camelot Castle", "the Isle of Glass",
-	PM_KNIGHT, NON_PM, PM_PONY,
-	PM_KING_ARTHUR, PM_PAGE, PM_IXOTH,
-	PM_QUASIT, PM_OCHRE_JELLY, S_IMP, S_JELLY,
-	ART_MAGIC_MIRROR_OF_MERLIN,
-	MH_HUMAN | ROLE_MALE|ROLE_FEMALE | ROLE_LAWFUL,
-	/* Str Int Wis Dex Con Cha */
-	{  13,  7, 14,  8, 10, 17 },
-	{  30, 15, 15, 10, 20, 10 },
-	/* Init   Lower  Higher */
-	{ 14, 0,  0, 8,  2, 0 },	/* Hit points */
-	{  1, 4,  0, 1,  0, 2 },10,	/* Energy */
-	10, 8,-2, 0,  9, A_WIS, SPE_TURN_UNDEAD,     -4
-},
-// TODO DE
 {	{"NOUN_MOENCH", 0}, { /* EN {	{"Monk", 0}, { */
 	{"Candidate",         0},
 	{"Novice",            0},
@@ -186,6 +160,32 @@ const struct Role roles[] = {
 	{ 12, 0,  0, 8,  1, 0 },	/* Hit points */
 	{  2, 2,  0, 2,  0, 2 },10,	/* Energy */
 	10, 8,-2, 2, 20, A_WIS, SPE_RESTORE_ABILITY, -4
+},
+// TODO DE
+{	{"NOUN_PALADIN", 0}, { /* EN {	{"Knight", 0}, { */
+	{"Gallant",     0},
+	{"Esquire",     0},
+	{"Bachelor",    0},
+	{"Sergeant",    0},
+	{"Knight",      0},
+	{"Banneret",    0},
+	{"Chevalier",   "Chevaliere"},
+	{"Seignieur",   "Dame"},
+	{"Paladin",     0} },
+	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
+	"Kni", "Camelot Castle", "the Isle of Glass",
+	PM_KNIGHT, NON_PM, PM_PONY,
+	PM_KING_ARTHUR, PM_PAGE, PM_IXOTH,
+	PM_QUASIT, PM_OCHRE_JELLY, S_IMP, S_JELLY,
+	ART_MAGIC_MIRROR_OF_MERLIN,
+	MH_HUMAN | ROLE_MALE|ROLE_FEMALE | ROLE_LAWFUL,
+	/* Str Int Wis Dex Con Cha */
+	{  13,  7, 14,  8, 10, 17 },
+	{  30, 15, 15, 10, 20, 10 },
+	/* Init   Lower  Higher */
+	{ 14, 0,  0, 8,  2, 0 },	/* Hit points */
+	{  1, 4,  0, 1,  0, 2 },10,	/* Energy */
+	10, 8,-2, 0,  9, A_WIS, SPE_TURN_UNDEAD,     -4
 },
 // TODO DE
 {	{"NOUN_PRIESTER", "NOUN_PRIESTERIN"}, { /* EN {	{"Priest", "Priestess"}, { */
@@ -217,7 +217,7 @@ const struct Role roles[] = {
   /* Note:  Rogue precedes Ranger so that use of `-R' on the command line
      retains its traditional meaning. */
 // TODO DE
-{	{"Rogue", 0}, {
+{	{"NOUN_ROGUE", 0}, { /* EN {	{"Rogue", 0}, { */
 	{"Footpad",     0},
 	{"Cutpurse",    0},
 	{"Rogue",       0},
@@ -244,7 +244,7 @@ const struct Role roles[] = {
 	10, 8, 0, 1,  9, A_INT, SPE_DETECT_TREASURE, -4
 },
 // TODO DE
-{	{"Ranger", 0}, {
+{	{"NOUN_RANGER", 0}, { /* EN {	{"Ranger", 0}, { */
 #if 0	/* OBSOLETE */
 	{"Edhel",       "Elleth"},
 	{"Edhel",       "Elleth"},      /* elf-maid */
@@ -339,7 +339,7 @@ const struct Role roles[] = {
 },
 #endif
 // TODO DE
-{	{"Valkyrie", 0}, {
+{	{"NOUN_VALKYRIE", 0}, { /* EN {	{"Valkyrie", 0}, { */
 	{"Stripling",   0},
 	{"Skirmisher",  0},
 	{"Fighter",     0},
@@ -365,7 +365,7 @@ const struct Role roles[] = {
 	0, 10,-2, 0,  9, A_WIS, SPE_CONE_OF_COLD,    -4
 },
 // TODO DE
-{	{"Wizard", 0}, {
+{	{"NOUN_WIZARD", 0}, { /* EN {	{"Wizard", 0}, { */
 	{"Evoker",      0},
 	{"Conjurer",    0},
 	{"Thaumaturge", 0},
@@ -507,15 +507,15 @@ struct Race urace =
 /* Table of all genders */
 const struct Gender genders[] = {
 // TODO DE
-	{"male",	"PRONOMEN_3P_M_PERSONAL",
+	{"ADJEKTIV_MAENNLICH",	"PRONOMEN_3P_M_PERSONAL",
 						"him",
 						"PRONOMEN_3P_MN_POSSESSIV",
 						"Mal",	ROLE_MALE},
-	{"female",	"PRONOMEN_3P_F_PERSONAL",
+	{"ADJEKTIV_WEIBLICH",	"PRONOMEN_3P_F_PERSONAL",
 							"her",
 							"PRONOMEN_3P_F_POSSESSIV",
 							"Fem",	ROLE_FEMALE},
-	{"neuter",	"PRONOMEN_3P_N_PERSONAL",
+	{"ADJEKTIV_SAECHLICH",	"PRONOMEN_3P_N_PERSONAL",
 							"it",
 							"PRONOMEN_3P_MN_POSSESSIV",
 							"Ntr",	ROLE_NEUTER}
@@ -1230,8 +1230,10 @@ int buflen, rolenum, racenum, gendnum, alignnum;
 		} else {
 			if (roles[rolenum].name.f) {
 				Strcat(buf, roles[rolenum].name.m);
-				Strcat(buf, "/");
+#ifndef GERMAN
+				Strcat(buf, "-/-");
 				Strcat(buf, roles[rolenum].name.f);
+#endif
 			} else 
 				Strcat(buf, roles[rolenum].name.m);
 		}
@@ -1243,7 +1245,7 @@ int buflen, rolenum, racenum, gendnum, alignnum;
 	
 	if ((racenum == ROLE_NONE || racenum == ROLE_RANDOM) && !validrole(rolenum)) {
 		if (donefirst) Strcat(buf, " ");
-		Strcat(buf, "character");
+		Strcat(buf, "NOUN_CHARACTER"); /* EN Strcat(buf, "character"); */
 		donefirst = TRUE;
 	}
 	/* <your lawful female gnomish cavewoman> || <your lawful female gnome>
@@ -1261,14 +1263,14 @@ build_plselection_prompt(buf, buflen, rolenum, racenum, gendnum, alignnum)
 char *buf;
 int buflen, rolenum, racenum, gendnum, alignnum;
 {
-	const char *defprompt = "Shall I pick a character for you? [ynq] "; /* EN const char *defprompt = "Shall I pick a character for you? [ynq] "; */ // TODO DE
+	const char *defprompt = "Soll ich einen Charakter für dich erstellen? [ynq] "; /* EN const char *defprompt = "Shall I pick a character for you? [ynq] "; */
 	int num_post_attribs = 0;
 	char tmpbuf[BUFSZ];
 	
 	if (buflen < QBUFSZ)
 		return (char *)defprompt;
 
-	Strcpy(tmpbuf, "Shall I pick "); /* EN Strcpy(tmpbuf, "Shall I pick "); */ // TODO DE
+	Strcpy(tmpbuf, "Soll ich "); /* EN Strcpy(tmpbuf, "Shall I pick "); */ // TODO DE
 	if (racenum != ROLE_NONE || validrole(rolenum))
 		Strcat(tmpbuf, "your "); /* EN Strcat(tmpbuf, "your "); */ // TODO DE
 	else {
@@ -1306,7 +1308,7 @@ int buflen, rolenum, racenum, gendnum, alignnum;
 			Strcat(buf, "Gesinnung"); /* EN Strcat(buf, "alignment"); */ // TODO DE
 		}
 	}
-	Strcat(buf, " for you? [ynq] "); /* EN Strcat(buf, " for you? [ynq] "); */ // TODO DE
+	Strcat(buf, " für dich auswählen? [ynq] "); /* EN Strcat(buf, " for you? [ynq] "); */
 	return buf;
 }
 
@@ -1512,7 +1514,7 @@ Goodbye()
 	case PM_VALKYRIE:
 	    return ("Farvel");          /* Norse */
 	default:
-	    return ("Goodbye"); /* EN return ("Goodbye"); */ // TODO DE
+	    return ("Auf Wiedersehen"); /* EN return ("Goodbye"); */
 	}
 }
 

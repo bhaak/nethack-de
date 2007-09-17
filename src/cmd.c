@@ -6,6 +6,10 @@
 #include "func_tab.h"
 /* #define DEBUG */	/* uncomment for debugging */
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /*
  * Some systems may have getchar() return EOF for various reasons, and
  * we should not quit before seeing at least NR_OF_EOFS consecutive EOFs.
@@ -1468,53 +1472,65 @@ minimal_enlightenment()
 	char buf[BUFSZ], buf2[BUFSZ];
 	static const char fmtstr[] = "%-15s: %-12s";
 	static const char deity_fmtstr[] = "%-17s%s";
+#ifdef GERMAN
+	char name_str[BUFSZ];
+	Strcpy(name_str, german("NOUN_NAME"));
+	char race_str[BUFSZ];
+	Strcpy(race_str, german("NOUN_RACE"));
+	char role_str[BUFSZ];
+	Strcpy(role_str, german("NOUN_ROLE"));
+	char gender_str[BUFSZ];
+	Strcpy(gender_str, german("NOUN_GENDER"));
+	char alignment_str[BUFSZ];
+	Strcpy(alignment_str, german("NOUN_ALIGNMENT"));
+#endif
 
 	any.a_void = 0;
 	buf[0] = buf2[0] = '\0';
 	tmpwin = create_nhwindow(NHW_MENU);
 	start_menu(tmpwin);
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Starting", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Starting", FALSE); */ // TODO DE
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Start", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Starting", FALSE); */ // TODO DE
 
 	/* Starting name, race, role, gender */
-	Sprintf(buf, fmtstr, "NOUN_NAME", plname); /* EN Sprintf(buf, fmtstr, "name", plname); */
+	Sprintf(buf, fmtstr, name_str, plname); /* EN Sprintf(buf, fmtstr, "name", plname); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
-	Sprintf(buf, fmtstr, "NOUN_RACE", urace.noun); /* EN Sprintf(buf, fmtstr, "race", urace.noun); */
+	Sprintf(buf, fmtstr, race_str, german(urace.noun)); /* EN Sprintf(buf, fmtstr, "race", urace.noun); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
-	Sprintf(buf, fmtstr, "NOUN_ROLE", /* EN Sprintf(buf, fmtstr, "role", */
-		(flags.initgend && urole.name.f) ? urole.name.f : urole.name.m);
+	Sprintf(buf, fmtstr, role_str, /* EN Sprintf(buf, fmtstr, "role", */
+		(flags.initgend && urole.name.f) ? german(urole.name.f) : german(urole.name.m));
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
-	Sprintf(buf, fmtstr, "NOUN_GENDER", genders[flags.initgend].adj); /* EN Sprintf(buf, fmtstr, "gender", genders[flags.initgend].adj); */
+	Sprintf(buf, fmtstr, gender_str, german(genders[flags.initgend].adj)); /* EN Sprintf(buf, fmtstr, "gender", genders[flags.initgend].adj); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	/* Starting alignment */
-	Sprintf(buf, fmtstr, "NOUN_ALIGNMENT", align_str(u.ualignbase[A_ORIGINAL])); /* EN Sprintf(buf, fmtstr, "alignment", align_str(u.ualignbase[A_ORIGINAL])); */
+	Sprintf(buf, fmtstr, alignment_str, german(align_str(u.ualignbase[A_ORIGINAL]))); /* EN Sprintf(buf, fmtstr, "alignment", align_str(u.ualignbase[A_ORIGINAL])); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	/* Current name, race, role, gender */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "", FALSE);
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Current", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Current", FALSE); */
-	Sprintf(buf, fmtstr, "NOUN_RACE", Upolyd ? youmonst.data->mname : urace.noun); /* EN Sprintf(buf, fmtstr, "race", Upolyd ? youmonst.data->mname : urace.noun); */
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Aktuell", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Current", FALSE); */
+	Sprintf(buf, fmtstr, race_str, Upolyd ? german(youmonst.data->mname) : german(urace.noun)); /* EN Sprintf(buf, fmtstr, "race", Upolyd ? youmonst.data->mname : urace.noun); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	if (Upolyd) {
 	    Sprintf(buf, fmtstr, "NOUN_ROLE (base)", /* EN Sprintf(buf, fmtstr, "role (base)", */ // TODO DE
 		(u.mfemale && urole.name.f) ? urole.name.f : urole.name.m);
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	} else {
-	    Sprintf(buf, fmtstr, "NOUN_ROLE", /* EN Sprintf(buf, fmtstr, "role", */
-		(flags.female && urole.name.f) ? urole.name.f : urole.name.m);
+	    Sprintf(buf, fmtstr, role_str, /* EN Sprintf(buf, fmtstr, "role", */
+		(flags.female && urole.name.f) ? german(urole.name.f) : german(urole.name.m));
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	}
 	/* don't want poly_gender() here; it forces `2' for non-humanoids */
 	genidx = is_neuter(youmonst.data) ? 2 : flags.female;
-	Sprintf(buf, fmtstr, "NOUN_GENDER", genders[genidx].adj); /* EN Sprintf(buf, fmtstr, "gender", genders[genidx].adj); */
+	Sprintf(buf, fmtstr, gender_str, german(genders[genidx].adj)); /* EN Sprintf(buf, fmtstr, "gender", genders[genidx].adj); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	if (Upolyd && (int)u.mfemale != genidx) {
-	    Sprintf(buf, fmtstr, "NOUN_GENDER (base)", genders[u.mfemale].adj); /* EN Sprintf(buf, fmtstr, "gender (base)", genders[u.mfemale].adj); */
+	    Sprintf(buf, fmtstr, "NOUN_GENDER (base)", german(genders[u.mfemale].adj)); /* EN Sprintf(buf, fmtstr, "gender (base)", genders[u.mfemale].adj); */
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	}
 
 	/* Current alignment */
-	Sprintf(buf, fmtstr, "NOUN_ALIGNMENT", align_str(u.ualign.type)); /* EN Sprintf(buf, fmtstr, "alignment", align_str(u.ualign.type)); */
+	Sprintf(buf, fmtstr, alignment_str, german(align_str(u.ualign.type))); /* EN Sprintf(buf, fmtstr, "alignment", align_str(u.ualign.type)); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	/* Deity list */
@@ -1525,7 +1541,7 @@ minimal_enlightenment()
 		&& u.ualign.type == A_CHAOTIC) ? " (s,c)" : /* EN && u.ualign.type == A_CHAOTIC) ? " (s,c)" : */ // TODO DE
 	    (u.ualignbase[A_ORIGINAL] == A_CHAOTIC)       ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_CHAOTIC)       ? " (s)" : */ // TODO DE
 	    (u.ualign.type   == A_CHAOTIC)       ? " (c)" : ""); /* EN (u.ualign.type   == A_CHAOTIC)       ? " (c)" : ""); */ // TODO DE
-	Sprintf(buf, fmtstr, "ADJEKTIV_CHAOTIC", buf2); /* EN Sprintf(buf, fmtstr, "Chaotic", buf2); */
+	Sprintf(buf, fmtstr, german("ADJEKTIV_CHAOTIC"), buf2); /* EN Sprintf(buf, fmtstr, "Chaotic", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	Sprintf(buf2, deity_fmtstr, align_gname(A_NEUTRAL),
@@ -1533,7 +1549,7 @@ minimal_enlightenment()
 		&& u.ualign.type == A_NEUTRAL) ? " (s,c)" : /* EN && u.ualign.type == A_NEUTRAL) ? " (s,c)" : */ // TODO DE
 	    (u.ualignbase[A_ORIGINAL] == A_NEUTRAL)       ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_NEUTRAL)       ? " (s)" : */ // TODO DE
 	    (u.ualign.type   == A_NEUTRAL)       ? " (c)" : ""); /* EN (u.ualign.type   == A_NEUTRAL)       ? " (c)" : ""); */ // TODO DE
-	Sprintf(buf, fmtstr, "ADJEKTIV_NEUTRAL", buf2); /* EN Sprintf(buf, fmtstr, "Neutral", buf2); */
+	Sprintf(buf, fmtstr, german("ADJEKTIV_NEUTRAL"), buf2); /* EN Sprintf(buf, fmtstr, "Neutral", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	Sprintf(buf2, deity_fmtstr, align_gname(A_LAWFUL),
@@ -1541,7 +1557,7 @@ minimal_enlightenment()
 		u.ualign.type == A_LAWFUL)  ? " (s,c)" : /* EN u.ualign.type == A_LAWFUL)  ? " (s,c)" : */ // TODO DE
 	    (u.ualignbase[A_ORIGINAL] == A_LAWFUL)        ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_LAWFUL)        ? " (s)" : */ // TODO DE
 	    (u.ualign.type   == A_LAWFUL)        ? " (c)" : ""); /* EN (u.ualign.type   == A_LAWFUL)        ? " (c)" : ""); */ // TODO DE
-	Sprintf(buf, fmtstr, "ADJEKTIV_LAWFUL", buf2); /* EN Sprintf(buf, fmtstr, "Lawful", buf2); */
+	Sprintf(buf, fmtstr, german("ADJEKTIV_LAWFUL"), buf2); /* EN Sprintf(buf, fmtstr, "Lawful", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	end_menu(tmpwin, "Base Attributes"); /* EN end_menu(tmpwin, "Base Attributes"); */ // TODO DE
