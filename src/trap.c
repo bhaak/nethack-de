@@ -3836,7 +3836,7 @@ register int bodypart;
 	register int lvl = level_difficulty();
 	int dmg = rnd(5 + (lvl < 5 ? lvl : 2+lvl/2));
 
-	pline("KABOOM!!  %s was booby-trapped!", The(item)); /* EN pline("KABOOM!!  %s was booby-trapped!", The(item)); */ // TODO DE
+	pline("KABUUUM!!  %s was booby-trapped!", The(item)); /* EN pline("KABOOM!!  %s was booby-trapped!", The(item)); */ // TODO DE
 	wake_nearby();
 	losehp(dmg, "explosion", KILLED_BY_AN); /* EN losehp(dmg, "explosion", KILLED_BY_AN); */ // TODO DE
 	exercise(A_STR, FALSE);

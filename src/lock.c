@@ -841,9 +841,9 @@ int x, y;
 			(void) mb_trapped(m_at(x,y));
 		    else if (flags.verbose) {
 			if (cansee(x,y))
-			    pline("KABOOM!!  You see a door explode."); /* EN pline("KABOOM!!  You see a door explode."); */ // TODO DE
+			    pline("KABUUUM!!  SUBJECT PRONOMEN_PERSONAL VERB_SEHEN eine Türe explodieren."); /* EN pline("KABOOM!!  You see a door explode."); */
 			else if (flags.soundok)
-			    You_hear("a distant explosion."); /* EN You_hear("a distant explosion."); */ // TODO DE
+			    You_hear("eine entfernte Explosion."); /* EN You_hear("a distant explosion."); */
 		    }
 		    door->doormask = D_NODOOR;
 		    unblock_point(x,y);

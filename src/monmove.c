@@ -25,9 +25,9 @@ register struct monst *mtmp;
 {
 	if (flags.verbose) {
 	    if (cansee(mtmp->mx, mtmp->my))
-		pline("KABOOM!!  You see a door explode."); /* EN pline("KABOOM!!  You see a door explode."); */ // TODO DE
+		pline("KABUUUM!!  SUBJECT PRONOMEN_PERSONAL VERB_SEHEN eine Türe explodieren."); /* EN pline("KABOOM!!  You see a door explode."); */
 	    else if (flags.soundok)
-		You_hear("a distant explosion."); /* EN You_hear("a distant explosion."); */ // TODO DE
+		You_hear("eine entfernte Explosion."); /* EN You_hear("a distant explosion."); */
 	}
 	wake_nearto(mtmp->mx, mtmp->my, 7*7);
 	mtmp->mstun = 1;
@@ -59,7 +59,7 @@ register struct monst *mtmp;
 
 		if(couldsee(mtmp->mx, mtmp->my)) {
 
-		  pline("%s yells:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */ // TODO DE
+		  pline("SUBJECT %s VERB_SCHREIEN:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */
 		  if(levl[x][y].looted & D_WARNED) {
 			verbalize("Halt, thief!  You're under arrest!"); /* EN verbalize("Halt, thief!  You're under arrest!"); */ // TODO DE
 			(void) angry_guards(!(flags.soundok));
@@ -232,7 +232,7 @@ boolean fleemsg;
 		mtmp->mfleetim = min(fleetime, 127);
 	    }
 	    if (!mtmp->mflee && fleemsg && canseemon(mtmp))
-		pline("%s turns to flee!", (Monnam(mtmp))); /* EN pline("%s turns to flee!", (Monnam(mtmp))); */ // TODO DE
+		pline("SUBJECT %s VERB_ERGREIFEN die Flucht!", (Monnam(mtmp))); /* EN pline("%s turns to flee!", (Monnam(mtmp))); */
 	    mtmp->mflee = 1;
 	}
 }
@@ -406,7 +406,7 @@ register struct monst *mtmp;
 		struct monst *m2, *nmon = (struct monst *)0;
 
 		if (canseemon(mtmp))
-			pline("%s concentrates.", Monnam(mtmp)); /* EN pline("%s concentrates.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_KONZENTRIEREN.", Monnam(mtmp)); /* EN pline("%s concentrates.", Monnam(mtmp)); */
 		if (distu(mtmp->mx, mtmp->my) > BOLT_LIM * BOLT_LIM) {
 			You("sense a faint wave of psychic energy."); /* EN You("sense a faint wave of psychic energy."); */ // TODO DE
 			goto toofar;
@@ -687,7 +687,7 @@ register int after;
 #ifdef MAIL
 	if(ptr == &mons[PM_MAIL_DAEMON]) {
 	    if(flags.soundok && canseemon(mtmp))
-		verbalize("I'm late!"); /* EN verbalize("I'm late!"); */ // TODO DE
+		verbalize("Ich bin spät dran!"); /* EN verbalize("I'm late!"); */
 	    mongone(mtmp);
 	    return(2);
 	}
@@ -1122,10 +1122,10 @@ postmov:
 		    }
 		} else if (levl[mtmp->mx][mtmp->my].typ == IRONBARS) {
 			if (flags.verbose && canseemon(mtmp))
-			    Norep("%s %s %s the iron bars.", Monnam(mtmp), /* EN Norep("%s %s %s the iron bars.", Monnam(mtmp), */ // TODO DE
+			    Norep("SUBJECT %s %s OBJECT %s ARTIKEL_BESTIMMTER NOUN_IRON_BARs hindurch.", Monnam(mtmp), /* EN Norep("%s %s %s the iron bars.", Monnam(mtmp), */
 				  /* pluralization fakes verb conjugation */
-				  makeplural(locomotion(ptr, "pass")), /* EN makeplural(locomotion(ptr, "pass")), */ // TODO DE
-				  passes_walls(ptr) ? "through" : "between"); /* EN passes_walls(ptr) ? "through" : "between"); */ // TODO DE
+				  makeplural(locomotion(ptr, "VERB_GEHEN")), /* EN makeplural(locomotion(ptr, "pass")), */
+				  passes_walls(ptr) ? "durch KASUS_AKKUSATIV" : "zwischen KASUS_DATIV"); /* EN passes_walls(ptr) ? "through" : "between"); */
 		}
 
 		/* possibly dig */
