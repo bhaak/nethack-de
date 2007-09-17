@@ -480,7 +480,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 			}
 			else
 			{
-			    switch (NHMessageBox(hWnd, TEXT("Save?"), MB_YESNOCANCEL | MB_ICONQUESTION)) {
+			    switch (NHMessageBox(hWnd, TEXT("Speichern?"), MB_YESNOCANCEL | MB_ICONQUESTION)) { /* EN switch (NHMessageBox(hWnd, TEXT("Save?"), MB_YESNOCANCEL | MB_ICONQUESTION)) { */
 			    case IDYES: NHEVENT_KBD('y'); dosave(); break;
 			    case IDNO: NHEVENT_KBD('q'); done(QUIT); break;
 			    case IDCANCEL: break;
@@ -761,7 +761,7 @@ LRESULT onWMCommand(HWND hWnd, WPARAM wParam, LPARAM lParam)
             mswin_destroy_reg();
             /* Notify the user that windows settings will not be saved this time. */
             NHMessageBox(GetNHApp()->hMainWnd, 
-                "Your Windows Settings will not be stored when you exit this time.", 
+                "Deine Fenstereinstellungen werden nicht gespeichert, wenn du das Programm verlässt.", /* EN "Your Windows Settings will not be stored when you exit this time.", */
                 MB_OK | MB_ICONINFORMATION);
             break;
         }

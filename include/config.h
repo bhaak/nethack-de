@@ -353,7 +353,9 @@ typedef unsigned char	uchar;
 #ifdef TTY_GRAPHICS
 # define MENU_COLOR
 #endif
+#ifndef __MINGW32__
 #define USE_REGEX_MATCH
+#endif
 /* if USE_REGEX_MATCH is defined, use regular expressions (GNU regex.h)
  * otherwise use pmatch() to match menu color lines.
  * pmatch() provides basic globbing: '*' and '?' wildcards.
@@ -366,7 +368,9 @@ typedef unsigned char	uchar;
 
 #ifdef TTY_GRAPHICS
 # define MENU_COLOR
+# ifndef __MINGW32__
 # define MENU_COLOR_REGEX
+# endif
 /* if MENU_COLOR_REGEX is defined, use regular expressions (GNU regex.h)
  * otherwise use pmatch() to match menu color lines.
  * pmatch() provides basic globbing: '*' and '?' wildcards.

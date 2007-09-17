@@ -27,6 +27,11 @@
 
 #define LLEN 128
 
+
+#ifdef GERMAN
+#include "german.h"
+#endif
+
 extern const char *killed_by_prefix[];
 
 #ifdef _DEBUG
@@ -265,7 +270,7 @@ void mswin_player_selection(void)
 			flags.initrole = pick_role(flags.initrace, flags.initgend,
 							flags.initalign, PICK_RANDOM);
 			if (flags.initrole < 0) {
-				raw_print("Incompatible role!");
+				raw_print("Incompatible role!"); /* EN raw_print("Incompatible role!"); */
 				flags.initrole = randrole();
 			}
 		}
@@ -274,7 +279,7 @@ void mswin_player_selection(void)
 			flags.initrace = pick_race(flags.initrole, flags.initgend,
 								flags.initalign, PICK_RANDOM);
 			if (flags.initrace < 0) {
-				raw_print("Incompatible race!");
+				raw_print("Incompatible race!"); /* EN raw_print("Incompatible race!"); */
 				flags.initrace = randrace(flags.initrole);
 			}
 		}
@@ -284,7 +289,7 @@ void mswin_player_selection(void)
 			flags.initgend = pick_gend(flags.initrole, flags.initrace,
 							flags.initalign, PICK_RANDOM);
 			if (flags.initgend < 0) {
-				raw_print("Incompatible gender!");
+				raw_print("Incompatible gender!"); /* EN raw_print("Incompatible gender!"); */
 				flags.initgend = randgend(flags.initrole, flags.initrace);
 			}
 		}
@@ -294,7 +299,7 @@ void mswin_player_selection(void)
 			flags.initalign = pick_align(flags.initrole, flags.initrace,
 								flags.initgend, PICK_RANDOM);
 			if (flags.initalign < 0) {
-				raw_print("Incompatible alignment!");
+				raw_print("Incompatible alignment!"); /* EN raw_print("Incompatible alignment!"); */
 				flags.initalign = randalign(flags.initrole, flags.initrace);
 			}
 		}
@@ -416,11 +421,11 @@ give_up:	/* Quit */
 		if (any.a_int == 0)	/* must be non-zero */
 		    any.a_int = randrole()+1;
 		add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
-				"Random", MENU_UNSELECTED);
+				"Zufällig", MENU_UNSELECTED); /* EN "Random", MENU_UNSELECTED); */
 		any.a_int = i+1;	/* must be non-zero */
 		add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
-				"Quit", MENU_UNSELECTED);
-		Sprintf(pbuf, "Pick a role for your %s", plbuf);
+				"Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
+		Sprintf(pbuf, "Pick a role for your %s", plbuf); /* EN Sprintf(pbuf, "Pick a role for your %s", plbuf); */
 		end_menu(win, pbuf);
 		n = select_menu(win, PICK_ONE, &selected);
 		destroy_nhwindow(win);
@@ -487,11 +492,11 @@ give_up:	/* Quit */
 		    if (any.a_int == 0)	/* must be non-zero */
 			any.a_int = randrace(flags.initrole)+1;
 		    add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
-				    "Random", MENU_UNSELECTED);
+				    "Zufällig", MENU_UNSELECTED); /* EN "Random", MENU_UNSELECTED); */
 		    any.a_int = i+1;	/* must be non-zero */
 		    add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
-				    "Quit", MENU_UNSELECTED);
-		    Sprintf(pbuf, "Pick the race of your %s", plbuf);
+				    "Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
+		    Sprintf(pbuf, "Pick the race of your %s", plbuf); /* EN Sprintf(pbuf, "Pick the race of your %s", plbuf); */
 		    end_menu(win, pbuf);
 		    n = select_menu(win, PICK_ONE, &selected);
 		    destroy_nhwindow(win);
@@ -559,11 +564,11 @@ give_up:	/* Quit */
 		    if (any.a_int == 0)	/* must be non-zero */
 			any.a_int = randgend(flags.initrole, flags.initrace)+1;
 		    add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
-				    "Random", MENU_UNSELECTED);
+				    "Zufällig", MENU_UNSELECTED); /* EN "Random", MENU_UNSELECTED); */
 		    any.a_int = i+1;	/* must be non-zero */
 		    add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
-				    "Quit", MENU_UNSELECTED);
-		    Sprintf(pbuf, "Pick the gender of your %s", plbuf);
+				    "Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
+		    Sprintf(pbuf, "Pick the gender of your %s", plbuf); /* EN Sprintf(pbuf, "Pick the gender of your %s", plbuf); */
 		    end_menu(win, pbuf);
 		    n = select_menu(win, PICK_ONE, &selected);
 		    destroy_nhwindow(win);
@@ -630,11 +635,11 @@ give_up:	/* Quit */
 		    if (any.a_int == 0)	/* must be non-zero */
 			any.a_int = randalign(flags.initrole, flags.initrace)+1;
 		    add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
-				    "Random", MENU_UNSELECTED);
+				    "Zufällig", MENU_UNSELECTED); /* EN "Random", MENU_UNSELECTED); */
 		    any.a_int = i+1;	/* must be non-zero */
 		    add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
-				    "Quit", MENU_UNSELECTED);
-		    Sprintf(pbuf, "Pick the alignment of your %s", plbuf);
+				    "Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
+		    Sprintf(pbuf, "Pick the alignment of your %s", plbuf); /* EN Sprintf(pbuf, "Pick the alignment of your %s", plbuf); */
 		    end_menu(win, pbuf);
 		    n = select_menu(win, PICK_ONE, &selected);
 		    destroy_nhwindow(win);
@@ -656,8 +661,8 @@ void mswin_askname(void)
 {
 	logDebug("mswin_askname()\n");
 
-	if( mswin_getlin_window("Who are you?", plname, PL_NSIZ)==IDCANCEL ) {
-		bail("bye-bye");
+	if( mswin_getlin_window("Wie heißt du?", plname, PL_NSIZ)==IDCANCEL ) { /* EN if( mswin_getlin_window("Who are you?", plname, PL_NSIZ)==IDCANCEL ) { */
+		bail("bye-bye"); /* EN bail("bye-bye"); */
 		/* not reached */
 	}
 }
@@ -945,12 +950,19 @@ Attributes
 void mswin_putstr(winid wid, int attr, const char *text)
 {
 	logDebug("mswin_putstr(%d, %d, %s)\n", wid, attr, text);
+	logDebug("mswin_putstr(%d, %d, %d)\n", wid, attr, text);
 	
 	mswin_putstr_ex(wid, attr, text, 0);
 }
 
 void mswin_putstr_ex(winid wid, int attr, const char *text, int app)
 {
+#ifdef GERMAN
+	char german_tmpstr[TBUFSZ];
+        german_tmpstr[0] = '\0';
+        Strcpy(german_tmpstr, text);
+	text = (char *)german(german_tmpstr);
+#endif
 	if( (wid >= 0) && 
         (wid < MAXWINDOWS) )
 	{
@@ -1093,7 +1105,7 @@ void mswin_add_menu(winid wid, int glyph, const ANY_P * identifier,
 		data.accelerator = accelerator;
 		data.group_accel = group_accel;
 		data.attr = attr;
-		data.str = str;
+		data.str = german(str); /* EN data.str = str; */
 		data.presel = presel;
 
 		SendMessage( 
@@ -1391,6 +1403,11 @@ char mswin_yn_function(const char *question, const char *choices,
 	boolean digit_ok, allow_num;
 
 	logDebug("mswin_yn_function(%s, %s, %d)\n", question, choices, def);
+#ifdef GERMAN
+	char german_tmpstr[TBUFSZ];
+        german_tmpstr[0] = '\0';
+	question = (char *)german(strcpy(german_tmpstr,question));
+#endif
 
     if (WIN_MESSAGE == WIN_ERR && choices == ynchars) {
         char *text = realloc(strdup(GetNHApp()->saved_text), strlen(question)

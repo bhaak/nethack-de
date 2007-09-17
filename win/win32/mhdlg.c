@@ -9,6 +9,10 @@
 #include "resource.h"
 #include "mhdlg.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /*---------------------------------------------------------------*/
 /* data for getlin dialog */
 struct getlin_data {
@@ -547,9 +551,9 @@ void  plselAdjustLists(HWND hWnd, int changed_sel)
 		for (i = 0; roles[i].name.m; i++) {
 			if (ok_role(i, initrace, initgend, initalign)) {
 			    if (initgend>=0 && flags.female && roles[i].name.f)
-					ind = SendMessage(control_role, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(roles[i].name.f, wbuf, sizeof(wbuf)) );
+					ind = SendMessage(control_role, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(german(roles[i].name.f), wbuf, sizeof(wbuf)) );
 				else 
-					ind = SendMessage(control_role, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(roles[i].name.m, wbuf, sizeof(wbuf)) );
+					ind = SendMessage(control_role, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(german(roles[i].name.m), wbuf, sizeof(wbuf)) );
 
 				SendMessage(control_role, CB_SETITEMDATA, (WPARAM)ind, (LPARAM)i );
 				if( i==initrole ) { 
@@ -581,7 +585,7 @@ void  plselAdjustLists(HWND hWnd, int changed_sel)
 		SendMessage(control_race, CB_RESETCONTENT, 0, 0); 
 		for (i = 0; races[i].noun; i++)
 			if (ok_race(initrole, i, ROLE_NONE, ROLE_NONE)) {
-				ind = SendMessage(control_race, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(races[i].noun, wbuf, sizeof(wbuf)) ); 
+				ind = SendMessage(control_race, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(german(races[i].noun), wbuf, sizeof(wbuf)) ); 
 				SendMessage(control_race, CB_SETITEMDATA, (WPARAM)ind, (LPARAM)i ); 
 				if( i==initrace ) { 
 					SendMessage(control_race, CB_SETCURSEL, (WPARAM)ind, (LPARAM)0 );
@@ -610,7 +614,7 @@ void  plselAdjustLists(HWND hWnd, int changed_sel)
 		SendMessage(control_gender, CB_RESETCONTENT, 0, 0); 
 		for (i = 0; i < ROLE_GENDERS; i++)
 			if (ok_gend(initrole, initrace, i, ROLE_NONE)) {
-				ind = SendMessage(control_gender, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(genders[i].adj, wbuf, sizeof(wbuf)) ); 
+				ind = SendMessage(control_gender, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(german(genders[i].adj), wbuf, sizeof(wbuf)) ); 
 				SendMessage(control_gender, CB_SETITEMDATA, (WPARAM)ind, (LPARAM)i ); 
 				if( i==initgend ) { 
 					SendMessage(control_gender, CB_SETCURSEL, (WPARAM)ind, (LPARAM)0 );
@@ -638,7 +642,7 @@ void  plselAdjustLists(HWND hWnd, int changed_sel)
 		SendMessage(control_align, CB_RESETCONTENT, 0, 0); 
 		for (i = 0; i < ROLE_ALIGNS; i++)
 			if (ok_align(initrole, initrace, initgend, i)) {
-				ind = SendMessage(control_align, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(aligns[i].adj, wbuf, sizeof(wbuf)) ); 
+				ind = SendMessage(control_align, CB_ADDSTRING, (WPARAM)0, (LPARAM)NH_A2W(german(aligns[i].adj), wbuf, sizeof(wbuf)) ); 
 				SendMessage(control_align, CB_SETITEMDATA, (WPARAM)ind, (LPARAM)i ); 
 				if( i==initalign ) { 
 					SendMessage(control_align, CB_SETCURSEL, (WPARAM)ind, (LPARAM)0 );

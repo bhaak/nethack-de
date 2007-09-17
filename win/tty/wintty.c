@@ -385,12 +385,12 @@ give_up:	/* Quit */
 		flags.initrole = pick_role(flags.initrace, flags.initgend,
 						flags.initalign, PICK_RANDOM);
 		if (flags.initrole < 0) {
-		    tty_putstr(BASE_WINDOW, 0, "Incompatible role!");
+		    tty_putstr(BASE_WINDOW, 0, "Inkompatible NOUN_ROLE!"); /* EN tty_putstr(BASE_WINDOW, 0, "Incompatible role!"); */
 		    flags.initrole = randrole();
 		}
  	    } else {
 	    	tty_clear_nhwindow(BASE_WINDOW);
-		tty_putstr(BASE_WINDOW, 0, "Choosing Character's Role");
+		tty_putstr(BASE_WINDOW, 0, "Charakterklasse auswählen"); /* EN tty_putstr(BASE_WINDOW, 0, "Choosing Character's Role"); */
 		/* Prompt for a role */
 		win = create_nhwindow(NHW_MENU);
 		start_menu(win);
@@ -399,7 +399,7 @@ give_up:	/* Quit */
 		    if (ok_role(i, flags.initrace, flags.initgend,
 							flags.initalign)) {
 			any.a_int = i+1;	/* must be non-zero */
-			thisch = lowc(roles[i].name.m[0]);
+			thisch = lowc(roles[i].name.m[5]); /* EN thisch = lowc(roles[i].name.m[0]); */
 			if (thisch == lastch) thisch = highc(thisch);
 			if (flags.initgend != ROLE_NONE && flags.initgend != ROLE_RANDOM) {
 				if (flags.initgend == 1  && roles[i].name.f)
@@ -409,8 +409,10 @@ give_up:	/* Quit */
 			} else {
 				if (roles[i].name.f) {
 					Strcpy(rolenamebuf, roles[i].name.m);
+#ifndef GERMAN
 					Strcat(rolenamebuf, "/");
 					Strcat(rolenamebuf, roles[i].name.f);
+#endif
 				} else 
 					Strcpy(rolenamebuf, roles[i].name.m);
 			}	
@@ -424,11 +426,11 @@ give_up:	/* Quit */
 		if (any.a_int == 0)	/* must be non-zero */
 		    any.a_int = randrole()+1;
 		add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
-				"Random", MENU_UNSELECTED);
+				"Zufällig", MENU_UNSELECTED); /* EN "Random", MENU_UNSELECTED); */
 		any.a_int = i+1;	/* must be non-zero */
 		add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
-				"Quit", MENU_UNSELECTED);
-		Sprintf(pbuf, "Pick a role for your %s", plbuf);
+				"Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
+		Sprintf(pbuf, "Wähle eine Rolle für KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s", plbuf); /* EN Sprintf(pbuf, "Pick a role for your %s", plbuf); */
 		end_menu(win, pbuf);
 		n = select_menu(win, PICK_ONE, &selected);
 		destroy_nhwindow(win);
@@ -453,7 +455,7 @@ give_up:	/* Quit */
 		flags.initrace = pick_race(flags.initrole, flags.initgend,
 							flags.initalign, PICK_RANDOM);
 		if (flags.initrace < 0) {
-		    tty_putstr(BASE_WINDOW, 0, "Incompatible race!");
+		    tty_putstr(BASE_WINDOW, 0, "Inkompatibles Volk!"); /* EN tty_putstr(BASE_WINDOW, 0, "Incompatible race!"); */
 		    flags.initrace = randrace(flags.initrole);
 		}
 	    } else {	/* pick4u == 'n' */
@@ -479,7 +481,7 @@ give_up:	/* Quit */
 		/* Permit the user to pick, if there is more than one */
 		if (n > 1) {
 		    tty_clear_nhwindow(BASE_WINDOW);
-		    tty_putstr(BASE_WINDOW, 0, "Choosing Race");
+		    tty_putstr(BASE_WINDOW, 0, "Volk auswählen"); /* EN tty_putstr(BASE_WINDOW, 0, "Choosing Race"); */
 		    win = create_nhwindow(NHW_MENU);
 		    start_menu(win);
 		    any.a_void = 0;         /* zero out all bits */
@@ -487,7 +489,7 @@ give_up:	/* Quit */
 			if (ok_race(flags.initrole, i, flags.initgend,
 							flags.initalign)) {
 			    any.a_int = i+1;	/* must be non-zero */
-			    add_menu(win, NO_GLYPH, &any, races[i].noun[0],
+			    add_menu(win, NO_GLYPH, &any, lowc(races[i].noun[5]), /* add_menu(win, NO_GLYPH, &any, races[i].noun[0], */
 				0, ATR_NONE, races[i].noun, MENU_UNSELECTED);
 			}
 		    any.a_int = pick_race(flags.initrole, flags.initgend,
@@ -495,11 +497,11 @@ give_up:	/* Quit */
 		    if (any.a_int == 0)	/* must be non-zero */
 			any.a_int = randrace(flags.initrole)+1;
 		    add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
-				    "Random", MENU_UNSELECTED);
+				    "Zufällig", MENU_UNSELECTED); /* EN "Random", MENU_UNSELECTED); */
 		    any.a_int = i+1;	/* must be non-zero */
 		    add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
-				    "Quit", MENU_UNSELECTED);
-		    Sprintf(pbuf, "Pick the race of your %s", plbuf);
+				    "Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
+		    Sprintf(pbuf, "Wähle ein Volk für KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s", plbuf); /* EN Sprintf(pbuf, "Pick the race of your %s", plbuf); */
 		    end_menu(win, pbuf);
 		    n = select_menu(win, PICK_ONE, &selected);
 		    destroy_nhwindow(win);
@@ -525,7 +527,7 @@ give_up:	/* Quit */
 		flags.initgend = pick_gend(flags.initrole, flags.initrace,
 						flags.initalign, PICK_RANDOM);
 		if (flags.initgend < 0) {
-		    tty_putstr(BASE_WINDOW, 0, "Incompatible gender!");
+		    tty_putstr(BASE_WINDOW, 0, "Inkompatibles Geschlecht!"); /* EN tty_putstr(BASE_WINDOW, 0, "Incompatible gender!"); */
 		    flags.initgend = randgend(flags.initrole, flags.initrace);
 		}
 	    } else {	/* pick4u == 'n' */
@@ -551,7 +553,7 @@ give_up:	/* Quit */
 		/* Permit the user to pick, if there is more than one */
 		if (n > 1) {
 		    tty_clear_nhwindow(BASE_WINDOW);
-		    tty_putstr(BASE_WINDOW, 0, "Choosing Gender");
+		    tty_putstr(BASE_WINDOW, 0, "Geschlecht auswählen"); /* EN tty_putstr(BASE_WINDOW, 0, "Choosing Gender"); */
 		    win = create_nhwindow(NHW_MENU);
 		    start_menu(win);
 		    any.a_void = 0;         /* zero out all bits */
@@ -559,7 +561,7 @@ give_up:	/* Quit */
 			if (ok_gend(flags.initrole, flags.initrace, i,
 							    flags.initalign)) {
 			    any.a_int = i+1;
-			    add_menu(win, NO_GLYPH, &any, genders[i].adj[0],
+			    add_menu(win, NO_GLYPH, &any, lowc(genders[i].adj[9]), /* EN add_menu(win, NO_GLYPH, &any, genders[i].adj[0], */
 				0, ATR_NONE, genders[i].adj, MENU_UNSELECTED);
 			}
 		    any.a_int = pick_gend(flags.initrole, flags.initrace,
@@ -567,11 +569,11 @@ give_up:	/* Quit */
 		    if (any.a_int == 0)	/* must be non-zero */
 			any.a_int = randgend(flags.initrole, flags.initrace)+1;
 		    add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
-				    "Random", MENU_UNSELECTED);
+				    "Zufällig", MENU_UNSELECTED); /* EN "Random", MENU_UNSELECTED); */
 		    any.a_int = i+1;	/* must be non-zero */
 		    add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
-				    "Quit", MENU_UNSELECTED);
-		    Sprintf(pbuf, "Pick the gender of your %s", plbuf);
+				    "Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
+		    Sprintf(pbuf, "Wähle ein Geschlecht für KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s", plbuf); /* EN Sprintf(pbuf, "Pick the gender of your %s", plbuf); */
 		    end_menu(win, pbuf);
 		    n = select_menu(win, PICK_ONE, &selected);
 		    destroy_nhwindow(win);
@@ -596,7 +598,7 @@ give_up:	/* Quit */
 		flags.initalign = pick_align(flags.initrole, flags.initrace,
 							flags.initgend, PICK_RANDOM);
 		if (flags.initalign < 0) {
-		    tty_putstr(BASE_WINDOW, 0, "Incompatible alignment!");
+		    tty_putstr(BASE_WINDOW, 0, "Inkompatible Gesinnung!"); /* EN tty_putstr(BASE_WINDOW, 0, "Incompatible alignment!"); */
 		    flags.initalign = randalign(flags.initrole, flags.initrace);
 		}
 	    } else {	/* pick4u == 'n' */
@@ -622,7 +624,7 @@ give_up:	/* Quit */
 		/* Permit the user to pick, if there is more than one */
 		if (n > 1) {
 		    tty_clear_nhwindow(BASE_WINDOW);
-		    tty_putstr(BASE_WINDOW, 0, "Choosing Alignment");
+		    tty_putstr(BASE_WINDOW, 0, "Gesinnung auswählen"); /* EN tty_putstr(BASE_WINDOW, 0, "Choosing Alignment"); */
 		    win = create_nhwindow(NHW_MENU);
 		    start_menu(win);
 		    any.a_void = 0;         /* zero out all bits */
@@ -638,11 +640,11 @@ give_up:	/* Quit */
 		    if (any.a_int == 0)	/* must be non-zero */
 			any.a_int = randalign(flags.initrole, flags.initrace)+1;
 		    add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
-				    "Random", MENU_UNSELECTED);
+				    "Zufällig", MENU_UNSELECTED); /* EN "Random", MENU_UNSELECTED); */
 		    any.a_int = i+1;	/* must be non-zero */
 		    add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
-				    "Quit", MENU_UNSELECTED);
-		    Sprintf(pbuf, "Pick the alignment of your %s", plbuf);
+				    "Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
+		    Sprintf(pbuf, "Wähle eine Gesinnung für KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s", plbuf); /* EN Sprintf(pbuf, "Pick the alignment of your %s", plbuf); */
 		    end_menu(win, pbuf);
 		    n = select_menu(win, PICK_ONE, &selected);
 		    destroy_nhwindow(win);
@@ -668,7 +670,7 @@ give_up:	/* Quit */
 void
 tty_askname()
 {
-    static char who_are_you[] = "Who are you? ";
+		static char who_are_you[] = "Wie heißt du? "; /* EN static char who_are_you[] = "Who are you? "; */
     register int c, ct, tryct = 0;
 
     tty_putstr(BASE_WINDOW, 0, "");
@@ -1810,7 +1812,7 @@ tty_putstr(window, attr, str)
 #if defined(USER_SOUNDS) && defined(WIN32CON)
 	play_sound_for_message(str);
 #endif
-	//	str = (char *)german(strcpy(newstr,str));
+	str = (char *)german(strcpy(newstr,str));
 	update_topl(str);
 	break;
 

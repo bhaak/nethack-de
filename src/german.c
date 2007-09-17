@@ -4,8 +4,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-//#include <hack.h>
+#ifdef OHNE_HACK_H
+# include "hack.h"
+#endif
+
 #include "german.h"
+
 #define TBUFSZ 300
 
 //#define DEBUG 1
@@ -97,11 +101,12 @@ void print_state()
 }
 
 
-// returns true, if token has a final lowercase s 
-int is_plural(const char* token) {
+// returns true, if token has a final lowercase s
+int token_is_plural(const char* token) {
 	return (token[strlen(token)-1] == 's');
 
 }
+
 int next_token(const char* input, char* output, int pos) {
 	int i=pos;
 	int j=0;
@@ -132,7 +137,7 @@ int next_token(const char* input, char* output, int pos) {
 					(strncmp(tmp, "NOUN_POT_FRUIT_JUICE",20)==0) ||
 					(strncmp(tmp, "NOUN_POT_HOLY_WATER",19)==0) ||
 					(strncmp(tmp, "NOUN_POT_UNHOLY_WATER",19)==0)) {
-				if (is_plural(output)) { strcpy(output, "NOUN_FLASCHEs"); }
+				if (token_is_plural(output)) { strcpy(output, "NOUN_FLASCHEs"); }
 				else { strcpy(output, "NOUN_FLASCHE"); }
 			}
 		}
@@ -346,7 +351,7 @@ void german2meta(const char *str, char *output)
 				printf("MADE_OF_WAND 4 %s\n", output);
 				i = i + strlen(wort->wort);
 			} else if (strncmp("NOUN_FLASCHE", wort->typ, 12)==0) {
-				if (is_plural(wort->typ)) {
+				if (token_is_plural(wort->typ)) {
 					strcat(output, "NOUN_POTIONs PARTIKEL_OF");
 				} else {
 					strcat(output, "NOUN_POTION PARTIKEL_OF");
@@ -775,7 +780,7 @@ char* german(const char *line) {
 			Role_if(PM_SAMURAI) ||
 			Role_if(PM_WIZARD))
 #else
-	if (1)
+	if (0)
 #endif
 	{
 		pm_genus   = maskulin; // change to players choice
@@ -985,8 +990,18 @@ char* german(const char *line) {
 			c_artikel = grundform; // für prädikativen Gebrauch nötig "Das Pferd ist gesattelt."
 
 		} else if (strncmp("ADJEKTIV_", tmp, 9)==0) {
+#ifdef DEBUG
+			printf("ADJEKTIV_ %s\n", tmp);
+			printf("c_casus %d\n", c_casus);
+			print_state();
+#endif
 			//finde_naechstes_substantiv(line+pos);
-			append(output, get_adjektiv(tmp, c_casus, c_genus, c_numerus, c_artikel));
+			if ((c_genus == 0) && (c_numerus == 0) && (c_numerus ==0)) {
+				// alleinstehendes Adjektiv
+				append(output, get_adjektiv(tmp, nominativ, maskulin, n_singular, grundform));
+			} else {
+				append(output, get_adjektiv(tmp, c_casus, c_genus, c_numerus, c_artikel));
+			}
 
 		} else if (strncmp("PARTIKEL_", tmp, 9)==0) {
 			//finde_naechstes_substantiv(line+pos);
@@ -1023,9 +1038,17 @@ char* german(const char *line) {
 			}
 		} else if (strcmp("SATZKLAMMER", tmp)==0) {
 			//printf("satzklammer output: -%s-\n", output);
-			//printf("strlen %d\n", strlen(output)-1);
-			if (output[strlen(output)-1]!=' ') { append(output, " "); }
-			append(output, verb_praeverb);
+			//printf("strlen(output)-1      %d\n", strlen(output)-1);
+			//printf("strlen(verb_praeverb) %d\n", strlen(verb_praeverb));
+			if (strlen(verb_praeverb)>0) {
+				if (output[strlen(output)-1]!=' ') { append(output, " "); }
+					append(output, verb_praeverb);
+			} else {
+				if (output[strlen(output)-1]==' ') {
+					output[strlen(output)-1] = '\0';
+					insert_char = 0;
+				}
+			}
 
 		} else if (strncmp("NEUES_OBJECT", tmp, 6)==0) {
 			insert_char = 0;
@@ -1108,7 +1131,11 @@ char* german(const char *line) {
 		output[0] = toupper(output[0]);
 	}
 
+#ifdef __MINGW32__
+        FILE *file = fopen("C:/nethack-de.log", "a");
+#else
 	FILE *file = fopen("/tmp/nethack-de.log", "a");
+#endif
 	fprintf(file, "%s\n",line);
 	fprintf(file, "%s\n",output);
 	fclose(file);
