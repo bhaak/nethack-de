@@ -85,7 +85,7 @@ moverock()
 #endif
 				    ) {
 	    if (Blind) feel_location(sx, sy);
-	    pline("SUBJECT VERB_SEIN zu klein um OBJECT PRONOMEN_BESTIMMTER %s zu schieben.", xname(otmp)); /* EN pline("You're too small to push that %s.", xname(otmp)); */
+	    pline("SUBJECT VERB_SEIN zu klein um OBJECT ARTIKEL_BESTIMMTER %s zu schieben.", xname(otmp)); /* EN pline("You're too small to push that %s.", xname(otmp)); */
 	    goto cannot_push;
 	}
 	if (isok(rx,ry) && !IS_ROCK(levl[rx][ry].typ) &&
@@ -140,7 +140,7 @@ moverock()
 			newsym(sx, sy);
 			pline("KABUUUM!!!  SUBJECT %s OBJECT %s NOUN_LAND_MINE SATZKLAMMER.", /* EN pline("KAABLAMM!!!  %s %s land mine.", */
 			      Tobjnam(otmp, "VERB_AUSLOESEN"), /* EN Tobjnam(otmp, "trigger"), */
-			      ttmp->madeby_u ? "PRONOMEN_POSSESIV" : "ARTIKEL_UNBESTIMMTER"); /* EN ttmp->madeby_u ? "your" : "a"); */
+			      ttmp->madeby_u ? "PRONOMEN_POSSESSIV" : "ARTIKEL_UNBESTIMMTER"); /* EN ttmp->madeby_u ? "your" : "a"); */
 			blow_up_landmine(ttmp);
 			/* if the boulder remains, it should fill the pit */
 			fill_pit(u.ux, u.uy);

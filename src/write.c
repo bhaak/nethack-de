@@ -101,7 +101,7 @@ register struct obj *pen;
 	}
 	paper->dknown = 1;
 	if(paper->otyp != SCR_BLANK_PAPER && paper->otyp != SPE_BLANK_PAPER) {
-		pline("SUBJECT ARTIKEL_BESTIMMER %s ist schon beschriftet!", typeword); /* EN pline("That %s is not blank!", typeword); */
+		pline("SUBJECT ARTIKEL_BESTIMMTER %s ist schon beschriftet!", typeword); /* EN pline("That %s is not blank!", typeword); */
 		exercise(A_WIS, FALSE);
 		return(1);
 	}
