@@ -9,6 +9,10 @@
  */
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef DUMP_LOG
 STATIC_DCL int FDECL(enhance_skill, (boolean));
 #endif
@@ -743,13 +747,13 @@ char *buf;
     const char *ptr;
 
     switch (P_SKILL(skill)) {
-	case P_UNSKILLED:    ptr = "Unskilled"; break; /* EN case P_UNSKILLED:    ptr = "Unskilled"; break; */ // TODO DE
-	case P_BASIC:	     ptr = "Basic";     break; /* EN case P_BASIC:	     ptr = "Basic";     break; */ // TODO DE
-	case P_SKILLED:	     ptr = "Skilled";   break; /* EN case P_SKILLED:	     ptr = "Skilled";   break; */ // TODO DE
-	case P_EXPERT:	     ptr = "Expert";    break; /* EN case P_EXPERT:	     ptr = "Expert";    break; */ // TODO DE
+	case P_UNSKILLED:    ptr = "unerfahren"; break; /* EN case P_UNSKILLED:    ptr = "Unskilled"; break; */
+	case P_BASIC:	     ptr = "Anf‰nger";     break; /* EN case P_BASIC:	     ptr = "Basic";     break; */
+	case P_SKILLED:	     ptr = "Ausgebildeter";   break; /* EN case P_SKILLED:	     ptr = "Skilled";   break; */ // ausgebildet, bewandert, erfahren, gelernt, geschickt,geschult, qualifiziert ???
+	case P_EXPERT:	     ptr = "Experte";    break; /* EN case P_EXPERT:	     ptr = "Expert";    break; */
 	/* these are for unarmed combat/martial arts only */
-	case P_MASTER:	     ptr = "Master";    break; /* EN case P_MASTER:	     ptr = "Master";    break; */ // TODO DE
-	case P_GRAND_MASTER: ptr = "Grand Master"; break; /* EN case P_GRAND_MASTER: ptr = "Grand Master"; break; */ // TODO DE
+	case P_MASTER:	     ptr = "Meister";    break; /* EN case P_MASTER:	     ptr = "Master";    break; */
+	case P_GRAND_MASTER: ptr = "Groﬂmeister"; break; /* EN case P_GRAND_MASTER: ptr = "Grand Master"; break; */
 	default:	     ptr = "Unknown";	break;
     }
     Strcpy(buf, ptr);
@@ -899,7 +903,7 @@ int enhance_skill(boolean want_dump)
 	    to_advance = eventually_advance = maxxed_cnt = 0;
 	    for (longest = 0, i = 0; i < P_NUM_SKILLS; i++) {
 		if (P_RESTRICTED(i)) continue;
-		if ((len = strlen(P_NAME(i))) > longest)
+		if ((len = strlen(german(P_NAME(i)))) > longest) /* EN if ((len = strlen(P_NAME(i))) > longest) */
 		    longest = len;
 		if (can_advance(i, speedy)) to_advance++;
 		else if (could_advance(i)) eventually_advance++;
@@ -964,7 +968,7 @@ int enhance_skill(boolean want_dump)
 		if (want_dump) {
 		  if (P_SKILL(i) > P_UNSKILLED) {
 		    Sprintf(buf2,"%-*s [%s]",
-			    longest, P_NAME(i),skill_level_name(i, buf));
+			    longest, german(P_NAME(i)),skill_level_name(i, buf)); /* EN longest, P_NAME(i),skill_level_name(i, buf)); */
 		    dump("    ",buf2);
 		    logged=TRUE;
 		  } else if (i == skill_ranges[pass].last && !logged) {
@@ -977,7 +981,7 @@ int enhance_skill(boolean want_dump)
 		 * Sigh, this assumes a monospaced font unless
 		 * iflags.menu_tab_sep is set in which case it puts
 		 * tabs between columns.
-		 * The 12 is the longest skill level name.
+		 * The 13 is the longest skill level name.
 		 * The "    " is room for a selection letter and dash, "a - ".
 		 */
 		if (can_advance(i, speedy))
@@ -993,13 +997,13 @@ int enhance_skill(boolean want_dump)
 #ifdef WIZARD
 		if (wizard) {
 		    if (!iflags.menu_tab_sep)
-			Sprintf(buf, " %s%-*s %-12s %5d(%4d)",
-			    prefix, longest, P_NAME(i), sklnambuf,
+			Sprintf(buf, " %s%-*s %-13s %5d(%4d)",
+			    prefix, longest, german(P_NAME(i)), sklnambuf, /* EN prefix, longest, P_NAME(i), sklnambuf, */
 			    P_ADVANCE(i),
 			    practice_needed_to_advance(P_SKILL(i)));
 		    else
 			Sprintf(buf, " %s%s\t%s\t%5d(%4d)",
-			    prefix, P_NAME(i), sklnambuf,
+			    prefix, german(P_NAME(i)), sklnambuf, /* EN prefix, P_NAME(i), sklnambuf, */
 			    P_ADVANCE(i),
 			    practice_needed_to_advance(P_SKILL(i)));
 		 } else
@@ -1007,10 +1011,10 @@ int enhance_skill(boolean want_dump)
 		{
 		    if (!iflags.menu_tab_sep)
 			Sprintf(buf, " %s %-*s [%s]",
-			    prefix, longest, P_NAME(i), sklnambuf);
+			    prefix, longest, german(P_NAME(i)), sklnambuf); /* EN prefix, longest, P_NAME(i), sklnambuf); */
 		    else
 			Sprintf(buf, " %s%s\t[%s]",
-			    prefix, P_NAME(i), sklnambuf);
+			    prefix, german(P_NAME(i)), sklnambuf); /* EN prefix, P_NAME(i), sklnambuf); */
 		}
 		any.a_int = can_advance(i, speedy) ? i+1 : 0;
 		add_menu(win, NO_GLYPH, &any, 0, 0, ATR_NONE,

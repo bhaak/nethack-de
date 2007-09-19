@@ -10,6 +10,10 @@
 #include "patchlevel.h"
 #endif
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef VMS
  /* We don't want to rewrite the whole file, because that entails	 */
  /* creating a new version which requires that the old one be deletable. */
@@ -212,7 +216,7 @@ struct toptenentry *tt;
 		(void) fprintf(rfile,"%c%c %s,%s\n",
 #endif
 			tt->plrole[0], tt->plgend[0],
-			onlyspace(tt->name) ? "_" : tt->name, tt->death);
+			onlyspace(tt->name) ? "_" : tt->name, german(tt->death));
 	else
 #ifdef NO_SCAN_BRACK
 		(void) fprintf(rfile,"%s %s %s %s %s %s\n",
@@ -220,7 +224,7 @@ struct toptenentry *tt;
 		(void) fprintf(rfile,"%s %s %s %s %s,%s\n",
 #endif
 			tt->plrole, tt->plrace, tt->plgend, tt->plalign,
-			onlyspace(tt->name) ? "_" : tt->name, tt->death);
+			onlyspace(tt->name) ? "_" : tt->name, german(tt->death));
 
 #ifdef NO_SCAN_BRACK
 	nsb_unmung_line(tt->name);
@@ -689,6 +693,9 @@ boolean so;
 	if (second_line)
 	    Sprintf(eos(linebuf), "  %c%s.", highc(*(t1->death)), t1->death+1);
 
+#ifdef GERMAN
+	Strcpy(linebuf, german(linebuf));
+#endif
 	lngr = (int)strlen(linebuf);
 	if (t1->hp <= 0) hpbuf[0] = '-', hpbuf[1] = '\0';
 	else Sprintf(hpbuf, "%d", t1->hp);

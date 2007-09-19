@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+#include "german.h"
+#endif
+
 static NEARDATA schar delay;		/* moves left for this spell */
 static NEARDATA struct obj *book;	/* last/current book being xscribed */
 
@@ -1077,7 +1081,7 @@ int *spell_no;
 	for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
 		Sprintf(buf, iflags.menu_tab_sep ?
 			"%s\t%-d%s\t%s\t%-d%%" : "%-20s  %2d%s   %-12s %3d%%",
-			spellname(i), spellev(i),
+			german(spellname(i)), spellev(i), /* EN spellname(i), spellev(i), */
 			spellknow(i) ? " " : "*",
 			spelltypemnemonic(spell_skilltype(spellid(i))),
 			100 - percent_success(i));
