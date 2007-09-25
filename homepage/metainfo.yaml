@@ -1,0 +1,17 @@
+index.page:
+  inMenu: true
+  orderInfo: 1
+
+status.page:
+  inMenu: true
+  orderInfo: 2
+
+download.page:
+  inMenu: true
+  orderInfo: 3
+
+english.page:
+  title: English
+  inMenu: true
+  orderInfo: 4
+

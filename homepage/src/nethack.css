@@ -1,0 +1,28 @@
+* {
+	font-weight:bold;
+	color: #0F0;
+	background-color: black;
+}
+.logo {
+	text-align: right;
+}
+
+p > img {
+	margin: 1em;
+	padding: 0.1em;
+	border: 1px solid white;
+}
+.nethack table { border-collapse: collapse }
+.nethack th, .nethack td {  padding: 0.2em 0.5em 0.2em 0.5em;
+                            border: 1px solid green }
+.nethack th.balken {
+	border-left: 1px solid black;
+	border-right: 1px solid black; }
+.nethack th.balken:last-child { border-right: 1px solid green; }
+.nethack td.leer { background-color: #888; }
+.nethack td.teilweise { background-color: orange; }
+.nethack td.vollstaendig { background-color: green; }
+
+.nethack td.leer, .nethack td.teilweise, .nethack td.vollstaendig {
+	border: 1px solid black;
+}

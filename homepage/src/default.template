@@ -8,6 +8,7 @@
     <meta name="keywords" content="your,keywords,goes,here" />
     <meta name="author" content="Your Name / Original design by Andreas Viklund - http://andreasviklund.com" />
     <meta name="generator" content="webgen - http://webgen.rubyforge.org" />
+    <link rel="stylesheet" href="{relocatable: nethack.css}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{relocatable: default.css}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{resource: webgen-css}" type="text/css" media="screen" />
     <title>{title:}</title>

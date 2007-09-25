@@ -1,0 +1,15 @@
+---
+title: English summary
+---
+NetHack-de is an attempt at a German translation of "NetHack":http://www.nethack.org/.
+
+The current state of the translation is work-in-progress.
+
+At the moment around
+{execute: cd ../src; ./statistik | tail -1 | tr -s \  | cut -f 5 -d \  | cut -f 1 -d .}%
+of the in-game text is translated.
+Detailed information about the state of the program can be found on the "status page":status.html.
+
+The source code is available from "Sourceforge via Subversion":http://sourceforge.net/svn/?group_id=191550.
+!nethack_inventory.png(Screenshot NetHack-De showing the inventory)!
+
