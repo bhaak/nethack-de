@@ -598,6 +598,7 @@ def ausgabe_verbs
     Verb.verb("VERB_GELINGEN","gelingen"),
     Verb.verb("VERB_FUEHREN","führen"),
     Verb.verb("VERB_BEENDEN","beenden"),
+    Verb.verb("VERB_BETRETEN","betreten"),
     Verb.verb("VERB_ABSORBIEREN","absorbieren"),
     Verb.verb("VERB_HAUEN","hauen"),
     Verb.verb("VERB_PLATZIEREN","platzieren"),
@@ -770,6 +771,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_DISARM","entschärfen"),
 		Verb.verb("VERB_DUERFEN","dürfen"),
 		Verb.verb("VERB_EINSCHLAFEN","schlafen","ein"),
+		Verb.verb("VERB_ERGREIFEN","ergreifen"),
 		Verb.verb("VERB_ERLANGEN","erlangen"),
 		Verb.verb("VERB_ERSTRAHLEN","erstrahlen"),
 		Verb.verb("VERB_ESSEN","essen"),
@@ -786,10 +788,12 @@ def ausgabe_verbs
 		Verb.verb("VERB_KENNEN","kennen"),
 		Verb.verb("VERB_KLAEREN","klären"),
 		Verb.verb("VERB_KLETTERN","klettern"),
+		Verb.verb("VERB_KONZENTRIEREN","konzentrieren"),
 		Verb.verb("VERB_KNALLEN","knallen"),
 		Verb.verb("VERB_KRIEGEN","kriegen"),
 		Verb.verb("VERB_LAEUTEN","läuten"),
 		Verb.verb("VERB_MEIDEN","meiden"),
+		Verb.verb("VERB_MOEGEN","mögen"),
 		Verb.verb("VERB_MUESSEN","müssen"),
 		Verb.verb("VERB_OWE","schulden"),
 		Verb.verb("VERB_PREDIGEN","predigen"),
@@ -797,6 +801,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_SAEUBERN","säubern"),
 		Verb.verb("VERB_SCHLAGEN","schlagen"),
 		Verb.verb("VERB_SCHLEUDERN","schleudern"),
+		Verb.verb("VERB_SCHREIEN","schreien"),
 		Verb.verb("VERB_SEHEN","sehen"),
 		Verb.verb("VERB_SETZEN","setzen"),
 		Verb.verb("VERB_SINKEN","sinken"),
@@ -814,8 +819,27 @@ def ausgabe_verbs
 		Verb.verb("VERB_VERSENGEN","versengen"),
 		Verb.verb("VERB_VERWIRREN","verwirren"),
 		Verb.verb("VERB_WECHSELN","wechseln"),
+		Verb.verb("VERB_WISSEN","wissen"),
 		Verb.verb("VERB_ZIEHEN","ziehen"),
 		Verb.verb("VERN_NEHMEN","nehmen"),
+
+    Verb.verb("VERB_HISS","fauchen"),
+    Verb.verb("VERB_GROWL","knurren"),
+    Verb.verb("VERB_YELP","jaulen"),
+    Verb.verb("VERB_YOWL","jaulen"),
+    Verb.verb("VERB_ROAR","brüllen"),
+    Verb.verb("VERB_BUZZ","brummen"),
+    Verb.verb("VERB_SQUEAL","quieken"),
+    Verb.verb("VERB_SCREECH","krächzen"),
+    Verb.verb("VERB_SCREAK","kreischen"),
+    Verb.verb("VERB_SHRIEK","kreischen"),
+    Verb.verb("VERB_NEIGH","wiehern"),
+    Verb.verb("VERB_WAIL","heulen"),
+    Verb.verb("VERB_SNARL","fletschen"),
+    Verb.verb("VERB_WHIMPER","wimmern"),
+		Verb.verb("VERB_WHINE","winseln"),
+    #Verb.verb("VERB_COMMOTION"; /* EN ret = "commotion"; */
+    Verb.verb("VERB_SCREAM","schreien"),
   ]
 
   puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
@@ -1093,6 +1117,17 @@ def ausgabe_nouns
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "deine",  [$nom,$akk], [$mal,$fem,$neu], $pl),
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "deiner", $gen, [$mal,$fem,$neu], $pl),
     unregelmaessiges_wort("PRONOMEN_POSSESSIV", "deinen", $dat, [$mal,$fem,$neu], $pl),
+    "",
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Euer",   $nom, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Eures", $gen, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Eurem", $dat, [$mal,$neu], $sg),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Euren", $akk,  $mal,       $sg),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Euer",   $akk,  $neu,       $sg),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Eure",  [$nom,$akk], $fem, $sg),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Eurer", [$gen,$dat], $fem, $sg),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Eure",  [$nom,$akk], [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Eurer", $gen, [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_POSSESSIV_PL", "Euren", $dat, [$mal,$fem,$neu], $pl),
     "",
     unregelmaessiges_wort("PRONOMEN_DIESER",  "dieser",   $nom, $mal, $sg),
     unregelmaessiges_wort("PRONOMEN_DIESER",  "diesen",   $akk, $mal, $sg),
@@ -1662,8 +1697,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TRIPE_RATION", "Pansen", "s",  "Pansen", "", "maskulin"),
     "/* NOUN_CORPSE is irregular and treated specially */",
     dekliniere_substantiv("NOUN_CORPSE","Kadaver","s","Kadaver","","maskulin"),
-    #dekliniere_substantiv("NOUN_CORPSE","Leiche","","Leiche","en","feminin"),
-    #dekliniere_substantiv("NOUN_CORPSE","Leichnam","s","Leichnam","e","feminin"),
+    # dekliniere_substantiv("NOUN_CORPSE","Leiche","","Leiche","en","feminin"),
+    # dekliniere_substantiv("NOUN_CORPSE","Leichnam","s","Leichnam","e","feminin"),
     dekliniere_substantiv("NOUN_EGG","Ei","es","Ei","er","neutrum"),
     #dekliniere_substantiv("NOUN_MEATBALL" # Kloesschen, Fleischklops, Fleischball?
     #dekliniere_substantiv("NOUN_MEAT_STICK",Salami?
@@ -1696,8 +1731,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TIN","Dose","","Dose","en","feminin"),
     "",
     "/* Potions, identified */",
-    #dekliniere_substantiv("NOUN_POT_GAIN_ABILITY" 
-    #dekliniere_substantiv("NOUN_POT_RESTORE_ABILITY"
+    #dekliniere_substantiv("NOUN_POT_GAIN_ABILITY" # Fertigkeitsgewinn
+    #dekliniere_substantiv("NOUN_POT_RESTORE_ABILITY" #
     dekliniere_substantiv("NOUN_POT_CONFUSION", "Verwirrung", "", "Verwirrung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_BLINDNESS", "Blindheit", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_PARALYSIS", "Lähmung", "", "Lähmung", "en", "feminin", "s"), # der Lähmung, der Paralyse
@@ -2121,7 +2156,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BABY_PURPLE_WORM", "Purpurwürmchen", "s", "Purpurwürmchen", "", "neutrum"),
     dekliniere_substantiv("NOUN_LONG_WORM", "Langwurm", "es", "Langwürm", "er", "maskulin"),
     dekliniere_substantiv("NOUN_PURPLE_WORM", "Purpurwurm", "es", "Purpurwürm", "er", "maskulin"),
-    #dekliniere_substantiv("NOUN_GRID_BUG"
+    dekliniere_substantiv("NOUN_GRID_BUG", "Rastertaster", "s", "Rastertaster", "", "maskulin"), # Rastertaster, Maxtrixviech
     dekliniere_substantiv("NOUN_XAN", "Xan", "", "Xan", "", "maskulin"),
     dekliniere_nominalphrase("NOUN_YELLOW_LIGHT", "gelb", "Licht", "es", "Licht", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_BLACK_LIGHT", "schwarz", "Licht", "es", "Licht", "er", "neutrum"),
@@ -2203,14 +2238,14 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HUMAN_MUMMY", "Menschenmumie", "", "Menschenmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_ETTIN_MUMMY", "Ettinmumie", "", "Ettinmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_GIANT_MUMMY", "Riesenmumie", "", "Riesenmumie", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_RED_NAGA_HATCHLING"
-    #dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING"
-    #dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING"
-    #dekliniere_substantiv("NOUN_GUARDIAN_NAGA_HATCHLING"
-    dekliniere_substantiv("NOUN_RED_NAGA", "Naga", "s", "Naga", "s", "feminin"), # Rotnaga, rote Naga, roter Naga?
-    #dekliniere_substantiv("NOUN_BLACK_NAGA" # Schwarznaga
-    #dekliniere_substantiv("NOUN_GOLDEN_NAGA" # Goldnaga oder goldene Naga
-    #dekliniere_substantiv("NOUN_GUARDIAN_NAGA" # Wächternaga, Hüternaga
+    dekliniere_substantiv("NOUN_RED_NAGA_HATCHLING", "Rotnagaschlüpfling", "s", "Rotnagaschlüpfling", "s", "feminin"), # Rotnagaküken, Rotnagaschlüpfling
+    dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING", "Schwarznagaschlüpfling", "s", "Schwarznagaschlüpfling", "s", "feminin"),
+    dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING", "Goldnagaschlüpfling", "s", "Goldnagaschlüpfling", "s", "feminin"),
+    dekliniere_substantiv("NOUN_GUARDIAN_NAGA_HATCHLING", "Schutznagaschlüpfling", "s", "Schutznagaschlüpfling", "s", "feminin"),
+    dekliniere_substantiv("NOUN_RED_NAGA", "Rotnaga", "s", "Rotnaga", "s", "feminin"), # Rotnaga, rote Naga, roter Naga?
+    dekliniere_substantiv("NOUN_BLACK_NAGA", "Schwarznaga", "s", "Schwarznaga", "s", "feminin"), 
+    dekliniere_substantiv("NOUN_GOLDEN_NAGA", "Goldnaga", "s", "Goldnaga", "s", "feminin"),
+    dekliniere_substantiv("NOUN_GUARDIAN_NAGA", "Schutznaga", "s", "Schutznaga", "s", "feminin"), # Wächternaga, Hüternaga, Schutznaga
     dekliniere_substantiv("NOUN_OGRE", "Oger", "s", "Oger", "", "maskulin"),
     dekliniere_substantiv("NOUN_OGRE_LORD","Ogerfürst","en","Ogerfürst","en","maskulin", "en"),
     dekliniere_substantiv("NOUN_OGRE_KING","Ogerkönig","es","Ogerkönig","e","maskulin"),
@@ -2233,7 +2268,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WATER_TROLL", "Wassertroll",  "es", "Wassertroll", "e", "maskulin"),
     dekliniere_substantiv("NOUN_OLOG_HAI","Olog-Hai","","Olog-Hai","fremder","maskulin"),
     dekliniere_substantiv("NOUN_UMBER_HULK", "Umberholk", "es", "Umberholk", "e","maskulin", "en"), # Erdkoloss, Umbraunkoloss?, Umberholk?, Umbraholk?, Umbraunholk? Umbrauner Holk? Umbrauner Koloss?
-    #dekliniere_nominalphrase("NOUN_UMBER_HULK", "Umbraun", "Holk", "es", "Holk", "e","maskulin", "en"),
+    # dekliniere_nominalphrase("NOUN_UMBER_HULK", "Umbraun", "Holk", "es", "Holk", "e","maskulin", "en"),
     dekliniere_substantiv("NOUN_VAMPIRE","Vampir","es","Vampir","e","maskulin"),
     #dekliniere_substantiv("NOUN_VAMPIRE_LORD"
     #dekliniere_substantiv("NOUN_VAMPIRE_MAGE"
@@ -2247,7 +2282,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_OWLBEAR", "Eulenbär", "en", "Eulenbär", "en", "maskulin"),
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
     #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
-    #dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatch", "e", "maskulin"),
+    # dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatches", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE", "Koboldszombie", "s", "Koboldszombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_GNOME_ZOMBIE", "Gnomenzombie", "s", "Gnomenzombie", "s", "maskulin"),
@@ -2350,24 +2385,31 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ARCHAEOLOGIN", "Archäologin", "", "Archäologinn", "en", "feminin"),
     dekliniere_substantiv("NOUN_BARBAR", "Barbar", "en", "Barbar", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_BARBARIN", "Barbarin", "", "Barbarinn", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_CAVEMAN"
-    #dekliniere_substantiv("NOUN_CAVEWOMAN"
+    dekliniere_substantiv("NOUN_HOEHLENMENSCH", "Höhlenmensch", "en", "Höhlenmensch", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_CAVEMAN", "Höhlenmensch", "en", "Höhlenmensch", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_CAVEWOMAN", "Höhlenmensch", "en", "Höhlenmensch", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_HEILER","Heiler","s","","","maskulin"),
     dekliniere_substantiv("NOUN_HEILERIN","Heilerin","","","","feminin"),
-    #dekliniere_substantiv("NOUN_KNIGHT"
-    dekliniere_substantiv("NOUN_MONK", "Mönch", "es", "Mönch", "e", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_KNIGHT", "Paladin","s","Paladin","e","maskulin"),
+    dekliniere_substantiv("NOUN_PALADIN","Paladin","s","Paladin","e","maskulin"),
+    dekliniere_substantiv("NOUN_MONK",  "Mönch", "es", "Mönch", "e", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_MOENCH","Mönch", "es", "Mönch", "e", "maskulin", "en"),
     dekliniere_substantiv("NOUN_PRIEST", "Priester", "s", "Priester", "", "maskulin"),
     dekliniere_substantiv("NOUN_PRIESTESS", "Priesterin", "", "Priesterinn", "en", "feminin","nen"),
     dekliniere_substantiv("NOUN_PRIESTER", "Priester", "s", "Priester", "", "maskulin"),
     dekliniere_substantiv("NOUN_PRIESTERIN", "Priesterin", "", "Priesterinn", "en", "feminin","nen"),
-    #dekliniere_substantiv("NOUN_RANGER"
-    #dekliniere_substantiv("NOUN_ROGUE"
+    dekliniere_substantiv("NOUN_RANGER","Waldläufer","s","Waldläufer","","maskulin"),
+    dekliniere_substantiv("NOUN_WALDLAEUFER","Waldläufer","s","Waldläufer","","maskulin"),
+    dekliniere_substantiv("NOUN_ROGUE","Dieb","es","Dieb","e","maskulin"),
+    dekliniere_substantiv("NOUN_DIEB", "Dieb","es","Dieb","e","maskulin"),
+    dekliniere_substantiv("NOUN_DIEBIN","Diebin","","Diebinn","en","feminin","nen"),
     dekliniere_substantiv("NOUN_SAMURAI", "Samurai", "", "Samurai", "", "maskulin"),
     dekliniere_substantiv("NOUN_SAMURAIIN", "Samurai", "", "Samurai", "", "feminin"),
     dekliniere_substantiv("NOUN_TOURIST", "Tourist", "en", "Tourist", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_TOURISTIN", "Touristin", "", "Touristinn", "en", "feminin", "nen"),
     dekliniere_substantiv("NOUN_VALKYRIE", "Walküre", "", "Walküre", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_WIZARD"
+    dekliniere_substantiv("NOUN_MAGIER","Magier","s","Magier","","maskulin"),
+    dekliniere_substantiv("NOUN_WIZARD","Magier","s","Magier","","maskulin"),
     #dekliniere_substantiv("NOUN_LORD_CARNARVON"
     #dekliniere_substantiv("NOUN_PELIAS"
     #dekliniere_substantiv("NOUN_SHAMAN_KARNOV"
@@ -2376,7 +2418,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_HIPPOCRATES"
     #dekliniere_substantiv("NOUN_KING_ARTHUR"
     dekliniere_substantiv("NOUN_GRAND_MASTER", "Großmeister", "s", "Großmeister", "", "maskulin"), 
-    #dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
+    # dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
     dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin"),
     dekliniere_substantiv("NOUN_ORION", "Orion", "s", "", "", "maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
@@ -2628,8 +2670,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GESCHWINDIGKEIT","Geschwindigkeit","","Geschwindigkeit","en","feminin"),
     dekliniere_substantiv("NOUN_GLUECKSSTRAEHNE","Glückssträhne","","Glückssträhne","en","feminin"),
     dekliniere_substantiv("NOUN_PECHSTRAEHNE","Pechsträhne","","Pechsträhne","en","feminin"),
-    dekliniere_substantiv("NOUN_GOETTIN","Göttin","","Göttinn","en","feminin"),
+    dekliniere_substantiv("NOUN_GOTTHEIT","Gottheit","","Gottheit","en","feminin"),
     dekliniere_substantiv("NOUN_GOTT","Gott","es","Gött","er","maskulin"),
+    dekliniere_substantiv("NOUN_GOETTIN","Göttin","","Göttinn","en","feminin"),
     dekliniere_substantiv("NOUN_HALBGOETTIN","Halbgöttin","","Halbgöttinn","en","feminin"),
     dekliniere_substantiv("NOUN_HALBGOTT","Halbgott","es","Halbgött","er","maskulin"),
     dekliniere_substantiv("NOUN_KOERPER","Körper","s","Körper","","maskulin"),
@@ -2674,6 +2717,10 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_GNOMISCH", "gnomisch"),
     dekliniere_adjektiv("ADJEKTIV_ORKSCH", "orksch"),
     "",
+		dekliniere_adjektiv("ADJEKTIV_MAENNLICH", "männlich"),
+    dekliniere_adjektiv("ADJEKTIV_WEIBLICH", "weiblich"),
+    dekliniere_adjektiv("ADJEKTIV_SAECHLICH", "sächlich"),
+    "",
     "/* sonstige Adjektive */",
     dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
     dekliniere_adjektiv("ADJEKTIV_SADDLED","gesattelt"),
@@ -2706,6 +2753,8 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_REICH","reich"),
     dekliniere_adjektiv("ADJEKTIV_UNSICHTBAR","unsichtbar"),
     dekliniere_adjektiv("ADJEKTIV_ZWEIHAENDISCH","zweihändisch"),
+    dekliniere_adjektiv("ADJEKTIV_FETTIG","fettig"),
+    dekliniere_adjektiv("ADJEKTIV_KRAFTLOS","kraftlos"),
     "",
     "/* Farbennamen */",
     dekliniere_adjektiv("ADJEKTIV_BLACK","schwarz"),
