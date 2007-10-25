@@ -410,7 +410,7 @@ still_chewing(x,y)
 	}
 	if (lev->doormask & D_TRAPPED) {
 	    lev->doormask = D_NODOOR;
-	    b_trapped("door", 0); /* EN b_trapped("door", 0); */ // TODO DE
+	    b_trapped("NOUN_DOOR", 0); /* EN b_trapped("door", 0); */
 	} else {
 	    digtxt = "chew through the door."; /* EN digtxt = "chew through the door."; */ // TODO DE
 	    lev->doormask = D_BROKEN;

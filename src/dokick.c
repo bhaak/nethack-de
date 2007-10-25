@@ -194,15 +194,15 @@ register xchar x, y;
 	else if(uarm && objects[uarm->otyp].oc_bulky && ACURR(A_DEX) < rnd(25))
 		clumsy = TRUE;
 doit:
-	You("kick %s.", mon_nam(mon)); /* EN You("kick %s.", mon_nam(mon)); */ // TODO DE
+	You("VERB_KICK OBJECT %s.", mon_nam(mon)); /* EN You("kick %s.", mon_nam(mon)); */
 	if(!rn2(clumsy ? 3 : 4) && (clumsy || !bigmonst(mon->data)) &&
 	   mon->mcansee && !mon->mtrapped && !thick_skinned(mon->data) &&
 	   mon->data->mlet != S_EEL && haseyes(mon->data) && mon->mcanmove &&
 	   !mon->mstun && !mon->mconf && !mon->msleeping &&
 	   mon->data->mmove >= 12) {
 		if(!nohands(mon->data) && !rn2(martial() ? 5 : 3)) {
-		    pline("%s blocks your %skick.", Monnam(mon), /* EN pline("%s blocks your %skick.", Monnam(mon), */ // TODO DE
-				clumsy ? "clumsy " : ""); /* EN clumsy ? "clumsy " : ""); */ // TODO DE
+		    pline("SUBJECT %s VERB_BLOCKEN OBJECT PRONOMEN_POSSESSIV %sNOUN_KICK.", Monnam(mon), /* EN pline("%s blocks your %skick.", Monnam(mon), */
+				clumsy ? "ADJEKTIV_PLUMP " : ""); /* EN clumsy ? "clumsy " : ""); */
 		    (void) passive(mon, FALSE, 1, AT_KICK);
 		    return;
 		} else {
@@ -212,14 +212,14 @@ doit:
 			    unmap_object(x, y);
 			    newsym(x, y);
 			}
-			pline("%s %s, %s evading your %skick.", Monnam(mon), /* EN pline("%s %s, %s evading your %skick.", Monnam(mon), */ // TODO DE
+			pline("SUBJECT %s %s, %s evading your %sNOUN_KICK.", Monnam(mon), /* EN pline("%s %s, %s evading your %skick.", Monnam(mon), */ // TODO DE
 				(can_teleport(mon->data) ? "teleports" : /* EN (can_teleport(mon->data) ? "teleports" : */ // TODO DE
 				 is_floater(mon->data) ? "floats" : /* EN is_floater(mon->data) ? "floats" : */ // TODO DE
 				 is_flyer(mon->data) ? "swoops" : /* EN is_flyer(mon->data) ? "swoops" : */ // TODO DE
 				 (nolimbs(mon->data) || slithy(mon->data)) ?
 					"slides" : "jumps"), /* EN "slides" : "jumps"), */ // TODO DE
 				clumsy ? "easily" : "nimbly", /* EN clumsy ? "easily" : "nimbly", */ // TODO DE
-				clumsy ? "clumsy " : ""); /* EN clumsy ? "clumsy " : ""); */ // TODO DE
+				clumsy ? "ADJEKTIV_PLUMP " : ""); /* EN clumsy ? "clumsy " : ""); */
 			(void) passive(mon, FALSE, 1, AT_KICK);
 			return;
 		    }
@@ -281,7 +281,7 @@ register struct obj *gold;
 #else
 				    ESHK(mtmp)->credit += value;
 #endif
-				    You("have %ld %s in credit.", /* EN You("have %ld %s in credit.", */ // TODO DE
+				    You("VERB_HABEN %ld %s Kredit.", /* EN You("have %ld %s in credit.", */
 					ESHK(mtmp)->credit,
 					currency(ESHK(mtmp)->credit));
 				} else verbalize("Danke, Drecksack!"); /* EN } else verbalize("Thanks, scum!"); */
@@ -366,7 +366,7 @@ struct obj *obj;
 		 * but it's always exactly 1 that breaks */
 		if (otmp->otyp == EGG && otmp->spe && otmp->corpsenm >= LOW_PM)
 		    change_luck(-1);
-		You_hear("dumpf ARTIKEL_UNBESTIMMTER %s.", result); /* EN You_hear("a muffled %s.", result); */
+		You_hear("dumpf OBJECT ARTIKEL_UNBESTIMMTER %s.", result); /* EN You_hear("a muffled %s.", result); */
 		if (costly)
 		    loss += stolen_value(otmp, x, y,
 					 (boolean)shkp->mpeaceful, TRUE);
@@ -383,7 +383,7 @@ struct obj *obj;
 		You("caused %ld %s worth of damage!", loss, currency(loss)); /* EN You("caused %ld %s worth of damage!", loss, currency(loss)); */ // TODO DE
 		make_angry_shk(shkp, x, y);
 	    } else {
-		You("owe %s %ld %s for objects destroyed.", /* EN You("owe %s %ld %s for objects destroyed.", */ // TODO DE
+		You("VERB_OWE OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s für beschädigte Ware.", /* EN You("owe %s %ld %s for objects destroyed.", */
 		    mon_nam(shkp), loss, currency(loss));
 	    }
 	}
@@ -427,13 +427,13 @@ xchar x, y;
 			&& !Stone_resistance && !uarmf) {
 	    char kbuf[BUFSZ];
 
-	    You("kick the %s with your bare %s.", /* EN You("kick the %s with your bare %s.", */ // TODO DE
+	    You("VERB_KICK OBJECT ARTIKEL_BESTIMMTER %s mit NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("kick the %s with your bare %s.", */
 		corpse_xname(kickobj, TRUE), makeplural(body_part(FOOT)));
 	    if (!(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
 		You("VERB_VERSTEINERN ..."); /* EN You("turn to stone..."); */
 		killer_format = KILLED_BY;
 		/* KMH -- otmp should be kickobj */
-		Sprintf(kbuf, "kicking %s without boots", /* EN Sprintf(kbuf, "kicking %s without boots", */ // TODO DE
+		Sprintf(kbuf, "Tretens KASUS_GENITIV %s ohne Stiefel", /* EN Sprintf(kbuf, "kicking %s without boots", */
 			an(corpse_xname(kickobj, TRUE)));
 		killer = kbuf;
 		done(STONING);
@@ -473,7 +473,7 @@ xchar x, y;
 		else
 		    pline("SUBJECT %s %s stecken.", /* EN pline("%s %sn't come loose.", */
 			  The(distant_name(kickobj, xname)),
-			  otense(kickobj, "VERB_BLEIBEN")); /* EN otense(kickobj, "do")); */ // TODO DE
+			  otense(kickobj, "VERB_BLEIBEN")); /* EN otense(kickobj, "do")); */
 		return (!rn2(3) || martial());
 	    }
 	    if (Blind)
@@ -487,7 +487,7 @@ xchar x, y;
 	    if (costly && (!costly_spot(u.ux, u.uy) ||
 		    !index(u.urooms, *in_rooms(x, y, SHOPBASE))))
 		addtobill(kickobj, FALSE, FALSE, FALSE);
-	    if (!flooreffects(kickobj, u.ux, u.uy, "fall")) { /* EN if (!flooreffects(kickobj, u.ux, u.uy, "fall")) { */ // TODO DE
+	    if (!flooreffects(kickobj, u.ux, u.uy, "VERB_FALLEN")) { /* EN if (!flooreffects(kickobj, u.ux, u.uy, "fall")) { */
 		place_object(kickobj, u.ux, u.uy);
 		stackobj(kickobj);
 		newsym(u.ux, u.uy);
@@ -629,7 +629,7 @@ dokick()
 #ifdef STEED
 	} else if (u.usteed) {
 		if (yn_function("Kick your steed?", ynchars, 'y') == 'y') { /* EN if (yn_function("Kick your steed?", ynchars, 'y') == 'y') { */ // TODO DE
-		    You("kick %s.", mon_nam(u.usteed)); /* EN You("kick %s.", mon_nam(u.usteed)); */ // TODO DE
+		    You("VERB_KICK OBJECT %s.", mon_nam(u.usteed)); /* EN You("kick %s.", mon_nam(u.usteed)); */
 		    kick_steed();
 		    return 1;
 		} else {
@@ -697,7 +697,7 @@ dokick()
 				pline("SUBJECT %s VERB_RUELPSEN laut.", Monnam(u.ustuck)); /* EN pline("%s burps loudly.", Monnam(u.ustuck)); */
 				break;
 			 }
-		default: Your("feeble kick has no effect."); break; /* EN default: Your("feeble kick has no effect."); break; */ // TODO DE
+		default: Your("ADJEKTIV_KRAFTLOS NOUN_KICK zeigt keinerlei Effekt."); break; /* EN default: Your("feeble kick has no effect."); break; */
 		}
 		return(1);
 	}
@@ -763,7 +763,7 @@ dokick()
 	}
 	if (is_pool(x, y) ^ !!u.uinwater) {
 		/* objects normally can't be removed from water by kicking */
-		You("splash some water around."); /* EN You("splash some water around."); */ // TODO DE
+		You("VERB_SPRITZEN some water around."); /* EN You("splash some water around."); */ // TODO DE
 		return 1;
 	}
 
@@ -783,15 +783,15 @@ dokick()
 		if(maploc->typ == SDOOR) {
 		    if(!Levitation && rn2(30) < avrg_attrib) {
 			cvt_sdoor_to_door(maploc);	/* ->typ = DOOR */
-			pline("Crash!  %s a secret door!", /* EN pline("Crash!  %s a secret door!", */ // TODO DE
+			pline("Krach!  SUBJECT %s eine Geheimtür!", /* EN pline("Crash!  %s a secret door!", */
 			      /* don't "kick open" when it's locked
 				 unless it also happens to be trapped */
 			(maploc->doormask & (D_LOCKED|D_TRAPPED)) == D_LOCKED ?
-			      "Your kick uncovers" : "You kick open"); /* EN "Your kick uncovers" : "You kick open"); */ // TODO DE
+			      "Your kick uncovers" : "PRONOMEN_PERSONAL VERB_KICK open"); /* EN "Your kick uncovers" : "You kick open"); */ // TODO DE
 			exercise(A_DEX, TRUE);
 			if(maploc->doormask & D_TRAPPED) {
 			    maploc->doormask = D_NODOOR;
-			    b_trapped("door", FOOT); /* EN b_trapped("door", FOOT); */ // TODO DE
+			    b_trapped("NOUN_DOOR", FOOT); /* EN b_trapped("door", FOOT); */
 			} else if (maploc->doormask != D_NODOOR &&
 				   !(maploc->doormask & D_LOCKED))
 			    maploc->doormask = D_ISOPEN;
@@ -859,7 +859,7 @@ dokick()
 		}
 		if(IS_ALTAR(maploc->typ)) {
 		    if(Levitation) goto dumb;
-		    You("kick %s.",(Blind ? something : "the altar")); /* EN You("kick %s.",(Blind ? something : "the altar")); */ // TODO DE
+		    You("VERB_KICK OBJECT %s.",(Blind ? something : "ARTIKEL_BESTIMMTER NOUN_ALTAR")); /* EN You("kick %s.",(Blind ? something : "the altar")); */
 		    if(!rn2(3)) goto ouch;
 		    altar_wrath(x, y);
 		    exercise(A_DEX, TRUE);
@@ -867,12 +867,12 @@ dokick()
 		}
 		if(IS_FOUNTAIN(maploc->typ)) {
 		    if(Levitation) goto dumb;
-		    You("kick %s.",(Blind ? something : "the fountain")); /* EN You("kick %s.",(Blind ? something : "the fountain")); */ // TODO DE
+		    You("VERB_KICK OBJECT %s.",(Blind ? something : "ARTIKEL_BESTIMMTER NOUN_FOUNTAIN")); /* EN You("kick %s.",(Blind ? something : "the fountain")); */
 		    if(!rn2(3)) goto ouch;
 		    /* make metal boots rust */
 		    if(uarmf && rn2(3))
 			if (!rust_dmg(uarmf, "metal boots", 1, FALSE, &youmonst)) { /* EN if (!rust_dmg(uarmf, "metal boots", 1, FALSE, &youmonst)) { */ // TODO DE
-				Your("boots get wet."); /* EN Your("boots get wet."); */ // TODO DE
+				Your("NOUN_BOOTSs VERB_WERDEN nass."); /* EN Your("boots get wet."); */
 				/* could cause short-lived fumbling here */
 			}
 		    exercise(A_DEX, TRUE);
@@ -885,7 +885,7 @@ dokick()
 		    /* nothing, fruit or trouble? 75:23.5:1.5% */
 		    if (rn2(3)) {
 			if ( !rn2(6) && !(mvitals[PM_KILLER_BEE].mvflags & G_GONE) )
-			    You_hear("a low buzzing."); /* a warning */ /* EN You_hear("a low buzzing."); */ // TODO DE
+			    You_hear("ein schwaches Summen."); /* a warning */ /* EN You_hear("a low buzzing."); */
 			goto ouch;
 		    }
 		    if (rn2(15) && !(maploc->looted & TREE_LOOTED) &&
@@ -1020,7 +1020,7 @@ dumb:
 			You("VERB_KICK den Leerraum."); /* EN You("kick at empty space."); */
 			if (Blind) feel_location(x,y);
 		} else {
-			pline("Dumb move!  You strain a muscle."); /* EN pline("Dumb move!  You strain a muscle."); */ // TODO DE
+			pline("Dumme Idee!  SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL einen Muskel gezerrt."); /* EN pline("Dumb move!  You strain a muscle."); */
 			exercise(A_STR, FALSE);
 			set_wounded_legs(RIGHT_SIDE, 5 + rnd(5));
 		}
@@ -1043,7 +1043,7 @@ dumb:
 		    if (flags.verbose) You("VERB_KICK OBJECT ARTIKEL_BESTIMMTER NOUN_OBJ_DOOR."); /* EN if (flags.verbose) You("kick the door."); */
 		    exercise(A_STR, FALSE);
 		    maploc->doormask = D_NODOOR;
-		    b_trapped("NOUN_DOOR", FOOT); /* EN b_trapped("door", FOOT); */ // TODO DE
+		    b_trapped("NOUN_DOOR", FOOT); /* EN b_trapped("door", FOOT); */
 		} else if(ACURR(A_STR) > 18 && !rn2(5) && !shopdoor) {
 		    pline("As you kick the door, it shatters to pieces!"); /* EN pline("As you kick the door, it shatters to pieces!"); */ // TODO DE
 		    exercise(A_STR, TRUE);
@@ -1242,7 +1242,7 @@ xchar x, y, dlev;
 			if(angry)
 			    pline("%s is infuriated!", Monnam(shkp)); /* EN pline("%s is infuriated!", Monnam(shkp)); */ // TODO DE
 			else pline("\"%s, you are a thief!\"", plname); /* EN else pline("\"%s, you are a thief!\"", plname); */ // TODO DE
-		    } else  You_hear("a scream, \"Thief!\""); /* EN } else  You_hear("a scream, \"Thief!\""); */ // TODO DE
+		    } else  You_hear("einen Schrei, \"Dieb!\""); /* EN } else  You_hear("a scream, \"Thief!\""); */
 		    hot_pursuit(shkp);
 		    (void) angry_guards(FALSE);
 		    return;
@@ -1431,7 +1431,7 @@ long num;
 
 	Sprintf(obuf, "%s%s",
 		 (otmp->otyp == CORPSE &&
-			type_is_pname(&mons[otmp->corpsenm])) ? "" : "The ", /* EN type_is_pname(&mons[otmp->corpsenm])) ? "" : "The ", */ // TODO DE
+			type_is_pname(&mons[otmp->corpsenm])) ? "" : "ARTIKEL_BESTIMMTER ", /* EN type_is_pname(&mons[otmp->corpsenm])) ? "" : "The ", */
 		 xname(otmp));
 
 	if(num) { /* means: other objects are impacted */
@@ -1443,10 +1443,10 @@ long num;
 		Sprintf(eos(obuf), ".");
 	    else
 		Sprintf(eos(obuf), " and %s %s.", /* EN Sprintf(eos(obuf), " and %s %s.", */ // TODO DE
-			otense(otmp, "fall"), gate_str); /* EN otense(otmp, "fall"), gate_str); */ // TODO DE
+			otense(otmp, "VERB_FALLEN"), gate_str); /* EN otense(otmp, "fall"), gate_str); */
 	    pline("%s", obuf);
 	} else if(!nodrop)
-	    pline("%s %s %s.", obuf, otense(otmp, "fall"), gate_str); /* EN pline("%s %s %s.", obuf, otense(otmp, "fall"), gate_str); */ // TODO DE
+	    pline("SUBJECT %s %s %s.", obuf, otense(otmp, "VERB_FALLEN"), gate_str); /* EN pline("%s %s %s.", obuf, otense(otmp, "fall"), gate_str); */
 }
 
 /* migration destination for objects which fall down to next level */
@@ -1463,19 +1463,19 @@ xchar x, y;
 
 	if ((xdnstair == x && ydnstair == y) ||
 		(sstairs.sx == x && sstairs.sy == y && !sstairs.up)) {
-	    gate_str = "down the stairs"; /* EN gate_str = "down the stairs"; */ // TODO DE
+	    gate_str = "die Stufen runter"; /* EN gate_str = "down the stairs"; */
 	    return (xdnstair == x && ydnstair == y) ?
 		    MIGR_STAIRS_UP : MIGR_SSTAIRS;
 	}
 	if (xdnladder == x && ydnladder == y) {
-	    gate_str = "down the ladder"; /* EN gate_str = "down the ladder"; */ // TODO DE
+	    gate_str = "die Leiter runter"; /* EN gate_str = "down the ladder"; */
 	    return MIGR_LADDER_UP;
 	}
 
 	if (((ttmp = t_at(x, y)) != 0 && ttmp->tseen) &&
 		(ttmp->ttyp == TRAPDOOR || ttmp->ttyp == HOLE)) {
 	    gate_str = (ttmp->ttyp == TRAPDOOR) ?
-		    "through the trap door" : "through the hole"; /* EN "through the trap door" : "through the hole"; */ // TODO DE
+		    "durch die Falltüre" : "durch das Loch"; /* EN "through the trap door" : "through the hole"; */
 	    return MIGR_RANDOM;
 	}
 	return MIGR_NOWHERE;

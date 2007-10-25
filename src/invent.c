@@ -946,17 +946,17 @@ register const char *let,*word;
 #else
 	if(!foo && !allowall && !allownone) {
 #endif
-		You("don't have anything %sto %s.", /* EN You("don't have anything %sto %s.", */ // TODO DE
-			foox ? "else " : "", word); /* EN foox ? "else " : "", word); */ // TODO DE
+		You("VERB_HABEN nichts %szu MODIFIER_VERB_INFINITIV %s.", /* EN You("don't have anything %sto %s.", */
+			foox ? "anderes " : "", word); /* EN foox ? "else " : "", word); */
 		return((struct obj *)0);
 	}
 	for(;;) {
 		cnt = 0;
 		if (allowcnt == 2) allowcnt = 1;  /* abort previous count */
 		if(!buf[0]) {
-			Sprintf(qbuf, "What do you want to %s? [*]", word); /* EN Sprintf(qbuf, "What do you want to %s? [*]", word); */ // TODO DE
+			Sprintf(qbuf, "Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV %s? [*]", word); /* EN Sprintf(qbuf, "What do you want to %s? [*]", word); */
 		} else {
-			Sprintf(qbuf, "What do you want to %s? [%s or ?*]", /* EN Sprintf(qbuf, "What do you want to %s? [%s or ?*]", */ // TODO DE
+			Sprintf(qbuf, "Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV %s? [%s oder ?*]", /* EN Sprintf(qbuf, "What do you want to %s? [%s or ?*]", */
 				word, buf);
 		}
 #ifdef REDO
@@ -1073,7 +1073,7 @@ register const char *let,*word;
 #endif
 			continue;
 		} else if (cnt < 0 || otmp->quan < cnt) {
-			You("don't have that many!  You have only %ld.", /* EN You("don't have that many!  You have only %ld.", */ // TODO DE
+			pline("Soviel VERB_HABEN PRONOMEN_PERSONAL nicht!  NEUER_SATZ SUBJECT PRONOMEN_PERSONAL VERB_HABEN nur %ld.", /* EN You("don't have that many!  You have only %ld.", */
 			    otmp->quan);
 #ifdef REDO
 			if (in_doagain) return((struct obj *) 0);
@@ -1217,7 +1217,7 @@ unsigned *resultflags;
 #else
 	if(!invent){
 #endif
-		You("have nothing to %s.", word); /* EN You("have nothing to %s.", word); */ // TODO DE
+		You("VERB_HABEN nichts zu MODIFIER_VERB_INFINITIV %s.", word); /* EN You("have nothing to %s.", word); */
 		return(0);
 	}
 	add_valid_menu_class(0);	/* reset */
@@ -1294,13 +1294,13 @@ unsigned *resultflags;
 		    You("are not wielding anything."); /* EN You("are not wielding anything."); */ // TODO DE
 		    return 0;
 		} else if (oc_of_sym == RING_CLASS && !uright && !uleft) {
-		    You("are not wearing rings."); /* EN You("are not wearing rings."); */ // TODO DE
+		    You("VERB_TRAGEN keine Ringe."); /* EN You("are not wearing rings."); */
 		    return 0;
 		} else if (oc_of_sym == AMULET_CLASS && !uamul) {
-		    You("are not wearing an amulet."); /* EN You("are not wearing an amulet."); */ // TODO DE
+		    You("VERB_TRAGEN kein Amulett."); /* EN You("are not wearing an amulet."); */
 		    return 0;
 		} else if (oc_of_sym == TOOL_CLASS && !ublindf) {
-		    You("are not wearing a blindfold."); /* EN You("are not wearing a blindfold."); */ // TODO DE
+		    You("VERB_TRAGEN OBJECT PRONOMEN_KEIN NOUN_BLINDFOLD."); /* EN You("are not wearing a blindfold."); */
 		    return 0;
 		}
 	    }
@@ -1742,7 +1742,7 @@ long* out_cnt;
 	    win = WIN_INVEN;
 
 #ifdef DUMP_LOG
-	if (want_dump)   dump("", "Your inventory"); /* EN if (want_dump)   dump("", "Your inventory"); */ // TODO DE
+	if (want_dump)   dump("", "SUBJECT PRONOMEN_POSSESSIV NOUN_INVENTORY"); /* EN if (want_dump)   dump("", "Your inventory"); */
 #endif
 
 	/*
@@ -1768,7 +1768,7 @@ long* out_cnt;
 	      dump("  ", "Not carrying anything"); /* EN dump("  ", "Not carrying anything"); */ // TODO DE
 #else
 	      dump("  Not carrying anything", /* EN dump("  Not carrying anything", */ // TODO DE
-		   u.ugold ? " except gold." : "."); /* EN u.ugold ? " except gold." : "."); */ // TODO DE
+		   u.ugold ? " ausgenommen Gold." : "."); /* EN u.ugold ? " except gold." : "."); */
 #endif
 	    }
 #endif
@@ -2243,8 +2243,8 @@ boolean picked_some;
 
 	if (u.uswallow && u.ustuck) {
 	    struct monst *mtmp = u.ustuck;
-	    Sprintf(fbuf, "Contents of %s %s", /* EN Sprintf(fbuf, "Contents of %s %s", */ // TODO DE
-		s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH));
+	    Sprintf(fbuf, "Inhalt KASUS_GENITIV %s %s", /* EN Sprintf(fbuf, "Contents of %s %s", */
+		s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); /* EN s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); */ // TODO DE
 	    /* Skip "Contents of " by using fbuf index 12 */
 	    You("%s to %s what is lying in %s.", /* EN You("%s to %s what is lying in %s.", */ // TODO DE
 		Blind ? "try" : "look around", verb, &fbuf[12]); /* EN Blind ? "try" : "look around", verb, &fbuf[12]); */ // TODO DE
@@ -2258,7 +2258,7 @@ boolean picked_some;
 		Strcat(fbuf,":");
 	    	(void) display_minventory(mtmp, MINV_ALL, fbuf);
 	    } else {
-		You("%s no objects here.", verb); /* EN You("%s no objects here.", verb); */ // TODO DE
+		You("%s hier keine Objekte.", verb); /* EN You("%s no objects here.", verb); */
 	    }
 	    return(!!Blind);
 	}
@@ -2290,13 +2290,13 @@ boolean picked_some;
 	}
 
 	if (dfeature)
-		Sprintf(fbuf, "There is %s here.", an(dfeature)); /* EN Sprintf(fbuf, "There is %s here.", an(dfeature)); */ // TODO DE
+		Sprintf(fbuf, "Hier ist %s.", an(dfeature)); /* EN Sprintf(fbuf, "There is %s here.", an(dfeature)); */
 
 	if (!otmp || is_lava(u.ux,u.uy) || (is_pool(u.ux,u.uy) && !Underwater)) {
 		if (dfeature) pline(fbuf);
 		read_engr_at(u.ux, u.uy); /* Eric Backus */
 		if (!skip_objects && (Blind || !dfeature))
-		    You("%s no objects here.", verb); /* EN You("%s no objects here.", verb); */ // TODO DE
+		    You("%s hier keine Objekte.", verb); /* EN You("%s no objects here.", verb); */
 		return(!!Blind);
 	}
 	/* we know there is something here */
@@ -2541,7 +2541,7 @@ int
 doprring()
 {
 	if(!uleft && !uright)
-		You("are not wearing any rings."); /* EN You("are not wearing any rings."); */ // TODO DE
+		You("VERB_TRAGEN gar keine Ringe."); /* EN You("are not wearing any rings."); */
 	else {
 		char lets[3];
 		register int ct = 0;
@@ -2558,7 +2558,7 @@ int
 dopramulet()
 {
 	if (!uamul)
-		You("are not wearing an amulet."); /* EN You("are not wearing an amulet."); */ // TODO DE
+		You("VERB_TRAGEN gar kein Amulett."); /* EN You("are not wearing an amulet."); */
 	else
 		prinv((char *)0, uamul, 0L);
 	return 0;
@@ -2947,13 +2947,13 @@ register struct obj *obj;
 	int n;
 	menu_item *selected = 0;
 
-	Sprintf(tmp,"Contents of %s:", doname(obj)); /* EN Sprintf(tmp,"Contents of %s:", doname(obj)); */ // TODO DE
+	Sprintf(tmp,"Inhalt KASUS_GENITIV %s:", doname(obj)); /* EN Sprintf(tmp,"Contents of %s:", doname(obj)); */
 
 	if (obj->cobj) {
 	    n = query_objlist(tmp, obj->cobj, INVORDER_SORT, &selected,
 			    PICK_NONE, allow_all);
 	} else {
-	    invdisp_nothing(tmp, "(empty)"); /* EN invdisp_nothing(tmp, "(empty)"); */ // TODO DE
+	    invdisp_nothing(tmp, "(leer)"); /* EN invdisp_nothing(tmp, "(empty)"); */
 	    n = 0;
 	}
 	if (n > 0) {

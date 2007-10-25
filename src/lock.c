@@ -295,7 +295,7 @@ pick_lock(pick) /* pick a lock with a given object */
 		      xname(pick));
 		return 0;
 	    } else if (is_pool(u.ux, u.uy) && !Underwater) {
-		pline_The("water has no lock."); /* EN pline_The("water has no lock."); */ // TODO DE
+		pline("Wasser hat keine Schlösser."); /* EN pline_The("water has no lock."); */
 		return 0;
 	    }
 
@@ -630,7 +630,7 @@ doclose()		/* try to close a door */
 	x = u.ux + u.dx;
 	y = u.uy + u.dy;
 	if((x == u.ux) && (y == u.uy)) {
-		You("are in the way!"); /* EN You("are in the way!"); */ // TODO DE
+		You("VERB_STEHEN im Weg!"); /* EN You("are in the way!"); */
 		return(1);
 	}
 

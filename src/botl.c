@@ -248,7 +248,7 @@ char *buf;
 		Sprintf(buf, "Home %d ", dunlev(&u.uz)); /* EN Sprintf(buf, "Home %d ", dunlev(&u.uz)); */ // TODO DE
 	else if (In_endgame(&u.uz))
 		Sprintf(buf,
-			Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); /* EN Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); */ // TODO DE
+			Is_astralevel(&u.uz) ? "Astralebene " : "End Game "); /* EN Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); */ // TODO DE
 	else {
 		/* ports with more room may expand this one */
 		Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz)); /* EN Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz)); */ // TODO DE

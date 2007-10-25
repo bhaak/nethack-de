@@ -229,7 +229,7 @@ dig()
 	} else { /* !digging.down */
 	    if (IS_TREE(lev->typ) && !may_dig(dpx,dpy) &&
 			dig_typ(uwep, dpx, dpy) == DIGTYP_TREE) {
-		pline("Dieser Baum scheint versteinert zu sein."); /* EN pline("This tree seems to be petrified."); */ // TODO DE
+		pline("Dieser Baum scheint versteinert zu sein."); /* EN pline("This tree seems to be petrified."); */
 		return(0);
 	    }
 	    if (IS_ROCK(lev->typ) && !may_dig(dpx,dpy) &&
@@ -336,7 +336,7 @@ dig()
 			    }
 			}
 			if (IS_TREE(lev->typ)) {
-			    digtxt = "SUBJECT PRONOMEN_PERSONAL VERB_FALLEN den Baum."; /* EN digtxt = "You cut down the tree."; */
+			    digtxt = "SUBJECT PRONOMEN_PERSONAL VERB_FAELLEN den Baum."; /* EN digtxt = "You cut down the tree."; */
 			    lev->typ = ROOM;
 			    if (!rn2(5)) (void) rnd_treefruit_at(dpx, dpy);
 			} else {
@@ -360,11 +360,11 @@ dig()
 			digtxt = "You make an opening in the wall."; /* EN digtxt = "You make an opening in the wall."; */ // TODO DE
 		} else if(lev->typ == SDOOR) {
 			cvt_sdoor_to_door(lev);	/* ->typ = DOOR */
-			digtxt = "You break through a secret door!"; /* EN digtxt = "You break through a secret door!"; */ // TODO DE
+			digtxt = "SUBJECT PRONOMEN_PERSONAL VERB_BRECHEN durch eine Geheimtüre!"; /* EN digtxt = "You break through a secret door!"; */
 			if(!(lev->doormask & D_TRAPPED))
 				lev->doormask = D_BROKEN;
 		} else if(closed_door(dpx, dpy)) {
-			digtxt = "You break through the door."; /* EN digtxt = "You break through the door."; */ // TODO DE
+			digtxt = "SUBJECT PRONOMEN_PERSONAL VERB_BRECHEN durch eine Türe."; /* EN digtxt = "You break through the door."; */
 			if(shopedge) {
 			    add_damage(dpx, dpy, 400L);
 			    dmgtxt = "break"; /* EN dmgtxt = "break"; */ // TODO DE

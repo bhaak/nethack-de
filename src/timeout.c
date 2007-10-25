@@ -675,7 +675,7 @@ slip_or_trip()
 			break;
 		  case 2:
 			You("VERB_AUSRUTSCHEN %s.", Hallucination ?  /* EN You("slip %s.", Hallucination ? */
-				"auf einer Bananenschale SATZKLAMMER" : "SATZKLAMMER und nearly fall"); /* EN "on a banana peel" : "and nearly fall"); */ // TODO DE
+				"auf einer Bananenschale SATZKLAMMER" : "SATZKLAMMER und VERB_FALLEN beinahe hin"); /* EN "on a banana peel" : "and nearly fall"); */
 			break;
 		  case 3:
 			You("VERB_STRAUCHELN."); /* EN You("flounder."); */

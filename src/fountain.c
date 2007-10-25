@@ -81,9 +81,9 @@ dowaternymph() /* Water Nymph */
 		    (void) mintrap(mtmp);
 	} else
 		if (!Blind)
-		   pline("A large bubble rises to the surface and pops."); /* EN pline("A large bubble rises to the surface and pops."); */ // TODO DE
+		   pline("Eine große Luftblase steigt zur Oberfläche auf und zerplatzt."); /* EN pline("A large bubble rises to the surface and pops."); */
 		else
-		   You_hear("a loud pop."); /* EN You_hear("a loud pop."); */ // TODO DE
+		   You_hear("einen lauten Knall."); /* EN You_hear("a loud pop."); */
 }
 
 void
@@ -95,7 +95,7 @@ int drinking;
 	do_clear_area(u.ux, u.uy, 7, gush, (genericptr_t)&madepool);
 	if (!madepool) {
 	    if (drinking)
-		Your("thirst is quenched."); /* EN Your("thirst is quenched."); */ // TODO DE
+		Your("NOUN_DURST VERB_SEIN gestillt."); /* EN Your("thirst is quenched."); */
 	    else
 		pline("Water sprays all over you."); /* EN pline("Water sprays all over you."); */ // TODO DE
 	}
@@ -162,7 +162,7 @@ boolean isyou;
 				mtmp->data == &mons[PM_WATCH_CAPTAIN]) &&
 			       couldsee(mtmp->mx, mtmp->my) &&
 			       mtmp->mpeaceful) {
-				pline("%s yells:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s VERB_BRUELLEN:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */
 				verbalize("Hey, stop using that fountain!"); /* EN verbalize("Hey, stop using that fountain!"); */ // TODO DE
 				break;
 			    }
@@ -326,7 +326,7 @@ drinkfountain()
 		case 29: /* Scare */ {
 			register struct monst *mtmp;
 
-			pline("This water gives you bad breath!"); /* EN pline("This water gives you bad breath!"); */ // TODO DE
+			pline("Von dem Wasser VERB_BEKOMMEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL üblen Mundgeruch!"); /* EN pline("This water gives you bad breath!"); */
 			for(mtmp = fmon; mtmp; mtmp = mtmp->nmon)
 			    if(!DEADMONSTER(mtmp))
 				monflee(mtmp, 0, FALSE, FALSE);
@@ -340,7 +340,7 @@ drinkfountain()
 
 		default:
 
-			pline("This tepid water is tasteless."); /* EN pline("This tepid water is tasteless."); */ // TODO DE
+			pline("Das Wasser ist lauwarm und geschmacklos."); /* EN pline("This tepid water is tasteless."); */
 			break;
 	    }
 	}

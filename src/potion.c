@@ -80,7 +80,7 @@ boolean talk;
 	if (!xtime && old) {
 		if (talk)
 		    Du_fuehlst_dich("jetzt %s.", /* EN You_feel("%s now.", */
-			Hallucination ? "weniger schwabblig/wacklig" : "ein bisschen steadier"); /* EN Hallucination ? "less wobbly" : "a bit steadier"); */ // TODO DE
+			Hallucination ? "weniger schwabblig" : "ein bisschen steadier"); /* EN Hallucination ? "less wobbly" : "a bit steadier"); */ // TODO DE
 	}
 	if (xtime && !old) {
 		if (talk) {
@@ -675,7 +675,7 @@ peffects(otmp)
 			  "(But in fact it was biologically contaminated %s.)", /* EN "(But in fact it was biologically contaminated %s.)", */ // TODO DE
 			      fruitname(TRUE));
 		    if (Role_if(PM_HEALER))
-			pline("Fortunately, you have been immunized."); /* EN pline("Fortunately, you have been immunized."); */ // TODO DE
+			pline("Zum Glück VERB_SEIN PRONOMEN_PERSONAL dagegen geimpft."); /* EN pline("Fortunately, you have been immunized."); */
 		    else {
 			int typ = rn2(A_MAX);
 
@@ -704,7 +704,7 @@ peffects(otmp)
 	case POT_CONFUSION:
 		if(!Confusion)
 		    if (Hallucination) {
-			pline("What a trippy feeling!"); /* EN pline("What a trippy feeling!"); */ // TODO DE
+			pline("Was für ein trippiges Gefühl!"); /* EN pline("What a trippy feeling!"); */
 			unkn++;
 		    } else
 			pline("He, was?  Wo bin ich?"); /* EN pline("Huh, What?  Where am I?"); */
@@ -1271,7 +1271,7 @@ register struct obj *obj;
 	case POT_SLEEPING:
 		kn++;
 		if (!Free_action && !Sleep_resistance) {
-		    You_feel("rather tired."); /* EN You_feel("rather tired."); */ // TODO DE
+		    Du_fuehlst_dich("ziemlich müde."); /* EN You_feel("rather tired."); */
 		    nomul(-rnd(5));
 		    nomovemsg = You_can_move_again;
 		    exercise(A_DEX, FALSE);

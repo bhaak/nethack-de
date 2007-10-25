@@ -920,7 +920,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Slimed) you_are("am Verschleimen"); /* EN if (Slimed) you_are("turning into slime"); */
 	if (Strangled) you((u.uburied) ? "VERB_SEIN begraben" : "VERB_WERDEN stranguliert"); /* EN if (Strangled) you_are((u.uburied) ? "buried" : "being strangled"); */
 	if (Glib) {
-		Sprintf(buf, "slippery %s", makeplural(body_part(FINGER))); /* EN Sprintf(buf, "slippery %s", makeplural(body_part(FINGER))); */ // TODO DE
+		Sprintf(buf, "ADJEKTIV_FETTIG %s", makeplural(body_part(FINGER))); /* EN Sprintf(buf, "slippery %s", makeplural(body_part(FINGER))); */
 		you_have(buf);
 	}
 	if (Fumbling) enl_msg("You fumble", "", "d", ""); /* EN if (Fumbling) enl_msg("You fumble", "", "d", ""); */ // TODO DE
@@ -1242,7 +1242,7 @@ int final;
 	if (Strangled)
 		dump(youwere, (u.uburied) ? "buried" : "being strangled"); /* EN dump(youwere, (u.uburied) ? "buried" : "being strangled"); */ // TODO DE
 	if (Glib) {
-		Sprintf(buf, "slippery %s", makeplural(body_part(FINGER))); /* EN Sprintf(buf, "slippery %s", makeplural(body_part(FINGER))); */ // TODO DE
+		Sprintf(buf, "ADJEKTIV_FETTIG %s", makeplural(body_part(FINGER))); /* EN Sprintf(buf, "slippery %s", makeplural(body_part(FINGER))); */
 		dump(youhad, buf);
 	}
 	if (Fumbling) dump("  ", "You fumbled"); /* EN if (Fumbling) dump("  ", "You fumbled"); */ // TODO DE
@@ -1535,28 +1535,28 @@ minimal_enlightenment()
 
 	/* Deity list */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "", FALSE);
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "NOUN_DEITIES", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Deities", FALSE); */ // TODO DE
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, german("NOUN_GOTTHEITs"), FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Deities", FALSE); */ // TODO DE
 	Sprintf(buf2, deity_fmtstr, align_gname(A_CHAOTIC),
 	    (u.ualignbase[A_ORIGINAL] == u.ualign.type
-		&& u.ualign.type == A_CHAOTIC) ? " (s,c)" : /* EN && u.ualign.type == A_CHAOTIC) ? " (s,c)" : */ // TODO DE
-	    (u.ualignbase[A_ORIGINAL] == A_CHAOTIC)       ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_CHAOTIC)       ? " (s)" : */ // TODO DE
-	    (u.ualign.type   == A_CHAOTIC)       ? " (c)" : ""); /* EN (u.ualign.type   == A_CHAOTIC)       ? " (c)" : ""); */ // TODO DE
+		&& u.ualign.type == A_CHAOTIC) ? " (s,a)" : /* EN && u.ualign.type == A_CHAOTIC) ? " (s,c)" : */
+	    (u.ualignbase[A_ORIGINAL] == A_CHAOTIC)       ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_CHAOTIC)       ? " (s)" : */
+	    (u.ualign.type   == A_CHAOTIC)       ? " (a)" : ""); /* EN (u.ualign.type   == A_CHAOTIC)       ? " (c)" : ""); */
 	Sprintf(buf, fmtstr, german("ADJEKTIV_CHAOTIC"), buf2); /* EN Sprintf(buf, fmtstr, "Chaotic", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	Sprintf(buf2, deity_fmtstr, align_gname(A_NEUTRAL),
 	    (u.ualignbase[A_ORIGINAL] == u.ualign.type
-		&& u.ualign.type == A_NEUTRAL) ? " (s,c)" : /* EN && u.ualign.type == A_NEUTRAL) ? " (s,c)" : */ // TODO DE
-	    (u.ualignbase[A_ORIGINAL] == A_NEUTRAL)       ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_NEUTRAL)       ? " (s)" : */ // TODO DE
-	    (u.ualign.type   == A_NEUTRAL)       ? " (c)" : ""); /* EN (u.ualign.type   == A_NEUTRAL)       ? " (c)" : ""); */ // TODO DE
+		&& u.ualign.type == A_NEUTRAL) ? " (s,a)" : /* EN && u.ualign.type == A_NEUTRAL) ? " (s,c)" : */
+	    (u.ualignbase[A_ORIGINAL] == A_NEUTRAL)       ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_NEUTRAL)       ? " (s)" : */
+	    (u.ualign.type   == A_NEUTRAL)       ? " (a)" : ""); /* EN (u.ualign.type   == A_NEUTRAL)       ? " (c)" : ""); */
 	Sprintf(buf, fmtstr, german("ADJEKTIV_NEUTRAL"), buf2); /* EN Sprintf(buf, fmtstr, "Neutral", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
 	Sprintf(buf2, deity_fmtstr, align_gname(A_LAWFUL),
 	    (u.ualignbase[A_ORIGINAL] == u.ualign.type &&
-		u.ualign.type == A_LAWFUL)  ? " (s,c)" : /* EN u.ualign.type == A_LAWFUL)  ? " (s,c)" : */ // TODO DE
-	    (u.ualignbase[A_ORIGINAL] == A_LAWFUL)        ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_LAWFUL)        ? " (s)" : */ // TODO DE
-	    (u.ualign.type   == A_LAWFUL)        ? " (c)" : ""); /* EN (u.ualign.type   == A_LAWFUL)        ? " (c)" : ""); */ // TODO DE
+		u.ualign.type == A_LAWFUL)  ? " (s,a)" : /* EN u.ualign.type == A_LAWFUL)  ? " (s,c)" : */
+	    (u.ualignbase[A_ORIGINAL] == A_LAWFUL)        ? " (s)" : /* EN (u.ualignbase[A_ORIGINAL] == A_LAWFUL)        ? " (s)" : */
+	    (u.ualign.type   == A_LAWFUL)        ? " (a)" : ""); /* EN (u.ualign.type   == A_LAWFUL)        ? " (c)" : ""); */
 	Sprintf(buf, fmtstr, german("ADJEKTIV_LAWFUL"), buf2); /* EN Sprintf(buf, fmtstr, "Lawful", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
@@ -2544,28 +2544,28 @@ const char *msg;
 	    }
 	}
 	if (iflags.num_pad && u.umonnum == PM_GRID_BUG) {
-	    putstr(win, 0, "Valid direction keys in your current form (with number_pad on) are:"); /* EN putstr(win, 0, "Valid direction keys in your current form (with number_pad on) are:"); */ // TODO DE
+	    putstr(win, 0, "Zulässige Richtungstasten in KASUS_DATIV PRONOMEN_POSSESSIV momentanen NOUN_GESTALT (mit aktiviertem \"number_pad\") sind:"); /* EN putstr(win, 0, "Valid direction keys in your current form (with number_pad on) are:"); */
 	    putstr(win, 0, "             8   ");
 	    putstr(win, 0, "             |   ");
 	    putstr(win, 0, "          4- . -6");
 	    putstr(win, 0, "             |   ");
 	    putstr(win, 0, "             2   ");
 	} else if (u.umonnum == PM_GRID_BUG) {
-	    putstr(win, 0, "Valid direction keys in your current form are:"); /* EN putstr(win, 0, "Valid direction keys in your current form are:"); */ // TODO DE
+	    putstr(win, 0, "Zulässige Richtungstasten in KASUS_DATIV PRONOMEN_POSSESSIV momentanen NOUN_GESTALT sind:"); /* EN putstr(win, 0, "Valid direction keys in your current form are:"); */
 	    putstr(win, 0, "             k   ");
 	    putstr(win, 0, "             |   ");
 	    putstr(win, 0, "          h- . -l");
 	    putstr(win, 0, "             |   ");
 	    putstr(win, 0, "             j   ");
 	} else if (iflags.num_pad) {
-	    putstr(win, 0, "Valid direction keys (with number_pad on) are:"); /* EN putstr(win, 0, "Valid direction keys (with number_pad on) are:"); */ // TODO DE
+	    putstr(win, 0, "Zulässige Richtungstasten (mit aktiviertem \"number_pad\") sind:"); /* EN putstr(win, 0, "Valid direction keys (with number_pad on) are:"); */
 	    putstr(win, 0, "          7  8  9");
 	    putstr(win, 0, "           \\ | / ");
 	    putstr(win, 0, "          4- . -6");
 	    putstr(win, 0, "           / | \\ ");
 	    putstr(win, 0, "          1  2  3");
 	} else {
-	    putstr(win, 0, "Valid direction keys are:"); /* EN putstr(win, 0, "Valid direction keys are:"); */ // TODO DE
+	    putstr(win, 0, "Zulässige Richtungstasten sind:"); /* EN putstr(win, 0, "Valid direction keys are:"); */
 	    putstr(win, 0, "          y  k  u");
 	    putstr(win, 0, "           \\ | / ");
 	    putstr(win, 0, "          h- . -l");
@@ -2573,8 +2573,8 @@ const char *msg;
 	    putstr(win, 0, "          b  j  n");
 	};
 	putstr(win, 0, "");
-	putstr(win, 0, "          <  up"); /* EN putstr(win, 0, "          <  up"); */ // TODO DE
-	putstr(win, 0, "          >  down"); /* EN putstr(win, 0, "          >  down"); */ // TODO DE
+	putstr(win, 0, "          <  rauf"); /* EN putstr(win, 0, "          <  up"); */
+	putstr(win, 0, "          >  runter"); /* EN putstr(win, 0, "          >  down"); */
 	putstr(win, 0, "          .  direct at yourself"); /* EN putstr(win, 0, "          .  direct at yourself"); */ // TODO DE
 	putstr(win, 0, "");
 	putstr(win, 0, "(Diese Information kann mit !cmdassist in der Konfigdatei unterdrückt werden.)"); /* EN putstr(win, 0, "(Suppress this message with !cmdassist in config file.)"); */

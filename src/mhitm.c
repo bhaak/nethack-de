@@ -459,7 +459,7 @@ gazemm(magr, mdef, mattk)
 		    return (MM_MISS);
 		}
 		if (canseemon(magr))
-		    pline("%s is turned to stone!", Monnam(magr)); /* EN pline("%s is turned to stone!", Monnam(magr)); */ // TODO DE
+		    pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(magr)); /* EN pline("%s is turned to stone!", Monnam(magr)); */
 		monstone(magr);
 		if (magr->mhp > 0) return (MM_MISS);
 		return (MM_AGR_DIED);
@@ -527,7 +527,7 @@ gulpmm(magr, mdef, mattk)
 	}
 	else {					/* both alive, put them back */
 	    if (cansee(dx, dy))
-		pline("%s is regurgitated!", Monnam(mdef)); /* EN pline("%s is regurgitated!", Monnam(mdef)); */ // TODO DE
+		pline("SUBJECT %s VERB_WERDEN herausgewürgt!", Monnam(mdef)); /* EN pline("%s is regurgitated!", Monnam(mdef)); */
 
 	    place_monster(magr, ax, ay);
 	    place_monster(mdef, dx, dy);
@@ -549,7 +549,7 @@ explmm(magr, mdef, mattk)
 	    return MM_MISS;
 
 	if(cansee(magr->mx, magr->my))
-		pline("%s explodes!", Monnam(magr)); /* EN pline("%s explodes!", Monnam(magr)); */ // TODO DE
+		pline("SUBJECT %s VERB_EXPLODIEREN!", Monnam(magr)); /* EN pline("%s explodes!", Monnam(magr)); */
 	else	noises(magr, mattk);
 
 	result = mdamagem(magr, mdef, mattk);
@@ -847,7 +847,7 @@ mdamagem(magr, mdef, mattk)
 		    	&& mdef != u.usteed
 #endif
 		    	)
-			pline("%s suddenly disappears!", mdef_Monnam); /* EN pline("%s suddenly disappears!", mdef_Monnam); */ // TODO DE
+			pline("SUBJECT %s VERB_VERSCHWINDEN plötzlich!", mdef_Monnam); /* EN pline("%s suddenly disappears!", mdef_Monnam); */
 		}
 		break;
 	    case AD_SLEE:
@@ -937,7 +937,7 @@ mdamagem(magr, mdef, mattk)
 							0 : MM_AGR_DIED));
 		    }
 		    if (flags.soundok) {
-			    if (!vis) You_hear("laughter."); /* EN if (!vis) You_hear("laughter."); */ // TODO DE
+			    if (!vis) You_hear("Gelächter."); /* EN if (!vis) You_hear("laughter."); */
 			    else pline("%s chuckles.", Monnam(magr)); /* EN else pline("%s chuckles.", Monnam(magr)); */ // TODO DE
 		    }
 		}
@@ -971,7 +971,7 @@ mdamagem(magr, mdef, mattk)
 		if (!tele_restrict(magr)) {
 		    rloc(magr);
 		    if (vis && !canspotmon(magr))
-			pline("%s suddenly disappears!", buf); /* EN pline("%s suddenly disappears!", buf); */ // TODO DE
+			pline("SUBJECT %s VERB_VERSCHWINDEN plötzlich!", buf); /* EN pline("%s suddenly disappears!", buf); */
 		}
 		break;
 	    case AD_DRLI:
@@ -1038,7 +1038,7 @@ mdamagem(magr, mdef, mattk)
 			    !tele_restrict(magr)) {
 			    rloc(magr);
 			    if (vis && !canspotmon(magr))
-				pline("%s suddenly disappears!", buf); /* EN pline("%s suddenly disappears!", buf); */ // TODO DE
+				pline("SUBJECT %s VERB_VERSCHWINDEN plötzlich!", buf); /* EN pline("%s suddenly disappears!", buf); */
 			}
 		}
 		tmp = 0;
@@ -1057,7 +1057,7 @@ mdamagem(magr, mdef, mattk)
 		    } else {
 			if (rn2(10)) tmp += rn1(10,6);
 			else {
-			    if (vis) pline_The("poison was deadly..."); /* EN if (vis) pline_The("poison was deadly..."); */ // TODO DE
+			    if (vis) pline("Das Gift war tödlich ..."); /* EN if (vis) pline_The("poison was deadly..."); */
 			    tmp = mdef->mhp;
 			}
 		    }

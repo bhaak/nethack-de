@@ -430,7 +430,7 @@ give_up:	/* Quit */
 		any.a_int = i+1;	/* must be non-zero */
 		add_menu(win, NO_GLYPH, &any , 'q', 0, ATR_NONE,
 				"Abbrechen", MENU_UNSELECTED); /* EN "Quit", MENU_UNSELECTED); */
-		Sprintf(pbuf, "Wähle eine Rolle für KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s", plbuf); /* EN Sprintf(pbuf, "Pick a role for your %s", plbuf); */
+		Sprintf(pbuf, "Wähle eine Klasse für KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s", plbuf); /* EN Sprintf(pbuf, "Pick a role for your %s", plbuf); */
 		end_menu(win, pbuf);
 		n = select_menu(win, PICK_ONE, &selected);
 		destroy_nhwindow(win);

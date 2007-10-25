@@ -141,7 +141,7 @@ u_slow_down()
 	if (!Fast)
 	    You("slow down."); /* EN You("slow down."); */ // TODO DE
 	else	/* speed boots */
-	    Your("quickness feels less natural."); /* EN Your("quickness feels less natural."); */ // TODO DE
+	    Your("NOUN_QUICKNESS VERB_WIRKEN weniger natürlich."); /* EN Your("quickness feels less natural."); */
 	exercise(A_DEX, FALSE);
 }
 
@@ -661,7 +661,7 @@ mattacku(mtmp)
 	    if(sum[i] == 1) {	    /* successful attack */
 		if (u.usleep && u.usleep < monstermoves && !rn2(10)) {
 		    multi = -1;
-		    nomovemsg = "The combat suddenly awakens you."; /* EN nomovemsg = "The combat suddenly awakens you."; */ // TODO DE
+		    nomovemsg = "Der Kampf VERB_REISSEN OBJECT PRONOMEN_PERSONAL aus dem Schlaf."; /* EN nomovemsg = "The combat suddenly awakens you."; */
 		}
 	    }
 	    if(sum[i] == 2) return 1;		/* attacker dead */
@@ -1078,7 +1078,7 @@ dopois:
 				pline("Unfortunately your brain is still gone."); /* EN pline("Unfortunately your brain is still gone."); */ // TODO DE
 			    else
 				Your("ADJEKTIV_LETZT NOUN_GEDANKEs fades away."); /* EN Your("last thought fades away."); */ // TODO DE
-			    killer = "brainlessness"; /* EN killer = "brainlessness"; */ // TODO DE
+			    killer = "Gedankenlosigkeit"; /* EN killer = "brainlessness"; */
 			    killer_format = KILLED_BY;
 			    done(DIED);
 			    lifesaved++;
@@ -2222,11 +2222,11 @@ register struct monst *mon;
 	mayberem(uarmc, cloak_simple_name(uarmc));
 	if(!uarmc)
 		mayberem(uarm, "suit"); /* EN mayberem(uarm, "suit"); */ // TODO DE
-	mayberem(uarmf, "boots"); /* EN mayberem(uarmf, "boots"); */ // TODO DE
+	mayberem(uarmf, "NOUN_BOOTSs"); /* EN mayberem(uarmf, "boots"); */
 	if(!uwep || !welded(uwep))
 		mayberem(uarmg, "gloves"); /* EN mayberem(uarmg, "gloves"); */ // TODO DE
-	mayberem(uarms, "shield"); /* EN mayberem(uarms, "shield"); */ // TODO DE
-	mayberem(uarmh, "helmet"); /* EN mayberem(uarmh, "helmet"); */ // TODO DE
+	mayberem(uarms, "NOUN_SHIELD"); /* EN mayberem(uarms, "shield"); */
+	mayberem(uarmh, "NOUN_HELMET"); /* EN mayberem(uarmh, "helmet"); */
 #ifdef TOURIST
 	if(!uarmc && !uarm)
 		mayberem(uarmu, "shirt"); /* EN mayberem(uarmu, "shirt"); */ // TODO DE
@@ -2275,11 +2275,11 @@ register struct monst *mon;
 				break;
 			case 4: {
 				int tmp;
-				You_feel("exhausted."); /* EN You_feel("exhausted."); */ // TODO DE
+				Du_fuehlst_dich("erschöpft."); /* EN You_feel("exhausted."); */
 			        exercise(A_STR, FALSE);
 				tmp = rn1(10, 6);
 				if(Half_physical_damage) tmp = (tmp+1) / 2;
-				losehp(tmp, "exhaustion", KILLED_BY); /* EN losehp(tmp, "exhaustion", KILLED_BY); */ // TODO DE
+				losehp(tmp, "NOUN_ERSCHOEPFUNG", KILLED_BY); /* EN losehp(tmp, "exhaustion", KILLED_BY); */
 				break;
 			}
 		}
@@ -2336,7 +2336,7 @@ register struct monst *mon;
 			if (!cost) cost = 1L;
 		}
 		if (cost > u.ugold) cost = u.ugold;
-		if (!cost) verbalize("It's on the house!"); /* EN if (!cost) verbalize("It's on the house!"); */ // TODO DE
+		if (!cost) verbalize("Die Runde geht aufs Haus!"); /* EN if (!cost) verbalize("It's on the house!"); */
 		else {
 		    pline("%s takes %ld %s for services rendered!", /* EN pline("%s takes %ld %s for services rendered!", */ // TODO DE
 			    noit_Monnam(mon), cost, currency(cost));

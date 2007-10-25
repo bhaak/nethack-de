@@ -1283,8 +1283,8 @@ boolean telekinesis;	/* not picking it up directly by hand */
 	    else {
 		pline_The("NOUN_SCROLL%s %s zu Staub, als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL sie %s VERB_WOLLEN.", /* EN pline_The("scroll%s %s to dust as you %s %s up.", */
 			plur(obj->quan), otense(obj, "VERB_ZERFALLEN"), /* EN plur(obj->quan), otense(obj, "turn"), */
-			telekinesis ? "anheben" : "aufheben", /* EN telekinesis ? "raise" : "pick", */
-			(obj->quan == 1L) ? "it" : "them");
+			telekinesis ? "anheben" : "aufheben"); /* EN telekinesis ? "raise" : "pick", */
+			/* EN (obj->quan == 1L) ? "it" : "them"); */
 		if (!(objects[SCR_SCARE_MONSTER].oc_name_known) &&
 				    !(objects[SCR_SCARE_MONSTER].oc_uname))
 		    docall(obj);

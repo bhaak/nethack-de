@@ -518,8 +518,8 @@ fix_petrification()
 	Stoned = 0;
 	delayed_killer = 0;
 	if (Hallucination)
-	    pline("Eine Schande! SUBJECT PRONOMEN_PERSONAL VERB_HAVE gerade ein angehendes %sKunstwerk ruiniert!!", /* EN pline("What a pity - you just ruined a future piece of %sart!", */
-		  ACURR(A_CHA) > 15 ? " und schönes " : ""); /* EN ACURR(A_CHA) > 15 ? "fine " : ""); */
+	    pline("Eine Schande! SUBJECT PRONOMEN_PERSONAL VERB_HAVE gerade ein angehendes %swerk ruiniert!!", /* EN pline("What a pity - you just ruined a future piece of %sart!", */
+		  ACURR(A_CHA) > 15 ? "Meister" : "Kunst"); /* EN ACURR(A_CHA) > 15 ? "fine " : ""); */
 	else
 	    Du_fuehlst_dich("locker!"); /* EN You_feel("limber!"); */
 }
@@ -754,8 +754,8 @@ register struct permonst *ptr;
 		debugpline("Trying to give telepathy");
 #endif
 		if(!(HTelepat & FROMOUTSIDE)) {
-			You_feel(Hallucination ?
-			    "in touch with the cosmos." : /* EN "in touch with the cosmos." : */ // TODO DE
+			Du_fuehlst_dich(Hallucination ?  /* EN You_feel(Hallucination ? */
+			    "eins mit dem Universum." : /* EN "in touch with the cosmos." : */
 			    "eine seltsame Steigerung OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_GEISTESSCHAERFE."); /* EN "a strange mental acuity."); */
 			HTelepat |= FROMOUTSIDE;
 			/* If blind, make sure monsters show up. */
@@ -1070,7 +1070,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    if(r == 0 || r == FRENCH_FRIED_TIN) {
 	        /* Assume !Glib, because you can't open tins when Glib. */
 		incr_itimeout(&Glib, rnd(15));
-		pline("Eating deep fried food made your %s very slippery.", /* EN pline("Eating deep fried food made your %s very slippery.", */ // TODO DE
+		pline("SUBJECT PRONOMEN_POSSESSIV %s VERB_WERDEN von dem fritierten Essen ganz fettig.", /* EN pline("Eating deep fried food made your %s very slippery.", */
 		      makeplural(body_part(FINGER)));
 	    }
 	} else {
@@ -1638,7 +1638,7 @@ STATIC_OVL const char *
 foodword(otmp)
 register struct obj *otmp;
 {
-	if (otmp->oclass == FOOD_CLASS) return "NOUN_ESSBARES"; /* EN if (otmp->oclass == FOOD_CLASS) return "food"; */
+	if (otmp->oclass == FOOD_CLASS) return "NOUN_ESSEN"; /* EN if (otmp->oclass == FOOD_CLASS) return "food"; */
 	if (otmp->oclass == GEM_CLASS &&
 	    objects[otmp->otyp].oc_material == GLASS &&
 	    otmp->dknown)

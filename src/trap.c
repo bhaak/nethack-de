@@ -3562,7 +3562,7 @@ boolean force;
 		    if(!force && (confused || Fumbling ||
 				     rnd(75+level_difficulty()/2) > ch)) {
 			You("set it off!"); /* EN You("set it off!"); */ // TODO DE
-			b_trapped("door", FINGER);
+			b_trapped("NOUN_DOOR", FINGER); /* EN b_trapped("door", FINGER); */
 			levl[x][y].doormask = D_NODOOR;
 			unblock_point(x, y);
 			newsym(x, y);

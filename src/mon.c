@@ -2031,7 +2031,7 @@ int  typ, fatal;
 	i = rn2(fatal + 20*thrown_weapon);
 	if(i == 0 && typ != A_CHA) {
 		u.uhp = -1;
-		pline_The("poison was deadly..."); /* EN pline_The("poison was deadly..."); */ // TODO DE
+		pline("Das Gift war tödlich ..."); /* EN pline_The("poison was deadly..."); */
 	} else if(i <= 5) {
 		/* Check that a stat change was made */
 		if (adjattrib(typ, thrown_weapon ? -1 : -rn1(3,3), 1))

@@ -160,8 +160,8 @@ boolean devour;
 	/* However, invisible monsters should still be "it" even though out of
 	   sight locations should not. */
 	if (cansee(x, y) || cansee(mtmp->mx, mtmp->my))
-	    pline("%s %s %s.", mon_visible(mtmp) ? noit_Monnam(mtmp) : "It", /* EN pline("%s %s %s.", mon_visible(mtmp) ? noit_Monnam(mtmp) : "It", */ // TODO DE
-		  devour ? "devours" : "eats", /* EN devour ? "devours" : "eats", */ // TODO DE
+	    pline("SUBJECT %s %s OBJECT %s.", mon_visible(mtmp) ? noit_Monnam(mtmp) : "NOUN_IT", /* EN pline("%s %s %s.", mon_visible(mtmp) ? noit_Monnam(mtmp) : "It", */
+		  devour ? "VERB_VERSCHLINGEN" : "VERB_ESSEN", /* EN devour ? "devours" : "eats", */
 		  (obj->oclass == FOOD_CLASS) ?
 			singular(obj, doname) : doname(obj));
 	/* It's a reward if it's DOGFOOD and the player dropped/threw it. */
@@ -178,7 +178,7 @@ boolean devour;
 	    obj->oerodeproof = 0;
 	    mtmp->mstun = 1;
 	    if (canseemon(mtmp) && flags.verbose) {
-		pline("%s spits %s out in disgust!", /* EN pline("%s spits %s out in disgust!", */ // TODO DE
+		pline("SUBJECT %s VERB_AUSSPUCKEN OBJECT %s angewidert wieder SATZKLAMMER!", /* EN pline("%s spits %s out in disgust!", */
 		      Monnam(mtmp), distant_name(obj,doname));
 	    }
 	} else if (obj == uball) {
@@ -231,7 +231,7 @@ register struct edog *edog;
 		else if (couldsee(mtmp->mx, mtmp->my))
 		    beg(mtmp);
 		else
-		    You_feel("worried about %s.", y_monnam(mtmp)); /* EN You_feel("worried about %s.", y_monnam(mtmp)); */ // TODO DE
+		    You("VERB_MACHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL Sorgen über NEUES_OBJECT OBJECT %s.", y_monnam(mtmp)); /* EN You_feel("worried about %s.", y_monnam(mtmp)); */
 		stop_occupation();
 	    } else if (monstermoves > edog->hungrytime + 750 || mtmp->mhp < 1) {
  dog_died:

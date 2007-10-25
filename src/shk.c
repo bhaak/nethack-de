@@ -1466,7 +1466,7 @@ proceed:
 	        update_inventory(); /* Done in dopayobj() if itemize. */
 	}
 	if(!ANGRY(shkp) && paid)
-	    verbalize("Thank you for shopping in %s %s!", /* EN verbalize("Thank you for shopping in %s %s!", */ // TODO DE
+	    verbalize("Vielen Dank für KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_EINKAUF in KASUS_DATIV %s %s!", /* EN verbalize("Thank you for shopping in %s %s!", */
 		s_suffix(shkname(shkp)),
 		shtypes[eshkp->shoptype - SHOPBASE].name);
 	return(1);
@@ -2280,11 +2280,11 @@ speak:
 	    } else
 		pline("%s will cost you %ld %s%s.", /* EN pline("%s will cost you %ld %s%s.", */
 			The(xname(obj)), ltmp, currency(ltmp),
-			(obj->quan > 1L) ? " each" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */ // TODO DE
+			(obj->quan > 1L) ? " das Stück" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */
 	} else if(!silent) {
 	    if(ltmp) pline_The("list price of %s is %ld %s%s.", /* EN if(ltmp) pline_The("list price of %s is %ld %s%s.", */ // TODO DE
 				   the(xname(obj)), ltmp, currency(ltmp),
-				   (obj->quan > 1L) ? " each" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */ // TODO DE
+				   (obj->quan > 1L) ? " das Stück" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */
 	    else pline("%s does not notice.", Monnam(shkp)); /* EN else pline("%s does not notice.", Monnam(shkp)); */ // TODO DE
 	}
 }
@@ -3557,7 +3557,7 @@ boolean cant_mollify;
 #endif
 				|| !rn2(50)) {
 		if(um_dist(x, y, 1) && !uinshp) {
-		    pline("%s shouts:", shkname(shkp)); /* EN pline("%s shouts:", shkname(shkp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_BRUELLEN:", shkname(shkp)); /* EN pline("%s shouts:", shkname(shkp)); */
 		    verbalize("Who dared %s my %s?", dmgstr, /* EN verbalize("Who dared %s my %s?", dmgstr, */ // TODO DE
 					 dugwall ? "shop" : "door"); /* EN dugwall ? "shop" : "door"); */ // TODO DE
 		} else {
@@ -3658,7 +3658,7 @@ register struct obj *first_obj;
 	    Strcpy(price, "no charge"); /* EN Strcpy(price, "no charge"); */ // TODO DE
 	} else {
 	    Sprintf(price, "%ld %s%s", cost, currency(cost),
-		    otmp->quan > 1L ? " each" : ""); /* EN otmp->quan > 1L ? " each" : ""); */ // TODO DE
+		    otmp->quan > 1L ? " das Stück" : ""); /* EN otmp->quan > 1L ? " each" : ""); */
 	}
 	Sprintf(buf, "%s, %s", doname(otmp), price);
 	putstr(tmpwin, 0, buf),  cnt++;
@@ -3673,8 +3673,8 @@ register struct obj *first_obj;
 	    cost = get_cost(first_obj, (struct monst *)0);
 	    if (Has_contents(first_obj))
 		cost += contained_cost(first_obj, shkp, 0L, FALSE, FALSE);
-	    pline("%s, price %ld %s%s%s", doname(first_obj), /* EN pline("%s, price %ld %s%s%s", doname(first_obj), */ // TODO DE
-		cost, currency(cost), first_obj->quan > 1L ? " each" : "",
+	    pline("SUBJECT %s, kostet %ld %s%s%s", doname(first_obj), /* EN pline("%s, price %ld %s%s%s", doname(first_obj), */
+		cost, currency(cost), first_obj->quan > 1L ? " das Stück" : "",
 		shk_embellish(first_obj, cost));
 	}
     }
@@ -3694,7 +3694,7 @@ long cost;
 	switch (choice) {
 	    case 4:
 		if (cost < 10L) break; else o = itm->oclass;
-		if (o == FOOD_CLASS) return ", gourmets' delight!"; /* EN if (o == FOOD_CLASS) return ", gourmets' delight!"; */ // TODO DE
+		if (o == FOOD_CLASS) return ", ein wahrer Gaumenschmaus!"; /* EN if (o == FOOD_CLASS) return ", gourmets' delight!"; */
 		if (objects[itm->otyp].oc_name_known
 		    ? objects[itm->otyp].oc_magic
 		    : (o == AMULET_CLASS || o == RING_CLASS   ||
@@ -3702,9 +3702,9 @@ long cost;
 		       o == SCROLL_CLASS || o == SPBOOK_CLASS))
 		    return ", painstakingly developed!"; /* EN return ", painstakingly developed!"; */ // TODO DE
 		return ", superb craftsmanship!"; /* EN return ", superb craftsmanship!"; */ // TODO DE
-	    case 3: return ", finest quality."; /* EN case 3: return ", finest quality."; */ // TODO DE
-	    case 2: return ", an excellent choice."; /* EN case 2: return ", an excellent choice."; */ // TODO DE
-	    case 1: return ", a real bargain."; /* EN case 1: return ", a real bargain."; */ // TODO DE
+	    case 3: return ", beste Qualität."; /* EN case 3: return ", finest quality."; */
+	    case 2: return ", eine exzellente Wahl."; /* EN case 2: return ", an excellent choice."; */
+	    case 1: return ", ein richtiges Schnäppchen."; /* EN case 1: return ", a real bargain."; */
 	   default: break;
 	}
     } else if (itm->oartifact) {
@@ -3781,7 +3781,7 @@ struct monst *shkp;
 #else
 	else if ((shkmoney = money_cnt(shkp->minvent)) < 50)
 #endif
-		pline("%s complains that business is bad.", shkname(shkp)); /* EN pline("%s complains that business is bad.", shkname(shkp)); */ // TODO DE
+		pline("SUBJECT %s VERB_BESCHWEREN sich über schlechtgehende Geschäfte.", shkname(shkp)); /* EN pline("%s complains that business is bad.", shkname(shkp)); */ // TODO DE
 #ifndef GOLDOBJ
 	else if (shkp->mgold > 4000)
 #else
