@@ -352,7 +352,7 @@ panic VA_DECL(const char *, str)
 # if defined(NOTIFY_NETHACK_BUGS)
 	if (!wizard)
 	    raw_printf("Report the following error to \"%s\".",
-			"nethack-bugs@nethack.org"); /* EN "nethack-bugs@nethack.org"); */ // TODO DE  CHECK ME all nethack-bugs@nethack.org
+			"bhaak@gmx.net"); /* EN "nethack-bugs@nethack.org"); */
 	else if (program_state.something_worth_saving)
 	    raw_print("\nError save file being written.\n");
 # else
@@ -1087,7 +1087,7 @@ boolean identified, all_containers, want_dump;
 		    continue;	/* wrong type of container */
 		} else if (box->cobj) {
 		    winid tmpwin = create_nhwindow(NHW_MENU);
-		    Sprintf(buf, "Contents of %s:", the(xname(box))); /* EN Sprintf(buf, "Contents of %s:", the(xname(box))); */ // TODO DE
+		    Sprintf(buf, "Inhalt KASUS_GENITIV %s:", the(xname(box))); /* EN Sprintf(buf, "Contents of %s:", the(xname(box))); */
 		    putstr(tmpwin, 0, buf);
 		    putstr(tmpwin, 0, "");
 #ifdef DUMP_LOG

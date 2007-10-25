@@ -441,12 +441,12 @@ struct obj *otmp;
 {
     static char *junk[] = {
     "Please disregard previous letter.", /* EN "Please disregard previous letter.", */ // TODO DE
-    "Welcome to NetHack.", /* EN "Welcome to NetHack.", */ // TODO DE
+    "Willkommen zu NetHack-De.", /* EN "Welcome to NetHack.", */ // TODO DE
 #ifdef AMIGA
     "Only Amiga makes it possible.", /* EN "Only Amiga makes it possible.", */ // TODO DE
     "CATS have all the answers.", /* EN "CATS have all the answers.", */ // TODO DE
 #endif
-    "Report bugs to <devteam@nethack.org>.", /* EN "Report bugs to <devteam@nethack.org>.", */ // TODO DE  CHECK ME jedes Auftreten von  @nethack.org
+    "Fehlerberichte bitte an <bhaak@gmx.net>.", /* EN "Report bugs to <devteam@nethack.org>.", */ // CHECK ME jedes Auftreten von  @nethack.org
     "Invitation: Visit the NetHack web site at http://www.nethack.org!" /* EN "Invitation: Visit the NetHack web site at http://www.nethack.org!" */ // TODO DE
     };
 
