@@ -1,7 +1,6 @@
 ---
 title: Status
 inMenu: true
-orderInfo: 2
 ---
 {execute: {command: cd ../src; ./german_check_words.rb, escapeHTML: false}}
 

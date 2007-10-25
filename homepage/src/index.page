@@ -1,7 +1,17 @@
----
-title: Start
-inMenu: true
----
-h2. Empty index file
+NetHack-De ist der Versuch einer deutschen Übersetzung des Spieles "NetHack":http://www.nethack.org/.
 
-Fill this file with your own data!!!
+Im Moment ist die Übersetzung noch in Arbeit und deshalb unvollständig.
+
+Auf der "Statusseite":status.html wird der aktuelle Stand der Übersetzung angezeigt.
+
+<hr>
+
+h3. News
+
+h4(#news-2007-10-11). 11. Okt 2007 
+* Alpha-Release NetHack-De 3.4.2-20071011a
+* ca. 30% des generierten Textes übersetzt
+
+h4(#news-2007-17-04). 4. Apr 2007
+* Sourceforge-Projekt nethack-de angelegt
+* Homepage aufgeschaltet

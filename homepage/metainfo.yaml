@@ -1,17 +1,30 @@
 index.page:
+  title: Home
+  htmltitle: 'NetHack-De: Home'
   inMenu: true
-  orderInfo: 1
+  orderInfo: 10
 
 status.page:
+  title: Status
+  htmltitle: 'NetHack-De: Status'
   inMenu: true
-  orderInfo: 2
+  orderInfo: 20
+
+screenshots.page:
+  title: Screenshots
+  htmltitle: 'NetHack-De: Screenshots'
+  inMenu: true
+  orderInfo: 30
 
 download.page:
+  title: Downloads
+  htmltitle: 'NetHack-De: Downloads'
   inMenu: true
-  orderInfo: 3
+  orderInfo: 40
 
 english.page:
   title: English
+  htmltitle: 'NetHack-De: English Summary'
   inMenu: true
-  orderInfo: 4
+  orderInfo: 40
 
