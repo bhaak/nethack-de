@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#ifdef OHNE_HACK_H
+#ifndef NO_HACK_H_INCLUDE
 # include "hack.h"
 #endif
 
@@ -13,6 +13,7 @@
 #define TBUFSZ 300
 
 //#define DEBUG 1
+#define WISH_DEBUG 0
 
 /*
 
@@ -260,55 +261,55 @@ void german2meta(const char *str, char *output)
 	int scroll_gefunden = 0;
 	int leiche_gefunden = 0;
 	
-	printf("\ngerman2meta %s\n", str);
+	if (WISH_DEBUG) printf("\ngerman2meta %s\n", str);
 	//printf("str: %s\n",str);
 	//printf("strlen(str): %d\n",strlen(str));
 	while (i < strlen(str)) {
-		printf("i: %d\n",i);
-		printf("1 %s\n",str+i);
+		if (WISH_DEBUG) printf("i: %d\n",i);
+		if (WISH_DEBUG) printf("1 %s\n",str+i);
 		struct substantiv_oder_adjekiv_struct *wort = get_meta_substantiv(str+i);
-		printf("1.5 %s\n",str+i);
+		if (WISH_DEBUG) printf("1.5 %s\n",str+i);
 
 		// gewisse Worte sind mehrdeutig, z.B. "rot", "Hast"
 		if (wort != NULL) {
-			printf("2 word: %s; ring_gefunden: %d \n",wort->typ,ring_gefunden);
+			if (WISH_DEBUG) printf("2 word: %s; ring_gefunden: %d \n",wort->typ,ring_gefunden);
 			if ((strncmp("ADJEKTIV_SPE_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_POT_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_WAND_", wort->typ, 14)==0) ||
 					(strncmp("ADJEKTIV_AMULET_", wort->typ, 16)==0)) {
 				// diese Adjektive werden mittels den nachfolgenden Substantiven bestimmt
-				printf("ADJEKTIV_ 1 %s\n", wort->typ);
-				printf("ADJEKTIV_ 2 %s\n", str+i);
+				if (WISH_DEBUG) printf("ADJEKTIV_ 1 %s\n", wort->typ);
+				if (WISH_DEBUG) printf("ADJEKTIV_ 2 %s\n", str+i);
 				if (strstr2(str+i, "Zauberbuch", "Zauberbüch")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_SPE_");
-					printf("ADJEKTIV_ 4 %s\n", wort->typ);
+					if (WISH_DEBUG) printf("ADJEKTIV_ 4 %s\n", wort->typ);
 				} else if (strstr2(str+i, "Trank", "Tränk")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_POT_");
-					printf("ADJEKTIV_ 5 %s\n", wort->typ);
+					if (WISH_DEBUG) printf("ADJEKTIV_ 5 %s\n", wort->typ);
 				} else if (strstr2(str+i, "Amulett", "Amulett")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_AMULET_");
-					printf("ADJEKTIV_ 6 %s\n", wort->typ);
+					if (WISH_DEBUG) printf("ADJEKTIV_ 6 %s\n", wort->typ);
 				}
 			} else if (wand_gefunden) {
 				if ((strncmp("NOUN_", wort->typ, 4)==0)){
 					wort = get_meta_substantiv_with(str+i, "NOUN_WAND_");
-					printf("NOUN_WAND_ 1 %s\n", wort->typ);
+					if (WISH_DEBUG) printf("NOUN_WAND_ 1 %s\n", wort->typ);
 				}
 			} else if (potion_gefunden) {
 				if ((strncmp("NOUN_", wort->typ, 4)==0)){
 					wort = get_meta_substantiv_with(str+i, "NOUN_POT_");
-					printf("NOUN_POT_ 1 %s\n", wort->typ);
+					if (WISH_DEBUG) printf("NOUN_POT_ 1 %s\n", wort->typ);
 				}
 			} else if (scroll_gefunden) {
 				if ((strncmp("NOUN_", wort->typ, 4)==0)){
 					wort = get_meta_substantiv_with(str+i, "NOUN_SCR_");
-					printf("NOUN_SCR_ 1 %s\n", wort->typ);
+					if (WISH_DEBUG) printf("NOUN_SCR_ 1 %s\n", wort->typ);
 				}
 			} else if (ring_gefunden) {
 				if ((strncmp("NOUN_", wort->typ, 4)==0)){
 					wort = get_meta_substantiv_with(str+i, "NOUN_RING_");
-					printf("NOUN_RING_ 1 %s\n", wort->typ);
+					if (WISH_DEBUG) printf("NOUN_RING_ 1 %s\n", wort->typ);
 				}
 			}
 		}
@@ -319,7 +320,7 @@ void german2meta(const char *str, char *output)
 			i++;
 		} else {
 			// Found a match. Copy string and jump over word
-			printf("3 wort->wort: %s\n",wort->typ);
+			if (WISH_DEBUG) printf("3 wort->wort: %s\n",wort->typ);
 			if (strncmp("NOUN_RING", wort->typ, 9)==0) {
 				ring_gefunden = 1;
 			} else if (strncmp("NOUN_WAND", wort->typ, 9)==0) {
@@ -341,14 +342,14 @@ void german2meta(const char *str, char *output)
 				strcat(output, "PARTIKEL_OF");
 				i = i + strlen(wort->wort);
 			} else if (wand_gefunden && (strncmp("MADE_OF_WAND_", wort->typ, 13)==0)) {
-				printf("MADE_OF_WAND 1 %s\n", output);
+				if (WISH_DEBUG) printf("MADE_OF_WAND 1 %s\n", output);
 				// "NOUN_WAND aus " löschen
 				output[strlen(output)-14] = '\0';
-				printf("MADE_OF_WAND 2 %s\n", output);
+				if (WISH_DEBUG) printf("MADE_OF_WAND 2 %s\n", output);
 				strcat(output, wort->typ);
-				printf("MADE_OF_WAND 3 %s\n", output);
+				if (WISH_DEBUG) printf("MADE_OF_WAND 3 %s\n", output);
 				strcat(output, " NOUN_WAND");
-				printf("MADE_OF_WAND 4 %s\n", output);
+				if (WISH_DEBUG) printf("MADE_OF_WAND 4 %s\n", output);
 				i = i + strlen(wort->wort);
 			} else if (strncmp("NOUN_FLASCHE", wort->typ, 12)==0) {
 				if (token_is_plural(wort->typ)) {
@@ -372,7 +373,7 @@ void german2meta(const char *str, char *output)
 			}
 		}
 	}
-	printf("\ngerman2meta %s\n", output);
+	if (WISH_DEBUG) printf("\ngerman2meta %s\n", output);
 }
 
 void german2meta_with(char *str, char *output, char *with)
@@ -759,6 +760,7 @@ char* german(const char *line) {
 	c_casus = 0; c_genus = 0; c_numerus = 0; c_person = 0; c_artikel = ohne;
 	verb_do_casus = 0; 
 	verb_tempus_modus = 0; 
+	verb_infinitiv = 0;
 
 	int pos=0;
 	char tmp[TBUFSZ];
@@ -772,7 +774,7 @@ char* german(const char *line) {
 	output[0] = '\0';
 	
 	/* set standard genus and numerus depending on character class */
-#ifdef PM_KNIGHT
+#ifndef NO_HACK_H_INCLUDE
 	if (Role_if(PM_HEALER)  ||
 			Role_if(PM_KNIGHT)  ||
 			Role_if(PM_MONK)    ||
@@ -822,7 +824,12 @@ char* german(const char *line) {
 					(strncmp("PRONOMEN_3P", tmp, 11)==0)) {
 				 c_artikel = unbestimmter;
 			}
-			append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
+			if ((strcmp("PRONOMEN_POSSESSIV", tmp)==0) && 
+		 			(pm_numerus == n_plural)) {
+				append(output, get_wort("PRONOMEN_POSSESSIV_PL", c_casus, c_genus, c_numerus, c_artikel));
+			} else {
+				append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
+			}
 
 		} else if (strncmp("SUBJECT",tmp,7)==0) {
 			clear_subject();
@@ -907,6 +914,7 @@ char* german(const char *line) {
 				previous_token(line, tmp2, pos-strlen("MODIFIER_CORPSE"));
 				if ((!strcmp("PRONOMEN_POSSESSIV", tmp2)==0) &&
 						(!strncmp("ARTIKEL_", tmp2, 8)==0) &&
+						(!strncmp("ADJEKTIV_", tmp2, 8)==0) &&
 						(corpse_numerus == n_singular)){
 					// "maskulin" hardkodiert, muss mit NOUN_CORPSE übereinstimmen
 					append(output, get_wort("ARTIKEL_BESTIMMTER", c_casus, maskulin, corpse_numerus, c_artikel));
@@ -1132,9 +1140,9 @@ char* german(const char *line) {
 	}
 
 #ifdef __MINGW32__
-        FILE *file = fopen("C:/nethack-de.log", "a");
+	FILE *file = fopen("nethack-de.log", "a");
 #else
-	FILE *file = fopen("/tmp/nethack-de.log", "a");
+	FILE *file = fopen("nethack-de.log", "a");
 #endif
 	fprintf(file, "%s\n",line);
 	fprintf(file, "%s\n",output);
