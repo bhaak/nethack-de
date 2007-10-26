@@ -277,7 +277,8 @@ void german2meta(const char *str, char *output)
 					(strncmp("ADJEKTIV_POT_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_WAND_", wort->typ, 14)==0) ||
-					(strncmp("ADJEKTIV_AMULET_", wort->typ, 16)==0)) {
+					(strncmp("ADJEKTIV_AMULET_", wort->typ, 16)==0) ||
+					(strncmp("ADJEKTIV_FARBE_", wort->typ, 15)==0)) {
 				// diese Adjektive werden mittels den nachfolgenden Substantiven bestimmt
 				if (WISH_DEBUG) printf("ADJEKTIV_ 1 %s\n", wort->typ);
 				if (WISH_DEBUG) printf("ADJEKTIV_ 2 %s\n", str+i);
@@ -290,6 +291,13 @@ void german2meta(const char *str, char *output)
 				} else if (strstr2(str+i, "Amulett", "Amulett")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_AMULET_");
 					if (WISH_DEBUG) printf("ADJEKTIV_ 6 %s\n", wort->typ);
+				} else if (strstr2(str+i, "Zauberstab", "Zauberstäb")) {
+					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_WAND_");
+					if (WISH_DEBUG) printf("ADJEKTIV_ 7 %s\n", wort->typ);
+				} else if (strstr2(str+i, "Schmuckstein", "Schmuckstein") ||
+				           strstr2(str+i, "Stein", "Stein")) {
+					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_GEM_");
+					if (WISH_DEBUG) printf("ADJEKTIV_ 8 %s\n", wort->typ);
 				}
 			} else if (wand_gefunden) {
 				if ((strncmp("NOUN_", wort->typ, 4)==0)){
