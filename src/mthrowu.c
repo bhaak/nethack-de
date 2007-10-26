@@ -331,7 +331,7 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			    singleobj->otyp <= LAST_GEM+9 /* 9 glass colors */
 			    && is_unicorn(youmonst.data)) {
 			if (singleobj->otyp > LAST_GEM) {
-			    You("catch the %s.", xname(singleobj)); /* EN You("catch the %s.", xname(singleobj)); */ // TODO DE
+			    You("VERB_FANGEN OBJECT ARTIKEL_BESTIMMTER %s.", xname(singleobj)); /* EN You("catch the %s.", xname(singleobj)); */
 			    You("are not interested in %s junk.", /* EN You("are not interested in %s junk.", */ // TODO DE
 				s_suffix(mon_nam(mon)));
 			    makeknown(singleobj->otyp);
@@ -341,7 +341,7 @@ m_throw(mon, x, y, dx, dy, range, obj)
 				s_suffix(mon_nam(mon)));
 			    (void)hold_another_object(singleobj,
 				"You catch, but drop, %s.", xname(singleobj), /* EN "You catch, but drop, %s.", xname(singleobj), */ // TODO DE
-				"You catch:"); /* EN "You catch:"); */ // TODO DE
+				"SUBJECT VERB_FANGEN:"); /* EN "You catch:"); */
 			}
 			break;
 		    }
@@ -512,7 +512,7 @@ struct monst *mtmp;
 
 	    if (canseemon(mtmp)) {
 		onm = xname(otmp);
-		pline("5678 %s thrusts %s.", Monnam(mtmp), /* EN pline("5678 %s thrusts %s.", Monnam(mtmp), */ // TODO DE
+		pline("5678 %s thrusts %s.", Monnam(mtmp), /* EN pline("%s thrusts %s.", Monnam(mtmp), */ // TODO DE
 		      obj_is_pname(otmp) ? the(onm) : an(onm));
 	    }
 
@@ -670,9 +670,9 @@ breamu(mtmp, mattk)			/* monster breathes at you (ranged) */
 	    if(mtmp->mcan) {
 		if(flags.soundok) {
 		    if(canseemon(mtmp))
-			pline("%s coughs.", Monnam(mtmp)); /* EN pline("%s coughs.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_HUSTEN.", Monnam(mtmp)); /* EN pline("%s coughs.", Monnam(mtmp)); */
 		    else
-			You_hear("a cough."); /* EN You_hear("a cough."); */ // TODO DE
+			You_hear("jemanden husten."); /* EN You_hear("a cough."); */
 		}
 		return(0);
 	    }

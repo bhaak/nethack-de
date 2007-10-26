@@ -352,7 +352,7 @@ register struct monst *mtmp;
 	    yelp_verb = "VERB_YELP"; /* EN yelp_verb = "yelp"; */
 	    break;
 	case MS_ROAR:
-	    yelp_verb = "VERB_SNARL"; /* EN yelp_verb = "snarl"; */
+	    yelp_verb = "VERB_SNARL die Zähne"; /* EN yelp_verb = "snarl"; */
 	    break;
 	case MS_SQEEK:
 	    yelp_verb = "VERB_SQUEAL"; /* EN yelp_verb = "squeal"; */
@@ -550,7 +550,7 @@ register struct monst *mtmp;
 		if (mtmp->mtame &&
 			(mtmp->mconf || mtmp->mflee || mtmp->mtrapped ||
 			 moves > EDOG(mtmp)->hungrytime || mtmp->mtame < 5))
-		    pline_msg = "winselt."; /* EN pline_msg = "whines."; */
+		    pline_msg = "VERB_WHINE."; /* EN pline_msg = "whines."; */
 		else if (mtmp->mtame && EDOG(mtmp)->hungrytime > moves + 1000)
 		    pline_msg = "wimmert."; /* EN pline_msg = "yips."; */
 		else {
@@ -575,10 +575,10 @@ register struct monst *mtmp;
 		break;
 	    } /* else FALLTHRU */
 	case MS_GROWL:
-	    pline_msg = mtmp->mpeaceful ? "snarls." : "growls!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "growls!"; */ // TODO DE
+	    pline_msg = mtmp->mpeaceful ? "VERB_SNARL die Zähne." : "VERB_ROAR!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "growls!"; */
 	    break;
 	case MS_ROAR:
-	    pline_msg = mtmp->mpeaceful ? "snarls." : "roars!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "roars!"; */ // TODO DE
+	    pline_msg = mtmp->mpeaceful ? "VERB_SNARL die Zähne." : "VERB_ROAR!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "roars!"; */
 	    break;
 	case MS_SQEEK:
 	    pline_msg = "quiekt."; /* EN pline_msg = "squeaks."; */
@@ -591,7 +591,7 @@ register struct monst *mtmp;
 	    break;
 	case MS_HISS:
 	    if (!mtmp->mpeaceful)
-		pline_msg = "faucht!"; /* EN pline_msg = "hisses!"; */
+		pline_msg = "VERB_HISS!"; /* EN pline_msg = "hisses!"; */
 	    else return 0;	/* no sound */
 	    break;
 	case MS_BUZZ:
@@ -650,7 +650,7 @@ register struct monst *mtmp;
 	    break;
 	case MS_DJINNI:
 	    if (mtmp->mtame) {
-		verbl_msg = "Sorry, habe keine Wünsche mehr übrig."; /* EN verbl_msg = "Sorry, I'm all out of wishes."; */
+		verbl_msg = "Sorry, hab' keine Wünsche mehr übrig."; /* EN verbl_msg = "Sorry, I'm all out of wishes."; */
 	    } else if (mtmp->mpeaceful) {
 		if (ptr == &mons[PM_WATER_DEMON])
 		    pline_msg = "gluckst."; /* EN pline_msg = "gurgles."; */
@@ -701,7 +701,7 @@ register struct monst *mtmp;
 		verbl_msg = "Ich habe Hunger."; /* EN verbl_msg = "I'm hungry."; */ // TODO DE
 	    /* Specific monsters' interests */
 	    else if (is_elf(ptr))
-		pline_msg = "verflucht Orks."; /* EN pline_msg = "curses orcs."; */
+		pline_msg = "flucht über Orks."; /* EN pline_msg = "curses orcs."; */
 	    else if (is_dwarf(ptr))
 		pline_msg = "talks about mining."; /* EN pline_msg = "talks about mining."; */ // TODO DE
 	    else if (likes_magic(ptr))

@@ -84,7 +84,7 @@ NEARDATA const char * const killed_by_prefix[] = {
 // TODO DE
 	"getötet von KASUS_DATIV ", "erstickte an KASUS_DATIV ", "vergiftet durch KASUS_AKKUSATIV ", "starb KASUS_AKKUSATIV ARTIKEL_BESTIMMTER ", "ertrank in KASUS_DATIV ", /* EN  "killed by ", "choked on ", "poisoned by ", "died of ", "drowned in ", */
 
-	"verbrannte durch KASUS_AKKUSATIV ", "aufgelöst in KASUS_DATIV ", "zerquetscht durch KASUS_AKKUSATIV ", "versteinerte durch KASUS_AKKUSATIV ", /* EN "burned by ", "dissolved in ", "crushed to death by ", "petrified by ", */
+	"verbrannte durch KASUS_AKKUSATIV ", "aufgelöst in KASUS_DATIV ", "zerquetscht durch KASUS_AKKUSATIV ", "versteinerte wegen KASUS_GENITIV ", /* EN "burned by ", "dissolved in ", "crushed to death by ", "petrified by ", */
 	"verschleimte durch KASUS_AKKUSATIV ", "getötet von KASUS_DATIV ", "", "", "", "", "" /* EN "turned to slime by ", "killed by ", "", "", "", "", "" */
 };
 
@@ -262,7 +262,9 @@ int how;
 #ifdef LOGFILE
 	FILE *lfile;
 #endif /* LOGFILE */
-
+#ifdef GERMAN
+	char tmpbuf[BUFSZ];
+#endif
 /* Under DICE 3.0, this crashes the system consistently, apparently due to
  * corruption of *rfile somewhere.  Until I figure this out, just cut out
  * topten support entirely - at least then the game exits cleanly.  --AC
@@ -325,19 +327,21 @@ int how;
 	switch (killer_format) {
 		default: impossible("bad killer format?");
 		case KILLED_BY_AN:
-			Strcat(t0->death, killed_by_prefix[how]);
-			(void) strncat(t0->death, an(killer),
-						DTHSZ-strlen(t0->death));
+			Strcpy(tmpbuf, killed_by_prefix[how]); /* EN Strcat(t0->death, killed_by_prefix[how]); */
+			Strcat(tmpbuf, an(killer)); /* EN (void) strncat(t0->death, an(killer), DTHSZ-strlen(t0->death)); */
 			break;
 		case KILLED_BY:
-			Strcat(t0->death, killed_by_prefix[how]);
-			(void) strncat(t0->death, killer,
-						DTHSZ-strlen(t0->death));
+			Strcpy(tmpbuf, killed_by_prefix[how]); /* EN Strcat(t0->death, killed_by_prefix[how]); */
+			Strcat(tmpbuf, killer); /* EN (void) strncat(t0->death, killer, DTHSZ-strlen(t0->death)); */
 			break;
 		case NO_KILLER_PREFIX:
-			(void) strncat(t0->death, killer, DTHSZ);
+			Strcpy(tmpbuf, killer); /* EN (void) strncat(t0->death, killer, DTHSZ); */
 			break;
 	}
+#ifdef GERMAN
+	strncat(t0->death, german(tmpbuf), DTHSZ);
+#endif
+
 #ifdef LOG_MOVES
 	/* jl 08.2000 - 09.2003 */
 	sprintf(buf," {%ld}",moves);

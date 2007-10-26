@@ -1837,7 +1837,7 @@ dozap()
 	} else if(!u.dx && !u.dy && !u.dz && !(objects[obj->otyp].oc_dir == NODIR)) {
 	    if ((damage = zapyourself(obj, TRUE)) != 0) {
 		char buf[BUFSZ];
-		Sprintf(buf, "wirkte einen Stabzauber gegen sich selbst", uhim()); /* EN Sprintf(buf, "zapped %sself with a wand", uhim()); */
+		Sprintf(buf, "wirkte einen Stabzauber gegen sich selbst"); /* EN Sprintf(buf, "zapped %sself with a wand", uhim()); */
 		losehp(damage, buf, NO_KILLER_PREFIX);
 	    }
 	} else {
