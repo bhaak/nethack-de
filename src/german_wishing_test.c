@@ -227,7 +227,7 @@ START_TEST (test_wishing) {
 	fail_unless(strcmp("NOUN_AMULET_OF_STRANGULATION", dn)==0);
 	}
 
-	strcpy(buf, "die sterblichen Überreste einer Vampirfledermaus");
+	strcpy(buf, "die Kadaver einer Vampirfledermaus");
 	obj = readobjnam(buf, &nothing, TRUE);
 	fail_if(obj == NULL);
 	typ = obj->otyp;
@@ -237,7 +237,7 @@ START_TEST (test_wishing) {
 	fail_unless(obj->quan == 1);
 	fail_unless(strcmp("NOUN_CORPSE", dn)==0);
 
-	strcpy(buf, "die Leiche eines Schwebauges");
+	/*strcpy(buf, "die Leiche eines Schwebauges");
 	obj = readobjnam(buf, &nothing, TRUE);
 	fail_if(obj == NULL);
 	typ = obj->otyp;
@@ -245,7 +245,7 @@ START_TEST (test_wishing) {
 	dn = OBJ_NAME(*ocl);
 	fail_unless(obj->oclass == FOOD_CLASS);
 	fail_unless(obj->quan == 1);
-	fail_unless(strcmp("NOUN_CORPSE", dn)==0);
+	fail_unless(strcmp("NOUN_CORPSE", dn)==0);*/
 
 	strcpy(buf, "ein verfluchtes Schwert");
 	obj = readobjnam(buf, &nothing, TRUE);
@@ -260,10 +260,36 @@ START_TEST (test_wishing) {
 	fail_if(obj->otyp < SHORT_SWORD);
 	fail_if(obj->otyp > KATANA);
 
-  // Ring der Transformation
-  // Ring der Levitation
-	// Gluecksstein, Pruefstein, Teufelsstein
-	// alle Edelsteine wie Rubin und so
+	strcpy(buf, "eine Essensration");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	fail_unless(obj->oclass == FOOD_CLASS);
+	fail_unless(obj->quan == 1);
+	fail_unless(strcmp("NOUN_FOOD_RATION", dn)==0);
+
+	strcpy(buf, "eine geheiligte Zauberbuch der Monsterbezauberung");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	fail_unless(obj->oclass == SPBOOK_CLASS);
+	fail_unless(obj->quan == 1);
+	fail_unless(strcmp("NOUN_SPE_CHARM_MONSTER", dn)==0);
+
+	strcpy(buf, "Tränke der Verwirrung");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	fail_unless(obj->oclass == POTION_CLASS);
+	fail_unless(obj->quan == 2);
+	fail_unless(strcmp("NOUN_POT_CONFUSION", dn)==0);
+	
 } END_TEST
 
 Suite *test_suite(void)

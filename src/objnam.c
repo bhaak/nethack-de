@@ -858,7 +858,7 @@ boolean ignore_oquan;	/* to force singular */
 {
 	char *nambuf = nextobuf();
 
-	Sprintf(nambuf, "MODIFIER_CORPSE %s NOUN_CORPSE 1", mons[otmp->corpsenm].mname); /* EN Sprintf(nambuf, "%s corpse", mons[otmp->corpsenm].mname); */
+	Sprintf(nambuf, "MODIFIER_CORPSE %s NOUN_CORPSE", mons[otmp->corpsenm].mname); /* EN Sprintf(nambuf, "%s corpse", mons[otmp->corpsenm].mname); */
 	if (ignore_oquan || otmp->quan < 2)
 	    return nambuf;
 	else
@@ -1580,7 +1580,7 @@ const char *oldstr;
 
 	while (*bp == ' ') bp++;
 	/* find "cloves of garlic", "worthless pieces of blue glass" */
-	if ((p = strstri(bp, "s of ")) != 0) {
+	if ((p = strstri(bp, "s PARTIKEL_OF ")) != 0) {
 	    /* but don't singularize "gauntlets", "boots", "Eyes of the.." */
 	    if (BSTRNCMPI(bp, p-3, "Eye", 3) &&
 		BSTRNCMP(bp, p-4, "boot", 4) &&
@@ -1833,12 +1833,12 @@ boolean from_user;
 	oclass = 0;
 	actualn = dn = un = 0;
 
-	fprintf(stderr, "readobjnam 1 oclass: %d\n", oclass); // DE DEBUG
-	printf("readobjnam 2 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 1 oclass: %d\n", oclass); // DE DEBUG
+	//printf("readobjnam 2 oclass: %d\n", oclass); // DE DEBUG
 
 	if (!bp) goto any;
-	fprintf(stderr, "readobjnam 2 oclass: %d\n", oclass); // DE DEBUG
-	printf("readobjnam 3 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 2 oclass: %d\n", oclass); // DE DEBUG
+	//printf("readobjnam 3 oclass: %d\n", oclass); // DE DEBUG
 	/* first, remove extra whitespace they may have typed */
 	(void)mungspaces(bp);
 	/* allow wishing for "nothing" to preserve wishless conduct...
@@ -1856,9 +1856,9 @@ boolean from_user;
 	/* save the [nearly] unmodified choice string */
 	Strcpy(fruitbuf, bp);
 
-	fprintf(stderr, "readobjnam 3 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 3 oclass: %d\n", oclass); // DE DEBUG
 	german2meta(bp, german_str);
-	fprintf(stderr, "readobjnam 4 german2meta returned%s\n", german_str); // DE DEBUG
+	//fprintf(stderr, "readobjnam 4 german2meta returned%s\n", german_str); // DE DEBUG
 	//pline("wishing1: %s",bp);
 	//pline("wishing2: %s",german_str);
 	bp = german_str;
@@ -1895,7 +1895,7 @@ boolean from_user;
 		     !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17) ||
 			   !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17)) {
 			blessed = 1;
-			fprintf(stderr, "\n\nblessed %s\n", bp); // DE DEBUG
+			//fprintf(stderr, "\n\nblessed %s\n", bp); // DE DEBUG
 		} else if (!strncmpi(bp, "ADJEKTIV_CURSED ", l=16) ||
 			   !strncmpi(bp, "ADJEKTIV_CURSED ", l=16)) {
 			iscursed = 1;
@@ -1986,7 +1986,7 @@ boolean from_user;
 		}
 	    }
 	}
-	fprintf(stderr, "readobjnam 5 %s\n", bp); // DE DEBUG
+	//fprintf(stderr, "readobjnam 5 %s\n", bp); // DE DEBUG
 /*
    otmp->spe is type schar; so we don't want spe to be any bigger or smaller.
    also, spe should always be positive  -- some cheaters may try to confuse
@@ -2050,7 +2050,7 @@ boolean from_user;
 	-- boots, gloves, and lenses -- are also not mergable, so cnt is
 	ignored anyway.
 	*/
-	fprintf(stderr, "readobjnam 6 %s\n", bp); // DE DEBUG
+	//fprintf(stderr, "readobjnam 6 %s\n", bp); // DE DEBUG
 	if(!strncmpi(bp, "pair of ",8)) {
 		bp += 8;
 		cnt *= 2;
@@ -2064,7 +2064,7 @@ boolean from_user;
 	} else if (strncmpi(bp, "NOUN_PAAR ",10)==0) {
 		bp += 10;
 	}
-	fprintf(stderr, "readobjnam 6 %s\n", bp);
+	//fprintf(stderr, "readobjnam 6 %s\n", bp);
 
 	/*
 	 * Find corpse type using "of" (figurine of an orc, tin of orc meat)
@@ -2099,17 +2099,18 @@ boolean from_user;
 		    mntmp = NON_PM;
 		}
 	}
-	fprintf(stderr, "readobjnam 7\n"); // DE DEBUG
+	//fprintf(stderr, "readobjnam 7\n"); // DE DEBUG
 
 	/* first change to singular if necessary */
 	if (*bp) {
 		char *sng = makesingular(bp);
+		//fprintf(stderr, "readobjnam bp: %s; sng: %s\n", bp, sng); // DE DEBUG
 		if (strcmp(bp, sng)) {
 			if (cnt == 1) cnt = 2;
 			Strcpy(bp, sng);
 		}
 	}
-	fprintf(stderr, "readobjnam 8\n"); // DE DEBUG
+	//fprintf(stderr, "readobjnam 8\n"); // DE DEBUG
 
 	/* Alternate spellings (pick-ax, silver sabre, &c) */
     {
@@ -2122,13 +2123,13 @@ boolean from_user;
 		}
 		as++;
 	}
-	fprintf(stderr, "0####### dn: -%s-\n", dn); // DE DEBUG
+	//fprintf(stderr, "0####### dn: -%s-\n", dn); // DE DEBUG
 	/* can't use spellings list for this one due to shuffling */
 	if (!strcmpi(bp, "grey spellbook"))
 		*(bp + 2) = 'a';
     }
 
-	fprintf(stderr, "0####### dn: -%s-\n", dn); // DE DEBUG
+	//fprintf(stderr, "0####### dn: -%s-\n", dn); // DE DEBUG
 	/* dragon scales - assumes order of dragons */
 	if(!strcmpi(bp, "scales") &&
 			mntmp >= PM_GRAY_DRAGON && mntmp <= PM_YELLOW_DRAGON) {
@@ -2137,17 +2138,17 @@ boolean from_user;
 		goto typfnd;
 	}
 
-	fprintf(stderr, "6####### dn: -%s-\n", dn); // DE DEBUG
-	fprintf(stderr, "6a####### bp: -%s-\n", bp); // DE DEBUG
+	//fprintf(stderr, "6####### dn: -%s-\n", dn); // DE DEBUG
+	//fprintf(stderr, "6a####### bp: -%s-\n", bp); // DE DEBUG
 	p = eos(bp);
 	if(!BSTRCMPI(bp, p-21, "NOUN_POT_UNHOLY_WATER")) {
-		fprintf(stderr, "6ba###### bp: -%s-\n", bp);
+		//fprintf(stderr, "6ba###### bp: -%s-\n", bp);
 		typ = POT_WATER;
 		iscursed = 1; /* unholy water */
 		goto typfnd;
 	}
 	if(!BSTRCMPI(bp, p-19, "NOUN_POT_HOLY_WATER")) {
-		fprintf(stderr, "6bb###### bp: -%s-\n", bp);
+		//fprintf(stderr, "6bb###### bp: -%s-\n", bp);
 		typ = POT_WATER;
 		blessed = 1; /* holy water */
 		goto typfnd;
@@ -2159,24 +2160,24 @@ boolean from_user;
 		else blessed = 1;
 		goto typfnd;
 	}
-	fprintf(stderr, "7####### dn: -%s-\n", dn); // DE DEBUG
+	//fprintf(stderr, "7####### dn: -%s-\n", dn); // DE DEBUG
 	if(unlabeled && !BSTRCMPI(bp, p-11, "NOUN_SCROLL")) {
 		typ = SCR_BLANK_PAPER;
 		goto typfnd;
 	}
-	fprintf(stderr, "8####### dn: -%s-\n", dn); // DE DEBUG
+	//fprintf(stderr, "8####### dn: -%s-\n", dn); // DE DEBUG
 	if(unlabeled && !BSTRCMPI(bp, p-14, "NOUN_SPELLBOOK")) {
 		typ = SPE_BLANK_PAPER;
 		goto typfnd;
 	}
-	fprintf(stderr, "9####### dn: -%s-\n", dn); // DE DEBUG
-	fprintf(stderr, "10###### -%s-\n", bp); // DE DEBUG
+	//fprintf(stderr, "9####### dn: -%s-\n", dn); // DE DEBUG
+	//fprintf(stderr, "10###### -%s-\n", bp); // DE DEBUG
 	if(strncmp(bp, "NOUN_RING_UNIDENTIFIED_", 23)==0) {
 		bp += 5; dn = bp;
 		oclass = RING_CLASS;
 		goto srch;
 	}
-	fprintf(stderr, "11###### %s\n", bp);
+	//fprintf(stderr, "11###### %s\n", bp);
 	/*
 	 * NOTE: Gold pieces are handled as objects nowadays, and therefore
 	 * this section should probably be reconsidered as well as the entire
@@ -2206,7 +2207,7 @@ boolean from_user;
 		return (otmp);
 #endif
 	}
-	fprintf(stderr, "2####### %s\n", bp);
+	//fprintf(stderr, "2####### %s\n", bp);
 	if (strlen(bp) == 1 &&
 	   (i = def_char_to_objclass(*bp)) < MAXOCLASSES && i > ILLOBJ_CLASS
 #ifdef WIZARD
@@ -2216,10 +2217,10 @@ boolean from_user;
 #endif
 	    ) {
 		oclass = i;
-				fprintf(stderr, "######## %d\n", bp);
+				//fprintf(stderr, "######## %d\n", bp);
 		goto any;
 	}
-	fprintf(stderr, "3####### %s\n", bp);
+	//fprintf(stderr, "3####### %s\n", bp);
 
 	/* Search for class names: XXXXX potion, scroll of XXXXX.  Avoid */
 	/* false hits on, e.g., rings for "ring mail". */
@@ -2235,25 +2236,25 @@ boolean from_user;
 	)
 	for (i = 0; i < (int)(sizeof wrpsym); i++) {
 		register int j = strlen(wrp[i]);
-		fprintf(stderr, "4a###### %s\n", bp);
+		//fprintf(stderr, "4a###### %s\n", bp);
 		if(!strncmpi(bp, wrp[i], j)){
 			oclass = wrpsym[i];
-			fprintf(stderr, "4####### %s\n", bp);
-			if ((oclass != AMULET_CLASS) && (oclass != GEM_CLASS)) { /* EN if (oclass != AMULET_CLASS) { */
+			//fprintf(stderr, "4####### %s\n", bp);
+			if ((oclass != AMULET_CLASS) && (oclass != GEM_CLASS) && (oclass != FOOD_CLASS)) { /* EN if (oclass != AMULET_CLASS) { */
 			    bp += j;
-					fprintf(stderr, "5####### %s\n", bp);
+					//fprintf(stderr, "5####### %s\n", bp);
 			    if(!strncmpi(bp, " PARTIKEL_OF ", 13)) actualn = bp+13;
-					fprintf(stderr, "5b###### %s\n", actualn);
+					//fprintf(stderr, "5b###### %s\n", actualn);
 			    if(!strncmpi(bp, " ARTIKEL_BESTIMMTER ", 20)) actualn = bp+20;
 			    /* else if(*bp) ?? */
 			} else {
 			    actualn = bp;
 			}
-			fprintf(stderr, "6b###### %s\n", bp);
+			//fprintf(stderr, "6b###### %s\n", bp);
 			goto srch;
 		}
 		if(!BSTRCMPI(bp, p-j, wrp[i])){
-			fprintf(stderr, "7######## %s\n", wrp[i]);
+			//fprintf(stderr, "7######## %s\n", wrp[i]);
 			
 			oclass = wrpsym[i];
 			p -= j;
@@ -2264,12 +2265,12 @@ boolean from_user;
 			// TODO remove
 			if (oclass == RING_CLASS) {
 				Strcpy(bp, "NOUN_");
-				fprintf(stderr, "######## %d\n", bp);
+				//fprintf(stderr, "######## %d\n", bp);
 			}
 			goto srch;
 		}
 	}
-	fprintf(stderr, "7####### %s\n", bp);
+	//fprintf(stderr, "7####### %s\n", bp);
 
 	/* "grey stone" check must be before general "stone" */
 	for (i = 0; i < SIZE(o_ranges); i++)
@@ -2282,13 +2283,13 @@ boolean from_user;
 		p[-15] = 0;
 		oclass = GEM_CLASS;
 		dn = actualn = bp;
-		fprintf(stderr, "y####### dn:      %s\n", dn);
+		//fprintf(stderr, "y####### dn:      %s\n", dn);
 		goto srch;
 #ifdef GERMAN
 	} else if (!BSTRCMPI(bp, bp+9, "NOUN_GEM_")) {
 		oclass = GEM_CLASS;
 		dn = actualn = bp;
-		fprintf(stderr, "z####### dn:      %s\n", dn);
+		//fprintf(stderr, "z####### dn:      %s\n", dn);
 		goto srch;
 #endif
 	} else if (!strcmpi(bp, "looking glass")) {
@@ -2316,14 +2317,14 @@ boolean from_user;
 	actualn = bp;
 	if (!dn) dn = actualn; /* ex. "skull cap" */
 srch:
-	fprintf(stderr, "srch#### dn:      %s\n", dn);
-	fprintf(stderr, "srch#### bp:      %s\n", bp);
-	fprintf(stderr, "srch#### actualn: %s\n", actualn);
+	//fprintf(stderr, "srch#### dn:      %s\n", dn);
+	//fprintf(stderr, "srch#### bp:      %s\n", bp);
+	//fprintf(stderr, "srch#### actualn: %s\n", actualn);
 	/* check real names of gems first */
 	if(!oclass && actualn) {
-		fprintf(stderr, "a00#######\n");
-		fprintf(stderr, "a01####### bases[GEM_CLASS]: %d\n", bases[GEM_CLASS]);
-		fprintf(stderr, "a02####### bases: %d, GEM_CLASS: %d, LAST_GEM: %d\n", bases, GEM_CLASS, LAST_GEM);
+		//fprintf(stderr, "a00#######\n");
+		//fprintf(stderr, "a01####### bases[GEM_CLASS]: %d\n", bases[GEM_CLASS]);
+		//fprintf(stderr, "a02####### bases: %d, GEM_CLASS: %d, LAST_GEM: %d\n", bases, GEM_CLASS, LAST_GEM);
 		for(i = bases[GEM_CLASS]; i <= LAST_GEM; i++) {
 			register const char *zn;
 
@@ -2337,25 +2338,25 @@ srch:
 	while(i < NUM_OBJECTS && (!oclass || objects[i].oc_class == oclass)){
 		register const char *zn;
 
-		//fprintf(stderr, "b####### i: %d an: %s\n", i, actualn);
-		fprintf(stderr, "b####### i: %d zn: %s\n", i, OBJ_NAME(objects[i]));
+		//fprintf(stderr, "b####### i: %d actualn: %s; dn: %s; un: %s\n", i, actualn, dn, un);
+		//fprintf(stderr, "b####### i: %d zn: %s\n", i, OBJ_NAME(objects[i]));
 		if (actualn && (zn = OBJ_NAME(objects[i])) != 0 &&
 			    wishymatch(actualn, zn, TRUE)) {
-			fprintf(stderr, "c####### %s\n", zn);
+			//fprintf(stderr, "c####### %s\n", zn);
 			typ = i;
 			goto typfnd;
 		}
 		if (dn && (zn = OBJ_DESCR(objects[i])) != 0 &&
 			    wishymatch(dn, zn, FALSE)) {
 			/* don't match extra descriptions (w/o real name) */
-			fprintf(stderr, "d####### %s\n", zn);
+			//fprintf(stderr, "d####### %s\n", zn);
 			if (!OBJ_NAME(objects[i])) return (struct obj *)0;
 			typ = i;
 			goto typfnd;
 		}
 		if (un && (zn = objects[i].oc_uname) != 0 &&
 			    wishymatch(un, zn, FALSE)) {
-			fprintf(stderr, "d####### %s\n", zn);
+			//fprintf(stderr, "d wishymatch ####### %s\n", zn);
 			typ = i;
 			goto typfnd;
 		}
@@ -2429,7 +2430,7 @@ srch:
 	    }
 	}
 
-	fprintf(stderr, "readobjnam 500 oclass: %d\n", oclass);
+	//fprintf(stderr, "readobjnam 500 typ: %d; oclass: %d\n", typ, oclass); // DE DEBUG
 
 	if(!oclass && actualn) {
 	    short objtyp;
@@ -2469,14 +2470,14 @@ srch:
 			level.flags.nfountains++;
 			if(!strncmpi(bp, "ADJEKTIV_MAGISCH ", 6)) /* EN if(!strncmpi(bp, "magic ", 6)) */
 				levl[u.ux][u.uy].blessedftn = 1;
-			pline("ARTIKEL_UNBESTIMMTER %sNOUN_FOUNTAIN.", /* EN pline("A %sfountain.", */
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER %sNOUN_FOUNTAIN.", /* EN pline("A %sfountain.", */
 			      levl[u.ux][u.uy].blessedftn ? "ADJEKTIV_MAGISCH " : ""); /* EN levl[u.ux][u.uy].blessedftn ? "magic " : ""); */
 			newsym(u.ux, u.uy);
 			return(&zeroobj);
 		}
 		if(!BSTRCMP(bp, p-11, "NOUN_THRONE")) { /* EN if(!BSTRCMP(bp, p-6, "throne")) { */
 			levl[u.ux][u.uy].typ = THRONE;
-			pline("ARTIKEL_UNBESTIMMTER NOUN_THRONE."); /* EN pline("A throne."); */
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_THRONE."); /* EN pline("A throne."); */
 			newsym(u.ux, u.uy);
 			return(&zeroobj);
 		}
@@ -2484,7 +2485,7 @@ srch:
 		if(!BSTRCMP(bp, p-9, "NOUN_SINK")) { /* EN if(!BSTRCMP(bp, p-4, "sink")) { */
 			levl[u.ux][u.uy].typ = SINK;
 			level.flags.nsinks++;
-			pline("ARTIKEL_UNBESTIMMTER NOUN_SINK."); /* EN pline("A sink."); */
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_SINK."); /* EN pline("A sink."); */
 			newsym(u.ux, u.uy);
 			return &zeroobj;
 		}
@@ -2498,7 +2499,7 @@ srch:
 			newsym(u.ux, u.uy);
 			return &zeroobj;
 		}
-		if (!BSTRCMP(bp, p-4, "lava")) {  /* also matches "molten lava" */ /* EN if (!BSTRCMP(bp, p-4, "lava")) {  */ // TODO DE
+		if (!BSTRCMP(bp, p-9, "NOUN_LAVA")) {  /* also matches "molten lava" */ /* EN if (!BSTRCMP(bp, p-4, "lava")) {  */
 			levl[u.ux][u.uy].typ = LAVAPOOL;
 			del_engr_at(u.ux, u.uy);
 			pline("A pool of ADJEKTIV_FLUESSIG NOUN_LAVA."); /* EN pline("A pool of molten lava."); */ // TODO DE
@@ -2527,16 +2528,16 @@ srch:
 		    return(&zeroobj);
 		}
 
-		if(!BSTRCMP(bp, p-5, "grave") || !BSTRCMP(bp, p-9, "headstone")) { /* EN if(!BSTRCMP(bp, p-5, "grave") || !BSTRCMP(bp, p-9, "headstone")) { */ // TODO DE
+		if(!BSTRCMP(bp, p-10, "NOUN_GRAVE") || !BSTRCMP(bp, p-14, "NOUN_HEADSTONE")) { /* EN if(!BSTRCMP(bp, p-5, "grave") || !BSTRCMP(bp, p-9, "headstone")) { */
 		    make_grave(u.ux, u.uy, (char *) 0);
-		    pline("A grave."); /* EN pline("A grave."); */ // TODO DE
+		    pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_GRAVE."); /* EN pline("A grave."); */
 		    newsym(u.ux, u.uy);
 		    return(&zeroobj);
 		}
 
-		if(!BSTRCMP(bp, p-4, "tree")) { /* EN if(!BSTRCMP(bp, p-4, "tree")) { */ // TODO DE
+		if(!BSTRCMP(bp, p-9, "NOUN_TREE")) { /* EN if(!BSTRCMP(bp, p-4, "tree")) { */
 		    levl[u.ux][u.uy].typ = TREE;
-		    pline("A tree."); /* EN pline("A tree."); */ // TODO DE
+		    pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_TREE."); /* EN pline("A tree."); */
 		    newsym(u.ux, u.uy);
 		    block_point(u.ux, u.uy);
 		    return &zeroobj;
@@ -2550,14 +2551,14 @@ srch:
 		}
 	}
 #endif
-	fprintf(stderr, "readobjnam 600 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 600 oclass: %d\n", oclass); // DE DEBUG
 	if(!oclass) return((struct obj *)0);
-	fprintf(stderr, "readobjnam 601 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 601 oclass: %d\n", oclass); // DE DEBUG
 any:
 	if(!oclass) oclass = wrpsym[rn2((int)sizeof(wrpsym))];
-	fprintf(stderr, "readobjnam 602 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 602 oclass: %d\n", oclass); // DE DEBUG
 typfnd:
-	fprintf(stderr, "readobjnam 603 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 603 oclass: %d\n", oclass); // DE DEBUG
 	if (typ) oclass = objects[typ].oc_class;
 
 	/* check for some objects that are not allowed */
@@ -2600,17 +2601,17 @@ typfnd:
 						)
 	    typ = OIL_LAMP;
 
-	fprintf(stderr, "readobjnam 630 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 630 typ: %d; oclass: %d\n", typ, oclass); // DE DEBUG
 	if(typ) {
-		fprintf(stderr, "readobjnam 631 oclass: %d\n", oclass); // DE DEBUG
+		//fprintf(stderr, "readobjnam 631 oclass: %d\n", oclass); // DE DEBUG
 		otmp = mksobj(typ, TRUE, FALSE);
-		fprintf(stderr, "readobjnam 632 oclass: %d\n", oclass); // DE DEBUG
+		//fprintf(stderr, "readobjnam 632 oclass: %d\n", oclass); // DE DEBUG
 	} else {
-		fprintf(stderr, "readobjnam 633 oclass: %d\n", oclass); // DE DEBUG
+		//fprintf(stderr, "readobjnam 633 oclass: %d\n", oclass); // DE DEBUG
 		otmp = mkobj(oclass, FALSE);
-		fprintf(stderr, "readobjnam 634 oclass: %d\n", oclass); // DE DEBUG
+		//fprintf(stderr, "readobjnam 634 oclass: %d\n", oclass); // DE DEBUG
 		if (otmp) typ = otmp->otyp;
-		fprintf(stderr, "readobjnam 635 oclass: %d\n", oclass); // DE DEBUG
+		//fprintf(stderr, "readobjnam 635 oclass: %d\n", oclass); // DE DEBUG
 	}
 
 	if (islit &&
@@ -2688,7 +2689,7 @@ typfnd:
 		default: otmp->spe = spe;
 	}
 
-	fprintf(stderr, "readobjnam 700 typ: %d\n", typ); // DE DEBUG
+	//fprintf(stderr, "readobjnam 700 typ: %d\n", typ); // DE DEBUG
 	/* set otmp->corpsenm or dragon scale [mail] */
 	if (mntmp >= LOW_PM) {
 		if (mntmp == PM_LONG_WORM_TAIL) mntmp = PM_LONG_WORM;
@@ -2868,7 +2869,7 @@ typfnd:
 	otmp->owt = weight(otmp);
 	if (very && otmp->otyp == HEAVY_IRON_BALL) otmp->owt += 160;
 
-	fprintf(stderr, "readobjnam 1000 oclass: %d\n", oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 1000 oclass: %d\n", oclass); // DE DEBUG
 	return(otmp);
 }
 
@@ -2931,7 +2932,7 @@ struct monst *mtmp;
 {
 	if (mtmp->m_ap_type == M_AP_OBJECT && mtmp->mappearance != STRANGE_OBJECT) {
 		int idx = objects[mtmp->mappearance].oc_descr_idx;
-		if (mtmp->mappearance == GOLD_PIECE) return "gold"; /* EN if (mtmp->mappearance == GOLD_PIECE) return "gold"; */ // TODO DE
+		if (mtmp->mappearance == GOLD_PIECE) return "NOUN_GOLD"; /* EN if (mtmp->mappearance == GOLD_PIECE) return "gold"; */
 		return obj_descr[idx].oc_name;
 	}
 	return "whatcha-may-callit"; /* EN return "whatcha-may-callit"; */ // TODO DE
