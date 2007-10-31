@@ -520,7 +520,7 @@ xchar ltmp;
 			return dorecover(fd);	/* 0 or 1 */
 		} else {
 # endif
-			pline("Be seeing you..."); /* EN pline("Be seeing you..."); */ // TODO DE
+			pline("Wir sehen uns ..."); /* EN pline("Be seeing you..."); */
 			terminate(EXIT_SUCCESS);
 # ifndef AMIGA
 		}

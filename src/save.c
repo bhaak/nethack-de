@@ -59,12 +59,12 @@ int
 dosave()
 {
 	clear_nhwindow(WIN_MESSAGE);
-	if(yn("Really save?") == 'n') { /* EN if(yn("Really save?") == 'n') { */ // TODO DE
+	if(yn("Wirklich speichern?") == 'n') { /* EN if(yn("Really save?") == 'n') { */
 		clear_nhwindow(WIN_MESSAGE);
 		if(multi > 0) nomul(0);
 	} else {
 		clear_nhwindow(WIN_MESSAGE);
-		pline("Saving..."); /* EN pline("Saving..."); */ // TODO DE
+		pline("Speichere ..."); /* EN pline("Saving..."); */
 #if defined(UNIX) || defined(VMS) || defined(__EMX__)
 		program_state.done_hup = 0;
 #endif
@@ -73,7 +73,7 @@ dosave()
 			u.uhp = -1;		/* universal game's over indicator */
 			/* make sure they see the Saving message */
 			display_nhwindow(WIN_MESSAGE, TRUE);
-			exit_nhwindows("Be seeing you..."); /* EN exit_nhwindows("Be seeing you..."); */ // TODO DE
+			exit_nhwindows("Wir sehen uns ..."); /* EN exit_nhwindows("Be seeing you..."); */
 			terminate(EXIT_SUCCESS);
 		} else (void)doredraw();
 	}
