@@ -924,6 +924,7 @@ char *outbuf;
 
 static const char * const bogusmons[] = {
 	// TODO DE
+	// Ottifanten
 	"jumbo shrimp", "giant pigmy", "gnu", "killer penguin",
 	"giant cockroach", "giant slug", "maggot", "pterodactyl",
 	"tyrannosaurus rex", "basilisk", "beholder", "nightmare",
@@ -974,7 +975,8 @@ static const char * const bogusmons[] = {
 	"Vorlon",				/* Babylon 5 */
 	"questing beast",		/* King Arthur */
 	"Predator",				/* Movie */
-	"mother-in-law"				/* common pest */
+	"mother-in-law",				/* common pest */
+	"Horla" /* Guy de Maupassant */
 };
 
 
