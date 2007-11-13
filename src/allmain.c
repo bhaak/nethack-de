@@ -28,7 +28,7 @@ moveloop()
 
     flags.moonphase = phase_of_the_moon();
     if(flags.moonphase == FULL_MOON) {
-	You("VERB_HAVE NOUN_LUCK!  Heute Nacht ist Vollmond."); /* EN "are lucky!  Full moon tonight." */
+	You("VERB_HAVE OBJECT NOUN_LUCK!  Heute Nacht ist Vollmond."); /* EN "are lucky!  Full moon tonight." */
 	change_luck(1);
     } else if(flags.moonphase == NEW_MOON) {
 	pline("Sei vorsichtig!  Heute Nacht ist Neumond."); /* EN "Be careful!  New moon tonight." */

@@ -1391,7 +1391,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 			pline_The("NOUN_ALTAR VERB_ERSTRAHLEN in OBJECT KASUS_DATIV %s NOUN_LICHT.", /* EN pline_The("altar glows %s.", */
 			      hcolor(
 			      u.ualign.type == A_LAWFUL ? NH_WHITE :
-			      u.ualign.type ? NH_BLACK : (const char *)"ADJEKTIV_GRAY")); /* EN u.ualign.type ? NH_BLACK : (const char *)"gray")); */
+			      u.ualign.type ? NH_BLACK : (const char *)"ADJEKTIV_FARBE_GRAY")); /* EN u.ualign.type ? NH_BLACK : (const char *)"gray")); */
 
 		    if (rnl(u.ulevel) > 6 && u.ualign.record > 0 &&
 		       rnd(u.ualign.record) > (3*ALIGNLIM)/4)
