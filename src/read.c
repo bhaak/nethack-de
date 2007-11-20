@@ -163,7 +163,7 @@ register struct obj *obj;
 		    obj->spe = 0;
 		    if (obj->otyp == OIL_LAMP || obj->otyp == BRASS_LANTERN)
 			obj->age = 0;
-		    Your("%s %s briefly.",xname(obj), otense(obj, "vibrate")); /* EN Your("%s %s briefly.",xname(obj), otense(obj, "vibrate")); */ // TODO DE
+		    Your("%s %s kurz.",xname(obj), otense(obj, "VERB_VIBRIEREN")); /* EN Your("%s %s briefly.",xname(obj), otense(obj, "vibrate")); */
 		} else pline(nothing_happens);
 	}
 }
@@ -172,8 +172,8 @@ static void
 p_glow1(otmp)
 register struct obj	*otmp;
 {
-	Your("%s %s briefly.", xname(otmp), /* EN Your("%s %s briefly.", xname(otmp), */ // TODO DE
-	     otense(otmp, Blind ? "vibrate" : "glow")); /* EN otense(otmp, Blind ? "vibrate" : "glow")); */ // TODO DE
+	Your("%s %s kurz SATZKLAMMER.", xname(otmp), /* EN Your("%s %s briefly.", xname(otmp), */
+	     otense(otmp, Blind ? "VERB_VIBRIEREN" : "VERB_AUFLEUCHTEN")); /* EN otense(otmp, Blind ? "vibrate" : "glow")); */
 }
 
 static void
@@ -181,9 +181,9 @@ p_glow2(otmp,color)
 register struct obj	*otmp;
 register const char *color;
 {
-	Your("%s %s%s%s for a moment.", /* EN Your("%s %s%s%s for a moment.", */ // TODO DE
+	Your("%s %s einen Moment lang%s%s.", /* EN Your("%s %s%s%s for a moment.", */
 		xname(otmp),
-		otense(otmp, Blind ? "vibrate" : "glow"), /* EN otense(otmp, Blind ? "vibrate" : "glow"), */ // TODO DE
+		otense(otmp, Blind ? "VERB_VIBRIEREN" : "VERB_SCHIMMERN"), /* EN otense(otmp, Blind ? "vibrate" : "glow"), */
 		Blind ? "" : " ",
 		Blind ? nul : hcolor(color));
 }
@@ -758,13 +758,15 @@ register struct obj	*sobj;
 			setworn(otmp, W_ARM);
 			break;
 		}
-		Your("%s %s%s%s%s for a %s.", /* EN Your("%s %s%s%s%s for a %s.", */ // TODO DE
+		pline("Ein%s lang %s SUBJECT_IM_SATZ PRONOMEN_POSSESSIV %s%s%s%s.", /* EN Your("%s %s%s%s%s for a %s.", */
+      (s*s>1) ? "e Weile" : "en Moment",
+			otense(otmp, Blind ? "VERB_VIBRIEREN" : "VERB_SCHIMMERN"), /* EN */
 			xname(otmp),
-		        s == 0 ? "violently " : nul, /* EN s == 0 ? "violently " : nul, */ // TODO DE
-			otense(otmp, Blind ? "vibrate" : "glow"), /* EN otense(otmp, Blind ? "vibrate" : "glow"), */ // TODO DE
-			(!Blind && !same_color) ? " " : nul,
-			(Blind || same_color) ? nul : hcolor(sobj->cursed ? NH_BLACK : NH_SILVER),
-			  (s*s>1) ? "while" : "moment"); /* EN (s*s>1) ? "while" : "moment"); */ // TODO DE
+      s == 0 ? "kräftig" : nul, /* EN s == 0 ? "violently " : nul, */
+			/* EN otense(otmp, Blind ? "vibrate" : "glow"), */
+			(!Blind && !same_color) ? " MODIFIER_ADJEKTIV_ADVERBIAL " : nul, /* EN (!Blind && !same_color) ? " " : nul, */
+			(Blind || same_color) ? nul : hcolor(sobj->cursed ? NH_BLACK : NH_SILVER) /* EN (Blind || same_color) ? nul : hcolor(sobj->cursed ? NH_BLACK : NH_SILVER), */
+			); /* EN (s*s>1) ? "while" : "moment"); */
 		otmp->cursed = sobj->cursed;
 		if (!otmp->blessed || sobj->cursed)
 			otmp->blessed = sobj->blessed;
@@ -776,9 +778,9 @@ register struct obj	*sobj;
 
 		if ((otmp->spe > (special_armor ? 5 : 3)) &&
 		    (special_armor || !rn2(7)))
-			Your("%s suddenly %s %s.", /* EN Your("%s suddenly %s %s.", */ // TODO DE
-				xname(otmp), otense(otmp, "vibrate"), /* EN xname(otmp), otense(otmp, "vibrate"), */ // TODO DE
-				Blind ? "again" : "unexpectedly"); /* EN Blind ? "again" : "unexpectedly"); */ // TODO DE
+			Your("%s %s %s.", /* EN Your("%s suddenly %s %s.", */
+				xname(otmp), otense(otmp, "VERB_VIBRIEREN"), /* EN xname(otmp), otense(otmp, "vibrate"), */
+				Blind ? "wieder" : "urplötzlich"); /* EN Blind ? "again" : "unexpectedly"); */
 		break;
 	    }
 	case SCR_DESTROY_ARMOR:
@@ -804,7 +806,7 @@ register struct obj	*sobj;
 		    } else
 			known = TRUE;
 		} else {	/* armor and scroll both cursed */
-		    Your("%s %s.", xname(otmp), otense(otmp, "vibrate")); /* EN Your("%s %s.", xname(otmp), otense(otmp, "vibrate")); */ // TODO DE
+		    Your("%s %s.", xname(otmp), otense(otmp, "VERB_VIBRIEREN")); /* EN Your("%s %s.", xname(otmp), otense(otmp, "vibrate")); */
 		    if (otmp->spe >= -6) otmp->spe--;
 		    make_stunned(HStun + rn1(10, 10), TRUE);
 		}
@@ -813,37 +815,41 @@ register struct obj	*sobj;
 	case SCR_CONFUSE_MONSTER:
 	case SPE_CONFUSE_MONSTER:
 		if(youmonst.data->mlet != S_HUMAN || sobj->cursed) {
-			if(!HConfusion) You_feel("confused."); /* EN if(!HConfusion) You_feel("confused."); */ // TODO DE
+			if(!HConfusion) Du_fuehlst_dich("verwirrt."); /* EN if(!HConfusion) You_feel("confused."); */
 			make_confused(HConfusion + rnd(100),FALSE);
 		} else  if(confused) {
 		    if(!sobj->blessed) {
-			Your("%s begin to %s%s.", /* EN Your("%s begin to %s%s.", */ // TODO DE
+			Your("%s VERB_BEGINNEN %s%s.", /* EN Your("%s begin to %s%s.", */
 			    makeplural(body_part(HAND)),
-			    Blind ? "tingle" : "glow ", /* EN Blind ? "tingle" : "glow ", */ // TODO DE
-			    Blind ? nul : hcolor(NH_PURPLE));
+			    Blind ? nul : hcolor(NH_PURPLE),
+			    Blind ? "zu kribbeln" : " zu leuchten" /* EN Blind ? "tingle" : "glow ", */
+					); /* EN Blind ? nul : hcolor(NH_PURPLE)); */
 			make_confused(HConfusion + rnd(100),FALSE);
 		    } else {
-			pline("A %s%s surrounds your %s.", /* EN pline("A %s%s surrounds your %s.", */ // TODO DE
+			pline("ARTIKEL_UNBESTIMMTER %s%s VERB_UMGEBEN OBJECT PRONOMEN_POSSESSIV %s.", /* EN pline("A %s%s surrounds your %s.", */
 			    Blind ? nul : hcolor(NH_RED),
-			    Blind ? "faint buzz" : " glow", /* EN Blind ? "faint buzz" : " glow", */ // TODO DE
+			    Blind ? "ADJEKTIV_SCHWACH NOUN_SUMMEN" : " NOUN_LEUCHTEN", /* EN Blind ? "faint buzz" : " glow", */
 			    body_part(HEAD));
 			make_confused(0L,TRUE);
 		    }
 		} else {
 		    if (!sobj->blessed) {
-			Your("%s%s %s%s.",
+			Your("%s%s%s%s%s%s.",
 			makeplural(body_part(HAND)),
-			Blind ? "" : " begin to glow", /* EN Blind ? "" : " begin to glow", */ // TODO DE
-			Blind ? (const char *)"tingle" : hcolor(NH_RED), /* EN Blind ? (const char *)"tingle" : hcolor(NH_RED), */ // TODO DE
-			u.umconf ? " even more" : ""); /* EN u.umconf ? " even more" : ""); */ // TODO DE
+			Blind ? " kribbeln" : " VERB_BEGINNEN", /* EN Blind ? "" : " begin to glow", */
+			u.umconf ? " noch stärker" : "", /* EN */
+			Blind ? "" : " ",
+			Blind ? "" : hcolor(NH_RED), /* EN Blind ? (const char *)"tingle" : hcolor(NH_RED), */
+			/* EN u.umconf ? " even more" : ""); */ 
+			Blind ? "" : " zu leuchten"); /* EN */
 			u.umconf++;
 		    } else {
 			if (Blind)
-			    Your("%s tingle %s sharply.", /* EN Your("%s tingle %s sharply.", */ // TODO DE
+			    Your("%s kribbeln %s.", /* EN Your("%s tingle %s sharply.", */
 				makeplural(body_part(HAND)),
-				u.umconf ? "even more" : "very"); /* EN u.umconf ? "even more" : "very"); */ // TODO DE
+				u.umconf ? "noch stärker" : "sehr stark"); /* EN u.umconf ? "even more" : "very"); */
 			else
-			    Your("%s glow a%s brilliant %s.", /* EN Your("%s glow a%s brilliant %s.", */ // TODO DE
+			    Your("%s VERB_LEUCHTEN a%s brilliant %s.", /* EN Your("%s glow a%s brilliant %s.", */ // TODO DE
 				makeplural(body_part(HAND)),
 				u.umconf ? "n even more" : "", /* EN u.umconf ? "n even more" : "", */ // TODO DE
 				hcolor(NH_RED));
@@ -965,7 +971,7 @@ register struct obj	*sobj;
 			uwep->oerodeproof = !(sobj->cursed);
 			if (Blind) {
 			    uwep->rknown = FALSE;
-			    Your("weapon feels warm for a moment."); /* EN Your("weapon feels warm for a moment."); */ // TODO DE
+			    Your("NOUN_WEAPON VERB_ANFUEHLEN sich für einen Moment warm SATZKLAMMER."); /* EN Your("weapon feels warm for a moment."); */
 			} else {
 			    uwep->rknown = TRUE;
 			    Your("%s covered by a %s %s %s!", /* EN Your("%s covered by a %s %s %s!", */ // TODO DE
@@ -976,8 +982,8 @@ register struct obj	*sobj;
 			}
 			if (uwep->oerodeproof && (uwep->oeroded || uwep->oeroded2)) {
 			    uwep->oeroded = uwep->oeroded2 = 0;
-			    Your("%s as good as new!", /* EN Your("%s as good as new!", */ // TODO DE
-				 aobjnam(uwep, Blind ? "feel" : "look")); /* EN aobjnam(uwep, Blind ? "feel" : "look")); */ // TODO DE
+			    Your("%s wieder nagelneu SATZKLAMMER!", /* EN Your("%s as good as new!", */
+				 aobjnam(uwep, Blind ? "VERB_ANFUEHLEN sich" : "VERB_AUSSEHEN")); /* EN aobjnam(uwep, Blind ? "feel" : "look")); */
 			}
 		} else return !chwepon(sobj,
 				       sobj->cursed ? -1 :
@@ -1001,7 +1007,7 @@ register struct obj	*sobj;
 		}
 		break;
 	case SCR_GENOCIDE:
-		You("have found a scroll of genocide!"); /* EN You("have found a scroll of genocide!"); */ // TODO DE
+		You("VERB_HABEN ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_GENOCIDE gefunden.!"); /* EN You("have found a scroll of genocide!"); */
 		known = TRUE;
 		if (sobj->blessed) do_class_genocide();
 		else do_genocide(!sobj->cursed | (2 * !!Confusion));
@@ -1038,7 +1044,7 @@ register struct obj	*sobj;
 	case SCR_IDENTIFY:
 		/* known = TRUE; */
 		if(confused)
-			You("identify this as an identify scroll."); /* EN You("identify this as an identify scroll."); */ // TODO DE
+			You("VERB_IDENTIFIZIEREN this as an identify scroll."); /* EN You("identify this as an identify scroll."); */ // TODO DE
 		else
 			pline("This is an identify scroll."); /* EN pline("This is an identify scroll."); */ // TODO DE
 		if (sobj->blessed || (!sobj->cursed && !rn2(5))) {
@@ -1072,9 +1078,9 @@ register struct obj	*sobj;
 		break;
 	case SCR_MAGIC_MAPPING:
 		if (level.flags.nommap) {
-		    Your("mind is filled with crazy lines!"); /* EN Your("mind is filled with crazy lines!"); */ // TODO DE
+		    Your("NOUN_VERSTAND ist voller wirrer Linien!"); /* EN Your("mind is filled with crazy lines!"); */
 		    if (Hallucination)
-			pline("Wow!  Modern art."); /* EN pline("Wow!  Modern art."); */ // TODO DE
+			pline("Wahnsinn!  Moderne Kunst."); /* EN pline("Wow!  Modern art."); */
 		    else
 			Your("%s spins in bewilderment.", body_part(HEAD)); /* EN Your("%s spins in bewilderment.", body_part(HEAD)); */ // TODO DE
 		    make_confused(HConfusion + rnd(30), FALSE);
@@ -1096,13 +1102,13 @@ register struct obj	*sobj;
 		    make_confused(HConfusion + rnd(30), FALSE);
 		    break;
 		}
-		pline("A map coalesces in your mind!"); /* EN pline("A map coalesces in your mind!"); */ // TODO DE
+		pline("Eine Karte entsteht vor KASUS_DATIV PRONOMEN_POSSESSIV inneren NOUN_EYE!"); /* EN pline("A map coalesces in your mind!"); */
 		cval = (sobj->cursed && !confused);
 		if(cval) HConfusion = 1;	/* to screw up map */
 		do_mapping();
 		if(cval) {
 		    HConfusion = 0;		/* restore */
-		    pline("Unfortunately, you can't grasp the details."); /* EN pline("Unfortunately, you can't grasp the details."); */ // TODO DE
+		    pline("Leider VERB_KOENNEN PRONOMEN_PERSONAL die Details nicht behalten."); /* EN pline("Unfortunately, you can't grasp the details."); */
 		}
 		break;
 	case SCR_AMNESIA:
@@ -1110,15 +1116,13 @@ register struct obj	*sobj;
 		forget(	(!sobj->blessed ? ALL_SPELLS : 0) |
 			(!confused || sobj->cursed ? ALL_MAP : 0) );
 		if (Hallucination) /* Ommmmmm! */
-			Your("mind releases itself from mundane concerns."); /* EN Your("mind releases itself from mundane concerns."); */ // TODO DE
-#ifndef GERMAN
-		else if (!strncmpi(plname, "Maud", 4))
-			pline("As your mind turns inward on itself, you forget everything else."); /* EN pline("As your mind turns inward on itself, you forget everything else."); */
-#endif
+			Your("NOUN_GEIST befreit sich von weltlichen Belangen."); /* EN Your("mind releases itself from mundane concerns."); */
+		else if (!strncmpi(plname, "Paul", 4)) /* EN else if (!strncmpi(plname, "Maud", 4)) */
+			pline("SUBJECT PRONOMEN_PERSONAL VERB_GEHEN in OBJECT PRONOMEN_PERSONAL und keiner ist da!"); /* EN pline("As your mind turns inward on itself, you forget everything else."); */
 		else if (rn2(2))
 			pline("Wer ist eigentlich Paul?"); /* EN pline("Who was that Maud person anyway?"); */
 		else
-			pline("Der Gedanke an Piroschka VERB_LASSEN OBJECT PRONOMEN_PERSONAL alles vergessen."); /* EN pline("Thinking of Maud you forget everything else."); */ // TODO DE
+			pline("Der Gedanke an Piroschka VERB_LASSEN OBJECT PRONOMEN_PERSONAL alles vergessen."); /* EN pline("Thinking of Maud you forget everything else."); */
 		exercise(A_WIS, FALSE);
 		break;
 	case SCR_FIRE:
@@ -1134,14 +1138,14 @@ register struct obj	*sobj;
 		    if(Fire_resistance) {
 			shieldeff(u.ux, u.uy);
 			if(!Blind)
-			    pline("Oh, look, what a pretty fire in your %s.", /* EN pline("Oh, look, what a pretty fire in your %s.", */ // TODO DE
+			    pline("Oh, schau mal, was für ein hübsches Feuer in KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("Oh, look, what a pretty fire in your %s.", */
 				makeplural(body_part(HAND)));
-			else You_feel("a pleasant warmth in your %s.", /* EN else You_feel("a pleasant warmth in your %s.", */ // TODO DE
+			else Du_spuerst("eine angenehme Wärme in KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN else You_feel("a pleasant warmth in your %s.", */
 				makeplural(body_part(HAND)));
 		    } else {
-			pline_The("NOUN_SCROLL VERB_FANGEN Feuer und you burn your %s.", /* EN pline_The("scroll catches fire and you burn your %s.", */ // TODO DE
+			pline_The("NOUN_SCROLL VERB_FANGEN Feuer und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_VERBRENNEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV %s.", /* EN pline_The("scroll catches fire and you burn your %s.", */
 				makeplural(body_part(HAND)));
-			losehp(1, "scroll of fire", KILLED_BY_AN); /* EN losehp(1, "scroll of fire", KILLED_BY_AN); */ // TODO DE
+			losehp(1, "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_FIRE", KILLED_BY_AN); /* EN losehp(1, "scroll of fire", KILLED_BY_AN); */
 		    }
 		    return(1);
 		}
@@ -1643,8 +1647,8 @@ int how;
 			if(flags.soundok) {
 	/* fixme: unconditional "caverns" will be silly in some circumstances */
 			    if(flags.verbose)
-			pline("A thunderous voice booms through the caverns:"); /* EN pline("A thunderous voice booms through the caverns:"); */ // TODO DE
-			    verbalize("No, mortal!  That will not be done."); /* EN verbalize("No, mortal!  That will not be done."); */ // TODO DE
+			pline("Eine donnernde Stimme hallt durch die Kavernen:"); /* EN pline("A thunderous voice booms through the caverns:"); */
+			    verbalize("Nein, mortal!  That will not be done."); /* EN verbalize("No, mortal!  That will not be done."); */ // TODO DE
 			}
 			continue;
 		}
@@ -1737,7 +1741,7 @@ punish(sobj)
 register struct obj	*sobj;
 {
 	/* KMH -- Punishment is still okay when you are riding */
-	You("are being punished for your misbehavior!"); /* EN You("are being punished for your misbehavior!"); */ // TODO DE
+	You("are being punished for your misbehavior/Fehlverhalten/Missetaten!"); /* EN You("are being punished for your misbehavior!"); */ // TODO DE
 	if(Punished){
 		Your("iron ball gets heavier."); /* EN Your("iron ball gets heavier."); */ // TODO DE
 		uball->owt += 160 * (1 + sobj->cursed);

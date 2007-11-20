@@ -4,6 +4,9 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
 
 /*** Table of all roles ***/
 /* According to AD&D, HD for some classes (ex. Wizard) should be smaller
@@ -81,7 +84,7 @@ const struct Role roles[] = {
 	10, 14, 0, 0,  8, A_INT, SPE_HASTE_SELF,      -4
 },
 // TODO DE
-{	{"NOUN_CAVEMAN", "NOUN_CAVEWOMAN"}, { /* EN {	{"Caveman", "Cavewoman"}, { */
+{	{"NOUN_CAVEMAN", 0}, { /* EN {	{"Caveman", "Cavewoman"}, { */
 	{"Troglodyte",  0},
 	{"Aborigine",   0},
 	{"Wanderer",    0},
@@ -134,6 +137,32 @@ const struct Role roles[] = {
 	10, 3,-3, 2, 10, A_WIS, SPE_CURE_SICKNESS,   -4
 },
 // TODO DE
+{	{"NOUN_KNIGHT", 0}, { /* EN {	{"Knight", 0}, { */
+	{"Gallant",     0},
+	{"Esquire",     0},
+	{"Bachelor",    0},
+	{"Sergeant",    0},
+	{"Knight",      0},
+	{"Banneret",    0},
+	{"Chevalier",   "Chevaliere"},
+	{"Seignieur",   "Dame"},
+	{"Paladin",     0} },
+	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
+	"Kni", "Camelot Castle", "the Isle of Glass",
+	PM_KNIGHT, NON_PM, PM_PONY,
+	PM_KING_ARTHUR, PM_PAGE, PM_IXOTH,
+	PM_QUASIT, PM_OCHRE_JELLY, S_IMP, S_JELLY,
+	ART_MAGIC_MIRROR_OF_MERLIN,
+	MH_HUMAN | ROLE_MALE|ROLE_FEMALE | ROLE_LAWFUL,
+	/* Str Int Wis Dex Con Cha */
+	{  13,  7, 14,  8, 10, 17 },
+	{  30, 15, 15, 10, 20, 10 },
+	/* Init   Lower  Higher */
+	{ 14, 0,  0, 8,  2, 0 },	/* Hit points */
+	{  1, 4,  0, 1,  0, 2 },10,	/* Energy */
+	10, 8,-2, 0,  9, A_WIS, SPE_TURN_UNDEAD,     -4
+},
+// TODO DE
 {	{"NOUN_MOENCH", 0}, { /* EN {	{"Monk", 0}, { */
 	{"Candidate",         0},
 	{"Novice",            0},
@@ -160,32 +189,6 @@ const struct Role roles[] = {
 	{ 12, 0,  0, 8,  1, 0 },	/* Hit points */
 	{  2, 2,  0, 2,  0, 2 },10,	/* Energy */
 	10, 8,-2, 2, 20, A_WIS, SPE_RESTORE_ABILITY, -4
-},
-// TODO DE
-{	{"NOUN_PALADIN", 0}, { /* EN {	{"Knight", 0}, { */
-	{"Gallant",     0},
-	{"Esquire",     0},
-	{"Bachelor",    0},
-	{"Sergeant",    0},
-	{"Knight",      0},
-	{"Banneret",    0},
-	{"Chevalier",   "Chevaliere"},
-	{"Seignieur",   "Dame"},
-	{"Paladin",     0} },
-	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
-	"Kni", "Camelot Castle", "the Isle of Glass",
-	PM_KNIGHT, NON_PM, PM_PONY,
-	PM_KING_ARTHUR, PM_PAGE, PM_IXOTH,
-	PM_QUASIT, PM_OCHRE_JELLY, S_IMP, S_JELLY,
-	ART_MAGIC_MIRROR_OF_MERLIN,
-	MH_HUMAN | ROLE_MALE|ROLE_FEMALE | ROLE_LAWFUL,
-	/* Str Int Wis Dex Con Cha */
-	{  13,  7, 14,  8, 10, 17 },
-	{  30, 15, 15, 10, 20, 10 },
-	/* Init   Lower  Higher */
-	{ 14, 0,  0, 8,  2, 0 },	/* Hit points */
-	{  1, 4,  0, 1,  0, 2 },10,	/* Energy */
-	10, 8,-2, 0,  9, A_WIS, SPE_TURN_UNDEAD,     -4
 },
 // TODO DE
 {	{"NOUN_PRIESTER", "NOUN_PRIESTERIN"}, { /* EN {	{"Priest", "Priestess"}, { */
@@ -432,7 +435,7 @@ const struct Race races[] = {
 	{  1, 0,  2, 0,  2, 0 }		/* Energy */
 },
 // TODO DE
-{	"NOUN_ELF", "ADJEKTIV_ELBISCH", "NOUN_ELVENKIND", "Elf", /* EN {	"elf", "elven", "elvenkind", "Elf", */
+{	"NOUN_ELF", "ADJEKTIV_ELBISCH", "NOUN_ELVENKIND", "Elb", /* EN {	"elf", "elven", "elvenkind", "Elf", */
 	{0, 0},
 	PM_ELF, NON_PM, PM_ELF_MUMMY, PM_ELF_ZOMBIE,
 	MH_ELF | ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
@@ -445,7 +448,7 @@ const struct Race races[] = {
 	{  2, 0,  3, 0,  3, 0 }		/* Energy */
 },
 // TODO DE
-{	"NOUN_DWARF", "ADJEKTIV_ZWERGISCH", "NOUN_DWARVENKIND", "Dwa", /* EN {	"dwarf", "dwarven", "dwarvenkind", "Dwa", */
+{	"NOUN_DWARF", "ADJEKTIV_ZWERGISCH", "NOUN_DWARVENKIND", "Zwe", /* EN {	"dwarf", "dwarven", "dwarvenkind", "Dwa", */
 	{0, 0},
 	PM_DWARF, NON_PM, PM_DWARF_MUMMY, PM_DWARF_ZOMBIE,
 	MH_DWARF | ROLE_MALE|ROLE_FEMALE | ROLE_LAWFUL,
@@ -471,7 +474,7 @@ const struct Race races[] = {
 	{  2, 0,  2, 0,  2, 0 }		/* Energy */
 },
 // TODO DE
-{	"NOUN_ORC", "ADJEKTIV_ORKSCH", "NOUN_ORCDOM", "Orc", /* EN {	"orc", "orcish", "orcdom", "Orc", */
+{	"NOUN_ORC", "ADJEKTIV_ORKSCH", "NOUN_ORCDOM", "Ork", /* EN {	"orc", "orcish", "orcdom", "Orc", */
 	{0, 0},
 	PM_ORC, NON_PM, PM_ORC_MUMMY, PM_ORC_ZOMBIE,
 	MH_ORC | ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
@@ -1270,17 +1273,24 @@ int buflen, rolenum, racenum, gendnum, alignnum;
 	if (buflen < QBUFSZ)
 		return (char *)defprompt;
 
-	Strcpy(tmpbuf, "Soll ich "); /* EN Strcpy(tmpbuf, "Shall I pick "); */ // TODO DE
+	Strcpy(buf, "Soll ich"); /* EN Strcpy(tmpbuf, "Shall I pick "); */
+#ifndef GERMAN
 	if (racenum != ROLE_NONE || validrole(rolenum))
-		Strcat(tmpbuf, "your "); /* EN Strcat(tmpbuf, "your "); */ // TODO DE
+		Strcat(tmpbuf, "your ");
 	else {
-		Strcat(tmpbuf, "a "); /* EN Strcat(tmpbuf, "a "); */ // TODO DE
+		Strcat(tmpbuf, "a ");
 	}
 	/* <your> */
+#endif
 
+#ifdef GERMAN
+	Strcpy(tmpbuf, ""); /* Workaround um post_attribs zu setzen*/
+#endif
 	(void)  root_plselection_prompt(eos(tmpbuf), buflen - strlen(tmpbuf),
 					rolenum, racenum, gendnum, alignnum);
+#ifndef GERMAN
 	Sprintf(buf, "%s", s_suffix(tmpbuf));
+#endif
 
 	/* buf should now be:
 	 * < your lawful female gnomish cavewoman's> || <your lawful female gnome's>
@@ -1293,21 +1303,30 @@ int buflen, rolenum, racenum, gendnum, alignnum;
 	if (post_attribs) {
 		if (pa[BP_RACE]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "Volk"); /* EN Strcat(buf, "race"); */ // TODO DE
+			Strcat(buf, german("NOUN_RACE")); /* EN Strcat(buf, "race"); */
 		}
 		if (pa[BP_ROLE]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "Rolle"); /* EN Strcat(buf, "role"); */ // TODO DE
+			Strcat(buf, german("NOUN_ROLE")); /* EN Strcat(buf, "role"); */
 		}
 		if (pa[BP_GEND]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "Geschlecht"); /* EN Strcat(buf, "gender"); */ // TODO DE
+			Strcat(buf, german("NOUN_GENDER")); /* EN Strcat(buf, "gender"); */
 		}
 		if (pa[BP_ALIGN]) {
 			(void) promptsep(eos(buf), num_post_attribs);
-			Strcat(buf, "Gesinnung"); /* EN Strcat(buf, "alignment"); */ // TODO DE
+			Strcat(buf, german("NOUN_ALIGNMENT")); /* EN Strcat(buf, "alignment"); */
 		}
 	}
+
+#ifdef GERMAN
+	Strcpy(tmpbuf, " KASUS_GENITIV PRONOMEN_POSSESSIV ");
+
+	(void)  root_plselection_prompt(eos(tmpbuf), buflen - strlen(tmpbuf),
+					rolenum, racenum, gendnum, alignnum);
+	Strcat(buf, german(tmpbuf));
+#endif
+
 	Strcat(buf, " für dich auswählen? [ynq] "); /* EN Strcat(buf, " for you? [ynq] "); */
 	return buf;
 }

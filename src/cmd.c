@@ -907,7 +907,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (final) {
 		if (Hallucination) you_are("hallucinating"); /* EN if (Hallucination) you_are("hallucinating"); */ // TODO DE
 		if (Stunned) you_are("stunned"); /* EN if (Stunned) you_are("stunned"); */ // TODO DE
-		if (Confusion) you_are("confused"); /* EN if (Confusion) you_are("confused"); */ // TODO DE
+		if (Confusion) you_are("verwirrt"); /* EN if (Confusion) you_are("confused"); */
 		if (Blinded) you_are("geblendet"); /* EN if (Blinded) you_are("blinded"); */
 		if (Sick) {
 			if (u.usick_type & SICK_VOMITABLE)
@@ -1229,7 +1229,7 @@ int final;
 	if (Halluc_resistance) 	dump("  ", "You resisted hallucinations"); /* EN if (Halluc_resistance) 	dump("  ", "You resisted hallucinations"); */ // TODO DE
 	if (Hallucination) dump(youwere, "hallucinating"); /* EN if (Hallucination) dump(youwere, "hallucinating"); */ // TODO DE
 	if (Stunned) dump(youwere, "stunned"); /* EN if (Stunned) dump(youwere, "stunned"); */ // TODO DE
-	if (Confusion) dump(youwere, "confused"); /* EN if (Confusion) dump(youwere, "confused"); */ // TODO DE
+	if (Confusion) dump(youwere, "verwirrt"); /* EN if (Confusion) dump(youwere, "confused"); */
 	if (Blinded) dump(youwere, "geblendet"); /* EN if (Blinded) dump(youwere, "blinded"); */
 	if (Sick) {
 		if (u.usick_type & SICK_VOMITABLE)

@@ -766,8 +766,8 @@ register int amount;
 	/* elven weapons vibrate warningly when enchanted beyond a limit */
 	if ((uwep->spe > 5)
 		&& (is_elven_weapon(uwep) || uwep->oartifact || !rn2(7)))
-	    Your("%s unerwartet.", /* EN Your("%s unexpectedly.", */
-		aobjnam(uwep, "VERB_VIBRIEREN plötzlich")); /* EN aobjnam(uwep, "suddenly vibrate")); */
+	    Your("%s.", /* EN Your("%s unexpectedly.", */
+		aobjnam(uwep, "VERB_VIBRIEREN urplötzlich")); /* EN aobjnam(uwep, "suddenly vibrate")); */
 
 	return(1);
 }

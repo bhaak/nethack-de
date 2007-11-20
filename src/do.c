@@ -66,7 +66,7 @@ boolean pushing;
 	    impossible("Not a boulder?");
 	else if (!Is_waterlevel(&u.uz) && (is_pool(rx,ry) || is_lava(rx,ry))) {
 	    boolean lava = is_lava(rx,ry), fills_up;
-	    const char *what = lava ? "lava" : "water"; /* EN const char *what = lava ? "lava" : "water"; */ // TODO DE
+	    const char *what = lava ? "NOUN_LAVA" : "NOUN_WATER"; /* EN const char *what = lava ? "lava" : "water"; */
 	    schar ltyp = levl[rx][ry].typ;
 	    int chance = rn2(10);		/* water: 90%; lava: 10% */
 	    fills_up = lava ? chance == 0 : chance != 0;
@@ -85,9 +85,9 @@ boolean pushing;
 		
 		newsym(rx,ry);
 		if (pushing) {
-		    You("push %s into the %s.", the(xname(otmp)), what); /* EN You("push %s into the %s.", the(xname(otmp)), what); */ // TODO DE
+		    You("VERB_SCHIEBEN OBJECT %s in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", the(xname(otmp)), what); /* EN You("push %s into the %s.", the(xname(otmp)), what); */
 		    if (flags.verbose && !Blind)
-			pline("Now you can cross it!"); /* EN pline("Now you can cross it!"); */ // TODO DE
+			pline("Jetzt ist der Boden begehbar!"); /* EN pline("Now you can cross it!"); */
 		    /* no splashing in this case */
 		}
 	    }
@@ -97,12 +97,13 @@ boolean pushing;
 			boolean moat = (ltyp != WATER) &&
 			    !Is_medusa_level(&u.uz) && !Is_waterlevel(&u.uz);
 
-			There("is a large splash as %s %s the %s.", /* EN There("is a large splash as %s %s the %s.", */ // TODO DE
-			      the(xname(otmp)), fills_up? "fills":"falls into", /* EN the(xname(otmp)), fills_up? "fills":"falls into", */ // TODO DE
-			      lava ? "lava" : ltyp==POOL ? "pool" : /* EN lava ? "lava" : ltyp==POOL ? "pool" : */ // TODO DE
-			      moat ? "moat" : "water"); /* EN moat ? "moat" : "water"); */ // TODO DE
+			pline("Es gibt ein lautes Platschen, als SUBJECT_IM_SATZ %s %s ARTIKEL_BESTIMMTER %s %s.", /* EN There("is a large splash as %s %s the %s.", */
+			      the(xname(otmp)), fills_up? "KASUS_AKKUSATIV":"KASUS_AKKUSATIV in", /* EN the(xname(otmp)), fills_up? "fills":"falls into", */
+			      lava ? "NOUN_LAVA" : ltyp==POOL ? "NOUN_POOL" : /* EN lava ? "lava" : ltyp==POOL ? "pool" : */
+			      moat ? "NOUN_MOAT" : "NOUN_WATER", /* EN moat ? "moat" : "water"); */
+			      fills_up? "VERB_FUELLEN":"VERB_FALLEN"); /* EN  */
 		    } else if (flags.soundok)
-			You_hear("a%s splash.", lava ? " sizzling" : ""); /* EN You_hear("a%s splash.", lava ? " sizzling" : ""); */ // TODO DE
+			You_hear("ein %s Platschen.", lava ? " zischendes" : ""); /* EN You_hear("a%s splash.", lava ? " sizzling" : ""); */
 		    wake_nearto(rx, ry, 40);
 		}
 
@@ -110,16 +111,16 @@ boolean pushing;
 		    u.uinwater = 0;
 		    docrt();
 		    vision_full_recalc = 1;
-		    You("find yourself on dry land again!"); /* EN You("find yourself on dry land again!"); */ // TODO DE
+		    You("VERB_BEFINDEN OBJECT PRONOMEN_PERSONAL wieder auf trockenem Land!"); /* EN You("find yourself on dry land again!"); */
 		} else if (lava && distu(rx,ry) <= 2) {
-		    You("are hit by ADJEKTIV_FLUESSIG NOUN_LAVA%c", /* EN You("are hit by molten lava%c", */ // TODO DE
+		    Dich("trifft SUBJECT_IM_SATZ ADJEKTIV_FLUESSIG NOUN_LAVA%c", /* EN You("are hit by molten lava%c", */
 			Fire_resistance ? '.' : '!');
 			burn_away_slime();
 		    losehp(d((Fire_resistance ? 1 : 3), 6),
-			   "ADJEKTIV_FLUESSIG NOUN_LAVA", KILLED_BY); /* EN "molten lava", KILLED_BY); */ // TODO DE
+			   "ADJEKTIV_FLUESSIG NOUN_LAVA", KILLED_BY); /* EN "molten lava", KILLED_BY); */
 		} else if (!fills_up && flags.verbose &&
 			   (pushing ? !Blind : cansee(rx,ry)))
-		    pline("It sinks without a trace!"); /* EN pline("It sinks without a trace!"); */ // TODO DE
+		    pline("Er versinkt spurlos!"); /* EN pline("It sinks without a trace!"); */
 	    }
 
 	    /* boulder is now gone */
@@ -157,9 +158,9 @@ const char *verb;
 		if (((mtmp = m_at(x, y)) && mtmp->mtrapped) ||
 			(u.utrap && u.ux == x && u.uy == y)) {
 		    if (*verb)
-			pline_The("boulder %s into the pit%s.", /* EN pline_The("boulder %s into the pit%s.", */ // TODO DE
+			pline_The("NOUN_BOULDER %s%s in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_PIT.", /* EN pline_The("boulder %s into the pit%s.", */
 				vtense((const char *)0, verb),
-				(mtmp) ? "" : " with you"); /* EN (mtmp) ? "" : " with you"); */ // TODO DE
+				(mtmp) ? "" : " mit OBJECT KASUS_DATIV PRONOMEN_PERSONAL"); /* EN (mtmp) ? "" : " with you"); */
 		    if (mtmp) {
 			if (!passes_walls(mtmp->data) &&
 				!throws_rocks(mtmp->data)) {
@@ -169,7 +170,7 @@ const char *verb;
 			mtmp->mtrapped = 0;
 		    } else {
 			if (!Passes_walls && !throws_rocks(youmonst.data)) {
-			    losehp(rnd(15), "squished under a boulder", /* EN losehp(rnd(15), "squished under a boulder", */ // TODO DE
+			    losehp(rnd(15), "zerquetscht von KASUS_AKKUSATIV ARTIKEL_UNBESTIMMTER NOUN_BOULDER", /* EN losehp(rnd(15), "squished under a boulder", */
 				   NO_KILLER_PREFIX);
 			    return FALSE;	/* player remains trapped */
 			} else u.utrap = 0;
@@ -184,8 +185,8 @@ const char *verb;
 			} else if (cansee(x, y)) {
 				pline_The("NOUN_BOULDER %s%s.", /* EN pline_The("boulder %s%s.", */
 				    t->tseen ? "" : "VERB_AKTIVIEREN und ", /* EN t->tseen ? "" : "triggers and ", */
-				    t->ttyp == TRAPDOOR ? "VERB_VERSCHLIESSEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR" : /* EN t->ttyp == TRAPDOOR ? "plugs a trap door" : */ // TODO DE
-				    t->ttyp == HOLE ? "VERB_VERSCHLIESSEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_HOLE" : /* EN t->ttyp == HOLE ? "plugs a hole" : */
+				    t->ttyp == TRAPDOOR ? "VERB_VERSTOPFEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR" : /* EN t->ttyp == TRAPDOOR ? "plugs a trap door" : */
+				    t->ttyp == HOLE ? "VERB_VERSTOPFEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_HOLE" : /* EN t->ttyp == HOLE ? "plugs a hole" : */
 				    "VERB_FUELLEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT"); /* EN "fills a pit"); */
 			}
 		}
@@ -224,9 +225,9 @@ doaltarobj(obj)  /* obj is an object dropped on an altar */
 	u.uconduct.gnostic++;
 
 	if ((obj->blessed || obj->cursed) && obj->oclass != COIN_CLASS) {
-		There("is %s flash as %s %s the altar.", /* EN There("is %s flash as %s %s the altar.", */ // TODO DE
+		pline("SUBJECT %s NOUN_BLITZ zuckt über den Altar, als NEUER_SATZ SUBJECT_IM_SATZ %s ihn %s.", /* EN There("is %s flash as %s %s the altar.", */
 			an(hcolor(obj->blessed ? NH_AMBER : NH_BLACK)),
-			doname(obj), otense(obj, "hit")); /* EN doname(obj), otense(obj, "hit")); */ // TODO DE
+			doname(obj), otense(obj, "VERB_BERUEHREN")); /* EN doname(obj), otense(obj, "hit")); */
 		if (!Hallucination) obj->bknown = 1;
 	} else {
 		pline("SUBJECT %s %s auf dem Altar.", Doname2(obj), /* EN pline("%s %s on the altar.", Doname2(obj), */
@@ -262,45 +263,45 @@ register struct obj *obj;
 			xname(obj));
 		goto giveback;
 	    case RIN_SLOW_DIGESTION:
-		pline_The("ring is regurgitated!"); /* EN pline_The("ring is regurgitated!"); */ // TODO DE
+		pline("Der Ring wird wieder heraufgewürgt!"); /* EN pline_The("ring is regurgitated!"); */
 giveback:
 		obj->in_use = FALSE;
 		dropx(obj);
 		trycall(obj);
 		return;
 	    case RIN_LEVITATION:
-		pline_The("sink quivers upward for a moment."); /* EN pline_The("sink quivers upward for a moment."); */ // TODO DE
+		pline("Die Spüle hebt kurz vom Bodem ab/bäumt sich kurz auf."); /* EN pline_The("sink quivers upward for a moment."); */
 		break;
 	    case RIN_POISON_RESISTANCE:
-		You("smell rotten %s.", makeplural(fruitname(FALSE))); /* EN You("smell rotten %s.", makeplural(fruitname(FALSE))); */ // TODO DE
+		You("VERB_RIECHEN OBJECT ADJEKTIV_VERGAMMELT %s.", makeplural(fruitname(FALSE))); /* EN You("smell rotten %s.", makeplural(fruitname(FALSE))); */
 		break;
 	    case RIN_AGGRAVATE_MONSTER:
-		pline("Several flies buzz angrily around the sink."); /* EN pline("Several flies buzz angrily around the sink."); */ // TODO DE
+		pline("Mehrere Fliegen schwirren wütend um das Spülbecken."); /* EN pline("Several flies buzz angrily around the sink."); */
 		break;
 	    case RIN_SHOCK_RESISTANCE:
-		pline("Static electricity surrounds the sink."); /* EN pline("Static electricity surrounds the sink."); */ // TODO DE
+		pline("Statische Elektrizität umgibt die Spüle."); /* EN pline("Static electricity surrounds the sink."); */
 		break;
 	    case RIN_CONFLICT:
 		You_hear("laute Geräusche aus dem Abfluss dringen."); /* EN You_hear("loud noises coming from the drain."); */
 		break;
 	    case RIN_SUSTAIN_ABILITY:	/* KMH */
-		pline_The("water flow seems fixed."); /* EN pline_The("water flow seems fixed."); */ // TODO DE
+		pline("Der Wasserdruck scheint konstant zu bleiben."); /* EN pline_The("water flow seems fixed."); */
 		break;
 	    case RIN_GAIN_STRENGTH:
-		pline_The("water flow seems %ser now.", /* EN pline_The("water flow seems %ser now.", */ // TODO DE
+		pline("Der Wasserstrahl scheint %s geworden zu sein.", /* EN pline_The("water flow seems %ser now.", */
 			(obj->spe<0) ? "schwächer" : "stärker"); /* EN (obj->spe<0) ? "weak" : "strong"); */
 		break;
 	    case RIN_GAIN_CONSTITUTION:
-		pline_The("water flow seems %ser now.", /* EN pline_The("water flow seems %ser now.", */ // TODO DE
-			(obj->spe<0) ? "less" : "great"); /* EN (obj->spe<0) ? "less" : "great"); */ // TODO DE
+		pline("Der Wasserstrahl scheint %s geworden zu sein.", /* EN pline_The("water flow seems %ser now.", */
+			(obj->spe<0) ? "kleiner" : "größer"); /* EN (obj->spe<0) ? "less" : "great"); */
 		break;
 	    case RIN_INCREASE_ACCURACY:	/* KMH */
-		pline_The("water flow %s the drain.", /* EN pline_The("water flow %s the drain.", */ // TODO DE
-			(obj->spe<0) ? "misses" : "hits"); /* EN (obj->spe<0) ? "misses" : "hits"); */ // TODO DE
+		pline("Der Wasserstrahl %s den Abfluss.", /* EN pline_The("water flow %s the drain.", */
+			(obj->spe<0) ? "verfehlt" : "trifft"); /* EN (obj->spe<0) ? "misses" : "hits"); */
 		break;
 	    case RIN_INCREASE_DAMAGE:
-		pline_The("water's force seems %ser now.", /* EN pline_The("water's force seems %ser now.", */ // TODO DE
-			(obj->spe<0) ? "small" : "great"); /* EN (obj->spe<0) ? "small" : "great"); */ // TODO DE
+		pline("Der Wasserdruck scheint %s geworden zu sein.", /* EN pline_The("water's force seems %ser now.", */
+			(obj->spe<0) ? "geringer" : "größer"); /* EN (obj->spe<0) ? "small" : "great"); */
 		break;
 	    case RIN_HUNGER:
 		ideed = FALSE;
@@ -309,8 +310,8 @@ giveback:
 		    if (otmp != uball && otmp != uchain &&
 			    !obj_resists(otmp, 1, 99)) {
 			if (!Blind) {
-			    pline("Suddenly, %s %s from the sink!", /* EN pline("Suddenly, %s %s from the sink!", */ // TODO DE
-				  doname(otmp), otense(otmp, "vanish")); /* EN doname(otmp), otense(otmp, "vanish")); */ // TODO DE
+			    pline("Plötzlich SUBJECT_IM_SATZ %s %s aus der Spüle!", /* EN pline("Suddenly, %s %s from the sink!", */
+				  otense(otmp, "VERB_VERSCHWINDEN"), doname(otmp)); /* EN doname(otmp), otense(otmp, "vanish")); */
 			    ideed = TRUE;
 			}
 			delobj(otmp);
@@ -319,7 +320,7 @@ giveback:
 		break;
 	    case MEAT_RING:
 		/* Not the same as aggravate monster; besides, it's obvious. */
-		pline("Several flies buzz around the sink."); /* EN pline("Several flies buzz around the sink."); */ // TODO DE
+		pline("Mehrere Fliegen schwirren um das Spülbecken."); /* EN pline("Several flies buzz around the sink."); */
 		break;
 	    default:
 		ideed = FALSE;
@@ -329,57 +330,57 @@ giveback:
 	    ideed = TRUE;
 	    switch(obj->otyp) {		/* effects that need eyes */
 		case RIN_ADORNMENT:
-		    pline_The("faucets flash brightly for a moment."); /* EN pline_The("faucets flash brightly for a moment."); */ // TODO DE
+		    pline("Die Wasserhähne leuchten kurz gleißend hell auf."); /* EN pline_The("faucets flash brightly for a moment."); */
 		    break;
 		case RIN_REGENERATION:
-		    pline_The("sink looks as good as new."); /* EN pline_The("sink looks as good as new."); */ // TODO DE
+		    pline("Die Spüle sieht wieder nigelnagelneu aus."); /* EN pline_The("sink looks as good as new."); */
 		    break;
 		case RIN_INVISIBILITY:
-		    You("don't see anything happen to the sink."); /* EN You("don't see anything happen to the sink."); */ // TODO DE
+		    pline("Mit dem Spüle /don't see anything happen to the sink."); /* EN You("don't see anything happen to the sink."); */ // TODO DE
 		    break;
 		case RIN_FREE_ACTION:
-		    You("see the ring slide right down the drain!"); /* EN You("see the ring slide right down the drain!"); */ // TODO DE
+		    You("VERB_SEHEN, wie der Ring geradewegs in den Abfluss reinrutscht!"); /* EN You("see the ring slide right down the drain!"); */
 		    break;
 		case RIN_SEE_INVISIBLE:
-		    You("see some air in the sink."); /* EN You("see some air in the sink."); */ // TODO DE
+		    You("VERB_SEHEN die Luft im Spülbecken."); /* EN You("see some air in the sink."); */
 		    break;
 		case RIN_STEALTH:
-		pline_The("sink seems to blend into the floor for a moment."); /* EN pline_The("sink seems to blend into the floor for a moment."); */ // TODO DE
+		pline("Das Spülbecken scheint kurz mit der Umgebung zu verschmelzen."); /* EN pline_The("sink seems to blend into the floor for a moment."); */
 		    break;
 		case RIN_FIRE_RESISTANCE:
-		pline_The("hot water faucet flashes brightly for a moment."); /* EN pline_The("hot water faucet flashes brightly for a moment."); */ // TODO DE
+		pline("Der Warmwasserhahn leuchtet kurz gleißend hell auf."); /* EN pline_The("hot water faucet flashes brightly for a moment."); */
 		    break;
 		case RIN_COLD_RESISTANCE:
-		pline_The("cold water faucet flashes brightly for a moment."); /* EN pline_The("cold water faucet flashes brightly for a moment."); */ // TODO DE
+		pline("Der Kaltwasserhahn leuchtet kurz gleißend hell auf."); /* EN pline_The("cold water faucet flashes brightly for a moment."); */
 		    break;
 		case RIN_PROTECTION_FROM_SHAPE_CHAN:
-		    pline_The("sink looks nothing like a fountain."); /* EN pline_The("sink looks nothing like a fountain."); */ // TODO DE
+		    pline("Die Spüle sieht überhaupt nicht wie ARTIKEL_UNBESTIMMTER NOUN_FOUNTAIN aus."); /* EN pline_The("sink looks nothing like a fountain."); */
 		    break;
 		case RIN_PROTECTION:
-		    pline_The("sink glows %s for a moment.", /* EN pline_The("sink glows %s for a moment.", */ // TODO DE
+		    pline_The("NOUN_SINK VERB_SCHIMMERN %s einen Moment lang.", /* EN pline_The("sink glows %s for a moment.", */
 			    hcolor((obj->spe<0) ? NH_BLACK : NH_SILVER));
 		    break;
 		case RIN_WARNING:
-		    pline_The("sink glows %s for a moment.", hcolor(NH_WHITE)); /* EN pline_The("sink glows %s for a moment.", hcolor(NH_WHITE)); */ // TODO DE
+		    pline("NOUN_SINK VERB_SCHIMMERN %s einen Moment lang.", hcolor(NH_WHITE)); /* EN pline_The("sink glows %s for a moment.", hcolor(NH_WHITE)); */
 		    break;
 		case RIN_TELEPORTATION:
-		    pline_The("sink momentarily vanishes."); /* EN pline_The("sink momentarily vanishes."); */ // TODO DE
+		    pline("Das Spülbecken verschwindet für den Bruchteil einer Sekunde."); /* EN pline_The("sink momentarily vanishes."); */
 		    break;
 		case RIN_TELEPORT_CONTROL:
-	    pline_The("sink looks like it is being beamed aboard somewhere."); /* EN pline_The("sink looks like it is being beamed aboard somewhere."); */ // TODO DE
+	    pline("Die Spüle sieht aus, als könnte sie sich irgendwohin beamen."); /* EN pline_The("sink looks like it is being beamed aboard somewhere."); */
 		    break;
 		case RIN_POLYMORPH:
-		    pline_The("sink momentarily looks like a fountain."); /* EN pline_The("sink momentarily looks like a fountain."); */ // TODO DE
+		    pline("Das Spülbecken sieht für einen Moment wie ARTIKEL_UNBESTIMMTER NOUN_FOUNTAIN aus."); /* EN pline_The("sink momentarily looks like a fountain."); */
 		    break;
 		case RIN_POLYMORPH_CONTROL:
-	pline_The("sink momentarily looks like a regularly erupting geyser."); /* EN pline_The("sink momentarily looks like a regularly erupting geyser."); */ // TODO DE
+	pline("Das Spülbecken sieht für einen Moment wie regelmässig ausbrechender Geysir."); /* EN pline_The("sink momentarily looks like a regularly erupting geyser."); */
 		    break;
 	    }
 	}
 	if(ideed)
 	    trycall(obj);
 	else
-	    You_hear("the ring bouncing down the drainpipe."); /* EN You_hear("the ring bouncing down the drainpipe."); */ // TODO DE
+	    You_hear("den Ring die Rohre runterpoltern."); /* EN You_hear("the ring bouncing down the drainpipe."); */
 	if (!rn2(20)) {
 		pline_The("sink backs up, leaving %s.", doname(obj)); /* EN pline_The("sink backs up, leaving %s.", doname(obj)); */ // TODO DE
 		obj->in_use = FALSE;
@@ -400,14 +401,14 @@ register const char *word;
 {
 	if(obj->owornmask & (W_ARMOR | W_RING | W_AMUL | W_TOOL)){
 		if (*word)
-			Norep("You cannot %s %s you are wearing.",word, /* EN Norep("You cannot %s %s you are wearing.",word, */ // TODO DE
-				something);
+			Norep("SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN nicht %s %s, das NEUER_SATZ SUBJECT PRONOMEN_PERSONAL gerade VERB_TRAGEN.",/* EN Norep("You cannot %s %s you are wearing.",word, */
+				something, word); /* EN something); */
 		return(FALSE);
 	}
 	if (obj->otyp == LOADSTONE && obj->cursed) {
 		if (*word)
-			pline("For some reason, you cannot %s the stone%s!", /* EN pline("For some reason, you cannot %s the stone%s!", */ // TODO DE
-				word, plur(obj->quan));
+			pline("Aus irgendeinem Grund VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_GEM_ROCK%s nicht %s!", /* EN pline("For some reason, you cannot %s the stone%s!", */
+				plur(obj->quan), word); /* EN word, plur(obj->quan)); */
 		/* Kludge -- see invent.c */
 		if (obj->corpsenm) {
 			struct obj *otmp;
@@ -424,15 +425,15 @@ register const char *word;
 	}
 	if (obj->otyp == LEASH && obj->leashmon != 0) {
 		if (*word)
-			pline_The("leash is tied around your %s.", /* EN pline_The("leash is tied around your %s.", */ // TODO DE
+			pline_The("NOUN_LEINE is around your %s.", /* EN pline_The("leash is tied around your %s.", */ // TODO DE
 					body_part(HAND));
 		return(FALSE);
 	}
 #ifdef STEED
 	if (obj->owornmask & W_SADDLE) {
 		if (*word)
-			You("cannot %s %s you are sitting on.", word, /* EN You("cannot %s %s you are sitting on.", word, */ // TODO DE
-				something);
+			You("VERB_KOENNEN nichts %s auf dem PRONOMEN_PERSONAL VERB_SITZEN.", /* EN You("cannot %s %s you are sitting on.", word, */
+				word); /* EN something); */
 		return (FALSE);
 	}
 #endif
@@ -445,7 +446,7 @@ drop(obj)
 register struct obj *obj;
 {
 	if(!obj) return(0);
-	if(!canletgo(obj,"drop")) /* EN if(!canletgo(obj,"drop")) */ // TODO DE
+	if(!canletgo(obj,"fallen lassen")) /* EN if(!canletgo(obj,"drop")) */
 		return(0);
 	if(obj == uwep) {
 		if(welded(uwep)) {
@@ -528,7 +529,7 @@ register struct obj *obj;
 	if (obj == uquiver) setuqwep((struct obj *)0);
 	if (obj == uswapwep) setuswapwep((struct obj *)0);
 
-	if (!u.uswallow && flooreffects(obj,u.ux,u.uy,"drop")) return; /* EN if (!u.uswallow && flooreffects(obj,u.ux,u.uy,"drop")) return; */ // TODO DE
+	if (!u.uswallow && flooreffects(obj,u.ux,u.uy,"VERB_FALLEN")) return; /* EN if (!u.uswallow && flooreffects(obj,u.ux,u.uy,"drop")) return; */
 	/* uswallow check done by GAN 01/29/87 */
 	if(u.uswallow) {
 	    boolean could_petrify = FALSE;
@@ -738,10 +739,10 @@ dodown()
 
 #ifdef STEED
 	if (u.usteed && !u.usteed->mcanmove) {
-		pline("%s won't move!", Monnam(u.usteed)); /* EN pline("%s won't move!", Monnam(u.usteed)); */ // TODO DE
+		pline("%s macht keinen Wank!", Monnam(u.usteed)); /* EN pline("%s won't move!", Monnam(u.usteed)); */
 		return(0);
 	} else if (u.usteed && u.usteed->meating) {
-		pline("%s is still eating.", Monnam(u.usteed)); /* EN pline("%s is still eating.", Monnam(u.usteed)); */ // TODO DE
+		pline("%s VERB_ESSEN immer noch.", Monnam(u.usteed)); /* EN pline("%s is still eating.", Monnam(u.usteed)); */
 		return(0);
 	} else
 #endif
@@ -823,10 +824,10 @@ doup()
 	}
 #ifdef STEED
 	if (u.usteed && !u.usteed->mcanmove) {
-		pline("%s won't move!", Monnam(u.usteed)); /* EN pline("%s won't move!", Monnam(u.usteed)); */ // TODO DE
+		pline("SUBJECT %s VERB_MACHEN keinen Wank!", Monnam(u.usteed)); /* EN pline("%s won't move!", Monnam(u.usteed)); */
 		return(0);
 	} else if (u.usteed && u.usteed->meating) {
-		pline("%s is still eating.", Monnam(u.usteed)); /* EN pline("%s is still eating.", Monnam(u.usteed)); */ // TODO DE
+		pline("SUBJECT %s VERB_ESSEN immer noch.", Monnam(u.usteed)); /* EN pline("%s is still eating.", Monnam(u.usteed)); */
 		return(0);
 	} else
 #endif
@@ -847,7 +848,7 @@ doup()
 			return(0);
 	}
 	if(!next_to_u()) {
-		You("are held back by your pet!"); /* EN You("are held back by your pet!"); */ // TODO DE
+		Your("NOUN_PET VERB_HALTEN OBJECT PRONOMEN_PERSONAL zurück!"); /* EN You("are held back by your pet!"); */
 		return(0);
 	}
 	at_ladder = (boolean) (levl[u.ux][u.uy].typ == LADDER);
@@ -886,8 +887,8 @@ currentlevel_rewrite()
 	if (!savelev(fd, ledger_no(&u.uz), COUNT_SAVE)) {
 		(void) close(fd);
 		delete_levelfile(ledger_no(&u.uz));
-		pline("NetHack is out of disk space for making levels!"); /* EN pline("NetHack is out of disk space for making levels!"); */ // TODO DE
-		You("can save, quit, or continue playing."); /* EN You("can save, quit, or continue playing."); */ // TODO DE
+		pline("NetHack-De is out of disk space for making levels!"); /* EN pline("NetHack is out of disk space for making levels!"); */ // TODO DE
+		You("VERB_KOENNEN speichern, abbrechen, or weiterspielen."); /* EN You("can save, quit, or continue playing."); */
 		return -1;
 	}
 #endif
@@ -1250,12 +1251,12 @@ boolean at_stairs, falling, portal;
 	/* Check whether we just entered Gehennom. */
 	if (!In_hell(&u.uz0) && Inhell) {
 	    if (Is_valley(&u.uz)) {
-		You("arrive at the Valley of the Dead..."); /* EN You("arrive at the Valley of the Dead..."); */ // TODO DE
+		You("VERB_BETRETEN das Tal der Toten ..."); /* EN You("arrive at the Valley of the Dead..."); */ // TODO DE
 		pline_The("odor of burnt flesh and decay pervades the air."); /* EN pline_The("odor of burnt flesh and decay pervades the air."); */ // TODO DE
 #ifdef MICRO
 		display_nhwindow(WIN_MESSAGE, FALSE);
 #endif
-		You_hear("groans and moans everywhere."); /* EN You_hear("groans and moans everywhere."); */ // TODO DE
+		You_hear("groans and moans everywhere sind allgegenwärtig."); /* EN You_hear("groans and moans everywhere."); */ // TODO DE
 	    } else pline("It is hot here.  You smell smoke..."); /* EN } else pline("It is hot here.  You smell smoke..."); */ // TODO DE
 	}
 
@@ -1367,9 +1368,9 @@ final_level()
 		if ((mtmp = mk_roamer(&mons[PM_ANGEL], u.ualign.type,
 				      mm.x, mm.y, TRUE)) != 0) {
 		    if (!Blind)
-			pline("An angel appears near you."); /* EN pline("An angel appears near you."); */ // TODO DE
+			pline("Ein Engel erscheint neben KASUS_DATIV PRONOMEN_PERSONAL."); /* EN pline("An angel appears near you."); */
 		    else
-			You_feel("the presence of a friendly angel near you."); /* EN You_feel("the presence of a friendly angel near you."); */ // TODO DE
+			Du_spuerst("the presence of a friendly angel near you."); /* EN You_feel("the presence of a friendly angel near you."); */ // TODO DE
 		    /* guardian angel -- the one case mtame doesn't
 		     * imply an edog structure, so we don't want to
 		     * call tamedog().
@@ -1603,7 +1604,7 @@ dowipe()
 		 */
 		return(1);
 	}
-	Your("%s is already clean.", body_part(FACE)); /* EN Your("%s is already clean.", body_part(FACE)); */ // TODO DE
+	Your("%s VERB_SEIN bereits sauber.", body_part(FACE)); /* EN Your("%s is already clean.", body_part(FACE)); */
 	return(1);
 }
 
@@ -1644,10 +1645,10 @@ heal_legs()
 		{
 			/* KMH, intrinsics patch */
 			if((EWounded_legs & BOTH_SIDES) == BOTH_SIDES) {
-			Your("%s feel somewhat better.", /* EN Your("%s feel somewhat better.", */ // TODO DE
+			pline("KASUS_DATIV PRONOMEN_POSSESSIV %s VERB_GEHEN es etwas besser.", /* EN Your("%s feel somewhat better.", */
 				makeplural(body_part(LEG)));
 		} else {
-			Your("%s feels somewhat better.", /* EN Your("%s feels somewhat better.", */ // TODO DE
+			Your("KASUS_DATIV PRONOMEN_POSSESSIV %s VERB_GEHEN es etwas besser.", /* EN Your("%s feels somewhat better.", */
 				body_part(LEG));
 		}
 		}

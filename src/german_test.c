@@ -610,7 +610,8 @@ START_TEST (test_german2meta) {
 										 {"Schriftrolle des Lichtes", "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_LIGHT"},
 										 {"eine Essensration", "ARTIKEL_UNBESTIMMTER NOUN_FOOD_RATION"},
 										 {"Essensrationen", "NOUN_FOOD_RATIONs"},
-
+										 {"eine geheiligte Zauberbuch der Monsterbezauberung", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_CHARM_MONSTER"},
+										 {"Tränke der Verwirrung", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_CONFUSION"},
 										 //{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
 	};
 
@@ -776,7 +777,7 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
   
-	if (1) {
+	if (0) {
   tcase_add_test(tc_core, test_satzklammer);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
