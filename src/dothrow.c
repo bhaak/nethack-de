@@ -75,7 +75,7 @@ int shotlimit;
 	if(obj->oclass == COIN_CLASS && obj != uquiver) return(throw_gold(obj));
 #endif
 
-	if(!canletgo(obj,"throw")) /* EN if(!canletgo(obj,"throw")) */ // TODO DE
+	if(!canletgo(obj,"werfen")) /* EN if(!canletgo(obj,"throw")) */
 		return(0);
 	if (obj->oartifact == ART_MJOLLNIR && obj != uwep) {
 	    pline("%s must be wielded before it can be thrown.", /* EN pline("%s must be wielded before it can be thrown.", */ // TODO DE
@@ -84,17 +84,17 @@ int shotlimit;
 	}
 	if ((obj->oartifact == ART_MJOLLNIR && ACURR(A_STR) < STR19(25))
 	   || (obj->otyp == BOULDER && !throws_rocks(youmonst.data))) {
-		pline("It's too heavy."); /* EN pline("It's too heavy."); */ // TODO DE
+		pline("Das ist zu schwer."); /* EN pline("It's too heavy."); */
 		return(1);
 	}
 	if(!u.dx && !u.dy && !u.dz) {
-		You("cannot throw an object at yourself."); /* EN You("cannot throw an object at yourself."); */ // TODO DE
+		You("VERB_KOENNEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL nicht selbst ein Objekt zuwerfen."); /* EN You("cannot throw an object at yourself."); */
 		return(0);
 	}
 	u_wipe_engr(2);
 	if (!uarmg && !Stone_resistance && (obj->otyp == CORPSE &&
 		    touch_petrifies(&mons[obj->corpsenm]))) {
-		You("throw the %s corpse with your bare %s.", /* EN You("throw the %s corpse with your bare %s.", */ // TODO DE
+		You("VERB_WERFEN OBJECT ARTIKEL_BESTIMMTER %s corpse with your bare %s.", /* EN You("throw the %s corpse with your bare %s.", */ // TODO DE
 		    mons[obj->corpsenm].mname, body_part(HAND));
 		Sprintf(killer_buf, "%s corpse", an(mons[obj->corpsenm].mname)); /* EN Sprintf(killer_buf, "%s corpse", an(mons[obj->corpsenm].mname)); */ // TODO DE
 		instapetrify(killer_buf);
@@ -154,8 +154,8 @@ int shotlimit;
 	   attempted to specify a count */
 	if (multishot > 1 || shotlimit > 0) {
 	    /* "You shoot N arrows." or "You throw N daggers." */
-	    You("%s %d %s.",
-		m_shot.s ? "shoot" : "throw", /* EN m_shot.s ? "shoot" : "throw", */ // TODO DE
+	    You("%s OBJECT %d %s.",
+		m_shot.s ? "VERB_SCHIESSEN" : "VERB_WERFEN", /* EN m_shot.s ? "shoot" : "throw", */
 		multishot,	/* (might be 1 if player gave shotlimit) */
 		(multishot == 1) ? singular(obj, xname) :  xname(obj));
 	}
@@ -297,7 +297,7 @@ dofire()
 			You("have nothing appropriate for your quiver!"); /* EN You("have nothing appropriate for your quiver!"); */ // TODO DE
 			return(dothrow());
 		} else {
-			You("fill your quiver:"); /* EN You("fill your quiver:"); */ // TODO DE
+			You("VERB_FUELLEN OBJECT PRONOMEN_POSSESSIV NOUN_QUIVER:"); /* EN You("fill your quiver:"); */
 			prinv((char *)0, uquiver, 0L);
 		}
 	}
@@ -479,8 +479,8 @@ hurtle_step(arg, x, y)
 	}
 	if (!may_pass) {
 	    /* did we hit a no-dig non-wall position? */
-	    You("smack into something!"); /* EN You("smack into something!"); */ // TODO DE
-	    losehp(rnd(2+*range), "touching the edge of the universe", KILLED_BY); /* EN losehp(rnd(2+*range), "touching the edge of the universe", KILLED_BY); */ // TODO DE
+	    You("VERB_KOLLIDIEREN mit etwas!"); /* EN You("smack into something!"); */
+	    losehp(rnd(2+*range), "berührte den Rand der Welt", NO_KILLER_PREFIX); /* EN losehp(rnd(2+*range), "touching the edge of the universe", KILLED_BY); */
 	    return FALSE;
 	}
 	if ((u.ux - x) && (u.uy - y) &&
@@ -620,7 +620,7 @@ hurtle(dx, dy, range, verbose)
     /* if we're in the midst of shooting multiple projectiles, stop */
     if (m_shot.i < m_shot.n) {
 	/* last message before hurtling was "you shoot N arrows" */
-	You("VERB_AUFHOEREN nach dem ersten %s SATZKLAMMER zu %s.", /* EN You("stop %sing after the first %s.", */ // TODO DE
+	You("VERB_AUFHOEREN nach dem ersten %s SATZKLAMMER zu %s.", /* EN You("stop %sing after the first %s.", */
 	    m_shot.s ? "Schuss" : "Wurf", m_shot.s ? "schießen" : "werfen"); /* EN m_shot.s ? "shoot" : "throw", m_shot.s ? "shot" : "toss"); */
 	m_shot.n = m_shot.i;	/* make current shot be the last */
     }
@@ -795,7 +795,7 @@ boolean hitsroof;
 		    pline("SUBJECT Glücklicherweise VERB_TRAGEN PRONOMEN_PERSONAL einen schützenden Helm."); /* EN pline("Fortunately, you are wearing a hard helmet."); */
 	    } else if (flags.verbose &&
 		    !(obj->otyp == CORPSE && touch_petrifies(&mons[obj->corpsenm])))
-		Your("%s does not protect you.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */ // TODO DE
+		Your("%s VERB_SCHUETZEN OBJECT PRONOMEN_PERSONAL nicht.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */
 	} else if (obj->otyp == CORPSE && touch_petrifies(&mons[obj->corpsenm])) {
 	    if (!Stone_resistance &&
 		    !(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
@@ -860,7 +860,7 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 	if ((obj->cursed || obj->greased) && (u.dx || u.dy) && !rn2(7)) {
 	    boolean slipok = TRUE;
 	    if (ammo_and_launcher(obj, uwep))
-		pline("%s!", Tobjnam(obj, "misfire")); /* EN pline("%s!", Tobjnam(obj, "misfire")); */ // TODO DE
+		pline("%s fehl!", Tobjnam(obj, "VERB_GEHEN")); /* EN pline("%s!", Tobjnam(obj, "misfire")); */
 	    else {
 		/* only slip if it's greased or meant to be thrown */
 		if (obj->greased || throwing_weapon(obj))
@@ -897,10 +897,10 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 		bhitpos.x = mon->mx;
 		bhitpos.y = mon->my;
 	} else if(u.dz) {
-	    if (u.dz < 0 && Role_if(PM_VALKYRIE) &&
+	    if (u.dz < 0 && // Role_if(PM_VALKYRIE) &&
 		    obj->oartifact == ART_MJOLLNIR && !impaired) {
-		pline("%s the %s and returns to your hand!", /* EN pline("%s the %s and returns to your hand!", */ // TODO DE
-		      Tobjnam(obj, "hit"), ceiling(u.ux,u.uy));
+		pline("SUBJECT %s OBJECT ARTIKEL_BESTIMMTER %s und VERB_ZURUECKKEHREN in NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV NOUN_HAND SATZKLAMMER!", /* EN pline("%s the %s and returns to your hand!", */
+		      Tobjnam(obj, "VERB_HIT"), ceiling(u.ux,u.uy));
 		obj = addinv(obj);
 		(void) encumber_msg();
 		setuwep(obj);
@@ -1014,7 +1014,7 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 		    sho_obj_return_to_u(obj);	    /* display its flight */
 
 		    if (!impaired && rn2(100)) {
-			pline("%s to your hand!", Tobjnam(obj, "return")); /* EN pline("%s to your hand!", Tobjnam(obj, "return")); */ // TODO DE
+			pline("SUBJECT %s OBJECT in PRONOMEN_POSSESSIV NOUN_HAND SATZKLAMMER!", Tobjnam(obj, "VERB_ZURUECKKEHREN")); /* EN pline("%s to your hand!", Tobjnam(obj, "return")); */
 			obj = addinv(obj);
 			(void) encumber_msg();
 			setuwep(obj);
@@ -1024,10 +1024,10 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 		    } else {
 			int dmg = rn2(2);
 			if (!dmg) {
-			    pline(Blind ? "%s lands %s your %s." : /* EN pline(Blind ? "%s lands %s your %s." : */ // TODO DE
-					"%s back to you, landing %s your %s.", /* EN "%s back to you, landing %s your %s.", */ // TODO DE
-				  Blind ? Something : Tobjnam(obj, "return"), /* EN Blind ? Something : Tobjnam(obj, "return"), */ // TODO DE
-				  Levitation ? "beneath" : "at", /* EN Levitation ? "beneath" : "at", */ // TODO DE
+			    pline(Blind ? "SUBJECT %s VERB_LANDEN %s KASUS_DATIV PRONOMEN_POSSESSIV %s." : /* EN pline(Blind ? "%s lands %s your %s." : */
+					"SUBJECT %s zu OBJECT KASUS_DATIV PRONOMEN_PERSONAL SATZKLAMMER und VERB_LANDEN %s KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN "%s back to you, landing %s your %s.", */
+				  Blind ? Something : Tobjnam(obj, "VERB_ZURUECKKEHREN"), /* EN Blind ? Something : Tobjnam(obj, "return"), */
+				  Levitation ? "unter" : "zu", /* EN Levitation ? "beneath" : "at", */
 				  makeplural(body_part(FOOT)));
 			} else {
 			    dmg += rnd(3);
@@ -1228,10 +1228,10 @@ register struct obj   *obj;
 
 	if (obj->oclass == GEM_CLASS && is_unicorn(mon->data)) {
 	    if (mon->mtame) {
-		pline("%s catches and drops %s.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches and drops %s.", Monnam(mon), the(xname(obj))); */ // TODO DE
+		pline("%s VERB_FANGEN und VERB_DROP %s SATZKLAMMER.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches and drops %s.", Monnam(mon), the(xname(obj))); */
 		return 0;
 	    } else {
-		pline("%s catches %s.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches %s.", Monnam(mon), the(xname(obj))); */ // TODO DE
+		pline("SUBJECT %s VERB_FANGEN OBJECT %s.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches %s.", Monnam(mon), the(xname(obj))); */
 		return gem_accept(mon, obj);
 	    }
 	}
@@ -1244,7 +1244,7 @@ register struct obj   *obj;
 	    mon->mstrategy &= ~STRAT_WAITMASK;
 
 	    if (mon->mcanmove) {
-		pline("%s catches %s.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches %s.", Monnam(mon), the(xname(obj))); */ // TODO DE
+		pline("%s VERB_FANGEN OBJECT %s.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches %s.", Monnam(mon), the(xname(obj))); */
 		if (mon->mpeaceful) {
 		    boolean next2u = monnear(mon, u.ux, u.uy);
 
@@ -1563,10 +1563,10 @@ boolean from_invent;
 					    You("smell a peculiar odor..."); /* EN You("smell a peculiar odor..."); */ // TODO DE
 					else {
 					    int numeyes = eyecount(youmonst.data);
-					    Your("%s water%s.", /* EN Your("%s water%s.", */ // TODO DE
+					    Your("%s VERB_TRAENEN%s.", /* EN Your("%s water%s.", */
 						 (numeyes == 1) ? body_part(EYE) :
 							makeplural(body_part(EYE)),
-						 (numeyes == 1) ? "s" : "");
+						 (numeyes == 1) ? "" : ""); /* EN (numeyes == 1) ? "s" : ""); */
 					}
 				}
 				potionbreathe(obj);
@@ -1669,7 +1669,7 @@ boolean in_view;
 			pline("Splat!"); /* EN pline("Splat!"); */ // TODO DE
 			break;
 		case CREAM_PIE:
-			if (in_view) pline("What a mess!"); /* EN if (in_view) pline("What a mess!"); */ // TODO DE
+			if (in_view) pline("Was für eine Sauerei!"); /* EN if (in_view) pline("What a mess!"); */
 			break;
 		case ACID_VENOM:
 		case BLINDING_VENOM:
@@ -1697,7 +1697,7 @@ struct obj *obj;
 		flags.botl = 1;
 		dealloc_obj(obj);
 #endif
-		You("cannot throw gold at yourself."); /* EN You("cannot throw gold at yourself."); */ // TODO DE
+		You("VERB_KOENNEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL nicht selbst Gold zuwerfen."); /* EN You("cannot throw gold at yourself."); */
 		return(0);
 	}
 #ifdef GOLDOBJ
@@ -1720,10 +1720,10 @@ struct obj *obj;
 	if(u.dz) {
 		if (u.dz < 0 && !Is_airlevel(&u.uz) &&
 					!Underwater && !Is_waterlevel(&u.uz)) {
-	pline_The("gold hits the %s, then falls back on top of your %s.", /* EN pline_The("gold hits the %s, then falls back on top of your %s.", */ // TODO DE
+	pline_The("NOUN_GOLD VERB_HIT OBJECT ARTIKEL_BESTIMMTER %s, dann fällt es NEUES_OBJECT KASUS_DATIV PRONOMEN_PERSONAL auf NEUES_OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", /* EN pline_The("gold hits the %s, then falls back on top of your %s.", */
 		    ceiling(u.ux,u.uy), body_part(HEAD));
 		    /* some self damage? */
-		    if(uarmh) pline("Fortunately, you are wearing a helmet!"); /* EN if(uarmh) pline("Fortunately, you are wearing a helmet!"); */ // TODO DE
+		    if(uarmh) pline("SUBJECT Glücklicherweise VERB_TRAGEN PRONOMEN_PERSONAL einen Helm!"); /* EN if(uarmh) pline("Fortunately, you are wearing a helmet!"); */
 		}
 		bhitpos.x = u.ux;
 		bhitpos.y = u.uy;
@@ -1754,7 +1754,7 @@ struct obj *obj;
 
 	if(flooreffects(obj,bhitpos.x,bhitpos.y,"fall")) return(1); /* EN if(flooreffects(obj,bhitpos.x,bhitpos.y,"fall")) return(1); */ // TODO DE
 	if(u.dz > 0)
-		pline_The("gold hits the %s.", surface(bhitpos.x,bhitpos.y)); /* EN pline_The("gold hits the %s.", surface(bhitpos.x,bhitpos.y)); */ // TODO DE
+		pline_The("NOUN_GOLD VERB_HIT OBJECT ARTIKEL_BESTIMMTER %s.", surface(bhitpos.x,bhitpos.y)); /* EN pline_The("gold hits the %s.", surface(bhitpos.x,bhitpos.y)); */
 	place_object(obj,bhitpos.x,bhitpos.y);
 	if(*u.ushops) sellobj(obj, bhitpos.x, bhitpos.y);
 	stackobj(obj);
