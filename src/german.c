@@ -779,6 +779,7 @@ char* german(const char *line) {
 	verb_do_casus = 0; 
 	verb_tempus_modus = 0; 
 	verb_infinitiv = 0;
+	modifier_corpse = 0;
 
 	int pos=0;
 	char tmp[TBUFSZ];
@@ -931,6 +932,7 @@ char* german(const char *line) {
 			} else {
 				previous_token(line, tmp2, pos-strlen("MODIFIER_CORPSE"));
 				if ((!strcmp("PRONOMEN_POSSESSIV", tmp2)==0) &&
+						(!strcmp("PRONOMEN_DIESER", tmp2)==0) &&
 						(!strncmp("ARTIKEL_", tmp2, 8)==0) &&
 						(!strncmp("ADJEKTIV_", tmp2, 8)==0) &&
 						(corpse_numerus == n_singular)){

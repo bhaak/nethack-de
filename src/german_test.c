@@ -159,6 +159,12 @@ START_TEST (test_identified_spellbooks) {
 
 START_TEST (test_corpses) {
 	char *text[][2] = {
+		{"SUBJECT PRONOMEN_DIESER MODIFIER_CORPSE NOUN_SHOPKEEPER NOUN_CORPSE schmeckt schrecklich!",
+	   "Dieser Kadaver eines Ladenbesitzers schmeckt schrecklich!"},
+		{"Hier VERB_LIEGEN ARTIKEL_UNBESTIMMTER MODIFIER_CORPSE NOUN_ACID_BLOB NOUN_CORPSE.",
+		 "Hier liegt ein Kadaver eines Säureklumpens."},
+		{"ARTIKEL_BESTIMMTER NOUN_CORPSE",
+		 "Der Kadaver"},
 		{"ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED MODIFIER_CORPSE NOUN_YELLOW_MOLD NOUN_CORPSE",
 		 "Ein nicht verfluchter Kadaver eines Gelbschimmels"},
 		{"SUBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE ARTIKEL_BESTIMMTER NOUN_ORACLE NOUN_CORPSE schmeckt schrecklich!",
