@@ -612,6 +612,7 @@ START_TEST (test_german2meta) {
 										 {"Essensrationen", "NOUN_FOOD_RATIONs"},
 										 {"eine geheiligte Zauberbuch der Monsterbezauberung", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_CHARM_MONSTER"},
 										 {"Tränke der Verwirrung", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_CONFUSION"},
+										 {"Statuette einer Flechte", "NOUN_FIGURINE PARTIKEL_OF ARTIKEL_UNBESTIMMTER NOUN_LICHEN"},
 										 //{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
 	};
 
@@ -777,7 +778,7 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
   
-	if (0) {
+	if (1) {
   tcase_add_test(tc_core, test_satzklammer);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
@@ -808,8 +809,8 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_hoeren);
 	}
 	//tcase_add_test(tc_core, test_incomplete_sentences);
-  //tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_german2meta);
+  tcase_add_test(tc_core, test_corpses);
 
 
   return s;

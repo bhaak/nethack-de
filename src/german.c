@@ -260,6 +260,7 @@ void german2meta(const char *str, char *output)
 	int spellbook_gefunden = 0;
 	int scroll_gefunden = 0;
 	int leiche_gefunden = 0;
+	int statuette_gefunden = 0;
 	
 	if (WISH_DEBUG) printf("\ngerman2meta %s\n", str);
 	//printf("str: %s\n",str);
@@ -342,6 +343,8 @@ void german2meta(const char *str, char *output)
 				spellbook_gefunden = 1;
 			} else if (strncmp("NOUN_SCROLL", wort->typ, 11)==0) {
 				scroll_gefunden = 1;
+			} else if (strncmp("NOUN_FIGURINE", wort->typ, 13)==0) {
+				statuette_gefunden = 1;
 			}
 
 			if ((ring_gefunden ||
@@ -377,6 +380,10 @@ void german2meta(const char *str, char *output)
 			} else if (leiche_gefunden && strncmp("NOUN_", wort->typ, 5)==0) {
 				strcat(output, wort->typ);
 				strcat(output, " NOUN_CORPSE");
+				i = i + strlen(wort->wort);
+			} else if (statuette_gefunden && strcmp("ARTIKEL_UNBESTIMMTER", wort->typ)==0) {
+				strcat(output, "PARTIKEL_OF ");
+				strcat(output, wort->typ);
 				i = i + strlen(wort->wort);
 			} else {
 				strcat(output, wort->typ);
@@ -1006,7 +1013,7 @@ char* german(const char *line) {
 			if (subject_person==0) { subject_person = zweitePerson; }
 			if (subject_numerus==0) { subject_numerus = n_singular; } // change to players choice
 			append(output, get_verb(tmp, subject_person, subject_numerus, verb_tempus_modus));
-			c_artikel = grundform; // für prädikativen Gebrauch nötig "Das Pferd ist gesattelt."
+			c_artikel = grundform; // für prädikativen bzw adverbialen Gebrauch nötig "Das Pferd ist gesattelt."
 
 		} else if (strncmp("ADJEKTIV_", tmp, 9)==0) {
 #ifdef DEBUG
@@ -1107,6 +1114,9 @@ char* german(const char *line) {
 			else if (strcmp("MODIFIER_KONJUNKTIV_II", tmp)==0) { verb_tempus_modus = konjunktiv_ii; }
 			else if (strcmp("MODIFIER_VERB_INFINITIV", tmp)==0) { verb_infinitiv = 1; }
 			else if (strcmp("MODIFIER_EIGENNAME", tmp)==0) { }
+
+			else if (strcmp("MODIFIER_ADJEKTIV_ADVERBIAL", tmp)==0) { c_artikel = grundform; }
+
 			else {
 				fprintf(stderr, "Unbekannter Modifier %s\n",tmp);
 			}
