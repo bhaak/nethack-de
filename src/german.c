@@ -1119,6 +1119,8 @@ char* german(const char *line) {
 
 			else if (strcmp("MODIFIER_ADJEKTIV_ADVERBIAL", tmp)==0) { c_artikel = grundform; }
 
+			else if (strcmp("MODIFIER_PSEUDO_SUBJECT", tmp)==0) { subject_person = drittePerson; subject_numerus = n_singular; }
+
 			else {
 				fprintf(stderr, "Unbekannter Modifier %s\n",tmp);
 			}

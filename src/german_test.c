@@ -418,6 +418,8 @@ START_TEST (test_complete_sentences3) {
 
 START_TEST (test_complete_sentences4) {
 	char *text[][2] = {
+		{"MODIFIER_PSEUDO_SUBJECT Wonotobo VERB_WERDEN wütend!",
+		 "Wonotobo wird wütend!"},
 		{"Nur schwach VERB_HEAR SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT NOUN_JEMAND MODIFIER_VERB_INFINITIV VERB_YELL",
 		 "Nur schwach hörst du jemanden brüllen"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_SEIN und PRONOMEN_PERSONAL VERB_HAVE.",
