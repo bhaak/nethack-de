@@ -781,6 +781,15 @@ register const char *let,*word;
 	long cnt;
 	boolean prezero = FALSE;
 	long dummymask;
+#ifdef GERMAN
+	char fragewort[BUFSZ];
+
+	if (!strcmp(word, "schreiben")) {
+		Strcpy(fragewort, "Womit");
+	} else {
+		Strcpy(fragewort, "Was");
+	}
+#endif
 
 	if(*let == ALLOW_COUNT) let++, allowcnt = 1;
 #ifndef GOLDOBJ
@@ -791,7 +800,7 @@ register const char *let,*word;
 #endif
 
 	/* Equivalent of an "ugly check" for gold */
-	if (usegold && !strcmp(word, "eat") && /* EN if (usegold && !strcmp(word, "eat") && */ // TODO DE
+	if (usegold && !strcmp(word, "VERB_ESSEN") && /* EN if (usegold && !strcmp(word, "eat") && */
 	    (!metallivorous(youmonst.data)
 	     || youmonst.data == &mons[PM_RUST_MONSTER]))
 #ifndef GOLDOBJ
@@ -869,11 +878,11 @@ register const char *let,*word;
 		     otyp != BLINDFOLD && otyp != TOWEL && otyp != LENSES)))
 		|| (!strcmp(word, "wield") && /* EN || (!strcmp(word, "wield") && */ // TODO DE
 		    (otmp->oclass == TOOL_CLASS && !is_weptool(otmp)))
-		|| (!strcmp(word, "eat") && !is_edible(otmp)) /* EN || (!strcmp(word, "eat") && !is_edible(otmp)) */ // TODO DE
+		|| (!strcmp(word, "VERB_ESSEN") && !is_edible(otmp)) /* EN || (!strcmp(word, "eat") && !is_edible(otmp)) */
 		|| (!strcmp(word, "sacrifice") && /* EN || (!strcmp(word, "sacrifice") && */ // TODO DE
 		    (otyp != CORPSE &&
 		     otyp != AMULET_OF_YENDOR && otyp != FAKE_AMULET_OF_YENDOR))
-		|| (!strcmp(word, "write with") && /* EN || (!strcmp(word, "write with") && */ // TODO DE
+		|| (!strcmp(word, "schreiben") && /* EN || (!strcmp(word, "write with") && */
 		    (otmp->oclass == TOOL_CLASS &&
 		     otyp != MAGIC_MARKER && otyp != TOWEL))
 		|| (!strcmp(word, "tin") && /* EN || (!strcmp(word, "tin") && */ // TODO DE
@@ -954,9 +963,9 @@ register const char *let,*word;
 		cnt = 0;
 		if (allowcnt == 2) allowcnt = 1;  /* abort previous count */
 		if(!buf[0]) {
-			Sprintf(qbuf, "Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV %s? [*]", word); /* EN Sprintf(qbuf, "What do you want to %s? [*]", word); */
+			Sprintf(qbuf, "%s MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV %s? [*]", fragewort, word); /* EN Sprintf(qbuf, "What do you want to %s? [*]", word); */
 		} else {
-			Sprintf(qbuf, "Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV %s? [%s oder ?*]", /* EN Sprintf(qbuf, "What do you want to %s? [%s or ?*]", */
+			Sprintf(qbuf, "%s MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV %s? [%s oder ?*]", fragewort, /* EN Sprintf(qbuf, "What do you want to %s? [%s or ?*]", */
 				word, buf);
 		}
 #ifdef REDO
@@ -1758,7 +1767,7 @@ long* out_cnt;
 	*/
 	if (!invent && !(flags.perm_invent && !lets && !want_reply)) {
 #ifndef GOLDOBJ
-	    pline("Not carrying anything%s.", u.ugold ? " except gold" : ""); /* EN pline("Not carrying anything%s.", u.ugold ? " except gold" : ""); */ // TODO DE
+	    pline("Not carrying anything%s.", u.ugold ? " ausgenommen Gold" : ""); /* EN pline("Not carrying anything%s.", u.ugold ? " except gold" : ""); */ // TODO DE
 #else
 	    pline("Not carrying anything."); /* EN pline("Not carrying anything."); */ // TODO DE
 #endif

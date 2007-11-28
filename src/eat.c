@@ -242,7 +242,7 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 			You("choke, but recover your composure."); /* EN You("choke, but recover your composure."); */ // TODO DE
 			return;
 		}
-		You("stuff yourself and then vomit voluminously."); /* EN You("stuff yourself and then vomit voluminously."); */ // TODO DE
+		You("VERB_UEBERFRESSEN OBJECT PRONOMEN_PERSONAL und VERB_KOTZEN dann ausgiebig."); /* EN You("stuff yourself and then vomit voluminously."); */
 		morehungry(1000);	/* you just got *very* sick! */
 		nomovemsg = 0;
 		vomit();
@@ -754,8 +754,8 @@ register struct permonst *ptr;
 		debugpline("Trying to give telepathy");
 #endif
 		if(!(HTelepat & FROMOUTSIDE)) {
-			Du_fuehlst_dich(Hallucination ?  /* EN You_feel(Hallucination ? */
-			    "eins mit dem Universum." : /* EN "in touch with the cosmos." : */
+			You_feel(Hallucination ?  /* EN You_feel(Hallucination ? */
+			    "OBJECT PRONOMEN_PERSONAL eins mit dem Universum." : /* EN "in touch with the cosmos." : */
 			    "eine seltsame Steigerung OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_GEISTESSCHAERFE."); /* EN "a strange mental acuity."); */
 			HTelepat |= FROMOUTSIDE;
 			/* If blind, make sure monsters show up. */
@@ -1168,7 +1168,7 @@ no_opener:
 	tin.reqtime = tmp;
 	tin.usedtime = 0;
 	tin.tin = otmp;
-	set_occupation(opentin, "opening the tin", 0); /* EN set_occupation(opentin, "opening the tin", 0); */ // TODO DE
+	set_occupation(opentin, "die Dose zu öffnen", 0); /* EN set_occupation(opentin, "opening the tin", 0); */
 	return;
 }
 
@@ -1279,7 +1279,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 	} else if ((rotted > 5L || (rotted > 3L && rn2(5)))
 					&& !Sick_resistance) {
 		tp++;
-		Du_fuehlst_dich("%skrank.", (Sick) ? "sehr " : ""); /* EN You_feel("%ssick.", (Sick) ? "very " : ""); */
+		Dir_ist("%sschlecht.", (Sick) ? "furchtbar " : ""); /* EN You_feel("%ssick.", (Sick) ? "very " : ""); */
 		losehp(rnd(8), "NOUN_KADAVER", KILLED_BY_AN); /* EN losehp(rnd(8), "cadaver", KILLED_BY_AN); */
 	}
 
@@ -1776,7 +1776,7 @@ struct obj *otmp;
 	}
 	if (otmp->orotten || (cadaver && rotted > 3L)) {
 		/* Rotten */
-		Sprintf(buf, "%s like %s could be rotten! %s", /* EN Sprintf(buf, "%s like %s could be rotten! %s", */ // TODO DE
+		Sprintf(buf, "SUBJECT %s als %s könnte er be rotten! %s", /* EN Sprintf(buf, "%s like %s could be rotten! %s", */ // TODO DE
 			foodsmell, it_or_they, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
@@ -1790,13 +1790,13 @@ struct obj *otmp;
 	}
 	if (cadaver && !vegetarian(&mons[mnum]) &&
 	    !u.uconduct.unvegetarian && Role_if(PM_MONK)) {
-		Sprintf(buf, "%s unhealthy. %s", /* EN Sprintf(buf, "%s unhealthy. %s", */ // TODO DE
+		Sprintf(buf, "SUBJECT %s ungesund. %s", /* EN Sprintf(buf, "%s unhealthy. %s", */
 			foodsmell, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
 	}
 	if (cadaver && acidic(&mons[mnum]) && !Acid_resistance) {
-		Sprintf(buf, "%s rather acidic. %s", /* EN Sprintf(buf, "%s rather acidic. %s", */ // TODO DE
+		Sprintf(buf, "%s ziemlich sauer. %s", /* EN Sprintf(buf, "%s rather acidic. %s", */
 			foodsmell, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
@@ -1853,7 +1853,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 		pline("If you can't breathe air, how can you consume solids?"); /* EN pline("If you can't breathe air, how can you consume solids?"); */ // TODO DE
 		return 0;
 	}
-	if (!(otmp = floorfood("eat", 0))) return 0;
+	if (!(otmp = floorfood("VERB_ESSEN", 0))) return 0; /* EN if (!(otmp = floorfood("eat", 0))) return 0; */
 	if (check_capacity((char *)0)) return 0;
 
 	if (u.uedibility) {
@@ -2384,7 +2384,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 	register struct obj *otmp;
 	char qbuf[QBUFSZ];
 	char c;
-	boolean feeding = (!strcmp(verb, "VERB_EAT")); /* EN boolean feeding = (!strcmp(verb, "eat")); */
+	boolean feeding = (!strcmp(verb, "VERB_ESSEN")); /* EN boolean feeding = (!strcmp(verb, "eat")); */
 
 	/* if we can't touch floor objects then use invent food only */
 	if (!can_reach_floor() ||
@@ -2437,7 +2437,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 		(otmp->otyp==CORPSE && (corpsecheck == 1 || tinnable(otmp))) :
 		    feeding ? (otmp->oclass != COIN_CLASS && is_edible(otmp)) :
 						otmp->oclass==FOOD_CLASS) {
-			Sprintf(qbuf, "Hier %s %s; %s %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */
+			Sprintf(qbuf, "Hier %s %s; isst es %s %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */ // TODO DE
 				otense(otmp, "VERB_LIEGEN"), /* EN otense(otmp, "are"), */
 				doname(otmp), verb,
 				(otmp->quan == 1L) ? "es" : "eines"); /* EN (otmp->quan == 1L) ? "it" : "one"); */

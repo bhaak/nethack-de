@@ -398,14 +398,14 @@ attrcurse()			/* remove a random INTRINSIC ability */
 		}
 	case 3 : if (HPoison_resistance & INTRINSIC) {
 			HPoison_resistance &= ~INTRINSIC;
-			Du_fuehlst_dich("ein bisschen krank!"); /* EN You_feel("a little sick!"); */
+			Dir_ist("ein bisschen schlecht!"); /* EN You_feel("a little sick!"); */
 			break;
 		}
 	case 4 : if (HTelepat & INTRINSIC) {
 			HTelepat &= ~INTRINSIC;
 			if (Blind && !Blind_telepat)
 			    see_monsters();	/* Can't sense mons anymore! */
-			Your("senses fail!"); /* EN Your("senses fail!"); */ // TODO DE
+			Your("NOUN_SINNs VERB_SCHWINDEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL!"); /* EN Your("senses fail!"); */
 			break;
 		}
 	case 5 : if (HCold_resistance & INTRINSIC) {

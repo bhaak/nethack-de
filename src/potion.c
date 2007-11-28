@@ -659,7 +659,7 @@ peffects(otmp)
 	case POT_SICKNESS:
 		pline("Wuah!  Das Zeug schmeckt giftig."); /* EN pline("Yecch!  This stuff tastes like poison."); */
 		if (otmp->blessed) {
-		    pline("(But in fact it was mildly stale %s.)", /* EN pline("(But in fact it was mildly stale %s.)", */ // TODO DE
+		    pline("(Aber in Wirklichkeit war es leicht abgestandener %s.)", /* EN pline("(But in fact it was mildly stale %s.)", */ // TODO DE
 			  fruitname(TRUE));
 		    if (!Role_if(PM_HEALER)) {
 			if (otmp->corpsenm)
@@ -1057,7 +1057,7 @@ boolean your_fault;
 			mon->mhp /= 2;
 		if (mon->mhp > mon->mhpmax) mon->mhp = mon->mhpmax;
 		if (canseemon(mon))
-		    pline("%s looks rather ill.", Monnam(mon)); /* EN pline("%s looks rather ill.", Monnam(mon)); */ // TODO DE
+		    pline("SUBJECT %s VERB_AUSSEHEN ziemlich krank SATZKLAMMER.", Monnam(mon)); /* EN pline("%s looks rather ill.", Monnam(mon)); */
 		break;
 	case POT_CONFUSION:
 	case POT_BOOZE:

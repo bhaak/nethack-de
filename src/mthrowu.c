@@ -54,9 +54,9 @@ const char *name;	/* if null, then format `obj' */
 	} else {
 	    knm = name;
 	    /* [perhaps ought to check for plural here to] */
-	    if (!strncmpi(name, "the ", 4) || /* EN if (!strncmpi(name, "the ", 4) || */ // TODO DE
-		    !strncmpi(name, "an ", 3) || /* EN !strncmpi(name, "an ", 3) || */ // TODO DE
-		    !strncmpi(name, "a ", 2)) kprefix = KILLED_BY; /* EN !strncmpi(name, "a ", 2)) kprefix = KILLED_BY; */ // TODO DE
+	    if (!strncmpi(name, "ARTIKEL_BESTIMMTER ", 19) || /* EN if (!strncmpi(name, "the ", 4) || */
+		    !strncmpi(name, "ARTIKEL_UNBESTIMMTER ", 21) || /* EN !strncmpi(name, "an ", 3) || */
+		    !strncmpi(name, "ARTIKEL_UNBESTIMMTER ", 21)) kprefix = KILLED_BY; /* EN !strncmpi(name, "a ", 2)) kprefix = KILLED_BY; */
 	}
 	onm = (obj && obj_is_pname(obj)) ? the(name) :
 			    (obj && obj->quan > 1L) ? name : an(name);

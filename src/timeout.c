@@ -44,8 +44,8 @@ static NEARDATA const char * const vomiting_texts[] = {
 	"are feeling mildly nauseated.",	/* 14 */ /* EN "are feeling mildly nauseated.",	*/ // TODO DE
 	"feel slightly confused.",		/* 11 */ /* EN "feel slightly confused.",		*/ // TODO DE
 	"can't seem to think straight.",	/* 8 */ /* EN "can't seem to think straight.",	*/ // TODO DE
-	"feel incredibly sick.",		/* 5 */ /* EN "feel incredibly sick.",		*/ // TODO DE
-	"suddenly vomit!"			/* 2 */ /* EN "suddenly vomit!"			*/ // TODO DE
+	"KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN unglaublich übel.",		/* 5 */ /* EN "feel incredibly sick.",		*/
+	"Plötzlich SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL!"			/* 2 */ /* EN "suddenly vomit!"			*/
 };
 
 STATIC_OVL void
@@ -55,7 +55,7 @@ vomiting_dialogue()
 
 	if ((((Vomiting & TIMEOUT) % 3L) == 2) && (i >= 0)
 	    && (i < SIZE(vomiting_texts)))
-		You(vomiting_texts[SIZE(vomiting_texts) - i - 1]);
+		pline(vomiting_texts[SIZE(vomiting_texts) - i - 1]);
 
 	switch ((int) i) {
 	case 0:
@@ -377,7 +377,7 @@ boolean wakeup_msg;
 	}
 	/* early wakeup from combat won't be possible until next monster turn */
 	u.usleep = monstermoves;
-	nomovemsg = wakeup_msg ? "You wake up." : You_can_move_again; /* EN nomovemsg = wakeup_msg ? "You wake up." : You_can_move_again; */ // TODO DE
+	nomovemsg = wakeup_msg ? "SUBJECT PRONOMEN_PERSONAL VERB_AUFWACHEN SATZKLAMMER." : You_can_move_again; /* EN nomovemsg = wakeup_msg ? "You wake up." : You_can_move_again; */
 }
 
 /* Attach an egg hatch timeout to the given egg. */

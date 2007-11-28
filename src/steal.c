@@ -19,7 +19,7 @@ register struct obj *otmp;
 #endif
 		(otmp == uarmf) ? "NOUN_BOOTSs" : /* EN (otmp == uarmf) ? "boots" : */
 		(otmp == uarms) ? "NOUN_SHIELD" : /* EN (otmp == uarms) ? "shield" : */
-		(otmp == uarmg) ? "NOUN_GLOVEs" : /* EN (otmp == uarmg) ? "gloves" : */
+		(otmp == uarmg) ? "NOUN_GLOVESs" : /* EN (otmp == uarmg) ? "gloves" : */
 		(otmp == uarmc) ? cloak_simple_name(otmp) :
 		(otmp == uarmh) ? "NOUN_HELMET" : "NOUN_ARMOR"); /* EN (otmp == uarmh) ? "helmet" : "armor"); */
 }
@@ -365,17 +365,19 @@ gotobj:
 			if (multi < 0 && is_fainted()) unmul((char *)0);
 			slowly = (armordelay >= 1 || multi < 0);
 			if(flags.female)
-			    pline("%s charms you.  You gladly %s your %s.", /* EN pline("%s charms you.  You gladly %s your %s.", */ // TODO DE
-				  !seen ? "She" : Monnam(mtmp), /* EN !seen ? "She" : Monnam(mtmp), */ // TODO DE
-				  curssv ? "let her take" : /* EN curssv ? "let her take" : */ // TODO DE
-				  slowly ? "start removing" : "hand over", /* EN slowly ? "start removing" : "hand over", */ // TODO DE
-				  equipname(otmp));
+			    pline("SUBJECT %s VERB_BEZIRZEN OBJECT PRONOMEN_PERSONAL.  NEUER_SATZ SUBJECT PRONOMEN_PERSONAL %s willig OBJECT PRONOMEN_POSSESSIV %s%s.", /* EN pline("%s charms you.  You gladly %s your %s.", */
+				  !seen ? "MODIFIER_PSEUDO_SUBJECT Sie" : Monnam(mtmp), /* EN !seen ? "She" : Monnam(mtmp), */
+				  curssv ? "VERB_LASSEN sie" : /* EN curssv ? "let her take" : */
+				  slowly ? "VERB_BEGINNEN" : "VERB_UEBERGEBEN", /* EN slowly ? "start removing" : "hand over", */
+				  equipname(otmp), /* EN equipname(otmp)); */
+					curssv ? " nehmen" : slowly ? " abzulegen" : ""); /* EN */
 			else
-					pline("%s seduces you and %s off your %s.", /* EN pline("%s seduces you and %s off your %s.", */ // TODO DE
-				  !seen ? "She" : Adjmonnam(mtmp, "beautiful"), /* EN !seen ? "She" : Adjmonnam(mtmp, "beautiful"), */ // TODO DE
-				  curssv ? "helps you to take" : /* EN curssv ? "helps you to take" : */ // TODO DE
-				  slowly ? "you start taking" : "you take", /* EN slowly ? "you start taking" : "you take", */ // TODO DE
-				  equipname(otmp));
+					pline("SUBJECT %s VERB_SEDUCE OBJECT PRONOMEN_PERSONAL und %s NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV %s%s SATZKLAMMER.", /* EN pline("%s seduces you and %s off your %s.", */
+				  !seen ? "MODIFIER_PSEUDO_SUBJECT Sie" : Adjmonnam(mtmp, "ADJEKTIV_SCHOEN"), /* EN !seen ? "She" : Adjmonnam(mtmp, "beautiful"), */
+				  curssv ? "VERB_HELFEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL" : /* EN curssv ? "helps you to take" : */
+				  slowly ? "NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_BEGINNEN" : "NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_AUSZIEHEN", /* EN slowly ? "you start taking" : "you take", */
+				  equipname(otmp), /* EN equipname(otmp)); */
+					(curssv || slowly) ? " auszuziehen" : ""); /* EN */
 			named++;
 			/* the following is to set multi for later on */
 			nomul(-armordelay);
@@ -410,7 +412,7 @@ gotobj:
 	mtmp->mavenge = 1;
 
 	freeinv(otmp);
-	pline("%s stole %s.", named ? "She" : Monnam(mtmp), doname(otmp)); /* EN pline("%s stole %s.", named ? "She" : Monnam(mtmp), doname(otmp)); */ // TODO DE
+	pline("SUBJECT %s VERB_HABEN OBJECT %s gestohlen.", named ? "MODIFIER_PSEUDO_SUBJECT Sie" : Monnam(mtmp), doname(otmp)); /* EN pline("%s stole %s.", named ? "She" : Monnam(mtmp), doname(otmp)); */
 	could_petrify = (otmp->otyp == CORPSE &&
 			 touch_petrifies(&mons[otmp->corpsenm]));
 	(void) mpickobj(mtmp,otmp);	/* may free otmp */

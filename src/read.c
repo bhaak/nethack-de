@@ -276,17 +276,17 @@ int curse_bless;
 
 	    /* destruction depends on current state, not adjustment */
 	    if (obj->spe > rn2(7) || obj->spe <= -5) {
-		Your("%s %s momentarily, then %s!", /* EN Your("%s %s momentarily, then %s!", */ // TODO DE
-		     xname(obj), otense(obj,"pulsate"), otense(obj,"explode")); /* EN xname(obj), otense(obj,"pulsate"), otense(obj,"explode")); */ // TODO DE
+		Your("%s %s kurz, dann %s er!", /* EN Your("%s %s momentarily, then %s!", */
+		     xname(obj), otense(obj,"VERB_PULSATE"), otense(obj,"VERB_EXPLODIEREN")); /* EN xname(obj), otense(obj,"pulsate"), otense(obj,"explode")); */
 		if (is_on) Ring_gone(obj);
 		s = rnd(3 * abs(obj->spe));	/* amount of damage */
 		useup(obj);
-		losehp(s, "exploding ring", KILLED_BY_AN); /* EN losehp(s, "exploding ring", KILLED_BY_AN); */ // TODO DE
+		losehp(s, "ADJEKTIV_EXPLODIEREND NOUN_RING", KILLED_BY_AN); /* EN losehp(s, "exploding ring", KILLED_BY_AN); */
 	    } else {
 		long mask = is_on ? (obj == uleft ? LEFT_RING :
 				     RIGHT_RING) : 0L;
-		Your("%s spins %sclockwise for a moment.", /* EN Your("%s spins %sclockwise for a moment.", */ // TODO DE
-		     xname(obj), s < 0 ? "counter" : ""); /* EN xname(obj), s < 0 ? "counter" : ""); */ // TODO DE
+		Your("%s dreht sich einen Moment lang %s Uhrzeigersinn.", /* EN Your("%s spins %sclockwise for a moment.", */
+		     xname(obj), s < 0 ? "gegen den" : "im"); /* EN xname(obj), s < 0 ? "counter" : ""); */
 		/* cause attributes and/or properties to be updated */
 		if (is_on) Ring_off(obj);
 		obj->spe += s;	/* update the ring while it's off */
@@ -1255,7 +1255,7 @@ register struct obj	*sobj;
 			dmg = dmgval(otmp2, &youmonst) * otmp2->quan;
 			if (uarmh && !sobj->cursed) {
 			    if(is_metallic(uarmh)) {
-				pline("Fortunately, you are wearing a hard helmet."); /* EN pline("Fortunately, you are wearing a hard helmet."); */ // TODO DE
+				pline("SUBJECT Glücklicherweise VERB_TRAGEN PRONOMEN_PERSONAL einen schützenden Helm."); /* EN pline("Fortunately, you are wearing a hard helmet."); */
 				if (dmg > 2) dmg = 2;
 			    } else if (flags.verbose) {
 				Your("%s does not protect you.", /* EN Your("%s does not protect you.", */ // TODO DE
@@ -1277,7 +1277,7 @@ register struct obj	*sobj;
 	case SCR_PUNISHMENT:
 		known = TRUE;
 		if(confused || sobj->blessed) {
-			You_feel("guilty."); /* EN You_feel("guilty."); */ // TODO DE
+			Du_fuehlst_dich("guilty."); /* EN You_feel("guilty."); */ // TODO DE
 			break;
 		}
 		punish(sobj);
@@ -1295,7 +1295,7 @@ register struct obj	*sobj;
 		    return 0;
 		}
 		if (!cansee(cc.x, cc.y) || distu(cc.x, cc.y) >= 32) {
-		    You("smell rotten eggs."); /* EN You("smell rotten eggs."); */ // TODO DE
+		    You("VERB_SMELL verdorbene Eier."); /* EN You("smell rotten eggs."); */
 		    return 0;
 		}
 		(void) create_gas_cloud(cc.x, cc.y, 3+bcsign(sobj),
@@ -1313,9 +1313,9 @@ wand_explode(obj)
 register struct obj *obj;
 {
     obj->in_use = TRUE;	/* in case losehp() is fatal */
-    Your("%s vibrates violently, and explodes!",xname(obj)); /* EN Your("%s vibrates violently, and explodes!",xname(obj)); */ // TODO DE
+    Your("%s VERB_VIBRIEREN gewaltig und VERB_EXPLODIEREN!",xname(obj)); /* EN Your("%s vibrates violently, and explodes!",xname(obj)); */
     nhbell();
-    losehp(rnd(2*(u.uhpmax+1)/3), "exploding wand", KILLED_BY_AN); /* EN losehp(rnd(2*(u.uhpmax+1)/3), "exploding wand", KILLED_BY_AN); */ // TODO DE
+    losehp(rnd(2*(u.uhpmax+1)/3), "ADJEKTIV_EXPLODIEREND NOUN_WAND", KILLED_BY_AN); /* EN losehp(rnd(2*(u.uhpmax+1)/3), "exploding wand", KILLED_BY_AN); */
     useup(obj);
     exercise(A_STR, FALSE);
 }
@@ -1481,7 +1481,7 @@ do_class_genocide()
 		if (!goodcnt && class != mons[urole.malenum].mlet &&
 				class != mons[urace.malenum].mlet) {
 			if (gonecnt)
-	pline("All such monsters are already nonexistent."); /* EN pline("All such monsters are already nonexistent."); */ // TODO DE
+	pline("Alle diese Monster gibt es schon nicht mehr."); /* EN pline("All such monsters are already nonexistent."); */
 			else if (immunecnt ||
 				(buf[0] == DEF_INVISIBLE && buf[1] == '\0'))
 	You("aren't permitted to genocide such monsters."); /* EN You("aren't permitted to genocide such monsters."); */ // TODO DE
@@ -1523,7 +1523,7 @@ do_class_genocide()
 			    reset_rndmonst(i);
 			    kill_genocided_monsters();
 			    update_inventory();		/* eggs & tins */
-			    pline("Wiped out all %s.", nam); /* EN pline("Wiped out all %s.", nam); */ // TODO DE
+			    pline("Alle %s ausgelöscht.", nam); /* EN pline("Wiped out all %s.", nam); */
 			    if (Upolyd && i == u.umonnum) {
 				u.mh = -1;
 				if (Unchanging) {
@@ -1743,7 +1743,7 @@ register struct obj	*sobj;
 	/* KMH -- Punishment is still okay when you are riding */
 	You("are being punished for your misbehavior/Fehlverhalten/Missetaten!"); /* EN You("are being punished for your misbehavior!"); */ // TODO DE
 	if(Punished){
-		Your("iron ball gets heavier."); /* EN Your("iron ball gets heavier."); */ // TODO DE
+		Your("NOUN_IRON_BALL wird schwerer."); /* EN Your("iron ball gets heavier."); */
 		uball->owt += 160 * (1 + sobj->cursed);
 		return;
 	}
@@ -1848,7 +1848,7 @@ create_particular()
 		if (which >= LOW_PM) break;		/* got one */
 	    }
 	    /* no good; try again... */
-	    pline("I've never heard of such monsters."); /* EN pline("I've never heard of such monsters."); */ // TODO DE
+	    pline("Ich habe noch nie von solchen Monstern gehört."); /* EN pline("I've never heard of such monsters."); */
 	} while (++tries < 5);
 
 	if (tries == 5) {

@@ -25,8 +25,8 @@ static NEARDATA const char c_armor[]  = "NOUN_ARMOR",
 			   c_shirt[]  = "NOUN_SHIRT",
 #endif
 			   c_cloak[]  = "NOUN_CLOAK",
-			   c_gloves[] = "NOUN_GLOVES",
-			   c_boots[]  = "NOUN_BOOTS",
+			   c_gloves[] = "NOUN_GLOVESs",
+			   c_boots[]  = "NOUN_BOOTSs",
 			   c_helmet[] = "NOUN_HELMET",
 			   c_shield[] = "NOUN_SHIELD",
 			   c_weapon[] = "NOUN_WEAPON",
@@ -62,8 +62,7 @@ off_msg(otmp)
 register struct obj *otmp;
 {
 	if(flags.verbose)
-		// TODO
-	    You("were wearing %s.", doname(otmp)); /* EN You("were wearing %s.", doname(otmp)); */
+	    You("were wearing %s.", doname(otmp)); /* EN You("were wearing %s.", doname(otmp)); */ // TODO DE
 }
 
 /* for items that involve no delay */
@@ -111,15 +110,14 @@ Boots_on()
 		if (!oldprop && !(HFast & TIMEOUT)) {
 			makeknown(uarmf->otyp);
 			// TODO
-			You_feel("yourself speed up%s.",
-				(oldprop || HFast) ? " a bit more" : "");
+			You_feel("yourself speed up%s.", /* EN You_feel("yourself speed up%s.", */ // TODO DE
+				(oldprop || HFast) ? " a bit more" : ""); /* EN (oldprop || HFast) ? " a bit more" : ""); */ // TODO DE
 		}
 		break;
 	case ELVEN_BOOTS:
 		if (!oldprop && !HStealth && !BStealth) {
 			makeknown(uarmf->otyp);
-			// TODO
-			You("walk very quietly.");
+			You("walk very quietly."); /* EN You("walk very quietly."); */ // TODO DE
 		}
 		break;
 	case FUMBLE_BOOTS:
@@ -153,9 +151,8 @@ Boots_off()
 	case SPEED_BOOTS:
 		if (!Very_fast && !cancelled_don) {
 			makeknown(otyp);
-			// TODO
-			You_feel("yourself slow down%s.",
-				Fast ? " a bit" : "");
+			You_feel("yourself slow down%s.", /* EN You_feel("yourself slow down%s.", */ // TODO DE
+				Fast ? " a bit" : ""); /* EN Fast ? " a bit" : ""); */ // TODO DE
 		}
 		break;
 	case WATER_WALKING_BOOTS:
@@ -169,7 +166,6 @@ Boots_off()
 	case ELVEN_BOOTS:
 		if (!oldprop && !HStealth && !BStealth && !cancelled_don) {
 			makeknown(otyp);
-			// TODO
 			You("VERB_MACHEN vielleicht einen Lärm!"); /* EN You("sure are noisy."); */
 		}
 		break;
@@ -800,8 +796,8 @@ boolean gone;
 	case RIN_INVISIBILITY:
 		if (!Invis && !BInvis && !Blind) {
 		    newsym(u.ux,u.uy);
-		    Your("body seems to unfade%s.", // TODO
-			 See_invisible ? " completely" : "..");
+		    Your("body seems to unfade%s.", /* EN Your("body seems to unfade%s.", */ // TODO DE
+			 See_invisible ? " completely" : ".."); /* EN See_invisible ? " completely" : ".."); */ // TODO DE
 		    makeknown(RIN_INVISIBILITY);
 		}
 		break;
@@ -997,9 +993,9 @@ dotakeoff()
 	if (!armorpieces) {
 	     /* assert( GRAY_DRAGON_SCALES > YELLOW_DRAGON_SCALE_MAIL ); */
 		if (uskin)
-			pline_The("%s merged with your skin!", //TODO
+			pline_The("%s merged with your skin!", /* EN pline_The("%s merged with your skin!", */ // TODO DE
 			      uskin->otyp >= GRAY_DRAGON_SCALES ?
-				"dragon scales are" : "dragon scale mail is");
+				"dragon scales are" : "dragon scale mail is"); /* EN "dragon scales are" : "dragon scale mail is");*/ // TODO DE
 		else
 		    pline("Not wearing any armor.%s", (iflags.cmdassist && 
 				(uleft || uright || uamul || ublindf)) ?
@@ -1007,7 +1003,7 @@ dotakeoff()
 		return 0;
 	}
 	if (armorpieces > 1)
-		otmp = getobj(clothes, "take off");
+		otmp = getobj(clothes, "take off"); /* EN otmp = getobj(clothes, "take off");*/ // TODO DE
 	if (otmp == 0) return(0);
 	if (!(otmp->owornmask & W_ARMOR)) {
 		You("VERB_TRAGEN das nicht."); /* EN You("are not wearing that."); */
@@ -1047,17 +1043,16 @@ doremring()
 	MOREACC(ublindf);
 
 	if(!Accessories) {
-		// TODO
 		pline("SUBJECT PRONOMEN_PERSONAL VERB_TRAGEN keine Accessoires.%s", (iflags.cmdassist && /* EN pline("Not wearing any accessories.%s", (iflags.cmdassist && */
 			    (uarm || uarmc ||
 #ifdef TOURIST
 			     uarmu ||
 #endif
 			     uarms || uarmh || uarmg || uarmf)) ?
-		      "  Use 'T' command to take off armor." : ""); // TODO
+		      "  Use 'T' command to take off armor." : ""); /* EN "  Use 'T' command to take off armor." : "");*/ // TODO DE
 		return(0);
 	}
-	if (Accessories != 1) otmp = getobj(accessories, "remove");
+	if (Accessories != 1) otmp = getobj(accessories, "remove"); /* EN if (Accessories != 1) otmp = getobj(accessories, "remove");*/ // TODO DE
 	if(!otmp) return(0);
 	if(!(otmp->owornmask & (W_RING | W_AMUL | W_TOOL))) {
 		You("VERB_TRAGEN das nicht."); /* EN You("are not wearing that."); */
@@ -1115,19 +1110,19 @@ register struct obj *otmp;
 	if(delay) {
 		nomul(delay);
 		if (is_helmet(otmp)) {
-			nomovemsg = "You finish taking off your helmet."; // TODO
+			nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT PRONOMEN_POSSESSIV NOUN_HELMET ausgezogen."; /* EN nomovemsg = "You finish taking off your helmet.";*/
 			afternmv = Helmet_off;
 		     }
 		else if (is_gloves(otmp)) {
-			nomovemsg = "You finish taking off your gloves.";
+			nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT PRONOMEN_POSSESSIV NOUN_GLOVESs ausgezogen."; /* EN nomovemsg = "You finish taking off your gloves.";*/
 			afternmv = Gloves_off;
 		     }
 		else if (is_boots(otmp)) {
-			nomovemsg = "You finish taking off your boots.";
+			nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT PRONOMEN_POSSESSIV NOUN_BOOTSs ausgezogen."; /* EN nomovemsg = "You finish taking off your boots.";*/
 			afternmv = Boots_off;
 		     }
 		else {
-			nomovemsg = "You finish taking off your suit.";
+			nomovemsg = "You finish taking off your suit."; /* EN nomovemsg = "You finish taking off your suit.";*/ // TODO DE
 			afternmv = Armor_off;
 		}
 	} else {
@@ -1170,7 +1165,7 @@ STATIC_OVL void
 already_wearing2(cc1, cc2)
 const char *cc1, *cc2;
 {
-	You("VERB_KOENNEN nicht OBJECT %s tragen, weil SUBJECT_IM_SATZ PRONOMEN_PERSONAL schon KASUS_AKKUSATIV %s VERB_TRAGEN.", cc1, cc2); // TODO /* EN You_cant("wear %s because you're wearing %s there already.", cc1, cc2); */
+	You("VERB_KOENNEN OBJECT PRONOMEN_KEIN %s tragen, weil NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL schon OBJECT %s VERB_TRAGEN.", cc1, cc2); /* EN You_cant("wear %s because you're wearing %s there already.", cc1, cc2); */
 }
 
 /*
@@ -1212,7 +1207,7 @@ boolean noisy;
 #endif
 	    )) {
 	if (noisy)
-	    You("cannot do that while holding your %s.",
+	    You("cannot do that while holding your %s.", /* EN You("cannot do that while holding your %s.",*/ // TODO DE
 		is_sword(uwep) ? c_sword : c_weapon);
 	return 0;
     }
@@ -1224,7 +1219,7 @@ boolean noisy;
 	} else if (Upolyd && has_horns(youmonst.data) && !is_flimsy(otmp)) {
 	    /* (flimsy exception matches polyself handling) */
 	    if (noisy)
-		pline_The("%s VERB_GEHEN nicht über KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_HORN%s.", /* EN pline_The("%s won't fit over your horn%s.", */
+		pline_The("%s VERB_GEHEN nicht über OBJECT PRONOMEN_POSSESSIV NOUN_HORN%s.", /* EN pline_The("%s won't fit over your horn%s.", */
 			  c_helmet, plur(num_horns(youmonst.data)));
 	    err++;
 	} else
@@ -1313,7 +1308,7 @@ boolean noisy;
 	/* getobj can't do this after setting its allow_all flag; that
 	   happens if you have armor for slots that are covered up or
 	   extra armor for slots that are filled */
-	if (noisy) silly_thing("wear", otmp);
+	if (noisy) silly_thing("wear", otmp); /* EN if (noisy) silly_thing("wear", otmp);*/ // TODO DE
 	err++;
     }
 /* Unnecessary since now only weapons and special items like pick-axes get
@@ -1342,7 +1337,7 @@ dowear()
 		return(0);
 	}
 
-	otmp = getobj(clothes, "wear");
+	otmp = getobj(clothes, "wear"); /* EN otmp = getobj(clothes, "wear");*/ // TODO DE
 	if(!otmp) return(0);
 
 	if (!canwearobj(otmp,&mask,TRUE)) return(0);
@@ -1353,11 +1348,9 @@ dowear()
 	if (otmp->otyp == HELM_OF_OPPOSITE_ALIGNMENT &&
 			qstart_level.dnum == u.uz.dnum) {	/* in quest */
 		if (u.ualignbase[A_CURRENT] == u.ualignbase[A_ORIGINAL])
-			// TODO
-			You("narrowly avoid losing all chance at your goal."); /* EN You("narrowly avoid losing all chance at your goal."); */
+			You("narrowly avoid losing all chance at your goal."); /* EN You("narrowly avoid losing all chance at your goal."); */ // TODO DE
 		else	/* converted */
-			// TODO
-			You("are suddenly overcome with shame and change your mind."); /* EN You("are suddenly overcome with shame and change your mind."); */
+			You("are suddenly overcome with shame and change your mind."); /* EN You("are suddenly overcome with shame and change your mind."); */ // TODO DE
 		u.ublessed = 0; /* lose your god's protection */
 		makeknown(otmp->otyp);
 		flags.botl = 1;
@@ -1397,12 +1390,12 @@ doputon()
 
 	if(uleft && uright && uamul && ublindf) {
 		Your("%s%s sind voll und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_TRAGEN schon OBJECT ARTIKEL_UNBESTIMMTER NOUN_AMULET und KASUS_AKKUSATIV %s.", /* EN Your("%s%s are full, and you're already wearing an amulet and %s.", */
-			humanoid(youmonst.data) ? "ring-" : "",
-				 makeplural(body_part(FINGER)), // TODO
+			humanoid(youmonst.data) ? "ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
+				 makeplural(body_part(FINGER)),
 			ublindf->otyp==LENSES ? "NOUN_LENSESs" : "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD"); /* EN ublindf->otyp==LENSES ? "some lense" : "a blindfold"); */
 		return(0);
 	}
-	otmp = getobj(accessories, "put on");
+	otmp = getobj(accessories, "put on"); /* EN otmp = getobj(accessories, "put on");*/ // TODO DE
 	if(!otmp) return(0);
 	if(otmp->owornmask & (W_RING | W_AMUL | W_TOOL)) {
 		already_wearing(c_that_);
@@ -1424,8 +1417,8 @@ doputon()
 			return(0);
 		}
 		if(uleft && uright){
-			There("are no more %s%s to fill.", // TODO
-				humanoid(youmonst.data) ? "ring-" : "",
+			There("are no more %s%s to fill.", /* EN There("are no more %s%s to fill.",*/ // TODO DE
+				humanoid(youmonst.data) ? "ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
 				makeplural(body_part(FINGER)));
 			return(0);
 		}
@@ -1435,8 +1428,8 @@ doputon()
 			char qbuf[QBUFSZ];
 			char answer;
 
-			Sprintf(qbuf, "Which %s%s, Right or Left?", // TODO
-				humanoid(youmonst.data) ? "ring-" : "",
+			Sprintf(qbuf, "Which %s%s, Right or Left?", /* EN Sprintf(qbuf, "Which %s%s, Right or Left?", */ // TODO DE
+				humanoid(youmonst.data) ? "ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
 				body_part(FINGER));
 			if(!(answer = yn_function(qbuf, "rl", '\0')))
 				return(0);
@@ -1453,18 +1446,17 @@ doputon()
 		} while(!mask);
 		if (uarmg && uarmg->cursed) {
 			uarmg->bknown = TRUE;
-			// TODO
-		    You("cannot remove your gloves to put on the ring.");
+		    You("cannot remove your gloves to put on the ring."); /* EN You("cannot remove your gloves to put on the ring.");*/ // TODO DE
 			return(0);
 		}
 		if (welded(uwep) && bimanual(uwep)) {
 			/* welded will set bknown */
-	    You("cannot free your weapon hands to put on the ring.");
+	    You("cannot free your weapon hands to put on the ring."); /* EN You("cannot free your weapon hands to put on the ring.");*/ // TODO DE
 			return(0);
 		}
 		if (welded(uwep) && mask==RIGHT_RING) {
 			/* welded will set bknown */
-	    You("cannot free your weapon hand to put on the ring.");
+	    You("cannot free your weapon hand to put on the ring."); /* EN You("cannot free your weapon hand to put on the ring.");*/ // TODO DE
 			return(0);
 		}
 		if (otmp->oartifact && !touch_artifact(otmp, &youmonst))
@@ -1492,13 +1484,12 @@ doputon()
 					body_part(FACE));
 			else if (ublindf->otyp == BLINDFOLD) {
 				if (otmp->otyp == LENSES)
-					already_wearing2("NOUN_LENSESs", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD"); /* EN already_wearing2("lenses", "a blindfold"); */
+					already_wearing2("NOUN_LENSESs", "NOUN_BLINDFOLD"); /* EN already_wearing2("lenses", "a blindfold"); */
 				else
-					already_wearing("ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD");
-									/* EN already_wearing("a blindfold"); */
+					already_wearing("ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD"); /* EN already_wearing("a blindfold"); */
 			} else if (ublindf->otyp == LENSES) {
 				if (otmp->otyp == BLINDFOLD)
-					already_wearing2("ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD", "NOUN_LENSESs"); /* EN already_wearing2("a blindfold", "some lenses"); */
+					already_wearing2("NOUN_BLINDFOLD", "NOUN_LENSESs"); /* EN already_wearing2("a blindfold", "some lenses"); */
 				else
 					already_wearing("NOUN_LENSESs"); /* EN already_wearing("some lenses"); */
 			} else
@@ -1705,17 +1696,14 @@ register struct obj *otmp;
 	    }
 	    why = 0;	/* the item which prevents ring removal */
 	    if (welded(uwep) && (otmp == uright || bimanual(uwep))) {
-				// TODO 
-		Sprintf(buf, "free a weapon %s", body_part(HAND));
+		Sprintf(buf, "free a weapon %s", body_part(HAND)); /* EN Sprintf(buf, "free a weapon %s", body_part(HAND));*/ // TODO DE
 		why = uwep;
 	    } else if (uarmg && uarmg->cursed) {
-				// TODO 
-		Sprintf(buf, "take off your %s", c_gloves);
+		Sprintf(buf, "take off your %s", c_gloves); /* EN Sprintf(buf, "take off your %s", c_gloves);*/ // TODO DE
 		why = uarmg;
 	    }
 	    if (why) {
-				// TODO 
-		You("cannot %s to remove the ring.", buf); /* EN You("cannot %s to remove the ring.", buf); */
+		You("cannot %s to remove the ring.", buf); /* EN You("cannot %s to remove the ring.", buf); */ // TODO DE
 		why->bknown = TRUE;
 		return 0;
 	    }
@@ -1723,14 +1711,12 @@ register struct obj *otmp;
 	/* special glove checks */
 	if (otmp == uarmg) {
 	    if (welded(uwep)) {
-				// TODO 
-		You("are unable to take off your %s while wielding that %s.",
+		You("are unable to take off your %s while wielding that %s.", /* EN You("are unable to take off your %s while wielding that %s.",*/ // TODO DE
 		    c_gloves, is_sword(uwep) ? c_sword : c_weapon);
 		uwep->bknown = TRUE;
 		return 0;
 	    } else if (Glib) {
-				// TODO 
-		You_cant("take off the slippery %s with your slippery %s.",
+		You_cant("take off the slippery %s with your slippery %s.", /* EN You_cant("take off the slippery %s with your slippery %s.",*/ // TODO DE
 			 c_gloves, makeplural(body_part(FINGER)));
 		return 0;
 	    }
@@ -1738,12 +1724,11 @@ register struct obj *otmp;
 	/* special boot checks */
 	if (otmp == uarmf) {
 	    if (u.utrap && u.utraptype == TT_BEARTRAP) {
-				// TODO 
 		pline_The("NOUN_BEARTRAP VERB_HINDERN OBJECT PRONOMEN_PERSONAL daran, KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s rauszuziehen.", /* EN pline_The("bear trap prevents you from pulling your %s out.", */
 			  body_part(FOOT));
 		return 0;
 	    } else if (u.utrap && u.utraptype == TT_INFLOOR) {
-		You("VERB_STECKEN in KASUS_DATIV ARTIKEL_BESTIMMTER %s fest und VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s nicht rausziehen.", /* EN You("are stuck in the %s, and cannot pull your %s out.", */
+		You("VERB_STECKEN _in_ OBJECT KASUS_DATIV ARTIKEL_BESTIMMTER %s fest und VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s nicht rausziehen.", /* EN You("are stuck in the %s, and cannot pull your %s out.", */
 		    surface(u.ux, u.uy), makeplural(body_part(FOOT)));
 		return 0;
 	    }
@@ -1756,25 +1741,21 @@ register struct obj *otmp;
 		) {
 	    why = 0;	/* the item which prevents disrobing */
 	    if (uarmc && uarmc->cursed) {
-				// TODO 
-		Sprintf(buf, "remove your %s", cloak_simple_name(uarmc));
+		Sprintf(buf, "remove your %s", cloak_simple_name(uarmc)); /* EN Sprintf(buf, "remove your %s", cloak_simple_name(uarmc));*/ // TODO DE
 		why = uarmc;
 #ifdef TOURIST
 	    } else if (otmp == uarmu && uarm && uarm->cursed) {
-				// TODO 
-		Sprintf(buf, "remove your %s", c_suit);
+		Sprintf(buf, "remove your %s", c_suit); /* EN Sprintf(buf, "remove your %s", c_suit);*/ // TODO DE
 		why = uarm;
 #endif
 	    } else if (welded(uwep) && bimanual(uwep)) {
-				// TODO 
-		Sprintf(buf, "release your %s",
+		Sprintf(buf, "release your %s", /* EN Sprintf(buf, "release your %s",*/ // TODO DE
 			is_sword(uwep) ? c_sword :
 			(uwep->otyp == BATTLE_AXE) ? c_axe : c_weapon);
 		why = uwep;
 	    }
 	    if (why) {
-				// TODO 
-		You("cannot %s to take off %s.", buf, the(xname(otmp)));
+		You("cannot %s to take off %s.", buf, the(xname(otmp))); /* EN You("cannot %s to take off %s.", buf, the(xname(otmp)));*/ // TODO DE
 		why->bknown = TRUE;
 		return 0;
 	    }
@@ -1817,19 +1798,16 @@ do_takeoff()
 	if (taking_off == W_WEP) {
 	  if(!cursed(uwep)) {
 	    setuwep((struct obj *) 0);
-			// TODO
-	    You("are empty %s.", body_part(HANDED));
+	    You("are empty %s.", body_part(HANDED)); /* EN You("are empty %s.", body_part(HANDED));*/ // TODO DE
 	    u.twoweap = FALSE;
 	  }
 	} else if (taking_off == W_SWAPWEP) {
 	  setuswapwep((struct obj *) 0);
-			// TODO
-	  You("no longer have a second weapon readied.");
+	  You("no longer have a second weapon readied."); /* EN You("no longer have a second weapon readied.");*/ // TODO DE
 	  u.twoweap = FALSE;
 	} else if (taking_off == W_QUIVER) {
 	  setuqwep((struct obj *) 0);
-			// TODO
-	  You("no longer have ammunition readied.");
+	  You("no longer have ammunition readied."); /* EN You("no longer have ammunition readied.");*/ // TODO DE
 	} else if (taking_off == WORN_ARMOR) {
 	  otmp = uarm;
 	  if(!cursed(otmp)) (void) Armor_off();
@@ -1900,7 +1878,7 @@ take_off()
 	todelay = 0;
 
 	if (taking_off == 0L) {
-	  You("finish %s.", disrobing);
+	  You("VERB_SEIN damit fertig, %s.", disrobing); /* EN You("finish %s.", disrobing);*/
 	  return 0;
 	} else if (taking_off == W_WEP) {
 	  todelay = 1;
@@ -1971,8 +1949,7 @@ doddoremarm()
     int result = 0;
 
     if (taking_off || takeoff_mask) {
-			// TODO
-	You("continue %s.", disrobing);
+	You("VERB_FAHREN damit fort, %s.", disrobing); /* EN You("continue %s.", disrobing);*/ // TODO DE
 	set_occupation(take_off, disrobing, 0);
 	(void) take_off();
 	return 0;
@@ -1984,16 +1961,16 @@ doddoremarm()
 
     add_valid_menu_class(0); /* reset */
     if (flags.menu_style != MENU_TRADITIONAL ||
-	    (result = ggetobj("take off", select_off, 0, FALSE, (unsigned *)0)) < -1)
+	    (result = ggetobj("take off", select_off, 0, FALSE, (unsigned *)0)) < -1) /* EN (result = ggetobj("take off", select_off, 0, FALSE, (unsigned *)0)) < -1)*/ // TODO DE
 	result = menu_remarm(result);
 
     if (takeoff_mask) {
 	/* default activity for armor and/or accessories,
 	   possibly combined with weapons */
-	disrobing = "disrobing";
+	disrobing = "KASUS_AKKUSATIV PRONOMEN_PERSONAL zu entkleiden"; /* EN disrobing = "disrobing";*/ //
 	/* specific activity when handling weapons only */
 	if (!(takeoff_mask & ~(W_WEP|W_SWAPWEP|W_QUIVER)))
-	    disrobing = "disarming";
+	    disrobing = "KASUS_AKKUSATIV PRONOMEN_PERSONAL zu entwaffnen"; /* EN disrobing = "disarming";*/
 	(void) take_off();
     }
     /* The time to perform the command is already completely accounted for
@@ -2015,8 +1992,7 @@ int retry;
 	all_worn_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
 	all_worn_categories = FALSE;
-			// TODO
-	n = query_category("What type of things do you want to take off?",
+	n = query_category("What type of things do you want to take off?", /* EN n = query_category("What type of things do you want to take off?",*/ // TODO DE
 			   invent, WORN_TYPES|ALL_TYPES, &pick_list, PICK_ANY);
 	if (!n) return 0;
 	for (i = 0; i < n; i++) {
@@ -2028,11 +2004,11 @@ int retry;
 	free((genericptr_t) pick_list);
     } else if (flags.menu_style == MENU_COMBINATION) {
 	all_worn_categories = FALSE;
-	if (ggetobj("take off", select_off, 0, TRUE, (unsigned *)0) == -2)
+	if (ggetobj("take off", select_off, 0, TRUE, (unsigned *)0) == -2) /* EN if (ggetobj("take off", select_off, 0, TRUE, (unsigned *)0) == -2)*/ // TODO DE
 	    all_worn_categories = TRUE;
     }
 
-    n = query_objlist("Was VERB_WOLLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausziehen?", invent, /* EN n = query_objlist("What do you want to take off?", invent, */
+    n = query_objlist("Was VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausziehen?", invent, /* EN n = query_objlist("What do you want to take off?", invent, */
 			SIGNAL_NOMENU|USE_INVLET|INVORDER_SORT,
 			&pick_list, PICK_ANY,
 			all_worn_categories ? is_worn : is_worn_by_type);
@@ -2041,8 +2017,7 @@ int retry;
 	    (void) select_off(pick_list[i].item.a_obj);
 	free((genericptr_t) pick_list);
     } else if (n < 0 && flags.menu_style != MENU_COMBINATION) {
-			// TODO
-	There("is nothing else you can remove or unwield.");
+	There("is nothing else you can remove or unwield."); /* EN There("is nothing else you can remove or unwield.");*/ // TODO DE
     }
     return 0;
 }
@@ -2057,47 +2032,39 @@ register struct obj *atmp;
 			(!obj_resists(otmp, 0, 90)))
 
 	if (DESTROY_ARM(uarmc)) {
-			// TODO
-		Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc));
+		Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc)); /* EN Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc));*/ // TODO DE
 		(void) Cloak_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarm)) {
 		/* may be disintegrated by spell or dragon breath... */
 		if (donning(otmp)) cancel_don();
-			// TODO
-		Your("armor turns to dust and falls to the %s!",
+		Your("armor turns to dust and falls to the %s!", /* EN Your("armor turns to dust and falls to the %s!",*/ // TODO DE
 			surface(u.ux,u.uy));
 		(void) Armor_gone();
 		useup(otmp);
 #ifdef TOURIST
 	} else if (DESTROY_ARM(uarmu)) {
-			// TODO
-		Your("shirt crumbles into tiny threads and falls apart!");
+		Your("shirt crumbles into tiny threads and falls apart!"); /* EN Your("shirt crumbles into tiny threads and falls apart!");*/ // TODO DE
 		useup(otmp);
 #endif
 	} else if (DESTROY_ARM(uarmh)) {
 		if (donning(otmp)) cancel_don();
-			// TODO
-		Your("helmet turns to dust and is blown away!");
+		Your("helmet turns to dust and is blown away!"); /* EN Your("helmet turns to dust and is blown away!");*/ // TODO DE
 		(void) Helmet_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarmg)) {
 		if (donning(otmp)) cancel_don();
-			// TODO
-		Your("gloves vanish!");
+		Your("NOUN_GLOVESs VERB_VERSCHWINDEN!"); /* EN Your("gloves vanish!");*/
 		(void) Gloves_off();
 		useup(otmp);
-			// TODO
 		selftouch("You");
 	} else if (DESTROY_ARM(uarmf)) {
 		if (donning(otmp)) cancel_don();
-			// TODO
-		Your("boots disintegrate!");
+		Your("boots disintegrate!"); /* EN Your("boots disintegrate!");*/ // TODO DE
 		(void) Boots_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarms)) {
-			// TODO
-		Your("shield crumbles away!");
+		Your("shield crumbles away!"); /* EN Your("shield crumbles away!");*/ // TODO DE
 		(void) Shield_off();
 		useup(otmp);
 	} else	return(0);		/* could not destroy anything */

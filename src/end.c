@@ -680,7 +680,7 @@ int how;
 		makeknown(AMULET_OF_LIFE_SAVING);
 		Your("medallion %s!", /* EN Your("medallion %s!", */ // TODO DE
 		      !Blind ? "begins to glow" : "feels warm"); /* EN !Blind ? "begins to glow" : "feels warm"); */ // TODO DE
-		if (how == CHOKING) You("vomit ..."); /* EN if (how == CHOKING) You("vomit ..."); */ // TODO DE
+		if (how == CHOKING) You("VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL ..."); /* EN if (how == CHOKING) You("vomit ..."); */
 		Du_fuehlst_dich("viel besser!"); /* EN You_feel("much better!"); */
 		pline_The("medallion crumbles to dust!"); /* EN pline_The("medallion crumbles to dust!"); */ // TODO DE
 		if (uamul) useup(uamul);

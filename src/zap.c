@@ -1428,10 +1428,10 @@ no_unwear:
 			    !costly_spot(u.ux, u.uy))
 			make_angry_shk(shkp, ox, oy);
 		    else {
-			pline("%s VERB_WERDEN wütend!", Monnam(shkp)); /* EN pline("%s gets angry!", Monnam(shkp)); */ // TODO DE Eigenname
+			pline("MODIFIER_PSEUDO_SUBJECT %s VERB_WERDEN wütend!", Monnam(shkp)); /* EN pline("%s gets angry!", Monnam(shkp)); */
 			hot_pursuit(shkp);
 		    }
-		} else Norep("%s VERB_SEIN rasend!", Monnam(shkp)); /* EN } else Norep("%s is furious!", Monnam(shkp)); */ // TODO DE Eigenname
+		} else Norep("MODIFIER_PSEUDO_SUBJECT %s VERB_SEIN rasend!", Monnam(shkp)); /* EN } else Norep("%s is furious!", Monnam(shkp)); */
 	    }
 	}
 	delobj(obj);
@@ -1806,7 +1806,7 @@ struct obj *otmp;
 {
 	otmp->in_use = TRUE;	/* in case losehp() is fatal */
 	pline("SUBJECT %s VERB_EXPLODIEREN plötzlich!", The(xname(otmp))); /* EN pline("%s suddenly explodes!", The(xname(otmp))); */
-	losehp(d(otmp->spe+2,6), "exploding wand", KILLED_BY_AN); /* EN losehp(d(otmp->spe+2,6), "exploding wand", KILLED_BY_AN); */ // TODO DE
+	losehp(d(otmp->spe+2,6), "ADJEKTIV_EXPLODIEREND NOUN_WAND", KILLED_BY_AN); /* EN losehp(d(otmp->spe+2,6), "exploding wand", KILLED_BY_AN); */
 	useup(otmp);
 }
 
@@ -3807,7 +3807,7 @@ register struct obj *obj;
 	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "burning scroll", /* EN "catches fire and burns", "catch fire and burn", "burning scroll", */ // TODO DE
 	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "burning book", /* EN "catches fire and burns", "catch fire and burn", "burning book", */ // TODO DE
 	"VERB_ZERFALLEN zu Staub und VERB_VERSCHWINDEN", "VERB_ZERFALLEN zu Staub und VERB_VERSCHWINDEN", "", /* EN "turns to dust and vanishes", "turn to dust and vanish", "", */
-	"breaks apart and explodes", "break apart and explode", "exploding wand" /* EN "breaks apart and explodes", "break apart and explode", "exploding wand" */ // TODO DE
+	"breaks apart and explodes", "break apart and explode", "ADJEKTIV_EXPLODIEREND NOUN_WAND" /* EN "breaks apart and explodes", "break apart and explode", "exploding wand" */ // TODO DE
 };
 
 void

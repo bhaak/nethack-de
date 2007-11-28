@@ -55,9 +55,9 @@ STATIC_DCL boolean FDECL(mon_beside, (int, int));
 /* if you can figure this out, give yourself a hearty pat on the back... */
 #define GOLD_CAPACITY(w,n)	(((w) * -100L) - ((n) + 50L) - 1L)
 
-static const char moderateloadmsg[] = "You have a little trouble lifting"; /* EN static const char moderateloadmsg[] = "You have a little trouble lifting"; */ // TODO DE
-static const char nearloadmsg[] = "You have much trouble lifting"; /* EN static const char nearloadmsg[] = "You have much trouble lifting"; */ // TODO DE
-static const char overloadmsg[] = "You have extreme difficulty lifting"; /* EN static const char overloadmsg[] = "You have extreme difficulty lifting"; */ // TODO DE
+static const char moderateloadmsg[] = "You have a little trouble lifting Du hast etwas Muehe,"; /* EN static const char moderateloadmsg[] = "You have a little trouble lifting"; */ // TODO DE
+static const char nearloadmsg[] = "You have much trouble lifting, Du hast ziemliche Muehe,"; /* EN static const char nearloadmsg[] = "You have much trouble lifting"; */ // TODO DE
+static const char overloadmsg[] = "You have extreme difficulty lifting Du hast extreme Probleme, "; /* EN static const char overloadmsg[] = "You have extreme difficulty lifting"; */ // TODO DE
 
 /* BUG: this lets you look at cockatrice corpses while blind without
    touching them */
@@ -1137,9 +1137,9 @@ boolean telekinesis;
 			(next_encumbr > HVY_ENCUMBER) ? overloadmsg :
 			(next_encumbr > MOD_ENCUMBER) ? nearloadmsg :
 			moderateloadmsg);
-		Sprintf(eos(qbuf), " %s. Continue?", /* EN Sprintf(eos(qbuf), " %s. Continue?", */ // TODO DE
-			safe_qbuf(qbuf, sizeof(" . Continue?"), /* EN safe_qbuf(qbuf, sizeof(" . Continue?"), */ // TODO DE
-				doname(obj), an(simple_typename(obj->otyp)), "something")); /* EN doname(obj), an(simple_typename(obj->otyp)), "something")); */ // TODO DE
+		Sprintf(eos(qbuf), " %s aufzuheben. Weitermachen?", /* EN Sprintf(eos(qbuf), " %s. Continue?", */
+			safe_qbuf(qbuf, sizeof(" aufzuheben. Weitermachen?"), /* EN safe_qbuf(qbuf, sizeof(" . Continue?"), */
+				doname(obj), an(simple_typename(obj->otyp)), "Etwas")); /* EN doname(obj), an(simple_typename(obj->otyp)), "something")); */
 		obj->quan = savequan;
 		switch (ynq(qbuf)) {
 		case 'q':  result = -1; break;
@@ -1195,8 +1195,9 @@ boolean telekinesis;	/* not picking it up directly by hand */
 {
 	int res, nearload;
 #ifndef GOLDOBJ
-	const char *where = (obj->ox == u.ux && obj->oy == u.uy) ?
-			    "here" : "there"; /* EN "here" : "there"; */ // TODO DE
+	char where[BUFSZ]; /* EN */
+	Strcpy(where, (obj->ox == u.ux && obj->oy == u.uy) ?  /* EN const char *where = (obj->ox == u.ux && obj->oy == u.uy) ? */
+			    "hier" : "dort"); /* EN "here" : "there"; */
 #endif
 
 	if (obj->quan < count) {
@@ -1225,15 +1226,16 @@ boolean telekinesis;	/* not picking it up directly by hand */
 
 	    if (gold_capacity <= 0L) {
 		pline(
-	       "There %s %ld gold piece%s %s, but you cannot carry any more.", /* EN "There %s %ld gold piece%s %s, but you cannot carry any more.", */ // TODO DE
-		      otense(obj, "are"), /* EN otense(obj, "are"), */ // TODO DE
-		      obj->quan, plur(obj->quan), where);
+	       "%s %s %ld NOUN_GOLD_PIECE%s, aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_KOENNEN nicht mehr tragen.", /* EN "There %s %ld gold piece%s %s, but you cannot carry any more.", */
+		      upstart(where), otense(obj, "liegen"), /* EN otense(obj, "are"), */
+		      obj->quan, plur(obj->quan)); /* EN obj->quan, plur(obj->quan), where); */
 		return 0;
 	    } else if (gold_capacity < count) {
-		You("can only %s %s of the %ld gold pieces lying %s.", /* EN You("can only %s %s of the %ld gold pieces lying %s.", */ // TODO DE
-		    telekinesis ? "acquire" : "carry", /* EN telekinesis ? "acquire" : "carry", */ // TODO DE
-		    gold_capacity == 1L ? "one" : "some", obj->quan, where); /* EN gold_capacity == 1L ? "one" : "some", obj->quan, where); */ // TODO DE
-		pline("%s %ld gold piece%s.", /* EN pline("%s %ld gold piece%s.", */ // TODO DE
+		You("VERB_KOENNEN nur %s KASUS_GENITIV ARTIKEL_BESTIMMTER %s liegenden %ld NOUN_GOLD_PIECEs %s.", /* EN You("can only %s %s of the %ld gold pieces lying %s.", */
+		    gold_capacity == 1L ? "eine" : "einen Teil", where, obj->quan, /* EN */
+		    telekinesis ? "acquire" : "tragen" /* EN telekinesis ? "acquire" : "carry", */ // TODO DE
+        ); /* EN gold_capacity == 1L ? "one" : "some", obj->quan, where); */
+		pline("%s %ld NOUN_GOLD_PIECE%s aufzuheben.", /* EN pline("%s %ld gold piece%s.", */
 		    nearloadmsg, gold_capacity, plur(gold_capacity));
 		u.ugold += gold_capacity;
 		obj->quan -= gold_capacity;
@@ -1241,7 +1243,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 	    } else {
 		u.ugold += count;
 		if ((nearload = near_capacity()) != 0)
-		    pline("%s %ld gold piece%s.", /* EN pline("%s %ld gold piece%s.", */ // TODO DE
+		    pline("%s %ld NOUN_GOLD_PIECE%s aufzuheben.", /* EN pline("%s %ld gold piece%s.", */
 			  nearload < MOD_ENCUMBER ?
 			  moderateloadmsg : nearloadmsg,
 			  count, plur(count));
@@ -1308,7 +1310,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 
 	if (uwep && uwep == obj) mrg_to_wielded = TRUE;
 	nearload = near_capacity();
-	prinv(nearload == SLT_ENCUMBER ? moderateloadmsg : (char *) 0,
+	prinv(nearload == SLT_ENCUMBER ? moderateloadmsg : (char *) 0, // TODO DE
 	      obj, count);
 	mrg_to_wielded = FALSE;
 	return 1;
@@ -1980,7 +1982,7 @@ STATIC_OVL void
 observe_quantum_cat(box)
 struct obj *box;
 {
-    static NEARDATA const char sc[] = "Schroedinger's Cat"; /* EN static NEARDATA const char sc[] = "Schroedinger's Cat"; */ // TODO DE
+    static NEARDATA const char sc[] = "Schrödingers NOUN_CAT"; /* EN static NEARDATA const char sc[] = "Schroedinger's Cat"; */
     struct obj *deadcat;
     struct monst *livecat;
     xchar ox, oy;
@@ -2083,8 +2085,8 @@ register int held;
 	obj->owt = weight(obj);	/* in case any items were lost */
 
 	if (!cnt)
-	    Sprintf(emptymsg, "%s is %sempty.", Yname2(obj), /* EN Sprintf(emptymsg, "%s is %sempty.", Yname2(obj), */ // TODO DE
-		    quantum_cat ? "now " : ""); /* EN quantum_cat ? "now " : ""); */ // TODO DE
+	    Sprintf(emptymsg, "SUBJECT %s VERB_SEIN %sleer.", Yname2(obj), /* EN Sprintf(emptymsg, "%s is %sempty.", Yname2(obj), */
+		    quantum_cat ? "jetzt " : ""); /* EN quantum_cat ? "now " : ""); */
 
 	if (cnt || flags.menu_style == MENU_FULL) {
 	    Strcpy(qbuf, "Do you want to take something out of "); /* EN Strcpy(qbuf, "Do you want to take something out of "); */ // TODO DE

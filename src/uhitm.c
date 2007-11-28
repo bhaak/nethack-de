@@ -2065,8 +2065,8 @@ use_weapon:
 						mon->data->mlet == S_MUMMY) &&
 					    rn2(5) &&
 					    !Sick_resistance) {
-					You_feel("%ssick.", /* EN You_feel("%ssick.", */ // TODO DE
-					    (Sick) ? "very " : ""); /* EN (Sick) ? "very " : ""); */ // TODO DE
+					Dir_ist("%sschlecht.", /* EN You_feel("%ssick.", */
+					    (Sick) ? "furchtbar " : ""); /* EN (Sick) ? "very " : ""); */
 					mdamageu(mon, rnd(8));
 				    }
 				}

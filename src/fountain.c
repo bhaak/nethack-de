@@ -246,7 +246,7 @@ drinkfountain()
 
 		case 20: /* Foul water */
 
-			pline_The("water is foul!  You gag and vomit."); /* EN pline_The("water is foul!  You gag and vomit."); */ // TODO DE
+			pline_The("NOUN_WATER VERB_SEIN eklig!  NEUER_SATZ SUBJECT PRONOMEN_PERSONAL VERB_WUERGEN und VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL."); /* EN pline_The("water is foul!  You gag and vomit."); */
 			morehungry(rn1(20, 11));
 			vomit();
 			break;
@@ -326,7 +326,7 @@ drinkfountain()
 		case 29: /* Scare */ {
 			register struct monst *mtmp;
 
-			pline("Von dem Wasser VERB_BEKOMMEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL üblen Mundgeruch!"); /* EN pline("This water gives you bad breath!"); */
+			pline("Von diesem Wasser VERB_BEKOMMEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL üblen Mundgeruch!"); /* EN pline("This water gives you bad breath!"); */
 			for(mtmp = fmon; mtmp; mtmp = mtmp->nmon)
 			    if(!DEADMONSTER(mtmp))
 				monflee(mtmp, 0, FALSE, FALSE);
@@ -573,7 +573,7 @@ drinksink()
 			more_experienced(1,0);
 			newexplevel();
 			break;
-		case 9: pline("Gaggg... this tastes like sewage!  You vomit."); /* EN case 9: pline("Gaggg... this tastes like sewage!  You vomit."); */ // TODO DE
+		case 9: pline("Gaggg... this tastes wie Abwasser!  SUBJECT PRONOMEN_PERSONAL VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL."); /* EN case 9: pline("Gaggg... this tastes like sewage!  You vomit."); */ // TODO DE
 			morehungry(rn1(30-ACURR(A_CON), 11));
 			vomit();
 			break;

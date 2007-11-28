@@ -1648,7 +1648,7 @@ heal_legs()
 			pline("KASUS_DATIV PRONOMEN_POSSESSIV %s VERB_GEHEN es etwas besser.", /* EN Your("%s feel somewhat better.", */
 				makeplural(body_part(LEG)));
 		} else {
-			Your("KASUS_DATIV PRONOMEN_POSSESSIV %s VERB_GEHEN es etwas besser.", /* EN Your("%s feels somewhat better.", */
+			pline("KASUS_DATIV PRONOMEN_POSSESSIV %s VERB_GEHEN es etwas besser.", /* EN Your("%s feels somewhat better.", */
 				body_part(LEG));
 		}
 		}

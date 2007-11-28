@@ -1774,7 +1774,7 @@ struct obj *obj;
 			dropx(obj);
 			return;
 		}
-		otmp = getobj(lubricables, "grease"); /* EN otmp = getobj(lubricables, "grease"); */ // TODO DE
+		otmp = getobj(lubricables, "fetten"); /* EN otmp = getobj(lubricables, "grease"); */
 		if (!otmp) return;
 		if ((otmp->owornmask & WORN_ARMOR) && uarmc) {
 			Strcpy(buf, xname(uarmc));

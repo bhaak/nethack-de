@@ -297,7 +297,7 @@ register struct obj *obj;
 	short objtyp;
 
 	Sprintf(qbuf, "What do you want to name %s %s?", /* EN Sprintf(qbuf, "What do you want to name %s %s?", */ // TODO DE
-		is_plural(obj) ? "these" : "this", xname(obj)); /* EN is_plural(obj) ? "these" : "this", xname(obj)); */ // TODO DE
+		is_plural(obj) ? "PRONOMEN_DIESER" : "PRONOMEN_DIESER", xname(obj)); /* EN is_plural(obj) ? "these" : "this", xname(obj)); */
 	getlin(qbuf, buf);
 	if(!*buf || *buf == '\033')	return;
 	/* strip leading and trailing spaces; unnames item if all spaces */
@@ -1089,14 +1089,13 @@ genitivattribut(mtmp)		/* return a name converted to possessive */
 struct monst *mtmp;
 {
     static char buf[BUFSZ];
+    static char tmp_name[BUFSZ];
 
-		if (Blind) {
-		  /* blind */
-	    Strcpy(buf, "von irgendwas");
-			return buf;
-		} else if (type_is_pname(mtmp->data)) {
+		if (type_is_pname(mtmp->data)) {
       /* Eigename */
-      Strcpy(buf, "KASUS_GENITIV ARTIKEL_BESTIMMTER ");
+      //Strcpy(buf, "KASUS_GENITIV ARTIKEL_BESTIMMTER ");
+      Strcpy(buf, "KASUS_DATIV ");
+	    Strcat(buf, "von ");
 		} else if ((mtmp->isshk && !Hallucination)) {
       /* Ladenbesitzer */
       Strcpy(buf, "KASUS_DATIV ");
@@ -1105,7 +1104,13 @@ struct monst *mtmp;
 		} else {
       Strcpy(buf, "KASUS_GENITIV ");
 	  }
-	  Strcat(buf, mon_nam(mtmp));
+
+		Strcpy(tmp_name, mon_nam(mtmp));
+		if (!strcmp(tmp_name, "NOUN_IT")) {
+	    Strcpy(buf, "von irgendwas");
+		} else {
+	  	Strcat(buf, tmp_name);
+		}
     return buf;
 }
 #endif

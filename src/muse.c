@@ -1421,7 +1421,7 @@ struct monst *mtmp;
 			dmg = dmgval(otmp2, &youmonst) * otmp2->quan;
 			if (uarmh) {
 			    if(is_metallic(uarmh)) {
-				pline("Fortunately, you are wearing a hard helmet."); /* EN pline("Fortunately, you are wearing a hard helmet."); */ // TODO DE
+				pline("SUBJECT Glücklicherweise VERB_TRAGEN PRONOMEN_PERSONAL einen schützenden Helm."); /* EN pline("Fortunately, you are wearing a hard helmet."); */
 				if (dmg > 2) dmg = 2;
 			    } else if (flags.verbose) {
 				Your("%s does not protect you.", /* EN Your("%s does not protect you.", */ // TODO DE

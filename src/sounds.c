@@ -51,7 +51,7 @@ dosounds()
 		"plätscherndes Wasser.", /* EN "bubbling water.", */
 		"water falling on coins.", /* EN "water falling on coins.", */ // TODO DE
 		"the splashing of a naiad.", /* EN "the splashing of a naiad.", */ // TODO DE
-		"a soda fountain!", /* EN "a soda fountain!", */ // TODO DE
+		"einen Luftbefeuchter!", /* EN "a soda fountain!", */
 	};
 	You_hear(fountain_msg[rn2(3)+hallu]);
     }
@@ -927,7 +927,7 @@ dochat()
     if (mtmp->mtame && mtmp->meating) {
 	if (!canspotmon(mtmp))
 	    map_invisible(mtmp->mx, mtmp->my);
-	pline("SUBJECT %s VERB_EAT geräuschvoll.", Monnam(mtmp)); /* EN pline("%s is eating noisily.", Monnam(mtmp)); */
+	pline("SUBJECT %s VERB_SCHMATZEN geräuschvoll.", Monnam(mtmp)); /* EN pline("%s is eating noisily.", Monnam(mtmp)); */
 	return (0);
     }
 

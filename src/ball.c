@@ -33,7 +33,7 @@ ballfall()
 			body_part(HEAD));
 		if (uarmh) {
 		    if(is_metallic(uarmh)) {
-			pline("Glücklicherweise VERB_TRAGEN SUBJECT PRONOMEN_PERSONAL einen hard helmet."); /* EN pline("Fortunately, you are wearing a hard helmet."); */ // TODO DE
+			pline("Glücklicherweise VERB_TRAGEN SUBJECT PRONOMEN_PERSONAL einen schützenden Helm."); /* EN pline("Fortunately, you are wearing a hard helmet."); */
 			dmg = 3;
 		    } else if (flags.verbose)
 			Your("%s VERB_SCHUETZEN OBJECT PRONOMEN_PERSONAL nicht.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */

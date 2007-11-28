@@ -502,7 +502,7 @@ doengrave()
 	 * Edited by GAN 10/20/86 so as not to change weapon wielded.
 	 */
 
-	otmp = getobj(styluses, "write with"); /* EN otmp = getobj(styluses, "write with"); */ // TODO DE
+	otmp = getobj(styluses, "schreiben"); /* EN otmp = getobj(styluses, "write with"); */
 	if(!otmp) return(0);		/* otmp == zeroobj if fingers */
 
 	if (otmp == &zeroobj) writer = makeplural(body_part(FINGER));
@@ -517,7 +517,7 @@ doengrave()
 	}
 
 	if (jello) {
-		You("tickle %s with your %s.", mon_nam(u.ustuck), writer); /* EN You("tickle %s with your %s.", mon_nam(u.ustuck), writer); */ // TODO DE
+		You("VERB_KITZELN OBJECT %s OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV %s.", mon_nam(u.ustuck), writer); /* EN You("tickle %s with your %s.", mon_nam(u.ustuck), writer); */
 		Your("message dissolves..."); /* EN Your("message dissolves..."); */
 		return(0);
 	}
@@ -685,7 +685,7 @@ doengrave()
 		    case WAN_MAKE_INVISIBLE:
 			if (oep && oep->engr_type != HEADSTONE) {
 			    if (!Blind)
-				pline_The("engraving on the %s vanishes!", /* EN pline_The("engraving on the %s vanishes!", */ // TODO DE
+				pline("Die Inschrift auf KASUS_DATIV ARTIKEL_BESTIMMTER %s verschwindet!", /* EN pline_The("engraving on the %s vanishes!", */
 					surface(u.ux,u.uy));
 			    dengr = TRUE;
 			}
@@ -693,7 +693,7 @@ doengrave()
 		    case WAN_TELEPORTATION:
 			if (oep && oep->engr_type != HEADSTONE) {
 			    if (!Blind)
-				pline_The("engraving on the %s vanishes!", /* EN pline_The("engraving on the %s vanishes!", */ // TODO DE
+				pline("Die Inschrift auf KASUS_DATIV ARTIKEL_BESTIMMTER %s verschwindet!", /* EN pline_The("engraving on the %s vanishes!", */
 					surface(u.ux,u.uy));
 			    teleengr = TRUE;
 			}
@@ -790,7 +790,7 @@ doengrave()
 				(oep->engr_type == ENGR_BLOOD) ||
 				(oep->engr_type == MARK )) {
 				if (!Blind)
-				    You("wipe out the message here."); /* EN You("wipe out the message here."); */ // TODO DE
+				    You("VERB_WEGWISCHEN die Botschaft SATZKLAMMER."); /* EN You("wipe out the message here."); */
 				else
 				    Your("%s %s %s.", xname(otmp), /* EN Your("%s %s %s.", xname(otmp), */ // TODO DE
 					 otense(otmp, "get"), /* EN otense(otmp, "get"), */ // TODO DE
@@ -798,7 +798,7 @@ doengrave()
 					 "frosty" : "dusty"); /* EN "frosty" : "dusty"); */ // TODO DE
 				dengr = TRUE;
 			    } else
-				Your("%s can't wipe out this engraving.", /* EN Your("%s can't wipe out this engraving.", */ // TODO DE
+				Your("%s VERB_KOENNEN diese Inschrift nicht wegwischen.", /* EN Your("%s can't wipe out this engraving.", */
 				     xname(otmp));
 			else
 			    Your("%s %s %s.", xname(otmp), otense(otmp, "get"), /* EN Your("%s %s %s.", xname(otmp), otense(otmp, "get"), */ // TODO DE
@@ -854,7 +854,7 @@ doengrave()
 	/* Something has changed the engraving here */
 	if (*buf) {
 	    make_engr_at(u.ux, u.uy, buf, moves, type);
-	    pline_The("Inschrift now reads: \"%s\".", buf); /* EN pline_The("engraving now reads: \"%s\".", buf); */ // TODO DE
+	    pline("Die Inschrift lautet jetzt: \"%s\".", buf); /* EN pline_The("engraving now reads: \"%s\".", buf); */
 	    ptext = FALSE;
 	}
 
@@ -888,7 +888,7 @@ doengrave()
 		c = 'y';
 	    } else if ( (type == oep->engr_type) && (!Blind ||
 		 (oep->engr_type == BURN) || (oep->engr_type == ENGRAVE)) ) {
-		c = yn_function("Do you want to add to the current engraving?", /* EN c = yn_function("Do you want to add to the current engraving?", */ // TODO DE
+		c = yn_function("SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL der aktuellen Inschrift etwas hinzufügen?", /* EN c = yn_function("Do you want to add to the current engraving?", */
 				ynqchars, 'y');
 		if (c == 'q') {
 		    pline(Never_mind);
@@ -901,10 +901,10 @@ doengrave()
 		if( (oep->engr_type == DUST) || (oep->engr_type == ENGR_BLOOD) ||
 		    (oep->engr_type == MARK) ) {
 		    if (!Blind) {
-			You("wipe out the message that was %s here.", /* EN You("wipe out the message that was %s here.", */ // TODO DE
-			    ((oep->engr_type == DUST)  ? "written in the dust" : /* EN ((oep->engr_type == DUST)  ? "written in the dust" : */ // TODO DE
-			    ((oep->engr_type == ENGR_BLOOD) ? "scrawled in blood"   : /* EN ((oep->engr_type == ENGR_BLOOD) ? "scrawled in blood"   : */ // TODO DE
-							 "written"))); /* EN "written"))); */ // TODO DE
+			You("VERB_WEGWISCHEN die Botschaft SATZKLAMMER, die hier %sgeschrieben stand.", /* EN You("wipe out the message that was %s here.", */
+			    ((oep->engr_type == DUST)  ? "im Staub " : /* EN ((oep->engr_type == DUST)  ? "written in the dust" : */
+			    ((oep->engr_type == ENGR_BLOOD) ? "mit Blut "   : /* EN ((oep->engr_type == ENGR_BLOOD) ? "scrawled in blood"   : */
+							 ""))); /* EN "written"))); */
 			del_engr(oep);
 			oep = (struct engr *)0;
 		    } else
@@ -921,7 +921,7 @@ doengrave()
 		    } else
 			if ( (type != oep->engr_type) || (c == 'n') ) {
 			    if (!Blind || can_reach_floor())
-				You("will overwrite the current message."); /* EN You("will overwrite the current message."); */ // TODO DE
+				You("VERB_WERDEN die aktuelle Botschaft überschreiben."); /* EN You("will overwrite the current message."); */
 			    eow = TRUE;
 			}
 	    }
@@ -1016,7 +1016,7 @@ doengrave()
 	switch(type){
 	    default:
 		multi = -(len/10);
-		if (multi) nomovemsg = "You finish your weird engraving."; /* EN if (multi) nomovemsg = "You finish your weird engraving."; */ // TODO DE
+		if (multi) nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_STELLEN OBJECT PRONOMEN_POSSESSIV ADJEKTIV_SELTSAM NOUN_ENGRAVING fertig."; /* EN if (multi) nomovemsg = "You finish your weird engraving."; */
 		break;
 	    case DUST:
 		multi = -(len/10);
@@ -1104,7 +1104,7 @@ doengrave()
 	if (post_engr_text[0]) pline(post_engr_text);
 
 	if (doblind && !resists_blnd(&youmonst)) {
-	    You("are blinded by the flash!"); /* EN You("are blinded by the flash!"); */ // TODO DE
+	    pline("Der Blitz blendet KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN You("are blinded by the flash!"); */
 	    make_blinded((long)rnd(50),FALSE);
 	    if (!Blind) Your(vision_clears);
 	}

@@ -213,7 +213,7 @@ dig()
 	register xchar dpx = digging.pos.x, dpy = digging.pos.y;
 	register boolean ispick = uwep && is_pick(uwep);
 	const char *verb =
-	    (!uwep || is_pick(uwep)) ? "dig into" : "chop through"; /* EN (!uwep || is_pick(uwep)) ? "dig into" : "chop through"; */ // TODO DE
+	    (!uwep || is_pick(uwep)) ? "graben" : "chop through dig()"; /* EN (!uwep || is_pick(uwep)) ? "dig into" : "chop through"; */ // TODO DE
 
 	lev = &levl[dpx][dpy];
 	/* perhaps a nymph stole your pick-axe while you were busy digging */
@@ -424,7 +424,7 @@ cleanup:
 		} else if (!IS_ROCK(lev->typ) && dig_target == DIGTYP_ROCK)
 		    return(0); /* statue or boulder got taken */
 		if(!did_dig_msg) {
-		    You("hit the %s with all your might.", /* EN You("hit the %s with all your might.", */ // TODO DE
+		    You("VERB_BEARBEITEN OBJECT ARTIKEL_BESTIMMTER %s mit ganzer Kraft.", /* EN You("hit the %s with all your might.", */
 			d_target[dig_target]);
 		    did_dig_msg = TRUE;
 		}
@@ -600,7 +600,7 @@ int ttyp;
 		    /* handle earlier damage, eg breaking wand of digging */
 		    else if (!madeby_u) pay_for_damage("dig into", TRUE); /* EN else if (!madeby_u) pay_for_damage("dig into", TRUE); */ // TODO DE
 
-		    You("fall through..."); /* EN You("fall through..."); */ // TODO DE
+		    You("VERV_FALLEN durch ..."); /* EN You("fall through..."); */
 		    /* Earlier checks must ensure that the destination
 		     * level exists and is in the present dungeon.
 		     */
@@ -662,7 +662,7 @@ boolean pit_only;
 
 	} else if (is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy)) {
 		pline_The("%s sloshes furiously for a moment, then subsides.", /* EN pline_The("%s sloshes furiously for a moment, then subsides.", */ // TODO DE
-			is_lava(u.ux, u.uy) ? "lava" : "water"); /* EN is_lava(u.ux, u.uy) ? "lava" : "water"); */ // TODO DE
+			is_lava(u.ux, u.uy) ? "NOUN_LAVA" : "NOUN_WATER"); /* EN is_lava(u.ux, u.uy) ? "lava" : "water"); */
 		wake_nearby();	/* splashing */
 
 	} else if (lev->typ == DRAWBRIDGE_DOWN ||
@@ -782,12 +782,17 @@ dig_up_grave()
 	switch (rn2(5)) {
 	case 0:
 	case 1:
-	    You("unearth a corpse."); /* EN You("unearth a corpse."); */ // TODO DE
+#ifdef GERMAN
+	    if (Role_if(PM_HEALER)) {
+	      You("VERB_EXHUMIEREN eine Leiche."); /* EN You("unearth a corpse."); */
+			} else
+#endif
+	    You("VERB_AUSGRABEN einen Leichnam SATZKLAMMER."); /* EN You("unearth a corpse."); */
 	    if (!!(otmp = mk_tt_object(CORPSE, u.ux, u.uy)))
 	    	otmp->age -= 100;		/* this is an *OLD* corpse */;
 	    break;
 	case 2:
-	    if (!Blind) pline(Hallucination ? "Alter!  The living dead!" : /* EN if (!Blind) pline(Hallucination ? "Dude!  The living dead!" : */ // TODO DE
+	    if (!Blind) pline(Hallucination ? "Alter!  Die lebenden Toten!" : /* EN if (!Blind) pline(Hallucination ? "Dude!  The living dead!" : */
  			"The grave's owner is very upset!"); /* EN "The grave's owner is very upset!"); */ // TODO DE
  	    (void) makemon(mkclass(S_ZOMBIE,0), u.ux, u.uy, NO_MM_FLAGS);
 	    break;
@@ -827,13 +832,13 @@ struct obj *obj;
 	    else res = 1;
 	}
 	ispick = is_pick(obj);
-	verb = ispick ? "dig" : "chop"; /* EN verb = ispick ? "dig" : "chop"; */ // TODO DE
+	verb = ispick ? "graben" : "hacken"; /* EN verb = ispick ? "dig" : "chop"; */
 
 	if (u.utrap && u.utraptype == TT_WEB) {
-	    pline("%s you can't %s while entangled in a web.", /* EN pline("%s you can't %s while entangled in a web.", */ // TODO DE
+	    pline("%s nicht %s while entangled in a web.", /* EN pline("%s you can't %s while entangled in a web.", */ // TODO DE
 		  /* res==0 => no prior message;
 		     res==1 => just got "You now wield a pick-axe." message */
-		  !res ? "Unfortunately," : "But", verb); /* EN !res ? "Unfortunately," : "But", verb); */ // TODO DE
+		  !res ? "Leider VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL" : "Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_KOENNEN", verb); /* EN !res ? "Unfortunately," : "But", verb); */
 	    return res;
 	}
 
@@ -868,7 +873,7 @@ struct obj *obj;
 	register struct rm *lev;
 	int dig_target;
 	boolean ispick = is_pick(obj);
-	const char *verbing = ispick ? "digging" : "chopping"; /* EN const char *verbing = ispick ? "digging" : "chopping"; */ // TODO DE
+	const char *verbing = ispick ? "zu graben" : "zu hacken"; /* EN const char *verbing = ispick ? "digging" : "chopping"; */
 
 	if (u.uswallow && attack(u.ustuck)) {
 		;  /* return(1) */
@@ -876,7 +881,7 @@ struct obj *obj;
 		pline("Turbulenzen torpedieren KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_VERSUCHs %s.", verbing); /* EN pline("Turbulence torpedoes your %s attempts.", verbing); */
 	} else if(u.dz < 0) {
 		if(Levitation)
-			You("don't have enough leverage."); /* EN You("don't have enough leverage."); */ // TODO DE
+			Dir("VERB_FEHLEN die nötige Hebelwirkung."); /* EN You("don't have enough leverage."); */
 		else
 			You_cant("reach the %s.",ceiling(u.ux,u.uy)); /* EN You_cant("reach the %s.",ceiling(u.ux,u.uy)); */ // TODO DE
 	} else if(!u.dx && !u.dy && !u.dz) {
@@ -939,11 +944,11 @@ struct obj *obj;
 		} else {
 			static const char * const d_action[6] = {
 						"swinging", /* EN "swinging", */ // TODO DE
-						"digging", /* EN "digging", */ // TODO DE
+						"zu graben", /* EN "digging", */ // TODO DE
 						"chipping the statue", /* EN "chipping the statue", */ // TODO DE
 						"hitting the boulder", /* EN "hitting the boulder", */ // TODO DE
 						"chopping at the door", /* EN "chopping at the door", */ // TODO DE
-						"cutting the tree" /* EN "cutting the tree" */ // TODO DE
+						"ARTIKEL_BESTIMMTER NOUN_TREE zu fällen" /* EN "cutting the tree" */
 			};
 			did_dig_msg = FALSE;
 			digging.quiet = FALSE;
@@ -966,9 +971,9 @@ struct obj *obj;
 			    assign_level(&digging.level, &u.uz);
 			    digging.effort = 0;
 			    if (!digging.quiet)
-				You("start %s.", d_action[dig_target]); /* EN You("start %s.", d_action[dig_target]); */ // TODO DE
+				You("VERB_BEGINNEN OBJECT %s.", d_action[dig_target]); /* EN You("start %s.", d_action[dig_target]); */
 			} else {
-			    You("%s %s.", digging.chew ? "begin" : "continue", /* EN You("%s %s.", digging.chew ? "begin" : "continue", */ // TODO DE
+			    You("%s %s.", digging.chew ? "VERB_BEGINNEN" : "VERB_FAHREN damit fort", /* EN You("%s %s.", digging.chew ? "begin" : "continue", */
 					d_action[dig_target]);
 			    digging.chew = FALSE;
 			}
@@ -984,7 +989,7 @@ struct obj *obj;
 		You("cannot stay under%s long enough.", /* EN You("cannot stay under%s long enough.", */ // TODO DE
 				is_pool(u.ux, u.uy) ? "water" : " the lava"); /* EN is_pool(u.ux, u.uy) ? "water" : " the lava"); */ // TODO DE
 	} else if (!ispick) {
-		Your("%s merely scratches the %s.", /* EN Your("%s merely scratches the %s.", */ // TODO DE
+		Your("%s VERB_ZERKRATZEN bloß OBJECT ARTIKEL_BESTIMMTER %s.", /* EN Your("%s merely scratches the %s.", */
 				aobjnam(obj, (char *)0), surface(u.ux,u.uy));
 		u_wipe_engr(3);
 	} else {
@@ -997,10 +1002,10 @@ struct obj *obj;
 		    digging.pos.y = u.uy;
 		    assign_level(&digging.level, &u.uz);
 		    digging.effort = 0;
-		    You("start %s downward.", verbing); /* EN You("start %s downward.", verbing); */ // TODO DE
+		    You("VERB_BEGINNEN abwärts %s.", verbing); /* EN You("start %s downward.", verbing); */
 		    if (*u.ushops) shopdig(0);
 		} else
-		    You("continue %s downward.", verbing); /* EN You("continue %s downward.", verbing); */ // TODO DE
+		    You("VERB_FAHREN damit fort, abwärts %s.", verbing); /* EN You("continue %s downward.", verbing); */
 		did_dig_msg = FALSE;
 		set_occupation(dig, verbing, 0);
 	}
@@ -1173,13 +1178,13 @@ zap_dig()
 	    if (!Is_airlevel(&u.uz) && !Is_waterlevel(&u.uz) && !Underwater) {
 		if (u.dz < 0 || On_stairs(u.ux, u.uy)) {
 		    if (On_stairs(u.ux, u.uy))
-			pline_The("beam bounces off the %s and hits the %s.", /* EN pline_The("beam bounces off the %s and hits the %s.", */ // TODO DE
+			pline_The("beam VER off the %s und VERB_HIT OBJECT ARTIKEL_BESTIMMTER %s.", /* EN pline_The("beam bounces off the %s and hits the %s.", */ // TODO DE
 			      (u.ux == xdnladder || u.ux == xupladder) ?
 			      "ladder" : "stairs", ceiling(u.ux, u.uy)); /* EN "ladder" : "stairs", ceiling(u.ux, u.uy)); */ // TODO DE
-		    You("loosen a rock from the %s.", ceiling(u.ux, u.uy)); /* EN You("loosen a rock from the %s.", ceiling(u.ux, u.uy)); */ // TODO DE
-		    pline("It falls on your %s!", body_part(HEAD)); /* EN pline("It falls on your %s!", body_part(HEAD)); */ // TODO DE
+		    You("VERB_LOESEN einen Stein _von_ OBJECT KASUS_DATIV ARTIKEL_BESTIMMTER %s.", ceiling(u.ux, u.uy)); /* EN You("loosen a rock from the %s.", ceiling(u.ux, u.uy)); */ // TODO DE
+		    pline("Er fällt KASUS_DATIV PRONOMEN_PERSONAL auf KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s!", body_part(HEAD)); /* EN pline("It falls on your %s!", body_part(HEAD)); */
 		    losehp(rnd((uarmh && is_metallic(uarmh)) ? 2 : 6),
-			   "falling rock", KILLED_BY_AN); /* EN "falling rock", KILLED_BY_AN); */ // TODO DE
+			   "ADJEKTIV_FALLEND NOUN_GEM_ROCK", KILLED_BY_AN); /* EN "falling rock", KILLED_BY_AN); */
 		    otmp = mksobj_at(ROCK, u.ux, u.uy, FALSE, FALSE);
 		    if (otmp) {
 			(void)xname(otmp);	/* set dknown, maybe bknown */

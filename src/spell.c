@@ -121,7 +121,7 @@ cursed_book(bp)
 		tele();		/* teleport him */
 		break;
 	case 1:
-		You_feel("threatened."); /* EN You_feel("threatened."); */ // TODO DE
+		Du_fuehlst_dich("bedroht."); /* EN You_feel("threatened."); */
 		aggravate();
 		break;
 	case 2:
@@ -135,30 +135,30 @@ cursed_book(bp)
 		make_confused(HConfusion + rn1(7,16),FALSE);
 		break;
 	case 5:
-		pline_The("book was coated with contact poison!"); /* EN pline_The("book was coated with contact poison!"); */ // TODO DE
+		pline("Das Buch wurde in Kontaktgift getränkt!"); /* EN pline_The("book was coated with contact poison!"); */
 		if (uarmg) {
 		    if (uarmg->oerodeproof || !is_corrodeable(uarmg)) {
 			Your("gloves seem unaffected."); /* EN Your("gloves seem unaffected."); */ // TODO DE
 		    } else if (uarmg->oeroded2 < MAX_ERODE) {
 			if (uarmg->greased) {
-			    grease_protect(uarmg, "gloves", &youmonst); /* EN grease_protect(uarmg, "gloves", &youmonst); */ // TODO DE
+			    grease_protect(uarmg, "NOUN_GLOVESs", &youmonst); /* EN grease_protect(uarmg, "gloves", &youmonst); */
 			} else {
-			    Your("gloves corrode%s!", /* EN Your("gloves corrode%s!", */ // TODO DE
+			    Your("NOUN_GLOVESs corrode%s!", /* EN Your("gloves corrode%s!", */
 				 uarmg->oeroded2+1 == MAX_ERODE ?
 				 " completely" : uarmg->oeroded2 ?  /* EN " completely" : uarmg->oeroded2 ? */ // TODO DE
 				 " further" : ""); /* EN " further" : ""); */ // TODO DE
 			    uarmg->oeroded2++;
 			}
 		    } else
-			Your("gloves %s completely corroded.", /* EN Your("gloves %s completely corroded.", */ // TODO DE
-			     Blind ? "feel" : "look"); /* EN Blind ? "feel" : "look"); */ // TODO DE
+			Your("NOUN_GLOVESs %s völlig verrostet SATZKLAMMER.", /* EN Your("gloves %s completely corroded.", */
+			     Blind ? "VERB_ANFUEHLEN sich" : "VERB_AUSSEHEN"); /* EN Blind ? "feel" : "look"); */
 		    break;
 		}
 		/* temp disable in_use; death should not destroy the book */
 		bp->in_use = FALSE;
 		losestr(Poison_resistance ? rn1(2,1) : rn1(4,3));
 		losehp(rnd(Poison_resistance ? 6 : 10),
-		       "contact-poisoned spellbook", KILLED_BY_AN); /* EN "contact-poisoned spellbook", KILLED_BY_AN); */ // TODO DE
+		       "ADJEKTIV_GIFTGETRAENKT NOUN_SPELLBOOK", KILLED_BY_AN); /* EN "contact-poisoned spellbook", KILLED_BY_AN); */
 		bp->in_use = TRUE;
 		break;
 	case 6:
@@ -197,8 +197,8 @@ struct obj *spellbook;
 	    useup(spellbook);
 	    gone = TRUE;
 	} else {
-	    You("find yourself reading the %s line over and over again.", /* EN You("find yourself reading the %s line over and over again.", */ // TODO DE
-		spellbook == book ? "next" : "first"); /* EN spellbook == book ? "next" : "first"); */ // TODO DE
+	    You("VERB_MERKEN, dass PRONOMEN_PERSONAL immer wieder %s Zeile VERB_READ.", /* EN You("find yourself reading the %s line over and over again.", */
+		spellbook == book ? "nächste" : "erste"); /* EN spellbook == book ? "next" : "first"); */
 	}
 	return gone;
 }
@@ -211,7 +211,7 @@ struct obj *book2;
     struct monst *mtmp, *mtmp2;
     coord mm;
 
-    You("turn the pages of the Book of the Dead..."); /* EN You("turn the pages of the Book of the Dead..."); */ // TODO DE
+    You("VERB_BLAETTERN im Buch der Toten ..."); /* EN You("turn the pages of the Book of the Dead..."); */
     makeknown(SPE_BOOK_OF_THE_DEAD);
     /* KMH -- Need ->known to avoid "_a_ Book of the Dead" */
     book2->known = 1;
@@ -226,9 +226,9 @@ struct obj *book2;
 	}
 
 	if(!u.uhave.bell || !u.uhave.menorah) {
-	    pline("A chill runs down your %s.", body_part(SPINE)); /* EN pline("A chill runs down your %s.", body_part(SPINE)); */ // TODO DE
-	    if(!u.uhave.bell) You_hear("a faint chime..."); /* EN if(!u.uhave.bell) You_hear("a faint chime..."); */ // TODO DE
-	    if(!u.uhave.menorah) pline("Vlad's doppelganger is amused."); /* EN if(!u.uhave.menorah) pline("Vlad's doppelganger is amused."); */ // TODO DE
+	    Dir("läufts kalt KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s runter.", body_part(SPINE)); /* EN pline("A chill runs down your %s.", body_part(SPINE)); */
+	    if(!u.uhave.bell) You_hear("ein leises Bimmeln ..."); /* EN if(!u.uhave.bell) You_hear("a faint chime..."); */
+	    if(!u.uhave.menorah) pline("Vlads Doppelgänger findet's lustig."); /* EN if(!u.uhave.menorah) pline("Vlad's doppelganger is amused."); */
 	    return;
 	}
 
@@ -246,8 +246,8 @@ struct obj *book2;
 	}
 
 	if(arti_cursed) {
-	    pline_The("invocation fails!"); /* EN pline_The("invocation fails!"); */ // TODO DE
-	    pline("At least one of your artifacts is cursed..."); /* EN pline("At least one of your artifacts is cursed..."); */ // TODO DE
+	    pline("Die Beschwörung misslingt!"); /* EN pline_The("invocation fails!"); */
+	    pline("Mindestens eines KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_ARTIFACTs ist verflucht ..."); /* EN pline("At least one of your artifacts is cursed..."); */
 	} else if(arti1_primed && arti2_primed) {
 	    unsigned soon = (unsigned) d(2,6);	/* time til next intervene() */
 
@@ -259,7 +259,7 @@ struct obj *book2;
 	    u.uevent.udemigod = 1;	/* wizdead() */
 	    if (!u.udg_cnt || u.udg_cnt > soon) u.udg_cnt = soon;
 	} else {	/* at least one artifact not prepared properly */
-	    You("have a feeling that %s is amiss...", something); /* EN You("have a feeling that %s is amiss...", something); */ // TODO DE
+	    You("VERB_HABEN das Gefühl, dass %s nicht in Ordnung ist ...", something); /* EN You("have a feeling that %s is amiss...", something); */
 	    goto raise_dead;
 	}
 	return;
@@ -269,7 +269,7 @@ struct obj *book2;
     if (book2->cursed) {
 raise_dead:
 
-	You("raised the dead!"); /* EN You("raised the dead!"); */ // TODO DE
+	You("VERB_ERWECKEN Tote!"); /* EN You("raised the dead!"); */
 	/* first maybe place a dangerous adversary */
 	if (!rn2(3) && ((mtmp = makemon(&mons[PM_MASTER_LICH],
 					u.ux, u.uy, NO_MINVENT)) != 0 ||
@@ -304,13 +304,13 @@ raise_dead:
     } else {
 	switch(rn2(3)) {
 	case 0:
-	    Your("ancestors are annoyed with you!"); /* EN Your("ancestors are annoyed with you!"); */ // TODO DE
+	    Your("NOUN_VORFAHREs ärgern sich über KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN Your("ancestors are annoyed with you!"); */
 	    break;
 	case 1:
-	    pline_The("headstones in the cemetery begin to move!"); /* EN pline_The("headstones in the cemetery begin to move!"); */ // TODO DE
+	    pline_The("NOUN_HEADSTONEs auf dem Friedhof beginnen sich zu bewegen!"); /* EN pline_The("headstones in the cemetery begin to move!"); */
 	    break;
 	default:
-	    pline("Oh my!  Your name appears in the book!"); /* EN pline("Oh my!  Your name appears in the book!"); */ // TODO DE
+	    pline("Oh Gott!  SUBJECT PRONOMEN_POSSESSIV NOUN_NAME VERB_ERSCHEINEN im Buch!"); /* EN pline("Oh my!  Your name appears in the book!"); */
 	}
     }
     return;
@@ -345,20 +345,20 @@ learn()
 	}
 
 	Sprintf(splname, objects[booktype].oc_name_known ?
-			"\"%s\"" : "the \"%s\" spell", /* EN "\"%s\"" : "the \"%s\" spell", */ // TODO DE
+			"\"%s\"" : "\"%s\"", /* EN "\"%s\"" : "the \"%s\" spell", */
 		OBJ_NAME(objects[booktype]));
 	for (i = 0; i < MAXSPELL; i++)  {
 		if (spellid(i) == booktype)  {
 			if (book->spestudied > MAX_SPELL_STUDY) {
-			    pline("This spellbook is too faint to be read any more."); /* EN pline("This spellbook is too faint to be read any more."); */ // TODO DE
+			    pline("PRONOMEN_DIESER NOUN_SPELLBOOK ist zu verblasst um noch gelesen zu werden."); /* EN pline("This spellbook is too faint to be read any more."); */
 			    book->otyp = booktype = SPE_BLANK_PAPER;
 			} else if (spellknow(i) <= 1000) {
-			    Your("knowledge of %s is keener.", splname); /* EN Your("knowledge of %s is keener.", splname); */ // TODO DE
+			    Your("NOUN_KNOWLEDGE des Spruches %s VERB_SEIN schärfer.", splname); /* EN Your("knowledge of %s is keener.", splname); */
 			    incrnknow(i);
 			    book->spestudied++;
 			    exercise(A_WIS,TRUE);       /* extra study */
 			} else { /* 1000 < spellknow(i) <= MAX_SPELL_STUDY */
-			    You("know %s quite well already.", splname); /* EN You("know %s quite well already.", splname); */ // TODO DE
+			    You("VERB_KENNEN OBJECT den Spruch %s schon ziemlich gut.", splname); /* EN You("know %s quite well already.", splname); */
 			    costly = FALSE;
 			}
 			/* make book become known even when spell is already
@@ -370,13 +370,13 @@ learn()
 			spl_book[i].sp_lev = objects[booktype].oc_level;
 			incrnknow(i);
 			book->spestudied++;
-			You(i > 0 ? "add %s to your repertoire." : "learn %s.", /* EN You(i > 0 ? "add %s to your repertoire." : "learn %s.", */ // TODO DE
+			You(i > 0 ? "VERB_HINZUFUEGEN OBJECT den Spruch %s OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_REPERTOIRE SATZKLAMMER." : "VERB_LERNEN OBJECT den Spruch %s.", /* EN You(i > 0 ? "add %s to your repertoire." : "learn %s.", */
 			    splname);
 			makeknown((int)booktype);
 			break;
 		}
 	}
-	if (i == MAXSPELL) impossible("Too many spells memorized!"); /* EN if (i == MAXSPELL) impossible("Too many spells memorized!"); */ // TODO DE
+	if (i == MAXSPELL) impossible("Too many spells memorized!");
 
 	if (book->cursed) {	/* maybe a demon cursed it */
 	    if (cursed_book(book)) {
@@ -406,7 +406,7 @@ register struct obj *spellbook;
 	} else {
 		/* KMH -- Simplified this code */
 		if (booktype == SPE_BLANK_PAPER) {
-			pline("This spellbook is all blank."); /* EN pline("This spellbook is all blank."); */ // TODO DE
+			pline("SUBJECT PRONOMEN_DIESER NOUN_SPELLBOOK VERB_SEIN vollkommen unbeschrieben."); /* EN pline("This spellbook is all blank."); */
 			makeknown(booktype);
 			return(1);
 		}
@@ -450,8 +450,8 @@ register struct obj *spellbook;
 			    !confused) {
 			    char qbuf[QBUFSZ];
 			    Sprintf(qbuf,
-		      "This spellbook is %sdifficult to comprehend. Continue?", /* EN "This spellbook is %sdifficult to comprehend. Continue?", */ // TODO DE
-				    (read_ability < 12 ? "very " : ""));
+		      "SUBJECT PRONOMEN_DIESER NOUN_SPELLBOOK VERB_SEIN %sschwer zu verstehen. Weitermachen?", /* EN "This spellbook is %sdifficult to comprehend. Continue?", */
+				    (read_ability < 12 ? "sehr " : "")); /* EN(read_ability < 12 ? "very " : "")); */
 			    if (yn(qbuf) != 'y') {
 				spellbook->in_use = FALSE;
 				return(1);
@@ -470,7 +470,7 @@ register struct obj *spellbook;
 		    nomul(delay);			/* study time */
 		    delay = 0;
 		    if(gone || !rn2(3)) {
-			if (!gone) pline_The("spellbook crumbles to dust!"); /* EN if (!gone) pline_The("spellbook crumbles to dust!"); */ // TODO DE
+			if (!gone) pline_The("NOUN_SPELLBOOK zerfällt zu Staub!"); /* EN if (!gone) pline_The("spellbook crumbles to dust!"); */
 			if (!objects[spellbook->otyp].oc_name_known &&
 				!objects[spellbook->otyp].oc_uname)
 			    docall(spellbook);
@@ -488,13 +488,13 @@ register struct obj *spellbook;
 		}
 		spellbook->in_use = FALSE;
 
-		You("begin to %s the runes.", /* EN You("begin to %s the runes.", */ // TODO DE
-		    spellbook->otyp == SPE_BOOK_OF_THE_DEAD ? "recite" : /* EN spellbook->otyp == SPE_BOOK_OF_THE_DEAD ? "recite" : */ // TODO DE
-		    "memorize"); /* EN "memorize"); */ // TODO DE
+		You("VERB_BEGINNEN die Runen %s.", /* EN You("begin to %s the runes.", */
+		    spellbook->otyp == SPE_BOOK_OF_THE_DEAD ? "zu rezitieren" : /* EN spellbook->otyp == SPE_BOOK_OF_THE_DEAD ? "recite" : */
+		    "auswendig zu lernen"); /* EN "memorize"); */
 	}
 
 	book = spellbook;
-	set_occupation(learn, "studying", 0); /* EN set_occupation(learn, "studying", 0); */ // TODO DE
+	set_occupation(learn, "zu lernen", 0); /* EN set_occupation(learn, "studying", 0); */
 	return(1);
 }
 
@@ -546,7 +546,7 @@ getspell(spell_no)
 	char ilet, lets[BUFSZ], qbuf[QBUFSZ];
 
 	if (spellid(0) == NO_SPELL)  {
-	    You("don't know any spells right now."); /* EN You("don't know any spells right now."); */ // TODO DE
+	    You("VERB_KENNEN noch gar keine Sprüche."); /* EN You("don't know any spells right now."); */
 	    return FALSE;
 	}
 	if (flags.menu_style == MENU_TRADITIONAL) {
@@ -573,7 +573,7 @@ getspell(spell_no)
 		    *spell_no = idx;
 		    return TRUE;
 		} else
-		    You("don't know that spell."); /* EN You("don't know that spell."); */ // TODO DE
+		    You("VERB_KENNEN OBJECT diesen Spruch nicht."); /* EN You("don't know that spell."); */
 	    }
 	}
 	return dospellmenu("Choose which spell to cast", /* EN return dospellmenu("Choose which spell to cast", */ // TODO DE
@@ -597,19 +597,19 @@ int skill;
 {
 	switch (skill) {
 	    case P_ATTACK_SPELL:
-		return "attack"; /* EN return "attack"; */ // TODO DE
+		return "Angriff"; /* EN return "attack"; */
 	    case P_HEALING_SPELL:
-		return "healing"; /* EN return "healing"; */ // TODO DE
+		return "Heilung"; /* EN return "healing"; */
 	    case P_DIVINATION_SPELL:
-		return "divination"; /* EN return "divination"; */ // TODO DE
+		return "Weissagung"; /* EN return "divination"; */ /* Mantik / Divination / Wahrsagung / Weissagung / Hellsehen */
 	    case P_ENCHANTMENT_SPELL:
-		return "enchantment"; /* EN return "enchantment"; */ // TODO DE
+		return "Verzauberung"; /* EN return "enchantment"; */
 	    case P_CLERIC_SPELL:
-		return "clerical"; /* EN return "clerical"; */ // TODO DE
+		return "Klerikal"; /* EN return "clerical"; */
 	    case P_ESCAPE_SPELL:
-		return "escape"; /* EN return "escape"; */ // TODO DE
+		return "Flucht"; /* EN return "escape"; */
 	    case P_MATTER_SPELL:
-		return "matter"; /* EN return "matter"; */ // TODO DE
+		return "Materie"; /* EN return "matter"; */
 	    default:
 		impossible("Unknown spell skill, %d;", skill);
 		return "";
@@ -729,14 +729,14 @@ boolean atme;
 	 * decrement of spell knowledge is done every turn.
 	 */
 	if (spellknow(spell) <= 0) {
-	    Your("knowledge of this spell is twisted."); /* EN Your("knowledge of this spell is twisted."); */ // TODO DE
-	    pline("It invokes nightmarish images in your mind..."); /* EN pline("It invokes nightmarish images in your mind..."); */ // TODO DE
+	    Your("NOUN_KNOWLEDGE dieses Spruches VERB_SEIN verzerrt."); /* EN Your("knowledge of this spell is twisted."); */
+	    pline("It invokes nightmarish images alptraumhafte Bilder in your mind..."); /* EN pline("It invokes nightmarish images in your mind..."); */ // TODO DE
 	    spell_backfire(spell);
 	    return(0);
 	} else if (spellknow(spell) <= 100) {
-	    You("strain to recall the spell."); /* EN You("strain to recall the spell."); */ // TODO DE
+	    Dir("fällt es schwer, KASUS_AKKUSATIV PRONOMEN_PERSONAL an diesen Spruch zu erinnern."); /* EN You("strain to recall the spell."); */
 	} else if (spellknow(spell) <= 1000) {
-	    Your("knowledge of this spell is growing faint."); /* EN Your("knowledge of this spell is growing faint."); */ // TODO DE
+	    Your("NOUN_KNOWLEDGE diese Spruches wird langsam undeutlich."); /* EN Your("knowledge of this spell is growing faint."); */
 	}
 	energy = (spellev(spell) * 5);    /* 5 <= energy <= 35 */
 
@@ -755,11 +755,11 @@ boolean atme;
 	}
 
 	if (u.uhave.amulet) {
-		You_feel("the amulet draining your energy away."); /* EN You_feel("the amulet draining your energy away."); */ // TODO DE
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN, wie OBJECT KASUS_DATIV PRONOMEN_PERSONAL das Amulett Energie entzieht."); /* EN You_feel("the amulet draining your energy away."); */
 		energy += rnd(2*energy);
 	}
 	if(energy > u.uen)  {
-		You("don't have enough energy to cast that spell."); /* EN You("don't have enough energy to cast that spell."); */ // TODO DE
+		You("VERB_HABEN nicht genug Energie um diesen Spruch zu sprechen."); /* EN You("don't have enough energy to cast that spell."); */
 		return(0);
 	} else {
 		if (spellid(spell) != SPE_DETECT_FOOD) {
@@ -801,7 +801,7 @@ boolean atme;
 
 	chance = percent_success(spell);
 	if (confused || (rnd(100) > chance)) {
-		You("fail to cast the spell correctly."); /* EN You("fail to cast the spell correctly."); */ // TODO DE
+		Dir("misslingt die Beschwörung dieses Spruches."); /* EN You("fail to cast the spell correctly."); */
 		u.uen -= energy / 2;
 		flags.botl = 1;
 		return(1);
@@ -838,7 +838,7 @@ boolean atme;
 			if(!u.dx && !u.dy && !u.dz) {
 			    if ((damage = zapyourself(pseudo, TRUE)) != 0) {
 				char buf[BUFSZ];
-				Sprintf(buf, "zapped %sself with a spell", uhim()); /* EN Sprintf(buf, "zapped %sself with a spell", uhim()); */ // TODO DE
+				Sprintf(buf, "wirkte einen Spruchzauber gegen sich selbst"); /* EN Sprintf(buf, "zapped %sself with a spell", uhim()); */
 				losehp(damage, buf, NO_KILLER_PREFIX);
 			    }
 			} else {
@@ -888,7 +888,7 @@ boolean atme;
 			if(!u.dx && !u.dy && !u.dz) {
 			    if ((damage = zapyourself(pseudo, TRUE)) != 0) {
 				char buf[BUFSZ];
-				Sprintf(buf, "zapped %sself with a spell", uhim()); /* EN Sprintf(buf, "zapped %sself with a spell", uhim()); */ // TODO DE
+				Sprintf(buf, "wirkte einen Spruchzauber gegen sich selbst"); /* EN Sprintf(buf, "zapped %sself with a spell", uhim()); */
 				losehp(damage, buf, NO_KILLER_PREFIX);
 			    }
 			} else weffects(pseudo);
@@ -928,9 +928,9 @@ boolean atme;
 		healup(0, 0, FALSE, TRUE);
 		break;
 	case SPE_CURE_SICKNESS:
-		if (Sick) You("are no longer ill."); /* EN if (Sick) You("are no longer ill."); */ // TODO DE
+		if (Sick) You("VERB_SEIN nicht länger krank."); /* EN if (Sick) You("are no longer ill."); */
 		if (Slimed) {
-		    pline_The("slime disappears!"); /* EN pline_The("slime disappears!"); */ // TODO DE
+		    pline("Der Schleim verschwindet!"); /* EN pline_The("slime disappears!"); */
 		    Slimed = 0;
 		 /* flags.botl = 1; -- healup() handles this */
 		}
@@ -944,7 +944,7 @@ boolean atme;
 		    do_vicinity_map();
 		/* at present, only one thing blocks clairvoyance */
 		else if (uarmh && uarmh->otyp == CORNUTHAUM)
-		    You("sense a pointy hat on top of your %s.", /* EN You("sense a pointy hat on top of your %s.", */ // TODO DE
+		    Du_spuerst("einen spitzen Hut auf OBJECT KASUS_DATIV %s.", /* EN You("sense a pointy hat on top of your %s.", */
 			body_part(HEAD));
 		break;
 	case SPE_PROTECTION:
@@ -974,7 +974,7 @@ throwspell()
 	coord cc;
 
 	if (u.uinwater) {
-	    pline("You're joking! In this weather?"); return 0; /* EN pline("You're joking! In this weather?"); return 0; */ // TODO DE
+	    pline("SUBJECT PRONOMEN_PERSONAL VERB_MACHEN Witze! Bei diesem Wetter?"); return 0; /* EN pline("You're joking! In this weather?"); return 0; */
 	} else if (Is_waterlevel(&u.uz)) {
 	    You("had better wait for the sun to come out."); return 0; /* EN You("had better wait for the sun to come out."); return 0; */ // TODO DE
 	}
@@ -1032,9 +1032,9 @@ dovspell()
 	struct spell spl_tmp;
 
 	if (spellid(0) == NO_SPELL)
-	    You("don't know any spells right now."); /* EN You("don't know any spells right now."); */ // TODO DE
+	    You("VERB_KENNEN noch gar keine Sprüche."); /* EN You("don't know any spells right now."); */
 	else {
-	    while (dospellmenu("Currently known spells", /* EN while (dospellmenu("Currently known spells", */ // TODO DE
+	    while (dospellmenu("Aktuell bekannte Zaubersprüche", /* EN while (dospellmenu("Currently known spells", */
 			       SPELLMENU_VIEW, &splnum)) {
 		Sprintf(qbuf, "Reordering spells; swap '%c' with", /* EN Sprintf(qbuf, "Reordering spells; swap '%c' with", */ // TODO DE
 			spellet(splnum));

@@ -155,8 +155,8 @@ forcelock()	/* try to force a locked chest */
 		/* for a +0 weapon, probability that it survives an unsuccessful
 		 * attempt to force the lock is (.992)^50 = .67
 		 */
-		pline("%s %s broke!", /* EN pline("%s %s broke!", */ // TODO DE
-		      (uwep->quan > 1L) ? "One of your" : "Your", xname(uwep)); /* EN (uwep->quan > 1L) ? "One of your" : "Your", xname(uwep)); */ // TODO DE
+		pline("SUBJECT %s %s VERB_ZERBRECHEN!", /* EN pline("%s %s broke!", */
+		      (uwep->quan > 1L) ? "One of your" : "PRONOMEN_POSSESSIV", xname(uwep)); /* EN (uwep->quan > 1L) ? "One of your" : "Your", xname(uwep)); */ // TODO DE
 		/*pline("%sour %s broke!",
 			(uwep->quan > 1L) ? "One of y" : "Y", xname(uwep));*/
 		useup(uwep);

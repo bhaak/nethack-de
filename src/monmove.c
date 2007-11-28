@@ -25,7 +25,7 @@ register struct monst *mtmp;
 {
 	if (flags.verbose) {
 	    if (cansee(mtmp->mx, mtmp->my))
-		pline("KABUUUM!!  SUBJECT PRONOMEN_PERSONAL VERB_SEHEN eine TÃ¼re explodieren."); /* EN pline("KABOOM!!  You see a door explode."); */
+		pline("KABUUUM!!  SUBJECT PRONOMEN_PERSONAL VERB_SEHEN eine Türe explodieren."); /* EN pline("KABOOM!!  You see a door explode."); */
 	    else if (flags.soundok)
 		You_hear("eine entfernte Explosion."); /* EN You_hear("a distant explosion."); */
 	}
@@ -687,7 +687,7 @@ register int after;
 #ifdef MAIL
 	if(ptr == &mons[PM_MAIL_DAEMON]) {
 	    if(flags.soundok && canseemon(mtmp))
-		verbalize("Ich bin spÃ¤t dran!"); /* EN verbalize("I'm late!"); */
+		verbalize("Ich bin spät dran!"); /* EN verbalize("I'm late!"); */
 	    mongone(mtmp);
 	    return(2);
 	}
@@ -1088,9 +1088,9 @@ postmov:
 			} else {
 			    if (flags.verbose) {
 				if (canseeit)
-				     You("see a door open."); /* EN You("see a door open."); */ // TODO DE
+				     You("VERB_SEE jemanden eine Tür öffnen?see a door open."); /* EN You("see a door open."); */ // TODO DE
 				else if (flags.soundok)
-				     You_hear("a door open."); /* EN You_hear("a door open."); */ // TODO DE
+				     You_hear("jemanden eine Tür öffnen?a door open."); /* EN You_hear("a door open."); */ // TODO DE
 			    }
 			    here->doormask = D_ISOPEN;
 			    /* newsym(mtmp->mx, mtmp->my); */  /* done below */

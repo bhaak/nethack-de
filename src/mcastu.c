@@ -53,7 +53,7 @@ boolean undirected;
 	    const char *point_msg;  /* spellcasting monsters are impolite */
 
 	    if (undirected)
-		point_msg = "rundherum, worauf er flucht"; /* EN point_msg = "all around, then curses"; */
+		point_msg = "rundherum und flucht"; /* EN point_msg = "all around, then curses"; */
 	    else if ((Invis && !perceives(mtmp->data) &&
 			(mtmp->mux != u.ux || mtmp->muy != u.uy)) ||
 		    (youmonst.m_ap_type == M_AP_OBJECT &&
@@ -63,7 +63,7 @@ boolean undirected;
 	    else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
 		point_msg = "auf PRONOMEN_PERSONAL und VERB_VERFLUCHEN PRONOMEN_POSSESSIV displaced NOUN_BILD"; /* EN point_msg = "and curses at your displaced image"; */ // TODO DE
 	    else
-		point_msg = "auf PRONOMEN_PERSONAL, worauf er flucht"; /* EN point_msg = "at you, then curses"; */
+		point_msg = "auf PRONOMEN_PERSONAL und VERB_FLUCHEN"; /* EN point_msg = "at you, then curses"; */
 
 	    pline("%s VERB_DEUTEN OBJECT %s.", Monnam(mtmp), point_msg); /* EN pline("%s points %s.", Monnam(mtmp), point_msg); */
 	} else if ((!(moves % 4) || !rn2(4))) {

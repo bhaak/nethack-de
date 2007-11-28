@@ -459,22 +459,22 @@ hurtle_step(arg, x, y)
 
 	    pline("Autsch!"); /* EN pline("Ouch!"); */
 	    if (IS_TREE(levl[x][y].typ))
-		s = "bumping into a tree"; /* EN s = "bumping into a tree"; */ // TODO DE
+		s = "rammte einen Baum"; /* EN s = "bumping into a tree"; */ /* krachte/knallte/rammte/rasselte/rempelte/kollidierte */
 	    else if (IS_ROCK(levl[x][y].typ))
-		s = "bumping into a wall"; /* EN s = "bumping into a wall"; */ // TODO DE
+		s = "rammte eine Wand"; /* EN s = "bumping into a wall"; */
 	    else
-		s = "bumping into a door"; /* EN s = "bumping into a door"; */ // TODO DE
-	    losehp(rnd(2+*range), s, KILLED_BY);
+		s = "rammte eine Türe"; /* EN s = "bumping into a door"; */
+	    losehp(rnd(2+*range), s, NO_KILLER_PREFIX); /* EN losehp(rnd(2+*range), s, KILLED_BY); */
 	    return FALSE;
 	}
 	if (levl[x][y].typ == IRONBARS) {
-	    You("crash into some iron bars.  Autsch!"); /* EN You("crash into some iron bars.  Ouch!"); */ // TODO DE
-	    losehp(rnd(2+*range), "crashing into iron bars", KILLED_BY); /* EN losehp(rnd(2+*range), "crashing into iron bars", KILLED_BY); */ // TODO DE
+	    You("VERB_KRACHEN in ein Paar Eisenstangen.  Autsch!"); /* EN You("crash into some iron bars.  Ouch!"); */ // TODO DE
+	    losehp(rnd(2+*range), "kollidierte mit Eisenstangen", NO_KILLER_PREFIX); /* EN losehp(rnd(2+*range), "crashing into iron bars", KILLED_BY); */ // TODO DE
 	    return FALSE;
 	}
 	if ((obj = sobj_at(BOULDER,x,y)) != 0) {
-	    You("bump into a %s.  Autsch!", xname(obj)); /* EN You("bump into a %s.  Ouch!", xname(obj)); */ // TODO DE
-	    losehp(rnd(2+*range), "bumping into a boulder", KILLED_BY); /* EN losehp(rnd(2+*range), "bumping into a boulder", KILLED_BY); */ // TODO DE
+	    You("VERB_RAMMEN OBJECT ARTIKEL_UNBESTIMMTER %s.  Autsch!", xname(obj)); /* EN You("bump into a %s.  Ouch!", xname(obj)); */
+	    losehp(rnd(2+*range), "rammte einen Felsbrocken", NO_KILLER_PREFIX); /* EN losehp(rnd(2+*range), "bumping into a boulder", KILLED_BY); */
 	    return FALSE;
 	}
 	if (!may_pass) {
@@ -497,7 +497,7 @@ hurtle_step(arg, x, y)
     }
 
     if ((mon = m_at(x, y)) != 0) {
-	You("bump into %s.", a_monnam(mon)); /* EN You("bump into %s.", a_monnam(mon)); */ // TODO DE
+	You("VERB_RAMMEN %s.", a_monnam(mon)); /* EN You("bump into %s.", a_monnam(mon)); */
 	wakeup(mon);
 	return FALSE;
     }
@@ -540,8 +540,8 @@ hurtle_step(arg, x, y)
 		return TRUE;
     	} else {
 		if (ttmp->tseen)
-		    You("pass right over %s %s.", /* EN You("pass right over %s %s.", */ // TODO DE
-		    	(ttmp->ttyp == ARROW_TRAP) ? "an" : "a", /* EN (ttmp->ttyp == ARROW_TRAP) ? "an" : "a", */ // TODO DE
+		    pline("Unter KASUS_DATIV PRONOMEN_PERSONAL liegt KASUS_NOMINATIV %s %s.", /* EN You("pass right over %s %s.", */
+		    	"ARTIKEL_UNBESTIMMTER", /* EN (ttmp->ttyp == ARROW_TRAP) ? "an" : "a", */
 		    	defsyms[trap_to_defsym(ttmp->ttyp)].explanation);
     	}
     }
@@ -597,13 +597,13 @@ hurtle(dx, dy, range, verbose)
      * for diagonal movement, give the player a message and return.
      */
     if(Punished && !carried(uball)) {
-	You_feel("a tug from the iron ball."); /* EN You_feel("a tug from the iron ball."); */ // TODO DE
+	You_feel("einen Ruck von der Eisenkugel."); /* EN You_feel("a tug from the iron ball."); */
 	nomul(0);
 	return;
     } else if (u.utrap) {
-	You("are anchored by the %s.", /* EN You("are anchored by the %s.", */ // TODO DE
-	    u.utraptype == TT_WEB ? "web" : u.utraptype == TT_LAVA ? "lava" : /* EN u.utraptype == TT_WEB ? "web" : u.utraptype == TT_LAVA ? "lava" : */ // TODO DE
-		u.utraptype == TT_INFLOOR ? surface(u.ux,u.uy) : "trap"); /* EN u.utraptype == TT_INFLOOR ? surface(u.ux,u.uy) : "trap"); */ // TODO DE
+	pline("SUBJECT ARTIKEL_BESTIMMTER %s VERB_STABILISIEREN OBJECT PRONOMEN_PERSONAL.", /* EN You("are anchored by the %s.", */
+	    u.utraptype == TT_WEB ? "web" : u.utraptype == TT_LAVA ? "NOUN_LAVA" : /* EN u.utraptype == TT_WEB ? "web" : u.utraptype == TT_LAVA ? "lava" : */ // TODO DE
+		u.utraptype == TT_INFLOOR ? surface(u.ux,u.uy) : "NOUN_TRAP"); /* EN u.utraptype == TT_INFLOOR ? surface(u.ux,u.uy) : "trap"); */
 	nomul(0);
 	return;
     }
@@ -1410,7 +1410,7 @@ register struct obj *obj;
 	boolean is_buddy = sgn(mon->data->maligntyp) == sgn(u.ualign.type);
 	boolean is_gem = objects[obj->otyp].oc_material == GEMSTONE;
 	int ret = 0;
-	static NEARDATA const char nogood[] = " is not interested in your junk."; /* EN static NEARDATA const char nogood[] = " is not interested in your junk."; */ // TODO DE
+	static NEARDATA const char nogood[] = " VERB_INTERESSIEREN sich nicht für OBJECT PRONOMEN_POSSESSIV NOUN_MUELL."; /* EN static NEARDATA const char nogood[] = " is not interested in your junk."; */
 	static NEARDATA const char acceptgift[] = " accepts your gift."; /* EN static NEARDATA const char acceptgift[] = " accepts your gift."; */ // TODO DE
 	static NEARDATA const char maybeluck[] = " hesitatingly"; /* EN static NEARDATA const char maybeluck[] = " hesitatingly"; */ // TODO DE
 	static NEARDATA const char noluck[] = " graciously"; /* EN static NEARDATA const char noluck[] = " graciously"; */ // TODO DE

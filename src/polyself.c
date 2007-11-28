@@ -1132,7 +1132,7 @@ int part;
 		// TODO DE
 	*humanoid_parts[] = { "NOUN_ARM", "NOUN_EYE", "NOUN_FACE", "NOUN_FINGER", /* EN *humanoid_parts[] = { "arm", "eye", "face", "finger", */
 		"NOUN_FINGERTIP", "NOUN_FOOT", "NOUN_HAND", "handed", "NOUN_HEAD", "NOUN_LEG", /* EN "fingertip", "foot", "hand", "handed", "head", "leg", */
-		"light headed", "neck", "spine", "toe", "hair", /* EN "light headed", "neck", "spine", "toe", "hair", */ // TODO DE
+		"light headed", "neck", "NOUN_SPINE", "toe", "hair", /* EN "light headed", "neck", "spine", "toe", "hair", */ // TODO DE
 		"blood", "lung", "nose", "stomach"}, /* EN "blood", "lung", "nose", "stomach"}, */ // TODO DE
 	*jelly_parts[] = { "pseudopod", "dark spot", "front", /* EN *jelly_parts[] = { "pseudopod", "dark spot", "front", */ // TODO DE
 		"pseudopod extension", "pseudopod extremity", /* EN "pseudopod extension", "pseudopod extremity", */ // TODO DE
