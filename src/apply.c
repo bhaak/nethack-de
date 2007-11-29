@@ -1225,7 +1225,7 @@ int magic; /* 0=Physical, otherwise skill level */
 			You("VERB_HUEPFEN ein bisschen herum."); /* EN You("bounce around a little."); */
 			return 1;
 		}
-		pline("You've got to be kidding!"); /* EN pline("You've got to be kidding!"); */ // TODO DE
+		You("VERB_MACHEN wohl Witze?!"); /* EN pline("You've got to be kidding!"); */
 		return 0;
 	} else if (u.uinwater) {
 		if (magic) {

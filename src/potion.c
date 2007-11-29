@@ -1047,7 +1047,7 @@ boolean your_fault;
 			   dmgtype(mon->data, AD_PEST) || /* won't happen, see prior goto */
 			   resists_poison(mon)) {
 		    if (canseemon(mon))
-			pline("%s looks unharmed.", Monnam(mon)); /* EN pline("%s looks unharmed.", Monnam(mon)); */ // TODO DE
+			pline("SUBJECT %s VERB_AUSSEHEN unverletzt SATZKLAMMER.", Monnam(mon)); /* EN pline("%s looks unharmed.", Monnam(mon)); */
 		    break;
 		}
  do_illness:

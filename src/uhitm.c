@@ -1465,7 +1465,7 @@ register struct attack *mattk;
 	    case AD_DRLI:
 		if (!negated && !rn2(3) && !resists_drli(mdef)) {
 			int xtmp = d(2,6);
-			pline("%s suddenly seems weaker!", Monnam(mdef)); /* EN pline("%s suddenly seems weaker!", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_SEEM plötzlich schwächer SATZKLAMMER!", Monnam(mdef)); /* EN pline("%s suddenly seems weaker!", Monnam(mdef)); */
 			mdef->mhpmax -= xtmp;
 			if ((mdef->mhp -= xtmp) <= 0 || !mdef->m_lev) {
 				pline("SUBJECT %s VERB_STERBEN!", Monnam(mdef)); /* EN pline("%s dies!", Monnam(mdef)); */
@@ -1514,7 +1514,7 @@ register struct attack *mattk;
 		break;
 	    case AD_DRIN:
 		if (notonhead || !has_head(mdef->data)) {
-		    pline("%s doesn't seem harmed.", Monnam(mdef)); /* EN pline("%s doesn't seem harmed.", Monnam(mdef)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SEEM unverletzt SATZKLAMMER.", Monnam(mdef)); /* EN pline("%s doesn't seem harmed.", Monnam(mdef)); */
 		    tmp = 0;
 		    if (!Unchanging && mdef->data == &mons[PM_GREEN_SLIME]) {
 			if (!Slimed) {
@@ -1630,7 +1630,7 @@ register struct attack *mattk;
 	    case AD_CONF:
 		if (!mdef->mconf) {
 		    if (canseemon(mdef))
-			pline("%s looks confused.", Monnam(mdef)); /* EN pline("%s looks confused.", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_AUSSEHEN verwirrt SATZKLAMMER.", Monnam(mdef)); /* EN pline("%s looks confused.", Monnam(mdef)); */
 		    mdef->mconf = 1;
 		}
 		break;
@@ -1666,7 +1666,7 @@ register struct attack *mattk;
 
 	    case AD_BLND:
 		if (!resists_blnd(mdef)) {
-		    pline("%s is blinded by your flash of light!", Monnam(mdef)); /* EN pline("%s is blinded by your flash of light!", Monnam(mdef)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SEIN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_LICHTBLITZ geblendet!", Monnam(mdef)); /* EN pline("%s is blinded by your flash of light!", Monnam(mdef)); */
 		    mdef->mblinded = min((int)mdef->mblinded + tmp, 127);
 		    mdef->mcansee = 0;
 		}
@@ -1803,7 +1803,7 @@ register struct attack *mattk;
 				/* nutrition only if there can be a corpse */
 				u.uhunger += (mdef->data->cnutrit+1) / 2;
 			    } else tmp = 0;
-			    Sprintf(msgbuf, "You totally digest %s.", /* EN Sprintf(msgbuf, "You totally digest %s.", */ // TODO DE
+			    Sprintf(msgbuf, "SUBJECT VERB_VERDAUEN OBJECT %s vollständig.", /* EN Sprintf(msgbuf, "You totally digest %s.", */
 					    mon_nam(mdef));
 			    if (tmp != 0) {
 				/* setting afternmv = end_engulf is tempting,
@@ -1895,7 +1895,7 @@ register struct attack *mattk;
 	    } else {
 		char kbuf[BUFSZ];
 
-		You("bite into %s.", mon_nam(mdef)); /* EN You("bite into %s.", mon_nam(mdef)); */ // TODO DE
+		You("VERB_BITE OBJECT in %s.", mon_nam(mdef)); /* EN You("bite into %s.", mon_nam(mdef)); */
 		Sprintf(kbuf, "swallowing %s whole", an(mdef->data->mname)); /* EN Sprintf(kbuf, "swallowing %s whole", an(mdef->data->mname)); */ // TODO DE
 		instapetrify(kbuf);
 	    }
@@ -2458,14 +2458,14 @@ struct obj *otmp;	/* source of flash */
 	if (mtmp->msleeping) {
 	    mtmp->msleeping = 0;
 	    if (useeit) {
-		pline_The("flash awakens %s.", mon_nam(mtmp)); /* EN pline_The("flash awakens %s.", mon_nam(mtmp)); */ // TODO DE
+		pline_The("NOUN_BLITZ VERB_WECKEN OBJECT %s.", mon_nam(mtmp)); /* EN pline_The("flash awakens %s.", mon_nam(mtmp)); */
 		res = 1;
 	    }
 	} else if (mtmp->data->mlet != S_LIGHT) {
 	    if (!resists_blnd(mtmp)) {
 		tmp = dist2(otmp->ox, otmp->oy, mtmp->mx, mtmp->my);
 		if (useeit) {
-		    pline("%s is blinded by the flash!", Monnam(mtmp)); /* EN pline("%s is blinded by the flash!", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s ist vom Blitz geblendet!", Monnam(mtmp)); /* EN pline("%s is blinded by the flash!", Monnam(mtmp)); */
 		    res = 1;
 		}
 		if (mtmp->data == &mons[PM_GREMLIN]) {

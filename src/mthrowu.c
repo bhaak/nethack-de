@@ -21,14 +21,14 @@ STATIC_DCL const char *breathwep[];
  */
 STATIC_OVL NEARDATA const char *breathwep[] = {
 // TODO DE
-				"fragments",
-				"fire",
-				"frost",
-				"sleep gas",
-				"a disintegration blast",
-				"lightning",
-				"poison gas",
-				"acid",
+				"fragments", /* EN "fragments", */ // TODO DE
+				"Feuer", /* EN "fire", */
+				"Eis", /* EN "frost", */
+				"sleep gas", /* EN "sleep gas", */ // TODO DE
+				"a disintegration blast", /* EN "a disintegration blast", */ // TODO DE
+				"lightning", /* EN "lightning", */ // TODO DE
+				"Giftgas", /* EN "poison gas", */
+				"Säure", /* EN "acid", */
 				"strange breath #8",
 				"strange breath #9"
 };
@@ -187,7 +187,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 		    if (rn2(30)) {
 			damage += rnd(6);
 		    } else {
-			if (vis) pline_The("poison was deadly..."); /* EN if (vis) pline_The("poison was deadly..."); */ // TODO DE
+			if (vis) pline("Das Gift war tödlich ..."); /* EN if (vis) pline_The("poison was deadly..."); */
 			damage = mtmp->mhp;
 		    }
 		}
@@ -681,7 +681,7 @@ breamu(mtmp, mattk)			/* monster breathes at you (ranged) */
 		if((typ >= AD_MAGM) && (typ <= AD_ACID)) {
 
 		    if(canseemon(mtmp))
-			pline("%s breathes %s!", Monnam(mtmp), /* EN pline("%s breathes %s!", Monnam(mtmp), */ // TODO DE
+			pline("SUBJECT %s VERB_SPEIEN %s!", Monnam(mtmp), /* EN pline("%s breathes %s!", Monnam(mtmp), */ // TODO DE
 			      breathwep[typ-1]);
 		    buzz((int) (-20 - (typ-1)), (int)mattk->damn,
 			 mtmp->mx, mtmp->my, sgn(tbx), sgn(tby));

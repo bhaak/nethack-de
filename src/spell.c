@@ -164,7 +164,7 @@ cursed_book(bp)
 	case 6:
 		if(Antimagic) {
 		    shieldeff(u.ux, u.uy);
-		    pline_The("book %s, but you are unharmed!", explodes); /* EN pline_The("book %s, but you are unharmed!", explodes); */ // TODO DE
+		    pline_The("NOUN_BOOK %s, aber NEUER_SATZ PRONOMEN_PERSONAL VERB_SEIN unverletzt!", explodes); /* EN pline_The("book %s, but you are unharmed!", explodes); */
 		} else {
 		    pline("As you read the book, it %s in your %s!", /* EN pline("As you read the book, it %s in your %s!", */ // TODO DE
 			  explodes, body_part(FACE));

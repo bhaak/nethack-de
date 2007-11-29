@@ -403,7 +403,7 @@ int spellnum;
 	    shieldeff(u.ux, u.uy);
 	    You_feel("momentarily weakened."); /* EN You_feel("momentarily weakened."); */ // TODO DE
 	} else {
-	    You("suddenly feel weaker!"); /* EN You("suddenly feel weaker!"); */ // TODO DE
+	    You("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL plötzlich schwächer!"); /* EN You("suddenly feel weaker!"); */
 	    dmg = mtmp->m_lev - 6;
 	    if (Half_spell_damage) dmg = (dmg + 1) / 2;
 	    losestr(rnd(dmg));
@@ -623,7 +623,7 @@ int spellnum;
 	    if (Hallucination)
 		You_feel("%s!", oldprop ? "trippier" : "trippy"); /* EN You_feel("%s!", oldprop ? "trippier" : "trippy"); */ // TODO DE
 	    else
-		You_feel("%sconfused!", oldprop ? "more " : ""); /* EN You_feel("%sconfused!", oldprop ? "more " : ""); */ // TODO DE
+		Du_fuehlst_dich("verwirrt%s!", oldprop ? "er" : ""); /* EN You_feel("%sconfused!", oldprop ? "more " : ""); */
 	}
 	dmg = 0;
 	break;

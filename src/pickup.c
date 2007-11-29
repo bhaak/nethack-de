@@ -1465,7 +1465,7 @@ doloot()	/* loot a container on the floor or loot saddle from mon. */
     int timepassed = 0;
     coord cc;
     boolean underfoot = TRUE;
-    const char *dont_find_anything = "don't find anything"; /* EN const char *dont_find_anything = "don't find anything"; */ // TODO DE
+    const char *dont_find_anything = "VERB_FINDEN nichts"; /* EN const char *dont_find_anything = "don't find anything"; */
     struct monst *mtmp;
     char qbuf[BUFSZ];
     int prev_inquiry = 0;
@@ -1491,10 +1491,10 @@ lootcont:
 	    nobj = cobj->nexthere;
 
 	    if (Is_container(cobj)) {
-		Sprintf(qbuf, "There is %s here, loot it?", /* EN Sprintf(qbuf, "There is %s here, loot it?", */ // TODO DE
-			safe_qbuf("", sizeof("There is  here, loot it?"), /* EN safe_qbuf("", sizeof("There is  here, loot it?"), */ // TODO DE
+		Sprintf(qbuf, "Hier liegt %s, plündern?", /* EN Sprintf(qbuf, "There is %s here, loot it?", */
+			safe_qbuf("", sizeof("Hier liegt  , plündern?"), /* EN safe_qbuf("", sizeof("There is  here, loot it?"), */
 			     doname(cobj), an(simple_typename(cobj->otyp)),
-			     "a container")); /* EN "a container")); */ // TODO DE
+			     "ein Behälter")); /* EN "a container")); */
 		c = ynq(qbuf);
 		if (c == 'q') return (timepassed);
 		if (c == 'n') continue;
@@ -1510,13 +1510,13 @@ lootcont:
 		    pline("It develops a huge set of teeth and bites you!"); /* EN pline("It develops a huge set of teeth and bites you!"); */ // TODO DE
 		    tmp = rnd(10);
 		    if (Half_physical_damage) tmp = (tmp+1) / 2;
-		    losehp(tmp, "carnivorous bag", KILLED_BY_AN); /* EN losehp(tmp, "carnivorous bag", KILLED_BY_AN); */ // TODO DE
+		    losehp(tmp, "ADJEKTIV_CARNIVOROUS NOUN_BAG", KILLED_BY_AN); /* EN losehp(tmp, "carnivorous bag", KILLED_BY_AN); */
 		    makeknown(BAG_OF_TRICKS);
 		    timepassed = 1;
 		    continue;
 		}
 
-		You("VERB_OEFFNEN vorsichtig OBJECT %s...", the(xname(cobj))); /* EN You("carefully open %s...", the(xname(cobj))); */
+		You("VERB_OEFFNEN vorsichtig OBJECT %s ...", the(xname(cobj))); /* EN You("carefully open %s...", the(xname(cobj))); */
 		timepassed |= use_container(cobj, 0);
 		if (multi < 0) return 1;		/* chest trap */
 	    }
@@ -1576,7 +1576,7 @@ gotit:
 	    } else {
 		dropy(goldob);
 #endif
-		pline("Ok, now there is loot here."); /* EN pline("Ok, now there is loot here."); */ // TODO DE
+		pline("Ok, jetzt gibt's hier was zu plündern."); /* EN pline("Ok, now there is loot here."); */
 	    }
 	}
     } else if (IS_GRAVE(levl[cc.x][cc.y].typ)) {
@@ -1595,7 +1595,7 @@ gotit:
 	} else
 	    underfoot = FALSE;
 	if (u.dz < 0) {
-	    You("%s to loot on the %s.", dont_find_anything, /* EN You("%s to loot on the %s.", dont_find_anything, */ // TODO DE
+	    You("%s zum Plündern _an_ ARTIKEL_BESTIMMTER %s.", dont_find_anything, /* EN You("%s to loot on the %s.", dont_find_anything, */ // TODO DE
 		ceiling(cc.x, cc.y));
 	    timepassed = 1;
 	    return timepassed;
@@ -1617,14 +1617,14 @@ gotit:
 		    You("have to be at a container to loot it."); /* EN You("have to be at a container to loot it."); */ // TODO DE
 		}
 	    } else {
-		You("%s %sthere to loot.", dont_find_anything, /* EN You("%s %sthere to loot.", dont_find_anything, */ // TODO DE
-			(prev_inquiry || prev_loot) ? "else " : ""); /* EN (prev_inquiry || prev_loot) ? "else " : ""); */ // TODO DE
+		You("VERB_FINDEN dort nichts %szu plündern.", /* EN You("%s %sthere to loot.", dont_find_anything, */
+			(prev_inquiry || prev_loot) ? "weiter " : ""); /* EN (prev_inquiry || prev_loot) ? "else " : ""); */
 		return timepassed;
 	    }
 	}
     } else if (c != 'y' && c != 'n') {
-	You("%s %s to loot.", dont_find_anything, /* EN You("%s %s to loot.", dont_find_anything, */ // TODO DE
-		    underfoot ? "here" : "there"); /* EN underfoot ? "here" : "there"); */ // TODO DE
+	You("VERB_FINDEN %s nichts zu plündern.", /* EN You("%s %s to loot.", dont_find_anything, */
+		    underfoot ? "hier" : "dort"); /* EN underfoot ? "here" : "there"); */
     }
     return (timepassed);
 }
@@ -1732,18 +1732,18 @@ register struct obj *obj;
 		impossible("<in> no current_container?");
 		return 0;
 	} else if (obj == uball || obj == uchain) {
-		You("must be kidding."); /* EN You("must be kidding."); */ // TODO DE
+		You("VERB_MACHEN wohl Witze?!"); /* EN You("must be kidding."); */
 		return 0;
 	} else if (obj == current_container) {
-		pline("That would be an interesting topological exercise."); /* EN pline("That would be an interesting topological exercise."); */ // TODO DE
+		pline("Das wäre eine interessante topologische Übung."); /* EN pline("That would be an interesting topological exercise."); */
 		return 0;
 	} else if (obj->owornmask & (W_ARMOR | W_RING | W_AMUL | W_TOOL)) {
-		Norep("You cannot %s %s you are wearing.", /* EN Norep("You cannot %s %s you are wearing.", */ // TODO DE
-			Icebox ? "refrigerate" : "stash", something); /* EN Icebox ? "refrigerate" : "stash", something); */ // TODO DE
+		Norep("SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN nicht etwas %s, was NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL gerade VERB_TRAGEN.", /* EN Norep("You cannot %s %s you are wearing.", */
+			Icebox ? "tiefkühlen" : "verstauen"); /* EN Icebox ? "refrigerate" : "stash", something); */
 		return 0;
 	} else if ((obj->otyp == LOADSTONE) && obj->cursed) {
 		obj->bknown = 1;
-	      pline_The("stone%s won't leave your person.", plur(obj->quan)); /* EN pline_The("stone%s won't leave your person.", plur(obj->quan)); */ // TODO DE
+	      pline_The("NOUN_GEM_ROCK%s VERB_WOLLEN OBJECT PRONOMEN_PERSONAL nicht verlassen.", plur(obj->quan)); /* EN pline_The("stone%s won't leave your person.", plur(obj->quan)); */
 		return 0;
 	} else if (obj->otyp == AMULET_OF_YENDOR ||
 		   obj->otyp == CANDELABRUM_OF_INVOCATION ||
@@ -1753,7 +1753,7 @@ register struct obj *obj;
 	 * steal them.  It also becomes a pain to check to see if someone
 	 * has the Amulet.  Ditto for the Candelabrum, the Bell and the Book.
 	 */
-	    pline("%s cannot be confined in such trappings.", The(xname(obj))); /* EN pline("%s cannot be confined in such trappings.", The(xname(obj))); */ // TODO DE
+	    pline("SUBJECT %s cannot be confined in such trappings.", The(xname(obj))); /* EN pline("%s cannot be confined in such trappings.", The(xname(obj))); */ // TODO DE
 	    return 0;
 	} else if (obj->otyp == LEASH && obj->leashmon != 0) {
 		pline("%s attached to your pet.", Tobjnam(obj, "are")); /* EN pline("%s attached to your pet.", Tobjnam(obj, "are")); */ // TODO DE
@@ -1799,7 +1799,7 @@ register struct obj *obj;
 		 *  of evaluation of the parameters is undefined.
 		 */
 		Strcpy(buf, the(xname(obj)));
-		You("cannot fit %s into %s.", buf, /* EN You("cannot fit %s into %s.", buf, */ // TODO DE
+		pline("SUBJECT %s VERB_PASSEN nicht OBJECT in %s.", buf, /* EN You("cannot fit %s into %s.", buf, */
 		    the(xname(current_container)));
 		return 0;
 	}
@@ -1846,13 +1846,13 @@ register struct obj *obj;
 		else
 			panic("in_container:  bag not found.");
 
-		losehp(d(6,6),"magical explosion", KILLED_BY_AN); /* EN losehp(d(6,6),"magical explosion", KILLED_BY_AN); */ // TODO DE
+		losehp(d(6,6),"NOUN_MAGIEEXPLOSION", KILLED_BY_AN); /* EN losehp(d(6,6),"magical explosion", KILLED_BY_AN); */
 		current_container = 0;	/* baggone = TRUE; */
 	}
 
 	if (current_container) {
 	    Strcpy(buf, the(xname(current_container)));
-	    You("put %s into %s.", doname(obj), buf); /* EN You("put %s into %s.", doname(obj), buf); */ // TODO DE
+	    You("VERB_LEGEN OBJECT %s NEUES_OBJECT OBJECT in %s.", doname(obj), buf); /* EN You("put %s into %s.", doname(obj), buf); */
 
 	    /* gold in container always needs to be added to credit */
 	    if (floor_container && obj->oclass == COIN_CLASS)
@@ -1936,7 +1936,7 @@ register struct obj *obj;
 		addtobill(obj, FALSE, FALSE, FALSE);
 	}
 	if (is_pick(obj) && !obj->unpaid && *u.ushops && shop_keeper(*u.ushops))
-		verbalize("You sneaky cad! Get out of here with that pick!"); /* EN verbalize("You sneaky cad! Get out of here with that pick!"); */ // TODO DE
+		verbalize("Du kleiner Gauner!  Scher dich zum Teufel mit deiner Hacke!"); /* EN verbalize("You sneaky cad! Get out of here with that pick!"); */
 
 	otmp = addinv(obj);
 	loadlev = near_capacity();
@@ -1965,9 +1965,9 @@ struct obj *item;
     long loss = 0L;
 
     if (item->dknown)
-	pline("%s %s vanished!", Doname2(item), otense(item, "have")); /* EN pline("%s %s vanished!", Doname2(item), otense(item, "have")); */ // TODO DE
+	pline("SUBJECT %s %s verschwunden!", Doname2(item), otense(item, "VERB_SEIN")); /* EN pline("%s %s vanished!", Doname2(item), otense(item, "have")); */
     else
-	You("%s %s disappear!", Blind ? "notice" : "see", doname(item)); /* EN You("%s %s disappear!", Blind ? "notice" : "see", doname(item)); */ // TODO DE
+	You("%s, wie NEUER_SATZ SUBJECT_IM_SATZ %s VERB_VERSCHWINDEN!", Blind ? "VERB_BEMERKEN" : "VERB_SEHEN", doname(item)); /* EN You("%s %s disappear!", Blind ? "notice" : "see", doname(item)); */
 
     if (*u.ushops && (shkp = shop_keeper(*u.ushops)) != 0) {
 	if (held ? (boolean) item->unpaid : costly_spot(u.ux, u.uy))
@@ -2003,7 +2003,7 @@ struct obj *box;
 	if (!canspotmon(livecat))
 	    You("think %s brushed your %s.", something, body_part(FOOT)); /* EN You("think %s brushed your %s.", something, body_part(FOOT)); */ // TODO DE
 	else
-	    pline("%s inside the box is still alive!", Monnam(livecat)); /* EN pline("%s inside the box is still alive!", Monnam(livecat)); */ // TODO DE
+	    pline("SUBJECT %s in der Kiste ist noch am Leben!", Monnam(livecat)); /* EN pline("%s inside the box is still alive!", Monnam(livecat)); */
 	(void) christen_monst(livecat, sc);
     } else {
 	deadcat = mk_named_object(CORPSE, &mons[PM_HOUSECAT],
@@ -2012,8 +2012,8 @@ struct obj *box;
 	    obj_extract_self(deadcat);
 	    (void) add_to_container(box, deadcat);
 	}
-	pline_The("%s inside the box is dead!", /* EN pline_The("%s inside the box is dead!", */ // TODO DE
-	    Hallucination ? rndmonnam() : "housecat"); /* EN Hallucination ? rndmonnam() : "housecat"); */ // TODO DE
+	pline_The("SUBJECT %s in der Kiste ist tot!", /* EN pline_The("%s inside the box is dead!", */
+	    Hallucination ? rndmonnam() : "NOUN_CAT"); /* EN Hallucination ? rndmonnam() : "housecat"); */
     }
     box->owt = weight(box);
     return;
@@ -2048,10 +2048,10 @@ register int held;
 	}
 	if (obj->olocked) {
 	    pline("SUBJECT %s verschlossen zu sein.", Tobjnam(obj, "VERB_SCHEINEN")); /* EN pline("%s to be locked.", Tobjnam(obj, "seem")); */
-	    if (held) You("must put it down to unlock."); /* EN if (held) You("must put it down to unlock."); */ // TODO DE
+	    if (held) You("VERB_MUESSEN sie abstellen um sie aufzuschliessen."); /* EN if (held) You("must put it down to unlock."); */
 	    return 0;
 	} else if (obj->otrapped) {
-	    if (held) You("open %s...", the(xname(obj))); /* EN if (held) You("open %s...", the(xname(obj))); */ // TODO DE
+	    if (held) You("VERB_OPEN OBJECT %s ...", the(xname(obj))); /* EN if (held) You("open %s...", the(xname(obj))); */
 	    (void) chest_trap(obj, HAND, FALSE);
 	    /* even if the trap fails, you've used up this turn */
 	    if (multi >= 0) {	/* in case we didn't become paralyzed */
@@ -2081,7 +2081,7 @@ register int held;
 	}
 
 	if (loss)	/* magic bag lost some shop goods */
-	    You("owe %ld %s for lost merchandise.", loss, currency(loss)); /* EN You("owe %ld %s for lost merchandise.", loss, currency(loss)); */ // TODO DE
+	    You("VERB_OWE %ld %s für verlorene Ware.", loss, currency(loss)); /* EN You("owe %ld %s for lost merchandise.", loss, currency(loss)); */
 	obj->owt = weight(obj);	/* in case any items were lost */
 
 	if (!cnt)
@@ -2100,12 +2100,12 @@ register int held;
 		    boolean inokay = (invent != 0);
 		    if (!outokay && !inokay) {
 			pline("%s", emptymsg);
-			pline("You don't have anything to put in."); /* EN pline("You don't have anything to put in."); */ // TODO DE
+			You("VERB_HABEN nichts reinzulegen."); /* EN pline("You don't have anything to put in."); */
 			return used;
 		    }
 		    menuprompt[0] = '\0';
 		    if (!cnt) Sprintf(menuprompt, "%s ", emptymsg);
-		    Strcat(menuprompt, "Do what?"); /* EN Strcat(menuprompt, "Do what?"); */ // TODO DE
+		    Strcat(menuprompt, "Was nun?"); /* EN Strcat(menuprompt, "Do what?"); */
 		    t = in_or_out_menu(menuprompt, current_container, outokay, inokay);
 		    if (t <= 0) return 0;
 		    loot_out = (t & 0x01) != 0;
@@ -2168,11 +2168,11 @@ ask_again2:
 	if (!invent) {
 #endif
 	    /* nothing to put in, but some feedback is necessary */
-	    You("don't have anything to put in."); /* EN You("don't have anything to put in."); */ // TODO DE
+	    You("VERB_HABEN nichts reinzulegen."); /* EN You("don't have anything to put in."); */
 	    return used;
 	}
 	if (flags.menu_style != MENU_FULL) {
-	    Sprintf(qbuf, "Do you wish to put %s in?", something); /* EN Sprintf(qbuf, "Do you wish to put %s in?", something); */ // TODO DE
+	    Sprintf(qbuf, "MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s reintun?", something); /* EN Sprintf(qbuf, "Do you wish to put %s in?", something); */
 	    Strcpy(pbuf, ynqchars);
 	    if (flags.menu_style == MENU_TRADITIONAL && invent && inv_cnt() > 0)
 		Strcat(pbuf, "m");
@@ -2256,7 +2256,7 @@ boolean put_in;
     int n, i, n_looted = 0;
     boolean all_categories = TRUE, loot_everything = FALSE;
     char buf[BUFSZ];
-    const char *takeout = "Take out", *putin = "Put in"; /* EN const char *takeout = "Take out", *putin = "Put in"; */ // TODO DE
+    const char *takeout = "rausnehmen", *putin = "reintun"; /* EN const char *takeout = "Take out", *putin = "Put in"; */
     struct obj *otmp, *otmp2;
     menu_item *pick_list;
     int mflags, res;
@@ -2292,7 +2292,7 @@ boolean put_in;
     } else {
 	mflags = INVORDER_SORT;
 	if (put_in && flags.invlet_constant) mflags |= USE_INVLET;
-	Sprintf(buf,"%s what?", put_in ? putin : takeout); /* EN Sprintf(buf,"%s what?", put_in ? putin : takeout); */ // TODO DE
+	Sprintf(buf,"Was %s?", put_in ? putin : takeout); /* EN Sprintf(buf,"%s what?", put_in ? putin : takeout); */
 	n = query_objlist(buf, put_in ? invent : container->cobj,
 			  mflags, &pick_list, PICK_ANY,
 			  all_categories ? allow_all : allow_category);
@@ -2338,21 +2338,21 @@ boolean outokay, inokay;
     start_menu(win);
     if (outokay) {
 	any.a_int = 1;
-	Sprintf(buf,"Take %s out of %s", something, the(xname(obj))); /* EN Sprintf(buf,"Take %s out of %s", something, the(xname(obj))); */ // TODO DE
+	Sprintf(buf,"Etwas KASUS_DATIV aus %s rausnehmen", the(xname(obj))); /* EN Sprintf(buf,"Take %s out of %s", something, the(xname(obj))); */
 	add_menu(win, NO_GLYPH, &any, *menuselector, 0, ATR_NONE,
 			buf, MENU_UNSELECTED);
     }
     menuselector++;
     if (inokay) {
 	any.a_int = 2;
-	Sprintf(buf,"Put %s into %s", something, the(xname(obj))); /* EN Sprintf(buf,"Put %s into %s", something, the(xname(obj))); */ // TODO DE
+	Sprintf(buf,"Etwas KASUS_AKKUSATIV in %s reinlegen", the(xname(obj))); /* EN Sprintf(buf,"Put %s into %s", something, the(xname(obj))); */
 	add_menu(win, NO_GLYPH, &any, *menuselector, 0, ATR_NONE, buf, MENU_UNSELECTED);
     }
     menuselector++;
     if (outokay && inokay) {
 	any.a_int = 3;
 	add_menu(win, NO_GLYPH, &any, *menuselector, 0, ATR_NONE,
-			"Both of the above", MENU_UNSELECTED); /* EN "Both of the above", MENU_UNSELECTED); */ // TODO DE
+			"Sowohl als auch", MENU_UNSELECTED); /* EN "Both of the above", MENU_UNSELECTED); */
     }
     end_menu(win, prompt);
     n = select_menu(win, PICK_ONE, &pick_list);

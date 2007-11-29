@@ -94,9 +94,9 @@ int shotlimit;
 	u_wipe_engr(2);
 	if (!uarmg && !Stone_resistance && (obj->otyp == CORPSE &&
 		    touch_petrifies(&mons[obj->corpsenm]))) {
-		You("VERB_WERFEN OBJECT ARTIKEL_BESTIMMTER %s corpse with your bare %s.", /* EN You("throw the %s corpse with your bare %s.", */ // TODO DE
+		You("VERB_WERFEN OBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE %s NOUN_CORPSE NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("throw the %s corpse with your bare %s.", */
 		    mons[obj->corpsenm].mname, body_part(HAND));
-		Sprintf(killer_buf, "%s corpse", an(mons[obj->corpsenm].mname)); /* EN Sprintf(killer_buf, "%s corpse", an(mons[obj->corpsenm].mname)); */ // TODO DE
+		Sprintf(killer_buf, "MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[obj->corpsenm].mname)); /* EN Sprintf(killer_buf, "%s corpse", an(mons[obj->corpsenm].mname)); */
 		instapetrify(killer_buf);
 	}
 	if (welded(obj)) {

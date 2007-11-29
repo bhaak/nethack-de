@@ -888,7 +888,7 @@ mdamagem(magr, mdef, mattk)
 		 * we still should check for it).
 		 */
 		if (!magr->mcan && !mdef->mconf && !magr->mspec_used) {
-		    if (vis) pline("%s looks confused.", Monnam(mdef)); /* EN if (vis) pline("%s looks confused.", Monnam(mdef)); */ // TODO DE
+		    if (vis) pline("SUBJECT %s VERB_AUSSEHEN verwirrt SATZKLAMMER.", Monnam(mdef)); /* EN if (vis) pline("%s looks confused.", Monnam(mdef)); */
 		    mdef->mconf = 1;
 		    mdef->mstrategy &= ~STRAT_WAITFORU;
 		}
@@ -909,8 +909,8 @@ mdamagem(magr, mdef, mattk)
 		break;
 	    case AD_HALU:
 		if (!magr->mcan && haseyes(pd) && mdef->mcansee) {
-		    if (vis) pline("%s looks %sconfused.", /* EN if (vis) pline("%s looks %sconfused.", */ // TODO DE
-				    Monnam(mdef), mdef->mconf ? "more " : ""); /* EN Monnam(mdef), mdef->mconf ? "more " : ""); */ // TODO DE
+		    if (vis) pline("SUBJECT %s VERB_AUSSEHEN verwirrt%s SATZKLAMMER.", /* EN if (vis) pline("%s looks %sconfused.", */
+				    Monnam(mdef), mdef->mconf ? "er" : ""); /* EN Monnam(mdef), mdef->mconf ? "more " : ""); */
 		    mdef->mconf = 1;
 		    mdef->mstrategy &= ~STRAT_WAITFORU;
 		}
@@ -978,7 +978,7 @@ mdamagem(magr, mdef, mattk)
 		if (!cancelled && !rn2(3) && !resists_drli(mdef)) {
 			tmp = d(2,6);
 			if (vis)
-			    pline("%s suddenly seems weaker!", Monnam(mdef)); /* EN pline("%s suddenly seems weaker!", Monnam(mdef)); */ // TODO DE
+			    pline("SUBJECT %s VERB_SEEM plötzlich schwächer SATZKLAMMER!", Monnam(mdef)); /* EN pline("%s suddenly seems weaker!", Monnam(mdef)); */
 			mdef->mhpmax -= tmp;
 			if (mdef->m_lev == 0)
 				tmp = mdef->mhp;
@@ -1065,7 +1065,7 @@ mdamagem(magr, mdef, mattk)
 		break;
 	    case AD_DRIN:
 		if (notonhead || !has_head(pd)) {
-		    if (vis) pline("%s doesn't seem harmed.", Monnam(mdef)); /* EN if (vis) pline("%s doesn't seem harmed.", Monnam(mdef)); */ // TODO DE
+		    if (vis) pline("SUBJECT %s VERB_SEEM unverletzt SATZKLAMMER.", Monnam(mdef)); /* EN if (vis) pline("%s doesn't seem harmed.", Monnam(mdef)); */
 		    /* Not clear what to do for green slimes */
 		    tmp = 0;
 		    break;

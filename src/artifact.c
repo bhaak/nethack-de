@@ -914,9 +914,9 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 
 	    buf[0] = '\0';
 	    if (do_stun) Strcat(buf, "stunned"); /* EN if (do_stun) Strcat(buf, "stunned"); */ // TODO DE
-	    if (do_stun && do_confuse) Strcat(buf, " and "); /* EN if (do_stun && do_confuse) Strcat(buf, " and "); */ // TODO DE
-	    if (do_confuse) Strcat(buf, "confused"); /* EN if (do_confuse) Strcat(buf, "confused"); */ // TODO DE
-	    pline("%s %s %s%c", hittee, vtense(hittee, "are"), /* EN pline("%s %s %s%c", hittee, vtense(hittee, "are"), */ // TODO DE
+	    if (do_stun && do_confuse) Strcat(buf, " und "); /* EN if (do_stun && do_confuse) Strcat(buf, " and "); */
+	    if (do_confuse) Strcat(buf, "verwirrt"); /* EN if (do_confuse) Strcat(buf, "confused"); */
+	    pline("SUBJECT %s %s %s%c", hittee, vtense(hittee, "VERB_SEIN"), /* EN pline("%s %s %s%c", hittee, vtense(hittee, "are"), */
 		  buf, (do_stun && do_confuse) ? '!' : '.');
 	}
     }
@@ -970,7 +970,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	if (attacks(AD_FIRE, otmp)) {
 	    if (realizes_damage)
 		pline_The("fiery blade %s %s%c", /* EN pline_The("fiery blade %s %s%c", */ // TODO DE
-			!spec_dbon_applies ? "hits" :
+			!spec_dbon_applies ? "VERB_HIT" : /* EN !spec_dbon_applies ? "hits" : */
 			(mdef->data == &mons[PM_WATER_ELEMENTAL]) ?
 			"vaporizes part of" : "burns", /* EN "vaporizes part of" : "burns", */ // TODO DE
 			hittee, !spec_dbon_applies ? '.' : '!');

@@ -75,9 +75,9 @@ vomiting_dialogue()
 static NEARDATA const char * const choke_texts[] = {
 	"You find it hard to breathe.", /* EN "You find it hard to breathe.", */ // TODO DE
 	"You're gasping for air.", /* EN "You're gasping for air.", */ // TODO DE
-	"You can no longer breathe.", /* EN "You can no longer breathe.", */ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN nicht mehr atmen.", /* EN "You can no longer breathe.", */
 	"You're turning %s.", /* EN "You're turning %s.", */ // TODO DE
-	"You suffocate." /* EN "You suffocate." */ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_ERSTICKEN." /* EN "You suffocate." */
 };
 
 static NEARDATA const char * const choke_texts2[] = {
@@ -85,7 +85,7 @@ static NEARDATA const char * const choke_texts2[] = {
 	"Your blood is having trouble reaching your brain.", /* EN "Your blood is having trouble reaching your brain.", */ // TODO DE
 	"The pressure on your %s increases.", /* EN "The pressure on your %s increases.", */ // TODO DE
 	"Your consciousness is fading.", /* EN "Your consciousness is fading.", */ // TODO DE
-	"You suffocate." /* EN "You suffocate." */ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_ERSTICKEN." /* EN "You suffocate." */
 };
 
 STATIC_OVL void

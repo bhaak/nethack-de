@@ -359,7 +359,7 @@ mattacku(mtmp)
 		    coord cc; /* maybe we need a unexto() function? */
 		    struct obj *obj;
 
-		    You("fall from the %s!", ceiling(u.ux,u.uy)); /* EN You("fall from the %s!", ceiling(u.ux,u.uy)); */ // TODO DE
+		    You("VERB_FALLEN OBJECT KASUS_DATIV _von_ %s!", ceiling(u.ux,u.uy)); /* EN You("fall from the %s!", ceiling(u.ux,u.uy)); */
 		    if (enexto(&cc, u.ux, u.uy, youmonst.data)) {
 			remove_monster(mtmp->mx, mtmp->my);
 			newsym(mtmp->mx,mtmp->my);
@@ -1037,7 +1037,7 @@ dopois:
 	    case AD_DRIN:
 		hitmsg(mtmp, mattk);
 		if (defends(AD_DRIN, uwep) || !has_head(youmonst.data)) {
-		    You("don't seem harmed."); /* EN You("don't seem harmed."); */ // TODO DE
+		    You("VERB_SEEM unverletzt SATZKLAMMER."); /* EN You("don't seem harmed."); */
 		    /* Not clear what to do for green slimes */
 		    break;
 		}
@@ -1674,13 +1674,13 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 			u.uswldtim = 0;
 			tmp = 0;
 		    } else if (u.uswldtim == 0) {
-			pline("%s totally digests you!", Monnam(mtmp)); /* EN pline("%s totally digests you!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_VERDAUEN OBJECT PRONOMEN_PERSONAL vollständig!", Monnam(mtmp)); /* EN pline("%s totally digests you!", Monnam(mtmp)); */
 			tmp = u.uhp;
 			if (Half_physical_damage) tmp *= 2; /* sorry */
 		    } else {
-			pline("%s%s digests you!", Monnam(mtmp), /* EN pline("%s%s digests you!", Monnam(mtmp), */ // TODO DE
-			      (u.uswldtim == 2) ? " thoroughly" : /* EN (u.uswldtim == 2) ? " thoroughly" : */ // TODO DE
-			      (u.uswldtim == 1) ? " utterly" : ""); /* EN (u.uswldtim == 1) ? " utterly" : ""); */ // TODO DE
+			pline("SUBJECT %s VERB_VERDAUEN OBJECT PRONOMEN_PERSONAL%s!", Monnam(mtmp), /* EN pline("%s%s digests you!", Monnam(mtmp), */
+			      (u.uswldtim == 2) ? " gründlich" : /* EN (u.uswldtim == 2) ? " thoroughly" : */
+			      (u.uswldtim == 1) ? " völlig" : ""); /* EN (u.uswldtim == 1) ? " utterly" : ""); */
 			exercise(A_STR, FALSE);
 		    }
 		    break;

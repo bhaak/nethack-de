@@ -2429,7 +2429,7 @@ struct obj *box;	/* null for floor trap */
 	if ((box && !carried(box)) ? is_pool(box->ox, box->oy) : Underwater) {
 	    pline("A cascade of steamy bubbles erupts from %s!", /* EN pline("A cascade of steamy bubbles erupts from %s!", */ // TODO DE
 		    the(box ? xname(box) : surface(u.ux,u.uy)));
-	    if (Fire_resistance) You("VERB_SEIN unverletzt."); /* EN if (Fire_resistance) You("are uninjured."); */
+	    if (Fire_resistance) You("VERB_SEIN unversehrt."); /* EN if (Fire_resistance) You("are uninjured."); */
 	    else losehp(rnd(3), "boiling water", KILLED_BY); /* EN else losehp(rnd(3), "boiling water", KILLED_BY); */ // TODO DE
 	    return;
 	}
@@ -2457,7 +2457,7 @@ struct obj *box;	/* null for floor trap */
 		u.uhpmax -= rn2(min(u.uhpmax,num + 1)), flags.botl = 1;
 	}
 	if (!num)
-	    You("VERB_SEIN unverletzt."); /* EN You("are uninjured."); */
+	    You("VERB_SEIN unversehrt."); /* EN You("are uninjured."); */
 	else
 	    losehp(num, tower_of_flame, KILLED_BY_AN);
 	burn_away_slime();

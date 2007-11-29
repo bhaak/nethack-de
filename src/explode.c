@@ -315,7 +315,7 @@ int expltype;
 		if (adtyp == AD_FIRE) burn_away_slime();
 		if (Invulnerable) {
 		    damu = 0;
-		    You("are unharmed!"); /* EN You("are unharmed!"); */ // TODO DE
+		    You("VERB_SEIN unverletzt!"); /* EN You("are unharmed!"); */
 		} else if (Half_physical_damage && adtyp == AD_PHYS)
 		    damu = (damu+1) / 2;
 		if (adtyp == AD_FIRE) (void) burnarmor(&youmonst);

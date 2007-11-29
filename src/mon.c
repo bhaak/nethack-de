@@ -1513,7 +1513,7 @@ boolean was_swallowed;			/* digestion */
 			if (Half_physical_damage) tmp = (tmp+1) / 2;
 			losehp(tmp, killer_buf, KILLED_BY_AN);
 		    } else {
-			if (flags.soundok) You_hear("an explosion."); /* EN if (flags.soundok) You_hear("an explosion."); */ // TODO DE
+			if (flags.soundok) You_hear("eine Explosion."); /* EN if (flags.soundok) You_hear("an explosion."); */
 			magr->mhp -= tmp;
 			if (magr->mhp < 1) mondied(magr);
 			if (magr->mhp < 1) { /* maybe lifesaved */
@@ -1782,7 +1782,7 @@ xkilled(mtmp, dest)
 		 * appears).
 		 */
 		stoned = FALSE;
-		if (!cansee(x,y)) pline("Maybe not..."); /* EN if (!cansee(x,y)) pline("Maybe not..."); */ // TODO DE
+		if (!cansee(x,y)) pline("Vielleicht nicht ..."); /* EN if (!cansee(x,y)) pline("Maybe not..."); */
 		return;
 	}
 
