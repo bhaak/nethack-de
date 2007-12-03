@@ -169,7 +169,7 @@ int previous_token(const char* input, char* output, int pos) {
 	//printf("previous_token3: -%s-\n", input+i);
 
 	/* determine begin of token */
-	while ((i>0) && (isalnum(input[i])||input[i]=='_')) {
+	while ((i>=0) && (isalnum(input[i])||input[i]=='_')) {
 		i--;
 	}
 	i++;

@@ -159,6 +159,13 @@ START_TEST (test_identified_spellbooks) {
 
 START_TEST (test_corpses) {
 	char *text[][2] = {
+		{"ARTIKEL_UNBESTIMMTER MODIFIER_CORPSE NOUN_ROTHE NOUN_CORPSE",
+		 "Ein Kadaver einer Rothé"},
+		{"ARTIKEL_BESTIMMTER MODIFIER_CORPSE NOUN_ROTHE NOUN_CORPSE",
+		 "Der Kadaver einer Rothé"},
+		{"ARTIKEL_UNBESTIMMTER halb ADJEKTIV_EATEN MODIFIER_CORPSE NOUN_RED_DRAGON NOUN_CORPSE",
+		 "Ein halb verspeister Kadaver eines Rotdrachen"},
+
 		{"SUBJECT PRONOMEN_DIESER MODIFIER_CORPSE NOUN_SHOPKEEPER NOUN_CORPSE schmeckt schrecklich!",
 	   "Dieser Kadaver eines Ladenbesitzers schmeckt schrecklich!"},
 		{"Hier VERB_LIEGEN ARTIKEL_UNBESTIMMTER MODIFIER_CORPSE NOUN_ACID_BLOB NOUN_CORPSE.",
@@ -777,6 +784,40 @@ START_TEST (test_satzklammer) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+
+int next_token(const char* input, char* output, int pos);
+int previous_token(const char* input, char* output, int pos);
+
+START_TEST (test_token_functions) {
+  char *tmp = "ARTIKEL_UNBESTIMMTER ADJEKTIV_FARBE_GREEN NOUN_DOG";
+	char tmp2[256];
+
+  next_token(tmp, tmp2, 0);
+	fail_unless(strcmp(tmp2, "ARTIKEL_UNBESTIMMTER")==0, "%s anstelle von ARTIKEL_UNBESTIMMTER gefunden", tmp2);
+
+  next_token(tmp, tmp2, strlen("ARTIKEL_UNBESTIMMTER")+1);
+	fail_unless(strcmp(tmp2, "ADJEKTIV_FARBE_GREEN")==0, "%s anstelle von ADJEKTIV_FARBE_GREEN gefunden", tmp2);
+  
+  next_token(tmp, tmp2, strlen("ARTIKEL_UNBESTIMMTER")+1+strlen("ADJEKTIV_FARBE_GREEN")+1);
+	fail_unless(strcmp(tmp2, "NOUN_DOG")==0, "%s anstelle von NOUN_DOG gefunden", tmp2);
+
+
+  previous_token(tmp, tmp2, strlen(tmp));
+	fail_unless(strcmp(tmp2, "NOUN_DOG")==0, "%s anstelle von NOUN_DOG gefunden", tmp2);
+
+  previous_token(tmp, tmp2, strlen("ARTIKEL_UNBESTIMMTER")+1+strlen("ADJEKTIV_FARBE_GREEN"));
+	fail_unless(strcmp(tmp2, "ADJEKTIV_FARBE_GREEN")==0, "%s anstelle von ADJEKTIV_FARBE_GREEN gefunden", tmp2);
+	
+  previous_token(tmp, tmp2, 0);
+	fail_unless(strcmp(tmp2, "ARTIKEL_UNBESTIMMTER")==0, "%s anstelle von ARTIKEL_UNBESTIMMTER gefunden", tmp2);
+
+
+	tmp2[0] = '\0';
+  previous_token(tmp, tmp2, -1);
+	fail_unless(strcmp(tmp2, "")==0, "%s anstelle von leerer Zeichenkette gefunden", tmp2);
+
+} END_TEST
+
 //#endif
 
 Suite *test_suite(void)
@@ -818,6 +859,8 @@ Suite *test_suite(void)
 	}
 	//tcase_add_test(tc_core, test_incomplete_sentences);
 	tcase_add_test(tc_core, test_german2meta);
+  tcase_add_test(tc_core, test_token_functions);
+	
   tcase_add_test(tc_core, test_corpses);
 
 
