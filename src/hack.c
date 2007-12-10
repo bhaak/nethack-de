@@ -1826,7 +1826,7 @@ dopickup()
 		You("VERB_KOENNEN nicht ins Wasser tauchen um Dinge aufzuheben."); /* EN You("cannot dive into the water to pick things up."); */
 		return(0);
 	    } else if (!Underwater) {
-		You_cant("nicht einmal den Grund sehen, geschweige den OBJECT %s aufheben.", /* EN You_cant("even see the bottom, let alone pick up %s.", */
+		You("VERB_KOENNEN noch nicht einmal den Grund sehen, geschweige den OBJECT %s aufheben.", /* EN You_cant("even see the bottom, let alone pick up %s.", */
 				something);
 		return(0);
 	    }

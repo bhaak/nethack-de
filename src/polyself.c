@@ -1039,7 +1039,7 @@ dogaze()
 		}
 	    }
 	}
-	if (!looked) You("gaze at no place in particular."); /* EN if (!looked) You("gaze at no place in particular."); */ // TODO DE
+	if (!looked) You("VERB_GAZE ein bisschen in der Gegend rum."); /* EN if (!looked) You("gaze at no place in particular."); */
 	return 1;
 }
 

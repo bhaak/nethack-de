@@ -539,12 +539,12 @@ int ttyp;
 	if (ttyp == PIT) {
 
 	    if(madeby_u) {
-		You("VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT NEUES_OBJECT OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN You("dig a pit in the %s.", surface_type); */
+		You("VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN You("dig a pit in the %s.", surface_type); */
 		if (shopdoor) pay_for_damage("ruin", FALSE); /* EN if (shopdoor) pay_for_damage("ruin", FALSE); */ // TODO DE
 	    } else if (!madeby_obj && canseemon(madeby))
-		pline("SUBJECT %s VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER %s.", Monnam(madeby), surface_type); /* EN pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); */
+		pline("SUBJECT %s VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER %s.", Monnam(madeby), surface_type); /* EN pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); */
 	    else if (cansee(x, y) && flags.verbose)
-		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT VERB_ERSCHEINEN OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A pit appears in the %s.", surface_type); */
+		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE VERB_ERSCHEINEN OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A pit appears in the %s.", surface_type); */
 
 	    if(at_u) {
 		if (!wont_fall) {
@@ -600,7 +600,7 @@ int ttyp;
 		    /* handle earlier damage, eg breaking wand of digging */
 		    else if (!madeby_u) pay_for_damage("dig into", TRUE); /* EN else if (!madeby_u) pay_for_damage("dig into", TRUE); */ // TODO DE
 
-		    You("VERV_FALLEN durch ..."); /* EN You("fall through..."); */
+		    You("VERB_FALLEN durch ..."); /* EN You("fall through..."); */
 		    /* Earlier checks must ensure that the destination
 		     * level exists and is in the present dungeon.
 		     */

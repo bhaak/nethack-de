@@ -523,8 +523,8 @@ long timeout;
 		    if (yours) {
 			pline("%s cries sound like \"%s%s\"", /* EN pline("%s cries sound like \"%s%s\"", */ // TODO DE
 			    siblings ? "Their" : "Its", /* EN siblings ? "Their" : "Its", */ // TODO DE
-			    flags.female ? "mommy" : "daddy", /* EN flags.female ? "mommy" : "daddy", */ // TODO DE
-			    egg->spe ? "." : "?"); /* EN egg->spe ? "." : "?"); */ // TODO DE
+			    flags.female ? "Mama" : "Papa", /* EN flags.female ? "mommy" : "daddy", */
+			    egg->spe ? "." : "?");
 		    } else if (mon->data->mlet == S_DRAGON) {
 #ifdef GERMAN
 					if (monsndx(mon->data) == PM_BABY_GREEN_DRAGON) {

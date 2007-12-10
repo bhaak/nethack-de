@@ -1282,8 +1282,8 @@ dosacrifice()
 		      a_gname(), u_gname());
 		pline("%s tobt ...", u_gname()); /* EN pline("%s is enraged...", u_gname()); */
 		pline("Zum Glück erlaubt %s KASUS_DATIV PRONOMEN_PERSONAL weiterzuleben ...", a_gname()); /* EN pline("Fortunately, %s permits you to live...", a_gname()); */
-		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLKE aus OBJECT KASUS_DATIV %s NOUN_RAUCH VERB_UMGEBEN NEUES_OBJECT PRONOMEN_PERSONAL ...", /* EN pline("A cloud of %s smoke surrounds you...", */
-		      hcolor((const char *)"ADJEKTIV_ORANGE")); /* EN hcolor((const char *)"orange")); */
+		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLKE aus OBJECT KASUS_DATIV %s NOUN_RAUCH VERB_UMGEBEN NEUES_OBJECT OBJECT PRONOMEN_PERSONAL ...", /* EN pline("A cloud of %s smoke surrounds you...", */
+		      hcolor((const char *)"ADJEKTIV_FARBE_ORANGE")); /* EN hcolor((const char *)"orange")); */
 		done(ESCAPED);
 	    } else { /* super big win */
 		adjalign(10);

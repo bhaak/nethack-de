@@ -863,8 +863,8 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		seetrap(trap);
 		if (!In_sokoban(&u.uz) && is_clinger(youmonst.data)) {
 		    if(trap->tseen) {
-			You("see %s %spit below you.", a_your[trap->madeby_u], /* EN You("see %s %spit below you.", a_your[trap->madeby_u], */ // TODO DE
-			    ttype == SPIKED_PIT ? "spiked " : ""); /* EN ttype == SPIKED_PIT ? "spiked " : ""); */ // TODO DE
+			You("see %s %s below you.", a_your[trap->madeby_u], /* EN You("see %s %spit below you.", a_your[trap->madeby_u], */ // TODO DE
+			    ttype == SPIKED_PIT ? "NOUN_SPIKED_PIT" : "NOUN_PIT"); /* EN ttype == SPIKED_PIT ? "spiked " : ""); */
 		    } else {
 			pline("%s pit %sopens up under you!", /* EN pline("%s pit %sopens up under you!", */ // TODO DE
 			    A_Your[trap->madeby_u],

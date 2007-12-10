@@ -661,7 +661,7 @@ register struct monst *mtmp;
 	case MS_BOAST:	/* giants */
 	    if (!mtmp->mpeaceful) {
 		switch (rn2(4)) {
-		case 0: pline("%s boasts about %s gem collection.", /* EN case 0: pline("%s boasts about %s gem collection.", */ // TODO DE
+		case 0: pline("SUBJECT %s VERB_BOAST mit OBJECT KASUS_DATIV %s NOUN_GEM_COLLECTION.", /* EN case 0: pline("%s boasts about %s gem collection.", */
 			      Monnam(mtmp), mhis(mtmp));
 			break;
 		case 1: pline_msg = "complains about a diet of mutton."; /* EN case 1: pline_msg = "complains about a diet of mutton."; */ // TODO DE
@@ -783,7 +783,8 @@ register struct monst *mtmp;
 		verbl_msg = "Legen Sie die Waffe beiseite, bevor Sie jemanden damit verletzen!"; /* EN verbl_msg = "Put that weapon away before you hurt someone!"; */
 	    else if (uarmc || uarm || uarmh || uarms || uarmg || uarmf)
 		verbl_msg = Role_if(PM_HEALER) ?
-			  "Werte(r) Kollege/in, Ich kann Ihnen nicht helfen, wenn Sie nicht kooperieren." : /* EN "Doc, I can't help you unless you cooperate." : */ // TODO DE
+			  (flags.female ? "Werte Kollegin, Ich kann Ihnen nicht helfen, wenn Sie nicht kooperieren." : /* EN */
+			  "Werter Kollege, Ich kann Ihnen nicht helfen, wenn Sie nicht kooperieren.") : /* EN "Doc, I can't help you unless you cooperate." : */
 			  "Bitte machen Sie sich zur Untersuchung frei."; /* EN "Please undress so I can examine you."; */
 #ifdef TOURIST
 	    else if (uarmu)

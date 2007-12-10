@@ -243,7 +243,7 @@ use_stethoscope(obj)
 		return res;
 	} else if (u.dz) {
 		if (Underwater)
-		    You_hear("schwaches Geplätscher."); /* EN You_hear("faint splashing."); */
+		    You_hear("leises Geplätscher."); /* EN You_hear("faint splashing."); */
 		else if (u.dz < 0 || !can_reach_floor())
 		    pline("SUBJECT ARTIKEL_BESTIMMTER %s ist nicht erreichbar.", /* EN You_cant("reach the %s.", */
 			(u.dz > 0) ? surface(u.ux,u.uy) : ceiling(u.ux,u.uy));
@@ -732,8 +732,8 @@ struct obj *obj;
 		    pline("%s doesn't seem to notice its reflection.", /* EN pline("%s doesn't seem to notice its reflection.", */ // TODO DE
 			Monnam(mtmp));
 		else
-		    pline("%s ignores %s reflection.", /* EN pline("%s ignores %s reflection.", */ // TODO DE
-			  Monnam(mtmp), mhis(mtmp));
+		    pline("SUBJECT %s VERB_IGNORIEREN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.", /* EN pline("%s ignores %s reflection.", */
+			  Monnam(mtmp)); /* EN Monnam(mtmp), mhis(mtmp)); */
 	}
 	return 1;
 }

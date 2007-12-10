@@ -1027,9 +1027,9 @@ int thrown;
 
 		if (canspotmon(mon)) {
 		    if (barehand_silver_rings == 1)
-			fmt = "SUBJECT PRONOMEN_POSSESSIV ADJEKTIV_SILVER NOUN_RING VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "Your silver ring sears %s!"; */
+			fmt = "SUBJECT PRONOMEN_POSSESSIV ADJEKTIV_FARBE_SILVER NOUN_RING VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "Your silver ring sears %s!"; */
 		    else if (barehand_silver_rings == 2)
-			fmt = "SUBJECT PRONOMEN_POSSESSIV ADJEKTIV_SILVER NOUN_RINGs VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "Your silver rings sear %s!"; */
+			fmt = "SUBJECT PRONOMEN_POSSESSIV ADJEKTIV_FARBE_SILVER NOUN_RINGs VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "Your silver rings sear %s!"; */
 		    else
 			fmt = "SUBJECT ARTIKEL_BESTIMMTER NOUN_SILBER VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "The silver sears %s!"; */
 		} else {
@@ -1688,7 +1688,7 @@ register struct attack *mattk;
 		resistance = resists_elec(mdef);
 common:
 		if (!resistance) {
-		    pline("%s gets blasted!", Monnam(mdef)); /* EN pline("%s gets blasted!", Monnam(mdef)); */ // TODO DE
+		    pline("Die Druckwelle erfasst KASUS_AKKUSATIV %s!", mon_nam(mdef)); /* EN pline("%s gets blasted!", Monnam(mdef)); */
 		    mdef->mhp -= tmp;
 		    if (mdef->mhp <= 0) {
 			 killed(mdef);

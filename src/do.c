@@ -158,7 +158,7 @@ const char *verb;
 		if (((mtmp = m_at(x, y)) && mtmp->mtrapped) ||
 			(u.utrap && u.ux == x && u.uy == y)) {
 		    if (*verb)
-			pline_The("NOUN_BOULDER %s%s in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_PIT.", /* EN pline_The("boulder %s into the pit%s.", */
+			pline_The("NOUN_BOULDER %s%s in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_GRUBE.", /* EN pline_The("boulder %s into the pit%s.", */
 				vtense((const char *)0, verb),
 				(mtmp) ? "" : " mit OBJECT KASUS_DATIV PRONOMEN_PERSONAL"); /* EN (mtmp) ? "" : " with you"); */
 		    if (mtmp) {
@@ -187,7 +187,7 @@ const char *verb;
 				    t->tseen ? "" : "VERB_AKTIVIEREN und ", /* EN t->tseen ? "" : "triggers and ", */
 				    t->ttyp == TRAPDOOR ? "VERB_VERSTOPFEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR" : /* EN t->ttyp == TRAPDOOR ? "plugs a trap door" : */
 				    t->ttyp == HOLE ? "VERB_VERSTOPFEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_HOLE" : /* EN t->ttyp == HOLE ? "plugs a hole" : */
-				    "VERB_FUELLEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT"); /* EN "fills a pit"); */
+				    "VERB_FUELLEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE"); /* EN "fills a pit"); */
 			}
 		}
 		deltrap(t);

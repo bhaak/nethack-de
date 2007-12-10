@@ -344,7 +344,7 @@ register boolean nearshop;
 
 	if(!angry_guards(!flags.soundok) && nokops) {
 	    if(flags.verbose && flags.soundok)
-		pline("Aber nienand scheint darauf zu reagieren."); /* EN pline("But no one seems to respond to it."); */
+		pline("Aber niemand scheint darauf zu reagieren."); /* EN pline("But no one seems to respond to it."); */
 	    return;
 	}
 
@@ -1156,7 +1156,7 @@ dopay()
 		cx = cc.x;
 		cy = cc.y;
 		if(cx < 0) {
-		     pline("Try again..."); /* EN pline("Try again..."); */ // TODO DE
+		     pline("Nächster Versuch ..."); /* EN pline("Try again..."); */
 		     return(0);
 		}
 		if(u.ux == cx && u.uy == cy) {
@@ -1174,7 +1174,7 @@ dopay()
 		     return(0);
 		}
 		if (mtmp != resident && distu(mtmp->mx, mtmp->my) > 2) {
-		     pline("%s is too far to receive your payment.", /* EN pline("%s is too far to receive your payment.", */ // TODO DE
+		     pline("SUBJECT %s VERB_SEIN zu weit weg um OBJECT PRONOMEN_POSSESSIV NOUN_PAYMENT entgegenzunehmen.", /* EN pline("%s is too far to receive your payment.", */
 				    Monnam(mtmp));
 		     return(0);
 		}
@@ -1197,7 +1197,7 @@ proceed:
 
 	if (!shkp->mcanmove) {	    /* still asleep or paralyzed */
 		pline("%s %s.", Monnam(shkp),
-		      rn2(2) ? "seems to be napping" : "doesn't respond"); /* EN rn2(2) ? "seems to be napping" : "doesn't respond"); */ // TODO DE
+		      rn2(2) ? "macht anscheinend ein Nickerchen" : "reagiert nicht"); /* EN rn2(2) ? "seems to be napping" : "doesn't respond"); */
 		return 0;
 	}
 
@@ -1260,9 +1260,9 @@ proceed:
 #else
 		    if (!umoney)
 #endif
-			pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "", stashed_gold ? "" : " zu haben"); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
+			pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
 		} else if(ltmp) {
-		    pline("%s will Blut sehen kein Geld!", Monnam(shkp)); /* EN pline("%s is after blood, not money!", Monnam(shkp)); */
+		    pline("%s will Blut sehen, kein Geld!", Monnam(shkp)); /* EN pline("%s is after blood, not money!", Monnam(shkp)); */
 #ifndef GOLDOBJ
 		    if(u.ugold < ltmp/2L ||
 				(u.ugold < ltmp && stashed_gold)) {
@@ -1272,7 +1272,7 @@ proceed:
 				(umoney < ltmp && stashed_gold)) {
 			if (!umoney)
 #endif
-			    pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "", stashed_gold ? "" : " zu haben"); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
+			    pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
 			else pline(not_enough_money, mhim(shkp));
 			return(1);
 		    }
@@ -1295,7 +1295,7 @@ proceed:
 		} else {
 		    /* shopkeeper is angry, but has not been robbed --
 		     * door broken, attacked, etc. */
-		    pline("%s is after your hide, not your money!", /* EN pline("%s is after your hide, not your money!", */ // TODO DE
+		    pline("SUBJECT %s VERB_WOLLEN OBJECT PRONOMEN_POSSESSIV NOUN_KOPF, nicht NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV NOUN_GELD!", /* EN pline("%s is after your hide, not your money!", */
 			  Monnam(shkp));
 #ifndef GOLDOBJ
 		    if(u.ugold < 1000L) {
@@ -1304,7 +1304,7 @@ proceed:
 		    if(umoney < 1000L) {
 			if (!umoney)
 #endif
-			    pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "", stashed_gold ? "" : " zu haben"); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
+			    pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
 			else pline(not_enough_money, mhim(shkp));
 			return(1);
 		    }
@@ -1379,7 +1379,7 @@ proceed:
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
 			pline("That debt is partially offset by your credit."); /* EN pline("That debt is partially offset by your credit."); */ // TODO DE
-			You("pay the remainder."); /* EN You("pay the remainder."); */ // TODO DE
+			You("VERB_ZAHLEN den Rest."); /* EN You("pay the remainder."); */
 			flags.botl = 1;
 		    }
 		    paid = TRUE;
@@ -1646,12 +1646,12 @@ int croaked;
 	/* already took everything you had.		*/
 	if (numsk > 1) {
 	    if (cansee(shkp->mx, shkp->my && croaked))
-		pline("%s %slooks at your corpse%s and %s.", /* EN pline("%s %slooks at your corpse%s and %s.", */ // TODO DE
+		pline("SUBJECT %s %sVERB_BETRACHTEN OBJECT PRONOMEN_POSSESSIV NOUN_CORPSE%s und %s.", /* EN pline("%s %slooks at your corpse%s and %s.", */
 		      Monnam(shkp),
-		      !shkp->mcanmove ? "wakes up, " : "", /* EN !shkp->mcanmove ? "wakes up, " : "", */ // TODO DE
-		      !rn2(2) ? (shkp->female ? ", shakes her head," : /* EN !rn2(2) ? (shkp->female ? ", shakes her head," : */ // TODO DE
-			   ", shakes his head,") : "", /* EN ", shakes his head,") : "", */ // TODO DE
-		      !inhishop(shkp) ? "disappears" : "sighs"); /* EN !inhishop(shkp) ? "disappears" : "sighs"); */ // TODO DE
+		      !shkp->mcanmove ? "VERB_AUFWACHEN SATZKLAMMER, " : "", /* EN !shkp->mcanmove ? "wakes up, " : "", */
+		      !rn2(2) ? (shkp->female ? ", schüttelt ihren Kopf " : /* EN !rn2(2) ? (shkp->female ? ", shakes her head," : */
+			   ", schüttelt ihren Kopf ") : "", /* EN ", shakes his head,") : "", */
+		      !inhishop(shkp) ? "VERB_VERSCHWINDEN" : "VERB_SEUFZEN"); /* EN !inhishop(shkp) ? "disappears" : "sighs"); */
 	    rouse_shk(shkp, FALSE);	/* wake shk for bones */    
 	    taken = (roomno == eshkp->shoproom);
 	    goto skip;

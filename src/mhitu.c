@@ -1674,13 +1674,13 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 			u.uswldtim = 0;
 			tmp = 0;
 		    } else if (u.uswldtim == 0) {
-			pline("SUBJECT %s VERB_VERDAUEN OBJECT PRONOMEN_PERSONAL vollständig!", Monnam(mtmp)); /* EN pline("%s totally digests you!", Monnam(mtmp)); */
+			pline("SUBJECT %s VERB_VERDAUEN OBJECT PRONOMEN_PERSONAL vollends!", Monnam(mtmp)); /* EN pline("%s totally digests you!", Monnam(mtmp)); */
 			tmp = u.uhp;
 			if (Half_physical_damage) tmp *= 2; /* sorry */
 		    } else {
 			pline("SUBJECT %s VERB_VERDAUEN OBJECT PRONOMEN_PERSONAL%s!", Monnam(mtmp), /* EN pline("%s%s digests you!", Monnam(mtmp), */
-			      (u.uswldtim == 2) ? " gründlich" : /* EN (u.uswldtim == 2) ? " thoroughly" : */
-			      (u.uswldtim == 1) ? " völlig" : ""); /* EN (u.uswldtim == 1) ? " utterly" : ""); */
+			      (u.uswldtim == 2) ? " etwas" : /* EN (u.uswldtim == 2) ? " thoroughly" : */
+			      (u.uswldtim == 1) ? " gründlich" : ""); /* EN (u.uswldtim == 1) ? " utterly" : ""); */
 			exercise(A_STR, FALSE);
 		    }
 		    break;
@@ -1810,7 +1810,7 @@ common:
 			You("duck some of the blast."); /* EN You("duck some of the blast."); */ // TODO DE
 			tmp = (tmp+1) / 2;
 		    } else {
-		        if (flags.verbose) You("get blasted!"); /* EN if (flags.verbose) You("get blasted!"); */ // TODO DE
+		        if (flags.verbose) pline("Die Druckwelle erfasst OBJECT KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN if (flags.verbose) You("get blasted!"); */
 		    }
 		    if (mattk->adtyp == AD_FIRE) burn_away_slime();
 		    if (Half_physical_damage) tmp = (tmp+1) / 2;

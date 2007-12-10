@@ -430,14 +430,14 @@ tele()
 		    char buf[BUFSZ];
 		    if (u.usteed) Sprintf(buf," und %s", mon_nam(u.usteed)); /* EN if (u.usteed) Sprintf(buf," and %s", mon_nam(u.usteed)); */
 #endif
-		    pline("Zu welcher Stelle MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL%s teleportieren?", /* EN pline("To what position do you%s want to be teleported?", */
+		    pline("Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL%s teleportieren?", /* EN pline("To what position do you%s want to be teleported?", */
 #ifdef STEED
 				u.usteed ? buf :
 #endif
 			   "");
 		    cc.x = u.ux;
 		    cc.y = u.uy;
-				if (getpos(&cc, TRUE, "die gewünschte Position") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */
+				if (getpos(&cc, TRUE, "die gewünschte Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */
 			return;	/* abort */
 		    /* possible extensions: introduce a small error if
 		       magic power is low; allow transfer to solid rock */

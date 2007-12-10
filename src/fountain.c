@@ -592,7 +592,7 @@ drinksink()
 		   pline("From the murky drain, a hand reaches up... --oops--"); /* EN pline("From the murky drain, a hand reaches up... --oops--"); */ // TODO DE
 				break;
 			}
-		default: You("VERN_NEHMEN einen Schluck %s Wassers.", /* EN default: You("take a sip of %s water.", */
+		default: You("VERB_NEHMEN einen Schluck %s Wassers.", /* EN default: You("take a sip of %s water.", */
 			rn2(3) ? (rn2(2) ? "kalten" : "warmen") : "heiﬂen"); /* EN rn2(3) ? (rn2(2) ? "cold" : "warm") : "hot"); */
 	}
 }

@@ -1371,6 +1371,9 @@ plnamesuffix()
 	for (sptr = plname; *sptr; sptr++) {
 		if (*sptr == ',') *sptr = ' ';
 	}
+#ifdef GERMAN
+	plname[0] = toupper(plname[0]);
+#endif
 }
 
 
