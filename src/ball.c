@@ -656,19 +656,19 @@ xchar x, y;
 	if (u.utrap && u.utraptype != TT_INFLOOR) {
 	    switch(u.utraptype) {
 	    case TT_PIT:
-		pline(pullmsg, "pit"); /* EN pline(pullmsg, "pit"); */ // TODO DE
+		pline(pullmsg, "NOUN_GRUBE"); /* EN pline(pullmsg, "pit"); */
 		break;
 	    case TT_WEB:
-		pline(pullmsg, "web"); /* EN pline(pullmsg, "web"); */ // TODO DE
+		pline(pullmsg, "NOUN_WEB"); /* EN pline(pullmsg, "web"); */
 		pline_The("web is destroyed!"); /* EN pline_The("web is destroyed!"); */ // TODO DE
 		deltrap(t_at(u.ux,u.uy));
 		break;
 	    case TT_LAVA:
-		pline(pullmsg, "lava"); /* EN pline(pullmsg, "lava"); */ // TODO DE
+		pline(pullmsg, "NOUN_LAVA"); /* EN pline(pullmsg, "lava"); */
 		break;
 	    case TT_BEARTRAP: {
 		register long side = rn2(3) ? LEFT_SIDE : RIGHT_SIDE;
-		pline(pullmsg, "bear trap"); /* EN pline(pullmsg, "bear trap"); */ // TODO DE
+		pline(pullmsg, "NOUN_BEAR_TRAP"); /* EN pline(pullmsg, "bear trap"); */
 		set_wounded_legs(side, rn1(1000, 500));
 #ifdef STEED
 		if (!u.usteed)

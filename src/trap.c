@@ -772,7 +772,7 @@ unsigned trflags;
 		} else
 #endif
 		{
-		    pline("%s bear trap closes on your %s!", /* EN pline("%s bear trap closes on your %s!", */ // TODO DE
+		    pline("SUBJECT %s NOUN_BEAR_TRAP VERB_ZUSCHNAPPEN on your %s!", /* EN pline("%s bear trap closes on your %s!", */ // TODO DE
 			    A_Your[trap->madeby_u], body_part(FOOT));
 		    if(u.umonnum == PM_OWLBEAR || u.umonnum == PM_BUGBEAR)
 			You("howl in anger!"); /* EN You("howl in anger!"); */ // TODO DE
@@ -1227,7 +1227,7 @@ struct obj *otmp;
 			    mtmp->mcanmove = 0;
 			    mtmp->mfrozen = rnd(25);
 			    if (in_sight) {
-				pline("%s suddenly falls asleep!", /* EN pline("%s suddenly falls asleep!", */ // TODO DE
+				pline("SUBJECT %s VERB_EINSCHLAFEN plötzlich SATZKLAMMER!", /* EN pline("%s suddenly falls asleep!", */
 				      Monnam(mtmp));
 			    }
 			}
@@ -1808,7 +1808,7 @@ register struct monst *mtmp;
 			    mtmp->mcanmove = 0;
 			    mtmp->mfrozen = rnd(25);
 			    if (in_sight) {
-				pline("%s suddenly falls asleep!", /* EN pline("%s suddenly falls asleep!", */ // TODO DE
+				pline("SUBJECT %s VERB_EINSCHLAFEN plötzlich SATZKLAMMER!", /* EN pline("%s suddenly falls asleep!", */
 				      Monnam(mtmp));
 				seetrap(trap);
 			    }

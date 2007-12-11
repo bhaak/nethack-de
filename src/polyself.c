@@ -546,7 +546,7 @@ int	mntmp;
 		(amorphous(youmonst.data) || is_whirly(youmonst.data) || unsolid(youmonst.data) ||
 		  (youmonst.data->msize <= MZ_SMALL && u.utraptype == TT_BEARTRAP))) {
 	    You("are no longer stuck in the %s.", /* EN You("are no longer stuck in the %s.", */ // TODO DE
-		    u.utraptype == TT_WEB ? "web" : "bear trap"); /* EN u.utraptype == TT_WEB ? "web" : "bear trap"); */ // TODO DE
+		    u.utraptype == TT_WEB ? "NOUN_WEB" : "NOUN_BEAR_TRAP"); /* EN u.utraptype == TT_WEB ? "web" : "bear trap"); */
 	    /* probably should burn webs too if PM_FIRE_ELEMENTAL */
 	    u.utrap = 0;
 	}

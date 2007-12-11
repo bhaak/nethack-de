@@ -414,7 +414,7 @@ xchar x, y;
 		if (!trap->tseen) find_trap(trap);
 		You_cant("kick %s that's in a %s!", something, /* EN You_cant("kick %s that's in a %s!", something, */ // TODO DE
 			 Hallucination ? "tizzy" : /* EN Hallucination ? "tizzy" : */ // TODO DE
-			 (trap->ttyp == WEB) ? "web" : "pit"); /* EN (trap->ttyp == WEB) ? "web" : "pit"); */ // TODO DE
+			 (trap->ttyp == WEB) ? "NOUN_WEB" : "NOUN_GRUBE"); /* EN (trap->ttyp == WEB) ? "web" : "pit"); */
 		return 1;
 	}
 

@@ -1609,7 +1609,7 @@ dodip()
 				    pline("%s %s %s.",
 					  Your_buf,
 					  aobjnam(obj, "glow"), /* EN aobjnam(obj, "glow"), */ // TODO DE
-					  hcolor((const char *)"brown")); /* EN hcolor((const char *)"brown")); */ // TODO DE
+					  hcolor((const char *)"ADJEKTIV_FARBE_BRAUN")); /* EN hcolor((const char *)"brown")); */
 				unbless(obj);
 				obj->bknown=1;
 				goto poof;

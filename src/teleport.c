@@ -692,9 +692,9 @@ level_tele()
 			verbalize("Thou art early, but we'll admit thee."); /* EN verbalize("Thou art early, but we'll admit thee."); */ // TODO DE
 			killer_format = NO_KILLER_PREFIX;
 			killer = "kam frühzeitig in den Himmel"; /* EN killer = "went to heaven prematurely"; */
-		} else if (newlev == -9) {
-			You_feel("deliriously happy. "); /* EN You_feel("deliriously happy. "); */ // TODO DE
-			pline("(In fact, you're on Cloud 9!) "); /* EN pline("(In fact, you're on Cloud 9!) "); */ // TODO DE
+		} else if (newlev == -7) { /* EN } else if (newlev == -9) { */
+			Du_fuehlst_dich("überglücklich. "); /* EN You_feel("deliriously happy. "); */
+			pline("(Kein Wunder, SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SCHWEBEN im siebten Himmel!) "); /* EN pline("(In fact, you're on Cloud 9!) "); */
 			display_nhwindow(WIN_MESSAGE, FALSE);
 		} else
 			You("are now high above the clouds..."); /* EN You("are now high above the clouds..."); */ // TODO DE
@@ -706,11 +706,11 @@ level_tele()
 		} else if (Flying) {
 		    escape_by_flying = "fly down to the ground"; /* EN escape_by_flying = "fly down to the ground"; */ // TODO DE
 		} else {
-		    pline("Unfortunately, you don't know how to fly."); /* EN pline("Unfortunately, you don't know how to fly."); */ // TODO DE
-		    You("plummet a few thousand feet to your death."); /* EN You("plummet a few thousand feet to your death."); */ // TODO DE
+		    pline("Blöderweise VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht fliegen."); /* EN pline("Unfortunately, you don't know how to fly."); */
+		    You("VERB_STUERZEN a few thousand feet to your death."); /* EN You("plummet a few thousand feet to your death."); */ // TODO DE
 		    Sprintf(buf,
-			  "teleported out of the dungeon and fell to %s death", /* EN "teleported out of the dungeon and fell to %s death", */ // TODO DE
-			    uhis());
+			  "teleportierte out of the dungeon und stürzte zu Tode" /* EN "teleported out of the dungeon and fell to %s death", */ // TODO DE
+			    ); /* EN uhis()); */
 		    killer = buf;
 		    killer_format = NO_KILLER_PREFIX;
 		}

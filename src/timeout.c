@@ -313,7 +313,7 @@ nh_timeout()
 			if (unconscious() || Sleep_resistance)
 				HSleeping += rnd(100);
 			else if (Sleeping) {
-				You("fall asleep."); /* EN You("fall asleep."); */ // TODO DE
+				You("VERB_EINSCHLAFEN SATZKLAMMER."); /* EN You("fall asleep."); */
 				sleeptime = rnd(20);
 				fall_asleep(-sleeptime, TRUE);
 				HSleeping += sleeptime + rnd(100);

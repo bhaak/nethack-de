@@ -1632,7 +1632,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 
 		if (u.utrap) {
 			You("are released from the %s!", /* EN You("are released from the %s!", */ // TODO DE
-				u.utraptype==TT_WEB ? "web" : "trap"); /* EN u.utraptype==TT_WEB ? "web" : "trap"); */ // TODO DE
+				u.utraptype==TT_WEB ? "NOUN_WEB" : "NOUN_TRAP"); /* EN u.utraptype==TT_WEB ? "web" : "trap"); */
 			u.utrap = 0;
 		}
 

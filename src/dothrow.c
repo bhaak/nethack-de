@@ -602,7 +602,7 @@ hurtle(dx, dy, range, verbose)
 	return;
     } else if (u.utrap) {
 	pline("SUBJECT ARTIKEL_BESTIMMTER %s VERB_STABILISIEREN OBJECT PRONOMEN_PERSONAL.", /* EN You("are anchored by the %s.", */
-	    u.utraptype == TT_WEB ? "web" : u.utraptype == TT_LAVA ? "NOUN_LAVA" : /* EN u.utraptype == TT_WEB ? "web" : u.utraptype == TT_LAVA ? "lava" : */ // TODO DE
+	    u.utraptype == TT_WEB ? "NOUN_WEB" : u.utraptype == TT_LAVA ? "NOUN_LAVA" : /* EN u.utraptype == TT_WEB ? "web" : u.utraptype == TT_LAVA ? "lava" : */
 		u.utraptype == TT_INFLOOR ? surface(u.ux,u.uy) : "NOUN_TRAP"); /* EN u.utraptype == TT_INFLOOR ? surface(u.ux,u.uy) : "trap"); */
 	nomul(0);
 	return;

@@ -86,14 +86,16 @@ const char * const flash_types[] = {	/* also used in buzzmu(mcastu.c) */
 	"",
 
 	// TODO DE
+	// Detonation, Druckwelle, Entladung, Explosion, Luftdruck, schlagende Wetter, Sprengung, Verpuffung
+	// x-attacke, x-angriff
 	"blast of missiles",	/* Dragon breath equivalents 20-29*/ /* EN "blast of missiles",	*/
-	"blast of fire", /* EN "blast of fire", */
-	"blast of frost", /* EN "blast of frost", */
-	"blast of sleep gas", /* EN "blast of sleep gas", */
+	"blast of fire", /* EN "blast of fire", */ // Feuerdetonation?
+	"blast of frost", /* EN "blast of frost", */ // Eisdetonation
+	"blast of sleep gas", /* EN "blast of sleep gas", */ // Schlafgasexplosion?
 	"blast of disintegration", /* EN "blast of disintegration", */
-	"blast of lightning", /* EN "blast of lightning", */
-	"blast of poison gas", /* EN "blast of poison gas", */
-	"blast of acid", /* EN "blast of acid", */
+	"blast of lightning", /* EN "blast of lightning", */ // Blitzentladung
+	"blast of poison gas", /* EN "blast of poison gas", */ // Giftgasexplosion
+	"blast of acid", /* EN "blast of acid", */ // Säureentladung? Säureangriff?, Säuredusche?
 	"",
 	""
 };
@@ -240,7 +242,7 @@ struct obj *otmp;
 		if (u.uswallow && mtmp == u.ustuck) {
 			if (is_animal(mtmp->data)) {
 				if (Blind) You("VERB_SPUEREN einen plötzlichen Luftzug!"); /* EN if (Blind) You_feel("a sudden rush of air!"); */
-				else pline("SUBJECT %s VERB_OEFFNEN OBJECT PRONOMEN_ NOUN_MUND!", Monnam(mtmp)); /* EN else pline("%s opens its mouth!", Monnam(mtmp)); */  // TODO DE
+				else pline("SUBJECT %s VERB_OEFFNEN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_MUND!", Monnam(mtmp)); /* EN else pline("%s opens its mouth!", Monnam(mtmp)); */
 			}
 			expels(mtmp, mtmp->data, TRUE);
 #ifdef STEED
@@ -1083,7 +1085,7 @@ create_polymon(obj, okind)
 	case METAL:
 	case MITHRIL:
 	    pm_index = PM_IRON_GOLEM;
-	    material = "metal "; /* EN material = "metal "; */
+	    material = "ADJEKTIV_METALLEN "; /* EN material = "metal "; */
 	    break;
 	case COPPER:
 	case SILVER:
@@ -1091,41 +1093,41 @@ create_polymon(obj, okind)
 	case GEMSTONE:
 	case MINERAL:
 	    pm_index = rn2(2) ? PM_STONE_GOLEM : PM_CLAY_GOLEM;
-	    material = "lithic "; /* EN material = "lithic "; */
+	    material = "ADJEKTIV_MINERALISCH "; /* EN material = "lithic "; */
 	    break;
 	case 0:
 	case FLESH:
 	    /* there is no flesh type, but all food is type 0, so we use it */
 	    pm_index = PM_FLESH_GOLEM;
-	    material = "organic "; /* EN material = "organic "; */
+	    material = "ADJEKTIV_KNOECHERN "; /* EN material = "organic "; */
 	    break;
 	case WOOD:
 	    pm_index = PM_WOOD_GOLEM;
-	    material = "wood "; /* EN material = "wood "; */
+	    material = "ADJEKTIV_HOELZERN "; /* EN material = "wood "; */
 	    break;
 	case LEATHER:
 	    pm_index = PM_LEATHER_GOLEM;
-	    material = "leather "; /* EN material = "leather "; */
+	    material = "ADJEKTIV_LEDERN "; /* EN material = "leather "; */
 	    break;
 	case CLOTH:
 	    pm_index = PM_ROPE_GOLEM;
-	    material = "cloth "; /* EN material = "cloth "; */
+	    material = "cloth "; /* EN material = "cloth "; */ // TODO DE
 	    break;
 	case BONE:
 	    pm_index = PM_SKELETON;     /* nearest thing to "bone golem" */
-	    material = "bony "; /* EN material = "bony "; */
+	    material = "ADJEKTIV_KNOECHERN "; /* EN material = "bony "; */
 	    break;
 	case GOLD:
 	    pm_index = PM_GOLD_GOLEM;
-	    material = "gold "; /* EN material = "gold "; */
+	    material = "ADJEKTIV_GOLDEN "; /* EN material = "gold "; */
 	    break;
 	case GLASS:
 	    pm_index = PM_GLASS_GOLEM;
-	    material = "glassy "; /* EN material = "glassy "; */
+	    material = "ADJEKTIV_GLAESERN "; /* EN material = "glassy "; */
 	    break;
 	case PAPER:
 	    pm_index = PM_PAPER_GOLEM;
-	    material = "paper "; /* EN material = "paper "; */
+	    material = "ADJEKTIV_PAPIEREN "; /* EN material = "paper "; */
 	    break;
 	default:
 	    /* if all else fails... */
@@ -1141,7 +1143,7 @@ create_polymon(obj, okind)
 	polyuse(obj, okind, (int)mons[pm_index].cwt);
 
 	if(mtmp && cansee(mtmp->mx, mtmp->my)) {
-	    pline("Some %sobjects meld, and %s arises from the pile!", /* EN pline("Some %sobjects meld, and %s arises from the pile!", */
+	    pline("Some %sobjects meld, and %s arises from the pile!", /* EN pline("Some %sobjects meld, and %s arises from the pile!", */ // TODO DE
 		  material, a_monnam(mtmp));
 	}
 }
@@ -1745,7 +1747,7 @@ register struct obj *wand;
 	if(wand->spe < 0 || (wand->spe == 0 && rn2(121)))
 		return 0;
 	if(wand->spe == 0)
-		You("VERB_WRINGEN das letzte bisschen Energie aus dem ausgeleierten/ausgelaugten Zauberstab."); /* EN You("wrest one last charge from the worn-out wand."); */
+		You("VERB_WRINGEN das letzte bisschen Energie aus dem ausgelaugten Zauberstab."); /* EN You("wrest one last charge from the worn-out wand."); */ /* ausgeleierten/ausgelaugten */
 	wand->spe--;
 	return 1;
 }
@@ -1785,10 +1787,10 @@ register struct obj *obj;
 			break;
 		case WAN_ENLIGHTENMENT:
 			known = TRUE;
-			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ /* einsichtigt, kenntnisreich; bewandert; fachkundig; fundiert; kennerhaft; klug {adj}, belesen, kennerhaft, kenntnisreich, klug, sachkundig, unterrichtet, bewandert # selbst-erkennend?, selbst-einsichtig?, einsichtig? */
+			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ /* einsichtigt, kenntnisreich; bewandert; fachkundig; fundiert; kennerhaft; klug {adj}, belesen, kennerhaft, kenntnisreich, klug, sachkundig, unterrichtet, bewandert # selbst-erkennend?, selbst-einsichtig?, einsichtig? */ // TODO DE
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			enlightenment(FALSE);
-			pline_The("feeling subsides."); /* EN pline_The("feeling subsides."); */
+			pline_The("feeling subsides."); /* EN pline_The("feeling subsides."); */ // TODO DE
 			exercise(A_WIS, TRUE);
 			break;
 	}
@@ -2377,8 +2379,8 @@ struct obj *obj;	/* wand or spell */
 			pline(nothing_happens);
 		    else
 					pline("Blood %ss %s your %s.", /* EN pline("Blood %ss %s your %s.", */ // TODO DE
-			      is_lava(u.ux, u.uy) ? "boil" : "pool", /* EN is_lava(u.ux, u.uy) ? "boil" : "pool", */
-			      Levitation ? "beneath" : "at", /* EN Levitation ? "beneath" : "at", */
+			      is_lava(u.ux, u.uy) ? "boil" : "pool", /* EN is_lava(u.ux, u.uy) ? "boil" : "pool", */ // TODO DE
+			      Levitation ? "beneath" : "at", /* EN Levitation ? "beneath" : "at", */ // TODO DE
 			      makeplural(body_part(FOOT)));
 		}
 	    }
@@ -3075,7 +3077,7 @@ xchar sx, sy;
 	case ZT_FIRE:
 	    if (Fire_resistance) {
 		shieldeff(sx, sy);
-		You("don't feel hot!"); /* EN You("don't feel hot!"); */
+		You("don't feel hot!"); /* EN You("don't feel hot!"); */ // TODO DE
 		ugolemeffects(AD_FIRE, d(nd, 6));
 	    } else {
 		dam = d(nd, 6);
@@ -3534,7 +3536,7 @@ xchar x, y;
 	newsym(x,y);
 	if (cansee(x,y)) Norep("Das Eis knackt und schmilzt."); /* EN if (cansee(x,y)) Norep("The ice crackles and melts."); */
 	if ((otmp = sobj_at(BOULDER, x, y)) != 0) {
-		if (cansee(x,y)) pline("%s settles...", An(xname(otmp))); /* EN if (cansee(x,y)) pline("%s settles...", An(xname(otmp))); */ // TODO DE
+		if (cansee(x,y)) pline("SUBJECT %s versinkt ...", An(xname(otmp))); /* EN if (cansee(x,y)) pline("%s settles...", An(xname(otmp))); */
 	    do {
 		obj_extract_self(otmp);	/* boulder isn't being pushed */
 		if (!boulder_hits_pool(otmp, x, y, FALSE))
@@ -3608,7 +3610,7 @@ boolean *shopdamage;
 		    if (cansee(x,y))
 			pline("Das Wasser gefriert für einen Augenblick."); /* EN pline_The("water freezes for a moment."); */
 		    else
-			You_hear("ein leichtes Knacken."); /* EN You_hear("a soft crackling."); */
+			You_hear("ein leises Knacken."); /* EN You_hear("a soft crackling."); */
 		    rangemod -= 1000;	/* stop */
 		} else {
 		    rangemod -= 3;
@@ -3847,7 +3849,7 @@ register int osym, dmgtyp;
 			skip++;
 			if (!Blind)
 			    pline("%s glows a strange %s, but remains intact.", /* EN pline("%s glows a strange %s, but remains intact.", */ // TODO DE
-				The(xname(obj)), hcolor("dark red")); /* EN The(xname(obj)), hcolor("dark red")); */
+				The(xname(obj)), hcolor("ADJEKTIV_FARBE_DARK_RED")); /* EN The(xname(obj)), hcolor("dark red")); */
 		    }
 		    quan = obj->quan;
 		    switch(osym) {
@@ -3902,7 +3904,7 @@ register int osym, dmgtyp;
 
 		if(!cnt) continue;
 		if(cnt == quan)	mult = "Your"; /* EN if(cnt == quan)	mult = "Your"; */ // TODO DE
-		else	mult = (cnt == 1L) ? "One of your" : "Some of your"; /* EN else	mult = (cnt == 1L) ? "One of your" : "Some of your"; */
+		else	mult = (cnt == 1L) ? "One of your" : "Some of your"; /* EN else	mult = (cnt == 1L) ? "One of your" : "Some of your"; */ // TODO DE
 		pline("%s %s %s!", mult, xname(obj),
 			(cnt > 1L) ? destroy_strings[dindx*3 + 1]
 				  : destroy_strings[dindx*3]);
@@ -3975,7 +3977,7 @@ int osym, dmgtyp;
 			if (vis)
 				pline("%s glows a strange %s, but remains intact.", /* EN pline("%s glows a strange %s, but remains intact.", */ // TODO DE
 				The(distant_name(obj, xname)),
-				hcolor("dark red")); /* EN hcolor("dark red")); */
+				hcolor("ADJEKTIV_FARBE_DARK_RED")); /* EN hcolor("dark red")); */
 		    }
 		    quan = obj->quan;
 		    switch(osym) {

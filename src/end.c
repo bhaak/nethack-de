@@ -76,22 +76,30 @@ extern void FDECL(nethack_exit,(int));
  * The order of these needs to match the macros in hack.h.
  */
 static NEARDATA const char *deaths[] = {		/* the array of death */
-// TODO DE
-	"died", "choked", "poisoned", "starvation", "drowning",
-	"burning", "dissolving under the heat and pressure",
-	"crushed", "turned to stone", "turned into slime",
-	"genocided", "panic", "trickery",
-	"quit", "escaped", "ascended"
+	"died", "choked", "poisoned", "starvation", "drowning", /* EN "died", "choked", "poisoned", "starvation", "drowning", */ // TODO DE
+	"burning", "dissolving under the heat and pressure", /* EN "burning", "dissolving under the heat and pressure", */ // TODO DE
+	"crushed", "turned to stone", "turned into slime", /* EN "crushed", "turned to stone", "turned into slime", */ // TODO DE
+	"genocided", "panic", "trickery", /* EN "genocided", "panic", "trickery", */ // TODO DE
+	"quit", "escaped", "ascended" /* EN "quit", "escaped", "ascended" */ // TODO DE
 };
 
 static NEARDATA const char *ends[] = {		/* "when you..." */
-// TODO DE
-	"died", "choked", "were poisoned", "starved", "drowned",
-	"burned", "dissolved in the lava",
-	"were crushed", "turned to stone", "turned into slime",
-	"were genocided", "panicked", "were tricked",
-	"quit", "escaped", "ascended"
+	"gestorben", "erstickt", "vergiftet worden", "verhungert", "ertrunken", /* EN "died", "choked", "were poisoned", "starved", "drowned", */ // TODO DE
+	"verbrannt", "dissolved in the lava", /* EN "burned", "dissolved in the lava", */ // TODO DE
+	"zerquetscht", "turned to stone", "turned into slime", /* EN "were crushed", "turned to stone", "turned into slime", */ // TODO DE
+	"were genocided", "panicked", "were tricked", /* EN "were genocided", "panicked", "were tricked", */ // TODO DE
+	"quit", "geflohen", "aufgestiegen" /* EN "quit", "escaped", "ascended" */ // TODO DE
 };
+
+#ifdef GERMAN
+static NEARDATA const char *ends_hilfsverb[] = {		/* "als du <verb> ..." */
+	"VERB_SEIN", "VERB_SEIN", "VERB_SEIN", "VERB_SEIN", "VERB_SEIN",
+	"VERB_SEIN", "dissolved in the lava",
+	"MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "turned to stone", "turned into slime",
+	"were genocided", "panicked", "were tricked",
+	"quit", "VERB_SEIN", "VERB_SEIN"
+};
+#endif
 
 extern const char * const killed_by_prefix[];	/* from topten.c */
 
@@ -525,7 +533,7 @@ int how;
 	    Sick = 0;
 	}
 	if (how == CHOKING) init_uhunger();
-	nomovemsg = "You survived that attempt on your life."; /* EN nomovemsg = "You survived that attempt on your life."; */ // TODO DE
+	nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN diesen Anschlag auf OBJECT PRONOMEN_POSSESSIV NOUN_LEBEN überlebt."; /* EN nomovemsg = "You survived that attempt on your life."; */
 	flags.move = 0;
 	if(multi > 0) multi = 0; else multi = -1;
 	if(u.utrap && u.utraptype == TT_LAVA) u.utrap = 0;
@@ -619,7 +627,7 @@ winid endwin;
 		makeknown(otmp->otyp);
 		otmp->known = otmp->dknown = otmp->bknown = otmp->rknown = 1;
 		/* assumes artifacts don't have quan > 1 */
-		Sprintf(pbuf, "%s%s (wert %ld %s und %ld Punkte)", /* EN Sprintf(pbuf, "%s%s (worth %ld %s and %ld points)", */ // TODO DE
+		Sprintf(pbuf, "%s%s (Wert %ld %s und %ld Punkte)", /* EN Sprintf(pbuf, "%s%s (worth %ld %s and %ld points)", */
 			the_unique_obj(otmp) ? "ARTIKEL_BESTIMMTER " : "", /* EN the_unique_obj(otmp) ? "The " : "", */
 			otmp->oartifact ? artifact_name(xname(otmp), &dummy) :
 				OBJ_NAME(objects[otmp->otyp]),
@@ -887,11 +895,11 @@ die:
 	    if (Is_astralevel(&u.uz))	/* offered Amulet to wrong deity */
 		Strcat(kilbuf, " (in celestial disgrace)"); /* EN Strcat(kilbuf, " (in celestial disgrace)"); */ // TODO DE
 	    else if (carrying(FAKE_AMULET_OF_YENDOR))
-		Strcat(kilbuf, " (with a fake Amulet)"); /* EN Strcat(kilbuf, " (with a fake Amulet)"); */ // TODO DE
+		Strcat(kilbuf, " (mit einem gefälschten Amulett)"); /* EN Strcat(kilbuf, " (with a fake Amulet)"); */
 		/* don't bother counting to see whether it should be plural */
 	}
 
-	Sprintf(pbuf, "%s %s ARTIKEL_BESTIMMTER %s...", Goodbye(), plname, /* EN Sprintf(pbuf, "%s %s the %s...", Goodbye(), plname, */ // TODO DE
+	Sprintf(pbuf, "%s %s ARTIKEL_BESTIMMTER %s ...", Goodbye(), plname, /* EN Sprintf(pbuf, "%s %s the %s...", Goodbye(), plname, */ // TODO DE
 		how != ASCENDED ?
 		(const char *) ((flags.female && urole.name.f) ?
 				urole.name.f : urole.name.m) :
@@ -929,10 +937,10 @@ die:
 	    keepdogs(TRUE);
 	    viz_array[0][0] |= IN_SIGHT; /* need visibility for naming */
 	    mtmp = mydogs;
-	    Strcpy(pbuf, "You");
+	    Strcpy(pbuf, "SUBJECT PRONOMEN_PERSONAL"); /* EN Strcpy(pbuf, "You"); */
 	    if (mtmp) {
 		while (mtmp) {
-		    Sprintf(eos(pbuf), " and %s", mon_nam(mtmp));
+		    Sprintf(eos(pbuf), " MODIFIER_VERB_PLURAL und %s", mon_nam(mtmp)); /* EN Sprintf(eos(pbuf), " and %s", mon_nam(mtmp)); */
 		    if (mtmp->mtame)
 			u.urexp += mtmp->mhp;
 		    mtmp = mtmp->nmon;
@@ -945,9 +953,9 @@ die:
 	    } else {
 		if (!done_stopprint) Strcat(pbuf, " ");
 	    }
-	    Sprintf(eos(pbuf), "%s with %ld point%s,", /* EN Sprintf(eos(pbuf), "%s with %ld point%s,", */ // TODO DE
+	    Sprintf(eos(pbuf), "%s mit %ld Punkt%s,", /* EN Sprintf(eos(pbuf), "%s with %ld point%s,", */ // TODO DE
 			how==ASCENDED ? "went to your reward" : /* EN how==ASCENDED ? "went to your reward" : */ // TODO DE
-					"escaped from the dungeon", /* EN "escaped from the dungeon", */ // TODO DE
+					"VERB_SEIN from the dungeon", /* EN "escaped from the dungeon", */ // TODO DE
 			u.urexp, plur(u.urexp));
 #ifdef DUMP_LOG
 		if (dump_fp) dump("", pbuf);
@@ -1002,7 +1010,7 @@ die:
 		const char *where = dungeons[u.uz.dnum].dname;
 
 		if (Is_astralevel(&u.uz)) where = "The Astral Plane"; /* EN if (Is_astralevel(&u.uz)) where = "The Astral Plane"; */ // TODO DE
-		Sprintf(pbuf, "You %s in %s", ends[how], where); /* EN Sprintf(pbuf, "You %s in %s", ends[how], where); */ // TODO DE
+		Sprintf(pbuf, "SUBJECT PRONOMEN_PERSONAL %s _in_ %s", ends_hilfsverb[how], where); /* EN Sprintf(pbuf, "You %s in %s", ends[how], where); */ // TODO DE
 		if (!In_endgame(&u.uz) && !Is_knox(&u.uz))
 		    Sprintf(eos(pbuf), " on dungeon level %d", /* EN Sprintf(eos(pbuf), " on dungeon level %d", */ // TODO DE
 			    In_quest(&u.uz) ? dunlev(&u.uz) : depth(&u.uz));
@@ -1017,8 +1025,8 @@ die:
 	}
 
 	if (!done_stopprint) {
-	    Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", /* EN Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", */ // TODO DE
-		    umoney, plur(umoney), moves, plur(moves));
+	    Sprintf(pbuf, "und KASUS_DATIV %ld NOUN_GOLD_PIECE%s, after %ld move%s, %s.", /* EN Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", */ // TODO DE
+		    umoney, (umoney == 1) ? "" : "s", moves, plur(moves), ends[how]); /* EN umoney, plur(umoney), moves, plur(moves)); */
 	    putstr(endwin, 0, pbuf);
 #ifdef DUMP_LOG
 	    if (dump_fp) {
@@ -1030,8 +1038,8 @@ die:
 	}
 	if (!done_stopprint) {
 	    Sprintf(pbuf,
-	     "You were level %d with a maximum of %d hit point%s when you %s.", /* EN "You were level %d with a maximum of %d hit point%s when you %s.", */ // TODO DE
-		    u.ulevel, u.uhpmax, plur(u.uhpmax), ends[how]);
+	     "SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_HABEN Erfahrungsstufe %d, mit einem Maximum von %d Trefferpunkt%s, NEUER_SATZ als SUBJECT PRONOMEN_PERSONAL %s %s.", /* EN "You were level %d with a maximum of %d hit point%s when you %s.", */
+		    u.ulevel, u.uhpmax, (u.uhpmax == 1) ? "" : "en", ends[how], ends_hilfsverb[how]); /* EN u.ulevel, u.uhpmax, plur(u.uhpmax), ends[how]); */
 	    putstr(endwin, 0, pbuf);
 	    putstr(endwin, 0, "");
 #ifdef DUMP_LOG
@@ -1118,11 +1126,11 @@ boolean identified, all_containers, want_dump;
 #endif
 		    }
 		} else {
-		    pline("%s empty.", Tobjnam(box, "are")); /* EN pline("%s empty.", Tobjnam(box, "are")); */ // TODO DE
+		    pline("SUBJECT %s leer.", Tobjnam(box, "VERB_SEIN")); /* EN pline("%s empty.", Tobjnam(box, "are")); */
 		    display_nhwindow(WIN_MESSAGE, FALSE);
 #ifdef DUMP_LOG
 		    if (want_dump) {
-		      dump(The(xname(box)), " is empty."); /* EN dump(The(xname(box)), " is empty."); */ // TODO DE
+		      dump(The(xname(box)), " VERB_SEIN leer."); /* EN dump(The(xname(box)), " is empty."); */
 		      dump("", "");
 		    }
 #endif
@@ -1186,15 +1194,15 @@ boolean want_dump;
      * includes all dead monsters, not just those killed by the player
      */
     if (ntypes != 0) {
-	c = ask ? yn_function("Do you want an account of creatures vanquished?", /* EN c = ask ? yn_function("Do you want an account of creatures vanquished?", */ // TODO DE
+	c = ask ? yn_function("MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL eine Aufstellung aller bewzungenen Kreaturen sehen?", /* EN c = ask ? yn_function("Do you want an account of creatures vanquished?", */
 			      ynqchars, defquery) : defquery;
 	if (c == 'q') done_stopprint++;
 	if (c == 'y') {
 	    klwin = create_nhwindow(NHW_MENU);
-	    putstr(klwin, 0, "Vanquished creatures:"); /* EN putstr(klwin, 0, "Vanquished creatures:"); */ // TODO DE
+	    putstr(klwin, 0, "Bezwungene Kreaturen:"); /* EN putstr(klwin, 0, "Vanquished creatures:"); */
 	    putstr(klwin, 0, "");
 #ifdef DUMP_LOG
-	    if (want_dump)  dump("", "Vanquished creatures"); /* EN if (want_dump)  dump("", "Vanquished creatures"); */ // TODO DE
+	    if (want_dump)  dump("", "Bezwungene Kreaturen"); /* EN if (want_dump)  dump("", "Vanquished creatures"); */
 #endif
 
 	    /* countdown by monster "toughness" */
@@ -1203,7 +1211,7 @@ boolean want_dump;
 		if (mons[i].mlevel == lev && (nkilled = mvitals[i].died) > 0) {
 		    if ((mons[i].geno & G_UNIQ) && i != PM_HIGH_PRIEST) {
 			Sprintf(buf, "%s%s",
-				!type_is_pname(&mons[i]) ? "The " : "", /* EN !type_is_pname(&mons[i]) ? "The " : "", */ // TODO DE
+				!type_is_pname(&mons[i]) ? "ARTIKEL_BESTIMMTER " : "", /* EN !type_is_pname(&mons[i]) ? "The " : "", */
 				mons[i].mname);
 			if (nkilled > 1) {
 			    switch (nkilled) {
@@ -1239,7 +1247,7 @@ boolean want_dump;
 	     */
 	    if (ntypes > 1) {
 		putstr(klwin, 0, "");
-		Sprintf(buf, "%ld creatures vanquished.", total_killed); /* EN Sprintf(buf, "%ld creatures vanquished.", total_killed); */ // TODO DE
+		Sprintf(buf, "%ld Kreaturen bezwungen.", total_killed); /* EN Sprintf(buf, "%ld creatures vanquished.", total_killed); */
 		putstr(klwin, 0, buf);
 #ifdef DUMP_LOG
 		if (want_dump)  dump("  ", buf);

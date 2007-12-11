@@ -937,10 +937,10 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	    Strcpy(buf, x_monnam(u.usteed, ARTICLE_YOUR, (char *)0, 
 		    SUPPRESS_SADDLE | SUPPRESS_HALLUCINATION, FALSE));
 	    *buf = highc(*buf);
-	    enl_msg(buf, " has", " had", " wounded legs"); /* EN enl_msg(buf, " has", " had", " wounded legs"); */ // TODO DE
+	    enl_msg(buf, "", " MODIFIER_VERB_PRAETERITUM", " VERB_HABEN ADJEKTIV_VERLETZT NOUN_LEGs"); /* EN enl_msg(buf, " has", " had", " wounded legs"); */
 	}
 #endif
-	if (Sleeping) enl_msg("You ", "fall", "fell", " asleep"); /* EN if (Sleeping) enl_msg("You ", "fall", "fell", " asleep"); */ // TODO DE
+	if (Sleeping) enl_msg("SUBJECT PRONOMEN_PERSONAL", "", " MODIFIER_VERB_PRAETERITUM", " VERB_HABEN Narkolepsie"); /* EN if (Sleeping) enl_msg("You ", "fall", "fell", " asleep"); */
 	if (Hunger) enl_msg("You hunger", "", "ed", " rapidly"); /* EN if (Hunger) enl_msg("You hunger", "", "ed", " rapidly"); */ // TODO DE
 
 	/*** Vision and senses ***/
@@ -1128,8 +1128,10 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 		     break;
 	    }
 #ifdef GERMAN
+			if (u.umortality > 0) {
 			if (final) { Strcat(buf, " MODIFIER_VERB_PRAETERITUM VERB_WERDEN"); }
 			else { Strcat(buf, " worden"); }
+			}
 #endif
 	} else {		/* game ended in character's death */
 	    p = "VERB_SEIN tot"; /* EN p = "are dead"; */
@@ -1259,11 +1261,11 @@ int final;
 	    Strcpy(buf, x_monnam(u.usteed, ARTICLE_YOUR, (char *)0, 
 		    SUPPRESS_SADDLE | SUPPRESS_HALLUCINATION, FALSE));
 	    *buf = highc(*buf);
-	    Strcat(buf, " had wounded legs"); /* EN Strcat(buf, " had wounded legs"); */ // TODO DE
+	    Strcat(buf, " hatte verletzte Beine"); /* EN Strcat(buf, " had wounded legs"); */
 	    dump("  ", buf);
 	}
 #endif
-	if (Sleeping) dump("  ", "You fell asleep"); /* EN if (Sleeping) dump("  ", "You fell asleep"); */ // TODO DE
+	if (Sleeping) dump("  ", "SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_HABEN Narkolepsie"); /* EN if (Sleeping) dump("  ", "You fell asleep"); */
 	if (Hunger) dump("  ", "You hungered rapidly"); /* EN if (Hunger) dump("  ", "You hungered rapidly"); */ // TODO DE
 
 	/*** Vision and senses ***/
@@ -1433,8 +1435,10 @@ int final;
 		     break;
 	    }
 #ifdef GERMAN
+			if (u.umortality > 0) {
 			if (final) { Strcat(buf, " MODIFIER_VERB_PRAETERITUM VERB_WERDEN"); }
 			else { Strcat(buf, " worden"); }
+			}
 #endif
 	} else {		/* game ended in character's death */
 	    p = "VERB_SEIN tot"; /* EN p = "are dead"; */
