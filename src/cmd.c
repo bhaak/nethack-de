@@ -779,8 +779,8 @@ static const char
 	have[] = "VERB_HABEN ", had[]   = "MODIFIER_VERB_PRAETERITUM VERB_HABEN ", /* EN have[] = "have ", had[]   = "had ", */
 	can[]  = "VERB_KOENNEN ",  could[] = "MODIFIER_VERB_PRAETERITUM VERB_KOENNEN "; /* EN can[]  = "can ",  could[] = "could "; */
 static const char
-	have_been[]  = "VERB_SEIN gewesen ", /* EN have_been[]  = "have been ", */
-	have_never[] = "VERB_HABEN niemals ", never[] = "VERB_HABEN nie "; /* EN have_never[] = "have never ", never[] = "never "; */
+  have_been[]  = "have been ",
+	have_never[] = "VERB_HABEN noch nie ", never[] = "VERB_HABEN niemals "; /* EN have_never[] = "have never ", never[] = "never "; */
 
 #define enl_msg(prefix,present,past,suffix) \
 			enlght_line(prefix, final ? past : present, suffix)
@@ -1077,7 +1077,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	 else if (wizard) enl_msg("Your luck ", "is", "was", " zero"); /* EN else if (wizard) enl_msg("Your luck ", "is", "was", " zero"); */ // TODO DE
 #endif
 	if (u.moreluck > 0) you_have("besonders viel Glück"); /* EN if (u.moreluck > 0) you_have("extra luck"); */
-	else if (u.moreluck < 0) you_have("weniger Glück"); /* EN else if (u.moreluck < 0) you_have("reduced luck"); */
+	else if (u.moreluck < 0) you_have("vermindertes Glück"); /* EN else if (u.moreluck < 0) you_have("reduced luck"); */
 	if (carrying(LUCKSTONE) || stone_luck(TRUE)) {
 	    ltmp = stone_luck(FALSE);
 	    if (ltmp <= 0)
@@ -1401,7 +1401,7 @@ int final;
 	 else if (wizard) dump("  ", "Your luck was zero"); /* EN else if (wizard) dump("  ", "Your luck was zero"); */ // TODO DE
 #endif
 	if (u.moreluck > 0) dump(youhad, "besonders viel Glück"); /* EN if (u.moreluck > 0) dump(youhad, "extra luck"); */
-	else if (u.moreluck < 0) dump(youhad, "weniger Glück"); /* EN else if (u.moreluck < 0) dump(youhad, "reduced luck"); */
+	else if (u.moreluck < 0) dump(youhad, "vermindertes Glück"); /* EN else if (u.moreluck < 0) dump(youhad, "reduced luck"); */
 	if (carrying(LUCKSTONE) || stone_luck(TRUE)) {
 	    ltmp = stone_luck(FALSE);
 	    if (ltmp <= 0)
@@ -1608,13 +1608,13 @@ int final;
 	else if (!u.uconduct.unvegan)
 	    you_have_X("eine streng vegane Diät befolgt"); /* EN you_have_X("followed a strict vegan diet"); */
 	else if (!u.uconduct.unvegetarian)
-	    you_have_been("ein Vegetarier"); /* EN you_have_been("vegetarian"); */
+	    you_are("ein Vegetarier"); /* EN you_have_been("vegetarian"); */
 
 	if (!u.uconduct.gnostic)
-	    you_have_been("ein Atheist"); /* EN you_have_been("an atheist"); */
+	    you_are("ein Atheist"); /* EN you_have_been("an atheist"); */
 
 	if (!u.uconduct.weaphit)
-	    you_have_never("hit with a wielded weapon"); /* EN you_have_never("hit with a wielded weapon"); */ // TODO DE
+	    you_have_never("mit einer geführten Waffe zugeschlagen / hit with a wielded weapon"); /* EN you_have_never("hit with a wielded weapon"); */ // TODO DE
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "used a wielded weapon %ld time%s", /* EN Sprintf(buf, "used a wielded weapon %ld time%s", */ // TODO DE
@@ -1623,10 +1623,10 @@ int final;
 	}
 #endif
 	if (!u.uconduct.killer)
-	    you_have_been("ein Pazifist"); /* EN you_have_been("a pacifist"); */
+	    you_are("ein Pazifist"); /* EN you_have_been("a pacifist"); */
 
 	if (!u.uconduct.literate)
-	    you_have_been("ein Analphabet"); /* EN you_have_been("illiterate"); */
+	    you_are("ein Analphabet"); /* EN you_have_been("illiterate"); */
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "read items or engraved %ld time%s", /* EN Sprintf(buf, "read items or engraved %ld time%s", */ // TODO DE
@@ -1645,7 +1645,7 @@ int final;
 	}
 
 	if (!u.uconduct.polypiles)
-	    you_have_never("polymorphed an object"); /* EN you_have_never("polymorphed an object"); */ // TODO DE
+	    you_have_never("ein Objekt transformiert / polymorphed an object"); /* EN you_have_never("polymorphed an object"); */ // TODO DE
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "polymorphed %ld item%s", /* EN Sprintf(buf, "polymorphed %ld item%s", */ // TODO DE
@@ -1655,7 +1655,7 @@ int final;
 #endif
 
 	if (!u.uconduct.polyselfs)
-	    you_have_never("changed form"); /* EN you_have_never("changed form"); */ // TODO DE
+	    you_have_never("die eigene Gestalt geändert / changed form"); /* EN you_have_never("changed form"); */ // TODO DE
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "changed form %ld time%s", /* EN Sprintf(buf, "changed form %ld time%s", */ // TODO DE

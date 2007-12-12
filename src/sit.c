@@ -375,7 +375,7 @@ rndcurse()			/* curse a few inventory items at random! */
 		pline("%s %s %s.",
 		      s_suffix(upstart(y_monnam(u.usteed))),
 		      aobjnam(otmp, "glow"), /* EN aobjnam(otmp, "glow"), */ // TODO DE
-		      hcolor(otmp->cursed ? NH_BLACK : (const char *)"brown")); /* EN hcolor(otmp->cursed ? NH_BLACK : (const char *)"brown")); */ // TODO DE
+		      hcolor(otmp->cursed ? NH_BLACK : (const char *)"ADJEKTIV_FARBE_BRAUN")); /* EN hcolor(otmp->cursed ? NH_BLACK : (const char *)"brown")); */
 		otmp->bknown = TRUE;
 	    }
 	}

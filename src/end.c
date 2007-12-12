@@ -1025,8 +1025,8 @@ die:
 	}
 
 	if (!done_stopprint) {
-	    Sprintf(pbuf, "und KASUS_DATIV %ld NOUN_GOLD_PIECE%s, after %ld move%s, %s.", /* EN Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", */ // TODO DE
-		    umoney, (umoney == 1) ? "" : "s", moves, plur(moves), ends[how]); /* EN umoney, plur(umoney), moves, plur(moves)); */
+	    Sprintf(pbuf, "und KASUS_DATIV %ld NOUN_GOLD_PIECE%s, nach %ld %s, %s.", /* EN Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", */
+		    umoney, (umoney == 1) ? "" : "s", moves, (moves == 1) ? "Zug" : "Zügen", ends[how]); /* EN umoney, plur(umoney), moves, plur(moves)); */
 	    putstr(endwin, 0, pbuf);
 #ifdef DUMP_LOG
 	    if (dump_fp) {
