@@ -413,7 +413,7 @@ START_TEST (test_complete_sentences3) {
 		 "Der Sukkubus macht sich an dich heran."},
 		{"Seltsamerweise VERB_SICH_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL besser als vorher.",
 		 "Seltsamerweise fühlst du dich besser als vorher."},
-		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DWARF VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER NOUN_FLOOR.",
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DWARF VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER NOUN_FLOOR.",
 		 "Der Zwerg gräbt eine Grube in den Boden."},
 		{"Während SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_GRABEN, füllt sich das Loch mit KASUS_DATIV NOUN_DOG!",
 		 "Während du gräbst, füllt sich das Loch mit Hunde!"},
@@ -652,6 +652,14 @@ START_TEST (test_possessiv) {
 		// ""}, // TODO
 		//{"SUBJECT ARTIKEL_BESTIMMTER NOUN_KOP_SERGEANT VERB_SCHLAGEN mit KASUS_DATIV PRONOMEN_3P_MN_POSSESSIV NOUN_RUBBER_HOSE nach KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_KOP_SERGEANT.",
 		//""}, // TODO
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_JACKAL VERB_IGNORIEREN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.",
+		 "Der Schakal ignoriert sein Spiegelbild."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_GIANT_ANT VERB_IGNORIEREN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.",
+		 "Die Riesenameise ignoriert ihr Spiegelbild."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_ORACLE VERB_IGNORIEREN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.",
+		 "Das Orakel ignoriert sein Spiegelbild."},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_ELF_MUMMY VERB_IGNORIEREN PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.",
+		 "Die Elbenmumie ignoriert ihr Spiegelbild."},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -833,7 +841,6 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_paar);
   tcase_add_test(tc_core, test_identified_spellbooks);
 	tcase_add_test(tc_core, test_nominal_phrasen);
-	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	//tcase_add_test(tc_core, test_linking_elements);
@@ -862,6 +869,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_token_functions);
 	
   tcase_add_test(tc_core, test_corpses);
+	tcase_add_test(tc_core, test_possessiv);
 
 
   return s;

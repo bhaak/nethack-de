@@ -693,6 +693,8 @@ void clear_verb() {
 	//verb_praeverb=""; // TODO
 	verb_partizip=0;
 	verb_infinitiv=0;
+
+	verb_tempus_modus = praesens;
 }
 
 int finde_naechstes_substantiv(const char* text) {
@@ -846,6 +848,12 @@ char* german(const char *line) {
 			if ((strcmp("PRONOMEN_POSSESSIV", tmp)==0) && 
 		 			(pm_numerus == n_plural)) {
 				append(output, get_wort("PRONOMEN_POSSESSIV_PL", c_casus, c_genus, c_numerus, c_artikel));
+			} else if (strcmp("PRONOMEN_POSSESSIV_SUBJECT", tmp)==0) {
+			  if (subject_genus == feminin) { /* ihr */
+				  append(output, get_wort("PRONOMEN_3P_F_POSSESSIV", c_casus, c_genus, c_numerus, c_artikel));
+				} else { /* sein */
+				  append(output, get_wort("PRONOMEN_3P_MN_POSSESSIV", c_casus, c_genus, c_numerus, c_artikel));
+				}
 			} else {
 				append(output, get_wort(tmp, c_casus, c_genus, c_numerus, c_artikel));
 			}
