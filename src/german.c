@@ -611,6 +611,22 @@ int finde_naechstes_subject(const char* text) {
 				subject_numerus = n_plural;
 			}
 
+		} else if (strncmp(tmp, "NOUN_PSEUDO_", 12)==0) {
+		  print_state();
+			c_numerus = n_singular;
+			c_person  = drittePerson;
+
+			if (strcmp(tmp, "NOUN_PSEUDO_MAENNLICH")==0) {
+				c_genus   = maskulin;
+			} else if (strcmp(tmp, "NOUN_PSEUDO_WEIBLICH")==0) {
+				c_genus   = feminin;
+			}
+			subject_genus   = c_genus;
+			subject_numerus = c_numerus;
+			subject_person  = c_person;
+		  print_state();
+
+			return 0;
 		} else if (strncmp(tmp, "NOUN_",5)==0) {
 			analyze_this_as_subject(tmp);
 #ifdef DEBUG
@@ -650,6 +666,20 @@ int finde_naechstes_objekt(const char* text) {
 			do_genus   = pm_genus;
 			do_numerus = pm_numerus;
 			
+			return 0;
+		} else if (strncmp(tmp, "NOUN_PSEUDO_", 12)==0) {
+			c_numerus = n_singular;
+			c_person  = drittePerson;		
+			c_casus   = verb_do_casus; // TODO überprüfen, ob verb schon angetroffen
+
+			if (strcmp(tmp, "NOUN_PSEUDO_MAENNLICH")==0) {
+				c_genus   = maskulin;
+			} else if (strcmp(tmp, "NOUN_PSEUDO_WEIBLICH")==0) {
+				c_genus   = feminin;
+			}
+			do_genus   = c_genus;
+			do_numerus = c_numerus;
+
 			return 0;
 		} else if (strncmp(tmp, "NOUN_",5)==0) {
 			analyze_this_as_object(tmp);
@@ -967,6 +997,8 @@ char* german(const char *line) {
 			//modifier_corpse = 0;
 			insert_char = 1;
 
+		} else if (strncmp("NOUN_PSEUDO_", tmp, 12)==0) {
+				insert_char = 0;
 		} else if (strncmp("NOUN_", tmp, 5)==0) {
 #if DEBUG
 			printf("token nach NOUN_: %s -%s- %d\n",tmp,tmp2, strncmp("NOUN_CORPSE", tmp2,11));

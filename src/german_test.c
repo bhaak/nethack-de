@@ -413,7 +413,7 @@ START_TEST (test_complete_sentences3) {
 		 "Der Sukkubus macht sich an dich heran."},
 		{"Seltsamerweise VERB_SICH_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL besser als vorher.",
 		 "Seltsamerweise fühlst du dich besser als vorher."},
-		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DWARF VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER NOUN_FLOOR.",
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DWARF VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER NOUN_FLOOR.",
 		 "Der Zwerg gräbt eine Grube in den Boden."},
 		{"Während SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_GRABEN, füllt sich das Loch mit KASUS_DATIV NOUN_DOG!",
 		 "Während du gräbst, füllt sich das Loch mit Hunde!"},
@@ -658,7 +658,7 @@ START_TEST (test_possessiv) {
 		 "Die Riesenameise ignoriert ihr Spiegelbild."},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_ORACLE VERB_IGNORIEREN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.",
 		 "Das Orakel ignoriert sein Spiegelbild."},
-		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_ELF_MUMMY VERB_IGNORIEREN PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.",
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_ELF_MUMMY VERB_IGNORIEREN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.",
 		 "Die Elbenmumie ignoriert ihr Spiegelbild."},
 	};
 
@@ -826,6 +826,20 @@ START_TEST (test_token_functions) {
 
 } END_TEST
 
+START_TEST (test_noun_pseudo) {
+	char *text[][2] = {
+    {"SUBJECT ARTIKEL_BESTIMMTER ADJEKTIV_POOR NOUN_PSEUDO_WEIBLICH Kelly!",
+		 "Die arme Kelly!"},
+    {"SUBJECT PRONOMEN_PERSONAL VERB_KICK OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_POOR NOUN_PSEUDO_WEIBLICH Kelly!",
+		 "Du trittst die arme Kelly!"},
+		{"SUBJECT NOUN_PSEUDO_MAENNLICH Fido VERB_WERDEN durchsichtig!", 
+		 "Fido wird durchsichtig!"},
+    {"SUBJECT PRONOMEN_PERSONAL VERB_KICK OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_POOR NOUN_PSEUDO_MAENNLICH Fido!",
+		 "Du trittst den armen Fido!"},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
 //#endif
 
 Suite *test_suite(void)
@@ -870,6 +884,7 @@ Suite *test_suite(void)
 	
   tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_possessiv);
+	tcase_add_test(tc_core, test_noun_pseudo);
 
 
   return s;

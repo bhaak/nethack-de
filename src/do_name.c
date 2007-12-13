@@ -725,6 +725,9 @@ boolean called;
 		name_at_start = TRUE;
 	    } else {
 	        //printf("name_at_start\n");
+#ifdef GERMAN
+		Strcat(buf, (mtmp->female) ? "NOUN_PSEUDO_WEIBLICH " : "NOUN_PSEUDO_MAENNLICH ");
+#endif
 		Strcat(buf, name);
 		name_at_start = TRUE;
 	    }
