@@ -1045,6 +1045,7 @@ char* german(const char *line) {
 			if (strlen(made_from)>0) {
 				append(output, " aus ");
 				append(output, get_wort(made_from, akkusativ, maskulin|feminin|neutrum, n_singular, c_artikel));
+				strcpy(made_from, "");
 			}
 		} else if (strncmp("VERB_",tmp,4)==0) {
 #ifdef DEBUG

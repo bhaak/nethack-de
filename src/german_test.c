@@ -87,7 +87,9 @@ START_TEST (test_wands) {
 		{"K - ARTIKEL_UNBESTIMMTER ADJEKTIV_WAND_CURVED NOUN_WAND",
 		 "K - ein gebogener Zauberstab"},
 		{"v - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_WAND PARTIKEL_OF NOUN_WAND_DEATH (0:4)",
-		 "v - ein verfluchter Zauberstab des Todes (0:4)"}
+		 "v - ein verfluchter Zauberstab des Todes (0:4)"},
+		{"SUBJECT PRONOMEN_DIESER MADE_OF_WAND_IRIDIUM NOUN_WAND VERB_SEIN OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_FIRE!",
+		 "Dieser Zauberstab aus Iridium ist ein Zauberstab des Feuers!"},
 	};
 		
 	check_strings(text, sizeof(text)/8);
@@ -437,6 +439,14 @@ START_TEST (test_complete_sentences4) {
 		 "Wie schade, dass du die Kristallkugel nicht sehen kannst."},
 		{"Sieht so aus, als MODIFIER_KONJUNKTIV_II VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wieder daheim in Kansas.",
 		 "Sieht so aus, als wärest du wieder daheim in Kansas."},
+		 /*
+		 SUBJECT PRONOMEN_PERSONAL try to appease ARTIKEL_BESTIMMTER angry NOUN_PSEUDO_WEIBLICH Tirebolu by giving it 1000 gold pieces.
+		 Du try to appease der angry Tirebolu by giving it 1000 gold pieces.
+		 NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_BLACK_UNICORN beruhigt sich wieder.
+		 Tirebolu die unsichtbare schwarze Einhorn beruhigt sich wieder.
+		 SUBJECT PRONOMEN_PERSONAL VERB_OWE OBJECT KASUS_DATIV NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_BLACK_UNICORN nichts.
+		 Du schuldest Tirebolu der unsichtbaren schwarzen Einhorne nichts.
+		 */
 	};
 
 	check_strings(text, sizeof(text)/8);
