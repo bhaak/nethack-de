@@ -946,7 +946,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	    || (youattack && u.uswallow && mdef == u.ustuck && !Blind);
 	boolean realizes_damage;
 	const char *wepdesc;
-	static const char you[] = "you"; /* EN static const char you[] = "you"; */ // TODO DE
+	static const char you[] = "PRONOMEN_PERSONAL"; /* EN static const char you[] = "you"; */
 	char hittee[BUFSZ];
 
 	Strcpy(hittee, youdefend ? you : mon_nam(mdef));
@@ -1068,8 +1068,8 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	    } else if (otmp->oartifact == ART_VORPAL_BLADE &&
 			(dieroll == 1 || mdef->data == &mons[PM_JABBERWOCK])) {
 		static const char * const behead_msg[2] = {
-		     "%s beheads %s!", /* EN "%s beheads %s!", */ // TODO DE
-		     "%s decapitates %s!" /* EN "%s decapitates %s!" */ // TODO DE
+		     "SUBJECT %s VERB_KOEPFEN OBJECT %s!", /* EN "%s beheads %s!", */
+		     "SUBJECT %s VERB_ENTHAUPTEN OBJECT %s!" /* EN "%s decapitates %s!" */
 		};
 
 		if (youattack && u.uswallow && mdef == u.ustuck)

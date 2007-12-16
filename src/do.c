@@ -1290,7 +1290,7 @@ boolean at_stairs, falling, portal;
 
 #ifdef REINCARNATION
 	if (new && Is_rogue_level(&u.uz))
-	    You("enter what seems to be an older, more primitive world."); /* EN You("enter what seems to be an older, more primitive world."); */ // TODO DE
+	    You("VERB_BETRETEN eine scheinbar ältere, primitivere Welt."); /* EN You("enter what seems to be an older, more primitive world."); */
 #endif
 	/* Final confrontation */
 	if (In_endgame(&u.uz) && newdungeon && u.uhave.amulet)
@@ -1312,7 +1312,7 @@ boolean at_stairs, falling, portal;
 
 	/* once Croesus is dead, his alarm doesn't work any more */
 	if (Is_knox(&u.uz) && (new || !mvitals[PM_CROESUS].died)) {
-		You("penetrated a high security area!"); /* EN You("penetrated a high security area!"); */ // TODO DE
+		You("VERB_SEIN in eine Hochsicherheitszone eingedrungen!"); /* EN You("penetrated a high security area!"); */
 		pline("An alarm sounds!"); /* EN pline("An alarm sounds!"); */ // TODO DE
 		for(mtmp = fmon; mtmp; mtmp = mtmp->nmon)
 		    if (!DEADMONSTER(mtmp) && mtmp->msleeping) mtmp->msleeping = 0;

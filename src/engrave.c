@@ -726,7 +726,7 @@ doengrave()
 			type  = BURN;
 			if(!objects[otmp->otyp].oc_name_known) {
 			if (flags.verbose)
-			    pline("This %s is a wand of fire!", xname(otmp)); /* EN pline("This %s is a wand of fire!", xname(otmp)); */ // TODO DE
+			    pline("SUBJECT PRONOMEN_DIESER %s VERB_SEIN OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_FIRE!", xname(otmp)); /* EN pline("This %s is a wand of fire!", xname(otmp)); */
 			    doknown = TRUE;
 			}
 			Strcpy(post_engr_text,

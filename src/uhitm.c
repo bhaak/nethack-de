@@ -793,8 +793,8 @@ int thrown;
 			    const char *eggp =
 				     (obj->corpsenm != NON_PM && obj->known) ?
 					      the(mons[obj->corpsenm].mname) :
-					      (cnt > 1L) ? "some" : "an"; /* EN (cnt > 1L) ? "some" : "an"; */ // TODO DE
-			    You("hit %s with %s egg%s.", /* EN You("hit %s with %s egg%s.", */ // TODO DE
+					      (cnt > 1L) ? "ein paar" : "ARTIKEL_UNBESTIMMTER"; /* EN (cnt > 1L) ? "some" : "an"; */
+			    You("VERB_HIT OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV mit %s NOUN_EGG%s.", /* EN You("hit %s with %s egg%s.", */
 				mon_nam(mon), eggp, plur(cnt));
 			    if (touch_petrifies(mdat) && !stale_egg(obj)) {
 				pline_The("egg%s %s alive any more...", /* EN pline_The("egg%s %s alive any more...", */ // TODO DE

@@ -413,7 +413,7 @@ register struct monst *priest;
 	u.uconduct.gnostic++;
 
 	if(priest->mflee || (!priest->ispriest && coaligned && strayed)) {
-	    pline("SUBJECT %s doesn't want anything to do with you!", /* EN pline("%s doesn't want anything to do with you!", */ // TODO DE
+	    pline("SUBJECT %s VERB_WOLLEN nichts OBJECT KASUS_DATIV mit PRONOMEN_PERSONAL zu tun haben!", /* EN pline("%s doesn't want anything to do with you!", */
 				Monnam(priest));
 	    priest->mpeaceful = 0;
 	    return;
@@ -452,7 +452,7 @@ register struct monst *priest;
 		if (priest->mgold > 0L) {
 		    /* Note: two bits is actually 25 cents.  Hmm. */
 		    pline("SUBJECT %s VERB_GEBEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL %s für ein Calanda.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */
-			(priest->mgold == 1L) ? "one bit" : "two bits"); /* EN (priest->mgold == 1L) ? "one bit" : "two bits"); */ // TODO DE
+			(priest->mgold == 1L) ? "einen Stutz" : "zwei Stutz"); /* EN (priest->mgold == 1L) ? "one bit" : "two bits"); */
 		    if (priest->mgold > 1L)
 			u.ugold = 2L;
 		    else
@@ -465,8 +465,8 @@ register struct monst *priest;
                 long pmoney = money_cnt(priest->minvent);
 		if (pmoney > 0L) {
 		    /* Note: two bits is actually 25 cents.  Hmm. */
-		    pline("%s VERB_GEBEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL %s für ein Calanda.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */
-			(pmoney == 1L) ? "one bit" : "two bits"); /* EN (pmoney == 1L) ? "one bit" : "two bits"); */ // TODO DE
+		    pline("SUBJECT %s VERB_GEBEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL %s für ein Calanda.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */
+			(pmoney == 1L) ? "einen Stutz" : "zwei Stutz"); /* EN (pmoney == 1L) ? "one bit" : "two bits"); */
 		     money2u(priest, pmoney > 1L ? 2 : 1);
 #endif
 		} else

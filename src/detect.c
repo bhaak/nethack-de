@@ -1084,8 +1084,8 @@ openit()	/* returns number of things found and opened */
 
 	if(u.uswallow) {
 		if (is_animal(u.ustuck->data)) {
-			if (Blind) pline("Its mouth opens!"); /* EN if (Blind) pline("Its mouth opens!"); */ // TODO DE
-			else pline("%s opens its mouth!", Monnam(u.ustuck)); /* EN else pline("%s opens its mouth!", Monnam(u.ustuck)); */ // TODO DE
+			if (Blind) pline("Sein Maul öffnet sich!"); /* EN if (Blind) pline("Its mouth opens!"); */
+			else pline("SUBJECT %s VERB_OEFFNEN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_MAUL!", Monnam(u.ustuck)); /* EN else pline("%s opens its mouth!", Monnam(u.ustuck)); */
 		}
 		expels(u.ustuck, u.ustuck->data, TRUE);
 		return(-1);

@@ -243,8 +243,8 @@ ordin(n)		/* return the ordinal suffix of a number */
 {
     register int dd = n % 10;
 
-    return (dd == 0 || dd > 3 || (n % 100) / 10 == 1) ? "th" :
-	    (dd == 1) ? "st" : (dd == 2) ? "nd" : "rd";
+    return (dd == 0 || dd > 3 || (n % 100) / 10 == 1) ? "." : /* EN return (dd == 0 || dd > 3 || (n % 100) / 10 == 1) ? "th" : */ // TODO DE besser?
+	    (dd == 1) ? "." : (dd == 2) ? "." : "."; /* EN (dd == 1) ? "st" : (dd == 2) ? "nd" : "rd"; */ // TODO DE besser?
 }
 #endif /* OVL2 */
 

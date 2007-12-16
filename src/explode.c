@@ -78,7 +78,7 @@ int expltype;
 		case 5: str = "ball of lightning"; /* EN case 5: str = "ball of lightning"; */ // TODO DE
 			adtyp = AD_ELEC;
 			break;
-		case 6: str = "poison gas cloud"; /* EN case 6: str = "poison gas cloud"; */ // TODO DE
+		case 6: str = "NOUN_GIFTGASWOLKE"; /* EN case 6: str = "poison gas cloud"; */
 			adtyp = AD_DRST;
 			break;
 		case 7: str = "splash of acid"; /* EN case 7: str = "splash of acid"; */ // TODO DE

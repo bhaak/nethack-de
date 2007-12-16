@@ -110,9 +110,9 @@ register struct obj *otemp;
 {
 	if (!flags.verbose || Blind || !mon_visible(mtmp))
 		return;
-	pline("%s %s mit KASUS_DATIV %s %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s %s %s %s.", Monnam(mtmp), */
+	pline("%s %s mit KASUS_DATIV PRONOMEN_POSSESSIV_SUBJECT %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s %s %s %s.", Monnam(mtmp), */
 	      (objects[otemp->otyp].oc_dir & PIERCE) ?  "VERB_ZUSTECHEN" : "VERB_ZUSCHLAGEN", /* EN (objects[otemp->otyp].oc_dir & PIERCE) ? "thrusts" : "swings", */
-	      mhis(mtmp), singular(otemp, xname));
+	      singular(otemp, xname)); /* EN mhis(mtmp), singular(otemp, xname)); */
 }
 
 /* return how a poison attack was delivered */
@@ -1278,7 +1278,7 @@ dopois:
 			    rloc(mtmp);
 			if (is_animal(mtmp->data) && *buf) {
 			    if (canseemon(mtmp))
-				pline("%s tries to %s away with %s.", /* EN pline("%s tries to %s away with %s.", */ // TODO DE
+				pline("SUBJECT %s tries to %s away with %s.", /* EN pline("%s tries to %s away with %s.", */ // TODO DE
 				      Monnam(mtmp),
 				      locomotion(mtmp->data, "run"), /* EN locomotion(mtmp->data, "run"), */ // TODO DE
 				      buf);

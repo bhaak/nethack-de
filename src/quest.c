@@ -118,7 +118,7 @@ boolean talk;
 	    You("are currently %s instead of %s.", /* EN You("are currently %s instead of %s.", */ // TODO DE
 		align_str(u.ualign.type), align_str(original_alignment));
 	} else if (u.ualignbase[A_CURRENT] != original_alignment) {
-	    You("have converted."); /* EN You("have converted."); */ // TODO DE
+	    You("VERB_HABEN konvertiert."); /* EN You("have converted."); */
 	} else if (u.ualign.record < MIN_QUEST_ALIGN) {
 	    You("are currently %d and require %d.", /* EN You("are currently %d and require %d.", */ // TODO DE
 		u.ualign.record, MIN_QUEST_ALIGN);

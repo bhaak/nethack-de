@@ -491,24 +491,24 @@ int	mntmp;
 #endif
 
 	if (flags.verbose) {
-	    static const char use_thec[] = "Use the command #%s to %s."; /* EN static const char use_thec[] = "Use the command #%s to %s."; */ // TODO DE
+	    static const char use_thec[] = "Use the command #%s um %s."; /* EN static const char use_thec[] = "Use the command #%s to %s."; */ // TODO DE
 	    static const char monsterc[] = "monster"; /* EN static const char monsterc[] = "monster"; */ // TODO DE
 	    if (can_breathe(youmonst.data))
 		pline(use_thec,monsterc,"use your breath weapon"); /* EN pline(use_thec,monsterc,"use your breath weapon"); */ // TODO DE
 	    if (attacktype(youmonst.data, AT_SPIT))
 		pline(use_thec,monsterc,"spit venom"); /* EN pline(use_thec,monsterc,"spit venom"); */ // TODO DE
 	    if (youmonst.data->mlet == S_NYMPH)
-		pline(use_thec,monsterc,"remove an iron ball"); /* EN pline(use_thec,monsterc,"remove an iron ball"); */ // TODO DE
+		pline(use_thec,monsterc,"eine Eisenkugel zu entfernen"); /* EN pline(use_thec,monsterc,"remove an iron ball"); */
 	    if (attacktype(youmonst.data, AT_GAZE))
-		pline(use_thec,monsterc,"gaze at monsters"); /* EN pline(use_thec,monsterc,"gaze at monsters"); */ // TODO DE
+		pline(use_thec,monsterc,"Monstern anzustarren"); /* EN pline(use_thec,monsterc,"gaze at monsters"); */
 	    if (is_hider(youmonst.data))
 		pline(use_thec,monsterc,"hide"); /* EN pline(use_thec,monsterc,"hide"); */ // TODO DE
 	    if (is_were(youmonst.data))
 		pline(use_thec,monsterc,"summon help"); /* EN pline(use_thec,monsterc,"summon help"); */ // TODO DE
 	    if (webmaker(youmonst.data))
-		pline(use_thec,monsterc,"spin a web"); /* EN pline(use_thec,monsterc,"spin a web"); */ // TODO DE
+		pline(use_thec,monsterc,"ein Netz zu spinnen"); /* EN pline(use_thec,monsterc,"spin a web"); */
 	    if (u.umonnum == PM_GREMLIN)
-		pline(use_thec,monsterc,"multiply in a fountain"); /* EN pline(use_thec,monsterc,"multiply in a fountain"); */ // TODO DE
+		pline(use_thec,monsterc,"sich im Springbrunnen zu vermehren"); /* EN pline(use_thec,monsterc,"multiply in a fountain"); */
 	    if (is_unicorn(youmonst.data))
 		pline(use_thec,monsterc,"use your horn"); /* EN pline(use_thec,monsterc,"use your horn"); */ // TODO DE
 	    if (is_mind_flayer(youmonst.data))
@@ -516,7 +516,7 @@ int	mntmp;
 	    if (youmonst.data->msound == MS_SHRIEK) /* worthless, actually */
 		pline(use_thec,monsterc,"shriek"); /* EN pline(use_thec,monsterc,"shriek"); */ // TODO DE
 	    if (lays_eggs(youmonst.data) && flags.female)
-		pline(use_thec,"sit","lay an egg"); /* EN pline(use_thec,"sit","lay an egg"); */ // TODO DE
+		pline(use_thec,"sit","ein Ei zu legen"); /* EN pline(use_thec,"sit","lay an egg"); */
 	}
 	/* you now know what an egg of your type looks like */
 	if (lays_eggs(youmonst.data)) {

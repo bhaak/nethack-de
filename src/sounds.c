@@ -698,14 +698,14 @@ register struct monst *mtmp;
 		pline_msg = "asks for a potion of healing."; /* EN pline_msg = "asks for a potion of healing."; */ // TODO DE
 	    else if (mtmp->mtame && !mtmp->isminion &&
 						moves > EDOG(mtmp)->hungrytime)
-		verbl_msg = "Ich habe Hunger."; /* EN verbl_msg = "I'm hungry."; */ // TODO DE
+		verbl_msg = "Ich habe Hunger."; /* EN verbl_msg = "I'm hungry."; */
 	    /* Specific monsters' interests */
 	    else if (is_elf(ptr))
 		pline_msg = "flucht über Orks."; /* EN pline_msg = "curses orcs."; */
 	    else if (is_dwarf(ptr))
-		pline_msg = "talks about mining."; /* EN pline_msg = "talks about mining."; */ // TODO DE
+		pline_msg = "VERB_SPRECHEN über Bergbau."; /* EN pline_msg = "talks about mining."; */
 	    else if (likes_magic(ptr))
-		pline_msg = "talks about spellcraft."; /* EN pline_msg = "talks about spellcraft."; */ // TODO DE
+		pline_msg = "VERB_SPRECHEN über das Zauberhandwerk."; /* EN pline_msg = "talks about spellcraft."; */
 	    else if (ptr->mlet == S_CENTAUR)
 		pline_msg = "discusses hunting."; /* EN pline_msg = "discusses hunting."; */ // TODO DE
 	    else switch (monsndx(ptr)) {

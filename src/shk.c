@@ -2093,7 +2093,7 @@ register boolean dummy;
 		return;
 
 	if (ESHK(shkp)->billct == BILLSZ) {
-		You("got that for free!"); /* EN You("got that for free!"); */ // TODO DE
+		pline("Das VERB_BEKOMMEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL gratis!"); /* EN You("got that for free!"); */
 		return;
 	}
 
@@ -3566,17 +3566,17 @@ boolean cant_mollify;
 		if(um_dist(x, y, 1) && !uinshp) {
 		    pline("SUBJECT %s VERB_BRUELLEN:", shkname(shkp)); /* EN pline("%s shouts:", shkname(shkp)); */
 		    verbalize("Who dared %s my %s?", dmgstr, /* EN verbalize("Who dared %s my %s?", dmgstr, */ // TODO DE
-					 dugwall ? "shop" : "door"); /* EN dugwall ? "shop" : "door"); */ // TODO DE
+					 dugwall ? "NOUN_SHOP" : "NOUN_OBJ_DOOR"); /* EN dugwall ? "shop" : "door"); */
 		} else {
 getcad:
-		    verbalize("How dare you %s my %s?", dmgstr, /* EN verbalize("How dare you %s my %s?", dmgstr, */ // TODO DE
-					 dugwall ? "shop" : "door"); /* EN dugwall ? "shop" : "door"); */ // TODO DE
+		    verbalize("Was faellt dir ein, How dare you %s PRONOMEN_POSSESSIV %s?", dmgstr, /* EN verbalize("How dare you %s my %s?", dmgstr, */ // TODO DE
+					 dugwall ? "NOUN_SHOP" : "NOUN_OBJ_DOOR"); /* EN dugwall ? "shop" : "door"); */
 		}
 		hot_pursuit(shkp);
 		return;
 	}
 
-	if (Invis) Your("invisibility does not fool %s!", shkname(shkp)); /* EN if (Invis) Your("invisibility does not fool %s!", shkname(shkp)); */ // TODO DE
+	if (Invis) Your("NOUN_UNSICHTBARKEIT VERB_TAEUSCHEN OBJECT %s nicht!", shkname(shkp)); /* EN if (Invis) Your("invisibility does not fool %s!", shkname(shkp)); */
 	Sprintf(qbuf,"\"Cad!  You did %ld %s worth of damage!\"  Pay? ", /* EN Sprintf(qbuf,"\"Cad!  You did %ld %s worth of damage!\"  Pay? ", */ // TODO DE
 		 cost_of_damage, currency(cost_of_damage));
 	if(yn(qbuf) != 'n') {
@@ -3594,7 +3594,7 @@ getcad:
 		home_shk(shkp, FALSE);
 		pacify_shk(shkp);
 	} else {
-		verbalize("Oh, yes!  You'll pay!"); /* EN verbalize("Oh, yes!  You'll pay!"); */ // TODO DE
+		verbalize("Oh ja!  SUBJECT PRONOMEN_PERSONAL VERB_WERDEN bezahlen!"); /* EN verbalize("Oh, yes!  You'll pay!"); */
 		hot_pursuit(shkp);
 		adjalign(-sgn(u.ualign.type));
 	}
@@ -3708,7 +3708,7 @@ long cost;
 		       o == WAND_CLASS   || o == POTION_CLASS ||
 		       o == SCROLL_CLASS || o == SPBOOK_CLASS))
 		    return ", painstakingly developed!"; /* EN return ", painstakingly developed!"; */ // TODO DE
-		return ", superb craftsmanship!"; /* EN return ", superb craftsmanship!"; */ // TODO DE
+		return ", beste Handarbeit!"; /* EN return ", superb craftsmanship!"; */
 	    case 3: return ", beste Qualität."; /* EN case 3: return ", finest quality."; */
 	    case 2: return ", eine exzellente Wahl."; /* EN case 2: return ", an excellent choice."; */
 	    case 1: return ", ein richtiges Schnäppchen."; /* EN case 1: return ", a real bargain."; */

@@ -587,13 +587,13 @@ const char * const random_malediction[] = {
 	"Hell shall soon claim thy remains,", /* EN "Hell shall soon claim thy remains,", */ // TODO DE
 	"I chortle at thee, thou pathetic", /* EN "I chortle at thee, thou pathetic", */ // TODO DE
 	"Prepare to die, thou", /* EN "Prepare to die, thou", */ // TODO DE
-	"Resistance is useless,", /* EN "Resistance is useless,", */ // TODO DE
+	"Widerstand ist zwecklos,", /* EN "Resistance is useless,", */ // TODO DE
 	"Surrender or die, thou", /* EN "Surrender or die, thou", */ // TODO DE
 	"There shall be no mercy, thou", /* EN "There shall be no mercy, thou", */ // TODO DE
 	"Thou shalt repent of thy cunning,", /* EN "Thou shalt repent of thy cunning,", */ // TODO DE
 	"Thou art as a flea to me,", /* EN "Thou art as a flea to me,", */ // TODO DE
 	"Thou art doomed,", /* EN "Thou art doomed,", */ // TODO DE
-	"Thy fate is sealed,", /* EN "Thy fate is sealed,", */ // TODO DE
+	"Dein Schicksal ist besiegelt,", /* EN "Thy fate is sealed,", */
 	"Verily, thou shalt be one dead" /* EN "Verily, thou shalt be one dead" */ // TODO DE
 };
 

@@ -3903,9 +3903,9 @@ register int osym, dmgtyp;
 		    if(!rn2(3)) cnt++;
 
 		if(!cnt) continue;
-		if(cnt == quan)	mult = "Your"; /* EN if(cnt == quan)	mult = "Your"; */ // TODO DE
+		if(cnt == quan)	mult = "PRONOMEN_POSSESSIV"; /* EN if(cnt == quan)	mult = "Your"; */
 		else	mult = (cnt == 1L) ? "One of your" : "Some of your"; /* EN else	mult = (cnt == 1L) ? "One of your" : "Some of your"; */ // TODO DE
-		pline("%s %s %s!", mult, xname(obj),
+		pline("SUBJECT %s %s %s!", mult, xname(obj), /* EN pline("%s %s %s!", mult, xname(obj), */
 			(cnt > 1L) ? destroy_strings[dindx*3 + 1]
 				  : destroy_strings[dindx*3]);
 		if(osym == POTION_CLASS && dmgtyp != AD_COLD) {

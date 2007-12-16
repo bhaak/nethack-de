@@ -1249,10 +1249,10 @@ register struct obj *otemp;
 	char buf[BUFSZ];
 	if (!flags.verbose || Blind || !mon_visible(magr)) return;
 	Strcpy(buf, mon_nam(mdef));
-	pline("SUBJECT %s %s mit KASUS_DATIV %s %s nach KASUS_DATIV %s.", /* EN pline("%s %s %s %s at %s.", Monnam(magr), */
+	pline("SUBJECT %s %s mit KASUS_DATIV PRONOMEN_POSSESSIV_SUBJECT %s nach KASUS_DATIV %s.", /* EN pline("%s %s %s %s at %s.", Monnam(magr), */
 				Monnam(magr),
 	      (objects[otemp->otyp].oc_dir & PIERCE) ?  "VERB_STECHEN" : "VERB_SCHLAGEN", /* EN (objects[otemp->otyp].oc_dir & PIERCE) ? "thrusts" : "swings", */
-	      mhis(magr), singular(otemp, xname), buf);
+	      singular(otemp, xname), buf); /* EN mhis(magr), singular(otemp, xname), buf); */
 }
 
 /*

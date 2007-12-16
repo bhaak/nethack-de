@@ -2881,8 +2881,8 @@ char *title;
 	int do_all = (dflags & MINV_ALL) != 0;
 #endif
 
-	Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)),
-		do_all ? "possessions" : "armament"); /* EN do_all ? "possessions" : "armament"); */ // TODO DE
+	Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)), /* EN Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)), */ // TODO DE
+		do_all ? "possessions" : "NOUN_BEWAFFNUNG"); /* EN do_all ? "possessions" : "armament"); */ // TODO DE
 
 #ifndef GOLDOBJ
 	if (do_all ? (mon->minvent || mon->mgold)
@@ -2923,7 +2923,7 @@ char *title;
 
 	    set_uasmon();
 	} else {
-	    invdisp_nothing(title ? title : tmp, "(none)"); /* EN invdisp_nothing(title ? title : tmp, "(none)"); */ // TODO DE
+	    invdisp_nothing(title ? title : tmp, "(nichts)"); /* EN invdisp_nothing(title ? title : tmp, "(none)"); */
 	    n = 0;
 	}
 
@@ -3008,7 +3008,7 @@ boolean as_if_seen;
 	if (n) {
 	    only.x = x;
 	    only.y = y;
-	    if (query_objlist("Things that are buried here:", /* EN if (query_objlist("Things that are buried here:", */ // TODO DE
+	    if (query_objlist("Hier vergrabene Dinge:", /* EN if (query_objlist("Things that are buried here:", */
 			      level.buriedobjlist, INVORDER_SORT,
 			      &selected, PICK_NONE, only_here) > 0)
 		free((genericptr_t)selected);
