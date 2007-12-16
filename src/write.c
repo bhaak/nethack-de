@@ -203,7 +203,7 @@ found:
 		/* scrolls disappear, spellbooks don't */
 		if (paper->oclass == SPBOOK_CLASS) {
 			You(
-       "write in your best handwriting:  \"My Diary\", but it quickly fades."); /* EN "write in your best handwriting:  \"My Diary\", but it quickly fades."); */ // TODO DE
+       "VERB_SCHREIBEN OBJECT KASUS_DATIV in NOUN_SCHOENSCHRIFT:  \"Liebes Tagebuch\", aber es verblasst gleich wieder."); /* EN "write in your best handwriting:  \"My Diary\", but it quickly fades."); */
 			update_inventory();	/* pen charges */
 		} else {
 			if (by_descr) {

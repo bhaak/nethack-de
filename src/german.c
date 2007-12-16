@@ -612,7 +612,6 @@ int finde_naechstes_subject(const char* text) {
 			}
 
 		} else if (strncmp(tmp, "NOUN_PSEUDO_", 12)==0) {
-		  print_state();
 			c_numerus = n_singular;
 			c_person  = drittePerson;
 
@@ -624,7 +623,6 @@ int finde_naechstes_subject(const char* text) {
 			subject_genus   = c_genus;
 			subject_numerus = c_numerus;
 			subject_person  = c_person;
-		  print_state();
 
 			return 0;
 		} else if (strncmp(tmp, "NOUN_",5)==0) {

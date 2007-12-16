@@ -547,7 +547,7 @@ dismount_steed(reason)
 		if (!is_flyer(mdat) && !is_floater(mdat) && !is_clinger(mdat)) {
 		    if (is_pool(u.ux, u.uy)) {
 			if (!Underwater)
-			    pline("SUBJECT %s VERB_FALLEN in OBJECT in ARTIKEL_BESTIMMTER %s!", Monnam(mtmp), /* EN pline("%s falls into the %s!", Monnam(mtmp), */
+			    pline("SUBJECT %s VERB_FALLEN OBJECT in ARTIKEL_BESTIMMTER %s!", Monnam(mtmp), /* EN pline("%s falls into the %s!", Monnam(mtmp), */
 							surface(u.ux, u.uy));
 			if (!is_swimmer(mdat) && !amphibious(mdat)) {
 			    killed(mtmp);

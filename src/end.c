@@ -86,7 +86,7 @@ static NEARDATA const char *deaths[] = {		/* the array of death */
 static NEARDATA const char *ends[] = {		/* "when you..." */
 	"gestorben", "erstickt", "vergiftet worden", "verhungert", "ertrunken", /* EN "died", "choked", "were poisoned", "starved", "drowned", */ // TODO DE
 	"verbrannt", "dissolved in the lava", /* EN "burned", "dissolved in the lava", */ // TODO DE
-	"zerquetscht", "turned to stone", "turned into slime", /* EN "were crushed", "turned to stone", "turned into slime", */ // TODO DE
+	"erschlagen", "turned to stone", "turned into slime", /* EN "were crushed", "turned to stone", "turned into slime", */ // TODO DE
 	"were genocided", "panicked", "were tricked", /* EN "were genocided", "panicked", "were tricked", */ // TODO DE
 	"quit", "geflohen", "aufgestiegen" /* EN "quit", "escaped", "ascended" */ // TODO DE
 };
@@ -295,7 +295,7 @@ register struct monst *mtmp;
 
 	if(mtmp->data == &mons[PM_GHOST]) {
 		Strcat(buf, "NOUN_GHOST"); /* EN Strcat(buf, "ghost"); */
-		if (mtmp->mnamelth) Sprintf(eos(buf), " of %s", NAME(mtmp)); /* EN if (mtmp->mnamelth) Sprintf(eos(buf), " of %s", NAME(mtmp)); */ // TODO DE
+		if (mtmp->mnamelth) Sprintf(eos(buf), " %s", s_suffix(NAME(mtmp))); /* EN if (mtmp->mnamelth) Sprintf(eos(buf), " of %s", NAME(mtmp)); */ // TODO DE
 	} else if(mtmp->isshk) {
 		Sprintf(eos(buf), "%s%s, ARTIKEL_BESTIMMTER NOUN_SHOPKEEPER", /* EN Sprintf(eos(buf), "%s %s, the shopkeeper", */
 			(mtmp->female ? "" : ""), shkname(mtmp)); /* EN (mtmp->female ? "Ms." : "Mr."), shkname(mtmp)); */

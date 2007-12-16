@@ -64,11 +64,11 @@ const char *name;	/* if null, then format `obj' */
 
 	if(u.uac + tlev <= rnd(20)) {
 		if(Blind || !flags.verbose) pline("It misses."); /* EN if(Blind || !flags.verbose) pline("It misses."); */ // TODO DE
-		else You("are almost hit by %s.", onm); /* EN else You("are almost hit by %s.", onm); */ // TODO DE
+		else Dich("trifft beinahe SUBJECT_IM_SATZ %s.", onm); /* EN else You("are almost hit by %s.", onm); */
 		return(0);
 	} else {
 		if(Blind || !flags.verbose) You("are hit!"); /* EN if(Blind || !flags.verbose) You("are hit!"); */ // TODO DE
-		else You("are hit by %s%s", onm, exclam(dam)); /* EN else You("are hit by %s%s", onm, exclam(dam)); */ // TODO DE
+		else pline("SUBJECT %s VERB_HIT OBJECT PRONOMEN_PERSONAL%s", onm, exclam(dam)); /* EN else You("are hit by %s%s", onm, exclam(dam)); */
 
 		if (obj && objects[obj->otyp].oc_material == SILVER
 				&& hates_silver(youmonst.data)) {
@@ -119,7 +119,7 @@ int x,y;
 		if (down_gate(x, y) != -1)
 			objgone = ship_object(obj, x, y, FALSE);
 		if (!objgone) {
-			if (!flooreffects(obj,x,y,"fall")) { /* don't double-dip on damage */ /* EN if (!flooreffects(obj,x,y,"fall")) { */ // TODO DE
+			if (!flooreffects(obj,x,y,"VERB_FALLEN")) { /* don't double-dip on damage */ /* EN if (!flooreffects(obj,x,y,"fall")) { */
 			    place_object(obj, x, y);
 			    if (!mtmp && x == u.ux && y == u.uy)
 				mtmp = &youmonst;
@@ -181,7 +181,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 
 	    if (otmp->opoisoned && is_poisonable(otmp)) {
 		if (resists_poison(mtmp)) {
-		    if (vis) pline_The("poison doesn't seem to affect %s.", /* EN if (vis) pline_The("poison doesn't seem to affect %s.", */ // TODO DE
+		    if (vis) pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei %s nicht zu wirken.", /* EN if (vis) pline_The("poison doesn't seem to affect %s.", */
 				   mon_nam(mtmp));
 		} else {
 		    if (rn2(30)) {
@@ -396,7 +396,7 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			blindinc = rnd(25);
 			if(singleobj->otyp == CREAM_PIE) {
 			    if(!Blind) pline("Yecch!  You've been creamed."); /* EN if(!Blind) pline("Yecch!  You've been creamed."); */ // TODO DE
-			    else pline("There's %s sticky all over your %s.", /* EN else pline("There's %s sticky all over your %s.", */ // TODO DE
+			    else pline("SUBJECT PRONOMEN_PERSONAL VERB_HABEN %s Klebriges OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV ADJEKTIV_GESAMT %s.", /* EN else pline("There's %s sticky all over your %s.", */
 				       something,
 				       body_part(FACE));
 			} else if(singleobj->otyp == BLINDING_VENOM) {

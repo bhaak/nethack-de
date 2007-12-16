@@ -1059,7 +1059,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Free_action) you_have("free action"); /* EN if (Free_action) you_have("free action"); */ // TODO DE
 	if (Fixed_abil) you_have("fixed abilities"); /* EN if (Fixed_abil) you_have("fixed abilities"); */ // TODO DE
 	if (Lifesaved)
-		enl_msg("POSSESSIV_PRONOMEN NOUN_LEBEN ", "wird gerettet werden", "wäre gerettet worden", ""); /* EN enl_msg("Your life ", "will be", "would have been", " saved"); */
+		enl_msg("PRONOMEN_POSSESSIV NOUN_LEBEN ", "wird gerettet werden", "wäre gerettet worden", ""); /* EN enl_msg("Your life ", "will be", "would have been", " saved"); */
 	if (u.twoweap) you_are("wielding two weapons at once"); /* EN if (u.twoweap) you_are("wielding two weapons at once"); */ // TODO DE
 
 	/*** Miscellany ***/
@@ -1081,9 +1081,9 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (carrying(LUCKSTONE) || stone_luck(TRUE)) {
 	    ltmp = stone_luck(FALSE);
 	    if (ltmp <= 0)
-		enl_msg("SUBJECT POSSESSIV_PRONOMEN NOUN_PECHSTRAEHNE ", "bricht", "brach", " nicht ab"); /* EN enl_msg("Bad luck ", "does", "did", " not time out for you"); */
+		enl_msg("SUBJECT PRONOMEN_POSSESSIV NOUN_PECHSTRAEHNE ", "bricht", "brach", " nicht ab"); /* EN enl_msg("Bad luck ", "does", "did", " not time out for you"); */
 	    if (ltmp >= 0)
-		enl_msg("SUBJECT POSSESSIV_PRONOMEN NOUN_GLUECKSSTRAEHNE ", "bricht", "brach", " nicht ab"); /* EN enl_msg("Good luck ", "does", "did", " not time out for you"); */
+		enl_msg("SUBJECT PRONOMEN_POSSESSIV NOUN_GLUECKSSTRAEHNE ", "bricht", "brach", " nicht ab"); /* EN enl_msg("Good luck ", "does", "did", " not time out for you"); */
 	}
 
 	if (u.ugangr) {
@@ -1386,7 +1386,7 @@ int final;
 	if (Free_action) dump(youhad, "free action"); /* EN if (Free_action) dump(youhad, "free action"); */ // TODO DE
 	if (Fixed_abil) dump(youhad, "fixed abilities"); /* EN if (Fixed_abil) dump(youhad, "fixed abilities"); */ // TODO DE
 	if (Lifesaved)
-		dump("  ", "SUBJECT POSSESSIV_PRONOMEN NOUN_LEBEN wäre gerettet worden"); /* EN dump("  ", "Your life would have been saved"); */
+		dump("  ", "SUBJECT PRONOMEN_POSSESSIV NOUN_LEBEN wäre gerettet worden"); /* EN dump("  ", "Your life would have been saved"); */
 	if (u.twoweap) dump(youwere, "wielding two weapons at once"); /* EN if (u.twoweap) dump(youwere, "wielding two weapons at once"); */ // TODO DE
 
 	/*** Miscellany ***/
@@ -1405,9 +1405,9 @@ int final;
 	if (carrying(LUCKSTONE) || stone_luck(TRUE)) {
 	    ltmp = stone_luck(FALSE);
 	    if (ltmp <= 0)
-		dump("  ", "POSSESSIV_PRONOMEN NOUN_PECHSTRAEHNE brach nicht ab"); /* EN dump("  ", "Bad luck did not time out for you"); */
+		dump("  ", "SUBJECT PRONOMEN_POSSESSIV NOUN_PECHSTRAEHNE brach nicht ab"); /* EN dump("  ", "Bad luck did not time out for you"); */
 	    if (ltmp >= 0)
-		dump("  ", "POSSESSIV_PRONOMEN NOUN_GLUECKSSTRAEHNE brach nicht ab"); /* EN dump("  ", "Good luck did not time out for you"); */
+		dump("  ", "SUBJECT PRONOMEN_POSSESSIV NOUN_GLUECKSSTRAEHNE brach nicht ab"); /* EN dump("  ", "Good luck did not time out for you"); */
 	}
 
 	if (u.ugangr) {

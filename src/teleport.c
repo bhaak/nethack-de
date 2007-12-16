@@ -825,9 +825,9 @@ void
 level_tele_trap(trap)
 struct trap *trap;
 {
-	You("%s onto a level teleport trap!", /* EN You("%s onto a level teleport trap!", */ // TODO DE
-		      Levitation ? (const char *)"float" : /* EN Levitation ? (const char *)"float" : */ // TODO DE
-				  locomotion(youmonst.data, "step")); /* EN locomotion(youmonst.data, "step")); */ // TODO DE
+	You("%s OBJECT auf ARTIKEL_UNBESTIMMTER !", /* EN You("%s onto a level teleport trap!", */ // TODO DE
+		      Levitation ? (const char *)"VERB_SCHWEBEN" : /* EN Levitation ? (const char *)"float" : */
+				  locomotion(youmonst.data, "VERB_TRETEN")); /* EN locomotion(youmonst.data, "step")); */
 	if (Antimagic) {
 	    shieldeff(u.ux, u.uy);
 	}
@@ -1149,7 +1149,7 @@ register struct obj *obj;
 		    within_bounded_area(tx, ty, dndest.nlx, dndest.nly,
 						dndest.nhx, dndest.nhy)))));
 
-	if (flooreffects(obj, tx, ty, "fall")) { /* EN if (flooreffects(obj, tx, ty, "fall")) { */ // TODO DE
+	if (flooreffects(obj, tx, ty, "VERB_FALLEN")) { /* EN if (flooreffects(obj, tx, ty, "fall")) { */
 	    return;
 	} else if (otx == 0 && oty == 0) {
 	    ;	/* fell through a trap door; no update of old loc needed */

@@ -344,7 +344,7 @@ boolean td;	/* td == TRUE : trap door or hole */
 	    seetrap(t);
 	    if (!In_sokoban(&u.uz)) {
 		if (t->ttyp == TRAPDOOR)
-			pline("SUBJECT NOUN_TRAP_DOOR VERB_OEFFNEN sich unter KASUS_DATIV PRONOMEN_PERSONAL!"); /* EN pline("A trap door opens up under you!"); */
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR VERB_OEFFNEN sich unter KASUS_DATIV PRONOMEN_PERSONAL!"); /* EN pline("A trap door opens up under you!"); */
 		else 
 			pline("There's a gaping hole under you!"); /* EN pline("There's a gaping hole under you!"); */ // TODO DE
 	    }
@@ -715,7 +715,7 @@ unsigned trflags;
 			    pline("SUBJECT Glücklicherweise VERB_TRAGEN PRONOMEN_PERSONAL einen schützenden Helm."); /* EN pline("Fortunately, you are wearing a hard helmet."); */
 			    dmg = 2;
 			} else if (flags.verbose) {
-			    Your("%s does not protect you.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */ // TODO DE
+			    Your("%s VERB_SCHUETZEN OBJECT PRONOMEN_PERSONAL nicht.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */
 			}
 		    }
 
@@ -878,19 +878,19 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 #ifdef STEED
 		    if (u.usteed) {
 		    	if ((trflags & RECURSIVETRAP) != 0)
-			    Sprintf(verbbuf, "and %s fall", /* EN Sprintf(verbbuf, "and %s fall", */ // TODO DE
+			    Sprintf(verbbuf, "und SUBJECT_IM_SATZ %s MODIFIER_VERB_DRITTE_PERSON MODIFIER_VERB_PLURAL VERB_FALLEN", /* EN Sprintf(verbbuf, "and %s fall", */
 				x_monnam(u.usteed,
 				    u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
 				    (char *)0, SUPPRESS_SADDLE, FALSE));
 			else
-			    Sprintf(verbbuf,"lead %s", /* EN Sprintf(verbbuf,"lead %s", */ // TODO DE
+			    Sprintf(verbbuf,"VERB_FUEHREN OBJECT %s", /* EN Sprintf(verbbuf,"lead %s", */
 				x_monnam(u.usteed,
 					 u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
-				 	 "poor", SUPPRESS_SADDLE, FALSE)); /* EN "poor", SUPPRESS_SADDLE, FALSE)); */ // TODO DE
+				 	 "ADJEKTIV_POOR", SUPPRESS_SADDLE, FALSE)); /* EN "poor", SUPPRESS_SADDLE, FALSE)); */
 		    } else
 #endif
-		    Strcpy(verbbuf,"fall"); /* EN Strcpy(verbbuf,"fall"); */ // TODO DE
-		    You("%s into %s pit!", verbbuf, a_your[trap->madeby_u]); /* EN You("%s into %s pit!", verbbuf, a_your[trap->madeby_u]); */ // TODO DE
+		    Strcpy(verbbuf,"VERB_FALLEN"); /* EN Strcpy(verbbuf,"fall"); */
+		    You("%s NEUES_OBJECT OBJECT in %s NOUN_PIT!", verbbuf, a_your[trap->madeby_u]); /* EN You("%s into %s pit!", verbbuf, a_your[trap->madeby_u]); */
 		}
 		/* wumpus reference */
 		if (Role_if(PM_RANGER) && !trap->madeby_u && !trap->once &&
@@ -904,10 +904,10 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    const char *predicament = "on a set of sharp iron spikes"; /* EN const char *predicament = "on a set of sharp iron spikes"; */ // TODO DE
 #ifdef STEED
 		    if (u.usteed) {
-			pline("%s lands %s!", /* EN pline("%s lands %s!", */ // TODO DE
+			pline("SUBJECT %s lands %s!", /* EN pline("%s lands %s!", */ // TODO DE
 				upstart(x_monnam(u.usteed,
 					 u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
-					 "poor", SUPPRESS_SADDLE, FALSE)), /* EN "poor", SUPPRESS_SADDLE, FALSE)), */ // TODO DE
+					 "ADJEKTIV_POOR", SUPPRESS_SADDLE, FALSE)), /* EN "poor", SUPPRESS_SADDLE, FALSE)), */
 			      predicament);
 		    } else
 #endif
@@ -966,21 +966,21 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    if (acidic(youmonst.data) || u.umonnum == PM_GELATINOUS_CUBE ||
 			u.umonnum == PM_FIRE_ELEMENTAL) {
 			if (webmsgok)
-			    You("%s %s spider web!", /* EN You("%s %s spider web!", */ // TODO DE
-				(u.umonnum == PM_FIRE_ELEMENTAL) ? "burn" : "dissolve", /* EN (u.umonnum == PM_FIRE_ELEMENTAL) ? "burn" : "dissolve", */ // TODO DE
+			    You("%s %s OBJECT NOUN_SPIDER_WEB!", /* EN You("%s %s spider web!", */
+				(u.umonnum == PM_FIRE_ELEMENTAL) ? "VERB_VERBRENNEN" : "dissolve", /* EN (u.umonnum == PM_FIRE_ELEMENTAL) ? "burn" : "dissolve", */ // TODO DE
 				a_your[trap->madeby_u]);
 			deltrap(trap);
 			newsym(u.ux,u.uy);
 			break;
 		    }
-		    if (webmsgok) You("flow through %s spider web.", /* EN if (webmsgok) You("flow through %s spider web.", */ // TODO DE
+		    if (webmsgok) You("flow through %s NOUN_SPIDER_WEB.", /* EN if (webmsgok) You("flow through %s spider web.", */ // TODO DE
 			    a_your[trap->madeby_u]);
 		    break;
 		}
 		if (webmaker(youmonst.data)) {
 		    if (webmsgok)
 		    	pline(trap->madeby_u ? "You take a walk on your web." /* EN pline(trap->madeby_u ? "You take a walk on your web." */ // TODO DE
-					 : "There is a spider web here."); /* EN : "There is a spider web here."); */ // TODO DE
+					 : "There is a NOUN_SPIDER_WEB here."); /* EN : "There is a spider web here."); */ // TODO DE
 		    break;
 		}
 		if (webmsgok) {
@@ -988,16 +988,16 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    verbbuf[0] = '\0';
 #ifdef STEED
 		    if (u.usteed)
-		   	Sprintf(verbbuf,"lead %s",
+		   	Sprintf(verbbuf,"VERB_FUEHREN OBJECT %s", /* EN Sprintf(verbbuf,"lead %s", */
 				x_monnam(u.usteed,
 					 u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
-				 	 "poor", SUPPRESS_SADDLE, FALSE));
+				 	 "ADJEKTIV_POOR", SUPPRESS_SADDLE, FALSE)); /* EN "poor", SUPPRESS_SADDLE, FALSE)); */
 		    else
 #endif
 			
 		    Sprintf(verbbuf, "%s", Levitation ? (const char *)"float" : /* EN Sprintf(verbbuf, "%s", Levitation ? (const char *)"float" : */ // TODO DE
 		      		locomotion(youmonst.data, "stumble")); /* EN locomotion(youmonst.data, "stumble")); */ // TODO DE
-		    You("%s into %s spider web!", /* EN You("%s into %s spider web!", */ // TODO DE
+		    You("%s NEUES_OBJECT OBJECT in %s NOUN_SPIDER_WEB!", /* EN You("%s into %s spider web!", */
 			verbbuf, a_your[trap->madeby_u]);
 		}
 		u.utraptype = TT_WEB;
@@ -1081,7 +1081,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		seetrap(trap);
 #ifdef STEED
 		if (u.usteed)
-			Sprintf(verbbuf, "lead %s", /* EN Sprintf(verbbuf, "lead %s", */ // TODO DE
+			Sprintf(verbbuf, "VERB_FUEHREN OBJECT %s", /* EN Sprintf(verbbuf, "lead %s", */
 				x_monnam(u.usteed,
 					 u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
 				 	 (char *)0, SUPPRESS_SADDLE, FALSE));
@@ -1478,14 +1478,14 @@ int style;
 			    /* the boulder won't be used up if there is a
 			       monster in the trap; stop rolling anyway */
 			    x2 = bhitpos.x,  y2 = bhitpos.y;  /* stops here */
-			    if (flooreffects(singleobj, x2, y2, "fall")) /* EN if (flooreffects(singleobj, x2, y2, "fall")) */ // TODO DE
+			    if (flooreffects(singleobj, x2, y2, "VERB_FALLEN")) /* EN if (flooreffects(singleobj, x2, y2, "fall")) */
 				used_up = TRUE;
 			    dist = -1;	/* stop rolling immediately */
 			    break;
 			}
 			if (used_up || dist == -1) break;
 		    }
-		    if (flooreffects(singleobj, bhitpos.x, bhitpos.y, "fall")) { /* EN if (flooreffects(singleobj, bhitpos.x, bhitpos.y, "fall")) { */ // TODO DE
+		    if (flooreffects(singleobj, bhitpos.x, bhitpos.y, "VERB_FALLEN")) { /* EN if (flooreffects(singleobj, bhitpos.x, bhitpos.y, "fall")) { */
 			used_up = TRUE;
 			break;
 		    }
@@ -2005,17 +2005,17 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			       mptr == &mons[PM_GELATINOUS_CUBE] ||
 			       mptr == &mons[PM_FIRE_ELEMENTAL]) {
 				if (in_sight)
-				    pline("%s %s %s spider web!", /* EN pline("%s %s %s spider web!", */ // TODO DE
+				    pline("SUBJECT %s %s OBJECT %s NOUN_SPIDER_WEB!", /* EN pline("%s %s %s spider web!", */
 					  Monnam(mtmp),
 					  (mptr == &mons[PM_FIRE_ELEMENTAL]) ?
-					    "burns" : "dissolves", /* EN "burns" : "dissolves", */ // TODO DE
+					    "VERB_VERBRENNEN" : "dissolves", /* EN "burns" : "dissolves", */ // TODO DE
 					  a_your[trap->madeby_u]);
 				deltrap(trap);
 				newsym(mtmp->mx, mtmp->my);
 				break;
 			    }
 			    if (in_sight) {
-				pline("%s flows through %s spider web.", /* EN pline("%s flows through %s spider web.", */ // TODO DE
+				pline("%s flows through %s NOUN_SPIDER_WEB.", /* EN pline("%s flows through %s spider web.", */ // TODO DE
 				      Monnam(mtmp),
 				      a_your[trap->madeby_u]);
 				seetrap(trap);
@@ -2039,7 +2039,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 				    (mtmp->wormno && count_wsegs(mtmp) > 5)) {
 				    tear_web = TRUE;
 				} else if (in_sight) {
-				    pline("%s is caught in %s spider web.", /* EN pline("%s is caught in %s spider web.", */ // TODO DE
+				    pline("%s is caught in %s NOUN_SPIDER_WEB.", /* EN pline("%s is caught in %s spider web.", */ // TODO DE
 					  Monnam(mtmp),
 					  a_your[trap->madeby_u]);
 				    seetrap(trap);
@@ -2061,7 +2061,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			}
 			if (tear_web) {
 			    if (in_sight)
-				pline("%s tears through %s spider web!", /* EN pline("%s tears through %s spider web!", */ // TODO DE
+				pline("%s tears through %s NOUN_SPIDER_WEB!", /* EN pline("%s tears through %s spider web!", */ // TODO DE
 				      Monnam(mtmp), a_your[trap->madeby_u]);
 			    deltrap(trap);
 			    newsym(mtmp->mx, mtmp->my);
@@ -3070,13 +3070,13 @@ boolean force_failure;
 	
 	/* Test for monster first, monsters are displayed instead of trap. */
 	if (mtmp && (!mtmp->mtrapped || !holdingtrap)) {
-		pline("%s is in the way.", Monnam(mtmp)); /* EN pline("%s is in the way.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_STEHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL im Weg.", Monnam(mtmp)); /* EN pline("%s is in the way.", Monnam(mtmp)); */
 		return 0;
 	}
 	/* We might be forced to move onto the trap's location. */
 	if (sobj_at(BOULDER, ttmp->tx, ttmp->ty)
 				&& !Passes_walls && !under_u) {
-		There("is a boulder in your way."); /* EN There("is a boulder in your way."); */ // TODO DE
+		pline("SUBJECT NOUN_IT VERB_STEHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER NOUN_BOULDER im Weg."); /* EN There("is a boulder in your way."); */
 		return 0;
 	}
 	/* duplicate tight-space checks from test_move */
@@ -3183,7 +3183,7 @@ struct trap *ttmp;
 	if ((mtmp = m_at(ttmp->tx,ttmp->ty)) != 0) {
 		mtmp->mtrapped = 0;
 		You("remove %s %s from %s.", the_your[ttmp->madeby_u], /* EN You("remove %s %s from %s.", the_your[ttmp->madeby_u], */ // TODO DE
-			(ttmp->ttyp == BEAR_TRAP) ? "bear trap" : "webbing", /* EN (ttmp->ttyp == BEAR_TRAP) ? "bear trap" : "webbing", */ // TODO DE
+			(ttmp->ttyp == BEAR_TRAP) ? "NOUN_BEAR_TRAP" : "NOUN_NETZ", /* EN (ttmp->ttyp == BEAR_TRAP) ? "bear trap" : "webbing", */
 			mon_nam(mtmp));
 		reward_untrap(ttmp, mtmp);
 	} else {
@@ -3470,9 +3470,9 @@ boolean force;
 	if(!u.dx && !u.dy) {
 	    for(otmp = level.objects[x][y]; otmp; otmp = otmp->nexthere)
 		if(Is_box(otmp)) {
-		    Sprintf(qbuf, "There is %s here. Check it for traps?", /* EN Sprintf(qbuf, "There is %s here. Check it for traps?", */ // TODO DE
-			safe_qbuf("", sizeof("There is  here. Check it for traps?"), /* EN safe_qbuf("", sizeof("There is  here. Check it for traps?"), */ // TODO DE
-				doname(otmp), an(simple_typename(otmp->otyp)), "a box")); /* EN doname(otmp), an(simple_typename(otmp->otyp)), "a box")); */ // TODO DE
+		    Sprintf(qbuf, "Hier liegt %s. Auf Fallen überprüfen?", /* EN Sprintf(qbuf, "There is %s here. Check it for traps?", */
+			safe_qbuf("", sizeof("Hier liegt  . Auf Fallen überprüfen?"), /* EN safe_qbuf("", sizeof("There is  here. Check it for traps?"), */
+				doname(otmp), an(simple_typename(otmp->otyp)), "ein Behälter")); /* EN doname(otmp), an(simple_typename(otmp->otyp)), "a box")); */
 		    switch (ynq(qbuf)) {
 			case 'q': return(0);
 			case 'n': continue;

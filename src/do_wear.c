@@ -117,7 +117,7 @@ Boots_on()
 	case ELVEN_BOOTS:
 		if (!oldprop && !HStealth && !BStealth) {
 			makeknown(uarmf->otyp);
-			You("walk very quietly."); /* EN You("walk very quietly."); */ // TODO DE
+			You("VERB_GEHEN sehr leise."); /* EN You("walk very quietly."); */
 		}
 		break;
 	case FUMBLE_BOOTS:

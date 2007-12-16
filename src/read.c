@@ -1228,7 +1228,7 @@ register struct obj	*sobj;
 	    	    	    	    xkilled(mtmp, 1);
 	    	    	    }
 	    	    	    /* Drop the rock/boulder to the floor */
-	    	    	    if (!flooreffects(otmp2, x, y, "fall")) { /* EN if (!flooreffects(otmp2, x, y, "fall")) { */ // TODO DE
+	    	    	    if (!flooreffects(otmp2, x, y, "VERB_FALLEN")) { /* EN if (!flooreffects(otmp2, x, y, "fall")) { */
 	    	    	    	place_object(otmp2, x, y);
 	    	    	    	stackobj(otmp2);
 	    	    	    	newsym(x, y);  /* map the rock */
@@ -1258,14 +1258,14 @@ register struct obj	*sobj;
 				pline("SUBJECT Glücklicherweise VERB_TRAGEN PRONOMEN_PERSONAL einen schützenden Helm."); /* EN pline("Fortunately, you are wearing a hard helmet."); */
 				if (dmg > 2) dmg = 2;
 			    } else if (flags.verbose) {
-				Your("%s does not protect you.", /* EN Your("%s does not protect you.", */ // TODO DE
+				Your("%s VERB_SCHUETZEN OBJECT PRONOMEN_PERSONAL nicht.", /* EN Your("%s does not protect you.", */
 						xname(uarmh));
 			    }
 			}
 		    } else
 			dmg = 0;
 		    /* Must be before the losehp(), for bones files */
-		    if (!flooreffects(otmp2, u.ux, u.uy, "fall")) {
+		    if (!flooreffects(otmp2, u.ux, u.uy, "VERB_FALLEN")) { /* EN if (!flooreffects(otmp2, u.ux, u.uy, "fall")) { */
 			place_object(otmp2, u.ux, u.uy);
 			stackobj(otmp2);
 			newsym(u.ux, u.uy);

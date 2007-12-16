@@ -250,7 +250,7 @@ use_stethoscope(obj)
 		else if (its_dead(u.ux, u.uy, &res))
 		    ;	/* message already given */
 		else if (Is_stronghold(&u.uz))
-		    You_hear("prasselden Höllenfeuer."); /* EN You_hear("the crackling of hellfire."); */
+		    You_hear("prasselnden Höllenfeuer."); /* EN You_hear("the crackling of hellfire."); */
 		else
 		    pline_The("%s VERB_SCHEINEN OBJECT KASUS_DATIV gesund genug.", surface(u.ux,u.uy)); /* EN pline_The("%s seems healthy enough.", surface(u.ux,u.uy)); */
 		return res;
@@ -1152,7 +1152,7 @@ light_cocktail(obj)
 	    obj_extract_self(obj);	/* free from inv */
 
 	    /* shouldn't merge */
-	    obj = hold_another_object(obj, "You drop %s!", /* EN obj = hold_another_object(obj, "You drop %s!", */ // TODO DE
+	    obj = hold_another_object(obj, "SUBJECT VERB_DROP %s SATZKLAMMER!", /* EN obj = hold_another_object(obj, "You drop %s!", */
 				      doname(obj), (const char *)0);
 	} else
 	    begin_burn(obj, FALSE);
@@ -1693,20 +1693,20 @@ boolean quietly;
 	x = cc->x; y = cc->y;
 	if (!isok(x,y)) {
 		if (!quietly)
-			You("cannot put the figurine there."); /* EN You("cannot put the figurine there."); */ // TODO DE
+			pline("Dorthin VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_FIGURINE stellen."); /* EN You("cannot put the figurine there."); */
 		return FALSE;
 	}
 	if (IS_ROCK(levl[x][y].typ) &&
 	    !(passes_walls(&mons[obj->corpsenm]) && may_passwall(x,y))) {
 		if (!quietly)
-		    You("cannot place a figurine in %s!", /* EN You("cannot place a figurine in %s!", */ // TODO DE
-			IS_TREE(levl[x][y].typ) ? "a tree" : "solid rock"); /* EN IS_TREE(levl[x][y].typ) ? "a tree" : "solid rock"); */ // TODO DE
+		    You("VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_FIGURINE %s stellen!", /* EN You("cannot place a figurine in %s!", */
+			IS_TREE(levl[x][y].typ) ? "auf einen Baum stellen" : "in Felsgestein"); /* EN IS_TREE(levl[x][y].typ) ? "a tree" : "solid rock"); */
 		return FALSE;
 	}
 	if (sobj_at(BOULDER,x,y) && !passes_walls(&mons[obj->corpsenm])
 			&& !throws_rocks(&mons[obj->corpsenm])) {
 		if (!quietly)
-			You("cannot fit the figurine on the boulder."); /* EN You("cannot fit the figurine on the boulder."); */ // TODO DE
+			You("VERB_KOENNEN OBJECT ARTIKEL_BESTIMMTER NOUN_FIGURINE auf den Felsbrocken stellen."); /* EN You("cannot fit the figurine on the boulder."); */
 		return FALSE;
 	}
 	return TRUE;
@@ -2218,7 +2218,7 @@ struct obj *obj;
 	    if (IS_FURNITURE(levl[rx][ry].typ))
 		wrapped_what = something;
 	    else if (sobj_at(BOULDER, rx, ry))
-		wrapped_what = "a boulder"; /* EN wrapped_what = "a boulder"; */ // TODO DE
+		wrapped_what = "ARTIKEL_UNBESTIMMTER NOUN_BOULDER"; /* EN wrapped_what = "a boulder"; */
 	}
 	if (wrapped_what) {
 	    coord cc;
@@ -2315,7 +2315,7 @@ struct obj *obj;
 			pline("Snatching %s is a fatal mistake.", kbuf); /* EN pline("Snatching %s is a fatal mistake.", kbuf); */ // TODO DE
 			instapetrify(kbuf);
 		    }
-		    otmp = hold_another_object(otmp, "You drop %s!", /* EN otmp = hold_another_object(otmp, "You drop %s!", */ // TODO DE
+		    otmp = hold_another_object(otmp, "SUBJECT VERB_DROP %s SATZKLAMMER!", /* EN otmp = hold_another_object(otmp, "You drop %s!", */
 					       doname(otmp), (const char *)0);
 		    break;
 		default:
@@ -2603,17 +2603,17 @@ do_break_wand(obj)
     Strcpy(the_wand, yname(obj));
     Sprintf(confirm, "Are you really sure you want to break %s?", /* EN Sprintf(confirm, "Are you really sure you want to break %s?", */ // TODO DE
 	safe_qbuf("", sizeof("Are you really sure you want to break ?"), /* EN safe_qbuf("", sizeof("Are you really sure you want to break ?"), */ // TODO DE
-				the_wand, ysimple_name(obj), "the wand")); /* EN the_wand, ysimple_name(obj), "the wand")); */ // TODO DE
+				the_wand, ysimple_name(obj), "ARTIKEL_BESTIMMTER NOUN_WAND")); /* EN the_wand, ysimple_name(obj), "the wand")); */
     if (yn(confirm) == 'n' ) return 0;
 
     if (nohands(youmonst.data)) {
-	You_cant("break %s without hands!", the_wand); /* EN You_cant("break %s without hands!", the_wand); */ // TODO DE
+	You("VERB_KOENNEN OBJECT %s ohne Hände nicht zerbrechen!", the_wand); /* EN You_cant("break %s without hands!", the_wand); */
 	return 0;
     } else if (ACURR(A_STR) < 10) {
-	You("don't have the strength to break %s!", the_wand); /* EN You("don't have the strength to break %s!", the_wand); */ // TODO DE
+	Dir("VERB_FEHLEN die Stärke um OBJECT %s zu zerbrechem!", the_wand); /* EN You("don't have the strength to break %s!", the_wand); */
 	return 0;
     }
-    pline("Raising %s high above your %s, you break it in two!", /* EN pline("Raising %s high above your %s, you break it in two!", */ // TODO DE
+    You("VERB_HALTEN OBJECT %s hoch über NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV %s und VERB_BRECHEN ihn entzwei!", /* EN pline("Raising %s high above your %s, you break it in two!", */
 	  the_wand, body_part(HEAD));
 
     /* [ALI] Do this first so that wand is removed from bill. Otherwise,

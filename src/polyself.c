@@ -205,7 +205,7 @@ dead: /* we come directly here if their experience level went to 0 or less */
 		}
 	}
 	newuhs(FALSE);
-	polyman("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL wie NEUES_OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_NEU %s!", /* EN polyman("feel like a new %s!", */
+	polyman("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL wie NEUES_OBJECT OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_NEU %s!", /* EN polyman("feel like a new %s!", */
 		(flags.female && urace.individual.f) ? urace.individual.f :
 		(urace.individual.m) ? urace.individual.m : urace.noun);
 	if (Slimed) {
@@ -371,15 +371,15 @@ int	mntmp;
 	if (dochange) {
 		flags.female = !flags.female;
 		You("%s %s%s!",
-		    (u.umonnum != mntmp) ? "turn into a" : "feel like a new", /* EN (u.umonnum != mntmp) ? "turn into a" : "feel like a new", */ // TODO DE
+		    (u.umonnum != mntmp) ? "VERB_VERWANDELN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT in ARTIKEL_UNBESTIMMTER" : "VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL wie NEUES_OBJECT OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_NEU", /* EN (u.umonnum != mntmp) ? "turn into a" : "feel like a new", */
 		    (is_male(&mons[mntmp]) || is_female(&mons[mntmp])) ? "" :
-			flags.female ? "female " : "male ", /* EN flags.female ? "female " : "male ", */ // TODO DE
+			flags.female ? "ADJEKTIV_WEIBLICH " : "ADJEKTIV_MAENNLICH ", /* EN flags.female ? "female " : "male ", */
 		    mons[mntmp].mname);
 	} else {
 		if (u.umonnum != mntmp)
-			You("turn into %s!", an(mons[mntmp].mname)); /* EN You("turn into %s!", an(mons[mntmp].mname)); */ // TODO DE
+			You("VERB_VERWANDELN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT in %s!", an(mons[mntmp].mname)); /* EN You("turn into %s!", an(mons[mntmp].mname)); */
 		else
-			You_feel("like a new %s!", mons[mntmp].mname); /* EN You_feel("like a new %s!", mons[mntmp].mname); */ // TODO DE
+			Du_fuehlst_dich("wie OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_NEU %s!", mons[mntmp].mname); /* EN You_feel("like a new %s!", mons[mntmp].mname); */
 	}
 	if (Stoned && poly_when_stoned(&mons[mntmp])) {
 		/* poly_when_stoned already checked stone golem genocide */
@@ -582,7 +582,7 @@ break_armor()
 		(void) Cloak_off();
 		dropx(otmp);
 	    } else {
-		You("VERB_ZERREISSEN OBJECT PRONOMEN_PERSONAL %s!", cloak_simple_name(otmp)); /* EN Your("%s tears apart!", cloak_simple_name(otmp)); */
+		You("VERB_ZERREISSEN OBJECT PRONOMEN_POSSESSIV %s!", cloak_simple_name(otmp)); /* EN Your("%s tears apart!", cloak_simple_name(otmp)); */
 		(void) Cloak_off();
 		useup(otmp);
 	    }
@@ -831,13 +831,13 @@ dospinweb()
 		return(0);
 	}
 	if (u.utrap) {
-		You("cannot spin webs while stuck in a trap."); /* EN You("cannot spin webs while stuck in a trap."); */ // TODO DE
+		You("VERB_KOENNEN kein Netz spinnen, wenn NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL in einer Falle festsitzt."); /* EN You("cannot spin webs while stuck in a trap."); */
 		return(0);
 	}
 	exercise(A_DEX, TRUE);
 	if (ttmp) switch (ttmp->ttyp) {
 		case PIT:
-		case SPIKED_PIT: You("spin a web, covering up the pit."); /* EN case SPIKED_PIT: You("spin a web, covering up the pit."); */ // TODO DE
+		case SPIKED_PIT: You("VERB_SPINNEN ein Netz, dass OBJECT ARTIKEL_BESTIMMTER NOUN_PIT zudeckt."); /* EN case SPIKED_PIT: You("spin a web, covering up the pit."); */
 			deltrap(ttmp);
 			bury_objs(u.ux, u.uy);
 			newsym(u.ux, u.uy);
@@ -849,14 +849,14 @@ dospinweb()
 		case TELEP_TRAP:
 		case LEVEL_TELEP:
 		case MAGIC_PORTAL:
-			Your("webbing vanishes!"); /* EN Your("webbing vanishes!"); */ // TODO DE
+			Your("NOUN_NETZ VERB_VERSCHWINDEN!"); /* EN Your("webbing vanishes!"); */
 			return(0);
-		case WEB: You("make the web thicker."); /* EN case WEB: You("make the web thicker."); */ // TODO DE
+		case WEB: You("VERB_VERSTAERKEN das Netz."); /* EN case WEB: You("make the web thicker."); */
 			return(1);
 		case HOLE:
 		case TRAPDOOR:
-			You("web over the %s.", /* EN You("web over the %s.", */ // TODO DE
-			    (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole"); /* EN (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole"); */ // TODO DE
+			You("VERB_SPINNEN ein Netz OBJECT KASUS_DATIV über ARTIKEL_BESTIMMTER %s.", /* EN You("web over the %s.", */
+			    (ttmp->ttyp == TRAPDOOR) ? "NOUN_TRAP_DOOR" : "NOUN_LOCH"); /* EN (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole"); */
 			deltrap(ttmp);
 			newsym(u.ux, u.uy);
 			return 1;
@@ -1074,7 +1074,7 @@ domindblast()
 	u.uen -= 10;
 	flags.botl = 1;
 
-	You("concentrate."); /* EN You("concentrate."); */ // TODO DE
+	You("VERB_KONZENTRIEREN OBJECT PRONOMEN_PERSONAL."); /* EN You("concentrate."); */
 	pline("A wave of psychic energy pours out."); /* EN pline("A wave of psychic energy pours out."); */ // TODO DE
 	for(mtmp=fmon; mtmp; mtmp = nmon) {
 		int u_sen;

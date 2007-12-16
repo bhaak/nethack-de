@@ -766,10 +766,10 @@ meatobj(mtmp)		/* for gelatinous cubes */
 		    continue;
 		++count;
 		if (cansee(mtmp->mx,mtmp->my) && flags.verbose)
-		    pline("%s eats %s!", Monnam(mtmp), /* EN pline("%s eats %s!", Monnam(mtmp), */ // TODO DE
+		    pline("SUBJECT %s VERB_EAT OBJECT %s!", Monnam(mtmp), /* EN pline("%s eats %s!", Monnam(mtmp), */
 			    distant_name(otmp, doname));
 		else if (flags.soundok && flags.verbose)
-		    You_hear("a slurping sound."); /* EN You_hear("a slurping sound."); */ // TODO DE
+		    You_hear("ein Schlürfen."); /* EN You_hear("a slurping sound."); */
 		/* Heal up to the object's weight in hp */
 		if (mtmp->mhp < mtmp->mhpmax) {
 		    mtmp->mhp += objects[otmp->otyp].oc_weight;
@@ -808,10 +808,10 @@ meatobj(mtmp)		/* for gelatinous cubes */
 				    otmp != uball && otmp != uchain) {
 		++ecount;
 		if (ecount == 1) {
-			Sprintf(buf, "%s engulfs %s.", Monnam(mtmp), /* EN Sprintf(buf, "%s engulfs %s.", Monnam(mtmp), */ // TODO DE
+			Sprintf(buf, "SUBJECT %s VERB_ENGULF OBJECT %s.", Monnam(mtmp), /* EN Sprintf(buf, "%s engulfs %s.", Monnam(mtmp), */
 			    distant_name(otmp,doname));
 		} else if (ecount == 2)
-			Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp)); /* EN Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp)); */ // TODO DE
+			Sprintf(buf, "SUBJECT %s VERB_ENGULF mehrere Objekte.", Monnam(mtmp)); /* EN Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp)); */
 		obj_extract_self(otmp);
 		(void) mpickobj(mtmp, otmp);	/* slurp */
 	    }
@@ -822,9 +822,9 @@ meatobj(mtmp)		/* for gelatinous cubes */
 	    if (cansee(mtmp->mx, mtmp->my) && flags.verbose && buf[0])
 		pline("%s", buf);
 	    else if (flags.soundok && flags.verbose)
-	    	You_hear("%s slurping sound%s.", /* EN You_hear("%s slurping sound%s.", */ // TODO DE
-			ecount == 1 ? "a" : "several", /* EN ecount == 1 ? "a" : "several", */ // TODO DE
-			ecount == 1 ? "" : "s"); /* EN ecount == 1 ? "" : "s"); */ // TODO DE
+	    	You_hear("%s Schlürfen%s.", /* EN You_hear("%s slurping sound%s.", */
+			ecount == 1 ? "ein" : "wiederholtes", /* EN ecount == 1 ? "a" : "several", */
+			ecount == 1 ? "" : ""); /* EN ecount == 1 ? "" : "s"); */
 	}
 	return ((count > 0) || (ecount > 0)) ? 1 : 0;
 }
@@ -847,8 +847,8 @@ mpickgold(mtmp)
 #endif
 	if (cansee(mtmp->mx, mtmp->my) ) {
 	    if (flags.verbose && !mtmp->isgd)
-		pline("%s picks up some %s.", Monnam(mtmp), /* EN pline("%s picks up some %s.", Monnam(mtmp), */ // TODO DE
-			mat_idx == GOLD ? "gold" : "money"); /* EN mat_idx == GOLD ? "gold" : "money"); */ // TODO DE
+		pline("SUBJECT %s VERB_AUFHEBEN etwas %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s picks up some %s.", Monnam(mtmp), */
+			mat_idx == GOLD ? "NOUN_GOLD" : "NOUN_GELD"); /* EN mat_idx == GOLD ? "gold" : "money"); */
 	    newsym(mtmp->mx, mtmp->my);
 	}
     }
@@ -1616,7 +1616,7 @@ register struct monst *mdef;
      (obj->otyp == STATUE && mons[obj->corpsenm].msize >= mdef->data->msize) ||
 #endif
 				obj_resists(obj, 0, 0)) {
-			if (flooreffects(obj, x, y, "fall")) continue; /* EN if (flooreffects(obj, x, y, "fall")) continue; */ // TODO DE
+			if (flooreffects(obj, x, y, "VERB_FALLEN")) continue; /* EN if (flooreffects(obj, x, y, "fall")) continue; */
 			place_object(obj, x, y);
 		    } else {
 			if (obj->lamplit) end_burn(obj, TRUE);
@@ -2016,7 +2016,7 @@ int  typ, fatal;
 
 	if(Poison_resistance) {
 		if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); /* EN if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); */ // TODO DE
-		pline_The("poison doesn't seem to affect you."); /* EN pline_The("poison doesn't seem to affect you."); */ // TODO DE
+		pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei PRONOMEN_PERSONAL nicht zu wirken."); /* EN pline_The("poison doesn't seem to affect you."); */
 		return;
 	}
 	/* suppress killer prefix if it already has one */
@@ -2098,7 +2098,7 @@ register struct monst *mtmp;
 		adjalign(-1);		/* attacking peaceful monsters is bad */
 	if (couldsee(mtmp->mx, mtmp->my)) {
 		if (humanoid(mtmp->data) || mtmp->isshk || mtmp->isgd)
-		    pline("%s gets angry!", Monnam(mtmp)); /* EN pline("%s gets angry!", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_WERDEN wütend!", Monnam(mtmp)); /* EN pline("%s gets angry!", Monnam(mtmp)); */
 		else if (flags.verbose && flags.soundok) growl(mtmp);
 	}
 
@@ -2116,10 +2116,10 @@ register struct monst *mtmp;
 		    if (canseemon(mon)) ++got_mad;
 		}
 	    if (got_mad && !Hallucination)
-		pline_The("%s appear%s to be angry too...", /* EN pline_The("%s appear%s to be angry too...", */ // TODO DE
+		pline_The("%s VERB_SCHEINEN%s auch wütend sein ...", /* EN pline_The("%s appear%s to be angry too...", */
 		      got_mad == 1 ? q_guardian->mname :
 				    makeplural(q_guardian->mname),
-		      got_mad == 1 ? "s" : "");
+		      got_mad == 1 ? "" : ""); /* EN got_mad == 1 ? "s" : ""); */
 	}
 }
 

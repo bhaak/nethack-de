@@ -309,7 +309,7 @@ STATIC_OVL const char *
 e_nam(etmp)
 struct entity *etmp;
 {
-	return(is_u(etmp)? "you" : mon_nam(etmp->emon)); /* EN return(is_u(etmp)? "you" : mon_nam(etmp->emon)); */ // TODO DE
+	return(is_u(etmp)? "PRONOMEN_PERSONAL" : mon_nam(etmp->emon)); /* EN return(is_u(etmp)? "you" : mon_nam(etmp->emon)); */
 }
 
 #ifdef D_DEBUG
@@ -321,7 +321,7 @@ static const char *
 Enam(etmp)
 struct entity *etmp;
 {
-	return(is_u(etmp)? "You" : Monnam(etmp->emon)); /* EN return(is_u(etmp)? "You" : Monnam(etmp->emon)); */ // TODO DE
+	return(is_u(etmp)? "PRONOMEN_PERSONAL" : Monnam(etmp->emon)); /* EN return(is_u(etmp)? "You" : Monnam(etmp->emon)); */
 }
 #endif /* D_DEBUG */
 
@@ -337,7 +337,8 @@ const char *verb;
 {
 	static char wholebuf[80];
 
-	Strcpy(wholebuf, is_u(etmp) ? "You" : Monnam(etmp->emon)); /* EN Strcpy(wholebuf, is_u(etmp) ? "You" : Monnam(etmp->emon)); */ // TODO DE
+	Strcpy(wholebuf, "SUBJECT "); /* EN */
+	Strcat(wholebuf, is_u(etmp) ? "PRONOMEN_PERSONAL" : Monnam(etmp->emon)); /* EN Strcpy(wholebuf, is_u(etmp) ? "You" : Monnam(etmp->emon)); */
 	if (!*verb) return(wholebuf);
 	Strcat(wholebuf, " ");
 	if (is_u(etmp))
@@ -392,14 +393,14 @@ int dest, how;
 			/* use more specific killer if specified */
 			if (!killer) {
 			    killer_format = KILLED_BY_AN;
-			    killer = "falling drawbridge"; /* EN killer = "falling drawbridge"; */ // TODO DE
+			    killer = "ADJEKTIV_FALLEND NOUN_DRAWBRIDGE"; /* EN killer = "falling drawbridge"; */
 			}
 			done(how);
 			/* So, you didn't die */
 			if (!e_survives_at(etmp, etmp->ex, etmp->ey)) {
 			    if (enexto(&xy, etmp->ex, etmp->ey, etmp->edata)) {
-				pline("A %s force teleports you away...", /* EN pline("A %s force teleports you away...", */ // TODO DE
-				      Hallucination ? "normal" : "strange"); /* EN Hallucination ? "normal" : "strange"); */ // TODO DE
+				pline("Eine %s Kraft teleportiert KASUS_AKKUSATIV PRONOMEN_PERSONAL weg ...", /* EN pline("A %s force teleports you away...", */
+				      Hallucination ? "normale" : "seltsame"); /* EN Hallucination ? "normal" : "strange"); */
 				teleds(xy.x, xy.y, FALSE);
 			    }
 			    /* otherwise on top of the drawbridge is the
@@ -529,7 +530,7 @@ struct entity *etmp;
 	if (automiss(etmp) && e_survives_at(etmp, oldx, oldy)) {
 		if (e_inview && (at_portcullis || IS_DRAWBRIDGE(crm->typ)))
 			pline_The("%s passes through %s!", /* EN pline_The("%s passes through %s!", */ // TODO DE
-			      at_portcullis ? "portcullis" : "drawbridge", /* EN at_portcullis ? "portcullis" : "drawbridge", */ // TODO DE
+			      at_portcullis ? "portcullis" : "NOUN_DRAWBRIDGE", /* EN at_portcullis ? "portcullis" : "drawbridge", */ // TODO DE
 			      e_nam(etmp));
 		if (is_u(etmp)) spoteffects(FALSE);
 		return;
@@ -678,12 +679,12 @@ struct entity *etmp;
 				else
 					pline_The("drawbridge closes in..."); /* EN pline_The("drawbridge closes in..."); */ // TODO DE
 			} else
-				pline("%s behind the drawbridge.", /* EN pline("%s behind the drawbridge.", */ // TODO DE
-				      E_phrase(etmp, "disappear")); /* EN E_phrase(etmp, "disappear")); */ // TODO DE
+				pline("%s OBJECT KASUS_DATIV hinter ARTIKEL_UNBESTIMMTER NOUN_DRAWBRIDGE.", /* EN pline("%s behind the drawbridge.", */
+				      E_phrase(etmp, "VERB_VERSCHWINDEN")); /* EN E_phrase(etmp, "disappear")); */
 		}
 		if (!e_survives_at(etmp, etmp->ex, etmp->ey)) {
 			killer_format = KILLED_BY_AN;
-			killer = "closing drawbridge"; /* EN killer = "closing drawbridge"; */ // TODO DE
+			killer = "ADJEKTIV_SCHLIESSEND NOUN_DRAWBRIDGE"; /* EN killer = "closing drawbridge"; */
 			e_died(etmp, 0, CRUSHING);	       /* no message */
 			return;
 		}
@@ -696,12 +697,12 @@ struct entity *etmp;
 #endif
 		if (is_pool(etmp->ex, etmp->ey) && !e_inview)
 			if (flags.soundok)
-				You_hear("a splash."); /* EN You_hear("a splash."); */ // TODO DE
+				You_hear("ein Platschen."); /* EN You_hear("a splash."); */
 		if (e_survives_at(etmp, etmp->ex, etmp->ey)) {
 			if (e_inview && !is_flyer(etmp->edata) &&
 			    !is_floater(etmp->edata))
-				pline("%s from the bridge.", /* EN pline("%s from the bridge.", */ // TODO DE
-				      E_phrase(etmp, "fall")); /* EN E_phrase(etmp, "fall")); */ // TODO DE
+				pline("%s von der Brücke.", /* EN pline("%s from the bridge.", */
+				      E_phrase(etmp, "VERB_FALLEN")); /* EN E_phrase(etmp, "fall")); */
 			return;
 		}
 #ifdef D_DEBUG
@@ -713,16 +714,16 @@ struct entity *etmp;
 			boolean lava = is_lava(etmp->ex, etmp->ey);
 
 			if (Hallucination)
-			    pline("%s the %s and disappears.", /* EN pline("%s the %s and disappears.", */ // TODO DE
-				  E_phrase(etmp, "drink"), /* EN E_phrase(etmp, "drink"), */ // TODO DE
-				  lava ? "lava" : "moat"); /* EN lava ? "lava" : "moat"); */ // TODO DE
+			    pline("%s OBJECT ARTIKEL_BESTIMMTER %s und VERB_VERSCHWINDEN.", /* EN pline("%s the %s and disappears.", */
+				  E_phrase(etmp, "VERB_TRINKEN"), /* EN E_phrase(etmp, "drink"), */
+				  lava ? "NOUN_LAVA" : "NOUN_MOAT"); /* EN lava ? "lava" : "moat"); */
 			else
-			    pline("%s into the %s.", /* EN pline("%s into the %s.", */ // TODO DE
-				  E_phrase(etmp, "fall"), /* EN E_phrase(etmp, "fall"), */ // TODO DE
-				  lava ? "lava" : "moat"); /* EN lava ? "lava" : "moat"); */ // TODO DE
+			    pline("%s OBJECT in ARTIKEL_BESTIMMTER %s.", /* EN pline("%s into the %s.", */
+				  E_phrase(etmp, "VERB_FALLEN"), /* EN E_phrase(etmp, "fall"), */
+				  lava ? "NOUN_LAVA" : "NOUN_MOAT"); /* EN lava ? "lava" : "moat"); */
 		    }
 		killer_format = NO_KILLER_PREFIX;
-		killer = "fell from a drawbridge"; /* EN killer = "fell from a drawbridge"; */ // TODO DE
+		killer = "fiel KASUS_DATIV von ARTIKEL_UNBESTIMMTER NOUN_DRAWBRIDGE"; /* EN killer = "fell from a drawbridge"; */
 		e_died(etmp, e_inview ? 3 : 2,      /* CRUSHING is arbitrary */
 		       (is_pool(etmp->ex, etmp->ey)) ? DROWNING :
 		       (is_lava(etmp->ex, etmp->ey)) ? BURNING :
@@ -848,13 +849,13 @@ int x,y;
 		if (lev1->typ == DRAWBRIDGE_UP) {
 			if (cansee(x2,y2))
 			    pline_The("portcullis of the drawbridge falls into the %s!", /* EN pline_The("portcullis of the drawbridge falls into the %s!", */ // TODO DE
-				  lava ? "lava" : "moat"); /* EN lava ? "lava" : "moat"); */ // TODO DE
+				  lava ? "NOUN_LAVA" : "NOUN_MOAT"); /* EN lava ? "lava" : "moat"); */
 			else if (flags.soundok)
 				You_hear("a loud *SPLASH*!"); /* EN You_hear("a loud *SPLASH*!"); */ // TODO DE
 		} else {
 			if (cansee(x,y))
 			    pline_The("drawbridge collapses into the %s!", /* EN pline_The("drawbridge collapses into the %s!", */ // TODO DE
-				  lava ? "lava" : "moat"); /* EN lava ? "lava" : "moat"); */ // TODO DE
+				  lava ? "NOUN_LAVA" : "NOUN_MOAT"); /* EN lava ? "lava" : "moat"); */
 			else if (flags.soundok)
 				You_hear("a loud *SPLASH*!"); /* EN You_hear("a loud *SPLASH*!"); */ // TODO DE
 		}
@@ -862,7 +863,7 @@ int x,y;
 		lev1->drawbridgemask = 0;
 		if ((otmp = sobj_at(BOULDER,x,y)) != 0) {
 		    obj_extract_self(otmp);
-		    (void) flooreffects(otmp,x,y,"fall"); /* EN (void) flooreffects(otmp,x,y,"fall"); */ // TODO DE
+		    (void) flooreffects(otmp,x,y,"VERB_FALLEN"); /* EN (void) flooreffects(otmp,x,y,"fall"); */
 		}
 	} else {
 		if (cansee(x,y))
@@ -889,10 +890,10 @@ int x,y;
 		e_inview = e_canseemon(etmp2);
 		if (!automiss(etmp2)) {
 			if (e_inview)
-				pline("%s blown apart by flying debris.", /* EN pline("%s blown apart by flying debris.", */ // TODO DE
-				      E_phrase(etmp2, "are"));
+				pline("%s blown apart by herumfliegende Trümmer.", /* EN pline("%s blown apart by flying debris.", */ // TODO DE
+				      E_phrase(etmp2, "are")); /* EN E_phrase(etmp2, "are")); */ // TODO DE
 			killer_format = KILLED_BY_AN;
-			killer = "exploding drawbridge"; /* EN killer = "exploding drawbridge"; */ // TODO DE
+			killer = "ADJEKTIV_EXPLODIEREND NOUN_DRAWBRIDGE"; /* EN killer = "exploding drawbridge"; */
 			e_died(etmp2, e_inview? 3 : 2, CRUSHING); /*no corpse*/
 		}	     /* nothing which is vulnerable can survive this */
 	}
@@ -921,7 +922,7 @@ int x,y;
 #endif
 			}
 			killer_format = KILLED_BY_AN;
-			killer = "collapsing drawbridge"; /* EN killer = "collapsing drawbridge"; */ // TODO DE
+			killer = "ADJEKTIV_EINSTUERZEND NOUN_DRAWBRIDGE"; /* EN killer = "collapsing drawbridge"; */
 			e_died(etmp1, e_inview? 3 : 2, CRUSHING); /*no corpse*/
 			if(lev1->typ == MOAT) do_entity(etmp1);
 		}

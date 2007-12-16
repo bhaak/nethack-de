@@ -197,6 +197,7 @@ drinkfountain()
 	/* What happens when you drink from a fountain? */
 	register boolean mgkftn = (levl[u.ux][u.uy].blessedftn == 1);
 	register int fate = rnd(30);
+	fate = 21;
 
 	if (Levitation) {
 		floating_above("NOUN_FOUNTAIN"); /* EN floating_above("fountain"); */
@@ -263,7 +264,7 @@ drinkfountain()
 			   break;
 			}
 			losestr(rn1(4,3));
-			losehp(rnd(10),"contaminated water", KILLED_BY); /* EN losehp(rnd(10),"contaminated water", KILLED_BY); */ // TODO DE
+			losehp(rnd(10),"ADJEKTIV_KONTAMINIERT NOUN_WATER", KILLED_BY); /* EN losehp(rnd(10),"contaminated water", KILLED_BY); */
 			exercise(A_CON, FALSE);
 			break;
 

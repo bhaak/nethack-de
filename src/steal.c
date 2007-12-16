@@ -365,12 +365,12 @@ gotobj:
 			if (multi < 0 && is_fainted()) unmul((char *)0);
 			slowly = (armordelay >= 1 || multi < 0);
 			if(flags.female)
-			    pline("SUBJECT %s VERB_BEZIRZEN OBJECT PRONOMEN_PERSONAL.  NEUER_SATZ SUBJECT PRONOMEN_PERSONAL %s willig OBJECT PRONOMEN_POSSESSIV %s%s.", /* EN pline("%s charms you.  You gladly %s your %s.", */
+			    pline("SUBJECT %s VERB_BEZIRZEN OBJECT PRONOMEN_PERSONAL.  NEUER_SATZ SUBJECT PRONOMEN_PERSONAL %s gerne OBJECT PRONOMEN_POSSESSIV %s%s.", /* EN pline("%s charms you.  You gladly %s your %s.", */
 				  !seen ? "MODIFIER_PSEUDO_SUBJECT Sie" : Monnam(mtmp), /* EN !seen ? "She" : Monnam(mtmp), */
 				  curssv ? "VERB_LASSEN sie" : /* EN curssv ? "let her take" : */
-				  slowly ? "VERB_BEGINNEN" : "VERB_UEBERGEBEN", /* EN slowly ? "start removing" : "hand over", */
+				  slowly ? "VERB_BEGINNEN" : "VERB_AUSHAENDIGEN", /* EN slowly ? "start removing" : "hand over", */
 				  equipname(otmp), /* EN equipname(otmp)); */
-					curssv ? " nehmen" : slowly ? " abzulegen" : ""); /* EN */
+					curssv ? " nehmen" : slowly ? " abzulegen" : " SATZKLAMMER"); /* EN */
 			else
 					pline("SUBJECT %s VERB_SEDUCE OBJECT PRONOMEN_PERSONAL und %s NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV %s%s SATZKLAMMER.", /* EN pline("%s seduces you and %s off your %s.", */
 				  !seen ? "MODIFIER_PSEUDO_SUBJECT Sie" : Adjmonnam(mtmp, "ADJEKTIV_SCHOEN"), /* EN !seen ? "She" : Adjmonnam(mtmp, "beautiful"), */
@@ -507,7 +507,7 @@ struct monst *mtmp;
 	/* mpickobj wont merge otmp because none of the above things
 	   to steal are mergable */
 	(void) mpickobj(mtmp,otmp);	/* may merge and free otmp */
-	pline("%s stole %s!", Monnam(mtmp), doname(otmp)); /* EN pline("%s stole %s!", Monnam(mtmp), doname(otmp)); */ // TODO DE
+	pline("SUBJECT %s VERB_HABEN OBJECT %s gestohlen!", Monnam(mtmp), doname(otmp)); /* EN pline("%s stole %s!", Monnam(mtmp), doname(otmp)); */
 	if (can_teleport(mtmp->data) && !tele_restrict(mtmp))
 	    rloc(mtmp);
     }
@@ -582,7 +582,7 @@ boolean is_pet;		/* If true, pet should keep wielded/worn items */
 		register long g = mtmp->mgold;
 		(void) mkgold(g, omx, omy);
 		if (is_pet && cansee(omx, omy) && flags.verbose)
-			pline("SUBJECT %s VERB_DROP %ld NOUN_GOLD_PIECE%s.", Monnam(mtmp), /* EN pline("%s drops %ld gold piece%s.", Monnam(mtmp), */
+			pline("SUBJECT %s VERB_DROP OBJECT %ld NOUN_GOLD_PIECE%s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s drops %ld gold piece%s.", Monnam(mtmp), */
 				g, plur(g));
 		mtmp->mgold = 0L;
 	}

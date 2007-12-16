@@ -173,11 +173,18 @@ register boolean withbill;
 	return(shkp);
 }
 
+char shopkeeper_name[BUFSZ];
+
 char *
 shkname(mtmp)				/* called in do_name.c */
 register struct monst *mtmp;
 {
+#ifdef GERMAN
+	Strcpy(shopkeeper_name, (mtmp->female) ? "NOUN_PSEUDO_WEIBLICH " : "NOUN_PSEUDO_MAENNLICH ");
+	return strcat(shopkeeper_name, ESHK(mtmp)->shknam);
+#else
 	return(ESHK(mtmp)->shknam);
+#endif
 }
 
 void
@@ -1206,7 +1213,7 @@ proceed:
                 umoney = money_cnt(invent);
 #endif
 		if(!ltmp)
-		    You("VERB_OWE %s nichts.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */
+		    You("VERB_OWE OBJECT KASUS_DATIV %s nichts.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */
 #ifndef GOLDOBJ
 		else if(!u.ugold) {
 #else
@@ -1254,7 +1261,7 @@ proceed:
                 umoney = money_cnt(invent);
 #endif
 		if(!ltmp && NOTANGRY(shkp)) {
-		    You("VERB_OWE %s nichts.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */
+		    You("VERB_OWE OBJECT KASUS_DATIV %s nichts.", mon_nam(shkp)); /* EN You("do not owe %s anything.", mon_nam(shkp)); */
 #ifndef GOLDOBJ
 		    if (!u.ugold)
 #else
@@ -1278,14 +1285,14 @@ proceed:
 		    }
 		    pline("But since %s shop has been robbed recently,", /* EN pline("But since %s shop has been robbed recently,", */ // TODO DE
 			  mhis(shkp));
-		    pline("you %scompensate %s for %s losses.", /* EN pline("you %scompensate %s for %s losses.", */ // TODO DE
+		    pline("SUBJECT PRONOMEN_PERSONAL VERB_ENTSCHAEDIGEN OBJECT %s%s für NEUES_OBJECT OBJECT %s NOUN_VERLUSTs.", mon_nam(shkp), /* EN pline("you %scompensate %s for %s losses.", */
 #ifndef GOLDOBJ
 			  (u.ugold < ltmp) ? 
 #else
 			  (umoney < ltmp) ? 
 #endif
-			  "partially " : "", /* EN "partially " : "", */ // TODO DE
-			  mon_nam(shkp), mhis(shkp));
+			  " teilweise" : "", /* EN "partially " : "", */
+			  mhis(shkp)); /* EN mon_nam(shkp), mhis(shkp)); */
 #ifndef GOLDOBJ
 		    pay(u.ugold < ltmp ? u.ugold : ltmp, shkp);
 #else
@@ -1703,7 +1710,7 @@ int croaked;
                         if (umoney > 0) money2mon(shkp, umoney);
 #endif
 			flags.botl = 1;
-			pline("%s MODIFIER_VERB_DRITTE_PERSON %s OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_HABE.", /* EN pline("%s %s all your possessions.", */
+			pline("SUBJECT %s %s OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_HABE.", /* EN pline("%s %s all your possessions.", */
 			      shkname(shkp), takes);
 			taken = TRUE;
 			/* where to put player's invent (after disclosure) */
@@ -3327,7 +3334,7 @@ register int fall;
 {
     register struct monst *shkp = shop_keeper(*u.ushops);
     int lang;
-    const char *grabs = "grabs";
+    const char *grabs = "VERB_GREIFEN sich"; /* EN const char *grabs = "grabs"; */
 
     if(!shkp) return;
 
@@ -3342,7 +3349,7 @@ register int fall;
 
     if(!inhishop(shkp)) {
 	if (Role_if(PM_KNIGHT)) {
-	    You_feel("like a common thief."); /* EN You_feel("like a common thief."); */ // TODO DE
+	    Du_fuehlst_dich("wie ein kleiner Gauner."); /* EN You_feel("like a common thief."); */
 	    adjalign(-sgn(u.ualign.type));
 	}
 	return;
@@ -3359,7 +3366,7 @@ register int fall;
 			flags.female ? "Madam" : "Sir"); /* EN flags.female ? "Madam" : "Sir"); */ // TODO DE
 	}
 	if (Role_if(PM_KNIGHT)) {
-	    You_feel("like a common thief."); /* EN You_feel("like a common thief."); */ // TODO DE
+	    Du_fuehlst_dich("wie ein kleiner Gauner."); /* EN You_feel("like a common thief."); */
 	    adjalign(-sgn(u.ualign.type));
 	}
     } else if(!um_dist(shkp->mx, shkp->my, 5) &&
@@ -3373,7 +3380,7 @@ register int fall;
 	        * reasons, it isn't currently.
 	        */
 		if (lang == 2)
-		    pline("%s curses %s inability to grab your backpack!", /* EN pline("%s curses %s inability to grab your backpack!", */ // TODO DE
+		    pline("SUBJECT %s VERB_VERFLUCHTEN OBJECT %s NOUN_UNFAEHIGKEIT NEUES_OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV NOUN_RUCKSACK zu greifen!", /* EN pline("%s curses %s inability to grab your backpack!", */
 			  shkname(shkp), mhim(shkp));
 		rile_shk(shkp);
 		return;
@@ -3389,11 +3396,11 @@ register int fall;
 		    rile_shk(shkp);
 		    return;
 		} else
-		    pline("%s %s, and %s your backpack!", /* EN pline("%s %s, and %s your backpack!", */ // TODO DE
+		    pline("SUBJECT %s %s und %s OBJECT PRONOMEN_POSSESSIV NOUN_RUCKSACK!", /* EN pline("%s %s, and %s your backpack!", */
 			  shkname(shkp),
-			  makeplural(locomotion(shkp->data,"leap")), grabs);
+			  locomotion(shkp->data,"VERB_HECHTEN"), grabs); /* EN makeplural(locomotion(shkp->data,"leap")), grabs); */
 	    } else
-		pline("%s %s your backpack!", shkname(shkp), grabs); /* EN pline("%s %s your backpack!", shkname(shkp), grabs); */ // TODO DE
+		pline("SUBJECT %s %s OBJECT PRONOMEN_POSSESSIV NOUN_RUCKSACK!", shkname(shkp), grabs); /* EN pline("%s %s your backpack!", shkname(shkp), grabs); */
 
 	    for(obj = invent; obj; obj = obj2) {
 		obj2 = obj->nobj;
@@ -3717,15 +3724,15 @@ long cost;
 
 /* First 4 supplied by Ronen and Tamar, remainder by development team */
 const char *Izchak_speaks[]={
-    "%s says: 'These shopping malls give me a headache.'", /* EN "%s says: 'These shopping malls give me a headache.'", */ // TODO DE
-    "%s says: 'Slow down.  Think clearly.'", /* EN "%s says: 'Slow down.  Think clearly.'", */ // TODO DE
-    "%s says: 'You need to take things one at a time.'", /* EN "%s says: 'You need to take things one at a time.'", */ // TODO DE
-    "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", /* EN "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", */ // TODO DE
-    "%s says that getting the devteam's agreement on anything is difficult.", /* EN "%s says that getting the devteam's agreement on anything is difficult.", */ // TODO DE
-    "%s says that he has noticed those who serve their deity will prosper.", /* EN "%s says that he has noticed those who serve their deity will prosper.", */ // TODO DE
-    "%s says: 'Don't try to steal from me - I have friends in high places!'", /* EN "%s says: 'Don't try to steal from me - I have friends in high places!'", */ // TODO DE
-    "%s says: 'You may well need something from this shop in the future.'", /* EN "%s says: 'You may well need something from this shop in the future.'", */ // TODO DE
-    "%s comments about the Valley of the Dead as being a gateway." /* EN "%s comments about the Valley of the Dead as being a gateway." */ // TODO DE
+    "SUBJECT %s sagt: 'These shopping malls give me a headache.'", /* EN "%s says: 'These shopping malls give me a headache.'", */ // TODO DE
+    "SUBJECT %s sagt: 'Slow down.  Think clearly.'", /* EN "%s says: 'Slow down.  Think clearly.'", */ // TODO DE
+    "SUBJECT %s sagt: 'You need to take things one at a time.'", /* EN "%s says: 'You need to take things one at a time.'", */ // TODO DE
+    "SUBJECT %s sagt: 'I don't like poofy coffee... give me Columbian Supremo.'", /* EN "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", */ // TODO DE
+    "SUBJECT %s sagt that getting the devteam's agreement on anything is difficult.", /* EN "%s says that getting the devteam's agreement on anything is difficult.", */ // TODO DE
+    "SUBJECT %s sagt that he has noticed those who serve their deity will prosper.", /* EN "%s says that he has noticed those who serve their deity will prosper.", */ // TODO DE
+    "SUBJECT %s sagt: 'Don't try to steal from me - I have friends in high places!'", /* EN "%s says: 'Don't try to steal from me - I have friends in high places!'", */ // TODO DE
+    "SUBJECT %s sagt: 'You may well need something from this shop in the future.'", /* EN "%s says: 'You may well need something from this shop in the future.'", */ // TODO DE
+    "SUBJECT %s comments about the Valley of the Dead as being a gateway." /* EN "%s comments about the Valley of the Dead as being a gateway." */ // TODO DE
 };
 
 void
@@ -3751,9 +3758,9 @@ struct monst *shkp;
 
 	eshk = ESHK(shkp);
 	if (ANGRY(shkp))
-		pline("%s mentions how much %s dislikes %s customers.", /* EN pline("%s mentions how much %s dislikes %s customers.", */ // TODO DE
+		pline("SUBJECT %s erzählt, wie sehr %s %s Kundschaft verabscheut.", /* EN pline("%s mentions how much %s dislikes %s customers.", */
 			shkname(shkp), mhe(shkp),
-			eshk->robbed ? "non-paying" : "rude"); /* EN eshk->robbed ? "non-paying" : "rude"); */ // TODO DE
+			eshk->robbed ? "nicht zahlende" : "unhöfliche"); /* EN eshk->robbed ? "non-paying" : "rude"); */
 	else if (eshk->following) {
 		if (strncmp(eshk->customer, plname, PL_NSIZ)) {
 		    verbalize("%s %s!  I was looking for %s.", /* EN verbalize("%s %s!  I was looking for %s.", */ // TODO DE
@@ -3768,14 +3775,14 @@ struct monst *shkp;
 		pline("%s says that your bill comes to %ld %s.", /* EN pline("%s says that your bill comes to %ld %s.", */ // TODO DE
 		      shkname(shkp), total, currency(total));
 	} else if (eshk->debit)
-		pline("%s reminds you that you owe %s %ld %s.", /* EN pline("%s reminds you that you owe %s %ld %s.", */ // TODO DE
+		pline("SUBJECT %s VERB_ERINNERN OBJECT PRONOMEN_PERSONAL daran, dass NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s %ld %s VERB_OWE.", /* EN pline("%s reminds you that you owe %s %ld %s.", */
 		      shkname(shkp), mhim(shkp),
 		      eshk->debit, currency(eshk->debit));
 	else if (eshk->credit)
-		pline("%s encourages you to use your %ld %s of credit.", /* EN pline("%s encourages you to use your %ld %s of credit.", */ // TODO DE
+		pline("SUBJECT %s encourages you to use your %ld %s of credit.", /* EN pline("%s encourages you to use your %ld %s of credit.", */ // TODO DE
 		      shkname(shkp), eshk->credit, currency(eshk->credit));
 	else if (eshk->robbed)
-		pline("%s complains about a recent robbery.", shkname(shkp)); /* EN pline("%s complains about a recent robbery.", shkname(shkp)); */ // TODO DE
+		pline("SUBJECT %s beklagt sich über einen kürzlich geschehenen Raubüberfall.", shkname(shkp)); /* EN pline("%s complains about a recent robbery.", shkname(shkp)); */
 #ifndef GOLDOBJ
 	else if (shkp->mgold < 50)
 #else
@@ -3787,11 +3794,11 @@ struct monst *shkp;
 #else
 	else if (shkmoney > 4000)
 #endif
-		pline("%s says that business is good.", shkname(shkp)); /* EN pline("%s says that business is good.", shkname(shkp)); */ // TODO DE
+		pline("SUBJECT %s sagt, dass das Geschäft brummt.", shkname(shkp)); /* EN pline("%s says that business is good.", shkname(shkp)); */
 	else if (strcmp(shkname(shkp), "Izchak") == 0)
 		pline(Izchak_speaks[rn2(SIZE(Izchak_speaks))],shkname(shkp));
 	else
-		pline("%s talks about the problem of shoplifters.",shkname(shkp)); /* EN pline("%s talks about the problem of shoplifters.",shkname(shkp)); */ // TODO DE
+		pline("%s spricht über das Problem der hohen Kriminalitätsrate.",shkname(shkp)); /* EN pline("%s talks about the problem of shoplifters.",shkname(shkp)); */
 }
 
 #ifdef KOPS
@@ -3810,7 +3817,7 @@ register boolean silent;
 	    }
 	}
 	if (cnt && !silent)
-	    pline_The("Kop%s (entäuscht) VERB_LOESEN sich in Luft SATZKLAMMER.", /* EN pline_The("Kop%s (disappointed) vanish%s into thin air.", */ // TODO DE
+	    pline_The("Kop%s (entäuscht) VERB_AUFLOESEN sich in Luft SATZKLAMMER.", /* EN pline_The("Kop%s (disappointed) vanish%s into thin air.", */ // TODO DE
 		      plur(cnt)); /* EN plur(cnt), cnt == 1 ? "es" : ""); */
 }
 #endif	/* KOPS */
@@ -3897,15 +3904,15 @@ boolean altusage;
 
 	arg1 = arg2 = "";
 	if (otmp->oclass == SPBOOK_CLASS) {
-	    fmt = "%sYou owe%s %ld %s."; /* EN fmt = "%sYou owe%s %ld %s."; */ // TODO DE
-	    arg1 = rn2(2) ? "This is no free library, cad!  " : ""; /* EN arg1 = rn2(2) ? "This is no free library, cad!  " : ""; */ // TODO DE
-	    arg2 = ESHK(shkp)->debit > 0L ? " an additional" : ""; /* EN arg2 = ESHK(shkp)->debit > 0L ? " an additional" : ""; */ // TODO DE
+	    fmt = "%sSUBJECT PRONOMEN_PERSONAL VERB_OWE mir OBJECT%s %ld %s."; /* EN fmt = "%sYou owe%s %ld %s."; */
+	    arg1 = rn2(2) ? "Das ist kein öffentlicher Lesesaal!  " : ""; /* EN arg1 = rn2(2) ? "This is no free library, cad!  " : ""; */
+	    arg2 = ESHK(shkp)->debit > 0L ? " weitere" : ""; /* EN arg2 = ESHK(shkp)->debit > 0L ? " an additional" : ""; */
 	} else if (otmp->otyp == POT_OIL) {
-	    fmt = "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."; /* EN fmt = "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."; */ // TODO DE
+	    fmt = "%s%sNEUER_SATZ Das kostet KASUS_AKKUSATIV PRONOMEN_PERSONAL %ld %s (Yendorian Fuel Tax/Benzinsteuer/Mineralölsteuer)."; /* EN fmt = "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."; */ // TODO DE
 	} else {
-	    fmt = "%s%sUsage fee, %ld %s."; /* EN fmt = "%s%sUsage fee, %ld %s."; */ // TODO DE
-	    if (!rn2(3)) arg1 = "Hey!  "; /* EN if (!rn2(3)) arg1 = "Hey!  "; */ // TODO DE
-	    if (!rn2(3)) arg2 = "Ahem.  "; /* EN if (!rn2(3)) arg2 = "Ahem.  "; */ // TODO DE
+	    fmt = "%s%s%ld %s Nutzungsgebühr."; /* EN fmt = "%s%sUsage fee, %ld %s."; */
+	    if (!rn2(3)) arg1 = "Hey!  "; /* EN if (!rn2(3)) arg1 = "Hey!  "; */
+	    if (!rn2(3)) arg2 = "Ähem.  "; /* EN if (!rn2(3)) arg2 = "Ahem.  "; */
 	}
 
 	if (shkp->mcanmove || !shkp->msleeping)
@@ -3949,7 +3956,7 @@ register long amount;
 	    if(eshkp->debit)
 		Your("debt increases by %ld %s.", /* EN Your("debt increases by %ld %s.", */ // TODO DE
 					delta, currency(delta));
-	    else You("owe %s %ld %s.", /* EN else You("owe %s %ld %s.", */ // TODO DE
+	    else You("VERB_OWE OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s.", /* EN else You("owe %s %ld %s.", */
 				shkname(shkp), delta, currency(delta));
 	    eshkp->debit += delta;
 	    eshkp->loan += delta;
@@ -3982,7 +3989,7 @@ register xchar x, y;
 	    && shkp->mcanmove && !shkp->msleeping
 	    && (ESHK(shkp)->debit || ESHK(shkp)->billct ||
 		ESHK(shkp)->robbed)) {
-		pline("%s%s blocks your way!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */ // TODO DE
+		pline("SUBJECT %s%s VERB_VERSPERREN OBJECT KASUS_DATIV den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
 				Invis ? " senses your motion and" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
 		return(TRUE);
 	}
@@ -4021,7 +4028,7 @@ register xchar x, y;
 			|| u.usteed
 #endif
 	  )) {
-		pline("%s%s blocks your way!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */ // TODO DE
+		pline("SUBJECT %s%s VERB_VERSPERREN OBJECT KASUS_DATIV den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
 				Invis ? " senses your motion and" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
 		return(TRUE);
 	}

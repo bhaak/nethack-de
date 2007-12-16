@@ -796,7 +796,7 @@ pleased(g_align)
 	    Hallucination ? "pleased as punch" : "well-pleased" : /* EN Hallucination ? "pleased as punch" : "well-pleased" : */ // TODO DE
 	    u.ualign.record >= STRIDENT ?
 	    Hallucination ? "ticklish" : "pleased" : /* EN Hallucination ? "ticklish" : "pleased" : */ // TODO DE
-	    Hallucination ? "full" : "satisfied"); /* EN Hallucination ? "full" : "satisfied"); */ // TODO DE
+	    Hallucination ? "satt" : "satisfied"); /* EN Hallucination ? "full" : "satisfied"); */ // TODO DE
 
 	/* not your deity */
 	if (on_altar() && p_aligntyp != u.ualign.type) {
@@ -899,14 +899,14 @@ pleased(g_align)
 		if (u.uevent.uheard_tune < 1) {
 		    godvoice(g_align,(char *)0);
 		    verbalize("Höre, %s!", /* EN verbalize("Hark, %s!", */
-			  youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */ // TODO DE
+			  youmonst.data->mlet == S_HUMAN ? (flags.female ? "Sterbliche" : "Sterblicher") : "Kreatur"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */
 		    verbalize(
 			"To enter the castle, thou must play the right tune!"); /* EN "To enter the castle, thou must play the right tune!"); */ // TODO DE
 		    u.uevent.uheard_tune++;
 		    break;
 		} else if (u.uevent.uheard_tune < 2) {
 		    You_hear("eine göttliche Musik ..."); /* EN You_hear("a divine music..."); */
-		    pline("It sounds like:  \"%s\".", tune); /* EN pline("It sounds like:  \"%s\".", tune); */ // TODO DE
+		    pline("Sie klingt wie \"%s\".", tune); /* EN pline("It sounds like:  \"%s\".", tune); */
 		    u.uevent.uheard_tune++;
 		    break;
 		}

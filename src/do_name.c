@@ -706,7 +706,7 @@ boolean called;
 	    char *name = NAME(mtmp);
 
 	    if (mdat == &mons[PM_GHOST]) {
-		Sprintf(eos(buf), "%s ghost", s_suffix(name)); /* EN Sprintf(eos(buf), "%s ghost", s_suffix(name)); */ // TODO DE
+		Sprintf(eos(buf), "%s NOUN_GHOST", s_suffix(name)); /* EN Sprintf(eos(buf), "%s ghost", s_suffix(name)); */
 		name_at_start = TRUE;
 	    } else if (called) {
 		Sprintf(eos(buf), "%s genannt %s", mdat->mname, name); /* EN Sprintf(eos(buf), "%s called %s", mdat->mname, name); */

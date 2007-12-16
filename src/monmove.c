@@ -391,7 +391,7 @@ register struct monst *mtmp;
 			} else {
 			    mtmp->minvis = mtmp->perminvis = 0;
 			    /* Why?  For the same reason in real demon talk */
-			    pline("%s gets angry!", Amonnam(mtmp)); /* EN pline("%s gets angry!", Amonnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s VERB_WERDEN wütend!", Amonnam(mtmp)); /* EN pline("%s gets angry!", Amonnam(mtmp)); */
 			    mtmp->mpeaceful = 0;
 			    /* since no way is an image going to pay it off */
 			}
@@ -406,7 +406,7 @@ register struct monst *mtmp;
 		struct monst *m2, *nmon = (struct monst *)0;
 
 		if (canseemon(mtmp))
-			pline("SUBJECT %s VERB_KONZENTRIEREN.", Monnam(mtmp)); /* EN pline("%s concentrates.", Monnam(mtmp)); */
+			pline("SUBJECT %s VERB_KONZENTRIEREN sich.", Monnam(mtmp)); /* EN pline("%s concentrates.", Monnam(mtmp)); */
 		if (distu(mtmp->mx, mtmp->my) > BOLT_LIM * BOLT_LIM) {
 			You("sense a faint wave of psychic energy."); /* EN You("sense a faint wave of psychic energy."); */ // TODO DE
 			goto toofar;

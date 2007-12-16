@@ -183,7 +183,7 @@ register struct monst *mtmp;
 	    if (mon_has_amulet(mtmp))
 		demand = cash + (long)rn1(1000,40);
 
-	    pline("%s demands %ld %s for safe passage.", /* EN pline("%s demands %ld %s for safe passage.", */ // TODO DE
+	    pline("SUBJECT %s VERB_VERLANGEN OBJECT %ld %s for safe passage.", /* EN pline("%s demands %ld %s for safe passage.", */ // TODO DE
 		  Amonnam(mtmp), demand, currency(demand));
 
 	    if ((offer = bribe(mtmp)) >= demand) {
@@ -193,7 +193,7 @@ register struct monst *mtmp;
 		pline("%s scowls at you menacingly, then vanishes.", /* EN pline("%s scowls at you menacingly, then vanishes.", */ // TODO DE
 		      Amonnam(mtmp));
 	    } else {
-		pline("%s gets angry...", Amonnam(mtmp)); /* EN pline("%s gets angry...", Amonnam(mtmp)); */ // TODO DE
+		pline("%s VERB_WERDEN wütend ...", Amonnam(mtmp)); /* EN pline("%s gets angry...", Amonnam(mtmp)); */
 		mtmp->mpeaceful = 0;
 		set_malign(mtmp);
 		return 0;
@@ -223,23 +223,23 @@ struct monst *mtmp;
 			mon_nam(mtmp));
 		return 0L;
 	} else if (offer == 0L) {
-		You("refuse."); /* EN You("refuse."); */ // TODO DE
+		You("VERB_ABLEHNEN SATZKLAMMER."); /* EN You("refuse."); */
 		return 0L;
 #ifndef GOLDOBJ
 	} else if (offer >= u.ugold) {
-		You("give %s all your gold.", mon_nam(mtmp)); /* EN You("give %s all your gold.", mon_nam(mtmp)); */ // TODO DE
+		You("VERB_GEBEN OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_GOLD.", mon_nam(mtmp)); /* EN You("give %s all your gold.", mon_nam(mtmp)); */
 		offer = u.ugold;
 	} else {
-		You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); /* EN You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); */ // TODO DE
+		You("VERB_GEBEN OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s.", mon_nam(mtmp), offer, currency(offer)); /* EN You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); */
 	}
 	u.ugold -= offer;
 	mtmp->mgold += offer;
 #else
 	} else if (offer >= umoney) {
-		You("give %s all your gold.", mon_nam(mtmp)); /* EN You("give %s all your gold.", mon_nam(mtmp)); */ // TODO DE
+		You("VERB_GEBEN OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_GOLD.", mon_nam(mtmp)); /* EN You("give %s all your gold.", mon_nam(mtmp)); */
 		offer = umoney;
 	} else {
-		You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); /* EN You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); */ // TODO DE
+		You("VERB_GEBEN OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s.", mon_nam(mtmp), offer, currency(offer)); /* EN You("give %s %ld %s.", mon_nam(mtmp), offer, currency(offer)); */
 	}
 	(void) money2mon(mtmp, offer);
 #endif

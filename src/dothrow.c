@@ -1060,7 +1060,7 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 		    breakobj(obj, bhitpos.x, bhitpos.y, TRUE, TRUE);
 		    return;
 		}
-		if(flooreffects(obj,bhitpos.x,bhitpos.y,"fall")) return; /* EN if(flooreffects(obj,bhitpos.x,bhitpos.y,"fall")) return; */ // TODO DE
+		if(flooreffects(obj,bhitpos.x,bhitpos.y,"VERB_FALLEN")) return; /* EN if(flooreffects(obj,bhitpos.x,bhitpos.y,"fall")) return; */
 		obj_no_longer_held(obj);
 		if (mon && mon->isshk && is_pick(obj)) {
 		    if (cansee(bhitpos.x, bhitpos.y))
@@ -1752,7 +1752,7 @@ struct obj *obj;
 		}
 	}
 
-	if(flooreffects(obj,bhitpos.x,bhitpos.y,"fall")) return(1); /* EN if(flooreffects(obj,bhitpos.x,bhitpos.y,"fall")) return(1); */ // TODO DE
+	if(flooreffects(obj,bhitpos.x,bhitpos.y,"VERB_FALLEN")) return(1); /* EN if(flooreffects(obj,bhitpos.x,bhitpos.y,"fall")) return(1); */
 	if(u.dz > 0)
 		pline_The("NOUN_GOLD VERB_HIT OBJECT ARTIKEL_BESTIMMTER %s.", surface(bhitpos.x,bhitpos.y)); /* EN pline_The("gold hits the %s.", surface(bhitpos.x,bhitpos.y)); */
 	place_object(obj,bhitpos.x,bhitpos.y);

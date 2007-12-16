@@ -2339,7 +2339,7 @@ boolean picked_some;
 			char buf[BUFSZ];
 			felt_cockatrice = TRUE;
 			Strcpy(buf, doname(otmp));
-			Strcat(buf, "..."); /* EN Strcat(buf, "..."); */ // TODO DE
+			Strcat(buf, " ..."); /* EN Strcat(buf, "..."); */
 			putstr(tmpwin, 0, buf);
 			break;
 		}

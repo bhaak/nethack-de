@@ -85,7 +85,7 @@ missmm(magr, mdef, mattk)
 		if (mdef->m_ap_type) seemimic(mdef);
 		if (magr->m_ap_type) seemimic(magr);
 		fmt = (could_seduce(magr,mdef,mattk) && !magr->mcan) ?
-			"SUBJECT %s VERB_HERANMACHEN sich an OBJECT PRONOMEN_PERSONAL" : "SUBJECT %s VERB_MISS OBJECT"; /* EN  "%s pretends to be friendly to" : "%s misses"; */
+			"SUBJECT %s VERB_HERANMACHEN sich an OBJECT " : "SUBJECT %s VERB_MISS OBJECT"; /* EN  "%s pretends to be friendly to" : "%s misses"; */
 		Sprintf(buf, fmt, Monnam(magr));
 		pline("%s %s SATZKLAMMER.", buf, mon_nam_too(mdef_name, mdef, magr));
 	} else  noises(magr, mattk);
@@ -287,7 +287,7 @@ mattackm(magr, mdef)
 				char buf[BUFSZ];
 
 				Strcpy(buf, Monnam(mdef));
-				pline("%s divides as %s hits it!", buf, mon_nam(magr)); /* EN pline("%s divides as %s hits it!", buf, mon_nam(magr)); */ // TODO DE
+				pline("SUBJECT %s VERB_TEILEN sich, als NEUER_SATZ SUBJECT_IM_SATZ %s es VERB_HIT!", buf, mon_nam(magr)); /* EN pline("%s divides as %s hits it!", buf, mon_nam(magr)); */
 			    }
 			}
 		    }
@@ -1052,7 +1052,7 @@ mdamagem(magr, mdef, mattk)
 			      mpoisons_subj(magr, mattk));
 		    if (resists_poison(mdef)) {
 			if (vis)
-			    pline_The("poison doesn't seem to affect %s.", /* EN pline_The("poison doesn't seem to affect %s.", */ // TODO DE
+			    pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei %s nicht zu wirken.", /* EN pline_The("poison doesn't seem to affect %s.", */
 				mon_nam(mdef));
 		    } else {
 			if (rn2(10)) tmp += rn1(10,6);
@@ -1348,7 +1348,7 @@ int mdead;
 		    break;
 		}
 		if(canseemon(magr))
-		    pline("%s is suddenly very cold!", Monnam(magr)); /* EN pline("%s is suddenly very cold!", Monnam(magr)); */ // TODO DE
+		    pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr kalt!", Monnam(magr)); /* EN pline("%s is suddenly very cold!", Monnam(magr)); */
 		mdef->mhp += tmp / 2;
 		if (mdef->mhpmax < mdef->mhp) mdef->mhpmax = mdef->mhp;
 		if (mdef->mhpmax > ((int) (mdef->m_lev+1) * 8))
@@ -1373,7 +1373,7 @@ int mdead;
 		    break;
 		}
 		if(canseemon(magr))
-		    pline("%s is suddenly very hot!", Monnam(magr)); /* EN pline("%s is suddenly very hot!", Monnam(magr)); */ // TODO DE
+		    pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr heiß!", Monnam(magr)); /* EN pline("%s is suddenly very hot!", Monnam(magr)); */
 		break;
 	    case AD_ELEC:
 		if (resists_elec(magr)) {

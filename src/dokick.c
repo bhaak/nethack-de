@@ -578,7 +578,7 @@ xchar x, y;
 				    (boolean)shkp->mpeaceful, FALSE);
 	}
 
-	if(flooreffects(kickobj,bhitpos.x,bhitpos.y,"fall")) return(1); /* EN if(flooreffects(kickobj,bhitpos.x,bhitpos.y,"fall")) return(1); */ // TODO DE
+	if(flooreffects(kickobj,bhitpos.x,bhitpos.y,"VERB_FALLEN")) return(1); /* EN if(flooreffects(kickobj,bhitpos.x,bhitpos.y,"fall")) return(1); */
 	place_object(kickobj, bhitpos.x, bhitpos.y);
 	stackobj(kickobj);
 	newsym(kickobj->ox, kickobj->oy);

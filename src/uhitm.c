@@ -740,9 +740,9 @@ int thrown;
 			if (touch_petrifies(&mons[obj->corpsenm])) {
 			    tmp = 1;
 			    hittxt = TRUE;
-			    You("hit %s with %s corpse.", mon_nam(mon), /* EN You("hit %s with %s corpse.", mon_nam(mon), */ // TODO DE
-				obj->dknown ? the(mons[obj->corpsenm].mname) :
-				an(mons[obj->corpsenm].mname));
+			    You("VERB_HIT OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV mit %s MODIFIER_CORPSE %s NOUN_CORPSE.", mon_nam(mon), /* EN You("hit %s with %s corpse.", mon_nam(mon), */
+				obj->dknown ? "ARTIKEL_BESTIMMTER" : /* EN obj->dknown ? the(mons[obj->corpsenm].mname) : */
+				"ARTIKEL_UNBESTIMMTER", mons[obj->corpsenm].mname); /* EN an(mons[obj->corpsenm].mname)); */
 			    if (!munstone(mon, TRUE))
 				minstapetrify(mon, TRUE);
 			    if (resists_ston(mon)) break;
@@ -1008,7 +1008,7 @@ int thrown;
 		   && mon->mhp > 1 && !thrown && !mon->mcan
 		   /* && !destroyed  -- guaranteed by mhp > 1 */ ) {
 		if (clone_mon(mon)) {
-			pline("%s teilt sich als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL es VERB_HIT!", Monnam(mon)); /* EN pline("%s divides as you hit it!", Monnam(mon)); */
+			pline("%s teilt sich, als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL es VERB_HIT!", Monnam(mon)); /* EN pline("%s divides as you hit it!", Monnam(mon)); */
 			hittxt = TRUE;
 		}
 	}
@@ -1043,7 +1043,7 @@ int thrown;
 	}
 
 	if (needpoismsg)
-		pline_The("poison doesn't seem to affect %s.", mon_nam(mon)); /* EN pline_The("poison doesn't seem to affect %s.", mon_nam(mon)); */ // TODO DE
+		pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei %s nicht zu wirken.", mon_nam(mon)); /* EN pline_The("poison doesn't seem to affect %s.", mon_nam(mon)); */
 	if (poiskilled) {
 		pline("Das Gift war tödlich ..."); /* EN pline_The("poison was deadly..."); */
 		if (!already_killed) xkilled(mon, 0);
@@ -1221,10 +1221,10 @@ struct attack *mattk;
 	if (stealoid) {		/* we will be taking everything */
 	    if (gender(mdef) == (int) u.mfemale &&
 			youmonst.data->mlet == S_NYMPH)
-		You("charm %s.  She gladly hands over her possessions.", /* EN You("charm %s.  She gladly hands over her possessions.", */ // TODO DE
+		You("VERB_BEZIRZEN OBJECT %s.  NEUER_SATZ Sie händigt KASUS_DATIV PRONOMEN_PERSONAL gerne ihren Besitz aus.", /* EN You("charm %s.  She gladly hands over her possessions.", */
 		    mon_nam(mdef));
 	    else
-		You("seduce %s and %s starts to take off %s clothes.", /* EN You("seduce %s and %s starts to take off %s clothes.", */ // TODO DE
+		You("VERB_SEDUCE OBJECT %s und NEUER_SATZ SUBJECT_IM_SATZ %s VERB_BEGINNEN OBJECT %s NOUN_KLEIDs auszuziehen.", /* EN You("seduce %s and %s starts to take off %s clothes.", */
 		    mon_nam(mdef), mhe(mdef), mhis(mdef));
 	}
 
@@ -1502,7 +1502,7 @@ register struct attack *mattk;
 		if (!negated && !rn2(8)) {
 		    Your("%s war vergiftet!", mpoisons_subj(&youmonst, mattk)); /* EN Your("%s was poisoned!", mpoisons_subj(&youmonst, mattk)); */
 		    if (resists_poison(mdef))
-			pline_The("poison doesn't seem to affect %s.", /* EN pline_The("poison doesn't seem to affect %s.", */ // TODO DE
+			pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei %s nicht zu wirken.", /* EN pline_The("poison doesn't seem to affect %s.", */
 				mon_nam(mdef));
 		    else {
 			if (!rn2(10)) {
@@ -2281,7 +2281,7 @@ uchar aatyp;
 			ugolemeffects(AD_COLD, tmp);
 			break;
 		    }
-		    You("are suddenly very cold!"); /* EN You("are suddenly very cold!"); */ // TODO DE
+		    Dir_ist("plötzlich sehr kalt!"); /* EN You("are suddenly very cold!"); */
 		    mdamageu(mon, tmp);
 		/* monster gets stronger with your heat! */
 		    mon->mhp += tmp / 2;
@@ -2303,7 +2303,7 @@ uchar aatyp;
 			ugolemeffects(AD_FIRE, tmp);
 			break;
 		    }
-		    You("are suddenly very hot!"); /* EN You("are suddenly very hot!"); */ // TODO DE
+		    Dir_ist("plötzlich sehr heiß!"); /* EN You("are suddenly very hot!"); */
 		    mdamageu(mon, tmp);
 		}
 		break;
@@ -2391,8 +2391,8 @@ void
 stumble_onto_mimic(mtmp)
 struct monst *mtmp;
 {
-	const char *fmt = "Wait!  That's %s!", /* EN const char *fmt = "Wait!  That's %s!", */ // TODO DE
-		   *generic = "a monster", /* EN *generic = "a monster", */ // TODO DE
+	const char *fmt = "Moment!  Das ist %s!", /* EN const char *fmt = "Wait!  That's %s!", */
+		   *generic = "ein Monster", /* EN *generic = "a monster", */
 		   *what = 0;
 
 	if(!u.ustuck && !mtmp->mflee && dmgtype(mtmp->data,AD_STCK))
@@ -2409,10 +2409,10 @@ struct monst *mtmp;
 	    if (glyph_is_cmap(glyph) &&
 		    (glyph_to_cmap(glyph) == S_hcdoor ||
 		     glyph_to_cmap(glyph) == S_vcdoor))
-		fmt = "The door actually was %s!"; /* EN fmt = "The door actually was %s!"; */ // TODO DE
+		fmt = "SUBJECT PRONOMEN_DIESER NOUN_OBJ_DOOR MODIFIER_VERB_PRAETERITUM VERB_SEIN in Wirklichkeit OBJECT KASUS_NOMINATIV %s!"; /* EN fmt = "The door actually was %s!"; */
 	    else if (glyph_is_object(glyph) &&
 		    glyph_to_obj(glyph) == GOLD_PIECE)
-		fmt = "That gold was %s!"; /* EN fmt = "That gold was %s!"; */ // TODO DE
+		fmt = "SUBJECT ARTIKEL_BESTIMMTER NOUN_GOLD MODIFIER_VERB_PRAETERITUM VERB_SEIN OBJECT KASUS_NOMINATIV %s!"; /* EN fmt = "That gold was %s!"; */
 
 	    /* cloned Wiz starts out mimicking some other monster and
 	       might make himself invisible before being revealed */

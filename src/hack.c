@@ -155,7 +155,7 @@ moverock()
 		       the pit will temporarily be seen even
 		       if this is one among multiple boulders */
 		    if (!Blind) viz_array[ry][rx] |= IN_SIGHT;
-		    if (!flooreffects(otmp, rx, ry, "fall")) { /* EN if (!flooreffects(otmp, rx, ry, "fall")) { */ // TODO DE
+		    if (!flooreffects(otmp, rx, ry, "VERB_FALLEN")) { /* EN if (!flooreffects(otmp, rx, ry, "fall")) { */
 			place_object(otmp, rx, ry);
 		    }
 		    if (mtmp && !Blind) newsym(rx, ry);
@@ -257,11 +257,11 @@ moverock()
 	nopushmsg:
 #ifdef STEED
 	  if (u.usteed)
-	    pline("%s tries to move %s, but cannot.", /* EN pline("%s tries to move %s, but cannot.", */ // TODO DE
+	    pline("SUBJECT %s VERB_VERSUCHEN vergeblich OBJECT %s zu bewegen.", /* EN pline("%s tries to move %s, but cannot.", */
 		  upstart(y_monnam(u.usteed)), the(xname(otmp)));
 	  else
 #endif
-	    You("try to move %s, but in vain.", the(xname(otmp))); /* EN You("try to move %s, but in vain.", the(xname(otmp))); */ // TODO DE
+	    You("VERB_VERSUCHEN vergeblich OBJECT %s zu bewegen.", the(xname(otmp))); /* EN You("try to move %s, but in vain.", the(xname(otmp))); */
 	    if (Blind) feel_location(sx, sy);
 	cannot_push:
 	    if (throws_rocks(youmonst.data)) {
@@ -1208,14 +1208,14 @@ domove()
 		    }
 		} else {
 		    if(flags.verbose) {
-			predicament = "caught in a bear trap"; /* EN predicament = "caught in a bear trap"; */
+			predicament = "VERB_STECKEN in einer Bärenfalle fest"; /* EN predicament = "caught in a bear trap"; */
 #ifdef STEED
 			if (u.usteed)
-			    Norep("%s is %s.", upstart(y_monnam(u.usteed)), /* EN Norep("%s is %s.", upstart(y_monnam(u.usteed)), */
+			    Norep("SUBJECT %s %s.", upstart(y_monnam(u.usteed)), /* EN Norep("%s is %s.", upstart(y_monnam(u.usteed)), */ // TODO DE
 				  predicament);
 			else
 #endif
-			Norep("You are %s.", predicament); /* EN Norep("You are %s.", predicament); */
+			Norep("SUBJECT PRONOMEN_PERSONAL %s.", predicament); /* EN Norep("You are %s.", predicament); */
 		    }
 		    if((u.dx && u.dy) || !rn2(5)) u.utrap--;
 		}
@@ -1729,13 +1729,13 @@ register boolean newlev;
 			You("have an uncanny feeling..."); /* EN You("have an uncanny feeling..."); */ // TODO DE
 		    break;
 		case BEEHIVE:
-		    You("enter a giant beehive!"); /* EN You("enter a giant beehive!"); */ // TODO DE
+		    You("VERB_BETRETEN einen riesigen Bienenstock!"); /* EN You("enter a giant beehive!"); */
 		    break;
 		case COCKNEST:
 		    You("enter a disgusting nest!"); /* EN You("enter a disgusting nest!"); */ // TODO DE
 		    break;
 		case ANTHOLE:
-		    You("enter an anthole!"); /* EN You("enter an anthole!"); */ // TODO DE
+		    You("VERB_BETRETEN einen Ameisenbau!"); /* EN You("enter an anthole!"); */
 		    break;
 		case BARRACKS:
 		    if(monstinroom(&mons[PM_SOLDIER], roomno) ||
@@ -1748,7 +1748,7 @@ register boolean newlev;
 		    break;
 		case DELPHI:
 		    if(monstinroom(&mons[PM_ORACLE], roomno))
-			verbalize("%s, %s, welcome to Delphi!", /* EN verbalize("%s, %s, welcome to Delphi!", */ // TODO DE
+			verbalize("%s, %s, Willkommen in Delphi!", /* EN verbalize("%s, %s, welcome to Delphi!", */
 					Hello((struct monst *) 0), plname);
 		    break;
 		case TEMPLE:

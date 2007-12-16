@@ -663,12 +663,12 @@ mon_tele:
 		if (!ttmp) return 2;
 		seetrap(ttmp);
 		if (vis) {
-		    pline("%s has made a hole in the %s.", Monnam(mtmp), /* EN pline("%s has made a hole in the %s.", Monnam(mtmp), */ // TODO DE
+		    pline("SUBJECT %s VERB_HABEN ein Loch OBJECT in ARTIKEL_BESTIMMTER %s gemacht.", Monnam(mtmp), /* EN pline("%s has made a hole in the %s.", Monnam(mtmp), */
 				surface(mtmp->mx, mtmp->my));
-		    pline("%s %s through...", Monnam(mtmp), /* EN pline("%s %s through...", Monnam(mtmp), */ // TODO DE
-			  is_flyer(mtmp->data) ? "dives" : "falls"); /* EN is_flyer(mtmp->data) ? "dives" : "falls"); */ // TODO DE
+		    pline("SUBJECT %s %s hindurch ...", Monnam(mtmp), /* EN pline("%s %s through...", Monnam(mtmp), */
+			  is_flyer(mtmp->data) ? "VERB_TAUCHEN" : "VERB_FALLEN"); /* EN is_flyer(mtmp->data) ? "dives" : "falls"); */
 		} else if (flags.soundok)
-			You_hear("%s crash through the %s.", something, /* EN You_hear("%s crash through the %s.", something, */ // TODO DE
+			You_hear("%s OBJECT durch ARTIKEL_BESTIMMTER %s krachen.", something, /* EN You_hear("%s crash through the %s.", something, */
 				surface(mtmp->mx, mtmp->my));
 		/* we made sure that there is a level for mtmp to go to */
 		migrate_to_level(mtmp, ledger_no(&u.uz) + 1,
@@ -733,8 +733,8 @@ mon_tele:
 		if (vis) {
 			struct trap *t;
 			t = t_at(trapx,trapy);
-			pline("%s %s into a %s!", Monnam(mtmp), /* EN pline("%s %s into a %s!", Monnam(mtmp), */ // TODO DE
-			makeplural(locomotion(mtmp->data, "jump")), /* EN makeplural(locomotion(mtmp->data, "jump")), */ // TODO DE
+			pline("SUBJECT %s %s OBJECT durch ARTIKEL_UNBESTIMMTER %s!", Monnam(mtmp), /* EN pline("%s %s into a %s!", Monnam(mtmp), */
+			locomotion(mtmp->data, "VERB_SPRINGEN"), /* EN makeplural(locomotion(mtmp->data, "jump")), */
 			t->ttyp == TRAPDOOR ? "NOUN_TRAP_DOOR" : "NOUN_HOLE"); /* EN t->ttyp == TRAPDOOR ? "trap door" : "hole"); */
 			if (levl[trapx][trapy].typ == SCORR) {
 			    levl[trapx][trapy].typ = CORR;
@@ -1113,11 +1113,11 @@ register struct obj *otmp;
 			    shieldeff(u.ux, u.uy);
 			    pline("Boing!"); /* EN pline("Boing!"); */ // TODO DE
 			} else if (rnd(20) < 10 + u.uac) {
-			    pline_The("wand hits you!"); /* EN pline_The("wand hits you!"); */ // TODO DE
+			    pline_The("NOUN_WAND VERB_HIT OBJECT PRONOMEN_PERSONAL!"); /* EN pline_The("wand hits you!"); */
 			    tmp = d(2,12);
 			    if(Half_spell_damage) tmp = (tmp+1) / 2;
-			    losehp(tmp, "wand", KILLED_BY_AN); /* EN losehp(tmp, "wand", KILLED_BY_AN); */ // TODO DE
-			} else pline_The("wand misses you."); /* EN } else pline_The("wand misses you."); */ // TODO DE
+			    losehp(tmp, "NOUN_WAND", KILLED_BY_AN); /* EN losehp(tmp, "wand", KILLED_BY_AN); */
+			} else pline_The("NOUN_WAND VERB_MISS OBJECT PRONOMEN_PERSONAL."); /* EN } else pline_The("wand misses you."); */
 			stop_occupation();
 			nomul(0);
 		} else if (resists_magm(mtmp)) {
@@ -1125,12 +1125,12 @@ register struct obj *otmp;
 			pline("Boing!"); /* EN pline("Boing!"); */ // TODO DE
 		} else if (rnd(20) < 10+find_mac(mtmp)) {
 			tmp = d(2,12);
-			hit("wand", mtmp, exclam(tmp)); /* EN hit("wand", mtmp, exclam(tmp)); */ // TODO DE
+			hit("NOUN_WAND", mtmp, exclam(tmp)); /* EN hit("wand", mtmp, exclam(tmp)); */
 			(void) resist(mtmp, otmp->oclass, tmp, TELL);
 			if (cansee(mtmp->mx, mtmp->my) && zap_oseen)
 				makeknown(WAN_STRIKING);
 		} else {
-			miss("wand", mtmp); /* EN miss("wand", mtmp); */ // TODO DE
+			miss("NOUN_WAND", mtmp); /* EN miss("wand", mtmp); */
 			if (cansee(mtmp->mx, mtmp->my) && zap_oseen)
 				makeknown(WAN_STRIKING);
 		}
@@ -1393,7 +1393,7 @@ struct monst *mtmp;
 				}
 	    	    	    }
 	    	    	    /* Drop the rock/boulder to the floor */
-	    	    	    if (!flooreffects(otmp2, x, y, "fall")) { /* EN if (!flooreffects(otmp2, x, y, "fall")) { */ // TODO DE
+	    	    	    if (!flooreffects(otmp2, x, y, "VERB_FALLEN")) { /* EN if (!flooreffects(otmp2, x, y, "fall")) { */
 	    	    	    	place_object(otmp2, x, y);
 	    	    	    	stackobj(otmp2);
 	    	    	    	newsym(x, y);  /* map the rock */
@@ -1424,13 +1424,13 @@ struct monst *mtmp;
 				pline("SUBJECT Glücklicherweise VERB_TRAGEN PRONOMEN_PERSONAL einen schützenden Helm."); /* EN pline("Fortunately, you are wearing a hard helmet."); */
 				if (dmg > 2) dmg = 2;
 			    } else if (flags.verbose) {
-				Your("%s does not protect you.", /* EN Your("%s does not protect you.", */ // TODO DE
+				Your("%s VERB_SCHUETZEN OBJECT PRONOMEN_PERSONAL nicht.", /* EN Your("%s does not protect you.", */
 						xname(uarmh));
 			    }
 			}
 		    } else
 			dmg = 0;
-		    if (!flooreffects(otmp2, u.ux, u.uy, "fall")) { /* EN if (!flooreffects(otmp2, u.ux, u.uy, "fall")) { */ // TODO DE
+		    if (!flooreffects(otmp2, u.ux, u.uy, "VERB_FALLEN")) { /* EN if (!flooreffects(otmp2, u.ux, u.uy, "fall")) { */
 			place_object(otmp2, u.ux, u.uy);
 			stackobj(otmp2);
 			newsym(u.ux, u.uy);

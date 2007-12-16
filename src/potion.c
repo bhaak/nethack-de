@@ -470,7 +470,7 @@ peffects(otmp)
 				you_unwere(FALSE);
 			    u.ulycn = NON_PM;	/* cure lycanthropy */
 			}
-			losehp(d(2,6), "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_HOLY_WATER", KILLED_BY_AN); /* EN losehp(d(2,6), "potion of holy water", KILLED_BY_AN); */
+			losehp(d(2,6), "NOUN_POTION PARTIKEL_OF NOUN_POT_HOLY_WATER", KILLED_BY_AN); /* EN losehp(d(2,6), "potion of holy water", KILLED_BY_AN); */
 		    } else if(otmp->cursed) {
 			Du_fuehlst_dich("ziemlich stolz auf KASUS_AKKUSATIV PRONOMEN_PERSONAL selbst."); /* EN You_feel("quite proud of yourself."); */
 			healup(d(2,6),0,0,0);
@@ -489,7 +489,7 @@ peffects(otmp)
 		    } else {
 			if(u.ualign.type == A_LAWFUL) {
 			    pline("Das brennt wie Säure!"); /* EN pline("This burns like acid!"); */
-			    losehp(d(2,6), "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_UNHOLY_WATER", /* EN losehp(d(2,6), "potion of unholy water", */
+			    losehp(d(2,6), "NOUN_POTION PARTIKEL_OF NOUN_POT_UNHOLY_WATER", /* EN losehp(d(2,6), "potion of unholy water", */
 				KILLED_BY_AN);
 			} else
 			    Du_fuehlst_dich("voller Furcht."); /* EN You_feel("full of dread."); */
@@ -664,10 +664,10 @@ peffects(otmp)
 		    if (!Role_if(PM_HEALER)) {
 			if (otmp->corpsenm)
 			    losehp(1,
-				   "mildly contaminated tap water", KILLED_BY); /* EN "mildly contaminated tap water", KILLED_BY); */ // TODO DE
+				   "leicht ADJEKTIV_KONTAMINIERT NOUN_LEITUNGSWASSER", KILLED_BY); /* EN "mildly contaminated tap water", KILLED_BY); */
 			else
 			    losehp(1,
-				   "mildly contaminated potion", KILLED_BY_AN); /* EN "mildly contaminated potion", KILLED_BY_AN); */ // TODO DE
+				   "leicht ADJEKTIV_KONTAMINIERT NOUN_POTION", KILLED_BY_AN); /* EN "mildly contaminated potion", KILLED_BY_AN); */
 		    }
 		} else {
 		    if(Poison_resistance)
@@ -688,10 +688,10 @@ peffects(otmp)
 			if(!Poison_resistance) {
 			    if (otmp->corpsenm)
 				losehp(rnd(10)+5*!!(otmp->cursed),
-				       "contaminated tap water", KILLED_BY); /* EN "contaminated tap water", KILLED_BY); */ // TODO DE
+				       "ADJEKTIV_KONTAMINIERT NOUN_LEITUNGSWASSER", KILLED_BY); /* EN "contaminated tap water", KILLED_BY); */
 			    else
 				losehp(rnd(10)+5*!!(otmp->cursed),
-				       "contaminated potion", KILLED_BY_AN); /* EN "contaminated potion", KILLED_BY_AN); */ // TODO DE
+				       "ADJEKTIV_KONTAMINIERT NOUN_POTION", KILLED_BY_AN); /* EN "contaminated potion", KILLED_BY_AN); */
 			}
 			exercise(A_CON, FALSE);
 		    }

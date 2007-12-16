@@ -915,7 +915,7 @@ hitmu(mtmp, mattk)
 			if (otmp->otyp == CORPSE
 				&& touch_petrifies(&mons[otmp->corpsenm])) {
 			    dmg = 1;
-			    pline("%s hits you with the %s corpse.", /* EN pline("%s hits you with the %s corpse.", */ // TODO DE
+			    pline("SUBJECT %s VERB_HIT OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT KASUS_DATIV mit ARTIKEL_BESTIMMTER MODIFIER_CORPSE %s NOUN_CORPSE.", /* EN pline("%s hits you with the %s corpse.", */
 				Monnam(mtmp), mons[otmp->corpsenm].mname);
 			    if (!Stoned)
 				goto do_stone;
@@ -940,7 +940,7 @@ hitmu(mtmp, mattk)
 			    flags.botl = 1;
 			    dmg = 0;
 			    if(cloneu())
-			    You("divide as %s hits you!",mon_nam(mtmp)); /* EN You("divide as %s hits you!",mon_nam(mtmp)); */ // TODO DE
+			    You("VERB_TEILEN OBJECT PRONOMEN_PERSONAL, als NEUER_SATZ SUBJECT_IM_SATZ %s OBJECT PRONOMEN_PERSONAL VERB_HIT!",mon_nam(mtmp)); /* EN You("divide as %s hits you!",mon_nam(mtmp)); */
 			}
 			urustm(mtmp, otmp);
 		    } else if (mattk->aatyp != AT_TUCH || dmg != 0 ||
@@ -1867,7 +1867,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		if (mtmp->mcan || !mtmp->mcansee) {
 		    if (mtmp->data == &mons[PM_MEDUSA] && canseemon(mtmp)) {
 			if (mtmp->mcan) {
-			    pline("%s doesn't look all that ugly.", /* EN pline("%s doesn't look all that ugly.", */ // TODO DE
+			    pline("SUBJECT %s VERB_AUSSEHEN gar nicht so übel SATZKLAMMER.", /* EN pline("%s doesn't look all that ugly.", */
 				  Monnam(mtmp));
 			    break;
 			}
@@ -2174,33 +2174,33 @@ register struct monst *mon;
 		    Sprintf(qbuf,"\"That %s looks pretty.  Would you wear it for me?\"", /* EN Sprintf(qbuf,"\"That %s looks pretty.  Would you wear it for me?\"", */ // TODO DE
 			safe_qbuf("",
 			    sizeof("\"That  looks pretty.  Would you wear it for me?\""), /* EN sizeof("\"That  looks pretty.  Would you wear it for me?\""), */ // TODO DE
-			    xname(ring), simple_typename(ring->otyp), "ring"));
+			    xname(ring), simple_typename(ring->otyp), "NOUN_RING")); /* EN xname(ring), simple_typename(ring->otyp), "ring")); */
 		    makeknown(RIN_ADORNMENT);
 		    if (yn(qbuf) == 'n') continue;
 		} else {
 		    pline("%s decides you'd look prettier wearing your %s,", /* EN pline("%s decides you'd look prettier wearing your %s,", */ // TODO DE
-			Blind ? "He" : Monnam(mon), xname(ring)); /* EN Blind ? "He" : Monnam(mon), xname(ring)); */ // TODO DE
+			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), xname(ring)); /* EN Blind ? "He" : Monnam(mon), xname(ring)); */
 		    pline("and puts it on your finger."); /* EN pline("and puts it on your finger."); */ // TODO DE
 		}
 		makeknown(RIN_ADORNMENT);
 		if (!uright) {
-		    pline("%s puts %s on your right %s.", /* EN pline("%s puts %s on your right %s.", */ // TODO DE
-			Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */ // TODO DE
+		    pline("SUBJECT %s puts %s on your right %s.", /* EN pline("%s puts %s on your right %s.", */ // TODO DE
+			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */
 		    setworn(ring, RIGHT_RING);
 		} else if (!uleft) {
-		    pline("%s puts %s on your left %s.", /* EN pline("%s puts %s on your left %s.", */ // TODO DE
-			Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */ // TODO DE
+		    pline("SUBJECT %s puts %s on your left %s.", /* EN pline("%s puts %s on your left %s.", */ // TODO DE
+			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */
 		    setworn(ring, LEFT_RING);
 		} else if (uright && uright->otyp != RIN_ADORNMENT) {
 		    Strcpy(buf, xname(uright));
-		    pline("%s replaces your %s with your %s.", /* EN pline("%s replaces your %s with your %s.", */ // TODO DE
-			Blind ? "He" : Monnam(mon), buf, xname(ring)); /* EN Blind ? "He" : Monnam(mon), buf, xname(ring)); */ // TODO DE
+		    pline("SUBJECT %s VERB_ERSETZEN OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV %s.", /* EN pline("%s replaces your %s with your %s.", */
+			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), buf, xname(ring)); /* EN Blind ? "He" : Monnam(mon), buf, xname(ring)); */
 		    Ring_gone(uright);
 		    setworn(ring, RIGHT_RING);
 		} else if (uleft && uleft->otyp != RIN_ADORNMENT) {
 		    Strcpy(buf, xname(uleft));
-		    pline("%s replaces your %s with your %s.", /* EN pline("%s replaces your %s with your %s.", */ // TODO DE
-			Blind ? "He" : Monnam(mon), buf, xname(ring)); /* EN Blind ? "He" : Monnam(mon), buf, xname(ring)); */ // TODO DE
+		    pline("SUBJECT %s VERB_ERSETZEN OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV %s.", /* EN pline("%s replaces your %s with your %s.", */
+			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), buf, xname(ring)); /* EN Blind ? "He" : Monnam(mon), buf, xname(ring)); */
 		    Ring_gone(uleft);
 		    setworn(ring, LEFT_RING);
 		} else impossible("ring replacement");
@@ -2287,7 +2287,8 @@ register struct monst *mon;
 		mon->mspec_used = rnd(100); /* monster is worn out */
 		You("seem to have enjoyed it more than %s...", /* EN You("seem to have enjoyed it more than %s...", */ // TODO DE
 		    noit_mon_nam(mon));
-		switch (rn2(5)) {
+		//switch (rn2(5)) {
+		switch (2) {
 		case 0: You_feel("raised to your full potential."); /* EN case 0: You_feel("raised to your full potential."); */ // TODO DE
 			exercise(A_CON, TRUE);
 			u.uen = (u.uenmax += rnd(5));
@@ -2521,7 +2522,7 @@ register struct attack *mattk;
 		    tmp = 0;
 		    break;
 		}
-		pline("%s is suddenly very cold!", Monnam(mtmp)); /* EN pline("%s is suddenly very cold!", Monnam(mtmp)); */ // TODO DE
+		pline("OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr kalt!", Monnam(mtmp)); /* EN pline("%s is suddenly very cold!", Monnam(mtmp)); */
 		u.mh += tmp / 2;
 		if (u.mhmax < u.mh) u.mhmax = u.mh;
 		if (u.mhmax > ((youmonst.data->mlevel+1) * 8))
@@ -2543,7 +2544,7 @@ register struct attack *mattk;
 		    tmp = 0;
 		    break;
 		}
-		pline("%s is suddenly very hot!", Monnam(mtmp)); /* EN pline("%s is suddenly very hot!", Monnam(mtmp)); */ // TODO DE
+		pline("OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr heiß!", Monnam(mtmp)); /* EN pline("%s is suddenly very hot!", Monnam(mtmp)); */
 		break;
 	    case AD_ELEC:
 		if (resists_elec(mtmp)) {

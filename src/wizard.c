@@ -526,7 +526,7 @@ intervene()
 	/* cases 0 and 5 don't apply on the Astral level */
 	switch (which) {
 	    case 0:
-	    case 1:	You_feel("vaguely nervous."); /* EN case 1:	You_feel("vaguely nervous."); */ // TODO DE
+	    case 1:	Du_fuehlst_dich("irgendwie nervös."); /* EN case 1:	You_feel("vaguely nervous."); */
 			break;
 	    case 2:	if (!Blind)
 			    You("notice a %s glow surrounding you.", /* EN You("notice a %s glow surrounding you.", */ // TODO DE

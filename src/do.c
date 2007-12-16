@@ -470,7 +470,7 @@ register struct obj *obj;
 
 			/* doname can call s_suffix, reusing its buffer */
 			Strcpy(buf, s_suffix(mon_nam(u.ustuck)));
-			You("VERB_DROP %s into %s %s SATZKLAMMER.", doname(obj), buf, /* EN You("drop %s into %s %s.", doname(obj), buf, */ // TODO DE
+			You("VERB_DROP %s _in_ %s %s SATZKLAMMER.", doname(obj), buf, /* EN You("drop %s into %s %s.", doname(obj), buf, */ // TODO DE
 				mbodypart(u.ustuck, STOMACH));
 		}
 	} else {
@@ -773,7 +773,7 @@ dodown()
 		if (!(trap = t_at(u.ux,u.uy)) ||
 			(trap->ttyp != TRAPDOOR && trap->ttyp != HOLE)
 			|| !Can_fall_thru(&u.uz) || !trap->tseen) {
-			You_cant("go down here."); /* EN You_cant("go down here."); */ // TODO DE
+			You("VERB_KOENNEN hier nicht runtergehen."); /* EN You_cant("go down here."); */
 			return(0);
 		}
 	}
@@ -788,18 +788,18 @@ dodown()
 		pline("Unspeakable cruelty and harm lurk down there."); /* EN pline("Unspeakable cruelty and harm lurk down there."); */ // TODO DE
 		if (yn("Are you sure you want to enter?") != 'y') /* EN if (yn("Are you sure you want to enter?") != 'y') */ // TODO DE
 			return(0);
-		else pline("So be it."); /* EN else pline("So be it."); */ // TODO DE
+		else pline("So sei es."); /* EN else pline("So be it."); */ // TODO DE
 		u.uevent.gehennom_entered = 1;	/* don't ask again */
 	}
 
 	if(!next_to_u()) {
-		You("are held back by your pet!"); /* EN You("are held back by your pet!"); */ // TODO DE
+		Your("NOUN_PET VERB_HALTEN OBJECT PRONOMEN_PERSONAL zurück!"); /* EN You("are held back by your pet!"); */
 		return(0);
 	}
 
 	if (trap)
-	    You("%s %s.", locomotion(youmonst.data, "jump"), /* EN You("%s %s.", locomotion(youmonst.data, "jump"), */ // TODO DE
-		trap->ttyp == HOLE ? "down the hole" : "through the trap door"); /* EN trap->ttyp == HOLE ? "down the hole" : "through the trap door"); */ // TODO DE
+	    You("SUBJECT %s %s.", locomotion(youmonst.data, "VERB_SPRINGEN"), /* EN You("%s %s.", locomotion(youmonst.data, "jump"), */
+		trap->ttyp == HOLE ? "durch das Loch" : "durch die Falltüre"); /* EN trap->ttyp == HOLE ? "down the hole" : "through the trap door"); */
 
 	if (trap && Is_stronghold(&u.uz)) {
 		goto_hell(FALSE, TRUE);
@@ -1135,7 +1135,7 @@ boolean at_stairs, falling, portal;
 		}
 		if (u.dz && Flying)
 		    You("fly down along the %s.", /* EN You("fly down along the %s.", */ // TODO DE
-			at_ladder ? "ladder" : "stairs"); /* EN at_ladder ? "ladder" : "stairs"); */ // TODO DE
+			at_ladder ? "NOUN_LADDER" : "NOUN_STAIRS"); /* EN at_ladder ? "ladder" : "stairs"); */
 		else if (u.dz &&
 		    (near_capacity() > UNENCUMBERED || Punished || Fumbling)) {
 		    You("VERB_FALLEN OBJECT ARTIKEL_BESTIMMTER %s hinunter.", at_ladder ? "NOUN_LADDER" : "NOUN_STAIRS"); /* EN You("fall down the %s.", at_ladder ? "ladder" : "stairs"); */
@@ -1251,7 +1251,7 @@ boolean at_stairs, falling, portal;
 	/* Check whether we just entered Gehennom. */
 	if (!In_hell(&u.uz0) && Inhell) {
 	    if (Is_valley(&u.uz)) {
-		You("VERB_BETRETEN das Tal der Toten ..."); /* EN You("arrive at the Valley of the Dead..."); */ // TODO DE
+		You("VERB_BETRETEN das Tal der Toten ..."); /* EN You("arrive at the Valley of the Dead..."); */
 		pline_The("odor of burnt flesh and decay pervades the air."); /* EN pline_The("odor of burnt flesh and decay pervades the air."); */ // TODO DE
 #ifdef MICRO
 		display_nhwindow(WIN_MESSAGE, FALSE);
@@ -1494,7 +1494,7 @@ struct obj *corpse;
 		if (is_uwep)
 		    pline_The("%s writhes out of your grasp!", cname); /* EN pline_The("%s writhes out of your grasp!", cname); */ // TODO DE
 		else
-		    You_feel("squirming in your backpack!"); /* EN You_feel("squirming in your backpack!"); */ // TODO DE
+		    Du_spuerst("etwas OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_RUCKSACK rumoren!"); /* EN You_feel("squirming in your backpack!"); */
 		break;
 
 	    case OBJ_FLOOR:

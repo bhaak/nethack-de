@@ -732,12 +732,12 @@ struct obj *obj;
 	/* from adventure */
 	switch (obj->where) {
 	    case OBJ_INVENT:
-		Your("lantern is getting dim."); /* EN Your("lantern is getting dim."); */ // TODO DE
+		Your("NOUN_LANTERN flackert trübe."); /* EN Your("lantern is getting dim."); */
 		if (Hallucination)
 		    pline("Leider gibt es noch keine Batterien."); /* EN pline("Batteries have not been invented yet."); */
 		break;
 	    case OBJ_FLOOR:
-		You("see a lantern getting dim."); /* EN You("see a lantern getting dim."); */ // TODO DE
+		You("VERB_SEHEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_LANTERN trübe flackern."); /* EN You("see a lantern getting dim."); */
 		break;
 	    case OBJ_MINVENT:
 		pline("%s lantern is getting dim.", /* EN pline("%s lantern is getting dim.", */ // TODO DE

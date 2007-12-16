@@ -1917,10 +1917,10 @@ boolean ordinary;
 		case FIRE_HORN:
 		    if (Fire_resistance) {
 			shieldeff(u.ux, u.uy);
-			pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ziemlich warm."); /* EN You_feel("rather warm."); */
+			Dir("VERB_SEIN ziemlich warm."); /* EN You_feel("rather warm."); */
 			ugolemeffects(AD_FIRE, d(12,6));
 		    } else {
-					pline("You've set yourself afire!"); /* EN pline("You've set yourself afire!"); */ // TODO DE
+					You("VERB_HABEN OBJECT PRONOMEN_PERSONAL selbst in Brand gesteckt!"); /* EN pline("You've set yourself afire!"); */
 			damage = d(12,6);
 		    }
 		    burn_away_slime();

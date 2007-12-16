@@ -747,7 +747,7 @@ doengrave()
 				    "Lightning arcs from the wand."); /* EN "Lightning arcs from the wand."); */ // TODO DE
 			    doblind = TRUE;
 			} else
-			    Strcpy(post_engr_text, "You hear crackling!"); /* EN Strcpy(post_engr_text, "You hear crackling!"); */ // TODO DE
+			    Strcpy(post_engr_text, "SUBJECT PRONOMEN_PERSONAL VERB_HEAR Geknacke!"); /* EN Strcpy(post_engr_text, "You hear crackling!"); */
 			break;
 
 		    /* type = MARK wands */
@@ -863,7 +863,7 @@ doengrave()
 		  The(xname(otmp)), Blind ? "" : "glows violently, then "); /* EN The(xname(otmp)), Blind ? "" : "glows violently, then "); */ // TODO DE
 	    if (!IS_GRAVE(levl[u.ux][u.uy].typ))
 		You("are not going to get anywhere trying to write in the %s with your dust.", /* EN You("are not going to get anywhere trying to write in the %s with your dust.", */ // TODO DE
-		    is_ice(u.ux,u.uy) ? "frost" : "dust"); /* EN is_ice(u.ux,u.uy) ? "frost" : "dust"); */ // TODO DE
+		    is_ice(u.ux,u.uy) ? "NOUN_SCHNEE" : "NOUN_DUST"); /* EN is_ice(u.ux,u.uy) ? "frost" : "dust"); */
 	    useup(otmp);
 	    ptext = FALSE;
 	}
@@ -936,7 +936,7 @@ doengrave()
 	    case DUST:
 		everb = (oep && !eow ? "add to the writing in" : /* EN everb = (oep && !eow ? "add to the writing in" : */ // TODO DE
 				       "write in"); /* EN "write in"); */ // TODO DE
-		eloc = is_ice(u.ux,u.uy) ? "frost" : "dust"; /* EN eloc = is_ice(u.ux,u.uy) ? "frost" : "dust"; */ // TODO DE
+		eloc = is_ice(u.ux,u.uy) ? "NOUN_SCHNEE" : "NOUN_DUST"; /* EN eloc = is_ice(u.ux,u.uy) ? "frost" : "dust"; */
 		break;
 	    case HEADSTONE:
 		everb = (oep && !eow ? "add to the epitaph on" : /* EN everb = (oep && !eow ? "add to the epitaph on" : */ // TODO DE
