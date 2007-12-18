@@ -12,6 +12,9 @@ class TestVerb < Test::Unit::TestCase
     verb = VerbUnregelmaessig.new("lauf","lief","lauf")
     verb = Verb.verb("","tuen")
     verb = VerbUnregelmaessig.new("tuen","tat","getan")
+    verb = Verb.verb("","wissen")
+    verb = Verb.verb("","schreien")
+    verb = Verb.verb("","mögen")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
@@ -465,8 +468,8 @@ class TestVerb < Test::Unit::TestCase
 
     checkVerbPraesens(verb, ["verletze", "verletzt", "verletzt", "verletzen", "verletzt", "verletzen"])
     checkVerbPraesensKonjunktiv(verb, ["verletze", "verletzest", "verletze", "verletzen", "verletzet", "verletzen"])
-    checkVerbPraeteritum(verb, ["verletzte", "verletztest", "verletzte", "verletzten", "verletztet", "verletzte"])
-    checkVerbPraeteritumKonjunktiv(verb, ["verletzte", "verletztest", "verletzte", "verletzten", "verletztet", "verletzte"])
+    checkVerbPraeteritum(verb, ["verletzte", "verletztest", "verletzte", "verletzten", "verletztet", "verletzten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["verletzte", "verletztest", "verletzte", "verletzten", "verletztet", "verletzten"])
   end
 
   def testWeigern
@@ -482,6 +485,66 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["weigere", "weigerst", "weigere", "weigern", "weigert", "weigern"])
     checkVerbPraeteritum(verb, ["weigerte", "weigertest", "weigerte", "weigerten", "weigertet", "weigerten"])
     checkVerbPraeteritumKonjunktiv(verb, ["weigerte", "weigertest", "weigerte", "weigerten", "weigertet", "weigerten"])
+  end
+
+  def testWissen
+    verb = Verb.verb("", "wissen")
+
+    assert_equal("wissen", verb.infinitiv)
+    #assert_equal("wisse", verb.singular.imperativ)
+    #assert_equal("wisst", verb.plural.imperativ)
+    assert_equal("wissend", verb.partizip_praesens)
+    assert_equal("gewusst", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["weiß", "weißt", "weiß", "wissen", "wisst", "wissen"])
+    checkVerbPraesensKonjunktiv(verb, ["wisse", "wissest", "wisse", "wissen", "wisset", "wissen"])
+    checkVerbPraeteritum(verb, ["wusste", "wusstest", "wusste", "wussten", "wusstet", "wussten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["wüsste", "wüsstest", "wüsste", "wüssten", "wüsstet", "wüssten"])
+  end
+
+  def testSchreien
+    verb = Verb.verb("", "schreien")
+
+    assert_equal("schreien", verb.infinitiv)
+    assert_equal("schrei", verb.singular.imperativ)
+    assert_equal("schreit", verb.plural.imperativ)
+    assert_equal("schreiend", verb.partizip_praesens)
+    assert_equal("geschrien", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["schreie", "schreist", "schreit", "schreien", "schreit", "schreien"])
+    checkVerbPraesensKonjunktiv(verb, ["schreie", "schreiest", "schreie", "schreien", "schreiet", "schreien"])
+    checkVerbPraeteritum(verb, ["schrie", "schriest", "schrie", "schrien", "schriet", "schrien"])
+    checkVerbPraeteritumKonjunktiv(verb, ["schriee", "schrieest", "schriee", "schrieen", "schrieet", "schrieen"])
+  end
+
+  def testMoegen
+    verb = Verb.verb("", "mögen")
+
+    assert_equal("mögen", verb.infinitiv)
+    #assert_equal("wisse", verb.singular.imperativ)
+    #assert_equal("wisst", verb.plural.imperativ)
+    assert_equal("mögend", verb.partizip_praesens)
+    assert_equal("gemocht", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["mag", "magst", "mag", "mögen", "mögt", "mögen"])
+    checkVerbPraesensKonjunktiv(verb, ["möge", "mögest", "möge", "mögen", "möget", "mögen"])
+    checkVerbPraeteritum(verb, ["mochte", "mochtest", "mochte", "mochten", "mochtet", "mochten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["möchte", "möchtest", "möchte", "möchten", "möchtet", "möchten"])
+  end
+
+  def testMuessen
+    verb = Verb.verb("", "müssen")
+
+    assert_equal("müssen", verb.infinitiv)
+    assert_equal("", verb.singular.imperativ)
+    assert_equal("", verb.plural.imperativ)
+    assert_equal("müssend", verb.partizip_praesens)
+    assert_equal("gemusst", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["muss", "musst", "muss", "müssen", "müsst", "müssen"])
+    checkVerbPraesensKonjunktiv(verb, ["müsse", "müssest", "müsse", "müssen", "müsset", "müssen"])
+    checkVerbPraeteritum(verb, ["musste", "musstest", "musste", "mussten", "musstet", "mussten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["müsste", "müsstest", "müsste", "müssten", "müsstet", "müssten"])
   end
 
   def checkVerbPraeteritum(verb, formen)
