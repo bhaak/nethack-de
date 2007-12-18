@@ -13,6 +13,8 @@
 //#include "prop.h"
 //#include "skills.h"
 
+#include "pm.h"
+
 
 char* german(const char *line);
 void german2meta(char *str, char *result);
@@ -27,6 +29,23 @@ void check_strings(char* text[][2], int size) {
 								"failed\nto convert: >%s<\nconverted:  >%s<\nexpected:   >%s<\n",
 								text[i][0],ret,text[i][1]);}
 }
+
+#undef canspotmon
+#define canspotmon(mon) (0)
+
+START_TEST (test_naming) {
+	struct monst *mtmp;
+	int i;
+
+	printf("1\n");
+	int monster[] = {PM_MEDUSA, PM_ORACLE, PM_GUARD};
+	for (i = 0; i < 3; i++) {
+		mtmp = makemon(&mons[monster[i]], u.ux, u.uy, NO_MM_FLAGS);
+		printf("%s\n", m_monnam(mtmp));
+		printf("%s\n", noit_mon_nam(mtmp));
+	}
+
+} END_TEST
 
 START_TEST (test_wishing) {
 	struct obj *obj, *obj2;
@@ -289,6 +308,8 @@ START_TEST (test_wishing) {
 	fail_unless(obj->oclass == POTION_CLASS);
 	fail_unless(obj->quan == 2);
 	fail_unless(strcmp("NOUN_POT_CONFUSION", dn)==0);
+
+	// Statuette eines Goblins
 	
 } END_TEST
 
@@ -298,7 +319,8 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-	tcase_add_test(tc_core, test_wishing);
+//	tcase_add_test(tc_core, test_wishing);
+	tcase_add_test(tc_core, test_naming);
 
   return s;
 }
