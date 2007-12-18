@@ -93,7 +93,7 @@ boolean quietly;
 
 	if (is_pool(mtmp->mx, mtmp->my) && minliquid(mtmp))
 		return (struct monst *)0;
-
+	
 	initedog(mtmp);
 	mtmp->msleeping = 0;
 	if (otmp) { /* figurine; resulting monster might not become a pet */
@@ -157,6 +157,15 @@ makedog()
 	mtmp = makemon(&mons[pettype], u.ux, u.uy, MM_EDOG);
 
 	if(!mtmp) return((struct monst *) 0); /* pets were genocided */
+
+#ifdef GERMAN
+	if (pettype == PM_KITTEN) {
+		mtmp->female = TRUE;
+	} else if (pettype == PM_LITTLE_DOG) {
+		mtmp->female = FALSE;
+	}
+#endif
+
 
 #ifdef STEED
 	/* Horses already wear a saddle */
