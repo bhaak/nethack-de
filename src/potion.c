@@ -113,7 +113,7 @@ int type;
 		Du_fuehlst_dich("todkrank."); /* EN You_feel("deathly sick."); */
 	    } else {
 		/* already sick */
-		if (talk) You_feel("%s schlechter.", /* EN if (talk) You_feel("%s worse.", */
+		if (talk) Du_fuehlst_dich("%s schlechter.", /* EN if (talk) You_feel("%s worse.", */
 			      xtime <= Sick/2L ? "viel" : "noch"); /* EN xtime <= Sick/2L ? "much" : "even"); */
 	    }
 	    set_itimeout(&Sick, xtime);
@@ -1521,7 +1521,7 @@ register struct obj *obj;
 			return TRUE;
 		}
 	}
-	pline("SUBJECT %s %s wet.", Your_buf, aobjnam(obj,"VERB_WERDEN")); /* EN pline("%s %s wet.", Your_buf, aobjnam(obj,"get")); */
+	pline("SUBJECT %s %s nass.", Your_buf, aobjnam(obj,"VERB_WERDEN")); /* EN pline("%s %s wet.", Your_buf, aobjnam(obj,"get")); */
 	return FALSE;
 }
 

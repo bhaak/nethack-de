@@ -809,7 +809,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
     verb = mb_verb[!!Hallucination][attack_indx];
     if (youattack || youdefend || vis) {
 	result = TRUE;
-	pline_The("magic-absorbing blade %s %s!", /* EN pline_The("magic-absorbing blade %s %s!", */ // TODO DE
+	pline_The("ADJEKTIV_MAGIE_ABSORBIEREND NOUN_KLINGE %s %s!", /* EN pline_The("magic-absorbing blade %s %s!", */
 		  vtense((const char *)0, verb), hittee);
 	/* assume probing has some sort of noticeable feedback
 	   even if it is being done by one monster to another */
@@ -1200,7 +1200,7 @@ arti_invoke(obj)
 	if(obj->age > monstermoves) {
 	    /* the artifact is tired :-) */
 	    You_feel("that %s %s ignoring you.", /* EN You_feel("that %s %s ignoring you.", */ // TODO DE
-		     the(xname(obj)), otense(obj, "are")); /* EN the(xname(obj)), otense(obj, "are")); */ // TODO DE
+		     the(xname(obj)), otense(obj, "VERB_SEIN")); /* EN the(xname(obj)), otense(obj, "are")); */
 	    /* and just got more so; patience is essential... */
 	    obj->age += (long) d(3,10);
 	    return 1;

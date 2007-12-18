@@ -477,7 +477,7 @@ ustatusline()
 		what = makeplural(what);
 				Sprintf(eos(info), ", injured %s", what); /* EN Sprintf(eos(info), ", injured %s", what); */ // TODO DE
 	}
-	if (Glib)		Sprintf(eos(info), ", slippery %s", /* EN if (Glib)		Sprintf(eos(info), ", slippery %s", */ // TODO DE
+	if (Glib)		Sprintf(eos(info), ", ADJEKTIV_SLIPPERY %s", /* EN if (Glib)		Sprintf(eos(info), ", slippery %s", */
 					makeplural(body_part(HAND)));
 	if (u.utrap)		Strcat(info, ", trapped"); /* EN if (u.utrap)		Strcat(info, ", trapped"); */ // TODO DE
 	if (Fast)		Strcat(info, Very_fast ?

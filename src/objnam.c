@@ -514,7 +514,7 @@ struct obj *obj;
 	Strcpy(tmpbuf, onm);
 	/* "the Nth arrow"; value will eventually be passed to an() or
 	   The(), both of which correctly handle this "the " prefix */
-	Sprintf(onm, "the %d%s %s", m_shot.i, ordin(m_shot.i), tmpbuf); /* EN Sprintf(onm, "the %d%s %s", m_shot.i, ordin(m_shot.i), tmpbuf); */ // TODO DE
+	Sprintf(onm, "ARTIKEL_BESTIMMTER %d%s %s", m_shot.i, ordin(m_shot.i), tmpbuf); /* EN Sprintf(onm, "the %d%s %s", m_shot.i, ordin(m_shot.i), tmpbuf); */
     }
 
     return onm;
@@ -642,7 +642,7 @@ register struct obj *obj;
 		Strcat(prefix, "ADJEKTIV_UNCURSED ");
 	}
 
-	if (obj->greased) Strcat(prefix, "greased "); /* EN if (obj->greased) Strcat(prefix, "greased "); */ // TODO DE
+	if (obj->greased) Strcat(prefix, "ADJEKTIV_GREASED "); /* EN if (obj->greased) Strcat(prefix, "greased "); */
 
 	switch(obj->oclass) {
 	case AMULET_CLASS:
@@ -716,8 +716,8 @@ charges:
 	case RING_CLASS:
 		add_erosion_words(obj, prefix);
 ring:
-		if(obj->owornmask & W_RINGR) Strcat(bp, " (on right "); /* EN if(obj->owornmask & W_RINGR) Strcat(bp, " (on right "); */ // TODO DE
-		if(obj->owornmask & W_RINGL) Strcat(bp, " (on left "); /* EN if(obj->owornmask & W_RINGL) Strcat(bp, " (on left "); */ // TODO DE
+		if(obj->owornmask & W_RINGR) Strcat(bp, " (KASUS_DATIV _an_ ARTIKEL_BESTIMMTER ADJEKTIV_RECHT "); /* EN if(obj->owornmask & W_RINGR) Strcat(bp, " (on right "); */ // TODO DE
+		if(obj->owornmask & W_RINGL) Strcat(bp, " (KASUS_DATIV _an_ ARTIKEL_BESTIMMTER ADJEKTIV_LINK "); /* EN if(obj->owornmask & W_RINGL) Strcat(bp, " (on left "); */ // TODO DE
 		if(obj->owornmask & W_RING) {
 		    Strcat(bp, body_part(HAND));
 		    Strcat(bp, ")");
@@ -752,7 +752,7 @@ ring:
 			    (obj->known ||
 			    mvitals[obj->corpsenm].mvflags & MV_KNOWS_EGG)) {
 			Strcat(prefix, mons[obj->corpsenm].mname);
-			Strcat(prefix, " ");
+			Strcat(prefix, " "); /* EN Strcat(prefix, " "); */ // TODO DE
 			if (obj->spe)
 			    Strcat(bp, " (selbstgelegt)"); /* EN Strcat(bp, " (laid by you)"); */
 		    }
@@ -798,15 +798,17 @@ ring:
 		Sprintf(eos(bp), " (unbezahlt, %ld %s)", /* EN Sprintf(eos(bp), " (unpaid, %ld %s)", */
 			quotedprice, currency(quotedprice));
 	}
+#ifndef GERMAN
 	if (!strncmp(prefix, "a ", 2) &&
 			index(vowels, *(prefix+2) ? *(prefix+2) : *bp)
-			&& (*(prefix+2) || (strncmp(bp, "uranium", 7) /* EN && (*(prefix+2) || (strncmp(bp, "uranium", 7) */ // TODO DE
-				&& strncmp(bp, "unicorn", 7) /* EN && strncmp(bp, "unicorn", 7) */ // TODO DE
-				&& strncmp(bp, "eucalyptus", 10)))) { /* EN && strncmp(bp, "eucalyptus", 10)))) { */ // TODO DE
+			&& (*(prefix+2) || (strncmp(bp, "uranium", 7)
+				&& strncmp(bp, "unicorn", 7)
+				&& strncmp(bp, "eucalyptus", 10)))) {
 		Strcpy(tmpbuf, prefix);
-		Strcpy(prefix, "an "); /* EN Strcpy(prefix, "an "); */ // TODO DE
+		Strcpy(prefix, "an ");
 		Strcpy(prefix+3, tmpbuf+2);
 	}
+#endif
 	bp = strprepend(bp, prefix);
 	return(bp);
 }
@@ -946,19 +948,21 @@ register const char *str;
 
 	buf[0] = '\0';
 
-	if (strncmpi(str, "the ", 4) &&
-	    strcmp(str, "ADJEKTIV_FLUESSIG NOUN_LAVA") &&
-	    strcmp(str, "iron bars") &&
-	    strcmp(str, "ice")) {
+	if (strncmpi(str, "ARTIKEL_BESTIMMTER ", 19) && /* EN if (strncmpi(str, "the ", 4) && */
+	    strcmp(str, "ADJEKTIV_FLUESSIG NOUN_LAVA") && /* EN strcmp(str, "molten lava") && */
+	    strcmp(str, "NOUN_IRON_BARs") && /* EN strcmp(str, "iron bars") && */
+	    strcmp(str, "NOUN_ICE")) { /* EN strcmp(str, "ice")) { */
+	#ifndef GERMAN
 		if (index(vowels, *str) &&
-		    strncmp(str, "one-", 4) &&
-		    strncmp(str, "useful", 6) &&
+		    strncmp(str, "one-", 4) && 
+		    strncmp(str, "useful", 6) && 
 		    strncmp(str, "unicorn", 7) &&
 		    strncmp(str, "uranium", 7) &&
 		    strncmp(str, "eucalyptus", 10))
-			Strcpy(buf, "ARTIKEL_UNBESTIMMTER ");
+			Strcpy(buf, "an ");
 		else
-			Strcpy(buf, "ARTIKEL_UNBESTIMMTER ");
+	#endif
+			Strcpy(buf, "ARTIKEL_UNBESTIMMTER "); /* EN Strcpy(buf, "a "); */
 	}
 
 	Strcat(buf, str);
@@ -986,7 +990,11 @@ const char *str;
 	boolean insert_the = FALSE;
 
 #ifdef GERMAN
-	insert_the = TRUE; // TO DO german_the
+	if (!strncmpi(str, "ARTIKEL_BESTIMMTER ", 19)) {
+		insert_the = FALSE;
+	} else {
+		insert_the = TRUE; // TO DO german_the
+	}
 #else
 	if (!strncmpi(str, "ARTIKEL_BESTIMMTER ", 19)) {
 	    buf[0] = lowc(*str);
@@ -1547,7 +1555,7 @@ STATIC_OVL NEARDATA const struct o_range o_ranges[] = {
 			ARMOR_CLASS,  GRAY_DRAGON_SCALE_MAIL, YELLOW_DRAGON_SCALE_MAIL },
 	{ "NOUN_SWORD",	WEAPON_CLASS, SHORT_SWORD,    KATANA },
 #ifdef WIZARD
-	{ "venom",	VENOM_CLASS,  BLINDING_VENOM, ACID_VENOM },
+	{ "NOUN_SCHLANGENGIFT",	VENOM_CLASS,  BLINDING_VENOM, ACID_VENOM }, /* EN { "venom",	VENOM_CLASS,  BLINDING_VENOM, ACID_VENOM }, */
 #endif
 	{ "gray stone",	GEM_CLASS,    LUCKSTONE,      FLINT },
 	{ "grey stone",	GEM_CLASS,    LUCKSTONE,      FLINT },
@@ -1929,7 +1937,7 @@ boolean from_user;
 #endif
 			  ) {
 			ispoisoned=1;
-		} else if(!strncmpi(bp, "greased ",l=8)) {
+		} else if(!strncmpi(bp, "ADJEKTIV_GREASED ",l=8)) { /* EN } else if(!strncmpi(bp, "greased ",l=8)) { */
 			isgreased=1;
 		} else if (!strncmpi(bp, "very ", l=5)) {
 			/* very rusted very heavy iron ball */
@@ -2050,7 +2058,7 @@ boolean from_user;
 	-- boots, gloves, and lenses -- are also not mergable, so cnt is
 	ignored anyway.
 	*/
-	//fprintf(stderr, "readobjnam 6 %s\n", bp); // DE DEBUG
+	
 	if(!strncmpi(bp, "pair of ",8)) {
 		bp += 8;
 		cnt *= 2;
@@ -2065,19 +2073,22 @@ boolean from_user;
 		bp += 10;
 	}
 	//fprintf(stderr, "readobjnam 6 %s\n", bp);
+	//fprintf(stderr, "readobjnam 6 %s\n", bp);
 
 	/*
 	 * Find corpse type using "of" (figurine of an orc, tin of orc meat)
 	 * Don't check if it's a wand or spellbook.
 	 * (avoid "wand/finger of death" confusion).
 	 */
-	if (!strstri(bp, "wand ")
-	 && !strstri(bp, "spellbook ")
-	 && !strstri(bp, "finger ")) {
-	    if ((p = strstri(bp, " of ")) != 0
-		&& (mntmp = name_to_mon(p+4)) >= LOW_PM)
+	if (!strstri(bp, "wand ") /* EN if (!strstri(bp, "wand ") */ // TODO DE
+	 && !strstri(bp, "spellbook ") /* EN && !strstri(bp, "spellbook ") */ // TODO DE
+	 && !strstri(bp, "finger ")) { /* EN && !strstri(bp, "finger ")) { */ // TODO DE
+	//fprintf(stderr, "readobjnam 6.25 %s\n", bp);
+	    if ((p = strstri(bp, " PARTIKEL_OF ")) != 0 /* EN if ((p = strstri(bp, " of ")) != 0 */
+		&& (mntmp = name_to_mon(p+13)) >= LOW_PM) /* EN && (mntmp = name_to_mon(p+4)) >= LOW_PM) */
 		*p = 0;
 	}
+	//fprintf(stderr, "readobjnam 6.5 %s\n", bp);
 	/* Find corpse type w/o "of" (red dragon scale mail, yeti corpse) */
 	if (strncmpi(bp, "samurai sword", 13)) /* not the "samurai" monster! */
 	if (strncmpi(bp, "wizard lock", 11)) /* not the "wizard" monster! */
@@ -2601,7 +2612,9 @@ typfnd:
 						)
 	    typ = OIL_LAMP;
 
-	//fprintf(stderr, "readobjnam 630 typ: %d; oclass: %d\n", typ, oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 620 typ: %d; oclass: %d\n", typ, oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 620 typ: %d; oclass: %d\n", typ, oclass); // DE DEBUG
+	//fprintf(stderr, "readobjnam 630 typ: %d\n", typ); // DE DEBUG
 	if(typ) {
 		//fprintf(stderr, "readobjnam 631 oclass: %d\n", oclass); // DE DEBUG
 		otmp = mksobj(typ, TRUE, FALSE);

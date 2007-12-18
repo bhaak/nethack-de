@@ -3795,7 +3795,7 @@ struct monst *shkp;
 	else if (shkmoney > 4000)
 #endif
 		pline("SUBJECT %s sagt, dass das Geschäft brummt.", shkname(shkp)); /* EN pline("%s says that business is good.", shkname(shkp)); */
-	else if (strcmp(shkname(shkp), "Izchak") == 0)
+	else if (strcmp(shkname(shkp), "NOUN_PSEUDO_MAENNLICH Izchak") == 0) /* EN else if (strcmp(shkname(shkp), "Izchak") == 0) */
 		pline(Izchak_speaks[rn2(SIZE(Izchak_speaks))],shkname(shkp));
 	else
 		pline("%s spricht über das Problem der hohen Kriminalitätsrate.",shkname(shkp)); /* EN pline("%s talks about the problem of shoplifters.",shkname(shkp)); */

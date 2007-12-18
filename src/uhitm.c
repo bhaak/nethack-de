@@ -833,7 +833,7 @@ int thrown;
 				pline(obj->otyp == CREAM_PIE ?
 				      "Splat!" : "Splash!"); /* EN "Splat!" : "Splash!"); */ // TODO DE
 			    } else if (obj->otyp == BLINDING_VENOM) {
-				pline_The("venom blinds %s%s!", mon_nam(mon), /* EN pline_The("venom blinds %s%s!", mon_nam(mon), */ // TODO DE
+				pline_The("NOUN_SCHLANGENGIFT VERB_BLENDEN OBJECT %s%s!", mon_nam(mon), /* EN pline_The("venom blinds %s%s!", mon_nam(mon), */
 					  mon->mcansee ? "" : " further"); /* EN mon->mcansee ? "" : " further"); */ // TODO DE
 			    } else {
 				char *whom = mon_nam(mon);
@@ -866,11 +866,11 @@ int thrown;
 			break;
 		    case ACID_VENOM: /* thrown (or spit) */
 			if (resists_acid(mon)) {
-				Your("venom hits %s harmlessly.", /* EN Your("venom hits %s harmlessly.", */ // TODO DE
+				Your("NOUN_SCHLANGENGIFT VERB_HIT OBJECT %s harmlessly.", /* EN Your("venom hits %s harmlessly.", */ // TODO DE
 					mon_nam(mon));
 				tmp = 0;
 			} else {
-				Your("venom burns %s!", mon_nam(mon)); /* EN Your("venom burns %s!", mon_nam(mon)); */ // TODO DE
+				Your("NOUN_SCHLANGENGIFT VERB_VERAETZEN OBJECT %s!", mon_nam(mon)); /* EN Your("venom burns %s!", mon_nam(mon)); */
 				tmp = dmgval(obj, mon);
 			}
 			if (thrown) obfree(obj, (struct obj *)0);
@@ -1114,7 +1114,7 @@ struct attack *mattk;
 		mattk->adtyp == AD_WRAP ?
 			"slip off of" : "grab, but cannot hold onto", /* EN "slip off of" : "grab, but cannot hold onto", */ // TODO DE
 		s_suffix(mon_nam(mdef)),
-		obj->greased ? "greased" : "slippery", /* EN obj->greased ? "greased" : "slippery", */ // TODO DE
+		obj->greased ? "ADJKETIV_GREASED" : "ADJEKTIV_SLIPPERY", /* EN obj->greased ? "greased" : "slippery", */
 		/* avoid "slippery slippery cloak"
 		   for undiscovered oilskin cloak */
 		(obj->greased || objects[obj->otyp].oc_name_known) ?

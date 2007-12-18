@@ -2348,14 +2348,14 @@ struct obj *obj;	/* wand or spell */
 	    } else if (!striking && ttmp && ttmp->ttyp == TRAPDOOR && u.dz > 0) {
 		if (!Blind) {
 			if (ttmp->tseen) {
-				pline("A trap door beneath you closes up then vanishes."); /* EN pline("A trap door beneath you closes up then vanishes."); */ // TODO DE
+				pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR OBJECT KASUS_DATIV unter PRONOMEN_PERSONAL VERB_SCHLIESSEN sich und VERB_VERSCHWINDEN."); /* EN pline("A trap door beneath you closes up then vanishes."); */
 				disclose = TRUE;
 			} else {
 				You("see a swirl of %s beneath you.", /* EN You("see a swirl of %s beneath you.", */ // TODO DE
 					is_ice(x,y) ? "frost" : "dust"); /* EN is_ice(x,y) ? "frost" : "dust"); */
 			}
 		} else {
-			You_hear("a twang followed by a thud."); /* EN You_hear("a twang followed by a thud."); */ // TODO DE
+			You_hear("ein Wusch und gleich darauf ein Puff."); /* EN You_hear("a twang followed by a thud."); */
 		}
 		deltrap(ttmp);
 		ttmp = (struct trap *)0;
@@ -2378,9 +2378,9 @@ struct obj *obj;	/* wand or spell */
 		    if (is_pool(u.ux, u.uy) || is_ice(u.ux, u.uy))
 			pline(nothing_happens);
 		    else
-					pline("Blood %ss %s your %s.", /* EN pline("Blood %ss %s your %s.", */ // TODO DE
+					pline("Blood %ss OBJECT %s KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("Blood %ss %s your %s.", */ // TODO DE
 			      is_lava(u.ux, u.uy) ? "boil" : "pool", /* EN is_lava(u.ux, u.uy) ? "boil" : "pool", */ // TODO DE
-			      Levitation ? "beneath" : "at", /* EN Levitation ? "beneath" : "at", */ // TODO DE
+			      Levitation ? "unter" : "zu", /* EN Levitation ? "beneath" : "at", */
 			      makeplural(body_part(FOOT)));
 		}
 	    }

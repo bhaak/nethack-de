@@ -110,20 +110,19 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },10,	/* Energy */
 	0, 12, 0, 1,  8, A_INT, SPE_DIG,             -4
 },
-// TODO DE
 {	{"NOUN_HEILER", "NOUN_HEILERIN"}, { /* EN {	{"Healer", 0}, { */
-	{"Rhizotomist",    0},
-	{"Empiric",        0},
-	{"Embalmer",       0},
-	{"Dresser",        0},
-	{"Medicus ossium", "Medica ossium"},
-	{"Herbalist",      0},
-	{"Magister",       "Magistra"},
-	{"Physician",      0},
-	{"Chirurgeon",     0} },
+	{"NOUN_RHIZOTOMIST",    "NOUN_RHIZOTOMISTIN"}, /* EN {"Rhizotomist",    0}, */
+	{"NOUN_EMPIRIC",        "NOUN_EMPIRICIN"}, /* EN {"Empiric",        0}, */ /* http://de.wikipedia.org/wiki/Empiriker_%28%C3%84rzteschule%29 */
+	{"NOUN_EMBALMER",       "NOUN_EMBALMERIN"}, /* EN {"Embalmer",       0}, */
+	{"NOUN_DRESSER",        "NOUN_DRESSERIN"}, /* EN {"Dresser",        0}, */
+	{"NOUN_MEDICUS_OSSIUM", "NOUN_MEDICA_OSSIUM"}, /* EN {"Medicus ossium", "Medica ossium"}, */
+	{"NOUN_HERBALIST",      "NOUN_HERBALISTIN"}, /* EN {"Herbalist",      0}, */
+	{"NOUN_MAGISTER",       "NOUN_MAGISTRA"}, /* EN {"Magister",       "Magistra"}, */
+	{"NOUN_PHYSICIAN",      "NOUN_PHYSICIANIN"}, /* EN {"Physician",      0}, */
+	{"NOUN_CHIRURGEON",     "NOUN_CHIRURGEON"} }, /* EN {"Chirurgeon",     0} }, */
 	"_Athena", "Hermes", "Poseidon", /* Greek */
-	"Hea", "the Temple of Epidaurus", "the Temple of Coeus",
-	PM_HEALER, NON_PM, NON_PM,
+	"Hea", "the Temple of Epidaurus", "the Temple of Coeus", /* EN "Hea", "the Temple of Epidaurus", "the Temple of Coeus", */ // TODO DE
+	PM_HEALER, NON_PM, NON_PM, 
 	PM_HIPPOCRATES, PM_ATTENDANT, PM_CYCLOPS,
 	PM_GIANT_RAT, PM_SNAKE, S_RODENT, S_YETI,
 	ART_STAFF_OF_AESCULAPIUS,
@@ -190,19 +189,18 @@ const struct Role roles[] = {
 	{  2, 2,  0, 2,  0, 2 },10,	/* Energy */
 	10, 8,-2, 2, 20, A_WIS, SPE_RESTORE_ABILITY, -4
 },
-// TODO DE
-{	{"NOUN_PRIESTER", "NOUN_PRIESTERIN"}, { /* EN {	{"Priest", "Priestess"}, { */
-	{"Aspirant",    0},
-	{"Acolyte",     0},
-	{"Adept",       0},
-	{"Priest",      "Priestess"},
-	{"Curate",      0},
-	{"Canon",       "Canoness"},
-	{"Lama",        0},
-	{"Patriarch",   "Matriarch"},
-	{"High Priest", "High Priestess"} },
+{	{"NOUN_PRIESTER",    "NOUN_PRIESTERIN"}, { /* EN {	{"Priest", "Priestess"}, { */
+	{"NOUN_ASPIRANT",    "NOUN_ASPIRANTIN"}, /* EN {"Aspirant",    0}, */
+	{"NOUN_ACOLYTE",     "NOUN_ACOLYTEIN"}, /* EN {"Acolyte",     0}, */
+	{"NOUN_ADEPT",       "NOUN_ADEPTIN"}, /* EN {"Adept",       0}, */
+	{"NOUN_PRIESTER",    "NOUN_PRIESTERIN"}, /* EN {"Priest",      "Priestess"}, */
+	{"NOUN_CURATE",      "NOUN_CURATEIN"}, /* EN {"Curate",      0}, */
+	{"NOUN_CANON",       "NOUN_CANONESS"}, /* EN {"Canon",       "Canoness"}, */
+	{"NOUN_LAMA",        "NOUN_LAMAIN"}, /* EN {"Lama",        0}, */
+	{"NOUN_PATRIARCH",   "NOUN_MATRIARCH"}, /* EN {"Patriarch",   "Matriarch"}, */
+	{"NOUN_HIGH_PRIEST", "NOUN_HIGH_PRIESTESS"} }, /* EN {"High Priest", "High Priestess"} }, */
 	0, 0, 0,	/* chosen randomly from among the other roles */
-	"Pri", "the Great Temple", "the Temple of Nalzok",
+	"Pri", "the Great Temple", "the Temple of Nalzok", /* EN "Pri", "the Great Temple", "the Temple of Nalzok", */ // TODO DE
 	PM_PRIEST, PM_PRIESTESS, NON_PM,
 	PM_ARCH_PRIEST, PM_ACOLYTE, PM_NALZOK,
 	PM_HUMAN_ZOMBIE, PM_WRAITH, S_ZOMBIE, S_WRAITH,

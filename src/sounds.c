@@ -849,7 +849,7 @@ dochat()
     struct obj *otmp;
 
     if (is_silent(youmonst.data)) {
-	pline("Als KASUS_AKKUSATIV %s SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL nicht sprechen.", an(youmonst.data->mname)); /* EN pline("As %s, you cannot speak.", an(youmonst.data->mname)); */
+	pline("Als %s SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL nicht sprechen.", an(youmonst.data->mname)); /* EN pline("As %s, you cannot speak.", an(youmonst.data->mname)); */
 	return(0);
     }
     if (Strangled) {

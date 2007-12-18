@@ -451,6 +451,7 @@ register struct monst *priest;
 	    if(coaligned && !strayed) {
 		if (priest->mgold > 0L) {
 		    /* Note: two bits is actually 25 cents.  Hmm. */
+				/* Ein bisschen Lokalpatriotismus muss schon sein */
 		    pline("SUBJECT %s VERB_GEBEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL %s für ein Calanda.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */
 			(priest->mgold == 1L) ? "einen Stutz" : "zwei Stutz"); /* EN (priest->mgold == 1L) ? "one bit" : "two bits"); */
 		    if (priest->mgold > 1L)
@@ -465,6 +466,7 @@ register struct monst *priest;
                 long pmoney = money_cnt(priest->minvent);
 		if (pmoney > 0L) {
 		    /* Note: two bits is actually 25 cents.  Hmm. */
+				/* Ein bisschen Lokalpatriotismus muss schon sein */
 		    pline("SUBJECT %s VERB_GEBEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL %s für ein Calanda.", Monnam(priest), /* EN pline("%s gives you %s for an ale.", Monnam(priest), */
 			(pmoney == 1L) ? "einen Stutz" : "zwei Stutz"); /* EN (pmoney == 1L) ? "one bit" : "two bits"); */
 		     money2u(priest, pmoney > 1L ? 2 : 1);

@@ -881,7 +881,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 #ifdef WIZARD
 	if (wizard) {
 		Sprintf(buf, " %d", u.ualign.record);
-		enl_msg("Your alignment ", "is", "was", buf); /* EN enl_msg("Your alignment ", "is", "was", buf); */ // TODO DE
+		enl_msg("SUBJECT PRONOMEN_POSSESSIV NOUN_ALIGNMENT ", "VERB_SEIN", "MODIFIER_VERB_PRAETERITUM VERB_SEIN", buf); /* EN enl_msg("Your alignment ", "is", "was", buf); */
 	}
 #endif
 

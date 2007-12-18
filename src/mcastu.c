@@ -330,7 +330,7 @@ int spellnum;
 
     switch (spellnum) {
     case MGC_DEATH_TOUCH:
-	pline("Oh nein, SUBJECT_IM_SATZ %s VERB_BENUTZEN the touch of death!", mhe(mtmp)); /* EN pline("Oh no, %s's using the touch of death!", mhe(mtmp)); */ // TODO DE
+	pline("Oh nein, SUBJECT_IM_SATZ %s VERB_BENUTZEN the touch of death!", mhe(mtmp)); /* EN pline("Oh no, %s's using the touch of death!", mhe(mtmp)); */ // TODO DE http://de.wikipedia.org/wiki/Dim_Mak
 	if (nonliving(youmonst.data) || is_demon(youmonst.data)) {
 	    You("VERB_SCHEINEN nicht toter als zuvor zu sein."); /* EN You("seem no deader than before."); */
 	} else if (!Antimagic && rn2(mtmp->m_lev) > 12) {

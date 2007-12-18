@@ -246,7 +246,7 @@ fnd:
 			youmonst.mappearance != GOLD_PIECE)
 	    	verbalize("Hey! Who left that %s in here?", mimic_obj_name(&youmonst)); /* EN verbalize("Hey! Who left that %s in here?", mimic_obj_name(&youmonst)); */ // TODO DE
 	    /* You're mimicking some object or you're hidden. */
-	    pline("Verwirrt VERB_DREHEN %s sich um und VERB_GEHEN.", mhe(guard)); /* EN pline("Puzzled, %s turns around and leaves.", mhe(guard)); */
+	    pline("Verwirrt VERB_DREHEN SUBJECT_IM_SATZ %s sich um und VERB_GEHEN.", mhe(guard)); /* EN pline("Puzzled, %s turns around and leaves.", mhe(guard)); */
 	    mongone(guard);
 	    return;
 	}

@@ -1808,9 +1808,9 @@ struct obj *obj;
 		}
 	} else {
 	    if (obj->known)
-		pline("%s empty.", Tobjnam(obj, "are")); /* EN pline("%s empty.", Tobjnam(obj, "are")); */ // TODO DE
+		pline("SUBJECT %s leer.", Tobjnam(obj, "VERB_SEIN")); /* EN pline("%s empty.", Tobjnam(obj, "are")); */
 	    else
-		pline("%s to be empty.", Tobjnam(obj, "seem")); /* EN pline("%s to be empty.", Tobjnam(obj, "seem")); */ // TODO DE
+		pline("SUBJECT %s leer zu sein.", Tobjnam(obj, "VERB_SCHEINEN")); /* EN pline("%s to be empty.", Tobjnam(obj, "seem")); */
 	}
 	update_inventory();
 }

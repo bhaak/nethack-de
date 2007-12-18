@@ -177,7 +177,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	    if (ismimic) seemimic(mtmp);
 	    mtmp->msleeping = 0;
 	    if (vis) hit(distant_name(otmp,mshot_xname), mtmp, exclam(damage));
-	    else if (verbose) pline("%s is hit%s", Monnam(mtmp), exclam(damage)); /* EN else if (verbose) pline("%s is hit%s", Monnam(mtmp), exclam(damage)); */ // TODO DE
+	    else if (verbose) pline("SUBJECT %s is hit%s", Monnam(mtmp), exclam(damage)); /* EN else if (verbose) pline("%s is hit%s", Monnam(mtmp), exclam(damage)); */ // TODO DE
 
 	    if (otmp->opoisoned && is_poisonable(otmp)) {
 		if (resists_poison(mtmp)) {
@@ -402,11 +402,11 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			} else if(singleobj->otyp == BLINDING_VENOM) {
 			    int num_eyes = eyecount(youmonst.data);
 			    /* venom in the eyes */
-			    if(!Blind) pline_The("venom blinds you."); /* EN if(!Blind) pline_The("venom blinds you."); */ // TODO DE
-			    else Your("%s sting%s.", /* EN else Your("%s sting%s.", */ // TODO DE
+			    if(!Blind) pline_The("NOUN_SCHLANGENGIFT VERB_BLENDEN OBJECT PRONOMEN_PERSONAL."); /* EN if(!Blind) pline_The("venom blinds you."); */
+			    else pline("Es brennt KASUS_DATIV in PRONOMEN_POSSESSIV %s%s.", /* EN else Your("%s sting%s.", */
 				      (num_eyes == 1) ? body_part(EYE) :
 						makeplural(body_part(EYE)),
-				      (num_eyes == 1) ? "s" : "");
+				      (num_eyes == 1) ? "" : ""); /* EN (num_eyes == 1) ? "s" : ""); */
 			}
 		    }
 		    if (hitu && singleobj->otyp == EGG) {
@@ -512,7 +512,7 @@ struct monst *mtmp;
 
 	    if (canseemon(mtmp)) {
 		onm = xname(otmp);
-		pline("5678 %s thrusts %s.", Monnam(mtmp), /* EN pline("%s thrusts %s.", Monnam(mtmp), */ // TODO DE
+		pline("SUBJECT %s thrusts %s.", Monnam(mtmp), /* EN pline("%s thrusts %s.", Monnam(mtmp), */ // TODO DE
 		      obj_is_pname(otmp) ? the(onm) : an(onm));
 	    }
 
@@ -644,7 +644,7 @@ register struct attack *mattk;
 		}
 		if(!rn2(BOLT_LIM-distmin(mtmp->mx,mtmp->my,mtmp->mux,mtmp->muy))) {
 		    if (canseemon(mtmp))
-			pline("%s spits venom!", Monnam(mtmp)); /* EN pline("%s spits venom!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_SPEIEN Gift!", Monnam(mtmp)); /* EN pline("%s spits venom!", Monnam(mtmp)); */
 		    m_throw(mtmp, mtmp->mx, mtmp->my, sgn(tbx), sgn(tby),
 			distmin(mtmp->mx,mtmp->my,mtmp->mux,mtmp->muy), otmp);
 		    nomul(0);

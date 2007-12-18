@@ -1391,7 +1391,7 @@ register struct obj   *obj;
 			}
 	    	}
 	    }
-	    pline("%s into %s %s.", /* EN pline("%s into %s %s.", */ // TODO DE
+	    pline("SUBJECT %s into %s %s.", /* EN pline("%s into %s %s.", */ // TODO DE
 		Tobjnam(obj, "vanish"), s_suffix(mon_nam(mon)), /* EN Tobjnam(obj, "vanish"), s_suffix(mon_nam(mon)), */ // TODO DE
 		is_animal(u.ustuck->data) ? "entrails" : "currents"); /* EN is_animal(u.ustuck->data) ? "entrails" : "currents"); */ // TODO DE
 	} else {

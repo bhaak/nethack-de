@@ -856,7 +856,7 @@ register int pm;
 		    nomul(-tmp);
 		    Sprintf(buf, Hallucination ?
 			"OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_GRAUEN plötzlich davor geschält zu werden und MODIFIER_VERB_ZWEITE_PERSON VERB_IMITIEREN sicherheitshalber wieder NEUES_OBJECT KASUS_AKKUSATIV %s!" : /* EN "You suddenly dread being peeled and mimic %s again!" : */
-			"SUBJECT PRONOMEN_PERSONAL VERB_IMITIEREN jetzt lieber wieder %s.", /* EN "You now prefer mimicking %s again.", */
+			"SUBJECT PRONOMEN_PERSONAL VERB_IMITIEREN jetzt lieber wieder OBJECT %s.", /* EN "You now prefer mimicking %s again.", */
 			an(Upolyd ? youmonst.data->mname : urace.noun));
 		    eatmbuf = strcpy((char *) alloc(strlen(buf) + 1), buf);
 		    nomovemsg = eatmbuf;
@@ -1369,7 +1369,7 @@ struct obj *otmp;
 		break;
 	    case TRIPE_RATION:
 		if (carnivorous(youmonst.data) && !humanoid(youmonst.data))
-		    pline("That NOUN_TRIPE_RATION war überraschend gut!"); /* EN pline("That tripe ration was surprisingly good!"); */ // TODO DE
+		    pline("SUBJECT PRONOMEN_DIESER NOUN_TRIPE_RATION war überraschend gut!"); /* EN pline("That tripe ration was surprisingly good!"); */
 		else if (maybe_polyd(is_orc(youmonst.data), Race_if(PM_ORC)))
 		    pline(Hallucination ? "Tastes great! Less filling!" : /* EN pline(Hallucination ? "Tastes great! Less filling!" : */ // TODO DE
 			  "Hmm, NOUN_TRIPE_RATION ... nicht schlecht!"); /* EN "Mmm, tripe... not bad!"); */
@@ -1398,8 +1398,8 @@ struct obj *otmp;
 	    default:
 		if (otmp->otyp==SLIME_MOLD && !otmp->cursed
 			&& otmp->spe == current_fruit)
-		    pline("My, that was a %s %s!", /* EN pline("My, that was a %s %s!", */ // TODO DE
-			  Hallucination ? "primo" : "yummy", /* EN Hallucination ? "primo" : "yummy", */ // TODO DE
+		    pline("Mann, das war aber ARTIKEL_UNBESTIMMTER %s %s!", /* EN pline("My, that was a %s %s!", */
+			  Hallucination ? "primo" : "ADJEKTIV_LECKER", /* EN Hallucination ? "primo" : "yummy", */ // TODO DE http://www.urbandictionary.com/define.php?term=primo
 			  singular(otmp, xname));
 		else
 #ifdef UNIX
@@ -1441,7 +1441,7 @@ STATIC_OVL void
 accessory_has_effect(otmp)
 struct obj *otmp;
 {
-	pline("Magic spreads through your body as you digest the %s.", /* EN pline("Magic spreads through your body as you digest the %s.", */ // TODO DE
+	pline("Magie durchströmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_BODY als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER %s VERB_VERDAUEN.", /* EN pline("Magic spreads through your body as you digest the %s.", */
 	    otmp->oclass == RING_CLASS ? "NOUN_RING" : "NOUN_AMULET"); /* EN otmp->oclass == RING_CLASS ? "ring" : "amulet"); */
 }
 
@@ -1485,8 +1485,8 @@ struct obj *otmp;
 		    if (!oldprop && !EInvis && !BInvis &&
 					!See_invisible && !Blind) {
 			newsym(u.ux,u.uy);
-			Your("body takes on a %s transparency...", /* EN Your("body takes on a %s transparency...", */ // TODO DE
-				Hallucination ? "normal" : "strange"); /* EN Hallucination ? "normal" : "strange"); */ // TODO DE
+			Your("NOUN_BODY VERB_NEHMEN eine %s Transparenz an ...", /* EN Your("body takes on a %s transparency...", */
+				Hallucination ? "normale" : "seltsame"); /* EN Hallucination ? "normal" : "strange"); */
 			makeknown(typ);
 		    }
 		    break;
@@ -1850,7 +1850,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	boolean dont_start = FALSE;
 	
 	if (Strangled) {
-		pline("If you can't breathe air, how can you consume solids?"); /* EN pline("If you can't breathe air, how can you consume solids?"); */ // TODO DE
+		pline("Wenn SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht atmen VERB_KOENNEN, wie VERB_WOLLEN PRONOMEN_PERSONAL dann feste Nahrung OBJECT KASUS_DATIV zu PRONOMEN_PERSONAL nehmen?"); /* EN pline("If you can't breathe air, how can you consume solids?"); */
 		return 0;
 	}
 	if (!(otmp = floorfood("VERB_ESSEN", 0))) return 0; /* EN if (!(otmp = floorfood("eat", 0))) return 0; */
@@ -1953,7 +1953,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 		} else
 		    You("seem unaffected by the poison."); /* EN You("seem unaffected by the poison."); */ // TODO DE
 	    } else if (!otmp->cursed)
-		pline("This %s is delicious!", /* EN pline("This %s is delicious!", */ // TODO DE
+		pline("SUBJECT PRONOMEN_DIESER %s VERB_SCHMECKEN köstlich!", /* EN pline("This %s is delicious!", */
 		      otmp->oclass == COIN_CLASS ? foodword(otmp) :
 		      singular(otmp, xname));
 
@@ -2404,7 +2404,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 		/* If not already stuck in the trap, perhaps there should
 		   be a chance to becoming trapped?  Probably not, because
 		   then the trap would just get eaten on the _next_ turn... */
-		Sprintf(qbuf, "There is a bear trap here (%s); eat it?", /* EN Sprintf(qbuf, "There is a bear trap here (%s); eat it?", */ // TODO DE
+		Sprintf(qbuf, "Hier befindet sich eine Bärenfalle (%s); sie essen?", /* EN Sprintf(qbuf, "There is a bear trap here (%s); eat it?", */
 			(u.utrap && u.utraptype == TT_BEARTRAP) ?
 				"holding you" : "armed"); /* EN "holding you" : "armed"); */ // TODO DE
 		if ((c = yn_function(qbuf, ynqchars, 'n')) == 'y') {

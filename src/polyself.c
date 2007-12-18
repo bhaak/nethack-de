@@ -496,13 +496,13 @@ int	mntmp;
 	    if (can_breathe(youmonst.data))
 		pline(use_thec,monsterc,"use your breath weapon"); /* EN pline(use_thec,monsterc,"use your breath weapon"); */ // TODO DE
 	    if (attacktype(youmonst.data, AT_SPIT))
-		pline(use_thec,monsterc,"spit venom"); /* EN pline(use_thec,monsterc,"spit venom"); */ // TODO DE
+		pline(use_thec,monsterc,"Gift zu speien"); /* EN pline(use_thec,monsterc,"spit venom"); */
 	    if (youmonst.data->mlet == S_NYMPH)
 		pline(use_thec,monsterc,"eine Eisenkugel zu entfernen"); /* EN pline(use_thec,monsterc,"remove an iron ball"); */
 	    if (attacktype(youmonst.data, AT_GAZE))
 		pline(use_thec,monsterc,"Monstern anzustarren"); /* EN pline(use_thec,monsterc,"gaze at monsters"); */
 	    if (is_hider(youmonst.data))
-		pline(use_thec,monsterc,"hide"); /* EN pline(use_thec,monsterc,"hide"); */ // TODO DE
+		pline(use_thec,monsterc,"OBJECT PRONOMEN_PERSONAL zu verstecken"); /* EN pline(use_thec,monsterc,"hide"); */
 	    if (is_were(youmonst.data))
 		pline(use_thec,monsterc,"summon help"); /* EN pline(use_thec,monsterc,"summon help"); */ // TODO DE
 	    if (webmaker(youmonst.data))
@@ -510,7 +510,7 @@ int	mntmp;
 	    if (u.umonnum == PM_GREMLIN)
 		pline(use_thec,monsterc,"sich im Springbrunnen zu vermehren"); /* EN pline(use_thec,monsterc,"multiply in a fountain"); */
 	    if (is_unicorn(youmonst.data))
-		pline(use_thec,monsterc,"use your horn"); /* EN pline(use_thec,monsterc,"use your horn"); */ // TODO DE
+		pline(use_thec,monsterc,"OBJECT PRONOMEN_POSSESSIV NOUN_HORN zu benutzen"); /* EN pline(use_thec,monsterc,"use your horn"); */
 	    if (is_mind_flayer(youmonst.data))
 		pline(use_thec,monsterc,"emit a mental blast"); /* EN pline(use_thec,monsterc,"emit a mental blast"); */ // TODO DE
 	    if (youmonst.data->msound == MS_SHRIEK) /* worthless, actually */
@@ -684,8 +684,8 @@ int alone;
 	if (!alone || cantwield(youmonst.data)) {
 	    struct obj *wep = uwep;
 
-	    if (alone) You("VERB_MERKEN, NEUER_SATZ PRONOMEN_PERSONAL VERB_MUESSEN OBJECT PRONOMEN_POSSESSIV NOUN_WEAPON%s fallenlassen!", /* EN if (alone) You("find you must drop your weapon%s!", */
-			   	u.twoweap ? "s" : ""); /* EN u.twoweap ? "s" : ""); */
+	    if (alone) You("VERB_MERKEN, NEUER_SATZ dass PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_WEAPON%s fallenlassen VERB_MUESSEN!", /* EN if (alone) You("find you must drop your weapon%s!", */
+			   	u.twoweap ? "s" : "");
 	    otmp2 = u.twoweap ? uswapwep : 0;
 	    uwepgone();
 	    if (!wep->cursed || wep->otyp != LOADSTONE)
@@ -1149,7 +1149,7 @@ int part;
 		"light headed", "neck", "spine", "toe", /* EN "light headed", "neck", "spine", "toe", */ // TODO DE
 		"feathers", "blood", "lung", "bill", "stomach" }, /* EN "feathers", "blood", "lung", "bill", "stomach" }, */ // TODO DE
 	*horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", /* EN *horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", */ // TODO DE
-		"rear hoof", "foreclaw", "hooved", "NOUN_HEAD", "rear leg", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */ // TODO DE
+		"rear hoof", "foreclaw", "hooved", "NOUN_HEAD", "NOUN_REAR_LEG", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */ // TODO DE
 		"light headed", "neck", "backbone", "rear hoof tip", /* EN "light headed", "neck", "backbone", "rear hoof tip", */ // TODO DE
 		"mane", "blood", "lung", "nose", "stomach"}, /* EN "mane", "blood", "lung", "nose", "stomach"}, */ // TODO DE
 	*sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", /* EN *sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", */ // TODO DE

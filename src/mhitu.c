@@ -775,7 +775,7 @@ struct attack *mattk;
 		  Monnam(mtmp),
 		  (mattk->adtyp == AD_WRAP) ?
 			"slips off of" : "grabs you, but cannot hold onto", /* EN "slips off of" : "grabs you, but cannot hold onto", */ // TODO DE
-		  obj->greased ? "greased" : "slippery", /* EN obj->greased ? "greased" : "slippery", */ // TODO DE
+		  obj->greased ? "ADJEKTIV_GREASED" : "ADJEKTIV_SLIPPERY", /* EN obj->greased ? "greased" : "slippery", */
 		  /* avoid "slippery slippery cloak"
 		     for undiscovered oilskin cloak */
 		  (obj->greased || objects[obj->otyp].oc_name_known) ?
@@ -870,7 +870,7 @@ hitmu(mtmp, mattk)
 		    if (Blind && !obj->dknown)
 			what = something;
 		    else if (is_pool(mtmp->mx, mtmp->my) && !Underwater)
-			what = "dem Wasser"; /* EN what = "the water"; */
+			what = "Wasser"; /* EN what = "the water"; */
 		    else
 			what = doname(obj);
 
