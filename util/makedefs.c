@@ -511,7 +511,16 @@ static char *
 version_string(outbuf)
 char *outbuf;
 {
-    Sprintf(outbuf, "%d.%d.%d", VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
+    long clocktim = 0;
+#ifdef KR1ED
+	(void) time(&clocktim);
+#else
+	(void) time((time_t *)&clocktim);
+#endif
+    struct tm *tm = localtime((time_t *) &clocktim);
+    /* Sprintf(outbuf, "%d.%d.%d", VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL); */
+    Sprintf(outbuf, "%d.%d.%d-%4d%02d%02d%s", VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL,
+      tm->tm_year+1900, tm->tm_mon+1, tm->tm_mday, "a");
 #ifdef BETA
     Sprintf(eos(outbuf), "-%d", EDITLEVEL);
 #endif
@@ -534,7 +543,7 @@ const char *build_date;
     Strcat(subbuf, " Beta");
 #endif
 
-    Sprintf(outbuf, "%s NetHack%s Version %s - last build %s.",
+    Sprintf(outbuf, "%s NetHack-De%s Version %s - last build %s.",
 	    PORT_ID, subbuf, version_string(versbuf), build_date);
     return outbuf;
 }
