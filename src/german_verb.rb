@@ -32,7 +32,7 @@ class Verb
 
     if praeteritum_stamm[-2..-1] == 'te' then
       @praeteritum_stamm = praeteritum_stamm[0..-3]
-    elsif praeteritum_stamm[-1..-1] == 'e' then
+    elsif praeteritum_stamm[-1..-1] == 'e' && praeteritum_stamm[-2..-1] != 'ie' then
       @praeteritum_stamm = praeteritum_stamm[0..-2]
     elsif praeteritum_stamm == "" then
 			@praeteritum_stamm = stamm
@@ -156,7 +156,7 @@ class Verb
 			else
       	return @praesens_stamm + "e" + endung(@konjunktiv_endung)
 			end
-    elsif @tempus==:praeteritum 
+    elsif @tempus==:praeteritum then
       return @praeteritum_stamm + e_erweiterung + "te" + endung(@praeteritum_endung)
     end
   end
@@ -258,6 +258,9 @@ class VerbUnregelmaessig < Verb
     elsif praeteritum? && indikativ? then
       if plural? && zweitePerson? then
         return @praeteritum_stamm + e_erweiterung + endung(@praeteritum_endung)
+      elsif (plural? && (erstePerson? || drittePerson?)) &&  # Paragraph 19 der Rechtschreibreform
+						(@praeteritum_stamm[-2..-1] == "ie" || @praeteritum_stamm[-2..-1] == "ee") then
+				return @praeteritum_stamm[0..-2] + endung(@praeteritum_endung)
       elsif s_verschmelzung?(@praeteritum_stamm) then
         return @praeteritum_stamm + 'est'
         # return @praeteritum_stamm + 't' # auch möglich
@@ -335,6 +338,9 @@ class VerbModal < Verb
       case infinitiv
       when "können": return ["kann", "kannst", "kann"][personNummer]
       when "wollen": return ["will", "willst", "will"][personNummer]
+      when "wissen": return ["weiß", "weißt", "weiß"][personNummer]
+      when "mögen": return ["mag", "magst", "mag"][personNummer]
+      when "müssen": return ["muss", "musst", "muss"][personNummer]
       else
         return super
       end
@@ -420,7 +426,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)brennen$/:  v = VerbSchwachUnregelmaessig.new($1+"brennen", $1+"brannte", ge($1)+"brannt")
     # e/i-Wechsel
   when "nehmen":  v = Verb_EI_Wechsel.new("nehmen", "nahm", "genommen", "nimm")
-  when "treten":  v = Verb_EI_Wechsel.new("treten", "trat", "getreten", "tritt")
+  when /(.*)treten/:  v = Verb_EI_Wechsel.new($1+"treten", $1+"trat", ge($1)+"treten", $1+"tritt")
   when "treffen": v = Verb_EI_Wechsel.new("treffen", "traf", "getroffen", "triff")
   when "sehen":   v = Verb_EI_Wechsel.new("sehen", "sah", "gesehen", "sieh")
   when /(.*)brechen$/: v = Verb_EI_Wechsel.new($1+"brechen", $1+"brach", ge($1)+"brochen", $1+"brich")
@@ -428,6 +434,9 @@ def Verb.verb(kennung, infinitiv, praeverb="")
     # Modalverben
   when "können": v = VerbModal.new("können", "konnte", "gekonnt")
   when "wollen": v = VerbModal.new("wollen", "wollte", "gewollt")
+  when "wissen": v = VerbModal.new("wissen", "wusste", "gewusst")
+  when "mögen": v = VerbModal.new("mögen", "mochte", "gemocht")
+  when "müssen": v = VerbModal.new("müssen", "musste", "gemusst")
     #  e a e
   when /(.*)geben$/: v = Verb_Konjunktiv_II.new($1+"geben", $1+"gab", ge($1)+"geben", $1+"gib", $1+"gäb")
   when /(.*)lesen$/: v = Verb_EI_Wechsel.new($1+"lesen", $1+"las", ge($1)+"lesen", $1+"lies")
@@ -438,6 +447,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)trinken/: v = VerbUnregelmaessig.new($1+"trinken", $1+"trank", ge($1)+"trunken")
   when /(.*)schwinden$/: v = VerbUnregelmaessig.new($1+"schwinden", $1+"schwand", ge($1)+"schwunden")
 		#  e a o
+  when "helfen": v = Verb_Konjunktiv_II.new("helfen", "half", "geholfen", "hilf", "hülf")
   when "werfen": v = Verb_Konjunktiv_II.new("werfen", "warf", "geworfen", "wirf", "würf")
   when "sterben": v = Verb_Konjunktiv_II.new("sterben", "starb", "gestobren", "stirb", "stürb")
   when /(.*)sterben$/: v = Verb_Konjunktiv_II.new($1+"sterben", $1+"starb", ge($1)+"storben", $1+"stirb", $1+"stürb")
@@ -454,6 +464,8 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)reißen$/:  v = VerbUnregelmaessig.new($1+"reißen", $1+"riss", ge($1)+"rissen")
   when /(.*)weichen$/:  v = VerbUnregelmaessig.new($1+"weichen", $1+"wich", ge($1)+"wichen")
   when /(.*)greifen$/:  v = VerbUnregelmaessig.new($1+"greifen", $1+"griff", ge($1)+"griffen")
+    #  ei ie ie
+  when /(.*)schreien$/:  v = VerbUnregelmaessig.new($1+"schreien", $1+"schrie", ge($1)+"schrien")
     #  a i i
   when "fangen": v = VerbUnregelmaessig.new("fangen", "fing", "gefangen")
     #  a u a
@@ -471,11 +483,14 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)fallen$/: v = VerbUnregelmaessig.new($1+"fallen", $1+"fiel", ge($1)+"fallen")
   when /(.*)schlafen$/: v = VerbUnregelmaessig.new($1+"schlafen", $1+"schlief", ge($1)+"schlafen")
 		# ie o o
+  when /(.*)fliehen$/: v = VerbUnregelmaessig.new($1+"fliehen", $1+"floh", ge($1)+"flohen")
   when "fliegen": v = VerbUnregelmaessig.new("fliegen", "flog", "geflogen")
-  when "wiegen": v = VerbUnregelmaessig.new("wiegen", "wog", "gewogen")
   when /(.*)schießen$/: v = VerbUnregelmaessig.new($1+"schießen", $1+"schoss", ge($1)+"schossen")
   when /(.*)schließen$/: v = VerbUnregelmaessig.new($1+"schließen", $1+"schloss", ge($1)+"schlossen")
-  when /(.*)fliehen$/: v = VerbUnregelmaessig.new($1+"fliehen", $1+"floh", ge($1)+"flohen")
+  when "wiegen": v = VerbUnregelmaessig.new("wiegen", "wog", "gewogen")
+  when /(.*)ziehen$/: v = VerbUnregelmaessig.new($1+"ziehen", $1+"zog", ge($1)+"zogen")
+		# regelmässig
+  when "verletzen": v = Verb.new("verletzen", "verletzte", "verletzt")
   else
     # regelmaessige Verben
     v = Verb.new(infinitiv)
