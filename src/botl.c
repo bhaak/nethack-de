@@ -4,16 +4,27 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVL0
 extern const char *hu_stat[];	/* defined in eat.c */
 
 const char * const enc_stat[] = {
 	"",
-	"Burdened", /* EN "Burdened", */ // TODO DE
-	"Stressed", /* EN "Stressed", */ // TODO DE
-	"Strained", /* EN "Strained", */ // TODO DE
-	"Overtaxed", /* EN "Overtaxed", */ // TODO DE
-	"Overloaded" /* EN "Overloaded" */ // TODO DE
+//"Burdened", /* EN "Burdened", */ // TODO DE
+	"Belastet", /* EN "Burdened", */ // TODO DE
+//"Stressed", /* EN "Stressed", */ // TODO DE
+	"Angestrengt", /* EN "Stressed", */ // TODO DE
+//"Gestresst", /* EN "Stressed", */ // TODO DE
+//"Strained", /* EN "Strained", */ // TODO DE
+	"Strapaziert", /* EN "Strained", */ // TODO DE
+//"Overtaxed", /* EN "Overtaxed", */ // TODO DE
+//"Überfordert", /* EN "Overtaxed", */ // TODO DE
+	"Überlastet", /* EN "Overtaxed", */ // TODO DE
+//"Overloaded" /* EN "Overloaded" */ // TODO DE
+	"Überladen" /* EN "Overloaded" */ // TODO DE
 };
 
 STATIC_DCL void NDECL(bot1);
@@ -181,13 +192,14 @@ bot1()
 	Strcpy(newbot1, plname);
 	if('a' <= newbot1[0] && newbot1[0] <= 'z') newbot1[0] += 'A'-'a';
 	newbot1[10] = 0;
-	Sprintf(nb = eos(newbot1)," the "); /* EN Sprintf(nb = eos(newbot1)," the "); */ // TODO DE
+	Sprintf(nb = eos(newbot1)," ARTIKEL_BESTIMMTER "); /* EN Sprintf(nb = eos(newbot1)," the "); */
 
 	if (Upolyd) {
 		char mbot[BUFSZ];
 		int k = 0;
 
 		Strcpy(mbot, mons[u.umonnum].mname);
+#ifndef GERMAN
 		while(mbot[k] != 0) {
 		    if ((k == 0 || (k > 0 && mbot[k-1] == ' ')) &&
 					'a' <= mbot[k] && mbot[k] <= 'z')
@@ -195,8 +207,17 @@ bot1()
 		    k++;
 		}
 		Sprintf(nb = eos(nb), mbot);
+#else
+		Sprintf(nb = eos(nb), mbot);
+		Strcpy(newbot1, german(newbot1));
+		nb = eos(newbot1);
+#endif
 	} else
 		Sprintf(nb = eos(nb), rank());
+#ifdef GERMAN
+		Strcpy(newbot1, german(newbot1));
+		nb = eos(newbot1);
+#endif
 
 	Sprintf(nb = eos(nb),"  ");
 	i = mrank_sz + 15;
@@ -213,10 +234,10 @@ bot1()
 	} else
 		Sprintf(nb = eos(nb), "St:%-1d ",ACURR(A_STR));
 	Sprintf(nb = eos(nb),
-		"Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d", // TODO DE
+		"Dx:%-1d Ko:%-1d In:%-1d Wi:%-1d Ch:%-1d", // TODO DE
 		ACURR(A_DEX), ACURR(A_CON), ACURR(A_INT), ACURR(A_WIS), ACURR(A_CHA));
-	Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotic" : /* EN Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotic" : */ // TODO DE
-			(u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Lawful"); /* EN (u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Lawful"); */ // TODO DE
+	Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotisch" : /* EN Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotic" : */
+			(u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Rechtschaffen"); /* EN (u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Lawful"); */
 #ifdef SCORE_ON_BOTL
 	if (flags.showscore)
 	    Sprintf(nb = eos(nb), " S:%ld", botl_score());
