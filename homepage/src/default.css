@@ -1,7 +1,6 @@
 html, body {
 	background: black;
 	font: 100% Verdana,Tahoma,Arial,sans-serif;
-	height: 100%;
 }
 
 a:link    { color: #5a5dff; } /* trankblau */
@@ -119,4 +118,11 @@ img {
 ::selection { background-color: #00cb00; color: #ffffff; }
 /* for Gecko-browsers, ::-moz-selection, ::selection doesn't work for them*/
 ::-moz-selection { background-color: #00cb00; color: #ffffff; }
+
+#logo img {
+  border: 1px red solid;
+}
+#logo {
+  text-align: right;
+}
 

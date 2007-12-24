@@ -1,0 +1,10 @@
+Alpha-Release NetHack-De 3.4.2-20071224a
+ - ca. 40% des generierten Textes übersetzt
+ - Abstürze des Wunschcodes gefixt
+ - benannte Monster haben korrektes Geschlecht
+ - Statuszeile übersetzt (Spieler der Priester / der Steingolem)
+ - Linux-Binary: braucht keine libcheck-Bibliothek mehr
+
+Alpha-Release NetHack-De 3.4.2-20071011a
+ - ca. 30% des generierten Textes übersetzt
+ - erste Veröffentlichung des Codes

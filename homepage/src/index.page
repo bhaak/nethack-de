@@ -8,9 +8,18 @@ Auf der "Statusseite":status.html wird der aktuelle Stand der Übersetzung angez
 
 h3. News
 
+h4(#news-2007-12-24). 24. Dez 2007 
+* Alpha-Release NetHack-De 3.4.2-20071224a
+* ca. 40% des generierten Textes übersetzt
+* Abstürze des Wunschcodes gefixt
+* benannte Monster haben korrektes Geschlecht
+* Statuszeile übersetzt (Spieler der Priester / der Steingolem)
+* Linux-Binary: braucht keine libcheck-Bibliothek mehr
+
 h4(#news-2007-10-11). 11. Okt 2007 
 * Alpha-Release NetHack-De 3.4.2-20071011a
 * ca. 30% des generierten Textes übersetzt
+* erste Veröffentlichung des Codes
 
 h4(#news-2007-17-04). 4. Apr 2007
 * Sourceforge-Projekt nethack-de angelegt

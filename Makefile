@@ -15,6 +15,7 @@
 
 # make NetHack
 PREFIX	 = /opt/nethack
+#PREFIX	 = /home/surf/nethack/translation/nethack-de/binary
 GAME     = nethack-de
 # GAME     = nethack.prg
 GAMEUID  = games
@@ -264,3 +265,21 @@ spotless:
 	( cd util ; $(MAKE) spotless )
 	( cd dat ; $(MAKE) spotless )
 	( cd doc ; $(MAKE) spotless )
+
+RELEASEVERSION = `grep VERSION_STRING include/date.h | cut -f 2 -d \"`
+BINDIR = binary/games/lib/nethack-dedir
+RELEASEDIR = release-$(RELEASEVERSION)
+#release: install
+release:
+	rm -rf $(RELEASEDIR)
+	mkdir $(RELEASEDIR)
+	rm -f $(BINDIR)/News
+	cp news $(BINDIR)
+	mv $(BINDIR) binary/games/lib/nethack-de-$(RELEASEVERSION)
+	tar cvfz $(RELEASEDIR)/nethack-de-linux-x86-$(RELEASEVERSION).tar.gz -C binary/games/lib .
+	mv binary/games/lib/nethack-de-$(RELEASEVERSION) $(BINDIR)
+	mkdir -p $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
+	cpio -p < files $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
+	tar cfz $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION).tar.gz -C $(RELEASEDIR) nethack-de-src-$(RELEASEVERSION)
+	rm -rf $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
+
