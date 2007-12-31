@@ -2506,11 +2506,12 @@ mercury
 #	eventually killing its victim.
 gedankendieb
 gedankenschinder
-	Dieses Geschöpf besitzt eine humanoiden Körper, einen tentakelbewehrten
-	Mund und drei lange Finger an jeder Hand. Gedankendiebe sind
-	telepathisch und lieben es intelligente Wesen zu verschlingen,
-	insbesondere Menschen. Berühren sie ihr Opfer mit einem Tentakel,
-	saugen sie ihm langsam die Intelligenz aus bis der Tod eintritt.
+	Dieses Geschöpf besitzt einen humanoiden Körper, einen
+	tentakelbewehrten Mund und drei lange Finger an jeder Hand.
+	Gedankendiebe sind telepathisch und lieben es intelligente
+	Wesen zu verschlingen, insbesondere Menschen. Berühren sie
+	ihr Opfer mit einem Tentakel, saugen sie ihm langsam die
+	Intelligenz aus bis der Tod eintritt.
 mine*
 	Made by Dwarfs.  The Rule here is that the Mine is either long
 	deserted or at most is inhabited by a few survivors who will
@@ -3058,16 +3059,28 @@ piranha
 		[ http://www.animalsoftherainforest.com ]
 pit
 spiked pit
-	Amid the thought of the fiery destruction that impended, the
-	idea of the coolness of the well came over my soul like balm.
-	I rushed to its deadly brink.  I threw my straining vision
-	below.  The glare from the enkindled roof illumined its inmost
-	recesses.  Yet, for a wild moment, did my spirit refuse to
-	comprehend the meaning of what I saw.  At length it forced --
-	it wrestled its way into my soul -- it burned itself in upon my
-	shuddering reason.  Oh! for a voice to speak! -- oh! horror! --
-	oh! any horror but this!
-		[ The Pit and the Pendulum, by Edgar Allan Poe ]
+#	Amid the thought of the fiery destruction that impended, the
+#	idea of the coolness of the well came over my soul like balm.
+#	I rushed to its deadly brink.  I threw my straining vision
+#	below.  The glare from the enkindled roof illumined its inmost
+#	recesses.  Yet, for a wild moment, did my spirit refuse to
+#	comprehend the meaning of what I saw.  At length it forced --
+#	it wrestled its way into my soul -- it burned itself in upon my
+#	shuddering reason.  Oh! for a voice to speak! -- oh! horror! --
+#	oh! any horror but this!
+#		[ The Pit and the Pendulum, by Edgar Allan Poe ]
+	Gegenüber der Vernichtung durch das Feuer, die meiner wartete,
+	erschien mir der Gedanke an die Kühle des Brunnens wie lindernder
+	Balsam. Ich eilte an seinen gefahrvollen Rand; ich spähte gespannt
+	hinunter. Der Glutschein von der glühenden Decke erleuchtete seine
+	verborgensten Winkel. Dennoch - eine verzweifelte Minute lang -
+	sträubte sich mein Geist, den Sinn zu erfassen, was ich da unten
+	sah. Doch endlich zwang - wand es sich in meine Seele -, brannte es
+	sich ein in meinen schaudernden Verstand. O entsetzliches Begreifen!
+	O wortloser Ekel! - O Grauen über alles Maß! - »Alle andern
+	Schrecken, nur nicht diese!«
+		[ Grube und Pendel von Edgar Allan Poe ]
+
 pit fiend
 	Pit fiends are among the more powerful of devils, capable of
 	attacking twice with weapons as well as grabbing and crushing
@@ -3269,14 +3282,28 @@ rat
 	dying people.  They show astonishing intelligence in knowing
 	when a human being is helpless."
 		[ 1984, by George Orwell ]
-raven
-	But the raven, sitting lonely on the placid bust, spoke only
-	That one word, as if his soul in that one word he did outpour.
-	Nothing further then he uttered -- not a feather then he fluttered--
-	Till I scarcely more than muttered, 'other friends have flown before--
-	On the morrow *he* will leave me, as my hopes have flown before.'
-		Then the bird said, 'Nevermore.'
-				[ The Raven - Edgar Allan Poe ]
+#raven
+#	But the raven, sitting lonely on the placid bust, spoke only
+#	That one word, as if his soul in that one word he did outpour.
+#	Nothing further then he uttered -- not a feather then he fluttered--
+#	Till I scarcely more than muttered, 'other friends have flown before--
+#	On the morrow *he* will leave me, as my hopes have flown before.'
+#		Then the bird said, 'Nevermore.'
+#				[ The Raven - Edgar Allan Poe ]
+NOUN_RAVEN
+	Dieses Wort nur sprach der Rabe dumpf und hohl, wie aus dem Grabe,
+	Als ob seine ganze Seele in dem einen Worte wär'.
+	Weiter Nichts ward dann gesprochen, nur mein Herz noch hört' ich pochen,
+	Bis das Schweigen ich gebrochen: »Andre Freunde floh'n seither -
+	Morgen wird auch *er* mich fliehen, wie die Hoffnung floh seither.«
+		Sprach der Rabe: »Nimmermehr!«
+				[ Der Rabe - Edgar Allan Poe ]
+NOUN_RHIZOTOMIST*
+rhizotom*
+	Krateaus (um 100 v.Chr.), genannt "Rhizotomos" ("Wurzelschneider"),
+	war Leibarzt von Mithridates VI, König von Pontus. Von ihm stammen
+	die frühesten bekannten botanischen Illustrationen, von denen
+	einige im "Wiener Dioscurides" überliefert sind.
 *ring
 ring of *
 	Three Rings for the Elven-kings under the sky,
