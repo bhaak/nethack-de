@@ -272,7 +272,8 @@ RELEASEDIR = release-$(RELEASEVERSION)
 #release: install
 release:
 	rm -rf $(RELEASEDIR)
-	mkdir $(RELEASEDIR)
+	mkdir -p $(BINDIR)
+	mkdir -p $(RELEASEDIR)
 	rm -f $(BINDIR)/News
 	cp news $(BINDIR)
 	mv $(BINDIR) binary/games/lib/nethack-de-$(RELEASEVERSION)

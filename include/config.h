@@ -183,7 +183,7 @@
  *	a tar-like file, thus making a neater installation.  See *conf.h
  *	for detailed configuration.
  */
-/* #define DLB */	/* not supported on all platforms */
+#define DLB /* not supported on all platforms */
 
 /*
  *	Defining INSURANCE slows down level changes, but allows games that
@@ -196,6 +196,7 @@
 # define CHDIR		/* delete if no chdir() available */
 #endif
 
+#define HACKDIR "."
 #ifdef CHDIR
 /*
  * If you define HACKDIR, then this will be the default playground;
