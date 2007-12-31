@@ -282,7 +282,7 @@ WINLIB = $(WINTTYLIB)
 # IRIX 4.0.x needs -lsun if NIS (YP) is being used for passwd file lookup
 # LIBS = -lsun
 #
-LIBS = -lcheck
+LIBS = # -lcheck
 
 # make NetHack
 GAME     = nethack
@@ -383,8 +383,9 @@ HOBJ = monst.o objects.o allmain.o alloc.o apply.o artifact.o attrib.o ball.o \
 	role.o rumors.o save.o shk.o shknam.o sit.o sounds.o sp_lev.o spell.o \
 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
-	wizard.o worm.o worn.o write.o zap.o german.o german_wishing_test.o german_vocabulary.o \
+	wizard.o worm.o worn.o write.o zap.o german.o german_vocabulary.o \
 	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o
+	# german_wishing_test.o \
 # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
 
 $(GAME):	$(FIRSTOBJ) $(SYSTEM)

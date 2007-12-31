@@ -285,9 +285,11 @@ not_recovered:
 		(void) pickup(1);
 	}
 
+#ifdef WISH_DEBUG
 	if (run_testsuite) {
 		exit(testsuite());
 	}
+#endif
 
 	moveloop();
 	exit(EXIT_SUCCESS);
