@@ -2,24 +2,26 @@
 require 'test/unit' 
 require 'german_verb' 
 
+# from 'watir/testUnitAddons'
+module Test::Unit::Assertions
+	def assert_false(boolean, message=nil)
+		_wrap_assertion do
+			assert_block("assert should not be called with a block.") { !block_given? }
+			assert_block(build_message(message, "<?> is not false.", boolean)) { !boolean }
+		end
+	end
+end # module test
 
 class TestVerb < Test::Unit::TestCase
   @output_levels = Test::Unit::UI::VERBOSE
 
   def testPrintVerb
-    verb = VerbUnregelmaessig.new("heiß", "hieß", "heiß")
-    verb = VerbUnregelmaessig.new("frier", "fror", "fror")
-    verb = VerbUnregelmaessig.new("lauf","lief","lauf")
-    verb = Verb.verb("","tuen")
-    verb = VerbUnregelmaessig.new("tuen","tat","getan")
-    verb = Verb.verb("","wissen")
-    verb = Verb.verb("","schreien")
-    verb = Verb.verb("","mögen")
+    verb = Verb.verb("","atmen")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
     puts "E-Erweiterung: " + verb.e_erweiterung.to_s
-    #puts "Umlaut: " + verb.umlaut.to_s
+    puts "Umlaut: " + verb.umlaut.to_s
     puts
     puts "Imperativ"
     puts "Singular:  "+ verb.singular.imperativ
@@ -546,6 +548,67 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritum(verb, ["musste", "musstest", "musste", "mussten", "musstet", "mussten"])
     checkVerbPraeteritumKonjunktiv(verb, ["müsste", "müsstest", "müsste", "müssten", "müsstet", "müssten"])
   end
+
+  def testEnthalten
+    verb = Verb.verb("", "enthalten")
+
+    assert_equal("enthalten", verb.infinitiv)
+    assert_equal("enthalte", verb.singular.imperativ)
+    assert_equal("enthaltet", verb.plural.imperativ)
+    assert_equal("enthaltend", verb.partizip_praesens)
+    assert_equal("enthalten", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["enthalte", "enthältst", "enthält", "enthalten", "enthaltet", "enthalten"])
+    checkVerbPraesensKonjunktiv(verb, ["enthalte", "enthaltest", "enthalte", "enthalten", "enthaltet", "enthalten"])
+    checkVerbPraeteritum(verb, ["enthielt", "enthieltst", "enthielt", "enthielten", "enthieltet", "enthielten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["enthielte", "enthieltest", "enthielte", "enthielten", "enthieltet", "enthielten"])
+  end
+
+  def testPartizipPerfektOhneGe
+    assert_equal("versaut", Verb.verb("", "versauen").partizip_perfekt)
+    assert_equal("verätzt", Verb.verb("", "verätzen").partizip_perfekt)
+    assert_equal("enthauptet", Verb.verb("", "enthaupten").partizip_perfekt)
+    assert_equal("ersetzt", Verb.verb("", "ersetzen").partizip_perfekt)
+    assert_equal("verletzt", Verb.verb("", "verletzen").partizip_perfekt)
+    assert_equal("verarbeitet", Verb.verb("", "verarbeiten").partizip_perfekt)
+    assert_equal("bekommen", Verb.verb("", "bekommen").partizip_perfekt)
+    assert_equal("entgangen", Verb.verb("", "entgehen").partizip_perfekt)
+    assert_equal("enthalten", Verb.verb("", "enthalten").partizip_perfekt)
+    assert_equal("verschlungen", Verb.verb("", "verschlingen").partizip_perfekt)
+    assert_equal("gewonnen", Verb.verb("", "gewinnen").partizip_perfekt)
+	end
+
+  def testPartizipPerfekt
+    assert_equal("geschossen", Verb.verb("", "schießen").partizip_perfekt)
+    assert_equal("begonnen", Verb.verb("", "beginnen").partizip_perfekt)
+    assert_equal("geblieben", Verb.verb("", "bleiben").partizip_perfekt)
+    assert_equal("gesessen", Verb.verb("", "sitzen").partizip_perfekt)
+    assert_equal("gemieden", Verb.verb("", "meiden").partizip_perfekt)
+    assert_equal("gestiegen", Verb.verb("", "steigen").partizip_perfekt)
+	end
+
+  def testAtmen
+    verb = Verb.verb("", "atmen")
+
+    assert_equal("atmen", verb.infinitiv)
+    assert_equal("atme", verb.singular.imperativ)
+    assert_equal("atmet", verb.plural.imperativ)
+    assert_equal("atmend", verb.partizip_praesens)
+    assert_equal("geatmet", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["atme", "atmest", "atmet", "atmen", "atmet", "atmen"])
+    checkVerbPraesensKonjunktiv(verb, ["atme", "atmest", "atme", "atmen", "atmet", "atmen"])
+    checkVerbPraeteritum(verb, ["atmete", "atmetest", "atmete", "atmeten", "atmetet", "atmeten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["atmete", "atmetest", "atmete", "atmeten", "atmetet", "atmeten"])
+  end
+
+	def testEErweiterung
+    assert_false(Verb.verb("", "sein").e_erweiterung)
+    assert_false(Verb.verb("", "haben").e_erweiterung)
+    assert(Verb.verb("", "öffnen").e_erweiterung)
+    assert(Verb.verb("", "wappnen").e_erweiterung)
+    assert(Verb.verb("", "atmen").e_erweiterung)
+	end
 
   def checkVerbPraeteritum(verb, formen)
     verb.praeteritum.indikativ

@@ -15,6 +15,7 @@
 class Verb
   attr_reader :infinitiv, :e_erweiterung, :partizip_perfekt
   attr_accessor :kennung, :praeverb
+  attr_accessor :umlaut # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Listen/Umlaut-Irreg-Pres.html
   
   def initialize(stamm, praeteritum_stamm="", partizip_perfekt="")
     if stamm[-2..-1] == "en" then
@@ -46,6 +47,8 @@ class Verb
       @partizip_perfekt = partizip_perfekt
     elsif @infinitiv =~ /...ieren$/ then
       @partizip_perfekt = stamm + 't'
+    elsif stamm =~  /^(be|er|ent|ge|ver|zer)(....*)/ then
+      @partizip_perfekt = $1 + $2 + (@e_erweiterung ? "e" : "") + 't'
     else
       @partizip_perfekt = "ge" + stamm + (@e_erweiterung ? "e" : "") + "t"
     end
@@ -63,6 +66,7 @@ class Verb
     @person  = 1          # 0, 1, 2
     @numerus = 0          # 0, 1
 
+    @umlaut = false
 
     return self
   end
@@ -73,7 +77,7 @@ class Verb
 		  return true
     # verschlusslaut oder reibelaut + m oder n
 		elsif stamm[-1..-1]=='m' or stamm[-1..-1]=='n' then
-		  if stamm[-2..-2]=='f' then # TODO
+		  if ['tm','fn','pn'].include?(stamm[-2..-1]) then # TODO
 			  e_erweiterung = true
 			end
     else
@@ -225,12 +229,11 @@ class Verb
 end
 
 class VerbUnregelmaessig < Verb
-  attr_accessor :umlaut # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Listen/Umlaut-Irreg-Pres.html
+
   def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
     super(stamm, praeteritum_stamm, perfekt_stamm)
   	@praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
 
-    @umlaut = false
     case @praesens_stamm
     when /back$/, /blas$/, /brat$/, /fahr$/, /fall$/, /fang$/, /grab$/,
       /halt$/, /lad$/, /lass$/, /lauf$/, /rat$/, /sauf$/, /schlaf$/,
@@ -251,7 +254,12 @@ class VerbUnregelmaessig < Verb
       end
 
       if umlaut then
-        return Verb.umlaute(@praesens_stamm) + e_erweiterung + endung(@praesens_endung)
+			  # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Listen/e-Erweiterung-except.html
+				if (zweitePerson?) then 
+        	return Verb.umlaute(@praesens_stamm) + endung(@praesens_endung)
+				else
+        	return Verb.umlaute(@praesens_stamm) + (@praesens_stamm[-1..-1] == 't' ? "" : endung(@praesens_endung))
+				end
       else
         return @praesens_stamm + e_erweiterung + endung(@praesens_endung)
       end
@@ -437,19 +445,24 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "wissen": v = VerbModal.new("wissen", "wusste", "gewusst")
   when "mögen": v = VerbModal.new("mögen", "mochte", "gemocht")
   when "müssen": v = VerbModal.new("müssen", "musste", "gemusst")
+    #  e a a
+  when /(.*)gehen$/: v = VerbUnregelmaessig.new($1+"gehen", $1+"gang", ge($1)+"gangen")
     #  e a e
+  when /(.*)fressen$/: v = Verb_EI_Wechsel.new($1+"fressen", $1+"fraß", ge($1)+"fressen", $1+"friss")
   when /(.*)geben$/: v = Verb_Konjunktiv_II.new($1+"geben", $1+"gab", ge($1)+"geben", $1+"gib", $1+"gäb")
   when /(.*)lesen$/: v = Verb_EI_Wechsel.new($1+"lesen", $1+"las", ge($1)+"lesen", $1+"lies")
+  when /(.*)treten$/: v = Verb_Konjunktiv_II.new($1+"treten", $1+"trat", ge($1)+"treten", $1+"tritt", $1+"trät")
     #  i a u
   when /(.*)springen$/: v = VerbUnregelmaessig.new($1+"springen", $1+"sprang", ge($1)+"sprungen")
-  when "finden": v = VerbUnregelmaessig.new("finden", "fand", "gefunden")
+  when /(.*)finden$/: v = VerbUnregelmaessig.new($1+"finden", $1+"fand", ge($1)+"funden")
   when "wringen": v = VerbUnregelmaessig.new("wringen", "wrang", "gewrungen")
-  when /(.*)trinken/: v = VerbUnregelmaessig.new($1+"trinken", $1+"trank", ge($1)+"trunken")
+  when /(.*)schlingen$/: v = VerbUnregelmaessig.new($1+"schlingen", $1+"schlang", ge($1)+"schlungen")
   when /(.*)schwinden$/: v = VerbUnregelmaessig.new($1+"schwinden", $1+"schwand", ge($1)+"schwunden")
+  when /(.*)sinken/: v = VerbUnregelmaessig.new($1+"sinken", $1+"sank", ge($1)+"sunken")
+  when /(.*)trinken/: v = VerbUnregelmaessig.new($1+"trinken", $1+"trank", ge($1)+"trunken")
 		#  e a o
   when "helfen": v = Verb_Konjunktiv_II.new("helfen", "half", "geholfen", "hilf", "hülf")
   when "werfen": v = Verb_Konjunktiv_II.new("werfen", "warf", "geworfen", "wirf", "würf")
-  when "sterben": v = Verb_Konjunktiv_II.new("sterben", "starb", "gestobren", "stirb", "stürb")
   when /(.*)sterben$/: v = Verb_Konjunktiv_II.new($1+"sterben", $1+"starb", ge($1)+"storben", $1+"stirb", $1+"stürb")
   when "nehmen": v = Verb_EI_Wechsel.new("nehmen", "nahm", "genommen", "nimm")
   when "sprechen": v = Verb_EI_Wechsel.new("sprechen", "sprach", "gesprochen", "sprich")
@@ -459,19 +472,26 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)stehen/: v = Verb_Konjunktiv_II.new($1+"stehen", $1+"stand", ge($1)+"standen", $1+"steh", $1+"stünd")
 		#  e o o
   when "bewegen": v = VerbUnregelmaessig.new("bewegen", "bewog", "bewogen")
+  when /(.*)heben$/:  v = VerbUnregelmaessig.new($1+"heben", $1+"hob", ge($1)+"hoben")
     #  ei i i
+  when /(.*)beißen$/:  v = VerbUnregelmaessig.new($1+"beißen", $1+"biss", ge($1)+"bissen")
   when /(.*)gleiten$/:  v = VerbUnregelmaessig.new($1+"gleiten", $1+"glitt", ge($1)+"glitten")
   when /(.*)reißen$/:  v = VerbUnregelmaessig.new($1+"reißen", $1+"riss", ge($1)+"rissen")
   when /(.*)weichen$/:  v = VerbUnregelmaessig.new($1+"weichen", $1+"wich", ge($1)+"wichen")
   when /(.*)greifen$/:  v = VerbUnregelmaessig.new($1+"greifen", $1+"griff", ge($1)+"griffen")
     #  ei ie ie
+  when /(.*)bleiben$/:  v = VerbUnregelmaessig.new($1+"bleiben", $1+"blieb", ge($1)+"blieben")
+  when /(.*)meiden$/:  v = VerbUnregelmaessig.new($1+"meiden", $1+"mied", ge($1)+"mieden")
+  when /(.*)schreiben$/:  v = VerbUnregelmaessig.new($1+"schreiben", $1+"schrieb", ge($1)+"schrieben")
   when /(.*)schreien$/:  v = VerbUnregelmaessig.new($1+"schreien", $1+"schrie", ge($1)+"schrien")
+  when /(.*)steigen$/:  v = VerbUnregelmaessig.new($1+"steigen", $1+"stieg", ge($1)+"stiegen")
     #  a i i
   when "fangen": v = VerbUnregelmaessig.new("fangen", "fing", "gefangen")
     #  a u a
-  when "tragen": v = VerbUnregelmaessig.new("tragen", "trug", "getragen")
-  when "graben": v = VerbUnregelmaessig.new("graben", "grub", "gegraben")
-  when "schlagen": v = VerbUnregelmaessig.new("schlagen", "schlug", "geschlagen")
+  when /(.*)fahren$/: v = VerbUnregelmaessig.new($1+"fahren", $1+"fuhr", ge($1)+"fahren")
+  when /(.*)tragen$/: v = VerbUnregelmaessig.new($1+"tragen", $1+"trug", ge($1)+"tragen")
+  when /(.*)graben$/: v = VerbUnregelmaessig.new($1+"graben", $1+"grub", ge($1)+"graben")
+  when /(.*)schlagen$/: v = VerbUnregelmaessig.new($1+"schlagen", $1+"schlug", ge($1)+"schlagen")
     #  au ie au
   when "laufen": v = VerbUnregelmaessig.new("laufen", "lief", "gelaufen")
   when "hauen":  v = VerbUnregelmaessig.new("hauen", "hieb", "gehauen")
@@ -481,16 +501,39 @@ def Verb.verb(kennung, infinitiv, praeverb="")
     # a ie a
   when "lassen": v = VerbUnregelmaessig.new("lassen", "ließ", "gelassen")
   when /(.*)fallen$/: v = VerbUnregelmaessig.new($1+"fallen", $1+"fiel", ge($1)+"fallen")
+  when /(.*)halten$/: v = VerbUnregelmaessig.new($1+"halten", $1+"hielt", ge($1)+"halten")
   when /(.*)schlafen$/: v = VerbUnregelmaessig.new($1+"schlafen", $1+"schlief", ge($1)+"schlafen")
 		# ie o o
   when /(.*)fliehen$/: v = VerbUnregelmaessig.new($1+"fliehen", $1+"floh", ge($1)+"flohen")
   when "fliegen": v = VerbUnregelmaessig.new("fliegen", "flog", "geflogen")
+  when /(.*)riechen$/: v = VerbUnregelmaessig.new($1+"riechen", $1+"roch", ge($1)+"rochen")
+  when /(.*)schieben$/: v = VerbUnregelmaessig.new($1+"schieben", $1+"schob", ge($1)+"schoben")
   when /(.*)schießen$/: v = VerbUnregelmaessig.new($1+"schießen", $1+"schoss", ge($1)+"schossen")
   when /(.*)schließen$/: v = VerbUnregelmaessig.new($1+"schließen", $1+"schloss", ge($1)+"schlossen")
   when "wiegen": v = VerbUnregelmaessig.new("wiegen", "wog", "gewogen")
   when /(.*)ziehen$/: v = VerbUnregelmaessig.new($1+"ziehen", $1+"zog", ge($1)+"zogen")
+		# i a o
+  when /(.*)ginnen$/: v = VerbUnregelmaessig.new($1+"ginnen", $1+"gann", ge($1)+"gonnen")
+  when /(.*)spinnen$/: v = VerbUnregelmaessig.new($1+"spinnen", $1+"spann", ge($1)+"sponnen")
+  when /(.*)winnen$/: v = VerbUnregelmaessig.new($1+"winnen", $1+"wann", ge($1)+"wonnen")
+		# i a e
+  when /(.*)bitten$/: v = VerbUnregelmaessig.new($1+"bitten", $1+"bat", ge($1)+"beten")
+  when /(.*)sitzen$/: v = VerbUnregelmaessig.new($1+"sitzen", $1+"saß", ge($1)+"sessen")
+		# o a o
+  when /(.*)kommen$/: v = VerbUnregelmaessig.new($1+"kommen", $1+"kam", ge($1)+"kommen")
 		# regelmässig
-  when "verletzen": v = Verb.new("verletzen", "verletzte", "verletzt")
+  when "durchleben": v = Verb.new("durchleben", "durchlebte", "durchlebt")
+  #when /(.*)fluchen$/: v = Verb.new($1+"fluchen", $1+"fluchte", ge($1)+"flucht")
+  #when /(.*)haupten$/: v = Verb.new($1+"haupten", $1+"hauptete", ge($1)+"hauptet")
+  #when /(.*)kratzen$/: v = Verb.new($1+"kratzen", $1+"kratzte", ge($1)+"kratzt")
+  #when /(.*)langen$/: v = Verb.new($1+"langen", $1+"langte", ge($1)+"langt")
+  #when /(.*)letzen$/: v = Verb.new($1+"letzen", $1+"letzte", ge($1)+"letzt")
+  #when /(.*)setzen$/: v = Verb.new($1+"setzen", $1+"setzte", ge($1)+"setzt")
+  #when /(.*)stärken$/: v = Verb.new($1+"stärken", $1+"stärkte", ge($1)+"stärkt")
+  #when /(.*)stopfen$/: v = Verb.new($1+"stopfen", $1+"stopfte", ge($1)+"stopft")
+  #when /(.*)sperren$/: v = Verb.new($1+"sperren", $1+"sperrte", ge($1)+"sperrt")
+  #when /(.*)wecken$/: v = Verb.new($1+"wecken", $1+"weckte", ge($1)+"weckt")
+
   else
     # regelmaessige Verben
     v = Verb.new(infinitiv)
