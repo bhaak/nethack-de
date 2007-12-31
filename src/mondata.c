@@ -419,10 +419,11 @@ const char *in_str;
 	char buf[BUFSZ];
 	int len, slen;
 
-	str = strcpy(buf, in_str);
+	german2meta(in_str, buf); /* EN str = strcpy(buf, in_str); */
+	str = (char *)buf; /* EN */
 
-	if (!strncmp(str, "a ", 2)) str += 2; /* EN if (!strncmp(str, "a ", 2)) str += 2; */ // TODO DE
-	else if (!strncmp(str, "an ", 3)) str += 3; /* EN else if (!strncmp(str, "an ", 3)) str += 3; */ // TODO DE
+	if (!strncmp(str, "ARTIKEL_UNBESTIMMTER ", 21)) str += 21; /* EN if (!strncmp(str, "a ", 2)) str += 2; */
+	else if (!strncmp(str, "ARTIKEL_UNBESTIMMTER ", 21)) str += 21; /* EN else if (!strncmp(str, "an ", 3)) str += 3; */
 
 	slen = strlen(str);
 	term = str + slen;
@@ -661,14 +662,13 @@ struct monst *mtmp;
     else return(mtmp->data);
 }
 
-// TODO DE
-static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" };
-static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" };
-static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" };
-static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" };
-static const char *ooze[4]	= { "ooze", "Ooze", "tremble", "Tremble" };
-static const char *immobile[4]	= { "wiggle", "Wiggle", "pulsate", "Pulsate" };
-static const char *crawl[4]	= { "crawl", "Crawl", "falter", "Falter" };
+static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; /* EN static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; */ // TODO DE
+static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" }; /* EN static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" }; */ // TODO DE
+static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" }; /* EN static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" }; */ // TODO DE
+static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; /* EN static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; */ // TODO DE
+static const char *ooze[4]	= { "ooze", "Ooze", "tremble", "Tremble" }; /* EN static const char *ooze[4]	= { "ooze", "Ooze", "tremble", "Tremble" }; */ // TODO DE
+static const char *immobile[4]	= { "wiggle", "Wiggle", "pulsate", "Pulsate" }; /* EN static const char *immobile[4]	= { "wiggle", "Wiggle", "pulsate", "Pulsate" }; */ // TODO DE
+static const char *crawl[4]	= { "crawl", "Crawl", "falter", "Falter" }; /* EN static const char *crawl[4]	= { "crawl", "Crawl", "falter", "Falter" }; */ // TODO DE
 
 const char *
 locomotion(ptr, def)
