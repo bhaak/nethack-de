@@ -114,7 +114,7 @@ const struct Role roles[] = {
 	{"NOUN_RHIZOTOMIST",    "NOUN_RHIZOTOMISTIN"}, /* EN {"Rhizotomist",    0}, */
 	{"NOUN_EMPIRIC",        "NOUN_EMPIRICIN"}, /* EN {"Empiric",        0}, */ /* http://de.wikipedia.org/wiki/Empiriker_%28%C3%84rzteschule%29 */
 	{"NOUN_EMBALMER",       "NOUN_EMBALMERIN"}, /* EN {"Embalmer",       0}, */
-	{"NOUN_DRESSER",        "NOUN_DRESSERIN"}, /* EN {"Dresser",        0}, */
+	{"NOUN_DRESSER",        "NOUN_DRESSERIN"}, /* EN {"Dresser",        0}, */ /* http://cancerweb.ncl.ac.uk/cgi-bin/omd?dresser */
 	{"NOUN_MEDICUS_OSSIUM", "NOUN_MEDICA_OSSIUM"}, /* EN {"Medicus ossium", "Medica ossium"}, */
 	{"NOUN_HERBALIST",      "NOUN_HERBALISTIN"}, /* EN {"Herbalist",      0}, */
 	{"NOUN_MAGISTER",       "NOUN_MAGISTRA"}, /* EN {"Magister",       "Magistra"}, */

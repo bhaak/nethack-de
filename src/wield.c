@@ -194,7 +194,7 @@ struct obj *wep;
 
 		if ((this_shkp = shop_keeper(inside_shop(u.ux, u.uy))) !=
 		    (struct monst *)0) {
-		    pline("%s sagt \"You be careful with my %s!\"", /* EN pline("%s says \"You be careful with my %s!\"", */ // TODO DE
+		    pline("%s sagt \"MODIFIER_VERB_IMPERATIV VERB_SEIN bitte vorsichtig OBJECT KASUS_DATIV mit PRONOMEN_MEIN %s!\"", /* EN pline("%s says \"You be careful with my %s!\"", */
 			  shkname(this_shkp),
 			  xname(wep));
 		}

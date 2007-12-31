@@ -370,7 +370,7 @@ register boolean nearshop;
 		return;
 	    }
 	    if (flags.verbose)
-		 pline_The("NOUN_GENDARMERIE VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!"); /* EN pline_The("Keystone Kops are after you!"); */
+		 pline_The("NOUN_KEYSTONE_KOPs VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!"); /* EN pline_The("Keystone Kops are after you!"); */
 	    /* Create swarm near down staircase (hinders return to level) */
 	    mm.x = xdnstair;
 	    mm.y = ydnstair;
@@ -430,8 +430,8 @@ boolean newlev;
 	     * Try to intimidate him into paying his bill
 	     */
 	    verbalize(NOTANGRY(shkp) ?
-		      "%s!  Bitte zahl/zahlt bevor sie den Laden verlassen." : /* EN "%s!  Please pay before leaving." : */ // TODO DE
-		      "%s!  Don't you leave without paying!", /* EN "%s!  Don't you leave without paying!", */ // TODO DE
+		      "%s!  Bitte zahl/zahlt, bevor SUBJECT_IM_SATZ den Laden VERB_VERLASSEN." : /* EN "%s!  Please pay before leaving." : */ // TODO DE
+		      "%s!  Geh/Geht nicht ohne zu bezahlen!", /* EN "%s!  Don't you leave without paying!", */ // TODO DE
 		      plname);
 	    return;
 	}
@@ -3380,7 +3380,7 @@ register int fall;
 	        * reasons, it isn't currently.
 	        */
 		if (lang == 2)
-		    pline("SUBJECT %s VERB_VERFLUCHTEN OBJECT %s NOUN_UNFAEHIGKEIT NEUES_OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV NOUN_RUCKSACK zu greifen!", /* EN pline("%s curses %s inability to grab your backpack!", */
+		    pline("SUBJECT %s VERB_VERFLUCHEN OBJECT %s NOUN_UNFAEHIGKEIT NEUES_OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV NOUN_RUCKSACK zu greifen!", /* EN pline("%s curses %s inability to grab your backpack!", */
 			  shkname(shkp), mhim(shkp));
 		rile_shk(shkp);
 		return;
@@ -3817,7 +3817,7 @@ register boolean silent;
 	    }
 	}
 	if (cnt && !silent)
-	    pline_The("Kop%s (entäuscht) VERB_AUFLOESEN sich in Luft SATZKLAMMER.", /* EN pline_The("Kop%s (disappointed) vanish%s into thin air.", */ // TODO DE
+	    pline_The("NOUN_KEYSTONE_KOP%s (entäuscht) VERB_AUFLOESEN sich in Luft SATZKLAMMER.", /* EN pline_The("Kop%s (disappointed) vanish%s into thin air.", */
 		      plur(cnt)); /* EN plur(cnt), cnt == 1 ? "es" : ""); */
 }
 #endif	/* KOPS */

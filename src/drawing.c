@@ -89,7 +89,7 @@ const char * const oclass_names[] = {
 	"NOUN_LARGE_STONEs",
 /*15*/	"NOUN_IRON_BALLs",
 	"NOUN_CHAINs",
-	"NOUN_VENOMs"
+	"NOUN_SCHLANGENGIFT" /* EN "venoms" */
 };
 
 /* Default monster class symbols.  See monsym.h. */

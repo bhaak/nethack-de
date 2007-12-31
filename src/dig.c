@@ -400,7 +400,7 @@ dig()
 		}
 		if(IS_DOOR(lev->typ) && (lev->doormask & D_TRAPPED)) {
 			lev->doormask = D_NODOOR;
-			b_trapped("NOUN_DOOR", 0); /* EN b_trapped("door", 0); */
+			b_trapped("NOUN_OBJ_DOOR", 0); /* EN b_trapped("door", 0); */
 			newsym(dpx, dpy);
 		}
 cleanup:
@@ -411,14 +411,14 @@ cleanup:
 		return(0);
 	} else {		/* not enough effort has been spent yet */
 		static const char *const d_target[6] = {
-			"", "NOUN_ROCK", "NOUN_STATUE", "NOUN_BOULDER", "NOUN_DOOR", "NOUN_TREE" /* EN "", "rock", "statue", "boulder", "door", "tree" */
+			"", "NOUN_ROCK", "NOUN_STATUE", "NOUN_BOULDER", "NOUN_OBJ_DOOR", "NOUN_TREE" /* EN "", "rock", "statue", "boulder", "door", "tree" */
 		};
 		int dig_target = dig_typ(uwep, dpx, dpy);
 
 		if (IS_WALL(lev->typ) || dig_target == DIGTYP_DOOR) {
 		    if(*in_rooms(dpx, dpy, SHOPBASE)) {
 			pline("This %s seems too hard to %s.", /* EN pline("This %s seems too hard to %s.", */ // TODO DE
-			      IS_DOOR(lev->typ) ? "NOUN_DOOR" : "NOUN_WALL", verb); /* EN IS_DOOR(lev->typ) ? "door" : "wall", verb); */
+			      IS_DOOR(lev->typ) ? "NOUN_OBJ_DOOR" : "NOUN_WALL", verb); /* EN IS_DOOR(lev->typ) ? "door" : "wall", verb); */
 			return(0);
 		    }
 		} else if (!IS_ROCK(lev->typ) && dig_target == DIGTYP_ROCK)
@@ -542,9 +542,9 @@ int ttyp;
 		You("VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN You("dig a pit in the %s.", surface_type); */
 		if (shopdoor) pay_for_damage("ruin", FALSE); /* EN if (shopdoor) pay_for_damage("ruin", FALSE); */ // TODO DE
 	    } else if (!madeby_obj && canseemon(madeby))
-		pline("SUBJECT %s VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER %s.", Monnam(madeby), surface_type); /* EN pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); */
+		pline("SUBJECT %s VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s.", Monnam(madeby), surface_type); /* EN pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); */
 	    else if (cansee(x, y) && flags.verbose)
-		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE VERB_ERSCHEINEN OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A pit appears in the %s.", surface_type); */
+		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE VERB_ERSCHEINEN OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A pit appears in the %s.", surface_type); */
 
 	    if(at_u) {
 		if (!wont_fall) {
@@ -1048,7 +1048,7 @@ watch_dig(mtmp, x, y, zap)
 		    const char *str;
 
 		    if (IS_DOOR(lev->typ))
-			str = "NOUN_DOOR"; /* EN str = "door"; */
+			str = "NOUN_OBJ_DOOR"; /* EN str = "door"; */
 		    else if (IS_TREE(lev->typ))
 			str = "NOUN_TREE"; /* EN str = "tree"; */
 		    else if (IS_ROCK(lev->typ))

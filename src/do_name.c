@@ -679,6 +679,9 @@ boolean called;
 	    if (do_invis) 
 		Strcat(buf, "ADJEKTIV_INVISIBLE "); /* EN Strcat(buf, "invisible "); */
 	    Strcat(buf, mdat->mname);
+#ifdef GERMAN
+	    if (mtmp->female) { Strcat(buf, "IN"); }
+#endif
 	    return buf;
 	}
 
@@ -917,8 +920,8 @@ char *outbuf;
        its own obfuscation) */
     if (mon->data == &mons[PM_HIGH_PRIEST] && !Hallucination &&
 	    Is_astralevel(&u.uz) && distu(mon->mx, mon->my) > 2) {
-	Strcpy(outbuf, article == ARTICLE_THE ? "the " : ""); /* EN Strcpy(outbuf, article == ARTICLE_THE ? "the " : ""); */ // TODO DE
-	Strcat(outbuf, mon->female ? "high priestess" : "high priest"); /* EN Strcat(outbuf, mon->female ? "high priestess" : "high priest"); */ // TODO DE
+	Strcpy(outbuf, article == ARTICLE_THE ? "ARTIKEL_BESTIMMTER " : ""); /* EN Strcpy(outbuf, article == ARTICLE_THE ? "the " : ""); */
+	Strcat(outbuf, mon->female ? "NOUN_HIGH_PRIESTESS" : "NOUN_HIGH_PRIEST"); /* EN Strcat(outbuf, mon->female ? "high priestess" : "high priest"); */
     } else {
 	Strcpy(outbuf, x_monnam(mon, article, (char *)0, 0, TRUE));
     }
@@ -928,6 +931,11 @@ char *outbuf;
 static const char * const bogusmons[] = {
 	// TODO DE
 	// Ottifanten
+	// "Horla" /* Guy de Maupassant */
+	// Wolpertinger
+	// eierlegende Wollmilchsau
+	// Elwetritsch
+	// http://de.wikipedia.org/wiki/Liste_der_Fabelwesen#Deutschland_.26_.C3.96sterreich
 	"jumbo shrimp", "giant pigmy", "gnu", "killer penguin",
 	"giant cockroach", "giant slug", "maggot", "pterodactyl",
 	"tyrannosaurus rex", "basilisk", "beholder", "nightmare",

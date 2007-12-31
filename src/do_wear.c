@@ -230,7 +230,7 @@ Cloak_on()
 		}
 		break;
 	case OILSKIN_CLOAK:
-		pline("%s very tightly.", Tobjnam(uarmc, "fit"));
+		pline("%s very tightly.", Tobjnam(uarmc, "fit")); /* EN pline("%s very tightly.", Tobjnam(uarmc, "fit")); */ // TODO DE
 		break;
 	/* Alchemy smock gives poison _and_ acid resistance */
 	case ALCHEMY_SMOCK:
@@ -330,13 +330,13 @@ Helmet_on()
 		}
 		flags.botl = 1;		/* reveal new alignment or INT & WIS */
 		if (Hallucination) {
-		    pline("My brain hurts!"); /* Monty Python's Flying Circus */
+		    pline("My brain hurts!"); /* Monty Python's Flying Circus */ /* EN pline("My brain hurts!"); */ // TODO DE
 		} else if (uarmh->otyp == DUNCE_CAP) {
-		    You_feel("%s.",	/* track INT change; ignore WIS */
+		    You_feel("%s.",	/* track INT change; ignore WIS */ /* EN You_feel("%s.",	*/ // TODO DE
 		  ACURR(A_INT) <= (ABASE(A_INT) + ABON(A_INT) + ATEMP(A_INT)) ?
-			     "like sitting in a corner" : "giddy");
+			     "like sitting in a corner" : "giddy"); /* EN "like sitting in a corner" : "giddy"); */ // TODO DE
 		} else {
-		    Your("mind oscillates briefly.");
+		    Your("mind oscillates briefly."); /* EN Your("mind oscillates briefly."); */ // TODO DE
 		    makeknown(HELM_OF_OPPOSITE_ALIGNMENT);
 		}
 		break;
@@ -1413,7 +1413,7 @@ doputon()
 		setuqwep((struct obj *) 0);
 	if(otmp->oclass == RING_CLASS || otmp->otyp == MEAT_RING) {
 		if(nolimbs(youmonst.data)) {
-			pline("Der Ring bleibt nirgends an KASUS_DATIV PRONOMEN_POSSESSIV Körper stecken."); /* EN You("cannot make the ring stick to your body."); */
+			pline("Der Ring bleibt nirgends an KASUS_DATIV PRONOMEN_POSSESSIV NOUN_BODY stecken."); /* EN You("cannot make the ring stick to your body."); */
 			return(0);
 		}
 		if(uleft && uright){

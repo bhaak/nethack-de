@@ -1280,7 +1280,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 					&& !Sick_resistance) {
 		tp++;
 		Dir_ist("%sschlecht.", (Sick) ? "furchtbar " : ""); /* EN You_feel("%ssick.", (Sick) ? "very " : ""); */
-		losehp(rnd(8), "NOUN_KADAVER", KILLED_BY_AN); /* EN losehp(rnd(8), "cadaver", KILLED_BY_AN); */
+		losehp(rnd(8), "NOUN_CORPSE", KILLED_BY_AN); /* EN losehp(rnd(8), "cadaver", KILLED_BY_AN); */
 	}
 
 	/* delay is weight dependent */

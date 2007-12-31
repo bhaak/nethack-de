@@ -288,6 +288,12 @@ register struct monst *mtmp;
 		Strcat(buf, "ARTIKEL_BESTIMMTER "); /* EN Strcat(buf, "the "); */
 		killer_format = KILLED_BY;
 	}
+#if GERMAN
+	if (mtmp->isshk && (mtmp->minvis || distorted)) {
+		Strcat(buf, "ARTIKEL_BESTIMMTER "); 
+		killer_format = KILLED_BY;
+	}
+#endif
 	if (mtmp->minvis)
 		Strcat(buf, "ADJEKTIV_INVISIBLE "); /* EN Strcat(buf, "invisible "); */ 
 	if (distorted)
@@ -297,8 +303,8 @@ register struct monst *mtmp;
 		Strcat(buf, "NOUN_GHOST"); /* EN Strcat(buf, "ghost"); */
 		if (mtmp->mnamelth) Sprintf(eos(buf), " %s", s_suffix(NAME(mtmp))); /* EN if (mtmp->mnamelth) Sprintf(eos(buf), " of %s", NAME(mtmp)); */ // TODO DE
 	} else if(mtmp->isshk) {
-		Sprintf(eos(buf), "%s%s, ARTIKEL_BESTIMMTER NOUN_SHOPKEEPER", /* EN Sprintf(eos(buf), "%s %s, the shopkeeper", */
-			(mtmp->female ? "" : ""), shkname(mtmp)); /* EN (mtmp->female ? "Ms." : "Mr."), shkname(mtmp)); */
+		Sprintf(eos(buf), "%s%s, ARTIKEL_BESTIMMTER NOUN_SHOPKEEPER%s", /* EN Sprintf(eos(buf), "%s %s, the shopkeeper", */
+			(mtmp->female ? "" : ""), shkname(mtmp), (mtmp->female ? "IN" : "")); /* EN (mtmp->female ? "Ms." : "Mr."), shkname(mtmp)); */
 		killer_format = KILLED_BY;
 	} else if (mtmp->ispriest || mtmp->isminion) {
 		/* m_monnam() suppresses "the" prefix plus "invisible", and

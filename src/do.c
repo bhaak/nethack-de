@@ -1313,7 +1313,7 @@ boolean at_stairs, falling, portal;
 	/* once Croesus is dead, his alarm doesn't work any more */
 	if (Is_knox(&u.uz) && (new || !mvitals[PM_CROESUS].died)) {
 		You("VERB_SEIN in eine Hochsicherheitszone eingedrungen!"); /* EN You("penetrated a high security area!"); */
-		pline("An alarm sounds!"); /* EN pline("An alarm sounds!"); */ // TODO DE
+		pline("Ein Alarm wurde ausgelöst!"); /* EN pline("An alarm sounds!"); */
 		for(mtmp = fmon; mtmp; mtmp = mtmp->nmon)
 		    if (!DEADMONSTER(mtmp) && mtmp->msleeping) mtmp->msleeping = 0;
 	}

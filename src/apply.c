@@ -1134,7 +1134,7 @@ light_cocktail(obj)
 	    return;
 	}
 
-	You("light %s potion.%s", shk_your(buf, obj), /* EN You("light %s potion.%s", shk_your(buf, obj), */ // TODO DE
+	You("VERB_ENTZUENDEN OBJECT %s NOUN_POTION.%s", shk_your(buf, obj), /* EN You("light %s potion.%s", shk_your(buf, obj), */
 	    Blind ? "" : "  It gives off a dim light."); /* EN Blind ? "" : "  It gives off a dim light."); */ // TODO DE
 	if (obj->unpaid && costly_spot(u.ux, u.uy)) {
 	    /* Normally, we shouldn't both partially and fully charge
@@ -1229,7 +1229,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		return 0;
 	} else if (u.uinwater) {
 		if (magic) {
-			You("swish around a little."); /* EN You("swish around a little."); */ // TODO DE
+			You("VERB_STRAMPELN ein bisschen herum."); /* EN You("swish around a little."); */
 			return 1;
 		}
 		pline("Schwimmen ist angesagt, nicht springen!"); /* EN pline("This calls for swimming, not jumping!"); */

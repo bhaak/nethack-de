@@ -1668,10 +1668,10 @@ dodip()
 	    return(1);
 	} else if(obj->oclass == POTION_CLASS && obj->otyp != potion->otyp) {
 		/* Mixing potions is dangerous... */
-		pline_The("potions mix..."); /* EN pline_The("potions mix..."); */ // TODO DE
+		pline_The("NOUN_POTIONs VERB_VERMISCHEN sich ..."); /* EN pline_The("potions mix..."); */
 		/* KMH, balance patch -- acid is particularly unstable */
 		if (obj->cursed || obj->otyp == POT_ACID || !rn2(10)) {
-			pline("BOOM!  They explode!"); /* EN pline("BOOM!  They explode!"); */ // TODO DE
+			pline("BUMM!  Sie explodieren!"); /* EN pline("BOOM!  They explode!"); */
 			exercise(A_STR, FALSE);
 			if (!breathless(youmonst.data) || haseyes(youmonst.data))
 				potionbreathe(obj);
@@ -1778,13 +1778,13 @@ dodip()
 		    /* catch_lit does all the work if true */
 		} else if (obj->oerodeproof || obj_resists(obj, 5, 95) ||
 			   !is_flammable(obj) || obj->oclass == FOOD_CLASS) {
-		    pline("%s %s to burn for a moment.", /* EN pline("%s %s to burn for a moment.", */ // TODO DE
-			  Yname2(obj), otense(obj, "seem")); /* EN Yname2(obj), otense(obj, "seem")); */ // TODO DE
+		    pline("SUBJECT %s %s für einen Moment zu brennen.", /* EN pline("%s %s to burn for a moment.", */
+			  Yname2(obj), otense(obj, "VERB_SCHEINEN")); /* EN Yname2(obj), otense(obj, "seem")); */
 		} else {
 		    if ((omat == PLASTIC || omat == PAPER) && !obj->oartifact)
 			obj->oeroded = MAX_ERODE;
-		    pline_The("burning oil %s %s.", /* EN pline_The("burning oil %s %s.", */ // TODO DE
-			    obj->oeroded == MAX_ERODE ? "destroys" : "damages", /* EN obj->oeroded == MAX_ERODE ? "destroys" : "damages", */ // TODO DE
+		    pline("Das brennende Öl %s KASUS_AKKUSATIV %s.", /* EN pline_The("burning oil %s %s.", */
+			    obj->oeroded == MAX_ERODE ? "destroys" : "beschädigt", /* EN obj->oeroded == MAX_ERODE ? "destroys" : "damages", */ // TODO DE
 			    yname(obj));
 		    if (obj->oeroded == MAX_ERODE) {
 			obj_extract_self(obj);
@@ -1988,8 +1988,8 @@ struct monst *mon,	/* monster being split */
 
 	reason[0] = '\0';
 	if (mtmp) Sprintf(reason, " from %s heat", /* EN if (mtmp) Sprintf(reason, " from %s heat", */ // TODO DE
-			  (mtmp == &youmonst) ? (const char *)"your" : /* EN (mtmp == &youmonst) ? (const char *)"your" : */ // TODO DE
-			      (const char *)s_suffix(mon_nam(mtmp)));
+			  (mtmp == &youmonst) ? (const char *)"PRONOMEN_POSSESSIV" : /* EN (mtmp == &youmonst) ? (const char *)"your" : */
+			      (const char *)s_suffix(mon_nam(mtmp))); /* EN (const char *)s_suffix(mon_nam(mtmp))); */ // TODO DE
 
 	if (mon == &youmonst) {
 	    mtmp2 = cloneu();

@@ -3553,7 +3553,7 @@ boolean force;
 	     && (force ||
 		 (!confused && rn2(MAXULEV - u.ulevel + 11) < 10)))
 	    || (!force && confused && !rn2(3))) {
-		You("find a trap on the door!"); /* EN You("find a trap on the door!"); */ // TODO DE
+		You("VERB_ENTDECKEN eine Falle an der Türe!"); /* EN You("find a trap on the door!"); */
 		exercise(A_WIS, TRUE);
 		if (ynq("Entschärfen?") != 'y') return(1); /* EN if (ynq("Disarm it?") != 'y') return(1); */
 		if (levl[x][y].doormask & D_TRAPPED) {
@@ -3561,8 +3561,8 @@ boolean force;
 		    exercise(A_DEX, TRUE);
 		    if(!force && (confused || Fumbling ||
 				     rnd(75+level_difficulty()/2) > ch)) {
-			You("set it off!"); /* EN You("set it off!"); */ // TODO DE
-			b_trapped("NOUN_DOOR", FINGER); /* EN b_trapped("door", FINGER); */
+			You("VERB_AUSLOESEN sie SATZKLAMMER!"); /* EN You("set it off!"); */
+			b_trapped("NOUN_OBJ_DOOR", FINGER); /* EN b_trapped("door", FINGER); */
 			levl[x][y].doormask = D_NODOOR;
 			unblock_point(x, y);
 			newsym(x, y);

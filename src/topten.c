@@ -82,7 +82,7 @@ STATIC_DCL void FDECL(nsb_unmung_line,(char*));
 /* must fit with end.c; used in rip.c */
 NEARDATA const char * const killed_by_prefix[] = {
 // TODO DE
-	"getötet von KASUS_DATIV ", "erstickte an KASUS_DATIV ", "vergiftet durch KASUS_AKKUSATIV ", "starb KASUS_AKKUSATIV ARTIKEL_BESTIMMTER ", "ertrank in KASUS_DATIV ", /* EN  "killed by ", "choked on ", "poisoned by ", "died of ", "drowned in ", */
+	"getötet KASUS_DATIV von ", "erstickte KASUS_DATIV an ", "vergiftet KASUS_AKKUSATIV durch ", "starb KASUS_AKKUSATIV ARTIKEL_BESTIMMTER ", "ertrank KASUS_DATIV in ", /* EN  "killed by ", "choked on ", "poisoned by ", "died of ", "drowned in ", */
 
 	"verbrannte durch KASUS_AKKUSATIV ", "aufgelöst in KASUS_DATIV ", "erschlagen von KASUS_DATIV ", "versteinerte wegen KASUS_GENITIV ", /* EN "burned by ", "dissolved in ", "crushed to death by ", "petrified by ", */
 	"verschleimte durch KASUS_AKKUSATIV ", "getötet von KASUS_DATIV ", "", "", "", "", "" /* EN "turned to slime by ", "killed by ", "", "", "", "", "" */
