@@ -647,8 +647,8 @@ START_TEST (test_german2meta) {
 //#if 0
 START_TEST (test_casus_and_modifier) {
 	char *text[][2] = {
-		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_GENDARMERIE VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!",
-		 "Die Gendarmerie ist hinter dir her!"},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_KEYSTONE_KOPs VERB_SEIN hinter OBJECT KASUS_DATIV PRONOMEN_PERSONAL her!",
+		 "Die Karabinieri sind hinter dir her!"},
 		{"SUBJECT KASUS_GENITIV PRONOMEN_PERSONAL MODIFIER_FEMININ ARTIKEL_UNBESTIMMTER",
 		 "Deiner einer"}
 	};
@@ -850,6 +850,21 @@ START_TEST (test_noun_pseudo) {
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
+
+START_TEST (test_shopkeeper) {
+	char *text[][2] = {
+    {"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_SHOPKEEPERIN!",
+		 "Du triffst Tirebolu die unsichtbare Ladenbesitzerin!"},
+    {"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_SHOPKEEPER!",
+		 "Du triffst Tirebolu den unsichtbaren Ladenbesitzer!"},
+    {"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_TROLL!",
+		 "Du triffst Tirebolu den unsichtbaren Trolle!"},
+    {"getötet KASUS_DATIV von NOUN_PSEUDO_WEIBLICH Y-Fenni, ARTIKEL_BESTIMMTER NOUN_SHOPKEEPER",
+		 "getötet von Y-Fenni, dem Ladenbesitzer"},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
 //#endif
 
 Suite *test_suite(void)
@@ -895,6 +910,7 @@ Suite *test_suite(void)
   tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_noun_pseudo);
+	tcase_add_test(tc_core, test_shopkeeper);
 
 
   return s;
