@@ -658,7 +658,7 @@ register struct obj *obj;
 		    		    if (ghost->mtame)
 		    		    	savetame = ghost->mtame;
 		    		    if (canseemon(ghost))
-									pline("%s is suddenly drawn into its former body!", /* EN pline("%s is suddenly drawn into its former body!", */ // TODO DE
+									pline("SUBJECT %s VERB_WERDEN plötzlich in seinen früheren Körper zurückgezogen!", /* EN pline("%s is suddenly drawn into its former body!", */
 						Monnam(ghost));
 				    mondead(ghost);
 				    recorporealization = TRUE;
@@ -1111,7 +1111,7 @@ create_polymon(obj, okind)
 	    break;
 	case CLOTH:
 	    pm_index = PM_ROPE_GOLEM;
-	    material = "cloth "; /* EN material = "cloth "; */ // TODO DE
+	    material = "ADJEKTIV_STOFFIG "; /* EN material = "cloth "; */
 	    break;
 	case BONE:
 	    pm_index = PM_SKELETON;     /* nearest thing to "bone golem" */
@@ -1143,7 +1143,7 @@ create_polymon(obj, okind)
 	polyuse(obj, okind, (int)mons[pm_index].cwt);
 
 	if(mtmp && cansee(mtmp->mx, mtmp->my)) {
-	    pline("Some %sobjects meld, and %s arises from the pile!", /* EN pline("Some %sobjects meld, and %s arises from the pile!", */ // TODO DE
+	    pline("Einige ARTIKEL_BESTIMMTER %s NOUN_OBJEKT verschmelzen und %s ersteht aus dem Haufen!", /* EN pline("Some %sobjects meld, and %s arises from the pile!", */
 		  material, a_monnam(mtmp));
 	}
 }
@@ -1662,7 +1662,7 @@ makecorpse:			if (mons[obj->corpsenm].geno &
 			if (mon) {
 			    delobj(obj);
 			    if (cansee(mon->mx, mon->my))
-						pline_The("NOUN_FIGURINE animates!"); /* EN pline_The("figurine animates!"); */ // TODO DE
+						pline("KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_FIGURINE wird Leben eingehaucht!"); /* EN pline_The("figurine animates!"); */
 			    break;
 			}
 			goto makecorpse;
@@ -1787,10 +1787,10 @@ register struct obj *obj;
 			break;
 		case WAN_ENLIGHTENMENT:
 			known = TRUE;
-			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ /* einsichtigt, kenntnisreich; bewandert; fachkundig; fundiert; kennerhaft; klug {adj}, belesen, kennerhaft, kenntnisreich, klug, sachkundig, unterrichtet, bewandert # selbst-erkennend?, selbst-einsichtig?, einsichtig? */ // TODO DE
+			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ /* einsichtigt, kenntnisreich; bewandert; fachkundig; fundiert; kennerhaft; klug {adj}, belesen, kennerhaft, kenntnisreich, klug, sachkundig, unterrichtet, bewandert # selbst-erkennend?, selbst-einsichtig?, einsichtig? netzhack: selbstbewusst */ // TODO DE
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			enlightenment(FALSE);
-			pline_The("feeling subsides."); /* EN pline_The("feeling subsides."); */ // TODO DE
+			pline("Das Gefühl schwindet."); /* EN pline_The("feeling subsides."); */
 			exercise(A_WIS, TRUE);
 			break;
 	}
@@ -1936,7 +1936,7 @@ boolean ordinary;
 		case FROST_HORN:
 		    if (Cold_resistance) {
 			shieldeff(u.ux, u.uy);
-			pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN etwas kühl."); /* EN You_feel("a little chill."); */
+			Dir("VERB_SEIN etwas kühl."); /* EN You_feel("a little chill."); */
 			ugolemeffects(AD_COLD, d(12,6));
 		    } else {
 			You("VERB_IMITIEREN ein Eis am Stiel!"); /* EN You("imitate a popsicle!"); */
@@ -1953,7 +1953,7 @@ boolean ordinary;
 			pline_The("NOUN_MISSILEs VERB_ABPRALLEN SATZKLAMMER!"); /* EN pline_The("missiles bounce!"); */
 		    } else {
 			damage = d(4,6);
-			pline("Idiot!  You've shot yourself!"); /* EN pline("Idiot!  You've shot yourself!"); */ // TODO DE
+			pline("Idiot!  SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT auf PRONOMEN_PERSONAL selbst geschossen!"); /* EN pline("Idiot!  You've shot yourself!"); */
 		    }
 		    break;
 
@@ -2043,14 +2043,14 @@ boolean ordinary;
 		case SPE_FINGER_OF_DEATH:
 		    if (nonliving(youmonst.data) || is_demon(youmonst.data)) {
 			pline((obj->otyp == WAN_DEATH) ?
-			  "The wand shoots an apparently harmless beam at you." /* EN "The wand shoots an apparently harmless beam at you." */ // TODO DE
-			  : "You seem no deader than before."); /* EN : "You seem no deader than before."); */ // TODO DE
+			  "SUBJECT ARTIKEL_BESTIMMTER NOUN_WAND VERB_SCHIESSEN einen offenbar harmlosen Strahl." /* EN "The wand shoots an apparently harmless beam at you." */ // TODO DE
+			  : "SUBJECT PRONOMEN_PERSONAL VERB_SCHEINEN nicht toter als zuvor."); /* EN : "You seem no deader than before."); */
 			break;
 		    }
-		    Sprintf(buf, "shot %sself with a death ray", uhim()); /* EN Sprintf(buf, "shot %sself with a death ray", uhim()); */ // TODO DE
+		    Sprintf(buf, "erschoss sich mit einem Todesstrahl"); /* EN Sprintf(buf, "shot %sself with a death ray", uhim()); */
 		    killer = buf;
 		    killer_format = NO_KILLER_PREFIX;
-		    You("irradiate yourself with pure energy!"); /* EN You("irradiate yourself with pure energy!"); */ // TODO DE
+		    You("VERB_BESTRAHLEN OBJECT PRONOMEN_PERSONAL mit reiner Energie!"); /* EN You("irradiate yourself with pure energy!"); */
 		    You("VERB_STERBEN."); /* EN You("die."); */
 		    makeknown(obj->otyp);
 			/* They might survive with an amulet of life saving */
@@ -2222,8 +2222,8 @@ boolean			youattack, allow_cancel_kill, self_cancel;
 {
 	boolean	youdefend = (mdef == &youmonst);
 	static const char writing_vanishes[] =
-		"Some writing vanishes from %s head!"; /* EN "Some writing vanishes from %s head!"; */ // TODO DE
-	static const char your[] = "your";	/* should be extern */ /* EN static const char your[] = "your";	*/ // TODO DE
+		"Ein Zeichen verschwindet von %s Stirn!"; /* EN "Some writing vanishes from %s head!"; */ // TODO DE
+	static const char your[] = "PRONOMEN_POSSESSIV";	/* should be extern */ /* EN static const char your[] = "your";	*/
 
 	if (youdefend ? (!youattack && Antimagic)
 		      : resist(mdef, obj->oclass, 0, NOTELL))
@@ -2295,13 +2295,13 @@ struct obj *obj;	/* wand or spell */
 	case WAN_PROBING: // TODO DE Untersuchung
 	    ptmp = 0;
 	    if (u.dz < 0) {
-				You("probe towards the %s.", ceiling(x,y)); /* EN You("probe towards the %s.", ceiling(x,y)); */ // TODO DE
+				You("VERB_SONDIEREN OBJECT ARTIKEL_BESTIMMTER %s.", ceiling(x,y)); /* EN You("probe towards the %s.", ceiling(x,y)); */
 	    } else {
 		ptmp += bhitpile(obj, bhito, x, y);
-		You("probe beneath the %s.", surface(x,y)); /* EN You("probe beneath the %s.", surface(x,y)); */ // TODO DE
+		You("VERB_SONDIEREN OBJECT ARTIKEL_BESTIMMTER %s.", surface(x,y)); /* EN You("probe beneath the %s.", surface(x,y)); */
 		ptmp += display_binventory(x, y, TRUE);
 	    }
-	    if (!ptmp) Your("probe reveals nothing."); /* EN if (!ptmp) Your("probe reveals nothing."); */ // TODO DE
+	    if (!ptmp) Your("NOUN_SONDIERUNG enthüllt nichts."); /* EN if (!ptmp) Your("probe reveals nothing."); */
 	    return TRUE;	/* we've done our own bhitpile */
 	case WAN_OPENING:
 	case SPE_KNOCK:
@@ -2336,10 +2336,10 @@ struct obj *obj;	/* wand or spell */
 			!Is_airlevel(&u.uz) && !Is_waterlevel(&u.uz) &&
 			!Underwater && !Is_qstart(&u.uz)) {
 		/* similar to zap_dig() */
-		pline("A rock is dislodged from the %s and falls on your %s.", /* EN pline("A rock is dislodged from the %s and falls on your %s.", */ // TODO DE
+		pline("Ein Stein löst sich von KASUS_DATIV ARTIKEL_BESTIMMTER %s und fällt KASUS_AKKUSATIV auf PRONOMEN_POSSESSIV %s.", /* EN pline("A rock is dislodged from the %s and falls on your %s.", */
 		      ceiling(x, y), body_part(HEAD));
 		losehp(rnd((uarmh && is_metallic(uarmh)) ? 2 : 6),
-		       "falling rock", KILLED_BY_AN); /* EN "falling rock", KILLED_BY_AN); */ // TODO DE
+		       "ADJEKTIV_FALLEND NOUN_GEM_ROCK", KILLED_BY_AN); /* EN "falling rock", KILLED_BY_AN); */
 		if ((otmp = mksobj_at(ROCK, x, y, FALSE, FALSE)) != 0) {
 		    (void)xname(otmp);	/* set dknown, maybe bknown */
 		    stackobj(otmp);
@@ -2351,8 +2351,8 @@ struct obj *obj;	/* wand or spell */
 				pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR OBJECT KASUS_DATIV unter PRONOMEN_PERSONAL VERB_SCHLIESSEN sich und VERB_VERSCHWINDEN."); /* EN pline("A trap door beneath you closes up then vanishes."); */
 				disclose = TRUE;
 			} else {
-				You("see a swirl of %s beneath you.", /* EN You("see a swirl of %s beneath you.", */ // TODO DE
-					is_ice(x,y) ? "frost" : "dust"); /* EN is_ice(x,y) ? "frost" : "dust"); */
+				You("VERB_SEHEN einen %swirbel OBJECT KASUS_DATIV unter PRONOMEN_PERSONAL.", /* EN You("see a swirl of %s beneath you.", */
+					is_ice(x,y) ? "Frost" : "Staub"); /* EN is_ice(x,y) ? "frost" : "dust"); */
 			}
 		} else {
 			You_hear("ein Wusch und gleich darauf ein Puff."); /* EN You_hear("a twang followed by a thud."); */
@@ -2378,8 +2378,8 @@ struct obj *obj;	/* wand or spell */
 		    if (is_pool(u.ux, u.uy) || is_ice(u.ux, u.uy))
 			pline(nothing_happens);
 		    else
-					pline("Blood %ss OBJECT %s KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("Blood %ss %s your %s.", */ // TODO DE
-			      is_lava(u.ux, u.uy) ? "boil" : "pool", /* EN is_lava(u.ux, u.uy) ? "boil" : "pool", */ // TODO DE
+					pline("Blut %s OBJECT %s KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("Blood %ss %s your %s.", */ // TODO DE
+			      is_lava(u.ux, u.uy) ? "kocht" : "sammelt sich", /* EN is_lava(u.ux, u.uy) ? "boil" : "pool", */
 			      Levitation ? "unter" : "zu", /* EN Levitation ? "beneath" : "at", */
 			      makeplural(body_part(FOOT)));
 		}
@@ -2413,9 +2413,9 @@ struct obj *obj;	/* wand or spell */
 		case SPE_STONE_TO_FLESH:
 		    if (e->engr_type == ENGRAVE) {
 			/* only affects things in stone */
-			pline_The(Hallucination ?
+			pline(Hallucination ?  /* EN pline_The(Hallucination ? */
 			    "floor runs like butter!" : /* EN "floor runs like butter!" : */ // TODO DE
-			    "edges on the floor get smoother."); /* EN "edges on the floor get smoother."); */ // TODO DE
+			    "Die Ecken und Kanten des Bodens werden glatter."); /* EN "edges on the floor get smoother."); */
 			wipe_engr_at(x, y, d(2,4));
 			}
 		    break;
@@ -3848,7 +3848,7 @@ register int osym, dmgtyp;
 		    if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
 			skip++;
 			if (!Blind)
-			    pline("%s glows a strange %s, but remains intact.", /* EN pline("%s glows a strange %s, but remains intact.", */ // TODO DE
+			    pline("SUBJECT %s VERB_LEUCHTEN seltsam %s, bleibt aber ganz.", /* EN pline("%s glows a strange %s, but remains intact.", */
 				The(xname(obj)), hcolor("ADJEKTIV_FARBE_DARK_RED")); /* EN The(xname(obj)), hcolor("dark red")); */
 		    }
 		    quan = obj->quan;
@@ -3975,7 +3975,7 @@ int osym, dmgtyp;
 		    if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
 			skip++;
 			if (vis)
-				pline("%s glows a strange %s, but remains intact.", /* EN pline("%s glows a strange %s, but remains intact.", */ // TODO DE
+				pline("SUBJECT %s VERB_LEUCHTEN seltsam %s, bleibt aber ganz.", /* EN pline("%s glows a strange %s, but remains intact.", */
 				The(distant_name(obj, xname)),
 				hcolor("ADJEKTIV_FARBE_DARK_RED")); /* EN hcolor("dark red")); */
 		    }
@@ -4025,7 +4025,7 @@ int osym, dmgtyp;
 		    if(!rn2(3)) cnt++;
 
 		if(!cnt) continue;
-		if (vis) pline("%s %s %s!",
+		if (vis) pline("%s %s %s!", /* EN if (vis) pline("%s %s %s!", */ // TODO DE
 			s_suffix(Monnam(mtmp)), xname(obj),
 			(cnt > 1L) ? destroy_strings[dindx*3 + 1]
 				  : destroy_strings[dindx*3]);

@@ -176,7 +176,7 @@ struct obj *wep;
 	    if (artifact_light(wep) && !wep->lamplit) {
 		begin_burn(wep, FALSE);
 		if (!Blind)
-		    pline("%s to glow brilliantly!", Tobjnam(wep, "begin")); /* EN pline("%s to glow brilliantly!", Tobjnam(wep, "begin")); */ // TODO DE
+		    pline("SUBJECT %s hell zu erstrahlen!", Tobjnam(wep, "VERB_BEGINNEN")); /* EN pline("%s to glow brilliantly!", Tobjnam(wep, "begin")); */
 	    }
 
 #if 0

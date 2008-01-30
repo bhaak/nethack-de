@@ -911,7 +911,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 		if (Blinded) you_are("geblendet"); /* EN if (Blinded) you_are("blinded"); */
 		if (Sick) {
 			if (u.usick_type & SICK_VOMITABLE)
-				you_are("sick from food poisoning"); /* EN you_are("sick from food poisoning"); */ // TODO DE
+				you_are("krank wegen einer Lebensmittelvergiftung"); /* EN you_are("sick from food poisoning"); */
 			if (u.usick_type & SICK_NONVOMITABLE)
 				you_are("sick from illness"); /* EN you_are("sick from illness"); */ // TODO DE
 		}
@@ -1235,7 +1235,7 @@ int final;
 	if (Blinded) dump(youwere, "geblendet"); /* EN if (Blinded) dump(youwere, "blinded"); */
 	if (Sick) {
 		if (u.usick_type & SICK_VOMITABLE)
-			dump(youwere, "krank durch eine Lebensmittelvergiftung"); /* EN dump(youwere, "sick from food poisoning"); */
+			dump(youwere, "krank wegen einer Lebensmittelvergiftung"); /* EN dump(youwere, "sick from food poisoning"); */
 		if (u.usick_type & SICK_NONVOMITABLE)
 			dump(youwere, "sick from illness"); /* EN dump(youwere, "sick from illness"); */ // TODO DE
 	}

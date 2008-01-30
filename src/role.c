@@ -29,17 +29,16 @@
  */
 /* http://www.tamoon.ch/titel.html */
 const struct Role roles[] = {
-// TODO DE
 {	{"NOUN_ARCHAEOLOGE", "NOUN_ARCHAEOLOGIN"}, { /* EN {	{"Archeologist", 0}, { */
-	{"Digger",      0},
-	{"Field Worker",0},
-	{"Investigator",0},
-	{"Exhumer",     0},
-	{"Excavator",   0},
-	{"Spelunker",   0},
-	{"Speleologist",0},
-	{"Collector",   0},
-	{"Curator",     0} },
+	{"Digger",      0}, /* EN {"Digger",      0}, */ // TODO DE Hilfskraft
+	{"Field Worker",0}, /* EN {"Field Worker",0}, */ // TODO DE 
+	{"Investigator",0}, /* EN {"Investigator",0}, */ // TODO DE 
+	{"Exhumer",     0}, /* EN {"Exhumer",     0}, */ // TODO DE Exhumierer?
+	{"Excavator",   0}, /* EN {"Excavator",   0}, */ // TODO DE Ausgraeber
+	{"Spelunker",   0}, /* EN {"Spelunker",   0}, */ // TODO DE Hoehlengeher / Hoehlenforscher
+	{"Speleologist",0}, /* EN {"Speleologist",0}, */ // TODO DE Speläologe http://de.wikipedia.org/wiki/Speläologie#Spel.C3.A4ologe.2FH.C3.B6hlenforscher
+	{"Collector",   0}, /* EN {"Collector",   0}, */ // TODO DE Sammler
+	{"Curator",     0} }, /* EN {"Curator",     0} }, */ // TODO DE Kurator
 	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */
 	"Arc", "the College of Archeology", "the Tomb of the Toltec Kings",
 	PM_ARCHEOLOGIST, NON_PM, NON_PM,
@@ -56,17 +55,16 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },14,	/* Energy */
 	10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING,   -4
 },
-// TODO DE
-{	{"NOUN_BARBAR", "NOUN_BARBARIN"}, { /* EN {	{"Barbarian", 0}, { */
-	{"Plunderer",   "Plunderess"},
-	{"Pillager",    0},
-	{"Bandit",      0},
-	{"Brigand",     0},
-	{"Raider",      0},
-	{"Reaver",      0},
-	{"Slayer",      0},
-	{"Chieftain",   "Chieftainess"},
-	{"Conqueror",   "Conqueress"} },
+{	{"NOUN_BARBAR", "NOUN_BARBARIN"}, { /* EN {	{"Barbarian", 0}, { */ // Strauchdieb
+	{"Plunderer",   "Plunderess"}, /* EN {"Plunderer",   "Plunderess"}, */ // TODO DE Pluenderer
+	{"Pillager",    0}, /* EN {"Pillager",    0}, */ // TODO DE Brandschatzer
+	{"Bandit",      0}, /* EN {"Bandit",      0}, */ // TODO DE Bandit / Strassenraeuber?
+	{"Brigand",     0}, /* EN {"Brigand",     0}, */ // TODO DE Brigant / Wegelagerer
+	{"Raider",      0}, /* EN {"Raider",      0}, */ // TODO DE Raeuber
+	{"Reaver",      0}, /* EN {"Reaver",      0}, */ // TODO DE Pluenderer
+	{"Slayer",      0}, /* EN {"Slayer",      0}, */ // TODO DE Totschlaeger
+	{"Chieftain",   "Chieftainess"}, /* EN {"Chieftain",   "Chieftainess"}, */ // TODO DE Haeuptling / Stammesführer
+	{"Conqueror",   "Conqueress"} }, /* EN {"Conqueror",   "Conqueress"} }, */ // TODO DE Eroberer
 	"Mitra", "Crom", "Set", /* Hyborian */
 	"Bar", "the Camp of the Duali Tribe", "the Duali Oasis",
 	PM_BARBARIAN, NON_PM, NON_PM,
@@ -83,17 +81,16 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },10,	/* Energy */
 	10, 14, 0, 0,  8, A_INT, SPE_HASTE_SELF,      -4
 },
-// TODO DE
 {	{"NOUN_CAVEMAN", 0}, { /* EN {	{"Caveman", "Cavewoman"}, { */
-	{"Troglodyte",  0},
-	{"Aborigine",   0},
-	{"Wanderer",    0},
-	{"Vagrant",     0},
-	{"Wayfarer",    0},
-	{"Roamer",      0},
-	{"Nomad",       0},
-	{"Rover",       0},
-	{"Pioneer",     0} },
+	{"Troglodyte",  0}, /* EN {"Troglodyte",  0}, */ // TODO DE
+	{"Aborigine",   0}, /* EN {"Aborigine",   0}, */ // TODO DE
+	{"Wanderer",    0}, /* EN {"Wanderer",    0}, */ // TODO DE
+	{"Vagrant",     0}, /* EN {"Vagrant",     0}, */ // TODO DE
+	{"Wayfarer",    0}, /* EN {"Wayfarer",    0}, */ // TODO DE
+	{"Roamer",      0}, /* EN {"Roamer",      0}, */ // TODO DE
+	{"Nomad",       0}, /* EN {"Nomad",       0}, */ // TODO DE
+	{"Rover",       0}, /* EN {"Rover",       0}, */ // TODO DE
+	{"Pioneer",     0} }, /* EN {"Pioneer",     0} }, */ // TODO DE
 	"Anu", "_Ishtar", "Anshar", /* Babylonian */
 	"Cav", "the Caves of the Ancestors", "the Dragon's Lair",
 	PM_CAVEMAN, PM_CAVEWOMAN, PM_LITTLE_DOG,
@@ -432,7 +429,6 @@ const struct Race races[] = {
 	{  2, 0,  0, 2,  1, 0 },	/* Hit points */
 	{  1, 0,  2, 0,  2, 0 }		/* Energy */
 },
-// TODO DE
 {	"NOUN_ELF", "ADJEKTIV_ELBISCH", "NOUN_ELVENKIND", "Elb", /* EN {	"elf", "elven", "elvenkind", "Elf", */
 	{0, 0},
 	PM_ELF, NON_PM, PM_ELF_MUMMY, PM_ELF_ZOMBIE,
@@ -458,7 +454,6 @@ const struct Race races[] = {
 	{  4, 0,  0, 3,  2, 0 },	/* Hit points */
 	{  0, 0,  0, 0,  0, 0 }		/* Energy */
 },
-// TODO DE
 {	"NOUN_GNOME", "ADJEKTIV_GNOMISCH", "NOUN_GNOMEHOOD", "Gno", /* EN {	"gnome", "gnomish", "gnomehood", "Gno", */
 	{0, 0},
 	PM_GNOME, NON_PM, PM_GNOME_MUMMY, PM_GNOME_ZOMBIE,
@@ -471,7 +466,6 @@ const struct Race races[] = {
 	{  1, 0,  0, 1,  0, 0 },	/* Hit points */
 	{  2, 0,  2, 0,  2, 0 }		/* Energy */
 },
-// TODO DE
 {	"NOUN_ORC", "ADJEKTIV_ORKSCH", "NOUN_ORCDOM", "Ork", /* EN {	"orc", "orcish", "orcdom", "Orc", */
 	{0, 0},
 	PM_ORC, NON_PM, PM_ORC_MUMMY, PM_ORC_ZOMBIE,
@@ -524,11 +518,10 @@ const struct Gender genders[] = {
 
 /* Table of all alignments */
 const struct Align aligns[] = {
-// TODO DE
-	{"law",		"lawful",	"Law",	ROLE_LAWFUL,	A_LAWFUL},
-	{"balance",	"neutral",	"Neu",	ROLE_NEUTRAL,	A_NEUTRAL},
-	{"chaos",	"chaotic",	"Cha",	ROLE_CHAOTIC,	A_CHAOTIC},
-	{"evil",	"unaligned",	"Una",	0,		A_NONE}
+	{"law",		"lawful",	"Law",	ROLE_LAWFUL,	A_LAWFUL}, /* EN {"law",		"lawful",	"Law",	ROLE_LAWFUL,	A_LAWFUL}, */ // TODO DE
+	{"balance",	"neutral",	"Neu",	ROLE_NEUTRAL,	A_NEUTRAL}, /* EN {"balance",	"neutral",	"Neu",	ROLE_NEUTRAL,	A_NEUTRAL}, */ // TODO DE
+	{"chaos",	"chaotic",	"Cha",	ROLE_CHAOTIC,	A_CHAOTIC}, /* EN {"chaos",	"chaotic",	"Cha",	ROLE_CHAOTIC,	A_CHAOTIC}, */ // TODO DE
+	{"evil",	"unaligned",	"Una",	0,		A_NONE} /* EN {"evil",	"unaligned",	"Una",	0,		A_NONE} */ // TODO DE
 };
 
 STATIC_DCL char * FDECL(promptsep, (char *, int));
@@ -1500,7 +1493,7 @@ struct monst *mtmp;
 {
 	switch (Role_switch) {
 	case PM_KNIGHT:
-	    return ("Salutations"); /* Olde English */
+	    return ("Seid gegrüßt"); /* Olde English */ /* EN return ("Salutations"); */
 	case PM_SAMURAI:
 	    return (mtmp && mtmp->data == &mons[PM_SHOPKEEPER] ?
 	    		"Irasshaimase" : "Konnichi wa"); /* Japanese */
@@ -1524,7 +1517,7 @@ Goodbye()
 {
 	switch (Role_switch) {
 	case PM_KNIGHT:
-	    return ("Fare thee well");  /* Olde English */
+	    return ("Gehabt Euch wohl");  /* Olde English */ /* EN return ("Fare thee well"); */
 	case PM_SAMURAI:
 	    return ("Sayonara");        /* Japanese */
 #ifdef TOURIST

@@ -1304,7 +1304,7 @@ domove()
 		/* check for displacing it into pools and traps */
 		switch (minliquid(mtmp) ? 2 : mintrap(mtmp)) {
 		case 0:
-		    You("%s %s.", mtmp->mtame ? "displaced" : "frightened", /* EN You("%s %s.", mtmp->mtame ? "displaced" : "frightened", */ // TODO DE
+		    You("%s OBJECT %s SATZKLAMMER.", mtmp->mtame ? "VERB_BEISEITESCHIEBEN" : "VERB_VERSCHRECKEN", /* EN You("%s %s.", mtmp->mtame ? "displaced" : "frightened", */
 			pnambuf);
 		    break;
 		case 1:		/* trapped */
@@ -1438,17 +1438,17 @@ boolean pick;
 			if (Is_waterlevel(&u.uz))
 				You("pop into an air bubble."); /* EN You("pop into an air bubble."); */ // TODO DE
 			else if (is_lava(u.ux, u.uy))
-				You("leave the water...");	/* oops! */ /* EN You("leave the water...");	*/ // TODO DE
+				You("VERB_VERLASSEN das Wasser ...");	/* oops! */ /* EN You("leave the water...");	*/
 			else
-				You("are on solid %s again.", /* EN You("are on solid %s again.", */ // TODO DE
-				    is_ice(u.ux, u.uy) ? "ice" : "land"); /* EN is_ice(u.ux, u.uy) ? "ice" : "land"); */ // TODO DE
+				You("VERB_HABEN wieder feste%s unter den Füßen.", /* EN You("are on solid %s again.", */
+				    is_ice(u.ux, u.uy) ? "s Eis" : "n Boden"); /* EN is_ice(u.ux, u.uy) ? "ice" : "land"); */
 		}
 		else if (Is_waterlevel(&u.uz))
 			goto stillinwater;
 		else if (Levitation)
 			You("pop out of the water like a cork!"); /* EN You("pop out of the water like a cork!"); */ // TODO DE
 		else if (Flying)
-			You("fly out of the water."); /* EN You("fly out of the water."); */ // TODO DE
+			You("VERB_FLIEGEN aus dem Wasser."); /* EN You("fly out of the water."); */
 		else if (Wwalking)
 			You("slowly rise above the surface."); /* EN You("slowly rise above the surface."); */ // TODO DE
 		else
@@ -1726,7 +1726,7 @@ register boolean newlev;
 			const char *run = locomotion(youmonst.data, "Run"); /* EN const char *run = locomotion(youmonst.data, "Run"); */ // TODO DE
 			pline("%s away!  %s away!", run, run); /* EN pline("%s away!  %s away!", run, run); */ // TODO DE
 		    } else
-			You("have an uncanny feeling..."); /* EN You("have an uncanny feeling..."); */ // TODO DE
+			You("VERB_HABEN ein ungutes Gefühl ..."); /* EN You("have an uncanny feeling..."); */
 		    break;
 		case BEEHIVE:
 		    You("VERB_BETRETEN einen riesigen Bienenstock!"); /* EN You("enter a giant beehive!"); */
@@ -1742,9 +1742,9 @@ register boolean newlev;
 			monstinroom(&mons[PM_SERGEANT], roomno) ||
 			monstinroom(&mons[PM_LIEUTENANT], roomno) ||
 			monstinroom(&mons[PM_CAPTAIN], roomno))
-			You("enter a military barracks!"); /* EN You("enter a military barracks!"); */ // TODO DE
+			You("VERB_BETRETEN eine Kaserne!"); /* EN You("enter a military barracks!"); */
 		    else
-			You("enter an abandoned barracks."); /* EN You("enter an abandoned barracks."); */ // TODO DE
+			You("VERB_BETRETEN eine verlassene Kaserne."); /* EN You("enter an abandoned barracks."); */
 		    break;
 		case DELPHI:
 		    if(monstinroom(&mons[PM_ORACLE], roomno))
@@ -2060,13 +2060,13 @@ maybe_wail()
 	who = (Role_if(PM_WIZARD) || Role_if(PM_VALKYRIE)) ?
 		urole.name.m : "Elf";
 	if (u.uhp == 1) {
-	    pline("%s is about to die.", who); /* EN pline("%s is about to die.", who); */ // TODO DE
+	    pline("%s ist gleich am Sterben.", who); /* EN pline("%s is about to die.", who); */ /* Gauntlet-Referenz */
 	} else {
 	    for (i = 0, powercnt = 0; i < SIZE(powers); ++i)
 		if (u.uprops[powers[i]].intrinsic & INTRINSIC) ++powercnt;
 
 	    pline(powercnt >= 4 ? "%s, all your powers will be lost..." /* EN pline(powercnt >= 4 ? "%s, all your powers will be lost..." */ // TODO DE
-				: "%s, your life force is running out.", who); /* EN : "%s, your life force is running out.", who); */ // TODO DE
+				: "SUBJECT %s, NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_LEBENSKRAFT läuft aus.", who); /* EN : "%s, your life force is running out.", who); */ /* Gauntlet-Referenz */
 	}
     } else {
 	You_hear(u.uhp == 1 ? "the wailing of the Banshee..." /* EN You_hear(u.uhp == 1 ? "the wailing of the Banshee..." */ // TODO DE

@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /* KMH -- Copied from pray.c; this really belongs in a header file */
 #define DEVOUT 14
 #define STRIDENT 4
@@ -1007,7 +1011,7 @@ register struct obj	*sobj;
 		}
 		break;
 	case SCR_GENOCIDE:
-		You("VERB_HABEN ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_GENOCIDE gefunden.!"); /* EN You("have found a scroll of genocide!"); */
+		You("VERB_HABEN ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_GENOCIDE gefunden!"); /* EN You("have found a scroll of genocide!"); */
 		known = TRUE;
 		if (sobj->blessed) do_class_genocide();
 		else do_genocide(!sobj->cursed | (2 * !!Confusion));
@@ -1350,14 +1354,14 @@ struct obj *obj;
 
 		if (!Blind) {
 		    if(u.uswallow) {
-			pline("It seems even darker in here than before."); /* EN pline("It seems even darker in here than before."); */ // TODO DE
+			pline("Es scheint hier drinnen noch dunkler zu sein als vorhin."); /* EN pline("It seems even darker in here than before."); */
 			return;
 		    }
 		    if (uwep && artifact_light(uwep) && uwep->lamplit)
-			pline("Suddenly, the only light left comes from %s!", /* EN pline("Suddenly, the only light left comes from %s!", */ // TODO DE
+			pline("Plötzlich spendet nur noch %s Licht!", /* EN pline("Suddenly, the only light left comes from %s!", */
 				the(xname(uwep)));
 		    else
-			You("are surrounded by darkness!"); /* EN You("are surrounded by darkness!"); */ // TODO DE
+			You("are surrounded by darkness!"); /* EN You("are surrounded by darkness!"); */ // TODO DE in Dunkelheit getaucht?
 		}
 
 		/* the magic douses lamps, et al, too */
@@ -1380,7 +1384,7 @@ struct obj *obj;
 					pline("%s glistens.", Monnam(u.ustuck)); /* EN pline("%s glistens.", Monnam(u.ustuck)); */ // TODO DE
 			return;
 		}
-		pline("A lit field surrounds you!"); /* EN pline("A lit field surrounds you!"); */ // TODO DE
+		pline("Ein leuchtendes/erleuchtetes Feld umgibt dich!"); /* EN pline("A lit field surrounds you!"); */ // TODO DE
 	}
 
 do_it:
@@ -1484,7 +1488,7 @@ do_class_genocide()
 	pline("Alle diese Monster gibt es schon nicht mehr."); /* EN pline("All such monsters are already nonexistent."); */
 			else if (immunecnt ||
 				(buf[0] == DEF_INVISIBLE && buf[1] == '\0'))
-	You("aren't permitted to genocide such monsters."); /* EN You("aren't permitted to genocide such monsters."); */ // TODO DE
+	Dir_ist("nicht erlaubt diese Monster auszurotten."); /* EN You("aren't permitted to genocide such monsters."); */
 			else
 #ifdef WIZARD	/* to aid in topology testing; remove pesky monsters */
 			  if (wizard && buf[0] == '*') {
@@ -1540,7 +1544,7 @@ do_class_genocide()
 			    if (i == urole.malenum || i == urace.malenum) {
 				u.uhp = -1;
 				if (Upolyd) {
-				    if (!feel_dead++) You_feel("dead inside."); /* EN if (!feel_dead++) You_feel("dead inside."); */ // TODO DE
+				    if (!feel_dead++) You_feel("dead inside."); /* EN if (!feel_dead++) You_feel("dead inside."); */ // TODO DE innerlich tot?
 				} else {
 				    if (!feel_dead++) You("VERB_STERBEN."); /* EN if (!feel_dead++) You("die."); */
 				    gameover = TRUE;
@@ -1568,8 +1572,8 @@ do_class_genocide()
 				/* one special case */
 				if (i == PM_HIGH_PRIEST) uniq = FALSE;
 
-				You("aren't permitted to genocide %s%s.", /* EN You("aren't permitted to genocide %s%s.", */ // TODO DE
-				    (uniq && !named) ? "the " : "", /* EN (uniq && !named) ? "the " : "", */ // TODO DE
+				Dir_ist("nicht erlaubt NEUES_OBJECT KASUS_AKKUSATIV %s%s auszurotten.", /* EN You("aren't permitted to genocide %s%s.", */
+				    (uniq && !named) ? "ARTIKEL_BESTIMMTER " : "", /* EN (uniq && !named) ? "the " : "", */
 				    (uniq || named) ? mons[i].mname : nam);
 			    }
 			}
@@ -1628,8 +1632,8 @@ int how;
 
 		mndx = name_to_mon(buf);
 		if (mndx == NON_PM || (mvitals[mndx].mvflags & G_GENOD)) {
-			pline("Such creatures %s exist in this world.", /* EN pline("Such creatures %s exist in this world.", */ // TODO DE
-			      (mndx == NON_PM) ? "do not" : "no longer"); /* EN (mndx == NON_PM) ? "do not" : "no longer"); */ // TODO DE
+			pline("Solche Wesen existieren %s in dieser Welt.", /* EN pline("Such creatures %s exist in this world.", */
+			      (mndx == NON_PM) ? "nicht" : "nicht mehr"); /* EN (mndx == NON_PM) ? "do not" : "no longer"); */
 			continue;
 		}
 		ptr = &mons[mndx];
@@ -1814,6 +1818,9 @@ boolean
 create_particular()
 {
 	char buf[BUFSZ], *bufp, monclass = MAXMCLASSES;
+#ifdef GERMAN
+	char tmp[BUFSZ];
+#endif
 	int which, tries, i;
 	struct permonst *whichpm;
 	struct monst *mtmp;
@@ -1828,15 +1835,24 @@ create_particular()
 		   buf);
 	    bufp = mungspaces(buf);
 	    if (*bufp == '\033') return FALSE;
+#ifdef GERMAN
+	    german2meta(buf, tmp); /* EN str = strcpy(buf, in_str); */
+	    bufp = tmp;
+	    if (!strncmpi(bufp, "ARTIKEL_BESTIMMTER ", 19)) {
+		bufp += 19;
+	    } else if (!strncmpi(bufp, "ARTIKEL_UNBESTIMMTER ", 21)) {
+		bufp += 21;
+	    }
+#endif
 	    /* allow the initial disposition to be specified */
-	    if (!strncmpi(bufp, "tame ", 5)) { /* EN if (!strncmpi(bufp, "tame ", 5)) { */ // TODO DE
-		bufp += 5;
+	    if (!strncmpi(bufp, "ADJEKTIV_TAME ", 14)) { /* EN if (!strncmpi(bufp, "tame ", 5)) { */
+		bufp += 14; /* EN bufp += 5; */
 		maketame = TRUE;
-	    } else if (!strncmpi(bufp, "peaceful ", 9)) { /* EN } else if (!strncmpi(bufp, "peaceful ", 9)) { */ // TODO DE
-		bufp += 9;
+	    } else if (!strncmpi(bufp, "ADJEKTIV_PEACEFUL ", 18)) { /* EN } else if (!strncmpi(bufp, "peaceful ", 9)) { */
+		bufp += 18; /* EN bufp += 9; */
 		makepeaceful = TRUE;
-	    } else if (!strncmpi(bufp, "hostile ", 8)) { /* EN } else if (!strncmpi(bufp, "hostile ", 8)) { */ // TODO DE
-		bufp += 8;
+	    } else if (!strncmpi(bufp, "ADJEKTIV_HOSTILE ", 17)) { /* EN } else if (!strncmpi(bufp, "hostile ", 8)) { */
+		bufp += 17; /* EN bufp += 8; */
 		makehostile = TRUE;
 	    }
 	    /* decide whether a valid monster was chosen */

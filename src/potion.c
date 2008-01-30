@@ -808,7 +808,7 @@ peffects(otmp)
 		exercise(A_STR, TRUE);
 		break;
 	case POT_FULL_HEALING:
-		Du_fuehlst_dich("völlig geheilt."); /* EN You_feel("completely healed."); */
+		Du_fuehlst_dich("vollständig geheilt."); /* EN You_feel("completely healed."); */
 		healup(400, 4+4*bcsign(otmp), !otmp->cursed, TRUE);
 		/* Restore one lost level if blessed */
 		if (otmp->blessed && u.ulevel < u.ulevelmax) {
@@ -1715,7 +1715,7 @@ dodip()
 		obj->odiluted = (obj->otyp != POT_WATER);
 
 		if (obj->otyp == POT_WATER && !Hallucination) {
-			pline_The("mixture bubbles%s.", /* EN pline_The("mixture bubbles%s.", */ // TODO DE
+			pline_The("mixture bubbles%s.", /* EN pline_The("mixture bubbles%s.", */ // TODO DE die Mixtur, das Gebräu, das Gemisch, 
 				Blind ? "" : ", then clears"); /* EN Blind ? "" : ", then clears"); */ // TODO DE
 		} else if (!Blind) {
 			pline_The("mixture looks %s.", /* EN pline_The("mixture looks %s.", */ // TODO DE

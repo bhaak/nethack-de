@@ -1075,9 +1075,9 @@ dopois:
 			    }
 
 			    if (lifesaved)
-				pline("Unfortunately your brain is still gone."); /* EN pline("Unfortunately your brain is still gone."); */ // TODO DE
+				pline("Unglücklicherweise ist PRONOMEN_POSSESSIV NOUN_GEHIRN immer noch futsch."); /* EN pline("Unfortunately your brain is still gone."); */
 			    else
-				Your("ADJEKTIV_LETZT NOUN_GEDANKEs fades away."); /* EN Your("last thought fades away."); */ // TODO DE
+				Your("ADJEKTIV_LETZT NOUN_GEDANKEs VERB_SCHWINDEN dahin."); /* EN Your("last thought fades away."); */
 			    killer = "Gedankenlosigkeit"; /* EN killer = "brainlessness"; */
 			    killer_format = KILLED_BY;
 			    done(DIED);
@@ -1217,7 +1217,7 @@ dopois:
 		    } else {
 			dmg = 0;
 			if(flags.verbose)
-			    pline("%s brushes against your %s.", Monnam(mtmp), /* EN pline("%s brushes against your %s.", Monnam(mtmp), */ // TODO DE
+			    pline("SUBJECT %s VERB_STREIFEN OBJECT PRONOMEN_POSSESSIV %s.", Monnam(mtmp), /* EN pline("%s brushes against your %s.", Monnam(mtmp), */
 				   body_part(LEG));
 		    }
 		} else dmg = 0;
@@ -1333,7 +1333,7 @@ dopois:
 		if (mtmp->mcan) break;
 		if (u.umonnum == PM_WOOD_GOLEM ||
 		    u.umonnum == PM_LEATHER_GOLEM) {
-			You("rot!"); /* EN You("rot!"); */ // TODO DE
+			You("VERB_VERMODERN!"); /* EN You("rot!"); */
 			/* KMH -- this is okay with unchanging */
 			rehumanize();
 			break;
@@ -1509,7 +1509,7 @@ dopois:
 		    killer_format = KILLED_BY_AN;
 		    delayed_killer = mtmp->data->mname;
 		} else
-		    pline("Yuck!"); /* EN pline("Yuck!"); */ // TODO DE
+		    pline("Igitt!"); /* EN pline("Yuck!"); */
 		break;
 	    case AD_ENCH:	/* KMH -- remove enchantment (disenchanter) */
 		hitmsg(mtmp, mattk);

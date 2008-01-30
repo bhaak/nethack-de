@@ -1605,7 +1605,7 @@ eatspecial() /* called after eating non-food */
 	/* KMH -- idea by "Tommy the Terrorist" */
 	if ((otmp->otyp == TRIDENT) && !otmp->cursed)
 	{
-		pline(Hallucination ? "Four out of five dentists agree." : /* EN pline(Hallucination ? "Four out of five dentists agree." : */ // TODO DE
+		pline(Hallucination ? "Von führenden Zahnärzten empfohlen." : /* EN pline(Hallucination ? "Four out of five dentists agree." : */
 				"That was pure chewing satisfaction!"); /* EN "That was pure chewing satisfaction!"); */ // TODO DE
 		exercise(A_WIS, TRUE);
 	}
@@ -1969,7 +1969,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	 */
 	    if (u.uhs != SATIATED) victual.canchoke = FALSE;
 	    victual.piece = touchfood(otmp);
-	    You("resume your meal."); /* EN You("resume your meal."); */ // TODO DE
+	    You("VERB_SETZEN OBJECT PRONOMEN_POSSESSIV NOUN_MAHLZEIT fort."); /* EN You("resume your meal."); */
 	    start_eating(victual.piece);
 	    return(1);
 	}
@@ -2345,7 +2345,7 @@ boolean incr;
 			else if (incr &&
 				(Role_if(PM_WIZARD) || Race_if(PM_ELF) ||
 				 Role_if(PM_VALKYRIE)))
-			    pline("%s needs food, badly!", /* EN pline("%s needs food, badly!", */ // TODO DE
+			    pline("SUBJECT %s braucht Essen, dringendst!", /* EN pline("%s needs food, badly!", */ /* Gauntlet-Referenz */
 				  (Role_if(PM_WIZARD) || Role_if(PM_VALKYRIE)) ?
 				  urole.name.m : "Elf"); /* EN urole.name.m : "Elf"); */ // TODO DE
 			else

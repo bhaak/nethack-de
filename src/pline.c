@@ -380,7 +380,7 @@ register struct monst *mtmp;
 	    if (wizard) {
 		Sprintf(eos(info), " (%d", mtmp->mtame);
 		if (!mtmp->isminion)
-		    Sprintf(eos(info), "; hungry %ld; apport %d",
+		    Sprintf(eos(info), "; Hunger %ld; apportieren %d", /* EN Sprintf(eos(info), "; hungry %ld; apport %d", */
 			EDOG(mtmp)->hungrytime, EDOG(mtmp)->apport);
 		Strcat(info, ")");
 	    }
@@ -427,7 +427,7 @@ register struct monst *mtmp;
 	Strcpy(monnambuf, x_monnam(mtmp, ARTICLE_THE, (char *)0,
 	    (SUPPRESS_IT|SUPPRESS_INVISIBLE), FALSE));
 
-	pline("Status of %s (%s):  Level %d  HP %d(%d)  AC %d%s.", /* EN pline("Status of %s (%s):  Level %d  HP %d(%d)  AC %d%s.", */ // TODO DE
+	pline("Status of %s (%s):  Level %d  TP %d(%d)  RK %d%s.", /* EN pline("Status of %s (%s):  Level %d  HP %d(%d)  AC %d%s.", */ // TODO DE
 		monnambuf,
 		align_str(alignment),
 		mtmp->m_lev,
@@ -446,10 +446,10 @@ ustatusline()
 	if (Sick) {
 		Strcat(info, ", dying from"); /* EN Strcat(info, ", dying from"); */ // TODO DE
 		if (u.usick_type & SICK_VOMITABLE)
-			Strcat(info, " food poisoning"); /* EN Strcat(info, " food poisoning"); */ // TODO DE
+			Strcat(info, " Lebensmittelvergiftung"); /* EN Strcat(info, " food poisoning"); */
 		if (u.usick_type & SICK_NONVOMITABLE) {
 			if (u.usick_type & SICK_VOMITABLE)
-				Strcat(info, " and"); /* EN Strcat(info, " and"); */ // TODO DE
+				Strcat(info, " und"); /* EN Strcat(info, " and"); */
 			Strcat(info, " illness"); /* EN Strcat(info, " illness"); */ // TODO DE
 		}
 	}
@@ -475,7 +475,7 @@ ustatusline()
 	    const char *what = body_part(LEG);
 	    if ((Wounded_legs & BOTH_SIDES) == BOTH_SIDES)
 		what = makeplural(what);
-				Sprintf(eos(info), ", injured %s", what); /* EN Sprintf(eos(info), ", injured %s", what); */ // TODO DE
+				Sprintf(eos(info), ", ADJEKTIV_VERLETZT %s", what); /* EN Sprintf(eos(info), ", injured %s", what); */ // TODO DE
 	}
 	if (Glib)		Sprintf(eos(info), ", ADJEKTIV_SLIPPERY %s", /* EN if (Glib)		Sprintf(eos(info), ", slippery %s", */
 					makeplural(body_part(HAND)));
@@ -483,7 +483,7 @@ ustatusline()
 	if (Fast)		Strcat(info, Very_fast ?
 						", very fast" : ", fast"); /* EN ", very fast" : ", fast"); */ // TODO DE
 	if (u.uundetected)	Strcat(info, ", concealed"); /* EN if (u.uundetected)	Strcat(info, ", concealed"); */ // TODO DE
-	if (Invis)		Strcat(info, ", invisible"); /* EN if (Invis)		Strcat(info, ", invisible"); */ // TODO DE
+	if (Invis)		Strcat(info, ", unsichtbar"); /* EN if (Invis)		Strcat(info, ", invisible"); */
 	if (u.ustuck) {
 	    if (sticks(youmonst.data))
 		Strcat(info, ", holding "); /* EN Strcat(info, ", holding "); */ // TODO DE
@@ -492,7 +492,7 @@ ustatusline()
 	    Strcat(info, mon_nam(u.ustuck));
 	}
 
-	pline("Status of %s (%s%s):  Level %d  HP %d(%d)  AC %d%s.", /* EN pline("Status of %s (%s%s):  Level %d  HP %d(%d)  AC %d%s.", */ // TODO DE
+	pline("Status of %s (%s%s):  Level %d  TP %d(%d)  RK %d%s.", /* EN pline("Status of %s (%s%s):  Level %d  HP %d(%d)  AC %d%s.", */ // TODO DE
 		plname,
 		    (u.ualign.record >= 20) ? "piously " : /* EN (u.ualign.record >= 20) ? "piously " : */ // TODO DE
 		    (u.ualign.record > 13) ? "devoutly " : /* EN (u.ualign.record > 13) ? "devoutly " : */ // TODO DE

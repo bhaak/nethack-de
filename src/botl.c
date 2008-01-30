@@ -266,7 +266,7 @@ char *buf;
 	if (Is_knox(&u.uz))
 		Sprintf(buf, "%s ", dungeons[u.uz.dnum].dname);
 	else if (In_quest(&u.uz))
-		Sprintf(buf, "Home %d ", dunlev(&u.uz)); /* EN Sprintf(buf, "Home %d ", dunlev(&u.uz)); */ // TODO DE
+		Sprintf(buf, "Zuhause %d ", dunlev(&u.uz)); /* EN Sprintf(buf, "Home %d ", dunlev(&u.uz)); */
 	else if (In_endgame(&u.uz))
 		Sprintf(buf,
 			Is_astralevel(&u.uz) ? "Astralebene " : "End Game "); /* EN Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); */ // TODO DE
@@ -299,7 +299,7 @@ bot2()
 	if(hp < 0) hp = 0;
 	(void) describe_level(newbot2);
 	Sprintf(nb = eos(newbot2),
-		"%c:%-2ld HP:%d(%d) Pw:%d(%d) AC:%-2d", oc_syms[COIN_CLASS],
+		"%c:%-2ld TP:%d(%d) Ma:%d(%d) RK:%-2d", oc_syms[COIN_CLASS], /* EN "%c:%-2ld HP:%d(%d) Pw:%d(%d) AC:%-2d", oc_syms[COIN_CLASS], */
 #ifndef GOLDOBJ
 		u.ugold,
 #else
@@ -311,10 +311,10 @@ bot2()
 		Sprintf(nb = eos(nb), " HD:%d", mons[u.umonnum].mlevel);
 #ifdef EXP_ON_BOTL
 	else if(flags.showexp)
-		Sprintf(nb = eos(nb), " Xp:%u/%-1ld", u.ulevel,u.uexp);
+		Sprintf(nb = eos(nb), " Ef:%u/%-1ld", u.ulevel,u.uexp); /* EN Sprintf(nb = eos(nb), " Xp:%u/%-1ld", u.ulevel,u.uexp); */
 #endif
 	else
-		Sprintf(nb = eos(nb), " Exp:%u", u.ulevel);
+		Sprintf(nb = eos(nb), " Erf:%u", u.ulevel); /* EN Sprintf(nb = eos(nb), " Exp:%u", u.ulevel); */
 
 	if(flags.time)
 	    Sprintf(nb = eos(nb), " T:%ld", moves);
@@ -332,7 +332,7 @@ bot2()
 	if(Blind)	   Sprintf(nb = eos(nb), " blind"); /* EN if(Blind)	   Sprintf(nb = eos(nb), " Blind"); */
 	if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); /* EN if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); */ // TODO DE
 	if(Hallucination)  Sprintf(nb = eos(nb), " hallu"); /* EN if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); */ // TODO DE
-	if(Slimed)         Sprintf(nb = eos(nb), " Slime"); /* EN if(Slimed)         Sprintf(nb = eos(nb), " Slime"); */ // TODO DE
+	if(Slimed)         Sprintf(nb = eos(nb), " Schleim"); /* EN if(Slimed)         Sprintf(nb = eos(nb), " Slime"); */ // TODO DE
 	if(cap > UNENCUMBERED)
 		Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
 #ifdef DUMP_LOG

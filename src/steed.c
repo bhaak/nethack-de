@@ -62,13 +62,13 @@ use_saddle(otmp)
 	    return 0;
 	}
 	if (!u.dx && !u.dy) {
-	    pline("Saddle yourself?  Very funny..."); /* EN pline("Saddle yourself?  Very funny..."); */ // TODO DE
+	    pline("Reiterspielchen?  SUBJECT PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_SOLLEN OBJECT PRONOMEN_PERSONAL was schämen ..."); /* EN pline("Saddle yourself?  Very funny..."); */
 	    return 0;
 	}
 	if (!isok(u.ux+u.dx, u.uy+u.dy) ||
 			!(mtmp = m_at(u.ux+u.dx, u.uy+u.dy)) ||
 			!canspotmon(mtmp)) {
-	    pline("I see nobody there."); /* EN pline("I see nobody there."); */ // TODO DE
+	    pline("Ich sehe da niemanden."); /* EN pline("I see nobody there."); */
 	    return 1;
 	}
 
@@ -89,13 +89,13 @@ use_saddle(otmp)
  	    }
 	}
 	if (ptr == &mons[PM_INCUBUS] || ptr == &mons[PM_SUCCUBUS]) {
-	    pline("Shame on you!"); /* EN pline("Shame on you!"); */ // TODO DE
+	    pline("Shame on you!"); /* EN pline("Shame on you!"); */ // TODO DE Imperativ
 	    exercise(A_WIS, FALSE);
 	    return 1;
 	}
 	if (mtmp->isminion || mtmp->isshk || mtmp->ispriest ||
 			mtmp->isgd || mtmp->iswiz) {
-	    pline("I think %s would mind.", mon_nam(mtmp)); /* EN pline("I think %s would mind.", mon_nam(mtmp)); */ // TODO DE
+	    pline("Ich glaube, %s hätte was dagegen.", mon_nam(mtmp)); /* EN pline("I think %s would mind.", mon_nam(mtmp)); */
 	    return 1;
 	}
 	if (!can_saddle(mtmp)) {
@@ -125,12 +125,12 @@ use_saddle(otmp)
 	    chance -= 20;
 	else if (uarmg &&
 		(s = OBJ_DESCR(objects[uarmg->otyp])) != (char *)0 &&
-		!strncmp(s, "riding ", 7)) /* EN !strncmp(s, "riding ", 7)) */ // TODO DE
+		!strncmp(s, "NOUN_RIDING_", 12)) /* EN !strncmp(s, "riding ", 7)) */
 	    /* Bonus for wearing "riding" (but not fumbling) gloves */
 	    chance += 10;
 	else if (uarmf &&
 		(s = OBJ_DESCR(objects[uarmf->otyp])) != (char *)0 &&
-		!strncmp(s, "riding ", 7)) /* EN !strncmp(s, "riding ", 7)) */ // TODO DE
+		!strncmp(s, "NOUN_RIDING_", 12)) /* EN !strncmp(s, "riding ", 7)) */
 	    /* ... or for "riding boots" */
 	    chance += 10;
 	if (otmp->cursed)
@@ -220,7 +220,7 @@ mount_steed(mtmp, force)
 	if (Wounded_legs) {
 	    Your("%s are in no shape for riding.", makeplural(body_part(LEG))); /* EN Your("%s are in no shape for riding.", makeplural(body_part(LEG))); */ // TODO DE
 #ifdef WIZARD
-	    if (force && wizard && yn("Heal your legs?") == 'y')
+	    if (force && wizard && yn("SUBJECT PRONOMEN_POSSESSIV NOUN_LEGs heilen?") == 'y') /* EN if (force && wizard && yn("Heal your legs?") == 'y') */
 		HWounded_legs = EWounded_legs = 0;
 	    else
 #endif
@@ -242,7 +242,7 @@ mount_steed(mtmp, force)
 		mtmp->mundetected ||
 		mtmp->m_ap_type == M_AP_FURNITURE ||
 		mtmp->m_ap_type == M_AP_OBJECT))) {
-	    pline("I see nobody there."); /* EN pline("I see nobody there."); */ // TODO DE
+	    pline("Ich sehe da niemanden."); /* EN pline("I see nobody there."); */
 	    return (FALSE);
 	}
 	if (u.uswallow || u.ustuck || u.utrap || Punished ||
@@ -257,7 +257,7 @@ mount_steed(mtmp, force)
 	/* Is this a valid monster? */
 	otmp = which_armor(mtmp, W_SADDLE);
 	if (!otmp) {
-	    pline("%s ist nicht ADJEKTIV_SADDLED.", Monnam(mtmp)); /* EN  pline("%s is not saddled.", Monnam(mtmp)); */
+	    pline("SUBJECT %s ist nicht ADJEKTIV_SADDLED.", Monnam(mtmp)); /* EN  pline("%s is not saddled.", Monnam(mtmp)); */
 	    return (FALSE);
 	}
 	ptr = mtmp->data;
@@ -269,7 +269,7 @@ mount_steed(mtmp, force)
 	    instapetrify(kbuf);
 	}
 	if (!mtmp->mtame || mtmp->isminion) {
-	    pline("I think %s would mind.", mon_nam(mtmp)); /* EN pline("I think %s would mind.", mon_nam(mtmp)); */ // TODO DE
+	    pline("Ich glaube, %s hätte was dagegen.", mon_nam(mtmp)); /* EN pline("I think %s would mind.", mon_nam(mtmp)); */
 	    return (FALSE);
 	}
 	if (mtmp->mtrapped) {
@@ -486,7 +486,7 @@ dismount_steed(reason)
 		repair_leg_damage = FALSE;
 		break;
 	    case DISMOUNT_POLY:
-		You("VERB_KOENNEN nicht mehr OBJECT %s reiten.", mon_nam(u.usteed)); /* EN You("can no longer ride %s.", mon_nam(u.usteed)); */
+		You("VERB_KOENNEN nicht mehr OBJECT KASUS_DATIV auf %s reiten.", mon_nam(u.usteed)); /* EN You("can no longer ride %s.", mon_nam(u.usteed)); */
 		if (!have_spot) have_spot = landing_spot(&cc,reason,1);
 		break;
 	    case DISMOUNT_ENGULFED:
