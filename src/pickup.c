@@ -421,7 +421,7 @@ int what;		/* should be a long */
 		}
 		if (notake(youmonst.data)) {
 		    if (!autopickup)
-			You("VERB_SEIN körperlich außer Stande etwas aufzuheben."); /* EN You("are physically incapable of picking anything up."); */
+			You("VERB_SEIN körperlich außerstande etwas aufzuheben."); /* EN You("are physically incapable of picking anything up."); */
 		    else
 			check_here(FALSE);
 		    return (0);

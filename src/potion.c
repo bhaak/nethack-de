@@ -782,7 +782,7 @@ peffects(otmp)
 				goto_level(&newlevel, FALSE, FALSE, FALSE);
 			    }
 			}
-			else You("VERB_HAVE eine dunkle Vorahnung ."); /* EN else You("have an uneasy feeling."); */
+			else You("VERB_HAVE eine dunkle Vorahnung."); /* EN else You("have an uneasy feeling."); */
 			break;
 		}
 		pluslvl(FALSE);
