@@ -439,6 +439,10 @@ START_TEST (test_complete_sentences4) {
 		 "Wie schade, dass du die Kristallkugel nicht sehen kannst."},
 		{"Sieht so aus, als MODIFIER_KONJUNKTIV_II VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wieder daheim in Kansas.",
 		 "Sieht so aus, als wärest du wieder daheim in Kansas."},
+		{"SUBJECT NOUN_VLAD_THE_IMPALER VERB_HIT!",
+		 "Vlad der Pfähler trifft!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_VLAD_THE_IMPALER!",
+		 "Du triffst Vlad den Pfähler!"},
 		 /*
 		 SUBJECT PRONOMEN_PERSONAL try to appease ARTIKEL_BESTIMMTER angry NOUN_PSEUDO_WEIBLICH Tirebolu by giving it 1000 gold pieces.
 		 Du try to appease der angry Tirebolu by giving it 1000 gold pieces.
@@ -611,6 +615,7 @@ START_TEST (test_german2meta) {
 										 {"Augenbinden", "NOUN_BLINDFOLDs"},
 										 {"eine Augenbinden", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLDs"},
 										 {"der Hund", "ARTIKEL_BESTIMMTER NOUN_DOG"},
+										 {"eine Hauskatze", "ARTIKEL_UNBESTIMMTER NOUN_HOUSECAT"},
 										 {"einen geheiligter Rubin", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_GEM_RUBY"},
 										 {"ein geheiligter rubinroter Trank", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_POT_RUBY NOUN_POTION"},
 										 {"eine halb verspeiste Essensration", "ARTIKEL_UNBESTIMMTER halb ADJEKTIV_EATEN NOUN_FOOD_RATION"},
@@ -865,6 +870,37 @@ START_TEST (test_shopkeeper) {
 
 	check_strings(text, sizeof(text)/8);
 } END_TEST
+
+START_TEST (test_genitivattribut_zu_wort) {
+	int i;
+	char *ret = NULL;
+	char *text[][2] = {
+		{"NOUN_IT",
+		 "PRONOMEN_SEIN NOUN_GEHIRN"},
+		{"ARTIKEL_BESTIMMTER NOUN_DOG",
+		 "ARTIKEL_BESTIMMTER NOUN_GEHIRN des Hundes"},
+		{"NOUN_IT",
+		 "PRONOMEN_SEIN NOUN_GEHIRN"},
+		{"NOUN_MEDUSA",
+		 "Medusas NOUN_GEHIRN"},
+		{"NOUN_PSEUDO_MAENNLICH Izchak",
+		 "Izchaks NOUN_GEHIRN"},
+		{"NOUN_PSEUDO_MAENNLICH Hans",
+		 "Hans' NOUN_GEHIRN"},
+		{"NOUN_PSEUDO_MAENNLICH Leibniz",
+		 "Leibniz' NOUN_GEHIRN"},
+		{"NOUN_PSEUDO_MAENNLICH Marx",
+		 "Marx' NOUN_GEHIRN"},
+		{"NOUN_PSEUDO_MAENNLICH Cahersiveen ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_SHOPKEEPER",
+		 "Cahersiveen des unsichtbaren Ladenbesitzers NOUN_GEHIRN"},
+	};
+
+	for (i=0; i<sizeof(text)/8; i++) {
+		ret = genitivattribut_zu_wort(text[i][0], "NOUN_GEHIRN");
+		fail_unless((strcmp(ret, text[i][1])==0),
+								"failed\nto convert: >%s<\nconverted:  >%s<\nexpected:   >%s<\n",
+								text[i][0],ret,text[i][1]);}
+} END_TEST
 //#endif
 
 Suite *test_suite(void)
@@ -874,7 +910,7 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
   
-	if (1) {
+	if (0) {
   tcase_add_test(tc_core, test_satzklammer);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
@@ -902,7 +938,6 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_gems);
 	tcase_add_test(tc_core, test_paar);
   tcase_add_test(tc_core, test_hoeren);
-	}
 	//tcase_add_test(tc_core, test_incomplete_sentences);
 	tcase_add_test(tc_core, test_german2meta);
   tcase_add_test(tc_core, test_token_functions);
@@ -911,7 +946,8 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_noun_pseudo);
 	tcase_add_test(tc_core, test_shopkeeper);
-
+	}
+	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
 
   return s;
 }

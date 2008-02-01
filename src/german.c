@@ -1236,6 +1236,27 @@ void process(char *text[]) {
 	printf("\n");
 }
 
+/* liefert true, wenn der Eigenname apopstrophiert */
+char* eigenname_genitivendung(const char* eigenname) {
+	int len = strlen(eigenname);
+	char token[BUFSZ];
+
+	if (len > 0) {
+		/* Tokens werden nicht veraendert */
+		previous_token(eigenname, token, len-1);
+		if (strncmp(token, "NOUN_", 5)==0) {
+			return "";
+		} else if ((eigenname[len-1]=='s') ||
+		           (eigenname[len-1]=='x') ||
+		           (eigenname[len-1]=='z')) {
+			return "'";
+		} else {
+			return "s";
+		}
+	}
+	return "";
+}
+
 char *
 genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessive */
     const char *attribut;
@@ -1243,7 +1264,6 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 {
 	Static char buf[BUFSZ];
 	char tmp[BUFSZ];
-	int len = strlen(attribut);
 
 	strcpy(buf, "");
 	strcpy(tmp, "");
@@ -1262,16 +1282,13 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 		strcat(buf, german(tmp));
 		strcat(buf, " ");
 		strcat(buf, wort); /* Attributes Wort */
-	} else if ((len > 0) && (attribut[len-1] == 's')) {
-		strcat(buf, attribut);
-		strcat(buf, "'"); 
-		strcat(buf, " ");
-		strcat(buf, wort); /* attribut' Wort */
 	} else {
-		strcat(buf, attribut);
-		strcat(buf, "s"); 
+		strcat(tmp, "KASUS_GENITIV ");
+		strcat(tmp, attribut);
+		strcat(buf, german(tmp));
+		strcat(buf, eigenname_genitivendung(attribut)); 
 		strcat(buf, " ");
-		strcat(buf, wort); /* attributs Wort */
+		strcat(buf, wort); /* attribut' Wort oder attributs Wort */
 	}
 	return buf;
 }
