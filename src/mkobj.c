@@ -1173,7 +1173,7 @@ struct obj *otmp;
 	retval = otmp->age + (age / ROT_ICE_ADJUSTMENT);
 #ifdef DEBUG_EFFECTS
 	pline_The("%s age has ice modifications:otmp->age = %ld, returning %ld.",
-		s_suffix(doname(otmp)),otmp->age, retval);
+		s_suffix(doname(otmp)),otmp->age, retval); /* EN s_suffix(doname(otmp)),otmp->age, retval); */ // TODO DE
 	pline("Effective age of corpse: %ld.",
 		monstermoves - retval);
 #endif

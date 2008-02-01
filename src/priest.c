@@ -653,7 +653,7 @@ struct monst *priest;
 	    break;
 	case 1:
 	    pline("%s voice booms:  \"How darest thou harm my servant!\"", /* EN pline("%s voice booms:  \"How darest thou harm my servant!\"", */ // TODO DE
-			s_suffix(a_gname_at(ax, ay)));
+			s_suffix(a_gname_at(ax, ay))); /* EN s_suffix(a_gname_at(ax, ay))); */ // TODO DE
 	    break;
 	default:
 	    pline("%s roars:  \"Thou dost profane my shrine!\"", /* EN pline("%s roars:  \"Thou dost profane my shrine!\"", */ // TODO DE

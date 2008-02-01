@@ -548,7 +548,7 @@ long timeout;
 			/* egg carring monster might be invisible */
 			if (canseemon(egg->ocarry)) {
 			    Sprintf(carriedby, "%s pack", /* EN Sprintf(carriedby, "%s pack", */ // TODO DE
-				     s_suffix(a_monnam(egg->ocarry)));
+				     s_suffix(a_monnam(egg->ocarry))); /* EN s_suffix(a_monnam(egg->ocarry))); */ // TODO DE
 			    knows_egg = TRUE;
 			}
 			else if (is_pool(mon->mx, mon->my))
@@ -741,7 +741,7 @@ struct obj *obj;
 		break;
 	    case OBJ_MINVENT:
 		pline("%s lantern is getting dim.", /* EN pline("%s lantern is getting dim.", */ // TODO DE
-		    s_suffix(Monnam(obj->ocarry)));
+		    s_suffix(Monnam(obj->ocarry))); /* EN s_suffix(Monnam(obj->ocarry))); */ // TODO DE
 		break;
 	}
 }

@@ -564,7 +564,7 @@ register char *enterstring;
 	if (ANGRY(shkp)) {
 	    verbalize("So, %s, you dare return to %s %s?!", /* EN verbalize("So, %s, you dare return to %s %s?!", */ // TODO DE
 		      plname,
-		      s_suffix(shkname(shkp)),
+		      s_suffix(shkname(shkp)), /* EN s_suffix(shkname(shkp)), */ // TODO DE
 		      shtypes[rt - SHOPBASE].name);
 	} else if (eshkp->robbed) {
 	    pline("%s mutters imprecations against shoplifters.", shkname(shkp)); /* EN pline("%s mutters imprecations against shoplifters.", shkname(shkp)); */ // TODO DE
@@ -572,7 +572,7 @@ register char *enterstring;
 	    verbalize("%s, %s!  Herzlich willkommen%s in %s %s!", /* EN verbalize("%s, %s!  Welcome%s to %s %s!", */
 		      Hello(shkp), plname,
 		      eshkp->visitct++ ? " zurück" : "", /* EN eshkp->visitct++ ? " again" : "", */
-		      s_suffix(shkname(shkp)),
+		      s_suffix(shkname(shkp)), /* EN s_suffix(shkname(shkp)), */ // TODO DE
 		      shtypes[rt - SHOPBASE].name);
 	}
 	/* can't do anything about blocking if teleported in */
@@ -695,7 +695,7 @@ shopper_financial_report()
 		eshkp = ESHK(shkp);
 		if ((amt = eshkp->credit) != 0)
 		    You("VERB_HABEN Kredit in der Höhe von %ld %s in OBJECT KASUS_DATIV %s %s.", /* EN You("have %ld %s credit at %s %s.", */
-			amt, currency(amt), s_suffix(shkname(shkp)),
+			amt, currency(amt), s_suffix(shkname(shkp)), /* EN amt, currency(amt), s_suffix(shkname(shkp)), */ // TODO DE
 			shtypes[eshkp->shoptype - SHOPBASE].name);
 		else if (shkp == this_shkp)
 		    You("VERB_HABEN hier keinen Kredit."); /* EN You("have no credit in here."); */
@@ -1474,7 +1474,7 @@ proceed:
 	}
 	if(!ANGRY(shkp) && paid)
 	    verbalize("Vielen Dank für KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_EINKAUF in KASUS_DATIV %s %s!", /* EN verbalize("Thank you for shopping in %s %s!", */
-		s_suffix(shkname(shkp)),
+		s_suffix(shkname(shkp)), /* EN s_suffix(shkname(shkp)), */ // TODO DE
 		shtypes[eshkp->shoptype - SHOPBASE].name);
 	return(1);
 }
@@ -4081,7 +4081,7 @@ char *buf;
 struct obj *obj;
 {
 	if (obj->where == OBJ_MINVENT)
-	    return strcpy(buf, s_suffix(mon_nam(obj->ocarry)));
+	    return strcpy(buf, s_suffix(mon_nam(obj->ocarry))); /* EN return strcpy(buf, s_suffix(mon_nam(obj->ocarry))); */ // TODO DE
 	return (char *)0;
 }
 

@@ -1258,7 +1258,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 			else
 			    Sprintf(buf, "%s%s rotted corpse", /* EN Sprintf(buf, "%s%s rotted corpse", */ // TODO DE
 				    !type_is_pname(&mons[mnum]) ? "the " : "", /* EN !type_is_pname(&mons[mnum]) ? "the " : "", */ // TODO DE
-				    s_suffix(mons[mnum].mname));
+				    s_suffix(mons[mnum].mname)); /* EN s_suffix(mons[mnum].mname)); */ // TODO DE
 			make_sick(sick_time, buf, TRUE, SICK_VOMITABLE);
 		}
 		if (carried(otmp)) useup(otmp);

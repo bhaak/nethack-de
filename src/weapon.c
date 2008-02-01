@@ -650,7 +650,7 @@ register struct monst *mon;
 
 			if (obj->otyp == PICK_AXE) {
 			    pline("Since %s weapon%s %s,", /* EN pline("Since %s weapon%s %s,", */ // TODO DE
-				  s_suffix(mon_nam(mon)),
+				  s_suffix(mon_nam(mon)), /* EN s_suffix(mon_nam(mon)), */ // TODO DE
 				  plur(mw_tmp->quan), welded_buf);
 			    pline("%s cannot wield that %s.", /* EN pline("%s cannot wield that %s.", */ // TODO DE
 				mon_nam(mon), xname(obj));
@@ -658,7 +658,7 @@ register struct monst *mon;
 			    pline("%s tries to wield %s.", Monnam(mon), /* EN pline("%s tries to wield %s.", Monnam(mon), */ // TODO DE
 				doname(obj));
 			    pline("%s %s %s!",
-				  s_suffix(Monnam(mon)),
+				  s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
 				  xname(mw_tmp), welded_buf);
 			}
 			mw_tmp->bknown = 1;
@@ -675,7 +675,7 @@ register struct monst *mon;
 			pline("%s %s to %s %s!", /* EN pline("%s %s to %s %s!", */ // TODO DE
 			    Tobjnam(obj, "weld"), /* EN Tobjnam(obj, "weld"), */ // TODO DE
 			    is_plural(obj) ? "themselves" : "itself", /* EN is_plural(obj) ? "themselves" : "itself", */ // TODO DE
-			    s_suffix(mon_nam(mon)), mbodypart(mon,HAND));
+			    s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); */ // TODO DE
 			obj->bknown = 1;
 		    }
 		}
@@ -684,7 +684,7 @@ register struct monst *mon;
 		    if (canseemon(mon))
 			pline("%s brilliantly in %s %s!", /* EN pline("%s brilliantly in %s %s!", */ // TODO DE
 			    Tobjnam(obj, "glow"), /* EN Tobjnam(obj, "glow"),  */ // TODO DE
-			    s_suffix(mon_nam(mon)), mbodypart(mon,HAND));
+			    s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); */ // TODO DE
 		}
 		obj->owornmask = W_WEP;
 		return 1;
@@ -1377,7 +1377,7 @@ register struct obj *obj;
 	end_burn(obj, FALSE);
 	if (canseemon(mon))
 	    pline("%s in %s %s %s glowing.", The(xname(obj)), /* EN pline("%s in %s %s %s glowing.", The(xname(obj)), */ // TODO DE
-		  s_suffix(mon_nam(mon)), mbodypart(mon,HAND),
+		  s_suffix(mon_nam(mon)), mbodypart(mon,HAND), /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND), */ // TODO DE
 		  otense(obj, "stop")); /* EN otense(obj, "stop")); */ // TODO DE
     }
     obj->owornmask &= ~W_WEP;

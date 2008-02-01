@@ -763,7 +763,7 @@ struct monst *mon;
 		if (youseeit) {
 		    if (!once++) Strcpy(owner,
 					(mon == &youmonst) ? "PRONOMEN_POSSESSIV" : /* EN (mon == &youmonst) ? "Your" : */
-					s_suffix(Monnam(mon)));
+					s_suffix(Monnam(mon))); /* EN s_suffix(Monnam(mon))); */ // TODO DE
 		    pline("SUBJECT %s %s VERB_WERDEN plötzlich lebendig!", owner, corpse); /* EN pline("%s %s suddenly comes alive!", owner, corpse); */ // TODO DE
 		} else if (canseemon(mtmp2))
 			pline("SUBJECT %s VERB_ERSCHEINEN plötzlich!", Amonnam(mtmp2)); /* EN pline("%s suddenly appears!", Amonnam(mtmp2)); */ //
@@ -2260,7 +2260,7 @@ boolean			youattack, allow_cancel_kill, self_cancel;
 
 	    if (mdef->data == &mons[PM_CLAY_GOLEM]) {
 		if (canseemon(mdef))
-		    pline(writing_vanishes, s_suffix(mon_nam(mdef)));
+		    pline(writing_vanishes, s_suffix(mon_nam(mdef))); /* EN pline(writing_vanishes, s_suffix(mon_nam(mdef))); */ // TODO DE
 
 		if (allow_cancel_kill) {
 		    if (youattack)
@@ -3352,7 +3352,7 @@ register int dx,dy;
 			    hit(fltxt, mon, ".");
 			    pline("%s disintegrates.", Monnam(mon)); /* EN pline("%s disintegrates.", Monnam(mon)); */ // TODO DE
 			    pline("%s body reintegrates before your %s!", /* EN pline("%s body reintegrates before your %s!", */ // TODO DE
-				  s_suffix(Monnam(mon)),
+				  s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
 				  (eyecount(youmonst.data) == 1) ?
 				  	body_part(EYE) : makeplural(body_part(EYE)));
 			    pline("%s resurrects!", Monnam(mon)); /* EN pline("%s resurrects!", Monnam(mon)); */ // TODO DE
@@ -3415,7 +3415,7 @@ register int dx,dy;
 			    /* some armor was destroyed; no damage done */
 			    if (canseemon(mon))
 				pline("%s %s is disintegrated!", /* EN pline("%s %s is disintegrated!", */ // TODO DE
-				      s_suffix(Monnam(mon)),
+				      s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
 				      distant_name(otmp, xname));
 			    m_useup(mon, otmp);
 			}
@@ -4026,7 +4026,7 @@ int osym, dmgtyp;
 
 		if(!cnt) continue;
 		if (vis) pline("%s %s %s!", /* EN if (vis) pline("%s %s %s!", */ // TODO DE
-			s_suffix(Monnam(mtmp)), xname(obj),
+			s_suffix(Monnam(mtmp)), xname(obj), /* EN s_suffix(Monnam(mtmp)), xname(obj), */ // TODO DE
 			(cnt > 1L) ? destroy_strings[dindx*3 + 1]
 				  : destroy_strings[dindx*3]);
 		for(i = 0; i < cnt; i++) m_useup(mtmp, obj);

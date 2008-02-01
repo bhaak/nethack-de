@@ -72,7 +72,7 @@ register struct attack *mattk;
 			break;
 		case AT_TENT:
 			pline("%s tentacles suck you!", /* EN pline("%s tentacles suck you!", */ // TODO DE
-				        s_suffix(Monnam(mtmp)));
+				        s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
 			break;
 		case AT_EXPL:
 		case AT_BOOM:
@@ -382,7 +382,7 @@ mattacku(mtmp)
 		    obj = which_armor(mtmp, WORN_HELMET);
 		    if (obj && is_metallic(obj)) {
 			Your("blow glances off %s helmet.", /* EN Your("blow glances off %s helmet.", */ // TODO DE
-			               s_suffix(mon_nam(mtmp)));
+			               s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
 		    } else {
 			if (3 + find_mac(mtmp) <= rnd(20)) {
 			    pline("%s is hit by a falling piercer (you)!", /* EN pline("%s is hit by a falling piercer (you)!", */ // TODO DE
@@ -1030,7 +1030,7 @@ dopois:
 		hitmsg(mtmp, mattk);
 		if (uncancelled && !rn2(8)) {
 		    Sprintf(buf, "%s %s",
-			    s_suffix(Monnam(mtmp)), mpoisons_subj(mtmp, mattk));
+			    s_suffix(Monnam(mtmp)), mpoisons_subj(mtmp, mattk)); /* EN s_suffix(Monnam(mtmp)), mpoisons_subj(mtmp, mattk)); */ // TODO DE
 		    poisoned(buf, ptmp, mdat->mname, 30);
 		}
 		break;
@@ -1880,7 +1880,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    mtmp->data == &mons[PM_MEDUSA]) {
 		    if(!Blind) {
 		    	(void) ureflects("%s gaze is reflected by your %s.", /* EN (void) ureflects("%s gaze is reflected by your %s.", */ // TODO DE
-		    			s_suffix(Monnam(mtmp)));
+		    			s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
 		    	if (mon_reflects(mtmp,
 		    			"The gaze is reflected away by %s %s!")) /* EN "The gaze is reflected away by %s %s!")) */ // TODO DE
 		    	    break;
@@ -1919,7 +1919,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    mtmp->mspec_used = mtmp->mspec_used + (conf + rn2(6));
 		    if(!Confusion)
 			pline("%s gaze confuses you!", /* EN pline("%s gaze confuses you!", */ // TODO DE
-			                  s_suffix(Monnam(mtmp)));
+			                  s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
 		    else
 			You("are getting more and more confused."); /* EN You("are getting more and more confused."); */ // TODO DE
 		    make_confused(HConfusion + conf, FALSE);
@@ -1944,7 +1944,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    int blnd = d((int)mattk->damn, (int)mattk->damd);
 
 		    You("are blinded by %s radiance!", /* EN You("are blinded by %s radiance!", */ // TODO DE
-			              s_suffix(mon_nam(mtmp)));
+			              s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
 		    make_blinded((long)blnd,FALSE);
 		    stop_occupation();
 		    /* not blind at this point implies you're wearing
@@ -1984,7 +1984,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 
 		    fall_asleep(-rnd(10), TRUE);
 		    pline("%s gaze makes you very sleepy...", /* EN pline("%s gaze makes you very sleepy...", */ // TODO DE
-			  s_suffix(Monnam(mtmp)));
+			  s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
 		}
 		break;
 	    case AD_SLOW:
@@ -2046,12 +2046,12 @@ register struct obj *obj;
 		if (obj->greased || obj->oerodeproof || (obj->blessed && rn2(3))) {
 		    if (vis)
 			pline("Somehow, %s weapon is not affected.", /* EN pline("Somehow, %s weapon is not affected.", */ // TODO DE
-						s_suffix(mon_nam(mon)));
+						s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
 		    if (obj->greased && !rn2(2)) obj->greased = 0;
 		} else {
 		    if (vis)
 			pline("%s %s%s!",
-			        s_suffix(Monnam(mon)),
+			        s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
 				aobjnam(obj, (is_acid ? "corrode" : "rust")), /* EN aobjnam(obj, (is_acid ? "corrode" : "rust")), */ // TODO DE
 			        (is_acid ? obj->oeroded2 : obj->oeroded)
 				    ? " further" : ""); /* EN ? " further" : ""); */ // TODO DE

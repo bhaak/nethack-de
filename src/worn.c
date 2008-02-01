@@ -505,7 +505,7 @@ outer_break:
 	/* if couldn't see it but now can, or vice versa, */
 	if (!creation && (unseen ^ !canseemon(mon))) {
 		if (mon->minvis && !See_invisible) {
-			pline("Suddenly you cannot see %s.", nambuf); /* EN pline("Suddenly you cannot see %s.", nambuf); */ // TODO DE
+			pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s nicht mehr sehen.", nambuf); /* EN pline("Suddenly you cannot see %s.", nambuf); */
 			makeknown(best->otyp);
 		} /* else if (!mon->minvis) pline("%s suddenly appears!", Amonnam(mon)); */
 	}
@@ -645,7 +645,7 @@ boolean polyspot;
 	    if ((otmp = which_armor(mon, W_ARM)) != 0) {
 		if (vis)
 		    pline("%s armor falls around %s!", /* EN pline("%s armor falls around %s!", */ // TODO DE
-				 s_suffix(Monnam(mon)), pronoun);
+				 s_suffix(Monnam(mon)), pronoun); /* EN s_suffix(Monnam(mon)), pronoun); */ // TODO DE
 		else
 		    You_hear("a thud."); /* EN You_hear("a thud."); */ // TODO DE
 		if (polyspot) bypass_obj(otmp);
@@ -655,7 +655,7 @@ boolean polyspot;
 		if (vis) {
 		    if (is_whirly(mon->data))
 			pline("%s %s falls, unsupported!", /* EN pline("%s %s falls, unsupported!", */ // TODO DE
-				     s_suffix(Monnam(mon)), cloak_simple_name(otmp));
+				     s_suffix(Monnam(mon)), cloak_simple_name(otmp)); /* EN s_suffix(Monnam(mon)), cloak_simple_name(otmp)); */ // TODO DE
 		    else
 			pline("%s shrinks out of %s %s!", Monnam(mon), /* EN pline("%s shrinks out of %s %s!", Monnam(mon), */ // TODO DE
 						ppronoun, cloak_simple_name(otmp));
@@ -703,7 +703,7 @@ boolean polyspot;
 		    (handless_or_tiny || !is_flimsy(otmp))) {
 		if (vis)
 		    pline("%s helmet falls to the %s!", /* EN pline("%s helmet falls to the %s!", */ // TODO DE
-			  s_suffix(Monnam(mon)), surface(mon->mx, mon->my));
+			  s_suffix(Monnam(mon)), surface(mon->mx, mon->my)); /* EN s_suffix(Monnam(mon)), surface(mon->mx, mon->my)); */ // TODO DE
 		else
 		    You_hear("a clank."); /* EN You_hear("a clank."); */ // TODO DE
 		if (polyspot) bypass_obj(otmp);
@@ -715,9 +715,9 @@ boolean polyspot;
 		if (vis) {
 		    if (is_whirly(mon->data))
 			pline("%s boots fall away!", /* EN pline("%s boots fall away!", */ // TODO DE
-				       s_suffix(Monnam(mon)));
+				       s_suffix(Monnam(mon))); /* EN s_suffix(Monnam(mon))); */ // TODO DE
 		    else pline("%s boots %s off %s feet!", /* EN else pline("%s boots %s off %s feet!", */ // TODO DE
-			s_suffix(Monnam(mon)),
+			s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
 			verysmall(mdat) ? "slide" : "are pushed", ppronoun); /* EN verysmall(mdat) ? "slide" : "are pushed", ppronoun); */ // TODO DE
 		}
 		if (polyspot) bypass_obj(otmp);

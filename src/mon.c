@@ -197,7 +197,7 @@ register struct monst *mtmp;
 		if (mtmp->mrevived && rn2(20)) {
 			if (canseemon(mtmp))
 			   pline("%s recently regrown horn crumbles to dust.", /* EN pline("%s recently regrown horn crumbles to dust.", */ // TODO DE
-				s_suffix(Monnam(mtmp)));
+				s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
 		} else
 			(void) mksobj_at(UNICORN_HORN, x, y, TRUE, FALSE);
 		goto default_1;
@@ -1375,7 +1375,7 @@ struct monst *mtmp;
 		if (cansee(mtmp->mx, mtmp->my)) {
 			pline("But wait..."); /* EN pline("But wait..."); */ // TODO DE
 			pline("%s medallion begins to glow!", /* EN pline("%s medallion begins to glow!", */ // TODO DE
-				s_suffix(Monnam(mtmp)));
+				s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
 			makeknown(AMULET_OF_LIFE_SAVING);
 			if (attacktype(mtmp->data, AT_EXPL)
 			    || attacktype(mtmp->data, AT_BOOM))
@@ -1509,7 +1509,7 @@ boolean was_swallowed;			/* digestion */
 			There("is an explosion in your %s!", /* EN There("is an explosion in your %s!", */ // TODO DE
 			      body_part(STOMACH));
 			Sprintf(killer_buf, "%s explosion", /* EN Sprintf(killer_buf, "%s explosion", */ // TODO DE
-				s_suffix(mdat->mname));
+				s_suffix(mdat->mname)); /* EN s_suffix(mdat->mname)); */ // TODO DE
 			if (Half_physical_damage) tmp = (tmp+1) / 2;
 			losehp(tmp, killer_buf, KILLED_BY_AN);
 		    } else {

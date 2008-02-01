@@ -1088,7 +1088,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			}
 			if (noncorporeal(mdef->data) || amorphous(mdef->data)) {
 				pline("%s slices through %s %s.", wepdesc, /* EN pline("%s slices through %s %s.", wepdesc, */ // TODO DE
-				      s_suffix(mon_nam(mdef)),
+				      s_suffix(mon_nam(mdef)), /* EN s_suffix(mon_nam(mdef)), */ // TODO DE
 				      mbodypart(mdef,NECK));
 				return TRUE;
 			}

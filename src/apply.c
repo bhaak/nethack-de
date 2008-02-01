@@ -1093,7 +1093,7 @@ struct obj *obj;
 		    pline("SUBJECT %s NOUN_LAMP VERB_BRENNEN jetzt.", Shk_Your(buf, obj)); /* EN pline("%s lamp is now on.", Shk_Your(buf, obj)); */
 		} else {	/* candle(s) */
 		    pline("%s flame%s %s%s", /* EN pline("%s flame%s %s%s", */ // TODO DE
-			s_suffix(Yname2(obj)),
+			s_suffix(Yname2(obj)), /* EN s_suffix(Yname2(obj)), */ // TODO DE
 			plur(obj->quan), otense(obj, "burn"), /* EN plur(obj->quan), otense(obj, "burn"), */ // TODO DE
 			Blind ? "." : " brightly!"); /* EN Blind ? "." : " brightly!"); */ // TODO DE
 		    if (obj->unpaid && costly_spot(u.ux, u.uy) &&
@@ -1650,7 +1650,7 @@ long timeout;
 			/* figurine carring monster might be invisible */
 			if (canseemon(figurine->ocarry)) {
 			    Sprintf(carriedby, "%s pack", /* EN Sprintf(carriedby, "%s pack", */ // TODO DE
-				     s_suffix(a_monnam(mon)));
+				     s_suffix(a_monnam(mon))); /* EN s_suffix(a_monnam(mon))); */ // TODO DE
 			}
 			else if (is_pool(mon->mx, mon->my))
 			    Strcpy(carriedby, "empty water"); /* EN Strcpy(carriedby, "empty water"); */ // TODO DE
@@ -2258,7 +2258,7 @@ struct obj *obj;
 		mon_hand = 0;	/* lint suppression */
 
 	    You("wrap your bullwhip around %s %s.", /* EN You("wrap your bullwhip around %s %s.", */ // TODO DE
-		s_suffix(mon_nam(mtmp)), onambuf);
+		s_suffix(mon_nam(mtmp)), onambuf); /* EN s_suffix(mon_nam(mtmp)), onambuf); */ // TODO DE
 	    if (gotit && otmp->cursed) {
 		pline("%s welded to %s %s%c", /* EN pline("%s welded to %s %s%c", */ // TODO DE
 		      (otmp->quan == 1L) ? "It is" : "They are", /* EN (otmp->quan == 1L) ? "It is" : "They are", */ // TODO DE
@@ -2321,7 +2321,7 @@ struct obj *obj;
 		default:
 		    /* to floor beneath mon */
 		    You("yank %s from %s %s!", the(onambuf), /* EN You("yank %s from %s %s!", the(onambuf), */ // TODO DE
-			s_suffix(mon_nam(mtmp)), mon_hand);
+			s_suffix(mon_nam(mtmp)), mon_hand); /* EN s_suffix(mon_nam(mtmp)), mon_hand); */ // TODO DE
 		    obj_no_longer_held(otmp);
 		    place_object(otmp, mtmp->mx, mtmp->my);
 		    stackobj(otmp);

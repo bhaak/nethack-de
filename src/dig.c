@@ -1167,7 +1167,7 @@ zap_dig()
 	    if (!is_whirly(mtmp->data)) {
 		if (is_animal(mtmp->data))
 		    You("pierce %s %s wall!", /* EN You("pierce %s %s wall!", */ // TODO DE
-			s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH));
+			s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); /* EN s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); */ // TODO DE
 		mtmp->mhp = 1;		/* almost dead */
 		expels(mtmp, mtmp->data, !is_animal(mtmp->data));
 	    }

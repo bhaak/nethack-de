@@ -195,7 +195,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	    if (objects[otmp->otyp].oc_material == SILVER &&
 		    hates_silver(mtmp->data)) {
 		if (vis) pline_The("silver sears %s flesh!", /* EN if (vis) pline_The("silver sears %s flesh!", */ // TODO DE
-				s_suffix(mon_nam(mtmp)));
+				s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
 		else if (verbose) pline("Its flesh is seared!"); /* EN else if (verbose) pline("Its flesh is seared!"); */ // TODO DE
 	    }
 	    if (otmp->otyp == ACID_VENOM && cansee(mtmp->mx,mtmp->my)) {
@@ -333,12 +333,12 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			if (singleobj->otyp > LAST_GEM) {
 			    You("VERB_FANGEN OBJECT ARTIKEL_BESTIMMTER %s.", xname(singleobj)); /* EN You("catch the %s.", xname(singleobj)); */
 			    You("are not interested in %s junk.", /* EN You("are not interested in %s junk.", */ // TODO DE
-				s_suffix(mon_nam(mon)));
+				s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
 			    makeknown(singleobj->otyp);
 			    dropy(singleobj);
 			} else {
 			    You("accept %s gift in the spirit in which it was intended.", /* EN You("accept %s gift in the spirit in which it was intended.", */ // TODO DE
-				s_suffix(mon_nam(mon)));
+				s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
 			    (void)hold_another_object(singleobj,
 				"You catch, but drop, %s.", xname(singleobj), /* EN "You catch, but drop, %s.", xname(singleobj), */ // TODO DE
 				"SUBJECT VERB_FANGEN:"); /* EN "You catch:"); */
@@ -626,7 +626,7 @@ register struct attack *mattk;
 
 	    if(flags.soundok)
 		pline("A dry rattle comes from %s throat.", /* EN pline("A dry rattle comes from %s throat.", */ // TODO DE
-		                      s_suffix(mon_nam(mtmp)));
+		                      s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
 	    return 0;
 	}
 	if(lined_up(mtmp)) {

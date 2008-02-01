@@ -1374,7 +1374,7 @@ struct obj *obj;
 		if(u.uswallow){
 			if (is_animal(u.ustuck->data))
 				pline("%s %s is lit.", /* EN pline("%s %s is lit.", */ // TODO DE
-				        s_suffix(Monnam(u.ustuck)),
+				        s_suffix(Monnam(u.ustuck)), /* EN s_suffix(Monnam(u.ustuck)), */ // TODO DE
 					mbodypart(u.ustuck, STOMACH));
 			else
 				if (is_whirly(u.ustuck->data))

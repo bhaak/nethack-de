@@ -767,7 +767,7 @@ unsigned trflags;
 #ifdef STEED
 		if (u.usteed) {
 		    pline("%s bear trap closes on %s %s!", /* EN pline("%s bear trap closes on %s %s!", */ // TODO DE
-			A_Your[trap->madeby_u], s_suffix(mon_nam(u.usteed)),
+			A_Your[trap->madeby_u], s_suffix(mon_nam(u.usteed)), /* EN A_Your[trap->madeby_u], s_suffix(mon_nam(u.usteed)), */ // TODO DE
 			mbodypart(u.usteed, FOOT));
 		} else
 #endif

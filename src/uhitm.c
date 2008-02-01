@@ -646,7 +646,7 @@ int thrown;
 			MON_NOWEP(mon);
 			mon->weapon_check = NEED_WEAPON;
 			pline("%s %s %s from the force of your blow!", /* EN pline("%s %s %s from the force of your blow!", */ // TODO DE
-			      s_suffix(Monnam(mon)), xname(monwep),
+			      s_suffix(Monnam(mon)), xname(monwep), /* EN s_suffix(Monnam(mon)), xname(monwep), */ // TODO DE
 			      otense(monwep, "shatter")); /* EN otense(monwep, "shatter")); */ // TODO DE
 			m_useup(mon, monwep);
 			/* If someone just shattered MY weapon, I'd flee! */
@@ -843,7 +843,7 @@ int thrown;
 				/* note: s_suffix returns a modifiable buffer */
 				if (haseyes(mdat)
 				    && mdat != &mons[PM_FLOATING_EYE])
-				    whom = strcat(strcat(s_suffix(whom), " "),
+				    whom = strcat(strcat(s_suffix(whom), " "), /* EN whom = strcat(strcat(s_suffix(whom), " "), */ // TODO DE
 						  mbodypart(mon, FACE));
 				pline("%s %s over %s!", /* EN pline("%s %s over %s!", */ // TODO DE
 				      what, vtense(what, "splash"), whom); /* EN what, vtense(what, "splash"), whom); */ // TODO DE
@@ -1113,7 +1113,7 @@ struct attack *mattk;
 	    You("%s %s %s %s!",
 		mattk->adtyp == AD_WRAP ?
 			"slip off of" : "grab, but cannot hold onto", /* EN "slip off of" : "grab, but cannot hold onto", */ // TODO DE
-		s_suffix(mon_nam(mdef)),
+		s_suffix(mon_nam(mdef)), /* EN s_suffix(mon_nam(mdef)), */ // TODO DE
 		obj->greased ? "ADJKETIV_GREASED" : "ADJEKTIV_SLIPPERY", /* EN obj->greased ? "greased" : "slippery", */
 		/* avoid "slippery slippery cloak"
 		   for undiscovered oilskin cloak */
@@ -1452,7 +1452,7 @@ register struct attack *mattk;
 		    if (mdef->data == &mons[PM_CLAY_GOLEM]) {
 			if (!Blind)
 			    pline("Some writing vanishes from %s head!", /* EN pline("Some writing vanishes from %s head!", */ // TODO DE
-				s_suffix(mon_nam(mdef)));
+				s_suffix(mon_nam(mdef))); /* EN s_suffix(mon_nam(mdef))); */ // TODO DE
 			xkilled(mdef, 0);
 			/* Don't return yet; keep hp<1 and tmp=0 for pet msg */
 		    } else {
@@ -1584,7 +1584,7 @@ register struct attack *mattk;
 			tmp = 0;
 			if (flags.verbose)
 			    You("brush against %s %s.", /* EN You("brush against %s %s.", */ // TODO DE
-				s_suffix(mon_nam(mdef)),
+				s_suffix(mon_nam(mdef)), /* EN s_suffix(mon_nam(mdef)), */ // TODO DE
 				mbodypart(mdef, LEG));
 		    }
 		} else tmp = 0;
@@ -2150,7 +2150,7 @@ uchar aatyp;
 	    if(mhit && rn2(2)) {
 		if (Blind || !flags.verbose) You("are splashed!"); /* EN if (Blind || !flags.verbose) You("are splashed!"); */ // TODO DE
 		else	You("are splashed by %s acid!", /* EN else	You("are splashed by %s acid!", */ // TODO DE
-			                s_suffix(mon_nam(mon)));
+			                s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
 
 		if (!Acid_resistance)
 			mdamageu(mon, tmp);
@@ -2250,14 +2250,14 @@ uchar aatyp;
 		    }
 		    if(mon->mcansee) {
 			if (ureflects("%s gaze is reflected by your %s.", /* EN if (ureflects("%s gaze is reflected by your %s.", */ // TODO DE
-				    s_suffix(Monnam(mon))))
+				    s_suffix(Monnam(mon)))) /* EN s_suffix(Monnam(mon)))) */ // TODO DE
 			    ;
 			else if (Free_action)
 			    You("momentarily stiffen under %s gaze!", /* EN You("momentarily stiffen under %s gaze!", */ // TODO DE
-				    s_suffix(mon_nam(mon)));
+				    s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
 			else {
 			    You("are frozen by %s gaze!", /* EN You("are frozen by %s gaze!", */ // TODO DE
-				  s_suffix(mon_nam(mon)));
+				  s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
 			    nomul((ACURR(A_WIS) > 12 || rn2(4)) ? -tmp : -127);
 			}
 		    } else {

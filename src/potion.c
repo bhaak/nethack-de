@@ -986,7 +986,7 @@ boolean your_fault;
 
 		    if(has_head(mon->data)) {
 			Sprintf(buf, "%s %s",
-				s_suffix(mnam),
+				s_suffix(mnam), /* EN s_suffix(mnam), */ // TODO DE
 				(notonhead ? "body" : "head")); /* EN (notonhead ? "body" : "head")); */ // TODO DE
 		    } else {
 			Strcpy(buf, mnam);

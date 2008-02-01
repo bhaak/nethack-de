@@ -325,7 +325,7 @@ convert_line()
 
 					/* append possessive suffix */
 				case 'S': cvt_buf[0] = highc(cvt_buf[0]);
-				case 's': Strcpy(cvt_buf, s_suffix(cvt_buf));
+				case 's': Strcpy(cvt_buf, s_suffix(cvt_buf)); /* EN case 's': Strcpy(cvt_buf, s_suffix(cvt_buf)); */ // TODO DE
 				    break;
 
 					/* strip any "the" prefix */

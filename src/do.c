@@ -469,7 +469,7 @@ register struct obj *obj;
 			char buf[BUFSZ];
 
 			/* doname can call s_suffix, reusing its buffer */
-			Strcpy(buf, s_suffix(mon_nam(u.ustuck)));
+			Strcpy(buf, s_suffix(mon_nam(u.ustuck))); /* EN Strcpy(buf, s_suffix(mon_nam(u.ustuck))); */ // TODO DE
 			You("VERB_DROP %s _in_ %s %s SATZKLAMMER.", doname(obj), buf, /* EN You("drop %s into %s %s.", doname(obj), buf, */ // TODO DE
 				mbodypart(u.ustuck, STOMACH));
 		}
@@ -1517,7 +1517,7 @@ struct obj *corpse;
 	   	if (container_where == OBJ_MINVENT && cansee(mtmp->mx, mtmp->my) &&
 		    mcarry && canseemon(mcarry) && container) {
 		        char sackname[BUFSZ];
-		        Sprintf(sackname, "%s %s", s_suffix(mon_nam(mcarry)),
+		        Sprintf(sackname, "%s %s", s_suffix(mon_nam(mcarry)), /* EN Sprintf(sackname, "%s %s", s_suffix(mon_nam(mcarry)), */ // TODO DE
 				xname(container)); 
 	   		pline("%s writhes out of %s!", Amonnam(mtmp), sackname); /* EN pline("%s writhes out of %s!", Amonnam(mtmp), sackname); */ // TODO DE
 	   	} else if (container_where == OBJ_INVENT && container) {
