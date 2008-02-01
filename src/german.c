@@ -6,14 +6,22 @@
 
 #ifndef NO_HACK_H_INCLUDE
 # include "hack.h"
+#else
+# define TBUFSZ 300
+# define BUFSZ 300
 #endif
 
 #include "german.h"
 
-#define TBUFSZ 300
 
 //#define DEBUG 1
 #define WISH_DEBUG 0
+
+#ifdef LINT
+# define Static		/* pacify lint */
+#else
+# define Static static
+#endif
 
 /*
 
@@ -1226,6 +1234,46 @@ void process(char *text[]) {
 		exit(10);
 	}
 	printf("\n");
+}
+
+char *
+genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessive */
+    const char *attribut;
+    const char *wort;
+{
+	Static char buf[BUFSZ];
+	char tmp[BUFSZ];
+	int len = strlen(attribut);
+
+	strcpy(buf, "");
+	strcpy(tmp, "");
+	if(!strcmp(attribut, "NOUN_IT")) {
+		strcat(buf, "PRONOMEN_SEIN "); /* sein Wort */
+		strcat(buf, wort);
+	} else if (!strncmp(attribut, "ARTIKEL_", 8)) {
+		strcat(buf, "ARTIKEL_BESTIMMTER ");
+		strcat(buf, wort);
+		strcat(tmp, " KASUS_GENITIV ");
+		strcat(tmp, attribut);
+		strcat(buf, german(tmp)); /* das Wort des Attributes */
+	} else if (!strncmp(attribut, "NOUN_", 5) && strncmp(attribut, "NOUN_PSEUDO_", 12)) {
+		strcat(tmp, "KASUS_GENITIV ");
+		strcat(tmp, attribut);
+		strcat(buf, german(tmp));
+		strcat(buf, " ");
+		strcat(buf, wort); /* Attributes Wort */
+	} else if ((len > 0) && (attribut[len-1] == 's')) {
+		strcat(buf, attribut);
+		strcat(buf, "'"); 
+		strcat(buf, " ");
+		strcat(buf, wort); /* attribut' Wort */
+	} else {
+		strcat(buf, attribut);
+		strcat(buf, "s"); 
+		strcat(buf, " ");
+		strcat(buf, wort); /* attributs Wort */
+	}
+	return buf;
 }
 
 /*

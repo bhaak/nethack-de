@@ -1038,7 +1038,7 @@ int thrown;
 		}
 		/* note: s_suffix returns a modifiable buffer */
 		if (!noncorporeal(mdat))
-		    whom = strcat(s_suffix(whom), " flesh"); /* EN whom = strcat(s_suffix(whom), " flesh"); */ // TODO DE
+		    whom = genitivattribut_zu_wort(whom, "NOUN_FLEISCH"); /* EN whom = strcat(s_suffix(whom), " flesh"); */
 		pline(fmt, whom);
 	}
 
@@ -1528,11 +1528,12 @@ register struct attack *mattk;
 
 		if ((mdef->misc_worn_check & W_ARMH) && rn2(8)) {
 		    pline("SUBJECT ARTIKEL_BESTIMMTER NOUN_HELMET %s blockt OBJECT PRONOMEN_POSSESSIV NOUN_ATTACK auf %s NOUN_KOPF.", /* EN pline("%s helmet blocks your attack to %s head.", */ // TODO DE
-			  genitivattribut(mdef), mhis(mdef)); /* EN s_suffix(Monnam(mdef)), mhis(mdef)); */
+			  genitivattribut(mdef), mhis(mdef)); /* EN s_suffix(Monnam(mdef)), mhis(mdef)); */ // TODO DE
 		    break;
 		}
 
-		You("VERB_EAT das Gehirn %s!", genitivattribut(mdef)); /* EN You("eat %s brain!", s_suffix(mon_nam(mdef))); */
+		You("VERB_EAT OBJECT %s!", genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GEHIRN")); /* EN You("eat %s brain!", s_suffix(mon_nam(mdef))); */
+
 		u.uconduct.food++;
 		if (touch_petrifies(mdef->data) && !Stone_resistance && !Stoned) {
 		    Stoned = 5;

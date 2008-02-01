@@ -30,6 +30,30 @@ void check_strings(char* text[][2], int size) {
 								text[i][0],ret,text[i][1]);}
 }
 
+START_TEST (test_genitivattribut_zu_wort) {
+	struct monst *mtmp;
+	int i;
+	char *str = NULL;
+
+	mtmp = makemon(&mons[PM_MEDUSA], u.ux, u.uy, NO_MM_FLAGS);
+	str = genitivattribut_zu_wort(noit_mon_nam(mtmp), "NOUN_GEHIRN");
+	printf("%s\n", str);
+	fail_unless(strcmp("Medusas NOUN_GEHIRN", str)==0);
+
+	mtmp = makemon(&mons[PM_GNOME], u.ux, u.uy, NO_MM_FLAGS);
+	str = genitivattribut_zu_wort(noit_mon_nam(mtmp), "NOUN_GEHIRN");
+	printf("%s\n", str);
+	fail_unless(strcmp("ARTIKEL_BESTIMMTER NOUN_GEHIRN des Gnomen", str)==0);
+
+	str = genitivattribut_zu_wort("NOUN_PSEUDO_MAENNLICH Izchak", "NOUN_GEHIRN");
+	printf("%s\n", str);
+	fail_unless(strcmp("NOUN_PSEUDO_MAENNLICH Izchaks NOUN_GEHIRN", str)==0);
+
+	str = genitivattribut_zu_wort("NOUN_IT", "NOUN_GEHIRN");
+	printf("%s\n", str);
+	fail_unless(strcmp("PRONOMEN_SEIN NOUN_GEHIRN", str)==0);
+} END_TEST
+
 #undef canspotmon
 #define canspotmon(mon) (0)
 
@@ -321,6 +345,7 @@ Suite *test_suite(void)
   suite_add_tcase (s, tc_core);
 //	tcase_add_test(tc_core, test_wishing);
 	tcase_add_test(tc_core, test_naming);
+	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
 
   return s;
 }
