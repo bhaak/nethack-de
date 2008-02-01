@@ -61,5 +61,6 @@ extern struct verb_struct verben[];
 char* german(const char *line);
 void german2meta(const char *str, char *result);
 struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(const char *wort, char *with);
+char* genitivattribut_zu_wort(const char *attribut, const char *wort);
 
 #endif /* !_GERMAN_H */

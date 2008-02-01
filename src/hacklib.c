@@ -144,6 +144,8 @@ strkitten(s, c)		/* append a character to a string (in place) */
     return s;
 }
 
+/* DE nur fuer Eigennamen und Ladenbesitzer verwenden,
+ *    fuer allgemeine Monster genitivattribut_zu_wort aus german.c verwenden */
 char *
 s_suffix(s)		/* return a name converted to possessive */
     const char *s;
@@ -153,10 +155,12 @@ s_suffix(s)		/* return a name converted to possessive */
     Strcpy(buf, s);
     if(!strcmpi(buf, "NOUN_IT")) /* EN if(!strcmpi(buf, "it")) */
 	Strcpy(buf, "PRONOMEN_POSSESSIV"); /* EN Strcat(buf, "s"); */
-    else if(*(eos(buf)-1) == 's') /* EN else if(*(eos(buf)-1) == 's') */ // TODO DE
-	Strcat(buf, "'"); /* EN Strcat(buf, "'"); */ // TODO DE
+    else if ((*(eos(buf)-1) == 's') || /* EN else if(*(eos(buf)-1) == 's') */
+             (*(eos(buf)-1) == 'x') || /* EN */
+             (*(eos(buf)-1) == 'z')) /* EN */
+	Strcat(buf, "'");
     else
-	Strcat(buf, "s"); /* EN Strcat(buf, "'s"); */ // TODO DE
+	Strcat(buf, "s"); /* EN Strcat(buf, "'s"); */
     return buf;
 }
 
