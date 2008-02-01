@@ -1017,7 +1017,7 @@ int thrown;
 	  (!destroyed || (thrown && m_shot.n > 1 && m_shot.o == obj->otyp))) {
 		if (thrown) hit(mshot_xname(obj), mon, exclam(tmp));
 		else if (!flags.verbose) You("VERB_HIT es."); /* EN  else if (!flags.verbose) You("hit it."); */
-		else You("%s OBJECT %s%s", Role_if(PM_BARBARIAN) ? "smite" : "VERB_HIT", /* EN else You("%s %s%s", Role_if(PM_BARBARIAN) ? "smite" : "hit", */
+		else You("%s OBJECT %s%s", Role_if(PM_BARBARIAN) ? "smite" : "VERB_HIT", /* EN else You("%s %s%s", Role_if(PM_BARBARIAN) ? "smite" : "hit", */ // TODO DE
 			 mon_nam(mon), canseemon(mon) ? exclam(tmp) : ".");
 	}
 
@@ -1415,7 +1415,7 @@ register struct attack *mattk;
 			    addinv(mongold);
 			    Your("NOUN_PURSE fühlt sich schwerer an."); /* EN Your("purse feels heavier."); */
 			} else {
-                            You("VERB_SCHNAPPEN %s NOUN_GOLD, aber VERB_FINDEN keinen Platz in OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_RUCKSACK.", s_suffix(mon_nam(mdef))); /* EN You("grab %s's gold, but find no room in your knapsack.", mon_nam(mdef)); */ // TODO DE
+                            You("VERB_SCHNAPPEN %s, aber VERB_FINDEN keinen Platz in OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_RUCKSACK.", genitivattribut_zu_wort(mon_nam(mdef),"NOUN_GOLD")); /* EN You("grab %s's gold, but find no room in your knapsack.", mon_nam(mdef)); */
 			    dropy(mongold);
 		        }
 		    }
@@ -1527,8 +1527,8 @@ register struct attack *mattk;
 		if (m_slips_free(mdef, mattk)) break;
 
 		if ((mdef->misc_worn_check & W_ARMH) && rn2(8)) {
-		    pline("SUBJECT ARTIKEL_BESTIMMTER NOUN_HELMET %s blockt OBJECT PRONOMEN_POSSESSIV NOUN_ATTACK auf %s NOUN_KOPF.", /* EN pline("%s helmet blocks your attack to %s head.", */ // TODO DE
-			  genitivattribut(mdef), mhis(mdef)); /* EN s_suffix(Monnam(mdef)), mhis(mdef)); */ // TODO DE
+		    pline("SUBJECT %s blockt OBJECT PRONOMEN_POSSESSIV NOUN_ATTACK auf %s NOUN_KOPF.", /* EN pline("%s helmet blocks your attack to %s head.", */
+			  genitivattribut_zu_wort(Monnam(mdef), "NOUN_HELMET"), mhis(mdef)); /* EN s_suffix(Monnam(mdef)), mhis(mdef)); */
 		    break;
 		}
 
@@ -1890,8 +1890,8 @@ register struct attack *mattk;
 		You("%s %s!", is_animal(youmonst.data) ? "regurgitate" /* EN You("%s %s!", is_animal(youmonst.data) ? "regurgitate" */ // TODO DE
 			: "expel", mon_nam(mdef)); /* EN : "expel", mon_nam(mdef)); */ // TODO DE
 		if (Slow_digestion || is_animal(youmonst.data)) {
-		    pline("Obviously, you didn't like %s taste.", /* EN pline("Obviously, you didn't like %s taste.", */ // TODO DE
-			  s_suffix(mon_nam(mdef)));
+		    pline("Offensichtlich VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s nicht.", /* EN pline("Obviously, you didn't like %s taste.", */
+			  genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GESCHMACK")); /* EN s_suffix(mon_nam(mdef))); */
 		}
 	    } else {
 		char kbuf[BUFSZ];
