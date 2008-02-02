@@ -218,7 +218,7 @@ doit:
 				 is_flyer(mon->data) ? "swoops" : /* EN is_flyer(mon->data) ? "swoops" : */ // TODO DE
 				 (nolimbs(mon->data) || slithy(mon->data)) ?
 					"slides" : "jumps"), /* EN "slides" : "jumps"), */ // TODO DE
-				clumsy ? "easily" : "nimbly", /* EN clumsy ? "easily" : "nimbly", */ // TODO DE
+				clumsy ? "problemlos" : "flink", /* EN clumsy ? "easily" : "nimbly", */
 				clumsy ? "ADJEKTIV_PLUMP " : ""); /* EN clumsy ? "clumsy " : ""); */
 			(void) passive(mon, FALSE, 1, AT_KICK);
 			return;

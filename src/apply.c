@@ -5,6 +5,10 @@
 #include "hack.h"
 #include "edog.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVLB
 
 static const char tools[] = { TOOL_CLASS, WEAPON_CLASS, WAND_CLASS, 0 };
@@ -70,8 +74,8 @@ use_camera(obj)
 	if (obj->cursed && !rn2(2)) {
 		(void) zapyourself(obj, TRUE);
 	} else if (u.uswallow) {
-		You("take a picture of %s %s.", s_suffix(mon_nam(u.ustuck)), /* EN You("take a picture of %s %s.", s_suffix(mon_nam(u.ustuck)), */ // TODO DE
-		    mbodypart(u.ustuck, STOMACH));
+		You("VERB_FOTOGRAFIEREN OBJECT %s.", genitivattribut_zu_wort(mon_nam(u.ustuck), /* EN You("take a picture of %s %s.", s_suffix(mon_nam(u.ustuck)), */
+		    mbodypart(u.ustuck, STOMACH))); /* EN mbodypart(u.ustuck, STOMACH)); */
 	} else if (u.dz) {
 		You("VERB_FOTOGRAFIEREN OBJECT ARTIKEL_BESTIMMTER %s.", /* EN You("take a picture of the %s.", */
 			(u.dz > 0) ? surface(u.ux,u.uy) : ceiling(u.ux,u.uy));
@@ -1092,10 +1096,10 @@ struct obj *obj;
 		    check_unpaid(obj);
 		    pline("SUBJECT %s NOUN_LAMP VERB_BRENNEN jetzt.", Shk_Your(buf, obj)); /* EN pline("%s lamp is now on.", Shk_Your(buf, obj)); */
 		} else {	/* candle(s) */
-		    pline("%s flame%s %s%s", /* EN pline("%s flame%s %s%s", */ // TODO DE
-			s_suffix(Yname2(obj)), /* EN s_suffix(Yname2(obj)), */ // TODO DE
-			plur(obj->quan), otense(obj, "burn"), /* EN plur(obj->quan), otense(obj, "burn"), */ // TODO DE
-			Blind ? "." : " brightly!"); /* EN Blind ? "." : " brightly!"); */ // TODO DE
+		    pline("SUBJECT %s %s%s", /* EN pline("%s flame%s %s%s", */
+			Yname2(obj), /* EN s_suffix(Yname2(obj)), */
+			otense(obj, "VERB_BRENNEN"), /* EN plur(obj->quan), otense(obj, "burn"), */
+			Blind ? "." : " hell!"); /* EN Blind ? "." : " brightly!"); */
 		    if (obj->unpaid && costly_spot(u.ux, u.uy) &&
 			  obj->age == 20L * (long)objects[obj->otyp].oc_cost) {
 			const char *ithem = obj->quan > 1L ? "them" : "it"; /* EN const char *ithem = obj->quan > 1L ? "them" : "it"; */ // TODO DE
@@ -1649,8 +1653,8 @@ long timeout;
 			mon = figurine->ocarry;
 			/* figurine carring monster might be invisible */
 			if (canseemon(figurine->ocarry)) {
-			    Sprintf(carriedby, "%s pack", /* EN Sprintf(carriedby, "%s pack", */ // TODO DE
-				     s_suffix(a_monnam(mon))); /* EN s_suffix(a_monnam(mon))); */ // TODO DE
+			    Sprintf(carriedby, "%s", /* EN Sprintf(carriedby, "%s pack", */
+				     genitivattribut_zu_wort(a_monnam(mon), "pack")); /* EN s_suffix(a_monnam(mon))); */ // TODO DE
 			}
 			else if (is_pool(mon->mx, mon->my))
 			    Strcpy(carriedby, "empty water"); /* EN Strcpy(carriedby, "empty water"); */ // TODO DE
@@ -2302,7 +2306,7 @@ struct obj *obj;
 		    }
 #endif /* 0 */
 		    /* right into your inventory */
-		    You("snatch %s %s!", s_suffix(mon_nam(mtmp)), onambuf); /* EN You("snatch %s %s!", s_suffix(mon_nam(mtmp)), onambuf); */ // TODO DE
+		    You("VERB_SCHNAPPEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf)); /* EN You("snatch %s %s!", s_suffix(mon_nam(mtmp)), onambuf); */
 		    if (otmp->otyp == CORPSE &&
 			    touch_petrifies(&mons[otmp->corpsenm]) &&
 			    !uarmg && !Stone_resistance &&

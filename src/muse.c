@@ -85,7 +85,7 @@ struct obj *obj;
 			    pline("As %s opens the bottle, an enormous %s VERB_ENTWEICHEN!", /* EN pline("As %s opens the bottle, an enormous %s emerges!", */ // TODO DE
 			       mon_nam(mon),
 			       Hallucination ? rndmonnam() : (const char *)"ghost"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */ // TODO DE
-			    pline("%s is frightened to death, and unable to move.", /* EN pline("%s is frightened to death, and unable to move.", */ // TODO DE
+			    pline("%s is frightened to death, and unable to move/ruehren.", /* EN pline("%s is frightened to death, and unable to move.", */ // TODO DE
 				    Monnam(mon));
 			}
 			mon->mcanmove = 0;
@@ -878,7 +878,7 @@ mon_tele:
 			mtmp->mblinded = 0;
 			if (vismon) pline(mcsa, Monnam(mtmp));
 		}
-		if (vismon) pline("%s looks completely healed.", Monnam(mtmp)); /* EN if (vismon) pline("%s looks completely healed.", Monnam(mtmp)); */ // TODO DE
+		if (vismon) pline("SUBJECT %s VERB_AUSSEHEN vollständig geheilt SATZKLAMMER.", Monnam(mtmp)); /* EN if (vismon) pline("%s looks completely healed.", Monnam(mtmp)); */
 		if (oseen) makeknown(otmp->otyp);
 		m_useup(mtmp, otmp);
 		return 2;
@@ -1755,10 +1755,10 @@ skipmsg:
 		if (vismon && mtmp->minvis) {	/* was seen, now invisible */
 		    if (See_invisible)
 			pline("%s body takes on a %s transparency.", /* EN pline("%s body takes on a %s transparency.", */ // TODO DE
-			      s_suffix(nambuf),
+			      s_suffix(nambuf), /* EN s_suffix(nambuf), */ // TODO DE
 			      Hallucination ? "normal" : "strange"); /* EN Hallucination ? "normal" : "strange"); */ // TODO DE
 		    else
-			pline("Suddenly you cannot see %s.", nambuf); /* EN pline("Suddenly you cannot see %s.", nambuf); */ // TODO DE
+			pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s nicht mehr sehen.", nambuf); /* EN pline("Suddenly you cannot see %s.", nambuf); */
 		    if (oseen) makeknown(otmp->otyp);
 		}
 		if (otmp->otyp == POT_INVISIBILITY) {
@@ -1883,7 +1883,7 @@ you_aggravate(mtmp)
 struct monst *mtmp;
 {
 	pline("For some reason, %s presence is known to you.", /* EN pline("For some reason, %s presence is known to you.", */ // TODO DE
-		s_suffix(noit_mon_nam(mtmp)));
+		s_suffix(noit_mon_nam(mtmp))); /* EN s_suffix(noit_mon_nam(mtmp))); */ // TODO DE
 	cls();
 #ifdef CLIPPING
 	cliparound(mtmp->mx, mtmp->my);

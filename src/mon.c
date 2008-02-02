@@ -1982,10 +1982,9 @@ boolean move_other;	/* make sure mtmp gets to x, y! so move m_at(x, y) */
 
 
 static const char *poiseff[] = {
-// TODO DE
-	" feel weaker", "r brain is on fire",
-	"r judgement is impaired", "r muscles won't obey you",
-	" feel very sick", " break out in hives"
+	" feel weaker", "PRONOMEN_POSSESSIV NOUN_GEHIRN steht in Flammen", /* EN " feel weaker", "r brain is on fire", */ // TODO DE
+	"r judgement is impaired", "r muscles won't obey you", /* EN "r judgement is impaired", "r muscles won't obey you", */ // TODO DE
+	" feel very sick", " break out in hives" /* EN " feel very sick", " break out in hives" */ // TODO DE
 };
 
 void
@@ -1993,7 +1992,7 @@ poisontell(typ)
 
 	int	typ;
 {
-	pline("You%s.", poiseff[typ]); /* EN pline("You%s.", poiseff[typ]); */ // TODO DE
+	pline("SUBJECT %s.", poiseff[typ]); /* EN pline("You%s.", poiseff[typ]); */
 }
 
 void
@@ -2010,8 +2009,8 @@ int  typ, fatal;
 	    /* so have "poison arrow", "poison dart", etc... */
 	    plural = (string[strlen(string) - 1] == 's')? 1 : 0;
 	    /* avoid "The" Orcus's sting was poisoned... */
-	    pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", /* EN pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", */ // TODO DE
-			string, plural ? "were" : "was"); /* EN string, plural ? "were" : "was"); */ // TODO DE
+	    pline("SUBJECT %s%s %s vergiftet!",  isupper(*string) ? "" : "The ", /* EN pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", */ // TODO DE richtiger Eigennamencheck
+			string, plural ? "waren" : "war"); /* EN string, plural ? "were" : "was"); */
 	}
 
 	if(Poison_resistance) {
@@ -2020,11 +2019,11 @@ int  typ, fatal;
 		return;
 	}
 	/* suppress killer prefix if it already has one */
-	if (!strncmpi(pname, "the ", 4) || /* EN if (!strncmpi(pname, "the ", 4) || */ // TODO DE
-		!strncmpi(pname, "an ", 3) || /* EN !strncmpi(pname, "an ", 3) || */ // TODO DE
-		!strncmpi(pname, "a ", 2) || /* EN !strncmpi(pname, "a ", 2) || */ // TODO DE
+	if (!strncmpi(pname, "ARTIKEL_BESTIMMTER ", 19) || /* EN if (!strncmpi(pname, "the ", 4) || */
+		!strncmpi(pname, "ARTIKEL_UNBESTIMMTER ", 21) || /* EN !strncmpi(pname, "an ", 3) || */
+		/* EN !strncmpi(pname, "a ", 2) || */
 	    /* ... or if it seems to be a proper name */
-		isupper(*pname)) {
+		isupper(*pname)) { /* EN isupper(*pname)) { */ // TODO DE richtiger Eigennamencheck
 	    /*[ does this need a plural check too? ]*/
 	    kprefix = KILLED_BY;
 	}
@@ -2035,7 +2034,7 @@ int  typ, fatal;
 	} else if(i <= 5) {
 		/* Check that a stat change was made */
 		if (adjattrib(typ, thrown_weapon ? -1 : -rn1(3,3), 1))
-		    pline("You%s!", poiseff[typ]);
+		    pline("SUBJECT %s!", poiseff[typ]); /* EN pline("You%s!", poiseff[typ]); */
 	} else {
 		i = thrown_weapon ? rnd(6) : rn1(10,6);
 		if(Half_physical_damage) i = (i+1) / 2;
@@ -2045,7 +2044,7 @@ int  typ, fatal;
 		killer_format = kprefix;
 		killer = pname;
 		/* "Poisoned by a poisoned ___" is redundant */
-		done(strstri(pname, "poison") ? DIED : POISONING); /* EN done(strstri(pname, "poison") ? DIED : POISONING); */ // TODO DE
+		done(strstri(pname, "gift") ? DIED : POISONING); /* EN done(strstri(pname, "poison") ? DIED : POISONING); */
 	}
 	(void) encumber_msg();
 }
@@ -2058,7 +2057,7 @@ register struct monst *mtmp;
 {
     if(mtmp->data->msound == MS_SHRIEK) {
 	if(flags.soundok) {
-	    pline("%s shrieks.", Monnam(mtmp)); /* EN pline("%s shrieks.", Monnam(mtmp)); */ // TODO DE
+	    pline("SUBJECT %s VERB_SHRIEK.", Monnam(mtmp)); /* EN pline("%s shrieks.", Monnam(mtmp)); */
 	    stop_occupation();
 	}
 	if (!rn2(10)) {
@@ -2116,7 +2115,7 @@ register struct monst *mtmp;
 		    if (canseemon(mon)) ++got_mad;
 		}
 	    if (got_mad && !Hallucination)
-		pline_The("%s VERB_SCHEINEN%s auch wütend sein ...", /* EN pline_The("%s appear%s to be angry too...", */
+		pline_The("%s VERB_SCHEINEN%s auch wütend zu sein ...", /* EN pline_The("%s appear%s to be angry too...", */
 		      got_mad == 1 ? q_guardian->mname :
 				    makeplural(q_guardian->mname),
 		      got_mad == 1 ? "" : ""); /* EN got_mad == 1 ? "s" : ""); */
@@ -2348,12 +2347,12 @@ struct monst *mon;
 		int tries = 0;
 		do {
 			Sprintf(pprompt,
-				"Change %s into what kind of monster? [type the name]", /* EN "Change %s into what kind of monster? [type the name]", */ // TODO DE
+				"Change %s into what kind of monster? [Namen eingeben]", /* EN "Change %s into what kind of monster? [type the name]", */ // TODO DE
 				mon_nam(mon));
 			getlin(pprompt,buf);
 			mndx = name_to_mon(buf);
 			if (mndx < LOW_PM)
-				You("cannot polymorph %s into that.", mon_nam(mon)); /* EN You("cannot polymorph %s into that.", mon_nam(mon)); */ // TODO DE
+				You("VERB_KOENNEN OBJECT %s nicht in das transformieren.", mon_nam(mon)); /* EN You("cannot polymorph %s into that.", mon_nam(mon)); */
 			else break;
 		} while(++tries < 5);
 		if (tries==5) pline(thats_enough_tries);
@@ -2748,8 +2747,8 @@ register boolean silent;
 	}
 	if(ct) {
 	    if(!silent) { /* do we want pline msgs? */
-		if(slct) pline_The("guard%s wake%s up!", /* EN if(slct) pline_The("guard%s wake%s up!", */ // TODO DE
-				 slct > 1 ? "s" : "", slct == 1 ? "s" : "");
+		if(slct) pline_The("NOUN_GUARD%s VERB_AUFWACHEN SATZKLAMMER!", /* EN if(slct) pline_The("guard%s wake%s up!", */
+				 slct > 1 ? "s" : ""); /* EN slct > 1 ? "s" : "", slct == 1 ? "s" : ""); */
 		if(nct || sct) {
 			if(nct) pline_The("guard%s get%s angry!", /* EN if(nct) pline_The("guard%s get%s angry!", */ // TODO DE
 				nct == 1 ? "" : "s", nct == 1 ? "s" : "");

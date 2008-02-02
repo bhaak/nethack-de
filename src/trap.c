@@ -766,9 +766,9 @@ unsigned trflags;
 		u.utraptype = TT_BEARTRAP;
 #ifdef STEED
 		if (u.usteed) {
-		    pline("%s bear trap closes on %s %s!", /* EN pline("%s bear trap closes on %s %s!", */ // TODO DE
-			A_Your[trap->madeby_u], s_suffix(mon_nam(u.usteed)), /* EN A_Your[trap->madeby_u], s_suffix(mon_nam(u.usteed)), */ // TODO DE
-			mbodypart(u.usteed, FOOT));
+		    pline("SUBJECT %s bear trap closes on %s!", /* EN pline("%s bear trap closes on %s %s!", */ // TODO DE
+			A_Your[trap->madeby_u], genitivattribut_zu_wort(mon_nam(u.usteed), /* EN A_Your[trap->madeby_u], s_suffix(mon_nam(u.usteed)), */
+			mbodypart(u.usteed, FOOT))); /* EN mbodypart(u.usteed, FOOT)); */
 		} else
 #endif
 		{

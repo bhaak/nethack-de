@@ -6,6 +6,10 @@
 #include "artifact.h"
 #include "edog.h"
 
+#ifdef GERMAN
+#include "german.h"
+#endif
+
 extern boolean notonhead;
 
 #ifdef OVLB
@@ -403,8 +407,8 @@ hitmm(magr, mdef, mattk)
 				Sprintf(buf,"SUBJECT %s VERB_TOUCH OBJECT", magr_name); /* EN Sprintf(buf,"%s touches", magr_name); */
 				break;
 			case AT_TENT:
-				Sprintf(buf, "SUBJECT %s tentacles suck OBJECT", /* EN Sprintf(buf, "%s tentacles suck", */ // TODO DE
-					s_suffix(magr_name)); /* EN s_suffix(magr_name)); */ // TODO DE
+				Sprintf(buf, "SUBJECT %s VERB_SUCK OBJECT", /* EN Sprintf(buf, "%s tentacles suck", */
+					genitivattribut_zu_wort(magr_name, "NOUN_TENTAKELs")); /* EN s_suffix(magr_name)); */
 				break;
 			case AT_HUGS:
 				if (magr != u.ustuck) {
@@ -1048,8 +1052,8 @@ mdamagem(magr, mdef, mattk)
 	    case AD_DRCO:
 		if (!cancelled && !rn2(8)) {
 		    if (vis)
-			pline("%s %s was poisoned!", s_suffix(Monnam(magr)), /* EN pline("%s %s was poisoned!", s_suffix(Monnam(magr)), */ // TODO DE
-			      mpoisons_subj(magr, mattk));
+			pline("SUBJECT %s war vergiftet!", genitivattribut_zu_wort(Monnam(magr), /* EN pline("%s %s was poisoned!", s_suffix(Monnam(magr)), */
+			      mpoisons_subj(magr, mattk))); /* EN mpoisons_subj(magr, mattk)); */
 		    if (resists_poison(mdef)) {
 			if (vis)
 			    pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei %s nicht zu wirken.", /* EN pline_The("poison doesn't seem to affect %s.", */
@@ -1072,16 +1076,16 @@ mdamagem(magr, mdef, mattk)
 		}
 		if ((mdef->misc_worn_check & W_ARMH) && rn2(8)) {
 		    if (vis) {
-			Strcpy(buf, s_suffix(Monnam(mdef))); /* EN Strcpy(buf, s_suffix(Monnam(mdef))); */ // TODO DE
-			pline("%s helmet blocks %s attack to %s head.", /* EN pline("%s helmet blocks %s attack to %s head.", */ // TODO DE
-				buf, s_suffix(mon_nam(magr)), /* EN buf, s_suffix(mon_nam(magr)), */ // TODO DE
+			Strcpy(buf, genitivattribut_zu_wort(Monnam(mdef), "NOUN_HELMET")); /* EN Strcpy(buf, s_suffix(Monnam(mdef))); */
+			pline("SUBJECT %s VERB_BLOCKEN OBJECT %s NEUES_OBJECT OBJECT auf %s NOUN_KOPF.", /* EN pline("%s helmet blocks %s attack to %s head.", */
+				buf, genitivattribut_zu_wort(mon_nam(magr),"NOUN_ATTACK"), /* EN buf, s_suffix(mon_nam(magr)), */
 				mhis(mdef));
 		    }
 		    break;
 		}
-		if (vis) pline("%s brain is eaten!", s_suffix(Monnam(mdef))); /* EN if (vis) pline("%s brain is eaten!", s_suffix(Monnam(mdef))); */ // TODO DE
+		if (vis) pline("SUBJECT %s VERB_WERDEN gefressen!", genitivattribut_zu_wort(Monnam(mdef),"NOUN_GEHIRN")); /* EN if (vis) pline("%s brain is eaten!", s_suffix(Monnam(mdef))); */
 		if (mindless(pd)) {
-		    if (vis) pline("%s doesn't notice.", Monnam(mdef)); /* EN if (vis) pline("%s doesn't notice.", Monnam(mdef)); */ // TODO DE
+		    if (vis) pline("SUBJECT %s VERB_BEMERKEN nix.", Monnam(mdef)); /* EN if (vis) pline("%s doesn't notice.", Monnam(mdef)); */
 		    break;
 		}
 		tmp += rnd(10); /* fakery, since monsters lack INT scores */
@@ -1090,8 +1094,8 @@ mdamagem(magr, mdef, mattk)
 		    magr->mconf = 0;
 		}
 		if (tmp >= mdef->mhp && vis)
-		    pline("%s last thought fades away...", /* EN pline("%s last thought fades away...", */ // TODO DE
-			          s_suffix(Monnam(mdef))); /* EN s_suffix(Monnam(mdef))); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHWINDEN dahin ...", /* EN pline("%s last thought fades away...", */
+			          genitivattribut_zu_wort(Monnam(mdef),"ADJEKTIV_LETZT NOUN_GEDANKEs")); /* EN s_suffix(Monnam(mdef))); */
 		break;
 	    case AD_SLIM:
 		if (cancelled) break;	/* physical damage only */
@@ -1196,7 +1200,7 @@ struct monst *mon;
 {
 	if ((mon->msleeping || !mon->mcanmove) && mon == u.ustuck &&
 		!sticks(youmonst.data) && !u.uswallow) {
-	    pline("%s grip relaxes.", s_suffix(Monnam(mon))); /* EN pline("%s grip relaxes.", s_suffix(Monnam(mon))); */ // TODO DE
+	    pline("SUBJECT %s lockert sich.", genitivattribut_zu_wort(Monnam(mon),"NOUN_GRIFF")); /* EN pline("%s grip relaxes.", s_suffix(Monnam(mon))); */
 	    unstuck(mon);
 	}
 }
@@ -1225,8 +1229,8 @@ register struct obj *obj;
 	    (is_acid ? obj->oeroded2 : obj->oeroded) < MAX_ERODE) {
 		if (obj->greased || obj->oerodeproof || (obj->blessed && rn2(3))) {
 		    if (cansee(mdef->mx, mdef->my) && flags.verbose)
-			pline("%s weapon is not affected.", /* EN pline("%s weapon is not affected.", */ // TODO DE
-			                 s_suffix(Monnam(magr))); /* EN s_suffix(Monnam(magr))); */ // TODO DE
+			pline("SUBJECT %s is not affected.", /* EN pline("%s weapon is not affected.", */ // TODO DE
+			                 genitivattribut_zu_wort(Monnam(magr),"NOUN_WEAPON")); /* EN s_suffix(Monnam(magr))); */
 		    if (obj->greased && !rn2(2)) obj->greased = 0;
 		} else {
 		    if (cansee(mdef->mx, mdef->my)) {

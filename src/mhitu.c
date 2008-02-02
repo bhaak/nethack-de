@@ -71,8 +71,8 @@ register struct attack *mattk;
 			pline("SUBJECT %s VERB_TOUCH OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp)); /* EN pline("%s touches you!", Monnam(mtmp)); */
 			break;
 		case AT_TENT:
-			pline("%s tentacles suck you!", /* EN pline("%s tentacles suck you!", */ // TODO DE
-				        s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
+			pline("SUBJECT %s suck you!", /* EN pline("%s tentacles suck you!", */ // TODO DE
+				        genitivattribut_zu_wort(Monnam(mtmp),"TENTAKELs")); /* EN s_suffix(Monnam(mtmp))); */
 			break;
 		case AT_EXPL:
 		case AT_BOOM:
@@ -1029,8 +1029,8 @@ hitmu(mtmp, mattk)
 dopois:
 		hitmsg(mtmp, mattk);
 		if (uncancelled && !rn2(8)) {
-		    Sprintf(buf, "%s %s",
-			    s_suffix(Monnam(mtmp)), mpoisons_subj(mtmp, mattk)); /* EN s_suffix(Monnam(mtmp)), mpoisons_subj(mtmp, mattk)); */ // TODO DE
+		    Sprintf(buf, "%s", /* EN Sprintf(buf, "%s %s", */
+			    genitivattribut_zu_wort(Monnam(mtmp), mpoisons_subj(mtmp, mattk))); /* EN s_suffix(Monnam(mtmp)), mpoisons_subj(mtmp, mattk)); */
 		    poisoned(buf, ptmp, mdat->mname, 30);
 		}
 		break;
@@ -1045,14 +1045,14 @@ dopois:
 
 		if (uarmh && rn2(8)) {
 		    /* not body_part(HEAD) */
-		    Your("helmet blocks the attack to your head."); /* EN Your("helmet blocks the attack to your head."); */ // TODO DE
+		    Your("NOUN_HELMET VERB_BLOCKEN OBJECT ARTIKEL_BESTIMMTER NOUN_ATTACK NEUES_OBJECT OBJECT auf PRONOMEN_POSSESSIV NOUN_KOPF."); /* EN Your("helmet blocks the attack to your head."); */
 		    break;
 		}
 		if (Half_physical_damage) dmg = (dmg+1) / 2;
 		mdamageu(mtmp, dmg);
 
 		if (!uarmh || uarmh->otyp != DUNCE_CAP) {
-		    Your("brain is eaten!"); /* EN Your("brain is eaten!"); */ // TODO DE
+		    Your("NOUN_GEHIRN wird gefressen!"); /* EN Your("brain is eaten!"); */
 		    /* No such thing as mindless players... */
 		    if (ABASE(A_INT) <= ATTRMIN(A_INT)) {
 			int lifesaved = 0;

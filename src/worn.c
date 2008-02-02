@@ -692,7 +692,7 @@ boolean polyspot;
 		    pline("%s can no longer hold %s shield!", Monnam(mon), /* EN pline("%s can no longer hold %s shield!", Monnam(mon), */ // TODO DE
 								ppronoun);
 		else
-		    You_hear("a clank."); /* EN You_hear("a clank."); */ // TODO DE
+		    You_hear("ein Scheppern."); /* EN You_hear("a clank."); */
 		if (polyspot) bypass_obj(otmp);
 		m_lose_armor(mon, otmp);
 	    }
@@ -702,10 +702,10 @@ boolean polyspot;
 		    /* flimsy test for horns matches polyself handling */
 		    (handless_or_tiny || !is_flimsy(otmp))) {
 		if (vis)
-		    pline("%s helmet falls to the %s!", /* EN pline("%s helmet falls to the %s!", */ // TODO DE
-			  s_suffix(Monnam(mon)), surface(mon->mx, mon->my)); /* EN s_suffix(Monnam(mon)), surface(mon->mx, mon->my)); */ // TODO DE
+		    pline("SUBJECT %s VERB_FALLEN OBJECT _auf_ ARTIKEL_BESTIMMTER %s!", /* EN pline("%s helmet falls to the %s!", */
+			  genitivattribut_zu_wort(Monnam(mon),"NOUN_HELMET"), surface(mon->mx, mon->my)); /* EN s_suffix(Monnam(mon)), surface(mon->mx, mon->my)); */
 		else
-		    You_hear("a clank."); /* EN You_hear("a clank."); */ // TODO DE
+		    You_hear("ein Scheppern."); /* EN You_hear("a clank."); */
 		if (polyspot) bypass_obj(otmp);
 		m_lose_armor(mon, otmp);
 	    }
@@ -730,7 +730,7 @@ boolean polyspot;
 		if (polyspot) bypass_obj(otmp);
 		m_lose_armor(mon, otmp);
 		if (vis)
-		    pline("%s saddle falls off.", s_suffix(Monnam(mon))); /* EN pline("%s saddle falls off.", s_suffix(Monnam(mon))); */ // TODO DE
+		    pline("SUBJECT %s VERB_FALLEN runter.", genitivattribut_zu_wort(Monnam(mon),"NOUN_SADDLE")); /* EN pline("%s saddle falls off.", s_suffix(Monnam(mon))); */
 	    }
 	    if (mon == u.usteed)
 		goto noride;

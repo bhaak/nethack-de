@@ -645,9 +645,9 @@ int thrown;
 			setmnotwielded(mon,monwep);
 			MON_NOWEP(mon);
 			mon->weapon_check = NEED_WEAPON;
-			pline("%s %s %s from the force of your blow!", /* EN pline("%s %s %s from the force of your blow!", */ // TODO DE
-			      s_suffix(Monnam(mon)), xname(monwep), /* EN s_suffix(Monnam(mon)), xname(monwep), */ // TODO DE
-			      otense(monwep, "shatter")); /* EN otense(monwep, "shatter")); */ // TODO DE
+			pline("SUBJECT %s %s OBJECT durch die Wucht KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_SCHLAG!", /* EN pline("%s %s %s from the force of your blow!", */
+			      genitivattribut_zu_wort(Monnam(mon), xname(monwep)), /* EN s_suffix(Monnam(mon)), xname(monwep), */
+			      otense(monwep, "VERB_ZERSPLITTERN")); /* EN otense(monwep, "shatter")); */
 			m_useup(mon, monwep);
 			/* If someone just shattered MY weapon, I'd flee! */
 			if (rn2(4)) {
@@ -1527,12 +1527,12 @@ register struct attack *mattk;
 		if (m_slips_free(mdef, mattk)) break;
 
 		if ((mdef->misc_worn_check & W_ARMH) && rn2(8)) {
-		    pline("SUBJECT %s blockt OBJECT PRONOMEN_POSSESSIV NOUN_ATTACK auf %s NOUN_KOPF.", /* EN pline("%s helmet blocks your attack to %s head.", */
+		    pline("SUBJECT %s VERB_BLOCKEN OBJECT PRONOMEN_POSSESSIV NOUN_ATTACK auf %s NOUN_KOPF.", /* EN pline("%s helmet blocks your attack to %s head.", */
 			  genitivattribut_zu_wort(Monnam(mdef), "NOUN_HELMET"), mhis(mdef)); /* EN s_suffix(Monnam(mdef)), mhis(mdef)); */
 		    break;
 		}
 
-		You("VERB_EAT OBJECT %s!", genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GEHIRN")); /* EN You("eat %s brain!", s_suffix(mon_nam(mdef))); */
+		You("VERB_FRESSEN OBJECT %s!", genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GEHIRN")); /* EN You("eat %s brain!", s_suffix(mon_nam(mdef))); */
 
 		u.uconduct.food++;
 		if (touch_petrifies(mdef->data) && !Stone_resistance && !Stoned) {
@@ -1583,9 +1583,9 @@ register struct attack *mattk;
 		    } else {
 			tmp = 0;
 			if (flags.verbose)
-			    You("brush against %s %s.", /* EN You("brush against %s %s.", */ // TODO DE
-				s_suffix(mon_nam(mdef)), /* EN s_suffix(mon_nam(mdef)), */ // TODO DE
-				mbodypart(mdef, LEG));
+			    You("VERB_STREIFEN nur OBJECT %s.", /* EN You("brush against %s %s.", */
+				genitivattribut_zu_wort(mon_nam(mdef), /* EN s_suffix(mon_nam(mdef)), */
+				mbodypart(mdef, LEG))); /* EN mbodypart(mdef, LEG)); */
 		    }
 		} else tmp = 0;
 		break;
