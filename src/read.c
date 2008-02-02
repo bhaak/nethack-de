@@ -1011,7 +1011,7 @@ register struct obj	*sobj;
 		}
 		break;
 	case SCR_GENOCIDE:
-		You("VERB_HABEN ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_GENOCIDE gefunden!"); /* EN You("have found a scroll of genocide!"); */
+		You("VERB_HABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_GENOCIDE gefunden!"); /* EN You("have found a scroll of genocide!"); */
 		known = TRUE;
 		if (sobj->blessed) do_class_genocide();
 		else do_genocide(!sobj->cursed | (2 * !!Confusion));
