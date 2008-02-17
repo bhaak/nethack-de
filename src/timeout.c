@@ -74,9 +74,9 @@ vomiting_dialogue()
 
 static NEARDATA const char * const choke_texts[] = {
 	"You find it hard to breathe.", /* EN "You find it hard to breathe.", */ // TODO DE
-	"You're gasping for air.", /* EN "You're gasping for air.", */ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_SCHNAPPEN nach Luft.", /* EN "You're gasping for air.", */
 	"SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN nicht mehr atmen.", /* EN "You can no longer breathe.", */
-	"You're turning %s.", /* EN "You're turning %s.", */ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_LAUFEN %s an.", /* EN "You're turning %s.", */
 	"SUBJECT PRONOMEN_PERSONAL VERB_ERSTICKEN." /* EN "You suffocate." */
 };
 
@@ -339,7 +339,7 @@ nh_timeout()
 			     * to this number must be thoroughly play tested.
 			     */
 			    if ((inv_weight() > -500)) {
-				You("make a lot of noise!"); /* EN You("make a lot of noise!"); */ // TODO DE
+				You("VERB_MACHEN einen Heidenlärm!"); /* EN You("make a lot of noise!"); */
 				wake_nearby();
 			    }
 			}

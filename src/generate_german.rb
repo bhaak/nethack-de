@@ -867,7 +867,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_HECHTEN","hechten"),
 		Verb.verb("VERB_HELFEN","helfen"),
 		Verb.verb("VERB_HINDERN","hindern"),
-		Verb.verb("VERB_HINAUFSTEIGEN","steigen"),
+		Verb.verb("VERB_HINAUFSTEIGEN","steigen", "hinauf"),
 		Verb.verb("VERB_HINDERN","hindern"),
 		Verb.verb("VERB_HINZUFUEGEN","fügen","hinzu"),
 		Verb.verb("VERB_HUEPFEN","hüpfen"),
@@ -1203,6 +1203,7 @@ def ausgabe_nouns
     unregelmaessiges_wort("ARTIKEL_UNBESTIMMTER", "einer", [$gen,$dat],  $fem, $sg),
     "",
     unregelmaessiges_wort("NOUN_IT",            "es",  [$nom,$akk], $neu, $sg),
+    unregelmaessiges_wort("NOUN_IT",            "ihm",  $dat,       $neu, $sg),
     "",
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "du",    $nom,       [$mal,$fem,$neu], $sg),
     unregelmaessiges_wort("PRONOMEN_PERSONAL",  "deiner",$gen,       [$mal,$fem,$neu], $sg),
@@ -1749,7 +1750,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
     dekliniere_substantiv("NOUN_OILSKIN_SACK","Ölzeugbeutel", "s", "Ölzeugbeutel", "", "maskulin"),  # Wachstuch, Oilskin, Oelzeug, Regenhaut
     dekliniere_nominalphrase("NOUN_BAG_OF_HOLDING", "Nimmervoll", "Beutel","s","Beutel","","maskulin"),
-    dekliniere_substantiv("NOUN_BAG_OF_TRICKS", "Trickbeutel", "s", "Trickbeutel","","maskulin"), 
+    dekliniere_substantiv("NOUN_BAG_OF_TRICKS", "Trickbeutel", "s", "Trickbeutel","","maskulin"),  # netzhack: Wundertüte
     # dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
     dekliniere_substantiv("NOUN_SKELETON_KEY", "Passepartout", "s", "Passepartout", "", "maskulin"),
     dekliniere_substantiv("NOUN_LOCK_PICK", "Dietrich", "s", "Dietrich", "e", "maskulin"),
@@ -1792,7 +1793,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_DRUM_OF_EARTHQUAKE", 
     dekliniere_substantiv("NOUN_PICK_AXE", "Spitzhacke", "", "Spitzhacke", "en", "feminin"),
     #dekliniere_substantiv("NOUN_GRAPPLING_HOOK", 
-    #dekliniere_substantiv("NOUN_UNICORN_HORN", 
+    dekliniere_substantiv("NOUN_UNICORN_HORN", "Ainkhürn", "es", "Ainkhürn", "er", "neutrum"),
+    dekliniere_substantiv("NOUN_UNICORN_HORN", "Einhorn-Horn", "es", "Einhorn-Hörn", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_CANDELABRUM_OF_INVOCATION", 
     #dekliniere_substantiv("NOUN_BELL_OF_OPENING", 
     "", 
@@ -2287,7 +2289,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_KI_RIN", "Kirin", "s", "Kirin", "s", "neutrum"),
     dekliniere_substantiv("NOUN_ARCHON", "Archon", "s", "Archont", "en", "maskulin"),
     dekliniere_substantiv("NOUN_BAT", "Fledermaus", "", "Fledermäus", "e", "feminin"),
-    dekliniere_substantiv("NOUN_GIANT_BAT", "Riesenfledermaus", "", "Riesenfledermäus", "e", "feminin"),
+    dekliniere_substantiv("NOUN_GIANT_BAT", "Riesenfledermaus", "", "Riesenfledermäus", "e", "feminin"), # von netzhack Flughund? Andererseits sind Giant Bats figuren aus d&d http://en.wikipedia.org/wiki/Giant_bat
     dekliniere_substantiv("NOUN_RAVEN", "Rabe", "en", "Rabe", "en", "maskulin"),
     dekliniere_substantiv("NOUN_VAMPIRE_BAT", "Vampirfledermaus", "", "Vampirfledermäus", "e", "feminin"),
     dekliniere_substantiv("NOUN_PLAINS_CENTAUR", "Steppenkentaur", "en", "Steppenkentaur", "en", "maskulin", "en"),
@@ -2393,14 +2395,17 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_VAMPIRE","Vampir","es","Vampir","e","maskulin"),
     #dekliniere_substantiv("NOUN_VAMPIRE_LORD"
     #dekliniere_substantiv("NOUN_VAMPIRE_MAGE"
-    #dekliniere_substantiv("NOUN_VLAD_THE_IMPALER"
+		[unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad der Pfähler", $nom, $mal, $sg)],
+		[unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad des Pfählers", $gen, $mal, $sg)],
+		[unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad dem Pfähler", $dat, $mal, $sg)],
+		[unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad den Pfähler", $akk, $mal, $sg)],
     #dekliniere_substantiv("NOUN_BARROW_WIGHT" # Grabunhold? , Wight Gruftschrecken
     #dekliniere_substantiv("NOUN_WRAITH" # Todesalb
     dekliniere_substantiv("NOUN_NAZGUL","Nazgûl","","Nazgûl","","maskulin"),
     dekliniere_substantiv("NOUN_XORN","Xorn","","Xorn","","maskulin","en"),
     #dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"), # einer Menschenaffen stattdessen? Gibbon, Orang-Utan, Gorilla, Schimpanse. Gorilla scheint passend (ist auch der Vetegarischste der Menschenaffen)
-    dekliniere_substantiv("NOUN_OWLBEAR", "Eulenbär", "en", "Eulenbär", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_OWLBEAR", "Eulenbär", "en", "Eulenbär", "en", "maskulin"), # Netzhack: Uhlenbär
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
     #dekliniere_substantiv("NOUN_CARNIVOROUS_APE"
     # dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatch", "e", "maskulin"),
@@ -2548,7 +2553,10 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_LORD_SATO"
     #dekliniere_substantiv("NOUN_TWOFLOWER"
     #dekliniere_substantiv("NOUN_NORN"
-    #dekliniere_substantiv("NOUN_NEFERET_THE_GREEN"
+		[unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $nom, $fem, $sg)],
+		[unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $gen, $fem, $sg)],
+		[unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $dat, $fem, $sg)],
+		[unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $akk, $fem, $sg)],
     #dekliniere_substantiv("NOUN_MINION_OF_HUHETOTL"
     #dekliniere_substantiv("NOUN_THOTH_AMON"
     #dekliniere_substantiv("NOUN_CHROMATIC_DRAGON"
@@ -2861,6 +2869,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_FLEISCH","Fleisch","es","","","neutrum"),
     dekliniere_substantiv("NOUN_GEIST","Geist","es","Geist","e","maskulin"),
     dekliniere_substantiv("NOUN_GELD","Geld","es","Geld","er","neutrum"),
+    dekliniere_substantiv("NOUN_GEHIRN","Gehirn","es","Gehirn","e","neutrum"),
     dekliniere_substantiv("NOUN_GEM_COLLECTION", "Edelsteinsammlung", "", "Edelsteinsammlung", "en", "feminin"),
     dekliniere_substantiv("NOUN_GESCHENK","Geschenk","es","Geschenk","e","neutrum"),
     dekliniere_substantiv("NOUN_GESCHWINDIGKEIT","Geschwindigkeit","","Geschwindigkeit","en","feminin"),
@@ -3036,6 +3045,11 @@ def ausgabe_nouns
 		dekliniere_adjektiv("ADJEKTIV_VERGAMMELT","vergammelt"),
 		dekliniere_adjektiv("ADJEKTIV_WEITENTFERNT","weitentfernt"),
 		dekliniere_adjektiv("ADJEKTIV_NAHE","nah"),
+
+		dekliniere_adjektiv("ADJEKTIV_TAME","zahm"),
+		dekliniere_adjektiv("ADJEKTIV_PEACEFUL","friedlich"),
+		dekliniere_adjektiv("ADJEKTIV_HOSTILE","feindlich"),
+		dekliniere_adjektiv("ADJEKTIV_HOSTILE","feindselig"),
 
     "",
   ].each { |n|

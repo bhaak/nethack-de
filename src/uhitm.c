@@ -2017,7 +2017,7 @@ use_weapon:
 			    else if (mattk->aatyp == AT_TUCH)
 				    You("VERB_TOUCH OBJECT %s.", mon_nam(mon)); /* EN You("touch %s.", mon_nam(mon)); */
 			    else if (mattk->aatyp == AT_TENT)
-				    Your("tentacles suck %s.", mon_nam(mon)); /* EN Your("tentacles suck %s.", mon_nam(mon)); */ // TODO DE
+				    Your("NOUN_TENTAKELs VERB_SUCK OBJECT %s.", mon_nam(mon)); /* EN Your("tentacles suck %s.", mon_nam(mon)); */
 			    else You("VERB_HIT OBJECT %s.", mon_nam(mon)); /* EN else You("hit %s.", mon_nam(mon)); */
 			    sum[i] = damageum(mon, mattk);
 			} else

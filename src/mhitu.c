@@ -71,8 +71,8 @@ register struct attack *mattk;
 			pline("SUBJECT %s VERB_TOUCH OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp)); /* EN pline("%s touches you!", Monnam(mtmp)); */
 			break;
 		case AT_TENT:
-			pline("SUBJECT %s suck you!", /* EN pline("%s tentacles suck you!", */ // TODO DE
-				        genitivattribut_zu_wort(Monnam(mtmp),"TENTAKELs")); /* EN s_suffix(Monnam(mtmp))); */
+			pline("SUBJECT %s VERB_SUCK OBJECT PRONOMEN_PERSONAL!", /* EN pline("%s tentacles suck you!", */
+				        genitivattribut_zu_wort(Monnam(mtmp),"NOUN_TENTAKELs")); /* EN s_suffix(Monnam(mtmp))); */
 			break;
 		case AT_EXPL:
 		case AT_BOOM:

@@ -1881,7 +1881,7 @@ cleanup:
 	} else if (mtmp->mtame) {
 		adjalign(-15);	/* bad!! */
 		/* your god is mighty displeased... */
-		if (!Hallucination) You_hear("the rumble of distant thunder..."); /* EN if (!Hallucination) You_hear("the rumble of distant thunder..."); */ // TODO DE
+		if (!Hallucination) You_hear("ein fernes Donnergrollen ..."); /* EN if (!Hallucination) You_hear("the rumble of distant thunder..."); */
 		else You_hear("das Studiopublikum applaudieren!"); /* EN else You_hear("the studio audience applaud!"); */
 	} else if (mtmp->mpeaceful)
 		adjalign(-5);
