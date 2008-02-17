@@ -26,6 +26,8 @@ and you are welcome to redistribute it under certain conditions.
 EOF
 
 my $nethome = "$ENV{HOME}/src/nethack-3.4.3";
+my $nethome = "/home/surf/nethack/translation/nethack-de";
+# my $nethome = "/home/surf/nethack/versions/nethack-3.4.2";
 
 
 # Parse monsym.h, which defines the tty characters for the various
@@ -56,7 +58,7 @@ while ($l=<MONFLAG>) {
 close MONFLAG;
 
 # Fixes to strange flag comments.
-$flags{M1_OMNIVORE}=" omnivorous ";
+$flags{M1_OMNIVORE}=" Allesfresser ";
 
 
 # We define the colors by hand. They're all rough guesses.
@@ -106,7 +108,7 @@ my %attacks =
 # whatever seems broken.
 my %damage =
   (
- AD_PHYS=>	" ordinary physical ",
+ AD_PHYS=>	" gewöhnlicher Schaden ",
  AD_MAGM=>	" magic missile ",
  AD_FIRE=>	" fire  ",
  AD_COLD=>	" frost ",
@@ -169,11 +171,11 @@ my %mon_count;
 my @monsters;
 sub process_monster {
   my $the_mon=shift;
-  ($name) = $the_mon=~/\s+MON\("(.*?)",/;
+  ($name) = $the_mon=~/\s+MON\((NAM_.*?),/;
   $the_mon=~s/\s//g;
   $the_mon=~s/\/\*.*?\*\///g;
   ($sym,$lvl,$gen,$atk,$siz,$mr1,$mr2,$flg1,$flg2,$flg3,$col) = 
-    $the_mon=~/MON\(".*",S_(.*?),LVL\((.*?)\),\(?(.*?)\)?,A\((.*)\),SIZ\((.*)\),(.*?),(.*?),(.*?),(.*?),(.*?),(.*?)\),$/;
+    $the_mon=~/MON\(NAM_.*,S_(.*?),LVL\((.*?)\),\(?(.*?)\)?,A\((.*)\),SIZ\((.*)\),(.*?),(.*?),(.*?),(.*?),(.*?),(.*?)\),$/;
   $col= "NO_COLOR" if ($name eq "ghost" || $name eq "shade");
   my $mon_struct=
     {
@@ -208,8 +210,8 @@ sub process_monster {
   $mon_struct->{COLOR}=~s/HI_ZAP/CLR_BRIGHT_BLUE/;
   
   push @monsters, $mon_struct;
-#  print STDERR "$mon_struct->{NAME} ($symbols{$mon_struct->{SYMBOL}}): $mon_struct->{LEVEL}->{LVL}\n";
-  $mon_count{$name}++;
+  print STDERR "$mon_struct->{NAME} ($symbols{$mon_struct->{SYMBOL}}): $mon_struct->{LEVEL}->{LVL}\n";
+$mon_count{$name}++;
 };
 
 
@@ -223,7 +225,7 @@ sub parse_level {
      MOV => $mov,
      AC => $ac,
      MR => $mr,
-     ALN => ($aln==0)?"Neutral":($aln<0)?"Chaotic":"Lawful"
+     ALN => ($aln==0)?"Neutral":($aln<0)?"Chaotisch":"Rechtschaffen"
     };
 }
 
@@ -338,7 +340,7 @@ while ($l=<MONST>) {
 # The main index file. We use stylesheets. Sorry.
 open INDEX, ">html/index.html" or die $!;
 print INDEX <<EOF;
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -393,7 +395,7 @@ while ($m=shift @monsters) {
   # The html file.  I think the symbol stuff is really pretty. :-)
   open HTML, ">html/$htmlname" or die $!;
   print HTML <<EOF;
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -427,16 +429,16 @@ $nextprev
 <h1>$print_name</h1>
 <hr class="separator1"/>
 <h2>Level $m->{LEVEL}->{LVL}</h2> 
-<div class="attribute">Armor Class: $m->{LEVEL}->{AC}</div>
-<div class="attribute">Speed: $m->{LEVEL}->{MOV}</div>
-<div class="attribute">Magic Resistance: $m->{LEVEL}->{MR}</div>
-<div class="attribute">Alignment: $m->{LEVEL}->{ALN}</div>
+<div class="attribute">Rüstungsklasse: $m->{LEVEL}->{AC}</div>
+<div class="attribute">Geschwindigkeit: $m->{LEVEL}->{MOV}</div>
+<div class="attribute">Magieresistenz: $m->{LEVEL}->{MR}</div>
+<div class="attribute">Gesinnung: $m->{LEVEL}->{ALN}</div>
 EOF
   # If the monster has any attacks, produce an attack section.
   if (scalar(@{$m->{ATK}})) {
     print HTML <<EOF;
 <div class="attack">
-<h3>Attacks:</h3>
+<h3>Angriffe:</h3>
 <ul>
 EOF
     for $a (@{$m->{ATK}}) {
@@ -492,7 +494,7 @@ EOF
   if (!($m->{FLGS} eq "0|0|0")) {
     print HTML <<EOF;
 <div class="flags">
-<h3>Other attributes:</h3>
+<h3>Andere Attribute:</h3>
 <ul>
 EOF
     for $mr (split /\|/, $m->{FLGS}) {
