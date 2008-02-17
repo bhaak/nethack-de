@@ -340,7 +340,7 @@ while ($l=<MONST>) {
 # The main index file. We use stylesheets. Sorry.
 open INDEX, ">html/index.html" or die $!;
 print INDEX <<EOF;
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -377,7 +377,7 @@ while ($m=shift @monsters) {
   # The html file.  I think the symbol stuff is really pretty. :-)
   open HTML, ">html/$htmlname" or die $!;
   print HTML <<EOF;
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
