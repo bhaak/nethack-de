@@ -135,7 +135,7 @@ cursed_book(bp)
 		make_confused(HConfusion + rn1(7,16),FALSE);
 		break;
 	case 5:
-		pline("Das Buch wurde in Kontaktgift getränkt!"); /* EN pline_The("book was coated with contact poison!"); */
+		pline("Das Buch wurde mit einem Kontaktgift getränkt!"); /* EN pline_The("book was coated with contact poison!"); */
 		if (uarmg) {
 		    if (uarmg->oerodeproof || !is_corrodeable(uarmg)) {
 			Your("gloves seem unaffected."); /* EN Your("gloves seem unaffected."); */ // TODO DE

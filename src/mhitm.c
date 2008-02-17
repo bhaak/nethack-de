@@ -1352,7 +1352,7 @@ int mdead;
 		    break;
 		}
 		if(canseemon(magr))
-		    pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr kalt!", Monnam(magr)); /* EN pline("%s is suddenly very cold!", Monnam(magr)); */
+		    pline("OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr kalt!", Monnam(magr)); /* EN pline("%s is suddenly very cold!", Monnam(magr)); */
 		mdef->mhp += tmp / 2;
 		if (mdef->mhpmax < mdef->mhp) mdef->mhpmax = mdef->mhp;
 		if (mdef->mhpmax > ((int) (mdef->m_lev+1) * 8))
@@ -1377,7 +1377,7 @@ int mdead;
 		    break;
 		}
 		if(canseemon(magr))
-		    pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr heiß!", Monnam(magr)); /* EN pline("%s is suddenly very hot!", Monnam(magr)); */
+		    pline("OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr heiß!", Monnam(magr)); /* EN pline("%s is suddenly very hot!", Monnam(magr)); */
 		break;
 	    case AD_ELEC:
 		if (resists_elec(magr)) {
