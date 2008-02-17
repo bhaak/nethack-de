@@ -1,0 +1,63 @@
+
+body {
+  font-family: arial, sans-serif;
+  background: #000000;
+  color: #d0d0d0;
+  width: 500px;
+  position: relative;
+  top: 20%;
+}
+
+a {
+  color: #ffffff;
+}
+
+h1 {
+}
+
+.attribute {
+  font-weight: bold;
+}
+
+.separator1 {
+  clear: both;
+  height: 4px;
+  color: #ffffff;
+  background-color: #ffffff;
+  border: 0;
+}
+
+.symbol {
+  font-family:courier;
+  float:right;
+  font-size:40pt;
+  background:#000000;
+}
+
+.attack ul {
+  margin-top: 0px;
+  padding-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.attack li {
+  font-style: normal;
+}
+
+.resist {
+  float: left;
+/*  position: absolute;
+  top: 0px;
+  left: 0px; */
+}
+
+.convey {
+  position: absolute;
+  top: 0px;
+  left: 250px; 
+}
+
+.flags {
+  clear: both;
+}
+
