@@ -1,11 +1,11 @@
 #!/usr/bin/perl
-# nhtohtml.pl: A script to generate the nethack bestiary.
-# Copyright (C) 2004 Robert Sim (rob@simra.net)
+# nhtohtml.pl: A script to generate the nethack bestiary for NetHack-De.
+# Copyright (c) 2008 Patric Mueller (bhaak@gmx.net)
+# Copyright (c) 2004 Robert Sim (rob@simra.net)
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
+# version 2 as published by the Free Software Foundation.
 # 
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,11 +19,11 @@
 my $rev = '$Revision: 1.8 $ ';
 my ($version) = $rev=~ /Revision:\s+(.*?)\s?\$/;
 
-print STDERR <<EOF;
-nhtohtml.pl version $version, Copyright (C) 2004 Robert Sim 
-This program comes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under certain conditions.
-EOF
+#print STDERR <<EOF;
+# nhtohtml.pl version $version, Copyright (C) 2004 Robert Sim 
+#This program comes with ABSOLUTELY NO WARRANTY. This is free software,
+#and you are welcome to redistribute it under certain conditions.
+#EOF
 
 my $nethome = "$ENV{HOME}/src/nethack-3.4.3";
 my $nethome = "/home/surf/nethack/translation/nethack-de/trunk";
