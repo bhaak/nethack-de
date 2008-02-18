@@ -53,14 +53,14 @@
 #endif
 
 
-#define MR_FIRE		0x01	/* resists fire */
-#define MR_COLD		0x02	/* resists cold */
-#define MR_SLEEP	0x04	/* resists sleep */
-#define MR_DISINT	0x08	/* resists disintegration */
-#define MR_ELEC		0x10	/* resists electricity */
-#define MR_POISON	0x20	/* resists poison */
-#define MR_ACID		0x40	/* resists acid */
-#define MR_STONE	0x80	/* resists petrification */
+#define MR_FIRE		0x01	/* feuerresistent */ /* resists fire */
+#define MR_COLD		0x02	/* kälteresistent */ /* resists cold */
+#define MR_SLEEP	0x04	/* schlafresistent */ /* resists sleep */
+#define MR_DISINT	0x08	/* TODO resists disintegration */ /* resists disintegration */
+#define MR_ELEC		0x10	/* stromunempfindlich */ /* resists electricity */
+#define MR_POISON	0x20	/* giftresistent */ /* resists poison */
+#define MR_ACID		0x40	/* säureresistent */ /* resists acid */
+#define MR_STONE	0x80	/* versteinerungsresistent */ /* resists petrification */
 /* other resistances: magic, sickness */
 /* other conveyances: teleport, teleport control, telepathy */
 
@@ -74,94 +74,94 @@
 #define MR2_FUMBLING	0x4000	/* clumsy */
 
 
-#define M1_FLY		0x00000001L	/* can fly or float */
-#define M1_SWIM		0x00000002L	/* can traverse water */
-#define M1_AMORPHOUS	0x00000004L	/* can flow under doors */
-#define M1_WALLWALK	0x00000008L	/* can phase thru rock */
-#define M1_CLING	0x00000010L	/* can cling to ceiling */
-#define M1_TUNNEL	0x00000020L	/* can tunnel thru rock */
-#define M1_NEEDPICK	0x00000040L	/* needs pick to tunnel */
-#define M1_CONCEAL	0x00000080L	/* hides under objects */
-#define M1_HIDE		0x00000100L	/* mimics, blends in with ceiling */
-#define M1_AMPHIBIOUS	0x00000200L	/* can survive underwater */
-#define M1_BREATHLESS	0x00000400L	/* doesn't need to breathe */
-#define M1_NOTAKE	0x00000800L	/* cannot pick up objects */
-#define M1_NOEYES	0x00001000L	/* no eyes to gaze into or blind */
-#define M1_NOHANDS	0x00002000L	/* no hands to handle things */
-#define M1_NOLIMBS	0x00006000L	/* no arms/legs to kick/wear on */
-#define M1_NOHEAD	0x00008000L	/* no head to behead */
-#define M1_MINDLESS	0x00010000L	/* has no mind--golem, zombie, mold */
-#define M1_HUMANOID	0x00020000L	/* has humanoid head/arms/torso */
-#define M1_ANIMAL	0x00040000L	/* has animal body */
-#define M1_SLITHY	0x00080000L	/* has serpent body */
-#define M1_UNSOLID	0x00100000L	/* has no solid or liquid body */
-#define M1_THICK_HIDE	0x00200000L	/* has thick hide or scales */
-#define M1_OVIPAROUS	0x00400000L	/* can lay eggs */
-#define M1_REGEN	0x00800000L	/* regenerates hit points */
-#define M1_SEE_INVIS	0x01000000L	/* can see invisible creatures */
-#define M1_TPORT	0x02000000L	/* can teleport */
-#define M1_TPORT_CNTRL	0x04000000L	/* controls where it teleports to */
-#define M1_ACID		0x08000000L	/* acidic to eat */
-#define M1_POIS		0x10000000L	/* poisonous to eat */
-#define M1_CARNIVORE	0x20000000L	/* eats corpses */
-#define M1_HERBIVORE	0x40000000L	/* eats fruits */
-#define M1_OMNIVORE	0x60000000L	/* eats both */
+#define M1_FLY		0x00000001L	/* kann fliegen oder schweben */ /* can fly or float */
+#define M1_SWIM		0x00000002L	/* kann Wasser durchqueren */ /* can traverse water */
+#define M1_AMORPHOUS	0x00000004L	/* kann unter Türen durchfliessen */ /* can flow under doors */
+#define M1_WALLWALK	0x00000008L	/* kann durch Gestein tunneln */ /* can phase thru rock */
+#define M1_CLING	0x00000010L	/* kann an der Decke hängen */ /* can cling to ceiling */
+#define M1_TUNNEL	0x00000020L	/* kann sich durch Gestein graben */ /* can tunnel thru rock */
+#define M1_NEEDPICK	0x00000040L	/* braucht Grabwerkzeug zum Buddeln */ /* needs pick to tunnel */
+#define M1_CONCEAL	0x00000080L	/* versteckt sich unter Gegenständen */ /* hides under objects */
+#define M1_HIDE		0x00000100L	/* TODO mimics, blends in with ceiling */ /* mimics, blends in with ceiling */
+#define M1_AMPHIBIOUS	0x00000200L	/* kann unter Wasser überleben */ /* can survive underwater */
+#define M1_BREATHLESS	0x00000400L	/* atmet nicht */ /* doesn't need to breathe */
+#define M1_NOTAKE	0x00000800L	/* kann keine Objekte aufheben */ /* cannot pick up objects */
+#define M1_NOEYES	0x00001000L	/* TODO no eyes to gaze into or blind */ /* no eyes to gaze into or blind */
+#define M1_NOHANDS	0x00002000L	/* hat keine Hände um Dinge zu benutzen */ /* no hands to handle things */
+#define M1_NOLIMBS	0x00006000L	/* keine Arme oder Beine um zu treten oder etwas anzuziehen */ /* no arms/legs to kick/wear on */
+#define M1_NOHEAD	0x00008000L	/* kein Kopf zum Köpfen */ /* no head to behead */
+#define M1_MINDLESS	0x00010000L	/* hat kein Bewusstsein - Golem, Zombie, Pilz */ /* has no mind--golem, zombie, mold */
+#define M1_HUMANOID	0x00020000L	/* hat humanoiden Kopf, Arme oder Rumpf */ /* has humanoid head/arms/torso */
+#define M1_ANIMAL	0x00040000L	/* besitzt einen Tierkörper */ /* has animal body */
+#define M1_SLITHY	0x00080000L	/* besitzt einen Schlangenkörper */ /* has serpent body */
+#define M1_UNSOLID	0x00100000L	/* besitzt keine feste oder flüssige Körperform */ /* has no solid or liquid body */
+#define M1_THICK_HIDE	0x00200000L	/* besitzt eine dicke Haut oder Schuppen */ /* has thick hide or scales */
+#define M1_OVIPAROUS	0x00400000L	/* kann Eier legen */ /* can lay eggs */
+#define M1_REGEN	0x00800000L	/* regeneriert Trefferpunkte */ /* regenerates hit points */
+#define M1_SEE_INVIS	0x01000000L	/* kann unsichtbare Daseinsformen sehen */ /* can see invisible creatures */
+#define M1_TPORT	0x02000000L	/* kann teleportieren */ /* can teleport */
+#define M1_TPORT_CNTRL	0x04000000L	/* besitzt Teleportationskontrolle */ /* controls where it teleports to */
+#define M1_ACID		0x08000000L	/* säurehaltig */ /* acidic to eat */
+#define M1_POIS		0x10000000L	/* giftig */ /* poisonous to eat */
+#define M1_CARNIVORE	0x20000000L	/* verspeist Kadaver */ /* eats corpses */
+#define M1_HERBIVORE	0x40000000L	/* verspeist Obst */ /* eats fruits */
+#define M1_OMNIVORE	0x60000000L	/* verspeist beides */ /* eats both */
 #ifdef NHSTDC
-#define M1_METALLIVORE	0x80000000UL	/* eats metal */
+#define M1_METALLIVORE	0x80000000UL	/* verspeist Metall */ /* eats metal */
 #else
-#define M1_METALLIVORE	0x80000000L	/* eats metal */
+#define M1_METALLIVORE	0x80000000L	/* verspeist Metall */ /* eats metal */
 #endif
 
-#define M2_NOPOLY	0x00000001L	/* players mayn't poly into one */
-#define M2_UNDEAD	0x00000002L	/* is walking dead */
-#define M2_WERE		0x00000004L	/* is a lycanthrope */
-#define M2_HUMAN	0x00000008L	/* is a human */
-#define M2_ELF		0x00000010L	/* is an elf */
-#define M2_DWARF	0x00000020L	/* is a dwarf */
-#define M2_GNOME	0x00000040L	/* is a gnome */
-#define M2_ORC		0x00000080L	/* is an orc */
-#define M2_DEMON	0x00000100L	/* is a demon */
-#define M2_MERC		0x00000200L	/* is a guard or soldier */
-#define M2_LORD		0x00000400L	/* is a lord to its kind */
-#define M2_PRINCE	0x00000800L	/* is an overlord to its kind */
-#define M2_MINION	0x00001000L	/* is a minion of a deity */
-#define M2_GIANT	0x00002000L	/* is a giant */
-#define M2_MALE		0x00010000L	/* always male */
-#define M2_FEMALE	0x00020000L	/* always female */
-#define M2_NEUTER	0x00040000L	/* neither male nor female */
-#define M2_PNAME	0x00080000L	/* monster name is a proper name */
-#define M2_HOSTILE	0x00100000L	/* always starts hostile */
-#define M2_PEACEFUL	0x00200000L	/* always starts peaceful */
-#define M2_DOMESTIC	0x00400000L	/* can be tamed by feeding */
-#define M2_WANDER	0x00800000L	/* wanders randomly */
-#define M2_STALK	0x01000000L	/* follows you to other levels */
-#define M2_NASTY	0x02000000L	/* extra-nasty monster (more xp) */
-#define M2_STRONG	0x04000000L	/* strong (or big) monster */
-#define M2_ROCKTHROW	0x08000000L	/* throws boulders */
-#define M2_GREEDY	0x10000000L	/* likes gold */
-#define M2_JEWELS	0x20000000L	/* likes gems */
-#define M2_COLLECT	0x40000000L	/* picks up weapons and food */
+#define M2_NOPOLY	0x00000001L	/* Spieler darf nicht in eins transformieren */ /* players mayn't poly into one */
+#define M2_UNDEAD	0x00000002L	/* ist untot */ /* is walking dead */
+#define M2_WERE		0x00000004L	/* ist ein Lykanthrop */ /* is a lycanthrope */
+#define M2_HUMAN	0x00000008L	/* ist ein Mensch */ /* is a human */
+#define M2_ELF		0x00000010L	/* ist ein Elb */ /* is an elf */
+#define M2_DWARF	0x00000020L	/* ist ein Zwerg */ /* is a dwarf */
+#define M2_GNOME	0x00000040L	/* ist ein Gnom */ /* is a gnome */
+#define M2_ORC		0x00000080L	/* ist ein Ork */ /* is an orc */
+#define M2_DEMON	0x00000100L	/* ist ein Dämon */ /* is a demon */
+#define M2_MERC		0x00000200L	/* ist eine Wache oder ein Soldat */ /* is a guard or soldier */
+#define M2_LORD		0x00000400L	/* ist ein Fürst */ /* is a lord to its kind */
+#define M2_PRINCE	0x00000800L	/* TODO ist ein */ /* is an overlord to its kind */
+#define M2_MINION	0x00001000L	/* ist ein Diener einer Gottheit */ /* is a minion of a deity */
+#define M2_GIANT	0x00002000L	/* ist ein Riese */ /* is a giant */
+#define M2_MALE		0x00010000L	/* immer männlich */ /* always male */
+#define M2_FEMALE	0x00020000L	/* immer weiblich */ /* always female */
+#define M2_NEUTER	0x00040000L	/* weder männlich noch weiblich */ /* neither male nor female */
+#define M2_PNAME	0x00080000L	/* Monstername ist ein Eigenname */ /* monster name is a proper name */
+#define M2_HOSTILE	0x00100000L	/* immer feindselig erzeugt */ /* always starts hostile */
+#define M2_PEACEFUL	0x00200000L	/* immer friedlich erzeugt */ /* always starts peaceful */
+#define M2_DOMESTIC	0x00400000L	/* kann durch Fütterung gezähmt werden */ /* can be tamed by feeding */
+#define M2_WANDER	0x00800000L	/* streift ziellos umher */ /* wanders randomly */
+#define M2_STALK	0x01000000L	/* folgt Spieler auf andere Level */ /* follows you to other levels */
+#define M2_NASTY	0x02000000L	/* extra-fieses Monster (mehr TP) */ /* extra-nasty monster (more xp) */
+#define M2_STRONG	0x04000000L	/* kräftiges (oder großes) Monster */ /* strong (or big) monster */
+#define M2_ROCKTHROW	0x08000000L	/* wirft Felsbrocken */ /* throws boulders */
+#define M2_GREEDY	0x10000000L	/* mag Gold */ /* likes gold */
+#define M2_JEWELS	0x20000000L	/* mag Edelsteine */ /* likes gems */
+#define M2_COLLECT	0x40000000L	/* hebt Waffen und Nahrungsmittel auf */ /* picks up weapons and food */
 #ifdef NHSTDC
-#define M2_MAGIC	0x80000000UL	/* picks up magic items */
+#define M2_MAGIC	0x80000000UL	/* hebt magische Gegenstände auf */ /* picks up magic items */
 #else
-#define M2_MAGIC	0x80000000L	/* picks up magic items */
+#define M2_MAGIC	0x80000000L	/* hebt magische Gegenstände auf */ /* picks up magic items */
 #endif
 
-#define M3_WANTSAMUL	0x0001		/* would like to steal the amulet */
-#define M3_WANTSBELL	0x0002		/* wants the bell */
-#define M3_WANTSBOOK	0x0004		/* wants the book */
-#define M3_WANTSCAND	0x0008		/* wants the candelabrum */
-#define M3_WANTSARTI	0x0010		/* wants the quest artifact */
-#define M3_WANTSALL	0x001f		/* wants any major artifact */
-#define M3_WAITFORU	0x0040		/* waits to see you or get attacked */
-#define M3_CLOSE	0x0080		/* lets you close unless attacked */
+#define M3_WANTSAMUL	0x0001		/* will das Amulett stehlen */ /* would like to steal the amulet */
+#define M3_WANTSBELL	0x0002		/* will die Glocke der Öffnung */ /* wants the bell */
+#define M3_WANTSBOOK	0x0004		/* will das Buch der Toten */ /* wants the book */
+#define M3_WANTSCAND	0x0008		/* will den Kandelaber der Anrufung */ /* wants the candelabrum */
+#define M3_WANTSARTI	0x0010		/* will das Quest-Artefakt */ /* wants the quest artifact */
+#define M3_WANTSALL	0x001f		/* will jedes größere Artefakt */ /* wants any major artifact */
+#define M3_WAITFORU	0x0040		/* wartet auf Entdeckung durch Spieler oder Angriff */ /* waits to see you or get attacked */
+#define M3_CLOSE	0x0080		/* lässt Spieler sich nähern außer wenn angegriffen */ /* lets you close unless attacked */
 
-#define M3_COVETOUS	0x001f		/* wants something */
+#define M3_COVETOUS	0x001f		/* ist habgierig */ /* wants something */
 #define M3_WAITMASK	0x00c0		/* waiting... */
 
 /* Infravision is currently implemented for players only */
-#define M3_INFRAVISION	0x0100		/* has infravision */
-#define M3_INFRAVISIBLE 0x0200		/* visible by infravision */
+#define M3_INFRAVISION	0x0100		/* besitzt Infravision */ /* has infravision */
+#define M3_INFRAVISIBLE 0x0200		/* sichtbar durch Infravision */ /* visible by infravision */
 
 #define MZ_TINY		0		/* < 2' */
 #define MZ_SMALL	1		/* 2-4' */
