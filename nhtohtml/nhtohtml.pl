@@ -347,10 +347,10 @@ print INDEX <<EOF;
 <head>
 <link rel="stylesheet" href="nhstyle.css" type="text/css"/>
 <meta <meta name="keywords" content="nethack,games,rpg"/>
-<title>Ye Olde Nethack Bestiary</title>
+<title>Nethacks Bestiarium</title>
 </head>
 <body>
-<h1>Ye Olde Nethack Bestiary</h1>
+<h1>Nethacks Bestiarium</h1>
 <ul>
 EOF
 
@@ -386,7 +386,7 @@ while ($m=shift @monsters) {
 <head>
 <link rel="stylesheet" href="nhstyle.css" type="text/css"/>
 <meta name="keywords" content="nethack,games,rpg"/>
-<title>$print_name</title>
+<title>Nethacks Bestiarium: $print_name</title>
 </head>
 <body>
 $nextprev
@@ -573,8 +573,8 @@ EOF
 # Generate html filenames, and the monster's name.
 sub gen_names {
   my $m=shift;
-  my $htmlname="$m->{NAME}.html";
-  $htmlname=~s/\s/_/g;
+  my $htmlname=lc(substr("$m->{NAME}.html",4));
+  $htmlname=~s/....\s/_/g;
   my $print_name=$m->{NAME};
   if ($mon_count{$m->{NAME}}>1) {
     my $symbol=$m->{SYMBOL};
