@@ -19,7 +19,7 @@ static NEARDATA long noisetime;
 static NEARDATA struct obj *otmp;
 
 static const char brief_feeling[] =
-	"have a %s feeling for a moment, then it passes."; /* EN "have a %s feeling for a moment, then it passes."; */ // TODO DE
+	"Ein %s überkommt KASUS_AKKUSATIV PRONOMEN_PERSONAL plötzlich, doch es vergeht wieder."; /* EN "have a %s feeling for a moment, then it passes."; */ /* urploetzlich? */
 
 STATIC_DCL char *FDECL(mon_nam_too, (char *,struct monst *,struct monst *));
 STATIC_DCL void FDECL(mrustm, (struct monst *, struct monst *, struct obj *));
@@ -565,7 +565,7 @@ explmm(magr, mdef, mattk)
 	    result |= MM_AGR_DIED;
 	}
 	if (magr->mtame)	/* give this one even if it was visible */
-	    You(brief_feeling, "melancholy"); /* EN You(brief_feeling, "melancholy"); */ // TODO DE
+	    pline(brief_feeling, "wehmütiges Gefühl"); /* EN You(brief_feeling, "melancholy"); */
 
 	return result;
 }
@@ -601,7 +601,7 @@ mdamagem(magr, mdef, mattk)
 		monstone(magr);
 		if (magr->mhp > 0) return 0;
 		else if (magr->mtame && !vis)
-		    You(brief_feeling, "peculiarly sad"); /* EN You(brief_feeling, "peculiarly sad"); */ // TODO DE
+		    pline(brief_feeling, "sonderbar trauriges Gefühl"); /* EN You(brief_feeling, "peculiarly sad"); */
 		return MM_AGR_DIED;
 	    }
 	}
@@ -624,7 +624,7 @@ mdamagem(magr, mdef, mattk)
 		    mondied(magr);
 		    if (magr->mhp > 0) return 0;	/* lifesaved */
 		    else if (magr->mtame && !vis)
-			You(brief_feeling, "queasy"); /* EN You(brief_feeling, "queasy"); */ // TODO DE
+			You(brief_feeling, "Gefühl der Übelkeit"); /* EN You(brief_feeling, "queasy"); */
 		    return MM_AGR_DIED;
 		}
 		if(flags.verbose && flags.soundok) verbalize("Rüüülps!"); /* EN if(flags.verbose && flags.soundok) verbalize("Burrrrp!"); */
@@ -832,7 +832,7 @@ mdamagem(magr, mdef, mattk)
 			monstone(mdef);
  post_stone:		if (mdef->mhp > 0) return 0;
 			else if (mdef->mtame && !vis)
-			    You(brief_feeling, "peculiarly sad"); /* EN You(brief_feeling, "peculiarly sad"); */ // TODO DE
+			    You(brief_feeling, "sonderbar trauriges Gefühl"); /* EN You(brief_feeling, "peculiarly sad"); */
 			return (MM_DEF_DIED | (grow_up(magr,mdef) ?
 							0 : MM_AGR_DIED));
 		}
@@ -936,7 +936,7 @@ mdamagem(magr, mdef, mattk)
 			    mondied(mdef);
 			    if (mdef->mhp > 0) return 0;
 			    else if (mdef->mtame && !vis)
-				You(brief_feeling, "strangely sad"); /* EN You(brief_feeling, "strangely sad"); */ // TODO DE
+				You(brief_feeling, "seltsam trauriges Gefühl"); /* EN You(brief_feeling, "strangely sad"); */
 			    return (MM_DEF_DIED | (grow_up(magr,mdef) ?
 							0 : MM_AGR_DIED));
 		    }

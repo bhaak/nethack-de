@@ -398,7 +398,7 @@ register struct obj *otmp;
 
 	if(nothing) {
 	    unkn++;
-	    You("VERB_HAVE kurz ein %s Gefühl, dann vergeht's.", /* EN You("have a %s feeling for a moment, then it passes.", */
+	    pline("Ein %s Gefühl überkommt KASUS_AKKUSATIV PRONOMEN_PERSONAL plötzlich, doch es vergeht wieder.", /* EN You("have a %s feeling for a moment, then it passes.", */
 		  Hallucination ? "normales" : "sonderbares"); /* EN Hallucination ? "normal" : "peculiar"); */
 	}
 	if(otmp->dknown && !objects[otmp->otyp].oc_name_known) {
@@ -937,7 +937,7 @@ register struct obj *obj;
 register const char *txt;
 {
 	if (flags.beginner || !txt)
-		You("VERB_HAVE kurz ein %s Gefühl, dann vergeht's.", /* EN You("have a %s feeling for a moment, then it passes.", */
+		pline("Ein %s Gefühl überkommt KASUS_AKKUSATIV PRONOMEN_PERSONAL plötzlich, doch es vergeht wieder.", /* EN You("have a %s feeling for a moment, then it passes.", */
 		Hallucination ? "normales" : "seltsames"); /* EN Hallucination ? "normal" : "strange"); */
 	else
 		pline(txt);

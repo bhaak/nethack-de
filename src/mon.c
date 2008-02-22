@@ -1692,7 +1692,7 @@ int how;
 	    mondied(mdef);
 
 	if (be_sad && mdef->mhp <= 0)
-	    You("have a sad feeling for a moment, then it passes."); /* EN You("have a sad feeling for a moment, then it passes."); */ // TODO DE
+	    pline("Ein Gefühl der Traurigkeit überkommt KASUS_AKKUSATIV PRONOMEN_PERSONAL plötzlich, doch es vergeht wieder."); /* EN You("have a sad feeling for a moment, then it passes."); */
 }
 
 void
