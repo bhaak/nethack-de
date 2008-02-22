@@ -60,7 +60,7 @@ STATIC_DCL int FDECL(spell_hit_bonus, (int));
 STATIC_VAR const char are_blinded_by_the_flash[];
 extern const char * const flash_types[];
 #else
-STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; /* EN STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; */ // TODO DE
+STATIC_VAR const char are_blinded_by_the_flash[] = "VERB_SEIN vom Blitz geblendet!"; /* EN STATIC_VAR const char are_blinded_by_the_flash[] = "are blinded by the flash!"; */
 
 const char * const flash_types[] = {	/* also used in buzzmu(mcastu.c) */
 	"NOUN_MAGIC_MISSILE",	/* Wands must be 0-9 */ /* EN "magic missile",	*/

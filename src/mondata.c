@@ -205,7 +205,7 @@ struct obj *obj;		/* aatyp == AT_WEAP, AT_SPIT */
 	    for ( ; o; o = o->nobj)
 		if ((o->owornmask & W_ARMH) &&
 		    (s = OBJ_DESCR(objects[o->otyp])) != (char *)0 &&
-		    !strcmp(s, "visored helmet")) /* EN !strcmp(s, "visored helmet")) */ // TODO DE
+		    !strcmp(s, "NOUN_VISORED_HELMET")) /* EN !strcmp(s, "visored helmet")) */
 		    return FALSE;
 	}
 
@@ -722,16 +722,16 @@ struct attack *mattk;
     case PM_FLAMING_SPHERE:
     case PM_FIRE_VORTEX:
     case PM_FIRE_ELEMENTAL:
-	what = "already on fire"; /* EN what = "already on fire"; */ // TODO DE
+	what = "VERB_STEHEN schon in Flammen"; /* EN what = "already on fire"; */
 	break;
     case PM_WATER_ELEMENTAL:
     case PM_FOG_CLOUD:
     case PM_STEAM_VORTEX:
-	what = "boiling"; /* EN what = "boiling"; */ // TODO DE
+	what = "VERB_BRODELN"; /* EN what = "boiling"; */
 	break;
     case PM_ICE_VORTEX:
     case PM_GLASS_GOLEM:
-	what = "melting"; /* EN what = "melting"; */ // TODO DE
+	what = "VERB_SCHMELZEN"; /* EN what = "melting"; */
 	break;
     case PM_STONE_GOLEM:
     case PM_CLAY_GOLEM:
@@ -740,10 +740,10 @@ struct attack *mattk;
     case PM_EARTH_ELEMENTAL:
     case PM_DUST_VORTEX:
     case PM_ENERGY_VORTEX:
-	what = "heating up"; /* EN what = "heating up"; */ // TODO DE
+	what = "VERB_ERWAERMEN PRONOMEN_REFLEXIV"; /* EN what = "heating up"; */
 	break;
     default:
-	what = (mattk->aatyp == AT_HUGS) ? "being roasted" : "on fire"; /* EN what = (mattk->aatyp == AT_HUGS) ? "being roasted" : "on fire"; */ // TODO DE
+	what = (mattk->aatyp == AT_HUGS) ? "VERB_WERDEN durchgebraten" : "VERB_STEHEN in Flammen"; /* EN what = (mattk->aatyp == AT_HUGS) ? "being roasted" : "on fire"; */
 	break;
     }
     return what;

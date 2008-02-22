@@ -615,12 +615,12 @@ mdamagem(magr, mdef, mattk)
 		/* eating a Rider or its corpse is fatal */
 		if (is_rider(mdef->data)) {
 		    if (vis)
-			pline("%s %s!", Monnam(magr),
+			pline("SUBJECT %s %s!", Monnam(magr),
 			      mdef->data == &mons[PM_FAMINE] ?
-				"belches feebly, shrivels up and VERB_STERBEN" : /* EN "belches feebly, shrivels up and dies" : */ // TODO DE
+				"rülpst leicht, fällt in sich zusammen und stirbt" : /* EN "belches feebly, shrivels up and dies" : */
 			      mdef->data == &mons[PM_PESTILENCE] ?
-				"coughs spasmodically and collapses" : /* EN "coughs spasmodically and collapses" : */ // TODO DE
-				"vomits violently and drops dead"); /* EN "vomits violently and drops dead"); */ // TODO DE
+				"hustet krampfhaft und bricht zusammen" : /* EN "coughs spasmodically and collapses" : */
+				"übergibt sich heftig und fällt tot um"); /* EN "vomits violently and drops dead"); */
 		    mondied(magr);
 		    if (magr->mhp > 0) return 0;	/* lifesaved */
 		    else if (magr->mtame && !vis)
@@ -660,7 +660,7 @@ mdamagem(magr, mdef, mattk)
 	    case AD_STUN:
 		if (magr->mcan) break;
 		if (canseemon(mdef))
-		    pline("%s %s einen Moment lang.", Monnam(mdef), /* EN pline("%s %s for a moment.", Monnam(mdef), */
+		    pline("SUBJECT %s %s einen Moment lang.", Monnam(mdef), /* EN pline("%s %s for a moment.", Monnam(mdef), */
 			  makeplural(stagger(mdef->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mdef->data, "stagger"))); */
 		mdef->mstun = 1;
 		goto physical;
@@ -706,7 +706,7 @@ mdamagem(magr, mdef, mattk)
 		    break;
 		}
 		if (vis)
-		    pline("%s is %s!", Monnam(mdef), /* EN pline("%s is %s!", Monnam(mdef), */ // TODO DE
+		    pline("SUBJECT %s %s!", Monnam(mdef), /* EN pline("%s is %s!", Monnam(mdef), */
 			  on_fire(mdef->data, mattk));
 		if (pd == &mons[PM_STRAW_GOLEM] ||
 		    pd == &mons[PM_PAPER_GOLEM]) {
@@ -714,7 +714,7 @@ mdamagem(magr, mdef, mattk)
 			mondied(mdef);
 			if (mdef->mhp > 0) return 0;
 			else if (mdef->mtame && !vis)
-			    pline("May %s roast in peace.", mon_nam(mdef)); /* EN pline("May %s roast in peace.", mon_nam(mdef)); */ // TODO DE
+			    pline("Möge %s in Frieden brutzeln.", mon_nam(mdef)); /* EN pline("May %s roast in peace.", mon_nam(mdef)); */
 			return (MM_DEF_DIED | (grow_up(magr,mdef) ?
 							0 : MM_AGR_DIED));
 		}
@@ -787,7 +787,7 @@ mdamagem(magr, mdef, mattk)
 			mondied(mdef);
 			if (mdef->mhp > 0) return 0;
 			else if (mdef->mtame && !vis)
-			    pline("May %s rust in peace.", mon_nam(mdef)); /* EN pline("May %s rust in peace.", mon_nam(mdef)); */ // TODO DE
+			    pline("Möge %s in Frieden rosten.", mon_nam(mdef)); /* EN pline("May %s rust in peace.", mon_nam(mdef)); */
 			return (MM_DEF_DIED | (grow_up(magr,mdef) ?
 							0 : MM_AGR_DIED));
 		}
@@ -902,7 +902,7 @@ mdamagem(magr, mdef, mattk)
 		    register unsigned rnd_tmp;
 
 		    if (vis && mdef->mcansee)
-			pline("%s is blinded.", Monnam(mdef)); /* EN pline("%s is blinded.", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_SEIN geblendet.", Monnam(mdef)); /* EN pline("%s is blinded.", Monnam(mdef)); */
 		    rnd_tmp = d((int)mattk->damn, (int)mattk->damd);
 		    if ((rnd_tmp += mdef->mblinded) > 127) rnd_tmp = 127;
 		    mdef->mblinded = rnd_tmp;

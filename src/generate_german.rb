@@ -843,6 +843,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_DISARM","entschärfen"),
 		Verb.verb("VERB_DONNERN","donnern"),
 		Verb.verb("VERB_EINSCHLAFEN","schlafen","ein"),
+		Verb.verb("VERB_ERFASSEN","erfassen"),
 		Verb.verb("VERB_ERGREIFEN","ergreifen"),
 		Verb.verb("VERB_ERLANGEN","erlangen"),
 		Verb.verb("VERB_ERSTRAHLEN","erstrahlen"),
@@ -1811,7 +1812,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HARP","Harfe","","Harfe","en","feminin"),
     dekliniere_substantiv("NOUN_DRUM","Trommel","","Trommel","en","feminin"),
     #dekliniere_substantiv("NOUN_IRON_HOOK","","","","","maskulin"),
-    dekliniere_substantiv("NOUN_CANDELABRUM","Armleuchter","s","Armleuchter","","maskulin"), # Kandelaber, Armleuchter
+    dekliniere_substantiv("NOUN_CANDELABRUM","Kerzenleuchter","s","Kerzenleuchter","","maskulin"), # Kandelaber, Armleuchter, Kerzenleuchter
     dekliniere_substantiv("NOUN_SILVER_BELL","Silberglocke","","Silberglocke","en","feminin"),
     "",
     "/* Food */",
@@ -3023,6 +3024,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_FETTIG","fettig"),
     dekliniere_adjektiv("ADJEKTIV_KRAFTLOS","kraftlos"),
     dekliniere_adjektiv("ADJEKTIV_GIFTGETRAENKT","giftgetränkt"),
+    dekliniere_adjektiv("ADJEKTIV_BRENNEND","brennend"),
 
     dekliniere_adjektiv("ADJEKTIV_POOR","arm"),
 		dekliniere_adjektiv("ADJEKTIV_EINSTUERZEND","einstürzend"),

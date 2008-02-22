@@ -1326,7 +1326,7 @@ register struct attack *mattk;
 		    break;
 		}
 		if (!Blind)
-		    pline("%s is %s!", Monnam(mdef), /* EN pline("%s is %s!", Monnam(mdef), */ // TODO DE
+		    pline("SUBJECT %s %s!", Monnam(mdef), /* EN pline("%s is %s!", Monnam(mdef), */
 			  on_fire(mdef->data, mattk));
 		if (pd == &mons[PM_STRAW_GOLEM] ||
 		    pd == &mons[PM_PAPER_GOLEM]) {

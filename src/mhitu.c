@@ -955,7 +955,7 @@ hitmu(mtmp, mattk)
 	    case AD_FIRE:
 		hitmsg(mtmp, mattk);
 		if (uncancelled) {
-		    pline("You're %s!", on_fire(youmonst.data, mattk)); /* EN pline("You're %s!", on_fire(youmonst.data, mattk)); */ // TODO DE
+		    pline("SUBJECT %s!", on_fire(youmonst.data, mattk)); /* EN pline("You're %s!", on_fire(youmonst.data, mattk)); */
 		    if (youmonst.data == &mons[PM_STRAW_GOLEM] ||
 		        youmonst.data == &mons[PM_PAPER_GOLEM]) {
 			    You("roast!"); /* EN You("roast!"); */ // TODO DE
@@ -1823,7 +1823,7 @@ common:
 		if (!not_affected) {
 		    /* sometimes you're affected even if it's invisible */
 		    if (mon_visible(mtmp) || (rnd(tmp /= 2) > u.ulevel)) {
-			You("are blinded by a blast of light!"); /* EN You("are blinded by a blast of light!"); */ // TODO DE
+			You("VERB_WERDEN von einem Lichtblitz geblendet!"); /* EN You("are blinded by a blast of light!"); */
 			make_blinded((long)tmp, FALSE);
 			if (!Blind) Your(vision_clears);
 		    } else if (flags.verbose)

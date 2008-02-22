@@ -836,7 +836,7 @@ struct trap *trap;
 	    return;
 	}
 	if (!Blind)
-	    You("are momentarily blinded by a flash of light."); /* EN You("are momentarily blinded by a flash of light."); */ // TODO DE
+	    You("VERB_WERDEN kurz von einem Lichtblitz geblendet."); /* EN You("are momentarily blinded by a flash of light."); */
 	else
 	    You("are momentarily disoriented."); /* EN You("are momentarily disoriented."); */ // TODO DE
 	deltrap(trap);
