@@ -342,7 +342,11 @@ pmatch(patrn, strng)	/* match a string against a pattern */
    :  any single character.  Returns TRUE if 'strng' matches 'patrn'.
    */
 pmatch_top:
+#ifdef GERMAN
+    s = highc(*strng++);  p = highc(*patrn++);	/* get next chars and pre-advance */
+#else
     s = *strng++;  p = *patrn++;	/* get next chars and pre-advance */
+#endif
     if (!p)			/* end of pattern */
 	return((boolean)(s == '\0'));		/* matches iff end of string too */
     else if (p == '*')		/* wildcard reached */

@@ -2504,8 +2504,7 @@ mercury
 #	especially humans.  If they hit their victim with a tentacle,
 #	the mind flayer will slowly drain it of all intelligence,
 #	eventually killing its victim.
-gedankendieb
-gedankenschinder
+*MIND_FLAYER
 	Dieses Geschöpf besitzt einen humanoiden Körper, einen
 	tentakelbewehrten Mund und drei lange Finger an jeder Hand.
 	Gedankendiebe sind telepathisch und lieben es intelligente
@@ -2525,7 +2524,8 @@ mine*
 	walls.  Metal will also be present, but only when made up into
 	armor and weapons (_wondrous_).
 	[ The Tough Guide to Fantasyland, by Diana Wynne Jones ]
-minotaur
+#minotaur
+NOUN_MINOTAUR*
 	The Minotaur was a monster, half bull, half human, the
 	offspring of Minos' wife Pasiphae and a wonderfully beautiful
 	bull. ...  When the Minotaur was born Minos did not kill him.
@@ -2581,6 +2581,7 @@ mjollnir
 	destruction, and resurrection.
 ~slime mold
 *mold
+~NOUN_SLIME_MOLD
 	Mold, multicellular organism of the division Fungi, typified
 	by plant bodies composed of a network of cottony filaments.
 	The colors of molds are due to spores borne on the filaments.
@@ -2760,6 +2761,7 @@ neanderthal*
 	man was found.  2.  Human(oid) of the race mentioned above.
 neferet
 neferet the green
+NOUN_NEFERET_THE_GREEN
 	Neferet the Green holds office in her hidden tower, only
 	reachable by magical means, where she teaches her apprentices
 	the enigmatic skills of occultism.  Despite her many years, she
@@ -2768,6 +2770,7 @@ neferet the green
 	apprentice herself, she accidentally turned her skin green, and
 	has kept it that way ever since.
 newt
+NOUN_NEWT
 	(kinds of) small animal, like a lizard, which spends most of
 	its time in the water.
 		[ Oxford's Student's Dictionary of Current English ]
@@ -3049,6 +3052,7 @@ pick*ax*
 	but exceeding slow.
 		[ the Bestiary of Xygag ]
 piranha
+NOUN_PIRANHA
 	They live in "schools." Many times they will wait for prey 
 	to come to the shallow water of the river. Then the large 
 	group of piranhas will attack. These large groups are able 
@@ -3095,6 +3099,7 @@ platinum yendorian express card
 	attacks.  Finally, its power is such that when invoked, it
 	can charge other objects.
 pony
+NOUN_PONY
 		Hey! now! Come hoy now! Whither do you wander?
 		Up, down, near or far, here, there or yonder?
 		Sharp-ears, Wise-nose, Swish-tail and Bumpkin,
@@ -3192,7 +3197,8 @@ ptah
 	consisting of a staff surmounted by the _ankh_ symbol of
 	life.  He is otherwise symbolized by his sacred animal, the
 	bull.
-*purple worm
+#*purple worm
+*PURPLE_WORM
 	A gargantuan version of the harmless rain-worm, the purple
 	worm poses a huge threat to the ordinary adventurer.  It is
 	known to swallow whole and digest its victims within only a

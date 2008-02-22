@@ -8,6 +8,10 @@
 #include "hack.h"
 #include "dlb.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_DCL boolean FDECL(is_swallow_sym, (int));
 STATIC_DCL int FDECL(append_str, (char *, const char *));
 STATIC_DCL struct permonst * FDECL(lookat, (int, int, char *, char *));
@@ -76,8 +80,8 @@ lookat(x, y, buf, monbuf)
 	    Sprintf(race, "%s ", urace.adj);
 	}
 
-	Sprintf(buf, "%s%s%s called %s", /* EN Sprintf(buf, "%s%s%s called %s", */ // TODO DE
-		Invis ? "invisible " : "", /* EN Invis ? "invisible " : "", */ // TODO DE
+	Sprintf(buf, "%s%s%s genannt %s", /* EN Sprintf(buf, "%s%s%s called %s", */
+		Invis ? "ADJEKTIV_INVISIBLE " : "", /* EN Invis ? "invisible " : "", */
 		race,
 		mons[u.umonnum].mname,
 		plname);
@@ -108,11 +112,11 @@ lookat(x, y, buf, monbuf)
 	    if (Detect_monsters) how |= 4;
 
 	    if (how)
-		Sprintf(eos(buf), " [seen: %s%s%s%s%s]", /* EN Sprintf(eos(buf), " [seen: %s%s%s%s%s]", */ // TODO DE
-			(how & 1) ? "infravision" : "", /* EN (how & 1) ? "infravision" : "", */ // TODO DE
+		Sprintf(eos(buf), " [gesehen durch: %s%s%s%s%s]", /* EN Sprintf(eos(buf), " [seen: %s%s%s%s%s]", */
+			(how & 1) ? "Infravision" : "", /* EN (how & 1) ? "infravision" : "", */
 			/* add comma if telep and infrav */
 			((how & 3) > 2) ? ", " : "",
-			(how & 2) ? "telepathy" : "", /* EN (how & 2) ? "telepathy" : "", */ // TODO DE
+			(how & 2) ? "Telepathie" : "", /* EN (how & 2) ? "telepathy" : "", */
 			/* add comma if detect and (infrav or telep or both) */
 			((how & 7) > 4) ? ", " : "",
 			(how & 4) ? "monster detection" : ""); /* EN (how & 4) ? "monster detection" : ""); */ // TODO DE
@@ -140,8 +144,8 @@ lookat(x, y, buf, monbuf)
 		    (mtmp->mx != x || mtmp->my != y) ?
 			((mtmp->isshk && accurate)
 				? "tail of " : "tail of a ") : "", /* EN ? "tail of " : "tail of a ") : "", */ // TODO DE
-		    (mtmp->mtame && accurate) ? "tame " : /* EN (mtmp->mtame && accurate) ? "tame " : */ // TODO DE
-		    (mtmp->mpeaceful && accurate) ? "peaceful " : "", /* EN (mtmp->mpeaceful && accurate) ? "peaceful " : "", */ // TODO DE
+		    (mtmp->mtame && accurate) ? "ADJEKTIV_TAME " : /* EN (mtmp->mtame && accurate) ? "tame " : */
+		    (mtmp->mpeaceful && accurate) ? "ADJEKTIV_PEACEFUL " : "", /* EN (mtmp->mpeaceful && accurate) ? "peaceful " : "", */
 		    name);
 	    if (u.ustuck == mtmp)
 		Strcat(buf, (Upolyd && sticks(youmonst.data)) ?
@@ -201,17 +205,17 @@ lookat(x, y, buf, monbuf)
 		    }
 		    if ((!mtmp->minvis || See_invisible) &&
 			    see_with_infrared(mtmp)) {
-			Strcat(monbuf, "infravision"); /* EN Strcat(monbuf, "infravision"); */ // TODO DE
+			Strcat(monbuf, "Infravision"); /* EN Strcat(monbuf, "infravision"); */
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
 		    if (tp_sensemon(mtmp)) {
-			Strcat(monbuf, "telepathy"); /* EN Strcat(monbuf, "telepathy"); */ // TODO DE
+			Strcat(monbuf, "Telepathie"); /* EN Strcat(monbuf, "telepathy"); */
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
 		    if (useemon && xraydist > 0 &&
 			    distu(mtmp->mx, mtmp->my) <= xraydist) {
 			/* Eyes of the Overworld */
-			Strcat(monbuf, "astral vision"); /* EN Strcat(monbuf, "astral vision"); */ // TODO DE
+			Strcat(monbuf, "Astralsicht"); /* EN Strcat(monbuf, "astral vision"); */
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
 		    if (Detect_monsters) {
@@ -308,6 +312,9 @@ checkfile(inp, pm, user_typed_name, without_asking)
 {
     dlb *fp;
     char buf[BUFSZ], newstr[BUFSZ];
+#ifdef GERMAN
+    char tmp_str[BUFSZ];
+#endif
     char *ep, *dbase_str;
     long txt_offset;
     int chk_skip;
@@ -326,25 +333,30 @@ checkfile(inp, pm, user_typed_name, without_asking)
     if (pm != (struct permonst *) 0 && !user_typed_name)
 	dbase_str = strcpy(newstr, pm->mname);
     else dbase_str = strcpy(newstr, inp);
+#ifdef GERMAN
+    german2meta(newstr, tmp_str);
+    dbase_str = tmp_str;
+#else
     (void) lcase(dbase_str);
+#endif
 
     if (!strncmp(dbase_str, "interior of ", 12)) /* EN if (!strncmp(dbase_str, "interior of ", 12)) */ // TODO DE
 	dbase_str += 12;
-    if (!strncmp(dbase_str, "a ", 2)) /* EN if (!strncmp(dbase_str, "a ", 2)) */ // TODO DE
+    if (!strncmp(dbase_str, "ARTIKEL_UNBESTIMMTER ", 21)) /* EN if (!strncmp(dbase_str, "a ", 2)) */
 	dbase_str += 2;
-    else if (!strncmp(dbase_str, "an ", 3)) /* EN else if (!strncmp(dbase_str, "an ", 3)) */ // TODO DE
+    else if (!strncmp(dbase_str, "ARTIKEL_UNBESTIMMTER ", 21)) /* EN else if (!strncmp(dbase_str, "an ", 3)) */
 	dbase_str += 3;
-    else if (!strncmp(dbase_str, "the ", 4)) /* EN else if (!strncmp(dbase_str, "the ", 4)) */ // TODO DE
+    else if (!strncmp(dbase_str, "ARTIKEL_BESTIMMTER ", 19)) /* EN else if (!strncmp(dbase_str, "the ", 4)) */
 	dbase_str += 4;
-    if (!strncmp(dbase_str, "tame ", 5)) /* EN if (!strncmp(dbase_str, "tame ", 5)) */ // TODO DE
+    if (!strncmp(dbase_str, "ADJEKTIV_TAME ", 14)) /* EN if (!strncmp(dbase_str, "tame ", 5)) */
 	dbase_str += 5;
-    else if (!strncmp(dbase_str, "peaceful ", 9)) /* EN else if (!strncmp(dbase_str, "peaceful ", 9)) */ // TODO DE
+    else if (!strncmp(dbase_str, "ADJEKTIV_PEACEFUL ", 18)) /* EN else if (!strncmp(dbase_str, "peaceful ", 9)) */
 	dbase_str += 9;
-    if (!strncmp(dbase_str, "invisible ", 10)) /* EN if (!strncmp(dbase_str, "invisible ", 10)) */ // TODO DE
+    if (!strncmp(dbase_str, "ADJEKTIV_INVISIBLE ", 19)) /* EN if (!strncmp(dbase_str, "invisible ", 10)) */
 	dbase_str += 10;
-    if (!strncmp(dbase_str, "statue of ", 10)) /* EN if (!strncmp(dbase_str, "statue of ", 10)) */ // TODO DE
+    if (!strncmp(dbase_str, "NOUN_STATUE PARTIKEL_OF ", 24)) /* EN if (!strncmp(dbase_str, "statue of ", 10)) */
 	dbase_str[6] = '\0';
-    else if (!strncmp(dbase_str, "figurine of ", 12)) /* EN else if (!strncmp(dbase_str, "figurine of ", 12)) */ // TODO DE
+    else if (!strncmp(dbase_str, "NOUN_FIGURINE PARTIKEL_OF ", 26)) /* EN else if (!strncmp(dbase_str, "figurine of ", 12)) */
 	dbase_str[8] = '\0';
 
     /* Make sure the name is non-empty. */
@@ -352,10 +364,10 @@ checkfile(inp, pm, user_typed_name, without_asking)
 	/* adjust the input to remove "named " and convert to lower case */
 	char *alt = 0;	/* alternate description */
 
-	if ((ep = strstri(dbase_str, " named ")) != 0) /* EN if ((ep = strstri(dbase_str, " named ")) != 0) */ // TODO DE
-	    alt = ep + 7;
+	if ((ep = strstri(dbase_str, " PARTIKEL_NAMED ")) != 0) /* EN if ((ep = strstri(dbase_str, " named ")) != 0) */
+	    alt = ep + 16; /* EN alt = ep + 7; */
 	else
-	    ep = strstri(dbase_str, " called "); /* EN ep = strstri(dbase_str, " called "); */ // TODO DE
+	    ep = strstri(dbase_str, " genannt "); /* EN ep = strstri(dbase_str, " called "); */
 	if (!ep) ep = strstri(dbase_str, ", ");
 	if (ep && ep > dbase_str) *ep = '\0';
 
@@ -581,7 +593,7 @@ do_look(quick)
 		(sym == monsyms[S_HUMAN] && cc.x == u.ux && cc.y == u.uy) :
 		(sym == def_monsyms[S_HUMAN] && !iflags.showrace)) &&
 	    !(Race_if(PM_HUMAN) || Race_if(PM_ELF)) && !Upolyd)
-	    found += append_str(out_str, "you");	/* tack on "or you" */
+	    found += append_str(out_str, "PRONOMEN_PERSONAL");	/* tack on "or you" */ /* EN found += append_str(out_str, "you"); */
 
 	/*
 	 * Special case: if identifying from the screen, and we're swallowed,
@@ -640,7 +652,7 @@ do_look(quick)
 
 		if (!found) {
 		    if (is_cmap_trap(i)) {
-			Sprintf(out_str, "%c       a trap", sym);
+			Sprintf(out_str, "%c       ARTIKEL_UNBESTIMMTER NOUN_TRAP", sym); /* EN Sprintf(out_str, "%c       a trap", sym); */
 			hit_trap = TRUE;
 		    } else {
 			Sprintf(out_str, "%c       %s", sym,
@@ -697,11 +709,11 @@ do_look(quick)
 	/* handle optional boulder symbol as a special case */ 
 	if (iflags.bouldersym && sym == iflags.bouldersym) {
 	    if (!found) {
-		firstmatch = "boulder"; /* EN firstmatch = "boulder"; */ // TODO DE
+		firstmatch = "NOUN_BOULDER"; /* EN firstmatch = "boulder"; */
 		Sprintf(out_str, "%c       %s", sym, an(firstmatch));
 		found++;
 	    } else {
-		found += append_str(out_str, "boulder"); /* EN found += append_str(out_str, "boulder"); */ // TODO DE
+		found += append_str(out_str, "NOUN_BOULDER"); /* EN found += append_str(out_str, "boulder"); */
 	    }
 	}
 	
@@ -722,7 +734,7 @@ do_look(quick)
 		    found = 1;	/* we have something to look up */
 		}
 		if (monbuf[0]) {
-		    Sprintf(temp_buf, " [seen: %s]", monbuf); /* EN Sprintf(temp_buf, " [seen: %s]", monbuf); */ // TODO DE
+		    Sprintf(temp_buf, " [gesehen durch: %s]", monbuf); /* EN Sprintf(temp_buf, " [seen: %s]", monbuf); */ // TODO DE
 		    (void)strncat(out_str, temp_buf, BUFSZ-strlen(out_str)-1);
 		}
 	    }
