@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_DCL int FDECL(drop_throw,(struct obj *,BOOLEAN_P,int,int));
 
 #define URETREATING(x,y) (distmin(u.ux,u.uy,x,y) > distmin(u.ux0,u.uy0,x,y))
@@ -194,8 +198,8 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	    }
 	    if (objects[otmp->otyp].oc_material == SILVER &&
 		    hates_silver(mtmp->data)) {
-		if (vis) pline_The("silver sears %s flesh!", /* EN if (vis) pline_The("silver sears %s flesh!", */ // TODO DE
-				s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
+		if (vis) pline_The("silver sears %s!", /* EN if (vis) pline_The("silver sears %s flesh!", */ // TODO DE
+				genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_FLESH")); /* EN s_suffix(mon_nam(mtmp))); */
 		else if (verbose) pline("Its flesh is seared!"); /* EN else if (verbose) pline("Its flesh is seared!"); */ // TODO DE
 	    }
 	    if (otmp->otyp == ACID_VENOM && cansee(mtmp->mx,mtmp->my)) {
@@ -332,13 +336,13 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			    && is_unicorn(youmonst.data)) {
 			if (singleobj->otyp > LAST_GEM) {
 			    You("VERB_FANGEN OBJECT ARTIKEL_BESTIMMTER %s.", xname(singleobj)); /* EN You("catch the %s.", xname(singleobj)); */
-			    You("are not interested in %s junk.", /* EN You("are not interested in %s junk.", */ // TODO DE
-				s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
+			    You("are not interested in %s.", /* EN You("are not interested in %s junk.", */ // TODO DE
+				genitivattribut_zu_wort(mon_nam(mon), "NOUN_JUNK")); /* EN s_suffix(mon_nam(mon))); */
 			    makeknown(singleobj->otyp);
 			    dropy(singleobj);
 			} else {
-			    You("accept %s gift in the spirit in which it was intended.", /* EN You("accept %s gift in the spirit in which it was intended.", */ // TODO DE
-				s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
+			    You("accept %s in the spirit in which it was intended.", /* EN You("accept %s gift in the spirit in which it was intended.", */ // TODO DE
+				genitivattribut_zu_wort(mon_nam(mon), "NOUN_GIFT")); /* EN s_suffix(mon_nam(mon))); */
 			    (void)hold_another_object(singleobj,
 				"You catch, but drop, %s.", xname(singleobj), /* EN "You catch, but drop, %s.", xname(singleobj), */ // TODO DE
 				"SUBJECT VERB_FANGEN:"); /* EN "You catch:"); */
@@ -626,7 +630,7 @@ register struct attack *mattk;
 
 	    if(flags.soundok)
 		pline("A dry rattle comes from %s throat.", /* EN pline("A dry rattle comes from %s throat.", */ // TODO DE
-		                      s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
+		                      genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_THROAT")); /* EN s_suffix(mon_nam(mtmp))); */
 	    return 0;
 	}
 	if(lined_up(mtmp)) {

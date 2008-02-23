@@ -5,7 +5,7 @@
 #include "hack.h"
 
 #ifdef GERMAN
-#include "german.h"
+# include "german.h"
 #endif
 
 STATIC_DCL boolean FDECL(known_hitum, (struct monst *,int *,struct attack *));
@@ -355,7 +355,7 @@ register struct monst *mtmp;
 		    monflee(mtmp, rnd(6), FALSE, FALSE);
 		    Strcpy(buf, y_monnam(mtmp));
 		    buf[0] = highc(buf[0]);
-		    You("stop.  %s is in the way!", buf); /* EN You("stop.  %s is in the way!", buf); */ // TODO DE
+		    You("VERB_HALTEN inne.  NEUER_SATZ SUBJECT %s VERB_STEHEN OBJECT KASUS_DATIV im Weg!", buf); /* EN You("stop.  %s is in the way!", buf); */
 		    return(TRUE);
 		} else if ((mtmp->mfrozen || (! mtmp->mcanmove)
 				|| (mtmp->data->mmove == 0)) && rn2(6)) {
@@ -843,7 +843,7 @@ int thrown;
 				/* note: s_suffix returns a modifiable buffer */
 				if (haseyes(mdat)
 				    && mdat != &mons[PM_FLOATING_EYE])
-				    whom = strcat(strcat(s_suffix(whom), " "), /* EN whom = strcat(strcat(s_suffix(whom), " "), */ // TODO DE
+				    whom = genitivattribut_zu_wort(whom, /* EN whom = strcat(strcat(s_suffix(whom), " "), */
 						  mbodypart(mon, FACE));
 				pline("%s %s over %s!", /* EN pline("%s %s over %s!", */ // TODO DE
 				      what, vtense(what, "splash"), whom); /* EN what, vtense(what, "splash"), whom); */ // TODO DE
@@ -1451,8 +1451,8 @@ register struct attack *mattk;
 		if (night() && !rn2(10) && !mdef->mcan) {
 		    if (mdef->data == &mons[PM_CLAY_GOLEM]) {
 			if (!Blind)
-			    pline("Some writing vanishes from %s head!", /* EN pline("Some writing vanishes from %s head!", */ // TODO DE
-				s_suffix(mon_nam(mdef))); /* EN s_suffix(mon_nam(mdef))); */ // TODO DE
+			    pline("Some writing vanishes from %s!", /* EN pline("Some writing vanishes from %s head!", */ // TODO DE
+				genitivattribut_zu_wort(mon_nam(mdef), "NOUN_KOPF")); /* EN s_suffix(mon_nam(mdef))); */
 			xkilled(mdef, 0);
 			/* Don't return yet; keep hp<1 and tmp=0 for pet msg */
 		    } else {
@@ -2149,8 +2149,8 @@ uchar aatyp;
 	  case AD_ACID:
 	    if(mhit && rn2(2)) {
 		if (Blind || !flags.verbose) You("are splashed!"); /* EN if (Blind || !flags.verbose) You("are splashed!"); */ // TODO DE
-		else	You("are splashed by %s acid!", /* EN else	You("are splashed by %s acid!", */ // TODO DE
-			                s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
+		else	You("are splashed by %s!", /* EN else	You("are splashed by %s acid!", */ // TODO DE
+			                genitivattribut_zu_wort(mon_nam(mon), "NOUN_ACID")); /* EN s_suffix(mon_nam(mon))); */
 
 		if (!Acid_resistance)
 			mdamageu(mon, tmp);
@@ -2249,15 +2249,15 @@ uchar aatyp;
 			break;
 		    }
 		    if(mon->mcansee) {
-			if (ureflects("%s gaze is reflected by your %s.", /* EN if (ureflects("%s gaze is reflected by your %s.", */ // TODO DE
-				    s_suffix(Monnam(mon)))) /* EN s_suffix(Monnam(mon)))) */ // TODO DE
+			if (ureflects("%s is reflected by your %s.", /* EN if (ureflects("%s gaze is reflected by your %s.", */ // TODO DE
+				    genitivattribut_zu_wort(Monnam(mon), "NOUN_GAZE"))) /* EN s_suffix(Monnam(mon)))) */
 			    ;
 			else if (Free_action)
-			    You("momentarily stiffen under %s gaze!", /* EN You("momentarily stiffen under %s gaze!", */ // TODO DE
-				    s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
+			    You("momentarily stiffen under %s!", /* EN You("momentarily stiffen under %s gaze!", */ // TODO DE
+				    genitivattribut_zu_wort(mon_nam(mon), "NOUN_GAZE")); /* EN s_suffix(mon_nam(mon))); */
 			else {
-			    You("are frozen by %s gaze!", /* EN You("are frozen by %s gaze!", */ // TODO DE
-				  s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
+			    You("are frozen by %s!", /* EN You("are frozen by %s gaze!", */ // TODO DE
+				  genitivattribut_zu_wort(mon_nam(mon), "NOUN_GAZE")); /* EN s_suffix(mon_nam(mon))); */
 			    nomul((ACURR(A_WIS) > 12 || rn2(4)) ? -tmp : -127);
 			}
 		    } else {

@@ -523,6 +523,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)kommen$/: v = VerbUnregelmaessig.new($1+"kommen", $1+"kam", ge($1)+"kommen")
 		# regelmässig
   when "durchleben": v = Verb.new("durchleben", "durchlebte", "durchlebt")
+  when "erfassen": v = Verb.new("erfassen", "erfasste", "erfasst")
   #when /(.*)fluchen$/: v = Verb.new($1+"fluchen", $1+"fluchte", ge($1)+"flucht")
   #when /(.*)haupten$/: v = Verb.new($1+"haupten", $1+"hauptete", ge($1)+"hauptet")
   #when /(.*)kratzen$/: v = Verb.new($1+"kratzen", $1+"kratzte", ge($1)+"kratzt")

@@ -1548,7 +1548,7 @@ dodip()
 			return(1);
 		}
 	} else if (is_pool(u.ux,u.uy)) {
-		tmp = (here == POOL) ? "pool" : "moat"; /* EN tmp = (here == POOL) ? "pool" : "moat"; */ // TODO DE
+		tmp = (here == POOL) ? "NOUN_POOL" : "NOUN_MOAT"; /* EN tmp = (here == POOL) ? "pool" : "moat"; */
 		Sprintf(qbuf, "Dip it into the %s?", tmp); /* EN Sprintf(qbuf, "Dip it into the %s?", tmp); */ // TODO DE
 		if (yn(qbuf) == 'y') {
 		    if (Levitation) {

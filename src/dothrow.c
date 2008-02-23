@@ -155,7 +155,7 @@ int shotlimit;
 	if (multishot > 1 || shotlimit > 0) {
 	    /* "You shoot N arrows." or "You throw N daggers." */
 	    You("%s OBJECT %d %s.",
-		m_shot.s ? "VERB_SCHIESSEN" : "VERB_WERFEN", /* EN m_shot.s ? "shoot" : "throw", */
+		m_shot.s ? "VERB_SCHIESSEN" : "VERB_SCHLEUDERN", /* EN m_shot.s ? "shoot" : "throw", */
 		multishot,	/* (might be 1 if player gave shotlimit) */
 		(multishot == 1) ? singular(obj, xname) :  xname(obj));
 	}
@@ -204,7 +204,7 @@ dothrow()
 	multi = 0;		/* reset; it's been used up */
 
 	if(check_capacity((char *)0)) return(0);
-	obj = getobj(uslinging() ? bullets : toss_objs, "throw"); /* EN obj = getobj(uslinging() ? bullets : toss_objs, "throw"); */ // TODO DE
+	obj = getobj(uslinging() ? bullets : toss_objs, "VERB_WERFEN"); /* EN obj = getobj(uslinging() ? bullets : toss_objs, "throw"); */
 	/* it is also possible to throw food */
 	/* (or jewels, or iron balls... ) */
 

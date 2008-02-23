@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 extern const char * const destroy_strings[];	/* from zap.c */
 
 STATIC_DCL void FDECL(dofiretrap, (struct obj *));
@@ -2039,7 +2043,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 				    (mtmp->wormno && count_wsegs(mtmp) > 5)) {
 				    tear_web = TRUE;
 				} else if (in_sight) {
-				    pline("%s is caught in %s NOUN_SPIDER_WEB.", /* EN pline("%s is caught in %s spider web.", */ // TODO DE
+				    pline("SUBJECT %s VERB_VERFANGEN sich OBJECT KASUS_DATIV in %s NOUN_SPIDER_WEB.", /* EN pline("%s is caught in %s spider web.", */
 					  Monnam(mtmp),
 					  a_your[trap->madeby_u]);
 				    seetrap(trap);
@@ -2932,7 +2936,7 @@ drown()
 	You("VERB_ERTRINKEN."); /* EN You("drown."); */ 
 	killer_format = KILLED_BY_AN;
 	killer = (levl[u.ux][u.uy].typ == POOL || Is_medusa_level(&u.uz)) ?
-	    "pool of water" : "moat"; /* EN "pool of water" : "moat"; */ // TODO DE
+	    "NOUN_POOL_OF_WATER" : "NOUN_MOAT"; /* EN "pool of water" : "moat"; */
 	done(DROWNING);
 	/* oops, we're still alive.  better get out of the water. */
 	while (!safe_teleds(TRUE)) {

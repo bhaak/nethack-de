@@ -987,7 +987,7 @@ struct obj *obj;
 	} else if (is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy)) {
 		/* Monsters which swim also happen not to be able to dig */
 		You("cannot stay under%s long enough.", /* EN You("cannot stay under%s long enough.", */ // TODO DE
-				is_pool(u.ux, u.uy) ? "water" : " the lava"); /* EN is_pool(u.ux, u.uy) ? "water" : " the lava"); */ // TODO DE
+				is_pool(u.ux, u.uy) ? "Wasser" : " der Lava"); /* EN is_pool(u.ux, u.uy) ? "water" : " the lava"); */
 	} else if (!ispick) {
 		Your("%s VERB_ZERKRATZEN bloﬂ OBJECT ARTIKEL_BESTIMMTER %s.", /* EN Your("%s merely scratches the %s.", */
 				aobjnam(obj, (char *)0), surface(u.ux,u.uy));

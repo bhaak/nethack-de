@@ -696,7 +696,7 @@ int how;
 		      !Blind ? "begins to glow" : "feels warm"); /* EN !Blind ? "begins to glow" : "feels warm"); */ // TODO DE
 		if (how == CHOKING) You("VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL ..."); /* EN if (how == CHOKING) You("vomit ..."); */
 		Du_fuehlst_dich("viel besser!"); /* EN You_feel("much better!"); */
-		pline_The("medallion crumbles to dust!"); /* EN pline_The("medallion crumbles to dust!"); */ // TODO DE
+		pline_The("NOUN_MEDALLION zerfällt zu Staub!"); /* EN pline_The("medallion crumbles to dust!"); */
 		if (uamul) useup(uamul);
 
 		(void) adjattrib(A_CON, -1, TRUE);

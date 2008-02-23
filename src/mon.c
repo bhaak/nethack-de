@@ -12,6 +12,10 @@
 #include "edog.h"
 #include <ctype.h>
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_DCL boolean FDECL(restrap,(struct monst *));
 STATIC_DCL long FDECL(mm_aggression, (struct monst *,struct monst *));
 #ifdef OVL2
@@ -196,8 +200,8 @@ register struct monst *mtmp;
 	    case PM_BLACK_UNICORN:
 		if (mtmp->mrevived && rn2(20)) {
 			if (canseemon(mtmp))
-			   pline("%s recently regrown horn crumbles to dust.", /* EN pline("%s recently regrown horn crumbles to dust.", */ // TODO DE
-				s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
+			   pline("SUBJECT %s zerfällt zu Staub.", /* EN pline("%s recently regrown horn crumbles to dust.", */
+				genitivattribut_zu_wort(Monnam(mtmp), "kürzlich ADJEKTIV_NACHGEWACHSEN NOUN_HORN")); /* EN s_suffix(Monnam(mtmp))); */
 		} else
 			(void) mksobj_at(UNICORN_HORN, x, y, TRUE, FALSE);
 		goto default_1;
@@ -670,7 +674,7 @@ meatmetal(mtmp)
 		touch_artifact(otmp,mtmp)) {
 		if (mtmp->data == &mons[PM_RUST_MONSTER] && otmp->oerodeproof) {
 		    if (canseemon(mtmp) && flags.verbose) {
-			pline("%s eats %s!", /* EN pline("%s eats %s!", */ // TODO DE
+			pline("SUBJECT %s VERB_FRESSEN OBJECT %s!", /* EN pline("%s eats %s!", */
 				Monnam(mtmp),
 				distant_name(otmp,doname));
 		    }
@@ -678,17 +682,17 @@ meatmetal(mtmp)
 		    otmp->oerodeproof = 0;
 		    mtmp->mstun = 1;
 		    if (canseemon(mtmp) && flags.verbose) {
-			pline("%s spits %s out in disgust!", /* EN pline("%s spits %s out in disgust!", */ // TODO DE
+			pline("SUBJECT %s VERB_AUSSPUCKEN OBJECT %s angewidert wieder SATZKLAMMER!", /* EN pline("%s spits %s out in disgust!", */
 			      Monnam(mtmp), distant_name(otmp,doname));
 		    }
 		/* KMH -- Don't eat indigestible/choking objects */
 		} else if (otmp->otyp != AMULET_OF_STRANGULATION &&
 				otmp->otyp != RIN_SLOW_DIGESTION) {
 		    if (cansee(mtmp->mx,mtmp->my) && flags.verbose)
-			pline("%s eats %s!", Monnam(mtmp), /* EN pline("%s eats %s!", Monnam(mtmp), */ // TODO DE
+			pline("SUBJECT %s VERB_FRESSEN OBJECT %s!", Monnam(mtmp), /* EN pline("%s eats %s!", Monnam(mtmp), */
 				distant_name(otmp,doname));
 		    else if (flags.soundok && flags.verbose)
-			You_hear("a crunching sound."); /* EN You_hear("a crunching sound."); */ // TODO DE
+			You_hear("eine metallisches Knacken."); /* EN You_hear("a crunching sound."); */
 		    mtmp->meating = otmp->owt/2 + 1;
 		    /* Heal up to the object's weight in hp */
 		    if (mtmp->mhp < mtmp->mhpmax) {
@@ -1374,15 +1378,15 @@ struct monst *mtmp;
 		/* grating amulets are always visible. */
 		if (cansee(mtmp->mx, mtmp->my)) {
 			pline("But wait..."); /* EN pline("But wait..."); */ // TODO DE
-			pline("%s medallion begins to glow!", /* EN pline("%s medallion begins to glow!", */ // TODO DE
-				s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
+			pline("SUBJECT %s beginnt zu leuchten!", /* EN pline("%s medallion begins to glow!", */
+				genitivattribut_zu_wort(Monnam(mtmp), "NOUN_MEDALLION")); /* EN s_suffix(Monnam(mtmp))); */
 			makeknown(AMULET_OF_LIFE_SAVING);
 			if (attacktype(mtmp->data, AT_EXPL)
 			    || attacktype(mtmp->data, AT_BOOM))
 				pline("%s reconstitutes!", Monnam(mtmp)); /* EN pline("%s reconstitutes!", Monnam(mtmp)); */ // TODO DE
 			else
 				pline("SUBJECT %s VERB_AUSSEHEN viel besser SATZKLAMMER!", Monnam(mtmp)); /* EN pline("%s looks much better!", Monnam(mtmp)); */
-			pline_The("medallion crumbles to dust!"); /* EN pline_The("medallion crumbles to dust!"); */ // TODO DE
+			pline_The("NOUN_MEDALLION zerfällt zu Staub!"); /* EN pline_The("medallion crumbles to dust!"); */
 		}
 		m_useup(mtmp, lifesave);
 		mtmp->mcanmove = 1;
@@ -1491,7 +1495,7 @@ boolean was_swallowed;			/* digestion */
 
 	if (mdat == &mons[PM_VLAD_THE_IMPALER] || mdat->mlet == S_LICH) {
 	    if (cansee(mon->mx, mon->my) && !was_swallowed)
-		pline("%s body crumbles into dust.", s_suffix(Monnam(mon))); /* EN pline("%s body crumbles into dust.", s_suffix(Monnam(mon))); */ // TODO DE
+		pline("SUBJECT %s zerfällt zu Staub.", genitivattribut_zu_wort(Monnam(mon), "NOUN_BODY")); /* EN pline("%s body crumbles into dust.", s_suffix(Monnam(mon))); */
 	    return FALSE;
 	}
 
@@ -1520,14 +1524,14 @@ boolean was_swallowed;			/* digestion */
 			    if (canspotmon(magr))
 				pline("%s rips open!", Monnam(magr)); /* EN pline("%s rips open!", Monnam(magr)); */ // TODO DE
 			} else if (canseemon(magr))
-			    pline("%s seems to have indigestion.", /* EN pline("%s seems to have indigestion.", */ // TODO DE
+			    pline("SUBJECT %s scheint eine Magenverstimmung zu haben.", /* EN pline("%s seems to have indigestion.", */
 				  Monnam(magr));
 		    }
 
 		    return FALSE;
 		}
 
-	    	Sprintf(killer_buf, "%s explosion", s_suffix(mdat->mname)); /* EN Sprintf(killer_buf, "%s explosion", s_suffix(mdat->mname)); */ // TODO DE
+	    	Sprintf(killer_buf, "%s_EXPLOSION", (mdat->mname)); /* EN Sprintf(killer_buf, "%s explosion", s_suffix(mdat->mname)); */
 	    	killer = killer_buf;
 	    	killer_format = KILLED_BY_AN;
 	    	explode(mon->mx, mon->my, -1, tmp, MON_EXPLODE, EXPL_NOXIOUS); 
@@ -2347,7 +2351,7 @@ struct monst *mon;
 		int tries = 0;
 		do {
 			Sprintf(pprompt,
-				"Change %s into what kind of monster? [Namen eingeben]", /* EN "Change %s into what kind of monster? [type the name]", */ // TODO DE
+				"KASUS_AKKUSATIV %s in welche Art Monster transformieren? [Namen eingeben]", /* EN "Change %s into what kind of monster? [type the name]", */
 				mon_nam(mon));
 			getlin(pprompt,buf);
 			mndx = name_to_mon(buf);

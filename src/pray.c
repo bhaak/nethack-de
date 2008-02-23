@@ -1130,9 +1130,9 @@ dosacrifice()
     }
 
     if (In_endgame(&u.uz)) {
-	if (!(otmp = getobj(sacrifice_types, "sacrifice"))) return 0; /* EN if (!(otmp = getobj(sacrifice_types, "sacrifice"))) return 0; */ // TODO DE
+	if (!(otmp = getobj(sacrifice_types, "VERB_SACRIFICE"))) return 0; /* EN if (!(otmp = getobj(sacrifice_types, "sacrifice"))) return 0; */
     } else {
-	if (!(otmp = floorfood("sacrifice", 1))) return 0; /* EN if (!(otmp = floorfood("sacrifice", 1))) return 0; */ // TODO DE
+	if (!(otmp = floorfood("VERB_SACRIFICE", 1))) return 0; /* EN if (!(otmp = floorfood("sacrifice", 1))) return 0; */
     }
     /*
       Was based on nutritional value and aging behavior (< 50 moves).

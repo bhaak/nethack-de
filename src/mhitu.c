@@ -5,6 +5,11 @@
 #include "hack.h"
 #include "artifact.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
+
 STATIC_VAR NEARDATA struct obj *otmp;
 
 STATIC_DCL void FDECL(urustm, (struct monst *, struct obj *));
@@ -506,7 +511,7 @@ mattacku(mtmp)
 	if(u.uinvulnerable) {
 	    /* monsters won't attack you */
 	    if(mtmp == u.ustuck)
-		pline("%s loosens its grip slightly.", Monnam(mtmp)); /* EN pline("%s loosens its grip slightly.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBECT %s VERB_LOESEN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_GRIFF ein bisschen.", Monnam(mtmp)); /* EN pline("%s loosens its grip slightly.", Monnam(mtmp)); */
 	    else if(!range2) {
 		if (youseeit || sensemon(mtmp))
 		    pline("%s starts to attack you, but pulls back.", /* EN pline("%s starts to attack you, but pulls back.", */ // TODO DE
@@ -1207,8 +1212,8 @@ dopois:
 
 			    pline("SUBJECT %s VERB_ERTRAENKEN OBJECT PRONOMEN_PERSONAL ...", Monnam(mtmp)); /* EN pline("%s drowns you...", Monnam(mtmp)); */
 			    killer_format = KILLED_BY_AN;
-			    Sprintf(buf, "%s by %s", /* EN Sprintf(buf, "%s by %s", */ // TODO DE
-				    moat ? "moat" : "pool of water", /* EN moat ? "moat" : "pool of water", */ // TODO DE
+			    Sprintf(buf, "%s KASUS_GENITIV wegen %s", /* EN Sprintf(buf, "%s by %s", */
+				    moat ? "NOUN_MOAT" : "NOUN_POOL_OF_WATER", /* EN moat ? "moat" : "pool of water", */
 				    an(mtmp->data->mname));
 			    killer = buf;
 			    done(DROWNING);
@@ -1278,10 +1283,10 @@ dopois:
 			    rloc(mtmp);
 			if (is_animal(mtmp->data) && *buf) {
 			    if (canseemon(mtmp))
-				pline("SUBJECT %s tries to %s away with %s.", /* EN pline("%s tries to %s away with %s.", */ // TODO DE
+				pline("SUBJECT %s VERB_VERSUCHEN OBJECT KASUS_DATIV mit %s away %s.", /* EN pline("%s tries to %s away with %s.", */ // TODO DE
 				      Monnam(mtmp),
-				      locomotion(mtmp->data, "run"), /* EN locomotion(mtmp->data, "run"), */ // TODO DE
-				      buf);
+				      buf, locomotion(mtmp->data, "run") /* EN locomotion(mtmp->data, "run"), */ // TODO DE
+				      ); /* EN buf); */
 			}
 			monflee(mtmp, 0, FALSE, FALSE);
 			return 3;

@@ -1293,6 +1293,22 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 	return buf;
 }
 
+#ifndef NO_HACK_H_INCLUDE
+/* Liefert TRUE zurueck, wenn der Gott namens name weiblich ist. */
+int
+gott_weiblich(name)
+const char *name;
+{
+    const char *treffer;
+
+    if ((treffer=strstr(urole.lgod, name))) { return (*urole.lgod == '_'); }
+    else if ((treffer=strstr(urole.ngod, name))) { return (*urole.ngod == '_'); }
+    else if ((treffer=strstr(urole.cgod, name))) { return (*urole.cgod == '_'); }
+    
+    return FALSE;
+}
+#endif
+
 /*
 [x] Leichname werden noch falsch behandelt.
 You see here a NOUN_LICHEN NOUN_CORPSE.

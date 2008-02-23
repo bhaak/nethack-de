@@ -821,7 +821,7 @@ register const char *let,*word;
 
 	/* another ugly check: show boulders (not statues) */
 	if(*let == WEAPON_CLASS &&
-	   !strcmp(word, "throw") && throws_rocks(youmonst.data)) /* EN !strcmp(word, "throw") && throws_rocks(youmonst.data)) */ // TODO DE
+	   !strcmp(word, "VERB_WERFEN") && throws_rocks(youmonst.data)) /* EN !strcmp(word, "throw") && throws_rocks(youmonst.data)) */
 	    useboulder = TRUE;
 
 	if(allownone) *bp++ = '-';
@@ -879,7 +879,7 @@ register const char *let,*word;
 		|| (!strcmp(word, "wield") && /* EN || (!strcmp(word, "wield") && */ // TODO DE
 		    (otmp->oclass == TOOL_CLASS && !is_weptool(otmp)))
 		|| (!strcmp(word, "VERB_ESSEN") && !is_edible(otmp)) /* EN || (!strcmp(word, "eat") && !is_edible(otmp)) */
-		|| (!strcmp(word, "sacrifice") && /* EN || (!strcmp(word, "sacrifice") && */ // TODO DE
+		|| (!strcmp(word, "VERB_SACRIFICE") && /* EN || (!strcmp(word, "sacrifice") && */
 		    (otyp != CORPSE &&
 		     otyp != AMULET_OF_YENDOR && otyp != FAKE_AMULET_OF_YENDOR))
 		|| (!strcmp(word, "schreiben") && /* EN || (!strcmp(word, "write with") && */
@@ -1053,7 +1053,7 @@ register const char *let,*word;
 		    }
 		    /* they typed a letter (not a space) at the prompt */
 		}
-		if(allowcnt == 2 && !strcmp(word,"throw")) { /* EN if(allowcnt == 2 && !strcmp(word,"throw")) { */ // TODO DE
+		if(allowcnt == 2 && !strcmp(word,"VERB_WERFEN")) { /* EN if(allowcnt == 2 && !strcmp(word,"throw")) { */
 		    /* permit counts for throwing gold, but don't accept
 		     * counts for other things since the throw code will
 		     * split off a single item anyway */
@@ -1063,7 +1063,7 @@ register const char *let,*word;
 			allowcnt = 1;
 		    if(cnt == 0 && prezero) return((struct obj *)0);
 		    if(cnt > 1) {
-			You("can only throw one item at a time."); /* EN You("can only throw one item at a time."); */ // TODO DE
+			You("VERB_KOENNEN davon nur eins aufs Mal werfen."); /* EN You("can only throw one item at a time."); */
 			continue;
 		    }
 		}
@@ -1076,7 +1076,7 @@ register const char *let,*word;
 		for (otmp = invent; otmp; otmp = otmp->nobj)
 			if (otmp->invlet == ilet) break;
 		if(!otmp) {
-			You("don't have that object."); /* EN You("don't have that object."); */ // TODO DE
+			You("VERB_HABEN dieses Objekt nicht."); /* EN You("don't have that object."); */
 #ifdef REDO
 			if (in_doagain) return((struct obj *) 0);
 #endif
@@ -1233,7 +1233,7 @@ unsigned *resultflags;
 	if (taking_off(word)) {
 	    takeoff = TRUE;
 	    filter = is_worn;
-	} else if (!strcmp(word, "identify")) { /* EN } else if (!strcmp(word, "identify")) { */ // TODO DE
+	} else if (!strcmp(word, "VERB_IDENTIFY")) { /* EN } else if (!strcmp(word, "identify")) { */
 	    ident = TRUE;
 	    filter = not_fully_identified;
 	}
@@ -1293,10 +1293,10 @@ unsigned *resultflags;
 		if (index(extra_removeables, oc_of_sym)) {
 		    ;	/* skip rest of takeoff checks */
 		} else if (!index(removeables, oc_of_sym)) {
-		    pline("Not applicable."); /* EN pline("Not applicable."); */ // TODO DE
+		    pline("Nicht zutreffend."); /* EN pline("Not applicable."); */
 		    return 0;
 		} else if (oc_of_sym == ARMOR_CLASS && !wearing_armor()) {
-		    You("are not wearing any armor."); /* EN You("are not wearing any armor."); */ // TODO DE
+		    You("VERB_TRAGEN keine Rüstung."); /* EN You("are not wearing any armor."); */
 		    return 0;
 		} else if (oc_of_sym == WEAPON_CLASS &&
 			!uwep && !uswapwep && !uquiver) {
@@ -1346,7 +1346,7 @@ unsigned *resultflags;
 	    } else if (sym == 'm') {
 		m_seen = TRUE;
 	    } else if (oc_of_sym == MAXOCLASSES) {
-		You("don't have any %c's.", sym); /* EN You("don't have any %c's.", sym); */ // TODO DE
+		You("VERB_HABEN keine %cs.", sym); /* EN You("don't have any %c's.", sym); */
 	    } else if (oc_of_sym != VENOM_CLASS) {	/* suppress venom */
 		if (!index(olets, oc_of_sym)) {
 		    add_valid_menu_class(oc_of_sym);
@@ -1404,7 +1404,7 @@ register int FDECL((*fn),(OBJ_P)), FDECL((*ckfn),(OBJ_P));
 	char qbuf[QBUFSZ];
 
 	takeoff = taking_off(word);
-	ident = !strcmp(word, "identify"); /* EN ident = !strcmp(word, "identify"); */ // TODO DE
+	ident = !strcmp(word, "VERB_IDENTIFY"); /* EN ident = !strcmp(word, "identify"); */
 	nodot = (!strcmp(word, "nodot") || !strcmp(word, "drop") || /* EN nodot = (!strcmp(word, "nodot") || !strcmp(word, "drop") || */ // TODO DE
 		 ident || takeoff);
 	ininv = (*objchn == invent);
@@ -1476,8 +1476,8 @@ nextclass:
 	}
 	if (olets && *olets && *++olets)
 		goto nextclass;
-	if(!takeoff && (dud || cnt)) pline("That was all."); /* EN if(!takeoff && (dud || cnt)) pline("That was all."); */ // TODO DE
-	else if(!dud && !cnt) pline("No applicable objects."); /* EN else if(!dud && !cnt) pline("No applicable objects."); */ // TODO DE
+	if(!takeoff && (dud || cnt)) pline("Das war's."); /* EN if(!takeoff && (dud || cnt)) pline("That was all."); */
+	else if(!dud && !cnt) pline("Keine zutreffenden Objekte."); /* EN else if(!dud && !cnt) pline("No applicable objects."); */
 ret:
 	return(cnt);
 }
@@ -1520,8 +1520,8 @@ int id_limit;
     /* assumptions:  id_limit > 0 and at least one unID'd item is present */
 
     while (id_limit) {
-	Sprintf(buf, "What would you like to identify %s?", /* EN Sprintf(buf, "What would you like to identify %s?", */ // TODO DE
-		first ? "first" : "next"); /* EN first ? "first" : "next"); */ // TODO DE
+	Sprintf(buf, "SUBJECT Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL %s identifizieren?", /* EN Sprintf(buf, "What would you like to identify %s?", */
+		first ? "zuerst" : "als nächstes"); /* EN first ? "first" : "next"); */
 	n = query_objlist(buf, invent, SIGNAL_NOMENU|USE_INVLET|INVORDER_SORT,
 		&pick_list, PICK_ANY, not_fully_identified);
 
@@ -1532,7 +1532,7 @@ int id_limit;
 	    free((genericptr_t) pick_list);
 	    mark_synch(); /* Before we loop to pop open another menu */
 	} else {
-	    if (n < 0) pline("That was all."); /* EN if (n < 0) pline("That was all."); */ // TODO DE
+	    if (n < 0) pline("Das war's."); /* EN if (n < 0) pline("That was all."); */
 	    id_limit = 0; /* Stop now */
 	}
 	first = 0;
@@ -1553,7 +1553,7 @@ int id_limit;
 	if (not_fully_identified(obj)) ++unid_cnt, the_obj = obj;
 
     if (!unid_cnt) {
-	You("have already identified all of your possessions."); /* EN You("have already identified all of your possessions."); */ // TODO DE
+	You("VERB_HABEN schon OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_HABE identifiziert."); /* EN You("have already identified all of your possessions."); */
     } else if (!id_limit) {
 	/* identify everything */
 	if (unid_cnt == 1) {
@@ -1570,7 +1570,7 @@ int id_limit;
 	n = 0;
 	if (flags.menu_style == MENU_TRADITIONAL)
 	    do {
-		n = ggetobj("identify", identify, id_limit, FALSE, (unsigned *)0); /* EN n = ggetobj("identify", identify, id_limit, FALSE, (unsigned *)0); */ // TODO DE
+		n = ggetobj("VERB_IDENTIFY", identify, id_limit, FALSE, (unsigned *)0); /* EN n = ggetobj("identify", identify, id_limit, FALSE, (unsigned *)0); */
 		if (n < 0) break; /* quit or no eligible items */
 	    } while ((id_limit -= n) > 0);
 	if (n == 0 || n < -1)
@@ -2185,7 +2185,7 @@ char *buf;
 	    switch (lev->doormask) {
 	    case D_NODOOR:	cmap = S_ndoor; break;	/* "doorway" */
 	    case D_ISOPEN:	cmap = S_vodoor; break;	/* "open door" */
-	    case D_BROKEN:	dfeature = "broken door"; break; /* EN case D_BROKEN:	dfeature = "broken door"; break; */ // TODO DE
+	    case D_BROKEN:	dfeature = "ADJEKTIV_KAPUTT NOUN_DOOR"; break; /* EN case D_BROKEN:	dfeature = "broken door"; break; */
 	    default:	cmap = S_vcdoor; break;	/* "closed door" */
 	    }
 	    /* override door description for open drawbridge */
@@ -2200,13 +2200,13 @@ char *buf;
 	else if (is_ice(x,y))
 	    cmap = S_ice;				/* "ice" */
 	else if (is_pool(x,y))
-	    dfeature = "pool of water"; /* EN dfeature = "pool of water"; */ // TODO DE
+	    dfeature = "NOUN_POOL_OF_WATER"; /* EN dfeature = "pool of water"; */
 #ifdef SINKS
 	else if (IS_SINK(ltyp))
 	    cmap = S_sink;				/* "sink" */
 #endif
 	else if (IS_ALTAR(ltyp)) {
-	    Sprintf(altbuf, "altar to %s (%s)", a_gname(), /* EN Sprintf(altbuf, "altar to %s (%s)", a_gname(), */ // TODO DE
+	    Sprintf(altbuf, "NOUN_ALTAR %s %s (%s)", gott_weiblich(a_gname())?"der":"des", a_gname(), /* EN Sprintf(altbuf, "altar to %s (%s)", a_gname(), */
 		    align_str(Amask2align(lev->altarmask & ~AM_SHRINE)));
 	    dfeature = altbuf;
 	} else if ((x == xupstair && y == yupstair) ||
@@ -2252,18 +2252,18 @@ boolean picked_some;
 
 	if (u.uswallow && u.ustuck) {
 	    struct monst *mtmp = u.ustuck;
-	    Sprintf(fbuf, "Inhalt KASUS_GENITIV %s %s", /* EN Sprintf(fbuf, "Contents of %s %s", */
-		s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); /* EN s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); */ // TODO DE
+	    Sprintf(fbuf, "Inhalt KASUS_GENITIV %s", /* EN Sprintf(fbuf, "Contents of %s %s", */
+		genitivattribut_zu_wort(mon_nam(mtmp), mbodypart(mtmp, STOMACH))); /* EN s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); */
 	    /* Skip "Contents of " by using fbuf index 12 */
-	    You("%s to %s what is lying in %s.", /* EN You("%s to %s what is lying in %s.", */ // TODO DE
-		Blind ? "try" : "look around", verb, &fbuf[12]); /* EN Blind ? "try" : "look around", verb, &fbuf[12]); */ // TODO DE
+	    You("%s MODIFIER_VERB_INFINITIV %s, was hier KASUS_DATIV _in_ %s herumliegt.", /* EN You("%s to %s what is lying in %s.", */
+		Blind ? "VERB_VERSUCHEN zu" : "VERB_SCHAUEN OBJECT PRONOMEN_PERSONAL um, um zu", verb, &fbuf[21]); /* EN Blind ? "try" : "look around", verb, &fbuf[12]); */
 	    otmp = mtmp->minvent;
 	    if (otmp) {
 		for ( ; otmp; otmp = otmp->nobj) {
 			/* If swallower is an animal, it should have become stone but... */
 			if (otmp->otyp == CORPSE) feel_cockatrice(otmp, FALSE);
 		}
-		if (Blind) Strcpy(fbuf, "You feel"); /* EN if (Blind) Strcpy(fbuf, "You feel"); */ // TODO DE
+		if (Blind) Strcpy(fbuf, "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN"); /* EN if (Blind) Strcpy(fbuf, "You feel"); */
 		Strcat(fbuf,":");
 	    	(void) display_minventory(mtmp, MINV_ALL, fbuf);
 	    } else {
@@ -2272,12 +2272,12 @@ boolean picked_some;
 	    return(!!Blind);
 	}
 	if (!skip_objects && (trap = t_at(u.ux,u.uy)) && trap->tseen)
-		There("is %s here.", /* EN There("is %s here.", */ // TODO DE
+		pline("Hier ist %s.", /* EN There("is %s here.", */
 			an(defsyms[trap_to_defsym(trap->ttyp)].explanation));
 
 	otmp = level.objects[u.ux][u.uy];
 	dfeature = dfeature_at(u.ux, u.uy, fbuf2);
-	if (dfeature && !strcmp(dfeature, "pool of water") && Underwater) /* EN if (dfeature && !strcmp(dfeature, "pool of water") && Underwater) */ // TODO DE
+	if (dfeature && !strcmp(dfeature, "NOUN_POOL_OF_WATER") && Underwater) /* EN if (dfeature && !strcmp(dfeature, "pool of water") && Underwater) */
 		dfeature = 0;
 
 	if (Blind) {
