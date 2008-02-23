@@ -9,6 +9,10 @@
 #include "hack.h"
 #include "edog.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 extern const int monstr[];
 
 boolean m_using = FALSE;
@@ -1754,9 +1758,9 @@ skipmsg:
 		mon_set_minvis(mtmp);
 		if (vismon && mtmp->minvis) {	/* was seen, now invisible */
 		    if (See_invisible)
-			pline("%s body takes on a %s transparency.", /* EN pline("%s body takes on a %s transparency.", */ // TODO DE
-			      s_suffix(nambuf), /* EN s_suffix(nambuf), */ // TODO DE
-			      Hallucination ? "normal" : "strange"); /* EN Hallucination ? "normal" : "strange"); */ // TODO DE
+			pline("SUBJECT %s VERB_NEHMEN eine %s Durchsichtigkeit an.", /* EN pline("%s body takes on a %s transparency.", */
+			      genitivattribut_zu_wort((nambuf),"NOUN_BODY"), /* EN s_suffix(nambuf), */
+			      Hallucination ? "normale" : "seltsame"); /* EN Hallucination ? "normal" : "strange"); */
 		    else
 			pline("Plötzlich VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s nicht mehr sehen.", nambuf); /* EN pline("Suddenly you cannot see %s.", nambuf); */
 		    if (oseen) makeknown(otmp->otyp);

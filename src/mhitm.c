@@ -929,8 +929,8 @@ mdamagem(magr, mdef, mattk)
 			were_change(mdef);
 		    if (pd == &mons[PM_CLAY_GOLEM]) {
 			    if (vis) {
-				pline("Some writing vanishes from %s head!", /* EN pline("Some writing vanishes from %s head!", */ // TODO DE
-				    s_suffix(mon_nam(mdef))); /* EN s_suffix(mon_nam(mdef))); */ // TODO DE
+				pline("Some writing vanishes from %s!", /* EN pline("Some writing vanishes from %s head!", */ // TODO DE
+				    genitivattribut_zu_wort(mon_nam(mdef), "NOUN_KOPF")); /* EN s_suffix(mon_nam(mdef))); */
 				pline("%s is destroyed!", Monnam(mdef)); /* EN pline("%s is destroyed!", Monnam(mdef)); */ // TODO DE
 			    }
 			    mondied(mdef);
@@ -1292,8 +1292,8 @@ int mdead;
 		if (mhit && !rn2(2)) {
 		    Strcpy(buf, Monnam(magr));
 		    if(canseemon(magr))
-			pline("%s is splashed by %s acid!", /* EN pline("%s is splashed by %s acid!", */ // TODO DE
-			      buf, s_suffix(mon_nam(mdef))); /* EN buf, s_suffix(mon_nam(mdef))); */ // TODO DE
+			pline("%s is splashed by %s!", /* EN pline("%s is splashed by %s acid!", */ // TODO DE
+			      buf, genitivattribut_zu_wort(mon_nam(mdef), "NOUN_ACID")); /* EN buf, s_suffix(mon_nam(mdef))); */
 		    if (resists_acid(magr)) {
 			if(canseemon(magr))
 			    pline("%s is not affected.", Monnam(magr)); /* EN pline("%s is not affected.", Monnam(magr)); */ // TODO DE
@@ -1321,14 +1321,14 @@ int mdead;
 		    if (magr->mcansee && haseyes(madat) && mdef->mcansee &&
 			(perceives(madat) || !mdef->minvis)) {
 			Sprintf(buf, "%s gaze is reflected by %%s %%s.", /* EN Sprintf(buf, "%s gaze is reflected by %%s %%s.", */ // TODO DE
-				s_suffix(mon_nam(mdef))); /* EN s_suffix(mon_nam(mdef))); */ // TODO DE
+				genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GAZE")); /* EN s_suffix(mon_nam(mdef))); */
 			if (mon_reflects(magr,
 					 canseemon(magr) ? buf : (char *)0))
 				return(mdead|mhit);
 			Strcpy(buf, Monnam(magr));
 			if(canseemon(magr))
-			    pline("%s is frozen by %s gaze!", /* EN pline("%s is frozen by %s gaze!", */ // TODO DE
-				  buf, s_suffix(mon_nam(mdef))); /* EN buf, s_suffix(mon_nam(mdef))); */ // TODO DE
+			    pline("%s is frozen by %s!", /* EN pline("%s is frozen by %s gaze!", */ // TODO DE
+				  buf, genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GAZE")); /* EN buf, s_suffix(mon_nam(mdef))); */
 			magr->mcanmove = 0;
 			magr->mfrozen = tmp;
 			return (mdead|mhit);

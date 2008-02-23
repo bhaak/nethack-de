@@ -1373,15 +1373,15 @@ struct obj *obj;
 		if (Blind) goto do_it;
 		if(u.uswallow){
 			if (is_animal(u.ustuck->data))
-				pline("%s %s is lit.", /* EN pline("%s %s is lit.", */ // TODO DE
-				        s_suffix(Monnam(u.ustuck)), /* EN s_suffix(Monnam(u.ustuck)), */ // TODO DE
-					mbodypart(u.ustuck, STOMACH));
+				pline("SUBJECT %s %s ist hell erleuchtet.", /* EN pline("%s %s is lit.", */
+				        genitivattribut_zu_wort(Monnam(u.ustuck), /* EN s_suffix(Monnam(u.ustuck)), */
+					mbodypart(u.ustuck, STOMACH))); /* EN mbodypart(u.ustuck, STOMACH)); */
 			else
 				if (is_whirly(u.ustuck->data))
-					pline("%s shines briefly.", /* EN pline("%s shines briefly.", */ // TODO DE
+					pline("SUBJECT %s VERB_ERSTRAHLEN kurz.", /* EN pline("%s shines briefly.", */
 					      Monnam(u.ustuck));
 				else
-					pline("%s glistens.", Monnam(u.ustuck)); /* EN pline("%s glistens.", Monnam(u.ustuck)); */ // TODO DE
+					pline("SUBJECT %s VERB_FUNKELN.", genitivattribut_zu_wort(Monnam(u.ustuck), "NOUN_INNERE")); /* EN pline("%s glistens.", Monnam(u.ustuck)); */
 			return;
 		}
 		pline("Ein leuchtendes/erleuchtetes Feld umgibt dich!"); /* EN pline("A lit field surrounds you!"); */ // TODO DE

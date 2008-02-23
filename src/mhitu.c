@@ -1884,8 +1884,8 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		if (Reflecting && canspotmon(mtmp) &&
 		    mtmp->data == &mons[PM_MEDUSA]) {
 		    if(!Blind) {
-		    	(void) ureflects("%s gaze is reflected by your %s.", /* EN (void) ureflects("%s gaze is reflected by your %s.", */ // TODO DE
-		    			s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
+		    	(void) ureflects("%s is reflected by your %s.", /* EN (void) ureflects("%s gaze is reflected by your %s.", */ // TODO DE
+		    			genitivattribut_zu_wort(Monnam(mtmp), "NOUN_GAZE")); /* EN s_suffix(Monnam(mtmp))); */
 		    	if (mon_reflects(mtmp,
 		    			"The gaze is reflected away by %s %s!")) /* EN "The gaze is reflected away by %s %s!")) */ // TODO DE
 		    	    break;
@@ -1905,7 +1905,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		}
 		if (canseemon(mtmp) && couldsee(mtmp->mx, mtmp->my) &&
 		    !Stone_resistance) {
-		    You("meet %s gaze.", s_suffix(mon_nam(mtmp))); /* EN You("meet %s gaze.", s_suffix(mon_nam(mtmp))); */ // TODO DE
+		    You("VERB_ERWIDERN %s.", genitivattribut_zu_wort(mon_nam(mtmp),"NOUN_BLICK")); /* EN You("meet %s gaze.", s_suffix(mon_nam(mtmp))); */
 		    stop_occupation();
 		    if(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))
 			break;
@@ -1923,8 +1923,8 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 
 		    mtmp->mspec_used = mtmp->mspec_used + (conf + rn2(6));
 		    if(!Confusion)
-			pline("%s gaze confuses you!", /* EN pline("%s gaze confuses you!", */ // TODO DE
-			                  s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
+			pline("SUBJECT %s VERB_VERWIRREN OBJECT PRONOMEN_PERSONAL!", /* EN pline("%s gaze confuses you!", */
+			                  genitivattribut_zu_wort(Monnam(mtmp), "NOUN_GAZE")); /* EN s_suffix(Monnam(mtmp))); */
 		    else
 			You("are getting more and more confused."); /* EN You("are getting more and more confused."); */ // TODO DE
 		    make_confused(HConfusion + conf, FALSE);
@@ -1948,8 +1948,8 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 			&& distu(mtmp->mx,mtmp->my) <= BOLT_LIM*BOLT_LIM) {
 		    int blnd = d((int)mattk->damn, (int)mattk->damd);
 
-		    You("are blinded by %s radiance!", /* EN You("are blinded by %s radiance!", */ // TODO DE
-			              s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
+		    You("are blinded by %s!", /* EN You("are blinded by %s radiance!", */ // TODO DE
+			              genitivattribut_zu_wort(mon_nam(mtmp),"NOUN_RADIANCE")); /* EN s_suffix(mon_nam(mtmp))); */
 		    make_blinded((long)blnd,FALSE);
 		    stop_occupation();
 		    /* not blind at this point implies you're wearing
@@ -1988,8 +1988,8 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		   multi >= 0 && !rn2(5) && !Sleep_resistance) {
 
 		    fall_asleep(-rnd(10), TRUE);
-		    pline("%s gaze makes you very sleepy...", /* EN pline("%s gaze makes you very sleepy...", */ // TODO DE
-			  s_suffix(Monnam(mtmp))); /* EN s_suffix(Monnam(mtmp))); */ // TODO DE
+		    pline("SUBJECT %s VERB_MACHEN OBJECT PRONOMEN_PERSONAL ganz schläfrig ...", /* EN pline("%s gaze makes you very sleepy...", */
+			  genitivattribut_zu_wort(Monnam(mtmp), "NOUN_GAZE")); /* EN s_suffix(Monnam(mtmp))); */
 		}
 		break;
 	    case AD_SLOW:
@@ -2050,12 +2050,12 @@ register struct obj *obj;
 	    (is_acid ? obj->oeroded2 : obj->oeroded) < MAX_ERODE) {
 		if (obj->greased || obj->oerodeproof || (obj->blessed && rn2(3))) {
 		    if (vis)
-			pline("Somehow, %s weapon is not affected.", /* EN pline("Somehow, %s weapon is not affected.", */ // TODO DE
-						s_suffix(mon_nam(mon))); /* EN s_suffix(mon_nam(mon))); */ // TODO DE
+			pline("Somehow, %s is not affected.", /* EN pline("Somehow, %s weapon is not affected.", */ // TODO DE
+						genitivattribut_zu_wort(mon_nam(mon), "NOUN_WEAPON")); /* EN s_suffix(mon_nam(mon))); */
 		    if (obj->greased && !rn2(2)) obj->greased = 0;
 		} else {
 		    if (vis)
-			pline("%s %s%s!",
+			pline("%s %s%s!", /* EN pline("%s %s%s!", */ // TODO DE
 			        s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
 				aobjnam(obj, (is_acid ? "corrode" : "rust")), /* EN aobjnam(obj, (is_acid ? "corrode" : "rust")), */ // TODO DE
 			        (is_acid ? obj->oeroded2 : obj->oeroded)

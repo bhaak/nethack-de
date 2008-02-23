@@ -619,14 +619,14 @@ boolean polyspot;
 	    if ((otmp = which_armor(mon, W_ARMC)) != 0) {
 		if (otmp->oartifact) {
 		    if (vis)
-			pline("%s %s falls off!", s_suffix(Monnam(mon)), /* EN pline("%s %s falls off!", s_suffix(Monnam(mon)), */ // TODO DE
-				cloak_simple_name(otmp));
+			pline("SUBJECT %s VERB_FALLEN runter!", genitivattribut_zu_wort(Monnam(mon), /* EN pline("%s %s falls off!", s_suffix(Monnam(mon)), */
+				cloak_simple_name(otmp))); /* EN cloak_simple_name(otmp)); */
 		    if (polyspot) bypass_obj(otmp);
 		    m_lose_armor(mon, otmp);
 		} else {
 		    if (vis)
-			pline("%s %s tears apart!", s_suffix(Monnam(mon)), /* EN pline("%s %s tears apart!", s_suffix(Monnam(mon)), */ // TODO DE
-				cloak_simple_name(otmp));
+			pline("SUBJECT %s VERB_WERDEN zerrissen!", genitivattribut_zu_wort(Monnam(mon), /* EN pline("%s %s tears apart!", s_suffix(Monnam(mon)), */
+				cloak_simple_name(otmp))); /* EN cloak_simple_name(otmp)); */
 		    else
 			You_hear("a ripping sound."); /* EN You_hear("a ripping sound."); */ // TODO DE
 		    m_useup(mon, otmp);
@@ -635,7 +635,7 @@ boolean polyspot;
 #ifdef TOURIST
 	    if ((otmp = which_armor(mon, W_ARMU)) != 0) {
 		if (vis)
-		    pline("%s shirt rips to shreds!", s_suffix(Monnam(mon))); /* EN pline("%s shirt rips to shreds!", s_suffix(Monnam(mon))); */ // TODO DE
+		    pline("SUBJECT %s VERB_WERDEN in Stücke gerissen!", genitivattribut_zu_wort(Monnam(mon),"NOUN_SHIRT")); /* EN pline("%s shirt rips to shreds!", s_suffix(Monnam(mon))); */
 		else
 		    You_hear("a ripping sound."); /* EN You_hear("a ripping sound."); */ // TODO DE
 		m_useup(mon, otmp);
@@ -644,8 +644,8 @@ boolean polyspot;
 	} else if (sliparm(mdat)) {
 	    if ((otmp = which_armor(mon, W_ARM)) != 0) {
 		if (vis)
-		    pline("%s armor falls around %s!", /* EN pline("%s armor falls around %s!", */ // TODO DE
-				 s_suffix(Monnam(mon)), pronoun); /* EN s_suffix(Monnam(mon)), pronoun); */ // TODO DE
+		    pline("%s falls around %s!", /* EN pline("%s armor falls around %s!", */ // TODO DE
+				 genitivattribut_zu_wort(Monnam(mon),"NOUN_ARMOR"), pronoun); /* EN s_suffix(Monnam(mon)), pronoun); */
 		else
 		    You_hear("a thud."); /* EN You_hear("a thud."); */ // TODO DE
 		if (polyspot) bypass_obj(otmp);
@@ -714,10 +714,10 @@ boolean polyspot;
 	    if ((otmp = which_armor(mon, W_ARMF)) != 0) {
 		if (vis) {
 		    if (is_whirly(mon->data))
-			pline("%s boots fall away!", /* EN pline("%s boots fall away!", */ // TODO DE
-				       s_suffix(Monnam(mon))); /* EN s_suffix(Monnam(mon))); */ // TODO DE
-		    else pline("%s boots %s off %s feet!", /* EN else pline("%s boots %s off %s feet!", */ // TODO DE
-			s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
+			pline("%s fall away!", /* EN pline("%s boots fall away!", */ // TODO DE
+				       genitivattribut_zu_wort(Monnam(mon),"NOUN_BOOTSs")); /* EN s_suffix(Monnam(mon))); */
+		    else pline("%s %s off %s feet!", /* EN else pline("%s boots %s off %s feet!", */ // TODO DE
+			genitivattribut_zu_wort(Monnam(mon),"NOUN_BOOTSs"), /* EN s_suffix(Monnam(mon)), */
 			verysmall(mdat) ? "slide" : "are pushed", ppronoun); /* EN verysmall(mdat) ? "slide" : "are pushed", ppronoun); */ // TODO DE
 		}
 		if (polyspot) bypass_obj(otmp);

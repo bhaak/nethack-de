@@ -1832,7 +1832,7 @@ register int x, y;
 	godvoice(altaralign, "Wie kannst du es wagen meinen Altar zu entweihen!!"); /* EN godvoice(altaralign, "How darest thou desecrate my altar!"); */
 	(void) adjattrib(A_WIS, -1, FALSE);
     } else {
-	pline("Eine Stimme (möglicherweise %s?) flüstert:", /* EN pline("A voice (could it be %s?) whispers:", */
+	pline("Eine Stimme (ist es vielleicht %s?) flüstert:", /* EN pline("A voice (could it be %s?) whispers:", */
 	      align_gname(altaralign));
 	verbalize("Thou shalt pay, infidel!"); /* EN verbalize("Thou shalt pay, infidel!"); */ // TODO DE
 	change_luck(-1);

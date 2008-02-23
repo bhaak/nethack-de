@@ -231,7 +231,7 @@ do_mname()
 	char qbuf[QBUFSZ];
 
 	if (Hallucination) {
-		You("VERB_würden es sowieso nicht wiedererkennen."); /* EN You("would never recognize it anyway."); */
+		You("MODIFIER_KONJUNKTIV_II VERB_WERDEN es sowieso nicht wiedererkennen."); /* EN You("would never recognize it anyway."); */
 		return 0;
 	}
 	cc.x = u.ux;
@@ -936,6 +936,9 @@ static const char * const bogusmons[] = {
 	// eierlegende Wollmilchsau
 	// Elwetritsch
 	// http://de.wikipedia.org/wiki/Liste_der_Fabelwesen#Deutschland_.26_.C3.96sterreich
+	// Unsichtbares rosafarbenes Einhorn http://de.wikipedia.org/wiki/Unsichtbares_rosafarbenes_Einhorn
+	// Blaubär
+	// Natiftoffen ?
 	"jumbo shrimp", "giant pigmy", "gnu", "killer penguin",
 	"giant cockroach", "giant slug", "maggot", "pterodactyl",
 	"tyrannosaurus rex", "basilisk", "beholder", "nightmare",

@@ -36,11 +36,11 @@ const struct innate {
 		     {	 0, 0, 0, 0 } },
 
 	cav_abil[] = { {	 7, &(HFast), "schnell", "langsam" }, /* EN cav_abil[] = { {	 7, &(HFast), "quick", "slow" }, */
-		     {	15, &(HWarning), "sensitive", "" }, /* EN {	15, &(HWarning), "sensitive", "" }, */ // TODO DE
+		     {	15, &(HWarning), "sensibel", "" }, /* EN {	15, &(HWarning), "sensitive", "" }, */
 		     {	 0, 0, 0, 0 } },
 
 	hea_abil[] = { {	 1, &(HPoison_resistance), "", "" },
-		     {	15, &(HWarning), "sensitive", "" }, /* EN {	15, &(HWarning), "sensitive", "" }, */ // TODO DE
+		     {	15, &(HWarning), "sensibel", "" }, /* EN {	15, &(HWarning), "sensitive", "" }, */
 		     {	 0, 0, 0, 0 } },
 
 	kni_abil[] = { {	 7, &(HFast), "schnell", "langsam" }, /* EN kni_abil[] = { {	 7, &(HFast), "quick", "slow" }, */
@@ -49,18 +49,18 @@ const struct innate {
 	mon_abil[] = { {   1, &(HFast), "", "" },
 		     {   1, &(HSleep_resistance), "", "" },
 		     {   1, &(HSee_invisible), "", "" },
-		     {   3, &(HPoison_resistance), "healthy", "" }, /* EN {   3, &(HPoison_resistance), "healthy", "" }, */ // TODO DE
+		     {   3, &(HPoison_resistance), "gesund", "" }, /* EN {   3, &(HPoison_resistance), "healthy", "" }, */
 		     {   5, &(HStealth), "stealthy", "" }, /* EN {   5, &(HStealth), "stealthy", "" }, */ // TODO DE
-		     {   7, &(HWarning), "sensitive", "" }, /* EN {   7, &(HWarning), "sensitive", "" }, */ // TODO DE
+		     {   7, &(HWarning), "sensibel", "" }, /* EN {   7, &(HWarning), "sensitive", "" }, */
 		     {   9, &(HSearching), "aufmerksam", "unaufmerksam" }, /* EN {   9, &(HSearching), "perceptive", "unaware" }, */
-		     {  11, &(HFire_resistance), "cool", "warmer" }, /* EN {  11, &(HFire_resistance), "cool", "warmer" }, */ // TODO DE
-		     {  13, &(HCold_resistance), "warm", "cooler" }, /* EN {  13, &(HCold_resistance), "warm", "cooler" }, */ // TODO DE
+		     {  11, &(HFire_resistance), "kühl", "wärmer" }, /* EN {  11, &(HFire_resistance), "cool", "warmer" }, */
+		     {  13, &(HCold_resistance), "warm", "kühler" }, /* EN {  13, &(HCold_resistance), "warm", "cooler" }, */
 		     {  15, &(HShock_resistance), "isoliert", "leitend" }, /* EN {  15, &(HShock_resistance), "insulated", "conductive" }, */
-		     {  17, &(HTeleport_control), "controlled","uncontrolled" }, /* EN {  17, &(HTeleport_control), "controlled","uncontrolled" }, */ // TODO DE
+		     {  17, &(HTeleport_control), "kontrolliert","unkontrolliert" }, /* EN {  17, &(HTeleport_control), "controlled","uncontrolled" }, */
 		     {   0, 0, 0, 0 } },
 
-	pri_abil[] = { {	15, &(HWarning), "sensitive", "" }, /* EN pri_abil[] = { {	15, &(HWarning), "sensitive", "" }, */ // TODO DE
-		     {  20, &(HFire_resistance), "cool", "warmer" }, /* EN {  20, &(HFire_resistance), "cool", "warmer" }, */ // TODO DE
+	pri_abil[] = { {	15, &(HWarning), "sensibel", "" }, /* EN pri_abil[] = { {	15, &(HWarning), "sensitive", "" }, */
+		     {  20, &(HFire_resistance), "kühl", "wärmer" }, /* EN {  20, &(HFire_resistance), "cool", "warmer" }, */
 		     {	 0, 0, 0, 0 } },
 
 	ran_abil[] = { {   1, &(HSearching), "", "" },
@@ -77,7 +77,7 @@ const struct innate {
 		     {	 0, 0, 0, 0 } },
 
 	tou_abil[] = { {	10, &(HSearching), "aufmerksam", "unaufmerksam" }, /* EN tou_abil[] = { {	10, &(HSearching), "perceptive", "" }, */
-		     {	20, &(HPoison_resistance), "hardy", "" }, /* EN {	20, &(HPoison_resistance), "hardy", "" }, */ // TODO DE
+		     {	20, &(HPoison_resistance), "widerstandsfähig", "" }, /* EN {	20, &(HPoison_resistance), "hardy", "" }, */
 		     {	 0, 0, 0, 0 } },
 
 	val_abil[] = { {	 1, &(HCold_resistance), "", "" },
@@ -85,8 +85,8 @@ const struct innate {
 		     {   7, &(HFast), "schnell", "langsam" }, /* EN {   7, &(HFast), "quick", "slow" }, */
 		     {	 0, 0, 0, 0 } },
 
-	wiz_abil[] = { {	15, &(HWarning), "sensitive", "" }, /* EN wiz_abil[] = { {	15, &(HWarning), "sensitive", "" }, */ // TODO DE
-		     {  17, &(HTeleport_control), "controlled","uncontrolled" }, /* EN {  17, &(HTeleport_control), "controlled","uncontrolled" }, */ // TODO DE
+	wiz_abil[] = { {	15, &(HWarning), "sensibel", "" }, /* EN wiz_abil[] = { {	15, &(HWarning), "sensitive", "" }, */
+		     {  17, &(HTeleport_control), "kontrolliert","unkontrolliert" }, /* EN {  17, &(HTeleport_control), "controlled","uncontrolled" }, */
 		     {	 0, 0, 0, 0 } },
 
 	/* Intrinsics conferred by race */
@@ -118,7 +118,7 @@ adjattrib(ndx, incr, msgflg)
 	if (incr > 0) {
 	    if ((AMAX(ndx) >= ATTRMAX(ndx)) && (ACURR(ndx) >= AMAX(ndx))) {
 		if (msgflg == 0 && flags.verbose)
-		    pline("You're already as %s as you can get.", /* EN pline("You're already as %s as you can get.", */ // TODO DE
+		    Du_bist("schon so %s wie  you can get.", /* EN pline("You're already as %s as you can get.", */ // TODO DE
 			  plusattr[ndx]);
 		ABASE(ndx) = AMAX(ndx) = ATTRMAX(ndx); /* just in case */
 		return FALSE;
@@ -600,7 +600,7 @@ int oldlevel, newlevel;
 			    if(*(abil->losestr))
 				Du_fuehlst_dich("%s!", abil->losestr); /* EN You_feel("%s!", abil->losestr); */
 			    else if(*(abil->gainstr))
-				You_feel("less %s!", abil->gainstr); /* EN You_feel("less %s!", abil->gainstr); */ // TODO DE
+				Du_fuehlst_dich("weniger %s!", abil->gainstr); /* EN You_feel("less %s!", abil->gainstr); */
 			}
 		}
 	    if (prevabil != *(abil->ability))	/* it changed */

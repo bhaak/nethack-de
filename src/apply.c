@@ -309,13 +309,13 @@ use_stethoscope(obj)
 	return res;
 }
 
-static const char whistle_str[] = "produce a %s whistling sound."; /* EN static const char whistle_str[] = "produce a %s whistling sound."; */ // TODO DE
+static const char whistle_str[] = "VERB_ERZEUGEN einen %s Pfeifton."; /* EN static const char whistle_str[] = "produce a %s whistling sound."; */
 
 STATIC_OVL void
 use_whistle(obj)
 struct obj *obj;
 {
-	You(whistle_str, obj->cursed ? "shrill" : "high"); /* EN You(whistle_str, obj->cursed ? "shrill" : "high"); */ // TODO DE
+	You(whistle_str, obj->cursed ? "schrillen" : "hohen"); /* EN You(whistle_str, obj->cursed ? "shrill" : "high"); */
 	wake_nearby();
 }
 
@@ -330,7 +330,7 @@ struct obj *obj;
 		wake_nearby();
 	} else {
 		int pet_cnt = 0;
-		You(whistle_str, Hallucination ? "normal" : "strange"); /* EN You(whistle_str, Hallucination ? "normal" : "strange"); */ // TODO DE
+		You(whistle_str, Hallucination ? "normalen" : "seltsamen"); /* EN You(whistle_str, Hallucination ? "normal" : "strange"); */
 		for(mtmp = fmon; mtmp; mtmp = nextmon) {
 		    nextmon = mtmp->nmon; /* trap might kill mon */
 		    if (DEADMONSTER(mtmp)) continue;
@@ -582,7 +582,7 @@ register xchar x, y;
 		    }
 		} else {
 		    if (um_dist(mtmp->mx, mtmp->my, 5)) {
-			pline("%s leash snaps loose!", s_suffix(Monnam(mtmp))); /* EN pline("%s leash snaps loose!", s_suffix(Monnam(mtmp))); */ // TODO DE
+			pline("SUBJECT %s snaps loose!", genitivattribut_zu_wort(Monnam(mtmp), "NOUN_LEASH")); /* EN pline("%s leash snaps loose!", s_suffix(Monnam(mtmp))); */ // TODO DE
 			m_unleash(mtmp, FALSE);
 		    } else {
 			You("VERB_ZIEHEN an der Leine."); /* EN You("pull on the leash."); */
@@ -653,8 +653,8 @@ struct obj *obj;
 		return 1;
 	}
 	if(u.uswallow) {
-		if (!Blind) You("reflect %s %s.", s_suffix(mon_nam(u.ustuck)), /* EN if (!Blind) You("reflect %s %s.", s_suffix(mon_nam(u.ustuck)), */ // TODO DE
-		    mbodypart(u.ustuck, STOMACH));
+		if (!Blind) You("reflect %s %s.", genitivattribut_zu_wort(mon_nam(u.ustuck), /* EN if (!Blind) You("reflect %s %s.", s_suffix(mon_nam(u.ustuck)), */
+		    mbodypart(u.ustuck, STOMACH))); /* EN mbodypart(u.ustuck, STOMACH)); */
 		return 1;
 	}
 	if(Underwater) {
@@ -2262,7 +2262,7 @@ struct obj *obj;
 		mon_hand = 0;	/* lint suppression */
 
 	    You("wrap your bullwhip around %s %s.", /* EN You("wrap your bullwhip around %s %s.", */ // TODO DE
-		s_suffix(mon_nam(mtmp)), onambuf); /* EN s_suffix(mon_nam(mtmp)), onambuf); */ // TODO DE
+		genitivattribut_zu_wort(mon_nam(mtmp), onambuf)); /* EN s_suffix(mon_nam(mtmp)), onambuf); */
 	    if (gotit && otmp->cursed) {
 		pline("%s welded to %s %s%c", /* EN pline("%s welded to %s %s%c", */ // TODO DE
 		      (otmp->quan == 1L) ? "It is" : "They are", /* EN (otmp->quan == 1L) ? "It is" : "They are", */ // TODO DE
@@ -2279,8 +2279,8 @@ struct obj *obj;
 		switch (rn2(proficient + 1)) {
 		case 2:
 		    /* to floor near you */
-		    You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */ // TODO DE
-			onambuf, surface(u.ux, u.uy));
+		    You("yank %s %s to the %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */ // TODO DE
+			surface(u.ux, u.uy)); /* EN onambuf, surface(u.ux, u.uy)); */
 		    place_object(otmp, u.ux, u.uy);
 		    stackobj(otmp);
 		    break;
@@ -2325,7 +2325,7 @@ struct obj *obj;
 		default:
 		    /* to floor beneath mon */
 		    You("yank %s from %s %s!", the(onambuf), /* EN You("yank %s from %s %s!", the(onambuf), */ // TODO DE
-			s_suffix(mon_nam(mtmp)), mon_hand); /* EN s_suffix(mon_nam(mtmp)), mon_hand); */ // TODO DE
+			genitivattribut_zu_wort(mon_nam(mtmp), mon_hand)); /* EN s_suffix(mon_nam(mtmp)), mon_hand); */
 		    obj_no_longer_held(otmp);
 		    place_object(otmp, mtmp->mx, mtmp->my);
 		    stackobj(otmp);

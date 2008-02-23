@@ -1485,7 +1485,7 @@ struct obj *otmp;
 		    if (!oldprop && !EInvis && !BInvis &&
 					!See_invisible && !Blind) {
 			newsym(u.ux,u.uy);
-			Your("NOUN_BODY VERB_NEHMEN eine %s Transparenz an ...", /* EN Your("body takes on a %s transparency...", */
+			Your("NOUN_BODY VERB_NEHMEN eine %s Durchsichtigkeit an ...", /* EN Your("body takes on a %s transparency...", */
 				Hallucination ? "normale" : "seltsame"); /* EN Hallucination ? "normal" : "strange"); */
 			makeknown(typ);
 		    }
