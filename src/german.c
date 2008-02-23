@@ -1299,13 +1299,17 @@ int
 gott_weiblich(name)
 const char *name;
 {
-    const char *treffer;
+	const char *treffer;
+	int i;
 
-    if ((treffer=strstr(urole.lgod, name))) { return (*urole.lgod == '_'); }
-    else if ((treffer=strstr(urole.ngod, name))) { return (*urole.ngod == '_'); }
-    else if ((treffer=strstr(urole.cgod, name))) { return (*urole.cgod == '_'); }
+	//for (i = 0; i < SIZE(roles)-1; i++) {
+	for (i = 0; validrole(i); i++) {
+		if ((roles[i].lgod != 0) && (treffer=strstr(roles[i].lgod, name))) { return (*roles[i].lgod == '_'); }
+		else if ((roles[i].lgod != 0) && (treffer=strstr(roles[i].ngod, name))) { return (*roles[i].ngod == '_'); }
+		else if ((roles[i].lgod != 0) && (treffer=strstr(roles[i].cgod, name))) { return (*roles[i].cgod == '_'); }
+	}
     
-    return FALSE;
+	return FALSE;
 }
 #endif
 

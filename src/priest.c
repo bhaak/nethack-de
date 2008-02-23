@@ -248,6 +248,9 @@ register struct monst *mon;
 char *pname;		/* caller-supplied output buffer */
 {
 	const char *what = Hallucination ? rndmonnam() : mon->data->mname;
+#ifdef GERMAN
+	char *tmp_gname;
+#endif
 
 	Strcpy(pname, "ARTIKEL_BESTIMMTER "); /* EN Strcpy(pname, "the "); */
 	if (mon->minvis) Strcat(pname, "ADJEKTIV_INVISIBLE "); /* EN if (mon->minvis) Strcat(pname, "invisible "); */
@@ -277,8 +280,14 @@ char *pname;		/* caller-supplied output buffer */
 			else
 				Strcat(pname, "PRIEST "); /* EN Strcat(pname, "priest "); */ /* NOUN_HIGH_PRIEST, NOUN_PRIEST */
 		}
-		Strcat(pname, "KASUS_GENITIV ARTIKEL_BESTIMMTER "); /* EN Strcat(pname, "of "); */
+#ifdef GERMAN
+		tmp_gname = halu_gname((int)EPRI(mon)->shralign);
+		Strcat(pname, gott_weiblich(tmp_gname) ? "der " : "des ");
+		Strcat(pname, tmp_gname);
+#else
+		Strcat(pname, "of ");
 		Strcat(pname, halu_gname((int)EPRI(mon)->shralign));
+#endif
 		return(pname);
 	}
 	/* use emin instead of epri */
@@ -652,8 +661,8 @@ struct monst *priest;
 			a_gname_at(ax, ay));
 	    break;
 	case 1:
-	    pline("%s voice booms:  \"How darest thou harm my servant!\"", /* EN pline("%s voice booms:  \"How darest thou harm my servant!\"", */ // TODO DE
-			s_suffix(a_gname_at(ax, ay))); /* EN s_suffix(a_gname_at(ax, ay))); */ // TODO DE
+	    pline("SUBJECT %s booms:  \"How darest thou harm my servant!\"", /* EN pline("%s voice booms:  \"How darest thou harm my servant!\"", */ // TODO DE
+			genitivattribut_zu_wort(a_gname_at(ax, ay), "NOUN_STIMME")); /* EN s_suffix(a_gname_at(ax, ay))); */
 	    break;
 	default:
 	    pline("%s roars:  \"Thou dost profane my shrine!\"", /* EN pline("%s roars:  \"Thou dost profane my shrine!\"", */ // TODO DE
