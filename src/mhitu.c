@@ -435,7 +435,7 @@ mattacku(mtmp)
 	if (youmonst.data->mlet == S_MIMIC && youmonst.m_ap_type &&
 		    !range2 && foundyou && !u.uswallow) {
 		if (!youseeit) pline("It gets stuck on you."); /* EN if (!youseeit) pline("It gets stuck on you."); */ // TODO DE
-		else pline("Wait, %s!  That's a %s named %s!", /* EN else pline("Wait, %s!  That's a %s named %s!", */ // TODO DE
+		else pline("Warte, %s!  SUBJECT Das ist ARTIKEL_UNBESTIMMTER %s namens %s!", /* EN else pline("Wait, %s!  That's a %s named %s!", */
 			   m_monnam(mtmp), youmonst.data->mname, plname);
 		u.ustuck = mtmp;
 		youmonst.m_ap_type = M_AP_NOTHING;
@@ -447,19 +447,19 @@ mattacku(mtmp)
 	/* player might be mimicking an object */
 	if (youmonst.m_ap_type == M_AP_OBJECT && !range2 && foundyou && !u.uswallow) {
 	    if (!youseeit)
-		 pline("%s %s!", Something,
+		 pline("SUBJECT %s %s!", Something, /* EN pline("%s %s!", Something, */
 			(likes_gold(mtmp->data) && youmonst.mappearance == GOLD_PIECE) ?
-			"tries to pick you up" : "disturbs you"); /* EN "tries to pick you up" : "disturbs you"); */ // TODO DE
-	    else pline("Wait, %s!  That %s is really %s named %s!", /* EN else pline("Wait, %s!  That %s is really %s named %s!", */ // TODO DE
+			"VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL einzusacken" : "VERB_STOEREN OBJECT PRONOMEN_PERSONAL"); /* EN "tries to pick you up" : "disturbs you"); */
+	    else pline("Warte, %s!  SUBJECT PRONOMEN_DIESER %s ist eigentlich %s namens %s!", /* EN else pline("Wait, %s!  That %s is really %s named %s!", */
 			m_monnam(mtmp),
 			mimic_obj_name(&youmonst),
 			an(mons[u.umonnum].mname),
 			plname);
 	    if (multi < 0) {	/* this should always be the case */
 		char buf[BUFSZ];
-		Sprintf(buf, "You appear to be %s again.", /* EN Sprintf(buf, "You appear to be %s again.", */ // TODO DE
+		Sprintf(buf, "SUBJECT PRONOMEN_PERSONAL VERB_SCHEINEN wieder OBJECT KASUS_NOMINATIV %s zu sein.", /* EN Sprintf(buf, "You appear to be %s again.", */
 			Upolyd ? (const char *) an(youmonst.data->mname) :
-			    (const char *) "yourself"); /* EN (const char *) "yourself"); */ // TODO DE
+			    (const char *) "PRONOMEN_PERSONAL selbst"); /* EN (const char *) "yourself"); */
 		unmul(buf);	/* immediately stop mimicking */
 	    }
 	    return 0;
@@ -907,7 +907,7 @@ hitmu(mtmp, mattk)
 			    dmg = 0;
 			} else {
 			    u.ustuck = mtmp;
-			    pline("%s grabs you!", Monnam(mtmp)); /* EN pline("%s grabs you!", Monnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s VERB_PACKEN OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp)); /* EN pline("%s grabs you!", Monnam(mtmp)); */
 			}
 		    } else if(u.ustuck == mtmp) {
 			exercise(A_STR, FALSE);

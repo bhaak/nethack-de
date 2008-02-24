@@ -1755,7 +1755,7 @@ xkilled(mtmp, dest)
 		You("%s OBJECT %s!", verb, /* EN You("%s %s!", verb, */
 		    !mtmp->mtame ? mon_nam(mtmp) :
 			x_monnam(mtmp,
-				 mtmp->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
+				 ARTICLE_THE, /* EN mtmp->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 				 "ADJEKTIV_POOR", /* EN "poor", */
 				 mtmp->mnamelth ? SUPPRESS_SADDLE : 0,
 				 FALSE));

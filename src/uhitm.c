@@ -2040,7 +2040,7 @@ use_weapon:
 				    "crushed"); /* EN "crushed"); */ // TODO DE
 				sum[i] = damageum(mon, mattk);
 			    } else if(i >= 2 && sum[i-1] && sum[i-2]) {
-				You("grab %s!", mon_nam(mon)); /* EN You("grab %s!", mon_nam(mon)); */ // TODO DE
+				You("VERB_PACKEN OBJECT %s!", mon_nam(mon)); /* EN You("grab %s!", mon_nam(mon)); */
 				u.ustuck = mon;
 				sum[i] = damageum(mon, mattk);
 			    }

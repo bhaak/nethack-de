@@ -280,7 +280,7 @@ struct obj *corpse;
 		}
 		mtmp = christen_monst(mtmp, plname);
 		newsym(u.ux, u.uy);
-		Your("body rises from the dead as %s...", /* EN Your("body rises from the dead as %s...", */ // TODO DE
+		Your("NOUN_LEIB VERB_AUFERSTEHEN als %s von den Toten ...", /* EN Your("body rises from the dead as %s...", */
 			an(mons[u.ugrave_arise].mname));
 		display_nhwindow(WIN_MESSAGE, FALSE);
 		drop_upon_death(mtmp, (struct obj *)0);
@@ -395,7 +395,7 @@ getbones()
 #ifdef WIZARD
 	    if (!wizard)
 #endif
-		pline("Discarding unuseable bones; no need to panic..."); /* EN pline("Discarding unuseable bones; no need to panic..."); */ // TODO DE
+		pline("Verwerfe unbrauchbare Bones-Datei; kein Grund zur Panik ..."); /* EN pline("Discarding unuseable bones; no need to panic..."); */
 	} else {
 #ifdef WIZARD
 		if(wizard)  {
@@ -411,7 +411,7 @@ getbones()
 		if (strcmp(bonesid, oldbonesid) != 0) {
 			char errbuf[BUFSZ];
 
-			Sprintf(errbuf, "This is bones level '%s', not '%s'!", /* EN Sprintf(errbuf, "This is bones level '%s', not '%s'!", */ // TODO DE
+			Sprintf(errbuf, "Das ist Bones-Level '%s', nicht '%s'!", /* EN Sprintf(errbuf, "This is bones level '%s', not '%s'!", */
 				oldbonesid, bonesid);
 #ifdef WIZARD
 			if (wizard) {
@@ -446,7 +446,7 @@ getbones()
 
 #ifdef WIZARD
 	if(wizard) {
-		if(yn("Unlink bones?") == 'n') { /* EN if(yn("Unlink bones?") == 'n') { */ // TODO DE
+		if(yn("Bones-Datei entlinken?") == 'n') { /* EN if(yn("Unlink bones?") == 'n') { */
 			compress_bonesfile();
 			return(ok);
 		}

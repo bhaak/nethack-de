@@ -662,7 +662,7 @@ slip_or_trip()
 	    pline("%s %s%s on the ice.", /* EN pline("%s %s%s on the ice.", */ // TODO DE
 #ifdef STEED
 		u.usteed ? upstart(x_monnam(u.usteed,
-				u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
+				ARTICLE_THE, /* EN u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 				(char *)0, SUPPRESS_SADDLE, FALSE)) :
 #endif
 		"You", rn2(2) ? "slip" : "slide", on_foot ? "" : "s"); /* EN "You", rn2(2) ? "slip" : "slide", on_foot ? "" : "s"); */ // TODO DE

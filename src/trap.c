@@ -884,12 +884,12 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    	if ((trflags & RECURSIVETRAP) != 0)
 			    Sprintf(verbbuf, "und SUBJECT_IM_SATZ %s MODIFIER_VERB_DRITTE_PERSON MODIFIER_VERB_PLURAL VERB_FALLEN", /* EN Sprintf(verbbuf, "and %s fall", */
 				x_monnam(u.usteed,
-				    u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
+				    ARTICLE_THE, /* EN u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 				    (char *)0, SUPPRESS_SADDLE, FALSE));
 			else
 			    Sprintf(verbbuf,"VERB_FUEHREN OBJECT %s", /* EN Sprintf(verbbuf,"lead %s", */
 				x_monnam(u.usteed,
-					 u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
+					 ARTICLE_THE, /* EN u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 				 	 "ADJEKTIV_POOR", SUPPRESS_SADDLE, FALSE)); /* EN "poor", SUPPRESS_SADDLE, FALSE)); */
 		    } else
 #endif
@@ -910,7 +910,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    if (u.usteed) {
 			pline("SUBJECT %s lands %s!", /* EN pline("%s lands %s!", */ // TODO DE
 				upstart(x_monnam(u.usteed,
-					 u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
+					 ARTICLE_THE, /* EN u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 					 "ADJEKTIV_POOR", SUPPRESS_SADDLE, FALSE)), /* EN "poor", SUPPRESS_SADDLE, FALSE)), */
 			      predicament);
 		    } else
@@ -984,7 +984,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		if (webmaker(youmonst.data)) {
 		    if (webmsgok)
 		    	pline(trap->madeby_u ? "You take a walk on your web." /* EN pline(trap->madeby_u ? "You take a walk on your web." */ // TODO DE
-					 : "There is a NOUN_SPIDER_WEB here."); /* EN : "There is a spider web here."); */ // TODO DE
+					 : "Hier ist ARTIKEL_UNBESTIMMTER NOUN_SPIDER_WEB."); /* EN : "There is a spider web here."); */
 		    break;
 		}
 		if (webmsgok) {
@@ -994,7 +994,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    if (u.usteed)
 		   	Sprintf(verbbuf,"VERB_FUEHREN OBJECT %s", /* EN Sprintf(verbbuf,"lead %s", */
 				x_monnam(u.usteed,
-					 u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
+					 ARTICLE_THE, /* EN u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 				 	 "ADJEKTIV_POOR", SUPPRESS_SADDLE, FALSE)); /* EN "poor", SUPPRESS_SADDLE, FALSE)); */
 		    else
 #endif
@@ -1087,7 +1087,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		if (u.usteed)
 			Sprintf(verbbuf, "VERB_FUEHREN OBJECT %s", /* EN Sprintf(verbbuf, "lead %s", */
 				x_monnam(u.usteed,
-					 u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE,
+					 ARTICLE_THE, /* EN u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 				 	 (char *)0, SUPPRESS_SADDLE, FALSE));
 		else
 #endif
