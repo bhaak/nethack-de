@@ -1000,7 +1000,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 #endif
 			
 		    Sprintf(verbbuf, "%s", Levitation ? (const char *)"float" : /* EN Sprintf(verbbuf, "%s", Levitation ? (const char *)"float" : */ // TODO DE
-		      		locomotion(youmonst.data, "stumble")); /* EN locomotion(youmonst.data, "stumble")); */ // TODO DE
+		      		locomotion(youmonst.data, "VERB_STOLPERN")); /* EN locomotion(youmonst.data, "stumble")); */
 		    You("%s NEUES_OBJECT OBJECT in %s NOUN_SPIDER_WEB!", /* EN You("%s into %s spider web!", */
 			verbbuf, a_your[trap->madeby_u]);
 		}
@@ -1093,8 +1093,8 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 #endif
 		 Sprintf(verbbuf,"%s",
 		    Levitation ? (const char *)"float" : /* EN Levitation ? (const char *)"float" : */ // TODO DE
-		    locomotion(youmonst.data, "step")); /* EN locomotion(youmonst.data, "step")); */ // TODO DE
-		You("%s onto a polymorph trap!", verbbuf); /* EN You("%s onto a polymorph trap!", verbbuf); */ // TODO DE
+		    locomotion(youmonst.data, "VERB_TRETEN")); /* EN locomotion(youmonst.data, "step")); */
+		You("%s OBJECT in ARTIKEL_UNBESTIMMTER NOUN_POLYMORPH_TRAP!", verbbuf); /* EN You("%s onto a polymorph trap!", verbbuf); */
 		if(Antimagic || Unchanging) {
 		    shieldeff(u.ux, u.uy);
 		    You_feel("momentarily different."); /* EN You_feel("momentarily different."); */ // TODO DE

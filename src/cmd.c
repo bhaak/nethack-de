@@ -313,9 +313,9 @@ doextlist()	/* here after #? - now list all full-word commands */
 
 	datawin = create_nhwindow(NHW_TEXT);
 	putstr(datawin, 0, "");
-	putstr(datawin, 0, "            Extended Commands List"); /* EN putstr(datawin, 0, "            Extended Commands List"); */ // TODO DE
+	putstr(datawin, 0, "            Erweiterte Befehlsliste"); /* EN putstr(datawin, 0, "            Extended Commands List"); */
 	putstr(datawin, 0, "");
-	putstr(datawin, 0, "    Press '#', then type:"); /* EN putstr(datawin, 0, "    Press '#', then type:"); */ // TODO DE
+	putstr(datawin, 0, "    '#' drücken, dann eingeben:"); /* EN putstr(datawin, 0, "    Press '#', then type:"); */
 	putstr(datawin, 0, "");
 
 	for(efp = extcmdlist; efp->ef_txt; efp++) {
@@ -484,15 +484,15 @@ STATIC_PTR int
 enter_explore_mode()
 {
 	if(!discover && !wizard) {
-		pline("Beware!  From explore mode there will be no return to normal game."); /* EN pline("Beware!  From explore mode there will be no return to normal game."); */ // TODO DE
-		if (yn("Do you want to enter explore mode?") == 'y') { /* EN if (yn("Do you want to enter explore mode?") == 'y') { */ // TODO DE
+		pline("Achtung!  Vom Erkundungsmodus gibt es keinen Weg zurück ins normale Spiel."); /* EN pline("Beware!  From explore mode there will be no return to normal game."); */
+		if (yn("SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL den Erkundungsmodus aktivieren?") == 'y') { /* EN if (yn("Do you want to enter explore mode?") == 'y') { */
 			clear_nhwindow(WIN_MESSAGE);
-			You("are now in non-scoring explore mode."); /* EN You("are now in non-scoring explore mode."); */ // TODO DE
+			You("VERB_SEIN jetzt im nicht-bewerteten Erkundungsmodus."); /* EN You("are now in non-scoring explore mode."); */
 			discover = TRUE;
 		}
 		else {
 			clear_nhwindow(WIN_MESSAGE);
-			pline("Resuming normal game."); /* EN pline("Resuming normal game."); */ // TODO DE
+			pline("Das normale Spiel wird fortgesetzt."); /* EN pline("Resuming normal game."); */
 		}
 	}
 	return 0;
@@ -611,10 +611,10 @@ wiz_level_change()
 	return 0;
     }
     if (newlevel == u.ulevel) {
-	You("are already that experienced."); /* EN You("are already that experienced."); */ // TODO DE
+	Du_bist("schon so erfahren."); /* EN You("are already that experienced."); */
     } else if (newlevel < u.ulevel) {
 	if (u.ulevel == 1) {
-	    You("are already as inexperienced as you can get."); /* EN You("are already as inexperienced as you can get."); */ // TODO DE
+	    Du_bist("schon so unerfahren wie möglich."); /* EN You("are already as inexperienced as you can get."); */
 	    return 0;
 	}
 	if (newlevel < 1) newlevel = 1;
@@ -622,7 +622,7 @@ wiz_level_change()
 	    losexp("#levelchange");
     } else {
 	if (u.ulevel >= MAXULEV) {
-	    You("are already as experienced as you can get."); /* EN You("are already as experienced as you can get."); */ // TODO DE
+	    Du_bist("schon so erfahren wie möglich."); /* EN You("are already as experienced as you can get."); */
 	    return 0;
 	}
 	if (newlevel > MAXULEV) newlevel = MAXULEV;
@@ -637,7 +637,7 @@ wiz_level_change()
 STATIC_PTR int
 wiz_panic()
 {
-	if (yn("Wirklich panic() aufrufen und dein Spiel beenden?") == 'y') /* EN if (yn("Do you want to call panic() and end your game?") == 'y') */
+	if (yn("Wirklich panic() aufrufen und KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GAME beenden?") == 'y') /* EN if (yn("Do you want to call panic() and end your game?") == 'y') */
 		panic("Crash-Test."); /* EN panic("crash test."); */
         return 0;
 }
@@ -859,9 +859,9 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 #ifdef ELBERETH
 	if (u.uevent.uhand_of_elbereth) {
 	    static const char * const hofe_titles[3] = {
-				"the Hand of Elbereth", /* EN "the Hand of Elbereth", */ // TODO DE
-				"the Envoy of Balance", /* EN "the Envoy of Balance", */ // TODO DE
-				"the Glory of Arioch" /* EN "the Glory of Arioch" */ // TODO DE
+				"ARTIKEL_BESTIMMTER NOUN_HAND_OF_ELBERETH", /* EN "the Hand of Elbereth", */
+				"ARTIKEL_BESTIMMTER NOUN_ENVOY_OF_BALANCE", /* EN "the Envoy of Balance", */
+				"ARTIKEL_BESTIMMTER NOUN_GLORY_OF_ARIOCH" /* EN "the Glory of Arioch" */
 	    };
 	    you_are(hofe_titles[u.uevent.uhand_of_elbereth - 1]);
 	}
@@ -944,7 +944,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Hunger) enl_msg("You hunger", "", "ed", " rapidly"); /* EN if (Hunger) enl_msg("You hunger", "", "ed", " rapidly"); */ // TODO DE
 
 	/*** Vision and senses ***/
-	if (See_invisible) enl_msg(You_, "see", "saw", " invisible"); /* EN if (See_invisible) enl_msg(You_, "see", "saw", " invisible"); */ // TODO DE
+	if (See_invisible) enl_msg(You_, "VERB_SEHEN", "saw", " invisible"); /* EN if (See_invisible) enl_msg(You_, "see", "saw", " invisible"); */ // TODO DE
 	if (Blind_telepat) you_are("telepathisch begabt"); /* EN if (Blind_telepat) you_are("telepathic"); */
 	if (Warning) you_are("gewarnt"); /* EN if (Warning) you_are("warned"); */
 	if (Warn_of_mon && flags.warntype) {
@@ -999,7 +999,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	/* If you die while dismounting, u.usteed is still set.  Since several
 	 * places in the done() sequence depend on u.usteed, just detect this
 	 * special case. */
-	if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) { /* EN if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) { */ // TODO DE
+	if (u.usteed && (final < 2 || strcmp(killer, "NOUN_REITUNFALL"))) { /* EN if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) { */
 	    Sprintf(buf, "riding %s", y_monnam(u.usteed)); /* EN Sprintf(buf, "riding %s", y_monnam(u.usteed)); */ // TODO DE
 	    you_are(buf);
 	}
@@ -1322,7 +1322,7 @@ int final;
 	else if (Amphibious) dump(youcould, "Wasser atmen"); /* EN else if (Amphibious) dump("  You could ", "breathe water"); */
 	if (Passes_walls) dump(youcould, "durch Wände gehen"); /* EN if (Passes_walls) dump("  You could ", "walk through walls"); */
 #ifdef STEED
-	if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) { /* EN if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) { */ // TODO DE
+	if (u.usteed && (final < 2 || strcmp(killer, "NOUN_REITUNFALL"))) { /* EN if (u.usteed && (final < 2 || strcmp(killer, "riding accident"))) { */
 	    Sprintf(buf, "riding %s", y_monnam(u.usteed)); /* EN Sprintf(buf, "riding %s", y_monnam(u.usteed)); */ // TODO DE
 	    dump(youwere, buf);
 	}

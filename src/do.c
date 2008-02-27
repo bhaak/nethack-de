@@ -1579,13 +1579,13 @@ wipeoff()
 	if (Blinded < 4)	Blinded = 0;
 	else			Blinded -= 4;
 	if (!Blinded) {
-		pline("You've got the glop off."); /* EN pline("You've got the glop off."); */ // TODO DE
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_HABEN den Rotz abbekommen."); /* EN pline("You've got the glop off."); */
 		u.ucreamed = 0;
 		Blinded = 1;
 		make_blinded(0L,TRUE);
 		return(0);
 	} else if (!u.ucreamed) {
-		Your("%s feels clean now.", body_part(FACE)); /* EN Your("%s feels clean now.", body_part(FACE)); */ // TODO DE
+		Your("%s VERB_FUEHLEN sich wieder sauber an.", body_part(FACE)); /* EN Your("%s feels clean now.", body_part(FACE)); */
 		return(0);
 	}
 	return(1);		/* still busy */

@@ -828,8 +828,8 @@ mon_tele:
 	case MUSE_TELEPORT_TRAP:
 		m_flee(mtmp);
 		if (vis) {
-			pline("%s %s onto a teleport trap!", Monnam(mtmp), /* EN pline("%s %s onto a teleport trap!", Monnam(mtmp), */ // TODO DE
-				makeplural(locomotion(mtmp->data, "jump"))); /* EN makeplural(locomotion(mtmp->data, "jump"))); */ // TODO DE
+			pline("SUBJECT %s %s OBJECT ARTIKEL_UNBESTIMMTER NOUN_TELEPORTATION_TRAP!", Monnam(mtmp), /* EN pline("%s %s onto a teleport trap!", Monnam(mtmp), */
+				makeplural(locomotion(mtmp->data, "VERB_SPRINGEN"))); /* EN makeplural(locomotion(mtmp->data, "jump"))); */
 			if (levl[trapx][trapy].typ == SCORR) {
 			    levl[trapx][trapy].typ = CORR;
 			    unblock_point(trapx, trapy);
@@ -1799,9 +1799,9 @@ skipmsg:
 		return 2;
 	case MUSE_POLY_TRAP:
 		if (vismon)
-		    pline("%s deliberately %s onto a polymorph trap!", /* EN pline("%s deliberately %s onto a polymorph trap!", */ // TODO DE
+		    pline("SUBJECT %s %s absichtlich OBJECT in ARTIKEL_UNBESTIMMTER NOUN_POLYMORPH_TRAP!", /* EN pline("%s deliberately %s onto a polymorph trap!", */
 			Monnam(mtmp),
-			makeplural(locomotion(mtmp->data, "jump"))); /* EN makeplural(locomotion(mtmp->data, "jump"))); */ // TODO DE
+			makeplural(locomotion(mtmp->data, "VERB_SPRINGEN"))); /* EN makeplural(locomotion(mtmp->data, "jump"))); */
 		if (vis) seetrap(t_at(trapx,trapy));
 
 		/*  don't use rloc() due to worms */

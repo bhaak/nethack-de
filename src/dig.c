@@ -946,7 +946,7 @@ struct obj *obj;
 						"swinging", /* EN "swinging", */ // TODO DE
 						"zu graben", /* EN "digging", */ // TODO DE
 						"chipping the statue", /* EN "chipping the statue", */ // TODO DE
-						"hitting the boulder", /* EN "hitting the boulder", */ // TODO DE
+						"den Felsbrocken zu spalten", /* EN "hitting the boulder", */
 						"chopping at the door", /* EN "chopping at the door", */ // TODO DE
 						"ARTIKEL_BESTIMMTER NOUN_TREE zu fällen" /* EN "cutting the tree" */
 			};

@@ -1736,7 +1736,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		    if(!mtmp->mcan && rn2(2)) {
 			if (Cold_resistance) {
 				shieldeff(u.ux, u.uy);
-				You_feel("mildly chilly."); /* EN You_feel("mildly chilly."); */ // TODO DE
+				You("VERB_FROESTELN leicht."); /* EN You_feel("mildly chilly."); */
 				ugolemeffects(AD_COLD,tmp);
 				tmp = 0;
 			} else You("are freezing to death!"); /* EN } else You("are freezing to death!"); */ // TODO DE
@@ -1746,7 +1746,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		    if(!mtmp->mcan && rn2(2)) {
 			if (Fire_resistance) {
 				shieldeff(u.ux, u.uy);
-				You_feel("mildly hot."); /* EN You_feel("mildly hot."); */ // TODO DE
+				You("VERB_SCHWITZEN leicht."); /* EN You_feel("mildly hot."); */
 				ugolemeffects(AD_FIRE,tmp);
 				tmp = 0;
 			} else You("are burning to a crisp!"); /* EN } else You("are burning to a crisp!"); */ // TODO DE

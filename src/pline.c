@@ -425,7 +425,7 @@ register struct monst *mtmp;
 				  /* [arbitrary reason why it isn't moving] */
 	else if (mtmp->mstrategy & STRAT_WAITMASK)
 				  Strcat(info, ", meditiert"); /* EN Strcat(info, ", meditating"); */
-	else if (mtmp->mflee)	  Strcat(info, ", scared"); /* EN else if (mtmp->mflee)	  Strcat(info, ", scared"); */ // TODO DE
+	else if (mtmp->mflee)	  Strcat(info, ", verängstigt"); /* EN else if (mtmp->mflee)	  Strcat(info, ", scared"); */
 	if (mtmp->mtrapped)	  Strcat(info, ", gefangen"); /* EN if (mtmp->mtrapped)	  Strcat(info, ", trapped"); */
 	if (mtmp->mspeed)	  Strcat(info,
 					mtmp->mspeed == MFAST ? ", schnell" : /* EN mtmp->mspeed == MFAST ? ", fast" : */
@@ -465,7 +465,7 @@ ustatusline()
 
 	info[0] = '\0';
 	if (Sick) {
-		Strcat(info, ", dying from"); /* EN Strcat(info, ", dying from"); */ // TODO DE
+		Strcat(info, ", an"); /* EN Strcat(info, ", dying from"); */
 		if (u.usick_type & SICK_VOMITABLE)
 			Strcat(info, " Lebensmittelvergiftung"); /* EN Strcat(info, " food poisoning"); */
 		if (u.usick_type & SICK_NONVOMITABLE) {
@@ -473,6 +473,9 @@ ustatusline()
 				Strcat(info, " und"); /* EN Strcat(info, " and"); */
 			Strcat(info, " illness"); /* EN Strcat(info, " illness"); */ // TODO DE
 		}
+#ifdef GERMAN
+		Strcat(info, " sterbend");
+#endif
 	}
 	if (Stoned)		Strcat(info, ", solidifying"); /* EN if (Stoned)		Strcat(info, ", solidifying"); */ // TODO DE
 	if (Slimed)		Strcat(info, ", becoming slimy"); /* EN if (Slimed)		Strcat(info, ", becoming slimy"); */ // TODO DE

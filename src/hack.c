@@ -1112,13 +1112,13 @@ domove()
 			clear_nhwindow(WIN_MESSAGE);
 			You("free your %s.", body_part(LEG)); /* EN You("free your %s.", body_part(LEG)); */ // TODO DE
 		    } else if (!(--u.utrap)) {
-			You("%s to the edge of the pit.", /* EN You("%s to the edge of the pit.", */ // TODO DE
+			You("%s zum Rand der Grube.", /* EN You("%s to the edge of the pit.", */
 				(In_sokoban(&u.uz) && Levitation) ?
 				"struggle against the air currents and float" : /* EN "struggle against the air currents and float" : */ // TODO DE
 #ifdef STEED
-				u.usteed ? "ride" : /* EN u.usteed ? "ride" : */ // TODO DE
+				u.usteed ? "VERB_REITEN" : /* EN u.usteed ? "ride" : */
 #endif
-				"crawl"); /* EN "crawl"); */ // TODO DE
+				"VERB_KRIECHEN"); /* EN "crawl"); */
 			fill_pit(u.ux, u.uy);
 			vision_full_recalc = 1;	/* vision limits change */
 		    } else if (flags.verbose) {
@@ -1724,7 +1724,7 @@ register boolean newlev;
 		case MORGUE:
 		    if(midnight()) {
 			const char *run = locomotion(youmonst.data, "Run"); /* EN const char *run = locomotion(youmonst.data, "Run"); */ // TODO DE
-			pline("%s away!  %s away!", run, run); /* EN pline("%s away!  %s away!", run, run); */ // TODO DE
+			pline("SUBJECT MODIFIER_VERB_IMPERATIV %s away!  %s away!", run, run); /* EN pline("%s away!  %s away!", run, run); */ // TODO DE
 		    } else
 			You("VERB_HABEN ein ungutes Gefühl ..."); /* EN You("have an uncanny feeling..."); */
 		    break;

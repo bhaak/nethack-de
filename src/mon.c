@@ -1664,8 +1664,8 @@ register struct monst *mdef;
 	mondead(mdef);
 	if (wasinside) {
 		if (is_animal(mdef->data))
-			You("%s through an opening in the new %s.", /* EN You("%s through an opening in the new %s.", */ // TODO DE
-				locomotion(youmonst.data, "jump"), /* EN locomotion(youmonst.data, "jump"), */ // TODO DE
+			You("%s durch eine Öffnung OBJECT KASUS_DATIV _in_ ARTIKEL_BESTIMMTER ADJEKTIV_NEU %s.", /* EN You("%s through an opening in the new %s.", */
+				locomotion(youmonst.data, "VERB_SPRINGEN"), /* EN locomotion(youmonst.data, "jump"), */
 				xname(otmp));
 	}
 }

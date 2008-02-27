@@ -1058,10 +1058,10 @@ postmov:
 
 		    if(here->doormask & (D_LOCKED|D_CLOSED) && amorphous(ptr)) {
 			if (flags.verbose && canseemon(mtmp))
-			    pline("%s %s under the door.", Monnam(mtmp), /* EN pline("%s %s under the door.", Monnam(mtmp), */ // TODO DE
+			    pline("SUBJECT %s %s unter der Türe.", Monnam(mtmp), /* EN pline("%s %s under the door.", Monnam(mtmp), */
 				  (ptr == &mons[PM_FOG_CLOUD] ||
 				   ptr == &mons[PM_YELLOW_LIGHT])
-				  ? "flows" : "oozes"); /* EN ? "flows" : "oozes"); */ // TODO DE
+				  ? "flows" : "VERB_SUPPEN"); /* EN ? "flows" : "oozes"); */ // TODO DE
 		    } else if(here->doormask & D_LOCKED && can_unlock) {
 			if(btrapped) {
 			    here->doormask = D_NODOOR;
