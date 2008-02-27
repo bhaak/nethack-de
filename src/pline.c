@@ -225,6 +225,27 @@ Du_bist_dir VA_DECL(const char *, line)
 	VA_END();
 }
 
+
+/*VARARGS1*/
+void
+Deinen VA_DECL(const char *,line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp, "OBJECT KASUS_AKKUSATIV PRONOMEN_POSSESSIV ", line), VA_ARGS);
+	VA_END();
+}
+
+/*VARARGS1*/
+void
+Deinem VA_DECL(const char *,line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	vpline(YouMessage(tmp, "OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ", line), VA_ARGS);
+	VA_END();
+}
+
 #endif
 
 
