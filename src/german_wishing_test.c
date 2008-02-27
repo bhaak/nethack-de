@@ -1,5 +1,6 @@
 #include <check.h>
-//#include "german.h"
+
+#include "german.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -16,8 +17,8 @@
 #include "pm.h"
 
 
-char* german(const char *line);
-void german2meta(char *str, char *result);
+//char* german(const char *line);
+//void german2meta(char *str, char *result);
 
 void check_strings(char* text[][2], int size) {
 	int i;
@@ -47,7 +48,7 @@ START_TEST (test_genitivattribut_zu_wort) {
 
 	str = genitivattribut_zu_wort("NOUN_PSEUDO_MAENNLICH Izchak", "NOUN_GEHIRN");
 	printf("%s\n", str);
-	fail_unless(strcmp("NOUN_PSEUDO_MAENNLICH Izchaks NOUN_GEHIRN", str)==0);
+	fail_unless(strcmp("Izchaks NOUN_GEHIRN", str)==0);
 
 	str = genitivattribut_zu_wort("NOUN_IT", "NOUN_GEHIRN");
 	printf("%s\n", str);
@@ -337,6 +338,48 @@ START_TEST (test_wishing) {
 	
 } END_TEST
 
+START_TEST (test_gott_weiblich) {
+	fail_unless(!gott_weiblich("den Gott kenne ich nicht"));
+	fail_unless(gott_weiblich("den Gott kenne ich nicht"));
+
+	fail_unless(!gott_weiblich("Quetzalcoatl"));
+	fail_unless(!gott_weiblich("Camaxtli"));
+	fail_unless(!gott_weiblich("Huhetotl"));
+	fail_unless(!gott_weiblich("Mitra"));
+	fail_unless(!gott_weiblich("Crom"));
+	fail_unless(!gott_weiblich("Set"));
+	fail_unless(!gott_weiblich("Anu"));
+	fail_unless( gott_weiblich("Ishtar"));
+	fail_unless(!gott_weiblich("Anshar"));
+	fail_unless( gott_weiblich("Athena"));
+	fail_unless(!gott_weiblich("Hermes"));
+	fail_unless(!gott_weiblich("Poseidon"));
+	fail_unless(!gott_weiblich("Lugh"));
+	fail_unless( gott_weiblich("Brigit"));
+	fail_unless(!gott_weiblich("Manannan Mac Lir"));
+	fail_unless(!gott_weiblich("Shan Lai Ching"));
+	fail_unless(!gott_weiblich("Chih Sung-tzu"));
+	fail_unless(!gott_weiblich("Huan Ti"));
+	fail_unless(!gott_weiblich("Issek"));
+	fail_unless(!gott_weiblich("Mog"));
+	fail_unless(!gott_weiblich("Kos"));
+	fail_unless(!gott_weiblich("Mercury"));
+	fail_unless( gott_weiblich("Venus"));
+	fail_unless(!gott_weiblich("Mars"));
+	fail_unless( gott_weiblich("Amaterasu Omikami"));
+	fail_unless(!gott_weiblich("Raijin"));
+	fail_unless(!gott_weiblich("Susanowo"));
+	fail_unless(!gott_weiblich("Blind Io"));
+	fail_unless( gott_weiblich("The Lady"));
+	fail_unless(!gott_weiblich("Offler"));
+	fail_unless(!gott_weiblich("Tyr"));
+	fail_unless(!gott_weiblich("Odin"));
+	fail_unless(!gott_weiblich("Loki"));
+	fail_unless(!gott_weiblich("Ptah"));
+	fail_unless(!gott_weiblich("Thoth"));
+	fail_unless(!gott_weiblich("Anhur"));
+} END_TEST
+
 Suite *test_suite(void)
 {
   Suite *s = suite_create("all tests");
@@ -344,6 +387,7 @@ Suite *test_suite(void)
 
   suite_add_tcase (s, tc_core);
 //	tcase_add_test(tc_core, test_wishing);
+	tcase_add_test(tc_core, test_gott_weiblich);
 	tcase_add_test(tc_core, test_naming);
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
 
