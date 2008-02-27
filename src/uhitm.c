@@ -1093,6 +1093,9 @@ struct monst *mdef;
 struct attack *mattk;
 {
 	struct obj *obj;
+#ifdef GERMAN
+	char tmp[BUFSZ];
+#endif
 
 	if (mattk->adtyp == AD_DRIN) {
 	    /* intelligence drain attacks the head */
@@ -1110,15 +1113,15 @@ struct attack *mattk;
 	   protection might fail (33% chance) when the armor is cursed */
 	if (obj && (obj->greased || obj->otyp == OILSKIN_CLOAK) &&
 		(!obj->cursed || rn2(3))) {
-	    You("%s %s %s %s!",
+	    You("%s %s %s!", /* EN You("%s %s %s %s!", */
 		mattk->adtyp == AD_WRAP ?
-			"slip off of" : "grab, but cannot hold onto", /* EN "slip off of" : "grab, but cannot hold onto", */ // TODO DE
-		s_suffix(mon_nam(mdef)), /* EN s_suffix(mon_nam(mdef)), */ // TODO DE
-		obj->greased ? "ADJKETIV_GREASED" : "ADJEKTIV_SLIPPERY", /* EN obj->greased ? "greased" : "slippery", */
+			"VERB_RUTSCHEN _von_ " : "VERB_PACKEN zu, VERB_KOENNEN aber OBJECT ", /* EN "slip off of" : "grab, but cannot hold onto", */
+		genitivattribut_zu_wort(mon_nam(mdef), /* EN s_suffix(mon_nam(mdef)), */
+		strcat(strcat(tmp, obj->greased ? "ADJEKTIV_GREASED " : "ADJEKTIV_SLIPPERY "), /* EN obj->greased ? "greased" : "slippery", */
 		/* avoid "slippery slippery cloak"
 		   for undiscovered oilskin cloak */
-		(obj->greased || objects[obj->otyp].oc_name_known) ?
-			xname(obj) : cloak_simple_name(obj));
+		(obj->greased || objects[obj->otyp].oc_name_known) ?  /* EN (obj->greased || objects[obj->otyp].oc_name_known) ? */
+			xname(obj) : cloak_simple_name(obj))), mattk->adtyp == AD_WRAP ? " ab" : " nicht festhalten"); /* EN xname(obj) : cloak_simple_name(obj)); */
 
 	    if (obj->greased && !rn2(2)) {
 		pline_The("grease wears off."); /* EN pline_The("grease wears off."); */ // TODO DE
@@ -1341,7 +1344,7 @@ register struct attack *mattk;
 		tmp += destroy_mitem(mdef, SPBOOK_CLASS, AD_FIRE);
 		if (resists_fire(mdef)) {
 		    if (!Blind)
-			pline_The("fire doesn't heat %s!", mon_nam(mdef)); /* EN pline_The("fire doesn't heat %s!", mon_nam(mdef)); */ // TODO DE
+			pline_The("NOUN_FEUER VERB_ERHITZEN OBJECT %s nicht!", mon_nam(mdef)); /* EN pline_The("fire doesn't heat %s!", mon_nam(mdef)); */
 		    golemeffects(mdef, AD_FIRE, tmp);
 		    shieldeff(mdef->mx, mdef->my);
 		    tmp = 0;
@@ -1358,7 +1361,7 @@ register struct attack *mattk;
 		if (resists_cold(mdef)) {
 		    shieldeff(mdef->mx, mdef->my);
 		    if (!Blind)
-			pline_The("frost doesn't chill %s!", mon_nam(mdef)); /* EN pline_The("frost doesn't chill %s!", mon_nam(mdef)); */ // TODO DE
+			pline_The("NOUN_KAELTE VERB_KUEHLEN OBJECT %s nicht!", mon_nam(mdef)); /* EN pline_The("frost doesn't chill %s!", mon_nam(mdef)); */
 		    golemeffects(mdef, AD_COLD, tmp);
 		    tmp = 0;
 		}
@@ -1477,7 +1480,7 @@ register struct attack *mattk;
 		break;
 	    case AD_RUST:
 		if (pd == &mons[PM_IRON_GOLEM]) {
-			pline("%s falls to pieces!", Monnam(mdef)); /* EN pline("%s falls to pieces!", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_ZERBRECHEN in tausend Stücke!", Monnam(mdef)); /* EN pline("%s falls to pieces!", Monnam(mdef)); */
 			xkilled(mdef,0);
 		}
 		hurtmarmor(mdef, AD_RUST);
@@ -1490,7 +1493,7 @@ register struct attack *mattk;
 	    case AD_DCAY:
 		if (pd == &mons[PM_WOOD_GOLEM] ||
 		    pd == &mons[PM_LEATHER_GOLEM]) {
-			pline("%s falls to pieces!", Monnam(mdef)); /* EN pline("%s falls to pieces!", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_ZERFALLEN in tausend Stücke!", Monnam(mdef)); /* EN pline("%s falls to pieces!", Monnam(mdef)); */
 			xkilled(mdef,0);
 		}
 		hurtmarmor(mdef, AD_DCAY);

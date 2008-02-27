@@ -783,7 +783,7 @@ mdamagem(magr, mdef, mattk)
 	    case AD_RUST:
 		if (magr->mcan) break;
 		if (pd == &mons[PM_IRON_GOLEM]) {
-			if (vis) pline("%s falls to pieces!", Monnam(mdef)); /* EN if (vis) pline("%s falls to pieces!", Monnam(mdef)); */ // TODO DE
+			if (vis) pline("SUBJECT %s VERB_ZERBRECHEN in tausend Stücke!", Monnam(mdef)); /* EN if (vis) pline("%s falls to pieces!", Monnam(mdef)); */
 			mondied(mdef);
 			if (mdef->mhp > 0) return 0;
 			else if (mdef->mtame && !vis)
@@ -805,11 +805,11 @@ mdamagem(magr, mdef, mattk)
 		if (magr->mcan) break;
 		if (pd == &mons[PM_WOOD_GOLEM] ||
 		    pd == &mons[PM_LEATHER_GOLEM]) {
-			if (vis) pline("%s falls to pieces!", Monnam(mdef)); /* EN if (vis) pline("%s falls to pieces!", Monnam(mdef)); */ // TODO DE
+			if (vis) pline("SUBJECT %s VERB_ZERFALLEN in tausend Stücke!", Monnam(mdef)); /* EN if (vis) pline("%s falls to pieces!", Monnam(mdef)); */
 			mondied(mdef);
 			if (mdef->mhp > 0) return 0;
 			else if (mdef->mtame && !vis)
-			    pline("May %s rot in peace.", mon_nam(mdef)); /* EN pline("May %s rot in peace.", mon_nam(mdef)); */ // TODO DE
+			    pline("Möge %s in Frieden verrotten.", mon_nam(mdef)); /* EN pline("May %s rot in peace.", mon_nam(mdef)); */
 			return (MM_DEF_DIED | (grow_up(magr,mdef) ?
 							0 : MM_AGR_DIED));
 		}

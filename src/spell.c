@@ -190,7 +190,7 @@ struct obj *spellbook;
 	    pline(
 	"Being confused you have difficulties in controlling your actions."); /* EN "Being confused you have difficulties in controlling your actions."); */ // TODO DE
 	    display_nhwindow(WIN_MESSAGE, FALSE);
-	    You("accidentally tear the spellbook to pieces."); /* EN You("accidentally tear the spellbook to pieces."); */ // TODO DE
+	    pline("Versehentlich VERB_REISSEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_SPELLBOOK in tausend Stücke."); /* EN You("accidentally tear the spellbook to pieces."); */
 	    if (!objects[spellbook->otyp].oc_name_known &&
 		!objects[spellbook->otyp].oc_uname)
 		docall(spellbook);

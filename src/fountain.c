@@ -197,7 +197,6 @@ drinkfountain()
 	/* What happens when you drink from a fountain? */
 	register boolean mgkftn = (levl[u.ux][u.uy].blessedftn == 1);
 	register int fate = rnd(30);
-	fate = 21;
 
 	if (Levitation) {
 		floating_above("NOUN_FOUNTAIN"); /* EN floating_above("fountain"); */
@@ -413,7 +412,7 @@ register struct obj *obj;
 				pline_The("water glows for a moment."); /* EN pline_The("water glows for a moment."); */ // TODO DE
 			    uncurse(obj);
 			} else {
-			    pline("A feeling of loss comes over you."); /* EN pline("A feeling of loss comes over you."); */ // TODO DE
+			    Dich("überkommt ein Gefühl des Verlustes."); /* EN pline("A feeling of loss comes over you."); */
 			}
 			break;
 		case 21: /* Water Demon */

@@ -11,22 +11,21 @@ STATIC_VAR NEARDATA struct engr *head_engr;
 #ifdef OVLB
 /* random engravings */
 static const char *random_mesg[] = {
-	// TODO DE
 	"Elbereth",
 	/* trap engravings */
-	"Vlad was here", "ad aerarium",
+	"Vlad war hier", "Ad Aerarium", /* EN "Vlad was here", "ad aerarium", */
 	/* take-offs and other famous engravings */
 	"Owlbreath", "Galadriel",
-	"Kilroy was here",
+	"Kilroy war hier", /* EN "Kilroy was here", */
 	"A.S. ->", "<- A.S.", /* Journey to the Center of the Earth */
-	"You won't get it up the steps", /* Adventure */
+	"You won't get it up the steps", /* EN "You won't get it up the steps", */ /* Adventure */ // TODO DE
 	"Lasciate ogni speranza o voi ch'entrate.", /* Inferno */
-	"Well Come", /* Prisoner */
-	"We apologize for the inconvenience.", /* So Long... */
-	"See you next Wednesday", /* Thriller */
-	"notary sojak", /* Smokey Stover */
-	"For a good time call 8?7-5309",
-	"Please don't feed the animals.", /* Various zoos around the world */
+	"Well Come", /* EN "Well Come", */ /* Prisoner */ // TODO DE
+	"We apologize for the inconvenience.", /* EN "We apologize for the inconvenience.", */ /* So Long... */
+	"See you next Wednesday", /* EN "See you next Wednesday", */ /* Thriller */ // TODO DE
+	"notary sojak", /* EN "notary sojak", */ /* Smokey Stover */ // TODO DE
+	"For a good time call 8?7-5309", /* EN "For a good time call 8?7-5309", */ // TODO DE
+	"Please don't feed the animals.", /* EN "Please don't feed the animals.", */ /* Various zoos around the world */ // TODO DE
 	"Ein Neger mit Gazelle zagt im Regen nie.", /* A palindrome */ /* EN "Madam, in Eden, I'm Adam.", */
 	"Und immer ein Bit über behalten!", /* die zwei Wolfgangs */ /* EN "Two thumbs up!", */ /* Siskel & Ebert */
 	"Hello, World!", /* The First C Program */
@@ -705,7 +704,7 @@ doengrave()
 			type  = ENGRAVE;
 			if(!objects[otmp->otyp].oc_name_known) {
 			    if (flags.verbose)
-				pline("This %s is a wand of digging!", /* EN pline("This %s is a wand of digging!", */ // TODO DE
+				pline("SUBJECT PRONOMEN_DIESER %s VERB_SEIN OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_DIGGING!", /* EN pline("This %s is a wand of digging!", */
 				xname(otmp));
 			    doknown = TRUE;
 			}
@@ -778,7 +777,7 @@ doengrave()
 		switch (otmp->otyp)  {
 		    case MAGIC_MARKER:
 			if (otmp->spe <= 0)
-			    Your("marker has dried out."); /* EN Your("marker has dried out."); */ // TODO DE
+			    Deinem("NOUN_MARKER ist die Tinte ausgegangen."); /* EN Your("marker has dried out."); */
 			else
 			    type = MARK;
 			break;
@@ -1068,7 +1067,7 @@ doengrave()
 		    (otmp->otyp == MAGIC_MARKER)) {
 		    maxelen = (otmp->spe) * 2; /* one charge / 2 letters */
 		    if (len > maxelen) {
-			Your("marker dries out."); /* EN Your("marker dries out."); */ // TODO DE
+			Deinem("NOUN_MARKER geht die Tinte aus."); /* EN Your("marker dries out."); */
 			otmp->spe = 0;
 			multi = -(maxelen/10);
 		    } else
@@ -1089,8 +1088,8 @@ doengrave()
 		if (!isspace(*sp)) maxelen--;
 	    if (!maxelen && *sp) {
 		*sp = (char)0;
-		if (multi) nomovemsg = "You cannot write any more."; /* EN if (multi) nomovemsg = "You cannot write any more."; */ // TODO DE
-		You("only are able to write \"%s\"", ebuf); /* EN You("only are able to write \"%s\"", ebuf); */ // TODO DE
+		if (multi) nomovemsg = "SUBJECT PRONOMEN_PERSONAL nichts mehr schreiben."; /* EN if (multi) nomovemsg = "You cannot write any more."; */
+		You("VERB_KOENNEN nur noch \"%s\" schreiben", ebuf); /* EN You("only are able to write \"%s\"", ebuf); */
 	    }
 	}
 
@@ -1202,36 +1201,35 @@ struct engr *ep;
 
 /* Epitaphs for random headstones */
 static const char *epitaphs[] = {
-// TODO DE
-	"Rest in peace",
+	"Ruhe in Frieden", /* EN "Rest in peace", */
 	"R.I.P.",
-	"Rest In Pieces",
-	"Note -- there are NO valuable items in this grave",
-	"1994-1995. The Longest-Lived Hacker Ever",
-	"The Grave of the Unknown Hacker",
-	"We weren't sure who this was, but we buried him here anyway",
-	"Sparky -- he was a very good dog",
-	"Beware of Electric Third Rail",
+	"Rest In Pieces", /* EN "Rest In Pieces", */ // TODO DE
+	"Note -- there are NO valuable items in this grave", /* EN "Note -- there are NO valuable items in this grave", */ // TODO DE
+	"1994 - 1995. Der langlebigste Hacker von allen", /* EN "1994-1995. The Longest-Lived Hacker Ever", */
+	"Das Grab des unbekannten Hackers", /* EN "The Grave of the Unknown Hacker", */
+	"Wir waren nicht sicher, was es war, aber wir begruben es trotzdem", /* EN "We weren't sure who this was, but we buried him here anyway", */
+	"Sparky -- he was a very good dog", /* EN "Sparky -- he was a very good dog", */ // TODO DE
+	"Beware of Electric Third Rail", /* EN "Beware of Electric Third Rail", */ // TODO DE
 	"Made in Taiwan",
-	"Og friend. Og good dude. Og died. Og now food",
-	"Beetlejuice Beetlejuice Beetlejuice",
-	"Look out below!",
-	"Please don't dig me up. I'm perfectly happy down here. -- Resident",
-	"Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, fifth lemure on the left",
-	"Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go",
-	"Be careful, or this could happen to you!",
-	"Soon you'll join this fellow in hell! -- the Wizard of Yendor",
-	"Caution! This grave contains toxic waste",
+	"Og friend. Og good dude. Og died. Og now food", /* EN "Og friend. Og good dude. Og died. Og now food", */ // TODO DE
+	"Beetlejuice, Beetlejuice, Beetlejuice", /* EN "Beetlejuice Beetlejuice Beetlejuice", */
+	"Look out below!", /* EN "Look out below!", */ // TODO DE
+	"Please don't dig me up. I'm perfectly happy down here. -- Resident", /* EN "Please don't dig me up. I'm perfectly happy down here. -- Resident", */ // TODO DE
+	"Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, fifth lemure on the left", /* EN "Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, fifth lemure on the left", */ // TODO DE
+	"Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go", /* EN "Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go", */ // TODO DE
+	"Be careful, or this could happen to you!", /* EN "Be careful, or this could happen to you!", */ // TODO DE
+	"Soon you'll join this fellow in hell! -- the Wizard of Yendor", /* EN "Soon you'll join this fellow in hell! -- the Wizard of Yendor", */ // TODO DE
+	"Warnung! Dieses Grab enthält Giftmüll", /* EN "Caution! This grave contains toxic waste", */
 	"Sum quod eris",
-	"Here lies an Atheist, all dressed up and no place to go",
-	"Here lies Ezekiel, age 102.  The good die young.",
-	"Here lies my wife: Here let her lie! Now she's at rest and so am I.",
-	"Here lies Johnny Yeast. Pardon me for not rising.",
-	"He always lied while on the earth and now he's lying in it",
-	"I made an ash of myself",
-	"Soon ripe. Soon rotten. Soon gone. But not forgotten.",
-	"Here lies the body of Jonathan Blake. Stepped on the gas instead of the brake.",
-	"Go away!"
+	"Here lies an Atheist, all dressed up and no place to go", /* EN "Here lies an Atheist, all dressed up and no place to go", */ // TODO DE
+	"Here lies Ezekiel, age 102.  The good die young.", /* EN "Here lies Ezekiel, age 102.  The good die young.", */ // TODO DE
+	"Here lies my wife: Here let her lie! Now she's at rest and so am I.", /* EN "Here lies my wife: Here let her lie! Now she's at rest and so am I.", */ // TODO DE
+	"Here lies Johnny Yeast. Pardon me for not rising.", /* EN "Here lies Johnny Yeast. Pardon me for not rising.", */ // TODO DE
+	"He always lied while on the earth and now he's lying in it", /* EN "He always lied while on the earth and now he's lying in it", */ // TODO DE
+	"I made an ash of myself", /* EN "I made an ash of myself", */ // TODO DE
+	"Soon ripe. Soon rotten. Soon gone. But not forgotten.", /* EN "Soon ripe. Soon rotten. Soon gone. But not forgotten.", */ // TODO DE
+	"Here lies the body of Jonathan Blake. Stepped on the gas instead of the brake.", /* EN "Here lies the body of Jonathan Blake. Stepped on the gas instead of the brake.", */ // TODO DE
+	"Lass mich in Ruhe!" /* EN "Go away!" */
 };
 
 /* Create a headstone at the given location.

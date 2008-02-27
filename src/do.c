@@ -1368,9 +1368,9 @@ final_level()
 		if ((mtmp = mk_roamer(&mons[PM_ANGEL], u.ualign.type,
 				      mm.x, mm.y, TRUE)) != 0) {
 		    if (!Blind)
-			pline("Ein Engel erscheint neben KASUS_DATIV PRONOMEN_PERSONAL."); /* EN pline("An angel appears near you."); */
+			pline("Ein Engel erscheint KASUS_DATIV neben PRONOMEN_PERSONAL."); /* EN pline("An angel appears near you."); */
 		    else
-			Du_spuerst("the presence of a friendly angel near you."); /* EN You_feel("the presence of a friendly angel near you."); */ // TODO DE
+			Du_spuerst("die Präsenz eines freundlichen Engels KASUS_DATIV neben PRONOMEN_PERSONAL."); /* EN You_feel("the presence of a friendly angel near you."); */ 
 		    /* guardian angel -- the one case mtame doesn't
 		     * imply an edog structure, so we don't want to
 		     * call tamedog().

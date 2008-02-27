@@ -323,7 +323,7 @@ int curse_bless;
 		else if (rechrg && obj->otyp == MAGIC_MARKER) {	/* previously recharged */
 		    obj->recharged = 1;	/* override increment done above */
 		    if (obj->spe < 3)
-			Your("marker seems permanently dried out."); /* EN Your("marker seems permanently dried out."); */ // TODO DE
+			pline("Die Tinte KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_MARKER ist hoffnungslos eingetrocknet."); /* EN Your("marker seems permanently dried out."); */
 		    else
 			pline(nothing_happens);
 		} else if (is_blessed) {
@@ -360,7 +360,7 @@ int curse_bless;
 		    stripspe(obj);
 		    if (obj->lamplit) {
 			if (!Blind)
-			    pline("%s out!", Tobjnam(obj, "go")); /* EN pline("%s out!", Tobjnam(obj, "go")); */ // TODO DE
+			    pline("SUBJECT %s aus!", Tobjnam(obj, "VERB_GEHEN")); /* EN pline("%s out!", Tobjnam(obj, "go")); */
 			end_burn(obj, TRUE);
 		    }
 		} else if (is_blessed) {
@@ -427,7 +427,7 @@ int curse_bless;
 
 	} else {
  not_chargable:
-	    You("have a feeling of loss."); /* EN You("have a feeling of loss."); */ // TODO DE
+	    You("VERB_HABEN ein Gefühl des Verlustes."); /* EN You("have a feeling of loss."); */
 	}
 }
 
@@ -1373,7 +1373,7 @@ struct obj *obj;
 		if (Blind) goto do_it;
 		if(u.uswallow){
 			if (is_animal(u.ustuck->data))
-				pline("SUBJECT %s %s ist hell erleuchtet.", /* EN pline("%s %s is lit.", */
+				pline("SUBJECT %s ist hell erleuchtet.", /* EN pline("%s %s is lit.", */
 				        genitivattribut_zu_wort(Monnam(u.ustuck), /* EN s_suffix(Monnam(u.ustuck)), */
 					mbodypart(u.ustuck, STOMACH))); /* EN mbodypart(u.ustuck, STOMACH)); */
 			else
@@ -1505,7 +1505,7 @@ do_class_genocide()
 			    return;
 			} else
 #endif
-	pline("That symbol does not represent any monster."); /* EN pline("That symbol does not represent any monster."); */ // TODO DE
+	pline("Dieses Symbol repräsentiert kein Monster."); /* EN pline("That symbol does not represent any monster."); */
 			continue;
 		}
 

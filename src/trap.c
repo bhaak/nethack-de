@@ -50,7 +50,7 @@ STATIC_VAR const char * const the_your[2] = { "ARTIKEL_BESTIMMTER", "PRONOMEN_PO
 STATIC_VAR const char tower_of_flame[] = "tower of flame"; /* EN STATIC_VAR const char tower_of_flame[] = "tower of flame"; */ // TODO DE
 STATIC_VAR const char * const A_gush_of_water_hits = "SUBJECT ARTIKEL_UNBESTIMMTER NOUN_SCHWALL Wasser VERB_HIT"; /* EN STATIC_VAR const char * const A_gush_of_water_hits = "A gush of water hits"; */
 STATIC_VAR const char * const blindgas[6] = 
-	{"humid", "odorless", "pungent", "chilling", "acrid", "biting"}; /* EN {"humid", "odorless", "pungent", "chilling", "acrid", "biting"}; */ // TODO DE
+	{"ADJEKTIV_FEUCHT", "ADJEKTIV_GERUCHLOS", "ADJEKTIV_STECHEND", "ADJEKTIV_KUEHLEND", "ADJEKTIV_AETZEND", "ADJEKTIV_BEISSEND"}; /* EN {"humid", "odorless", "pungent", "chilling", "acrid", "biting"}; */
 
 #endif /* OVLB */
 
@@ -1876,7 +1876,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			}
 			if (mptr == &mons[PM_IRON_GOLEM]) {
 				if (in_sight)
-				    pline("%s falls to pieces!", Monnam(mtmp)); /* EN pline("%s falls to pieces!", Monnam(mtmp)); */ // TODO DE
+				    pline("SUBJECT %s VERB_ZERBRECHEN in tausend Stücke!", Monnam(mtmp)); /* EN pline("%s falls to pieces!", Monnam(mtmp)); */
 				else if(mtmp->mtame)
 				    pline("Möge %s in Frieden rosten.", /* EN pline("May %s rust in peace.", */
 								mon_nam(mtmp));
@@ -3609,7 +3609,7 @@ boolean disarm;
 	    /* trap went off, but good luck prevents damage */
 	    switch (rn2(13)) {
 		case 12:
-		case 11:  msg = "VERB_SEIN SUBJECT_IM_SATZ explosive charge is a dud";  break; /* EN case 11:  msg = "explosive charge is a dud";  break; */ // TODO DE
+		case 11:  msg = "ist der Sprengsatz ein Blindgänger";  break; /* EN case 11:  msg = "explosive charge is a dud";  break; */ // TODO DE
 		case 10:
 		case  9:  msg = "electric charge is grounded";  break; /* EN case  9:  msg = "electric charge is grounded";  break; */ // TODO DE
 		case  8:
@@ -3691,9 +3691,9 @@ boolean disarm;
 		case 19:
 		case 18:
 		case 17:
-			pline("A cloud of noxious gas billows from %s.", /* EN pline("A cloud of noxious gas billows from %s.", */ // TODO DE
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_GIFTIG NOUN_GASWOLKE VERB_QUELLEN OBJECT KASUS_DATIV aus %s hervor.", /* EN pline("A cloud of noxious gas billows from %s.", */
 							the(xname(obj)));
-			poisoned("gas cloud", A_STR, "cloud of poison gas",15); /* EN poisoned("gas cloud", A_STR, "cloud of poison gas",15); */ // TODO DE
+			poisoned("NOUN_GASWOLKE", A_STR, "NOUN_GIFTGASWOLKE",15); /* EN poisoned("gas cloud", A_STR, "cloud of poison gas",15); */
 			exercise(A_CON, FALSE);
 			break;
 		case 16:
@@ -3740,17 +3740,17 @@ boolean disarm;
 		case 2:
 		case 1:
 		case 0:
-			pline("A cloud of %s gas billows from %s.", /* EN pline("A cloud of %s gas billows from %s.", */ // TODO DE
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER %s NOUN_GASWOLKE VERB_QUELLEN OBJECT KASUS_DATIV aus %s hervor.", /* EN pline("A cloud of %s gas billows from %s.", */
 				Blind ? blindgas[rn2(SIZE(blindgas))] :
 				rndcolor(), the(xname(obj)));
 			if(!Stunned) {
 			    if (Hallucination)
 				pline("What a groovy feeling!"); /* EN pline("What a groovy feeling!"); */ // TODO DE
 			    else if (Blind)
-				You("%s and get dizzy...", /* EN You("%s and get dizzy...", */ // TODO DE
+				You("%s und NEUER_SATZ OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_WERDEN schwindlig ...", /* EN You("%s and get dizzy...", */
 				    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
 			    else
-				You("%s and your vision blurs...", /* EN You("%s and your vision blurs...", */ // TODO DE
+				You("%s und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_BLICK trübt sich ...", /* EN You("%s and your vision blurs...", */
 				    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
 			}
 			make_stunned(HStun + rn1(7, 16),FALSE);
@@ -3840,9 +3840,9 @@ register int bodypart;
 	register int lvl = level_difficulty();
 	int dmg = rnd(5 + (lvl < 5 ? lvl : 2+lvl/2));
 
-	pline("KABUUUM!!  %s was booby-trapped!", The(item)); /* EN pline("KABOOM!!  %s was booby-trapped!", The(item)); */ // TODO DE
+	pline("KABUUUM!!  SUBJECT %s was booby-trapped!", The(item)); /* EN pline("KABOOM!!  %s was booby-trapped!", The(item)); */ // TODO DE
 	wake_nearby();
-	losehp(dmg, "explosion", KILLED_BY_AN); /* EN losehp(dmg, "explosion", KILLED_BY_AN); */ // TODO DE
+	losehp(dmg, "NOUN_EXPLOSION", KILLED_BY_AN); /* EN losehp(dmg, "explosion", KILLED_BY_AN); */
 	exercise(A_STR, FALSE);
 	if (bodypart) exercise(A_CON, FALSE);
 	make_stunned(HStun + dmg, TRUE);

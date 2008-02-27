@@ -473,6 +473,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
 		#  e o o
   when "bewegen": v = VerbUnregelmaessig.new("bewegen", "bewog", "bewogen")
   when /(.*)heben$/:  v = VerbUnregelmaessig.new($1+"heben", $1+"hob", ge($1)+"hoben")
+  when /(.*)quellen$/: v = Verb_Konjunktiv_II.new($1+"quellen", $1+"quoll", ge($1)+"quollen", $1+"quill", $1+"quöll")
     #  ei i i
   when /(.*)beißen$/:  v = VerbUnregelmaessig.new($1+"beißen", $1+"biss", ge($1)+"bissen")
   when /(.*)gleiten$/:  v = VerbUnregelmaessig.new($1+"gleiten", $1+"glitt", ge($1)+"glitten")

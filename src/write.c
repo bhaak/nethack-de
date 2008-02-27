@@ -167,7 +167,7 @@ found:
 	/* see if there's enough ink */
 	basecost = cost(new_obj);
 	if(pen->spe < basecost/2)  {
-		Your("marker is too dry to write that!"); /* EN Your("marker is too dry to write that!"); */ // TODO DE
+		Your("NOUN_MARKER hat nicht genug Tinte um das zu schreiben!"); /* EN Your("marker is too dry to write that!"); */
 		obfree(new_obj, (struct obj *) 0);
 		return(1);
 	}
@@ -180,14 +180,14 @@ found:
 	/* dry out marker */
 	if (pen->spe < actualcost) {
 		pen->spe = 0;
-		Your("marker dries out!"); /* EN Your("marker dries out!"); */ // TODO DE
+		Deinem("NOUN_MARKER geht die Tinte aus!"); /* EN Your("marker dries out!"); */
 		/* scrolls disappear, spellbooks don't */
 		if (paper->oclass == SPBOOK_CLASS) {
 			pline_The(
-		       "spellbook is left unfinished and your writing fades."); /* EN "spellbook is left unfinished and your writing fades."); */ // TODO DE
+		       "NOUN_SPELLBOOK bleibt unfertig und PRONOMEN_POSSESSIV writing fades."); /* EN "spellbook is left unfinished and your writing fades."); */ // TODO DE
 			update_inventory();	/* pen charges */
 		} else {
-			pline_The("scroll is now useless and disappears!"); /* EN pline_The("scroll is now useless and disappears!"); */ // TODO DE
+			pline_The("NOUN_SCROLL ist jetzt nutzlos und verschwindet!"); /* EN pline_The("scroll is now useless and disappears!"); */
 			useup(paper);
 		}
 		obfree(new_obj, (struct obj *) 0);
