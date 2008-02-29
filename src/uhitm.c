@@ -1866,7 +1866,7 @@ register struct attack *mattk;
 		    case AD_COLD:
 			if (rn2(2)) {
 			    if (resists_cold(mdef)) {
-				pline("%s seems mildly chilly.", Monnam(mdef)); /* EN pline("%s seems mildly chilly.", Monnam(mdef)); */ // TODO DE
+				pline("SUBJECT %s VERB_SCHEINEN leicht zu frösteln.", Monnam(mdef)); /* EN pline("%s seems mildly chilly.", Monnam(mdef)); */
 				dam = 0;
 			    } else
 				pline("%s is freezing to death!",Monnam(mdef)); /* EN pline("%s is freezing to death!",Monnam(mdef)); */ // TODO DE
@@ -1876,7 +1876,7 @@ register struct attack *mattk;
 		    case AD_FIRE:
 			if (rn2(2)) {
 			    if (resists_fire(mdef)) {
-				pline("%s seems mildly hot.", Monnam(mdef)); /* EN pline("%s seems mildly hot.", Monnam(mdef)); */ // TODO DE
+				pline("SUBJECT %s VERB_SCHEINEN leicht zu schwitzen.", Monnam(mdef)); /* EN pline("%s seems mildly hot.", Monnam(mdef)); */
 				dam = 0;
 			    } else
 				pline("%s is burning to a crisp!",Monnam(mdef)); /* EN pline("%s is burning to a crisp!",Monnam(mdef)); */ // TODO DE
@@ -2303,7 +2303,7 @@ uchar aatyp;
 		if(monnear(mon, u.ux, u.uy)) {
 		    if(Fire_resistance) {
 			shieldeff(u.ux, u.uy);
-			You_feel("mildly warm."); /* EN You_feel("mildly warm."); */ // TODO DE
+			You("VERB_SCHWITZEN leicht."); /* EN You_feel("mildly warm."); */
 			ugolemeffects(AD_FIRE, tmp);
 			break;
 		    }
@@ -2314,7 +2314,7 @@ uchar aatyp;
 	      case AD_ELEC:
 		if(Shock_resistance) {
 		    shieldeff(u.ux, u.uy);
-		    You_feel("a mild tingle."); /* EN You_feel("a mild tingle."); */ // TODO DE
+		    You("VERB_STEHEN etwas unter Strom."); /* EN You_feel("a mild tingle."); */
 		    ugolemeffects(AD_ELEC, tmp);
 		    break;
 		}

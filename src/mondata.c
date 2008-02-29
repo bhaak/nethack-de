@@ -665,7 +665,7 @@ struct monst *mtmp;
 static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; /* EN static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; */ // TODO DE
 static const char *flys[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "flutter", "Flutter" }; /* EN static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" }; */ // TODO DE
 static const char *flyl[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "stagger", "Stagger" }; /* EN static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" }; */ // TODO DE
-static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; /* EN static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; */ // TODO DE
+static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; /* EN static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; */ // TODO DE krauchen?
 static const char *ooze[4]	= { "VERB_SUPPEN", "VERB_SUPPEN", "tremble", "Tremble" }; /* EN static const char *ooze[4]	= { "ooze", "Ooze", "tremble", "Tremble" }; */ // TODO DE
 static const char *immobile[4]	= { "VERB_WACKELN", "VERB_WACKELN", "pulsate", "Pulsate" }; /* EN static const char *immobile[4]	= { "wiggle", "Wiggle", "pulsate", "Pulsate" }; */ // TODO DE
 static const char *crawl[4]	= { "VERB_KRIECHEN", "VERB_KRIECHEN", "falter", "Falter" }; /* EN static const char *crawl[4]	= { "crawl", "Crawl", "falter", "Falter" }; */ // TODO DE
@@ -681,6 +681,11 @@ const char *def;
 		is_floater(ptr) ? levitate[capitalize] :
 		(is_flyer(ptr) && ptr->msize <= MZ_SMALL) ? flys[capitalize] :
 		(is_flyer(ptr) && ptr->msize > MZ_SMALL)  ? flyl[capitalize] :
+#ifdef GERMAN
+		// KAPUTT 
+ //"eine neue Fortbewegungsart fuer Schlangen einbauen" : schlängeln // TODO DE
+ //is_amphibious_animal(ptr) ? amphibious[capitalize] // TODO DE
+#endif
 		slithy(ptr)     ? slither[capitalize] :
 		amorphous(ptr)  ? ooze[capitalize] :
 		!ptr->mmove	? immobile[capitalize] :

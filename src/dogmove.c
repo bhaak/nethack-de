@@ -242,7 +242,7 @@ register struct edog *edog;
 		    )
 		    Your("leash goes slack."); /* EN Your("leash goes slack."); */ // TODO DE
 		else if (cansee(mtmp->mx, mtmp->my))
-		    pline("%s starves.", Monnam(mtmp)); /* EN pline("%s starves.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_VERHUNGERN.", Monnam(mtmp)); /* EN pline("%s starves.", Monnam(mtmp)); */
 		else
 		    Du_fuehlst_dich("einen Moment lang %s.", /* EN You_feel("%s for a moment.", */
 			Hallucination ? "deprimiert" : "traurig"); /* EN Hallucination ? "bummed" : "sad"); */

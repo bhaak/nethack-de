@@ -2392,7 +2392,7 @@ register char *cmd;
 	    *cp = '\0';
 	    if (!prefix_seen || !iflags.cmdassist ||
 		!help_dir(0, "Invalid direction key!")) /* EN !help_dir(0, "Invalid direction key!")) */ // TODO DE
-		Norep("Unknown command '%s'.", expcmd); /* EN Norep("Unknown command '%s'.", expcmd); */ // TODO DE
+		Norep("Unbekannter Befehl '%s'.", expcmd); /* EN Norep("Unknown command '%s'.", expcmd); */
 	}
 	/* didn't move */
 	flags.move = FALSE;

@@ -2522,7 +2522,7 @@ register struct attack *mattk;
 	    case AD_COLD: /* Brown mold or blue jelly */
 		if (resists_cold(mtmp)) {
 		    shieldeff(mtmp->mx, mtmp->my);
-		    pline("%s is mildly chilly.", Monnam(mtmp)); /* EN pline("%s is mildly chilly.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_FROESTELN leicht.", Monnam(mtmp)); /* EN pline("%s is mildly chilly.", Monnam(mtmp)); */
 		    golemeffects(mtmp, AD_COLD, tmp);
 		    tmp = 0;
 		    break;
@@ -2544,7 +2544,7 @@ register struct attack *mattk;
 	    case AD_FIRE: /* Red mold */
 		if (resists_fire(mtmp)) {
 		    shieldeff(mtmp->mx, mtmp->my);
-		    pline("%s is mildly warm.", Monnam(mtmp)); /* EN pline("%s is mildly warm.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHWINDEN leicht.", Monnam(mtmp)); /* EN pline("%s is mildly warm.", Monnam(mtmp)); */
 		    golemeffects(mtmp, AD_FIRE, tmp);
 		    tmp = 0;
 		    break;
@@ -2554,12 +2554,12 @@ register struct attack *mattk;
 	    case AD_ELEC:
 		if (resists_elec(mtmp)) {
 		    shieldeff(mtmp->mx, mtmp->my);
-		    pline("%s is slightly tingled.", Monnam(mtmp)); /* EN pline("%s is slightly tingled.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_STEHEN etwas unter Strom.", Monnam(mtmp)); /* EN pline("%s is slightly tingled.", Monnam(mtmp)); */
 		    golemeffects(mtmp, AD_ELEC, tmp);
 		    tmp = 0;
 		    break;
 		}
-		pline("%s is jolted with your electricity!", Monnam(mtmp)); /* EN pline("%s is jolted with your electricity!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s is jolted with your electricity!", Monnam(mtmp)); /* EN pline("%s is jolted with your electricity!", Monnam(mtmp)); */ // TODO DE
 		break;
 	    default: tmp = 0;
 		break;

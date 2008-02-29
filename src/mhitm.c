@@ -1345,7 +1345,7 @@ int mdead;
 	    case AD_COLD:
 		if (resists_cold(magr)) {
 		    if (canseemon(magr)) {
-			pline("%s is mildly chilly.", Monnam(magr)); /* EN pline("%s is mildly chilly.", Monnam(magr)); */ // TODO DE
+			pline("SUBJECT %s VERB_FROESTELN leicht.", Monnam(magr)); /* EN pline("%s is mildly chilly.", Monnam(magr)); */
 			golemeffects(magr, AD_COLD, tmp);
 		    }
 		    tmp = 0;
@@ -1370,7 +1370,7 @@ int mdead;
 	    case AD_FIRE:
 		if (resists_fire(magr)) {
 		    if (canseemon(magr)) {
-			pline("%s is mildly warmed.", Monnam(magr)); /* EN pline("%s is mildly warmed.", Monnam(magr)); */ // TODO DE
+			pline("SUBJECT %s VERB_SCHWITZEN leicht.", Monnam(magr)); /* EN pline("%s is mildly warmed.", Monnam(magr)); */
 			golemeffects(magr, AD_FIRE, tmp);
 		    }
 		    tmp = 0;
@@ -1382,7 +1382,7 @@ int mdead;
 	    case AD_ELEC:
 		if (resists_elec(magr)) {
 		    if (canseemon(magr)) {
-			pline("%s is mildly tingled.", Monnam(magr)); /* EN pline("%s is mildly tingled.", Monnam(magr)); */ // TODO DE
+			pline("SUBJECT %s steht etwas unter Strom.", Monnam(magr)); /* EN pline("%s is mildly tingled.", Monnam(magr)); */
 			golemeffects(magr, AD_ELEC, tmp);
 		    }
 		    tmp = 0;

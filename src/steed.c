@@ -99,7 +99,7 @@ use_saddle(otmp)
 	    return 1;
 	}
 	if (!can_saddle(mtmp)) {
-		You_cant("saddle such a creature."); /* EN You_cant("saddle such a creature."); */ // TODO DE
+		You("VERB_KOENNEN so eine Kreatur nicht satteln."); /* EN You_cant("saddle such a creature."); */
 		return 1;
 	}
 
@@ -290,11 +290,11 @@ mount_steed(mtmp, force)
 	    return (FALSE);
 	}
 	if (!force && Underwater && !is_swimmer(ptr)) {
-	    You_cant("ride that creature while under water."); /* EN You_cant("ride that creature while under water."); */ // TODO DE
+	    You("VERB_KOENNEN unter Wasser nicht diese Kreatur reiten."); /* EN You_cant("ride that creature while under water."); */
 	    return (FALSE);
 	}
 	if (!can_saddle(mtmp) || !can_ride(mtmp)) {
-	    You_cant("ride such a creature."); /* EN You_cant("ride such a creature."); */ // TODO DE
+	    You("VERB_KOENNEN diese Kreatur nicht reiten."); /* EN You_cant("ride such a creature."); */
 	    return (0);
 	}
 
@@ -463,7 +463,7 @@ dismount_steed(reason)
 	struct monst *mtmp;
 	struct obj *otmp;
 	coord cc;
-	const char *verb = "fall";
+	const char *verb = "fall"; /* EN const char *verb = "fall"; */ // TODO DE
 	boolean repair_leg_damage = TRUE;
 	unsigned save_utrap = u.utrap;
 	boolean have_spot = landing_spot(&cc,reason,0);
@@ -501,13 +501,13 @@ dismount_steed(reason)
 	    case DISMOUNT_BYCHOICE:
 	    default:
 		if (otmp && otmp->cursed) {
-		    You("can't.  The saddle %s cursed.", /* EN You("can't.  The saddle %s cursed.", */ // TODO DE
-			otmp->bknown ? "is" : "seems to be"); /* EN otmp->bknown ? "is" : "seems to be"); */ // TODO DE
+		    pline("Das geht nicht.  Der Sattel %s verflucht%s.", /* EN You("can't.  The saddle %s cursed.", */
+			otmp->bknown ? "ist" : "scheint", otmp->bknown ? "" : "zu sein"); /* EN otmp->bknown ? "is" : "seems to be"); */
 		    otmp->bknown = TRUE;
 		    return;
 		}
 		if (!have_spot) {
-		    You("can't. There isn't anywhere for you to stand."); /* EN You("can't. There isn't anywhere for you to stand."); */ // TODO DE
+		    pline("Das geht nicht. There isn't anywhere for you to stand."); /* EN You("can't. There isn't anywhere for you to stand."); */ // TODO DE
 		    return;
 		}
 		if (!mtmp->mnamelth) {
@@ -516,7 +516,7 @@ dismount_steed(reason)
 			if (Hallucination)
 				pline("Es war schön, nicht mehr im Regen zu sein."); /* EN pline("It felt good to get out of the rain."); */
 		} else
-			You("dismount %s.", mon_nam(mtmp)); /* EN You("dismount %s.", mon_nam(mtmp)); */ // TODO DE
+			You("VERB_STEIGEN OBJECT KASUS_DATIV _von_ %s.", mon_nam(mtmp)); /* EN You("dismount %s.", mon_nam(mtmp)); */
 	}
 	/* While riding these refer to the steed's legs
 	 * so after dismounting they refer to the player's
