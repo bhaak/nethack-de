@@ -48,13 +48,13 @@ dowaterdemon() /* Water demon */
     if(!(mvitals[PM_WATER_DEMON].mvflags & G_GONE)) {
 	if((mtmp = makemon(&mons[PM_WATER_DEMON],u.ux,u.uy, NO_MM_FLAGS))) {
 	    if (!Blind)
-		You("unleash %s!", a_monnam(mtmp)); /* EN You("unleash %s!", a_monnam(mtmp)); */ // TODO DE
+		You("VERB_ENTFESSELN OBJECT %s!", a_monnam(mtmp)); /* EN You("unleash %s!", a_monnam(mtmp)); */
 	    else
 		Du_spuerst("die Präsenz des Bösen."); /* EN You_feel("the presence of evil."); */
 
 	/* Give those on low levels a (slightly) better chance of survival */
 	    if (rnd(100) > (80 + level_difficulty())) {
-		pline("Grateful for %s release, %s grants you a wish!", /* EN pline("Grateful for %s release, %s grants you a wish!", */ // TODO DE
+		pline("Aus Dankbarkeit für KASUS_AKKUSATIV %s NOUN_BEFREIUNG NEUER_SATZ SUBJECT_IM_SATZ VERB_GEWAEHREN %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL einen Wunsch!", /* EN pline("Grateful for %s release, %s grants you a wish!", */
 		      mhis(mtmp), mhe(mtmp));
 		makewish();
 		mongone(mtmp);
@@ -291,9 +291,9 @@ drinkfountain()
 
 			if (Blind) {
 			    if (Invisible) {
-				You("feel transparent."); /* EN You("feel transparent."); */ // TODO DE
+				Du_fuehlst_dich(" durchsichtig."); /* EN You("feel transparent."); */
 			    } else {
-			    	You("feel very self-conscious."); /* EN You("feel very self-conscious."); */ // TODO DE
+			    	Du_fuehlst_dich("äusserst selbst-bewusst."); /* EN You("feel very self-conscious."); */
 			    	pline("Then it passes."); /* EN pline("Then it passes."); */ // TODO DE
 			    }
 			} else {

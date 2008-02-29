@@ -1684,6 +1684,9 @@ register struct obj *otmp;
 {
 	struct obj *why;
 	char buf[BUFSZ];
+#ifdef GERMAN
+	char* verb;
+#endif
 
 	if (!otmp) return 0;
 	*buf = '\0';			/* lint suppresion */
@@ -1696,14 +1699,14 @@ register struct obj *otmp;
 	    }
 	    why = 0;	/* the item which prevents ring removal */
 	    if (welded(uwep) && (otmp == uright || bimanual(uwep))) {
-		Sprintf(buf, "free a weapon %s", body_part(HAND)); /* EN Sprintf(buf, "free a weapon %s", body_part(HAND));*/ // TODO DE
+		verb = "freimachen"; Sprintf(buf, "PRONOMEN_KEIN NOUN_WAFFEN_%s", body_part(HAND)); /* EN Sprintf(buf, "free a weapon %s", body_part(HAND));*/
 		why = uwep;
 	    } else if (uarmg && uarmg->cursed) {
-		Sprintf(buf, "take off your %s", c_gloves); /* EN Sprintf(buf, "take off your %s", c_gloves);*/ // TODO DE
+		verb = "ausziehen"; Sprintf(buf, "PRONOMEN_POSSESSIV %s nicht", c_gloves); /* EN Sprintf(buf, "take off your %s", c_gloves);*/
 		why = uarmg;
 	    }
 	    if (why) {
-		You("cannot %s to remove the ring.", buf); /* EN You("cannot %s to remove the ring.", buf); */ // TODO DE
+		You("VERB_KOENNEN OBJECT %s %s, um den Ring abzunehmen.", buf, verb); /* EN You("cannot %s to remove the ring.", buf); */
 		why->bknown = TRUE;
 		return 0;
 	    }
@@ -1741,21 +1744,21 @@ register struct obj *otmp;
 		) {
 	    why = 0;	/* the item which prevents disrobing */
 	    if (uarmc && uarmc->cursed) {
-		Sprintf(buf, "remove your %s", cloak_simple_name(uarmc)); /* EN Sprintf(buf, "remove your %s", cloak_simple_name(uarmc));*/ // TODO DE
+		verb = "ablegen"; Sprintf(buf, "PRONOMEN_POSSESSIV %s", cloak_simple_name(uarmc)); /* EN Sprintf(buf, "remove your %s", cloak_simple_name(uarmc));*/
 		why = uarmc;
 #ifdef TOURIST
 	    } else if (otmp == uarmu && uarm && uarm->cursed) {
-		Sprintf(buf, "remove your %s", c_suit); /* EN Sprintf(buf, "remove your %s", c_suit);*/ // TODO DE
+		verb = "ausziehen"; Sprintf(buf, "PRONOMEN_POSSESSIV %s", c_suit); /* EN Sprintf(buf, "remove your %s", c_suit);*/
 		why = uarm;
 #endif
 	    } else if (welded(uwep) && bimanual(uwep)) {
-		Sprintf(buf, "release your %s", /* EN Sprintf(buf, "release your %s",*/ // TODO DE
+		verb = "loslassen"; Sprintf(buf, "PRONOMEN_POSSESSIV %s", /* EN Sprintf(buf, "release your %s",*/
 			is_sword(uwep) ? c_sword :
 			(uwep->otyp == BATTLE_AXE) ? c_axe : c_weapon);
 		why = uwep;
 	    }
 	    if (why) {
-		You("cannot %s to take off %s.", buf, the(xname(otmp))); /* EN You("cannot %s to take off %s.", buf, the(xname(otmp)));*/ // TODO DE
+		You("VERB_KOENNEN OBJECT %s nicht %s um NEUES_OBJECT OBJECT %s auszuziehen.", buf, verb, the(xname(otmp))); /* EN You("cannot %s to take off %s.", buf, the(xname(otmp)));*/
 		why->bknown = TRUE;
 		return 0;
 	    }

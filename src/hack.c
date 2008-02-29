@@ -955,7 +955,7 @@ domove()
 			/* When polymorphed into a sticking monster,
 			 * u.ustuck means it's stuck to you, not you to it.
 			 */
-			You("release %s.", mon_nam(u.ustuck)); /* EN You("release %s.", mon_nam(u.ustuck)); */ // TODO DE
+			You("VERB_LASSEN %s los.", mon_nam(u.ustuck)); /* EN You("release %s.", mon_nam(u.ustuck)); */
 			u.ustuck = 0;
 		    } else {
 			/* If holder is asleep or paralyzed:

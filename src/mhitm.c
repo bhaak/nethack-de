@@ -138,7 +138,7 @@ fightm(mtmp)		/* have monsters fight each other */
 		if(monnear(mtmp,mon->mx,mon->my)) {
 		    if(!u.uswallow && (mtmp == u.ustuck)) {
 			if(!rn2(4)) {
-			    pline("SUBJECT %s releases you!", Monnam(mtmp)); /* EN pline("%s releases you!", Monnam(mtmp)); */
+			    pline("SUBJECT %s VERB_LASSEN OBJECT PRONOMEN_PERSONAL los!", Monnam(mtmp)); /* EN pline("%s releases you!", Monnam(mtmp)); */
 			    u.ustuck = 0;
 			} else
 			    break;

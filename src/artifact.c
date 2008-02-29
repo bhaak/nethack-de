@@ -860,7 +860,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 		nomovemsg = "";
 		if (magr && magr == u.ustuck && sticks(youmonst.data)) {
 		    u.ustuck = (struct monst *)0;
-		    You("release %s!", mon_nam(magr)); /* EN You("release %s!", mon_nam(magr)); */ // TODO DE
+		    You("VERB_LASSEN %s los!", mon_nam(magr)); /* EN You("release %s!", mon_nam(magr)); */
 		}
 	    }
 	} else {

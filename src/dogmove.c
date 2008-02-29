@@ -566,7 +566,7 @@ register int after;	/* this is extra fast monster movement */
 	if (!Conflict && !mtmp->mconf &&
 	    mtmp == u.ustuck && !sticks(youmonst.data)) {
 	    unstuck(mtmp);	/* swallowed case handled above */
-	    You("get released!"); /* EN You("get released!"); */ // TODO DE
+	    You("VERB_WERDEN losgelassen!"); /* EN You("get released!"); */
 	}
 	if (!nohands(mtmp->data) && !verysmall(mtmp->data)) {
 		allowflags |= OPENDOOR;

@@ -217,7 +217,7 @@ boolean fleemsg;
 		expels(mtmp, mtmp->data, TRUE);
 	    else if (!sticks(youmonst.data)) {
 		unstuck(mtmp);	/* monster lets go when fleeing */
-		You("get released!"); /* EN You("get released!"); */ // TODO DE
+		You("VERB_WERDEN losgelassen!"); /* EN You("get released!"); */
 	    }
 	}
 

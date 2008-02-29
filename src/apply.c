@@ -653,7 +653,7 @@ struct obj *obj;
 		return 1;
 	}
 	if(u.uswallow) {
-		if (!Blind) You("reflect %s %s.", genitivattribut_zu_wort(mon_nam(u.ustuck), /* EN if (!Blind) You("reflect %s %s.", s_suffix(mon_nam(u.ustuck)), */
+		if (!Blind) You("reflect %s.", genitivattribut_zu_wort(mon_nam(u.ustuck), /* EN if (!Blind) You("reflect %s %s.", s_suffix(mon_nam(u.ustuck)), */ // TODO DE
 		    mbodypart(u.ustuck, STOMACH))); /* EN mbodypart(u.ustuck, STOMACH)); */
 		return 1;
 	}
@@ -2261,7 +2261,7 @@ struct obj *obj;
 	    } else
 		mon_hand = 0;	/* lint suppression */
 
-	    You("wrap your bullwhip around %s %s.", /* EN You("wrap your bullwhip around %s %s.", */ // TODO DE
+	    You("wrap your bullwhip around %s.", /* EN You("wrap your bullwhip around %s %s.", */ // TODO DE
 		genitivattribut_zu_wort(mon_nam(mtmp), onambuf)); /* EN s_suffix(mon_nam(mtmp)), onambuf); */
 	    if (gotit && otmp->cursed) {
 		pline("%s welded to %s %s%c", /* EN pline("%s welded to %s %s%c", */ // TODO DE
@@ -2279,7 +2279,7 @@ struct obj *obj;
 		switch (rn2(proficient + 1)) {
 		case 2:
 		    /* to floor near you */
-		    You("yank %s %s to the %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */ // TODO DE
+		    You("yank %s to the %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */ // TODO DE
 			surface(u.ux, u.uy)); /* EN onambuf, surface(u.ux, u.uy)); */
 		    place_object(otmp, u.ux, u.uy);
 		    stackobj(otmp);
@@ -2324,7 +2324,7 @@ struct obj *obj;
 		    break;
 		default:
 		    /* to floor beneath mon */
-		    You("yank %s from %s %s!", the(onambuf), /* EN You("yank %s from %s %s!", the(onambuf), */ // TODO DE
+		    You("yank %s from %s!", the(onambuf), /* EN You("yank %s from %s %s!", the(onambuf), */ // TODO DE
 			genitivattribut_zu_wort(mon_nam(mtmp), mon_hand)); /* EN s_suffix(mon_nam(mtmp)), mon_hand); */
 		    obj_no_longer_held(otmp);
 		    place_object(otmp, mtmp->mx, mtmp->my);
@@ -2595,7 +2595,7 @@ STATIC_OVL int
 do_break_wand(obj)
     struct obj *obj;
 {
-    static const char nothing_else_happens[] = "But nothing else happens..."; /* EN static const char nothing_else_happens[] = "But nothing else happens..."; */ // TODO DE
+    static const char nothing_else_happens[] = "Aber es passiert nichts weiter ..."; /* EN static const char nothing_else_happens[] = "But nothing else happens..."; */
     register int i, x, y;
     register struct monst *mon;
     int dmg, damage;
@@ -2605,7 +2605,7 @@ do_break_wand(obj)
     char confirm[QBUFSZ], the_wand[BUFSZ], buf[BUFSZ];
 
     Strcpy(the_wand, yname(obj));
-    Sprintf(confirm, "Are you really sure you want to break %s?", /* EN Sprintf(confirm, "Are you really sure you want to break %s?", */ // TODO DE
+    Sprintf(confirm, "SUBJECT VERB_SEIN PRONOMEN_PERSONAL Are you really sure you want to break %s?", /* EN Sprintf(confirm, "Are you really sure you want to break %s?", */ // TODO DE
 	safe_qbuf("", sizeof("Are you really sure you want to break ?"), /* EN safe_qbuf("", sizeof("Are you really sure you want to break ?"), */ // TODO DE
 				the_wand, ysimple_name(obj), "ARTIKEL_BESTIMMTER NOUN_WAND")); /* EN the_wand, ysimple_name(obj), "the wand")); */
     if (yn(confirm) == 'n' ) return 0;

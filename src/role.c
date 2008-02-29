@@ -502,16 +502,16 @@ struct Race urace =
 /* Table of all genders */
 const struct Gender genders[] = {
 // TODO DE
-	{"ADJEKTIV_MAENNLICH",	"PRONOMEN_3P_M_PERSONAL",
-						"him",
+	{"ADJEKTIV_MAENNLICH",	"NOUN_PRONOMEN_3P_M_PERSONAL",
+						"NOUN_PRONOMEN_3P_M_PERSONAL", /* EN "him", */
 						"PRONOMEN_3P_MN_POSSESSIV",
 						"Mal",	ROLE_MALE},
-	{"ADJEKTIV_WEIBLICH",	"PRONOMEN_3P_F_PERSONAL",
-							"her",
+	{"ADJEKTIV_WEIBLICH",	"NOUN_PRONOMEN_3P_F_PERSONAL",
+							"NOUN_PRONOMEN_3P_F_PERSONAL", /* EN "her", */
 							"PRONOMEN_3P_F_POSSESSIV",
 							"Fem",	ROLE_FEMALE},
-	{"ADJEKTIV_SAECHLICH",	"PRONOMEN_3P_N_PERSONAL",
-							"it",
+	{"ADJEKTIV_SAECHLICH",	"NOUN_PRONOMEN_3P_N_PERSONAL",
+							"NOUN_PRONOMEN_3P_N_PERSONAL", /* EN "its", */
 							"PRONOMEN_3P_MN_POSSESSIV",
 							"Ntr",	ROLE_NEUTER}
 };
