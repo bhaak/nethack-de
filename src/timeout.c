@@ -19,10 +19,10 @@ STATIC_DCL void FDECL(cleanup_burn, (genericptr_t,long));
 /* He is being petrified - dialogue by inmet!tower */
 static NEARDATA const char * const stoned_texts[] = {
 	"You are slowing down.",		/* 5 */ /* EN "You are slowing down.",		*/ // TODO DE
-	"Your limbs are stiffening.",		/* 4 */ /* EN "Your limbs are stiffening.",		*/ // TODO DE
-	"Your limbs have turned to stone.",	/* 3 */ /* EN "Your limbs have turned to stone.",	*/ // TODO DE
-	"You have turned to stone.",		/* 2 */ /* EN "You have turned to stone.",		*/ // TODO DE
-	"You are a statue."			/* 1 */ /* EN "You are a statue."			*/ // TODO DE
+	"SUBJECT PRONOMEN_POSSESSIV NOUN_EXTREMITAETs versteifen sich.",		/* 4 */ /* EN "Your limbs are stiffening.",		*/
+	"SUBJECT PRONOMEN_POSSESSIV NOUN_EXTREMITAETs sind versteinert.",	/* 3 */ /* EN "Your limbs have turned to stone.",	*/
+	"SUBJECT PRONOMEN_PERSONAL VERB_SEIN versteinert.",		/* 2 */ /* EN "You have turned to stone.",		*/
+	"SUBJECT PRONOMEN_PERSONAL VERB_SEIN eine Statue."			/* 1 */ /* EN "You are a statue."			*/
 };
 
 STATIC_OVL void
@@ -41,8 +41,8 @@ stoned_dialogue()
 
 /* He is getting sicker and sicker prior to vomiting */
 static NEARDATA const char * const vomiting_texts[] = {
-	"are feeling mildly nauseated.",	/* 14 */ /* EN "are feeling mildly nauseated.",	*/ // TODO DE
-	"feel slightly confused.",		/* 11 */ /* EN "feel slightly confused.",		*/ // TODO DE
+	"You are feeling mildly nauseated.",	/* 14 */ /* EN "are feeling mildly nauseated.",	*/ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_SICH_FUEHLEN OBJECT PRONOMEN_PERSONAL etwas verwirrt.",		/* 11 */ /* EN "feel slightly confused.",		*/
 	"can't seem to think straight.",	/* 8 */ /* EN "can't seem to think straight.",	*/ // TODO DE
 	"KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN unglaublich übel.",		/* 5 */ /* EN "feel incredibly sick.",		*/
 	"Plötzlich SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL!"			/* 2 */ /* EN "suddenly vomit!"			*/
@@ -113,7 +113,7 @@ static NEARDATA const char * const slime_texts[] = {
 	"Your limbs are getting oozy.",              /* 4 */ /* EN "Your limbs are getting oozy.",              */ // TODO DE
 	"Your skin begins to peel away.",            /* 3 */ /* EN "Your skin begins to peel away.",            */ // TODO DE
 	"You are turning into %s.",       /* 2 */ /* EN "You are turning into %s.",       */ // TODO DE
-	"You have become %s."             /* 1 */ /* EN "You have become %s."             */ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_SEIN OBJECT KASUS_NOMINATIV %s geworden."             /* 1 */ /* EN "You have become %s."             */
 };
 
 STATIC_OVL void
@@ -130,7 +130,7 @@ slime_dialogue()
 		    if (!Blind)	/* [what if you're already green?] */
 			pline(str, hcolor(NH_GREEN));
 		} else
-		    pline(str, an(Hallucination ? rndmonnam() : "green slime")); /* EN pline(str, an(Hallucination ? rndmonnam() : "green slime")); */ // TODO DE
+		    pline(str, an(Hallucination ? rndmonnam() : "NOUN_GREEN_SLIME")); /* EN pline(str, an(Hallucination ? rndmonnam() : "green slime")); */
 	    } else
 		pline(str);
 	}
@@ -202,15 +202,15 @@ nh_timeout()
 		u.uspellprot--;
 		find_ac();
 		if (!Blind)
-		    Norep("The %s haze around you %s.", hcolor(NH_GOLDEN), /* EN Norep("The %s haze around you %s.", hcolor(NH_GOLDEN), */ // TODO DE
-			  u.uspellprot ? "becomes less dense" : "disappears"); /* EN u.uspellprot ? "becomes less dense" : "disappears"); */ // TODO DE
+		    Norep("SUBJECT ARTIKEL_BESTIMMTER %s NOUN_HAZE um OBJECT PRONOMEN_PERSONAL %s.", hcolor(NH_GOLDEN), /* EN Norep("The %s haze around you %s.", hcolor(NH_GOLDEN), */
+			  u.uspellprot ? "VERB_LICHTEN sich" : "VERB_VERSCHWINDEN"); /* EN u.uspellprot ? "becomes less dense" : "disappears"); */
 	    }
 	}
 
 #ifdef STEED
 	if (u.ugallop) {
 	    if (--u.ugallop == 0L && u.usteed)
-	    	pline("%s stops galloping.", Monnam(u.usteed)); /* EN pline("%s stops galloping.", Monnam(u.usteed)); */ // TODO DE
+	    	pline("SUBJECT %s VERB_AUFHOEREN SATZKLAMMER zu gallopieren.", Monnam(u.usteed)); /* EN pline("%s stops galloping.", Monnam(u.usteed)); */
 	}
 #endif
 
@@ -226,7 +226,7 @@ nh_timeout()
 				/* leaving killer_format would make it
 				   "petrified by petrification" */
 				killer_format = NO_KILLER_PREFIX;
-				killer = "killed by petrification"; /* EN killer = "killed by petrification"; */ // TODO DE
+				killer = "getötet durch Versteinerung"; /* EN killer = "killed by petrification"; */
 			}
 			done(STONING);
 			break;
@@ -289,8 +289,8 @@ nh_timeout()
 			newsym(u.ux,u.uy);
 			if (!Invis && !BInvis && !Blind) {
 			    You(!See_invisible ?
-				    "are no longer invisible." : /* EN "are no longer invisible." : */ // TODO DE
-				    "can no longer see through yourself."); /* EN "can no longer see through yourself."); */ // TODO DE
+				    "VERB_SEIN nicht mehr ADJEKTIV_INVISIBLE." : /* EN "are no longer invisible." : */
+				    "VERB_KOENNEN nicht mehr OBJECT durch PRONOMEN_PERSONAL durchsehen."); /* EN "can no longer see through yourself."); */
 			    stop_occupation();
 			}
 			break;
@@ -960,7 +960,7 @@ long timeout;
 				switch (obj->where) {
 				    case OBJ_INVENT:
 				    case OBJ_MINVENT:
-					pline("%s %s %s consumed!", /* EN pline("%s %s %s consumed!", */ // TODO DE
+					pline("SUBJECT %s %s %s consumed!", /* EN pline("%s %s %s consumed!", */ // TODO DE
 					    whose,
 					    xname(obj),
 					    many ? "are" : "is"); /* EN many ? "are" : "is"); */ // TODO DE
