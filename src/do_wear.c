@@ -1282,7 +1282,7 @@ boolean noisy;
 	    if (uarmu) {
 		if (noisy) already_wearing(an(c_shirt));
 	    } else {
-		if (noisy) You_cant("VERB_KOENNEN das nicht über KASUS_DATIV PRONOMEN_POSSESSIV %s tragen.", /* EN if (noisy) You_cant("wear that over your %s.", */
+		if (noisy) You("VERB_KOENNEN das nicht über KASUS_DATIV PRONOMEN_POSSESSIV %s tragen.", /* EN if (noisy) You_cant("wear that over your %s.", */
 			           (uarm && !uarmc) ? c_armor : cloak_simple_name(uarmc));
 	    }
 	    err++;
@@ -1308,7 +1308,7 @@ boolean noisy;
 	/* getobj can't do this after setting its allow_all flag; that
 	   happens if you have armor for slots that are covered up or
 	   extra armor for slots that are filled */
-	if (noisy) silly_thing("wear", otmp); /* EN if (noisy) silly_thing("wear", otmp);*/ // TODO DE
+	if (noisy) silly_thing("VERB_TRAGEN", otmp); /* EN if (noisy) silly_thing("wear", otmp);*/
 	err++;
     }
 /* Unnecessary since now only weapons and special items like pick-axes get
@@ -1337,7 +1337,7 @@ dowear()
 		return(0);
 	}
 
-	otmp = getobj(clothes, "wear"); /* EN otmp = getobj(clothes, "wear");*/ // TODO DE
+	otmp = getobj(clothes, "VERB_TRAGEN"); /* EN otmp = getobj(clothes, "wear");*/
 	if(!otmp) return(0);
 
 	if (!canwearobj(otmp,&mask,TRUE)) return(0);
@@ -1418,7 +1418,7 @@ doputon()
 		}
 		if(uleft && uright){
 			There("are no more %s%s to fill.", /* EN There("are no more %s%s to fill.",*/ // TODO DE
-				humanoid(youmonst.data) ? "ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
+				humanoid(youmonst.data) ? "Ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
 				makeplural(body_part(FINGER)));
 			return(0);
 		}
@@ -1428,8 +1428,8 @@ doputon()
 			char qbuf[QBUFSZ];
 			char answer;
 
-			Sprintf(qbuf, "Which %s%s, Right or Left?", /* EN Sprintf(qbuf, "Which %s%s, Right or Left?", */ // TODO DE
-				humanoid(youmonst.data) ? "ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
+			Sprintf(qbuf, "Which %s%s, rechts oder links?", /* EN Sprintf(qbuf, "Which %s%s, Right or Left?", */ // TODO DE
+				humanoid(youmonst.data) ? "Ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
 				body_part(FINGER));
 			if(!(answer = yn_function(qbuf, "rl", '\0')))
 				return(0);
@@ -1719,7 +1719,7 @@ register struct obj *otmp;
 		uwep->bknown = TRUE;
 		return 0;
 	    } else if (Glib) {
-		You_cant("take off the slippery %s with your slippery %s.", /* EN You_cant("take off the slippery %s with your slippery %s.",*/ // TODO DE
+		You("VERB_KOENNEN OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_SLIPPERY %s nicht NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV ADJEKTIV_SLIPPERY %s.", /* EN You_cant("take off the slippery %s with your slippery %s.",*/
 			 c_gloves, makeplural(body_part(FINGER)));
 		return 0;
 	    }
@@ -2035,24 +2035,24 @@ register struct obj *atmp;
 			(!obj_resists(otmp, 0, 90)))
 
 	if (DESTROY_ARM(uarmc)) {
-		Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc)); /* EN Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc));*/ // TODO DE
+		Your("%s zerreisst und zerfällt zu Staub!", cloak_simple_name(uarmc)); /* EN Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc));*/
 		(void) Cloak_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarm)) {
 		/* may be disintegrated by spell or dragon breath... */
 		if (donning(otmp)) cancel_don();
-		Your("armor turns to dust and falls to the %s!", /* EN Your("armor turns to dust and falls to the %s!",*/ // TODO DE
+		Your("NOUN_ARMOR zerfällt zu Staub und fällt zu %s!", /* EN Your("armor turns to dust and falls to the %s!",*/ // TODO DE zu_Boden
 			surface(u.ux,u.uy));
 		(void) Armor_gone();
 		useup(otmp);
 #ifdef TOURIST
 	} else if (DESTROY_ARM(uarmu)) {
-		Your("shirt crumbles into tiny threads and falls apart!"); /* EN Your("shirt crumbles into tiny threads and falls apart!");*/ // TODO DE
+		Your("NOUN_SHIRT zerfällt in kleine Stücke und fällt auseinander!"); /* EN Your("shirt crumbles into tiny threads and falls apart!");*/
 		useup(otmp);
 #endif
 	} else if (DESTROY_ARM(uarmh)) {
 		if (donning(otmp)) cancel_don();
-		Your("helmet turns to dust and is blown away!"); /* EN Your("helmet turns to dust and is blown away!");*/ // TODO DE
+		Your("NOUN_HELMET zerfällt zu Staub und is blown away!"); /* EN Your("helmet turns to dust and is blown away!");*/ // TODO DE
 		(void) Helmet_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarmg)) {
@@ -2060,14 +2060,14 @@ register struct obj *atmp;
 		Your("NOUN_GLOVESs VERB_VERSCHWINDEN!"); /* EN Your("gloves vanish!");*/
 		(void) Gloves_off();
 		useup(otmp);
-		selftouch("You");
+		selftouch("PRONOMEN_PERSONAL VERB_TOUCH"); /* EN selftouch("You"); */
 	} else if (DESTROY_ARM(uarmf)) {
 		if (donning(otmp)) cancel_don();
-		Your("boots disintegrate!"); /* EN Your("boots disintegrate!");*/ // TODO DE
+		Your("NOUN_BOOTSs lösen sich auf!"); /* EN Your("boots disintegrate!");*/
 		(void) Boots_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarms)) {
-		Your("shield crumbles away!"); /* EN Your("shield crumbles away!");*/ // TODO DE
+		Your("NOUN_SHIELD zerbricht!"); /* EN Your("shield crumbles away!");*/
 		(void) Shield_off();
 		useup(otmp);
 	} else	return(0);		/* could not destroy anything */

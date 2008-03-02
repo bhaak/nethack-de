@@ -935,7 +935,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    ballfall();
 		    placebc();
 		}
-		selftouch("Falling, you"); /* EN selftouch("Falling, you"); */ // TODO DE
+		selftouch("Im Fallen VERB_TOUCH PRONOMEN_PERSONAL"); /* EN selftouch("Falling, you"); */
 		vision_full_recalc = 1;	/* vision limits change */
 		exercise(A_STR, FALSE);
 		exercise(A_DEX, FALSE);
@@ -1958,7 +1958,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 				pline("How pitiful.  Isn't that the pits?"); /* EN pline("How pitiful.  Isn't that the pits?"); */ // TODO DE
 			    seetrap(trap);
 			}
-			mselftouch(mtmp, "Falling, ", FALSE); /* EN mselftouch(mtmp, "Falling, ", FALSE); */ // TODO DE
+			mselftouch(mtmp, "Im Fallen VERB_TOUCH ", FALSE); /* EN mselftouch(mtmp, "Falling, ", FALSE); */
 			if (mtmp->mhp <= 0 ||
 				thitm(0, mtmp, (struct obj *)0,
 				      rnd((tt == PIT) ? 6 : 10), FALSE))
@@ -2204,20 +2204,23 @@ selftouch(arg)
 const char *arg;
 {
 	char kbuf[BUFSZ];
+#ifdef GERMAN
+	char* touch_sentence = "SUBJECT %s OBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE %s NOUN_CORPSE.";
+#endif
 
 	if(uwep && uwep->otyp == CORPSE && touch_petrifies(&mons[uwep->corpsenm])
 			&& !Stone_resistance) {
-		pline("%s touch the %s corpse.", arg, /* EN pline("%s touch the %s corpse.", arg, */ // TODO DE
+		pline(touch_sentence, arg, /* EN pline("%s touch the %s corpse.", arg, */ // TODO DE
 		        mons[uwep->corpsenm].mname);
-		Sprintf(kbuf, "%s corpse", an(mons[uwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uwep->corpsenm].mname)); */ // TODO DE
+		Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[uwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uwep->corpsenm].mname)); */
 		instapetrify(kbuf);
 	}
 	/* Or your secondary weapon, if wielded */
 	if(u.twoweap && uswapwep && uswapwep->otyp == CORPSE &&
 			touch_petrifies(&mons[uswapwep->corpsenm]) && !Stone_resistance){
-		pline("%s touch the %s corpse.", arg, /* EN pline("%s touch the %s corpse.", arg, */ // TODO DE
+		pline(touch_sentence, arg, /* EN pline("%s touch the %s corpse.", arg, */ // TODO DE
 		        mons[uswapwep->corpsenm].mname);
-		Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); */ // TODO DE
+		Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[uswapwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); */
 		instapetrify(kbuf);
 	}
 }
@@ -2232,7 +2235,7 @@ boolean byplayer;
 
 	if (mwep && mwep->otyp == CORPSE && touch_petrifies(&mons[mwep->corpsenm])) {
 		if (cansee(mon->mx, mon->my)) {
-			pline("%s%s touches the %s corpse.", /* EN pline("%s%s touches the %s corpse.", */ // TODO DE
+			pline("SUBJECT %s%s OBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE %s NOUN_CORPSE.", /* EN pline("%s%s touches the %s corpse.", */
 			    arg ? arg : "", arg ? mon_nam(mon) : Monnam(mon),
 			    mons[mwep->corpsenm].mname);
 		}
@@ -2253,7 +2256,7 @@ float_up()
 			Your("body pulls upward, but your %s are still stuck.", /* EN Your("body pulls upward, but your %s are still stuck.", */ // TODO DE
 			     makeplural(body_part(LEG)));
 		} else {
-			You("VERB_SCHWEBEN hoch, jedoch your %s is still stuck.", /* EN You("float up, only your %s is still stuck.", */ // TODO DE
+			You("VERB_SCHWEBEN hoch, jedoch NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV %s VERB_STECKEN immer noch fest.", /* EN You("float up, only your %s is still stuck.", */
 				body_part(LEG));
 		}
 	}
@@ -2371,7 +2374,7 @@ long hmask, emask;     /* might cancel timeout */
 			      "hit the ground"); /* EN "hit the ground"); */ // TODO DE
 		    else {
 			if (!sokoban_trap)
-			    You("float gently to the %s.", /* EN You("float gently to the %s.", */ // TODO DE
+			    You("float gently to the %s.", /* EN You("float gently to the %s.", */ // TODO DE zu_Boden
 				surface(u.ux, u.uy));
 			else {
 			    /* Justification elsewhere for Sokoban traps
@@ -2381,12 +2384,12 @@ long hmask, emask;     /* might cancel timeout */
 			     * air currents once leviation
 			     * ceases knocks you off your feet.
 			     */
-			    You("fall over."); /* EN You("fall over."); */ // TODO DE
-			    losehp(rnd(2), "dangerous winds", KILLED_BY); /* EN losehp(rnd(2), "dangerous winds", KILLED_BY); */ // TODO DE
+			    You("VERB_FALLEN um."); /* EN You("fall over."); */
+			    losehp(rnd(2), "ADJEKTIV_GEFAEHRLICH NOUN_WINDs", KILLED_BY); /* EN losehp(rnd(2), "dangerous winds", KILLED_BY); */
 #ifdef STEED
 			    if (u.usteed) dismount_steed(DISMOUNT_FELL);
 #endif
-			    selftouch("As you fall, you"); /* EN selftouch("As you fall, you"); */ // TODO DE
+			    selftouch("Durch den Sturz VERB_TOUCH PRONOMEN_PERSONAL"); /* EN selftouch("As you fall, you"); */
 			}
 		    }
 		}

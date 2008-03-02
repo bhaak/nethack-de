@@ -1158,7 +1158,7 @@ boolean at_stairs, falling, portal;
 		    else
 #endif
 			losehp(rnd(3), "falling downstairs", KILLED_BY); /* EN losehp(rnd(3), "falling downstairs", KILLED_BY); */ // TODO DE
-		    selftouch("Falling, you"); /* EN selftouch("Falling, you"); */ // TODO DE
+		    selftouch("Im Fallen VERB_TOUCH PRONOMEN_PERSONAL"); /* EN selftouch("Falling, you"); */
 		} else if (u.dz && at_ladder)
 		    You("VERB_KLETTERN OBJECT ARTIKEL_BESTIMMTER NOUN_LADDER hinunter."); /* EN You("climb down the ladder."); */
 	    }
@@ -1183,7 +1183,7 @@ boolean at_stairs, falling, portal;
 				LR_DOWNTELE, (d_level *) 0);
 	    if (falling) {
 		if (Punished) ballfall();
-		selftouch("Falling, you"); /* EN selftouch("Falling, you"); */ // TODO DE
+		selftouch("Im Fallen VERB_TOUCH PRONOMEN_PERSONAL"); /* EN selftouch("Falling, you"); */
 	    }
 	}
 

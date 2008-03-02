@@ -6,6 +6,7 @@
 
 #ifdef GERMAN
 # include "german.h"
+# include <ctype.h>
 #endif
 
 /*** Table of all roles ***/
@@ -30,17 +31,17 @@
 /* http://www.tamoon.ch/titel.html */
 const struct Role roles[] = {
 {	{"NOUN_ARCHAEOLOGE", "NOUN_ARCHAEOLOGIN"}, { /* EN {	{"Archeologist", 0}, { */
-	{"Digger",      0}, /* EN {"Digger",      0}, */ // TODO DE Hilfskraft
-	{"Field Worker",0}, /* EN {"Field Worker",0}, */ // TODO DE 
-	{"Investigator",0}, /* EN {"Investigator",0}, */ // TODO DE 
-	{"Exhumer",     0}, /* EN {"Exhumer",     0}, */ // TODO DE Exhumierer?
-	{"Excavator",   0}, /* EN {"Excavator",   0}, */ // TODO DE Ausgraeber
-	{"Spelunker",   0}, /* EN {"Spelunker",   0}, */ // TODO DE Hoehlengeher / Hoehlenforscher
-	{"Speleologist",0}, /* EN {"Speleologist",0}, */ // TODO DE Speläologe http://de.wikipedia.org/wiki/Speläologie#Spel.C3.A4ologe.2FH.C3.B6hlenforscher
-	{"Collector",   0}, /* EN {"Collector",   0}, */ // TODO DE Sammler
-	{"Curator",     0} }, /* EN {"Curator",     0} }, */ // TODO DE Kurator
+	{"NOUN_HILFSKRAFT",      0}, /* EN {"Digger",      0}, */
+	{"NOUN_FELDFORSCHER","NOUN_FELDFORSCHERIN"}, /* EN {"Field Worker",0}, */
+	{"NOUN_EXHUMIERER","NOUN_EXHUMIERERIN"}, /* EN {"Investigator",0}, */
+	{"NOUN_AUSGRAEBER","NOUN_AUSGRAEBERIN"}, /* EN {"Exhumer",     0}, */
+	{"NOUN_PROJEKTLEITER",   "NOUN_PROJEKTLEITER"}, /* EN {"Excavator",   0}, */
+	{"NOUN_HOEHLENGEHER",   "NOUN_HOEHLENGEHERIN"}, /* EN {"Spelunker",   0}, */ /* Hoehlengeher / Hoehlenforscher */
+	{"NOUN_SPEAEOLOGE","NOUN_SPEAEOLOGIN"}, /* EN {"Speleologist",0}, */ /* http://de.wikipedia.org/wiki/Speläologie#Spel.C3.A4ologe.2FH.C3.B6hlenforscher */
+	{"NOUN_SAMMLER",   "NOUN_SAMMLERIN"}, /* EN {"Collector",   0}, */
+	{"NOUN_KURATOR",     "NOUN_KURATORIN"} }, /* EN {"Curator",     0} }, */
 	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */
-	"Arc", "the College of Archeology", "the Tomb of the Toltec Kings",
+	"Arc", "the College of Archeology", "the Tomb of the Toltec Kings", /* EN "Arc", "the College of Archeology", "the Tomb of the Toltec Kings", */ // TODO DE
 	PM_ARCHEOLOGIST, NON_PM, NON_PM,
 	PM_LORD_CARNARVON, PM_STUDENT, PM_MINION_OF_HUHETOTL,
 	NON_PM, PM_HUMAN_MUMMY, S_SNAKE, S_MUMMY,
@@ -55,18 +56,18 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },14,	/* Energy */
 	10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING,   -4
 },
-{	{"NOUN_BARBAR", "NOUN_BARBARIN"}, { /* EN {	{"Barbarian", 0}, { */ // Strauchdieb
-	{"Plunderer",   "Plunderess"}, /* EN {"Plunderer",   "Plunderess"}, */ // TODO DE Pluenderer
-	{"Pillager",    0}, /* EN {"Pillager",    0}, */ // TODO DE Brandschatzer
-	{"Bandit",      0}, /* EN {"Bandit",      0}, */ // TODO DE Bandit / Strassenraeuber?
-	{"Brigand",     0}, /* EN {"Brigand",     0}, */ // TODO DE Brigant / Wegelagerer
-	{"Raider",      0}, /* EN {"Raider",      0}, */ // TODO DE Raeuber
-	{"Reaver",      0}, /* EN {"Reaver",      0}, */ // TODO DE Pluenderer
-	{"Slayer",      0}, /* EN {"Slayer",      0}, */ // TODO DE Totschlaeger
-	{"Chieftain",   "Chieftainess"}, /* EN {"Chieftain",   "Chieftainess"}, */ // TODO DE Haeuptling / Stammesführer
-	{"Conqueror",   "Conqueress"} }, /* EN {"Conqueror",   "Conqueress"} }, */ // TODO DE Eroberer
+{	{"NOUN_BARBAR", "NOUN_BARBARIN"}, { /* EN {	{"Barbarian", 0}, { */
+	{"NOUN_STRAUCHDIEB",   "NOUN_STRAUCHDIEBIN"}, /* EN {"Plunderer",   "Plunderess"}, */
+	{"NOUN_BRANDSCHATZER", "NOUN_BRANDSCHATZERIN"}, /* EN {"Pillager",    0}, */
+	{"NOUN_BANDIT", "NOUN_BANDITIN"}, /* EN {"Bandit",      0}, */
+	{"NOUN_BRIGANT", "NOUN_BRIGANTIN"}, /* EN {"Brigand",     0}, */
+	{"NOUN_RAEUBER", "NOUN_RAEUBERIN"}, /* EN {"Raider",      0}, */
+	{"NOUN_PLUENDERER", "NOUN_PLUENDERIN"}, /* EN {"Reaver",      0}, */
+	{"NOUN_TOTSCHLAEGER", "NOUN_TOTSCHLAEGERIN"}, /* EN {"Slayer",      0}, */
+	{"NOUN_STAMMESFUEHRER",   "NOUN_STAMMESFUEHRERIN"}, /* EN {"Chieftain",   "Chieftainess"}, */ /* Haeuptling / Stammesführer */
+	{"NOUN_EROBERER",   "NOUN_EROBERIN"} }, /* EN {"Conqueror",   "Conqueress"} }, */
 	"Mitra", "Crom", "Set", /* Hyborian */
-	"Bar", "the Camp of the Duali Tribe", "the Duali Oasis",
+	"Bar", "the Camp of the Duali Tribe", "the Duali Oasis", /* EN "Bar", "the Camp of the Duali Tribe", "the Duali Oasis", */ // TODO DE
 	PM_BARBARIAN, NON_PM, NON_PM,
 	PM_PELIAS, PM_CHIEFTAIN, PM_THOTH_AMON,
 	PM_OGRE, PM_TROLL, S_OGRE, S_TROLL,
@@ -82,17 +83,17 @@ const struct Role roles[] = {
 	10, 14, 0, 0,  8, A_INT, SPE_HASTE_SELF,      -4
 },
 {	{"NOUN_CAVEMAN", 0}, { /* EN {	{"Caveman", "Cavewoman"}, { */
-	{"Troglodyte",  0}, /* EN {"Troglodyte",  0}, */ // TODO DE
-	{"Aborigine",   0}, /* EN {"Aborigine",   0}, */ // TODO DE
-	{"Wanderer",    0}, /* EN {"Wanderer",    0}, */ // TODO DE
-	{"Vagrant",     0}, /* EN {"Vagrant",     0}, */ // TODO DE
-	{"Wayfarer",    0}, /* EN {"Wayfarer",    0}, */ // TODO DE
-	{"Roamer",      0}, /* EN {"Roamer",      0}, */ // TODO DE
-	{"Nomad",       0}, /* EN {"Nomad",       0}, */ // TODO DE
-	{"Rover",       0}, /* EN {"Rover",       0}, */ // TODO DE
-	{"Pioneer",     0} }, /* EN {"Pioneer",     0} }, */ // TODO DE
+	{"NOUN_TROGLODYT",    "NOUN_TROGLODYTIN"}, /* EN {"Troglodyte",  0}, */
+	{"NOUN_EINGEBORENER", "NOUN_EINGEBORENE"}, /* EN {"Aborigine",   0}, */
+	{"NOUN_HERUMTREIBER", "NOUN_HERUMTREIBERIN"}, /* EN {"Wanderer",    0}, */
+	{"NOUN_LANDSTREICHER","NOUN_LANDSTREICHERIN"}, /* EN {"Vagrant",     0}, */
+	{"NOUN_VAGABUND",     "NOUN_VAGABUNDIN"}, /* EN {"Wayfarer",    0}, */
+	{"NOUN_VAGANT",       "NOUN_VAGANTIN"}, /* EN {"Roamer",      0}, */
+	{"NOUN_NOMADE",       "NOUN_NOMADIN"}, /* EN {"Nomad",       0}, */
+	{"NOUN_WANDERER",     "NOUN_WANDERIN"}, /* EN {"Rover",       0}, */
+	{"NOUN_PIONIER",      "NOUN_PIONIERIN"} }, /* EN {"Pioneer",     0} }, */
 	"Anu", "_Ishtar", "Anshar", /* Babylonian */
-	"Cav", "the Caves of the Ancestors", "the Dragon's Lair",
+	"Cav", "the Caves of the Ancestors", "the Dragon's Lair", /* EN "Cav", "the Caves of the Ancestors", "the Dragon's Lair", */ // TODO DE
 	PM_CAVEMAN, PM_CAVEWOMAN, PM_LITTLE_DOG,
 	PM_SHAMAN_KARNOV, PM_NEANDERTHAL, PM_CHROMATIC_DRAGON,
 	PM_BUGBEAR, PM_HILL_GIANT, S_HUMANOID, S_GIANT,
@@ -132,19 +133,18 @@ const struct Role roles[] = {
 	{  1, 4,  0, 1,  0, 2 },20,	/* Energy */
 	10, 3,-3, 2, 10, A_WIS, SPE_CURE_SICKNESS,   -4
 },
-// TODO DE
 {	{"NOUN_KNIGHT", 0}, { /* EN {	{"Knight", 0}, { */
-	{"Gallant",     0},
-	{"Esquire",     0},
-	{"Bachelor",    0},
-	{"Sergeant",    0},
-	{"Knight",      0},
-	{"Banneret",    0},
-	{"Chevalier",   "Chevaliere"},
-	{"Seignieur",   "Dame"},
-	{"Paladin",     0} },
+	{"Gallant",     0}, /* EN {"Gallant",     0}, */ // TODO DE
+	{"Esquire",     0}, /* EN {"Esquire",     0}, */ // TODO DE
+	{"Bachelor",    0}, /* EN {"Bachelor",    0}, */ // TODO DE
+	{"Sergeant",    0}, /* EN {"Sergeant",    0}, */ // TODO DE
+	{"Knight",      0}, /* EN {"Knight",      0}, */ // TODO DE
+	{"Banneret",    0}, /* EN {"Banneret",    0}, */ // TODO DE
+	{"Chevalier",   "Chevaliere"}, /* EN {"Chevalier",   "Chevaliere"}, */ // TODO DE
+	{"Seignieur",   "Dame"}, /* EN {"Seignieur",   "Dame"}, */ // TODO DE
+	{"Paladin",     0} }, /* EN {"Paladin",     0} }, */ // TODO DE
 	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
-	"Kni", "Camelot Castle", "the Isle of Glass",
+	"Kni", "Camelot Castle", "the Isle of Glass", /* EN "Kni", "Camelot Castle", "the Isle of Glass", */ // TODO DE
 	PM_KNIGHT, NON_PM, PM_PONY,
 	PM_KING_ARTHUR, PM_PAGE, PM_IXOTH,
 	PM_QUASIT, PM_OCHRE_JELLY, S_IMP, S_JELLY,
@@ -158,20 +158,19 @@ const struct Role roles[] = {
 	{  1, 4,  0, 1,  0, 2 },10,	/* Energy */
 	10, 8,-2, 0,  9, A_WIS, SPE_TURN_UNDEAD,     -4
 },
-// TODO DE
 {	{"NOUN_MOENCH", 0}, { /* EN {	{"Monk", 0}, { */
-	{"Candidate",         0},
-	{"Novice",            0},
-	{"Initiate",          0},
-	{"Student of Stones", 0},
-	{"Student of Waters", 0},
-	{"Student of Metals", 0},
-	{"Student of Winds",  0},
-	{"Student of Fire",   0},
-	{"Master",            0} },
+	{"NOUN_KANDIDAT",         "NOUN_KANDIDATIN"}, /* EN {"Candidate",         0}, */
+	{"NOUN_NOVIZE",            "NOUN_NOVIZIN"}, /* EN {"Novice",            0}, */
+	{"NOUN_GEWEIHTE",          "NOUN_GEWEIHTIN"}, /* EN {"Initiate",          0}, */
+	{"SCHUELER_DER_STEINE", "SCHUELERIN_DER_STEINE"}, /* EN {"Student of Stones", 0}, */
+	{"SCHUELER_DER_WASSER", "SCHUELERIN_DER_WASSER"}, /* EN {"Student of Waters", 0}, */
+	{"SCHUELER_DER_METALLE", "SCHUELERIN_DER_METALLE"}, /* EN {"Student of Metals", 0}, */
+	{"SCHUELER_DER_WINDE",  "SCHUELERIN_DER_WINDE"}, /* EN {"Student of Winds",  0}, */
+	{"SCHUELER_DER_FEUER",   "SCHUELERIN_DER_FEUER"}, /* EN {"Student of Fire",   0}, */
+	{"NOUN_MEISTER",            "NOUN_MEISTERIN"} }, /* EN {"Master",            0} }, */
 	"Shan Lai Ching", "Chih Sung-tzu", "Huan Ti", /* Chinese */
-	"Mon", "the Monastery of Chan-Sune",
-	  "the Monastery of the Earth-Lord",
+	"Mon", "the Monastery of Chan-Sune", /* EN "Mon", "the Monastery of Chan-Sune", */ // TODO DE
+	  "the Monastery of the Earth-Lord", /* EN "the Monastery of the Earth-Lord", */ // TODO DE
 	PM_MONK, NON_PM, NON_PM,
 	PM_GRAND_MASTER, PM_ABBOT, PM_MASTER_KAEN,
 	PM_EARTH_ELEMENTAL, PM_XORN, S_ELEMENTAL, S_XORN,
@@ -214,19 +213,18 @@ const struct Role roles[] = {
 },
   /* Note:  Rogue precedes Ranger so that use of `-R' on the command line
      retains its traditional meaning. */
-// TODO DE
 {	{"NOUN_ROGUE", 0}, { /* EN {	{"Rogue", 0}, { */
-	{"Footpad",     0},
-	{"Cutpurse",    0},
-	{"Rogue",       0},
-	{"Pilferer",    0},
-	{"Robber",      0},
-	{"Burglar",     0},
-	{"Filcher",     0},
-	{"Magsman",     "Magswoman"},
-	{"Thief",       0} },
+	{"NOUN_STRASSENRAEUBER",     "NOUN_STRASSENRAEUBERIN"}, /* EN {"Footpad",     0}, */
+	{"NOUN_LANGFINGER",    0}, /* EN {"Cutpurse",    0}, */
+	{"NOUN_HALLODRI",       0}, /* EN {"Rogue",       0}, */
+	{"NOUN_GANOVE",    "NOUN_GANOVIN"}, /* EN {"Pilferer",    0}, */
+	{"NOUN_RAEUBER",      "NOUN_RAEUBERIN"}, /* EN {"Robber",      0}, */
+	{"NOUN_EINBRECHER",     "NOUN_EINBRECHERIN"}, /* EN {"Burglar",     0}, */
+	{"NOUN_BETRUEGER",     "NOUN_BETRUEGERIN"}, /* EN {"Filcher",     0}, */
+	{"NOUN_GANGSTER",     "NOUN_GANGSTERBRAUT"}, /* EN {"Magsman",     "Magswoman"}, */
+	{"NOUN_DIEB",       "NOUN_DIEBIN"} }, /* EN {"Thief",       0} }, */
 	"Issek", "Mog", "Kos", /* Nehwon */
-	"Rog", "the Thieves' Guild Hall", "the Assassins' Guild Hall",
+	"Rog", "the Thieves' Guild Hall", "the Assassins' Guild Hall", /* EN "Rog", "the Thieves' Guild Hall", "the Assassins' Guild Hall", */ // TODO DE
 	PM_ROGUE, NON_PM, NON_PM,
 	PM_MASTER_OF_THIEVES, PM_THUG, PM_MASTER_ASSASSIN,
 	PM_LEPRECHAUN, PM_GUARDIAN_NAGA, S_NYMPH, S_NAGA,
@@ -241,7 +239,6 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },11,	/* Energy */
 	10, 8, 0, 1,  9, A_INT, SPE_DETECT_TREASURE, -4
 },
-// TODO DE
 {	{"NOUN_RANGER", 0}, { /* EN {	{"Ranger", 0}, { */
 #if 0	/* OBSOLETE */
 	{"Edhel",       "Elleth"},
@@ -257,17 +254,17 @@ const struct Role roles[] = {
 	{"Elentar",     "Elentari"},	/* Star-king, -queen (Q.) */
 	"Solonor Thelandira", "Aerdrie Faenya", "Lolth", /* Elven */
 #endif
-	{"Tenderfoot",    0},
-	{"Lookout",       0},
-	{"Trailblazer",   0},
-	{"Reconnoiterer", "Reconnoiteress"},
-	{"Scout",         0},
-	{"Arbalester",    0},	/* One skilled at crossbows */
-	{"Archer",        0},
-	{"Sharpshooter",  0},
-	{"Marksman",      "Markswoman"} },
-	"Mercury", "_Venus", "Mars", /* Roman/planets */
-	"Ran", "Orion's camp", "the cave of the wumpus",
+	{"NOUN_JUNGSPUND",    0}, /* EN {"Tenderfoot",    0}, */ 
+	{"NOUN_AUSGUCK",       0}, /* EN {"Lookout",       0}, */ /* Ausguck, Schmiere-Steher */
+	{"NOUN_VORREITER",   "NOUN_VORREITERIN"}, /* EN {"Trailblazer",   0}, */ // TODO DE Bahnbrecher/Pionier/Pistensucher/Vorreiter/Wegbereiter
+	{"NOUN_SPAEHER", "NOUN_SPAEHERIN"}, /* EN {"Reconnoiterer", "Reconnoiteress"}, */
+	{"NOUN_KUNDSCHAFTER",         "NOUN_KUNDSCHAFTERIN"}, /* EN {"Scout",         0}, */
+	{"NOUN_ARMBRUSTER",    "NOUN_ARMBRUSTERIN"},	/* One skilled at crossbows */ /* EN {"Arbalester",    0}, */ /* Armbruster / Armbrustschütze */
+	{"NOUN_BOGENSCHUETZE",        "NOUN_BOGENSCHUETZIN"}, /* EN {"Archer",        0}, */
+	{"NOUN_SCHARFSCHUETZE",  "NOUN_SCHARFSCHUETZIN"}, /* EN {"Sharpshooter",  0}, */
+	{"NOUN_MEISTERSCHUETZE",      "NOUN_MEISTERSCHUETZIN"} }, /* EN {"Marksman",      "Markswoman"} }, */
+	"Merkur", "_Venus", "Mars", /* Roman/planets */ /* EN "Mercury", "_Venus", "Mars", */
+	"Ran", "Orion's camp", "the cave of the wumpus", /* EN "Ran", "Orion's camp", "the cave of the wumpus", */ // TODO DE
 	PM_RANGER, NON_PM, PM_LITTLE_DOG /* Orion & canis major */,
 	PM_ORION, PM_HUNTER, PM_SCORPIUS,
 	PM_FOREST_CENTAUR, PM_SCORPION, S_CENTAUR, S_SPIDER,
@@ -282,19 +279,18 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },12,	/* Energy */
 	10, 9, 2, 1, 10, A_INT, SPE_INVISIBILITY,   -4
 },
-// TODO DE
 {	{"NOUN_SAMURAI", "NOUN_SAMURAIIN"}, { /* EN {	{"Samurai", 0}, { */
-	{"Hatamoto",    0},  /* Banner Knight */
-	{"Ronin",       0},  /* no allegiance */
-	{"Ninja",       "Kunoichi"},  /* secret society */
-	{"Joshu",       0},  /* heads a castle */
-	{"Ryoshu",      0},  /* has a territory */
-	{"Kokushu",     0},  /* heads a province */
-	{"Daimyo",      0},  /* a samurai lord */
-	{"Kuge",        0},  /* Noble of the Court */
-	{"Shogun",      0} },/* supreme commander, warlord */
+	{"NOUN_HATAMOTO", "NOUN_HATAMOTOIN"},  /* Banner Knight */ /* EN {"Hatamoto",    0}, */
+	{"NOUN_RONIN", "NOUN_RONININ"},  /* no allegiance */ /* EN {"Ronin",       0}, */
+	{"NOUN_NINJA", "NOUN_KUNOICHI"},  /* secret society */ /* EN {"Ninja",       "Kunoichi"}, */
+	{"NOUN_JOSHU", "NOUN_JOSHUIN"},  /* heads a castle */ /* EN {"Joshu",       0}, */
+	{"NOUN_RYOSHU", "NOUN_RYOSHUIN"},  /* has a territory */ /* EN {"Ryoshu",      0}, */
+	{"NOUN_KOKUSHU", "NOUN_KOKUSHUIN"},  /* heads a province */ /* EN {"Kokushu",     0}, */
+	{"NOUN_DAIMYO", "NOUN_DAIMYOIN"},  /* a samurai lord */ /* EN {"Daimyo",      0}, */
+	{"NOUN_KUGE", "NOUN_KUGEIN"},  /* Noble of the Court */ /* EN {"Kuge",        0}, */
+	{"NOUN_SHOGUN", "NOUN_SHOGUNIN"} },/* supreme commander, warlord */ /* EN {"Shogun",      0} }, */
 	"_Amaterasu Omikami", "Raijin", "Susanowo", /* Japanese */
-	"Sam", "the Castle of the Taro Clan", "the Shogun's Castle",
+	"Sam", "the Castle of the Taro Clan", "the Shogun's Castle", /* EN "Sam", "the Castle of the Taro Clan", "the Shogun's Castle", */ // TODO DE
 	PM_SAMURAI, NON_PM, PM_LITTLE_DOG,
 	PM_LORD_SATO, PM_ROSHI, PM_ASHIKAGA_TAKAUJI,
 	PM_WOLF, PM_STALKER, S_DOG, S_ELEMENTAL,
@@ -309,19 +305,18 @@ const struct Role roles[] = {
 	10, 10, 0, 0,  8, A_INT, SPE_CLAIRVOYANCE,    -4
 },
 #ifdef TOURIST
-// TODO DE
 {	{"NOUN_TOURIST", "NOUN_TOURISTIN"}, { /* EN {	{"Tourist", 0}, { */
-	{"Rambler",     0},
-	{"Sightseer",   0},
-	{"Excursionist",0},
-	{"Peregrinator","Peregrinatrix"},
-	{"Traveler",    0},
-	{"Journeyer",   0},
-	{"Voyager",     0},
-	{"Explorer",    0},
-	{"Adventurer",  0} },
-	"Blind Io", "_The Lady", "Offler", /* Discworld */
-	"Tou", "Ankh-Morpork", "the Thieves' Guild Hall",
+	{"NOUN_WANDERER", "NOUN_WANDERIN"     }, /* EN {"Rambler",     0}, */
+	{"NOUN_SCHAULUSTIGE", "NOUN_SCHAULUSTIGIN"}, /* EN {"Sightseer",   0}, */
+	{"NOUN_AUSFLUEGLER", "NOUN_AUSFLUEGLERIN"}, /* EN {"Excursionist",0}, */
+	{"NOUN_REISENDE", "NOUN_REISENDEIN"}, /* EN {"Peregrinator","Peregrinatrix"}, */
+	{"NOUN_GLOBETROTTER", "NOUN_GLOBETROTTERIN"}, /* EN {"Traveler",    0}, */
+	{"NOUN_WELTENBUMMLER", "NOUN_WELTENBUMMLERIN"}, /* EN {"Journeyer",   0}, */
+	{"NOUN_SEEFAHRER", "NOUN_SEEFAHRERIN"}, /* EN {"Voyager",     0}, */
+	{"NOUN_ERFORSCHER", "NOUN_ERFORSCHERIN"}, /* EN {"Explorer",    0}, */
+	{"NOUN_ABENTEURER", "NOUN_ABENTEURERIN"} }, /* EN {"Adventurer",  0} }, */
+	"Blind Io", "_The Lady", "Offler", /* Discworld */ /* EN "Blind Io", "_The Lady", "Offler", */ // TODO DE
+	"Tou", "Ankh-Morpork", "the Thieves' Guild Hall", /* EN "Tou", "Ankh-Morpork", "the Thieves' Guild Hall", */ // TODO DE
 	PM_TOURIST, NON_PM, NON_PM,
 	PM_TWOFLOWER, PM_GUIDE, PM_MASTER_OF_THIEVES,
 	PM_GIANT_SPIDER, PM_FOREST_CENTAUR, S_SPIDER, S_CENTAUR,
@@ -336,19 +331,18 @@ const struct Role roles[] = {
 	0, 5, 1, 2, 10, A_INT, SPE_CHARM_MONSTER,   -4
 },
 #endif
-// TODO DE
 {	{"NOUN_VALKYRIE", 0}, { /* EN {	{"Valkyrie", 0}, { */
-	{"Stripling",   0},
-	{"Skirmisher",  0},
-	{"Fighter",     0},
-	{"Man-at-arms", "Woman-at-arms"},
-	{"Warrior",     0},
-	{"Swashbuckler",0},
-	{"Hero",        "Heroine"},
-	{"Champion",    0},
-	{"Lord",        "Lady"} },
+	{"NOUN_GRUENSCHNABEL",   0}, /* EN {"Stripling",   0}, */
+	{"NOUN_HAUDEGEN",  0}, /* EN {"Skirmisher",  0}, */
+	{"NOUN_STREITER",     "NOUN_STREITERIN"}, /* EN {"Fighter",     0}, */
+	{"NOUN_KAEMPFER", "NOUN_KAEMPFERIN"}, /* EN {"Man-at-arms", "Woman-at-arms"}, */
+	{"NOUN_KRIEGER",     "NOUN_KRIEGERIN"}, /* EN {"Warrior",     0}, */
+	{"NOUN_SAEBELRASSLER","NOUN_SAEBELRASSLERIN"}, /* EN {"Swashbuckler",0}, */
+	{"NOUN_HELD",        "NOUN_HELDIN"}, /* EN {"Hero",        "Heroine"}, */
+	{"NOUN_KRIEGERPRINZ",    "NOUN_KRIEGERPRINZESSIN"}, /* EN {"Champion",    0}, */
+	{"NOUN_LORD",        "NOUN_LADY"} }, /* EN {"Lord",        "Lady"} }, */
 	"Tyr", "Odin", "Loki", /* Norse */
-	"Val", "the Shrine of Destiny", "the cave of Surtur",
+	"Val", "the Shrine of Destiny", "the cave of Surtur", /* EN "Val", "the Shrine of Destiny", "the cave of Surtur", */ // TODO DE
 	PM_VALKYRIE, NON_PM, NON_PM /*PM_WINTER_WOLF_CUB*/,
 	PM_NORN, PM_WARRIOR, PM_LORD_SURTUR,
 	PM_FIRE_ANT, PM_FIRE_GIANT, S_ANT, S_GIANT,
@@ -362,19 +356,18 @@ const struct Role roles[] = {
 	{  1, 0,  0, 1,  0, 1 },10,	/* Energy */
 	0, 10,-2, 0,  9, A_WIS, SPE_CONE_OF_COLD,    -4
 },
-// TODO DE
 {	{"NOUN_WIZARD", 0}, { /* EN {	{"Wizard", 0}, { */
-	{"Evoker",      0},
-	{"Conjurer",    0},
-	{"Thaumaturge", 0},
-	{"Magician",    0},
-	{"Enchanter",   "Enchantress"},
-	{"Sorcerer",    "Sorceress"},
-	{"Necromancer", 0},
-	{"Wizard",      0},
-	{"Mage",        0} },
+	{"NOUN_BESCHWOERER", "NOUN_BESCHWOERERIN"}, /* EN {"Evoker",      0}, */
+	{"NOUN_GEISTERBANNER", "NOUN_GEISTERBANNERIN"}, /* EN {"Conjurer",    0}, */
+	{"NOUN_THAUMATURG", "NOUN_THAUMATURGIN"}, /* EN {"Thaumaturge", 0}, */
+	{"NOUN_ILLUSIONIST", "NOUN_ILLUSIONISTIN"}, /* EN {"Magician",    0}, */
+	{"NOUN_HEXER", "NOUN_HEXER"}, /* EN {"Enchanter",   "Enchantress"}, */
+	{"NOUN_HEXENMEISTER", "NOUN_HEXENMEISTERIN"}, /* EN {"Sorcerer",    "Sorceress"}, */
+	{"NOUN_NEKROMANT", "NOUN_NEKROMANTIN"}, /* EN {"Necromancer", 0}, */
+	{"NOUN_ZAUBERER", "NOUN_ZAUBERERIN"}, /* EN {"Wizard",      0}, */
+	{"NOUN_MAGIER", "NOUN_MAGIERIN"} }, /* EN {"Mage",        0} }, */
 	"Ptah", "Thoth", "Anhur", /* Egyptian */
-	"Wiz", "the Lonely Tower", "the Tower of Darkness",
+	"Wiz", "the Lonely Tower", "the Tower of Darkness", /* EN "Wiz", "the Lonely Tower", "the Tower of Darkness", */ // TODO DE
 	PM_WIZARD, NON_PM, PM_KITTEN,
 	PM_NEFERET_THE_GREEN, PM_APPRENTICE, PM_DARK_ONE,
 	PM_VAMPIRE_BAT, PM_XORN, S_BAT, S_WRAITH,

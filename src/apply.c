@@ -2451,11 +2451,11 @@ struct obj *obj;
 		u.ucreamed += blindinc;
 		make_blinded(Blinded + (long)blindinc, FALSE);
 		if (!Blind || (Blind && wasblind))
-			pline("There's %ssticky goop all over your %s.", /* EN pline("There's %ssticky goop all over your %s.", */ // TODO DE
-				wascreamed ? "more " : "", /* EN wascreamed ? "more " : "", */ // TODO DE
+			You("VERB_HABEN %sklebrige Sahne OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV %s.", /* EN pline("There's %ssticky goop all over your %s.", */
+				wascreamed ? "mehr " : "", /* EN wascreamed ? "more " : "", */
 				body_part(FACE));
 		else /* Blind  && !wasblind */
-			You_cant("see through all the sticky goop on your %s.", /* EN You_cant("see through all the sticky goop on your %s.", */ // TODO DE
+			pline("Durch all die klebrige Sahne KASUS_DATIV in PRONOMEN_POSSESSIV %s SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL nichts sehen.", /* EN You_cant("see through all the sticky goop on your %s.", */
 				body_part(FACE));
 	}
 	if (obj->unpaid) {

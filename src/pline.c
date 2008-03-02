@@ -471,7 +471,7 @@ ustatusline()
 		if (u.usick_type & SICK_NONVOMITABLE) {
 			if (u.usick_type & SICK_VOMITABLE)
 				Strcat(info, " und"); /* EN Strcat(info, " and"); */
-			Strcat(info, " illness"); /* EN Strcat(info, " illness"); */ // TODO DE
+			Strcat(info, " Krankheit"); /* EN Strcat(info, " illness"); */ // TODO DE
 		}
 #ifdef GERMAN
 		Strcat(info, " sterbend");
@@ -488,7 +488,7 @@ ustatusline()
 		if ((long)u.ucreamed < Blinded || Blindfolded
 						|| !haseyes(youmonst.data))
 		    Strcat(info, ", cover"); /* EN Strcat(info, ", cover"); */ // TODO DE
-		Strcat(info, "ed by sticky goop"); /* EN Strcat(info, "ed by sticky goop"); */ // TODO DE
+		Strcat(info, "ed von klebrigem Zeugs"); /* EN Strcat(info, "ed by sticky goop"); */ // TODO DE
 	    }	/* note: "goop" == "glop"; variation is intentional */
 	}
 	if (Stunned)		Strcat(info, ", stunned"); /* EN if (Stunned)		Strcat(info, ", stunned"); */ // TODO DE

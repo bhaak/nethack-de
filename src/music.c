@@ -302,7 +302,7 @@ do_pit:		    chasm = maketrap(x,y,PIT);
 				pline("SUBJECT %s fällt in eine Erdspalte!", Monnam(mtmp)); /* EN pline("%s falls into a chasm!", Monnam(mtmp)); */
 			    else if (flags.soundok && humanoid(mtmp->data))
 				You_hear("einen Schrei!"); /* EN You_hear("a scream!"); */
-			    mselftouch(mtmp, "Falling, ", TRUE); /* EN mselftouch(mtmp, "Falling, ", TRUE); */ // TODO DE
+			    mselftouch(mtmp, "Im Fallen VERB_TOUCH ", TRUE); /* EN mselftouch(mtmp, "Falling, ", TRUE); */
 			    if (mtmp->mhp > 0)
 				if ((mtmp->mhp -= rnd(6)) <= 0) {
 				    if(!cansee(x,y))
@@ -327,7 +327,7 @@ do_pit:		    chasm = maketrap(x,y,PIT);
 				    u.utraptype = TT_PIT;
 				    losehp(rnd(6),"fiel in eine Erdspalte", /* EN losehp(rnd(6),"fell into a chasm", */
 					NO_KILLER_PREFIX);
-				    selftouch("Falling, you"); /* EN selftouch("Falling, you"); */ // TODO DE
+				    selftouch("Im Fallen VERB_TOUCH PRONOMEN_PERSONAL"); /* EN selftouch("Falling, you"); */
 			    }
 		    } else newsym(x,y);
 		    break;

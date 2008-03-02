@@ -746,7 +746,7 @@ STATIC_OVL boolean
 putting_on(action)
 const char *action;
 {
-    return !strcmp(action, "wear") || !strcmp(action, "put on"); /* EN return !strcmp(action, "wear") || !strcmp(action, "put on"); */ // TODO DE
+    return !strcmp(action, "VERB_TRAGEN") || !strcmp(action, "put on"); /* EN return !strcmp(action, "wear") || !strcmp(action, "put on"); */ // TODO DE
 }
 
 /*
@@ -1128,24 +1128,24 @@ struct obj *otmp;
 	   and for corresponding armor commands ('W','T') on accessories */
 	if (ocls == ARMOR_CLASS) {
 	    if (!strcmp(word, "put on")) /* EN if (!strcmp(word, "put on")) */ // TODO DE
-		s1 = "W", s2 = "wear", s3 = ""; /* EN s1 = "W", s2 = "wear", s3 = ""; */ // TODO DE
+		s1 = "W", s2 = "tragen", s3 = ""; /* EN s1 = "W", s2 = "wear", s3 = ""; */
 	    else if (!strcmp(word, "remove")) /* EN else if (!strcmp(word, "remove")) */ // TODO DE
 		s1 = "T", s2 = "take", s3 = " off"; /* EN s1 = "T", s2 = "take", s3 = " off"; */ // TODO DE
 	} else if ((ocls == RING_CLASS || otyp == MEAT_RING) ||
 		ocls == AMULET_CLASS ||
 		(otyp == BLINDFOLD || otyp == TOWEL || otyp == LENSES)) {
-	    if (!strcmp(word, "wear")) /* EN if (!strcmp(word, "wear")) */ // TODO DE
+	    if (!strcmp(word, "VERB_TRAGEN")) /* EN if (!strcmp(word, "wear")) */
 		s1 = "P", s2 = "put", s3 = " on"; /* EN s1 = "P", s2 = "put", s3 = " on"; */ // TODO DE
 	    else if (!strcmp(word, "take off")) /* EN else if (!strcmp(word, "take off")) */ // TODO DE
 		s1 = "R", s2 = "remove", s3 = ""; /* EN s1 = "R", s2 = "remove", s3 = ""; */ // TODO DE
 	}
 	if (s1) {
-	    what = "that"; /* EN what = "that"; */ // TODO DE
+	    what = "das"; /* EN what = "that"; */
 	    /* quantity for armor and accessory objects is always 1,
 	       but some things should be referred to as plural */
 	    if (otyp == LENSES || is_gloves(otmp) || is_boots(otmp))
-		what = "those"; /* EN what = "those"; */ // TODO DE
-			pline("Use the '%s' command to %s %s%s.", s1, s2, what, s3); /* EN pline("Use the '%s' command to %s %s%s.", s1, s2, what, s3); */ // TODO DE
+		what = "die"; /* EN what = "those"; */
+			pline("Use the '%s' Befehl um %s zu %s%s.", s1, what, s2, s3); /* EN pline("Use the '%s' command to %s %s%s.", s1, s2, what, s3); */ // TODO DE
 	} else {
 	    pline(silly_thing_to, word);
 	}

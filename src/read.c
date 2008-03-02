@@ -914,7 +914,7 @@ register struct obj	*sobj;
 			You_feel("like someone is helping you."); /* EN You_feel("like someone is helping you."); */ // TODO DE
 
 		if (sobj->cursed) {
-		    pline_The("scroll disintegrates."); /* EN pline_The("scroll disintegrates."); */ // TODO DE
+		    pline_The("NOUN_SCROLL löst sich auf."); /* EN pline_The("scroll disintegrates."); */
 		} else {
 		    for (obj = invent; obj; obj = obj->nobj) {
 			long wornmask;

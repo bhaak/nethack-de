@@ -3648,7 +3648,7 @@ boolean *shopdamage;
 			    } else {
 				u.utrap = rn1(50,20);
 				u.utraptype = TT_INFLOOR;
-				You("are firmly stuck in the cooling rock."); /* EN You("are firmly stuck in the cooling rock."); */ // TODO DE
+				You("VERB_STECKEN fest im erkaltenden Gestein."); /* EN You("are firmly stuck in the cooling rock."); */
 			    }
 			}
 		    } else if ((mon = m_at(x,y)) != 0) {

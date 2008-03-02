@@ -466,7 +466,7 @@ dosinkfall()
 	    losehp(rn1(8, 25 - (int)ACURR(A_CON)),
 		   fell_on_sink, NO_KILLER_PREFIX);
 	    exercise(A_DEX, FALSE);
-	    selftouch("Falling, you"); /* EN selftouch("Falling, you"); */ // TODO DE
+	    selftouch("Im Fallen VERB_TOUCH PRONOMEN_PERSONAL"); /* EN selftouch("Falling, you"); */
 	    for (obj = level.objects[u.ux][u.uy]; obj; obj = obj->nexthere)
 		if (obj->oclass == WEAPON_CLASS || is_weptool(obj)) {
 		    You("VERB_STUERZEN auf OBJECT %s.", doname(obj)); /* EN You("fell on %s.", doname(obj)); */
@@ -1107,7 +1107,7 @@ domove()
 	if(u.utrap) {
 		if(u.utraptype == TT_PIT) {
 		    if (!rn2(2) && sobj_at(BOULDER, u.ux, u.uy)) {
-			Your("%s gets stuck in a crevice.", body_part(LEG)); /* EN Your("%s gets stuck in a crevice.", body_part(LEG)); */ // TODO DE
+			Your("%s VERB_BLEIBEN in einem Felsspalt stecken.", body_part(LEG)); /* EN Your("%s gets stuck in a crevice.", body_part(LEG)); */
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			clear_nhwindow(WIN_MESSAGE);
 			You("free your %s.", body_part(LEG)); /* EN You("free your %s.", body_part(LEG)); */ // TODO DE

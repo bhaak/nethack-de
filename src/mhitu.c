@@ -434,7 +434,7 @@ mattacku(mtmp)
 	}
 	if (youmonst.data->mlet == S_MIMIC && youmonst.m_ap_type &&
 		    !range2 && foundyou && !u.uswallow) {
-		if (!youseeit) pline("It gets stuck on you."); /* EN if (!youseeit) pline("It gets stuck on you."); */ // TODO DE
+		if (!youseeit) pline("Es bleibt KASUS_DATIV an PRONOMEN_PERSONAL kleben."); /* EN if (!youseeit) pline("It gets stuck on you."); */
 		else pline("Warte, %s!  SUBJECT Das ist ARTIKEL_UNBESTIMMTER %s namens %s!", /* EN else pline("Wait, %s!  That's a %s named %s!", */
 			   m_monnam(mtmp), youmonst.data->mname, plname);
 		u.ustuck = mtmp;

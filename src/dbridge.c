@@ -867,7 +867,7 @@ int x,y;
 		}
 	} else {
 		if (cansee(x,y))
-			pline_The("drawbridge disintegrates!"); /* EN pline_The("drawbridge disintegrates!"); */ // TODO DE
+			pline_The("NOUN_DRAWBRIDGE löst sich auf!"); /* EN pline_The("drawbridge disintegrates!"); */
 		else
 			You_hear("a loud *CRASH*!"); /* EN You_hear("a loud *CRASH*!"); */ // TODO DE
 		lev1->typ =
