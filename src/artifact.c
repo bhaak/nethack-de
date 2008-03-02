@@ -1319,10 +1319,10 @@ arti_invoke(obj)
 		newlev.dlevel = dungeons[i].dunlev_ureached;
 	    if(u.uhave.amulet || In_endgame(&u.uz) || In_endgame(&newlev) ||
 	       newlev.dnum == u.uz.dnum) {
-		You_feel("very disoriented for a moment."); /* EN You_feel("very disoriented for a moment."); */ // TODO DE
+		Du_fuehlst_dich("kurz sehr desorientiert."); /* EN You_feel("very disoriented for a moment."); */
 	    } else {
 		if(!Blind) You("are surrounded by a shimmering sphere!"); /* EN if(!Blind) You("are surrounded by a shimmering sphere!"); */ // TODO DE
-		else You_feel("weightless for a moment."); /* EN else You_feel("weightless for a moment."); */ // TODO DE
+		else Du_fuehlst_dich("kurz schwerelos."); /* EN else You_feel("weightless for a moment."); */
 		goto_level(&newlev, FALSE, FALSE, FALSE);
 	    }
 	    break;

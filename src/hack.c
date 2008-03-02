@@ -338,17 +338,17 @@ still_chewing(x,y)
 	    (IS_ROCK(lev->typ) && !IS_TREE(lev->typ) ? 30 : 60) + u.udaminc;
 	You("start chewing %s %s.", /* EN You("start chewing %s %s.", */ // TODO DE
 	    (boulder || IS_TREE(lev->typ)) ? "on a" : "a hole in the", /* EN (boulder || IS_TREE(lev->typ)) ? "on a" : "a hole in the", */ // TODO DE
-	    boulder ? "boulder" : /* EN boulder ? "boulder" : */ // TODO DE
-	    IS_TREE(lev->typ) ? "tree" : IS_ROCK(lev->typ) ? "rock" : "door"); /* EN IS_TREE(lev->typ) ? "tree" : IS_ROCK(lev->typ) ? "rock" : "door"); */ // TODO DE
+	    boulder ? "NOUN_BOULDER" : /* EN boulder ? "boulder" : */
+	    IS_TREE(lev->typ) ? "NOUN_TREE" : IS_ROCK(lev->typ) ? "NOUN_GEM_ROCK" : "NOUN_DOOR"); /* EN IS_TREE(lev->typ) ? "tree" : IS_ROCK(lev->typ) ? "rock" : "door"); */
 	watch_dig((struct monst *)0, x, y, FALSE);
 	return 1;
     } else if ((digging.effort += (30 + u.udaminc)) <= 100)  {
 	if (flags.verbose)
 	    You("%s chewing on the %s.", /* EN You("%s chewing on the %s.", */ // TODO DE
 		digging.chew ? "continue" : "begin", /* EN digging.chew ? "continue" : "begin", */ // TODO DE
-		boulder ? "boulder" : /* EN boulder ? "boulder" : */ // TODO DE
-		IS_TREE(lev->typ) ? "tree" : /* EN IS_TREE(lev->typ) ? "tree" : */ // TODO DE
-		IS_ROCK(lev->typ) ? "rock" : "door"); /* EN IS_ROCK(lev->typ) ? "rock" : "door"); */ // TODO DE
+		boulder ? "NOUN_BOULDER" : /* EN boulder ? "boulder" : */
+		IS_TREE(lev->typ) ? "NOUN_TREE" : /* EN IS_TREE(lev->typ) ? "tree" : */
+		IS_ROCK(lev->typ) ? "NOUN_GEM_ROCK" : "NOUN_DOOR"); /* EN IS_ROCK(lev->typ) ? "rock" : "door"); */
 	digging.chew = TRUE;
 	watch_dig((struct monst *)0, x, y, FALSE);
 	return 1;

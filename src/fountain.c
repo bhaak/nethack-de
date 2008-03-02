@@ -573,11 +573,11 @@ drinksink()
 			more_experienced(1,0);
 			newexplevel();
 			break;
-		case 9: pline("Gaggg... this tastes wie Abwasser!  SUBJECT PRONOMEN_PERSONAL VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL."); /* EN case 9: pline("Gaggg... this tastes like sewage!  You vomit."); */ // TODO DE
+		case 9: pline("Gaggg... das schmeckt wie Abwasser!  SUBJECT PRONOMEN_PERSONAL VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL."); /* EN case 9: pline("Gaggg... this tastes like sewage!  You vomit."); */
 			morehungry(rn1(30-ACURR(A_CON), 11));
 			vomit();
 			break;
-		case 10: pline("This water contains toxic wastes!"); /* EN case 10: pline("This water contains toxic wastes!"); */ // TODO DE
+		case 10: pline("Das Wasser enthält Giftmüll!"); /* EN case 10: pline("This water contains toxic wastes!"); */
 			if (!Unchanging) {
 				You("VERB_DURCHLEBEN eine absonderliche Metamorphose!"); /* EN You("undergo a freakish metamorphosis!"); */
 				polyself(FALSE);
@@ -589,7 +589,7 @@ drinksink()
 		case 12: You_hear("snatches of song from among the sewers..."); /* EN case 12: You_hear("snatches of song from among the sewers..."); */ // TODO DE
 			break;
 		case 19: if (Hallucination) {
-		   pline("From the murky drain, a hand reaches up... --oops--"); /* EN pline("From the murky drain, a hand reaches up... --oops--"); */ // TODO DE
+		   pline("From the murky drain, a hand reaches up... --upps--"); /* EN pline("From the murky drain, a hand reaches up... --oops--"); */ // TODO DE
 				break;
 			}
 		default: You("VERB_NEHMEN einen Schluck %s Wassers.", /* EN default: You("take a sip of %s water.", */

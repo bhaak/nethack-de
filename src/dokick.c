@@ -894,16 +894,16 @@ dokick()
 			short frtype = treefruit->otyp;
 			treefruit->quan = nfruit;
 			if (is_plural(treefruit))
-			    pline("Some %s fall from the tree!", xname(treefruit)); /* EN pline("Some %s fall from the tree!", xname(treefruit)); */ // TODO DE
+			    pline("Ein paar %s fallen vom Baum!", xname(treefruit)); /* EN pline("Some %s fall from the tree!", xname(treefruit)); */
 			else
-			    pline("%s falls from the tree!", An(xname(treefruit))); /* EN pline("%s falls from the tree!", An(xname(treefruit))); */ // TODO DE
+			    pline("SUBJECT %s fällt vom Baum!", An(xname(treefruit))); /* EN pline("%s falls from the tree!", An(xname(treefruit))); */
 			nfall = scatter(x,y,2,MAY_HIT,treefruit);
 			if (nfall != nfruit) {
 			    /* scatter left some in the tree, but treefruit
 			     * may not refer to the correct object */
 			    treefruit = mksobj(frtype, TRUE, FALSE);
 			    treefruit->quan = nfruit-nfall;
-			    pline("%ld %s got caught in the branches.", /* EN pline("%ld %s got caught in the branches.", */ // TODO DE
+			    pline("SUBJECT %ld %s VERB_BLEIBEN im Geäst hängen.", /* EN pline("%ld %s got caught in the branches.", */
 				nfruit-nfall, xname(treefruit));
 			    dealloc_obj(treefruit);
 			}

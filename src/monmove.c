@@ -1088,9 +1088,9 @@ postmov:
 			} else {
 			    if (flags.verbose) {
 				if (canseeit)
-				     You("VERB_SEE jemanden eine Tür öffnen?see a door open."); /* EN You("see a door open."); */ // TODO DE
+				     You("VERB_SEE jemanden eine Tür öffnen."); /* EN You("see a door open."); */ // TODO DE
 				else if (flags.soundok)
-				     You_hear("jemanden eine Tür öffnen?a door open."); /* EN You_hear("a door open."); */ // TODO DE
+				     You_hear("jemanden eine Tür öffnen."); /* EN You_hear("a door open."); */ // TODO DE
 			    }
 			    here->doormask = D_ISOPEN;
 			    /* newsym(mtmp->mx, mtmp->my); */  /* done below */

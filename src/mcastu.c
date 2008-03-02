@@ -394,14 +394,14 @@ int spellnum;
 	    shieldeff(u.ux, u.uy);
 	    pline("A field of force surrounds you!"); /* EN pline("A field of force surrounds you!"); */ // TODO DE
 	} else if (!destroy_arm(some_armor(&youmonst))) {
-	    Your("skin itches."); /* EN Your("skin itches."); */ // TODO DE
+	    Your("NOUN_HAUT juckt."); /* EN Your("skin itches."); */
 	}
 	dmg = 0;
 	break;
     case MGC_WEAKEN_YOU:		/* drain strength */
 	if (Antimagic) {
 	    shieldeff(u.ux, u.uy);
-	    You_feel("momentarily weakened."); /* EN You_feel("momentarily weakened."); */ // TODO DE
+	    Du_fuehlst_dich("kurzzeitig geschwächt."); /* EN You_feel("momentarily weakened."); */
 	} else {
 	    You("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL plötzlich schwächer!"); /* EN You("suddenly feel weaker!"); */
 	    dmg = mtmp->m_lev - 6;
@@ -415,8 +415,8 @@ int spellnum;
     case MGC_DISAPPEAR:		/* makes self invisible */
 	if (!mtmp->minvis && !mtmp->invis_blkd) {
 	    if (canseemon(mtmp))
-		pline("%s suddenly %s!", Monnam(mtmp), /* EN pline("%s suddenly %s!", Monnam(mtmp), */ // TODO DE
-		      !See_invisible ? "disappears" : "becomes transparent"); /* EN !See_invisible ? "disappears" : "becomes transparent"); */ // TODO DE
+		pline("SUBJECT %s %s plötzlich%s!", Monnam(mtmp), /* EN pline("%s suddenly %s!", Monnam(mtmp), */ // TODO DE
+		      !See_invisible ? "VERB_VERSCHWINDEN" : "VERB_WERDEN", !See_invisible ? "" : " durchsichtig"); /* EN !See_invisible ? "disappears" : "becomes transparent"); */
 	    mon_set_minvis(mtmp);
 	    dmg = 0;
 	} else
@@ -426,7 +426,7 @@ int spellnum;
 	if (Antimagic || Free_action) {
 	    shieldeff(u.ux, u.uy);
 	    if (!Stunned)
-		You_feel("momentarily disoriented."); /* EN You_feel("momentarily disoriented."); */ // TODO DE
+		Du_fuehlst_dich("kurzzeitig sehr desorientiert."); /* EN You_feel("momentarily disoriented."); */
 	    make_stunned(1L, FALSE);
 	} else {
 	    You(Stunned ? "struggle to keep your balance." : "reel..."); /* EN You(Stunned ? "struggle to keep your balance." : "reel..."); */ // TODO DE
@@ -460,7 +460,7 @@ int spellnum;
 	if (dmg <= 5)
 	    You("VERB_BEKOMMEN OBJECT ADJEKTIV_LEICHT %sSCHMERZEN.", body_part(HEAD)); /* EN You("get a slight %sache.", body_part(HEAD)); */
 	else if (dmg <= 10)
-	    Your("brain is on fire!"); /* EN Your("brain is on fire!"); */ // TODO DE
+	    pline("Ein brennender Schmerz durchfährt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GEHIRN!"); /* EN Your("brain is on fire!"); */
 	else if (dmg <= 20)
 	    Your("%s suddenly aches painfully!", body_part(HEAD)); /* EN Your("%s suddenly aches painfully!", body_part(HEAD)); */ // TODO DE
 	else

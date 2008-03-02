@@ -1901,7 +1901,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			if (resists_fire(mtmp)) {
 			    if (in_sight) {
 				shieldeff(mtmp->mx,mtmp->my);
-				pline("%s is uninjured.", Monnam(mtmp)); /* EN pline("%s is uninjured.", Monnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s ist unverletzt.", Monnam(mtmp)); /* EN pline("%s is uninjured.", Monnam(mtmp)); */
 			    }
 			} else {
 			    int num = d(2,4), alt;

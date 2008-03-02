@@ -1088,7 +1088,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 
 	if (u.ugangr) {
 	    Sprintf(buf, " %sangry with you", /* EN Sprintf(buf, " %sangry with you", */ // TODO DE
-		    u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : ""); /* EN u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : ""); */ // TODO DE
+		    u.ugangr > 6 ? "extremely/unglaublich " : u.ugangr > 3 ? "very " : ""); /* EN u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : ""); */ // TODO DE
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", u.ugangr);
 #endif

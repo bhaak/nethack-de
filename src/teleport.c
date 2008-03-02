@@ -415,7 +415,7 @@ tele()
 	if (!Blinded) make_blinded(0L,FALSE);
 
 	if ((u.uhave.amulet || On_W_tower_level(&u.uz)) && !rn2(3)) {
-	    You_feel("disoriented for a moment."); /* EN You_feel("disoriented for a moment."); */ // TODO DE
+	    Du_fuehlst_dich("kurz desorientiert."); /* EN You_feel("disoriented for a moment."); */
 	    return;
 	}
 	if ((Teleport_control && !Stunned)
@@ -573,7 +573,7 @@ level_tele()
 						&& !wizard
 #endif
 							) {
-	    You_feel("very disoriented for a moment."); /* EN You_feel("very disoriented for a moment."); */ // TODO DE
+	    Du_fuehlst_dich("kurz sehr desorientiert."); /* EN You_feel("very disoriented for a moment."); */
 	    return;
 	}
 	if ((Teleport_control && !Stunned)
@@ -838,7 +838,7 @@ struct trap *trap;
 	if (!Blind)
 	    You("VERB_WERDEN kurz von einem Lichtblitz geblendet."); /* EN You("are momentarily blinded by a flash of light."); */
 	else
-	    You("are momentarily disoriented."); /* EN You("are momentarily disoriented."); */ // TODO DE
+	    You("bist kurzzeitig desorientiert."); /* EN You("are momentarily disoriented."); */
 	deltrap(trap);
 	newsym(u.ux,u.uy);	/* get rid of trap symbol */
 	level_tele();
@@ -1041,9 +1041,9 @@ int in_sight;
 
 	    if (in_sight) {
 		if (canseemon(mtmp))
-		    pline("%s seems disoriented.", monname); /* EN pline("%s seems disoriented.", monname); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHEINEN desorientiert zu sein.", monname); /* EN pline("%s seems disoriented.", monname); */
 		else
-		    pline("%s suddenly disappears!", monname); /* EN pline("%s suddenly disappears!", monname); */ // TODO DE
+		    pline("SUBJECT %s VERB_VERSCHWINDEN plötzlich!", monname); /* EN pline("%s suddenly disappears!", monname); */
 		seetrap(trap);
 	    }
 	}
@@ -1095,7 +1095,7 @@ int in_sight;
 
 		if (mon_has_amulet(mtmp) || In_endgame(&u.uz)) {
 		    if (in_sight)
-			pline("%s seems very disoriented for a moment.", /* EN pline("%s seems very disoriented for a moment.", */ // TODO DE
+			pline("SUBJECT %s VERB_SCHEINEN kurz sehr desorientiert zu sein.", /* EN pline("%s seems very disoriented for a moment.", */
 				Monnam(mtmp));
 		    return 0;
 		}

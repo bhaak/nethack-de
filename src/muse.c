@@ -591,7 +591,7 @@ mon_tele:
 #endif
 			On_W_tower_level(&u.uz)) && !rn2(3)) {
 		    if (vismon)
-			pline("%s seems disoriented for a moment.", /* EN pline("%s seems disoriented for a moment.", */ // TODO DE
+			pline("SUBJECT %s VERB_SCHEINEN kurz desorientiert zu sein.", /* EN pline("%s seems disoriented for a moment.", */
 				Monnam(mtmp));
 		    return 2;
 		}
@@ -624,7 +624,7 @@ mon_tele:
 
 			if (mon_has_amulet(mtmp) || In_endgame(&u.uz)) {
 			    if (vismon)
-				pline("%s seems very disoriented for a moment.", /* EN pline("%s seems very disoriented for a moment.", */ // TODO DE
+				pline("SUBJECT %s VERB_SCHEINEN kurz sehr desorientiert zu sein.", /* EN pline("%s seems very disoriented for a moment.", */
 					Monnam(mtmp));
 			    return 2;
 			}

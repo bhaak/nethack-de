@@ -493,7 +493,7 @@ boolean pets_only;	/* true for ascension or final escape */
 			stay_behind = TRUE;
 		} else if (mon_has_amulet(mtmp)) {
 			if (canseemon(mtmp))
-			    pline("%s seems very disoriented for a moment.", /* EN pline("%s seems very disoriented for a moment.", */ // TODO DE
+			    pline("SUBJECT %s VERB_SCHEINEN kurz sehr desorientiert zu sein.", /* EN pline("%s seems very disoriented for a moment.", */
 				Monnam(mtmp));
 			stay_behind = TRUE;
 		} else if (mtmp->mtame && mtmp->mtrapped) {

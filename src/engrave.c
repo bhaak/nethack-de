@@ -25,7 +25,7 @@ static const char *random_mesg[] = {
 	"See you next Wednesday", /* EN "See you next Wednesday", */ /* Thriller */ // TODO DE
 	"notary sojak", /* EN "notary sojak", */ /* Smokey Stover */ // TODO DE
 	"For a good time call 8?7-5309", /* EN "For a good time call 8?7-5309", */ // TODO DE
-	"Please don't feed the animals.", /* EN "Please don't feed the animals.", */ /* Various zoos around the world */ // TODO DE
+	"Tiere bitte nicht füttern.", /* EN "Please don't feed the animals.", */ /* Various zoos around the world */
 	"Ein Neger mit Gazelle zagt im Regen nie.", /* A palindrome */ /* EN "Madam, in Eden, I'm Adam.", */
 	"Und immer ein Bit über behalten!", /* die zwei Wolfgangs */ /* EN "Two thumbs up!", */ /* Siskel & Ebert */
 	"Hello, World!", /* The First C Program */
