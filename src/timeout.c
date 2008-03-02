@@ -323,8 +323,8 @@ nh_timeout()
 			(void) float_down(I_SPECIAL|TIMEOUT, 0L);
 			break;
 		case STRANGLED:
-			killer_format = KILLED_BY;
-			killer = (u.uburied) ? "suffocation" : "strangulation"; /* EN killer = (u.uburied) ? "suffocation" : "strangulation"; */ // TODO DE
+			killer_format = NO_KILLER_PREFIX; /* EN killer_format = KILLED_BY; */
+			killer = (u.uburied) ? "starb an Erstickung" : "starb durch Strangulation"; /* EN killer = (u.uburied) ? "suffocation" : "strangulation"; */
 			done(DIED);
 			break;
 		case FUMBLING:
@@ -501,7 +501,7 @@ long timeout;
 
 	    if (cansee_hatchspot) {
 		Sprintf(monnambuf, "%s%s",
-			siblings ? "some " : "",
+			siblings ? "some " : "", /* EN siblings ? "some " : "", */ // TODO DE
 			siblings ?
 			makeplural(m_monnam(mon)) : an(m_monnam(mon)));
 		/* we don't learn the egg type here because learning
@@ -644,11 +644,11 @@ slip_or_trip()
 		name; if not, look for rocks to trip over; trip over
 		anonymous "something" if there aren't any rocks.
 	     */
-	    pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; /* EN pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; */ // TODO DE
+	    pronoun = otmp->quan == 1L ? "NOUN_IT" : Hallucination ? "they" : "them"; /* EN pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; */ // TODO DE
 	    what = !otmp->nexthere ? pronoun :
 		  (otmp->dknown || !Blind) ? doname(otmp) :
 		  ((otmp = sobj_at(ROCK, u.ux, u.uy)) == 0 ? something :
-		  (otmp->quan == 1L ? "a rock" : "some rocks")); /* EN (otmp->quan == 1L ? "a rock" : "some rocks")); */ // TODO DE
+		  (otmp->quan == 1L ? "einen Stein" : "mehrere Steine")); /* EN (otmp->quan == 1L ? "a rock" : "some rocks")); */
 	    if (Hallucination) {
 		what = strcpy(buf, what);
 		buf[0] = highc(buf[0]);
@@ -656,7 +656,7 @@ slip_or_trip()
 			what, (!otmp || otmp->quan == 1L) ? "s" : "",
 			body_part(FOOT));
 	    } else {
-		You("trip over %s.", what); /* EN You("trip over %s.", what); */ // TODO DE
+		You("VERB_STOLPERN über OBJECT %s.", what); /* EN You("trip over %s.", what); */
 	    }
 	} else if (rn2(3) && is_ice(u.ux, u.uy)) {
 	    pline("%s %s%s on the ice.", /* EN pline("%s %s%s on the ice.", */ // TODO DE
@@ -689,10 +689,10 @@ slip_or_trip()
 	    else {
 		switch (rn2(4)) {
 		  case 1:
-			Your("%s slip out of the stirrups.", makeplural(body_part(FOOT))); /* EN Your("%s slip out of the stirrups.", makeplural(body_part(FOOT))); */ // TODO DE
+			Your("%s VERB_RUTSCHEN aus den Steigbügeln.", makeplural(body_part(FOOT))); /* EN Your("%s slip out of the stirrups.", makeplural(body_part(FOOT))); */
 			break;
 		  case 2:
-			You("let go of the reins."); /* EN You("let go of the reins."); */ // TODO DE
+			You("VERB_LASSEN die Zügel los."); /* EN You("let go of the reins."); */
 			break;
 		  case 3:
 			You("bang into the saddle-horn."); /* EN You("bang into the saddle-horn."); */ // TODO DE
