@@ -275,7 +275,7 @@ register struct obj *obj;
 		break;
 	    case WEAPON_CLASS:
 		if (is_poisonable(obj) && obj->opoisoned)
-			Strcpy(buf, "poisoned "); /* EN Strcpy(buf, "poisoned "); */ // TODO DE
+			Strcpy(buf, "ADJEKTIV_POISONED "); /* EN Strcpy(buf, "poisoned "); */
 	    case VENOM_CLASS:
 	    case TOOL_CLASS:
 		if (typ == LENSES)
@@ -591,7 +591,7 @@ register struct obj *obj;
 	 * combining both into one function taking a parameter.
 	 */
 	/* must check opoisoned--someone can have a weirdly-named fruit */
-	if (!strncmp(bp, "poisoned ", 9) && obj->opoisoned) { /* EN if (!strncmp(bp, "poisoned ", 9) && obj->opoisoned) { */ // TODO DE
+	if (!strncmp(bp, "ADJEKTIV_POISONED ", 9) && obj->opoisoned) { /* EN if (!strncmp(bp, "poisoned ", 9) && obj->opoisoned) { */
 		bp += 9;
 		ispoisoned = TRUE;
 	}
@@ -606,7 +606,7 @@ register struct obj *obj;
 		Strcpy(prefix, "ARTIKEL_UNBESTIMMTER ");
 
 #ifdef INVISIBLE_OBJECTS
-	if (obj->oinvis) Strcat(prefix,"invisible "); /* EN if (obj->oinvis) Strcat(prefix,"invisible "); */ // TODO DE
+	if (obj->oinvis) Strcat(prefix,"ADJEKTIV_INVISIBLE "); /* EN if (obj->oinvis) Strcat(prefix,"invisible "); */
 #endif
 
 	if (obj->bknown &&
@@ -651,7 +651,7 @@ register struct obj *obj;
 		break;
 	case WEAPON_CLASS:
 		if(ispoisoned)
-			Strcat(prefix, "poisoned "); /* EN Strcat(prefix, "poisoned "); */ // TODO DE
+			Strcat(prefix, "ADJEKTIV_POISONED "); /* EN Strcat(prefix, "poisoned "); */
 plus:
 		add_erosion_words(obj, prefix);
 		if(obj->known) {
@@ -1880,13 +1880,13 @@ boolean from_user;
 		if (!bp || !*bp) goto any;
 		if (!strncmpi(bp, "MODIFIER_CORPSE ", l=16)) {
 		} else if (!strncmpi(bp, "PARTIKEL_VON ", l=13)) {
-		} else if (!strncmpi(bp, "ARTIKEL_UNBESTIMMTER ", l=21)) {
+		} else if (!strncmpi(bp, "ARTIKEL_UNBESTIMMTER ", l=21)) { /* EN } else if (!strncmpi(bp, "a ", l=2)) { */
 			cnt = 1;
 			/* FIXME: move following line, when all is translated */
 			//do { bp++; } while(*(bp+l) != ' ');
-		} else if (!strncmpi(bp, "ARTIKEL_BESTIMMTER ", l=19) ||
-		           !strncmpi(bp, "ARTIKEL_BESTIMMTER ", l=19) ||
-		           !strncmpi(bp, " ARTIKEL_BESTIMMTER ", l=19)) {
+		} else if (!strncmpi(bp, "ARTIKEL_BESTIMMTER ", l=19) || /* EN } else if (!strncmpi(bp, "ARTIKEL_BESTIMMTER ", l=19) || */
+		           !strncmpi(bp, "ARTIKEL_BESTIMMTER ", l=19) || /* EN !strncmpi(bp, "ARTIKEL_BESTIMMTER ", l=19) || */
+		           !strncmpi(bp, " ARTIKEL_BESTIMMTER ", l=19)) { /* EN !strncmpi(bp, " ARTIKEL_BESTIMMTER ", l=19)) { */
 			;	/* just increment `bp' by `l' below */
 		} else if (!cnt && digit(*bp) && strcmp(bp, "0")) {
 			cnt = atoi(bp);
@@ -1899,68 +1899,67 @@ boolean from_user;
 			while(digit(*bp)) bp++;
 			while(*bp == ' ') bp++;
 			l = 0;
-		} else if (!strncmpi(bp, "ADJEKTIV_BLESSED ", l=17) ||
-		     !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17) ||
-			   !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17)) {
+		} else if (!strncmpi(bp, "ADJEKTIV_BLESSED ", l=17) || /* EN } else if (!strncmpi(bp, "blessed ", l=8) || */
+			   !strncmpi(bp, "ADJEKTIV_BLESSED ", l=17)) { /* EN !strncmpi(bp, "holy ", l=5)) { */
 			blessed = 1;
 			//fprintf(stderr, "\n\nblessed %s\n", bp); // DE DEBUG
-		} else if (!strncmpi(bp, "ADJEKTIV_CURSED ", l=16) ||
-			   !strncmpi(bp, "ADJEKTIV_CURSED ", l=16)) {
+		} else if (!strncmpi(bp, "ADJEKTIV_CURSED ", l=16) || /* EN } else if (!strncmpi(bp, "cursed ", l=7) || */
+			   !strncmpi(bp, "ADJEKTIV_CURSED ", l=16)) { /* EN !strncmpi(bp, "unholy ", l=7)) { */
 			iscursed = 1;
-		} else if (!strncmpi(bp, "ADJEKTIV_UNCURSED ", l=18)) {
+		} else if (!strncmpi(bp, "ADJEKTIV_UNCURSED ", l=18)) { /* EN } else if (!strncmpi(bp, "uncursed ", l=9)) { */
 			uncursed = 1;
 #ifdef INVISIBLE_OBJECTS
-		} else if (!strncmpi(bp, "invisible ", l=10)) {
+		} else if (!strncmpi(bp, "ADJEKTIV_INVISIBLE ", l=19)) { /* EN } else if (!strncmpi(bp, "invisible ", l=10)) { */
 			isinvisible = 1;
 #endif
-		} else if (!strncmpi(bp, "rustproof ", l=10) || 
-			   !strncmpi(bp, "erodeproof ", l=11) || 
-			   !strncmpi(bp, "corrodeproof ", l=13) ||
-			   !strncmpi(bp, "fixed ", l=6) ||
-			   !strncmpi(bp, "fireproof ", l=10) ||
-			   !strncmpi(bp, "rotproof ", l=9)) {
+		} else if (!strncmpi(bp, "rustproof ", l=10) || /* EN } else if (!strncmpi(bp, "rustproof ", l=10) ||  */ // TODO DE
+			   !strncmpi(bp, "erodeproof ", l=11) || /* EN !strncmpi(bp, "erodeproof ", l=11) ||  */ // TODO DE
+			   !strncmpi(bp, "corrodeproof ", l=13) || /* EN !strncmpi(bp, "corrodeproof ", l=13) || */ // TODO DE
+			   !strncmpi(bp, "fixed ", l=6) || /* EN !strncmpi(bp, "fixed ", l=6) || */ // TODO DE
+			   !strncmpi(bp, "fireproof ", l=10) || /* EN !strncmpi(bp, "fireproof ", l=10) || */ // TODO DE
+			   !strncmpi(bp, "rotproof ", l=9)) { /* EN !strncmpi(bp, "rotproof ", l=9)) { */ // TODO DE
 			erodeproof = 1;
-		} else if (!strncmpi(bp,"lit ", l=4) ||
-			   !strncmpi(bp,"burning ", l=8)) {
+		} else if (!strncmpi(bp,"lit ", l=4) || /* EN } else if (!strncmpi(bp,"lit ", l=4) || */ // TODO DE
+			   !strncmpi(bp,"burning ", l=8)) { /* EN !strncmpi(bp,"burning ", l=8)) { */ // TODO DE
 			islit = 1;
-		} else if (!strncmpi(bp,"unlit ", l=6) ||
-			   !strncmpi(bp,"extinguished ", l=13)) {
+		} else if (!strncmpi(bp,"unlit ", l=6) || /* EN } else if (!strncmpi(bp,"unlit ", l=6) || */ // TODO DE
+			   !strncmpi(bp,"extinguished ", l=13)) { /* EN !strncmpi(bp,"extinguished ", l=13)) { */ // TODO DE
 			islit = 0;
 		/* "unlabeled" and "blank" are synonymous */
-		} else if (!strncmpi(bp,"unlabeled ", l=10) ||
-			   !strncmpi(bp,"unlabelled ", l=11) ||
-			   !strncmpi(bp,"blank ", l=6)) {
+		} else if (!strncmpi(bp,"unlabeled ", l=10) || /* EN } else if (!strncmpi(bp,"unlabeled ", l=10) || */ // TODO DE
+			   !strncmpi(bp,"unlabelled ", l=11) || /* EN !strncmpi(bp,"unlabelled ", l=11) || */ // TODO DE
+			   !strncmpi(bp,"blank ", l=6)) { /* EN !strncmpi(bp,"blank ", l=6)) { */ // TODO DE
 			unlabeled = 1;
-		} else if(!strncmpi(bp, "poisoned ",l=9)
+		} else if(!strncmpi(bp, "ADJEKTIV_POISONED ",l=9) /* EN } else if(!strncmpi(bp, "poisoned ",l=9) */
 #ifdef WIZARD
-			  || (wizard && !strncmpi(bp, "trapped ",l=8))
+			  || (wizard && !strncmpi(bp, "trapped ",l=8)) /* EN || (wizard && !strncmpi(bp, "trapped ",l=8)) */ // TODO DE
 #endif
 			  ) {
 			ispoisoned=1;
-		} else if(!strncmpi(bp, "ADJEKTIV_GREASED ",l=8)) { /* EN } else if(!strncmpi(bp, "greased ",l=8)) { */
+		} else if(!strncmpi(bp, "ADJEKTIV_GREASED ",l=8)) { /* EN } else if(!strncmpi(bp, "greased ",l=8)) { */ // TODO DE
 			isgreased=1;
-		} else if (!strncmpi(bp, "very ", l=5)) {
+		} else if (!strncmpi(bp, "very ", l=5)) { /* EN } else if (!strncmpi(bp, "very ", l=5)) { */ // TODO DE
 			/* very rusted very heavy iron ball */
 			very = 1;
-		} else if (!strncmpi(bp, "thoroughly ", l=11)) {
+		} else if (!strncmpi(bp, "thoroughly ", l=11)) { /* EN } else if (!strncmpi(bp, "thoroughly ", l=11)) { */ // TODO DE
 			very = 2;
-		} else if (!strncmpi(bp, "rusty ", l=6) ||
-			   !strncmpi(bp, "rusted ", l=7) ||
-			   !strncmpi(bp, "burnt ", l=6) ||
-			   !strncmpi(bp, "burned ", l=7)) {
+		} else if (!strncmpi(bp, "rusty ", l=6) || /* EN } else if (!strncmpi(bp, "rusty ", l=6) || */ // TODO DE
+			   !strncmpi(bp, "rusted ", l=7) || /* EN !strncmpi(bp, "rusted ", l=7) || */ // TODO DE
+			   !strncmpi(bp, "burnt ", l=6) || /* EN !strncmpi(bp, "burnt ", l=6) || */ // TODO DE
+			   !strncmpi(bp, "burned ", l=7)) { /* EN !strncmpi(bp, "burned ", l=7)) { */ // TODO DE
 			eroded = 1 + very;
 			very = 0;
-		} else if (!strncmpi(bp, "corroded ", l=9) ||
-			   !strncmpi(bp, "rotted ", l=7)) {
+		} else if (!strncmpi(bp, "corroded ", l=9) || /* EN } else if (!strncmpi(bp, "corroded ", l=9) || */ // TODO DE
+			   !strncmpi(bp, "rotted ", l=7)) { /* EN !strncmpi(bp, "rotted ", l=7)) { */ // TODO DE
 			eroded2 = 1 + very;
 			very = 0;
-		} else if (!strncmpi(bp, "halb ADJEKTIV_EATEN ", l=20)) {
+		} else if (!strncmpi(bp, "halb ADJEKTIV_EATEN ", l=20)) { /* EN } else if (!strncmpi(bp, "half eaten ", l=11)) { */
 			halfeaten = 1;
-		} else if (!strncmpi(bp, "historic ", l=9)) {
+		} else if (!strncmpi(bp, "historic ", l=9)) { /* EN } else if (!strncmpi(bp, "historic ", l=9)) { */ // TODO DE
 			ishistoric = 1;
-		} else if (!strncmpi(bp, "diluted ", l=8)) {
+		} else if (!strncmpi(bp, "diluted ", l=8)) { /* EN } else if (!strncmpi(bp, "diluted ", l=8)) { */ // TODO DE
 			isdiluted = 1;
-		} else if(!strncmpi(bp, "empty ", l=6)) {
+		} else if(!strncmpi(bp, "empty ", l=6)) { /* EN } else if(!strncmpi(bp, "empty ", l=6)) { */ // TODO DE
 			contents = EMPTY;
 		} else { /*pline("wishing, NICHT erkannt: %s",bp);*/ break; }
 		//pline("wishing, erkannt: %s",bp);

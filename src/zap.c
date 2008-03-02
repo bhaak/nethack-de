@@ -3363,9 +3363,9 @@ register int dx,dy;
 		    if (mon->data == &mons[PM_DEATH] && abstype == ZT_DEATH) {
 			if (canseemon(mon)) {
 			    hit(fltxt, mon, ".");
-			    pline("%s absorbs the deadly %s!", Monnam(mon), /* EN pline("%s absorbs the deadly %s!", Monnam(mon), */ // TODO DE
+			    pline("SUBJECT %s VERB_ABSORBIEREN OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_TOEDLICH %s!", Monnam(mon), /* EN pline("%s absorbs the deadly %s!", Monnam(mon), */
 				  type == ZT_BREATH(ZT_DEATH) ?
-					"blast" : "ray"); /* EN "blast" : "ray"); */
+					"blast" : "NOUN_RAY"); /* EN "blast" : "ray"); */ // TODO DE
 			    pline("It seems even stronger than before."); /* EN pline("It seems even stronger than before."); */ // TODO DE
 			}
 			break; /* Out of while loop */
@@ -3626,7 +3626,7 @@ boolean *shopdamage;
 		    bury_objs(x,y);
 		    if(cansee(x,y)) {
 			if(moat)
-				Norep("The moat is bridged with ice!"); /* EN Norep("The moat is bridged with ice!"); */ // TODO DE
+				Norep("Die Oberfläche KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_MOAT vereist!"); /* EN Norep("The moat is bridged with ice!"); */
 			else if(lava)
 				Norep("Die Lava erkaltet und erstarrt."); /* EN Norep("The lava cools and solidifies."); */
 			else

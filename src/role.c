@@ -162,11 +162,11 @@ const struct Role roles[] = {
 	{"NOUN_KANDIDAT",         "NOUN_KANDIDATIN"}, /* EN {"Candidate",         0}, */
 	{"NOUN_NOVIZE",            "NOUN_NOVIZIN"}, /* EN {"Novice",            0}, */
 	{"NOUN_GEWEIHTE",          "NOUN_GEWEIHTIN"}, /* EN {"Initiate",          0}, */
-	{"SCHUELER_DER_STEINE", "SCHUELERIN_DER_STEINE"}, /* EN {"Student of Stones", 0}, */
-	{"SCHUELER_DER_WASSER", "SCHUELERIN_DER_WASSER"}, /* EN {"Student of Waters", 0}, */
-	{"SCHUELER_DER_METALLE", "SCHUELERIN_DER_METALLE"}, /* EN {"Student of Metals", 0}, */
-	{"SCHUELER_DER_WINDE",  "SCHUELERIN_DER_WINDE"}, /* EN {"Student of Winds",  0}, */
-	{"SCHUELER_DER_FEUER",   "SCHUELERIN_DER_FEUER"}, /* EN {"Student of Fire",   0}, */
+	{"NOUN_SCHUELER_DER_STEINE", "NOUN_SCHUELERIN_DER_STEINE"}, /* EN {"Student of Stones", 0}, */
+	{"NOUN_SCHUELER_DER_WASSER", "NOUN_SCHUELERIN_DER_WASSER"}, /* EN {"Student of Waters", 0}, */
+	{"NOUN_SCHUELER_DER_METALLE", "NOUN_SCHUELERIN_DER_METALLE"}, /* EN {"Student of Metals", 0}, */
+	{"NOUN_SCHUELER_DER_WINDE",  "NOUN_SCHUELERIN_DER_WINDE"}, /* EN {"Student of Winds",  0}, */
+	{"NOUN_SCHUELER_DER_FEUER",   "NOUN_SCHUELERIN_DER_FEUER"}, /* EN {"Student of Fire",   0}, */
 	{"NOUN_MEISTER",            "NOUN_MEISTERIN"} }, /* EN {"Master",            0} }, */
 	"Shan Lai Ching", "Chih Sung-tzu", "Huan Ti", /* Chinese */
 	"Mon", "the Monastery of Chan-Sune", /* EN "Mon", "the Monastery of Chan-Sune", */ // TODO DE

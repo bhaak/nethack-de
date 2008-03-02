@@ -511,7 +511,7 @@ mattacku(mtmp)
 	if(u.uinvulnerable) {
 	    /* monsters won't attack you */
 	    if(mtmp == u.ustuck)
-		pline("SUBECT %s VERB_LOESEN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_GRIFF ein bisschen.", Monnam(mtmp)); /* EN pline("%s loosens its grip slightly.", Monnam(mtmp)); */
+		pline("SUBJECT %s VERB_LOESEN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_GRIFF ein bisschen.", Monnam(mtmp)); /* EN pline("%s loosens its grip slightly.", Monnam(mtmp)); */
 	    else if(!range2) {
 		if (youseeit || sensemon(mtmp))
 		    pline("%s starts to attack you, but pulls back.", /* EN pline("%s starts to attack you, but pulls back.", */ // TODO DE
@@ -597,7 +597,7 @@ mattacku(mtmp)
 				else
 				    You_hear("a %s nearby.", /* EN You_hear("a %s nearby.", */ // TODO DE
 					     is_whirly(mtmp->data) ?
-						"rushing noise" : "splat"); /* EN "rushing noise" : "splat"); */ // TODO DE
+						"rushing noise" : "Platschen"); /* EN "rushing noise" : "splat"); */ // TODO DE
 			   }
 			}
 			break;

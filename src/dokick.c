@@ -974,7 +974,7 @@ dokick()
 				      "Muddy waste pops up from the drain")); /* EN "Muddy waste pops up from the drain")); */ // TODO DE
 			if(!(maploc->looted & S_LRING)) { /* once per sink */
 			    if (!Blind)
-				You("siehst mittendrin einen Ring glitzern."); /* EN You("see a ring shining in its midst."); */
+				You("VERB_SEHEN mittendrin einen Ring glitzern."); /* EN You("see a ring shining in its midst."); */
 			    (void) mkobj_at(RING_CLASS, x, y, TRUE);
 			    newsym(x, y);
 			    exercise(A_DEX, TRUE);
@@ -1072,7 +1072,7 @@ dumb:
 			if (canspotmon(mtmp))
 			    pline("SUBJECT %s VERB_YELL:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */
 			else
-			    You_hear("OBJECT NOUN_JEMAND VERB_YELL:"); /* EN You_hear("someone yell:"); */ // TODO DE
+			    You_hear("OBJECT NOUN_JEMAND MODIFIER_VERB_INFINITIV VERB_YELL:"); /* EN You_hear("someone yell:"); */
 			verbalize("Halt, Dieb!  Du bist verhaftet!"); /* EN verbalize("Halt, thief!  You're under arrest!"); */
 			(void) angry_guards(FALSE);
 			break;
@@ -1344,14 +1344,14 @@ boolean shop_floor_obj;
 		) {
 		if (otmp->otyp == MIRROR)
 		    change_luck(-2);
-		result = "crash"; /* EN result = "crash"; */ // TODO DE
+		result = "Klirren"; /* EN result = "crash"; */
 	    } else {
 		/* penalty for breaking eggs laid by you */
 		if (otmp->otyp == EGG && otmp->spe && otmp->corpsenm >= LOW_PM)
 		    change_luck((schar) -min(otmp->quan, 5L));
-		result = "splat"; /* EN result = "splat"; */ // TODO DE
+		result = "Platschen"; /* EN result = "splat"; */
 	    }
-	    You_hear("a muffled %s.",result); /* EN You_hear("a muffled %s.",result); */ // TODO DE
+	    You_hear("ein dumpfes %s.",result); /* EN You_hear("a muffled %s.",result); */
 	    obj_extract_self(otmp);
 	    obfree(otmp, (struct obj *) 0);
 	    return TRUE;

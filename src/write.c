@@ -184,7 +184,7 @@ found:
 		/* scrolls disappear, spellbooks don't */
 		if (paper->oclass == SPBOOK_CLASS) {
 			pline_The(
-		       "NOUN_SPELLBOOK bleibt unfertig und PRONOMEN_POSSESSIV writing fades."); /* EN "spellbook is left unfinished and your writing fades."); */ // TODO DE
+		       "NOUN_SPELLBOOK ist nicht fertig und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_SCHRIFT verblasst."); /* EN "spellbook is left unfinished and your writing fades."); */
 			update_inventory();	/* pen charges */
 		} else {
 			pline_The("NOUN_SCROLL ist jetzt nutzlos und verschwindet!"); /* EN pline_The("scroll is now useless and disappears!"); */

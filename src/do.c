@@ -97,13 +97,13 @@ boolean pushing;
 			boolean moat = (ltyp != WATER) &&
 			    !Is_medusa_level(&u.uz) && !Is_waterlevel(&u.uz);
 
-			pline("Es gibt ein lautes Platschen, als SUBJECT_IM_SATZ %s %s ARTIKEL_BESTIMMTER %s %s.", /* EN There("is a large splash as %s %s the %s.", */
+			pline("Es gibt ein lautes Pflatschen, als SUBJECT_IM_SATZ %s %s ARTIKEL_BESTIMMTER %s %s.", /* EN There("is a large splash as %s %s the %s.", */
 			      the(xname(otmp)), fills_up? "KASUS_AKKUSATIV":"KASUS_AKKUSATIV in", /* EN the(xname(otmp)), fills_up? "fills":"falls into", */
 			      lava ? "NOUN_LAVA" : ltyp==POOL ? "NOUN_POOL" : /* EN lava ? "lava" : ltyp==POOL ? "pool" : */
 			      moat ? "NOUN_MOAT" : "NOUN_WATER", /* EN moat ? "moat" : "water"); */
 			      fills_up? "VERB_FUELLEN":"VERB_FALLEN"); /* EN  */
 		    } else if (flags.soundok)
-			You_hear("ein %s Platschen.", lava ? " zischendes" : ""); /* EN You_hear("a%s splash.", lava ? " sizzling" : ""); */
+			You_hear("ein %s Pflatschen.", lava ? " zischendes" : ""); /* EN You_hear("a%s splash.", lava ? " sizzling" : ""); */
 		    wake_nearto(rx, ry, 40);
 		}
 

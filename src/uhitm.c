@@ -778,7 +778,7 @@ int thrown;
 
 			if (touch_petrifies(&mons[obj->corpsenm])) {
 			    /*learn_egg_type(obj->corpsenm);*/
-			    pline("Splat! You hit %s with %s %s egg%s!", /* EN pline("Splat! You hit %s with %s %s egg%s!", */ // TODO DE
+			    pline("Klatsch! You hit %s with %s %s egg%s!", /* EN pline("Splat! You hit %s with %s %s egg%s!", */ // TODO DE
 				mon_nam(mon),
 				obj->known ? "the" : cnt > 1L ? "some" : "a", /* EN obj->known ? "the" : cnt > 1L ? "some" : "a", */ // TODO DE
 				obj->known ? mons[obj->corpsenm].mname : "petrifying", /* EN obj->known ? mons[obj->corpsenm].mname : "petrifying", */ // TODO DE
@@ -809,7 +809,7 @@ int thrown;
 				obj->owt = weight(obj);
 				if (thrown) place_object(obj, mon->mx, mon->my);
 			    } else {
-				pline("Splat!"); /* EN pline("Splat!"); */ // TODO DE
+				pline("Platsch!"); /* EN pline("Splat!"); */
 				useup_eggs(obj);
 				exercise(A_WIS, FALSE);
 			    }
@@ -831,7 +831,7 @@ int thrown;
 				     ? AT_SPIT : AT_WEAP), obj)) {
 			    if (Blind) {
 				pline(obj->otyp == CREAM_PIE ?
-				      "Splat!" : "Splash!"); /* EN "Splat!" : "Splash!"); */ // TODO DE
+				      "Klatsch!" : "Pflatsch!"); /* EN "Splat!" : "Splash!"); */
 			    } else if (obj->otyp == BLINDING_VENOM) {
 				pline_The("NOUN_SCHLANGENGIFT VERB_BLENDEN OBJECT %s%s!", mon_nam(mon), /* EN pline_The("venom blinds %s%s!", mon_nam(mon), */
 					  mon->mcansee ? "" : " further"); /* EN mon->mcansee ? "" : " further"); */ // TODO DE
@@ -855,7 +855,7 @@ int thrown;
 				mon->mblinded = 127;
 			    else mon->mblinded += tmp;
 			} else {
-			    pline(obj->otyp==CREAM_PIE ? "Splat!" : "Splash!"); /* EN pline(obj->otyp==CREAM_PIE ? "Splat!" : "Splash!"); */ // TODO DE
+			    pline(obj->otyp==CREAM_PIE ? "Klatsch!" : "Pflatsch!"); /* EN pline(obj->otyp==CREAM_PIE ? "Splat!" : "Splash!"); */
 			    setmangry(mon);
 			}
 			if (thrown) obfree(obj, (struct obj *)0);

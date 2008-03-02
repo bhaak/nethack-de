@@ -1666,14 +1666,14 @@ boolean in_view;
 			break;
 		case EGG:
 		case MELON:
-			pline("Splat!"); /* EN pline("Splat!"); */ // TODO DE
+			pline("Klatsch!"); /* EN pline("Splat!"); */
 			break;
 		case CREAM_PIE:
 			if (in_view) pline("Was für eine Sauerei!"); /* EN if (in_view) pline("What a mess!"); */
 			break;
 		case ACID_VENOM:
 		case BLINDING_VENOM:
-			pline("Splash!"); /* EN pline("Splash!"); */ // TODO DE
+			pline("Pflatsch!"); /* EN pline("Splash!"); */
 			break;
 	}
 }

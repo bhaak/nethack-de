@@ -697,7 +697,7 @@ struct entity *etmp;
 #endif
 		if (is_pool(etmp->ex, etmp->ey) && !e_inview)
 			if (flags.soundok)
-				You_hear("ein Platschen."); /* EN You_hear("a splash."); */
+				You_hear("ein Pflatschen."); /* EN You_hear("a splash."); */
 		if (e_survives_at(etmp, etmp->ex, etmp->ey)) {
 			if (e_inview && !is_flyer(etmp->edata) &&
 			    !is_floater(etmp->edata))
@@ -851,13 +851,13 @@ int x,y;
 			    pline_The("portcullis of the drawbridge falls into the %s!", /* EN pline_The("portcullis of the drawbridge falls into the %s!", */ // TODO DE
 				  lava ? "NOUN_LAVA" : "NOUN_MOAT"); /* EN lava ? "lava" : "moat"); */
 			else if (flags.soundok)
-				You_hear("a loud *SPLASH*!"); /* EN You_hear("a loud *SPLASH*!"); */ // TODO DE
+				You_hear("ein lautes loud *PFLATSCH*!"); /* EN You_hear("a loud *SPLASH*!"); */
 		} else {
 			if (cansee(x,y))
 			    pline_The("drawbridge collapses into the %s!", /* EN pline_The("drawbridge collapses into the %s!", */ // TODO DE
 				  lava ? "NOUN_LAVA" : "NOUN_MOAT"); /* EN lava ? "lava" : "moat"); */
 			else if (flags.soundok)
-				You_hear("a loud *SPLASH*!"); /* EN You_hear("a loud *SPLASH*!"); */ // TODO DE
+				You_hear("ein lautes *PFLATSCH*!"); /* EN You_hear("a loud *SPLASH*!"); */
 		}
 		lev1->typ = lava ? LAVAPOOL : MOAT;
 		lev1->drawbridgemask = 0;
@@ -869,7 +869,7 @@ int x,y;
 		if (cansee(x,y))
 			pline_The("NOUN_DRAWBRIDGE löst sich auf!"); /* EN pline_The("drawbridge disintegrates!"); */
 		else
-			You_hear("a loud *CRASH*!"); /* EN You_hear("a loud *CRASH*!"); */ // TODO DE
+			You_hear("ein lautes *KRACH*!"); /* EN You_hear("a loud *CRASH*!"); */
 		lev1->typ =
 			((lev1->drawbridgemask & DB_ICE) ? ICE : ROOM);
 		lev1->icedpool =
