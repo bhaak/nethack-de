@@ -2804,10 +2804,10 @@ doapply()
 		    if (!cursed(obj)) Blindf_off(obj);
 		} else if (!ublindf)
 		    Blindf_on(obj);
-		else You("are already %s.", /* EN else You("are already %s.", */ // TODO DE
-			ublindf->otyp == TOWEL ?     "covered by a towel" : /* EN ublindf->otyp == TOWEL ?     "covered by a towel" : */ // TODO DE
-			ublindf->otyp == BLINDFOLD ? "wearing a blindfold" : /* EN ublindf->otyp == BLINDFOLD ? "wearing a blindfold" : */ // TODO DE
-						     "wearing lenses"); /* EN "wearing lenses"); */ // TODO DE
+		else You("%s.", /* EN else You("are already %s.", */ // TODO DE
+			ublindf->otyp == TOWEL ?     "VERB_SEIN bereits covered by a towel" : /* EN ublindf->otyp == TOWEL ?     "covered by a towel" : */ // TODO DE
+			ublindf->otyp == BLINDFOLD ? "VERB_TRAGEN bereits OBJECT ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD" : /* EN ublindf->otyp == BLINDFOLD ? "wearing a blindfold" : */
+						     "VERB_TRAGEN bereits OBJECT ARTIKEL_UNBESTIMMTER NOUN_LENSESs"); /* EN "wearing lenses"); */
 		break;
 	case CREAM_PIE:
 		res = use_cream_pie(obj);
@@ -2922,12 +2922,12 @@ doapply()
 		break;
 	case TIN_OPENER:
 		if(!carrying(TIN)) {
-			You("have no tin to open."); /* EN You("have no tin to open."); */ // TODO DE
+			You("VERB_HABEN OBJECT PRONOMEN_KEIN NOUN_TIN zum Öffnen."); /* EN You("have no tin to open."); */
 			goto xit;
 		}
-		You("cannot open a tin without eating or discarding its contents."); /* EN You("cannot open a tin without eating or discarding its contents."); */ // TODO DE
+		You("VERB_KOENNEN OBJECT PRONOMEN_KEIN NOUN_TIN öffnen ohne ihren Inhalt zu essen oder wegzuwerfen."); /* EN You("cannot open a tin without eating or discarding its contents."); */
 		if(flags.verbose)
-			pline("In order to eat, use the 'e' command."); /* EN pline("In order to eat, use the 'e' command."); */ // TODO DE
+			pline("Um zu essen, MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den Befehl 'e'."); /* EN pline("In order to eat, use the 'e' command."); */
 		if(obj != uwep)
     pline("Opening the tin will be much easier if you wield the tin opener."); /* EN pline("Opening the tin will be much easier if you wield the tin opener."); */ // TODO DE
 		goto xit;
@@ -2961,7 +2961,7 @@ doapply()
 			if (objects[otmp->otyp].oc_magic) do {
 			    otmp->otyp = rnd_class(POT_BOOZE, POT_WATER);
 			} while (otmp->otyp == POT_SICKNESS);
-			what = "ARTIKEL_UNBESTIMMTER NOUN_POTION"; /* EN what = "A potion"; */ // TODO DE
+			what = "ARTIKEL_UNBESTIMMTER NOUN_POTION"; /* EN what = "A potion"; */
 		    } else {
 			otmp = mkobj(FOOD_CLASS, FALSE);
 			if (otmp->otyp == FOOD_RATION && !rn2(7))
@@ -3005,7 +3005,7 @@ doapply()
 			res = use_pick_axe(obj);
 			break;
 		}
-		pline("Sorry, ich weiss nicht wie das zu benutzen ist."); /* EN pline("Sorry, I don't know how to use that."); */ // TODO DE
+		pline("Tut mir leid, ich weiss nicht, wie das zu benutzen ist."); /* EN pline("Sorry, I don't know how to use that."); */
 	xit:
 		nomul(0);
 		return 0;

@@ -1156,8 +1156,10 @@ STATIC_OVL void
 already_wearing(cc)
 const char *cc;
 {
+#ifdef GERMAN
 	if (cc == c_that_) { You("VERB_TRAGEN %s schon!", cc); }
 	else { You("VERB_TRAGEN schon OBJECT %s.", cc); }
+#endif
 	/* EN You("are already wearing %s%c", cc, (cc == c_that_) ? '!' : '.'); */
 }
 
@@ -1207,7 +1209,7 @@ boolean noisy;
 #endif
 	    )) {
 	if (noisy)
-	    You("cannot do that while holding your %s.", /* EN You("cannot do that while holding your %s.",*/ // TODO DE
+	    You("VERB_KOENNEN das nicht tun, solange NEUER_SATZ your %s.", /* EN You("cannot do that while holding your %s.",*/ // TODO DE
 		is_sword(uwep) ? c_sword : c_weapon);
 	return 0;
     }

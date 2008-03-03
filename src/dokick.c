@@ -499,7 +499,7 @@ xchar x, y;
 	if(Is_box(kickobj)) {
 		boolean otrp = kickobj->otrapped;
 
-		if(range < 2) pline("THUD!"); /* EN if(range < 2) pline("THUD!"); */ // TODO DE
+		if(range < 2) pline("RUMMS!"); /* EN if(range < 2) pline("THUD!"); */
 
 		container_impact_dmg(kickobj);
 

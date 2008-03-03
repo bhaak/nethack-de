@@ -1683,7 +1683,7 @@ int how;
 		&& fltxt)
 	    pline("%s is %s%s%s!", Monnam(mdef), /* EN pline("%s is %s%s%s!", Monnam(mdef), */ // TODO DE
 			nonliving(mdef->data) ? "destroyed" : "killed", /* EN nonliving(mdef->data) ? "destroyed" : "killed", */ // TODO DE
-		    *fltxt ? " by the " : "", /* EN *fltxt ? " by the " : "", */ // TODO DE
+		    *fltxt ? " _von_ ARTIKEL_BESTIMMTER " : "", /* EN *fltxt ? " by the " : "", */
 		    fltxt
 		 );
 	else

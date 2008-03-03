@@ -613,7 +613,7 @@ boolean polyspot;
 		else if (vis)
 		    pline("%s breaks out of %s armor!", Monnam(mon), ppronoun); /* EN pline("%s breaks out of %s armor!", Monnam(mon), ppronoun); */ // TODO DE
 		else
-		    You_hear("a cracking sound."); /* EN You_hear("a cracking sound."); */ // TODO DE
+		    You_hear("ein knackendes Geräusch."); /* EN You_hear("a cracking sound."); */
 		m_useup(mon, otmp);
 	    }
 	    if ((otmp = which_armor(mon, W_ARMC)) != 0) {
@@ -628,7 +628,7 @@ boolean polyspot;
 			pline("SUBJECT %s VERB_WERDEN zerrissen!", genitivattribut_zu_wort(Monnam(mon), /* EN pline("%s %s tears apart!", s_suffix(Monnam(mon)), */
 				cloak_simple_name(otmp))); /* EN cloak_simple_name(otmp)); */
 		    else
-			You_hear("a ripping sound."); /* EN You_hear("a ripping sound."); */ // TODO DE
+			You_hear("ein reißendes Geräusch."); /* EN You_hear("a ripping sound."); */
 		    m_useup(mon, otmp);
 		}
 	    }
@@ -637,7 +637,7 @@ boolean polyspot;
 		if (vis)
 		    pline("SUBJECT %s VERB_WERDEN in Stücke gerissen!", genitivattribut_zu_wort(Monnam(mon),"NOUN_SHIRT")); /* EN pline("%s shirt rips to shreds!", s_suffix(Monnam(mon))); */
 		else
-		    You_hear("a ripping sound."); /* EN You_hear("a ripping sound."); */ // TODO DE
+		    You_hear("ein reißendes Geräusch."); /* EN You_hear("a ripping sound."); */
 		m_useup(mon, otmp);
 	    }
 #endif

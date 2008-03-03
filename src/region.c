@@ -910,12 +910,12 @@ genericptr_t p2;
 	if (!Blind)
 	    make_blinded(1L, FALSE);
 	if (!Poison_resistance) {
-	    pline("%s is burning your %s!", Something, makeplural(body_part(LUNG))); /* EN pline("%s is burning your %s!", Something, makeplural(body_part(LUNG))); */ // TODO DE
-	    You("cough and spit blood!"); /* EN You("cough and spit blood!"); */ // TODO DE
-	    losehp(rnd(dam) + 5, "gas cloud", KILLED_BY_AN); /* EN losehp(rnd(dam) + 5, "gas cloud", KILLED_BY_AN); */ // TODO DE
+	    pline("SUBJECT %s VERB_BRENNEN OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV %s!", Something, makeplural(body_part(LUNG))); /* EN pline("%s is burning your %s!", Something, makeplural(body_part(LUNG))); */
+	    You("VERB_HUSTEN und VERB_SPUCKEN Blut!"); /* EN You("cough and spit blood!"); */
+	    losehp(rnd(dam) + 5, "NOUN_GASWOLKE", KILLED_BY_AN); /* EN losehp(rnd(dam) + 5, "gas cloud", KILLED_BY_AN); */
 	    return FALSE;
 	} else {
-	    You("cough!"); /* EN You("cough!"); */ // TODO DE
+	    You("VERB_HUSTEN!"); /* EN You("cough!"); */
 	    return FALSE;
 	}
     } else {			/* A monster is inside the cloud */
@@ -924,7 +924,7 @@ genericptr_t p2;
 	/* Non living and non breathing monsters are not concerned */
 	if (!nonliving(mtmp->data) && !breathless(mtmp->data)) {
 	    if (cansee(mtmp->mx, mtmp->my))
-		pline("%s coughs!", Monnam(mtmp)); /* EN pline("%s coughs!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_HUSTEN!", Monnam(mtmp)); /* EN pline("%s coughs!", Monnam(mtmp)); */
 	    setmangry(mtmp);
 	    if (haseyes(mtmp->data) && mtmp->mcansee) {
 		mtmp->mblinded = 1;
@@ -937,7 +937,7 @@ genericptr_t p2;
 		if (heros_fault(reg))
 		    killed(mtmp);
 		else
-		    monkilled(mtmp, "gas cloud", AD_DRST); /* EN monkilled(mtmp, "gas cloud", AD_DRST); */ // TODO DE
+		    monkilled(mtmp, "NOUN_GASWOLKE", AD_DRST); /* EN monkilled(mtmp, "gas cloud", AD_DRST); */
 		if (mtmp->mhp <= 0) {	/* not lifesaved */
 		    return TRUE;
 		}

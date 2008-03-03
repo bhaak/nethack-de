@@ -1034,7 +1034,7 @@ int thrown;
 			fmt = "SUBJECT ARTIKEL_BESTIMMTER NOUN_SILBER VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "The silver sears %s!"; */
 		} else {
 		    *whom = highc(*whom);	/* "it" -> "It" */
-		    fmt = "%s is seared!"; /* EN fmt = "%s is seared!"; */ // TODO DE
+		    fmt = "SUBJECT %s VERB_WERDEN versengt!"; /* EN fmt = "%s is seared!"; */
 		}
 		/* note: s_suffix returns a modifiable buffer */
 		if (!noncorporeal(mdat))

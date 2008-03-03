@@ -733,7 +733,7 @@ register struct permonst *ptr;
 		debugpline("Trying to give teleport");
 #endif
 		if(!(HTeleportation & FROMOUTSIDE)) {
-			Du_fuehlst_dich(Hallucination ? "diffuse." : /* EN You_feel(Hallucination ? "diffuse." : */ // TODO DE
+			Du_fuehlst_dich(Hallucination ? "diffus." : /* EN You_feel(Hallucination ? "diffuse." : */
 			    "sehr sprunghaft."); /* EN "very jumpy."); */
 			HTeleportation |= FROMOUTSIDE;
 		}

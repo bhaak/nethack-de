@@ -77,7 +77,7 @@ const char *name;	/* if null, then format `obj' */
 		if (obj && objects[obj->otyp].oc_material == SILVER
 				&& hates_silver(youmonst.data)) {
 			dam += rnd(20);
-			pline_The("silver sears your flesh!"); /* EN pline_The("silver sears your flesh!"); */ // TODO DE
+			pline_The("NOUN_SILBER VERB_VERSENGEN OBJECT PRONOMEN_POSSESSIV NOUN_FLEISCH!"); /* EN pline_The("silver sears your flesh!"); */
 			exercise(A_CON, FALSE);
 		}
 		if (is_acid && Acid_resistance)
@@ -198,9 +198,9 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	    }
 	    if (objects[otmp->otyp].oc_material == SILVER &&
 		    hates_silver(mtmp->data)) {
-		if (vis) pline_The("silver sears %s!", /* EN if (vis) pline_The("silver sears %s flesh!", */ // TODO DE
-				genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_FLESH")); /* EN s_suffix(mon_nam(mtmp))); */
-		else if (verbose) pline("Its flesh is seared!"); /* EN else if (verbose) pline("Its flesh is seared!"); */ // TODO DE
+		if (vis) pline_The("NOUN_SILBER VERB_VERSENGEN OBJECT %s!", /* EN if (vis) pline_The("silver sears %s flesh!", */
+				genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_FLEISCH")); /* EN s_suffix(mon_nam(mtmp))); */
+		else if (verbose) pline("SUBJECT PRONOMEN_SEIN NOUN_FLEISCH VERB_WERDEN versengt!"); /* EN else if (verbose) pline("Its flesh is seared!"); */
 	    }
 	    if (otmp->otyp == ACID_VENOM && cansee(mtmp->mx,mtmp->my)) {
 		if (resists_acid(mtmp)) {

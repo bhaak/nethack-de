@@ -415,8 +415,8 @@ int spellnum;
     case MGC_DISAPPEAR:		/* makes self invisible */
 	if (!mtmp->minvis && !mtmp->invis_blkd) {
 	    if (canseemon(mtmp))
-		pline("SUBJECT %s %s plötzlich%s!", Monnam(mtmp), /* EN pline("%s suddenly %s!", Monnam(mtmp), */ // TODO DE
-		      !See_invisible ? "VERB_VERSCHWINDEN" : "VERB_WERDEN", !See_invisible ? "" : " durchsichtig"); /* EN !See_invisible ? "disappears" : "becomes transparent"); */
+		pline("SUBJECT %s %s!", Monnam(mtmp), /* EN pline("%s suddenly %s!", Monnam(mtmp), */
+		      !See_invisible ? "VERB_VERSCHWINDEN plötzlich" : "VERB_WERDEN plötzlich durchsichtig"); /* EN !See_invisible ? "disappears" : "becomes transparent"); */
 	    mon_set_minvis(mtmp);
 	    dmg = 0;
 	} else
