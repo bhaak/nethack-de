@@ -653,11 +653,11 @@ boolean so;
 		Sprintf(eos(linebuf), "choked on h%s food", /* EN Sprintf(eos(linebuf), "choked on h%s food", */ // TODO DE
 			(t1->plgend[0] == 'F') ? "er" : "is"); /* EN (t1->plgend[0] == 'F') ? "er" : "is"); */ // TODO DE
 	    } else if (!strncmp(t1->death, "poisoned", 8)) { /* EN } else if (!strncmp(t1->death, "poisoned", 8)) { */ // TODO DE
-		Strcat(linebuf, "was poisoned"); /* EN Strcat(linebuf, "was poisoned"); */ // TODO DE
+		Strcat(linebuf, "wurde vergiftet"); /* EN Strcat(linebuf, "was poisoned"); */
 			} else if (!strncmp(t1->death, "crushed", 7)) { /* EN } else if (!strncmp(t1->death, "crushed", 7)) { */ // TODO DE
 		Strcat(linebuf, "was crushed to death"); /* EN Strcat(linebuf, "was crushed to death"); */ // TODO DE
 	    } else if (!strncmp(t1->death, "petrified by ", 13)) { /* EN } else if (!strncmp(t1->death, "petrified by ", 13)) { */ // TODO DE
-		Strcat(linebuf, "turned to stone"); /* EN Strcat(linebuf, "turned to stone"); */ // TODO DE
+		Strcat(linebuf, "versteinerte"); /* EN Strcat(linebuf, "turned to stone"); */
 	    } else Strcat(linebuf, "died"); /* EN } else Strcat(linebuf, "died"); */ // TODO DE
 
 	    if (t1->deathdnum == astral_level.dnum) {

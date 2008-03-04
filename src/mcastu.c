@@ -599,7 +599,7 @@ int spellnum;
 	if (Antimagic || Free_action) {
 	    shieldeff(u.ux, u.uy);
 	    if (multi >= 0)
-		You("stiffen briefly."); /* EN You("stiffen briefly."); */ // TODO DE
+		You("VERB_VERSTEIFEN kurz."); /* EN You("stiffen briefly."); */
 	    nomul(-1);
 	} else {
 	    if (multi >= 0)

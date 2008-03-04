@@ -330,8 +330,8 @@ prisoner_speaks (mtmp)
 			(mtmp->mstrategy & STRAT_WAITMASK)) {
 	    /* Awaken the prisoner */
 	    if (canseemon(mtmp))
-	    	pline("%s speaks:", Monnam(mtmp)); /* EN pline("%s speaks:", Monnam(mtmp)); */ // TODO DE
-	    verbalize("I'm finally free!"); /* EN verbalize("I'm finally free!"); */ // TODO DE
+	    	pline("SUBJECT %s sagt:", Monnam(mtmp)); /* EN pline("%s speaks:", Monnam(mtmp)); */
+	    verbalize("Ich bin endlich frei!"); /* EN verbalize("I'm finally free!"); */
 	    mtmp->mstrategy &= ~STRAT_WAITMASK;
 	    mtmp->mpeaceful = 1;
 

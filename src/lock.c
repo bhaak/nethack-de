@@ -266,7 +266,7 @@ pick_lock(pick) /* pick a lock with a given object */
 	}
 
 	if(nohands(youmonst.data)) {
-		You_cant("hold %s -- you have no hands!", doname(pick)); /* EN You_cant("hold %s -- you have no hands!", doname(pick)); */ // TODO DE
+		You("VERB_KOENNEN OBJECT PRONOMEN_KEIN %s halten - NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_HAVE keine Hände!", doname(pick)); /* EN You_cant("hold %s -- you have no hands!", doname(pick)); */
 		return(0);
 	}
 
@@ -291,7 +291,7 @@ pick_lock(pick) /* pick a lock with a given object */
 		      Levitation ? "here" : "there"); /* EN Levitation ? "here" : "there"); */ // TODO DE
 		return 0;
 	    } else if (is_lava(u.ux, u.uy)) {
-		pline("Doing that would probably melt your %s.", /* EN pline("Doing that would probably melt your %s.", */ // TODO DE
+		pline("Das würde vermutlich KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s schmelzen.", /* EN pline("Doing that would probably melt your %s.", */
 		      xname(pick));
 		return 0;
 	    } else if (is_pool(u.ux, u.uy) && !Underwater) {
@@ -329,7 +329,7 @@ pick_lock(pick) /* pick a lock with a given object */
 #ifdef TOURIST
 		    else if (picktyp == CREDIT_CARD && !otmp->olocked) {
 			/* credit cards are only good for unlocking */
-			You_cant("do that with %s.", doname(pick)); /* EN You_cant("do that with %s.", doname(pick)); */ // TODO DE
+			pline("Das geht nicht KASUS_DATIV mit %s.", doname(pick)); /* EN You_cant("do that with %s.", doname(pick)); */
 			return 0;
 		    }
 #endif
@@ -408,8 +408,8 @@ pick_lock(pick) /* pick a lock with a given object */
 		    }
 #endif
 
-		    Sprintf(qbuf,"%sock it?", /* EN Sprintf(qbuf,"%sock it?", */ // TODO DE
-			(door->doormask & D_LOCKED) ? "Unl" : "L" ); /* EN (door->doormask & D_LOCKED) ? "Unl" : "L" ); */ // TODO DE
+		    Sprintf(qbuf,"%sschließen?", /* EN Sprintf(qbuf,"%sock it?", */
+			(door->doormask & D_LOCKED) ? "Auf" : "Ver" ); /* EN (door->doormask & D_LOCKED) ? "Unl" : "L" ); */
 		    c = yn(qbuf);
 		    if(c == 'n') return(0);
 
@@ -540,8 +540,8 @@ doopen()		/* try to open a door */
 		    pline("Es gibt keinen offensichtlichen Weg die Zugbrücke zu öffnen."); /* EN There("is no obvious way to open the drawbridge."); */
 		    return(0);
 		}
-		You("%s no door there.", /* EN You("%s no door there.", */ // TODO DE
-				Blind ? "feel" : "see"); /* EN Blind ? "feel" : "see"); */ // TODO DE
+		You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.", /* EN You("%s no door there.", */
+				Blind ? "VERB_SPUEREN" : "VERB_SEHEN"); /* EN Blind ? "feel" : "see"); */
 		return(0);
 	}
 
@@ -781,7 +781,7 @@ int x, y;
 		if (vis) pline("%s springs up in the older, more primitive doorway.", /* EN if (vis) pline("%s springs up in the older, more primitive doorway.", */ // TODO DE
 			dustcloud);
 		else
-			You_hear("a swoosh."); /* EN You_hear("a swoosh."); */ // TODO DE
+			You_hear("ein Rauschen."); /* EN You_hear("a swoosh."); */
 		if (obstructed(x,y)) {
 			if (vis) pline_The("cloud %s.",quickly_dissipates); /* EN if (vis) pline_The("cloud %s.",quickly_dissipates); */ // TODO DE
 			return FALSE;

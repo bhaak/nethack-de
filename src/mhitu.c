@@ -968,7 +968,7 @@ hitmu(mtmp, mattk)
 			    rehumanize();
 			    break;
 		    } else if (Fire_resistance) {
-			pline_The("fire doesn't feel hot!"); /* EN pline_The("fire doesn't feel hot!"); */ // TODO DE
+			pline_The("NOUN_FEUER VERB_FUEHLEN sich nicht heiss an!"); /* EN pline_The("fire doesn't feel hot!"); */
 			dmg = 0;
 		    }
 		    if((int) mtmp->m_lev > rn2(20))
@@ -1100,7 +1100,7 @@ dopois:
 		hitmsg(mtmp, mattk);
 		if (uncancelled && multi >= 0 && !rn2(3)) {
 		    if (Free_action) {
-			You("momentarily stiffen.");            /* EN You("momentarily stiffen.");             */ // TODO DE
+			You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL für einen Moment.");            /* EN You("momentarily stiffen.");             */
 		    } else {
 			if (Blind) You("are frozen!"); /* EN if (Blind) You("are frozen!"); */ // TODO DE
 			else You("are frozen by %s!", mon_nam(mtmp)); /* EN else You("are frozen by %s!", mon_nam(mtmp)); */ // TODO DE
@@ -1895,7 +1895,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 				mhis(mtmp));
 			    break;
 			}
-			pline("%s is turned to stone!", Monnam(mtmp)); /* EN pline("%s is turned to stone!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(mtmp)); /* EN pline("%s is turned to stone!", Monnam(mtmp)); */
 		    }
 		    stoned = TRUE;
 		    killed(mtmp);

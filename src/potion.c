@@ -596,7 +596,7 @@ peffects(otmp)
 	    }
 	case POT_PARALYSIS:
 		if (Free_action)
-		    You("VERB_VERSTEIFEN für einen Moment."); /* EN You("stiffen momentarily."); */
+		    You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL für einen Moment."); /* EN You("stiffen momentarily."); */
 		else {
 		    if (Levitation || Is_airlevel(&u.uz)||Is_waterlevel(&u.uz))
 			You("are motionlessly suspended."); /* EN You("are motionlessly suspended."); */ // TODO DE
@@ -1100,8 +1100,8 @@ boolean your_fault;
 		if (is_undead(mon->data) || is_demon(mon->data) ||
 			is_were(mon->data)) {
 		    if (obj->blessed) {
-			pline("%s %s in pain!", Monnam(mon), /* EN pline("%s %s in pain!", Monnam(mon), */ // TODO DE
-						is_silent(mon->data) ? "writhes" : "shrieks"); /* EN is_silent(mon->data) ? "writhes" : "shrieks"); */ // TODO DE
+			pline("SUBJECT %s %s vor Schmerzen!", Monnam(mon), /* EN pline("%s %s in pain!", Monnam(mon), */
+						is_silent(mon->data) ? "VERB_WINDEN" : "VERB_SCHREIEN"); /* EN is_silent(mon->data) ? "writhes" : "shrieks"); */
 			mon->mhp -= d(2,6);
 			/* should only be by you */
 			if (mon->mhp < 1) killed(mon);
@@ -1134,8 +1134,8 @@ boolean your_fault;
 		break;
 	case POT_ACID:
 		if (!resists_acid(mon) && !resist(mon, POTION_CLASS, 0, NOTELL)) {
-		    pline("%s %s in pain!", Monnam(mon), /* EN pline("%s %s in pain!", Monnam(mon), */ // TODO DE
-			  is_silent(mon->data) ? "writhes" : "shrieks"); /* EN is_silent(mon->data) ? "writhes" : "shrieks"); */ // TODO DE
+		    pline("SUBJECT %s %s vor Schmerzen!", Monnam(mon), /* EN pline("%s %s in pain!", Monnam(mon), */
+			  is_silent(mon->data) ? "VERB_WINDEN" : "VERB_SCHREIEN"); /* EN is_silent(mon->data) ? "writhes" : "shrieks"); */
 		    mon->mhp -= d(obj->cursed ? 2 : 1, obj->blessed ? 4 : 8);
 		    if (mon->mhp < 1) {
 			if (your_fault)
@@ -1200,9 +1200,9 @@ register struct obj *obj;
 			pline("Ulch!  That potion smells terrible!"); /* EN pline("Ulch!  That potion smells terrible!"); */ // TODO DE
 		    else if (haseyes(youmonst.data)) {
 			int numeyes = eyecount(youmonst.data);
-			Your("%s sting%s!", /* EN Your("%s sting%s!", */ // TODO DE
+			Your("%s VERB_BRENNEN!", /* EN Your("%s sting%s!", */
 			     (numeyes == 1) ? body_part(EYE) : makeplural(body_part(EYE)),
-			     (numeyes == 1) ? "s" : "");
+			     ); /* EN (numeyes == 1) ? "s" : ""); */
 		    }
 		    break;
 		} else {
@@ -1266,7 +1266,7 @@ register struct obj *obj;
 		    nomul(-rnd(5));
 		    nomovemsg = You_can_move_again;
 		    exercise(A_DEX, FALSE);
-		} else You("VERB_VERSTEIFEN für einen Moment."); /* EN } else You("stiffen momentarily."); */
+		} else You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL für einen Moment."); /* EN } else You("stiffen momentarily."); */
 		break;
 	case POT_SLEEPING:
 		kn++;
@@ -1455,7 +1455,7 @@ register struct obj *obj;
 		/* KMH -- Water into acid causes an explosion */
 		if (obj->otyp == POT_ACID) {
 			pline("It boils vigorously!"); /* EN pline("It boils vigorously!"); */ // TODO DE
-			You("are caught in the explosion!"); /* EN You("are caught in the explosion!"); */ // TODO DE
+			You("VERB_WERDEN von einer Explosion erfasst!"); /* EN You("are caught in the explosion!"); */
 			losehp(rnd(10), "ADJEKTIV_ELEMENTAR NOUN_CHEMIE", KILLED_BY); /* EN losehp(rnd(10), "elementary chemistry", KILLED_BY); */
 			makeknown(obj->otyp);
 			update_inventory();

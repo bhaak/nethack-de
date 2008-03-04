@@ -12,6 +12,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVLB
 STATIC_DCL void FDECL(polyman, (const char *,const char *));
 STATIC_DCL void NDECL(break_armor);
@@ -1017,8 +1021,8 @@ dogaze()
 				    : -200);
 			    return 1;
 			} else
-			    You("stiffen momentarily under %s gaze.", /* EN You("stiffen momentarily under %s gaze.", */ // TODO DE
-				    s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
+			    You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL kurz NEUES_OBJECT OBJECT KASUS_DATIV unter %s.", /* EN You("stiffen momentarily under %s gaze.", */
+				    genitivattribut_zu_wort(mon_nam(mtmp),"NOUN_GAZE")); /* EN s_suffix(mon_nam(mtmp))); */
 		    }
 		    /* Technically this one shouldn't affect you at all because
 		     * the Medusa gaze is an active monster attack that only

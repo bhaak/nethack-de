@@ -394,7 +394,7 @@ register struct monst *mtmp;
 		else if (!cantwield(youmonst.data))
 		    You("begin %sing monsters with your %s %s.", /* EN You("begin %sing monsters with your %s %s.", */ // TODO DE
 			Role_if(PM_MONK) ? "strik" : "bash", /* EN Role_if(PM_MONK) ? "strik" : "bash", */ // TODO DE
-			uarmg ? "gloved" : "bare",	/* Del Lamb */ /* EN uarmg ? "gloved" : "bare",	*/ // TODO DE
+			uarmg ? "ADJEKTIV_BEHANDSCHUHT" : "ADJEKTIV_BARE",	/* Del Lamb */ /* EN uarmg ? "gloved" : "bare",	*/
 			makeplural(body_part(HAND)));
 	    }
 	}
@@ -920,13 +920,13 @@ int thrown;
 		You("dishonorably use a poisoned weapon!"); /* EN You("dishonorably use a poisoned weapon!"); */ // TODO DE
 		adjalign(-sgn(u.ualign.type));
 	    } else if ((u.ualign.type == A_LAWFUL) && (u.ualign.record > -10)) {
-		You_feel("like an evil coward for using a poisoned weapon."); /* EN You_feel("like an evil coward for using a poisoned weapon."); */ // TODO DE
+		pline("Wegen der Verwendung einer vergifteten Waffe SUBJECT_IM_SATZ VERB_FUEHLEN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL wie ein elender Feigling."); /* EN You_feel("like an evil coward for using a poisoned weapon."); */
 		adjalign(-1);
 	    }
 	    if (obj && !rn2(nopoison)) {
 		obj->opoisoned = FALSE;
-		Your("%s %s no longer poisoned.", xname(obj), /* EN Your("%s %s no longer poisoned.", xname(obj), */ // TODO DE
-		     otense(obj, "are")); /* EN otense(obj, "are")); */ // TODO DE
+		Your("%s %s nicht mehr vergiftet.", xname(obj), /* EN Your("%s %s no longer poisoned.", xname(obj), */
+		     otense(obj, "VERB_SEIN")); /* EN otense(obj, "are")); */
 	    }
 	    if (resists_poison(mon))
 		needpoismsg = TRUE;
@@ -2256,7 +2256,7 @@ uchar aatyp;
 				    genitivattribut_zu_wort(Monnam(mon), "NOUN_GAZE"))) /* EN s_suffix(Monnam(mon)))) */
 			    ;
 			else if (Free_action)
-			    You("momentarily stiffen under %s!", /* EN You("momentarily stiffen under %s gaze!", */ // TODO DE
+			    You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL kurz NEUES_OBJECT OBJECT KASUS_DATIV unter %s!", /* EN You("momentarily stiffen under %s gaze!", */
 				    genitivattribut_zu_wort(mon_nam(mon), "NOUN_GAZE")); /* EN s_suffix(mon_nam(mon))); */
 			else {
 			    You("are frozen by %s!", /* EN You("are frozen by %s gaze!", */ // TODO DE
@@ -2269,7 +2269,7 @@ uchar aatyp;
 			if(!rn2(500)) change_luck(-1);
 		    }
 		} else if (Free_action) {
-		    You("momentarily stiffen."); /* EN You("momentarily stiffen."); */ // TODO DE
+		    You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL für einen Moment."); /* EN You("momentarily stiffen."); */
 		} else { /* gelatinous cube */
 		    You("are frozen by %s!", mon_nam(mon)); /* EN You("are frozen by %s!", mon_nam(mon)); */ // TODO DE
 	    	    nomovemsg = 0;	/* default: "you can move again" */

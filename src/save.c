@@ -143,8 +143,8 @@ dosave0()
 	    if (fd > 0) {
 		(void) close(fd);
 		clear_nhwindow(WIN_MESSAGE);
-		There("seems to be an old save file."); /* EN There("seems to be an old save file."); */ // TODO DE
-		if (yn("Overwrite the old file?") == 'n') { /* EN if (yn("Overwrite the old file?") == 'n') { */ // TODO DE
+		pline("Es scheint eine alte Speicher-Datei zu geben."); /* EN There("seems to be an old save file."); */
+		if (yn("Die alte Datei überschreiben?") == 'n') { /* EN if (yn("Overwrite the old file?") == 'n') { */
 		    compress(fq_save);
 		    return 0;
 		}
@@ -155,7 +155,7 @@ dosave0()
 
 	fd = create_savefile();
 	if(fd < 0) {
-		HUP pline("Cannot open save file."); /* EN HUP pline("Cannot open save file."); */ // TODO DE
+		HUP pline("Kann Speicher-Datei nicht öffnen."); /* EN HUP pline("Cannot open save file."); */
 		(void) delete_savefile();	/* ab@unido */
 		return(0);
 	}
@@ -176,7 +176,7 @@ dosave0()
 	dotrow = 2;
 	curs(WIN_MAP, 1, 1);
 	if (strncmpi("X11", windowprocs.name, 3))
-	  putstr(WIN_MAP, 0, "Saving:"); /* EN putstr(WIN_MAP, 0, "Saving:"); */ // TODO DE
+	  putstr(WIN_MAP, 0, "Speichere:"); /* EN putstr(WIN_MAP, 0, "Saving:"); */
 #endif
 #ifdef MFLOPPY
 	/* make sure there is enough disk space */
@@ -193,8 +193,8 @@ dosave0()
 	    fds = freediskspace(fq_save);
 	    if (needed > fds) {
 		HUP {
-		    There("is insufficient space on SAVE disk."); /* EN There("is insufficient space on SAVE disk."); */ // TODO DE
-		    pline("Require %ld bytes but only have %ld.", needed, fds); /* EN pline("Require %ld bytes but only have %ld.", needed, fds); */ // TODO DE
+		    pline("Ungenügender Platz auf der Speicher-Diskette."); /* EN There("is insufficient space on SAVE disk."); */
+		    pline("%ld Bytes benötigt, aber nur %ld Bytes vorhanden.", needed, fds); /* EN pline("Require %ld bytes but only have %ld.", needed, fds); */
 		}
 		flushout();
 		(void) close(fd);
@@ -355,7 +355,7 @@ savestateinlock()
 		fd = open_levelfile(0, whynot);
 		if (fd < 0) {
 		    pline("%s", whynot);
-		    pline("Probably someone removed it."); /* EN pline("Probably someone removed it."); */ // TODO DE
+		    pline("Vermutlich hat ihn jemand entfernt."); /* EN pline("Probably someone removed it."); */
 		    killer = whynot;
 		    done(TRICKED);
 		    return;

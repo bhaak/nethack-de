@@ -491,20 +491,20 @@ int *fail_reason;
 	else mon->mundetected = FALSE;
 	if ((x == u.ux && y == u.uy) || cause == ANIMATE_SPELL) {
 	    const char *comes_to_life = nonliving(mon->data) ?
-					"moves" : "comes to life"; /* EN "moves" : "comes to life";  */ // TODO DE
+					"rührt sich" : "wird lebendig"; /* EN "moves" : "comes to life";  */
 	    if (cause == ANIMATE_SPELL)
-	    	pline("%s %s!", upstart(statuename),
-	    		canspotmon(mon) ? comes_to_life : "disappears"); /* EN canspotmon(mon) ? comes_to_life : "disappears"); */ // TODO DE
+	    	pline("SUBJECT %s %s!", upstart(statuename), /* EN pline("%s %s!", upstart(statuename), */
+	    		canspotmon(mon) ? comes_to_life : "verschwindet"); /* EN canspotmon(mon) ? comes_to_life : "disappears"); */
 	    else
-		pline_The("statue %s!", /* EN pline_The("statue %s!", */ // TODO DE
-			canspotmon(mon) ? comes_to_life : "disappears"); /* EN canspotmon(mon) ? comes_to_life : "disappears"); */ // TODO DE
+		pline_The("NOUN_STATUE %s!", /* EN pline_The("statue %s!", */
+			canspotmon(mon) ? comes_to_life : "verschwindet"); /* EN canspotmon(mon) ? comes_to_life : "disappears"); */
 	    if (historic) {
 		    You_feel("guilty that the historic statue is now gone."); /* EN You_feel("guilty that the historic statue is now gone."); */ // TODO DE
 		    adjalign(-1);
 	    }
 	} else if (cause == ANIMATE_SHATTER)
-	    pline("Instead of shattering, the statue suddenly %s!", /* EN pline("Instead of shattering, the statue suddenly %s!", */ // TODO DE
-		canspotmon(mon) ? "comes to life" : "disappears"); /* EN canspotmon(mon) ? "comes to life" : "disappears"); */ // TODO DE
+	    pline("Statt zu zerbrechen %s die Statue plötzlich%s!", /* EN pline("Instead of shattering, the statue suddenly %s!", */
+		canspotmon(mon) ? "wird" : "verschwindet", canspotmon(mon) ? " lebendig" : ""); /* EN canspotmon(mon) ? "comes to life" : "disappears"); */
 	else { /* cause == ANIMATE_NORMAL */
 	    You("find %s posing as a statue.", /* EN You("find %s posing as a statue.", */ // TODO DE
 		canspotmon(mon) ? a_monnam(mon) : something);
@@ -696,7 +696,7 @@ unsigned trflags;
 		break;
 	    case ROCKTRAP:
 		if (trap->once && trap->tseen && !rn2(15)) {
-		    pline("A trap door in %s opens, but nothing falls out!", /* EN pline("A trap door in %s opens, but nothing falls out!", */ // TODO DE
+		    pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR OBJECT KASUS_DATIV _in_ %s öffnet sich, aber es fällt nichts raus!", /* EN pline("A trap door in %s opens, but nothing falls out!", */
 			  the(ceiling(u.ux,u.uy)));
 		    deltrap(trap);
 		    newsym(u.ux,u.uy);
@@ -727,7 +727,7 @@ unsigned trflags;
 		    stackobj(otmp);
 		    newsym(u.ux,u.uy);	/* map the rock */
 
-		    losehp(dmg, "falling rock", KILLED_BY_AN); /* EN losehp(dmg, "falling rock", KILLED_BY_AN); */ // TODO DE
+		    losehp(dmg, "ADJEKTIV_FALLEND NOUN_GEM_ROCK", KILLED_BY_AN); /* EN losehp(dmg, "falling rock", KILLED_BY_AN); */
 		    exercise(A_STR, FALSE);
 		}
 		break;
@@ -1062,8 +1062,8 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		if (!rn2(30)) {
 		    deltrap(trap);
 		    newsym(u.ux,u.uy);	/* update position */
-		    You("are caught in a magical explosion!"); /* EN You("are caught in a magical explosion!"); */ // TODO DE
-		    losehp(rnd(10), "magical explosion", KILLED_BY_AN); /* EN losehp(rnd(10), "magical explosion", KILLED_BY_AN); */ // TODO DE
+		    You("VERB_WERDEN OBJECT KASUS_DATIV von ARTIKEL_UNBESTIMMTER NOUN_MAGIEEXPLOSION erfasst!"); /* EN You("are caught in a magical explosion!"); */
+		    losehp(rnd(10), "NOUN_MAGIEEXPLOSION", KILLED_BY_AN); /* EN losehp(rnd(10), "magical explosion", KILLED_BY_AN); */
 		    Your("body absorbs some of the magical energy!"); /* EN Your("body absorbs some of the magical energy!"); */ // TODO DE
 		    u.uen = (u.uenmax += 2);
 		} else domagictrap();
@@ -1076,7 +1076,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		seetrap(trap);
 		if(Antimagic) {
 		    shieldeff(u.ux, u.uy);
-		    You_feel("momentarily lethargic."); /* EN You_feel("momentarily lethargic."); */ // TODO DE
+		    Du_fuehlst_dich("einen Moment lang lethargisch."); /* EN You_feel("momentarily lethargic."); */
 		} else drain_en(rnd(u.ulevel) + 1);
 		break;
 
@@ -1366,7 +1366,7 @@ int style;
 			if (otyp == BOULDER) {
 			    You_hear(Hallucination ?
 				     "jemanden kegeln." : /* EN "someone bowling." : */
-				     "rumbling in the distance."); /* EN "rumbling in the distance."); */ // TODO DE
+				     "Rumpeln in der Ferne."); /* EN "rumbling in the distance."); */
 			}
 			style &= ~LAUNCH_UNSEEN;
 			goto roll;
@@ -3738,7 +3738,7 @@ boolean disarm;
 			nomul(-d(5, 6));
 			exercise(A_DEX, FALSE);
 			nomovemsg = You_can_move_again;
-			} else You("momentarily stiffen."); /* EN } else You("momentarily stiffen."); */ // TODO DE
+			} else You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL für einen Moment."); /* EN } else You("momentarily stiffen."); */
 			break;
 		case 2:
 		case 1:

@@ -128,6 +128,10 @@ register struct obj *pen;
 		/* extra shufflable descr not representing a real object */
 		if (!OBJ_NAME(objects[i])) continue;
 
+#ifdef GERMAN
+		//pline("%s", OBJ_NAME(objects[i]));
+		//pline("%s", OBJ_DESCR(objects[i]));
+#endif
 		if (!strcmpi(OBJ_NAME(objects[i]), nm))
 			goto found;
 		if (!strcmpi(OBJ_DESCR(objects[i]), nm)) {
@@ -136,13 +140,13 @@ register struct obj *pen;
 		}
 	}
 
-	pline("Es gibt keine _solches_ %s!", typeword); /* EN There("is no such %s!", typeword); */ // TODO DE
+	pline("Es gibt KASUS_AKKUSATIV PRONOMEN_KEIN ADJEKTIV_SOLCH %s!", typeword); /* EN There("is no such %s!", typeword); */
 	return 1;
 found:
 
 	if (i == SCR_BLANK_PAPER || i == SPE_BLANK_PAPER) {
-		You_cant("write that!"); /* EN You_cant("write that!"); */ // TODO DE
-		pline("It's obscene!"); /* EN pline("It's obscene!"); */ // TODO DE
+		pline("Das SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL nicht schreiben!"); /* EN You_cant("write that!"); */
+		pline("Das ist obszön!"); /* EN pline("It's obscene!"); */
 		return 1;
 	} else if (i == SPE_BOOK_OF_THE_DEAD) {
 		pline("No mere dungeon adventurer could write that."); /* EN pline("No mere dungeon adventurer could write that."); */ // TODO DE

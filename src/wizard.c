@@ -604,7 +604,7 @@ register struct monst	*mtmp;
 {
 	if (mtmp->iswiz) {
 	    if (!rn2(5))  /* typical bad guy action */
-		pline("%s laughs fiendishly.", Monnam(mtmp)); /* EN pline("%s laughs fiendishly.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_LACHEN teuflisch.", Monnam(mtmp)); /* EN pline("%s laughs fiendishly.", Monnam(mtmp)); */
 	    else
 		if (u.uhave.amulet && !rn2(SIZE(random_insult)))
 		    verbalize("Relinquish the amulet, %s!", /* EN verbalize("Relinquish the amulet, %s!", */ // TODO DE

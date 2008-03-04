@@ -5,6 +5,10 @@
 #include "hack.h"
 #include "lev.h"	/* for checking save modes */
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_DCL void NDECL(stoned_dialogue);
 STATIC_DCL void NDECL(vomiting_dialogue);
 STATIC_DCL void NDECL(choke_dialogue);
@@ -41,9 +45,9 @@ stoned_dialogue()
 
 /* He is getting sicker and sicker prior to vomiting */
 static NEARDATA const char * const vomiting_texts[] = {
-	"You are feeling mildly nauseated.",	/* 14 */ /* EN "are feeling mildly nauseated.",	*/ // TODO DE
-	"SUBJECT PRONOMEN_PERSONAL VERB_SICH_FUEHLEN OBJECT PRONOMEN_PERSONAL etwas verwirrt.",		/* 11 */ /* EN "feel slightly confused.",		*/
-	"can't seem to think straight.",	/* 8 */ /* EN "can't seem to think straight.",	*/ // TODO DE
+	"OBJECT KASUS_DATIV PRONOMEN_PERSONAL ist leicht übel.",	/* 14 */ /* EN "are feeling mildly nauseated.",	*/
+	"SUBJECT PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL etwas verwirrt.",		/* 11 */ /* EN "feel slightly confused.",		*/
+	"SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN nicht klar denken.",	/* 8 */ /* EN "can't seem to think straight.",	*/
 	"KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN unglaublich übel.",		/* 5 */ /* EN "feel incredibly sick.",		*/
 	"Plötzlich SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL!"			/* 2 */ /* EN "suddenly vomit!"			*/
 };
@@ -740,8 +744,8 @@ struct obj *obj;
 		You("VERB_SEHEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_LANTERN trübe flackern."); /* EN You("see a lantern getting dim."); */
 		break;
 	    case OBJ_MINVENT:
-		pline("%s lantern is getting dim.", /* EN pline("%s lantern is getting dim.", */ // TODO DE
-		    s_suffix(Monnam(obj->ocarry))); /* EN s_suffix(Monnam(obj->ocarry))); */ // TODO DE
+		pline("SUBJECT %s fängt an zu flackern.", /* EN pline("%s lantern is getting dim.", */
+		    genitivattribut_zu_wort(Monnam(obj->ocarry), "NOUN_LANTERN")); /* EN s_suffix(Monnam(obj->ocarry))); */
 		break;
 	}
 }
@@ -1233,7 +1237,7 @@ do_storms()
 	    nomul(-3);
 	}
     } else
-	You_hear("a rumbling noise."); /* EN You_hear("a rumbling noise."); */ // TODO DE
+	You_hear("einen donnernden Lärm."); /* EN You_hear("a rumbling noise."); */
 }
 #endif /* OVL1 */
 
