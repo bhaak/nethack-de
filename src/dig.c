@@ -933,8 +933,8 @@ struct obj *obj;
 			else if (!ispick && (sobj_at(STATUE, rx, ry) ||
 					     sobj_at(BOULDER, rx, ry))) {
 			    boolean vibrate = !rn2(3);
-			    pline("Sparks fly as you whack the %s.%s", /* EN pline("Sparks fly as you whack the %s.%s", */ // TODO DE
-				sobj_at(STATUE, rx, ry) ? "statue" : "boulder", /* EN sobj_at(STATUE, rx, ry) ? "statue" : "boulder", */ // TODO DE
+			    pline("Funken fliegen MODIFIER_NEBENSATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT auf ARTIKEL_BESTIMMTER %s VERB_EINSCHLAGEN.%s", /* EN pline("Sparks fly as you whack the %s.%s", */
+				sobj_at(STATUE, rx, ry) ? "NOUN_STATUE" : "NOUN_BOULDER", /* EN sobj_at(STATUE, rx, ry) ? "statue" : "boulder", */
 				vibrate ? " The axe-handle vibrates violently!" : ""); /* EN vibrate ? " The axe-handle vibrates violently!" : ""); */ // TODO DE
 			    if (vibrate) losehp(2, "axing a hard object", KILLED_BY); /* EN if (vibrate) losehp(2, "axing a hard object", KILLED_BY); */ // TODO DE
 			}
@@ -986,8 +986,8 @@ struct obj *obj;
 		You_cant("reach the %s.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */ // TODO DE
 	} else if (is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy)) {
 		/* Monsters which swim also happen not to be able to dig */
-		You("cannot stay under%s long enough.", /* EN You("cannot stay under%s long enough.", */ // TODO DE
-				is_pool(u.ux, u.uy) ? "Wasser" : " der Lava"); /* EN is_pool(u.ux, u.uy) ? "water" : " the lava"); */
+		You("VERB_KOENNEN nicht lange genug unter %s bleiben.", /* EN You("cannot stay under%s long enough.", */
+				is_pool(u.ux, u.uy) ? "Wasser" : "der Lava"); /* EN is_pool(u.ux, u.uy) ? "water" : " the lava"); */
 	} else if (!ispick) {
 		Your("%s VERB_ZERKRATZEN bloß OBJECT ARTIKEL_BESTIMMTER %s.", /* EN Your("%s merely scratches the %s.", */
 				aobjnam(obj, (char *)0), surface(u.ux,u.uy));
@@ -1092,7 +1092,7 @@ register struct monst *mtmp;
 		}
 	    } else {
 		if (!rn2(3) && flags.verbose)	/* not too often.. */
-		    You_feel("an unexpected draft."); /* EN You_feel("an unexpected draft."); */ // TODO DE
+		    Du_spuerst("einen unerwarteten Luftzug."); /* EN You_feel("an unexpected draft."); */
 		here->doormask = D_BROKEN;
 	    }
 	    newsym(mtmp->mx, mtmp->my);
@@ -1111,7 +1111,7 @@ register struct monst *mtmp;
 	if (IS_WALL(here->typ)) {
 	    /* KMH -- Okay on arboreal levels (room walls are still stone) */
 	    if (flags.soundok && flags.verbose && !rn2(5))
-		You_hear("crashing rock."); /* EN You_hear("crashing rock."); */ // TODO DE
+		You_hear("krachendes Gestein."); /* EN You_hear("crashing rock."); */
 	    if (*in_rooms(mtmp->mx, mtmp->my, SHOPBASE))
 		add_damage(mtmp->mx, mtmp->my, 0L);
 	    if (level.flags.is_maze_lev) {
@@ -1180,7 +1180,7 @@ zap_dig()
 		    if (On_stairs(u.ux, u.uy))
 			pline_The("beam VER off the %s und VERB_HIT OBJECT ARTIKEL_BESTIMMTER %s.", /* EN pline_The("beam bounces off the %s and hits the %s.", */ // TODO DE
 			      (u.ux == xdnladder || u.ux == xupladder) ?
-			      "ladder" : "stairs", ceiling(u.ux, u.uy)); /* EN "ladder" : "stairs", ceiling(u.ux, u.uy)); */ // TODO DE
+			      "NOUN_LADDER" : "NOUN_STAIRS", ceiling(u.ux, u.uy)); /* EN "ladder" : "stairs", ceiling(u.ux, u.uy)); */
 		    You("VERB_LOESEN einen Stein _von_ OBJECT KASUS_DATIV ARTIKEL_BESTIMMTER %s.", ceiling(u.ux, u.uy)); /* EN You("loosen a rock from the %s.", ceiling(u.ux, u.uy)); */ // TODO DE
 		    pline("Er fällt KASUS_DATIV PRONOMEN_PERSONAL auf KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s!", body_part(HEAD)); /* EN pline("It falls on your %s!", body_part(HEAD)); */
 		    losehp(rnd((uarmh && is_metallic(uarmh)) ? 2 : 6),

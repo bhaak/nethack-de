@@ -627,7 +627,7 @@ struct obj *obj;
 			      "Hey!  Der Spiegel starrt zurück!" : /* EN "Yow!  The mirror stares back!" : */
 			      "Yikes!  You've frozen yourself!"); /* EN "Yikes!  You've frozen yourself!"); */ // TODO DE
 			nomul(-rnd((MAXULEV+6) - u.ulevel));
-			} else You("stiffen momentarily under your gaze."); /* EN } else You("stiffen momentarily under your gaze."); */ // TODO DE
+			} else You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL kurz NEUES_OBJECT OBJECT KASUS_DATIV unter PRONOMEN_POSSESSIV NOUN_GAZE."); /* EN } else You("stiffen momentarily under your gaze."); */
 		    } else if (youmonst.data->mlet == S_VAMPIRE)
 			You("VERB_HABEN kein Spiegelbild."); /* EN You("don't have a reflection."); */
 		    else if (u.umonnum == PM_UMBER_HULK) {
@@ -2966,9 +2966,9 @@ doapply()
 			otmp = mkobj(FOOD_CLASS, FALSE);
 			if (otmp->otyp == FOOD_RATION && !rn2(7))
 			    otmp->otyp = LUMP_OF_ROYAL_JELLY;
-			what = "Some food"; /* EN what = "Some food"; */ // TODO DE
+			what = "Etwas zu essen"; /* EN what = "Some food"; */
 		    }
-		    pline("%s spills out.", what); /* EN pline("%s spills out.", what); */ // TODO DE
+		    pline("SUBJECT %s kommt zum Vorschein.", what); /* EN pline("%s spills out.", what); */
 		    otmp->blessed = obj->blessed;
 		    otmp->cursed = obj->cursed;
 		    otmp->owt = weight(otmp);

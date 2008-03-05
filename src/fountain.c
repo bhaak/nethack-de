@@ -440,11 +440,11 @@ register struct obj *obj;
 			You_feel("a sudden chill."); /* EN You_feel("a sudden chill."); */ // TODO DE
 			break;
 		case 28: /* Strange feeling */
-			pline("An urge to take a bath overwhelms you."); /* EN pline("An urge to take a bath overwhelms you."); */ // TODO DE
+			Dich("VERB_UEBERMANNEN die Lust nach einem Bad."); /* EN pline("An urge to take a bath overwhelms you."); */
 #ifndef GOLDOBJ
 			if (u.ugold > 10) {
 			    u.ugold -= somegold() / 10;
-			    You("lost some of your gold in the fountain!"); /* EN You("lost some of your gold in the fountain!"); */ // TODO DE
+			    You("VERB_HABEN etwas OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_GOLD im Brunnen verloren!"); /* EN You("lost some of your gold in the fountain!"); */
 			    CLEAR_FOUNTAIN_LOOTED(u.ux,u.uy);
 			    exercise(A_WIS, FALSE);
 			}
@@ -463,7 +463,7 @@ register struct obj *obj;
 				    money -= coin_loss * denomination;				  
 				    if (!otmp->quan) delobj(otmp);
 				}
-			        You("lost some of your money in the fountain!"); /* EN You("lost some of your money in the fountain!"); */ // TODO DE
+			        You("VERB_HABEN etwas OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_GELD im Brunnen verloren!"); /* EN You("lost some of your money in the fountain!"); */
 				CLEAR_FOUNTAIN_LOOTED(u.ux,u.uy);
 			        exercise(A_WIS, FALSE);
                             }

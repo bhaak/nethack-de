@@ -1200,9 +1200,9 @@ register struct obj *obj;
 			pline("Ulch!  That potion smells terrible!"); /* EN pline("Ulch!  That potion smells terrible!"); */ // TODO DE
 		    else if (haseyes(youmonst.data)) {
 			int numeyes = eyecount(youmonst.data);
-			Your("%s VERB_BRENNEN!", /* EN Your("%s sting%s!", */
+			Your("%s VERB_BRENNEN%s!", /* EN Your("%s sting%s!", */
 			     (numeyes == 1) ? body_part(EYE) : makeplural(body_part(EYE)),
-			     ); /* EN (numeyes == 1) ? "s" : ""); */
+			     (numeyes == 1) ? "" : ""); /* EN (numeyes == 1) ? "s" : ""); */
 		    }
 		    break;
 		} else {

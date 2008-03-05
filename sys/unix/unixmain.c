@@ -255,7 +255,7 @@ char *argv[];
 		    iflags.news = FALSE; /* in case dorecover() fails */
 		}
 #endif
-		pline("Restoring save file...");
+		pline("Lade Spielstand ..."); /* EN pline("Restoring save file..."); */
 		mark_synch();	/* flush output */
 		if(!dorecover(fd))
 			goto not_recovered;
@@ -266,7 +266,7 @@ char *argv[];
 		wd_message();
 
 		if (discover || wizard) {
-			if(yn("Do you want to keep the save file?") == 'n')
+			if(yn("SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL die Spielstand-Datei behalten?") == 'n') /* EN if(yn("Do you want to keep the save file?") == 'n') */
 			    (void) delete_savefile();
 			else {
 			    (void) chmod(fq_save,FCMASK); /* back to readable */
@@ -515,17 +515,17 @@ wd_message()
 {
 #ifdef WIZARD
 	if (wiz_error_flag) {
-		pline("Only user \"%s\" may access debug (wizard) mode.",
+		pline("Nur der Benutzer \"%s\" darf den Debug-(Zauber)-Modus aktivieren.", /* EN pline("Only user \"%s\" may access debug (wizard) mode.", */
 # ifndef KR1ED
 			WIZARD);
 # else
 			WIZARD_NAME);
 # endif
-		pline("Entering discovery mode instead.");
+		pline("Aktiviere stattdessen den Erkundungsmodus."); /* EN pline("Entering discovery mode instead."); */
 	} else
 #endif
 	if (discover)
-		You("are in non-scoring discovery mode.");
+		You("VERB_SEIN im nicht-bewerteten Erkundungsmodus."); /* EN You("are in non-scoring discovery mode."); */
 }
 
 /*

@@ -176,11 +176,11 @@ short *otyp;
     register const struct artifact *a;
     register const char *aname;
 
-    if(!strncmpi(name, "the ", 4)) name += 4; /* EN if(!strncmpi(name, "the ", 4)) name += 4; */ // TODO DE
+    if(!strncmpi(name, "ARTIKEL_BESTIMMTER ", 19)) name += 19; /* EN if(!strncmpi(name, "the ", 4)) name += 4; */
 
-    for (a = artilist+1; a->otyp; a++) { /* EN for (a = artilist+1; a->otyp; a++) { */ // TODO DE
+    for (a = artilist+1; a->otyp; a++) {
 	aname = a->name;
-	if(!strncmpi(aname, "the ", 4)) aname += 4;
+	if(!strncmpi(aname, "ARTIKEL_BESTIMMTER ", 19)) aname += 19; /* EN if(!strncmpi(aname, "the ", 4)) aname += 4; */
 	if(!strcmpi(name, aname)) {
 	    *otyp = a->otyp;
 	    return a->name;
@@ -291,7 +291,7 @@ register const char *name;
 	register const char *aname;
 
 	if (!*name) return FALSE;
-	if (!strncmpi(name, "the ", 4)) name += 4; /* EN if (!strncmpi(name, "the ", 4)) name += 4; */ // TODO DE
+	if (!strncmpi(name, "ARTIKEL_BESTIMMTER ", 19)) name += 19; /* EN if (!strncmpi(name, "the ", 4)) name += 4; */
 
 		/* Since almost every artifact is SPFX_RESTR, it doesn't cost
 		   us much to do the string comparison before the spfx check.
@@ -300,7 +300,7 @@ register const char *name;
 	for (a = artilist+1; a->otyp; a++) {
 	    if (a->otyp != otmp->otyp) continue;
 	    aname = a->name;
-	    if (!strncmpi(aname, "the ", 4)) aname += 4; /* EN if (!strncmpi(aname, "the ", 4)) aname += 4; */ // TODO DE
+	    if (!strncmpi(aname, "ARTIKEL_BESTIMMTER ", 19)) aname += 19; /* EN if (!strncmpi(aname, "the ", 4)) aname += 4; */
 	    if (!strcmp(aname, name))
 		return ((boolean)((a->spfx & (SPFX_NOGEN|SPFX_RESTR)) != 0 ||
 			otmp->quan > 1L));
@@ -707,7 +707,7 @@ winid tmpwin;		/* supplied by dodiscover() */
 
     for (i = 0; i < NROFARTIFACTS; i++) {
 	if (artidisco[i] == 0) break;	/* empty slot implies end of list */
-	if (i == 0) putstr(tmpwin, ATR_INVERSE, "Artifacts"); /* EN if (i == 0) putstr(tmpwin, ATR_INVERSE, "Artifacts"); */ // TODO DE
+	if (i == 0) putstr(tmpwin, ATR_INVERSE, "Artefakte"); /* EN if (i == 0) putstr(tmpwin, ATR_INVERSE, "Artifacts"); */
 	m = artidisco[i];
 	otyp = artilist[m].otyp;
 	Sprintf(buf, "  %s [%s %s]", artiname(m),
@@ -878,7 +878,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 
     case MB_INDEX_PROBE:
 	if (youattack && (mb->spe == 0 || !rn2(3 * abs(mb->spe)))) {
-	    pline_The("%s is insightful.", verb); /* EN pline_The("%s is insightful.", verb); */ // TODO DE
+	    pline_The("%s ist aufschlussreich.", verb); /* EN pline_The("%s is insightful.", verb); */
 	    /* pre-damage status */
 	    probe_monster(mdef);
 	}
@@ -1199,8 +1199,8 @@ arti_invoke(obj)
 	/* It's a special power, not "just" a property */
 	if(obj->age > monstermoves) {
 	    /* the artifact is tired :-) */
-	    You_feel("that %s %s ignoring you.", /* EN You_feel("that %s %s ignoring you.", */ // TODO DE
-		     the(xname(obj)), otense(obj, "VERB_SEIN")); /* EN the(xname(obj)), otense(obj, "are")); */
+	    You("VERB_SPUEREN, dass NEUER_SATZ SUBJECT_IM_SATZ %s OBJECT PRONOMEN_PERSONAL VERB_IGNORIEREN.", /* EN You_feel("that %s %s ignoring you.", */
+		     the(xname(obj))); /* EN the(xname(obj)), otense(obj, "are")); */
 	    /* and just got more so; patience is essential... */
 	    obj->age += (long) d(3,10);
 	    return 1;
@@ -1358,8 +1358,8 @@ arti_invoke(obj)
 	if(on && obj->age > monstermoves) {
 	    /* the artifact is tired :-) */
 	    u.uprops[oart->inv_prop].extrinsic ^= W_ARTI;
-	    You_feel("that %s %s ignoring you.", /* EN You_feel("that %s %s ignoring you.", */ // TODO DE
-		     the(xname(obj)), otense(obj, "are")); /* EN the(xname(obj)), otense(obj, "are")); */ // TODO DE
+	    You("VERB_SPUEREN, dass NEUER_SATZ SUBJECT_IM_SATZ %s OBJECT PRONOMEN_PERSONAL VERB_IGNORIEREN.", /* EN You_feel("that %s %s ignoring you.", */
+		     the(xname(obj))); /* EN the(xname(obj)), otense(obj, "are")); */
 	    /* can't just keep repeatedly trying */
 	    obj->age += (long) d(3,10);
 	    return 1;
@@ -1427,8 +1427,8 @@ arti_speak(obj)
 
 	line = getrumor(bcsign(obj), buf, TRUE);
 	if (!*line)
-		line = "NetHack rumors file closed for renovation."; /* EN line = "NetHack rumors file closed for renovation."; */ // TODO DE
-	pline("%s:", Tobjnam(obj, "whisper")); /* EN pline("%s:", Tobjnam(obj, "whisper")); */ // TODO DE
+		line = "NetHacks Gerüchtedatei wegen Renovation geschlossen."; /* EN line = "NetHack rumors file closed for renovation."; */
+	pline("SUBJECT %s:", Tobjnam(obj, "VERB_FLUESTERN")); /* EN pline("%s:", Tobjnam(obj, "whisper")); */
 	verbalize("%s", line);
 	return;
 }

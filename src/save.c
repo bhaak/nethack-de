@@ -143,7 +143,7 @@ dosave0()
 	    if (fd > 0) {
 		(void) close(fd);
 		clear_nhwindow(WIN_MESSAGE);
-		pline("Es scheint eine alte Speicher-Datei zu geben."); /* EN There("seems to be an old save file."); */
+		pline("Es scheint eine alte Spielstand-Datei zu geben."); /* EN There("seems to be an old save file."); */
 		if (yn("Die alte Datei überschreiben?") == 'n') { /* EN if (yn("Overwrite the old file?") == 'n') { */
 		    compress(fq_save);
 		    return 0;
@@ -155,7 +155,7 @@ dosave0()
 
 	fd = create_savefile();
 	if(fd < 0) {
-		HUP pline("Kann Speicher-Datei nicht öffnen."); /* EN HUP pline("Cannot open save file."); */
+		HUP pline("Kann Spielstand-Datei nicht öffnen."); /* EN HUP pline("Cannot open save file."); */
 		(void) delete_savefile();	/* ab@unido */
 		return(0);
 	}

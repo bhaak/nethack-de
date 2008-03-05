@@ -1208,7 +1208,7 @@ static const char *epitaphs[] = {
 	"1994 - 1995. Der langlebigste Hacker von allen", /* EN "1994-1995. The Longest-Lived Hacker Ever", */
 	"Das Grab des unbekannten Hackers", /* EN "The Grave of the Unknown Hacker", */
 	"Wir waren nicht sicher, was es war, aber wir begruben es trotzdem", /* EN "We weren't sure who this was, but we buried him here anyway", */
-	"Sparky -- he was a very good dog", /* EN "Sparky -- he was a very good dog", */ // TODO DE
+	"Fido -- er war ein ganz braver Hund", /* EN "Sparky -- he was a very good dog", */
 	"Beware of Electric Third Rail", /* EN "Beware of Electric Third Rail", */ // TODO DE
 	"Made in Taiwan",
 	"Og friend. Og good dude. Og died. Og now food", /* EN "Og friend. Og good dude. Og died. Og now food", */ // TODO DE

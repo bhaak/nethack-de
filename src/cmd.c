@@ -829,19 +829,21 @@ char *outbuf;
 	} else {
 	    int absamt = abs(incamt);
 
-	    if (absamt <= 3) modif = "small"; /* EN if (absamt <= 3) modif = "small"; */ // TODO DE
-	    else if (absamt <= 6) modif = "moderate"; /* EN else if (absamt <= 6) modif = "moderate"; */ // TODO DE
-	    else if (absamt <= 12) modif = "large"; /* EN else if (absamt <= 12) modif = "large"; */ // TODO DE
-	    else modif = "huge"; /* EN else modif = "huge"; */ // TODO DE
+	    if (absamt <= 3) modif = "ADJEKTIV_KLEIN"; /* EN if (absamt <= 3) modif = "small"; */
+	    else if (absamt <= 6) modif = "ADJEKTIV_MODERAT"; /* EN else if (absamt <= 6) modif = "moderate"; */
+	    else if (absamt <= 12) modif = "ADJEKTIV_GROSS"; /* EN else if (absamt <= 12) modif = "large"; */
+	    else modif = "ADJEKTIV_RIESIG"; /* EN else modif = "huge"; */
 	}
-	bonus = (incamt > 0) ? "bonus" : "penalty"; /* EN bonus = (incamt > 0) ? "bonus" : "penalty"; */ // TODO DE
+	bonus = (incamt > 0) ? "BONUS" : "MALUS"; /* EN bonus = (incamt > 0) ? "bonus" : "penalty"; */
+#ifndef GERMAN
 	/* "bonus to hit" vs "damage bonus" */
-	if (!strcmp(inctyp, "damage")) { /* EN if (!strcmp(inctyp, "damage")) { */ // TODO DE
+	if (!strcmp(inctyp, "damage")) {
 	    const char *ctmp = inctyp;
 	    inctyp = bonus;
 	    bonus = ctmp;
 	}
-	Sprintf(outbuf, "%s %s %s", an(modif), bonus, inctyp);
+#endif
+	Sprintf(outbuf, "OBJECT %s %s%s", an(modif), inctyp, bonus); /* EN Sprintf(outbuf, "%s %s %s", an(modif), bonus, inctyp); */
 	return outbuf;
 }
 
@@ -1019,9 +1021,9 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 
 	/*** Physical attributes ***/
 	if (u.uhitinc)
-	    you_have(enlght_combatinc("to hit", u.uhitinc, final, buf)); /* EN you_have(enlght_combatinc("to hit", u.uhitinc, final, buf)); */ // TODO DE
+	    you_have(enlght_combatinc("NOUN_TREFFER", u.uhitinc, final, buf)); /* EN you_have(enlght_combatinc("to hit", u.uhitinc, final, buf)); */
 	if (u.udaminc)
-	    you_have(enlght_combatinc("damage", u.udaminc, final, buf)); /* EN you_have(enlght_combatinc("damage", u.udaminc, final, buf)); */ // TODO DE
+	    you_have(enlght_combatinc("NOUN_SCHADENS", u.udaminc, final, buf)); /* EN you_have(enlght_combatinc("damage", u.udaminc, final, buf)); */
 	if (Slow_digestion) you_have("verlangsamte Verdauung"); /* EN if (Slow_digestion) you_have("slower digestion"); */
 	if (Regeneration) enl_msg("You regenerate", "", "d", ""); /* EN if (Regeneration) enl_msg("You regenerate", "", "d", ""); */ // TODO DE
 	if (u.uspellprot || Protection) {
@@ -1343,10 +1345,10 @@ int final;
 	/*** Physical attributes ***/
 	if (u.uhitinc)
 	    dump(youhad,
-		enlght_combatinc("to hit", u.uhitinc, final, buf)); /* EN enlght_combatinc("to hit", u.uhitinc, final, buf)); */ // TODO DE
+		enlght_combatinc("NOUN_TREFFER", u.uhitinc, final, buf)); /* EN enlght_combatinc("to hit", u.uhitinc, final, buf)); */
 	if (u.udaminc)
 	    dump(youhad,
-		enlght_combatinc("damage", u.udaminc, final, buf)); /* EN enlght_combatinc("damage", u.udaminc, final, buf)); */ // TODO DE
+		enlght_combatinc("NOUN_SCHADENS", u.udaminc, final, buf)); /* EN enlght_combatinc("damage", u.udaminc, final, buf)); */
 	if (Slow_digestion) dump(youhad, "eine verlangsamte Verdauung"); /* EN if (Slow_digestion) dump(youhad, "slower digestion"); */
 	if (Regeneration) dump("  ", "You regenerated"); /* EN if (Regeneration) dump("  ", "You regenerated"); */ // TODO DE
 	if (u.uspellprot || Protection) {
@@ -1689,7 +1691,7 @@ int final;
 	char buf[BUFSZ];
 	int ngenocided;
 
-	dump("", "Freiwillige Gebaren"); /* EN dump("", "Voluntary challenges"); */
+	dump("", "Freiwilliges Gebaren"); /* EN dump("", "Voluntary challenges"); */
 
 	if (!u.uconduct.food)
 	    dump("", "  SUBJECT PRONOMEN_PERSONAL VERB_SEIN ohne Nahrung ausgekommen"); /* EN dump("", "  You went without food"); */
@@ -2949,15 +2951,15 @@ char def;
 	qbuf[truncspot] = '\0';
 	Strcat(qbuf,"...");
 
-#ifdef GERMAN
+//#ifdef GERMAN
 	// TODO DE
-	returned_char = (*windowprocs.win_yn_function)(qbuf, resp, def);
-	if (returned_char == 'j') { return 'y'; }
-	else if (returned_char == 'e') { return 'q'; }
-	else { return returned_char; }
-#else
+	//returned_char = (*windowprocs.win_yn_function)(qbuf, resp, def);
+	//if (returned_char == 'j') { return 'y'; }
+	//else if (returned_char == 'e') { return 'q'; }
+	//else { return returned_char; }
+//#else
 	return (*windowprocs.win_yn_function)(qbuf, resp, def);
-#endif
+//#endif
 }
 #endif
 

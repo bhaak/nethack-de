@@ -419,7 +419,7 @@ char *argv[];
 		    iflags.news = FALSE;
 		}
 #endif
-		pline("Restoring save file...");
+		pline("Lade Spielstand ..."); /* EN pline("Restoring save file..."); */
 		mark_synch();	/* flush output */
 
 		if(!dorecover(fd))
@@ -429,10 +429,10 @@ char *argv[];
 #endif
 		check_special_room(FALSE);
 		if (discover)
-			You("are in non-scoring discovery mode.");
+			You("VERB_SEIN im nicht-bewerteten Erkundungsmodus."); /* EN You("are in non-scoring discovery mode."); */
 
 		if (discover || wizard) {
-			if(yn("Do you want to keep the save file?") == 'n'){
+			if(yn("SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL die Spielstand-Datei behalten?") == 'n'){ /* EN if(yn("Do you want to keep the save file?") == 'n'){ */
 				(void) delete_savefile();
 			}
 		}
@@ -443,7 +443,7 @@ not_recovered:
 		player_selection();
 		newgame();
 		if (discover)
-			You("are in non-scoring discovery mode.");
+			You("VERB_SEIN im nicht-bewerteten Erkundungsmodus."); /* EN You("are in non-scoring discovery mode."); */
 
 		flags.move = 0;
 		set_wear();

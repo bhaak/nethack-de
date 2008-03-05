@@ -332,9 +332,9 @@ Helmet_on()
 		if (Hallucination) {
 		    pline("My brain hurts!"); /* Monty Python's Flying Circus */ /* EN pline("My brain hurts!"); */ // TODO DE
 		} else if (uarmh->otyp == DUNCE_CAP) {
-		    You_feel("%s.",	/* track INT change; ignore WIS */ /* EN You_feel("%s.",	*/ // TODO DE
+		    You("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL, %s.",	/* track INT change; ignore WIS */ /* EN You_feel("%s.",	*/
 		  ACURR(A_INT) <= (ABASE(A_INT) + ABON(A_INT) + ATEMP(A_INT)) ?
-			     "like sitting in a corner" : "giddy"); /* EN "like sitting in a corner" : "giddy"); */ // TODO DE
+			     "NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_STEHEN PRONOMEN_PERSONAL in einer Ecke" : "albern"); /* EN "like sitting in a corner" : "giddy"); */
 		} else {
 		    Your("mind oscillates briefly."); /* EN Your("mind oscillates briefly."); */ // TODO DE
 		    makeknown(HELM_OF_OPPOSITE_ALIGNMENT);
