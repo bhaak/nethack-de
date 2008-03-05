@@ -1784,6 +1784,11 @@ do_objs()
 		if (!strncmp(objnam, "PLATINUM_", 9))
 			objnam += 9;
 #endif
+#ifdef GERMAN
+		if (!strncmp(objnam, "EYES_OF_THE_OVERWORLD",21)) {
+			Fprintf(ofp,"#define\tART_EYES_OF_THE_OVERWORLD\t%d\n", i);
+		} else
+#endif
 		Fprintf(ofp,"#define\tART_%s\t%d\n", limit(objnam, 1), i);
 	}
 

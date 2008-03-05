@@ -2691,7 +2691,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_THE_SCEPTRE_OF_MIGHT","","","","",""),
     #dekliniere_substantiv("NOUN_THE_STAFF_OF_AESCULAPIUS","","","","",""),
     dekliniere_substantiv("NOUN_THE_MAGIC_MIRROR_OF_MERLIN","Zauberspiegel","","","","maskulin","","Merlins"),
-    dekliniere_substantiv("NOUN_THE_EYES_OF_THE_OVERWORLD","Augen","","","","neutrum","","der Anderswelt/Überwelt"),
+    dekliniere_substantiv("NOUN_THE_EYES_OF_THE_OVERWORLD","Auge","es","Auge","en","neutrum","","der Anderswelt"),
     #dekliniere_substantiv("NOUN_THE_MITRE_OF_HOLINESS","","","","",""),
     dekliniere_substantiv("NOUN_THE_LONGBOW_OF_DIANA","Langbogen","s","","","maskulin","","der Diana"),
     #dekliniere_substantiv("NOUN_THE_MASTER_KEY_OF_THIEVERY","","","","",""),

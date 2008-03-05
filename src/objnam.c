@@ -2446,6 +2446,12 @@ srch:
 	    short objtyp;
 
 	    /* Perhaps it's an artifact specified by name, not type */
+#ifdef GERMAN
+	    /* Spezialbehandlung, da die Augen der Anderswelt im Plural sein muessen */
+	    if (strcmp(actualn, "NOUN_THE_EYES_OF_THE_OVERWORLD")==0) {
+	      name = artifact_name("NOUN_THE_EYES_OF_THE_OVERWORLDs", &objtyp);
+	    } else
+#endif
 	    name = artifact_name(actualn, &objtyp);
 	    if(name) {
 		typ = objtyp;
