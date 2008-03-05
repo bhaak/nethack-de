@@ -1773,6 +1773,10 @@ do_objs()
 		    if (*c >= 'a' && *c <= 'z') *c -= (char)('a' - 'A');
 		    else if (*c < 'A' || *c > 'Z') *c = '_';
 
+#ifdef GERMAN
+		if (!strncmp(objnam, "NOUN_", 5))
+			objnam += 5;
+#endif
 		if (!strncmp(objnam, "THE_", 4))
 			objnam += 4;
 #ifdef TOURIST
