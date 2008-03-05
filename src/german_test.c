@@ -692,6 +692,7 @@ START_TEST (test_nominal_phrasen) {
 		{"ARTIKEL_UNBESTIMMTER NOUN_DOG", "Ein Hund"},
 		{"ARTIKEL_NULL NOUN_DOG", "Hund"},
 		{"ARTIKEL_NULL NOUN_DOGs", "Hunde"},
+		{"PRONOMEN_ALLE NOUN_VIOLET_FUNGUSs ausgelöscht", "Alle violetten Pilze ausgelöscht"},
 	};
 
 	check_strings(text, sizeof(text)/8);
