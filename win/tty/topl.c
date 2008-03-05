@@ -338,13 +338,28 @@ tty_yn_function(query,resp, def)
 	ttyDisplay->inread++;
 	if (resp) {
 		char *rb, respbuf[QBUFSZ];
+#ifdef GERMAN
+		int i;
+		char german_def;
+#endif
 
 		allow_num = (index(resp, '#') != 0);
 		Strcpy(respbuf, resp);
+#ifdef GERMAN
+		for (i=0; i<strlen(respbuf); i++) {
+			if (respbuf[i] == 'y') { respbuf[i] = 'j'; }
+			else if (respbuf[i] == 'q') { respbuf[i] = 'a'; }
+		}
+#endif
 		/* any acceptable responses that follow <esc> aren't displayed */
 		if ((rb = index(respbuf, '\033')) != 0) *rb = '\0';
 		Sprintf(prompt, "%s [%s] ", query, respbuf);
-		if (def) Sprintf(eos(prompt), "(%c) ", def);
+#ifdef GERMAN
+		german_def = def;
+		if (def == 'y') { german_def = 'j'; }
+		else if (def == 'q') { german_def = 'a'; }
+#endif
+		if (def) Sprintf(eos(prompt), "(%c) ", german_def); /* EN if (def) Sprintf(eos(prompt), "(%c) ", def); */
 		pline("%s", prompt);
 	} else {
 		pline("%s ", query);
@@ -354,6 +369,10 @@ tty_yn_function(query,resp, def)
 
 	do {	/* loop until we get valid input */
 		q = lowc(readchar());
+#ifdef GERMAN
+		if (q == 'j') { q = 'y'; }
+		else if (q == 'a') { q = 'q'; }
+#endif
 		if (q == '\020') { /* ctrl-P */
 			if (iflags.prevmsg_window != 's') {
 		    int sav = ttyDisplay->inread;
@@ -439,7 +458,12 @@ tty_yn_function(query,resp, def)
 	} while(!q);
 
 	if (q != '#') {
-		Sprintf(rtmp, "%c", q);
+#ifdef GERMAN
+		int q_anzeige = q;
+		if (q == 'y') { q_anzeige = 'j'; }
+		else if (q == 'q') { q_anzeige = 'a'; }
+#endif
+		Sprintf(rtmp, "%c", q_anzeige); /* EN Sprintf(rtmp, "%c", q); */
 		addtopl(rtmp);
 	}
  clean_up:
