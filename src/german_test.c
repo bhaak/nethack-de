@@ -902,6 +902,16 @@ START_TEST (test_genitivattribut_zu_wort) {
 								text[i][0],ret,text[i][1]);}
 } END_TEST
 
+
+START_TEST (test_modifier_verb_imperativ) {
+	char *text[][2] = {
+		{"MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den Befehl 'e' um zu essen.",
+		 "Benutze den Befehl 'e' um zu essen."},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
 //#endif
 
 Suite *test_suite(void)
@@ -911,7 +921,7 @@ Suite *test_suite(void)
 
 	suite_add_tcase (s, tc_core);
   
-	if (0) {
+	if (1) {
 	tcase_add_test(tc_core, test_satzklammer);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
@@ -949,6 +959,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_shopkeeper);
 	}
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
+	tcase_add_test(tc_core, test_modifier_verb_imperativ);
 
 	return s;
 }
