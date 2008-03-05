@@ -901,35 +901,36 @@ START_TEST (test_genitivattribut_zu_wort) {
 								"failed\nto convert: >%s<\nconverted:  >%s<\nexpected:   >%s<\n",
 								text[i][0],ret,text[i][1]);}
 } END_TEST
+
 //#endif
 
 Suite *test_suite(void)
 {
-  Suite *s = suite_create("all tests");
-  TCase *tc_core = tcase_create("Nethack");
+	Suite *s = suite_create("all tests");
+	TCase *tc_core = tcase_create("Nethack");
 
-  suite_add_tcase (s, tc_core);
+	suite_add_tcase (s, tc_core);
   
 	if (0) {
-  tcase_add_test(tc_core, test_satzklammer);
+	tcase_add_test(tc_core, test_satzklammer);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
-  tcase_add_test(tc_core, test_identified_spellbooks);
+	tcase_add_test(tc_core, test_identified_spellbooks);
 	tcase_add_test(tc_core, test_nominal_phrasen);
 	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	//tcase_add_test(tc_core, test_linking_elements);
 	tcase_add_test(tc_core, test_wands);
-  tcase_add_test(tc_core, test_spellbooks);
-  tcase_add_test(tc_core, test_potions);
-  tcase_add_test(tc_core, test_called_named_labeled);
-  tcase_add_test(tc_core, test_level_sounds);
-  tcase_add_test(tc_core, test_tools);
-  tcase_add_test(tc_core, test_passiv);
-  tcase_add_test(tc_core, test_complete_sentences);
-  tcase_add_test(tc_core, test_complete_sentences2);
-  tcase_add_test(tc_core, test_complete_sentences3);
-  tcase_add_test(tc_core, test_complete_sentences4);
+	tcase_add_test(tc_core, test_spellbooks);
+	tcase_add_test(tc_core, test_potions);
+	tcase_add_test(tc_core, test_called_named_labeled);
+	tcase_add_test(tc_core, test_level_sounds);
+	tcase_add_test(tc_core, test_tools);
+	tcase_add_test(tc_core, test_passiv);
+	tcase_add_test(tc_core, test_complete_sentences);
+	tcase_add_test(tc_core, test_complete_sentences2);
+	tcase_add_test(tc_core, test_complete_sentences3);
+	tcase_add_test(tc_core, test_complete_sentences4);
 	tcase_add_test(tc_core, test_tincontent);
 	tcase_add_test(tc_core, test_inventory_names);
 	tcase_add_test(tc_core, test_casus_and_modifier);
@@ -937,19 +938,19 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_scrolls);
 	tcase_add_test(tc_core, test_gems);
 	tcase_add_test(tc_core, test_paar);
-  tcase_add_test(tc_core, test_hoeren);
+	tcase_add_test(tc_core, test_hoeren);
 	//tcase_add_test(tc_core, test_incomplete_sentences);
 	tcase_add_test(tc_core, test_german2meta);
-  tcase_add_test(tc_core, test_token_functions);
-	
-  tcase_add_test(tc_core, test_corpses);
+	tcase_add_test(tc_core, test_token_functions);
+
+	tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_noun_pseudo);
 	tcase_add_test(tc_core, test_shopkeeper);
 	}
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
 
-  return s;
+	return s;
 }
 
 int main(int argc, char *argv[]) {
