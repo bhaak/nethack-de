@@ -683,7 +683,7 @@ const char *def;
 		(is_flyer(ptr) && ptr->msize > MZ_SMALL)  ? flyl[capitalize] :
 #ifdef GERMAN
 		// KAPUTT 
- //"eine neue Fortbewegungsart fuer Schlangen einbauen" : schl√§ngeln // TODO DE
+ //"eine neue Fortbewegungsart fuer Schlangen einbauen" : schl‰ngeln // TODO DE
  //is_amphibious_animal(ptr) ? amphibious[capitalize] // TODO DE
 #endif
 		slithy(ptr)     ? slither[capitalize] :

@@ -1986,9 +1986,9 @@ boolean move_other;	/* make sure mtmp gets to x, y! so move m_at(x, y) */
 
 
 static const char *poiseff[] = {
-	" feel weaker", "PRONOMEN_POSSESSIV NOUN_GEHIRN steht in Flammen", /* EN " feel weaker", "r brain is on fire", */ // TODO DE
-	"r judgement is impaired", "r muscles won't obey you", /* EN "r judgement is impaired", "r muscles won't obey you", */ // TODO DE
-	" feel very sick", " break out in hives" /* EN " feel very sick", " break out in hives" */ // TODO DE
+	"PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL schwächer", "PRONOMEN_POSSESSIV NOUN_GEHIRN steht in Flammen", /* EN " feel weaker", "r brain is on fire", */
+	"Your judgement is impaired", "Your muscles won't obey you", /* EN "r judgement is impaired", "r muscles won't obey you", */ // TODO DE
+	"KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN verdammt übel", "You break out in hives" /* EN " feel very sick", " break out in hives" */ // TODO DE
 };
 
 void
