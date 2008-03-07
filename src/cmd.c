@@ -855,7 +855,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	char buf[BUFSZ];
 
 	en_win = create_nhwindow(NHW_MENU);
-	putstr(en_win, 0, final ? "Final Attributes:" : "Current Attributes:"); /* EN putstr(en_win, 0, final ? "Final Attributes:" : "Current Attributes:"); */ // TODO DE
+	putstr(en_win, 0, final ? "Finale Eigenschaften:" : "Aktuelle Eigenschaften:"); /* EN putstr(en_win, 0, final ? "Final Attributes:" : "Current Attributes:"); */
 	putstr(en_win, 0, "");
 
 #ifdef ELBERETH
@@ -952,7 +952,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Warn_of_mon && flags.warntype) {
 		Sprintf(buf, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL der Anwesenheit von KASUS_DATIV %s bewusst", /* EN Sprintf(buf, "aware of the presence of %s", */
 			(flags.warntype & M2_ORC) ? "NOUN_ORCs" : /* EN (flags.warntype & M2_ORC) ? "orcs" : */
-			(flags.warntype & M2_DEMON) ? "demons" : /* EN (flags.warntype & M2_DEMON) ? "demons" : */ // TODO DE
+			(flags.warntype & M2_DEMON) ? "NOUN_DEMONs" : /* EN (flags.warntype & M2_DEMON) ? "demons" : */
 			something); 
 		you_are(buf);
 	}
@@ -1176,14 +1176,14 @@ int final;
 	char *youcould  = "  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN "; /* EN char *youhad  = "  You had "; */
 #endif
 
-	dump("", "Final attributes"); /* EN dump("", "Final attributes"); */ // TODO DE
+	dump("", "Finale Eigenschaften"); /* EN dump("", "Final attributes"); */
 
 #ifdef ELBERETH
 	if (u.uevent.uhand_of_elbereth) {
 	    static const char * const hofe_titles[3] = {
-				"the Hand of Elbereth", /* EN "the Hand of Elbereth", */ // TODO DE
-				"the Envoy of Balance", /* EN "the Envoy of Balance", */ // TODO DE
-				"the Glory of Arioch" /* EN "the Glory of Arioch" */ // TODO DE
+				"ARTIKEL_BESTIMMTER NOUN_HAND_OF_ELBERETH", /* EN "the Hand of Elbereth", */
+				"ARTIKEL_BESTIMMTER NOUN_ENVOY_OF_BALANCE", /* EN "the Envoy of Balance", */
+				"ARTIKEL_BESTIMMTER NOUN_GLORY_OF_ARIOCH" /* EN "the Glory of Arioch" */
 	    };
 	    dump(youwere,
 		(char *)hofe_titles[u.uevent.uhand_of_elbereth - 1]);
@@ -1277,7 +1277,7 @@ int final;
 	if (Warn_of_mon && flags.warntype) {
 		Sprintf(buf, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL der Anwesenheit von KASUS_DATIV %s bewusst", /* EN Sprintf(buf, "aware of the presence of %s", */
 			(flags.warntype & M2_ORC) ? "NOUN_ORCs" : /* EN (flags.warntype & M2_ORC) ? "orcs" : */
-			(flags.warntype & M2_DEMON) ? "demons" : /* EN (flags.warntype & M2_DEMON) ? "demons" : */ // TODO DE
+			(flags.warntype & M2_DEMON) ? "NOUN_DEMONs" : /* EN (flags.warntype & M2_DEMON) ? "demons" : */
 			something); 
 		dump(youwere, buf);
 	}

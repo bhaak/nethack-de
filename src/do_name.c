@@ -310,7 +310,7 @@ register struct obj *obj;
 	if (obj->oartifact) {
 		pline_The("artifact seems to resist the attempt."); /* EN pline_The("artifact seems to resist the attempt."); */ // TODO DE
 		return;
-	} else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) {
+	} else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) { /* EN } else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) { */
 		int n = rn2((int)strlen(buf));
 		register char c1, c2;
 

@@ -35,9 +35,9 @@ const struct Role roles[] = {
 	{"NOUN_FELDFORSCHER","NOUN_FELDFORSCHERIN"}, /* EN {"Field Worker",0}, */
 	{"NOUN_EXHUMIERER","NOUN_EXHUMIERERIN"}, /* EN {"Investigator",0}, */
 	{"NOUN_AUSGRAEBER","NOUN_AUSGRAEBERIN"}, /* EN {"Exhumer",     0}, */
-	{"NOUN_PROJEKTLEITER",   "NOUN_PROJEKTLEITER"}, /* EN {"Excavator",   0}, */
+	{"NOUN_PROJEKTLEITER",   "NOUN_PROJEKTLEITERIN"}, /* EN {"Excavator",   0}, */
 	{"NOUN_HOEHLENGEHER",   "NOUN_HOEHLENGEHERIN"}, /* EN {"Spelunker",   0}, */ /* Hoehlengeher / Hoehlenforscher */
-	{"NOUN_SPEAEOLOGE","NOUN_SPEAEOLOGIN"}, /* EN {"Speleologist",0}, */ /* http://de.wikipedia.org/wiki/Speläologie#Spel.C3.A4ologe.2FH.C3.B6hlenforscher */
+	{"NOUN_SPELAEOLOGE","NOUN_SPELAEOLOGIN"}, /* EN {"Speleologist",0}, */ /* http://de.wikipedia.org/wiki/Speläologie#Spel.C3.A4ologe.2FH.C3.B6hlenforscher */
 	{"NOUN_SAMMLER",   "NOUN_SAMMLERIN"}, /* EN {"Collector",   0}, */
 	{"NOUN_KURATOR",     "NOUN_KURATORIN"} }, /* EN {"Curator",     0} }, */
 	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */

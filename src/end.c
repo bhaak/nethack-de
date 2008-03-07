@@ -370,7 +370,7 @@ panic VA_DECL(const char *, str)
 	}
 
 	raw_print(program_state.gameover ?
-		  "Postgame wrapup disrupted." :
+		  "Postgame wrapup disrupted." : /* EN "Postgame wrapup disrupted." : */ // TODO DE
 		  !program_state.something_worth_saving ?
 		  "Programm-Initialisierung fehlgeschlagen." : /* EN "Program initialization has failed." : */
 		  "Plötzlich stürzt der Dungeon ein."); /* EN "Suddenly, the dungeon collapses."); */
@@ -460,10 +460,10 @@ boolean taken;
 
 	if (invent) {
 	    if(taken)
-		Sprintf(qbuf,"Do you want to see what you had when you %s?", /* EN Sprintf(qbuf,"Do you want to see what you had when you %s?", */ // TODO DE
-			(how == QUIT) ? "quit" : "died"); /* EN (how == QUIT) ? "quit" : "died"); */ // TODO DE
+		Sprintf(qbuf,"MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wissen, NEUER_SATZ was SUBJECT_IM_SATZ PRONOMEN_PERSONAL hattest, NEUER_SATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s?", /* EN Sprintf(qbuf,"Do you want to see what you had when you %s?", */
+			(how == QUIT) ? "abgebrochen VERB_HABEN" : "gestorben VERB_SEIN"); /* EN (how == QUIT) ? "quit" : "died"); */
 	    else
-		Strcpy(qbuf,"Do you want your possessions identified?"); /* EN Strcpy(qbuf,"Do you want your possessions identified?"); */ // TODO DE
+		Strcpy(qbuf,"MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_HABE identifiziert haben?"); /* EN Strcpy(qbuf,"Do you want your possessions identified?"); */
 
 	    ask = should_query_disclose_option('i', &defquery);
 	    if (!done_stopprint) {
@@ -489,7 +489,8 @@ boolean taken;
 
 	ask = should_query_disclose_option('a', &defquery);
 	if (!done_stopprint) {
-	    c = ask ? yn_function("Do you want to see your attributes?", /* EN c = ask ? yn_function("Do you want to see your attributes?", */ // TODO DE
+	    c = ask ? yn_function("MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_EIGENSCHAFTs sehen?", /* EN c = ask ? yn_function("Do you want to see your attributes?", */
+
 				  ynqchars, defquery) : defquery;
 	    if (c == 'y')
 		enlightenment(how >= PANICKED ? 1 : 2); /* final */
@@ -520,7 +521,7 @@ boolean taken;
 
 	ask = should_query_disclose_option('c', &defquery);
 	if (!done_stopprint) {
-	    c = ask ? yn_function("Do you want to see your conduct?", /* EN c = ask ? yn_function("Do you want to see your conduct?", */ // TODO DE
+	    c = ask ? yn_function("MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_CONDUCT sehen?", /* EN c = ask ? yn_function("Do you want to see your conduct?", */
 				  ynqchars, defquery) : defquery;
 	    if (c == 'y')
 		show_conduct(how >= PANICKED ? 1 : 2);
@@ -1056,7 +1057,7 @@ die:
 	}
 	if (!done_stopprint) {
 	    Sprintf(pbuf,
-	     "SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_HABEN Erfahrungsstufe %d, mit einem Maximum von %d Trefferpunkt%s, NEUER_SATZ als SUBJECT PRONOMEN_PERSONAL %s %s.", /* EN "You were level %d with a maximum of %d hit point%s when you %s.", */
+	     "SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_HABEN Erfahrungsstufe %d, mit einem Maximum von %d Trefferpunkt%s, NEUER_SATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s %s.", /* EN "You were level %d with a maximum of %d hit point%s when you %s.", */
 		    u.ulevel, u.uhpmax, (u.uhpmax == 1) ? "" : "en", ends[how], ends_hilfsverb[how]); /* EN u.ulevel, u.uhpmax, plur(u.uhpmax), ends[how]); */
 	    putstr(endwin, 0, pbuf);
 	    putstr(endwin, 0, "");

@@ -134,7 +134,7 @@ struct attack *mattk;
 	} else {
 	    return (mattk->aatyp == AT_TUCH) ? "contact" : /* EN return (mattk->aatyp == AT_TUCH) ? "contact" : */ // TODO DE
 		   (mattk->aatyp == AT_GAZE) ? "gaze" : /* EN (mattk->aatyp == AT_GAZE) ? "gaze" : */ // TODO DE
-		   (mattk->aatyp == AT_BITE) ? "VERB_BITE" : "VERB_STING"; /* EN (mattk->aatyp == AT_BITE) ? "bite" : "sting"; */
+		   (mattk->aatyp == AT_BITE) ? "NOUN_BITE" : "NOUN_STING"; /* EN (mattk->aatyp == AT_BITE) ? "bite" : "sting"; */
 	}
 }
 
