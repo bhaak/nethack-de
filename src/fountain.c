@@ -16,7 +16,7 @@ void
 floating_above(what)
 const char *what;
 {
-    You("VERB_SCHWEBEN hoch über OBJECT ARTIKEL_BESTIMMTER %s.", what); /* EN You("are floating high above the %s.", what); */
+    You("VERB_SCHWEBEN hoch über OBJECT KASUS_DATIV ARTIKEL_BESTIMMTER %s.", what); /* EN You("are floating high above the %s.", what); */
 }
 
 STATIC_OVL void

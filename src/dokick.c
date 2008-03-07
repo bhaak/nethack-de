@@ -595,7 +595,7 @@ char *buf;
 	else if (IS_DOOR(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_OBJ_DOOR"; /* EN else if (IS_DOOR(maploc->typ)) what = "a door"; */
 	else if (IS_TREE(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_TREE"; /* EN else if (IS_TREE(maploc->typ)) what = "a tree"; */
 	else if (IS_STWALL(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_WALL"; /* EN else if (IS_STWALL(maploc->typ)) what = "a wall"; */ 
-	else if (IS_ROCK(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_ROCK"; /* EN else if (IS_ROCK(maploc->typ)) what = "a rock"; */ 
+	else if (IS_ROCK(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_GEM_ROCK"; /* EN else if (IS_ROCK(maploc->typ)) what = "a rock"; */ 
 	else if (IS_THRONE(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_THRONE"; /* EN else if (IS_THRONE(maploc->typ)) what = "a throne"; */ 
 	else if (IS_FOUNTAIN(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_FOUNTAIN"; /* EN else if (IS_FOUNTAIN(maploc->typ)) what = "a fountain"; */ 
 	else if (IS_GRAVE(maploc->typ)) what = "ARTIKEL_UNBESTIMMTER NOUN_HEADSTONE"; /* EN else if (IS_GRAVE(maploc->typ)) what = "a headstone"; */

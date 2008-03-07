@@ -259,7 +259,7 @@ register struct obj *obj;
 	obj->in_use = TRUE;	/* block free identification via interrupt */
 	switch(obj->otyp) {	/* effects that can be noticed without eyes */
 	    case RIN_SEARCHING:
-		You("VERB_DACHTEST, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV %s im Spülbecken verloren VERB_HAETTEST, aber da liegt er doch!", /* EN You("thought your %s got lost in the sink, but there it is!", */
+		You("MODIFIER_VERB_PRAETERITUM VERB_DENKEN, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV %s im Spülbecken verloren MODIFIER_KONJUNKTIV_II VERB_HABEN, aber da liegt er doch!", /* EN You("thought your %s got lost in the sink, but there it is!", */
 			xname(obj));
 		goto giveback;
 	    case RIN_SLOW_DIGESTION:

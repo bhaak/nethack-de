@@ -411,7 +411,7 @@ cleanup:
 		return(0);
 	} else {		/* not enough effort has been spent yet */
 		static const char *const d_target[6] = {
-			"", "NOUN_ROCK", "NOUN_STATUE", "NOUN_BOULDER", "NOUN_OBJ_DOOR", "NOUN_TREE" /* EN "", "rock", "statue", "boulder", "door", "tree" */
+			"", "NOUN_GEM_ROCK", "NOUN_STATUE", "NOUN_BOULDER", "NOUN_OBJ_DOOR", "NOUN_TREE" /* EN "", "rock", "statue", "boulder", "door", "tree" */
 		};
 		int dig_target = dig_typ(uwep, dpx, dpy);
 

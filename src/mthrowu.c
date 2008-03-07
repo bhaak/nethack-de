@@ -630,7 +630,7 @@ register struct attack *mattk;
 
 	    if(flags.soundok)
 		pline("A dry rattle comes from %s throat.", /* EN pline("A dry rattle comes from %s throat.", */ // TODO DE
-		                      genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_THROAT")); /* EN s_suffix(mon_nam(mtmp))); */
+		                      genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_RACHEN")); /* EN s_suffix(mon_nam(mtmp))); */
 	    return 0;
 	}
 	if(lined_up(mtmp)) {

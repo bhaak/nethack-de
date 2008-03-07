@@ -2289,8 +2289,8 @@ boolean from_user;
 		goto typfnd;
 	    }
 
-	if (!BSTRCMPI(bp, p-15, " NOUN_GEM_STONE")) { /* EN if (!BSTRCMPI(bp, p-6, " stone")) { */
-		p[-15] = 0;
+	if (!BSTRCMPI(bp, p-14, " NOUN_GEM_ROCK")) { /* EN if (!BSTRCMPI(bp, p-6, " stone")) { */
+		p[-14] = 0; /* EN p[-6] = 0; */
 		oclass = GEM_CLASS;
 		dn = actualn = bp;
 		//fprintf(stderr, "y####### dn:      %s\n", dn);

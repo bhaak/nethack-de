@@ -215,7 +215,7 @@ found:
 			    wipeout_text(namebuf, (6+MAXULEV - u.ulevel)/6, 0);
 			} else
 			    Sprintf(namebuf, "%s was here!", plname); /* EN Sprintf(namebuf, "%s was here!", plname); */ // TODO DE
-			You("VERB_SCHREIBEN \"%s\" und NEUER_SATZ SUBJECT_IM_SATZ ARTIKEL_BESTIMMTER NOUN_SCROLL VERB_DISAPPEAR.", namebuf); /* EN You("write \"%s\" and the scroll disappears.", namebuf); */
+			You("VERB_SCHREIBEN \"%s\" und NEUER_SATZ SUBJECT_IM_SATZ ARTIKEL_BESTIMMTER NOUN_SCROLL VERB_VERSCHWINDEN.", namebuf); /* EN You("write \"%s\" and the scroll disappears.", namebuf); */
 			useup(paper);
 		}
 		obfree(new_obj, (struct obj *) 0);

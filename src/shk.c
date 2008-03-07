@@ -601,14 +601,14 @@ register char *enterstring;
 		    if (!Blind) makeknown(DWARVISH_MATTOCK);
 		}
 		verbalize(NOTANGRY(shkp) ?
-			  "SUBJECT VERB_WUERDEN PRONOMEN_PERSONAL bitte OBJECT PRONOMEN_POSSESSIV %s%s drauﬂen lassen?" : /* EN "Will you please leave your %s%s outside?" : */
+			  "SUBJECT MODIFIER_KONJUNKTIV_II VERB_WERDEN PRONOMEN_PERSONAL bitte OBJECT PRONOMEN_POSSESSIV %s%s drauﬂen lassen?" : /* EN "Will you please leave your %s%s outside?" : */
 			  "Leave the %s%s outside.", /* EN "Leave the %s%s outside.", */ // TODO DE
 			  tool, plur(cnt));
 		should_block = TRUE;
 #ifdef STEED
 	    } else if (u.usteed) {
 		verbalize(NOTANGRY(shkp) ?
-			  "SUBJECT VERB_WUERDEN PRONOMEN_PERSONAL bitte OBJECT %s drauﬂen lassen?" : /* EN "Will you please leave %s outside?" : */
+			  "SUBJECT MODIFIER_KONJUNKTIV_II VERB_WERDEN PRONOMEN_PERSONAL bitte OBJECT %s drauﬂen lassen?" : /* EN "Will you please leave %s outside?" : */
 			  "Leave %s outside.", y_monnam(u.usteed)); /* EN "Leave %s outside.", y_monnam(u.usteed)); */ // TODO DE
 		should_block = TRUE;
 #endif
