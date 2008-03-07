@@ -8,6 +8,10 @@
 #include "epri.h"
 #include "emin.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /* this matches the categorizations shown by enlightenment */
 #define ALGN_SINNED	(-4)	/* worse than strayed */
 
@@ -258,7 +262,12 @@ char *pname;		/* caller-supplied output buffer */
 					mon->data == &mons[PM_ANGEL]) {
 		/* use epri */
 		if (mon->mtame && mon->data == &mons[PM_ANGEL])
-			Strcat(pname, "NOUN_GUARDIAN "); /* EN Strcat(pname, "guardian "); */
+#ifdef GERMAN
+			if (Hallucination) {
+				Strcat(pname, "Schutz-"); // TODO DE Schutz-NOUN_DOG -> Schutz-Hund
+			} else
+#endif
+			Strcat(pname, "NOUN_SCHUTZ"); /* EN Strcat(pname, "guardian "); */ /* ergibt NOUN_SCHUTZ_NOUN_ANGEL */
 		if (mon->data != &mons[PM_ALIGNED_PRIEST] &&
 				mon->data != &mons[PM_HIGH_PRIEST]) {
 			Strcat(pname, what);

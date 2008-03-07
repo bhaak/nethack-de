@@ -67,11 +67,11 @@ amulet()
 		if(ttmp->ttyp == MAGIC_PORTAL) {
 		    int du = distu(ttmp->tx, ttmp->ty);
 		    if (du <= 9)
-			pline("%s hot!", Tobjnam(amu, "feel")); /* EN pline("%s hot!", Tobjnam(amu, "feel")); */ // TODO DE
+			pline("SUBJECT %s sich heiss an!", Tobjnam(amu, "VERB_FUEHLEN")); /* EN pline("%s hot!", Tobjnam(amu, "feel")); */
 		    else if (du <= 64)
-			pline("%s very warm.", Tobjnam(amu, "feel")); /* EN pline("%s very warm.", Tobjnam(amu, "feel")); */ // TODO DE
+			pline("SUBJECT %s sehr warm an.", Tobjnam(amu, "VERB_FUEHLEN")); /* EN pline("%s very warm.", Tobjnam(amu, "feel")); */
 		    else if (du <= 144)
-			pline("%s warm.", Tobjnam(amu, "feel")); /* EN pline("%s warm.", Tobjnam(amu, "feel")); */ // TODO DE
+			pline("SUBJECT %s warm an.", Tobjnam(amu, "VERB_FUEHLEN")); /* EN pline("%s warm.", Tobjnam(amu, "feel")); */
 		    /* else, the amulet feels normal */
 		    break;
 		}

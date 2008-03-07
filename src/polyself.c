@@ -970,9 +970,9 @@ dogaze()
 		} else {
 		    if (flags.confirm && mtmp->mpeaceful && !Confusion
 							&& !Hallucination) {
-			Sprintf(qbuf, "Really %s %s?", /* EN Sprintf(qbuf, "Really %s %s?", */ // TODO DE
-			    (adtyp == AD_CONF) ? "confuse" : "attack", /* EN (adtyp == AD_CONF) ? "confuse" : "attack", */ // TODO DE
-			    mon_nam(mtmp));
+			Sprintf(qbuf, "Wirklich KASUS_AKKUSATIV %s %s?", /* EN Sprintf(qbuf, "Really %s %s?", */ 
+			    mon_nam(mtmp), (adtyp == AD_CONF) ? "verwirren" : "angreifen" /* EN (adtyp == AD_CONF) ? "confuse" : "attack", */
+			    ); /* EN mon_nam(mtmp)); */
 			if (yn(qbuf) != 'y') continue;
 			setmangry(mtmp);
 		    }
@@ -986,7 +986,7 @@ dogaze()
 		     */
 		    if (adtyp == AD_CONF) {
 			if (!mtmp->mconf)
-			    Your("gaze confuses %s!", mon_nam(mtmp)); /* EN Your("gaze confuses %s!", mon_nam(mtmp)); */ // TODO DE
+			    Your("NOUN_GAZE VERB_VERWIRREN OBJECT %s!", mon_nam(mtmp)); /* EN Your("gaze confuses %s!", mon_nam(mtmp)); */
 			else
 			    pline("%s is getting more and more confused.", /* EN pline("%s is getting more and more confused.", */ // TODO DE
 							Monnam(mtmp));
