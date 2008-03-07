@@ -349,11 +349,17 @@ class VerbModal < Verb
       when "wissen": return ["weiß", "weißt", "weiß"][personNummer]
       when "mögen": return ["mag", "magst", "mag"][personNummer]
       when "müssen": return ["muss", "musst", "muss"][personNummer]
+      when "sollen": return ["soll", "sollst", "soll"][personNummer]
       else
         return super
       end
     elsif praeteritum? && konjunktiv? then
-      return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
+      case infinitiv
+      when "sollen", "wollen": 
+        return @praeteritum_stamm + "te" + endung(@konjunktiv_endung)
+      else
+        return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
+      end
     end
     return super
   end
@@ -445,6 +451,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "wissen": v = VerbModal.new("wissen", "wusste", "gewusst")
   when "mögen": v = VerbModal.new("mögen", "mochte", "gemocht")
   when "müssen": v = VerbModal.new("müssen", "musste", "gemusst")
+  when "sollen": v = VerbModal.new("sollen", "sollte", "gesollt")
     #  e a a
   when /(.*)gehen$/: v = VerbUnregelmaessig.new($1+"gehen", $1+"gang", ge($1)+"gangen")
     #  e a e
@@ -474,6 +481,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "bewegen": v = VerbUnregelmaessig.new("bewegen", "bewog", "bewogen")
   when /(.*)heben$/:  v = VerbUnregelmaessig.new($1+"heben", $1+"hob", ge($1)+"hoben")
   when /(.*)quellen$/: v = Verb_Konjunktiv_II.new($1+"quellen", $1+"quoll", ge($1)+"quollen", $1+"quill", $1+"quöll")
+  when /(.*)schmelzen$/: v = Verb_Konjunktiv_II.new($1+"schmelzen", $1+"schmolz", ge($1)+"schmolzen", $1+"schmilz", $1+"schmölz")
     #  ei i i
   when /(.*)beißen$/:  v = VerbUnregelmaessig.new($1+"beißen", $1+"biss", ge($1)+"bissen")
   when /(.*)gleiten$/:  v = VerbUnregelmaessig.new($1+"gleiten", $1+"glitt", ge($1)+"glitten")

@@ -16,7 +16,7 @@ class TestVerb < Test::Unit::TestCase
   @output_levels = Test::Unit::UI::VERBOSE
 
   def testPrintVerb
-    verb = Verb.verb("","atmen")
+    verb = Verb.verb("","sollen")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
@@ -547,6 +547,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["müsse", "müssest", "müsse", "müssen", "müsset", "müssen"])
     checkVerbPraeteritum(verb, ["musste", "musstest", "musste", "mussten", "musstet", "mussten"])
     checkVerbPraeteritumKonjunktiv(verb, ["müsste", "müsstest", "müsste", "müssten", "müsstet", "müssten"])
+  end
+
+  def testSollen
+    verb = Verb.verb("", "sollen")
+
+    assert_equal("sollen", verb.infinitiv)
+    assert_equal("", verb.singular.imperativ)
+    assert_equal("", verb.plural.imperativ)
+    assert_equal("sollend", verb.partizip_praesens)
+    assert_equal("gesollt", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["soll", "sollst", "soll", "sollen", "sollt", "sollen"])
+    checkVerbPraesensKonjunktiv(verb, ["solle", "sollest", "solle", "sollen", "sollet", "sollen"])
+    checkVerbPraeteritum(verb, ["sollte", "solltest", "sollte", "sollten", "solltet", "sollten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["sollte", "solltest", "sollte", "sollten", "solltet", "sollten"])
   end
 
   def testEnthalten
