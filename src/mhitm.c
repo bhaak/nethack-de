@@ -7,7 +7,7 @@
 #include "edog.h"
 
 #ifdef GERMAN
-#include "german.h"
+# include "german.h"
 #endif
 
 extern boolean notonhead;

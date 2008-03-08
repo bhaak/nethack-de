@@ -15,6 +15,10 @@ NEARDATA struct instance_flags iflags;	/* provide linkage */
 #include <ctype.h>
 #endif
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #define WINTYPELEN 16
 
 #ifdef DEFAULT_WC_TILED_MAP

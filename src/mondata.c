@@ -6,6 +6,10 @@
 #include "eshk.h"
 #include "epri.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /*	These routines provide basic data for any type of monster. */
 
 #ifdef OVLB
