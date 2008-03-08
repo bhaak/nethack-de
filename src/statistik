@@ -1,0 +1,14 @@
+#!/bin/tcsh -f
+
+grep \ TODO\ DE *.c | cut -f 1 -d : | uniq -c | sort -n
+
+set anz=`grep \ EN\  *.c | cut -f 1 -d : | wc -l`
+set zu_uebersetzen = `grep \ TODO\ DE *.c | cut -f 1 -d : | wc -l`
+set uebersetzt = `dc -e "$anz $zu_uebersetzen - p"`
+set uebersetzt_prozent = `dc -e "3 k $uebersetzt 100 * $anz / p"`
+
+echo "Gesamte Anzahl zu übersetzender Zeilen: " $anz
+echo "Anzahl noch zu übersetzender Zeilen:    " $zu_uebersetzen
+echo "Übersetzte Zeilen:                      " $uebersetzt
+echo "Übersetzte Zeilen in Prozent:           " $uebersetzt_prozent "%"
+# echo "Anzahl übersetzter Zeilen:              " `grep \ TODO\ DE\  *.c | cut -f 1 -d : | wc -l`
