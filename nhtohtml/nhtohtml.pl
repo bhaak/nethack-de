@@ -210,7 +210,7 @@ sub process_monster {
   $mon_struct->{COLOR}=~s/HI_ZAP/CLR_BRIGHT_BLUE/;
   
   push @monsters, $mon_struct;
-  print STDERR "$mon_struct->{NAME} ($symbols{$mon_struct->{SYMBOL}}): $mon_struct->{LEVEL}->{LVL}\n";
+  # print STDERR "$mon_struct->{NAME} ($symbols{$mon_struct->{SYMBOL}}): $mon_struct->{LEVEL}->{LVL}\n";
 $mon_count{$name}++;
 };
 
@@ -470,7 +470,10 @@ EOF
   }
 
   # The help file entry, and the footer.
-  my $entry=lookup_entry($m->{NAME});
+  #my $entry=lookup_entry($m->{NAME});
+  print STDERR "$m->{NAME}\n";
+  print STDERR "$print_name\n";
+  my $entry=lookup_entry($print_name);
 print HTML <<EOF;
 <hr class="separator1"/>
 <div>$entry</div>
