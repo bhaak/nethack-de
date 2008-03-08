@@ -915,6 +915,25 @@ START_TEST (test_modifier_verb_imperativ) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_wortzusammensetzungen) {
+	char *text[][2] = {
+		{"Test-Zusammensetzung",
+		 "Test-Zusammensetzung"},
+		{"Waffen-NOUN_HAND",
+		 "Waffenhand"},
+		{"Ring-NOUN_FINGER",
+		 "Ringfinger"},
+		{"Schutz-NOUN_DOG",
+		 "Schutzhund"},
+		{"SUBJECT PRONOMEN_POSSESSIV Ring-NOUN_FINGER VERB_LAUFEN blau an.",
+		 "Dein Ringfinger läuft blau an."},
+		{"SUBJECT PRONOMEN_POSSESSIV Ring-NOUN_FINGER VERB_WERDEN OBJECT KASUS_DATIV zu ARTIKEL_UNBESTIMMTER Ring-NOUN_TENTAKEL.",
+		 "Dein Ringfinger wird zu einem Ringtentakel."},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
 //#endif
 
 Suite *test_suite(void)
@@ -960,9 +979,11 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_noun_pseudo);
 	tcase_add_test(tc_core, test_shopkeeper);
-	}
+	
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
 	tcase_add_test(tc_core, test_modifier_verb_imperativ);
+	}
+	tcase_add_test(tc_core, test_wortzusammensetzungen);
 
 	return s;
 }

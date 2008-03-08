@@ -1013,6 +1013,17 @@ char* german(const char *line) {
 
 			int beginning_of_appended_word = strlen(output);
 
+#if 0
+			printf("output: %s\n",output);
+			printf("beginning_of_appended_word: %d\n",beginning_of_appended_word);
+			printf("output[beginning_of_appended_word]: %d\n",output[beginning_of_appended_word-1]);
+#endif
+			/* Waffen-NOUN_HAND -> Waffenhand */
+			if ((beginning_of_appended_word > 0) && (output[beginning_of_appended_word-1]=='-')) {
+				beginning_of_appended_word--;
+				output[beginning_of_appended_word] = '\0';
+				noun_lowercase = 1;
+			}
 			next_token(line, tmp2, pos+1);
 			if (strncmp(tmp2, "NOUN_MEAT",9)==0) {
 				append_kompositum(output, tmp, "NOUN_MEAT");
