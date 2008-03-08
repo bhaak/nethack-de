@@ -729,7 +729,7 @@ do_look(quick)
 		pm = lookat(cc.x, cc.y, look_buf, monbuf);
 		firstmatch = look_buf;
 		if (*firstmatch) {
-		    Sprintf(temp_buf, " (%s)", firstmatch);
+		    Sprintf(temp_buf, " (SUBJECT_IM_SATZ %s)", firstmatch); /* EN Sprintf(temp_buf, " (%s)", firstmatch); */
 		    (void)strncat(out_str, temp_buf, BUFSZ-strlen(out_str)-1);
 		    found = 1;	/* we have something to look up */
 		}
