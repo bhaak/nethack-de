@@ -355,6 +355,7 @@ void german2meta(const char *str, char *output)
 				statuette_gefunden = 1;
 			}
 
+			if (WISH_DEBUG) printf("4 i: %d\n",i);
 			if ((ring_gefunden ||
 					 wand_gefunden ||
 					 potion_gefunden ||
@@ -394,9 +395,12 @@ void german2meta(const char *str, char *output)
 				strcat(output, wort->typ);
 				i = i + strlen(wort->wort);
 			} else {
+				if (WISH_DEBUG) printf("4.5 i: %d\n",i);
+				if (WISH_DEBUG) printf("4.5 wort->wort: %s\n",wort->wort);
 				strcat(output, wort->typ);
 				i = i + strlen(wort->wort);
 			}
+			if (WISH_DEBUG) printf("5 i: %d\n",i);
 		}
 	}
 	if (WISH_DEBUG) printf("\ngerman2meta %s\n", output);

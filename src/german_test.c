@@ -929,6 +929,8 @@ START_TEST (test_wortzusammensetzungen) {
 		 "Dein Ringfinger läuft blau an."},
 		{"SUBJECT PRONOMEN_POSSESSIV Ring-NOUN_FINGER VERB_WERDEN OBJECT KASUS_DATIV zu ARTIKEL_UNBESTIMMTER Ring-NOUN_TENTAKEL.",
 		 "Dein Ringfinger wird zu einem Ringtentakel."},
+		{"KASUS_AKKUSATIV PRONOMEN_WELCHER Ring-NOUN_FINGER",
+		 "Welchen Ringfinger"},
 	};
 
 	check_strings(text, sizeof(text)/8);

@@ -222,9 +222,9 @@ def substantiv_endung(singularstamm, genitiv_singular_endung,
 end
 
 def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
-                          pluralstamm, nominativ_plural_endung, geschlecht, fugenelement="", zusatz="")
+                          pluralstamm, nominativ_plural_endung, geschlecht="", fugenelement="", zusatz="")
 
-  throw "Geschlecht fuer #{bezeichner} nicht angeben" if geschlecht.nil? or geschlecht == ""
+  throw "Geschlecht fuer #{bezeichner} nicht angeben" if geschlecht == ""
 
   casus = substantiv_endung(singularstamm, genitiv_singular_endung,
                             pluralstamm, nominativ_plural_endung)
@@ -281,7 +281,9 @@ def dekliniere_substantiv(bezeichner, singularstamm, genitiv_singular_endung,
   nomen
 end
 
-def dekliniere_eigenname(bezeichner, singularstamm, geschlecht)
+def dekliniere_eigenname(bezeichner, singularstamm="", geschlecht="")
+  throw "Geschlecht fuer #{bezeichner} nicht angeben" if geschlecht == ""
+  throw "Singularstamm fuer #{bezeichner} nicht angeben" if singularstamm == ""
 
   namen = []
   namen << unregelmaessiges_wort(bezeichner, singularstamm, [$nom,$akk,$dat], geschlecht, $sg)
@@ -319,7 +321,10 @@ class Nomen < Adjektiv
   end
 end
 
-def dekliniere_adjektivisches_substantiv(bezeichner, stamm, artikel)
+def dekliniere_adjektivisches_substantiv(bezeichner, stamm="", artikel="")
+  throw "Stamm fuer #{bezeichner} nicht angeben" if stamm == ""
+  throw "Artikel fuer #{bezeichner} nicht angeben" if artikel == ""
+
   adjektive = [];
   if artikel == $neu then
     [
@@ -392,7 +397,9 @@ def dekliniere_adjektivisches_substantiv(bezeichner, stamm, artikel)
   adjektive
 end
 
-def dekliniere_adjektiv(bezeichner, stamm)
+def dekliniere_adjektiv(bezeichner, stamm="")
+  throw "Stamm fuer #{bezeichner} nicht angeben" if stamm == ""
+
   adjektive = [];
   [
     # Grundform, nur Ausgabe des Stammes
@@ -1148,9 +1155,10 @@ def dekliniere_nominalphrase(bezeichner,
                              adjektive, # Array oder String
                              singularstamm, genitiv_singular_endung,
                              pluralstamm, nominativ_plural_endung,
-                             geschlecht,
+                             geschlecht="",
                              fugenelement="",
                              zusatz="")
+  throw "Geschlecht fuer #{bezeichner} nicht angeben" if geschlecht == ""
   # Adjektiv.new(stamm, bezeichner,  [$nom,$gen,$dat,$akk], [$mal,$fem,$neu], [$sg,$pl], "grundform"),
 
   numerus = [$sg, $pl]
@@ -1346,6 +1354,18 @@ def ausgabe_nouns
     unregelmaessiges_wort("PRONOMEN_JENER",  "jene",    [$nom,$akk], [$mal,$fem,$neu], $pl),
     unregelmaessiges_wort("PRONOMEN_JENER",  "jenen",   $dat, [$mal,$fem,$neu], $pl),
     unregelmaessiges_wort("PRONOMEN_JENER",  "jener",   $gen, [$mal,$fem,$neu], $pl),
+    "",
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welcher",   $nom, $mal, $sg),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welchen",   $akk, $mal, $sg),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welchem",   $dat, $mal, $sg),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welches",   $gen, $mal, $sg),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welche",    [$nom,$akk], $fem, $sg),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welcher",   [$gen,$dat], $fem, $sg),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welches",   [$nom,$gen,$akk], $neu, $sg),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welchem",   $dat, $neu, $sg),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welche",    [$nom,$akk], [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welchen",   $dat, [$mal,$fem,$neu], $pl),
+    unregelmaessiges_wort("PRONOMEN_WELCHER",  "welcher",   $gen, [$mal,$fem,$neu], $pl),
     "",
     unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "sein",   $nom, [$mal,$neu], $sg),
     unregelmaessiges_wort("PRONOMEN_3P_MN_POSSESSIV", "seines", $gen, [$mal,$neu], $sg),
@@ -2816,6 +2836,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_UNTERSEITE", "Unterseite", "", "Unterseite", "en", "feminin"),
     dekliniere_substantiv("NOUN_GEDANKE", "Gedanken", "s", "Gedanke", "en", "maskulin"),
     dekliniere_substantiv("NOUN_THRON", "Thron", "es", "Thron", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_THRONE", "Thron", "es", "Thron", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DRAWBRIDGE", "Zugbrücke", "", "Zugbrücke", "en", "feminin"),
     dekliniere_substantiv("NOUN_KLINGE", "Klinge", "", "Klinge", "en", "feminin"),
     dekliniere_substantiv("NOUN_LAVA", "Lava", "", "Lav", "en", "feminin", ""),
@@ -2835,9 +2856,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ALTAR","Altar","es","Altär","e","maskulin"),
     dekliniere_substantiv("NOUN_FOUNTAIN","Springbrunnen","s","Springbrunnen","","maskulin"),
     dekliniere_substantiv("NOUN_HEADSTONE","Grabstein","es","Grabstein","e","maskulin"),
-    dekliniere_substantiv("NOUN_THRONE","Thron","es","Thron","e","maskulin"),
-
-    dekliniere_substantiv("NOUN_THRONE","Thron","es","Thron","e","maskulin"),
 
     dekliniere_substantiv("NOUN_HEADSCHMERZEN","Kopfschmerz","es","Kopfschmerz","en","maskulin"),
     dekliniere_substantiv("NOUN_VERLUST","Verlust","es","Verlust","e","feminin"),
@@ -3199,8 +3217,10 @@ def ausgabe_nouns
     dekliniere_adjektivisches_substantiv("NOUN_CANINE","Hundeartig","neutrum"),
     dekliniere_substantiv("NOUN_CHAIN","Kette","","Kette","en","feminin"),
     dekliniere_substantiv("NOUN_CHAOS","Chaos","","","","neutrum"),
+    dekliniere_nominalphrase("NOUN_CLOSED_DOOR", "geschlossen","Türe", "", "Türe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_CONDUCT","Gebaren","s","","","neutrum"),
     dekliniere_substantiv("NOUN_CREATURE","Kreatur","","Kreatur","en","feminin"),
+    dekliniere_nominalphrase("NOUN_DARK_PART_OF_A_ROOM","unbeleuchtet","Teil","es","","","maskulin","","eines Raumes"),
     dekliniere_substantiv("NOUN_DART_TRAP","Dartfalle","","Dartfalle","en","feminin"),
     dekliniere_substantiv("NOUN_DEMON", "Dämon", "s", "Dämon", "en", "maskulin"),
     dekliniere_substantiv("NOUN_DURST","Durst","es","","","maskulin"),
@@ -3213,6 +3233,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_EXTREMITAET","Extremität","","Extremität","en","feminin"),
     dekliniere_adjektivisches_substantiv("NOUN_FELINE","Katzenartig","neutrum"),
     dekliniere_substantiv("NOUN_FLEISCH","Fleisch","es","","","neutrum"),
+    dekliniere_substantiv("NOUN_FLOOR_OF_A_ROOM","Boden","s","","","maskulin","","eines Raumes"),
+    dekliniere_substantiv("NOUN_FUNGUS","Pilz","es","","","maskulin"),
     dekliniere_substantiv("NOUN_GAS_SPORE_EXPLOSION","Gassporenexplosion","","Gassporenexplosion","en","feminin"),
     dekliniere_substantiv("NOUN_GAZE","Blick","es","Blick","e","maskulin"),
     dekliniere_substantiv("NOUN_GEIST","Geist","es","Geist","e","maskulin"),
@@ -3235,7 +3257,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GRUBE","Grube","","Grube","en","feminin"),
     dekliniere_substantiv("NOUN_HALBGOETTIN","Halbgöttin","","Halbgöttinn","en","feminin"),
     dekliniere_substantiv("NOUN_HALBGOTT","Halbgott","es","Halbgött","er","maskulin"),
+    dekliniere_substantiv("NOUN_HAZE","Nebel","s","Nebel","","maskulin"),
     dekliniere_substantiv("NOUN_HEIMAT","Heimat","","Heimat","en","feminin"),
+    dekliniere_substantiv("NOUN_HUMANOID","Humanoider","s","","","maskulin"),
+    dekliniere_adjektivisches_substantiv("NOUN_INNERE","Inner","neutrum"),
     dekliniere_substantiv("NOUN_IRON_BALL", "Eisenkugel", "", "Eisenkugel", "en", "feminin"),
     dekliniere_substantiv("NOUN_KAELTE","Kälte","","","","feminin"),
     dekliniere_substantiv("NOUN_KICK","Tritt","es","Tritt","e","maskulin"),
@@ -3244,14 +3269,18 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_KOERPER","Körper","s","Körper","","maskulin"),
     dekliniere_substantiv("NOUN_KOPF","Kopf","es","Köpf","e","maskulin"),
     dekliniere_substantiv("NOUN_KORRIDOR","Korridor","s","Korridor","e","maskulin"),
-    dekliniere_substantiv("NOUN_LADDER_DOWN", "Leiter", "", "Leiter", "en", "feminin","","hinauf"),
-    dekliniere_substantiv("NOUN_LADDER_UP", "Leiter", "", "Leiter", "en", "feminin","","hinab"),
+    dekliniere_substantiv("NOUN_LADDER_DOWN", "Leiter", "", "Leiter", "en", "feminin","","hinab"),
+    dekliniere_substantiv("NOUN_LADDER_UP", "Leiter", "", "Leiter", "en", "feminin","","hinauf"),
     dekliniere_substantiv("NOUN_LANTERN","Laterne","","Laterne","en","feminin"),
+    dekliniere_nominalphrase("NOUN_LARGE_STONE", "groß", "Stein", "es", "Stein", "e", "maskulin"),
+    dekliniere_nominalphrase("NOUN_GIANT_HUMANOID","riesig", "Humanoider","s","","","maskulin"),
     dekliniere_substantiv("NOUN_LEBEN","Leben","s","Leben","","neutrum"),
     dekliniere_substantiv("NOUN_LEBENSKRAFT","Lebenskraft","","Lebenskräft","e","feminin"),
+    dekliniere_substantiv("NOUN_LEVEL_TELEPORTER","Leveltelepoter","s","","","maskulin"),
     dekliniere_substantiv("NOUN_LEIB","Leib","es","Leib","er","maskulin"),
     dekliniere_substantiv("NOUN_LEINE","Leine","","Leine","en","feminin"),
     dekliniere_substantiv("NOUN_LICHTBLITZ","Lichtblitz","es","Lichtblitz","e","maskulin"),
+    dekliniere_substantiv("NOUN_LONG_WORM_TAIL","Langwurmschwanz","es","Langwurmschwänz","e","maskulin"),
     dekliniere_nominalphrase("NOUN_LOWERED_DRAWBRIDGE", "heruntergelassene", "Zugbrücke", "", "Zugbrücke", "en", "feminin"),
     dekliniere_adjektivisches_substantiv("NOUN_MAGENINNERE","Mageninner", "neutrum"),
     dekliniere_nominalphrase("NOUN_MAGIC_PORTAL","magisch","Portal","s","Portal","e","neutrum"),
@@ -3269,7 +3298,13 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_MOLTEN_LAVA", "geschmolzen", "Lava", "", "Lav", "en", "feminin", ""),
     dekliniere_substantiv("NOUN_MONSTER","Monster","s","Monster","","neutrum"),
     dekliniere_substantiv("NOUN_NETZ","Netz","es","Netz","e","neutrum"),
+    dekliniere_nominalphrase("NOUN_OPEN_DOOR", "offen","Türe", "", "Türe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_OOZE", "Schlamm", "es", "Schlamm", "e", "maskulin"), 
+    dekliniere_nominalphrase("NOUN_OPULENT_THRONE", "opulent", "Thron", "es", "Thron", "e", "maskulin"),
     dekliniere_substantiv("NOUN_PAYMENT","Bezahlung","","Bezahlung","en","feminin"),
+    dekliniere_substantiv("NOUN_PIECE_OF_ARMOR","Teil","es","","","maskulin","","einer Rüstung"),
+    dekliniere_substantiv("NOUN_PIECE_OF_FOOD","Lebensmittel","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_PILE_OF_COIN","Münzhaufen","s","","","maskulin"),
     dekliniere_substantiv("NOUN_POISON","Gift","es","Gift","e","neutrum"),
     dekliniere_substantiv("NOUN_PROTOPLASMA","Protoplasma","s","Protoplasm","en","neutrum"),
     dekliniere_substantiv("NOUN_QUIVER","Köcher","s","Köcher","","maskulin"),
@@ -3290,6 +3325,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCHWALL","Schwall","es","Schwall","e","maskulin"),
     dekliniere_substantiv("NOUN_SINN","Sinn","es","Sinn","e","maskulin"),
     dekliniere_substantiv("NOUN_SONDIERUNG","Sondierung","","Sondierung","en","feminin"),
+    dekliniere_nominalphrase("NOUN_SQUEAKY_BOARD", "quietschend", "Diele", "", "", "", "feminin"),
+    dekliniere_substantiv("NOUN_STAIRCASE_DOWN", "Treppe", "", "", "", "feminin","","hinab"),
+    dekliniere_substantiv("NOUN_STAIRCASE_UP", "Treppe", "", "", "", "feminin","","hinauf"),
+    dekliniere_substantiv("NOUN_STATUE_TRAP","Statuenfalle","","Statuenfalle","en","feminin"),
     dekliniere_substantiv("NOUN_STOMACH","Magen","s","Mägen","","maskulin"),
     dekliniere_substantiv("NOUN_SUMMEN","Summen","s","","","neutrum"),
     dekliniere_substantiv("NOUN_TEMPLES_CEILING","Tempeldecke","","Tempeldecke","en","feminin"),
@@ -3309,6 +3348,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WIND","Wind","es","Wind","e","maskulin"),
     dekliniere_substantiv("NOUN_WOMAN", "Frau", "", "Frau", "en", "feminin"),
     dekliniere_substantiv("NOUN_WORM", "Wurm", "es", "Würm", "er", "maskulin"),
+    dekliniere_substantiv("NOUN_WRAPPING", "Binde", "", "Binde", "en", "feminin", "en"),
 
     "/* ======================================================= */",
     "/* Adjektive */",
@@ -3420,7 +3460,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_NACHGEWACHSEN","nachgewachsen"),
     dekliniere_adjektiv("ADJEKTIV_NEU","neu"),
     dekliniere_adjektiv("ADJEKTIV_PLUMP","plump"),
-    dekliniere_adjektiv("ADJEKTIV_POISONED",""),
+    dekliniere_adjektiv("ADJEKTIV_POISONED","vergiftet"),
     dekliniere_adjektiv("ADJEKTIV_POOR","arm"),
     dekliniere_adjektiv("ADJEKTIV_RECHT","recht"),
     dekliniere_adjektiv("ADJEKTIV_REICH","reich"),
