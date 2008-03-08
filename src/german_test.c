@@ -459,7 +459,9 @@ START_TEST (test_complete_sentences4) {
 START_TEST (test_incomplete_sentences) {
 	char *text[][2] = {
 		{"ADJEKTIV_MAENNLICH",
-		 "männlich"},
+		 "Männlich"}, // TODO DE
+		{"SUBJECT NOUN_CAT oder SUBJECT_IM_SATZ ADJEKTIV_ANDERE NOUN_FELINEs",
+		 "Katze oder andere Katzenartige"},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -950,7 +952,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_gems);
 	tcase_add_test(tc_core, test_paar);
 	tcase_add_test(tc_core, test_hoeren);
-	//tcase_add_test(tc_core, test_incomplete_sentences);
+	tcase_add_test(tc_core, test_incomplete_sentences);
 	tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_token_functions);
 
