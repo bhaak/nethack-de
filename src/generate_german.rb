@@ -794,7 +794,6 @@ def ausgabe_verbs
 		Verb.verb("VERB_RUELPSEN", "rülpsen"),
 		Verb.verb("VERB_SCHNAPPEN", "schnappen"),
 		Verb.verb("VERB_SCHUETZEN", "schützen"),
-		Verb.verb("VERB_OFFER", "opfern"),
 		Verb.verb("VERB_LEUCHTEN", "leuchten"),
 		Verb.verb("VERB_AUFLEUCHTEN", "leuchten","auf"),
 		Verb.verb("VERB_SONNEN", "sonnen"),
@@ -820,6 +819,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_KOMMEN", "kommen"),
 
 
+		# deutsche Bezeichner
 		Verb.verb("VERB_ABLEHNEN", "lehnen", "ab"),
 		Verb.verb("VERB_ANGREIFEN", "greifen", "an"),
 		Verb.verb("VERB_AUFHEBEN", "heben", "auf"),
@@ -853,9 +853,6 @@ def ausgabe_verbs
 		Verb.verb("VERB_BLOCKEN","blocken"),
 		Verb.verb("VERB_BRAUCHEN","brauchen"),
 		Verb.verb("VERB_BRUELLEN","brüllen"),
-		Verb.verb("VERB_CONFUSE","verwirren"),
-		Verb.verb("VERB_CONTAIN","enthalten"),
-		Verb.verb("VERB_DISARM","entschärfen"),
 		Verb.verb("VERB_DONNERN","donnern"),
 		Verb.verb("VERB_DUERFEN","dürfen"),
 		Verb.verb("VERB_EINSCHLAFEN","schlafen","ein"),
@@ -880,6 +877,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_FAELLEN","fällen"),
 		Verb.verb("VERB_FAHREN","fahren"),
 		Verb.verb("VERB_FEHLEN","fehlen"),
+		Verb.verb("VERB_FESTSAUGEN","saugen","fest"),
 		Verb.verb("VERB_FLACKERN","flackern"),
 		Verb.verb("VERB_FLIEHEN","fliehen"),
 		Verb.verb("VERB_FLUESTERN","flüstern"),
@@ -927,12 +925,13 @@ def ausgabe_verbs
 		Verb.verb("VERB_MOEGEN","mögen"),
 		Verb.verb("VERB_MUESSEN","müssen"),
 		Verb.verb("VERB_NEHMEN","nehmen"),
-		Verb.verb("VERB_OWE","schulden"),
+		Verb.verb("VERB_PRAHLEN","prahlen"),
 		Verb.verb("VERB_PREDIGEN","predigen"),
 		Verb.verb("VERB_QUELLEN","quellen"),
 		Verb.verb("VERB_RAMMEN","rammen"),
 		Verb.verb("VERB_REISSEN","reißen"),
 		Verb.verb("VERB_REITEN","reiten"),
+		Verb.verb("VERB_REPARIEREN","reparieren"),
 		Verb.verb("VERB_RIECHEN","riechen"),
 		Verb.verb("VERB_SAEUBERN","säubern"),
 		Verb.verb("VERB_SCHIEBEN","schieben"),
@@ -1007,27 +1006,42 @@ def ausgabe_verbs
 		Verb.verb("VERB_ZERKRATZEN","zerkratzen"),
 		Verb.verb("VERB_ZUSCHNAPPEN","schnappen", "zu"),
 		Verb.verb("VERB_ZAHLEN","zahlen"),
+		Verb.verb("VERB_ZERQUETSCHEN","zerquetschen"),
 		Verb.verb("VERB_ZERSPLITTERN","zersplittern"),
 		Verb.verb("VERB_ZIEHEN","ziehen"),
 		Verb.verb("VERB_ZURUECKKEHREN","kehren", "zurück"),
 
-    Verb.verb("VERB_HISS","fauchen"),
-    Verb.verb("VERB_GROWL","knurren"),
-    Verb.verb("VERB_YELP","jaulen"),
-    Verb.verb("VERB_YOWL","jaulen"),
-    Verb.verb("VERB_ROAR","brüllen"),
-    Verb.verb("VERB_BUZZ","brummen"),
-    Verb.verb("VERB_SQUEAL","quieken"),
-    Verb.verb("VERB_SCREECH","krächzen"),
-    Verb.verb("VERB_SCREAK","kreischen"),
-    Verb.verb("VERB_SHRIEK","kreischen"),
-    Verb.verb("VERB_NEIGH","wiehern"),
-    Verb.verb("VERB_WAIL","heulen"),
-    Verb.verb("VERB_SNARL","fletschen"),
-    Verb.verb("VERB_WHIMPER","wimmern"),
-    Verb.verb("VERB_WHINE","winseln"),
-    #Verb.verb("VERB_COMMOTION"; /* EN ret = "commotion"; */
-    Verb.verb("VERB_SCREAM","schreien"),
+		# englische Bezeichner
+		Verb.verb("VERB_CHUCKLE","kichern"),
+		Verb.verb("VERB_CONFUSE","verwirren"),
+		Verb.verb("VERB_CONSUME", "konsumieren"),
+		Verb.verb("VERB_CONTAIN","enthalten"),
+		Verb.verb("VERB_CORRODE", "korrodieren"),
+		Verb.verb("VERB_DESTROY", "zerstören"),
+		Verb.verb("VERB_DISARM","entschärfen"),
+		Verb.verb("VERB_OFFER", "opfern"),
+		Verb.verb("VERB_OWE","schulden"),
+		Verb.verb("VERB_SACRIFICE", "opfern"),
+		Verb.verb("VERB_STING", "stechen"),
+
+		# aus sounds.c
+		Verb.verb("VERB_HISS","fauchen"),
+		Verb.verb("VERB_GROWL","knurren"),
+		Verb.verb("VERB_YELP","jaulen"),
+		Verb.verb("VERB_YOWL","jaulen"),
+		Verb.verb("VERB_ROAR","brüllen"),
+		Verb.verb("VERB_BUZZ","brummen"),
+		Verb.verb("VERB_SQUEAL","quieken"),
+		Verb.verb("VERB_SCREECH","krächzen"),
+		Verb.verb("VERB_SCREAK","kreischen"),
+		Verb.verb("VERB_SHRIEK","kreischen"),
+		Verb.verb("VERB_NEIGH","wiehern"),
+		Verb.verb("VERB_WAIL","heulen"),
+		Verb.verb("VERB_SNARL","fletschen"),
+		Verb.verb("VERB_WHIMPER","wimmern"),
+		Verb.verb("VERB_WHINE","winseln"),
+		#Verb.verb("VERB_COMMOTION"; /* EN ret = "commotion"; */
+		Verb.verb("VERB_SCREAM","schreien"),
   ]
 
   puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
@@ -1880,6 +1894,8 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_GRAPPLING_HOOK", 
     dekliniere_substantiv("NOUN_UNICORN_HORN", "Ainkhürn", "es", "Ainkhürn", "er", "neutrum"),
     dekliniere_substantiv("NOUN_UNICORN_HORN", "Einhorn-Horn", "es", "Einhorn-Hörn", "er", "neutrum"),
+    dekliniere_substantiv("NOUN_UNICORN_HORN", "Horn", "es", "Hörn", "er", "neutrum","","eines Einhornes"),
+    dekliniere_substantiv("NOUN_UNICORN_HORN", "Horn", "es", "Hörn", "er", "neutrum","","eines Einhorns"),
     #dekliniere_substantiv("NOUN_CANDELABRUM_OF_INVOCATION", 
     #dekliniere_substantiv("NOUN_BELL_OF_OPENING", 
     "", 
@@ -2380,7 +2396,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_KI_RIN", "Kirin", "s", "Kirin", "s", "neutrum"),
     dekliniere_substantiv("NOUN_ARCHON", "Archon", "s", "Archont", "en", "maskulin"),
     dekliniere_substantiv("NOUN_BAT", "Fledermaus", "", "Fledermäus", "e", "feminin"),
-    dekliniere_substantiv("NOUN_GIANT_BAT", "Riesenfledermaus", "", "Riesenfledermäus", "e", "feminin"), # von netzhack Flughund? Andererseits sind Giant Bats figuren aus d&d http://en.wikipedia.org/wiki/Giant_bat
+    dekliniere_substantiv("NOUN_GIANT_BAT", "Riesenfledermaus", "", "Riesenfledermäus", "e", "feminin"), # netzhack: Flughund? Andererseits sind Giant Bats Figuren aus d&d http://en.wikipedia.org/wiki/Giant_bat
     dekliniere_substantiv("NOUN_RAVEN", "Rabe", "en", "Rabe", "en", "maskulin"),
     dekliniere_substantiv("NOUN_VAMPIRE_BAT", "Vampirfledermaus", "", "Vampirfledermäus", "e", "feminin"),
     dekliniere_substantiv("NOUN_PLAINS_CENTAUR", "Steppenkentaur", "en", "Steppenkentaur", "en", "maskulin", "en"),
@@ -2486,10 +2502,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_VAMPIRE","Vampir","es","Vampir","e","maskulin"),
     #dekliniere_substantiv("NOUN_VAMPIRE_LORD"
     #dekliniere_substantiv("NOUN_VAMPIRE_MAGE"
-		[unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad der Pfähler", $nom, $mal, $sg)],
-		[unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad des Pfählers", $gen, $mal, $sg)],
-		[unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad dem Pfähler", $dat, $mal, $sg)],
-		[unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad den Pfähler", $akk, $mal, $sg)],
+    [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad der Pfähler", $nom, $mal, $sg)],
+    [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad des Pfählers", $gen, $mal, $sg)],
+    [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad dem Pfähler", $dat, $mal, $sg)],
+    [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad den Pfähler", $akk, $mal, $sg)],
     #dekliniere_substantiv("NOUN_BARROW_WIGHT" # Grabunhold? , Wight Gruftschrecken
     #dekliniere_substantiv("NOUN_WRAITH" # Todesalb
     dekliniere_substantiv("NOUN_NAZGUL","Nazgûl","","Nazgûl","","maskulin"),
@@ -2644,10 +2660,10 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_LORD_SATO"
     #dekliniere_substantiv("NOUN_TWOFLOWER"
     #dekliniere_substantiv("NOUN_NORN"
-		[unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $nom, $fem, $sg)],
-		[unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $gen, $fem, $sg)],
-		[unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $dat, $fem, $sg)],
-		[unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $akk, $fem, $sg)],
+    [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $nom, $fem, $sg)],
+    [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $gen, $fem, $sg)],
+    [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $dat, $fem, $sg)],
+    [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $akk, $fem, $sg)],
     #dekliniere_substantiv("NOUN_MINION_OF_HUHETOTL"
     #dekliniere_substantiv("NOUN_THOTH_AMON"
     #dekliniere_substantiv("NOUN_CHROMATIC_DRAGON"
@@ -3343,6 +3359,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_REFLECTION", "Spiegelbild", "es", "Spiegelbild", "er", "neutrum"),
     dekliniere_substantiv("NOUN_SPIDER_WEB", "Spinnennetz", "es", "Spinnennetz", "e", "neutrum"),
     dekliniere_substantiv("NOUN_STAIRS", "Treppe", "", "Treppe", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WALL", "Wand", "", "Wänd", "e", "feminin"),
     dekliniere_substantiv("NOUN_WATERS_SURFACE", "Wasseroberfläche", "", "Wasseroberfläche", "en", "feminin"),
     dekliniere_substantiv("NOUN_WEB","Netz","es","Netz","e","neutrum"),
     dekliniere_substantiv("NOUN_WIND","Wind","es","Wind","e","maskulin"),
@@ -3423,6 +3440,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_BLUTRUENSTIG","blutrünstig"),
     dekliniere_adjektiv("ADJEKTIV_BRENNEND","brennend"),
     dekliniere_adjektiv("ADJEKTIV_CARNIVOROUS","fleischfressend"),
+    dekliniere_adjektiv("ADJEKTIV_CORRODED","korrodiert"),
     dekliniere_adjektiv("ADJEKTIV_EATEN","verspeist"),
     dekliniere_adjektiv("ADJEKTIV_EIGENE","eigen"),
     dekliniere_adjektiv("ADJEKTIV_EINSTUERZEND","einstürzend"),

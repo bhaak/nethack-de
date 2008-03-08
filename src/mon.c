@@ -812,10 +812,10 @@ meatobj(mtmp)		/* for gelatinous cubes */
 				    otmp != uball && otmp != uchain) {
 		++ecount;
 		if (ecount == 1) {
-			Sprintf(buf, "SUBJECT %s VERB_ENGULF OBJECT %s.", Monnam(mtmp), /* EN Sprintf(buf, "%s engulfs %s.", Monnam(mtmp), */
+			Sprintf(buf, "SUBJECT %s VERB_VERSCHLINGEN OBJECT %s.", Monnam(mtmp), /* EN Sprintf(buf, "%s engulfs %s.", Monnam(mtmp), */
 			    distant_name(otmp,doname));
 		} else if (ecount == 2)
-			Sprintf(buf, "SUBJECT %s VERB_ENGULF mehrere Objekte.", Monnam(mtmp)); /* EN Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp)); */
+			Sprintf(buf, "SUBJECT %s VERB_VERSCHLINGEN mehrere Objekte.", Monnam(mtmp)); /* EN Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp)); */
 		obj_extract_self(otmp);
 		(void) mpickobj(mtmp, otmp);	/* slurp */
 	    }

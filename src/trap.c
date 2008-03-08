@@ -737,13 +737,13 @@ unsigned trflags;
 		    if (!Blind) {
 			seetrap(trap);
 			if (Hallucination)
-				You("notice a crease in the linoleum."); /* EN You("notice a crease in the linoleum."); */ // TODO DE
+				You("VERB_BEMERKEN einen Spalt im Linoleum."); /* EN You("notice a crease in the linoleum."); */
 			else
-				You("notice a loose board below you."); /* EN You("notice a loose board below you."); */ // TODO DE
+				You("VERB_BEMERKEN eine lose Diele OBJECT KASUS_DATIV unter PRONOMEN_PERSONAL."); /* EN You("notice a loose board below you."); */
 		    }
 		} else {
 		    seetrap(trap);
-		    pline("A board beneath you squeaks loudly."); /* EN pline("A board beneath you squeaks loudly."); */ // TODO DE
+		    pline("Eine Diele KASUS_DATIV unter PRONOMEN_PERSONAL quietscht laut."); /* EN pline("A board beneath you squeaks loudly."); */
 		    wake_nearby();
 		}
 		break;
@@ -1780,10 +1780,10 @@ register struct monst *mtmp;
 			if(is_flyer(mptr)) break;
 			/* stepped on a squeaky board */
 			if (in_sight) {
-			    pline("A board beneath %s squeaks loudly.", mon_nam(mtmp)); /* EN pline("A board beneath %s squeaks loudly.", mon_nam(mtmp)); */ // TODO DE
+			    pline("Eine Diele KASUS_DATIV unter %s quietscht laut.", mon_nam(mtmp)); /* EN pline("A board beneath %s squeaks loudly.", mon_nam(mtmp)); */
 			    seetrap(trap);
 			} else
-			   You_hear("a distant squeak."); /* EN You_hear("a distant squeak."); */ // TODO DE
+			   You_hear("ein fernes Quietschen."); /* EN You_hear("a distant squeak."); */
 			/* wake up nearby monsters */
 			wake_nearto(mtmp->mx, mtmp->my, 40);
 			break;
@@ -1801,7 +1801,7 @@ register struct monst *mtmp;
 				if((mptr == &mons[PM_OWLBEAR]
 				    || mptr == &mons[PM_BUGBEAR])
 				   && flags.soundok)
-				    You_hear("the roaring of an angry bear!"); /* EN You_hear("the roaring of an angry bear!"); */ // TODO DE
+				    You_hear("das Brüllen eines wütenden Bären!"); /* EN You_hear("the roaring of an angry bear!"); */
 			    }
 			}
 			break;
@@ -2031,7 +2031,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			    case PM_OWLBEAR: /* Eric Backus */
 			    case PM_BUGBEAR:
 				if (!in_sight) {
-				    You_hear("the roaring of a confused bear!"); /* EN You_hear("the roaring of a confused bear!"); */ // TODO DE
+				    You_hear("das Brüllen eines verwirrten Bären!"); /* EN You_hear("the roaring of a confused bear!"); */
 				    mtmp->mtrapped = 1;
 				    break;
 				}
@@ -3247,7 +3247,7 @@ struct trap *ttmp;
 	    useup(obj);	/* oil */
 	    makeknown(POT_OIL);
 	}
-	You("repair the squeaky board.");	/* no madeby_u */ /* EN You("repair the squeaky board.");	*/ // TODO DE
+	You("VERB_REPARIEREN OBJECT ARTIKEL_BESTIMMTER NOUN_SQUEAKY_BOARD.");	/* no madeby_u */ /* EN You("repair the squeaky board.");	*/
 	deltrap(ttmp);
 	newsym(u.ux + u.dx, u.uy + u.dy);
 	more_experienced(1, 5);

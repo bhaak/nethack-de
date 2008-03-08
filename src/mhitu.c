@@ -76,7 +76,7 @@ register struct attack *mattk;
 			pline("SUBJECT %s VERB_TOUCH OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp)); /* EN pline("%s touches you!", Monnam(mtmp)); */
 			break;
 		case AT_TENT:
-			pline("SUBJECT %s VERB_SUCK OBJECT PRONOMEN_PERSONAL!", /* EN pline("%s tentacles suck you!", */
+			pline("SUBJECT %s VERB_FESTSAUGEN sich OBJECT KASUS_DATIV an PRONOMEN_PERSONAL SATZKLAMMER!", /* EN pline("%s tentacles suck you!", */
 				        genitivattribut_zu_wort(Monnam(mtmp),"NOUN_TENTAKELs")); /* EN s_suffix(Monnam(mtmp))); */
 			break;
 		case AT_EXPL:
@@ -1403,7 +1403,7 @@ dopois:
 		if(!mtmp->mcan && !rn2(10)) {
 		    if (flags.soundok) {
 			if (Blind) You_hear("Gelächter."); /* EN if (Blind) You_hear("laughter."); */
-			else       pline("%s chuckles.", Monnam(mtmp)); /* EN else       pline("%s chuckles.", Monnam(mtmp)); */ // TODO DE
+			else       pline("SUBJECT %s VERB_CHUCKLE.", Monnam(mtmp)); /* EN else       pline("%s chuckles.", Monnam(mtmp)); */
 		    }
 		    if (u.umonnum == PM_CLAY_GOLEM) {
 			pline("Some writing vanishes from your head!"); /* EN pline("Some writing vanishes from your head!"); */ // TODO DE
@@ -2055,11 +2055,11 @@ register struct obj *obj;
 		    if (obj->greased && !rn2(2)) obj->greased = 0;
 		} else {
 		    if (vis)
-			pline("%s %s%s!", /* EN pline("%s %s%s!", */ // TODO DE
-			        s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
-				aobjnam(obj, (is_acid ? "corrode" : "rust")), /* EN aobjnam(obj, (is_acid ? "corrode" : "rust")), */ // TODO DE
+			pline("SUBJECT %s %s%s!", /* EN pline("%s %s%s!", */
+			        genitivattribut_zu_wort(Monnam(mon), /* EN s_suffix(Monnam(mon)), */
+				aobjnam(obj, (char *)0)), (is_acid ? "VERB_CORRODE" : "VERB_ROSTEN"), /* EN aobjnam(obj, (is_acid ? "corrode" : "rust")), */
 			        (is_acid ? obj->oeroded2 : obj->oeroded)
-				    ? " further" : ""); /* EN ? " further" : ""); */ // TODO DE
+				    ? " weiter" : ""); /* EN ? " further" : ""); */
 		    if (is_acid) obj->oeroded2++;
 		    else obj->oeroded++;
 		}

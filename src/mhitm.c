@@ -407,18 +407,18 @@ hitmm(magr, mdef, mattk)
 				Sprintf(buf,"SUBJECT %s VERB_TOUCH OBJECT", magr_name); /* EN Sprintf(buf,"%s touches", magr_name); */
 				break;
 			case AT_TENT:
-				Sprintf(buf, "SUBJECT %s VERB_SUCK OBJECT", /* EN Sprintf(buf, "%s tentacles suck", */
+				Sprintf(buf, "SUBJECT %s VERB_FESTSAUGEN sich OBJECT KASUS_DATIV _an_", /* EN Sprintf(buf, "%s tentacles suck", */
 					genitivattribut_zu_wort(magr_name, "NOUN_TENTAKELs")); /* EN s_suffix(magr_name)); */
 				break;
 			case AT_HUGS:
 				if (magr != u.ustuck) {
-				    Sprintf(buf,"SUBJECT %s VERB_SQUEEZE OBJECT", magr_name); /* EN Sprintf(buf,"%s squeezes", magr_name); */
+				    Sprintf(buf,"SUBJECT %s VERB_ZERQUETSCHEN OBJECT", magr_name); /* EN Sprintf(buf,"%s squeezes", magr_name); */
 				    break;
 				}
 			default:
 				Sprintf(buf,"SUBJECT %s VERB_HIT OBJECT", magr_name); /* EN Sprintf(buf,"%s hits", magr_name); */
 		    }
-		    pline("%s %s.", buf, mon_nam_too(mdef_name, mdef, magr));
+		    pline("SUBJECT %s %s SATZKLAMMER.", buf, mon_nam_too(mdef_name, mdef, magr)); /* EN pline("%s %s.", buf, mon_nam_too(mdef_name, mdef, magr)); */
 		}
 	} else  noises(magr, mattk);
 	return(mdamagem(magr, mdef, mattk));
@@ -942,7 +942,7 @@ mdamagem(magr, mdef, mattk)
 		    }
 		    if (flags.soundok) {
 			    if (!vis) You_hear("Gelächter."); /* EN if (!vis) You_hear("laughter."); */
-			    else pline("%s chuckles.", Monnam(magr)); /* EN else pline("%s chuckles.", Monnam(magr)); */ // TODO DE
+			    else pline("SUBJECT %s VERB_CHUCKLE.", Monnam(magr)); /* EN else pline("%s chuckles.", Monnam(magr)); */
 		    }
 		}
 		break;
@@ -1234,10 +1234,10 @@ register struct obj *obj;
 		    if (obj->greased && !rn2(2)) obj->greased = 0;
 		} else {
 		    if (cansee(mdef->mx, mdef->my)) {
-			pline("%s %s%s!", s_suffix(Monnam(magr)), /* EN pline("%s %s%s!", s_suffix(Monnam(magr)), */ // TODO DE
-			    aobjnam(obj, (is_acid ? "corrode" : "rust")), /* EN aobjnam(obj, (is_acid ? "corrode" : "rust")), */ // TODO DE
+			pline("SUBJECT %s %s%s!", genitivattribut_zu_wort(Monnam(magr), /* EN pline("%s %s%s!", s_suffix(Monnam(magr)), */
+			    aobjnam(obj, (char *)0)),(is_acid ? "VERB_CORRODE" : "VERB_ROSTEN"), /* EN aobjnam(obj, (is_acid ? "corrode" : "rust")), */
 			    (is_acid ? obj->oeroded2 : obj->oeroded)
-				? " further" : ""); /* EN ? " further" : ""); */ // TODO DE
+				? " weiter" : ""); /* EN ? " further" : ""); */
 		    }
 		    if (is_acid) obj->oeroded2++;
 		    else obj->oeroded++;

@@ -876,7 +876,7 @@ register struct obj *obj;
 		return;
 	}
 	if(obj->spe <= 0) {
-		pline("SUBJECT PRONOMEN_DEMONSTRATIV %s VERB_HAVE OBJECT PRONOMEN_KEIN %s.", xname(obj), s); /* EN pline("This %s has no %s.", xname(obj), s); */
+		pline("SUBJECT PRONOMEN_DIESER %s VERB_HAVE OBJECT PRONOMEN_KEIN %s.", xname(obj), s); /* EN pline("This %s has no %s.", xname(obj), s); */
 		return;
 	}
 	if(u.uswallow || obj->cursed) {
@@ -1084,7 +1084,7 @@ struct obj *obj;
 			|| (obj->otyp == MAGIC_LAMP && obj->spe == 0)) {
 		if (obj->otyp == BRASS_LANTERN)
 			Your("lamp has run out of power."); /* EN Your("lamp has run out of power."); */ // TODO DE
-		else pline("SUBJECT PRONOMEN_DEMONSTRATIV %s VERB_HAVE kein Öl.", xname(obj)); /* EN else pline("This %s has no oil.", xname(obj)); */
+		else pline("SUBJECT PRONOMEN_DIESER %s VERB_HAVE kein Öl.", xname(obj)); /* EN else pline("This %s has no oil.", xname(obj)); */
 		return;
 	}
 	if (obj->cursed && !rn2(2)) {

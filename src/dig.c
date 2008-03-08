@@ -1055,7 +1055,7 @@ watch_dig(mtmp, x, y, zap)
 			str = "NOUN_WALL"; /* EN str = "wall"; */
 		    else
 			str = "NOUN_FOUNTAIN"; /* EN str = "fountain"; */
-		    verbalize("Hey, hör auf KASUS_AKKUSATIV PRONOMEN_DEMONSTRATIV %s zu beschädigen!", str); /* EN verbalize("Hey, stop damaging that %s!", str); */
+		    verbalize("Hey, hör auf KASUS_AKKUSATIV PRONOMEN_DIESER %s zu beschädigen!", str); /* EN verbalize("Hey, stop damaging that %s!", str); */
 		    digging.warned = TRUE;
 		}
 		if (is_digging())

@@ -834,7 +834,7 @@ char *outbuf;
 	    else if (absamt <= 12) modif = "ADJEKTIV_GROSS"; /* EN else if (absamt <= 12) modif = "large"; */
 	    else modif = "ADJEKTIV_RIESIG"; /* EN else modif = "huge"; */
 	}
-	bonus = (incamt > 0) ? "BONUS" : "MALUS"; /* EN bonus = (incamt > 0) ? "bonus" : "penalty"; */
+	bonus = (incamt > 0) ? "BONUS" : "MALUS"; /* EN bonus = (incamt > 0) ? "bonus" : "penalty"; */ /* "NOUN_SCHADENSBONUS, NOUN_SCHADENSMALUS, NOUN_TREFFERMALUS, NOUN_TREFFERBONUS" */
 #ifndef GERMAN
 	/* "bonus to hit" vs "damage bonus" */
 	if (!strcmp(inctyp, "damage")) {
@@ -1044,7 +1044,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Polymorph) you_are("polymorphing"); /* EN if (Polymorph) you_are("polymorphing"); */ // TODO DE
 	if (Polymorph_control) you_have("Transformationskontrolle"); /* EN if (Polymorph_control) you_have("polymorph control"); */
 	if (u.ulycn >= LOW_PM) {
-		Strcpy(buf, an(mons[u.ulycn].mname));
+		Strcpy(buf, "OBJECT KASUS_NOMINATIV "); Strcat(buf, an(mons[u.ulycn].mname)); /* EN Strcpy(buf, an(mons[u.ulycn].mname)); */
 		you_are(buf);
 	}
 	if (Upolyd) {
@@ -1369,7 +1369,7 @@ int final;
 	if (Polymorph) dump(youwere, "polymorphing"); /* EN if (Polymorph) dump(youwere, "polymorphing"); */ // TODO DE
 	if (Polymorph_control) dump(youhad, "polymorph control"); /* EN if (Polymorph_control) dump(youhad, "polymorph control"); */ // TODO DE
 	if (u.ulycn >= LOW_PM) {
-		Strcpy(buf, an(mons[u.ulycn].mname));
+		Strcpy(buf, "OBJECT KASUS_NOMINATIV "); Strcat(buf, an(mons[u.ulycn].mname)); /* EN Strcpy(buf, an(mons[u.ulycn].mname)); */
 		dump(youwere, buf);
 	}
 	if (Upolyd) {
@@ -1616,7 +1616,7 @@ int final;
 	    you_are("ein Atheist"); /* EN you_have_been("an atheist"); */
 
 	if (!u.uconduct.weaphit)
-	    you_have_never("mit einer geführten Waffe zugeschlagen / hit with a wielded weapon"); /* EN you_have_never("hit with a wielded weapon"); */ // TODO DE
+	    you_have_never("mit einer geführten Waffe zugeschlagen"); /* EN you_have_never("hit with a wielded weapon"); */
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "used a wielded weapon %ld time%s", /* EN Sprintf(buf, "used a wielded weapon %ld time%s", */ // TODO DE
@@ -1647,7 +1647,7 @@ int final;
 	}
 
 	if (!u.uconduct.polypiles)
-	    you_have_never("ein Objekt transformiert / polymorphed an object"); /* EN you_have_never("polymorphed an object"); */ // TODO DE
+	    you_have_never("ein Objekt transformiert"); /* EN you_have_never("polymorphed an object"); */
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "polymorphed %ld item%s", /* EN Sprintf(buf, "polymorphed %ld item%s", */ // TODO DE
@@ -1657,7 +1657,7 @@ int final;
 #endif
 
 	if (!u.uconduct.polyselfs)
-	    you_have_never("die eigene Gestalt geändert / changed form"); /* EN you_have_never("changed form"); */ // TODO DE
+	    you_have_never("die Daseinsform gewechselt"); /* EN you_have_never("changed form"); */
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "changed form %ld time%s", /* EN Sprintf(buf, "changed form %ld time%s", */ // TODO DE

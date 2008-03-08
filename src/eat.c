@@ -1042,7 +1042,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    victual.fullwarn = victual.eating = victual.doreset = FALSE;
 
 	    You("VERB_CONSUME %s %s.", tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */
-			mons[tin.tin->corpsenm].mname); /* DE verzehrst %s %s. */
+			mons[tin.tin->corpsenm].mname);
 
 	    /* KMH, conduct */
 	    u.uconduct.food++;

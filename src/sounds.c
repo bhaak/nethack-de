@@ -300,7 +300,7 @@ register struct monst *mtmp;
 	    ret = "VERB_WAIL"; /* EN ret = "wail"; */
 	    break;
 	case MS_SILENT:
-		ret = "VERB_COMMOTION"; /* EN ret = "commotion"; */
+		ret = "VERB_ZITTERN"; /* EN ret = "commotion"; */
 		break;
 	default:
 		ret = "VERB_SCREAM"; /* EN ret = "scream"; */
@@ -324,7 +324,7 @@ register struct monst *mtmp;
     else
 	growl_verb = growl_sound(mtmp);
     if (growl_verb) {
-	pline("%s %s!", Monnam(mtmp), vtense((char *)0, growl_verb));
+	pline("SUBJECT %s %s!", Monnam(mtmp), vtense((char *)0, growl_verb)); /* EN pline("%s %s!", Monnam(mtmp), vtense((char *)0, growl_verb)); */
 	if(flags.run) nomul(0);
 	wake_nearto(mtmp->mx, mtmp->my, mtmp->data->mlevel * 18);
     }
@@ -661,7 +661,7 @@ register struct monst *mtmp;
 	case MS_BOAST:	/* giants */
 	    if (!mtmp->mpeaceful) {
 		switch (rn2(4)) {
-		case 0: pline("SUBJECT %s VERB_BOAST mit OBJECT KASUS_DATIV %s NOUN_GEM_COLLECTION.", /* EN case 0: pline("%s boasts about %s gem collection.", */
+		case 0: pline("SUBJECT %s VERB_PRAHLEN mit OBJECT KASUS_DATIV %s NOUN_GEM_COLLECTION.", /* EN case 0: pline("%s boasts about %s gem collection.", */
 			      Monnam(mtmp), mhis(mtmp));
 			break;
 		case 1: pline_msg = "complains about a diet of mutton."; /* EN case 1: pline_msg = "complains about a diet of mutton."; */ // TODO DE

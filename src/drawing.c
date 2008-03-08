@@ -62,7 +62,7 @@ const char * const objexplain[] = {	/* these match def_oc_syms, above */
 	"NOUN_SCROLL",
 /*10*/	"NOUN_SPELLBOOK",
 	"NOUN_WAND",
-	"NOUN_PILE_OF_COINs",
+	"NOUN_PILE_OF_COIN",
 	"NOUN_GEM oder NOUN_GEM_ROCK",
 	"NOUN_BOULDER oder NOUN_STATUE",
 /*15*/	"NOUN_IRON_BALL",

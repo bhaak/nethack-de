@@ -262,12 +262,7 @@ char *pname;		/* caller-supplied output buffer */
 					mon->data == &mons[PM_ANGEL]) {
 		/* use epri */
 		if (mon->mtame && mon->data == &mons[PM_ANGEL])
-#ifdef GERMAN
-			if (Hallucination) {
-				Strcat(pname, "Schutz-"); // TODO DE Schutz-NOUN_DOG -> Schutz-Hund
-			} else
-#endif
-			Strcat(pname, "NOUN_SCHUTZ"); /* EN Strcat(pname, "guardian "); */ /* ergibt NOUN_SCHUTZ_NOUN_ANGEL */
+			Strcat(pname, "Schutz-"); /* EN Strcat(pname, "guardian "); */ /* ergibt Schutz-NOUN_ANGEL */
 		if (mon->data != &mons[PM_ALIGNED_PRIEST] &&
 				mon->data != &mons[PM_HIGH_PRIEST]) {
 			Strcat(pname, what);

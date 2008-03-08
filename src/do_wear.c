@@ -1420,7 +1420,7 @@ doputon()
 		}
 		if(uleft && uright){
 			There("are no more %s%s to fill.", /* EN There("are no more %s%s to fill.",*/ // TODO DE
-				humanoid(youmonst.data) ? "Ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
+				humanoid(youmonst.data) ? "Ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/
 				makeplural(body_part(FINGER)));
 			return(0);
 		}
@@ -1430,8 +1430,8 @@ doputon()
 			char qbuf[QBUFSZ];
 			char answer;
 
-			Sprintf(qbuf, "Which %s%s, rechts oder links?", /* EN Sprintf(qbuf, "Which %s%s, Right or Left?", */ // TODO DE
-				humanoid(youmonst.data) ? "Ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
+			Sprintf(qbuf, "SUBJECT KASUS_AKKUSATIV PRONOMEN_WELCHER %s%s, rechts oder links?", /* EN Sprintf(qbuf, "Which %s%s, Right or Left?", */
+				humanoid(youmonst.data) ? "Ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/
 				body_part(FINGER));
 			if(!(answer = yn_function(qbuf, "rl", '\0')))
 				return(0);
@@ -1701,7 +1701,7 @@ register struct obj *otmp;
 	    }
 	    why = 0;	/* the item which prevents ring removal */
 	    if (welded(uwep) && (otmp == uright || bimanual(uwep))) {
-		verb = "freimachen"; Sprintf(buf, "PRONOMEN_KEIN NOUN_WAFFEN_%s", body_part(HAND)); /* EN Sprintf(buf, "free a weapon %s", body_part(HAND));*/
+		verb = "freimachen"; Sprintf(buf, "PRONOMEN_KEIN Waffen-%s", body_part(HAND)); /* EN Sprintf(buf, "free a weapon %s", body_part(HAND));*/
 		why = uwep;
 	    } else if (uarmg && uarmg->cursed) {
 		verb = "ausziehen"; Sprintf(buf, "PRONOMEN_POSSESSIV %s nicht", c_gloves); /* EN Sprintf(buf, "take off your %s", c_gloves);*/

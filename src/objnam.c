@@ -562,7 +562,7 @@ char *prefix;
 			case 2:	Strcat(prefix, "very "); break; /* EN case 2:	Strcat(prefix, "very "); break; */ // TODO DE
 			case 3:	Strcat(prefix, "thoroughly "); break; /* EN case 3:	Strcat(prefix, "thoroughly "); break; */ // TODO DE
 		}			
-		Strcat(prefix, is_corrodeable(obj) ? "corroded " : /* EN Strcat(prefix, is_corrodeable(obj) ? "corroded " : */ // TODO DE
+		Strcat(prefix, is_corrodeable(obj) ? "ADJEKTIV_CORRODED " : /* EN Strcat(prefix, is_corrodeable(obj) ? "corroded " : */
 			"rotted "); /* EN "rotted "); */ // TODO DE
 	}
 	if (obj->rknown && obj->oerodeproof)
@@ -1949,7 +1949,7 @@ boolean from_user;
 			   !strncmpi(bp, "burned ", l=7)) { /* EN !strncmpi(bp, "burned ", l=7)) { */ // TODO DE
 			eroded = 1 + very;
 			very = 0;
-		} else if (!strncmpi(bp, "corroded ", l=9) || /* EN } else if (!strncmpi(bp, "corroded ", l=9) || */ // TODO DE
+		} else if (!strncmpi(bp, "ADJEKTIV_CORRODED ", l=9) || /* EN } else if (!strncmpi(bp, "corroded ", l=9) || */
 			   !strncmpi(bp, "rotted ", l=7)) { /* EN !strncmpi(bp, "rotted ", l=7)) { */ // TODO DE
 			eroded2 = 1 + very;
 			very = 0;

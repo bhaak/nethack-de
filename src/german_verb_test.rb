@@ -16,7 +16,7 @@ class TestVerb < Test::Unit::TestCase
   @output_levels = Test::Unit::UI::VERBOSE
 
   def testPrintVerb
-    verb = Verb.verb("","sollen")
+    verb = Verb.verb("","empfangen")
 
     puts
     puts "Infinitiv: "+ verb.infinitiv
