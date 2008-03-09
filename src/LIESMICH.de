@@ -1,11 +1,18 @@
 generate_german.rb
-  Enthält den Korpus der übersetzten Wörter und erzeugt german_vocabulary.c
+  Enthält den Korpus der übersetzten Wörter zur Erzeugung von
+  german_vocabulary.c
 
 german_check_untranslated_tokens.rb [dateiname(n)]
-  Gibt die nicht übersetzten Tokens aller bzw. der angegeben
-	Dateien aus
+  Gibt die nicht übersetzten Tokens aller bzw. der angegebenen
+  Quellkode-Dateien aus.
 
 german_check_words.rb
-  Gibt die noch nicht übersetzten Monster und Gegenstände aus mon.h
-	und obj.h aus.
+  Gibt die noch nicht übersetzten Monster und Gegenstände aus mon.h und obj.h
+  aus.
 
+html_statistik.rb
+  Erzeugt die HTML-Tabelle für die Status-Seite der Homepage.
+
+statistik
+  Shell-Skript zur Ausgabe der Anzahl der nicht übersetzten Zeilen pro
+  Quellkode-Datei.

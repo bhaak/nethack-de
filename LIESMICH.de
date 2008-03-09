@@ -1,44 +1,21 @@
-Der Versuch einer deutschen Übersetzung von Nethack.
+NetHack-de ist der Versuch einer deutschsprachigen Übersetzung von NetHack.
 
-Ich lasse mich bei dieser Übersetzung von drei grundlegenden
-Prinzipien leiten:
 
-1. Wenn irgendwie möglich soll kein Code verändert werden.
-2. Übersetzt werden soll "so wörtlich wie möglich und so frei wie
-   nötig".
-3. Die Sprache soll modernes Deutsch sein, nur mit wenigen Anleihen 
-   an altertümliche Formen und Formulierungen.
+Homepage, Forum und Mailingliste
+----------------------
+Die Homepage von NetHack-de ist unter http://nethack-de.sourceforge.net/
+zu erreichen.
 
-Erläuterungen und Begründungen zu den 
-zu 1: Der Idealfall ist, wenn nur Zeichenketten verändert werden
-      müssen und der umliegende Code unberührt bleibt. Das ist
-      natürlich nicht überall möglich, aber ich versuche, die
-      Eingriffe in den Quellkode so gering wie möglich zu halten.
+Auf http://sourceforge.net/forum/forum.php?forum_id=675972 steht ein Forum 
+und auf http://sourceforge.net/mail/?group_id=191550 eine Mailingliste zur
+Verfügung.
 
-			Damit soll erreicht werden, dass die Anpassungen für Bugfixes
-      und Versionssprünge so klein wie möglich ausfallen sollen.
 
-zu 2: Gemäss dem alten Lehrerspruch, den wir immer im Lateinunterricht
-      hören durften.
+Bugs, Anregungen, Kritik, etc
+-----------------------------
+Fehlerberichte, Anregungen, Übersetzungsvorschläge oder Kritik können
+an meine E-Mail-Adresse <bhaak@gmx.net> geschickt werden oder auch auf
+http://sourceforge.net/projects/nethack-de abgegeben werden.
 
-			
 
-zu 3: Es war zu Beginn doch sehr verlockend für mich, Nethack-de auf
-      alt zu trimmen. Doch - wie hübsch Worte nach ältester
-      Rechtschreibung wie z.B. "Thüre", "Medicin" auch aussehen mögen
-      und wie poetisch "Isegrimm" und "Aar" sich anhören - ich habe
-			mich dagegen entschieden.	
-
-			Einerseits hätte das mein Wissen und meine Fähigkeiten bei weitem
-      überstiegen und eine halbherzige Übersetzung will ich nun auf
-			keinen Fall abliefern.
-	
-			Andererseits wollte ich mit einer etwas moderneren Übersetzung
-      auch Fremdsprachlern erlauben, in den Genuss eines deutschen
-			Nethacks zu kommen.
-
-			Ausserdem haben wir im Deutschen durchaus ein reichhaltiges Angebot,
-			auf das ich zurückgreifen kann. Ich halte es so, dass wenn ein Ausdruck
-			im Duden nicht als veraltet bezeichnet wird, ist es akzeptabel. Ab und
-			zu schlüpft auch ein Ausdruck aus dem österreichischem oder 
-			schweizerischen Hochdeutsch rein.
+Patric Mueller <bhaak@gmx.net>
