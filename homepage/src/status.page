@@ -2,7 +2,7 @@
 title: Status
 inMenu: true
 ---
-{execute: {command: cd ../src; ./german_check_words.rb, escapeHTML: false}}
+{execute: {command: cd ../src; ruby ./german_check_words.rb html, escapeHTML: false}}
 
-{execute: {command: cd ../src; ./t.rb, escapeHTML: false}}
+{execute: {command: cd ../src; ruby ./html_statistik.rb, escapeHTML: false}}
 

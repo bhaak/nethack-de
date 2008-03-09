@@ -8,6 +8,13 @@ Auf der "Statusseite":status.html wird der aktuelle Stand der Übersetzung angez
 
 h3. News
 
+h4(#news-2008-03-09). 9. Mär 2008 
+* Alpha-Release NetHack-De 3.4.2-20080309a
+* ca. 50% des generierten Textes übersetzt
+* korrekte Behandlung übersetzter Artefakte
+* korrektes Genus für Gottheiten
+* Genitivattribute generalisiert
+
 h4(#news-2007-12-24). 24. Dez 2007 
 * Alpha-Release NetHack-De 3.4.2-20071224a
 * ca. 40% des generierten Textes übersetzt

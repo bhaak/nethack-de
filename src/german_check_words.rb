@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-$htmloutput = true
+$htmloutput = ARGV.include? "html"
 
 file1 = File.readlines("mon-de.h")
 file2 = File.readlines("obj-de.h")
