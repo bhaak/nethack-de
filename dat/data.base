@@ -1702,6 +1702,7 @@ hom*nculus
 	beefsteaks towards him.
 		[ Moby Dick, by Herman Melville ]
 ~unicorn horn
+~NOUN_UNICORN_HORN
 *horn
 	Roland hath set the Olifant to his mouth,
 	He grasps it well, and with great virtue sounds.
@@ -3215,6 +3216,7 @@ quantum mechanic
 	These creatures are not native to this universe; they seem
 	to have strangely derived powers, and unknown motives.
 quasit
+NOUN_QUASIT
 	Quasits are small, evil creatures, related to imps.  Their
 	talons release a very toxic poison when used in an attack.
 quest
@@ -3232,6 +3234,7 @@ quest
 	designed to help you do it.
 	[ The Tough Guide to Fantasyland, by Diana Wynne Jones ]
 quetzalcoatl
+Quetzalcoatl
 	One of the principal Aztec-Toltec gods was the great and wise
 	Quetzalcoatl, who was called Kukumatz in Guatemala, and
 	Kukulcan in Yucatan.  His image, the plumed serpent, is found
@@ -4167,6 +4170,7 @@ tyr
 	legs all end in great claws.
 *unicorn
 unicorn horn
+NOUN_UNICORN_HORN
 	Men have always sought the elusive unicorn, for the single
 	twisted horn which projected from its forehead was thought to
 	be a powerful talisman.  It was said that the unicorn had

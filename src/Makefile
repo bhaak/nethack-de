@@ -285,7 +285,7 @@ WINLIB = $(WINTTYLIB)
 LIBS = # -lcheck
 
 # make NetHack
-GAME     = nethack
+GAME     = nethack-de
 # GAME     = nethack.prg
 
 # if you defined RANDOM in unixconf.h/tosconf.h since your system did not come
@@ -384,8 +384,8 @@ HOBJ = monst.o objects.o allmain.o alloc.o apply.o artifact.o attrib.o ball.o \
 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
 	wizard.o worm.o worn.o write.o zap.o german.o german_vocabulary.o \
-	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o
-	# german_wishing_test.o \
+	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o # german_wishing_test.o
+
 # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
 
 $(GAME):	$(FIRSTOBJ) $(SYSTEM)
