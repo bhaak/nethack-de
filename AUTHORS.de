@@ -1,0 +1,21 @@
+Patric Mueller <bhaak@gmx.net> begann die Programmierung NetHack-de.
+
+
+Dank an ...
+===========
+
+Ray Chason für seine Arbeit an Spanish-NetHack[1], dessen
+Makefile-Modifikationen für NetHack-de übernommen wurden.
+
+
+Tony Crawford für sein "How I Build NetHack on Win32"[2] und der
+zusammen mit Karl Breuer NetzHack[3] programmiert.
+
+
+Andrej Kilian für Fehlerberichte und Anregungen.
+
+
+[1] http://spanish-nethack.sourceforge.net/
+[2] http://www.crawfords.de/nh-cygwin-mingw-howto/
+[3] http://www.netzhack.de/
+
