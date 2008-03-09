@@ -1,3 +1,9 @@
+Alpha-Release NetHack-De 3.4.2-20080309a
+ - ca. 50% des generierten Textes übersetzt
+ - korrekte Behandlung übersetzter Artefakte
+ - korrektes Genus für Gottheiten
+ - Genitivattribute generalisiert
+
 Alpha-Release NetHack-De 3.4.2-20071224a
  - ca. 40% des generierten Textes übersetzt
  - Abstürze des Wunschcodes gefixt
