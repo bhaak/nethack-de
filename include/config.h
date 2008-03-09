@@ -197,6 +197,7 @@
 #endif
 
 #define HACKDIR "."
+//#define HACKDIR "/opt/nethack/games/lib/nethack-dedir"
 #ifdef CHDIR
 /*
  * If you define HACKDIR, then this will be the default playground;
