@@ -14,8 +14,8 @@
 # MAKE = make
 
 # make NetHack
-PREFIX	 = /opt/nethack
-#PREFIX	 = /home/surf/nethack/translation/nethack-de/binary
+#PREFIX	 = /opt/nethack
+PREFIX	 = /home/surf/nethack/translation/nethack-de/trunk/binary
 GAME     = nethack-de
 # GAME     = nethack.prg
 GAMEUID  = games
@@ -266,6 +266,7 @@ spotless:
 	( cd dat ; $(MAKE) spotless )
 	( cd doc ; $(MAKE) spotless )
 
+DE_FILES = AUTHORS.de CHANGES.de LIESMICH.de news
 RELEASEVERSION = `grep VERSION_STRING include/date.h | cut -f 2 -d \"`
 BINDIR = binary/games/lib/nethack-dedir
 RELEASEDIR = release-$(RELEASEVERSION)
@@ -275,12 +276,12 @@ release:
 	mkdir -p $(BINDIR)
 	mkdir -p $(RELEASEDIR)
 	rm -f $(BINDIR)/News
-	cp news $(BINDIR)
+	cp $(DE_FILES) $(BINDIR)
 	mv $(BINDIR) binary/games/lib/nethack-de-$(RELEASEVERSION)
 	tar cvfz $(RELEASEDIR)/nethack-de-linux-x86-$(RELEASEVERSION).tar.gz -C binary/games/lib .
 	mv binary/games/lib/nethack-de-$(RELEASEVERSION) $(BINDIR)
 	mkdir -p $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
-	cpio -p < files $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
+	cpio -p < release_files $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
 	tar cfz $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION).tar.gz -C $(RELEASEDIR) nethack-de-src-$(RELEASEVERSION)
 	rm -rf $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
 

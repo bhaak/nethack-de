@@ -1,4 +1,6 @@
+./AUTHORS.de
 ./CHANGES.de
+./LIESMICH.de
 ./news
 ./dat/
 ./dat/hh
@@ -64,9 +66,11 @@
 ./doc/window.doc
 ./doc/Guidebook.mn
 ./src/
+./src/LIESMICH.de
+./src/statistik
 ./src/monmove.c
 ./src/do.c
-./src/t.rb
+./src/html_statistik.rb
 ./src/invent.c
 ./src/drawing.c
 ./src/german_vocabulary.c
@@ -165,7 +169,6 @@
 ./src/fountain.c
 ./src/topten.c
 ./src/apply.c
-./src/statistik
 ./src/restore.c
 ./src/artifact.c
 ./src/wizard.c
