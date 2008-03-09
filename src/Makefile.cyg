@@ -42,9 +42,9 @@ GRAPHICAL = Y
 
 DEBUG = Y
 
-cc     = mingw32-gcc
+cc     = gcc
 rc     = windres
-link   = mingw32-gcc
+link   = gcc
 
 cflags = -mno-cygwin -isystem /usr/include/mingw 
 linkflags  = -mno-cygwin -L/usr/lib/mingw 
@@ -491,7 +491,6 @@ all :   install
 install: graphicschk $(GAME) $(O)install.tag
 	echo Done.
 
-
 $(O)install.tag:  $(DAT)/data    $(DAT)/rumors    $(DAT)/dungeon \
         $(DAT)/oracles $(DAT)/quest.dat $(O)sp_lev.tag $(DLB)
 ifeq  "$(USE_DLB)" "Y"
@@ -507,6 +506,14 @@ endif
 	if [ -e $(DOC)/nethack.txt ] ; then cp $(DOC)/nethack.txt $(GAMEDIR)/NetHack.txt ; fi
 	-cp $(NTSYS)/defaults.nh   $(GAMEDIR)/defaults.nh
 	echo install done > $@
+
+NETHACK_DE_WIN32_DIR = nethack-de-win32-`pwd | cut -f 4- -d \- | cut -f 1 -d \/`
+release:
+	-cp ../CHANGES.de $(GAMEDIR)/CHANGES.de.txt
+	-cp ../LIESMICH.de $(GAMEDIR)/LIESMICH.de.txt
+	-cp ../news $(GAMEDIR)/News
+	-mv $(GAMEDIR) ../$(NETHACK_DE_WIN32_DIR)
+	cd ../$(NETHACK_DE_WIN32_DIR) && zip -r ../$(NETHACK_DE_WIN32_DIR).zip .
 
 #  cp $(NTSYS)/winnt.hlp    $(GAMEDIR)/
 
@@ -576,6 +583,7 @@ endif
 #==========================================
 
 $(O)gamedir.tag:
+	mkdir -p $(GAMEDIR)
 	if [ ! -d $(GAMEDIR) ] ; then \
 	echo creating directory $(GAMEDIR) ; \
 	mkdir $(GAMEDIR) \
