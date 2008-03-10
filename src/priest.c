@@ -253,7 +253,7 @@ char *pname;		/* caller-supplied output buffer */
 {
 	const char *what = Hallucination ? rndmonnam() : mon->data->mname;
 #ifdef GERMAN
-	char *tmp_gname;
+	const char *tmp_gname;
 #endif
 
 	Strcpy(pname, "ARTIKEL_BESTIMMTER "); /* EN Strcpy(pname, "the "); */
@@ -285,6 +285,7 @@ char *pname;		/* caller-supplied output buffer */
 				Strcat(pname, "PRIEST "); /* EN Strcat(pname, "priest "); */ /* NOUN_HIGH_PRIEST, NOUN_PRIEST */
 		}
 #ifdef GERMAN
+
 		tmp_gname = halu_gname((int)EPRI(mon)->shralign);
 		Strcat(pname, gott_weiblich(tmp_gname) ? "der " : "des ");
 		Strcat(pname, tmp_gname);
