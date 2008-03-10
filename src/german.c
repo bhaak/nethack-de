@@ -822,6 +822,7 @@ char* german(const char *line) {
 	verb_tempus_modus = 0; 
 	verb_infinitiv = 0;
 	modifier_corpse = 0;
+	partikel_of_as_mit = 0;
 
 	int pos=0;
 	char tmp[TBUFSZ];

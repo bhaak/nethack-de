@@ -22,20 +22,27 @@ void check_strings(char* text[][2], int size) {
 	for (i=0; i<size; i++) {
 		ret = german(text[i][0]);
 		fail_unless((strcmp(ret, text[i][1])==0),
-								"failed\nto convert: >%s<\nconverted:  >%s<\nexpected:   >%s<\n",
-								text[i][0],ret,text[i][1]);}
+			"failed\nto convert: >%s<\nconverted:  >%s<\nexpected:   >%s<\n",
+			text[i][0],ret,text[i][1]);}
 }
 
 //#if 0
 START_TEST (test_tincontent)
 {
-	char *text[][2] = {{"a - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH.",
-											"a - eine nicht verfluchte Dose mit Spinat."},
-										 {"b - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_FOX NOUN_MEAT.",
-											"b - eine nicht verfluchte Dose mit Fuchsfleisch."},
-										 {"c - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_COYOTE NOUN_MEAT.",
-											"c - eine nicht verfluchte Dose mit Kojotenfleisch."},
-										 //{"d - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_TIN PARTIKEL_OF NOUN_LARGE_DOG NOUN_MEAT.",
+	char *text[][2] = {
+		{"a - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH.",
+		 "a - eine nicht verfluchte Dose mit Spinat."},
+		{"b - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_FOX NOUN_MEAT.",
+		 "b - eine nicht verfluchte Dose mit Fuchsfleisch."},
+		{"c - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_COYOTE NOUN_MEAT.",
+		 "c - eine nicht verfluchte Dose mit Kojotenfleisch."},
+
+		{"ARTIKEL_UNBESTIMMTER NOUN_TIN.",
+		 "Eine Dose."}, /* Diese zwei gehören zusammen. partikel_of_as_mit wurde nicht richtig initialisiert */
+		{"ARTIKEL_UNBESTIMMTER NOUN_STATUE PARTIKEL_OF ARTIKEL_UNBESTIMMTER NOUN_NEWT.",
+		 "Eine Statue eines Molches."},
+
+		//{"d - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_TIN PARTIKEL_OF NOUN_LARGE_DOG NOUN_MEAT.",
 										 //"d - eine verfluchte Dose mit Fleisch vom grossen Hunde."} // TODO
 	};
 
