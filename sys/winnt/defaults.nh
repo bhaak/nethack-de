@@ -36,6 +36,11 @@
 #OPTIONS=nolegacy,noverbose
 #OPTIONS=menustyle:traditional
 
+# ein paar vernünftige Defaults
+OPTIONS=pickup_types:$"?+!=/,autopickup
+OPTIONS=disclose:yiyayvygyc
+pickup_burden:u
+
 #
 # General options.  You might also set "silent" so as not to attract
 # the boss's attention.
