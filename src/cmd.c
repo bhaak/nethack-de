@@ -1541,7 +1541,7 @@ minimal_enlightenment()
 
 	/* Deity list */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "", FALSE);
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, german("NOUN_GOTTHEITs"), FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Deities", FALSE); */ // TODO DE
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Gottheiten", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, "Deities", FALSE); */ // TODO DE
 	Sprintf(buf2, deity_fmtstr, align_gname(A_CHAOTIC),
 	    (u.ualignbase[A_ORIGINAL] == u.ualign.type
 		&& u.ualign.type == A_CHAOTIC) ? " (s,a)" : /* EN && u.ualign.type == A_CHAOTIC) ? " (s,c)" : */
@@ -1566,7 +1566,7 @@ minimal_enlightenment()
 	Sprintf(buf, fmtstr, german("ADJEKTIV_LAWFUL"), buf2); /* EN Sprintf(buf, fmtstr, "Lawful", buf2); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 
-	end_menu(tmpwin, "Base Attributes"); /* EN end_menu(tmpwin, "Base Attributes"); */ // TODO DE
+	end_menu(tmpwin, "Grundeigenschaften"); /* EN end_menu(tmpwin, "Base Attributes"); */
 	n = select_menu(tmpwin, PICK_NONE, &selected);
 	destroy_nhwindow(tmpwin);
 	return (n != -1);

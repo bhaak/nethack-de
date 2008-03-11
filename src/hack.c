@@ -1408,13 +1408,13 @@ invocation_message()
 
 	    nomul(0);		/* stop running or travelling */
 #ifdef STEED
-	    if (u.usteed) Sprintf(buf, "beneath %s", y_monnam(u.usteed)); /* EN if (u.usteed) Sprintf(buf, "beneath %s", y_monnam(u.usteed)); */ // TODO DE
+	    if (u.usteed) Sprintf(buf, "unter %s", y_monnam(u.usteed)); /* EN if (u.usteed) Sprintf(buf, "beneath %s", y_monnam(u.usteed)); */
 	    else
 #endif
-	    if (Levitation || Flying) Strcpy(buf, "beneath you"); /* EN if (Levitation || Flying) Strcpy(buf, "beneath you"); */ // TODO DE
-	    else Sprintf(buf, "under your %s", makeplural(body_part(FOOT))); /* EN else Sprintf(buf, "under your %s", makeplural(body_part(FOOT))); */ // TODO DE
+	    if (Levitation || Flying) Strcpy(buf, "unter PRONOMEN_PERSONAL"); /* EN if (Levitation || Flying) Strcpy(buf, "beneath you"); */
+	    else Sprintf(buf, "unter PRONOMEN_POSSESSIV %s", makeplural(body_part(FOOT))); /* EN else Sprintf(buf, "under your %s", makeplural(body_part(FOOT))); */
 
-	    You_feel("a strange vibration %s.", buf); /* EN You_feel("a strange vibration %s.", buf); */ // TODO DE
+	    You_feel("eine seltsame Vibration OBJECT KASUS_DATIV %s.", buf); /* EN You_feel("a strange vibration %s.", buf); */
 	    if (otmp && otmp->spe == 7 && otmp->lamplit)
 		pline("%s %s!", The(xname(otmp)),
 		    Blind ? "throbs palpably" : "glows with a strange light"); /* EN Blind ? "throbs palpably" : "glows with a strange light"); */ // TODO DE

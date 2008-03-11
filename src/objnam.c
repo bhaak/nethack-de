@@ -65,7 +65,7 @@ register const char *pref;
 	register int i = (int)strlen(pref);
 
 	if(i > PREFIX) {
-		impossible("PREFIX too short (for %d).", i);
+		impossible("PREFIX %s too short (for %d) %s.", pref, i, s); /* EN impossible("PREFIX too short (for %d).", i); */
 		return(s);
 	}
 	s -= i;
@@ -1972,7 +1972,7 @@ boolean from_user;
 		if (p > bp && p[-1] == ' ') p[-1] = 0;
 		else *p = 0;
 		p++;
-		if (!strcmpi(p, "lit)")) {
+		if (!strcmpi(p, "lit)")) { /* EN if (!strcmpi(p, "lit)")) { */ // TODO DE
 		    islit = 1;
 		} else {
 		    spe = atoi(p);
@@ -2205,7 +2205,7 @@ boolean from_user;
 		if (cnt < 1) cnt=1;
 #ifndef GOLDOBJ
 		if (from_user)
-		    pline("%d gold piece%s.", cnt, plur(cnt));
+		    pline("%d NOUN_GOLD_PIECE%s.", cnt, plur(cnt)); /* EN pline("%d gold piece%s.", cnt, plur(cnt)); */
 		u.ugold += cnt;
 		flags.botl=1;
 		return (&zeroobj);

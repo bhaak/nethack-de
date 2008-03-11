@@ -497,7 +497,7 @@ hurtle_step(arg, x, y)
     }
 
     if ((mon = m_at(x, y)) != 0) {
-	You("VERB_RAMMEN %s.", a_monnam(mon)); /* EN You("bump into %s.", a_monnam(mon)); */
+	You("VERB_RAMMEN OBJECT %s.", a_monnam(mon)); /* EN You("bump into %s.", a_monnam(mon)); */
 	wakeup(mon);
 	return FALSE;
     }

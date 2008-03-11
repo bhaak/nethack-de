@@ -716,8 +716,8 @@ struct obj *obj;
 	} else if(!mtmp->mcan && !mtmp->minvis && (mlet == S_NYMPH
 				     || mtmp->data==&mons[PM_SUCCUBUS])) {
 		if (vis) {
-		    pline ("%s admires herself in your mirror.", Monnam(mtmp)); /* EN pline ("%s admires herself in your mirror.", Monnam(mtmp)); */ // TODO DE
-		    pline ("She takes it!"); /* EN pline ("She takes it!"); */ // TODO DE
+		    pline ("SUBJECT %s VERB_BEWUNDERN sich OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_MIRROR.", Monnam(mtmp)); /* EN pline ("%s admires herself in your mirror.", Monnam(mtmp)); */
+		    pline ("Sie nimmt ihn!"); /* EN pline ("She takes it!"); */
 		} else pline ("SUBJECT NOUN_JEMAND VERB_STEHLEN OBJECT PRONOMEN_POSSESSIV NOUN_MIRROR!"); /* EN } else pline ("It steals your mirror!"); */
 		setnotworn(obj); /* in case mirror was wielded */
 		freeinv(obj);
@@ -726,14 +726,14 @@ struct obj *obj;
 	} else if (!is_unicorn(mtmp->data) && !humanoid(mtmp->data) &&
 			(!mtmp->minvis || perceives(mtmp->data)) && rn2(5)) {
 		if (vis)
-		    pline("%s is frightened by its reflection.", Monnam(mtmp)); /* EN pline("%s is frightened by its reflection.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SEIN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION verängstigt.", Monnam(mtmp)); /* EN pline("%s is frightened by its reflection.", Monnam(mtmp)); */
 		monflee(mtmp, d(2,4), FALSE, FALSE);
 	} else if (!Blind) {
 		if (mtmp->minvis && !See_invisible)
 		    ;
 		else if ((mtmp->minvis && !perceives(mtmp->data))
 			 || !haseyes(mtmp->data))
-		    pline("%s doesn't seem to notice its reflection.", /* EN pline("%s doesn't seem to notice its reflection.", */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHEINEN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION nicht zu bemerken.", /* EN pline("%s doesn't seem to notice its reflection.", */
 			Monnam(mtmp));
 		else
 		    pline("SUBJECT %s VERB_IGNORIEREN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.", /* EN pline("%s ignores %s reflection.", */
@@ -777,9 +777,9 @@ struct obj **optr;
 		    !(mvitals[PM_MOUNTAIN_NYMPH].mvflags & G_GONE) &&
 		    (mtmp = makemon(mkclass(S_NYMPH, 0),
 					u.ux, u.uy, NO_MINVENT)) != 0) {
-		You("summon %s!", a_monnam(mtmp)); /* EN You("summon %s!", a_monnam(mtmp)); */ // TODO DE
+		You("VERB_RUFEN OBJECT %s herbei!", a_monnam(mtmp)); /* EN You("summon %s!", a_monnam(mtmp)); */
 		if (!obj_resists(obj, 93, 100)) {
-		    pline("%s shattered!", Tobjnam(obj, "have")); /* EN pline("%s shattered!", Tobjnam(obj, "have")); */ // TODO DE
+		    pline("SUBJECT %s zersprungen!", Tobjnam(obj, "VERB_SEIN")); /* EN pline("%s shattered!", Tobjnam(obj, "have")); */
 		    useup(obj);
 		    *optr = 0;
 		} else switch (rn2(3)) {
@@ -815,7 +815,7 @@ struct obj **optr;
 		wakem = TRUE;
 
 	    } else  if (invoking) {
-		pline("%s an unsettling shrill sound...", /* EN pline("%s an unsettling shrill sound...", */ // TODO DE
+		pline("SUBJECT %s an beunruhigenden schrillen Ton ...", /* EN pline("%s an unsettling shrill sound...", */
 		      Tobjnam(obj, "issue")); /* EN Tobjnam(obj, "issue")); */ // TODO DE
 #ifdef	AMIGA
 		amii_speaker( obj, "aefeaefeaefeaefeaefe", AMII_LOUDER_VOLUME );
@@ -839,7 +839,7 @@ struct obj **optr;
 		  case 0:  pline(nothing_happens); break;
 		  case 1:  pline("SUBJECT %s VERB_OEFFNEN sich ...", Something); /* EN case 1:  pline("%s opens...", Something); */
 			   learno = TRUE; break;
-		  default: pline("Things open around you..."); /* EN default: pline("Things open around you..."); */ // TODO DE
+		  default: pline("Die Dinge öffnen sich KASUS_DATIV um PRONOMEN_PERSONAL ..."); /* EN default: pline("Things open around you..."); */
 			   learno = TRUE; break;
 		}
 
@@ -1045,7 +1045,7 @@ struct obj *obj;
 		 obj->otyp == BRASS_LANTERN) && obj->cursed && !rn2(2))
 		return FALSE;
 	    if (obj->where == OBJ_MINVENT ? cansee(x,y) : !Blind)
-		pline("%s %s light!", Yname2(obj), otense(obj, "catch")); /* EN pline("%s %s light!", Yname2(obj), otense(obj, "catch")); */ // TODO DE
+		pline("SUBJECT %s %s Feuer!", Yname2(obj), otense(obj, "VERB_FANGEN")); /* EN pline("%s %s light!", Yname2(obj), otense(obj, "catch")); */
 	    if (obj->otyp == POT_OIL) makeknown(obj->otyp);
 	    if (obj->unpaid && costly_spot(u.ux, u.uy) && (obj->where == OBJ_INVENT)) {
 	        /* if it catches while you have it, then it's your tough luck */
@@ -1139,7 +1139,7 @@ light_cocktail(obj)
 	}
 
 	You("VERB_ENTZUENDEN OBJECT %s NOUN_POTION.%s", shk_your(buf, obj), /* EN You("light %s potion.%s", shk_your(buf, obj), */
-	    Blind ? "" : "  It gives off a dim light."); /* EN Blind ? "" : "  It gives off a dim light."); */ // TODO DE
+	    Blind ? "" : "  Er gibt nur ein schummriges Licht ab."); /* EN Blind ? "" : "  It gives off a dim light."); */
 	if (obj->unpaid && costly_spot(u.ux, u.uy)) {
 	    /* Normally, we shouldn't both partially and fully charge
 	     * for an item, but (Yendorian Fuel) Taxes are inevitable...
@@ -1193,7 +1193,7 @@ dorub()
 		if (uwep->lamplit) begin_burn(uwep, TRUE);
 		update_inventory();
 	    } else if (rn2(2) && !Blind)
-		You("see a puff of smoke."); /* EN You("see a puff of smoke."); */ // TODO DE
+		You("VERB_SEHEN eine Rauchwölkchen."); /* EN You("see a puff of smoke."); */
 	    else pline(nothing_happens);
 	} else if (obj->otyp == BRASS_LANTERN) {
 	    /* message from Adventure */
@@ -1261,7 +1261,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		You("are carrying too much to jump!"); /* EN You("are carrying too much to jump!"); */ // TODO DE
 		return 0;
 	} else if (!magic && (u.uhunger <= 100 || ACURR(A_STR) < 6)) {
-		You("lack the strength to jump!"); /* EN You("lack the strength to jump!"); */ // TODO DE
+		Dir("fehlt die Kraft zu springen!"); /* EN You("lack the strength to jump!"); */
 		return 0;
 	} else if (Wounded_legs) {
 		long wl = (Wounded_legs & BOTH_SIDES);
@@ -1270,13 +1270,13 @@ int magic; /* 0=Physical, otherwise skill level */
 		if (wl == BOTH_SIDES) bp = makeplural(bp);
 #ifdef STEED
 		if (u.usteed)
-		    pline("%s is in no shape for jumping.", Monnam(u.usteed)); /* EN pline("%s is in no shape for jumping.", Monnam(u.usteed)); */ // TODO DE
+		    pline("SUBJECT %s nicht in der Verfassung zu springen.", Monnam(u.usteed)); /* EN pline("%s is in no shape for jumping.", Monnam(u.usteed)); */
 		else
 #endif
-		Your("%s%s %s in no shape for jumping.", /* EN Your("%s%s %s in no shape for jumping.", */ // TODO DE
-		     (wl == LEFT_SIDE) ? "left " : /* EN (wl == LEFT_SIDE) ? "left " : */ // TODO DE
-			(wl == RIGHT_SIDE) ? "right " : "", /* EN (wl == RIGHT_SIDE) ? "right " : "", */ // TODO DE
-		     bp, (wl == BOTH_SIDES) ? "are" : "is"); /* EN bp, (wl == BOTH_SIDES) ? "are" : "is"); */ // TODO DE
+		Your("%s%s %s nicht zum Springen zu gebrauchen.", /* EN Your("%s%s %s in no shape for jumping.", */
+		     (wl == LEFT_SIDE) ? "ADJEKTIV_LINK " : /* EN (wl == LEFT_SIDE) ? "left " : */
+			(wl == RIGHT_SIDE) ? "ADJEKTIV_RECHT " : "", /* EN (wl == RIGHT_SIDE) ? "right " : "", */
+		     bp, (wl == BOTH_SIDES) ? "VERB_SEIN" : "VERB_SEIN"); /* EN bp, (wl == BOTH_SIDES) ? "are" : "is"); */
 		return 0;
 	}
 #ifdef STEED
@@ -1302,7 +1302,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		pline("Zu weit!"); /* EN pline("Too far!"); */
 		return 0;
 	} else if (!cansee(cc.x, cc.y)) {
-		You("cannot see where to land!"); /* EN You("cannot see where to land!"); */ // TODO DE
+		You("VERB_SEHEN nicht, wo NEUER_SATZ PRONOMEN_PERSONAL landen MODIFIER_KONJUNKTIV_II VERB_WERDEN!"); /* EN You("cannot see where to land!"); */
 		return 0;
 	} else if (!isok(cc.x, cc.y)) {
 		You("VERB_KOENNEN nicht dorthin springen!"); /* EN You("cannot jump there!"); */
@@ -1321,7 +1321,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		    break;
 		  }
 		case TT_PIT:
-		    You("leap from the pit!"); /* EN You("leap from the pit!"); */ // TODO DE
+		    You("VERB_SPRINGEN aus der Grube!"); /* EN You("leap from the pit!"); */
 		    break;
 		case TT_WEB:
 		    You("tear the web apart as you pull yourself free!"); /* EN You("tear the web apart as you pull yourself free!"); */ // TODO DE
@@ -1386,12 +1386,12 @@ register struct obj *obj;
 	 * moves, we've got to deal with decaying corpses...
 	 */
 	if (obj->spe <= 0) {
-		You("seem to be out of tins."); /* EN You("seem to be out of tins."); */ // TODO DE
+		You("VERB_SCHEINEN keine Dosen mehr zu haben."); /* EN You("seem to be out of tins."); */
 		return;
 	}
 	if (!(corpse = floorfood("tin", 2))) return;
 	if (corpse->oeaten) {
-		You("cannot tin %s which is partly eaten.",something); /* EN You("cannot tin %s which is partly eaten.",something); */ // TODO DE
+		You("VERB_KOENNEN nicht etwas eindosen, was schon angefressen wurde."); /* EN You("cannot tin %s which is partly eaten.",something); */
 		return;
 	}
 	if (touch_petrifies(&mons[corpse->corpsenm])
@@ -1399,23 +1399,23 @@ register struct obj *obj;
 	    char kbuf[BUFSZ];
 
 	    if (poly_when_stoned(youmonst.data))
-		You("tin %s without wearing gloves.", /* EN You("tin %s without wearing gloves.", */ // TODO DE
+		You("VERB_EINDOSEN ohne Handschuhe zu tragen OBJECT %s SATZKLAMMER.", /* EN You("tin %s without wearing gloves.", */
 			an(mons[corpse->corpsenm].mname));
 	    else {
-		pline("Tinning %s without wearing gloves is a fatal mistake...", /* EN pline("Tinning %s without wearing gloves is a fatal mistake...", */ // TODO DE
+		pline("SATZBEGINN KASUS_AKKUSATIV %s eindosen ohne Handschuhe zu tragen ist ein verhängnisvoller Fehler ...", /* EN pline("Tinning %s without wearing gloves is a fatal mistake...", */
 			an(mons[corpse->corpsenm].mname));
-		Sprintf(kbuf, "trying to tin %s without gloves", /* EN Sprintf(kbuf, "trying to tin %s without gloves", */ // TODO DE
+		Sprintf(kbuf, "versuchte ohne Handschuhe KASUS_AKKUSATIV %s einzudosen", /* EN Sprintf(kbuf, "trying to tin %s without gloves", */ // TODO DE
 			an(mons[corpse->corpsenm].mname));
 	    }
 	    instapetrify(kbuf);
 	}
 	if (is_rider(&mons[corpse->corpsenm])) {
 		(void) revive_corpse(corpse);
-		verbalize("Yes...  But War does not preserve its enemies..."); /* EN verbalize("Yes...  But War does not preserve its enemies..."); */ // TODO DE
+		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_HABEN da was falsch verstanden ...  Der Krieg erhält nur sich selbst ..."); /* EN verbalize("Yes...  But War does not preserve its enemies..."); */
 		return;
 	}
 	if (mons[corpse->corpsenm].cnutrit == 0) {
-		pline("That's too insubstantial to tin."); /* EN pline("That's too insubstantial to tin."); */ // TODO DE
+		pline("Das ist zu dürftig um eingemacht zu werden."); /* EN pline("That's too insubstantial to tin."); */
 		return;
 	}
 	consume_obj_charge(obj, TRUE);
@@ -1737,14 +1737,14 @@ struct obj **optr;
 	cc.x = x; cc.y = y;
 	/* Passing FALSE arg here will result in messages displayed */
 	if (!figurine_location_checks(obj, &cc, FALSE)) return;
-	You("%s and it transforms.", /* EN You("%s and it transforms.", */ // TODO DE
-	    (u.dx||u.dy) ? "set the figurine beside you" : /* EN (u.dx||u.dy) ? "set the figurine beside you" : */ // TODO DE
+	You("%s und sie transformiert.", /* EN You("%s and it transforms.", */
+	    (u.dx||u.dy) ? "VERB_STELLEN die Statuette OBJECT neben PRONOMEN_PERSONAL" : /* EN (u.dx||u.dy) ? "set the figurine beside you" : */
 	    (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz) ||
 	     is_pool(cc.x, cc.y)) ?
-		"release the figurine" : /* EN "release the figurine" : */ // TODO DE
+		"VERB_LASSEN die Statuette los" : /* EN "release the figurine" : */
 	    (u.dz < 0 ?
-		"toss the figurine into the air" : /* EN "toss the figurine into the air" : */ // TODO DE
-		"set the figurine on the ground")); /* EN "set the figurine on the ground")); */ // TODO DE
+		"VERB_WERFEN die Statuette in die Luft" : /* EN "toss the figurine into the air" : */
+		"VERB_STELLEN die Statuette auf den Boden")); /* EN "set the figurine on the ground")); */
 	(void) make_familiar(obj, cc.x, cc.y, FALSE);
 	(void) stop_timer(FIG_TRANSFORM, (genericptr_t)obj);
 	useup(obj);
@@ -1876,9 +1876,9 @@ struct obj *tstone;
 	    obj->oclass == GEM_CLASS && !is_graystone(obj) &&
 	    !obj_resists(obj, 80, 100)) {
 	if (Blind)
-	    pline("You feel something shatter."); /* EN pline("You feel something shatter."); */ // TODO DE
+	    Du_spuerst("etwas zersplittern."); /* EN pline("You feel something shatter."); */
 	else if (Hallucination)
-	    pline("Oh, wow, look at the pretty shards."); /* EN pline("Oh, wow, look at the pretty shards."); */ // TODO DE
+	    pline("Mann eh, schau dir die hübschen Scherben an."); /* EN pline("Oh, wow, look at the pretty shards."); */
 	else
 	    pline("A sharp crack shatters %s%s.", /* EN pline("A sharp crack shatters %s%s.", */ // TODO DE
 		  (obj->quan > 1) ? "one of " : "", the(xname(obj))); /* EN (obj->quan > 1) ? "one of " : "", the(xname(obj))); */ // TODO DE
@@ -1925,27 +1925,27 @@ struct obj *tstone;
     default:
 	switch (objects[obj->otyp].oc_material) {
 	case CLOTH:
-	    pline("%s a little more polished now.", Tobjnam(tstone, "look")); /* EN pline("%s a little more polished now.", Tobjnam(tstone, "look")); */ // TODO DE
+	    pline("SUBJECT %s jetzt ein bisschen besser poliert aus.", Tobjnam(tstone, "VERB_AUSSEHEN")); /* EN pline("%s a little more polished now.", Tobjnam(tstone, "look")); */
 	    return;
 	case LIQUID:
 	    if (!obj->known)		/* note: not "whetstone" */
-		You("must think this is a wetstone, do you?"); /* EN You("must think this is a wetstone, do you?"); */ // TODO DE
+		pline("Achtung! Steter Tropfen höhlt den Stein!"); /* EN You("must think this is a wetstone, do you?"); */ /* Wortspiel */
 	    else
-		pline("%s a little wetter now.", Tobjnam(tstone, "are")); /* EN pline("%s a little wetter now.", Tobjnam(tstone, "are")); */ // TODO DE
+		pline("SUBJECT %s jetzt ein wenig nasser.", Tobjnam(tstone, "VERB_SEIN")); /* EN pline("%s a little wetter now.", Tobjnam(tstone, "are")); */
 	    return;
 	case WAX:
-	    streak_color = "waxy"; /* EN streak_color = "waxy"; */ // TODO DE
+	    streak_color = "ADJEKTIV_WAECHSERN"; /* EN streak_color = "waxy"; */
 	    break;		/* okay even if not touchstone */
 	case WOOD:
-	    streak_color = "wooden"; /* EN streak_color = "wooden"; */ // TODO DE
+	    streak_color = "ADJEKTIV_HOELZERN"; /* EN streak_color = "wooden"; */
 	    break;		/* okay even if not touchstone */
 	case GOLD:
 	    do_scratch = TRUE;	/* scratching and streaks */
-	    streak_color = "golden"; /* EN streak_color = "golden"; */ // TODO DE
+	    streak_color = "ADJEKTIV_FARBE_GOLDEN"; /* EN streak_color = "golden"; */
 	    break;
 	case SILVER:
 	    do_scratch = TRUE;	/* scratching and streaks */
-	    streak_color = "silvery"; /* EN streak_color = "silvery"; */ // TODO DE
+	    streak_color = "ADJEKTIV_FARBE_SILVER"; /* EN streak_color = "silvery"; */
 	    break;
 	default:
 	    /* Objects passing the is_flimsy() test will not
@@ -1960,13 +1960,13 @@ struct obj *tstone;
 	break;		/* default oclass */
     }
 
-    Sprintf(stonebuf, "stone%s", plur(tstone->quan)); /* EN Sprintf(stonebuf, "stone%s", plur(tstone->quan)); */ // TODO DE
+    Sprintf(stonebuf, "NOUN_GEM_ROCK%s", plur(tstone->quan)); /* EN Sprintf(stonebuf, "stone%s", plur(tstone->quan)); */
     if (do_scratch)
-	pline("You make %s%sscratch marks on the %s.", /* EN pline("You make %s%sscratch marks on the %s.", */ // TODO DE
+	pline("SUBJECT %s VERB_HINTERLASSEN OBJECT %s%sNOUN_KRATZSPURs NEUES_OBJECT OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s.", the(xname(obj)), /* EN pline("You make %s%sscratch marks on the %s.", */
 	      streak_color ? streak_color : (const char *)"",
 	      streak_color ? " " : "", stonebuf);
     else if (streak_color)
-	pline("You see %s streaks on the %s.", streak_color, stonebuf); /* EN pline("You see %s streaks on the %s.", streak_color, stonebuf); */ // TODO DE
+	You("VERB_SEHEN OBJECT %s NOUN_STRICHs NEUES_OBJECT OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s.", streak_color, stonebuf); /* EN pline("You see %s streaks on the %s.", streak_color, stonebuf); */
     else
 	pline(scritch);
     return;
@@ -1983,29 +1983,29 @@ struct obj *otmp;
 	const char *occutext = "setting the trap"; /* EN const char *occutext = "setting the trap"; */ // TODO DE
 
 	if (nohands(youmonst.data))
-	    what = "without hands"; /* EN what = "without hands"; */ // TODO DE
+	    what = "ohne Hände"; /* EN what = "without hands"; */
 	else if (Stunned)
 	    what = "while stunned"; /* EN what = "while stunned"; */ // TODO DE
 	else if (u.uswallow)
 	    what = is_animal(u.ustuck->data) ? "while swallowed" : /* EN what = is_animal(u.ustuck->data) ? "while swallowed" : */ // TODO DE
 			"while engulfed"; /* EN "while engulfed"; */ // TODO DE
 	else if (Underwater)
-	    what = "underwater"; /* EN what = "underwater"; */ // TODO DE
+	    what = "unter Wasser"; /* EN what = "underwater"; */
 	else if (Levitation)
-	    what = "while levitating"; /* EN what = "while levitating"; */ // TODO DE
+	    what = "schwebend"; /* EN what = "while levitating"; */
 	else if (is_pool(u.ux, u.uy))
-	    what = "in water"; /* EN what = "in water"; */ // TODO DE
+	    what = "im Wasser"; /* EN what = "in water"; */
 	else if (is_lava(u.ux, u.uy))
-	    what = "in lava"; /* EN what = "in lava"; */ // TODO DE
+	    what = "in der Lava"; /* EN what = "in lava"; */
 	else if (On_stairs(u.ux, u.uy))
 	    what = (u.ux == xdnladder || u.ux == xupladder) ?
-			"on the ladder" : "on the stairs"; /* EN "on the ladder" : "on the stairs"; */ // TODO DE
+			"auf einer Leiter" : "auf einer Treppe"; /* EN "on the ladder" : "on the stairs"; */
 	else if (IS_FURNITURE(levl[u.ux][u.uy].typ) ||
 		IS_ROCK(levl[u.ux][u.uy].typ) ||
 		closed_door(u.ux, u.uy) || t_at(u.ux, u.uy))
 	    what = "here"; /* EN what = "here"; */ // TODO DE
 	if (what) {
-	    You_cant("set a trap %s!",what); /* EN You_cant("set a trap %s!",what); */ // TODO DE
+	    You("VERB_KOENNEN %s keine Falle aufstellen!",what); /* EN You_cant("set a trap %s!",what); */
 	    reset_trapset();
 	    return;
 	}
@@ -2529,7 +2529,7 @@ use_grapple (obj)
 	    Sprintf(buf, "the %s", surface(cc.x, cc.y));
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE,
 			 buf, MENU_UNSELECTED);
-	    end_menu(tmpwin, "Aim for what?"); /* EN end_menu(tmpwin, "Aim for what?"); */ // TODO DE
+	    end_menu(tmpwin, "Auf was zielen?"); /* EN end_menu(tmpwin, "Aim for what?"); */
 	    tohit = rn2(4);
 	    if (select_menu(tmpwin, PICK_ONE, &selected) > 0 &&
 			rn2(P_SKILL(typ) > P_SKILLED ? 20 : 2))

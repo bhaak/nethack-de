@@ -131,7 +131,7 @@ dosounds()
 		    /* fall into... (yes, even for hallucination) */
 		}
 		case 0:
-		    You_hear("die Schritte einer patrouillierende Wache."); /* EN You_hear("the footsteps of a guard on patrol."); */ 
+		    You_hear("die Schritte einer Wache auf Patrouille."); /* EN You_hear("the footsteps of a guard on patrol."); */ 
 		    break;
 		case 2:
 		    You_hear("Mac Moneysac!"); /* EN You_hear("Ebenezer Scrooge!"); */ /* gibt es eine bessere Verkörperung eines unsympatischen Geldsacks? */
@@ -149,7 +149,7 @@ dosounds()
 			You_hear("ein schwaches Summen."); /* EN You_hear("a low buzzing."); */
 			break;
 		    case 1:
-			You_hear("eine wütende Drone."); /* EN You_hear("an angry drone."); */
+			You_hear("ein wütendes Brummen."); /* EN You_hear("an angry drone."); */
 			break;
 		    case 2:
 			You_hear("bees in your %sbonnet!", /* EN You_hear("bees in your %sbonnet!", */ // TODO DE
@@ -167,7 +167,7 @@ dosounds()
 		mon_in_room(mtmp, MORGUE)) {
 		switch (rn2(2)+hallu) {
 		    case 0:
-			You("VERB_MERKEN plötzlich, wie widernatürlich ruhig es ist.."); /* EN You("suddenly realize it is unnaturally quiet.");*/
+			You("VERB_MERKEN plötzlich, wie widernatürlich ruhig es ist."); /* EN You("suddenly realize it is unnaturally quiet.");*/
 			break;
 		    case 1:
 			pline_The("%s on the back of your %s stands up.", /* EN pline_The("%s on the back of your %s stands up.", */ // TODO DE

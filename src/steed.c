@@ -218,7 +218,7 @@ mount_steed(mtmp, force)
 	 * minimized, if not eliminated altogether.
 	 */
 	if (Wounded_legs) {
-	    Your("%s are in no shape for riding.", makeplural(body_part(LEG))); /* EN Your("%s are in no shape for riding.", makeplural(body_part(LEG))); */ // TODO DE
+	    Your("%s VERB_SEIN nicht zum Reiten zu gebrauchen.", makeplural(body_part(LEG))); /* EN Your("%s are in no shape for riding.", makeplural(body_part(LEG))); */
 #ifdef WIZARD
 	    if (force && wizard && yn("SUBJECT PRONOMEN_POSSESSIV NOUN_LEGs heilen?") == 'y') /* EN if (force && wizard && yn("Heal your legs?") == 'y') */
 		HWounded_legs = EWounded_legs = 0;

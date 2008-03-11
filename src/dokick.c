@@ -628,7 +628,7 @@ dokick()
 		no_kick = TRUE;
 #ifdef STEED
 	} else if (u.usteed) {
-		if (yn_function("Kick your steed?", ynchars, 'y') == 'y') { /* EN if (yn_function("Kick your steed?", ynchars, 'y') == 'y') { */ // TODO DE
+		if (yn_function("SATZBEGINN KASUS_DATIV PRONOMEN_POSSESSIV NOUN_REITTIER die Sporen geben?", ynchars, 'y') == 'y') { /* EN if (yn_function("Kick your steed?", ynchars, 'y') == 'y') { */
 		    You("VERB_KICK OBJECT %s.", mon_nam(u.usteed)); /* EN You("kick %s.", mon_nam(u.usteed)); */
 		    kick_steed();
 		    return 1;
@@ -642,7 +642,7 @@ dokick()
 		const char *bp = body_part(LEG);
 
 		if (wl == BOTH_SIDES) bp = makeplural(bp);
-		Your("%s%s %s in no shape for kicking.", /* EN Your("%s%s %s in no shape for kicking.", */ // TODO DE
+		Your("%s%s %s nicht zum Treten zu gebrauchen.", /* EN Your("%s%s %s in no shape for kicking.", */
 		     (wl == LEFT_SIDE) ? "ADJEKTIV_LINK " : /* EN (wl == LEFT_SIDE) ? "left " : */
 			(wl == RIGHT_SIDE) ? "ADJEKTIV_RECHT " : "", /* EN (wl == RIGHT_SIDE) ? "right " : "", */
 		     bp, (wl == BOTH_SIDES) ? "VERB_SEIN" : "VERB_SEIN"); /* EN bp, (wl == BOTH_SIDES) ? "are" : "is"); */

@@ -536,7 +536,7 @@ peffects(otmp)
 	case SPE_INVISIBILITY:
 		/* spell cannot penetrate mummy wrapping */
 		if (BInvis && uarmc->otyp == MUMMY_WRAPPING) {
-			Du_fuehlst_dich("rather itchy under your %s.", xname(uarmc)); /* EN You_feel("rather itchy under your %s.", xname(uarmc)); */ // TODO DE
+			pline("SUBJECT NOUN_IT VERB_JUCKEN OBJECT PRONOMEN_PERSONAL stark unter OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", xname(uarmc)); /* EN You_feel("rather itchy under your %s.", xname(uarmc)); */
 			break;
 		}
 		/* FALLTHRU */
