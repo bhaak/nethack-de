@@ -171,7 +171,7 @@ Dir_ist VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -181,7 +181,7 @@ Dir_wird VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_WERDEN ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_WERDEN ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -191,7 +191,7 @@ Dich VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "OBJECT KASUS_AKKUSATIV PRONOMEN_PERSONAL ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_AKKUSATIV PRONOMEN_PERSONAL ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -201,7 +201,7 @@ Dir VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "OBJECT KASUS_DATIV PRONOMEN_PERSONAL ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_PERSONAL ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -232,7 +232,7 @@ Deinen VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "OBJECT KASUS_AKKUSATIV PRONOMEN_POSSESSIV ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_AKKUSATIV PRONOMEN_POSSESSIV ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -242,7 +242,7 @@ Deinem VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ", line), VA_ARGS);
 	VA_END();
 }
 

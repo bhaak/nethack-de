@@ -471,8 +471,10 @@ START_TEST (test_incomplete_sentences) {
 		 "Katze oder andere Katzenartige"},
 		{"SATZBEGINN KASUS_DATIV PRONOMEN_POSSESSIV NOUN_REITTIER die Sporen geben?",
 		 "Deinem Reittiere die Sporen geben?"},
-		{"SATZBEGINN KASUS_DATIV NOUN_REITTIERs. SATZBEGINN KASUS_GENITIV NOUN_DOG.",
-		 "Reittieren. Hundes."},
+		{"KASUS_DATIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_GREEN NOUN_REITTIERs. KASUS_GENITIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_RED NOUN_DOG.",
+		 "den grünen Reittieren. des roten Hundes."},
+		{"SATZBEGINN KASUS_DATIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_GREEN NOUN_REITTIERs. SATZBEGINN KASUS_GENITIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_RED NOUN_DOG.",
+		 "Den grünen Reittieren. Des roten Hundes."},
 	};
 
 	check_strings(text, sizeof(text)/8);
