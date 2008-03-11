@@ -38,9 +38,9 @@ START_TEST (test_tincontent)
 		 "c - eine nicht verfluchte Dose mit Kojotenfleisch."},
 
 		{"ARTIKEL_UNBESTIMMTER NOUN_TIN.",
-		 "Eine Dose."}, /* Diese zwei gehören zusammen. partikel_of_as_mit wurde nicht richtig initialisiert */
+		 "eine Dose."}, /* Diese zwei gehören zusammen. partikel_of_as_mit wurde nicht richtig initialisiert */
 		{"ARTIKEL_UNBESTIMMTER NOUN_STATUE PARTIKEL_OF ARTIKEL_UNBESTIMMTER NOUN_NEWT.",
-		 "Eine Statue eines Molches."},
+		 "eine Statue eines Molches."},
 
 		//{"d - ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED NOUN_TIN PARTIKEL_OF NOUN_LARGE_DOG NOUN_MEAT.",
 										 //"d - eine verfluchte Dose mit Fleisch vom grossen Hunde."} // TODO
@@ -159,7 +159,7 @@ START_TEST (test_identified_spellbooks) {
     {"NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_FLAME_SPHERE",    "Zauberbuch der Flammenkugel"},
     {"NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_FREEZE_SPHERE",   "Zauberbuch der Frostkugel"},
     {"NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_BLANK_PAPER",     "Zauberbuch des unbeschrifteten Papieres"},
-		{"ARTIKEL_BESTIMMTER NOUN_SPE_BOOK_OF_THE_DEAD",        "Das Buch der Toten"}
+		{"ARTIKEL_BESTIMMTER NOUN_SPE_BOOK_OF_THE_DEAD",        "das Buch der Toten"}
 	};
 	
 	check_strings(text, sizeof(text)/8);
@@ -169,20 +169,20 @@ START_TEST (test_identified_spellbooks) {
 START_TEST (test_corpses) {
 	char *text[][2] = {
 		{"ARTIKEL_UNBESTIMMTER MODIFIER_CORPSE NOUN_ROTHE NOUN_CORPSE",
-		 "Ein Kadaver einer Rothé"},
+		 "ein Kadaver einer Rothé"},
 		{"ARTIKEL_BESTIMMTER MODIFIER_CORPSE NOUN_ROTHE NOUN_CORPSE",
-		 "Der Kadaver einer Rothé"},
+		 "der Kadaver einer Rothé"},
 		{"ARTIKEL_UNBESTIMMTER halb ADJEKTIV_EATEN MODIFIER_CORPSE NOUN_RED_DRAGON NOUN_CORPSE",
-		 "Ein halb verspeister Kadaver eines Rotdrachen"},
+		 "ein halb verspeister Kadaver eines Rotdrachen"},
 
 		{"SUBJECT PRONOMEN_DIESER MODIFIER_CORPSE NOUN_SHOPKEEPER NOUN_CORPSE schmeckt schrecklich!",
 	   "Dieser Kadaver eines Ladenbesitzers schmeckt schrecklich!"},
 		{"Hier VERB_LIEGEN ARTIKEL_UNBESTIMMTER MODIFIER_CORPSE NOUN_ACID_BLOB NOUN_CORPSE.",
 		 "Hier liegt ein Kadaver eines Säureklumpens."},
 		{"ARTIKEL_BESTIMMTER NOUN_CORPSE",
-		 "Der Kadaver"},
+		 "der Kadaver"},
 		{"ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED MODIFIER_CORPSE NOUN_YELLOW_MOLD NOUN_CORPSE",
-		 "Ein nicht verfluchter Kadaver eines Gelbschimmels"},
+		 "ein nicht verfluchter Kadaver eines Gelbschimmels"},
 		{"SUBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE ARTIKEL_BESTIMMTER NOUN_ORACLE NOUN_CORPSE schmeckt schrecklich!",
 		 "Der Kadaver des Orakels schmeckt schrecklich!"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_AUFHOEREN SATZKLAMMER, KASUS_AKKUSATIV MODIFIER_CORPSE ARTIKEL_BESTIMMTER NOUN_ORACLE NOUN_CORPSE zu essen.",
@@ -318,7 +318,7 @@ START_TEST (test_complete_sentences) {
 		 "Deine Geldbörse ist leer."},
     {"SUBJECT PRONOMEN_PERSONAL VERB_ABBRECHEN OBJECT PRONOMEN_POSSESSIV NOUN_VERSUCH, die Büchse zu öffnen, SATZKLAMMER.",
      "Du brichst deinen Versuch, die Büchse zu öffnen, ab."},
-    {"KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ VERB_GELINGEN NOUN_IT, die Dose zu öffnen.",
+    {"SATZBEGINN KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ VERB_GELINGEN NOUN_IT, die Dose zu öffnen.",
      "Dir gelingt es, die Dose zu öffnen."},
   };
 
@@ -327,7 +327,7 @@ START_TEST (test_complete_sentences) {
 
 START_TEST (test_complete_sentences2) {
 	char *text[][2] = {
-		{"ARTIKEL_BESTIMMTER NOUN_PONY VERB_SEIN nicht ADJEKTIV_SADDLED.",
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_PONY VERB_SEIN nicht ADJEKTIV_SADDLED.",
 		 "Das Pony ist nicht gesattelt."},
 		{"SUBJECT PRONOMEN_POSSESSIV NOUN_RINGs VERB_RUTSCHEN von KASUS_DATIV PRONOMEN_POSSESSIV NOUN_FINGERs.",
 		 "Deine Ringe rutschen von deinen Fingern."},
@@ -355,7 +355,7 @@ START_TEST (test_complete_sentences2) {
 		 "Du haust dich selbst!"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_PLATZIEREN OBJECT ARTIKEL_UNBESTIMMTER NOUN_FIREBALL auf KASUS_DATIV PRONOMEN_PERSONAL selbst!",
 		 "Du platzierst einen Feuerball auf dir selbst!"},
-		{"OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ziemlich warm.",
+		{"SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN ziemlich warm.",
 		 "Dir ist ziemlich warm."},
 		{"SUBJECT NOUN_IT VERB_JUCKEN OBJECT PRONOMEN_PERSONAL stark unter OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_MUMMY_WRAPPINGs.",
 		 "Es juckt dich stark unter deinen Mumienbinden."},
@@ -402,7 +402,7 @@ START_TEST (test_complete_sentences3) {
 		//{"SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_ELEKTRISCH NOUN_SCHLAG VERB_SCHIESSEN OBJECT durch PRONOMEN_POSSESSIV NOUN_BODY!",
 		 //""},
 		//{"ARTIKEL_BESTIMMTER NOUN_DOG VERB_BEMERKEN OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_FOOD_RATION.", ""}
-		{"VERB_WOLLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL in OBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLF verwandeln?",
+		{"SATZBEGINN VERB_WOLLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL in OBJECT ARTIKEL_UNBESTIMMTER NOUN_WOLF verwandeln?",
 		 "Willst du dich in einen Wolf verwandeln?"},
 		{"SUBJECT NOUN_JEMAND VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL zu bestehlen aber VERB_FINDEN nichts.",
 		"Jemand versucht dich zu bestehlen aber findet nichts."},
@@ -466,9 +466,13 @@ START_TEST (test_complete_sentences4) {
 START_TEST (test_incomplete_sentences) {
 	char *text[][2] = {
 		{"ADJEKTIV_MAENNLICH",
-		 "Männlich"}, // TODO DE
+		 "männlich"},
 		{"SUBJECT NOUN_CAT oder SUBJECT_IM_SATZ ADJEKTIV_ANDERE NOUN_FELINEs",
 		 "Katze oder andere Katzenartige"},
+		{"SATZBEGINN KASUS_DATIV PRONOMEN_POSSESSIV NOUN_REITTIER die Sporen geben?",
+		 "Deinem Reittiere die Sporen geben?"},
+		{"SATZBEGINN KASUS_DATIV NOUN_REITTIERs. SATZBEGINN KASUS_GENITIV NOUN_DOG.",
+		 "Reittieren. Hundes."},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -691,17 +695,17 @@ START_TEST (test_possessiv) {
 
 START_TEST (test_nominal_phrasen) {
 	char *text[][2] = {
-		{"NOUN_VULGAR_POLEARM", "Gewöhnliche Stangenwaffe"},
+		{"NOUN_VULGAR_POLEARM", "gewöhnliche Stangenwaffe"},
 		{"NOUN_BAG_OF_HOLDING", "Nimmervoller Beutel"},
 		{"NOUN_BAG_OF_HOLDING", "Nimmervoller Beutel"},
 		{"NOUN_LUCERN_HAMMER", "Luzerner Hammer"},
-		{"NOUN_LONG_SAMURAI_SWORDs", "Lange Samuraischwerter"},
-		{"ARTIKEL_BESTIMMTER NOUN_DOG", "Der Hund"},
-		{"ARTIKEL_BESTIMMTER NOUN_DOGs", "Die Hunde"},
-		{"ARTIKEL_UNBESTIMMTER NOUN_DOG", "Ein Hund"},
+		{"NOUN_LONG_SAMURAI_SWORDs", "lange Samuraischwerter"},
+		{"ARTIKEL_BESTIMMTER NOUN_DOG", "der Hund"},
+		{"ARTIKEL_BESTIMMTER NOUN_DOGs", "die Hunde"},
+		{"ARTIKEL_UNBESTIMMTER NOUN_DOG", "ein Hund"},
 		{"ARTIKEL_NULL NOUN_DOG", "Hund"},
 		{"ARTIKEL_NULL NOUN_DOGs", "Hunde"},
-		{"PRONOMEN_ALLE NOUN_VIOLET_FUNGUSs ausgelöscht", "Alle violetten Pilze ausgelöscht"},
+		{"PRONOMEN_ALLE NOUN_VIOLET_FUNGUSs ausgelöscht", "alle violetten Pilze ausgelöscht"},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -806,7 +810,7 @@ START_TEST (test_satzklammer) {
 	char *text[][2] = {
 		{"SUBJECT PRONOMEN_POSSESSIV NOUN_HELMET VERB_ANFUEHLEN sich völlig verrostet SATZKLAMMER.", 
 		 "Dein Helm fühlt sich völlig verrostet an."},
-    {"KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_GNOME SUBJECT_IM_SATZ NOUN_HELMET VERB_AUSSEHEN völlig verrostet SATZKLAMMER.",
+    {"SATZBEGINN KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_GNOME SUBJECT_IM_SATZ NOUN_HELMET VERB_AUSSEHEN völlig verrostet SATZKLAMMER.",
 		 "Des Gnomen Helm sieht völlig verrostet aus."},
     {"SUBJECT PRONOMEN_PERSONAL VERB_SEIN SATZKLAMMER.",
 		 "Du bist."},
@@ -936,7 +940,7 @@ START_TEST (test_wortzusammensetzungen) {
 		 "Dein Ringfinger läuft blau an."},
 		{"SUBJECT PRONOMEN_POSSESSIV Ring-NOUN_FINGER VERB_WERDEN OBJECT KASUS_DATIV zu ARTIKEL_UNBESTIMMTER Ring-NOUN_TENTAKEL.",
 		 "Dein Ringfinger wird zu einem Ringtentakel."},
-		{"KASUS_AKKUSATIV PRONOMEN_WELCHER Ring-NOUN_FINGER",
+		{"SATZBEGINN KASUS_AKKUSATIV PRONOMEN_WELCHER Ring-NOUN_FINGER",
 		 "Welchen Ringfinger"},
 	};
 

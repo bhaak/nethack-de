@@ -823,6 +823,7 @@ char* german(const char *line) {
 	verb_infinitiv = 0;
 	modifier_corpse = 0;
 	partikel_of_as_mit = 0;
+	beginning_of_sentence = 0;
 
 	int pos=0;
 	char tmp[TBUFSZ];
@@ -1194,6 +1195,10 @@ char* german(const char *line) {
 			if      (strcmp("NUMERUS_SINGULAR", tmp)==0) { c_numerus = n_singular; }
 			else if (strcmp("NUMERUS_PLURAL", tmp)==0)   { c_numerus = n_plural; }
 
+		} else if (strcmp("SATZBEGINN", tmp)==0) {
+			insert_char = 0;
+			beginning_of_sentence = 1;
+
 		} else {
 #ifdef DEBUG
 			printf("Nichts zu holen mit %s\n", tmp);
@@ -1224,9 +1229,11 @@ char* german(const char *line) {
 	/* setze ersten Buchstaben als Grossbuchstaben.
 	 Zwei Fälle: PRONOMEN_PERSONAL VERB_X
 	             Bla bla bla.*/
-	if (isupper(line[0])) {
+	/*
+	if (isupper(line[0]) && beginning_of_sentence) {
 		output[0] = toupper(output[0]);
 	}
+	*/
 
 #ifdef __MINGW32__
 	FILE *file = fopen("nethack-de.log", "a");
