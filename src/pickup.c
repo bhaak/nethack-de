@@ -74,7 +74,7 @@ boolean here;		/* flag for type of obj list linkage */
 	if (!otmp) {
 	    impossible("simple_look(null)");
 	} else if (!(here ? otmp->nexthere : otmp->nobj)) {
-	    pline("%s", doname(otmp));
+	    pline("SUBJECT %s", doname(otmp)); /* EN pline("%s", doname(otmp)); */
 	} else {
 	    winid tmpwin = create_nhwindow(NHW_MENU);
 	    putstr(tmpwin, 0, "");
@@ -230,7 +230,7 @@ ask_again:
 					!strcmp(action,"take out") ?  /* EN !strcmp(action,"take out") ? */ // TODO DE
 							    "Da drinnen" : ""; /* EN "inside" : ""; */
 			    if (*where)
-				pline("%s VERB_SEIN keine %cs.", where, sym); /* EN There("are no %c's %s.", sym, where); */
+				pline("SUBJECT %s VERB_SEIN keine %cs.", where, sym); /* EN There("are no %c's %s.", sym, where); */
 			    else
 				You("VERB_HABEN keine %cs.", sym); /* EN You("have no %c's.", sym); */
 			    not_everything = TRUE;

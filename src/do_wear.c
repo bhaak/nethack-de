@@ -322,9 +322,9 @@ Helmet_on()
 	case DUNCE_CAP:
 		if (!uarmh->cursed) {
 		    if (Blind)
-			pline("%s einen Moment lang.", Tobjnam(uarmh, "VERB_ZITTERN")); /* EN pline("%s for a moment.", Tobjnam(uarmh, "vibrate")); */
+			pline("SUBJECT %s einen Moment lang.", Tobjnam(uarmh, "VERB_ZITTERN")); /* EN pline("%s for a moment.", Tobjnam(uarmh, "vibrate")); */
 		    else
-			pline("%s %s einen Moment lang.", /* EN pline("%s %s for a moment.", */
+			pline("SUBJECT %s %s einen Moment lang.", /* EN pline("%s %s for a moment.", */
 			      Tobjnam(uarmh, "VERB_GLAENZEN"), hcolor(NH_BLACK)); /* EN Tobjnam(uarmh, "glow"), hcolor(NH_BLACK)); */
 		    curse(uarmh);
 		}

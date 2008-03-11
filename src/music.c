@@ -126,7 +126,7 @@ int distance;
 			You("VERB_BEMERKEN OBJECT %s, die sich zur Musik bewegt.", /* EN You("notice %s, swaying with the music.", */
 			    a_monnam(mtmp));
 		    else
-			pline("%s VERB_ERSTARREN, dann VERB_WIEGEN sie sich zur Musik%s.", /* EN pline("%s freezes, then sways with the music%s.", */
+			pline("SUBJECT %s VERB_ERSTARREN, dann VERB_WIEGEN sie sich zur Musik%s.", /* EN pline("%s freezes, then sways with the music%s.", */
 			      Monnam(mtmp),
 			      was_peaceful ? "" : " und VERB_SCHEINEN jetzt ruhiger"); /* EN was_peaceful ? "" : ", and now seems quieter"); */
 		}

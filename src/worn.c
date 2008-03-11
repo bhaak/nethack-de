@@ -200,8 +200,7 @@ struct obj *obj;	/* item to make known if effect can be seen */
 	} else if (adjust > 0 || mon->mspeed == MFAST)
 	    pline("%s is suddenly moving %sfaster.", Monnam(mon), howmuch); /* EN pline("%s is suddenly moving %sfaster.", Monnam(mon), howmuch); */ // TODO DE
 	else
-	    pline("%s seems to be moving %sslower.", Monnam(mon), howmuch);
-/* EN  */ // TODO DE
+	    pline("%s seems to be moving %sslower.", Monnam(mon), howmuch); /* EN pline("%s seems to be moving %sslower.", Monnam(mon), howmuch); */ // TODO DE
 	/* might discover an object if we see the speed change happen, but
 	   avoid making possibly forgotten book known when casting its spell */
 	if (obj != 0 && obj->dknown &&

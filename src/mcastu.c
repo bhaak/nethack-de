@@ -65,7 +65,7 @@ boolean undirected;
 	    else
 		point_msg = "auf PRONOMEN_PERSONAL und VERB_FLUCHEN"; /* EN point_msg = "at you, then curses"; */
 
-	    pline("%s VERB_DEUTEN OBJECT %s.", Monnam(mtmp), point_msg); /* EN pline("%s points %s.", Monnam(mtmp), point_msg); */
+	    pline("SUBJECT %s VERB_DEUTEN OBJECT %s.", Monnam(mtmp), point_msg); /* EN pline("%s points %s.", Monnam(mtmp), point_msg); */
 	} else if ((!(moves % 4) || !rn2(4))) {
 	    if (flags.soundok) Norep("SUBJECT PRONOMEN_PERSONAL VERB_HOEREN einen gemurmelten Fluch."); /* EN if (flags.soundok) Norep("You hear a mumbled curse."); */
 	}

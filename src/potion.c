@@ -1579,7 +1579,7 @@ dodip()
 		if (potion->blessed) {
 			if (obj->cursed) {
 				if (useeit)
-				    pline("%s %s %s.",
+				    pline("SUBJECT %s %s %s.", /* EN pline("%s %s %s.", */
 					  Your_buf,
 					  aobjnam(obj, "softly glow"), /* EN aobjnam(obj, "softly glow"), */ // TODO DE
 					  hcolor(NH_AMBER));
@@ -1606,7 +1606,7 @@ dodip()
 		} else if (potion->cursed) {
 			if (obj->blessed) {
 				if (useeit)
-				    pline("%s %s %s.",
+				    pline("SUBJECT %s %s %s.", /* EN pline("%s %s %s.", */
 					  Your_buf,
 					  aobjnam(obj, "glow"), /* EN aobjnam(obj, "glow"), */ // TODO DE
 					  hcolor((const char *)"ADJEKTIV_FARBE_BRAUN")); /* EN hcolor((const char *)"brown")); */
@@ -2005,7 +2005,7 @@ struct monst *mon,	/* monster being split */
 		mtmp2->mhpmax = mon->mhpmax / 2;
 		mon->mhpmax -= mtmp2->mhpmax;
 		if (canspotmon(mon))
-		    pline("%s VERB_VERMEHREN sich%s!", Monnam(mon), reason); /* EN pline("%s multiplies%s!", Monnam(mon), reason); */
+		    pline("SUBJECT %s VERB_VERMEHREN sich%s!", Monnam(mon), reason); /* EN pline("%s multiplies%s!", Monnam(mon), reason); */
 	    }
 	}
 	return mtmp2;

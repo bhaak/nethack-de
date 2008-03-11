@@ -1430,10 +1430,10 @@ no_unwear:
 			    !costly_spot(u.ux, u.uy))
 			make_angry_shk(shkp, ox, oy);
 		    else {
-			pline("MODIFIER_PSEUDO_SUBJECT %s VERB_WERDEN wütend!", Monnam(shkp)); /* EN pline("%s gets angry!", Monnam(shkp)); */
+			pline("SATZBEGINN MODIFIER_PSEUDO_SUBJECT %s VERB_WERDEN wütend!", Monnam(shkp)); /* EN pline("%s gets angry!", Monnam(shkp)); */
 			hot_pursuit(shkp);
 		    }
-		} else Norep("MODIFIER_PSEUDO_SUBJECT %s VERB_SEIN rasend!", Monnam(shkp)); /* EN } else Norep("%s is furious!", Monnam(shkp)); */
+		} else Norep("SATZBEGINN MODIFIER_PSEUDO_SUBJECT %s VERB_SEIN rasend!", Monnam(shkp)); /* EN } else Norep("%s is furious!", Monnam(shkp)); */
 	    }
 	}
 	delobj(obj);
@@ -1477,7 +1477,7 @@ struct obj *obj, *otmp;
 			return 0;
 		else {
 #ifdef DEBUG
-			pline("%s for a moment.", Tobjnam(obj, "pulsate")); /* EN pline("%s for a moment.", Tobjnam(obj, "pulsate")); */
+			pline("%s for a moment.", Tobjnam(obj, "pulsate")); /* EN pline("%s for a moment.", Tobjnam(obj, "pulsate")); */ // TODO DE
 #endif
 			obj->bypass = 0;
 		}
@@ -1530,7 +1530,7 @@ struct obj *obj, *otmp;
 		obj->dknown = 1;
 		if (Is_container(obj) || obj->otyp == STATUE) {
 		    if (!obj->cobj)
-			pline("%s leer.", Tobjnam(obj, "VERB_SEIN")); /* EN pline("%s empty.", Tobjnam(obj, "are")); */
+			pline("SUBJECT %s leer.", Tobjnam(obj, "VERB_SEIN")); /* EN pline("%s empty.", Tobjnam(obj, "are")); */
 		    else {
 			struct obj *o;
 			/* view contents (not recursively) */
@@ -1856,7 +1856,7 @@ dozap()
 		current_wand = 0;
 	}
 	if (obj && obj->spe < 0) {
-	    pline("%s zu Staub.", Tobjnam(obj, "VERB_ZERFALLEN")); /* EN pline("%s to dust.", Tobjnam(obj, "turn")); */
+	    pline("SUBJECT %s zu Staub.", Tobjnam(obj, "VERB_ZERFALLEN")); /* EN pline("%s to dust.", Tobjnam(obj, "turn")); */
 	    useup(obj);
 	}
 	update_inventory();	/* maybe used a charge */

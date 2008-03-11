@@ -657,7 +657,7 @@ register struct monst *mon;
 			} else {
 			    pline("%s tries to wield %s.", Monnam(mon), /* EN pline("%s tries to wield %s.", Monnam(mon), */ // TODO DE
 				doname(obj));
-			    pline("%s %s %s!",
+			    pline("%s %s %s!", /* EN pline("%s %s %s!", */ // TODO DE
 				  s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
 				  xname(mw_tmp), welded_buf);
 			}

@@ -75,7 +75,7 @@ use_saddle(otmp)
 	/* Is this a valid monster? */
 	if (mtmp->misc_worn_check & W_SADDLE ||
 			which_armor(mtmp, W_SADDLE)) {
-	    pline("%s VERB_BRAUCHEN nicht noch einen.", Monnam(mtmp)); /* EN pline("%s doesn't need another one.", Monnam(mtmp)); */
+	    pline("SUBJECT %s VERB_BRAUCHEN nicht noch einen.", Monnam(mtmp)); /* EN pline("%s doesn't need another one.", Monnam(mtmp)); */
 	    return 1;
 	}
 	ptr = mtmp->data;

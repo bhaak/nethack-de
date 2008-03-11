@@ -1416,7 +1416,7 @@ invocation_message()
 
 	    You_feel("eine seltsame Vibration OBJECT KASUS_DATIV %s.", buf); /* EN You_feel("a strange vibration %s.", buf); */
 	    if (otmp && otmp->spe == 7 && otmp->lamplit)
-		pline("%s %s!", The(xname(otmp)),
+		pline("SUBJECT %s %s!", The(xname(otmp)), /* EN pline("%s %s!", The(xname(otmp)), */
 		    Blind ? "throbs palpably" : "glows with a strange light"); /* EN Blind ? "throbs palpably" : "glows with a strange light"); */ // TODO DE
 	}
 }

@@ -397,7 +397,7 @@ register struct monst *mtmp;
 	    break;
     }
     if (whimper_verb) {
-	pline("%s %s.", Monnam(mtmp), vtense((char *)0, whimper_verb));
+	pline("SUBJECT %s %s.", Monnam(mtmp), vtense((char *)0, whimper_verb)); /* EN pline("%s %s.", Monnam(mtmp), vtense((char *)0, whimper_verb)); */
 	if(flags.run) nomul(0);
 	wake_nearto(mtmp->mx, mtmp->my, mtmp->data->mlevel * 6);
     }

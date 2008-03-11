@@ -679,7 +679,7 @@ struct entity *etmp;
 				else
 					pline_The("drawbridge closes in..."); /* EN pline_The("drawbridge closes in..."); */ // TODO DE
 			} else
-				pline("%s OBJECT KASUS_DATIV hinter ARTIKEL_UNBESTIMMTER NOUN_DRAWBRIDGE.", /* EN pline("%s behind the drawbridge.", */
+				pline("SUBJECT %s OBJECT KASUS_DATIV hinter ARTIKEL_UNBESTIMMTER NOUN_DRAWBRIDGE.", /* EN pline("%s behind the drawbridge.", */
 				      E_phrase(etmp, "VERB_VERSCHWINDEN")); /* EN E_phrase(etmp, "disappear")); */
 		}
 		if (!e_survives_at(etmp, etmp->ex, etmp->ey)) {

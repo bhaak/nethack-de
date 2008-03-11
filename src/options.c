@@ -712,9 +712,9 @@ rejectoption(optname)
 const char *optname;
 {
 #ifdef MICRO
-	pline("\"%s\" settable only from %s.", optname, configfile);
+	pline("\"%s\" settable only from %s.", optname, configfile); /* EN pline("\"%s\" settable only from %s.", optname, configfile); */ // TODO DE
 #else
-	pline("%s can be set only from NETHACKOPTIONS or %s.", optname,
+	pline("%s can be set only from NETHACKOPTIONS or %s.", optname, /* EN pline("%s can be set only from NETHACKOPTIONS or %s.", optname, */ // TODO DE
 			configfile);
 #endif
 }
@@ -727,7 +727,7 @@ const char *opts;
 	    if (!strncmp(opts, "h", 1) || !strncmp(opts, "?", 1))
 		option_help();
 	    else
-		pline("Bad syntax: %s.  Enter \"?g\" for help.", opts);
+		pline("Bad syntax: %s.  Enter \"?g\" for help.", opts); /* EN pline("Bad syntax: %s.  Enter \"?g\" for help.", opts); */ // TODO DE
 	    return;
 	}
 #ifdef MAC
@@ -735,9 +735,9 @@ const char *opts;
 #endif
 
 	if(from_file)
-	    raw_printf("Bad syntax in OPTIONS in %s: %s.", configfile, opts);
+	    raw_printf("Bad syntax in OPTIONS in %s: %s.", configfile, opts); /* EN raw_printf("Bad syntax in OPTIONS in %s: %s.", configfile, opts); */ // TODO DE
 	else
-	    raw_printf("Bad syntax in NETHACKOPTIONS: %s.", opts);
+	    raw_printf("Bad syntax in NETHACKOPTIONS: %s.", opts); /* EN raw_printf("Bad syntax in NETHACKOPTIONS: %s.", opts); */ // TODO DE
 
 	wait_synch();
 }
@@ -778,9 +778,9 @@ bad_negation(optname, with_parameter)
 const char *optname;
 boolean with_parameter;
 {
-	pline_The("%s option may not %sbe negated.",
+	pline_The("%s option may not %sbe negated.", /* EN pline_The("%s option may not %sbe negated.", */ // TODO DE
 		optname,
-		with_parameter ? "both have a value and " : "");
+		with_parameter ? "both have a value and " : ""); /* EN with_parameter ? "both have a value and " : ""); */ // TODO DE
 }
 
 /*
@@ -896,10 +896,10 @@ const char *optn;
 		flags.suppress_alert = fnv;
 	if (rejectver) {
 		if (!initial)
-			You_cant("disable new feature alerts for future versions.");
+			You_cant("disable new feature alerts for future versions."); /* EN You_cant("disable new feature alerts for future versions."); */ // TODO DE
 		else {
 			Sprintf(buf,
-				"\n%s=%s Invalid reference to a future version ignored",
+				"\n%s=%s Invalid reference to a future version ignored", /* EN "\n%s=%s Invalid reference to a future version ignored", */ // TODO DE
 				optn, op);
 			badoption(buf);
 		}
@@ -908,7 +908,7 @@ const char *optn;
 	if (!initial) {
 		Sprintf(buf, "%lu.%lu.%lu", FEATURE_NOTICE_VER_MAJ,
 			FEATURE_NOTICE_VER_MIN, FEATURE_NOTICE_VER_PATCH);
-		pline("Feature change alerts disabled for NetHack %s features and prior.",
+		pline("Feature change alerts disabled for NetHack %s features and prior.", /* EN pline("Feature change alerts disabled for NetHack %s features and prior.", */ // TODO DE
 			buf);
 	}
 	return 1;
@@ -962,7 +962,7 @@ int bool_or_comp;	/* 0 == boolean option, 1 == compound */
 			optptr = iflags.opt_booldup + i;
 			if (*optptr == 1) {
 			    raw_printf(
-				"\nWarning - Boolean option specified multiple times: %s.\n",
+				"\nWarning - Boolean option specified multiple times: %s.\n", /* EN "\nWarning - Boolean option specified multiple times: %s.\n", */ // TODO DE
 					opts);
 			        wait_synch();
 			}
@@ -976,7 +976,7 @@ int bool_or_comp;	/* 0 == boolean option, 1 == compound */
 			optptr = iflags.opt_compdup + i;
 			if (*optptr == 1) {
 			    raw_printf(
-				"\nWarning - compound option specified multiple times: %s.\n",
+				"\nWarning - compound option specified multiple times: %s.\n", /* EN "\nWarning - compound option specified multiple times: %s.\n", */ // TODO DE
 					compopt[i].name);
 			        wait_synch();
 			}
@@ -994,6 +994,7 @@ static const struct {
    const char *name;
    const int color;
 } colornames[] = {
+// TODO DE ?
    {"black", CLR_BLACK},
    {"red", CLR_RED},
    {"green", CLR_GREEN},
@@ -1015,6 +1016,7 @@ static const struct {
    const char *name;
    const int attr;
 } attrnames[] = {
+// TODO DE ?
      {"none", ATR_NONE},
      {"bold", ATR_BOLD},
      {"dim", ATR_DIM},
@@ -1087,7 +1089,7 @@ char *str;
    (void) memcpy((genericptr_t)tmp->match, (genericptr_t)tmps, strlen(tmps)+1);
 #endif
    if (err) {
-      raw_printf("\nMenucolor regex error: %s\n", err);
+      raw_printf("\nMenucolor regex error: %s\n", err); /* EN raw_printf("\nMenucolor regex error: %s\n", err); */ // TODO DE
       wait_synch();
       free(tmp);
       return FALSE;

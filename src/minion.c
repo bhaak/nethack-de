@@ -193,7 +193,7 @@ register struct monst *mtmp;
 		pline("%s scowls at you menacingly, then vanishes.", /* EN pline("%s scowls at you menacingly, then vanishes.", */ // TODO DE
 		      Amonnam(mtmp));
 	    } else {
-		pline("%s VERB_WERDEN wütend ...", Amonnam(mtmp)); /* EN pline("%s gets angry...", Amonnam(mtmp)); */
+		pline("SUBJECT %s VERB_WERDEN wütend ...", Amonnam(mtmp)); /* EN pline("%s gets angry...", Amonnam(mtmp)); */
 		mtmp->mpeaceful = 0;
 		set_malign(mtmp);
 		return 0;

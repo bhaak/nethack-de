@@ -254,7 +254,7 @@ register struct obj *gold;
 
 		/* greedy monsters catch gold */
 		if (cansee(mtmp->mx, mtmp->my))
-		    pline("%s VERB_FANGEN das Gold.", Monnam(mtmp)); /* EN pline("%s catches the gold.", Monnam(mtmp)); */
+		    pline("SUBJECT %s VERB_FANGEN das Gold.", Monnam(mtmp)); /* EN pline("%s catches the gold.", Monnam(mtmp)); */
 #ifndef GOLDOBJ
 		mtmp->mgold += gold->quan;
 #endif
@@ -479,7 +479,7 @@ xchar x, y;
 	    if (Blind)
 		pline("Es löst sich."); /* EN pline("It comes loose."); */
 	    else
-		pline("%s %s sich.", /* EN pline("%s %s loose.", */
+		pline("SUBJECT %s %s sich.", /* EN pline("%s %s loose.", */
 		      The(distant_name(kickobj, xname)),
 		      otense(kickobj, "VERB_LOESEN")); /* EN otense(kickobj, "come")); */
 	    obj_extract_self(kickobj);
@@ -1444,7 +1444,7 @@ long num;
 	    else
 		Sprintf(eos(obuf), " and %s %s.", /* EN Sprintf(eos(obuf), " and %s %s.", */ // TODO DE
 			otense(otmp, "VERB_FALLEN"), gate_str); /* EN otense(otmp, "fall"), gate_str); */
-	    pline("%s", obuf);
+	    pline("SUBJECT %s", obuf); /* EN pline("%s", obuf); */
 	} else if(!nodrop)
 	    pline("SUBJECT %s %s %s.", obuf, otense(otmp, "VERB_FALLEN"), gate_str); /* EN pline("%s %s %s.", obuf, otense(otmp, "fall"), gate_str); */
 }

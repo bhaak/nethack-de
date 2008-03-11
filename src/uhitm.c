@@ -1008,7 +1008,7 @@ int thrown;
 		   && mon->mhp > 1 && !thrown && !mon->mcan
 		   /* && !destroyed  -- guaranteed by mhp > 1 */ ) {
 		if (clone_mon(mon)) {
-			pline("%s teilt sich, als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL es VERB_HIT!", Monnam(mon)); /* EN pline("%s divides as you hit it!", Monnam(mon)); */
+			pline("SUBJECT %s teilt sich, als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL es VERB_HIT!", Monnam(mon)); /* EN pline("%s divides as you hit it!", Monnam(mon)); */
 			hittxt = TRUE;
 		}
 	}
@@ -1991,11 +1991,11 @@ use_weapon:
 
 			    if (!u.uswallow &&
 				(compat=could_seduce(&youmonst, mon, mattk))) {
-				You("%s %s %s.",
+				You("%s %s %s SATZKLAMMER.", /* EN You("%s %s %s.", */
 				    mon->mcansee && haseyes(mon->data)
-				    ? "smile at" : "talk to", /* EN ? "smile at" : "talk to", */ // TODO DE
+				    ? "VERB_ANLAECHELN OBJECT" : "VERB_SPRECHEN OBJECT KASUS_DATIV mit", /* EN ? "smile at" : "talk to", */
 				    mon_nam(mon),
-				    compat == 2 ? "engagingly":"seductively"); /* EN compat == 2 ? "engagingly":"seductively"); */ // TODO DE
+				    compat == 2 ? "einnehmend":"verführerisch"); /* EN compat == 2 ? "engagingly":"seductively"); */
 				/* doesn't anger it; no wakeup() */
 				sum[i] = damageum(mon, mattk);
 				break;
@@ -2476,7 +2476,7 @@ struct obj *otmp;	/* source of flash */
 		    /* Rule #1: Keep them out of the light. */
 		    amt = otmp->otyp == WAN_LIGHT ? d(1 + otmp->spe, 4) :
 		          rn2(min(mtmp->mhp,4));
-		    pline("%s %s!", Monnam(mtmp), amt > mtmp->mhp / 2 ?
+		    pline("SUBJECT %s %s!", Monnam(mtmp), amt > mtmp->mhp / 2 ?  /* EN pline("%s %s!", Monnam(mtmp), amt > mtmp->mhp / 2 ? */
 			  "wails in agony" : "cries out in pain"); /* EN "wails in agony" : "cries out in pain"); */ // TODO DE
 		    if ((mtmp->mhp -= amt) <= 0) {
 			if (flags.mon_moving)

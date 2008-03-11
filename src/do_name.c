@@ -276,7 +276,7 @@ do_mname()
 	(void)mungspaces(buf);
 
 	if (mtmp->data->geno & G_UNIQ)
-		pline("%s mag keine Spitznamen!", Monnam(mtmp)); /* EN pline("%s doesn't like being called names!", Monnam(mtmp));*/
+		pline("SUBJECT %s mag keine Spitznamen!", Monnam(mtmp)); /* EN pline("%s doesn't like being called names!", Monnam(mtmp));*/
 	else
 	    (void) christen_monst(mtmp, buf);
 	return(0);

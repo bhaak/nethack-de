@@ -860,7 +860,7 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 	if ((obj->cursed || obj->greased) && (u.dx || u.dy) && !rn2(7)) {
 	    boolean slipok = TRUE;
 	    if (ammo_and_launcher(obj, uwep))
-		pline("%s fehl!", Tobjnam(obj, "VERB_GEHEN")); /* EN pline("%s!", Tobjnam(obj, "misfire")); */
+		pline("SUBJECT %s fehl!", Tobjnam(obj, "VERB_GEHEN")); /* EN pline("%s!", Tobjnam(obj, "misfire")); */
 	    else {
 		/* only slip if it's greased or meant to be thrown */
 		if (obj->greased || throwing_weapon(obj))
@@ -1228,7 +1228,7 @@ register struct obj   *obj;
 
 	if (obj->oclass == GEM_CLASS && is_unicorn(mon->data)) {
 	    if (mon->mtame) {
-		pline("%s VERB_FANGEN und VERB_DROP %s SATZKLAMMER.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches and drops %s.", Monnam(mon), the(xname(obj))); */
+		pline("SUBJECT %s VERB_FANGEN und VERB_DROP %s SATZKLAMMER.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches and drops %s.", Monnam(mon), the(xname(obj))); */
 		return 0;
 	    } else {
 		pline("SUBJECT %s VERB_FANGEN OBJECT %s.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches %s.", Monnam(mon), the(xname(obj))); */
@@ -1244,7 +1244,7 @@ register struct obj   *obj;
 	    mon->mstrategy &= ~STRAT_WAITMASK;
 
 	    if (mon->mcanmove) {
-		pline("%s VERB_FANGEN OBJECT %s.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches %s.", Monnam(mon), the(xname(obj))); */
+		pline("SUBJECT %s VERB_FANGEN OBJECT %s.", Monnam(mon), the(xname(obj))); /* EN pline("%s catches %s.", Monnam(mon), the(xname(obj))); */
 		if (mon->mpeaceful) {
 		    boolean next2u = monnear(mon, u.ux, u.uy);
 
@@ -1468,7 +1468,7 @@ register struct obj *obj;
 	ret = 1;
 
 nopick:
-	if(!Blind) pline("%s", buf);
+	if(!Blind) pline("SUBJECT %s", buf); /* EN if(!Blind) pline("%s", buf); */
 	if (!tele_restrict(mon)) rloc(mon);
 	return(ret);
 }
@@ -1661,7 +1661,7 @@ boolean in_view;
 			if (!in_view)
 			    You_hear("%s zerbrechen!", something); /* EN You_hear("%s shatter!", something); */
 			else
-			    pline("%s %s!", Doname2(obj), to_pieces); /* EN pline("%s shatter%s%s!", Doname2(obj), */
+			    pline("SUBJECT %s %s!", Doname2(obj), to_pieces); /* EN pline("%s shatter%s%s!", Doname2(obj), */
 				//(obj->quan==1) ? "s" : "", to_pieces);
 			break;
 		case EGG:

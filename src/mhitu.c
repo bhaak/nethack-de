@@ -53,7 +53,7 @@ register struct attack *mattk;
 	/* If same gender, "engagingly" for nymph, normal msg for others */
 	if((compat = could_seduce(mtmp, &youmonst, mattk))
 			&& !mtmp->mcan && !mtmp->mspec_used) {
-		pline("%s %s %s %s.", Monnam(mtmp), /* EN pline("%s %s you %s.", Monnam(mtmp), */
+		pline("SUBJECT %s %s %s %s.", Monnam(mtmp), /* EN pline("%s %s you %s.", Monnam(mtmp), */
 			Blind ? "VERB_SPRECHEN" : "VERB_LAECHELN OBJECT PRONOMEN_PERSONAL", /* EN Blind ? "talks to" : "smiles at", */
 			compat == 2 ? "einnehmend" : "verführerisch", /* EN compat == 2 ? "engagingly" : "seductively"); */
 			Blind ? "mit OBJECT PRONOMEN_PERSONAL" : "an");
@@ -81,7 +81,7 @@ register struct attack *mattk;
 			break;
 		case AT_EXPL:
 		case AT_BOOM:
-			pline("%s VERB_EXPLODIEREN!", Monnam(mtmp)); /* EN pline("%s explodes!", Monnam(mtmp)); */
+			pline("SUBJECT %s VERB_EXPLODIEREN!", Monnam(mtmp)); /* EN pline("%s explodes!", Monnam(mtmp)); */
 			break;
 		default:
 			pline("SUBJECT %s VERB_HIT!", Monnam(mtmp)); /* EN pline("%s hits!", Monnam(mtmp)); */
@@ -115,7 +115,7 @@ register struct obj *otemp;
 {
 	if (!flags.verbose || Blind || !mon_visible(mtmp))
 		return;
-	pline("%s %s mit KASUS_DATIV PRONOMEN_POSSESSIV_SUBJECT %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s %s %s %s.", Monnam(mtmp), */
+	pline("SUBJECT %s %s mit KASUS_DATIV PRONOMEN_POSSESSIV_SUBJECT %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s %s %s %s.", Monnam(mtmp), */
 	      (objects[otemp->otyp].oc_dir & PIERCE) ?  "VERB_ZUSTECHEN" : "VERB_ZUSCHLAGEN", /* EN (objects[otemp->otyp].oc_dir & PIERCE) ? "thrusts" : "swings", */
 	      singular(otemp, xname)); /* EN mhis(mtmp), singular(otemp, xname)); */
 }
@@ -198,7 +198,7 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 	    if (compat)
 		pline("%s smiles %s at your %sdisplaced image...", /* EN pline("%s smiles %s at your %sdisplaced image...", */ // TODO DE
 			Monnam(mtmp),
-			compat == 2 ? "engagingly" : "seductively", /* EN compat == 2 ? "engagingly" : "seductively", */ // TODO DE
+			compat == 2 ? "einnehmend" : "verführerisch", /* EN compat == 2 ? "engagingly" : "seductively", */
 			Invis ? "invisible " : ""); /* EN Invis ? "invisible " : ""); */ // TODO DE
 	    else
 		pline("%s strikes at your %sdisplaced image and misses you!", /* EN pline("%s strikes at your %sdisplaced image and misses you!", */ // TODO DE
@@ -1254,7 +1254,7 @@ dopois:
 			|| dmgtype(youmonst.data, AD_SSEX)
 #endif
 						) {
-			pline("%s %s.", Monnam(mtmp), mtmp->minvent ?
+			pline("SUBJECT %s %s.", Monnam(mtmp), mtmp->minvent ?  /* EN pline("%s %s.", Monnam(mtmp), mtmp->minvent ? */
 		    "brags about the goods some dungeon explorer provided" : /* EN "brags about the goods some dungeon explorer provided" : */ // TODO DE
 		    "makes some remarks about how difficult theft is lately"); /* EN "makes some remarks about how difficult theft is lately"); */ // TODO DE
 			if (!tele_restrict(mtmp)) rloc(mtmp);
@@ -2323,7 +2323,7 @@ register struct monst *mon;
 
 	if (mon->mtame) /* don't charge */ ;
 	else if (rn2(20) < ACURR(A_CHA)) {
-		pline("%s verlangt Bezahlung, aber NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_WEIGERN OBJECT PRONOMEN_PERSONAL ...", /* EN pline("%s demands that you pay %s, but you refuse...", */
+		pline("SUBJECT %s verlangt Bezahlung, aber NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_WEIGERN OBJECT PRONOMEN_PERSONAL ...", /* EN pline("%s demands that you pay %s, but you refuse...", */
 					noit_Monnam(mon));
 					//Blind ? (fem ? "her" : "him") : mhim(mon)); /* EN Blind ? (fem ? "her" : "him") : mhim(mon)); */
 	} else if (u.umonnum == PM_LEPRECHAUN)
@@ -2365,7 +2365,7 @@ register struct monst *mon;
 		if (cost > umoney) cost = umoney;
 		if (!cost) verbalize("Das geht aufs Haus!"); /* EN if (!cost) verbalize("It's on the house!"); */
 		else { 
-		    pline("%s VERB_NEHMEN %ld %s für geleistete Dienste!", /* EN pline("%s takes %ld %s for services rendered!", */
+		    pline("SUBJECT %s VERB_NEHMEN %ld %s für geleistete Dienste!", /* EN pline("%s takes %ld %s for services rendered!", */
 			    noit_Monnam(mon), cost, currency(cost));
                     money2mon(mon, cost);
 		    flags.botl = 1;
@@ -2527,7 +2527,7 @@ register struct attack *mattk;
 		    tmp = 0;
 		    break;
 		}
-		pline("OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr kalt!", Monnam(mtmp)); /* EN pline("%s is suddenly very cold!", Monnam(mtmp)); */
+		pline("SATZBEGINN OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr kalt!", Monnam(mtmp)); /* EN pline("%s is suddenly very cold!", Monnam(mtmp)); */
 		u.mh += tmp / 2;
 		if (u.mhmax < u.mh) u.mhmax = u.mh;
 		if (u.mhmax > ((youmonst.data->mlevel+1) * 8))
@@ -2549,7 +2549,7 @@ register struct attack *mattk;
 		    tmp = 0;
 		    break;
 		}
-		pline("OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr heiß!", Monnam(mtmp)); /* EN pline("%s is suddenly very hot!", Monnam(mtmp)); */
+		pline("SATZBEGINN OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr heiß!", Monnam(mtmp)); /* EN pline("%s is suddenly very hot!", Monnam(mtmp)); */
 		break;
 	    case AD_ELEC:
 		if (resists_elec(mtmp)) {

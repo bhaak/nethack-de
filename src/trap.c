@@ -2647,14 +2647,14 @@ xchar x, y;
 	    }
 	    dindx = (obj->oclass == SCROLL_CLASS) ? 2 : 3;
 	    if (in_sight)
-		pline("%s %s.", Yname2(obj), (obj->quan > 1) ?
+		pline("SUBJECT %s %s.", Yname2(obj), (obj->quan > 1) ?  /* EN pline("%s %s.", Yname2(obj), (obj->quan > 1) ? */
 		      destroy_strings[dindx*3 + 1] : destroy_strings[dindx*3]);
 	    delobj(obj);
 	    retval++;
 	} else if (obj->oclass == POTION_CLASS) {
 	    dindx = 1;
 	    if (in_sight)
-		pline("%s %s.", Yname2(obj), (obj->quan > 1) ?
+		pline("SUBJECT %s %s.", Yname2(obj), (obj->quan > 1) ?  /* EN pline("%s %s.", Yname2(obj), (obj->quan > 1) ? */
 		      destroy_strings[dindx*3 + 1] : destroy_strings[dindx*3]);
 	    delobj(obj);
 	    retval++;

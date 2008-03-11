@@ -194,7 +194,7 @@ struct obj *wep;
 
 		if ((this_shkp = shop_keeper(inside_shop(u.ux, u.uy))) !=
 		    (struct monst *)0) {
-		    pline("%s sagt \"MODIFIER_VERB_IMPERATIV VERB_SEIN bitte vorsichtig OBJECT KASUS_DATIV mit PRONOMEN_MEIN %s!\"", /* EN pline("%s says \"You be careful with my %s!\"", */
+		    pline("SUBJECT %s sagt \"MODIFIER_VERB_IMPERATIV VERB_SEIN bitte vorsichtig OBJECT KASUS_DATIV mit PRONOMEN_MEIN %s!\"", /* EN pline("%s says \"You be careful with my %s!\"", */
 			  shkname(this_shkp),
 			  xname(wep));
 		}
@@ -483,7 +483,7 @@ can_twoweapon()
 			body_part(HAND), (!uwep && !uswapwep) ? "s are" : " is"); /* EN body_part(HAND), (!uwep && !uswapwep) ? "s are" : " is"); */ // TODO DE
 	else if (NOT_WEAPON(uwep) || NOT_WEAPON(uswapwep)) {
 		otmp = NOT_WEAPON(uwep) ? uwep : uswapwep;
-		pline("%s %s.", Yname2(otmp),
+		pline("%s %s.", Yname2(otmp), /* EN pline("%s %s.", Yname2(otmp), */ // TODO DE
 		    is_plural(otmp) ? "aren't weapons" : "isn't a weapon"); /* EN is_plural(otmp) ? "aren't weapons" : "isn't a weapon"); */ // TODO DE
 	} else if (bimanual(uwep) || bimanual(uswapwep)) {
 		otmp = bimanual(uwep) ? uwep : uswapwep;
@@ -627,7 +627,7 @@ boolean fade_scrolls;
 		    if (victim == &youmonst)
 			Your("%s.", aobjnam(target, "VERB_FADE")); /* EN Your("%s.", aobjnam(target, "fade")); */
 		    else if (vismon)
-			pline("%s's %s.", Monnam(victim),
+			pline("%s's %s.", Monnam(victim), /* EN pline("%s's %s.", Monnam(victim), */ // TODO DE
 			      aobjnam(target, "VERB_FADE")); /* EN aobjnam(target, "fade")); */
 		    else if (visobj)
 			pline_The("%s.", aobjnam(target, "VERB_FADE")); /* EN pline_The("%s.", aobjnam(target, "fade")); */

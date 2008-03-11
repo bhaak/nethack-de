@@ -554,7 +554,7 @@ register char *enterstring;
 	    return;	/* no dialog */
 
 	if (Invis) {
-	    pline("%s VERB_SPUEREN OBJECT PRONOMEN_POSSESSIV NOUN_GEGENWART.", shkname(shkp)); /* EN pline("%s senses your presence.", shkname(shkp)); */
+	    pline("SUBJECT %s VERB_SPUEREN OBJECT PRONOMEN_POSSESSIV NOUN_GEGENWART.", shkname(shkp)); /* EN pline("%s senses your presence.", shkname(shkp)); */
 	    verbalize("Unsichtbare Kunden sind nicht willkommen!"); /* EN verbalize("Invisible customers are not welcome!"); */
 	    return;
 	}
@@ -1007,7 +1007,7 @@ register boolean silentkops;
 		if (vanished)
 		    pline("Satisfied, %s suddenly disappears!", shk_nam); /* EN pline("Satisfied, %s suddenly disappears!", shk_nam); */ // TODO DE
 	} else if(wasmad)
-		pline("%s beruhigt sich wieder.", Monnam(shkp)); /* EN pline("%s calms down.", Monnam(shkp)); */
+		pline("SUBJECT %s beruhigt sich wieder.", Monnam(shkp)); /* EN pline("%s calms down.", Monnam(shkp)); */
 
 	if(!angry_shk_exists()) {
 #ifdef KOPS
@@ -1203,7 +1203,7 @@ proceed:
 	    rouse_shk(shkp, TRUE);
 
 	if (!shkp->mcanmove) {	    /* still asleep or paralyzed */
-		pline("%s %s.", Monnam(shkp),
+		pline("SUBJECT %s %s.", Monnam(shkp), /* EN pline("%s %s.", Monnam(shkp), */
 		      rn2(2) ? "macht anscheinend ein Nickerchen" : "reagiert nicht"); /* EN rn2(2) ? "seems to be napping" : "doesn't respond"); */
 		return 0;
 	}
@@ -1269,7 +1269,7 @@ proceed:
 #endif
 			pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
 		} else if(ltmp) {
-		    pline("%s will Blut sehen, kein Geld!", Monnam(shkp)); /* EN pline("%s is after blood, not money!", Monnam(shkp)); */
+		    pline("SUBJECT %s will Blut sehen, kein Geld!", Monnam(shkp)); /* EN pline("%s is after blood, not money!", Monnam(shkp)); */
 #ifndef GOLDOBJ
 		    if(u.ugold < ltmp/2L ||
 				(u.ugold < ltmp && stashed_gold)) {
@@ -1670,7 +1670,7 @@ int croaked;
 	    !eshkp->billct && !eshkp->robbed && !eshkp->debit &&
 	     NOTANGRY(shkp) && !eshkp->following) {
 		if (invent)
-			pline("%s VERB_NEHMEN dankbar KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_HABE an sich.", /* EN pline("%s gratefully inherits all your possessions.", */
+			pline("SUBJECT %s VERB_NEHMEN dankbar KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_HABE an sich.", /* EN pline("%s gratefully inherits all your possessions.", */
 				shkname(shkp));
 		set_repo_loc(eshkp);
 		goto clear;
@@ -2262,7 +2262,7 @@ speak:
 	    char buf[BUFSZ];
 
 	    if(!ltmp) {
-		pline("%s hat kein Interesse an KASUS_DATIV %s.", Monnam(shkp), /* EN pline("%s has no interest in %s.", Monnam(shkp), */
+		pline("SUBJECT %s hat kein Interesse an KASUS_DATIV %s.", Monnam(shkp), /* EN pline("%s has no interest in %s.", Monnam(shkp), */
 					     the(xname(obj)));
 		return;
 	    }
@@ -2285,7 +2285,7 @@ speak:
 			(quan > 1L) ? "per" : "for this", xname(obj));
 		obj->quan = quan;
 	    } else
-		pline("%s will cost you %ld %s%s.", /* EN pline("%s will cost you %ld %s%s.", */
+		pline("SUBJECT %s will cost you %ld %s%s.", /* EN pline("%s will cost you %ld %s%s.", */
 			The(xname(obj)), ltmp, currency(ltmp),
 			(obj->quan > 1L) ? " das Stück" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */
 	} else if(!silent) {
@@ -3674,7 +3674,7 @@ register struct obj *first_obj;
 	display_nhwindow(tmpwin, TRUE);
     } else if (cnt == 1) {
 	if (first_obj->no_charge || first_obj == uball || first_obj == uchain){
-	    pline("%s!", buf);	/* buf still contains the string */
+	    pline("SUBJECT %s!", buf);	/* buf still contains the string */
 	} else {
 	    /* print cost in slightly different format, so can't reuse buf */
 	    cost = get_cost(first_obj, (struct monst *)0);
@@ -3798,7 +3798,7 @@ struct monst *shkp;
 	else if (strcmp(shkname(shkp), "NOUN_PSEUDO_MAENNLICH Izchak") == 0) /* EN else if (strcmp(shkname(shkp), "Izchak") == 0) */
 		pline(Izchak_speaks[rn2(SIZE(Izchak_speaks))],shkname(shkp));
 	else
-		pline("%s spricht über das Problem der hohen Kriminalitätsrate.",shkname(shkp)); /* EN pline("%s talks about the problem of shoplifters.",shkname(shkp)); */
+		pline("SUBJECT %s spricht über das Problem der hohen Kriminalitätsrate.",shkname(shkp)); /* EN pline("%s talks about the problem of shoplifters.",shkname(shkp)); */
 }
 
 #ifdef KOPS

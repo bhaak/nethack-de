@@ -68,7 +68,7 @@ register struct monst *mon;
 	}
 
 	if(canseemon(mon) && !Hallucination)
-	    pline("%s VERB_VERWANDELN sich in OBJECT ARTIKEL_UNBESTIMMTER NOUN_%s.", Monnam(mon), /* EN pline("%s changes into a %s.", Monnam(mon), */
+	    pline("SUBJECT %s VERB_VERWANDELN sich in OBJECT ARTIKEL_UNBESTIMMTER NOUN_%s.", Monnam(mon), /* EN pline("%s changes into a %s.", Monnam(mon), */
 			is_human(&mons[pm]) ? "MENSCH" : /* EN is_human(&mons[pm]) ? "human" : */
 			mons[pm].mname+9); /* EN mons[pm].mname+4); */
 

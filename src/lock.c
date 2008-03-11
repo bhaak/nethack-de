@@ -919,7 +919,7 @@ struct obj *otmp;
 	default:	disposition = "is destroyed"; /* EN default:	disposition = "is destroyed"; */ // TODO DE
 		break;
 	}
-	pline("%s %s!", An(thing), disposition);
+	pline("SUBJECT %s %s!", An(thing), disposition); /* EN pline("%s %s!", An(thing), disposition); */
 }
 
 #endif /* OVLB */

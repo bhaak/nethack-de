@@ -739,10 +739,10 @@ dodown()
 
 #ifdef STEED
 	if (u.usteed && !u.usteed->mcanmove) {
-		pline("%s macht keinen Wank!", Monnam(u.usteed)); /* EN pline("%s won't move!", Monnam(u.usteed)); */
+		pline("SUBJECT %s macht keinen Wank!", Monnam(u.usteed)); /* EN pline("%s won't move!", Monnam(u.usteed)); */
 		return(0);
 	} else if (u.usteed && u.usteed->meating) {
-		pline("%s VERB_ESSEN immer noch.", Monnam(u.usteed)); /* EN pline("%s is still eating.", Monnam(u.usteed)); */
+		pline("SUBJECT %s VERB_ESSEN immer noch.", Monnam(u.usteed)); /* EN pline("%s is still eating.", Monnam(u.usteed)); */
 		return(0);
 	} else
 #endif
@@ -765,8 +765,8 @@ dodown()
 		if (float_down(I_SPECIAL|TIMEOUT, W_ARTI))
 		    return (1);   /* came down, so moved */
 	    }
-	    floating_above(stairs_down ? "stairs" : ladder_down ?  /* EN floating_above(stairs_down ? "stairs" : ladder_down ? */ // TODO DE
-			   "ladder" : surface(u.ux, u.uy)); /* EN "ladder" : surface(u.ux, u.uy)); */ // TODO DE
+	    floating_above(stairs_down ? "NOUN_STAIRS" : ladder_down ?  /* EN floating_above(stairs_down ? "stairs" : ladder_down ? */
+			   "NOUN_LADDER" : surface(u.ux, u.uy)); /* EN "ladder" : surface(u.ux, u.uy)); */
 	    return (0);   /* didn't move */
 	}
 	if (!stairs_down && !ladder_down) {

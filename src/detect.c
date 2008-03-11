@@ -795,7 +795,7 @@ struct obj *obj;
 	case 4 : pline("%s your mind!", Tobjnam(obj, "zap")); /* EN case 4 : pline("%s your mind!", Tobjnam(obj, "zap")); */ // TODO DE
 	    make_hallucinated(HHallucination + rnd(100),FALSE,0L);
 	    break;
-	case 5 : pline("%s!", Tobjnam(obj, "VERB_EXPLODIEREN")); /* EN case 5 : pline("%s!", Tobjnam(obj, "explode")); */
+	case 5 : pline("SUBJECT %s!", Tobjnam(obj, "VERB_EXPLODIEREN")); /* EN case 5 : pline("%s!", Tobjnam(obj, "explode")); */
 	    useup(obj);
 	    obj = 0;	/* it's gone */
 	    losehp(rnd(30), "ADJEKTIV_EXPLODIERT NOUN_CRYSTAL_BALL", KILLED_BY_AN); /* EN losehp(rnd(30), "exploding crystal ball", KILLED_BY_AN); */

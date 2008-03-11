@@ -602,7 +602,7 @@ letknow:
 		    mpickgold(grd);	/* does a newsym */
 		}
 		if(cansee(m,n))
-		    pline("%s%s VERB_AUFHEBEN das Gold SATZKLAMMER.", Monnam(grd), /* EN pline("%s%s picks up the gold.", Monnam(grd), */
+		    pline("SUBJECT %s%s VERB_AUFHEBEN das Gold SATZKLAMMER.", Monnam(grd), /* EN pline("%s%s picks up the gold.", Monnam(grd), */
 				grd->mpeaceful ? " VERB_BERUHIGEN sich und" : ""); /* EN grd->mpeaceful ? " calms down and" : ""); */
 		if(x != grd->mx || y != grd->my) {
 		    remove_monster(grd->mx, grd->my);

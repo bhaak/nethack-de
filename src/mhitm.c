@@ -91,7 +91,7 @@ missmm(magr, mdef, mattk)
 		fmt = (could_seduce(magr,mdef,mattk) && !magr->mcan) ?
 			"SUBJECT %s VERB_HERANMACHEN sich an OBJECT " : "SUBJECT %s VERB_MISS OBJECT"; /* EN  "%s pretends to be friendly to" : "%s misses"; */
 		Sprintf(buf, fmt, Monnam(magr));
-		pline("%s %s SATZKLAMMER.", buf, mon_nam_too(mdef_name, mdef, magr));
+		pline("%s %s SATZKLAMMER.", buf, mon_nam_too(mdef_name, mdef, magr)); /* EN pline("%s %s.", buf, mon_nam_too(mdef_name, mdef, magr)); */
 	} else  noises(magr, mattk);
 }
 
@@ -385,10 +385,10 @@ hitmm(magr, mdef, mattk)
 		if(magr->m_ap_type) seemimic(magr);
 		if((compat = could_seduce(magr,mdef,mattk)) && !magr->mcan) {
 			Sprintf(buf, "%s %s", Monnam(magr),
-				mdef->mcansee ? "smiles at" : "talks to"); /* EN mdef->mcansee ? "smiles at" : "talks to"); */ // TODO DE
-			pline("%s %s %s.", buf, mon_nam(mdef),
+				mdef->mcansee ? "VERB_ANLAECHELN" : "VERB_SPRECHEN"); /* EN mdef->mcansee ? "smiles at" : "talks to"); */
+			pline("SUBJECT %s OBJECT %s%s %s SATZKLAMMER.", buf, mdef->mcansee ? "" : "KASUS_DATIV mit ", mon_nam(mdef), /* EN pline("%s %s %s.", buf, mon_nam(mdef), */
 				compat == 2 ?
-					"engagingly" : "seductively"); /* EN "engagingly" : "seductively"); */ // TODO DE
+					"einnehmend" : "verführerisch"); /* EN "engagingly" : "seductively"); */
 		} else {
 		    char magr_name[BUFSZ];
 
@@ -487,7 +487,7 @@ gulpmm(magr, mdef, mattk)
 	if (mdef->data->msize >= MZ_HUGE) return MM_MISS;
 
 	if (vis) {
-		Sprintf(buf,"%s swallows", Monnam(magr)); /* EN Sprintf(buf,"%s swallows", Monnam(magr)); */ // TODO DE
+		Sprintf(buf,"SUBJECT %s swallows", Monnam(magr)); /* EN Sprintf(buf,"%s swallows", Monnam(magr)); */ // TODO DE
 		pline("%s %s.", buf, mon_nam(mdef));
 	}
 	for (obj = mdef->minvent; obj; obj = obj->nobj)
@@ -1352,7 +1352,7 @@ int mdead;
 		    break;
 		}
 		if(canseemon(magr))
-		    pline("OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr kalt!", Monnam(magr)); /* EN pline("%s is suddenly very cold!", Monnam(magr)); */
+		    pline("SATZBEGINN OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr kalt!", Monnam(magr)); /* EN pline("%s is suddenly very cold!", Monnam(magr)); */
 		mdef->mhp += tmp / 2;
 		if (mdef->mhpmax < mdef->mhp) mdef->mhpmax = mdef->mhp;
 		if (mdef->mhpmax > ((int) (mdef->m_lev+1) * 8))
@@ -1377,7 +1377,7 @@ int mdead;
 		    break;
 		}
 		if(canseemon(magr))
-		    pline("OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr heiß!", Monnam(magr)); /* EN pline("%s is suddenly very hot!", Monnam(magr)); */
+		    pline("SATZBEGINN OBJECT KASUS_DATIV MODIFIER_VERB_DRITTE_PERSON %s VERB_SEIN plötzlich sehr heiß!", Monnam(magr)); /* EN pline("%s is suddenly very hot!", Monnam(magr)); */
 		break;
 	    case AD_ELEC:
 		if (resists_elec(magr)) {

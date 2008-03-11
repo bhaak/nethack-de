@@ -84,7 +84,7 @@ register struct obj *pen;
 	    You("VERB_BRAUCHEN Hände um schreiben zu können!"); /* EN You("need hands to be able to write!"); */
 	    return 0;
 	} else if (Glib) {
-	    pline("%s OBJECT KASUS_DATIV PRONOMEN_PERSONAL aus OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("%s from your %s.", */
+	    pline("SUBJECT %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL aus OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("%s from your %s.", */
 		  Tobjnam(pen, "VERB_RUTSCHEN"), makeplural(body_part(FINGER))); /* EN Tobjnam(pen, "slip"), makeplural(body_part(FINGER))); */
 	    dropx(pen);
 	    return 1;

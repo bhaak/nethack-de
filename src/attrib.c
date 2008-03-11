@@ -420,8 +420,8 @@ exerchk()
 		    /* then print an explanation */
 		    switch(i) {
 		    case A_STR: You((mod_val >0) ?
-				    "must have been exercising." : /* EN "must have been exercising." : */ // TODO DE
-				    "must have been abusing your body."); /* EN "must have been abusing your body."); */ // TODO DE
+				    "VERB_MUESSEN wohl trainiert haben." : /* EN "must have been exercising." : */
+				    "VERB_MUESSEN have been abusing your body."); /* EN "must have been abusing your body."); */ // TODO DE
 				break;
 		    case A_WIS: You((mod_val >0) ?
 				    "must have been very observant." : /* EN "must have been very observant." : */ // TODO DE

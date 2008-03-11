@@ -2475,7 +2475,7 @@ srch:
 				if((trap == TRAPDOOR || trap == HOLE)
 				      && !Can_fall_thru(&u.uz)) trap = ROCKTRAP;
 				(void) maketrap(u.ux, u.uy, trap);
-				pline("%s.", An(tname));
+				pline("SUBJECT %s.", An(tname)); /* EN pline("%s.", An(tname)); */
 				return(&zeroobj);
 			}
 		}
@@ -2539,7 +2539,7 @@ srch:
 		    else /* -1 - A_CHAOTIC, 0 - A_NEUTRAL, 1 - A_LAWFUL */
 			al = (!rn2(6)) ? A_NONE : rn2((int)A_LAWFUL+2) - 1;
 		    levl[u.ux][u.uy].altarmask = Align2amask( al );
-		    pline("%s NOUN_ALTAR.", An(align_str(al)));
+		    pline("SUBJECT %s NOUN_ALTAR.", An(align_str(al))); /* EN pline("%s altar.", An(align_str(al))); */
 		    newsym(u.ux, u.uy);
 		    return(&zeroobj);
 		}

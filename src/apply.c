@@ -186,7 +186,7 @@ int rx, ry, *resp;
 		    (rx == u.ux && ry == u.uy) ? "dieses" : "jenes");
 	    } else {
 		ttmp = t_at(rx, ry);
-		pline("%s VERB_SCHEINEN für eine Statue bei %s Gesundheit zu sein.", /* EN pline("%s appears to be in %s health for a statue.", */
+		pline("SUBJECT %s VERB_SCHEINEN für eine Statue bei %s Gesundheit zu sein.", /* EN pline("%s appears to be in %s health for a statue.", */
 		      The(mons[otmp->corpsenm].mname),
 		      (ttmp && ttmp->ttyp == STATUE_TRAP) ?
 			"außerordentlich guter" : "exzellenter"); /* EN "extraordinary" : "excellent"); */
@@ -1073,7 +1073,7 @@ struct obj *obj;
 	if(obj->lamplit) {
 		if(obj->otyp == OIL_LAMP || obj->otyp == MAGIC_LAMP ||
 				obj->otyp == BRASS_LANTERN)
-		    pline("%s NOUN_LAMP VERB_SEIN jetzt aus.", Shk_Your(buf, obj)); /* EN pline("%s lamp is now off.", Shk_Your(buf, obj)); */
+		    pline("SUBJECT %s NOUN_LAMP VERB_SEIN jetzt aus.", Shk_Your(buf, obj)); /* EN pline("%s lamp is now off.", Shk_Your(buf, obj)); */
 		else
 		    You("VERB_AUSLOESCHEN OBJECT %s SATZKLAMMER.", yname(obj)); /* EN You("snuff out %s.", yname(obj)); */
 		end_burn(obj, TRUE);
@@ -2871,7 +2871,7 @@ doapply()
 			if (!Blind) {
 			    char buf[BUFSZ];
 
-			    pline("%s %s %s.", Shk_Your(buf, obj),
+			    pline("SUBJECT %s %s %s.", Shk_Your(buf, obj), /* EN pline("%s %s %s.", Shk_Your(buf, obj), */
 				  aobjnam(obj, "glow"), hcolor("brown")); /* EN aobjnam(obj, "glow"), hcolor("brown")); */ // TODO DE
 			    obj->bknown = 1;
 			}
