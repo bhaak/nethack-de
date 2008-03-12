@@ -908,7 +908,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 		enl_msg("You resist", "", "ed", " hallucinations"); /* EN enl_msg("You resist", "", "ed", " hallucinations"); */ // TODO DE
 	if (final) {
 		if (Hallucination) you_are("hallucinating"); /* EN if (Hallucination) you_are("hallucinating"); */ // TODO DE
-		if (Stunned) you_are("stunned"); /* EN if (Stunned) you_are("stunned"); */ // TODO DE
+		if (Stunned) you_are("benommen"); /* EN if (Stunned) you_are("stunned"); */
 		if (Confusion) you_are("verwirrt"); /* EN if (Confusion) you_are("confused"); */
 		if (Blinded) you_are("geblendet"); /* EN if (Blinded) you_are("blinded"); */
 		if (Sick) {
@@ -1232,7 +1232,7 @@ int final;
 	/*** Troubles ***/
 	if (Halluc_resistance) 	dump("  ", "You resisted hallucinations"); /* EN if (Halluc_resistance) 	dump("  ", "You resisted hallucinations"); */ // TODO DE
 	if (Hallucination) dump(youwere, "hallucinating"); /* EN if (Hallucination) dump(youwere, "hallucinating"); */ // TODO DE
-	if (Stunned) dump(youwere, "stunned"); /* EN if (Stunned) dump(youwere, "stunned"); */ // TODO DE
+	if (Stunned) dump(youwere, "benommen"); /* EN if (Stunned) dump(youwere, "stunned"); */
 	if (Confusion) dump(youwere, "verwirrt"); /* EN if (Confusion) dump(youwere, "confused"); */
 	if (Blinded) dump(youwere, "geblendet"); /* EN if (Blinded) dump(youwere, "blinded"); */
 	if (Sick) {

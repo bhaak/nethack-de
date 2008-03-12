@@ -1985,7 +1985,7 @@ struct obj *otmp;
 	if (nohands(youmonst.data))
 	    what = "ohne Hände"; /* EN what = "without hands"; */
 	else if (Stunned)
-	    what = "while stunned"; /* EN what = "while stunned"; */ // TODO DE
+	    what = "benommen"; /* EN what = "while stunned"; */
 	else if (u.uswallow)
 	    what = is_animal(u.ustuck->data) ? "while swallowed" : /* EN what = is_animal(u.ustuck->data) ? "while swallowed" : */ // TODO DE
 			"while engulfed"; /* EN "while engulfed"; */ // TODO DE

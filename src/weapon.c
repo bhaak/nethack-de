@@ -90,7 +90,7 @@ STATIC_OVL void
 give_may_advance_msg(skill)
 int skill;
 {
-	You_feel("more confident in your %sskills.", /* EN You_feel("more confident in your %sskills.", */ // TODO DE
+	Du_fuehlst_dich("sicherer in your %sskills.", /* EN You_feel("more confident in your %sskills.", */ // TODO DE
 		skill == P_NONE ?
 			"" :
 		skill <= P_LAST_WEAPON ?
@@ -1047,7 +1047,7 @@ int enhance_skill(boolean want_dump)
 		/* check for more skills able to advance, if so then .. */
 		for (n = i = 0; i < P_NUM_SKILLS; i++) {
 		    if (can_advance(i, speedy)) {
-			if (!speedy) You_feel("you could be more dangerous!"); /* EN if (!speedy) You_feel("you could be more dangerous!"); */ // TODO DE
+			if (!speedy) You("VERB_SPUEREN, dass NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL gefährlicher sein MODIFIER_KONJUNKTIV_II VERB_KOENNEN!"); /* EN if (!speedy) You_feel("you could be more dangerous!"); */
 			n++;
 			break;
 		    }

@@ -890,7 +890,7 @@ dospinweb()
 	else if (On_stairs(u.ux, u.uy)) {
 	    /* cop out: don't let them hide the stairs */
 	    Your("web fails to impede access to the %s.", /* EN Your("web fails to impede access to the %s.", */ // TODO DE
-		 (levl[u.ux][u.uy].typ == STAIRS) ? "stairs" : "ladder"); /* EN (levl[u.ux][u.uy].typ == STAIRS) ? "stairs" : "ladder"); */ // TODO DE
+		 (levl[u.ux][u.uy].typ == STAIRS) ? "NOUN_STAIRS" : "NOUN_LADDER"); /* EN (levl[u.ux][u.uy].typ == STAIRS) ? "stairs" : "ladder"); */
 	    return(1);
 		 
 	}

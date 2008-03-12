@@ -666,7 +666,7 @@ struct monst *mtmp;
     else return(mtmp->data);
 }
 
-static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; /* EN static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; */ // TODO DE
+static const char *levitate[4]	= { "float", "Float", "VERB_EIERN", "VERB_EIERN" }; /* EN static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; */ // TODO DE
 static const char *flys[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "flutter", "Flutter" }; /* EN static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" }; */ // TODO DE
 static const char *flyl[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "stagger", "Stagger" }; /* EN static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" }; */ // TODO DE
 static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; /* EN static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; */ // TODO DE krauchen?

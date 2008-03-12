@@ -3365,6 +3365,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_REFLECTION", "Spiegelbild", "es", "Spiegelbild", "er", "neutrum"),
     dekliniere_substantiv("NOUN_SPIDER_WEB", "Spinnennetz", "es", "Spinnennetz", "e", "neutrum"),
     dekliniere_substantiv("NOUN_STAIRS", "Treppe", "", "Treppe", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WAERME", "Wärme", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_WALL", "Wand", "", "Wänd", "e", "feminin"),
     dekliniere_substantiv("NOUN_WATERS_SURFACE", "Wasseroberfläche", "", "Wasseroberfläche", "en", "feminin"),
     dekliniere_substantiv("NOUN_WEB","Netz","es","Netz","e","neutrum"),

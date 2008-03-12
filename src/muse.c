@@ -548,7 +548,7 @@ struct monst *mtmp;
 	case MUSE_UNICORN_HORN:
 		if (vismon) {
 		    if (otmp)
-			pline("%s uses a unicorn horn!", Monnam(mtmp)); /* EN pline("%s uses a unicorn horn!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_BENUTZEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_UNICORN_HORN!", Monnam(mtmp)); /* EN pline("%s uses a unicorn horn!", Monnam(mtmp)); */
 		    else
 			pline_The("tip of %s's horn glows!", mon_nam(mtmp)); /* EN pline_The("tip of %s's horn glows!", mon_nam(mtmp)); */ // TODO DE
 		}
@@ -559,14 +559,14 @@ struct monst *mtmp;
 		} else if (mtmp->mconf || mtmp->mstun) {
 		    mtmp->mconf = mtmp->mstun = 0;
 		    if (vismon)
-			pline("%s seems steadier now.", Monnam(mtmp)); /* EN pline("%s seems steadier now.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_SCHEINEN sich wieder gefangen zu haben.", Monnam(mtmp)); /* EN pline("%s seems steadier now.", Monnam(mtmp)); */
 		} else impossible("No need for unicorn horn?");
 		return 2;
 	case MUSE_BUGLE:
 		if (vismon)
 			pline("%s plays %s!", Monnam(mtmp), doname(otmp)); /* EN pline("%s plays %s!", Monnam(mtmp), doname(otmp)); */ // TODO DE
 		else if (flags.soundok)
-			You_hear("a bugle playing reveille!"); /* EN You_hear("a bugle playing reveille!"); */ // TODO DE
+			You_hear("OBJECT ARTIKEL_UNBESTIMMTER NOUN_BUGLE zum Morgenappell blasen!"); /* EN You_hear("a bugle playing reveille!"); */
 		awaken_soldiers();
 		return 2;
 	case MUSE_WAN_TELEPORTATION_SELF:
@@ -2161,15 +2161,15 @@ boolean stoning;
     }
     if (stoning && canseemon(mon)) {
 	if (Hallucination)
-    pline("What a pity - %s just ruined a future piece of art!", /* EN pline("What a pity - %s just ruined a future piece of art!", */ // TODO DE
+    pline("Eine Schande! SUBJECT %s VERB_HAVE gerade ein angehendes Kunstwerk ruiniert!", /* EN pline("What a pity - %s just ruined a future piece of art!", */
 	    mon_nam(mon));
 	else
-	    pline("%s seems limber!", Monnam(mon)); /* EN pline("%s seems limber!", Monnam(mon)); */ // TODO DE
+	    pline("SUBJECT %s VERB_SCHEINEN locker!", Monnam(mon)); /* EN pline("%s seems limber!", Monnam(mon)); */
     }
     if (obj->otyp == CORPSE && obj->corpsenm == PM_LIZARD && mon->mconf) {
 	mon->mconf = 0;
 	if (canseemon(mon))
-	    pline("%s seems steadier now.", Monnam(mon)); /* EN pline("%s seems steadier now.", Monnam(mon)); */ // TODO DE
+	    pline("SUBJECT %s VERB_SCHEINEN sich wieder gefangen zu haben.", Monnam(mon)); /* EN pline("%s seems steadier now.", Monnam(mon)); */
     }
     if (mon->mtame && !mon->isminion && nutrit > 0) {
 	struct edog *edog = EDOG(mon);

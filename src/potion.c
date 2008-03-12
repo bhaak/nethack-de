@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVLB
 boolean notonhead = FALSE;
 
@@ -80,13 +84,13 @@ boolean talk;
 	if (!xtime && old) {
 		if (talk)
 		    Du_fuehlst_dich("jetzt %s.", /* EN You_feel("%s now.", */
-			Hallucination ? "weniger schwabblig" : "ein bisschen steadier"); /* EN Hallucination ? "less wobbly" : "a bit steadier"); */ // TODO DE
+			Hallucination ? "weniger wacklig" : "nicht mehr so benommen"); /* EN Hallucination ? "less wobbly" : "a bit steadier"); */
 	}
 	if (xtime && !old) {
 		if (talk) {
 #ifdef STEED
 			if (u.usteed)
-				You("wobble in the saddle."); /* EN You("wobble in the saddle."); */ // TODO DE
+				You("VERB_SCHWANKEN im Sattel."); /* EN You("wobble in the saddle."); */
 			else
 #endif
 			You("%s ...", stagger(youmonst.data, "VERB_STAGGER")); /* EN You("%s...", stagger(youmonst.data, "stagger")); */
@@ -976,7 +980,7 @@ boolean your_fault;
 		distance = 0;
 		pline_The("%s crashes on your %s and breaks into shards.", /* EN pline_The("%s crashes on your %s and breaks into shards.", */ // TODO DE
 			botlnam, body_part(HEAD));
-		losehp(rnd(2), "thrown potion", KILLED_BY_AN); /* EN losehp(rnd(2), "thrown potion", KILLED_BY_AN); */ // TODO DE
+		losehp(rnd(2), "ADJEKTIV_GEWORFEN NOUN_POTION", KILLED_BY_AN); /* EN losehp(rnd(2), "thrown potion", KILLED_BY_AN); */
 	} else {
 		distance = distu(mon->mx,mon->my);
 		if (!cansee(mon->mx,mon->my)) pline("Klirr!"); /* EN if (!cansee(mon->mx,mon->my)) pline("Crash!"); */
@@ -985,9 +989,9 @@ boolean your_fault;
 		    char buf[BUFSZ];
 
 		    if(has_head(mon->data)) {
-			Sprintf(buf, "%s %s",
-				s_suffix(mnam), /* EN s_suffix(mnam), */ // TODO DE
-				(notonhead ? "body" : "head")); /* EN (notonhead ? "body" : "head")); */ // TODO DE
+			Sprintf(buf, "%s", /* EN Sprintf(buf, "%s %s", */
+				genitivattribut_zu_wort((mnam), /* EN s_suffix(mnam), */ // TODO DE
+				(notonhead ? "NOUN_BODY" : "NOUN_HEAD"))); /* EN (notonhead ? "body" : "head")); */
 		    } else {
 			Strcpy(buf, mnam);
 		    }
@@ -1000,7 +1004,7 @@ boolean your_fault;
 
 	/* oil doesn't instantly evaporate */
 	if (obj->otyp != POT_OIL && cansee(mon->mx,mon->my))
-		pline("%s.", Tobjnam(obj, "evaporate")); /* EN pline("%s.", Tobjnam(obj, "evaporate")); */ // TODO DE
+		pline("SUBJECT %s sich.", Tobjnam(obj, "VERB_VERFLUECHTIGEN")); /* EN pline("%s.", Tobjnam(obj, "evaporate")); */
 
     if (isyou) {
 	switch (obj->otyp) {
@@ -1014,10 +1018,10 @@ boolean your_fault;
 		break;
 	case POT_ACID:
 		if (!Acid_resistance) {
-		    pline("This burns%s!", obj->blessed ? " a little" : /* EN pline("This burns%s!", obj->blessed ? " a little" : */ // TODO DE
-				    obj->cursed ? " a lot" : ""); /* EN obj->cursed ? " a lot" : ""); */ // TODO DE
+		    pline("Das brennt%s!", obj->blessed ? " ein wenig" : /* EN pline("This burns%s!", obj->blessed ? " a little" : */
+				    obj->cursed ? " stark" : ""); /* EN obj->cursed ? " a lot" : ""); */
 		    losehp(d(obj->cursed ? 2 : 1, obj->blessed ? 4 : 8),
-				    "potion of acid", KILLED_BY_AN); /* EN "potion of acid", KILLED_BY_AN); */ // TODO DE
+				    "NOUN_POTION PARTIKEL_OF NOUN_POT_ACID", KILLED_BY_AN); /* EN "potion of acid", KILLED_BY_AN); */
 		}
 		break;
 	}
@@ -1243,20 +1247,20 @@ register struct obj *obj;
 		}
 		break;
 	case POT_HALLUCINATION:
-		You("have a momentary vision."); /* EN You("have a momentary vision."); */ // TODO DE
+		You("VERB_HABEN eine kurze Vision."); /* EN You("have a momentary vision."); */
 		break;
 	case POT_CONFUSION:
 	case POT_BOOZE:
 		if(!Confusion)
-			You_feel("somewhat dizzy."); /* EN You_feel("somewhat dizzy."); */ // TODO DE
+			Dir_ist("etwas schwindlig."); /* EN You_feel("somewhat dizzy."); */
 		make_confused(itimeout_incr(HConfusion, rnd(5)), FALSE);
 		break;
 	case POT_INVISIBILITY:
 		if (!Blind && !Invis) {
 		    kn++;
-		    pline("For an instant you %s!", /* EN pline("For an instant you %s!", */ // TODO DE
-			See_invisible ? "could see right through yourself" /* EN See_invisible ? "could see right through yourself" */ // TODO DE
-			: "couldn't see yourself"); /* EN : "couldn't see yourself"); */ // TODO DE
+		    pline("Eine Sekunde lang SUBJECT_IM_SATZ MODIFIER_VERB_PRAETERITUM VERB_KOENNEN PRONOMEN_PERSONAL %s!", /* EN pline("For an instant you %s!", */
+			See_invisible ? "einfach durch OBJECT PRONOMEN_PERSONAL durchsehen" /* EN See_invisible ? "could see right through yourself" */
+			: "OBJECT PRONOMEN_PERSONAL nicht sehen"); /* EN : "couldn't see yourself"); */
 		}
 		break;
 	case POT_PARALYSIS:
@@ -1461,8 +1465,8 @@ register struct obj *obj;
 			update_inventory();
 			return (TRUE);
 		}
-		pline("%s %s%s.", Your_buf, aobjnam(obj,"dilute"), /* EN pline("%s %s%s.", Your_buf, aobjnam(obj,"dilute"), */ // TODO DE
-		      obj->odiluted ? " further" : ""); /* EN obj->odiluted ? " further" : ""); */ // TODO DE
+		pline("SUBJECT %s %s%s sich.", Your_buf, aobjnam(obj,"VERB_VERDUENNEN"), /* EN pline("%s %s%s.", Your_buf, aobjnam(obj,"dilute"), */ 
+		      obj->odiluted ? " noch stärker" : ""); /* EN obj->odiluted ? " further" : ""); */
 		if(obj->unpaid && costly_spot(u.ux, u.uy)) {
 		    You("dilute it, you pay for it."); /* EN You("dilute it, you pay for it."); */ // TODO DE
 		    bill_dummy_object(obj);
@@ -1503,7 +1507,7 @@ register struct obj *obj;
 		if (obj->otyp != SPE_BLANK_PAPER) {
 
 			if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
-	pline("%s suddenly heats up; steam rises and it remains dry.", /* EN pline("%s suddenly heats up; steam rises and it remains dry.", */ // TODO DE
+	pline("SUBJECT %s erhitzt sich plötzlich! Dampf steigt auf und es bleibt trocken.", /* EN pline("%s suddenly heats up; steam rises and it remains dry.", */
 				The(xname(obj)));
 			} else {
 			    if (!Blind) {
@@ -1919,7 +1923,7 @@ dodip()
 		}
 		obj_extract_self(singlepotion);
 		singlepotion = hold_another_object(singlepotion,
-					"You juggle and drop %s!", /* EN "You juggle and drop %s!", */ // TODO DE
+					"SUBJECT PRONOMEN_PERSONAL VERB_JONGLIEREN und VERB_DROP OBJECT %s SATZKLAMMER!", /* EN "You juggle and drop %s!", */
 					doname(singlepotion), (const char *)0);
 		update_inventory();
 		return(1);
@@ -1987,9 +1991,9 @@ struct monst *mon,	/* monster being split */
 	char reason[BUFSZ];
 
 	reason[0] = '\0';
-	if (mtmp) Sprintf(reason, " from %s heat", /* EN if (mtmp) Sprintf(reason, " from %s heat", */ // TODO DE
-			  (mtmp == &youmonst) ? (const char *)"PRONOMEN_POSSESSIV" : /* EN (mtmp == &youmonst) ? (const char *)"your" : */
-			      (const char *)s_suffix(mon_nam(mtmp))); /* EN (const char *)s_suffix(mon_nam(mtmp))); */ // TODO DE
+	if (mtmp) Sprintf(reason, " NEUES_OBJECT OBJECT durch %s", /* EN if (mtmp) Sprintf(reason, " from %s heat", */
+			  (mtmp == &youmonst) ? (const char *)"PRONOMEN_POSSESSIV NOUN_WAERME" : /* EN (mtmp == &youmonst) ? (const char *)"your" : */
+			      (const char *)genitivattribut_zu_wort(mon_nam(mtmp),"NOUN_WAERME")); /* EN (const char *)s_suffix(mon_nam(mtmp))); */
 
 	if (mon == &youmonst) {
 	    mtmp2 = cloneu();

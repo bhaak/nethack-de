@@ -2061,8 +2061,8 @@ boolean ordinary;
 		case SPE_TURN_UNDEAD:
 		    (void) unturn_dead(&youmonst);
 		    if (is_undead(youmonst.data)) {
-			You_feel("frightened and %sstunned.", /* EN You_feel("frightened and %sstunned.", */ // TODO DE
-			     Stunned ? "even more " : ""); /* EN Stunned ? "even more " : ""); */ // TODO DE
+			Du_fuehlst_dich("verängstigt und %sbenommen%s.", /* EN You_feel("frightened and %sstunned.", */
+			     Stunned ? "noch " : "", Stunned ? "er" : ""); /* EN Stunned ? "even more " : ""); */
 			make_stunned(HStun + rnd(30), FALSE);
 		    } else
 			pline("Vor Schrecken VERB_ERSCHAUDERN SUBJECT_IM_SATZ PRONOMEN_PERSONAL."); /* EN You("shudder in dread."); */

@@ -331,7 +331,7 @@ bot2()
 			   Sprintf(nb = eos(nb), " krank"); /* EN Sprintf(nb = eos(nb), " Ill"); */
 	}
 	if(Blind)	   Sprintf(nb = eos(nb), " blind"); /* EN if(Blind)	   Sprintf(nb = eos(nb), " Blind"); */
-	if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); /* EN if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); */ // TODO DE
+	if(Stunned)	   Sprintf(nb = eos(nb), " beno"); /* EN if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); */
 	if(Hallucination)  Sprintf(nb = eos(nb), " hallu"); /* EN if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); */ // TODO DE
 	if(Slimed)         Sprintf(nb = eos(nb), " Schleim"); /* EN if(Slimed)         Sprintf(nb = eos(nb), " Slime"); */ // TODO DE
 	if(cap > UNENCUMBERED)

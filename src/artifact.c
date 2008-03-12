@@ -913,7 +913,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 	    char buf[BUFSZ];
 
 	    buf[0] = '\0';
-	    if (do_stun) Strcat(buf, "stunned"); /* EN if (do_stun) Strcat(buf, "stunned"); */ // TODO DE
+	    if (do_stun) Strcat(buf, "benommen"); /* EN if (do_stun) Strcat(buf, "stunned"); */
 	    if (do_stun && do_confuse) Strcat(buf, " und "); /* EN if (do_stun && do_confuse) Strcat(buf, " and "); */
 	    if (do_confuse) Strcat(buf, "verwirrt"); /* EN if (do_confuse) Strcat(buf, "confused"); */
 	    pline("SUBJECT %s %s %s%c", hittee, vtense(hittee, "VERB_SEIN"), /* EN pline("%s %s %s%c", hittee, vtense(hittee, "are"), */

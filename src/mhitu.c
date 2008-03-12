@@ -130,10 +130,10 @@ struct attack *mattk;
 	    struct obj *mwep = (mtmp == &youmonst) ? uwep : MON_WEP(mtmp);
 	    /* "Foo's attack was poisoned." is pretty lame, but at least
 	       it's better than "sting" when not a stinging attack... */
-	    return (!mwep || !mwep->opoisoned) ? "attack" : "weapon"; /* EN return (!mwep || !mwep->opoisoned) ? "attack" : "weapon"; */ // TODO DE
+	    return (!mwep || !mwep->opoisoned) ? "NOUN_ATTACK" : "NOUN_WEAPON"; /* EN return (!mwep || !mwep->opoisoned) ? "attack" : "weapon"; */
 	} else {
 	    return (mattk->aatyp == AT_TUCH) ? "contact" : /* EN return (mattk->aatyp == AT_TUCH) ? "contact" : */ // TODO DE
-		   (mattk->aatyp == AT_GAZE) ? "gaze" : /* EN (mattk->aatyp == AT_GAZE) ? "gaze" : */ // TODO DE
+		   (mattk->aatyp == AT_GAZE) ? "NOUN_GAZE" : /* EN (mattk->aatyp == AT_GAZE) ? "gaze" : */
 		   (mattk->aatyp == AT_BITE) ? "NOUN_BITE" : "NOUN_STING"; /* EN (mattk->aatyp == AT_BITE) ? "bite" : "sting"; */
 	}
 }
@@ -2154,13 +2154,13 @@ register struct monst *mon;
 	    if (ring->otyp != RIN_ADORNMENT) continue;
 	    if (fem) {
 		if (rn2(20) < ACURR(A_CHA)) {
-		    Sprintf(qbuf, "\"That %s looks pretty.  May I have it?\"", /* EN Sprintf(qbuf, "\"That %s looks pretty.  May I have it?\"", */ // TODO DE
-			safe_qbuf("",sizeof("\"That  looks pretty.  May I have it?\""), /* EN safe_qbuf("",sizeof("\"That  looks pretty.  May I have it?\""), */ // TODO DE
-			xname(ring), simple_typename(ring->otyp), "ring")); /* EN xname(ring), simple_typename(ring->otyp), "ring")); */ // TODO DE
+		    Sprintf(qbuf, "SUBJECT \"PRONOMEN_DIESER %s sieht hübsch aus.  Darf ich ihn haben?\"", /* EN Sprintf(qbuf, "\"That %s looks pretty.  May I have it?\"", */
+			safe_qbuf("",sizeof("\"Dieser  sieht hübsch aus.  Darf ich ihn haben?\""), /* EN safe_qbuf("",sizeof("\"That  looks pretty.  May I have it?\""), */
+			xname(ring), simple_typename(ring->otyp), "NOUN_RING")); /* EN xname(ring), simple_typename(ring->otyp), "ring")); */
 		    makeknown(RIN_ADORNMENT);
 		    if (yn(qbuf) == 'n') continue;
-		} else pline("%s decides she'd like your %s, and takes it.", /* EN } else pline("%s decides she'd like your %s, and takes it.", */ // TODO DE
-			Blind ? "She" : Monnam(mon), xname(ring)); /* EN Blind ? "She" : Monnam(mon), xname(ring)); */ // TODO DE
+		} else pline("SUBJECT %s entscheidet, dass ihr KASUS_NOMINATIV PRONOMEN_POSSESSIV %s gefällt und nimmt ihn.", /* EN } else pline("%s decides she'd like your %s, and takes it.", */
+			Blind ? "Sie" : Monnam(mon), xname(ring)); /* EN Blind ? "She" : Monnam(mon), xname(ring)); */
 		makeknown(RIN_ADORNMENT);
 		if (ring==uleft || ring==uright) Ring_gone(ring);
 		if (ring==uwep) setuwep((struct obj *)0);
@@ -2251,7 +2251,7 @@ register struct monst *mon;
 		noit_mon_nam(mon));
 	if (rn2(35) > ACURR(A_CHA) + ACURR(A_INT)) {
 		/* Don't bother with mspec_used here... it didn't get tired! */
-		pline("%s seems to have enjoyed it more than you...", /* EN pline("%s seems to have enjoyed it more than you...", */ // TODO DE
+		pline("SUBJECT %s VERB_SCHEINEN es mehr genossen zu haben als OBJECT KASUS_NOMINATIV PRONOMEN_PERSONAL ...", /* EN pline("%s seems to have enjoyed it more than you...", */
 			noit_Monnam(mon));
 		switch (rn2(5)) {
 			case 0: You_feel("drained of energy."); /* EN case 0: You_feel("drained of energy."); */ // TODO DE
@@ -2273,9 +2273,9 @@ register struct monst *mon;
 			case 3:
 				if (!resists_drli(&youmonst)) {
 				    You_feel("out of shape."); /* EN You_feel("out of shape."); */ // TODO DE
-				    losexp("overexertion"); /* EN losexp("overexertion"); */ // TODO DE
+				    losexp("NOUN_UEBERANSTRENGUNG"); /* EN losexp("overexertion"); */
 				} else {
-				    You("have a curious feeling..."); /* EN You("have a curious feeling..."); */ // TODO DE
+				    You("VERB_HABEN ein seltsames Gefühl ..."); /* EN You("have a curious feeling..."); */
 				}
 				break;
 			case 4: {
@@ -2290,7 +2290,7 @@ register struct monst *mon;
 		}
 	} else {
 		mon->mspec_used = rnd(100); /* monster is worn out */
-		You("seem to have enjoyed it more than %s...", /* EN You("seem to have enjoyed it more than %s...", */ // TODO DE
+		You("VERB_SCHEINEN es mehr genossen zu haben als OBJECT KASUS_NOMINATIV %s...", /* EN You("seem to have enjoyed it more than %s...", */
 		    noit_mon_nam(mon));
 		//switch (rn2(5)) {
 		switch (2) {
@@ -2298,7 +2298,7 @@ register struct monst *mon;
 			exercise(A_CON, TRUE);
 			u.uen = (u.uenmax += rnd(5));
 			break;
-		case 1: You_feel("good enough to do it again."); /* EN case 1: You_feel("good enough to do it again."); */ // TODO DE
+		case 1: Du_fuehlst_dich("good enough to do it again."); /* EN case 1: You_feel("good enough to do it again."); */ // TODO DE
 			(void) adjattrib(A_CON, 1, TRUE);
 			exercise(A_CON, TRUE);
 			flags.botl = 1;
@@ -2327,7 +2327,7 @@ register struct monst *mon;
 					noit_Monnam(mon));
 					//Blind ? (fem ? "her" : "him") : mhim(mon)); /* EN Blind ? (fem ? "her" : "him") : mhim(mon)); */
 	} else if (u.umonnum == PM_LEPRECHAUN)
-		pline("%s tries to take your money, but fails...", /* EN pline("%s tries to take your money, but fails...", */ // TODO DE
+		pline("SUBJECT %s tries to take your money, but fails...", /* EN pline("%s tries to take your money, but fails...", */ // TODO DE
 				noit_Monnam(mon));
 	else {
 #ifndef GOLDOBJ

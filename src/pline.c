@@ -413,7 +413,7 @@ register struct monst *mtmp;
 	if (mtmp->mconf)	  Strcat(info, ", verwirrt"); /* EN if (mtmp->mconf)	  Strcat(info, ", confused"); */
 	if (mtmp->mblinded || !mtmp->mcansee)
 				  Strcat(info, ", blind"); /* EN Strcat(info, ", blind"); */
-	if (mtmp->mstun)	  Strcat(info, ", stunned"); /* EN if (mtmp->mstun)	  Strcat(info, ", stunned"); */ // TODO DE
+	if (mtmp->mstun)	  Strcat(info, ", benommen"); /* EN if (mtmp->mstun)	  Strcat(info, ", stunned"); */
 	if (mtmp->msleeping)	  Strcat(info, ", schläft"); /* EN if (mtmp->msleeping)	  Strcat(info, ", asleep"); */
 #if 0	/* unfortunately mfrozen covers temporary sleep and being busy
 	   (donning armor, for instance) as well as paralysis */
@@ -491,7 +491,7 @@ ustatusline()
 		Strcat(info, "ed von klebrigem Zeugs"); /* EN Strcat(info, "ed by sticky goop"); */ // TODO DE
 	    }	/* note: "goop" == "glop"; variation is intentional */
 	}
-	if (Stunned)		Strcat(info, ", stunned"); /* EN if (Stunned)		Strcat(info, ", stunned"); */ // TODO DE
+	if (Stunned)		Strcat(info, ", benommen"); /* EN if (Stunned)		Strcat(info, ", stunned"); */
 #ifdef STEED
 	if (!u.usteed)
 #endif

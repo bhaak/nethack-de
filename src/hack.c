@@ -453,7 +453,7 @@ dosinkfall()
 	register struct obj *obj;
 
 	if (is_floater(youmonst.data) || (HLevitation & FROMOUTSIDE)) {
-	    You("wobble unsteadily for a moment."); /* EN You("wobble unsteadily for a moment."); */ // TODO DE
+	    You("VERB_EIERN kurz unkontrolliert herum."); /* EN You("wobble unsteadily for a moment."); */
 	} else {
 	    long save_ELev = ELevitation, save_HLev = HLevitation;
 
@@ -462,7 +462,7 @@ dosinkfall()
 	       be fatal; fortunately the fact that rings and boots
 	       are really still worn has no effect on bones data */
 	    ELevitation = HLevitation = 0L;
-	    You("crash to the floor!"); /* EN You("crash to the floor!"); */ // TODO DE
+	    You("VERB_KRACHEN auf den Boden!"); /* EN You("crash to the floor!"); */
 	    losehp(rn1(8, 25 - (int)ACURR(A_CON)),
 		   fell_on_sink, NO_KILLER_PREFIX);
 	    exercise(A_DEX, FALSE);
