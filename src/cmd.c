@@ -476,7 +476,7 @@ domonability()
 	    else aggravate();
 	} else if (Upolyd)
 		pline("Any special ability you may have is purely reflexive."); /* EN pline("Any special ability you may have is purely reflexive."); */ // TODO DE
-	else You("don't have a special ability in your normal form!"); /* EN else You("don't have a special ability in your normal form!"); */ // TODO DE
+	else pline("In KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_NORMAL NOUN_GESTALT SUBJECT_IM_SATZ VERB_BESITZEN PRONOMEN_PERSONAL keine besondere Fähigkeit!"); /* EN else You("don't have a special ability in your normal form!"); */
 	return 0;
 }
 
@@ -588,8 +588,8 @@ STATIC_PTR int
 wiz_mon_polycontrol()
 {
     iflags.mon_polycontrol = !iflags.mon_polycontrol;
-    pline("Monster polymorph control is %s.", /* EN pline("Monster polymorph control is %s.", */ // TODO DE
-	  iflags.mon_polycontrol ? "on" : "off"); /* EN iflags.mon_polycontrol ? "on" : "off"); */ // TODO DE
+    pline("Monstertransformationskontrolle ist %s.", /* EN pline("Monster polymorph control is %s.", */
+	  iflags.mon_polycontrol ? "ein" : "aus"); /* EN iflags.mon_polycontrol ? "on" : "off"); */
     return 0;
 }
 
@@ -601,7 +601,7 @@ wiz_level_change()
     int newlevel;
     int ret;
 
-    getlin("To what experience level do you want to be set?", buf); /* EN getlin("To what experience level do you want to be set?", buf); */ // TODO DE
+    getlin("Auf welche Erfahrungsstufe MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL gesetzt werden?", buf); /* EN getlin("To what experience level do you want to be set?", buf); */
     (void)mungspaces(buf);
     if (buf[0] == '\033' || buf[0] == '\0') ret = 0;
     else ret = sscanf(buf, "%d", &newlevel);

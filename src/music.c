@@ -309,7 +309,7 @@ do_pit:		    chasm = maketrap(x,y,PIT);
 					pline("It is destroyed!"); /* EN pline("It is destroyed!"); */ // TODO DE
 				    else {
 					You("destroy %s!", mtmp->mtame ?  /* EN You("destroy %s!", mtmp->mtame ? */ // TODO DE
-					    x_monnam(mtmp, ARTICLE_THE, "poor", /* EN x_monnam(mtmp, ARTICLE_THE, "poor", */ // TODO DE
+					    x_monnam(mtmp, ARTICLE_THE, "ADJEKTIV_POOR", /* EN x_monnam(mtmp, ARTICLE_THE, "poor", */
 				mtmp->mnamelth ? SUPPRESS_SADDLE : 0, FALSE):
 					    mon_nam(mtmp));
 				    }

@@ -1903,10 +1903,10 @@ mon_to_stone(mtmp)
     if(mtmp->data->mlet == S_GOLEM) {
 	/* it's a golem, and not a stone golem */
 	if(canseemon(mtmp))
-	    pline("%s solidifies...", Monnam(mtmp)); /* EN pline("%s solidifies...", Monnam(mtmp)); */ // TODO DE
+	    pline("SUBJECT %s verfestigt sich ...", Monnam(mtmp)); /* EN pline("%s solidifies...", Monnam(mtmp)); */
 	if (newcham(mtmp, &mons[PM_STONE_GOLEM], FALSE, FALSE)) {
 	    if(canseemon(mtmp))
-		pline("Now it's %s.", an(mtmp->data->mname)); /* EN pline("Now it's %s.", an(mtmp->data->mname)); */ // TODO DE
+		pline("Jetzt ist es KASUS_NOMINATIV %s.", an(mtmp->data->mname)); /* EN pline("Now it's %s.", an(mtmp->data->mname)); */
 	} else {
 	    if(canseemon(mtmp))
 		pline("... and returns to normal."); /* EN pline("... and returns to normal."); */ // TODO DE

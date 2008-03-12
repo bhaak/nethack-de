@@ -604,10 +604,10 @@ int mode;
 			    } else
 #endif
 			    {
-			        pline("Ouch!  You bump into a door."); /* EN pline("Ouch!  You bump into a door."); */ // TODO DE
+			        pline("Autsch!  SUBJECT PRONOMEN_PERSONAL VERB_LAUFEN in die Türe."); /* EN pline("Ouch!  You bump into a door."); */
 			        exercise(A_DEX, FALSE);
 			    }
-			} else pline("That door is closed."); /* EN } else pline("That door is closed."); */ // TODO DE
+			} else pline("Die Türe ist geschlossen."); /* EN } else pline("That door is closed."); */
 		    }
 		} else if (mode == TEST_TRAV) goto testdiag;
 		return FALSE;
