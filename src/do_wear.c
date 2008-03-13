@@ -1091,7 +1091,7 @@ register struct obj *otmp;
 {
 	/* Curses, like chickens, come home to roost. */
 	if((otmp == uwep) ? welded(otmp) : (int)otmp->cursed) {
-		pline("VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht.  %s verflucht.", /* EN You("can't.  %s cursed.", */
+		pline("SATZBEGINN VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht.  %s verflucht.", /* EN You("can't.  %s cursed.", */
 			(is_boots(otmp) || is_gloves(otmp) || otmp->quan > 1L)
 			? "Sie sind" : "Es ist"); /* EN ? "They are" : "It is"); */
 		otmp->bknown = TRUE;

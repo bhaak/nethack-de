@@ -123,8 +123,8 @@ lookat(x, y, buf, monbuf)
 	}
     } else if (u.uswallow) {
 	/* all locations when swallowed other than the hero are the monster */
-	Sprintf(buf, "interior of %s", /* EN Sprintf(buf, "interior of %s", */ // TODO DE
-				    Blind ? "a monster" : a_monnam(u.ustuck)); /* EN Blind ? "a monster" : a_monnam(u.ustuck)); */ // TODO DE
+	Sprintf(buf, "NOUN_INNERE OBJECT KASUS_GENITIV %s", /* EN Sprintf(buf, "interior of %s", */
+				    Blind ? "ARTIKEL_UNBESTIMMTER NOUN_MONSTER" : a_monnam(u.ustuck)); /* EN Blind ? "a monster" : a_monnam(u.ustuck)); */
 	pm = u.ustuck->data;
     } else if (glyph_is_monster(glyph)) {
 	bhitpos.x = x;
@@ -195,7 +195,7 @@ lookat(x, y, buf, monbuf)
 
 		if (ways_seen > 1 || !normal) {
 		    if (normal) {
-			Strcat(monbuf, "normal vision"); /* EN Strcat(monbuf, "normal vision"); */ // TODO DE
+			Strcat(monbuf, "normales Sehen "); /* EN Strcat(monbuf, "normal vision"); */
 			/* can't actually be 1 yet here */
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
@@ -225,9 +225,9 @@ lookat(x, y, buf, monbuf)
 		    if (MATCH_WARN_OF_MON(mtmp)) {
 		    	char wbuf[BUFSZ];
 			if (Hallucination)
-				Strcat(monbuf, "paranoid delusion"); /* EN Strcat(monbuf, "paranoid delusion"); */ // TODO DE
+				Strcat(monbuf, "paranoide Wahnvorstellung"); /* EN Strcat(monbuf, "paranoid delusion"); */
 			else {
-				Sprintf(wbuf, "warned of %s", /* EN Sprintf(wbuf, "warned of %s", */ // TODO DE
+				Sprintf(wbuf, "gewarnt vor %s", /* EN Sprintf(wbuf, "warned of %s", */
 					makeplural(mtmp->data->mname));
 		    		Strcat(monbuf, wbuf);
 		    	}
@@ -271,7 +271,7 @@ lookat(x, y, buf, monbuf)
     } else switch(glyph_to_cmap(glyph)) {
     case S_altar:
 	if(!In_endgame(&u.uz))
-	    Sprintf(buf, "%s altar", /* EN Sprintf(buf, "%s altar", */ // TODO DE
+	    Sprintf(buf, "%s NOUN_ALTAR", /* EN Sprintf(buf, "%s altar", */
 		align_str(Amask2align(levl[x][y].altarmask & ~AM_SHRINE)));
 	else Sprintf(buf, "aligned altar"); /* EN else Sprintf(buf, "aligned altar"); */ // TODO DE
 	break;
@@ -279,9 +279,9 @@ lookat(x, y, buf, monbuf)
 	if (is_drawbridge_wall(x, y) >= 0)
 	    Strcpy(buf,"open drawbridge portcullis"); /* EN Strcpy(buf,"open drawbridge portcullis"); */ // TODO DE
 	else if ((levl[x][y].doormask & ~D_TRAPPED) == D_BROKEN)
-	    Strcpy(buf,"broken door"); /* EN Strcpy(buf,"broken door"); */ // TODO DE
+	    Strcpy(buf,"ADJEKTIV_KAPUTT NOUN_DOOR"); /* EN Strcpy(buf,"broken door"); */
 	else
-	    Strcpy(buf,"doorway"); /* EN Strcpy(buf,"doorway"); */ // TODO DE
+	    Strcpy(buf,"NOUN_DOORWAY"); /* EN Strcpy(buf,"doorway"); */
 	break;
     case S_cloud:
 	Strcpy(buf, Is_airlevel(&u.uz) ? "cloudy area" : "fog/vapor cloud"); /* EN Strcpy(buf, Is_airlevel(&u.uz) ? "cloudy area" : "fog/vapor cloud"); */ // TODO DE
@@ -340,7 +340,7 @@ checkfile(inp, pm, user_typed_name, without_asking)
     (void) lcase(dbase_str);
 #endif
 
-    if (!strncmp(dbase_str, "interior of ", 12)) /* EN if (!strncmp(dbase_str, "interior of ", 12)) */ // TODO DE
+    if (!strncmp(dbase_str, "NOUN_INNERE OBJECT KASUS_GENITIV ", 33)) /* EN if (!strncmp(dbase_str, "interior of ", 12)) */
 	dbase_str += 12;
     if (!strncmp(dbase_str, "ARTIKEL_UNBESTIMMTER ", 21)) /* EN if (!strncmp(dbase_str, "a ", 2)) */
 	dbase_str += 2;
@@ -435,7 +435,7 @@ bad_data_file:	impossible("'data' file in wrong format");
 		return;
 	}
 
-	if (user_typed_name || without_asking || yn("More info?") == 'y') { /* EN if (user_typed_name || without_asking || yn("More info?") == 'y') { */ // TODO DE
+	if (user_typed_name || without_asking || yn("Mehr Information?") == 'y') { /* EN if (user_typed_name || without_asking || yn("More info?") == 'y') { */
 	    winid datawin;
 
 	    if (dlb_fseek(fp, txt_offset + entry_offset, SEEK_SET) < 0) {
@@ -484,7 +484,7 @@ do_look(quick)
     boolean need_to_look;	/* need to get explan. from glyph */
     boolean hit_trap;		/* true if found trap explanation */
     int skipped_venom;		/* non-zero if we ignored "splash of venom" */
-    static const char *mon_interior = "the interior of a monster"; /* EN static const char *mon_interior = "the interior of a monster"; */ // TODO DE
+    static const char *mon_interior = "ARTIKEL_BESTIMMTER NOUN_INNERE eines Monsters"; /* EN static const char *mon_interior = "the interior of a monster"; */
 
     if (quick) {
 	from_screen = TRUE;	/* yes, we want to use the cursor */

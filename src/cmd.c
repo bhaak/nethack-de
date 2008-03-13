@@ -870,15 +870,15 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 #endif
 
 	/* note: piousness 20 matches MIN_QUEST_ALIGN (quest.h) */
-	if (u.ualign.record >= 20)	you_are("piously aligned"); /* EN if (u.ualign.record >= 20)	you_are("piously aligned"); */ // TODO DE
-	else if (u.ualign.record > 13)	you_are("devoutly aligned"); /* EN else if (u.ualign.record > 13)	you_are("devoutly aligned"); */ // TODO DE
-	else if (u.ualign.record > 8)	you_are("fervently aligned"); /* EN else if (u.ualign.record > 8)	you_are("fervently aligned"); */ // TODO DE
-	else if (u.ualign.record > 3)	you_are("stridently aligned"); /* EN else if (u.ualign.record > 3)	you_are("stridently aligned"); */ // TODO DE
-	else if (u.ualign.record == 3)	you_are("aligned"); /* EN else if (u.ualign.record == 3)	you_are("aligned"); */ // TODO DE
-	else if (u.ualign.record > 0)	you_are("haltingly aligned"); /* EN else if (u.ualign.record > 0)	you_are("haltingly aligned"); */ // TODO DE
-	else if (u.ualign.record == 0)	you_are("nominally aligned"); /* EN else if (u.ualign.record == 0)	you_are("nominally aligned"); */ // TODO DE
-	else if (u.ualign.record >= -3)	you_have("strayed"); /* EN else if (u.ualign.record >= -3)	you_have("strayed"); */ // TODO DE
-	else if (u.ualign.record >= -8)	you_have("sinned"); /* EN else if (u.ualign.record >= -8)	you_have("sinned"); */ // TODO DE
+	if (u.ualign.record >= 20)	you_are("fromm"); /* EN if (u.ualign.record >= 20)	you_are("piously aligned"); */
+	else if (u.ualign.record > 13)	you_are("inbrünstig"); /* EN else if (u.ualign.record > 13)	you_are("devoutly aligned"); */
+	else if (u.ualign.record > 8)	you_are("tiefreligiös"); /* EN else if (u.ualign.record > 8)	you_are("fervently aligned"); */
+	else if (u.ualign.record > 3)	you_are("strenggläubig"); /* EN else if (u.ualign.record > 3)	you_are("stridently aligned"); */
+	else if (u.ualign.record == 3)	you_are("gläubig"); /* EN else if (u.ualign.record == 3)	you_are("aligned"); */
+	else if (u.ualign.record > 0)	you_are("glaubensschwach"); /* EN else if (u.ualign.record > 0)	you_are("haltingly aligned"); */
+	else if (u.ualign.record == 0)	you_are("ungläubig"); /* EN else if (u.ualign.record == 0)	you_are("nominally aligned"); */
+	else if (u.ualign.record >= -3)	you_are("vom rechten Weg abgekommen"); /* EN else if (u.ualign.record >= -3)	you_have("strayed"); */
+	else if (u.ualign.record >= -8)	you_have("gesündigt"); /* EN else if (u.ualign.record >= -8)	you_have("sinned"); */ // TODO DE
 	else you_have("transgressed"); /* EN else you_have("transgressed"); */ // TODO DE
 #ifdef WIZARD
 	if (wizard) {
@@ -1924,7 +1924,7 @@ struct ext_func_tab extcmdlist[] = {
 	{"name", "name an item or type of object", ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */ // TODO DE
 	{"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, /* EN {"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, */ // TODO DE
 	{"pray", "pray to the gods for help", dopray, TRUE}, /* EN {"pray", "pray to the gods for help", dopray, TRUE}, */ // TODO DE
-	{"quit", "exit without saving current game", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */ // TODO DE
+	{"abbrechen", "exit without saving current game", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */ // TODO DE
 #ifdef STEED
 	{"ride", "ride (or stop riding) a monster", doride, FALSE}, /* EN {"ride", "ride (or stop riding) a monster", doride, FALSE}, */ // TODO DE
 #endif

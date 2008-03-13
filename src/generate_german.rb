@@ -2971,7 +2971,7 @@ def ausgabe_nouns
     "/* Klassen (role.c) */",
     "/* Archäologe */",
     # "NOUN_ARCHAEOLOGE", "NOUN_ARCHAEOLOGIN"
-    dekliniere_substantiv("NOUN_HILFSKRAFT","Hilfskraft","","Hilfskräft","e","maskulin"),
+    dekliniere_substantiv("NOUN_HILFSKRAFT","Hilfskraft","","Hilfskräft","e","feminin"),
     dekliniere_substantiv("NOUN_FELDFORSCHER","Feldforscher","s","Feldforscher","","maskulin"),
     dekliniere_substantiv("NOUN_FELDFORSCHERIN","Feldforscherin","","Feldforscherinn","en","feminin"),
     dekliniere_substantiv("NOUN_EXHUMIERER","Exhumierer","s","Exhumierer","","maskulin"),

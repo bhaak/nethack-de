@@ -590,10 +590,10 @@ outheader()
 	char linebuf[BUFSZ];
 	register char *bp;
 
-	Strcpy(linebuf, " No  Points     Name"); /* EN Strcpy(linebuf, " No  Points     Name"); */ // TODO DE
+	Strcpy(linebuf, " Nr  Punkte     Name"); /* EN Strcpy(linebuf, " No  Points     Name"); */
 	bp = eos(linebuf);
 	while(bp < linebuf + COLNO - 9) *bp++ = ' ';
-	Strcpy(bp, "Hp [max]"); /* EN Strcpy(bp, "Hp [max]"); */ // TODO DE
+	Strcpy(bp, "Tp [max]"); /* EN Strcpy(bp, "Hp [max]"); */
 	topten_print(linebuf);
 #ifdef DUMP_LOG
 	dump("", linebuf);

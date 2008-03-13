@@ -460,10 +460,10 @@ boolean taken;
 
 	if (invent) {
 	    if(taken)
-		Sprintf(qbuf,"MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wissen, NEUER_SATZ was SUBJECT_IM_SATZ PRONOMEN_PERSONAL hattest, NEUER_SATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s?", /* EN Sprintf(qbuf,"Do you want to see what you had when you %s?", */
+		Sprintf(qbuf,"SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wissen, NEUER_SATZ was SUBJECT_IM_SATZ PRONOMEN_PERSONAL hattest, NEUER_SATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s?", /* EN Sprintf(qbuf,"Do you want to see what you had when you %s?", */
 			(how == QUIT) ? "abgebrochen VERB_HABEN" : "gestorben VERB_SEIN"); /* EN (how == QUIT) ? "quit" : "died"); */
 	    else
-		Strcpy(qbuf,"MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_HABE identifiziert haben?"); /* EN Strcpy(qbuf,"Do you want your possessions identified?"); */
+		Strcpy(qbuf,"SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_HABE identifiziert haben?"); /* EN Strcpy(qbuf,"Do you want your possessions identified?"); */
 
 	    ask = should_query_disclose_option('i', &defquery);
 	    if (!done_stopprint) {
@@ -489,7 +489,7 @@ boolean taken;
 
 	ask = should_query_disclose_option('a', &defquery);
 	if (!done_stopprint) {
-	    c = ask ? yn_function("MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_EIGENSCHAFTs sehen?", /* EN c = ask ? yn_function("Do you want to see your attributes?", */
+	    c = ask ? yn_function("SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_EIGENSCHAFTs sehen?", /* EN c = ask ? yn_function("Do you want to see your attributes?", */
 
 				  ynqchars, defquery) : defquery;
 	    if (c == 'y')
@@ -521,7 +521,7 @@ boolean taken;
 
 	ask = should_query_disclose_option('c', &defquery);
 	if (!done_stopprint) {
-	    c = ask ? yn_function("MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_CONDUCT sehen?", /* EN c = ask ? yn_function("Do you want to see your conduct?", */
+	    c = ask ? yn_function("SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_CONDUCT sehen?", /* EN c = ask ? yn_function("Do you want to see your conduct?", */
 				  ynqchars, defquery) : defquery;
 	    if (c == 'y')
 		show_conduct(how >= PANICKED ? 1 : 2);
@@ -1213,7 +1213,7 @@ boolean want_dump;
      * includes all dead monsters, not just those killed by the player
      */
     if (ntypes != 0) {
-	c = ask ? yn_function("MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL eine Aufstellung aller bewzungenen Kreaturen sehen?", /* EN c = ask ? yn_function("Do you want an account of creatures vanquished?", */
+	c = ask ? yn_function("SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL eine Aufstellung aller bewzungenen Kreaturen sehen?", /* EN c = ask ? yn_function("Do you want an account of creatures vanquished?", */
 			      ynqchars, defquery) : defquery;
 	if (c == 'q') done_stopprint++;
 	if (c == 'y') {

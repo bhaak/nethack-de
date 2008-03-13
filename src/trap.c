@@ -3546,13 +3546,13 @@ boolean force;
 
 	switch (levl[x][y].doormask) {
 	    case D_NODOOR:
-		You("%s no door there.", Blind ? "feel" : "see"); /* EN You("%s no door there.", Blind ? "feel" : "see"); */ // TODO DE
+		You("%s da keine Türe.", Blind ? "VERB_SPUEREN" : "VERB_SEHEN"); /* EN You("%s no door there.", Blind ? "feel" : "see"); */
 		return(0);
 	    case D_ISOPEN:
 		pline("This door is safely open."); /* EN pline("This door is safely open."); */ // TODO DE
 		return(0);
 	    case D_BROKEN:
-		pline("This door is broken."); /* EN pline("This door is broken."); */ // TODO DE
+		pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */
 		return(0);
 	}
 

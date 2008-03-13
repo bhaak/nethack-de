@@ -1627,7 +1627,7 @@ boolean bymenu;
 
 	    Sprintf(buf, "   %s: %d", slev->proto, depth(&slev->dlevel));
 	    if (Is_stronghold(&slev->dlevel))
-		Sprintf(eos(buf), " (tune %s)", tune); /* EN Sprintf(eos(buf), " (tune %s)", tune); */ // TODO DE
+		Sprintf(eos(buf), " (Melodie %s)", tune); /* EN Sprintf(eos(buf), " (tune %s)", tune); */
 	    if (bymenu) {
 	    	schar lev = depth(&slev->dlevel);
 		any.a_void = 0;
@@ -1709,10 +1709,10 @@ boolean bymenu;
 
 	putstr(win, 0, "");
 	if (trap)
-	    Sprintf(buf, "Portal @ (%d,%d), hero @ (%d,%d)",
+	    Sprintf(buf, "Portal @ (%d,%d), hero @ (%d,%d)", /* EN Sprintf(buf, "Portal @ (%d,%d), hero @ (%d,%d)", */
 		trap->tx, trap->ty, u.ux, u.uy);
 	else
-	    Sprintf(buf, "No portal found.");
+	    Sprintf(buf, "Kein Portal gefunden."); /* EN Sprintf(buf, "No portal found."); */
 	putstr(win, 0, buf);
     }
 

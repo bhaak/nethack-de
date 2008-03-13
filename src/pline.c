@@ -362,7 +362,7 @@ impossible VA_DECL(const char *, s)
 	    paniclog("impossible", pbuf);
 	}
 	vpline(s,VA_ARGS);
-	pline("Program in disorder - perhaps you'd better #quit."); /* EN pline("Program in disorder - perhaps you'd better #quit."); */ // TODO DE
+	pline("Program durcheinander - vielleicht MODIFIER_KONJUNKTIV_II VERB_SOLLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL besser #abbrechen."); /* EN pline("Program in disorder - perhaps you'd better #quit."); */
 	VA_END();
 }
 
@@ -431,7 +431,7 @@ register struct monst *mtmp;
 					mtmp->mspeed == MFAST ? ", schnell" : /* EN mtmp->mspeed == MFAST ? ", fast" : */
 					mtmp->mspeed == MSLOW ? ", langsam" : /* EN mtmp->mspeed == MSLOW ? ", slow" : */
 					", ???? Geschwindigkeit"); /* EN ", ???? speed"); */
-	if (mtmp->mundetected)	  Strcat(info, ", concealed"); /* EN if (mtmp->mundetected)	  Strcat(info, ", concealed"); */ // TODO DE
+	if (mtmp->mundetected)	  Strcat(info, ", verborgen"); /* EN if (mtmp->mundetected)	  Strcat(info, ", concealed"); */ // TODO DE
 	if (mtmp->minvis)	  Strcat(info, ", unsichtbar"); /* EN if (mtmp->minvis)	  Strcat(info, ", invisible"); */
 	if (mtmp == u.ustuck)	  Strcat(info, /* EN if (mtmp == u.ustuck)	  Strcat(info, */ // TODO DE
 			(sticks(youmonst.data)) ? ", held by you" : /* EN (sticks(youmonst.data)) ? ", held by you" : */ // TODO DE
@@ -448,7 +448,10 @@ register struct monst *mtmp;
 	Strcpy(monnambuf, x_monnam(mtmp, ARTICLE_THE, (char *)0,
 	    (SUPPRESS_IT|SUPPRESS_INVISIBLE), FALSE));
 
-	pline("Status of %s (%s):  Level %d  TP %d(%d)  RK %d%s.", /* EN pline("Status of %s (%s):  Level %d  HP %d(%d)  AC %d%s.", */ // TODO DE
+	pline("Status %s %s (%s):  Stufe %d  TP %d(%d)  RK %d%s.", /* EN pline("Status of %s (%s):  Level %d  HP %d(%d)  AC %d%s.", */
+#ifdef GERMAN
+		(strncmp(monnambuf,"ARTIKEL_",8)==0) ? "KASUS_GENITIV" : "KASUS_DATIV von",
+#endif
 		monnambuf,
 		align_str(alignment),
 		mtmp->m_lev,
@@ -505,8 +508,8 @@ ustatusline()
 					makeplural(body_part(HAND)));
 	if (u.utrap)		Strcat(info, ", trapped"); /* EN if (u.utrap)		Strcat(info, ", trapped"); */ // TODO DE
 	if (Fast)		Strcat(info, Very_fast ?
-						", very fast" : ", fast"); /* EN ", very fast" : ", fast"); */ // TODO DE
-	if (u.uundetected)	Strcat(info, ", concealed"); /* EN if (u.uundetected)	Strcat(info, ", concealed"); */ // TODO DE
+						", sehr schnell" : ", schnell"); /* EN ", very fast" : ", fast"); */
+	if (u.uundetected)	Strcat(info, ", verborgen"); /* EN if (u.uundetected)	Strcat(info, ", concealed"); */
 	if (Invis)		Strcat(info, ", unsichtbar"); /* EN if (Invis)		Strcat(info, ", invisible"); */
 	if (u.ustuck) {
 	    if (sticks(youmonst.data))
@@ -516,16 +519,16 @@ ustatusline()
 	    Strcat(info, mon_nam(u.ustuck));
 	}
 
-	pline("Status of %s (%s%s):  Level %d  TP %d(%d)  RK %d%s.", /* EN pline("Status of %s (%s%s):  Level %d  HP %d(%d)  AC %d%s.", */ // TODO DE
+	pline("Status von %s (%s%s):  Stufe %d  TP %d(%d)  RK %d%s.", /* EN pline("Status of %s (%s%s):  Level %d  HP %d(%d)  AC %d%s.", */
 		plname,
-		    (u.ualign.record >= 20) ? "piously " : /* EN (u.ualign.record >= 20) ? "piously " : */ // TODO DE
-		    (u.ualign.record > 13) ? "devoutly " : /* EN (u.ualign.record > 13) ? "devoutly " : */ // TODO DE
-		    (u.ualign.record > 8) ? "fervently " : /* EN (u.ualign.record > 8) ? "fervently " : */ // TODO DE
-		    (u.ualign.record > 3) ? "stridently " : /* EN (u.ualign.record > 3) ? "stridently " : */ // TODO DE
+		    (u.ualign.record >= 20) ? "fromm " : /* EN (u.ualign.record >= 20) ? "piously " : */
+		    (u.ualign.record > 13) ? "inbrünstig " : /* EN (u.ualign.record > 13) ? "devoutly " : */
+		    (u.ualign.record > 8) ? "tiefgläubig " : /* EN (u.ualign.record > 8) ? "fervently " : */
+		    (u.ualign.record > 3) ? "strenggläubig " : /* EN (u.ualign.record > 3) ? "stridently " : */
 		    (u.ualign.record == 3) ? "" :
-		    (u.ualign.record >= 1) ? "haltingly " : /* EN (u.ualign.record >= 1) ? "haltingly " : */ // TODO DE
-		    (u.ualign.record == 0) ? "nominally " : /* EN (u.ualign.record == 0) ? "nominally " : */ // TODO DE
-					    "insufficiently ", /* EN "insufficiently ", */ // TODO DE
+		    (u.ualign.record >= 1) ? "schwach " : /* EN (u.ualign.record >= 1) ? "haltingly " : */
+		    (u.ualign.record == 0) ? "ungläubig " : /* EN (u.ualign.record == 0) ? "nominally " : */
+					    "ungenügend ", /* EN "insufficiently ", */
 		align_str(u.ualign.type),
 		Upolyd ? mons[u.umonnum].mlevel : u.ulevel,
 		Upolyd ? u.mh : u.uhp,
@@ -538,9 +541,9 @@ void
 self_invis_message()
 {
 	pline("%s %s.",
-	    Hallucination ? "Far out, man!  You" : "Gee!  All of a sudden, you", /* EN Hallucination ? "Far out, man!  You" : "Gee!  All of a sudden, you", */ // TODO DE
-	    See_invisible ? "can see right through yourself" : /* EN See_invisible ? "can see right through yourself" : */ // TODO DE
-		"can't see yourself"); /* EN "can't see yourself"); */ // TODO DE
+	    Hallucination ? "Voll geil, Mann!  SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN" : "Wahnsinn!  Auf einmal VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL", /* EN Hallucination ? "Far out, man!  You" : "Gee!  All of a sudden, you", */
+	    See_invisible ? "einfach durch OBJECT PRONOMEN_PERSONAL durchsehen" : /* EN See_invisible ? "can see right through yourself" : */
+		"OBJECT PRONOMEN_PERSONAL nicht sehen"); /* EN "can't see yourself"); */
 }
 
 #endif /* OVLB */

@@ -136,8 +136,8 @@ genericptr_t poolcnt;
 STATIC_OVL void
 dofindgem() /* Find a gem in the sparkling waters. */
 {
-	if (!Blind) You("spot a gem in the sparkling waters!"); /* EN if (!Blind) You("spot a gem in the sparkling waters!"); */ // TODO DE
-	else You_feel("a gem here!"); /* EN else You_feel("a gem here!"); */ // TODO DE
+	if (!Blind) You("VERB_ENTDECKEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GEM im glitzernden Wasser!"); /* EN if (!Blind) You("spot a gem in the sparkling waters!"); */
+	else You_feel("hier OBJECT ARTIKEL_UNBESTIMMTER NOUN_GEM!"); /* EN else You_feel("a gem here!"); */
 	(void) mksobj_at(rnd_class(DILITHIUM_CRYSTAL, LUCKSTONE-1),
 			 u.ux, u.uy, FALSE, FALSE);
 	SET_FOUNTAIN_LOOTED(u.ux,u.uy);
@@ -163,7 +163,7 @@ boolean isyou;
 			       couldsee(mtmp->mx, mtmp->my) &&
 			       mtmp->mpeaceful) {
 				pline("SUBJECT %s VERB_BRUELLEN:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */
-				verbalize("Hey, stop using that fountain!"); /* EN verbalize("Hey, stop using that fountain!"); */ // TODO DE
+				verbalize("Hey, MODIFIER_VERB_IMPERATIV VERB_LASSEN OBJECT ARTIKEL_BESTIMMTER NOUN_FOUNTAIN in Ruhe!"); /* EN verbalize("Hey, stop using that fountain!"); */
 				break;
 			    }
 			}
@@ -241,7 +241,7 @@ drinkfountain()
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			enlightenment(0);
 			exercise(A_WIS, TRUE);
-			pline_The("feeling subsides."); /* EN pline_The("feeling subsides."); */ // TODO DE
+			pline("Das Gefühl schwindet."); /* EN pline_The("feeling subsides."); */
 			break;
 
 		case 20: /* Foul water */
@@ -482,7 +482,7 @@ register struct obj *obj;
 			(rnd((dunlevs_in_dungeon(&u.uz)-dunlev(&u.uz)+1)*2)+5),
 			u.ux, u.uy);
 		    if (!Blind)
-		pline("Far below you, you see coins glistening in the water."); /* EN pline("Far below you, you see coins glistening in the water."); */ // TODO DE
+		pline("Tief OBJECT KASUS_DATIV unter PRONOMEN_PERSONAL VERB_SEHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL Münzen im Wasser glitzern."); /* EN pline("Far below you, you see coins glistening in the water."); */
 		    exercise(A_WIS, TRUE);
 		    newsym(u.ux,u.uy);
 		    break;

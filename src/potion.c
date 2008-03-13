@@ -359,7 +359,7 @@ dodrink()
 			if (Role_if(PM_ARCHEOLOGIST)) {
 		    pline("Nein, danke.  Fische lieben sich darin!"); /* Indiana-Jones-Referenz */
 			} else {
-		    pline("VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL KASUS_DATIV PRONOMEN_PERSONAL überhaupt vorstellen, was in dem Wasser lebt?"); /* EN pline("Do you know what lives in this water!");  */
+		    pline("SATZBEGINN VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL KASUS_DATIV PRONOMEN_PERSONAL überhaupt vorstellen, was in dem Wasser lebt?"); /* EN pline("Do you know what lives in this water!");  */
 			}
 			return 1;
 		}
