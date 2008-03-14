@@ -901,7 +901,7 @@ pleased(g_align)
 		    verbalize("Höre, %s!", /* EN verbalize("Hark, %s!", */
 			  youmonst.data->mlet == S_HUMAN ? (flags.female ? "Sterbliche" : "Sterblicher") : "Kreatur"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */
 		    verbalize(
-			"To enter the castle, thou must play the right tune!"); /* EN "To enter the castle, thou must play the right tune!"); */ // TODO DE
+			"Um das Schloss zu betreten, musst du die richtige Melodie spielen!"); /* EN "To enter the castle, thou must play the right tune!"); */
 		    u.uevent.uheard_tune++;
 		    break;
 		} else if (u.uevent.uheard_tune < 2) {
@@ -1246,8 +1246,8 @@ dosacrifice()
 		/* If different from altar, and altar is same as yours, */
 		/* it's a very good action */
 		if (u.ualign.record < ALIGNLIM)
-		    You_feel("appropriately %s.", align_str(u.ualign.type)); /* EN You_feel("appropriately %s.", align_str(u.ualign.type)); */ // TODO DE
-		else You_feel("you are thoroughly on the right path."); /* EN else You_feel("you are thoroughly on the right path."); */ // TODO DE
+		    Du_fuehlst_dich("richtig %s.", align_str(u.ualign.type)); /* EN You_feel("appropriately %s.", align_str(u.ualign.type)); */
+		else You("VERB_FUEHLEN, dass NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL eindeutig auf dem rechten Weg bist."); /* EN else You_feel("you are thoroughly on the right path."); */
 		adjalign(5);
 		value += 3;
 	    } else
@@ -1265,7 +1265,7 @@ dosacrifice()
 	    if (Hallucination)
 		    You("VERB_HAVE Heimweh."); /* EN You_feel("homesick."); */
 	    else
-		    Du_spuerst("den Drang an die Oberfläche zurückzukehren."); /* EN You_feel("an urge to return to the surface."); */
+		    You("VERB_VERSPUEREN den Drang an die Oberfläche zurückzukehren."); /* EN You_feel("an urge to return to the surface."); */
 	    return 1;
 	} else {
 	    /* The final Test.	Did you win? */
@@ -1421,13 +1421,13 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 	    if(u.ugangr < 0) u.ugangr = 0;
 	    if(u.ugangr != saved_anger) {
 		if (u.ugangr) {
-		    pline("%s seems %s.", u_gname(), /* EN pline("%s seems %s.", u_gname(), */ // TODO DE
-			  Hallucination ? "groovy" : "slightly mollified"); /* EN Hallucination ? "groovy" : "slightly mollified"); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHEINEN %s zu sein.", u_gname(), /* EN pline("%s seems %s.", u_gname(), */
+			  Hallucination ? "in Ordnung" : "etwas besänftigt"); /* EN Hallucination ? "groovy" : "slightly mollified"); */
 
 		    if ((int)u.uluck < 0) change_luck(1);
 		} else {
-		    pline("%s seems %s.", u_gname(), Hallucination ?  /* EN pline("%s seems %s.", u_gname(), Hallucination ? */ // TODO DE
-			  "cosmic (not a new fact)" : "mollified"); /* EN "cosmic (not a new fact)" : "mollified"); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHEINEN %s zu sein.", u_gname(), Hallucination ?  /* EN pline("%s seems %s.", u_gname(), Hallucination ? */
+			  "cosmic (not a new fact)" : "besänftigt"); /* EN "cosmic (not a new fact)" : "mollified"); */ // TODO DE
 
 		    if ((int)u.uluck < 0) u.uluck = 0;
 		}
@@ -1570,7 +1570,7 @@ dopray()
 
 #ifdef WIZARD
     if (wizard && p_type >= 0) {
-	if (yn("Force the gods to be pleased?") == 'y') { /* EN if (yn("Force the gods to be pleased?") == 'y') { */ // TODO DE
+	if (yn("Die Götter milde stimmen?") == 'y') { /* EN if (yn("Force the gods to be pleased?") == 'y') { */
 	    u.ublesscnt = 0;
 	    if (u.uluck < 0) u.uluck = 0;
 	    if (u.ualign.record <= 0) u.ualign.record = 1;
@@ -1612,7 +1612,7 @@ prayer_done()		/* M. Stephenson (1.0.3b) */
 	return(1);
     }
     if (Inhell) {
-	pline("Since you are in Gehennom, %s won't help you.", /* EN pline("Since you are in Gehennom, %s won't help you.", */ // TODO DE
+	pline("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL in _Gehennom_ VERB_SEIN, NEUER_SATZ wird %s KASUS_DATIV PRONOMEN_PERSONAL nicht helfen.", /* EN pline("Since you are in Gehennom, %s won't help you.", */
 	      align_gname(alignment));
 	/* haltingly aligned is least likely to anger */
 	if (u.ualign.record <= 0 || rnl(u.ualign.record))
@@ -1675,14 +1675,14 @@ doturn()
 		    (is_demon(youmonst.data) || is_undead(youmonst.data))) ||
 				u.ugangr > 6 /* "Die, mortal!" */) {
 
-		pline("For some reason, %s seems to ignore you.", u_gname()); /* EN pline("For some reason, %s seems to ignore you.", u_gname()); */ // TODO DE
+		pline("Aus irgendeinem Grund scheint %s KASUS_AKKUSATIV %s zu ignorieren.", u_gname()); /* EN pline("For some reason, %s seems to ignore you.", u_gname()); */
 		aggravate();
 		exercise(A_WIS, FALSE);
 		return(0);
 	}
 
 	if (Inhell) {
-	    pline("Since you are in Gehennom, %s won't help you.", u_gname()); /* EN pline("Since you are in Gehennom, %s won't help you.", u_gname()); */ // TODO DE
+	    pline("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL in _Gehennom_ VERB_SEIN, NEUER_SATZ wird %s KASUS_DATIV PRONOMEN_PERSONAL nicht helfen.", u_gname()); /* EN pline("Since you are in Gehennom, %s won't help you.", u_gname()); */
 	    aggravate();
 	    return(0);
 	}

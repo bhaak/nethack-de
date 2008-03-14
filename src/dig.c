@@ -1178,10 +1178,10 @@ zap_dig()
 	    if (!Is_airlevel(&u.uz) && !Is_waterlevel(&u.uz) && !Underwater) {
 		if (u.dz < 0 || On_stairs(u.ux, u.uy)) {
 		    if (On_stairs(u.ux, u.uy))
-			pline_The("beam VER off the %s und VERB_HIT OBJECT ARTIKEL_BESTIMMTER %s.", /* EN pline_The("beam bounces off the %s and hits the %s.", */ // TODO DE
+			pline_The("NOUN_BEAM VERB_ABPRALLEN OBJECT KASUS_DATIV _von_ ARTIKEL_BESTIMMTER %s SATZKLAMMER und VERB_HIT NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER %s.", /* EN pline_The("beam bounces off the %s and hits the %s.", */
 			      (u.ux == xdnladder || u.ux == xupladder) ?
 			      "NOUN_LADDER" : "NOUN_STAIRS", ceiling(u.ux, u.uy)); /* EN "ladder" : "stairs", ceiling(u.ux, u.uy)); */
-		    You("VERB_LOESEN einen Stein _von_ OBJECT KASUS_DATIV ARTIKEL_BESTIMMTER %s.", ceiling(u.ux, u.uy)); /* EN You("loosen a rock from the %s.", ceiling(u.ux, u.uy)); */ // TODO DE
+		    You("VERB_LOESEN einen Stein OBJECT KASUS_DATIV _von_ ARTIKEL_BESTIMMTER %s.", ceiling(u.ux, u.uy)); /* EN You("loosen a rock from the %s.", ceiling(u.ux, u.uy)); */
 		    pline("Er fällt KASUS_DATIV PRONOMEN_PERSONAL auf KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s!", body_part(HEAD)); /* EN pline("It falls on your %s!", body_part(HEAD)); */
 		    losehp(rnd((uarmh && is_metallic(uarmh)) ? 2 : 6),
 			   "ADJEKTIV_FALLEND NOUN_GEM_ROCK", KILLED_BY_AN); /* EN "falling rock", KILLED_BY_AN); */

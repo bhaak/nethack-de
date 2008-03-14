@@ -797,9 +797,9 @@ int thrown;
 			    You("VERB_HIT OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV mit %s NOUN_EGG%s.", /* EN You("hit %s with %s egg%s.", */
 				mon_nam(mon), eggp, plur(cnt));
 			    if (touch_petrifies(mdat) && !stale_egg(obj)) {
-				pline_The("egg%s %s alive any more...", /* EN pline_The("egg%s %s alive any more...", */ // TODO DE
+				pline_The("NOUN_EGG%s %s nicht mehr frisch ...", /* EN pline_The("egg%s %s alive any more...", */
 				      plur(cnt),
-				      (cnt == 1L) ? "isn't" : "aren't"); /* EN (cnt == 1L) ? "isn't" : "aren't"); */ // TODO DE
+				      (cnt == 1L) ? "VERB_SEIN" : "VERB_SEIN"); /* EN (cnt == 1L) ? "isn't" : "aren't"); */
 				if (obj->timed) obj_stop_timers(obj);
 				obj->otyp = ROCK;
 				obj->oclass = GEM_CLASS;
@@ -809,7 +809,7 @@ int thrown;
 				obj->owt = weight(obj);
 				if (thrown) place_object(obj, mon->mx, mon->my);
 			    } else {
-				pline("Platsch!"); /* EN pline("Splat!"); */
+				pline("Klatsch!"); /* EN pline("Splat!"); */
 				useup_eggs(obj);
 				exercise(A_WIS, FALSE);
 			    }
@@ -1250,7 +1250,7 @@ struct attack *mattk;
 	    }
 	    /* give the object to the character */
 	    otmp = hold_another_object(otmp, "You snatched but dropped %s.", /* EN otmp = hold_another_object(otmp, "You snatched but dropped %s.", */ // TODO DE
-				       doname(otmp), "You steal: "); /* EN doname(otmp), "You steal: "); */ // TODO DE
+				       doname(otmp), "SUBJECT PRONOMEN_PERSONAL VERB_STEHLEN: "); /* EN doname(otmp), "You steal: "); */
 	    if (otmp->where != OBJ_INVENT) continue;
 	    if (otmp->otyp == CORPSE &&
 		    touch_petrifies(&mons[otmp->corpsenm]) && !uarmg) {

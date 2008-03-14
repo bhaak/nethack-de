@@ -129,24 +129,25 @@ init_uhunger()
 }
 
 static const struct { const char *txt; int nut; } tintxts[] = {
-	{"deep fried",	 60}, /* EN {"deep fried",	 60}, */ // TODO DE
-	{"eingelegt",	 40}, /* EN {"pickled",	 40}, */ // TODO DE
+	{"ADJEKTIV_deep fried",	 60}, /* EN {"deep fried",	 60}, */
+	{"ADJEKTIV_EINGELEGT",	 40}, /* EN {"pickled",	 40}, */
 	{"soup made from", 20}, /* EN {"soup made from", 20}, */ // TODO DE
-	{"püriert",	500}, /* EN {"pureed",	500}, */ // TODO DE
+	{"ADJEKTIV_PUERIERT",	500}, /* EN {"pureed",	500}, */
 #define ROTTEN_TIN 4
-	{"vergammelt",	-50}, /* EN {"rotten",	-50}, */ // TODO DE
+	{"ADJEKTIV_VERGAMMELT",	-50}, /* EN {"rotten",	-50}, */
 #define HOMEMADE_TIN 5
-	{"hausgemacht",	 50}, /* EN {"homemade",	 50}, */ // TODO DE
-	{"stir fried",   80}, /* EN {"stir fried",   80}, */ // TODO DE
-	{"kandiert",      100}, /* EN {"candied",      100}, */ // TODO DE
-	{"gesiedet/gekocht",       50}, /* EN {"boiled",       50}, */ // TODO DE
-	{"gedoerrt/getrocknet",        55}, /* EN {"dried",        55}, */ // TODO DE
-	{"szechuan",     70}, /* EN {"szechuan",     70}, */ // TODO DE
+	{"ADJEKTIV_HAUSGEMACHT",	 50}, /* EN {"homemade",	 50}, */
+	{"ADJEKTIV_stir fried",   80}, /* EN {"stir fried",   80}, */ // TODO DE
+	{"ADJEKTIV_KANDIERT",      100}, /* EN {"candied",      100}, */
+	{"ADJEKTIV_GEKOCHT",       50}, /* EN {"boiled",       50}, */ 
+	{"ADJEKTIV_GETROCKNET",        55}, /* EN {"dried",        55}, */
+#define CHINESE_TIN 10
+	{"ADJEKTIV_SUESS_SAUER",     70}, /* EN {"szechuan",     70}, */
 #define FRENCH_FRIED_TIN 11
-	{"frittiert", 40}, /* EN {"french fried", 40}, */ // TODO DE
-	{"sautiert",      95}, /* EN {"sauteed",      95}, */ // TODO DE
-	{"gebraten",      80}, /* EN {"broiled",      80}, */ // TODO DE // 	braten |briet, gebraten|	i i	to broil	 	erhitzen |erhitzte, erhitzt|	i i	to broil	 	grillen |grillte, gegrillt|	i i	to broil	 	kochen |kochte, gekocht|	i i	to broil	 	großer Hitze aussetzen
-	{"geraeuchert",       50}, /* EN {"smoked",       50}, */ // TODO DE
+	{"ADJEKTIV_FRITTIERT", 40}, /* EN {"french fried", 40}, */
+	{"ADJEKTIV_SAUTIERT",      95}, /* EN {"sauteed",      95}, */
+	{"ADJEKTIV_GEBRATEN",      80}, /* EN {"broiled",      80}, */
+	{"ADJEKTIV_GERAEUCHERT",       50}, /* EN {"smoked",       50}, */
 	{"", 0}
 };
 #define TTSZ	SIZE(tintxts)
@@ -443,7 +444,7 @@ register int pm;
 	if (!CANNIBAL_ALLOWED() && your_race(&mons[pm])) {
 		if (Upolyd)
 			You("have a bad feeling deep inside."); /* EN You("have a bad feeling deep inside."); */ // TODO DE
-		You("cannibal!  You will regret this!"); /* EN You("cannibal!  You will regret this!"); */ // TODO DE
+		You("Kannibale!  SUBJECT PRONOMEN_PERSONAL VERB_WERDEN das noch bereuen!"); /* EN You("cannibal!  You will regret this!"); */
 		HAggravate_monster |= FROMOUTSIDE;
 		change_luck(-rn1(4,2));		/* -5..-2 */
 	}
@@ -482,7 +483,7 @@ register int pm;
 	    case PM_FAMINE:
 		{ char buf[BUFSZ];
 		    pline("Eating that is instantly fatal."); /* EN pline("Eating that is instantly fatal."); */ // TODO DE
-		    Sprintf(buf, "unwisely ate the body of %s", /* EN Sprintf(buf, "unwisely ate the body of %s", */ // TODO DE
+		    Sprintf(buf, "aß dummerweise KASUS_GENITIV %s Körper", /* EN Sprintf(buf, "unwisely ate the body of %s", */
 			    mons[pm].mname);
 		    killer = buf;
 		    killer_format = NO_KILLER_PREFIX;
@@ -1041,8 +1042,8 @@ opentin()		/* called during each move whilst opening a tin */
 	    victual.piece = (struct obj *)0;
 	    victual.fullwarn = victual.eating = victual.doreset = FALSE;
 
-	    You("VERB_CONSUME %s %s.", tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */
-			mons[tin.tin->corpsenm].mname);
+	    You("VERB_CONSUME %s %s.", (r == CHINESE_TIN) ? mons[tin.tin->corpsenm].mname : tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */
+			(r != CHINESE_TIN) ? mons[tin.tin->corpsenm].mname : tintxts[r].txt); /* EN mons[tin.tin->corpsenm].mname); */
 
 	    /* KMH, conduct */
 	    u.uconduct.food++;
@@ -1099,7 +1100,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    }
 
 	    if (!tin.tin->cursed)
-		pline("This makes you feel like %s!", /* EN pline("This makes you feel like %s!", */ // TODO DE
+		pline("Damit VERB_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL wie %s!", /* EN pline("This makes you feel like %s!", */
 		      Hallucination ? "Popi" : "Popeye"); /* EN  Hallucination ? "Swee'pea" : "Popeye"); */
 	    lesshungry(600);
 	    gainstr(tin.tin, 0);
@@ -1190,7 +1191,7 @@ struct obj *obj;
 		else Du_fuehlst_dich("ziemlich %s.", body_part(LIGHT_HEADED)); /* EN else You_feel("rather %s.", body_part(LIGHT_HEADED)); */
 		make_confused(HConfusion + d(2,4),FALSE);
 	} else if(!rn2(4) && !Blind) {
-		Dir_wird("schwarz vor Augen."); /* EN pline("Everything suddenly goes dark."); */
+		Dir_wird("plötzlich schwarz vor Augen."); /* EN pline("Everything suddenly goes dark."); */
 		make_blinded((long)d(2,10),FALSE);
 		if (!Blind) Your(vision_clears);
 	} else if(!rn2(3)) {
@@ -1859,9 +1860,9 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	if (u.uedibility) {
 		int res = edibility_prompts(otmp);
 		if (res) {
-		    // Your("%s stops tingling and your sense of smell returns to normal.", /* EN Your("%s stops tingling and your sense of smell returns to normal.", */ // TODO DE
-			//body_part(NOSE));
-		    //u.uedibility = 0; // REMOVE ME
+		    Your("%s stops tingling and your sense of smell returns to normal.", /* EN Your("%s stops tingling and your sense of smell returns to normal.", */ // TODO DE
+		body_part(NOSE));
+		    u.uedibility = 0;
 		    if (res == 1) return 0;
 		}
 	}

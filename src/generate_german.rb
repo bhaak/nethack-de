@@ -2598,9 +2598,9 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_BAALZEBUB"
     #dekliniere_substantiv("NOUN_ASMODEUS"
     #dekliniere_substantiv("NOUN_DEMOGORGON"
-    dekliniere_substantiv("NOUN_DEATH","Tod","es","Tod","e","maskulin"),
-    dekliniere_substantiv("NOUN_PESTILENCE","Pest","","","","feminin"),
-    dekliniere_substantiv("NOUN_FAMINE","Hunger","s","","","maskulin"),
+    dekliniere_eigenname("NOUN_DEATH","Tod","maskulin"),
+    dekliniere_eigenname("NOUN_PESTILENCE","Pest","feminin"),
+    dekliniere_eigenname("NOUN_FAMINE","Hunger","maskulin"),
     #dekliniere_substantiv("NOUN_MAIL_DAEMON"
     dekliniere_substantiv("NOUN_DJINNI", "Dschinn", "es", "Dschinn", "", "maskulin"),
     #dekliniere_substantiv("NOUN_SANDESTIN"
