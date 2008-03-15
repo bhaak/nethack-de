@@ -1048,9 +1048,9 @@ register struct obj	*sobj;
 	case SCR_IDENTIFY:
 		/* known = TRUE; */
 		if(confused)
-			You("VERB_IDENTIFIZIEREN this as an identify scroll."); /* EN You("identify this as an identify scroll."); */ // TODO DE
+			You("VERB_IDENTIFIZIEREN sie als eine Identifizierungsschriftrolle."); /* EN You("identify this as an identify scroll."); */
 		else
-			pline("This is an identify scroll."); /* EN pline("This is an identify scroll."); */ // TODO DE
+			pline("Es ist eine Identifizierungsschriftrolle."); /* EN pline("This is an identify scroll."); */
 		if (sobj->blessed || (!sobj->cursed && !rn2(5))) {
 			cval = rn2(5);
 			/* Note: if rn2(5)==0, identify all items */
@@ -1207,7 +1207,7 @@ register struct obj	*sobj;
 				int mdmg;
 
 				if (cansee(mtmp->mx, mtmp->my)) {
-				    pline("%s is hit by %s!", Monnam(mtmp), /* EN pline("%s is hit by %s!", Monnam(mtmp), */ // TODO DE
+				    pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV _von_ %s getroffen!", Monnam(mtmp), /* EN pline("%s is hit by %s!", Monnam(mtmp), */
 	    	    	    			doname(otmp2));
 				    if (mtmp->minvis && !canspotmon(mtmp))
 					map_invisible(mtmp->mx, mtmp->my);
@@ -1216,14 +1216,14 @@ register struct obj	*sobj;
 				if (helmet) {
 				    if(is_metallic(helmet)) {
 					if (canspotmon(mtmp))
-					    pline("Fortunately, %s is wearing a hard helmet.", mon_nam(mtmp)); /* EN pline("Fortunately, %s is wearing a hard helmet.", mon_nam(mtmp)); */ // TODO DE
+					    pline("Glücklicherweise SUBJECT_IM_SATZ VERB_TRAGEN %s einen schützenden Helm.", mon_nam(mtmp)); /* EN pline("Fortunately, %s is wearing a hard helmet.", mon_nam(mtmp)); */
 					else if (flags.soundok)
 					    You_hear("a clanging sound."); /* EN You_hear("a clanging sound."); */ // TODO DE
 					if (mdmg > 2) mdmg = 2;
 				    } else {
 					if (canspotmon(mtmp))
-					    pline("%s's %s does not protect %s.", /* EN pline("%s's %s does not protect %s.", */ // TODO DE
-						Monnam(mtmp), xname(helmet),
+					    pline("SUBJECT %s VERB_SCHUETZEN OBJECT %s nicht.", /* EN pline("%s's %s does not protect %s.", */
+						genitivattribut_zu_wort(Monnam(mtmp), xname(helmet)), /* EN Monnam(mtmp), xname(helmet), */
 						mhim(mtmp));
 				    }
 				}
@@ -1255,7 +1255,7 @@ register struct obj	*sobj;
 				!Passes_walls &&
 				!noncorporeal(youmonst.data) &&
 				!unsolid(youmonst.data)) {
-			You("are hit by %s!", doname(otmp2)); /* EN You("are hit by %s!", doname(otmp2)); */ // TODO DE
+			Dich("trifft SUBJECT_IM_SATZ %s!", doname(otmp2)); /* EN You("are hit by %s!", doname(otmp2)); */
 			dmg = dmgval(otmp2, &youmonst) * otmp2->quan;
 			if (uarmh && !sobj->cursed) {
 			    if(is_metallic(uarmh)) {
@@ -1281,7 +1281,7 @@ register struct obj	*sobj;
 	case SCR_PUNISHMENT:
 		known = TRUE;
 		if(confused || sobj->blessed) {
-			Du_fuehlst_dich("guilty."); /* EN You_feel("guilty."); */ // TODO DE
+			Du_fuehlst_dich("schuldig."); /* EN You_feel("guilty."); */
 			break;
 		}
 		punish(sobj);
@@ -1361,7 +1361,7 @@ struct obj *obj;
 			pline("Plötzlich spendet nur noch %s Licht!", /* EN pline("Suddenly, the only light left comes from %s!", */
 				the(xname(uwep)));
 		    else
-			You("are surrounded by darkness!"); /* EN You("are surrounded by darkness!"); */ // TODO DE in Dunkelheit getaucht?
+			Dich("umgibt Dunkelheit!"); /* EN You("are surrounded by darkness!"); */
 		}
 
 		/* the magic douses lamps, et al, too */
@@ -1501,7 +1501,7 @@ do_class_genocide()
 				mongone(mtmp);
 				gonecnt++;
 			    }
-	pline("Eliminated %d monster%s.", gonecnt, plur(gonecnt)); /* EN pline("Eliminated %d monster%s.", gonecnt, plur(gonecnt)); */ // TODO DE
+	pline("%d Monster%s vernichtet.", gonecnt, plur(gonecnt)); /* EN pline("Eliminated %d monster%s.", gonecnt, plur(gonecnt)); */
 			    return;
 			} else
 #endif
@@ -1581,7 +1581,7 @@ do_class_genocide()
 		}
 		if (gameover || u.uhp == -1) {
 		    killer_format = KILLED_BY_AN;
-		    killer = "scroll of genocide"; /* EN killer = "scroll of genocide"; */ // TODO DE
+		    killer = "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_GENOCIDE"; /* EN killer = "scroll of genocide"; */
 		    if (gameover) done(GENOCIDED);
 		}
 		return;
@@ -1704,7 +1704,7 @@ int how;
 		    killer = "imperious order"; /* EN killer = "imperious order"; */ // TODO DE
 		} else { /* selected player deliberately, not confused */
 		    killer_format = KILLED_BY_AN;
-		    killer = "scroll of genocide"; /* EN killer = "scroll of genocide"; */ // TODO DE
+		    killer = "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_GENOCIDE"; /* EN killer = "scroll of genocide"; */
 		}
 
 	/* Polymorphed characters will die as soon as they're rehumanized. */

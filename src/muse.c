@@ -1379,14 +1379,14 @@ struct monst *mtmp;
 				if (helmet) {
 				    if(is_metallic(helmet)) {
 					if (canspotmon(mtmp2))
-					    pline("Fortunately, %s is wearing a hard helmet.", mon_nam(mtmp2)); /* EN pline("Fortunately, %s is wearing a hard helmet.", mon_nam(mtmp2)); */ // TODO DE
+					    pline("Glücklicherweise SUBJECT_IM_SATZ VERB_TRAGEN %s einen schützenden Helm.", mon_nam(mtmp2)); /* EN pline("Fortunately, %s is wearing a hard helmet.", mon_nam(mtmp2)); */
 					else if (flags.soundok)
 					    You_hear("a clanging sound."); /* EN You_hear("a clanging sound."); */ // TODO DE
 					if (mdmg > 2) mdmg = 2;
 				    } else {
 					if (canspotmon(mtmp2))
-					    pline("%s's %s does not protect %s.", /* EN pline("%s's %s does not protect %s.", */ // TODO DE
-						Monnam(mtmp2), xname(helmet),
+					    pline("SUBJECT %s VERB_SCHUETZEN OBJECT %s nicht.", /* EN pline("%s's %s does not protect %s.", */
+						genitivattribut_zu_wort(Monnam(mtmp2), xname(helmet)), /* EN Monnam(mtmp2), xname(helmet), */
 						mhim(mtmp2));
 				    }
 				}
@@ -1421,7 +1421,7 @@ struct monst *mtmp;
 			    !Passes_walls &&
 			    !noncorporeal(youmonst.data) &&
 			    !unsolid(youmonst.data)) {
-			You("are hit by %s!", doname(otmp2)); /* EN You("are hit by %s!", doname(otmp2)); */ // TODO DE
+			Dich("trifft SUBJECT_IM_SATZ %s!", doname(otmp2)); /* EN You("are hit by %s!", doname(otmp2)); */
 			dmg = dmgval(otmp2, &youmonst) * otmp2->quan;
 			if (uarmh) {
 			    if(is_metallic(uarmh)) {

@@ -1604,9 +1604,9 @@ boolean bymenu;
 	/* Most entrances are uninteresting. */
 	if (dptr->entry_lev != 1) {
 	    if (dptr->entry_lev == nlev)
-		Strcat(buf, ", entrance from below"); /* EN Strcat(buf, ", entrance from below"); */ // TODO DE
+		Strcat(buf, ", Eingang von unterhalb"); /* EN Strcat(buf, ", entrance from below"); */
 	    else
-		Sprintf(eos(buf), ", entrance on %d", /* EN Sprintf(eos(buf), ", entrance on %d", */ // TODO DE
+		Sprintf(eos(buf), ", Eingang auf %d", /* EN Sprintf(eos(buf), ", entrance on %d", */
 			dptr->depth_start + dptr->entry_lev - 1);
 	}
 	if (bymenu) {

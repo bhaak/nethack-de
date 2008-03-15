@@ -247,11 +247,11 @@ boolean forcecontrol;
 
 	if (Polymorph_control || forcecontrol) {
 		do {
-			getlin("Become what kind of monster? [type the name]", /* EN getlin("Become what kind of monster? [type the name]", */ // TODO DE
+			getlin("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WAEHLEN OBJECT PRONOMEN_POSSESSIV NOUN_DASEINSFORM? [NEUER_SATZ MODIFIER_VERB_IMPERATIV VERB_EINGEBEN den Namen SATZKLAMMER]", /* EN getlin("Become what kind of monster? [type the name]", */ // TODO DE
 				buf);
 			mntmp = name_to_mon(buf);
 			if (mntmp < LOW_PM)
-				pline("I've never heard of such monsters."); /* EN pline("I've never heard of such monsters."); */ // TODO DE
+				pline("Ich habe noch nie von solchen Wesen gehört."); /* EN pline("I've never heard of such monsters."); */
 			/* Note:  humans are illegal as monsters, but an
 			 * illegal monster forces newman(), which is what we
 			 * want if they specified a human.... */
@@ -336,7 +336,7 @@ int	mntmp;
 	int mlvl;
 
 	if (mvitals[mntmp].mvflags & G_GENOD) {	/* allow G_EXTINCT */
-		You_feel("rather %s-ish.",mons[mntmp].mname); /* EN You_feel("rather %s-ish.",mons[mntmp].mname); */ // TODO DE
+		Du_fuehlst_dich("ziemlich %s-ish.",mons[mntmp].mname); /* EN You_feel("rather %s-ish.",mons[mntmp].mname); */ // TODO DE
 		exercise(A_WIS, TRUE);
 		return(0);
 	}
@@ -405,7 +405,7 @@ int	mntmp;
 	if (Stone_resistance && Stoned) { /* parnes@eniac.seas.upenn.edu */
 		Stoned = 0;
 		delayed_killer = 0;
-		You("no longer seem to be petrifying."); /* EN You("no longer seem to be petrifying."); */ // TODO DE
+		You("VERB_SCHEINEN nicht mehr zu versteinern."); /* EN You("no longer seem to be petrifying."); */
 	}
 	if (Sick_resistance && Sick) {
 		make_sick(0L, (char *) 0, FALSE, SICK_ALL);
@@ -495,8 +495,8 @@ int	mntmp;
 #endif
 
 	if (flags.verbose) {
-	    static const char use_thec[] = "Use the command #%s um %s."; /* EN static const char use_thec[] = "Use the command #%s to %s."; */ // TODO DE
-	    static const char monsterc[] = "monster"; /* EN static const char monsterc[] = "monster"; */ // TODO DE
+	    static const char use_thec[] = "SATZBEGINN VERB_BENUTZEN den Befehl #%s um %s."; /* EN static const char use_thec[] = "Use the command #%s to %s."; */
+	    static const char monsterc[] = "monster";
 	    if (can_breathe(youmonst.data))
 		pline(use_thec,monsterc,"use your breath weapon"); /* EN pline(use_thec,monsterc,"use your breath weapon"); */ // TODO DE
 	    if (attacktype(youmonst.data, AT_SPIT))
@@ -508,7 +508,7 @@ int	mntmp;
 	    if (is_hider(youmonst.data))
 		pline(use_thec,monsterc,"OBJECT PRONOMEN_PERSONAL zu verstecken"); /* EN pline(use_thec,monsterc,"hide"); */
 	    if (is_were(youmonst.data))
-		pline(use_thec,monsterc,"summon help"); /* EN pline(use_thec,monsterc,"summon help"); */ // TODO DE
+		pline(use_thec,monsterc,"Hilfe zu rufen"); /* EN pline(use_thec,monsterc,"summon help"); */
 	    if (webmaker(youmonst.data))
 		pline(use_thec,monsterc,"ein Netz zu spinnen"); /* EN pline(use_thec,monsterc,"spin a web"); */
 	    if (u.umonnum == PM_GREMLIN)
@@ -518,9 +518,9 @@ int	mntmp;
 	    if (is_mind_flayer(youmonst.data))
 		pline(use_thec,monsterc,"emit a mental blast"); /* EN pline(use_thec,monsterc,"emit a mental blast"); */ // TODO DE
 	    if (youmonst.data->msound == MS_SHRIEK) /* worthless, actually */
-		pline(use_thec,monsterc,"shriek"); /* EN pline(use_thec,monsterc,"shriek"); */ // TODO DE
+		pline(use_thec,monsterc,"zu MODIFIER_VERB_INFINITIV VERB_SHRIEK"); /* EN pline(use_thec,monsterc,"shriek"); */
 	    if (lays_eggs(youmonst.data) && flags.female)
-		pline(use_thec,"sit","ein Ei zu legen"); /* EN pline(use_thec,"sit","lay an egg"); */
+		pline(use_thec,"sitzen","ein Ei zu legen"); /* EN pline(use_thec,"sit","lay an egg"); */
 	}
 	/* you now know what an egg of your type looks like */
 	if (lays_eggs(youmonst.data)) {
@@ -549,7 +549,7 @@ int	mntmp;
 	if (u.utrap && (u.utraptype == TT_WEB || u.utraptype == TT_BEARTRAP) &&
 		(amorphous(youmonst.data) || is_whirly(youmonst.data) || unsolid(youmonst.data) ||
 		  (youmonst.data->msize <= MZ_SMALL && u.utraptype == TT_BEARTRAP))) {
-	    You("are no longer stuck in the %s.", /* EN You("are no longer stuck in the %s.", */ // TODO DE
+	    You("VERB_STECKEN nicht länger OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s fest.", /* EN You("are no longer stuck in the %s.", */
 		    u.utraptype == TT_WEB ? "NOUN_WEB" : "NOUN_BEAR_TRAP"); /* EN u.utraptype == TT_WEB ? "web" : "bear trap"); */
 	    /* probably should burn webs too if PM_FIRE_ELEMENTAL */
 	    u.utrap = 0;
@@ -632,7 +632,7 @@ break_armor()
 		     shk_your(yourbuf, otmp), xname(otmp));
 	    } else {
 		if (donning(otmp)) cancel_don();
-		Your("helmet falls to the %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE
+		Your("helmet falls to the %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE zu_Boden
 		(void) Helmet_off();
 		dropx(otmp);
 	    }
@@ -642,7 +642,7 @@ break_armor()
 	if ((otmp = uarmg) != 0) {
 	    if (donning(otmp)) cancel_don();
 	    /* Drop weapon along with gloves */
-	    You("drop your gloves%s!", uwep ? " and weapon" : ""); /* EN You("drop your gloves%s!", uwep ? " and weapon" : ""); */ // TODO DE
+	    You("VERB_DROP OBJECT PRONOMEN_POSSESSIV NOUN_GLOVESs%s SATZKLAMMER!", uwep ? " und NEUES_OBJECT OBJECT NOUN_WEAPON" : ""); /* EN You("drop your gloves%s!", uwep ? " and weapon" : ""); */
 	    drop_weapon(0);
 	    (void) Gloves_off();
 	    dropx(otmp);
@@ -817,21 +817,21 @@ dospinweb()
 				sweep[0] = '\0';
 				switch(u.ustuck->data->mattk[i].adtyp) {
 					case AD_FIRE:
-						Strcpy(sweep, "ignites and "); /* EN Strcpy(sweep, "ignites and "); */ // TODO DE
+						Strcpy(sweep, "VERB_ENTZUENDEN sich und "); /* EN Strcpy(sweep, "ignites and "); */
 						break;
 					case AD_ELEC:
-						Strcpy(sweep, "fries and "); /* EN Strcpy(sweep, "fries and "); */ // TODO DE
+						Strcpy(sweep, "VERB_VERBRUTZELN und "); /* EN Strcpy(sweep, "fries and "); */
 						break;
 					case AD_COLD:
 						Strcpy(sweep,
-						      "freezes, shatters and "); /* EN "freezes, shatters and "); */ // TODO DE
+						      "VERB_GEFRIEREN, VERB_ZERBRECHEN und "); /* EN "freezes, shatters and "); */
 						break;
 				}
-				pline_The("web %sis swept away!", sweep); /* EN pline_The("web %sis swept away!", sweep); */ // TODO DE
+				pline_The("NOUN_WEB %s VERB_WERDEN fortgerissen!", sweep); /* EN pline_The("web %sis swept away!", sweep); */
 			}
 			return(0);
 		}		     /* default: a nasty jelly-like creature */
-		pline_The("web dissolves into %s.", mon_nam(u.ustuck)); /* EN pline_The("web dissolves into %s.", mon_nam(u.ustuck)); */ // TODO DE
+		pline_The("NOUN_WEB VERB_AUFLOESEN OBJECT KASUS_DATIV _in_ %s SATZKLAMMER.", mon_nam(u.ustuck)); /* EN pline_The("web dissolves into %s.", mon_nam(u.ustuck)); */
 		return(0);
 	}
 	if (u.utrap) {
@@ -846,7 +846,7 @@ dospinweb()
 			bury_objs(u.ux, u.uy);
 			newsym(u.ux, u.uy);
 			return(1);
-		case SQKY_BOARD: pline_The("squeaky board is muffled."); /* EN case SQKY_BOARD: pline_The("squeaky board is muffled."); */ // TODO DE
+		case SQKY_BOARD: pline_The("NOUN_SQUEAKY_BOARD is muffled."); /* EN case SQKY_BOARD: pline_The("squeaky board is muffled."); */ // TODO DE
 			deltrap(ttmp);
 			newsym(u.ux, u.uy);
 			return(1);
@@ -865,7 +865,7 @@ dospinweb()
 			newsym(u.ux, u.uy);
 			return 1;
 		case ROLLING_BOULDER_TRAP:
-			You("spin a web, jamming the trigger."); /* EN You("spin a web, jamming the trigger."); */ // TODO DE
+			You("VERB_SPINNEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_WEB und VERB_BLOCKIEREN den Auslösemechanismus."); /* EN You("spin a web, jamming the trigger."); */
 			deltrap(ttmp);
 			newsym(u.ux, u.uy);
 			return(1);
@@ -889,7 +889,7 @@ dospinweb()
 		}
 	else if (On_stairs(u.ux, u.uy)) {
 	    /* cop out: don't let them hide the stairs */
-	    Your("web fails to impede access to the %s.", /* EN Your("web fails to impede access to the %s.", */ // TODO DE
+	    Your("NOUN_WEB VERB_KOENNEN den Zugang OBJECT KASUS_DATIV zu ARTIKEL_BESTIMMTER %s nicht behindern.", /* EN Your("web fails to impede access to the %s.", */
 		 (levl[u.ux][u.uy].typ == STAIRS) ? "NOUN_STAIRS" : "NOUN_LADDER"); /* EN (levl[u.ux][u.uy].typ == STAIRS) ? "stairs" : "ladder"); */
 	    return(1);
 		 
@@ -1191,23 +1191,23 @@ int part;
 	if (part == HAND || part == HANDED) {	/* some special cases */
 	    if (mptr->mlet == S_DOG || mptr->mlet == S_FELINE ||
 		    mptr->mlet == S_YETI)
-		return part == HAND ? "paw" : "pawed"; /* EN return part == HAND ? "paw" : "pawed"; */ // TODO DE
+		return part == HAND ? "NOUN_PAW" : "pawed"; /* EN return part == HAND ? "paw" : "pawed"; */
 	    if (humanoid(mptr) && attacktype(mptr, AT_CLAW) &&
 		    !index(not_claws, mptr->mlet) &&
 		    mptr != &mons[PM_STONE_GOLEM] &&
 		    mptr != &mons[PM_INCUBUS] && mptr != &mons[PM_SUCCUBUS])
-		return part == HAND ? "claw" : "clawed"; /* EN return part == HAND ? "claw" : "clawed"; */ // TODO DE
+		return part == HAND ? "NOUN_CLAW" : "clawed"; /* EN return part == HAND ? "claw" : "clawed"; */
 	}
 	if ((mptr == &mons[PM_MUMAK] || mptr == &mons[PM_MASTODON]) &&
 		part == NOSE)
-	    return "trunk"; /* EN return "trunk"; */ // TODO DE
+	    return "NOUN_RUESSEL"; /* EN return "trunk"; */
 	if (mptr == &mons[PM_SHARK] && part == HAIR)
-	    return "skin";	/* sharks don't have scales */ /* EN return "skin";	*/ // TODO DE
+	    return "NOUN_HAUT";	/* sharks don't have scales */ /* EN return "skin";	*/
 	if (mptr == &mons[PM_JELLYFISH] && (part == ARM || part == FINGER ||
 	    part == HAND || part == FOOT || part == TOE))
-	    return "tentacle"; /* EN return "tentacle"; */ // TODO DE
+	    return "NOUN_TENTAKEL"; /* EN return "tentacle"; */
 	if (mptr == &mons[PM_FLOATING_EYE] && part == EYE)
-	    return "cornea"; /* EN return "cornea"; */ // TODO DE
+	    return "NOUN_HORNHAUT"; /* EN return "cornea"; */
 	if (humanoid(mptr) &&
 		(part == ARM || part == FINGER || part == FINGERTIP ||
 		    part == HAND || part == HANDED))
@@ -1218,10 +1218,10 @@ int part;
 		(mptr == &mons[PM_ROTHE] && part != HAIR))
 	    return horse_parts[part];
 	if (mptr->mlet == S_LIGHT) {
-		if (part == HANDED) return "rayed"; /* EN if (part == HANDED) return "rayed"; */ // TODO DE
+		if (part == HANDED) return "rayed";
 		else if (part == ARM || part == FINGER ||
-				part == FINGERTIP || part == HAND) return "ray"; /* EN part == FINGERTIP || part == HAND) return "ray"; */ // TODO DE
-		else return "beam"; /* EN else return "beam"; */ // TODO DE
+				part == FINGERTIP || part == HAND) return "NOUN_RAY"; /* EN part == FINGERTIP || part == HAND) return "ray"; */
+		else return "NOUN_BEAM"; /* EN else return "beam"; */
 	}
 	if (mptr->mlet == S_EEL && mptr != &mons[PM_JELLYFISH])
 	    return fish_parts[part];

@@ -432,22 +432,22 @@ const char *in_str;
 	slen = strlen(str);
 	term = str + slen;
 
-	if ((s = strstri(str, "vortices")) != 0) /* EN if ((s = strstri(str, "vortices")) != 0) */ // TODO DE
-	    Strcpy(s+4, "ex"); /* EN Strcpy(s+4, "ex"); */ // TODO DE
+#ifndef GERMAN
+	if ((s = strstri(str, "vortices")) != 0)
+	    Strcpy(s+4, "ex");
 	/* be careful with "ies"; "priest", "zombies" */
-	else if (slen > 3 && !strcmpi(term-3, "ies") && /* EN else if (slen > 3 && !strcmpi(term-3, "ies") && */ // TODO DE
-		    (slen < 7 || strcmpi(term-7, "zombies"))) /* EN (slen < 7 || strcmpi(term-7, "zombies"))) */ // TODO DE
+	else if (slen > 3 && !strcmpi(term-3, "ies") &&
+		    (slen < 7 || strcmpi(term-7, "zombies")))
 	    Strcpy(term-3, "y");
 	/* luckily no monster names end in fe or ve with ves plurals */
-	else if (slen > 3 && !strcmpi(term-3, "ves")) /* EN else if (slen > 3 && !strcmpi(term-3, "ves")) */ // TODO DE
-	    Strcpy(term-3, "f"); /* EN Strcpy(term-3, "f"); */ // TODO DE
+	else if (slen > 3 && !strcmpi(term-3, "ves"))
+	    Strcpy(term-3, "f"); 
 
 	slen = strlen(str); /* length possibly needs recomputing */
 
     {
 	static const struct alt_spl { const char* name; short pm_val; }
 	    names[] = {
-			// TODO DE
 	    /* Alternate spellings */
 		{ "grey dragon",	PM_GRAY_DRAGON },
 		{ "baby grey dragon",	PM_BABY_GRAY_DRAGON },
@@ -491,6 +491,7 @@ const char *in_str;
 	    if (!strncmpi(str, namep->name, (int)strlen(namep->name)))
 		return namep->pm_val;
     }
+#endif
 
 	for (len = 0, i = LOW_PM; i < NUMMONS; i++) {
 	    register int m_i_len = strlen(mons[i].mname);

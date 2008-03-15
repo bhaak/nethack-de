@@ -537,18 +537,18 @@ struct entity *etmp;
 	}
 	if (e_missed(etmp, FALSE)) {
 		if (at_portcullis)
-			pline_The("portcullis misses %s!", /* EN pline_The("portcullis misses %s!", */ // TODO DE
+			pline_The("NOUN_PORTCULLIS VERB_MISS OBJECT %s!", /* EN pline_The("portcullis misses %s!", */
 			      e_nam(etmp));
 #ifdef D_DEBUG
 		else
-			pline_The("drawbridge misses %s!",
+			pline_The("NOUN_DRAWBRIDGE VERB_MISS OBJECT %s!", /* EN pline_The("drawbridge misses %s!", */
 			      e_nam(etmp));
 #endif
 		if (e_survives_at(etmp, oldx, oldy))
 			return;
 		else {
 #ifdef D_DEBUG
-			pline("Mon can't survive here");
+			pline("Monster kann da nicht überleben"); /* EN pline("Mon can't survive here"); */
 #endif
 			if (at_portcullis)
 				must_jump = TRUE;
@@ -569,7 +569,7 @@ struct entity *etmp;
 		if (e_jumps(etmp)) {
 		    relocates = TRUE;
 #ifdef D_DEBUG
-		    pline("Jump succeeds!");
+		    pline("Sprung gelingt!"); /* EN pline("Jump succeeds!"); */
 #endif
 		} else {
 		    if (e_inview)
@@ -584,7 +584,7 @@ struct entity *etmp;
 	    } else { /* tries to jump off bridge to original square */
 		relocates = !e_jumps(etmp);
 #ifdef D_DEBUG
-		pline("Jump %s!", (relocates)? "fails" : "succeeds");
+		pline("Sprung %s!", (relocates)? "misslingt" : "gelingt"); /* EN pline("Jump %s!", (relocates)? "fails" : "succeeds"); */
 #endif
 	    }
 	}
@@ -902,7 +902,7 @@ int x,y;
 		e_inview = e_canseemon(etmp1);
 		if (e_missed(etmp1, TRUE)) {
 #ifdef D_DEBUG
-			pline("%s spared!", E_phrase(etmp1, "are"));
+			pline("%s verschont!", E_phrase(etmp1, "VERB_WERDEN")); /* EN pline("%s spared!", E_phrase(etmp1, "are")); */
 #endif
 		} else {
 			if (e_inview) {
@@ -910,15 +910,15 @@ int x,y;
 				pline("%s into some heavy metal!", /* EN pline("%s into some heavy metal!", */ // TODO DE
 				      E_phrase(etmp1, "get")); /* EN E_phrase(etmp1, "get")); */ // TODO DE
 			    else
-				pline("%s hit by a huge chunk of metal!", /* EN pline("%s hit by a huge chunk of metal!", */ // TODO DE
-				      E_phrase(etmp1, "are")); /* EN E_phrase(etmp1, "are")); */ // TODO DE
+				pline("%s von einem riesigen Metallstück getroffen!", /* EN pline("%s hit by a huge chunk of metal!", */
+				      E_phrase(etmp1, "VERB_WERDEN")); /* EN E_phrase(etmp1, "are")); */
 			} else {
 			    if (flags.soundok && !is_u(etmp1) && !is_pool(x,y))
 				You_hear("a crushing sound."); /* EN You_hear("a crushing sound."); */ // TODO DE
 #ifdef D_DEBUG
 			    else
-				pline("%s from shrapnel", /* EN pline("%s from shrapnel", */ // TODO DE
-				      E_phrase(etmp1, "die")); /* EN E_phrase(etmp1, "die")); */ // TODO DE
+				pline("%s an einem Querschläger", /* EN pline("%s from shrapnel", */
+				      E_phrase(etmp1, "VERB_STERBEN")); /* EN E_phrase(etmp1, "die")); */
 #endif
 			}
 			killer_format = KILLED_BY_AN;

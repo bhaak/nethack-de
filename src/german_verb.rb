@@ -430,6 +430,9 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   v = nil
 
   case infinitiv
+	# regelmässige Verben
+  when /(.*)blassen$/: v = Verb.new($1+"blassen", $1+"blasste", ge($1)+"blasst")
+	# unregelmässige Verben
   when "werden":   v = VerbWerden.new
   when "sein":     v = VerbSein.new
   when "haben":    v = VerbHaben.new

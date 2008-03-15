@@ -1056,7 +1056,7 @@ mdamagem(magr, mdef, mattk)
 			      mpoisons_subj(magr, mattk))); /* EN mpoisons_subj(magr, mattk)); */
 		    if (resists_poison(mdef)) {
 			if (vis)
-			    pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei %s nicht zu wirken.", /* EN pline_The("poison doesn't seem to affect %s.", */
+			    pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV _bei_ %s nicht zu wirken.", /* EN pline_The("poison doesn't seem to affect %s.", */
 				mon_nam(mdef));
 		    } else {
 			if (rn2(10)) tmp += rn1(10,6);

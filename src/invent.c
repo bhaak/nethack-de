@@ -2510,7 +2510,7 @@ int
 doprwep()
 {
     if (!uwep) {
-	You("are empty %s.", body_part(HANDED)); /* EN You("are empty %s.", body_part(HANDED)); */ // TODO DE
+	You("VERB_SEIN jetzt unbewaffnet."); /* EN You("are empty %s.", body_part(HANDED)); */
     } else {
 	prinv((char *)0, uwep, 0L);
 	if (u.twoweap) prinv((char *)0, uswapwep, 0L);

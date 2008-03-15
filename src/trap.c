@@ -709,7 +709,7 @@ unsigned trflags;
 		    otmp->quan = 1L;
 		    otmp->owt = weight(otmp);
 
-		    pline("A trap door in %s opens and %s falls on your %s!", /* EN pline("A trap door in %s opens and %s falls on your %s!", */ // TODO DE
+		    pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR OBJECT KASUS_DATIV _in_ %s VERB_OEFFNEN sich und NEUER_SATZ SUBJECT_IM_SATZ %s VERB_FALLEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT auf ARTIKEL_BESTIMMTER %s!", /* EN pline("A trap door in %s opens and %s falls on your %s!", */
 			  the(ceiling(u.ux,u.uy)),
 			  an(xname(otmp)),
 			  body_part(HEAD));
@@ -3873,12 +3873,12 @@ boolean nocorpse;
 	 */
 	if(!strike) {
 		if (obj && cansee(mon->mx, mon->my))
-		    pline("%s is almost hit by %s!", Monnam(mon), doname(obj)); /* EN pline("%s is almost hit by %s!", Monnam(mon), doname(obj)); */ // TODO DE
+		    pline("SUBJECT %s VERB_WIRDEN beinahe OBJECT KASUS_DATIV _von_ %s getroffen!", Monnam(mon), doname(obj)); /* EN pline("%s is almost hit by %s!", Monnam(mon), doname(obj)); */
 	} else {
 		int dam = 1;
 
 		if (obj && cansee(mon->mx, mon->my))
-			pline("%s is hit by %s!", Monnam(mon), doname(obj)); /* EN pline("%s is hit by %s!", Monnam(mon), doname(obj)); */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV _von_ %s getroffen!", Monnam(mon), doname(obj)); /* EN pline("%s is hit by %s!", Monnam(mon), doname(obj)); */
 		if (d_override) dam = d_override;
 		else if (obj) {
 			dam = dmgval(obj, mon);

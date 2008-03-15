@@ -878,7 +878,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	else if (u.ualign.record > 0)	you_are("glaubensschwach"); /* EN else if (u.ualign.record > 0)	you_are("haltingly aligned"); */
 	else if (u.ualign.record == 0)	you_are("ungläubig"); /* EN else if (u.ualign.record == 0)	you_are("nominally aligned"); */
 	else if (u.ualign.record >= -3)	you_are("vom rechten Weg abgekommen"); /* EN else if (u.ualign.record >= -3)	you_have("strayed"); */
-	else if (u.ualign.record >= -8)	you_have("gesündigt"); /* EN else if (u.ualign.record >= -8)	you_have("sinned"); */ // TODO DE
+	else if (u.ualign.record >= -8)	you_have("gesündigt"); /* EN else if (u.ualign.record >= -8)	you_have("sinned"); */
 	else you_have("transgressed"); /* EN else you_have("transgressed"); */ // TODO DE
 #ifdef WIZARD
 	if (wizard) {

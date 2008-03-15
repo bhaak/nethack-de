@@ -1803,7 +1803,7 @@ do_takeoff()
 	if (taking_off == W_WEP) {
 	  if(!cursed(uwep)) {
 	    setuwep((struct obj *) 0);
-	    You("are empty %s.", body_part(HANDED)); /* EN You("are empty %s.", body_part(HANDED));*/ // TODO DE
+	    You("VERB_SEIN jetzt unbewaffnet."); /* EN You("are empty %s.", body_part(HANDED));*/
 	    u.twoweap = FALSE;
 	  }
 	} else if (taking_off == W_SWAPWEP) {

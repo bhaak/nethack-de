@@ -122,11 +122,11 @@ struct obj *wep;
 	if (!wep) {
 	    /* No weapon */
 	    if (uwep) {
-		You("are empty %s.", body_part(HANDED)); /* EN You("are empty %s.", body_part(HANDED)); */ // TODO DE
+		You("VERB_SEIN jetzt unbewaffnet."); /* EN You("are empty %s.", body_part(HANDED)); */
 		setuwep((struct obj *) 0);
 		res++;
 	    } else
-		You("are already empty %s.", body_part(HANDED)); /* EN You("are already empty %s.", body_part(HANDED)); */ // TODO DE
+		You("VERB_SEIN schon unbewaffnet."); /* EN You("are already empty %s.", body_part(HANDED)); */
 	} else if (!uarmg && !Stone_resistance && wep->otyp == CORPSE
 				&& touch_petrifies(&mons[wep->corpsenm])) {
 	    /* Prevent wielding cockatrice when not wearing gloves --KAA */

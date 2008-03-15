@@ -275,7 +275,7 @@ mount_steed(mtmp, force)
 	if (mtmp->mtrapped) {
 	    struct trap *t = t_at(mtmp->mx, mtmp->my);
 
-	    You_cant("mount %s while %s's trapped in %s.", /* EN You_cant("mount %s while %s's trapped in %s.", */ // TODO DE
+	    You_cant("VERB_MOUNT %s while %s's trapped in %s.", /* EN You_cant("mount %s while %s's trapped in %s.", */ // TODO DE
 		     mon_nam(mtmp), mhe(mtmp),
 		     an(defsyms[trap_to_defsym(t->ttyp)].explanation));
 	    return (FALSE);
@@ -333,7 +333,7 @@ mount_steed(mtmp, force)
 	    if (Levitation && !is_floater(ptr) && !is_flyer(ptr))
 	    	/* Must have Lev_at_will at this point */
 	    	pline("%s magically floats up!", Monnam(mtmp)); /* EN pline("%s magically floats up!", Monnam(mtmp)); */ // TODO DE
-	    You("mount %s.", mon_nam(mtmp)); /* EN You("mount %s.", mon_nam(mtmp)); */ // TODO DE
+	    You("VERB_MOUNT OBJECT %s.", mon_nam(mtmp)); /* EN You("mount %s.", mon_nam(mtmp)); */
 	}
 	/* setuwep handles polearms differently when you're mounted */
 	if (uwep && is_pole(uwep)) unweapon = FALSE;

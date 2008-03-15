@@ -721,7 +721,7 @@ gcrownu()
 	if (class_gift != STRANGE_OBJECT) {
 	    ;		/* already got bonus above */
 	} else if (in_hand) {
-	    Your("%s macht schnippel-di-schnapp!", xname(obj)); /* EN Your("%s goes snicker-snack!", xname(obj)); */
+	    Your("%s macht zerschnifer-schnück!", xname(obj)); /* EN Your("%s goes snicker-snack!", xname(obj)); */
 	    obj->dknown = TRUE;
 	} else if (!already_exists) {
 	    obj = mksobj(LONG_SWORD, FALSE, FALSE);

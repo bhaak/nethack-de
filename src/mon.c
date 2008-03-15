@@ -2019,7 +2019,7 @@ int  typ, fatal;
 
 	if(Poison_resistance) {
 		if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); /* EN if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); */ // TODO DE
-		pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei PRONOMEN_PERSONAL nicht zu wirken."); /* EN pline_The("poison doesn't seem to affect you."); */
+		pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV _bei_ PRONOMEN_PERSONAL nicht zu wirken."); /* EN pline_The("poison doesn't seem to affect you."); */
 		return;
 	}
 	/* suppress killer prefix if it already has one */

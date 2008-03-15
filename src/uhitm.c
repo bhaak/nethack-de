@@ -1043,7 +1043,7 @@ int thrown;
 	}
 
 	if (needpoismsg)
-		pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei %s nicht zu wirken.", mon_nam(mon)); /* EN pline_The("poison doesn't seem to affect %s.", mon_nam(mon)); */
+		pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV _bei_ %s nicht zu wirken.", mon_nam(mon)); /* EN pline_The("poison doesn't seem to affect %s.", mon_nam(mon)); */
 	if (poiskilled) {
 		pline("Das Gift war tödlich ..."); /* EN pline_The("poison was deadly..."); */
 		if (!already_killed) xkilled(mon, 0);
@@ -1505,7 +1505,7 @@ register struct attack *mattk;
 		if (!negated && !rn2(8)) {
 		    Your("%s war vergiftet!", mpoisons_subj(&youmonst, mattk)); /* EN Your("%s was poisoned!", mpoisons_subj(&youmonst, mattk)); */
 		    if (resists_poison(mdef))
-			pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei %s nicht zu wirken.", /* EN pline_The("poison doesn't seem to affect %s.", */
+			pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV _bei_ %s nicht zu wirken.", /* EN pline_The("poison doesn't seem to affect %s.", */
 				mon_nam(mdef));
 		    else {
 			if (!rn2(10)) {
