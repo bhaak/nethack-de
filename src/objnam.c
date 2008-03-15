@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /* "an uncursed greased partly eaten guardian naga hatchling [corpse]" */
 #define PREFIX	80	/* (56) */
 #define SCHAR_LIM 127
@@ -362,7 +366,7 @@ register struct obj *obj;
 		    if(obj->spe > 0)
 			Strcat(buf, " PARTIKEL_OF NOUN_SPINACH");
 		    else if (obj->corpsenm == NON_PM)
-		        Strcpy(buf, "empty tin"); /* EN Strcpy(buf, "empty tin"); */ // TODO DE
+		        Strcpy(buf, "ADJEKTIV_LEER NOUN_TIN"); /* EN Strcpy(buf, "empty tin"); */
 		    else if (vegetarian(&mons[obj->corpsenm]))
 			Sprintf(eos(buf), " PARTIKEL_OF %s", mons[obj->corpsenm].mname);
 		    else
@@ -391,7 +395,7 @@ register struct obj *obj;
 		break;
 	    case POTION_CLASS:
 		if (obj->dknown && obj->odiluted)
-			Strcpy(buf, "diluted "); /* EN Strcpy(buf, "diluted "); */ // TODO DE
+			Strcpy(buf, "ADJEKTIV_VERDUENNT "); /* EN Strcpy(buf, "diluted "); */
 		if(nn || un || !obj->dknown) {
 			Strcat(buf, "NOUN_POTION");
 			if(!obj->dknown) break;
@@ -1825,6 +1829,9 @@ boolean from_user;
 	//char *german_str = nextobuf();
 	char german_str[BUFSZ];
 	const char *name=0;
+#ifdef GERMAN
+	int stamped = 0;
+#endif
 
 	cnt = spe = spesgn = typ = very = rechrg =
 		blessed = uncursed = iscursed =
@@ -1852,15 +1859,15 @@ boolean from_user;
 	/* allow wishing for "nothing" to preserve wishless conduct...
 	   [now requires "wand of nothing" if that's what was really wanted] */
 	if (!strcmpi(bp, "nothing") ||
-			!strcmpi(bp, "nil") ||
+	    !strcmpi(bp, "nil") ||
 	    !strcmpi(bp, "none") || 
 	    !strcmpi(bp, "nada") ||   // russki
 	    !strcmpi(bp, "rien") ||   // francais
 	    !strcmpi(bp, "niente") || // italiano
 	    !strcmpi(bp, "nüt") ||    // schwizerdütsch
 	    !strcmpi(bp, "nix") ||    // deutsch ugs
-			!strcmpi(bp, "nichts"))   // deutsch
-					return no_wish;
+	    !strcmpi(bp, "nichts"))   // deutsch
+		return no_wish;
 	/* save the [nearly] unmodified choice string */
 	Strcpy(fruitbuf, bp);
 
@@ -1926,10 +1933,14 @@ boolean from_user;
 			   !strncmpi(bp,"extinguished ", l=13)) { /* EN !strncmpi(bp,"extinguished ", l=13)) { */ // TODO DE
 			islit = 0;
 		/* "unlabeled" and "blank" are synonymous */
-		} else if (!strncmpi(bp,"unlabeled ", l=10) || /* EN } else if (!strncmpi(bp,"unlabeled ", l=10) || */ // TODO DE
-			   !strncmpi(bp,"unlabelled ", l=11) || /* EN !strncmpi(bp,"unlabelled ", l=11) || */ // TODO DE
-			   !strncmpi(bp,"blank ", l=6)) { /* EN !strncmpi(bp,"blank ", l=6)) { */ // TODO DE
+		} else if (!strncmpi(bp,"ADJEKTIV_SCR_UNLABELED ", l=23) || /* EN } else if (!strncmpi(bp,"unlabeled ", l=10) || */
+			   !strncmpi(bp,"ADJEKTIV_SPE_PLAIN ", l=19) || /* EN !strncmpi(bp,"unlabelled ", l=11) || */
+			   !strncmpi(bp,"ADJEKTIV_LEER ", l=14)) { /* EN !strncmpi(bp,"blank ", l=6)) { */
 			unlabeled = 1;
+#ifdef GERMAN
+		} else if (!strncmpi(bp,"ADJEKTIV_SCR_STAMPED ", l=21)) {
+			stamped = 1;
+#endif
 		} else if(!strncmpi(bp, "ADJEKTIV_POISONED ",l=9) /* EN } else if(!strncmpi(bp, "poisoned ",l=9) */
 #ifdef WIZARD
 			  || (wizard && !strncmpi(bp, "trapped ",l=8)) /* EN || (wizard && !strncmpi(bp, "trapped ",l=8)) */ // TODO DE
@@ -2175,6 +2186,12 @@ boolean from_user;
 		typ = SCR_BLANK_PAPER;
 		goto typfnd;
 	}
+#ifdef GERMAN
+	if(stamped && !BSTRCMPI(bp, p-11, "NOUN_SCROLL")) {
+		typ = SCR_MAIL;
+		goto typfnd;
+	}
+#endif
 	//fprintf(stderr, "8####### dn: -%s-\n", dn); // DE DEBUG
 	if(unlabeled && !BSTRCMPI(bp, p-14, "NOUN_SPELLBOOK")) {
 		typ = SPE_BLANK_PAPER;
@@ -2559,9 +2576,9 @@ srch:
 		    return &zeroobj;
 		}
 
-		if(!BSTRCMP(bp, p-4, "bars")) { /* EN if(!BSTRCMP(bp, p-4, "bars")) { */ // TODO DE
+		if(!BSTRCMP(bp, p-13, "NOUN_IRON_BAR")) { /* EN if(!BSTRCMP(bp, p-4, "bars")) { */
 		    levl[u.ux][u.uy].typ = IRONBARS;
-		    pline("Iron bars."); /* EN pline("Iron bars."); */ // TODO DE
+		    pline("SUBJECT NOUN_IRON_BARs."); /* EN pline("Iron bars."); */
 		    newsym(u.ux, u.uy);
 		    return &zeroobj;
 		}
