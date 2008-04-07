@@ -169,7 +169,7 @@ register struct monst *priest;
 	   (Conflict && !resist(priest, RING_CLASS, 0, 0))) {
 		if(monnear(priest, u.ux, u.uy)) {
 			if(Displaced)
-				Your("displaced image doesn't fool %s!", /* EN Your("displaced image doesn't fool %s!", */ // TODO DE
+				Your("ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE doesn't fool %s!", /* EN Your("displaced image doesn't fool %s!", */ // TODO DE
 					mon_nam(priest));
 			(void) mattacku(priest);
 			return(0);

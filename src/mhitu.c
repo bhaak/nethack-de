@@ -196,19 +196,19 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 
 	} else if (Displaced) {
 	    if (compat)
-		pline("%s smiles %s at your %sdisplaced image...", /* EN pline("%s smiles %s at your %sdisplaced image...", */ // TODO DE
+		pline("%s smiles %s at your %sADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE ...", /* EN pline("%s smiles %s at your %sdisplaced image...", */ // TODO DE
 			Monnam(mtmp),
 			compat == 2 ? "einnehmend" : "verführerisch", /* EN compat == 2 ? "engagingly" : "seductively", */
-			Invis ? "invisible " : ""); /* EN Invis ? "invisible " : ""); */ // TODO DE
+			Invis ? "ADJEKTIV_UNSICHTBAR, " : ""); /* EN Invis ? "invisible " : ""); */
 	    else
-		pline("%s strikes at your %sdisplaced image and misses you!", /* EN pline("%s strikes at your %sdisplaced image and misses you!", */ // TODO DE
+		pline("%s strikes at your %sADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE and misses you!", /* EN pline("%s strikes at your %sdisplaced image and misses you!", */ // TODO DE
 			/* Note: if you're both invisible and displaced,
 			 * only monsters which see invisible will attack your
 			 * displaced image, since the displaced image is also
 			 * invisible.
 			 */
 			Monnam(mtmp),
-			Invis ? "ADJEKTIV_INVISIBLE " : ""); /* EN Invis ? "invisible " : ""); */
+			Invis ? "ADJEKTIV_INVISIBLE, " : ""); /* EN Invis ? "invisible " : ""); */
 
 	} else if (Underwater) {
 	    /* monsters may miss especially on water level where

@@ -1501,7 +1501,7 @@ lootcont:
 		any = TRUE;
 
 		if (cobj->olocked) {
-		    pline("Hmmm, scheint verschlossen zu sein."); /* EN pline("Hmmm, it seems to be locked."); */
+		    pline("Hmmm, scheint abgeschlossen zu sein."); /* EN pline("Hmmm, it seems to be locked."); */
 		    continue;
 		}
 		if (cobj->otyp == BAG_OF_TRICKS) {
@@ -2047,7 +2047,7 @@ register int held;
 		return 0;
 	}
 	if (obj->olocked) {
-	    pline("SUBJECT %s verschlossen zu sein.", Tobjnam(obj, "VERB_SCHEINEN")); /* EN pline("%s to be locked.", Tobjnam(obj, "seem")); */
+	    pline("SUBJECT %s abgeschlossen zu sein.", Tobjnam(obj, "VERB_SCHEINEN")); /* EN pline("%s to be locked.", Tobjnam(obj, "seem")); */
 	    if (held) You("VERB_MUESSEN sie abstellen um sie aufzuschliessen."); /* EN if (held) You("must put it down to unlock."); */
 	    return 0;
 	} else if (obj->otrapped) {

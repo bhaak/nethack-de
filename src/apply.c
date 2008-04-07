@@ -2718,7 +2718,7 @@ do_break_wand(obj)
 		}
 		damage = zapyourself(obj, FALSE);
 		if (damage) {
-		    Sprintf(buf, "killed %sself by breaking a wand", uhim()); /* EN Sprintf(buf, "killed %sself by breaking a wand", uhim()); */ // TODO DE
+		    Sprintf(buf, "tötete sich selbst %sself by breaking a wand", uhim()); /* EN Sprintf(buf, "killed %sself by breaking a wand", uhim()); */ // TODO DE
 		    losehp(damage, buf, NO_KILLER_PREFIX);
 		}
 		if (flags.botl) bot();		/* blindness */

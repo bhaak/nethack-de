@@ -3214,7 +3214,7 @@ register struct monst *shkp;
 		if(ANGRY(shkp) ||
 		   (Conflict && !resist(shkp, RING_CLASS, 0, 0))) {
 			if(Displaced)
-			  Your("displaced image doesn't fool %s!", /* EN Your("displaced image doesn't fool %s!", */ // TODO DE
+			  Your("ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE doesn't fool %s!", /* EN Your("displaced image doesn't fool %s!", */ // TODO DE
 				mon_nam(shkp));
 			(void) mattacku(shkp);
 			return(0);

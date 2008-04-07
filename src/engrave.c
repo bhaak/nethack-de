@@ -32,7 +32,7 @@ static const char *random_mesg[] = {
 #ifdef MAIL
 	"Sie haben Post!", /* EN "You've got mail!", */ /* AOL */
 #endif
-	"Als ob!", /* EN "As if!", */ /* Clueless */
+	"Was steht an?", /* Kim Possible */ /* EN "As if!", */ /* Clueless */
 };
 
 char *

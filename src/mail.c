@@ -344,7 +344,7 @@ md_rush(md,tx,ty)
     if ((mon = m_at(fx, fy)) != 0) {
 	place_monster(md, fx, fy);	/* display md with text below */
 	newsym(fx, fy);
-	verbalize("This place's too crowded.  I'm outta here."); /* EN verbalize("This place's too crowded.  I'm outta here."); */ // TODO DE
+	verbalize("Ist das voll hier.  Ich mach mich vom Acker."); /* EN verbalize("This place's too crowded.  I'm outta here."); */
 
 	if ((mon->mx != fx) || (mon->my != fy))	/* put mon back */
 	    place_worm_seg(mon, fx, fy);

@@ -980,7 +980,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	   the situation when invisibility would be an expected attribute */
 	else if ((HInvis || EInvis || pm_invisible(youmonst.data)) && BInvis)
 	    you_are("sichtbar"); /* EN you_are("visible"); */
-	if (Displaced) you_are("displaced"); /* EN if (Displaced) you_are("displaced"); */ // TODO DE
+	if (Displaced) you_are("ADJEKTIV_DISPLACED"); /* EN if (Displaced) you_are("displaced"); */
 	if (Stealth) you_are("stealthy"); /* EN if (Stealth) you_are("stealthy"); */ // TODO DE
 	if (Aggravate_monster) enl_msg("You aggravate", "", "d", " monsters"); /* EN if (Aggravate_monster) enl_msg("You aggravate", "", "d", " monsters"); */ // TODO DE
 	if (Conflict) enl_msg("You cause", "", "d", " conflict"); /* EN if (Conflict) enl_msg("You cause", "", "d", " conflict"); */ // TODO DE
@@ -1305,7 +1305,7 @@ int final;
 	   the situation when invisibility would be an expected attribute */
 	else if ((HInvis || EInvis || pm_invisible(youmonst.data)) && BInvis)
 	    dump(youwere, "sichtbar"); /* EN dump(youwere, "visible"); */
-	if (Displaced) dump(youwere, "displaced"); /* EN if (Displaced) dump(youwere, "displaced"); */ // TODO DE
+	if (Displaced) dump(youwere, "ADJEKTIV_DISPLACED"); /* EN if (Displaced) dump(youwere, "displaced"); */
 	if (Stealth) dump(youwere, "stealthy"); /* EN if (Stealth) dump(youwere, "stealthy"); */ // TODO DE
 	if (Aggravate_monster) dump("  ", "You aggravated monsters"); /* EN if (Aggravate_monster) dump("  ", "You aggravated monsters"); */ // TODO DE
 	if (Conflict) dump("  ", "You caused conflict"); /* EN if (Conflict) dump("  ", "You caused conflict"); */ // TODO DE

@@ -61,7 +61,7 @@ boolean undirected;
 		    u.uundetected)
 		point_msg = "und VERB_FLUCHEN OBJECT KASUS_GENITIV in PRONOMEN_PERSONAL NOUN_RICHTUNG"; /* EN point_msg = "and curses in your general direction"; */
 	    else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
-		point_msg = "auf PRONOMEN_PERSONAL und VERB_VERFLUCHEN PRONOMEN_POSSESSIV displaced NOUN_BILD"; /* EN point_msg = "and curses at your displaced image"; */ // TODO DE
+		point_msg = "auf PRONOMEN_PERSONAL und VERB_VERFLUCHEN PRONOMEN_POSSESSIV ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE"; /* EN point_msg = "and curses at your displaced image"; */
 	    else
 		point_msg = "auf PRONOMEN_PERSONAL und VERB_FLUCHEN"; /* EN point_msg = "at you, then curses"; */
 
@@ -242,7 +242,7 @@ castmu(mtmp, mattk, thinks_it_foundyou, foundyou)
 		   (mtmp->mux != u.ux || mtmp->muy != u.uy)) ?
 		  " gegen einen Punkt OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL" : /* EN " at a spot near you" : */
 		  (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy)) ?
-		  " OBJECT gegen PRONOMEN_POSSESSIV displaced NOUN_BILD" : /* EN " at your displaced image" : */ // TODO DE
+		  " OBJECT gegen PRONOMEN_POSSESSIV ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE" : /* EN " at your displaced image" : */
 		  " OBJECT gegen PRONOMEN_PERSONAL"); /* EN " at you"); */
 	}
 
@@ -372,7 +372,7 @@ int spellnum;
 				    (mtmp->mux != u.ux || mtmp->muy != u.uy))
 		pline("%s around a spot near you!", mappear); /* EN pline("%s around a spot near you!", mappear); */ // TODO DE
 	    else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
-		pline("%s around your displaced image!", mappear); /* EN pline("%s around your displaced image!", mappear); */ // TODO DE
+		pline("%s around your ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE!", mappear); /* EN pline("%s around your displaced image!", mappear); */ // TODO DE
 	    else
 		pline("%s from nowhere!", mappear); /* EN pline("%s from nowhere!", mappear); */ // TODO DE
 	}
@@ -575,7 +575,7 @@ int spellnum;
 	    pline("%s summons insects around a spot near you!", /* EN pline("%s summons insects around a spot near you!", */ // TODO DE
 		Monnam(mtmp));
 	else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
-	    pline("%s summons insects around your displaced image!", /* EN pline("%s summons insects around your displaced image!", */ // TODO DE
+	    pline("%s summons insects around your ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE!", /* EN pline("%s summons insects around your displaced image!", */ // TODO DE
 		Monnam(mtmp));
 	else
 	    pline("%s summons insects!", Monnam(mtmp)); /* EN pline("%s summons insects!", Monnam(mtmp)); */ // TODO DE

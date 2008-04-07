@@ -552,7 +552,7 @@ doopen()		/* try to open a door */
 	    case D_BROKEN: mesg = " Türe ist kaputt"; break; /* EN case D_BROKEN: mesg = " is broken"; break; */
 	    case D_NODOOR: mesg = "r Eingang hat keine Türe"; break; /* EN case D_NODOOR: mesg = "way has no door"; break; */
 	    case D_ISOPEN: mesg = " Türe ist bereits offen"; break; /* EN case D_ISOPEN: mesg = " is already open"; break; */
-	    default:	   mesg = " Türe ist verschlossen"; break; /* EN default:       mesg = " is locked"; break; */
+	    default:	   mesg = " Türe ist abgeschlossen"; break; /* EN default:       mesg = " is locked"; break; */
 	    }
 	    pline("Diese%s.", mesg); /* EN pline("This door%s.", mesg); */
 	    if (Blind) feel_location(cc.x,cc.y);
