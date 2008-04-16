@@ -364,7 +364,7 @@ exercise_steed()
 void
 kick_steed()
 {
-	char He[4];
+	char He[255]; /* EN char He[4]; */
 	if (!u.usteed)
 	    return;
 
