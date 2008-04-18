@@ -495,7 +495,7 @@ int	mntmp;
 #endif
 
 	if (flags.verbose) {
-	    static const char use_thec[] = "SATZBEGINN VERB_BENUTZEN den Befehl #%s um %s."; /* EN static const char use_thec[] = "Use the command #%s to %s."; */
+	    static const char use_thec[] = "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den Befehl #%s um %s."; /* EN static const char use_thec[] = "Use the command #%s to %s."; */
 	    static const char monsterc[] = "monster";
 	    if (can_breathe(youmonst.data))
 		pline(use_thec,monsterc,"use your breath weapon"); /* EN pline(use_thec,monsterc,"use your breath weapon"); */ // TODO DE

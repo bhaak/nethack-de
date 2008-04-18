@@ -521,7 +521,7 @@ wd_message()
 # else
 			WIZARD_NAME);
 # endif
-		pline("Aktiviere stattdessen den Erkundungsmodus."); /* EN pline("Entering discovery mode instead."); */
+		pline("Stattdessen wurde der Erkundungsmodus aktiviert."); /* EN pline("Entering discovery mode instead."); */
 	} else
 #endif
 	if (discover)

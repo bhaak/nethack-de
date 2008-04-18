@@ -89,7 +89,7 @@ use_saddle(otmp)
  	    }
 	}
 	if (ptr == &mons[PM_INCUBUS] || ptr == &mons[PM_SUCCUBUS]) {
-	    pline("Shame on you!"); /* EN pline("Shame on you!"); */ // TODO DE Imperativ
+	    pline("SUBJECT PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_SOLLTEN OBJECT PRONOMEN_PERSONAL was schämen!"); /* EN pline("Shame on you!"); */
 	    exercise(A_WIS, FALSE);
 	    return 1;
 	}
@@ -385,9 +385,9 @@ kick_steed()
 		    u.usteed->mcanmove = 1;
 		}
 		if (u.usteed->msleeping || !u.usteed->mcanmove)
-		    pline("%s stirs.", He); /* EN pline("%s stirs.", He); */ // TODO DE
+		    pline("SUBJECT %s VERB_RUEHREN sich nicht.", He); /* EN pline("%s stirs.", He); */
 		else
-		    pline("%s rouses %sself!", He, mhim(u.usteed)); /* EN pline("%s rouses %sself!", He, mhim(u.usteed)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHRECKEN auf!", He); /* EN pline("%s rouses %sself!", He, mhim(u.usteed)); */
 	    } else
 		pline("SUBJECT %s VERB_REAGIEREN nicht.", He); /* EN pline("%s does not respond.", He); */
 	    return;
@@ -463,7 +463,10 @@ dismount_steed(reason)
 	struct monst *mtmp;
 	struct obj *otmp;
 	coord cc;
-	const char *verb = "fall"; /* EN const char *verb = "fall"; */ // TODO DE
+	const char *verb = "VERB_FALLEN"; /* EN const char *verb = "fall"; */
+#ifdef GERMAN
+	const char *partizip = "";
+#endif
 	boolean repair_leg_damage = TRUE;
 	unsigned save_utrap = u.utrap;
 	boolean have_spot = landing_spot(&cc,reason,0);
@@ -477,9 +480,12 @@ dismount_steed(reason)
 	otmp = which_armor(mtmp, W_SADDLE);
 	switch (reason) {
 	    case DISMOUNT_THROWN:
-		verb = "are thrown"; /* EN verb = "are thrown"; */ // TODO DE
+		verb = "VERB_WERDEN"; /* EN verb = "are thrown"; */
+#ifdef GERMAN
+		partizip = " abgeworfen"; 
+#endif
 	    case DISMOUNT_FELL:
-		You("%s off of %s!", verb, mon_nam(mtmp)); /* EN You("%s off of %s!", verb, mon_nam(mtmp)); */ // TODO DE
+		You("%s OBJECT KASUS_DATIV _von_ %s%s!", verb, mon_nam(mtmp), partizip); /* EN You("%s off of %s!", verb, mon_nam(mtmp)); */
 		if (!have_spot) have_spot = landing_spot(&cc,reason,1);
 		losehp(rn1(10,10), "NOUN_REITUNFALL", KILLED_BY_AN); /* EN losehp(rn1(10,10), "riding accident", KILLED_BY_AN); */
 		set_wounded_legs(BOTH_SIDES, (int)HWounded_legs + rn1(5,5));
@@ -507,7 +513,7 @@ dismount_steed(reason)
 		    return;
 		}
 		if (!have_spot) {
-		    pline("Das geht nicht. There isn't anywhere for you to stand."); /* EN You("can't. There isn't anywhere for you to stand."); */ // TODO DE
+		    pline("Das geht nicht. Dort gibt es nichts worauf SUBJECT_IM_SATZ PRONOMEN_PERSONAL stehen MODIFIER_KONJUNKTIV_II VERB_KOENNEN."); /* EN You("can't. There isn't anywhere for you to stand."); */
 		    return;
 		}
 		if (!mtmp->mnamelth) {
@@ -554,7 +560,7 @@ dismount_steed(reason)
 			    adjalign(-1);
 			}
 		    } else if (is_lava(u.ux, u.uy)) {
-			pline("%s is pulled into the lava!", Monnam(mtmp)); /* EN pline("%s is pulled into the lava!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_VERSINKEN in der Lava!", Monnam(mtmp)); /* EN pline("%s is pulled into the lava!", Monnam(mtmp)); */
 			if (!likes_lava(mdat)) {
 			    killed(mtmp);
 			    adjalign(-1);
