@@ -1392,7 +1392,7 @@ struct monst *mtmp;
 				}
 	    	    	    	mtmp2->mhp -= mdmg;
 	    	    	    	if (mtmp2->mhp <= 0) {
-				    pline("%s is killed.", Monnam(mtmp2)); /* EN pline("%s is killed.", Monnam(mtmp2)); */ // TODO DE
+				    pline("SUBJECT %s wurde getötet.", Monnam(mtmp2)); /* EN pline("%s is killed.", Monnam(mtmp2)); */
 	    	    	    	    mondied(mtmp2);
 				}
 	    	    	    }

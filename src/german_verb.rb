@@ -518,6 +518,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)halten$/: v = VerbUnregelmaessig.new($1+"halten", $1+"hielt", ge($1)+"halten")
   when /(.*)schlafen$/: v = VerbUnregelmaessig.new($1+"schlafen", $1+"schlief", ge($1)+"schlafen")
 		# ie o o
+  when /(.*)bieten$/: v = VerbUnregelmaessig.new($1+"bieten", $1+"bot", ge($1)+"boten")
   when /(.*)fliehen$/: v = VerbUnregelmaessig.new($1+"fliehen", $1+"floh", ge($1)+"flohen")
   when "fliegen": v = VerbUnregelmaessig.new("fliegen", "flog", "geflogen")
   when /(.*)kriechen$/: v = VerbUnregelmaessig.new($1+"kriechen", $1+"kroch", ge($1)+"krochen")

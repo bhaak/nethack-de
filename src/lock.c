@@ -110,7 +110,7 @@ picklock()	/* try to open/close a lock */
 
 	if(rn2(100) >= xlock.chance) return(1);		/* still busy */
 
-	pline("OBJECT KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ VERB_GELINGEN NOUN_IT, %s.", lock_action()); /* EN You("succeed in %s.", lock_action()); */
+	Dir("VERB_GELINGEN es, %s.", lock_action()); /* EN You("succeed in %s.", lock_action()); */
 	if (xlock.door) {
 	    if(xlock.door->doormask & D_TRAPPED) {
 		    b_trapped("NOUN_OBJ_DOOR", FINGER); /* EN b_trapped("door", FINGER); */

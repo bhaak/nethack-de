@@ -213,7 +213,7 @@ doit:
 			    newsym(x, y);
 			}
 			pline("SUBJECT %s %s, %s evading your %sNOUN_KICK.", Monnam(mon), /* EN pline("%s %s, %s evading your %skick.", Monnam(mon), */ // TODO DE
-				(can_teleport(mon->data) ? "teleports" : /* EN (can_teleport(mon->data) ? "teleports" : */ // TODO DE
+				(can_teleport(mon->data) ? "VERB_TELEPORTIEREN" : /* EN (can_teleport(mon->data) ? "teleports" : */
 				 is_floater(mon->data) ? "floats" : /* EN is_floater(mon->data) ? "floats" : */ // TODO DE
 				 is_flyer(mon->data) ? "swoops" : /* EN is_flyer(mon->data) ? "swoops" : */ // TODO DE
 				 (nolimbs(mon->data) || slithy(mon->data)) ?

@@ -602,14 +602,14 @@ register char *enterstring;
 		}
 		verbalize(NOTANGRY(shkp) ?
 			  "SUBJECT MODIFIER_KONJUNKTIV_II VERB_WERDEN PRONOMEN_PERSONAL bitte OBJECT PRONOMEN_POSSESSIV %s%s draußen lassen?" : /* EN "Will you please leave your %s%s outside?" : */
-			  "Leave the %s%s outside.", /* EN "Leave the %s%s outside.", */ // TODO DE
+			  "SATZBEGINN MODIFIER_VERB_IMPERATIV OBJECT ARTIKEL_BESTIMMTER %s%s draußen.", /* EN "Leave the %s%s outside.", */
 			  tool, plur(cnt));
 		should_block = TRUE;
 #ifdef STEED
 	    } else if (u.usteed) {
 		verbalize(NOTANGRY(shkp) ?
 			  "SUBJECT MODIFIER_KONJUNKTIV_II VERB_WERDEN PRONOMEN_PERSONAL bitte OBJECT %s draußen lassen?" : /* EN "Will you please leave %s outside?" : */
-			  "Leave %s outside.", y_monnam(u.usteed)); /* EN "Leave %s outside.", y_monnam(u.usteed)); */ // TODO DE
+			  "SATZBEGINN MODIFIER_VERB_IMPERATIV OBJECT %s draußen.", y_monnam(u.usteed)); /* EN "Leave %s outside.", y_monnam(u.usteed)); */
 		should_block = TRUE;
 #endif
 	    } else {
@@ -968,7 +968,7 @@ boolean verbosely;
 	    /* greed induced recovery... */
 	    if (verbosely && canspotmon(shkp))
 		pline("SUBJECT %s %s SATZKLAMMER.", Monnam(shkp), /* EN pline("%s %s.", Monnam(shkp), */
-		      shkp->msleeping ? "VERB_AUFWACHEN" : "can move again"); /* EN shkp->msleeping ? "wakes up" : "can move again"); */ // TODO DE
+		      shkp->msleeping ? "VERB_AUFWACHEN" : "VERB_KOENNEN sich wieder bewegen"); /* EN shkp->msleeping ? "wakes up" : "can move again"); */
 	    shkp->msleeping = 0;
 	    shkp->mfrozen = 0;
 	    shkp->mcanmove = 1;
@@ -1535,7 +1535,7 @@ boolean itemize;
 
 	if (itemize) {
 	    char qbuf[BUFSZ];
-	    Sprintf(qbuf,"%s for %ld %s.  Pay?", quan == 1L ?  /* EN Sprintf(qbuf,"%s for %ld %s.  Pay?", quan == 1L ? */ // TODO DE
+	    Sprintf(qbuf,"SATZBEGINN %s für %ld %s.  Bezahlen?", quan == 1L ?  /* EN Sprintf(qbuf,"%s for %ld %s.  Pay?", quan == 1L ? */
 		    Doname2(obj) : doname(obj), ltmp, currency(ltmp));
 	    if (yn(qbuf) == 'n') {
 		buy = PAY_SKIP;		/* don't want to buy */
@@ -2721,15 +2721,15 @@ move_on:
 			(contained_cost(obj, shkp, 0L, FALSE, FALSE) !=
 			 contained_cost(obj, shkp, 0L, FALSE, TRUE));
 		    Sprintf(qbuf,
-			 "%s offers%s %ld gold piece%s for%s %s %s.  Sell %s?", /* EN "%s offers%s %ld gold piece%s for%s %s %s.  Sell %s?", */ // TODO DE
-			    Monnam(shkp), short_funds ? " only" : "", /* EN Monnam(shkp), short_funds ? " only" : "", */ // TODO DE
+			 "SUBJECT %s VERB_BIETEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL%s NEUES_OBJECT OBJECT %ld NOUN_GOLD_PIECE%s NEUES_OBJECT OBJECT für%s %s %s.  Verkaufen%s?", /* EN "%s offers%s %ld gold piece%s for%s %s %s.  Sell %s?", */
+			    Monnam(shkp), short_funds ? " nur" : "", /* EN Monnam(shkp), short_funds ? " only" : "", */
 			    offer, plur(offer),
 			    (!ltmp && cltmp && only_partially_your_contents) ?
 			     " your items in" : (!ltmp && cltmp) ? " the contents of" : "", /* EN " your items in" : (!ltmp && cltmp) ? " the contents of" : "", */ // TODO DE
-			    obj->unpaid ? "the" : "your", cxname(obj), /* EN obj->unpaid ? "the" : "your", cxname(obj), */ // TODO DE
+			    obj->unpaid ? "ARTIKEL_BESTIMMTER" : "PRONOMEN_POSSESSIV", cxname(obj), /* EN obj->unpaid ? "the" : "your", cxname(obj), */
 			    (obj->quan == 1L &&
 			    !(!ltmp && cltmp && only_partially_your_contents)) ?
-			    "it" : "them");
+			    "" : ""); /* EN "it" : "them"); */
 		} else  qbuf[0] = '\0';		/* just to pacify lint */
 
 		switch (sell_response ? sell_response : ynaq(qbuf)) {
@@ -2747,8 +2747,8 @@ move_on:
 			    pay(-offer, shkp);
 			    shk_names_obj(shkp, obj, (sell_how != SELL_NORMAL) ?
 				    (!ltmp && cltmp && only_partially_your_contents) ?
-			    	    "sold some items inside %s for %ld gold pieces%s.%s" : /* EN "sold some items inside %s for %ld gold pieces%s.%s" : */ // TODO DE
-				    "sold %s for %ld gold piece%s.%s" : /* EN "sold %s for %ld gold piece%s.%s" : */ // TODO DE
+			    	    "VERB_HABEN einige Artikel  %s für %ld gold pieces%s.%s" : /* EN "sold some items inside %s for %ld gold pieces%s.%s" : */ // TODO DE
+				    "VERB_HABEN OBJECT %s NEUES_OBJECT OBJECT für %ld NOUN_GOLD_PIECE%s verkauft.%s" : /* EN "sold %s for %ld gold piece%s.%s" : */
 	       "relinquish %s and receive %ld gold piece%s in compensation.%s", /* EN "relinquish %s and receive %ld gold piece%s in compensation.%s", */ // TODO DE
 				    offer, "");
 			    break;
