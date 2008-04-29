@@ -1507,7 +1507,7 @@ lootcont:
 		if (cobj->otyp == BAG_OF_TRICKS) {
 		    int tmp;
 		    You("VERB_OEFFNEN vorsichtig OBJECT ARTIKEL_BESTIMMTER NOUN_BAG ..."); /* EN You("carefully open the bag..."); */
-		    pline("It develops a huge set of teeth and bites you!"); /* EN pline("It develops a huge set of teeth and bites you!"); */ // TODO DE
+		    pline("Ihm wachsen riesige Z‰hne und er beiﬂt KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("It develops a huge set of teeth and bites you!"); */
 		    tmp = rnd(10);
 		    if (Half_physical_damage) tmp = (tmp+1) / 2;
 		    losehp(tmp, "ADJEKTIV_CARNIVOROUS NOUN_BAG", KILLED_BY_AN); /* EN losehp(tmp, "carnivorous bag", KILLED_BY_AN); */

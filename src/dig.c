@@ -573,7 +573,7 @@ int ttyp;
 		pline("SUBJECT %s VERB_GRABEN ein Loch OBJECT durch ARTIKEL_BESTIMMTER %s.", /* EN pline("%s digs a hole through the %s.", */
 		      Monnam(madeby), surface_type);
 	    else if(cansee(x, y) && flags.verbose)
-		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_LOCH VERB_ERSCHEINEN OBJECT in ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A hole appears in the %s.", surface_type); */
+		pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_LOCH VERB_ERSCHEINEN OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s.", surface_type); /* EN pline("A hole appears in the %s.", surface_type); */
 
 	    if (at_u) {
 		if (!u.ustuck && !wont_fall && !next_to_u()) {

@@ -3873,7 +3873,7 @@ boolean nocorpse;
 	 */
 	if(!strike) {
 		if (obj && cansee(mon->mx, mon->my))
-		    pline("SUBJECT %s VERB_WIRDEN beinahe OBJECT KASUS_DATIV _von_ %s getroffen!", Monnam(mon), doname(obj)); /* EN pline("%s is almost hit by %s!", Monnam(mon), doname(obj)); */
+		    pline("SUBJECT %s VERB_WERDEN beinahe OBJECT KASUS_DATIV _von_ %s getroffen!", Monnam(mon), doname(obj)); /* EN pline("%s is almost hit by %s!", Monnam(mon), doname(obj)); */
 	} else {
 		int dam = 1;
 

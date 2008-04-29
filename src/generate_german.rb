@@ -1013,6 +1013,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_ZERSPLITTERN","zersplittern"),
 		Verb.verb("VERB_ZIEHEN","ziehen"),
 		Verb.verb("VERB_ZURUECKKEHREN","kehren", "zurück"),
+		Verb.verb("VERB_ZWAENGEN","zwängen"),
 
 		# englische Bezeichner
 		Verb.verb("VERB_CHUCKLE","kichern"),

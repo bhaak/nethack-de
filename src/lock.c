@@ -103,7 +103,7 @@ picklock()	/* try to open/close a lock */
 	}
 
 	if (xlock.usedtime++ >= 50 || nohands(youmonst.data)) {
-	    You("give up your attempt at %s.", lock_action()); /* EN You("give up your attempt at %s.", lock_action()); */ // TODO DE
+	    You("VERB_GEBEN den Versuch auf, %s.", lock_action()); /* EN You("give up your attempt at %s.", lock_action()); */
 	    exercise(A_DEX, TRUE);	/* even if you don't succeed */
 	    return((xlock.usedtime = 0));
 	}
@@ -142,7 +142,7 @@ forcelock()	/* try to force a locked chest */
 		return((xlock.usedtime = 0));		/* you or it moved */
 
 	if (xlock.usedtime++ >= 50 || !uwep || nohands(youmonst.data)) {
-	    You("give up your attempt to force the lock."); /* EN You("give up your attempt to force the lock."); */ // TODO DE
+	    You("VERB_GEBEN den Versuch auf, das Schloss aufzubrechen."); /* EN You("give up your attempt to force the lock."); */
 	    if(xlock.usedtime >= 50)		/* you made the effort */
 	      exercise((xlock.picktyp) ? A_DEX : A_STR, TRUE);
 	    return((xlock.usedtime = 0));
@@ -160,7 +160,7 @@ forcelock()	/* try to force a locked chest */
 		/*pline("%sour %s broke!",
 			(uwep->quan > 1L) ? "One of y" : "Y", xname(uwep));*/
 		useup(uwep);
-		You("give up your attempt to force the lock."); /* EN You("give up your attempt to force the lock."); */ // TODO DE
+		You("VERB_GEBEN den Versuch auf, das Schloss aufzubrechen."); /* EN You("give up your attempt to force the lock."); */
 		exercise(A_DEX, TRUE);
 		return((xlock.usedtime = 0));
 	    }
@@ -169,7 +169,7 @@ forcelock()	/* try to force a locked chest */
 
 	if(rn2(100) >= xlock.chance) return(1);		/* still busy */
 
-	You("succeed in forcing the lock."); /* EN You("succeed in forcing the lock."); */ // TODO DE
+	Dir("VERB_GELINGEN es, das Schloss aufzubrechen."); /* EN You("succeed in forcing the lock."); */
 	xlock.box->olocked = 0;
 	xlock.box->obroken = 1;
 	if(!xlock.picktyp && !rn2(3)) {
@@ -180,7 +180,7 @@ forcelock()	/* try to force a locked chest */
 	    costly = (*u.ushops && costly_spot(u.ux, u.uy));
 	    shkp = costly ? shop_keeper(*u.ushops) : 0;
 
-	    pline("In fact, you've totally destroyed %s.", /* EN pline("In fact, you've totally destroyed %s.", */ // TODO DE
+	    You("VERB_HABEN sogar OBJECT %s vollkommen zerstört.", /* EN pline("In fact, you've totally destroyed %s.", */
 		  the(xname(xlock.box)));
 
 	    /* Put the contents on ground at the hero's feet. */
@@ -259,7 +259,7 @@ pick_lock(pick) /* pick a lock with a given object */
 		return 0;
 	    } else {
 		const char *action = lock_action();
-		You("resume your attempt at %s.", action); /* EN You("resume your attempt at %s.", action); */ // TODO DE
+		You("VERB_MACHEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_VERSUCH, %s, weiter.", action); /* EN You("resume your attempt at %s.", action); */
 		set_occupation(picklock, action, 0);
 		return(1);
 	    }
@@ -287,8 +287,8 @@ pick_lock(pick) /* pick a lock with a given object */
 	    int count;
 
 	    if (u.dz < 0) {
-		There("isn't any sort of lock up %s.", /* EN There("isn't any sort of lock up %s.", */ // TODO DE
-		      Levitation ? "here" : "there"); /* EN Levitation ? "here" : "there"); */ // TODO DE
+		pline("%s oben gibt es keine Schlösser.", /* EN There("isn't any sort of lock up %s.", */
+		      Levitation ? "Hier" : "Dort"); /* EN Levitation ? "here" : "there"); */
 		return 0;
 	    } else if (is_lava(u.ux, u.uy)) {
 		pline("Das würde vermutlich KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s schmelzen.", /* EN pline("Doing that would probably melt your %s.", */
@@ -382,8 +382,8 @@ pick_lock(pick) /* pick a lock with a given object */
 	    }
 	    if(!IS_DOOR(door->typ)) {
 		if (is_drawbridge_wall(cc.x,cc.y) >= 0)
-		    You("%s no lock on the drawbridge.", /* EN You("%s no lock on the drawbridge.", */ // TODO DE
-				Blind ? "feel" : "see"); /* EN Blind ? "feel" : "see"); */ // TODO DE
+		    You("%s kein Schloss an der Zugbrücke.", /* EN You("%s no lock on the drawbridge.", */
+				Blind ? "VERB_SPUEREN" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
 		else
 		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.", /* EN You("%s no door there.", */
 				Blind ? "VERB_SPUEREN" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
@@ -456,15 +456,15 @@ doforce()		/* try to force a chest with your weapon */
 	   || uwep->otyp == RUBBER_HOSE
 #endif
 	  ) {
-	    You_cant("force anything without a %sweapon.", /* EN You_cant("force anything without a %sweapon.", */ // TODO DE
-		  (uwep) ? "proper " : ""); /* EN (uwep) ? "proper " : ""); */ // TODO DE
+	    pline("Ohne eine %sWaffe SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL nichts aufbrechen.", /* EN You_cant("force anything without a %sweapon.", */
+		  (uwep) ? "geeignete " : ""); /* EN (uwep) ? "proper " : ""); */
 	    return(0);
 	}
 
 	picktyp = is_blade(uwep);
 	if(xlock.usedtime && xlock.box && picktyp == xlock.picktyp) {
-	    You("resume your attempt to force the lock."); /* EN You("resume your attempt to force the lock."); */ // TODO DE
-	    set_occupation(forcelock, "forcing the lock", 0); /* EN set_occupation(forcelock, "forcing the lock", 0); */ // TODO DE
+	    You("VERB_MACHEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_VERSUCH, das Schloss aufzubrechen, weiter."); /* EN You("resume your attempt to force the lock."); */
+	    set_occupation(forcelock, "das Schloss aufzubrechen", 0); /* EN set_occupation(forcelock, "forcing the lock", 0); */
 	    return(1);
 	}
 
@@ -487,7 +487,7 @@ doforce()		/* try to force a chest with your weapon */
 		if(c == 'n') continue;
 
 		if(picktyp)
-		    You("force your %s into a crack and pry.", xname(uwep)); /* EN You("force your %s into a crack and pry.", xname(uwep)); */ // TODO DE
+		    You("VERB_ZWAENGEN OBJECT PRONOMEN_POSSESSIV %s in einen Spalt und VERB_BEGINNEN zu stemmen.", xname(uwep)); /* EN You("force your %s into a crack and pry.", xname(uwep)); */
 		else
 		    You("start bashing it with your %s.", xname(uwep)); /* EN You("start bashing it with your %s.", xname(uwep)); */ // TODO DE
 		xlock.box = otmp;
@@ -497,7 +497,7 @@ doforce()		/* try to force a chest with your weapon */
 		break;
 	    }
 
-	if(xlock.box)	set_occupation(forcelock, "forcing the lock", 0); /* EN if(xlock.box)	set_occupation(forcelock, "forcing the lock", 0); */
+	if(xlock.box)	set_occupation(forcelock, "das Schloss aufzubrechen", 0); /* EN if(xlock.box)	set_occupation(forcelock, "forcing the lock", 0); */
 	else		You("decide not to force the issue."); /* EN else		You("decide not to force the issue."); */
 	return(1);
 }
@@ -568,7 +568,7 @@ doopen()		/* try to open a door */
 	if (rnl(20) < (ACURRSTR+ACURR(A_DEX)+ACURR(A_CON))/3) {
 	    pline_The("NOUN_OBJ_DOOR VERB_OPEN SATZKLAMMER."); /* EN pline_The("door opens."); */
 	    if(door->doormask & D_TRAPPED) {
-		b_trapped("door", FINGER); /* EN b_trapped("door", FINGER); */ // TODO DE
+		b_trapped("NOUN_OBJ_DOOR", FINGER); /* EN b_trapped("door", FINGER); */
 		door->doormask = D_NODOOR;
 		if (*in_rooms(cc.x, cc.y, SHOPBASE)) add_damage(cc.x, cc.y, 0L);
 	    } else

@@ -191,7 +191,7 @@ Dich VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_AKKUSATIV PRONOMEN_PERSONAL ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_AKKUSATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON ", line), VA_ARGS);
 	VA_END();
 }
 
@@ -201,7 +201,7 @@ Dir VA_DECL(const char *,line)
 	char *tmp;
 	VA_START(line);
 	VA_INIT(line, const char *);
-	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_PERSONAL ", line), VA_ARGS);
+	vpline(YouMessage(tmp, "SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON ", line), VA_ARGS);
 	VA_END();
 }
 

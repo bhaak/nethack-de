@@ -24,13 +24,12 @@ STATIC_DCL const char *breathwep[];
  * Keep consistent with breath weapons in zap.c, and AD_* in monattk.h.
  */
 STATIC_OVL NEARDATA const char *breathwep[] = {
-// TODO DE
-				"fragments", /* EN "fragments", */ // TODO DE
+				"Geschosse", /* EN "fragments", */
 				"Feuer", /* EN "fire", */
 				"Eis", /* EN "frost", */
-				"sleep gas", /* EN "sleep gas", */ // TODO DE
+				"Schlafgas", /* EN "sleep gas", */
 				"a disintegration blast", /* EN "a disintegration blast", */ // TODO DE
-				"lightning", /* EN "lightning", */ // TODO DE
+				"Blitze", /* EN "lightning", */
 				"Giftgas", /* EN "poison gas", */
 				"Säure", /* EN "acid", */
 				"strange breath #8",
@@ -290,10 +289,10 @@ m_throw(mon, x, y, dx, dy, range, obj)
 	if (singleobj->cursed && (dx || dy) && !rn2(7)) {
 	    if(canseemon(mon) && flags.verbose) {
 		if(is_ammo(singleobj))
-		    pline("%s misfires!", Monnam(mon)); /* EN pline("%s misfires!", Monnam(mon)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHIESSEN daneben!", Monnam(mon)); /* EN pline("%s misfires!", Monnam(mon)); */
 		else
-		    pline("%s as %s throws it!", /* EN pline("%s as %s throws it!", */ // TODO DE
-			  Tobjnam(singleobj, "slip"), mon_nam(mon)); /* EN Tobjnam(singleobj, "slip"), mon_nam(mon)); */ // TODO DE
+		    pline("SUBJECT %s OBJECT KASUS_DATIV %s, als NEUER_SATZ SUBJECT_IM_SATZ %s (es) VERB_WERFEN!", /* EN pline("%s as %s throws it!", */ // TODO DE
+			  Tobjnam(singleobj, "VERB_SLIP"), mon_nam(mon), mhe(mon)); /* EN Tobjnam(singleobj, "slip"), mon_nam(mon)); */
 	    }
 	    dx = rn2(3)-1;
 	    dy = rn2(3)-1;
@@ -336,7 +335,7 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			    && is_unicorn(youmonst.data)) {
 			if (singleobj->otyp > LAST_GEM) {
 			    You("VERB_FANGEN OBJECT ARTIKEL_BESTIMMTER %s.", xname(singleobj)); /* EN You("catch the %s.", xname(singleobj)); */
-			    You("are not interested in %s.", /* EN You("are not interested in %s junk.", */ // TODO DE
+			    You("VERB_INTERESSIEREN OBJECT PRONOMEN_PERSONAL nicht für NEUES_OBJECT OBJECT %s.", /* EN You("are not interested in %s junk.", */
 				genitivattribut_zu_wort(mon_nam(mon), "NOUN_JUNK")); /* EN s_suffix(mon_nam(mon))); */
 			    makeknown(singleobj->otyp);
 			    dropy(singleobj);
@@ -516,7 +515,7 @@ struct monst *mtmp;
 
 	    if (canseemon(mtmp)) {
 		onm = xname(otmp);
-		pline("SUBJECT %s thrusts %s.", Monnam(mtmp), /* EN pline("%s thrusts %s.", Monnam(mtmp), */ // TODO DE
+		pline("SUBJECT %s VERB_ZUSTECHEN OBJECT KASUS_DATIV mit %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s thrusts %s.", Monnam(mtmp), */
 		      obj_is_pname(otmp) ? the(onm) : an(onm));
 	    }
 
@@ -629,7 +628,7 @@ register struct attack *mattk;
 	if(mtmp->mcan) {
 
 	    if(flags.soundok)
-		pline("A dry rattle comes from %s throat.", /* EN pline("A dry rattle comes from %s throat.", */ // TODO DE
+		pline("Ein trockenes Rasseln dringt KASUS_DATIV aus %s.", /* EN pline("A dry rattle comes from %s throat.", */
 		                      genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_RACHEN")); /* EN s_suffix(mon_nam(mtmp))); */
 	    return 0;
 	}
@@ -685,7 +684,7 @@ breamu(mtmp, mattk)			/* monster breathes at you (ranged) */
 		if((typ >= AD_MAGM) && (typ <= AD_ACID)) {
 
 		    if(canseemon(mtmp))
-			pline("SUBJECT %s VERB_SPEIEN %s!", Monnam(mtmp), /* EN pline("%s breathes %s!", Monnam(mtmp), */ // TODO DE
+			pline("SUBJECT %s VERB_SPEIEN %s!", Monnam(mtmp), /* EN pline("%s breathes %s!", Monnam(mtmp), */
 			      breathwep[typ-1]);
 		    buzz((int) (-20 - (typ-1)), (int)mattk->damn,
 			 mtmp->mx, mtmp->my, sgn(tbx), sgn(tby));

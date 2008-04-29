@@ -1460,7 +1460,7 @@ register struct obj *obj;
 		if (obj->otyp == POT_ACID) {
 			pline("It boils vigorously!"); /* EN pline("It boils vigorously!"); */ // TODO DE
 			You("VERB_WERDEN von einer Explosion erfasst!"); /* EN You("are caught in the explosion!"); */
-			losehp(rnd(10), "ADJEKTIV_ELEMENTAR NOUN_CHEMIE", KILLED_BY); /* EN losehp(rnd(10), "elementary chemistry", KILLED_BY); */
+			losehp(rnd(10), "Grundschul-NOUN_CHEMIE", KILLED_BY); /* EN losehp(rnd(10), "elementary chemistry", KILLED_BY); */
 			makeknown(obj->otyp);
 			update_inventory();
 			return (TRUE);

@@ -530,7 +530,7 @@ struct entity *etmp;
 	if (automiss(etmp) && e_survives_at(etmp, oldx, oldy)) {
 		if (e_inview && (at_portcullis || IS_DRAWBRIDGE(crm->typ)))
 			pline_The("%s passes through %s!", /* EN pline_The("%s passes through %s!", */ // TODO DE
-			      at_portcullis ? "portcullis" : "NOUN_DRAWBRIDGE", /* EN at_portcullis ? "portcullis" : "drawbridge", */ // TODO DE
+			      at_portcullis ? "NOUN_PORTCULLIS" : "NOUN_DRAWBRIDGE", /* EN at_portcullis ? "portcullis" : "drawbridge", */
 			      e_nam(etmp));
 		if (is_u(etmp)) spoteffects(FALSE);
 		return;
@@ -573,7 +573,7 @@ struct entity *etmp;
 #endif
 		} else {
 		    if (e_inview)
-			pline("%s crushed by the falling portcullis!", /* EN pline("%s crushed by the falling portcullis!", */ // TODO DE
+			pline("%s crushed by ARTIKEL_BESTIMMTER ADJEKTIV_FALLEND NOUN_PORTCULLIS!", /* EN pline("%s crushed by the falling portcullis!", */ // TODO DE
 			      E_phrase(etmp, "are")); /* EN E_phrase(etmp, "are")); */ // TODO DE
 		    else if (flags.soundok)
 			You_hear("a crushing sound."); /* EN You_hear("a crushing sound."); */ // TODO DE
@@ -673,7 +673,7 @@ struct entity *etmp;
 #endif
 		if (e_inview) {
 			if (is_u(etmp)) {
-				You("tumble towards the closed portcullis!"); /* EN You("tumble towards the closed portcullis!"); */ // TODO DE
+				You("tumble towards the ADJEKTIV_GESCHLOSSEN NOUN_PORTCULLIS!"); /* EN You("tumble towards the closed portcullis!"); */ // TODO DE
 				if (automiss(etmp))
 					You("pass through it!"); /* EN You("pass through it!"); */ // TODO DE
 				else
@@ -848,10 +848,10 @@ int x,y;
 		boolean lava = (lev1->drawbridgemask & DB_UNDER) == DB_LAVA;
 		if (lev1->typ == DRAWBRIDGE_UP) {
 			if (cansee(x2,y2))
-			    pline_The("portcullis of the drawbridge falls into the %s!", /* EN pline_The("portcullis of the drawbridge falls into the %s!", */ // TODO DE
+			    pline_The("NOUN_PORTCULLIS der Zugbrücke VERB_FALLEN OBJECT in ARTIKEL_BESTIMMTER %s!", /* EN pline_The("portcullis of the drawbridge falls into the %s!", */
 				  lava ? "NOUN_LAVA" : "NOUN_MOAT"); /* EN lava ? "lava" : "moat"); */
 			else if (flags.soundok)
-				You_hear("ein lautes loud *PFLATSCH*!"); /* EN You_hear("a loud *SPLASH*!"); */
+				You_hear("ein lautes *PFLATSCH*!"); /* EN You_hear("a loud *SPLASH*!"); */
 		} else {
 			if (cansee(x,y))
 			    pline_The("drawbridge collapses into the %s!", /* EN pline_The("drawbridge collapses into the %s!", */ // TODO DE

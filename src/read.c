@@ -1734,7 +1734,7 @@ int how;
 			break;	/* just made last one */
 		}
 	    if (cnt)
-		pline("Sent in some %s.", makeplural(buf)); /* EN pline("Sent in some %s.", makeplural(buf)); */ // TODO DE
+		pline("Nur herein, wenn's PRONOMEN_KEIN %s ist!", buf); /* EN pline("Sent in some %s.", makeplural(buf)); */
 	    else
 		pline(nothing_happens);
 	}

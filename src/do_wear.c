@@ -330,13 +330,13 @@ Helmet_on()
 		}
 		flags.botl = 1;		/* reveal new alignment or INT & WIS */
 		if (Hallucination) {
-		    pline("My brain hurts!"); /* Monty Python's Flying Circus */ /* EN pline("My brain hurts!"); */ // TODO DE
+		    pline("Mei Kopf tuat weh!"); /* Monty Python's Flying Circus */ /* EN pline("My brain hurts!"); */
 		} else if (uarmh->otyp == DUNCE_CAP) {
 		    You("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL, %s.",	/* track INT change; ignore WIS */ /* EN You_feel("%s.",	*/
 		  ACURR(A_INT) <= (ABASE(A_INT) + ABON(A_INT) + ATEMP(A_INT)) ?
 			     "NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_STEHEN PRONOMEN_PERSONAL in einer Ecke" : "albern"); /* EN "like sitting in a corner" : "giddy"); */
 		} else {
-		    Your("mind oscillates briefly."); /* EN Your("mind oscillates briefly."); */ // TODO DE
+		    Your("NOUN_VERSTAND oszilliert/flackert kurz."); /* EN Your("mind oscillates briefly."); */ // TODO DE besser?
 		    makeknown(HELM_OF_OPPOSITE_ALIGNMENT);
 		}
 		break;
@@ -997,9 +997,9 @@ dotakeoff()
 			      uskin->otyp >= GRAY_DRAGON_SCALES ?
 				"dragon scales are" : "dragon scale mail is"); /* EN "dragon scales are" : "dragon scale mail is");*/ // TODO DE
 		else
-		    pline("Not wearing any armor.%s", (iflags.cmdassist && 
+		    pline("Not wearing any armor.%s", (iflags.cmdassist && /* EN pline("Not wearing any armor.%s", (iflags.cmdassist &&  */ // TODO DE
 				(uleft || uright || uamul || ublindf)) ?
-			  "  Use 'R' command to remove accessories." : "");
+			  "  Use 'R' command to remove accessories." : ""); /* EN "  Use 'R' command to remove accessories." : ""); */ // TODO DE
 		return 0;
 	}
 	if (armorpieces > 1)
@@ -1392,7 +1392,7 @@ doputon()
 
 	if(uleft && uright && uamul && ublindf) {
 		Your("%s%s sind voll und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_TRAGEN schon OBJECT ARTIKEL_UNBESTIMMTER NOUN_AMULET und KASUS_AKKUSATIV %s.", /* EN Your("%s%s are full, and you're already wearing an amulet and %s.", */
-			humanoid(youmonst.data) ? "ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/ // TODO DE
+			humanoid(youmonst.data) ? "Ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/
 				 makeplural(body_part(FINGER)),
 			ublindf->otyp==LENSES ? "NOUN_LENSESs" : "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD"); /* EN ublindf->otyp==LENSES ? "some lense" : "a blindfold"); */
 		return(0);
@@ -1419,7 +1419,7 @@ doputon()
 			return(0);
 		}
 		if(uleft && uright){
-			There("are no more %s%s to fill.", /* EN There("are no more %s%s to fill.",*/ // TODO DE
+			You("VERB_HABEN OBJECT PRONOMEN_KEIN ADJEKTIV_FREI %s%s mehr.", /* EN There("are no more %s%s to fill.",*/
 				humanoid(youmonst.data) ? "Ring-" : "", /* EN humanoid(youmonst.data) ? "ring-" : "",*/
 				makeplural(body_part(FINGER)));
 			return(0);
@@ -1954,7 +1954,7 @@ doddoremarm()
     int result = 0;
 
     if (taking_off || takeoff_mask) {
-	You("VERB_FAHREN damit fort, %s.", disrobing); /* EN You("continue %s.", disrobing);*/ // TODO DE
+	You("VERB_FAHREN damit fort, %s.", disrobing); /* EN You("continue %s.", disrobing);*/
 	set_occupation(take_off, disrobing, 0);
 	(void) take_off();
 	return 0;

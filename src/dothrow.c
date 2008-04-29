@@ -334,8 +334,8 @@ register struct obj *obj;
 	if (IS_ALTAR(levl[u.ux][u.uy].typ))
 		doaltarobj(obj);
 	else
-		pline("%s hit%s the %s.", Doname2(obj), /* EN pline("%s hit%s the %s.", Doname2(obj), */ // TODO DE
-		      (obj->quan == 1L) ? "s" : "", surface(u.ux,u.uy)); /* EN (obj->quan == 1L) ? "s" : "", surface(u.ux,u.uy)); */ // TODO DE
+		pline("SUBJECT %s VERB_TREFFEN%s OBJECT ARTIKEL_BESTIMMTER %s.", Doname2(obj), /* EN pline("%s hit%s the %s.", Doname2(obj), */
+		      (obj->quan == 1L) ? "" : "", surface(u.ux,u.uy)); /* EN (obj->quan == 1L) ? "s" : "", surface(u.ux,u.uy)); */
 
 	if (hero_breaks(obj, u.ux, u.uy, TRUE)) return;
 	if (ship_object(obj, u.ux, u.uy, FALSE)) return;
@@ -801,7 +801,7 @@ boolean hitsroof;
 		    !(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
  petrify:
 		killer_format = KILLED_BY;
-		killer = "elementary physics";	/* "what goes up..." */ /* EN killer = "elementary physics";	*/ // TODO DE
+		killer = "Grundschul-NOUN_PHYSIK";	/* "what goes up..." */ /* EN killer = "elementary physics";	*/
 		You("VERB_VERSTEINERN."); /* EN You("turn to stone."); */
 		if (obj) dropy(obj);	/* bypass most of hitfloor() */
 		done(STONING);

@@ -1125,7 +1125,7 @@ dopay()
 	}
 
 	if ((!sk && (!Blind || Blind_telepat)) || (!Blind && !seensk)) {
-      There("appears to be no shopkeeper here to receive your payment."); /* EN There("appears to be no shopkeeper here to receive your payment."); */ // TODO DE
+      pline("Hier scheint SUBJECT_IM_SATZ PRONOMEN_KEIN NOUN_SHOPKEEPER zu sein, der KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_PAYMENT entgegennehmen könnte."); /* EN There("appears to be no shopkeeper here to receive your payment."); */
 		return(0);
 	}
 
@@ -1146,7 +1146,7 @@ dopay()
 			shkp; shkp = next_shkp(shkp->nmon, FALSE))
 		    if (canspotmon(shkp)) break;
 		if (shkp != resident && distu(shkp->mx, shkp->my) > 2) {
-		    pline("%s is not near enough to receive your payment.", /* EN pline("%s is not near enough to receive your payment.", */ // TODO DE
+		    pline("SUBJECT %s ist nicht nah genug, um OBJECT PRONOMEN_POSSESSIV NOUN_PAYMENT entgegenzunehmen.", /* EN pline("%s is not near enough to receive your payment.", */
 					     Monnam(shkp));
 		    return(0);
 		}
@@ -1172,11 +1172,11 @@ dopay()
 		}
 		mtmp = m_at(cx, cy);
 		if(!mtmp) {
-		     There("is no one there to receive your payment."); /* EN There("is no one there to receive your payment."); */ // TODO DE
+		     pline("Hier ist niemand, der KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_PAYMENT entgegennehmen könnte."); /* EN There("is no one there to receive your payment."); */
 		     return(0);
 		}
 		if(!mtmp->isshk) {
-		     pline("%s is not interested in your payment.", /* EN pline("%s is not interested in your payment.", */ // TODO DE
+		     pline("SUBJECT %s VERB_SEIN OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV NOUN_PAYMENT nicht interessiert.", /* EN pline("%s is not interested in your payment.", */
 				    Monnam(mtmp));
 		     return(0);
 		}

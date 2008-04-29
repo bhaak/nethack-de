@@ -1858,7 +1858,7 @@ static const struct func_tab cmdlist[] = {
 	{'r', FALSE, doread},
 	{'R', FALSE, doremring},
 	{M('r'), FALSE, dorub},
-	{'s', TRUE, dosearch, "searching"}, /* EN {'s', TRUE, dosearch, "searching"}, */ // TODO DE
+	{'s', TRUE, dosearch, "zu suchen"}, /* EN {'s', TRUE, dosearch, "searching"}, */ // TODO DE
 	{'S', TRUE, dosave},
 	{M('s'), FALSE, dosit},
 	{'t', FALSE, dothrow},
@@ -1887,8 +1887,8 @@ static const struct func_tab cmdlist[] = {
 #ifdef SHELL
 	{'!', TRUE, dosh},
 #endif
-	{'.', TRUE, donull, "waiting"}, /* EN {'.', TRUE, donull, "waiting"}, */ // TODO DE
-	{' ', TRUE, donull, "waiting"}, /* EN {' ', TRUE, donull, "waiting"}, */ // TODO DE
+	{'.', TRUE, donull, "zu warten"}, /* EN {'.', TRUE, donull, "waiting"}, */ // TODO DE
+	{' ', TRUE, donull, "zu warten"}, /* EN {' ', TRUE, donull, "waiting"}, */ // TODO DE
 	{',', FALSE, dopickup},
 	{':', TRUE, dolook},
 	{';', TRUE, doquickwhatis},
