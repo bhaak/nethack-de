@@ -346,7 +346,7 @@ dig()
 		} else if(IS_WALL(lev->typ)) {
 			if(shopedge) {
 			    add_damage(dpx, dpy, 10L * ACURRSTR);
-			    dmgtxt = "damage"; /* EN dmgtxt = "damage"; */ // TODO DE
+			    dmgtxt = "zu beschädigen"; /* EN dmgtxt = "damage"; */
 			}
 			if (level.flags.is_maze_lev) {
 			    lev->typ = ROOM;
@@ -1281,7 +1281,7 @@ zap_dig()
 	} /* while */
 	tmp_at(DISP_END,0);	/* closing call */
 	if (shopdoor || shopwall)
-	    pay_for_damage(shopdoor ? "destroy" : "dig into", FALSE); /* EN pay_for_damage(shopdoor ? "destroy" : "dig into", FALSE); */ // TODO DE
+	    pay_for_damage(shopdoor ? "zu zerstören" : "dig into", FALSE); /* EN pay_for_damage(shopdoor ? "destroy" : "dig into", FALSE); */ // TODO DE
 	return;
 }
 

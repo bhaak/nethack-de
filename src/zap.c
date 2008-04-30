@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /* Disintegration rays have special treatment; corpses are never left.
  * But the routine which calculates the damage is separate from the routine
  * which kills the monster.  The damage routine returns this cookie to
@@ -2824,7 +2828,7 @@ struct obj *obj;			/* object tossed/used */
 	if (weapon != ZAPPED_WAND && weapon != INVIS_BEAM) tmp_at(DISP_END, 0);
 
 	if(shopdoor)
-	    pay_for_damage("destroy", FALSE); /* EN pay_for_damage("destroy", FALSE); */ // TODO DE
+	    pay_for_damage("zu zerstören", FALSE); /* EN pay_for_damage("destroy", FALSE); */
 
 	return (struct monst *)0;
 }
@@ -3110,7 +3114,7 @@ xchar sx, sy;
 	case ZT_DEATH:
 	    if (abs(type) == ZT_BREATH(ZT_DEATH)) {
 		if (Disint_resistance) {
-		    You("are not disintegrated."); /* EN You("are not disintegrated."); */ // TODO DE
+		    You("VERB_WERDEN nicht desintegriert."); /* EN You("are not disintegrated."); */
 		    break;
 		} else if (uarms) {
 		    /* destroy shield; other possessions are safe */
@@ -3350,7 +3354,7 @@ register int dx,dy;
 		    if (is_rider(mon->data) && abs(type) == ZT_BREATH(ZT_DEATH)) {
 			if (canseemon(mon)) {
 			    hit(fltxt, mon, ".");
-			    pline("%s disintegrates.", Monnam(mon)); /* EN pline("%s disintegrates.", Monnam(mon)); */ // TODO DE
+			    pline("SUBJECT %s VERB_DESINTEGRIEREN.", Monnam(mon)); /* EN pline("%s disintegrates.", Monnam(mon)); */
 			    pline("%s body reintegrates before your %s!", /* EN pline("%s body reintegrates before your %s!", */ // TODO DE
 				  s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
 				  (eyecount(youmonst.data) == 1) ?
@@ -3376,7 +3380,7 @@ register int dx,dy;
 
 			if (canseemon(mon)) {
 			    if (!m_amulet)
-				pline("%s is disintegrated!", Monnam(mon)); /* EN pline("%s is disintegrated!", Monnam(mon)); */ // TODO DE
+				pline("SUBJECT %s VERB_WERDEN desintegriert!", Monnam(mon)); /* EN pline("%s is disintegrated!", Monnam(mon)); */
 			    else
 				hit(fltxt, mon, "!");
 			}
@@ -3414,9 +3418,9 @@ register int dx,dy;
 			} else {
 			    /* some armor was destroyed; no damage done */
 			    if (canseemon(mon))
-				pline("%s %s is disintegrated!", /* EN pline("%s %s is disintegrated!", */ // TODO DE
-				      s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
-				      distant_name(otmp, xname));
+				pline("SUBJECT %s VERB_DESINTEGRIEREN!", /* EN pline("%s %s is disintegrated!", */
+				      genitivattribut_zu_wort(Monnam(mon), /* EN s_suffix(Monnam(mon)), */
+				      distant_name(otmp, xname))); /* EN distant_name(otmp, xname)); */
 			    m_useup(mon, otmp);
 			}
 			if (mon_could_move && !mon->mcanmove)	/* ZT_SLEEP */
@@ -3504,9 +3508,9 @@ register int dx,dy;
     if (type == ZT_SPELL(ZT_FIRE))
 	explode(sx, sy, type, d(12,6), 0, EXPL_FIERY);
     if (shopdamage)
-	pay_for_damage(abstype == ZT_FIRE ?  "burn away" : /* EN pay_for_damage(abstype == ZT_FIRE ?  "burn away" : */ // TODO DE
+	pay_for_damage(abstype == ZT_FIRE ?  "abzufackeln" : /* EN pay_for_damage(abstype == ZT_FIRE ?  "burn away" : */
 		       abstype == ZT_COLD ?  "shatter" : /* EN abstype == ZT_COLD ?  "shatter" : */ // TODO DE
-		       abstype == ZT_DEATH ? "disintegrate" : "destroy", FALSE); /* EN abstype == ZT_DEATH ? "disintegrate" : "destroy", FALSE); */ // TODO DE
+		       abstype == ZT_DEATH ? "zu desintegrieren" : "zu zerstören", FALSE); /* EN abstype == ZT_DEATH ? "disintegrate" : "destroy", FALSE); */
     bhitpos = save_bhitpos;
 }
 #endif /*OVLB*/
@@ -3683,7 +3687,7 @@ boolean *shopdamage;
 		    if(abs(type) != ZT_BREATH(ZT_DEATH))
 			goto def_case;
 		    new_doormask = D_NODOOR;
-		    see_txt = "The door disintegrates!"; /* EN see_txt = "The door disintegrates!"; */ // TODO DE
+		    see_txt = "SUBJECT ARTIKEL_BESTIMMTER NOUN_OBJ_DOOR VERB_DESINTEGRIEREN!"; /* EN see_txt = "The door disintegrates!"; */
 		    hear_txt = "knackendes Holz."; /* EN hear_txt = "crashing wood."; */
 		    break;
 		case ZT_LIGHTNING:

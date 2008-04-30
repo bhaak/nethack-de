@@ -2262,37 +2262,37 @@ speak:
 	    char buf[BUFSZ];
 
 	    if(!ltmp) {
-		pline("SUBJECT %s hat kein Interesse an KASUS_DATIV %s.", Monnam(shkp), /* EN pline("%s has no interest in %s.", Monnam(shkp), */
+		pline("SUBJECT %s VERB_HABEN kein Interesse OBJECT KASUS_DATIV an %s.", Monnam(shkp), /* EN pline("%s has no interest in %s.", Monnam(shkp), */
 					     the(xname(obj)));
 		return;
 	    }
-	    Strcpy(buf, "\"For you, "); /* EN Strcpy(buf, "\"For you, "); */ // TODO DE
-	    if (ANGRY(shkp)) Strcat(buf, "scum "); /* EN if (ANGRY(shkp)) Strcat(buf, "scum "); */ // TODO DE
+	    Strcpy(buf, "\"SATZBEGINN KASUS_AKKUSATIV Für PRONOMEN_PERSONAL, KASUS_NOMINATIV "); /* EN Strcpy(buf, "\"For you, "); */
+	    if (ANGRY(shkp)) Strcat(buf, "Dreckskerl"); /* EN if (ANGRY(shkp)) Strcat(buf, "scum "); */
 	    else {
 		static const char *honored[5] = {
-		  "good", "honored", "most gracious", "esteemed", /* EN "good", "honored", "most gracious", "esteemed", */ // TODO DE
+		  "ADJEKTIV_GUT", "ADJEKTIV_EHRENWERT", "most gracious", "ADJEKTIV_GESCHAETZT", /* EN "good", "honored", "most gracious", "esteemed", */ // TODO DE
 		  "most renowned and sacred" /* EN "most renowned and sacred" */ // TODO DE
 		};
 		Strcat(buf, honored[rn2(4) + u.uevent.udemigod]);
 		if (!is_human(youmonst.data)) Strcat(buf, " creature"); /* EN if (!is_human(youmonst.data)) Strcat(buf, " creature"); */ // TODO DE
 		else
-		    Strcat(buf, (flags.female) ? " lady" : " sir"); /* EN Strcat(buf, (flags.female) ? " lady" : " sir"); */ // TODO DE
+		    Strcat(buf, (flags.female) ? " NOUN_DAME" : " NOUN_HERR"); /* EN Strcat(buf, (flags.female) ? " lady" : " sir"); */
 	    }
 	    if(ininv) {
 		long quan = obj->quan;
 		obj->quan = 1L; /* fool xname() into giving singular */
-		pline("%s; only %ld %s %s.\"", buf, ltmp, /* EN pline("%s; only %ld %s %s.\"", buf, ltmp, */ // TODO DE
-			(quan > 1L) ? "per" : "for this", xname(obj));
+		pline("%s, nur %ld KASUS_AKKUSATIV %s %s.\"", buf, ltmp, /* EN pline("%s; only %ld %s %s.\"", buf, ltmp, */
+			(quan > 1L) ? "pro" : "für PRONOMEN_DIESER", xname(obj)); /* EN (quan > 1L) ? "per" : "for this", xname(obj)); */
 		obj->quan = quan;
 	    } else
-		pline("SUBJECT %s will cost you %ld %s%s.", /* EN pline("%s will cost you %ld %s%s.", */
+		pline("SUBJECT %s VERB_KOSTEN OBJECT PRONOMEN_PERSONAL %ld %s%s.", /* EN pline("%s will cost you %ld %s%s.", */
 			The(xname(obj)), ltmp, currency(ltmp),
 			(obj->quan > 1L) ? " das Stück" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */
 	} else if(!silent) {
-	    if(ltmp) pline_The("list price of %s is %ld %s%s.", /* EN if(ltmp) pline_The("list price of %s is %ld %s%s.", */ // TODO DE
+	    if(ltmp) pline("SATZBEGINN Der Listenpreis KASUS_GENITIV %s beträgt %ld %s%s.", /* EN if(ltmp) pline_The("list price of %s is %ld %s%s.", */
 				   the(xname(obj)), ltmp, currency(ltmp),
 				   (obj->quan > 1L) ? " das Stück" : ""); /* EN (obj->quan > 1L) ? " each" : ""); */
-	    else pline("%s does not notice.", Monnam(shkp)); /* EN else pline("%s does not notice.", Monnam(shkp)); */ // TODO DE
+	    else pline("SUBJECT %s merkt nichts.", Monnam(shkp)); /* EN else pline("%s does not notice.", Monnam(shkp)); */
 	}
 }
 
@@ -2534,7 +2534,7 @@ int deliberate;
 	   This retains the old pre-query risk that slippery fingers while in
 	   shops entailed:  you drop it, you've lost it.
 	 */
-	sell_response = (deliberate != SELL_NORMAL) ? '\0' : 'a'; /* EN sell_response = (deliberate != SELL_NORMAL) ? '\0' : 'a'; */ // TODO DE
+	sell_response = (deliberate != SELL_NORMAL) ? '\0' : 'a'; /* DE sic! */
 	sell_how = deliberate;
 	auto_credit = FALSE;
 }
@@ -2589,7 +2589,7 @@ xchar x, y;
 		} else obj->no_charge = 1;
 
 		if(!unpaid && (sell_how != SELL_DONTSELL))
-		    pline("%s seems uninterested.", Monnam(shkp)); /* EN pline("%s seems uninterested.", Monnam(shkp)); */ // TODO DE
+		    pline("SUBJECT %s scheint nicht interessiert zu sein.", Monnam(shkp)); /* EN pline("%s seems uninterested.", Monnam(shkp)); */
 		return;
 	}
 
@@ -2657,8 +2657,8 @@ move_on:
 	   || (obj->oclass == FOOD_CLASS && obj->oeaten)
 	   || (Is_candle(obj) &&
 		   obj->age < 20L * (long)objects[obj->otyp].oc_cost)) {
-		pline("%s seems uninterested%s.", Monnam(shkp), /* EN pline("%s seems uninterested%s.", Monnam(shkp), */ // TODO DE
-			cgold ? " in the rest" : ""); /* EN cgold ? " in the rest" : ""); */ // TODO DE
+		pline("SUBJECT %s scheint %s nicht interessiert zu sein.", Monnam(shkp), /* EN pline("%s seems uninterested%s.", Monnam(shkp), */
+			cgold ? " am Rest" : ""); /* EN cgold ? " in the rest" : ""); */
 		if (container)
 		    dropped_container(obj, shkp, FALSE);
 		obj->no_charge = 1;
@@ -3048,7 +3048,7 @@ register boolean croaked;
 	    else if (saw_untrap)
 	        pline("Suddenly, the trap is removed from the floor!"); /* EN pline("Suddenly, the trap is removed from the floor!"); */ // TODO DE
 	    else if (inside_shop(u.ux, u.uy) == ESHK(shkp)->shoproom)
-		You_feel("more claustrophobic than before."); /* EN You_feel("more claustrophobic than before."); */ // TODO DE
+		Du_fuehlst_dich("klaustrophobischer als vorher."); /* EN You_feel("more claustrophobic than before."); */
 	    else if (flags.soundok && !rn2(10))
 		Norep("The dungeon acoustics noticeably change."); /* EN Norep("The dungeon acoustics noticeably change."); */ // TODO DE
 	}
@@ -3214,14 +3214,14 @@ register struct monst *shkp;
 		if(ANGRY(shkp) ||
 		   (Conflict && !resist(shkp, RING_CLASS, 0, 0))) {
 			if(Displaced)
-			  Your("ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE doesn't fool %s!", /* EN Your("displaced image doesn't fool %s!", */ // TODO DE
+			  Your("ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE VERB_TAEUSCHEN OBJECT %s nicht!", /* EN Your("displaced image doesn't fool %s!", */
 				mon_nam(shkp));
 			(void) mattacku(shkp);
 			return(0);
 		}
 		if(eshkp->following) {
 			if(strncmp(eshkp->customer, plname, PL_NSIZ)) {
-			    verbalize("%s, %s!  I was looking for %s.", /* EN verbalize("%s, %s!  I was looking for %s.", */ // TODO DE
+			    verbalize("%s, %s!  Ich bin auf der Suche nach %s.", /* EN verbalize("%s, %s!  I was looking for %s.", */
 				    Hello(shkp), plname, eshkp->customer);
 				    eshkp->following = 0;
 			    return(0);
@@ -3231,7 +3231,7 @@ register struct monst *shkp;
 				    Hello(shkp), plname);
 			    followmsg = moves;
 			    if (!rn2(9)) {
-			      pline("%s doesn't like customers who don't pay.", /* EN pline("%s doesn't like customers who don't pay.", */ // TODO DE
+			      pline("SUBJECT %s mag keine Kunden, die nicht zahlen.", /* EN pline("%s doesn't like customers who don't pay.", */
 				    Monnam(shkp));
 				rile_shk(shkp);
 			    }
@@ -3453,8 +3453,8 @@ boolean cant_mollify;
 	register boolean uinshp = (*u.ushops != '\0');
 	char qbuf[80];
 	register xchar x, y;
-	boolean dugwall = !strcmp(dmgstr, "dig into") ||	/* wand */ /* EN boolean dugwall = !strcmp(dmgstr, "dig into") ||	 */ // TODO DE
-			  !strcmp(dmgstr, "damage");		/* pick-axe */ /* EN !strcmp(dmgstr, "damage");		 */ // TODO DE
+	boolean dugwall = !strcmp(dmgstr, "dig into") || /* wand */ /* EN boolean dugwall = !strcmp(dmgstr, "dig into") ||	 */ // TODO DE
+			  !strcmp(dmgstr, "zu beschädigen"); /* pick-axe */ /* EN !strcmp(dmgstr, "damage");	*/
 	struct damage *tmp_dam, *appear_here = 0;
 	/* any number >= (80*80)+(24*24) would do, actually */
 	long cost_of_damage = 0L;
@@ -3529,7 +3529,7 @@ boolean cant_mollify;
 	if(uinshp) {
 		if(um_dist(shkp->mx, shkp->my, 1) &&
 			!um_dist(shkp->mx, shkp->my, 3)) {
-		    pline("%s leaps towards you!", shkname(shkp)); /* EN pline("%s leaps towards you!", shkname(shkp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SPRINGEN OBJECT in PRONOMEN_POSSESSIV NOUN_RICHTUNG!", shkname(shkp)); /* EN pline("%s leaps towards you!", shkname(shkp)); */
 		    mnexto(shkp);
 		}
 		if(um_dist(shkp->mx, shkp->my, 1)) goto getcad;
@@ -3542,7 +3542,7 @@ boolean cant_mollify;
 	     */
 	    if (MON_AT(x, y)) {
 		if(flags.soundok) {
-		    You_hear("an angry voice:"); /* EN You_hear("an angry voice:"); */ // TODO DE
+		    You_hear("eine wütende Stimme:"); /* EN You_hear("an angry voice:"); */
 		    verbalize("Out of my way, scum!"); /* EN verbalize("Out of my way, scum!"); */ // TODO DE
 		    wait_synch();
 #if defined(UNIX) || defined(VMS)
@@ -3565,12 +3565,12 @@ boolean cant_mollify;
 				|| !rn2(50)) {
 		if(um_dist(x, y, 1) && !uinshp) {
 		    pline("SUBJECT %s VERB_BRUELLEN:", shkname(shkp)); /* EN pline("%s shouts:", shkname(shkp)); */
-		    verbalize("Who dared %s my %s?", dmgstr, /* EN verbalize("Who dared %s my %s?", dmgstr, */ // TODO DE
-					 dugwall ? "NOUN_SHOP" : "NOUN_OBJ_DOOR"); /* EN dugwall ? "shop" : "door"); */
+		    verbalize("Wer wagt es, KASUS_AKKUSATIV PRONOMEN_MEIN %s %s?", /* EN verbalize("Who dared %s my %s?", dmgstr, */
+					 dugwall ? "NOUN_SHOP" : "NOUN_OBJ_DOOR", dmgstr); /* EN dugwall ? "shop" : "door"); */
 		} else {
 getcad:
-		    verbalize("Was faellt dir ein, How dare you %s PRONOMEN_POSSESSIV %s?", dmgstr, /* EN verbalize("How dare you %s my %s?", dmgstr, */ // TODO DE
-					 dugwall ? "NOUN_SHOP" : "NOUN_OBJ_DOOR"); /* EN dugwall ? "shop" : "door"); */
+		    verbalize("Was fällt KASUS_DATIV PRONOMEN_PERSONAL ein, KASUS_AKKUSATIV PRONOMEN_MEIN %s %s?", /* EN verbalize("How dare you %s my %s?", dmgstr, */
+					 dugwall ? "NOUN_SHOP" : "NOUN_OBJ_DOOR", dmgstr); /* EN dugwall ? "shop" : "door"); */
 		}
 		hot_pursuit(shkp);
 		return;
@@ -3662,7 +3662,7 @@ register struct obj *first_obj;
 	if (Has_contents(otmp))
 	    cost += contained_cost(otmp, shkp, 0L, FALSE, FALSE);
 	if (!cost) {
-	    Strcpy(price, "no charge"); /* EN Strcpy(price, "no charge"); */ // TODO DE
+	    Strcpy(price, "kostenlos"); /* EN Strcpy(price, "no charge"); */
 	} else {
 	    Sprintf(price, "%ld %s%s", cost, currency(cost),
 		    otmp->quan > 1L ? " das Stück" : ""); /* EN otmp->quan > 1L ? " each" : ""); */
@@ -3715,7 +3715,7 @@ long cost;
 	   default: break;
 	}
     } else if (itm->oartifact) {
-	return ", one of a kind!";
+	return (rn2(2) ? ", ein Einzelstück!" : ", ein Unikat!"); /* EN return ", one of a kind!"; */ /* DE Einzelstück, Unikat, Rarität */
     }
     return ".";
 }
@@ -3724,9 +3724,9 @@ long cost;
 
 /* First 4 supplied by Ronen and Tamar, remainder by development team */
 const char *Izchak_speaks[]={
-    "SUBJECT %s sagt: 'These shopping malls give me a headache.'", /* EN "%s says: 'These shopping malls give me a headache.'", */ // TODO DE
+    "SUBJECT %s sagt: 'Diese Einkaufszentren machen mir Kopfschmerzen.'", /* EN "%s says: 'These shopping malls give me a headache.'", */
     "SUBJECT %s sagt: 'Slow down.  Think clearly.'", /* EN "%s says: 'Slow down.  Think clearly.'", */ // TODO DE
-    "SUBJECT %s sagt: 'You need to take things one at a time.'", /* EN "%s says: 'You need to take things one at a time.'", */ // TODO DE
+    "SUBJECT %s sagt: 'Immer eins nach dem anderen.'", /* EN "%s says: 'You need to take things one at a time.'", */ // TODO DE
     "SUBJECT %s sagt: 'I don't like poofy coffee... give me Columbian Supremo.'", /* EN "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", */ // TODO DE
     "SUBJECT %s sagt that getting the devteam's agreement on anything is difficult.", /* EN "%s says that getting the devteam's agreement on anything is difficult.", */ // TODO DE
     "SUBJECT %s sagt that he has noticed those who serve their deity will prosper.", /* EN "%s says that he has noticed those who serve their deity will prosper.", */ // TODO DE
@@ -3748,7 +3748,7 @@ struct monst *shkp;
 		   not actually a shk, which could happen if someone
 		   wishes for a shopkeeper statue and then animates it.
 		   (Note: shkname() would be "" in a case like this.) */
-		pline("%s asks whether you've seen any untended shops recently.", /* EN pline("%s asks whether you've seen any untended shops recently.", */ // TODO DE
+		pline("SUBJECT %s VERB_FRAGEN OBJECT PRONOMEN_PERSONAL, ob NEUER_SATZ SUBJECT PRONOMEN_PERSONAL in letzter Zeit untended Läden gesehen VERB_HABEN.", /* EN pline("%s asks whether you've seen any untended shops recently.", */ // TODO DE
 		      Monnam(shkp));
 		/* [Perhaps we ought to check whether this conversation
 		   is taking place inside an untended shop, but a shopless
@@ -3763,7 +3763,7 @@ struct monst *shkp;
 			eshk->robbed ? "nicht zahlende" : "unhöfliche"); /* EN eshk->robbed ? "non-paying" : "rude"); */
 	else if (eshk->following) {
 		if (strncmp(eshk->customer, plname, PL_NSIZ)) {
-		    verbalize("%s %s!  I was looking for %s.", /* EN verbalize("%s %s!  I was looking for %s.", */ // TODO DE
+		    verbalize("%s %s!  Ich bin auf der Suche nach %s.", /* EN verbalize("%s %s!  I was looking for %s.", */
 			    Hello(shkp), plname, eshk->customer);
 		    eshk->following = 0;
 		} else {
@@ -3772,7 +3772,7 @@ struct monst *shkp;
 		}
 	} else if (eshk->billct) {
 		register long total = addupbill(shkp) + eshk->debit;
-		pline("%s says that your bill comes to %ld %s.", /* EN pline("%s says that your bill comes to %ld %s.", */ // TODO DE
+		pline("SUBJECT %s says that PRONOMEN_POSSESSIV bill beläuft sich auf %ld %s.", /* EN pline("%s says that your bill comes to %ld %s.", */ // TODO DE
 		      shkname(shkp), total, currency(total));
 	} else if (eshk->debit)
 		pline("SUBJECT %s VERB_ERINNERN OBJECT PRONOMEN_PERSONAL daran, dass NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s %ld %s VERB_OWE.", /* EN pline("%s reminds you that you owe %s %ld %s.", */
@@ -3788,7 +3788,7 @@ struct monst *shkp;
 #else
 	else if ((shkmoney = money_cnt(shkp->minvent)) < 50)
 #endif
-		pline("SUBJECT %s VERB_BESCHWEREN sich über schlechtgehende Geschäfte.", shkname(shkp)); /* EN pline("%s complains that business is bad.", shkname(shkp)); */ // TODO DE
+		pline("SUBJECT %s VERB_BESCHWEREN sich über schlechtgehende Geschäfte.", shkname(shkp)); /* EN pline("%s complains that business is bad.", shkname(shkp)); */
 #ifndef GOLDOBJ
 	else if (shkp->mgold > 4000)
 #else

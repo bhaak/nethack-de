@@ -72,7 +72,7 @@ int expltype;
 			adtyp = AD_COLD;
 			break;
 		case 4: str =  (olet == WAND_CLASS) ? "NOUN_TODESFELD" : /* EN case 4: str =  (olet == WAND_CLASS) ? "death field" : */
-							"disintegration field"; /* EN "disintegration field"; */ // TODO DE
+							"NOUN_DESINTEGRATIONFELD"; /* EN "disintegration field"; */
 			adtyp = AD_DISN;
 			break;
 		case 5: str = "ball of lightning"; /* EN case 5: str = "ball of lightning"; */ // TODO DE
@@ -365,9 +365,9 @@ int expltype;
 	}
 
 	if (shopdamage) {
-		pay_for_damage(adtyp == AD_FIRE ? "burn away" : /* EN pay_for_damage(adtyp == AD_FIRE ? "burn away" : */ // TODO DE
+		pay_for_damage(adtyp == AD_FIRE ? "abzufackeln" : /* EN pay_for_damage(adtyp == AD_FIRE ? "burn away" : */
 			       adtyp == AD_COLD ? "shatter" : /* EN adtyp == AD_COLD ? "shatter" : */ // TODO DE
-			       adtyp == AD_DISN ? "disintegrate" : "destroy", /* EN adtyp == AD_DISN ? "disintegrate" : "destroy", */ // TODO DE
+			       adtyp == AD_DISN ? "zu desintegrieren" : "zu zerstören", /* EN adtyp == AD_DISN ? "disintegrate" : "destroy", */
 			       FALSE);
 	}
 

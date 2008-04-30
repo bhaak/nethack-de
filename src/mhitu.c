@@ -1264,7 +1264,7 @@ dopois:
 			pline("%s tries to %s you, but you seem %s.", /* EN pline("%s tries to %s you, but you seem %s.", */ // TODO DE
 			    Adjmonnam(mtmp, "plain"), /* EN Adjmonnam(mtmp, "plain"), */ // TODO DE
 			    flags.female ? "charm" : "seduce", /* EN flags.female ? "charm" : "seduce", */ // TODO DE
-			    flags.female ? "unaffected" : "uninterested"); /* EN flags.female ? "unaffected" : "uninterested"); */ // TODO DE
+			    flags.female ? "unaffected" : "kein Interesse zu haben"); /* EN flags.female ? "unaffected" : "uninterested"); */ // TODO DE
 		    }
 		    if(rn2(3)) {
 			if (!tele_restrict(mtmp)) rloc(mtmp);

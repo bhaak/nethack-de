@@ -379,7 +379,7 @@ still_chewing(x,y)
     } else if (IS_WALL(lev->typ)) {
 	if (*in_rooms(x, y, SHOPBASE)) {
 	    add_damage(x, y, 10L * ACURRSTR);
-	    dmgtxt = "damage"; /* EN dmgtxt = "damage"; */ // TODO DE
+	    dmgtxt = "zu beschädigen"; /* EN dmgtxt = "damage"; */
 	}
 	digtxt = "chew a hole in the wall."; /* EN digtxt = "chew a hole in the wall."; */ // TODO DE
 	if (level.flags.is_maze_lev) {

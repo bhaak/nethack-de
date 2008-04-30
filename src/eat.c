@@ -1274,7 +1274,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		pline("Ecch - that must have been poisonous!"); /* EN pline("Ecch - that must have been poisonous!"); */ // TODO DE
 		if(!Poison_resistance) {
 			losestr(rnd(4));
-			losehp(rnd(15), "poisonous corpse", KILLED_BY_AN); /* EN losehp(rnd(15), "poisonous corpse", KILLED_BY_AN); */ // TODO DE
+			losehp(rnd(15), "ADJEKTIV_GIFTIG NOUN_CORPSE", KILLED_BY_AN); /* EN losehp(rnd(15), "poisonous corpse", KILLED_BY_AN); */
 		} else	You("seem unaffected by the poison."); /* EN } else	You("seem unaffected by the poison."); */ // TODO DE
 	/* now any corpse left too long will make you mildly ill */
 	} else if ((rotted > 5L || (rotted > 3L && rn2(5)))
@@ -1297,7 +1297,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 
 	    if (!mons[otmp->corpsenm].cnutrit) {
 		/* no nutrution: rots away, no message if you passed out */
-		if (!retcode) pline_The("corpse rots away completely."); /* EN if (!retcode) pline_The("corpse rots away completely."); */ // TODO DE
+		if (!retcode) pline_The("NOUN_CORPSE verrottet vollständig."); /* EN if (!retcode) pline_The("corpse rots away completely."); */
 		if (carried(otmp)) useup(otmp);
 		else useupf(otmp, 1L);
 		retcode = 2;
@@ -1306,7 +1306,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 	    if (!retcode) consume_oeaten(otmp, 2);	/* oeaten >>= 2 */
 	} else {
 	    pline("SUBJECT %s%s %s!", /* EN pline("%s%s %s!", */
-		  !uniq ? "PRONOMEN_DIESER " : !type_is_pname(&mons[mnum]) ? "ARTIKEL_BESTIMMTER " : "", /* EN !uniq ? "This " : !type_is_pname(&mons[mnum]) ? "The " : "", */ // TODO DE
+		  !uniq ? "PRONOMEN_DIESER " : !type_is_pname(&mons[mnum]) ? "ARTIKEL_BESTIMMTER " : "", /* EN !uniq ? "This " : !type_is_pname(&mons[mnum]) ? "The " : "", */
 		  food_xname(otmp, FALSE),
 		  (vegan(&mons[mnum]) ?
 		   (!carnivorous(youmonst.data) && herbivorous(youmonst.data)) :
@@ -1400,7 +1400,7 @@ struct obj *otmp;
 		if (otmp->otyp==SLIME_MOLD && !otmp->cursed
 			&& otmp->spe == current_fruit)
 		    pline("Mann, das war aber ARTIKEL_UNBESTIMMTER %s %s!", /* EN pline("My, that was a %s %s!", */
-			  Hallucination ? "primo" : "ADJEKTIV_LECKER", /* EN Hallucination ? "primo" : "yummy", */ // TODO DE http://www.urbandictionary.com/define.php?term=primo
+			  Hallucination ? "ADJEKTIV_ASTREIN" : "ADJEKTIV_LECKER", /* EN Hallucination ? "primo" : "yummy", */ /* http://www.urbandictionary.com/define.php?term=primo */
 			  singular(otmp, xname));
 		else
 #ifdef UNIX

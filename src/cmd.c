@@ -837,7 +837,7 @@ char *outbuf;
 	bonus = (incamt > 0) ? "BONUS" : "MALUS"; /* EN bonus = (incamt > 0) ? "bonus" : "penalty"; */ /* "NOUN_SCHADENSBONUS, NOUN_SCHADENSMALUS, NOUN_TREFFERMALUS, NOUN_TREFFERBONUS" */
 #ifndef GERMAN
 	/* "bonus to hit" vs "damage bonus" */
-	if (!strcmp(inctyp, "damage")) {
+	if (!strcmp(inctyp, "NOUN_SCHADENS")) { /* EN if (!strcmp(inctyp, "damage")) { */
 	    const char *ctmp = inctyp;
 	    inctyp = bonus;
 	    bonus = ctmp;
