@@ -3569,7 +3569,7 @@ boolean cant_mollify;
 					 dugwall ? "NOUN_SHOP" : "NOUN_OBJ_DOOR", dmgstr); /* EN dugwall ? "shop" : "door"); */
 		} else {
 getcad:
-		    verbalize("Was fällt KASUS_DATIV PRONOMEN_PERSONAL ein, KASUS_AKKUSATIV PRONOMEN_MEIN %s %s?", /* EN verbalize("How dare you %s my %s?", dmgstr, */
+		    verbalize("Was fällt KASUS_DATIV PRONOMEN_PERSONAL ein KASUS_AKKUSATIV PRONOMEN_MEIN %s %s?", /* EN verbalize("How dare you %s my %s?", dmgstr, */
 					 dugwall ? "NOUN_SHOP" : "NOUN_OBJ_DOOR", dmgstr); /* EN dugwall ? "shop" : "door"); */
 		}
 		hot_pursuit(shkp);

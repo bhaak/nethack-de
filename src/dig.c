@@ -540,7 +540,7 @@ int ttyp;
 
 	    if(madeby_u) {
 		You("VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s.", surface_type); /* EN You("dig a pit in the %s.", surface_type); */
-		if (shopdoor) pay_for_damage("ruin", FALSE); /* EN if (shopdoor) pay_for_damage("ruin", FALSE); */ // TODO DE
+		if (shopdoor) pay_for_damage("zu zertrümmern", FALSE); /* EN if (shopdoor) pay_for_damage("ruin", FALSE); */
 	    } else if (!madeby_obj && canseemon(madeby))
 		pline("SUBJECT %s VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_GRUBE NEUES_OBJECT OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s.", Monnam(madeby), surface_type); /* EN pline("%s digs a pit in the %s.", Monnam(madeby), surface_type); */
 	    else if (cansee(x, y) && flags.verbose)
@@ -590,7 +590,7 @@ int ttyp;
 			impact_drop((struct obj *)0, x, y, 0);
 		    if (oldobjs != newobjs)
 			(void) pickup(1);
-		    if (shopdoor && madeby_u) pay_for_damage("ruin", FALSE); /* EN if (shopdoor && madeby_u) pay_for_damage("ruin", FALSE); */ // TODO DE
+		    if (shopdoor && madeby_u) pay_for_damage("zertrümmern", FALSE); /* EN if (shopdoor && madeby_u) pay_for_damage("ruin", FALSE); */
 
 		} else {
 		    d_level newlevel;
@@ -611,7 +611,7 @@ int ttyp;
 		    spoteffects(FALSE);
 		}
 	    } else {
-		if (shopdoor && madeby_u) pay_for_damage("ruin", FALSE); /* EN if (shopdoor && madeby_u) pay_for_damage("ruin", FALSE); */ // TODO DE
+		if (shopdoor && madeby_u) pay_for_damage("zertrümmern", FALSE); /* EN if (shopdoor && madeby_u) pay_for_damage("ruin", FALSE); */
 		if (newobjs)
 		    impact_drop((struct obj *)0, x, y, 0);
 		if (mtmp) {

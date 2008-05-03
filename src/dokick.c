@@ -1060,7 +1060,7 @@ dumb:
 		unblock_point(x,y);		/* vision */
 		if (shopdoor) {
 		    add_damage(x, y, 400L);
-		    pay_for_damage("break", FALSE); /* EN pay_for_damage("break", FALSE); */ // TODO DE
+		    pay_for_damage("einzutreten", FALSE); /* EN pay_for_damage("break", FALSE); */
 		}
 		if (in_town(x, y))
 		  for(mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
@@ -1091,7 +1091,7 @@ dumb:
 			if (canspotmon(mtmp))
 			    pline("SUBJECT %s VERB_YELL:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */
 			else
-			    You_hear("OBJECT NOUN_JEMAND VERB_YELL:"); /* EN You_hear("someone yell:"); */ // TODO DE
+			    You_hear("OBJECT NOUN_JEMAND MODIFIER_VERB_INFINITIV VERB_YELL:"); /* EN You_hear("someone yell:"); */
 			if(levl[x][y].looted & D_WARNED) {
 			    verbalize("Halt, Wandale!  Du bist verhaftet!"); /* EN verbalize("Halt, vandal!  You're under arrest!"); */
 			    (void) angry_guards(FALSE);
