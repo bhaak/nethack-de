@@ -883,7 +883,7 @@ boolean atme;
 			if (atme) u.dx = u.dy = u.dz = 0;
 			else if (!getdir((char *)0)) {
 			    /* getdir cancelled, re-use previous direction */
-			    pline_The("magical energy is released!"); /* EN pline_The("magical energy is released!"); */ // TODO DE
+			    pline("Die magische Energie wird freigesetzt!"); /* EN pline_The("magical energy is released!"); */
 			}
 			if(!u.dx && !u.dy && !u.dz) {
 			    if ((damage = zapyourself(pseudo, TRUE)) != 0) {
@@ -976,7 +976,7 @@ throwspell()
 	if (u.uinwater) {
 	    pline("SUBJECT PRONOMEN_PERSONAL VERB_MACHEN Witze! Bei diesem Wetter?"); return 0; /* EN pline("You're joking! In this weather?"); return 0; */
 	} else if (Is_waterlevel(&u.uz)) {
-	    You("had better wait for the sun to come out."); return 0; /* EN You("had better wait for the sun to come out."); return 0; */ // TODO DE
+	    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WARTEN lieber, bis die Sonne rauskommt."); return 0; /* EN You("had better wait for the sun to come out."); return 0; */
 	}
 
 	pline("Where do you want to cast the spell?"); /* EN pline("Where do you want to cast the spell?"); */ // TODO DE
@@ -1036,7 +1036,7 @@ dovspell()
 	else {
 	    while (dospellmenu("Aktuell bekannte Zaubersprüche", /* EN while (dospellmenu("Currently known spells", */
 			       SPELLMENU_VIEW, &splnum)) {
-		Sprintf(qbuf, "Reordering spells; swap '%c' with", /* EN Sprintf(qbuf, "Reordering spells; swap '%c' with", */ // TODO DE
+		Sprintf(qbuf, "Sprüche neu ordnen; tausche '%c' mit", /* EN Sprintf(qbuf, "Reordering spells; swap '%c' with", */
 			spellet(splnum));
 		if (!dospellmenu(qbuf, splnum, &othnum)) break;
 
@@ -1074,13 +1074,13 @@ int *spell_no;
 	 * in the window-ports (say via a tab character).
 	 */
 	if (!iflags.menu_tab_sep)
-		Sprintf(buf, "%-20s     Level  %-12s Fail", "    Name", "Category"); /* EN Sprintf(buf, "%-20s     Level  %-12s Fail", "    Name", "Category"); */ // TODO DE
+		Sprintf(buf, "%-33s     Stufe  %-12s Fail", "    Name", "Kategorie"); /* EN Sprintf(buf, "%-20s     Level  %-12s Fail", "    Name", "Category"); */ // TODO DE
 	else
-		Sprintf(buf, "Name\tLevel\tCategory\tFail"); /* EN Sprintf(buf, "Name\tLevel\tCategory\tFail"); */ // TODO DE
+		Sprintf(buf, "Name\tStufe\tKategorie\tFail"); /* EN Sprintf(buf, "Name\tLevel\tCategory\tFail"); */ // TODO DE
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
 	for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
 		Sprintf(buf, iflags.menu_tab_sep ?
-			"%s\t%-d%s\t%s\t%-d%%" : "%-20s  %2d%s   %-12s %3d%%",
+			"%s\t%-d%s\t%s\t%-d%%" : "%-33s  %2d%s   %-12s %3d%%", /* EN "%s\t%-d%s\t%s\t%-d%%" : "%-20s  %2d%s   %-12s %3d%%", */
 			german(spellname(i)), spellev(i), /* EN spellname(i), spellev(i), */
 			spellknow(i) ? " " : "*",
 			spelltypemnemonic(spell_skilltype(spellid(i))),
@@ -1132,7 +1132,7 @@ dump_spells()
 	}
 	dump("", "Spells known in the end"); /* EN dump("", "Spells known in the end"); */ // TODO DE
 
-	Sprintf(buf, "%-20s   Level    %-12s Fail", "    Name", "Category"); /* EN Sprintf(buf, "%-20s   Level    %-12s Fail", "    Name", "Category"); */ // TODO DE
+	Sprintf(buf, "%-33   Stufe    %-12s Fail", "    Name", "Kategorie"); /* EN Sprintf(buf, "%-20s   Level    %-12s Fail", "    Name", "Category"); */ // TODO DE
 	dump("  ",buf);
 	for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
 		Sprintf(buf, "%c - %-20s  %2d%s   %-12s %3d%%",

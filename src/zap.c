@@ -2382,7 +2382,7 @@ struct obj *obj;	/* wand or spell */
 		    if (is_pool(u.ux, u.uy) || is_ice(u.ux, u.uy))
 			pline(nothing_happens);
 		    else
-					pline("Blut %s OBJECT %s KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("Blood %ss %s your %s.", */ // TODO DE
+					pline("Blut %s OBJECT %s KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN pline("Blood %ss %s your %s.", */
 			      is_lava(u.ux, u.uy) ? "kocht" : "sammelt sich", /* EN is_lava(u.ux, u.uy) ? "boil" : "pool", */
 			      Levitation ? "unter" : "zu", /* EN Levitation ? "beneath" : "at", */
 			      makeplural(body_part(FOOT)));
@@ -2418,7 +2418,7 @@ struct obj *obj;	/* wand or spell */
 		    if (e->engr_type == ENGRAVE) {
 			/* only affects things in stone */
 			pline(Hallucination ?  /* EN pline_The(Hallucination ? */
-			    "floor runs like butter!" : /* EN "floor runs like butter!" : */ // TODO DE
+			    "Der Boden schmilzt wie Eis in der Sonne!" : /* EN "floor runs like butter!" : */
 			    "Die Ecken und Kanten des Bodens werden glatter."); /* EN "edges on the floor get smoother."); */
 			wipe_engr_at(x, y, d(2,4));
 			}
@@ -2467,7 +2467,7 @@ register struct	obj	*obj;
 	    }
 	    /* give a clue if obj_zapped */
 	    if (obj_zapped)
-		You_feel("shuddering vibrations."); /* EN You_feel("shuddering vibrations."); */ // TODO DE
+		You_feel("leichte Ersch¸tterungen."); /* EN You_feel("shuddering vibrations."); */
 
 	} else if (objects[otyp].oc_dir == NODIR) {
 	    zapnodir(obj);
@@ -2574,8 +2574,8 @@ register const char *force;		/* usually either "." or "!" */
 	if((!cansee(bhitpos.x,bhitpos.y) && !canspotmon(mtmp) &&
 	     !(u.uswallow && mtmp == u.ustuck))
 	   || !flags.verbose)
-	    pline("SUBJECT %s %s OBJECT NOUN_IT.", The(str), vtense(str, "VERB_HIT"));
-	else pline("SUBJECT %s %s OBJECT %s%s", The(str), vtense(str, "VERB_HIT"),
+	    pline("SUBJECT %s %s OBJECT NOUN_IT.", The(str), vtense(str, "VERB_HIT")); /* EN pline("SUBJECT %s %s OBJECT NOUN_IT.", The(str), vtense(str, "VERB_HIT")); */ // TODO DE
+	else pline("SUBJECT %s %s OBJECT %s%s", The(str), vtense(str, "VERB_HIT"), /* EN else pline("SUBJECT %s %s OBJECT %s%s", The(str), vtense(str, "VERB_HIT"), */ // TODO DE
 		   mon_nam(mtmp), force);
 }
 
@@ -2584,10 +2584,10 @@ miss(str,mtmp)
 register const char *str;
 register struct monst *mtmp;
 {
-	pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"),
+	pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"), /* EN pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"), */ // TODO DE
 	      ((cansee(bhitpos.x,bhitpos.y) || canspotmon(mtmp))
 	       && flags.verbose) ?
-	      mon_nam(mtmp) : "NOUN_IT");
+	      mon_nam(mtmp) : "NOUN_IT"); /* EN mon_nam(mtmp) : "NOUN_IT"); */ // TODO DE
 }
 #endif /*OVL0*/
 #ifdef OVL1
@@ -2870,11 +2870,11 @@ int dx, dy;
 			if(Fumbling || rn2(20) >= ACURR(A_DEX)) {
 				/* we hit ourselves */
 				(void) thitu(10, rnd(10), (struct obj *)0,
-					"NOUN_BOOMERANG");
+					"NOUN_BOOMERANG"); /* EN "boomerang"); */
 				break;
 			} else {	/* we catch it */
 				tmp_at(DISP_END, 0);
-				pline("Gekonnt SUBJECT_IM_SATZ VERB_FANGEN PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_BOOMERANG."); /* ?geschickt, gekonnt, formvollendet, meisterlich */ /* EN You("skillfully catch the boomerang."); */
+				pline("Gekonnt SUBJECT_IM_SATZ VERB_FANGEN PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_BOOMERANG."); /* EN You("skillfully catch the boomerang."); */ /* ?geschickt, gekonnt, formvollendet, meisterlich */
 				return(&youmonst);
 			}
 		}
@@ -3081,7 +3081,7 @@ xchar sx, sy;
 	case ZT_FIRE:
 	    if (Fire_resistance) {
 		shieldeff(sx, sy);
-		You("don't feel hot!"); /* EN You("don't feel hot!"); */ // TODO DE
+		Dir_ist("gar nicht heiﬂ!"); /* EN You("don't feel hot!"); */
 		ugolemeffects(AD_FIRE, d(nd, 6));
 	    } else {
 		dam = d(nd, 6);
