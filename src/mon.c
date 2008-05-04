@@ -692,7 +692,7 @@ meatmetal(mtmp)
 			pline("SUBJECT %s VERB_FRESSEN OBJECT %s!", Monnam(mtmp), /* EN pline("%s eats %s!", Monnam(mtmp), */
 				distant_name(otmp,doname));
 		    else if (flags.soundok && flags.verbose)
-			You_hear("eine metallisches Knacken."); /* EN You_hear("a crunching sound."); */
+			You_hear("ein metallisches Knacken."); /* EN You_hear("a crunching sound."); */
 		    mtmp->meating = otmp->owt/2 + 1;
 		    /* Heal up to the object's weight in hp */
 		    if (mtmp->mhp < mtmp->mhpmax) {

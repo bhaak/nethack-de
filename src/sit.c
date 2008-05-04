@@ -244,8 +244,7 @@ dosit()
 			    Du_fuehlst_dich("bedroht."); /* EN You_feel("threatened."); */
 			    aggravate();
 			} else  {
-
-			    You_feel("a wrenching sensation."); /* EN You_feel("a wrenching sensation."); */ // TODO DE
+			    Du_spuerst("einen reiﬂenden Schmerz."); /* EN You_feel("a wrenching sensation."); */
 			    tele();		/* teleport him */
 			}
 			break;

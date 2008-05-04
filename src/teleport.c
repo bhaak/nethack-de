@@ -810,7 +810,7 @@ struct trap *trap;
 	if (In_endgame(&u.uz) || Antimagic) {
 		if (Antimagic)
 			shieldeff(u.ux, u.uy);
-		You_feel("a wrenching sensation."); /* EN You_feel("a wrenching sensation."); */ // TODO DE
+		Du_spuerst("einen reiﬂenden Schmerz."); /* EN You_feel("a wrenching sensation."); */
 	} else if (!next_to_u()) {
 		You(shudder_for_moment);
 	} else if (trap->once) {
@@ -832,7 +832,7 @@ struct trap *trap;
 	    shieldeff(u.ux, u.uy);
 	}
 	if (Antimagic || In_endgame(&u.uz)) {
-	    You_feel("a wrenching sensation."); /* EN You_feel("a wrenching sensation."); */ // TODO DE
+	    Du_spuerst("einen reiﬂenden Schmerz."); /* EN You_feel("a wrenching sensation."); */
 	    return;
 	}
 	if (!Blind)

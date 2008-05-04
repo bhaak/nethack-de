@@ -117,7 +117,7 @@ cursed_book(bp)
 
 	switch(rn2(lev)) {
 	case 0:
-		You_feel("a wrenching sensation."); /* EN You_feel("a wrenching sensation."); */ // TODO DE
+		Du_spuerst("einen reißenden Schmerz."); /* EN You_feel("a wrenching sensation."); */
 		tele();		/* teleport him */
 		break;
 	case 1:
@@ -166,9 +166,9 @@ cursed_book(bp)
 		    shieldeff(u.ux, u.uy);
 		    pline_The("NOUN_BOOK %s, aber NEUER_SATZ PRONOMEN_PERSONAL VERB_SEIN unverletzt!", explodes); /* EN pline_The("book %s, but you are unharmed!", explodes); */
 		} else {
-		    pline("As you read the book, it %s in your %s!", /* EN pline("As you read the book, it %s in your %s!", */ // TODO DE
+		    pline("SATZBEGINN Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL das Buch VERB_READ, %s es OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV %s!", /* EN pline("As you read the book, it %s in your %s!", */ // TODO DE passendes explodes
 			  explodes, body_part(FACE));
-		    losehp(2*rnd(10)+5, "exploding rune", KILLED_BY_AN); /* EN losehp(2*rnd(10)+5, "exploding rune", KILLED_BY_AN); */ // TODO DE
+		    losehp(2*rnd(10)+5, "ADJEKTIV_EXPLODIEREND NOUN_RUNE", KILLED_BY_AN); /* EN losehp(2*rnd(10)+5, "exploding rune", KILLED_BY_AN); */
 		}
 		return TRUE;
 	default:
@@ -188,7 +188,7 @@ struct obj *spellbook;
 	if (!rn2(3) && spellbook->otyp != SPE_BOOK_OF_THE_DEAD) {
 	    spellbook->in_use = TRUE;	/* in case called from learn */
 	    pline(
-	"Being confused you have difficulties in controlling your actions."); /* EN "Being confused you have difficulties in controlling your actions."); */ // TODO DE
+	"So verwirrt wie SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SEIN, VERB_HABEN PRONOMEN_PERSONAL Schwierigkeiten OBJECT PRONOMEN_POSSESSIV NOUN_HANDLUNGs zu kontrollieren."); /* EN "Being confused you have difficulties in controlling your actions."); */
 	    display_nhwindow(WIN_MESSAGE, FALSE);
 	    pline("Versehentlich VERB_REISSEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_SPELLBOOK in tausend Stücke."); /* EN You("accidentally tear the spellbook to pieces."); */
 	    if (!objects[spellbook->otyp].oc_name_known &&
@@ -221,12 +221,12 @@ struct obj *book2;
 			 arti_cursed = FALSE;
 
 	if(book2->cursed) {
-	    pline_The("runes appear scrambled.  You can't read them!"); /* EN pline_The("runes appear scrambled.  You can't read them!"); */ // TODO DE
+	    pline("Die Runen erscheinen wild durcheinander gewürfelt.  SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN sie nicht lesen!"); /* EN pline_The("runes appear scrambled.  You can't read them!"); */
 	    return;
 	}
 
 	if(!u.uhave.bell || !u.uhave.menorah) {
-	    Dir("läufts kalt KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s runter.", body_part(SPINE)); /* EN pline("A chill runs down your %s.", body_part(SPINE)); */
+	    Dir("läuft's kalt KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s runter.", body_part(SPINE)); /* EN pline("A chill runs down your %s.", body_part(SPINE)); */
 	    if(!u.uhave.bell) You_hear("ein leises Bimmeln ..."); /* EN if(!u.uhave.bell) You_hear("a faint chime..."); */
 	    if(!u.uhave.menorah) pline("Vlads Doppelgänger findet's lustig."); /* EN if(!u.uhave.menorah) pline("Vlad's doppelganger is amused."); */
 	    return;
@@ -402,7 +402,7 @@ register struct obj *spellbook;
 		    /* handle the sequence: start reading, get interrupted,
 		       have book become erased somehow, resume reading it */
 		    booktype != SPE_BLANK_PAPER) {
-		You("continue your efforts to memorize the spell."); /* EN You("continue your efforts to memorize the spell."); */ // TODO DE
+		You("continue your efforts to memorize den Spruch zu memorieren/dir einzuprägen."); /* EN You("continue your efforts to memorize the spell."); */ // TODO DE
 	} else {
 		/* KMH -- Simplified this code */
 		if (booktype == SPE_BLANK_PAPER) {
@@ -680,7 +680,7 @@ cast_protection()
 		u.usptime = u.uspmtime;
 	    find_ac();
 	} else {
-	    Your("skin feels warm for a moment."); /* EN Your("skin feels warm for a moment."); */ // TODO DE
+	    Your("NOUN_HAUT fühlt sich kurz warm an."); /* EN Your("skin feels warm for a moment."); */
 	}
 }
 
