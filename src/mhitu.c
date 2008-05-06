@@ -1457,17 +1457,17 @@ dopois:
 		dmg = 0;
 		break;
 	    case AD_DETH:
-		pline("%s reaches out with its deadly touch.", Monnam(mtmp)); /* EN pline("%s reaches out with its deadly touch.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_STRECKEN seine Hand OBJECT KASUS_AKKUSATIV nach PRONOMEN_PERSONAL aus.", Monnam(mtmp)); /* EN pline("%s reaches out with its deadly touch.", Monnam(mtmp)); */
 		if (is_undead(youmonst.data)) {
 		    /* Still does normal damage */
-		    pline("Was that the touch of death?"); /* EN pline("Was that the touch of death?"); */ // TODO DE
+		    pline("War das die Hand des Todes?"); /* EN pline("Was that the touch of death?"); */
 		    break;
 		}
 		switch (rn2(20)) {
 		case 19: case 18: case 17:
 		    if (!Antimagic) {
 			killer_format = KILLED_BY_AN;
-			killer = "touch of death"; /* EN killer = "touch of death"; */ // TODO DE
+			killer = "NOUN_HAND_DES_TODES"; /* EN killer = "touch of death"; */
 			done(DIED);
 			dmg = 0;
 			break;
@@ -1478,7 +1478,7 @@ dopois:
 		    break;
 		case 4: case 3: case 2: case 1: case 0:
 		    if (Antimagic) shieldeff(u.ux, u.uy);
-		    pline("Lucky for you, it didn't work!"); /* EN pline("Lucky for you, it didn't work!"); */ // TODO DE
+		    pline("SATZBEGINN PRONOMEN_POSSESSIV NOUN_LUCK, hat nicht geklappt!"); /* EN pline("Lucky for you, it didn't work!"); */
 		    dmg = 0;
 		    break;
 		}
@@ -1508,7 +1508,7 @@ dopois:
 		    You("are unaffected."); /* EN You("are unaffected."); */ // TODO DE
 		    dmg = 0;
 		} else if (!Slimed) {
-		    You("don't feel very well."); /* EN You("don't feel very well."); */ // TODO DE
+		    Du_fuehlst_dich("nicht so gut."); /* EN You("don't feel very well."); */
 		    Slimed = 10L;
 		    flags.botl = 1;
 		    killer_format = KILLED_BY_AN;

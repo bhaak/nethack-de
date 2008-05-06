@@ -166,12 +166,12 @@ dig_check(madeby, verbose, x, y)
 	int		x, y;
 {
 	struct trap *ttmp = t_at(x, y);
-	const char *verb = (madeby == BY_YOU && uwep && is_axe(uwep)) ? "chop" : "dig in"; /* EN const char *verb = (madeby == BY_YOU && uwep && is_axe(uwep)) ? "chop" : "dig in"; */ // TODO DE
+	char *verb = (madeby == BY_YOU && uwep && is_axe(uwep)) ? "Hacken" : "Graben"; /* EN const char *verb = (madeby == BY_YOU && uwep && is_axe(uwep)) ? "chop" : "dig in"; */
 
 	if (On_stairs(x, y)) {
 	    if (x == xdnladder || x == xupladder) {
 		if(verbose) pline_The("ladder resists your effort."); /* EN if(verbose) pline_The("ladder resists your effort."); */ // TODO DE
-	    } else if(verbose) pline_The("stairs are too hard to %s.", verb); /* EN } else if(verbose) pline_The("stairs are too hard to %s.", verb); */ // TODO DE
+	    } else if(verbose) pline_The("NOUN_STAIRS VERB_SEIN zum %s zu fest.", verb); /* EN } else if(verbose) pline_The("stairs are too hard to %s.", verb); */
 	    return(FALSE);
 	} else if (IS_THRONE(levl[x][y].typ) && madeby != BY_OBJECT) {
 	    if(verbose) pline_The("throne is too hard to break apart."); /* EN if(verbose) pline_The("throne is too hard to break apart."); */ // TODO DE
@@ -181,7 +181,7 @@ dig_check(madeby, verbose, x, y)
 	    if(verbose) pline_The("altar is too hard to break apart."); /* EN if(verbose) pline_The("altar is too hard to break apart."); */ // TODO DE
 	    return(FALSE);
 	} else if (Is_airlevel(&u.uz)) {
-	    if(verbose) You("cannot %s thin air.", verb); /* EN if(verbose) You("cannot %s thin air.", verb); */ // TODO DE
+	    if(verbose) You("VERB_KOENNEN nicht Luft %s.", lcase(verb)); /* EN if(verbose) You("cannot %s thin air.", verb); */
 	    return(FALSE);
 	} else if (Is_waterlevel(&u.uz)) {
 	    if(verbose) pline_The("water splashes and subsides."); /* EN if(verbose) pline_The("water splashes and subsides."); */ // TODO DE
@@ -190,11 +190,11 @@ dig_check(madeby, verbose, x, y)
 		      (levl[x][y].wall_info & W_NONDIGGABLE) != 0)
 		|| (ttmp &&
 		      (ttmp->ttyp == MAGIC_PORTAL || !Can_dig_down(&u.uz)))) {
-	    if(verbose) pline_The("%s here is too hard to %s.", /* EN if(verbose) pline_The("%s here is too hard to %s.", */ // TODO DE
+	    if(verbose) pline_The("%s hier ist zum %s zu hart.", /* EN if(verbose) pline_The("%s here is too hard to %s.", */
 				  surface(x,y), verb);
 	    return(FALSE);
 	} else if (sobj_at(BOULDER, x, y)) {
-	    if(verbose) There("isn't enough room to %s here.", verb); /* EN if(verbose) There("isn't enough room to %s here.", verb); */ // TODO DE
+	    if(verbose) You("VERB_HABEN hier nicht genug Platz zum %s.", verb); /* EN if(verbose) There("isn't enough room to %s here.", verb); */
 	    return(FALSE);
 	} else if (madeby == BY_OBJECT &&
 		    /* the block against existing traps is mainly to
@@ -213,7 +213,7 @@ dig()
 	register xchar dpx = digging.pos.x, dpy = digging.pos.y;
 	register boolean ispick = uwep && is_pick(uwep);
 	const char *verb =
-	    (!uwep || is_pick(uwep)) ? "graben" : "chop through dig()"; /* EN (!uwep || is_pick(uwep)) ? "dig into" : "chop through"; */ // TODO DE
+	    (!uwep || is_pick(uwep)) ? "zum Graben" : "zum Hacken"; /* EN (!uwep || is_pick(uwep)) ? "dig into" : "chop through"; */
 
 	lev = &levl[dpx][dpy];
 	/* perhaps a nymph stole your pick-axe while you were busy digging */
@@ -234,7 +234,7 @@ dig()
 	    }
 	    if (IS_ROCK(lev->typ) && !may_dig(dpx,dpy) &&
 			dig_typ(uwep, dpx, dpy) == DIGTYP_ROCK) {
-		pline("This wall is too hard to %s.", verb); /* EN pline("This wall is too hard to %s.", verb); */ // TODO DE
+		pline("SUBJECT PRONOMEN_DIESER NOUN_WALL ist %s zu hart.", verb); /* EN pline("This wall is too hard to %s.", verb); */
 		return(0);
 	    }
 	}
@@ -367,7 +367,7 @@ dig()
 			digtxt = "SUBJECT PRONOMEN_PERSONAL VERB_BRECHEN durch eine Türe."; /* EN digtxt = "You break through the door."; */
 			if(shopedge) {
 			    add_damage(dpx, dpy, 400L);
-			    dmgtxt = "break"; /* EN dmgtxt = "break"; */ // TODO DE
+			    dmgtxt = "zu zerstören"; /* EN dmgtxt = "break"; */
 			}
 			if(!(lev->doormask & D_TRAPPED))
 				lev->doormask = D_BROKEN;
@@ -417,7 +417,7 @@ cleanup:
 
 		if (IS_WALL(lev->typ) || dig_target == DIGTYP_DOOR) {
 		    if(*in_rooms(dpx, dpy, SHOPBASE)) {
-			pline("This %s seems too hard to %s.", /* EN pline("This %s seems too hard to %s.", */ // TODO DE
+			pline("SUBJECT PRONOMEN_DIESER %s scheint %s zu fest zu sein.", /* EN pline("This %s seems too hard to %s.", */
 			      IS_DOOR(lev->typ) ? "NOUN_OBJ_DOOR" : "NOUN_WALL", verb); /* EN IS_DOOR(lev->typ) ? "door" : "wall", verb); */
 			return(0);
 		    }
@@ -658,7 +658,7 @@ boolean pit_only;
 	if ((ttmp && (ttmp->ttyp == MAGIC_PORTAL || nohole)) ||
 	   (IS_ROCK(lev->typ) && lev->typ != SDOOR &&
 	    (lev->wall_info & W_NONDIGGABLE) != 0)) {
-		pline_The("%s here is too hard to dig in.", surface(u.ux,u.uy)); /* EN pline_The("%s here is too hard to dig in.", surface(u.ux,u.uy)); */ // TODO DE
+		pline_The("%s hier ist zum Graben zu hart.", surface(u.ux,u.uy)); /* EN pline_The("%s here is too hard to dig in.", surface(u.ux,u.uy)); */
 
 	} else if (is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy)) {
 		pline_The("%s sloshes furiously for a moment, then subsides.", /* EN pline_The("%s sloshes furiously for a moment, then subsides.", */ // TODO DE
@@ -671,7 +671,7 @@ boolean pit_only;
 		   bridge is extended; drawbridge_wall is the open "doorway" or
 		   closed "door" where the portcullis/mechanism is located */
 		if (pit_only) {
-		    pline_The("drawbridge seems too hard to dig through."); /* EN pline_The("drawbridge seems too hard to dig through."); */ // TODO DE
+		    pline_The("NOUN_DRAWBRIDGE scheint zum Graben zu hart zu sein."); /* EN pline_The("drawbridge seems too hard to dig through."); */
 		    return FALSE;
 		} else {
 		    int x = u.ux, y = u.uy;
@@ -711,7 +711,7 @@ boolean pit_only;
 			 * We can't dig a hole here since that will destroy
 			 * the drawbridge.  The following is a cop-out. --dlc
 			 */
-			pline_The("%s here is too hard to dig in.", /* EN pline_The("%s here is too hard to dig in.", */ // TODO DE
+			pline_The("%s hier ist zum Graben zu hart.", /* EN pline_The("%s here is too hard to dig in.", */
 			      surface(u.ux, u.uy));
 			return FALSE;
 		}
@@ -929,7 +929,7 @@ struct obj *obj;
 			} else if (IS_TREE(lev->typ))
 			    You("VERB_BRAUCHEN eine Axt um einen Baum zu fällen."); /* EN You("need an axe to cut down a tree."); */
 			else if (IS_ROCK(lev->typ))
-			    You("need a pick to dig rock."); /* EN You("need a pick to dig rock."); */ // TODO DE
+			    You("VERB_BRAUCHEN eine Hacke um Fels zu lockern."); /* EN You("need a pick to dig rock."); */
 			else if (!ispick && (sobj_at(STATUE, rx, ry) ||
 					     sobj_at(BOULDER, rx, ry))) {
 			    boolean vibrate = !rn2(3);

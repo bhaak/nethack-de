@@ -3376,6 +3376,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TEMPLES_CEILING","Tempeldecke","","Tempeldecke","en","feminin"),
     dekliniere_substantiv("NOUN_TENTAKEL","Tentakel","s","Tentakel", "","maskulin"),
     dekliniere_substantiv("NOUN_TODESFELD","Todesfeld","es","Todesfeld","er","feminin"),
+    dekliniere_substantiv("NOUN_TOUCH_OF_DEATH","Todesgriff","es","Todesgriff","e","maskulin"),
     dekliniere_substantiv("NOUN_TRAP","Falle","","Falle","en","feminin"),
     dekliniere_substantiv("NOUN_TREFFER","Treffer","s","Treffer","","maskulin"),
     dekliniere_substantiv("NOUN_UNFAEHIGKEIT","Unfähigkeit","","","","feminin"),

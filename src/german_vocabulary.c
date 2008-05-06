@@ -9722,6 +9722,12 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Todesfelder", "NOUN_TODESFELDs", "", genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Todesfeldern", "NOUN_TODESFELDs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Todesgriffes", "NOUN_TOUCH_OF_DEATH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Todesgriffe", "NOUN_TOUCH_OF_DEATH", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Todesgriff", "NOUN_TOUCH_OF_DEATH", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Todesgriffe", "NOUN_TOUCH_OF_DEATHs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Todesgriffen", "NOUN_TOUCH_OF_DEATHs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Falle", "NOUN_TRAP", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fallen", "NOUN_TRAPs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 

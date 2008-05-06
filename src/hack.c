@@ -406,7 +406,7 @@ still_chewing(x,y)
     } else if (IS_DOOR(lev->typ)) {
 	if (*in_rooms(x, y, SHOPBASE)) {
 	    add_damage(x, y, 400L);
-	    dmgtxt = "break"; /* EN dmgtxt = "break"; */ // TODO DE
+	    dmgtxt = "kaputtzumachen"; /* EN dmgtxt = "break"; */
 	}
 	if (lev->doormask & D_TRAPPED) {
 	    lev->doormask = D_NODOOR;

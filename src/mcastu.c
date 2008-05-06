@@ -330,7 +330,7 @@ int spellnum;
 
     switch (spellnum) {
     case MGC_DEATH_TOUCH:
-	pline("Oh nein, SUBJECT_IM_SATZ %s VERB_BENUTZEN the touch of death!", mhe(mtmp)); /* EN pline("Oh no, %s's using the touch of death!", mhe(mtmp)); */ // TODO DE http://de.wikipedia.org/wiki/Dim_Mak
+	pline("Oh nein, SUBJECT_IM_SATZ %s VERB_EINSETZEN OBJECT ARTIKEL_BESTIMMTER NOUN_TOUCH_OF_DEATH SATZKLAMMER!", mhe(mtmp)); /* EN pline("Oh no, %s's using the touch of death!", mhe(mtmp)); */ /* http://de.wikipedia.org/wiki/Dim_Mak */
 	if (nonliving(youmonst.data) || is_demon(youmonst.data)) {
 	    You("VERB_SCHEINEN nicht toter als zuvor zu sein."); /* EN You("seem no deader than before."); */
 	} else if (!Antimagic && rn2(mtmp->m_lev) > 12) {
@@ -338,12 +338,12 @@ int spellnum;
 		You("VERB_HAVE eine außerkörperliche Erfahrung."); /* EN You("have an out of body experience."); */
 	    } else {
 		killer_format = KILLED_BY_AN;
-		killer = "touch of death"; /* EN killer = "touch of death"; */ // TODO DE
+		killer = "NOUN_TOUCH_OF_DEATH"; /* EN killer = "touch of death"; */
 		done(DIED);
 	    }
 	} else {
 	    if (Antimagic) shieldeff(u.ux, u.uy);
-	    pline("Dein Glück, hat nicht geklappt!"); /* EN pline("Lucky for you, it didn't work!"); */
+	    pline("SATZBEGINN PRONOMEN_POSSESSIV NOUN_LUCK, hat nicht geklappt!"); /* EN pline("Lucky for you, it didn't work!"); */
 	}
 	dmg = 0;
 	break;
@@ -621,7 +621,7 @@ int spellnum;
 	    if (Half_spell_damage) dmg = (dmg + 1) / 2;
 	    make_confused(HConfusion + dmg, TRUE);
 	    if (Hallucination)
-		You_feel("%s!", oldprop ? "trippier" : "trippy"); /* EN You_feel("%s!", oldprop ? "trippier" : "trippy"); */ // TODO DE
+		Du_fuehlst_dich("%s!", oldprop ? "trippiger" : "trippig"); /* EN You_feel("%s!", oldprop ? "trippier" : "trippy"); */
 	    else
 		Du_fuehlst_dich("verwirrt%s!", oldprop ? "er" : ""); /* EN You_feel("%sconfused!", oldprop ? "more " : ""); */
 	}
