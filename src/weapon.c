@@ -90,14 +90,14 @@ STATIC_OVL void
 give_may_advance_msg(skill)
 int skill;
 {
-	Du_fuehlst_dich("sicherer in your %sskills.", /* EN You_feel("more confident in your %sskills.", */ // TODO DE
+	Du_fuehlst_dich("sicherer KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_PSEUDO_WEIBLICHs %sNOUN_SKILLs.", /* EN You_feel("more confident in your %sskills.", */
 		skill == P_NONE ?
 			"" :
 		skill <= P_LAST_WEAPON ?
-			"weapon " : /* EN "weapon " : */ // TODO DE
+			"Waffen-" : /* EN "weapon " : */
 		skill <= P_LAST_SPELL ?
-			"spell casting " : /* EN "spell casting " : */ // TODO DE
-		"fighting "); /* EN "fighting "); */ // TODO DE
+			"Zauber-" : /* EN "spell casting " : */
+		"Kampf-"); /* EN "fighting "); */
 }
 
 #endif	/* OVLB */
@@ -557,7 +557,7 @@ boolean polyspot;
 		    newsym(mon->mx, mon->my);
 		}
 		/* might be dropping object into water or lava */
-		if (!flooreffects(obj, mon->mx, mon->my, "drop")) { /* EN if (!flooreffects(obj, mon->mx, mon->my, "drop")) { */ // TODO DE
+		if (!flooreffects(obj, mon->mx, mon->my, "VERB_FALLEN")) { /* EN if (!flooreffects(obj, mon->mx, mon->my, "drop")) { */
 		    if (polyspot) bypass_obj(obj);
 		    place_object(obj, mon->mx, mon->my);
 		    stackobj(obj);

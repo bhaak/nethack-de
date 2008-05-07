@@ -2302,7 +2302,7 @@ int x, y;
 	    ((t->ttyp == PIT) || (t->ttyp == SPIKED_PIT)) &&
 	    (otmp = sobj_at(BOULDER, x, y))) {
 		obj_extract_self(otmp);
-		(void) flooreffects(otmp, x, y, "settle"); /* EN (void) flooreffects(otmp, x, y, "settle"); */ // TODO DE
+		(void) flooreffects(otmp, x, y, "VERB_LIEGENBLEIBEN"); /* EN (void) flooreffects(otmp, x, y, "settle"); */
 	}
 }
 

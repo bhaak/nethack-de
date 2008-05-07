@@ -1110,7 +1110,7 @@ domove()
 			Your("%s VERB_BLEIBEN in einem Felsspalt stecken.", body_part(LEG)); /* EN Your("%s gets stuck in a crevice.", body_part(LEG)); */
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			clear_nhwindow(WIN_MESSAGE);
-			You("free your %s.", body_part(LEG)); /* EN You("free your %s.", body_part(LEG)); */ // TODO DE
+			You("VERB_BEFREIEN OBJECT PRONOMEN_POSSESSIV %s.", body_part(LEG)); /* EN You("free your %s.", body_part(LEG)); */
 		    } else if (!(--u.utrap)) {
 			You("%s zum Rand der Grube.", /* EN You("%s to the edge of the pit.", */
 				(In_sokoban(&u.uz) && Levitation) ?
@@ -1124,7 +1124,7 @@ domove()
 		    } else if (flags.verbose) {
 #ifdef STEED
 			if (u.usteed)
-			    Norep("%s is still in a pit.", /* EN Norep("%s is still in a pit.", */ // TODO DE
+			    Norep("SUBJECT %s is still in a pit.", /* EN Norep("%s is still in a pit.", */ // TODO DE
 				  upstart(y_monnam(u.usteed)));
 			else
 #endif

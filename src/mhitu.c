@@ -1887,7 +1887,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    	(void) ureflects("%s is reflected by your %s.", /* EN (void) ureflects("%s gaze is reflected by your %s.", */ // TODO DE
 		    			genitivattribut_zu_wort(Monnam(mtmp), "NOUN_GAZE")); /* EN s_suffix(Monnam(mtmp))); */
 		    	if (mon_reflects(mtmp,
-		    			"The gaze is reflected away by %s %s!")) /* EN "The gaze is reflected away by %s %s!")) */ // TODO DE
+		    			"The gaze is reflected away by %s!")) /* EN "The gaze is reflected away by %s %s!")) */ // TODO DE
 		    	    break;
 			if (!m_canseeu(mtmp)) { /* probably you're invisible */
 			    pline("%s doesn't seem to notice that %s gaze was reflected.", /* EN pline("%s doesn't seem to notice that %s gaze was reflected.", */ // TODO DE
@@ -2504,7 +2504,7 @@ register struct attack *mattk;
 							youmonst.data->mname);
 		        else {
 			    if (mon_reflects(mtmp,
-					    "Your gaze is reflected by %s %s.")) /* EN "Your gaze is reflected by %s %s.")) */ // TODO DE
+					    "Your gaze is reflected by %s.")) /* EN "Your gaze is reflected by %s %s.")) */ // TODO DE
 				return 1;
 			    pline("%s is frozen by your gaze!", Monnam(mtmp)); /* EN pline("%s is frozen by your gaze!", Monnam(mtmp)); */ // TODO DE
 			    mtmp->mcanmove = 0;

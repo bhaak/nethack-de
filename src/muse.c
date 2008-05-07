@@ -196,13 +196,13 @@ struct obj *otmp;
 	if (vismon)
 	    pline("SUBJECT %s VERB_READ OBJECT %s!", Monnam(mtmp), onambuf); /* EN pline("%s reads %s!", Monnam(mtmp), onambuf); */
 	else
-	    You_hear("SUBJECT %s reading OBJECT %s.", /* EN You_hear("%s reading %s.", */
+	    You_hear("OBJECT %s NEUES_OBJECT OBJECT %s MODIFIER_VERB_INFINITIV VERB_READ.", /* EN You_hear("%s reading %s.", */
 		x_monnam(mtmp, ARTICLE_A, (char *)0,
 		    (SUPPRESS_IT|SUPPRESS_INVISIBLE|SUPPRESS_SADDLE), FALSE),
 		onambuf);
 
 	if (mtmp->mconf)
-	    pline("Being confused, %s mispronounces the magic words...", /* EN pline("Being confused, %s mispronounces the magic words...", */ // TODO DE
+	    pline("So verwirrt wie SUBJECT_IM_SATZ %s VERB_SEIN, VERB_VERHASPELN %s sich ...", /* EN pline("Being confused, %s mispronounces the magic words...", */
 		  vismon ? mon_nam(mtmp) : mhe(mtmp));
 }
 
@@ -216,7 +216,7 @@ struct obj *otmp;
 		pline("SUBJECT %s VERB_TRINKEN OBJECT %s!", Monnam(mtmp), singular(otmp, doname)); /* EN pline("%s drinks %s!", Monnam(mtmp), singular(otmp, doname)); */
 	} else
 		if (flags.soundok)
-			You_hear("a chugging sound."); /* EN You_hear("a chugging sound."); */ // TODO DE
+			You_hear("ein gluckerndes Geräusch."); /* EN You_hear("a chugging sound."); */
 }
 
 /* Defines for various types of stuff.  The order in which monsters prefer
@@ -531,7 +531,7 @@ struct monst *mtmp;
 	int i, fleetim, how = 0;
 	struct obj *otmp = m.defensive;
 	boolean vis, vismon, oseen;
-	const char *mcsa = "SUBJECT %s VERB_CAN wieder sehen."; /* EN const char *mcsa = "%s can see again."; */
+	const char *mcsa = "SUBJECT %s VERB_KOENNEN wieder sehen."; /* EN const char *mcsa = "%s can see again."; */
 
 	if ((i = precheck(mtmp, otmp)) != 0) return i;
 	vis = cansee(mtmp->mx, mtmp->my);
@@ -550,7 +550,7 @@ struct monst *mtmp;
 		    if (otmp)
 			pline("SUBJECT %s VERB_BENUTZEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_UNICORN_HORN!", Monnam(mtmp)); /* EN pline("%s uses a unicorn horn!", Monnam(mtmp)); */
 		    else
-			pline_The("tip of %s's horn glows!", mon_nam(mtmp)); /* EN pline_The("tip of %s's horn glows!", mon_nam(mtmp)); */ // TODO DE
+			pline("Die Spitze KASUS_DATIV _von_ %s leuchtet!", genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_HORN")); /* EN pline_The("tip of %s's horn glows!", mon_nam(mtmp)); */
 		}
 		if (!mtmp->mcansee) {
 		    mtmp->mcansee = 1;
@@ -564,7 +564,7 @@ struct monst *mtmp;
 		return 2;
 	case MUSE_BUGLE:
 		if (vismon)
-			pline("%s plays %s!", Monnam(mtmp), doname(otmp)); /* EN pline("%s plays %s!", Monnam(mtmp), doname(otmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_SPIELEN OBJECT %s!", Monnam(mtmp), doname(otmp)); /* EN pline("%s plays %s!", Monnam(mtmp), doname(otmp)); */
 		else if (flags.soundok)
 			You_hear("OBJECT ARTIKEL_UNBESTIMMTER NOUN_BUGLE zum Morgenappell blasen!"); /* EN You_hear("a bugle playing reveille!"); */
 		awaken_soldiers();
@@ -654,12 +654,12 @@ mon_tele:
 		    (is_drawbridge_wall(mtmp->mx, mtmp->my) >= 0) ||
 		    (sstairs.sx && sstairs.sx == mtmp->mx &&
 				   sstairs.sy == mtmp->my)) {
-			pline_The("digging ray is ineffective."); /* EN pline_The("digging ray is ineffective."); */ // TODO DE
+			pline("Grabstrahl ist wirkungslos."); /* EN pline_The("digging ray is ineffective."); */
 			return 2;
 		}
 		if (!Can_dig_down(&u.uz)) {
 		    if(canseemon(mtmp))
-			pline_The("%s here is too hard to dig in.", /* EN pline_The("%s here is too hard to dig in.", */ // TODO DE
+			pline_The("%s hier ist zum Graben zu hart.", /* EN pline_The("%s here is too hard to dig in.", */
 					surface(mtmp->mx, mtmp->my));
 		    return 2;
 		}
@@ -1298,9 +1298,9 @@ struct monst *mtmp;
 	case MUSE_FROST_HORN:
 		if (oseen) {
 			makeknown(otmp->otyp);
-			pline("%s plays a %s!", Monnam(mtmp), xname(otmp)); /* EN pline("%s plays a %s!", Monnam(mtmp), xname(otmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_SPIELT OBJECT ARTIKEL_UNBESTIMMTER %s!", Monnam(mtmp), xname(otmp)); /* EN pline("%s plays a %s!", Monnam(mtmp), xname(otmp)); */
 		} else
-			You_hear("a horn being played."); /* EN You_hear("a horn being played."); */ // TODO DE
+			You_hear("die Melodie eines Hornes."); /* EN You_hear("a horn being played."); */
 		otmp->spe--;
 		m_using = TRUE;
 		buzz(-30 - ((otmp->otyp==FROST_HORN) ? AD_COLD-1 : AD_FIRE-1),
@@ -1439,7 +1439,7 @@ struct monst *mtmp;
 			stackobj(otmp2);
 			newsym(u.ux, u.uy);
 		    }
-		    if (dmg) losehp(dmg, "scroll of earth", KILLED_BY_AN); /* EN if (dmg) losehp(dmg, "scroll of earth", KILLED_BY_AN); */ // TODO DE
+		    if (dmg) losehp(dmg, "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_EARTH", KILLED_BY_AN); /* EN if (dmg) losehp(dmg, "scroll of earth", KILLED_BY_AN); */
 		}
 	    xxx_noobj:
 
@@ -1501,7 +1501,7 @@ struct monst *mtmp;
 		 */
 		if (cansee(mtmp->mx, mtmp->my)) {
 			otmp->dknown = 1;
-			pline("%s hurls %s!", Monnam(mtmp), /* EN pline("%s hurls %s!", Monnam(mtmp), */ // TODO DE
+			pline("SUBJECT %s VERB_SCHMEISSEN OBJECT %s!", Monnam(mtmp), /* EN pline("%s hurls %s!", Monnam(mtmp), */
 						singular(otmp, doname));
 		}
 		m_throw(mtmp, mtmp->mx, mtmp->my, sgn(mtmp->mux-mtmp->mx),
@@ -1731,7 +1731,7 @@ struct monst *mtmp;
 		    } else {
 skipmsg:
 			if (vismon) {
-			    pline("%s looks uneasy.", Monnam(mtmp)); /* EN pline("%s looks uneasy.", Monnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s sieht unsicher aus.", Monnam(mtmp)); /* EN pline("%s looks uneasy.", Monnam(mtmp)); */
 			    if(!objects[POT_GAIN_LEVEL].oc_name_known
 			      && !objects[POT_GAIN_LEVEL].oc_uname)
 				docall(otmp);
@@ -1740,7 +1740,7 @@ skipmsg:
 			return 2;
 		    }
 		}
-		if (vismon) pline("%s seems more experienced.", Monnam(mtmp)); /* EN if (vismon) pline("%s seems more experienced.", Monnam(mtmp)); */ // TODO DE
+		if (vismon) pline("SUBJECT %s scheint erfahrener zu sein.", Monnam(mtmp)); /* EN if (vismon) pline("%s seems more experienced.", Monnam(mtmp)); */
 		if (oseen) makeknown(POT_GAIN_LEVEL);
 		m_useup(mtmp, otmp);
 		if (!grow_up(mtmp,(struct monst *)0)) return 1;
@@ -2034,32 +2034,32 @@ const char *str;
 
 	if (orefl && orefl->otyp == SHIELD_OF_REFLECTION) {
 	    if (str) {
-		pline(str, s_suffix(mon_nam(mon)), "shield"); /* EN pline(str, s_suffix(mon_nam(mon)), "shield"); */
+		pline(str, genitivattribut_zu_wort(mon_nam(mon), "NOUN_SHIELD")); /* EN pline(str, s_suffix(mon_nam(mon)), "shield"); */
 		makeknown(SHIELD_OF_REFLECTION);
 	    }
 	    return TRUE;
 	} else if (arti_reflects(MON_WEP(mon))) {
 	    /* due to wielded artifact weapon */
 	    if (str)
-		pline(str, s_suffix(mon_nam(mon)), "weapon"); /* EN pline(str, s_suffix(mon_nam(mon)), "weapon"); */
+		pline(str, genitivattribut_zu_wort(mon_nam(mon), "NOUN_WEAPON")); /* EN pline(str, s_suffix(mon_nam(mon)), "weapon"); */
 	    return TRUE;
 	} else if ((orefl = which_armor(mon, W_AMUL)) &&
 				orefl->otyp == AMULET_OF_REFLECTION) {
 	    if (str) {
-		pline(str, s_suffix(mon_nam(mon)), "amulet"); /* EN pline(str, s_suffix(mon_nam(mon)), "amulet"); */
+		pline(str, genitivattribut_zu_wort(mon_nam(mon), "NOUN_AMULET")); /* EN pline(str, s_suffix(mon_nam(mon)), "amulet"); */
 		makeknown(AMULET_OF_REFLECTION);
 	    }
 	    return TRUE;
 	} else if ((orefl = which_armor(mon, W_ARM)) &&
 		(orefl->otyp == SILVER_DRAGON_SCALES || orefl->otyp == SILVER_DRAGON_SCALE_MAIL)) {
 	    if (str)
-		pline(str, s_suffix(mon_nam(mon)), "armor"); /* EN pline(str, s_suffix(mon_nam(mon)), "armor"); */
+		pline(str, genitivattribut_zu_wort(mon_nam(mon), "NOUN_ARMOR")); /* EN pline(str, s_suffix(mon_nam(mon)), "armor"); */
 	    return TRUE;
 	} else if (mon->data == &mons[PM_SILVER_DRAGON] ||
 		mon->data == &mons[PM_CHROMATIC_DRAGON]) {
 	    /* Silver dragons only reflect when mature; babies do not */
 	    if (str)
-		pline(str, s_suffix(mon_nam(mon)), "scales"); /* EN pline(str, s_suffix(mon_nam(mon)), "scales"); */
+		pline(str, genitivattribut_zu_wort(mon_nam(mon), "NOUN_SCALESs")); /* EN pline(str, s_suffix(mon_nam(mon)), "scales"); */
 	    return TRUE;
 	}
 	return FALSE;
@@ -2093,7 +2093,7 @@ const char *fmt, *str;
 	    return TRUE;
 	} else if (youmonst.data == &mons[PM_SILVER_DRAGON]) {
 	    if (fmt && str)
-	    	pline(fmt, str, "NOUN_SCALES"); /* EN pline(fmt, str, "scales"); */
+	    	pline(fmt, str, "NOUN_SCALESs"); /* EN pline(fmt, str, "scales"); */
 	    return TRUE;
 	}
 	return FALSE;
@@ -2140,17 +2140,17 @@ boolean stoning;
 	long save_quan = obj->quan;
 
 	obj->quan = 1L;
-	pline("%s %ss %s.", Monnam(mon), /* EN pline("%s %ss %s.", Monnam(mon), */ // TODO DE
-		    (obj->otyp == POT_ACID) ? "quaff" : "eat", /* EN (obj->otyp == POT_ACID) ? "quaff" : "eat", */ // TODO DE
+	pline("SUBJECT %s %s OBJECT %s.", Monnam(mon), /* EN pline("%s %ss %s.", Monnam(mon), */
+		    (obj->otyp == POT_ACID) ? "VERB_TRINKEN" : "VERB_ESSEN", /* EN (obj->otyp == POT_ACID) ? "quaff" : "eat", */
 		    distant_name(obj,doname));
 	obj->quan = save_quan;
     } else if (flags.soundok)
-	You_hear("%s.", (obj->otyp == POT_ACID) ? "drinking" : "chewing"); /* EN You_hear("%s.", (obj->otyp == POT_ACID) ? "drinking" : "chewing"); */ // TODO DE
+	You_hear("%s.", (obj->otyp == POT_ACID) ? "Trinkgeräusche" : "Kaugeräusche"); /* EN You_hear("%s.", (obj->otyp == POT_ACID) ? "drinking" : "chewing"); */
     m_useup(mon, obj);
     if (((obj->otyp == POT_ACID) || acidic(&mons[obj->corpsenm])) &&
 		    !resists_acid(mon)) {
 	mon->mhp -= rnd(15);
-	pline("%s has a very bad case of stomach acid.", /* EN pline("%s has a very bad case of stomach acid.", */ // TODO DE
+	pline("SUBJECT %s VERB_HABEN einen akuten Anfall von Sodbrennen.", /* EN pline("%s has a very bad case of stomach acid.", */
 	    Monnam(mon));
     }
     if (mon->mhp <= 0) {

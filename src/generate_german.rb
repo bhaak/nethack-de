@@ -3355,6 +3355,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_REITUNFALL","Reitunfall","es","Reitunfäll","e","maskulin"),
     dekliniere_substantiv("NOUN_REITTIER", "Reittier", "es", "Reittier", "e", "neutrum"),
     dekliniere_substantiv("NOUN_RUCKSACK","Rucksack","s","Rucksäck","e","maskulin"),
+    dekliniere_substantiv("NOUN_SCALES", "Schuppe", "", "Schuppe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SCHLANGENGIFT","Schlangengift","es","Schlangengift","e","neutrum"),
     dekliniere_substantiv("NOUN_SCHOENSCHRIFT","Schönschrift","","Schönschrift","en","feminin"),
     dekliniere_substantiv("NOUN_SCHRIFT","Schrift","","Schrift","en","feminin"),

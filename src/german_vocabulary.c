@@ -9638,6 +9638,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Rucksäcke", "NOUN_RUCKSACKs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Rucksäcken", "NOUN_RUCKSACKs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Schuppe", "NOUN_SCALES", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schuppen", "NOUN_SCALESs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Schlangengiftes", "NOUN_SCHLANGENGIFT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schlangengifte", "NOUN_SCHLANGENGIFT", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schlangengift", "NOUN_SCHLANGENGIFT", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},

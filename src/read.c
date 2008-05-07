@@ -1274,7 +1274,7 @@ register struct obj	*sobj;
 			stackobj(otmp2);
 			newsym(u.ux, u.uy);
 		    }
-		    if (dmg) losehp(dmg, "scroll of earth", KILLED_BY_AN); /* EN if (dmg) losehp(dmg, "scroll of earth", KILLED_BY_AN); */ // TODO DE
+		    if (dmg) losehp(dmg, "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_EARTH", KILLED_BY_AN); /* EN if (dmg) losehp(dmg, "scroll of earth", KILLED_BY_AN); */
 		}
 	    }
 	    break;

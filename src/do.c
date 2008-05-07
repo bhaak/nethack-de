@@ -158,7 +158,7 @@ const char *verb;
 		if (((mtmp = m_at(x, y)) && mtmp->mtrapped) ||
 			(u.utrap && u.ux == x && u.uy == y)) {
 		    if (*verb)
-			pline_The("NOUN_BOULDER %s%s in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_GRUBE.", /* EN pline_The("boulder %s into the pit%s.", */
+			pline_The("NOUN_BOULDER %s%s in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_GRUBE SATZKLAMMER.", /* EN pline_The("boulder %s into the pit%s.", */
 				vtense((const char *)0, verb),
 				(mtmp) ? "" : " mit OBJECT KASUS_DATIV PRONOMEN_PERSONAL"); /* EN (mtmp) ? "" : " with you"); */
 		    if (mtmp) {

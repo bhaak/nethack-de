@@ -3343,7 +3343,7 @@ register int dx,dy;
 		    if(cansee(mon->mx,mon->my)) {
 			hit(fltxt, mon, exclam(0));
 			shieldeff(mon->mx, mon->my);
-			(void) mon_reflects(mon, "But it reflects from %s %s!"); /* EN (void) mon_reflects(mon, "But it reflects from %s %s!"); */ // TODO DE
+			(void) mon_reflects(mon, "But it reflects from %s!"); /* EN (void) mon_reflects(mon, "But it reflects from %s %s!"); */ // TODO DE
 		    }
 		    dx = -dx;
 		    dy = -dy;

@@ -1267,7 +1267,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		return(2);
 	} else if (acidic(&mons[mnum]) && !Acid_resistance) {
 		tp++;
-		You("VERB_HAVE einen akuten Anfall von Sodbrennen."); /* not body_part() */ /* EN You("have a very bad case of stomach acid."); */
+		You("VERB_HABEN einen akuten Anfall von Sodbrennen."); /* not body_part() */ /* EN You("have a very bad case of stomach acid."); */
 		losehp(rnd(15), "ADJEKTIV_SAEUREHALTIG NOUN_CORPSE", KILLED_BY_AN); /* EN losehp(rnd(15), "acidic corpse", KILLED_BY_AN); */
 	} else if (poisonous(&mons[mnum]) && rn2(5)) {
 		tp++;
