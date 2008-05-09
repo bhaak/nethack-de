@@ -899,7 +899,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Antimagic) you_are("magic-protected"); /* EN if (Antimagic) you_are("magic-protected"); */ // TODO DE
 	if (Acid_resistance) you_are("säureresistent"); /* EN if (Acid_resistance) you_are("acid resistant"); */
 	if (Stone_resistance)
-		you_are("petrification resistant"); /* EN you_are("petrification resistant"); */ // TODO DE
+		you_are("versteinerungsresistent"); /* EN you_are("petrification resistant"); */
 	if (Invulnerable) you_are("unverwundbar"); /* EN if (Invulnerable) you_are("invulnerable"); */
 	if (u.uedibility) you_can("recognize detrimental food"); /* EN if (u.uedibility) you_can("recognize detrimental food"); */ // TODO DE
 
@@ -1225,7 +1225,7 @@ int final;
 	if (Sick_resistance) dump(youwere, "immune to sickness"); /* EN if (Sick_resistance) dump(youwere, "immune to sickness"); */ // TODO DE
 	if (Antimagic) dump(youwere, "magic-protected"); /* EN if (Antimagic) dump(youwere, "magic-protected"); */ // TODO DE
 	if (Acid_resistance) dump(youwere, "säureresistent"); /* EN if (Acid_resistance) dump(youwere, "acid resistant"); */
-	if (Stone_resistance) dump(youwere, "petrification resistant"); /* EN if (Stone_resistance) dump(youwere, "petrification resistant"); */ // TODO DE
+	if (Stone_resistance) dump(youwere, "versteinerungsresistent"); /* EN if (Stone_resistance) dump(youwere, "petrification resistant"); */
 	if (Invulnerable) dump(youwere, "unverwundbar"); /* EN if (Invulnerable) dump(youwere, "invulnerable"); */
 	if (u.uedibility) dump(youcould, "recognize detrimental food"); /* EN if (u.uedibility) dump("  You could ", "recognize detrimental food"); */ // TODO DE
 

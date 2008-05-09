@@ -311,7 +311,7 @@ boolean forcecontrol;
 		newman();
 	else if(!polymon(mntmp)) return;
 
-	if (!uarmg) selftouch("No longer petrify-resistant, you"); /* EN if (!uarmg) selftouch("No longer petrify-resistant, you"); */ // TODO DE
+	if (!uarmg) selftouch("Nicht mehr länger versteinerungsresistent VERB_TOUCH PRONOMEN_PERSONAL "); /* EN if (!uarmg) selftouch("No longer petrify-resistant, you"); */
 
  made_change:
 	new_light = Upolyd ? emits_light(youmonst.data) : 0;
@@ -485,7 +485,7 @@ int	mntmp;
 	    		!Stone_resistance && rnl(3)) {
 	    	char buf[BUFSZ];
 
-	    	pline("No longer petrifying-resistant, you touch %s.", /* EN pline("No longer petrifying-resistant, you touch %s.", */ // TODO DE
+	    	pline("Nicht mehr länger versteinerungsresistent VERB_TOUCH PRONOMEN_PERSONAL %s.", /* EN pline("No longer petrifying-resistant, you touch %s.", */
 	    			mon_nam(u.usteed));
 	    	Sprintf(buf, "riding %s", an(u.usteed->data->mname)); /* EN Sprintf(buf, "riding %s", an(u.usteed->data->mname)); */ // TODO DE
 	    	instapetrify(buf);
@@ -728,7 +728,7 @@ rehumanize()
 	    killer = kbuf;
 	    done(DIED);
 	}
-	if (!uarmg) selftouch("No longer petrify-resistant, you"); /* EN if (!uarmg) selftouch("No longer petrify-resistant, you"); */ // TODO DE
+	if (!uarmg) selftouch("Nicht mehr länger versteinerungsresistent VERB_TOUCH PRONOMEN_PERSONAL"); /* EN if (!uarmg) selftouch("No longer petrify-resistant, you"); */
 	nomul(0);
 
 	flags.botl = 1;

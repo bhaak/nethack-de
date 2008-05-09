@@ -2003,7 +2003,7 @@ struct obj *otmp;
 	else if (IS_FURNITURE(levl[u.ux][u.uy].typ) ||
 		IS_ROCK(levl[u.ux][u.uy].typ) ||
 		closed_door(u.ux, u.uy) || t_at(u.ux, u.uy))
-	    what = "here"; /* EN what = "here"; */ // TODO DE
+	    what = "hier"; /* EN what = "here"; */
 	if (what) {
 	    You("VERB_KOENNEN %s keine Falle aufstellen!",what); /* EN You_cant("set a trap %s!",what); */
 	    reset_trapset();

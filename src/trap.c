@@ -908,14 +908,14 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    const char *predicament = "on a set of sharp iron spikes"; /* EN const char *predicament = "on a set of sharp iron spikes"; */ // TODO DE
 #ifdef STEED
 		    if (u.usteed) {
-			pline("SUBJECT %s lands %s!", /* EN pline("%s lands %s!", */ // TODO DE
+			pline("SUBJECT %s VERB_LANDEN %s!", /* EN pline("%s lands %s!", */
 				upstart(x_monnam(u.usteed,
 					 ARTICLE_THE, /* EN u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 					 "ADJEKTIV_POOR", SUPPRESS_SADDLE, FALSE)), /* EN "poor", SUPPRESS_SADDLE, FALSE)), */
 			      predicament);
 		    } else
 #endif
-		    You("land %s!", predicament); /* EN You("land %s!", predicament); */ // TODO DE
+		    You("VERB_LANDEN %s!", predicament); /* EN You("land %s!", predicament); */
 		}
 		if (!Passes_walls)
 		    u.utrap = rn1(6,2);
@@ -1118,16 +1118,16 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		if (Levitation || Flying) {
 		    if (!already_seen && rn2(3)) break;
 		    seetrap(trap);
-		    pline("%s %s in a pile of soil below you.", /* EN pline("%s %s in a pile of soil below you.", */ // TODO DE
-			    already_seen ? "There is" : "You discover", /* EN already_seen ? "There is" : "You discover", */ // TODO DE
-			    trap->madeby_u ? "the trigger of your mine" : /* EN trap->madeby_u ? "the trigger of your mine" : */ // TODO DE
-					     "a trigger"); /* EN "a trigger"); */ // TODO DE
+		    pline("SUBJECT %s %s OBJECT KASUS_DATIV unter PRONOMEN_PERSONAL im Dreck.", /* EN pline("%s %s in a pile of soil below you.", */
+			    already_seen ? "Hier VERB_LIEGEN" : "PRONOMEN_PERSONAL VERB_ENTDECKEN", /* EN already_seen ? "There is" : "You discover", */
+			    trap->madeby_u ? "ARTIKEL_BESTIMMTER NOUN_TRIGGER KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_MINE" : /* EN trap->madeby_u ? "the trigger of your mine" : */
+					     "ARTIKEL_UNBESTIMMTER NOUN_TRIGGER"); /* EN "a trigger"); */
 		    if (already_seen && rn2(3)) break;
-		    pline("KAABLAMM!!!  %s %s%s off!", /* EN pline("KAABLAMM!!!  %s %s%s off!", */ // TODO DE
-		    	    forcebungle ? "Your inept attempt sets" : /* EN forcebungle ? "Your inept attempt sets" : */ // TODO DE
-		    	    		  "The air currents set", /* EN "The air currents set", */ // TODO DE
+		    pline("KAABLAMM!!!  SATZBEGINN %s %s%s SATZKLAMMER!", /* EN pline("KAABLAMM!!!  %s %s%s off!", */
+		    	    forcebungle ? "PRONOMEN_POSSESSIV ADJEKTIV_UNGESCHICKT NOUN_VERSUCH VERB_AUSLOESEN" : /* EN forcebungle ? "Your inept attempt sets" : */
+		    	    		  "ARTIKEL_BESTIMMTER NOUN_AIR_CURRENTs VERB_AUSLOESEN", /* EN "The air currents set", */
 			    already_seen ? a_your[trap->madeby_u] : "",
-			    already_seen ? " land mine" : "it"); /* EN already_seen ? " land mine" : "it"); */ // TODO DE
+			    already_seen ? " NOUN_LAND_MINE" : "ihn"); /* EN already_seen ? " land mine" : "it"); */
 		} else {
 #ifdef STEED
 		    /* prevent landmine from killing steed, throwing you to
@@ -1139,7 +1139,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    if (recursive_mine) break;
 #endif
 		    seetrap(trap);
-		    pline("KAABLAMM!!!  You triggered %s land mine!", /* EN pline("KAABLAMM!!!  You triggered %s land mine!", */ // TODO DE
+		    pline("KAABLAMM!!!  SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT %s NOUN_LAND_MINE ausgelöst!", /* EN pline("KAABLAMM!!!  You triggered %s land mine!", */
 					    a_your[trap->madeby_u]);
 #ifdef STEED
 		    if (u.usteed) steed_mid = u.usteed->m_id;
@@ -1173,7 +1173,7 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		      trap->launch2.x, trap->launch2.y, style)) {
 		    deltrap(trap);
 		    newsym(u.ux,u.uy);	/* get rid of trap symbol */
-		    pline("Fortunately for you, no boulder was released."); /* EN pline("Fortunately for you, no boulder was released."); */ // TODO DE
+		    pline("Zum Glück hat sich kein Felsbrocken gelöst."); /* EN pline("Fortunately for you, no boulder was released."); */
 		}
 		break;
 	    }
@@ -1437,7 +1437,7 @@ int style;
 			  	pline(
 				  "KAABLAMM!!!%s", /* EN "KAABLAMM!!!%s", */ // TODO DE
 				  cansee(bhitpos.x, bhitpos.y) ?
-					" The rolling boulder triggers a land mine." : ""); /* EN " The rolling boulder triggers a land mine." : ""); */ // TODO DE
+					" Die Felskugel löst KASUS_AKKUSATIV ARTIKEL_UNBESTIMMTER NOUN_LAND_MINE aus." : ""); /* EN " The rolling boulder triggers a land mine." : ""); */
 				deltrap(t);
 				del_engr_at(bhitpos.x,bhitpos.y);
 				place_object(singleobj, bhitpos.x, bhitpos.y);
@@ -1454,9 +1454,9 @@ int style;
 			case LEVEL_TELEP:
 			case TELEP_TRAP:
 			    if (cansee(bhitpos.x, bhitpos.y))
-			    	pline("Suddenly the rolling boulder disappears!"); /* EN pline("Suddenly the rolling boulder disappears!"); */ // TODO DE
+			    	pline("Plötzlich verschwindet die Felskugel!"); /* EN pline("Suddenly the rolling boulder disappears!"); */
 			    else
-			    	You_hear("a rumbling stop abruptly."); /* EN You_hear("a rumbling stop abruptly."); */ // TODO DE
+			    	You_hear("das Rumpeln unerwartet enden."); /* EN You_hear("a rumbling stop abruptly."); */
 			    singleobj->otrapped = 0;
 			    if (t->ttyp == TELEP_TRAP)
 				rloco(singleobj);
@@ -1496,13 +1496,13 @@ int style;
 		    if (otyp == BOULDER &&
 		       (otmp2 = sobj_at(BOULDER, bhitpos.x, bhitpos.y)) != 0) {
 			const char *bmsg =
-				     " as one boulder sets another in motion"; /* EN " as one boulder sets another in motion"; */ // TODO DE
+				     ", als ein Felsbrocken den anderen anstößt"; /* EN " as one boulder sets another in motion"; */
 
 			if (!isok(bhitpos.x + dx, bhitpos.y + dy) || !dist ||
 			    IS_ROCK(levl[bhitpos.x + dx][bhitpos.y + dy].typ))
-			    bmsg = " as one boulder hits another"; /* EN bmsg = " as one boulder hits another"; */ // TODO DE
+			    bmsg = ", als ein Felsbrocken den anderen trifft"; /* EN bmsg = " as one boulder hits another"; */
 
-			You_hear("a loud crash%s!", /* EN You_hear("a loud crash%s!", */ // TODO DE
+			You_hear("ein lautes Krachen%s!", /* EN You_hear("a loud crash%s!", */
 				cansee(bhitpos.x, bhitpos.y) ? bmsg : "");
 			obj_extract_self(otmp2);
 			/* pass off the otrapped flag to the next boulder */
@@ -1688,7 +1688,7 @@ register struct monst *mtmp;
 		    mtmp->mtrapped = 0;
 		} else if (trap->ttyp == SPIKED_PIT) {
 		    if (canseemon(mtmp))
-			pline("%s munches on some spikes!", Monnam(mtmp)); /* EN pline("%s munches on some spikes!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s nascht an ein paar Stacheln!", Monnam(mtmp)); /* EN pline("%s munches on some spikes!", Monnam(mtmp)); */
 		    trap->ttyp = PIT;
 		    mtmp->meating = 5;
 		}
@@ -1698,7 +1698,7 @@ register struct monst *mtmp;
 	    boolean in_sight, tear_web, see_it,
 		    inescapable = ((tt == HOLE || tt == PIT) &&
 				   In_sokoban(&u.uz) && !trap->madeby_u);
-	    const char *fallverb;
+	    const char *fallverb; const char *fallverbpartizip = ""; /* EN const char *fallverb; */
 
 #ifdef STEED
 	    /* true when called from dotrap, inescapable is not an option */
@@ -1727,7 +1727,7 @@ register struct monst *mtmp;
 		case ARROW_TRAP:
 			if (trap->once && trap->tseen && !rn2(15)) {
 			    if (in_sight && see_it)
-				pline("SUBJECT %s VERB_AKTIVIEREN eine Falle aber nichts geschieht.", /* EN pline("%s triggers a trap but nothing happens.", */
+				pline("SUBJECT %s VERB_AKTIVIEREN eine Falle, aber es passiert nichts.", /* EN pline("%s triggers a trap but nothing happens.", */
 				      Monnam(mtmp));
 			    deltrap(trap);
 			    newsym(mtmp->mx, mtmp->my);
@@ -1744,7 +1744,7 @@ register struct monst *mtmp;
 		case DART_TRAP:
 			if (trap->once && trap->tseen && !rn2(15)) {
 			    if (in_sight && see_it)
-				pline("%s triggers a trap but nothing happens.", /* EN pline("%s triggers a trap but nothing happens.", */ // TODO DE
+				pline("SUBJECT %s VERB_AKTIVIEREN eine Falle, aber es passiert nichts.", /* EN pline("%s triggers a trap but nothing happens.", */
 				      Monnam(mtmp));
 			    deltrap(trap);
 			    newsym(mtmp->mx, mtmp->my);
@@ -1761,7 +1761,7 @@ register struct monst *mtmp;
 		case ROCKTRAP:
 			if (trap->once && trap->tseen && !rn2(15)) {
 			    if (in_sight && see_it)
-				pline("A trap door above %s opens, but nothing falls out!", /* EN pline("A trap door above %s opens, but nothing falls out!", */ // TODO DE
+				pline("Eine Falltüre KASUS_DATIV über %s öffnet sich, aber es fällt nichts heraus!", /* EN pline("A trap door above %s opens, but nothing falls out!", */
 				      mon_nam(mtmp));
 			    deltrap(trap);
 			    newsym(mtmp->mx, mtmp->my);
@@ -1794,7 +1794,7 @@ register struct monst *mtmp;
 				!is_whirly(mptr) && !unsolid(mptr)) {
 			    mtmp->mtrapped = 1;
 			    if(in_sight) {
-				pline("%s is caught in %s bear trap!", /* EN pline("%s is caught in %s bear trap!", */ // TODO DE
+				pline("SUBJECT %s VERB_SEIN OBJECT in %s NOUN_BEAR_TRAP geraten!", /* EN pline("%s is caught in %s bear trap!", */
 				      Monnam(mtmp), a_your[trap->madeby_u]);
 				seetrap(trap);
 			    } else {
@@ -1844,7 +1844,7 @@ register struct monst *mtmp;
 			    if (target && bimanual(target))
 				erode_obj(target, FALSE, TRUE);
 glovecheck:		    target = which_armor(mtmp, W_ARMG);
-			    (void) rust_dmg(target, "gauntlets", 1, TRUE, mtmp); /* EN (void) rust_dmg(target, "gauntlets", 1, TRUE, mtmp); */ // TODO DE
+			    (void) rust_dmg(target, "NOUN_GAUNTLETSs", 1, TRUE, mtmp); /* EN (void) rust_dmg(target, "gauntlets", 1, TRUE, mtmp); */
 			    break;
 			case 2:
 			    if (in_sight)
@@ -1941,24 +1941,24 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 
 		case PIT:
 		case SPIKED_PIT:
-			fallverb = "falls"; /* EN fallverb = "falls"; */ // TODO DE
+			fallverb = "VERB_FALLEN"; /* EN fallverb = "falls"; */
 			if (is_flyer(mptr) || is_floater(mptr) ||
 				(mtmp->wormno && count_wsegs(mtmp) > 5) ||
 				is_clinger(mptr)) {
 			    if (!inescapable) break;	/* avoids trap */
-			    fallverb = "is dragged";	/* sokoban pit */ /* EN fallverb = "is dragged";	*/ // TODO DE
+			    fallverb = "VERB_WERDEN"; fallverbpartizip = "gezogen";	/* sokoban pit */ /* EN fallverb = "is dragged";	*/
 			}
 			if (!passes_walls(mptr))
 			    mtmp->mtrapped = 1;
 			if (in_sight) {
-			    pline("%s %s into %s pit!", /* EN pline("%s %s into %s pit!", */ // TODO DE
-				  Monnam(mtmp), fallverb,
+			    pline("SUBJECT %s %s OBJECT in %s NOUN_PIT%s!", /* EN pline("%s %s into %s pit!", */
+				  Monnam(mtmp), fallverb, fallverbpartizip, /* EN Monnam(mtmp), fallverb, */
 				  a_your[trap->madeby_u]);
 			    if (mptr == &mons[PM_PIT_VIPER] || mptr == &mons[PM_PIT_FIEND])
 				pline("How pitiful.  Isn't that the pits?"); /* EN pline("How pitiful.  Isn't that the pits?"); */ // TODO DE
 			    seetrap(trap);
 			}
-			mselftouch(mtmp, "Im Fallen VERB_TOUCH ", FALSE); /* EN mselftouch(mtmp, "Falling, ", FALSE); */
+			mselftouch(mtmp, "Im Fallen ", FALSE); /* EN mselftouch(mtmp, "Falling, ", FALSE); */
 			if (mtmp->mhp <= 0 ||
 				thitm(0, mtmp, (struct obj *)0,
 				      rnd((tt == PIT) ? 6 : 10), FALSE))
@@ -2088,22 +2088,22 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			if(is_flyer(mptr)) {
 				boolean already_seen = trap->tseen;
 				if (in_sight && !already_seen) {
-	pline("A trigger appears in a pile of soil below %s.", mon_nam(mtmp)); /* EN pline("A trigger appears in a pile of soil below %s.", mon_nam(mtmp)); */ // TODO DE
+	pline("Ein Auslösemechanismus erscheint KASUS_DATIV %s im Dreck.", mon_nam(mtmp)); /* EN pline("A trigger appears in a pile of soil below %s.", mon_nam(mtmp)); */
 					seetrap(trap);
 				}
 				if (rn2(3)) break;
 				if (in_sight) {
 					newsym(mtmp->mx, mtmp->my);
-					pline_The("air currents set %s off!", /* EN pline_The("air currents set %s off!", */ // TODO DE
-					  already_seen ? "a land mine" : "it"); /* EN already_seen ? "a land mine" : "it"); */ // TODO DE
+					pline("Die Luftwirbel lösen %s aus!", /* EN pline_The("air currents set %s off!", */
+					  already_seen ? "KASUS_AKKUSATIV ARTIKEL_UNBESTIMMTER NOUN_LAND_MINE" : "ihn"); /* EN already_seen ? "a land mine" : "it"); */
 				}
 			} else if(in_sight) {
 			    newsym(mtmp->mx, mtmp->my);
-			    pline("KAABLAMM!!!  %s triggers %s land mine!", /* EN pline("KAABLAMM!!!  %s triggers %s land mine!", */ // TODO DE
+			    pline("KAABLAMM!!!  SUBJECT %s VERB_AUSLOESEN %s NOUN_LAND_MINE SATZKLAMMER!", /* EN pline("KAABLAMM!!!  %s triggers %s land mine!", */
 				Monnam(mtmp), a_your[trap->madeby_u]);
 			}
 			if (!in_sight)
-				pline("Kaablamm!  You hear an explosion in the distance!"); /* EN pline("Kaablamm!  You hear an explosion in the distance!"); */ // TODO DE
+				pline("Kaablamm!  SUBJECT PRONOMEN_PERSONAL VERB_HEAR eine ferne Explosion!"); /* EN pline("Kaablamm!  You hear an explosion in the distance!"); */
 			blow_up_landmine(trap);
 			if (thitm(0, mtmp, (struct obj *)0, rnd(16), FALSE))
 				trapkilled = TRUE;
@@ -2210,7 +2210,7 @@ const char *arg;
 
 	if(uwep && uwep->otyp == CORPSE && touch_petrifies(&mons[uwep->corpsenm])
 			&& !Stone_resistance) {
-		pline(touch_sentence, arg, /* EN pline("%s touch the %s corpse.", arg, */ // TODO DE
+		pline(touch_sentence, arg, /* EN pline("%s touch the %s corpse.", arg, */
 		        mons[uwep->corpsenm].mname);
 		Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[uwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uwep->corpsenm].mname)); */
 		instapetrify(kbuf);
@@ -2218,7 +2218,7 @@ const char *arg;
 	/* Or your secondary weapon, if wielded */
 	if(u.twoweap && uswapwep && uswapwep->otyp == CORPSE &&
 			touch_petrifies(&mons[uswapwep->corpsenm]) && !Stone_resistance){
-		pline(touch_sentence, arg, /* EN pline("%s touch the %s corpse.", arg, */ // TODO DE
+		pline(touch_sentence, arg, /* EN pline("%s touch the %s corpse.", arg, */
 		        mons[uswapwep->corpsenm].mname);
 		Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[uswapwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); */
 		instapetrify(kbuf);
@@ -2235,8 +2235,8 @@ boolean byplayer;
 
 	if (mwep && mwep->otyp == CORPSE && touch_petrifies(&mons[mwep->corpsenm])) {
 		if (cansee(mon->mx, mon->my)) {
-			pline("SUBJECT %s%s OBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE %s NOUN_CORPSE.", /* EN pline("%s%s touches the %s corpse.", */
-			    arg ? arg : "", arg ? mon_nam(mon) : Monnam(mon),
+			pline("SUBJECT %s%s%s%s OBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE %s NOUN_CORPSE.", /* EN pline("%s%s touches the %s corpse.", */
+			    arg ? arg : "", arg ? "VERB_TOUCH " : "", arg ? mon_nam(mon) : Monnam(mon), arg ? "" : " VERB_TOUCH", /* EN arg ? arg : "", arg ? mon_nam(mon) : Monnam(mon), */
 			    mons[mwep->corpsenm].mname);
 		}
 		minstapetrify(mon, byplayer);

@@ -1255,7 +1255,7 @@ register struct obj	*sobj;
 				!Passes_walls &&
 				!noncorporeal(youmonst.data) &&
 				!unsolid(youmonst.data)) {
-			Dich("trifft SUBJECT_IM_SATZ %s!", doname(otmp2)); /* EN You("are hit by %s!", doname(otmp2)); */
+			Dich("SUBJECT_IM_SATZ VERB_TREFFEN %s!", doname(otmp2)); /* EN You("are hit by %s!", doname(otmp2)); */
 			dmg = dmgval(otmp2, &youmonst) * otmp2->quan;
 			if (uarmh && !sobj->cursed) {
 			    if(is_metallic(uarmh)) {

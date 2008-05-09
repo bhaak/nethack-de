@@ -113,7 +113,7 @@ boolean pushing;
 		    vision_full_recalc = 1;
 		    You("VERB_BEFINDEN OBJECT PRONOMEN_PERSONAL wieder auf trockenem Land!"); /* EN You("find yourself on dry land again!"); */
 		} else if (lava && distu(rx,ry) <= 2) {
-		    Dich("trifft SUBJECT_IM_SATZ ADJEKTIV_FLUESSIG NOUN_LAVA%c", /* EN You("are hit by molten lava%c", */
+		    Dich("SUBJECT_IM_SATZ VERB_TREFFEN SUBJECT_IM_SATZ flüssige NOUN_LAVA%c", /* EN You("are hit by molten lava%c", */
 			Fire_resistance ? '.' : '!');
 			burn_away_slime();
 		    losehp(d((Fire_resistance ? 1 : 3), 6),

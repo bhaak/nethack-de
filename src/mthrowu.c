@@ -67,7 +67,7 @@ const char *name;	/* if null, then format `obj' */
 
 	if(u.uac + tlev <= rnd(20)) {
 		if(Blind || !flags.verbose) pline("It misses."); /* EN if(Blind || !flags.verbose) pline("It misses."); */ // TODO DE
-		else Dich("trifft beinahe SUBJECT_IM_SATZ %s.", onm); /* EN else You("are almost hit by %s.", onm); */
+		else Dich("SUBJECT_IM_SATZ VERB_TREFFEN beinahe %s.", onm); /* EN else You("are almost hit by %s.", onm); */
 		return(0);
 	} else {
 		if(Blind || !flags.verbose) You("are hit!"); /* EN if(Blind || !flags.verbose) You("are hit!"); */ // TODO DE

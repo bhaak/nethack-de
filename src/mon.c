@@ -2528,7 +2528,7 @@ boolean msg;		/* "The oldmon turns into a newmon!" */
 	possibly_unwield(mtmp, polyspot);	/* might lose use of weapon */
 	mon_break_armor(mtmp, polyspot);
 	if (!(mtmp->misc_worn_check & W_ARMG))
-	    mselftouch(mtmp, "No longer petrify-resistant, ", /* EN mselftouch(mtmp, "No longer petrify-resistant, ", */ // TODO DE
+	    mselftouch(mtmp, "Nicht mehr länger versteinerungsresistent ", /* EN mselftouch(mtmp, "No longer petrify-resistant, ", */
 			!flags.mon_moving);
 	m_dowear(mtmp, FALSE);
 
