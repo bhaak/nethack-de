@@ -469,7 +469,7 @@ aligntyp resp_god;
 	    pline("Suddenly a bolt of lightning comes down at you from the heavens!"); /* EN pline("Suddenly a bolt of lightning comes down at you from the heavens!"); */ // TODO DE
 	    pline("It strikes %s!", mon_nam(u.ustuck)); /* EN pline("It strikes %s!", mon_nam(u.ustuck)); */ // TODO DE
 	    if (!resists_elec(u.ustuck)) {
-		pline("%s fries to a crisp!", Monnam(u.ustuck)); /* EN pline("%s fries to a crisp!", Monnam(u.ustuck)); */ // TODO DE
+		pline("SUBJECT %s VERB_VERKOHLEN zu einem Brikett!", Monnam(u.ustuck)); /* EN pline("%s fries to a crisp!", Monnam(u.ustuck)); */
 		/* Yup, you get experience.  It takes guts to successfully
 		 * pull off this trick on your god, anyway.
 		 */
@@ -496,7 +496,7 @@ aligntyp resp_god;
 	    pline("A wide-angle disintegration beam aimed at you hits %s!", /* EN pline("A wide-angle disintegration beam aimed at you hits %s!", */ // TODO DE
 			mon_nam(u.ustuck));
 	    if (!resists_disint(u.ustuck)) {
-		pline("%s fries to a crisp!", Monnam(u.ustuck)); /* EN pline("%s fries to a crisp!", Monnam(u.ustuck)); */ // TODO DE
+		pline("SUBJECT %s VERB_VERKOHLEN zu einem Brikett!", Monnam(u.ustuck)); /* EN pline("%s fries to a crisp!", Monnam(u.ustuck)); */
 		xkilled(u.ustuck, 2); /* no corpse */
 	    } else
 		pline("%s seems unaffected.", Monnam(u.ustuck)); /* EN pline("%s seems unaffected.", Monnam(u.ustuck)); */ // TODO DE
@@ -541,7 +541,7 @@ aligntyp resp_god;
 {
 	char killerbuf[64];
 
-	You("fry to a crisp."); /* EN You("fry to a crisp."); */ // TODO DE
+	You("VERB_VERKOHLEN zu einem Brikett."); /* EN You("fry to a crisp."); */
 	killer_format = KILLED_BY;
 	Sprintf(killerbuf, "der Zorn von %s", align_gname(resp_god)); /* EN Sprintf(killerbuf, "the wrath of %s", align_gname(resp_god)); */
 	killer = killerbuf;
@@ -1675,7 +1675,7 @@ doturn()
 		    (is_demon(youmonst.data) || is_undead(youmonst.data))) ||
 				u.ugangr > 6 /* "Die, mortal!" */) {
 
-		pline("Aus irgendeinem Grund scheint %s KASUS_AKKUSATIV %s zu ignorieren.", u_gname()); /* EN pline("For some reason, %s seems to ignore you.", u_gname()); */
+		pline("Aus irgendeinem Grund scheint %s KASUS_AKKUSATIV PRONOMEN_PERSONAL zu ignorieren.", u_gname()); /* EN pline("For some reason, %s seems to ignore you.", u_gname()); */
 		aggravate();
 		exercise(A_WIS, FALSE);
 		return(0);

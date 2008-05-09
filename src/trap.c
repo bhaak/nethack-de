@@ -3927,7 +3927,7 @@ lava_effects()
     if (!Fire_resistance) {
 	if(Wwalking) {
 	    dmg = d(6,6);
-	    pline_The("NOUN_LAVA VERB_VERBRENNEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL!"); /* EN pline_The("lava here burns you!"); */
+	    pline_The("NOUN_LAVA VERB_VERBRENNEN OBJECT PRONOMEN_PERSONAL!"); /* EN pline_The("lava here burns you!"); */
 	    if(dmg < u.uhp) {
 		losehp(dmg, lava_killer, KILLED_BY);
 		goto burn_stuff;
@@ -3971,10 +3971,10 @@ lava_effects()
 	u.uhp = -1;
 	killer_format = KILLED_BY;
 	killer = lava_killer;
-	You("burn to a crisp..."); /* EN You("burn to a crisp..."); */ // TODO DE
+	You("VERB_VERBRENNEN zu einen Aschehäufchen ..."); /* EN You("burn to a crisp..."); */
 	done(BURNING);
 	while (!safe_teleds(TRUE)) {
-		pline("SUBJECT PRONOMEN_PERSONAL VERB_BRENNEN noch."); /* EN pline("You're still burning."); */
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_BRENNEN immer noch."); /* EN pline("You're still burning."); */
 		done(BURNING);
 	}
 	You("VERB_SEIN wieder OBJECT KASUS_DATIV auf ADJEKTIV_FEST %s.", surface(u.ux, u.uy)); /* EN You("find yourself back on solid %s.", surface(u.ux, u.uy)); */

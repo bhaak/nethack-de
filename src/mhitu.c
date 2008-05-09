@@ -1749,7 +1749,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 				You("VERB_SCHWITZEN leicht."); /* EN You_feel("mildly hot."); */
 				ugolemeffects(AD_FIRE,tmp);
 				tmp = 0;
-			} else You("are burning to a crisp!"); /* EN } else You("are burning to a crisp!"); */ // TODO DE
+			} else You("VERB_VERBRENNEN zu einem Aschehäufchen!"); /* EN } else You("are burning to a crisp!"); */
 			burn_away_slime();
 		    } else tmp = 0;
 		    break;

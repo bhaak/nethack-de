@@ -778,10 +778,10 @@ int thrown;
 
 			if (touch_petrifies(&mons[obj->corpsenm])) {
 			    /*learn_egg_type(obj->corpsenm);*/
-			    pline("Klatsch! You hit %s with %s %s egg%s!", /* EN pline("Splat! You hit %s with %s %s egg%s!", */ // TODO DE
+			    pline("Klatsch! SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT %s NEUES_OBJECT OBJECT mit %s %s NOUN_EGG%s!", /* EN pline("Splat! You hit %s with %s %s egg%s!", */ // TODO DE
 				mon_nam(mon),
-				obj->known ? "the" : cnt > 1L ? "some" : "a", /* EN obj->known ? "the" : cnt > 1L ? "some" : "a", */ // TODO DE
-				obj->known ? mons[obj->corpsenm].mname : "petrifying", /* EN obj->known ? mons[obj->corpsenm].mname : "petrifying", */ // TODO DE
+				obj->known ? "ARTIKEL_BESTIMMTER" : cnt > 1L ? "ein paar" : "ARTIKEL_UNBESTIMMTER", /* EN obj->known ? "the" : cnt > 1L ? "some" : "a", */
+				obj->known ? mons[obj->corpsenm].mname : "ADJEKTIV_VERSTEINERND", /* EN obj->known ? mons[obj->corpsenm].mname : "petrifying", */
 				plur(cnt));
 			    obj->known = 1;	/* (not much point...) */
 			    useup_eggs(obj);
@@ -1879,7 +1879,7 @@ register struct attack *mattk;
 				pline("SUBJECT %s VERB_SCHEINEN leicht zu schwitzen.", Monnam(mdef)); /* EN pline("%s seems mildly hot.", Monnam(mdef)); */
 				dam = 0;
 			    } else
-				pline("%s is burning to a crisp!",Monnam(mdef)); /* EN pline("%s is burning to a crisp!",Monnam(mdef)); */ // TODO DE
+				pline("SUBJECT %s VERB_VERBRENNEN zu einem Aschehäufchen!",Monnam(mdef)); /* EN pline("%s is burning to a crisp!",Monnam(mdef)); */
 			    golemeffects(mdef,(int)mattk->adtyp,dam);
 			} else dam = 0;
 			break;

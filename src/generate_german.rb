@@ -984,6 +984,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_VERBLASSEN","verblassen"),
 		Verb.verb("VERB_VERDAUEN","verdauen"),
 		Verb.verb("VERB_VERFANGEN","verfangen"),
+		Verb.verb("VERB_VERKOHLEN","verkohlen"),
 		Verb.verb("VERB_VERLASSEN","verlassen"),
 		Verb.verb("VERB_VERMISCHEN","vermischen"),
 		Verb.verb("VERB_VERMODERN","vermodern"),

@@ -425,9 +425,9 @@ register struct monst *mtmp;
 	if (!is_clinger(mtmp->data) && !likes_lava(mtmp->data)) {
 	    if (!resists_fire(mtmp)) {
 		if (cansee(mtmp->mx,mtmp->my))
-		    pline("%s %s.", Monnam(mtmp), /* EN pline("%s %s.", Monnam(mtmp), */ // TODO DE
+		    pline("SUBJECT %s %s.", Monnam(mtmp), /* EN pline("%s %s.", Monnam(mtmp), */
 			  mtmp->data == &mons[PM_WATER_ELEMENTAL] ?
-			  "boils away" : "burns to a crisp"); /* EN "boils away" : "burns to a crisp"); */ // TODO DE
+			  "boils away" : "VERB_VERBRENNEN zu einem Aschehäufchen"); /* EN "boils away" : "burns to a crisp"); */ // TODO DE
 		mondead(mtmp);
 	    }
 	    else {

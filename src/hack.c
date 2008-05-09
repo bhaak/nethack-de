@@ -1837,7 +1837,7 @@ dopickup()
 		pline("Der Grund ist zu tief unten um etwas aufzunehmen."); /* EN You_cant("reach the bottom to pick things up."); */
 		return(0);
 	    } else if (!likes_lava(youmonst.data)) {
-		You("would burn to a crisp trying to pick things up."); /* EN You("would burn to a crisp trying to pick things up."); */ // TODO DE
+		You("MODIFIER_KONJUNKTIV_II VERB_WERDEN schon beim Versuch zu einem Aschehäufchen verbrennen."); /* EN You("would burn to a crisp trying to pick things up."); */
 		return(0);
 	    }
 	}
