@@ -144,7 +144,7 @@ u_slow_down()
 {
 	HFast = 0L;
 	if (!Fast)
-	    You("slow down."); /* EN You("slow down."); */ // TODO DE
+	    You("VERB_WERDEN langsamer."); /* EN You("slow down."); */
 	else	/* speed boots */
 	    Your("NOUN_QUICKNESS VERB_WIRKEN weniger natürlich."); /* EN Your("quickness feels less natural."); */
 	exercise(A_DEX, FALSE);

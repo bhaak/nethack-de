@@ -109,9 +109,8 @@ Boots_on()
 		/* though not better than potion speed */
 		if (!oldprop && !(HFast & TIMEOUT)) {
 			makeknown(uarmf->otyp);
-			// TODO
-			You_feel("yourself speed up%s.", /* EN You_feel("yourself speed up%s.", */ // TODO DE
-				(oldprop || HFast) ? " a bit more" : ""); /* EN (oldprop || HFast) ? " a bit more" : ""); */ // TODO DE
+			Du_fuehlst_dich("%sschneller werden.", /* EN You_feel("yourself speed up%s.", */
+				(oldprop || HFast) ? "etwas " : ""); /* EN (oldprop || HFast) ? " a bit more" : ""); */
 		}
 		break;
 	case ELVEN_BOOTS:
@@ -151,8 +150,8 @@ Boots_off()
 	case SPEED_BOOTS:
 		if (!Very_fast && !cancelled_don) {
 			makeknown(otyp);
-			You_feel("yourself slow down%s.", /* EN You_feel("yourself slow down%s.", */ // TODO DE
-				Fast ? " a bit" : ""); /* EN Fast ? " a bit" : ""); */ // TODO DE
+			Du_fuehlst_dich("%slangsamer werden.", /* EN You_feel("yourself slow down%s.", */
+				Fast ? "etwas " : ""); /* EN Fast ? " a bit" : ""); */
 		}
 		break;
 	case WATER_WALKING_BOOTS:

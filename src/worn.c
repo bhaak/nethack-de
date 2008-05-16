@@ -196,7 +196,7 @@ struct obj *obj;	/* item to make known if effect can be seen */
 	if (petrify) {
 	    /* mimic the player's petrification countdown; "slowing down"
 	       even if fast movement rate retained via worn speed boots */
-	    if (flags.verbose) pline("%s is slowing down.", Monnam(mon)); /* EN if (flags.verbose) pline("%s is slowing down.", Monnam(mon)); */ // TODO DE
+	    if (flags.verbose) pline("SUBJECT %s VERB_WERDEN langsamer.", Monnam(mon)); /* EN if (flags.verbose) pline("%s is slowing down.", Monnam(mon)); */
 	} else if (adjust > 0 || mon->mspeed == MFAST)
 	    pline("%s is suddenly moving %sfaster.", Monnam(mon), howmuch); /* EN pline("%s is suddenly moving %sfaster.", Monnam(mon), howmuch); */ // TODO DE
 	else

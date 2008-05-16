@@ -627,14 +627,14 @@ doengrave()
 		    case WAN_SLOW_MONSTER:
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s wuseln langsamer!", /* EN "The bugs on the %s slow down!", */
+				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s wuselt langsamer!", /* EN "The bugs on the %s slow down!", */
 				   surface(u.ux, u.uy));
 			}
 			break;
 		    case WAN_SPEED_MONSTER:
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s wuseln schneller!", /* EN "The bugs on the %s speed up!", */
+				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s wuselt schneller!", /* EN "The bugs on the %s speed up!", */
 				   surface(u.ux, u.uy));
 			}
 			break;

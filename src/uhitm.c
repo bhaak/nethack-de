@@ -1628,7 +1628,7 @@ register struct attack *mattk;
 
 		    mon_adjust_speed(mdef, -1, (struct obj *)0);
 		    if (mdef->mspeed != oldspeed && canseemon(mdef))
-			pline("%s slows down.", Monnam(mdef)); /* EN pline("%s slows down.", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN langsamer.", Monnam(mdef)); /* EN pline("%s slows down.", Monnam(mdef)); */
 		}
 		break;
 	    case AD_CONF:

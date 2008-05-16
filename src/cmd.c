@@ -891,7 +891,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Fire_resistance) you_are("feuerresistent"); /* EN if (Fire_resistance) you_are("fire resistant"); */
 	if (Cold_resistance) you_are("kälteresistent"); /* EN if (Cold_resistance) you_are("cold resistant"); */
 	if (Sleep_resistance) you_are("schlafresistent"); /* EN if (Sleep_resistance) you_are("sleep resistant"); */
-	if (Disint_resistance) you_are("disintegration-resistant"); /* EN if (Disint_resistance) you_are("disintegration-resistant"); */ // TODO DE
+	if (Disint_resistance) you_are("desintegrationsresistant"); /* EN if (Disint_resistance) you_are("disintegration-resistant"); */
 	if (Shock_resistance) you_are("shock resistant"); /* EN if (Shock_resistance) you_are("shock resistant"); */ // TODO DE
 	if (Poison_resistance) you_are("giftresistent"); /* EN if (Poison_resistance) you_are("poison resistant"); */
 	if (Drain_resistance) you_are("level-drain resistant"); /* EN if (Drain_resistance) you_are("level-drain resistant"); */ // TODO DE
@@ -907,7 +907,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Halluc_resistance)
 		enl_msg("You resist", "", "ed", " hallucinations"); /* EN enl_msg("You resist", "", "ed", " hallucinations"); */ // TODO DE
 	if (final) {
-		if (Hallucination) you_are("hallucinating"); /* EN if (Hallucination) you_are("hallucinating"); */ // TODO DE
+		if (Hallucination) you_have("Halluzinationen"); /* EN if (Hallucination) you_are("hallucinating"); */
 		if (Stunned) you_are("benommen"); /* EN if (Stunned) you_are("stunned"); */
 		if (Confusion) you_are("verwirrt"); /* EN if (Confusion) you_are("confused"); */
 		if (Blinded) you_are("geblendet"); /* EN if (Blinded) you_are("blinded"); */
@@ -946,7 +946,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Hunger) enl_msg("You hunger", "", "ed", " rapidly"); /* EN if (Hunger) enl_msg("You hunger", "", "ed", " rapidly"); */ // TODO DE
 
 	/*** Vision and senses ***/
-	if (See_invisible) enl_msg(You_, "VERB_SEHEN", "saw", " invisible"); /* EN if (See_invisible) enl_msg(You_, "see", "saw", " invisible"); */ // TODO DE
+	if (See_invisible) enl_msg(You_, "VERB_SEHEN", "MODIFIER_VERB_PRAETERITUM VERB_SEHEN", " Unsichtbare"); /* EN if (See_invisible) enl_msg(You_, "see", "saw", " invisible"); */
 	if (Blind_telepat) you_are("telepathisch begabt"); /* EN if (Blind_telepat) you_are("telepathic"); */
 	if (Warning) you_are("gewarnt"); /* EN if (Warning) you_are("warned"); */
 	if (Warn_of_mon && flags.warntype) {
@@ -992,9 +992,9 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Lev_at_will) you_are("levitating, at will"); /* EN if (Lev_at_will) you_are("levitating, at will"); */ // TODO DE
 	else if (Levitation) you_are("levitating");	/* without control */ /* EN else if (Levitation) you_are("levitating");	*/ // TODO DE
 	else if (Flying) you_can("fliegen"); /* EN else if (Flying) you_can("fly"); */
-	if (Wwalking) you_can("walk on water"); /* EN if (Wwalking) you_can("walk on water"); */ // TODO DE
+	if (Wwalking) you_can("übers Wasser gehen"); /* EN if (Wwalking) you_can("walk on water"); */
 	if (Swimming) you_can("schwimmen");        /* EN if (Swimming) you_can("swim");         */
-	if (Breathless) you_can("survive without air"); /* EN if (Breathless) you_can("survive without air"); */ // TODO DE
+	if (Breathless) you_can("ohne Luft auskommen"); /* EN if (Breathless) you_can("survive without air"); */ // TODO DE
 	else if (Amphibious) you_can("Wasser atmen"); /* EN else if (Amphibious) you_can("breathe water"); */
 	if (Passes_walls) you_can("durch Wände gehen"); /* EN if (Passes_walls) you_can("walk through walls"); */
 #ifdef STEED
@@ -1049,14 +1049,14 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	}
 	if (Upolyd) {
 	    if (u.umonnum == u.ulycn) Strcpy(buf, "in beast form"); /* EN if (u.umonnum == u.ulycn) Strcpy(buf, "in beast form"); */ // TODO DE
-	    else Sprintf(buf, "polymorphed into %s", an(youmonst.data->mname)); /* EN else Sprintf(buf, "polymorphed into %s", an(youmonst.data->mname)); */ // TODO DE
+	    else Sprintf(buf, "OBJECT in %s transformiert", an(youmonst.data->mname)); /* EN else Sprintf(buf, "polymorphed into %s", an(youmonst.data->mname)); */
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", u.mtimedone);
 #endif
 	    you_are(buf);
 	}
 	if (Unchanging) you_can("not change from your current form"); /* EN if (Unchanging) you_can("not change from your current form"); */ // TODO DE
-	if (Fast) you_are(Very_fast ? "very fast" : "fast"); /* EN if (Fast) you_are(Very_fast ? "very fast" : "fast"); */ // TODO DE
+	if (Fast) you_are(Very_fast ? "sehr schnell" : "schnell"); /* EN if (Fast) you_are(Very_fast ? "very fast" : "fast"); */
 	if (Reflecting) you_have("reflection"); /* EN if (Reflecting) you_have("reflection"); */ // TODO DE
 	if (Free_action) you_have("free action"); /* EN if (Free_action) you_have("free action"); */ // TODO DE
 	if (Fixed_abil) you_have("fixed abilities"); /* EN if (Fixed_abil) you_have("fixed abilities"); */ // TODO DE
@@ -1218,7 +1218,7 @@ int final;
 	if (Fire_resistance) dump(youwere, "feuerresistent"); /* EN if (Fire_resistance) dump(youwere, "fire resistant"); */
 	if (Cold_resistance) dump(youwere, "kälteresistent"); /* EN if (Cold_resistance) dump(youwere, "cold resistant"); */
 	if (Sleep_resistance) dump(youwere, "schlafresistent"); /* EN if (Sleep_resistance) dump(youwere, "sleep resistant"); */
-	if (Disint_resistance) dump(youwere, "disintegration-resistant"); /* EN if (Disint_resistance) dump(youwere, "disintegration-resistant"); */ // TODO DE
+	if (Disint_resistance) dump(youwere, "desintegrationsresistant"); /* EN if (Disint_resistance) dump(youwere, "disintegration-resistant"); */
 	if (Shock_resistance) dump(youwere, "shock resistant"); /* EN if (Shock_resistance) dump(youwere, "shock resistant"); */ // TODO DE
 	if (Poison_resistance) dump(youwere, "giftresistent"); /* EN if (Poison_resistance) dump(youwere, "poison resistant"); */
 	if (Drain_resistance) dump(youwere, "level-drain resistant"); /* EN if (Drain_resistance) dump(youwere, "level-drain resistant"); */ // TODO DE
@@ -1231,7 +1231,7 @@ int final;
 
 	/*** Troubles ***/
 	if (Halluc_resistance) 	dump("  ", "You resisted hallucinations"); /* EN if (Halluc_resistance) 	dump("  ", "You resisted hallucinations"); */ // TODO DE
-	if (Hallucination) dump(youwere, "hallucinating"); /* EN if (Hallucination) dump(youwere, "hallucinating"); */ // TODO DE
+	if (Hallucination) dump(youhad, "Halluzinationen"); /* EN if (Hallucination) dump(youwere, "hallucinating"); */
 	if (Stunned) dump(youwere, "benommen"); /* EN if (Stunned) dump(youwere, "stunned"); */
 	if (Confusion) dump(youwere, "verwirrt"); /* EN if (Confusion) dump(youwere, "confused"); */
 	if (Blinded) dump(youwere, "geblendet"); /* EN if (Blinded) dump(youwere, "blinded"); */
@@ -1318,9 +1318,9 @@ int final;
 	else if (Levitation)
 	  dump(youwere, "levitating");	/* without control */ /* EN dump(youwere, "levitating");	*/ // TODO DE
 	else if (Flying) dump(youcould, "fliegen"); /* EN else if (Flying) dump("  You could ", "fly"); */
-	if (Wwalking) dump(youcould, "walk on water"); /* EN if (Wwalking) dump("  You could ", "walk on water"); */ // TODO DE
+	if (Wwalking) dump(youcould, "übers Wasser gehen"); /* EN if (Wwalking) dump("  You could ", "walk on water"); */
 	if (Swimming) dump(youcould, "schwimmen"); /* EN if (Swimming) dump("  You could ", "swim"); */
-	if (Breathless) dump(youcould, "survive without air"); /* EN if (Breathless) dump("  You could ", "survive without air"); */ // TODO DE
+	if (Breathless) dump(youcould, "ohne Luft auskommen"); /* EN if (Breathless) dump("  You could ", "survive without air"); */
 	else if (Amphibious) dump(youcould, "Wasser atmen"); /* EN else if (Amphibious) dump("  You could ", "breathe water"); */
 	if (Passes_walls) dump(youcould, "durch Wände gehen"); /* EN if (Passes_walls) dump("  You could ", "walk through walls"); */
 #ifdef STEED
@@ -1367,14 +1367,14 @@ int final;
 	if (Protection_from_shape_changers)
 		dump(youwere, "protected from shape changers"); /* EN dump(youwere, "protected from shape changers"); */ // TODO DE
 	if (Polymorph) dump(youwere, "polymorphing"); /* EN if (Polymorph) dump(youwere, "polymorphing"); */ // TODO DE
-	if (Polymorph_control) dump(youhad, "polymorph control"); /* EN if (Polymorph_control) dump(youhad, "polymorph control"); */ // TODO DE
+	if (Polymorph_control) dump(youhad, "Transformationskontrolle"); /* EN if (Polymorph_control) dump(youhad, "polymorph control"); */
 	if (u.ulycn >= LOW_PM) {
 		Strcpy(buf, "OBJECT KASUS_NOMINATIV "); Strcat(buf, an(mons[u.ulycn].mname)); /* EN Strcpy(buf, an(mons[u.ulycn].mname)); */
 		dump(youwere, buf);
 	}
 	if (Upolyd) {
 	    if (u.umonnum == u.ulycn) Strcpy(buf, "in beast form"); /* EN if (u.umonnum == u.ulycn) Strcpy(buf, "in beast form"); */ // TODO DE
-	    else Sprintf(buf, "polymorphed into %s", /* EN else Sprintf(buf, "polymorphed into %s", */ // TODO DE
+	    else Sprintf(buf, "OBJECT in %s transformiert", /* EN else Sprintf(buf, "polymorphed into %s", */
 			 an(youmonst.data->mname));
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", u.mtimedone);
@@ -1383,7 +1383,7 @@ int final;
 	}
 	if (Unchanging)
 	  dump(youcould, "not change from your current form"); /* EN dump("  You could ", "not change from your current form"); */ // TODO DE
-	if (Fast) dump(youwere, Very_fast ? "very fast" : "fast"); /* EN if (Fast) dump(youwere, Very_fast ? "very fast" : "fast"); */ // TODO DE
+	if (Fast) dump(youwere, Very_fast ? "sehr schnell" : "schnell"); /* EN if (Fast) dump(youwere, Very_fast ? "very fast" : "fast"); */
 	if (Reflecting) dump(youhad, "reflection"); /* EN if (Reflecting) dump(youhad, "reflection"); */ // TODO DE
 	if (Free_action) dump(youhad, "free action"); /* EN if (Free_action) dump(youhad, "free action"); */ // TODO DE
 	if (Fixed_abil) dump(youhad, "fixed abilities"); /* EN if (Fixed_abil) dump(youhad, "fixed abilities"); */ // TODO DE
@@ -1641,8 +1641,8 @@ int final;
 	if (ngenocided == 0) {
 	    you_have_never("irgendwelche Wesen ausgerottet"); /* EN you_have_never("genocided any monsters"); */
 	} else {
-	    Sprintf(buf, "genocided %d type%s of monster%s", /* EN Sprintf(buf, "genocided %d type%s of monster%s", */ // TODO DE
-		    ngenocided, plur(ngenocided), plur(ngenocided));
+	    Sprintf(buf, "%d Art%s von Wesen ausgerottet", /* EN Sprintf(buf, "genocided %d type%s of monster%s", */
+		    ngenocided, (ngenocided == 1) ? "" : "en"); /* EN ngenocided, plur(ngenocided), plur(ngenocided)); */
 	    you_have_X(buf);
 	}
 
@@ -1650,8 +1650,8 @@ int final;
 	    you_have_never("ein Objekt transformiert"); /* EN you_have_never("polymorphed an object"); */
 #ifdef WIZARD
 	else if (wizard) {
-	    Sprintf(buf, "polymorphed %ld item%s", /* EN Sprintf(buf, "polymorphed %ld item%s", */ // TODO DE
-		    u.uconduct.polypiles, plur(u.uconduct.polypiles));
+	    Sprintf(buf, "%ld %s transformiert", /* EN Sprintf(buf, "polymorphed %ld item%s", */
+		    u.uconduct.polypiles, (u.uconduct.polypiles == 1) ? "Gegenstand" : "Gegenstände"); /* EN u.uconduct.polypiles, plur(u.uconduct.polypiles)); */
 	    you_have_X(buf);
 	}
 #endif
@@ -1669,8 +1669,8 @@ int final;
 	if (!u.uconduct.wishes)
 	    you_have_X("keine Wünsche benutzt"); /* EN you_have_X("used no wishes"); */
 	else {
-	    Sprintf(buf, "used %ld wish%s", /* EN Sprintf(buf, "used %ld wish%s", */ // TODO DE
-		    u.uconduct.wishes, (u.uconduct.wishes > 1L) ? "es" : ""); /* EN u.uconduct.wishes, (u.uconduct.wishes > 1L) ? "es" : ""); */ // TODO DE
+	    Sprintf(buf, "%ld %s benutzt", /* EN Sprintf(buf, "used %ld wish%s", */
+		    u.uconduct.wishes, (u.uconduct.wishes > 1L) ? "Wünsche" : "Wunsch"); /* EN u.uconduct.wishes, (u.uconduct.wishes > 1L) ? "es" : ""); */
 	    you_have_X(buf);
 
 	    if (!u.uconduct.wisharti)
@@ -1699,7 +1699,7 @@ int final;
 	else if (!u.uconduct.unvegan)
 	    dump("", "  SUBJECT PRONOMEN_PERSONAL eine streng vegane Diät befolgt"); /* EN dump("", "  You followed a strict vegan diet"); */
 	else if (!u.uconduct.unvegetarian)
-	    dump("", "  You were a vegetarian"); /* EN dump("", "  You were a vegetarian"); */ // TODO DE
+	    dump("", "  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_SEIN ein Vegetarier"); /* EN dump("", "  You were a vegetarian"); */
 	else if (Role_if(PM_MONK) && u.uconduct.unvegetarian < 10) {
 	    sprintf(buf, "  You ate non-vegetarian food %ld time%s.", /* EN sprintf(buf, "  You ate non-vegetarian food %ld time%s.",  */ // TODO DE
 		u.uconduct.unvegetarian, plur(u.uconduct.unvegetarian));
@@ -1707,7 +1707,7 @@ int final;
 	}
 
 	if (!u.uconduct.gnostic)
-	    dump("", "  You were an atheist"); /* EN dump("", "  You were an atheist"); */ // TODO DE
+	    dump("", "  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_SEIN ein Atheist"); /* EN dump("", "  You were an atheist"); */
 
 	if (!u.uconduct.weaphit)
 	    dump("", "  You never hit with a wielded weapon"); /* EN dump("", "  You never hit with a wielded weapon"); */ // TODO DE
@@ -1730,9 +1730,9 @@ int final;
 	    dump("", "  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_SEIN ein Analphabet"); /* EN dump("", "  You were illiterate"); */
 #ifdef WIZARD
 	else if (wizard) {
-	    Sprintf(buf, "read items or engraved %ld time%s", /* EN Sprintf(buf, "read items or engraved %ld time%s", */ // TODO DE
-		    u.uconduct.literate, plur(u.uconduct.literate));
-	    dump("  You ", buf); /* EN dump("  You ", buf); */ // TODO DE
+	    Sprintf(buf, "%ld-mal Dinge gelesen oder engraved", /* EN Sprintf(buf, "read items or engraved %ld time%s", */ // TODO DE
+		    u.uconduct.literate); /* EN u.uconduct.literate, plur(u.uconduct.literate)); */
+	    dump("  SUBJECT PRONOMEN_PERSONAL VERB_HAVE ", buf); /* EN dump("  You ", buf); */ // TODO DE
 	}
 #endif
 
@@ -1740,16 +1740,16 @@ int final;
 	if (ngenocided == 0) {
 	    dump("", "  SUBJECT PRONOMEN_PERSONAL VERB_HAVE niemals irgendwelche Wesen ausgerottet"); /* EN dump("", "  You never genocided any monsters"); */
 	} else {
-	    Sprintf(buf, "genocided %d type%s of monster%s", /* EN Sprintf(buf, "genocided %d type%s of monster%s", */ // TODO DE
-		    ngenocided, plur(ngenocided), plur(ngenocided));
-	    dump("  You ", buf); /* EN dump("  You ", buf); */ // TODO DE
+	    Sprintf(buf, "%d Art%s von Wesen ausgerottet", /* EN Sprintf(buf, "genocided %d type%s of monster%s", */
+		    ngenocided, (ngenocided == 1) ? "" : "en", plur(ngenocided)); /* EN ngenocided, plur(ngenocided), plur(ngenocided)); */
+	    dump("  SUBJECT PRONOMEN_PERSONAL VERB_HAVE ", buf); /* EN dump("  You ", buf); */ // TODO DE
 	}
 
 	if (!u.uconduct.polypiles)
 	    dump("", "  SUBJECT PRONOMEN_PERSONAL VERB_HABEN nie ein Objekt transformiert"); /* EN dump("", "  You never polymorphed an object"); */
 	else {
-	    Sprintf(buf, "polymorphed %ld item%s", /* EN Sprintf(buf, "polymorphed %ld item%s", */ // TODO DE
-		    u.uconduct.polypiles, plur(u.uconduct.polypiles));
+	    Sprintf(buf, "%ld %s transformiert", /* EN Sprintf(buf, "polymorphed %ld item%s", */
+		    u.uconduct.polypiles, (u.uconduct.polypiles == 1) ? "Gegenstand" : "Gegenstände"); /* EN u.uconduct.polypiles, plur(u.uconduct.polypiles)); */
 	    dump("  You ", buf); /* EN dump("  You ", buf); */ // TODO DE
 	}
 
@@ -1858,7 +1858,7 @@ static const struct func_tab cmdlist[] = {
 	{'r', FALSE, doread},
 	{'R', FALSE, doremring},
 	{M('r'), FALSE, dorub},
-	{'s', TRUE, dosearch, "zu suchen"}, /* EN {'s', TRUE, dosearch, "searching"}, */ // TODO DE
+	{'s', TRUE, dosearch, "zu suchen"}, /* EN {'s', TRUE, dosearch, "searching"}, */
 	{'S', TRUE, dosave},
 	{M('s'), FALSE, dosit},
 	{'t', FALSE, dothrow},
@@ -1887,8 +1887,8 @@ static const struct func_tab cmdlist[] = {
 #ifdef SHELL
 	{'!', TRUE, dosh},
 #endif
-	{'.', TRUE, donull, "zu warten"}, /* EN {'.', TRUE, donull, "waiting"}, */ // TODO DE
-	{' ', TRUE, donull, "zu warten"}, /* EN {' ', TRUE, donull, "waiting"}, */ // TODO DE
+	{'.', TRUE, donull, "zu warten"}, /* EN {'.', TRUE, donull, "waiting"}, */
+	{' ', TRUE, donull, "zu warten"}, /* EN {' ', TRUE, donull, "waiting"}, */
 	{',', FALSE, dopickup},
 	{':', TRUE, dolook},
 	{';', TRUE, doquickwhatis},
@@ -1924,7 +1924,7 @@ struct ext_func_tab extcmdlist[] = {
 	{"name", "name an item or type of object", ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */ // TODO DE
 	{"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, /* EN {"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, */ // TODO DE
 	{"pray", "pray to the gods for help", dopray, TRUE}, /* EN {"pray", "pray to the gods for help", dopray, TRUE}, */ // TODO DE
-	{"abbrechen", "exit without saving current game", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */ // TODO DE
+	{"quit", "exit without saving current game", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */ // TODO DE
 #ifdef STEED
 	{"ride", "ride (or stop riding) a monster", doride, FALSE}, /* EN {"ride", "ride (or stop riding) a monster", doride, FALSE}, */ // TODO DE
 #endif
@@ -1969,7 +1969,7 @@ static const struct ext_func_tab debug_extcmdlist[] = {
 	{"lightsources", "show mobile light sources", wiz_light_sources, TRUE}, /* EN {"lightsources", "show mobile light sources", wiz_light_sources, TRUE}, */ // TODO DE
 	{"monpolycontrol", "control monster polymorphs", wiz_mon_polycontrol, TRUE}, /* EN {"monpolycontrol", "control monster polymorphs", wiz_mon_polycontrol, TRUE}, */ // TODO DE
 	{"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, /* EN {"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, */ // TODO DE
-	{"polyself", "polymorph self", wiz_polyself, TRUE}, /* EN {"polyself", "polymorph self", wiz_polyself, TRUE}, */ // TODO DE
+	{"polyself", "Eigentransformation", wiz_polyself, TRUE}, /* EN {"polyself", "polymorph self", wiz_polyself, TRUE}, */ // TODO DE
 #ifdef PORT_DEBUG
 	{"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, /* EN {"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, */ // TODO DE
 #endif
