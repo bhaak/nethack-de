@@ -734,7 +734,7 @@ do_look(quick)
 		    found = 1;	/* we have something to look up */
 		}
 		if (monbuf[0]) {
-		    Sprintf(temp_buf, " [gesehen durch: %s]", monbuf); /* EN Sprintf(temp_buf, " [seen: %s]", monbuf); */ // TODO DE
+		    Sprintf(temp_buf, " [gesehen mittels: %s]", monbuf); /* EN Sprintf(temp_buf, " [seen: %s]", monbuf); */ // TODO DE
 		    (void)strncat(out_str, temp_buf, BUFSZ-strlen(out_str)-1);
 		}
 	    }

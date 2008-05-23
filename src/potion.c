@@ -1951,7 +1951,7 @@ register struct obj *obj;
 		pline("SUBJECT %s VERB_SPRECHEN.", Monnam(mtmp)); /* EN pline("%s speaks.", Monnam(mtmp)); */
 	} else {
 		You("VERB_SMELL beiﬂenden Qualm."); /* EN You("smell acrid fumes."); */
-		pline("SUBJECT %s VERB_SPRECHEN.", Something); /* EN pline("%s speaks.", Something); */
+		pline("SUBJECT %s VERB_SPRECHEN.", "NOUN_JEMAND"); /* EN pline("%s speaks.", Something); */
 	}
 
 	chance = rn2(5);

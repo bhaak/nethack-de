@@ -648,16 +648,16 @@ slip_or_trip()
 		name; if not, look for rocks to trip over; trip over
 		anonymous "something" if there aren't any rocks.
 	     */
-	    pronoun = otmp->quan == 1L ? "NOUN_IT" : Hallucination ? "they" : "them"; /* EN pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; */ // TODO DE
+	    pronoun = otmp->quan == 1L ? "NOUN_IT" : Hallucination ? "they" : "them"; /* EN pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; */ // TODO DE german_geschlecht(otmp)
 	    what = !otmp->nexthere ? pronoun :
 		  (otmp->dknown || !Blind) ? doname(otmp) :
 		  ((otmp = sobj_at(ROCK, u.ux, u.uy)) == 0 ? something :
-		  (otmp->quan == 1L ? "einen Stein" : "mehrere Steine")); /* EN (otmp->quan == 1L ? "a rock" : "some rocks")); */
+		  (otmp->quan == 1L ? "ARTIKEL_UNBESTIMMTER NOUN_GEM_ROCK" : "PRONOMEN_MEHRERE NOUN_GEM_ROCKs")); /* EN (otmp->quan == 1L ? "a rock" : "some rocks")); */
 	    if (Hallucination) {
 		what = strcpy(buf, what);
 		buf[0] = highc(buf[0]);
-		pline("Egads!  %s bite%s your %s!", /* EN pline("Egads!  %s bite%s your %s!", */ // TODO DE
-			what, (!otmp || otmp->quan == 1L) ? "s" : "",
+		pline("Um Himmels Willen!  SUBJECT %s VERB_BITE OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER %s!", /* EN pline("Egads!  %s bite%s your %s!", */
+			what, /* EN what, (!otmp || otmp->quan == 1L) ? "s" : "", */
 			body_part(FOOT));
 	    } else {
 		You("VERB_STOLPERN über OBJECT %s.", what); /* EN You("trip over %s.", what); */

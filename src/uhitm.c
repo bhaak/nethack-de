@@ -389,13 +389,13 @@ register struct monst *mtmp;
 	    unweapon = FALSE;
 	    if(flags.verbose) {
 		if(uwep)
-		    You("begin bashing monsters with your %s.", /* EN You("begin bashing monsters with your %s.", */ // TODO DE
+		    You("VERB_BEGINNEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV %s auf die Monster einzuprügeln.", /* EN You("begin bashing monsters with your %s.", */
 			aobjnam(uwep, (char *)0));
 		else if (!cantwield(youmonst.data))
-		    You("begin %sing monsters with your %s %s.", /* EN You("begin %sing monsters with your %s %s.", */ // TODO DE
-			Role_if(PM_MONK) ? "strik" : "bash", /* EN Role_if(PM_MONK) ? "strik" : "bash", */ // TODO DE
+		    You("VERB_BEGINNEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV %s %s auf die Monster %s.", /* EN You("begin %sing monsters with your %s %s.", */
+			/* EN Role_if(PM_MONK) ? "strik" : "bash", */
 			uarmg ? "ADJEKTIV_BEHANDSCHUHT" : "ADJEKTIV_BARE",	/* Del Lamb */ /* EN uarmg ? "gloved" : "bare",	*/
-			makeplural(body_part(HAND)));
+			makeplural(body_part(HAND)),Role_if(PM_MONK) ? "einzuschlagen" : "einzuprügeln"); /* EN makeplural(body_part(HAND))); */
 	    }
 	}
 	exercise(A_STR, TRUE);		/* you're exercising muscles */

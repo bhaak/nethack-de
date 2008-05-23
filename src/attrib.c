@@ -421,19 +421,19 @@ exerchk()
 		    switch(i) {
 		    case A_STR: You((mod_val >0) ?
 				    "VERB_MUESSEN wohl trainiert haben." : /* EN "must have been exercising." : */
-				    "VERB_MUESSEN have been abusing your body."); /* EN "must have been abusing your body."); */ // TODO DE
+				    "VERB_MUESSEN OBJECT PRONOMEN_POSSESSIV NOUN_KOERPER ziemlich vernachlässigt haben."); /* EN "must have been abusing your body."); */
 				break;
 		    case A_WIS: You((mod_val >0) ?
-				    "must have been very observant." : /* EN "must have been very observant." : */ // TODO DE
-				    "haven't been paying attention."); /* EN "haven't been paying attention."); */ // TODO DE
+				    "VERB_MUESSEN ziemlich aufmerksam gewesen sein." : /* EN "must have been very observant." : */
+				    "MODIFIER_VERB_PRAETERITUM VERB_SEIN nicht aufmerksam genug."); /* EN "haven't been paying attention."); */
 				break;
 		    case A_DEX: You((mod_val >0) ?
 				    "must have been working on your reflexes." : /* EN "must have been working on your reflexes." : */ // TODO DE
 				    "haven't been working on reflexes lately."); /* EN "haven't been working on reflexes lately."); */ // TODO DE
 				break;
 		    case A_CON: You((mod_val >0) ?
-				    "must be leading a healthy life-style." : /* EN "must be leading a healthy life-style." : */ // TODO DE
-				    "haven't been watching your health."); /* EN "haven't been watching your health."); */ // TODO DE
+				    "VERB_MUESSEN sehr gesundheitsbewusst leben." : /* EN "must be leading a healthy life-style." : */
+				    "VERB_HABEN nicht OBJECT auf PRONOMEN_POSSESSIV NOUN_GESUNDHEIT achtgegeben."); /* EN "haven't been watching your health."); */
 				break;
 		    }
 		}

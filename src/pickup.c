@@ -2089,9 +2089,9 @@ register int held;
 		    quantum_cat ? "jetzt " : ""); /* EN quantum_cat ? "now " : ""); */
 
 	if (cnt || flags.menu_style == MENU_FULL) {
-	    Strcpy(qbuf, "Do you want to take something out of "); /* EN Strcpy(qbuf, "Do you want to take something out of "); */ // TODO DE
-	    Sprintf(eos(qbuf), "%s?", /* EN Sprintf(eos(qbuf), "%s?", */ // TODO DE
-		    safe_qbuf(qbuf, 1, yname(obj), ysimple_name(obj), "it")); /* EN safe_qbuf(qbuf, 1, yname(obj), ysimple_name(obj), "it")); */ // TODO DE
+	    Strcpy(qbuf, "SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL etwas OBJECT KASUS_DATIV aus "); /* EN Strcpy(qbuf, "Do you want to take something out of "); */
+	    Sprintf(eos(qbuf), "%s herausnehmen?", /* EN Sprintf(eos(qbuf), "%s?", */
+		    safe_qbuf(qbuf, 1, yname(obj), ysimple_name(obj), "ihm")); /* EN safe_qbuf(qbuf, 1, yname(obj), ysimple_name(obj), "it")); */
 	    if (flags.menu_style != MENU_TRADITIONAL) {
 		if (flags.menu_style == MENU_FULL) {
 		    int t;

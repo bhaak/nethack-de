@@ -676,7 +676,7 @@ tty_askname()
     tty_putstr(BASE_WINDOW, 0, "");
     do {
 	if (++tryct > 1) {
-	    if (tryct > 10) bail("Giving up after 10 tries.\n");
+	    if (tryct > 10) bail("Gebe nach 10 Versuchen auf.\n"); /* EN if (tryct > 10) bail("Giving up after 10 tries.\n"); */
 	    tty_curs(BASE_WINDOW, 1, wins[BASE_WINDOW]->cury - 1);
 	    tty_putstr(BASE_WINDOW, 0, "Enter a name for your character...");
 	    /* erase previous prompt (in case of ESC after partial response) */
@@ -690,7 +690,7 @@ tty_askname()
 		if(c == EOF) error("End of input\n");
 		if (c == '\033') { ct = 0; break; }  /* continue outer loop */
 #if defined(WIN32CON)
-		if (c == '\003') bail("^C abort.\n");
+		if (c == '\003') bail("^C Abbruch.\n"); /* EN if (c == '\003') bail("^C abort.\n"); */
 #endif
 		/* some people get confused when their erase char is not ^H */
 		if (c == '\b' || c == '\177') {
@@ -2162,11 +2162,11 @@ tty_end_menu(window, prompt)
     if (cw->npages > 1) {
 	char buf[QBUFSZ];
 	/* produce the largest demo string */
-	Sprintf(buf, "(%d of %d) ", cw->npages, cw->npages);
+	Sprintf(buf, "(%d von %d) ", cw->npages, cw->npages); /* EN Sprintf(buf, "(%d of %d) ", cw->npages, cw->npages); */
 	len = strlen(buf);
 	cw->morestr = copy_of("");
     } else {
-	cw->morestr = copy_of("(end) ");
+	cw->morestr = copy_of("(Ende) "); /* EN cw->morestr = copy_of("(end) "); */
 	len = strlen(cw->morestr);
     }
 

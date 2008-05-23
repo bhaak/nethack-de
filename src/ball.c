@@ -734,8 +734,8 @@ litter()
 		nextobj = otmp->nobj;
 		if ((otmp != uball) && (rnd(capacity) <= (int)otmp->owt)) {
 			if (canletgo(otmp, "")) {
-				Your("%s you down the stairs.", /* EN Your("%s you down the stairs.", */ // TODO DE
-				     aobjnam(otmp, "follow")); /* EN aobjnam(otmp, "follow")); */ // TODO DE
+				Your("%s OBJECT KASUS_DATIV PRONOMEN_PERSONAL die Treppe runter.", /* EN Your("%s you down the stairs.", */
+				     aobjnam(otmp, "VERB_FOLGEN")); /* EN aobjnam(otmp, "follow")); */
 				dropx(otmp);
 			}
 		}

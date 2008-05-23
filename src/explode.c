@@ -243,27 +243,27 @@ int expltype;
 		if (!mtmp) continue;
 		if (u.uswallow && mtmp == u.ustuck) {
 			if (is_animal(u.ustuck->data))
-				pline("SUBJECT %s gets %s!", /* EN pline("%s gets %s!", */ // TODO DE
+				pline("SUBJECT %s %s!", /* EN pline("%s gets %s!", */
 				      Monnam(u.ustuck),
-				      (adtyp == AD_FIRE) ? "heartburn" : /* EN (adtyp == AD_FIRE) ? "heartburn" : */ // TODO DE
-				      (adtyp == AD_COLD) ? "chilly" : /* EN (adtyp == AD_COLD) ? "chilly" : */ // TODO DE
+				      (adtyp == AD_FIRE) ? "bekommt Sodbrennen" : /* EN (adtyp == AD_FIRE) ? "heartburn" : */
+				      (adtyp == AD_COLD) ? "bekommt kühl" : /* EN (adtyp == AD_COLD) ? "chilly" : */ // TODO DE
 				      (adtyp == AD_DISN) ? ((olet == WAND_CLASS) ?
-				       "irradiated by pure energy" : "perforated") : /* EN "irradiated by pure energy" : "perforated") : */ // TODO DE
+				       "irradiated by pure energy" : "wird perforiert") : /* EN "irradiated by pure energy" : "perforated") : */ // TODO DE
 				      (adtyp == AD_ELEC) ? "shocked" : /* EN (adtyp == AD_ELEC) ? "shocked" : */ // TODO DE
-				      (adtyp == AD_DRST) ? "poisoned" : /* EN (adtyp == AD_DRST) ? "poisoned" : */ // TODO DE
-				      (adtyp == AD_ACID) ? "an upset stomach" : /* EN (adtyp == AD_ACID) ? "an upset stomach" : */ // TODO DE
-				       "fried"); /* EN "fried"); */ // TODO DE
+				      (adtyp == AD_DRST) ? "wird vergiftet" : /* EN (adtyp == AD_DRST) ? "poisoned" : */ // TODO DE
+				      (adtyp == AD_ACID) ? "bekommt einen verstimmten Magen" : /* EN (adtyp == AD_ACID) ? "an upset stomach" : */
+				       "wird gegrillt"); /* EN "fried"); */
 			else
-				pline("%s gets slightly %s!", /* EN pline("%s gets slightly %s!", */ // TODO DE
+				pline("SUBJECT %s %s!", /* EN pline("%s gets slightly %s!", */
 				      Monnam(u.ustuck),
-				      (adtyp == AD_FIRE) ? "toasted" : /* EN (adtyp == AD_FIRE) ? "toasted" : */ // TODO DE
-				      (adtyp == AD_COLD) ? "chilly" : /* EN (adtyp == AD_COLD) ? "chilly" : */ // TODO DE
+				      (adtyp == AD_FIRE) ? "wird leicht gebraten" : /* EN (adtyp == AD_FIRE) ? "toasted" : */
+				      (adtyp == AD_COLD) ? "bekommt etwas kühl" : /* EN (adtyp == AD_COLD) ? "chilly" : */
 				      (adtyp == AD_DISN) ? ((olet == WAND_CLASS) ?
-				       "overwhelmed by pure energy" : "perforated") : /* EN "overwhelmed by pure energy" : "perforated") : */ // TODO DE
+				       "overwhelmed by pure energy" : "wird etwas perforiert") : /* EN "overwhelmed by pure energy" : "perforated") : */ // TODO DE
 				      (adtyp == AD_ELEC) ? "shocked" : /* EN (adtyp == AD_ELEC) ? "shocked" : */ // TODO DE
-				      (adtyp == AD_DRST) ? "intoxicated" : /* EN (adtyp == AD_DRST) ? "intoxicated" : */ // TODO DE
-				      (adtyp == AD_ACID) ? "burned" : /* EN (adtyp == AD_ACID) ? "burned" : */ // TODO DE
-							 "fried"); /* EN "fried"); */ // TODO DE
+				      (adtyp == AD_DRST) ? "wird leicht betäubt" : /* EN (adtyp == AD_DRST) ? "intoxicated" : */ // TODO DE
+				      (adtyp == AD_ACID) ? "wird leicht verbrannt" : /* EN (adtyp == AD_ACID) ? "burned" : */ // TODO DE
+							 "wird leicht gegrillt"); /* EN "fried"); */
 		} else if (cansee(i+x-1, j+y-1)) {
 		    if(mtmp->m_ap_type) seemimic(mtmp);
 		    pline("SUBJECT ARTIKEL_BESTIMMTER %s VERB_ERFASSEN OBJECT %s!", str, Monnam(mtmp)); /* EN pline("%s is caught in the %s!", Monnam(mtmp), str); */
@@ -366,7 +366,7 @@ int expltype;
 
 	if (shopdamage) {
 		pay_for_damage(adtyp == AD_FIRE ? "abzufackeln" : /* EN pay_for_damage(adtyp == AD_FIRE ? "burn away" : */
-			       adtyp == AD_COLD ? "shatter" : /* EN adtyp == AD_COLD ? "shatter" : */ // TODO DE
+			       adtyp == AD_COLD ? "zu zertrümmern" : /* EN adtyp == AD_COLD ? "shatter" : */
 			       adtyp == AD_DISN ? "zu desintegrieren" : "zu zerstören", /* EN adtyp == AD_DISN ? "disintegrate" : "destroy", */
 			       FALSE);
 	}

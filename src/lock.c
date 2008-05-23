@@ -489,7 +489,7 @@ doforce()		/* try to force a chest with your weapon */
 		if(picktyp)
 		    You("VERB_ZWAENGEN OBJECT PRONOMEN_POSSESSIV %s in einen Spalt und VERB_BEGINNEN zu stemmen.", xname(uwep)); /* EN You("force your %s into a crack and pry.", xname(uwep)); */
 		else
-		    You("start bashing it with your %s.", xname(uwep)); /* EN You("start bashing it with your %s.", xname(uwep)); */ // TODO DE
+		    You("VERB_BEGINNEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV %s auf die Monster einzuprügeln.", xname(uwep)); /* EN You("start bashing it with your %s.", xname(uwep)); */
 		xlock.box = otmp;
 		xlock.chance = objects[uwep->otyp].oc_wldam * 2;
 		xlock.picktyp = picktyp;
@@ -892,7 +892,7 @@ struct obj *otmp;
 	long save_Blinded;
 
 	if (otmp->oclass == POTION_CLASS) {
-		You("%s %s shatter!", Blind ? "hear" : "see", an(bottlename())); /* EN You("%s %s shatter!", Blind ? "hear" : "see", an(bottlename())); */ // TODO DE
+		You("%s OBJECT %s zerbrechen!", Blind ? "VERB_HEAR" : "VERB_SEE", an(bottlename())); /* EN You("%s %s shatter!", Blind ? "hear" : "see", an(bottlename())); */
 		if (!breathless(youmonst.data) || haseyes(youmonst.data))
 			potionbreathe(otmp);
 		return;

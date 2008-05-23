@@ -627,12 +627,12 @@ break_armor()
 		char hornbuf[BUFSZ], yourbuf[BUFSZ];
 
 		/* Future possiblities: This could damage/destroy helmet */
-		Sprintf(hornbuf, "horn%s", plur(num_horns(youmonst.data))); /* EN Sprintf(hornbuf, "horn%s", plur(num_horns(youmonst.data))); */ // TODO DE
-		Your("%s %s through %s %s.", hornbuf, vtense(hornbuf, "pierce"), /* EN Your("%s %s through %s %s.", hornbuf, vtense(hornbuf, "pierce"), */ // TODO DE
+		Sprintf(hornbuf, "NOUN_HORN%s", plur(num_horns(youmonst.data))); /* EN Sprintf(hornbuf, "horn%s", plur(num_horns(youmonst.data))); */
+		Your("%s %s sich OBJECT durch %s %s.", hornbuf, vtense(hornbuf, "VERB_BOHREN"), /* EN Your("%s %s through %s %s.", hornbuf, vtense(hornbuf, "pierce"), */
 		     shk_your(yourbuf, otmp), xname(otmp));
 	    } else {
 		if (donning(otmp)) cancel_don();
-		Your("helmet falls to the %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE zu_Boden
+		Your("NOUN_HELMET VERB_FALLEN to the %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE zu_Boden
 		(void) Helmet_off();
 		dropx(otmp);
 	    }

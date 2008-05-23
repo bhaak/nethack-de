@@ -1025,7 +1025,7 @@ register struct obj	*sobj;
 		else {
 			if (sobj->blessed && !Teleport_control) {
 				known = TRUE;
-				if (yn("Do you wish to teleport?")=='n') /* EN if (yn("Do you wish to teleport?")=='n') */ // TODO DE
+				if (yn("SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL teleportieren?")=='n') /* EN if (yn("Do you wish to teleport?")=='n') */
 					break;
 			}
 			tele();

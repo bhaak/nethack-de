@@ -579,19 +579,19 @@ const char * const random_insult[] = {
 	"varlet", /* EN "varlet", */ // TODO DE
 	"villein",	/* (sic.) */ /* EN "villein",	*/ // TODO DE
 	"wittol", /* EN "wittol", */ // TODO DE
-	"worm", /* EN "worm", */ // TODO DE
+	"Wurm", /* EN "worm", */
 	"wretch", /* EN "wretch", */ // TODO DE
 };
 
 const char * const random_malediction[] = {
 	"Hell shall soon claim thy remains,", /* EN "Hell shall soon claim thy remains,", */ // TODO DE
-	"I chortle at thee, thou pathetic", /* EN "I chortle at thee, thou pathetic", */ // TODO DE
+	"Du bist nur lächerlich, du erbärmlicher kleiner", /* EN "I chortle at thee, thou pathetic", */
 	"Prepare to die, thou", /* EN "Prepare to die, thou", */ // TODO DE
 	"Widerstand ist zwecklos,", /* EN "Resistance is useless,", */ // TODO DE
-	"Surrender or die, thou", /* EN "Surrender or die, thou", */ // TODO DE
+	"Ergib dich oder stirb, du", /* EN "Surrender or die, thou", */ // TODO DE
 	"There shall be no mercy, thou", /* EN "There shall be no mercy, thou", */ // TODO DE
 	"Thou shalt repent of thy cunning,", /* EN "Thou shalt repent of thy cunning,", */ // TODO DE
-	"Thou art as a flea to me,", /* EN "Thou art as a flea to me,", */ // TODO DE
+	"Du bist nur Ungeziefer für mich,", /* EN "Thou art as a flea to me,", */
 	"Thou art doomed,", /* EN "Thou art doomed,", */ // TODO DE
 	"Dein Schicksal ist besiegelt,", /* EN "Thy fate is sealed,", */
 	"Verily, thou shalt be one dead" /* EN "Verily, thou shalt be one dead" */ // TODO DE
@@ -607,7 +607,7 @@ register struct monst	*mtmp;
 		pline("SUBJECT %s VERB_LACHEN teuflisch.", Monnam(mtmp)); /* EN pline("%s laughs fiendishly.", Monnam(mtmp)); */
 	    else
 		if (u.uhave.amulet && !rn2(SIZE(random_insult)))
-		    verbalize("Relinquish the amulet, %s!", /* EN verbalize("Relinquish the amulet, %s!", */ // TODO DE
+		    verbalize("Rück das Amulett raus, %s!", /* EN verbalize("Relinquish the amulet, %s!", */
 			  random_insult[rn2(SIZE(random_insult))]);
 		else if (u.uhp < 5 && !rn2(2))	/* Panic */
 		    verbalize(rn2(2) ?

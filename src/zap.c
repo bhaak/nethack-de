@@ -3509,7 +3509,7 @@ register int dx,dy;
 	explode(sx, sy, type, d(12,6), 0, EXPL_FIERY);
     if (shopdamage)
 	pay_for_damage(abstype == ZT_FIRE ?  "abzufackeln" : /* EN pay_for_damage(abstype == ZT_FIRE ?  "burn away" : */
-		       abstype == ZT_COLD ?  "shatter" : /* EN abstype == ZT_COLD ?  "shatter" : */ // TODO DE
+		       abstype == ZT_COLD ?  "zu zertrümmern" : /* EN abstype == ZT_COLD ?  "shatter" : */
 		       abstype == ZT_DEATH ? "zu desintegrieren" : "zu zerstören", FALSE); /* EN abstype == ZT_DEATH ? "disintegrate" : "destroy", FALSE); */
     bhitpos = save_bhitpos;
 }

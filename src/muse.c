@@ -75,7 +75,7 @@ struct obj *obj;
 #define POTION_OCCUPANT_CHANCE(n) (13 + 2*(n))	/* also in potion.c */
 
 	    potion_descr = OBJ_DESCR(objects[obj->otyp]);
-	    if (potion_descr && !strcmp(potion_descr, "milky")) {
+	    if (potion_descr && !strcmp(potion_descr, "ADJEKTIV_POT_MILKY")) { /* EN if (potion_descr && !strcmp(potion_descr, "milky")) { */
 	        if ( flags.ghost_count < MAXMONNO &&
 		    !rn2(POTION_OCCUPANT_CHANCE(flags.ghost_count))) {
 		    if (!enexto(&cc, mon->mx, mon->my, &mons[PM_GHOST])) return 0;
@@ -88,7 +88,7 @@ struct obj *obj;
 			if (vis) {
 			    pline("As %s opens the bottle, an enormous %s VERB_ENTWEICHEN!", /* EN pline("As %s opens the bottle, an enormous %s emerges!", */ // TODO DE
 			       mon_nam(mon),
-			       Hallucination ? rndmonnam() : (const char *)"ghost"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */ // TODO DE
+			       Hallucination ? rndmonnam() : (const char *)"NOUN_GHOST"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */
 			    pline("%s is frightened to death, and unable to move/ruehren.", /* EN pline("%s is frightened to death, and unable to move.", */ // TODO DE
 				    Monnam(mon));
 			}
@@ -98,7 +98,7 @@ struct obj *obj;
 		    return 2;
 		}
 	    }
-	    if (potion_descr && !strcmp(potion_descr, "smoky") && /* EN if (potion_descr && !strcmp(potion_descr, "smoky") && */ // TODO DE
+	    if (potion_descr && !strcmp(potion_descr, "ADJEKTIV_POT_SMOKY") && /* EN if (potion_descr && !strcmp(potion_descr, "smoky") && */
 		    flags.djinni_count < MAXMONNO &&
 		    !rn2(POTION_OCCUPANT_CHANCE(flags.djinni_count))) {
 		if (!enexto(&cc, mon->mx, mon->my, &mons[PM_DJINNI])) return 0;
@@ -111,15 +111,15 @@ struct obj *obj;
 		    if (vis)
 			pline("In a cloud of smoke, %s VERB_ENTWEICHEN!", /* EN pline("In a cloud of smoke, %s emerges!", */ // TODO DE
 							a_monnam(mtmp));
-		    pline("%s speaks.", vis ? Monnam(mtmp) : Something); /* EN pline("%s speaks.", vis ? Monnam(mtmp) : Something); */ // TODO DE
+		    pline("SUBJECT %s VERB_SPRECHEN.", vis ? Monnam(mtmp) : "NOUN_JEMAND"); /* EN pline("%s speaks.", vis ? Monnam(mtmp) : Something); */
 		/* I suspect few players will be upset that monsters */
 		/* can't wish for wands of death here.... */
 		    if (rn2(2)) {
-			verbalize("You freed me!"); /* EN verbalize("You freed me!"); */ // TODO DE
+			verbalize("SUBJECT PRONOMEN_PERSONAL VERB_HABEN mich befreit!"); /* EN verbalize("You freed me!"); */
 			mtmp->mpeaceful = 1;
 			set_malign(mtmp);
 		    } else {
-			verbalize("Wird auch Zeit."); /* EN verbalize("It is about time."); */ // TODO DE
+			verbalize("Wird auch langsam Zeit."); /* EN verbalize("It is about time."); */
 			if (vis) pline("SUBJECT %s VERB_VERSCHWINDEN.", Monnam(mtmp)); /* EN if (vis) pline("%s vanishes.", Monnam(mtmp)); */
 			mongone(mtmp);
 		    }

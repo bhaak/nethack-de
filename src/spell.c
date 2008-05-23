@@ -1132,7 +1132,7 @@ dump_spells()
 	}
 	dump("", "Spells known in the end"); /* EN dump("", "Spells known in the end"); */ // TODO DE
 
-	Sprintf(buf, "%-33   Stufe    %-12s Fail", "    Name", "Kategorie"); /* EN Sprintf(buf, "%-20s   Level    %-12s Fail", "    Name", "Category"); */ // TODO DE
+	Sprintf(buf, "%-33s   Stufe    %-12s Fail", "    Name", "Kategorie"); /* EN Sprintf(buf, "%-20s   Level    %-12s Fail", "    Name", "Category"); */ // TODO DE
 	dump("  ",buf);
 	for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
 		Sprintf(buf, "%c - %-20s  %2d%s   %-12s %3d%%",
