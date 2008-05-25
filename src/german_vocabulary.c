@@ -9826,6 +9826,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Binde", "NOUN_WRAPPING", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Binden", "NOUN_WRAPPINGs", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Zunge", "NOUN_ZUNGE", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zungen", "NOUN_ZUNGEs", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   /* ======================================================= */
 
   /* Adjektive */
@@ -13269,6 +13272,7 @@ struct verb_infinitiv_struct verben_infinitiv[] = {
   {"halten", "VERB_HALTEN"},
   {"hechten", "VERB_HECHTEN"},
   {"helfen", "VERB_HELFEN"},
+  {"heben", "VERB_HOCHHEBEN"},
   {"hindern", "VERB_HINDERN"},
   {"steigen", "VERB_HINAUFSTEIGEN"},
   {"hindern", "VERB_HINDERN"},
@@ -13680,6 +13684,7 @@ struct verb_partizip_struct verben_partizip[] = {
   {"haltend", "gehalten", "VERB_HALTEN"},
   {"hechtend", "gehechtet", "VERB_HECHTEN"},
   {"helfend", "geholfen", "VERB_HELFEN"},
+  {"hebend", "gehoben", "VERB_HOCHHEBEN"},
   {"hindernd", "gehindert", "VERB_HINDERN"},
   {"steigend", "gestiegen", "VERB_HINAUFSTEIGEN"},
   {"hindernd", "gehindert", "VERB_HINDERN"},
@@ -16940,6 +16945,18 @@ struct verb_struct verben[] = {
   {"hülfe", "VERB_HELFEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
   {"hülfet", "VERB_HELFEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
   {"hülfen", "VERB_HELFEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"hebst", "VERB_HOCHHEBEN", "hoch", zweitePerson, n_singular, praesens, akkusativ},
+  {"hebt", "VERB_HOCHHEBEN", "hoch", drittePerson, n_singular, praesens, akkusativ},
+  {"hebt", "VERB_HOCHHEBEN", "hoch", zweitePerson, n_plural, praesens, akkusativ},
+  {"heben", "VERB_HOCHHEBEN", "hoch", drittePerson, n_plural, praesens, akkusativ},
+  {"hobst", "VERB_HOCHHEBEN", "hoch", zweitePerson, n_singular, praeteritum, akkusativ},
+  {"hob", "VERB_HOCHHEBEN", "hoch", drittePerson, n_singular, praeteritum, akkusativ},
+  {"hobt", "VERB_HOCHHEBEN", "hoch", zweitePerson, n_plural, praeteritum, akkusativ},
+  {"hoben", "VERB_HOCHHEBEN", "hoch", drittePerson, n_plural, praeteritum, akkusativ},
+  {"höbest", "VERB_HOCHHEBEN", "hoch", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"höbe", "VERB_HOCHHEBEN", "hoch", drittePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"höbet", "VERB_HOCHHEBEN", "hoch", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"höben", "VERB_HOCHHEBEN", "hoch", drittePerson, n_plural, konjunktiv_ii, akkusativ},
   {"hinderst", "VERB_HINDERN", "", zweitePerson, n_singular, praesens, akkusativ},
   {"hindert", "VERB_HINDERN", "", drittePerson, n_singular, praesens, akkusativ},
   {"hindert", "VERB_HINDERN", "", zweitePerson, n_plural, praesens, akkusativ},

@@ -303,7 +303,7 @@ int udist;
 		    if(rn2(20) < edog->apport+3) {
 			if (rn2(udist) || !rn2(edog->apport)) {
 			    if (cansee(omx, omy) && flags.verbose)
-				pline("%s picks up %s.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */ // TODO DE
+				pline("SUBJECT %s VERB_AUFHEBEN OBJECT %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */
 				    distant_name(obj, doname));
 			    obj_extract_self(obj);
 			    newsym(omx,omy);

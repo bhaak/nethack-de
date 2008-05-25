@@ -200,7 +200,7 @@ ask_again:
 		oclasses[oclassct = 0] = '\0';
 		*one_at_a_time = *everything = FALSE;
 		not_everything = FALSE;
-		Sprintf(qbuf,"What kinds of thing do you want to %s? [%s]", /* EN Sprintf(qbuf,"What kinds of thing do you want to %s? [%s]", */ // TODO DE
+		Sprintf(qbuf,"Welche Sachen MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV %s? [%s]", /* EN Sprintf(qbuf,"What kinds of thing do you want to %s? [%s]", */
 			action, ilets);
 		getlin(qbuf,inbuf);
 		if (*inbuf == '\033') return FALSE;
@@ -226,7 +226,7 @@ ask_again:
 			    oclasses[oclassct] = '\0';
 			} else {
 			    if (!where)
-				where = !strcmp(action,"pick up")  ? "Hier" : /* EN where = !strcmp(action,"pick up")  ? "here" : */ // TODO DE
+				where = !strcmp(action,"aufheben")  ? "Hier" : /* EN where = !strcmp(action,"pick up")  ? "here" : */
 					!strcmp(action,"take out") ?  /* EN !strcmp(action,"take out") ? */ // TODO DE
 							    "Da drinnen" : ""; /* EN "inside" : ""; */
 			    if (*where)
@@ -455,7 +455,7 @@ int what;		/* should be a long */
 	    /* use menus exclusively */
 	    if (count) {	/* looking for N of something */
 		char buf[QBUFSZ];
-		Sprintf(buf, "Pick %d of what?", count); /* EN Sprintf(buf, "Pick %d of what?", count); */ // TODO DE
+		Sprintf(buf, "Wovon %d Stück aufheben?", count); /* EN Sprintf(buf, "Pick %d of what?", count); */
 		val_for_n_or_more = count;	/* set up callback selector */
 		n = query_objlist(buf, objchain,
 			    traverse_how|AUTOSELECT_SINGLE|INVORDER_SORT,
@@ -464,7 +464,7 @@ int what;		/* should be a long */
 		for (i = 0; i < n; i++)
 		    pick_list[i].count = count;
 	    } else {
-		n = query_objlist("Pick up what?", objchain, /* EN n = query_objlist("Pick up what?", objchain, */ // TODO DE
+		n = query_objlist("Was aufheben?", objchain, /* EN n = query_objlist("Pick up what?", objchain, */
 			traverse_how|AUTOSELECT_SINGLE|INVORDER_SORT|FEEL_COCKATRICE,
 			&pick_list, PICK_ANY, all_but_uchain);
 	    }
@@ -507,17 +507,17 @@ menu_pickup:
 	    } else if (ct >= 2) {
 		int via_menu = 0;
 
-		There("are %s objects here.", /* EN There("are %s objects here.", */ // TODO DE
-		      (ct <= 10) ? "several" : "many"); /* EN (ct <= 10) ? "several" : "many"); */ // TODO DE
+		pline("Hier liegen %s Gegenstände.", /* EN There("are %s objects here.", */
+		      (ct <= 10) ? "einige" : "viele"); /* EN (ct <= 10) ? "several" : "many"); */
 		if (!query_classes(oclasses, &selective, &all_of_a_type,
-					 "pick up", objchain, /* EN "pick up", objchain, */ // TODO DE
+					 "aufheben", objchain, /* EN "pick up", objchain, */
 				   traverse_how == BY_NEXTHERE,
 #ifndef GOLDOBJ
 				   FALSE,
 #endif
 				   &via_menu)) {
 		    if (!via_menu) return (0);
-		    n = query_objlist("Pick up what?", /* EN n = query_objlist("Pick up what?", */ // TODO DE
+		    n = query_objlist("Was aufheben?", /* EN n = query_objlist("Pick up what?", */
 				  objchain,
 				  traverse_how|(selective ? 0 : INVORDER_SORT),
 				  &pick_list, PICK_ANY,
@@ -538,8 +538,8 @@ menu_pickup:
 
 		if (!all_of_a_type) {
 		    char qbuf[BUFSZ];
-		    Sprintf(qbuf, "Pick up %s?", /* EN Sprintf(qbuf, "Pick up %s?", */ // TODO DE
-			safe_qbuf("", sizeof("Pick up ?"), doname(obj), /* EN safe_qbuf("", sizeof("Pick up ?"), doname(obj), */ // TODO DE
+		    Sprintf(qbuf, "SATZBEGINN KASUS_AKKUSATIV %s aufheben?", /* EN Sprintf(qbuf, "Pick up %s?", */
+			safe_qbuf("", sizeof("SATZBEGINN KASUS_AKKUSATIV  aufheben?"), doname(obj), /* EN safe_qbuf("", sizeof("Pick up ?"), doname(obj), */
 					an(simple_typename(obj->otyp)), "NOUN_SOMETHING")); /* EN an(simple_typename(obj->otyp)), "something")); */
 		    switch ((obj->quan < 2L) ? ynaq(qbuf) : ynNaq(qbuf)) {
 		    case 'q': goto end_query;	/* out 2 levels */

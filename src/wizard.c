@@ -351,7 +351,7 @@ tactics(mtmp)
 
 			if ((otmp = on_ground(which_arti(targ))) != 0) {
 			    if (cansee(mtmp->mx, mtmp->my))
-				pline("%s picks up %s.", /* EN pline("%s picks up %s.", */ // TODO DE
+				pline("SUBJECT %s VERB_AUFHEBEN OBJECT %s SATZKLAMMER.", /* EN pline("%s picks up %s.", */
 				    Monnam(mtmp),
 				    (distu(mtmp->my, mtmp->my) <= 5) ?
 				     doname(otmp) : distant_name(otmp, doname));

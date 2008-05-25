@@ -301,7 +301,7 @@ fnd:
 	    verbalize("Please follow me."); /* EN verbalize("Please follow me."); */ // TODO DE
 	else {
 	    if (!u.ugold)
-		verbalize("You have hidden gold."); /* EN verbalize("You have hidden gold."); */ // TODO DE
+		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_VERSTECKEN Gold vor mir."); /* EN verbalize("You have hidden gold."); */
 	    verbalize("Most likely all your gold was stolen from this vault."); /* EN verbalize("Most likely all your gold was stolen from this vault."); */ // TODO DE
 	    verbalize("Please drop that gold and follow me."); /* EN verbalize("Please drop that gold and follow me."); */ // TODO DE
 	}
@@ -311,8 +311,8 @@ fnd:
 	    verbalize("Please follow me."); /* EN verbalize("Please follow me."); */ // TODO DE
 	else {
 	    if (!umoney)
-		verbalize("You have hidden money."); /* EN verbalize("You have hidden money."); */ // TODO DE
-	    verbalize("Most likely all your money was stolen from this vault."); /* EN verbalize("Most likely all your money was stolen from this vault."); */ // TODO DE
+		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_VERSTECKEN Geld vor mir."); /* EN verbalize("You have hidden money."); */
+	    verbalize("Höchstwahrscheinlich all your money was stolen from this vault."); /* EN verbalize("Most likely all your money was stolen from this vault."); */ // TODO DE
 	    verbalize("Please drop that money and follow me."); /* EN verbalize("Please drop that money and follow me."); */ // TODO DE
 	}
 #endif

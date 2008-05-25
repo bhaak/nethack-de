@@ -887,7 +887,7 @@ mpickstuff(mtmp, str)
 		if (otmp->oinvis && !perceives(mtmp->data)) continue;
 #endif
 		if (cansee(mtmp->mx,mtmp->my) && flags.verbose)
-			pline("%s picks up %s.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */ // TODO DE
+			pline("SUBJECT %s VERB_AUFHEBEN OBJECT %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */
 			      (distu(mtmp->my, mtmp->my) <= 5) ?
 				doname(otmp) : distant_name(otmp, doname));
 		obj_extract_self(otmp);

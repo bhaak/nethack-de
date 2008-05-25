@@ -895,6 +895,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_HALTEN","halten"),
 		Verb.verb("VERB_HECHTEN","hechten"),
 		Verb.verb("VERB_HELFEN","helfen"),
+		Verb.verb("VERB_HOCHHEBEN", "heben", "hoch"),
 		Verb.verb("VERB_HINDERN","hindern"),
 		Verb.verb("VERB_HINAUFSTEIGEN","steigen", "hinauf"),
 		Verb.verb("VERB_HINDERN","hindern"),
@@ -3404,6 +3405,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WOMAN", "Frau", "", "Frau", "en", "feminin"),
     dekliniere_substantiv("NOUN_WORM", "Wurm", "es", "Würm", "er", "maskulin"),
     dekliniere_substantiv("NOUN_WRAPPING", "Binde", "", "Binde", "en", "feminin", "en"),
+    dekliniere_substantiv("NOUN_ZUNGE", "Zunge", "", "Zunge", "en", "feminin", "en"),
 
     "/* ======================================================= */",
     "/* Adjektive */",

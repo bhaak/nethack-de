@@ -269,14 +269,14 @@ moverock()
 		if (u.usteed && P_SKILL(P_RIDING) < P_BASIC) {
 		    You("aren't skilled enough to %s %s from %s.", /* EN You("aren't skilled enough to %s %s from %s.", */ // TODO DE
 			(flags.pickup && !In_sokoban(&u.uz))
-			    ? "pick up" : "push aside", /* EN ? "pick up" : "push aside", */ // TODO DE
+			    ? "aufzuheben" : "beiseitezuschieben", /* EN ? "pick up" : "push aside", */
 			the(xname(otmp)), y_monnam(u.usteed));
 		} else
 #endif
 		{
-		    pline("However, you can easily %s.", /* EN pline("However, you can easily %s.", */ // TODO DE
+		    pline("SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN ihn jedoch problemlos %s.", /* EN pline("However, you can easily %s.", */
 			(flags.pickup && !In_sokoban(&u.uz))
-			    ? "pick it up" : "push it aside"); /* EN ? "pick it up" : "push it aside"); */ // TODO DE
+			    ? "hochheben" : "beiseiteschieben"); /* EN ? "pick it up" : "push it aside"); */
 		    if (In_sokoban(&u.uz))
 			change_luck(-1);	/* Sokoban guilt */
 		    break;
@@ -292,7 +292,7 @@ moverock()
 		 (!u.dx || !u.dy || (IS_ROCK(levl[u.ux][sy].typ)
 				     && IS_ROCK(levl[sx][u.uy].typ))))
 		|| verysmall(youmonst.data))) {
-		pline("However, you can squeeze yourself into a small opening."); /* EN pline("However, you can squeeze yourself into a small opening."); */ // TODO DE
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN OBJECT PRONOMEN_PERSONAL allerdings in eine kleine Öffnung quetschen."); /* EN pline("However, you can squeeze yourself into a small opening."); */
 		if (In_sokoban(&u.uz))
 		    change_luck(-1);	/* Sokoban guilt */
 		break;
@@ -321,8 +321,8 @@ still_chewing(x,y)
 	(void) memset((genericptr_t)&digging, 0, sizeof digging);
 
     if (!boulder && IS_ROCK(lev->typ) && !may_dig(x,y)) {
-	You("hurt your teeth on the %s.", /* EN You("hurt your teeth on the %s.", */ // TODO DE
-	    IS_TREE(lev->typ) ? "tree" : "hard stone"); /* EN IS_TREE(lev->typ) ? "tree" : "hard stone"); */ // TODO DE
+	You("VERB_VERLETZEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV NOUN_ZAHNs am %s.", /* EN You("hurt your teeth on the %s.", */
+	    IS_TREE(lev->typ) ? "Baum" : "harten Gestein"); /* EN IS_TREE(lev->typ) ? "tree" : "hard stone"); */
 	nomul(0);
 	return 1;
     } else if (digging.pos.x != x || digging.pos.y != y ||
@@ -396,7 +396,7 @@ still_chewing(x,y)
     } else if (lev->typ == SDOOR) {
 	if (lev->doormask & D_TRAPPED) {
 	    lev->doormask = D_NODOOR;
-	    b_trapped("secret door", 0); /* EN b_trapped("secret door", 0); */ // TODO DE
+	    b_trapped("Geheimtüre", 0); /* EN b_trapped("secret door", 0); */
 	} else {
 	    digtxt = "chew through the secret door."; /* EN digtxt = "chew through the secret door."; */ // TODO DE
 	    lev->doormask = D_BROKEN;
@@ -587,14 +587,14 @@ int mode;
 	    if (Passes_walls)
 		;	/* do nothing */
 	    else if (can_ooze(&youmonst)) {
-		if (mode == DO_MOVE) You("ooze under the door."); /* EN if (mode == DO_MOVE) You("ooze under the door."); */ // TODO DE
+		if (mode == DO_MOVE) You("VERB_SUPPEN unter der Türe durch."); /* EN if (mode == DO_MOVE) You("ooze under the door."); */
 	    } else if (tunnels(youmonst.data) && !needspick(youmonst.data)) {
 		/* Eat the door. */
 		if (mode == DO_MOVE && still_chewing(x,y)) return FALSE;
 	    } else {
 		if (mode == DO_MOVE) {
 		    if (amorphous(youmonst.data))
-			You("try to ooze under the door, but can't squeeze your possessions through."); /* EN You("try to ooze under the door, but can't squeeze your possessions through."); */ // TODO DE
+			You("VERB_VERSUCHEN unter der Türe durchzusuppen, aber VERB_KOENNEN OBJECT  squeeze your possessions through."); /* EN You("try to ooze under the door, but can't squeeze your possessions through."); */ // TODO DE
 		    else if (x == ux || y == uy) {
 			if (Blind || Stunned || ACURR(A_DEX) < 10 || Fumbling) {
 #ifdef STEED
@@ -1809,11 +1809,11 @@ dopickup()
 	if(u.uswallow) {
 	    if (!u.ustuck->minvent) {
 		if (is_animal(u.ustuck->data)) {
-		    You("pick up %s tongue.", s_suffix(mon_nam(u.ustuck))); /* EN You("pick up %s tongue.", s_suffix(mon_nam(u.ustuck))); */ // TODO DE
-		    pline("But it's kind of slimy, so you drop it."); /* EN pline("But it's kind of slimy, so you drop it."); */ // TODO DE
+		    You("VERB_HOCHHEBEN OBJECT %s SATZKLAMMER.", genitivattribut_zu_wort(mon_nam(u.ustuck), "NOUN_ZUNGE")); /* EN You("pick up %s tongue.", s_suffix(mon_nam(u.ustuck))); */
+		    pline("Aber sie ist so schleimig, dass NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL sie wieder VERB_DROP."); /* EN pline("But it's kind of slimy, so you drop it."); */
 		} else
-		    You("don't %s anything in here to pick up.", /* EN You("don't %s anything in here to pick up.", */ // TODO DE
-			  Blind ? "feel" : "see"); /* EN Blind ? "feel" : "see"); */ // TODO DE
+		    You("%s hier drinnen nichts zum Aufheben.", /* EN You("don't %s anything in here to pick up.", */
+			  Blind ? "VERB_ERTASTEN" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */
 		return(1);
 	    } else {
 	    	int tmpcount = -count;
@@ -1826,7 +1826,7 @@ dopickup()
 		You("VERB_KOENNEN nicht ins Wasser tauchen um Dinge aufzuheben."); /* EN You("cannot dive into the water to pick things up."); */
 		return(0);
 	    } else if (!Underwater) {
-		You("VERB_KOENNEN noch nicht einmal den Grund sehen, geschweige den OBJECT %s aufheben.", /* EN You_cant("even see the bottom, let alone pick up %s.", */
+		You("VERB_KOENNEN noch nicht einmal den Grund sehen, geschweige denn OBJECT %s aufheben.", /* EN You_cant("even see the bottom, let alone pick up %s.", */
 				something);
 		return(0);
 	    }

@@ -103,7 +103,7 @@ pick_move:
 		    check_special_room(FALSE);
 		if(ib) {
 			if (cansee(mtmp->mx,mtmp->my))
-			    pline("%s picks up %s.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */ // TODO DE
+			    pline("SUBJECT %s VERB_AUFHEBEN OBJECT %s SATZKLAMMER.", Monnam(mtmp), /* EN pline("%s picks up %s.", Monnam(mtmp), */
 				distant_name(ib,doname));
 			obj_extract_self(ib);
 			(void) mpickobj(mtmp, ib);
@@ -443,7 +443,7 @@ register struct monst *priest;
 	    };
 
 	    if(!priest->mcanmove || priest->msleeping) {
-		pline("%s breaks out of %s reverie!", /* EN pline("%s breaks out of %s reverie!", */ // TODO DE
+		pline("SUBJECT %s VERB_ERWACHEN OBJECT aus %s NOUN_ANDACHT!", /* EN pline("%s breaks out of %s reverie!", */
 		      Monnam(priest), mhis(priest));
 		priest->mfrozen = priest->msleeping = 0;
 		priest->mcanmove = 1;
@@ -456,7 +456,7 @@ register struct monst *priest;
 	/* you desecrated the temple and now you want to chat? */
 	if(priest->mpeaceful && *in_rooms(priest->mx, priest->my, TEMPLE) &&
 		  !has_shrine(priest)) {
-	    verbalize("Hinfort!  Du entweihst diese Heilige Stätte mit deiner Anwesenheit."); /* EN verbalize("Begone!  Thou desecratest this holy place with thy presence."); */
+	    verbalize("Hinfort!  Du entweihst diese heilige Stätte mit deiner Anwesenheit."); /* EN verbalize("Begone!  Thou desecratest this holy place with thy presence."); */
 	    priest->mpeaceful = 0;
 	    return;
 	}
@@ -519,19 +519,19 @@ register struct monst *priest;
 #endif
 		    if (coaligned && u.ualign.record <= ALGN_SINNED)
 			adjalign(1);
-		    verbalize("I bestow upon thee a blessing."); /* EN verbalize("I bestow upon thee a blessing."); */ // TODO DE
+		    verbalize("Ich erteile dir meinen Segen."); /* EN verbalize("I bestow upon thee a blessing."); */
 		    incr_itimeout(&HClairvoyant, rn1(500,500));
 		}
 	    } else if(offer < (u.ulevel * 600) &&
 		      u.ublessed < 20 &&
 		      (u.ublessed < 9 || !rn2(u.ublessed))) {
-		verbalize("Thy devotion has been rewarded."); /* EN verbalize("Thy devotion has been rewarded."); */ // TODO DE
+		verbalize("Deine Hingabe wurde belohnt."); /* EN verbalize("Thy devotion has been rewarded."); */
 		if (!(HProtection & INTRINSIC))  {
 			HProtection |= FROMOUTSIDE;
 			if (!u.ublessed)  u.ublessed = rn1(3, 2);
 		} else u.ublessed++;
 	    } else {
-		verbalize("Thy selfless generosity is deeply appreciated."); /* EN verbalize("Thy selfless generosity is deeply appreciated."); */ // TODO DE
+		verbalize("Deine selbstlose Großzügigkeit ish höchst willkommen."); /* EN verbalize("Thy selfless generosity is deeply appreciated."); */
 #ifndef GOLDOBJ
 		if(u.ugold < (offer * 2L) && coaligned) {
 #else
