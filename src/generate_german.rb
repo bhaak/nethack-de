@@ -2330,7 +2330,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_JAGUAR","Jaguar","s","Jaguar","e","maskulin"),
     dekliniere_substantiv("NOUN_LYNX","Luchs","es","Luchs","e","maskulin"),
     dekliniere_substantiv("NOUN_PANTHER","Panther","s","Panther","","maskulin"),
-    dekliniere_nominalphrase("NOUN_LARGE_CAT", "groß", "Katze","","Katze","en","feminin","n"),
+    dekliniere_nominalphrase("NOUN_LARGE_CAT", "groß", "Katze","","Katze","en","feminin","n"), # Grosskatze?
     dekliniere_substantiv("NOUN_TIGER","Tiger","s","Tiger","","maskulin"),
     dekliniere_substantiv("NOUN_GREMLIN", "Gremlin", "s", "Gremlin", "s", "maskulin"),
     dekliniere_substantiv("NOUN_GARGOYLE", "Gargyle", "", "Gargyle", "en", "feminin"),
@@ -2350,17 +2350,17 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEMURE", "Lemur", "en", "Lemur", "en", "maskulin"),
     dekliniere_substantiv("NOUN_QUASIT", "Quasit", "", "Quasit", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_TENGU", "Tengu", "", "Tengu", "fremder", "maskulin"),
-    dekliniere_nominalphrase("NOUN_BLUE_JELLY", "blau", "Glibber", "s", "", "", "maskulin"), # Glibber, Gallert, Gelle
-    dekliniere_nominalphrase("NOUN_SPOTTED_JELLY", "gesprenkelt", "Glibber", "s", "", "", "maskulin"), # gefleckt, gepunktet
-    dekliniere_nominalphrase("NOUN_OCHRE_JELLY", "ockergelb", "Glibber", "s", "", "", "maskulin"), # ockergelb, beige, gelb, braun
+    dekliniere_nominalphrase("NOUN_BLUE_JELLY", "blau", "Glibber", "s", "Glibber", "", "maskulin"), # Glibber, Gallert, Gelle
+    dekliniere_nominalphrase("NOUN_SPOTTED_JELLY", "gesprenkelt", "Glibber", "s", "Glibber", "", "maskulin"), # gefleckt, gepunktet
+    dekliniere_nominalphrase("NOUN_OCHRE_JELLY", "ockergelb", "Glibber", "s", "Glibber", "", "maskulin"), # ockergelb, beige, gelb, braun
     dekliniere_substantiv("NOUN_KOBOLD","Kobold","es","Kobold","e","maskulin", "s"),
     dekliniere_nominalphrase("NOUN_LARGE_KOBOLD","groß", "Kobold","es","Kobold","e","maskulin", "s"),
     dekliniere_substantiv("NOUN_KOBOLD_LORD", "Koboldfürst","en","Koboldfürst","en","maskulin", "en"),
     dekliniere_substantiv("NOUN_KOBOLD_SHAMAN", "Koboldschamane", "en", "Koboldschamane", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_LEPRECHAUN", "Leprechaun", "", "Leprechaun", "", "maskulin", "en"), # Ampferwichtel?
-    dekliniere_nominalphrase("NOUN_SMALL_MIMIC","klein", "Imitator","","","","maskulin", "en"),
-    dekliniere_nominalphrase("NOUN_LARGE_MIMIC","groß", "Imitator","","","","maskulin", "en"),
-    dekliniere_nominalphrase("NOUN_GIANT_MIMIC","riesig", "Imitator","","","","maskulin", "en"),
+    dekliniere_nominalphrase("NOUN_SMALL_MIMIC","klein", "Imitator","s","Imitator","en","maskulin", "en"),
+    dekliniere_nominalphrase("NOUN_LARGE_MIMIC","groß", "Imitator","s","Imitator","en","maskulin", "en"),
+    dekliniere_nominalphrase("NOUN_GIANT_MIMIC","riesig", "Imitator","s","Imitator","en","maskulin", "en"),
 		# Riesenimitator wäre etwas irreführend
     # dekliniere_substantiv("NOUN_GIANT_MIMIC", "Riesenimitator","","Riesenimitator","","maskulin", "en"),
     dekliniere_substantiv("NOUN_WOOD_NYMPH",     "Baumnymphe",   "", "Baumnymphe",   "en", "feminin","n"),
@@ -2651,13 +2651,13 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HOEHLENMENSCH", "Höhlenmensch", "en", "Höhlenmensch", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_CAVEMAN", "Höhlenmensch", "en", "Höhlenmensch", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_CAVEWOMAN", "Höhlenmensch", "en", "Höhlenmensch", "en", "maskulin", "en"),
-    dekliniere_substantiv("NOUN_HEILER","Heiler","s","","","maskulin"),
-    dekliniere_substantiv("NOUN_HEILERIN","Heilerin","","","","feminin"),
+    dekliniere_substantiv("NOUN_HEILER","Heiler","s","Heiler","","maskulin"),
+    dekliniere_substantiv("NOUN_HEILERIN","Heilerin","","Heilerinn","en","feminin"),
     dekliniere_substantiv("NOUN_KNIGHT", "Paladin","s","Paladin","e","maskulin"),
     dekliniere_substantiv("NOUN_PALADIN","Paladin","s","Paladin","e","maskulin"),
     dekliniere_substantiv("NOUN_MONK",  "Mönch", "es", "Mönch", "e", "maskulin", "en"),
     dekliniere_substantiv("NOUN_MOENCH","Mönch", "es", "Mönch", "e", "maskulin", "en"),
-    dekliniere_substantiv("NOUN_KANDIDATIN", "Kandidatin", "", "Kandidatin", "en", "feminin"),
+    dekliniere_substantiv("NOUN_KANDIDATIN", "Kandidatin", "", "Kandidatinn", "en", "feminin"),
     dekliniere_substantiv("NOUN_PRIEST", "Priester", "s", "Priester", "", "maskulin"),
     dekliniere_substantiv("NOUN_PRIESTESS", "Priesterin", "", "Priesterinn", "en", "feminin","nen"),
     dekliniere_substantiv("NOUN_PRIESTER", "Priester", "s", "Priester", "", "maskulin"),
