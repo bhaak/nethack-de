@@ -45,11 +45,11 @@ stoned_dialogue()
 
 /* He is getting sicker and sicker prior to vomiting */
 static NEARDATA const char * const vomiting_texts[] = {
-	"OBJECT KASUS_DATIV PRONOMEN_PERSONAL ist leicht übel.",	/* 14 */ /* EN "are feeling mildly nauseated.",	*/
+	"SATZBEGINN KASUS_DATIV PRONOMEN_PERSONAL ist leicht übel.",	/* 14 */ /* EN "are feeling mildly nauseated.",	*/
 	"SUBJECT PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL etwas verwirrt.",		/* 11 */ /* EN "feel slightly confused.",		*/
 	"SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN nicht klar denken.",	/* 8 */ /* EN "can't seem to think straight.",	*/
-	"KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN unglaublich übel.",		/* 5 */ /* EN "feel incredibly sick.",		*/
-	"Plötzlich SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_UEBERGEBEN OBJECT PRONOMEN_PERSONAL!"			/* 2 */ /* EN "suddenly vomit!"			*/
+	"SATZBEGINN KASUS_DATIV PRONOMEN_PERSONAL ist unglaublich übel.",		/* 5 */ /* EN "feel incredibly sick.",		*/
+	"Plötzlich SUBJECT_IM_SATZ VERB_UEBERGEBEN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL!"			/* 2 */ /* EN "suddenly vomit!"			*/
 };
 
 STATIC_OVL void

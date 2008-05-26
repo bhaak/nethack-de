@@ -203,7 +203,7 @@ struct obj *otmp;
 
 	if (mtmp->mconf)
 	    pline("So verwirrt wie SUBJECT_IM_SATZ %s VERB_SEIN, VERB_VERHASPELN %s sich ...", /* EN pline("Being confused, %s mispronounces the magic words...", */
-		  vismon ? mon_nam(mtmp) : mhe(mtmp));
+		  vismon ? mon_nam(mtmp) : mhe(mtmp), mhe(mtmp)); /* EN vismon ? mon_nam(mtmp) : mhe(mtmp)); */
 }
 
 STATIC_OVL void
@@ -1298,7 +1298,7 @@ struct monst *mtmp;
 	case MUSE_FROST_HORN:
 		if (oseen) {
 			makeknown(otmp->otyp);
-			pline("SUBJECT %s VERB_SPIELT OBJECT ARTIKEL_UNBESTIMMTER %s!", Monnam(mtmp), xname(otmp)); /* EN pline("%s plays a %s!", Monnam(mtmp), xname(otmp)); */
+			pline("SUBJECT %s VERB_SPIELEN OBJECT ARTIKEL_UNBESTIMMTER %s!", Monnam(mtmp), xname(otmp)); /* EN pline("%s plays a %s!", Monnam(mtmp), xname(otmp)); */
 		} else
 			You_hear("die Melodie eines Hornes."); /* EN You_hear("a horn being played."); */
 		otmp->spe--;

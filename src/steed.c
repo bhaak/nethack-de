@@ -89,7 +89,7 @@ use_saddle(otmp)
  	    }
 	}
 	if (ptr == &mons[PM_INCUBUS] || ptr == &mons[PM_SUCCUBUS]) {
-	    pline("SUBJECT PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_SOLLTEN OBJECT PRONOMEN_PERSONAL was schämen!"); /* EN pline("Shame on you!"); */
+	    pline("SUBJECT PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_SOLLEN OBJECT PRONOMEN_PERSONAL was schämen!"); /* EN pline("Shame on you!"); */
 	    exercise(A_WIS, FALSE);
 	    return 1;
 	}

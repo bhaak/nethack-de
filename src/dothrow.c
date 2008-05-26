@@ -7,6 +7,10 @@
 #include "hack.h"
 #include "edog.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_DCL int FDECL(throw_obj, (struct obj *,int));
 STATIC_DCL void NDECL(autoquiver);
 STATIC_DCL int FDECL(gem_accept, (struct monst *, struct obj *));
@@ -289,12 +293,12 @@ dofire()
 	if (!uquiver) {
 		if (!flags.autoquiver) {
 			/* Don't automatically fill the quiver */
-			You("have no ammunition readied!"); /* EN You("have no ammunition readied!"); */ // TODO DE
+			You("VERB_HABEN keine %s bereit!", Hallucination ? "Murmeln" : "Munition"); /* EN You("have no ammunition readied!"); */
 			return(dothrow());
 		}
 		autoquiver();
 		if (!uquiver) {
-			You("have nothing appropriate for your quiver!"); /* EN You("have nothing appropriate for your quiver!"); */ // TODO DE
+			You("VERB_HABEN nichts Passendes OBJECT für PRONOMEN_POSSESSIV NOUN_QUIVER!"); /* EN You("have nothing appropriate for your quiver!"); */
 			return(dothrow());
 		} else {
 			You("VERB_FUELLEN OBJECT PRONOMEN_POSSESSIV NOUN_QUIVER:"); /* EN You("fill your quiver:"); */
@@ -468,8 +472,8 @@ hurtle_step(arg, x, y)
 	    return FALSE;
 	}
 	if (levl[x][y].typ == IRONBARS) {
-	    You("VERB_KRACHEN in ein Paar Eisenstangen.  Autsch!"); /* EN You("crash into some iron bars.  Ouch!"); */ // TODO DE
-	    losehp(rnd(2+*range), "kollidierte mit Eisenstangen", NO_KILLER_PREFIX); /* EN losehp(rnd(2+*range), "crashing into iron bars", KILLED_BY); */ // TODO DE
+	    You("VERB_KRACHEN in ein paar Eisenstangen.  Autsch!"); /* EN You("crash into some iron bars.  Ouch!"); */
+	    losehp(rnd(2+*range), "kollidierte mit Eisenstangen", NO_KILLER_PREFIX); /* EN losehp(rnd(2+*range), "crashing into iron bars", KILLED_BY); */
 	    return FALSE;
 	}
 	if ((obj = sobj_at(BOULDER,x,y)) != 0) {
@@ -505,7 +509,7 @@ hurtle_step(arg, x, y)
 	bad_rock(youmonst.data,u.ux,y) && bad_rock(youmonst.data,x,u.uy)) {
 	/* Move at a diagonal. */
 	if (In_sokoban(&u.uz)) {
-	    You("come to an abrupt halt!"); /* EN You("come to an abrupt halt!"); */ // TODO DE
+	    You("VERB_KOMMEN abrupt zum Stehen!"); /* EN You("come to an abrupt halt!"); */
 	    return FALSE;
 	}
     }
@@ -1249,8 +1253,8 @@ register struct obj   *obj;
 		    boolean next2u = monnear(mon, u.ux, u.uy);
 
 		    finish_quest(obj);	/* acknowledge quest completion */
-		    pline("%s %s %s back to you.", Monnam(mon), /* EN pline("%s %s %s back to you.", Monnam(mon), */ // TODO DE
-			  (next2u ? "hands" : "tosses"), the(xname(obj))); /* EN (next2u ? "hands" : "tosses"), the(xname(obj))); */ // TODO DE
+		    pline("SUBJECT %s %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT %s zurück.", Monnam(mon), /* EN pline("%s %s %s back to you.", Monnam(mon), */
+			  (next2u ? "VERB_GEBEN" : "VERB_WERFEN"), the(xname(obj))); /* EN (next2u ? "hands" : "tosses"), the(xname(obj))); */
 		    if (!next2u) sho_obj_return_to_u(obj);
 		    obj = addinv(obj);	/* back into your inventory */
 		    (void) encumber_msg();
@@ -1391,9 +1395,9 @@ register struct obj   *obj;
 			}
 	    	}
 	    }
-	    pline("SUBJECT %s into %s %s.", /* EN pline("%s into %s %s.", */ // TODO DE
-		Tobjnam(obj, "vanish"), s_suffix(mon_nam(mon)), /* EN Tobjnam(obj, "vanish"), s_suffix(mon_nam(mon)), */ // TODO DE
-		is_animal(u.ustuck->data) ? "entrails" : "currents"); /* EN is_animal(u.ustuck->data) ? "entrails" : "currents"); */ // TODO DE
+	    pline("SUBJECT %s OBJECT KASUS_DATIV in %s.", /* EN pline("%s into %s %s.", */
+		Tobjnam(obj, "VERB_VERSCHWINDEN"), /* EN Tobjnam(obj, "vanish"), s_suffix(mon_nam(mon)), */
+		genitivattribut_zu_wort(mon_nam(mon), is_animal(u.ustuck->data) ? "NOUN_EINGEWEIDEs" : "NOUN_STROEMUNGs")); /* EN is_animal(u.ustuck->data) ? "entrails" : "currents"); */ // TODO DE currents: besser?
 	} else {
 	    tmiss(obj, mon);
 	}

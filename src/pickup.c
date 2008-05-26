@@ -227,7 +227,7 @@ ask_again:
 			} else {
 			    if (!where)
 				where = !strcmp(action,"aufheben")  ? "Hier" : /* EN where = !strcmp(action,"pick up")  ? "here" : */
-					!strcmp(action,"take out") ?  /* EN !strcmp(action,"take out") ? */ // TODO DE
+					!strcmp(action,"herausnehmen") ?  /* EN !strcmp(action,"take out") ? */
 							    "Da drinnen" : ""; /* EN "inside" : ""; */
 			    if (*where)
 				pline("SUBJECT %s VERB_SEIN keine %cs.", where, sym); /* EN There("are no %c's %s.", sym, where); */
@@ -839,7 +839,7 @@ int how;			/* type of query */
 		any.a_void = 0;
 		any.a_int = 'u';
 		add_menu(win, NO_GLYPH, &any, invlet, 0, ATR_NONE,
-			"Unpaid items", MENU_UNSELECTED); /* EN "Unpaid items", MENU_UNSELECTED); */ // TODO DE
+			"Unbezahlte Gegenstände", MENU_UNSELECTED); /* EN "Unpaid items", MENU_UNSELECTED); */
 	}
 	/* billed items: checked by caller, so always include if BILLED_TYPES */
 	if (qflags & BILLED_TYPES) {
@@ -847,7 +847,7 @@ int how;			/* type of query */
 		any.a_void = 0;
 		any.a_int = 'x';
 		add_menu(win, NO_GLYPH, &any, invlet, 0, ATR_NONE,
-			 "Unpaid items already used up", MENU_UNSELECTED); /* EN "Unpaid items already used up", MENU_UNSELECTED); */ // TODO DE
+			 "Unbezahlte, bereits aufgebrauchte Gegenstände", MENU_UNSELECTED); /* EN "Unpaid items already used up", MENU_UNSELECTED); */
 	}
 	if (qflags & CHOOSE_ALL) {
 		invlet = 'A';
@@ -1233,7 +1233,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 	    } else if (gold_capacity < count) {
 		You("VERB_KOENNEN nur %s KASUS_GENITIV ARTIKEL_BESTIMMTER %s liegenden %ld NOUN_GOLD_PIECEs %s.", /* EN You("can only %s %s of the %ld gold pieces lying %s.", */
 		    gold_capacity == 1L ? "eine" : "einen Teil", where, obj->quan, /* EN */
-		    telekinesis ? "acquire" : "tragen" /* EN telekinesis ? "acquire" : "carry", */ // TODO DE
+		    telekinesis ? "bekommen" : "tragen" /* EN telekinesis ? "acquire" : "carry", */
         ); /* EN gold_capacity == 1L ? "one" : "some", obj->quan, where); */
 		pline("%s %ld NOUN_GOLD_PIECE%s aufzuheben.", /* EN pline("%s %ld gold piece%s.", */
 		    nearloadmsg, gold_capacity, plur(gold_capacity));
@@ -2130,7 +2130,7 @@ ask_again2:
 		    goto ask_again2;
 		case 'y':
 		    if (query_classes(select, &one_by_one, &allflag,
-				      "take out", current_container->cobj, /* EN "take out", current_container->cobj, */ // TODO DE
+				      "herausnehmen", current_container->cobj, /* EN "take out", current_container->cobj, */
 				      FALSE,
 #ifndef GOLDOBJ
 				      FALSE,

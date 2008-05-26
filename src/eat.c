@@ -1008,7 +1008,7 @@ opentin()		/* called during each move whilst opening a tin */
 		b_trapped("NOUN_TIN", 0); /* EN b_trapped("tin", 0); */
 		goto use_me;
 	}
-        pline("KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ VERB_GELINGEN NOUN_IT, die Dose zu öffnen."); /* EN You("succeed in opening the tin."); */
+        Dir("gelingt es, die Dose zu öffnen."); /* EN You("succeed in opening the tin."); */
 	if(tin.tin->spe != 1) {
 	    if (tin.tin->corpsenm == NON_PM) {
 		pline("Sie entpuppt sich als leer."); /* EN pline("It turns out to be empty."); */
@@ -1042,7 +1042,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    victual.piece = (struct obj *)0;
 	    victual.fullwarn = victual.eating = victual.doreset = FALSE;
 
-	    You("VERB_CONSUME %s %s.", (r == CHINESE_TIN) ? mons[tin.tin->corpsenm].mname : tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */
+	    You("VERB_CONSUME OBJECT %s %s.", (r == CHINESE_TIN) ? mons[tin.tin->corpsenm].mname : tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */
 			(r != CHINESE_TIN) ? mons[tin.tin->corpsenm].mname : tintxts[r].txt); /* EN mons[tin.tin->corpsenm].mname); */
 
 	    /* KMH, conduct */

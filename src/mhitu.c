@@ -2146,7 +2146,7 @@ register struct monst *mon;
 		return 0;
 	}
 
-	if (Blind) pline("It caresses you..."); /* EN if (Blind) pline("It caresses you..."); */ // TODO DE
+	if (Blind) pline("Jemand streichelt KASUS_AKKUSATIV PRONOMEN_PERSONAL ..."); /* EN if (Blind) pline("It caresses you..."); */
 	else You_feel("very attracted to %s.", mon_nam(mon)); /* EN else You_feel("very attracted to %s.", mon_nam(mon)); */ // TODO DE
 
 	for(ring = invent; ring; ring = nring) {
@@ -2229,12 +2229,12 @@ register struct monst *mon;
 		mayberem(uarm, "suit"); /* EN mayberem(uarm, "suit"); */ // TODO DE
 	mayberem(uarmf, "NOUN_BOOTSs"); /* EN mayberem(uarmf, "boots"); */
 	if(!uwep || !welded(uwep))
-		mayberem(uarmg, "gloves"); /* EN mayberem(uarmg, "gloves"); */ // TODO DE
+		mayberem(uarmg, "NOUN_GLOVESs"); /* EN mayberem(uarmg, "gloves"); */
 	mayberem(uarms, "NOUN_SHIELD"); /* EN mayberem(uarms, "shield"); */
 	mayberem(uarmh, "NOUN_HELMET"); /* EN mayberem(uarmh, "helmet"); */
 #ifdef TOURIST
 	if(!uarmc && !uarm)
-		mayberem(uarmu, "shirt"); /* EN mayberem(uarmu, "shirt"); */ // TODO DE
+		mayberem(uarmu, "NOUN_SHIRT"); /* EN mayberem(uarmu, "shirt"); */
 #endif
 
 	if (uarm || uarmc) {
