@@ -1587,7 +1587,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_ELVEN_LEATHER_HELM", "ledern", "Elbenhelm", "es", "Elbenhelm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_HELM", "Orkhelm", "es", "Orkhelm", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_DWARVISH_IRON_HELM", "eisern", "Zwergenhelm", "es", "Zwergenhelm", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_FEDORA" maskulin Akkusativ Fedora
+    dekliniere_substantiv("NOUN_FEDORA", "Fedora", "", "Fedora", "fremder", "maskulin"),
     #dekliniere_substantiv("NOUN_CORNUTHAUM"
     #dekliniere_substantiv("NOUN_DUNCE_CAP" # Narrenkappe, Eselmütze
     dekliniere_nominalphrase("NOUN_DENTED_POT", "verbeult", "Topf", "es", "Töpf", "e", "maskulin"),
@@ -1672,6 +1672,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_LEATHER_HAT"  # Lederhut
     #dekliniere_substantiv("NOUN_IRON_SKULL_CAP"
     #dekliniere_substantiv("NOUN_HARD_HAT"
+    dekliniere_substantiv("NOUN_SCHLAPPHUT", "Schlapphut", "es", "Schlapphüt", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_CONICAL_HAT"
     #dekliniere_substantiv("NOUN_PLUMED_HELMET" # Normannenhelm?, Spangenhelm?, Topfhelm?
     #dekliniere_substantiv("NOUN_ETCHED_HELMET" # Kreuzhelm?, Bronzehelm?, Barbuta?, Eisenhut?

@@ -863,6 +863,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"eiserne Zwergenhelme", "NOUN_DWARVISH_IRON_HELMs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
   {"eiserner Zwergenhelme", "NOUN_DWARVISH_IRON_HELMs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
+  {"Fedora", "NOUN_FEDORA", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Fedora", "NOUN_FEDORAs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"verbeulten Topf", "NOUN_DENTED_POT", "", akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"verbeulten Topfes", "NOUN_DENTED_POT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"verbeulte Topf", "NOUN_DENTED_POT", "", nominativ, maskulin, n_singular, bestimmter},
@@ -1231,6 +1234,12 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
 
   /* Armor, unidentified */
+
+  {"Schlapphutes", "NOUN_SCHLAPPHUT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlapphute", "NOUN_SCHLAPPHUT", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlapphut", "NOUN_SCHLAPPHUT", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlapphüte", "NOUN_SCHLAPPHUTs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlapphüten", "NOUN_SCHLAPPHUTs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Wikingerhelmes", "NOUN_CRESTED_HELMET", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wikingerhelme", "NOUN_CRESTED_HELMET", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

@@ -216,6 +216,7 @@
 #define	NAM_LEATHER_HAT	"leather hat"
 #define	NAM_IRON_SKULL_CAP	"iron skull cap"
 #define	NAM_HARD_HAT	"hard hat"
+#define	NAM_SCHLAPPHUT	"fedora (unidentified)" /* EN */
 #define	NAM_CONICAL_HAT	"conical hat"
 #define	NAM_PLUMED_HELMET	"plumed helmet"
 #define	NAM_ETCHED_HELMET	"etched helmet"
