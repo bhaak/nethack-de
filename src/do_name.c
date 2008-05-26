@@ -739,7 +739,11 @@ boolean called;
 	    Strcpy(pbuf, rank_of((int)mtmp->m_lev,
 				 monsndx(mdat),
 				 (boolean)mtmp->female));
+#ifdef GERMAN
+	    Strcat(buf, pbuf); // ansonsten ergibt Ctrl-G Priester ein Monster namens noun_priester
+#else
 	    Strcat(buf, lcase(pbuf));
+#endif
 	    name_at_start = FALSE;
 	} else {
 	    Strcat(buf, mdat->mname);
