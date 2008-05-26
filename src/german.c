@@ -394,6 +394,11 @@ void german2meta(const char *str, char *output)
 				strcat(output, "PARTIKEL_OF ");
 				strcat(output, wort->typ);
 				i = i + strlen(wort->wort);
+			} else if (strncmp("NOUN_SCR_", wort->typ, 9)==0) {
+				strcat(output, wort->typ);
+				/* NOUN_SCR_* immer im Singular zurückliefern */
+				if (output[strlen(output)-1] == 's') { output[strlen(output)-1] = '\0'; }
+				i = i + strlen(wort->wort);
 			} else {
 				if (WISH_DEBUG) printf("4.5 i: %d\n",i);
 				if (WISH_DEBUG) printf("4.5 wort->wort: %s\n",wort->wort);

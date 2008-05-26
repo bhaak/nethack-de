@@ -9,7 +9,7 @@
 #endif
 
 /* "an uncursed greased partly eaten guardian naga hatchling [corpse]" */
-#define PREFIX	80	/* (56) */
+#define PREFIX	110	/* (56) */ /* EN #define PREFIX	80	*/
 #define SCHAR_LIM 127
 #define NUMOBUF 12
 
@@ -1691,13 +1691,14 @@ boolean retry_inverted;	/* optional extra "of" handling */
 	 * and the trap is "bear trap", so to let wizards wish for both we
 	 * must not fuzzymatch.
 	 */
+	//fprintf(stderr, "wishymatch u_str: -%s- o_str: -%s-\n", u_str, o_str); // DE DEBUG
 #ifdef WIZARD
 	if (wizard && !strcmp(o_str, "beartrap"))
 	    return !strncmpi(o_str, u_str, 8);
 #endif
 
 	/* ignore spaces & hyphens and upper/lower case when comparing */
-	if (fuzzymatch(u_str, o_str, " -", TRUE)) return TRUE;
+	if (fuzzymatch(u_str, o_str, " -\"", TRUE)) return TRUE; /* EN if (fuzzymatch(u_str, o_str, " -", TRUE)) return TRUE; */
 
 	if (retry_inverted) {
 	    const char *u_of, *o_of;
@@ -1868,9 +1869,7 @@ boolean from_user;
 	    !strcmpi(bp, "nix") ||    // deutsch ugs
 	    !strcmpi(bp, "nichts"))   // deutsch
 		return no_wish;
-	/* save the [nearly] unmodified choice string */
-	Strcpy(fruitbuf, bp);
-
+#ifdef GERMAN
 	//fprintf(stderr, "readobjnam 3 oclass: %d\n", oclass); // DE DEBUG
 	german2meta(bp, german_str);
 	//fprintf(stderr, "readobjnam 4 german2meta returned%s\n", german_str); // DE DEBUG
@@ -1879,11 +1878,14 @@ boolean from_user;
 	bp = german_str;
 	//pline("wishing3: %s",bp);
 	//pline("wishing4: %s",german_str);
-	
+#endif
+	/* save the [nearly] unmodified choice string */
+	Strcpy(fruitbuf, bp);
+
 	for(;;) {
 		register int l;
 
-		//pline("wishing5: %s", bp);
+		//pline("wishing5: %s", bp); // DE DEBUG
 		if (!bp || !*bp) goto any;
 		if (!strncmpi(bp, "MODIFIER_CORPSE ", l=16)) {
 		} else if (!strncmpi(bp, "PARTIKEL_VON ", l=13)) {
@@ -2050,6 +2052,13 @@ boolean from_user;
 		*p = 0;
 		dn = p+10;
 	}
+#ifdef GERMAN
+	if ((p = strstri(bp, " \"")) != 0) {
+		*p = 0;
+		dn = p+2;
+	}
+#endif
+
 	if ((p = strstri(bp, " of spinach")) != 0) {
 		*p = 0;
 		contents = SPINACH;
@@ -2344,9 +2353,11 @@ boolean from_user;
 	actualn = bp;
 	if (!dn) dn = actualn; /* ex. "skull cap" */
 srch:
+	//fprintf(stderr, "####\n");
 	//fprintf(stderr, "srch#### dn:      %s\n", dn);
 	//fprintf(stderr, "srch#### bp:      %s\n", bp);
 	//fprintf(stderr, "srch#### actualn: %s\n", actualn);
+	//fprintf(stderr, "srch#### oclass:  %d\n", oclass);
 	/* check real names of gems first */
 	if(!oclass && actualn) {
 		//fprintf(stderr, "a00#######\n");
@@ -2367,6 +2378,7 @@ srch:
 
 		//fprintf(stderr, "b####### i: %d actualn: %s; dn: %s; un: %s\n", i, actualn, dn, un);
 		//fprintf(stderr, "b####### i: %d zn: %s\n", i, OBJ_NAME(objects[i]));
+		//fprintf(stderr, "b####### i: %d desc: %s\n", i, OBJ_DESCR(objects[i]));
 		if (actualn && (zn = OBJ_NAME(objects[i])) != 0 &&
 			    wishymatch(actualn, zn, TRUE)) {
 			//fprintf(stderr, "c####### %s\n", zn);

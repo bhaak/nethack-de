@@ -653,6 +653,7 @@ START_TEST (test_german2meta) {
 										 {"Zauberbuch des Schlafes", "NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP"},
 										 {"verfluchtes Schwert", "ADJEKTIV_CURSED NOUN_SWORD"},
 										 {"Schriftrolle des Lichtes", "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_LIGHT"},
+										 {"Schriftrolle \"LIES MICH\"", "NOUN_SCROLL \"NOUN_SCR_READ_ME\""},
 										 {"eine Essensration", "ARTIKEL_UNBESTIMMTER NOUN_FOOD_RATION"},
 										 {"Essensrationen", "NOUN_FOOD_RATIONs"},
 										 {"eine geheiligte Zauberbuch der Monsterbezauberung", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_CHARM_MONSTER"},
