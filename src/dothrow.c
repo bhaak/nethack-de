@@ -1397,7 +1397,7 @@ register struct obj   *obj;
 	    }
 	    pline("SUBJECT %s OBJECT KASUS_DATIV in %s.", /* EN pline("%s into %s %s.", */
 		Tobjnam(obj, "VERB_VERSCHWINDEN"), /* EN Tobjnam(obj, "vanish"), s_suffix(mon_nam(mon)), */
-		genitivattribut_zu_wort(mon_nam(mon), is_animal(u.ustuck->data) ? "NOUN_EINGEWEIDEs" : "NOUN_STROEMUNGs")); /* EN is_animal(u.ustuck->data) ? "entrails" : "currents"); */ // TODO DE currents: besser?
+		genitivattribut_zu_wort(mon_nam(mon), is_whirly(u.ustuck->data) ? "NOUN_STROEMUNGs" : "NOUN_EINGEWEIDEs")); /* EN is_animal(u.ustuck->data) ? "entrails" : "currents"); */ // TODO DE currents: besser?
 	} else {
 	    tmiss(obj, mon);
 	}
@@ -1415,10 +1415,10 @@ register struct obj *obj;
 	boolean is_gem = objects[obj->otyp].oc_material == GEMSTONE;
 	int ret = 0;
 	static NEARDATA const char nogood[] = " VERB_INTERESSIEREN sich nicht für OBJECT PRONOMEN_POSSESSIV NOUN_MUELL."; /* EN static NEARDATA const char nogood[] = " is not interested in your junk."; */
-	static NEARDATA const char acceptgift[] = " accepts your gift."; /* EN static NEARDATA const char acceptgift[] = " accepts your gift."; */ // TODO DE
-	static NEARDATA const char maybeluck[] = " hesitatingly"; /* EN static NEARDATA const char maybeluck[] = " hesitatingly"; */ // TODO DE
-	static NEARDATA const char noluck[] = " graciously"; /* EN static NEARDATA const char noluck[] = " graciously"; */ // TODO DE
-	static NEARDATA const char addluck[] = " gratefully"; /* EN static NEARDATA const char addluck[] = " gratefully"; */ // TODO DE
+	static NEARDATA const char acceptgift[] = ""; /* EN static NEARDATA const char acceptgift[] = " accepts your gift."; */
+	static NEARDATA const char maybeluck[] = " nimmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GESCHENK zögernd an."; /* EN static NEARDATA const char maybeluck[] = " hesitatingly"; */
+	static NEARDATA const char noluck[] =    " nimmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GESCHENK gnädigerweise an."; /* EN static NEARDATA const char noluck[] = " graciously"; */
+	static NEARDATA const char addluck[] =   " nimmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GESCHENK dankbar an."; /* EN static NEARDATA const char addluck[] = " gratefully"; */
 
 	Strcpy(buf,Monnam(mon));
 	mon->mpeaceful = 1;
@@ -1564,7 +1564,7 @@ boolean from_invent;
 				if (obj->otyp != POT_WATER) {
 					if (!breathless(youmonst.data))
 			    		     /* [what about "familiar odor" when known?] */
-					    You("smell a peculiar odor..."); /* EN You("smell a peculiar odor..."); */ // TODO DE
+					    You("VERB_BEMERKEN einen merkwürdigen Duft ..."); /* EN You("smell a peculiar odor..."); */
 					else {
 					    int numeyes = eyecount(youmonst.data);
 					    Your("%s VERB_TRAENEN%s.", /* EN Your("%s water%s.", */
@@ -1709,13 +1709,13 @@ struct obj *obj;
 #endif
 	if(u.uswallow) {
 		pline(is_animal(u.ustuck->data) ?
-			"%s in the %s's entrails." : "%s into %s.", /* EN "%s in the %s's entrails." : "%s into %s.", */ // TODO DE
+			"%s KASUS_DATIV in %s." : "%s KASUS_DATIV in %s.", /* EN "%s in the %s's entrails." : "%s into %s.", */
 #ifndef GOLDOBJ
-			"The gold disappears", mon_nam(u.ustuck)); /* EN "The gold disappears", mon_nam(u.ustuck)); */ // TODO DE
+			"Das Gold verschwindet", is_animal(u.ustuck->data) ? genitivattribut_zu_wort(mon_nam(u.ustuck), "NOUN_EINGEWEIDEs") : mon_nam(u.ustuck)); /* EN "The gold disappears", mon_nam(u.ustuck)); */
 		u.ustuck->mgold += zorks;
 		dealloc_obj(obj);
 #else
-			"The money disappears", mon_nam(u.ustuck)); /* EN "The money disappears", mon_nam(u.ustuck)); */ // TODO DE
+			"Das Geld verschwindet", is_animal(u.ustuck->data) ? genitivattribut_zu_wort(mon_nam(u.ustuck), "NOUN_EINGEWEIDEs") : mon_nam(u.ustuck)); /* EN "The money disappears", mon_nam(u.ustuck)); */
 		add_to_minv(u.ustuck, obj);
 #endif
 		return(1);

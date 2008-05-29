@@ -67,7 +67,7 @@ boolean quietly;
 		    if (!quietly)
 			/* have just been given "You <do something with>
 			   the figurine and it transforms." message */
-			pline("... into a pile of dust."); /* EN pline("... into a pile of dust."); */ // TODO DE
+			pline("... in einen Haufen Staub."); /* EN pline("... into a pile of dust."); */
 		    break;	/* mtmp is null */
 		}
 	    } else if (!rn2(3)) {
@@ -764,7 +764,7 @@ register struct obj *obj;
 			  Monnam(mtmp), the(xname(obj)),
 			  !big_corpse ? "." : " oder umgekehrt!"); /* EN !big_corpse ? "." : ", or vice versa!"); */
 		} else if (cansee(mtmp->mx,mtmp->my))
-		    pline("%s.", Tobjnam(obj, "stop")); /* EN pline("%s.", Tobjnam(obj, "stop")); */ // TODO DE
+		    pline("SUBJECT %s.", Tobjnam(obj, "VERB_STOPPEN")); /* EN pline("%s.", Tobjnam(obj, "stop")); */
 		/* dog_eat expects a floor object */
 		place_object(obj, mtmp->mx, mtmp->my);
 		(void) dog_eat(mtmp, obj, mtmp->mx, mtmp->my, FALSE);

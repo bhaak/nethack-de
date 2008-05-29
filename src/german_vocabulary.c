@@ -5877,6 +5877,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Grottenschrate", "NOUN_BUGBEARs", "en", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Grottenschraten", "NOUN_BUGBEARs", "en", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Käferbär", "NOUN_BUGBEAR", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Käferbären", "NOUN_BUGBEAR", "en", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Käferbären", "NOUN_BUGBEARs", "en", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Zwergenfürst", "NOUN_DWARF_LORD", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Zwergenfürsten", "NOUN_DWARF_LORD", "en", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Zwergenfürsten", "NOUN_DWARF_LORDs", "en", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -11575,6 +11579,30 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"gefährliche", "ADJEKTIV_GEFAEHRLICH", "", akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, ohne},
   {"gefährlicher", "ADJEKTIV_GEFAEHRLICH", "", genitiv, feminin|maskulin|neutrum, n_plural, ohne},
   {"gefährlichen", "ADJEKTIV_GEFAEHRLICH", "", dativ, feminin|maskulin|neutrum, n_plural, ohne},
+  
+
+  {"geführt", "ADJEKTIV_GEFUEHRT", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, grundform},
+  {"geführte", "ADJEKTIV_GEFUEHRT", "", nominativ, feminin|maskulin|neutrum, n_singular, bestimmter},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"geführte", "ADJEKTIV_GEFUEHRT", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", dativ|genitiv, feminin|maskulin|neutrum, n_singular, bestimmter},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, bestimmter},
+  {"geführter", "ADJEKTIV_GEFUEHRT", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"geführte", "ADJEKTIV_GEFUEHRT", "", akkusativ|nominativ, feminin, n_singular, unbestimmter},
+  {"geführtes", "ADJEKTIV_GEFUEHRT", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", dativ|genitiv, feminin|maskulin|neutrum, n_singular, unbestimmter},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, unbestimmter},
+  {"geführter", "ADJEKTIV_GEFUEHRT", "", nominativ, maskulin, n_singular, ohne},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", genitiv|akkusativ, maskulin, n_singular, ohne},
+  {"geführtem", "ADJEKTIV_GEFUEHRT", "", dativ, maskulin|neutrum, n_singular, ohne},
+  {"geführtes", "ADJEKTIV_GEFUEHRT", "", akkusativ|nominativ, neutrum, n_singular, ohne},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", genitiv, neutrum, n_singular, ohne},
+  {"geführte", "ADJEKTIV_GEFUEHRT", "", akkusativ|nominativ, feminin, n_singular, ohne},
+  {"geführter", "ADJEKTIV_GEFUEHRT", "", dativ|genitiv, feminin, n_singular, ohne},
+  {"geführte", "ADJEKTIV_GEFUEHRT", "", akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, ohne},
+  {"geführter", "ADJEKTIV_GEFUEHRT", "", genitiv, feminin|maskulin|neutrum, n_plural, ohne},
+  {"geführten", "ADJEKTIV_GEFUEHRT", "", dativ, feminin|maskulin|neutrum, n_plural, ohne},
   
 
   {"geruchlos", "ADJEKTIV_GERUCHLOS", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, grundform},

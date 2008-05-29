@@ -338,7 +338,7 @@ dodrink()
 	}
 	/* Is there a fountain to drink from here? */
 	if (IS_FOUNTAIN(levl[u.ux][u.uy].typ) && !Levitation) {
-		if(yn("Drink from the fountain?") == 'y') { /* EN if(yn("Drink from the fountain?") == 'y') { */ // TODO DE
+		if(yn("Vom Springbrunnen trinken?") == 'y') { /* EN if(yn("Drink from the fountain?") == 'y') { */
 			drinkfountain();
 			return 1;
 		}
@@ -346,7 +346,7 @@ dodrink()
 #ifdef SINKS
 	/* Or a kitchen sink? */
 	if (IS_SINK(levl[u.ux][u.uy].typ)) {
-		if (yn("Drink from the sink?") == 'y') { /* EN if (yn("Drink from the sink?") == 'y') { */ // TODO DE
+		if (yn("Von der Sp¸le trinken?") == 'y') { /* EN if (yn("Drink from the sink?") == 'y') { */
 			drinksink();
 			return 1;
 		}
@@ -748,8 +748,8 @@ peffects(otmp)
 		} /* and fall through */
 	case SPE_HASTE_SELF:
 		if(!Very_fast) /* wwf@doe.carleton.ca */
-			You("are suddenly moving %sfaster.", /* EN You("are suddenly moving %sfaster.", */ // TODO DE
-				Fast ? "" : "much "); /* EN Fast ? "" : "much "); */ // TODO DE
+			You("VERB_BEWEGEN OBJECT PRONOMEN_PERSONAL plˆtzlich %sschneller.", /* EN You("are suddenly moving %sfaster.", */
+				Fast ? "" : "viel "); /* EN Fast ? "" : "much "); */
 		else {
 			Your("%s get new energy.", /* EN Your("%s get new energy.", */ // TODO DE
 				makeplural(body_part(LEG)));
@@ -780,7 +780,7 @@ peffects(otmp)
 
 				get_level(&newlevel, newlev);
 				if(on_level(&newlevel, &u.uz)) {
-				    pline("It tasted bad."); /* EN pline("It tasted bad."); */ // TODO DE
+				    pline("Schmeckt schlecht."); /* EN pline("It tasted bad."); */
 				    break;
 				} else You(riseup, ceiling(u.ux,u.uy));
 				goto_level(&newlevel, FALSE, FALSE, FALSE);
@@ -839,7 +839,7 @@ peffects(otmp)
 	   && (u.ux != sstairs.sx || u.uy != sstairs.sy || !sstairs.up)
 	   && (!xupladder || u.ux != xupladder || u.uy != yupladder)
 	) {
-					You("hit your %s on the %s.", /* EN You("hit your %s on the %s.", */ // TODO DE
+					You("VERB_STOSSEN OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT KASUS_DATIV _an_ ARTIKEL_BESTIMMTER %s.", /* EN You("hit your %s on the %s.", */
 						body_part(HEAD),
 						ceiling(u.ux,u.uy));
 					losehp(uarmh ? 1 : rnd(10),
@@ -858,9 +858,9 @@ peffects(otmp)
 	case POT_GAIN_ENERGY:			/* M. Stephenson */
 		{	register int num;
 			if(otmp->cursed)
-			    You_feel("lackluster."); /* EN You_feel("lackluster."); */ // TODO DE
+			    Du_fuehlst_dich("drˆge."); /* EN You_feel("lackluster."); */
 			else
-			    pline("Magical energies course through your body."); /* EN pline("Magical energies course through your body."); */ // TODO DE
+			    pline("Magische Energie strˆmt KASUS_AKKUSATIV durch PRONOMEN_POSSESSIV NOUN_KOERPER."); /* EN pline("Magical energies course through your body."); */
 			num = rnd(5) + 5 * otmp->blessed + 1;
 			u.uenmax += (otmp->cursed) ? -num : num;
 			u.uen += (otmp->cursed) ? -num : num;
@@ -893,9 +893,9 @@ peffects(otmp)
 	case POT_ACID:
 		if (Acid_resistance)
 			/* Not necessarily a creature who _likes_ acid */
-			pline("This tastes %s.", Hallucination ? "tangy" : "sour"); /* EN pline("This tastes %s.", Hallucination ? "tangy" : "sour"); */ // TODO DE
+			pline("Das schmeckt %s.", Hallucination ? "tangy" : "sour"); /* EN pline("This tastes %s.", Hallucination ? "tangy" : "sour"); */ // TODO DE
 		else {
-			pline("This burns%s!", otmp->blessed ? " a little" : /* EN pline("This burns%s!", otmp->blessed ? " a little" : */ // TODO DE
+			pline("Das brennt%s!", otmp->blessed ? " ein wenig" : /* EN pline("This burns%s!", otmp->blessed ? " a little" : */
 					otmp->cursed ? " a lot" : " like acid"); /* EN otmp->cursed ? " a lot" : " like acid"); */ // TODO DE
 			losehp(d(otmp->cursed ? 2 : 1, otmp->blessed ? 4 : 8),
 					"potion of acid", KILLED_BY_AN); /* EN "potion of acid", KILLED_BY_AN); */ // TODO DE
@@ -1788,7 +1788,7 @@ dodip()
 		    if ((omat == PLASTIC || omat == PAPER) && !obj->oartifact)
 			obj->oeroded = MAX_ERODE;
 		    pline("Das brennende ÷l %s KASUS_AKKUSATIV %s.", /* EN pline_The("burning oil %s %s.", */
-			    obj->oeroded == MAX_ERODE ? "destroys" : "besch‰digt", /* EN obj->oeroded == MAX_ERODE ? "destroys" : "damages", */ // TODO DE
+			    obj->oeroded == MAX_ERODE ? "zerstˆrt" : "besch‰digt", /* EN obj->oeroded == MAX_ERODE ? "destroys" : "damages", */
 			    yname(obj));
 		    if (obj->oeroded == MAX_ERODE) {
 			obj_extract_self(obj);
@@ -1947,7 +1947,7 @@ register struct obj *obj;
 	}
 
 	if (!Blind) {
-		pline("In a cloud of smoke, %s VERB_ENTWEICHEN!", a_monnam(mtmp)); /* EN pline("In a cloud of smoke, %s emerges!", a_monnam(mtmp)); */ // TODO DE
+		pline("Einer dichten Rauchwolke entsteigt %s!", a_monnam(mtmp)); /* EN pline("In a cloud of smoke, %s emerges!", a_monnam(mtmp)); */
 		pline("SUBJECT %s VERB_SPRECHEN.", Monnam(mtmp)); /* EN pline("%s speaks.", Monnam(mtmp)); */
 	} else {
 		You("VERB_SMELL beiﬂenden Qualm."); /* EN You("smell acrid fumes."); */

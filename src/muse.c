@@ -109,7 +109,7 @@ struct obj *obj;
 		    if (vis) pline(empty);
 		} else {
 		    if (vis)
-			pline("In a cloud of smoke, %s VERB_ENTWEICHEN!", /* EN pline("In a cloud of smoke, %s emerges!", */ // TODO DE
+			pline("Einer dichten Rauchwolke entsteigt %s!", /* EN pline("In a cloud of smoke, %s emerges!", */
 							a_monnam(mtmp));
 		    pline("SUBJECT %s VERB_SPRECHEN.", vis ? Monnam(mtmp) : "NOUN_JEMAND"); /* EN pline("%s speaks.", vis ? Monnam(mtmp) : Something); */
 		/* I suspect few players will be upset that monsters */

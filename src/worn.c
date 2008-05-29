@@ -191,16 +191,16 @@ struct obj *obj;	/* item to make known if effect can be seen */
     if (give_msg && (mon->mspeed != oldspeed || petrify) && canseemon(mon)) {
 	/* fast to slow (skipping intermediate state) or vice versa */
 	const char *howmuch = (mon->mspeed + oldspeed == MFAST + MSLOW) ?
-				"much " : ""; /* EN "much " : ""; */ // TODO DE
+				"viel " : ""; /* EN "much " : ""; */
 
 	if (petrify) {
 	    /* mimic the player's petrification countdown; "slowing down"
 	       even if fast movement rate retained via worn speed boots */
 	    if (flags.verbose) pline("SUBJECT %s VERB_WERDEN langsamer.", Monnam(mon)); /* EN if (flags.verbose) pline("%s is slowing down.", Monnam(mon)); */
 	} else if (adjust > 0 || mon->mspeed == MFAST)
-	    pline("%s is suddenly moving %sfaster.", Monnam(mon), howmuch); /* EN pline("%s is suddenly moving %sfaster.", Monnam(mon), howmuch); */ // TODO DE
+	    pline("SUBJECT %s VERB_BEWEGEN sich plötzlich %sschneller.", Monnam(mon), howmuch); /* EN pline("%s is suddenly moving %sfaster.", Monnam(mon), howmuch); */
 	else
-	    pline("%s seems to be moving %sslower.", Monnam(mon), howmuch); /* EN pline("%s seems to be moving %sslower.", Monnam(mon), howmuch); */ // TODO DE
+	    pline("SUBJECT %s VERB_SCHEINEN sich %slangsamer zu bewegen.", Monnam(mon), howmuch); /* EN pline("%s seems to be moving %sslower.", Monnam(mon), howmuch); */
 	/* might discover an object if we see the speed change happen, but
 	   avoid making possibly forgotten book known when casting its spell */
 	if (obj != 0 && obj->dknown &&

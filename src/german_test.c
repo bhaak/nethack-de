@@ -575,7 +575,7 @@ START_TEST (test_inventory_names) {
 		{names[ 4], "Ringe"},
 		{names[ 5], "Amulette"},
 		{names[ 6], "Werkzeuge"},
-		{names[ 7], "Essbares"},
+		{names[ 7], "Lebensmittel"},
 		{names[ 8], "Tränke"},
 		{names[ 9], "Schriftrollen"},
 		{names[10], "Zauberbücher"},

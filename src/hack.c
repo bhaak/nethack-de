@@ -1291,7 +1291,7 @@ domove()
 		       (bigmonst(mtmp->data) || (curr_mon_load(mtmp) > 600))) {
 		/* can't swap places when pet won't fit thru the opening */
 		u.ux = u.ux0,  u.uy = u.uy0;	/* didn't move after all */
-		You("stop.  %s won't fit through.", upstart(y_monnam(mtmp))); /* EN You("stop.  %s won't fit through.", upstart(y_monnam(mtmp))); */ // TODO DE
+		You("VERB_HALTEN an.  NEUER_SATZ SUBJECT %s VERB_PASSEN da nicht durch.", upstart(y_monnam(mtmp))); /* EN You("stop.  %s won't fit through.", upstart(y_monnam(mtmp))); */
 	    } else {
 		char pnambuf[BUFSZ];
 
@@ -1446,11 +1446,11 @@ boolean pick;
 		else if (Is_waterlevel(&u.uz))
 			goto stillinwater;
 		else if (Levitation)
-			You("pop out of the water like a cork!"); /* EN You("pop out of the water like a cork!"); */ // TODO DE
+			You("VERB_SCHIESSEN aus dem Wasser wie ein Korken!"); /* EN You("pop out of the water like a cork!"); */
 		else if (Flying)
 			You("VERB_FLIEGEN aus dem Wasser."); /* EN You("fly out of the water."); */
 		else if (Wwalking)
-			You("slowly rise above the surface."); /* EN You("slowly rise above the surface."); */ // TODO DE
+			You("VERB_ERHEBEN OBJECT PRONOMEN_PERSONAL über die Oberfläche."); /* EN You("slowly rise above the surface."); */
 		else
 			goto stillinwater;
 		was_underwater = Underwater && !Is_waterlevel(&u.uz);
@@ -1708,18 +1708,18 @@ register boolean newlev;
 	     * but everything else gives a message only the first time */
 	    switch (rt) {
 		case ZOO:
-		    pline("Welcome to David's treasure zoo!"); /* EN pline("Welcome to David's treasure zoo!"); */ // TODO DE
+		    pline("Willkommen in Davids tierischer Schatzkammer!"); /* EN pline("Welcome to David's treasure zoo!"); */
 		    break;
 		case SWAMP:
-		    pline("It %s rather %s down here.", /* EN pline("It %s rather %s down here.", */ // TODO DE
-			  Blind ? "feels" : "looks", /* EN Blind ? "feels" : "looks", */ // TODO DE
-			  Blind ? "humid" : "muddy"); /* EN Blind ? "humid" : "muddy"); */ // TODO DE
+		    pline("Hier unten %s %s ziemlich %s.", /* EN pline("It %s rather %s down here.", */
+			  Blind ? "fühlt es sich" : "sieht es", /* EN Blind ? "feels" : "looks", */
+			  Blind ? "feucht an" : "schlammig aus"); /* EN Blind ? "humid" : "muddy"); */
 		    break;
 		case COURT:
-		    You("enter an opulent throne room!"); /* EN You("enter an opulent throne room!"); */ // TODO DE
+		    You("VERB_BETRETEN einen prunkvollen Thronsaal!"); /* EN You("enter an opulent throne room!"); */
 		    break;
 		case LEPREHALL:
-		    You("enter a leprechaun hall!"); /* EN You("enter a leprechaun hall!"); */ // TODO DE
+		    You("VERB_BETRETEN a leprechaun hall!"); /* EN You("enter a leprechaun hall!"); */ // TODO DE
 		    break;
 		case MORGUE:
 		    if(midnight()) {

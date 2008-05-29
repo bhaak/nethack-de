@@ -1166,7 +1166,7 @@ zap_dig()
 
 	    if (!is_whirly(mtmp->data)) {
 		if (is_animal(mtmp->data))
-		    You("pierce %s %s wall!", /* EN You("pierce %s %s wall!", */ // TODO DE
+		    You("VERB_DURCHBOHREN %s %s wall!", /* EN You("pierce %s %s wall!", */ // TODO DE
 			s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); /* EN s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); */ // TODO DE
 		mtmp->mhp = 1;		/* almost dead */
 		expels(mtmp, mtmp->data, !is_animal(mtmp->data));
@@ -1219,7 +1219,7 @@ zap_dig()
 		if (room->typ == SDOOR)
 		    room->typ = DOOR;
 		else if (cansee(zx, zy))
-		    pline_The("door is razed!"); /* EN pline_The("door is razed!"); */ // TODO DE
+		    pline_The("NOUN_OBJ_DOOR zerbirst in kleine Stücke!"); /* EN pline_The("door is razed!"); */
 		watch_dig((struct monst *)0, zx, zy, TRUE);
 		room->doormask = D_NODOOR;
 		unblock_point(zx,zy); /* vision */
@@ -1433,7 +1433,7 @@ long timeout;	/* unused */
 	    if (flags.verbose) {
 		char *cname = corpse_xname(obj, FALSE);
 		Your("%s%s %s away%c", /* EN Your("%s%s %s away%c", */ // TODO DE
-		     obj == uwep ? "wielded " : nul, cname, /* EN obj == uwep ? "wielded " : nul, cname, */ // TODO DE
+		     obj == uwep ? "als Waffe ADJEKTIV_GEFUEHRT " : nul, cname, /* EN obj == uwep ? "wielded " : nul, cname, */
 		     vtense(cname, "rot"), obj == uwep ? '!' : '.'); /* EN vtense(cname, "rot"), obj == uwep ? '!' : '.'); */ // TODO DE
 	    }
 	    if (obj == uwep) {

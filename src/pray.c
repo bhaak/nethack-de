@@ -5,6 +5,10 @@
 #include "hack.h"
 #include "epri.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_PTR int NDECL(prayer_done);
 STATIC_DCL struct obj *NDECL(worst_cursed_item);
 STATIC_DCL int NDECL(in_trouble);
@@ -293,7 +297,7 @@ register int trouble;
 		    flags.botl = 1;
 		    break;
 	    case TROUBLE_LAVA:
-		    You("VERB_HABEN wieder festen Boden unter den Füßen."); /* EN You("are back on solid ground."); */
+		    You("VERB_HABEN wieder festen Boden OBJECT KASUS_DATIV unter ARTIKEL_BESTIMMTER %s.", makeplural(body_part(FOOT))); /* EN You("are back on solid ground."); */
 		    /* teleport should always succeed, but if not,
 		     * just untrap them.
 		     */
@@ -443,9 +447,9 @@ decurse:
 		    otmp = which_armor(u.usteed, W_SADDLE);
 		    uncurse(otmp);
 		    if (!Blind) {
-			pline("%s %s %s.", // TODO DE
-			      s_suffix(upstart(y_monnam(u.usteed))), // TODO DE
-			      aobjnam(otmp, "VERB_LEUCHTEN schwach"), /* EN aobjnam(otmp, "softly glow"), */
+			pline("SUBJECT %s %s %s.", /* EN pline("%s %s %s.", */
+			      genitivattribut_zu_wort(y_monnam(u.usteed), /* EN s_suffix(upstart(y_monnam(u.usteed))),  */
+			      cxname(otmp)), "VERB_LEUCHTEN schwach", /* EN aobjnam(otmp, "softly glow"), */
 			      hcolor(NH_AMBER));
 			otmp->bknown = TRUE;
 		    }
@@ -491,9 +495,9 @@ aligntyp resp_god;
 		fry_by_god(resp_god);
 	}
 
-	pline("%s is not deterred...", align_gname(resp_god)); /* EN pline("%s is not deterred...", align_gname(resp_god)); */ // TODO DE
+	pline("SATZBEGINN %s lässt sich nicht beirren ...", align_gname(resp_god)); /* EN pline("%s is not deterred...", align_gname(resp_god)); */
 	if (u.uswallow) {
-	    pline("A wide-angle disintegration beam aimed at you hits %s!", /* EN pline("A wide-angle disintegration beam aimed at you hits %s!", */ // TODO DE
+	    pline("Ein KASUS_AKKUSATIV für PRONOMEN_PERSONAL bestimmter Desintegratorstrahl trifft KASUS_AKKUSATIV %s!", /* EN pline("A wide-angle disintegration beam aimed at you hits %s!", */
 			mon_nam(u.ustuck));
 	    if (!resists_disint(u.ustuck)) {
 		pline("SUBJECT %s VERB_VERKOHLEN zu einem Brikett!", Monnam(u.ustuck)); /* EN pline("%s fries to a crisp!", Monnam(u.ustuck)); */
@@ -501,7 +505,7 @@ aligntyp resp_god;
 	    } else
 		pline("%s seems unaffected.", Monnam(u.ustuck)); /* EN pline("%s seems unaffected.", Monnam(u.ustuck)); */ // TODO DE
 	} else {
-	    pline("A wide-angle disintegration beam hits you!"); /* EN pline("A wide-angle disintegration beam hits you!"); */ // TODO DE
+	    pline("Ein Desintegratorstrahl trifft KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("A wide-angle disintegration beam hits you!"); */
 
 	    /* disintegrate shield and body armor before disintegrating
 	     * the impudent mortal, like black dragon breath -3.
@@ -526,7 +530,7 @@ aligntyp resp_god;
 	    }
 	    if (Is_astralevel(&u.uz) || Is_sanctum(&u.uz)) {
 		/* one more try for high altars */
-		verbalize("Du kannst meinem Zorn nicht entkommen, mortal!"); /* EN verbalize("Thou cannot escape my wrath, mortal!"); */ // TODO DE
+		verbalize("Du kannst meinem Zorn nicht entkommen, %s!", flags.female ? "Sterbliche" : "Sterblicher"); /* EN verbalize("Thou cannot escape my wrath, mortal!"); */
 		summon_minion(resp_god, FALSE);
 		summon_minion(resp_god, FALSE);
 		summon_minion(resp_god, FALSE);
@@ -570,7 +574,7 @@ aligntyp resp_god;
 	switch (rn2(maxanger)) {
 	    case 0:
 	    case 1:	You("VERB_FUEHLEN, dass %s %s ist.", align_gname(resp_god), /* EN case 1:	You_feel("that %s is %s.", align_gname(resp_god), */
-			    Hallucination ? "entmutigt" : "displeased/ungehalten?"); /* EN Hallucination ? "bummed" : "displeased"); */ // TODO DE
+			    Hallucination ? "entmutigt" : "ungehalten"); /* EN Hallucination ? "bummed" : "displeased"); */
 			break;
 	    case 2:
 	    case 3:
@@ -579,7 +583,7 @@ aligntyp resp_god;
 			    (ugod_is_angry() && resp_god == u.ualign.type)
 				? "hast strayed from the path" : /* EN ? "hast strayed from the path" : */ // TODO DE
 						"art arrogant", /* EN "art arrogant", */ // TODO DE
-			      youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */ // TODO DE
+			      youmonst.data->mlet == S_HUMAN ? (flags.female ? "Sterbliche" : "Sterblicher") : "Kreatur"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */
 			verbalize("Thou must relearn thy lessons!"); /* EN verbalize("Thou must relearn thy lessons!"); */ // TODO DE
 			(void) adjattrib(A_WIS, -1, FALSE);
 			losexp((char *)0);
@@ -603,7 +607,7 @@ aligntyp resp_god;
 				   (a_align(u.ux,u.uy) != resp_god)) ?
 				  "zu schmähen":"anzurufen"); /* EN "scorn":"call upon"); */
 			pline("\"Dann stirb, %s!\"", /* EN pline("\"Then die, %s!\"", */
-			      youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */ // TODO DE
+			      youmonst.data->mlet == S_HUMAN ? (flags.female ? "Sterbliche" : "Sterblicher") : "Kreatur"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */
 			summon_minion(resp_god, FALSE);
 			break;
 

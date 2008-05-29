@@ -3502,6 +3502,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_FEUCHT","feucht"),
     dekliniere_adjektiv("ADJEKTIV_FRITTIERT","frittiert"),
     dekliniere_adjektiv("ADJEKTIV_GEFAEHRLICH","gefährlich"),
+    dekliniere_adjektiv("ADJEKTIV_GEFUEHRT","geführt"),
     dekliniere_adjektiv("ADJEKTIV_GERUCHLOS","geruchlos"),
     dekliniere_adjektiv("ADJEKTIV_GETRAGEN","getragen"),
     dekliniere_adjektiv("ADJEKTIV_GESAMT","gesamt"),

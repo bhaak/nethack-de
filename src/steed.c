@@ -508,7 +508,7 @@ dismount_steed(reason)
 	    default:
 		if (otmp && otmp->cursed) {
 		    pline("Das geht nicht.  Der Sattel %s verflucht%s.", /* EN You("can't.  The saddle %s cursed.", */
-			otmp->bknown ? "ist" : "scheint", otmp->bknown ? "" : "zu sein"); /* EN otmp->bknown ? "is" : "seems to be"); */
+			otmp->bknown ? "ist" : "scheint", otmp->bknown ? "" : " zu sein"); /* EN otmp->bknown ? "is" : "seems to be"); */
 		    otmp->bknown = TRUE;
 		    return;
 		}
