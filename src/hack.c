@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVL1
 STATIC_DCL void NDECL(maybe_wail);
 #endif /*OVL1*/
@@ -1518,12 +1522,12 @@ stillinwater:;
 			    pline("%s jumps near you from the %s.", /* EN pline("%s jumps near you from the %s.", */ // TODO DE
 					Amonnam(mtmp), ceiling(u.ux,u.uy));
 			else if(mtmp->mpeaceful) {
-				You("surprise %s!", /* EN You("surprise %s!", */ // TODO DE
+				You("VERB_UEBERRASCHEN OBJECT %s!", /* EN You("surprise %s!", */
 				    Blind && !sensemon(mtmp) ?
 				    something : a_monnam(mtmp));
 				mtmp->mpeaceful = 0;
 			} else
-			    pline("%s attacks you by surprise!", /* EN pline("%s attacks you by surprise!", */ // TODO DE
+			    pline("SUBJECT %s VERB_ANGREIFEN OBJECT PRONOMEN_PERSONAL überraschend SATZKLAMMER!", /* EN pline("%s attacks you by surprise!", */
 					Amonnam(mtmp));
 			break;
 		}
@@ -1711,7 +1715,7 @@ register boolean newlev;
 		    pline("Willkommen in Davids tierischer Schatzkammer!"); /* EN pline("Welcome to David's treasure zoo!"); */
 		    break;
 		case SWAMP:
-		    pline("Hier unten %s %s ziemlich %s.", /* EN pline("It %s rather %s down here.", */
+		    pline("Hier unten %s ziemlich %s.", /* EN pline("It %s rather %s down here.", */
 			  Blind ? "fühlt es sich" : "sieht es", /* EN Blind ? "feels" : "looks", */
 			  Blind ? "feucht an" : "schlammig aus"); /* EN Blind ? "humid" : "muddy"); */
 		    break;

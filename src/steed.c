@@ -198,7 +198,7 @@ mount_steed(mtmp, force)
 
 	/* Sanity checks */
 	if (u.usteed) {
-	    You("are already riding %s.", mon_nam(u.usteed)); /* EN You("are already riding %s.", mon_nam(u.usteed)); */ // TODO DE
+	    You("VERB_REITEN bereits OBJECT KASUS_DATIV auf %s.", mon_nam(u.usteed)); /* EN You("are already riding %s.", mon_nam(u.usteed)); */
 	    return (FALSE);
 	}
 

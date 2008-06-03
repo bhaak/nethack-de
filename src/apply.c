@@ -1389,7 +1389,7 @@ register struct obj *obj;
 		You("VERB_SCHEINEN keine Dosen mehr zu haben."); /* EN You("seem to be out of tins."); */
 		return;
 	}
-	if (!(corpse = floorfood("tin", 2))) return;
+	if (!(corpse = floorfood("eindosen", 2))) return; /* EN if (!(corpse = floorfood("tin", 2))) return; */
 	if (corpse->oeaten) {
 		You("VERB_KOENNEN nicht etwas eindosen, was schon angefressen wurde."); /* EN You("cannot tin %s which is partly eaten.",something); */
 		return;

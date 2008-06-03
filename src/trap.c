@@ -3230,7 +3230,7 @@ struct trap *ttmp;
 	boolean bad_tool;
 	int fails;
 
-	obj = getobj(oil, "untrap with"); /* EN obj = getobj(oil, "untrap with"); */ // TODO DE
+	obj = getobj(oil, "entschärfen"); /* EN obj = getobj(oil, "untrap with"); */
 	if (!obj) return 0;
 
 	bad_tool = (obj->cursed ||

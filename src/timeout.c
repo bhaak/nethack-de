@@ -530,12 +530,7 @@ long timeout;
 			    flags.female ? "Mama" : "Papa", /* EN flags.female ? "mommy" : "daddy", */
 			    egg->spe ? "." : "?");
 		    } else if (mon->data->mlet == S_DRAGON) {
-#ifdef GERMAN
-					if (monsndx(mon->data) == PM_BABY_GREEN_DRAGON) {
-					  verbalize("Ich will Feuerwehrmann werden!"); /* Grisù */ 
-					} else 
-#endif
-			verbalize("Gleep!");		/* Mything eggs :-) */ /* EN verbalize("Gleep!");		*/ // TODO DE
+			verbalize("Ich will Feuerwehrmann werden!");		/* Mything eggs :-) */ /* EN verbalize("Gleep!");		*/ /* Grisù */
 		    }
 		    break;
 

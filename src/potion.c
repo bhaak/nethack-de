@@ -603,7 +603,7 @@ peffects(otmp)
 		    You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL für einen Moment."); /* EN You("stiffen momentarily."); */
 		else {
 		    if (Levitation || Is_airlevel(&u.uz)||Is_waterlevel(&u.uz))
-			You("are motionlessly suspended."); /* EN You("are motionlessly suspended."); */ // TODO DE
+			You("VERB_HAENGEN bewegungslos in der Luft."); /* EN You("are motionlessly suspended."); */
 #ifdef STEED
 		    else if (u.usteed)
 			You("are frozen in place!"); /* EN You("are frozen in place!"); */ // TODO DE
@@ -843,8 +843,8 @@ peffects(otmp)
 						body_part(HEAD),
 						ceiling(u.ux,u.uy));
 					losehp(uarmh ? 1 : rnd(10),
-						"colliding with the ceiling", /* EN "colliding with the ceiling", */ // TODO DE
-						KILLED_BY);
+						"NOUN_KOLLISION mit der Decke", /* EN "colliding with the ceiling", */
+						KILLED_BY_AN); /* EN KILLED_BY); */
 				} else (void) doup();
 			}
 		} else
@@ -881,7 +881,7 @@ peffects(otmp)
 			    } else {
 				You("VERB_BRENNEN OBJECT PRONOMEN_POSSESSIV %s.", body_part(FACE)); /* EN You("burn your %s.", body_part(FACE)); */
 				losehp(d(Fire_resistance ? 1 : 3, 4),
-				       "burning potion of oil", KILLED_BY_AN); /* EN "burning potion of oil", KILLED_BY_AN); */ // TODO DE
+				       "ADJEKTIV_BRENNEND NOUN_POTION PARTIKEL_OF NOUN_POT_OIL", KILLED_BY_AN); /* EN "burning potion of oil", KILLED_BY_AN); */
 			    }
 			} else if(otmp->cursed)
 			    pline("Das schmeckt wie Rizinusöl."); /* EN pline("This tastes like castor oil."); */
@@ -893,12 +893,12 @@ peffects(otmp)
 	case POT_ACID:
 		if (Acid_resistance)
 			/* Not necessarily a creature who _likes_ acid */
-			pline("Das schmeckt %s.", Hallucination ? "tangy" : "sour"); /* EN pline("This tastes %s.", Hallucination ? "tangy" : "sour"); */ // TODO DE
+			pline("Das schmeckt %s.", Hallucination ? "würzig" : "sauer"); /* EN pline("This tastes %s.", Hallucination ? "tangy" : "sour"); */
 		else {
 			pline("Das brennt%s!", otmp->blessed ? " ein wenig" : /* EN pline("This burns%s!", otmp->blessed ? " a little" : */
-					otmp->cursed ? " a lot" : " like acid"); /* EN otmp->cursed ? " a lot" : " like acid"); */ // TODO DE
+					otmp->cursed ? " stark" : " wie Säure"); /* EN otmp->cursed ? " a lot" : " like acid"); */
 			losehp(d(otmp->cursed ? 2 : 1, otmp->blessed ? 4 : 8),
-					"potion of acid", KILLED_BY_AN); /* EN "potion of acid", KILLED_BY_AN); */ // TODO DE
+					"NOUN_POTION PARTIKEL_OF NOUN_POT_ACID", KILLED_BY_AN); /* EN "potion of acid", KILLED_BY_AN); */
 			exercise(A_CON, FALSE);
 		}
 		if (Stoned) fix_petrification();
@@ -990,7 +990,7 @@ boolean your_fault;
 
 		    if(has_head(mon->data)) {
 			Sprintf(buf, "%s", /* EN Sprintf(buf, "%s %s", */
-				genitivattribut_zu_wort((mnam), /* EN s_suffix(mnam), */ // TODO DE
+				genitivattribut_zu_wort((mnam), /* EN s_suffix(mnam), */
 				(notonhead ? "NOUN_BODY" : "NOUN_HEAD"))); /* EN (notonhead ? "body" : "head")); */
 		    } else {
 			Strcpy(buf, mnam);
@@ -1266,7 +1266,7 @@ register struct obj *obj;
 	case POT_PARALYSIS:
 		kn++;
 		if (!Free_action) {
-		    pline("%s seems to be holding you.", Something); /* EN pline("%s seems to be holding you.", Something); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHEINEN OBJECT PRONOMEN_PERSONAL festzuhalten.", Something); /* EN pline("%s seems to be holding you.", Something); */
 		    nomul(-rnd(5));
 		    nomovemsg = You_can_move_again;
 		    exercise(A_DEX, FALSE);

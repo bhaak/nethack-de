@@ -387,7 +387,7 @@ struct mail_info *info;
     if (info->message_typ) {
 	struct obj *obj = mksobj(SCR_MAIL, FALSE, FALSE);
 	if (distu(md->mx,md->my) > 2)
-	    verbalize("Catch!"); /* EN verbalize("Catch!"); */ // TODO DE
+	    verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_FANGEN!"); /* EN verbalize("Catch!"); */
 	display_nhwindow(WIN_MESSAGE, FALSE);
 	if (info->object_nam) {
 	    obj = oname(obj, info->object_nam);
@@ -428,7 +428,7 @@ ckmailstatus()
 	}
 	if (--mustgetmail <= 0) {
 		static struct mail_info
-			deliver = {MSG_MAIL,"I have some mail for you",0,0}; /* EN deliver = {MSG_MAIL,"I have some mail for you",0,0}; */ // TODO DE
+			deliver = {MSG_MAIL,"Ich habe Post für KASUS_AKKUSATIV PRONOMEN_PERSONAL",0,0}; /* EN deliver = {MSG_MAIL,"I have some mail for you",0,0}; */
 		newmail(&deliver);
 		mustgetmail = -1;
 	}
@@ -441,7 +441,7 @@ struct obj *otmp;
 {
     static char *junk[] = {
     "Please disregard previous letter.", /* EN "Please disregard previous letter.", */ // TODO DE
-    "Willkommen zu NetHack-De.", /* EN "Welcome to NetHack.", */ // TODO DE
+    "Willkommen zu NetHack-De.", /* EN "Welcome to NetHack.", */
 #ifdef AMIGA
     "Only Amiga makes it possible.", /* EN "Only Amiga makes it possible.", */ // TODO DE
     "CATS have all the answers.", /* EN "CATS have all the answers.", */ // TODO DE
@@ -451,9 +451,9 @@ struct obj *otmp;
     };
 
     if (Blind) {
-	pline("Unfortunately you cannot see what it says."); /* EN pline("Unfortunately you cannot see what it says."); */ // TODO DE
+	pline("Leider VERB_KOENNEN PRONOMEN_PERSONAL den Text nicht sehen."); /* EN pline("Unfortunately you cannot see what it says."); */
     } else
-	pline("It reads:  \"%s\"", junk[rn2(SIZE(junk))]); /* EN pline("It reads:  \"%s\"", junk[rn2(SIZE(junk))]); */ // TODO DE
+	pline("Da steht:  \"%s\"", junk[rn2(SIZE(junk))]); /* EN pline("It reads:  \"%s\"", junk[rn2(SIZE(junk))]); */
 
 }
 
@@ -483,10 +483,10 @@ ckmailstatus()
 		if (nmstat.st_size) {
 		    static struct mail_info deliver = {
 #  ifndef NO_MAILREADER
-			MSG_MAIL, "I have some mail for you", /* EN MSG_MAIL, "I have some mail for you", */ // TODO DE
+			MSG_MAIL, "Ich habe Post für KASUS_AKKUSATIV PRONOMEN_PERSONAL", /* EN MSG_MAIL, "I have some mail for you", */
 #  else
 			/* suppress creation and delivery of scroll of mail */
-			MSG_OTHER, "You have some mail in the outside world", /* EN MSG_OTHER, "You have some mail in the outside world", */ // TODO DE
+			MSG_OTHER, "SUBJECT PRONOMEN_PERSONAL VERB_HABEN Post in der Außenwelt", /* EN MSG_OTHER, "You have some mail in the outside world", */
 #  endif
 			0, 0
 		    };
@@ -597,10 +597,10 @@ ckmailstatus()
 	if (lan_mail_check()) {
 		    static struct mail_info deliver = {
 #  ifndef NO_MAILREADER
-			MSG_MAIL, "I have some mail for you", /* EN MSG_MAIL, "I have some mail for you", */ // TODO DE
+			MSG_MAIL, "Ich habe Post für KASUS_AKKUSATIV PRONOMEN_PERSONAL", /* EN MSG_MAIL, "I have some mail for you", */
 #  else
 			/* suppress creation and delivery of scroll of mail */
-			MSG_OTHER, "You have some mail in the outside world", /* EN MSG_OTHER, "You have some mail in the outside world", */ // TODO DE
+			MSG_OTHER, "SUBJECT PRONOMEN_PERSONAL VERB_HABEN Post in der Außenwelt", /* EN MSG_OTHER, "You have some mail in the outside world", */
 #  endif
 			0, 0
 		    };

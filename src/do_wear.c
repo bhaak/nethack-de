@@ -1447,17 +1447,17 @@ doputon()
 		} while(!mask);
 		if (uarmg && uarmg->cursed) {
 			uarmg->bknown = TRUE;
-		    You("cannot remove your gloves to put on the ring."); /* EN You("cannot remove your gloves to put on the ring.");*/ // TODO DE
+		    You("VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV NOUN_GLOVESs nicht ausziehen um KASUS_DATIV PRONOMEN_PERSONAL den Ring anzustecken."); /* EN You("cannot remove your gloves to put on the ring.");*/
 			return(0);
 		}
 		if (welded(uwep) && bimanual(uwep)) {
 			/* welded will set bknown */
-	    You("cannot free your weapon hands to put on the ring."); /* EN You("cannot free your weapon hands to put on the ring.");*/ // TODO DE
+	    You("VERB_BEKOMMEN OBJECT PRONOMEN_POSSESSIV Waffen-NOUN_HANDs nicht frei um KASUS_DATIV PRONOMEN_PERSONAL den Ring anzustecken."); /* EN You("cannot free your weapon hands to put on the ring.");*/
 			return(0);
 		}
 		if (welded(uwep) && mask==RIGHT_RING) {
 			/* welded will set bknown */
-	    You("cannot free your weapon hand to put on the ring."); /* EN You("cannot free your weapon hand to put on the ring.");*/ // TODO DE
+	    You("VERB_BEKOMMEN OBJECT PRONOMEN_POSSESSIV Waffen-NOUN_HAND nicht frei um KASUS_DATIV PRONOMEN_PERSONAL den Ring anzustecken."); /* EN You("cannot free your weapon hand to put on the ring.");*/
 			return(0);
 		}
 		if (otmp->oartifact && !touch_artifact(otmp, &youmonst))
@@ -1466,7 +1466,7 @@ doputon()
 		Ring_on(otmp);
 	} else if (otmp->oclass == AMULET_CLASS) {
 		if(uamul) {
-			already_wearing("ARTIKEL_UNBESTIMMTER NOUN_AMULET");
+			already_wearing("ARTIKEL_UNBESTIMMTER NOUN_AMULET"); /* EN already_wearing("an amulet"); */
 			return(0);
 		}
 		if (otmp->oartifact && !touch_artifact(otmp, &youmonst))

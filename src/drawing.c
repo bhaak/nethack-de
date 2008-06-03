@@ -189,13 +189,13 @@ const char * const monexplain[MAXMCLASSES] = {
 };
 
 const struct symdef def_warnsyms[WARNCOUNT] = {
-	{'0', "unknown creature causing you worry", C(CLR_WHITE)},  	/* white warning  */ // TODO DE
-	{'1', "unknown creature causing you concern", C(CLR_RED)},	/* pink warning   */ // TODO DE
-	{'2', "unknown creature causing you anxiety", C(CLR_RED)},	/* red warning    */ // TODO DE
-	{'3', "unknown creature causing you disquiet", C(CLR_RED)},	/* ruby warning   */ // TODO DE
-	{'4', "unknown creature causing you alarm", // TODO DE
+	{'0', "unbekannte Kreatur, die KASUS_DATIV PRONOMEN_PERSONAL Unbehagen bereitet", C(CLR_WHITE)},  	/* white warning  */ /* EN {'0', "unknown creature causing you worry", C(CLR_WHITE)},  	*/
+	{'1', "unbekannte Kreatur, die KASUS_DATIV PRONOMEN_PERSONAL Sorgen bereitet", C(CLR_RED)},	/* pink warning   */ /* EN {'1', "unknown creature causing you concern", C(CLR_RED)},	*/
+	{'2', "unbekannte Kreatur, die KASUS_AKKUSATIV PRONOMEN_PERSONAL beunruhigt", C(CLR_RED)},	/* red warning    */ /* EN {'2', "unknown creature causing you anxiety", C(CLR_RED)},	*/
+	{'3', "unbekannte Kreatur, die KASUS_AKKUSATIV PRONOMEN_PERSONAL ängstigt", C(CLR_RED)},	/* ruby warning   */ /* EN {'3', "unknown creature causing you disquiet", C(CLR_RED)},	*/
+	{'4', "unbekannte Kreatur, die KASUS_AKKUSATIV PRONOMEN_PERSONAL in Schrecken versetzt", /* EN {'4', "unknown creature causing you alarm", */
 						C(CLR_MAGENTA)},        /* purple warning */
-	{'5', "unknown creature causing you dread", // TODO DE
+	{'5', "unbekannte Kreatur, die KASUS_DATIV in PRONOMEN_PERSONAL Panik auslöst", /* EN {'5', "unknown creature causing you dread", */
 						C(CLR_BRIGHT_MAGENTA)}	/* black warning  */
 };
 

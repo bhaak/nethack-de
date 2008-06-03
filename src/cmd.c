@@ -1741,7 +1741,7 @@ int final;
 	    dump("", "  SUBJECT PRONOMEN_PERSONAL VERB_HAVE niemals irgendwelche Wesen ausgerottet"); /* EN dump("", "  You never genocided any monsters"); */
 	} else {
 	    Sprintf(buf, "%d Art%s von Wesen ausgerottet", /* EN Sprintf(buf, "genocided %d type%s of monster%s", */
-		    ngenocided, (ngenocided == 1) ? "" : "en", plur(ngenocided)); /* EN ngenocided, plur(ngenocided), plur(ngenocided)); */
+		    ngenocided, (ngenocided == 1) ? "" : "en"); /* EN ngenocided, plur(ngenocided), plur(ngenocided)); */
 	    dump("  SUBJECT PRONOMEN_PERSONAL VERB_HAVE ", buf); /* EN dump("  You ", buf); */ // TODO DE
 	}
 
@@ -1932,7 +1932,7 @@ struct ext_func_tab extcmdlist[] = {
 	{"sit", "sit down", dosit, FALSE}, /* EN {"sit", "sit down", dosit, FALSE}, */ // TODO DE
 	{"turn", "turn undead", doturn, TRUE}, /* EN {"turn", "turn undead", doturn, TRUE}, */ // TODO DE
 	{"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, /* EN {"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, */ // TODO DE
-	{"untrap", "untrap something", dountrap, FALSE}, /* EN {"untrap", "untrap something", dountrap, FALSE}, */ // TODO DE
+	{"untrap", "etwas entschärfen", dountrap, FALSE}, /* EN {"untrap", "untrap something", dountrap, FALSE}, */ // TODO DE
 	{"version", "list compile time options for this version of NetHack", /* EN {"version", "list compile time options for this version of NetHack", */ // TODO DE
 		doextversion, TRUE},
 	{"wipe", "wipe off your face", dowipe, FALSE}, /* EN {"wipe", "wipe off your face", dowipe, FALSE}, */ // TODO DE

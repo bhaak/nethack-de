@@ -563,11 +563,11 @@ drinksink()
 			break;
 		case 6: breaksink(u.ux,u.uy);
 			break;
-		case 7: pline_The("water moves as though of its own will!"); /* EN case 7: pline_The("water moves as though of its own will!"); */ // TODO DE
+		case 7: pline("Das Wasser bewegt sich, als bes‰ﬂe es einen eigenen Willen!"); /* EN case 7: pline_The("water moves as though of its own will!"); */
 			if ((mvitals[PM_WATER_ELEMENTAL].mvflags & G_GONE)
 			    || !makemon(&mons[PM_WATER_ELEMENTAL],
 					u.ux, u.uy, NO_MM_FLAGS))
-				pline("But it quiets down."); /* EN pline("But it quiets down."); */ // TODO DE
+				pline("Aber es beruhigt sich wieder."); /* EN pline("But it quiets down."); */
 			break;
 		case 8: pline("Yuk, this water tastes awful."); /* EN case 8: pline("Yuk, this water tastes awful."); */ // TODO DE
 			more_experienced(1,0);

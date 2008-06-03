@@ -784,7 +784,7 @@ register const char *let,*word;
 #ifdef GERMAN
 	char fragewort[BUFSZ];
 
-	if (!strcmp(word, "schreiben")) {
+	if ((!strcmp(word, "schreiben")) || (!strcmp(word, "entschärfen"))) {
 		Strcpy(fragewort, "Womit");
 	} else {
 		Strcpy(fragewort, "Was");
@@ -885,7 +885,7 @@ register const char *let,*word;
 		|| (!strcmp(word, "schreiben") && /* EN || (!strcmp(word, "write with") && */
 		    (otmp->oclass == TOOL_CLASS &&
 		     otyp != MAGIC_MARKER && otyp != TOWEL))
-		|| (!strcmp(word, "tin") && /* EN || (!strcmp(word, "tin") && */ // TODO DE
+		|| (!strcmp(word, "eindosen") && /* EN || (!strcmp(word, "tin") && */
 		    (otyp != CORPSE || !tinnable(otmp)))
 		|| (!strcmp(word, "rub") && /* EN || (!strcmp(word, "rub") && */ // TODO DE
 		    ((otmp->oclass == TOOL_CLASS &&
@@ -896,7 +896,7 @@ register const char *let,*word;
 		    *let == GEM_CLASS &&	/* using known touchstone */
 		    otmp->dknown && objects[otyp].oc_name_known)
 		|| ((!strcmp(word, "use or apply") || /* EN || ((!strcmp(word, "use or apply") || */ // TODO DE
-			!strcmp(word, "untrap with")) && /* EN !strcmp(word, "untrap with")) && */ // TODO DE
+			!strcmp(word, "entschärfen")) && /* EN !strcmp(word, "untrap with")) && */
 		     /* Picks, axes, pole-weapons, bullwhips */
 		    ((otmp->oclass == WEAPON_CLASS && !is_pick(otmp) &&
 		      !is_axe(otmp) && !is_pole(otmp) && otyp != BULLWHIP) ||
@@ -917,7 +917,7 @@ register const char *let,*word;
 		     otyp != MIRROR && otyp != MAGIC_LAMP &&
 		     (otyp != OIL_LAMP ||	/* don't list known oil lamp */
 		      (otmp->dknown && objects[OIL_LAMP].oc_name_known))))
-		|| (!strcmp(word, "untrap with") && /* EN || (!strcmp(word, "untrap with") && */ // TODO DE
+		|| (!strcmp(word, "entschärfen") && /* EN || (!strcmp(word, "untrap with") && */
 		    (otmp->oclass == TOOL_CLASS && otyp != CAN_OF_GREASE))
 		|| (!strcmp(word, "charge") && !is_chargeable(otmp)) /* EN || (!strcmp(word, "charge") && !is_chargeable(otmp)) */ // TODO DE
 		    )

@@ -6108,6 +6108,16 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Werratte", "NOUN_WERERAT", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Werratten", "NOUN_WERERATs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Steinbeiﬂers", "NOUN_ROCK_MOLE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Steinbeiﬂer", "NOUN_ROCK_MOLE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Steinbeiﬂer", "NOUN_ROCK_MOLEs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Steinbeiﬂern", "NOUN_ROCK_MOLEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Felsenbeiﬂers", "NOUN_ROCK_MOLE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Felsenbeiﬂer", "NOUN_ROCK_MOLE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Felsenbeiﬂer", "NOUN_ROCK_MOLEs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Felsenbeiﬂern", "NOUN_ROCK_MOLEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Murmeltieres", "NOUN_WOODCHUCK", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Murmeltiere", "NOUN_WOODCHUCK", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Murmeltier", "NOUN_WOODCHUCK", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},

@@ -433,7 +433,7 @@ register struct monst *mtmp;
 					", ???? Geschwindigkeit"); /* EN ", ???? speed"); */
 	if (mtmp->mundetected)	  Strcat(info, ", verborgen"); /* EN if (mtmp->mundetected)	  Strcat(info, ", concealed"); */ // TODO DE
 	if (mtmp->minvis)	  Strcat(info, ", unsichtbar"); /* EN if (mtmp->minvis)	  Strcat(info, ", invisible"); */
-	if (mtmp == u.ustuck)	  Strcat(info, /* EN if (mtmp == u.ustuck)	  Strcat(info, */ // TODO DE
+	if (mtmp == u.ustuck)	  Strcat(info, 
 			(sticks(youmonst.data)) ? ", held by you" : /* EN (sticks(youmonst.data)) ? ", held by you" : */ // TODO DE
 				u.uswallow ? (is_animal(u.ustuck->data) ?
 				", swallowed you" : /* EN ", swallowed you" : */ // TODO DE

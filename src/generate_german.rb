@@ -2392,7 +2392,8 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_GIANT_RAT", "riesig", "Ratte", "", "Ratte", "en", "feminin", "n"),
     dekliniere_nominalphrase("NOUN_RABID_RAT", "tollwütig", "Ratte", "", "tollwütig", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_WERERAT", "Werratte", "", "Werratte", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_ROCK_MOLE"
+    dekliniere_substantiv("NOUN_ROCK_MOLE", "Steinbeißer", "s", "Steinbeißer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_ROCK_MOLE", "Felsenbeißer", "s", "Felsenbeißer", "", "maskulin"),
     dekliniere_substantiv("NOUN_WOODCHUCK", "Murmeltier", "es", "Murmeltier", "e", "neutrum"),
     dekliniere_substantiv("NOUN_CAVE_SPIDER", "Höhlenspinne", "", "Höhlenspinne", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_CENTIPEDE", "Tausendfüßler", "s", "Tausendfüßler", "", "maskulin"),
