@@ -803,7 +803,7 @@ int how;			/* type of query */
 		any.a_void = 0;
 		any.a_int = ALL_TYPES_SELECTED;
 		add_menu(win, NO_GLYPH, &any, invlet, 0, ATR_NONE,
-		       (qflags & WORN_TYPES) ? "All worn types" : "All types", /* EN (qflags & WORN_TYPES) ? "All worn types" : "All types", */ // TODO DE
+		       (qflags & WORN_TYPES) ? "Alle Arten getragener Objekte" : "Alle Arten", /* EN (qflags & WORN_TYPES) ? "All worn types" : "All types", */
 			MENU_UNSELECTED);
 		invlet = 'b';
 	} else
@@ -1117,7 +1117,7 @@ boolean telekinesis;
 #else
     } else if (inv_cnt() >= 52 && !merge_choice(invent, obj)) {
 #endif
-	Your("knapsack cannot accommodate any more items."); /* EN Your("knapsack cannot accommodate any more items."); */ // TODO DE
+	You("VERB_KOENNEN OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_RUCKSACK keine weiteren Gegenstände unterbringen."); /* EN Your("knapsack cannot accommodate any more items."); */
 	result = -1;	/* nothing lifted */
     } else {
 	result = 1;
@@ -1268,7 +1268,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 			char kbuf[BUFSZ];
 
 			Strcpy(kbuf, an(corpse_xname(obj, TRUE)));
-			pline("Touching %s ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */ // TODO DE
+			pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren, ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */
 			instapetrify(kbuf);
 		    return -1;
 		}
@@ -1428,11 +1428,11 @@ int x, y;
 		return FALSE;
 	} else if (is_pool(x, y) || is_lava(x, y)) {
 		/* at present, can't loot in water even when Underwater */
-		You("cannot loot things that are deep in the %s.", /* EN You("cannot loot things that are deep in the %s.", */ // TODO DE
-		    is_lava(x, y) ? "lava" : "water"); /* EN is_lava(x, y) ? "lava" : "water"); */ // TODO DE
+		You("VERB_KOENNEN keine Sachen plündern, die sich tief %s befinden.", /* EN You("cannot loot things that are deep in the %s.", */
+		    is_lava(x, y) ? "in der Lava" : "unter Wasser"); /* EN is_lava(x, y) ? "lava" : "water"); */
 		return FALSE;
 	} else if (nolimbs(youmonst.data)) {
-		pline("Without limbs, you cannot loot anything."); /* EN pline("Without limbs, you cannot loot anything."); */ // TODO DE
+		pline("Ohne Gliedmaßen VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nichts plündern."); /* EN pline("Without limbs, you cannot loot anything."); */
 		return FALSE;
 	} else if (!freehand()) {
 		pline("Without a free %s, you cannot loot anything.", /* EN pline("Without a free %s, you cannot loot anything.", */ // TODO DE
@@ -1614,7 +1614,7 @@ gotit:
 			    prev_inquiry ? "else " : "", mon_nam(mtmp)); /* EN prev_inquiry ? "else " : "", mon_nam(mtmp)); */ // TODO DE
 		    return timepassed;
 		} else {
-		    You("have to be at a container to loot it."); /* EN You("have to be at a container to loot it."); */ // TODO DE
+		    You("VERB_MUESSEN neben einem Behälter stehen um ihn zu plündern."); /* EN You("have to be at a container to loot it."); */
 		}
 	    } else {
 		You("VERB_FINDEN dort nichts %szu plündern.", /* EN You("%s %sthere to loot.", dont_find_anything, */
@@ -1657,7 +1657,7 @@ boolean *prev_loot;
 		    return (0);
 		}
 		if (otmp->cursed) {
-		    You("can't. The saddle seems to be stuck to %s.", /* EN You("can't. The saddle seems to be stuck to %s.", */ // TODO DE
+		    pline("Das geht nicht. Der Sattel scheint _an_ %s festzukleben.", /* EN You("can't. The saddle seems to be stuck to %s.", */
 			x_monnam(mtmp, ARTICLE_THE, (char *)0,
 				SUPPRESS_SADDLE, FALSE));
 			    
@@ -1670,7 +1670,7 @@ boolean *prev_loot;
 		    otmp->owornmask = 0L;
 		    update_mon_intrinsics(mtmp, otmp, FALSE, FALSE);
 		}
-		otmp = hold_another_object(otmp, "You drop %s!", doname(otmp), /* EN otmp = hold_another_object(otmp, "You drop %s!", doname(otmp), */ // TODO DE
+		otmp = hold_another_object(otmp, "SUBJECT PRONOMEN_PERSONAL VERB_DROP OBJECT %s SATZKLAMMER!", doname(otmp), /* EN otmp = hold_another_object(otmp, "You drop %s!", doname(otmp), */
 					(const char *)0);
 		timepassed = rnd(3);
 		if (prev_loot) *prev_loot = TRUE;
@@ -1753,7 +1753,7 @@ register struct obj *obj;
 	 * steal them.  It also becomes a pain to check to see if someone
 	 * has the Amulet.  Ditto for the Candelabrum, the Bell and the Book.
 	 */
-	    pline("SUBJECT %s cannot be confined in such trappings.", The(xname(obj))); /* EN pline("%s cannot be confined in such trappings.", The(xname(obj))); */ // TODO DE
+	    pline("SUBJECT %s VERB_LASSEN sich nicht in solchen Behältnissen einsperren.", The(xname(obj))); /* EN pline("%s cannot be confined in such trappings.", The(xname(obj))); */
 	    return 0;
 	} else if (obj->otyp == LEASH && obj->leashmon != 0) {
 		pline("%s attached to your pet.", Tobjnam(obj, "are")); /* EN pline("%s attached to your pet.", Tobjnam(obj, "are")); */ // TODO DE
@@ -1782,7 +1782,7 @@ register struct obj *obj;
 		    char kbuf[BUFSZ];
 
 		    Strcpy(kbuf, an(corpse_xname(obj, TRUE)));
-				pline("Touching %s is a fatal mistake.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */ // TODO DE
+				pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren, ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */
 		    instapetrify(kbuf);
 		    return -1;
 		}
@@ -1904,7 +1904,7 @@ register struct obj *obj;
 		    char kbuf[BUFSZ];
 
 		    Strcpy(kbuf, an(corpse_xname(obj, TRUE)));
-		    pline("Touching %s is a fatal mistake.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */ // TODO DE
+		    pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren, ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */
 		    instapetrify(kbuf);
 		    return -1;
 		}
@@ -2001,7 +2001,7 @@ struct obj *box;
 	livecat->mpeaceful = 1;
 	set_malign(livecat);
 	if (!canspotmon(livecat))
-	    You("think %s brushed your %s.", something, body_part(FOOT)); /* EN You("think %s brushed your %s.", something, body_part(FOOT)); */ // TODO DE
+	    You("VERB_GLAUBEN, etwas habe OBJECT PRONOMEN_POSSESSIV %s gestreift.", body_part(FOOT)); /* EN You("think %s brushed your %s.", something, body_part(FOOT)); */
 	else
 	    pline("SUBJECT %s in der Kiste ist noch am Leben!", Monnam(livecat)); /* EN pline("%s inside the box is still alive!", Monnam(livecat)); */
 	(void) christen_monst(livecat, sc);
@@ -2168,7 +2168,7 @@ ask_again2:
 	if (!invent) {
 #endif
 	    /* nothing to put in, but some feedback is necessary */
-	    You("VERB_HABEN nichts reinzulegen."); /* EN You("don't have anything to put in."); */
+	    You("VERB_HABEN nichts zum Reinlegen."); /* EN You("don't have anything to put in."); */
 	    return used;
 	}
 	if (flags.menu_style != MENU_FULL) {
@@ -2266,7 +2266,7 @@ boolean put_in;
 	all_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
 	all_categories = FALSE;
-	Sprintf(buf,"%s what type of objects?", put_in ? putin : takeout); /* EN Sprintf(buf,"%s what type of objects?", put_in ? putin : takeout); */ // TODO DE
+	Sprintf(buf,"Welche Art Objekte %s?", put_in ? putin : takeout); /* EN Sprintf(buf,"%s what type of objects?", put_in ? putin : takeout); */
 	mflags = put_in ? ALL_TYPES | BUC_ALLBKNOWN | BUC_UNKNOWN :
 		          ALL_TYPES | CHOOSE_ALL | BUC_ALLBKNOWN | BUC_UNKNOWN;
 	n = query_category(buf, put_in ? invent : container->cobj,

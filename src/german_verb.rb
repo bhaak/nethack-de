@@ -495,6 +495,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)weichen$/:  v = VerbUnregelmaessig.new($1+"weichen", $1+"wich", ge($1)+"wichen")
   when /(.*)greifen$/:  v = VerbUnregelmaessig.new($1+"greifen", $1+"griff", ge($1)+"griffen")
   when /(.*)reiten$/:  v = VerbUnregelmaessig.new($1+"reiten", $1+"ritt", ge($1)+"ritten")
+  when /(.*)schmeiﬂen$/:  v = VerbUnregelmaessig.new($1+"schmeiﬂen", $1+"schmiss", ge($1)+"geschmissen")
     #  ei ie ie
   when /(.*)bleiben$/:  v = VerbUnregelmaessig.new($1+"bleiben", $1+"blieb", ge($1)+"blieben")
   when /(.*)meiden$/:  v = VerbUnregelmaessig.new($1+"meiden", $1+"mied", ge($1)+"mieden")
@@ -521,6 +522,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)bieten$/: v = VerbUnregelmaessig.new($1+"bieten", $1+"bot", ge($1)+"boten")
   when /(.*)fliehen$/: v = VerbUnregelmaessig.new($1+"fliehen", $1+"floh", ge($1)+"flohen")
   when "fliegen": v = VerbUnregelmaessig.new("fliegen", "flog", "geflogen")
+  when /(.*)frieren$/: v = VerbUnregelmaessig.new($1+"frieren", $1+"fror", ge($1)+"froren")
   when /(.*)kriechen$/: v = VerbUnregelmaessig.new($1+"kriechen", $1+"kroch", ge($1)+"krochen")
   when /(.*)riechen$/: v = VerbUnregelmaessig.new($1+"riechen", $1+"roch", ge($1)+"rochen")
   when /(.*)schieben$/: v = VerbUnregelmaessig.new($1+"schieben", $1+"schob", ge($1)+"schoben")
@@ -537,6 +539,10 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)sitzen$/: v = VerbUnregelmaessig.new($1+"sitzen", $1+"saﬂ", ge($1)+"sessen")
 		# o a o
   when /(.*)kommen$/: v = VerbUnregelmaessig.new($1+"kommen", $1+"kam", ge($1)+"kommen")
+		# u ie u
+  when /(.*)rufen$/: v = VerbUnregelmaessig.new($1+"rufen", $1+"rief", ge($1)+"rufen")
+		# o ie o
+  when /(.*)stoﬂen$/: v = VerbUnregelmaessig.new($1+"stoﬂen", $1+"stieﬂ", ge($1)+"stˆﬂen")
 		# regelm‰ssig ohne ge
   when "durchleben": v = Verb.new("durchleben", "durchlebte", "durchlebt")
   when "erfassen": v = Verb.new("erfassen", "erfasste", "erfasst")

@@ -1501,7 +1501,7 @@ do_class_genocide()
 				mongone(mtmp);
 				gonecnt++;
 			    }
-	pline("%d Monster%s vernichtet.", gonecnt, plur(gonecnt)); /* EN pline("Eliminated %d monster%s.", gonecnt, plur(gonecnt)); */
+	pline("%d Monster vernichtet.", gonecnt); /* EN pline("Eliminated %d monster%s.", gonecnt, plur(gonecnt)); */
 			    return;
 			} else
 #endif

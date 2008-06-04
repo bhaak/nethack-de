@@ -3637,7 +3637,7 @@ boolean *shopdamage;
 				Norep("Das Wasser gefriert."); /* EN Norep("The water freezes."); */
 			newsym(x,y);
 		    } else if(flags.soundok && !lava)
-			You_hear("ein prasselndes Geräusch."); /* EN You_hear("a crackling sound."); */
+			You_hear("ein knackendes Geräusch."); /* EN You_hear("a crackling sound."); */
 
 		    if (x == u.ux && y == u.uy) {
 			if (u.uinwater) {   /* not just `if (Underwater)' */

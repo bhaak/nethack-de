@@ -960,7 +960,7 @@ hitmu(mtmp, mattk)
 	    case AD_FIRE:
 		hitmsg(mtmp, mattk);
 		if (uncancelled) {
-		    pline("SUBJECT %s!", on_fire(youmonst.data, mattk)); /* EN pline("You're %s!", on_fire(youmonst.data, mattk)); */
+		    pline("SUBJECT PRONOMEN_PERSONAL %s!", on_fire(youmonst.data, mattk)); /* EN pline("You're %s!", on_fire(youmonst.data, mattk)); */
 		    if (youmonst.data == &mons[PM_STRAW_GOLEM] ||
 		        youmonst.data == &mons[PM_PAPER_GOLEM]) {
 			    You("roast!"); /* EN You("roast!"); */ // TODO DE

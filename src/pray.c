@@ -1493,7 +1493,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 	    if ((int)u.uluck < 0) u.uluck = 0;
 	    if (u.uluck != saved_luck) {
 		if (Blind)
-		    You("think %s brushed your %s.",something, body_part(FOOT)); /* EN You("think %s brushed your %s.",something, body_part(FOOT)); */ // TODO DE
+		    You("VERB_GLAUBEN, etwas habe OBJECT PRONOMEN_POSSESSIV %s gestreift.", body_part(FOOT)); /* EN You("think %s brushed your %s.",something, body_part(FOOT)); */
 		else You(Hallucination ?
 		    "see crabgrass at your %s.  A funny thing in a dungeon." : /* EN "see crabgrass at your %s.  A funny thing in a dungeon." : */ // TODO DE
 		    "glimpse a four-leaf clover at your %s.", /* EN "glimpse a four-leaf clover at your %s.", */ // TODO DE

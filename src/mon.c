@@ -427,17 +427,17 @@ register struct monst *mtmp;
 		if (cansee(mtmp->mx,mtmp->my))
 		    pline("SUBJECT %s %s.", Monnam(mtmp), /* EN pline("%s %s.", Monnam(mtmp), */
 			  mtmp->data == &mons[PM_WATER_ELEMENTAL] ?
-			  "boils away" : "VERB_VERBRENNEN zu einem Aschehäufchen"); /* EN "boils away" : "burns to a crisp"); */ // TODO DE
+			  "VERB_VERDAMPFEN" : "VERB_VERBRENNEN zu einem Aschehäufchen"); /* EN "boils away" : "burns to a crisp"); */
 		mondead(mtmp);
 	    }
 	    else {
 		if (--mtmp->mhp < 1) {
 		    if (cansee(mtmp->mx,mtmp->my))
-			pline("%s surrenders to the fire.", Monnam(mtmp)); /* EN pline("%s surrenders to the fire.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_ERGEBEN sich dem Feuer.", Monnam(mtmp)); /* EN pline("%s surrenders to the fire.", Monnam(mtmp)); */
 		    mondead(mtmp);
 		}
 		else if (cansee(mtmp->mx,mtmp->my))
-		    pline("%s burns slightly.", Monnam(mtmp)); /* EN pline("%s burns slightly.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_VERBRENNEN sich ein bisschen.", Monnam(mtmp)); /* EN pline("%s burns slightly.", Monnam(mtmp)); */
 	    }
 	    if (mtmp->mhp > 0) {
 		(void) fire_damage(mtmp->minvent, FALSE, FALSE,

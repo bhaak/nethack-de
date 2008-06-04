@@ -387,7 +387,7 @@ kick_steed()
 		if (u.usteed->msleeping || !u.usteed->mcanmove)
 		    pline("SUBJECT %s VERB_RUEHREN sich nicht.", He); /* EN pline("%s stirs.", He); */
 		else
-		    pline("SUBJECT %s VERB_SCHRECKEN auf!", He); /* EN pline("%s rouses %sself!", He, mhim(u.usteed)); */
+		    pline("SUBJECT %s VERB_AUFSCHRECKEN SATZKLAMMER!", He); /* EN pline("%s rouses %sself!", He, mhim(u.usteed)); */
 	    } else
 		pline("SUBJECT %s VERB_REAGIEREN nicht.", He); /* EN pline("%s does not respond.", He); */
 	    return;
