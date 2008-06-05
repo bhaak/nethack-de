@@ -1645,10 +1645,10 @@ heal_legs()
 		{
 			/* KMH, intrinsics patch */
 			if((EWounded_legs & BOTH_SIDES) == BOTH_SIDES) {
-			pline("KASUS_DATIV PRONOMEN_POSSESSIV %s VERB_GEHEN es etwas besser.", /* EN Your("%s feel somewhat better.", */
+			Deinem("%s VERB_GEHEN es etwas besser.", /* EN Your("%s feel somewhat better.", */
 				makeplural(body_part(LEG)));
 		} else {
-			pline("KASUS_DATIV PRONOMEN_POSSESSIV %s VERB_GEHEN es etwas besser.", /* EN Your("%s feels somewhat better.", */
+			Deinem("%s VERB_GEHEN es etwas besser.", /* EN Your("%s feels somewhat better.", */
 				body_part(LEG));
 		}
 		}
