@@ -330,9 +330,9 @@ struct version_info {
 #define MAX_SUBROOMS	24	/* max # of subrooms in a given room */
 #define DOORMAX		120	/* max number of doors per level */
 
-#define BUFSZ		256	/* for getlin buffers */
-#define QBUFSZ		256	/* for building question text */ /* EN #define QBUFSZ		128	*/ // TODO DE
-#define TBUFSZ		300	/* toplines[] buffer max msg: 3 81char names */
+#define BUFSZ		384	/* for getlin buffers */ /* EN #define BUFSZ		256	*/
+#define QBUFSZ		384	/* for building question text */ /* EN #define QBUFSZ		128	*/ // TODO DE
+#define TBUFSZ		500	/* toplines[] buffer max msg: 3 81char names */ /* EN #define TBUFSZ		300	*/
 				/* plus longest prefix plus a few extra words */
 
 #define PL_NSIZ		32	/* name of player, ghost, shopkeeper */
