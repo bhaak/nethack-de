@@ -15,7 +15,7 @@
 
 # make NetHack
 #PREFIX	 = /opt/nethack
-PREFIX	 = /home/surf/nethack/translation/nethack-de/trunk/binary
+PREFIX	 = ${PWD}/binary
 GAME     = nethack-de
 # GAME     = nethack.prg
 GAMEUID  = games
@@ -65,8 +65,8 @@ VARDAT = $(VARDATD) $(VARDATND)
 # other permission-related reasons.  If that happens, you may want to set the
 # command to "true", which is a no-op. Note that disabling chown or chgrp
 # will only work if setuid (or setgid) behavior is not desired or required.
-CHOWN = chown
-CHGRP = chgrp
+CHOWN = true # chown
+CHGRP = true # chgrp
 
 #
 # end of configuration
