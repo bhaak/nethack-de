@@ -527,8 +527,8 @@ letknow:
 			You_hear("the shrill sound of a guard's whistle."); /* EN You_hear("the shrill sound of a guard's whistle."); */ // TODO DE
 		    else
 			You(um_dist(grd->mx, grd->my, 2) ?
-			    "see an angry %s approaching." : /* EN "see an angry %s approaching." : */ // TODO DE
-			    "are confronted by an angry %s.", /* EN "are confronted by an angry %s.", */ // TODO DE
+			    "VERB_SEHEN OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_WUETEND %s sich nähern." : /* EN "see an angry %s approaching." : */
+			    "VERB_STEHEN OBJECT KASUS_DATIV vor ARTIKEL_UNBESTIMMTER ADJEKTIV_WUETEND %s.", /* EN "are confronted by an angry %s.", */
 			    g_monnam(grd));
 		    return(-1);
 		} else {
@@ -545,7 +545,7 @@ letknow:
 		  !egrd->gddone && !in_fcorridor(grd, u.ux, u.uy) &&
 		  levl[egrd->fakecorr[0].fx][egrd->fakecorr[0].fy].typ
 				 == egrd->fakecorr[0].ftyp) {
-		pline_The("%s, confused, disappears.", g_monnam(grd)); /* EN pline_The("%s, confused, disappears.", g_monnam(grd)); */ // TODO DE
+		pline_The("%s, verwirrt, verschwindet.", g_monnam(grd)); /* EN pline_The("%s, confused, disappears.", g_monnam(grd)); */
 		disappear_msg_seen = TRUE;
 		goto cleanup;
 	    }

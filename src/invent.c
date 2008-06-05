@@ -2332,8 +2332,8 @@ boolean picked_some;
 		putstr(tmpwin, 0, fbuf);
 		putstr(tmpwin, 0, "");
 	    }
-	    putstr(tmpwin, 0, Blind ? "Things that you feel here:" : /* EN putstr(tmpwin, 0, Blind ? "Things that you feel here:" : */ // TODO DE
-				      "Things that are here:"); /* EN "Things that are here:"); */ // TODO DE
+	    putstr(tmpwin, 0, Blind ? "Hier von KASUS_DATIV PRONOMEN_PERSONAL ertastete Dinge:" : /* EN putstr(tmpwin, 0, Blind ? "Things that you feel here:" : */
+				      "Hier liegende Dinge:"); /* EN "Things that are here:"); */
 	    for ( ; otmp; otmp = otmp->nexthere) {
 		if (otmp->otyp == CORPSE && will_feel_cockatrice(otmp, FALSE)) {
 			char buf[BUFSZ];

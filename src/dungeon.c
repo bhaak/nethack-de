@@ -1528,12 +1528,12 @@ br_string(type)
     int type;
 {
     switch (type) {
-	case BR_PORTAL:	 return "Portal"; /* EN case BR_PORTAL:	 return "Portal"; */ // TODO DE
-	case BR_NO_END1: return "Connection"; /* EN case BR_NO_END1: return "Connection"; */ // TODO DE
-	case BR_NO_END2: return "One way stair"; /* EN case BR_NO_END2: return "One way stair"; */ // TODO DE
-	case BR_STAIR:	 return "Stair"; /* EN case BR_STAIR:	 return "Stair"; */ // TODO DE
+	case BR_PORTAL:	 return "Portal";
+	case BR_NO_END1: return "Verbindung"; /* EN case BR_NO_END1: return "Connection"; */
+	case BR_NO_END2: return "Einwegtreppe"; /* EN case BR_NO_END2: return "One way stair"; */
+	case BR_STAIR:	 return "Treppe"; /* EN case BR_STAIR:	 return "Stair"; */
     }
-    return " (unknown)";
+    return " (unbekannt)"; /* EN return " (unknown)"; */
 }
 
 /* Print all child branches between the lower and upper bounds. */
@@ -1554,7 +1554,7 @@ print_branch(win, dnum, lower_bound, upper_bound, bymenu, menuletter)
     for (br = branches; br; br = br->next) {
 	if (br->end1.dnum == dnum && lower_bound < br->end1.dlevel &&
 					br->end1.dlevel <= upper_bound) {
-	    Sprintf(buf,"   %s to %s: %d",
+	    Sprintf(buf,"   %s nach %s: %d", /* EN Sprintf(buf,"   %s to %s: %d", */
 		    br_string(br->type),
 		    dungeons[br->end2.dnum].dname,
 		    depth(&br->end1));
@@ -1659,7 +1659,7 @@ boolean bymenu;
 		}
 		first = FALSE;
 	    }
-	    Sprintf(buf, "   %s to %s",
+	    Sprintf(buf, "   %s nach %s", /* EN Sprintf(buf, "   %s to %s", */
 			br_string(br->type), dungeons[br->end2.dnum].dname);
 	    if (bymenu) {
 	    	schar lev = lev_by_name(dungeons[br->end2.dnum].dname);
@@ -1709,7 +1709,7 @@ boolean bymenu;
 
 	putstr(win, 0, "");
 	if (trap)
-	    Sprintf(buf, "Portal @ (%d,%d), hero @ (%d,%d)", /* EN Sprintf(buf, "Portal @ (%d,%d), hero @ (%d,%d)", */
+	    Sprintf(buf, "Portal @ (%d,%d), Held @ (%d,%d)", /* EN Sprintf(buf, "Portal @ (%d,%d), hero @ (%d,%d)", */
 		trap->tx, trap->ty, u.ux, u.uy);
 	else
 	    Sprintf(buf, "Kein Portal gefunden."); /* EN Sprintf(buf, "No portal found."); */

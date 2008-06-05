@@ -1946,14 +1946,14 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 				(mtmp->wormno && count_wsegs(mtmp) > 5) ||
 				is_clinger(mptr)) {
 			    if (!inescapable) break;	/* avoids trap */
-			    fallverb = "VERB_WERDEN"; fallverbpartizip = "gezogen";	/* sokoban pit */ /* EN fallverb = "is dragged";	*/
+			    fallverb = "VERB_WERDEN"; fallverbpartizip = " gezogen";	/* sokoban pit */ /* EN fallverb = "is dragged";	*/
 			}
 			if (!passes_walls(mptr))
 			    mtmp->mtrapped = 1;
 			if (in_sight) {
 			    pline("SUBJECT %s %s OBJECT in %s NOUN_PIT%s!", /* EN pline("%s %s into %s pit!", */
-				  Monnam(mtmp), fallverb, fallverbpartizip, /* EN Monnam(mtmp), fallverb, */
-				  a_your[trap->madeby_u]);
+				  Monnam(mtmp), fallverb, a_your[trap->madeby_u], fallverbpartizip /* EN Monnam(mtmp), fallverb, */
+				  ); /* EN a_your[trap->madeby_u]); */
 			    if (mptr == &mons[PM_PIT_VIPER] || mptr == &mons[PM_PIT_FIEND])
 				pline("How pitiful.  Isn't that the pits?"); /* EN pline("How pitiful.  Isn't that the pits?"); */ // TODO DE
 			    seetrap(trap);

@@ -834,7 +834,7 @@ int thrown;
 				      "Klatsch!" : "Pflatsch!"); /* EN "Splat!" : "Splash!"); */
 			    } else if (obj->otyp == BLINDING_VENOM) {
 				pline_The("NOUN_SCHLANGENGIFT VERB_BLENDEN OBJECT %s%s!", mon_nam(mon), /* EN pline_The("venom blinds %s%s!", mon_nam(mon), */
-					  mon->mcansee ? "" : " further"); /* EN mon->mcansee ? "" : " further"); */ // TODO DE
+					  mon->mcansee ? "" : " noch stärker"); /* EN mon->mcansee ? "" : " further"); */
 			    } else {
 				char *whom = mon_nam(mon);
 				char *what = The(xname(obj));
@@ -845,8 +845,8 @@ int thrown;
 				    && mdat != &mons[PM_FLOATING_EYE])
 				    whom = genitivattribut_zu_wort(whom, /* EN whom = strcat(strcat(s_suffix(whom), " "), */
 						  mbodypart(mon, FACE));
-				pline("%s %s over %s!", /* EN pline("%s %s over %s!", */ // TODO DE
-				      what, vtense(what, "splash"), whom); /* EN what, vtense(what, "splash"), whom); */ // TODO DE
+				pline("SUBJECT %s %s OBJECT in %s!", /* EN pline("%s %s over %s!", */
+				      what, vtense(what, "VERB_KLATSCHEN"), whom); /* EN what, vtense(what, "splash"), whom); */
 			    }
 			    setmangry(mon);
 			    mon->mcansee = 0;
@@ -866,7 +866,7 @@ int thrown;
 			break;
 		    case ACID_VENOM: /* thrown (or spit) */
 			if (resists_acid(mon)) {
-				Your("NOUN_SCHLANGENGIFT VERB_HIT OBJECT %s harmlessly.", /* EN Your("venom hits %s harmlessly.", */ // TODO DE
+				Your("NOUN_SCHLANGENGIFT VERB_HIT OBJECT %s ohne Wirkung.", /* EN Your("venom hits %s harmlessly.", */
 					mon_nam(mon));
 				tmp = 0;
 			} else {
@@ -940,9 +940,9 @@ int thrown;
 	    tmp = 0;
 	    if (mdat == &mons[PM_SHADE]) {
 		if (!hittxt) {
-		    const char *what = unconventional[0] ? unconventional : "attack"; /* EN const char *what = unconventional[0] ? unconventional : "attack"; */ // TODO DE
-		    Your("%s %s harmlessly through %s.", /* EN Your("%s %s harmlessly through %s.", */ // TODO DE
-		    	what, vtense(what, "pass"), /* EN what, vtense(what, "pass"), */ // TODO DE
+		    const char *what = unconventional[0] ? unconventional : "NOUN_ATTACK"; /* EN const char *what = unconventional[0] ? unconventional : "attack"; */
+		    Your("%s %s unschädlich OBJECT durch %s.", /* EN Your("%s %s harmlessly through %s.", */
+		    	what, vtense(what, "VERB_GLEITEN"), /* EN what, vtense(what, "pass"), */
 			mon_nam(mon));
 		    hittxt = TRUE;
 		}
@@ -954,10 +954,10 @@ int thrown;
 #ifdef STEED
 	if (jousting) {
 	    tmp += d(2, (obj == uwep) ? 10 : 2);	/* [was in dmgval()] */
-	    You("joust %s%s", /* EN You("joust %s%s", */ // TODO DE
+	    You("VERB_TJOSTIEREN OBJECT %s%s", /* EN You("joust %s%s", */
 			 mon_nam(mon), canseemon(mon) ? exclam(tmp) : ".");
 	    if (jousting < 0) {
-		Your("%s shatters on impact!", xname(obj)); /* EN Your("%s shatters on impact!", xname(obj)); */ // TODO DE
+		Your("%s VERB_ZERSPLITTERN beim Aufprall!", xname(obj)); /* EN Your("%s shatters on impact!", xname(obj)); */
 		/* (must be either primary or secondary weapon to get here) */
 		u.twoweap = FALSE;	/* untwoweapon() is too verbose here */
 		if (obj == uwep) uwepgone();		/* set unweapon */
@@ -980,7 +980,7 @@ int thrown;
 	    if (rnd(100) < P_SKILL(P_BARE_HANDED_COMBAT) &&
 			!bigmonst(mdat) && !thick_skinned(mdat)) {
 		if (canspotmon(mon))
-		    pline("%s %s from your powerful strike!", Monnam(mon), /* EN pline("%s %s from your powerful strike!", Monnam(mon), */ // TODO DE
+		    pline("SUBJECT %s %s OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV ADJEKTIV_KRAFTVOLL NOUN_SCHLAG!", Monnam(mon), /* EN pline("%s %s from your powerful strike!", Monnam(mon), */
 			  makeplural(stagger(mon->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mon->data, "stagger"))); */
 		/* avoid migrating a dead monster */
 		if (mon->mhp > tmp) {
@@ -1017,7 +1017,7 @@ int thrown;
 	  (!destroyed || (thrown && m_shot.n > 1 && m_shot.o == obj->otyp))) {
 		if (thrown) hit(mshot_xname(obj), mon, exclam(tmp));
 		else if (!flags.verbose) You("VERB_HIT es."); /* EN  else if (!flags.verbose) You("hit it."); */
-		else You("%s OBJECT %s%s", Role_if(PM_BARBARIAN) ? "smite" : "VERB_HIT", /* EN else You("%s %s%s", Role_if(PM_BARBARIAN) ? "smite" : "hit", */ // TODO DE
+		else You("%s OBJECT %s%s", Role_if(PM_BARBARIAN) ? "VERB_HAUEN" : "VERB_HIT", /* EN else You("%s %s%s", Role_if(PM_BARBARIAN) ? "smite" : "hit", */
 			 mon_nam(mon), canseemon(mon) ? exclam(tmp) : ".");
 	}
 
@@ -1124,7 +1124,7 @@ struct attack *mattk;
 			xname(obj) : cloak_simple_name(obj))), mattk->adtyp == AD_WRAP ? " ab" : " nicht festhalten"); /* EN xname(obj) : cloak_simple_name(obj)); */
 
 	    if (obj->greased && !rn2(2)) {
-		pline_The("grease wears off."); /* EN pline_The("grease wears off."); */ // TODO DE
+		pline("Das Fett löst sich auf."); /* EN pline_The("grease wears off."); */
 		obj->greased = 0;
 	    }
 	    return TRUE;
@@ -1334,7 +1334,7 @@ register struct attack *mattk;
 		if (pd == &mons[PM_STRAW_GOLEM] ||
 		    pd == &mons[PM_PAPER_GOLEM]) {
 		    if (!Blind)
-			pline("%s burns completely!", Monnam(mdef)); /* EN pline("%s burns completely!", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_VERBRENNEN völlig!", Monnam(mdef)); /* EN pline("%s burns completely!", Monnam(mdef)); */
 		    xkilled(mdef,2);
 		    tmp = 0;
 		    break;
@@ -1645,10 +1645,10 @@ register struct attack *mattk;
 	mdef->mstrategy &= ~STRAT_WAITFORU; /* in case player is very fast */
 	if((mdef->mhp -= tmp) < 1) {
 	    if (mdef->mtame && !cansee(mdef->mx,mdef->my)) {
-		You_feel("embarrassed for a moment."); /* EN You_feel("embarrassed for a moment."); */ // TODO DE
+		Du_fuehlst_dich("einen Moment lang verlegen."); /* EN You_feel("embarrassed for a moment."); */
 		if (tmp) xkilled(mdef, 0); /* !tmp but hp<1: already killed */
 	    } else if (!flags.verbose) {
-		You("destroy it!"); /* EN You("destroy it!"); */ // TODO DE
+		You("VERB_ZERSTOEREN es!"); /* EN You("destroy it!"); */
 		if (tmp) xkilled(mdef, 0);
 	    } else
 		if (tmp) killed(mdef);
@@ -1769,9 +1769,9 @@ register struct attack *mattk;
 		    case AD_DGST:
 			/* eating a Rider or its corpse is fatal */
 			if (is_rider(mdef->data)) {
-			 pline("Unfortunately, digesting any of it is fatal."); /* EN pline("Unfortunately, digesting any of it is fatal."); */ // TODO DE
+			 pline("Bedauerlicherweise ist etwas davon zu verdauen tödlich."); /* EN pline("Unfortunately, digesting any of it is fatal."); */
 			    end_engulf();
-			    Sprintf(msgbuf, "unwisely tried to eat %s", /* EN Sprintf(msgbuf, "unwisely tried to eat %s", */ // TODO DE
+			    Sprintf(msgbuf, "versuchte unklugerweise KASUS_NOMINATIV %s zu essen", /* EN Sprintf(msgbuf, "unwisely tried to eat %s", */
 				    mdef->data->mname);
 			    killer = msgbuf;
 			    killer_format = NO_KILLER_PREFIX;
@@ -1807,7 +1807,7 @@ register struct attack *mattk;
 				/* nutrition only if there can be a corpse */
 				u.uhunger += (mdef->data->cnutrit+1) / 2;
 			    } else tmp = 0;
-			    Sprintf(msgbuf, "SUBJECT VERB_VERDAUEN OBJECT %s vollständig.", /* EN Sprintf(msgbuf, "You totally digest %s.", */
+			    Sprintf(msgbuf, "SUBJECT PRONOMEN_PERSONAL VERB_VERDAUEN OBJECT %s vollständig.", /* EN Sprintf(msgbuf, "You totally digest %s.", */
 					    mon_nam(mdef));
 			    if (tmp != 0) {
 				/* setting afternmv = end_engulf is tempting,

@@ -205,7 +205,7 @@ boolean the_pfx;
 	if (food->otyp == CORPSE && (mons[mnum].geno & G_UNIQ)) {
 	    /* grab xname()'s modifiable return buffer for our own use */
 	    char *bufp = xname(food);
-	    Sprintf(bufp, "MODIFIER_CORPSE %s%s NOUN_CORPSE 2", /* EN Sprintf(bufp, "%s%s corpse", */
+	    Sprintf(bufp, "MODIFIER_CORPSE %s%s NOUN_CORPSE", /* EN Sprintf(bufp, "%s%s corpse", */
 		    (!type_is_pname(&mons[mnum])) ? "ARTIKEL_BESTIMMTER " : "MODIFIER_EIGENNAME ", /* EN (the_pfx && !type_is_pname(&mons[mnum])) ? "the " : "", */
 		    mons[mnum].mname); /* EN s_suffix(mons[mnum].mname)); */
 	    result = bufp;
@@ -2438,7 +2438,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 		(otmp->otyp==CORPSE && (corpsecheck == 1 || tinnable(otmp))) :
 		    feeding ? (otmp->oclass != COIN_CLASS && is_edible(otmp)) :
 						otmp->oclass==FOOD_CLASS) {
-			Sprintf(qbuf, "Hier %s %s; isst es %s %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */ // TODO DE
+			Sprintf(qbuf, "Hier %s %s; %s %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */ // TODO DE
 				otense(otmp, "VERB_LIEGEN"), /* EN otense(otmp, "are"), */
 				doname(otmp), verb,
 				(otmp->quan == 1L) ? "es" : "eines"); /* EN (otmp->quan == 1L) ? "it" : "one"); */
