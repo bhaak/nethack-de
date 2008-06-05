@@ -348,7 +348,7 @@ tty_yn_function(query,resp, def)
 #ifdef GERMAN
 		for (i=0; i<strlen(respbuf); i++) {
 			if (respbuf[i] == 'y') { respbuf[i] = 'j'; }
-			else if (respbuf[i] == 'q') { respbuf[i] = 'a'; }
+			//else if (respbuf[i] == 'q') { respbuf[i] = 'a'; }
 		}
 #endif
 		/* any acceptable responses that follow <esc> aren't displayed */
@@ -357,7 +357,7 @@ tty_yn_function(query,resp, def)
 #ifdef GERMAN
 		german_def = def;
 		if (def == 'y') { german_def = 'j'; }
-		else if (def == 'q') { german_def = 'a'; }
+		//else if (def == 'q') { german_def = 'a'; }
 #endif
 		if (def) Sprintf(eos(prompt), "(%c) ", german_def); /* EN if (def) Sprintf(eos(prompt), "(%c) ", def); */
 		pline("%s", prompt);
@@ -461,7 +461,7 @@ tty_yn_function(query,resp, def)
 #ifdef GERMAN
 		int q_anzeige = q;
 		if (q == 'y') { q_anzeige = 'j'; }
-		else if (q == 'q') { q_anzeige = 'a'; }
+		//else if (q == 'q') { q_anzeige = 'a'; }
 #endif
 		Sprintf(rtmp, "%c", q_anzeige); /* EN Sprintf(rtmp, "%c", q); */
 		addtopl(rtmp);
