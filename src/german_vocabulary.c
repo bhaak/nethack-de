@@ -7020,7 +7020,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Zauberern von Yendor", "NOUN_WIZARD_OF_YENDORs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Krösus", "NOUN_CROESUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Krösus", "NOUN_CROESUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Krösus'", "NOUN_CROESUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Charon", "NOUN_CHARON", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Charons", "NOUN_CHARON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Geistes", "NOUN_GHOST", "er", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Geiste", "NOUN_GHOST", "er", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7051,10 +7054,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Yeenoghus", "NOUN_YEENOGHU", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Orkus", "NOUN_ORCUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Orkus", "NOUN_ORCUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orkus'", "NOUN_ORCUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Orcus", "NOUN_ORCUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Orcus", "NOUN_ORCUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orcus'", "NOUN_ORCUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Geryon", "NOUN_GERYON", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Geryons", "NOUN_GERYON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7069,13 +7072,13 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Baalzebubs", "NOUN_BAALZEBUB", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Asmodäus", "NOUN_ASMODEUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Asmodäus", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Asmodäus'", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Asmodis", "NOUN_ASMODEUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Asmodis", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Asmodis'", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Asmodeus", "NOUN_ASMODEUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Asmodeus", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Asmodeus'", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Demogorgon", "NOUN_DEMOGORGON", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Demogorgons", "NOUN_DEMOGORGON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7283,6 +7286,32 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Magier", "NOUN_WIZARDs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Magiern", "NOUN_WIZARDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Lord Carnarvon", "NOUN_LORD_CARNARVON", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lord Carnarvons", "NOUN_LORD_CARNARVON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Pelias", "NOUN_PELIAS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pelias'", "NOUN_PELIAS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Karnov der Schamane", "NOUN_SHAMAN_KARNOV", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Karnov des Schamanen", "NOUN_SHAMAN_KARNOV", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Karnov dem Schamanen", "NOUN_SHAMAN_KARNOV", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Karnov den Schamanen", "NOUN_SHAMAN_KARNOV", "", akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Eärendil", "NOUN_EARENDIL", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Eärendils", "NOUN_EARENDIL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Elwing", "NOUN_ELWING", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Elwings", "NOUN_ELWING", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Hippokrates", "NOUN_HIPPOCRATES", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Hippokrates'", "NOUN_HIPPOCRATES", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"König Karl", "NOUN_KING_ARTHUR", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"König Karls", "NOUN_KING_ARTHUR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Großmeisters", "NOUN_GRAND_MASTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Großmeister", "NOUN_GRAND_MASTER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Großmeister", "NOUN_GRAND_MASTERs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -7296,6 +7325,15 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Orion", "NOUN_ORION", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Orions", "NOUN_ORION", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Lord Sato", "NOUN_LORD_SATO", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lord Satos", "NOUN_LORD_SATO", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Zweiblum", "NOUN_TWOFLOWER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zweiblums", "NOUN_TWOFLOWER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Norn", "NOUN_NORN", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Norns", "NOUN_NORN", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Neferet die Grüne", "NOUN_NEFERET_THE_GREEN", "", nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Neferet der Grünen", "NOUN_NEFERET_THE_GREEN", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7304,11 +7342,42 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Neferet die Grüne", "NOUN_NEFERET_THE_GREEN", "", akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Thoth-Amon", "NOUN_THOTH_AMON", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Thoth-Amons", "NOUN_THOTH_AMON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Chromatischen Drachen", "NOUN_CHROMATIC_DRAGON", "", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Chromatische Drache", "NOUN_CHROMATIC_DRAGON", "", nominativ, maskulin, n_singular, bestimmter},
+  {"Chromatischer Drache", "NOUN_CHROMATIC_DRAGON", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"Chromatischem Drachen", "NOUN_CHROMATIC_DRAGON", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"Chromatischen Drachen", "NOUN_CHROMATIC_DRAGONs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Chromatische Drachen", "NOUN_CHROMATIC_DRAGONs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
+  {"Chromatischer Drachen", "NOUN_CHROMATIC_DRAGONs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
   {"Goblinköniges", "NOUN_GOBLIN_KING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Goblinkönige", "NOUN_GOBLIN_KING", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Goblinkönig", "NOUN_GOBLIN_KING", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Goblinkönige", "NOUN_GOBLIN_KINGs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Goblinkönigen", "NOUN_GOBLIN_KINGs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Zyklop", "NOUN_CYCLOPS", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zyklopen", "NOUN_CYCLOPS", "en", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zyklopen", "NOUN_CYCLOPSs", "en", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Kyklop", "NOUN_CYCLOPS", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kyklopen", "NOUN_CYCLOPS", "en", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kyklopen", "NOUN_CYCLOPSs", "en", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ixoth", "NOUN_IXOTH", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ixoths", "NOUN_IXOTH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Nalzok", "NOUN_NALZOK", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Nalzoks", "NOUN_NALZOK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Scorpius", "NOUN_SCORPIUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Scorpius'", "NOUN_SCORPIUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Lord Surtur", "NOUN_LORD_SURTUR", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lord Surturs", "NOUN_LORD_SURTUR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
 
   /* ======================================================= */

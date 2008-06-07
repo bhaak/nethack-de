@@ -288,8 +288,7 @@ def dekliniere_eigenname(bezeichner, singularstamm="", geschlecht="")
   namen = []
   namen << unregelmaessiges_wort(bezeichner, singularstamm, [$nom,$akk,$dat], geschlecht, $sg)
   if singularstamm[-1..-1] == 's' then
-    #namen << unregelmaessiges_wort(bezeichner, singularstamm+"'", [$gen], geschlecht, $sg)
-    namen << unregelmaessiges_wort(bezeichner, singularstamm, [$gen], geschlecht, $sg)
+    namen << unregelmaessiges_wort(bezeichner, singularstamm+"'", [$gen], geschlecht, $sg)
   else
     namen << unregelmaessiges_wort(bezeichner, singularstamm+"s", [$gen], geschlecht, $sg)
   end
@@ -2641,10 +2640,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WATCHMAN", "Wachmann", "es", "Wachmänn", "er", "maskulin", "s"),
     dekliniere_substantiv("NOUN_WATCH_CAPTAIN", "Wachkommandant", "en", "Wachkommandant", "en", "maskulin", "en"),
     dekliniere_eigenname("NOUN_MEDUSA", "Medusa", "feminin"),
-    #dekliniere_substantiv("NOUN_MEDUSA", "Medusa", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_WIZARD_OF_YENDOR","Zauberer", "s", "Zauberer", "", "maskulin","","von Yendor"),
     dekliniere_eigenname("NOUN_CROESUS", "Krösus", "maskulin"),
-    #dekliniere_substantiv("NOUN_CHARON"
+    dekliniere_eigenname("NOUN_CHARON", "Charon", "maskulin"),
     dekliniere_substantiv("NOUN_GHOST", "Geist", "es", "Geist", "er", "maskulin", "er"),
     dekliniere_substantiv("NOUN_SHADE", "Nachtschatten", "s", "Nachtschatten", "", "maskulin"),
     #dekliniere_substantiv("NOUN_WATER_DEMON" # Wasserteufelm Wasserdämon
@@ -2723,37 +2721,41 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TOURISTIN", "Touristin", "", "Touristinn", "en", "feminin", "nen"),
     dekliniere_substantiv("NOUN_VALKYRIE", "Walküre", "", "Walküre", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_WIZARD","Magier","s","Magier","","maskulin"),
-    #dekliniere_substantiv("NOUN_LORD_CARNARVON"
-    #dekliniere_substantiv("NOUN_PELIAS"
-    #dekliniere_substantiv("NOUN_SHAMAN_KARNOV"
-    #dekliniere_substantiv("NOUN_EARENDIL"
-    #dekliniere_substantiv("NOUN_ELWING"
-    #dekliniere_substantiv("NOUN_HIPPOCRATES"
-    #dekliniere_substantiv("NOUN_KING_ARTHUR"
+    dekliniere_eigenname("NOUN_LORD_CARNARVON","Lord Carnarvon","maskulin"),
+    dekliniere_eigenname("NOUN_PELIAS","Pelias","maskulin"),
+    [unregelmaessiges_wort("NOUN_SHAMAN_KARNOV", "Karnov der Schamane", $nom, $mal, $sg)],
+    [unregelmaessiges_wort("NOUN_SHAMAN_KARNOV", "Karnov des Schamanen", $gen, $mal, $sg)],
+    [unregelmaessiges_wort("NOUN_SHAMAN_KARNOV", "Karnov dem Schamanen", $dat, $mal, $sg)],
+    [unregelmaessiges_wort("NOUN_SHAMAN_KARNOV", "Karnov den Schamanen", $akk, $mal, $sg)],
+    dekliniere_eigenname("NOUN_EARENDIL","Eärendil","maskulin"),
+    dekliniere_eigenname("NOUN_ELWING","Elwing","feminin"),
+    dekliniere_eigenname("NOUN_HIPPOCRATES","Hippokrates","maskulin"),
+    dekliniere_eigenname("NOUN_KING_ARTHUR","König Karl","maskulin"),
     dekliniere_substantiv("NOUN_GRAND_MASTER", "Großmeister", "s", "Großmeister", "", "maskulin"), 
     # dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
     dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin"),
     dekliniere_eigenname("NOUN_ORION", "Orion", "maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
-    #dekliniere_substantiv("NOUN_LORD_SATO"
-    #dekliniere_substantiv("NOUN_TWOFLOWER"
-    #dekliniere_substantiv("NOUN_NORN"
+    dekliniere_eigenname("NOUN_LORD_SATO","Lord Sato","maskulin"),
+    dekliniere_eigenname("NOUN_TWOFLOWER","Zweiblum","maskulin"),
+    dekliniere_eigenname("NOUN_NORN","Norn","feminin"),
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $nom, $fem, $sg)],
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $gen, $fem, $sg)],
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $dat, $fem, $sg)],
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $akk, $fem, $sg)],
     #dekliniere_substantiv("NOUN_MINION_OF_HUHETOTL"
-    #dekliniere_substantiv("NOUN_THOTH_AMON"
-    #dekliniere_substantiv("NOUN_CHROMATIC_DRAGON"
+    dekliniere_eigenname("NOUN_THOTH_AMON","Thoth-Amon","maskulin"),
+    dekliniere_nominalphrase("NOUN_CHROMATIC_DRAGON", "Chromatisch", "Drache", "en", "Drache", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_GOBLIN_KING","Goblinkönig","es","Goblinkönig","e","maskulin"),
-    #dekliniere_substantiv("NOUN_CYCLOPS"
-    #dekliniere_substantiv("NOUN_IXOTH"
+    dekliniere_substantiv("NOUN_CYCLOPS","Zyklop","en","Zyklop","en","maskulin","en"),
+    dekliniere_substantiv("NOUN_CYCLOPS","Kyklop","en","Kyklop","en","maskulin","en"),
+    dekliniere_eigenname("NOUN_IXOTH","Ixoth","maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_KAEN"
-    #dekliniere_substantiv("NOUN_NALZOK"
-    #dekliniere_substantiv("NOUN_SCORPIUS"
+    dekliniere_eigenname("NOUN_NALZOK","Nalzok","maskulin"),
+    dekliniere_eigenname("NOUN_SCORPIUS","Scorpius","maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_ASSASSIN"
     #dekliniere_substantiv("NOUN_ASHIKAGA_TAKAUJI"
-    #dekliniere_substantiv("NOUN_LORD_SURTUR"
+    dekliniere_eigenname("NOUN_LORD_SURTUR","Lord Surtur","maskulin"),
     #dekliniere_substantiv("NOUN_DARK_ONE"
     #dekliniere_substantiv("NOUN_STUDENT"
     #dekliniere_substantiv("NOUN_CHIEFTAIN"
