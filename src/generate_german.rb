@@ -287,8 +287,9 @@ def dekliniere_eigenname(bezeichner, singularstamm="", geschlecht="")
 
   namen = []
   namen << unregelmaessiges_wort(bezeichner, singularstamm, [$nom,$akk,$dat], geschlecht, $sg)
-  if [-1..-1] == 's' then
-    namen << unregelmaessiges_wort(bezeichner, singularstamm+"'", [$gen], geschlecht, $sg)
+  if singularstamm[-1..-1] == 's' then
+    #namen << unregelmaessiges_wort(bezeichner, singularstamm+"'", [$gen], geschlecht, $sg)
+    namen << unregelmaessiges_wort(bezeichner, singularstamm, [$gen], geschlecht, $sg)
   else
     namen << unregelmaessiges_wort(bezeichner, singularstamm+"s", [$gen], geschlecht, $sg)
   end
@@ -1877,9 +1878,14 @@ def ausgabe_nouns
                           "gegen Gift"),
     dekliniere_substantiv("NOUN_AMULET_OF_CHANGE", "Amulett", "es", "Amulett", "e", "neutrum", "",
                           "der Wandlung"),
-    dekliniere_substantiv("NOUN_AMULET_OF_UNCHANGING", "Amulett", "es", "Amulett", "e", "neutrum", "", "der Unwandelbarkeit"), # Unwandlung?
+    dekliniere_substantiv("NOUN_AMULET_OF_UNCHANGING", "Amulett", "es", "Amulett", "e", "neutrum", "", "der Unwandlung"),
+    dekliniere_substantiv("NOUN_AMULET_OF_UNCHANGING", "Amulett", "es", "Amulett", "e", "neutrum", "", "der Unwandelbarkeit"),
+    dekliniere_substantiv("NOUN_AMULET_OF_UNCHANGING", "Amulett", "es", "Amulett", "e", "neutrum", "", "der Unveränderlichkeit"),
     dekliniere_substantiv("NOUN_AMULET_OF_REFLECTION", "Amulett", "es", "Amulett", "e", "neutrum", "", "der Spiegelung"),
+    dekliniere_substantiv("NOUN_AMULET_OF_REFLECTION", "Amulett", "es", "Amulett", "e", "neutrum", "", "der Reflektion"),
     dekliniere_substantiv("NOUN_AMULET_OF_MAGICAL_BREATHING", "Amulett", "es", "Amulett", "e", "neutrum", "", "des magischen Lebensodems"), # magischer Lebensodem, magischer Odem?
+    dekliniere_substantiv("NOUN_AMULET_OF_MAGICAL_BREATHING", "Amulett", "es", "Amulett", "e", "neutrum", "", "des magischen Atems"),
+    dekliniere_substantiv("NOUN_AMULET_OF_MAGICAL_BREATHING", "Amulett", "es", "Amulett", "e", "neutrum", "", "des magischen Atmens"),
     dekliniere_substantiv("NOUN_AMULET_OF_YENDOR", "Amulett", "es", "Amulett", "e", "neutrum", "", 
                           "von Yendor"),
     dekliniere_nominalphrase("NOUN_FAKE_AMULET_OF_YENDOR", "billig", "Plastikimitat", "es", "Plastikimitat", "e",
@@ -1918,6 +1924,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BRASS_LANTERN", "Laterne", "", "Laterne", "en", "feminin"),
     dekliniere_substantiv("NOUN_OIL_LAMP", "Öllampe", "", "Öllampe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_MAGIC_LAMP", "Wunderlampe", "", "Wunderlampe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_MAGIC_LAMP", "Zauberlampe", "", "Zauberlampe", "en", "feminin", "n"),
     dekliniere_nominalphrase("NOUN_EXPENSIVE_CAMERA", "teur", "Photoapparat", "es", "Photoapparat", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_MIRROR","Spiegel","","Spiegel","","maskulin"),
     dekliniere_substantiv("NOUN_CRYSTAL_BALL", "Kristallkugel", "", "Kristallkugel", "en", "feminin"),
@@ -1985,8 +1992,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_TRIPE_RATION", "Pansen", "s",  "Pansen", "", "maskulin"),
     "/* NOUN_CORPSE is irregular and treated specially */",
     dekliniere_substantiv("NOUN_CORPSE","Kadaver","s","Kadaver","","maskulin"),
-    # dekliniere_substantiv("NOUN_CORPSE","Leiche","","Leiche","en","feminin"),
-    # dekliniere_substantiv("NOUN_CORPSE","Leichnam","s","Leichnam","e","feminin"),
+    dekliniere_substantiv("NOUN_CORPSE","Leiche","","Leiche","en","feminin"),
+    dekliniere_substantiv("NOUN_CORPSE","Leichnam","s","Leichnam","e","maskulin"),
     dekliniere_substantiv("NOUN_EGG","Ei","es","Ei","er","neutrum"),
     dekliniere_substantiv("NOUN_MEATBALL", "Hackbällchen", "s", "Hackbällchen", "", "neutrum"), # Kloesschen, Fleischklops, Frikadelle
     dekliniere_substantiv("NOUN_MEAT_STICK", "Salami", "", "Salami", "", "feminin"),
@@ -2567,8 +2574,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_UMBER_HULK", "Umberholk", "es", "Umberholk", "e","maskulin", "en"), # Erdkoloss, Umbraunkoloss?, Umberholk?, Umbraholk?, Umbraunholk? Umbrauner Holk? Umbrauner Koloss?
     # dekliniere_nominalphrase("NOUN_UMBER_HULK", "Umbraun", "Holk", "es", "Holk", "e","maskulin", "en"),
     dekliniere_substantiv("NOUN_VAMPIRE","Vampir","es","Vampir","e","maskulin"),
-    #dekliniere_substantiv("NOUN_VAMPIRE_LORD"
-    #dekliniere_substantiv("NOUN_VAMPIRE_MAGE"
+    dekliniere_substantiv("NOUN_VAMPIRE_LORD","Vampirfürst","en","Vampirfürst","en","maskulin", "en"),
+    dekliniere_substantiv("NOUN_VAMPIRE_MAGE","Vampiermagier","s","Vampiermagier","","maskulin"),
     [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad der Pfähler", $nom, $mal, $sg)],
     [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad des Pfählers", $gen, $mal, $sg)],
     [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad dem Pfähler", $dat, $mal, $sg)],
@@ -2636,7 +2643,7 @@ def ausgabe_nouns
     dekliniere_eigenname("NOUN_MEDUSA", "Medusa", "feminin"),
     #dekliniere_substantiv("NOUN_MEDUSA", "Medusa", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_WIZARD_OF_YENDOR","Zauberer", "s", "Zauberer", "", "maskulin","","von Yendor"),
-    dekliniere_substantiv("NOUN_CROESUS", "Krösus", "es", "Krösus", "e", "maskulin"),
+    dekliniere_eigenname("NOUN_CROESUS", "Krösus", "maskulin"),
     #dekliniere_substantiv("NOUN_CHARON"
     dekliniere_substantiv("NOUN_GHOST", "Geist", "es", "Geist", "er", "maskulin", "er"),
     dekliniere_substantiv("NOUN_SHADE", "Nachtschatten", "s", "Nachtschatten", "", "maskulin"),
@@ -2653,15 +2660,19 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_ICE_DEVIL"  # Eisteufel Gelugon
     #dekliniere_substantiv("NOUN_NALFESHNEE"
     #dekliniere_substantiv("NOUN_PIT_FIEND" # Ice Fiend - Eisunhold? / Eisdämon?
-    #dekliniere_substantiv("NOUN_BALROG"
-    #dekliniere_substantiv("NOUN_JUIBLEX"
-    #dekliniere_substantiv("NOUN_YEENOGHU"
-    #dekliniere_substantiv("NOUN_ORCUS"
-    #dekliniere_substantiv("NOUN_GERYON"
-    #dekliniere_substantiv("NOUN_DISPATER" # Dispater, Eigenname
-    #dekliniere_substantiv("NOUN_BAALZEBUB"
-    #dekliniere_substantiv("NOUN_ASMODEUS"
-    #dekliniere_substantiv("NOUN_DEMOGORGON"
+    dekliniere_eigenname("NOUN_BALROG","Balrog","maskulin"),
+    dekliniere_eigenname("NOUN_JUIBLEX","Juiblex","maskulin"),
+    dekliniere_eigenname("NOUN_YEENOGHU","Yeenoghu","maskulin"),
+    dekliniere_eigenname("NOUN_ORCUS", "Orkus", "maskulin"),
+    dekliniere_eigenname("NOUN_ORCUS", "Orcus", "maskulin"),
+    dekliniere_eigenname("NOUN_GERYON","Geryon","maskulin"),
+    dekliniere_eigenname("NOUN_DISPATER","Dispater","maskulin"),
+    dekliniere_eigenname("NOUN_BAALZEBUB","Beelzebub","maskulin"),
+    dekliniere_eigenname("NOUN_BAALZEBUB","Baalzebub","maskulin"),
+    dekliniere_eigenname("NOUN_ASMODEUS","Asmodäus","maskulin"),
+    dekliniere_eigenname("NOUN_ASMODEUS","Asmodis","maskulin"),
+    dekliniere_eigenname("NOUN_ASMODEUS","Asmodeus","maskulin"),
+    dekliniere_eigenname("NOUN_DEMOGORGON", "Demogorgon", "maskulin"),
     dekliniere_eigenname("NOUN_DEATH","Tod","maskulin"),
     dekliniere_eigenname("NOUN_PESTILENCE","Pest","feminin"),
     dekliniere_eigenname("NOUN_FAMINE","Hunger","maskulin"),
@@ -2722,7 +2733,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GRAND_MASTER", "Großmeister", "s", "Großmeister", "", "maskulin"), 
     # dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
     dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin"),
-    dekliniere_substantiv("NOUN_ORION", "Orion", "s", "", "", "maskulin"),
+    dekliniere_eigenname("NOUN_ORION", "Orion", "maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
     #dekliniere_substantiv("NOUN_LORD_SATO"
     #dekliniere_substantiv("NOUN_TWOFLOWER"

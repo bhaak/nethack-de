@@ -1873,11 +1873,23 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Amulette der Wandlung", "NOUN_AMULET_OF_CHANGEs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Amuletten der Wandlung", "NOUN_AMULET_OF_CHANGEs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Amulettes der Unwandlung", "NOUN_AMULET_OF_UNCHANGING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette der Unwandlung", "NOUN_AMULET_OF_UNCHANGING", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulett der Unwandlung", "NOUN_AMULET_OF_UNCHANGING", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette der Unwandlung", "NOUN_AMULET_OF_UNCHANGINGs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Amuletten der Unwandlung", "NOUN_AMULET_OF_UNCHANGINGs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Amulettes der Unwandelbarkeit", "NOUN_AMULET_OF_UNCHANGING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Amulette der Unwandelbarkeit", "NOUN_AMULET_OF_UNCHANGING", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Amulett der Unwandelbarkeit", "NOUN_AMULET_OF_UNCHANGING", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Amulette der Unwandelbarkeit", "NOUN_AMULET_OF_UNCHANGINGs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Amuletten der Unwandelbarkeit", "NOUN_AMULET_OF_UNCHANGINGs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Amulettes der Unveränderlichkeit", "NOUN_AMULET_OF_UNCHANGING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette der Unveränderlichkeit", "NOUN_AMULET_OF_UNCHANGING", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulett der Unveränderlichkeit", "NOUN_AMULET_OF_UNCHANGING", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette der Unveränderlichkeit", "NOUN_AMULET_OF_UNCHANGINGs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Amuletten der Unveränderlichkeit", "NOUN_AMULET_OF_UNCHANGINGs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Amulettes der Spiegelung", "NOUN_AMULET_OF_REFLECTION", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Amulette der Spiegelung", "NOUN_AMULET_OF_REFLECTION", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -1885,11 +1897,29 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Amulette der Spiegelung", "NOUN_AMULET_OF_REFLECTIONs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Amuletten der Spiegelung", "NOUN_AMULET_OF_REFLECTIONs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Amulettes der Reflektion", "NOUN_AMULET_OF_REFLECTION", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette der Reflektion", "NOUN_AMULET_OF_REFLECTION", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulett der Reflektion", "NOUN_AMULET_OF_REFLECTION", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette der Reflektion", "NOUN_AMULET_OF_REFLECTIONs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Amuletten der Reflektion", "NOUN_AMULET_OF_REFLECTIONs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Amulettes des magischen Lebensodems", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Amulette des magischen Lebensodems", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Amulett des magischen Lebensodems", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Amulette des magischen Lebensodems", "NOUN_AMULET_OF_MAGICAL_BREATHINGs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Amuletten des magischen Lebensodems", "NOUN_AMULET_OF_MAGICAL_BREATHINGs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Amulettes des magischen Atems", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette des magischen Atems", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulett des magischen Atems", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette des magischen Atems", "NOUN_AMULET_OF_MAGICAL_BREATHINGs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Amuletten des magischen Atems", "NOUN_AMULET_OF_MAGICAL_BREATHINGs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Amulettes des magischen Atmens", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette des magischen Atmens", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulett des magischen Atmens", "NOUN_AMULET_OF_MAGICAL_BREATHING", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amulette des magischen Atmens", "NOUN_AMULET_OF_MAGICAL_BREATHINGs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Amuletten des magischen Atmens", "NOUN_AMULET_OF_MAGICAL_BREATHINGs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Amulettes von Yendor", "NOUN_AMULET_OF_YENDOR", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Amulette von Yendor", "NOUN_AMULET_OF_YENDOR", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -2214,6 +2244,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Wunderlampe", "NOUN_MAGIC_LAMP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wunderlampen", "NOUN_MAGIC_LAMPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Zauberlampe", "NOUN_MAGIC_LAMP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zauberlampen", "NOUN_MAGIC_LAMPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"teuren Photoapparat", "NOUN_EXPENSIVE_CAMERA", "", akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"teuren Photoapparates", "NOUN_EXPENSIVE_CAMERA", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"teure Photoapparat", "NOUN_EXPENSIVE_CAMERA", "", nominativ, maskulin, n_singular, bestimmter},
@@ -2458,6 +2491,14 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Kadaver", "NOUN_CORPSE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kadaver", "NOUN_CORPSEs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Kadavern", "NOUN_CORPSEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Leiche", "NOUN_CORPSE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Leichen", "NOUN_CORPSEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Leichnams", "NOUN_CORPSE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Leichnam", "NOUN_CORPSE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Leichname", "NOUN_CORPSEs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Leichnamen", "NOUN_CORPSEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Eies", "NOUN_EGG", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Eie", "NOUN_EGG", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -6744,6 +6785,15 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Vampire", "NOUN_VAMPIREs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Vampiren", "NOUN_VAMPIREs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Vampirfürst", "NOUN_VAMPIRE_LORD", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vampirfürsten", "NOUN_VAMPIRE_LORD", "en", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vampirfürsten", "NOUN_VAMPIRE_LORDs", "en", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Vampiermagiers", "NOUN_VAMPIRE_MAGE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vampiermagier", "NOUN_VAMPIRE_MAGE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vampiermagier", "NOUN_VAMPIRE_MAGEs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Vampiermagiern", "NOUN_VAMPIRE_MAGEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Vlad der Pfähler", "NOUN_VLAD_THE_IMPALER", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Vlad des Pfählers", "NOUN_VLAD_THE_IMPALER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -6969,11 +7019,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Zauberer von Yendor", "NOUN_WIZARD_OF_YENDORs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Zauberern von Yendor", "NOUN_WIZARD_OF_YENDORs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Krösuses", "NOUN_CROESUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Krösuse", "NOUN_CROESUS", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Krösus", "NOUN_CROESUS", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Krösuse", "NOUN_CROESUSs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Krösusen", "NOUN_CROESUSs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Krösus", "NOUN_CROESUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Krösus", "NOUN_CROESUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Geistes", "NOUN_GHOST", "er", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Geiste", "NOUN_GHOST", "er", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -6993,6 +7040,45 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Erinnye", "NOUN_ERINYS", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Erinnyen", "NOUN_ERINYSs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Balrog", "NOUN_BALROG", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Balrogs", "NOUN_BALROG", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Juiblex", "NOUN_JUIBLEX", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Juiblexs", "NOUN_JUIBLEX", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Yeenoghu", "NOUN_YEENOGHU", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Yeenoghus", "NOUN_YEENOGHU", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Orkus", "NOUN_ORCUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orkus", "NOUN_ORCUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Orcus", "NOUN_ORCUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orcus", "NOUN_ORCUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Geryon", "NOUN_GERYON", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Geryons", "NOUN_GERYON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Dispater", "NOUN_DISPATER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Dispaters", "NOUN_DISPATER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Beelzebub", "NOUN_BAALZEBUB", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Beelzebubs", "NOUN_BAALZEBUB", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Baalzebub", "NOUN_BAALZEBUB", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Baalzebubs", "NOUN_BAALZEBUB", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Asmodäus", "NOUN_ASMODEUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Asmodäus", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Asmodis", "NOUN_ASMODEUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Asmodis", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Asmodeus", "NOUN_ASMODEUS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Asmodeus", "NOUN_ASMODEUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Demogorgon", "NOUN_DEMOGORGON", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Demogorgons", "NOUN_DEMOGORGON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Tod", "NOUN_DEATH", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Tods", "NOUN_DEATH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7207,8 +7293,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Archipresbyter", "NOUN_ARCH_PRIESTs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Archipresbytern", "NOUN_ARCH_PRIESTs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Orions", "NOUN_ORION", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Orion", "NOUN_ORION", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orions", "NOUN_ORION", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Neferet die Grüne", "NOUN_NEFERET_THE_GREEN", "", nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
