@@ -9658,9 +9658,6 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Leiber", "NOUN_LEIBs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Leibern", "NOUN_LEIBs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Leine", "NOUN_LEINE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Leinen", "NOUN_LEINEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-
   {"Lichtblitzes", "NOUN_LICHTBLITZ", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lichtblitze", "NOUN_LICHTBLITZ", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lichtblitz", "NOUN_LICHTBLITZ", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -10001,6 +9998,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Spiegelbild", "NOUN_REFLECTION", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Spiegelbilder", "NOUN_REFLECTIONs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Spiegelbildern", "NOUN_REFLECTIONs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Fertigkeit", "NOUN_SKILL", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Fertigkeiten", "NOUN_SKILLs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Spinnennetzes", "NOUN_SPIDER_WEB", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Spinnennetze", "NOUN_SPIDER_WEB", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
