@@ -1084,14 +1084,21 @@ def ausgabe_verbs
 		Verb.verb("VERB_WHINE","winseln"),
 		#Verb.verb("VERB_COMMOTION"; /* EN ret = "commotion"; */
 		Verb.verb("VERB_SCREAM","schreien"),
-  ]
+	]
 
-  puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
-  verben.each {|v| puts '  {"'+v.infinitiv+'", "'+v.kennung+'"},' }
+	puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
+	verben.each {|v| puts '  {"'+v.infinitiv+'", "'+v.kennung+'"},' }
 	puts "  {NULL, NULL}\n};"
 
-  puts "\nstruct verb_partizip_struct verben_partizip[] = {"
-  verben.each {|v| puts '  {"'+v.partizip_praesens+'", "'+v.partizip_perfekt+'", "'+v.kennung+'"},' }
+	puts "\nstruct verb_imperativ_struct verben_imperativ[] = {"
+	verben.each {|v|
+		puts '  {"'+v.imperativ+'", "'+
+			v.plural.praesens.zweitePerson.form+'", "'+
+			v.praeverb+'", "'+v.kennung+'"},' }
+	puts "  {NULL, NULL}\n};"
+
+	puts "\nstruct verb_partizip_struct verben_partizip[] = {"
+	verben.each {|v| puts '  {"'+v.partizip_praesens+'", "'+v.partizip_perfekt+'", "'+v.kennung+'"},' }
 	puts "  {NULL, NULL, NULL}\n};"
 
 

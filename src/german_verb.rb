@@ -165,13 +165,17 @@ class Verb
     end
   end
 
-  def imperativ
-    if singular? then
-      return @praesens_stamm + (@e_erweiterung ? "e" : "") + (@e_tilgung ? "e" : "")
-    else
-      return @praesens_stamm + (@e_erweiterung ? "e" : "") + "t"
-    end
-  end
+	def imperativ
+		case infinitiv
+			when "wählen","benutzen"
+				return @praesens_stamm+"e"
+		end
+		if singular? then
+			return @praesens_stamm + (@e_erweiterung ? "e" : "") + (@e_tilgung ? "e" : "")
+		else
+			return @praesens_stamm + (@e_erweiterung ? "e" : "") + "t"
+		end
+	end
   
   def endung(endungen)
     return endungen[@person+@numerus*3]

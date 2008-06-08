@@ -922,7 +922,9 @@ START_TEST (test_genitivattribut_zu_wort) {
 
 START_TEST (test_modifier_verb_imperativ) {
 	char *text[][2] = {
-		{"MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den Befehl 'e' um zu essen.",
+		{"SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_EINSCHLAFEN SATZKLAMMER!",
+		 "Schlaf ein!"},
+		{"SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den Befehl 'e' um zu essen.",
 		 "Benutze den Befehl 'e' um zu essen."},
 	};
 
