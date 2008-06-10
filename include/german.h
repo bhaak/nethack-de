@@ -51,11 +51,20 @@ struct verb_partizip_struct {
 	const char *perfekt;
 	const char *typ;
 };
+
+struct verb_imperativ_struct {
+	const char *singular;
+	const char *plural;
+	const char *praeverb;
+	const char *typ;
+};
+
 extern struct substantiv_oder_adjekiv_struct worte[];
 extern struct verb_alt_struct verben_alt[];
 extern struct verb_infinitiv_struct verben_infinitiv[];
 extern struct verb_partizip_struct verben_partizip[];
 extern struct verb_struct verben[];
+extern struct verb_imperativ_struct verben_imperativ[];
 
 
 char* german(const char *line);
