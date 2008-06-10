@@ -1,6 +1,6 @@
 index.page:
   title: Home
-  htmltitle: 'NetHack-De: Home'
+  htmltitle: 'NetHack-De: NetHack auf Deutsch'
   inMenu: true
   orderInfo: 10
 
@@ -20,11 +20,19 @@ download.page:
   title: Downloads
   htmltitle: 'NetHack-De: Downloads'
   inMenu: true
-  orderInfo: 40
+  orderInfo: 50
 
 english.page:
   title: English
   htmltitle: 'NetHack-De: English Summary'
+  inMenu: true
+  orderInfo: 60
+
+---
+
+forum.html:
+  title: Forum
+  url: http://sourceforge.net/forum/forum.php?forum_id=675972
   inMenu: true
   orderInfo: 40
 
