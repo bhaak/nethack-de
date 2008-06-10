@@ -425,7 +425,7 @@ register const char *word;
 	}
 	if (obj->otyp == LEASH && obj->leashmon != 0) {
 		if (*word)
-			pline_The("NOUN_LEINE is around your %s.", /* EN pline_The("leash is tied around your %s.", */ // TODO DE
+			pline_The("NOUN_LEASH is around your %s.", /* EN pline_The("leash is tied around your %s.", */ // TODO DE
 					body_part(HAND));
 		return(FALSE);
 	}

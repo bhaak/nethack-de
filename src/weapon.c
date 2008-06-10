@@ -90,7 +90,7 @@ STATIC_OVL void
 give_may_advance_msg(skill)
 int skill;
 {
-	Du_fuehlst_dich("sicherer KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_PSEUDO_WEIBLICHs %sNOUN_SKILLs.", /* EN You_feel("more confident in your %sskills.", */
+	Du_fuehlst_dich("sicherer KASUS_DATIV in PRONOMEN_POSSESSIV %sNOUN_SKILLs.", /* EN You_feel("more confident in your %sskills.", */
 		skill == P_NONE ?
 			"" :
 		skill <= P_LAST_WEAPON ?
