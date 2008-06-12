@@ -2195,7 +2195,7 @@ boolean from_user;
 		typ = SCR_BLANK_PAPER;
 		goto typfnd;
 	}
-#ifdef GERMAN
+#if defined(GERMAN) && defined(MAIL)
 	if(stamped && !BSTRCMPI(bp, p-11, "NOUN_SCROLL")) {
 		typ = SCR_MAIL;
 		goto typfnd;

@@ -39,7 +39,7 @@
 # ein paar vernünftige Defaults
 OPTIONS=pickup_types:$"?+!=/,autopickup
 OPTIONS=disclose:yiyayvygyc
-pickup_burden:u
+OPTIONS=pickup_burden:u
 
 #
 # General options.  You might also set "silent" so as not to attract

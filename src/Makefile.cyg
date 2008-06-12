@@ -509,9 +509,16 @@ endif
 
 NETHACK_DE_WIN32_DIR = nethack-de-win32-`pwd | cut -f 4- -d \- | cut -f 1 -d \/`
 release:
-	-cp ../CHANGES.de $(GAMEDIR)/CHANGES.de.txt
+	-cp ../AUTHORS.de  $(GAMEDIR)/AUTHORS.de.txt
+	-cp ../CHANGES.de  $(GAMEDIR)/CHANGES.de.txt
 	-cp ../LIESMICH.de $(GAMEDIR)/LIESMICH.de.txt
 	-cp ../news $(GAMEDIR)/News
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/News
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/defaults.nh
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/license
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/AUTHORS.de.txt
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/CHANGES.de.txt
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/LIESMICH.de.txt
 	-mv $(GAMEDIR) ../$(NETHACK_DE_WIN32_DIR)
 	cd ../$(NETHACK_DE_WIN32_DIR) && zip -r ../$(NETHACK_DE_WIN32_DIR).zip .
 
