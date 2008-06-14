@@ -568,10 +568,10 @@ int analyze_this_as_subject(const char *text) {
 				subject_person  = drittePerson;
 				subject_genus   = worte[k].genus;
 				subject_numerus = worte[k].numerus;
+				return 1;
 			}
 			k++;
 		}
-		return 1;
 	}
 	return 0;
 }
@@ -592,10 +592,10 @@ int analyze_this_as_object(const char *text) {
 
 				do_genus = worte[k].genus;
 				do_numerus = worte[k].numerus;
+				return 1;
 			}
 			k++;
 		}
-		return 1;
 	}
 	return 0;
 }

@@ -450,6 +450,8 @@ START_TEST (test_complete_sentences4) {
 		 "Vlad der Pfähler trifft!"},
 		{"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_VLAD_THE_IMPALER!",
 		 "Du triffst Vlad den Pfähler!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_VERWANDELN dich OBJECT in ARTIKEL_UNBESTIMMTER NOUN_FLOATING_EYE!",
+		 "Du verwandelst dich in einen Schwebäugler!"},
 		 /*
 		 SUBJECT PRONOMEN_PERSONAL try to appease ARTIKEL_BESTIMMTER angry NOUN_PSEUDO_WEIBLICH Tirebolu by giving it 1000 gold pieces.
 		 Du try to appease der angry Tirebolu by giving it 1000 gold pieces.
