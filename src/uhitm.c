@@ -183,7 +183,7 @@ struct obj *wep;	/* uwep for attack(), null for kick_monster() */
 		if (Blind || (is_pool(mtmp->mx,mtmp->my) && !Underwater))
 		    pline("Wait!  There's a hidden monster there!"); /* EN pline("Wait!  There's a hidden monster there!"); */ // TODO DE
 		else if ((obj = level.objects[mtmp->mx][mtmp->my]) != 0)
-		    pline("Wait!  There's %s hiding under %s!", /* EN pline("Wait!  There's %s hiding under %s!", */ // TODO DE
+		    pline("MODIFIER_VERB_IMPERATIV VERB_WARTEN!  NEUER_SATZ Da VERB_VERSTECKEN sich SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV unter %s!", /* EN pline("Wait!  There's %s hiding under %s!", */ // TODO DE CHECK ME
 			  an(l_monnam(mtmp)), doname(obj));
 		return TRUE;
 	    }
@@ -2151,8 +2151,8 @@ uchar aatyp;
 
 	  case AD_ACID:
 	    if(mhit && rn2(2)) {
-		if (Blind || !flags.verbose) You("are splashed!"); /* EN if (Blind || !flags.verbose) You("are splashed!"); */ // TODO DE
-		else	You("are splashed by %s!", /* EN else	You("are splashed by %s acid!", */ // TODO DE
+		if (Blind || !flags.verbose) You("VERB_WERDEN vollgespritzt!"); /* EN if (Blind || !flags.verbose) You("are splashed!"); */
+		else	You("VERB_WERDEN OBJECT KASUS_DATIV mit %s vollgespritzt!", /* EN else	You("are splashed by %s acid!", */
 			                genitivattribut_zu_wort(mon_nam(mon), "NOUN_ACID")); /* EN s_suffix(mon_nam(mon))); */
 
 		if (!Acid_resistance)

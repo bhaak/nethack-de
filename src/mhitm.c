@@ -1292,7 +1292,7 @@ int mdead;
 		if (mhit && !rn2(2)) {
 		    Strcpy(buf, Monnam(magr));
 		    if(canseemon(magr))
-			pline("%s is splashed by %s!", /* EN pline("%s is splashed by %s acid!", */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN mit %s vollgespritzt!", /* EN pline("%s is splashed by %s acid!", */
 			      buf, genitivattribut_zu_wort(mon_nam(mdef), "NOUN_ACID")); /* EN buf, s_suffix(mon_nam(mdef))); */
 		    if (resists_acid(magr)) {
 			if(canseemon(magr))

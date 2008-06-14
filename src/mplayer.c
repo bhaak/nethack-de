@@ -15,7 +15,6 @@ STATIC_DCL void FDECL(mk_mplayer_armor, (struct monst *, SHORT_P));
  * Same first name is entered once within each team.
  */
 static const char *developers[] = {
-// TODO DE
 	/* devteam */
 	"Dave", "Dean", "Eric", "Izchak", "Janet", "Jessie",
 	"Ken", "Kevin", "Michael", "Mike", "Pat", "Paul", "Steve", "Timo",
@@ -74,16 +73,16 @@ char *nam;
 
 	devnam = dev_name();
 	if (!devnam)
-	    Strcpy(nam, fmlkind ? "Eve" : "Adam"); /* EN Strcpy(nam, fmlkind ? "Eve" : "Adam"); */ // TODO DE
-	else if (fmlkind && !!strcmp(devnam, "Janet")) /* EN else if (fmlkind && !!strcmp(devnam, "Janet")) */ // TODO DE
-	    Strcpy(nam, rn2(2) ? "Maud" : "Eve"); /* EN Strcpy(nam, rn2(2) ? "Maud" : "Eve"); */ // TODO DE
+	    Strcpy(nam, fmlkind ? "Eva" : "Adam"); /* EN Strcpy(nam, fmlkind ? "Eve" : "Adam"); */
+	else if (fmlkind && !!strcmp(devnam, "Janet")) 
+	    Strcpy(nam, rn2(2) ? "Maud" : "Eva"); /* EN Strcpy(nam, rn2(2) ? "Maud" : "Eve"); */
 	else Strcpy(nam, devnam);
 
-	if (fmlkind || !strcmp(nam, "Janet")) /* EN if (fmlkind || !strcmp(nam, "Janet")) */ // TODO DE
+	if (fmlkind || !strcmp(nam, "Janet"))
 	    mtmp->female = 1;
 	else
 	    mtmp->female = 0;
-	Strcat(nam, " the "); /* EN Strcat(nam, " the "); */ // TODO DE
+	Strcat(nam, " ARTIKEL_BESTIMMTER "); /* EN Strcat(nam, " the "); */
 	Strcat(nam, rank_of((int)mtmp->m_lev,
 			    monsndx(mtmp->data),
 			    (boolean)mtmp->female));
@@ -321,19 +320,18 @@ mplayer_talk(mtmp)
 register struct monst *mtmp;
 {
 	static const char *same_class_msg[3] = {
-	// TODO DE
-		"I can't win, and neither will you!",
-		"You don't deserve to win!",
-		"Mine should be the honor, not yours!",
+		"Ich kann nicht gewinnen und du wirst es genau so wenig!", /* EN "I can't win, and neither will you!", */
+		"SUBJECT PRONOMEN_PERSONAL VERB_VERDIENEN es nicht zu gewinnen!", /* EN "You don't deserve to win!", */
+		"Mir gebührt die Ehre, nicht KASUS_DATIV PRONOMEN_PERSONAL!", /* EN "Mine should be the honor, not yours!", */
 	},		  *other_class_msg[3] = {
-		"The low-life wants to talk, eh?",
-		"Fight, scum!",
-		"Here is what I have to say!",
+		"Ach, der Pöbel möchte reden?", /* EN "The low-life wants to talk, eh?", */
+		"SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_KAEMPFEN, Dreckskerl!", /* EN "Fight, scum!", */
+		"Das habe ich zu sagen!", /* EN "Here is what I have to say!", */
 	};
 
 	if(mtmp->mpeaceful) return; /* will drop to humanoid talk */
 
-	pline("Talk? -- %s", /* EN pline("Talk? -- %s", */ // TODO DE
+	pline("Reden? - %s", /* EN pline("Talk? -- %s", */
 		(mtmp->data == &mons[urole.malenum] ||
 		mtmp->data == &mons[urole.femalenum]) ?
 		same_class_msg[rn2(3)] : other_class_msg[rn2(3)]);

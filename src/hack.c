@@ -126,7 +126,7 @@ moverock()
 		    map_invisible(rx, ry);
 		}
 		if (flags.verbose)
-		    pline("Vielleicht VERB_KOENNEN SUBJECT_IM_SATZ %s es deshalb nicht bewegen.", /* EN pline("Perhaps that's why %s cannot move it.", */
+		    pline("Vielleicht VERB_KOENNEN SUBJECT_IM_SATZ %s ihn deshalb nicht bewegen.", /* EN pline("Perhaps that's why %s cannot move it.", */
 #ifdef STEED
 				u.usteed ? y_monnam(u.usteed) :
 #endif

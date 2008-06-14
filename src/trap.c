@@ -3908,11 +3908,11 @@ unconscious()
 {
 	return((boolean)(multi < 0 && (!nomovemsg ||
 		u.usleep ||
-		!strncmp(nomovemsg,"You regain con", 14) || /* EN !strncmp(nomovemsg,"You regain con", 14) || */ // TODO DE
-		!strncmp(nomovemsg,"You are consci", 14)))); /* EN !strncmp(nomovemsg,"You are consci", 14)))); */ // TODO DE
+		!strncmp(nomovemsg,"SUBJECT PRONOMEN_PERSONAL VERB_ERLANGEN", 39) || /* EN !strncmp(nomovemsg,"You regain con", 14) || */
+		wstrncmp(nomovemsg,"SUBJECT PRONOMEN_PERSONAL VERB_SEIN wieder", 43)))); /* EN !strncmp(nomovemsg,"You are consci", 14)))); */
 }
 
-static const char lava_killer[] = "ADJEKTIV_FLUESSIG NOUN_LAVA"; /* EN static const char lava_killer[] = "molten lava"; */ // TODO DE
+static const char lava_killer[] = "ADJEKTIV_FLUESSIG NOUN_LAVA"; /* EN static const char lava_killer[] = "molten lava"; */
 
 boolean
 lava_effects()

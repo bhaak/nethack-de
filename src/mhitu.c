@@ -2134,14 +2134,14 @@ register struct monst *mon;
 	char qbuf[QBUFSZ];
 
 	if (mon->mcan || mon->mspec_used) {
-		pline("%s acts as though %s has got a %sheadache.", /* EN pline("%s acts as though %s has got a %sheadache.", */ // TODO DE
+		pline("SUBJECT %s tut so, als habe %s %sMigräne.", /* EN pline("%s acts as though %s has got a %sheadache.", */
 		      Monnam(mon), mhe(mon),
-		      mon->mcan ? "severe " : ""); /* EN mon->mcan ? "severe " : ""); */ // TODO DE
+		      mon->mcan ? "starke " : ""); /* EN mon->mcan ? "severe " : ""); */
 		return 0;
 	}
 
 	if (unconscious()) {
-		pline("%s seems dismayed at your lack of response.", /* EN pline("%s seems dismayed at your lack of response.", */ // TODO DE
+		pline("SUBJECT %s VERB_WIRKEN bestürzt OBJECT über PRONOMEN_POSSESSIV ADJEKTIV_VERMINDERT NOUN_ANSPRECHBARKEIT.", /* EN pline("%s seems dismayed at your lack of response.", */
 		      Monnam(mon));
 		return 0;
 	}
@@ -2238,8 +2238,8 @@ register struct monst *mon;
 #endif
 
 	if (uarm || uarmc) {
-		verbalize("You're such a %s; I wish...", /* EN verbalize("You're such a %s; I wish...", */ // TODO DE
-				flags.female ? "sweet lady" : "nice guy"); /* EN flags.female ? "sweet lady" : "nice guy"); */ // TODO DE
+		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_SEIN so ein %s; Wenn doch nur ...", /* EN verbalize("You're such a %s; I wish...", */
+				flags.female ? "süßes Ding" : "süßer Bengel"); /* EN flags.female ? "sweet lady" : "nice guy"); */
 		if (!tele_restrict(mon)) rloc(mon);
 		return 1;
 	}
@@ -2247,7 +2247,7 @@ register struct monst *mon;
 		adjalign(1);
 
 	/* by this point you have discovered mon's identity, blind or not... */
-	pline("Time stands still while you and %s lie in each other's arms...", /* EN pline("Time stands still while you and %s lie in each other's arms...", */ // TODO DE
+	pline("Die Zeit steht still, während SUBJECT_IM_SATZ PRONOMEN_PERSONAL und %s euch in den Armen liegen ...", /* EN pline("Time stands still while you and %s lie in each other's arms...", */
 		noit_mon_nam(mon));
 	if (rn2(35) > ACURR(A_CHA) + ACURR(A_INT)) {
 		/* Don't bother with mspec_used here... it didn't get tired! */
@@ -2260,19 +2260,19 @@ register struct monst *mon;
 			        exercise(A_CON, FALSE);
 				if (u.uenmax < 0) u.uenmax = 0;
 				break;
-			case 1: You("are down in the dumps."); /* EN case 1: You("are down in the dumps."); */ // TODO DE
+			case 1: You("VERB_SEIN deprimiert."); /* EN case 1: You("are down in the dumps."); */
 				(void) adjattrib(A_CON, -1, TRUE);
 			        exercise(A_CON, FALSE);
 				flags.botl = 1;
 				break;
-			case 2: Your("senses are dulled."); /* EN case 2: Your("senses are dulled."); */ // TODO DE
+			case 2: Your("NOUN_SINNs fühlen sich abgestumpft an."); /* EN case 2: Your("senses are dulled."); */
 				(void) adjattrib(A_WIS, -1, TRUE);
 			        exercise(A_WIS, FALSE);
 				flags.botl = 1;
 				break;
 			case 3:
 				if (!resists_drli(&youmonst)) {
-				    You_feel("out of shape."); /* EN You_feel("out of shape."); */ // TODO DE
+				    Du_fuehlst_dich("nicht in Form."); /* EN You_feel("out of shape."); */
 				    losexp("NOUN_UEBERANSTRENGUNG"); /* EN losexp("overexertion"); */
 				} else {
 				    You("VERB_HABEN ein seltsames Gefühl ..."); /* EN You("have a curious feeling..."); */
@@ -2298,12 +2298,12 @@ register struct monst *mon;
 			exercise(A_CON, TRUE);
 			u.uen = (u.uenmax += rnd(5));
 			break;
-		case 1: Du_fuehlst_dich("good enough to do it again."); /* EN case 1: You_feel("good enough to do it again."); */ // TODO DE
+		case 1: Du_fuehlst_dich("gut genug um es nochmal zu tun."); /* EN case 1: You_feel("good enough to do it again."); */
 			(void) adjattrib(A_CON, 1, TRUE);
 			exercise(A_CON, TRUE);
 			flags.botl = 1;
 			break;
-		case 2: You("will always remember %s...", noit_mon_nam(mon)); /* EN case 2: You("will always remember %s...", noit_mon_nam(mon)); */ // TODO DE
+		case 2: You("VERB_WERDEN OBJECT %s nie vergessen ...", noit_mon_nam(mon)); /* EN case 2: You("will always remember %s...", noit_mon_nam(mon)); */
 			(void) adjattrib(A_WIS, 1, TRUE);
 			exercise(A_WIS, TRUE);
 			flags.botl = 1;
@@ -2327,7 +2327,7 @@ register struct monst *mon;
 					noit_Monnam(mon));
 					//Blind ? (fem ? "her" : "him") : mhim(mon)); /* EN Blind ? (fem ? "her" : "him") : mhim(mon)); */
 	} else if (u.umonnum == PM_LEPRECHAUN)
-		pline("SUBJECT %s tries to take your money, but fails...", /* EN pline("%s tries to take your money, but fails...", */ // TODO DE
+		pline("SUBJECT %s VERB_VERSUCHEN OBJECT PRONOMEN_POSSESSIV NOUN_GELD zu klauen, hat aber keine Erfolg ...", /* EN pline("%s tries to take your money, but fails...", */
 				noit_Monnam(mon));
 	else {
 #ifndef GOLDOBJ
@@ -2344,7 +2344,7 @@ register struct monst *mon;
 		if (cost > u.ugold) cost = u.ugold;
 		if (!cost) verbalize("Die Runde geht aufs Haus!"); /* EN if (!cost) verbalize("It's on the house!"); */
 		else {
-		    pline("%s takes %ld %s for services rendered!", /* EN pline("%s takes %ld %s for services rendered!", */ // TODO DE
+		    pline("SUBJECT %s VERB_NEHMEN OBJECT %ld %s für geleistete Dienste!", /* EN pline("%s takes %ld %s for services rendered!", */
 			    noit_Monnam(mon), cost, currency(cost));
 		    u.ugold -= cost;
 		    mon->mgold += cost;
@@ -2365,7 +2365,7 @@ register struct monst *mon;
 		if (cost > umoney) cost = umoney;
 		if (!cost) verbalize("Das geht aufs Haus!"); /* EN if (!cost) verbalize("It's on the house!"); */
 		else { 
-		    pline("SUBJECT %s VERB_NEHMEN %ld %s für geleistete Dienste!", /* EN pline("%s takes %ld %s for services rendered!", */
+		    pline("SUBJECT %s VERB_NEHMEN OBJECT %ld %s für geleistete Dienste!", /* EN pline("%s takes %ld %s for services rendered!", */
 			    noit_Monnam(mon), cost, currency(cost));
                     money2mon(mon, cost);
 		    flags.botl = 1;
@@ -2440,7 +2440,7 @@ register struct attack *mattk;
 	switch(olduasmon->mattk[i].adtyp) {
 	    case AD_ACID:
 		if (!rn2(2)) {
-		    pline("%s is splashed by your acid!", Monnam(mtmp)); /* EN pline("%s is splashed by your acid!", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_WERDEN mit PRONOMEN_POSSESSIV NOUN_ACID vollgespritzt!", Monnam(mtmp)); /* EN pline("%s is splashed by your acid!", Monnam(mtmp)); */
 		    if (resists_acid(mtmp)) {
 			pline("%s is not affected.", Monnam(mtmp)); /* EN pline("%s is not affected.", Monnam(mtmp)); */ // TODO DE
 			tmp = 0;
@@ -2500,7 +2500,7 @@ register struct attack *mattk;
 		    if (mtmp->mcansee && haseyes(mtmp->data) && rn2(3) &&
 				(perceives(mtmp->data) || !Invis)) {
 			if (Blind)
-			    pline("As a blind %s, you cannot defend yourself.", /* EN pline("As a blind %s, you cannot defend yourself.", */ // TODO DE
+			    pline("Als ARTIKEL_UNBESTIMMTER ADJEKTIV_BLIND %s you cannot defend yourself.", /* EN pline("As a blind %s, you cannot defend yourself.", */ // TODO DE
 							youmonst.data->mname);
 		        else {
 			    if (mon_reflects(mtmp,
