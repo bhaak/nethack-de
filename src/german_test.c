@@ -928,6 +928,13 @@ START_TEST (test_modifier_verb_imperativ) {
 		 "Schlaf ein!"},
 		{"SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den Befehl 'e' um zu essen.",
 		 "Benutze den Befehl 'e' um zu essen."},
+
+		{"Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL?",
+		 "Was möchtest du?"},
+		{"SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_EINGEBEN den Namen SATZKLAMMER.",
+		 "Gib den Namen ein."},
+		{"Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL?",
+		 "Was möchtest du?"},
 	};
 
 	check_strings(text, sizeof(text)/8);
