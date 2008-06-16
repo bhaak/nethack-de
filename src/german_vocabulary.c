@@ -1519,8 +1519,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Unsichtbarkeit", "NOUN_RING_INVISIBILITY", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Enthüllung", "NOUN_RING_SEE_INVISIBLE", " des Unsichtbaren", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Enthüllungen", "NOUN_RING_SEE_INVISIBLEs", " des Unsichtbaren", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Enthüllung des Unsichtbaren", "NOUN_RING_SEE_INVISIBLE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Enthüllungen des Unsichtbaren", "NOUN_RING_SEE_INVISIBLEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Enthüllung", "NOUN_RING_SEE_INVISIBLE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Enthüllungen", "NOUN_RING_SEE_INVISIBLEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Schutzes vor Formwandlern", "NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schutze vor Formwandlern", "NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "", dativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -2604,11 +2607,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Pfannkuchen", "NOUN_PANCAKE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Pfannkuchen", "NOUN_PANCAKEs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Lembasbrotes", "NOUN_LEMBAS_WAFER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Lembasbrote", "NOUN_LEMBAS_WAFER", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Lembasbrot", "NOUN_LEMBAS_WAFER", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Lembasbrote", "NOUN_LEMBAS_WAFERs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Lembasbroten", "NOUN_LEMBAS_WAFERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Lembasbrotes", "NOUN_LEMBAS_WAFER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lembasbrote", "NOUN_LEMBAS_WAFER", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lembasbrot", "NOUN_LEMBAS_WAFER", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lembasbrote", "NOUN_LEMBAS_WAFERs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Lembasbroten", "NOUN_LEMBAS_WAFERs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Ration Cram", "NOUN_CRAM_RATION", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Rationen Cram", "NOUN_CRAM_RATIONs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -2647,6 +2650,12 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Unsichtbarkeit", "NOUN_POT_INVISIBILITY", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Unsichtbarkeiten", "NOUN_POT_INVISIBILITYs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Enthüllung des Unsichtbaren", "NOUN_POT_SEE_INVISIBLE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Enthüllungen des Unsichtbaren", "NOUN_POT_SEE_INVISIBLEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Enthüllung", "NOUN_POT_SEE_INVISIBLE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Enthüllungen", "NOUN_POT_SEE_INVISIBLEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Linderung", "NOUN_POT_HEALING", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -11284,6 +11293,30 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"beissende", "ADJEKTIV_BEISSEND", "", akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, ohne},
   {"beissender", "ADJEKTIV_BEISSEND", "", genitiv, feminin|maskulin|neutrum, n_plural, ohne},
   {"beissenden", "ADJEKTIV_BEISSEND", "", dativ, feminin|maskulin|neutrum, n_plural, ohne},
+  
+
+  {"blind", "ADJEKTIV_BLIND", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, grundform},
+  {"blinde", "ADJEKTIV_BLIND", "", nominativ, feminin|maskulin|neutrum, n_singular, bestimmter},
+  {"blinden", "ADJEKTIV_BLIND", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"blinde", "ADJEKTIV_BLIND", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"blinden", "ADJEKTIV_BLIND", "", dativ|genitiv, feminin|maskulin|neutrum, n_singular, bestimmter},
+  {"blinden", "ADJEKTIV_BLIND", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, bestimmter},
+  {"blinder", "ADJEKTIV_BLIND", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"blinden", "ADJEKTIV_BLIND", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"blinde", "ADJEKTIV_BLIND", "", akkusativ|nominativ, feminin, n_singular, unbestimmter},
+  {"blindes", "ADJEKTIV_BLIND", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter},
+  {"blinden", "ADJEKTIV_BLIND", "", dativ|genitiv, feminin|maskulin|neutrum, n_singular, unbestimmter},
+  {"blinden", "ADJEKTIV_BLIND", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, unbestimmter},
+  {"blinder", "ADJEKTIV_BLIND", "", nominativ, maskulin, n_singular, ohne},
+  {"blinden", "ADJEKTIV_BLIND", "", genitiv|akkusativ, maskulin, n_singular, ohne},
+  {"blindem", "ADJEKTIV_BLIND", "", dativ, maskulin|neutrum, n_singular, ohne},
+  {"blindes", "ADJEKTIV_BLIND", "", akkusativ|nominativ, neutrum, n_singular, ohne},
+  {"blinden", "ADJEKTIV_BLIND", "", genitiv, neutrum, n_singular, ohne},
+  {"blinde", "ADJEKTIV_BLIND", "", akkusativ|nominativ, feminin, n_singular, ohne},
+  {"blinder", "ADJEKTIV_BLIND", "", dativ|genitiv, feminin, n_singular, ohne},
+  {"blinde", "ADJEKTIV_BLIND", "", akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, ohne},
+  {"blinder", "ADJEKTIV_BLIND", "", genitiv, feminin|maskulin|neutrum, n_plural, ohne},
+  {"blinden", "ADJEKTIV_BLIND", "", dativ, feminin|maskulin|neutrum, n_plural, ohne},
   
 
   {"blutrünstig", "ADJEKTIV_BLUTRUENSTIG", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, grundform},

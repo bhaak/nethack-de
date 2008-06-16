@@ -2500,7 +2500,7 @@ register struct attack *mattk;
 		    if (mtmp->mcansee && haseyes(mtmp->data) && rn2(3) &&
 				(perceives(mtmp->data) || !Invis)) {
 			if (Blind)
-			    pline("Als ARTIKEL_UNBESTIMMTER ADJEKTIV_BLIND %s you cannot defend yourself.", /* EN pline("As a blind %s, you cannot defend yourself.", */ // TODO DE
+			    pline("Als ARTIKEL_UNBESTIMMTER ADJEKTIV_BLIND %s SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL nicht verteidigen.", /* EN pline("As a blind %s, you cannot defend yourself.", */
 							youmonst.data->mname);
 		        else {
 			    if (mon_reflects(mtmp,

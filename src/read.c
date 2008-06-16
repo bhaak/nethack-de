@@ -1172,8 +1172,8 @@ register struct obj	*sobj;
 	    	register int x, y;
 
 	    	/* Identify the scroll */
-	    	pline_The("%s rumbles %s you!", ceiling(u.ux,u.uy), /* EN pline_The("%s rumbles %s you!", ceiling(u.ux,u.uy), */ // TODO DE
-	    			sobj->blessed ? "around" : "above"); /* EN sobj->blessed ? "around" : "above"); */ // TODO DE
+	    	pline_The("%s VERB_RUMOREN OBJECT %s PRONOMEN_PERSONAL!", ceiling(u.ux,u.uy), /* EN pline_The("%s rumbles %s you!", ceiling(u.ux,u.uy), */
+	    			sobj->blessed ? "um" : "KASUS_DATIV über"); /* EN sobj->blessed ? "around" : "above"); */
 	    	known = 1;
 	    	if (In_sokoban(&u.uz))
 	    	    change_luck(-1);	/* Sokoban guilt */
@@ -1218,7 +1218,7 @@ register struct obj	*sobj;
 					if (canspotmon(mtmp))
 					    pline("Glücklicherweise SUBJECT_IM_SATZ VERB_TRAGEN %s einen schützenden Helm.", mon_nam(mtmp)); /* EN pline("Fortunately, %s is wearing a hard helmet.", mon_nam(mtmp)); */
 					else if (flags.soundok)
-					    You_hear("a clanging sound."); /* EN You_hear("a clanging sound."); */ // TODO DE
+					    You_hear("ein klapperndes Geräusch."); /* EN You_hear("a clanging sound."); */
 					if (mdmg > 2) mdmg = 2;
 				    } else {
 					if (canspotmon(mtmp))
@@ -1291,10 +1291,10 @@ register struct obj	*sobj;
 
 		You("have found a scroll of stinking cloud!"); /* EN You("have found a scroll of stinking cloud!"); */ // TODO DE
 		known = TRUE;
-		pline("Where do you want to center the cloud?"); /* EN pline("Where do you want to center the cloud?"); */ // TODO DE
+		pline("Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL center the cloud?"); /* EN pline("Where do you want to center the cloud?"); */ // TODO DE
 		cc.x = u.ux;
 		cc.y = u.uy;
-		if (getpos(&cc, TRUE, "the desired position") < 0) { /* EN if (getpos(&cc, TRUE, "the desired position") < 0) { */ // TODO DE
+		if (getpos(&cc, TRUE, "die gewünschte Position") < 0) { /* EN if (getpos(&cc, TRUE, "the desired position") < 0) { */
 		    pline(Never_mind);
 		    return 0;
 		}
@@ -1448,12 +1448,16 @@ do_class_genocide()
 			return;
 		}
 		do {
-		    getlin("What class of monsters do you wish to genocide?", /* EN getlin("What class of monsters do you wish to genocide?", */ // TODO DE
+		    getlin("Welche Klasse von Monstern MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausrotten?", /* EN getlin("What class of monsters do you wish to genocide?", */
 			buf);
 		    (void)mungspaces(buf);
 		} while (buf[0]=='\033' || !buf[0]);
 		/* choosing "none" preserves genocideless conduct */
 		if (!strcmpi(buf, "none") ||
+#ifdef GERMAN
+		    !strcmpi(buf, "keine") ||
+		    !strcmpi(buf, "nichts") ||
+#endif
 		    !strcmpi(buf, "nothing")) return;
 
 		if (strlen(buf) == 1) {
@@ -1552,7 +1556,7 @@ do_class_genocide()
 			    }
 			} else if (mvitals[i].mvflags & G_GENOD) {
 			    if (!gameover)
-				pline("All %s are already nonexistent.", nam); /* EN pline("All %s are already nonexistent.", nam); */ // TODO DE
+				pline("SATZBEGINN PRONOMEN_ALLE %s VERB_GEBEN es bereits nicht mehr.", nam); /* EN pline("All %s are already nonexistent.", nam); */
 			} else if (!gameover) {
 			  /* suppress feedback about quest beings except
 			     for those applicable to our own role */
@@ -1616,11 +1620,11 @@ int how;
 		    pline(thats_enough_tries);
 		    return;
 		}
-		getlin("What monster do you want to genocide? [type the name]", /* EN getlin("What monster do you want to genocide? [type the name]", */ // TODO DE
+		getlin("Welches Monster MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausrotten? [NEUER_SATZ MODIFIER_VERB_IMPERATIV VERB_EINGEBEN den Namen SATZKLAMMER]", /* EN getlin("What monster do you want to genocide? [type the name]", */
 			buf);
 		(void)mungspaces(buf);
 		/* choosing "none" preserves genocideless conduct */
-		if (!strcmpi(buf, "none") || !strcmpi(buf, "nothing")) { /* EN if (!strcmpi(buf, "none") || !strcmpi(buf, "nothing")) { */ // TODO DE
+		if (!strcmpi(buf, "none") || !strcmpi(buf, "nothing") || !strcmpi(buf, "keins") || !strcmpi(buf, "nichts")) { /* EN if (!strcmpi(buf, "none") || !strcmpi(buf, "nothing")) { */
 		    /* ... but no free pass if cursed */
 		    if (!(how & REALLY)) {
 			ptr = rndmonst();
@@ -1652,7 +1656,7 @@ int how;
 	/* fixme: unconditional "caverns" will be silly in some circumstances */
 			    if(flags.verbose)
 			pline("Eine donnernde Stimme hallt durch die Kavernen:"); /* EN pline("A thunderous voice booms through the caverns:"); */
-			    verbalize("Nein, mortal!  That will not be done."); /* EN verbalize("No, mortal!  That will not be done."); */ // TODO DE
+			    verbalize("Nein, %s!  Das wird nicht geschehen.", flags.female ? "Sterbliche" : "Sterblicher"); /* EN verbalize("No, mortal!  That will not be done."); */
 			}
 			continue;
 		}
@@ -1663,7 +1667,7 @@ int how;
 	    }
 	}
 
-	which = "all "; /* EN which = "all "; */ // TODO DE
+	which = "PRONOMEN_ALLE "; /* EN which = "all "; */
 	if (Hallucination) {
 	    if (Upolyd)
 		Strcpy(buf,youmonst.data->mname);
@@ -1675,13 +1679,13 @@ int how;
 	} else {
 	    Strcpy(buf, ptr->mname); /* make sure we have standard singular */
 	    if ((ptr->geno & G_UNIQ) && ptr != &mons[PM_HIGH_PRIEST])
-		which = !type_is_pname(ptr) ? "the " : ""; /* EN which = !type_is_pname(ptr) ? "the " : ""; */ // TODO DE
+		which = !type_is_pname(ptr) ? "ARTIKEL_BESTIMMTER " : ""; /* EN which = !type_is_pname(ptr) ? "the " : ""; */
 	}
 	if (how & REALLY) {
 	    /* setting no-corpse affects wishing and random tin generation */
 	    mvitals[mndx].mvflags |= (G_GENOD | G_NOCORPSE);
-	    pline("Wiped out %s%s.", which, /* EN pline("Wiped out %s%s.", which, */ // TODO DE
-		  (*which != 'a') ? buf : makeplural(buf));
+	    pline("SATZBEGINN %s%s ausgelöscht.", which, /* EN pline("Wiped out %s%s.", which, */
+		  (*which != 'P') ? buf : makeplural(buf)); /* EN (*which != 'a') ? buf : makeplural(buf)); */
 
 	    if (killplayer) {
 		/* might need to wipe out dual role */
@@ -1701,7 +1705,7 @@ int how;
 		} else if (how & ONTHRONE) {
 		    /* player selected while on a throne */
 		    killer_format = KILLED_BY_AN;
-		    killer = "imperious order"; /* EN killer = "imperious order"; */ // TODO DE
+		    killer = "ADJEKTIV_KOENIGLICH NOUN_BEFEHL"; /* EN killer = "imperious order"; */
 		} else { /* selected player deliberately, not confused */
 		    killer_format = KILLED_BY_AN;
 		    killer = "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_GENOCIDE"; /* EN killer = "scroll of genocide"; */

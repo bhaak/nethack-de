@@ -1807,7 +1807,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RING_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_POLYMORPH_CONTROL", "Transformationskontrolle", "", "Transformationskontrolle", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_INVISIBILITY", "Unsichtbarkeit", "", "", "", "feminin"),
-    dekliniere_substantiv("NOUN_RING_SEE_INVISIBLE", "Enthüllung", "", "Enthüllung", "en", "feminin", " des Unsichtbaren"),
+    dekliniere_substantiv("NOUN_RING_SEE_INVISIBLE", "Enthüllung", "", "Enthüllung", "en", "feminin", "", "des Unsichtbaren"),
+    dekliniere_substantiv("NOUN_RING_SEE_INVISIBLE", "Enthüllung", "", "Enthüllung", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "Schutz", "es", "Schutz", "en", "feminin", "", "vor Formwandlern"), # des Schutzes vor Gestaltwandlern
     "",
     "/* Rings, unidentified */",
@@ -2024,7 +2025,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CANDY_BAR","Schokoriegel","s","Schokoriegel","","maskulin"),
     dekliniere_substantiv("NOUN_FORTUNE_COOKIE","Glückskeks","es","Glückskeks","e","maskulin"),
     dekliniere_substantiv("NOUN_PANCAKE","Pfannkuchen","s","Pfannkuchen","","maskulin"),
-    dekliniere_substantiv("NOUN_LEMBAS_WAFER","Lembasbrot","es","Lembasbrot","e","maskulin"),
+    dekliniere_substantiv("NOUN_LEMBAS_WAFER","Lembasbrot","es","Lembasbrot","e","neutrum"),
     dekliniere_substantiv("NOUN_CRAM_RATION", "Ration", "", "Ration", "en", "feminin", "", "Cram"), # Zwergen-Lebensmittel aus HdR
     dekliniere_substantiv("NOUN_FOOD_RATION","Essensration","","Essensration","en","feminin"),
     dekliniere_substantiv("NOUN_K_RATION","Kampfration","","Kampfration","en","feminin"),
@@ -2041,7 +2042,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_POT_LEVITATION", "Levitation", "", "Levitation", "en", "feminin"), 
     dekliniere_substantiv("NOUN_POT_HALLUCINATION", "Halluzination", "", "Halluzination", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_INVISIBILITY", "Unsichtbarkeit", "", "Unsichtbarkeit", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE" # Enthüllung des Unsichtbaren
+    dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE", "Enthüllung", "", "Enthüllung", "en", "feminin", "", "des Unsichtbaren"),
+    dekliniere_substantiv("NOUN_POT_SEE_INVISIBLE", "Enthüllung", "", "Enthüllung", "en", "feminin"),
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
     dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständig", "Heilung", "", "Heilung", "en", "feminin", "s"),
@@ -3549,6 +3551,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_BARE","bloß"),
     dekliniere_adjektiv("ADJEKTIV_BEHANDSCHUHT","behandschuht"),
     dekliniere_adjektiv("ADJEKTIV_BEISSEND","beissend"),
+    dekliniere_adjektiv("ADJEKTIV_BLIND","blind"),
     dekliniere_adjektiv("ADJEKTIV_BLUTRUENSTIG","blutrünstig"),
     dekliniere_adjektiv("ADJEKTIV_BRENNEND","brennend"),
     dekliniere_adjektiv("ADJEKTIV_CARNIVOROUS","fleischfressend"),

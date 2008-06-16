@@ -770,7 +770,7 @@ peffects(otmp)
 			/* they went up a level */
 			if((ledger_no(&u.uz) == 1 && u.uhave.amulet) ||
 				Can_rise_up(u.ux, u.uy, &u.uz)) {
-			    const char *riseup ="rise up, through the %s!"; /* EN const char *riseup ="rise up, through the %s!"; */ // TODO DE
+			    const char *riseup ="VERB_EMPORSTEIGEN SATZKLAMMER, OBJECT durch ARTIKEL_BESTIMMTER %s hindurch!"; /* EN const char *riseup ="rise up, through the %s!"; */
 			    if(ledger_no(&u.uz) == 1) {
 			        You(riseup, ceiling(u.ux,u.uy));
 				goto_level(&earth_level, FALSE, FALSE, FALSE);

@@ -247,7 +247,7 @@ boolean forcecontrol;
 
 	if (Polymorph_control || forcecontrol) {
 		do {
-			getlin("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WAEHLEN OBJECT PRONOMEN_POSSESSIV NOUN_DASEINSFORM? [NEUER_SATZ MODIFIER_VERB_IMPERATIV VERB_EINGEBEN den Namen SATZKLAMMER]", /* EN getlin("Become what kind of monster? [type the name]", */ // TODO DE
+			getlin("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WAEHLEN OBJECT PRONOMEN_POSSESSIV NOUN_DASEINSFORM? [NEUER_SATZ MODIFIER_VERB_IMPERATIV VERB_EINGEBEN den Namen SATZKLAMMER]", /* EN getlin("Become what kind of monster? [type the name]", */
 				buf);
 			mntmp = name_to_mon(buf);
 			if (mntmp < LOW_PM)

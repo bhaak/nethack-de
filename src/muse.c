@@ -69,7 +69,7 @@ struct obj *obj;
 
 	if (obj->oclass == POTION_CLASS) {
 	    coord cc;
-	    static const char *empty = "The potion turns out to be empty."; /* EN static const char *empty = "The potion turns out to be empty."; */ // TODO DE
+	    static const char *empty = "Der Trank erweist sich als leer."; /* EN static const char *empty = "The potion turns out to be empty."; */
 	    const char *potion_descr;
 	    struct monst *mtmp;
 #define POTION_OCCUPANT_CHANCE(n) (13 + 2*(n))	/* also in potion.c */
@@ -86,10 +86,10 @@ struct obj *obj;
 			if (vis) pline(empty);
 		    } else {
 			if (vis) {
-			    pline("As %s opens the bottle, an enormous %s VERB_ENTWEICHEN!", /* EN pline("As %s opens the bottle, an enormous %s emerges!", */ // TODO DE
+			    pline("Als %s die Flasche öffnet, entweicht KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_GEWALTIG %s!", /* EN pline("As %s opens the bottle, an enormous %s emerges!", */
 			       mon_nam(mon),
 			       Hallucination ? rndmonnam() : (const char *)"NOUN_GHOST"); /* EN Hallucination ? rndmonnam() : (const char *)"ghost"); */
-			    pline("%s is frightened to death, and unable to move/ruehren.", /* EN pline("%s is frightened to death, and unable to move.", */ // TODO DE
+			    pline("SUBJECT %s VERB_SEIN zu Tode erschrocken und außerstande sich zu rühren.", /* EN pline("%s is frightened to death, and unable to move.", */
 				    Monnam(mon));
 			}
 			mon->mcanmove = 0;
@@ -1148,7 +1148,7 @@ register struct obj *otmp;
 			if (mtmp->ispriest &&
 				*in_rooms(mtmp->mx, mtmp->my, TEMPLE)) {
 			    if (cansee(mtmp->mx, mtmp->my))
-				pline("%s resists the magic!", Monnam(mtmp)); /* EN pline("%s resists the magic!", Monnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s VERB_WIDERSTEHEN der Magie!", Monnam(mtmp)); /* EN pline("%s resists the magic!", Monnam(mtmp)); */
 			    mtmp->msleeping = 0;
 			    if(mtmp->m_ap_type) seemimic(mtmp);
 			} else if (!tele_restrict(mtmp))
@@ -1328,12 +1328,12 @@ struct monst *mtmp;
 		mreadmsg(mtmp, otmp);
 	    	/* Identify the scroll */
 		if (canspotmon(mtmp)) {
-		    pline_The("%s rumbles %s %s!", ceiling(mtmp->mx, mtmp->my), /* EN pline_The("%s rumbles %s %s!", ceiling(mtmp->mx, mtmp->my), */ // TODO DE
-	    			otmp->blessed ? "around" : "above", /* EN otmp->blessed ? "around" : "above", */ // TODO DE
+		    pline_The("%s VERB_RUMOREN OBJECT %s %s!", ceiling(mtmp->mx, mtmp->my), /* EN pline_The("%s rumbles %s %s!", ceiling(mtmp->mx, mtmp->my), */
+	    			otmp->blessed ? "um" : "KASUS_DATIV über", /* EN otmp->blessed ? "around" : "above", */
 				mon_nam(mtmp));
 		    if (oseen) makeknown(otmp->otyp);
 		} else if (cansee(mtmp->mx, mtmp->my)) {
-		    pline_The("%s rumbles in the middle of nowhere!", /* EN pline_The("%s rumbles in the middle of nowhere!", */ // TODO DE
+		    pline_The("%s VERB_RUMOREN mitten im Nirgendwo!", /* EN pline_The("%s rumbles in the middle of nowhere!", */
 			ceiling(mtmp->mx, mtmp->my));
 		    if (mtmp->minvis)
 			map_invisible(mtmp->mx, mtmp->my);
@@ -1370,7 +1370,7 @@ struct monst *mtmp;
 				int mdmg;
 
 				if (cansee(mtmp2->mx, mtmp2->my)) {
-				    pline("%s is hit by %s!", Monnam(mtmp2), /* EN pline("%s is hit by %s!", Monnam(mtmp2), */ // TODO DE
+				    pline("SUBJECT %s VERB_WERDEN _von_ %s getroffen!", Monnam(mtmp2), /* EN pline("%s is hit by %s!", Monnam(mtmp2), */
 	    	    	    			doname(otmp2));
 				    if (mtmp2->minvis && !canspotmon(mtmp2))
 					map_invisible(mtmp2->mx, mtmp2->my);
@@ -1381,7 +1381,7 @@ struct monst *mtmp;
 					if (canspotmon(mtmp2))
 					    pline("Glücklicherweise SUBJECT_IM_SATZ VERB_TRAGEN %s einen schützenden Helm.", mon_nam(mtmp2)); /* EN pline("Fortunately, %s is wearing a hard helmet.", mon_nam(mtmp2)); */
 					else if (flags.soundok)
-					    You_hear("a clanging sound."); /* EN You_hear("a clanging sound."); */ // TODO DE
+					    You_hear("ein klapperndes Geräusch."); /* EN You_hear("a clanging sound."); */
 					if (mdmg > 2) mdmg = 2;
 				    } else {
 					if (canspotmon(mtmp2))
@@ -1718,7 +1718,7 @@ struct monst *mtmp;
 			/* insurance against future changes... */
 			if(on_level(&tolevel, &u.uz)) goto skipmsg;
 			if (vismon) {
-			    pline("%s rises up, through the %s!", /* EN pline("%s rises up, through the %s!", */ // TODO DE
+			    pline("SUBJECT %s VERB_EMPORSTEIGEN SATZKLAMMER, OBJECT durch ARTIKEL_BESTIMMTER %s hindurch!", /* EN pline("%s rises up, through the %s!", */
 				  Monnam(mtmp), ceiling(mtmp->mx, mtmp->my));
 			    if(!objects[POT_GAIN_LEVEL].oc_name_known
 			      && !objects[POT_GAIN_LEVEL].oc_uname)
@@ -1816,7 +1816,7 @@ skipmsg:
 	case MUSE_BULLWHIP:
 		/* attempt to disarm hero */
 		if (uwep && !rn2(5)) {
-		    const char *The_whip = vismon ? "The bullwhip" : "A whip"; /* EN const char *The_whip = vismon ? "The bullwhip" : "A whip"; */ // TODO DE
+		    const char *The_whip = vismon ? "ARTIKEL_BESTIMMTER NOUN_BULLWHIP" : "ARTIKEL_UNBESTIMMTER NOUN_WHIP"; /* EN const char *The_whip = vismon ? "The bullwhip" : "A whip"; */
 		    int where_to = rn2(4);
 		    struct obj *obj = uwep;
 		    const char *hand;
@@ -1827,10 +1827,10 @@ skipmsg:
 		    if (bimanual(obj)) hand = makeplural(hand);
 
 		    if (vismon)
-			pline("%s flicks a bullwhip towards your %s!", /* EN pline("%s flicks a bullwhip towards your %s!", */ // TODO DE
+			pline("SUBJECT %s VERB_SCHWINGEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_BULLWHIP towards your %s!", /* EN pline("%s flicks a bullwhip towards your %s!", */ // TODO DE
 			      Monnam(mtmp), hand);
 		    if (obj->otyp == HEAVY_IRON_BALL) {
-			pline("%s fails to wrap around %s.", /* EN pline("%s fails to wrap around %s.", */ // TODO DE
+			pline("SUBJECT %s VERB_KOENNEN sich nicht OBJECT um %s wickeln.", /* EN pline("%s fails to wrap around %s.", */
 			      The_whip, the_weapon);
 			return 1;
 		    }
@@ -1856,17 +1856,17 @@ skipmsg:
 		    uwepgone();
 		    switch (where_to) {
 			case 1:		/* onto floor beneath mon */
-			    pline("%s yanks %s from your %s!", Monnam(mtmp), /* EN pline("%s yanks %s from your %s!", Monnam(mtmp), */ // TODO DE
+			    pline("SUBJECT %s VERB_REISSEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT %s NEUES_OBJECT OBJECT aus PRONOMEN_POSSESSIV %s!", Monnam(mtmp), /* EN pline("%s yanks %s from your %s!", Monnam(mtmp), */
 				  the_weapon, hand);
 			    place_object(obj, mtmp->mx, mtmp->my);
 			    break;
 			case 2:		/* onto floor beneath you */
-			    pline("%s yanks %s to the %s!", Monnam(mtmp), /* EN pline("%s yanks %s to the %s!", Monnam(mtmp), */ // TODO DE
+			    pline("SUBJECT %s VERB_REISSEN OBJECT %s to the %s!", Monnam(mtmp), /* EN pline("%s yanks %s to the %s!", Monnam(mtmp), */ // TODO DE zu_Boden
 				  the_weapon, surface(u.ux, u.uy));
 			    dropy(obj);
 			    break;
 			case 3:		/* into mon's inventory */
-			    pline("%s snatches %s!", Monnam(mtmp), /* EN pline("%s snatches %s!", Monnam(mtmp), */ // TODO DE
+			    pline("SUBJECT %s VERB_SCHNAPPEN sich OBJECT %s!", Monnam(mtmp), /* EN pline("%s snatches %s!", Monnam(mtmp), */
 				  the_weapon);
 			    (void) mpickobj(mtmp,obj);
 			    break;
