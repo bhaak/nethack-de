@@ -444,7 +444,7 @@ const char *verb;	/* "rub",&c */
     /* check shield */
     if (uarms && bimanual(obj)) {
 	You("cannot %s a two-handed %s while wearing a shield.", /* EN You("cannot %s a two-handed %s while wearing a shield.", */ // TODO DE
-	    verb, (obj->oclass == WEAPON_CLASS) ? "weapon" : "tool"); /* EN verb, (obj->oclass == WEAPON_CLASS) ? "weapon" : "tool"); */ // TODO DE
+	    verb, (obj->oclass == WEAPON_CLASS) ? "NOUN_WEAPON" : "NOUN_TOOL"); /* EN verb, (obj->oclass == WEAPON_CLASS) ? "weapon" : "tool"); */
 	return FALSE;
     }
     if (uquiver == obj) setuqwep((struct obj *)0);

@@ -60,7 +60,7 @@ dosounds()
 	static const char * const sink_msg[3] = {
 		"ein stetes Tropfen.", /* EN "a slow drip.", */
 		"ein gurgelndes Geräusch.", /* EN "a gurgling noise.", */
-		"dishes being washed!", /* EN "dishes being washed!", */ // TODO DE
+		"einen Geschirrspüler!", /* EN "dishes being washed!", */
 	};
 	You_hear(sink_msg[rn2(2)+hallu]);
     }
@@ -633,7 +633,7 @@ register struct monst *mtmp;
 	    pline_msg = "VERB_IMITIEREN OBJECT PRONOMEN_PERSONAL."; /* EN pline_msg = "imitates you."; */
 	    break;
 	case MS_BONES:
-	    pline("%s rattles noisily.", Monnam(mtmp)); /* EN pline("%s rattles noisily.", Monnam(mtmp)); */ // TODO DE
+	    pline("%s VERB_KLAPPERN laut.", Monnam(mtmp)); /* EN pline("%s rattles noisily.", Monnam(mtmp)); */
 	    You("freeze for a moment."); /* EN You("freeze for a moment."); */ // TODO DE
 	    nomul(-2);
 	    break;
@@ -646,7 +646,7 @@ register struct monst *mtmp;
 	    }
 	    break;
 	case MS_MUMBLE:
-	    pline_msg = "mumbles incomprehensibly."; /* EN pline_msg = "mumbles incomprehensibly."; */ // TODO DE
+	    pline_msg = "murmelt unverständlich."; /* EN pline_msg = "mumbles incomprehensibly."; */
 	    break;
 	case MS_DJINNI:
 	    if (mtmp->mtame) {
@@ -664,9 +664,9 @@ register struct monst *mtmp;
 		case 0: pline("SUBJECT %s VERB_PRAHLEN mit OBJECT KASUS_DATIV %s NOUN_GEM_COLLECTION.", /* EN case 0: pline("%s boasts about %s gem collection.", */
 			      Monnam(mtmp), mhis(mtmp));
 			break;
-		case 1: pline_msg = "complains about a diet of mutton."; /* EN case 1: pline_msg = "complains about a diet of mutton."; */ // TODO DE
+		case 1: pline_msg = "beklagt sich über eine Lamm-Diät."; /* EN case 1: pline_msg = "complains about a diet of mutton."; */
 			break;
-	       default: pline_msg = "shouts \"Fee Fie Foe Foo!\" and guffaws."; /* EN default: pline_msg = "shouts \"Fee Fie Foe Foo!\" and guffaws."; */ // TODO DE
+	       default: pline_msg = "brüllt \"Fee Fie Foe Foo!\" und lacht schallend."; /* EN default: pline_msg = "shouts \"Fee Fie Foe Foo!\" and guffaws."; */
 			wake_nearto(mtmp->mx, mtmp->my, 7*7);
 			break;
 		}
@@ -693,9 +693,9 @@ register struct monst *mtmp;
 		struct trap *t = t_at(mtmp->mx, mtmp->my);
 
 		if (t) t->tseen = 1;
-		verbl_msg = "I'm trapped!"; /* EN verbl_msg = "I'm trapped!"; */ // TODO DE
+		verbl_msg = "Ich sitze in einer Falle!"; /* EN verbl_msg = "I'm trapped!"; */
 	    } else if (mtmp->mhp < mtmp->mhpmax/2)
-		pline_msg = "asks for a potion of healing."; /* EN pline_msg = "asks for a potion of healing."; */ // TODO DE
+		pline_msg = "VERB_BITTEN OBJECT um ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_HEALING."; /* EN pline_msg = "asks for a potion of healing."; */
 	    else if (mtmp->mtame && !mtmp->isminion &&
 						moves > EDOG(mtmp)->hungrytime)
 		verbl_msg = "Ich habe Hunger."; /* EN verbl_msg = "I'm hungry."; */
@@ -776,7 +776,7 @@ register struct monst *mtmp;
 	    break;
 	case MS_SPELL:
 	    /* deliberately vague, since it's not actually casting any spell */
-	    pline_msg = "seems to mutter a cantrip."; /* EN pline_msg = "seems to mutter a cantrip."; */ // TODO DE
+	    pline_msg = "scheint einen Zauberspruch zu murmeln."; /* EN pline_msg = "seems to mutter a cantrip."; */
 	    break;
 	case MS_NURSE:
 	    if (uwep && (uwep->oclass == WEAPON_CLASS || is_weptool(uwep)))
@@ -901,7 +901,7 @@ dochat()
 	    return(1);
 	}
 */
-	pline("Selbstgespräche sind eine schlechte Angewohnheit für einen dungeoneer."); /* EN pline("Talking to yourself is a bad habit for a dungeoneer."); */ // TODO DE
+	pline("Selbstgespräche sind eine schlechte Angewohnheit für einen Abenteuer."); /* EN pline("Talking to yourself is a bad habit for a dungeoneer."); */
 	return(0);
     }
 

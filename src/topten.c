@@ -658,23 +658,23 @@ boolean so;
 		Strcat(linebuf, "was crushed to death"); /* EN Strcat(linebuf, "was crushed to death"); */ // TODO DE
 	    } else if (!strncmp(t1->death, "petrified by ", 13)) { /* EN } else if (!strncmp(t1->death, "petrified by ", 13)) { */ // TODO DE
 		Strcat(linebuf, "versteinerte"); /* EN Strcat(linebuf, "turned to stone"); */
-	    } else Strcat(linebuf, "died"); /* EN } else Strcat(linebuf, "died"); */ // TODO DE
+	    } else Strcat(linebuf, "starb"); /* EN } else Strcat(linebuf, "died"); */
 
 	    if (t1->deathdnum == astral_level.dnum) {
-		const char *arg, *fmt = " on the Plane of %s"; /* EN const char *arg, *fmt = " on the Plane of %s"; */ // TODO DE
+		const char *arg, *fmt = " auf der Elementarebene %s"; /* EN const char *arg, *fmt = " on the Plane of %s"; */
 
 		switch (t1->deathlev) {
 		case -5:
-			fmt = " on the %s Plane"; /* EN fmt = " on the %s Plane"; */ // TODO DE
-			arg = "Astral";	break; /* EN arg = "Astral";	break; */ // TODO DE
+			fmt = " auf der %sebene"; /* EN fmt = " on the %s Plane"; */
+			arg = "Astral";	break;
 		case -4:
-			arg = "Water";	break; /* EN arg = "Water";	break; */ // TODO DE
+			arg = "des Wassers";	break; /* EN arg = "Water";	break; */
 		case -3:
-			arg = "Fire";	break; /* EN arg = "Fire";	break; */ // TODO DE
+			arg = "des Feuers";	break; /* EN arg = "Fire";	break; */
 		case -2:
-			arg = "Air";	break; /* EN arg = "Air";	break; */ // TODO DE
+			arg = "der Luft";	break; /* EN arg = "Air";	break; */
 		case -1:
-			arg = "Earth";	break; /* EN arg = "Earth";	break; */ // TODO DE
+			arg = "der Erde";	break; /* EN arg = "Earth";	break; */
 		default:
 			arg = "Void";	break; /* EN arg = "Void";	break; */ // TODO DE
 		}
@@ -684,7 +684,7 @@ boolean so;
 		if (t1->deathdnum != knox_level.dnum)
 		    Sprintf(eos(linebuf), " on level %d", t1->deathlev); /* EN Sprintf(eos(linebuf), " on level %d", t1->deathlev); */ // TODO DE
 		if (t1->deathlev != t1->maxlvl)
-		    Sprintf(eos(linebuf), " [max %d]", t1->maxlvl); /* EN Sprintf(eos(linebuf), " [max %d]", t1->maxlvl); */ // TODO DE
+		    Sprintf(eos(linebuf), " [Max %d]", t1->maxlvl); /* EN Sprintf(eos(linebuf), " [max %d]", t1->maxlvl); */
 	    }
 
 	    /* kludge for "quit while already on Charon's boat" */
@@ -704,7 +704,7 @@ boolean so;
 	if (t1->hp <= 0) hpbuf[0] = '-', hpbuf[1] = '\0';
 	else Sprintf(hpbuf, "%d", t1->hp);
 	/* beginning of hp column after padding (not actually padded yet) */
-	hppos = COLNO - (sizeof("  Hp [max]")-1); /* sizeof(str) includes \0 */ /* EN hppos = COLNO - (sizeof("  Hp [max]")-1);  */ // TODO DE
+	hppos = COLNO - (sizeof("  Tp [Max]")-1); /* sizeof(str) includes \0 */ /* EN hppos = COLNO - (sizeof("  Hp [max]")-1);  */
 	while (lngr >= hppos) {
 	    for(bp = eos(linebuf);
 		    !(*bp == ' ' && (bp-linebuf < hppos));
@@ -712,7 +712,7 @@ boolean so;
 		;
 	    /* special case: if about to wrap in the middle of maximum
 	       dungeon depth reached, wrap in front of it instead */
-	    if (bp > linebuf + 5 && !strncmp(bp - 5, " [max", 5)) bp -= 5; /* EN if (bp > linebuf + 5 && !strncmp(bp - 5, " [max", 5)) bp -= 5; */ // TODO DE
+	    if (bp > linebuf + 5 && !strncmp(bp - 5, " [Max", 5)) bp -= 5; /* EN if (bp > linebuf + 5 && !strncmp(bp - 5, " [max", 5)) bp -= 5; */
 	    Strcpy(linebuf3, bp+1);
 	    *bp = 0;
 	    if (so) {

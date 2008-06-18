@@ -1075,11 +1075,11 @@ domove()
 	    (glyph_is_invisible(levl[x][y].glyph) && !flags.nopick)) {
 		boolean expl = (Upolyd && attacktype(youmonst.data, AT_EXPL));
 	    	char buf[BUFSZ];
-		Sprintf(buf,"a vacant spot on the %s", surface(x,y)); /* EN Sprintf(buf,"a vacant spot on the %s", surface(x,y)); */ // TODO DE
-		You("%s %s.",
-		    expl ? "explode at" : "attack", /* EN expl ? "explode at" : "attack", */ // TODO DE
-		    !Underwater ? "thin air" : /* EN !Underwater ? "thin air" : */ // TODO DE
-		    is_pool(x,y) ? "empty water" : buf); /* EN is_pool(x,y) ? "empty water" : buf); */ // TODO DE
+		Sprintf(buf,"ARTIKEL_UNBESTIMMTER ADJEKTIV_LEER NOUN_PLATZ NEUES_OBJECT OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s", surface(x,y)); /* EN Sprintf(buf,"a vacant spot on the %s", surface(x,y)); */
+		You("%s %s SATZKLAMMER.", /* EN You("%s %s.", */
+		    expl ? "VERB_ENTGEGENEXPLODIEREN OBJECT KASUS_DATIV" : "VERB_ANGREIFEN OBJECT", /* EN expl ? "explode at" : "attack", */
+		    !Underwater ? "ARTIKEL_BESTIMMTER NOUN_AIR" : /* EN !Underwater ? "thin air" : */
+		    is_pool(x,y) ? "ARTIKEL_BESTIMMTER NOUN_WATER" : buf); /* EN is_pool(x,y) ? "empty water" : buf); */
 		unmap_object(x, y); /* known empty -- remove 'I' if present */
 		newsym(x, y);
 		nomul(0);
@@ -1096,15 +1096,15 @@ domove()
 	/* not attacking an animal, so we try to move */
 #ifdef STEED
 	if (u.usteed && !u.usteed->mcanmove && (u.dx || u.dy)) {
-		pline("%s won't move!", upstart(y_monnam(u.usteed))); /* EN pline("%s won't move!", upstart(y_monnam(u.usteed))); */ // TODO DE
+		pline("SUBJECT %s VERB_MACHEN keinen Wank!", upstart(y_monnam(u.usteed))); /* EN pline("%s won't move!", upstart(y_monnam(u.usteed))); */
 		nomul(0);
 		return;
 	} else
 #endif
 	if(!youmonst.data->mmove) {
-		You("are rooted %s.", /* EN You("are rooted %s.", */ // TODO DE
+		You("VERB_STEHEN %s wie festgewurzelt.", /* EN You("are rooted %s.", */
 		    Levitation || Is_airlevel(&u.uz) || Is_waterlevel(&u.uz) ?
-		    "in place" : "to the ground"); /* EN "in place" : "to the ground"); */ // TODO DE
+		    "an Ort und Stelle" : "am Boden"); /* EN "in place" : "to the ground"); */
 		nomul(0);
 		return;
 	}
@@ -1118,7 +1118,7 @@ domove()
 		    } else if (!(--u.utrap)) {
 			You("%s zum Rand der Grube.", /* EN You("%s to the edge of the pit.", */
 				(In_sokoban(&u.uz) && Levitation) ?
-				"struggle against the air currents and float" : /* EN "struggle against the air currents and float" : */ // TODO DE
+				"VERB_ANKAEMPFEN gegen die Luftströmungen SATZKLAMMER und VERB_SCHWEBEN" : /* EN "struggle against the air currents and float" : */
 #ifdef STEED
 				u.usteed ? "VERB_REITEN" : /* EN u.usteed ? "ride" : */
 #endif
@@ -1128,24 +1128,24 @@ domove()
 		    } else if (flags.verbose) {
 #ifdef STEED
 			if (u.usteed)
-			    Norep("SUBJECT %s is still in a pit.", /* EN Norep("%s is still in a pit.", */ // TODO DE
+			    Norep("SUBJECT %s VERB_STECKEN immer noch in einer Grube.", /* EN Norep("%s is still in a pit.", */
 				  upstart(y_monnam(u.usteed)));
 			else
 #endif
 			Norep( (Hallucination && !rn2(5)) ?
 				"You've fallen, and you can't get up." : /* EN "You've fallen, and you can't get up." : */ // TODO DE
-				"You are still in a pit." ); /* EN "You are still in a pit." ); */ // TODO DE
+				"SUBJECT VERB_STECKEN immer noch in einer Grube." ); /* EN "You are still in a pit." ); */
 		    }
 		} else if (u.utraptype == TT_LAVA) {
 		    if(flags.verbose) {
-			predicament = "stuck in the lava"; /* EN predicament = "stuck in the lava"; */ // TODO DE
+			predicament = "VERB_STECKEN in der Lava fest"; /* EN predicament = "stuck in the lava"; */
 #ifdef STEED
 			if (u.usteed)
-			    Norep("%s is %s.", upstart(y_monnam(u.usteed)), /* EN Norep("%s is %s.", upstart(y_monnam(u.usteed)), */ // TODO DE
+			    Norep("SUBJECT %s %s.", upstart(y_monnam(u.usteed)), /* EN Norep("%s is %s.", upstart(y_monnam(u.usteed)), */
 				  predicament);
 			else
 #endif
-			Norep("You are %s.", predicament); /* EN Norep("You are %s.", predicament); */ // TODO DE
+			Norep("SUBJECT PRONOMEN_PERSONAL %s.", predicament); /* EN Norep("You are %s.", predicament); */
 		    }
 		    if(!is_lava(x,y)) {
 			u.utrap--;
@@ -1164,24 +1164,24 @@ domove()
 		} else if (u.utraptype == TT_WEB) {
 		    if(uwep && uwep->oartifact == ART_STING) {
 			u.utrap = 0;
-			pline("Sting cuts through the web!"); /* EN pline("Sting cuts through the web!"); */ // TODO DE
+			pline("SATZBEGINN NOUN_STING durchschneidet das Spinnennetz!"); /* EN pline("Sting cuts through the web!"); */
 			return;
 		    }
 		    if(--u.utrap) {
 			if(flags.verbose) {
-			    predicament = "stuck to the web"; /* EN predicament = "stuck to the web"; */ // TODO DE
+			    predicament = "VERB_STECKEN im Spinnennetz fest"; /* EN predicament = "stuck to the web"; */
 #ifdef STEED
 			    if (u.usteed)
-				Norep("%s is %s.", upstart(y_monnam(u.usteed)), /* EN Norep("%s is %s.", upstart(y_monnam(u.usteed)), */ // TODO DE
+				Norep("SUBJECT %s %s.", upstart(y_monnam(u.usteed)), /* EN Norep("%s is %s.", upstart(y_monnam(u.usteed)), */
 				      predicament);
 			    else
 #endif
-			    Norep("You are %s.", predicament); /* EN Norep("You are %s.", predicament); */ // TODO DE
+			    Norep("SUBJECT PRONOMEN_PERSONAL %s.", predicament); /* EN Norep("You are %s.", predicament); */
 			}
 		    } else {
 #ifdef STEED
 			if (u.usteed)
-			    pline("%s breaks out of the web.", /* EN pline("%s breaks out of the web.", */ // TODO DE
+			    pline("SUBJECT %s VERB_BEFREIEN sich aus dem Spinnennetz.", /* EN pline("%s breaks out of the web.", */
 				  upstart(y_monnam(u.usteed)));
 			else
 #endif
@@ -1190,15 +1190,15 @@ domove()
 		} else if (u.utraptype == TT_INFLOOR) {
 		    if(--u.utrap) {
 			if(flags.verbose) {
-			    predicament = "stuck in the"; /* EN predicament = "stuck in the"; */ // TODO DE
+			    predicament = "VERB_STECKEN OBJECT KASUS_DATIV _in_ ARTIKEL_BESTIMMTER"; /* EN predicament = "stuck in the"; */
 #ifdef STEED
 			    if (u.usteed)
-				Norep("%s is %s %s.", /* EN Norep("%s is %s %s.", */ // TODO DE
+				Norep("SUBJECT %s is %s %s fest.", /* EN Norep("%s is %s %s.", */
 				      upstart(y_monnam(u.usteed)),
 				      predicament, surface(u.ux, u.uy));
 			    else
 #endif
-			    Norep("You are %s %s.", predicament, /* EN Norep("You are %s %s.", predicament, */ // TODO DE
+			    Norep("SUBJECT PRONOMEN_PERSONAL %s %s fest.", predicament, /* EN Norep("You are %s %s.", predicament, */
 				  surface(u.ux, u.uy));
 			}
 		    } else {
@@ -1215,7 +1215,7 @@ domove()
 			predicament = "VERB_STECKEN in einer Bärenfalle fest"; /* EN predicament = "caught in a bear trap"; */
 #ifdef STEED
 			if (u.usteed)
-			    Norep("SUBJECT %s %s.", upstart(y_monnam(u.usteed)), /* EN Norep("%s is %s.", upstart(y_monnam(u.usteed)), */ // TODO DE
+			    Norep("SUBJECT %s %s.", upstart(y_monnam(u.usteed)), /* EN Norep("%s is %s.", upstart(y_monnam(u.usteed)), */
 				  predicament);
 			else
 #endif

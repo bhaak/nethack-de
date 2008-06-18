@@ -429,7 +429,7 @@ int spellnum;
 		Du_fuehlst_dich("kurzzeitig sehr desorientiert."); /* EN You_feel("momentarily disoriented."); */
 	    make_stunned(1L, FALSE);
 	} else {
-	    You(Stunned ? "struggle to keep your balance." : "reel..."); /* EN You(Stunned ? "struggle to keep your balance." : "reel..."); */ // TODO DE
+	    You(Stunned ? "VERB_KAEMPFEN OBJECT KASUS_DATIV um PRONOMEN_POSSESSIV NOUN_GLEICHGEWICHT." : "VERB_TAUMELN ..."); /* EN You(Stunned ? "struggle to keep your balance." : "reel..."); */
 	    dmg = d(ACURR(A_DEX) < 12 ? 6 : 4, 4);
 	    if (Half_spell_damage) dmg = (dmg + 1) / 2;
 	    make_stunned(HStun + dmg, FALSE);
