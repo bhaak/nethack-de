@@ -483,7 +483,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)sterben$/: v = Verb_Konjunktiv_II.new($1+"sterben", $1+"starb", ge($1)+"storben", $1+"stirb", $1+"stürb")
   when "nehmen": v = Verb_EI_Wechsel.new("nehmen", "nahm", "genommen", "nimm")
   when "sprechen": v = Verb_EI_Wechsel.new("sprechen", "sprach", "gesprochen", "sprich")
-  when "stechen": v = Verb_EI_Wechsel.new("stechen", "stach", "gestochen", "sticht")
+  when "stechen": v = Verb_EI_Wechsel.new("stechen", "stach", "gestochen", "stich")
   when "stehlen": v = Verb_Konjunktiv_II.new("stehlen", "stahl", "gestohlen", "stiehl", "stöhl")
 		#  e a a
   when /(.*)stehen/: v = Verb_Konjunktiv_II.new($1+"stehen", $1+"stand", ge($1)+"standen", $1+"steh", $1+"stünd")
