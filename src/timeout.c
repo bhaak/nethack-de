@@ -22,7 +22,7 @@ STATIC_DCL void FDECL(cleanup_burn, (genericptr_t,long));
 
 /* He is being petrified - dialogue by inmet!tower */
 static NEARDATA const char * const stoned_texts[] = {
-	"You are slowing down.",		/* 5 */ /* EN "You are slowing down.",		*/ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_WERDEN langsamer.",		/* 5 */ /* EN "You are slowing down.",		*/
 	"SUBJECT PRONOMEN_POSSESSIV NOUN_EXTREMITAETs versteifen sich.",		/* 4 */ /* EN "Your limbs are stiffening.",		*/
 	"SUBJECT PRONOMEN_POSSESSIV NOUN_EXTREMITAETs sind versteinert.",	/* 3 */ /* EN "Your limbs have turned to stone.",	*/
 	"SUBJECT PRONOMEN_PERSONAL VERB_SEIN versteinert.",		/* 2 */ /* EN "You have turned to stone.",		*/
@@ -241,7 +241,7 @@ nh_timeout()
 			}
 			if (!killer) {
 				killer_format = NO_KILLER_PREFIX;
-				killer = "turned into green slime"; /* EN killer = "turned into green slime"; */ // TODO DE
+				killer = "verwandelte sich KASUS_AKKUSATIV in ARTIKEL_UNBESTIMMTER NOUN_GREEN_SLIME"; /* EN killer = "turned into green slime"; */
 			}
 			done(TURNED_SLIME);
 			break;
@@ -658,13 +658,13 @@ slip_or_trip()
 		You("VERB_STOLPERN über OBJECT %s.", what); /* EN You("trip over %s.", what); */
 	    }
 	} else if (rn2(3) && is_ice(u.ux, u.uy)) {
-	    pline("%s %s%s on the ice.", /* EN pline("%s %s%s on the ice.", */ // TODO DE
+	    pline("SUBJECT %s %s%s auf dem Eis SATZKLAMMER.", /* EN pline("%s %s%s on the ice.", */
 #ifdef STEED
 		u.usteed ? upstart(x_monnam(u.usteed,
 				ARTICLE_THE, /* EN u.usteed->mnamelth ? ARTICLE_NONE : ARTICLE_THE, */
 				(char *)0, SUPPRESS_SADDLE, FALSE)) :
 #endif
-		"You", rn2(2) ? "slip" : "slide", on_foot ? "" : "s"); /* EN "You", rn2(2) ? "slip" : "slide", on_foot ? "" : "s"); */ // TODO DE
+		"PRONOMEN_PERSONAL", rn2(2) ? "VERB_AUSRUTSCHEN" : "VERB_AUSGLEITEN", on_foot ? "" : ""); /* EN "You", rn2(2) ? "slip" : "slide", on_foot ? "" : "s"); */
 	} else {
 	    if (on_foot) {
 		switch (rn2(4)) {
@@ -694,10 +694,10 @@ slip_or_trip()
 			You("VERB_LASSEN die Zügel los."); /* EN You("let go of the reins."); */
 			break;
 		  case 3:
-			You("bang into the saddle-horn."); /* EN You("bang into the saddle-horn."); */ // TODO DE
+			You("VERB_KNALLEN in das Sattelhorn."); /* EN You("bang into the saddle-horn."); */
 			break;
 		  default:
-			You("slide to one side of the saddle."); /* EN You("slide to one side of the saddle."); */ // TODO DE
+			You("VERB_RUTSCHEN auf eine Seite des Sattels."); /* EN You("slide to one side of the saddle."); */
 			break;
 		}
 		dismount_steed(DISMOUNT_FELL);

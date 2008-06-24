@@ -218,9 +218,9 @@ register struct obj *sobj;
 			        money_cnt(invent))
 #endif
 			Strcpy(buf,
-				"You feel worried about your future financial situation."); /* EN "You feel worried about your future financial situation."); */ // TODO DE
+				"SUBJECT PRONOMEN_PERSONAL VERB_MACHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL Sorgen NEUES_OBJECT OBJECT über PRONOMEN_POSSESSIV ADJEKTIV_FINANZIELL NOUN_ZUKUNFT."); /* EN "You feel worried about your future financial situation."); */
 		else
-			Strcpy(buf, "You feel materially poor."); /* EN Strcpy(buf, "You feel materially poor."); */ // TODO DE
+			Strcpy(buf, "SUBJECT PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL pekuniär benachteiligt."); /* EN Strcpy(buf, "You feel materially poor."); */
 		strange_feeling(sobj, buf);
         }
 	return(1);
@@ -324,13 +324,13 @@ register struct obj	*sobj;
 	    docrt();
 	    You("VERB_SPUEREN in der Nähe einen Mangel an OBJECT KASUS_DATIV %s.", what); /* EN You("sense a lack of %s nearby.", what); */
 	    if (sobj && sobj->blessed) {
-		if (!u.uedibility) Your("%s starts to tingle.", body_part(NOSE)); /* EN if (!u.uedibility) Your("%s starts to tingle.", body_part(NOSE)); */ // TODO DE
+		if (!u.uedibility) Your("%s beginnt zu kribbeln.", body_part(NOSE)); /* EN if (!u.uedibility) Your("%s starts to tingle.", body_part(NOSE)); */
 		u.uedibility = 1;
 	    }
 	} else if (sobj) {
 	    char buf[BUFSZ];
-	    Sprintf(buf, "Your %s twitches%s.", body_part(NOSE), /* EN Sprintf(buf, "Your %s twitches%s.", body_part(NOSE), */ // TODO DE
-			(sobj->blessed && !u.uedibility) ? " then starts to tingle" : ""); /* EN (sobj->blessed && !u.uedibility) ? " then starts to tingle" : ""); */ // TODO DE
+	    Sprintf(buf, "SUBJECT PRONOMEN_POSSESSIV %s juckt%s.", body_part(NOSE), /* EN Sprintf(buf, "Your %s twitches%s.", body_part(NOSE), */
+			(sobj->blessed && !u.uedibility) ? " und beginnt zu kribbeln" : ""); /* EN (sobj->blessed && !u.uedibility) ? " then starts to tingle" : ""); */
 	    if (sobj->blessed && !u.uedibility) {
 		boolean savebeginner = flags.beginner;	/* prevent non-delivery of */
 		flags.beginner = FALSE;			/* 	message            */
@@ -345,7 +345,7 @@ register struct obj	*sobj;
 	known = TRUE;
 	You("%s %s nearby.", sobj ? "smell" : "sense", what); /* EN You("%s %s nearby.", sobj ? "smell" : "sense", what); */ // TODO DE
 	if (sobj && sobj->blessed) {
-		if (!u.uedibility) pline("Your %s starts to tingle.", body_part(NOSE)); /* EN if (!u.uedibility) pline("Your %s starts to tingle.", body_part(NOSE)); */ // TODO DE
+		if (!u.uedibility) pline("SUBJECT PRONOMEN_POSSESSIV %s beginnt zu kribbeln.", body_part(NOSE)); /* EN if (!u.uedibility) pline("Your %s starts to tingle.", body_part(NOSE)); */
 		u.uedibility = 1;
 	}
     } else {
@@ -373,11 +373,11 @@ register struct obj	*sobj;
 	newsym(u.ux,u.uy);
 	if (sobj) {
 	    if (sobj->blessed) {
-	    	Your("%s %s to tingle and you smell %s.", body_part(NOSE), /* EN Your("%s %s to tingle and you smell %s.", body_part(NOSE), */ // TODO DE
-	    		u.uedibility ? "continues" : "starts", what); /* EN u.uedibility ? "continues" : "starts", what); */ // TODO DE
+	    	Your("%s %s und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SMELL OBJECT %s.", body_part(NOSE), /* EN Your("%s %s to tingle and you smell %s.", body_part(NOSE), */
+	    		u.uedibility ? "kribbelt weiter" : "fängt an zu kribbeln", what); /* EN u.uedibility ? "continues" : "starts", what); */
 		u.uedibility = 1;
 	    } else
-		Your("%s tingles and you smell %s.", body_part(NOSE), what); /* EN Your("%s tingles and you smell %s.", body_part(NOSE), what); */ // TODO DE
+		Your("%s kribbelt und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SMELL OBJECT %s.", body_part(NOSE), what); /* EN Your("%s tingles and you smell %s.", body_part(NOSE), what); */
 	}
 	else You("sense %s.", what); /* EN else You("sense %s.", what); */ // TODO DE
 	display_nhwindow(WIN_MAP, TRUE);
@@ -792,7 +792,7 @@ struct obj *obj;
 		You("are unaffected!"); /* EN You("are unaffected!"); */ // TODO DE
 	    }
 	    break;
-	case 4 : pline("%s your mind!", Tobjnam(obj, "zap")); /* EN case 4 : pline("%s your mind!", Tobjnam(obj, "zap")); */ // TODO DE
+	case 4 : pline("SUBJECT %s VERB_BRINGEN OBJECT PRONOMEN_PERSONAL um den Verstand!", Tobjnam(obj, 0)); /* EN case 4 : pline("%s your mind!", Tobjnam(obj, "zap")); */ /* verdunkelte deinen Verstand / bringt dich um den Verstand */
 	    make_hallucinated(HHallucination + rnd(100),FALSE,0L);
 	    break;
 	case 5 : pline("SUBJECT %s!", Tobjnam(obj, "VERB_EXPLODIEREN")); /* EN case 5 : pline("%s!", Tobjnam(obj, "explode")); */
