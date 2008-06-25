@@ -736,7 +736,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_WUENSCHEN","wünschen"),
 		Verb.verb("VERB_ZERBRECHEN","zerbrechen"),
 		Verb.verb("VERB_ZERFALLEN","zerfallen"),
-		Verb.verb("VERB_ZERREISSEN","zerreissen"),
+		Verb.verb("VERB_ZERREISSEN","zerreißen"),
 		Verb.verb("VERB_ZERSPRINGEN","zerspringen"),
 		Verb.verb("VERB_ZERTEILEN","zerteilen"),
 		Verb.verb("VERB_ZITTERN","zittern"),

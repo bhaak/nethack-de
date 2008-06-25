@@ -1174,7 +1174,7 @@ dorub()
 		use_stone(obj);
 		return 1;
 	    } else {
-		pline("Sorry, I don't know how to use that."); /* EN pline("Sorry, I don't know how to use that."); */ // TODO DE
+		pline("Tut mir Leid, ich weiß nicht, wie das zu benutzen ist."); /* EN pline("Sorry, I don't know how to use that."); */
 		return 0;
 	    }
 	}
@@ -1240,28 +1240,28 @@ int magic; /* 0=Physical, otherwise skill level */
 		return 0;
 	} else if (u.ustuck) {
 		if (u.ustuck->mtame && !Conflict && !u.ustuck->mconf) {
-		    You("pull free from %s.", mon_nam(u.ustuck)); /* EN You("pull free from %s.", mon_nam(u.ustuck)); */ // TODO DE
+		    You("VERB_REISSEN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT von %s los.", mon_nam(u.ustuck)); /* EN You("pull free from %s.", mon_nam(u.ustuck)); */
 		    u.ustuck = 0;
 		    return 1;
 		}
 		if (magic) {
-			You("writhe a little in the grasp of %s!", mon_nam(u.ustuck)); /* EN You("writhe a little in the grasp of %s!", mon_nam(u.ustuck)); */ // TODO DE
+			You("VERB_WINDEN OBJECT PRONOMEN_PERSONAL ein wenig NEUES_OBJECT OBJECT KASUS_DATIV in %s!", genitivattribut_zu_wort(mon_nam(u.ustuck),"NOUN_GRIFF")); /* EN You("writhe a little in the grasp of %s!", mon_nam(u.ustuck)); */
 			return 1;
 		}
-		You("cannot escape from %s!", mon_nam(u.ustuck)); /* EN You("cannot escape from %s!", mon_nam(u.ustuck)); */ // TODO DE
+		You("VERB_KOENNEN OBJECT KASUS_DATIV %s nicht entfliehen!", mon_nam(u.ustuck)); /* EN You("cannot escape from %s!", mon_nam(u.ustuck)); */
 		return 0;
 	} else if (Levitation || Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)) {
 		if (magic) {
 			You("flail around a little."); /* EN You("flail around a little."); */ // TODO DE
 			return 1;
 		}
-		You("don't have enough traction to jump."); /* EN You("don't have enough traction to jump."); */ // TODO DE
+		You("VERB_HABEN nicht genug Bodenhaftung zum Springen."); /* EN You("don't have enough traction to jump."); */
 		return 0;
 	} else if (!magic && near_capacity() > UNENCUMBERED) {
-		You("are carrying too much to jump!"); /* EN You("are carrying too much to jump!"); */ // TODO DE
+		You("VERB_TRAGEN zuviel zum Springen!"); /* EN You("are carrying too much to jump!"); */
 		return 0;
 	} else if (!magic && (u.uhunger <= 100 || ACURR(A_STR) < 6)) {
-		Dir("fehlt die Kraft zu springen!"); /* EN You("lack the strength to jump!"); */
+		Dir("fehlt die Kraft zum Springen!"); /* EN You("lack the strength to jump!"); */
 		return 0;
 	} else if (Wounded_legs) {
 		long wl = (Wounded_legs & BOTH_SIDES);
@@ -1296,7 +1296,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		/* The Knight jumping restriction still applies when riding a
 		 * horse.  After all, what shape is the knight piece in chess?
 		 */
-		pline("Illegal move!"); /* EN pline("Illegal move!"); */ // TODO DE
+		pline("Illegaler Zug!"); /* EN pline("Illegal move!"); */
 		return 0;
 	} else if (distu(cc.x, cc.y) > (magic ? 6+magic*3 : 9)) {
 		pline("Zu weit!"); /* EN pline("Too far!"); */
@@ -1324,11 +1324,11 @@ int magic; /* 0=Physical, otherwise skill level */
 		    You("VERB_SPRINGEN aus der Grube!"); /* EN You("leap from the pit!"); */
 		    break;
 		case TT_WEB:
-		    You("tear the web apart as you pull yourself free!"); /* EN You("tear the web apart as you pull yourself free!"); */ // TODO DE
+		    You("VERB_ZERREISSEN das Netz, NEUER_SATZ MODIFIER_NEBENSATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL VERB_LOSREISSEN!"); /* EN You("tear the web apart as you pull yourself free!"); */
 		    deltrap(t_at(u.ux,u.uy));
 		    break;
 		case TT_LAVA:
-		    You("pull yourself above the lava!"); /* EN You("pull yourself above the lava!"); */ // TODO DE
+		    You("VERB_ZIEHEN OBJECT PRONOMEN_PERSONAL über die Lava hoch!"); /* EN You("pull yourself above the lava!"); */
 		    u.utrap = 0;
 		    return 1;
 		case TT_INFLOOR:

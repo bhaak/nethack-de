@@ -271,8 +271,8 @@ nh_timeout()
 			break;
 		case FAST:
 			if (!Very_fast)
-				You_feel("yourself slowing down%s.", /* EN You_feel("yourself slowing down%s.", */ // TODO DE
-							Fast ? " a bit" : ""); /* EN Fast ? " a bit" : ""); */ // TODO DE
+				Du_fuehlst_dich("%s langsamer werden.", /* EN You_feel("yourself slowing down%s.", */
+							Fast ? " ein wenig" : ""); /* EN Fast ? " a bit" : ""); */
 			break;
 		case CONFUSION:
 			HConfusion = 1; /* So make_confused works properly */
