@@ -2166,7 +2166,7 @@ tty_end_menu(window, prompt)
 	len = strlen(buf);
 	cw->morestr = copy_of("");
     } else {
-	cw->morestr = copy_of("(Ende) "); /* EN cw->morestr = copy_of("(end) "); */
+	cw->morestr = copy_of("(Ende)"); /* EN cw->morestr = copy_of("(end) "); */
 	len = strlen(cw->morestr);
     }
 

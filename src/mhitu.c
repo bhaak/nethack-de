@@ -132,7 +132,7 @@ struct attack *mattk;
 	       it's better than "sting" when not a stinging attack... */
 	    return (!mwep || !mwep->opoisoned) ? "NOUN_ATTACK" : "NOUN_WEAPON"; /* EN return (!mwep || !mwep->opoisoned) ? "attack" : "weapon"; */
 	} else {
-	    return (mattk->aatyp == AT_TUCH) ? "contact" : /* EN return (mattk->aatyp == AT_TUCH) ? "contact" : */ // TODO DE
+	    return (mattk->aatyp == AT_TUCH) ? "NOUN_BERUEHRUNG" : /* EN return (mattk->aatyp == AT_TUCH) ? "contact" : */
 		   (mattk->aatyp == AT_GAZE) ? "NOUN_GAZE" : /* EN (mattk->aatyp == AT_GAZE) ? "gaze" : */
 		   (mattk->aatyp == AT_BITE) ? "NOUN_BITE" : "NOUN_STING"; /* EN (mattk->aatyp == AT_BITE) ? "bite" : "sting"; */
 	}
@@ -514,10 +514,10 @@ mattacku(mtmp)
 		pline("SUBJECT %s VERB_LOESEN OBJECT PRONOMEN_POSSESSIV_SUBJECT NOUN_GRIFF ein bisschen.", Monnam(mtmp)); /* EN pline("%s loosens its grip slightly.", Monnam(mtmp)); */
 	    else if(!range2) {
 		if (youseeit || sensemon(mtmp))
-		    pline("%s starts to attack you, but pulls back.", /* EN pline("%s starts to attack you, but pulls back.", */ // TODO DE
+		    pline("SUBJECT %s VERB_WOLLEN OBJECT PRONOMEN_PERSONAL gerade angreifen, VERB_ZIEHEN sich aber zurück.", /* EN pline("%s starts to attack you, but pulls back.", */
 			  Monnam(mtmp));
 		else
-				You_feel("%s move nearby.", something); /* EN You_feel("%s move nearby.", something); */ // TODO DE
+				Du_spuerst("eine Bewegung OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_NAEHE."); /* EN You_feel("%s move nearby.", something); */
 	    }
 	    return (0);
 	}
@@ -589,15 +589,15 @@ mattacku(mtmp)
 				    missmu(mtmp, (tmp == j), mattk);
 				}
 			    } else if (is_animal(mtmp->data)) {
-				pline("%s gulps some air!", Monnam(mtmp)); /* EN pline("%s gulps some air!", Monnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s VERB_VERSCHLUCKEN etwas Luft!", Monnam(mtmp)); /* EN pline("%s gulps some air!", Monnam(mtmp)); */
 			    } else {
 				if (youseeit)
-				    pline("%s lunges forward and recoils!", /* EN pline("%s lunges forward and recoils!", */ // TODO DE
+				    pline("SUBJECT %s VERB_STUERZEN sich vorwärts und wieder zurück!", /* EN pline("%s lunges forward and recoils!", */
 					  Monnam(mtmp));
 				else
-				    You_hear("a %s nearby.", /* EN You_hear("a %s nearby.", */ // TODO DE
+				    You_hear("ganz nahe %s.", /* EN You_hear("a %s nearby.", */
 					     is_whirly(mtmp->data) ?
-						"rushing noise" : "Platschen"); /* EN "rushing noise" : "splat"); */ // TODO DE
+						"ein Rauschen" : "ein Platschen"); /* EN "rushing noise" : "splat"); */
 			   }
 			}
 			break;
@@ -750,7 +750,7 @@ diseasemu(mdat)
 struct permonst *mdat;
 {
 	if (Sick_resistance) {
-		You_feel("a slight illness.");
+		You_feel("a slight illness."); /* EN You_feel("a slight illness."); */ // TODO DE
 		return FALSE;
 	} else {
 		make_sick(Sick ? Sick/3L + 1L : (long)rn1(ACURR(A_CON), 20),
@@ -776,7 +776,7 @@ struct attack *mattk;
 	   protection might fail (33% chance) when the armor is cursed */
 	if (obj && (obj->greased || obj->otyp == OILSKIN_CLOAK) &&
 		(!obj->cursed || rn2(3))) {
-	    pline("%s %s your %s %s!", /* EN pline("%s %s your %s %s!", */ // TODO DE
+	    pline("SUBJECT %s %s PRONOMEN_POSSESSIV %s %s!", /* EN pline("%s %s your %s %s!", */
 		  Monnam(mtmp),
 		  (mattk->adtyp == AD_WRAP) ?
 			"slips off of" : "grabs you, but cannot hold onto", /* EN "slips off of" : "grabs you, but cannot hold onto", */ // TODO DE
@@ -787,7 +787,7 @@ struct attack *mattk;
 			xname(obj) : cloak_simple_name(obj));
 
 	    if (obj->greased && !rn2(2)) {
-		pline_The("grease wears off."); /* EN pline_The("grease wears off."); */ // TODO DE
+		pline("Das Fett löst sich auf."); /* EN pline_The("grease wears off."); */
 		obj->greased = 0;
 		update_inventory();
 	    }
@@ -911,9 +911,9 @@ hitmu(mtmp, mattk)
 			}
 		    } else if(u.ustuck == mtmp) {
 			exercise(A_STR, FALSE);
-			You("are being %s.", /* EN You("are being %s.", */ // TODO DE
+			You("VERB_WERDEN %s.", /* EN You("are being %s.", */
 			      (mtmp->data == &mons[PM_ROPE_GOLEM])
-			      ? "choked" : "crushed"); /* EN ? "choked" : "crushed"); */ // TODO DE
+			      ? "gewürgt" : "gequetscht"); /* EN ? "choked" : "crushed"); */
 		    }
 		} else {			  /* hand to hand weapon */
 		    if(mattk->aatyp == AT_WEAP && otmp) {
@@ -1134,17 +1134,17 @@ dopois:
 			  sidestr, body_part(LEG));
 		    dmg = 0;
 		  } else if (mtmp->mcan) {
-		    pline("%s nuzzles against your %s %s!", Monnam(mtmp), /* EN pline("%s nuzzles against your %s %s!", Monnam(mtmp), */ // TODO DE
+		    pline("SUBJECT %s VERB_STUPSEN OBJECT an PRONOMEN_POSSESSIV %s %s!", Monnam(mtmp), /* EN pline("%s nuzzles against your %s %s!", Monnam(mtmp), */
 			  sidestr, body_part(LEG));
 		    dmg = 0;
 		  } else {
 		    if (uarmf) {
 			if (rn2(2) && (uarmf->otyp == LOW_BOOTS ||
 					     uarmf->otyp == IRON_SHOES))
-			    pline("%s pricks the exposed part of your %s %s!", /* EN pline("%s pricks the exposed part of your %s %s!", */ // TODO DE
+			    pline("SUBJECT %s VERB_PIEKSEN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_UNGESCHUETZT NOUN_TEIL OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV %s %s!", /* EN pline("%s pricks the exposed part of your %s %s!", */
 				Monnam(mtmp), sidestr, body_part(LEG));
 			else if (!rn2(5))
-			    pline("%s pricks through your %s boot!", /* EN pline("%s pricks through your %s boot!", */ // TODO DE
+			    pline("SUBJECT %s VERB_DURCHSTECHEN OBJECT PRONOMEN_POSSESSIV %s NOUN_BOOTS!", /* EN pline("%s pricks through your %s boot!", */
 				Monnam(mtmp), sidestr);
 			else {
 			    pline("%s scratches your %s boot!", Monnam(mtmp), /* EN pline("%s scratches your %s boot!", Monnam(mtmp), */ // TODO DE
@@ -1152,7 +1152,7 @@ dopois:
 			    dmg = 0;
 			    break;
 			}
-		    } else pline("%s pricks your %s %s!", Monnam(mtmp), /* EN } else pline("%s pricks your %s %s!", Monnam(mtmp), */ // TODO DE
+		    } else pline("SUBJECT %s VERB_PIEKSEN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT in PRONOMEN_POSSESSIV %s %s!", Monnam(mtmp), /* EN } else pline("%s pricks your %s %s!", Monnam(mtmp), */
 			  sidestr, body_part(LEG));
 		    set_wounded_legs(side, rnd(60-ACURR(A_DEX)));
 		    exercise(A_STR, FALSE);
@@ -1165,10 +1165,10 @@ dopois:
 		if(!rn2(3)) {
 		    if (mtmp->mcan) {
 			if (flags.soundok)
-			    You_hear("a cough from %s!", mon_nam(mtmp)); /* EN You_hear("a cough from %s!", mon_nam(mtmp)); */ // TODO DE
+			    You_hear("ein Husten OBJECT KASUS_DATIV von %s!", mon_nam(mtmp)); /* EN You_hear("a cough from %s!", mon_nam(mtmp)); */
 		    } else {
 			if (flags.soundok)
-			    You_hear("%s hissing!", s_suffix(mon_nam(mtmp))); /* EN You_hear("%s hissing!", s_suffix(mon_nam(mtmp))); */ // TODO DE
+			    You_hear("%s!", genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_ZISCHEN")); /* EN You_hear("%s hissing!", s_suffix(mon_nam(mtmp))); */
 			if(!rn2(10) ||
 			    (flags.moonphase == NEW_MOON && !have_lizard())) {
  do_stone:
@@ -1197,7 +1197,7 @@ dopois:
 			if (u_slip_free(mtmp, mattk)) {
 			    dmg = 0;
 			} else {
-			    pline("%s swings itself around you!", /* EN pline("%s swings itself around you!", */ // TODO DE
+			    pline("SUBJECT %s VERB_UMSCHLINGEN OBJECT PRONOMEN_PERSONAL!", /* EN pline("%s swings itself around you!", */
 				  Monnam(mtmp));
 			    u.ustuck = mtmp;
 			}
@@ -1218,7 +1218,7 @@ dopois:
 			    killer = buf;
 			    done(DROWNING);
 			} else if(mattk->aatyp == AT_HUGS)
-			    You("are being crushed."); /* EN You("are being crushed."); */ // TODO DE
+			    You("VERB_WERDEN gequetscht."); /* EN You("are being crushed."); */
 		    } else {
 			dmg = 0;
 			if(flags.verbose)
@@ -1256,14 +1256,14 @@ dopois:
 						) {
 			pline("SUBJECT %s %s.", Monnam(mtmp), mtmp->minvent ?  /* EN pline("%s %s.", Monnam(mtmp), mtmp->minvent ? */
 		    "brags about the goods some dungeon explorer provided" : /* EN "brags about the goods some dungeon explorer provided" : */ // TODO DE
-		    "makes some remarks about how difficult theft is lately"); /* EN "makes some remarks about how difficult theft is lately"); */ // TODO DE
+		    "erwähnt, wie schwierig Diebstahl in letzter Zeit geworden ist."); /* EN "makes some remarks about how difficult theft is lately"); */
 			if (!tele_restrict(mtmp)) rloc(mtmp);
 			return 3;
 		} else if (mtmp->mcan) {
 		    if (!Blind) {
-			pline("%s tries to %s you, but you seem %s.", /* EN pline("%s tries to %s you, but you seem %s.", */ // TODO DE
-			    Adjmonnam(mtmp, "plain"), /* EN Adjmonnam(mtmp, "plain"), */ // TODO DE
-			    flags.female ? "charm" : "seduce", /* EN flags.female ? "charm" : "seduce", */ // TODO DE
+			pline("SUBJECT %s VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL zu %s, NEUER_SATZ aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SCHEINEN %s.", /* EN pline("%s tries to %s you, but you seem %s.", */
+			    Adjmonnam(mtmp, "ADJEKTIV_UNATTRAKTIV"), /* EN Adjmonnam(mtmp, "plain"), */
+			    flags.female ? "MODIFIER_VERB_INFINITIV VERB_BEZIRZEN" : "VERB_SEDUCE", /* EN flags.female ? "charm" : "seduce", */
 			    flags.female ? "unaffected" : "kein Interesse zu haben"); /* EN flags.female ? "unaffected" : "uninterested"); */ // TODO DE
 		    }
 		    if(rn2(3)) {
@@ -1283,7 +1283,7 @@ dopois:
 			    rloc(mtmp);
 			if (is_animal(mtmp->data) && *buf) {
 			    if (canseemon(mtmp))
-				pline("SUBJECT %s VERB_VERSUCHEN OBJECT KASUS_DATIV mit %s away %s.", /* EN pline("%s tries to %s away with %s.", */ // TODO DE
+				pline("SUBJECT %s VERB_VERSUCHEN OBJECT KASUS_DATIV mit %s away %s.", /* EN pline("%s tries to %s away with %s.", */ // TODO DE fortzu-VERB_RENNEN? fortrennen, wegrennen, weglaufen, davonlaufen, weglaufen, davonrennen
 				      Monnam(mtmp),
 				      buf, locomotion(mtmp->data, "run") /* EN locomotion(mtmp->data, "run"), */ // TODO DE
 				      ); /* EN buf); */
@@ -1313,7 +1313,7 @@ dopois:
 		hitmsg(mtmp, mattk);
 		if (uncancelled) {
 		    if(flags.verbose)
-			Your("position suddenly seems very uncertain!"); /* EN Your("position suddenly seems very uncertain!"); */ // TODO DE
+			Your("NOUN_POSITION VERB_SCHEINEN plötzlich sehr unbestimmt!"); /* EN Your("position suddenly seems very uncertain!"); */
 		    tele();
 		}
 		break;
@@ -1357,7 +1357,7 @@ dopois:
 #endif
 		   && !uarm && !uarmh && !uarms && !uarmg && !uarmc && !uarmf) {
 		    boolean goaway = FALSE;
-		    pline("%s hits!  (I hope you don't mind.)", Monnam(mtmp)); /* EN pline("%s hits!  (I hope you don't mind.)", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_HIT!  (Macht aber nichts, oder?)", Monnam(mtmp)); /* EN pline("%s hits!  (I hope you don't mind.)", Monnam(mtmp)); */
 		    if (Upolyd) {
 			u.mh += rnd(7);
 			if (!rn2(7)) {
@@ -1450,8 +1450,8 @@ dopois:
 		if(!mtmp->mcan && !rn2(4) && !mtmp->mspec_used) {
 		    mtmp->mspec_used = mtmp->mspec_used + (dmg + rn2(6));
 		    if(Confusion)
-			 You("are getting even more confused."); /* EN You("are getting even more confused."); */ // TODO DE
-		    else You("are getting confused."); /* EN else You("are getting confused."); */ // TODO DE
+			 You("VERB_WERDEN noch verwirrter."); /* EN You("are getting even more confused."); */
+		    else You("VERB_WERDEN verwirrt."); /* EN else You("are getting confused."); */
 		    make_confused(HConfusion + dmg, FALSE);
 		}
 		dmg = 0;
@@ -1473,7 +1473,7 @@ dopois:
 			break;
 		    } /* else FALLTHRU */
 		default: /* case 16: ... case 5: */
-		    You_feel("your life force draining away..."); /* EN You_feel("your life force draining away..."); */ // TODO DE
+		    You("VERB_SPUEREN, NEUER_SATZ wie SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_LEBENSKRAFT VERB_SCHWINDEN ..."); /* EN You_feel("your life force draining away..."); */
 		    permdmg = 1;	/* actual damage done below */
 		    break;
 		case 4: case 3: case 2: case 1: case 0:
@@ -1832,7 +1832,7 @@ common:
 			make_blinded((long)tmp, FALSE);
 			if (!Blind) Your(vision_clears);
 		    } else if (flags.verbose)
-			You("get the impression it was not terribly bright."); /* EN You("get the impression it was not terribly bright."); */ // TODO DE
+			You("VERB_HABEN den Eindruck, dass es nicht besonders hell war."); /* EN You("get the impression it was not terribly bright."); */
 		}
 		break;
 
@@ -1926,7 +1926,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 			pline("SUBJECT %s VERB_VERWIRREN OBJECT PRONOMEN_PERSONAL!", /* EN pline("%s gaze confuses you!", */
 			                  genitivattribut_zu_wort(Monnam(mtmp), "NOUN_GAZE")); /* EN s_suffix(Monnam(mtmp))); */
 		    else
-			You("are getting more and more confused."); /* EN You("are getting more and more confused."); */ // TODO DE
+			You("VERB_WERDEN immer verwirrter."); /* EN You("are getting more and more confused."); */
 		    make_confused(HConfusion + conf, FALSE);
 		    stop_occupation();
 		}
@@ -2147,7 +2147,7 @@ register struct monst *mon;
 	}
 
 	if (Blind) pline("Jemand streichelt KASUS_AKKUSATIV PRONOMEN_PERSONAL ..."); /* EN if (Blind) pline("It caresses you..."); */
-	else You_feel("very attracted to %s.", mon_nam(mon)); /* EN else You_feel("very attracted to %s.", mon_nam(mon)); */ // TODO DE
+	else Du_fuehlst_dich("sehr stark OBJECT KASUS_DATIV zu %s hingezogen.", mon_nam(mon)); /* EN else You_feel("very attracted to %s.", mon_nam(mon)); */
 
 	for(ring = invent; ring; ring = nring) {
 	    nring = ring->nobj;
@@ -2254,7 +2254,7 @@ register struct monst *mon;
 		pline("SUBJECT %s VERB_SCHEINEN es mehr genossen zu haben als OBJECT KASUS_NOMINATIV PRONOMEN_PERSONAL ...", /* EN pline("%s seems to have enjoyed it more than you...", */
 			noit_Monnam(mon));
 		switch (rn2(5)) {
-			case 0: You_feel("drained of energy."); /* EN case 0: You_feel("drained of energy."); */ // TODO DE
+			case 0: Du_fuehlst_dich("energielos."); /* EN case 0: You_feel("drained of energy."); */
 				u.uen = 0;
 				u.uenmax -= rnd(Half_physical_damage ? 5 : 10);
 			        exercise(A_CON, FALSE);
@@ -2292,8 +2292,7 @@ register struct monst *mon;
 		mon->mspec_used = rnd(100); /* monster is worn out */
 		You("VERB_SCHEINEN es mehr genossen zu haben als OBJECT KASUS_NOMINATIV %s...", /* EN You("seem to have enjoyed it more than %s...", */
 		    noit_mon_nam(mon));
-		//switch (rn2(5)) {
-		switch (2) {
+		switch (rn2(5)) {
 		case 0: You_feel("raised to your full potential."); /* EN case 0: You_feel("raised to your full potential."); */ // TODO DE
 			exercise(A_CON, TRUE);
 			u.uen = (u.uenmax += rnd(5));
@@ -2544,7 +2543,7 @@ register struct attack *mattk;
 	    case AD_FIRE: /* Red mold */
 		if (resists_fire(mtmp)) {
 		    shieldeff(mtmp->mx, mtmp->my);
-		    pline("SUBJECT %s VERB_SCHWINDEN leicht.", Monnam(mtmp)); /* EN pline("%s is mildly warm.", Monnam(mtmp)); */
+		    pline("SUBJECT %s VERB_SCHWITZEN leicht.", Monnam(mtmp)); /* EN pline("%s is mildly warm.", Monnam(mtmp)); */
 		    golemeffects(mtmp, AD_FIRE, tmp);
 		    tmp = 0;
 		    break;

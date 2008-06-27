@@ -1414,7 +1414,7 @@ struct monst *mtmp, *victim;
 		if (sensemon(mtmp))
 		    pline("As %s grows up into %s, %s %s!", mon_nam(mtmp), /* EN pline("As %s grows up into %s, %s %s!", mon_nam(mtmp), */ // TODO DE
 			an(ptr->mname), mhe(mtmp),
-			nonliving(ptr) ? "expires" : "VERB_STERBEN"); /* EN nonliving(ptr) ? "expires" : "dies"); */ // TODO DE
+			nonliving(ptr) ? "VERB_VERGEHEN" : "VERB_STERBEN"); /* EN nonliving(ptr) ? "expires" : "dies"); */
 		set_mon_data(mtmp, ptr, -1);	/* keep mvitals[] accurate */
 		mondied(mtmp);
 		return (struct permonst *)0;

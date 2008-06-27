@@ -1582,7 +1582,7 @@ register struct attack *mattk;
 			    You("VERB_ERTRAENKEN OBJECT %s...", mon_nam(mdef)); /* EN You("drown %s...", mon_nam(mdef)); */
 			    tmp = mdef->mhp;
 			} else if(mattk->aatyp == AT_HUGS)
-			    pline("%s is being crushed.", Monnam(mdef)); /* EN pline("%s is being crushed.", Monnam(mdef)); */ // TODO DE
+			    pline("SUBJECT %s VERB_WERDEN gequetscht.", Monnam(mdef)); /* EN pline("%s is being crushed.", Monnam(mdef)); */
 		    } else {
 			tmp = 0;
 			if (flags.verbose)
@@ -2038,9 +2038,9 @@ use_weapon:
 				mon_nam(mon));
 			else if (!sticks(mon->data) && !u.uswallow) {
 			    if (mon==u.ustuck) {
-				pline("%s is being %s.", Monnam(mon), /* EN pline("%s is being %s.", Monnam(mon), */ // TODO DE
-				    u.umonnum==PM_ROPE_GOLEM ? "choked": /* EN u.umonnum==PM_ROPE_GOLEM ? "choked": */ // TODO DE
-				    "crushed"); /* EN "crushed"); */ // TODO DE
+				pline("SUBJECT %s VERB_WERDEN %s.", Monnam(mon), /* EN pline("%s is being %s.", Monnam(mon), */
+				    u.umonnum==PM_ROPE_GOLEM ? "gewürgt": /* EN u.umonnum==PM_ROPE_GOLEM ? "choked": */
+				    "gequetscht"); /* EN "crushed"); */
 				sum[i] = damageum(mon, mattk);
 			    } else if(i >= 2 && sum[i-1] && sum[i-2]) {
 				You("VERB_PACKEN OBJECT %s!", mon_nam(mon)); /* EN You("grab %s!", mon_nam(mon)); */
