@@ -462,7 +462,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "sollen": v = VerbModal.new("sollen", "sollte", "gesollt")
   when "dürfen": v = VerbModal.new("dürfen", "durfte", "gedurft")
     #  e a a
-  when /(.*)gehen$/: v = VerbUnregelmaessig.new($1+"gehen", $1+"gang", ge($1)+"gangen")
+  when /(.*)gehen$/: v = VerbUnregelmaessig.new($1+"gehen", $1+"ging", ge($1)+"gangen")
     #  e a e
   when /(.*)fressen$/: v = Verb_EI_Wechsel.new($1+"fressen", $1+"fraß", ge($1)+"fressen", $1+"friss")
   when /(.*)geben$/: v = Verb_Konjunktiv_II.new($1+"geben", $1+"gab", ge($1)+"geben", $1+"gib", $1+"gäb")
