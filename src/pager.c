@@ -143,7 +143,7 @@ lookat(x, y, buf, monbuf)
 	    Sprintf(buf, "%s%s%s",
 		    (mtmp->mx != x || mtmp->my != y) ?
 			((mtmp->isshk && accurate)
-				? "tail of " : "tail of a ") : "", /* EN ? "tail of " : "tail of a ") : "", */ // TODO DE
+				? "Schwanz von " : "Schwanz KASUS_GENITIV ARTIKEL_UNBESTIMMTER ") : "", /* EN ? "tail of " : "tail of a ") : "", */
 		    (mtmp->mtame && accurate) ? "ADJEKTIV_TAME " : /* EN (mtmp->mtame && accurate) ? "tame " : */
 		    (mtmp->mpeaceful && accurate) ? "ADJEKTIV_PEACEFUL " : "", /* EN (mtmp->mpeaceful && accurate) ? "peaceful " : "", */
 		    name);
@@ -254,15 +254,15 @@ lookat(x, y, buf, monbuf)
 	    Strcpy(buf, distant_name(otmp, xname));
 
 	if (levl[x][y].typ == STONE || levl[x][y].typ == SCORR)
-	    Strcat(buf, " embedded in stone"); /* EN Strcat(buf, " embedded in stone"); */ // TODO DE
+	    Strcat(buf, " eingeschlossen in Stein"); /* EN Strcat(buf, " embedded in stone"); */
 	else if (IS_WALL(levl[x][y].typ) || levl[x][y].typ == SDOOR)
-	    Strcat(buf, " embedded in a wall"); /* EN Strcat(buf, " embedded in a wall"); */ // TODO DE
+	    Strcat(buf, " eingeschlossen in einer Mauer"); /* EN Strcat(buf, " embedded in a wall"); */
 	else if (closed_door(x,y))
-	    Strcat(buf, " embedded in a door"); /* EN Strcat(buf, " embedded in a door"); */ // TODO DE
+	    Strcat(buf, " eingeschlossen in einer Türe"); /* EN Strcat(buf, " embedded in a door"); */
 	else if (is_pool(x,y))
-	    Strcat(buf, " in water"); /* EN Strcat(buf, " in water"); */ // TODO DE
+	    Strcat(buf, " im Wasser"); /* EN Strcat(buf, " in water"); */
 	else if (is_lava(x,y))
-	    Strcat(buf, " in KASUS_AKKUSATIV ADJEKTIV_FLUESSIG NOUN_LAVA");	/* [can this ever happen?] */ /* EN Strcat(buf, " in molten lava");	*/ // TODO DE
+	    Strcat(buf, " in KASUS_DATIV ADJEKTIV_FLUESSIG NOUN_LAVA");	/* [can this ever happen?] */ /* EN Strcat(buf, " in molten lava");	*/
     } else if (glyph_is_trap(glyph)) {
 	int tnum = what_trap(glyph_to_trap(glyph));
 	Strcpy(buf, defsyms[trap_to_defsym(tnum)].explanation);

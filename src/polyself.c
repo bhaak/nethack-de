@@ -75,7 +75,7 @@ const char *fmt, *arg;
 	    killer = delayed_killer;
 	    if (!killer || !strstri(killer, "genocid")) { /* EN if (!killer || !strstri(killer, "genocid")) { */ // TODO DE
 		killer_format = KILLED_BY;
-		killer = "self-genocide"; /* EN killer = "self-genocide"; */ // TODO DE
+		killer = "NOUN_SELF_GENOCIDE"; /* EN killer = "self-genocide"; */
 	    }
 	    done(GENOCIDED);
 	}
@@ -202,7 +202,7 @@ newman()
 dead: /* we come directly here if their experience level went to 0 or less */
 		    Your("ADJEKTIV_NEU NOUN_GESTALT VERB_SCHEINEN nicht ausreichend lebensfähig zu sein."); /* EN Your("new form doesn't seem healthy enough to survive."); */
 		    killer_format = KILLED_BY_AN;
-		    killer="unsuccessful polymorph"; /* EN killer="unsuccessful polymorph"; */ // TODO DE
+		    killer="ADJEKTIV_GESCHEITERT NOUN_TRANSFORMATION"; /* EN killer="unsuccessful polymorph"; */
 		    done(DIED);
 		    newuhs(FALSE);
 		    return; /* lifesaved */
@@ -256,7 +256,7 @@ boolean forcecontrol;
 			 * illegal monster forces newman(), which is what we
 			 * want if they specified a human.... */
 			else if (!polyok(&mons[mntmp]) && !your_race(&mons[mntmp]))
-				You("cannot polymorph into that."); /* EN You("cannot polymorph into that."); */ // TODO DE
+				You("VERB_KOENNEN OBJECT PRONOMEN_PERSONAL nicht in sowas transformieren."); /* EN You("cannot polymorph into that."); */
 			else break;
 		} while(++tries < 5);
 		if (tries==5) pline(thats_enough_tries);
@@ -271,7 +271,7 @@ boolean forcecontrol;
 			mntmp = armor_to_dragon(uarm->otyp);
 			if (!(mvitals[mntmp].mvflags & G_GENOD)) {
 				/* allow G_EXTINCT */
-				You("merge with your scaly armor."); /* EN You("merge with your scaly armor."); */ // TODO DE
+				You("VERB_VERSCHMELZEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_SCHUPPENRUESTUNG."); /* EN You("merge with your scaly armor."); */
 				uskin = uarm;
 				uarm = (struct obj *)0;
 				/* save/restore hack */
@@ -336,7 +336,7 @@ int	mntmp;
 	int mlvl;
 
 	if (mvitals[mntmp].mvflags & G_GENOD) {	/* allow G_EXTINCT */
-		Du_fuehlst_dich("ziemlich %s-ish.",mons[mntmp].mname); /* EN You_feel("rather %s-ish.",mons[mntmp].mname); */ // TODO DE
+		Du_fuehlst_dich("ziemlich %s-ig.",mons[mntmp].mname); /* EN You_feel("rather %s-ish.",mons[mntmp].mname); */ // TODO DE
 		exercise(A_WIS, TRUE);
 		return(0);
 	}
@@ -516,7 +516,7 @@ int	mntmp;
 	    if (is_unicorn(youmonst.data))
 		pline(use_thec,monsterc,"OBJECT PRONOMEN_POSSESSIV NOUN_HORN zu benutzen"); /* EN pline(use_thec,monsterc,"use your horn"); */
 	    if (is_mind_flayer(youmonst.data))
-		pline(use_thec,monsterc,"emit a mental blast"); /* EN pline(use_thec,monsterc,"emit a mental blast"); */ // TODO DE
+		pline(use_thec,monsterc,"eine Gedankenwelle auszusenden"); /* EN pline(use_thec,monsterc,"emit a mental blast"); */
 	    if (youmonst.data->msound == MS_SHRIEK) /* worthless, actually */
 		pline(use_thec,monsterc,"zu MODIFIER_VERB_INFINITIV VERB_SHRIEK"); /* EN pline(use_thec,monsterc,"shriek"); */
 	    if (lays_eggs(youmonst.data) && flags.female)
@@ -535,14 +535,14 @@ int	mntmp;
 	    spoteffects(TRUE);
 	if (Passes_walls && u.utrap && u.utraptype == TT_INFLOOR) {
 	    u.utrap = 0;
-	    pline_The("rock seems to no longer trap you."); /* EN pline_The("rock seems to no longer trap you."); */ // TODO DE
+	    pline("Der Stein hält KASUS_AKKUSATIV PRONOMEN_PERSONAL nicht länger gefangen."); /* EN pline_The("rock seems to no longer trap you."); */
 	} else if (likes_lava(youmonst.data) && u.utrap && u.utraptype == TT_LAVA) {
 	    u.utrap = 0;
-			pline_The("lava now feels soothing."); /* EN pline_The("lava now feels soothing."); */ // TODO DE
+			pline("Die Lava fühlt sich jetzt angenehm an."); /* EN pline_The("lava now feels soothing."); */
 	}
 	if (amorphous(youmonst.data) || is_whirly(youmonst.data) || unsolid(youmonst.data)) {
 	    if (Punished) {
-		You("slip out of the iron chain."); /* EN You("slip out of the iron chain."); */ // TODO DE
+		You("VERB_SCHLUEPFEN aus der Eisenkette."); /* EN You("slip out of the iron chain."); */
 		unpunish();
 	    }
 	}
@@ -607,15 +607,15 @@ break_armor()
 	if ((otmp = uarmc) != 0) {
 		if (is_whirly(youmonst.data))
 			Your("%s falls, unsupported!", cloak_simple_name(otmp)); /* EN Your("%s falls, unsupported!", cloak_simple_name(otmp)); */ // TODO DE
-		else You("shrink out of your %s!", cloak_simple_name(otmp)); /* EN else You("shrink out of your %s!", cloak_simple_name(otmp)); */ // TODO DE
+		else You("VERB_SCHRUMPFEN OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV %s!", cloak_simple_name(otmp)); /* EN else You("shrink out of your %s!", cloak_simple_name(otmp)); */
 		(void) Cloak_off();
 		dropx(otmp);
 	}
 #ifdef TOURIST
 	if ((otmp = uarmu) != 0) {
 		if (is_whirly(youmonst.data))
-			You("seep right through your shirt!"); /* EN You("seep right through your shirt!"); */ // TODO DE
-		else You("become much too small for your shirt!"); /* EN else You("become much too small for your shirt!"); */ // TODO DE
+			You("VERB_STROEMEN OBJECT durch PRONOMEN_POSSESSIV NOUN_SHIRT!"); /* EN You("seep right through your shirt!"); */
+		else You("VERB_WERDEN zu klein OBJECT für PRONOMEN_POSSESSIV NOUN_SHIRT!"); /* EN else You("become much too small for your shirt!"); */
 		setworn((struct obj *)0, otmp->owornmask & W_ARMU);
 		dropx(otmp);
 	}
@@ -632,7 +632,7 @@ break_armor()
 		     shk_your(yourbuf, otmp), xname(otmp));
 	    } else {
 		if (donning(otmp)) cancel_don();
-		Your("NOUN_HELMET VERB_FALLEN to the %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE zu_Boden
+		Your("NOUN_HELMET VERB_FALLEN zu %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE zu_Boden
 		(void) Helmet_off();
 		dropx(otmp);
 	    }
@@ -664,7 +664,7 @@ break_armor()
 	if ((otmp = uarmf) != 0) {
 	    if (donning(otmp)) cancel_don();
 	    if (is_whirly(youmonst.data))
-		Your("boots fall away!"); /* EN Your("boots fall away!"); */ // TODO DE
+		Your("NOUN_BOOTSs fall away!"); /* EN Your("boots fall away!"); */ // TODO DE
 	    else Your("NOUN_BOOTSs %s off your feet!", /* EN else Your("boots %s off your feet!", */ // TODO DE
 			verysmall(youmonst.data) ? "VERB_RUTSCHEN" : "are pushed"); /* EN verysmall(youmonst.data) ? "slide" : "are pushed"); */ // TODO DE
 	    (void) Boots_off();
@@ -794,7 +794,7 @@ dospinweb()
 
 	if (Levitation || Is_airlevel(&u.uz)
 	    || Underwater || Is_waterlevel(&u.uz)) {
-		You("must be on the ground to spin a web."); /* EN You("must be on the ground to spin a web."); */ // TODO DE
+		You("VERB_MUESSEN am Boden sein um ein Netz zu spinnen."); /* EN You("must be on the ground to spin a web."); */
 		return(0);
 	}
 	if (u.uswallow) {
@@ -846,7 +846,7 @@ dospinweb()
 			bury_objs(u.ux, u.uy);
 			newsym(u.ux, u.uy);
 			return(1);
-		case SQKY_BOARD: pline_The("NOUN_SQUEAKY_BOARD is muffled."); /* EN case SQKY_BOARD: pline_The("squeaky board is muffled."); */ // TODO DE
+		case SQKY_BOARD: pline("Das Quietschen der Diele verstummt."); /* EN case SQKY_BOARD: pline_The("squeaky board is muffled."); */
 			deltrap(ttmp);
 			newsym(u.ux, u.uy);
 			return(1);
@@ -916,7 +916,7 @@ dosummon()
 	You("call upon your brethren for help!"); /* EN You("call upon your brethren for help!"); */ // TODO DE
 	exercise(A_WIS, TRUE);
 	if (!were_summon(youmonst.data,TRUE))
-		pline("But none arrive."); /* EN pline("But none arrive."); */ // TODO DE
+		pline("Aber niemand kommt."); /* EN pline("But none arrive."); */
 	return(1);
 }
 
