@@ -907,16 +907,16 @@ int
 dosummon()
 {
 	if (u.uen < 10) {
-	    You("lack the energy to send forth a call for help!"); /* EN You("lack the energy to send forth a call for help!"); */ // TODO DE
+	    Dir("fehlt die Energie um einen Hilferuf auszusenden!"); /* EN You("lack the energy to send forth a call for help!"); */
 	    return(0);
 	}
 	u.uen -= 10;
 	flags.botl = 1;
 
-	You("call upon your brethren for help!"); /* EN You("call upon your brethren for help!"); */ // TODO DE
+	You("VERB_RUFEN OBJECT PRONOMEN_POSSESSIV NOUN_BRUEDERs zu Hilfe!"); /* EN You("call upon your brethren for help!"); */
 	exercise(A_WIS, TRUE);
 	if (!were_summon(youmonst.data,TRUE))
-		pline("Aber niemand kommt."); /* EN pline("But none arrive."); */
+		pline("Aber es kommt niemand."); /* EN pline("But none arrive."); */
 	return(1);
 }
 
@@ -995,7 +995,7 @@ dogaze()
 			int dmg = d(2,6);
 			You("attack %s with a fiery gaze!", mon_nam(mtmp)); /* EN You("attack %s with a fiery gaze!", mon_nam(mtmp)); */ // TODO DE
 			if (resists_fire(mtmp)) {
-			    pline_The("fire doesn't burn %s!", mon_nam(mtmp)); /* EN pline_The("fire doesn't burn %s!", mon_nam(mtmp)); */ // TODO DE
+			    pline("Das Feuer verbrennt KASUS_AKKUSATIV %s nicht!", mon_nam(mtmp)); /* EN pline_The("fire doesn't burn %s!", mon_nam(mtmp)); */
 			    dmg = 0;
 			}
 			if((int) u.ulevel > rn2(20))
@@ -1072,14 +1072,14 @@ domindblast()
 	struct monst *mtmp, *nmon;
 
 	if (u.uen < 10) {
-	    You("concentrate but lack the energy to maintain doing so."); /* EN You("concentrate but lack the energy to maintain doing so."); */ // TODO DE
+	    You("VERB_KONZENTRIEREN OBJECT PRONOMEN_PERSONAL, NEUER_SATZ aber KASUS_DATIV PRONOMEN_PERSONAL fehlt die Energie, die Konzentration aufrechtzuerhalten."); /* EN You("concentrate but lack the energy to maintain doing so."); */
 	    return(0);
 	}
 	u.uen -= 10;
 	flags.botl = 1;
 
 	You("VERB_KONZENTRIEREN OBJECT PRONOMEN_PERSONAL."); /* EN You("concentrate."); */
-	pline("A wave of psychic energy pours out."); /* EN pline("A wave of psychic energy pours out."); */ // TODO DE
+	You("VERB_VERSTROEMEN eine Woge psychischer Energie."); /* EN pline("A wave of psychic energy pours out."); */
 	for(mtmp=fmon; mtmp; mtmp = nmon) {
 		int u_sen;
 
@@ -1092,10 +1092,10 @@ domindblast()
 			continue;
 		u_sen = telepathic(mtmp->data) && !mtmp->mcansee;
 		if (u_sen || (telepathic(mtmp->data) && rn2(2)) || !rn2(10)) {
-			You("lock in on %s %s.", s_suffix(mon_nam(mtmp)), /* EN You("lock in on %s %s.", s_suffix(mon_nam(mtmp)), */ // TODO DE
-				u_sen ? "telepathy" : /* EN u_sen ? "telepathy" : */ // TODO DE
-				telepathic(mtmp->data) ? "latent telepathy" : /* EN telepathic(mtmp->data) ? "latent telepathy" : */ // TODO DE
-				"mind"); /* EN "mind"); */ // TODO DE
+			You("VERB_ANPEILEN OBJECT %s SATZKLAMMER.", genitivattribut_zu_wort(mon_nam(mtmp), /* EN You("lock in on %s %s.", s_suffix(mon_nam(mtmp)), */
+				u_sen ? "NOUN_TELEPATHIE" : /* EN u_sen ? "telepathy" : */
+				telepathic(mtmp->data) ? "ADJEKTIV_LATENT NOUN_TELEPATHIE" : /* EN telepathic(mtmp->data) ? "latent telepathy" : */
+				"NOUN_VERSTAND")); /* EN "mind"); */
 			mtmp->mhp -= rnd(15);
 			if (mtmp->mhp <= 0)
 				killed(mtmp);
@@ -1107,7 +1107,7 @@ domindblast()
 STATIC_OVL void
 uunstick()
 {
-	pline("%s is no longer in your clutches.", Monnam(u.ustuck)); /* EN pline("%s is no longer in your clutches.", Monnam(u.ustuck)); */ // TODO DE
+	You("VERB_HALTEN OBJECT %s nicht mehr NEUES_OBJECT OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_KLAUEs.", Monnam(u.ustuck)); /* EN pline("%s is no longer in your clutches.", Monnam(u.ustuck)); */
 	u.ustuck = 0;
 }
 
@@ -1116,7 +1116,7 @@ skinback(silently)
 boolean silently;
 {
 	if (uskin) {
-		if (!silently) Your("skin returns to its original form."); /* EN if (!silently) Your("skin returns to its original form."); */ // TODO DE
+		if (!silently) Your("NOUN_HAUT wandelt sich in ihre ursprüngliche Form um."); /* EN if (!silently) Your("skin returns to its original form."); */
 		uarm = uskin;
 		uskin = (struct obj *)0;
 		/* undo save/restore hack */
@@ -1133,11 +1133,11 @@ struct monst *mon;
 int part;
 {
 	static NEARDATA const char
-		// TODO DE
+		/* HANDED wird nicht gebraucht */
 	*humanoid_parts[] = { "NOUN_ARM", "NOUN_EYE", "NOUN_FACE", "NOUN_FINGER", /* EN *humanoid_parts[] = { "arm", "eye", "face", "finger", */
 		"NOUN_FINGERTIP", "NOUN_FOOT", "NOUN_HAND", "handed", "NOUN_HEAD", "NOUN_LEG", /* EN "fingertip", "foot", "hand", "handed", "head", "leg", */
 		"light headed", "neck", "NOUN_SPINE", "toe", "hair", /* EN "light headed", "neck", "spine", "toe", "hair", */ // TODO DE
-		"NOUN_BLUT", "lung", "nose", "NOUN_STOMACH"}, /* EN "blood", "lung", "nose", "stomach"}, */ // TODO DE
+		"NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "blood", "lung", "nose", "stomach"}, */
 	*jelly_parts[] = { "pseudopod", "dark spot", "front", /* EN *jelly_parts[] = { "pseudopod", "dark spot", "front", */ // TODO DE
 		"pseudopod extension", "pseudopod extremity", /* EN "pseudopod extension", "pseudopod extremity", */ // TODO DE
 		"pseudopod root", "grasp", "grasped", "cerebral area", /* EN "pseudopod root", "grasp", "grasped", "cerebral area", */ // TODO DE
@@ -1147,15 +1147,15 @@ int part;
 	*animal_parts[] = { "forelimb", "NOUN_EYE", "NOUN_FACE", "foreclaw", "claw tip", /* EN *animal_parts[] = { "forelimb", "eye", "face", "foreclaw", "claw tip", */ // TODO DE
 		"rear claw", "foreclaw", "clawed", "NOUN_HEAD", "rear limb", /* EN "rear claw", "foreclaw", "clawed", "head", "rear limb", */ // TODO DE
 		"light headed", "neck", "spine", "rear claw tip", /* EN "light headed", "neck", "spine", "rear claw tip", */ // TODO DE
-		"fur", "NOUN_BLUT", "lung", "nose", "NOUN_STOMACH" }, /* EN "fur", "blood", "lung", "nose", "stomach" }, */ // TODO DE
-	*bird_parts[] = { "wing", "NOUN_EYE", "NOUN_FACE", "wing", "wing tip", /* EN *bird_parts[] = { "wing", "eye", "face", "wing", "wing tip", */ // TODO DE
-		"NOUN_FOOT", "wing", "winged", "NOUN_HEAD", "leg", /* EN "foot", "wing", "winged", "head", "leg", */ // TODO DE
+		"NOUN_FELL", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH" }, /* EN "fur", "blood", "lung", "nose", "stomach" }, */
+	*bird_parts[] = { "NOUN_FLUEGEL", "NOUN_EYE", "NOUN_FACE", "NOUN_FLUEGEL", "NOUN_FLUEGELSPITZE", /* EN *bird_parts[] = { "wing", "eye", "face", "wing", "wing tip", */
+		"NOUN_FOOT", "NOUN_FLUEGEL", "winged", "NOUN_HEAD", "NOUN_LEG", /* EN "foot", "wing", "winged", "head", "leg", */ // TODO DE
 		"light headed", "neck", "spine", "toe", /* EN "light headed", "neck", "spine", "toe", */ // TODO DE
-		"feathers", "NOUN_BLUT", "lung", "bill", "NOUN_STOMACH" }, /* EN "feathers", "blood", "lung", "bill", "stomach" }, */ // TODO DE
+		"NOUN_FEATHERs", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_SCHNABEL", "NOUN_STOMACH" }, /* EN "feathers", "blood", "lung", "bill", "stomach" }, */
 	*horse_parts[] = { "foreleg", "NOUN_EYE", "NOUN_FACE", "forehoof", "hoof tip", /* EN *horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", */ // TODO DE
 		"rear hoof", "foreclaw", "hooved", "NOUN_HEAD", "NOUN_REAR_LEG", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */ // TODO DE
 		"light headed", "neck", "backbone", "rear hoof tip", /* EN "light headed", "neck", "backbone", "rear hoof tip", */ // TODO DE
-		"mane", "NOUN_BLUT", "lung", "nose", "NOUN_STOMACH"}, /* EN "mane", "blood", "lung", "nose", "stomach"}, */ // TODO DE
+		"NOUN_MAEHNE", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "mane", "blood", "lung", "nose", "stomach"}, */
 	*sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", /* EN *sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", */ // TODO DE
 		"tentacle tip", "lower appendage", "tentacle", "tentacled", /* EN "tentacle tip", "lower appendage", "tentacle", "tentacled", */ // TODO DE
 		"body", "lower tentacle", "rotational", "equator", "body", /* EN "body", "lower tentacle", "rotational", "equator", "body", */ // TODO DE

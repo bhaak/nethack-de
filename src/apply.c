@@ -1574,9 +1574,9 @@ struct obj *obj;
 	}
 
 	if (did_attr)
-	    pline("This makes you feel %s!", /* EN pline("This makes you feel %s!", */ // TODO DE
+	    pline("%s %s!", this_makes_you_feel, /* EN pline("This makes you feel %s!", */
 		  (did_prop + did_attr) == (trouble_count + unfixable_trbl) ?
-		  "great" : "better"); /* EN "great" : "better"); */ // TODO DE
+		  "groﬂartig" : "besser"); /* EN "great" : "better"); */
 	else if (!did_prop)
 	    pline("Es scheint nichts zu passieren."); /* EN pline("Nothing seems to happen."); */
 

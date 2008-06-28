@@ -5,6 +5,10 @@
 #include "hack.h"
 /* #define DEBUG */	/* uncomment to enable new eat code debugging */
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef DEBUG
 # ifdef WIZARD
 #define debugpline	if (wizard) pline
@@ -1100,7 +1104,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    }
 
 	    if (!tin.tin->cursed)
-		pline("Damit VERB_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL wie %s!", /* EN pline("This makes you feel like %s!", */
+		pline("%s wie %s!", this_makes_you_feel, /* EN pline("This makes you feel like %s!", */
 		      Hallucination ? "Popi" : "Popeye"); /* EN  Hallucination ? "Swee'pea" : "Popeye"); */
 	    lesshungry(600);
 	    gainstr(tin.tin, 0);

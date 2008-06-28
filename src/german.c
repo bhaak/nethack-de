@@ -14,6 +14,8 @@
 #include "german.h"
 
 
+char *this_makes_you_feel = "Dadurch VERB_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL";
+
 //#define DEBUG 1
 #define WISH_DEBUG 0
 

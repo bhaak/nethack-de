@@ -427,13 +427,13 @@ peffects(otmp)
 	case SPE_RESTORE_ABILITY:
 		unkn++;
 		if(otmp->cursed) {
-		    pline("Ulch!  This makes you feel mediocre!"); /* EN pline("Ulch!  This makes you feel mediocre!"); */ // TODO DE
+		    pline("Ulch!  %s mittelm‰ﬂig!", this_makes_you_feel); /* EN pline("Ulch!  This makes you feel mediocre!"); */
 		    break;
 		} else {
-		    pline("Wow!  This makes you feel %s!", /* EN pline("Wow!  This makes you feel %s!", */ // TODO DE
+		    pline("Wau!  %s %s!", this_makes_you_feel, /* EN pline("Wow!  This makes you feel %s!", */
 			  (otmp->blessed) ?
-				(unfixable_trouble_count(FALSE) ? "better" : "great") /* EN (unfixable_trouble_count(FALSE) ? "better" : "great") */ // TODO DE
-			  : "good"); /* EN : "good"); */ // TODO DE
+				(unfixable_trouble_count(FALSE) ? "besser" : "groﬂartig") /* EN (unfixable_trouble_count(FALSE) ? "better" : "great") */
+			  : "gut"); /* EN : "good"); */
 		    i = rn2(A_MAX);		/* start at a random point */
 		    for (ii = 0; ii < A_MAX; ii++) {
 			lim = AMAX(i);
@@ -978,7 +978,7 @@ boolean your_fault;
 
 	if(isyou) {
 		distance = 0;
-		pline_The("%s crashes on your %s and breaks into shards.", /* EN pline_The("%s crashes on your %s and breaks into shards.", */ // TODO DE
+		pline_The("%s VERB_KRACHEN OBJECT auf PRONOMEN_POSSESSIV %s und zerplatzt in viele kleine Glasscherben.", /* EN pline_The("%s crashes on your %s and breaks into shards.", */
 			botlnam, body_part(HEAD));
 		losehp(rnd(2), "ADJEKTIV_GEWORFEN NOUN_POTION", KILLED_BY_AN); /* EN losehp(rnd(2), "thrown potion", KILLED_BY_AN); */
 	} else {
@@ -995,7 +995,7 @@ boolean your_fault;
 		    } else {
 			Strcpy(buf, mnam);
 		    }
-		    pline_The("%s crashes on %s and breaks into shards.", /* EN pline_The("%s crashes on %s and breaks into shards.", */ // TODO DE
+		    pline_The("%s VERB_KRACHEN OBJECT auf PRONOMEN_POSSESSIV %s und zerplatzt in viele kleine Glasscherben.", /* EN pline_The("%s crashes on %s and breaks into shards.", */
 			   botlnam, buf);
 		}
 		if(rn2(5) && mon->mhp > 1)
@@ -1114,7 +1114,7 @@ boolean your_fault;
 		    } else if (obj->cursed) {
 			angermon = FALSE;
 			if (canseemon(mon))
-			    pline("%s looks healthier.", Monnam(mon)); /* EN pline("%s looks healthier.", Monnam(mon)); */ // TODO DE
+			    pline("SUBJECT %s VERB_AUSSEHEN ges¸nder SATZKLAMMER.", Monnam(mon)); /* EN pline("%s looks healthier.", Monnam(mon)); */
 			mon->mhp += d(2,6);
 			if (mon->mhp > mon->mhpmax) mon->mhp = mon->mhpmax;
 			if (is_were(mon->data) && is_human(mon->data) &&
@@ -1201,7 +1201,7 @@ register struct obj *obj;
 	case POT_GAIN_ABILITY:
 		if(obj->cursed) {
 		    if (!breathless(youmonst.data))
-			pline("Ulch!  That potion smells terrible!"); /* EN pline("Ulch!  That potion smells terrible!"); */ // TODO DE
+			pline("Ulch!  Dieser Trank riecht schrecklich!"); /* EN pline("Ulch!  That potion smells terrible!"); */
 		    else if (haseyes(youmonst.data)) {
 			int numeyes = eyecount(youmonst.data);
 			Your("%s VERB_BRENNEN%s!", /* EN Your("%s sting%s!", */
@@ -1458,7 +1458,7 @@ register struct obj *obj;
 		if (obj->otyp == POT_WATER) return FALSE;
 		/* KMH -- Water into acid causes an explosion */
 		if (obj->otyp == POT_ACID) {
-			pline("It boils vigorously!"); /* EN pline("It boils vigorously!"); */ // TODO DE
+			pline("Es brodelt heftig!"); /* EN pline("It boils vigorously!"); */
 			You("VERB_WERDEN von einer Explosion erfasst!"); /* EN You("are caught in the explosion!"); */
 			losehp(rnd(10), "Grundschul-NOUN_CHEMIE", KILLED_BY); /* EN losehp(rnd(10), "elementary chemistry", KILLED_BY); */
 			makeknown(obj->otyp);
@@ -1573,7 +1573,7 @@ dodip()
 	if(!(potion = getobj(beverages, "dip into"))) /* EN if(!(potion = getobj(beverages, "dip into"))) */ // TODO DE
 		return(0);
 	if (potion == obj && potion->quan == 1L) {
-		pline("That is a potion bottle, not a Klein bottle!"); /* EN pline("That is a potion bottle, not a Klein bottle!"); */ // TODO DE
+		pline("Das ist eine gewˆhnliche Flasche, keine Kleinsche Flasche!"); /* EN pline("That is a potion bottle, not a Klein bottle!"); */
 		return 0;
 	}
 	potion->in_use = TRUE;		/* assume it will be used up */

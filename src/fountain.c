@@ -6,6 +6,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_DCL void NDECL(dowatersnakes);
 STATIC_DCL void NDECL(dowaterdemon);
 STATIC_DCL void NDECL(dowaternymph);
@@ -206,7 +210,7 @@ drinkfountain()
 	if (mgkftn && u.uluck >= 0 && fate >= 10) {
 		int i, ii, littleluck = (u.uluck < 4);
 
-		pline("Wau!  SUBJECT PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL grossartig!"); /* EN pline("Wow!  This makes you feel great!"); */
+		pline("Wau!  %s großartig!", this_makes_you_feel); /* EN pline("Wow!  This makes you feel great!"); */
 		/* blessed restore ability */
 		for (ii = 0; ii < A_MAX; ii++)
 		    if (ABASE(ii) < AMAX(ii)) {

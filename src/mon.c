@@ -2720,7 +2720,7 @@ int damtype, dam;
 	    mon->mhp += dam;
 	    if (mon->mhp > mon->mhpmax) mon->mhp = mon->mhpmax;
 	    if (cansee(mon->mx, mon->my))
-		pline("%s seems healthier.", Monnam(mon)); /* EN pline("%s seems healthier.", Monnam(mon)); */ // TODO DE
+		pline("SUBJECT %s VERB_SEEM gesünder SATZKLAMMER.", Monnam(mon)); /* EN pline("%s seems healthier.", Monnam(mon)); */
 	}
     }
 }
