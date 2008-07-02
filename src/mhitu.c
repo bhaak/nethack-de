@@ -1631,7 +1631,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 			dismount_steed(DISMOUNT_ENGULFED);
 		} else
 #endif
-		pline("%s engulfs you!", Monnam(mtmp)); /* EN pline("%s engulfs you!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_ENGULF OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp)); /* EN pline("%s engulfs you!", Monnam(mtmp)); */
 		stop_occupation();
 		reset_occupations();	/* behave as if you had moved */
 
@@ -1691,9 +1691,9 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		    break;
 		case AD_PHYS:
 		    if (mtmp->data == &mons[PM_FOG_CLOUD])
-			You("are laden with moisture and can barely %s!", /* EN You("are laden with moisture and can barely %s!", */ // TODO DE
-				!breathless(youmonst.data) ? "breathe" : /* EN !breathless(youmonst.data) ? "breathe" : */ // TODO DE
-				"stay conscious"); /* EN "stay conscious"); */ // TODO DE
+			You("VERB_SEIN von feuchtem Wasserdampf eingehüllt und VERB_KOENNEN kaum %s!", /* EN You("are laden with moisture and can barely %s!", */
+				!breathless(youmonst.data) ? "atmen" : /* EN !breathless(youmonst.data) ? "breathe" : */
+				"bei Bewusstsein bleiben"); /* EN "stay conscious"); */
 		    else {
 			You("are pummeled with debris!"); /* EN You("are pummeled with debris!"); */ // TODO DE
 			exercise(A_STR, FALSE);
@@ -1712,7 +1712,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		case AD_BLND:
 		    if (can_blnd(mtmp, &youmonst, mattk->aatyp, (struct obj*)0)) {
 			if(!Blind) {
-			    You_cant("see in here!"); /* EN You_cant("see in here!"); */ // TODO DE
+			    You("VERB_KOENNEN hier drinnen nichts sehen!"); /* EN You_cant("see in here!"); */
 			    make_blinded((long)tmp,FALSE);
 			    if (!Blind) Your(vision_clears);
 			} else
@@ -1723,10 +1723,10 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		    break;
 		case AD_ELEC:
 		    if(!mtmp->mcan && rn2(2)) {
-			pline_The("air around you crackles with electricity."); /* EN pline_The("air around you crackles with electricity."); */ // TODO DE
+			pline("Die Luft um KASUS_AKKUSATIV PRONOMEN_PERSONAL knistert vor Elektrizität."); /* EN pline_The("air around you crackles with electricity."); */
 			if (Shock_resistance) {
 				shieldeff(u.ux, u.uy);
-				You("seem unhurt."); /* EN You("seem unhurt."); */ // TODO DE
+				You("VERB_SCHEINEN unverletzt."); /* EN You("seem unhurt."); */
 				ugolemeffects(AD_ELEC,tmp);
 				tmp = 0;
 			}
@@ -2397,7 +2397,7 @@ const char *str;
 			body_part(HAIR));
 		verbalize("Take off your %s; %s.", str, /* EN verbalize("Take off your %s; %s.", str, */ // TODO DE
 			(obj == uarm)  ? "let's get a little closer" : /* EN (obj == uarm)  ? "let's get a little closer" : */ // TODO DE
-			(obj == uarmc || obj == uarms) ? "it's in the way" : /* EN (obj == uarmc || obj == uarms) ? "it's in the way" : */ // TODO DE
+			(obj == uarmc || obj == uarms) ? "das ist nur im Weg" : /* EN (obj == uarmc || obj == uarms) ? "it's in the way" : */
 			(obj == uarmf) ? "let me rub your feet" : /* EN (obj == uarmf) ? "let me rub your feet" : */ // TODO DE
 			(obj == uarmg) ? "they're too clumsy" : /* EN (obj == uarmg) ? "they're too clumsy" : */ // TODO DE
 #ifdef TOURIST
