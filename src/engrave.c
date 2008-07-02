@@ -6,6 +6,10 @@
 #include "lev.h"
 #include <ctype.h>
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_VAR NEARDATA struct engr *head_engr;
 
 #ifdef OVLB
@@ -297,7 +301,7 @@ register int x,y;
 	    case HEADSTONE:
 		if (!Blind || can_reach_floor()) {
 			sensed = 1;
-			pline("%s ist hier in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s eingraviert/eingeritzt.", /* EN pline("%s is engraved here on the %s.", */
+			pline("SUBJECT %s ist hier in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s eingeritzt.", /* EN pline("%s is engraved here on the %s.", */
 				Something,
 				surface(x,y));
 		}
@@ -305,7 +309,7 @@ register int x,y;
 	    case BURN:
 		if (!Blind || can_reach_floor()) {
 			sensed = 1;
-			pline("Worte wurden hier KASUS_AKKUSATIV _in_ ARTIKEL_BESTIMMTER %s %s.", /* EN pline("Some text has been %s into the %s here.", */ // TODO DE
+			pline("Hier wurden Worte KASUS_AKKUSATIV _in_ ARTIKEL_BESTIMMTER %s %s.", /* EN pline("Some text has been %s into the %s here.", */
 				surface(x,y), /* EN is_ice(x,y) ? "melted" : "burned", */
 				is_ice(x,y) ? "eingeschmolzen" : "eingebrannt"); /* EN surface(x,y)); */
 		}
@@ -451,6 +455,12 @@ doengrave()
 	char post_engr_text[BUFSZ]; /* Text displayed after engraving prompt */
 	const char *everb;	/* Present tense of engraving type */
 	const char *eloc;	/* Where the engraving is (ie dust/floor/...) */
+#ifdef GERMAN
+	const char *eengraving;	/* Inschriftart */
+	const char *eetwas;	/* Wenn engraving ein Objekt braucht */
+	const char *ewohin;	/* Welche Präposition beim Schreiben verwendet wird */
+	char tbuf[BUFSZ];	/* Buffer fuer temporaere Satzteile */
+#endif
 	char *sp;		/* Place holder for space count of engr text */
 	int len;		/* # of nonspace chars of new engraving text */
 	int maxelen;		/* Max allowable length of engraving text */
@@ -488,7 +498,7 @@ doengrave()
 		return(0);
 	}
 	if(Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)/* in bubble */) {
-		You_cant("write in thin air!"); /* EN You_cant("write in thin air!"); */ // TODO DE
+		You_cant("in die Luft schreiben!"); /* EN You_cant("write in thin air!"); */
 		return(0);
 	}
 	if (cantwield(youmonst.data)) {
@@ -531,7 +541,7 @@ doengrave()
 	}
 	if (IS_GRAVE(levl[u.ux][u.uy].typ)) {
 	    if (otmp == &zeroobj) { /* using only finger */
-		You("would only make a small smudge on the %s.", /* EN You("would only make a small smudge on the %s.", */ // TODO DE
+		You("MODIFIER_KONJUNKTIV_II VERB_WERDEN nur einen kleinen Fleck OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s hinterlassen.", /* EN You("would only make a small smudge on the %s.", */
 			surface(u.ux, u.uy));
 		return(0);
 	    } else if (!levl[u.ux][u.uy].disturbed) {
@@ -572,7 +582,7 @@ doengrave()
 	    /* Objects too large to engrave with */
 	    case BALL_CLASS:
 	    case ROCK_CLASS:
-		You_cant("engrave with such a large object!"); /* EN You_cant("engrave with such a large object!"); */ // TODO DE
+		You("VERB_KOENNEN mit einem so großen Objekt nichts einritzen!"); /* EN You_cant("engrave with such a large object!"); */
 		ptext = FALSE;
 		break;
 
@@ -580,8 +590,8 @@ doengrave()
 	    case FOOD_CLASS:
 	    case SCROLL_CLASS:
 	    case SPBOOK_CLASS:
-		Your("%s would get %s.", xname(otmp), /* EN Your("%s would get %s.", xname(otmp), */ // TODO DE
-			is_ice(u.ux,u.uy) ? "all frosty" : "too dirty"); /* EN is_ice(u.ux,u.uy) ? "all frosty" : "too dirty"); */ // TODO DE
+		Your("%s MODIFIER_KONJUNKTIV_II VERB_WERDEN %s werden.", xname(otmp), /* EN Your("%s would get %s.", xname(otmp), */
+			is_ice(u.ux,u.uy) ? "nur eisgekühlt" : "zu dreckig"); /* EN is_ice(u.ux,u.uy) ? "all frosty" : "too dirty"); */
 		ptext = FALSE;
 		break;
 
@@ -621,7 +631,7 @@ doengrave()
 			 */
 		    case WAN_STRIKING:
 			Strcpy(post_engr_text,
-			"The wand unsuccessfully fights your attempt to write!" /* EN "The wand unsuccessfully fights your attempt to write!" */ // TODO DE
+			"SUBJECT ARTIKEL_BESTIMMTER NOUN_WAND VERB_WIDERSETZEN sich erfolglos OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_SCHREIBVERSUCH!" /* EN "The wand unsuccessfully fights your attempt to write!" */
 			);
 			break;
 		    case WAN_SLOW_MONSTER:
@@ -659,7 +669,7 @@ doengrave()
 			ptext = TRUE;
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "The %s is riddled by bullet holes!", /* EN "The %s is riddled by bullet holes!", */ // TODO DE
+				   "SUBJECT ARTIKEL_BESTIMMTER %s VERB_AUSSEHEN SATZKLAMMER wie von Kugeln durchsiebt!", /* EN "The %s is riddled by bullet holes!", */
 				   surface(u.ux, u.uy));
 			}
 			break;
@@ -677,7 +687,7 @@ doengrave()
 		    case WAN_COLD:
 			if (!Blind)
 			    Strcpy(post_engr_text,
-				"A few ice cubes drop from the wand."); /* EN "A few ice cubes drop from the wand."); */ // TODO DE
+				"Ein paar Eiswürfel bilden sich an der Spitze des Stabes."); /* EN "A few ice cubes drop from the wand."); */
 			if(!oep || (oep->engr_type != BURN))
 			    break;
 		    case WAN_CANCELLATION:
@@ -729,7 +739,7 @@ doengrave()
 			    doknown = TRUE;
 			}
 			Strcpy(post_engr_text,
-				Blind ? "You feel the wand heat up." : /* EN Blind ? "You feel the wand heat up." : */ // TODO DE
+				Blind ? "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN, wie sich der Stab erwärmt." : /* EN Blind ? "You feel the wand heat up." : */
 					"Flames fly from the wand."); /* EN "Flames fly from the wand."); */ // TODO DE
 			break;
 		    case WAN_LIGHTNING:
@@ -737,7 +747,7 @@ doengrave()
 			type  = BURN;
 			if(!objects[otmp->otyp].oc_name_known) {
 			    if (flags.verbose)
-				pline("This %s is a wand of lightning!", /* EN pline("This %s is a wand of lightning!", */ // TODO DE
+				pline("SUBJECT PRONOMEN_DIESER %s VERB_SEIN OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_LIGHTNING!", /* EN pline("This %s is a wand of lightning!", */
 					xname(otmp));
 			    doknown = TRUE;
 			}
@@ -764,7 +774,7 @@ doengrave()
 		    if ((int)otmp->spe > -3)
 			type = ENGRAVE;
 		    else
-			Your("%s too dull for engraving.", aobjnam(otmp,"are")); /* EN Your("%s too dull for engraving.", aobjnam(otmp,"are")); */ // TODO DE
+			Your("%s ist fürs Einritzen zu stumpf.", aobjnam(otmp,"VERB_SEIN")); /* EN Your("%s too dull for engraving.", aobjnam(otmp,"are")); */
 		}
 		break;
 
@@ -789,19 +799,19 @@ doengrave()
 				(oep->engr_type == ENGR_BLOOD) ||
 				(oep->engr_type == MARK )) {
 				if (!Blind)
-				    You("VERB_WEGWISCHEN die Botschaft SATZKLAMMER."); /* EN You("wipe out the message here."); */
+				    You("VERB_WEGWISCHEN die Kritzelei SATZKLAMMER."); /* EN You("wipe out the message here."); */
 				else
-				    Your("%s %s %s.", xname(otmp), /* EN Your("%s %s %s.", xname(otmp), */ // TODO DE
-					 otense(otmp, "get"), /* EN otense(otmp, "get"), */ // TODO DE
+				    Your("%s %s %s.", xname(otmp),
+					 otense(otmp, "VERB_WERDEN"), /* EN otense(otmp, "get"), */
 					 is_ice(u.ux,u.uy) ?
-					 "frosty" : "dusty"); /* EN "frosty" : "dusty"); */ // TODO DE
+					 "tiefgekühlt" : "dreckig"); /* EN "frosty" : "dusty"); */
 				dengr = TRUE;
 			    } else
 				Your("%s VERB_KOENNEN diese Inschrift nicht wegwischen.", /* EN Your("%s can't wipe out this engraving.", */
 				     xname(otmp));
 			else
-			    Your("%s %s %s.", xname(otmp), otense(otmp, "get"), /* EN Your("%s %s %s.", xname(otmp), otense(otmp, "get"), */ // TODO DE
-				  is_ice(u.ux,u.uy) ? "frosty" : "dusty"); /* EN is_ice(u.ux,u.uy) ? "frosty" : "dusty"); */ // TODO DE
+			    Your("%s %s %s.", xname(otmp), otense(otmp, "VERB_WERDEN"), /* EN Your("%s %s %s.", xname(otmp), otense(otmp, "get"), */
+				  is_ice(u.ux,u.uy) ? "tiefgekühlt" : "dreckig"); /* EN is_ice(u.ux,u.uy) ? "frosty" : "dusty"); */
 			break;
 		    default:
 			break;
@@ -853,7 +863,7 @@ doengrave()
 	/* Something has changed the engraving here */
 	if (*buf) {
 	    make_engr_at(u.ux, u.uy, buf, moves, type);
-	    pline("Die Inschrift lautet jetzt: \"%s\".", buf); /* EN pline_The("engraving now reads: \"%s\".", buf); */
+	    pline("Der Text lautet jetzt: \"%s\".", buf); /* EN pline_The("engraving now reads: \"%s\".", buf); */
 	    ptext = FALSE;
 	}
 
@@ -887,7 +897,7 @@ doengrave()
 		c = 'y';
 	    } else if ( (type == oep->engr_type) && (!Blind ||
 		 (oep->engr_type == BURN) || (oep->engr_type == ENGRAVE)) ) {
-		c = yn_function("SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL der aktuellen Inschrift etwas hinzufügen?", /* EN c = yn_function("Do you want to add to the current engraving?", */
+		c = yn_function("SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL dem aktuellen Text etwas hinzufügen?", /* EN c = yn_function("Do you want to add to the current engraving?", */
 				ynqchars, 'y');
 		if (c == 'q') {
 		    pline(Never_mind);
@@ -900,7 +910,7 @@ doengrave()
 		if( (oep->engr_type == DUST) || (oep->engr_type == ENGR_BLOOD) ||
 		    (oep->engr_type == MARK) ) {
 		    if (!Blind) {
-			You("VERB_WEGWISCHEN die Botschaft SATZKLAMMER, die hier %sgeschrieben stand.", /* EN You("wipe out the message that was %s here.", */
+			You("VERB_WEGWISCHEN die Kritzelei SATZKLAMMER, die hier %sgeschrieben stand.", /* EN You("wipe out the message that was %s here.", */
 			    ((oep->engr_type == DUST)  ? "im Staub " : /* EN ((oep->engr_type == DUST)  ? "written in the dust" : */
 			    ((oep->engr_type == ENGR_BLOOD) ? "mit Blut "   : /* EN ((oep->engr_type == ENGR_BLOOD) ? "scrawled in blood"   : */
 							 ""))); /* EN "written"))); */
@@ -912,64 +922,114 @@ doengrave()
 		} else
 		    if ( (type == DUST) || (type == MARK) || (type == ENGR_BLOOD) ) {
 			You(
-			 "cannot wipe out the message that is %s the %s here.", /* EN "cannot wipe out the message that is %s the %s here.", */ // TODO DE
+			 "VERB_KOENNEN die Kritzelei, die hier OBJECT in ARTIKEL_BESTIMMTER %s %s ist, nicht wegwischen.", surface(u.ux,u.uy), /* EN "cannot wipe out the message that is %s the %s here.", */
 			 oep->engr_type == BURN ?
-			   (is_ice(u.ux,u.uy) ? "melted into" : "burned into") : /* EN (is_ice(u.ux,u.uy) ? "melted into" : "burned into") : */ // TODO DE
-			   "engraved in", surface(u.ux,u.uy)); /* EN "engraved in", surface(u.ux,u.uy)); */ // TODO DE
+			   (is_ice(u.ux,u.uy) ? "eingeschmolzen" : "eingebrannt") : /* EN (is_ice(u.ux,u.uy) ? "melted into" : "burned into") : */
+			   "eingeritzt"); /* EN "engraved in", surface(u.ux,u.uy)); */
 			return(1);
 		    } else
 			if ( (type != oep->engr_type) || (c == 'n') ) {
 			    if (!Blind || can_reach_floor())
-				You("VERB_WERDEN die aktuelle Botschaft überschreiben."); /* EN You("will overwrite the current message."); */
+				You("VERB_UEBERSCHREIBEN den derzeitigen Text."); /* EN You("will overwrite the current message."); */
 			    eow = TRUE;
 			}
 	    }
 	}
 
 	eloc = surface(u.ux,u.uy);
+#ifdef GERMAN
+	eetwas = (oep && !eow ? " etwas" : "");
+#endif
 	switch(type){
 	    default:
-		everb = (oep && !eow ? "add to the weird writing on" : /* EN everb = (oep && !eow ? "add to the weird writing on" : */ // TODO DE
-				       "write strangely on"); /* EN "write strangely on"); */ // TODO DE
+#ifdef GERMAN
+		eengraving = (oep && !eow ? "der seltsamen Kritzelei " : "");
+		ewohin = "auf ARTIKEL_BESTIMMTER";
+#endif
+		everb = (oep && !eow ? "VERB_HINZUFUEGEN" : /* EN everb = (oep && !eow ? "add to the weird writing on" : */
+				       "VERB_SCHREIBEN"); /* EN "write strangely on"); */
 		break;
 	    case DUST:
-		everb = (oep && !eow ? "add to the writing in" : /* EN everb = (oep && !eow ? "add to the writing in" : */ // TODO DE
-				       "write in"); /* EN "write in"); */ // TODO DE
+#ifdef GERMAN
+		eengraving = (oep && !eow ? "der Kritzelei OBJECT KASUS_DATIV " : "");
+		ewohin = "in ARTIKEL_BESTIMMTER";
+#endif
+		everb = (oep && !eow ? "VERB_HINZUFUEGEN" : /* EN everb = (oep && !eow ? "add to the writing in" : */
+				       "VERB_SCHREIBEN"); /* EN "write in"); */
 		eloc = is_ice(u.ux,u.uy) ? "NOUN_SCHNEE" : "NOUN_DUST"; /* EN eloc = is_ice(u.ux,u.uy) ? "frost" : "dust"; */
 		break;
 	    case HEADSTONE:
-		everb = (oep && !eow ? "add to the epitaph on" : /* EN everb = (oep && !eow ? "add to the epitaph on" : */ // TODO DE
-				       "engrave on"); /* EN "engrave on"); */ // TODO DE
+#ifdef GERMAN
+		eengraving = (oep && !eow ? "der Grabinschrift OBJECT KASUS_DATIV " : "");
+		ewohin = "auf ARTIKEL_BESTIMMTER";
+		eetwas = " etwas"; 
+#endif
+		everb = (oep && !eow ? "VERB_HINZUFUEGEN" : /* EN everb = (oep && !eow ? "add to the epitaph on" : */
+				       "VERB_EINRITZEN"); /* EN "engrave on"); */
 		break;
 	    case ENGRAVE:
-		everb = (oep && !eow ? "add to the engraving in" : /* EN everb = (oep && !eow ? "add to the engraving in" : */ // TODO DE
-				       "engrave in"); /* EN "engrave in"); */ // TODO DE
+#ifdef GERMAN
+		eengraving = (oep && !eow ? "der Einritzung OBJECT KASUS_DATIV " : "");
+		ewohin = "in ARTIKEL_BESTIMMTER";
+		eetwas = " etwas"; 
+#endif
+		everb = (oep && !eow ? "VERB_HINZUFUEGEN" : /* EN everb = (oep && !eow ? "add to the engraving in" : */
+				       "VERB_EINRITZEN"); /* EN "engrave in"); */
 		break;
 	    case BURN:
+#ifdef GERMAN
+		eengraving = (oep && !eow ?
+		             (is_ice(u.ux,u.uy) ? "der eingeschmolzenen Schrift OBJECT KASUS_DATIV " : "der eingebrannten Schrift OBJECT KASUS_DATIV ") : "");
+		ewohin = "in ARTIKEL_BESTIMMTER";
+		eetwas = " etwas"; 
+#endif
 		everb = (oep && !eow ?
-			( is_ice(u.ux,u.uy) ? "add to the text melted into" : /* EN ( is_ice(u.ux,u.uy) ? "add to the text melted into" : */ // TODO DE
-					      "add to the text burned into") : /* EN "add to the text burned into") : */ // TODO DE
-			( is_ice(u.ux,u.uy) ? "melt into" : "burn into")); /* EN ( is_ice(u.ux,u.uy) ? "melt into" : "burn into")); */ // TODO DE
+			( is_ice(u.ux,u.uy) ? "VERB_HINZUFUEGEN" : /* EN ( is_ice(u.ux,u.uy) ? "add to the text melted into" : */
+					      "VERB_HINZUFUEGEN") : /* EN "add to the text burned into") : */
+			( is_ice(u.ux,u.uy) ? "VERB_EINSCHMELZEN" : "VERB_EINBRENNEN")); /* EN ( is_ice(u.ux,u.uy) ? "melt into" : "burn into")); */
 		break;
 	    case MARK:
-		everb = (oep && !eow ? "add to the graffiti on" : /* EN everb = (oep && !eow ? "add to the graffiti on" : */ // TODO DE
-				       "scribble on"); /* EN "scribble on"); */ // TODO DE
+#ifdef GERMAN
+		eengraving = (oep && !eow ? "dem Graffiti OBJECT KASUS_DATIV " : "");
+		ewohin = "auf ARTIKEL_BESTIMMTER";
+#endif
+		everb = (oep && !eow ? "VERB_HINZUFUEGEN" : /* EN everb = (oep && !eow ? "add to the graffiti on" : */
+				       "VERB_KRITZELN"); /* EN "scribble on"); */
 		break;
 	    case ENGR_BLOOD:
-		everb = (oep && !eow ? "add to the scrawl on" : /* EN everb = (oep && !eow ? "add to the scrawl on" : */ // TODO DE
-				       "scrawl on"); /* EN "scrawl on"); */ // TODO DE
+#ifdef GERMAN
+		eengraving = (oep && !eow ? "der blutigen Krakelei OBJECT KASUS_DATIV " : "");
+		ewohin = "auf ARTIKEL_BESTIMMTER";
+#endif
+		everb = (oep && !eow ? "VERB_HINZUFUEGEN" : /* EN everb = (oep && !eow ? "add to the scrawl on" : */
+				       "VERB_KRAKELN"); /* EN "scrawl on"); */
 		break;
 	}
 
 	/* Tell adventurer what is going on */
 	if (otmp != &zeroobj)
-	    You("%s the %s with %s.", everb, eloc, doname(otmp)); /* EN You("%s the %s with %s.", everb, eloc, doname(otmp)); */ // TODO DE
+	    You("%s OBJECT %s%s %s OBJECT KASUS_DATIV mit %s%s SATZKLAMMER.", everb, eengraving, ewohin, eloc, doname(otmp), eetwas); /* EN You("%s the %s with %s.", everb, eloc, doname(otmp)); */
 	else
-	    You("%s the %s with your %s.", everb, eloc, /* EN You("%s the %s with your %s.", everb, eloc, */ // TODO DE
+#ifdef GERMAN
+	    You("%s %s OBJECT%s %s%s %s%s SATZKLAMMER.", everb,
+		german(strcat(strcpy(tbuf, "KASUS_DATIV mit PRONOMEN_POSSESSIV "), makeplural(body_part(FINGER)))),
+		(oep && !eow) ? " KASUS_DATIV" : "",
+		eengraving, ewohin, eloc, eetwas);
+#else
+	    You("%s the %s with your %s.", everb, eloc,
 		makeplural(body_part(FINGER)));
+#endif
 
 	/* Prompt for engraving! */
-	Sprintf(qbuf,"What do you want to %s the %s here?", everb, eloc); /* EN Sprintf(qbuf,"What do you want to %s the %s here?", everb, eloc); */ // TODO DE
+#ifdef GERMAN
+	if (oep && !eow) {
+		Sprintf(qbuf,"Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL hier %sMODIFIER_VERB_INFINITIV %s?", eengraving, everb); /* hinzufügen */
+	} else {
+		Sprintf(qbuf,"Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL hier OBJECT %s %s MODIFIER_VERB_INFINITIV %s?", ewohin, eloc, everb); /* schreiben */
+	}
+#else
+	Sprintf(qbuf,"What do you want to %s the %s here?", everb, eloc);
+#endif
 	getlin(qbuf, ebuf);
 
 	/* Count the actual # of chars engraved not including spaces */
@@ -1019,7 +1079,7 @@ doengrave()
 		break;
 	    case DUST:
 		multi = -(len/10);
-		if (multi) nomovemsg = "You finish writing in the dust."; /* EN if (multi) nomovemsg = "You finish writing in the dust."; */ // TODO DE
+		if (multi) nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_SEIN mit dem Schreiben im Staub fertig."; /* EN if (multi) nomovemsg = "You finish writing in the dust."; */
 		break;
 	    case HEADSTONE:
 	    case ENGRAVE:
@@ -1034,7 +1094,7 @@ doengrave()
 			 *	 However, you could now engrave "Elb", then
 			 *	 "ere", then "th".
 			 */
-		    Your("%s dull.", aobjnam(otmp, "get")); /* EN Your("%s dull.", aobjnam(otmp, "get")); */ // TODO DE
+		    Your("%s stumpf.", aobjnam(otmp, "VERB_WERDEN")); /* EN Your("%s dull.", aobjnam(otmp, "get")); */
 		    if (otmp->unpaid) {
 			struct monst *shkp = shop_keeper(*u.ushops);
 			if (shkp) {
@@ -1052,14 +1112,14 @@ doengrave()
 		    if ( (otmp->oclass == RING_CLASS) ||
 			 (otmp->oclass == GEM_CLASS) )
 			multi = -len;
-		if (multi) nomovemsg = "You finish engraving."; /* EN if (multi) nomovemsg = "You finish engraving."; */ // TODO DE
+		if (multi) nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_SEIN mit dem Einritzen fertig."; /* EN if (multi) nomovemsg = "You finish engraving."; */
 		break;
 	    case BURN:
 		multi = -(len/10);
 		if (multi)
 		    nomovemsg = is_ice(u.ux,u.uy) ?
-			"You finish melting your message into the ice.": /* EN "You finish melting your message into the ice.": */ // TODO DE
-			"You finish burning your message into the floor."; /* EN "You finish burning your message into the floor."; */ // TODO DE
+			"SUBJECT PRONOMEN_PERSONAL VERB_HABEN die Worte ins Eis geschmolzen.": /* EN "You finish melting your message into the ice.": */
+			"SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT die Worte in den Boden gebrannt."; /* EN "You finish burning your message into the floor."; */
 		break;
 	    case MARK:
 		multi = -(len/10);
@@ -1088,7 +1148,7 @@ doengrave()
 		if (!isspace(*sp)) maxelen--;
 	    if (!maxelen && *sp) {
 		*sp = (char)0;
-		if (multi) nomovemsg = "SUBJECT PRONOMEN_PERSONAL nichts mehr schreiben."; /* EN if (multi) nomovemsg = "You cannot write any more."; */
+		if (multi) nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN nichts mehr schreiben."; /* EN if (multi) nomovemsg = "You cannot write any more."; */
 		You("VERB_KOENNEN nur noch \"%s\" schreiben", ebuf); /* EN You("only are able to write \"%s\"", ebuf); */
 	    }
 	}
@@ -1222,8 +1282,8 @@ static const char *epitaphs[] = {
 	"Warnung! Dieses Grab enthält Giftmüll", /* EN "Caution! This grave contains toxic waste", */
 	"Sum quod eris",
 	"Here lies an Atheist, all dressed up and no place to go", /* EN "Here lies an Atheist, all dressed up and no place to go", */ // TODO DE
-	"Here lies Ezekiel, age 102.  The good die young.", /* EN "Here lies Ezekiel, age 102.  The good die young.", */ // TODO DE
-	"Here lies my wife: Here let her lie! Now she's at rest and so am I.", /* EN "Here lies my wife: Here let her lie! Now she's at rest and so am I.", */ // TODO DE
+	"Hier ruht Ezechiel, Alter 102.  Wen die Götter lieben, der stirbt jung.", /* EN "Here lies Ezekiel, age 102.  The good die young.", */ // TODO DE nicht sehr catchy
+	"Hier ruht mein Weib, Gott sei's gedankt!  Solang sie lebte, war nur Zank.  Geh, Wandrer, gehe flugs von hier; sonst steht sie auf und zankt mit Dir!", /* EN "Here lies my wife: Here let her lie! Now she's at rest and so am I.", */
 	"Here lies Johnny Yeast. Pardon me for not rising.", /* EN "Here lies Johnny Yeast. Pardon me for not rising.", */ // TODO DE
 	"He always lied while on the earth and now he's lying in it", /* EN "He always lied while on the earth and now he's lying in it", */ // TODO DE
 	"I made an ash of myself", /* EN "I made an ash of myself", */ // TODO DE
