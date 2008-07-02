@@ -607,8 +607,8 @@ char *buf;
 	else if (maploc->typ == STAIRS) what = "ARTIKEL_UNBESTIMMTER NOUN_STAIRS"; /* EN else if (maploc->typ == STAIRS) what = "the stairs"; */
 	else if (maploc->typ == LADDER) what = "ARTIKEL_UNBESTIMMTER NOUN_LADDER"; /* EN else if (maploc->typ == LADDER) what = "a ladder"; */
 	else if (maploc->typ == IRONBARS) what = "ARTIKEL_UNBESTIMMTER NOUN_IRON_BAR"; /* EN else if (maploc->typ == IRONBARS) what = "an iron bar"; */ 
-	else what = "something weird"; /* EN else what = "something weird"; */ // TODO DE
-	return strcat(strcpy(buf, "kicking "), what); /* EN return strcat(strcpy(buf, "kicking "), what); */ // TODO DE
+	else what = "von etwas Seltsamen"; /* EN else what = "something weird"; */
+	return strcat(strcpy(buf, "Tretens KASUS_GENITIV "), what); /* EN return strcat(strcpy(buf, "kicking "), what); */
 }
 
 int
@@ -691,7 +691,7 @@ dokick()
 
 	if(u.uswallow) {
 		switch(rn2(3)) {
-		case 0:  You_cant("move your %s!", body_part(LEG)); /* EN case 0:  You_cant("move your %s!", body_part(LEG)); */ // TODO DE
+		case 0:  You("VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s nicht bewegen!", body_part(LEG)); /* EN case 0:  You_cant("move your %s!", body_part(LEG)); */
 			 break;
 		case 1:  if (is_animal(u.ustuck->data)) {
 				pline("SUBJECT %s VERB_RUELPSEN laut.", Monnam(u.ustuck)); /* EN pline("%s burps loudly.", Monnam(u.ustuck)); */
@@ -763,7 +763,7 @@ dokick()
 	}
 	if (is_pool(x, y) ^ !!u.uinwater) {
 		/* objects normally can't be removed from water by kicking */
-		You("VERB_SPRITZEN some water around."); /* EN You("splash some water around."); */ // TODO DE
+		You("VERB_SPRITZEN etwas Wasser herum."); /* EN You("splash some water around."); */
 		return 1;
 	}
 
@@ -871,7 +871,7 @@ dokick()
 		    if(!rn2(3)) goto ouch;
 		    /* make metal boots rust */
 		    if(uarmf && rn2(3))
-			if (!rust_dmg(uarmf, "metal boots", 1, FALSE, &youmonst)) { /* EN if (!rust_dmg(uarmf, "metal boots", 1, FALSE, &youmonst)) { */ // TODO DE
+			if (!rust_dmg(uarmf, "NOUN_METAL_BOOTSs", 1, FALSE, &youmonst)) { /* EN if (!rust_dmg(uarmf, "metal boots", 1, FALSE, &youmonst)) { */
 				Your("NOUN_BOOTSs VERB_WERDEN nass."); /* EN Your("boots get wet."); */
 				/* could cause short-lived fumbling here */
 			}
@@ -1218,18 +1218,18 @@ xchar x, y, dlev;
 	}
 
 	if (dct && cansee(x,y)) {	/* at least one object fell */
-	    const char *what = (dct == 1L ? "object falls" : "objects fall"); /* EN const char *what = (dct == 1L ? "object falls" : "objects fall"); */ // TODO DE
+	    const char *what = (dct == 1L ? "Objekt" : "Objekte"); /* EN const char *what = (dct == 1L ? "object falls" : "objects fall"); */
 
 	    if (missile)
-		pline("From the impact, %sother %s.", /* EN pline("From the impact, %sother %s.", */ // TODO DE
-		      dct == oct ? "the " : dct == 1L ? "an" : "", what); /* EN dct == oct ? "the " : dct == 1L ? "an" : "", what); */ // TODO DE
+		pline("Durch den Aufprall %s %s hindurch.", /* EN pline("From the impact, %sother %s.", */
+		      dct == oct ? "fällt das andere" : dct == 1L ? "fällt noch ein" : "fallen noch andere", what); /* EN dct == oct ? "the " : dct == 1L ? "an" : "", what); */
 	    else if (oct == dct)
-		pline("%s adjacent %s %s.", /* EN pline("%s adjacent %s %s.", */ // TODO DE
-		      dct == 1L ? "The" : "All the", what, gate_str); /* EN dct == 1L ? "The" : "All the", what, gate_str); */ // TODO DE
+		pline("%s %s %s.", /* EN pline("%s adjacent %s %s.", */
+		      dct == 1L ? "Das danebenliegende" : "Alle danebenliegenden", what, gate_str); /* EN dct == 1L ? "The" : "All the", what, gate_str); */
 	    else
-		pline("%s adjacent %s %s.", /* EN pline("%s adjacent %s %s.", */ // TODO DE
-		      dct == 1L ? "One of the" : "Some of the", /* EN dct == 1L ? "One of the" : "Some of the", */ // TODO DE
-		      dct == 1L ? "objects falls" : what, gate_str); /* EN dct == 1L ? "objects falls" : what, gate_str); */ // TODO DE
+		pline("%s %s %s.", /* EN pline("%s adjacent %s %s.", */
+		      dct == 1L ? "Eines der danebenliegenden" : "Einige der danebenliegenden", /* EN dct == 1L ? "One of the" : "Some of the", */
+		      dct == 1L ? "Objekte fällt" : "Objekte fallen", gate_str); /* EN dct == 1L ? "objects falls" : what, gate_str); */
 	}
 
 	if(costly && shkp && price) {
@@ -1240,8 +1240,8 @@ xchar x, y, dlev;
 			    (void) strncpy(ESHK(shkp)->customer,
 					   plname, PL_NSIZ);
 			if(angry)
-			    pline("%s is infuriated!", Monnam(shkp)); /* EN pline("%s is infuriated!", Monnam(shkp)); */ // TODO DE
-			else pline("\"%s, you are a thief!\"", plname); /* EN else pline("\"%s, you are a thief!\"", plname); */ // TODO DE
+			    pline("SUBJECT %s tobt!", Monnam(shkp)); /* EN pline("%s is infuriated!", Monnam(shkp)); */
+			else pline("\"%s, SUBJECT_IM_SATZ VERB_SEIN %s!\"", plname, flags.female ? "eine Diebin" : "ein Dieb"); /* EN else pline("\"%s, you are a thief!\"", plname); */
 		    } else  You_hear("einen Schrei, \"Dieb!\""); /* EN } else  You_hear("a scream, \"Thief!\""); */
 		    hot_pursuit(shkp);
 		    (void) angry_guards(FALSE);
@@ -1435,14 +1435,14 @@ long num;
 		 xname(otmp));
 
 	if(num) { /* means: other objects are impacted */
-	    Sprintf(eos(obuf), " %s %s object%s", /* EN Sprintf(eos(obuf), " %s %s object%s", */ // TODO DE
-		    otense(otmp, "hit"), /* EN otense(otmp, "hit"), */ // TODO DE
-		    num == 1L ? "another" : "other", /* EN num == 1L ? "another" : "other", */ // TODO DE
-		    num > 1L ? "s" : ""); /* EN num > 1L ? "s" : ""); */ // TODO DE
+	    Sprintf(eos(obuf), " %s %s Gegen%s", /* EN Sprintf(eos(obuf), " %s %s object%s", */
+		    otense(otmp, "VERB_HIT"), /* EN otense(otmp, "hit"), */
+		    num == 1L ? "einen weiteren" : "weitere", /* EN num == 1L ? "another" : "other", */
+		    num > 1L ? "stände" : "stand"); /* EN num > 1L ? "s" : ""); */
 	    if(nodrop)
 		Sprintf(eos(obuf), ".");
 	    else
-		Sprintf(eos(obuf), " and %s %s.", /* EN Sprintf(eos(obuf), " and %s %s.", */ // TODO DE
+		Sprintf(eos(obuf), " und %s %s.", /* EN Sprintf(eos(obuf), " and %s %s.", */
 			otense(otmp, "VERB_FALLEN"), gate_str); /* EN otense(otmp, "fall"), gate_str); */
 	    pline("SUBJECT %s", obuf); /* EN pline("%s", obuf); */
 	} else if(!nodrop)

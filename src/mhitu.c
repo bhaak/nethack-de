@@ -1643,7 +1643,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 
 		i = number_leashed();
 		if (i > 0) {
-		    const char *s = (i > 1) ? "leashes" : "leash"; /* EN const char *s = (i > 1) ? "leashes" : "leash"; */ // TODO DE
+		    const char *s = (i > 1) ? "NOUN_LEASHs" : "NOUN_LEASH"; /* EN const char *s = (i > 1) ? "leashes" : "leash"; */
 		    pline_The("%s %s loose.", s, vtense(s, "snap")); /* EN pline_The("%s %s loose.", s, vtense(s, "snap")); */ // TODO DE
 		    unleash_all();
 		}
