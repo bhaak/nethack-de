@@ -1,1 +1,22 @@
+h3. Linux-Screenshot
+
 !nethack_inventory.png(Screenshot NetHack-De Inventar)!
+
+h3. NetHack-De-Video
+
+Pause: p <br>
+Langsamer/schneller abspielen: -/+
+
+<p class="video">
+<applet code="ttyplayer.class" width="800" height="400">
+  <param name="TTYFILE" value="nethack.tty">
+  <param name="SPEED" value="2">
+  <param name="REPEAT" value="true">
+  <param name="TOOLBAR" value="true">
+  <param name="REVERSE-VIDEO" value="true">
+Zum Abspielen dieses Videos wird Java benötigt.
+</applet>
+</p>
+
+Dieses Applet basiert auf "Hirotsugu Kakugawas ttyplayer":http://www-masu.ist.osaka-u.ac.jp/~kakugawa/misc/ttyplayer/index-en.shtml. Das "Video":nethack.tty liegt im "ttyrec-Format":http://en.wikipedia.org/wiki/Ttyrec vor.
+
