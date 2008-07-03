@@ -1147,7 +1147,7 @@ create_polymon(obj, okind)
 	polyuse(obj, okind, (int)mons[pm_index].cwt);
 
 	if(mtmp && cansee(mtmp->mx, mtmp->my)) {
-	    pline("Einige ARTIKEL_BESTIMMTER %s NOUN_OBJEKT verschmelzen und %s ersteht aus dem Haufen!", /* EN pline("Some %sobjects meld, and %s arises from the pile!", */
+	    pline("Einige KASUS_GENITIV ARTIKEL_BESTIMMTER %sNOUN_OBJEKTs verschmelzen und NEUER_SATZ SUBJECT_IM_SATZ %s ersteht aus dem Haufen!", /* EN pline("Some %sobjects meld, and %s arises from the pile!", */
 		  material, a_monnam(mtmp));
 	}
 }
@@ -3648,7 +3648,7 @@ boolean *shopdamage;
 			    vision_full_recalc = 1;
 			} else if (u.utrap && u.utraptype == TT_LAVA) {
 			    if (Passes_walls) {
-						You("pass through the now-solid rock."); /* EN You("pass through the now-solid rock."); */ // TODO DE
+						You("VERB_GEHEN durch das mittlerweile feste Gestein."); /* EN You("pass through the now-solid rock."); */
 			    } else {
 				u.utrap = rn1(50,20);
 				u.utraptype = TT_INFLOOR;
