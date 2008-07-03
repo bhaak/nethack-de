@@ -350,7 +350,7 @@ boolean td;	/* td == TRUE : trap door or hole */
 		if (t->ttyp == TRAPDOOR)
 			pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_TRAP_DOOR VERB_OEFFNEN sich unter KASUS_DATIV PRONOMEN_PERSONAL!"); /* EN pline("A trap door opens up under you!"); */
 		else 
-			pline("There's a gaping hole under you!"); /* EN pline("There's a gaping hole under you!"); */ // TODO DE
+			pline("Unter KASUS_DATIV PRONOMEN_PERSONAL klafft ein riesengroﬂes Loch!"); /* EN pline("There's a gaping hole under you!"); */
 	    }
 	} else pline_The("%s VERB_OEFFNEN sich unter KASUS_DATIV PRONOMEN_PERSONAL!", surface(u.ux,u.uy)); /* EN } else pline_The("%s opens up under you!", surface(u.ux,u.uy)); */
 
@@ -373,7 +373,7 @@ boolean td;	/* td == TRUE : trap door or hole */
 	    impact_drop((struct obj *)0, u.ux, u.uy, 0);
 	    if (!td) {
 		display_nhwindow(WIN_MESSAGE, FALSE);
-		pline_The("opening under you closes up."); /* EN pline_The("opening under you closes up."); */ // TODO DE
+		pline("Das Loch unter KASUS_DATIV PRONOMEN_PERSONAL schlieﬂt sich wieder."); /* EN pline_The("opening under you closes up."); */
 	    }
 	    return;
 	}

@@ -280,7 +280,7 @@ pick_lock(pick) /* pick a lock with a given object */
 	}
 	ch = 0;		/* lint suppression */
 
-	if(!get_adjacent_loc((char *)0, "Invalid location!", u.ux, u.uy, &cc)) return 0;
+	if(!get_adjacent_loc((char *)0, "Invalid location!", u.ux, u.uy, &cc)) return 0; /* EN if(!get_adjacent_loc((char *)0, "Invalid location!", u.ux, u.uy, &cc)) return 0; */ // TODO DE
 	if (cc.x == u.ux && cc.y == u.uy) {	/* pick lock on a container */
 	    const char *verb;
 	    boolean it;

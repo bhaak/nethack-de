@@ -1498,7 +1498,7 @@ const char *nam;
     } else {	/* not a specific level; try branch names */
 	idx = find_branch(nam, (struct proto_dungeon *)0);
 	/* "<branch> to Xyzzy" */
-	if (idx < 0 && (p = strstri(nam, " to ")) != 0) /* EN if (idx < 0 && (p = strstri(nam, " to ")) != 0) */ // TODO DE
+	if (idx < 0 && (p = strstri(nam, " nach ")) != 0) /* EN if (idx < 0 && (p = strstri(nam, " to ")) != 0) */
 	    idx = find_branch(p + 4, (struct proto_dungeon *)0);
 
 	if (idx >= 0) {
@@ -1692,7 +1692,7 @@ boolean bymenu;
     /* I hate searching for the invocation pos while debugging. -dean */
     if (Invocation_lev(&u.uz)) {
 	putstr(win, 0, "");
-	Sprintf(buf, "Invocation position @ (%d,%d), hero @ (%d,%d)",
+	Sprintf(buf, "Invocation position @ (%d,%d), hero @ (%d,%d)", /* EN Sprintf(buf, "Invocation position @ (%d,%d), hero @ (%d,%d)", */ // TODO DE
 		inv_pos.x, inv_pos.y, u.ux, u.uy);
 	putstr(win, 0, buf);
     }

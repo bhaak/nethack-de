@@ -475,7 +475,7 @@ domonability()
 		pline("Unfortunately sound does not carry well through rock."); /* EN pline("Unfortunately sound does not carry well through rock."); */ // TODO DE
 	    else aggravate();
 	} else if (Upolyd)
-		pline("Any special ability you may have is purely reflexive."); /* EN pline("Any special ability you may have is purely reflexive."); */ // TODO DE
+		pline("Jegliche spezielle Fähigkeit, die SUBJECT_IM_SATZ PRONOMEN_PERSONAL vielleicht VERB_HABEN, ist rein instinktgesteuert."); /* EN pline("Any special ability you may have is purely reflexive."); */
 	else pline("In KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_NORMAL NOUN_GESTALT SUBJECT_IM_SATZ VERB_BESITZEN PRONOMEN_PERSONAL keine besondere Fähigkeit!"); /* EN else You("don't have a special ability in your normal form!"); */
 	return 0;
 }
@@ -879,7 +879,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	else if (u.ualign.record == 0)	you_are("ungläubig"); /* EN else if (u.ualign.record == 0)	you_are("nominally aligned"); */
 	else if (u.ualign.record >= -3)	you_are("vom rechten Weg abgekommen"); /* EN else if (u.ualign.record >= -3)	you_have("strayed"); */
 	else if (u.ualign.record >= -8)	you_have("gesündigt"); /* EN else if (u.ualign.record >= -8)	you_have("sinned"); */
-	else you_have("transgressed"); /* EN else you_have("transgressed"); */ // TODO DE
+	else you_are("vom rechten Glauben abgefallen"); /* EN else you_have("transgressed"); */
 #ifdef WIZARD
 	if (wizard) {
 		Sprintf(buf, " %d", u.ualign.record);
@@ -1204,9 +1204,9 @@ int final;
 	    dump(youwere, "haltingly aligned"); /* EN dump(youwere, "haltingly aligned"); */ // TODO DE
 	else if (u.ualign.record == 0)
 	    dump(youwere, "nominally aligned"); /* EN dump(youwere, "nominally aligned"); */ // TODO DE
-	else if (u.ualign.record >= -3)	dump("  You have ", "strayed"); /* EN else if (u.ualign.record >= -3)	dump("  You have ", "strayed"); */ // TODO DE
-	else if (u.ualign.record >= -8)	dump("  You have ", "sinned"); /* EN else if (u.ualign.record >= -8)	dump("  You have ", "sinned"); */ // TODO DE
-	else dump("  You have ", "transgressed"); /* EN else dump("  You have ", "transgressed"); */ // TODO DE
+	else if (u.ualign.record >= -3)	dump("  SUBJECT PRONOMEN_PERSONAL VERB_SEIN ", "vom rechten Weg abgekommen"); /* EN else if (u.ualign.record >= -3)	dump("  You have ", "strayed"); */
+	else if (u.ualign.record >= -8)	dump("  SUBJECT PRONOMEN_PERSONAL VERB_HABEN ", "gesündigt"); /* EN else if (u.ualign.record >= -8)	dump("  You have ", "sinned"); */
+	else dump("  SUBJECT PRONOMEN_PERSONAL VERB_SEIN ", "vom rechten Glauben abgefallen"); /* EN else dump("  You have ", "transgressed"); */
 #ifdef WIZARD
 	if (wizard) {
 		Sprintf(buf, " %d", u.ualign.record);
@@ -1660,8 +1660,8 @@ int final;
 	    you_have_never("die Daseinsform gewechselt"); /* EN you_have_never("changed form"); */
 #ifdef WIZARD
 	else if (wizard) {
-	    Sprintf(buf, "changed form %ld time%s", /* EN Sprintf(buf, "changed form %ld time%s", */ // TODO DE
-		    u.uconduct.polyselfs, plur(u.uconduct.polyselfs));
+	    Sprintf(buf, "die Daseinsform %ld-mal gewechselt", /* EN Sprintf(buf, "changed form %ld time%s", */
+		    u.uconduct.polyselfs); /* EN u.uconduct.polyselfs, plur(u.uconduct.polyselfs)); */
 	    you_have_X(buf);
 	}
 #endif
@@ -1674,8 +1674,8 @@ int final;
 	    you_have_X(buf);
 
 	    if (!u.uconduct.wisharti)
-		enl_msg(You_, "have not wished", "did not wish", /* EN enl_msg(You_, "have not wished", "did not wish", */ // TODO DE
-			" for any artifacts"); /* EN " for any artifacts"); */ // TODO DE
+		enl_msg(You_, "VERB_HABEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL", "VERB_HABEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL", /* EN enl_msg(You_, "have not wished", "did not wish", */
+			" keine Artifakte gewünscht"); /* EN " for any artifacts"); */
 	}
 
 	/* Pop up the window and wait for a key */
@@ -1911,20 +1911,20 @@ static const struct func_tab cmdlist[] = {
 
 struct ext_func_tab extcmdlist[] = {
 	{"adjust", "adjust inventory letters", doorganize, TRUE}, /* EN {"adjust", "adjust inventory letters", doorganize, TRUE}, */ // TODO DE
-	{"chat", "talk to someone", dotalk, TRUE},	/* converse? */ /* EN {"chat", "talk to someone", dotalk, TRUE},	*/ // TODO DE
+	{"chat", "sprich mit Jemandem", dotalk, TRUE},	/* converse? */ /* EN {"chat", "talk to someone", dotalk, TRUE},	*/
 	{"conduct", "list which challenges you have adhered to", doconduct, TRUE}, /* EN {"conduct", "list which challenges you have adhered to", doconduct, TRUE}, */ // TODO DE
 	{"dip", "dip an object into something", dodip, FALSE}, /* EN {"dip", "dip an object into something", dodip, FALSE}, */ // TODO DE
 	{"enhance", "advance or check weapons skills", enhance_weapon_skill, /* EN {"enhance", "advance or check weapons skills", enhance_weapon_skill, */ // TODO DE
 							TRUE},
 	{"force", "force a lock", doforce, FALSE}, /* EN {"force", "force a lock", doforce, FALSE}, */ // TODO DE
 	{"invoke", "invoke an object's powers", doinvoke, TRUE}, /* EN {"invoke", "invoke an object's powers", doinvoke, TRUE}, */ // TODO DE
-	{"jump", "jump to a location", dojump, FALSE}, /* EN {"jump", "jump to a location", dojump, FALSE}, */ // TODO DE
+	{"jump", "springe an eine Stelle", dojump, FALSE}, /* EN {"jump", "jump to a location", dojump, FALSE}, */
 	{"loot", "loot a box on the floor", doloot, FALSE}, /* EN {"loot", "loot a box on the floor", doloot, FALSE}, */ // TODO DE
 	{"monster", "use a monster's special ability", domonability, TRUE}, /* EN {"monster", "use a monster's special ability", domonability, TRUE}, */ // TODO DE
 	{"name", "name an item or type of object", ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */ // TODO DE
 	{"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, /* EN {"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, */ // TODO DE
-	{"pray", "pray to the gods for help", dopray, TRUE}, /* EN {"pray", "pray to the gods for help", dopray, TRUE}, */ // TODO DE
-	{"quit", "exit without saving current game", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */ // TODO DE
+	{"pray", "bete zu den Göttern um Hilfe", dopray, TRUE}, /* EN {"pray", "pray to the gods for help", dopray, TRUE}, */
+	{"quit", "verlasse das laufende Spiel ohne zu speichern", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */
 #ifdef STEED
 	{"ride", "ride (or stop riding) a monster", doride, FALSE}, /* EN {"ride", "ride (or stop riding) a monster", doride, FALSE}, */ // TODO DE
 #endif
@@ -1932,7 +1932,7 @@ struct ext_func_tab extcmdlist[] = {
 	{"sit", "sit down", dosit, FALSE}, /* EN {"sit", "sit down", dosit, FALSE}, */ // TODO DE
 	{"turn", "turn undead", doturn, TRUE}, /* EN {"turn", "turn undead", doturn, TRUE}, */ // TODO DE
 	{"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, /* EN {"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, */ // TODO DE
-	{"untrap", "etwas entschärfen", dountrap, FALSE}, /* EN {"untrap", "untrap something", dountrap, FALSE}, */ // TODO DE
+	{"untrap", "etwas entschärfen", dountrap, FALSE}, /* EN {"untrap", "untrap something", dountrap, FALSE}, */
 	{"version", "list compile time options for this version of NetHack", /* EN {"version", "list compile time options for this version of NetHack", */ // TODO DE
 		doextversion, TRUE},
 	{"wipe", "wipe off your face", dowipe, FALSE}, /* EN {"wipe", "wipe off your face", dowipe, FALSE}, */ // TODO DE
@@ -1973,9 +1973,9 @@ static const struct ext_func_tab debug_extcmdlist[] = {
 #ifdef PORT_DEBUG
 	{"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, /* EN {"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, */ // TODO DE
 #endif
-	{"seenv", "show seen vectors", wiz_show_seenv, TRUE}, /* EN {"seenv", "show seen vectors", wiz_show_seenv, TRUE}, */ // TODO DE
-	{"showkills", "show list of monsters killed", wiz_showkills, TRUE}, /* EN {"showkills", "show list of monsters killed", wiz_showkills, TRUE}, */ // TODO DE
-	{"stats", "show memory statistics", wiz_show_stats, TRUE}, /* EN {"stats", "show memory statistics", wiz_show_stats, TRUE}, */ // TODO DE
+	{"seenv", "zeige gesehene Vektoren", wiz_show_seenv, TRUE}, /* EN {"seenv", "show seen vectors", wiz_show_seenv, TRUE}, */
+	{"showkills", "zeige einer Liste aller getöteten Wesen", wiz_showkills, TRUE}, /* EN {"showkills", "show list of monsters killed", wiz_showkills, TRUE}, */
+	{"stats", "zeige Speicher-Statistiken", wiz_show_stats, TRUE}, /* EN {"stats", "show memory statistics", wiz_show_stats, TRUE}, */
 	{"timeout", "look at timeout queue", wiz_timeout_queue, TRUE}, /* EN {"timeout", "look at timeout queue", wiz_timeout_queue, TRUE}, */ // TODO DE
 	{"vision", "show vision array", wiz_show_vision, TRUE}, /* EN {"vision", "show vision array", wiz_show_vision, TRUE}, */ // TODO DE
 #ifdef DEBUG
@@ -2355,7 +2355,7 @@ register char *cmd;
 		if ((*cmd & 0xff) != (tlist->f_char & 0xff)) continue;
 
 		if (u.uburied && !tlist->can_if_buried) {
-		    You_cant("do that while you are buried!"); /* EN You_cant("do that while you are buried!"); */ // TODO DE
+		    You("VERB_KOENNEN das nicht tun, solange NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL begraben VERB_SEIN!"); /* EN You_cant("do that while you are buried!"); */
 		    res = 0;
 		} else {
 		    /* we discard 'const' because some compilers seem to have
@@ -2542,9 +2542,9 @@ const char *msg;
 		putstr(win, 0, "");
 		putstr(win, 0, expl);
 		putstr(win, 0, "");
-		putstr(win, 0, "To use that command, you press"); /* EN putstr(win, 0, "To use that command, you press"); */ // TODO DE
+		putstr(win, 0, "Um diesen Befehl zu benutzen, MODIFIER_VERB_IMPERATIV VERB_DRUECKEN"); /* EN putstr(win, 0, "To use that command, you press"); */
 		Sprintf(buf,
-			"the <Ctrl> key, and the <%c> key at the same time.", sym); /* EN "the <Ctrl> key, and the <%c> key at the same time.", sym); */ // TODO DE
+			"die <Strg>-Taste und die <%c>-Taste zur selben Zeit.", sym); /* EN "the <Ctrl> key, and the <%c> key at the same time.", sym); */
 		putstr(win, 0, buf);
 		putstr(win, 0, "");
 	    }
