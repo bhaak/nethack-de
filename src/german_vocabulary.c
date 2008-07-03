@@ -6648,21 +6648,21 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Riesenmumie", "NOUN_GIANT_MUMMY", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Riesenmumien", "NOUN_GIANT_MUMMYs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Rotnagaschlüpflings", "NOUN_RED_NAGA_HATCHLING", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Rotnagaschlüpfling", "NOUN_RED_NAGA_HATCHLING", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Rotnagaschlüpflings", "NOUN_RED_NAGA_HATCHLINGs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Rotnagaschlüpflings", "NOUN_RED_NAGA_HATCHLING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rotnagaschlüpfling", "NOUN_RED_NAGA_HATCHLING", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rotnagaschlüpflings", "NOUN_RED_NAGA_HATCHLINGs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Schwarznagaschlüpflings", "NOUN_BLACK_NAGA_HATCHLING", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Schwarznagaschlüpfling", "NOUN_BLACK_NAGA_HATCHLING", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Schwarznagaschlüpflings", "NOUN_BLACK_NAGA_HATCHLINGs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarznagaschlüpflings", "NOUN_BLACK_NAGA_HATCHLING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarznagaschlüpfling", "NOUN_BLACK_NAGA_HATCHLING", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarznagaschlüpflings", "NOUN_BLACK_NAGA_HATCHLINGs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Goldnagaschlüpflings", "NOUN_GOLDEN_NAGA_HATCHLING", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Goldnagaschlüpfling", "NOUN_GOLDEN_NAGA_HATCHLING", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Goldnagaschlüpflings", "NOUN_GOLDEN_NAGA_HATCHLINGs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Goldnagaschlüpflings", "NOUN_GOLDEN_NAGA_HATCHLING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Goldnagaschlüpfling", "NOUN_GOLDEN_NAGA_HATCHLING", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Goldnagaschlüpflings", "NOUN_GOLDEN_NAGA_HATCHLINGs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Schutznagaschlüpflings", "NOUN_GUARDIAN_NAGA_HATCHLING", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Schutznagaschlüpfling", "NOUN_GUARDIAN_NAGA_HATCHLING", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Schutznagaschlüpflings", "NOUN_GUARDIAN_NAGA_HATCHLINGs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schutznagaschlüpflings", "NOUN_GUARDIAN_NAGA_HATCHLING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schutznagaschlüpfling", "NOUN_GUARDIAN_NAGA_HATCHLING", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schutznagaschlüpflings", "NOUN_GUARDIAN_NAGA_HATCHLINGs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Rotnagas", "NOUN_RED_NAGA", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Rotnaga", "NOUN_RED_NAGA", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},

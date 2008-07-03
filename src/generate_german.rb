@@ -2557,10 +2557,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HUMAN_MUMMY", "Menschenmumie", "", "Menschenmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_ETTIN_MUMMY", "Ettinmumie", "", "Ettinmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_GIANT_MUMMY", "Riesenmumie", "", "Riesenmumie", "en", "feminin", "n"),
-    dekliniere_substantiv("NOUN_RED_NAGA_HATCHLING", "Rotnagaschlüpfling", "s", "Rotnagaschlüpfling", "s", "feminin"), # Rotnagaküken, Rotnagaschlüpfling
-    dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING", "Schwarznagaschlüpfling", "s", "Schwarznagaschlüpfling", "s", "feminin"),
-    dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING", "Goldnagaschlüpfling", "s", "Goldnagaschlüpfling", "s", "feminin"),
-    dekliniere_substantiv("NOUN_GUARDIAN_NAGA_HATCHLING", "Schutznagaschlüpfling", "s", "Schutznagaschlüpfling", "s", "feminin"),
+    dekliniere_substantiv("NOUN_RED_NAGA_HATCHLING", "Rotnagaschlüpfling", "s", "Rotnagaschlüpfling", "s", "maskulin"), # Rotnagaküken, Rotnagaschlüpfling
+    dekliniere_substantiv("NOUN_BLACK_NAGA_HATCHLING", "Schwarznagaschlüpfling", "s", "Schwarznagaschlüpfling", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GOLDEN_NAGA_HATCHLING", "Goldnagaschlüpfling", "s", "Goldnagaschlüpfling", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GUARDIAN_NAGA_HATCHLING", "Schutznagaschlüpfling", "s", "Schutznagaschlüpfling", "s", "maskulin"),
     dekliniere_substantiv("NOUN_RED_NAGA", "Rotnaga", "s", "Rotnaga", "s", "feminin"), # Rotnaga, rote Naga, roter Naga?
     dekliniere_substantiv("NOUN_BLACK_NAGA", "Schwarznaga", "s", "Schwarznaga", "s", "feminin"), 
     dekliniere_substantiv("NOUN_GOLDEN_NAGA", "Goldnaga", "s", "Goldnaga", "s", "feminin"),
