@@ -44,14 +44,7 @@ STATIC_DCL void FDECL(sort_valuables, (struct valuable_data *,int));
 STATIC_DCL void FDECL(artifact_score, (struct obj *,BOOLEAN_P,winid));
 STATIC_DCL void FDECL(savelife, (int));
 STATIC_DCL void FDECL(list_vanquished, (CHAR_P,BOOLEAN_P));
-#ifdef DUMP_LOG
-extern void NDECL(dump_spells);
-extern const char * FDECL(compress_str, (const char *)); /* from wintty */
-void FDECL(do_vanquished, (int, BOOLEAN_P, BOOLEAN_P));
-STATIC_DCL void FDECL(list_genocided, (int, BOOLEAN_P, BOOLEAN_P));
-#else
 STATIC_DCL void FDECL(list_genocided, (CHAR_P,BOOLEAN_P));
-#endif
 STATIC_DCL boolean FDECL(should_query_disclose_option, (int,char *));
 
 #if defined(__BEOS__) || defined(MICRO) || defined(WIN32) || defined(OS2)
@@ -106,62 +99,6 @@ static NEARDATA const char *ends_hilfsverb[] = {		/* "als du <verb> ..." */
 #endif
 
 extern const char * const killed_by_prefix[];	/* from topten.c */
-
-#ifdef DUMP_LOG
-FILE *dump_fp = (FILE *)0;  /* file pointer for dumps */
-/* functions dump_init, dump_exit and dump are from the dump patch */
-
-void
-dump_init ()
-{
-  if (dump_fn[0]) {
-    char *p = (char *) strstr(dump_fn, "%n");
-    if (p) {
-      int new_dump_fn_len = strlen(dump_fn)+strlen(plname)-2; /* %n */
-      char *new_dump_fn = (char *) alloc((unsigned)(new_dump_fn_len+1));
-      char *q = new_dump_fn;
-      strncpy(q, dump_fn, p-dump_fn);
-      q += p-dump_fn;
-      strncpy(q, plname, strlen(plname) + 1);
-      regularize(q);
-      q[strlen(plname)] = '\0';
-      q += strlen(q);
-      p += 2;	/* skip "%n" */
-      strncpy(q, p, strlen(p));
-      new_dump_fn[new_dump_fn_len] = '\0';
-
-      dump_fp = fopen(new_dump_fn, "w");
-      if (!dump_fp) {
-	pline("Can't open %s for output.", new_dump_fn); /* EN pline("Can't open %s for output.", new_dump_fn); */ // TODO DE
-	pline("Dump file not created."); /* EN pline("Dump file not created."); */ // TODO DE
-      }
-      free(new_dump_fn);
-      
-    } else {
-      dump_fp = fopen (dump_fn, "w");
-
-      if (!dump_fp) {
-	pline("Can't open %s for output.", dump_fn); /* EN pline("Can't open %s for output.", dump_fn); */ // TODO DE
-	pline("Dump file not created."); /* EN pline("Dump file not created."); */ // TODO DE
-      }
-    }
-  }
-}
-
-void
-dump_exit ()
-{
-  if (dump_fp)
-    fclose (dump_fp);
-}
-
-void dump (pre, str)
-     char *pre, *str;
-{
-  if (dump_fp)
-    fprintf (dump_fp, "%s%s\n", pre, str);
-}
-#endif  /* DUMP_LOG */
 
 /*ARGSUSED*/
 void
@@ -475,13 +412,8 @@ boolean taken;
 			    makeknown(obj->otyp);
 			    obj->known = obj->bknown = obj->dknown = obj->rknown = 1;
 			}
-#ifdef DUMP_LOG
-			(void) dump_inventory((char *)0, TRUE);
-			do_containerconts(invent, TRUE, TRUE, TRUE);
-#else
 			(void) display_inventory((char *)0, TRUE);
 			container_contents(invent, TRUE, TRUE);
-#endif
 		}
 		if (c == 'q')  done_stopprint++;
 	    }
@@ -496,28 +428,14 @@ boolean taken;
 		enlightenment(how >= PANICKED ? 1 : 2); /* final */
 	    if (c == 'q') done_stopprint++;
 	}
-#ifdef DUMP_LOG
-	if (dump_fp) {
-	  dump_enlightenment((int) (how >= PANICKED ? 1 : 2));
-	  dump_spells();
-	}
-#endif
 
 	ask = should_query_disclose_option('v', &defquery);
 	if (!done_stopprint)
-#ifdef DUMP_LOG
-	    do_vanquished(defquery, ask, TRUE);
-#else
 	    list_vanquished(defquery, ask);
-#endif
 
 	ask = should_query_disclose_option('g', &defquery);
 	if (!done_stopprint)
-#ifdef DUMP_LOG
-	    list_genocided(defquery, ask,TRUE);
-#else
 	    list_genocided(defquery, ask);
-#endif
 
 	ask = should_query_disclose_option('c', &defquery);
 	if (!done_stopprint) {
@@ -527,12 +445,6 @@ boolean taken;
 		show_conduct(how >= PANICKED ? 1 : 2);
 	    if (c == 'q') done_stopprint++;
 	}
-#ifdef DUMP_LOG
-	if (dump_fp) {
-	    dump_conduct(how >= PANICKED ? 1 : 2);
-	    dump_weapon_skill();
-	}
-#endif
 }
 
 /* try to get the player back in a viable state after being killed */
@@ -652,10 +564,6 @@ winid endwin;
 				OBJ_NAME(objects[otmp->otyp]),
 			value, currency(value), points);
 		putstr(endwin, 0, pbuf);
-#ifdef DUMP_LOG
-		if (dump_fp)
-		  dump("", pbuf);
-#endif
 	    }
 	}
 	if (Has_contents(otmp))
@@ -744,22 +652,6 @@ int how;
 
 die:
 	program_state.gameover = 1;
-#ifdef DUMP_LOG
-	/* D: Grab screen dump right here */
-	if (dump_fn[0]) {
-	  dump_init();
-	  Sprintf(pbuf, "%s, %s %s %s %s", plname,
-		  aligns[1 - u.ualign.type].adj,
-		  genders[flags.female].adj,
-		  urace.adj,
-		  (flags.female && urole.name.f)?
-		   urole.name.f : urole.name.m);
-	  dump("", pbuf);
-	  /* D: Add a line for clearance from the screen dump */
-	  dump("", "");
-	  dump_screen();
-	}
-#endif
 	/* in case of a subsequent panic(), there's no point trying to save */
 	program_state.something_worth_saving = 0;
 	/* render vision subsystem inoperative */
@@ -918,18 +810,15 @@ die:
 		/* don't bother counting to see whether it should be plural */
 	}
 
-	Sprintf(pbuf, "%s %s ARTIKEL_BESTIMMTER %s ...", Goodbye(), plname, /* EN Sprintf(pbuf, "%s %s the %s...", Goodbye(), plname, */ // TODO DE
-		how != ASCENDED ?
-		(const char *) ((flags.female && urole.name.f) ?
-				urole.name.f : urole.name.m) :
-		(const char *) (flags.female ? "NOUN_HALBGOETTIN" : "NOUN_HALBGOTT")); /* EN (const char *) (flags.female ? "Demigoddess" : "Demigod")); */
 	if (!done_stopprint) {
+	    Sprintf(pbuf, "%s %s ARTIKEL_BESTIMMTER %s ...", Goodbye(), plname,
+		   how != ASCENDED ?
+		      (const char *) ((flags.female && urole.name.f) ?
+		         urole.name.f : urole.name.m) :
+		      (const char *) (flags.female ? "NOUN_HALBGOETTIN" : "NOUN_HALBGOTT")); /* EN (const char *) (flags.female ? "Demigoddess" : "Demigod")); */
 	    putstr(endwin, 0, pbuf);
 	    putstr(endwin, 0, "");
 	}
-#ifdef DUMP_LOG
-	if (dump_fp) dump("", pbuf);
-#endif
 
 	if (how == ESCAPED || how == ASCENDED) {
 	    register struct monst *mtmp;
@@ -956,30 +845,25 @@ die:
 	    keepdogs(TRUE);
 	    viz_array[0][0] |= IN_SIGHT; /* need visibility for naming */
 	    mtmp = mydogs;
-	    Strcpy(pbuf, "SUBJECT PRONOMEN_PERSONAL"); /* EN Strcpy(pbuf, "You"); */
+	    if (!done_stopprint) Strcpy(pbuf, "SUBJECT PRONOMEN_PERSONAL"); /* EN if (!done_stopprint) Strcpy(pbuf, "You"); */
 	    if (mtmp) {
 		while (mtmp) {
-		    Sprintf(eos(pbuf), " und SUBJECT_IM_SATZ %s MODIFIER_VERB_PLURAL", mon_nam(mtmp)); /* EN Sprintf(eos(pbuf), " and %s", mon_nam(mtmp)); */
+		    if (!done_stopprint)
+			Sprintf(eos(pbuf), " und SUBJECT_IM_SATZ %s MODIFIER_VERB_PLURAL", mon_nam(mtmp)); /* EN Sprintf(eos(pbuf), " and %s", mon_nam(mtmp)); */
 		    if (mtmp->mtame)
 			u.urexp += mtmp->mhp;
 		    mtmp = mtmp->nmon;
 		}
 		if (!done_stopprint) putstr(endwin, 0, pbuf);
-#ifdef DUMP_LOG
-		if (dump_fp) dump("", pbuf);
-#endif
 		Strcpy(pbuf, "MODIFIER_VERB_PLURAL "); /* EN pbuf[0] = '\0'; */ // TODO DE naechstes Verb wird grossgeschrieben
 	    } else {
 		if (!done_stopprint) Strcat(pbuf, " ");
 	    }
-	    Sprintf(eos(pbuf), "%s mit %ld Punkt%s,", /* EN Sprintf(eos(pbuf), "%s with %ld point%s,", */ // TODO DE
+	    if (!done_stopprint) {
+		Sprintf(eos(pbuf), "%s mit %ld Punkt%s,", /* EN Sprintf(eos(pbuf), "%s with %ld point%s,", */
 			how==ASCENDED ? "MODIFIER_VERB_PRAETERITUM VERB_BEKOMMEN OBJECT PRONOMEN_POSSESSIV ADJEKTIV_WOHLVERDIENT NOUN_BELOHNUNG" : /* EN how==ASCENDED ? "went to your reward" : */ // TODO DE
 					"VERB_SEIN aus dem Dungeon", /* EN "escaped from the dungeon", */ // TODO DE
 			u.urexp, (u.urexp == 1) ? "" : "en"); /* EN u.urexp, plur(u.urexp)); */
-#ifdef DUMP_LOG
-		if (dump_fp) dump("", pbuf);
-#endif
-	    if (!done_stopprint) {
 		putstr(endwin, 0, pbuf);
 	    }
 
@@ -1011,9 +895,6 @@ die:
 				count, plur(count));
 		    }
 		    putstr(endwin, 0, pbuf);
-#ifdef DUMP_LOG
-		    if (dump_fp) dump("", pbuf);
-#endif
 		}
 	    }
 
@@ -1038,22 +919,12 @@ die:
 	    Sprintf(eos(pbuf), " mit %ld Punkt%s,", /* EN Sprintf(eos(pbuf), " with %ld point%s,", */
 		    u.urexp, (u.urexp == 1) ? "" : "en"); /* EN u.urexp, plur(u.urexp)); */
 	    putstr(endwin, 0, pbuf);
-#ifdef DUMP_LOG
-	    if (dump_fp) dump("", pbuf);
-#endif
 	}
 
 	if (!done_stopprint) {
 	    Sprintf(pbuf, "und KASUS_DATIV %ld NOUN_GOLD_PIECE%s, nach %ld %s, %s.", /* EN Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", */
 		    umoney, (umoney == 1) ? "" : "s", moves, (moves == 1) ? "Zug" : "Zügen", ends[how]); /* EN umoney, plur(umoney), moves, plur(moves)); */
 	    putstr(endwin, 0, pbuf);
-#ifdef DUMP_LOG
-	    if (dump_fp) {
-	      dump("", pbuf);
-	      Sprintf(pbuf, "Todesursache: %s", killer); /* EN Sprintf(pbuf, "Killer: %s", killer); */
-	      dump("", pbuf);
-	    }
-#endif
 	}
 	if (!done_stopprint) {
 	    Sprintf(pbuf,
@@ -1061,9 +932,6 @@ die:
 		    u.ulevel, u.uhpmax, (u.uhpmax == 1) ? "" : "en", ends[how], ends_hilfsverb[how]); /* EN u.ulevel, u.uhpmax, plur(u.uhpmax), ends[how]); */
 	    putstr(endwin, 0, pbuf);
 	    putstr(endwin, 0, "");
-#ifdef DUMP_LOG
-	    if (dump_fp) dump("", pbuf);
-#endif
 	}
 	if (!done_stopprint)
 	    display_nhwindow(endwin, TRUE);
@@ -1081,9 +949,6 @@ die:
 		exit_nhwindows((char *)0);
 	    topten(how);
 	}
-#ifdef DUMP_LOG
-	if (dump_fp) dump_exit();
-#endif
 
 	if(done_stopprint) { raw_print(""); raw_print(""); }
 	terminate(EXIT_SUCCESS);
@@ -1094,16 +959,6 @@ void
 container_contents(list, identified, all_containers)
 struct obj *list;
 boolean identified, all_containers;
-#ifdef DUMP_LOG
-{
-	do_containerconts(list, identified, all_containers, FALSE);
-}
-
-void do_containerconts(list, identified, all_containers, want_dump)
-struct obj *list;
-boolean identified, all_containers, want_dump;
-#endif
-/* The original container_contents function */
 {
 	register struct obj *box, *obj;
 	char buf[BUFSZ];
@@ -1117,9 +972,6 @@ boolean identified, all_containers, want_dump;
 		    Sprintf(buf, "Inhalt KASUS_GENITIV %s:", the(xname(box))); /* EN Sprintf(buf, "Contents of %s:", the(xname(box))); */
 		    putstr(tmpwin, 0, buf);
 		    putstr(tmpwin, 0, "");
-#ifdef DUMP_LOG
-		    if (dump_fp) dump("", buf);
-#endif
 		    for (obj = box->cobj; obj; obj = obj->nobj) {
 			if (identified) {
 			    makeknown(obj->otyp);
@@ -1127,32 +979,14 @@ boolean identified, all_containers, want_dump;
 			    obj->dknown = obj->rknown = 1;
 			}
 			putstr(tmpwin, 0, doname(obj));
-#ifdef DUMP_LOG
-			if (want_dump)  dump("  ", doname(obj));
-#endif
 		    }
-#ifdef DUMP_LOG
-		    if (want_dump) dump("", "");
-#endif
 		    display_nhwindow(tmpwin, TRUE);
 		    destroy_nhwindow(tmpwin);
-		    if (all_containers) {
-#ifdef DUMP_LOG
-			do_containerconts(box->cobj, identified, TRUE,
-					  want_dump);
-#else
+		    if (all_containers)
 			container_contents(box->cobj, identified, TRUE);
-#endif
-		    }
 		} else {
 		    pline("SUBJECT %s leer.", Tobjnam(box, "VERB_SEIN")); /* EN pline("%s empty.", Tobjnam(box, "are")); */
 		    display_nhwindow(WIN_MESSAGE, FALSE);
-#ifdef DUMP_LOG
-		    if (want_dump) {
-		      dump(The(xname(box)), " VERB_SEIN leer."); /* EN dump(The(xname(box)), " is empty."); */
-		      dump("", "");
-		    }
-#endif
 		}
 	    }
 	    if (!all_containers)
@@ -1183,17 +1017,6 @@ STATIC_OVL void
 list_vanquished(defquery, ask)
 char defquery;
 boolean ask;
-#ifdef DUMP_LOG
-{
-  do_vanquished(defquery, ask, FALSE);
-}
-
-void
-do_vanquished(defquery, ask, want_dump)
-int defquery;
-boolean ask;
-boolean want_dump;
-#endif
 {
     register int i, lev;
     int ntypes = 0, max_lev = 0, nkilled;
@@ -1220,9 +1043,6 @@ boolean want_dump;
 	    klwin = create_nhwindow(NHW_MENU);
 	    putstr(klwin, 0, "Bezwungene Kreaturen:"); /* EN putstr(klwin, 0, "Vanquished creatures:"); */
 	    putstr(klwin, 0, "");
-#ifdef DUMP_LOG
-	    if (want_dump)  dump("", "Bezwungene Kreaturen"); /* EN if (want_dump)  dump("", "Vanquished creatures"); */
-#endif
 
 	    /* countdown by monster "toughness" */
 	    for (lev = max_lev; lev >= 0; lev--)
@@ -1251,9 +1071,6 @@ boolean want_dump;
 				    nkilled, makeplural(mons[i].mname));
 		    }
 		    putstr(klwin, 0, buf);
-#ifdef DUMP_LOG
-		    if (want_dump)  dump("  ", buf);
-#endif
 		}
 	    /*
 	     * if (Hallucination)
@@ -1263,15 +1080,9 @@ boolean want_dump;
 		putstr(klwin, 0, "");
 		Sprintf(buf, "%ld Kreaturen bezwungen.", total_killed); /* EN Sprintf(buf, "%ld creatures vanquished.", total_killed); */
 		putstr(klwin, 0, buf);
-#ifdef DUMP_LOG
-		if (want_dump)  dump("  ", buf);
-#endif
 	    }
 	    display_nhwindow(klwin, TRUE);
 	    destroy_nhwindow(klwin);
-#ifdef DUMP_LOG
-	    if (want_dump)  dump("", "");
-#endif
 	}
     }
 }
@@ -1288,18 +1099,10 @@ num_genocides()
     return n;
 }
 
-#ifdef DUMP_LOG
-STATIC_OVL void
-list_genocided(defquery, ask, want_dump)
-int defquery;
-boolean ask;
-boolean want_dump;
-#else
 STATIC_OVL void
 list_genocided(defquery, ask)
 char defquery;
 boolean ask;
-#endif
 {
     register int i;
     int ngenocided;
@@ -1318,9 +1121,6 @@ boolean ask;
 	    klwin = create_nhwindow(NHW_MENU);
 	    putstr(klwin, 0, "Genocided species:"); /* EN putstr(klwin, 0, "Genocided species:"); */ // TODO DE
 	    putstr(klwin, 0, "");
-#ifdef DUMP_LOG
-	    if (want_dump)  dump("", "Genocided species"); /* EN if (want_dump)  dump("", "Genocided species"); */ // TODO DE
-#endif
 
 	    for (i = LOW_PM; i < NUMMONS; i++)
 		if (mvitals[i].mvflags & G_GENOD) {
@@ -1331,17 +1131,11 @@ boolean ask;
 		    else
 			Strcpy(buf, makeplural(mons[i].mname));
 		    putstr(klwin, 0, buf);
-#ifdef DUMP_LOG
-		    if (want_dump)  dump("  ", buf);
-#endif
 		}
 
 	    putstr(klwin, 0, "");
 	    Sprintf(buf, "%d species genocided.", ngenocided); /* EN Sprintf(buf, "%d species genocided.", ngenocided); */ // TODO DE
 	    putstr(klwin, 0, buf);
-#ifdef DUMP_LOG
-	    if (want_dump)  dump("", "");
-#endif
 
 	    display_nhwindow(klwin, TRUE);
 	    destroy_nhwindow(klwin);

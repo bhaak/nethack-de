@@ -176,16 +176,10 @@ botl_score()
 }
 #endif
 
-#ifdef DUMP_LOG
-void bot1str(char *newbot1)
-#else
 STATIC_OVL void
 bot1()
-#endif
 {
-#ifndef DUMP_LOG
 	char newbot1[MAXCO];
-#endif
 	register char *nb;
 	register int i,j;
 
@@ -243,15 +237,6 @@ bot1()
 	if (flags.showscore)
 	    Sprintf(nb = eos(nb), " S:%ld", botl_score());
 #endif
-#ifdef DUMP_LOG
-}
-STATIC_OVL void
-bot1()
-{
-	char newbot1[MAXCO];
-
-	bot1str(newbot1);
-#endif
 	curs(WIN_STATUS, 1, 0);
 	putstr(WIN_STATUS, 0, newbot1);
 }
@@ -279,17 +264,10 @@ char *buf;
 	return ret;
 }
 
-#ifdef DUMP_LOG
-void bot2str(newbot2)
-char* newbot2;
-#else
 STATIC_OVL void
 bot2()
-#endif
 {
-#ifndef DUMP_LOG
 	char  newbot2[MAXCO];
-#endif
 	register char *nb;
 	int hp, hpmax;
 	int cap = near_capacity();
@@ -336,14 +314,6 @@ bot2()
 	if(Slimed)         Sprintf(nb = eos(nb), " Schleim"); /* EN if(Slimed)         Sprintf(nb = eos(nb), " Slime"); */ // TODO DE
 	if(cap > UNENCUMBERED)
 		Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
-#ifdef DUMP_LOG
-}
-STATIC_OVL void
-bot2()
-{
-	char newbot2[MAXCO];
-	bot2str(newbot2);
-#endif
 	curs(WIN_STATUS, 1, 1);
 	putstr(WIN_STATUS, 0, newbot2);
 }

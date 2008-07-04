@@ -1118,35 +1118,6 @@ int *spell_no;
 	return FALSE;
 }
 
-#ifdef DUMP_LOG
-void 
-dump_spells()
-{
-	int i, n;
-	char buf[BUFSZ];
-
-	if (spellid(0) == NO_SPELL) {
-	    dump("", "You didn't know any spells."); /* EN dump("", "You didn't know any spells."); */ // TODO DE
-	    dump("", "");
-	    return;
-	}
-	dump("", "Spells known in the end"); /* EN dump("", "Spells known in the end"); */ // TODO DE
-
-	Sprintf(buf, "%-33s   Stufe    %-12s Fail", "    Name", "Kategorie"); /* EN Sprintf(buf, "%-20s   Level    %-12s Fail", "    Name", "Category"); */ // TODO DE
-	dump("  ",buf);
-	for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
-		Sprintf(buf, "%c - %-20s  %2d%s   %-12s %3d%%",
-			spellet(i), spellname(i), spellev(i),
-			spellknow(i) ? " " : "*",
-			spelltypemnemonic(spell_skilltype(spellid(i))),
-			100 - percent_success(i));
-		dump("  ", buf);
-	}
-	dump("","");
-
-} /* dump_spells */
-#endif
-
 /* Integer square root function without using floating point. */
 STATIC_OVL int
 isqrt(val)
