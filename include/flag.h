@@ -217,10 +217,6 @@ struct instance_flags {
 	boolean lan_mail;	/* mail is initialized */
 	boolean lan_mail_fetched; /* mail is awaiting display */
 #endif
-#ifdef PARANOID
-	boolean  paranoid_hit;  /* Ask for 'yes' when hitting peacefuls */
-	boolean  paranoid_quit; /* Ask for 'yes' when quitting */
-#endif
 /*
  * Window capability support.
  */
