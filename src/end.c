@@ -126,21 +126,7 @@ int sig_unused;
 int
 done2()
 {
-#ifdef PARANOID
-	char buf[BUFSZ];
-	int really_quit = FALSE;
-
-	if (iflags.paranoid_quit) {
-	  getlin ("Wirklich abbrechen [ja/nein]?",buf); /* EN getlin ("Really quit [yes/no]?",buf); */
-	  (void) lcase (buf);
-	  if (!(strcmp (buf, "ja"))) really_quit = TRUE; /* EN if (!(strcmp (buf, "yes"))) really_quit = TRUE; */
-	} else {
-		if(yn("Wirklich abbrechen?") == 'y') really_quit = TRUE; /* EN if(yn("Really quit?") == 'y') really_quit = TRUE; */
-	}
-	if (!really_quit) {
-#else /* PARANOID */
 	if(yn("Wirklich abbrechen?") == 'n') { /* EN if(yn("Really quit?") == 'n') { */
-#endif /* PARANOID */
 #ifndef NO_SIGNAL
 		(void) signal(SIGINT, (SIG_RET_TYPE) done1);
 #endif
