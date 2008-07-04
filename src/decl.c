@@ -235,10 +235,6 @@ const char *c_obj_colors[] = {
 	"ADJEKTIV_FARBE_WHITE",		/* CLR_WHITE */
 };
 
-#ifdef MENU_COLOR
-struct menucoloring *menu_colorings = 0;
-#endif
-
 struct c_common_strings c_common_strings = {
 	"Nothing happens.",		"That's enough tries!", /* EN "Nothing happens.",		"That's enough tries!", */ // TODO DE
 	"That is a silly thing to %s.",	"shudder for a moment.", /* EN "That is a silly thing to %s.",	"shudder for a moment.", */ // TODO DE

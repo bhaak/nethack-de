@@ -1395,9 +1395,6 @@ E void FDECL(set_duplicate_opt_detection, (int));
 E void FDECL(set_wc_option_mod_status, (unsigned long, int));
 E void FDECL(set_wc2_option_mod_status, (unsigned long, int));
 E void FDECL(set_option_mod_status, (const char *,int));
-#ifdef MENU_COLOR
-E boolean FDECL(add_menu_coloring, (char *));
-#endif
 
 /* ### pager.c ### */
 

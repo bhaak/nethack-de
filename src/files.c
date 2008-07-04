@@ -1779,10 +1779,6 @@ char		*tmp_levels;
 	} else if (match_varname(buf, "BOULDER", 3)) {
 	    (void) get_uchars(fp, buf, bufp, &iflags.bouldersym, TRUE,
 			      1, "BOULDER");
-	} else if (match_varname(buf, "MENUCOLOR", 9)) {
-#ifdef MENU_COLOR
-	   add_menu_coloring(bufp);
-#endif
 	} else if (match_varname(buf, "GRAPHICS", 4)) {
 	    len = get_uchars(fp, buf, bufp, translate, FALSE,
 			     MAXPCHARS, "GRAPHICS");

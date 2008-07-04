@@ -352,31 +352,6 @@ typedef unsigned char	uchar;
  * bugs left here.
  */
 
-#ifdef TTY_GRAPHICS
-# define MENU_COLOR
-#endif
-#ifndef __MINGW32__
-#define USE_REGEX_MATCH
-#endif
-/* if USE_REGEX_MATCH is defined, use regular expressions (GNU regex.h)
- * otherwise use pmatch() to match menu color lines.
- * pmatch() provides basic globbing: '*' and '?' wildcards.
- */
-#define DUMP_LOG
-#define DEATH_EXPLORE 
-#define PARANOID 
-#define SHOW_BORN 
-
-#ifdef TTY_GRAPHICS
-# define MENU_COLOR
-# ifndef __MINGW32__
-# define MENU_COLOR_REGEX
-# endif
-/* if MENU_COLOR_REGEX is defined, use regular expressions (GNU regex.h)
- * otherwise use pmatch() to match menu color lines.
- * pmatch() provides basic globbing: '*' and '?' wildcards.
- */
-#endif
 /*#define GOLDOBJ */	/* Gold is kept on obj chains - Helge Hafting */
 
 /* End of Section 5 */

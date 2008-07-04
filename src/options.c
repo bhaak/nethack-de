@@ -129,15 +129,6 @@ static struct Bool_Opt
 #else
 	{"mail", (boolean *)0, TRUE, SET_IN_FILE},
 #endif
-#ifdef MENU_COLOR
-# ifdef MICRO
-	{"menucolors", &iflags.use_menu_color, TRUE,  SET_IN_GAME},
-# else
-	{"menucolors", &iflags.use_menu_color, FALSE, SET_IN_GAME},
-# endif
-#else
-	{"menucolors", (boolean *)0, FALSE, SET_IN_GAME},
-#endif
 #ifdef WIZARD
 	/* for menu debugging only*/
 	{"menu_tab_sep", &iflags.menu_tab_sep, FALSE, SET_IN_GAME},
@@ -259,7 +250,6 @@ static struct Comp_Opt
 	{ "horsename", "the name of your (first) horse (e.g., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */ // TODO DE
 						PL_PSIZ, DISP_IN_GAME },
 	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/ // TODO DE
-	{ "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE }, /* EN { "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE }, */ // TODO DE
 	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
 						MENUTYPELEN, SET_IN_GAME },
 	{ "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
@@ -972,122 +962,6 @@ int bool_or_comp;	/* 0 == boolean option, 1 == compound */
 	}
 }
 
-#ifdef MENU_COLOR
-extern struct menucoloring *menu_colorings;
-
-static const struct {
-   const char *name;
-   const int color;
-} colornames[] = {
-// TODO DE ?
-   {"black", CLR_BLACK},
-   {"red", CLR_RED},
-   {"green", CLR_GREEN},
-   {"brown", CLR_BROWN},
-   {"blue", CLR_BLUE},
-   {"magenta", CLR_MAGENTA},
-   {"cyan", CLR_CYAN},
-   {"gray", CLR_GRAY},
-   {"orange", CLR_ORANGE},
-   {"lightgreen", CLR_BRIGHT_GREEN},
-   {"yellow", CLR_YELLOW},
-   {"lightblue", CLR_BRIGHT_BLUE},
-   {"lightmagenta", CLR_BRIGHT_MAGENTA},
-   {"lightcyan", CLR_BRIGHT_CYAN},
-   {"white", CLR_WHITE}
-};
-
-static const struct {
-   const char *name;
-   const int attr;
-} attrnames[] = {
-// TODO DE ?
-     {"none", ATR_NONE},
-     {"bold", ATR_BOLD},
-     {"dim", ATR_DIM},
-     {"underline", ATR_ULINE},
-     {"blink", ATR_BLINK},
-     {"inverse", ATR_INVERSE}
-
-};
-
-/* parse '"regex_string"=color&attr' and add it to menucoloring */
-boolean
-add_menu_coloring(str)
-char *str;
-{
-   int i, c = NO_COLOR, a = ATR_NONE;
-   struct menucoloring *tmp;
-   char *tmps, *cs = strchr(str, '=');
-   const char *err = (char *)0;
-   
-   if (!cs || !str) return FALSE;
-   
-   tmps = cs;
-   tmps++;
-   while (*tmps && isspace(*tmps)) tmps++;
-
-   for (i = 0; i < SIZE(colornames); i++)
-     if (strstri(tmps, colornames[i].name) == tmps) {
-	c = colornames[i].color;
-	break;
-     }
-   if ((i == SIZE(colornames)) && (*tmps >= '0' && *tmps <='9'))
-     c = atoi(tmps);
-   
-   if (c > 15) return FALSE;
-   
-   tmps = strchr(str, '&');
-   if (tmps) {
-      tmps++;
-      while (*tmps && isspace(*tmps)) tmps++;
-      for (i = 0; i < SIZE(attrnames); i++)
-	if (strstri(tmps, attrnames[i].name) == tmps) {
-	   a = attrnames[i].attr;
-	   break;
-	}
-      if ((i == SIZE(attrnames)) && (*tmps >= '0' && *tmps <='9'))
-	a = atoi(tmps);
-   }
-   
-   *cs = '\0';
-   tmps = str;
-   if ((*tmps == '"') || (*tmps == '\'')) {
-      cs--;
-      while (isspace(*cs)) cs--;
-      if (*cs == *tmps) {
-	 *cs = '\0';
-	 tmps++;
-      }
-   }
-   
-   tmp = (struct menucoloring *)alloc(sizeof(struct menucoloring));
-#ifdef MENU_COLOR_REGEX
-   tmp->match.translate = 0;
-   tmp->match.fastmap = 0;
-   tmp->match.buffer = 0;
-   tmp->match.allocated = 0;
-   tmp->match.regs_allocated = REGS_FIXED;
-   err = re_compile_pattern(tmps, strlen(tmps), &tmp->match);
-#else
-   tmp->match = (char *)alloc(strlen(tmps)+1);
-   (void) memcpy((genericptr_t)tmp->match, (genericptr_t)tmps, strlen(tmps)+1);
-#endif
-   if (err) {
-      raw_printf("\nMenucolor regex error: %s\n", err); /* EN raw_printf("\nMenucolor regex error: %s\n", err); */ // TODO DE
-      wait_synch();
-      free(tmp);
-      return FALSE;
-   } else {
-      tmp->next = menu_colorings;
-      tmp->color = c;
-      tmp->attr = a;
-      menu_colorings = tmp;
-      return TRUE;
-   }
-}
-#endif /* MENU_COLOR */
-
 void
 parseoptions(opts, tinitial, tfrom_file)
 register char *opts;
@@ -1255,18 +1129,6 @@ boolean tinitial, tfrom_file;
 			badoption(opts);
 		}
 		return;
-	}
-
-	/* menucolor:"regex_string"=color */
-	fullname = "menucolor";
-	if (match_optname(opts, fullname, 9, TRUE)) {
-#ifdef MENU_COLOR
-		if (negated) bad_negation(fullname, FALSE);
-		else if ((op = string_for_env_opt(fullname, opts, FALSE)) != 0)
-			if (!add_menu_coloring(op))
-				badoption(opts);
-#endif
- 		return;
 	}
 
 	fullname = "msghistory";
