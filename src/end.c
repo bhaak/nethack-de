@@ -43,7 +43,7 @@ STATIC_DCL void FDECL(get_valuables, (struct obj *));
 STATIC_DCL void FDECL(sort_valuables, (struct valuable_data *,int));
 STATIC_DCL void FDECL(artifact_score, (struct obj *,BOOLEAN_P,winid));
 STATIC_DCL void FDECL(savelife, (int));
-void FDECL(list_vanquished, (CHAR_P,BOOLEAN_P));  /* showborn patch */
+STATIC_DCL void FDECL(list_vanquished, (CHAR_P,BOOLEAN_P));
 #ifdef DUMP_LOG
 extern void NDECL(dump_spells);
 extern const char * FDECL(compress_str, (const char *)); /* from wintty */
@@ -1179,7 +1179,7 @@ int status;
 	nethack_exit(status);
 }
 
-void		/* showborn patch */
+STATIC_OVL void
 list_vanquished(defquery, ask)
 char defquery;
 boolean ask;
@@ -1249,11 +1249,6 @@ boolean want_dump;
 			else
 			    Sprintf(buf, "%d %s",
 				    nkilled, makeplural(mons[i].mname));
-#ifdef SHOW_BORN
-			if (iflags.show_born && nkilled != mvitals[i].born)
-			    Sprintf(buf + strlen(buf), " (%d erzeugt)", /* EN Sprintf(buf + strlen(buf), " (%d created)", */
-				    (int) mvitals[i].born);
-#endif
 		    }
 		    putstr(klwin, 0, buf);
 #ifdef DUMP_LOG

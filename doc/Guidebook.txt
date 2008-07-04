@@ -2659,11 +2659,6 @@
 
 
 
-          showborn
-               When the game ends, show the number of each monster created
-               in the "Vanquished creatures" list, if it differs from the
-               number of those monsters killed.
-
           showexp
                Show your accumulated experience points on bottom line  (de-
                fault off).
