@@ -366,7 +366,6 @@ typedef unsigned char	uchar;
 #define DEATH_EXPLORE 
 #define PARANOID 
 #define SHOW_BORN 
-#define LOG_MOVES
 
 #ifdef TTY_GRAPHICS
 # define MENU_COLOR
