@@ -4133,13 +4133,13 @@ retry:
 	if (otmp != &zeroobj) {
 	    /* The(aobjnam()) is safe since otmp is unidentified -dlc */
 	    (void) hold_another_object(otmp, u.uswallow ?
-				       "NOUN_OOPS 1!  %s auﬂer Reichweite!" : /* EN "Oops!  %s out of your reach!" : */
+				       "NOUN_OOPS!  %s auﬂer Reichweite!" : /* EN "Oops!  %s out of your reach!" : */
 				       (Is_airlevel(&u.uz) ||
 					Is_waterlevel(&u.uz) ||
 					levl[u.ux][u.uy].typ < IRONBARS ||
 					levl[u.ux][u.uy].typ >= ICE) ?
-				       "NOUN_OOPS 2! SUBJECT %s von OBJECT KASUS_DATIV PRONOMEN_PERSONAL weg!" : /* EN "Oops!  %s away from you!" : */
-							 "NOUN_OOPS 3! SUBJECT %s zu Boden!", /* EN "Oops!  %s to the floor!", */
+				       "NOUN_OOPS! SUBJECT %s von OBJECT KASUS_DATIV PRONOMEN_PERSONAL weg!" : /* EN "Oops!  %s away from you!" : */
+							 "NOUN_OOPS! SUBJECT %s zu Boden!", /* EN "Oops!  %s to the floor!", */
 				       The(aobjnam(otmp,
 					     Is_airlevel(&u.uz) || u.uinwater ?
 						   "VERB_RUTSCHEN" : "VERB_OBJECT_DROPS")), /* EN "slip" : "drop")), */

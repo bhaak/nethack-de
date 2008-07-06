@@ -837,7 +837,7 @@ long timeout;
 				switch (obj->where) {
 				    case OBJ_INVENT:
 				    case OBJ_MINVENT:
-					pline("%s %s seems about to go out.", /* EN pline("%s %s seems about to go out.", */ // TODO DE
+					pline("SUBJECT %s %s VERB_SCHEINEN kurz vor dem Ausgehen zu sein.", /* EN pline("%s %s seems about to go out.", */
 					    whose, xname(obj));
 					break;
 				    case OBJ_FLOOR:
@@ -856,17 +856,17 @@ long timeout;
 				case OBJ_INVENT:
 				case OBJ_MINVENT:
 				    if (obj->otyp == BRASS_LANTERN)
-					pline("%s lantern has run out of power.", /* EN pline("%s lantern has run out of power.", */ // TODO DE
+					pline("SUBJECT %s NOUN_LANTERN ist das Licht ausgegangen.", /* EN pline("%s lantern has run out of power.", */
 					    whose);
 				    else
-					pline("%s %s has gone out.", /* EN pline("%s %s has gone out.", */ // TODO DE
+					pline("SUBJECT %s %s ist ausgegangen.", /* EN pline("%s %s has gone out.", */
 					    whose, xname(obj));
 				    break;
 				case OBJ_FLOOR:
 				    if (obj->otyp == BRASS_LANTERN)
-					You("see a lantern run out of power."); /* EN You("see a lantern run out of power."); */ // TODO DE
+					You("VERB_SEHEN das Licht einer Laterne ausgehen."); /* EN You("see a lantern run out of power."); */
 				    else
-					You("see %s go out.", /* EN You("see %s go out.", */ // TODO DE
+					You("VERB_SEHEN OBJECT %s ausgehen.", /* EN You("see %s go out.", */
 					    an(xname(obj)));
 				    break;
 			    }

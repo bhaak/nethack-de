@@ -1085,7 +1085,7 @@ struct obj *obj;
 	if ((!Is_candle(obj) && obj->age == 0)
 			|| (obj->otyp == MAGIC_LAMP && obj->spe == 0)) {
 		if (obj->otyp == BRASS_LANTERN)
-			Your("lamp has run out of power."); /* EN Your("lamp has run out of power."); */ // TODO DE
+			Deinem("NOUN_LANTERN ist das Licht ausgegangen."); /* EN Your("lamp has run out of power."); */
 		else pline("SUBJECT PRONOMEN_DIESER %s VERB_HAVE kein ÷l.", xname(obj)); /* EN else pline("This %s has no oil.", xname(obj)); */
 		return;
 	}
@@ -1254,10 +1254,10 @@ int magic; /* 0=Physical, otherwise skill level */
 		return 0;
 	} else if (Levitation || Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)) {
 		if (magic) {
-			You("flail around a little."); /* EN You("flail around a little."); */ // TODO DE
+			You("VERB_HAMPELN etwas herum."); /* EN You("flail around a little."); */
 			return 1;
 		}
-		You("VERB_HABEN nicht genug Bodenhaftung zum Springen."); /* EN You("don't have enough traction to jump."); */
+		You("VERB_ZAPPELN nicht genug Bodenhaftung zum Springen."); /* EN You("don't have enough traction to jump."); */
 		return 0;
 	} else if (!magic && near_capacity() > UNENCUMBERED) {
 		You("VERB_TRAGEN zuviel zum Springen!"); /* EN You("are carrying too much to jump!"); */
@@ -1317,7 +1317,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		switch(u.utraptype) {
 		case TT_BEARTRAP: {
 		    register long side = rn2(3) ? LEFT_SIDE : RIGHT_SIDE;
-		    You("rip yourself free of the bear trap!  Ouch!"); /* EN You("rip yourself free of the bear trap!  Ouch!"); */ // TODO DE
+		    You("rip yourself free of the bear trap!  Aua!"); /* EN You("rip yourself free of the bear trap!  Ouch!"); */ // TODO DE
 		    losehp(rnd(10), "jumping out of a bear trap", KILLED_BY); /* EN losehp(rnd(10), "jumping out of a bear trap", KILLED_BY); */ // TODO DE
 		    set_wounded_legs(side, rn1(1000,500));
 		    break;
@@ -1334,7 +1334,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		    u.utrap = 0;
 		    return 1;
 		case TT_INFLOOR:
-		    You("strain your %s, but you're still stuck in the floor.", /* EN You("strain your %s, but you're still stuck in the floor.", */ // TODO DE
+		    You("VERB_HABEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV %s, NEUER_SATZ aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_STECKEN immer noch im Boden fest.", /* EN You("strain your %s, but you're still stuck in the floor.", */
 			makeplural(body_part(LEG)));
 		    set_wounded_legs(LEFT_SIDE, rn1(10, 11));
 		    set_wounded_legs(RIGHT_SIDE, rn1(10, 11));
@@ -1633,17 +1633,17 @@ long timeout;
 	    switch (figurine->where) {
 		case OBJ_INVENT:
 		    if (Blind)
-			You_feel("%s %s from your pack!", something, /* EN You_feel("%s %s from your pack!", something, */ // TODO DE
-			    locomotion(mtmp->data,"drop")); /* EN locomotion(mtmp->data,"drop")); */ // TODO DE
+			You("VERB_SPUEREN, NEUER_SATZ wie SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_PACK %s!", something, /* EN You_feel("%s %s from your pack!", something, */
+			    locomotion(mtmp->data,"VERB_FALLEN")); /* EN locomotion(mtmp->data,"drop")); */
 		    else
-			You("see %s %s out of your pack!", /* EN You("see %s %s out of your pack!", */ // TODO DE
+			You("VERB_SEHEN OBJECT %s OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_PACK %s!", /* EN You("see %s %s out of your pack!", */
 			    monnambuf,
-			    locomotion(mtmp->data,"drop")); /* EN locomotion(mtmp->data,"drop")); */ // TODO DE
+			    locomotion(mtmp->data,"VERB_FALLEN")); /* EN locomotion(mtmp->data,"drop")); */
 		    break;
 
 		case OBJ_FLOOR:
 		    if (cansee_spot && !silent) {
-			You("suddenly see a figurine transform into %s!", /* EN You("suddenly see a figurine transform into %s!", */ // TODO DE
+			You("VERB_SEHEN, NEUER_SATZ wie sich SUBJECT_IM_SATZ ARTIKEL_UNBESTIMMTER NOUN_FIGURINE plˆtzlich OBJECT in ARTIKEL_UNBESTIMMTER %s VERB_TRANSFORMIEREN!", /* EN You("suddenly see a figurine transform into %s!", */
 				monnambuf);
 			redraw = TRUE;	/* update figurine's map location */
 		    }
@@ -1656,14 +1656,14 @@ long timeout;
 			/* figurine carring monster might be invisible */
 			if (canseemon(figurine->ocarry)) {
 			    Sprintf(carriedby, "%s", /* EN Sprintf(carriedby, "%s pack", */
-				     genitivattribut_zu_wort(a_monnam(mon), "pack")); /* EN s_suffix(a_monnam(mon))); */ // TODO DE
+				     genitivattribut_zu_wort(a_monnam(mon), "NOUN_PACK")); /* EN s_suffix(a_monnam(mon))); */
 			}
 			else if (is_pool(mon->mx, mon->my))
-			    Strcpy(carriedby, "empty water"); /* EN Strcpy(carriedby, "empty water"); */ // TODO DE
+			    Strcpy(carriedby, "kristallklarem Wasser"); /* EN Strcpy(carriedby, "empty water"); */
 			else
-			    Strcpy(carriedby, "thin air"); /* EN Strcpy(carriedby, "thin air"); */ // TODO DE
-			You("see %s %s out of %s!", monnambuf, /* EN You("see %s %s out of %s!", monnambuf, */ // TODO DE
-			    locomotion(mtmp->data, "drop"), carriedby); /* EN locomotion(mtmp->data, "drop"), carriedby); */ // TODO DE
+			    Strcpy(carriedby, "der Luft"); /* EN Strcpy(carriedby, "thin air"); */
+			You("VERB_SEHEN OBJECT %s aus %s %s!", monnambuf, /* EN You("see %s %s out of %s!", monnambuf, */
+			    carriedby, locomotion(mtmp->data, "VERB_KOMMEN")); /* EN locomotion(mtmp->data, "drop"), carriedby); */
 		    }
 		    break;
 #if 0
@@ -1693,7 +1693,7 @@ boolean quietly;
 
 	if (carried(obj) && u.uswallow) {
 		if (!quietly)
-			You("don't have enough room in here."); /* EN You("don't have enough room in here."); */ // TODO DE
+			pline("Hier drinnen gibt es zu wenig Platz."); /* EN You("don't have enough room in here."); */
 		return FALSE;
 	}
 	x = cc->x; y = cc->y;
@@ -1755,7 +1755,7 @@ struct obj **optr;
 
 static NEARDATA const char lubricables[] = { ALL_CLASSES, ALLOW_NONE, 0 };
 static NEARDATA const char need_to_remove_outer_armor[] =
-			"need to remove your %s to grease your %s."; /* EN "need to remove your %s to grease your %s."; */ // TODO DE
+			"VERB_MUESSEN OBJECT PRONOMEN_POSSESSIV %s ausziehen um OBJECT PRONOMEN_POSSESSIV %s einzufetten."; /* EN "need to remove your %s to grease your %s."; */
 
 STATIC_OVL void
 use_grease(obj)
@@ -1790,7 +1790,7 @@ struct obj *obj;
 #ifdef TOURIST
 		if ((otmp->owornmask & WORN_SHIRT) && (uarmc || uarm)) {
 			Strcpy(buf, uarmc ? xname(uarmc) : "");
-			if (uarmc && uarm) Strcat(buf, " and "); /* EN if (uarmc && uarm) Strcat(buf, " and "); */ // TODO DE
+			if (uarmc && uarm) Strcat(buf, " und "); /* EN if (uarmc && uarm) Strcat(buf, " and "); */
 			Strcat(buf, uarm ? xname(uarm) : "");
 			You(need_to_remove_outer_armor, buf, xname(otmp));
 			return;
@@ -1799,7 +1799,7 @@ struct obj *obj;
 		consume_obj_charge(obj, TRUE);
 
 		if (otmp != &zeroobj) {
-			You("cover %s with a thick layer of grease.", /* EN You("cover %s with a thick layer of grease.", */ // TODO DE
+			You("VERB_UEBERZIEHEN OBJECT %s mit einer dicken Schicht Fett.", /* EN You("cover %s with a thick layer of grease.", */
 			    yname(otmp));
 			otmp->greased = 1;
 			if (obj->cursed && !nohands(youmonst.data)) {
@@ -1844,7 +1844,7 @@ struct obj *tstone;
     boolean do_scratch;
     const char *streak_color, *choices;
     char stonebuf[QBUFSZ];
-    static const char scritch[] = "\"scritch, scritch\""; /* EN static const char scritch[] = "\"scritch, scritch\""; */ // TODO DE
+    static const char scritch[] = "\"kratz, kratz\""; /* EN static const char scritch[] = "\"scritch, scritch\""; */
     static const char allowall[3] = { COIN_CLASS, ALL_CLASSES, 0 };
     static const char justgems[3] = { ALLOW_NONE, GEM_CLASS, 0 };
 #ifndef GOLDOBJ
@@ -2050,7 +2050,7 @@ struct obj *otmp;
 				break;
 			    case BEAR_TRAP:	/* drop it without arming it */
 				reset_trapset();
-				You("drop %s!", /* EN You("drop %s!", */ // TODO DE
+				You("VERB_DROP OBJECT %s SATZKLAMMER!", /* EN You("drop %s!", */
 			  the(defsyms[trap_to_defsym(what_trap(ttyp))].explanation));
 				dropx(otmp);
 				return;
@@ -2938,7 +2938,7 @@ doapply()
 		if(flags.verbose)
 			pline("Um zu essen, MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den Befehl 'e'."); /* EN pline("In order to eat, use the 'e' command."); */
 		if(obj != uwep)
-    pline("Opening the tin will be much easier if you wield the tin opener."); /* EN pline("Opening the tin will be much easier if you wield the tin opener."); */ // TODO DE
+    pline("Die Dose lieﬂe sich viel leichter ˆffnen, wenn SUBJECT_IM_SATZ PRONOMEN_PERSONAL den Dosenˆffner benutzen MODIFIER_KONJUNKTIV_II VERB_WERDEN."); /* EN pline("Opening the tin will be much easier if you wield the tin opener."); */
 		goto xit;
 
 	case FIGURINE:
@@ -2982,14 +2982,14 @@ doapply()
 		    otmp->cursed = obj->cursed;
 		    otmp->owt = weight(otmp);
 		    otmp = hold_another_object(otmp, u.uswallow ?
-				       "Oops!  %s out of your reach!" : /* EN "Oops!  %s out of your reach!" : */ // TODO DE
+				       "NOUN_OOPS!  SUBJECT %s auﬂer Reichweite!" : /* EN "Oops!  %s out of your reach!" : */
 					(Is_airlevel(&u.uz) ||
 					 Is_waterlevel(&u.uz) ||
 					 levl[u.ux][u.uy].typ < IRONBARS ||
 					 levl[u.ux][u.uy].typ >= ICE) ?
-					       "Oops!  %s away from you!" : /* EN "Oops!  %s away from you!" : */ // TODO DE
-					       "Oops!  %s to the floor!", /* EN "Oops!  %s to the floor!", */ // TODO DE
-					       The(aobjnam(otmp, "slip")), /* EN The(aobjnam(otmp, "slip")), */ // TODO DE
+					       "NOUN_OOPS!  SUBJECT %s von OBJECT KASUS_DATIV PRONOMEN_PERSONAL weg!" : /* EN "Oops!  %s away from you!" : */
+					       "NOUN_OOPS!  SUBJECT %s zu Boden!", /* EN "Oops!  %s to the floor!", */
+					       The(aobjnam(otmp, "VERB_RUTSCHEN")), /* EN The(aobjnam(otmp, "slip")), */
 					       (const char *)0);
 		    makeknown(HORN_OF_PLENTY);
 		} else
