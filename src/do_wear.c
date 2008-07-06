@@ -2036,7 +2036,7 @@ register struct obj *atmp;
 			(!obj_resists(otmp, 0, 90)))
 
 	if (DESTROY_ARM(uarmc)) {
-		Your("%s zerreisst und zerfällt zu Staub!", cloak_simple_name(uarmc)); /* EN Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc));*/
+		Your("%s zerreißt und zerfällt zu Staub!", cloak_simple_name(uarmc)); /* EN Your("%s crumbles and turns to dust!", cloak_simple_name(uarmc)); */
 		(void) Cloak_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarm)) {
@@ -2048,27 +2048,27 @@ register struct obj *atmp;
 		useup(otmp);
 #ifdef TOURIST
 	} else if (DESTROY_ARM(uarmu)) {
-		Your("NOUN_SHIRT zerfällt in kleine Stücke und fällt auseinander!"); /* EN Your("shirt crumbles into tiny threads and falls apart!");*/
+		Your("NOUN_SHIRT zerfällt in kleine Stücke und fällt auseinander!"); /* EN Your("shirt crumbles into tiny threads and falls apart!"); */
 		useup(otmp);
 #endif
 	} else if (DESTROY_ARM(uarmh)) {
 		if (donning(otmp)) cancel_don();
-		Your("NOUN_HELMET zerfällt zu Staub und is blown away!"); /* EN Your("helmet turns to dust and is blown away!");*/ // TODO DE
+		Your("NOUN_HELMET zerfällt zu Staub und is blown away!"); /* EN Your("helmet turns to dust and is blown away!"); */ // TODO DE
 		(void) Helmet_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarmg)) {
 		if (donning(otmp)) cancel_don();
-		Your("NOUN_GLOVESs VERB_VERSCHWINDEN!"); /* EN Your("gloves vanish!");*/
+		Your("NOUN_GLOVESs VERB_VERSCHWINDEN!"); /* EN Your("gloves vanish!"); */
 		(void) Gloves_off();
 		useup(otmp);
 		selftouch("PRONOMEN_PERSONAL VERB_TOUCH"); /* EN selftouch("You"); */
 	} else if (DESTROY_ARM(uarmf)) {
 		if (donning(otmp)) cancel_don();
-		Your("NOUN_BOOTSs lösen sich auf!"); /* EN Your("boots disintegrate!");*/
+		Your("NOUN_BOOTSs lösen sich auf!"); /* EN Your("boots disintegrate!"); */
 		(void) Boots_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarms)) {
-		Your("NOUN_SHIELD zerbricht!"); /* EN Your("shield crumbles away!");*/
+		Your("NOUN_SHIELD zerbricht!"); /* EN Your("shield crumbles away!"); */
 		(void) Shield_off();
 		useup(otmp);
 	} else	return(0);		/* could not destroy anything */

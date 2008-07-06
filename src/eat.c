@@ -1062,7 +1062,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    if(((!carried(tin.tin) && costly_spot(tin.tin->ox, tin.tin->oy) &&
 		 !tin.tin->no_charge)
 		|| tin.tin->unpaid)) {
-		verbalize("You open it, you bought it!");
+		verbalize("You open it, you bought it!"); /* EN verbalize("You open it, you bought it!"); */ // TODO DE
 		/* charge for one at pre-eating cost */
 		if(tin.tin->quan > 1L) tin.tin = splitobj(tin.tin, 1L);
 		bill_dummy_object(tin.tin);

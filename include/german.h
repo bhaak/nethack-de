@@ -2,6 +2,8 @@
 #define _GERMAN_H
 #include <stddef.h>
 
+char *this_makes_you_feel;
+
 enum Casus   { nominativ=1, genitiv=2, dativ=4, akkusativ=8 };
 enum Genus   { maskulin=1, feminin=2, neutrum=4 };
 enum Numerus { n_singular=1, n_plural=2 };

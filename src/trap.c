@@ -2881,7 +2881,7 @@ drown()
 	}
 	if ((Teleportation || can_teleport(youmonst.data)) &&
 		    !u.usleep && (Teleport_control || rn2(3) < Luck+2)) {
-		You("VERB_VERSUCHEN einen Teleportationsspruch.");	/* utcsri!carroll */ /* EN You("attempt a teleport spell.");	*/
+		You("VERB_VERSUCHEN einen Teleportationsspruch.");	/* utcsri!carroll */ /* EN You("attempt a teleport spell."); */
 		(void) dotele();
 		if(!is_pool(u.ux,u.uy))
 			return(TRUE);
