@@ -171,6 +171,7 @@ static boolean FDECL(d_filter, (char *));
 static boolean FDECL(h_filter, (char *));
 static boolean FDECL(ranged_attk,(struct permonst*));
 static int FDECL(mstrength,(struct permonst *));
+static void NDECL(build_savebones_compat_string);
 
 static boolean FDECL(qt_comment, (char *));
 static boolean FDECL(qt_control, (char *));
@@ -543,7 +544,7 @@ const char *build_date;
     Strcat(subbuf, " Beta");
 #endif
 
-    Sprintf(outbuf, "%s NetHack-De%s Version %s - last build %s.",
+    Sprintf(outbuf, "%s NetHack-De%s Version %s (Katzenhaarallergieresistenz) - last build %s.",
 	    PORT_ID, subbuf, version_string(versbuf), build_date);
     return outbuf;
 }
@@ -614,12 +615,36 @@ do_date()
 	return;
 }
 
+static char save_bones_compat_buf[BUFSZ];
+
+static void
+build_savebones_compat_string()
+{
+#ifdef VERSION_COMPATIBILITY
+	unsigned long uver = VERSION_COMPATIBILITY;
+#endif
+	Strcpy(save_bones_compat_buf,
+		"save and bones files accepted from version");
+#ifdef VERSION_COMPATIBILITY
+	Sprintf(eos(save_bones_compat_buf), "s %lu.%lu.%lu through %d.%d.%d",
+		((uver & 0xFF000000L) >> 24), ((uver & 0x00FF0000L) >> 16),
+		((uver & 0x0000FF00L) >> 8),
+		VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
+#else
+	Sprintf(eos(save_bones_compat_buf), " %d.%d.%d only",
+		VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
+#endif
+}
+
 static const char *build_opts[] = {
 #ifdef AMIGA_WBENCH
 		"Amiga WorkBench support",
 #endif
 #ifdef ANSI_DEFAULT
 		"ANSI default terminal",
+#endif
+#ifdef AUTOPICKUP_EXCEPTIONS
+		"autopickup_exceptions",
 #endif
 #ifdef TEXTCOLOR
 		"color",
@@ -758,6 +783,7 @@ static const char *build_opts[] = {
 #ifdef ZEROCOMP
 		"zero-compressed save files",
 #endif
+		save_bones_compat_buf,
 		"basic NetHack features"
 	};
 
@@ -808,6 +834,7 @@ do_options()
 		exit(EXIT_FAILURE);
 	}
 
+	build_savebones_compat_string();
 	Fprintf(ofp,
 #ifdef BETA
 		"\n    NetHack version %d.%d.%d [beta]\n",

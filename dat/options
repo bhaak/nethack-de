@@ -1,5 +1,5 @@
 
-    NetHack version 3.4.2
+    NetHack version 3.4.3
 
 Options compiled into this edition:
 
@@ -9,7 +9,9 @@ Options compiled into this edition:
     mail daemon, news file, redo command, rogue level, saddles and riding,
     screen clipping, seduction, shell command, sinks, suspend command,
     terminal info library, timed wait for display effects, tourists,
-    walled mazes, basic NetHack features.
+    walled mazes,
+    save and bones files accepted from versions 3.4.0 through 3.4.3,
+    basic NetHack features.
 
 Supported windowing systems:
 

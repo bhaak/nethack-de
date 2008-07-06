@@ -501,6 +501,10 @@ const char *in_str;
 			(str[m_i_len] == ' ' ||
 			 !strcmpi(&str[m_i_len], "s") ||
 			 !strncmpi(&str[m_i_len], "s ", 2) ||
+			 !strcmpi(&str[m_i_len], "'") ||
+			 !strncmpi(&str[m_i_len], "' ", 2) ||
+			 !strcmpi(&str[m_i_len], "'s") ||
+			 !strncmpi(&str[m_i_len], "'s ", 3) ||
 			 !strcmpi(&str[m_i_len], "es") ||
 			 !strncmpi(&str[m_i_len], "es ", 3))) {
 		    mntmp = i;
@@ -732,6 +736,7 @@ struct attack *mattk;
     case PM_FLAMING_SPHERE:
     case PM_FIRE_VORTEX:
     case PM_FIRE_ELEMENTAL:
+    case PM_SALAMANDER:
 	what = "VERB_STEHEN schon in Flammen"; /* EN what = "already on fire"; */
 	break;
     case PM_WATER_ELEMENTAL:

@@ -61,7 +61,7 @@ mkcavepos(x, y, dist, waslit, rockit)
 	if(IS_ROCK(lev->typ)) return;
 	if(t_at(x, y)) return; /* don't cover the portal */
 	if ((mtmp = m_at(x, y)) != 0)	/* make sure crucial monsters survive */
-	    if(!passes_walls(mtmp->data)) rloc(mtmp);
+	    if(!passes_walls(mtmp->data)) (void) rloc(mtmp, FALSE);
     } else if(lev->typ == ROOM) return;
 
     unblock_point(x,y);	/* make sure vision knows this location is open */
@@ -1434,7 +1434,7 @@ long timeout;	/* unused */
 		char *cname = corpse_xname(obj, FALSE);
 		Your("%s%s %s away%c", /* EN Your("%s%s %s away%c", */ // TODO DE
 		     obj == uwep ? "als Waffe ADJEKTIV_GEFUEHRT " : nul, cname, /* EN obj == uwep ? "wielded " : nul, cname, */
-		     vtense(cname, "rot"), obj == uwep ? '!' : '.'); /* EN vtense(cname, "rot"), obj == uwep ? '!' : '.'); */ // TODO DE
+		     otense(obj, "rot"), obj == uwep ? '!' : '.'); /* EN otense(obj, "rot"), obj == uwep ? '!' : '.'); */ // TODO DE
 	    }
 	    if (obj == uwep) {
 		uwepgone();	/* now bare handed */

@@ -151,9 +151,8 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/lib/gnome-libs/include -I../win/gnome
 # flags for debugging:
 # CFLAGS = -g -I../include
 
-CFLAGS = -I../include -DGERMAN -g # -fbounds-checking #-fprofile-arcs -ftest-coverage
-LFLAGS = -lcheck 
-# LFLAGS = -lcheck
+CFLAGS = -Wall -I../include -DGERMAN -g # -fbounds-checking #-fprofile-arcs -ftest-coverage
+LFLAGS =
 
 # The Qt and Be window systems are written in C++, while the rest of
 # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
@@ -283,10 +282,10 @@ WINLIB = $(WINTTYLIB)
 # IRIX 4.0.x needs -lsun if NIS (YP) is being used for passwd file lookup
 # LIBS = -lsun
 #
-LIBS = -lcheck
+LIBS = # -lcheck
 
 # make NetHack
-GAME     = nethack
+GAME     = nethack-de
 # GAME     = nethack.prg
 
 # if you defined RANDOM in unixconf.h/tosconf.h since your system did not come
@@ -645,7 +644,8 @@ gnaskstr.o: ../win/gnome/gnaskstr.c ../win/gnome/gnaskstr.h \
 		../win/gnome/gnmain.h
 	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnaskstr.c
 gnbind.o: ../win/gnome/gnbind.c ../win/gnome/gnbind.h ../win/gnome/gnmain.h \
-		../win/gnome/gnaskstr.h ../win/gnome/gnyesno.h
+		../win/gnome/gnmenu.h ../win/gnome/gnaskstr.h \
+		../win/gnome/gnyesno.h
 	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnbind.c
 gnglyph.o: ../win/gnome/gnglyph.c ../win/gnome/gnglyph.h ../include/tile2x11.h
 	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnglyph.c
@@ -657,7 +657,7 @@ gnmap.o: ../win/gnome/gnmap.c ../win/gnome/gnmap.h ../win/gnome/gnglyph.h \
 		../win/gnome/gnsignal.h $(HACK_H)
 	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnmap.c
 gnmenu.o: ../win/gnome/gnmenu.c ../win/gnome/gnmenu.h ../win/gnome/gnmain.h \
-		../win/gnome/gnbind.h
+		../win/gnome/gnbind.h ../include/func_tab.h
 	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnmenu.c
 gnmesg.o: ../win/gnome/gnmesg.c ../win/gnome/gnmesg.h ../win/gnome/gnsignal.h
 	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnmesg.c
@@ -677,11 +677,11 @@ gnstatus.o: ../win/gnome/gnstatus.c ../win/gnome/gnstatus.h \
 gntext.o: ../win/gnome/gntext.c ../win/gnome/gntext.h ../win/gnome/gnmain.h \
 		../win/gnome/gn_rip.h
 	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gntext.c
+gnyesno.o: ../win/gnome/gnyesno.c ../win/gnome/gnbind.h ../win/gnome/gnyesno.h
+	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnyesno.c
 gnworn.o: ../win/gnome/gnworn.c ../win/gnome/gnworn.h ../win/gnome/gnglyph.h \
 		../win/gnome/gnsignal.h ../win/gnome/gnomeprv.h
 	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnworn.c
-gnyesno.o: ../win/gnome/gnyesno.c ../win/gnome/gnbind.h ../win/gnome/gnyesno.h
-	$(CC) $(CFLAGS) $(GNOMEINC) -c ../win/gnome/gnyesno.c
 wingem.o: ../win/gem/wingem.c $(HACK_H) ../include/func_tab.h ../include/dlb.h \
 		../include/patchlevel.h ../include/wingem.h
 	$(CC) $(CFLAGS) -c ../win/gem/wingem.c
@@ -725,7 +725,7 @@ do_wear.o: do_wear.c $(HACK_H)
 dog.o: dog.c $(HACK_H) ../include/edog.h
 dogmove.o: dogmove.c $(HACK_H) ../include/mfndpos.h ../include/edog.h
 dokick.o: dokick.c $(HACK_H) ../include/eshk.h
-dothrow.o: dothrow.c $(HACK_H)
+dothrow.o: dothrow.c $(HACK_H) ../include/edog.h
 drawing.o: drawing.c $(HACK_H) ../include/tcap.h
 dungeon.o: dungeon.c $(HACK_H) ../include/dgn_file.h ../include/dlb.h
 eat.o: eat.c $(HACK_H)
@@ -739,10 +739,11 @@ fountain.o: fountain.c $(HACK_H)
 german_vocabulary.c: generate_german.rb german_verb.rb
 	rm -f german_vocabulary.o
 	ruby generate_german.rb >german_vocabulary.c
-german_vocabulary.o: german_vocabulary.c german.h
-german.o: german.c german.h german_vocabulary.o
-german_test: german_test.c german.o german_vocabulary.o german.h
-	$(CC) -Wall $(CFLAGS) german_test.c -lcheck -o german_test german.o german_vocabulary.o
+german_vocabulary.o: german_vocabulary.c ../include/german.h
+german.o: german.c german_vocabulary.o ../include/german.h
+german_test: german_test.c german.o german_vocabulary.o ../include/german.h
+	$(CC) -Wall $(CFLAGS) -DWISH_DEBUG -DNO_HACK_H_INCLUDE -c -o german.o german.c
+	$(CC) -Wall $(CFLAGS) -DNO_HACK_H_INCLUDE german_test.c -lcheck -o german_test german.o german_vocabulary.o
 german_wishing.o: german_wishing_test.c german.h
 
 hack.o: hack.c $(HACK_H)

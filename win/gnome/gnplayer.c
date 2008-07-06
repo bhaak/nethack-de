@@ -17,9 +17,12 @@ player_sel_key_hit (GtkWidget *widget, GdkEventKey *event, gpointer data)
     const char** roles = data;                                              
     int i;                                                                  
     for (i = 0; roles[i] != 0; ++i) {                                       
-	if (roles[i][0] == toupper(event->keyval)) {                    
+	if (tolower(roles[i][0]) == tolower(event->keyval)) {
 	    role_number = i;                                        
 	    gtk_clist_select_row( GTK_CLIST (clist), i, 0);         
+	    if (gtk_clist_row_is_visible(GTK_CLIST(clist),
+					 i) != GTK_VISIBILITY_FULL)
+		gtk_clist_moveto(GTK_CLIST(clist), i, 0, 0.5, 0);
 	}                                                               
     }                                                                       
 }                                                                             
@@ -86,8 +89,7 @@ ghack_player_sel_dialog(const char** choices,
 	    GTK_WINDOW (ghack_get_main_window ()) );
 
     /* Run the dialog -- returning whichever button was pressed */
-    i = gnome_dialog_run (GNOME_DIALOG (dialog));
-    gnome_dialog_close (GNOME_DIALOG (dialog));
+    i = gnome_dialog_run_and_close(GNOME_DIALOG(dialog));
 
     /* Quit on button 2 or error */
     if (i < 0  || i > 1) {

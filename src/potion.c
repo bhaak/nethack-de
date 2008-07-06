@@ -242,7 +242,7 @@ boolean talk;
 	}
 }
 
-void
+boolean
 make_hallucinated(xtime, talk, mask)
 long xtime;	/* nonzero if this is an attempt to turn on hallucination */
 boolean talk;
@@ -301,6 +301,7 @@ long mask;	/* nonzero if resistance status should change by mask */
 	    flags.botl = 1;
 	    if (talk) pline(message, verb, verbzusatz); /* EN if (talk) pline(message, verb); */
 	}
+	return changed;
 }
 
 STATIC_OVL void
@@ -450,7 +451,7 @@ peffects(otmp)
 		break;
 	case POT_HALLUCINATION:
 		if (Hallucination || Halluc_resistance) nothing++;
-		make_hallucinated(itimeout_incr(HHallucination,
+		(void) make_hallucinated(itimeout_incr(HHallucination,
 					   rn1(200, 600 - 300 * bcsign(otmp))),
 				  TRUE, 0L);
 		break;
@@ -666,12 +667,8 @@ peffects(otmp)
 		    pline("(Aber in Wirklichkeit war es leicht abgestandener %s.)", /* EN pline("(But in fact it was mildly stale %s.)", */ // TODO DE
 			  fruitname(TRUE));
 		    if (!Role_if(PM_HEALER)) {
-			if (otmp->corpsenm)
-			    losehp(1,
-				   "leicht ADJEKTIV_KONTAMINIERT NOUN_LEITUNGSWASSER", KILLED_BY); /* EN "mildly contaminated tap water", KILLED_BY); */
-			else
-			    losehp(1,
-				   "leicht ADJEKTIV_KONTAMINIERT NOUN_POTION", KILLED_BY_AN); /* EN "mildly contaminated potion", KILLED_BY_AN); */
+			/* NB: blessed otmp->fromsink is not possible */
+			losehp(1, "leicht ADJEKTIV_KONTAMINIERT NOUN_POTION", KILLED_BY_AN); /* EN losehp(1, "mildly contaminated potion", KILLED_BY_AN); */
 		    }
 		} else {
 		    if(Poison_resistance)
@@ -690,7 +687,7 @@ peffects(otmp)
 			    		TRUE);
 			}
 			if(!Poison_resistance) {
-			    if (otmp->corpsenm)
+			    if (otmp->fromsink)
 				losehp(rnd(10)+5*!!(otmp->cursed),
 				       "ADJEKTIV_KONTAMINIERT NOUN_LEITUNGSWASSER", KILLED_BY); /* EN "contaminated tap water", KILLED_BY); */
 			    else
@@ -702,7 +699,7 @@ peffects(otmp)
 		}
 		if(Hallucination) {
 			You("are shocked back to your senses!"); /* EN You("are shocked back to your senses!"); */ // TODO DE
-			make_hallucinated(0L,FALSE,0L);
+			(void) make_hallucinated(0L,FALSE,0L);
 		}
 		break;
 	case POT_CONFUSION:
@@ -807,7 +804,7 @@ peffects(otmp)
 		healup(d(6 + 2 * bcsign(otmp), 8),
 		       otmp->blessed ? 5 : !otmp->cursed ? 2 : 0,
 		       !otmp->cursed, TRUE);
-		make_hallucinated(0L,TRUE,0L);
+		(void) make_hallucinated(0L,TRUE,0L);
 		exercise(A_CON, TRUE);
 		exercise(A_STR, TRUE);
 		break;
@@ -821,7 +818,7 @@ peffects(otmp)
 		    u.ulevelmax -= 1;
 		    pluslvl(FALSE);
 		}
-		make_hallucinated(0L,TRUE,0L);
+		(void) make_hallucinated(0L,TRUE,0L);
 		exercise(A_STR, TRUE);
 		exercise(A_CON, TRUE);
 		break;
@@ -1444,16 +1441,6 @@ register struct obj *obj;
 	(void) Shk_Your(Your_buf, obj);
 	/* (Rusting shop goods ought to be charged for.) */
 	switch (obj->oclass) {
-	    case WEAPON_CLASS:
-		if (!obj->oerodeproof && is_rustprone(obj) &&
-		    (obj->oeroded < MAX_ERODE) && !rn2(2)) {
-			pline("SUBJECT %s %s %s.", /* EN pline("%s %s some%s.", */
-			      Your_buf, aobjnam(obj, "VERB_ROSTEN"), /* EN Your_buf, aobjnam(obj, "rust"), */
-			      obj->oeroded ? "noch mehr" : "ein wenig"); /* EN obj->oeroded ? " more" : "what"); */
-			obj->oeroded++;
-			update_inventory();
-			return TRUE;
-		} else break;
 	    case POTION_CLASS:
 		if (obj->otyp == POT_WATER) return FALSE;
 		/* KMH -- Water into acid causes an explosion */
@@ -1524,6 +1511,20 @@ register struct obj *obj;
 			}
 			return TRUE;
 		}
+		break;
+	    case WEAPON_CLASS:
+	    /* Just "fall through" to generic rustprone check for now. */
+	    /* fall through */
+	    default:
+		if (!obj->oerodeproof && is_rustprone(obj) &&
+		    (obj->oeroded < MAX_ERODE) && !rn2(2)) {
+			pline("SUBJECT %s %s %s.", /* EN pline("%s %s some%s.", */
+			      Your_buf, aobjnam(obj, "VERB_ROSTEN"), /* EN Your_buf, aobjnam(obj, "rust"), */
+			      obj->oeroded ? "noch mehr" : "ein wenig"); /* EN obj->oeroded ? " more" : "what"); */
+			obj->oeroded++;
+			update_inventory();
+			return TRUE;
+		} else break;
 	}
 	pline("SUBJECT %s %s nass.", Your_buf, aobjnam(obj,"VERB_WERDEN")); /* EN pline("%s %s wet.", Your_buf, aobjnam(obj,"get")); */
 	return FALSE;
@@ -1552,7 +1553,7 @@ dodip()
 			return(1);
 		}
 	} else if (is_pool(u.ux,u.uy)) {
-		tmp = (here == POOL) ? "NOUN_POOL" : "NOUN_MOAT"; /* EN tmp = (here == POOL) ? "pool" : "moat"; */
+		tmp = waterbody_name(u.ux,u.uy);
 		Sprintf(qbuf, "Dip it into the %s?", tmp); /* EN Sprintf(qbuf, "Dip it into the %s?", tmp); */ // TODO DE
 		if (yn(qbuf) == 'y') {
 		    if (Levitation) {
@@ -2004,7 +2005,7 @@ struct monst *mon,	/* monster being split */
 		You("VERB_VERMEHREN OBJECT PRONOMEN_PERSONAL%s!", reason); /* EN You("multiply%s!", reason); */
 	    }
 	} else {
-	    mtmp2 = clone_mon(mon);
+	    mtmp2 = clone_mon(mon, 0, 0);
 	    if (mtmp2) {
 		mtmp2->mhpmax = mon->mhpmax / 2;
 		mon->mhpmax -= mtmp2->mhpmax;

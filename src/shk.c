@@ -1,4 +1,4 @@
-/*	SCCS Id: @(#)shk.c	3.4	2003/08/18	*/
+/*	SCCS Id: @(#)shk.c	3.4	2003/12/04	*/
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -481,6 +481,7 @@ struct monst *shkp;
 	long total;
 
 	eshkp = ESHK(shkp);
+	rouse_shk(shkp, TRUE);
 	total = (addupbill(shkp) + eshkp->debit);
 	if (eshkp->credit >= total) {
 	    Your("credit of %ld %s is used to cover your shopping bill.", /* EN Your("credit of %ld %s is used to cover your shopping bill.", */ // TODO DE
@@ -542,7 +543,8 @@ register char *enterstring;
 
 	eshkp->bill_p = &(eshkp->bill[0]);
 
-	if (!eshkp->visitct || strncmpi(eshkp->customer, plname, PL_NSIZ)) {
+	if ((!eshkp->visitct || *eshkp->customer) &&
+	    strncmpi(eshkp->customer, plname, PL_NSIZ)) {
 	    /* You seem to be new here */
 	    eshkp->visitct = 0;
 	    eshkp->following = 0;
@@ -964,7 +966,7 @@ rouse_shk(shkp, verbosely)
 struct monst *shkp;
 boolean verbosely;
 {
-	if (!shkp->mcanmove) {
+	if (!shkp->mcanmove || shkp->msleeping) {
 	    /* greed induced recovery... */
 	    if (verbosely && canspotmon(shkp))
 		pline("SUBJECT %s %s SATZKLAMMER.", Monnam(shkp), /* EN pline("%s %s.", Monnam(shkp), */
@@ -1000,6 +1002,9 @@ register boolean silentkops;
 		} else {
 			/* if sensed, does disappear regardless whether seen */
 			if (sensemon(shkp)) vanished = TRUE;
+			/* can't act as porter for the Amulet, even if shk
+			   happens to be going farther down rather than up */
+			mdrop_special_objs(shkp);
 			/* arrive near shop's door */
 			migrate_to_level(shkp, ledger_no(&eshkp->shoplevel),
 					 MIGR_APPROX_XY, &eshkp->shd);
@@ -1202,7 +1207,7 @@ proceed:
 	if (ltmp || eshkp->billct || eshkp->debit) 
 	    rouse_shk(shkp, TRUE);
 
-	if (!shkp->mcanmove) {	    /* still asleep or paralyzed */
+	if (!shkp->mcanmove || shkp->msleeping) { /* still asleep/paralyzed */
 		pline("SUBJECT %s %s.", Monnam(shkp), /* EN pline("%s %s.", Monnam(shkp), */
 		      rn2(2) ? "macht anscheinend ein Nickerchen" : "reagiert nicht"); /* EN rn2(2) ? "seems to be napping" : "doesn't respond"); */
 		return 0;
@@ -1655,7 +1660,7 @@ int croaked;
 	    if (cansee(shkp->mx, shkp->my && croaked))
 		pline("SUBJECT %s %sVERB_BETRACHTEN OBJECT PRONOMEN_POSSESSIV NOUN_CORPSE%s und %s.", /* EN pline("%s %slooks at your corpse%s and %s.", */
 		      Monnam(shkp),
-		      !shkp->mcanmove ? "VERB_AUFWACHEN SATZKLAMMER, " : "", /* EN !shkp->mcanmove ? "wakes up, " : "", */
+		      (!shkp->mcanmove || shkp->msleeping) ? "VERB_AUFWACHEN SATZKLAMMER, " : "", /* EN (!shkp->mcanmove || shkp->msleeping) ? "wakes up, " : "", */
 		      !rn2(2) ? (shkp->female ? ", schüttelt ihren Kopf " : /* EN !rn2(2) ? (shkp->female ? ", shakes her head," : */
 			   ", schüttelt ihren Kopf ") : "", /* EN ", shakes his head,") : "", */
 		      !inhishop(shkp) ? "VERB_VERSCHWINDEN" : "VERB_SEUFZEN"); /* EN !inhishop(shkp) ? "disappears" : "sighs"); */
@@ -1691,7 +1696,7 @@ int croaked;
                 umoney = money_cnt(invent);
 #endif
 		takes[0] = '\0';
-		if (!shkp->mcanmove)
+		if (!shkp->mcanmove || shkp->msleeping)
 			Strcat(takes, "VERB_AUFWACHEN SATZKLAMMER und "); /* EN Strcat(takes, "wakes up and "); */
 		if (distu(shkp->mx, shkp->my) > 2)
 			Strcat(takes, "VERB_KOMMEN und "); /* EN Strcat(takes, "comes and "); */

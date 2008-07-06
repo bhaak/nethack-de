@@ -606,7 +606,7 @@ boolean so;
 	    if (!strncmp(t1->death, "quit", 4)) { /* EN if (!strncmp(t1->death, "quit", 4)) { */ // TODO DE
 		Strcat(linebuf, "quit"); /* EN Strcat(linebuf, "quit"); */ // TODO DE
 		second_line = FALSE;
-	    } else if (!strncmp(t1->death, "starv", 5)) { /* EN } else if (!strncmp(t1->death, "starv", 5)) { */ // TODO DE
+	    } else if (!strncmp(t1->death, "died of st", 10)) { /* EN } else if (!strncmp(t1->death, "died of st", 10)) { */ // TODO DE
 		Strcat(linebuf, "starved to death"); /* EN Strcat(linebuf, "starved to death"); */ // TODO DE
 		second_line = FALSE;
 	    } else if (!strncmp(t1->death, "choked", 6)) { /* EN } else if (!strncmp(t1->death, "choked", 6)) { */ // TODO DE

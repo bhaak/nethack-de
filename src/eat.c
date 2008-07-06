@@ -19,6 +19,7 @@
 
 STATIC_PTR int NDECL(eatmdone);
 STATIC_PTR int NDECL(eatfood);
+STATIC_PTR void FDECL(costly_tin, (const char*));
 STATIC_PTR int NDECL(opentin);
 STATIC_PTR int NDECL(unfaint);
 
@@ -41,11 +42,11 @@ STATIC_DCL void FDECL(accessory_has_effect, (struct obj *));
 STATIC_DCL void FDECL(fpostfx, (struct obj *));
 STATIC_DCL int NDECL(bite);
 STATIC_DCL int FDECL(edibility_prompts, (struct obj *));
-
 STATIC_DCL int FDECL(rottenfood, (struct obj *));
 STATIC_DCL void NDECL(eatspecial);
 STATIC_DCL void FDECL(eataccessory, (struct obj *));
 STATIC_DCL const char *FDECL(foodword, (struct obj *));
+STATIC_DCL boolean FDECL(maybe_cannibal, (int,BOOLEAN_P));
 
 char msgbuf[BUFSZ];
 
@@ -265,6 +266,7 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 				killer = food_xname(food, FALSE); 
 				if (food->otyp == CORPSE &&
 				    (mons[food->corpsenm].geno & G_UNIQ)) {
+				    if (!type_is_pname(&mons[food->corpsenm]))
 				    /* EN killer = the(killer); */
 				    killer_format = KILLED_BY;
 				}
@@ -441,18 +443,29 @@ boolean message;
 	victual.fullwarn = victual.eating = victual.doreset = FALSE;
 }
 
+STATIC_OVL boolean
+maybe_cannibal(pm, allowmsg)
+int pm;
+boolean allowmsg;
+{
+	if (!CANNIBAL_ALLOWED() && your_race(&mons[pm])) {
+		if (allowmsg) {
+		if (Upolyd)
+			You("have a bad feeling deep inside."); /* EN You("have a bad feeling deep inside."); */ // TODO DE
+		You("Kannibale!  SUBJECT PRONOMEN_PERSONAL VERB_WERDEN das noch bereuen!"); /* EN You("cannibal!  You will regret this!"); */
+		}
+		HAggravate_monster |= FROMOUTSIDE;
+		change_luck(-rn1(4,2));		/* -5..-2 */
+		return TRUE;
+	}
+	return FALSE;
+	}
+
 STATIC_OVL void
 cprefx(pm)
 register int pm;
 {
-	if (!CANNIBAL_ALLOWED() && your_race(&mons[pm])) {
-		if (Upolyd)
-			You("have a bad feeling deep inside."); /* EN You("have a bad feeling deep inside."); */ // TODO DE
-		You("Kannibale!  SUBJECT PRONOMEN_PERSONAL VERB_WERDEN das noch bereuen!"); /* EN You("cannibal!  You will regret this!"); */
-		HAggravate_monster |= FROMOUTSIDE;
-		change_luck(-rn1(4,2));		/* -5..-2 */
-	}
-
+	(void) maybe_cannibal(pm,TRUE);
 	if (touch_petrifies(&mons[pm]) || pm == PM_MEDUSA) {
 	    if (!Stone_resistance &&
 		!(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
@@ -500,10 +513,7 @@ register int pm;
 		    return;
 		}
 	    case PM_GREEN_SLIME:
-		if (!Slimed && !Unchanging &&
-			youmonst.data != &mons[PM_FIRE_VORTEX] &&
-			youmonst.data != &mons[PM_FIRE_ELEMENTAL] &&
-			youmonst.data != &mons[PM_SALAMANDER] &&
+		if (!Slimed && !Unchanging && !flaming(youmonst.data) &&
 			youmonst.data != &mons[PM_GREEN_SLIME]) {
 		    Du_fuehlst_dich("nicht so gut."); /* EN You("don't feel very well."); */
 		    Slimed = 10L;
@@ -990,6 +1000,23 @@ violated_vegetarian()
     return;
 }
 
+/* common code to check and possibly charge for 1 context.tin.tin,
+ * will split() context.tin.tin if necessary */
+STATIC_PTR
+void
+costly_tin(verb)
+	const char* verb;		/* if 0, the verb is "open" */
+{
+	if(((!carried(tin.tin) &&
+	     costly_spot(tin.tin->ox, tin.tin->oy) &&
+	     !tin.tin->no_charge)
+	    || tin.tin->unpaid)) {
+	    verbalize("You %s it, you bought it!", verb ? verb : "open"); /* EN verbalize("You %s it, you bought it!", verb ? verb : "open"); */ // TODO DE
+	    if(tin.tin->quan > 1L) tin.tin = splitobj(tin.tin, 1L);
+	    bill_dummy_object(tin.tin);
+	}
+}
+
 STATIC_PTR
 int
 opentin()		/* called during each move whilst opening a tin */
@@ -1010,6 +1037,7 @@ opentin()		/* called during each move whilst opening a tin */
 	if(tin.tin->otrapped ||
 	   (tin.tin->cursed && tin.tin->spe != -1 && !rn2(8))) {
 		b_trapped("NOUN_TIN", 0); /* EN b_trapped("tin", 0); */
+		costly_tin("destroyed"); /* EN costly_tin("destroyed"); */ // TODO DE
 		goto use_me;
 	}
         Dir("gelingt es, die Dose zu öffnen."); /* EN You("succeed in opening the tin."); */
@@ -1017,6 +1045,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    if (tin.tin->corpsenm == NON_PM) {
 		pline("Sie entpuppt sich als leer."); /* EN pline("It turns out to be empty."); */
 		tin.tin->dknown = tin.tin->known = TRUE;
+		costly_tin((const char*)0);
 		goto use_me;
 	    }
 	    r = tin.tin->cursed ? ROTTEN_TIN :	/* always rotten if cursed */
@@ -1040,6 +1069,7 @@ opentin()		/* called during each move whilst opening a tin */
 	    if (yn("Essen?") == 'n') { /* EN if (yn("Eat it?") == 'n') { */
 		if (!Hallucination) tin.tin->dknown = tin.tin->known = TRUE;
 		if (flags.verbose) You("VERB_ENTSORGEN die offene Dose."); /* EN if (flags.verbose) You("discard the open tin."); */
+		costly_tin((const char*)0);
 		goto use_me;
 	    }
 	    /* in case stop_occupation() was called on previous meal */
@@ -1059,14 +1089,8 @@ opentin()		/* called during each move whilst opening a tin */
 	    tin.tin->dknown = tin.tin->known = TRUE;
 	    cprefx(tin.tin->corpsenm); cpostfx(tin.tin->corpsenm);
 
-	    if(((!carried(tin.tin) && costly_spot(tin.tin->ox, tin.tin->oy) &&
-		 !tin.tin->no_charge)
-		|| tin.tin->unpaid)) {
-		verbalize("You open it, you bought it!"); /* EN verbalize("You open it, you bought it!"); */ // TODO DE
 		/* charge for one at pre-eating cost */
-		if(tin.tin->quan > 1L) tin.tin = splitobj(tin.tin, 1L);
-		bill_dummy_object(tin.tin);
-	    }
+	    costly_tin((const char*)0);
 
 	    /* check for vomiting added by GAN 01/16/87 */
 	    if(tintxts[r].nut < 0) make_vomiting((long)rn1(15,10), FALSE);
@@ -1090,18 +1114,12 @@ opentin()		/* called during each move whilst opening a tin */
 		    tin.tin->dknown = tin.tin->known = TRUE;
 		if (flags.verbose)
 		    You("VERB_ENTSORGEN die offene Dose."); /* EN You("discard the open tin."); */
+		costly_tin((const char*)0);
 		goto use_me;
 	    }
 
 	    tin.tin->dknown = tin.tin->known = TRUE;
-	    if(((!carried(tin.tin) && costly_spot(tin.tin->ox, tin.tin->oy) &&
-		 !tin.tin->no_charge)
-		|| tin.tin->unpaid)) {
-		verbalize("You open it, you bought it!"); /* EN verbalize("You open it, you bought it!"); */ // TODO DE
-		/* charge for one at pre-eating cost */
-		if(tin.tin->quan > 1L) tin.tin = splitobj(tin.tin, 1L);
-		bill_dummy_object(tin.tin);
-	    }
+	    costly_tin((const char*)0);
 
 	    if (!tin.tin->cursed)
 		pline("%s wie %s!", this_makes_you_feel, /* EN pline("This makes you feel like %s!", */
@@ -1245,9 +1263,11 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 	}
 
 	if (mnum != PM_ACID_BLOB && !stoneable && rotted > 5L) {
-		pline("Ulch - that %s was tainted!", /* EN pline("Ulch - that %s was tainted!", */ // TODO DE
+		boolean cannibal = maybe_cannibal(mnum, FALSE);
+		pline("Ulch - that %s was tainted%s!", /* EN pline("Ulch - that %s was tainted%s!", */ // TODO DE
 		      mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : /* EN mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : */ // TODO DE
-		      !vegetarian(&mons[mnum]) ? "NOUN_FLEISCH" : "NOUN_PROTOPLASMA"); /* EN !vegetarian(&mons[mnum]) ? "meat" : "protoplasm"); */
+		      !vegetarian(&mons[mnum]) ? "NOUN_FLEISCH" : "NOUN_PROTOPLASMA", /* EN !vegetarian(&mons[mnum]) ? "meat" : "protoplasm", */
+		      cannibal ? " cannibal" : ""); /* EN cannibal ? " cannibal" : ""); */ // TODO DE
 		if (Sick_resistance) {
 			pline("It doesn't seem at all sickening, though..."); /* EN pline("It doesn't seem at all sickening, though..."); */ // TODO DE
 		} else {
@@ -1554,6 +1574,14 @@ struct obj *otmp;
 		    flags.female ? "feminin" : "maskulin"); /* EN flags.female ? "feminine" : "masculine"); */
 		flags.botl = 1;
 		break;
+	    case AMULET_OF_UNCHANGING:
+		/* un-change: it's a pun */
+		if (!Unchanging && Upolyd) {
+		    accessory_has_effect(otmp);
+		    makeknown(typ);
+		    rehumanize();
+		}
+		break;
 	    case AMULET_OF_STRANGULATION: /* bad idea! */
 		/* no message--this gives no permanent effect */
 		choke(otmp);
@@ -1564,7 +1592,6 @@ struct obj *otmp;
 		HSleeping = FROMOUTSIDE | rnd(100);
 		break;
 	    case RIN_SUSTAIN_ABILITY:
-	    case AMULET_OF_UNCHANGING:
 	    case AMULET_OF_LIFE_SAVING:
 	    case AMULET_OF_REFLECTION: /* nice try */
 	    /* can't eat Amulet of Yendor or fakes,
@@ -1745,10 +1772,7 @@ struct obj *otmp;
 				!poly_when_stoned(youmonst.data));
 
 		if (mnum == PM_GREEN_SLIME)
-		    stoneorslime = (!Unchanging &&
-			youmonst.data != &mons[PM_FIRE_VORTEX] &&
-			youmonst.data != &mons[PM_FIRE_ELEMENTAL] &&
-			youmonst.data != &mons[PM_SALAMANDER] &&
+		    stoneorslime = (!Unchanging && !flaming(youmonst.data) &&
 			youmonst.data != &mons[PM_GREEN_SLIME]);
 
 		if (cadaver && mnum != PM_LIZARD && mnum != PM_LICHEN) {

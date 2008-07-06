@@ -234,6 +234,7 @@ boolean forcecontrol;
 				uarm->otyp <= YELLOW_DRAGON_SCALES);
 	boolean iswere = (u.ulycn >= LOW_PM || is_were(youmonst.data));
 	boolean isvamp = (youmonst.data->mlet == S_VAMPIRE || u.umonnum == PM_VAMPIRE_BAT);
+	boolean was_floating = (Levitation || Flying);
 
         if(!Polymorph_control && !forcecontrol && !draconian && !iswere && !isvamp) {
 	    if (rn2(20) > ACURR(A_CON)) {
@@ -323,6 +324,9 @@ boolean forcecontrol;
 		new_light_source(u.ux, u.uy, new_light,
 				 LS_MONSTER, (genericptr_t)&youmonst);
 	}
+	if (is_pool(u.ux,u.uy) && was_floating && !(Levitation || Flying) &&
+		!breathless(youmonst.data) && !amphibious(youmonst.data) &&
+		!Swimming) drown();
 }
 
 /* (try to) make a mntmp monster out of the player */
@@ -412,7 +416,7 @@ int	mntmp;
 		Dir_ist("nicht mehr übel."); /* EN You("no longer feel sick."); */
 	}
 	if (Slimed) {
-	    if (mntmp == PM_FIRE_VORTEX || mntmp == PM_FIRE_ELEMENTAL || mntmp == PM_SALAMANDER) {
+	    if (flaming(youmonst.data)) {
 		pline_The("slime burns away!"); /* EN pline_The("slime burns away!"); */ // TODO DE
 		Slimed = 0L;
 		flags.botl = 1;
@@ -906,6 +910,7 @@ dospinweb()
 int
 dosummon()
 {
+	int placeholder;
 	if (u.uen < 10) {
 	    Dir("fehlt die Energie um einen Hilferuf auszusenden!"); /* EN You("lack the energy to send forth a call for help!"); */
 	    return(0);
@@ -915,7 +920,7 @@ dosummon()
 
 	You("VERB_RUFEN OBJECT PRONOMEN_POSSESSIV NOUN_BRUEDERs zu Hilfe!"); /* EN You("call upon your brethren for help!"); */
 	exercise(A_WIS, TRUE);
-	if (!were_summon(youmonst.data,TRUE))
+	if (!were_summon(youmonst.data, TRUE, &placeholder, (char *)0))
 		pline("Aber es kommt niemand."); /* EN pline("But none arrive."); */
 	return(1);
 }

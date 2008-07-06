@@ -440,7 +440,7 @@ decurse:
 		    break;
 	    case TROUBLE_HALLUCINATION:
 		    pline ("Sieht so aus, als MODIFIER_KONJUNKTIV_II VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wieder daheim in Kansas."); /* EN pline ("Looks like you are back in Kansas."); */ // IMPROVE ME
-		    make_hallucinated(0L,FALSE,0L);
+		    (void) make_hallucinated(0L,FALSE,0L);
 		    break;
 #ifdef STEED
 	    case TROUBLE_SADDLE:

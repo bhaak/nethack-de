@@ -1,4 +1,4 @@
-/*	SCCS Id: @(#)dothrow.c	3.4	2003/01/24	*/
+/*	SCCS Id: @(#)dothrow.c	3.4	2003/12/04	*/
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -207,6 +207,11 @@ dothrow()
 	shotlimit = (multi || save_cm) ? multi + 1 : 0;
 	multi = 0;		/* reset; it's been used up */
 
+	if (notake(youmonst.data)) {
+	    You("are physically incapable of throwing anything."); /* EN You("are physically incapable of throwing anything."); */ // TODO DE
+	    return 0;
+	}
+
 	if(check_capacity((char *)0)) return(0);
 	obj = getobj(uslinging() ? bullets : toss_objs, "VERB_WERFEN"); /* EN obj = getobj(uslinging() ? bullets : toss_objs, "throw"); */
 	/* it is also possible to throw food */
@@ -288,6 +293,11 @@ int
 dofire()
 {
 	int shotlimit;
+
+	if (notake(youmonst.data)) {
+	    You("are physically incapable of doing that."); /* EN You("are physically incapable of doing that."); */ // TODO DE
+	    return 0;
+	}
 
 	if(check_capacity((char *)0)) return(0);
 	if (!uquiver) {
@@ -1153,7 +1163,7 @@ struct monst *mon;
        an arrow just landing short of any target (no message in that case),
        so will realize that there is a valid target here anyway. */
     if (!canseemon(mon) || (mon->m_ap_type && mon->m_ap_type != M_AP_MONSTER))
-	pline("SUBJECT %s VERB_HIT nicht.", The(missile)); /* EN pline("%s misses.", The(missile)); */
+	pline("SUBJECT %s %s nicht.", The(missile), otense(obj, "VERB_HIT")); /* EN pline("%s %s.", The(missile), otense(obj, "miss")); */
     else
 	miss(missile, mon);
     if (!rn2(3)) wakeup(mon);
@@ -1473,7 +1483,7 @@ register struct obj *obj;
 
 nopick:
 	if(!Blind) pline("SUBJECT %s", buf); /* EN if(!Blind) pline("%s", buf); */
-	if (!tele_restrict(mon)) rloc(mon);
+	if (!tele_restrict(mon)) (void) rloc(mon, FALSE);
 	return(ret);
 }
 
@@ -1682,9 +1692,6 @@ boolean in_view;
 	}
 }
 
-/*
- *  Note that the gold object is *not* attached to the fobj chain.
- */
 STATIC_OVL int
 throw_gold(obj)
 struct obj *obj;

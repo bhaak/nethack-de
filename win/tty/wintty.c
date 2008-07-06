@@ -149,8 +149,8 @@ boolean GFlag = FALSE;
 boolean HE_resets_AS;	/* see termcap.c */
 #endif
 
-#ifdef MICRO
-static char to_continue[] = "to continue";
+#if defined(MICRO) || defined(WIN32CON)
+static const char to_continue[] = "to continue";
 #define getret() getreturn(to_continue)
 #else
 STATIC_DCL void NDECL(getret);
@@ -692,6 +692,9 @@ tty_askname()
 		if (c == '\b' || c == '\177') {
 			if(ct) {
 				ct--;
+#ifdef WIN32CON
+				ttyDisplay->curx--;
+#endif
 #if defined(MICRO) || defined(WIN32CON)
 # if defined(WIN32CON) || defined(MSDOS)
 				backsp();       /* \b is visible on NT */
@@ -724,6 +727,9 @@ tty_askname()
 			(void) putchar(c);
 #endif
 			plname[ct++] = c;
+#ifdef WIN32CON
+			ttyDisplay->curx++;
+#endif
 		}
 	}
 	plname[ct] = 0;
@@ -739,7 +745,7 @@ tty_get_nh_event()
     return;
 }
 
-#ifndef MICRO
+#if !defined(MICRO) && !defined(WIN32CON)
 STATIC_OVL void
 getret()
 {
@@ -1138,12 +1144,12 @@ struct WinDesc *cw;
     int n, curr_page, page_lines;
     boolean finished, counting, reset_count;
     char *cp, *rp, resp[QBUFSZ], gacc[QBUFSZ],
-	 *msave, morestr[QBUFSZ];
+	 *msave, *morestr;
 
     curr_page = page_lines = 0;
     page_start = page_end = 0;
     msave = cw->morestr;	/* save the morestr */
-    cw->morestr = morestr;
+    cw->morestr = morestr = (char*) alloc((unsigned) QBUFSZ);
     counting = FALSE;
     count = 0L;
     reset_count = TRUE;
@@ -1221,8 +1227,13 @@ struct WinDesc *cw;
 		     */
 		    term_start_attr(curr->attr);
 		    for (n = 0, cp = curr->str;
+#ifndef WIN32CON
 			  *cp && (int) ++ttyDisplay->curx < (int) ttyDisplay->cols;
 			  cp++, n++)
+#else
+			  *cp && (int) ttyDisplay->curx < (int) ttyDisplay->cols;
+			  cp++, n++, ttyDisplay->curx++)
+#endif
 			if (n == 2 && curr->identifier.a_void != 0 &&
 							curr->selected) {
 			    if (curr->count == -1L)
@@ -1422,6 +1433,7 @@ struct WinDesc *cw;
 
     } /* while */
     cw->morestr = msave;
+    free((genericptr_t)morestr);
 }
 
 STATIC_OVL void
@@ -1457,8 +1469,13 @@ struct WinDesc *cw;
 	    }
 	    term_start_attr(attr);
 	    for (cp = &cw->data[i][1];
+#ifndef WIN32CON
 		    *cp && (int) ++ttyDisplay->curx < (int) ttyDisplay->cols;
 		    cp++)
+#else
+		    *cp && (int) ttyDisplay->curx < (int) ttyDisplay->cols;
+		    cp++, ttyDisplay->curx++)
+#endif
 		(void) putchar(*cp);
 	    term_end_attr(attr);
 	}

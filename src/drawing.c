@@ -225,7 +225,7 @@ const struct symdef defsyms[MAXPCHARS] = {
 	{'#', "NOUN_TREE",		C(CLR_GREEN)},	/* tree */
 	{'.', "NOUN_FLOOR_OF_A_ROOM",C(CLR_GRAY)},	/* room */
 /*20*/	{'#', "NOUN_CORRIDOR",	C(CLR_GRAY)},	/* dark corr */
-	{'#', "NOUN_LIT_CORRIDOR",	C(CLR_GRAY)},	/* lit corr */
+	{'#', "NOUN_LIT_CORRIDOR",	C(CLR_GRAY)},	/* lit corr (see mapglyph.c) */
 	{'<', "NOUN_STAIRCASE_UP",	C(CLR_GRAY)},	/* upstair */
 	{'>', "NOUN_STAIRCASE_DOWN",	C(CLR_GRAY)},	/* dnstair */
 	{'<', "NOUN_LADDER_UP",	C(CLR_BROWN)},	/* upladder */
@@ -612,8 +612,8 @@ void NDECL((*ascgraphics_mode_callback)) = 0;	/* set in tty_start_screen() */
 
 /*
  * Convert the given character to an object class.  If the character is not
- * recognized, then MAXOCLASSES is returned.  Used in invent.c, options.c,
- * pickup.c, sp_lev.c, and lev_main.c.
+ * recognized, then MAXOCLASSES is returned.  Used in detect.c invent.c,
+ * options.c, pickup.c, sp_lev.c, and lev_main.c.
  */
 int
 def_char_to_objclass(ch)
