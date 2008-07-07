@@ -2258,7 +2258,7 @@ float_up()
 			vision_full_recalc = 1;	/* vision limits change */
 			fill_pit(u.ux, u.uy);
 		} else if (u.utraptype == TT_INFLOOR) {
-			Your("body pulls upward, but your %s are still stuck.", /* EN Your("body pulls upward, but your %s are still stuck.", */ // TODO DE
+			Your("NOUN_BODY wird hochgezogen, NEUER_SATZ aber SUBJECT_IM_SATZ PRONOMEN_POSSESSIV %s VERB_STECKEN immer noch fest.", /* EN Your("body pulls upward, but your %s are still stuck.", */
 			     makeplural(body_part(LEG)));
 		} else {
 			You("VERB_SCHWEBEN hoch, jedoch NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV %s VERB_STECKEN immer noch fest.", /* EN You("float up, only your %s is still stuck.", */
@@ -2266,7 +2266,7 @@ float_up()
 		}
 	}
 	else if(Is_waterlevel(&u.uz))
-		pline("It feels as though you've lost some weight."); /* EN pline("It feels as though you've lost some weight."); */ // TODO DE
+		pline("Es fühlt sich an, als MODIFIER_KONJUNKTIV_II VERB_HABEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL Gewicht verloren."); /* EN pline("It feels as though you've lost some weight."); */
 	else if(u.uinwater)
 		spoteffects(TRUE);
 	else if(u.uswallow)
@@ -2281,14 +2281,14 @@ float_up()
 	else if(Is_airlevel(&u.uz))
 		You("gain control over your movements."); /* EN You("gain control over your movements."); */ // TODO DE
 	else
-		You("start to float in the air!"); /* EN You("start to float in the air!"); */ // TODO DE
+		You("VERB_BEGINNEN in der Luft zu schweben!"); /* EN You("start to float in the air!"); */
 #ifdef STEED
 	if (u.usteed && !is_floater(u.usteed->data) &&
 						!is_flyer(u.usteed->data)) {
 	    if (Lev_at_will)
-	    	pline("%s magically floats up!", Monnam(u.usteed)); /* EN pline("%s magically floats up!", Monnam(u.usteed)); */ // TODO DE
+	    	pline("SUBJECT %s VERB_SCHWEBEN durch Magie empor!", Monnam(u.usteed)); /* EN pline("%s magically floats up!", Monnam(u.usteed)); */
 	    else {
-	    	You("cannot stay on %s.", mon_nam(u.usteed)); /* EN You("cannot stay on %s.", mon_nam(u.usteed)); */ // TODO DE
+	    	You("VERB_KOENNEN OBJECT PRONOMEN_PERSONAL nicht NEUES_OBJECT OBJECT KASUS_DATIV auf %s halten.", mon_nam(u.usteed)); /* EN You("cannot stay on %s.", mon_nam(u.usteed)); */
 	    	dismount_steed(DISMOUNT_GENERIC);
 	    }
 	}
@@ -2536,9 +2536,9 @@ domagictrap()
 				"distant howling."); /* EN "distant howling."); */ // TODO DE
 			break;
 	     case 15:	if (on_level(&u.uz, &qstart_level))
-			    You_feel("%slike the prodigal son.", /* EN You_feel("%slike the prodigal son.", */ // TODO DE
+			    Du_fuehlst_dich("%swie der verlorene Sohn.", /* EN You_feel("%slike the prodigal son.", */
 			      (flags.female || (Upolyd && is_neuter(youmonst.data))) ?
-				     "oddly " : ""); /* EN "oddly " : ""); */ // TODO DE
+				     "eigenartigerweise " : ""); /* EN "oddly " : ""); */
 			else
 			    You("VERB_HABEN plötzlich Heimweh nach OBJECT KASUS_GENITIV %s.", /* EN You("suddenly yearn for %s.", */
 				Hallucination ? "Cleveland" : /* EN Hallucination ? "Cleveland" : */ // TODO DE
@@ -2727,7 +2727,7 @@ register boolean force, here;
 		    }
 		} else if (obj->oclass == SPBOOK_CLASS) {
 			if (obj->otyp == SPE_BOOK_OF_THE_DEAD)
-				pline("Steam rises from %s.", the(xname(obj))); /* EN pline("Steam rises from %s.", the(xname(obj))); */ // TODO DE
+				pline("Dampf steigt KASUS_DATIV von %s auf.", the(xname(obj))); /* EN pline("Steam rises from %s.", the(xname(obj))); */
 			else obj->otyp = SPE_BLANK_PAPER;
 		} else if (obj->oclass == POTION_CLASS) {
 			if (obj->otyp == POT_ACID) {
@@ -2878,7 +2878,7 @@ drown()
 				pline("Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_ERTRINKEN nicht."); /* EN pline("But you aren't drowning."); */
 			if (!Is_waterlevel(&u.uz)) {
 				if (Hallucination)
-					Your("keel hits the bottom."); /* EN Your("keel hits the bottom."); */ // TODO DE
+					Your("NOUN_KIEL VERB_LAUFEN auf Grund."); /* EN Your("keel hits the bottom."); */
 				else
 					You("VERB_LAUFEN auf Grund."); /* EN You("touch bottom."); */
 			}
@@ -2900,7 +2900,7 @@ drown()
 		(void) dotele();
 		if(!is_pool(u.ux,u.uy))
 			return(TRUE);
-		} else pline_The("attempted teleport spell fails."); /* EN } else pline_The("attempted teleport spell fails."); */ // TODO DE
+		} else pline("Der versuchte Teleportationsspruch misslingt."); /* EN } else pline_The("attempted teleport spell fails."); */
 	}
 #ifdef STEED
 	if (u.usteed) {
@@ -2942,7 +2942,7 @@ drown()
 
 		You("VERB_VERSUCHEN aus dem Wasser zu klettern."); /* EN You("try to crawl out of the water."); */
 		if (lost)
-			You("dump some of your gear to lose weight..."); /* EN You("dump some of your gear to lose weight..."); */ // TODO DE
+			You("VERB_WERFEN einen Teil OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_AUSRUESTUNG weg um Gewicht zu verlieren ..."); /* EN You("dump some of your gear to lose weight..."); */
 		if (succ) {
 			pline("Verdammt!  War das knapp."); /* EN pline("Pheew!  That was close."); */
 			teleds(x,y,TRUE);
@@ -2993,10 +2993,10 @@ dountrap()	/* disarm a trap */
 	    return 0;
 	}
 	if ((nohands(youmonst.data) && !webmaker(youmonst.data)) || !youmonst.data->mmove) {
-	    pline("And just how do you expect to do that?"); /* EN pline("And just how do you expect to do that?"); */ // TODO DE
+	    pline("Und wie genau VERB_WOLLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL das anstellen?"); /* EN pline("And just how do you expect to do that?"); */
 	    return 0;
 	} else if (u.ustuck && sticks(youmonst.data)) {
-	    pline("You'll have to let go of %s first.", mon_nam(u.ustuck)); /* EN pline("You'll have to let go of %s first.", mon_nam(u.ustuck)); */ // TODO DE
+	    pline("SUBJECT PRONOMEN_PERSONAL VERB_MUESSEN zuerst OBJECT %s loslassen.", mon_nam(u.ustuck)); /* EN pline("You'll have to let go of %s first.", mon_nam(u.ustuck)); */
 	    return 0;
 	}
 	if (u.ustuck || (welded(uwep) && bimanual(uwep))) {
@@ -3130,7 +3130,7 @@ boolean force_failure;
 	/* Will our hero succeed? */
 	if (force_failure || untrap_prob(ttmp)) {
 		if (rnl(5)) {
-		    pline("Huch ..."); /* EN pline("Whoops..."); */ // TODO DE
+		    pline("Huch ..."); /* EN pline("Whoops..."); */
 		    if (mtmp) {		/* must be a trap that holds monsters */
 			if (ttype == BEAR_TRAP) {
 			    if (mtmp->mtame) abuse_dog(mtmp);
@@ -3149,7 +3149,7 @@ boolean force_failure;
 #endif
 				}
 			    } else
-				pline("%s remains entangled.", Monnam(mtmp)); /* EN pline("%s remains entangled.", Monnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s bleibt verheddert.", Monnam(mtmp)); /* EN pline("%s remains entangled.", Monnam(mtmp)); */
 			}
 		    } else if (under_u) {
 			dotrap(ttmp, 0);
@@ -3157,10 +3157,10 @@ boolean force_failure;
 			move_into_trap(ttmp);
 		    }
 		} else {
-		    pline("%s %s is difficult to %s.", /* EN pline("%s %s is difficult to %s.", */ // TODO DE
-			  ttmp->madeby_u ? "Your" : under_u ? "This" : "That", /* EN ttmp->madeby_u ? "Your" : under_u ? "This" : "That", */ // TODO DE
+		    pline("SUBJECT %s %s ist schwierig zu %s.", /* EN pline("%s %s is difficult to %s.", */
+			  ttmp->madeby_u ? "PRONOMEN_POSSESSIV" : under_u ? "PRONOMEN_DIESER" : "ARTIKEL_BESTIMMTER", /* EN ttmp->madeby_u ? "Your" : under_u ? "This" : "That", */
 			  defsyms[trap_to_defsym(ttype)].explanation,
-			  (ttype == WEB) ? "remove" : "disarm"); /* EN (ttype == WEB) ? "remove" : "disarm"); */ // TODO DE
+			  (ttype == WEB) ? "entfernen" : "entschärfen"); /* EN (ttype == WEB) ? "remove" : "disarm"); */
 		}
 		return 1;
 	}
@@ -3214,7 +3214,7 @@ struct trap *ttmp;
 			You("VERB_DISARM OBJECT %s NOUN_BEARTRAP.", the_your[ttmp->madeby_u]); /* EN You("disarm %s bear trap.", the_your[ttmp->madeby_u]); */
 			cnv_trap_obj(BEARTRAP, 1, ttmp);
 		} else /* if (ttmp->ttyp == WEB) */ {
-			You("succeed in removing %s web.", the_your[ttmp->madeby_u]); /* EN You("succeed in removing %s web.", the_your[ttmp->madeby_u]); */ // TODO DE
+			Dir("gelingt es NEUES_OBJECT OBJECT %s NOUN_WEB zu entfernen.", the_your[ttmp->madeby_u]); /* EN You("succeed in removing %s web.", the_your[ttmp->madeby_u]); */
 			deltrap(ttmp);
 		}
 	}
@@ -3510,7 +3510,7 @@ boolean force;
 		    if((otmp->otrapped && (force || (!confused
 				&& rn2(MAXULEV + 1 - u.ulevel) < 10)))
 		       || (!force && confused && !rn2(3))) {
-			You("find a trap on %s!", the(xname(otmp))); /* EN You("find a trap on %s!", the(xname(otmp))); */ // TODO DE
+			You("VERB_FINDEN eine Falle OBJECT KASUS_DATIV an %s!", the(xname(otmp))); /* EN You("find a trap on %s!", the(xname(otmp))); */
 			if (!confused) exercise(A_WIS, TRUE);
 
 			switch (ynq("Entschärfen?")) { /* EN switch (ynq("Disarm it?")) { */
@@ -3529,16 +3529,16 @@ boolean force;
 				You("VERB_DISARM sie!"); /* EN You("disarm it!"); */
 				otmp->otrapped = 0;
 			    }
-			} else pline("That %s was not trapped.", xname(otmp)); /* EN } else pline("That %s was not trapped.", xname(otmp)); */ // TODO DE
+			} else pline("SUBJECT PRONOMEN_DIESER %s was not trapped.", xname(otmp)); /* EN } else pline("That %s was not trapped.", xname(otmp)); */ // TODO DE
 			return(1);
 		    } else {
-			You("find no traps on %s.", the(xname(otmp))); /* EN You("find no traps on %s.", the(xname(otmp))); */ // TODO DE
+			You("VERB_FINDEN keine Fallen OBJECT KASUS_DATIV an %s.", the(xname(otmp))); /* EN You("find no traps on %s.", the(xname(otmp))); */
 			return(1);
 		    }
 		}
 
-	    You(trap_skipped ? "find no other traps here." /* EN You(trap_skipped ? "find no other traps here." */ // TODO DE
-			     : "know of no traps here."); /* EN : "know of no traps here."); */ // TODO DE
+	    You(trap_skipped ? "VERB_FINDEN hier keine weiteren Fallen." /* EN You(trap_skipped ? "find no other traps here." */
+			     : "VERB_WISSEN von keine Fallen an dieser Stelle."); /* EN : "know of no traps here."); */
 	    return(0);
 	}
 
@@ -3565,7 +3565,7 @@ boolean force;
 		You("%s da keine Türe.", Blind ? "VERB_SPUEREN" : "VERB_SEHEN"); /* EN You("%s no door there.", Blind ? "feel" : "see"); */
 		return(0);
 	    case D_ISOPEN:
-		pline("This door is safely open."); /* EN pline("This door is safely open."); */ // TODO DE
+		pline("Diese Türe ist ungefährlich weit offen."); /* EN pline("This door is safely open."); */
 		return(0);
 	    case D_BROKEN:
 		pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */
@@ -3598,7 +3598,7 @@ boolean force;
 		} else pline("This door was not trapped."); /* EN } else pline("This door was not trapped."); */ // TODO DE
 		return(1);
 	} else {
-		You("find no traps on the door."); /* EN You("find no traps on the door."); */ // TODO DE
+		You("VERB_FINDEN keine Fallen an dieser Türe."); /* EN You("find no traps on the door."); */
 		return(1);
 	}
 }

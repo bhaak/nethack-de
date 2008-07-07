@@ -882,7 +882,7 @@ register const char *let,*word;
 		     otyp != MAGIC_MARKER && otyp != TOWEL))
 		|| (!strcmp(word, "eindosen") && /* EN || (!strcmp(word, "tin") && */
 		    (otyp != CORPSE || !tinnable(otmp)))
-		|| (!strcmp(word, "rub") && /* EN || (!strcmp(word, "rub") && */ // TODO DE
+		|| (!strcmp(word, "reiben") && /* EN || (!strcmp(word, "rub") && */
 		    ((otmp->oclass == TOOL_CLASS &&
 		      otyp != OIL_LAMP && otyp != MAGIC_LAMP &&
 		      otyp != BRASS_LANTERN) ||

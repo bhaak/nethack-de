@@ -2397,6 +2397,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Spitzhacke", "NOUN_PICK_AXE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Spitzhacken", "NOUN_PICK_AXEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Enterhaken", "NOUN_GRAPPLING_HOOK", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Ainkhürnes", "NOUN_UNICORN_HORN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ainkhürne", "NOUN_UNICORN_HORN", "", dativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ainkhürn", "NOUN_UNICORN_HORN", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},

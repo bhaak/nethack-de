@@ -1164,7 +1164,7 @@ domove()
 #endif
 			Norep( (Hallucination && !rn2(5)) ?
 				"You've fallen, and you can't get up." : /* EN "You've fallen, and you can't get up." : */ // TODO DE
-				"SUBJECT VERB_STECKEN immer noch in einer Grube." ); /* EN "You are still in a pit." ); */
+				"SUBJECT PRONOMEN_PERSONAL VERB_STECKEN immer noch in einer Grube." ); /* EN "You are still in a pit." ); */
 		    }
 		} else if (u.utraptype == TT_LAVA) {
 		    if(flags.verbose) {
@@ -1223,7 +1223,7 @@ domove()
 			    predicament = "VERB_STECKEN OBJECT KASUS_DATIV _in_ ARTIKEL_BESTIMMTER"; /* EN predicament = "stuck in the"; */
 #ifdef STEED
 			    if (u.usteed)
-				Norep("SUBJECT %s is %s %s fest.", /* EN Norep("%s is %s %s.", */
+				Norep("SUBJECT %s %s %s fest.", /* EN Norep("%s is %s %s.", */
 				      upstart(y_monnam(u.usteed)),
 				      predicament, surface(u.ux, u.uy));
 			    else

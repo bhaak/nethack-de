@@ -1047,7 +1047,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 #endif
 	    you_are(buf);
 	}
-	if (Unchanging) you_can("PRONOMEN_POSSESSIV ADJEKTIV_DERZEITIG NOUN_DASEINSFORM nicht ändern"); /* EN if (Unchanging) you_can("not change from your current form"); */
+	if (Unchanging) you_can("OBJECT PRONOMEN_POSSESSIV ADJEKTIV_DERZEITIG NOUN_DASEINSFORM nicht ändern"); /* EN if (Unchanging) you_can("not change from your current form"); */
 	if (Fast) you_are(Very_fast ? "sehr schnell" : "schnell"); /* EN if (Fast) you_are(Very_fast ? "very fast" : "fast"); */
 	if (Reflecting) you_have("reflection"); /* EN if (Reflecting) you_have("reflection"); */ // TODO DE
 	if (Free_action) you_have("free action"); /* EN if (Free_action) you_have("free action"); */ // TODO DE

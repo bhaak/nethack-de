@@ -1977,7 +1977,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEATHER_DRUM", "Ledertrommel", "", "Ledertrommel", "en", "feminin"),
     #dekliniere_substantiv("NOUN_DRUM_OF_EARTHQUAKE", 
     dekliniere_substantiv("NOUN_PICK_AXE", "Spitzhacke", "", "Spitzhacke", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_GRAPPLING_HOOK", 
+    dekliniere_substantiv("NOUN_GRAPPLING_HOOK", "Enterhaken","","","","maskulin"),
     dekliniere_substantiv("NOUN_UNICORN_HORN", "Ainkhürn", "es", "Ainkhürn", "er", "neutrum"),
     dekliniere_substantiv("NOUN_UNICORN_HORN", "Einhorn-Horn", "es", "Einhorn-Hörn", "er", "neutrum"),
     dekliniere_substantiv("NOUN_UNICORN_HORN", "Horn", "es", "Hörn", "er", "neutrum","","eines Einhornes"),

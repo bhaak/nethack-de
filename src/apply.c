@@ -1169,7 +1169,7 @@ static NEARDATA const char cuddly[] = { TOOL_CLASS, GEM_CLASS, 0 };
 int
 dorub()
 {
-	struct obj *obj = getobj(cuddly, "rub"); /* EN struct obj *obj = getobj(cuddly, "rub"); */ // TODO DE
+	struct obj *obj = getobj(cuddly, "reiben"); /* EN struct obj *obj = getobj(cuddly, "rub"); */
 
 	if (obj && obj->oclass == GEM_CLASS) {
 	    if (is_graystone(obj)) {
@@ -1181,7 +1181,7 @@ dorub()
 	    }
 	}
 
-	if (!obj || !wield_tool(obj, "rub")) return 0; /* EN if (!obj || !wield_tool(obj, "rub")) return 0; */ // TODO DE
+	if (!obj || !wield_tool(obj, "reiben")) return 0; /* EN if (!obj || !wield_tool(obj, "rub")) return 0; */
 
 	/* now uwep is obj */
 	if (uwep->otyp == MAGIC_LAMP) {
@@ -1200,7 +1200,7 @@ dorub()
 	} else if (obj->otyp == BRASS_LANTERN) {
 	    /* message from Adventure */
 	    pline("Die elektrische Lampe zu reiben ist nicht besonders befriedigend."); /* EN pline("Rubbing the electric lamp is not particularly rewarding."); */
-	    pline("Jedenfalls, nichts Aufregendes passiert."); /* EN pline("Anyway, nothing exciting happens."); */
+	    pline("Jedenfalls passiert nichts Aufregendes."); /* EN pline("Anyway, nothing exciting happens."); */
 	} else pline(nothing_happens);
 	return 1;
 }
@@ -1765,7 +1765,7 @@ struct obj *obj;
 	char buf[BUFSZ];
 
 	if (Glib) {
-	    pline("%s from your %s.", Tobjnam(obj, "slip"), /* EN pline("%s from your %s.", Tobjnam(obj, "slip"), */ // TODO DE
+	    pline("SUBJECT %s OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", Tobjnam(obj, "VERB_ENTGLEITEN"), /* EN pline("%s from your %s.", Tobjnam(obj, "slip"), */
 		  makeplural(body_part(FINGER)));
 	    dropx(obj);
 	    return;
@@ -1775,7 +1775,7 @@ struct obj *obj;
 		if ((obj->cursed || Fumbling) && !rn2(2)) {
 			consume_obj_charge(obj, TRUE);
 
-			pline("%s from your %s.", Tobjnam(obj, "slip"), /* EN pline("%s from your %s.", Tobjnam(obj, "slip"), */ // TODO DE
+			pline("SUBJECT %s OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s.", Tobjnam(obj, "VERB_ENTGLEITEN"), /* EN pline("%s from your %s.", Tobjnam(obj, "slip"), */
 			      makeplural(body_part(FINGER)));
 			dropx(obj);
 			return;
@@ -1989,8 +1989,8 @@ struct obj *otmp;
 	else if (Stunned)
 	    what = "benommen"; /* EN what = "while stunned"; */
 	else if (u.uswallow)
-	    what = is_animal(u.ustuck->data) ? "while swallowed" : /* EN what = is_animal(u.ustuck->data) ? "while swallowed" : */ // TODO DE
-			"while engulfed"; /* EN "while engulfed"; */ // TODO DE
+	    what = is_animal(u.ustuck->data) ? "verschluckt" : /* EN what = is_animal(u.ustuck->data) ? "while swallowed" : */
+			"verschlungen"; /* EN "while engulfed"; */
 	else if (Underwater)
 	    what = "unter Wasser"; /* EN what = "underwater"; */
 	else if (Levitation)
@@ -2007,6 +2007,11 @@ struct obj *otmp;
 		closed_door(u.ux, u.uy) || t_at(u.ux, u.uy))
 	    what = "hier"; /* EN what = "here"; */
 	if (what) {
+#ifdef GERMAN
+		if (u.uswallow)
+			You("VERB_KOENNEN keine Falle aufstellen, solange du %s bist!",what);
+		else 
+#endif
 	    You("VERB_KOENNEN %s keine Falle aufstellen!",what); /* EN You_cant("set a trap %s!",what); */
 	    reset_trapset();
 	    return;
@@ -2577,7 +2582,7 @@ use_grapple (obj)
 	    /* FALL THROUGH */
 	case 3:	/* Surface */
 	    if (IS_AIR(levl[cc.x][cc.y].typ) || is_pool(cc.x, cc.y))
-		pline_The("hook slices through the %s.", surface(cc.x, cc.y)); /* EN pline_The("hook slices through the %s.", surface(cc.x, cc.y)); */ // TODO DE
+		pline_The("NOUN_HAKEN VERB_PFLUEGEN OBJECT durch ARTIKEL_BESTIMMTER %s.", surface(cc.x, cc.y)); /* EN pline_The("hook slices through the %s.", surface(cc.x, cc.y)); */
 	    else {
 		You("are yanked toward the %s!", surface(cc.x, cc.y)); /* EN You("are yanked toward the %s!", surface(cc.x, cc.y)); */ // TODO DE
 		hurtle(sgn(cc.x-u.ux), sgn(cc.y-u.uy), 1, FALSE);
@@ -2586,8 +2591,8 @@ use_grapple (obj)
 	    return (1);
 	default:	/* Yourself (oops!) */
 	    if (P_SKILL(typ) <= P_BASIC) {
-		You("hook yourself!"); /* EN You("hook yourself!"); */ // TODO DE
-		losehp(rn1(10,10), "a grappling hook", KILLED_BY); /* EN losehp(rn1(10,10), "a grappling hook", KILLED_BY); */ // TODO DE
+		You("VERB_REISSEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL selbst den Arsch auf!"); /* EN You("hook yourself!"); */
+		losehp(rn1(10,10), "ARTIKEL_UNBESTIMMTER NOUN_GRAPPLING_HOOK", KILLED_BY); /* EN losehp(rn1(10,10), "a grappling hook", KILLED_BY); */
 		return (1);
 	    }
 	    break;
@@ -2614,8 +2619,8 @@ do_break_wand(obj)
     char confirm[QBUFSZ], the_wand[BUFSZ], buf[BUFSZ];
 
     Strcpy(the_wand, yname(obj));
-    Sprintf(confirm, "SUBJECT VERB_SEIN PRONOMEN_PERSONAL Are you really sure you want to break %s?", /* EN Sprintf(confirm, "Are you really sure you want to break %s?", */ // TODO DE
-	safe_qbuf("", sizeof("Are you really sure you want to break ?"), /* EN safe_qbuf("", sizeof("Are you really sure you want to break ?"), */ // TODO DE
+    Sprintf(confirm, "SUBJECT VERB_WOLLEN PRONOMEN_PERSONAL wirklich OBJECT %s zerbrechen?", /* EN Sprintf(confirm, "Are you really sure you want to break %s?", */
+	safe_qbuf("", sizeof("SUBJECT VERB_WOLLEN PRONOMEN_PERSONAL wirklich OBJECT  zerbrechen?"), /* EN safe_qbuf("", sizeof("Are you really sure you want to break ?"), */
 				the_wand, ysimple_name(obj), "ARTIKEL_BESTIMMTER NOUN_WAND")); /* EN the_wand, ysimple_name(obj), "the wand")); */
     if (yn(confirm) == 'n' ) return 0;
 
@@ -2727,7 +2732,7 @@ do_break_wand(obj)
 		}
 		damage = zapyourself(obj, FALSE);
 		if (damage) {
-		    Sprintf(buf, "tötete sich selbst %sself by breaking a wand", uhim()); /* EN Sprintf(buf, "killed %sself by breaking a wand", uhim()); */ // TODO DE
+		    Sprintf(buf, "tötete sich selbst beim Zerbrechen eines Stabes"); /* EN Sprintf(buf, "killed %sself by breaking a wand", uhim()); */
 		    losehp(damage, buf, NO_KILLER_PREFIX);
 		}
 		if (flags.botl) bot();		/* blindness */
@@ -2813,10 +2818,10 @@ doapply()
 		    if (!cursed(obj)) Blindf_off(obj);
 		} else if (!ublindf)
 		    Blindf_on(obj);
-		else You("%s.", /* EN else You("are already %s.", */ // TODO DE
-			ublindf->otyp == TOWEL ?     "VERB_SEIN bereits covered by a towel" : /* EN ublindf->otyp == TOWEL ?     "covered by a towel" : */ // TODO DE
+		else You("VERB_TRAGEN bereits %s%s.", /* EN else You("are already %s.", */
+			ublindf->otyp == TOWEL ?     "ein Handtuch OBJECT KASUS_DATIV über PRONOMEN_POSSESSIV " : /* EN ublindf->otyp == TOWEL ?     "covered by a towel" : */
 			ublindf->otyp == BLINDFOLD ? "VERB_TRAGEN bereits OBJECT ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD" : /* EN ublindf->otyp == BLINDFOLD ? "wearing a blindfold" : */
-						     "VERB_TRAGEN bereits OBJECT ARTIKEL_UNBESTIMMTER NOUN_LENSESs"); /* EN "wearing lenses"); */
+						     "VERB_TRAGEN bereits OBJECT ARTIKEL_UNBESTIMMTER NOUN_LENSESs", ublindf->otyp == TOWEL ? body_part(HEAD) : ""); /* EN "wearing lenses"); */
 		break;
 	case CREAM_PIE:
 		res = use_cream_pie(obj);
