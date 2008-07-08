@@ -3810,7 +3810,7 @@ register struct obj *obj;
 	    place_object(item, obj->ox, obj->oy);
 	}
 	if (Role_if(PM_ARCHEOLOGIST) && !flags.mon_moving && (obj->spe & STATUE_HISTORIC)) {
-	    pline("SUBJECT PRONOMEN_PERSONAL VERB_HAVE ein schlechtes Gewissen eine historische Statue zu beschädigen."); /* EN You_feel("guilty about damaging such a historic statue."); */
+	    pline("SUBJECT PRONOMEN_PERSONAL VERB_HAVE ein schlechtes Gewissen eine antike Statue so zu beschädigen."); /* EN You_feel("guilty about damaging such a historic statue."); */
 	    adjalign(-1);
 	}
 	obj->spe = 0;

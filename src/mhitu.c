@@ -499,7 +499,7 @@ mattacku(mtmp)
 	    	int numseen, numhelp;
 		char buf[BUFSZ], genericwere[BUFSZ];
 
-		Strcpy(genericwere, "creature"); /* EN Strcpy(genericwere, "creature"); */ // TODO DE
+		Strcpy(genericwere, "NOUN_CREATURE"); /* EN Strcpy(genericwere, "creature"); */
 		numhelp = were_summon(mdat, FALSE, &numseen, genericwere);
 		if(youseeit) {
 			pline("SUBJECT %s ruft um Hilfe!", Monnam(mtmp)); /* EN pline("%s summons help!", Monnam(mtmp)); */
@@ -511,20 +511,20 @@ mattacku(mtmp)
 			const char *from_nowhere;
 
 			if (flags.soundok) {
-				pline("%s %s!", Something, /* EN pline("%s %s!", Something, */ // TODO DE
+				pline("SUBJECT %s %s!", Something, /* EN pline("%s %s!", Something, */
 					makeplural(growl_sound(mtmp)));
 				from_nowhere = "";
-			} else from_nowhere = " from nowhere"; /* EN } else from_nowhere = " from nowhere"; */ // TODO DE
+			} else from_nowhere = " aus dem Nichts"; /* EN } else from_nowhere = " from nowhere"; */
 			if (numhelp > 0) {
 			    if (numseen < 1) Du_fuehlst_dich("umzingelt."); /* EN if (numseen < 1) You_feel("hemmed in."); */
 			    else {
 				if (numseen == 1)
-			    		Sprintf(buf, "%s appears", /* EN Sprintf(buf, "%s appears", */ // TODO DE
+			    		Sprintf(buf, "%s VERB_AUFTAUCHEN", /* EN Sprintf(buf, "%s appears", */
 							an(genericwere));
 			    	else
-			    		Sprintf(buf, "%s appear", /* EN Sprintf(buf, "%s appear", */ // TODO DE
+			    		Sprintf(buf, "%s VERB_AUFTAUCHEN", /* EN Sprintf(buf, "%s appear", */
 							makeplural(genericwere));
-				pline("%s%s!", upstart(buf), from_nowhere); /* EN pline("%s%s!", upstart(buf), from_nowhere); */ // TODO DE
+				pline("SUBJECT %s%s SATZKLAMMER!", upstart(buf), from_nowhere); /* EN pline("%s%s!", upstart(buf), from_nowhere); */
 			    }
 			} /* else no help came; but you didn't know it tried */
 		}
@@ -2001,7 +2001,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 			mtmp->mcansee && !mtmp->mspec_used && rn2(5)) {
 		    int dmg = d(2,6);
 
-		    pline("%s attacks you with a fiery gaze!", Monnam(mtmp)); /* EN pline("%s attacks you with a fiery gaze!", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_ANGREIFEN OBJECT PRONOMEN_PERSONAL mit einem feurigen Blick an!", Monnam(mtmp)); /* EN pline("%s attacks you with a fiery gaze!", Monnam(mtmp)); */
 		    stop_occupation();
 		    if (Fire_resistance) {
 			pline_The("NOUN_FEUER VERB_FUEHLEN sich nicht heiss an!"); /* EN pline_The("fire doesn't feel hot!"); */

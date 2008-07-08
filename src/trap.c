@@ -94,7 +94,7 @@ struct monst *victim;
 	    return TRUE;
 	case 2:
 	    item = (victim == &youmonst) ? uarms : which_armor(victim, W_ARMS);
-	    if (!burn_dmg(item, "wooden shield")) continue; /* EN if (!burn_dmg(item, "wooden shield")) continue; */ // TODO DE
+	    if (!burn_dmg(item, "ADJEKTIV_HOELZERN NOUN_SHIELD")) continue; /* EN if (!burn_dmg(item, "wooden shield")) continue; */
 	    break;
 	case 3:
 	    item = (victim == &youmonst) ? uarmg : which_armor(victim, W_ARMG);
@@ -124,11 +124,11 @@ int type;
 boolean print;
 struct monst *victim;
 {
-	static NEARDATA const char * const action[] = { "smoulder", "VERB_ROSTEN", "rot", "corrode" }; /* EN static NEARDATA const char * const action[] = { "smoulder", "rust", "rot", "corrode" }; */ // TODO DE
+	static NEARDATA const char * const action[] = { "VERB_KOKELN", "VERB_ROSTEN", "VERB_VERFAULEN", "VERB_KORRODIEREN" }; /* EN static NEARDATA const char * const action[] = { "smoulder", "rust", "rot", "corrode" }; */
 #ifdef GERMAN
-	static NEARDATA const char * const action_completely[] = { "smoulder", "VERB_VERROSTEN", "rot", "corrode" }; // TODO DE
+	static NEARDATA const char * const action_completely[] = { "VERB_VERKOHLEN", "VERB_VERROSTEN", "VERB_VERFAULEN", "VERB_KORRODIEREN" };
 #endif
-	static NEARDATA const char * const msg[] =  { "burnt", "verrostet", "rotten", "corroded" }; /* EN static NEARDATA const char * const msg[] =  { "burnt", "rusted", "rotten", "corroded" }; */ // TODO DE
+	static NEARDATA const char * const msg[] =  { "verbrannt", "verrostet", "vermodert", "korrodiert" }; /* EN static NEARDATA const char * const msg[] =  { "burnt", "rusted", "rotten", "corroded" }; */
 	boolean vulnerable = FALSE;
 	boolean grprot = FALSE;
 	boolean is_primary = TRUE;
@@ -501,14 +501,14 @@ int *fail_reason;
 		pline_The("NOUN_STATUE %s!", /* EN pline_The("statue %s!", */
 			canspotmon(mon) ? comes_to_life : "verschwindet"); /* EN canspotmon(mon) ? comes_to_life : "disappears"); */
 	    if (historic) {
-		    You_feel("guilty that the historic statue is now gone."); /* EN You_feel("guilty that the historic statue is now gone."); */ // TODO DE
+		    pline("Das Verschwinden der antiken Statue wird KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GEWISSEN noch lange plagen."); /* EN You_feel("guilty that the historic statue is now gone."); */
 		    adjalign(-1);
 	    }
 	} else if (cause == ANIMATE_SHATTER)
 	    pline("Statt zu zerbrechen %s die Statue plötzlich%s!", /* EN pline("Instead of shattering, the statue suddenly %s!", */
 		canspotmon(mon) ? "wird" : "verschwindet", canspotmon(mon) ? " lebendig" : ""); /* EN canspotmon(mon) ? "comes to life" : "disappears"); */
 	else { /* cause == ANIMATE_NORMAL */
-	    You("find %s posing as a statue.", /* EN You("find %s posing as a statue.", */ // TODO DE
+	    You("VERB_ENTDECKEN, dass NEUER_SATZ SUBJECT_IM_SATZ %s als Statue posiert.", /* EN You("find %s posing as a statue.", */
 		canspotmon(mon) ? a_monnam(mon) : something);
 	    stop_occupation();
 	}
@@ -609,7 +609,7 @@ unsigned trflags;
 	     * reason why the player cannot escape the trap with a dexterity
 	     * check, clinging to the ceiling, etc.
 	     */
-	    pline("Air currents pull you down into %s %s!", /* EN pline("Air currents pull you down into %s %s!", */ // TODO DE
+	    pline("Luftwirbel ziehen KASUS_AKKUSATIV PRONOMEN_PERSONAL KASUS_AKKUSATIV in %s %s runter!", /* EN pline("Air currents pull you down into %s %s!", */
 	    	a_your[trap->madeby_u],
 	    	defsyms[trap_to_defsym(ttype)].explanation);
 	    /* then proceed to normal trap effect */
@@ -649,7 +649,7 @@ unsigned trflags;
 		}
 		trap->once = 1;
 		seetrap(trap);
-		pline("An arrow shoots out at you!"); /* EN pline("An arrow shoots out at you!"); */ // TODO DE
+		pline("Ein Pfeil schießt KASUS_AKKUSATIV auf PRONOMEN_PERSONAL zu!"); /* EN pline("An arrow shoots out at you!"); */
 		otmp = mksobj(ARROW, TRUE, FALSE);
 		otmp->quan = 1L;
 		otmp->owt = weight(otmp);

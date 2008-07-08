@@ -266,8 +266,8 @@ nh_timeout()
 			break;
 		case FAST:
 			if (!Very_fast)
-				Du_fuehlst_dich("%s langsamer werden.", /* EN You_feel("yourself slowing down%s.", */
-							Fast ? " ein wenig" : ""); /* EN Fast ? " a bit" : ""); */
+				Du_fuehlst_dich("%slangsamer werden.", /* EN You_feel("yourself slowing down%s.", */
+							Fast ? "ein wenig " : ""); /* EN Fast ? " a bit" : ""); */
 			break;
 		case CONFUSION:
 			HConfusion = 1; /* So make_confused works properly */

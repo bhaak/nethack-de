@@ -106,17 +106,17 @@ char *genbuf;
 		case PM_WERERAT:
 		case PM_HUMAN_WERERAT:
 			typ = rn2(3) ? PM_SEWER_RAT : rn2(3) ? PM_GIANT_RAT : PM_RABID_RAT ;
-			if (genbuf) Strcpy(genbuf, "rat"); /* EN if (genbuf) Strcpy(genbuf, "rat"); */ // TODO DE
+			if (genbuf) Strcpy(genbuf, "NOUN_RAT"); /* EN if (genbuf) Strcpy(genbuf, "rat"); */
 			break;
 		case PM_WEREJACKAL:
 		case PM_HUMAN_WEREJACKAL:
 			typ = PM_JACKAL;
-			if (genbuf) Strcpy(genbuf, "jackal"); /* EN if (genbuf) Strcpy(genbuf, "jackal"); */ // TODO DE
+			if (genbuf) Strcpy(genbuf, "NOUN_JACKAL"); /* EN if (genbuf) Strcpy(genbuf, "jackal"); */
 			break;
 		case PM_WEREWOLF:
 		case PM_HUMAN_WEREWOLF:
 			typ = rn2(5) ? PM_WOLF : PM_WINTER_WOLF ;
-			if (genbuf) Strcpy(genbuf, "wolf"); /* EN if (genbuf) Strcpy(genbuf, "wolf"); */ // TODO DE
+			if (genbuf) Strcpy(genbuf, "NOUN_WOLF"); /* EN if (genbuf) Strcpy(genbuf, "wolf"); */
 			break;
 		default:
 			continue;

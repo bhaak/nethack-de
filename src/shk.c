@@ -1238,7 +1238,7 @@ proceed:
 			    mon_nam(shkp), ltmp, plur(ltmp), mhe(shkp));
 			pay(ltmp, shkp);
 		    } else {
-			You("give %s all your%s gold.", mon_nam(shkp), /* EN You("give %s all your%s gold.", mon_nam(shkp), */ // TODO DE
+			You("VERB_GEBEN OBJECT %s NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GESAMT%s NOUN_GOLD.", mon_nam(shkp), /* EN You("give %s all your%s gold.", mon_nam(shkp), */
 					stashed_gold ? " openly kept" : ""); /* EN stashed_gold ? " openly kept" : ""); */ // TODO DE
 #ifndef GOLDOBJ
 			pay(u.ugold, shkp);
@@ -1252,7 +1252,7 @@ proceed:
 #else
 		    if((umoney < ltmp/2L) || (umoney < ltmp && stashed_gold))
 #endif
-			pline("Unfortunately, %s doesn't look satisfied.", /* EN pline("Unfortunately, %s doesn't look satisfied.", */ // TODO DE
+			pline("Leider VERB_AUSSEHEN SUBJECT_IM_SATZ %s nicht zufrieden SATZKLAMMER.", /* EN pline("Unfortunately, %s doesn't look satisfied.", */
 			      mhe(shkp));
 		    else
 			make_happy_shk(shkp, FALSE);
@@ -1288,9 +1288,9 @@ proceed:
 			else pline(not_enough_money, mhim(shkp));
 			return(1);
 		    }
-		    pline("But since %s shop has been robbed recently,", /* EN pline("But since %s shop has been robbed recently,", */ // TODO DE
+		    pline("Da aber %s NOUN_SHOP kürzlich ausgeraubt wurde, ", /* EN pline("But since %s shop has been robbed recently,", */
 			  mhis(shkp));
-		    pline("SUBJECT PRONOMEN_PERSONAL VERB_ENTSCHAEDIGEN OBJECT %s%s für NEUES_OBJECT OBJECT %s NOUN_VERLUSTs.", mon_nam(shkp), /* EN pline("you %scompensate %s for %s losses.", */
+		    pline("NEUER_SATZ VERB_ENTSCHAEDIGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s%s für NEUES_OBJECT OBJECT %s NOUN_VERLUSTs.", mon_nam(shkp), /* EN pline("you %scompensate %s for %s losses.", */
 #ifndef GOLDOBJ
 			  (u.ugold < ltmp) ? 
 #else
@@ -1320,14 +1320,14 @@ proceed:
 			else pline(not_enough_money, mhim(shkp));
 			return(1);
 		    }
-		    You("try to appease %s by giving %s 1000 gold pieces.", /* EN You("try to appease %s by giving %s 1000 gold pieces.", */ // TODO DE
-			x_monnam(shkp, ARTICLE_THE, "angry", 0, FALSE),
-			mhim(shkp));
+		    You("VERB_GEBEN OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT 1000 NOUN_GOLD_PIECEs und VERB_VERSUCHEN die Sache so zu klären.", /* EN You("try to appease %s by giving %s 1000 gold pieces.", */
+			x_monnam(shkp, ARTICLE_THE, "ADJEKTIV_WUETEND", 0, FALSE) /* EN x_monnam(shkp, ARTICLE_THE, "angry", 0, FALSE), */
+			); /* EN mhim(shkp)); */
 		    pay(1000L,shkp);
 		    if (strncmp(eshkp->customer, plname, PL_NSIZ) || rn2(3))
 			make_happy_shk(shkp, FALSE);
 		    else
-			pline("But %s is as angry as ever.", mon_nam(shkp)); /* EN pline("But %s is as angry as ever.", mon_nam(shkp)); */ // TODO DE
+			pline("Aber SUBJECT_IM_SATZ %s VERB_SEIN immer noch so wütend wie vorher.", mon_nam(shkp)); /* EN pline("But %s is as angry as ever.", mon_nam(shkp)); */
 		}
 		return(1);
 	}
@@ -1344,22 +1344,22 @@ proceed:
 #ifdef GOLDOBJ
                 umoney = money_cnt(invent);
 #endif
-		Sprintf(sbuf, "You owe %s %ld %s ", /* EN Sprintf(sbuf, "You owe %s %ld %s ", */ // TODO DE
+		Sprintf(sbuf, "SUBJECT PRONOMEN_PERSONAL VERB_OWE OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s ", /* EN Sprintf(sbuf, "You owe %s %ld %s ", */
 					   shkname(shkp), dtmp, currency(dtmp));
 		if(loan) {
 		    if(loan == dtmp)
-			Strcat(sbuf, "you picked up in the store."); /* EN Strcat(sbuf, "you picked up in the store."); */ // TODO DE
+			Strcat(sbuf, "für im Laden aufgehobenes Gold."); /* EN Strcat(sbuf, "you picked up in the store."); */
 		    else Strcat(sbuf,
-			   "for gold picked up and the use of merchandise."); /* EN "for gold picked up and the use of merchandise."); */ // TODO DE
-		} else Strcat(sbuf, "for the use of merchandise."); /* EN } else Strcat(sbuf, "for the use of merchandise."); */ // TODO DE
+			   "für im Laden aufgehobenes Gold und die Benutzung der Ware."); /* EN "for gold picked up and the use of merchandise."); */
+		} else Strcat(sbuf, "für die Benutzung der Ware."); /* EN } else Strcat(sbuf, "for the use of merchandise."); */ // TODO DE
 		pline(sbuf);
 #ifndef GOLDOBJ
 		if (u.ugold + eshkp->credit < dtmp) {
 #else
 		if (umoney + eshkp->credit < dtmp) {
 #endif
-		    pline("But you don't%s have enough gold%s.", /* EN pline("But you don't%s have enough gold%s.", */ // TODO DE
-			stashed_gold ? " seem to" : "", /* EN stashed_gold ? " seem to" : "", */ // TODO DE
+		    pline("Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_HABEN%s nicht genug Gold%s.", /* EN pline("But you don't%s have enough gold%s.", */
+			stashed_gold ? " anscheinend" : "", /* EN stashed_gold ? " seem to" : "", */
 			eshkp->credit ? " or credit" : ""); /* EN eshkp->credit ? " or credit" : ""); */ // TODO DE
 		    return(1);
 		} else {

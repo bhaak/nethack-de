@@ -1014,7 +1014,7 @@ boolean tinitial, tfrom_file;
 
 	if (match_optname(opts, "female", 3, FALSE)) {
 		if(!initial && flags.female == negated)
-			pline("That is not anatomically possible."); /* EN pline("That is not anatomically possible."); */ // TODO DE
+			pline("Das ist anatomisch unmöglich."); /* EN pline("That is not anatomically possible."); */
 		else
 			flags.initgend = flags.female = !negated;
 		return;
@@ -1022,7 +1022,7 @@ boolean tinitial, tfrom_file;
 
 	if (match_optname(opts, "male", 4, FALSE)) {
 		if(!initial && flags.female != negated)
-			pline("That is not anatomically possible."); /* EN pline("That is not anatomically possible."); */ // TODO DE
+			pline("Das ist anatomisch unmöglich."); /* EN pline("That is not anatomically possible."); */
 		else
 			flags.initgend = flags.female = negated;
 		return;
@@ -1357,7 +1357,7 @@ goodfruit:
 		nmcpy(pl_fruit, op, PL_FSIZ);
 	/* OBJ_NAME(objects[SLIME_MOLD]) won't work after initialization */
 		if (!*pl_fruit)
-		    nmcpy(pl_fruit, "slime mold", PL_FSIZ);
+		    nmcpy(pl_fruit, "slime mold", PL_FSIZ); /* EN nmcpy(pl_fruit, "slime mold", PL_FSIZ); */ // TODO DE
 		if (!initial)
 		    (void)fruitadd(pl_fruit);
 		/* If initial, then initoptions is allowed to do it instead
@@ -1474,8 +1474,8 @@ goodfruit:
 			/* symbol chosen matches a used monster or warning
 			   symbol which is not good - reject it*/
 			pline(
-		  "Badoption - boulder symbol '%c' conflicts with a %s symbol.", /* EN "Badoption - boulder symbol '%c' conflicts with a %s symbol.", */ // TODO DE
-				opts[0], (clash == 1) ? "monster" : "warning"); /* EN opts[0], (clash == 1) ? "monster" : "warning"); */ // TODO DE
+		  "Badoption - Felsbrockensymbol '%c' wird schon als %ssymbol benutzt.", /* EN "Badoption - boulder symbol '%c' conflicts with a %s symbol.", */
+				opts[0], (clash == 1) ? "Monster" : "Warnungs"); /* EN opts[0], (clash == 1) ? "monster" : "warning"); */
 		} else {
 		/*
 		 * Override the default boulder symbol.
