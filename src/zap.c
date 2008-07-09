@@ -2237,8 +2237,8 @@ boolean			youattack, allow_cancel_kill, self_cancel;
 {
 	boolean	youdefend = (mdef == &youmonst);
 	static const char writing_vanishes[] =
-		"Ein Zeichen verschwindet von %s Stirn!"; /* EN "Some writing vanishes from %s head!"; */ // TODO DE
-	static const char your[] = "PRONOMEN_POSSESSIV";	/* should be extern */ /* EN static const char your[] = "your";	*/
+		"Ein Zeichen verschwindet von %s!"; /* EN "Some writing vanishes from %s head!"; */ // TODO DE
+	/* static const char your[] = "your"; */	/* should be extern */ /* EN static const char your[] = "your";	*/
 
 	if (youdefend ? (!youattack && Antimagic)
 		      : resist(mdef, obj->oclass, 0, NOTELL))
@@ -2260,7 +2260,7 @@ boolean			youattack, allow_cancel_kill, self_cancel;
 	if (youdefend) {
 	    if (Upolyd) {
 		if ((u.umonnum == PM_CLAY_GOLEM) && !Blind)
-		    pline(writing_vanishes, your);
+		    pline(writing_vanishes, "PRONOMEN_POSSESSIV NOUN_STIRN"); /* EN pline(writing_vanishes, your); */
 
 		if (Unchanging)
 		    Your("NOUN_AMULET erwärmt sich einen Moment lang und kühlt wieder ab."); /* EN Your("amulet grows hot for a moment, then cools."); */
@@ -2275,7 +2275,7 @@ boolean			youattack, allow_cancel_kill, self_cancel;
 
 	    if (mdef->data == &mons[PM_CLAY_GOLEM]) {
 		if (canseemon(mdef))
-		    pline(writing_vanishes, s_suffix(mon_nam(mdef))); /* EN pline(writing_vanishes, s_suffix(mon_nam(mdef))); */ // TODO DE
+		    pline(writing_vanishes, genitivattribut_zu_wort(mon_nam(mdef), "NOUN_STIRN")); /* EN pline(writing_vanishes, s_suffix(mon_nam(mdef))); */
 
 		if (allow_cancel_kill) {
 		    if (youattack)

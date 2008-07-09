@@ -160,7 +160,7 @@ register int x, y;
 	else if (IS_AIR(lev->typ) && Is_airlevel(&u.uz))
 	    return "NOUN_AIR"; /* EN return "air"; */
 	else if (is_pool(x,y))
-	    return (Underwater && !Is_waterlevel(&u.uz)) ? "bottom" : "NOUN_WATER"; // TODO DE
+	    return (Underwater && !Is_waterlevel(&u.uz)) ? "NOUN_GRUND" : "NOUN_WATER";
 	else if (is_ice(x,y))
 	    return "NOUN_ICE"; /* EN return "ice"; */
 	else if (is_lava(x,y))

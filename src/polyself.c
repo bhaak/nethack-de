@@ -831,7 +831,7 @@ dospinweb()
 						      "VERB_GEFRIEREN, VERB_ZERBRECHEN und "); /* EN "freezes, shatters and "); */
 						break;
 				}
-				pline_The("NOUN_WEB %s VERB_WERDEN fortgerissen!", sweep); /* EN pline_The("web %sis swept away!", sweep); */
+				pline_The("NOUN_WEB %sVERB_WERDEN fortgerissen!", sweep); /* EN pline_The("web %sis swept away!", sweep); */
 			}
 			return(0);
 		}		     /* default: a nasty jelly-like creature */

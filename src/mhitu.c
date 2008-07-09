@@ -196,7 +196,7 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 
 	} else if (Displaced) {
 	    if (compat)
-		pline("%s smiles %s at your %sADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE ...", /* EN pline("%s smiles %s at your %sdisplaced image...", */ // TODO DE
+		pline("SUBJECT %s VERB_ANLAECHELN %s OBJECT %sADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE SATZKLAMMER ...", /* EN pline("%s smiles %s at your %sdisplaced image...", */
 			Monnam(mtmp),
 			compat == 2 ? "einnehmend" : "verführerisch", /* EN compat == 2 ? "engagingly" : "seductively", */
 			Invis ? "ADJEKTIV_UNSICHTBAR, " : ""); /* EN Invis ? "invisible " : ""); */
@@ -1034,8 +1034,8 @@ hitmu(mtmp, mattk)
 		if (uncancelled && multi >= 0 && !rn2(5)) {
 		    if (Sleep_resistance) break;
 		    fall_asleep(-rnd(10), TRUE);
-		    if (Blind) You("are put to sleep!"); /* EN if (Blind) You("are put to sleep!"); */ // TODO DE
-		    else You("are put to sleep by %s!", mon_nam(mtmp)); /* EN else You("are put to sleep by %s!", mon_nam(mtmp)); */ // TODO DE
+		    if (Blind) pline("Etwas versetzt KASUS_AKKUSATIV PRONOMEN_PERSONAL in Schlaf!"); /* EN if (Blind) You("are put to sleep!"); */
+		    else pline("SUBJECT %s VERB_VERSETZEN OBJECT PRONOMEN_PERSONAL in Schlaf!", mon_nam(mtmp)); /* EN else You("are put to sleep by %s!", mon_nam(mtmp)); */
 		}
 		break;
 	    case AD_BLND:
@@ -1170,7 +1170,7 @@ dopois:
 			    pline("SUBJECT %s VERB_DURCHSTECHEN OBJECT PRONOMEN_POSSESSIV %s NOUN_BOOTS!", /* EN pline("%s pricks through your %s boot!", */
 				Monnam(mtmp), sidestr);
 			else {
-			    pline("%s scratches your %s boot!", Monnam(mtmp), /* EN pline("%s scratches your %s boot!", Monnam(mtmp), */ // TODO DE
+			    pline("SUBJECT %s VERB_ZERKRATZEN OBJECT PRONOMEN_POSSESSIV %s NOUN_BOOT!", Monnam(mtmp), /* EN pline("%s scratches your %s boot!", Monnam(mtmp), */
 				sidestr);
 			    dmg = 0;
 			    break;
@@ -1438,7 +1438,7 @@ dopois:
 			else       pline("SUBJECT %s VERB_CHUCKLE.", Monnam(mtmp)); /* EN else       pline("%s chuckles.", Monnam(mtmp)); */
 		    }
 		    if (u.umonnum == PM_CLAY_GOLEM) {
-			pline("Some writing vanishes from your head!"); /* EN pline("Some writing vanishes from your head!"); */ // TODO DE
+			pline("Ein Zeichen verschwindet KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_STIRN!"); /* EN pline("Some writing vanishes from your head!"); */
 			/* KMH -- this is okay with unchanging */
 			rehumanize();
 			break;
@@ -1907,7 +1907,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 	    case AD_STON:
 		if (mtmp->mcan || !mtmp->mcansee) {
 		    if (!canseemon(mtmp)) break;	/* silently */
-		    pline("%s %s.", Monnam(mtmp), /* EN pline("%s %s.", Monnam(mtmp), */ // TODO DE
+		    pline("SUBJECT %s %s.", Monnam(mtmp), /* EN pline("%s %s.", Monnam(mtmp), */
 			  (mtmp->data == &mons[PM_MEDUSA] && mtmp->mcan) ?
 				"VERB_AUSSEHEN gar nicht so übel SATZKLAMMER." : /* EN "doesn't look all that ugly" : */
 				"gazes ineffectually"); /* EN "gazes ineffectually"); */ // TODO DO
@@ -1984,7 +1984,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 			&& distu(mtmp->mx,mtmp->my) <= BOLT_LIM*BOLT_LIM) {
 		    int blnd = d((int)mattk->damn, (int)mattk->damd);
 
-		    You("are blinded by %s!", /* EN You("are blinded by %s radiance!", */ // TODO DE
+		    You("VERB_WERDEN OBJECT KASUS_DATIV von %s geblendet!", /* EN You("are blinded by %s radiance!", */
 			              genitivattribut_zu_wort(mon_nam(mtmp),"NOUN_RADIANCE")); /* EN s_suffix(mon_nam(mtmp))); */
 		    make_blinded((long)blnd,FALSE);
 		    stop_occupation();

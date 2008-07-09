@@ -943,8 +943,8 @@ mdamagem(magr, mdef, mattk)
 			were_change(mdef);
 		    if (pd == &mons[PM_CLAY_GOLEM]) {
 			    if (vis) {
-				pline("Some writing vanishes from %s!", /* EN pline("Some writing vanishes from %s head!", */ // TODO DE
-				    genitivattribut_zu_wort(mon_nam(mdef), "NOUN_KOPF")); /* EN s_suffix(mon_nam(mdef))); */
+				pline("Ein Zeichen verschwindet KASUS_DATIV von %s!", /* EN pline("Some writing vanishes from %s head!", */
+				    genitivattribut_zu_wort(mon_nam(mdef), "NOUN_STIRN")); /* EN s_suffix(mon_nam(mdef))); */
 				pline("%s is destroyed!", Monnam(mdef)); /* EN pline("%s is destroyed!", Monnam(mdef)); */ // TODO DE
 			    }
 			    mondied(mdef);

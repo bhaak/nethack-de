@@ -781,7 +781,7 @@ unsigned trflags;
 		    pline("SUBJECT %s NOUN_BEAR_TRAP VERB_ZUSCHNAPPEN on your %s!", /* EN pline("%s bear trap closes on your %s!", */ // TODO DE
 			    A_Your[trap->madeby_u], body_part(FOOT));
 		    if(u.umonnum == PM_OWLBEAR || u.umonnum == PM_BUGBEAR)
-			You("howl in anger!"); /* EN You("howl in anger!"); */ // TODO DE
+			You("VERB_HEULEN auf vor Wut!"); /* EN You("howl in anger!"); */
 		}
 		exercise(A_DEX, FALSE);
 		break;
@@ -789,10 +789,10 @@ unsigned trflags;
 	    case SLP_GAS_TRAP:
 		seetrap(trap);
 		if(Sleep_resistance || breathless(youmonst.data)) {
-		    You("are enveloped in a cloud of gas!"); /* EN You("are enveloped in a cloud of gas!"); */ // TODO DE
+		    You("VERB_WERDEN von einer Gaswolke eingehüllt!"); /* EN You("are enveloped in a cloud of gas!"); */
 		    break;
 		}
-		pline("A cloud of gas puts you to sleep!"); /* EN pline("A cloud of gas puts you to sleep!"); */ // TODO DE
+		pline("Eine Gaswolke schläfert KASUS_AKKUSATIV PRONOMEN_PERSONAL ein!"); /* EN pline("A cloud of gas puts you to sleep!"); */
 		fall_asleep(-rnd(25), TRUE);
 #ifdef STEED
 		(void) steedintrap(trap, (struct obj *)0);
@@ -872,12 +872,12 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		seetrap(trap);
 		if (!In_sokoban(&u.uz) && is_clinger(youmonst.data)) {
 		    if(trap->tseen) {
-			You("see %s %s below you.", a_your[trap->madeby_u], /* EN You("see %s %spit below you.", a_your[trap->madeby_u], */ // TODO DE
+			You("VERB_SEHEN OBJECT %s %s OBJECT KASUS_DATIV unter PRONOMEN_PERSONAL.", a_your[trap->madeby_u], /* EN You("see %s %spit below you.", a_your[trap->madeby_u], */
 			    ttype == SPIKED_PIT ? "NOUN_SPIKED_PIT" : "NOUN_PIT"); /* EN ttype == SPIKED_PIT ? "spiked " : ""); */
 		    } else {
-			pline("%s pit %sopens up under you!", /* EN pline("%s pit %sopens up under you!", */ // TODO DE
+			pline("SUBJECT %s NOUN_PIT %sVERB_OEFFNEN sich OBJECT KASUS_DATIV unter PRONOMEN_PERSONAL!", /* EN pline("%s pit %sopens up under you!", */
 			    A_Your[trap->madeby_u],
-			    ttype == SPIKED_PIT ? "full of spikes " : ""); /* EN ttype == SPIKED_PIT ? "full of spikes " : ""); */ // TODO DE
+			    ttype == SPIKED_PIT ? "voller Stacheln " : ""); /* EN ttype == SPIKED_PIT ? "full of spikes " : ""); */
 			You("VERB_FALLEN nicht rein!"); /* EN You("don't fall in!"); */
 		    }
 		    break;
@@ -904,13 +904,13 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		/* wumpus reference */
 		if (Role_if(PM_RANGER) && !trap->madeby_u && !trap->once &&
 			In_quest(&u.uz) && Is_qlocate(&u.uz)) {
-		    pline("Fortunately it has a bottom after all..."); /* EN pline("Fortunately it has a bottom after all..."); */ // TODO DE
+		    pline("Zum Glück hat sie doch einen Boden ..."); /* EN pline("Fortunately it has a bottom after all..."); */
 		    trap->once = 1;
 		} else if (u.umonnum == PM_PIT_VIPER ||
 			u.umonnum == PM_PIT_FIEND)
 		    pline("How pitiful.  Isn't that the pits?"); /* EN pline("How pitiful.  Isn't that the pits?"); */ // TODO DE
 		if (ttype == SPIKED_PIT) {
-		    const char *predicament = "on a set of sharp iron spikes"; /* EN const char *predicament = "on a set of sharp iron spikes"; */ // TODO DE
+		    const char *predicament = "auf einer Reihe scharfer Eisenstacheln"; /* EN const char *predicament = "on a set of sharp iron spikes"; */
 #ifdef STEED
 		    if (u.usteed) {
 			pline("SUBJECT %s VERB_LANDEN %s!", /* EN pline("%s lands %s!", */
@@ -975,8 +975,8 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		    if (acidic(youmonst.data) || u.umonnum == PM_GELATINOUS_CUBE ||
 			u.umonnum == PM_FIRE_ELEMENTAL) {
 			if (webmsgok)
-			    You("%s %s OBJECT NOUN_SPIDER_WEB!", /* EN You("%s %s spider web!", */
-				(u.umonnum == PM_FIRE_ELEMENTAL) ? "VERB_VERBRENNEN" : "dissolve", /* EN (u.umonnum == PM_FIRE_ELEMENTAL) ? "burn" : "dissolve", */ // TODO DE
+			    You("%s OBJECT %s NOUN_SPIDER_WEB SATZKLAMMER!", /* EN You("%s %s spider web!", */
+				(u.umonnum == PM_FIRE_ELEMENTAL) ? "VERB_VERBRENNEN" : "VERB_AUFLOESEN", /* EN (u.umonnum == PM_FIRE_ELEMENTAL) ? "burn" : "dissolve", */
 				a_your[trap->madeby_u]);
 			deltrap(trap);
 			newsym(u.ux,u.uy);
@@ -2017,14 +2017,14 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 				    pline("SUBJECT %s %s OBJECT %s NOUN_SPIDER_WEB!", /* EN pline("%s %s %s spider web!", */
 					  Monnam(mtmp),
 					  (mptr == &mons[PM_FIRE_ELEMENTAL]) ?
-					    "VERB_VERBRENNEN" : "dissolves", /* EN "burns" : "dissolves", */ // TODO DE
+					    "VERB_VERBRENNEN" : "VERB_AUFLOESEN", /* EN "burns" : "dissolves", */
 					  a_your[trap->madeby_u]);
 				deltrap(trap);
 				newsym(mtmp->mx, mtmp->my);
 				break;
 			    }
 			    if (in_sight) {
-				pline("%s flows through %s NOUN_SPIDER_WEB.", /* EN pline("%s flows through %s spider web.", */ // TODO DE
+				pline("SUBJECT %s VERB_STROEMEN OBJECT durch %s NOUN_SPIDER_WEB.", /* EN pline("%s flows through %s spider web.", */
 				      Monnam(mtmp),
 				      a_your[trap->madeby_u]);
 				seetrap(trap);
@@ -2070,7 +2070,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			}
 			if (tear_web) {
 			    if (in_sight)
-				pline("%s tears through %s NOUN_SPIDER_WEB!", /* EN pline("%s tears through %s spider web!", */ // TODO DE
+				pline("SUBJECT %s VERB_ZERREISSEN OBJECT %s NOUN_SPIDER_WEB!", /* EN pline("%s tears through %s spider web!", */
 				      Monnam(mtmp), a_your[trap->madeby_u]);
 			    deltrap(trap);
 			    newsym(mtmp->mx, mtmp->my);
@@ -2324,7 +2324,7 @@ long hmask, emask;     /* might cancel timeout */
 	if(Levitation) return(0); /* maybe another ring/potion/boots */
 	if(u.uswallow) {
 	    You("float down, but you are still %s.", /* EN You("float down, but you are still %s.", */ // TODO DE
-		is_animal(u.ustuck->data) ? "swallowed" : "engulfed"); /* EN is_animal(u.ustuck->data) ? "swallowed" : "engulfed"); */ // TODO DE
+		is_animal(u.ustuck->data) ? "verschluckt" : "verschlungen"); /* EN is_animal(u.ustuck->data) ? "swallowed" : "engulfed"); */
 	    return(1);
 	}
 
@@ -2528,20 +2528,20 @@ domagictrap()
 			break;
 
 	     /* odd feelings */
-	     case 13:	pline("A shiver runs up and down your %s!", /* EN case 13:	pline("A shiver runs up and down your %s!", */ // TODO DE
-			      body_part(SPINE)); /* EN body_part(SPINE)); */ // TODO DE
+	     case 13:	pline("Ein kalter Schauer läuft OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER %s hinunter!", /* EN case 13:	pline("A shiver runs up and down your %s!", */
+			      body_part(SPINE));
 			break;
 	     case 14:	You_hear(Hallucination ?
-				"the moon howling at you." : /* EN "the moon howling at you." : */ // TODO DE
-				"distant howling."); /* EN "distant howling."); */ // TODO DE
+				"den Mond OBJECT PRONOMEN_PERSONAL anheulen." : /* EN "the moon howling at you." : */
+				"ein fernes Heulen."); /* EN "distant howling."); */
 			break;
 	     case 15:	if (on_level(&u.uz, &qstart_level))
 			    Du_fuehlst_dich("%swie der verlorene Sohn.", /* EN You_feel("%slike the prodigal son.", */
 			      (flags.female || (Upolyd && is_neuter(youmonst.data))) ?
 				     "eigenartigerweise " : ""); /* EN "oddly " : ""); */
 			else
-			    You("VERB_HABEN plötzlich Heimweh nach OBJECT KASUS_GENITIV %s.", /* EN You("suddenly yearn for %s.", */
-				Hallucination ? "Cleveland" : /* EN Hallucination ? "Cleveland" : */ // TODO DE
+			    You("VERB_HABEN plötzlich %s nach OBJECT KASUS_GENITIV %s.", /* EN You("suddenly yearn for %s.", */
+				Hallucination ? "Sehnsucht" : "Heimweh", Hallucination ? "Westerland" : /* EN Hallucination ? "Cleveland" : */
 			    (In_quest(&u.uz) || at_dgn_entrance("The Quest")) ?  /* EN (In_quest(&u.uz) || at_dgn_entrance("The Quest")) ? */ // TODO DE
 						"PRONOMEN_POSSESSIV ADJEKTIV_NAHE NOUN_HEIMAT" : /* EN "your nearby homeland" : */
 						"PRONOMEN_POSSESSIV ADJEKTIV_WEITENTFERNT NOUN_HEIMAT"); /* EN "your distant homeland"); */
@@ -2656,7 +2656,7 @@ xchar x, y;
 	    if (obj->otyp == SCR_FIRE || obj->otyp == SPE_FIREBALL)
 		continue;
 	    if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
-		if (in_sight) pline("Smoke rises from %s.", the(xname(obj))); /* EN if (in_sight) pline("Smoke rises from %s.", the(xname(obj))); */ // TODO DE
+		if (in_sight) pline("Rauch steigt KASUS_DATIV von %s auf.", the(xname(obj))); /* EN if (in_sight) pline("Smoke rises from %s.", the(xname(obj))); */
 		continue;
 	    }
 	    dindx = (obj->oclass == SCROLL_CLASS) ? 2 : 3;
@@ -3139,7 +3139,7 @@ boolean force_failure;
 			    if (!webmaker(youmonst.data)) {
 				struct trap *ttmp2 = maketrap(u.ux, u.uy, WEB);
 				if (ttmp2) {
-				    pline_The("webbing sticks to you. You're caught too!"); /* EN pline_The("webbing sticks to you. You're caught too!"); */ // TODO DE
+				    pline("Die Spinweben bleiben KASUS_DATIV an PRONOMEN_PERSONAL kleben. NEUER_SATZ SUBJECT PRONOMEN_POSSESSIV VERB_SEIN auch gefangen!"); /* EN pline_The("webbing sticks to you. You're caught too!"); */
 				    dotrap(ttmp2, NOWEBMSG);
 #ifdef STEED
 				    if (u.usteed && u.utrap) {

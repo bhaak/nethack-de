@@ -430,8 +430,8 @@ boolean newlev;
 	     * Try to intimidate him into paying his bill
 	     */
 	    verbalize(NOTANGRY(shkp) ?
-		      "%s!  Bitte zahl/zahlt, bevor SUBJECT_IM_SATZ den Laden VERB_VERLASSEN." : /* EN "%s!  Please pay before leaving." : */ // TODO DE
-		      "%s!  Geh/Geht nicht ohne zu bezahlen!", /* EN "%s!  Don't you leave without paying!", */ // TODO DE
+		      "%s!  Bitte MODIFIER_VERB_IMPERATIV VERB_ZAHLEN, NEUER_SATZ bevor SUBJECT_IM_SATZ PRONOMEN_PERSONAL den Laden VERB_VERLASSEN." : /* EN "%s!  Please pay before leaving." : */
+		      "%s!  SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_GEHEN nicht ohne zu bezahlen!", /* EN "%s!  Don't you leave without paying!", */
 		      plname);
 	    return;
 	}
@@ -496,7 +496,7 @@ struct monst *shkp;
 
 	/* by this point, we know an actual robbery has taken place */
 	eshkp->robbed += total;
-	You("stole %ld %s worth of merchandise.", /* EN You("stole %ld %s worth of merchandise.", */ // TODO DE
+	You("VERB_HABEN Ware im Wert von %ld %s gestohlen.", /* EN You("stole %ld %s worth of merchandise.", */
 	    total, currency(total));
 	if (!Role_if(PM_ROGUE))	/* stealing is unlawful */
 	    adjalign(-sgn(u.ualign.type));
@@ -904,7 +904,7 @@ register boolean killkops;
 #ifdef KOPS
 		kops_gone(TRUE);
 #else
-		You_feel("vaguely apprehensive."); /* EN You_feel("vaguely apprehensive."); */ // TODO DE
+		Du_fuehlst_dich("irgendwie beunruhigt."); /* EN You_feel("vaguely apprehensive."); */
 #endif
 		pacify_guards();
 	}
@@ -1010,7 +1010,7 @@ register boolean silentkops;
 					 MIGR_APPROX_XY, &eshkp->shd);
 		}
 		if (vanished)
-		    pline("Satisfied, %s suddenly disappears!", shk_nam); /* EN pline("Satisfied, %s suddenly disappears!", shk_nam); */ // TODO DE
+		    pline("Zufriedengestellt verschwindet %s wieder!", shk_nam); /* EN pline("Satisfied, %s suddenly disappears!", shk_nam); */
 	} else if(wasmad)
 		pline("SUBJECT %s beruhigt sich wieder.", Monnam(shkp)); /* EN pline("%s calms down.", Monnam(shkp)); */
 
@@ -1351,7 +1351,7 @@ proceed:
 			Strcat(sbuf, "für im Laden aufgehobenes Gold."); /* EN Strcat(sbuf, "you picked up in the store."); */
 		    else Strcat(sbuf,
 			   "für im Laden aufgehobenes Gold und die Benutzung der Ware."); /* EN "for gold picked up and the use of merchandise."); */
-		} else Strcat(sbuf, "für die Benutzung der Ware."); /* EN } else Strcat(sbuf, "for the use of merchandise."); */ // TODO DE
+		} else Strcat(sbuf, "für die Benutzung der Ware."); /* EN } else Strcat(sbuf, "for the use of merchandise."); */
 		pline(sbuf);
 #ifndef GOLDOBJ
 		if (u.ugold + eshkp->credit < dtmp) {
@@ -1377,7 +1377,7 @@ proceed:
 #endif
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			You("pay that debt."); /* EN You("pay that debt."); */ // TODO DE
+			You("VERB_BEZAHLEN OBJECT PRONOMEN_POSSESSIV NOUN_SCHULDs."); /* EN You("pay that debt."); */
 			flags.botl = 1;
 		    } else {
 			dtmp -= eshkp->credit;
@@ -1391,7 +1391,7 @@ proceed:
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
 			pline("That debt is partially offset by your credit."); /* EN pline("That debt is partially offset by your credit."); */ // TODO DE
-			You("VERB_ZAHLEN den Rest."); /* EN You("pay the remainder."); */
+			You("VERB_BEZAHLEN den Rest."); /* EN You("pay the remainder."); */
 			flags.botl = 1;
 		    }
 		    paid = TRUE;
@@ -1406,9 +1406,9 @@ proceed:
             umoney = money_cnt(invent);
 	    if (!umoney && !eshkp->credit) {
 #endif
-		You("%shave no money or credit%s.", /* EN You("%shave no money or credit%s.", */ // TODO DE
-				    stashed_gold ? "seem to " : "", /* EN stashed_gold ? "seem to " : "", */ // TODO DE
-				    paid ? " left" : ""); /* EN paid ? " left" : ""); */ // TODO DE
+		You("%s weder Geld noch Kredit%s%s.", /* EN You("%shave no money or credit%s.", */
+				    stashed_gold ? "VERB_SCHEINEN " : "VERB_HABEN", /* EN stashed_gold ? "seem to " : "", */
+				    paid ? " übrig" : "", stashed_gold ? " zu haben" : ""); /* EN paid ? " left" : ""); */
 		return(0);
 	    }
 #ifndef GOLDOBJ

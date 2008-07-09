@@ -1460,8 +1460,8 @@ register struct attack *mattk;
 		if (night() && !rn2(10) && !mdef->mcan) {
 		    if (mdef->data == &mons[PM_CLAY_GOLEM]) {
 			if (!Blind)
-			    pline("Some writing vanishes from %s!", /* EN pline("Some writing vanishes from %s head!", */ // TODO DE
-				genitivattribut_zu_wort(mon_nam(mdef), "NOUN_KOPF")); /* EN s_suffix(mon_nam(mdef))); */
+			    pline("Ein Zeichen verschwindet KASUS_DATIV von %s!", /* EN pline("Some writing vanishes from %s head!", */
+				genitivattribut_zu_wort(mon_nam(mdef), "NOUN_STIRN")); /* EN s_suffix(mon_nam(mdef))); */
 			xkilled(mdef, 0);
 			/* Don't return yet; keep hp<1 and tmp=0 for pet msg */
 		    } else {
