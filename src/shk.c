@@ -1517,8 +1517,8 @@ boolean itemize;
 #else
 	if(itemize && umoney + ESHK(shkp)->credit == 0L){
 #endif
-		You("%shave no money or credit left.", /* EN You("%shave no money or credit left.", */ // TODO DE
-			     stashed_gold ? "seem to " : ""); /* EN stashed_gold ? "seem to " : ""); */ // TODO DE
+		You("%s weder Geld noch Kredit übrig%s.", /* EN You("%shave no money or credit left.", */
+			     stashed_gold ? "VERB_SCHEINEN " : "VERB_HABEN ", stashed_gold ? " zu haben" : ""); /* EN stashed_gold ? "seem to " : ""); */
 		return PAY_BROKE;
 	}
 	/* we may need to temporarily adjust the object, if part of the
@@ -1546,8 +1546,8 @@ boolean itemize;
 		buy = PAY_SKIP;		/* don't want to buy */
 	    } else if (quan < bp->bquan && !consumed) { /* partly used goods */
 		obj->quan = bp->bquan - save_quan;	/* used up amount */
-		verbalize("%s for the other %s before buying %s.", /* EN verbalize("%s for the other %s before buying %s.", */ // TODO DE
-			  ANGRY(shkp) ? "Pay" : "Please pay", xname(obj), /* EN ANGRY(shkp) ? "Pay" : "Please pay", xname(obj), */ // TODO DE
+		verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV %s OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_ANDER %s before buying %s.", /* EN verbalize("%s for the other %s before buying %s.", */ // TODO DE
+			  ANGRY(shkp) ? "VERB_BEZAHLEN" : "Bitte VERB_BEZAHLEN", xname(obj), /* EN ANGRY(shkp) ? "Pay" : "Please pay", xname(obj), */
 			  save_quan > 1L ? "these" : "this one"); /* EN save_quan > 1L ? "these" : "this one"); */ // TODO DE
 		buy = PAY_SKIP;		/* shk won't sell */
 	    }
@@ -2215,7 +2215,7 @@ register boolean ininv, dummy, silent;
 	      ) return;
 
 	if(ESHK(shkp)->billct == BILLSZ) {
-		You("got that for free!"); /* EN You("got that for free!"); */ // TODO DE
+		pline("Das gibt's umsonst!"); /* EN You("got that for free!"); */
 		return;
 	}
 
@@ -2275,11 +2275,11 @@ speak:
 	    if (ANGRY(shkp)) Strcat(buf, "Dreckskerl"); /* EN if (ANGRY(shkp)) Strcat(buf, "scum "); */
 	    else {
 		static const char *honored[5] = {
-		  "ADJEKTIV_GUT", "ADJEKTIV_EHRENWERT", "most gracious", "ADJEKTIV_GESCHAETZT", /* EN "good", "honored", "most gracious", "esteemed", */ // TODO DE
+		  "ADJEKTIV_GUT", "ADJEKTIV_EHRENWERT", "ADJEKTIV_GNAEDIG", "ADJEKTIV_GESCHAETZT", /* EN "good", "honored", "most gracious", "esteemed", */
 		  "most renowned and sacred" /* EN "most renowned and sacred" */ // TODO DE
 		};
 		Strcat(buf, honored[rn2(4) + u.uevent.udemigod]);
-		if (!is_human(youmonst.data)) Strcat(buf, " creature"); /* EN if (!is_human(youmonst.data)) Strcat(buf, " creature"); */ // TODO DE
+		if (!is_human(youmonst.data)) Strcat(buf, " NOUN_CREATURE"); /* EN if (!is_human(youmonst.data)) Strcat(buf, " creature"); */
 		else
 		    Strcat(buf, (flags.female) ? " NOUN_DAME" : " NOUN_HERR"); /* EN Strcat(buf, (flags.female) ? " lady" : " sir"); */
 	    }
@@ -2497,14 +2497,14 @@ register boolean peaceful, silent;
 			You("have no credit remaining."); /* EN You("have no credit remaining."); */ // TODO DE
 			return 0;
 		    }
-		    still = "still ";
+		    still = "immer noch "; /* EN still = "still "; */
 		}
 		if(obj->oclass == COIN_CLASS)
-		    You("%sowe %s %ld %s!", still, /* EN You("%sowe %s %ld %s!", still, */ // TODO DE
-			mon_nam(shkp), value, currency(value));
+		    You("VERB_OWE OBJECT KASUS_DATIV %s %s%ld %s!", /* EN You("%sowe %s %ld %s!", still, */
+			mon_nam(shkp), still, value, currency(value)); /* EN mon_nam(shkp), value, currency(value)); */
 		else
-		    You("%sowe %s %ld %s for %s!", still, /* EN You("%sowe %s %ld %s for %s!", still, */ // TODO DE
-			mon_nam(shkp), value, currency(value),
+		    You("VERB_OWE OBJECT KASUS_DATIV %s %s%ld %s %s!", /* EN You("%sowe %s %ld %s for %s!", still, */
+			mon_nam(shkp), still, value, currency(value), /* EN mon_nam(shkp), value, currency(value), */
 			obj->quan > 1L ? "them" : "it"); /* EN obj->quan > 1L ? "them" : "it"); */ // TODO DE
 	    }
 	} else {
@@ -2514,7 +2514,7 @@ register boolean peaceful, silent;
 		if(cansee(shkp->mx, shkp->my)) {
 		    Norep("%s booms: \"%s, you are a thief!\"", /* EN Norep("%s booms: \"%s, you are a thief!\"", */ // TODO DE
 				Monnam(shkp), plname);
-		} else  Norep("You hear a scream, \"Thief!\""); /* EN } else  Norep("You hear a scream, \"Thief!\""); */ // TODO DE
+		} else  Norep("SUBJECT VERB_HEAR einen Schrei: \"Dieb!\""); /* EN } else  Norep("You hear a scream, \"Thief!\""); */
 	    }
 	    hot_pursuit(shkp);
 	    (void) angry_guards(FALSE);
@@ -2629,8 +2629,8 @@ xchar x, y;
 			 else eshkp->loan = 0L;
 		    }
 		    eshkp->debit -= gltmp;
-		    Your("debt is %spaid off.", /* EN Your("debt is %spaid off.", */ // TODO DE
-				eshkp->debit ? "partially " : ""); /* EN eshkp->debit ? "partially " : ""); */ // TODO DE
+		    Your("NOUN_SCHULDs VERB_SEIN %sabbezahlt.", /* EN Your("debt is %spaid off.", */
+				eshkp->debit ? "teilweise " : ""); /* EN eshkp->debit ? "partially " : ""); */
 		} else {
 		    long delta = gltmp - eshkp->debit;
 
@@ -2638,10 +2638,10 @@ xchar x, y;
 		    if(eshkp->debit) {
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			Your("debt is paid off."); /* EN Your("debt is paid off."); */ // TODO DE
+			Your("NOUN_SCHULDs VERB_SEIN abbezahlt."); /* EN Your("debt is paid off."); */
 		    }
-		    pline("%ld %s %s added to your credit.", /* EN pline("%ld %s %s added to your credit.", */ // TODO DE
-				delta, currency(delta), delta > 1L ? "are" : "is");
+		    pline("SATZBEGINN %ld %s are added to your credit.", /* EN pline("%ld %s %s added to your credit.", */ // TODO DE
+				delta, currency(delta)); /* EN delta, currency(delta), delta > 1L ? "are" : "is"); */
 		}
 		if(offer) goto move_on;
 		else {

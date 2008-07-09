@@ -387,7 +387,7 @@ struct obj *obj;
 	}
 	if (costly && loss) {
 	    if (!insider) {
-		You("caused %ld %s worth of damage!", loss, currency(loss)); /* EN You("caused %ld %s worth of damage!", loss, currency(loss)); */ // TODO DE
+		You("VERB_HABEN eine Schaden von %ld %s verursacht!", loss, currency(loss)); /* EN You("caused %ld %s worth of damage!", loss, currency(loss)); */
 		make_angry_shk(shkp, x, y);
 	    } else {
 		You("VERB_OWE OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s für beschädigte Ware.", /* EN You("owe %s %ld %s for objects destroyed.", */

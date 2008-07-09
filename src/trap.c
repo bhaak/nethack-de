@@ -3331,7 +3331,7 @@ struct trap *ttmp;
 	 * Test the monster first - monsters are displayed before traps.
 	 */
 	if (!mtmp->mtrapped) {
-		pline("%s isn't trapped.", Monnam(mtmp)); /* EN pline("%s isn't trapped.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_SEIN nicht gefangen.", Monnam(mtmp)); /* EN pline("%s isn't trapped.", Monnam(mtmp)); */
 		return 0;
 	}
 	/* Do you have the necessary capacity to lift anything? */
@@ -3348,7 +3348,7 @@ struct trap *ttmp;
 
 	/* is it a cockatrice?... */
 	if (touch_petrifies(mtmp->data) && !uarmg && !Stone_resistance) {
-		You("grab the trapped %s using your bare %s.", /* EN You("grab the trapped %s using your bare %s.", */ // TODO DE
+		You("VERB_ERGREIFEN OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_GEFANGEN %s NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("grab the trapped %s using your bare %s.", */
 				mtmp->data->mname, makeplural(body_part(HAND)));
 
 		if (poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))
@@ -3484,7 +3484,7 @@ boolean force;
 				}
 				return help_monster_out(mtmp, ttmp);
 			default:
-				You("cannot disable %s trap.", (u.dx || u.dy) ? "that" : "this"); /* EN You("cannot disable %s trap.", (u.dx || u.dy) ? "that" : "this"); */ // TODO DE
+				You("VERB_KOENNEN OBJECT %s NOUN_TRAP nicht deaktivieren.", (u.dx || u.dy) ? "ARTIKEL_BESTIMMTER" : "PRONOMEN_DIESER"); /* EN You("cannot disable %s trap.", (u.dx || u.dy) ? "that" : "this"); */
 				return 0;
 		    }
 		}
@@ -3554,9 +3554,9 @@ boolean force;
 
 	if (!IS_DOOR(levl[x][y].typ)) {
 	    if ((ttmp = t_at(x,y)) && ttmp->tseen)
-		You("cannot disable that trap."); /* EN You("cannot disable that trap."); */ // TODO DE
+		You("VERB_KOENNEN OBJECT PRONOMEN_DIESER NOUN_TRAP nicht deaktivieren."); /* EN You("cannot disable that trap."); */
 	    else
-		You("know of no traps there."); /* EN You("know of no traps there."); */ // TODO DE
+		You("VERB_WISSEN von keinen Fallen an dieser Stelle."); /* EN You("know of no traps there."); */
 	    return(0);
 	}
 
@@ -3696,10 +3696,10 @@ boolean disarm;
 			  exercise(A_STR, FALSE);
 			  if(costly && loss) {
 			      if(insider)
-			      You("owe %ld %s for objects destroyed.", /* EN You("owe %ld %s for objects destroyed.", */ // TODO DE
+			      You("VERB_OWE OBJECT %ld %s für beschädigte Ware.", /* EN You("owe %ld %s for objects destroyed.", */
 							loss, currency(loss));
 			      else {
-				  You("caused %ld %s worth of damage!", /* EN You("caused %ld %s worth of damage!", */ // TODO DE
+				  You("VERB_HABEN eine Schaden von %ld %s verursacht!", /* EN You("caused %ld %s worth of damage!", */
 							loss, currency(loss));
 				  make_angry_shk(shkp, ox, oy);
 			      }

@@ -60,7 +60,7 @@ use_camera(obj)
 	register struct monst *mtmp;
 
 	if(Underwater) {
-		pline("Using your camera underwater would void the warranty."); /* EN pline("Using your camera underwater would void the warranty."); */ // TODO DE
+		pline("Die Kamera unter Wasser zu benutzen würde die Garantie erlöschen lassen."); /* EN pline("Using your camera underwater would void the warranty."); */
 		return(0);
 	}
 	if(!getdir((char *)0)) return(0);
@@ -425,7 +425,7 @@ struct obj *obj;
 	int spotmon;
 
 	if(!obj->leashmon && number_leashed() >= MAXLEASHED) {
-		You("cannot leash any more pets."); /* EN You("cannot leash any more pets."); */ // TODO DE
+		You("VERB_KOENNEN nicht mehr Haustiere an die Leine nehmen."); /* EN You("cannot leash any more pets."); */
 		return;
 	}
 
@@ -950,7 +950,7 @@ struct obj **optr;
 		if ((long)otmp->spe + obj->quan > 7L)
 		    obj = splitobj(obj, 7L - (long)otmp->spe);
 		else *optr = 0;
-		You("attach %ld%s %s to %s.", /* EN You("attach %ld%s %s to %s.", */ // TODO DE
+		You("VERB_BEFESTIGEN OBJECT %ld%s %s NEUES_OBJECT OBJECT an %s.", /* EN You("attach %ld%s %s to %s.", */
 		    obj->quan, !otmp->spe ? "" : " ADJEKTIV_WEITER", /* EN obj->quan, !otmp->spe ? "" : " more", */
 		    s, the(xname(otmp)));
 		if (!otmp->spe || otmp->age > obj->age)
@@ -1406,7 +1406,7 @@ register struct obj *obj;
 	    else {
 		pline("SATZBEGINN KASUS_AKKUSATIV %s eindosen ohne Handschuhe zu tragen ist ein verhängnisvoller Fehler ...", /* EN pline("Tinning %s without wearing gloves is a fatal mistake...", */
 			an(mons[corpse->corpsenm].mname));
-		Sprintf(kbuf, "versuchte ohne Handschuhe KASUS_AKKUSATIV %s einzudosen", /* EN Sprintf(kbuf, "trying to tin %s without gloves", */ // TODO DE
+		Sprintf(kbuf, "versuchte ohne Handschuhe KASUS_AKKUSATIV %s einzudosen", /* EN Sprintf(kbuf, "trying to tin %s without gloves", */
 			an(mons[corpse->corpsenm].mname));
 	    }
 	    instapetrify(kbuf);
@@ -2321,9 +2321,9 @@ struct obj *obj;
 				polymon(PM_STONE_GOLEM))) {
 			char kbuf[BUFSZ];
 
-			Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", /* EN Sprintf(kbuf, "%s corpse", */ // TODO DE
+			Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", /* EN Sprintf(kbuf, "%s corpse", */
 				an(mons[otmp->corpsenm].mname));
-			pline("Snatching %s is a fatal mistake.", kbuf); /* EN pline("Snatching %s is a fatal mistake.", kbuf); */ // TODO DE
+			pline("KASUS_AKKUSATIV %s zu berühren ist ein fataler Fehler.", kbuf); /* EN pline("Snatching %s is a fatal mistake.", kbuf); */
 			instapetrify(kbuf);
 		    }
 		    otmp = hold_another_object(otmp, "SUBJECT VERB_DROP %s SATZKLAMMER!", /* EN otmp = hold_another_object(otmp, "You drop %s!", */
@@ -2454,7 +2454,7 @@ struct obj *obj;
 	if (Hallucination)
 		You("VERB_MACHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL eine Gesichtspackung."); /* EN You("give yourself a facial."); */
 	else
-		pline("You immerse your %s in %s%s.", body_part(FACE), /* EN pline("You immerse your %s in %s%s.", body_part(FACE), */ // TODO DE
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_STECKEN OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT in %s%s.", body_part(FACE), /* EN pline("You immerse your %s in %s%s.", body_part(FACE), */
 			several ? "one of " : "", /* EN several ? "one of " : "", */ // TODO DE
 			several ? makeplural(the(xname(obj))) : the(xname(obj)));
 	if(can_blnd((struct monst*)0, &youmonst, AT_WEAP, obj)) {
@@ -2533,14 +2533,14 @@ use_grapple (obj)
 	    any.a_int = 1;	/* use index+1 (cant use 0) as identifier */
 	    start_menu(tmpwin);
 	    any.a_int++;
-	    Sprintf(buf, "an object on the %s", surface(cc.x, cc.y)); /* EN Sprintf(buf, "an object on the %s", surface(cc.x, cc.y)); */ // TODO DE
+	    Sprintf(buf, "einen Gegenstand KASUS_DATIV auf ARTIKEL_BESTIMMTER %s", surface(cc.x, cc.y)); /* EN Sprintf(buf, "an object on the %s", surface(cc.x, cc.y)); */ // auf_dem_Boden
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE,
 			 buf, MENU_UNSELECTED);
 	    any.a_int++;
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE,
-			"a monster", MENU_UNSELECTED); /* EN "a monster", MENU_UNSELECTED); */ // TODO DE
+			"ein Monster", MENU_UNSELECTED); /* EN "a monster", MENU_UNSELECTED); */
 	    any.a_int++;
-	    Sprintf(buf, "the %s", surface(cc.x, cc.y));
+	    Sprintf(buf, "KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s", surface(cc.x, cc.y)); /* EN Sprintf(buf, "the %s", surface(cc.x, cc.y)); */
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE,
 			 buf, MENU_UNSELECTED);
 	    end_menu(tmpwin, "Auf was zielen?"); /* EN end_menu(tmpwin, "Aim for what?"); */
@@ -2559,7 +2559,7 @@ use_grapple (obj)
 	    break;
 	case 1:	/* Object */
 	    if ((otmp = level.objects[cc.x][cc.y]) != 0) {
-		You("VERB_ANGELN OBJECT KASUS_DATIV PRONOMEN_PERSONAL einen Gegenstand from the %s!", surface(cc.x, cc.y)); /* EN You("snag an object from the %s!", surface(cc.x, cc.y)); */ // TODO DE
+		You("VERB_ANGELN OBJECT KASUS_DATIV PRONOMEN_PERSONAL einen Gegenstand NEUES_OBJECT OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER %s!", surface(cc.x, cc.y)); /* EN You("snag an object from the %s!", surface(cc.x, cc.y)); */ // vom_Boden
 		(void) pickup_object(otmp, 1L, FALSE);
 		/* If pickup fails, leave it alone */
 		newsym(cc.x, cc.y);
