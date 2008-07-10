@@ -1655,7 +1655,7 @@ do_questtxt()
 	qt_line = 0;
 	in_msg = FALSE;
 
-	while (fgets(in_line, 80, ifp) != 0) {
+	while (fgets(in_line, 160, ifp) != 0) { /* EN while (fgets(in_line, 80, ifp) != 0) { */
 	    SpinCursor (3);
 
 	    qt_line++;
@@ -1668,7 +1668,7 @@ do_questtxt()
 	in_msg = FALSE;
 	adjust_qt_hdrs();
 	put_qt_hdrs();
-	while (fgets(in_line, 80, ifp) != 0) {
+	while (fgets(in_line, 160, ifp) != 0) { /* EN while (fgets(in_line, 80, ifp) != 0) { */
 
 		if(qt_control(in_line)) {
 		    in_msg = (in_line[1] == 'C');

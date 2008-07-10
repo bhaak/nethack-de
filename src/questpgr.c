@@ -25,7 +25,7 @@ STATIC_DCL void NDECL(convert_line);
 STATIC_DCL void FDECL(deliver_by_pline, (struct qtmsg *));
 STATIC_DCL void FDECL(deliver_by_window, (struct qtmsg *,int));
 
-static char	in_line[80], cvt_buf[64], out_line[128];
+static char	in_line[160], cvt_buf[64], out_line[255]; /* EN static char	in_line[80], cvt_buf[64], out_line[128]; */
 static struct	qtlists	qt_list;
 static dlb	*msg_file;
 /* used by ldrname() and neminame(), then copied into cvt_buf */
@@ -362,7 +362,7 @@ struct qtmsg *qt_msg;
 	long	size;
 
 	for (size = 0; size < qt_msg->size; size += (long)strlen(in_line)) {
-	    (void) dlb_fgets(in_line, 80, msg_file);
+	    (void) dlb_fgets(in_line, 160, msg_file); /* EN (void) dlb_fgets(in_line, 80, msg_file); */
 	    convert_line();
 	    pline(out_line);
 	}
@@ -378,7 +378,7 @@ int how;
 	winid datawin = create_nhwindow(how);
 
 	for (size = 0; size < qt_msg->size; size += (long)strlen(in_line)) {
-	    (void) dlb_fgets(in_line, 80, msg_file);
+	    (void) dlb_fgets(in_line, 160, msg_file); /* EN (void) dlb_fgets(in_line, 80, msg_file); */
 	    convert_line();
 	    putstr(datawin, 0, out_line);
 	}
