@@ -1987,7 +1987,7 @@ boolean ordinary;
 
 		case SPE_DRAIN_LIFE:
 			if (!Drain_resistance) {
-				losexp("life drainage"); /* EN losexp("life drainage"); */ // TODO DE
+				losexp("Lebensenergieentzug"); /* EN losexp("life drainage"); */
 				makeknown(obj->otyp);
 			}
 			damage = 0;	/* No additional damage */

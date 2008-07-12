@@ -484,7 +484,7 @@ struct monst *shkp;
 	rouse_shk(shkp, TRUE);
 	total = (addupbill(shkp) + eshkp->debit);
 	if (eshkp->credit >= total) {
-	    Your("credit of %ld %s is used to cover your shopping bill.", /* EN Your("credit of %ld %s is used to cover your shopping bill.", */ // TODO DE
+	    Your("NOUN_KREDIT OBJECT KASUS_DATIV von %ld %s wird benutzt um deine Rechnung zu begleichen.", /* EN Your("credit of %ld %s is used to cover your shopping bill.", */
 		 eshkp->credit, currency(eshkp->credit));
 	    total = 0L;		/* credit gets cleared by setpaid() */
 	} else {
@@ -564,7 +564,7 @@ register char *enterstring;
 	rt = rooms[*enterstring - ROOMOFFSET].rtype;
 
 	if (ANGRY(shkp)) {
-	    verbalize("So, %s, you dare return to %s %s?!", /* EN verbalize("So, %s, you dare return to %s %s?!", */ // TODO DE
+	    verbalize("So, %s, SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_WAGEN es OBJECT %s %s wieder zu betreten?!", /* EN verbalize("So, %s, you dare return to %s %s?!", */
 		      plname,
 		      s_suffix(shkname(shkp)),
 		      shtypes[rt - SHOPBASE].name);
@@ -854,11 +854,11 @@ register struct monst *shkp;
 
 	if(credit == 0L) return(tmp);
 	if(credit >= tmp) {
-		pline_The("price is deducted from your credit."); /* EN pline_The("price is deducted from your credit."); */ // TODO DE
+		pline("Der Preis wird KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_KREDIT abgezogen."); /* EN pline_The("price is deducted from your credit."); */
 		ESHK(shkp)->credit -=tmp;
 		tmp = 0L;
 	} else {
-		pline_The("price is partially covered by your credit."); /* EN pline_The("price is partially covered by your credit."); */ // TODO DE
+		pline("Der Preis ist teilweise von PRONOMEN_POSSESSIV NOUN_KREDIT gedeckt."); /* EN pline_The("price is partially covered by your credit."); */
 		ESHK(shkp)->credit = 0L;
 		tmp -= credit;
 	}
@@ -1070,7 +1070,7 @@ register xchar ox,oy;
 
 STATIC_VAR const char no_money[] = "Zudem %s PRONOMEN_PERSONAL kein Geld%s."; /* EN STATIC_VAR const char no_money[] = "Moreover, you%s have no money."; */
 STATIC_VAR const char not_enough_money[] =
-			    "Besides, you don't have enough to interest %s."; /* EN "Besides, you don't have enough to interest %s."; */ // TODO DE
+			    "Auﬂerdem VERB_HABEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht genug um %s Interesse zu wecken."; /* EN "Besides, you don't have enough to interest %s."; */
 
 #else
 STATIC_VAR const char no_money[];
@@ -1163,7 +1163,7 @@ dopay()
 		pline("Wen bezahlen?"); /* EN pline("Pay whom?"); */
 		cc.x = u.ux;
 		cc.y = u.uy;
-		if (getpos(&cc, TRUE, "the creature you want to pay") < 0) /* EN if (getpos(&cc, TRUE, "the creature you want to pay") < 0) */ // TODO DE
+		if (getpos(&cc, TRUE, "welche Kreatur MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL bezahlen") < 0) /* EN if (getpos(&cc, TRUE, "the creature you want to pay") < 0) */
 		    return 0;	/* player pressed ESC */
 		cx = cc.x;
 		cy = cc.y;
@@ -1234,12 +1234,12 @@ proceed:
 #else
 		    if(umoney > ltmp) {
 #endif
-			You("give %s the %ld gold piece%s %s asked for.", /* EN You("give %s the %ld gold piece%s %s asked for.", */ // TODO DE
-			    mon_nam(shkp), ltmp, plur(ltmp), mhe(shkp));
+			You("VERB_GEBEN OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_VERLANGT %ld NOUN_GOLD_PIECE%s.", /* EN You("give %s the %ld gold piece%s %s asked for.", */
+			    mon_nam(shkp), ltmp, plur(ltmp)); /* EN mon_nam(shkp), ltmp, plur(ltmp), mhe(shkp)); */
 			pay(ltmp, shkp);
 		    } else {
 			You("VERB_GEBEN OBJECT %s NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GESAMT%s NOUN_GOLD.", mon_nam(shkp), /* EN You("give %s all your%s gold.", mon_nam(shkp), */
-					stashed_gold ? " openly kept" : ""); /* EN stashed_gold ? " openly kept" : ""); */ // TODO DE
+					stashed_gold ? " nicht ADJEKTIV_VERSTECKT" : ""); /* EN stashed_gold ? " openly kept" : ""); */
 #ifndef GOLDOBJ
 			pay(u.ugold, shkp);
 #else
@@ -1285,7 +1285,7 @@ proceed:
 			if (!umoney)
 #endif
 			    pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
-			else pline(not_enough_money, mhim(shkp));
+			else pline(not_enough_money, mhis(shkp)); /* EN else pline(not_enough_money, mhim(shkp)); */
 			return(1);
 		    }
 		    pline("Da aber %s NOUN_SHOP k¸rzlich ausgeraubt wurde, ", /* EN pline("But since %s shop has been robbed recently,", */
@@ -1317,7 +1317,7 @@ proceed:
 			if (!umoney)
 #endif
 			    pline(no_money, stashed_gold ? "VERB_SCHEINEN" : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN pline(no_money, stashed_gold ? " seem to" : ""); */
-			else pline(not_enough_money, mhim(shkp));
+			else pline(not_enough_money, mhis(shkp)); /* EN else pline(not_enough_money, mhim(shkp)); */
 			return(1);
 		    }
 		    You("VERB_GEBEN OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT 1000 NOUN_GOLD_PIECEs und VERB_VERSUCHEN die Sache so zu kl‰ren.", /* EN You("try to appease %s by giving %s 1000 gold pieces.", */
@@ -1360,14 +1360,14 @@ proceed:
 #endif
 		    pline("Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_HABEN%s nicht genug Gold%s.", /* EN pline("But you don't%s have enough gold%s.", */
 			stashed_gold ? " anscheinend" : "", /* EN stashed_gold ? " seem to" : "", */
-			eshkp->credit ? " or credit" : ""); /* EN eshkp->credit ? " or credit" : ""); */ // TODO DE
+			eshkp->credit ? " oder Kredit" : ""); /* EN eshkp->credit ? " or credit" : ""); */
 		    return(1);
 		} else {
 		    if (eshkp->credit >= dtmp) {
 			eshkp->credit -= dtmp;
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			Your("debt is covered by your credit."); /* EN Your("debt is covered by your credit."); */ // TODO DE
+			Your("NOUN_SCHULDs VERB_SEIN OBJECT KASUS_DATIV von NOUN_KREDIT gedeckt."); /* EN Your("debt is covered by your credit."); */
 		    } else if (!eshkp->credit) {
 #ifndef GOLDOBJ
 			u.ugold -= dtmp;
@@ -1390,7 +1390,7 @@ proceed:
 #endif
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			pline("That debt is partially offset by your credit."); /* EN pline("That debt is partially offset by your credit."); */ // TODO DE
+			pline("Diese Schulden werden teilweise KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_KREDIT kompensiert."); /* EN pline("That debt is partially offset by your credit."); */
 			You("VERB_BEZAHLEN den Rest."); /* EN You("pay the remainder."); */
 			flags.botl = 1;
 		    }

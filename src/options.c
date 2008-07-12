@@ -2806,10 +2806,10 @@ boolean setinitial,setfromfile;
 	char apebuf[BUFSZ];
 	struct autopickup_exception *ape;
 	static const char *action_titles[] = {
-		"a", "add new autopickup exception", /* EN "a", "add new autopickup exception", */ // TODO DE
-		"l", "list autopickup exceptions", /* EN "l", "list autopickup exceptions", */ // TODO DE
-		"r", "remove existing autopickup exception", /* EN "r", "remove existing autopickup exception", */ // TODO DE
-		"e", "exit this menu", /* EN "e", "exit this menu", */ // TODO DE
+		"a", "eine neue Autopickup-Ausnahme hinzufügen", /* EN "a", "add new autopickup exception", */
+		"l", "Autopickup-Ausnahmen anzeigen", /* EN "l", "list autopickup exceptions", */
+		"r", "eine existierende Autopickup-Ausnahme entfernen", /* EN "r", "remove existing autopickup exception", */
+		"e", "dieses Menü verlassen", /* EN "e", "exit this menu", */
 	};
 ape_again:
 	opt_idx = 0;
@@ -2823,7 +2823,7 @@ ape_again:
 		add_menu(tmpwin, NO_GLYPH, &any, *action_titles[i],
 		      0, ATR_NONE, action_titles[i+1], MENU_UNSELECTED);
         }
-	end_menu(tmpwin, "Do what?"); /* EN end_menu(tmpwin, "Do what?"); */ // TODO DE
+	end_menu(tmpwin, "Was tun?"); /* EN end_menu(tmpwin, "Do what?"); */
 	if ((pick_cnt = select_menu(tmpwin, PICK_ONE, &pick_list)) > 0) {
 		for (pick_idx = 0; pick_idx < pick_cnt; ++pick_idx) {
 			opt_idx = pick_list[pick_idx].item.a_int - 1;
@@ -2835,7 +2835,7 @@ ape_again:
 	if (pick_cnt < 1) return FALSE;
 
 	if (opt_idx == 0) {	/* add new */
-		getlin("What new autopickup exception pattern?", &apebuf[1]); /* EN getlin("What new autopickup exception pattern?", &apebuf[1]); */ // TODO DE
+		getlin("Welches neue Autopickup-Ausnahmen-Muster?", &apebuf[1]); /* EN getlin("What new autopickup exception pattern?", &apebuf[1]); */
 		if (apebuf[1] == '\033') return FALSE;
 		apebuf[0] = '"';
 		Strcat(apebuf,"\"");
@@ -2851,7 +2851,7 @@ ape_again:
 		    ape = iflags.autopickup_exceptions[pass];
 		    any.a_void = 0;
 		    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings,
-				(pass == 0) ? "Never pickup" : "Always pickup", /* EN (pass == 0) ? "Never pickup" : "Always pickup", */ // TODO DE
+				(pass == 0) ? "Nie aufheben" : "Immer aufheben", /* EN (pass == 0) ? "Never pickup" : "Always pickup", */
 				MENU_UNSELECTED);
 		    for (i = 0; i < numapes[pass] && ape; i++) {
 			any.a_void = (opt_idx == 1) ? 0 : ape;
@@ -2861,8 +2861,8 @@ ape_again:
 			ape = ape->next;
 		    }
 		}
-		Sprintf(apebuf, "%s autopickup exceptions", /* EN Sprintf(apebuf, "%s autopickup exceptions", */ // TODO DE
-			(opt_idx == 1) ? "List of" : "Remove which"); /* EN (opt_idx == 1) ? "List of" : "Remove which"); */ // TODO DE
+		Sprintf(apebuf, "%s Autopickup-Ausnahmen", /* EN Sprintf(apebuf, "%s autopickup exceptions", */
+			(opt_idx == 1) ? "Liste der" : "Entfernen welcher"); /* EN (opt_idx == 1) ? "List of" : "Remove which"); */
 		end_menu(tmpwin, apebuf);
 		pick_cnt = select_menu(tmpwin,
 					(opt_idx == 1) ?  PICK_NONE : PICK_ANY,
@@ -3157,16 +3157,16 @@ dotogglepickup()
 	flags.pickup = !flags.pickup;
 	if (flags.pickup) {
 	    oc_to_str(flags.pickup_types, ocl);
-	    Sprintf(buf, "ON, for %s objects%s", ocl[0] ? ocl : "all", /* EN Sprintf(buf, "ON, for %s objects%s", ocl[0] ? ocl : "all", */ // TODO DE
+	    Sprintf(buf, "EIN, für %s Objekte%s", ocl[0] ? ocl : "alle", /* EN Sprintf(buf, "ON, for %s objects%s", ocl[0] ? ocl : "all", */
 #ifdef AUTOPICKUP_EXCEPTIONS
 			(iflags.autopickup_exceptions[AP_LEAVE] ||
 			 iflags.autopickup_exceptions[AP_GRAB]) ?
 			 ((count_ape_maps((int *)0, (int *)0) == 1) ?
-			    ", with one exception" : ", with some exceptions") : /* EN ", with one exception" : ", with some exceptions") : */ // TODO DE
+			    ", mit einer Ausnahme" : ", mit einigen Ausnahmen") : /* EN ", with one exception" : ", with some exceptions") : */
 #endif
 			"");
 	} else {
-	    Strcpy(buf, "OFF");
+	    Strcpy(buf, "AUS"); /* EN Strcpy(buf, "OFF"); */
 	}
 	pline("Autopickup: %s.", buf);
 	return 0;

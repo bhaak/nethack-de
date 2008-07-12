@@ -2393,7 +2393,7 @@ struct attack *mattk;		/* null means we find one internally */
 	    if (!mon->mcan) {
 		if (drain_item(obj) && carried(obj) &&
 		    (obj->known || obj->oclass == ARMOR_CLASS)) {
-		    Your("%s less effective.", aobjnam(obj, "seem")); /* EN Your("%s less effective.", aobjnam(obj, "seem")); */ // TODO DE
+		    Your("%s weniger wirksam.", aobjnam(obj, "VERB_SCHEINEN")); /* EN Your("%s less effective.", aobjnam(obj, "seem")); */
 	    	}
 	    	break;
 	    }

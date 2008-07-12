@@ -384,7 +384,7 @@ boolean td;	/* td == TRUE : trap door or hole */
 	    dtmp.dlevel = newlevel;
 	}
 	if (!td)
-	    Sprintf(msgbuf, "SUBJECT ARTIKEL_BESTIMMTER NOUN_HOLE OBJECT KASUS_DATIV _in_ ARTIKEL_BESTIMMTER %s über OBJECT KASUS_DATIV PRONOMEN_PERSONAL VERB_SCHLIESSEN sich.", /* EN Sprintf(msgbuf, "The hole in the %s above you closes up.", */ // TODO DE
+	    Sprintf(msgbuf, "SUBJECT ARTIKEL_BESTIMMTER NOUN_HOLE OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s über OBJECT KASUS_DATIV PRONOMEN_PERSONAL VERB_SCHLIESSEN sich.", /* EN Sprintf(msgbuf, "The hole in the %s above you closes up.", */
 		    ceiling(u.ux,u.uy));
 	schedule_goto(&dtmp, FALSE, TRUE, 0,
 		      (char *)0, !td ? msgbuf : (char *)0);
@@ -676,7 +676,7 @@ unsigned trflags;
 		}
 		trap->once = 1;
 		seetrap(trap);
-		pline("A little dart shoots out at you!"); /* EN pline("A little dart shoots out at you!"); */ // TODO DE
+		pline("Ein kleiner Pfeil schießt KASUS_AKKUSATIV auf PRONOMEN_PERSONAL zu!"); /* EN pline("A little dart shoots out at you!"); */
 		otmp = mksobj(DART, TRUE, FALSE);
 		otmp->quan = 1L;
 		otmp->owt = weight(otmp);
@@ -685,9 +685,9 @@ unsigned trflags;
 		if (u.usteed && !rn2(2) && steedintrap(trap, otmp)) /* nothing */;
 		else
 #endif
-		if (thitu(7, dmgval(otmp, &youmonst), otmp, "little dart")) { /* EN if (thitu(7, dmgval(otmp, &youmonst), otmp, "little dart")) { */ // TODO DE
+		if (thitu(7, dmgval(otmp, &youmonst), otmp, "ADJEKTIV_KLEIN NOUN_ARROW")) { /* EN if (thitu(7, dmgval(otmp, &youmonst), otmp, "little dart")) { */
 		    if (otmp->opoisoned)
-			poisoned("dart", A_CON, "little dart", -10); /* EN poisoned("dart", A_CON, "little dart", -10); */ // TODO DE
+			poisoned("NOUN_DART", A_CON, "ADJEKTIV_KLEIN NOUN_DART", -10); /* EN poisoned("dart", A_CON, "little dart", -10); */
 		    obfree(otmp, (struct obj *)0);
 		} else {
 		    place_object(otmp, u.ux, u.uy);
@@ -755,7 +755,7 @@ unsigned trflags;
 		seetrap(trap);
 		if(amorphous(youmonst.data) || is_whirly(youmonst.data) ||
 						    unsolid(youmonst.data)) {
-		    pline("%s bear trap closes harmlessly through you.", /* EN pline("%s bear trap closes harmlessly through you.", */ // TODO DE
+		    pline("SUBJECT %s ADJEKTIV_ZUSCHNAPPEND NOUN_BEAR_TRAP VERB_DURCHDRINGEN OBJECT PRONOMEN_PERSONAL folgenlos.", /* EN pline("%s bear trap closes harmlessly through you.", */
 			    A_Your[trap->madeby_u]);
 		    break;
 		}
@@ -764,7 +764,7 @@ unsigned trflags;
 		   !u.usteed &&
 #endif
 		   youmonst.data->msize <= MZ_SMALL) {
-		    pline("%s bear trap closes harmlessly over you.", /* EN pline("%s bear trap closes harmlessly over you.", */ // TODO DE
+		    pline("SUBJECT %s NOUN_BEAR_TRAP VERB_SCHNAPPEN folgenlos OBJECT KASUS_DATIV über PRONOMEN_PERSONAL zusammen.", /* EN pline("%s bear trap closes harmlessly over you.", */
 			    A_Your[trap->madeby_u]);
 		    break;
 		}
@@ -772,13 +772,13 @@ unsigned trflags;
 		u.utraptype = TT_BEARTRAP;
 #ifdef STEED
 		if (u.usteed) {
-		    pline("SUBJECT %s bear trap closes on %s!", /* EN pline("%s bear trap closes on %s %s!", */ // TODO DE
+		    pline("SUBJECT %s NOUN_BEAR_TRAP VERB_SCHLIESSEN sich OBJECT um %s!", /* EN pline("%s bear trap closes on %s %s!", */
 			A_Your[trap->madeby_u], genitivattribut_zu_wort(mon_nam(u.usteed), /* EN A_Your[trap->madeby_u], s_suffix(mon_nam(u.usteed)), */
 			mbodypart(u.usteed, FOOT))); /* EN mbodypart(u.usteed, FOOT)); */
 		} else
 #endif
 		{
-		    pline("SUBJECT %s NOUN_BEAR_TRAP VERB_ZUSCHNAPPEN on your %s!", /* EN pline("%s bear trap closes on your %s!", */ // TODO DE
+		    pline("SUBJECT %s NOUN_BEAR_TRAP VERB_SCHLIESSEN sich OBJECT um PRONOMEN_POSSESSIV %s!", /* EN pline("%s bear trap closes on your %s!", */
 			    A_Your[trap->madeby_u], body_part(FOOT));
 		    if(u.umonnum == PM_OWLBEAR || u.umonnum == PM_BUGBEAR)
 			You("VERB_HEULEN auf vor Wut!"); /* EN You("howl in anger!"); */
@@ -833,7 +833,7 @@ unsigned trflags;
 			    break;
 			if (u.twoweap || (uwep && bimanual(uwep)))
 			    erode_obj(u.twoweap ? uswapwep : uwep, FALSE, TRUE);
-glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); */ // TODO DE
+glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); */
 			/* Not "metal gauntlets" since it gets called
 			 * even if it's leather for the message
 			 */
@@ -929,10 +929,10 @@ glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); /* EN glov
 		if (!steedintrap(trap, (struct obj *)0)) {
 #endif
 		if (ttype == SPIKED_PIT) {
-		    losehp(rnd(10),"fell into a pit of iron spikes", /* EN losehp(rnd(10),"fell into a pit of iron spikes", */ // TODO DE
+		    losehp(rnd(10),"fiel in eine Grube voller Eisenstacheln", /* EN losehp(rnd(10),"fell into a pit of iron spikes", */
 			NO_KILLER_PREFIX);
 		    if (!rn2(6))
-			poisoned("spikes", A_STR, "fall onto poison spikes", 8); /* EN poisoned("spikes", A_STR, "fall onto poison spikes", 8); */ // TODO DE
+			poisoned("NOUN_STACHELs", A_STR, "NOUN_STURZ auf vergiftete Eisenstacheln", 8); /* EN poisoned("spikes", A_STR, "fall onto poison spikes", 8); */ 
 		} else
 		    losehp(rnd(6),"fiel in eine Grube", NO_KILLER_PREFIX); /* EN losehp(rnd(6),"fell into a pit", NO_KILLER_PREFIX); */
 		if (Punished && !carried(uball)) {
@@ -3960,7 +3960,7 @@ lava_effects()
 	    if(is_organic(obj) && !obj->oerodeproof) {
 		if(obj->owornmask) {
 		    if (usurvive)
-			Your("%s into flame!", aobjnam(obj, "burst")); /* EN Your("%s into flame!", aobjnam(obj, "burst")); */ // TODO DE
+			Your("%s in Flammen SATZKLAMMER!", aobjnam(obj, "VERB_AUFGEHEN")); /* EN Your("%s into flame!", aobjnam(obj, "burst")); */
 
 		    if(obj == uarm) (void) Armor_gone();
 		    else if(obj == uarmc) (void) Cloak_off();
@@ -4010,7 +4010,7 @@ burn_stuff:
     if(uarmf && !uarmf->oerodeproof && is_organic(uarmf)) {
 	/* save uarmf value because Boots_off() sets uarmf to null */
 	obj = uarmf;
-	Your("%s bursts into flame!", xname(obj)); /* EN Your("%s bursts into flame!", xname(obj)); */ // TODO DE
+	Your("%s VERB_AUFGEHEN in Flammen SATZKLAMMER!", xname(obj)); /* EN Your("%s bursts into flame!", xname(obj)); */
 	(void) Boots_off();
 	useup(obj);
     }
