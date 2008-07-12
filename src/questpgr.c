@@ -190,7 +190,7 @@ neminame()	/* return your role nemesis' name */
 	int i = urole.neminum;
 
 	Sprintf(nambuf, "%s%s",
-		type_is_pname(&mons[i]) ? "" : "the ",
+		type_is_pname(&mons[i]) ? "" : "ARTIKEL_BESTIMMTER ", /* EN type_is_pname(&mons[i]) ? "" : "the ", */
 		mons[i].mname);
 	return nambuf;
 }

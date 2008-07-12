@@ -1538,7 +1538,7 @@ stillinwater:;
 			if(mtmp->mtame) /* jumps to greet you, not attack */
 			    ;
 			else if(uarmh && is_metallic(uarmh))
-			    pline("Its blow glances off your helmet."); /* EN pline("Its blow glances off your helmet."); */ // TODO DE
+			    pline("SUBJECT %s NOUN_HIEB VERB_ABGLEITEN OBJECT von PRONOMEN_POSSESSIV NOUN_HELMET SATZKLAMMER.", mhis(mtmp)); /* EN pline("Its blow glances off your helmet."); */
 			else if (u.uac + 3 <= rnd(20))
 			    You("are almost hit by %s!", /* EN You("are almost hit by %s!", */ // TODO DE
 				x_monnam(mtmp, ARTICLE_A, "falling", 0, TRUE)); /* EN x_monnam(mtmp, ARTICLE_A, "falling", 0, TRUE)); */ // TODO DE

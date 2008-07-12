@@ -1812,6 +1812,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_RING_SLOW_DIGESTION", "langsam", "Verdauung", "", "Verdauung", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_TELEPORTATION", "Teleportation", "", "Teleportation", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_TELEPORT_CONTROL", "Teleportationskontrolle", "", "Teleportationskontrolle", "en", "feminin"), 
+    dekliniere_substantiv("NOUN_RING_TELEPORT_CONTROL", "Teleportkontrolle", "", "Teleportkontrolle", "en", "feminin"), 
     dekliniere_substantiv("NOUN_RING_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_POLYMORPH_CONTROL", "Transformationskontrolle", "", "Transformationskontrolle", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_INVISIBILITY", "Unsichtbarkeit", "", "", "", "feminin"),
@@ -3313,6 +3314,12 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MAGIER","Magier","s","Magier","","maskulin"),
     dekliniere_substantiv("NOUN_MAGIERIN","Magierin","","Magierinn","en","feminin"),
 
+    "/* Orte (role.c) */",
+    dekliniere_nominalphrase("NOUN_ARC_INSTITUT","Archäologisch","Institut","es","","e","neutrum"),
+    dekliniere_substantiv("NOUN_CAV_ANCESTOR","Höhle","","Höhle","en","feminin","en"," der Vorfahren"),
+    dekliniere_substantiv("NOUN_TEMPLE_OF_EPIDAURUS","Tempel","s","","","feminin",""," von Epidauros"),
+    dekliniere_substantiv("NOUN_CAMELOT","Camelot","","","","neutrum"),
+
     "/* sonstige Substantive */",
     dekliniere_substantiv("NOUN_ACID","Säure","","Säure","en","feminin"),
     dekliniere_substantiv("NOUN_ANDACHT","Andacht","","Andacht","en","feminin"),
@@ -3454,6 +3461,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SINN","Sinn","es","Sinn","e","maskulin"),
     dekliniere_substantiv("NOUN_SONDIERUNG","Sondierung","","Sondierung","en","feminin"),
     dekliniere_nominalphrase("NOUN_SQUEAKY_BOARD", "quietschend", "Diele", "", "", "", "feminin"),
+    dekliniere_substantiv("NOUN_STACHEL", "Stachel", "es", "Stachel", "en", "maskulin"),
     dekliniere_substantiv("NOUN_STAIRCASE_DOWN", "Treppe", "", "", "", "feminin","","hinab"),
     dekliniere_substantiv("NOUN_STAIRCASE_UP", "Treppe", "", "", "", "feminin","","hinauf"),
     dekliniere_substantiv("NOUN_STATUE_TRAP","Statuenfalle","","Statuenfalle","en","feminin"),

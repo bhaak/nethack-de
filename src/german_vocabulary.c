@@ -1511,6 +1511,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Teleportationskontrolle", "NOUN_RING_TELEPORT_CONTROL", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Teleportationskontrollen", "NOUN_RING_TELEPORT_CONTROLs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Teleportkontrolle", "NOUN_RING_TELEPORT_CONTROL", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Teleportkontrollen", "NOUN_RING_TELEPORT_CONTROLs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Transformation", "NOUN_RING_POLYMORPH", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Transformationen", "NOUN_RING_POLYMORPHs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -9258,6 +9261,22 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Magierin", "NOUN_MAGIERIN", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Magierinnen", "NOUN_MAGIERINs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  /* Orte (role.c) */
+
+  {"Archäologischen Institutes", "NOUN_ARC_INSTITUT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Archäologische Institut", "NOUN_ARC_INSTITUT", "", akkusativ|nominativ, neutrum, n_singular, bestimmter},
+  {"Archäologisches Institut", "NOUN_ARC_INSTITUT", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne},
+  {"Archäologischen Institute", "NOUN_ARC_INSTITUT", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
+  {"Archäologischem Institute", "NOUN_ARC_INSTITUT", "", dativ, neutrum, n_singular, grundform|ohne},
+
+  {"Höhle  der Vorfahren", "NOUN_CAV_ANCESTOR", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Höhlen  der Vorfahren", "NOUN_CAV_ANCESTORs", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Tempels  von Epidauros", "NOUN_TEMPLE_OF_EPIDAURUS", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tempel  von Epidauros", "NOUN_TEMPLE_OF_EPIDAURUS", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Camelot", "NOUN_CAMELOT", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   /* sonstige Substantive */
 
   {"Säure", "NOUN_ACID", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -9937,6 +9956,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"quietschender Diele", "NOUN_SQUEAKY_BOARD", "", dativ|genitiv, feminin, n_singular, grundform|ohne},
   {"quietschenden Diele", "NOUN_SQUEAKY_BOARD", "", dativ|genitiv, feminin, n_singular, unbestimmter|bestimmter},
   {"quietschende Diele", "NOUN_SQUEAKY_BOARD", "", akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Stacheles", "NOUN_STACHEL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stachele", "NOUN_STACHEL", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stachel", "NOUN_STACHEL", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stacheln", "NOUN_STACHELs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Treppe hinab", "NOUN_STAIRCASE_DOWN", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 

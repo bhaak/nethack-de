@@ -41,7 +41,7 @@ const struct Role roles[] = {
 	{"NOUN_SAMMLER",   "NOUN_SAMMLERIN"}, /* EN {"Collector",   0}, */
 	{"NOUN_KURATOR",     "NOUN_KURATORIN"} }, /* EN {"Curator",     0} }, */
 	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */
-	"Arc", "the College of Archeology", "the Tomb of the Toltec Kings", /* EN "Arc", "the College of Archeology", "the Tomb of the Toltec Kings", */ // TODO DE
+	"Arc", "ARTIKEL_BESTIMMTER NOUN_ARC_INSTITUT", "the Tomb of the Toltec Kings", /* EN "Arc", "the College of Archeology", "the Tomb of the Toltec Kings", */ // TODO DE
 	PM_ARCHEOLOGIST, NON_PM, NON_PM,
 	PM_LORD_CARNARVON, PM_STUDENT, PM_MINION_OF_HUHETOTL,
 	NON_PM, PM_HUMAN_MUMMY, S_SNAKE, S_MUMMY,
@@ -93,7 +93,7 @@ const struct Role roles[] = {
 	{"NOUN_WANDERER",     "NOUN_WANDERIN"}, /* EN {"Rover",       0}, */
 	{"NOUN_PIONIER",      "NOUN_PIONIERIN"} }, /* EN {"Pioneer",     0} }, */
 	"Anu", "_Ishtar", "Anshar", /* Babylonian */
-	"Cav", "the Caves of the Ancestors", "the Dragon's Lair", /* EN "Cav", "the Caves of the Ancestors", "the Dragon's Lair", */ // TODO DE
+	"Cav", "ARTIKEL_BESTIMMTER NOUN_CAV_ANCESTORs", "the Dragon's Lair", /* EN "Cav", "the Caves of the Ancestors", "the Dragon's Lair", */ // TODO DE
 	PM_CAVEMAN, PM_CAVEWOMAN, PM_LITTLE_DOG,
 	PM_SHAMAN_KARNOV, PM_NEANDERTHAL, PM_CHROMATIC_DRAGON,
 	PM_BUGBEAR, PM_HILL_GIANT, S_HUMANOID, S_GIANT,
@@ -119,7 +119,7 @@ const struct Role roles[] = {
 	{"NOUN_PHYSICIAN",      "NOUN_PHYSICIANIN"}, /* EN {"Physician",      0}, */
 	{"NOUN_CHIRURGEON",     "NOUN_CHIRURGEON"} }, /* EN {"Chirurgeon",     0} }, */
 	"_Athena", "Hermes", "Poseidon", /* Greek */
-	"Hea", "the Temple of Epidaurus", "the Temple of Coeus", /* EN "Hea", "the Temple of Epidaurus", "the Temple of Coeus", */ // TODO DE
+	"Hea", "ARTIKEL_BESTIMMTER NOUN_TEMPLE_OF_EPIDAURUS", "the Temple of Coeus", /* EN "Hea", "the Temple of Epidaurus", "the Temple of Coeus", */ // TODO DE
 	PM_HEALER, NON_PM, NON_PM, 
 	PM_HIPPOCRATES, PM_ATTENDANT, PM_CYCLOPS,
 	PM_GIANT_RAT, PM_SNAKE, S_RODENT, S_YETI,
@@ -144,7 +144,7 @@ const struct Role roles[] = {
 	{"Seignieur",   "Dame"}, /* EN {"Seignieur",   "Dame"}, */ // TODO DE
 	{"Paladin",     0} }, /* EN {"Paladin",     0} }, */ // TODO DE
 	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
-	"Kni", "Camelot Castle", "the Isle of Glass", /* EN "Kni", "Camelot Castle", "the Isle of Glass", */ // TODO DE
+	"Kni", "NOUN_CAMELOT", "the Isle of Glass", /* EN "Kni", "Camelot Castle", "the Isle of Glass", */ // TODO DE
 	PM_KNIGHT, NON_PM, PM_PONY,
 	PM_KING_ARTHUR, PM_PAGE, PM_IXOTH,
 	PM_QUASIT, PM_OCHRE_JELLY, S_IMP, S_JELLY,
@@ -169,8 +169,8 @@ const struct Role roles[] = {
 	{"NOUN_SCHUELER_DER_FEUER",   "NOUN_SCHUELERIN_DER_FEUER"}, /* EN {"Student of Fire",   0}, */
 	{"NOUN_MEISTER",            "NOUN_MEISTERIN"} }, /* EN {"Master",            0} }, */
 	"Shan Lai Ching", "Chih Sung-tzu", "Huan Ti", /* Chinese */
-	"Mon", "the Monastery of Chan-Sune", /* EN "Mon", "the Monastery of Chan-Sune", */ // TODO DE
-	  "the Monastery of the Earth-Lord", /* EN "the Monastery of the Earth-Lord", */ // TODO DE
+	"Mon", "ARTIKEL_BESTIMMTER Monastery of Chan-Sune", /* EN "Mon", "the Monastery of Chan-Sune", */ // TODO DE
+	  "ARTIKEL_BESTIMMTER Monastery of the Earth-Lord", /* EN "the Monastery of the Earth-Lord", */ // TODO DE
 	PM_MONK, NON_PM, NON_PM,
 	PM_GRAND_MASTER, PM_ABBOT, PM_MASTER_KAEN,
 	PM_EARTH_ELEMENTAL, PM_XORN, S_ELEMENTAL, S_XORN,
@@ -196,7 +196,7 @@ const struct Role roles[] = {
 	{"NOUN_PATRIARCH",   "NOUN_MATRIARCH"}, /* EN {"Patriarch",   "Matriarch"}, */
 	{"NOUN_HIGH_PRIEST", "NOUN_HIGH_PRIESTESS"} }, /* EN {"High Priest", "High Priestess"} }, */
 	0, 0, 0,	/* chosen randomly from among the other roles */
-	"Pri", "the Great Temple", "the Temple of Nalzok", /* EN "Pri", "the Great Temple", "the Temple of Nalzok", */ // TODO DE
+	"Pri", "ARTIKEL_BESTIMMTER NOUN_GREAT_TEMPLE", "ARTIKEL_BESTIMMTER NOUN_TEMPLE_OF_NALZOK", /* EN "Pri", "the Great Temple", "the Temple of Nalzok", */
 	PM_PRIEST, PM_PRIESTESS, NON_PM,
 	PM_ARCH_PRIEST, PM_ACOLYTE, PM_NALZOK,
 	PM_HUMAN_ZOMBIE, PM_WRAITH, S_ZOMBIE, S_WRAITH,
@@ -264,7 +264,7 @@ const struct Role roles[] = {
 	{"NOUN_SCHARFSCHUETZE",  "NOUN_SCHARFSCHUETZIN"}, /* EN {"Sharpshooter",  0}, */
 	{"NOUN_MEISTERSCHUETZE",      "NOUN_MEISTERSCHUETZIN"} }, /* EN {"Marksman",      "Markswoman"} }, */
 	"Merkur", "_Venus", "Mars", /* Roman/planets */ /* EN "Mercury", "_Venus", "Mars", */
-	"Ran", "Orion's camp", "the cave of the wumpus", /* EN "Ran", "Orion's camp", "the cave of the wumpus", */ // TODO DE
+	"Ran", "NOUN_ORIONS_CAMP", "the cave of the wumpus", /* EN "Ran", "Orion's camp", "the cave of the wumpus", */ // TODO DE
 	PM_RANGER, NON_PM, PM_LITTLE_DOG /* Orion & canis major */,
 	PM_ORION, PM_HUNTER, PM_SCORPIUS,
 	PM_FOREST_CENTAUR, PM_SCORPION, S_CENTAUR, S_SPIDER,
@@ -316,7 +316,7 @@ const struct Role roles[] = {
 	{"NOUN_ERFORSCHER", "NOUN_ERFORSCHERIN"}, /* EN {"Explorer",    0}, */
 	{"NOUN_ABENTEURER", "NOUN_ABENTEURERIN"} }, /* EN {"Adventurer",  0} }, */
 	"Blind Io", "_The Lady", "Offler", /* Discworld */ /* EN "Blind Io", "_The Lady", "Offler", */ // TODO DE
-	"Tou", "Ankh-Morpork", "the Thieves' Guild Hall", /* EN "Tou", "Ankh-Morpork", "the Thieves' Guild Hall", */ // TODO DE
+	"Tou", "NOUN_ANKH_MORPORK", "the Thieves' Guild Hall", /* EN "Tou", "Ankh-Morpork", "the Thieves' Guild Hall", */ // TODO DE
 	PM_TOURIST, NON_PM, NON_PM,
 	PM_TWOFLOWER, PM_GUIDE, PM_MASTER_OF_THIEVES,
 	PM_GIANT_SPIDER, PM_FOREST_CENTAUR, S_SPIDER, S_CENTAUR,

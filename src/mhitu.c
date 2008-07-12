@@ -216,7 +216,7 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 	    if (compat)
 		pline("%s reaches towards your distorted image.",Monnam(mtmp)); /* EN pline("%s reaches towards your distorted image.",Monnam(mtmp)); */ // TODO DE
 	    else
-		pline("%s is fooled by water reflections and misses!",Monnam(mtmp)); /* EN pline("%s is fooled by water reflections and misses!",Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s wird von den Wasserspiegelungen getäuscht und trifft nicht!",Monnam(mtmp)); /* EN pline("%s is fooled by water reflections and misses!",Monnam(mtmp)); */
 
 	} else impossible("%s attacks you without knowing your location?",
 		Monnam(mtmp));
@@ -386,8 +386,8 @@ mattacku(mtmp)
 
 		    obj = which_armor(mtmp, WORN_HELMET);
 		    if (obj && is_metallic(obj)) {
-			Your("blow glances off %s helmet.", /* EN Your("blow glances off %s helmet.", */ // TODO DE
-			               s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
+			Your("NOUN_HIEB VERB_ABGLEITEN OBJECT von %s SATZKLAMMER.", /* EN Your("blow glances off %s helmet.", */
+			               genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_HELMET")); /* EN s_suffix(mon_nam(mtmp))); */
 		    } else {
 			if (3 + find_mac(mtmp) <= rnd(20)) {
 			    pline("%s is hit by a falling piercer (you)!", /* EN pline("%s is hit by a falling piercer (you)!", */ // TODO DE
@@ -1136,7 +1136,7 @@ dopois:
 	    case AD_DRLI:
 		hitmsg(mtmp, mattk);
 		if (uncancelled && !rn2(3) && !Drain_resistance) {
-		    losexp("Lebensenergieentzug?/life drainage"); /* EN losexp("life drainage"); */ // TODO DE
+		    losexp("Lebensenergieentzug"); /* EN losexp("life drainage"); */
 		}
 		break;
 	    case AD_LEGS:
@@ -1554,7 +1554,7 @@ dopois:
 		    struct obj *obj = some_armor(&youmonst);
 
 		    if (drain_item(obj)) {
-			Your("%s less effective.", aobjnam(obj, "seem")); /* EN Your("%s less effective.", aobjnam(obj, "seem")); */ // TODO DE
+			Your("%s weniger wirksam.", aobjnam(obj, "VERB_SCHEINEN")); /* EN Your("%s less effective.", aobjnam(obj, "seem")); */
 		    }
 		}
 		break;
@@ -1738,7 +1738,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 			You("are covered with a seemingly harmless goo."); /* EN You("are covered with a seemingly harmless goo."); */ // TODO DE
 			tmp = 0;
 		    } else {
-		      if (Hallucination) pline("Ouch!  You've been slimed!"); /* EN if (Hallucination) pline("Ouch!  You've been slimed!"); */ // TODO DE
+		      if (Hallucination) pline("Autsch!  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_WERDEN verschleimt!"); /* EN if (Hallucination) pline("Ouch!  You've been slimed!"); */
 		      else You("are covered in slime!  It burns!"); /* EN else You("are covered in slime!  It burns!"); */ // TODO DE
 		      exercise(A_STR, FALSE);
 		    }
@@ -2225,11 +2225,11 @@ register struct monst *mon;
 		}
 		makeknown(RIN_ADORNMENT);
 		if (!uright) {
-		    pline("SUBJECT %s puts %s on your right %s.", /* EN pline("%s puts %s on your right %s.", */ // TODO DE
+		    pline("SUBJECT %s VERB_STECKEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT %s NEUES_OBJECT OBJECT an PRONOMEN_POSSESSIV ADJEKTIV_RECHT %s.", /* EN pline("%s puts %s on your right %s.", */
 			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */
 		    setworn(ring, RIGHT_RING);
 		} else if (!uleft) {
-		    pline("SUBJECT %s puts %s on your left %s.", /* EN pline("%s puts %s on your left %s.", */ // TODO DE
+		    pline("SUBJECT %s VERB_STECKEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT %s NEUES_OBJECT OBJECT an PRONOMEN_POSSESSIV ADJEKTIV_LINK %s.", /* EN pline("%s puts %s on your left %s.", */
 			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */
 		    setworn(ring, LEFT_RING);
 		} else if (uright && uright->otyp != RIN_ADORNMENT) {
@@ -2258,8 +2258,8 @@ register struct monst *mon;
 		pline("%s murmurs sweet nothings into your ear.", /* EN pline("%s murmurs sweet nothings into your ear.", */ // TODO DE
 			Blind ? (fem ? "She" : "He") : Monnam(mon)); /* EN Blind ? (fem ? "She" : "He") : Monnam(mon)); */ // TODO DE
 	else
-		pline("%s murmurs in your ear, while helping you undress.", /* EN pline("%s murmurs in your ear, while helping you undress.", */ // TODO DE
-			Blind ? (fem ? "She" : "He") : Monnam(mon)); /* EN Blind ? (fem ? "She" : "He") : Monnam(mon)); */ // TODO DE
+		pline("SUBJECT %s VERB_FLUESTERN OBJECT in PRONOMEN_POSSESSIV NOUN_OHR, NEUER_SATZ während SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL beim Ausziehen VERB_HELFEN.", /* EN pline("%s murmurs in your ear, while helping you undress.", */
+			Blind ? (fem ? "NOUN_PRONOMEN_3P_F_PERSONAL" : "NOUN_PRONOMEN_3P_M_PERSONAL") : Monnam(mon), Blind ? (fem ? "NOUN_PRONOMEN_3P_F_PERSONAL" : "NOUN_PRONOMEN_3P_M_PERSONAL") : Monnam(mon)); /* EN Blind ? (fem ? "She" : "He") : Monnam(mon)); */
 	mayberem(uarmc, cloak_simple_name(uarmc));
 	if(!uarmc)
 		mayberem(uarm, "suit"); /* EN mayberem(uarm, "suit"); */ // TODO DE

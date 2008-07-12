@@ -50,7 +50,7 @@ STATIC_DCL void FDECL(add_class, (char *, CHAR_P));
 void FDECL( amii_speaker, ( struct obj *, char *, int ) );
 #endif
 
-static const char no_elbow_room[] = "don't have enough elbow-room to maneuver."; /* EN static const char no_elbow_room[] = "don't have enough elbow-room to maneuver."; */ // TODO DE
+static const char no_elbow_room[] = "VERB_HABEN dazu nicht genug Ellbogenfreiheit."; /* EN static const char no_elbow_room[] = "don't have enough elbow-room to maneuver."; */
 
 #ifdef TOURIST
 STATIC_OVL int
@@ -655,19 +655,19 @@ struct obj *obj;
 		return 1;
 	}
 	if(u.uswallow) {
-		if (!Blind) You("reflect %s.", genitivattribut_zu_wort(mon_nam(u.ustuck), /* EN if (!Blind) You("reflect %s %s.", s_suffix(mon_nam(u.ustuck)), */ // TODO DE
+		if (!Blind) You("VERB_REFLEKTIEREN OBJECT über %s.", genitivattribut_zu_wort(mon_nam(u.ustuck), /* EN if (!Blind) You("reflect %s %s.", s_suffix(mon_nam(u.ustuck)), */
 		    mbodypart(u.ustuck, STOMACH))); /* EN mbodypart(u.ustuck, STOMACH)); */
 		return 1;
 	}
 	if(Underwater) {
 		You(Hallucination ?
 		    "give the fish a chance to fix their makeup." : /* EN "give the fish a chance to fix their makeup." : */ // TODO DE
-		    "reflect the murky water."); /* EN "reflect the murky water."); */ // TODO DE
+		    "VERB_REFLEKTIEREN über das trübe Wasser."); /* EN "reflect the murky water."); */
 		return 1;
 	}
 	if(u.dz) {
 		if (!Blind)
-		    You("reflect the %s.", /* EN You("reflect the %s.", */ // TODO DE
+		    You("VERB_REFLEKTIEREN OBJECT über ARTIKEL_BESTIMMTER %s.", /* EN You("reflect the %s.", */
 			(u.dz > 0) ? surface(u.ux,u.uy) : ceiling(u.ux,u.uy));
 		return 1;
 	}
@@ -705,7 +705,7 @@ struct obj *obj;
 		if (!rn2(4)) tmp = 120;
 		if (vis)
 			pline("%s is frozen by its reflection.", Monnam(mtmp)); /* EN pline("%s is frozen by its reflection.", Monnam(mtmp)); */ // TODO DE
-		else You_hear("%s stop moving.",something); /* EN else You_hear("%s stop moving.",something); */ // TODO DE
+		else You_hear("etwas stehen bleiben."); /* EN else You_hear("%s stop moving.",something); */
 		mtmp->mcanmove = 0;
 		if ( (int) mtmp->mfrozen + tmp > 127)
 			mtmp->mfrozen = 127;
@@ -1301,7 +1301,7 @@ int magic; /* 0=Physical, otherwise skill level */
 		pline("Illegaler Zug!"); /* EN pline("Illegal move!"); */
 		return 0;
 	} else if (distu(cc.x, cc.y) > (magic ? 6+magic*3 : 9)) {
-		pline("Zu weit!"); /* EN pline("Too far!"); */
+		pline("Zu weit weg!"); /* EN pline("Too far!"); */
 		return 0;
 	} else if (!cansee(cc.x, cc.y)) {
 		You("VERB_SEHEN nicht, wo NEUER_SATZ PRONOMEN_PERSONAL landen MODIFIER_KONJUNKTIV_II VERB_WERDEN!"); /* EN You("cannot see where to land!"); */
@@ -1317,8 +1317,8 @@ int magic; /* 0=Physical, otherwise skill level */
 		switch(u.utraptype) {
 		case TT_BEARTRAP: {
 		    register long side = rn2(3) ? LEFT_SIDE : RIGHT_SIDE;
-		    You("rip yourself free of the bear trap!  Aua!"); /* EN You("rip yourself free of the bear trap!  Ouch!"); */ // TODO DE
-		    losehp(rnd(10), "jumping out of a bear trap", KILLED_BY); /* EN losehp(rnd(10), "jumping out of a bear trap", KILLED_BY); */ // TODO DE
+		    You("VERB_REISSEN OBJECT PRONOMEN_PERSONAL selbst aus der Bärenfalle heraus!  Aua!"); /* EN You("rip yourself free of the bear trap!  Ouch!"); */
+		    losehp(rnd(10), "sprang aus einer Bärenfalle", NO_KILLER_PREFIX); /* EN losehp(rnd(10), "jumping out of a bear trap", KILLED_BY); */
 		    set_wounded_legs(side, rn1(1000,500));
 		    break;
 		  }
@@ -1857,7 +1857,7 @@ struct obj *tstone;
        junk as likely candidates for rubbing */
     choices = (tstone->otyp == TOUCHSTONE && tstone->dknown &&
 		objects[TOUCHSTONE].oc_name_known) ? justgems : allowall;
-    Sprintf(stonebuf, "rub on the stone%s", plur(tstone->quan)); /* EN Sprintf(stonebuf, "rub on the stone%s", plur(tstone->quan)); */ // TODO DE
+    Sprintf(stonebuf, "auf %s reiben", (tstone->quan > 1) ? "den Steinen" : "dem Stein"); /* EN Sprintf(stonebuf, "rub on the stone%s", plur(tstone->quan)); */
     if ((obj = getobj(choices, stonebuf)) == 0)
 	return;
 #ifndef GOLDOBJ
@@ -1870,7 +1870,7 @@ struct obj *tstone;
 #endif
 
     if (obj == tstone && obj->quan == 1) {
-	You_cant("rub %s on itself.", the(xname(obj))); /* EN You_cant("rub %s on itself.", the(xname(obj))); */ // TODO DE
+	You("VERB_KOENNEN OBJECT %s nicht auf sich selbst reiben.", the(xname(obj))); /* EN You_cant("rub %s on itself.", the(xname(obj))); */
 	return;
     }
 
@@ -2511,7 +2511,7 @@ use_grapple (obj)
 	else if (P_SKILL(typ) == P_SKILLED) max_range = 5;
 	else max_range = 8;
 	if (distu(cc.x, cc.y) > max_range) {
-	    pline("Zu weit!"); /* EN pline("Too far!"); */ // TODO DE
+	    pline("Zu weit weg!"); /* EN pline("Too far!"); */
 	    return (res);
 	} else if (!cansee(cc.x, cc.y)) {
 	    You(cant_see_spot);

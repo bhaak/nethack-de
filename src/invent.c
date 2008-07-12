@@ -992,11 +992,11 @@ register const char *let,*word;
 		}
 		if(ilet == def_oc_syms[COIN_CLASS]) {
 			if (!usegold) {
-			    if (!strncmp(word, "rub on ", 7)) { /* EN if (!strncmp(word, "rub on ", 7)) { */ // TODO DE
+			    if (!strncmp(word, "rub on ", 7)) { /* DE egal, beide Sätze funktionieren im Deutschen */
 				/* the dangers of building sentences... */
-				You("cannot rub gold%s.", word + 3); /* EN You("cannot rub gold%s.", word + 3); */ // TODO DE
+				You("VERB_KOENNEN kein Gold MODIFIER_VERB_INFINITIV %s.", word); /* EN You("cannot rub gold%s.", word + 3); */
 			    } else {
-				You("cannot %s gold.", word); /* EN You("cannot %s gold.", word); */ // TODO DE
+				You("VERB_KOENNEN kein Gold MODIFIER_VERB_INFINITIV %s.", word); /* EN You("cannot %s gold.", word); */
 			    }
 			    return(struct obj *)0;
 #ifndef GOLDOBJ

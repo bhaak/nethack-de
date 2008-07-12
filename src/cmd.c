@@ -962,9 +962,9 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	    if(uleft && uleft->otyp == RIN_ADORNMENT) adorn += uleft->spe;
 	    if(uright && uright->otyp == RIN_ADORNMENT) adorn += uright->spe;
 	    if (adorn < 0)
-		you_are("poorly adorned"); /* EN you_are("poorly adorned"); */ // TODO DE
+		you_are("schlecht geschmückt"); /* EN you_are("poorly adorned"); */
 	    else
-		you_are("adorned"); /* EN you_are("adorned"); */ // TODO DE
+		you_are("geschmückt"); /* EN you_are("adorned"); */
 	}
 	if (Invisible) you_are("ADJEKTIV_INVISIBLE"); /* EN if (Invisible) you_are("invisible"); */
 	else if (Invis) you_are("ADJEKTIV_INVISIBLE für andere"); /* EN else if (Invis) you_are("invisible to others"); */
@@ -973,16 +973,16 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	else if ((HInvis || EInvis || pm_invisible(youmonst.data)) && BInvis)
 	    you_are("sichtbar"); /* EN you_are("visible"); */
 	if (Displaced) you_are("ADJEKTIV_DISPLACED"); /* EN if (Displaced) you_are("displaced"); */
-	if (Stealth) you_are("stealthy"); /* EN if (Stealth) you_are("stealthy"); */ // TODO DE
+	if (Stealth) you_can("schleichen"); /* EN if (Stealth) you_are("stealthy"); */
 	if (Aggravate_monster) enl_msg("You aggravate", "", "d", " monsters"); /* EN if (Aggravate_monster) enl_msg("You aggravate", "", "d", " monsters"); */ // TODO DE
 	if (Conflict) enl_msg("You cause", "", "d", " conflict"); /* EN if (Conflict) enl_msg("You cause", "", "d", " conflict"); */ // TODO DE
 
 	/*** Transportation ***/
 	if (Jumping) you_can("springen"); /* EN if (Jumping) you_can("jump"); */
 	if (Teleportation) you_can("teleportieren"); /* EN if (Teleportation) you_can("teleport"); */
-	if (Teleport_control) you_have("teleport control"); /* EN if (Teleport_control) you_have("teleport control"); */ // TODO DE
-	if (Lev_at_will) you_are("levitating, at will"); /* EN if (Lev_at_will) you_are("levitating, at will"); */ // TODO DE
-	else if (Levitation) you_are("levitating");	/* without control */ /* EN else if (Levitation) you_are("levitating");	*/ // TODO DE
+	if (Teleport_control) you_have("Teleportationskontrolle"); /* EN if (Teleport_control) you_have("teleport control"); */
+	if (Lev_at_will) enl_msg(You_, "VERB_SCHWEBEN willentlich", "VERB_HABEN willentlich geschwebt", ""); /* EN if (Lev_at_will) you_are("levitating, at will"); */
+	else if (Levitation) enl_msg(You_, "VERB_SCHWEBEN", "VERB_HABEN geschwebt", ""); /* without control */ /* EN else if (Levitation) you_are("levitating");	*/
 	else if (Flying) you_can("fliegen"); /* EN else if (Flying) you_can("fly"); */
 	if (Wwalking) you_can("übers Wasser gehen"); /* EN if (Wwalking) you_can("walk on water"); */
 	if (Swimming) you_can("schwimmen");        /* EN if (Swimming) you_can("swim");         */
@@ -1040,7 +1040,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 		you_are(buf);
 	}
 	if (Upolyd) {
-	    if (u.umonnum == u.ulycn) Strcpy(buf, "in beast form"); /* EN if (u.umonnum == u.ulycn) Strcpy(buf, "in beast form"); */ // TODO DE
+	    if (u.umonnum == u.ulycn) Strcpy(buf, "in Tierform"); /* EN if (u.umonnum == u.ulycn) Strcpy(buf, "in beast form"); */
 	    else Sprintf(buf, "OBJECT in %s transformiert", an(youmonst.data->mname)); /* EN else Sprintf(buf, "polymorphed into %s", an(youmonst.data->mname)); */
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", u.mtimedone);
@@ -1068,7 +1068,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	    you_have(buf); /* EN you_are(buf); */
 	}
 #ifdef WIZARD
-	 else if (wizard) enl_msg("Your luck ", "is", "was", " zero"); /* EN else if (wizard) enl_msg("Your luck ", "is", "was", " zero"); */ // TODO DE
+	 else if (wizard) enl_msg("PRONOMEN_POSSESSIV NOUN_LUCK ", "ist", "war", " gleich null"); /* EN else if (wizard) enl_msg("Your luck ", "is", "was", " zero"); */
 #endif
 	if (u.moreluck > 0) you_have("besonders viel Glück"); /* EN if (u.moreluck > 0) you_have("extra luck"); */
 	else if (u.moreluck < 0) you_have("vermindertes Glück"); /* EN else if (u.moreluck < 0) you_have("reduced luck"); */
@@ -1082,7 +1082,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 
 	if (u.ugangr) {
 	    Sprintf(buf, " %sangry with you", /* EN Sprintf(buf, " %sangry with you", */ // TODO DE
-		    u.ugangr > 6 ? "extremely/unglaublich " : u.ugangr > 3 ? "very " : ""); /* EN u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : ""); */ // TODO DE
+		    u.ugangr > 6 ? "unglaublich " : u.ugangr > 3 ? "sehr " : ""); /* EN u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : ""); */
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", u.ugangr);
 #endif
