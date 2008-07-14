@@ -888,7 +888,7 @@ register struct obj *obj;
 		return;
 	}
 	if(obj->spe < 7) {
-		pline("Es %s nur OBJECT %d %s in %s.", /* EN There("%s only %d %s in %s.", */ // TODO DE
+		pline("Es %s nur OBJECT %d %s NEUES_OBJECT OBJECT KASUS_DATIV an %s.", /* EN There("%s only %d %s in %s.", */
 		      vtense(s, "VERB_STECKEN"), obj->spe, s, the(xname(obj))); /* EN vtense(s, "are"), obj->spe, s, the(xname(obj))); */
 		if (!Blind)
 		    pline("%s lit.  %s dimly.", /* EN pline("%s lit.  %s dimly.", */ // TODO DE
@@ -899,7 +899,7 @@ register struct obj *obj;
 			(Blind ? "." : " brightly!")); /* EN (Blind ? "." : " brightly!")); */ // TODO DE
 	}
 	if (!invocation_pos(u.ux, u.uy)) {
-		pline_The("%s %s being rapidly consumed!", s, vtense(s, "are")); /* EN pline_The("%s %s being rapidly consumed!", s, vtense(s, "are")); */ // TODO DE
+		pline_The("%s %s rasant herunter!", s, vtense(s, "VERB_BRENNEN")); /* EN pline_The("%s %s being rapidly consumed!", s, vtense(s, "are")); */
 		obj->age /= 2;
 	} else {
 		if(obj->spe == 7) {
@@ -937,10 +937,10 @@ struct obj **optr;
 		return;
 	}
 
-	Sprintf(qbuf, "Attach %s", the(xname(obj))); /* EN Sprintf(qbuf, "Attach %s", the(xname(obj))); */ // TODO DE
-	Sprintf(eos(qbuf), " to %s?", /* EN Sprintf(eos(qbuf), " to %s?", */ // TODO DE
-		safe_qbuf(qbuf, sizeof(" to ?"), the(xname(otmp)), /* EN safe_qbuf(qbuf, sizeof(" to ?"), the(xname(otmp)), */ // TODO DE
-			the(simple_typename(otmp->otyp)), "it")); /* EN the(simple_typename(otmp->otyp)), "it")); */ // TODO DE
+	Sprintf(qbuf, "SATZBEGINN %s", the(xname(obj))); /* EN Sprintf(qbuf, "Attach %s", the(xname(obj))); */
+	Sprintf(eos(qbuf), " OBJECT KASUS_DATIV an %s anbringen?", /* EN Sprintf(eos(qbuf), " to %s?", */
+		safe_qbuf(qbuf, sizeof(" OBJECT KASUS_DATIV an  anbringen?"), the(xname(otmp)), /* EN safe_qbuf(qbuf, sizeof(" to ?"), the(xname(otmp)), */
+			the(simple_typename(otmp->otyp)), "ihm")); /* EN the(simple_typename(otmp->otyp)), "it")); */
 	if(yn(qbuf) == 'n') {
 		if (!obj->lamplit)
 		    You("VERB_VERSUCHEN OBJECT %s zu entzünden ...", the(xname(obj))); /* EN You("try to light %s...", the(xname(obj))); */
@@ -959,15 +959,15 @@ struct obj **optr;
 		if (otmp->lamplit && !obj->lamplit)
 		    pline("Wie von Zauberhand VERB_ENTZUENDEN SUBJECT_IM_SATZ ARTIKEL_BESTIMMTER ADJEKTIV_NEU %s sich selbst!", s); /* EN pline_The("new %s magically %s!", s, vtense(s, "ignite")); */
 		else if (!otmp->lamplit && obj->lamplit)
-		    pline("%s out.", (obj->quan > 1L) ? "They go" : "It goes"); /* EN pline("%s out.", (obj->quan > 1L) ? "They go" : "It goes"); */ // TODO DE
+		    pline("Sie %s aus.", (obj->quan > 1L) ? "gehen" : "geht"); /* EN pline("%s out.", (obj->quan > 1L) ? "They go" : "It goes"); */
 		if (obj->unpaid)
 		    verbalize("You %s %s, you bought %s!", /* EN verbalize("You %s %s, you bought %s!", */ // TODO DE
 			      otmp->lamplit ? "burn" : "use", /* EN otmp->lamplit ? "burn" : "use", */ // TODO DE
 			      (obj->quan > 1L) ? "them" : "it",
 			      (obj->quan > 1L) ? "them" : "it");
 		if (obj->quan < 7L && otmp->spe == 7)
-		    pline("%s now has seven%s candles attached.", /* EN pline("%s now has seven%s candles attached.", */ // TODO DE
-			  The(xname(otmp)), otmp->lamplit ? " lit" : ""); /* EN The(xname(otmp)), otmp->lamplit ? " lit" : ""); */ // TODO DE
+		    pline("SATZBEGINN OBJECT KASUS_DATIV An %s VERB_SEIN nun sieben%s NOUN_CANDLEs angebracht.", /* EN pline("%s now has seven%s candles attached.", */
+			  The(xname(otmp)), otmp->lamplit ? " ADJEKTIV_ENTZUENDET" : ""); /* EN The(xname(otmp)), otmp->lamplit ? " lit" : ""); */
 		/* candelabrum's light range might increase */
 		if (otmp->lamplit) obj_merge_light_sources(otmp, otmp);
 		/* candles are no longer a separate light source */
@@ -2161,7 +2161,7 @@ struct obj *obj;
 #ifdef STEED
 	/* Sometimes you hit your steed by mistake */
 	if (u.usteed && !rn2(proficient + 2)) {
-	    You("whip %s!", mon_nam(u.usteed)); /* EN You("whip %s!", mon_nam(u.usteed)); */ // TODO DE
+	    You("VERB_ANPEITSCHEN OBJECT %s SATZKLAMMER!", mon_nam(u.usteed)); /* EN You("whip %s!", mon_nam(u.usteed)); */
 	    kick_steed();
 	    return 1;
 	}

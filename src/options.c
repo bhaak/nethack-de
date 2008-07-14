@@ -219,25 +219,25 @@ static struct Comp_Opt
 	{ "align_message", "message window alignment", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_message", "message window alignment", 20, DISP_IN_GAME }, 	*/ // TODO DE
 	{ "align_status", "status window alignment", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_status", "status window alignment", 20, DISP_IN_GAME }, 	*/ // TODO DE
 	{ "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, /* EN { "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, */ // TODO DE
-	{ "boulder",  "the symbol to use for displaying boulders", /* EN { "boulder",  "the symbol to use for displaying boulders", */ // TODO DE
+	{ "boulder",  "das Symbol für Felsbrocken", /* EN { "boulder",  "the symbol to use for displaying boulders", */
 						1, SET_IN_GAME },
-	{ "catname",  "the name of your (first) cat (e.g., catname:Tabby)", /* EN { "catname",  "the name of your (first) cat (e.g., catname:Tabby)", */ // TODO DE
+	{ "catname",  "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_CAT (z.B., catname:Shiva)", /* EN { "catname",  "the name of your (first) cat (e.g., catname:Tabby)", */
 						PL_PSIZ, DISP_IN_GAME },
 	{ "disclose", "the kinds of information to disclose at end of game", /* EN { "disclose", "the kinds of information to disclose at end of game", */ // TODO DE
 						sizeof(flags.end_disclose) * 2,
 						SET_IN_GAME },
-	{ "dogname",  "the name of your (first) dog (e.g., dogname:Fang)", /* EN { "dogname",  "the name of your (first) dog (e.g., dogname:Fang)", */ // TODO DE
+	{ "dogname",  "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_DOG (z.B., dogname:Fido)", /* EN { "dogname",  "the name of your (first) dog (e.g., dogname:Fang)", */
 						PL_PSIZ, DISP_IN_GAME },
 	{ "dungeon",  "the symbols to use in drawing the dungeon map", /* EN { "dungeon",  "the symbols to use in drawing the dungeon map", */ // TODO DE
 						MAXDCHARS+1, SET_IN_FILE },
 	{ "effects",  "the symbols to use in drawing special effects", /* EN { "effects",  "the symbols to use in drawing special effects", */ // TODO DE
 						MAXECHARS+1, SET_IN_FILE },
-	{ "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	*/ // TODO DE
-	{ "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		/*WC*/ /* EN { "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		*/ // TODO DE
-	{ "font_message", "the font to use in the message window", /* EN { "font_message", "the font to use in the message window", */ // TODO DE
+	{ "font_map", "die Schrift, die im Kartenfenster verwendet wird", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	*/
+	{ "font_menu", "die Schrift, die in Menüs verwendet wird", 40, DISP_IN_GAME },		/*WC*/ /* EN { "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		*/
+	{ "font_message", "die Schrift, die im Nachrichtenfenster verwendet wird", /* EN { "font_message", "the font to use in the message window", */
 						40, DISP_IN_GAME },		/*WC*/
-	{ "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	 */ // TODO DE
-	{ "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	*/ // TODO DE
+	{ "font_size_map", "die Grösse der Kartenschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	 */
+	{ "font_size_menu", "die Grösse der Menüschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	*/
 	{ "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	*/ // TODO DE
 	{ "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	*/ // TODO DE
 	{ "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	*/ // TODO DE
@@ -247,7 +247,7 @@ static struct Comp_Opt
 						PL_FSIZ, SET_IN_GAME },
 	{ "gender",   "your starting gender (male or female)", /* EN { "gender",   "your starting gender (male or female)", */ // TODO DE
 						8, DISP_IN_GAME },
-	{ "horsename", "the name of your (first) horse (e.g., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */ // TODO DE
+	{ "horsename", "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_HORSE (z.B., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */ // TODO DE
 						PL_PSIZ, DISP_IN_GAME },
 	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/ // TODO DE
 	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
@@ -2466,7 +2466,7 @@ doset()
 		}
 #ifdef AUTOPICKUP_EXCEPTIONS
 	any.a_int = -1;
-	Sprintf(buf, "autopickup exceptions (%d currently set)", /* EN Sprintf(buf, "autopickup exceptions (%d currently set)", */ // TODO DE
+	Sprintf(buf, "Autopickup-Ausnahmen (%d momentan definiert)", /* EN Sprintf(buf, "autopickup exceptions (%d currently set)", */
 		count_ape_maps((int *)0, (int *)0));
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, MENU_UNSELECTED);
 

@@ -7623,6 +7623,18 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Stich", "NOUN_STING", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Frostklinge", "NOUN_FROST_BRAND", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Frostbrandes", "NOUN_FROST_BRAND", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Frostbrande", "NOUN_FROST_BRAND", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Frostbrand", "NOUN_FROST_BRAND", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Flammenklinge", "NOUN_FIRE_BRAND", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Feuerbrandes", "NOUN_FIRE_BRAND", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Feuerbrande", "NOUN_FIRE_BRAND", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Feuerbrand", "NOUN_FIRE_BRAND", "", akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Drachentöters", "NOUN_DRAGONBANE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Drachentöter", "NOUN_DRAGONBANE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -7633,6 +7645,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Wertöter", "NOUN_WEREBANE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Grayswandir", "NOUN_GRAYSWANDIR", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Riesenschlächters", "NOUN_GIANTSLAYER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Riesenschlächter", "NOUN_GIANTSLAYER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Ogermantscher", "NOUN_OGRESMASHER", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 

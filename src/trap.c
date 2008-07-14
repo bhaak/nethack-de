@@ -807,7 +807,7 @@ unsigned trflags;
 		    pline("%s OBJECT PRONOMEN_PERSONAL!", A_gush_of_water_hits); /* EN pline("%s you!", A_gush_of_water_hits); */
 		    You("are covered with rust!"); /* EN You("are covered with rust!"); */ // TODO DE
 		    if (Half_physical_damage) dam = (dam+1) / 2;
-		    losehp(dam, "rusting away", KILLED_BY); /* EN losehp(dam, "rusting away", KILLED_BY); */ // TODO DE
+		    losehp(dam, "rostete dahin", NO_KILLER_PREFIX); /* EN losehp(dam, "rusting away", KILLED_BY); */
 		    break;
 		} else if (u.umonnum == PM_GREMLIN && rn2(3)) {
 		    pline("%s OBJECT PRONOMEN_PERSONAL!", A_gush_of_water_hits); /* EN pline("%s you!", A_gush_of_water_hits); */
@@ -2861,7 +2861,7 @@ drown()
 	    You("VERB_ROSTEN!"); /* EN You("rust!"); */
 	    i = d(2,6);
 	    if (u.mhmax > i) u.mhmax -= i;
-	    losehp(i, "rusting away", KILLED_BY); /* EN losehp(i, "rusting away", KILLED_BY); */ // TODO DE
+	    losehp(i, "rostete dahin", NO_KILLER_PREFIX); /* EN losehp(i, "rusting away", KILLED_BY); */
 	}
 	if (inpool_ok) return(FALSE);
 
@@ -2964,8 +2964,8 @@ drown()
 	}
 	if (u.uinwater) {
 	    u.uinwater = 0;
-	    You("find yourself back %s.", Is_waterlevel(&u.uz) ?  /* EN You("find yourself back %s.", Is_waterlevel(&u.uz) ? */ // TODO DE
-		"in an air bubble" : "on land"); /* EN "in an air bubble" : "on land"); */ // TODO DE
+	    You("VERB_BEFINDEN OBJECT KASUS_AKKUSATIV wieder %s.", Is_waterlevel(&u.uz) ?  /* EN You("find yourself back %s.", Is_waterlevel(&u.uz) ? */
+		"in einer Luftblase" : "an Land"); /* EN "in an air bubble" : "on land"); */
 	}
 	return(TRUE);
 }
@@ -3000,7 +3000,7 @@ dountrap()	/* disarm a trap */
 	    return 0;
 	}
 	if (u.ustuck || (welded(uwep) && bimanual(uwep))) {
-	    Your("%s seem to be too busy for that.", /* EN Your("%s seem to be too busy for that.", */ // TODO DE
+	    Your("%s VERB_SEIN dafür schon zu beschäftigt.", /* EN Your("%s seem to be too busy for that.", */
 		 makeplural(body_part(HAND)));
 	    return 0;
 	}
@@ -3304,7 +3304,7 @@ boolean stuff;
 		    mtmp->data->mlet != S_HUMAN && rnl(10) < 3) {
 		mtmp->mpeaceful = 1;
 		set_malign(mtmp);		/* reset alignment */
-		pline("%s thinks it was nice of you to try.", Monnam(mtmp)); /* EN pline("%s thinks it was nice of you to try.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_MEINEN, es war nett OBJECT KASUS_DATIV von PRONOMEN_PERSONAL, es wenigstens zu versuchen.", Monnam(mtmp)); /* EN pline("%s thinks it was nice of you to try.", Monnam(mtmp)); */
 	    }
 	    return 0;
 	}
@@ -3479,7 +3479,7 @@ boolean force;
 				    return 0;
 				}
 				if (!(mtmp = m_at(x,y))) {
-				    pline("Try filling the pit instead."); /* EN pline("Try filling the pit instead."); */ // TODO DE
+				    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_VERSUCHE stattdessen die Grube zu füllen."); /* EN pline("Try filling the pit instead."); */
 				    return 0;
 				}
 				return help_monster_out(mtmp, ttmp);
@@ -3622,24 +3622,24 @@ boolean disarm;
 
 	otmp->otrapped = 0;	/* trap is one-shot; clear flag first in case
 				   chest kills you and ends up in bones file */
-	You(disarm ? "set it off!" : "trigger a trap!"); /* EN You(disarm ? "set it off!" : "trigger a trap!"); */ // TODO DE
+	You(disarm ? "set it off!" : "VERB_LOESEN eine Falle aus!"); /* EN You(disarm ? "set it off!" : "trigger a trap!"); */ // TODO DE
 	display_nhwindow(WIN_MESSAGE, FALSE);
 	if (Luck > -13 && rn2(13+Luck) > 7) {	/* saved by luck */
 	    /* trap went off, but good luck prevents damage */
 	    switch (rn2(13)) {
 		case 12:
-		case 11:  msg = "ist der Sprengsatz ein Blindgänger";  break; /* EN case 11:  msg = "explosive charge is a dud";  break; */ // TODO DE
+		case 11:  msg = "ist der Sprengsatz ein Blindgänger";  break; /* EN case 11:  msg = "explosive charge is a dud";  break; */
 		case 10:
 		case  9:  msg = "electric charge is grounded";  break; /* EN case  9:  msg = "electric charge is grounded";  break; */ // TODO DE
 		case  8:
 		case  7:  msg = "flame fizzles out";  break; /* EN case  7:  msg = "flame fizzles out";  break; */ // TODO DE
 		case  6:
 		case  5:
-		case  4:  msg = "poisoned needle misses";  break; /* EN case  4:  msg = "poisoned needle misses";  break; */ // TODO DE
+		case  4:  msg = "verfehlen KASUS_AKKUSATIV PRONOMEN_PERSONAL die Giftnadeln";  break; /* EN case  4:  msg = "poisoned needle misses";  break; */
 		case  3:
 		case  2:
 		case  1:
-		case  0:  msg = "gas cloud blows away";  break; /* EN case  0:  msg = "gas cloud blows away";  break; */ // TODO DE
+		case  0:  msg = "verpufft die Gaswolke";  break; /* EN case  0:  msg = "gas cloud blows away";  break; */
 		default:  impossible("chest disarm bug");  msg = (char *)0;
 			  break;
 	    }
