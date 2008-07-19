@@ -796,7 +796,7 @@ const char *start, *middle, *end;
 {
 	char buf[BUFSZ];
 
-	Sprintf(buf, "%s%s%s.", start, middle, end);
+	Sprintf(buf, "SATZBEGINN %s%s%s.", start, middle, end); /* EN Sprintf(buf, "%s%s%s.", start, middle, end); */
 	putstr(en_win, 0, buf);
 }
 

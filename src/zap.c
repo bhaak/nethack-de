@@ -4040,8 +4040,8 @@ int osym, dmgtyp;
 		    if(!rn2(3)) cnt++;
 
 		if(!cnt) continue;
-		if (vis) pline("%s %s %s!", /* EN if (vis) pline("%s %s %s!", */ // TODO DE
-			s_suffix(Monnam(mtmp)), xname(obj), /* EN s_suffix(Monnam(mtmp)), xname(obj), */ // TODO DE
+		if (vis) pline("SUBJECT %s %s!", /* EN if (vis) pline("%s %s %s!", */
+			genitivattribut_zu_wort(Monnam(mtmp), xname(obj)), /* EN s_suffix(Monnam(mtmp)), xname(obj), */
 			(cnt > 1L) ? destroy_strings[dindx*3 + 1]
 				  : destroy_strings[dindx*3]);
 		for(i = 0; i < cnt; i++) m_useup(mtmp, obj);

@@ -286,7 +286,7 @@ register struct obj *gold;
 #else
 				    ESHK(mtmp)->credit += value;
 #endif
-				    You("VERB_HABEN %ld %s Kredit.", /* EN You("have %ld %s in credit.", */
+				    You("VERB_HABEN ein Guthaben von %ld %s.", /* EN You("have %ld %s in credit.", */
 					ESHK(mtmp)->credit,
 					currency(ESHK(mtmp)->credit));
 				} else verbalize("Danke, Drecksack!"); /* EN } else verbalize("Thanks, scum!"); */

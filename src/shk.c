@@ -484,7 +484,7 @@ struct monst *shkp;
 	rouse_shk(shkp, TRUE);
 	total = (addupbill(shkp) + eshkp->debit);
 	if (eshkp->credit >= total) {
-	    Your("NOUN_KREDIT OBJECT KASUS_DATIV von %ld %s wird benutzt um deine Rechnung zu begleichen.", /* EN Your("credit of %ld %s is used to cover your shopping bill.", */
+	    Your("NOUN_GUTHABEN OBJECT KASUS_DATIV von %ld %s wird benutzt um deine Rechnung zu begleichen.", /* EN Your("credit of %ld %s is used to cover your shopping bill.", */
 		 eshkp->credit, currency(eshkp->credit));
 	    total = 0L;		/* credit gets cleared by setpaid() */
 	} else {
@@ -684,7 +684,7 @@ shopper_financial_report()
 
 	if (this_shkp &&
 	    !(ESHK(this_shkp)->credit || shop_debt(ESHK(this_shkp)))) {
-	    You("VERB_HABEN hier keinen Kredit oder Schulden."); /* EN You("have no credit or debt in here."); */
+	    You("VERB_HABEN hier kein Guthaben oder Schulden."); /* EN You("have no credit or debt in here."); */
 	    this_shkp = 0;	/* skip first pass */
 	}
 
@@ -696,11 +696,11 @@ shopper_financial_report()
 		if ((shkp != this_shkp) ^ pass) continue;
 		eshkp = ESHK(shkp);
 		if ((amt = eshkp->credit) != 0)
-		    You("VERB_HABEN Kredit in der Höhe von %ld %s in OBJECT KASUS_DATIV %s %s.", /* EN You("have %ld %s credit at %s %s.", */
+		    You("VERB_HABEN ein Guthaben in der Höhe von %ld %s in OBJECT KASUS_DATIV %s %s.", /* EN You("have %ld %s credit at %s %s.", */
 			amt, currency(amt), s_suffix(shkname(shkp)),
 			shtypes[eshkp->shoptype - SHOPBASE].name);
 		else if (shkp == this_shkp)
-		    You("VERB_HABEN hier keinen Kredit."); /* EN You("have no credit in here."); */
+		    You("VERB_HABEN in diesem Laden kein Guthaben."); /* EN You("have no credit in here."); */
 		if ((amt = shop_debt(eshkp)) != 0)
 		    You("VERB_OWE OBJECT KASUS_DATIV %s %ld %s.", /* EN You("owe %s %ld %s.", */
 			shkname(shkp), amt, currency(amt));
@@ -854,11 +854,11 @@ register struct monst *shkp;
 
 	if(credit == 0L) return(tmp);
 	if(credit >= tmp) {
-		pline("Der Preis wird KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_KREDIT abgezogen."); /* EN pline_The("price is deducted from your credit."); */
+		pline("Der Preis wird KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_GUTHABEN abgezogen."); /* EN pline_The("price is deducted from your credit."); */
 		ESHK(shkp)->credit -=tmp;
 		tmp = 0L;
 	} else {
-		pline("Der Preis ist teilweise von PRONOMEN_POSSESSIV NOUN_KREDIT gedeckt."); /* EN pline_The("price is partially covered by your credit."); */
+		pline("Der Preis ist teilweise von PRONOMEN_POSSESSIV NOUN_GUTHABEN gedeckt."); /* EN pline_The("price is partially covered by your credit."); */
 		ESHK(shkp)->credit = 0L;
 		tmp -= credit;
 	}
@@ -1360,14 +1360,14 @@ proceed:
 #endif
 		    pline("Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_HABEN%s nicht genug Gold%s.", /* EN pline("But you don't%s have enough gold%s.", */
 			stashed_gold ? " anscheinend" : "", /* EN stashed_gold ? " seem to" : "", */
-			eshkp->credit ? " oder Kredit" : ""); /* EN eshkp->credit ? " or credit" : ""); */
+			eshkp->credit ? " oder Guthaben" : ""); /* EN eshkp->credit ? " or credit" : ""); */
 		    return(1);
 		} else {
 		    if (eshkp->credit >= dtmp) {
 			eshkp->credit -= dtmp;
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			Your("NOUN_SCHULDs VERB_SEIN OBJECT KASUS_DATIV von NOUN_KREDIT gedeckt."); /* EN Your("debt is covered by your credit."); */
+			Your("NOUN_SCHULDs VERB_SEIN OBJECT KASUS_DATIV von NOUN_GUTHABEN gedeckt."); /* EN Your("debt is covered by your credit."); */
 		    } else if (!eshkp->credit) {
 #ifndef GOLDOBJ
 			u.ugold -= dtmp;
@@ -1390,7 +1390,7 @@ proceed:
 #endif
 			eshkp->debit = 0L;
 			eshkp->loan = 0L;
-			pline("Diese Schulden werden teilweise KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_KREDIT kompensiert."); /* EN pline("That debt is partially offset by your credit."); */
+			pline("Diese Schulden werden teilweise KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_GUTHABEN kompensiert."); /* EN pline("That debt is partially offset by your credit."); */
 			You("VERB_BEZAHLEN den Rest."); /* EN You("pay the remainder."); */
 			flags.botl = 1;
 		    }
@@ -1406,7 +1406,7 @@ proceed:
             umoney = money_cnt(invent);
 	    if (!umoney && !eshkp->credit) {
 #endif
-		You("%s weder Geld noch Kredit%s%s.", /* EN You("%shave no money or credit%s.", */
+		You("%s weder Geld noch Guthaben%s%s.", /* EN You("%shave no money or credit%s.", */
 				    stashed_gold ? "VERB_SCHEINEN " : "VERB_HABEN", /* EN stashed_gold ? "seem to " : "", */
 				    paid ? " übrig" : "", stashed_gold ? " zu haben" : ""); /* EN paid ? " left" : ""); */
 		return(0);
@@ -1517,7 +1517,7 @@ boolean itemize;
 #else
 	if(itemize && umoney + ESHK(shkp)->credit == 0L){
 #endif
-		You("%s weder Geld noch Kredit übrig%s.", /* EN You("%shave no money or credit left.", */
+		You("%s weder Geld noch Guthaben übrig%s.", /* EN You("%shave no money or credit left.", */
 			     stashed_gold ? "VERB_SCHEINEN " : "VERB_HABEN ", stashed_gold ? " zu haben" : ""); /* EN stashed_gold ? "seem to " : ""); */
 		return PAY_BROKE;
 	}
@@ -1557,9 +1557,9 @@ boolean itemize;
 #else
 	if (buy == PAY_BUY && umoney + ESHK(shkp)->credit < ltmp) {
 #endif
-	    You("don't%s have gold%s enough to pay for %s.", /* EN You("don't%s have gold%s enough to pay for %s.", */ // TODO DE
-		stashed_gold ? " seem to" : "", /* EN stashed_gold ? " seem to" : "", */ // TODO DE
-		(ESHK(shkp)->credit > 0L) ? " or credit" : "", /* EN (ESHK(shkp)->credit > 0L) ? " or credit" : "", */ // TODO DE
+	    You("VERB_HABEN%s nicht genug Gold%s um OBJECT %s zu bezahlen.", /* EN You("don't%s have gold%s enough to pay for %s.", */
+		stashed_gold ? " anscheinend" : "", /* EN stashed_gold ? " seem to" : "", */
+		(ESHK(shkp)->credit > 0L) ? " oder Guthaben" : "", /* EN (ESHK(shkp)->credit > 0L) ? " or credit" : "", */
 		doname(obj));
 	    buy = itemize ? PAY_SKIP : PAY_CANT;
 	}
@@ -3772,12 +3772,12 @@ struct monst *shkp;
 			    Hello(shkp), plname, eshk->customer);
 		    eshk->following = 0;
 		} else {
-		    verbalize("%s %s!  Didn't you forget to pay?", /* EN verbalize("%s %s!  Didn't you forget to pay?", */ // TODO DE
+		    verbalize("%s %s!  SUBJECT VERB_HABEN PRONOMEN_PERSONAL nicht vergessen zu bezahlen?", /* EN verbalize("%s %s!  Didn't you forget to pay?", */
 			      Hello(shkp), plname);
 		}
 	} else if (eshk->billct) {
 		register long total = addupbill(shkp) + eshk->debit;
-		pline("SUBJECT %s says that PRONOMEN_POSSESSIV bill beläuft sich auf %ld %s.", /* EN pline("%s says that your bill comes to %ld %s.", */ // TODO DE
+		pline("SUBJECT %s says that PRONOMEN_POSSESSIV NOUN_RECHNUNG beläuft sich auf %ld %s.", /* EN pline("%s says that your bill comes to %ld %s.", */
 		      shkname(shkp), total, currency(total));
 	} else if (eshk->debit)
 		pline("SUBJECT %s VERB_ERINNERN OBJECT PRONOMEN_PERSONAL daran, dass NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s %ld %s VERB_OWE.", /* EN pline("%s reminds you that you owe %s %ld %s.", */
@@ -3952,14 +3952,14 @@ register long amount;
 	    if(eshkp->credit > amount)
 		Your("credit is reduced by %ld %s.", /* EN Your("credit is reduced by %ld %s.", */ // TODO DE
 					amount, currency(amount));
-	    else Your("credit is erased."); /* EN else Your("credit is erased."); */ // TODO DE
+	    else Your("NOUN_GUTHABEN ist aufgebraucht."); /* EN else Your("credit is erased."); */
 	    eshkp->credit -= amount;
 	} else {
 	    delta = amount - eshkp->credit;
 	    if(eshkp->credit)
-		Your("credit is erased."); /* EN Your("credit is erased."); */ // TODO DE
+		Your("NOUN_GUTHABEN ist aufgebraucht."); /* EN Your("credit is erased."); */
 	    if(eshkp->debit)
-		Your("debt increases by %ld %s.", /* EN Your("debt increases by %ld %s.", */ // TODO DE
+		Your("NOUN_SCHULDs vergrößern sich um %ld %s.", /* EN Your("debt increases by %ld %s.", */
 					delta, currency(delta));
 	    else You("VERB_OWE OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s.", /* EN else You("owe %s %ld %s.", */
 				shkname(shkp), delta, currency(delta));

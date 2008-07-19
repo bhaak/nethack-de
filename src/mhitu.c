@@ -2219,9 +2219,9 @@ register struct monst *mon;
 		    makeknown(RIN_ADORNMENT);
 		    if (yn(qbuf) == 'n') continue;
 		} else {
-		    pline("%s decides you'd look prettier wearing your %s,", /* EN pline("%s decides you'd look prettier wearing your %s,", */ // TODO DE
-			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), xname(ring)); /* EN Blind ? "He" : Monnam(mon), xname(ring)); */
-		    pline("and puts it on your finger."); /* EN pline("and puts it on your finger."); */ // TODO DE
+		    pline("SUBJECT %s meint, NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_WERDEN hübscher OBJECT KASUS_DATIV mit %s %s aussehen,", /* EN pline("%s decides you'd look prettier wearing your %s,", */
+			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), shk_your(buf, ring), xname(ring)); /* EN Blind ? "He" : Monnam(mon), xname(ring)); */
+		    pline("und steckt ihn KASUS_DATIV PRONOMEN_PERSONAL an den Finger."); /* EN pline("and puts it on your finger."); */
 		}
 		makeknown(RIN_ADORNMENT);
 		if (!uright) {
@@ -2255,8 +2255,8 @@ register struct monst *mon;
 								&& !uarmu
 #endif
 									)
-		pline("%s murmurs sweet nothings into your ear.", /* EN pline("%s murmurs sweet nothings into your ear.", */ // TODO DE
-			Blind ? (fem ? "She" : "He") : Monnam(mon)); /* EN Blind ? (fem ? "She" : "He") : Monnam(mon)); */ // TODO DE
+		pline("SUBJECT %s VERB_FLUESTERN süße Nichtigkeiten OBJECT in PRONOMEN_POSSESSIV NOUN_OHR.", /* EN pline("%s murmurs sweet nothings into your ear.", */
+			Blind ? (fem ? "NOUN_PRONOMEN_3P_F_PERSONAL" : "NOUN_PRONOMEN_3P_M_PERSONAL") : Monnam(mon)); /* EN Blind ? (fem ? "She" : "He") : Monnam(mon)); */
 	else
 		pline("SUBJECT %s VERB_FLUESTERN OBJECT in PRONOMEN_POSSESSIV NOUN_OHR, NEUER_SATZ während SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL beim Ausziehen VERB_HELFEN.", /* EN pline("%s murmurs in your ear, while helping you undress.", */
 			Blind ? (fem ? "NOUN_PRONOMEN_3P_F_PERSONAL" : "NOUN_PRONOMEN_3P_M_PERSONAL") : Monnam(mon), Blind ? (fem ? "NOUN_PRONOMEN_3P_F_PERSONAL" : "NOUN_PRONOMEN_3P_M_PERSONAL") : Monnam(mon)); /* EN Blind ? (fem ? "She" : "He") : Monnam(mon)); */
@@ -2274,7 +2274,7 @@ register struct monst *mon;
 #endif
 
 	if (uarm || uarmc) {
-		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_SEIN so ein %s; Wenn doch nur ...", /* EN verbalize("You're such a %s; I wish...", */
+		verbalize("Du bist so ein %s. Würdest du doch nur ...", /* EN verbalize("You're such a %s; I wish...", */
 				flags.female ? "süßes Ding" : "süßer Bengel"); /* EN flags.female ? "sweet lady" : "nice guy"); */
 		if (!tele_restrict(mon)) (void) rloc(mon, FALSE);
 		return 1;
@@ -2422,9 +2422,9 @@ const char *str;
 	if (!obj || !obj->owornmask) return;
 
 	if (rn2(20) < ACURR(A_CHA)) {
-		Sprintf(qbuf,"\"Shall I remove your %s, %s?\"", /* EN Sprintf(qbuf,"\"Shall I remove your %s, %s?\"", */ // TODO DE
+		Sprintf(qbuf,"\"Soll ich dir KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s ausziehen, %s?\"", /* EN Sprintf(qbuf,"\"Shall I remove your %s, %s?\"", */
 			str,
-			(!rn2(2) ? "lover" : !rn2(2) ? "dear" : "sweetheart")); /* EN (!rn2(2) ? "lover" : !rn2(2) ? "dear" : "sweetheart")); */ // TODO DE
+			(!rn2(2) ? "lover" : !rn2(2) ? "Liebes" : "Schatz")); /* EN (!rn2(2) ? "lover" : !rn2(2) ? "dear" : "sweetheart")); */ // TODO DE
 		if (yn(qbuf) == 'n') return;
 	} else {
 		char hairbuf[BUFSZ];
