@@ -374,7 +374,7 @@ mattacku(mtmp)
 			set_apparxy(mtmp);
 			newsym(u.ux,u.uy);
 		    } else {
-			pline("%s is killed by a falling %s (you)!", /* EN pline("%s is killed by a falling %s (you)!", */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV von ARTIKEL_UNBESTIMMTER ADJEKTIV_HERABFALLEND %s (NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_PERSONAL) getötet!", /* EN pline("%s is killed by a falling %s (you)!", */
 					Monnam(mtmp), youmonst.data->mname);
 			killed(mtmp);
 			newsym(u.ux,u.uy);
@@ -390,12 +390,12 @@ mattacku(mtmp)
 			               genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_HELMET")); /* EN s_suffix(mon_nam(mtmp))); */
 		    } else {
 			if (3 + find_mac(mtmp) <= rnd(20)) {
-			    pline("%s is hit by a falling piercer (you)!", /* EN pline("%s is hit by a falling piercer (you)!", */ // TODO DE
+			    pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV von ARTIKEL_UNBESTIMMTER ADJEKTIV_HERABFALLEND NOUN_PIERCER (NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_PERSONAL) getroffen!", /* EN pline("%s is hit by a falling piercer (you)!", */
 								Monnam(mtmp));
 			    if ((mtmp->mhp -= d(3,6)) < 1)
 				killed(mtmp);
 			} else
-			  pline("%s is almost hit by a falling piercer (you)!", /* EN pline("%s is almost hit by a falling piercer (you)!", */ // TODO DE
+			  pline("SUBJECT %s VERB_WERDEN beinahe OBJECT KASUS_DATIV von ARTIKEL_UNBESTIMMTER ADJEKTIV_HERABFALLEND NOUN_PIERCER (NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_PERSONAL) getroffen!", /* EN pline("%s is almost hit by a falling piercer (you)!", */
 								Monnam(mtmp));
 		    }
 		} else {
@@ -1723,8 +1723,8 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		    if (mtmp->data == &mons[PM_FOG_CLOUD]) {
 			You("VERB_SEIN von feuchtem Wasserdampf eingehüllt und %s!", /* EN You("are laden with moisture and %s", */
 			    flaming(youmonst.data) ? "are smoldering out!" : /* EN flaming(youmonst.data) ? "are smoldering out!" : */ // TODO DE
-			    Breathless ? "find it mildly uncomfortable." : /* EN Breathless ? "find it mildly uncomfortable." : */ // TODO DE
-			    amphibious(youmonst.data) ? "feel comforted." : /* EN amphibious(youmonst.data) ? "feel comforted." : */ // TODO DE
+			    Breathless ? "VERB_FINDEN es etwas unangenehm." : /* EN Breathless ? "find it mildly uncomfortable." : */
+			    amphibious(youmonst.data) ? "VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL sauwohl." : /* EN amphibious(youmonst.data) ? "feel comforted." : */
 			    "VERB_KOENNEN kaum atmen!"); /* EN "can barely breathe!"); */
 			/* NB: Amphibious includes Breathless */
 			if (Amphibious && !flaming(youmonst.data)) tmp = 0;

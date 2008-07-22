@@ -2354,7 +2354,7 @@ struct obj *obj;	/* wand or spell */
 		pline("Ein Stein löst sich von KASUS_DATIV ARTIKEL_BESTIMMTER %s und fällt KASUS_AKKUSATIV auf PRONOMEN_POSSESSIV %s.", /* EN pline("A rock is dislodged from the %s and falls on your %s.", */
 		      ceiling(x, y), body_part(HEAD));
 		losehp(rnd((uarmh && is_metallic(uarmh)) ? 2 : 6),
-		       "ADJEKTIV_FALLEND NOUN_GEM_ROCK", KILLED_BY_AN); /* EN "falling rock", KILLED_BY_AN); */
+		       "ADJEKTIV_HERABFALLEND NOUN_GEM_ROCK", KILLED_BY_AN); /* EN "falling rock", KILLED_BY_AN); */
 		if ((otmp = mksobj_at(ROCK, x, y, FALSE, FALSE)) != 0) {
 		    (void)xname(otmp);	/* set dknown, maybe bknown */
 		    stackobj(otmp);

@@ -992,7 +992,7 @@ boolean your_fault;
 		    } else {
 			Strcpy(buf, mnam);
 		    }
-		    pline_The("%s VERB_KRACHEN OBJECT auf PRONOMEN_POSSESSIV %s und zerplatzt in viele kleine Glasscherben.", /* EN pline_The("%s crashes on %s and breaks into shards.", */
+		    pline_The("%s VERB_KRACHEN OBJECT auf %s und zerplatzt in viele kleine Glasscherben.", /* EN pline_The("%s crashes on %s and breaks into shards.", */
 			   botlnam, buf);
 		}
 		if(rn2(5) && mon->mhp > 1)
