@@ -68,6 +68,7 @@ extern struct verb_partizip_struct verben_partizip[];
 extern struct verb_struct verben[];
 extern struct verb_imperativ_struct verben_imperativ[];
 
+extern int ihrzen;
 
 char* german(const char *line);
 void german2meta(const char *str, char *result);

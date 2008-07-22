@@ -1028,6 +1028,9 @@ int main(int argc, char *argv[]) {
 	} else {
 		int i;
 		for (i=0; i<argc; i++) {
+			ihrzen = 0;
+			printf("%s\n",german(argv[i]));
+			ihrzen = 1;
 			printf("%s\n",german(argv[i]));
 		}
 		return EXIT_SUCCESS;

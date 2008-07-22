@@ -69,6 +69,8 @@ enum Artikel c_artikel = 0;
 
 int modifier_corpse = 0;
 
+int ihrzen = 0;
+
 int partikel_of_as_mit = 0;
 int beginning_of_sentence = 0;
 const char* verb_praeverb = "";
@@ -868,7 +870,7 @@ char* german(const char *line) {
 			Role_if(PM_SAMURAI) ||
 			Role_if(PM_WIZARD))
 #else
-	if (0)
+	if (ihrzen)
 #endif
 	{
 		pm_genus   = maskulin; // change to players choice
