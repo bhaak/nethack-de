@@ -950,7 +950,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	}
 	if (Undead_warning) you_are("warned of undead"); /* EN if (Undead_warning) you_are("warned of undead"); */ // TODO DE
 	if (Searching) you_have("automatic searching"); /* EN if (Searching) you_have("automatic searching"); */ // TODO DE
-	if (Clairvoyant) you_are("clairvoyant"); /* EN if (Clairvoyant) you_are("clairvoyant"); */ // TODO DE
+	if (Clairvoyant) you_are("hellsehend"); /* EN if (Clairvoyant) you_are("clairvoyant"); */
 	if (Infravision) you_have("Infravision"); /* EN if (Infravision) you_have("infravision"); */
 	if (Detect_monsters) you_are("sensing the presence of monsters"); /* EN if (Detect_monsters) you_are("sensing the presence of monsters"); */ // TODO DE
 	if (u.umconf) you_are("going to confuse monsters"); /* EN if (u.umconf) you_are("going to confuse monsters"); */ // TODO DE
@@ -986,7 +986,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	else if (Flying) you_can("fliegen"); /* EN else if (Flying) you_can("fly"); */
 	if (Wwalking) you_can("übers Wasser gehen"); /* EN if (Wwalking) you_can("walk on water"); */
 	if (Swimming) you_can("schwimmen");        /* EN if (Swimming) you_can("swim");         */
-	if (Breathless) you_can("ohne Luft auskommen"); /* EN if (Breathless) you_can("survive without air"); */ // TODO DE
+	if (Breathless) you_can("ohne Luft auskommen"); /* EN if (Breathless) you_can("survive without air"); */
 	else if (Amphibious) you_can("Wasser atmen"); /* EN else if (Amphibious) you_can("breathe water"); */
 	if (Passes_walls) you_can("durch Wände gehen"); /* EN if (Passes_walls) you_can("walk through walls"); */
 #ifdef STEED
@@ -999,7 +999,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	}
 #endif
 	if (u.uswallow) {
-	    Sprintf(buf, "swallowed by %s", a_monnam(u.ustuck)); /* EN Sprintf(buf, "swallowed by %s", a_monnam(u.ustuck)); */ // TODO DE
+	    Sprintf(buf, "OBJECT KASUS_DATIV von %s verschluckt", a_monnam(u.ustuck)); /* EN Sprintf(buf, "swallowed by %s", a_monnam(u.ustuck)); */
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%u)", u.uswldtim);
 #endif
@@ -1051,7 +1051,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Fast) you_are(Very_fast ? "sehr schnell" : "schnell"); /* EN if (Fast) you_are(Very_fast ? "very fast" : "fast"); */
 	if (Reflecting) you_have("reflection"); /* EN if (Reflecting) you_have("reflection"); */ // TODO DE
 	if (Free_action) you_have("free action"); /* EN if (Free_action) you_have("free action"); */ // TODO DE
-	if (Fixed_abil) you_have("fixed abilities"); /* EN if (Fixed_abil) you_have("fixed abilities"); */ // TODO DE
+	if (Fixed_abil) you_have("unveränderliche Fertigkeiten"); /* EN if (Fixed_abil) you_have("fixed abilities"); */
 	if (Lifesaved)
 		enl_msg("PRONOMEN_POSSESSIV NOUN_LEBEN ", "wird gerettet werden", "wäre gerettet worden", ""); /* EN enl_msg("Your life ", "will be", "would have been", " saved"); */
 	if (u.twoweap) you_are("wielding two weapons at once"); /* EN if (u.twoweap) you_are("wielding two weapons at once"); */ // TODO DE
@@ -1086,7 +1086,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", u.ugangr);
 #endif
-	    enl_msg(u_gname(), " is", " was", buf); /* EN enl_msg(u_gname(), " is", " was", buf); */ // TODO DE
+	    enl_msg(u_gname(), " ist", " war", buf); /* EN enl_msg(u_gname(), " is", " was", buf); */
 	} else
 	    /*
 	     * We need to suppress this when the game is over, because death
@@ -1099,7 +1099,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	    Sprintf(buf, "%s%ssafely pray%s", can_pray(FALSE) ? "" : "not ",
 		    final ? "have " : "", final ? "ed" : "");
 #else
-	    Sprintf(buf, "%ssafely pray", can_pray(FALSE) ? "" : "not "); /* EN Sprintf(buf, "%ssafely pray", can_pray(FALSE) ? "" : "not "); */ // TODO DE
+	    Sprintf(buf, "%srisikolos beten", can_pray(FALSE) ? "" : "nicht "); /* EN Sprintf(buf, "%ssafely pray", can_pray(FALSE) ? "" : "not "); */
 #endif
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", u.ublesscnt);
@@ -1172,7 +1172,13 @@ minimal_enlightenment()
 	Strcpy(alignment_str, german("NOUN_ALIGNMENT"));
 #endif
 
+#ifndef GERMAN
 	static const char untabbed_fmtstr[] = "%-15s: %-12s";
+#else
+	static char *untabbed_fmtstr;
+	if (Upolyd) { untabbed_fmtstr = "%-20s: %-12s"; }
+	else { untabbed_fmtstr = "%-15s: %-12s"; }
+#endif
 	static const char untabbed_deity_fmtstr[] = "%-17s%s";
 	static const char tabbed_fmtstr[] = "%s:\t%-12s";
 	static const char tabbed_deity_fmtstr[] = "%s\t%s";
@@ -1209,7 +1215,7 @@ minimal_enlightenment()
 	Sprintf(buf, fmtstr, race_str, Upolyd ? german(youmonst.data->mname) : german(urace.noun)); /* EN Sprintf(buf, fmtstr, "race", Upolyd ? youmonst.data->mname : urace.noun); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	if (Upolyd) {
-	    Sprintf(buf, fmtstr, "NOUN_ROLE (base)", /* EN Sprintf(buf, fmtstr, "role (base)", */ // TODO DE
+	    Sprintf(buf, fmtstr, german("NOUN_ROLE (genuin)"), /* EN Sprintf(buf, fmtstr, "role (base)", */
 		(u.mfemale && urole.name.f) ? urole.name.f : urole.name.m);
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	} else {
@@ -1222,7 +1228,7 @@ minimal_enlightenment()
 	Sprintf(buf, fmtstr, gender_str, german(genders[genidx].adj)); /* EN Sprintf(buf, fmtstr, "gender", genders[genidx].adj); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	if (Upolyd && (int)u.mfemale != genidx) {
-	    Sprintf(buf, fmtstr, "NOUN_GENDER (base)", german(genders[u.mfemale].adj)); /* EN Sprintf(buf, fmtstr, "gender (base)", genders[u.mfemale].adj); */
+	    Sprintf(buf, fmtstr, "Geschlecht (genuin)", german(genders[u.mfemale].adj)); /* EN Sprintf(buf, fmtstr, "gender (base)", genders[u.mfemale].adj); */
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
 	}
 
@@ -1322,8 +1328,8 @@ int final;
 	    you_are("ein Analphabet"); /* EN you_have_been("illiterate"); */
 #ifdef WIZARD
 	else if (wizard) {
-	    Sprintf(buf, "read items or engraved %ld time%s", /* EN Sprintf(buf, "read items or engraved %ld time%s", */ // TODO DE
-		    u.uconduct.literate, plur(u.uconduct.literate));
+	    Sprintf(buf, "%ld-mal etwas gelesen oder eingeritzt", /* EN Sprintf(buf, "read items or engraved %ld time%s", */
+		    u.uconduct.literate); /* EN u.uconduct.literate, plur(u.uconduct.literate)); */
 	    you_have_X(buf);
 	}
 #endif
@@ -2213,7 +2219,7 @@ const char *msg;
 	putstr(win, 0, "");
 	putstr(win, 0, "          <  rauf"); /* EN putstr(win, 0, "          <  up"); */
 	putstr(win, 0, "          >  runter"); /* EN putstr(win, 0, "          >  down"); */
-	putstr(win, 0, "          .  direct at yourself"); /* EN putstr(win, 0, "          .  direct at yourself"); */ // TODO DE
+	putstr(win, 0, "          .  auf KASUS_AKKUSATIV PRONOMEN_PERSONAL selbst richten"); /* EN putstr(win, 0, "          .  direct at yourself"); */
 	putstr(win, 0, "");
 	putstr(win, 0, "(Diese Information kann mit !cmdassist in der Konfigdatei unterdrückt werden.)"); /* EN putstr(win, 0, "(Suppress this message with !cmdassist in config file.)"); */
 	display_nhwindow(win, FALSE);

@@ -1172,7 +1172,7 @@ dopay()
 		     return(0);
 		}
 		if(u.ux == cx && u.uy == cy) {
-		     You("are generous to yourself."); /* EN You("are generous to yourself."); */ // TODO DE
+		     You("VERB_SEIN großzügig OBJECT KASUS_DATIV mit PRONOMEN_PERSONAL selbst."); /* EN You("are generous to yourself."); */
 		     return(0);
 		}
 		mtmp = m_at(cx, cy);
@@ -2184,7 +2184,7 @@ const char *arg;
 	obj_name = doname(obj);
 	/* Use an alternate message when extra information is being provided */
 	if (was_unknown) {
-	    Sprintf(fmtbuf, "%%s; you %s", fmt); /* EN Sprintf(fmtbuf, "%%s; you %s", fmt); */ // TODO DE
+	    Sprintf(fmtbuf, "SATZBEGINN %%s und SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s", fmt); /* EN Sprintf(fmtbuf, "%%s; you %s", fmt); */ // TODO DE
 	    obj_name[0] = highc(obj_name[0]);
 	    pline(fmtbuf, obj_name, (obj->quan > 1) ? "them" : "it", /* EN pline(fmtbuf, obj_name, (obj->quan > 1) ? "them" : "it", */ // TODO DE
 		  amt, plur(amt), arg);
@@ -2640,8 +2640,8 @@ xchar x, y;
 			eshkp->loan = 0L;
 			Your("NOUN_SCHULDs VERB_SEIN abbezahlt."); /* EN Your("debt is paid off."); */
 		    }
-		    pline("SATZBEGINN %ld %s are added to your credit.", /* EN pline("%ld %s %s added to your credit.", */ // TODO DE
-				delta, currency(delta)); /* EN delta, currency(delta), delta > 1L ? "are" : "is"); */
+		    pline("SATZBEGINN %ld %s %s KASUS_DATIV PRONOMEN_POSSESSIV NOUN_GUTHABEN hinzugeügt.", /* EN pline("%ld %s %s added to your credit.", */
+				delta, currency(delta), delta > 1L ? "werden" : "wird"); /* EN delta, currency(delta), delta > 1L ? "are" : "is"); */
 		}
 		if(offer) goto move_on;
 		else {
@@ -3037,21 +3037,21 @@ register boolean croaked;
 	if (!did_repair)
 	    return;
 	if (saw_walls) {
-	    pline("Suddenly, %s section%s of wall close%s up!", /* EN pline("Suddenly, %s section%s of wall close%s up!", */ // TODO DE
-		  (saw_walls == 1) ? "a" : (saw_walls <= 3) ?  /* EN (saw_walls == 1) ? "a" : (saw_walls <= 3) ? */ // TODO DE
-						  "some" : "several", /* EN "some" : "several", */ // TODO DE
-		  (saw_walls == 1) ? "" : "s", (saw_walls == 1) ? "s" : ""); /* EN (saw_walls == 1) ? "" : "s", (saw_walls == 1) ? "s" : ""); */ // TODO DE
+	    pline("Urplötzlich, verschließ%s sich %s Teil%s der Mauer!", /* EN pline("Suddenly, %s section%s of wall close%s up!", */
+		  (saw_walls == 1) ? "t" : "en", (saw_walls == 1) ? "ein" : (saw_walls <= 3) ?  /* EN (saw_walls == 1) ? "a" : (saw_walls <= 3) ? */ // TODO DE
+						  "ein paar" : "mehrere", /* EN "some" : "several", */
+		  (saw_walls == 1) ? "" : "e"); /* EN (saw_walls == 1) ? "" : "s", (saw_walls == 1) ? "s" : ""); */
 	    if (saw_door)
-		pline_The("shop door reappears!"); /* EN pline_The("shop door reappears!"); */ // TODO DE
+		pline("Die Ladentüre erscheint wieder!"); /* EN pline_The("shop door reappears!"); */
 	    if (saw_floor)
-		pline_The("floor is repaired!"); /* EN pline_The("floor is repaired!"); */ // TODO DE
+		pline("Der Boden repariert sich!"); /* EN pline_The("floor is repaired!"); */
 	} else {
 	    if (saw_door)
-		pline("Suddenly, the shop door reappears!"); /* EN pline("Suddenly, the shop door reappears!"); */ // TODO DE
+		pline("Urplötzlich erscheint die Ladentüre wieder!"); /* EN pline("Suddenly, the shop door reappears!"); */
 	    else if (saw_floor)
-		pline("Suddenly, the floor damage is gone!"); /* EN pline("Suddenly, the floor damage is gone!"); */ // TODO DE
+		pline("Urplötzlich ist der Schaden im Boden verschwunden!"); /* EN pline("Suddenly, the floor damage is gone!"); */
 	    else if (saw_untrap)
-	        pline("Suddenly, the trap is removed from the floor!"); /* EN pline("Suddenly, the trap is removed from the floor!"); */ // TODO DE
+	        pline("Urplötzlich ist die Falle im Boden verschwunden!"); /* EN pline("Suddenly, the trap is removed from the floor!"); */
 	    else if (inside_shop(u.ux, u.uy) == ESHK(shkp)->shoproom)
 		Du_fuehlst_dich("klaustrophobischer als vorher."); /* EN You_feel("more claustrophobic than before."); */
 	    else if (flags.soundok && !rn2(10))

@@ -40,18 +40,18 @@ STATIC_DCL struct Jitem Japanese_items[];
 #else /* OVLB */
 
 STATIC_OVL struct Jitem Japanese_items[] = {
-	{ SHORT_SWORD, "wakizashi" }, /* EN { SHORT_SWORD, "wakizashi" }, */ // TODO DE
-	{ BROADSWORD, "ninja-to" }, /* EN { BROADSWORD, "ninja-to" }, */ // TODO DE
-	{ FLAIL, "nunchaku" }, /* EN { FLAIL, "nunchaku" }, */ // TODO DE
-	{ GLAIVE, "naginata" }, /* EN { GLAIVE, "naginata" }, */ // TODO DE
-	{ LOCK_PICK, "osaku" }, /* EN { LOCK_PICK, "osaku" }, */ // TODO DE
-	{ WOODEN_HARP, "koto" }, /* EN { WOODEN_HARP, "koto" }, */ // TODO DE
-	{ KNIFE, "shito" }, /* EN { KNIFE, "shito" }, */ // TODO DE
-	{ PLATE_MAIL, "tanko" }, /* EN { PLATE_MAIL, "tanko" }, */ // TODO DE
-	{ HELMET, "kabuto" }, /* EN { HELMET, "kabuto" }, */ // TODO DE
-	{ LEATHER_GLOVES, "yugake" }, /* EN { LEATHER_GLOVES, "yugake" }, */ // TODO DE
-	{ FOOD_RATION, "gunyoki" }, /* EN { FOOD_RATION, "gunyoki" }, */ // TODO DE
-	{ POT_BOOZE, "sake" }, /* EN { POT_BOOZE, "sake" }, */ // TODO DE
+	{ SHORT_SWORD, "NOUN_JAP_WAKIZASHI" }, /* EN { SHORT_SWORD, "wakizashi" }, */
+	{ BROADSWORD, "NOUN_JAP_NINJA-to" }, /* EN { BROADSWORD, "ninja-to" }, */
+	{ FLAIL, "NOUN_JAP_NUNCHAKU" }, /* EN { FLAIL, "nunchaku" }, */
+	{ GLAIVE, "NOUN_JAP_NAGINATA" }, /* EN { GLAIVE, "naginata" }, */
+	{ LOCK_PICK, "NOUN_JAP_OSAKU" }, /* EN { LOCK_PICK, "osaku" }, */
+	{ WOODEN_HARP, "NOUN_JAP_KOTO" }, /* EN { WOODEN_HARP, "koto" }, */
+	{ KNIFE, "NOUN_JAP_SHITO" }, /* EN { KNIFE, "shito" }, */
+	{ PLATE_MAIL, "NOUN_JAP_TANKO" }, /* EN { PLATE_MAIL, "tanko" }, */
+	{ HELMET, "NOUN_JAP_KABUTO" }, /* EN { HELMET, "kabuto" }, */
+	{ LEATHER_GLOVES, "NOUN_JAP_YUGAKE" }, /* EN { LEATHER_GLOVES, "yugake" }, */
+	{ FOOD_RATION, "NOUN_JAP_GUNYOKI" }, /* EN { FOOD_RATION, "gunyoki" }, */
+	{ POT_BOOZE, "NOUN_JAP_SAKE" }, /* EN { POT_BOOZE, "sake" }, */
 	{0, "" }
 };
 

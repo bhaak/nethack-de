@@ -230,7 +230,7 @@ static struct Comp_Opt
 						PL_PSIZ, DISP_IN_GAME },
 	{ "dungeon",  "the symbols to use in drawing the dungeon map", /* EN { "dungeon",  "the symbols to use in drawing the dungeon map", */ // TODO DE
 						MAXDCHARS+1, SET_IN_FILE },
-	{ "effects",  "the symbols to use in drawing special effects", /* EN { "effects",  "the symbols to use in drawing special effects", */ // TODO DE
+	{ "effects",  "die zu benutzenden Symbole beim Zeichnen von Spezialeffekten", /* EN { "effects",  "the symbols to use in drawing special effects", */
 						MAXECHARS+1, SET_IN_FILE },
 	{ "font_map", "die Schrift, die im Kartenfenster verwendet wird", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_map", "the font to use in the map window", 40, DISP_IN_GAME },	*/
 	{ "font_menu", "die Schrift, die in Menüs verwendet wird", 40, DISP_IN_GAME },		/*WC*/ /* EN { "font_menu", "the font to use in menus", 40, DISP_IN_GAME },		*/
@@ -238,11 +238,11 @@ static struct Comp_Opt
 						40, DISP_IN_GAME },		/*WC*/
 	{ "font_size_map", "die Grösse der Kartenschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_map", "the size of the map font", 20, DISP_IN_GAME },	 */
 	{ "font_size_menu", "die Grösse der Menüschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_menu", "the size of the menu font", 20, DISP_IN_GAME },	*/
-	{ "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	*/ // TODO DE
-	{ "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	*/ // TODO DE
-	{ "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	*/ // TODO DE
-	{ "font_status", "the font to use in status window", 40, DISP_IN_GAME }, /*WC*/ /* EN { "font_status", "the font to use in status window", 40, DISP_IN_GAME }, */ // TODO DE
-	{ "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	*/ // TODO DE
+	{ "font_size_message", "die Grösse der Nachrichtenschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	*/
+	{ "font_size_status", "die Grösse der Statusschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	*/
+	{ "font_size_text", "die Grösse der Textschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	*/
+	{ "font_status", "die Schrift für Statusfenster", 40, DISP_IN_GAME }, /*WC*/ /* EN { "font_status", "the font to use in status window", 40, DISP_IN_GAME }, */
+	{ "font_text", "die Schrift für Textfenster", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	*/
 	{ "fruit",    "the name of a fruit you enjoy eating", /* EN { "fruit",    "the name of a fruit you enjoy eating", */ // TODO DE
 						PL_FSIZ, SET_IN_GAME },
 	{ "gender",   "your starting gender (male or female)", /* EN { "gender",   "your starting gender (male or female)", */ // TODO DE
@@ -277,9 +277,9 @@ static struct Comp_Opt
 # else
 	{"msg_window", "the type of message window required", 1, SET_IN_FILE}, /* EN {"msg_window", "the type of message window required", 1, SET_IN_FILE}, */ // TODO DE
 # endif
-	{ "name",     "your character's name (e.g., name:Merlin-W)", /* EN { "name",     "your character's name (e.g., name:Merlin-W)", */ // TODO DE
+	{ "name",     "der Name KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_CHARAKTER (z.B., name:Merlin-W)", /* EN { "name",     "your character's name (e.g., name:Merlin-W)", */
 						PL_NSIZ, DISP_IN_GAME },
-	{ "number_pad", "use the number pad", 1, SET_IN_GAME}, /* EN { "number_pad", "use the number pad", 1, SET_IN_GAME}, */ // TODO DE
+	{ "number_pad", "Ziffernblock benutzen", 1, SET_IN_GAME}, /* EN { "number_pad", "use the number pad", 1, SET_IN_GAME}, */
 	{ "objects",  "the symbols to use for objects", /* EN { "objects",  "the symbols to use for objects", */ // TODO DE
 						MAXOCLASSES, SET_IN_FILE },
 	{ "packorder", "the inventory order of the items in your pack", /* EN { "packorder", "the inventory order of the items in your pack", */ // TODO DE
@@ -292,14 +292,14 @@ static struct Comp_Opt
 						15, SET_IN_FILE },
 # endif
 #endif
-	{ "pettype",  "your preferred initial pet type", 4, DISP_IN_GAME }, /* EN { "pettype",  "your preferred initial pet type", 4, DISP_IN_GAME }, */ // TODO DE
+	{ "pettype",  "PRONOMEN_POSSESSIV ADJEKTIV_BEVORZUGT, ADJEKTIV_ANFAENGLICH pet type", 4, DISP_IN_GAME }, /* EN { "pettype",  "your preferred initial pet type", 4, DISP_IN_GAME }, */ // TODO DE
 	{ "pickup_burden",  "maximum burden picked up before prompt", /* EN { "pickup_burden",  "maximum burden picked up before prompt", */ // TODO DE
 						20, SET_IN_GAME },
 	{ "pickup_types", "types of objects to pick up automatically", /* EN { "pickup_types", "types of objects to pick up automatically", */ // TODO DE
 						MAXOCLASSES, SET_IN_GAME },
 	{ "player_selection", "choose character via dialog or prompts", /* EN { "player_selection", "choose character via dialog or prompts", */ // TODO DE
 						12, DISP_IN_GAME },
-	{ "race",     "your starting race (e.g., Human, Elf)", /* EN { "race",     "your starting race (e.g., Human, Elf)", */ // TODO DE
+	{ "race",     "PRONOMEN_POSSESSIV NOUN_RACE zu Beginn (z.B., Human, Elf)", /* EN { "race",     "your starting race (e.g., Human, Elf)", */
 						PL_CSIZ, DISP_IN_GAME },
 	{ "role",     "your starting role (e.g., Barbarian, Valkyrie)", /* EN { "role",     "your starting role (e.g., Barbarian, Valkyrie)", */ // TODO DE
 						PL_CSIZ, DISP_IN_GAME },
@@ -315,9 +315,9 @@ static struct Comp_Opt
 #endif
 	{ "suppress_alert", "suppress alerts about version-specific features", /* EN { "suppress_alert", "suppress alerts about version-specific features", */ // TODO DE
 						8, SET_IN_GAME },
-	{ "tile_width", "width of tiles", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_width", "width of tiles", 20, DISP_IN_GAME},	*/ // TODO DE
-	{ "tile_height", "height of tiles", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_height", "height of tiles", 20, DISP_IN_GAME},	*/ // TODO DE
-	{ "tile_file", "name of tile file", 70, DISP_IN_GAME},	/*WC*/ /* EN { "tile_file", "name of tile file", 70, DISP_IN_GAME},	*/ // TODO DE
+	{ "tile_width", "Kachelbreite", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_width", "width of tiles", 20, DISP_IN_GAME},	*/
+	{ "tile_height", "Kachelgröße", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_height", "height of tiles", 20, DISP_IN_GAME},	*/
+	{ "tile_file", "Name der Kacheldatei", 70, DISP_IN_GAME},	/*WC*/ /* EN { "tile_file", "name of tile file", 70, DISP_IN_GAME},	*/
 	{ "traps",    "the symbols to use in drawing traps", /* EN { "traps",    "the symbols to use in drawing traps", */ // TODO DE
 						MAXTCHARS+1, SET_IN_FILE },
 	{ "vary_msgcount", "show more old messages at a time", 20, DISP_IN_GAME }, /*WC*/ /* EN { "vary_msgcount", "show more old messages at a time", 20, DISP_IN_GAME }, */ // TODO DE
@@ -333,7 +333,7 @@ static struct Comp_Opt
 #ifdef WIN32CON
 	{"subkeyvalue", "override keystroke value", 7, SET_IN_FILE}, /* EN {"subkeyvalue", "override keystroke value", 7, SET_IN_FILE}, */ // TODO DE
 #endif
-	{ "windowcolors",  "the foreground/background colors of windows",	/*WC*/ /* EN { "windowcolors",  "the foreground/background colors of windows",	*/ // TODO DE
+	{ "windowcolors",  "die Vordergrund-/Hintergrundfarben der Fenster",	/*WC*/ /* EN { "windowcolors",  "the foreground/background colors of windows",	*/
 						80, DISP_IN_GAME },
 	{ "windowtype", "windowing system to use", WINTYPELEN, DISP_IN_GAME }, /* EN { "windowtype", "windowing system to use", WINTYPELEN, DISP_IN_GAME }, */ // TODO DE
 	{ (char *)0, (char *)0, 0, 0 }
