@@ -78,6 +78,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"seiner", "NOUN_PRONOMEN_3P_N_PERSONAL", "", genitiv, feminin|maskulin|neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"ihm", "NOUN_PRONOMEN_3P_N_PERSONAL", "", dativ, feminin|maskulin|neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"es", "NOUN_PRONOMEN_3P_N_PERSONAL", "", akkusativ, feminin|maskulin|neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"sie", "NOUN_PRONOMEN_3P_MFN_PERSONALs", "", nominativ, feminin|maskulin|neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"ihrer", "NOUN_PRONOMEN_3P_MFN_PERSONALs", "", genitiv, feminin|maskulin|neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"ihnen", "NOUN_PRONOMEN_3P_MFN_PERSONALs", "", dativ, feminin|maskulin|neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"sie", "NOUN_PRONOMEN_3P_MFN_PERSONALs", "", akkusativ, feminin|maskulin|neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"kein", "PRONOMEN_KEIN", "", nominativ, maskulin|neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"keines", "PRONOMEN_KEIN", "", genitiv, maskulin|neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},

@@ -77,5 +77,6 @@ char* genitivattribut_zu_wort(const char *attribut, const char *wort);
 
 int gott_weiblich(const char *name);
 
+char* pronominalisierung(const char *token);
 
 #endif /* !_GERMAN_H */

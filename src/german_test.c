@@ -961,6 +961,48 @@ START_TEST (test_wortzusammensetzungen) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+
+
+void check_pronomen(const char* substantiv, const char* pronomen) {
+
+	fail_unless((strcmp(pronomen, pronominalisierung(substantiv))==0),
+		"\nPronominalisierung fehlgeschlagen:\nSubstantiv: >%s<\nPronomen: >%s<\nerwartet: >%s<\n",
+		substantiv, pronominalisierung(substantiv), pronomen);
+}
+
+START_TEST (test_pronominalisierung) {
+	check_pronomen("NOUN_RING",    "NOUN_PRONOMEN_3P_M_PERSONAL");
+	check_pronomen("NOUN_FLASCHE", "NOUN_PRONOMEN_3P_F_PERSONAL");
+	check_pronomen("NOUN_T_SHIRT", "NOUN_PRONOMEN_3P_N_PERSONAL");
+
+	check_pronomen("NOUN_RINGs",    "NOUN_PRONOMEN_3P_MFN_PERSONALs");
+	check_pronomen("NOUN_FLASCHEs", "NOUN_PRONOMEN_3P_MFN_PERSONALs");
+	check_pronomen("NOUN_T_SHIRTs", "NOUN_PRONOMEN_3P_MFN_PERSONALs");
+} END_TEST
+
+START_TEST (test_pronomen) {
+	char *text[][2] = {
+		{"SUBJECT NOUN_PRONOMEN_3P_M_PERSONAL VERB_HIT OBJECT NOUN_PRONOMEN_3P_M_PERSONAL!",
+		 "Er trifft ihn!"},
+		{"SUBJECT NOUN_PRONOMEN_3P_F_PERSONAL VERB_HIT OBJECT NOUN_PRONOMEN_3P_M_PERSONAL!",
+		 "Sie trifft ihn!"},
+		{"SUBJECT NOUN_PRONOMEN_3P_N_PERSONAL VERB_HIT OBJECT NOUN_PRONOMEN_3P_M_PERSONAL!",
+		 "Es trifft ihn!"},
+		{"SUBJECT NOUN_PRONOMEN_3P_F_PERSONAL VERB_HIT OBJECT NOUN_PRONOMEN_3P_N_PERSONAL!",
+		 "Sie trifft es!"},
+
+		{"SUBJECT NOUN_PRONOMEN_3P_MFN_PERSONALs VERB_HIT OBJECT NOUN_PRONOMEN_3P_M_PERSONAL!",
+		 "Sie treffen ihn!"},
+		{"SUBJECT NOUN_PRONOMEN_3P_MFN_PERSONALs VERB_HIT OBJECT NOUN_PRONOMEN_3P_F_PERSONAL!",
+		 "Sie treffen sie!"},
+		{"SUBJECT NOUN_PRONOMEN_3P_MFN_PERSONALs VERB_HIT OBJECT NOUN_PRONOMEN_3P_N_PERSONAL!",
+		 "Sie treffen es!"},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
+
 //#endif
 
 Suite *test_suite(void)
@@ -1011,6 +1053,9 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_modifier_verb_imperativ);
 	}
 	tcase_add_test(tc_core, test_wortzusammensetzungen);
+
+	tcase_add_test(tc_core, test_pronominalisierung);
+	tcase_add_test(tc_core, test_pronomen);
 
 	return s;
 }

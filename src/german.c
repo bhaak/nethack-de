@@ -1343,6 +1343,36 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 	return buf;
 }
 
+/* Liefert das passende Pronomen zu dem Substantiv token zurück. */
+char*
+pronominalisierung(token)
+const char *token;
+{
+	int i=0;
+	enum Genus geschlecht = maskulin;
+
+	if (token_is_plural(token)) {
+		return "NOUN_PRONOMEN_3P_MFN_PERSONALs";
+	}
+
+	while (worte[i].wort!=NULL) {
+		if (strcmp(worte[i].typ, token)==0) {
+			geschlecht = worte[i].genus;
+		}
+		i++;
+	}
+
+	switch (geschlecht) {
+	case maskulin: return "NOUN_PRONOMEN_3P_M_PERSONAL";
+	case feminin:  return "NOUN_PRONOMEN_3P_F_PERSONAL";
+	case neutrum:  return "NOUN_PRONOMEN_3P_N_PERSONAL";
+	default: return "NOUN_PRONOMEN_3P_M_PERSONAL";
+	}
+
+
+	
+}
+
 #ifndef NO_HACK_H_INCLUDE
 /* Liefert TRUE zurueck, wenn der Gott namens name weiblich ist. */
 int
