@@ -687,8 +687,8 @@ register struct permonst *ptr;
 		debugpline("Trying to give fire resistance");
 #endif
 		if(!(HFire_resistance & FROMOUTSIDE)) {
-			You(Hallucination ? "be chillin'." : /* EN You(Hallucination ? "be chillin'." : */ // TODO DE
-			    "feel a momentary chill."); /* EN "feel a momentary chill."); */ // TODO DE
+			You(Hallucination ? "VERB_CHILLEN voll gut ab." : /* EN You(Hallucination ? "be chillin'." : */
+			    "VERB_SPUEREN ein kurzes Frösteln."); /* EN "feel a momentary chill."); */
 			HFire_resistance |= FROMOUTSIDE;
 		}
 		break;
@@ -1264,10 +1264,10 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 
 	if (mnum != PM_ACID_BLOB && !stoneable && rotted > 5L) {
 		boolean cannibal = maybe_cannibal(mnum, FALSE);
-		pline("Ulch - that %s was tainted%s!", /* EN pline("Ulch - that %s was tainted%s!", */ // TODO DE
+		pline("Örks - PRONOMEN_DIESER %s war verdorben%s!", /* EN pline("Ulch - that %s was tainted%s!", */
 		      mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : /* EN mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : */ // TODO DE
 		      !vegetarian(&mons[mnum]) ? "NOUN_FLEISCH" : "NOUN_PROTOPLASMA", /* EN !vegetarian(&mons[mnum]) ? "meat" : "protoplasm", */
-		      cannibal ? " cannibal" : ""); /* EN cannibal ? " cannibal" : ""); */ // TODO DE
+		      cannibal ? ", Kannibale" : ""); /* EN cannibal ? " cannibal" : ""); */
 		if (Sick_resistance) {
 			pline("It doesn't seem at all sickening, though..."); /* EN pline("It doesn't seem at all sickening, though..."); */ // TODO DE
 		} else {
@@ -1760,8 +1760,8 @@ struct obj *otmp;
 	    mnum = otmp->corpsenm;
 	long rotted = 0L;
 
-	Strcpy(foodsmell, Tobjnam(otmp, "VERB_SMELL")); /* EN Strcpy(foodsmell, Tobjnam(otmp, "smell")); */ // TODO DE
-	Strcpy(it_or_they, (otmp->quan == 1L) ? "it" : "they"); /* EN Strcpy(it_or_they, (otmp->quan == 1L) ? "it" : "they"); */ // TODO DE
+	Strcpy(foodsmell, Tobjnam(otmp, "VERB_SMELL")); /* EN Strcpy(foodsmell, Tobjnam(otmp, "smell")); */
+	Strcpy(it_or_they, pronominalisierung(xname(otmp))); /* EN Strcpy(it_or_they, (otmp->quan == 1L) ? "it" : "they"); */
 	Sprintf(eat_it_anyway, "Trotzdem %sessen?", /* EN Sprintf(eat_it_anyway, "Eat %s anyway?", */
 		(otmp->quan == 1L) ? "" : "eines"); /* EN (otmp->quan == 1L) ? "it" : "one"); */
 
@@ -1792,7 +1792,7 @@ struct obj *otmp;
 
 	if (cadaver && mnum != PM_ACID_BLOB && rotted > 5L && !Sick_resistance) {
 		/* Tainted meat */
-		Sprintf(buf, "%s like %s could be tainted! %s", /* EN Sprintf(buf, "%s like %s could be tainted! %s", */ // TODO DE
+		Sprintf(buf, "%s NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_KOENNEN %s verdorben sein! %s", /* EN Sprintf(buf, "%s like %s could be tainted! %s", */
 			foodsmell, it_or_they, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
@@ -1863,7 +1863,7 @@ struct obj *otmp;
 
 	if (cadaver && mnum != PM_ACID_BLOB && rotted > 5L && Sick_resistance) {
 		/* Tainted meat with Sick_resistance */
-		Sprintf(buf, "%s like %s could be tainted! %s", /* EN Sprintf(buf, "%s like %s could be tainted! %s", */ // TODO DE
+		Sprintf(buf, "%s NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_KOENNEN %s verdorben sein! %s", /* EN Sprintf(buf, "%s like %s could be tainted! %s", */
 			foodsmell, it_or_they, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;

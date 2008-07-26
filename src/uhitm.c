@@ -225,7 +225,7 @@ struct monst *mtmp;
 	    (!mtmp->mcanmove || mtmp->msleeping ||
 	     (mtmp->mflee && !mtmp->mavenge)) &&
 	    u.ualign.record > -10) {
-	    You("caitiff!"); /* EN You("caitiff!"); */ // TODO DE
+	    You("Schuft!"); /* EN You("caitiff!"); */
 	    adjalign(-1);
 	}
 }
@@ -270,7 +270,7 @@ register struct monst *mtmp;
 	    tmp++;
 	if(Role_if(PM_MONK) && !Upolyd) {
 	    if (uarm) {
-		Your("armor is rather cumbersome..."); /* EN Your("armor is rather cumbersome..."); */ // TODO DE
+		Your("NOUN_ARMOR ist ziemlich sperrig ..."); /* EN Your("armor is rather cumbersome..."); */
 		tmp -= urole.spelarmr;
 	    } else if (!uwep && !uarms) {
 		tmp += (u.ulevel / 3) + 2;
