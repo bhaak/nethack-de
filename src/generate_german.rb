@@ -5,7 +5,7 @@ require 'german_verb'
 # use the genitive-e ("des Zauberbuches" vs. "des Zauberbuchs"
 $genitiv_e = true;
 # use the dativ-e ("dem Zauberbuche" vs. "dem Zauberbuch"
-$dativ_e = true;
+$dativ_e = false;
 
 $nom = "nominativ";
 $gen = "genitiv";
