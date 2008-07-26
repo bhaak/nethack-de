@@ -328,7 +328,7 @@ struct obj *obj;
 	register struct monst *mtmp, *nextmon;
 
 	if(obj->cursed && !rn2(2)) {
-		You("produce a high-pitched humming noise."); /* EN You("produce a high-pitched humming noise."); */ // TODO DE
+		You("VERB_ERZEUGEN ein hochfrequentes Pfeifgeräusch."); /* EN You("produce a high-pitched humming noise."); */
 		wake_nearby();
 	} else {
 		int pet_cnt = 0;
@@ -661,7 +661,7 @@ struct obj *obj;
 	}
 	if(Underwater) {
 		You(Hallucination ?
-		    "give the fish a chance to fix their makeup." : /* EN "give the fish a chance to fix their makeup." : */ // TODO DE
+		    "VERB_GEBEN den Fischen die Gelegenheit ihr Make-up zu richten." : /* EN "give the fish a chance to fix their makeup." : */
 		    "VERB_REFLEKTIEREN über das trübe Wasser."); /* EN "reflect the murky water."); */
 		return 1;
 	}
@@ -883,20 +883,20 @@ register struct obj *obj;
 	}
 	if(u.uswallow || obj->cursed) {
 		if (!Blind)
-		    pline_The("%s %s einen Moment lang, then %s.", /* EN pline_The("%s %s for a moment, then %s.", */ // TODO DE
-			      s, vtense(s, "VERB_FLACKERN"), vtense(s, "die")); /* EN s, vtense(s, "flicker"), vtense(s, "die")); */ // TODO DE
+		    pline_The("%s %s einen Moment lang, NEUER_SATZ SUBJECT_IM_SATZ dann %s %s.", /* EN pline_The("%s %s for a moment, then %s.", */
+			      s, "VERB_FLACKERN", "VERB_ERLOESCHEN", pronominalisierung(s)); /* EN s, vtense(s, "flicker"), vtense(s, "die")); */
 		return;
 	}
 	if(obj->spe < 7) {
 		pline("Es %s nur OBJECT %d %s NEUES_OBJECT OBJECT KASUS_DATIV an %s.", /* EN There("%s only %d %s in %s.", */
 		      vtense(s, "VERB_STECKEN"), obj->spe, s, the(xname(obj))); /* EN vtense(s, "are"), obj->spe, s, the(xname(obj))); */
 		if (!Blind)
-		    pline("%s lit.  %s dimly.", /* EN pline("%s lit.  %s dimly.", */ // TODO DE
-			  obj->spe == 1 ? "It is" : "They are", /* EN obj->spe == 1 ? "It is" : "They are", */ // TODO DE
-			  Tobjnam(obj, "shine")); /* EN Tobjnam(obj, "shine")); */ // TODO DE
+		    pline("SUBJECT %s VERB_SEIN entzündet.  NEUER_SATZ SUBJECT %s trübe.", /* EN pline("%s lit.  %s dimly.", */
+			  pronominalisierung(s), /* EN obj->spe == 1 ? "It is" : "They are", */
+			  Tobjnam(obj, "VERB_LEUCHTEN")); /* EN Tobjnam(obj, "shine")); */
 	} else {
-		pline("%s's %s burn%s", The(xname(obj)), s, /* EN pline("%s's %s burn%s", The(xname(obj)), s, */ // TODO DE
-			(Blind ? "." : " brightly!")); /* EN (Blind ? "." : " brightly!")); */ // TODO DE
+		pline("SUBJECT %s OBJECT KASUS_GENITIV %s VERB_BRENNEN%s", s, The(xname(obj)), /* EN pline("%s's %s burn%s", The(xname(obj)), s, */
+			(Blind ? "." : " hell!")); /* EN (Blind ? "." : " brightly!")); */
 	}
 	if (!invocation_pos(u.ux, u.uy)) {
 		pline_The("%s %s rasant herunter!", s, vtense(s, "VERB_BRENNEN")); /* EN pline_The("%s %s being rapidly consumed!", s, vtense(s, "are")); */
@@ -1090,8 +1090,8 @@ struct obj *obj;
 		return;
 	}
 	if (obj->cursed && !rn2(2)) {
-		pline("SUBJECT %s for a moment, dann %s.", /* EN pline("%s for a moment, then %s.", */ // TODO DE
-		      Tobjnam(obj, "VERB_FLACKERN"), otense(obj, "die")); /* EN Tobjnam(obj, "flicker"), otense(obj, "die")); */ // TODO DE
+		pline("SUBJECT %s einen Moment lang, NEUER_SATZ SUBJECT_IM_SATZ dann %s %s.", /* EN pline("%s for a moment, then %s.", */
+		      Tobjnam(obj, "VERB_FLACKERN"), "VERB_ERLOESCHEN", pronominalisierung(xname(obj))); /* EN Tobjnam(obj, "flicker"), otense(obj, "die")); */
 	} else {
 		if(obj->otyp == OIL_LAMP || obj->otyp == MAGIC_LAMP ||
 				obj->otyp == BRASS_LANTERN) {
@@ -2886,7 +2886,7 @@ doapply()
 			    char buf[BUFSZ];
 
 			    pline("SUBJECT %s %s %s.", Shk_Your(buf, obj), /* EN pline("%s %s %s.", Shk_Your(buf, obj), */
-				  aobjnam(obj, "glow"), hcolor("brown")); /* EN aobjnam(obj, "glow"), hcolor("brown")); */ // TODO DE
+				  aobjnam(obj, "glow"), hcolor("ADJEKTIV_FARBE_BROWN")); /* EN aobjnam(obj, "glow"), hcolor("brown")); */ // TODO DE
 			    obj->bknown = 1;
 			}
 			unbless(obj);

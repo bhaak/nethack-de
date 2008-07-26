@@ -400,7 +400,7 @@ mattacku(mtmp)
 		    }
 		} else {
 		    if (!youseeit)
-			pline("It tries to move where you are hiding."); /* EN pline("It tries to move where you are hiding."); */ // TODO DE
+			pline("Etwas versucht sich dorthin zu bewegen, wo SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL VERB_VERSTECKEN."); /* EN pline("It tries to move where you are hiding."); */
 		    else {
 			/* Ugly kludge for eggs.  The message is phrased so as
 			 * to be directed at the monster, not the player,
@@ -418,10 +418,10 @@ mattacku(mtmp)
 				if (obj->otyp == EGG) obj->spe = 0;
 			    }
 			    if (youmonst.data->mlet == S_EEL)
-		pline("Wait, %s!  There's a hidden %s named %s there!", /* EN pline("Wait, %s!  There's a hidden %s named %s there!", */ // TODO DE
+		pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WARTEN, %s!  NEUER_SATZ Da SUBJECT_IM_SATZ VERB_VERSTECKEN sich ARTIKEL_UNBESTIMMTER %s namens %s!", /* EN pline("Wait, %s!  There's a hidden %s named %s there!", */
 				m_monnam(mtmp), youmonst.data->mname, plname);
 			    else
-	     pline("Wait, %s!  There's a %s named %s hiding under %s!", /* EN pline("Wait, %s!  There's a %s named %s hiding under %s!", */ // TODO DE
+	     pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WARTEN, %s!  NEUER_SATZ Da SUBJECT_IM_SATZ VERB_VERSTECKEN sich ARTIKEL_UNBESTIMMTER %s namens %s OBJECT KASUS_DATIV unter %s!", /* EN pline("Wait, %s!  There's a %s named %s hiding under %s!", */
 				m_monnam(mtmp), youmonst.data->mname, plname,
 				doname(level.objects[u.ux][u.uy]));
 			    if (obj) obj->spe = save_spe;
@@ -799,15 +799,16 @@ struct attack *mattk;
 	   protection might fail (33% chance) when the armor is cursed */
 	if (obj && (obj->greased || obj->otyp == OILSKIN_CLOAK) &&
 		(!obj->cursed || rn2(3))) {
-	    pline("SUBJECT %s %s PRONOMEN_POSSESSIV %s %s!", /* EN pline("%s %s your %s %s!", */
+	    pline("SUBJECT %s %s PRONOMEN_POSSESSIV %s %s %s!", /* EN pline("%s %s your %s %s!", */
 		  Monnam(mtmp),
 		  (mattk->adtyp == AD_WRAP) ?
-			"slips off of" : "grabs you, but cannot hold onto", /* EN "slips off of" : "grabs you, but cannot hold onto", */ // TODO DE
+			"VERB_GLEITEN OBJECT KASUS_DATIV von" : "VERB_PACKEN OBJECT PRONOMEN_PERSONAL, VERB_KOENNEN sich aber nicht NEUES_OBJECT OBJECT KASUS_DATIV an", /* EN "slips off of" : "grabs you, but cannot hold onto", */
 		  obj->greased ? "ADJEKTIV_GREASED" : "ADJEKTIV_SLIPPERY", /* EN obj->greased ? "greased" : "slippery", */
 		  /* avoid "slippery slippery cloak"
 		     for undiscovered oilskin cloak */
 		  (obj->greased || objects[obj->otyp].oc_name_known) ?
-			xname(obj) : cloak_simple_name(obj));
+			xname(obj) : cloak_simple_name(obj), /* EN xname(obj) : cloak_simple_name(obj)); */
+		  (mattk->adtyp == AD_WRAP) ? "ab" : "festhalten"); /* EN */
 
 	    if (obj->greased && !rn2(2)) {
 		pline("Das Fett löst sich auf."); /* EN pline_The("grease wears off."); */
@@ -1516,12 +1517,12 @@ dopois:
 		}
 		break;
 	    case AD_PEST:
-		pline("%s reaches out, and you feel fever and chills.", /* EN pline("%s reaches out, and you feel fever and chills.", */ // TODO DE
+		pline("SUBJECT %s VERB_AUSSTRECKEN die Hand SATZKLAMMER und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_BEKOMMEN hohes Fieber und Schüttelfrost.", /* EN pline("%s reaches out, and you feel fever and chills.", */
 			Monnam(mtmp));
 		(void) diseasemu(mdat); /* plus the normal damage */
 		break;
 	    case AD_FAMN:
-		pline("%s reaches out, and your body shrivels.", /* EN pline("%s reaches out, and your body shrivels.", */ // TODO DE
+		pline("SUBJECT %s VERB_AUSSTRECKEN die Hand SATZKLAMMER und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_KOERPER VERB_DAHINSIECHEN SATZKLAMMER.", /* EN pline("%s reaches out, and your body shrivels.", */
 			Monnam(mtmp));
 		exercise(A_CON, FALSE);
 		if (!is_fainted()) morehungry(rn1(40,40));
@@ -1823,10 +1824,10 @@ boolean ufound;
     if (mtmp->mcan) return(0);
 
     if (!ufound)
-	pline("%s explodes at a spot in %s!", /* EN pline("%s explodes at a spot in %s!", */ // TODO DE
-	    canseemon(mtmp) ? Monnam(mtmp) : "It", /* EN canseemon(mtmp) ? Monnam(mtmp) : "It", */ // TODO DE
+	pline("SUBJECT %s VERB_SPRENGEN OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL %s!", /* EN pline("%s explodes at a spot in %s!", */
+	    canseemon(mtmp) ? Monnam(mtmp) : "NOUN_ETWAS", /* EN canseemon(mtmp) ? Monnam(mtmp) : "It", */
 	    levl[mtmp->mux][mtmp->muy].typ == WATER
-		? "empty water" : "thin air"); /* EN ? "empty water" : "thin air"); */ // TODO DE
+		? "ins Wasser" : "in die Luft"); /* EN ? "empty water" : "thin air"); */
     else {
 	register int tmp = d((int)mattk->damn, (int)mattk->damd);
 	register boolean not_affected = defends((int)mattk->adtyp, uwep);
@@ -1927,7 +1928,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 			if (!m_canseeu(mtmp)) { /* probably you're invisible */
 			if (useeit)
 			    pline(
-		      "%s doesn't seem to notice that %s gaze was reflected.", /* EN "%s doesn't seem to notice that %s gaze was reflected.", */ // TODO DE
+		      "SUBJECT %s VERB_SCHEINEN gar nicht zu bemerken, dass %s gaze was reflected.", /* EN "%s doesn't seem to notice that %s gaze was reflected.", */ // TODO DE
 				  Monnam(mtmp), mhis(mtmp));
 			    break;
 			}
@@ -1974,7 +1975,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    int stun = d(2,6);
 
 		    mtmp->mspec_used = mtmp->mspec_used + (stun + rn2(6));
-		    pline("%s stares piercingly at you!", Monnam(mtmp)); /* EN pline("%s stares piercingly at you!", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_STARREN OBJECT PRONOMEN_PERSONAL durchdringend an!", Monnam(mtmp)); /* EN pline("%s stares piercingly at you!", Monnam(mtmp)); */
 		    make_stunned(HStun + stun, TRUE);
 		    stop_occupation();
 		}

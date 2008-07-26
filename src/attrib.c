@@ -118,7 +118,7 @@ adjattrib(ndx, incr, msgflg)
 	if (incr > 0) {
 	    if ((AMAX(ndx) >= ATTRMAX(ndx)) && (ACURR(ndx) >= AMAX(ndx))) {
 		if (msgflg == 0 && flags.verbose)
-		    Du_bist("schon so %s wie möglich.", /* EN pline("You're already as %s as you can get.", */
+		    Du_bist("schon so %s wie überhaupt möglich.", /* EN pline("You're already as %s as you can get.", */
 			  plusattr[ndx]);
 		ABASE(ndx) = AMAX(ndx) = ATTRMAX(ndx); /* just in case */
 		return FALSE;
@@ -135,7 +135,7 @@ adjattrib(ndx, incr, msgflg)
 	} else {
 	    if (ABASE(ndx) <= ATTRMIN(ndx)) {
 		if (msgflg == 0 && flags.verbose)
-		    Du_bist("schon so %s wie möglich.", /* EN pline("You're already as %s as you can get.", */
+		    Du_bist("schon so %s wie überhaupt möglich.", /* EN pline("You're already as %s as you can get.", */
 			  minusattr[ndx]);
 		ABASE(ndx) = ATTRMIN(ndx); /* just in case */
 		return FALSE;

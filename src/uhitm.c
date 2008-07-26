@@ -180,7 +180,7 @@ struct obj *wep;	/* uwep for attack(), null for kick_monster() */
 		if (Blind || (is_pool(mtmp->mx,mtmp->my) && !Underwater))
 		    pline("Wait!  There's a hidden monster there!"); /* EN pline("Wait!  There's a hidden monster there!"); */ // TODO DE
 		else if ((obj = level.objects[mtmp->mx][mtmp->my]) != 0)
-		    pline("MODIFIER_VERB_IMPERATIV VERB_WARTEN!  NEUER_SATZ Da VERB_VERSTECKEN sich SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV unter %s!", /* EN pline("Wait!  There's %s hiding under %s!", */ // TODO DE CHECK ME
+		    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WARTEN!  NEUER_SATZ Da VERB_VERSTECKEN sich SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV unter %s!", /* EN pline("Wait!  There's %s hiding under %s!", */ // TODO DE CHECK ME
 			  an(l_monnam(mtmp)), doname(obj));
 		return TRUE;
 	    }

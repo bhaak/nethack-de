@@ -1051,7 +1051,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN
 		    else {
 			u.utrap = 0;
 			if (webmsgok)
-			    You("tear through %s web!", a_your[trap->madeby_u]); /* EN You("tear through %s web!", a_your[trap->madeby_u]); */ // TODO DE
+			    You("VERB_ZERREISSEN OBJECT %s NOUN_WEB!", a_your[trap->madeby_u]); /* EN You("tear through %s web!", a_your[trap->madeby_u]); */
 			deltrap(trap);
 			newsym(u.ux,u.uy);	/* get rid of trap symbol */
 		    }
@@ -1069,7 +1069,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN
 		    newsym(u.ux,u.uy);	/* update position */
 		    You("VERB_WERDEN OBJECT KASUS_DATIV von ARTIKEL_UNBESTIMMTER NOUN_MAGIEEXPLOSION erfasst!"); /* EN You("are caught in a magical explosion!"); */
 		    losehp(rnd(10), "NOUN_MAGIEEXPLOSION", KILLED_BY_AN); /* EN losehp(rnd(10), "magical explosion", KILLED_BY_AN); */
-		    Your("body absorbs some of the magical energy!"); /* EN Your("body absorbs some of the magical energy!"); */ // TODO DE
+		    Your("NOUN_KOERPER VERB_ABSORBIEREN einen Teil der magischen Energie!"); /* EN Your("body absorbs some of the magical energy!"); */
 		    u.uen = (u.uenmax += 2);
 		} else domagictrap();
 #ifdef STEED
@@ -1097,7 +1097,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN
 		else
 #endif
 		 Sprintf(verbbuf,"%s",
-		    Levitation ? (const char *)"float" : /* EN Levitation ? (const char *)"float" : */ // TODO DE
+		    Levitation ? (const char *)"VERB_SCHWEBEN" : /* EN Levitation ? (const char *)"float" : */
 		    locomotion(youmonst.data, "VERB_TRETEN")); /* EN locomotion(youmonst.data, "step")); */
 		You("%s OBJECT in ARTIKEL_UNBESTIMMTER NOUN_POLYMORPH_TRAP!", verbbuf); /* EN You("%s onto a polymorph trap!", verbbuf); */
 		if(Antimagic || Unchanging) {
@@ -2279,7 +2279,7 @@ float_up()
 	else if (Hallucination)
 		pline("Up, up, and awaaaay!  You're walking on air!"); /* EN pline("Up, up, and awaaaay!  You're walking on air!"); */ // TODO DE
 	else if(Is_airlevel(&u.uz))
-		You("gain control over your movements."); /* EN You("gain control over your movements."); */ // TODO DE
+		You("VERB_KRIEGEN OBJECT PRONOMEN_POSSESSIV NOUN_BEWEGUNGs wieder in Griff."); /* EN You("gain control over your movements."); */
 	else
 		You("VERB_BEGINNEN in der Luft zu schweben!"); /* EN You("start to float in the air!"); */
 #ifdef STEED
@@ -2323,7 +2323,7 @@ long hmask, emask;     /* might cancel timeout */
 	ELevitation &= ~emask;
 	if(Levitation) return(0); /* maybe another ring/potion/boots */
 	if(u.uswallow) {
-	    You("float down, but you are still %s.", /* EN You("float down, but you are still %s.", */ // TODO DE
+	    You("VERB_SINKEN herab, VERB_SEIN immer noch %s.", /* EN You("float down, but you are still %s.", */
 		is_animal(u.ustuck->data) ? "verschluckt" : "verschlungen"); /* EN is_animal(u.ustuck->data) ? "swallowed" : "engulfed"); */
 	    return(1);
 	}
@@ -2382,13 +2382,13 @@ long hmask, emask;     /* might cancel timeout */
 		{
 		    boolean sokoban_trap = (In_sokoban(&u.uz) && trap);
 		    if (Hallucination)
-			pline("Bummer!  You've %s.", /* EN pline("Bummer!  You've %s.", */ // TODO DE
+			pline("Mist!  SUBJECT PRONOMEN_PERSONAL %s.", /* EN pline("Bummer!  You've %s.", */
 			      is_pool(u.ux,u.uy) ?
-			      "splashed down" : sokoban_trap ? "crashed" : /* EN "splashed down" : sokoban_trap ? "crashed" : */ // TODO DE
-			      "hit the ground"); /* EN "hit the ground"); */ // TODO DE
+			      "VERB_LEGEN einen erstklassigen Bauchklatscher hin" : sokoban_trap ? "VERB_STUERZEN ab" : /* EN "splashed down" : sokoban_trap ? "crashed" : */
+			      "VERB_SCHLAGEN auf dem Boden auf"); /* EN "hit the ground"); */
 		    else {
 			if (!sokoban_trap)
-			    You("float gently to the %s.", /* EN You("float gently to the %s.", */ // TODO DE zu_Boden
+			    You("VERB_SINKEN sanft zu %s.", /* EN You("float gently to the %s.", */ /* zu_Boden */
 				surface(u.ux, u.uy));
 			else {
 			    /* Justification elsewhere for Sokoban traps
@@ -2451,7 +2451,7 @@ struct obj *box;	/* null for floor trap */
 	    pline("A cascade of steamy bubbles erupts from %s!", /* EN pline("A cascade of steamy bubbles erupts from %s!", */ // TODO DE
 		    the(box ? xname(box) : surface(u.ux,u.uy)));
 	    if (Fire_resistance) You("VERB_SEIN unversehrt."); /* EN if (Fire_resistance) You("are uninjured."); */
-	    else losehp(rnd(3), "boiling water", KILLED_BY); /* EN else losehp(rnd(3), "boiling water", KILLED_BY); */ // TODO DE
+	    else losehp(rnd(3), "ADJEKTIV_SIEDEND NOUN_WATER", KILLED_BY); /* EN else losehp(rnd(3), "boiling water", KILLED_BY); */
 	    return;
 	}
 	pline("A %s %s from %s!", tower_of_flame, /* EN pline("A %s %s from %s!", tower_of_flame, */ // TODO DE
