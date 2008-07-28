@@ -285,7 +285,7 @@ giveback:
 		trycall(obj);
 		return;
 	    case RIN_LEVITATION:
-		pline("Die Spüle hebt kurz vom Bodem ab/bäumt sich kurz auf."); /* EN pline_The("sink quivers upward for a moment."); */
+		pline("Die Spüle bäumt sich kurz auf."); /* EN pline_The("sink quivers upward for a moment."); */
 		break;
 	    case RIN_POISON_RESISTANCE:
 		You("VERB_RIECHEN OBJECT ADJEKTIV_VERGAMMELT %s.", makeplural(fruitname(FALSE))); /* EN You("smell rotten %s.", makeplural(fruitname(FALSE))); */
@@ -351,10 +351,10 @@ giveback:
 		    pline("Die Spüle sieht wieder nigelnagelneu aus."); /* EN pline_The("sink looks as good as new."); */
 		    break;
 		case RIN_INVISIBILITY:
-		    pline("Mit dem Spüle /don't see anything happen to the sink."); /* EN You("don't see anything happen to the sink."); */ // TODO DE
+		    You("VERB_SEHEN keinerlei Veränderung an der Spüle."); /* EN You("don't see anything happen to the sink."); */
 		    break;
 		case RIN_FREE_ACTION:
-		    You("VERB_SEHEN, wie der Ring geradewegs in den Abfluss reinrutscht!"); /* EN You("see the ring slide right down the drain!"); */
+		    You("VERB_SEHEN den Ring geradewegs in den Abfluss reinrutschen!"); /* EN You("see the ring slide right down the drain!"); */
 		    break;
 		case RIN_SEE_INVISIBLE:
 		    You("VERB_SEHEN die Luft im Spülbecken."); /* EN You("see some air in the sink."); */
@@ -372,11 +372,11 @@ giveback:
 		    pline("Die Spüle sieht überhaupt nicht wie ARTIKEL_UNBESTIMMTER NOUN_FOUNTAIN aus."); /* EN pline_The("sink looks nothing like a fountain."); */
 		    break;
 		case RIN_PROTECTION:
-		    pline_The("NOUN_SINK VERB_SCHIMMERN %s einen Moment lang.", /* EN pline_The("sink glows %s for a moment.", */
+		    pline_The("NOUN_SINK VERB_SCHIMMERN einen Moment lang %s.", /* EN pline_The("sink glows %s for a moment.", */
 			    hcolor((obj->spe<0) ? NH_BLACK : NH_SILVER));
 		    break;
 		case RIN_WARNING:
-		    pline("NOUN_SINK VERB_SCHIMMERN %s einen Moment lang.", hcolor(NH_WHITE)); /* EN pline_The("sink glows %s for a moment.", hcolor(NH_WHITE)); */
+		    pline_The("NOUN_SINK VERB_SCHIMMERN einen Moment lang %s.", hcolor(NH_WHITE)); /* EN pline_The("sink glows %s for a moment.", hcolor(NH_WHITE)); */
 		    break;
 		case RIN_TELEPORTATION:
 		    pline("Das Spülbecken verschwindet für den Bruchteil einer Sekunde."); /* EN pline_The("sink momentarily vanishes."); */
@@ -388,7 +388,7 @@ giveback:
 		    pline("Das Spülbecken sieht für einen Moment wie ARTIKEL_UNBESTIMMTER NOUN_FOUNTAIN aus."); /* EN pline_The("sink momentarily looks like a fountain."); */
 		    break;
 		case RIN_POLYMORPH_CONTROL:
-	pline("Das Spülbecken sieht für einen Moment wie regelmässig ausbrechender Geysir."); /* EN pline_The("sink momentarily looks like a regularly erupting geyser."); */
+	pline("Das Spülbecken sieht für einen Moment wie ein regelmässig ausbrechender Geysir aus."); /* EN pline_The("sink momentarily looks like a regularly erupting geyser."); */
 		    break;
 	    }
 	}
@@ -700,7 +700,7 @@ int retry;
 	}
     } else {
 	/* should coordinate with perm invent, maybe not show worn items */
-	n = query_objlist("What would you like to drop?", invent, /* EN n = query_objlist("What would you like to drop?", invent, */ // TODO DE
+	n = query_objlist("Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL fallen lassen?", invent, /* EN n = query_objlist("What would you like to drop?", invent, */
 			USE_INVLET|INVORDER_SORT, &pick_list,
 			PICK_ANY, all_categories ? allow_all : allow_category);
 	if (n > 0) {
@@ -809,7 +809,7 @@ dodown()
 		return(1);
 	}
 	if (on_level(&valley_level, &u.uz) && !u.uevent.gehennom_entered) {
-		You("are standing at the gate to Gehennom."); /* EN You("are standing at the gate to Gehennom."); */ // TODO DE
+		You("VERB_STEHEN vor den Toren Gehennoms."); /* EN You("are standing at the gate to Gehennom."); */ // TODO DE
 		pline("Unspeakable cruelty and harm lurk down there."); /* EN pline("Unspeakable cruelty and harm lurk down there."); */ // TODO DE
 		if (yn("Are you sure you want to enter?") != 'y') /* EN if (yn("Are you sure you want to enter?") != 'y') */ // TODO DE
 			return(0);
@@ -1006,7 +1006,7 @@ boolean at_stairs, falling, portal;
 
 		    new_ledger = ledger_no(newlevel);
 
-		    pline("A mysterious force momentarily surrounds you..."); /* EN pline("A mysterious force momentarily surrounds you..."); */ // TODO DE
+		    pline("Eine geheimnisvolle Kraft umgibt KASUS_AKKUSATIV PRONOMEN_PERSONAL kurz ..."); /* EN pline("A mysterious force momentarily surrounds you..."); */
 		    if (on_level(newlevel, &u.uz)) {
 			(void) safe_teleds(FALSE);
 			(void) next_to_u();
@@ -1020,7 +1020,7 @@ boolean at_stairs, falling, portal;
 	 * (s)he has been given the go-ahead by the leader.
 	 */
 	if (on_level(&u.uz, &qstart_level) && !newdungeon && !ok_to_quest()) {
-		pline("A mysterious force prevents you from descending."); /* EN pline("A mysterious force prevents you from descending."); */ // TODO DE
+		pline("Eine geheimnisvolle Kraft hindert KASUS_AKKUSATIV PRONOMEN_PERSONAL am Hinabsteigen."); /* EN pline("A mysterious force prevents you from descending."); */
 		return;
 	}
 
@@ -1160,7 +1160,7 @@ boolean at_stairs, falling, portal;
 		    else u_on_upstairs();
 		}
 		if (u.dz && Flying)
-		    You("fly down along the %s.", /* EN You("fly down along the %s.", */ // TODO DE
+		    You("VERB_FLIEGEN OBJECT %s hinab.", /* EN You("fly down along the %s.", */
 			at_ladder ? "NOUN_LADDER" : "NOUN_STAIRS"); /* EN at_ladder ? "ladder" : "stairs"); */
 		else if (u.dz &&
 		    (near_capacity() > UNENCUMBERED || Punished || Fumbling)) {
@@ -1290,11 +1290,11 @@ boolean at_stairs, falling, portal;
 	    static const char * const fam_msgs[4] = {
 		"You have a sense of deja vu.", /* EN "You have a sense of deja vu.", */ // TODO DE
 		"You feel like you've been here before.", /* EN "You feel like you've been here before.", */ // TODO DE
-		"This place %s familiar...", /* EN "This place %s familiar...", */ // TODO DE
+		"Dieser Ort %s vertraut ...", /* EN "This place %s familiar...", */
 		0	/* no message */
 	    };
 	    static const char * const halu_fam_msgs[4] = {
-		"Whoa!  Everything %s different.", /* EN "Whoa!  Everything %s different.", */ // TODO DE
+		"Verschärft!  Alles %s anders.", /* EN "Whoa!  Everything %s different.", */
 		"You are surrounded by twisty little passages, all alike.", /* EN "You are surrounded by twisty little passages, all alike.", */ // TODO DE
 		"Gee, this %s like uncle Conan's place...", /* EN "Gee, this %s like uncle Conan's place...", */ // TODO DE
 		0	/* no message */
@@ -1308,7 +1308,7 @@ boolean at_stairs, falling, portal;
 	    else
 		mesg = fam_msgs[which];
 	    if (mesg && index(mesg, '%')) {
-		Sprintf(buf, mesg, !Blind ? "looks" : "seems"); /* EN Sprintf(buf, mesg, !Blind ? "looks" : "seems"); */ // TODO DE
+		Sprintf(buf, mesg, !Blind ? "wirkt" : "scheint"); /* EN Sprintf(buf, mesg, !Blind ? "looks" : "seems"); */
 		mesg = buf;
 	    }
 	    if (mesg) pline(mesg);
@@ -1316,7 +1316,7 @@ boolean at_stairs, falling, portal;
 
 #ifdef REINCARNATION
 	if (new && Is_rogue_level(&u.uz))
-	    You("VERB_BETRETEN eine scheinbar ältere, primitivere Welt."); /* EN You("enter what seems to be an older, more primitive world."); */
+	    You("VERB_BETRETEN eine ältere, scheinbar primitivere Welt."); /* EN You("enter what seems to be an older, more primitive world."); */
 #endif
 	/* Final confrontation */
 	if (In_endgame(&u.uz) && newdungeon && u.uhave.amulet)

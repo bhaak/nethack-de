@@ -214,7 +214,7 @@ static struct Comp_Opt
 			 * a different format */
 	int optflags;
 } compopt[] = {
-	{ "align",    "your starting alignment (lawful, neutral, or chaotic)", /* EN { "align",    "your starting alignment (lawful, neutral, or chaotic)", */ // TODO DE
+	{ "align",    "PRONOMEN_POSSESSIV ADJEKTIV_ANFAENGLICH NOUN_ALIGNMENT (ADJEKTIV_LAWFUL, ADJEKTIV_NEUTRAL oder ADJEKTIV_CHAOTIC)", /* EN { "align",    "your starting alignment (lawful, neutral, or chaotic)", */
 						8, DISP_IN_GAME },
 	{ "align_message", "message window alignment", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_message", "message window alignment", 20, DISP_IN_GAME }, 	*/ // TODO DE
 	{ "align_status", "status window alignment", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_status", "status window alignment", 20, DISP_IN_GAME }, 	*/ // TODO DE
@@ -247,7 +247,7 @@ static struct Comp_Opt
 						PL_FSIZ, SET_IN_GAME },
 	{ "gender",   "your starting gender (male or female)", /* EN { "gender",   "your starting gender (male or female)", */ // TODO DE
 						8, DISP_IN_GAME },
-	{ "horsename", "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_HORSE (z.B., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */ // TODO DE
+	{ "horsename", "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_HORSE (z.B., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */
 						PL_PSIZ, DISP_IN_GAME },
 	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/ // TODO DE
 	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
@@ -280,7 +280,7 @@ static struct Comp_Opt
 	{ "name",     "der Name KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_CHARAKTER (z.B., name:Merlin-W)", /* EN { "name",     "your character's name (e.g., name:Merlin-W)", */
 						PL_NSIZ, DISP_IN_GAME },
 	{ "number_pad", "Ziffernblock benutzen", 1, SET_IN_GAME}, /* EN { "number_pad", "use the number pad", 1, SET_IN_GAME}, */
-	{ "objects",  "the symbols to use for objects", /* EN { "objects",  "the symbols to use for objects", */ // TODO DE
+	{ "objects",  "die für Gegenstände verwendeten Symbole", /* EN { "objects",  "the symbols to use for objects", */
 						MAXOCLASSES, SET_IN_FILE },
 	{ "packorder", "the inventory order of the items in your pack", /* EN { "packorder", "the inventory order of the items in your pack", */ // TODO DE
 						MAXOCLASSES, SET_IN_GAME },
@@ -295,13 +295,13 @@ static struct Comp_Opt
 	{ "pettype",  "PRONOMEN_POSSESSIV ADJEKTIV_BEVORZUGT, ADJEKTIV_ANFAENGLICH pet type", 4, DISP_IN_GAME }, /* EN { "pettype",  "your preferred initial pet type", 4, DISP_IN_GAME }, */ // TODO DE
 	{ "pickup_burden",  "maximum burden picked up before prompt", /* EN { "pickup_burden",  "maximum burden picked up before prompt", */ // TODO DE
 						20, SET_IN_GAME },
-	{ "pickup_types", "types of objects to pick up automatically", /* EN { "pickup_types", "types of objects to pick up automatically", */ // TODO DE
+	{ "pickup_types", "welche Arten von Gegenständen automatisch aufgehoben werden", /* EN { "pickup_types", "types of objects to pick up automatically", */
 						MAXOCLASSES, SET_IN_GAME },
 	{ "player_selection", "choose character via dialog or prompts", /* EN { "player_selection", "choose character via dialog or prompts", */ // TODO DE
 						12, DISP_IN_GAME },
 	{ "race",     "PRONOMEN_POSSESSIV NOUN_RACE zu Beginn (z.B., Human, Elf)", /* EN { "race",     "your starting race (e.g., Human, Elf)", */
 						PL_CSIZ, DISP_IN_GAME },
-	{ "role",     "your starting role (e.g., Barbarian, Valkyrie)", /* EN { "role",     "your starting role (e.g., Barbarian, Valkyrie)", */ // TODO DE
+	{ "role",     "PRONOMEN_POSSESSIV ADJEKTIV_ANFAENGLICH NOUN_ROLE (z.B., Barbar, Walküre)", /* EN { "role",     "your starting role (e.g., Barbarian, Valkyrie)", */
 						PL_CSIZ, DISP_IN_GAME },
 	{ "runmode", "display frequency when `running' or `travelling'", /* EN { "runmode", "display frequency when `running' or `travelling'", */ // TODO DE
 						sizeof "teleport", SET_IN_GAME },
@@ -318,7 +318,7 @@ static struct Comp_Opt
 	{ "tile_width", "Kachelbreite", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_width", "width of tiles", 20, DISP_IN_GAME},	*/
 	{ "tile_height", "Kachelgröße", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_height", "height of tiles", 20, DISP_IN_GAME},	*/
 	{ "tile_file", "Name der Kacheldatei", 70, DISP_IN_GAME},	/*WC*/ /* EN { "tile_file", "name of tile file", 70, DISP_IN_GAME},	*/
-	{ "traps",    "the symbols to use in drawing traps", /* EN { "traps",    "the symbols to use in drawing traps", */ // TODO DE
+	{ "traps",    "die für das Zeichnen der Fallen verwendeten Symbole", /* EN { "traps",    "the symbols to use in drawing traps", */
 						MAXTCHARS+1, SET_IN_FILE },
 	{ "vary_msgcount", "show more old messages at a time", 20, DISP_IN_GAME }, /*WC*/ /* EN { "vary_msgcount", "show more old messages at a time", 20, DISP_IN_GAME }, */ // TODO DE
 #ifdef MSDOS

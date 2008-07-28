@@ -778,7 +778,7 @@ mon_tele:
 		if (Inhell && mon_has_amulet(mtmp) && !rn2(4) &&
 			(dunlev(&u.uz) < dunlevs_in_dungeon(&u.uz) - 3)) {
 		    if (vismon) pline(
-     "As %s climbs the stairs, a mysterious force momentarily surrounds %s...", /* EN "As %s climbs the stairs, a mysterious force momentarily surrounds %s...", */ // TODO DE
+     "As %s climbs the stairs, umgibt %s kurz eine geheimnisvolle Kraft ...", /* EN "As %s climbs the stairs, a mysterious force momentarily surrounds %s...", */ // TODO DE
 				     mon_nam(mtmp), mhim(mtmp));
 		    /* simpler than for the player; this will usually be
 		       the Wizard and he'll immediately go right to the

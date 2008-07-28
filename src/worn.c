@@ -614,7 +614,7 @@ boolean polyspot;
 			   "the dragon merges with his scaly armor" is odd
 			   and the monster's previous form is already gone */
 		else if (vis)
-		    pline("%s breaks out of %s armor!", Monnam(mon), ppronoun); /* EN pline("%s breaks out of %s armor!", Monnam(mon), ppronoun); */ // TODO DE
+		    pline("SUBJECT %s VERB_PLATZEN OBJECT KASUS_DATIV aus %s NOUN_ARMOR!", Monnam(mon), ppronoun); /* EN pline("%s breaks out of %s armor!", Monnam(mon), ppronoun); */
 		else
 		    You_hear("ein knackendes Geräusch."); /* EN You_hear("a cracking sound."); */
 		m_useup(mon, otmp);

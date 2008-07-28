@@ -73,7 +73,7 @@ const char *fmt, *arg;
 			(mvitals[urace.femalenum].mvflags & G_GENOD))) {
 	    /* intervening activity might have clobbered genocide info */
 	    killer = delayed_killer;
-	    if (!killer || !strstri(killer, "genocid")) { /* EN if (!killer || !strstri(killer, "genocid")) { */ // TODO DE
+	    if (!killer || !strstri(killer, "genocid")) {
 		killer_format = KILLED_BY;
 		killer = "NOUN_SELF_GENOCIDE"; /* EN killer = "self-genocide"; */
 	    }
@@ -559,7 +559,7 @@ int	mntmp;
 	    u.utrap = 0;
 	}
 	if (webmaker(youmonst.data) && u.utrap && u.utraptype == TT_WEB) {
-	    You("orient yourself on the web."); /* EN You("orient yourself on the web."); */ // TODO DE
+	    You("VERB_ORIENTIEREN OBJECT PRONOMEN_PERSONAL auf dem Netz."); /* EN You("orient yourself on the web."); */
 	    u.utrap = 0;
 	}
 	flags.botl = 1;
@@ -579,7 +579,7 @@ break_armor()
     if (breakarm(youmonst.data)) {
 	if ((otmp = uarm) != 0) {
 		if (donning(otmp)) cancel_don();
-		You("break out of your armor!"); /* EN You("break out of your armor!"); */ // TODO DE
+		You("VERB_PLATZEN OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_ARMOR!"); /* EN You("break out of your armor!"); */
 		exercise(A_STR, FALSE);
 		(void) Armor_gone();
 		useup(otmp);
