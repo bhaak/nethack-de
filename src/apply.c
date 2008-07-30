@@ -390,9 +390,9 @@ boolean feedback;
 
 	if (feedback) {
 	    if (canseemon(mtmp))
-		pline("%s pulls free of %s leash!", Monnam(mtmp), mhis(mtmp)); /* EN pline("%s pulls free of %s leash!", Monnam(mtmp), mhis(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_LOSREISSEN OBJECT KASUS_DATIV von %s NOUN_LEASH!", Monnam(mtmp), mhis(mtmp)); /* EN pline("%s pulls free of %s leash!", Monnam(mtmp), mhis(mtmp)); */
 	    else
-		Your("leash falls slack."); /* EN Your("leash falls slack."); */ // TODO DE
+		Your("NOUN_LEASH VERB_WERDEN schlaff."); /* EN Your("leash falls slack."); */
 	}
 	for(otmp = invent; otmp; otmp = otmp->nobj)
 		if(otmp->otyp == LEASH &&
@@ -475,7 +475,7 @@ struct obj *obj;
 		return;
 	}
 	if(obj->leashmon != (int)mtmp->m_id) {
-		pline("This leash is not attached to that creature."); /* EN pline("This leash is not attached to that creature."); */ // TODO DE
+		pline("Diese Kreatur ist nicht an dieser Leine angeleint."); /* EN pline("This leash is not attached to that creature."); */
 		return;
 	} else {
 		if(obj->cursed) {
@@ -524,8 +524,8 @@ next_to_u()
 				if(otmp->otyp == LEASH &&
 					otmp->leashmon == (int)mtmp->m_id) {
 				    if(otmp->cursed) return(FALSE);
-				    You_feel("%s leash go slack.", /* EN You_feel("%s leash go slack.", */ // TODO DE
-					(number_leashed() > 1) ? "a" : "the");
+				    You("VERB_SPUEREN, NEUER_SATZ wie KASUS_NOMINATIV %s NOUN_LEASH erschlafft.", /* EN You_feel("%s leash go slack.", */
+					(number_leashed() > 1) ? "ARTIKEL_UNBESTIMMTER" : "ARTIKEL_BESTIMMTER"); /* EN (number_leashed() > 1) ? "a" : "the"); */
 				    mtmp->mleashed = 0;
 				    otmp->leashmon = 0;
 				}
@@ -569,7 +569,7 @@ register xchar x, y;
 			    (mtmp->mhp -= rnd(2)) <= 0) {
 			long save_pacifism = u.uconduct.killer;
 
-			Your("leash chokes %s to death!", mon_nam(mtmp)); /* EN Your("leash chokes %s to death!", mon_nam(mtmp)); */ // TODO DE
+			Your("NOUN_LEASH VERB_ERWUERGEN OBJECT %s!", mon_nam(mtmp)); /* EN Your("leash chokes %s to death!", mon_nam(mtmp)); */
 			/* hero might not have intended to kill pet, but
 			   that's the result of his actions; gain experience,
 			   lose pacifism, take alignment and luck hit, make
@@ -578,7 +578,7 @@ register xchar x, y;
 			/* life-saving doesn't ordinarily reset this */
 			if (mtmp->mhp > 0) u.uconduct.killer = save_pacifism;
 		    } else {
-			pline("%s chokes on the leash!", Monnam(mtmp)); /* EN pline("%s chokes on the leash!", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT ARTIKEL_BESTIMMTER NOUN_LEASH VERB_WUERGEN OBJECT %s!", Monnam(mtmp)); /* EN pline("%s chokes on the leash!", Monnam(mtmp)); */
 			/* tameness eventually drops to 1 here (never 0) */
 			if (mtmp->mtame && rn2(mtmp->mtame)) mtmp->mtame--;
 		    }
@@ -2287,7 +2287,7 @@ struct obj *obj;
 		case 2:
 		    /* to floor near you */
 		    You("yank %s to the %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */ // TODO DE
-			surface(u.ux, u.uy)); /* EN onambuf, surface(u.ux, u.uy)); */
+			surface(u.ux, u.uy)); /* EN onambuf, surface(u.ux, u.uy)); */ /* zu_Boden */
 		    place_object(otmp, u.ux, u.uy);
 		    stackobj(otmp);
 		    break;
@@ -2886,7 +2886,7 @@ doapply()
 			    char buf[BUFSZ];
 
 			    pline("SUBJECT %s %s %s.", Shk_Your(buf, obj), /* EN pline("%s %s %s.", Shk_Your(buf, obj), */
-				  aobjnam(obj, "glow"), hcolor("ADJEKTIV_FARBE_BROWN")); /* EN aobjnam(obj, "glow"), hcolor("brown")); */ // TODO DE
+				  aobjnam(obj, "VERB_LEUCHTEN"), hcolor("ADJEKTIV_FARBE_BROWN")); /* EN aobjnam(obj, "glow"), hcolor("brown")); */
 			    obj->bknown = 1;
 			}
 			unbless(obj);

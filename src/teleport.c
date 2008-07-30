@@ -385,7 +385,7 @@ boolean force_it;
 		yelp(mtmp);
 		return FALSE;
 	    } else {
-		Your("leash goes slack."); /* EN Your("leash goes slack."); */ // TODO DE
+		Your("NOUN_LEASH wird schlaff."); /* EN Your("leash goes slack."); */
  release_it:
 		m_unleash(mtmp, FALSE);
 		return TRUE;

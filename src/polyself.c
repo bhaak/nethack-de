@@ -802,7 +802,7 @@ dospinweb()
 		return(0);
 	}
 	if (u.uswallow) {
-		You("release web fluid inside %s.", mon_nam(u.ustuck)); /* EN You("release web fluid inside %s.", mon_nam(u.ustuck)); */ // TODO DE
+		You("VERB_ABSONDERN Spinnenseide OBJECT KASUS_DATIV in %s SATZKLAMMER.", mon_nam(u.ustuck)); /* EN You("release web fluid inside %s.", mon_nam(u.ustuck)); */
 		if (is_animal(u.ustuck->data)) {
 			expels(u.ustuck, u.ustuck->data, TRUE);
 			return(0);
@@ -941,7 +941,7 @@ dogaze()
 	    }
 	}
 	if (adtyp != AD_CONF && adtyp != AD_FIRE) {
-	    impossible("gaze attack %d?", adtyp); /* EN impossible("gaze attack %d?", adtyp); */ // TODO DE
+	    impossible("gaze attack %d?", adtyp);
 	    return 0;
 	}
 
@@ -951,7 +951,7 @@ dogaze()
 	    return 0;
 	}
 	if (u.uen < 15) {
-	    You("lack the energy to use your special gaze!"); /* EN You("lack the energy to use your special gaze!"); */ // TODO DE
+	    Dir("fehlt die Energie KASUS_AKKUSATIV um PRONOMEN_POSSESSIV ADJEKTIV_SPEZIELL NOUN_GAZE zu benutzen!"); /* EN You("lack the energy to use your special gaze!"); */
 	    return(0);
 	}
 	u.uen -= 15;
@@ -962,7 +962,7 @@ dogaze()
 	    if (canseemon(mtmp) && couldsee(mtmp->mx, mtmp->my)) {
 		looked++;
 		if (Invis && !perceives(mtmp->data))
-		    pline("%s seems not to notice your gaze.", Monnam(mtmp)); /* EN pline("%s seems not to notice your gaze.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHEINEN OBJECT PRONOMEN_POSSESSIV NOUN_GAZE nicht zu bemerken.", Monnam(mtmp)); /* EN pline("%s seems not to notice your gaze.", Monnam(mtmp)); */
 		else if (mtmp->minvis && !See_invisible)
 		    You_cant("see where to gaze at %s.", Monnam(mtmp)); /* EN You_cant("see where to gaze at %s.", Monnam(mtmp)); */ // TODO DE
 		else if (mtmp->m_ap_type == M_AP_FURNITURE
@@ -998,7 +998,7 @@ dogaze()
 			mtmp->mconf = 1;
 		    } else if (adtyp == AD_FIRE) {
 			int dmg = d(2,6);
-			You("attack %s with a fiery gaze!", mon_nam(mtmp)); /* EN You("attack %s with a fiery gaze!", mon_nam(mtmp)); */ // TODO DE
+			You("VERB_ANGREIFEN OBJECT %s mit einem feurigen Blick SATZKLAMMER!", mon_nam(mtmp)); /* EN You("attack %s with a fiery gaze!", mon_nam(mtmp)); */
 			if (resists_fire(mtmp)) {
 			    pline("Das Feuer verbrennt KASUS_AKKUSATIV %s nicht!", mon_nam(mtmp)); /* EN pline_The("fire doesn't burn %s!", mon_nam(mtmp)); */
 			    dmg = 0;
@@ -1018,8 +1018,8 @@ dogaze()
 		    if (!DEADMONSTER(mtmp) &&
 			  (mtmp->data==&mons[PM_FLOATING_EYE]) && !mtmp->mcan) {
 			if (!Free_action) {
-			    You("are frozen by %s gaze!", /* EN You("are frozen by %s gaze!", */ // TODO DE
-					     s_suffix(mon_nam(mtmp))); /* EN s_suffix(mon_nam(mtmp))); */ // TODO DE
+			    You("VERB_ERSTARREN OBJECT KASUS_DATIV durch %s!", /* EN You("are frozen by %s gaze!", */
+					     genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_GAZE")); /* EN s_suffix(mon_nam(mtmp))); */
 			    nomul((u.ulevel > 6 || rn2(4)) ?
 				    -d((int)mtmp->m_lev+1,
 					    (int)mtmp->data->mattk[0].damd)
@@ -1037,7 +1037,7 @@ dogaze()
 		    if (!DEADMONSTER(mtmp) &&
 			    (mtmp->data == &mons[PM_MEDUSA]) && !mtmp->mcan) {
 			pline(
-			 "Gazing at the awake %s is not a very good idea.", /* EN "Gazing at the awake %s is not a very good idea.", */ // TODO DE
+			 "Die wache %s anzustarren ist wirklich keine gute Idee.", /* EN "Gazing at the awake %s is not a very good idea.", */
 			    l_monnam(mtmp));
 			/* as if gazing at a sleeping anything is fruitful... */
 			You("VERB_VERSTEINERN ...");

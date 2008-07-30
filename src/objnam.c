@@ -342,7 +342,7 @@ register struct obj *obj;
 			else if(is_shield(obj))
 				Strcpy(buf,"NOUN_SHIELD");
 			else
-				Strcpy(buf,"armor"); /* EN Strcpy(buf,"armor"); */ // TODO DE
+				Strcpy(buf,"NOUN_ARMOR"); /* EN Strcpy(buf,"armor"); */
 			Strcat(buf, " PARTIKEL_CALLED ");
 			Strcat(buf, un);
 		} else	Strcat(buf, dn);
@@ -380,18 +380,18 @@ register struct obj *obj;
 	    case ROCK_CLASS:
 		if (typ == STATUE)
 		    Sprintf(buf, "%s%s PARTIKEL_OF %s%s",
-			(Role_if(PM_ARCHEOLOGIST) && (obj->spe & STATUE_HISTORIC)) ? "historic " : "" ,
+			(Role_if(PM_ARCHEOLOGIST) && (obj->spe & STATUE_HISTORIC)) ? "ADJEKTIV_ANTIK " : "" , /* EN (Role_if(PM_ARCHEOLOGIST) && (obj->spe & STATUE_HISTORIC)) ? "historic " : "" , */
 			actualn,
 			type_is_pname(&mons[obj->corpsenm]) ? "" :
-			  (mons[obj->corpsenm].geno & G_UNIQ) ? "the " :
+			  (mons[obj->corpsenm].geno & G_UNIQ) ? "ARTIKEL_BESTIMMTER " : /* EN (mons[obj->corpsenm].geno & G_UNIQ) ? "the " : */
 			    (index(vowels,*(mons[obj->corpsenm].mname)) ?
 								"ARTIKEL_UNBESTIMMTER " : "ARTIKEL_UNBESTIMMTER "),
 			mons[obj->corpsenm].mname);
 		else Strcpy(buf, actualn);
 		break;
 	    case BALL_CLASS:
-		Sprintf(buf, "%sheavy iron ball", /* EN Sprintf(buf, "%sheavy iron ball", */ // TODO DE
-			(obj->owt > ocl->oc_weight) ? "very " : ""); /* EN (obj->owt > ocl->oc_weight) ? "very " : ""); */ // TODO DE
+		Sprintf(buf, "%sADJEKTIV_SCHWER NOUN_IRON_BALL", /* EN Sprintf(buf, "%sheavy iron ball", */
+			(obj->owt > ocl->oc_weight) ? "sehr " : ""); /* EN (obj->owt > ocl->oc_weight) ? "very " : ""); */
 		break;
 	    case POTION_CLASS:
 		if (obj->dknown && obj->odiluted)
@@ -571,10 +571,10 @@ char *prefix;
 	}
 	if (obj->rknown && obj->oerodeproof)
 		Strcat(prefix,
-		       iscrys ? "fixed " : /* EN iscrys ? "fixed " : */ // TODO DE
-		       is_rustprone(obj) ? "rustproof " : /* EN is_rustprone(obj) ? "rustproof " : */ // TODO DE
-		       is_corrodeable(obj) ? "corrodeproof " :	/* "stainless"? */ /* EN is_corrodeable(obj) ? "corrodeproof " :	*/ // TODO DE
-		       is_flammable(obj) ? "fireproof " : ""); /* EN is_flammable(obj) ? "fireproof " : ""); */ // TODO DE
+		       iscrys ? "ADJEKTIV_FIXED " : /* EN iscrys ? "fixed " : */
+		       is_rustprone(obj) ? "ADJEKTIV_RUSTPROOF " : /* EN is_rustprone(obj) ? "rustproof " : */
+		       is_corrodeable(obj) ? "ADJEKTIV_CORRODEPROOF " :	/* "stainless"? */ /* EN is_corrodeable(obj) ? "corrodeproof " :	*/
+		       is_flammable(obj) ? "ADJEKTIV_FIREPROOF " : ""); /* EN is_flammable(obj) ? "fireproof " : ""); */
 }
 
 char *

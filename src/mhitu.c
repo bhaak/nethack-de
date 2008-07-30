@@ -1126,8 +1126,8 @@ dopois:
 		    if (Free_action) {
 			You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL für einen Moment.");            /* EN You("momentarily stiffen.");             */
 		    } else {
-			if (Blind) You("are frozen!"); /* EN if (Blind) You("are frozen!"); */ // TODO DE
-			else You("are frozen by %s!", mon_nam(mtmp)); /* EN else You("are frozen by %s!", mon_nam(mtmp)); */ // TODO DE
+			if (Blind) You("VERB_ERSTARREN!"); /* EN if (Blind) You("are frozen!"); */
+			else You("VERB_ERSTARREN OBJECT KASUS_DATIV vor %s!", mon_nam(mtmp)); /* EN else You("are frozen by %s!", mon_nam(mtmp)); */
 			nomovemsg = 0;	/* default: "you can move again" */
 			nomul(-rnd(10));
 			exercise(A_DEX, FALSE);
@@ -2425,7 +2425,7 @@ const char *str;
 	if (rn2(20) < ACURR(A_CHA)) {
 		Sprintf(qbuf,"\"Soll ich dir KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s ausziehen, %s?\"", /* EN Sprintf(qbuf,"\"Shall I remove your %s, %s?\"", */
 			str,
-			(!rn2(2) ? "lover" : !rn2(2) ? "Liebes" : "Schatz")); /* EN (!rn2(2) ? "lover" : !rn2(2) ? "dear" : "sweetheart")); */ // TODO DE
+			(!rn2(2) ? "Liebling" : !rn2(2) ? "Schnucki" : "Schatz")); /* EN (!rn2(2) ? "lover" : !rn2(2) ? "dear" : "sweetheart")); */
 		if (yn(qbuf) == 'n') return;
 	} else {
 		char hairbuf[BUFSZ];
@@ -2542,14 +2542,14 @@ register struct attack *mattk;
 			    if (mon_reflects(mtmp,
 					    "Your gaze is reflected by %s.")) /* EN "Your gaze is reflected by %s %s.")) */ // TODO DE
 				return 1;
-			    pline("%s is frozen by your gaze!", Monnam(mtmp)); /* EN pline("%s is frozen by your gaze!", Monnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s VERB_ERSTARREN OBJECT durch PRONOMEN_POSSESSIV NOUN_GAZE!", Monnam(mtmp)); /* EN pline("%s is frozen by your gaze!", Monnam(mtmp)); */
 			    mtmp->mcanmove = 0;
 			    mtmp->mfrozen = tmp;
 			    return 3;
 			}
 		    }
 		} else { /* gelatinous cube */
-		    pline("%s is frozen by you.", Monnam(mtmp)); /* EN pline("%s is frozen by you.", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_ERSTARREN OBJECT vor PRONOMEN_PERSONAL.", Monnam(mtmp)); /* EN pline("%s is frozen by you.", Monnam(mtmp)); */
 		    mtmp->mcanmove = 0;
 		    mtmp->mfrozen = tmp;
 		    return 3;

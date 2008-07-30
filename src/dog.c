@@ -581,7 +581,7 @@ boolean pets_only;	/* true for ascension or final escape */
 	    } else if (mtmp->mleashed) {
 		/* this can happen if your quest leader ejects you from the
 		   "home" level while a leashed pet isn't next to you */
-		pline("%s leash goes slack.", s_suffix(Monnam(mtmp))); /* EN pline("%s leash goes slack.", s_suffix(Monnam(mtmp))); */ // TODO DE
+		pline("SUBJECT %s wird schlaff.", genitivattribut_zu_wort(Monnam(mtmp), "NOUN_LEASH")); /* EN pline("%s leash goes slack.", s_suffix(Monnam(mtmp))); */
 		m_unleash(mtmp, FALSE);
 	    }
 	}

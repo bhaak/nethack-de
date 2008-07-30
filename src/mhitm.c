@@ -883,7 +883,7 @@ mdamagem(magr, mdef, mattk)
 		if(!cancelled && mdef->mcanmove) {
 		    if (vis) {
 			Strcpy(buf, Monnam(mdef));
-			pline("%s is frozen by %s.", buf, mon_nam(magr)); /* EN pline("%s is frozen by %s.", buf, mon_nam(magr)); */ // TODO DE
+			pline("SUBJECT %s VERB_ERSTARREN OBJECT KASUS_DATIV vor %s.", buf, mon_nam(magr)); /* EN pline("%s is frozen by %s.", buf, mon_nam(magr)); */
 		    }
 		    mdef->mcanmove = 0;
 		    mdef->mfrozen = rnd(10);
@@ -1339,7 +1339,7 @@ int mdead;
 				return(mdead|mhit);
 			Strcpy(buf, Monnam(magr));
 			if(canseemon(magr))
-			    pline("%s is frozen by %s!", /* EN pline("%s is frozen by %s gaze!", */ // TODO DE
+			    pline("SUBJECT %s VERB_ERSTARREN OBJECT durch %s!", /* EN pline("%s is frozen by %s gaze!", */
 				  buf, genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GAZE")); /* EN buf, s_suffix(mon_nam(mdef))); */
 			magr->mcanmove = 0;
 			magr->mfrozen = tmp;
@@ -1348,7 +1348,7 @@ int mdead;
 		} else { /* gelatinous cube */
 		    Strcpy(buf, Monnam(magr));
 		    if(canseemon(magr))
-			pline("%s is frozen by %s.", buf, mon_nam(mdef)); /* EN pline("%s is frozen by %s.", buf, mon_nam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_ERSTARREN OBJECT KASUS_DATIV vor %s.", buf, mon_nam(mdef)); /* EN pline("%s is frozen by %s.", buf, mon_nam(mdef)); */
 		    magr->mcanmove = 0;
 		    magr->mfrozen = tmp;
 		    return (mdead|mhit);

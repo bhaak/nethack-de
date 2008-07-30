@@ -241,7 +241,7 @@ register struct edog *edog;
 		    && mtmp != u.usteed
 #endif
 		    )
-		    Your("leash goes slack."); /* EN Your("leash goes slack."); */ // TODO DE
+		    Your("NOUN_LEASH wird schlaff."); /* EN Your("leash goes slack."); */
 		else if (cansee(mtmp->mx, mtmp->my))
 		    pline("SUBJECT %s VERB_VERHUNGERN.", Monnam(mtmp)); /* EN pline("%s starves.", Monnam(mtmp)); */
 		else

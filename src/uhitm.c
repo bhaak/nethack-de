@@ -1600,7 +1600,7 @@ register struct attack *mattk;
 		break;
 	    case AD_PLYS:
 		if (!negated && mdef->mcanmove && !rn2(3) && tmp < mdef->mhp) {
-		    if (!Blind) pline("%s is frozen by you!", Monnam(mdef)); /* EN if (!Blind) pline("%s is frozen by you!", Monnam(mdef)); */ // TODO DE
+		    if (!Blind) pline("SUBJECT %s VERB_ERSTARREN OBJECT KASUS_DATIV vor PRONOMEN_POSSESSIV!", Monnam(mdef)); /* EN if (!Blind) pline("%s is frozen by you!", Monnam(mdef)); */
 		    mdef->mcanmove = 0;
 		    mdef->mfrozen = rnd(10);
 		}
@@ -2273,7 +2273,7 @@ uchar aatyp;
 			    You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL kurz NEUES_OBJECT OBJECT KASUS_DATIV unter %s!", /* EN You("momentarily stiffen under %s gaze!", */
 				    genitivattribut_zu_wort(mon_nam(mon), "NOUN_GAZE")); /* EN s_suffix(mon_nam(mon))); */
 			else {
-			    You("are frozen by %s!", /* EN You("are frozen by %s gaze!", */ // TODO DE
+			    You("VERB_ERSTARREN OBJECT durch %s!", /* EN You("are frozen by %s gaze!", */
 				  genitivattribut_zu_wort(mon_nam(mon), "NOUN_GAZE")); /* EN s_suffix(mon_nam(mon))); */
 			    nomul((ACURR(A_WIS) > 12 || rn2(4)) ? -tmp : -127);
 			}
@@ -2285,7 +2285,7 @@ uchar aatyp;
 		} else if (Free_action) {
 		    You("VERB_VERSTEIFEN OBJECT PRONOMEN_PERSONAL für einen Moment."); /* EN You("momentarily stiffen."); */
 		} else { /* gelatinous cube */
-		    You("are frozen by %s!", mon_nam(mon)); /* EN You("are frozen by %s!", mon_nam(mon)); */ // TODO DE
+		    You("VERB_ERSTARREN OBJECT KASUS_DATIV vor %s!", mon_nam(mon)); /* EN You("are frozen by %s!", mon_nam(mon)); */
 	    	    nomovemsg = 0;	/* default: "you can move again" */
 		    nomul(-tmp);
 		    exercise(A_DEX, FALSE);
