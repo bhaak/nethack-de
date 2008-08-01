@@ -625,6 +625,16 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Runenpfeile", "NOUN_RUNED_ARROWs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Runenpfeilen", "NOUN_RUNED_ARROWs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"klobigen Pfeiles", "NOUN_CRUDE_ARROW", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Pfeil", "NOUN_CRUDE_ARROW", "", nominativ, maskulin, n_singular, bestimmter},
+  {"klobiger Pfeil", "NOUN_CRUDE_ARROW", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"klobigen Pfeil", "NOUN_CRUDE_ARROW", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigem Pfeil", "NOUN_CRUDE_ARROW", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"klobigen Pfeilen", "NOUN_CRUDE_ARROWs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigen Pfeile", "NOUN_CRUDE_ARROWs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|bestimmter},
+  {"klobige Pfeile", "NOUN_CRUDE_ARROWs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
+  {"klobiger Pfeile", "NOUN_CRUDE_ARROWs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
   {"Bambuspfeiles", "NOUN_BAMBOO_ARROW", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Bambuspfeil", "NOUN_BAMBOO_ARROW", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Bambuspfeile", "NOUN_BAMBOO_ARROWs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -639,6 +649,16 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Runenspeer", "NOUN_RUNED_SPEAR", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Runenspeere", "NOUN_RUNED_SPEARs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Runenspeeren", "NOUN_RUNED_SPEARs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"klobigen Speeres", "NOUN_CRUDE_SPEAR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Speer", "NOUN_CRUDE_SPEAR", "", nominativ, maskulin, n_singular, bestimmter},
+  {"klobiger Speer", "NOUN_CRUDE_SPEAR", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"klobigen Speer", "NOUN_CRUDE_SPEAR", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigem Speer", "NOUN_CRUDE_SPEAR", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"klobigen Speeren", "NOUN_CRUDE_SPEARs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigen Speere", "NOUN_CRUDE_SPEARs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|bestimmter},
+  {"klobige Speere", "NOUN_CRUDE_SPEARs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
+  {"klobiger Speere", "NOUN_CRUDE_SPEARs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
   {"schweren Speeres", "NOUN_STOUT_SPEAR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"schwere Speer", "NOUN_STOUT_SPEAR", "", nominativ, maskulin, n_singular, bestimmter},
@@ -660,10 +680,30 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Runendolche", "NOUN_RUNED_DAGGERs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Runendolchen", "NOUN_RUNED_DAGGERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"klobigen Dolches", "NOUN_CRUDE_DAGGER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Dolch", "NOUN_CRUDE_DAGGER", "", nominativ, maskulin, n_singular, bestimmter},
+  {"klobiger Dolch", "NOUN_CRUDE_DAGGER", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"klobigen Dolch", "NOUN_CRUDE_DAGGER", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigem Dolch", "NOUN_CRUDE_DAGGER", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"klobigen Dolchen", "NOUN_CRUDE_DAGGERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigen Dolche", "NOUN_CRUDE_DAGGERs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|bestimmter},
+  {"klobige Dolche", "NOUN_CRUDE_DAGGERs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
+  {"klobiger Dolche", "NOUN_CRUDE_DAGGERs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
   {"Runenkurzschwertes", "NOUN_RUNED_SHORT_SWORD", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Runenkurzschwert", "NOUN_RUNED_SHORT_SWORD", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Runenkurzschwerter", "NOUN_RUNED_SHORT_SWORDs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Runenkurzschwertern", "NOUN_RUNED_SHORT_SWORDs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"klobigen Kurzschwertes", "NOUN_CRUDE_SHORT_SWORD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Kurzschwert", "NOUN_CRUDE_SHORT_SWORD", "", nominativ, maskulin, n_singular, bestimmter},
+  {"klobiger Kurzschwert", "NOUN_CRUDE_SHORT_SWORD", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"klobigen Kurzschwert", "NOUN_CRUDE_SHORT_SWORD", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigem Kurzschwert", "NOUN_CRUDE_SHORT_SWORD", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"klobigen Kurzschwerten", "NOUN_CRUDE_SHORT_SWORDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigen Kurzschwerte", "NOUN_CRUDE_SHORT_SWORDs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|bestimmter},
+  {"klobige Kurzschwerte", "NOUN_CRUDE_SHORT_SWORDs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
+  {"klobiger Kurzschwerte", "NOUN_CRUDE_SHORT_SWORDs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
   {"Krummschwertes", "NOUN_CURVED_SWORD", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Krummschwert", "NOUN_CURVED_SWORD", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -782,6 +822,15 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Runenbogens", "NOUN_RUNED_BOW", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Runenbogen", "NOUN_RUNED_BOW", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Runenbogen", "NOUN_RUNED_BOWs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"klobigen Bogens", "NOUN_CRUDE_BOW", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Bogen", "NOUN_CRUDE_BOW", "", nominativ, maskulin, n_singular, bestimmter},
+  {"klobiger Bogen", "NOUN_CRUDE_BOW", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"klobigen Bogen", "NOUN_CRUDE_BOW", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigem Bogen", "NOUN_CRUDE_BOW", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"klobigen Bogen", "NOUN_CRUDE_BOWs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Bogen", "NOUN_CRUDE_BOWs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
+  {"klobiger Bogen", "NOUN_CRUDE_BOWs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
   {"Langbogens", "NOUN_LONG_BOW", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Langbogen", "NOUN_LONG_BOW", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -1179,6 +1228,25 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Visierhelme", "NOUN_VISORED_HELMETs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Visierhelmen", "NOUN_VISORED_HELMETs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"klobigen Kettenhemdes", "NOUN_CRUDE_CHAIN_MAIL", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Kettenhemd", "NOUN_CRUDE_CHAIN_MAIL", "", akkusativ|nominativ, neutrum, n_singular, bestimmter},
+  {"klobiges Kettenhemd", "NOUN_CRUDE_CHAIN_MAIL", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne},
+  {"klobigen Kettenhemd", "NOUN_CRUDE_CHAIN_MAIL", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
+  {"klobigem Kettenhemd", "NOUN_CRUDE_CHAIN_MAIL", "", dativ, neutrum, n_singular, grundform|ohne},
+  {"klobigen Kettenhemden", "NOUN_CRUDE_CHAIN_MAILs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Kettenhemden", "NOUN_CRUDE_CHAIN_MAILs", "", akkusativ|nominativ, neutrum, n_plural, grundform|ohne},
+  {"klobiger Kettenhemden", "NOUN_CRUDE_CHAIN_MAILs", "", genitiv, neutrum, n_plural, grundform|ohne},
+
+  {"klobigen Ringpanzers", "NOUN_CRUDE_RING_MAIL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobige Ringpanzer", "NOUN_CRUDE_RING_MAIL", "", nominativ, maskulin, n_singular, bestimmter},
+  {"klobiger Ringpanzer", "NOUN_CRUDE_RING_MAIL", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"klobigen Ringpanzer", "NOUN_CRUDE_RING_MAIL", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigem Ringpanzer", "NOUN_CRUDE_RING_MAIL", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"klobigen Ringpanzern", "NOUN_CRUDE_RING_MAILs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"klobigen Ringpanzer", "NOUN_CRUDE_RING_MAILs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|bestimmter},
+  {"klobige Ringpanzer", "NOUN_CRUDE_RING_MAILs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
+  {"klobiger Ringpanzer", "NOUN_CRUDE_RING_MAILs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
   {"Schürze", "NOUN_APRON", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schürzen", "NOUN_APRONs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -1306,6 +1374,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Transformation", "NOUN_WAND_POLYMORPH", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Transformationen", "NOUN_WAND_POLYMORPHs", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Polymorphie", "NOUN_WAND_POLYMORPH", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Löschung", "NOUN_WAND_CANCELLATION", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Löschungen", "NOUN_WAND_CANCELLATIONs", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -1408,6 +1478,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Kälteresistenz", "NOUN_RING_COLD_RESISTANCE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kälteresistenzen", "NOUN_RING_COLD_RESISTANCEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Stromresistenz", "NOUN_RING_SHOCK_RESISTANCE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stromresistenzen", "NOUN_RING_SHOCK_RESISTANCEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Bewegungsfreiheit", "NOUN_RING_FREE_ACTION", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Bewegungsfreiheiten", "NOUN_RING_FREE_ACTIONs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -1430,8 +1503,12 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Transformation", "NOUN_RING_POLYMORPH", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Transformationen", "NOUN_RING_POLYMORPHs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Polymorphie", "NOUN_RING_POLYMORPH", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Transformationskontrolle", "NOUN_RING_POLYMORPH_CONTROL", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Transformationskontrollen", "NOUN_RING_POLYMORPH_CONTROLs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Polymorphiekontrolle", "NOUN_RING_POLYMORPH_CONTROL", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Unsichtbarkeit", "NOUN_RING_INVISIBILITY", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -1444,6 +1521,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schutzes vor Formwandlern", "NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schutz vor Formwandlern", "NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schutzen vor Formwandlern", "NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERSs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schutzes vor Gestaltwandlern", "NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schutz vor Gestaltwandlern", "NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERS", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schutzen vor Gestaltwandlern", "NOUN_RING_PROTECTION_FROM_SHAPE_CHANGERSs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
 
   /* Rings, unidentified */
@@ -1462,6 +1543,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Opalring", "NOUN_RING_UNIDENTIFIED_OPAL", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Opalringe", "NOUN_RING_UNIDENTIFIED_OPALs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Opalringen", "NOUN_RING_UNIDENTIFIED_OPALs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Lehmringes", "NOUN_RING_UNIDENTIFIED_CLAY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lehmring", "NOUN_RING_UNIDENTIFIED_CLAY", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lehmringe", "NOUN_RING_UNIDENTIFIED_CLAYs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Lehmringen", "NOUN_RING_UNIDENTIFIED_CLAYs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Tonringes", "NOUN_RING_UNIDENTIFIED_CLAY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Tonring", "NOUN_RING_UNIDENTIFIED_CLAY", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -1603,6 +1689,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Opal", "RING_UNIDENTIFIED_OPAL", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Opale", "RING_UNIDENTIFIED_OPALs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Opalen", "RING_UNIDENTIFIED_OPALs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Lehmes", "RING_UNIDENTIFIED_CLAY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lehm", "RING_UNIDENTIFIED_CLAY", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lehme", "RING_UNIDENTIFIED_CLAYs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Lehmen", "RING_UNIDENTIFIED_CLAYs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Tones", "RING_UNIDENTIFIED_CLAY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ton", "RING_UNIDENTIFIED_CLAY", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -2246,6 +2337,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Ledertrommel", "NOUN_LEATHER_DRUM", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ledertrommeln", "NOUN_LEATHER_DRUMs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Erdbebentrommel", "NOUN_DRUM_OF_EARTHQUAKE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Erdbebentrommeln", "NOUN_DRUM_OF_EARTHQUAKEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Spitzhacke", "NOUN_PICK_AXE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Spitzhacken", "NOUN_PICK_AXEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -2270,6 +2364,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Horn eines Einhorns", "NOUN_UNICORN_HORN", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hörner eines Einhorns", "NOUN_UNICORN_HORNs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Hörnern eines Einhorns", "NOUN_UNICORN_HORNs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Kandelabers der Anrufung", "NOUN_CANDELABRUM_OF_INVOCATION", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kandelaber der Anrufung", "NOUN_CANDELABRUM_OF_INVOCATION", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kandelaber der Anrufung", "NOUN_CANDELABRUM_OF_INVOCATIONs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Kandelabern der Anrufung", "NOUN_CANDELABRUM_OF_INVOCATIONs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
 
   /* Tools, unidentified */
@@ -2470,6 +2569,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   /* Potions, identified */
 
+  {"Fertigkeitsgewinnes", "NOUN_POT_GAIN_ABILITY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Fertigkeitsgewinn", "NOUN_POT_GAIN_ABILITY", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Fertigkeitsgewinne", "NOUN_POT_GAIN_ABILITYs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Fertigkeitsgewinnen", "NOUN_POT_GAIN_ABILITYs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Verwirrung", "NOUN_POT_CONFUSION", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Verwirrungen", "NOUN_POT_CONFUSIONs", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -2516,6 +2620,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Transformation", "NOUN_POT_POLYMORPH", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Transformationen", "NOUN_POT_POLYMORPHs", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Polymorphie", "NOUN_POT_POLYMORPH", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Schnapses", "NOUN_POT_BOOZE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schnaps", "NOUN_POT_BOOZE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -3458,6 +3564,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Transformation", "NOUN_SPE_POLYMORPH", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Transformationen", "NOUN_SPE_POLYMORPHs", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Polymorphie", "NOUN_SPE_POLYMORPH", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Wegteleportierens", "NOUN_SPE_TELEPORT_AWAY", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wegteleportieren", "NOUN_SPE_TELEPORT_AWAY", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -5428,6 +5536,44 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   
 
 
+  /* japanische Bezeichnungen */
+
+  {"Wakizashi", "NOUN_JAP_WAKIZASHI", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wakizashi", "NOUN_JAP_WAKIZASHIs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ninjato", "NOUN_JAP_NINJA_TO", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ninjato", "NOUN_JAP_NINJA_TOs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Nunchaku", "NOUN_JAP_NUNCHAKU", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Nunchakus", "NOUN_JAP_NUNCHAKUs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Naginata", "NOUN_JAP_NAGINATA", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Naginata", "NOUN_JAP_NAGINATAs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Osaku", "NOUN_JAP_OSAKU", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Osaku", "NOUN_JAP_OSAKUs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Koto", "NOUN_JAP_KOTO", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Koto", "NOUN_JAP_KOTOs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Shito", "NOUN_JAP_SHITO", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Shito", "NOUN_JAP_SHITOs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Tanko", "NOUN_JAP_TANKO", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tanko", "NOUN_JAP_TANKOs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Kabuto", "NOUN_JAP_KABUTO", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kabuto", "NOUN_JAP_KABUTOs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Yugake", "NOUN_JAP_YUGAKE", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Yugake", "NOUN_JAP_YUGAKEs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Gunyoki", "NOUN_JAP_GUNYOKI", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gunyoki", "NOUN_JAP_GUNYOKIs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Sake", "NOUN_JAP_SAKE", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+
   /* Other objects, identified */
 
   {"Felsbrockens", "NOUN_BOULDER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -5900,6 +6046,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Mûmaks", "NOUN_MUMAK", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Mûmak", "NOUN_MUMAK", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Mûmakil", "NOUN_MUMAKs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Olifant", "NOUN_MUMAK", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Olifanten", "NOUN_MUMAK", "", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Olifanten", "NOUN_MUMAKs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Leocrotta", "NOUN_LEOCROTTA", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Leocrottae", "NOUN_LEOCROTTAs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -6665,6 +6815,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Lehmgolem", "NOUN_CLAY_GOLEM", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lehmgolems", "NOUN_CLAY_GOLEMs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Tongolems", "NOUN_CLAY_GOLEM", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tongolem", "NOUN_CLAY_GOLEM", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tongolems", "NOUN_CLAY_GOLEMs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Steingolems", "NOUN_STONE_GOLEM", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Steingolem", "NOUN_STONE_GOLEM", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Steingolems", "NOUN_STONE_GOLEMs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -7247,6 +7401,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Transformationsfalle", "NOUN_POLYMORPH_TRAP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Transformationsfallen", "NOUN_POLYMORPH_TRAPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Polymorphiefalle", "NOUN_POLYMORPH_TRAP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Polymorphiefallen", "NOUN_POLYMORPH_TRAPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Vierbeiners", "NOUN_QUADRUPED", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Vierbeiner", "NOUN_QUADRUPED", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -12996,6 +13153,30 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"wohlverdiente", "ADJEKTIV_WOHLVERDIENT", "", akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, ohne},
   {"wohlverdienter", "ADJEKTIV_WOHLVERDIENT", "", genitiv, feminin|maskulin|neutrum, n_plural, ohne},
   {"wohlverdienten", "ADJEKTIV_WOHLVERDIENT", "", dativ, feminin|maskulin|neutrum, n_plural, ohne},
+  
+
+  {"wütend", "ADJEKTIV_WUETEND", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, grundform},
+  {"wütende", "ADJEKTIV_WUETEND", "", nominativ, feminin|maskulin|neutrum, n_singular, bestimmter},
+  {"wütenden", "ADJEKTIV_WUETEND", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"wütende", "ADJEKTIV_WUETEND", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"wütenden", "ADJEKTIV_WUETEND", "", dativ|genitiv, feminin|maskulin|neutrum, n_singular, bestimmter},
+  {"wütenden", "ADJEKTIV_WUETEND", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, bestimmter},
+  {"wütender", "ADJEKTIV_WUETEND", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"wütenden", "ADJEKTIV_WUETEND", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"wütende", "ADJEKTIV_WUETEND", "", akkusativ|nominativ, feminin, n_singular, unbestimmter},
+  {"wütendes", "ADJEKTIV_WUETEND", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter},
+  {"wütenden", "ADJEKTIV_WUETEND", "", dativ|genitiv, feminin|maskulin|neutrum, n_singular, unbestimmter},
+  {"wütenden", "ADJEKTIV_WUETEND", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, unbestimmter},
+  {"wütender", "ADJEKTIV_WUETEND", "", nominativ, maskulin, n_singular, ohne},
+  {"wütenden", "ADJEKTIV_WUETEND", "", genitiv|akkusativ, maskulin, n_singular, ohne},
+  {"wütendem", "ADJEKTIV_WUETEND", "", dativ, maskulin|neutrum, n_singular, ohne},
+  {"wütendes", "ADJEKTIV_WUETEND", "", akkusativ|nominativ, neutrum, n_singular, ohne},
+  {"wütenden", "ADJEKTIV_WUETEND", "", genitiv, neutrum, n_singular, ohne},
+  {"wütende", "ADJEKTIV_WUETEND", "", akkusativ|nominativ, feminin, n_singular, ohne},
+  {"wütender", "ADJEKTIV_WUETEND", "", dativ|genitiv, feminin, n_singular, ohne},
+  {"wütende", "ADJEKTIV_WUETEND", "", akkusativ|nominativ, feminin|maskulin|neutrum, n_plural, ohne},
+  {"wütender", "ADJEKTIV_WUETEND", "", genitiv, feminin|maskulin|neutrum, n_plural, ohne},
+  {"wütenden", "ADJEKTIV_WUETEND", "", dativ, feminin|maskulin|neutrum, n_plural, ohne},
   
 
   {"zweihändisch", "ADJEKTIV_ZWEIHAENDISCH", "", dativ|genitiv|akkusativ|nominativ, feminin|maskulin|neutrum, n_singular|n_plural, grundform},
