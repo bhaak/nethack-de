@@ -266,7 +266,7 @@ const struct symdef defsyms[MAXPCHARS] = {
 	{'^', "NOUN_TELEPORTATION_TRAP", C(CLR_MAGENTA)},	/* trap */
 	{'^', "NOUN_LEVEL_TELEPORTER", C(CLR_MAGENTA)},	/* trap */
 	{'^', "NOUN_MAGIC_PORTAL",	C(CLR_BRIGHT_MAGENTA)},	/* trap */
-	{'"', "web",		C(CLR_GRAY)},	/* web */
+	{'"', "NOUN_WEB",		C(CLR_GRAY)},	/* web */
 	{'^', "NOUN_STATUE_TRAP",	C(CLR_GRAY)},	/* trap */
 /*60*/	{'^', "NOUN_MAGIC_TRAP",	C(HI_ZAP)},	/* trap */
 	{'^', "NOUN_ANTI_MAGIC_FIELD", C(HI_ZAP)},	/* trap */

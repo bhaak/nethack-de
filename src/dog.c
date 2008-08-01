@@ -5,6 +5,10 @@
 #include "hack.h"
 #include "edog.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVLB
 
 STATIC_DCL int NDECL(pet_type);

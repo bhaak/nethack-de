@@ -1052,8 +1052,8 @@ struct obj *obj;
 	    if (obj->unpaid && costly_spot(u.ux, u.uy) && (obj->where == OBJ_INVENT)) {
 	        /* if it catches while you have it, then it's your tough luck */
 		check_unpaid(obj);
-	        verbalize("That's in addition to the cost of %s %s, of course.", /* EN verbalize("That's in addition to the cost of %s %s, of course.", */ // TODO DE
-				Yname2(obj), obj->quan == 1 ? "itself" : "themselves"); /* EN Yname2(obj), obj->quan == 1 ? "itself" : "themselves"); */ // TODO DE
+	        verbalize("Zuzüglich zu den Kosten KASUS_GENITIV %s selbst, versteht sich.", /* EN verbalize("That's in addition to the cost of %s %s, of course.", */
+				Yname2(obj)); /* EN Yname2(obj), obj->quan == 1 ? "itself" : "themselves"); */
 		bill_dummy_object(obj);
 	    }
 	    begin_burn(obj, FALSE);
@@ -1147,7 +1147,7 @@ light_cocktail(obj)
 	     * for an item, but (Yendorian Fuel) Taxes are inevitable...
 	     */
 	    check_unpaid(obj);
-	    verbalize("Das ist natürlich zusätzlich zu den Kosten des Trankes."); /* EN verbalize("That's in addition to the cost of the potion, of course."); */
+	    verbalize("Zuzüglich zu den Kosten des Trankes selbst, versteht sich."); /* EN verbalize("That's in addition to the cost of the potion, of course."); */
 	    bill_dummy_object(obj);
 	}
 	makeknown(obj->otyp);

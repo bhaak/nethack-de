@@ -41,7 +41,7 @@ STATIC_DCL struct Jitem Japanese_items[];
 
 STATIC_OVL struct Jitem Japanese_items[] = {
 	{ SHORT_SWORD, "NOUN_JAP_WAKIZASHI" }, /* EN { SHORT_SWORD, "wakizashi" }, */
-	{ BROADSWORD, "NOUN_JAP_NINJA-to" }, /* EN { BROADSWORD, "ninja-to" }, */
+	{ BROADSWORD, "NOUN_JAP_NINJA_TO" }, /* EN { BROADSWORD, "ninja-to" }, */
 	{ FLAIL, "NOUN_JAP_NUNCHAKU" }, /* EN { FLAIL, "nunchaku" }, */
 	{ GLAIVE, "NOUN_JAP_NAGINATA" }, /* EN { GLAIVE, "naginata" }, */
 	{ LOCK_PICK, "NOUN_JAP_OSAKU" }, /* EN { LOCK_PICK, "osaku" }, */

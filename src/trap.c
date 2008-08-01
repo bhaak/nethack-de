@@ -45,7 +45,7 @@ STATIC_VAR const char * const blindgas[6];
 
 STATIC_VAR const char * const a_your[2] = { "ARTIKEL_UNBESTIMMTER", "PRONOMEN_POSSESSIV" }; /* EN STATIC_VAR const char * const a_your[2] = { "a", "your" }; */
 STATIC_VAR const char * const A_Your[2] = { "SUBJECT ARTIKEL_UNBESTIMMTER", "SUBJECT PRONOMEN_POSSESSIV" }; /* EN STATIC_VAR const char * const A_Your[2] = { "A", "Your" }; */
-STATIC_VAR const char tower_of_flame[] = "tower of flame"; /* EN STATIC_VAR const char tower_of_flame[] = "tower of flame"; */ // TODO DE
+STATIC_VAR const char tower_of_flame[] = "NOUN_FLAMMENSAEULE"; /* EN STATIC_VAR const char tower_of_flame[] = "tower of flame"; */
 STATIC_VAR const char * const A_gush_of_water_hits = "SUBJECT ARTIKEL_UNBESTIMMTER NOUN_SCHWALL Wasser VERB_HIT"; /* EN STATIC_VAR const char * const A_gush_of_water_hits = "A gush of water hits"; */
 STATIC_VAR const char * const blindgas[6] = 
 	{"ADJEKTIV_FEUCHT", "ADJEKTIV_GERUCHLOS", "ADJEKTIV_STECHEND", "ADJEKTIV_KUEHLEND", "ADJEKTIV_AETZEND", "ADJEKTIV_BEISSEND"}; /* EN {"humid", "odorless", "pungent", "chilling", "acrid", "biting"}; */
@@ -1896,11 +1896,11 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 		case FIRE_TRAP:
  mfiretrap:
 			if (in_sight)
-			    pline("A %s erupts from the %s under %s!", /* EN pline("A %s erupts from the %s under %s!", */ // TODO DE
+			    pline("SUBJECT ARTIKEL_UNBESTIMMTER %s VERB_BRECHEN OBJECT KASUS_DATIV aus ARTIKEL_BESTIMMTER %s NEUES_OBJECT OBJECT KASUS_DATIV unter %s hervor!", /* EN pline("A %s erupts from the %s under %s!", */
 				  tower_of_flame,
 				  surface(mtmp->mx,mtmp->my), mon_nam(mtmp));
 			else if (see_it)  /* evidently `mtmp' is invisible */
-			    You("see a %s erupt from the %s!", /* EN You("see a %s erupt from the %s!", */ // TODO DE
+			    You("VERB_SEHEN OBJECT ARTIKEL_UNBESTIMMTER %s NEUES_OBJECT OBJECT KASUS_DATIV aus ARTIKEL_BESTIMMTER %s hervorbrechen!", /* EN You("see a %s erupt from the %s!", */
 				tower_of_flame, surface(mtmp->mx,mtmp->my));
 
 			if (resists_fire(mtmp)) {
@@ -1982,7 +1982,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 				mptr->msize >= MZ_HUGE) {
 			    if (inescapable) {	/* sokoban hole */
 				if (in_sight) {
-				    pline("%s seems to be yanked down!", /* EN pline("%s seems to be yanked down!", */ // TODO DE
+				    pline("SUBJECT %s VERB_SCHEINEN runter gerissen zu werden!", /* EN pline("%s seems to be yanked down!", */
 					  Monnam(mtmp));
 				    /* suppress message in mlevel_tele_trap() */
 				    in_sight = FALSE;
@@ -2271,8 +2271,8 @@ float_up()
 		spoteffects(TRUE);
 	else if(u.uswallow)
 		You(is_animal(u.ustuck->data) ?
-			"float away from the %s."  : /* EN "float away from the %s."  : */ // TODO DE
-			"spiral up into %s.", /* EN "spiral up into %s.", */ // TODO DE
+			"VERB_HEBEN OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER %s ab."  : /* EN "float away from the %s."  : */
+			"VERB_SCHWEBEN OBJECT KASUS_DATIV in %s hoch.", /* EN "spiral up into %s.", */
 		    is_animal(u.ustuck->data) ?
 			surface(u.ux, u.uy) :
 			mon_nam(u.ustuck));
@@ -2454,8 +2454,8 @@ struct obj *box;	/* null for floor trap */
 	    else losehp(rnd(3), "ADJEKTIV_SIEDEND NOUN_WATER", KILLED_BY); /* EN else losehp(rnd(3), "boiling water", KILLED_BY); */
 	    return;
 	}
-	pline("A %s %s from %s!", tower_of_flame, /* EN pline("A %s %s from %s!", tower_of_flame, */ // TODO DE
-	      box ? "bursts" : "erupts", /* EN box ? "bursts" : "erupts", */ // TODO DE
+	pline("SUBJECT ARTIKEL_UNBESTIMMTER %s %s OBJECT KASUS_DATIV aus %s hervor!", tower_of_flame, /* EN pline("A %s %s from %s!", tower_of_flame, */
+	      box ? "VERB_BRECHEN" : "VERB_SCHIESSEN", /* EN box ? "bursts" : "erupts", */
 	      the(box ? xname(box) : surface(u.ux,u.uy)));
 	if (Fire_resistance) {
 	    shieldeff(u.ux, u.uy);

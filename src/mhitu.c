@@ -1490,7 +1490,7 @@ dopois:
 		dmg = 0;
 		break;
 	    case AD_DETH:
-		pline("SUBJECT %s VERB_STRECKEN seine Hand OBJECT KASUS_AKKUSATIV nach PRONOMEN_PERSONAL aus.", Monnam(mtmp)); /* EN pline("%s reaches out with its deadly touch.", Monnam(mtmp)); */
+		pline("SUBJECT %s VERB_STRECKEN seine Hand OBJECT KASUS_DATIV nach PRONOMEN_PERSONAL aus.", Monnam(mtmp)); /* EN pline("%s reaches out with its deadly touch.", Monnam(mtmp)); */
 		if (is_undead(youmonst.data)) {
 		    /* Still does normal damage */
 		    pline("War das die Hand des Todes?"); /* EN pline("Was that the touch of death?"); */
@@ -1532,7 +1532,7 @@ dopois:
 		hitmsg(mtmp, mattk);
 		if (!uncancelled) break;
 		if (flaming(youmonst.data)) {
-		    pline_The("slime burns away!"); /* EN pline_The("slime burns away!"); */ // TODO DE
+		    pline("Der Schleim verbrennt!"); /* EN pline_The("slime burns away!"); */
 		    dmg = 0;
 		} else if (Unchanging ||
 				youmonst.data == &mons[PM_GREEN_SLIME]) {
