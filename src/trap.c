@@ -3442,10 +3442,10 @@ boolean force;
 			    trap_skipped = TRUE;
 			    deal_with_floor_trap = FALSE;
 			} else {
-			    Sprintf(qbuf, "There %s and %s here. %s %s?", /* EN Sprintf(qbuf, "There %s and %s here. %s %s?", */ // TODO DE
-				(containercnt == 1) ? "is a container" : "are containers", /* EN (containercnt == 1) ? "is a container" : "are containers", */ // TODO DE
+			    Sprintf(qbuf, "Hier sind %s und %s. NEUER_SATZ SUBJECT %s %s?", /* EN Sprintf(qbuf, "There %s and %s here. %s %s?", */
+				(containercnt == 1) ? "ein Behälter" : "mehrere Behälter", /* EN (containercnt == 1) ? "is a container" : "are containers", */
 				an(defsyms[trap_to_defsym(ttmp->ttyp)].explanation),
-				ttmp->ttyp == WEB ? "Remove" : "Disarm", the_trap); /* EN ttmp->ttyp == WEB ? "Remove" : "Disarm", the_trap); */ // TODO DE
+				the_trap, ttmp->ttyp == WEB ? "entfernen" : "entschärfen"); /* EN ttmp->ttyp == WEB ? "Remove" : "Disarm", the_trap); */
 			    switch (ynq(qbuf)) {
 				case 'q': return(0);
 				case 'n': trap_skipped = TRUE;

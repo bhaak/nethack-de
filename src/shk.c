@@ -5,6 +5,10 @@
 #include "hack.h"
 #include "eshk.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /*#define DEBUG*/
 
 #define PAY_SOME    2
@@ -1728,12 +1732,12 @@ int croaked;
                         money2mon(shkp, loss);
 #endif
 			flags.botl = 1;
-			pline("%s %s the %ld %s %sowed %s.", /* EN pline("%s %s the %ld %s %sowed %s.", */ // TODO DE
+			pline("SUBJECT %s %s %s %ld %s, NEUER_SATZ %s SUBJECT_IM_SATZ %s %s MODIFIER_VERB_PRAETERITUM VERB_OWE.", /* EN pline("%s %s the %ld %s %sowed %s.", */
 			      Monnam(shkp), takes,
-			      loss, currency(loss),
+			      (loss == 1) ? "den" : "die", loss, currency(loss), (loss == 1) ? "den" : "die", /* EN loss, currency(loss), */
 			      strncmp(eshkp->customer, plname, PL_NSIZ) ?
-					"" : "you ", /* EN "" : "you ", */ // TODO DE
-			      shkp->female ? "her" : "him"); /* EN shkp->female ? "her" : "him"); */ // TODO DE
+					eshkp->customer : "PRONOMEN_PERSONAL", /* EN "" : "you ", */
+			      shkp->female ? "ihr" : "ihm"); /* EN shkp->female ? "her" : "him"); */
 			/* shopkeeper has now been paid in full */
 			pacify_shk(shkp);
 			eshkp->following = 0;
@@ -2184,9 +2188,9 @@ const char *arg;
 	obj_name = doname(obj);
 	/* Use an alternate message when extra information is being provided */
 	if (was_unknown) {
-	    Sprintf(fmtbuf, "SATZBEGINN %%s und SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s", fmt); /* EN Sprintf(fmtbuf, "%%s; you %s", fmt); */ // TODO DE
+	    Sprintf(fmtbuf, "SATZBEGINN %%s! Und SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s", fmt); /* EN Sprintf(fmtbuf, "%%s; you %s", fmt); */
 	    obj_name[0] = highc(obj_name[0]);
-	    pline(fmtbuf, obj_name, (obj->quan > 1) ? "them" : "it", /* EN pline(fmtbuf, obj_name, (obj->quan > 1) ? "them" : "it", */ // TODO DE
+	    pline(fmtbuf, obj_name, pronominalisierung(xname(obj)), /* EN pline(fmtbuf, obj_name, (obj->quan > 1) ? "them" : "it", */
 		  amt, plur(amt), arg);
 	} else {
 	    You(fmt, obj_name, amt, plur(amt), arg);
@@ -2490,11 +2494,11 @@ register boolean peaceful, silent;
 
 		if (credit_use) {
 		    if (ESHK(shkp)->credit) {
-			You("have %ld %s credit remaining.", /* EN You("have %ld %s credit remaining.", */ // TODO DE
+			You("VERB_HABEN noch %ld %s Guthaben.", /* EN You("have %ld %s credit remaining.", */
 				 ESHK(shkp)->credit, currency(ESHK(shkp)->credit));
 			return value;
 		    } else if (!value) {
-			You("have no credit remaining."); /* EN You("have no credit remaining."); */ // TODO DE
+			You("VERB_HABEN kein Guthaben mehr."); /* EN You("have no credit remaining."); */
 			return 0;
 		    }
 		    still = "immer noch "; /* EN still = "still "; */
@@ -2503,9 +2507,9 @@ register boolean peaceful, silent;
 		    You("VERB_OWE OBJECT KASUS_DATIV %s %s%ld %s!", /* EN You("%sowe %s %ld %s!", still, */
 			mon_nam(shkp), still, value, currency(value)); /* EN mon_nam(shkp), value, currency(value)); */
 		else
-		    You("VERB_OWE OBJECT KASUS_DATIV %s %s%ld %s %s!", /* EN You("%sowe %s %ld %s for %s!", still, */
-			mon_nam(shkp), still, value, currency(value), /* EN mon_nam(shkp), value, currency(value), */
-			obj->quan > 1L ? "them" : "it"); /* EN obj->quan > 1L ? "them" : "it"); */ // TODO DE
+		    You("VERB_OWE OBJECT KASUS_DATIV %s dafür %s%ld %s!", /* EN You("%sowe %s %ld %s for %s!", still, */
+			mon_nam(shkp), still, value, currency(value) /* EN mon_nam(shkp), value, currency(value), */
+			 ); /* EN obj->quan > 1L ? "them" : "it"); */
 	    }
 	} else {
 	    ESHK(shkp)->robbed += value;
@@ -2640,7 +2644,7 @@ xchar x, y;
 			eshkp->loan = 0L;
 			Your("NOUN_SCHULDs VERB_SEIN abbezahlt."); /* EN Your("debt is paid off."); */
 		    }
-		    pline("SATZBEGINN %ld %s %s KASUS_DATIV PRONOMEN_POSSESSIV NOUN_GUTHABEN hinzugeügt.", /* EN pline("%ld %s %s added to your credit.", */
+		    pline("SATZBEGINN %ld %s %s KASUS_DATIV PRONOMEN_POSSESSIV NOUN_GUTHABEN hinzugefügt.", /* EN pline("%ld %s %s added to your credit.", */
 				delta, currency(delta), delta > 1L ? "werden" : "wird"); /* EN delta, currency(delta), delta > 1L ? "are" : "is"); */
 		}
 		if(offer) goto move_on;
@@ -2681,9 +2685,9 @@ move_on:
 		if (sell_how == SELL_NORMAL || auto_credit) {
 		    c = sell_response = 'y';
 		} else if (sell_response != 'n') {
-		    pline("%s cannot pay you at present.", Monnam(shkp)); /* EN pline("%s cannot pay you at present.", Monnam(shkp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_KOENNEN OBJECT PRONOMEN_PERSONAL im Moment nicht bezahlen.", Monnam(shkp)); /* EN pline("%s cannot pay you at present.", Monnam(shkp)); */
 		    Sprintf(qbuf,
-			    "Will you accept %ld %s in credit for %s?", /* EN "Will you accept %ld %s in credit for %s?", */ // TODO DE
+			    "SUBJECT MODIFIER_KONJUNKTIV_II VERB_WERDEN PRONOMEN_PERSONAL %ld %s Guthaben OBJECT für %s akzeptieren?", /* EN "Will you accept %ld %s in credit for %s?", */
 			    tmpcr, currency(tmpcr), doname(obj));
 		    /* won't accept 'a' response here */
 		    /* KLY - 3/2000 yes, we will, it's a damn nuisance
