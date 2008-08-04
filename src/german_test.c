@@ -617,6 +617,7 @@ START_TEST (test_german2meta) {
 										 {"grau", "ADJEKTIV_GEM_GRAY"},*/
 
 		                 {"einen blauer Schmuckstein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_BLUE NOUN_GEM"},
+		                 {"einen blauer Edelstein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_BLUE NOUN_GEM"},
 		                 {"einen Jadestein", "ARTIKEL_UNBESTIMMTER NOUN_GEM_JADE"},
 										 {"einen grauen Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
 										 {"einen roten Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_RED NOUN_GEM_ROCK"},

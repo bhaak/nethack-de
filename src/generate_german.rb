@@ -1524,6 +1524,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_COIN",      "Münze",          "",   "Münze",          "en", "feminin"),
     "/* besser als Edelstein, Kleinod? */",
     dekliniere_substantiv("NOUN_GEM",       "Schmuckstein",   "es", "Schmuckstein",   "e",  "maskulin"),
+    dekliniere_substantiv("NOUN_GEM",       "Edelstein",   "es", "Edelstein",   "e",  "maskulin"),
     "",
     "/* Weapons, identified */",
     dekliniere_substantiv("NOUN_ARROW", "Pfeil", "es", "Pfeil", "e", "maskulin"),

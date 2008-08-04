@@ -312,6 +312,7 @@ void german2meta(const char *str, char *output)
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_WAND_");
 					if (WISH_DEBUG) printf("ADJEKTIV_ 7 %s\n", wort->typ);
 				} else if (strstr2(str+i, "Schmuckstein", "Schmuckstein") ||
+				           strstr2(str+i, "Edelstein", "Edelstein") ||
 				           strstr2(str+i, "Stein", "Stein")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_GEM_");
 					if (WISH_DEBUG) printf("ADJEKTIV_ 8 %s\n", wort->typ);

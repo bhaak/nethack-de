@@ -288,6 +288,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schmucksteine", "NOUN_GEMs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Schmucksteinen", "NOUN_GEMs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Edelsteines", "NOUN_GEM", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Edelstein", "NOUN_GEM", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Edelsteine", "NOUN_GEMs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Edelsteinen", "NOUN_GEMs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
 
   /* Weapons, identified */
 
