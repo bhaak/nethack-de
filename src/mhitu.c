@@ -615,7 +615,7 @@ mattacku(mtmp)
 				pline("SUBJECT %s VERB_VERSCHLUCKEN etwas Luft!", Monnam(mtmp)); /* EN pline("%s gulps some air!", Monnam(mtmp)); */
 			    } else {
 				if (youseeit)
-				    pline("SUBJECT %s VERB_STUERZEN sich vorwärts und wieder zurück!", /* EN pline("%s lunges forward and recoils!", */
+				    pline("SUBJECT %s VERB_STUERZEN sich OBJECT auf PRONOMEN_PERSONAL und VERB_ZIEHEN sich wieder zurück!", /* EN pline("%s lunges forward and recoils!", */
 					  Monnam(mtmp));
 				else
 				    You_hear("ganz nahe %s.", /* EN You_hear("a %s nearby.", */
@@ -987,7 +987,7 @@ hitmu(mtmp, mattk)
 		    pline("SUBJECT PRONOMEN_PERSONAL %s!", on_fire(youmonst.data, mattk)); /* EN pline("You're %s!", on_fire(youmonst.data, mattk)); */
 		    if (youmonst.data == &mons[PM_STRAW_GOLEM] ||
 		        youmonst.data == &mons[PM_PAPER_GOLEM]) {
-			    You("roast!"); /* EN You("roast!"); */ // TODO DE
+			    You("VERB_BRUTZELN!"); /* EN You("roast!"); */
 			    /* KMH -- this is okay with unchanging */
 			    rehumanize();
 			    break;
@@ -1657,7 +1657,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 			 * like horses for now :-)
 			 */
 			Strcpy(buf, mon_nam(u.usteed));
-			pline ("%s lunges forward and plucks you off %s!", /* EN pline ("%s lunges forward and plucks you off %s!", */ // TODO DE
+			pline ("SUBJECT %s VERB_STUERZEN sich OBJECT auf PRONOMEN_PERSONAL und VERB_REISSEN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT KASUS_DATIV von %s!", /* EN pline ("%s lunges forward and plucks you off %s!", */
 				Monnam(mtmp), buf);
 			dismount_steed(DISMOUNT_ENGULFED);
 		} else
@@ -1723,7 +1723,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		case AD_PHYS:
 		    if (mtmp->data == &mons[PM_FOG_CLOUD]) {
 			You("VERB_SEIN von feuchtem Wasserdampf eingehüllt und %s!", /* EN You("are laden with moisture and %s", */
-			    flaming(youmonst.data) ? "are smoldering out!" : /* EN flaming(youmonst.data) ? "are smoldering out!" : */ // TODO DE
+			    flaming(youmonst.data) ? "VERB_DAMPFEN gewaltig!" : /* EN flaming(youmonst.data) ? "are smoldering out!" : */
 			    Breathless ? "VERB_FINDEN es etwas unangenehm." : /* EN Breathless ? "find it mildly uncomfortable." : */
 			    amphibious(youmonst.data) ? "VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL sauwohl." : /* EN amphibious(youmonst.data) ? "feel comforted." : */
 			    "VERB_KOENNEN kaum atmen!"); /* EN "can barely breathe!"); */
@@ -1824,7 +1824,7 @@ boolean ufound;
     if (mtmp->mcan) return(0);
 
     if (!ufound)
-	pline("SUBJECT %s VERB_SPRENGEN OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL %s!", /* EN pline("%s explodes at a spot in %s!", */
+	pline("SUBJECT %s VERB_SPRENGEN sich OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL %s!", /* EN pline("%s explodes at a spot in %s!", */
 	    canseemon(mtmp) ? Monnam(mtmp) : "NOUN_ETWAS", /* EN canseemon(mtmp) ? Monnam(mtmp) : "It", */
 	    levl[mtmp->mux][mtmp->muy].typ == WATER
 		? "ins Wasser" : "in die Luft"); /* EN ? "empty water" : "thin air"); */
@@ -2263,7 +2263,7 @@ register struct monst *mon;
 			Blind ? (fem ? "NOUN_PRONOMEN_3P_F_PERSONAL" : "NOUN_PRONOMEN_3P_M_PERSONAL") : Monnam(mon), Blind ? (fem ? "NOUN_PRONOMEN_3P_F_PERSONAL" : "NOUN_PRONOMEN_3P_M_PERSONAL") : Monnam(mon)); /* EN Blind ? (fem ? "She" : "He") : Monnam(mon)); */
 	mayberem(uarmc, cloak_simple_name(uarmc));
 	if(!uarmc)
-		mayberem(uarm, "suit"); /* EN mayberem(uarm, "suit"); */ // TODO DE
+		mayberem(uarm, "NOUN_SUIT"); /* EN mayberem(uarm, "suit"); */
 	mayberem(uarmf, "NOUN_BOOTSs"); /* EN mayberem(uarmf, "boots"); */
 	if(!uwep || !welded(uwep))
 		mayberem(uarmg, "NOUN_GLOVESs"); /* EN mayberem(uarmg, "gloves"); */

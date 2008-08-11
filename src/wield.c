@@ -93,7 +93,7 @@ register struct obj *obj;
 	setworn(obj, W_WEP);
 	if (uwep == obj && artifact_light(olduwep) && olduwep->lamplit) {
 	    end_burn(olduwep, FALSE);
-	    if (!Blind) pline("%s glowing.", Tobjnam(olduwep, "stop")); /* EN if (!Blind) pline("%s glowing.", Tobjnam(olduwep, "stop")); */ // TODO DE
+	    if (!Blind) pline("SUBJECT %s zu leuchten SATZKLAMMER.", Tobjnam(olduwep, "VERB_AUFHOEREN")); /* EN if (!Blind) pline("%s glowing.", Tobjnam(olduwep, "stop")); */
 	}
 	/* Note: Explicitly wielding a pick-axe will not give a "bashing"
 	 * message.  Wielding one via 'a'pplying it will.
@@ -238,7 +238,7 @@ dowield()
 	/* May we attempt this? */
 	multi = 0;
 	if (cantwield(youmonst.data)) {
-		pline("Don't be ridiculous!"); /* EN pline("Don't be ridiculous!"); */ // TODO DE
+		pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SEIN nicht albern!"); /* EN pline("Don't be ridiculous!"); */
 		return(0);
 	}
 
@@ -556,7 +556,7 @@ uwepgone()
 	if (uwep) {
 		if (artifact_light(uwep) && uwep->lamplit) {
 		    end_burn(uwep, FALSE);
-		    if (!Blind) pline("%s glowing.", Tobjnam(uwep, "stop")); /* EN if (!Blind) pline("%s glowing.", Tobjnam(uwep, "stop")); */ // TODO DE
+		    if (!Blind) pline("SUBJECT %s zu leuchten SATZKLAMMER.", Tobjnam(uwep, "VERB_AUFHOEREN")); /* EN if (!Blind) pline("%s glowing.", Tobjnam(uwep, "stop")); */
 		}
 		setworn((struct obj *)0, W_WEP);
 		unweapon = TRUE;
@@ -668,17 +668,17 @@ boolean fade_scrolls;
 	} else {
 	    if (flags.verbose) {
 		if (victim == &youmonst)
-		    Your("%s völlig %s.", /* EN Your("%s completely %s.", */ // TODO DE
-			aobjnam(target, Blind ? "feel" : "look"), /* EN aobjnam(target, Blind ? "feel" : "look"), */ // TODO DE
-			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_ROSTIG"); /* EN acid_dmg ? "corroded" : "rusty"); */
+		    Your("%s völlig %s SATZKLAMMER.", /* EN Your("%s completely %s.", */
+			aobjnam(target, Blind ? "VERB_ANFUEHLEN sich" : "VERB_AUSSEHEN"), /* EN aobjnam(target, Blind ? "feel" : "look"), */
+			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_VERROSTET"); /* EN acid_dmg ? "corroded" : "rusty"); */
 		else if (vismon)
-		    pline("%s's %s völlig %s.", Monnam(victim), /* EN pline("%s's %s completely %s.", Monnam(victim), */ // TODO DE
-			aobjnam(target, "look"), /* EN aobjnam(target, "look"), */ // TODO DE
-			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_ROSTIG"); /* EN acid_dmg ? "corroded" : "rusty"); */
+		    pline("SUBJECT %s %s völlig %s SATZKLAMMER.", genitivattribut_zu_wort(Monnam(victim), aobjnam(target, (char *)0)), /* EN pline("%s's %s completely %s.", Monnam(victim), */
+			"VERB_AUSSEHEN", /* EN aobjnam(target, "look"), */
+			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_VERROSTET"); /* EN acid_dmg ? "corroded" : "rusty"); */
 		else if (visobj)
-		    pline_The("%s völlig %s.", /* EN pline_The("%s completely %s.", */ // TODO DE
-			aobjnam(target, "look"), /* EN aobjnam(target, "look"), */ // TODO DE
-			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_ROSTIG"); /* EN acid_dmg ? "corroded" : "rusty"); */
+		    pline_The("%s völlig %s SATZKLAMMER.", /* EN pline_The("%s completely %s.", */
+			aobjnam(target, "VERB_AUSSEHEN"), /* EN aobjnam(target, "look"), */
+			acid_dmg ? "ADJEKTIV_CORRODED" : "ADJEKTIV_VERROSTET"); /* EN acid_dmg ? "corroded" : "rusty"); */
 	    }
 	}
 }

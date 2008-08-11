@@ -1135,6 +1135,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Lederhandschuhe", "NOUN_LEATHER_GLOVESs", "", genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Lederhandschuhen", "NOUN_LEATHER_GLOVESs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Handschuhes der Tolpatschigkeit", "NOUN_GAUNTLETS_OF_FUMBLING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Handschuh der Tolpatschigkeit", "NOUN_GAUNTLETS_OF_FUMBLING", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Handschuhe der Tolpatschigkeit", "NOUN_GAUNTLETS_OF_FUMBLINGs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Handschuhen der Tolpatschigkeit", "NOUN_GAUNTLETS_OF_FUMBLINGs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Handschuhes der Fummligkeit", "NOUN_GAUNTLETS_OF_FUMBLING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Handschuh der Fummligkeit", "NOUN_GAUNTLETS_OF_FUMBLING", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Handschuhe der Fummligkeit", "NOUN_GAUNTLETS_OF_FUMBLINGs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
