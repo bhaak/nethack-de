@@ -186,12 +186,12 @@ moverock()
 		case TELEP_TRAP:
 #ifdef STEED
 		    if (u.usteed)
-			pline("SUBJECT %s pushes %s and suddenly it disappears!", /* EN pline("%s pushes %s and suddenly it disappears!", */ // TODO DE
-			      upstart(y_monnam(u.usteed)), the(xname(otmp)));
+			pline("SUBJECT %s VERB_SCHIEBEN OBJECT %s NEUER_SATZ und plötzlich SUBJECT_IM_SATZ VERB_VERSCHWINDEN %s!", /* EN pline("%s pushes %s and suddenly it disappears!", */
+			      upstart(y_monnam(u.usteed)), the(xname(otmp)), pronominalisierung(xname(otmp))); /* EN upstart(y_monnam(u.usteed)), the(xname(otmp))); */
 		    else
 #endif
-		    You("push %s and suddenly it disappears!", /* EN You("push %s and suddenly it disappears!", */ // TODO DE
-			the(xname(otmp)));
+		    You("VERB_SCHIEBEN OBJECT %s NEUER_SATZ und plötzlich SUBJECT_IM_SATZ VERB_VERSCHWINDEN %s!", /* EN You("push %s and suddenly it disappears!", */
+			the(xname(otmp)), pronominalisierung(xname(otmp))); /* EN the(xname(otmp))); */
 		    if (ttmp->ttyp == TELEP_TRAP)
 			rloco(otmp);
 		    else {
@@ -326,7 +326,7 @@ still_chewing(x,y)
 
     if (!boulder && IS_ROCK(lev->typ) && !may_dig(x,y)) {
 	You("VERB_VERLETZEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV NOUN_ZAHNs am %s.", /* EN You("hurt your teeth on the %s.", */
-	    IS_TREE(lev->typ) ? "Baum" : "harten Gestein"); /* EN IS_TREE(lev->typ) ? "tree" : "hard stone"); */
+	    IS_TREE(lev->typ) ? "Baum" : "granitharten Gestein"); /* EN IS_TREE(lev->typ) ? "tree" : "hard stone"); */
 	nomul(0);
 	return 1;
     } else if (digging.pos.x != x || digging.pos.y != y ||
@@ -340,16 +340,16 @@ still_chewing(x,y)
 	/* solid rock takes more work & time to dig through */
 	digging.effort =
 	    (IS_ROCK(lev->typ) && !IS_TREE(lev->typ) ? 30 : 60) + u.udaminc;
-	You("start chewing %s %s.", /* EN You("start chewing %s %s.", */ // TODO DE
-	    (boulder || IS_TREE(lev->typ)) ? "on a" : "a hole in the", /* EN (boulder || IS_TREE(lev->typ)) ? "on a" : "a hole in the", */ // TODO DE
+	You("VERB_BEGINNEN %s %s zu knabbern.", /* EN You("start chewing %s %s.", */
+	    (boulder || IS_TREE(lev->typ)) ? "OBJECT KASUS_DATIV an ARTIKEL_UNBESTIMMTER" : "ein Loch OBJECT in ARTIKEL_BESTIMMTER", /* EN (boulder || IS_TREE(lev->typ)) ? "on a" : "a hole in the", */
 	    boulder ? "NOUN_BOULDER" : /* EN boulder ? "boulder" : */
 	    IS_TREE(lev->typ) ? "NOUN_TREE" : IS_ROCK(lev->typ) ? "NOUN_GEM_ROCK" : "NOUN_DOOR"); /* EN IS_TREE(lev->typ) ? "tree" : IS_ROCK(lev->typ) ? "rock" : "door"); */
 	watch_dig((struct monst *)0, x, y, FALSE);
 	return 1;
     } else if ((digging.effort += (30 + u.udaminc)) <= 100)  {
 	if (flags.verbose)
-	    You("%s chewing on the %s.", /* EN You("%s chewing on the %s.", */ // TODO DE
-		digging.chew ? "continue" : "begin", /* EN digging.chew ? "continue" : "begin", */ // TODO DE
+	    You("%s OBJECT KASUS_DATIV an ARTIKEL_BESTIMMTER %s zu knabbern.", /* EN You("%s chewing on the %s.", */
+		digging.chew ? "VERB_FAHREN damit fort" : "VERB_BEGINNEN", /* EN digging.chew ? "continue" : "begin", */
 		boulder ? "NOUN_BOULDER" : /* EN boulder ? "boulder" : */
 		IS_TREE(lev->typ) ? "NOUN_TREE" : /* EN IS_TREE(lev->typ) ? "tree" : */
 		IS_ROCK(lev->typ) ? "NOUN_GEM_ROCK" : "NOUN_DOOR"); /* EN IS_ROCK(lev->typ) ? "rock" : "door"); */
@@ -385,7 +385,7 @@ still_chewing(x,y)
 	    add_damage(x, y, 10L * ACURRSTR);
 	    dmgtxt = "zu beschädigen"; /* EN dmgtxt = "damage"; */
 	}
-	digtxt = "chew a hole in the wall."; /* EN digtxt = "chew a hole in the wall."; */ // TODO DE
+	digtxt = "VERB_BEISSEN ein Loch in die Wand."; /* EN digtxt = "chew a hole in the wall."; */
 	if (level.flags.is_maze_lev) {
 	    lev->typ = ROOM;
 	} else if (level.flags.is_cavernous_lev && !in_town(x, y)) {
@@ -395,14 +395,14 @@ still_chewing(x,y)
 	    lev->doormask = D_NODOOR;
 	}
     } else if (IS_TREE(lev->typ)) {
-	digtxt = "chew through the tree."; /* EN digtxt = "chew through the tree."; */ // TODO DE
+	digtxt = "VERB_MAMPFEN OBJECT PRONOMEN_PERSONAL durch den Baum."; /* EN digtxt = "chew through the tree."; */
 	lev->typ = ROOM;
     } else if (lev->typ == SDOOR) {
 	if (lev->doormask & D_TRAPPED) {
 	    lev->doormask = D_NODOOR;
 	    b_trapped("Geheimtüre", 0); /* EN b_trapped("secret door", 0); */
 	} else {
-	    digtxt = "chew through the secret door."; /* EN digtxt = "chew through the secret door."; */ // TODO DE
+	    digtxt = "VERB_MAMPFEN OBJECT PRONOMEN_PERSONAL durch eine Geheimtür."; /* EN digtxt = "chew through the secret door."; */
 	    lev->doormask = D_BROKEN;
 	}
 	lev->typ = DOOR;
@@ -416,12 +416,12 @@ still_chewing(x,y)
 	    lev->doormask = D_NODOOR;
 	    b_trapped("NOUN_DOOR", 0); /* EN b_trapped("door", 0); */
 	} else {
-	    digtxt = "chew through the door."; /* EN digtxt = "chew through the door."; */ // TODO DE
+	    digtxt = "VERB_MAMPFEN OBJECT PRONOMEN_PERSONAL durch die Türe."; /* EN digtxt = "chew through the door."; */
 	    lev->doormask = D_BROKEN;
 	}
 
     } else { /* STONE or SCORR */
-	digtxt = "chew a passage through the rock."; /* EN digtxt = "chew a passage through the rock."; */ // TODO DE
+	digtxt = "VERB_MAMPFEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PASSAGE ins Gestein."; /* EN digtxt = "chew a passage through the rock."; */
 	lev->typ = CORR;
     }
 

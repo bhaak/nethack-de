@@ -152,8 +152,8 @@ dosounds()
 			You_hear("ein wütendes Brummen."); /* EN You_hear("an angry drone."); */
 			break;
 		    case 2:
-			You_hear("bees in your %sbonnet!", /* EN You_hear("bees in your %sbonnet!", */ // TODO DE
-			    uarmh ? "" : "(nonexistent) "); /* EN uarmh ? "" : "(nonexistent) "); */ // TODO DE
+			You_hear("die Biene Maja!"); /* EN You_hear("bees in your %sbonnet!", */
+			    /* EN uarmh ? "" : "(nonexistent) "); */
 			break;
 		}
 		return;
@@ -184,7 +184,7 @@ dosounds()
     }
     if (level.flags.has_barracks && !rn2(200)) {
 	static const char * const barracks_msg[4] = {
-		"Schwerter blades being honed.", /* EN "blades being honed.", */ // TODO DE
+		"das Schleifen von Schwertern.", /* EN "blades being honed.", */
 		"lautes Schnarchen.", /* EN "loud snoring.", */ 
 		"dice being thrown.", /* EN "dice being thrown.", */ // TODO DE
 		"Carl von Clausewitz!", /* EN "General MacArthur!", */
@@ -262,8 +262,8 @@ dosounds()
 #ifdef OVLB
 
 static const char * const h_sounds[] = {
-    "beep", "boing", "sing", "belche", "creak", "cough", "rattle", /* EN "beep", "boing", "sing", "belche", "creak", "cough", "rattle", */ // TODO DE
-    "ululate", "pop", "jingle", "sniffle", "tinkle", "eep" /* EN "ululate", "pop", "jingle", "sniffle", "tinkle", "eep" */ // TODO DE
+    "VERB_PIEPSEN", "VERB_HUEPFEN", "VERB_SINGEN", "VERB_RUELPSEN", "VERB_KNARREN", "VERB_HUSTEN", "VERB_RASSELN", /* EN "beep", "boing", "sing", "belche", "creak", "cough", "rattle", */
+    "VERB_JOHLEN", "VERB_KNALLEN", "VERB_BIMMELN", "VERB_SCHNUEFFELN", "VERB_PINKELN", "VERB_JIEPEN" /* EN "ululate", "pop", "jingle", "sniffle", "tinkle", "eep" */
 };
 
 const char *

@@ -604,7 +604,7 @@ break_armor()
     } else if (sliparm(youmonst.data)) {
 	if (((otmp = uarm) != 0) && (racial_exception(&youmonst, otmp) < 1)) {
 		if (donning(otmp)) cancel_don();
-		Your("armor falls around you!"); /* EN Your("armor falls around you!"); */ // TODO DE
+		Your("NOUN_ARMOR VERB_FALLEN OBJECT KASUS_DATIV von PRONOMEN_PERSONAL ab!"); /* EN Your("armor falls around you!"); */
 		(void) Armor_gone();
 		dropx(otmp);
 	}
@@ -636,7 +636,7 @@ break_armor()
 		     shk_your(yourbuf, otmp), xname(otmp));
 	    } else {
 		if (donning(otmp)) cancel_don();
-		Your("NOUN_HELMET VERB_FALLEN zu %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ // TODO DE zu_Boden
+		Your("NOUN_HELMET VERB_FALLEN zu %s!", surface(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */ /* zu_Boden */
 		(void) Helmet_off();
 		dropx(otmp);
 	    }

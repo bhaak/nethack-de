@@ -703,9 +703,9 @@ register struct obj	*sobj;
 			if (otmp->oerodeproof &&
 			    (otmp->oeroded || otmp->oeroded2)) {
 			    otmp->oeroded = otmp->oeroded2 = 0;
-			    Your("%s %s as good as new!", /* EN Your("%s %s as good as new!", */ // TODO DE
+			    Your("%s %s wieder nagelneu SATZKLAMMER!", /* EN Your("%s %s as good as new!", */
 				 xname(otmp),
-				 otense(otmp, Blind ? "feel" : "look")); /* EN otense(otmp, Blind ? "feel" : "look")); */ // TODO DE
+				 otense(otmp, Blind ? "VERB_ANFUEHLEN" : "VERB_AUSSEHEN")); /* EN otense(otmp, Blind ? "feel" : "look")); */
 			}
 			break;
 		}
@@ -1384,7 +1384,7 @@ struct obj *obj;
 					pline("SUBJECT %s VERB_FUNKELN.", genitivattribut_zu_wort(Monnam(u.ustuck), "NOUN_INNERE")); /* EN pline("%s glistens.", Monnam(u.ustuck)); */
 			return;
 		}
-		pline("Ein leuchtendes/erleuchtetes Feld umgibt dich!"); /* EN pline("A lit field surrounds you!"); */ // TODO DE
+		pline("Ein leuchtendes Feld umgibt KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("A lit field surrounds you!"); */
 	}
 
 do_it:
@@ -1548,7 +1548,7 @@ do_class_genocide()
 			    if (i == urole.malenum || i == urace.malenum) {
 				u.uhp = -1;
 				if (Upolyd) {
-				    if (!feel_dead++) You_feel("dead inside."); /* EN if (!feel_dead++) You_feel("dead inside."); */ // TODO DE innerlich tot?
+				    if (!feel_dead++) Du_fuehlst_dich("innerlich tot."); /* EN if (!feel_dead++) You_feel("dead inside."); */
 				} else {
 				    if (!feel_dead++) You("VERB_STERBEN."); /* EN if (!feel_dead++) You("die."); */
 				    gameover = TRUE;
@@ -1716,7 +1716,7 @@ int how;
 		if (Upolyd && ptr != youmonst.data) {
 			delayed_killer = killer;
 			killer = 0;
-			You_feel("dead inside."); /* EN You_feel("dead inside."); */ // TODO DE
+			Du_fuehlst_dich("innerlich tot."); /* EN You_feel("dead inside."); */
 		} else
 			done(GENOCIDED);
 	    } else if (ptr == youmonst.data) {

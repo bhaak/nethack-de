@@ -854,7 +854,7 @@ struct obj *obj;
 		sdp++;
 	}
 	*dsp = 0;
-	Sprintf(qbuf, "In what direction do you want to %s? [%s]", verb, dirsyms); /* EN Sprintf(qbuf, "In what direction do you want to %s? [%s]", verb, dirsyms); */ // TODO DE
+	Sprintf(qbuf, "In welche Richtung MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL %s? [%s]", verb, dirsyms); /* EN Sprintf(qbuf, "In what direction do you want to %s? [%s]", verb, dirsyms); */
 	if(!getdir(qbuf))
 		return(res);
 
@@ -915,10 +915,10 @@ struct obj *obj;
 			if (trap && trap->ttyp == WEB) {
 			    if (!trap->tseen) {
 				seetrap(trap);
-				There("is a spider web there!"); /* EN There("is a spider web there!"); */ // TODO DE
+				There("ist ein Spinnenetz!"); /* EN There("is a spider web there!"); */
 			    }
-			    Your("%s entangled in the web.", /* EN Your("%s entangled in the web.", */ // TODO DE
-				aobjnam(obj, "become")); /* EN aobjnam(obj, "become")); */ // TODO DE
+			    Your("%s sich im Netz.", /* EN Your("%s entangled in the web.", */
+				aobjnam(obj, "VERB_VERHEDDERN")); /* EN aobjnam(obj, "become")); */
 			    /* you ought to be able to let go; tough luck */
 			    /* (maybe `move_into_trap()' would be better) */
 			    nomul(-d(2,2));
@@ -944,10 +944,10 @@ struct obj *obj;
 		} else {
 			static const char * const d_action[6] = {
 						"swinging", /* EN "swinging", */ // TODO DE
-						"zu graben", /* EN "digging", */ // TODO DE
-						"chipping the statue", /* EN "chipping the statue", */ // TODO DE
+						"zu graben", /* EN "digging", */
+						"die Statue zu zerkleinern", /* EN "chipping the statue", */
 						"den Felsbrocken zu spalten", /* EN "hitting the boulder", */
-						"chopping at the door", /* EN "chopping at the door", */ // TODO DE
+						"die Türe einzuhacken", /* EN "chopping at the door", */
 						"ARTIKEL_BESTIMMTER NOUN_TREE zu fällen" /* EN "cutting the tree" */
 			};
 			did_dig_msg = FALSE;

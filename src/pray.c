@@ -795,12 +795,12 @@ pleased(g_align)
 	int trouble = in_trouble();	/* what's your worst difficulty? */
 	int pat_on_head = 0, kick_on_butt;
 
-	You_feel("that %s is %s.", align_gname(g_align), /* EN You_feel("that %s is %s.", align_gname(g_align), */ // TODO DE
+	You("VERB_SPUEREN, dass %s %s.", align_gname(g_align), /* EN You_feel("that %s is %s.", align_gname(g_align), */
 	    u.ualign.record >= DEVOUT ?
-	    Hallucination ? "pleased as punch" : "well-pleased" : /* EN Hallucination ? "pleased as punch" : "well-pleased" : */ // TODO DE
+	    Hallucination ? "sich wie ein Honigkuchenpferd freut" : "höchst erfreut ist" : /* EN Hallucination ? "pleased as punch" : "well-pleased" : */
 	    u.ualign.record >= STRIDENT ?
-	    Hallucination ? "ticklish" : "pleased" : /* EN Hallucination ? "ticklish" : "pleased" : */ // TODO DE
-	    Hallucination ? "satt" : "satisfied"); /* EN Hallucination ? "full" : "satisfied"); */ // TODO DE
+	    Hallucination ? "launisch ist" : "erfreut ist" : /* EN Hallucination ? "ticklish" : "pleased" : */
+	    Hallucination ? "genug OBJECT KASUS_DATIV von PRONOMEN_PERSONAL hat" : "zufrieden ist"); /* EN Hallucination ? "full" : "satisfied"); */
 
 	/* not your deity */
 	if (on_altar() && p_aligntyp != u.ualign.type) {
@@ -860,8 +860,8 @@ pleased(g_align)
 
 		*repair_buf = '\0';
 		if (uwep->oeroded || uwep->oeroded2)
-		    Sprintf(repair_buf, " and %s now as good as new", /* EN Sprintf(repair_buf, " and %s now as good as new", */ // TODO DE
-			    otense(uwep, "are")); /* EN otense(uwep, "are")); */ // TODO DE
+		    Sprintf(repair_buf, " und %s jetzt wieder wie neu aus", /* EN Sprintf(repair_buf, " and %s now as good as new", */
+			    otense(uwep, "VERB_SEHEN")); /* EN otense(uwep, "are")); */
 
 		if (uwep->cursed) {
 		    uncurse(uwep);
@@ -891,8 +891,8 @@ pleased(g_align)
 		    /* only give this message if we didn't just bless
 		       or uncurse (which has already given a message) */
 		    if (*repair_buf)
-			Your("%s as good as new!", /* EN Your("%s as good as new!", */ // TODO DE
-			     aobjnam(uwep, Blind ? "feel" : "look")); /* EN aobjnam(uwep, Blind ? "feel" : "look")); */ // TODO DE
+			Your("%s wieder wie neu SATZKLAMMER!", /* EN Your("%s as good as new!", */
+			     aobjnam(uwep, Blind ? "VERB_ANFUEHLEN" : "VERB_AUSSEHEN")); /* EN aobjnam(uwep, Blind ? "feel" : "look")); */
 		}
 		update_inventory();
 	    }
