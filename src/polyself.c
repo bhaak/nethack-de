@@ -668,9 +668,9 @@ break_armor()
 	if ((otmp = uarmf) != 0) {
 	    if (donning(otmp)) cancel_don();
 	    if (is_whirly(youmonst.data))
-		Your("NOUN_BOOTSs fall away!"); /* EN Your("boots fall away!"); */ // TODO DE
-	    else Your("NOUN_BOOTSs %s off your feet!", /* EN else Your("boots %s off your feet!", */ // TODO DE
-			verysmall(youmonst.data) ? "VERB_RUTSCHEN" : "are pushed"); /* EN verysmall(youmonst.data) ? "slide" : "are pushed"); */ // TODO DE
+		Your("NOUN_BOOTSs VERB_FALLEN runter!"); /* EN Your("boots fall away!"); */
+	    else Your("NOUN_BOOTSs %s OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_FOOTs!", /* EN else Your("boots %s off your feet!", */
+			verysmall(youmonst.data) ? "VERB_RUTSCHEN" : "VERB_PLATZEN"); /* EN verysmall(youmonst.data) ? "slide" : "are pushed"); */
 	    (void) Boots_off();
 	    dropx(otmp);
 	}
@@ -947,7 +947,7 @@ dogaze()
 
 
 	if (Blind) {
-	    You_cant("see anything to gaze at."); /* EN You_cant("see anything to gaze at."); */ // TODO DE
+	    You("VERB_SEHEN hier nichts, NEUER_SATZ das PRONOMEN_PERSONAL anstarren MODIFIER_KONJUNKTIV_II VERB_KOENNEN."); /* EN You_cant("see anything to gaze at."); */
 	    return 0;
 	}
 	if (u.uen < 15) {
@@ -993,7 +993,7 @@ dogaze()
 			if (!mtmp->mconf)
 			    Your("NOUN_GAZE VERB_VERWIRREN OBJECT %s!", mon_nam(mtmp)); /* EN Your("gaze confuses %s!", mon_nam(mtmp)); */
 			else
-			    pline("%s is getting more and more confused.", /* EN pline("%s is getting more and more confused.", */ // TODO DE
+			    pline("SUBJECT %s VERB_WERDEN immer verwirrter.", /* EN pline("%s is getting more and more confused.", */
 							Monnam(mtmp));
 			mtmp->mconf = 1;
 		    } else if (adtyp == AD_FIRE) {

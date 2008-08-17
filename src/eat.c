@@ -1222,7 +1222,7 @@ struct obj *obj;
 		    what = "OBJECT KASUS_DATIV PRONOMEN_PERSONAL",  where = "MODIFIER_VERB_DRITTE_PERSON VERB_WERDEN schwarz vor Augen"; /* EN what = "goes",  where = "dark"; */
 		else if (Levitation || Is_airlevel(&u.uz) ||
 			 Is_waterlevel(&u.uz))
-		    what = "you lose control of",  where = "yourself"; /* EN what = "you lose control of",  where = "yourself"; */ // TODO DE
+		    what = "SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_VERLIEREN die Kontrolle OBJECT über",  where = "PRONOMEN_PERSONAL"; /* EN what = "you lose control of",  where = "yourself"; */
 		else
 		    what = "SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_KNALLEN auf OBJECT ARTIKEL_BESTIMMTER", where = /* EN what = "you slap against the", where = */
 #ifdef STEED
@@ -1265,11 +1265,11 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 	if (mnum != PM_ACID_BLOB && !stoneable && rotted > 5L) {
 		boolean cannibal = maybe_cannibal(mnum, FALSE);
 		pline("Örks - PRONOMEN_DIESER %s war verdorben%s!", /* EN pline("Ulch - that %s was tainted%s!", */
-		      mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : /* EN mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : */ // TODO DE
+		      mons[mnum].mlet == S_FUNGUS ? "NOUN_PILZGEFLECHT" : /* EN mons[mnum].mlet == S_FUNGUS ? "fungoid vegetation" : */ /* Pilzgeflecht, Pilzgewächs, Pilzgericht */
 		      !vegetarian(&mons[mnum]) ? "NOUN_FLEISCH" : "NOUN_PROTOPLASMA", /* EN !vegetarian(&mons[mnum]) ? "meat" : "protoplasm", */
 		      cannibal ? ", Kannibale" : ""); /* EN cannibal ? " cannibal" : ""); */
 		if (Sick_resistance) {
-			pline("It doesn't seem at all sickening, though..."); /* EN pline("It doesn't seem at all sickening, though..."); */ // TODO DE
+			pline("Aber KASUS_DATIV PRONOMEN_PERSONAL wird irgendwie gar nicht schlecht davon ..."); /* EN pline("It doesn't seem at all sickening, though..."); */
 		} else {
 			char buf[BUFSZ];
 			long sick_time;
@@ -1792,27 +1792,27 @@ struct obj *otmp;
 
 	if (cadaver && mnum != PM_ACID_BLOB && rotted > 5L && !Sick_resistance) {
 		/* Tainted meat */
-		Sprintf(buf, "%s NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_KOENNEN %s verdorben sein! %s", /* EN Sprintf(buf, "%s like %s could be tainted! %s", */
+		Sprintf(buf, "SUBJECT %s, NEUER_SATZ als ob SUBJECT_IM_SATZ %s verdorben sein MODIFIER_KONJUNKTIV_II VERB_KOENNEN! %s", /* EN Sprintf(buf, "%s like %s could be tainted! %s", */
 			foodsmell, it_or_they, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
 	}
 	if (stoneorslime) {
-		Sprintf(buf, "%s like %s could be something very dangerous! %s", /* EN Sprintf(buf, "%s like %s could be something very dangerous! %s", */ // TODO DE
+		Sprintf(buf, "SUBJECT %s, als ob %s etwas sehr Gefährliches sein MODIFIER_KONJUNKTIV_II VERB_KOENNEN! %s", /* EN Sprintf(buf, "%s like %s could be something very dangerous! %s", */
 			foodsmell, it_or_they, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
 	}
 	if (otmp->orotten || (cadaver && rotted > 3L)) {
 		/* Rotten */
-		Sprintf(buf, "SUBJECT %s als %s könnte er be rotten! %s", /* EN Sprintf(buf, "%s like %s could be rotten! %s", */ // TODO DE
+		Sprintf(buf, "SUBJECT %s, NEUER_SATZ als ob SUBJECT_IM_SATZ %s vergammelt sein MODIFIER_KONJUNKTIV_II VERB_KOENNEN! %s", /* EN Sprintf(buf, "%s like %s could be rotten! %s", */
 			foodsmell, it_or_they, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
 	}
 	if (cadaver && poisonous(&mons[mnum]) && !Poison_resistance) {
 		/* poisonous */
-		Sprintf(buf, "%s like %s might be poisonous! %s", /* EN Sprintf(buf, "%s like %s might be poisonous! %s", */ // TODO DE
+		Sprintf(buf, "SUBJECT %s, NEUER_SATZ als ob SUBJECT_IM_SATZ %s giftig sein MODIFIER_KONJUNKTIV_II VERB_KOENNEN! %s", /* EN Sprintf(buf, "%s like %s might be poisonous! %s", */
 			foodsmell, it_or_they, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
@@ -1863,7 +1863,7 @@ struct obj *otmp;
 
 	if (cadaver && mnum != PM_ACID_BLOB && rotted > 5L && Sick_resistance) {
 		/* Tainted meat with Sick_resistance */
-		Sprintf(buf, "%s NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_KOENNEN %s verdorben sein! %s", /* EN Sprintf(buf, "%s like %s could be tainted! %s", */
+		Sprintf(buf, "SUBJECT %s, NEUER_SATZ als ob SUBJECT_IM_SATZ %s verdorben sein MODIFIER_KONJUNKTIV_II VERB_KOENNEN! %s", /* EN Sprintf(buf, "%s like %s could be tainted! %s", */
 			foodsmell, it_or_they, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
@@ -2326,7 +2326,7 @@ boolean incr;
 			if(!is_fainted() && multi >= 0 /* %% */) {
 				/* stop what you're doing, then faint */
 				stop_occupation();
-				You("faint from lack of food."); /* EN You("faint from lack of food."); */ // TODO DE
+				You("VERB_FAELLEN vor Hunger in Ohnmacht."); /* EN You("faint from lack of food."); */
 				flags.soundok = 0;
 				nomul(-10+(u.uhunger/10));
 				nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_ERLANGEN wieder das Bewusstsein."; /* EN nomovemsg = "You regain consciousness."; */
@@ -2361,7 +2361,7 @@ boolean incr;
 			} else
 			    You((!incr) ? "VERB_SEIN jetzt nur noch hungrig." : /* EN You((!incr) ? "only feel hungry now." : */
 				  (u.uhunger < 145) ? "VERB_SEIN hungrig." : /* EN (u.uhunger < 145) ? "feel hungry." : */
-				   "are beginning to feel hungry."); /* EN "are beginning to feel hungry."); */ // TODO DE
+				   "VERB_BEGINNEN OBJECT PRONOMEN_PERSONAL hungrig zu fühlen."); /* EN "are beginning to feel hungry."); */
 			if (incr && occupation &&
 			    (occupation != eatfood && occupation != opentin))
 			    stop_occupation();
@@ -2376,11 +2376,11 @@ boolean incr;
 				 Role_if(PM_VALKYRIE)))
 			    pline("SUBJECT %s braucht Essen, dringendst!", /* EN pline("%s needs food, badly!", */ /* Gauntlet-Referenz */
 				  (Role_if(PM_WIZARD) || Role_if(PM_VALKYRIE)) ?
-				  urole.name.m : "Elf"); /* EN urole.name.m : "Elf"); */ // TODO DE
+				  urole.name.m : "Elf");
 			else
-			    You((!incr) ? "feel weak now." : /* EN You((!incr) ? "feel weak now." : */ // TODO DE
-				  (u.uhunger < 45) ? "feel weak." : /* EN (u.uhunger < 45) ? "feel weak." : */ // TODO DE
-				   "are beginning to feel weak."); /* EN "are beginning to feel weak."); */ // TODO DE
+			    Dir((!incr) ? "VERB_SEIN jetzt nur noch flau zumute." : /* EN You((!incr) ? "feel weak now." : */
+				  (u.uhunger < 45) ? "VERB_SEIN flau zumute." : /* EN (u.uhunger < 45) ? "feel weak." : */
+				   "VERB_BEGINNEN flau zumute zu sein."); /* EN "are beginning to feel weak."); */
 			if (incr && occupation &&
 			    (occupation != eatfood && occupation != opentin))
 			    stop_occupation();
