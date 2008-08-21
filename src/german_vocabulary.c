@@ -6659,6 +6659,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Grüne Schleime", "NOUN_GREEN_SLIMEs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
   {"Grüner Schleime", "NOUN_GREEN_SLIMEs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
+  {"Quantenteilchens", "NOUN_QUANTUM_MECHANIC", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Quantenteilchen", "NOUN_QUANTUM_MECHANIC", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Quantenteilchen", "NOUN_QUANTUM_MECHANICs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Rostmonsters", "NOUN_RUST_MONSTER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Rostmonster", "NOUN_RUST_MONSTER", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Rostmonster", "NOUN_RUST_MONSTERs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -6669,8 +6673,23 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Entzauberer", "NOUN_DISENCHANTERs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Entzauberern", "NOUN_DISENCHANTERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Ringelnatter", "NOUN_GARTER_SNAKE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ringelnattern", "NOUN_GARTER_SNAKEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Schlange", "NOUN_SNAKE", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schlangen", "NOUN_SNAKEs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Wassermokassinotter", "NOUN_WATER_MOCCASIN", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wassermokassinottern", "NOUN_WATER_MOCCASINs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Wassermokassinschlange", "NOUN_WATER_MOCCASIN", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wassermokassinschlangen", "NOUN_WATER_MOCCASINs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grubennatter", "NOUN_PIT_VIPER", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grubennattern", "NOUN_PIT_VIPERs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grubennotter", "NOUN_PIT_VIPER", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grubennottern", "NOUN_PIT_VIPERs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Pythons", "NOUN_PYTHON", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Python", "NOUN_PYTHON", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -6965,6 +6984,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Erinnye", "NOUN_ERINYS", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Erinnyen", "NOUN_ERINYSs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grubendämones", "NOUN_PIT_FIEND", "en", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grubendämon", "NOUN_PIT_FIEND", "en", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grubendämonen", "NOUN_PIT_FIENDs", "en", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Balrog", "NOUN_BALROG", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Balrogs", "NOUN_BALROG", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

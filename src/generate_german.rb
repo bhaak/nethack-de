@@ -1513,7 +1513,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RING",      "Ring",           "es", "Ring",           "e",  "maskulin"),
     dekliniere_substantiv("NOUN_AMULET",    "Amulett",        "es", "Amulett",        "e",  "neutrum"),
     dekliniere_substantiv("NOUN_TOOL",      "Werkzeug",       "es", "Werkzeug",       "e",  "neutrum", "s"),
-    #dekliniere_adjektivisches_substantiv("NOUN_COMESTIBLE","Essbar", "neutrum"),
+    # dekliniere_adjektivisches_substantiv("NOUN_COMESTIBLE","Essbar", "neutrum"),
     dekliniere_substantiv("NOUN_COMESTIBLE","Lebensmittel",   "s",  "Lebensmittel",   "",   "neutrum"),
     dekliniere_adjektivisches_substantiv("NOUN_ESSBARES","Essbar", "neutrum"),
     dekliniere_substantiv("NOUN_POTION",    "Trank",          "es", "Tränk",          "e",  "maskulin"),
@@ -2603,13 +2603,15 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_BROWN_PUDDING", "Braun", "Grütze", "", "Grütze", "en", "feminin"),
     dekliniere_nominalphrase("NOUN_BLACK_PUDDING", "Schwarz", "Grütze", "", "Grütze", "en", "feminin"),
     dekliniere_nominalphrase("NOUN_GREEN_SLIME", "Grün", "Schleim", "es", "Schleim", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_QUANTUM_MECHANIC"
+    dekliniere_substantiv("NOUN_QUANTUM_MECHANIC", "Quantenteilchen", "s", "Quantenteilchen", "", "neutrum"),
     dekliniere_substantiv("NOUN_RUST_MONSTER", "Rostmonster", "s", "Rostmonster", "", "neutrum"),
     dekliniere_substantiv("NOUN_DISENCHANTER", "Entzauberer", "s", "Entzauberer", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_GARTER_SNAKE"
+    dekliniere_substantiv("NOUN_GARTER_SNAKE","Ringelnatter","","Ringelnatter","en","feminin"),
     dekliniere_substantiv("NOUN_SNAKE","Schlange","","Schlange","en","feminin", "n"),
-    #dekliniere_substantiv("NOUN_WATER_MOCCASIN"
-    #dekliniere_substantiv("NOUN_PIT_VIPER"
+    dekliniere_substantiv("NOUN_WATER_MOCCASIN","Wassermokassinotter", "", "Wassermokassinotter", "en", "feminin"),
+    dekliniere_substantiv("NOUN_WATER_MOCCASIN","Wassermokassinschlange","","Wassermokassinschlange","en","feminin", "n"),
+    dekliniere_substantiv("NOUN_PIT_VIPER", "Grubennatter", "", "Grubennatter", "en", "feminin"),
+    dekliniere_substantiv("NOUN_PIT_VIPER", "Grubennotter", "", "Grubennotter", "en", "feminin"),
     dekliniere_substantiv("NOUN_PYTHON", "Python", "s", "Python", "s", "feminin"),
     dekliniere_substantiv("NOUN_COBRA", "Kobra", "", "Kobra", "s", "feminin"),
     dekliniere_substantiv("NOUN_TROLL", "Troll",  "es", "Troll", "e", "maskulin"),
@@ -2704,7 +2706,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_BONE_DEVIL" # Knochenteufel
     #dekliniere_substantiv("NOUN_ICE_DEVIL"  # Eisteufel Gelugon
     #dekliniere_substantiv("NOUN_NALFESHNEE"
-    #dekliniere_substantiv("NOUN_PIT_FIEND" # Ice Fiend - Eisunhold? / Eisdämon?
+    dekliniere_substantiv("NOUN_PIT_FIEND", "Grubendämon", "es", "Grubendämon", "en", "maskulin", "en"), # Höllenschlundscheusal, Grubenunhold, Grubendämon, Grubenteufel
     dekliniere_eigenname("NOUN_BALROG","Balrog","maskulin"),
     dekliniere_eigenname("NOUN_JUIBLEX","Juiblex","maskulin"),
     dekliniere_eigenname("NOUN_YEENOGHU","Yeenoghu","maskulin"),
