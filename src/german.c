@@ -1051,10 +1051,14 @@ char* german(const char *line) {
 			printf("output[beginning_of_appended_word]: %d\n",output[beginning_of_appended_word-1]);
 #endif
 			/* Waffen-NOUN_HAND -> Waffenhand */
-			if ((beginning_of_appended_word > 0) && (output[beginning_of_appended_word-1]=='-')) {
+			if ((beginning_of_appended_word > 1) &&
+			    (output[beginning_of_appended_word-1]=='-')) {
+				/* Drachen--NOUN_EGG -> Drachen-Ei */
+				if (output[beginning_of_appended_word-2]!='-') {
+					noun_lowercase = 1;
+				}
 				beginning_of_appended_word--;
 				output[beginning_of_appended_word] = '\0';
-				noun_lowercase = 1;
 			}
 			next_token(line, tmp2, pos+1);
 			if (strncmp(tmp2, "NOUN_MEAT",9)==0) {

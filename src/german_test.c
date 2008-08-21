@@ -957,6 +957,10 @@ START_TEST (test_wortzusammensetzungen) {
 		 "Dein Ringfinger wird zu einem Ringtentakel."},
 		{"SATZBEGINN KASUS_AKKUSATIV PRONOMEN_WELCHER Ring-NOUN_FINGER",
 		 "Welchen Ringfinger"},
+		{"Rotdrachen--NOUN_EGG",
+		 "Rotdrachen-Ei"},
+		{"Purpurwurm--NOUN_EGG",
+		 "Purpurwurm-Ei"},
 	};
 
 	check_strings(text, sizeof(text)/8);
