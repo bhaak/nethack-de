@@ -1369,9 +1369,19 @@ const char *token;
 	case neutrum:  return "NOUN_PRONOMEN_3P_N_PERSONAL";
 	default: return "NOUN_PRONOMEN_3P_M_PERSONAL";
 	}
+}
 
+char fugenwort_tmp[TBUFSZ];
+/* Liefert für eine Kompositumbildung bearbeitete Substantiv zu token zurück. */
+char*
+fugenwort(token)
+const char *token;
+{
+	strcpy(fugenwort_tmp, "");
+	append(fugenwort_tmp, get_wort(token, nominativ, maskulin|feminin|neutrum, n_singular, ohne));
+	append(fugenwort_tmp, get_fugenelement(token));
 
-	
+	return fugenwort_tmp;
 }
 
 #ifndef NO_HACK_H_INCLUDE

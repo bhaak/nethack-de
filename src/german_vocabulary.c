@@ -5671,9 +5671,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Kokatrix", "NOUN_COCKATRICE", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kokatrices", "NOUN_COCKATRICEs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Pyrolisk", "NOUN_PYROLISK", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Pyrolisken", "NOUN_PYROLISK", "", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Pyrolisken", "NOUN_PYROLISKs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Pyrolisk", "NOUN_PYROLISK", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pyrolisken", "NOUN_PYROLISK", "en", dativ|genitiv|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pyrolisken", "NOUN_PYROLISKs", "en", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Schakals", "NOUN_JACKAL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schakal", "NOUN_JACKAL", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -5834,15 +5834,15 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Gremlin", "NOUN_GREMLIN", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Gremlins", "NOUN_GREMLINs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Gargyle", "NOUN_GARGOYLE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Gargylen", "NOUN_GARGOYLEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Gargyle", "NOUN_GARGOYLE", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gargylen", "NOUN_GARGOYLEs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Gargoyles", "NOUN_GARGOYLE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Gargoyle", "NOUN_GARGOYLE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Gargoyles", "NOUN_GARGOYLEs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Gargoyles", "NOUN_GARGOYLE", "n", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gargoyle", "NOUN_GARGOYLE", "n", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gargoyles", "NOUN_GARGOYLEs", "n", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Fluggargyle", "NOUN_WINGED_GARGOYLE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Fluggargylen", "NOUN_WINGED_GARGOYLEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Fluggargyle", "NOUN_WINGED_GARGOYLE", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Fluggargylen", "NOUN_WINGED_GARGOYLEs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"geflügelten Gargoyles", "NOUN_WINGED_GARGOYLE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"geflügelte Gargoyle", "NOUN_WINGED_GARGOYLE", "", nominativ, maskulin, n_singular, bestimmter},
@@ -6123,10 +6123,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Riesenspinne", "NOUN_GIANT_SPIDER", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Riesenspinnen", "NOUN_GIANT_SPIDERs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Skorpions", "NOUN_SCORPION", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Skorpion", "NOUN_SCORPION", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Skorpione", "NOUN_SCORPIONs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Skorpionen", "NOUN_SCORPIONs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Skorpions", "NOUN_SCORPION", "en", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Skorpion", "NOUN_SCORPION", "en", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Skorpione", "NOUN_SCORPIONs", "en", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Skorpionen", "NOUN_SCORPIONs", "en", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Laurers", "NOUN_LURKER_ABOVE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Laurer", "NOUN_LURKER_ABOVE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7093,10 +7093,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Chamäleon", "NOUN_CHAMELEON", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Chamäleons", "NOUN_CHAMELEONs", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Krokodils", "NOUN_CROCODILE", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Krokodil", "NOUN_CROCODILE", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Krokodile", "NOUN_CROCODILEs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Krokodilen", "NOUN_CROCODILEs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Krokodils", "NOUN_CROCODILE", "s", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Krokodil", "NOUN_CROCODILE", "s", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Krokodile", "NOUN_CROCODILEs", "s", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Krokodilen", "NOUN_CROCODILEs", "s", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Salamanders", "NOUN_SALAMANDER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Salamander", "NOUN_SALAMANDER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

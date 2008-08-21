@@ -1003,6 +1003,59 @@ START_TEST (test_pronomen) {
 	check_strings(text, sizeof(text)/8);
 } END_TEST
 
+void check_fugenwort(const char* token, const char* wort) {
+	fail_unless((strcmp(wort, fugenwort(token))==0),
+		"\nFugenwortbildung fehlgeschlagen:\nToken: >%s<\nFugenwort: >%s<\nerwartet: >%s<\n",
+		token, fugenwort(token), wort);
+}
+START_TEST (test_fugenwort) {
+	// alle oviparen Monster
+	check_fugenwort("NOUN_GRAY_DRAGON", "Graudrachen");
+	check_fugenwort("NOUN_SILVER_DRAGON", "Silberdrachen");
+	check_fugenwort("NOUN_SHIMMERING_DRAGON", "Glanzdrachen");
+	check_fugenwort("NOUN_RED_DRAGON", "Rotdrachen");
+	check_fugenwort("NOUN_WHITE_DRAGON", "Weißdrachen");
+	check_fugenwort("NOUN_ORANGE_DRAGON", "Orangedrachen");
+	check_fugenwort("NOUN_BLACK_DRAGON", "Schwarzdrachen");
+	check_fugenwort("NOUN_BLUE_DRAGON", "Blaudrachen");
+	check_fugenwort("NOUN_GREEN_DRAGON", "Gründrachen");
+	check_fugenwort("NOUN_YELLOW_DRAGON", "Gelbdrachen");
+	check_fugenwort("NOUN_RED_NAGA", "Rotnaga");
+	check_fugenwort("NOUN_BLACK_NAGA", "Schwarznaga");
+	check_fugenwort("NOUN_GOLDEN_NAGA", "Goldnaga");
+	check_fugenwort("NOUN_GUARDIAN_NAGA", "Schutznaga");
+	check_fugenwort("NOUN_NAGA", "Naga");
+	check_fugenwort("NOUN_GIANT_ANT", "Riesenameisen");
+	check_fugenwort("NOUN_KILLER_BEE", "Killerbienen");
+	check_fugenwort("NOUN_SOLDIER_ANT", "Ameisensoldaten");
+	check_fugenwort("NOUN_FIRE_ANT", "Feuerameisen");
+	check_fugenwort("NOUN_QUEEN_BEE", "Bienenköniginnen");
+	check_fugenwort("NOUN_COCKATRICE", "Kokatrix");
+	check_fugenwort("NOUN_PYROLISK", "Pyrolisken");
+	check_fugenwort("NOUN_GARGOYLE", "Gargylen");
+	check_fugenwort("NOUN_WINGED_GARGOYLE", "Fluggargylen");
+	check_fugenwort("NOUN_CAVE_SPIDER", "Höhlenspinnen");
+	check_fugenwort("NOUN_CENTIPEDE", "Tausendfüßler");
+	check_fugenwort("NOUN_GIANT_SPIDER", "Riesenspinnen");
+	check_fugenwort("NOUN_SCORPION", "Skorpionen");
+	check_fugenwort("NOUN_LONG_WORM", "Langwurm");
+	check_fugenwort("NOUN_PURPLE_WORM", "Purpurwurm");
+	check_fugenwort("NOUN_GARTER_SNAKE", "Ringelnatter");
+	check_fugenwort("NOUN_SNAKE", "Schlangen");
+	check_fugenwort("NOUN_PIT_VIPER", "Grubennatter");
+	check_fugenwort("NOUN_PYTHON", "Python");
+	check_fugenwort("NOUN_COBRA", "Kobra");
+	check_fugenwort("NOUN_PIRANHA", "Piranha");
+	check_fugenwort("NOUN_SHARK", "Hai");
+	check_fugenwort("NOUN_GIANT_EEL", "Riesenaal");
+	check_fugenwort("NOUN_ELECTRIC_EEL", "Zitteraal");
+	check_fugenwort("NOUN_CROCODILE", "Krokodils");
+	//check_fugenwort("NOUN_CHROMATIC_DRAGON", "Chromatische Drachen");
+	check_fugenwort("NOUN_SCORPIUS", "Scorpius");
+	check_fugenwort("NOUN_ANT", "Ameisen");
+	check_fugenwort("NOUN_DRAGON", "Drachen");
+	check_fugenwort("NOUN_WORM", "Wurm");
+} END_TEST
 
 //#endif
 
@@ -1057,6 +1110,8 @@ Suite *test_suite(void)
 
 	tcase_add_test(tc_core, test_pronominalisierung);
 	tcase_add_test(tc_core, test_pronomen);
+
+	tcase_add_test(tc_core, test_fugenwort);
 
 	return s;
 }
