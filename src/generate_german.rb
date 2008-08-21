@@ -2390,7 +2390,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GELATINOUS_CUBE", "Gelatinewürfel", "s", "Gelatinewürfel", "", "maskulin"),
     dekliniere_substantiv("NOUN_CHICKATRICE", "Kikatrix", "", "Kikatrices", "fremder", "neutrum"), # Kikatrix? nach Adelung niedersächsisch kiken/küken (angelsächsisch cicen, englisch chicken) für Küchlein (neuhochdeutsch Küken)
     dekliniere_substantiv("NOUN_COCKATRICE", "Kokatrix", "", "Kokatrices", "fremder", "maskulin"), # Cocatrix? mittelalterliches Latein -> http://www.bartleby.com/61/43/C0444300.html
-    dekliniere_substantiv("NOUN_PYROLISK", "Pyrolisk", "en", "Pyrolisk", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_PYROLISK", "Pyrolisk", "en", "Pyrolisk", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_FOX","Fuchs","es","Füchs","e","maskulin"),
     dekliniere_substantiv("NOUN_COYOTE","Kojote","en","Kojote","en","maskulin","n"),
@@ -2422,10 +2422,10 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_LARGE_CAT", "groß", "Katze","","Katze","en","feminin","n"), # Grosskatze?
     dekliniere_substantiv("NOUN_TIGER","Tiger","s","Tiger","","maskulin"),
     dekliniere_substantiv("NOUN_GREMLIN", "Gremlin", "s", "Gremlin", "s", "maskulin"),
-    dekliniere_substantiv("NOUN_GARGOYLE", "Gargyle", "", "Gargyle", "en", "feminin"),
-    dekliniere_substantiv("NOUN_GARGOYLE", "Gargoyle", "s", "Gargoyle", "s", "maskulin"), # Gargoyle?, Gargil?, Gargula?, Gargyle?
-    dekliniere_substantiv("NOUN_WINGED_GARGOYLE", "Fluggargyle", "", "Fluggargyle", "en", "feminin"),
-    dekliniere_nominalphrase("NOUN_WINGED_GARGOYLE", "geflügelt", "Gargoyle", "s", "Gargoyle", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_GARGOYLE", "Gargyle", "", "Gargyle", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_GARGOYLE", "Gargoyle", "s", "Gargoyle", "s", "maskulin","n"), # Gargoyle?, Gargil?, Gargula?, Gargyle?
+    dekliniere_substantiv("NOUN_WINGED_GARGOYLE", "Fluggargyle", "", "Fluggargyle", "en", "feminin","n"),
+    dekliniere_nominalphrase("NOUN_WINGED_GARGOYLE", "geflügelt", "Gargoyle", "s", "Gargoyle", "s", "maskulin","n"),
     dekliniere_substantiv("NOUN_HOBBIT", "Hobbit", "s", "Hobbit", "s", "maskulin"),
     dekliniere_substantiv("NOUN_DWARF","Zwerg","es","Zwerg","e","maskulin", "en"),
     dekliniere_substantiv("NOUN_BUGBEAR", "Grottenschrat","es","Grottenschrat","e","maskulin", "en"),
@@ -2486,7 +2486,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CAVE_SPIDER", "Höhlenspinne", "", "Höhlenspinne", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_CENTIPEDE", "Tausendfüßler", "s", "Tausendfüßler", "", "maskulin"),
     dekliniere_substantiv("NOUN_GIANT_SPIDER", "Riesenspinne", "", "Riesenspinne", "en", "feminin", "n"),
-    dekliniere_substantiv("NOUN_SCORPION", "Skorpion", "s", "Skorpion", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SCORPION", "Skorpion", "s", "Skorpion", "e", "maskulin","en"),
     dekliniere_substantiv("NOUN_LURKER_ABOVE", "Laurer", "s", "Laurer", "", "maskulin"),
     dekliniere_substantiv("NOUN_TRAPPER", "Fallensteller", "s", "Fallensteller", "", "maskulin"), 
     dekliniere_nominalphrase("NOUN_WHITE_UNICORN", "weiß", "Einhorn", "es", "Einhörn", "er", "neutrum"),
@@ -2738,7 +2738,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BABY_CROCODILE","Babykrokodil","s","Babykrokodil","e","neutrum"),
     dekliniere_substantiv("NOUN_LIZARD", "Eidechse", "", "Eidechse", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_CHAMELEON", "Chamäleon", "s", "Chamäleon", "s", "neutrum"),
-    dekliniere_substantiv("NOUN_CROCODILE","Krokodil","s","Krokodil","e","neutrum"),
+    dekliniere_substantiv("NOUN_CROCODILE","Krokodil","s","Krokodil","e","neutrum","s"),
     dekliniere_substantiv("NOUN_SALAMANDER", "Salamander", "s", "Salamander", "", "maskulin"),
     #dekliniere_substantiv("NOUN_LONG_WORM_TAIL"
     dekliniere_substantiv("NOUN_ARCHAEOLOGE", "Archäologe", "en", "Archäologe", "en", "maskulin", "n"),
