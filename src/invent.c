@@ -1134,7 +1134,7 @@ struct obj *otmp;
 	       but some things should be referred to as plural */
 	    if (otyp == LENSES || is_gloves(otmp) || is_boots(otmp))
 		what = "die"; /* EN what = "those"; */
-			pline("Use the '%s' Befehl um %s zu %s%s.", s1, what, s2, s3); /* EN pline("Use the '%s' command to %s %s%s.", s1, s2, what, s3); */ // TODO DE
+			pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den '%s'-Befehl um %s zu %s%s.", s1, what, s2, s3); /* EN pline("Use the '%s' command to %s %s%s.", s1, s2, what, s3); */
 	} else {
 	    pline(silly_thing_to, word);
 	}
@@ -2157,7 +2157,7 @@ char *buf;
 	else if (ltyp == TREE)
 	    cmap = S_tree;				/* "tree" */
 	else if (ltyp == IRONBARS)
-	    dfeature = "set of iron bars"; /* EN dfeature = "set of iron bars"; */ // TODO DE
+	    dfeature = "NOUN_IRON_BARs"; /* EN dfeature = "set of iron bars"; */
 
 	if (cmap >= 0) dfeature = defsyms[cmap].explanation;
 	if (dfeature) Strcpy(buf, dfeature);
@@ -2211,7 +2211,7 @@ boolean picked_some;
 
 	if (Blind) {
 		boolean drift = Is_airlevel(&u.uz) || Is_waterlevel(&u.uz);
-		if (dfeature && !strncmp(dfeature, "altar ", 6)) { /* EN if (dfeature && !strncmp(dfeature, "altar ", 6)) { */ // TODO DE
+		if (dfeature && !strncmp(dfeature, "NOUN_ALTAR ", 11)) { /* EN if (dfeature && !strncmp(dfeature, "altar ", 6)) { */
 		    /* don't say "altar" twice, dfeature has more info */
 		    You("try to feel what is here."); /* EN You("try to feel what is here."); */ // TODO DE
 		} else {
@@ -2451,7 +2451,7 @@ int
 doprarm()
 {
 	if(!wearing_armor())
-		You("are not wearing any armor."); /* EN You("are not wearing any armor."); */ // TODO DE
+		You("VERB_TRAGEN gar OBJECT PRONOMEN_KEIN NOUN_ARMOR."); /* EN You("are not wearing any armor."); */
 	else {
 #ifdef TOURIST
 		char lets[8];
@@ -2527,7 +2527,7 @@ doprtool()
 	    if (tool_in_use(otmp))
 		lets[ct++] = obj_to_let(otmp);
 	lets[ct] = '\0';
-	if (!ct) You("are not using any tools."); /* EN if (!ct) You("are not using any tools."); */ // TODO DE
+	if (!ct) You("VERB_BENUTZEN OBJECT gar PRONOMEN_KEIN NOUN_TOOLs."); /* EN if (!ct) You("are not using any tools."); */
 	else (void) display_inventory(lets, FALSE);
 	return 0;
 }
@@ -2711,7 +2711,7 @@ doorganize()	/* inventory organizer by Del Lamb */
 	}
 
 	/* change the inventory and print the resulting item */
-	adj_type = "Moving:"; /* EN adj_type = "Moving:"; */ // TODO DE
+	adj_type = "Verschoben:"; /* EN adj_type = "Moving:"; */
 
 	/*
 	 * don't use freeinv/addinv to avoid double-touching artifacts,
@@ -2721,13 +2721,13 @@ doorganize()	/* inventory organizer by Del Lamb */
 
 	for (otmp = invent; otmp;)
 		if (merged(&otmp,&obj)) {
-			adj_type = "Merging:"; /* EN adj_type = "Merging:"; */ // TODO DE
+			adj_type = "Zusammengelegt:"; /* EN adj_type = "Merging:"; */
 			obj = otmp;
 			otmp = otmp->nobj;
 			extract_nobj(obj, &invent);
 		} else {
 			if (otmp->invlet == let) {
-				adj_type = "Swapping:"; /* EN adj_type = "Swapping:"; */ // TODO DE
+				adj_type = "Getauscht:"; /* EN adj_type = "Swapping:"; */
 				otmp->invlet = obj->invlet;
 			}
 			otmp = otmp->nobj;
@@ -2810,8 +2810,8 @@ char *title;
 	int do_all = (dflags & MINV_ALL) != 0;
 #endif
 
-	Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)), /* EN Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)), */ // TODO DE
-		do_all ? "possessions" : "NOUN_BEWAFFNUNG"); /* EN do_all ? "possessions" : "armament"); */ // TODO DE
+	Sprintf(tmp,"%s:", genitivattribut_zu_wort(noit_Monnam(mon), /* EN Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)), */
+		do_all ? "NOUN_BESITZTUMs" : "NOUN_BEWAFFNUNG")); /* EN do_all ? "possessions" : "armament"); */
 
 #ifndef GOLDOBJ
 	if (do_all ? (mon->minvent || mon->mgold)

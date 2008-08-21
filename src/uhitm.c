@@ -2278,8 +2278,8 @@ uchar aatyp;
 			    nomul((ACURR(A_WIS) > 12 || rn2(4)) ? -tmp : -127);
 			}
 		    } else {
-			pline("%s cannot defend itself.", /* EN pline("%s cannot defend itself.", */ // TODO DE
-				Adjmonnam(mon,"blind")); /* EN Adjmonnam(mon,"blind")); */ // TODO DE
+			pline("SUBJECT %s VERB_KOENNEN sich nicht verteidigen.", /* EN pline("%s cannot defend itself.", */
+				Adjmonnam(mon,"ADJEKTIV_BLIND")); /* EN Adjmonnam(mon,"blind")); */
 			if(!rn2(500)) change_luck(-1);
 		    }
 		} else if (Free_action) {
@@ -2295,7 +2295,7 @@ uchar aatyp;
 		if(monnear(mon, u.ux, u.uy)) {
 		    if(Cold_resistance) {
 			shieldeff(u.ux, u.uy);
-			You_feel("a mild chill."); /* EN You_feel("a mild chill."); */ // TODO DE
+			You("VERB_FROESTELN leicht."); /* EN You_feel("a mild chill."); */
 			ugolemeffects(AD_COLD, tmp);
 			break;
 		    }
@@ -2453,14 +2453,14 @@ struct monst *mon;
 	if (!u.umconf || mon->mconf) return;
 	if (u.umconf == 1) {
 		if (Blind)
-			Your("%s stop tingling.", hands); /* EN Your("%s stop tingling.", hands); */ // TODO DE
+			Your("%s VERB_AUFHOEREN zu kribbeln SATZKLAMMER.", hands); /* EN Your("%s stop tingling.", hands); */
 		else
-			Your("%s stop glowing %s.", hands, hcolor(NH_RED)); /* EN Your("%s stop glowing %s.", hands, hcolor(NH_RED)); */ // TODO DE
+			Your("%s VERB_AUFHOEREN SATZKLAMMER %s zu leuchten.", hands, hcolor(NH_RED)); /* EN Your("%s stop glowing %s.", hands, hcolor(NH_RED)); */
 	} else {
 		if (Blind)
-			pline_The("tingling in your %s lessens.", hands); /* EN pline_The("tingling in your %s lessens.", hands); */ // TODO DE
+			pline_The("NOUN_KRIBBELN OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV %s VERB_LASSEN nach.", hands); /* EN pline_The("tingling in your %s lessens.", hands); */
 		else
-			Your("%s no longer glow so brightly %s.", hands, /* EN Your("%s no longer glow so brightly %s.", hands, */ // TODO DE
+			Your("%s VERB_LEUCHTEN nicht mehr so intensiv %s.", hands, /* EN Your("%s no longer glow so brightly %s.", hands, */
 				hcolor(NH_RED));
 	}
 	u.umconf--;
@@ -2491,7 +2491,7 @@ struct obj *otmp;	/* source of flash */
 		    amt = otmp->otyp == WAN_LIGHT ? d(1 + otmp->spe, 4) :
 		          rn2(min(mtmp->mhp,4));
 		    pline("SUBJECT %s %s!", Monnam(mtmp), amt > mtmp->mhp / 2 ?  /* EN pline("%s %s!", Monnam(mtmp), amt > mtmp->mhp / 2 ? */
-			  "wails in agony" : "cries out in pain"); /* EN "wails in agony" : "cries out in pain"); */ // TODO DE
+			  "VERB_HEULEN vor Qual auf" : "VERB_SCHREIEN vor Schmerzen auf"); /* EN "wails in agony" : "cries out in pain"); */
 		    if ((mtmp->mhp -= amt) <= 0) {
 			if (flags.mon_moving)
 			    monkilled(mtmp, (char *)0, AD_BLND);

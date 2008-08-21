@@ -492,7 +492,7 @@ struct monst *shkp;
 		 eshkp->credit, currency(eshkp->credit));
 	    total = 0L;		/* credit gets cleared by setpaid() */
 	} else {
-	    You("escaped the shop without paying!"); /* EN You("escaped the shop without paying!"); */ // TODO DE
+	    You("VERB_HABEN OBJECT ARTIKEL_BESTIMMTER NOUN_SHOP verlassen ohne zu bezahlen!"); /* EN You("escaped the shop without paying!"); */
 	    total -= eshkp->credit;
 	}
 	setpaid(shkp);
@@ -1292,9 +1292,9 @@ proceed:
 			else pline(not_enough_money, mhis(shkp)); /* EN else pline(not_enough_money, mhim(shkp)); */
 			return(1);
 		    }
-		    pline("Da aber %s NOUN_SHOP kürzlich ausgeraubt wurde, ", /* EN pline("But since %s shop has been robbed recently,", */
+		    pline("Da aber %s NOUN_SHOP kürzlich ausgeraubt wurde,", /* EN pline("But since %s shop has been robbed recently,", */
 			  mhis(shkp));
-		    pline("NEUER_SATZ VERB_ENTSCHAEDIGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s%s für NEUES_OBJECT OBJECT %s NOUN_VERLUSTs.", mon_nam(shkp), /* EN pline("you %scompensate %s for %s losses.", */
+		    pline("SUBJECT_IM_SATZ VERB_ENTSCHAEDIGEN PRONOMEN_PERSONAL OBJECT %s%s für NEUES_OBJECT OBJECT %s NOUN_VERLUSTs.", mon_nam(shkp), /* EN pline("you %scompensate %s for %s losses.", */
 #ifndef GOLDOBJ
 			  (u.ugold < ltmp) ? 
 #else
@@ -1429,7 +1429,7 @@ proceed:
 
 	    /* this isn't quite right; it itemizes without asking if the
 	     * single item on the bill is partly used up and partly unpaid */
-	    itemize = (eshkp->billct > 1 ? yn("Itemized billing?") == 'y' : 1); /* EN itemize = (eshkp->billct > 1 ? yn("Itemized billing?") == 'y' : 1); */ // TODO DE
+	    itemize = (eshkp->billct > 1 ? yn("SATZBEGINN SUBJECT_IM_SATZ VERB_WUENSCHEN PRONOMEN_PERSONAL eine detaillierte Abrechnung?") == 'y' : 1); /* EN itemize = (eshkp->billct > 1 ? yn("Itemized billing?") == 'y' : 1); */
 
 	    for (pass = 0; pass <= 1; pass++) {
 		tmp = 0;
@@ -2280,7 +2280,7 @@ speak:
 	    else {
 		static const char *honored[5] = {
 		  "ADJEKTIV_GUT", "ADJEKTIV_EHRENWERT", "ADJEKTIV_GNAEDIG", "ADJEKTIV_GESCHAETZT", /* EN "good", "honored", "most gracious", "esteemed", */
-		  "most renowned and sacred" /* EN "most renowned and sacred" */ // TODO DE
+		  "ADJEKTIV_WELTBERUEHMT und ADJEKTIV_EHRWUERDIG" /* EN "most renowned and sacred" */
 		};
 		Strcat(buf, honored[rn2(4) + u.uevent.udemigod]);
 		if (!is_human(youmonst.data)) Strcat(buf, " NOUN_CREATURE"); /* EN if (!is_human(youmonst.data)) Strcat(buf, " creature"); */
@@ -2516,8 +2516,8 @@ register boolean peaceful, silent;
 
 	    if(!silent) {
 		if(cansee(shkp->mx, shkp->my)) {
-		    Norep("%s booms: \"%s, you are a thief!\"", /* EN Norep("%s booms: \"%s, you are a thief!\"", */ // TODO DE
-				Monnam(shkp), plname);
+		    Norep("SUBJECT %s VERB_BRUELLEN: NEUER_SATZ \"%s, SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SEIN %s!\"", /* EN Norep("%s booms: \"%s, you are a thief!\"", */
+				Monnam(shkp), plname, flags.female ? "eine Diebin" : "ein Dieb"); /* EN Monnam(shkp), plname); */
 		} else  Norep("SUBJECT VERB_HEAR einen Schrei: \"Dieb!\""); /* EN } else  Norep("You hear a scream, \"Thief!\""); */
 	    }
 	    hot_pursuit(shkp);
@@ -2607,7 +2607,7 @@ xchar x, y;
 	eshkp = ESHK(shkp);
 
 	if (ANGRY(shkp)) { /* they become shop-objects, no pay */
-		pline("Thank you, scum!"); /* EN pline("Thank you, scum!"); */ // TODO DE
+		pline("Herzlichen Dank, Drecksack!"); /* EN pline("Thank you, scum!"); */
 		subfrombill(obj, shkp);
 		return;
 	}
@@ -3041,9 +3041,9 @@ register boolean croaked;
 	if (!did_repair)
 	    return;
 	if (saw_walls) {
-	    pline("Urplötzlich, verschließ%s sich %s Teil%s der Mauer!", /* EN pline("Suddenly, %s section%s of wall close%s up!", */
-		  (saw_walls == 1) ? "t" : "en", (saw_walls == 1) ? "ein" : (saw_walls <= 3) ?  /* EN (saw_walls == 1) ? "a" : (saw_walls <= 3) ? */ // TODO DE
-						  "ein paar" : "mehrere", /* EN "some" : "several", */
+	    pline("Urplötzlich verschließ%s sich %s Teil%s der Mauer!", /* EN pline("Suddenly, %s section%s of wall close%s up!", */
+		  (saw_walls == 1) ? "t" : "en", (saw_walls == 1) ? "ein" : (saw_walls <= 3) ?  /* EN (saw_walls == 1) ? "a" : (saw_walls <= 3) ? */
+						  "einige" : "mehrere", /* EN "some" : "several", */
 		  (saw_walls == 1) ? "" : "e"); /* EN (saw_walls == 1) ? "" : "s", (saw_walls == 1) ? "s" : ""); */
 	    if (saw_door)
 		pline("Die Ladentüre erscheint wieder!"); /* EN pline_The("shop door reappears!"); */
@@ -3152,7 +3152,7 @@ boolean catchup;	/* restoring a level */
 		 *
 		 * Take the easy way out and put ball&chain under hero.
 		 */
-		verbalize("Get your junk out of my wall!"); /* EN verbalize("Get your junk out of my wall!"); */ // TODO DE
+		verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_HOLEN OBJECT PRONOMEN_POSSESSIV NOUN_MUELL aus meiner Wand!"); /* EN verbalize("Get your junk out of my wall!"); */
 		unplacebc();	/* pick 'em up */
 		placebc();	/* put 'em down */
 	    }
@@ -3236,7 +3236,7 @@ register struct monst *shkp;
 			    return(0);
 			}
 			if(moves > followmsg+4) {
-			    verbalize("%s, %s!  Didn't you forget to pay?", /* EN verbalize("%s, %s!  Didn't you forget to pay?", */ // TODO DE
+			    verbalize("%s, %s!  SUBJECT VERB_HABEN PRONOMEN_PERSONAL nicht vergessen zu bezahlen?", /* EN verbalize("%s, %s!  Didn't you forget to pay?", */
 				    Hello(shkp), plname);
 			    followmsg = moves;
 			    if (!rn2(9)) {
@@ -3552,7 +3552,7 @@ boolean cant_mollify;
 	    if (MON_AT(x, y)) {
 		if(flags.soundok) {
 		    You_hear("eine wütende Stimme:"); /* EN You_hear("an angry voice:"); */
-		    verbalize("Out of my way, scum!"); /* EN verbalize("Out of my way, scum!"); */ // TODO DE
+		    verbalize("Aus dem Weg, du Esel!"); /* EN verbalize("Out of my way, scum!"); */
 		    wait_synch();
 #if defined(UNIX) || defined(VMS)
 # if defined(SYSV) || defined(ULTRIX) || defined(VMS)
@@ -3954,7 +3954,7 @@ register long amount;
 	eshkp = ESHK(shkp);
 	if(eshkp->credit >= amount) {
 	    if(eshkp->credit > amount)
-		Your("credit is reduced by %ld %s.", /* EN Your("credit is reduced by %ld %s.", */ // TODO DE
+		Your("NOUN_GUTHABEN verringert sich um %ld %s.", /* EN Your("credit is reduced by %ld %s.", */
 					amount, currency(amount));
 	    else Your("NOUN_GUTHABEN ist aufgebraucht."); /* EN else Your("credit is erased."); */
 	    eshkp->credit -= amount;
@@ -3998,8 +3998,8 @@ register xchar x, y;
 	    && shkp->mcanmove && !shkp->msleeping
 	    && (ESHK(shkp)->debit || ESHK(shkp)->billct ||
 		ESHK(shkp)->robbed)) {
-		pline("SUBJECT %s%s VERB_VERSPERREN OBJECT KASUS_DATIV den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
-				Invis ? " senses your motion and" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
+		pline("SUBJECT %s%s VERB_VERSPERREN OBJECT KASUS_DATIV PRONOMEN_PERSONAL den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
+				Invis ? " erahnen/wahrnehmen senses your motion und" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
 		return(TRUE);
 	}
 	return(FALSE);
@@ -4037,7 +4037,7 @@ register xchar x, y;
 			|| u.usteed
 #endif
 	  )) {
-		pline("SUBJECT %s%s VERB_VERSPERREN OBJECT KASUS_DATIV den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
+		pline("SUBJECT %s%s VERB_VERSPERREN OBJECT KASUS_DATIV PRONOMEN_PERSONAL den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
 				Invis ? " senses your motion and" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
 		return(TRUE);
 	}

@@ -803,9 +803,9 @@ dodown()
 	}
 	}
 	if(u.ustuck) {
-		You("are %s, and cannot go down.", /* EN You("are %s, and cannot go down.", */ // TODO DE
+		You("VERB_SEIN %s und VERB_KOENNEN nicht runtergehen.", /* EN You("are %s, and cannot go down.", */
 			!u.uswallow ? "being held" : is_animal(u.ustuck->data) ?  /* EN !u.uswallow ? "being held" : is_animal(u.ustuck->data) ? */ // TODO DE
-			"swallowed" : "engulfed"); /* EN "swallowed" : "engulfed"); */ // TODO DE
+			"verschluckt" : "verschlungen"); /* EN "swallowed" : "engulfed"); */
 		return(1);
 	}
 	if (on_level(&valley_level, &u.uz) && !u.uevent.gehennom_entered) {
@@ -813,7 +813,7 @@ dodown()
 		pline("Unspeakable cruelty and harm lurk down there."); /* EN pline("Unspeakable cruelty and harm lurk down there."); */ // TODO DE
 		if (yn("Are you sure you want to enter?") != 'y') /* EN if (yn("Are you sure you want to enter?") != 'y') */ // TODO DE
 			return(0);
-		else pline("So sei es."); /* EN else pline("So be it."); */ // TODO DE
+		else pline("So sei es."); /* EN else pline("So be it."); */
 		u.uevent.gehennom_entered = 1;	/* don't ask again */
 	}
 
@@ -844,7 +844,7 @@ doup()
 	     && (!sstairs.sx || u.ux != sstairs.sx || u.uy != sstairs.sy
 			|| !sstairs.up)
 	  ) {
-		You_cant("go up here."); /* EN You_cant("go up here."); */ // TODO DE
+		You("VERB_KOENNEN hier nicht hinaufgehen."); /* EN You_cant("go up here."); */
 		return(0);
 	}
 #ifdef STEED
@@ -857,19 +857,19 @@ doup()
 	} else
 #endif
 	if(u.ustuck) {
-		You("are %s, and cannot go up.", /* EN You("are %s, and cannot go up.", */ // TODO DE
+		You("VERB_SEIN %s und VERB_KOENNEN nicht hinaufgehen.", /* EN You("are %s, and cannot go up.", */
 			!u.uswallow ? "being held" : is_animal(u.ustuck->data) ?  /* EN !u.uswallow ? "being held" : is_animal(u.ustuck->data) ? */ // TODO DE
-			"swallowed" : "engulfed"); /* EN "swallowed" : "engulfed"); */ // TODO DE
+			"verschluckt" : "verschlungen"); /* EN "swallowed" : "engulfed"); */
 		return(1);
 	}
 	if(near_capacity() > SLT_ENCUMBER) {
 		/* No levitation check; inv_weight() already allows for it */
 		Your("load is too heavy to climb the %s.", /* EN Your("load is too heavy to climb the %s.", */ // TODO DE
-			levl[u.ux][u.uy].typ == STAIRS ? "stairs" : "ladder"); /* EN levl[u.ux][u.uy].typ == STAIRS ? "stairs" : "ladder"); */ // TODO DE
+			levl[u.ux][u.uy].typ == STAIRS ? "VERB_STAIRS" : "VERB_LADDER"); /* EN levl[u.ux][u.uy].typ == STAIRS ? "stairs" : "ladder"); */
 		return(1);
 	}
 	if(ledger_no(&u.uz) == 1) {
-		if (yn("Beware, there will be no return! Still climb?") != 'y') /* EN if (yn("Beware, there will be no return! Still climb?") != 'y') */ // TODO DE
+		if (yn("Achtung, es gibt kein Zurück mehr!  Wirklich hinaufgehen?") != 'y') /* EN if (yn("Beware, there will be no return! Still climb?") != 'y') */
 			return(0);
 	}
 	if(!next_to_u()) {
@@ -1322,7 +1322,7 @@ boolean at_stairs, falling, portal;
 	if (In_endgame(&u.uz) && newdungeon && u.uhave.amulet)
 		resurrect();
 	if (newdungeon && In_V_tower(&u.uz) && In_hell(&u.uz0))
-		pline_The("heat and smoke are gone."); /* EN pline_The("heat and smoke are gone."); */ // TODO DE
+		pline("Die Hitze und der Rauch sind verschwunden."); /* EN pline_The("heat and smoke are gone."); */
 
 	/* the message from your quest leader */
 	if (!In_quest(&u.uz0) && at_dgn_entrance("The Quest") && /* EN if (!In_quest(&u.uz0) && at_dgn_entrance("The Quest") && */ // TODO DE
@@ -1377,7 +1377,7 @@ final_level()
 	/* create a guardian angel next to player, if worthy */
 	if (Conflict) {
 	    pline(
-	     "A voice booms: \"Thy desire for conflict shall be fulfilled!\""); /* EN "A voice booms: \"Thy desire for conflict shall be fulfilled!\""); */ // TODO DE
+	     "Eine Stimme dröhnt: \"Dein Wunsch nach Konflikt soll erfüllt werden!\""); /* EN "A voice booms: \"Thy desire for conflict shall be fulfilled!\""); */
 	    for (i = rnd(4); i > 0; --i) {
 		mm.x = u.ux;
 		mm.y = u.uy;
@@ -1387,7 +1387,7 @@ final_level()
 	    }
 
 	} else if (u.ualign.record > 8) {	/* fervent */
-	    pline("A voice whispers: \"Thou hast been worthy of me!\""); /* EN pline("A voice whispers: \"Thou hast been worthy of me!\""); */ // TODO DE
+	    pline("Eine Stimme flüstert: \"Du hast dich meiner als würdig erwiesen!\""); /* EN pline("A voice whispers: \"Thou hast been worthy of me!\""); */
 	    mm.x = u.ux;
 	    mm.y = u.uy;
 	    if (enexto(&mm, mm.x, mm.y, &mons[PM_ANGEL])) {

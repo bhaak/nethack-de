@@ -1291,7 +1291,7 @@ int magic; /* 0=Physical, otherwise skill level */
 	pline("SUBJECT Wohin VERB_WOLLEN PRONOMEN_PERSONAL springen?"); /* EN pline("Where do you want to jump?"); */
 	cc.x = u.ux;
 	cc.y = u.uy;
-	if (getpos(&cc, TRUE, "die gewünschte Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */ // TODO DE
+	if (getpos(&cc, TRUE, "die gewünschte Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */
 		return 0;	/* user pressed ESC */
 	if (!magic && !(HJumping & ~INTRINSIC) && !EJumping &&
 			distu(cc.x, cc.y) != 5) {
@@ -1636,7 +1636,7 @@ long timeout;
 			You("VERB_SPUEREN, NEUER_SATZ wie SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_PACK %s!", something, /* EN You_feel("%s %s from your pack!", something, */
 			    locomotion(mtmp->data,"VERB_FALLEN")); /* EN locomotion(mtmp->data,"drop")); */
 		    else
-			You("VERB_SEHEN OBJECT %s OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_PACK %s!", /* EN You("see %s %s out of your pack!", */
+			You("VERB_SEHEN OBJECT %s OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_PACK MODIFIER_VERB_INFINITIV %s!", /* EN You("see %s %s out of your pack!", */
 			    monnambuf,
 			    locomotion(mtmp->data,"VERB_FALLEN")); /* EN locomotion(mtmp->data,"drop")); */
 		    break;
@@ -1662,7 +1662,7 @@ long timeout;
 			    Strcpy(carriedby, "kristallklarem Wasser"); /* EN Strcpy(carriedby, "empty water"); */
 			else
 			    Strcpy(carriedby, "der Luft"); /* EN Strcpy(carriedby, "thin air"); */
-			You("VERB_SEHEN OBJECT %s aus %s %s!", monnambuf, /* EN You("see %s %s out of %s!", monnambuf, */
+			You("VERB_SEHEN OBJECT %s aus %s MODIFIER_VERB_INFINITIV %s!", monnambuf, /* EN You("see %s %s out of %s!", monnambuf, */
 			    carriedby, locomotion(mtmp->data, "VERB_KOMMEN")); /* EN locomotion(mtmp->data, "drop"), carriedby); */
 		    }
 		    break;
@@ -2187,14 +2187,14 @@ struct obj *obj;
 	}
 	dam = rnd(2) + dbon() + obj->spe;
 	if (dam <= 0) dam = 1;
-	You("hit your %s with your bullwhip.", body_part(FOOT)); /* EN You("hit your %s with your bullwhip.", body_part(FOOT)); */ // TODO DE
+	You("VERB_HIT OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_BULLWHIP.", body_part(FOOT)); /* EN You("hit your %s with your bullwhip.", body_part(FOOT)); */
 	Sprintf(buf, "killed %sself with %s bullwhip", uhim(), uhis()); /* EN Sprintf(buf, "killed %sself with %s bullwhip", uhim(), uhis()); */ // TODO DE
 	losehp(dam, buf, NO_KILLER_PREFIX);
 	flags.botl = 1;
 	return 1;
 
     } else if ((Fumbling || Glib) && !rn2(5)) {
-	pline_The("bullwhip slips out of your %s.", body_part(HAND)); /* EN pline_The("bullwhip slips out of your %s.", body_part(HAND)); */ // TODO DE
+	pline_The("NOUN_BULLWHIP VERB_RUTSCHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT KASUS_DATIV aus ARTIKEL_BESTIMMTER %s.", body_part(HAND)); /* EN pline_The("bullwhip slips out of your %s.", body_part(HAND)); */
 	dropx(obj);
 
     } else if (u.utrap && u.utraptype == TT_PIT) {
@@ -2235,7 +2235,7 @@ struct obj *obj;
 	    coord cc;
 
 	    cc.x = rx; cc.y = ry;
-	    You("wrap your bullwhip around %s.", wrapped_what); /* EN You("wrap your bullwhip around %s.", wrapped_what); */ // TODO DE
+	    You("VERB_WICKELN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP NEUES_OBJECT OBJECT um %s.", wrapped_what); /* EN You("wrap your bullwhip around %s.", wrapped_what); */
 	    if (proficient && rn2(proficient + 2)) {
 		if (!mtmp || enexto(&cc, rx, ry, youmonst.data)) {
 		    You("yank yourself out of the pit!"); /* EN You("yank yourself out of the pit!"); */ // TODO DE
@@ -2268,7 +2268,7 @@ struct obj *obj;
 	    } else
 		mon_hand = 0;	/* lint suppression */
 
-	    You("wrap your bullwhip around %s.", /* EN You("wrap your bullwhip around %s %s.", */ // TODO DE
+	    You("VERB_WICKELN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP NEUES_OBJECT OBJECT um %s.", /* EN You("wrap your bullwhip around %s %s.", */
 		genitivattribut_zu_wort(mon_nam(mtmp), onambuf)); /* EN s_suffix(mon_nam(mtmp)), onambuf); */
 	    if (gotit && otmp->cursed) {
 		pline("%s welded to %s %s%c", /* EN pline("%s welded to %s %s%c", */ // TODO DE
@@ -2366,7 +2366,7 @@ struct obj *obj;
 
 
 static const char
-	not_enough_room[] = "There's not enough room here to use that.", /* EN not_enough_room[] = "There's not enough room here to use that.", */ // TODO DE
+	not_enough_room[] = "Hier gibt es nicht genug Platz um das zu benutzen.", /* EN not_enough_room[] = "There's not enough room here to use that.", */
 	where_to_hit[] = "Where do you want to hit?", /* EN where_to_hit[] = "Where do you want to hit?", */ // TODO DE
 	cant_see_spot[] = "won't hit anything if you can't see that spot.", /* EN cant_see_spot[] = "won't hit anything if you can't see that spot.", */ // TODO DE
 	cant_reach[] = "can't reach that spot from here."; /* EN cant_reach[] = "can't reach that spot from here."; */ // TODO DE

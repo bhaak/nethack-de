@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /* KMH -- Differences between the three weapon slots.
  *
  * The main weapon (uwep):
@@ -146,12 +150,12 @@ struct obj *wep;
 	    /* Weapon WILL be wielded after this point */
 	    res++;
 	    if (will_weld(wep)) {
-		const char *tmp = xname(wep), *thestr = "The "; /* EN const char *tmp = xname(wep), *thestr = "The "; */ // TODO DE
-		if (strncmp(tmp, thestr, 4) && !strncmp(The(tmp),thestr,4))
+		const char *tmp = xname(wep), *thestr = "ARTIKEL_BESTIMMTER "; /* EN const char *tmp = xname(wep), *thestr = "The "; */
+		if (strncmp(tmp, thestr,19) && !strncmp(The(tmp),thestr,19)) /* EN if (strncmp(tmp, thestr, 4) && !strncmp(The(tmp),thestr,4)) */
 		    tmp = thestr;
 		else tmp = "";
-		pline("%s%s %s to your %s!", tmp, aobjnam(wep, "weld"), /* EN pline("%s%s %s to your %s!", tmp, aobjnam(wep, "weld"), */ // TODO DE
-			(wep->quan == 1L) ? "itself" : "themselves", /* a3 */ /* EN (wep->quan == 1L) ? "itself" : "themselves", */ // TODO DE
+		pline("SUBJECT %s%s %s OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s fest!", tmp, aobjnam(wep, "VERB_KLEBEN"), /* EN pline("%s%s %s to your %s!", tmp, aobjnam(wep, "weld"), */
+			(wep->quan == 1L) ? "sich" : "sich", /* a3 */ /* EN (wep->quan == 1L) ? "itself" : "themselves", */
 			bimanual(wep) ?
 				(const char *)makeplural(body_part(HAND))
 				: body_part(HAND));

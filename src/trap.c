@@ -908,7 +908,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN
 		    trap->once = 1;
 		} else if (u.umonnum == PM_PIT_VIPER ||
 			u.umonnum == PM_PIT_FIEND)
-		    pline("How pitiful.  Isn't that the pits?"); /* EN pline("How pitiful.  Isn't that the pits?"); */ // TODO DE
+		    if (trap->madeby_u) pline("Dabei SUBJECT_IM_SATZ VERB_HABEN PRONOMEN_PERSONAL sie doch für andere gegraben!"); /* EN pline("How pitiful.  Isn't that the pits?"); */
 		if (ttype == SPIKED_PIT) {
 		    const char *predicament = "auf einer Reihe scharfer Eisenstacheln"; /* EN const char *predicament = "on a set of sharp iron spikes"; */
 #ifdef STEED
@@ -1960,7 +1960,7 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 				  Monnam(mtmp), fallverb, a_your[trap->madeby_u], fallverbpartizip /* EN Monnam(mtmp), fallverb, */
 				  ); /* EN a_your[trap->madeby_u]); */
 			    if (mptr == &mons[PM_PIT_VIPER] || mptr == &mons[PM_PIT_FIEND])
-				pline("How pitiful.  Isn't that the pits?"); /* EN pline("How pitiful.  Isn't that the pits?"); */ // TODO DE
+				pline("Hat %s die Grube etwa selbst gegraben?", mhe(mtmp)); /* EN pline("How pitiful.  Isn't that the pits?"); */ /* DE Der Witz war schon auf Englisch schlecht */
 			    seetrap(trap);
 			}
 			mselftouch(mtmp, "Im Fallen ", FALSE); /* EN mselftouch(mtmp, "Falling, ", FALSE); */

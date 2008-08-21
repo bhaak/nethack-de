@@ -607,7 +607,7 @@ peffects(otmp)
 			You("VERB_HAENGEN bewegungslos in der Luft."); /* EN You("are motionlessly suspended."); */
 #ifdef STEED
 		    else if (u.usteed)
-			You("are frozen in place!"); /* EN You("are frozen in place!"); */ // TODO DE
+			You("VERB_ERSTARREN auf der Stelle!"); /* EN You("are frozen in place!"); */
 #endif
 		    else
 			Your("%s are frozen to the %s!", /* EN Your("%s are frozen to the %s!", */ // TODO DE
