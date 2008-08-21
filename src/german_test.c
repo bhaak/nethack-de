@@ -69,7 +69,7 @@ START_TEST (test_linking_elements) {
 START_TEST (test_rings) {
 	char *text[][2] = {
 		{"a NOUN_RING KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_RING_CONFLICT (RING_UNIDENTIFIED_CLAY)",
-		 "a Ring des Konfliktes (Ton)"},
+		 "a Ring des Konfliktes (Lehm)"},
 		{"b NOUN_RING KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_RING_CONFLICT (RING_UNIDENTIFIED_ENGAGEMENT)",
 		 "b Ring des Konfliktes (Verlobung)"},
 		{"c - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_RING KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_RING_STEALTH.",
@@ -425,7 +425,7 @@ START_TEST (test_complete_sentences3) {
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DWARF VERB_GRABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_PIT NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER NOUN_FLOOR.",
 		 "Der Zwerg gräbt eine Grube in den Boden."},
 		{"Während SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_GRABEN, füllt sich das Loch mit KASUS_DATIV NOUN_DOG!",
-		 "Während du gräbst, füllt sich das Loch mit Hunde!"},
+		 "Während du gräbst, füllt sich das Loch mit Hund!"},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -472,7 +472,7 @@ START_TEST (test_incomplete_sentences) {
 		{"SUBJECT NOUN_CAT oder SUBJECT_IM_SATZ ADJEKTIV_ANDERE NOUN_FELINEs",
 		 "Katze oder andere Katzenartige"},
 		{"SATZBEGINN KASUS_DATIV PRONOMEN_POSSESSIV NOUN_REITTIER die Sporen geben?",
-		 "Deinem Reittiere die Sporen geben?"},
+		 "Deinem Reittier die Sporen geben?"},
 		{"KASUS_DATIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_GREEN NOUN_REITTIERs. KASUS_GENITIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_RED NOUN_DOG.",
 		 "den grünen Reittieren. des roten Hundes."},
 		{"SATZBEGINN KASUS_DATIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_GREEN NOUN_REITTIERs. SATZBEGINN KASUS_GENITIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_RED NOUN_DOG.",
@@ -605,64 +605,66 @@ void check_german2meta(char* text[][2], int size) {
 
 START_TEST (test_german2meta) {
 	char *text[][2] = {
-		                 /*{"weiß", "ADJEKTIV_GEM_WHITE"},
-										 {"rot", "ADJEKTIV_GEM_RED"},
-										 {"orangen", "ADJEKTIV_GEM_ORANGE"},
-										 {"blau", "ADJEKTIV_GEM_BLUE"},
-										 {"schwarz", "ADJEKTIV_GEM_BLACK"},
-										 {"grün", "ADJEKTIV_GEM_GREEN"},
-										 {"gelb", "ADJEKTIV_GEM_YELLOW"},
-										 {"gelblichbraun", "ADJEKTIV_GEM_YELLOWISH_BROWN"},
-										 {"violett", "ADJEKTIV_GEM_VIOLET"},
-										 {"grau", "ADJEKTIV_GEM_GRAY"},*/
-
-		                 {"einen blauer Schmuckstein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_BLUE NOUN_GEM"},
-		                 {"einen blauer Edelstein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_BLUE NOUN_GEM"},
-		                 {"einen Jadestein", "ARTIKEL_UNBESTIMMTER NOUN_GEM_JADE"},
-										 {"einen grauen Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
-										 {"einen roten Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_RED NOUN_GEM_ROCK"},
-										 {"ein verfluchter grauer Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
-										 {"Schmuckstein", "NOUN_GEM"},
-										 {"wertloses rotes Glasstück", "NOUN_GEM_RED_GLASS"},
-										 {"eine Flasche Wasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_WATER"},
-										 {"Flaschen Wasser", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_WATER"},
-										 {"eine Flasche Weihwasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_HOLY_WATER"},
-										 {"eine Flasche Satanswasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_UNHOLY_WATER"},
-										 {"Zauberstab des Todes", "NOUN_WAND PARTIKEL_OF NOUN_WAND_DEATH"},
-										 {"Augenbinde",  "NOUN_BLINDFOLD"},
-										 {"Augenbinden", "NOUN_BLINDFOLDs"},
-										 {"eine Augenbinden", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLDs"},
-										 {"der Hund", "ARTIKEL_BESTIMMTER NOUN_DOG"},
-										 {"eine Hauskatze", "ARTIKEL_UNBESTIMMTER NOUN_HOUSECAT"},
-										 {"einen geheiligter Rubin", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_GEM_RUBY"},
-										 {"ein geheiligter rubinroter Trank", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_POT_RUBY NOUN_POTION"},
-										 {"eine halb verspeiste Essensration", "ARTIKEL_UNBESTIMMTER halb ADJEKTIV_EATEN NOUN_FOOD_RATION"},
-										 {"eine rote Zauberbuches", "ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_RED NOUN_SPELLBOOK"},
-										 {"2 rote Zauberbücher", "2 ADJEKTIV_SPE_RED NOUN_SPELLBOOKs"},
-										 {"Ring des Schleichens", "NOUN_RING PARTIKEL_OF NOUN_RING_STEALTH"},
-										 {"geheiligte lange Samuraischwerter", "ADJEKTIV_BLESSED NOUN_LONG_SAMURAI_SWORDs"},
-										 {"einen Perlenring", "ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_PEARL"},
-										 {"ein geheiligter silberner Zauberstab", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_WAND_SILVER NOUN_WAND"},
-										 {"ein Zauberstab aus Platin", "ARTIKEL_UNBESTIMMTER MADE_OF_WAND_PLATINUM NOUN_WAND"},
-										 {"ein nicht verfluchtes Stethoskop", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_STETHOSCOPE"},
-										 {"5 nicht verfluchte Äpfel", "5 ADJEKTIV_UNCURSED NOUN_APPLEs"},
-										 {"ein nicht verfluchtes +1 Paar Lederhandschuhe", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED +1 NOUN_PAAR NOUN_LEATHER_GLOVESs"},
-										 {"eine sechseckiges Amulett", "ARTIKEL_UNBESTIMMTER ADJEKTIV_AMULET_HEXAGONAL NOUN_AMULET"},
-										 {"der Kadaver einer Vampirfledermaus", "ARTIKEL_BESTIMMTER MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER NOUN_VAMPIRE_BAT NOUN_CORPSE"},
-										 //{"Leichen von Vampirfledermäusen", "MODIFIER_CORPSE PARTIKEL_VON NOUN_VAMPIRE_BATs NOUN_CORPSE"},
-										 {"Zauberstab der Monsterbeschwörung", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
-										 {"ein Zauberstab der Hast (0:4)", "ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_SPEED_MONSTER (0:4)"},
-										 {"Trank des Schlafes", "NOUN_POTION PARTIKEL_OF NOUN_POT_SLEEPING"},
-										 {"Zauberbuch des Schlafes", "NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP"},
-										 {"verfluchtes Schwert", "ADJEKTIV_CURSED NOUN_SWORD"},
-										 {"Schriftrolle des Lichtes", "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_LIGHT"},
-										 {"Schriftrolle \"LIES MICH\"", "NOUN_SCROLL \"NOUN_SCR_READ_ME\""},
-										 {"eine Essensration", "ARTIKEL_UNBESTIMMTER NOUN_FOOD_RATION"},
-										 {"Essensrationen", "NOUN_FOOD_RATIONs"},
-										 {"eine geheiligte Zauberbuch der Monsterbezauberung", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_CHARM_MONSTER"},
-										 {"Tränke der Verwirrung", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_CONFUSION"},
-										 {"Statuette einer Flechte", "NOUN_FIGURINE PARTIKEL_OF ARTIKEL_UNBESTIMMTER NOUN_LICHEN"},
-										 //{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
+		/*{"weiß", "ADJEKTIV_GEM_WHITE"},
+		  {"rot", "ADJEKTIV_GEM_RED"},
+		  {"orangen", "ADJEKTIV_GEM_ORANGE"},
+		  {"blau", "ADJEKTIV_GEM_BLUE"},
+		  {"schwarz", "ADJEKTIV_GEM_BLACK"},
+		  {"grün", "ADJEKTIV_GEM_GREEN"},
+		  {"gelb", "ADJEKTIV_GEM_YELLOW"},
+		  {"gelblichbraun", "ADJEKTIV_GEM_YELLOWISH_BROWN"},
+		  {"violett", "ADJEKTIV_GEM_VIOLET"},
+		  {"grau", "ADJEKTIV_GEM_GRAY"},*/
+		{"einen blauer Schmuckstein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_BLUE NOUN_GEM"},
+		{"einen blauer Edelstein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_BLUE NOUN_GEM"},
+		{"einen Jadestein", "ARTIKEL_UNBESTIMMTER NOUN_GEM_JADE"},
+		{"einen grauen Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
+		{"einen roten Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_GEM_RED NOUN_GEM_ROCK"},
+		{"ein verfluchter grauer Stein", "ARTIKEL_UNBESTIMMTER ADJEKTIV_CURSED ADJEKTIV_GEM_GRAY NOUN_GEM_ROCK"},
+		{"Schmuckstein", "NOUN_GEM"},
+		{"wertloses rotes Glasstück", "NOUN_GEM_RED_GLASS"},
+		{"eine Flasche Wasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_WATER"},
+		{"Flaschen Wasser", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_WATER"},
+		{"eine Flasche Weihwasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_HOLY_WATER"},
+		{"eine Flasche Satanswasser", "ARTIKEL_UNBESTIMMTER NOUN_POTION PARTIKEL_OF NOUN_POT_UNHOLY_WATER"},
+		{"Zauberstab des Todes", "NOUN_WAND PARTIKEL_OF NOUN_WAND_DEATH"},
+		{"Augenbinde",  "NOUN_BLINDFOLD"},
+		{"Augenbinden", "NOUN_BLINDFOLDs"},
+		{"eine Augenbinden", "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLDs"},
+		{"der Hund", "ARTIKEL_BESTIMMTER NOUN_DOG"},
+		{"eine Hauskatze", "ARTIKEL_UNBESTIMMTER NOUN_HOUSECAT"},
+		{"einen geheiligter Rubin", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_GEM_RUBY"},
+		{"ein geheiligter rubinroter Trank", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_POT_RUBY NOUN_POTION"},
+		{"eine halb verspeiste Essensration", "ARTIKEL_UNBESTIMMTER halb ADJEKTIV_EATEN NOUN_FOOD_RATION"},
+		{"eine rote Zauberbuches", "ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_RED NOUN_SPELLBOOK"},
+		{"2 rote Zauberbücher", "2 ADJEKTIV_SPE_RED NOUN_SPELLBOOKs"},
+		{"Ring des Schleichens", "NOUN_RING PARTIKEL_OF NOUN_RING_STEALTH"},
+		{"geheiligte lange Samuraischwerter", "ADJEKTIV_BLESSED NOUN_LONG_SAMURAI_SWORDs"},
+		{"einen Perlenring", "ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_PEARL"},
+		{"ein geheiligter silberner Zauberstab", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED ADJEKTIV_WAND_SILVER NOUN_WAND"},
+		{"ein Zauberstab aus Platin", "ARTIKEL_UNBESTIMMTER MADE_OF_WAND_PLATINUM NOUN_WAND"},
+		{"ein nicht verfluchtes Stethoskop", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_STETHOSCOPE"},
+		{"5 nicht verfluchte Äpfel", "5 ADJEKTIV_UNCURSED NOUN_APPLEs"},
+		{"ein nicht verfluchtes +1 Paar Lederhandschuhe", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED +1 NOUN_PAAR NOUN_LEATHER_GLOVESs"},
+		{"eine sechseckiges Amulett", "ARTIKEL_UNBESTIMMTER ADJEKTIV_AMULET_HEXAGONAL NOUN_AMULET"},
+		{"der Kadaver einer Vampirfledermaus", "ARTIKEL_BESTIMMTER MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER NOUN_VAMPIRE_BAT NOUN_CORPSE"},
+		//{"Leichen von Vampirfledermäusen", "MODIFIER_CORPSE PARTIKEL_VON NOUN_VAMPIRE_BATs NOUN_CORPSE"},
+		{"Zauberstab der Monsterbeschwörung", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
+		{"ein Zauberstab der Hast (0:4)", "ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_SPEED_MONSTER (0:4)"},
+		{"Trank des Schlafes", "NOUN_POTION PARTIKEL_OF NOUN_POT_SLEEPING"},
+		{"Zauberbuch des Schlafes", "NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_SLEEP"},
+		{"verfluchtes Schwert", "ADJEKTIV_CURSED NOUN_SWORD"},
+		{"Schriftrolle des Lichtes", "NOUN_SCROLL PARTIKEL_OF NOUN_SCR_LIGHT"},
+		{"Schriftrolle \"LIES MICH\"", "NOUN_SCROLL \"NOUN_SCR_READ_ME\""},
+		{"eine Essensration", "ARTIKEL_UNBESTIMMTER NOUN_FOOD_RATION"},
+		{"Essensrationen", "NOUN_FOOD_RATIONs"},
+		{"eine geheiligte Zauberbuch der Monsterbezauberung", "ARTIKEL_UNBESTIMMTER ADJEKTIV_BLESSED NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_CHARM_MONSTER"},
+		{"Tränke der Verwirrung", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_CONFUSION"},
+		{"Statuette einer Flechte", "NOUN_FIGURINE PARTIKEL_OF ARTIKEL_UNBESTIMMTER NOUN_LICHEN"},
+		//{"eine nicht verfluchte Dose mit Spinat", "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_TIN PARTIKEL_OF NOUN_SPINACH"},
+		{"Krokodil Ei", "NOUN_CROCODILE NOUN_EGG"},
+		{"Krokodils-Ei", "NOUN_CROCODILE NOUN_EGG"},
+		{"Skorpionen-Ei", "NOUN_SCORPIONs NOUN_EGG"},
 	};
 
 	check_german2meta(text, sizeof(text)/8);
@@ -773,7 +775,7 @@ START_TEST (test_paar) {
 		{"b - KASUS_GENITIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_OLD_GLOVES",
 		 "b - eines Paares alter Handschuhe"},
 		{"c - mit KASUS_DATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_OLD_GLOVES",
-		 "c - mit einem Paare alter Handschuhe"},
+		 "c - mit einem Paar alter Handschuhe"},
 		{"d - für KASUS_AKKUSATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_OLD_GLOVES",
 		 "d - für ein Paar alter Handschuhe"},
 
@@ -783,7 +785,7 @@ START_TEST (test_paar) {
 		{"f - KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_PAAR NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
 		 "f - des Paares alter Handschuhe"},
 		{"g - mit KASUS_DATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_DATIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
-		 "g - mit einem Paare alten Handschuhen"},
+		 "g - mit einem Paar alten Handschuhen"},
 		{"h - für ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_AKKUSATIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
 		 "h - für ein Paar alte Handschuhe"},
 
@@ -793,7 +795,7 @@ START_TEST (test_paar) {
 		{"j - KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_PAAR KASUS_GENITIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
 		 "j - des Paares alter Handschuhe"},
 		{"k - mit KASUS_DATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_GENITIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
-		 "k - mit einem Paare alter Handschuhe"},
+		 "k - mit einem Paar alter Handschuhe"},
 		{"l - für ARTIKEL_UNBESTIMMTER NOUN_PAAR KASUS_GENITIV NUMERUS_PLURAL ARTIKEL_NULL NOUN_OLD_GLOVES",
 		 "l - für ein Paar alter Handschuhe"},
 
@@ -803,7 +805,7 @@ START_TEST (test_paar) {
 		{"n - KASUS_GENITIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_GLOVES",
 		 "n - eines Paares Handschuhe"},
 		{"o - mit KASUS_DATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_GLOVES",
-		 "o - mit einem Paare Handschuhe"},
+		 "o - mit einem Paar Handschuhe"},
 		{"p - für KASUS_AKKUSATIV ARTIKEL_UNBESTIMMTER NOUN_PAAR NOUN_GLOVES",
 		 "p - für ein Paar Handschuhe"},
 
@@ -1070,7 +1072,6 @@ Suite *test_suite(void)
 
 	suite_add_tcase (s, tc_core);
   
-	if (1) {
 	tcase_add_test(tc_core, test_satzklammer);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
@@ -1109,7 +1110,6 @@ Suite *test_suite(void)
 	
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
 	tcase_add_test(tc_core, test_modifier_verb_imperativ);
-	}
 	tcase_add_test(tc_core, test_wortzusammensetzungen);
 
 	tcase_add_test(tc_core, test_pronominalisierung);

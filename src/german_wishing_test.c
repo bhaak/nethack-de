@@ -334,13 +334,34 @@ START_TEST (test_wishing) {
 	fail_unless(obj->quan == 2);
 	fail_unless(strcmp("NOUN_POT_CONFUSION", dn)==0);
 
+	strcpy(buf, "Rotdrache Ei");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	fail_unless(obj->oclass == FOOD_CLASS);
+	fail_unless(obj->quan == 1);
+	fail_unless(strcmp("NOUN_EGG", dn)==0);
+	fail_unless(strcmp("NOUN_RED_DRAGON", mons[obj->corpsenm].mname)==0);
+
+	strcpy(buf, "Krokodils-Ei");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	fail_unless(obj->oclass == FOOD_CLASS);
+	fail_unless(obj->quan == 1);
+	fail_unless(strcmp("NOUN_EGG", dn)==0);
+	fail_unless(strcmp("NOUN_CROCODILE", mons[obj->corpsenm].mname)==0);
+
 	// Statuette eines Goblins
 	
 } END_TEST
 
 START_TEST (test_gott_weiblich) {
 	fail_unless(!gott_weiblich("den Gott kenne ich nicht"));
-	fail_unless(gott_weiblich("den Gott kenne ich nicht"));
 
 	fail_unless(!gott_weiblich("Quetzalcoatl"));
 	fail_unless(!gott_weiblich("Camaxtli"));
@@ -386,7 +407,7 @@ Suite *test_suite(void)
   TCase *tc_core = tcase_create("Nethack");
 
   suite_add_tcase (s, tc_core);
-//	tcase_add_test(tc_core, test_wishing);
+	tcase_add_test(tc_core, test_wishing);
 	tcase_add_test(tc_core, test_gott_weiblich);
 	tcase_add_test(tc_core, test_naming);
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);

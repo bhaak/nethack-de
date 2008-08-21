@@ -342,7 +342,7 @@ void german2meta(const char *str, char *output)
 
 		if (wort == NULL) {
 			// No match. Advance one character and try again
-			strncat(output, str+i, 1);
+			strncat(output, (str[i] == '-') ? " " : str+i, 1);
 			i++;
 		} else {
 			// Found a match. Copy string and jump over word
