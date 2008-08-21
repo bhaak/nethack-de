@@ -1886,6 +1886,7 @@ boolean from_user;
 		register int l;
 
 		//pline("wishing5: %s", bp); // DE DEBUG
+		//fprintf(stderr, "readobjnam 4.5 l=%d, %s\n", l, bp); // DE DEBUG
 		if (!bp || !*bp) goto any;
 		if (!strncmpi(bp, "MODIFIER_CORPSE ", l=16)) {
 		} else if (!strncmpi(bp, "PARTIKEL_VON ", l=13)) {
@@ -1943,13 +1944,13 @@ boolean from_user;
 		} else if (!strncmpi(bp,"ADJEKTIV_SCR_STAMPED ", l=21)) {
 			stamped = 1;
 #endif
-		} else if(!strncmpi(bp, "ADJEKTIV_POISONED ",l=9) /* EN } else if(!strncmpi(bp, "poisoned ",l=9) */
+		} else if(!strncmpi(bp, "ADJEKTIV_POISONED ",l=18) /* EN } else if(!strncmpi(bp, "poisoned ",l=9) */
 #ifdef WIZARD
 			  || (wizard && !strncmpi(bp, "trapped ",l=8)) /* EN || (wizard && !strncmpi(bp, "trapped ",l=8)) */ // TODO DE
 #endif
 			  ) {
 			ispoisoned=1;
-		} else if(!strncmpi(bp, "ADJEKTIV_GREASED ",l=8)) { /* EN } else if(!strncmpi(bp, "greased ",l=8)) { */ // TODO DE
+		} else if(!strncmpi(bp, "ADJEKTIV_GREASED ",l=17)) { /* EN } else if(!strncmpi(bp, "greased ",l=8)) { */ // TODO DE
 			isgreased=1;
 		} else if (!strncmpi(bp, "very ", l=5)) { /* EN } else if (!strncmpi(bp, "very ", l=5)) { */ // TODO DE
 			/* very rusted very heavy iron ball */
@@ -1962,7 +1963,7 @@ boolean from_user;
 			   !strncmpi(bp, "burned ", l=7)) { /* EN !strncmpi(bp, "burned ", l=7)) { */ // TODO DE
 			eroded = 1 + very;
 			very = 0;
-		} else if (!strncmpi(bp, "ADJEKTIV_CORRODED ", l=9) || /* EN } else if (!strncmpi(bp, "corroded ", l=9) || */
+		} else if (!strncmpi(bp, "ADJEKTIV_CORRODED ", l=18) || /* EN } else if (!strncmpi(bp, "corroded ", l=9) || */
 			   !strncmpi(bp, "rotted ", l=7)) { /* EN !strncmpi(bp, "rotted ", l=7)) { */ // TODO DE
 			eroded2 = 1 + very;
 			very = 0;
@@ -1976,7 +1977,9 @@ boolean from_user;
 			contents = EMPTY;
 		} else { /*pline("wishing, NICHT erkannt: %s",bp);*/ break; }
 		//pline("wishing, erkannt: %s",bp);
+		//fprintf(stderr, "readobjnam 4.5 l=%d, %s\n", l, bp); // DE DEBUG
 		bp += l;
+		//fprintf(stderr, "readobjnam 4.5 l=%d, %s\n", l, bp); // DE DEBUG
 		//pline("wishing, erkannt: %s",bp);
 	}
 	if(!cnt) cnt = 1;		/* %% what with "gems" etc. ? */
@@ -2513,7 +2516,7 @@ srch:
 		if(!BSTRCMP(bp, p-13, "NOUN_FOUNTAIN")) { /* EN if(!BSTRCMP(bp, p-8, "fountain")) { */
 			levl[u.ux][u.uy].typ = FOUNTAIN;
 			level.flags.nfountains++;
-			if(!strncmpi(bp, "ADJEKTIV_MAGISCH ", 6)) /* EN if(!strncmpi(bp, "magic ", 6)) */
+			if(!strncmpi(bp, "ADJEKTIV_MAGISCH ", 17)) /* EN if(!strncmpi(bp, "magic ", 6)) */
 				levl[u.ux][u.uy].blessedftn = 1;
 			pline("SUBJECT ARTIKEL_UNBESTIMMTER %sNOUN_FOUNTAIN.", /* EN pline("A %sfountain.", */
 			      levl[u.ux][u.uy].blessedftn ? "ADJEKTIV_MAGISCH " : ""); /* EN levl[u.ux][u.uy].blessedftn ? "magic " : ""); */
@@ -2557,13 +2560,13 @@ srch:
 		    aligntyp al;
 
 		    levl[u.ux][u.uy].typ = ALTAR;
-		    if(!strncmpi(bp, "ADJEKTIV_CHAOTIC ", 8)) /* EN if(!strncmpi(bp, "chaotic ", 8)) */
+		    if(!strncmpi(bp, "ADJEKTIV_CHAOTIC ", 17)) /* EN if(!strncmpi(bp, "chaotic ", 8)) */
 			al = A_CHAOTIC;
-		    else if(!strncmpi(bp, "ADJEKTIV_NEUTRAL ", 8)) /* EN else if(!strncmpi(bp, "neutral ", 8)) */
+		    else if(!strncmpi(bp, "ADJEKTIV_NEUTRAL ", 17)) /* EN else if(!strncmpi(bp, "neutral ", 8)) */
 			al = A_NEUTRAL;
-		    else if(!strncmpi(bp, "ADJEKTIV_LAWFUL ", 7)) /* EN else if(!strncmpi(bp, "lawful ", 7)) */
+		    else if(!strncmpi(bp, "ADJEKTIV_LAWFUL ", 16)) /* EN else if(!strncmpi(bp, "lawful ", 7)) */
 			al = A_LAWFUL;
-		    else if(!strncmpi(bp, "ADJEKTIV_UNALIGNED ", 10)) /* EN else if(!strncmpi(bp, "unaligned ", 10)) */
+		    else if(!strncmpi(bp, "ADJEKTIV_UNALIGNED ", 19)) /* EN else if(!strncmpi(bp, "unaligned ", 10)) */
 			al = A_NONE;
 		    else /* -1 - A_CHAOTIC, 0 - A_NEUTRAL, 1 - A_LAWFUL */
 			al = (!rn2(6)) ? A_NONE : rn2((int)A_LAWFUL+2) - 1;
