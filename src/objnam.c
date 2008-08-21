@@ -755,8 +755,8 @@ ring:
 		    if (obj->corpsenm >= LOW_PM &&
 			    (obj->known ||
 			    mvitals[obj->corpsenm].mvflags & MV_KNOWS_EGG)) {
-			Strcat(prefix, mons[obj->corpsenm].mname);
-			Strcat(prefix, " "); /* EN Strcat(prefix, " "); */ // TODO DE
+			Strcat(prefix, fugenwort(mons[obj->corpsenm].mname)); /* EN Strcat(prefix, mons[obj->corpsenm].mname); */
+			Strcat(prefix, "--"); /* EN Strcat(prefix, " "); */
 			if (obj->spe)
 			    Strcat(bp, " (selbstgelegt)"); /* EN Strcat(bp, " (laid by you)"); */
 		    }
