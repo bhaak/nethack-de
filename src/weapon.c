@@ -640,8 +640,8 @@ register struct monst *mon;
 			const char *mon_hand = mbodypart(mon, HAND);
 
 			if (bimanual(mw_tmp)) mon_hand = makeplural(mon_hand);
-			Sprintf(welded_buf, "%s welded to %s %s", /* EN Sprintf(welded_buf, "%s welded to %s %s", */ // TODO DE
-				otense(mw_tmp, "are"), /* EN otense(mw_tmp, "are"), */ // TODO DE
+			Sprintf(welded_buf, "%s OBJECT KASUS_DATIV an %s %s", /* EN Sprintf(welded_buf, "%s welded to %s %s", */
+				otense(mw_tmp, "VERB_KLEBEN"), /* EN otense(mw_tmp, "are"), */
 				mhis(mon), mon_hand);
 
 			if (obj->otyp == PICK_AXE) {
@@ -668,10 +668,10 @@ register struct monst *mon;
 		if (canseemon(mon)) {
 		    pline("%s wields %s!", Monnam(mon), doname(obj)); /* EN pline("%s wields %s!", Monnam(mon), doname(obj)); */ // TODO DE
 		    if (obj->cursed && obj->otyp != CORPSE) {
-			pline("%s %s to %s %s!", /* EN pline("%s %s to %s %s!", */ // TODO DE
-			    Tobjnam(obj, "weld"), /* EN Tobjnam(obj, "weld"), */ // TODO DE
-			    is_plural(obj) ? "themselves" : "itself", /* EN is_plural(obj) ? "themselves" : "itself", */ // TODO DE
-			    s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); */ // TODO DE
+			pline("SUBJECT %s %s OBJECT KASUS_DATIV an %s fest!", /* EN pline("%s %s to %s %s!", */
+			    Tobjnam(obj, "VERB_KLEBEN"), /* EN Tobjnam(obj, "weld"), */
+			    "sich", /* EN is_plural(obj) ? "themselves" : "itself", */
+			    genitivattribut_zu_wort((mon_nam(mon)), mbodypart(mon,HAND))); /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); */
 			obj->bknown = 1;
 		    }
 		}

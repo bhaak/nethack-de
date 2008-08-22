@@ -155,7 +155,7 @@ struct obj *wep;
 		    tmp = thestr;
 		else tmp = "";
 		pline("SUBJECT %s%s %s OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s fest!", tmp, aobjnam(wep, "VERB_KLEBEN"), /* EN pline("%s%s %s to your %s!", tmp, aobjnam(wep, "weld"), */
-			(wep->quan == 1L) ? "sich" : "sich", /* a3 */ /* EN (wep->quan == 1L) ? "itself" : "themselves", */
+			"sich", /* a3 */ /* EN (wep->quan == 1L) ? "itself" : "themselves", */
 			bimanual(wep) ?
 				(const char *)makeplural(body_part(HAND))
 				: body_part(HAND));
@@ -416,7 +416,7 @@ const char *verb;	/* "rub",&c */
     if (!verb) verb = "wield"; /* EN if (!verb) verb = "wield"; */ // TODO DE
     what = xname(obj);
     more_than_1 = (obj->quan > 1L ||
-		   strstri(what, "pair of ") != 0 || /* EN strstri(what, "pair of ") != 0 || */ // TODO DE
+		   strstri(what, "NOUN_PAAR ") != 0 || /* EN strstri(what, "pair of ") != 0 || */
 		   strstri(what, "s of ") != 0); /* EN strstri(what, "s of ") != 0); */ // TODO DE
 
     if (obj->owornmask & (W_ARMOR|W_RING|W_AMUL|W_TOOL)) {
@@ -432,10 +432,10 @@ const char *verb;	/* "rub",&c */
 	    const char *hand = body_part(HAND);
 
 	    if (bimanual(uwep)) hand = makeplural(hand);
-	    if (strstri(what, "pair of ") != 0) more_than_1 = FALSE; /* EN if (strstri(what, "pair of ") != 0) more_than_1 = FALSE; */ // TODO DE
+	    if (strstri(what, "NOUN_PAAR ") != 0) more_than_1 = FALSE; /* EN if (strstri(what, "pair of ") != 0) more_than_1 = FALSE; */
 	    pline(
-	     "Since your weapon is welded to your %s, you cannot %s %s %s.", /* EN "Since your weapon is welded to your %s, you cannot %s %s %s.", */ // TODO DE
-		  hand, verb, more_than_1 ? "those" : "that", xname(obj)); /* EN hand, verb, more_than_1 ? "those" : "that", xname(obj)); */ // TODO DE
+	     "Da PRONOMEN_POSSESSIV NOUN_WEAPON OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s VERB_KLEBEN, NEUER_SATZ SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL PRONOMEN_DIESER %s nicht %s.", /* EN "Since your weapon is welded to your %s, you cannot %s %s %s.", */
+		  hand, xname(obj), verb); /* EN hand, verb, more_than_1 ? "those" : "that", xname(obj)); */
 	} else {
 	    You("VERB_KOENNEN das nicht tun."); /* EN You_cant("do that."); */
 	}
@@ -477,14 +477,14 @@ can_twoweapon()
 #define NOT_WEAPON(obj) (!is_weptool(obj) && obj->oclass != WEAPON_CLASS)
 	if (!could_twoweap(youmonst.data)) {
 		if (Upolyd)
-		    You_cant("use two weapons in your current form."); /* EN You_cant("use two weapons in your current form."); */ // TODO DE
+		    You("VERB_KOENNEN OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV ADJEKTIV_DERZEITIG NOUN_DASEINSFORM nicht zwei Waffen benutzen."); /* EN You_cant("use two weapons in your current form."); */
 		else
 		    pline("%s aren't able to use two weapons at once.", /* EN pline("%s aren't able to use two weapons at once.", */ // TODO DE
 			  makeplural((flags.female && urole.name.f) ?
 				     urole.name.f : urole.name.m));
 	} else if (!uwep || !uswapwep)
-		Your("%s%s%s empty.", uwep ? "left " : uswapwep ? "right " : "", /* EN Your("%s%s%s empty.", uwep ? "left " : uswapwep ? "right " : "", */ // TODO DE
-			body_part(HAND), (!uwep && !uswapwep) ? "s are" : " is"); /* EN body_part(HAND), (!uwep && !uswapwep) ? "s are" : " is"); */ // TODO DE
+		Your("%s%s%s VERB_SEIN leer.", uwep ? "ADJEKTIV_LINK " : uswapwep ? "ADJEKTIV_RECHT " : "", /* EN Your("%s%s%s empty.", uwep ? "left " : uswapwep ? "right " : "", */
+			body_part(HAND), (!uwep && !uswapwep) ? "s" : ""); /* EN body_part(HAND), (!uwep && !uswapwep) ? "s are" : " is"); */
 	else if (NOT_WEAPON(uwep) || NOT_WEAPON(uswapwep)) {
 		otmp = NOT_WEAPON(uwep) ? uwep : uswapwep;
 		pline("%s %s.", Yname2(otmp), /* EN pline("%s %s.", Yname2(otmp), */ // TODO DE
@@ -794,8 +794,8 @@ register struct obj *obj;
 	long savewornmask;
 
 	savewornmask = obj->owornmask;
-	Your("%s %s welded to your %s!", /* EN Your("%s %s welded to your %s!", */ // TODO DE
-		xname(obj), otense(obj, "are"), /* EN xname(obj), otense(obj, "are"), */ // TODO DE
+	Your("%s %s OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s!", /* EN Your("%s %s welded to your %s!", */
+		xname(obj), otense(obj, "VERB_KLEBEN"), /* EN xname(obj), otense(obj, "are"), */
 		bimanual(obj) ? (const char *)makeplural(body_part(HAND))
 				: body_part(HAND));
 	obj->owornmask = savewornmask;

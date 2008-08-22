@@ -982,7 +982,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN
 			newsym(u.ux,u.uy);
 			break;
 		    }
-		    if (webmsgok) You("flow through %s NOUN_SPIDER_WEB.", /* EN if (webmsgok) You("flow through %s spider web.", */ // TODO DE
+		    if (webmsgok) You("VERB_STROEMEN OBJECT durch %s NOUN_SPIDER_WEB.", /* EN if (webmsgok) You("flow through %s spider web.", */
 			    a_your[trap->madeby_u]);
 		    break;
 		}
@@ -1004,7 +1004,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN
 		    else
 #endif
 			
-		    Sprintf(verbbuf, "%s", Levitation ? (const char *)"float" : /* EN Sprintf(verbbuf, "%s", Levitation ? (const char *)"float" : */ // TODO DE
+		    Sprintf(verbbuf, "%s", Levitation ? (const char *)"VERB_SCHWEBEN" : /* EN Sprintf(verbbuf, "%s", Levitation ? (const char *)"float" : */
 		      		locomotion(youmonst.data, "VERB_STOLPERN")); /* EN locomotion(youmonst.data, "stumble")); */
 		    You("%s NEUES_OBJECT OBJECT in %s NOUN_SPIDER_WEB!", /* EN You("%s into %s spider web!", */
 			verbbuf, a_your[trap->madeby_u]);
@@ -1102,7 +1102,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN
 		You("%s OBJECT in ARTIKEL_UNBESTIMMTER NOUN_POLYMORPH_TRAP!", verbbuf); /* EN You("%s onto a polymorph trap!", verbbuf); */
 		if(Antimagic || Unchanging) {
 		    shieldeff(u.ux, u.uy);
-		    You_feel("momentarily different."); /* EN You_feel("momentarily different."); */ // TODO DE
+		    Du_fuehlst_dich("kurz anders."); /* EN You_feel("momentarily different."); */
 		    /* Trap did nothing; don't remove it --KAA */
 		} else {
 #ifdef STEED
@@ -1110,7 +1110,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN
 #endif
 		    deltrap(trap);	/* delete trap before polymorph */
 		    newsym(u.ux,u.uy);	/* get rid of trap symbol */
-		    You_feel("a change coming over you."); /* EN You_feel("a change coming over you."); */ // TODO DE
+		    You("VERB_SPUEREN eine Veränderung OBJECT über PRONOMEN_PERSONAL kommen."); /* EN You_feel("a change coming over you."); */
 		    polyself(FALSE);
 		}
 		break;
@@ -1440,7 +1440,7 @@ int style;
 			case LANDMINE:
 			    if (rn2(10) > 2) {
 			  	pline(
-				  "KAABLAMM!!!%s", /* EN "KAABLAMM!!!%s", */ // TODO DE
+				  "KAABLAMM!!!%s",
 				  cansee(bhitpos.x, bhitpos.y) ?
 					" Die Felskugel löst KASUS_AKKUSATIV ARTIKEL_UNBESTIMMTER NOUN_LAND_MINE aus." : ""); /* EN " The rolling boulder triggers a land mine." : ""); */
 				deltrap(t);
@@ -2371,7 +2371,7 @@ long hmask, emask;     /* might cancel timeout */
 	if (!trap) {
 	    trap = t_at(u.ux,u.uy);
 	    if(Is_airlevel(&u.uz))
-		You("begin to tumble in place."); /* EN You("begin to tumble in place."); */ // TODO DE
+		You("VERB_BEGINNEN OBJECT PRONOMEN_PERSONAL zu überschlagen."); /* EN You("begin to tumble in place."); */
 	    else if (Is_waterlevel(&u.uz) && !no_msg)
 		Du_fuehlst_dich("schwerer."); /* EN You_feel("heavier."); */
 	    /* u.uinwater msgs already in spoteffects()/drown() */
@@ -3859,7 +3859,7 @@ register int bodypart;
 	register int lvl = level_difficulty();
 	int dmg = rnd(5 + (lvl < 5 ? lvl : 2+lvl/2));
 
-	pline("KABUUUM!!  SUBJECT %s was booby-trapped!", The(item)); /* EN pline("KABOOM!!  %s was booby-trapped!", The(item)); */ // TODO DE
+	pline("KABUUUM!!  SUBJECT %s war mit einer Sprengfalle geschützt!", The(item)); /* EN pline("KABOOM!!  %s was booby-trapped!", The(item)); */
 	wake_nearby();
 	losehp(dmg, "NOUN_EXPLOSION", KILLED_BY_AN); /* EN losehp(dmg, "explosion", KILLED_BY_AN); */
 	exercise(A_STR, FALSE);

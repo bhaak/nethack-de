@@ -693,7 +693,7 @@ plus:
 			    Sprintf(tmpbuf, "%d", obj->spe);
 			Sprintf(eos(bp), " (%s candle%s%s)", /* EN Sprintf(eos(bp), " (%s candle%s%s)", */ // TODO DE
 				tmpbuf, plur(obj->spe),
-				!obj->lamplit ? " attached" : ", lit"); /* EN !obj->lamplit ? " attached" : ", lit"); */ // TODO DE
+				!obj->lamplit ? " attached" : ", ADJEKTIV_LIT"); /* EN !obj->lamplit ? " attached" : ", lit"); */ // TODO DE
 			break;
 		} else if (obj->otyp == OIL_LAMP || obj->otyp == MAGIC_LAMP ||
 			obj->otyp == BRASS_LANTERN || Is_candle(obj)) {
@@ -701,7 +701,7 @@ plus:
 			    obj->age < 20L * (long)objects[obj->otyp].oc_cost)
 				Strcat(prefix, "partly used "); /* EN Strcat(prefix, "partly used "); */ // TODO DE
 			if(obj->lamplit)
-				Strcat(bp, " (lit)"); /* EN Strcat(bp, " (lit)"); */ // TODO DE
+				Strcat(bp, " (ADJEKTIV_LIT)"); /* EN Strcat(bp, " (lit)"); */
 			break;
 		}
 		if(objects[obj->otyp].oc_charged)
@@ -715,7 +715,7 @@ charges:
 		break;
 	case POTION_CLASS:
 		if (obj->otyp == POT_OIL && obj->lamplit)
-		    Strcat(bp, " (lit)"); /* EN Strcat(bp, " (lit)"); */ // TODO DE
+		    Strcat(bp, " (ADJEKTIV_LIT)"); /* EN Strcat(bp, " (lit)"); */
 		break;
 	case RING_CLASS:
 		add_erosion_words(obj, prefix);
@@ -1827,7 +1827,6 @@ boolean from_user;
 
 	char oclass;
 	char *un, *dn, *actualn;
-	//char *german_str = nextobuf();
 	char german_str[BUFSZ];
 	const char *name=0;
 #ifdef GERMAN
@@ -1922,15 +1921,15 @@ boolean from_user;
 		} else if (!strncmpi(bp, "ADJEKTIV_INVISIBLE ", l=19)) { /* EN } else if (!strncmpi(bp, "invisible ", l=10)) { */
 			isinvisible = 1;
 #endif
-		} else if (!strncmpi(bp, "rustproof ", l=10) || /* EN } else if (!strncmpi(bp, "rustproof ", l=10) ||  */ // TODO DE
-			   !strncmpi(bp, "erodeproof ", l=11) || /* EN !strncmpi(bp, "erodeproof ", l=11) ||  */ // TODO DE
-			   !strncmpi(bp, "corrodeproof ", l=13) || /* EN !strncmpi(bp, "corrodeproof ", l=13) || */ // TODO DE
-			   !strncmpi(bp, "fixed ", l=6) || /* EN !strncmpi(bp, "fixed ", l=6) || */ // TODO DE
-			   !strncmpi(bp, "fireproof ", l=10) || /* EN !strncmpi(bp, "fireproof ", l=10) || */ // TODO DE
-			   !strncmpi(bp, "rotproof ", l=9)) { /* EN !strncmpi(bp, "rotproof ", l=9)) { */ // TODO DE
+		} else if (!strncmpi(bp, "ADJEKTIV_RUSTPROOF ", l=19) || /* EN } else if (!strncmpi(bp, "rustproof ", l=10) ||  */
+			   !strncmpi(bp, "ADJEKTIV_ERODEPROOF ", l=20) || /* EN !strncmpi(bp, "erodeproof ", l=11) ||  */
+			   !strncmpi(bp, "ADJEKTIV_CORRODEPROOF ", l=22) || /* EN !strncmpi(bp, "corrodeproof ", l=13) || */
+			   !strncmpi(bp, "ADJEKTIV_FIXED ", l=15) || /* EN !strncmpi(bp, "fixed ", l=6) || */
+			   !strncmpi(bp, "ADJEKTIV_FIREPROOF ", l=19) || /* EN !strncmpi(bp, "fireproof ", l=10) || */
+			   !strncmpi(bp, "ADJEKTIV_ROTPROOF ", l=18)) { /* EN !strncmpi(bp, "rotproof ", l=9)) { */
 			erodeproof = 1;
-		} else if (!strncmpi(bp,"lit ", l=4) || /* EN } else if (!strncmpi(bp,"lit ", l=4) || */ // TODO DE
-			   !strncmpi(bp,"burning ", l=8)) { /* EN !strncmpi(bp,"burning ", l=8)) { */ // TODO DE
+		} else if (!strncmpi(bp,"ADJEKTIV_LIT ", l=13) || /* EN } else if (!strncmpi(bp,"lit ", l=4) || */
+			   !strncmpi(bp,"ADJEKTIV_BRENNEND ", l=18)) { /* EN !strncmpi(bp,"burning ", l=8)) { */
 			islit = 1;
 		} else if (!strncmpi(bp,"unlit ", l=6) || /* EN } else if (!strncmpi(bp,"unlit ", l=6) || */ // TODO DE
 			   !strncmpi(bp,"extinguished ", l=13)) { /* EN !strncmpi(bp,"extinguished ", l=13)) { */ // TODO DE

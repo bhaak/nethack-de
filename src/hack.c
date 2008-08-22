@@ -400,7 +400,7 @@ still_chewing(x,y)
     } else if (lev->typ == SDOOR) {
 	if (lev->doormask & D_TRAPPED) {
 	    lev->doormask = D_NODOOR;
-	    b_trapped("Geheimtüre", 0); /* EN b_trapped("secret door", 0); */
+	    b_trapped("NOUN_SECRET_DOOR", 0); /* EN b_trapped("secret door", 0); */
 	} else {
 	    digtxt = "VERB_MAMPFEN OBJECT PRONOMEN_PERSONAL durch eine Geheimtür."; /* EN digtxt = "chew through the secret door."; */
 	    lev->doormask = D_BROKEN;

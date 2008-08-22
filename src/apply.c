@@ -1804,12 +1804,12 @@ struct obj *obj;
 			otmp->greased = 1;
 			if (obj->cursed && !nohands(youmonst.data)) {
 			    incr_itimeout(&Glib, rnd(15));
-			    pline("Some of the grease gets all over your %s.", /* EN pline("Some of the grease gets all over your %s.", */ // TODO DE
+			    You("VERB_SCHMIEREN OBJECT KASUS_DATIV PRONOMEN_PERSONAL Fett NEUES_OBJECT OBJECT über PRONOMEN_POSSESSIV %s.", /* EN pline("Some of the grease gets all over your %s.", */
 				makeplural(body_part(HAND)));
 			}
 		} else {
 			Glib += rnd(15);
-			You("coat your %s with grease.", /* EN You("coat your %s with grease.", */ // TODO DE
+			You("VERB_VERSCHMIEREN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV %s mit Fett.", /* EN You("coat your %s with grease.", */
 			    makeplural(body_part(FINGER)));
 		}
 	} else {
@@ -2271,8 +2271,8 @@ struct obj *obj;
 	    You("VERB_WICKELN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP NEUES_OBJECT OBJECT um %s.", /* EN You("wrap your bullwhip around %s %s.", */
 		genitivattribut_zu_wort(mon_nam(mtmp), onambuf)); /* EN s_suffix(mon_nam(mtmp)), onambuf); */
 	    if (gotit && otmp->cursed) {
-		pline("%s welded to %s %s%c", /* EN pline("%s welded to %s %s%c", */ // TODO DE
-		      (otmp->quan == 1L) ? "It is" : "They are", /* EN (otmp->quan == 1L) ? "It is" : "They are", */ // TODO DE
+		pline("SUBJECT %s VERB_KLEBEN OBJECT KASUS_DATIV an %s %s%c", /* EN pline("%s welded to %s %s%c", */
+		      pronominalisierung(xname(otmp)), /* EN (otmp->quan == 1L) ? "It is" : "They are", */
 		      mhis(mtmp), mon_hand,
 		      !otmp->bknown ? '!' : '.');
 		otmp->bknown = 1;
@@ -2820,8 +2820,8 @@ doapply()
 		    Blindf_on(obj);
 		else You("VERB_TRAGEN bereits %s%s.", /* EN else You("are already %s.", */
 			ublindf->otyp == TOWEL ?     "ein Handtuch OBJECT KASUS_DATIV über PRONOMEN_POSSESSIV " : /* EN ublindf->otyp == TOWEL ?     "covered by a towel" : */
-			ublindf->otyp == BLINDFOLD ? "VERB_TRAGEN bereits OBJECT ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD" : /* EN ublindf->otyp == BLINDFOLD ? "wearing a blindfold" : */
-						     "VERB_TRAGEN bereits OBJECT ARTIKEL_UNBESTIMMTER NOUN_LENSESs", ublindf->otyp == TOWEL ? body_part(HEAD) : ""); /* EN "wearing lenses"); */
+			ublindf->otyp == BLINDFOLD ? "OBJECT ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD" : /* EN ublindf->otyp == BLINDFOLD ? "wearing a blindfold" : */
+						     "OBJECT ARTIKEL_UNBESTIMMTER NOUN_LENSESs", ublindf->otyp == TOWEL ? body_part(HEAD) : ""); /* EN "wearing lenses"); */
 		break;
 	case CREAM_PIE:
 		res = use_cream_pie(obj);
