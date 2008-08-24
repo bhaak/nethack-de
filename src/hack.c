@@ -170,7 +170,7 @@ moverock()
 			pline("Kablank!  SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN OBJECT %s nicht mehr.", /* EN pline("Kerplunk!  You no longer feel %s.", */
 				the(xname(otmp)));
 		    else
-			pline("SUBJECT %s%s und %s OBJECT ARTIKEL_UNBESTIMMTER %s NEUES_OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s!", /* EN pline("%s%s and %s a %s in the %s!", */ // TODO DE
+			pline("SUBJECT %s%s und %s OBJECT ARTIKEL_UNBESTIMMTER %s NEUES_OBJECT OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s!", /* EN pline("%s%s and %s a %s in the %s!", */
 			  Tobjnam(otmp,
 			   (ttmp->ttyp == TRAPDOOR) ? "VERB_AKTIVIEREN" : "VERB_FALLEN"), /* EN (ttmp->ttyp == TRAPDOOR) ? "trigger" : "fall"), */
 			  (ttmp->ttyp == TRAPDOOR) ? nul : " runter", /* EN (ttmp->ttyp == TRAPDOOR) ? nul : " into", */
@@ -581,7 +581,7 @@ int mode;
 		if (Is_stronghold(&u.uz) && is_db_wall(x,y))
 		    pline_The("NOUN_DRAWBRIDGE ist oben!"); /* EN pline_The("drawbridge is up!"); */
 		if (Passes_walls && !may_passwall(x,y) && In_sokoban(&u.uz))
-		    pline_The("NOUN_WALLs Sokobans widerstehen your ability."); /* EN pline_The("Sokoban walls resist your ability."); */ // TODO DE
+		    pline_The("NOUN_WALLs Sokobans VERB_WIDERSTEHEN OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_FAEHIGKEIT."); /* EN pline_The("Sokoban walls resist your ability."); */
 	    }
 	    return FALSE;
 	}
@@ -598,12 +598,12 @@ int mode;
 	    } else {
 		if (mode == DO_MOVE) {
 		    if (amorphous(youmonst.data))
-			You("VERB_VERSUCHEN unter der Türe durchzusuppen, aber VERB_KOENNEN OBJECT  squeeze your possessions through."); /* EN You("try to ooze under the door, but can't squeeze your possessions through."); */ // TODO DE
+			You("VERB_VERSUCHEN unter der Türe durchzusuppen, aber VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV NOUN_HABE nicht durchquetschen."); /* EN You("try to ooze under the door, but can't squeeze your possessions through."); */
 		    else if (x == ux || y == uy) {
 			if (Blind || Stunned || ACURR(A_DEX) < 10 || Fumbling) {
 #ifdef STEED
 			    if (u.usteed) {
-				You_cant("lead %s through that closed door.", /* EN You_cant("lead %s through that closed door.", */ // TODO DE
+				You("VERB_KOENNEN OBJECT %s nicht durch eine geschlossene Türe führen.", /* EN You_cant("lead %s through that closed door.", */
 				         y_monnam(u.usteed));
 			    } else
 #endif

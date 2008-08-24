@@ -840,9 +840,9 @@ const static struct skill_range {
 	short first, last;
 	const char *name;
 } skill_ranges[] = {
-    { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Fighting Skills" }, /* EN { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Fighting Skills" }, */ // TODO DE
-    { P_FIRST_WEAPON, P_LAST_WEAPON, "Weapon Skills" }, /* EN { P_FIRST_WEAPON, P_LAST_WEAPON, "Weapon Skills" }, */ // TODO DE
-    { P_FIRST_SPELL,  P_LAST_SPELL,  "Spellcasting Skills" }, /* EN { P_FIRST_SPELL,  P_LAST_SPELL,  "Spellcasting Skills" }, */ // TODO DE
+    { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Kampf-NOUN_SKILLs" }, /* EN { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Fighting Skills" }, */
+    { P_FIRST_WEAPON, P_LAST_WEAPON, "Waffen-NOUN_SKILLs" }, /* EN { P_FIRST_WEAPON, P_LAST_WEAPON, "Weapon Skills" }, */
+    { P_FIRST_SPELL,  P_LAST_SPELL,  "Zauber-NOUN_SKILLs" }, /* EN { P_FIRST_SPELL,  P_LAST_SPELL,  "Spellcasting Skills" }, */
 };
 
 /*
@@ -866,7 +866,7 @@ enhance_weapon_skill()
     boolean speedy = FALSE;
 
 #ifdef WIZARD
-	if (wizard && yn("Advance skills without practice?") == 'y') /* EN if (wizard && yn("Advance skills without practice?") == 'y') */ // TODO DE
+	if (wizard && yn("SATZBEGINN NOUN_SKILLs ohne Übung verbessern?") == 'y') /* EN if (wizard && yn("Advance skills without practice?") == 'y') */
 	    speedy = TRUE;
 #endif
 

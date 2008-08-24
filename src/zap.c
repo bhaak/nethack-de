@@ -2058,7 +2058,7 @@ boolean ordinary;
 		case SPE_FINGER_OF_DEATH:
 		    if (nonliving(youmonst.data) || is_demon(youmonst.data)) {
 			pline((obj->otyp == WAN_DEATH) ?
-			  "SUBJECT ARTIKEL_BESTIMMTER NOUN_WAND VERB_SCHIESSEN einen offenbar harmlosen Strahl." /* EN "The wand shoots an apparently harmless beam at you." */ // TODO DE
+			  "SUBJECT ARTIKEL_BESTIMMTER NOUN_WAND VERB_VERSCHIESSEN einen offenbar harmlosen Strahl." /* EN "The wand shoots an apparently harmless beam at you." */
 			  : "SUBJECT PRONOMEN_PERSONAL VERB_SCHEINEN nicht toter als zuvor."); /* EN : "You seem no deader than before."); */
 			break;
 		    }
@@ -2107,7 +2107,7 @@ boolean ordinary;
 		case WAN_OPENING:
 		    if (Punished) makeknown(WAN_OPENING);
 		case SPE_KNOCK:
-			if (Punished) Your("chain quivers for a moment."); /* EN if (Punished) Your("chain quivers for a moment."); */ // TODO DE
+			if (Punished) Your("NOUN_CHAIN rasselt einen Moment lang."); /* EN if (Punished) Your("chain quivers for a moment."); */
 		    break;
 		case WAN_DIGGING:
 		case SPE_DIG:
@@ -2328,7 +2328,7 @@ struct obj *obj;	/* wand or spell */
 			/* can't use the stairs down to quest level 2 until
 			   leader "unlocks" them; give feedback if you try */
 			on_level(&u.uz, &qstart_level) && !ok_to_quest()) {
-				pline_The("stairs seem to ripple momentarily."); /* EN pline_The("stairs seem to ripple momentarily."); */ // TODO DE
+				pline("Eine Welle scheint kurz die Treppe zu durchlaufen."); /* EN pline_The("stairs seem to ripple momentarily."); */
 		disclose = TRUE;
 	    }
 	    break;
@@ -2820,7 +2820,7 @@ struct obj *obj;			/* object tossed/used */
 		    if (!test_move(x - ddx, y - ddy, ddx, ddy, TEST_MOVE)) {
 			/* nb: it didn't hit anything directly */
 			if (cansee(x,y))
-				pline("%s jerks to an abrupt halt.", /* EN pline("%s jerks to an abrupt halt.", */ // TODO DE
+				pline("SUBJECT %s VERB_REISSEN einen abrupten Halt.", /* EN pline("%s jerks to an abrupt halt.", */
 				  The(distant_name(obj, xname))); /* lame */
 			range = 0;
 		    } else if (In_sokoban(&u.uz) && (t = t_at(x, y)) != 0 &&
@@ -3302,7 +3302,7 @@ register int dx,dy;
 	if(type < 0) return;
 	tmp = zhitm(u.ustuck, type, nd, &otmp);
 	if(!u.ustuck)	u.uswallow = 0;
-	else	pline("%s rips into %s%s", /* EN else	pline("%s rips into %s%s", */ // TODO DE
+	else	pline("SUBJECT %s VERB_FAHREN OBJECT in %s%s", /* EN else	pline("%s rips into %s%s", */
 		      The(fltxt), mon_nam(u.ustuck), exclam(tmp));
 	/* Using disintegration from the inside only makes a hole... */
 	if (tmp == MAGIC_COOKIE)
