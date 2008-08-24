@@ -963,6 +963,8 @@ START_TEST (test_wortzusammensetzungen) {
 		 "Rotdrachen-Ei"},
 		{"Purpurwurm--NOUN_EGG",
 		 "Purpurwurm-Ei"},
+		{"MODIFIER_VERB_INFINITIV davon-VERB_LAUFEN",
+		 "davonlaufen"},
 	};
 
 	check_strings(text, sizeof(text)/8);

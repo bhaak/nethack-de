@@ -1109,6 +1109,13 @@ char* german(const char *line) {
 #endif
 			if (subject_person==0) { subject_person = zweitePerson; }
 			if (subject_numerus==0) { subject_numerus = n_singular; } // change to players choice
+
+			/* davon-VERB_LAUFEN -> davonlaufen */
+			int beginning_of_appended_word = strlen(output);
+			if ((beginning_of_appended_word > 1) &&
+			    (output[beginning_of_appended_word-1]=='-')) {
+				output[beginning_of_appended_word-1] = '\0';
+			}
 			append(output, get_verb(tmp, subject_person, subject_numerus, verb_tempus_modus));
 			c_artikel = grundform; // für prädikativen bzw adverbialen Gebrauch nötig "Das Pferd ist gesattelt."
 
