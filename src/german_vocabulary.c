@@ -6236,6 +6236,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Xan", "NOUN_XAN", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Xan", "NOUN_XANs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Gelblichtes", "NOUN_YELLOW_LIGHT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gelblicht", "NOUN_YELLOW_LIGHT", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gelblichter", "NOUN_YELLOW_LIGHTs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Gelblichtern", "NOUN_YELLOW_LIGHTs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"gelben Lichtes", "NOUN_YELLOW_LIGHT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"gelbe Licht", "NOUN_YELLOW_LIGHT", "", akkusativ|nominativ, neutrum, n_singular, bestimmter},
   {"gelbes Licht", "NOUN_YELLOW_LIGHT", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne},
@@ -6245,6 +6250,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"gelben Lichter", "NOUN_YELLOW_LIGHTs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|bestimmter},
   {"gelbe Lichter", "NOUN_YELLOW_LIGHTs", "", akkusativ|nominativ, neutrum, n_plural, grundform|ohne},
   {"gelber Lichter", "NOUN_YELLOW_LIGHTs", "", genitiv, neutrum, n_plural, grundform|ohne},
+
+  {"Schwarzlichtes", "NOUN_BLACK_LIGHT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarzlicht", "NOUN_BLACK_LIGHT", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarzlichter", "NOUN_BLACK_LIGHTs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarzlichtern", "NOUN_BLACK_LIGHTs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"schwarzen Lichtes", "NOUN_BLACK_LIGHT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"schwarze Licht", "NOUN_BLACK_LIGHT", "", akkusativ|nominativ, neutrum, n_singular, bestimmter},

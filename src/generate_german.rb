@@ -2508,7 +2508,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_PURPLE_WORM", "Purpurwurm", "es", "Purpurwürm", "er", "maskulin"),
     dekliniere_substantiv("NOUN_GRID_BUG", "Rastertaster", "s", "Rastertaster", "", "maskulin"), # Rastertaster, Matrixviech
     dekliniere_substantiv("NOUN_XAN", "Xan", "", "Xan", "", "maskulin"),
+    dekliniere_substantiv("NOUN_YELLOW_LIGHT", "Gelblicht", "es", "Gelblicht", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_YELLOW_LIGHT", "gelb", "Licht", "es", "Licht", "er", "neutrum"),
+    dekliniere_substantiv("NOUN_BLACK_LIGHT", "Schwarzlicht", "es", "Schwarzlicht", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_BLACK_LIGHT", "schwarz", "Licht", "es", "Licht", "er", "neutrum"),
     dekliniere_substantiv("NOUN_ZRUTY", "Zruty", "s", "Zruty", "s", "maskulin"),
     dekliniere_substantiv("NOUN_COUATL", "Coatl", "", "Coatl", "fremder", "maskulin"),
