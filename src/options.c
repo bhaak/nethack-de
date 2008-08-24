@@ -223,7 +223,7 @@ static struct Comp_Opt
 						1, SET_IN_GAME },
 	{ "catname",  "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_CAT (z.B., catname:Shiva)", /* EN { "catname",  "the name of your (first) cat (e.g., catname:Tabby)", */
 						PL_PSIZ, DISP_IN_GAME },
-	{ "disclose", "the kinds of information to disclose at end of game", /* EN { "disclose", "the kinds of information to disclose at end of game", */ // TODO DE
+	{ "disclose", "welche Informationen am Spielende angezeigt werden", /* EN { "disclose", "the kinds of information to disclose at end of game", */
 						sizeof(flags.end_disclose) * 2,
 						SET_IN_GAME },
 	{ "dogname",  "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_DOG (z.B., dogname:Fido)", /* EN { "dogname",  "the name of your (first) dog (e.g., dogname:Fang)", */
@@ -268,7 +268,7 @@ static struct Comp_Opt
 	{ "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
 	{ "menu_select_page", "select all items on this page of a menu", /* EN { "menu_select_page", "select all items on this page of a menu", */ // TODO DE
 						4, SET_IN_FILE },
-	{ "monsters", "the symbols to use for monsters", /* EN { "monsters", "the symbols to use for monsters", */ // TODO DE
+	{ "monsters", "die für Monster verwendeten Symbole", /* EN { "monsters", "the symbols to use for monsters", */
 						MAXMCLASSES, SET_IN_FILE },
 	{ "msghistory", "number of top line messages to save", /* EN { "msghistory", "number of top line messages to save", */ // TODO DE
 						5, DISP_IN_GAME },
@@ -282,7 +282,7 @@ static struct Comp_Opt
 	{ "number_pad", "Ziffernblock benutzen", 1, SET_IN_GAME}, /* EN { "number_pad", "use the number pad", 1, SET_IN_GAME}, */
 	{ "objects",  "die für Gegenstände verwendeten Symbole", /* EN { "objects",  "the symbols to use for objects", */
 						MAXOCLASSES, SET_IN_FILE },
-	{ "packorder", "the inventory order of the items in your pack", /* EN { "packorder", "the inventory order of the items in your pack", */ // TODO DE
+	{ "packorder", "die Reihenfolge der Gegenstände im Inventar", /* EN { "packorder", "the inventory order of the items in your pack", */
 						MAXOCLASSES, SET_IN_GAME },
 #ifdef CHANGE_COLOR
 	{ "palette",  "palette (00c/880/-fff is blue/yellow/reverse white)", /* EN { "palette",  "palette (00c/880/-fff is blue/yellow/reverse white)", */ // TODO DE
@@ -313,7 +313,7 @@ static struct Comp_Opt
 #ifdef MSDOS
 	{ "soundcard", "type of sound card to use", 20, SET_IN_FILE }, /* EN { "soundcard", "type of sound card to use", 20, SET_IN_FILE }, */ // TODO DE
 #endif
-	{ "suppress_alert", "suppress alerts about version-specific features", /* EN { "suppress_alert", "suppress alerts about version-specific features", */ // TODO DE
+	{ "suppress_alert", "unterdrückt Warnungen über versionsspezifische Features", /* EN { "suppress_alert", "suppress alerts about version-specific features", */
 						8, SET_IN_GAME },
 	{ "tile_width", "Kachelbreite", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_width", "width of tiles", 20, DISP_IN_GAME},	*/
 	{ "tile_height", "Kachelgröße", 20, DISP_IN_GAME},	/*WC*/ /* EN { "tile_height", "height of tiles", 20, DISP_IN_GAME},	*/
@@ -759,9 +759,9 @@ bad_negation(optname, with_parameter)
 const char *optname;
 boolean with_parameter;
 {
-	pline_The("%s option may not %sbe negated.", /* EN pline_The("%s option may not %sbe negated.", */ // TODO DE
+	pline("Die %s-Option darf nicht %s negiert werden.", /* EN pline_The("%s option may not %sbe negated.", */
 		optname,
-		with_parameter ? "both have a value and " : ""); /* EN with_parameter ? "both have a value and " : ""); */ // TODO DE
+		with_parameter ? "einen Wert haben und " : ""); /* EN with_parameter ? "both have a value and " : ""); */
 }
 
 /*
@@ -877,10 +877,10 @@ const char *optn;
 		flags.suppress_alert = fnv;
 	if (rejectver) {
 		if (!initial)
-			You_cant("disable new feature alerts for future versions."); /* EN You_cant("disable new feature alerts for future versions."); */ // TODO DE
+			You("VERB_KOENNEN Feature-Warnungen für zukünftige Versionen nicht deaktivieren."); /* EN You_cant("disable new feature alerts for future versions."); */
 		else {
 			Sprintf(buf,
-				"\n%s=%s Invalid reference to a future version ignored", /* EN "\n%s=%s Invalid reference to a future version ignored", */ // TODO DE
+				"\n%s=%s Ungültige Angabe einer zukünftigen Version ignoriert", /* EN "\n%s=%s Invalid reference to a future version ignored", */
 				optn, op);
 			badoption(buf);
 		}
@@ -889,7 +889,7 @@ const char *optn;
 	if (!initial) {
 		Sprintf(buf, "%lu.%lu.%lu", FEATURE_NOTICE_VER_MAJ,
 			FEATURE_NOTICE_VER_MIN, FEATURE_NOTICE_VER_PATCH);
-		pline("Feature change alerts disabled for NetHack %s features and prior.", /* EN pline("Feature change alerts disabled for NetHack %s features and prior.", */ // TODO DE
+		pline("Feature-Warnungen für NetHack %s und früher deaktiviert.", /* EN pline("Feature change alerts disabled for NetHack %s features and prior.", */
 			buf);
 	}
 	return 1;
@@ -943,7 +943,7 @@ int bool_or_comp;	/* 0 == boolean option, 1 == compound */
 			optptr = iflags.opt_booldup + i;
 			if (*optptr == 1) {
 			    raw_printf(
-				"\nWarning - Boolean option specified multiple times: %s.\n", /* EN "\nWarning - Boolean option specified multiple times: %s.\n", */ // TODO DE
+				"\nWarnung - Mehrfache Angabe einer booleschen Option: %s.\n", /* EN "\nWarning - Boolean option specified multiple times: %s.\n", */
 					opts);
 			        wait_synch();
 			}
@@ -957,7 +957,7 @@ int bool_or_comp;	/* 0 == boolean option, 1 == compound */
 			optptr = iflags.opt_compdup + i;
 			if (*optptr == 1) {
 			    raw_printf(
-				"\nWarning - compound option specified multiple times: %s.\n", /* EN "\nWarning - compound option specified multiple times: %s.\n", */ // TODO DE
+				"\nWarnung - Mehrfache Angabe einer zusammengesetzten Option: %s.\n", /* EN "\nWarning - compound option specified multiple times: %s.\n", */
 					compopt[i].name);
 			        wait_synch();
 			}

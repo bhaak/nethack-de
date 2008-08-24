@@ -171,17 +171,17 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 
 	if (!mtmp->mcansee || (Invis && !perceives(mtmp->data))) {
 	    const char *swings =
-		mattk->aatyp == AT_BITE ? "snaps" : /* EN mattk->aatyp == AT_BITE ? "snaps" : */ // TODO DE
-		mattk->aatyp == AT_KICK ? "kicks" : /* EN mattk->aatyp == AT_KICK ? "kicks" : */ // TODO DE
+		mattk->aatyp == AT_BITE ? "VERB_SCHNAPPEN" : /* EN mattk->aatyp == AT_BITE ? "snaps" : */
+		mattk->aatyp == AT_KICK ? "VERB_TRETEN" : /* EN mattk->aatyp == AT_KICK ? "kicks" : */
 		(mattk->aatyp == AT_STNG ||
 		 mattk->aatyp == AT_BUTT ||
 		 nolimbs(mtmp->data)) ? "lunges" : "swings"; /* EN nolimbs(mtmp->data)) ? "lunges" : "swings"; */ // TODO DE
 
 	    if (compat)
-		pline("%s tries to touch you and misses!", Monnam(mtmp)); /* EN pline("%s tries to touch you and misses!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL zu berühren, VERB_MISS OBJECT PRONOMEN_PERSONAL aber!", Monnam(mtmp)); /* EN pline("%s tries to touch you and misses!", Monnam(mtmp)); */
 	    else
 		switch(rn2(3)) {
-		case 0: pline("%s %s wildly and misses!", Monnam(mtmp), /* EN case 0: pline("%s %s wildly and misses!", Monnam(mtmp), */ // TODO DE
+		case 0: pline("SUBJECT %s %s wild OBJECT KASUS_DATIV nach PRONOMEN_PERSONAL und VERB_MISS NEUES_OBJECT OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp), /* EN case 0: pline("%s %s wildly and misses!", Monnam(mtmp), */
 			      swings);
 		    break;
 		case 1: pline("%s attacks a spot beside you.", Monnam(mtmp)); /* EN case 1: pline("%s attacks a spot beside you.", Monnam(mtmp)); */ // TODO DE
@@ -190,7 +190,7 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 				levl[mtmp->mux][mtmp->muy].typ == WATER
 				    ? "empty water" : "thin air"); /* EN ? "empty water" : "thin air"); */ // TODO DE
 		    break;
-		default:pline("%s %s wildly!", Monnam(mtmp), swings); /* EN default:pline("%s %s wildly!", Monnam(mtmp), swings); */ // TODO DE
+		default:pline("SUBJECT %s %s wild OBJECT KASUS_DATIV nach PRONOMEN_PERSONAL!", Monnam(mtmp), swings); /* EN default:pline("%s %s wildly!", Monnam(mtmp), swings); */
 		    break;
 		}
 
@@ -1288,7 +1288,7 @@ dopois:
 #endif
 						) {
 			pline("SUBJECT %s %s.", Monnam(mtmp), mtmp->minvent ?  /* EN pline("%s %s.", Monnam(mtmp), mtmp->minvent ? */
-		    "brags about the goods some dungeon explorer provided" : /* EN "brags about the goods some dungeon explorer provided" : */ // TODO DE
+		    "prahlt mit den Sachen, die ein Schatzsucher gespendet hat" : /* EN "brags about the goods some dungeon explorer provided" : */
 		    "erwähnt, wie schwierig Diebstahl in letzter Zeit geworden ist."); /* EN "makes some remarks about how difficult theft is lately"); */
 			if (!tele_restrict(mtmp)) (void) rloc(mtmp, FALSE);
 			return 3;
@@ -1316,9 +1316,9 @@ dopois:
 			    (void) rloc(mtmp, FALSE);
 			if (is_animal(mtmp->data) && *buf) {
 			    if (canseemon(mtmp))
-				pline("SUBJECT %s VERB_VERSUCHEN OBJECT KASUS_DATIV mit %s away %s.", /* EN pline("%s tries to %s away with %s.", */ // TODO DE fortzu-VERB_RENNEN? fortrennen, wegrennen, weglaufen, davonlaufen, weglaufen, davonrennen
+				pline("SUBJECT %s VERB_VERSUCHEN OBJECT KASUS_DATIV mit %s MODIFIER_VERB_INFINITIV davonzu-%s.", /* EN pline("%s tries to %s away with %s.", */ /* fortrennen, wegrennen, weglaufen, davonlaufen, weglaufen, davonrennen */
 				      Monnam(mtmp),
-				      buf, locomotion(mtmp->data, "run") /* EN locomotion(mtmp->data, "run"), */ // TODO DE
+				      buf, locomotion(mtmp->data, "VERB_LAUFEN") /* EN locomotion(mtmp->data, "run"), */
 				      ); /* EN buf); */
 			}
 			monflee(mtmp, 0, FALSE, FALSE);
@@ -2213,9 +2213,9 @@ register struct monst *mon;
 			break;
 		if (ring==uleft || ring==uright) continue;
 		if (rn2(20) < ACURR(A_CHA)) {
-		    Sprintf(qbuf,"\"That %s looks pretty.  Would you wear it for me?\"", /* EN Sprintf(qbuf,"\"That %s looks pretty.  Would you wear it for me?\"", */ // TODO DE
+		    Sprintf(qbuf,"\"SUBJECT PRONOMEN_DIESER %s VERB_AUSSEHEN hübsch SATZKLAMMER.  NEUER_SATZ SUBJECT MODIFIER_KONJUNKTIV_II PRONOMEN_PERSONAL ihn für mich tragen?\"", /* EN Sprintf(qbuf,"\"That %s looks pretty.  Would you wear it for me?\"", */
 			safe_qbuf("",
-			    sizeof("\"That  looks pretty.  Would you wear it for me?\""), /* EN sizeof("\"That  looks pretty.  Would you wear it for me?\""), */ // TODO DE
+			    sizeof("\"SUBJECT PRONOMEN_DIESER  VERB_AUSSEHEN hübsch SATZKLAMMER.  NEUER_SATZ SUBJECT MODIFIER_KONJUNKTIV_II PRONOMEN_PERSONAL ihn für mich tragen?\""), /* EN sizeof("\"That  looks pretty.  Would you wear it for me?\""), */
 			    xname(ring), simple_typename(ring->otyp), "NOUN_RING")); /* EN xname(ring), simple_typename(ring->otyp), "ring")); */
 		    makeknown(RIN_ADORNMENT);
 		    if (yn(qbuf) == 'n') continue;
@@ -2432,7 +2432,7 @@ const char *str;
 
 		Sprintf(hairbuf, "let me run my fingers through your %s", /* EN Sprintf(hairbuf, "let me run my fingers through your %s", */ // TODO DE
 			body_part(HAIR));
-		verbalize("Take off your %s; %s.", str, /* EN verbalize("Take off your %s; %s.", str, */ // TODO DE
+		verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_ZIEHEN OBJECT PRONOMEN_POSSESSIV %s aus; %s.", str, /* EN verbalize("Take off your %s; %s.", str, */
 			(obj == uarm)  ? "let's get a little closer" : /* EN (obj == uarm)  ? "let's get a little closer" : */ // TODO DE
 			(obj == uarmc || obj == uarms) ? "das ist nur im Weg" : /* EN (obj == uarmc || obj == uarms) ? "it's in the way" : */
 			(obj == uarmf) ? "let me rub your feet" : /* EN (obj == uarmf) ? "let me rub your feet" : */ // TODO DE

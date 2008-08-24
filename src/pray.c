@@ -1350,7 +1350,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 	    if (ugod_is_angry() || (altaralign == A_NONE && Inhell)) {
 		if(u.ualignbase[A_CURRENT] == u.ualignbase[A_ORIGINAL] &&
 		   altaralign != A_NONE) {
-		    You("have a strong feeling that %s is angry...", u_gname()); /* EN You("have a strong feeling that %s is angry...", u_gname()); */ // TODO DE
+		    You("VERB_HABEN das starke Gefühl, dass %s erzürnt ist ...", u_gname()); /* EN You("have a strong feeling that %s is angry...", u_gname()); */ //
 		    consume_offering(otmp);
 		    pline("%s akzeptiert KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GEFOLGSCHAFT.", a_gname()); /* EN pline("%s accepts your allegiance.", a_gname()); */
 

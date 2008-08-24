@@ -905,9 +905,9 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Disint_resistance) you_are("desintegrationsresistant"); /* EN if (Disint_resistance) you_are("disintegration-resistant"); */
 	if (Shock_resistance) you_are("shock resistant"); /* EN if (Shock_resistance) you_are("shock resistant"); */ // TODO DE
 	if (Poison_resistance) you_are("giftresistent"); /* EN if (Poison_resistance) you_are("poison resistant"); */
-	if (Drain_resistance) you_are("level-drain resistant"); /* EN if (Drain_resistance) you_are("level-drain resistant"); */ // TODO DE
+	if (Drain_resistance) you_are("lebensentzugsresistent"); /* EN if (Drain_resistance) you_are("level-drain resistant"); */
 	if (Sick_resistance) you_are("immune to sickness"); /* EN if (Sick_resistance) you_are("immune to sickness"); */ // TODO DE
-	if (Antimagic) you_are("magic-protected"); /* EN if (Antimagic) you_are("magic-protected"); */ // TODO DE
+	if (Antimagic) you_are("magiegeschützt"); /* EN if (Antimagic) you_are("magic-protected"); */
 	if (Acid_resistance) you_are("säureresistent"); /* EN if (Acid_resistance) you_are("acid resistant"); */
 	if (Stone_resistance)
 		you_are("versteinerungsresistent"); /* EN you_are("petrification resistant"); */
@@ -1100,7 +1100,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	}
 
 	if (u.ugangr) {
-	    Sprintf(buf, " %sangry with you", /* EN Sprintf(buf, " %sangry with you", */ // TODO DE
+	    Sprintf(buf, " %serzürnt KASUS_AKKUSATIV über PRONOMEN_PERSONAL", /* EN Sprintf(buf, " %sangry with you", */
 		    u.ugangr > 6 ? "unglaublich " : u.ugangr > 3 ? "sehr " : ""); /* EN u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : ""); */
 #ifdef WIZARD
 	    if (wizard) Sprintf(eos(buf), " (%d)", u.ugangr);
@@ -1211,7 +1211,7 @@ minimal_enlightenment()
 	buf[0] = buf2[0] = '\0';
 	tmpwin = create_nhwindow(NHW_MENU);
 	start_menu(tmpwin);
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Start", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Starting", FALSE); */ // TODO DE
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Start", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Starting", FALSE); */
 
 	/* Starting name, race, role, gender */
 	Sprintf(buf, fmtstr, name_str, plname); /* EN Sprintf(buf, fmtstr, "name", plname); */
@@ -1257,7 +1257,7 @@ minimal_enlightenment()
 
 	/* Deity list */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "", FALSE);
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Gottheiten", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Deities", FALSE); */ // TODO DE
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Gottheiten", FALSE); /* EN add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Deities", FALSE); */
 	Sprintf(buf2, deity_fmtstr, align_gname(A_CHAOTIC),
 	    (u.ualignbase[A_ORIGINAL] == u.ualign.type
 		&& u.ualign.type == A_CHAOTIC) ? " (s,a)" : /* EN && u.ualign.type == A_CHAOTIC) ? " (s,c)" : */
@@ -1533,7 +1533,7 @@ static const struct func_tab cmdlist[] = {
 };
 
 struct ext_func_tab extcmdlist[] = {
-	{"adjust", "adjust inventory letters", doorganize, TRUE}, /* EN {"adjust", "adjust inventory letters", doorganize, TRUE}, */ // TODO DE
+	{"adjust", "Inventarbuchstaben ändern", doorganize, TRUE}, /* EN {"adjust", "adjust inventory letters", doorganize, TRUE}, */
 	{"chat", "sprich mit Jemandem", dotalk, TRUE},	/* converse? */ /* EN {"chat", "talk to someone", dotalk, TRUE},	*/
 	{"conduct", "list which challenges you have adhered to", doconduct, TRUE}, /* EN {"conduct", "list which challenges you have adhered to", doconduct, TRUE}, */ // TODO DE
 	{"dip", "dip an object into something", dodip, FALSE}, /* EN {"dip", "dip an object into something", dodip, FALSE}, */ // TODO DE
@@ -1544,7 +1544,7 @@ struct ext_func_tab extcmdlist[] = {
 	{"jump", "springe an eine Stelle", dojump, FALSE}, /* EN {"jump", "jump to a location", dojump, FALSE}, */
 	{"loot", "loot a box on the floor", doloot, FALSE}, /* EN {"loot", "loot a box on the floor", doloot, FALSE}, */ // TODO DE
 	{"monster", "use a monster's special ability", domonability, TRUE}, /* EN {"monster", "use a monster's special ability", domonability, TRUE}, */ // TODO DE
-	{"name", "name an item or type of object", ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */ // TODO DE
+	{"name", "benenne einen Gegenstand oder eine Klasse von Objekten", ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */
 	{"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, /* EN {"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, */ // TODO DE
 	{"pray", "bete zu den Göttern um Hilfe", dopray, TRUE}, /* EN {"pray", "pray to the gods for help", dopray, TRUE}, */
 	{"quit", "verlasse das laufende Spiel ohne zu speichern", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */
@@ -1559,7 +1559,7 @@ struct ext_func_tab extcmdlist[] = {
 	{"version", "list compile time options for this version of NetHack", /* EN {"version", "list compile time options for this version of NetHack", */ // TODO DE
 		doextversion, TRUE},
 	{"wipe", "wipe off your face", dowipe, FALSE}, /* EN {"wipe", "wipe off your face", dowipe, FALSE}, */ // TODO DE
-	{"?", "get this list of extended commands", doextlist, TRUE}, /* EN {"?", "get this list of extended commands", doextlist, TRUE}, */ // TODO DE
+	{"?", "zeigt diese Liste der erweiterten Befehle", doextlist, TRUE}, /* EN {"?", "get this list of extended commands", doextlist, TRUE}, */
 #if defined(WIZARD)
 	/*
 	 * There must be a blank entry here for every entry in the table
@@ -2144,7 +2144,7 @@ const char *s;
 	    dirsym = readchar();
 	else
 #endif
-	    dirsym = yn_function ((s && *s != '^') ? s : "In what direction?", /* EN dirsym = yn_function ((s && *s != '^') ? s : "In what direction?", */ // TODO DE
+	    dirsym = yn_function ((s && *s != '^') ? s : "In welche Richtung?", /* EN dirsym = yn_function ((s && *s != '^') ? s : "In what direction?", */
 					(char *)0, '\0');
 #ifdef REDO
 	savech(dirsym);
@@ -2158,7 +2158,7 @@ const char *s;
 			did_help = help_dir((s && *s == '^') ? dirsym : 0,
 					    "Invalid direction key!"); /* EN "Invalid direction key!"); */ // TODO DE
 		    }
-		    if (!did_help) pline("What a strange direction!"); /* EN if (!did_help) pline("What a strange direction!"); */ // TODO DE
+		    if (!did_help) pline("Was für eine seltsame Richtung!"); /* EN if (!did_help) pline("What a strange direction!"); */
 		}
 		return 0;
 	}
