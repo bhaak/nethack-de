@@ -1278,12 +1278,12 @@ boolean at_stairs, falling, portal;
 	if (!In_hell(&u.uz0) && Inhell) {
 	    if (Is_valley(&u.uz)) {
 		You("VERB_BETRETEN das Tal der Toten ..."); /* EN You("arrive at the Valley of the Dead..."); */
-		pline_The("odor of burnt flesh and decay pervades the air."); /* EN pline_The("odor of burnt flesh and decay pervades the air."); */ // TODO DE
+		pline("Der Geruch verbrannten und verwesenden Fleisches erfüllt die Luft."); /* EN pline_The("odor of burnt flesh and decay pervades the air."); */
 #ifdef MICRO
 		display_nhwindow(WIN_MESSAGE, FALSE);
 #endif
 		You_hear("groans and moans everywhere sind allgegenwärtig."); /* EN You_hear("groans and moans everywhere."); */ // TODO DE
-	    } else pline("It is hot here.  You smell smoke..."); /* EN } else pline("It is hot here.  You smell smoke..."); */ // TODO DE
+	    } else pline("Es ist heiß hier.  SUBJECT PRONOMEN_PERSONAL VERB_SMELL Rauch ..."); /* EN } else pline("It is hot here.  You smell smoke..."); */
 	}
 
 	if (familiar) {
@@ -1499,7 +1499,7 @@ struct obj *corpse;
     
     where = corpse->where;
     is_uwep = corpse == uwep;
-    cname = eos(strcpy(cname_buf, "bite-covered ")); /* EN cname = eos(strcpy(cname_buf, "bite-covered ")); */ // TODO DE
+    cname = eos(strcpy(cname_buf, "ADJEKTIV_ANGEKNABBERT ")); /* EN cname = eos(strcpy(cname_buf, "bite-covered ")); */
     Strcpy(cname, corpse_xname(corpse, TRUE));
     mcarry = (where == OBJ_MINVENT) ? corpse->ocarry : 0;
 
@@ -1518,15 +1518,15 @@ struct obj *corpse;
 	switch (where) {
 	    case OBJ_INVENT:
 		if (is_uwep)
-		    pline_The("%s writhes out of your grasp!", cname); /* EN pline_The("%s writhes out of your grasp!", cname); */ // TODO DE
+		    pline_The("%s VERB_ENTWINDEN sich OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_GRIFF!", cname); /* EN pline_The("%s writhes out of your grasp!", cname); */
 		else
 		    Du_spuerst("etwas OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_RUCKSACK rumoren!"); /* EN You_feel("squirming in your backpack!"); */
 		break;
 
 	    case OBJ_FLOOR:
 		if (cansee(mtmp->mx, mtmp->my))
-		    pline("%s rises from the dead!", chewed ?  /* EN pline("%s rises from the dead!", chewed ? */ // TODO DE
-			  Adjmonnam(mtmp, "bite-covered") : Monnam(mtmp)); /* EN Adjmonnam(mtmp, "bite-covered") : Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_AUFERSTEHEN von den Toten!", chewed ?  /* EN pline("%s rises from the dead!", chewed ? */
+			  Adjmonnam(mtmp, "ADJEKTIV_ANGEKNABBERT") : Monnam(mtmp)); /* EN Adjmonnam(mtmp, "bite-covered") : Monnam(mtmp)); */
 		break;
 
 	    case OBJ_MINVENT:		/* probably a nymph's */
@@ -1536,7 +1536,7 @@ struct obj *corpse;
 			      mon_nam(mcarry), an(cname));
 		    else
 			pline("%s suddenly appears!", chewed ?  /* EN pline("%s suddenly appears!", chewed ? */ // TODO DE
-			      Adjmonnam(mtmp, "bite-covered") : Monnam(mtmp)); /* EN Adjmonnam(mtmp, "bite-covered") : Monnam(mtmp)); */ // TODO DE
+			      Adjmonnam(mtmp, "ADJEKTIV_ANGEKNABBERT") : Monnam(mtmp)); /* EN Adjmonnam(mtmp, "bite-covered") : Monnam(mtmp)); */
 		}
 		break;
 	   case OBJ_CONTAINED:

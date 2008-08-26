@@ -660,7 +660,7 @@ gcrownu()
     switch (u.ualign.type) {
     case A_LAWFUL:
 	u.uevent.uhand_of_elbereth = 1;
-	verbalize("I crown thee...  The Hand of Elbereth!"); /* EN verbalize("I crown thee...  The Hand of Elbereth!"); */ // TODO DE
+	verbalize("Ich kröne dich ...  zur Hand von Elbereth!"); /* EN verbalize("I crown thee...  The Hand of Elbereth!"); */
 	break;
     case A_NEUTRAL:
 	u.uevent.uhand_of_elbereth = 2;
@@ -672,8 +672,8 @@ gcrownu()
 	u.uevent.uhand_of_elbereth = 3;
 	in_hand = (uwep && uwep->oartifact == ART_STORMBRINGER);
 	already_exists = exist_artifact(RUNESWORD, artiname(ART_STORMBRINGER));
-	verbalize("Thou art chosen to %s for My Glory!", /* EN verbalize("Thou art chosen to %s for My Glory!", */ // TODO DE
-		  already_exists && !in_hand ? "take lives" : "steal souls"); /* EN already_exists && !in_hand ? "take lives" : "steal souls"); */ // TODO DE
+	verbalize("Du bist auserwählt zu meinem Ruhm %s!", /* EN verbalize("Thou art chosen to %s for My Glory!", */
+		  already_exists && !in_hand ? "Leben zu nehmen" : "Seelen zu sammeln"); /* EN already_exists && !in_hand ? "take lives" : "steal souls"); */
 	break;
     }
 
@@ -1291,11 +1291,11 @@ dosacrifice()
 		done(ESCAPED);
 	    } else { /* super big win */
 		adjalign(10);
-pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL bathed in radiance..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */ // TODO DE
-		godvoice(altaralign, "Congratulations, mortal!"); /* EN godvoice(altaralign, "Congratulations, mortal!"); */ // TODO DE
+pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SONNEN OBJECT PRONOMEN_PERSONAL in göttlichem Lichte ..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */
+		godvoice(altaralign, flags.female ? "Herzlichen Glückwunsch, Sterbliche!" : "Herzlichen Glückwunsch, Sterblicher!"); /* EN godvoice(altaralign, "Congratulations, mortal!"); */
 		display_nhwindow(WIN_MESSAGE, FALSE);
 verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /* EN verbalize("In return for thy service, I grant thee the gift of Immortality!"); */
-		You("ascend to the status of NOUN_HALB%s ...", /* EN You("ascend to the status of Demigod%s...", */ // TODO DE
+		You("ascend to the status of NOUN_HALB%s ...", /* EN You("ascend to the status of Demigod%s...", */ // TODO DE check Metamorphosen, wirst erhoben?
 		    flags.female ? "GOTT" : "GOETTIN"); /* EN flags.female ? "dess" : ""); */
 		done(ASCENDED);
 	    }

@@ -1925,7 +1925,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 		/* The regurgitated object's rustproofing is gone now */
 		otmp->oerodeproof = 0;
 		make_stunned(HStun + rn2(10), TRUE);
-		You("spit %s out onto the %s.", the(xname(otmp)), /* EN You("spit %s out onto the %s.", the(xname(otmp)), */ // TODO DE
+		You("VERB_SPUCKEN OBJECT %s auf ARTIKEL_BESTIMMTER %s.", the(xname(otmp)), /* EN You("spit %s out onto the %s.", the(xname(otmp)), */ /* auf_den_Boden */
 			surface(u.ux, u.uy));
 		if (carried(otmp)) {
 			freeinv(otmp);
@@ -2466,10 +2466,10 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 		(otmp->otyp==CORPSE && (corpsecheck == 1 || tinnable(otmp))) :
 		    feeding ? (otmp->oclass != COIN_CLASS && is_edible(otmp)) :
 						otmp->oclass==FOOD_CLASS) {
-			Sprintf(qbuf, "Hier %s %s; %s %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */ // TODO DE
+			Sprintf(qbuf, "Hier %s %s; %s MODIFIER_VERB_INFINITIV %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */
 				otense(otmp, "VERB_LIEGEN"), /* EN otense(otmp, "are"), */
-				doname(otmp), verb,
-				(otmp->quan == 1L) ? "es" : "eines"); /* EN (otmp->quan == 1L) ? "it" : "one"); */
+				doname(otmp), /* EN doname(otmp), verb, */
+				(otmp->quan == 1L) ? pronominalisierung(xname(otmp)) : "eines", verb); /* EN (otmp->quan == 1L) ? "it" : "one"); */
 			if((c = yn_function(qbuf,ynqchars,'n')) == 'y')
 				return(otmp);
 			else if(c == 'q')

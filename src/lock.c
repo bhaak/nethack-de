@@ -46,9 +46,9 @@ STATIC_OVL const char *
 lock_action()
 {
 	static const char *unlock_actions[] = {
-		/* [0] */	"die Türe zu öffnen", /* EN "unlocking the door" */
-		/* [1] */	"die Truhe zu öffnen",/* EN "unlocking the chest" */
-		/* [2] */	"die Kiste zu öffnen", /* EN "unlocking the box" */
+		/* [0] */	"die Türe zu aufzuschliessen", /* EN "unlocking the door" */
+		/* [1] */	"die Truhe zu aufzuschliessen",/* EN "unlocking the chest" */
+		/* [2] */	"die Kiste zu aufzuschliessen", /* EN "unlocking the box" */
 		/* [3] */	"das Schloss zu knacken" /* "picking the lock" */
 	};
 	static const char *lock_actions[] = {
@@ -309,21 +309,21 @@ pick_lock(pick) /* pick a lock with a given object */
 			return 0;
 		    }
 		    it = 0;
-		    if (otmp->obroken) verb = "fix"; /* EN if (otmp->obroken) verb = "fix"; */ // TODO DE
-		    else if (!otmp->olocked) verb = "lock", it = 1; /* EN else if (!otmp->olocked) verb = "lock", it = 1; */ // TODO DE
-		    else if (picktyp != LOCK_PICK) verb = "unlock", it = 1; /* EN else if (picktyp != LOCK_PICK) verb = "unlock", it = 1; */ // TODO DE
-		    else verb = "pick"; /* EN else verb = "pick"; */ // TODO DE
-		    Sprintf(qbuf, "There is %s here, %s %s?", /* EN Sprintf(qbuf, "There is %s here, %s %s?", */ // TODO DE
-		    	    safe_qbuf("", sizeof("There is  here, unlock its lock?"), /* EN safe_qbuf("", sizeof("There is  here, unlock its lock?"), */ // TODO DE
-			    	doname(otmp), an(simple_typename(otmp->otyp)), "a box"), /* EN doname(otmp), an(simple_typename(otmp->otyp)), "a box"), */ // TODO DE
-			    verb, it ? "it" : "its lock"); /* EN verb, it ? "it" : "its lock"); */ // TODO DE
+		    if (otmp->obroken) verb = "reparieren"; /* EN if (otmp->obroken) verb = "fix"; */
+		    else if (!otmp->olocked) verb = "verschliessen", it = 1; /* EN else if (!otmp->olocked) verb = "lock", it = 1; */
+		    else if (picktyp != LOCK_PICK) verb = "aufschliessen", it = 1; /* EN else if (picktyp != LOCK_PICK) verb = "unlock", it = 1; */
+		    else verb = "knacken"; /* EN else verb = "pick"; */
+		    Sprintf(qbuf, "Hier ist %s, SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL %s %s?", /* EN Sprintf(qbuf, "There is %s here, %s %s?", */
+		    	    safe_qbuf("", sizeof("Hier ist  , SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL ihr Schloss %s?"), /* EN safe_qbuf("", sizeof("There is  here, unlock its lock?"), */
+			    	doname(otmp), an(simple_typename(otmp->otyp)), "eine Kiste"), /* EN doname(otmp), an(simple_typename(otmp->otyp)), "a box"), */
+			    it ? "sie" : "ihr Schloss", verb); /* EN verb, it ? "it" : "its lock"); */
 
 		    c = ynq(qbuf);
 		    if(c == 'q') return(0);
 		    if(c == 'n') continue;
 
 		    if (otmp->obroken) {
-			You_cant("fix its broken lock with %s.", doname(pick)); /* EN You_cant("fix its broken lock with %s.", doname(pick)); */ // TODO DE
+			You("VERB_KOENNEN das kaputte Schloss nicht OBJECT KASUS_DATIV mit %s reparieren.", doname(pick)); /* EN You_cant("fix its broken lock with %s.", doname(pick)); */
 			return 0;
 		    }
 #ifdef TOURIST

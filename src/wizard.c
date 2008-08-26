@@ -554,15 +554,15 @@ wizdead()
 
 const char * const random_insult[] = {
 	"antic", /* EN "antic", */ // TODO DE
-	"blackguard", /* EN "blackguard", */ // TODO DE
+	"Lump", /* EN "blackguard", */ /* Lump, Unhold */
 	"caitiff", /* EN "caitiff", */ // TODO DE
 	"chucklehead", /* EN "chucklehead", */ // TODO DE
 	"coistrel", /* EN "coistrel", */ // TODO DE
 	"craven", /* EN "craven", */ // TODO DE
 	"cretin", /* EN "cretin", */ // TODO DE
 	"cur", /* EN "cur", */ // TODO DE
-	"dastard", /* EN "dastard", */ // TODO DE
-	"demon fodder", /* EN "demon fodder", */ // TODO DE
+	"Memme", /* EN "dastard", */ /* Feigling, Memme */
+	"Dämonenfutter", /* EN "demon fodder", */
 	"dimwit", /* EN "dimwit", */ // TODO DE
 	"dolt", /* EN "dolt", */ // TODO DE
 	"fool", /* EN "fool", */ // TODO DE
@@ -616,7 +616,7 @@ register struct monst	*mtmp;
 			  random_insult[rn2(SIZE(random_insult))]);
 		else if (mtmp->mhp < 5 && !rn2(2))	/* Parthian shot */
 		    verbalize(rn2(2) ?
-			      "I shall return." : /* EN "I shall return." : */ // TODO DE
+			      "Ich werde wiederkehren." : /* EN "I shall return." : */
 			      "I'll be back."); /* EN "I'll be back."); */ // TODO DE
 		else
 		    verbalize("%s %s!",
