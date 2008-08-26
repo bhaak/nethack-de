@@ -262,6 +262,29 @@ char *strstr2(const char *haystack, const char *needle1, const char *needle2) {
 	return pos;
 }
 
+char *normalisierung(char *output, const char *input) {
+	int i=0, j=0;
+	for (i=0; i < strlen(input); i++) {
+		switch (input[i]) {
+		case 'Ä':
+		case 'ä': output[j++] = 'a'; output[j] = 'e'; break;
+		case 'Ö':
+		case 'ö': output[j++] = 'o'; output[j] = 'e'; break;
+		case 'Ü':
+		case 'ü': output[j++] = 'u'; output[j] = 'e'; break;
+		case 'ß': output[j++] = 's'; output[j] = 's'; break;
+		case 'É':
+		case 'é': output[j] = 'e'; break;
+		case 'Û':
+		case 'û': output[j] = 'u'; break;
+		default: output[j] = tolower(input[i]);
+		}
+		j++;
+	}
+	output[j] = '\0';
+	return output;
+}
+
 /* translates a german string to meta*/
 void german2meta(const char *str, char *output)
 {

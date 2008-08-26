@@ -670,6 +670,42 @@ START_TEST (test_german2meta) {
 	check_german2meta(text, sizeof(text)/8);
 } END_TEST
 
+void check_normalisierung(char* text[][2], int size) {
+	int i;
+	char result[128];
+
+	for (i=0; i<size; i++) {
+		normalisierung(result, text[i][0]);
+		fail_unless((strcmp(result, text[i][1])==0),
+			"failed normalisierung\nto convert: >%s<\nconverted:  >%s<\nexpected:   >%s<\n",
+			text[i][0],result,text[i][1]);
+	}
+}
+START_TEST (test_normalisierung) {
+	char *text[][2] = {
+		{"wertloses rotes Glasstück", "wertloses rotes glasstueck"},
+		{"wertloses rotes Glasstueck", "wertloses rotes glasstueck"},
+		{"wertloses rotes glasstueck", "wertloses rotes glasstueck"},
+		{"2 rote Zauberbücher", "2 rote zauberbuecher"},
+		{"2 rote Zauberbuecher", "2 rote zauberbuecher"},
+		{"2 rote zauberbuecher", "2 rote zauberbuecher"},
+		{"5 nicht verfluchte Äpfel", "5 nicht verfluchte aepfel"},
+		{"5 nicht verfluchte Aepfel", "5 nicht verfluchte aepfel"},
+		{"5 nicht verfluchte aepfel", "5 nicht verfluchte aepfel"},
+		{"Zauberstab der Monsterbeschwörung", "zauberstab der monsterbeschwoerung"},
+		{"Zauberstab der Monsterbeschwoerung", "zauberstab der monsterbeschwoerung"},
+		{"zauberstab der monsterbeschwoerung", "zauberstab der monsterbeschwoerung"},
+		{"Stoßspieß", "stossspiess"},
+		{"Stossspiess", "stossspiess"},
+		{"stossspiess", "stossspiess"},
+		{"Rothé", "rothe"},
+		{"Mûmak", "mumak"},
+		{"Nazgûl", "nazgul"},
+	};
+
+	check_normalisierung(text, sizeof(text)/8);
+} END_TEST
+
 //#if 0
 START_TEST (test_casus_and_modifier) {
 	char *text[][2] = {
@@ -1073,7 +1109,7 @@ Suite *test_suite(void)
 	TCase *tc_core = tcase_create("Nethack");
 
 	suite_add_tcase (s, tc_core);
-  
+
 	tcase_add_test(tc_core, test_satzklammer);
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
@@ -1118,6 +1154,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_pronomen);
 
 	tcase_add_test(tc_core, test_fugenwort);
+	tcase_add_test(tc_core, test_normalisierung);
 
 	return s;
 }
