@@ -649,6 +649,13 @@ START_TEST (test_german2meta) {
 		{"eine sechseckiges Amulett", "ARTIKEL_UNBESTIMMTER ADJEKTIV_AMULET_HEXAGONAL NOUN_AMULET"},
 		{"der Kadaver einer Vampirfledermaus", "ARTIKEL_BESTIMMTER MODIFIER_CORPSE ARTIKEL_UNBESTIMMTER NOUN_VAMPIRE_BAT NOUN_CORPSE"},
 		//{"Leichen von Vampirfledermäusen", "MODIFIER_CORPSE PARTIKEL_VON NOUN_VAMPIRE_BATs NOUN_CORPSE"},
+	};
+
+	check_german2meta(text, sizeof(text)/8);
+} END_TEST
+
+START_TEST (test_german2meta2) {
+	char *text[][2] = {
 		{"Zauberstab der Monsterbeschwörung", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
 		{"ein Zauberstab der Hast (0:4)", "ARTIKEL_UNBESTIMMTER NOUN_WAND PARTIKEL_OF NOUN_WAND_SPEED_MONSTER (0:4)"},
 		{"Trank des Schlafes", "NOUN_POTION PARTIKEL_OF NOUN_POT_SLEEPING"},
@@ -665,6 +672,38 @@ START_TEST (test_german2meta) {
 		{"Krokodil Ei", "NOUN_CROCODILE NOUN_EGG"},
 		{"Krokodils-Ei", "NOUN_CROCODILE NOUN_EGG"},
 		{"Skorpionen-Ei", "NOUN_SCORPIONs NOUN_EGG"},
+	};
+
+	check_german2meta(text, sizeof(text)/8);
+} END_TEST
+
+START_TEST (test_german2meta_ohne_umlaute) {
+	char *text[][2] = {
+		{"wertloses rotes Glasstück", "NOUN_GEM_RED_GLASS"},
+		{"wertloses rotes Glasstueck", "NOUN_GEM_RED_GLASS"},
+		{"wertloses rotes glasstueck", "NOUN_GEM_RED_GLASS"},
+		{"2 rote Zauberbücher", "2 ADJEKTIV_SPE_RED NOUN_SPELLBOOKs"},
+		{"2 rote Zauberbuecher", "2 ADJEKTIV_SPE_RED NOUN_SPELLBOOKs"},
+		{"2 rote zauberbuecher", "2 ADJEKTIV_SPE_RED NOUN_SPELLBOOKs"},
+		{"5 nicht verfluchte Äpfel", "5 ADJEKTIV_UNCURSED NOUN_APPLEs"},
+		{"5 nicht verfluchte Aepfel", "5 ADJEKTIV_UNCURSED NOUN_APPLEs"},
+		{"5 nicht verfluchte aepfel", "5 ADJEKTIV_UNCURSED NOUN_APPLEs"},
+		{"Zauberstab der Monsterbeschwörung", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
+		{"Zauberstab der Monsterbeschwoerung", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
+		{"zauberstab der monsterbeschwoerung", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
+		{"Stoßspieß", "NOUN_HILTED_POLEARM"},
+		{"Stossspiess", "NOUN_HILTED_POLEARM"},
+		{"stossspiess", "NOUN_HILTED_POLEARM"},
+		{"Stück Gelée Royale", "NOUN_LUMP_OF_ROYAL_JELLY"},
+		{"Rothé", "NOUN_ROTHEs"},
+		{"Rothe", "NOUN_ROTHEs"},
+		{"Mûmak", "NOUN_MUMAK"},
+		{"mumak", "NOUN_MUMAK"},
+		{"MÛMAK", "NOUN_MUMAK"},
+		{"Nazgûl", "NOUN_NAZGULs"},
+		{"Nazgul", "NOUN_NAZGULs"},
+		{"traenke des Schlafes", "NOUN_POTIONs PARTIKEL_OF NOUN_POT_SLEEPING"},
+		{"ring des schleichens", "NOUN_RING PARTIKEL_OF NOUN_RING_STEALTH"},
 	};
 
 	check_german2meta(text, sizeof(text)/8);
@@ -1114,47 +1153,55 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_get_meta_substantiv_with);
 	tcase_add_test(tc_core, test_paar);
 	tcase_add_test(tc_core, test_identified_spellbooks);
+
 	tcase_add_test(tc_core, test_nominal_phrasen);
 	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	//tcase_add_test(tc_core, test_linking_elements);
+	
 	tcase_add_test(tc_core, test_wands);
 	tcase_add_test(tc_core, test_spellbooks);
 	tcase_add_test(tc_core, test_potions);
 	tcase_add_test(tc_core, test_called_named_labeled);
+	
 	tcase_add_test(tc_core, test_level_sounds);
 	tcase_add_test(tc_core, test_tools);
 	tcase_add_test(tc_core, test_passiv);
 	tcase_add_test(tc_core, test_complete_sentences);
+	
 	tcase_add_test(tc_core, test_complete_sentences2);
 	tcase_add_test(tc_core, test_complete_sentences3);
 	tcase_add_test(tc_core, test_complete_sentences4);
 	tcase_add_test(tc_core, test_tincontent);
+	
 	tcase_add_test(tc_core, test_inventory_names);
 	tcase_add_test(tc_core, test_casus_and_modifier);
 	tcase_add_test(tc_core, test_rings);
 	tcase_add_test(tc_core, test_scrolls);
+	
 	tcase_add_test(tc_core, test_gems);
 	tcase_add_test(tc_core, test_paar);
 	tcase_add_test(tc_core, test_hoeren);
 	tcase_add_test(tc_core, test_incomplete_sentences);
-	tcase_add_test(tc_core, test_german2meta);
-	tcase_add_test(tc_core, test_token_functions);
 
+	tcase_add_test(tc_core, test_token_functions);
 	tcase_add_test(tc_core, test_corpses);
 	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_noun_pseudo);
+
 	tcase_add_test(tc_core, test_shopkeeper);
-	
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
 	tcase_add_test(tc_core, test_modifier_verb_imperativ);
 	tcase_add_test(tc_core, test_wortzusammensetzungen);
-
+	
 	tcase_add_test(tc_core, test_pronominalisierung);
 	tcase_add_test(tc_core, test_pronomen);
-
 	tcase_add_test(tc_core, test_fugenwort);
 	tcase_add_test(tc_core, test_normalisierung);
+	
+	tcase_add_test(tc_core, test_german2meta);
+	tcase_add_test(tc_core, test_german2meta2);
+	tcase_add_test(tc_core, test_german2meta_ohne_umlaute);
 
 	return s;
 }

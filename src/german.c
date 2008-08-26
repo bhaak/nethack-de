@@ -217,10 +217,14 @@ struct substantiv_oder_adjekiv_struct *get_meta_substantiv(const char *wort) {
 	struct substantiv_oder_adjekiv_struct *ret = NULL;
 	int len = 0;
 	int tmp_len = 0;
+	char tmp1[TBUFSZ];
+	char tmp2[TBUFSZ];
 
 	while (worte[i].wort!=NULL) {
-		tmp_len = strlen(worte[i].wort);
-		if (strncmp(worte[i].wort, wort, tmp_len)==0) {
+		tmp_len = strlen(normalisierung(tmp1, worte[i].wort));
+		if (strncmp(normalisierung(tmp1, worte[i].wort),
+		            normalisierung(tmp2, wort),
+			    tmp_len)==0) {
 			if (tmp_len >= len) {
 				ret = &worte[i];
 				len = tmp_len;
@@ -238,11 +242,15 @@ struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(const char *wort
 	struct substantiv_oder_adjekiv_struct *ret = NULL;
 	int len = 0;
 	int tmp_len = 0;
+	char tmp1[TBUFSZ];
+	char tmp2[TBUFSZ];
 
 	while (worte[i].wort!=NULL) {
 		tmp_len = strlen(worte[i].wort);
 		if (strncmp(worte[i].typ, with, strlen(with))==0) {
-			if (strncmp(worte[i].wort, wort, tmp_len)==0) {
+			if (strncmp(normalisierung(tmp1, worte[i].wort),
+			            normalisierung(tmp2, wort),
+				    tmp_len)==0) {
 				if (tmp_len >= len) {
 					ret = &worte[i];
 					len = tmp_len;
@@ -286,10 +294,11 @@ char *normalisierung(char *output, const char *input) {
 }
 
 /* translates a german string to meta*/
-void german2meta(const char *str, char *output)
+void german2meta(const char *input, char *output)
 {
 	int i=0;
 	output[0] = '\0';
+	char normalisiert[TBUFSZ];
 	int ring_gefunden = 0;
 	int wand_gefunden = 0;
 	int potion_gefunden = 0;
@@ -297,7 +306,10 @@ void german2meta(const char *str, char *output)
 	int scroll_gefunden = 0;
 	int leiche_gefunden = 0;
 	int statuette_gefunden = 0;
+	char str[TBUFSZ];
+	normalisierung(str, input);
 	
+	if (WISH_DEBUG) printf("\ngerman2meta %s\n", input);
 	if (WISH_DEBUG) printf("\ngerman2meta %s\n", str);
 	//printf("str: %s\n",str);
 	//printf("strlen(str): %d\n",strlen(str));
@@ -322,21 +334,21 @@ void german2meta(const char *str, char *output)
 				// diese Adjektive werden mittels den nachfolgenden Substantiven bestimmt
 				if (WISH_DEBUG) printf("ADJEKTIV_ 1 %s\n", wort->typ);
 				if (WISH_DEBUG) printf("ADJEKTIV_ 2 %s\n", str+i);
-				if (strstr2(str+i, "Zauberbuch", "Zauberbüch")) {
+				if (strstr2(str+i, "zauberbuch", "zauberbuech")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_SPE_");
 					if (WISH_DEBUG) printf("ADJEKTIV_ 4 %s\n", wort->typ);
-				} else if (strstr2(str+i, "Trank", "Tränk")) {
+				} else if (strstr2(str+i, "trank", "traenk")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_POT_");
 					if (WISH_DEBUG) printf("ADJEKTIV_ 5 %s\n", wort->typ);
-				} else if (strstr2(str+i, "Amulett", "Amulett")) {
+				} else if (strstr2(str+i, "amulett", "amulett")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_AMULET_");
 					if (WISH_DEBUG) printf("ADJEKTIV_ 6 %s\n", wort->typ);
-				} else if (strstr2(str+i, "Zauberstab", "Zauberstäb")) {
+				} else if (strstr2(str+i, "zauberstab", "zauberstaeb")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_WAND_");
 					if (WISH_DEBUG) printf("ADJEKTIV_ 7 %s\n", wort->typ);
-				} else if (strstr2(str+i, "Schmuckstein", "Schmuckstein") ||
-				           strstr2(str+i, "Edelstein", "Edelstein") ||
-				           strstr2(str+i, "Stein", "Stein")) {
+				} else if (strstr2(str+i, "schmuckstein", "schmuckstein") ||
+				           strstr2(str+i, "edelstein", "edelstein") ||
+				           strstr2(str+i, "stein", "stein")) {
 					wort = get_meta_substantiv_with(str+i, "ADJEKTIV_GEM_");
 					if (WISH_DEBUG) printf("ADJEKTIV_ 8 %s\n", wort->typ);
 				}
@@ -432,7 +444,7 @@ void german2meta(const char *str, char *output)
 				if (WISH_DEBUG) printf("4.5 i: %d\n",i);
 				if (WISH_DEBUG) printf("4.5 wort->wort: %s\n",wort->wort);
 				strcat(output, wort->typ);
-				i = i + strlen(wort->wort);
+				i = i + strlen(normalisierung(normalisiert, wort->wort));
 			}
 			if (WISH_DEBUG) printf("5 i: %d\n",i);
 		}
