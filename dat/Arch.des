@@ -321,7 +321,7 @@ NON_DIGGABLE:(00,00,75,19)
 # The altar of Huhetotl.  Unattended.
 ALTAR:(50,14),chaos,altar
 # Objects
-OBJECT:'(',"crystal ball",(50,14),blessed,5,"The Orb of Detection"
+OBJECT:'(',"crystal ball",(50,14),blessed,5,"NOUN_THE_ORB_OF_DETECTION"
 OBJECT:random,random,random
 OBJECT:random,random,random
 OBJECT:random,random,random
