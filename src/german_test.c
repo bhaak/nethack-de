@@ -709,6 +709,25 @@ START_TEST (test_german2meta_ohne_umlaute) {
 	check_german2meta(text, sizeof(text)/8);
 } END_TEST
 
+START_TEST (test_german2meta_utf8) {
+	char *text[][2] = {
+		{"5 nicht verfluchte Ã¤pfel", "5 ADJEKTIV_UNCURSED NOUN_APPLEs"},
+		{"5 NICHT VERFLUCHTE Ã\x84PFEL", "5 ADJEKTIV_UNCURSED NOUN_APPLEs"},
+		{"Zauberstab der MonsterbeschwÃ¶rung", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
+		{"ZAUBERSTAB DER MONSTERBESCHWÃ\x96RUNG", "NOUN_WAND PARTIKEL_OF NOUN_WAND_CREATE_MONSTER"},
+		{"wertloses rotes GlasstÃ¼ck", "NOUN_GEM_RED_GLASS"},
+		{"WERTLOSES ROTES GLASST" "Ã\x9C" "CK", "NOUN_GEM_RED_GLASS"},
+		{"StoÃ\x9FspieÃ\x9F", "NOUN_HILTED_POLEARM"},
+		//{"Stück Gelée Royale", "NOUN_LUMP_OF_ROYAL_JELLY"},
+		//{"Rothé", "NOUN_ROTHEs"},
+		//{"Mûmak", "NOUN_MUMAK"},
+		//{"Nazgûl", "NOUN_NAZGULs"},
+	};
+
+	check_german2meta(text, sizeof(text)/8);
+} END_TEST
+
+
 void check_normalisierung(char* text[][2], int size) {
 	int i;
 	char result[128];
@@ -1198,10 +1217,11 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_pronomen);
 	tcase_add_test(tc_core, test_fugenwort);
 	tcase_add_test(tc_core, test_normalisierung);
-	
+
 	tcase_add_test(tc_core, test_german2meta);
 	tcase_add_test(tc_core, test_german2meta2);
 	tcase_add_test(tc_core, test_german2meta_ohne_umlaute);
+	tcase_add_test(tc_core, test_german2meta_utf8);
 
 	return s;
 }

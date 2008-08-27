@@ -218,13 +218,11 @@ struct substantiv_oder_adjekiv_struct *get_meta_substantiv(const char *wort) {
 	int len = 0;
 	int tmp_len = 0;
 	char tmp1[TBUFSZ];
-	char tmp2[TBUFSZ];
 
 	while (worte[i].wort!=NULL) {
-		tmp_len = strlen(normalisierung(tmp1, worte[i].wort));
-		if (strncmp(normalisierung(tmp1, worte[i].wort),
-		            normalisierung(tmp2, wort),
-			    tmp_len)==0) {
+		normalisierung(tmp1, worte[i].wort);
+		tmp_len = strlen(tmp1);
+		if (strncmp(tmp1, wort, tmp_len)==0) {
 			if (tmp_len >= len) {
 				ret = &worte[i];
 				len = tmp_len;
@@ -243,13 +241,12 @@ struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(const char *wort
 	int len = 0;
 	int tmp_len = 0;
 	char tmp1[TBUFSZ];
-	char tmp2[TBUFSZ];
 
 	while (worte[i].wort!=NULL) {
 		tmp_len = strlen(worte[i].wort);
 		if (strncmp(worte[i].typ, with, strlen(with))==0) {
 			if (strncmp(normalisierung(tmp1, worte[i].wort),
-			            normalisierung(tmp2, wort),
+			            wort,
 				    tmp_len)==0) {
 				if (tmp_len >= len) {
 					ret = &worte[i];
@@ -285,6 +282,23 @@ char *normalisierung(char *output, const char *input) {
 		case 'é': output[j] = 'e'; break;
 		case 'Û':
 		case 'û': output[j] = 'u'; break;
+		// UTF-8
+		case 'Ã': 
+			if (i+1 < strlen(input)) {
+				switch (input[++i]) {
+				case '\x84':
+				case '¤': output[j++] = 'a'; output[j] = 'e'; break;
+				case '\x96':
+				case '¶': output[j++] = 'o'; output[j] = 'e'; break;
+				case '\x9C':
+				case '¼': output[j++] = 'u'; output[j] = 'e'; break;
+				case '\x9F': output[j++] = 's'; output[j] = 's'; break;
+				default: output[j] = ' ';
+				}
+			} else {
+				output[j] = ' ';
+			}
+			break;
 		default: output[j] = tolower(input[i]);
 		}
 		j++;
