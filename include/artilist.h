@@ -5,14 +5,19 @@
 #ifdef MAKEDEFS_C
 /* in makedefs.c, all we care about is the list of names */
 
-#define A(nam,typ,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) nam
+#define A(nam,nam_en,typ,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) nam_en /* EN #define A(nam,typ,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) nam */
 
 static const char *artifact_names[] = {
 #else
 /* in artifact.c, set up the actual artifact list structure */
 
+#ifdef GERMAN
+#define A(nam,nam_en,typ,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) \
+ { typ, nam, nam_en, s1, s2, mt, atk, dfn, cry, inv, al, cl, rac, cost }
+#else
 #define A(nam,typ,s1,s2,mt,atk,dfn,cry,inv,al,cl,rac,cost) \
  { typ, nam, s1, s2, mt, atk, dfn, cry, inv, al, cl, rac, cost }
+#endif
 
 #define     NO_ATTK	{0,0,0,0}		/* no attack */
 #define     NO_DFNS	{0,0,0,0}		/* no defense */
@@ -37,38 +42,38 @@ STATIC_OVL NEARDATA struct artifact artilist[] = {
 
 
 /*  dummy element #0, so that all interesting indices are non-zero */
-A("",				STRANGE_OBJECT,
+A("","",				STRANGE_OBJECT, /* EN A("",				STRANGE_OBJECT, */
 	0, 0, 0, NO_ATTK, NO_DFNS, NO_CARY, 0, A_NONE, NON_PM, NON_PM, 0L ),
 
-A("NOUN_EXCALIBUR",			LONG_SWORD, /* EN A("Excalibur",			LONG_SWORD, */
+A("NOUN_EXCALIBUR","Excalibur",			LONG_SWORD, /* EN A("Excalibur",			LONG_SWORD, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_SEEK|SPFX_DEFN|SPFX_INTEL|SPFX_SEARCH),0,0,
 	PHYS(5,10),	DRLI(0,0),	NO_CARY,	0, A_LAWFUL, PM_KNIGHT, NON_PM, 4000L ),
 /*
  *	Stormbringer only has a 2 because it can drain a level,
  *	providing 8 more.
  */
-A("NOUN_STORMBRINGER",		RUNESWORD, /* EN A("Stormbringer",		RUNESWORD, */
+A("NOUN_STORMBRINGER","Stormbringer",		RUNESWORD, /* EN A("Stormbringer",		RUNESWORD, */
 	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN|SPFX_INTEL|SPFX_DRLI), 0, 0,
 	DRLI(5,2),	DRLI(0,0),	NO_CARY,	0, A_CHAOTIC, NON_PM, NON_PM, 8000L ),
 /*
  *	Mjollnir will return to the hand of the wielder when thrown
  *	if the wielder is a Valkyrie wearing Gauntlets of Power.
  */
-A("NOUN_MJOLLNIR",			WAR_HAMMER,		/* Mjo:llnir */ /* EN A("Mjollnir",			WAR_HAMMER,		*/
+A("NOUN_MJOLLNIR","Mjollnir",			WAR_HAMMER,		/* Mjo:llnir */ /* EN A("Mjollnir",			WAR_HAMMER,		*/
 	(SPFX_RESTR|SPFX_ATTK),  0, 0,
 	ELEC(5,24),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, PM_VALKYRIE, NON_PM, 4000L ),
 
-A("NOUN_CLEAVER",			BATTLE_AXE, /* EN A("Cleaver",			BATTLE_AXE, */
+A("NOUN_CLEAVER","Cleaver",			BATTLE_AXE, /* EN A("Cleaver",			BATTLE_AXE, */
 	SPFX_RESTR, 0, 0,
 	PHYS(3,6),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, PM_BARBARIAN, NON_PM, 1500L ),
 
-A("NOUN_GRIMTOOTH",			ORCISH_DAGGER, /* EN A("Grimtooth",			ORCISH_DAGGER, */
+A("NOUN_GRIMTOOTH","Grimtooth",			ORCISH_DAGGER, /* EN A("Grimtooth",			ORCISH_DAGGER, */
 	SPFX_RESTR, 0, 0,
 	PHYS(2,6),	NO_DFNS,	NO_CARY,	0, A_CHAOTIC, NON_PM, PM_ORC, 300L ),
 /*
  *	Orcrist and Sting have same alignment as elves.
  */
-A("NOUN_ORCRIST",			ELVEN_BROADSWORD, /* EN A("Orcrist",			ELVEN_BROADSWORD, */
+A("NOUN_ORCRIST","Orcrist",			ELVEN_BROADSWORD, /* EN A("Orcrist",			ELVEN_BROADSWORD, */
 	SPFX_DFLAG2, 0, M2_ORC,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_CHAOTIC, NON_PM, PM_ELF, 2000L ),
 
@@ -78,50 +83,50 @@ A("NOUN_ORCRIST",			ELVEN_BROADSWORD, /* EN A("Orcrist",			ELVEN_BROADSWORD, */
  *	M2_something flags.  In Sting's case it will trigger EWarn_of_mon
  *	for M2_ORC monsters.
  */
-A("NOUN_STING",			ELVEN_DAGGER, /* EN A("Sting",			ELVEN_DAGGER, */
+A("NOUN_STING","Sting",			ELVEN_DAGGER, /* EN A("Sting",			ELVEN_DAGGER, */
 	(SPFX_WARN|SPFX_DFLAG2), 0, M2_ORC,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_CHAOTIC, NON_PM, PM_ELF, 800L ),
 /*
  *	Magicbane is a bit different!  Its magic fanfare
  *	unbalances victims in addition to doing some damage.
  */
-A("NOUN_MAGICBANE",			ATHAME, /* EN A("Magicbane",			ATHAME, */
+A("NOUN_MAGICBANE","Magicbane",			ATHAME, /* EN A("Magicbane",			ATHAME, */
 	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN), 0, 0,
 	STUN(3,4),	DFNS(AD_MAGM),	NO_CARY,	0, A_NEUTRAL, PM_WIZARD, NON_PM, 3500L ),
 
-A("NOUN_FROST_BRAND",		LONG_SWORD, /* EN A("Frost Brand",		LONG_SWORD, */
+A("NOUN_FROST_BRAND","Frost Brand",		LONG_SWORD, /* EN A("Frost Brand",		LONG_SWORD, */
 	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN), 0, 0,
 	COLD(5,0),	COLD(0,0),	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 3000L ),
 
-A("NOUN_FIRE_BRAND",			LONG_SWORD, /* EN A("Fire Brand",			LONG_SWORD, */
+A("NOUN_FIRE_BRAND","Fire Brand",			LONG_SWORD, /* EN A("Fire Brand",			LONG_SWORD, */
 	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN), 0, 0,
 	FIRE(5,0),	FIRE(0,0),	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 3000L ),
 
-A("NOUN_DRAGONBANE",			BROADSWORD, /* EN A("Dragonbane",			BROADSWORD, */
+A("NOUN_DRAGONBANE","Dragonbane",			BROADSWORD, /* EN A("Dragonbane",			BROADSWORD, */
 	(SPFX_RESTR|SPFX_DCLAS), 0, S_DRAGON,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 500L ),
 
-A("NOUN_DEMONBANE",			LONG_SWORD, /* EN A("Demonbane",			LONG_SWORD, */
+A("NOUN_DEMONBANE","Demonbane",			LONG_SWORD, /* EN A("Demonbane",			LONG_SWORD, */
 	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_DEMON,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, NON_PM, NON_PM, 2500L ),
 
-A("NOUN_WEREBANE",			SILVER_SABER, /* EN A("Werebane",			SILVER_SABER, */
+A("NOUN_WEREBANE","Werebane",			SILVER_SABER, /* EN A("Werebane",			SILVER_SABER, */
 	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_WERE,
 	PHYS(5,0),	DFNS(AD_WERE),	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 1500L ),
 
-A("NOUN_GRAYSWANDIR",		SILVER_SABER, /* EN A("Grayswandir",		SILVER_SABER, */
+A("NOUN_GRAYSWANDIR","Grayswandir",		SILVER_SABER, /* EN A("Grayswandir",		SILVER_SABER, */
 	(SPFX_RESTR|SPFX_HALRES), 0, 0,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, NON_PM, NON_PM, 8000L ),
 
-A("NOUN_GIANTSLAYER",		LONG_SWORD, /* EN A("Giantslayer",		LONG_SWORD, */
+A("NOUN_GIANTSLAYER","Giantslayer",		LONG_SWORD, /* EN A("Giantslayer",		LONG_SWORD, */
 	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_GIANT,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, NON_PM, NON_PM, 200L ),
 
-A("NOUN_OGRESMASHER",		WAR_HAMMER, /* EN A("Ogresmasher",		WAR_HAMMER, */
+A("NOUN_OGRESMASHER","Ogresmasher",		WAR_HAMMER, /* EN A("Ogresmasher",		WAR_HAMMER, */
 	(SPFX_RESTR|SPFX_DCLAS), 0, S_OGRE,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 200L ),
 
-A("NOUN_TROLLSBANE",			MORNING_STAR, /* EN A("Trollsbane",			MORNING_STAR, */
+A("NOUN_TROLLSBANE","Trollsbane",			MORNING_STAR, /* EN A("Trollsbane",			MORNING_STAR, */
 	(SPFX_RESTR|SPFX_DCLAS), 0, S_TROLL,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,	0, A_NONE, NON_PM, NON_PM, 200L ),
 /*
@@ -129,7 +134,7 @@ A("NOUN_TROLLSBANE",			MORNING_STAR, /* EN A("Trollsbane",			MORNING_STAR, */
  *	2) doesn't give unusual message for 2-headed monsters (but
  *	allowing those at all causes more problems than worth the effort).
  */
-A("NOUN_VORPAL_BLADE",		LONG_SWORD, /* EN A("Vorpal Blade",		LONG_SWORD, */
+A("NOUN_VORPAL_BLADE","Vorpal Blade",		LONG_SWORD, /* EN A("Vorpal Blade",		LONG_SWORD, */
 	(SPFX_RESTR|SPFX_BEHEAD), 0, 0,
 	PHYS(5,1),	NO_DFNS,	NO_CARY,	0, A_NEUTRAL, NON_PM, NON_PM, 4000L ),
 /*
@@ -140,11 +145,11 @@ A("NOUN_VORPAL_BLADE",		LONG_SWORD, /* EN A("Vorpal Blade",		LONG_SWORD, */
  *			--Koko, Lord high executioner of Titipu
  *			  (From Sir W.S. Gilbert's "The Mikado")
  */
-A("NOUN_SNICKERSNEE",		KATANA, /* EN A("Snickersnee",		KATANA, */
+A("NOUN_SNICKERSNEE","Snickersnee",		KATANA, /* EN A("Snickersnee",		KATANA, */
 	SPFX_RESTR, 0, 0,
 	PHYS(0,8),	NO_DFNS,	NO_CARY,	0, A_LAWFUL, PM_SAMURAI, NON_PM, 1200L ),
 
-A("NOUN_SUNSWORD",			LONG_SWORD, /* EN A("Sunsword",			LONG_SWORD, */
+A("NOUN_SUNSWORD","Sunsword",			LONG_SWORD, /* EN A("Sunsword",			LONG_SWORD, */
 	(SPFX_RESTR|SPFX_DFLAG2), 0, M2_UNDEAD,
 	PHYS(5,0),	DFNS(AD_BLND),	NO_CARY,	0, A_LAWFUL, NON_PM, NON_PM, 1500L ),
 
@@ -152,18 +157,18 @@ A("NOUN_SUNSWORD",			LONG_SWORD, /* EN A("Sunsword",			LONG_SWORD, */
  *	The artifacts for the quest dungeon, all self-willed.
  */
 
-A("NOUN_THE_ORB_OF_DETECTION",	CRYSTAL_BALL, /* EN A("The Orb of Detection",	CRYSTAL_BALL, */
+A("NOUN_THE_ORB_OF_DETECTION","The Orb of Detection",	CRYSTAL_BALL, /* EN A("The Orb of Detection",	CRYSTAL_BALL, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL), (SPFX_ESP|SPFX_HSPDAM), 0,
 	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),
 	INVIS,		A_LAWFUL, PM_ARCHEOLOGIST, NON_PM, 2500L ),
 
-A("NOUN_THE_HEART_OF_AHRIMAN",	LUCKSTONE, /* EN A("The Heart of Ahriman",	LUCKSTONE, */
+A("NOUN_THE_HEART_OF_AHRIMAN","The Heart of Ahriman",	LUCKSTONE, /* EN A("The Heart of Ahriman",	LUCKSTONE, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL), SPFX_STLTH, 0,
 	/* this stone does double damage if used as a projectile weapon */
 	PHYS(5,0),	NO_DFNS,	NO_CARY,
 	LEVITATION,	A_NEUTRAL, PM_BARBARIAN, NON_PM, 2500L ),
 
-A("NOUN_THE_SCEPTRE_OF_MIGHT",	MACE, /* EN A("The Sceptre of Might",	MACE, */
+A("NOUN_THE_SCEPTRE_OF_MIGHT","The Sceptre of Might",	MACE, /* EN A("The Sceptre of Might",	MACE, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_DALIGN), 0, 0,
 	PHYS(5,0),	NO_DFNS,	CARY(AD_MAGM),
 	CONFLICT,	A_LAWFUL, PM_CAVEMAN, NON_PM, 2500L ),
@@ -176,57 +181,57 @@ A("NOUN_The Palantir of Westernesse",	CRYSTAL_BALL,
 	TAMING,		A_CHAOTIC, NON_PM , PM_ELF, 8000L ),
 #endif
 
-A("NOUN_THE_STAFF_OF_AESCULAPIUS",	QUARTERSTAFF, /* EN A("The Staff of Aesculapius",	QUARTERSTAFF, */
+A("NOUN_THE_STAFF_OF_AESCULAPIUS","The Staff of Aesculapius",	QUARTERSTAFF, /* EN A("The Staff of Aesculapius",	QUARTERSTAFF, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_ATTK|SPFX_INTEL|SPFX_DRLI|SPFX_REGEN), 0,0,
 	DRLI(0,0),	DRLI(0,0),	NO_CARY,
 	HEALING,	A_NEUTRAL, PM_HEALER, NON_PM, 5000L ),
 
-A("NOUN_THE_MAGIC_MIRROR_OF_MERLIN", MIRROR, /* EN A("The Magic Mirror of Merlin", MIRROR, */
+A("NOUN_THE_MAGIC_MIRROR_OF_MERLIN","The Magic Mirror of Merlin", MIRROR, /* EN A("The Magic Mirror of Merlin", MIRROR, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_SPEAK), SPFX_ESP, 0,
 	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),
 	0,		A_LAWFUL, PM_KNIGHT, NON_PM, 1500L ),
 
-A("NOUN_THE_EYES_OF_THE_OVERWORLDs",	LENSES, /* EN A("The Eyes of the Overworld",	LENSES, */
+A("NOUN_THE_EYES_OF_THE_OVERWORLDs","The Eyes of the Overworld",	LENSES, /* EN A("The Eyes of the Overworld",	LENSES, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_XRAY), 0, 0,
 	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),
 	ENLIGHTENING,	A_NEUTRAL,	 PM_MONK, NON_PM, 2500L ),
 
-A("NOUN_THE_MITRE_OF_HOLINESS",	HELM_OF_BRILLIANCE, /* EN A("The Mitre of Holiness",	HELM_OF_BRILLIANCE, */
+A("NOUN_THE_MITRE_OF_HOLINESS","The Mitre of Holiness",	HELM_OF_BRILLIANCE, /* EN A("The Mitre of Holiness",	HELM_OF_BRILLIANCE, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_DFLAG2|SPFX_INTEL), 0, M2_UNDEAD,
 	NO_ATTK,	NO_DFNS,	CARY(AD_FIRE),
 	ENERGY_BOOST,	A_LAWFUL, PM_PRIEST, NON_PM, 2000L ),
 
-A("NOUN_THE_LONGBOW_OF_DIANA", BOW, /* EN A("The Longbow of Diana", BOW, */
+A("NOUN_THE_LONGBOW_OF_DIANA","The Longbow of Diana", BOW, /* EN A("The Longbow of Diana", BOW, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_REFLECT), SPFX_ESP, 0,
 	PHYS(5,0),	NO_DFNS,	NO_CARY,
 	CREATE_AMMO, A_CHAOTIC, PM_RANGER, NON_PM, 4000L ),
 
-A("NOUN_THE_MASTER_KEY_OF_THIEVERY", SKELETON_KEY, /* EN A("The Master Key of Thievery", SKELETON_KEY, */
+A("NOUN_THE_MASTER_KEY_OF_THIEVERY","The Master Key of Thievery", SKELETON_KEY, /* EN A("The Master Key of Thievery", SKELETON_KEY, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_SPEAK),
 		(SPFX_WARN|SPFX_TCTRL|SPFX_HPHDAM), 0,
 	NO_ATTK,	NO_DFNS,	NO_CARY,
 	UNTRAP,		A_CHAOTIC, PM_ROGUE, NON_PM, 3500L ),
 
-A("NOUN_THE_TSURUGI_OF_MURAMASA",	TSURUGI, /* EN A("The Tsurugi of Muramasa",	TSURUGI, */
+A("NOUN_THE_TSURUGI_OF_MURAMASA","The Tsurugi of Muramasa",	TSURUGI, /* EN A("The Tsurugi of Muramasa",	TSURUGI, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_BEHEAD|SPFX_LUCK), 0, 0,
 	PHYS(0,8),	NO_DFNS,	NO_CARY,
 	0,		A_LAWFUL, PM_SAMURAI, NON_PM, 4500L ),
 
 #ifdef TOURIST
-A("NOUN_THE_PLATINUM_YENDORIAN_EXPRESS_CARD", CREDIT_CARD, /* EN A("The Platinum Yendorian Express Card", CREDIT_CARD, */
+A("NOUN_THE_PLATINUM_YENDORIAN_EXPRESS_CARD","The Platinum Yendorian Express Card", CREDIT_CARD, /* EN A("The Platinum Yendorian Express Card", CREDIT_CARD, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_DEFN),
 		(SPFX_ESP|SPFX_HSPDAM), 0,
 	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),
 	CHARGE_OBJ,	A_NEUTRAL, PM_TOURIST, NON_PM, 7000L ),
 #endif
 
-A("NOUN_THE_ORB_OF_FATE",		CRYSTAL_BALL, /* EN A("The Orb of Fate",		CRYSTAL_BALL, */
+A("NOUN_THE_ORB_OF_FATE","The Orb of Fate",		CRYSTAL_BALL, /* EN A("The Orb of Fate",		CRYSTAL_BALL, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_LUCK),
 		(SPFX_WARN|SPFX_HSPDAM|SPFX_HPHDAM), 0,
 	NO_ATTK,	NO_DFNS,	NO_CARY,
 	LEV_TELE,	A_NEUTRAL, PM_VALKYRIE, NON_PM, 3500L ),
 
-A("NOUN_THE_EYE_OF_THE_AETHIOPICA",	AMULET_OF_ESP, /* EN A("The Eye of the Aethiopica",	AMULET_OF_ESP, */
+A("NOUN_THE_EYE_OF_THE_AETHIOPICA","The Eye of the Aethiopica",	AMULET_OF_ESP, /* EN A("The Eye of the Aethiopica",	AMULET_OF_ESP, */
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL), (SPFX_EREGEN|SPFX_HSPDAM), 0,
 	NO_ATTK,	NO_DFNS,	CARY(AD_MAGM),
 	CREATE_PORTAL,	A_NEUTRAL, PM_WIZARD, NON_PM, 4000L ),
@@ -234,7 +239,7 @@ A("NOUN_THE_EYE_OF_THE_AETHIOPICA",	AMULET_OF_ESP, /* EN A("The Eye of the Aethi
 /*
  *  terminator; otyp must be zero
  */
-A(0, 0, 0, 0, 0, NO_ATTK, NO_DFNS, NO_CARY, 0, A_NONE, NON_PM, NON_PM, 0L )
+A(0, 0, 0, 0, 0, 0, NO_ATTK, NO_DFNS, NO_CARY, 0, A_NONE, NON_PM, NON_PM, 0L ) /* EN A(0, 0, 0, 0, 0, NO_ATTK, NO_DFNS, NO_CARY, 0, A_NONE, NON_PM, NON_PM, 0L ) */
 
 };	/* artilist[] (or artifact_names[]) */
 

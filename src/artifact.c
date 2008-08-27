@@ -200,7 +200,7 @@ register const char *name;
 
 	if (otyp && *name)
 	    for (a = artilist+1,arex = artiexist+1; a->otyp; a++,arex++)
-		if ((int) a->otyp == otyp && !strcmp(a->name, name))
+		if ((int) a->otyp == otyp && (!strcmp(a->name, name)||!strcmp(a->english_name, name))) /* EN if ((int) a->otyp == otyp && !strcmp(a->name, name)) */
 		    return *arex;
 	return FALSE;
 }
@@ -215,7 +215,7 @@ register boolean mod;
 
 	if (otmp && *name)
 	    for (a = artilist+1; a->otyp; a++)
-		if (a->otyp == otmp->otyp && !strcmp(a->name, name)) {
+		if (a->otyp == otmp->otyp && (!strcmp(a->name, name)||!strcmp(a->english_name, name))) { /* EN if (a->otyp == otmp->otyp && !strcmp(a->name, name)) { */
 		    register int m = a - artilist;
 		    otmp->oartifact = (char)(mod ? m : 0);
 		    otmp->age = 0;
@@ -301,7 +301,7 @@ register const char *name;
 	    if (a->otyp != otmp->otyp) continue;
 	    aname = a->name;
 	    if (!strncmpi(aname, "ARTIKEL_BESTIMMTER ", 19)) aname += 19; /* EN if (!strncmpi(aname, "the ", 4)) aname += 4; */
-	    if (!strcmp(aname, name))
+	    if (!strcmp(a->name, name)||!strcmp(a->english_name, name)) /* EN if (!strcmp(aname, name)) */
 		return ((boolean)((a->spfx & (SPFX_NOGEN|SPFX_RESTR)) != 0 ||
 			otmp->quan > 1L));
 	}
@@ -860,7 +860,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 		nomovemsg = "";
 		if (magr && magr == u.ustuck && sticks(youmonst.data)) {
 		    u.ustuck = (struct monst *)0;
-		    You("VERB_LASSEN %s los!", mon_nam(magr)); /* EN You("release %s!", mon_nam(magr)); */
+		    You("VERB_LASSEN OBJECT %s los!", mon_nam(magr)); /* EN You("release %s!", mon_nam(magr)); */
 		}
 	    }
 	} else {
