@@ -591,6 +591,7 @@ class TestVerb < Test::Unit::TestCase
     assert_equal("enthalten", Verb.verb("", "enthalten").partizip_perfekt)
     assert_equal("verschlungen", Verb.verb("", "verschlingen").partizip_perfekt)
     assert_equal("gewonnen", Verb.verb("", "gewinnen").partizip_perfekt)
+    assert_equal("widersetzt", Verb.verb("", "widersetzen").partizip_perfekt)
 	end
 
   def testPartizipPerfekt
@@ -615,6 +616,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraesensKonjunktiv(verb, ["atme", "atmest", "atme", "atmen", "atmet", "atmen"])
     checkVerbPraeteritum(verb, ["atmete", "atmetest", "atmete", "atmeten", "atmetet", "atmeten"])
     checkVerbPraeteritumKonjunktiv(verb, ["atmete", "atmetest", "atmete", "atmeten", "atmetet", "atmeten"])
+  end
+
+  def testBringen
+    verb = Verb.verb("", "bringen")
+
+    assert_equal("bringen", verb.infinitiv)
+    assert_equal("bring", verb.singular.imperativ)
+    assert_equal("bringt", verb.plural.imperativ)
+    assert_equal("bringend", verb.partizip_praesens)
+    assert_equal("gebracht", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["bringe", "bringst", "bringt", "bringen", "bringt", "bringen"])
+    checkVerbPraeteritum(verb, ["brachte", "brachtest", "brachte", "brachten", "brachtet", "brachten"])
+    checkVerbPraesensKonjunktiv(verb, ["bringe", "bringest", "bringe", "bringen", "bringet", "bringen"])
+    checkVerbPraeteritumKonjunktiv(verb, ["brächte", "brächtest", "brächte", "brächten", "brächtet", "brächten"])
   end
 
 	def testEErweiterung
