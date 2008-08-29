@@ -3479,7 +3479,7 @@ boolean force;
 				    return 0;
 				}
 				if (!(mtmp = m_at(x,y))) {
-				    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_VERSUCHE stattdessen die Grube zu füllen."); /* EN pline("Try filling the pit instead."); */
+				    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_VERSUCHEN stattdessen die Grube zu füllen."); /* EN pline("Try filling the pit instead."); */
 				    return 0;
 				}
 				return help_monster_out(mtmp, ttmp);

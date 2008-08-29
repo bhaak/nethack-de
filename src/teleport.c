@@ -820,7 +820,7 @@ register struct trap *ttmp;
 	/* problem: level teleport landing escapes the check */
 	if (!on_level(&u.uz, &u.uz0)) return;
 
-	You("VERB_AKTIVIEREN ARTIKEL_UNBESTIMMTER NOUN_MAGIC_PORTAL!"); /* EN You("activated a magic portal!"); */
+	You("VERB_AKTIVIEREN OBJECT ARTIKEL_UNBESTIMMTER NOUN_MAGIC_PORTAL!"); /* EN You("activated a magic portal!"); */
 
 	/* prevent the poor shnook, whose amulet was stolen while in
 	 * the endgame, from accidently triggering the portal to the

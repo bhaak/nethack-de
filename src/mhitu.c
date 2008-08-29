@@ -1165,13 +1165,13 @@ dopois:
 		    if (uarmf) {
 			if (rn2(2) && (uarmf->otyp == LOW_BOOTS ||
 					     uarmf->otyp == IRON_SHOES))
-			    pline("SUBJECT %s VERB_PIEKSEN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_UNGESCHUETZT NOUN_TEIL OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV %s %s!", /* EN pline("%s pricks the exposed part of your %s %s!", */
+			    pline("SUBJECT %s VERB_PIEKSEN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER ADJEKTIV_UNGESCHUETZT NOUN_TEIL OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV %s %s!", /* EN pline("%s pricks the exposed part of your %s %s!", */
 				Monnam(mtmp), sidestr, body_part(LEG));
 			else if (!rn2(5))
 			    pline("SUBJECT %s VERB_DURCHSTECHEN OBJECT PRONOMEN_POSSESSIV %s NOUN_BOOTS!", /* EN pline("%s pricks through your %s boot!", */
 				Monnam(mtmp), sidestr);
 			else {
-			    pline("SUBJECT %s VERB_ZERKRATZEN OBJECT PRONOMEN_POSSESSIV %s NOUN_BOOT!", Monnam(mtmp), /* EN pline("%s scratches your %s boot!", Monnam(mtmp), */
+			    pline("SUBJECT %s VERB_ZERKRATZEN OBJECT PRONOMEN_POSSESSIV %s NOUN_BOOTS!", Monnam(mtmp), /* EN pline("%s scratches your %s boot!", Monnam(mtmp), */
 				sidestr);
 			    dmg = 0;
 			    break;

@@ -918,7 +918,7 @@ dosummon()
 	u.uen -= 10;
 	flags.botl = 1;
 
-	You("VERB_RUFEN OBJECT PRONOMEN_POSSESSIV NOUN_BRUEDERs zu Hilfe!"); /* EN You("call upon your brethren for help!"); */
+	You("VERB_RUFEN OBJECT PRONOMEN_POSSESSIV NOUN_BRUDERs zu Hilfe!"); /* EN You("call upon your brethren for help!"); */
 	exercise(A_WIS, TRUE);
 	if (!were_summon(youmonst.data, TRUE, &placeholder, (char *)0))
 		pline("Aber es kommt niemand."); /* EN pline("But none arrive."); */

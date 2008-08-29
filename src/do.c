@@ -865,7 +865,7 @@ doup()
 	if(near_capacity() > SLT_ENCUMBER) {
 		/* No levitation check; inv_weight() already allows for it */
 		Your("load is too heavy to climb the %s.", /* EN Your("load is too heavy to climb the %s.", */ // TODO DE
-			levl[u.ux][u.uy].typ == STAIRS ? "VERB_STAIRS" : "VERB_LADDER"); /* EN levl[u.ux][u.uy].typ == STAIRS ? "stairs" : "ladder"); */
+			levl[u.ux][u.uy].typ == STAIRS ? "NOUN_STAIRS" : "NOUN_LADDER"); /* EN levl[u.ux][u.uy].typ == STAIRS ? "stairs" : "ladder"); */
 		return(1);
 	}
 	if(ledger_no(&u.uz) == 1) {
