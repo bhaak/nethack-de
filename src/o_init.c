@@ -382,7 +382,7 @@ dodiscovered()				/* free after Robert Viduya */
     for (i = dis = 0; i < SIZE(uniq_objs); i++)
 	if (objects[uniq_objs[i]].oc_name_known) {
 	    if (!dis++)
-		putstr(tmpwin, iflags.menu_headings, "Unique Items"); /* EN putstr(tmpwin, iflags.menu_headings, "Unique Items"); */ // TODO DE
+		putstr(tmpwin, iflags.menu_headings, "Einzigartige Gegenstände"); /* EN putstr(tmpwin, iflags.menu_headings, "Unique Items"); */
 		Sprintf(buf, "  %s", OBJ_NAME(objects[uniq_objs[i]]));
 	    putstr(tmpwin, 0, buf);
 	    ++ct;

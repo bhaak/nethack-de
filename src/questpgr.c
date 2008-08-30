@@ -166,7 +166,7 @@ ldrname()	/* return your role leader's name */
 	int i = urole.ldrnum;
 
 	Sprintf(nambuf, "%s%s",
-		type_is_pname(&mons[i]) ? "" : "the ",
+		type_is_pname(&mons[i]) ? "" : "the ", /* EN type_is_pname(&mons[i]) ? "" : "the ", */ // TODO DE
 		mons[i].mname);
 	return nambuf;
 }
@@ -240,9 +240,9 @@ char c;
 	    case 'R':	str = rank_of(MIN_QUEST_LEVEL, Role_switch,
 	    			flags.female);
 			break;
-	    case 's':	str = (flags.female) ? "sister" : "brother";
+	    case 's':	str = (flags.female) ? "NOUN_SCHWESTER" : "NOUN_BRUDER"; /* EN case 's':	str = (flags.female) ? "sister" : "brother"; */
 			break;
-	    case 'S':	str = (flags.female) ? "daughter" : "son";
+	    case 'S':	str = (flags.female) ? "NOUN_TOCHTER" : "NOUN_SOHN"; /* EN case 'S':	str = (flags.female) ? "daughter" : "son"; */
 			break;
 	    case 'l':	str = ldrname();
 			break;
@@ -266,13 +266,13 @@ char c;
 			break;
 	    case 'D':	str = align_gname(A_LAWFUL);
 			break;
-	    case 'C':	str = "chaotic";
+	    case 'C':	str = "chaotic"; /* EN case 'C':	str = "chaotic"; */ // TODO DE
 			break;
-	    case 'N':	str = "neutral";
+	    case 'N':	str = "neutral"; /* EN case 'N':	str = "neutral"; */ // TODO DE
 			break;
-	    case 'L':	str = "lawful";
+	    case 'L':	str = "lawful"; /* EN case 'L':	str = "lawful"; */ // TODO DE
 			break;
-	    case 'x':	str = Blind ? "sense" : "see";
+	    case 'x':	str = Blind ? "sense" : "see"; /* EN case 'x':	str = Blind ? "sense" : "see"; */ // TODO DE
 			break;
 	    case 'Z':	str = dungeons[0].dname;
 			break;
@@ -329,7 +329,7 @@ convert_line()
 				    break;
 
 					/* strip any "the" prefix */
-				case 't': if (!strncmpi(cvt_buf, "the ", 4)) {
+				case 't': if (!strncmpi(cvt_buf, "the ", 4)) { /* EN case 't': if (!strncmpi(cvt_buf, "the ", 4)) { */ // TODO DE
 					Strcat(cc, &cvt_buf[4]);
 					cc += strlen(cc);
 					continue; /* for */

@@ -953,7 +953,7 @@ register const char *txt;
 }
 
 const char *bottlenames[] = {
-	"bottle", "phial", "flagon", "carafe", "flask", "jar", "vial" /* EN "bottle", "phial", "flagon", "carafe", "flask", "jar", "vial" */ // TODO DE
+	"NOUN_BOTTLE", "NOUN_FLAKON", "NOUN_KRUG", "NOUN_KARAFFE", "NOUN_KOLBEN", "NOUN_FLAESCHCHEN", "NOUN_PHIOLE" /* EN "bottle", "phial", "flagon", "carafe", "flask", "jar", "vial" */
 };
 
 

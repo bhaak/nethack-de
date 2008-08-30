@@ -41,7 +41,7 @@ const struct Role roles[] = {
 	{"NOUN_SAMMLER",   "NOUN_SAMMLERIN"}, /* EN {"Collector",   0}, */
 	{"NOUN_KURATOR",     "NOUN_KURATORIN"} }, /* EN {"Curator",     0} }, */
 	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */
-	"Arc", "ARTIKEL_BESTIMMTER NOUN_ARC_INSTITUT", "the Tomb of the Toltec Kings", /* EN "Arc", "the College of Archeology", "the Tomb of the Toltec Kings", */ // TODO DE
+	"Arc", "ARTIKEL_BESTIMMTER NOUN_ARC_INSTITUT", "ARTIKEL_BESTIMMTER NOUN_TOMB der toltekischen Könige", /* EN "Arc", "the College of Archeology", "the Tomb of the Toltec Kings", */
 	PM_ARCHEOLOGIST, NON_PM, NON_PM,
 	PM_LORD_CARNARVON, PM_STUDENT, PM_MINION_OF_HUHETOTL,
 	NON_PM, PM_HUMAN_MUMMY, S_SNAKE, S_MUMMY,
@@ -67,7 +67,7 @@ const struct Role roles[] = {
 	{"NOUN_STAMMESFUEHRER",   "NOUN_STAMMESFUEHRERIN"}, /* EN {"Chieftain",   "Chieftainess"}, */ /* Haeuptling / Stammesführer */
 	{"NOUN_EROBERER",   "NOUN_EROBERIN"} }, /* EN {"Conqueror",   "Conqueress"} }, */
 	"Mitra", "Crom", "Set", /* Hyborian */
-	"Bar", "the Camp of the Duali Tribe", "the Duali Oasis", /* EN "Bar", "the Camp of the Duali Tribe", "the Duali Oasis", */ // TODO DE
+	"Bar", "ARTIKEL_BESTIMMTER NOUN_CAMP des Stammes der Duali", "ARTIKEL_BESTIMMTER NOUN_DUALI_OASIS", /* EN "Bar", "the Camp of the Duali Tribe", "the Duali Oasis", */
 	PM_BARBARIAN, NON_PM, NON_PM,
 	PM_PELIAS, PM_CHIEFTAIN, PM_THOTH_AMON,
 	PM_OGRE, PM_TROLL, S_OGRE, S_TROLL,
@@ -93,7 +93,7 @@ const struct Role roles[] = {
 	{"NOUN_WANDERER",     "NOUN_WANDERIN"}, /* EN {"Rover",       0}, */
 	{"NOUN_PIONIER",      "NOUN_PIONIERIN"} }, /* EN {"Pioneer",     0} }, */
 	"Anu", "_Ishtar", "Anshar", /* Babylonian */
-	"Cav", "ARTIKEL_BESTIMMTER NOUN_CAV_ANCESTORs", "the Dragon's Lair", /* EN "Cav", "the Caves of the Ancestors", "the Dragon's Lair", */ // TODO DE
+	"Cav", "ARTIKEL_BESTIMMTER NOUN_CAVEs der Vorfahren", "ARTIKEL_BESTIMMTER NOUN_DRAGONS_LAIR", /* EN "Cav", "the Caves of the Ancestors", "the Dragon's Lair", */
 	PM_CAVEMAN, PM_CAVEWOMAN, PM_LITTLE_DOG,
 	PM_SHAMAN_KARNOV, PM_NEANDERTHAL, PM_CHROMATIC_DRAGON,
 	PM_BUGBEAR, PM_HILL_GIANT, S_HUMANOID, S_GIANT,
@@ -119,7 +119,7 @@ const struct Role roles[] = {
 	{"NOUN_PHYSICIAN",      "NOUN_PHYSICIANIN"}, /* EN {"Physician",      0}, */
 	{"NOUN_CHIRURGEON",     "NOUN_CHIRURGEON"} }, /* EN {"Chirurgeon",     0} }, */
 	"_Athena", "Hermes", "Poseidon", /* Greek */
-	"Hea", "ARTIKEL_BESTIMMTER NOUN_TEMPLE_OF_EPIDAURUS", "the Temple of Coeus", /* EN "Hea", "the Temple of Epidaurus", "the Temple of Coeus", */ // TODO DE
+	"Hea", "ARTIKEL_BESTIMMTER NOUN_TEMPEL von Epidauros", "ARTIKEL_BESTIMMTER NOUN_TEMPEL des Koios", /* EN "Hea", "the Temple of Epidaurus", "the Temple of Coeus", */
 	PM_HEALER, NON_PM, NON_PM, 
 	PM_HIPPOCRATES, PM_ATTENDANT, PM_CYCLOPS,
 	PM_GIANT_RAT, PM_SNAKE, S_RODENT, S_YETI,
@@ -144,7 +144,7 @@ const struct Role roles[] = {
 	{"Seignieur",   "Dame"}, /* EN {"Seignieur",   "Dame"}, */ // TODO DE
 	{"Paladin",     0} }, /* EN {"Paladin",     0} }, */ // TODO DE
 	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
-	"Kni", "NOUN_CAMELOT", "the Isle of Glass", /* EN "Kni", "Camelot Castle", "the Isle of Glass", */ // TODO DE
+	"Kni", "NOUN_CAMELOT", "ARTIKEL_BESTIMMTER NOUN_INSEL aus Glas", /* EN "Kni", "Camelot Castle", "the Isle of Glass", */
 	PM_KNIGHT, NON_PM, PM_PONY,
 	PM_KING_ARTHUR, PM_PAGE, PM_IXOTH,
 	PM_QUASIT, PM_OCHRE_JELLY, S_IMP, S_JELLY,
@@ -169,8 +169,8 @@ const struct Role roles[] = {
 	{"NOUN_SCHUELER_DER_FEUER",   "NOUN_SCHUELERIN_DER_FEUER"}, /* EN {"Student of Fire",   0}, */
 	{"NOUN_MEISTER",            "NOUN_MEISTERIN"} }, /* EN {"Master",            0} }, */
 	"Shan Lai Ching", "Chih Sung-tzu", "Huan Ti", /* Chinese */
-	"Mon", "ARTIKEL_BESTIMMTER Monastery of Chan-Sune", /* EN "Mon", "the Monastery of Chan-Sune", */ // TODO DE
-	  "ARTIKEL_BESTIMMTER Monastery of the Earth-Lord", /* EN "the Monastery of the Earth-Lord", */ // TODO DE
+	"Mon", "ARTIKEL_BESTIMMTER NOUN_MONASTERY von Chan-Sun", /* EN "Mon", "the Monastery of Chan-Sune", */
+	  "ARTIKEL_BESTIMMTER NOUN_MONASTERY der Erdfürsten", /* EN "the Monastery of the Earth-Lord", */
 	PM_MONK, NON_PM, NON_PM,
 	PM_GRAND_MASTER, PM_ABBOT, PM_MASTER_KAEN,
 	PM_EARTH_ELEMENTAL, PM_XORN, S_ELEMENTAL, S_XORN,
@@ -196,7 +196,7 @@ const struct Role roles[] = {
 	{"NOUN_PATRIARCH",   "NOUN_MATRIARCH"}, /* EN {"Patriarch",   "Matriarch"}, */
 	{"NOUN_HIGH_PRIEST", "NOUN_HIGH_PRIESTESS"} }, /* EN {"High Priest", "High Priestess"} }, */
 	0, 0, 0,	/* chosen randomly from among the other roles */
-	"Pri", "ARTIKEL_BESTIMMTER NOUN_GREAT_TEMPLE", "ARTIKEL_BESTIMMTER NOUN_TEMPLE_OF_NALZOK", /* EN "Pri", "the Great Temple", "the Temple of Nalzok", */
+	"Pri", "ARTIKEL_BESTIMMTER NOUN_GREAT_TEMPLE", "ARTIKEL_BESTIMMTER NOUN_TEMPEL des Nalzok", /* EN "Pri", "the Great Temple", "the Temple of Nalzok", */
 	PM_PRIEST, PM_PRIESTESS, NON_PM,
 	PM_ARCH_PRIEST, PM_ACOLYTE, PM_NALZOK,
 	PM_HUMAN_ZOMBIE, PM_WRAITH, S_ZOMBIE, S_WRAITH,
@@ -224,7 +224,7 @@ const struct Role roles[] = {
 	{"NOUN_GANGSTER",     "NOUN_GANGSTERBRAUT"}, /* EN {"Magsman",     "Magswoman"}, */
 	{"NOUN_DIEB",       "NOUN_DIEBIN"} }, /* EN {"Thief",       0} }, */
 	"Issek", "Mog", "Kos", /* Nehwon */
-	"Rog", "the Thieves' Guild Hall", "the Assassins' Guild Hall", /* EN "Rog", "the Thieves' Guild Hall", "the Assassins' Guild Hall", */ // TODO DE
+	"Rog", "ARTIKEL_BESTIMMTER NOUN_HALLE der Diebesgilde", "ARTIKEL_BESTIMMTER NOUN_HALLE der Assassinengilde", /* EN "Rog", "the Thieves' Guild Hall", "the Assassins' Guild Hall", */
 	PM_ROGUE, NON_PM, NON_PM,
 	PM_MASTER_OF_THIEVES, PM_THUG, PM_MASTER_ASSASSIN,
 	PM_LEPRECHAUN, PM_GUARDIAN_NAGA, S_NYMPH, S_NAGA,
@@ -264,7 +264,7 @@ const struct Role roles[] = {
 	{"NOUN_SCHARFSCHUETZE",  "NOUN_SCHARFSCHUETZIN"}, /* EN {"Sharpshooter",  0}, */
 	{"NOUN_MEISTERSCHUETZE",      "NOUN_MEISTERSCHUETZIN"} }, /* EN {"Marksman",      "Markswoman"} }, */
 	"Merkur", "_Venus", "Mars", /* Roman/planets */ /* EN "Mercury", "_Venus", "Mars", */
-	"Ran", "NOUN_ORIONS_CAMP", "the cave of the wumpus", /* EN "Ran", "Orion's camp", "the cave of the wumpus", */ // TODO DE
+	"Ran", "Orions NOUN_CAMP", "ARTIKEL_BESTIMMTER NOUN_CAVE_OF_THE_WUMPUS", /* EN "Ran", "Orion's camp", "the cave of the wumpus", */
 	PM_RANGER, NON_PM, PM_LITTLE_DOG /* Orion & canis major */,
 	PM_ORION, PM_HUNTER, PM_SCORPIUS,
 	PM_FOREST_CENTAUR, PM_SCORPION, S_CENTAUR, S_SPIDER,
@@ -290,7 +290,7 @@ const struct Role roles[] = {
 	{"NOUN_KUGE", "NOUN_KUGEIN"},  /* Noble of the Court */ /* EN {"Kuge",        0}, */
 	{"NOUN_SHOGUN", "NOUN_SHOGUNIN"} },/* supreme commander, warlord */ /* EN {"Shogun",      0} }, */
 	"_Amaterasu Omikami", "Raijin", "Susanowo", /* Japanese */
-	"Sam", "the Castle of the Taro Clan", "the Shogun's Castle", /* EN "Sam", "the Castle of the Taro Clan", "the Shogun's Castle", */ // TODO DE
+	"Sam", "ARTIKEL_BESTIMMTER NOUN_BURG des Taro-Clans", "ARTIKEL_BESTIMMTER NOUN_BURG des Shoguns", /* EN "Sam", "the Castle of the Taro Clan", "the Shogun's Castle", */
 	PM_SAMURAI, NON_PM, PM_LITTLE_DOG,
 	PM_LORD_SATO, PM_ROSHI, PM_ASHIKAGA_TAKAUJI,
 	PM_WOLF, PM_STALKER, S_DOG, S_ELEMENTAL,
@@ -316,7 +316,7 @@ const struct Role roles[] = {
 	{"NOUN_ERFORSCHER", "NOUN_ERFORSCHERIN"}, /* EN {"Explorer",    0}, */
 	{"NOUN_ABENTEURER", "NOUN_ABENTEURERIN"} }, /* EN {"Adventurer",  0} }, */
 	"Blind Io", "_The Lady", "Offler", /* Discworld */ /* EN "Blind Io", "_The Lady", "Offler", */ // TODO DE
-	"Tou", "NOUN_ANKH_MORPORK", "the Thieves' Guild Hall", /* EN "Tou", "Ankh-Morpork", "the Thieves' Guild Hall", */ // TODO DE
+	"Tou", "NOUN_ANKH_MORPORK", "ARTIKEL_BESTIMMTER NOUN_HALLE der Diebesgilde", /* EN "Tou", "Ankh-Morpork", "the Thieves' Guild Hall", */
 	PM_TOURIST, NON_PM, NON_PM,
 	PM_TWOFLOWER, PM_GUIDE, PM_MASTER_OF_THIEVES,
 	PM_GIANT_SPIDER, PM_FOREST_CENTAUR, S_SPIDER, S_CENTAUR,
@@ -342,7 +342,7 @@ const struct Role roles[] = {
 	{"NOUN_KRIEGERPRINZ",    "NOUN_KRIEGERPRINZESSIN"}, /* EN {"Champion",    0}, */
 	{"NOUN_LORD",        "NOUN_LADY"} }, /* EN {"Lord",        "Lady"} }, */
 	"Tyr", "Odin", "Loki", /* Norse */
-	"Val", "the Shrine of Destiny", "the cave of Surtur", /* EN "Val", "the Shrine of Destiny", "the cave of Surtur", */ // TODO DE
+	"Val", "ARTIKEL_BESTIMMTER NOUN_SHRINE_OF_DESTINY", "ARTIKEL_BESTIMMTER NOUN_CAVE von Surtur", /* EN "Val", "the Shrine of Destiny", "the cave of Surtur", */
 	PM_VALKYRIE, NON_PM, NON_PM /*PM_WINTER_WOLF_CUB*/,
 	PM_NORN, PM_WARRIOR, PM_LORD_SURTUR,
 	PM_FIRE_ANT, PM_FIRE_GIANT, S_ANT, S_GIANT,
@@ -367,7 +367,7 @@ const struct Role roles[] = {
 	{"NOUN_ZAUBERER", "NOUN_ZAUBERERIN"}, /* EN {"Wizard",      0}, */
 	{"NOUN_MAGIER", "NOUN_MAGIERIN"} }, /* EN {"Mage",        0} }, */
 	"Ptah", "Thoth", "Anhur", /* Egyptian */
-	"Wiz", "the Lonely Tower", "the Tower of Darkness", /* EN "Wiz", "the Lonely Tower", "the Tower of Darkness", */ // TODO DE
+	"Wiz", "ARTIKEL_BESTIMMTER NOUN_LONELY_TOWER", "ARTIKEL_BESTIMMTER NOUN_TOWER_OF_DARKNESS", /* EN "Wiz", "the Lonely Tower", "the Tower of Darkness", */
 	PM_WIZARD, NON_PM, PM_KITTEN,
 	PM_NEFERET_THE_GREEN, PM_APPRENTICE, PM_DARK_ONE,
 	PM_VAMPIRE_BAT, PM_XORN, S_BAT, S_WRAITH,

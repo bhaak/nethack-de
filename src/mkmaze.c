@@ -1156,20 +1156,20 @@ xchar x,y;
 	ltyp = lev->typ;
 
 	if (is_lava(x,y))
-		return "lava"; /* EN return "lava"; */ // TODO DE
+		return "NOUN_LAVA"; /* EN return "lava"; */
 	else if (ltyp == ICE ||
 		 (ltyp == DRAWBRIDGE_UP &&
 		  (levl[x][y].drawbridgemask & DB_UNDER) == DB_ICE))
-		return "ice"; /* EN return "ice"; */ // TODO DE
+		return "NOUN_ICE"; /* EN return "ice"; */
 	else if (((ltyp != POOL) && (ltyp != WATER) &&
 	  !Is_medusa_level(&u.uz) && !Is_waterlevel(&u.uz) && !Is_juiblex_level(&u.uz)) ||
 	   (ltyp == DRAWBRIDGE_UP && (levl[x][y].drawbridgemask & DB_UNDER) == DB_MOAT))
-		return "moat"; /* EN return "moat"; */ // TODO DE
+		return "NOUN_MOAT"; /* EN return "moat"; */
 	else if ((ltyp != POOL) && (ltyp != WATER) && Is_juiblex_level(&u.uz))
-		return "swamp"; /* EN return "swamp"; */ // TODO DE
+		return "NOUN_SWAMP"; /* EN return "swamp"; */
 	else if (ltyp == POOL)
-		return "pool of water"; /* EN return "pool of water"; */ // TODO DE
-	else return "water"; /* EN else return "water"; */ // TODO DE
+		return "NOUN_POOL_OF_WATER"; /* EN return "pool of water"; */
+	else return "NOUN_WATER"; /* EN else return "water"; */
 }
 
 STATIC_OVL void

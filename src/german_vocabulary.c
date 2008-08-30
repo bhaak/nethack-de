@@ -9137,23 +9137,99 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   /* Orte (role.c) */
 
+  {"Großen Tempels", "NOUN_GREAT_TEMPLE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Große Tempel", "NOUN_GREAT_TEMPLE", "", nominativ, maskulin, n_singular, bestimmter},
+  {"Großer Tempel", "NOUN_GREAT_TEMPLE", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"Großen Tempel", "NOUN_GREAT_TEMPLE", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Großem Tempel", "NOUN_GREAT_TEMPLE", "", dativ, maskulin, n_singular, grundform|ohne},
+
   {"Archäologischen Institutes", "NOUN_ARC_INSTITUT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Archäologische Institut", "NOUN_ARC_INSTITUT", "", akkusativ|nominativ, neutrum, n_singular, bestimmter},
   {"Archäologisches Institut", "NOUN_ARC_INSTITUT", "", akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne},
   {"Archäologischen Institut", "NOUN_ARC_INSTITUT", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
   {"Archäologischem Institut", "NOUN_ARC_INSTITUT", "", dativ, neutrum, n_singular, grundform|ohne},
 
-  {"Höhle  der Vorfahren", "NOUN_CAV_ANCESTOR", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Höhlen  der Vorfahren", "NOUN_CAV_ANCESTORs", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Grabstätte", "NOUN_TOMB", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grabstätten", "NOUN_TOMBs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Tempels  von Epidauros", "NOUN_TEMPLE_OF_EPIDAURUS", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Tempel  von Epidauros", "NOUN_TEMPLE_OF_EPIDAURUS", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Höhle", "NOUN_CAVE", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Höhlen", "NOUN_CAVEs", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Wumpushöhle", "NOUN_CAVE_OF_THE_WUMPUS", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wumpushöhlen", "NOUN_CAVE_OF_THE_WUMPUSs", "en", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Tempels", "NOUN_TEMPEL", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tempel", "NOUN_TEMPEL", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Insel", "NOUN_INSEL", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Inseln", "NOUN_INSELs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Camelot", "NOUN_CAMELOT", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Ankh-Morpork", "NOUN_ANKH_MORPORK", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Schreines  des Schicksals", "NOUN_SHRINE_OF_DESTINY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schrein  des Schicksals", "NOUN_SHRINE_OF_DESTINY", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Duali-Oase", "NOUN_DUALI_OASIS", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Lagers", "NOUN_CAMP", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lager", "NOUN_CAMP", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Burg", "NOUN_BURG", "", dativ|genitiv|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Klosters", "NOUN_MONASTERY", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kloster", "NOUN_MONASTERY", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Drachenhortes", "NOUN_DRAGONS_LAIR", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Drachenhort", "NOUN_DRAGONS_LAIR", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   /* sonstige Substantive */
+
+  {"Luftströmung", "NOUN_AIR_CURRENT", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Luftströmungen", "NOUN_AIR_CURRENTs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Selbstgenozides", "NOUN_SELF_GENOCIDE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Selbstgenozid", "NOUN_SELF_GENOCIDE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Feder", "NOUN_FEATHER", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Federn", "NOUN_FEATHERs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Halle", "NOUN_HALLE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Hallen", "NOUN_HALLEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Kittels", "NOUN_SMOCK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kittel", "NOUN_SMOCK", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kittel", "NOUN_SMOCKs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Kitteln", "NOUN_SMOCKs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schlosses", "NOUN_LOCK", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schloss", "NOUN_LOCK", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlösser", "NOUN_LOCKs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlössern", "NOUN_LOCKs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Panzerhandschuhes", "NOUN_GAUNTLETS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Panzerhandschuh", "NOUN_GAUNTLETS", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Panzerhandschuhe", "NOUN_GAUNTLETSs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Panzerhandschuhen", "NOUN_GAUNTLETSs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Tümpels", "NOUN_POOL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tümpel", "NOUN_POOL", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tümpel", "NOUN_POOLs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Tümpeln", "NOUN_POOLs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Sumpfes", "NOUN_SWAMP", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sumpf", "NOUN_SWAMP", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sümpfe", "NOUN_SWAMPs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Sümpfen", "NOUN_SWAMPs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Pfote", "NOUN_PFOTE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pfoten", "NOUN_PFOTEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Wassertümpels", "NOUN_POOL_OF_WATER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wassertümpel", "NOUN_POOL_OF_WATER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wassertümpel", "NOUN_POOL_OF_WATERs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Wassertümpeln", "NOUN_POOL_OF_WATERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Säure", "NOUN_ACID", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Säuren", "NOUN_ACIDs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -9206,6 +9282,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Ausrüstung", "NOUN_AUSRUESTUNG", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ausrüstungen", "NOUN_AUSRUESTUNGs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Strahles", "NOUN_BEAM", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Strahl", "NOUN_BEAM", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Strahlen", "NOUN_BEAMs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Befehles", "NOUN_BEFEHL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Befehl", "NOUN_BEFEHL", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -9373,8 +9453,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Felle", "NOUN_FELLs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Fellen", "NOUN_FELLs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Säule", "NOUN_FLAMMENSAEULE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Säulen", "NOUN_FLAMMENSAEULEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Flammensäule", "NOUN_FLAMMENSAEULE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Flammensäulen", "NOUN_FLAMMENSAEULEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Fleisches", "NOUN_FLEISCH", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fleisch", "NOUN_FLEISCH", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -15162,7 +15242,7 @@ struct verb_infinitiv_struct verben_infinitiv[] = {
   {"rosten", "VERB_ROSTEN"},
   {"rühren", "VERB_RUEHREN"},
   {"rülpsen", "VERB_RUELPSEN"},
-  {"riechen", "VERB_RUFEN"},
+  {"rufen", "VERB_RUFEN"},
   {"rumoren", "VERB_RUMOREN"},
   {"säubern", "VERB_SAEUBERN"},
   {"sagen", "VERB_SAGEN"},
@@ -15710,7 +15790,7 @@ struct verb_imperativ_struct verben_imperativ[] = {
   {"roste", "rostet", "", "VERB_ROSTEN"},
   {"rühr", "rührt", "", "VERB_RUEHREN"},
   {"rülps", "rülpst", "", "VERB_RUELPSEN"},
-  {"riech", "riecht", "", "VERB_RUFEN"},
+  {"ruf", "ruft", "", "VERB_RUFEN"},
   {"rumor", "rumort", "", "VERB_RUMOREN"},
   {"säubere", "säubert", "", "VERB_SAEUBERN"},
   {"sag", "sagt", "", "VERB_SAGEN"},
@@ -16258,7 +16338,7 @@ struct verb_partizip_struct verben_partizip[] = {
   {"rostend", "gerostet", "VERB_ROSTEN"},
   {"rührend", "gerührt", "VERB_RUEHREN"},
   {"rülpsend", "gerülpst", "VERB_RUELPSEN"},
-  {"riechend", "gerochen", "VERB_RUFEN"},
+  {"rufend", "gerufen", "VERB_RUFEN"},
   {"rumorend", "gerumort", "VERB_RUMOREN"},
   {"säubernd", "gesäubert", "VERB_SAEUBERN"},
   {"sagend", "gesagt", "VERB_SAGEN"},
@@ -20370,18 +20450,18 @@ struct verb_struct verben[] = {
   {"rülpste", "VERB_RUELPSEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
   {"rülpstet", "VERB_RUELPSEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
   {"rülpsten", "VERB_RUELPSEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
-  {"riechst", "VERB_RUFEN", "", zweitePerson, n_singular, praesens, akkusativ},
-  {"riecht", "VERB_RUFEN", "", drittePerson, n_singular, praesens, akkusativ},
-  {"riecht", "VERB_RUFEN", "", zweitePerson, n_plural, praesens, akkusativ},
-  {"riechen", "VERB_RUFEN", "", drittePerson, n_plural, praesens, akkusativ},
-  {"rochst", "VERB_RUFEN", "", zweitePerson, n_singular, praeteritum, akkusativ},
-  {"roch", "VERB_RUFEN", "", drittePerson, n_singular, praeteritum, akkusativ},
-  {"rocht", "VERB_RUFEN", "", zweitePerson, n_plural, praeteritum, akkusativ},
-  {"rochen", "VERB_RUFEN", "", drittePerson, n_plural, praeteritum, akkusativ},
-  {"röchest", "VERB_RUFEN", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
-  {"röche", "VERB_RUFEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
-  {"röchet", "VERB_RUFEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
-  {"röchen", "VERB_RUFEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"rufst", "VERB_RUFEN", "", zweitePerson, n_singular, praesens, akkusativ},
+  {"ruft", "VERB_RUFEN", "", drittePerson, n_singular, praesens, akkusativ},
+  {"ruft", "VERB_RUFEN", "", zweitePerson, n_plural, praesens, akkusativ},
+  {"rufen", "VERB_RUFEN", "", drittePerson, n_plural, praesens, akkusativ},
+  {"riefst", "VERB_RUFEN", "", zweitePerson, n_singular, praeteritum, akkusativ},
+  {"rief", "VERB_RUFEN", "", drittePerson, n_singular, praeteritum, akkusativ},
+  {"rieft", "VERB_RUFEN", "", zweitePerson, n_plural, praeteritum, akkusativ},
+  {"riefen", "VERB_RUFEN", "", drittePerson, n_plural, praeteritum, akkusativ},
+  {"riefest", "VERB_RUFEN", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"riefe", "VERB_RUFEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"riefet", "VERB_RUFEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"riefen", "VERB_RUFEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
   {"rumorst", "VERB_RUMOREN", "", zweitePerson, n_singular, praesens, akkusativ},
   {"rumort", "VERB_RUMOREN", "", drittePerson, n_singular, praesens, akkusativ},
   {"rumort", "VERB_RUMOREN", "", zweitePerson, n_plural, praesens, akkusativ},

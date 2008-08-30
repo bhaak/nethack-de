@@ -953,7 +953,7 @@ register const char *str;
 	buf[0] = '\0';
 
 	if (strncmpi(str, "ARTIKEL_BESTIMMTER ", 19) && /* EN if (strncmpi(str, "the ", 4) && */
-	    strcmp(str, "ADJEKTIV_FLUESSIG NOUN_LAVA") && /* EN strcmp(str, "molten lava") && */
+	    strcmp(str, "NOUN_MOLTEN_LAVA") && /* EN strcmp(str, "molten lava") && */
 	    strcmp(str, "NOUN_IRON_BARs") && /* EN strcmp(str, "iron bars") && */
 	    strcmp(str, "NOUN_ICE")) { /* EN strcmp(str, "ice")) { */
 	#ifndef GERMAN
@@ -2537,10 +2537,10 @@ srch:
 			return &zeroobj;
 		}
 # endif
-		if(!BSTRCMP(bp, p-4, "pool")) { /* EN if(!BSTRCMP(bp, p-4, "pool")) { */ // TODO DE
+		if(!BSTRCMP(bp, p-9, "NOUN_POOL")) { /* EN if(!BSTRCMP(bp, p-4, "pool")) { */
 			levl[u.ux][u.uy].typ = POOL;
 			del_engr_at(u.ux, u.uy);
-			pline("A pool."); /* EN pline("A pool."); */ // TODO DE
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_POOL."); /* EN pline("A pool."); */
 			/* Must manually make kelp! */
 			water_damage(level.objects[u.ux][u.uy], FALSE, TRUE);
 			newsym(u.ux, u.uy);
@@ -2549,7 +2549,7 @@ srch:
 		if (!BSTRCMP(bp, p-9, "NOUN_LAVA")) {  /* also matches "molten lava" */ /* EN if (!BSTRCMP(bp, p-4, "lava")) {  */
 			levl[u.ux][u.uy].typ = LAVAPOOL;
 			del_engr_at(u.ux, u.uy);
-			pline("A pool of ADJEKTIV_FLUESSIG NOUN_LAVA."); /* EN pline("A pool of molten lava."); */ // TODO DE
+			pline("Ein Becken voll KASUS_DATIV ADJEKTIV_FLUESSIG NOUN_LAVA."); /* EN pline("A pool of molten lava."); */
 			if (!(Levitation || Flying)) (void) lava_effects();
 			newsym(u.ux, u.uy);
 			return &zeroobj;

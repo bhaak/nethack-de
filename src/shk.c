@@ -1550,7 +1550,7 @@ boolean itemize;
 		buy = PAY_SKIP;		/* don't want to buy */
 	    } else if (quan < bp->bquan && !consumed) { /* partly used goods */
 		obj->quan = bp->bquan - save_quan;	/* used up amount */
-		verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV %s OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_ANDER %s before buying %s.", /* EN verbalize("%s for the other %s before buying %s.", */ // TODO DE
+		verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV %s OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_ANDERE %s before buying %s.", /* EN verbalize("%s for the other %s before buying %s.", */ // TODO DE
 			  ANGRY(shkp) ? "VERB_BEZAHLEN" : "Bitte VERB_BEZAHLEN", xname(obj), /* EN ANGRY(shkp) ? "Pay" : "Please pay", xname(obj), */
 			  save_quan > 1L ? "these" : "this one"); /* EN save_quan > 1L ? "these" : "this one"); */ // TODO DE
 		buy = PAY_SKIP;		/* shk won't sell */
@@ -2802,7 +2802,7 @@ int mode;		/* 0: deliver count 1: paged */
 	}
 
 	datawin = create_nhwindow(NHW_MENU);
-	putstr(datawin, 0, "Unpaid articles already used up:"); /* EN putstr(datawin, 0, "Unpaid articles already used up:"); */ // TODO DE
+	putstr(datawin, 0, "Unbezahlte, bereits aufgebrauchte Artikel:"); /* EN putstr(datawin, 0, "Unpaid articles already used up:"); */
 	putstr(datawin, 0, "");
 
 	totused = 0L;
