@@ -878,7 +878,7 @@ dokick()
 		    if(!rn2(3)) goto ouch;
 		    /* make metal boots rust */
 		    if(uarmf && rn2(3))
-			if (!rust_dmg(uarmf, "NOUN_METAL_BOOTSs", 1, FALSE, &youmonst)) { /* EN if (!rust_dmg(uarmf, "metal boots", 1, FALSE, &youmonst)) { */
+			if (!rust_dmg(uarmf, "Metall-NOUN_BOOTSs", 1, FALSE, &youmonst)) { /* EN if (!rust_dmg(uarmf, "metal boots", 1, FALSE, &youmonst)) { */
 				Your("NOUN_BOOTSs VERB_WERDEN nass."); /* EN Your("boots get wet."); */
 				/* could cause short-lived fumbling here */
 			}

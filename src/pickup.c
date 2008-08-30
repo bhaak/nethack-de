@@ -552,7 +552,7 @@ menu_pickup:
 		    char qbuf[BUFSZ];
 		    Sprintf(qbuf, "SATZBEGINN KASUS_AKKUSATIV %s aufheben?", /* EN Sprintf(qbuf, "Pick up %s?", */
 			safe_qbuf("", sizeof("SATZBEGINN KASUS_AKKUSATIV  aufheben?"), doname(obj), /* EN safe_qbuf("", sizeof("Pick up ?"), doname(obj), */
-					an(simple_typename(obj->otyp)), "NOUN_SOMETHING")); /* EN an(simple_typename(obj->otyp)), "something")); */
+					an(simple_typename(obj->otyp)), "NOUN_ETWAS")); /* EN an(simple_typename(obj->otyp)), "something")); */
 		    switch ((obj->quan < 2L) ? ynaq(qbuf) : ynNaq(qbuf)) {
 		    case 'q': goto end_query;	/* out 2 levels */
 		    case 'n': continue;

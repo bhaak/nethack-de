@@ -1158,7 +1158,7 @@ int part;
 		"light headed", "neck", "spine", "toe", /* EN "light headed", "neck", "spine", "toe", */ // TODO DE
 		"NOUN_FEATHERs", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_SCHNABEL", "NOUN_STOMACH" }, /* EN "feathers", "blood", "lung", "bill", "stomach" }, */
 	*horse_parts[] = { "foreleg", "NOUN_EYE", "NOUN_FACE", "forehoof", "hoof tip", /* EN *horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", */ // TODO DE
-		"rear hoof", "foreclaw", "hooved", "NOUN_HEAD", "NOUN_REAR_LEG", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */ // TODO DE
+		"rear hoof", "foreclaw", "hooved", "NOUN_HEAD", "Hinter-NOUN_LEG", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */ // TODO DE
 		"light headed", "neck", "backbone", "rear hoof tip", /* EN "light headed", "neck", "backbone", "rear hoof tip", */ // TODO DE
 		"NOUN_MAEHNE", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "mane", "blood", "lung", "nose", "stomach"}, */
 	*sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", /* EN *sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", */ // TODO DE
@@ -1196,12 +1196,12 @@ int part;
 	if (part == HAND || part == HANDED) {	/* some special cases */
 	    if (mptr->mlet == S_DOG || mptr->mlet == S_FELINE ||
 		    mptr->mlet == S_YETI)
-		return part == HAND ? "NOUN_PAW" : "pawed"; /* EN return part == HAND ? "paw" : "pawed"; */
+		return part == HAND ? "NOUN_PFOTE" : "pawed"; /* EN return part == HAND ? "paw" : "pawed"; */
 	    if (humanoid(mptr) && attacktype(mptr, AT_CLAW) &&
 		    !index(not_claws, mptr->mlet) &&
 		    mptr != &mons[PM_STONE_GOLEM] &&
 		    mptr != &mons[PM_INCUBUS] && mptr != &mons[PM_SUCCUBUS])
-		return part == HAND ? "NOUN_CLAW" : "clawed"; /* EN return part == HAND ? "claw" : "clawed"; */
+		return part == HAND ? "NOUN_KLAUE" : "clawed"; /* EN return part == HAND ? "claw" : "clawed"; */
 	}
 	if ((mptr == &mons[PM_MUMAK] || mptr == &mons[PM_MASTODON]) &&
 		part == NOSE)

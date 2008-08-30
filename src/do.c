@@ -1160,7 +1160,7 @@ boolean at_stairs, falling, portal;
 		    else u_on_upstairs();
 		}
 		if (u.dz && Flying)
-		    You("VERB_FLIEGEN OBJECT %s hinab.", /* EN You("fly down along the %s.", */
+		    You("VERB_FLIEGEN OBJECT ARTIKEL_BESTIMMTER %s hinab.", /* EN You("fly down along the %s.", */
 			at_ladder ? "NOUN_LADDER" : "NOUN_STAIRS"); /* EN at_ladder ? "ladder" : "stairs"); */
 		else if (u.dz &&
 		    (near_capacity() > UNENCUMBERED || Punished || Fumbling)) {

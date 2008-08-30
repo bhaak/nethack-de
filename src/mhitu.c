@@ -2221,28 +2221,28 @@ register struct monst *mon;
 		    if (yn(qbuf) == 'n') continue;
 		} else {
 		    pline("SUBJECT %s meint, NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_WERDEN hübscher OBJECT KASUS_DATIV mit %s %s aussehen,", /* EN pline("%s decides you'd look prettier wearing your %s,", */
-			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), shk_your(buf, ring), xname(ring)); /* EN Blind ? "He" : Monnam(mon), xname(ring)); */
+			Blind ? "NOUN_PRONOMEN_3P_M_PERSONAL" : Monnam(mon), shk_your(buf, ring), xname(ring)); /* EN Blind ? "He" : Monnam(mon), xname(ring)); */
 		    pline("und steckt ihn KASUS_DATIV PRONOMEN_PERSONAL an den Finger."); /* EN pline("and puts it on your finger."); */
 		}
 		makeknown(RIN_ADORNMENT);
 		if (!uright) {
 		    pline("SUBJECT %s VERB_STECKEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT %s NEUES_OBJECT OBJECT an PRONOMEN_POSSESSIV ADJEKTIV_RECHT %s.", /* EN pline("%s puts %s on your right %s.", */
-			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */
+			Blind ? "NOUN_PRONOMEN_3P_M_PERSONAL" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */
 		    setworn(ring, RIGHT_RING);
 		} else if (!uleft) {
 		    pline("SUBJECT %s VERB_STECKEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT %s NEUES_OBJECT OBJECT an PRONOMEN_POSSESSIV ADJEKTIV_LINK %s.", /* EN pline("%s puts %s on your left %s.", */
-			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */
+			Blind ? "NOUN_PRONOMEN_3P_M_PERSONAL" : Monnam(mon), the(xname(ring)), body_part(HAND)); /* EN Blind ? "He" : Monnam(mon), the(xname(ring)), body_part(HAND)); */
 		    setworn(ring, LEFT_RING);
 		} else if (uright && uright->otyp != RIN_ADORNMENT) {
 		    Strcpy(buf, xname(uright));
 		    pline("SUBJECT %s VERB_ERSETZEN OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV %s.", /* EN pline("%s replaces your %s with your %s.", */
-			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), buf, xname(ring)); /* EN Blind ? "He" : Monnam(mon), buf, xname(ring)); */
+			Blind ? "NOUN_PRONOMEN_3P_M_PERSONAL" : Monnam(mon), buf, xname(ring)); /* EN Blind ? "He" : Monnam(mon), buf, xname(ring)); */
 		    Ring_gone(uright);
 		    setworn(ring, RIGHT_RING);
 		} else if (uleft && uleft->otyp != RIN_ADORNMENT) {
 		    Strcpy(buf, xname(uleft));
 		    pline("SUBJECT %s VERB_ERSETZEN OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV %s.", /* EN pline("%s replaces your %s with your %s.", */
-			Blind ? "PRONOMEN_3P_M_PERSONAL" : Monnam(mon), buf, xname(ring)); /* EN Blind ? "He" : Monnam(mon), buf, xname(ring)); */
+			Blind ? "NOUN_PRONOMEN_3P_M_PERSONAL" : Monnam(mon), buf, xname(ring)); /* EN Blind ? "He" : Monnam(mon), buf, xname(ring)); */
 		    Ring_gone(uleft);
 		    setworn(ring, LEFT_RING);
 		} else impossible("ring replacement");

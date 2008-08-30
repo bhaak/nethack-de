@@ -1531,7 +1531,7 @@ do_class_genocide()
 			    reset_rndmonst(i);
 			    kill_genocided_monsters();
 			    update_inventory();		/* eggs & tins */
-			    pline("Alle %s ausgelöscht.", nam); /* EN pline("Wiped out all %s.", nam); */
+			    pline("SATZBEGINN PRONOMEN_ALLE %s ausgelöscht.", nam); /* EN pline("Wiped out all %s.", nam); */
 			    if (Upolyd && i == u.umonnum) {
 				u.mh = -1;
 				if (Unchanging) {

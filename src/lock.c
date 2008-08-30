@@ -46,9 +46,9 @@ STATIC_OVL const char *
 lock_action()
 {
 	static const char *unlock_actions[] = {
-		/* [0] */	"die Türe zu aufzuschliessen", /* EN "unlocking the door" */
-		/* [1] */	"die Truhe zu aufzuschliessen",/* EN "unlocking the chest" */
-		/* [2] */	"die Kiste zu aufzuschliessen", /* EN "unlocking the box" */
+		/* [0] */	"die Türe aufzuschliessen", /* EN "unlocking the door" */
+		/* [1] */	"die Truhe aufzuschliessen",/* EN "unlocking the chest" */
+		/* [2] */	"die Kiste aufzuschliessen", /* EN "unlocking the box" */
 		/* [3] */	"das Schloss zu knacken" /* "picking the lock" */
 	};
 	static const char *lock_actions[] = {

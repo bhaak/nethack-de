@@ -336,7 +336,7 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			if (singleobj->otyp > LAST_GEM) {
 			    You("VERB_FANGEN OBJECT ARTIKEL_BESTIMMTER %s.", xname(singleobj)); /* EN You("catch the %s.", xname(singleobj)); */
 			    You("VERB_INTERESSIEREN OBJECT PRONOMEN_PERSONAL nicht für NEUES_OBJECT OBJECT %s.", /* EN You("are not interested in %s junk.", */
-				genitivattribut_zu_wort(mon_nam(mon), "NOUN_JUNK")); /* EN s_suffix(mon_nam(mon))); */
+				genitivattribut_zu_wort(mon_nam(mon), "NOUN_MUELL")); /* EN s_suffix(mon_nam(mon))); */
 			    makeknown(singleobj->otyp);
 			    dropy(singleobj);
 			} else {

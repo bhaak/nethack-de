@@ -833,7 +833,7 @@ unsigned trflags;
 			    break;
 			if (u.twoweap || (uwep && bimanual(uwep)))
 			    erode_obj(u.twoweap ? uswapwep : uwep, FALSE, TRUE);
-glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETs", 1, TRUE, &youmonst); /* EN glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); */
+glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETSs", 1, TRUE, &youmonst); /* EN glovecheck:		(void) rust_dmg(uarmg, "gauntlets", 1, TRUE, &youmonst); */
 			/* Not "metal gauntlets" since it gets called
 			 * even if it's leather for the message
 			 */
