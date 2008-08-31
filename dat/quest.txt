@@ -50,244 +50,370 @@
 #	Archeologist
 #
 %Cc Arc 00001
-You are suddenly in familiar surroundings.  The buildings in the distance
-appear to be those of your old alma mater, but something is wrong.  It looks
-as if there has been a riot recently, or %H has
-been under siege.
+#You are suddenly in familiar surroundings.  The buildings in the distance
+#appear to be those of your old alma mater, but something is wrong.  It looks
+#as if there has been a riot recently, or %H has
+#been under siege.
+SUBJECT PRONOMEN_PERSONAL VERB_BEFINDEN OBJECT PRONOMEN_PERSONAL plötzlich in einer bekannten Umgebung.  Die weit entfernten
+Gebäude scheinen die KASUS_GENITIV PRONOMEN_POSSESSIV ADJEKTIV_ALT NOUN_ALMA_MATER zu sein, aber irgend etwas stimmt
+nicht.  Es sieht so aus, als hätte es vor kurzem einen Aufstand gegeben oder
+als wäre KASUS_NOMINATIV %H belagert worden.
 
-All of the windows are boarded up, and there are objects scattered around
-the entrance.
+#All of the windows are boarded up, and there are objects scattered around
+#the entrance.
+Alle Fenster sind verbarrikadiert und vor dem Eingang liegen Gegenstände
+verstreut herum.
 
-Strange forbidding shapes seem to be moving in the distance.
+#Strange forbidding shapes seem to be moving in the distance.
+Seltsam bedrohlich wirkende Gestalten tummeln sich in der Ferne.
 %E
 %Cp Arc 00002
-Once again, you are back at %H.
+#Once again, you are back at %H.
+Und wieder SUBJECT_IM_SATZ VERB_ZURUECKKEHREN PRONOMEN_PERSONAL OBJECT KASUS_DATIV zu %H SATZKLAMMER.
 %E
 %Cp Arc 00003
-You are back at %H.
-You have an odd feeling this may be the last time you ever come here.
+#You are back at %H.
+Du bist wieder KASUS_DATIV bei %H.
+#You have an odd feeling this may be the last time you ever come here.
+SUBJECT PRONOMEN_PERSONAL VERB_HABEN das seltsame Gefühl, dass dies OBJECT KASUS_NOMINATIV PRONOMEN_POSSESSIV ADJEKTIV_LETZT NOUN_BESUCH hier sein könnte.
 %E
 %Cp Arc 00005
-"Did you see Lash LaRue in 'Song of Old Wyoming' the other night?"
+#"Did you see Lash LaRue in 'Song of Old Wyoming' the other night?"
+# aus Netzhacks quest.txt:
+"Hast Du neulich Luis Trenker in 'Flucht in die Dolomiten' gesehen?"
 %E
 %Cp Arc 00006
-"Hey man, got any potions of hallucination for sale?"
+#"Hey man, got any potions of hallucination for sale?"
+"Hey, haste zufällig 'nen Halluzinationstrank zu verkaufen?"
 %E
 %Cp Arc 00007
-"Did you see the artifact %l brought back from the last dig?"
+#"Did you see the artifact %l brought back from the last dig?"
+"Hast du das Artefakt gesehen, das %l von seiner letzten Grabung mitgebracht hat?"
 %E
 %Cp Arc 00008
-"So what species do *you* think we evolved from?"
+#"So what species do *you* think we evolved from?"
+"Und was glaubst *du*, aus welcher Art haben wir uns entwickelt?"
 %E
 %Cp Arc 00009
-"So you're %ls prize pupil!  I don't know what he sees in you."
+#"So you're %ls prize pupil!  I don't know what he sees in you."
+"Du bist also %ls Lieblingsschüler!  Ich weiß wirklich nicht, was er an dir findet."
 %E
 %Cp Arc 00010
-"Did you see Lash LaRue in 'Song of Old Wyoming' the other night?"
+#"Did you see Lash LaRue in 'Song of Old Wyoming' the other night?"
+# aus Netzhacks quest.txt:
+"Hast Du neulich Leni Riefenstahl in 'Weisse Hölle vom Piz Palü' gesehen?"
 %E
 %Cp Arc 00011
-"Hey man, got any potions of hallucination for sale?"
+#"Hey man, got any potions of hallucination for sale?"
+"Hey, haste zufällig 'nen Halluzinationstrank zu verkaufen?"
 %E
 %Cp Arc 00012
-"I guess you are guaranteed to make full professor now."
+#"I guess you are guaranteed to make full professor now."
+"Ich nehme an, jetzt ist dir eine Professorenstelle sicher."
 %E
 %Cp Arc 00013
-"So, what was worse, %n or your entrance exams?"
+#"So, what was worse, %n or your entrance exams?"
+"Also, was war schlimmer, %n oder deine Zulassungsprüfung?"
 %E
 %Cp Arc 00014
-"%oC is impressive, but nothing like the bones I dug up!"
+#"%oC is impressive, but nothing like the bones I dug up!"
+"SUBJECT %oC VERB_SEIN beeindruckend, aber nicht zu vergleichen mit den Knochen, die ich ausgegraben habe!"
 %E
 %Cc Arc 00015
-"Finally you have returned, %p.  You were always
-my most promising student.  Allow me to see if you are ready for the
-most difficult task of your career."
+#"Finally you have returned, %p.  You were always
+#my most promising student.  Allow me to see if you are ready for the
+#most difficult task of your career."
+"Endlich bist du zurückgekehrt, %p.  Du gehörtest schon immer
+zu meinen vielversprechendsten Schülern.  Erlaube mir zu prüfen, ob
+du für die schwierigste Aufgabe deiner Karriere bereit bist.
 %E
 %Cp Arc 00016
-"Again, %p, you stand before me.
-Let me see if you have gained experience in the interim."
+#"Again, %p, you stand before me.
+"Wieder stehst du vor mir, %p.
+#Let me see if you have gained experience in the interim."
+Wollen wir mal sehen, ob du in der Zwischenzeit etwas dazugelernt hast.
 %E
 %Cp Arc 00017
-"Once more, %p, you have returned from the field.
-Are you finally ready for the task that must be accomplished?"
+#"Once more, %p, you have returned from the field.
+"Abermals kehrst du von einem Feldeinsatz zurück.
+#Are you finally ready for the task that must be accomplished?"
+Bist du nun endlich bereit für die zu bewältigende Aufgabe?"
 %E
 %Cc Arc 00018
+#"%p, you have failed us.  All of my careful training has been in
+#vain.  Begone!  Your tenure at this college has been revoked!
 "%p, you have failed us.  All of my careful training has been in
-vain.  Begone!  Your tenure at this college has been revoked!
+"%p, du hast uns zutiefst enttäuscht.  Deine gesamte
+Ausbildung war vergebens.  Verschwinde!  Deine Anstellung an diesem
+Institut wurde annulliert!
 
-"You are a disgrace to the profession!"
+#"You are a disgrace to the profession!"
+"Du bist eine Schande für unseren Berufsstand!"
 %E
 %Cc Arc 00019
-"%p, you are yet too inexperienced to undertake such a demanding
-quest.  A mere %r could not possibly face the rigors demanded and
-survive.  Go forth, and come here again when your adventures have further
-taught you."
+#"%p, you are yet too inexperienced to undertake such a demanding
+#quest.  A mere %r could not possibly face the rigors demanded and
+#survive.  Go forth, and come here again when your adventures have further
+#taught you."
+"%p, du bist noch zu unerfahren um diese schwierige Queste zu 
+unternehmen.  SATZBEGINN ARTIKEL_UNBESTIMMTER ADJEKTIV_EINFACH %r kann sich unmöglich diesen
+Gefahren stellen und überleben.  Gehe nun und kehre erst wieder zurück,
+wenn deine Abenteuer dich erfahrener gemacht haben.
 %E
 %Cc Arc 00020
-"%pC!  I've heard that you've been using sloppy techniques.  Your
-results lately can hardly be called suitable for %ra!
+#"%pC!  I've heard that you've been using sloppy techniques.  Your
+#results lately can hardly be called suitable for %ra!
+"%pC!  Mir ist zu Ohren gekommen, dass KASUS_NOMINATIV PRONOMEN_PERSONAL schlampige Methoden
+angewandt hast.  SATZBEGINN KASUS_NOMINATIV PRONOMEN_POSSESSIV ADJEKTIV_JUENGST NOUN_RESULTATs können wirklich nicht
+als KASUS_GENITIV %ra würdig betrachtet werden."
 
-"How could you have strayed from the %a path?  Go from here, and come
-back only when you have purified yourself."
+#"How could you have strayed from the %a path?  Go from here, and come
+#back only when you have purified yourself."
+Wie konntest du nur KASUS_DATIV von ARTIKEL_BESTIMMTER %a NOUN_PFAD abkommen?  SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_GEHEN fort
+von hier und MODIFIER_VERB_IMPERATIV VERB_KOMMEN erst wieder, NEUER_SATZ wenn SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL geläutert VERB_HABEN.
 %E
 %Cc Arc 00021
-"Grave times have befallen the college, for %na has
-stolen %o.  Without it, the board of directors of
-the university will soon have no choice but to revoke our research grants.
+#"Grave times have befallen the college, for %na has
+#stolen %o.  Without it, the board of directors of
+#the university will soon have no choice but to revoke our research grants.
+"Schwere Zeiten sind über unser Institut hereingebrochen, denn
+%na hat KASUS_AKKUSATIV %o
+gestohlen.  Ohne es wird das Direktorium der Universität keine
+andere Wahl haben als uns die Forschungsmittel zu streichen.
 
-"You must locate the entrance to %i.  Within it,
-you will find %n.
+#"You must locate the entrance to %i.  Within it,
+#you will find %n.
+"Du musst den Eingang zu KASUS_DATIV %i
+ausfindig machen.  Dort wirst du KASUS_AKKUSATIV %n finden.
 
-"You must then defeat %n and return %o
-to me.
+#"You must then defeat %n and return %o
+#to me.
+"Dann musst du KASUS_AKKUSATIV %n bezwingen und
+KASUS_AKKUSATIV %o zu mir zurückbringen.
 
-"Only in this way will we be able to prevent the budget cuts that could
-close this college.
+#"Only in this way will we be able to prevent the budget cuts that could
+#close this college.
+"Nur so werden wir in der Lage sein, die drohenden Etatkürzungen
+abwenden zu können, die die Existenz unseres Instituts bedrohen.
 
-"May the wisdom of %d be your guide."
+#"May the wisdom of %d be your guide."
+"Möge die Weisheit %ds dich leiten."
 %E
 %Cp Arc 00025
-"Beware, for %n is powerful and cunning."
+#"Beware, for %n is powerful and cunning."
+"SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_NEHMEN OBJECT PRONOMEN_PERSONAL dich in Acht, denn KASUS_NOMINATIV %n ist mächtig und gerissen."
 %E
 %Cp Arc 00026
-"To locate the entrance to %i, you must pass
-many traps."
+#"To locate the entrance to %i, you must pass
+#many traps."
+"Um den Eingang KASUS_DATIV zu %i finden, NEUER_SATZ VERB_MUESSEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL an vielen Fallen vorbei."
 %E
 %Cp Arc 00027
-"A %nt may be vulnerable to attacks by magical cold."
+#"A %nt may be vulnerable to attacks by magical cold."
+"SUBJECT ARTIKEL_UNBESTIMMTER %nt ist möglicherweise verwundbar durch Angriffe mit Kältemagie."
 %E
 %Cp Arc 00028
-"Call upon %d when you encounter %n."
+#"Call upon %d when you encounter %n."
+"SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_RUFEN OBJECT %d an, NEUER_SATZ sobald SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT KASUS_DATIV %n VERB_BEGEGNEN."
 %E
 %Cp Arc 00029
-"You must destroy %n.  It will pursue you otherwise."
+#"You must destroy %n.  It will pursue you otherwise."
+"SUBJECT PRONOMEN_PERSONAL VERB_MUESSEN OBJECT %n vernichten.  NEUER_SATZ Andernfalls wird er KASUS_AKKUSATIV PRONOMEN_PERSONAL verfolgen."
 %E
 %Cp Arc 00030
-"%oC is a mighty talisman.  With it you
-can destroy %n."
+#"%oC is a mighty talisman.  With it you
+#can destroy %n."
+"SUBJECT %oC ist eine mächtiger Talisman.  NEUER_SATZ Mit ihr SUBJECT_IM_SATZ VERB_WERDEN PRONOMEN_PERSONAL KASUS_AKKUSATIV %n vernichten können."
 %E
 %Cp Arc 00031
-"Go forth with the blessings of %d."
+#"Go forth with the blessings of %d."
+"Gehe hin mit dem Segen %ds."
 %E
 %Cp Arc 00032
-"I will have my %gP watch for your return."
+#"I will have my %gP watch for your return."
+"SATZBEGINN PRONOMEN_MEIN %gP werden nach deiner Rückkehr Ausschau halten."
 %E
 %Cp Arc 00033
-"Remember not to stray from the true %a path."
+#"Remember not to stray from the true %a path."
+"Denk daran nicht KASUS_DATIV von ARTIKEL_BESTIMMTER %a NOUN_WEG abzukommen."
 %E
 %Cp Arc 00034
-"You may be able to sense %o when you are near."
+#"You may be able to sense %o when you are near."
+"Möglicherweise wirst du KASUS_AKKUSATIV %o spüren, wenn du dich ihr näherst."
 %E
 %Cc Arc 00035
-A plain opens before you.  Beyond the plain lies a foreboding edifice.
+#A plain opens before you.  Beyond the plain lies a foreboding edifice.
+Eine weite Ebene erstreckt sich vor dir.  Jenseits der Ebene erhebt sich
+ein bedrohliches Gebäude.
 
-You have the feeling that you will soon find the entrance to
-%i.
+#You have the feeling that you will soon find the entrance to
+#%i
+Du ahnst, dass du bald den Eingang zu KASUS_DATIV %i
+finden wirst.
 %E
 %Cp Arc 00036
-Once again, you are near the entrance to %i.
+#Once again, you are near the entrance to %i.
+Wiederum bist du nahe des Eingangs zu KASUS_DATIV %i.
 %E
 %Cc Arc 00040
-A strange feeling washes over you, and you think back to things you
-learned during the many lectures of %l.
+#A strange feeling washes over you, and you think back to things you
+#learned during the many lectures of %l.
+Ein seltsames Gefühl überkommt dich und du denkst an die Dinge, die du
+in den unzähligen Vorlesungen von KASUS_DATIV %l gelernt hast.
 
-You realize the feeling must be the presence of %o.
+#You realize the feeling must be the presence of %o.
+Du begreifst, dass dieses seltsame Gefühl die Gegenwart
+KASUS_GENITIV %o sein muss.
 %E
 %Cp Arc 00041
-The familiar presence of %o is in the ether.
+#The familiar presence of %o is in the ether.
+Die vertraute Gegenwart KASUS_GENITIV %o liegt in der Luft.
 %E
 %Cc Arc 00050
-"So, %p, you think that you can succeed in recovering
-%o, when your teacher, %l, has already failed.
+#"So, %p, you think that you can succeed in recovering
+#%o, when your teacher, %l, has already failed.
+"%p, du denkst also, du könntest KASUS_AKKUSATIV %o
+bergen, wo doch dein Lehrer, %l, schon gescheitert ist.
 
-"Come, try your best!  I shall destroy you, and gnaw on your bones."
+#"Come, try your best!  I shall destroy you, and gnaw on your bones."
+"Komm, gib dein Bestes!  Ich werde dich vernichten und an deinen Knochen
+nagen."
 %E
 %Cc Arc 00051
-"Again you try to best me, eh %p?  Well, you shall fail again.
+#"Again you try to best me, eh %p?  Well, you shall fail again.
+"Schon wieder versuchst du mich zu schlagen, %p?  Na gut, du wirst
+wieder scheitern.
 
-"You shall never recover %o.
+#"You shall never recover %o.
+"Du wirst niemals KASUS_AKKUSATIV %o erlangen.
 
-"I shall bear your soul to the Plane of Origins for my master's pleasure."
+#"I shall bear your soul to the Plane of Origins for my master's pleasure."
+"Ich werde deine Seele auf die Ebene des Ursprungs tragen zur
+Unterhaltung meines Meisters.
 %E
 %Cp Arc 00052
-"You persist yet %p!  Good.  Now, you shall die!"
+#"You persist yet %p!  Good.  Now, you shall die!"
+"Bis jetzt lässt du nicht locker, %p!  Gut.  Doch jetzt wirst du sterben!"
 %E
 %Cp Arc 00053
-"I shall have %o from you, %p, then feast
-upon your entrails!"
+#"I shall have %o from you, %p, then feast
+#upon your entrails!"
+"Ich werde mir KASUS_AKKUSATIV %o von dir zurückholen und
+dann werde ich mich an deinen Eingeweiden laben!
 %E
 %Cp Arc 00060
-"Try your best, %p.  You cannot defeat me."
+#"Try your best, %p.  You cannot defeat me."
+"Gib dein Bestes, %p.  Du wirst mich doch nicht bezwingen."
 %E
 %Cp Arc 00061
-"I shall rend the flesh from your body whilst you still breathe!"
+#"I shall rend the flesh from your body whilst you still breathe!"
+"Ich werde dir das Fleisch vom Körper reißen, während du noch atmest!"
 %E
 %Cp Arc 00062
-"First you, %p, then I shall destroy your mentor, %l."
+#"First you, %p, then I shall destroy your mentor, %l."
+"Erst dich, %p, dann werde ich deinen Mentor, %l, vernichten."
 %E
 %Cp Arc 00063
-"Tiring yet, %p?  I draw my power from my master and cannot
-falter!"
+#"Tiring yet, %p?  I draw my power from my master and cannot
+#falter!"
+"Schwächelst du schon, %p?  Ich beziehe meine Kraft von meinem Meister
+und kann nicht ermüden!"
 %E
 %Cp Arc 00064
-"I shall rend thy soul from thy body and consume it!"
+#"I shall rend thy soul from thy body and consume it!"
+"Ich werde dir die Seele aus dem Körper reißen und sie verzehren!"
 %E
 %Cp Arc 00065
-"You are far too %a -- it weakens you.  You shall die in this place."
+#"You are far too %a -- it weakens you.  You shall die in this place."
+"Du bist viel zu %a - das ist deine Schwäche.  Du wirst hier an diesem Ort
+sterben."
 %E
 %Cp Arc 00066
-"%d has forsaken you!  You are lost now!"
+#"%d has forsaken you!  You are lost now!"
+"%d hat dich verlassen!  Du bist verloren!"
 %E
 %Cp Arc 00067
-"A mere %r cannot hope to defeat me!"
+#"A mere %r cannot hope to defeat me!"
+"SATZBEGINN ARTIKEL_UNBESTIMMTER ADJEKTIV_EINFACH %r kann nicht einmal hoffen mich zu besiegen!"
 %E
 %Cp Arc 00068
-"If you are the best %l can send, I have nothing to fear."
+#"If you are the best %l can send, I have nothing to fear."
+"Wenn du das Beste bist, das %l losschicken kann, habe ich nichts zu fürchten."
 %E
 %Cp Arc 00069
-"Die %c!  I shall exhibit your carcass as a trophy."
+#"Die %c!  I shall exhibit your carcass as a trophy."
+"Stirb %c!  Ich werden deinen Kadaver als Trophäe ausstellen."
 %E
 %Cc Arc 00070
-The power of %o flows through your body!  You feel
-as if you could now take on the Wizard of Yendor himself and win, but
-you know you must return %o to %l.
+#The power of %o flows through your body!  You feel
+#as if you could now take on the Wizard of Yendor himself and win, but
+#you know you must return %o to %l.
+Die Macht KASUS_GENITIV %o fließt durch deinen Körper!
+Du fühlst dich, als könntest du es alleine mit dem Zauberer von Yendor
+persönlich aufnehmen und ihn besiegen, doch du weißt, dass du
+KASUS_AKKUSATIV %o KASUS_DATIV %l zurückbringen musst.
 %E
 %Cp Arc 00080
-The body of %n dissipates in a cloud of noxious fumes.
+#The body of %n dissipates in a cloud of noxious fumes.
+Der Körper KASUS_GENITIV %n verflüchtigt sich in einer Wolke giftiger Dämpfe.
 %E
 %Cc Arc 00081
-%lC touches %o briefly, gazes into it,
-then smiles at you and says:
+#%lC touches %o briefly, gazes into it,
+#then smiles at you and says:
+%lC berührt kurz KASUS_AKKUSATIV %o, blickt
+konzentriert in sie hinein, lächelt dich an und sagt:
 
-"Well done, %p.  You have defeated %n and
-recovered %o.  But I fear that it shall never be safe
-here.
+#"Well done, %p.  You have defeated %n and
+#recovered %o.  But I fear that it shall never be safe
+#here.
+"Gut gemacht, %p.  Du hast KASUS_AKKUSATIV %n bezwungen
+#"Gut gemacht, Wizard.  Du hast den Mignon von Huhetotl bezwungen
+und KASUS_AKKUSATIV %o wiederbeschafft.  Aber ich fürchte,
+dass sie hier niemals mehr sicher sein wird.
 
-Please take %o with you.  You, %p, can
-guard it now far better than I.
+#Please take %o with you.  You, %p, can
+#guard it now far better than I.
+Bitte nimm KASUS_AKKUSATIV %o an dich.  Du, %p,
+kannst sie jetzt viel besser bewachen als ich.
 
-May the blessings of %d follow you and guard you."
+#May the blessings of %d follow you and guard you."
+Möge der Segen %ds dich begleiten und dich schützen."
 %E
 # assumes Orb of Detection (glass object)
 %Cc Arc 00082
-"Careful, %p!  %oC might break, and that would be
-a tragic loss.  You are its keeper now, and the time has come to
-resume your search for the Amulet.  %Z await your
-return through the magic portal that brought you here."
+#"Careful, %p!  %oC might break, and that would be
+#a tragic loss.  You are its keeper now, and the time has come to
+#resume your search for the Amulet.  %Z await your
+#return through the magic portal that brought you here."
+"Sei vorsichtig, %p!  SATZBEGINN %oC
+kann zerbrechen und das wäre ein tragischer Verlust.  Du bist nun ihr
+Hüter und die Zeit ist jetzt gekommen, die Suche nach dem Amulett
+fortzusetzen.  SATZBEGINN %Z erwarten deine Rückkehr durch das
+magische Portal, das dich hierher gebracht hat.
 %E
 %Cc Arc 00090
-"Welcome back, %p.  Have you progressed with your quest to
-regain the Amulet of Yendor for %d?"
+#"Welcome back, %p.  Have you progressed with your quest to
+#regain the Amulet of Yendor for %d?"
+"Willkommen zurück, %p.  Hast du Fortschritte gemacht auf deiner
+Mission das Amulett von Yendor für %d wiederzuerlangen?
 %E
 %Cc Arc 00091
-"Congratulations, %p.  I wondered if anyone could prevail against
-the Wizard and the minions of Moloch.  Now, you must embark on one
-final adventure.
+#"Congratulations, %p.  I wondered if anyone could prevail against
+#the Wizard and the minions of Moloch.  Now, you must embark on one
+#final adventure.
+"Sei beglückwünscht, %p.  Ich war im Zweifel, ob irgendjemand über
+den Zauberer und die Handlanger des Moloch siegen könnte.  Jetzt
+musst du dich auf ein letztes Abenteuer begeben.
 
-"Take the Amulet, and find your way onto the astral plane.
-There you must find the altar of %d and sacrifice the
-Amulet on that altar to fulfill your destiny.
+#"Take the Amulet, and find your way onto the astral plane.
+#There you must find the altar of %d and sacrifice the
+#Amulet on that altar to fulfill your destiny.
+"Nimm das Amulett und begib dich auf den Weg zur Astralebene.
+Dort musst du den Altar %ds finden und das Amulett auf diesem Altar
+opfern um dein Schicksal zu erfüllen.
 
-"Remember, your path now should always be upwards."
+#"Remember, your path now should always be upwards."
+"Denk daran, dein Weg sollte dich ab jetzt stets aufwärts führen."
 %E
 #
 #	Barbarian
@@ -3350,10 +3476,14 @@ attempt.  Your hour of destiny has come.  For the sake
 of us all:  Go bravely with %d!
 %E
 %Cp - 00002
-You receive a faint telepathic message from %l:
-Your help is urgently needed at %H!
-Look for a ...ic transporter.
-You couldn't quite make out that last message.
+#You receive a faint telepathic message from %l:
+SUBJECT PRONOMEN_PERSONAL VERB_EMPFANGEN eine schwache telepathische Nachricht OBJECT KASUS_DATIV von %l:
+#Your help is urgently needed at %H!
+KASUS_DATIV In %H wird dringend SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_HILFE benötigt!
+#Look for a ...ic transporter.
+SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SUCHEN nach einem ...ischen Transporter.
+#You couldn't quite make out that last message.
+SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN die letzte Nachricht nicht ganz verstehen.
 %E
 %Cp - 00003
 You again sense %l pleading for help.
@@ -3365,8 +3495,10 @@ You again sense %l demanding your attendance.
 # the Bell of Opening; quest leader lets you know that it is needed.
 #[ Should this be role-specific so that each leader has variant text? ]
 %Cp - 00005
-"The silver bell which was hoarded by %n will be
-essential in locating the Amulet of Yendor."
+#"The silver bell which was hoarded by %n will be
+#essential in locating the Amulet of Yendor."
+"Das silberne Glöckchen, das sich im Besitz KASUS_GENITIV %n
+befindet, ist unentbehrlich für das Auffinden des Amuletts von Yendor."
 %E
 #
 #	Angelic maledictions.
