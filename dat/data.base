@@ -1981,6 +1981,7 @@ jubilex
 	alive, spits acidic secretions, and causes disease in his
 	victims which can be almost instantly fatal.
 kabuto
+NOUN_JAP_KABUTO
 	The kabuto is the helmet worn by the samurai.  It was
 	characterized by a prominent beaked front which jutted out over
 	the brow to protect the wearer's face; a feature that gives
@@ -2107,7 +2108,9 @@ kos
 	sword Graywand here at my side!"
 	   [ Swords and Deviltry, by Fritz Leiber ]
 koto
-	A Japanese harp.
+#	A Japanese harp.
+NOUN_JAP_KOTO
+	Eine japanische Harfe.
 kraken
 	Out from the water a long sinuous tentacle had crawled; it
 	was pale-green and luminous and wet.  Its fingered end had
@@ -2752,6 +2755,7 @@ mummy wrapping
 	territory they consider their own.  Some nagas can be forced
 	to serve as guardians by a spellcaster of great power.
 naginata
+NOUN_JAP_NAGINATA
 	A Japanese pole-arm, fitted with a curved single-edged blade.
 	The blades ranged in length from two to four feet, mounted on
 	shafts about four to five feet long.  The naginata were cut
@@ -2811,7 +2815,9 @@ NOUN_NEWT
 	Like a hell-broth boil and bubble."
 		[ Macbeth, by William Shakespeare ]
 ninja-to
-	A Japanese broadsword.
+#	A Japanese broadsword.
+NOUN_JAP_NINJA_TO
+	Ein japanische Breitschwert.
 *norn
 	The Norns were the three Norse Fates, or the goddesses of fate.
 	Female giants, they brought the wonderful Golden Age to an end.
@@ -2828,7 +2834,9 @@ ninja-to
 			Nations by Herbert Spencer Robinson and Knox
 			Wilson ]
 nunchaku
-	A Japanese flail.
+#	A Japanese flail.
+NOUN_JAP_NUNCHAKU
+	Ein japanischer Dreschflegel.
 *nymph
 	A female creature from Roman and Greek mythology, the nymph
 	occupied rivers, forests, ponds, etc.  A nymph's beauty is
@@ -2967,18 +2975,31 @@ pyrolisk
 	back, around that corner, desperately striving to get out of 
 	its sight.
 *orb of detection
-	This Orb is a crystal ball of exceptional powers.  When
+#	This Orb is a crystal ball of exceptional powers.  When
+	Dieser Ball/Kugel/Sphäre ist eine Kristallkugel mit außergewöhnlichen TODO
+	Kräften.  Dem Träger verleiht sie ASW, mindert Schaden durch
+	Magie und schützt ihn vor magischen Geschossen.
 	carried, it grants ESP, limits damage done by spells, and
 	protects the carrier from magic missiles.  When invoked it
 	allows the carrier to become invisible.
 orb of fate
+#	Some say that Odin himself created this ancient crystal ball,
+#	although others argue that Loki created it and forged Odin's
+#	signature on the bottom.  In any case, it is a powerful
+#	artifact.  Anyone who carries it is granted the gift of
+#	warning, and damage, both spell and physical, is partially
+#	absorbed by the orb itself.  When invoked it has the power
+#	to teleport the invoker between levels.
+NOUN_ORB_OF_FATE
 	Some say that Odin himself created this ancient crystal ball,
-	although others argue that Loki created it and forged Odin's
-	signature on the bottom.  In any case, it is a powerful
-	artifact.  Anyone who carries it is granted the gift of
-	warning, and damage, both spell and physical, is partially
-	absorbed by the orb itself.  When invoked it has the power
-	to teleport the invoker between levels.
+	Manche behaupten, dass Odin höchstpersönlich diese uralte
+	Kristallkugel geschaffen habe, doch andere meinen, Loki sei
+	der Schöpfer und er habe Odins Unterschrift auf der Unterseite
+	gefälscht.  In jedem Fall ist es ein mächtiges Artefakt.
+	Seinem Träger verleiht es die Gabe der Warnung und Schaden,
+	egal ob magischer oder physischer, wird teilweise von der
+	Kugel absorbiert.  Wenn beschworen hat sie die Macht, den    TODO
+	Beschwörer/Anrufer zwischen den Leveln zu teleportieren.     TODO
 goblin king
 orcrist
 	The Great Goblin gave a truly awful howl of rage when he
@@ -3113,6 +3134,8 @@ spiked pit
 #	shuddering reason.  Oh! for a voice to speak! -- oh! horror! --
 #	oh! any horror but this!
 #		[ The Pit and the Pendulum, by Edgar Allan Poe ]
+NOUN_PIT
+NOUN_SPIKED_PIT
 	Gegenüber der Vernichtung durch das Feuer, die meiner wartete,
 	erschien mir der Gedanke an die Kühle des Brunnens wie lindernder
 	Balsam. Ich eilte an seinen gefahrvollen Rand; ich spähte gespannt
@@ -3467,7 +3490,9 @@ saddle
 	And ride mankind.
 		[ Ode, by Ralph Waldo Emerson ]
 sake
-	Japanese rice wine.
+#	Japanese rice wine.
+NOUN_JAP_SAKE
+	Japanischer Reiswein.
 salamander
 	For hundreds of years, many people believed that salamanders
 	were magical.  In England in the Middle Ages, people thought
@@ -3618,6 +3643,7 @@ shark
 	the depths.
 		[ Close to Shore, by Michael Capuzzo ]
 shito
+NOUN_JAP_SHITO
 	A Japanese stabbing knife.
 shrieker
 	With a single, savage thrust of her spear, the warrior-woman 
@@ -3673,7 +3699,7 @@ slime mold
 #	a stone, and smote the Philistine, and slew him; but there
 #	was no sword in the hand of David.
 #		[ 1 Samuel 17:48-50 ]
-Schleuder
+NOUN_SLING
 	Als der Philister weiter vorrückte und immer näher an David
 	herankam, lief auch David von der Schlachtreihe (der
 	Israeliten) aus schnell dem Philister entgegen.
@@ -4039,8 +4065,11 @@ titan
 	Mount Olympus.
 		[ Greek Mythology, by Richard Patrick ]
 touch*stone
-	"Gold is tried by a touchstone, men by gold."
-		[ Chilon (c. 560 BC) ]
+NOUN_GEM_TOUCHSTONE
+#	"Gold is tried by a touchstone, men by gold."
+#		[ Chilon (c. 560 BC) ]
+	"Der Prüfstein ist für Gold, was Gold für den Menschen ist."
+		[ Chilon (ca 560 v.Chr.) ]
 tourist
 * tourist
 	The road from Ankh-Morpork to Chrim is high, white and
@@ -4202,11 +4231,18 @@ tyr
 	handed, and is not called a reconciler of men.
 			[ The Prose Edda, by Snorri Sturluson ]
 *hulk
-	Umber hulks are powerful subterranean predators whose
-	iron-like claws allow them to burrow through solid stone in
-	search of prey.  They are tremendously strong; muscles bulge
-	beneath their thick, scaly hides and their powerful arms and
-	legs all end in great claws.
+#	Umber hulks are powerful subterranean predators whose
+#	iron-like claws allow them to burrow through solid stone in
+#	search of prey.  They are tremendously strong; muscles bulge
+#	beneath their thick, scaly hides and their powerful arms and
+#	legs all end in great claws.
+NOUN_UMBER_HULK
+	Umberholks sind mächtige, unterirdisch lebende Räuber, deren
+	eisenharte Klauen ihnen erlauben auf der Suche nach Beute
+	selbst durch soliden Fels zu graben.  Sie sind ungeheuer
+	stark.  Unter ihrer dicken, schuppigen Haut spannen sich
+	gewaltige Muskeln und ihre kräftigen Arme und Beine münden
+	in riesige Klauen.
 *unicorn
 unicorn horn
 NOUN_UNICORN_HORN
@@ -4384,16 +4420,28 @@ apprentice
 	and his mind free for the thoughts of a mage.
 		[ A Dealing with Demons, by Craig Shaw Gardner ]
 wizard of yendor
-	No one knows how old this mighty wizard is, or from whence he
-	came.  It is known that, having lived a span far greater than
-	any normal man's, he grew weary of lesser mortals; and so,
-	spurning all human company, he forsook the dwellings of men
-	and went to live in the depths of the Earth.  He took with
-	him a dreadful artifact, the Book of the Dead, which is said
-	to hold great power indeed.  Many have sought to find the
-	wizard and his treasure, but none have found him and lived to
-	tell the tale.  Woe be to the incautious adventurer who
-	disturbs this mighty sorcerer!
+#	No one knows how old this mighty wizard is, or from whence he
+#	came.  It is known that, having lived a span far greater than
+#	any normal man's, he grew weary of lesser mortals; and so,
+#	spurning all human company, he forsook the dwellings of men
+#	and went to live in the depths of the Earth.  He took with
+#	him a dreadful artifact, the Book of the Dead, which is said
+#	to hold great power indeed.  Many have sought to find the
+#	wizard and his treasure, but none have found him and lived to
+#	tell the tale.  Woe be to the incautious adventurer who
+#	disturbs this mighty sorcerer!
+NOUN_WIZARD_OF_YENDOR
+	Niemand weiß, wie alt dieser mächtiger Zauberer ist oder woher
+	er stammt.  Es ist jedoch bekannt, dass, nachdem er länger
+	gelebt hat als ein normaler Mensch, er der sterblichen
+	Menschheit überdrüssig wurde.  Deswegen gab er jegliche
+	menschliche Gesellschaft auf, verließ die Wohnorte der Menschen
+	und lebte fortan in den Tiefen der Erde.  Der Zauberer nahm
+	ein furchtbares Artefakt mit, das Buch der Toten, das große
+	Kräfte beherbergen soll.  Viele versuchten den Zauberer und
+	seinen Schatz zu finden, doch keiner hat ihn gefunden und
+	überlebt um davon zu berichten.  Wehe dem unvorsichtigen
+	Abenteurer, der diesen mächtigen Zauberer belästigt!
 wolf
 *wolf
 *wolf cub
