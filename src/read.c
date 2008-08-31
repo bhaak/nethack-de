@@ -792,7 +792,7 @@ register struct obj	*sobj;
 		otmp = some_armor(&youmonst);
 		if(confused) {
 			if(!otmp) {
-				strange_feeling(sobj,"Your bones itch."); /* EN strange_feeling(sobj,"Your bones itch."); */ // TODO DE
+				strange_feeling(sobj,"SUBJECT NOUN_KNOCHENs VERB_JUCKEN."); /* EN strange_feeling(sobj,"Your bones itch."); */
 				exercise(A_STR, FALSE);
 				exercise(A_CON, FALSE);
 				return(1);
@@ -1102,7 +1102,7 @@ register struct obj	*sobj;
 		known = TRUE;
 	case SPE_MAGIC_MAPPING:
 		if (level.flags.nommap) {
-		    Your("%s spins as %s blocks the spell!", body_part(HEAD), something); /* EN Your("%s spins as %s blocks the spell!", body_part(HEAD), something); */ // TODO DE
+		    Your("%s spins als %s den Spruch abblockt!", body_part(HEAD), something); /* EN Your("%s spins as %s blocks the spell!", body_part(HEAD), something); */ // TODO DE
 		    make_confused(HConfusion + rnd(30), FALSE);
 		    break;
 		}
@@ -1156,7 +1156,7 @@ register struct obj	*sobj;
 		if (Underwater)
 			pline_The("water around you vaporizes violently!"); /* EN pline_The("water around you vaporizes violently!"); */ // TODO DE
 		else {
-		    pline_The("scroll erupts in a tower of flame!"); /* EN pline_The("scroll erupts in a tower of flame!"); */ // TODO DE
+		    pline_The("NOUN_SCROLL VERB_AUFGEHEN OBJECT KASUS_DATIV in ARTIKEL_UNBESTIMMTER NOUN_FLAMMENSAEULE SATZKLAMMER!"); /* EN pline_The("scroll erupts in a tower of flame!"); */
 		    burn_away_slime();
 		}
 		explode(u.ux, u.uy, 11, (2*(rn1(3, 3) + 2 * cval) + 1)/3,
@@ -1749,14 +1749,14 @@ punish(sobj)
 register struct obj	*sobj;
 {
 	/* KMH -- Punishment is still okay when you are riding */
-	You("are being punished for your misbehavior/Fehlverhalten/Missetaten!"); /* EN You("are being punished for your misbehavior!"); */ // TODO DE
+	You("VERB_WERDEN OBJECT für PRONOMEN_POSSESSIV NOUN_FEHLVERHALTEN bestraft!"); /* EN You("are being punished for your misbehavior!"); */
 	if(Punished){
 		Your("NOUN_IRON_BALL wird schwerer."); /* EN Your("iron ball gets heavier."); */
 		uball->owt += 160 * (1 + sobj->cursed);
 		return;
 	}
 	if (amorphous(youmonst.data) || is_whirly(youmonst.data) || unsolid(youmonst.data)) {
-		pline("A ball and chain appears, then falls away."); /* EN pline("A ball and chain appears, then falls away."); */ // TODO DE
+		pline("Eine Kugel und Kette erscheinen, fallen aber weg."); /* EN pline("A ball and chain appears, then falls away."); */
 		dropy(mkobj(BALL_CLASS, TRUE));
 		return;
 	}

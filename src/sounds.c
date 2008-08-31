@@ -756,9 +756,9 @@ register struct monst *mtmp;
 		      flags.female ? "Ma'am" : "Sir"); /* EN flags.female ? "Ma'am" : "Sir"); */ // TODO DE
 	    else {
 		static const char * const arrest_msg[3] = {
-		    "Anything you say can be used against you.", /* EN "Anything you say can be used against you.", */ // TODO DE
-		    "You're under arrest!", /* EN "You're under arrest!", */ // TODO DE
-				"Stop in the name of the Law!", /* EN "Stop in the name of the Law!", */ // TODO DE
+		    "Alles was Sie sagen, kann gegen Sie verwendet werden.", /* EN "Anything you say can be used against you.", */
+		    "SUBJECT PRONOMEN_PERSONAL VERB_SEIN verhaftet!", /* EN "You're under arrest!", */
+				"Halt! Im Namen des Gesetzes!", /* EN "Stop in the name of the Law!", */
 		};
 		verbl_msg = arrest_msg[rn2(3)];
 	    }
@@ -807,10 +807,10 @@ register struct monst *mtmp;
 		static const char * const soldier_foe_msg[3] = {
 		    "Widerstand ist zwecklos!", /* EN "Resistance is useless!", */
 		    "You're dog meat!", /* EN "You're dog meat!", */ // TODO DE
-		    "Surrender!", /* EN "Surrender!", */ // TODO DE
+		    "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_ERGEBEN OBJECT PRONOMEN_PERSONAL!", /* EN "Surrender!", */
 		},		  * const soldier_pax_msg[3] = {
-		    "What lousy pay we're getting here!", /* EN "What lousy pay we're getting here!", */ // TODO DE
-		    "The food's not fit for Orcs!", /* EN "The food's not fit for Orcs!", */ // TODO DE
+		    "Mann, was für 'ne miese Bezahlung wir kriegen!", /* EN "What lousy pay we're getting here!", */
+		    "Den Frass würden nichtmal Orks essen!", /* EN "The food's not fit for Orcs!", */
 				"My feet hurt, I've been on them all day!", /* EN "My feet hurt, I've been on them all day!", */ // TODO DE
 		};
 		verbl_msg = mtmp->mpeaceful ? soldier_pax_msg[rn2(3)]

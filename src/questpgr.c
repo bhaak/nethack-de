@@ -166,7 +166,7 @@ ldrname()	/* return your role leader's name */
 	int i = urole.ldrnum;
 
 	Sprintf(nambuf, "%s%s",
-		type_is_pname(&mons[i]) ? "" : "the ", /* EN type_is_pname(&mons[i]) ? "" : "the ", */ // TODO DE
+		type_is_pname(&mons[i]) ? "" : "ARTIKEL_BESTIMMTER ", /* EN type_is_pname(&mons[i]) ? "" : "the ", */
 		mons[i].mname);
 	return nambuf;
 }
@@ -329,8 +329,8 @@ convert_line()
 				    break;
 
 					/* strip any "the" prefix */
-				case 't': if (!strncmpi(cvt_buf, "the ", 4)) { /* EN case 't': if (!strncmpi(cvt_buf, "the ", 4)) { */ // TODO DE
-					Strcat(cc, &cvt_buf[4]);
+				case 't': if (!strncmpi(cvt_buf, "ARTIKEL_BESTIMMTER ", 19)) { /* EN case 't': if (!strncmpi(cvt_buf, "the ", 4)) { */
+					Strcat(cc, &cvt_buf[19]); /* EN Strcat(cc, &cvt_buf[4]); */
 					cc += strlen(cc);
 					continue; /* for */
 				    }

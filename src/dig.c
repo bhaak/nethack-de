@@ -559,9 +559,9 @@ int ttyp;
 	    } else if(mtmp) {
 		if(is_flyer(mtmp->data) || is_floater(mtmp->data)) {
 		    if(canseemon(mtmp))
-			pline("%s %s over the pit.", Monnam(mtmp), /* EN pline("%s %s over the pit.", Monnam(mtmp), */ // TODO DE
+			pline("SUBJECT %s %s über der Grube.", Monnam(mtmp), /* EN pline("%s %s over the pit.", Monnam(mtmp), */
 						     (is_flyer(mtmp->data)) ?
-						     "flies" : "floats"); /* EN "flies" : "floats"); */ // TODO DE
+						     "VERB_FLIEGEN" : "VERB_SCHWEBEN"); /* EN "flies" : "floats"); */
 		} else if(mtmp != madeby)
 		    (void) mintrap(mtmp);
 	    }

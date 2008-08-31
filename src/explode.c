@@ -64,8 +64,8 @@ int expltype;
 			adtyp = AD_MAGM;
 			break;
 		case 1: str =   olet == BURNING_OIL ?	"ADJEKTIV_BRENNEND NOUN_POT_OIL" : /* EN case 1: str =   olet == BURNING_OIL ?	"burning oil" : */
-				olet == SCROLL_CLASS ?	"tower of flame" : /* EN olet == SCROLL_CLASS ?	"tower of flame" : */ // TODO DE
-							"fireball"; /* EN "fireball"; */ // TODO DE
+				olet == SCROLL_CLASS ?	"NOUN_FLAMMENSAEULE" : /* EN olet == SCROLL_CLASS ?	"tower of flame" : */
+							"NOUN_FIREBALL"; /* EN "fireball"; */
 			adtyp = AD_FIRE;
 			break;
 		case 2: str = "ball of cold"; /* EN case 2: str = "ball of cold"; */ // TODO DE
@@ -347,7 +347,7 @@ int expltype;
 			    killer_format = NO_KILLER_PREFIX;
 			    Sprintf(killer_buf, "caught %sself in %s own %s", /* EN Sprintf(killer_buf, "caught %sself in %s own %s", */ // TODO DE
 				    uhim(), uhis(), str);
-			} else if (!strncmpi(str,"tower of flame", 8) || /* EN } else if (!strncmpi(str,"tower of flame", 8) || */ // TODO DE
+			} else if (!strncmpi(str,"NOUN_FLAMMENSAEULE", 18) || /* EN } else if (!strncmpi(str,"tower of flame", 8) || */
 				   !strncmpi(str,"NOUN_FIREBALL", 13)) { /* EN !strncmpi(str,"fireball", 8)) { */
 			    killer_format = KILLED_BY_AN;
 			    Strcpy(killer_buf, str);
