@@ -2466,10 +2466,10 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 		(otmp->otyp==CORPSE && (corpsecheck == 1 || tinnable(otmp))) :
 		    feeding ? (otmp->oclass != COIN_CLASS && is_edible(otmp)) :
 						otmp->oclass==FOOD_CLASS) {
-			Sprintf(qbuf, "Hier %s %s; %s MODIFIER_VERB_INFINITIV %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */
+			Sprintf(qbuf, "Hier %s %s; NEUER_SATZ KASUS_AKKUSATIV %s MODIFIER_VERB_INFINITIV %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */
 				otense(otmp, "VERB_LIEGEN"), /* EN otense(otmp, "are"), */
 				doname(otmp), /* EN doname(otmp), verb, */
-				(otmp->quan == 1L) ? pronominalisierung(xname(otmp)) : "eines", verb); /* EN (otmp->quan == 1L) ? "it" : "one"); */
+				(otmp->quan == 1L) ? pronominalisierung(xname(otmp)) : "eines", verb); /* EN (otmp->quan == 1L) ? "it" : "one"); */ // TODO DE "eines" ist nicht gut genug
 			if((c = yn_function(qbuf,ynqchars,'n')) == 'y')
 				return(otmp);
 			else if(c == 'q')

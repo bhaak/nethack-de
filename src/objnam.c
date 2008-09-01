@@ -551,23 +551,35 @@ char *prefix;
 
 	if (!is_damageable(obj) && !iscrys) return;
 
+#ifdef GERMAN
+	char *oeroded_text[][2] = {
+		// obj->oeroded != 3,   obj->oeroded == 3
+		{"ADJEKTIV_ROSTIG ",    "ADJEKTIV_VERROSTET "}, //  is_rustprone(obj)
+		{"ADJEKTIV_ANGESENGT ", "ADJEKTIV_VERSENGT "},  // !is_rustprone(obj)
+	};
+	char *oeroded2_text[][2] = {
+		// obj->oeroded2 != 3,   obj->oeroded2 == 3
+		{"ADJEKTIV_CORRODED ",  "ADJEKTIV_CORRODED "}, //  is_corrodeable(obj)
+		{"ADJEKTIV_ANGEFAULT ", "ADJEKTIV_VERFAULT "}, // !is_corrodeable(obj)
+	};
+#endif
 	/* The only cases where any of these bits do double duty are for
 	 * rotted food and diluted potions, which are all not is_damageable().
 	 */
 	if (obj->oeroded && !iscrys) {
 		switch (obj->oeroded) {
-			case 2:	Strcat(prefix, "very "); break; /* EN case 2:	Strcat(prefix, "very "); break; */ // TODO DE
-			case 3:	Strcat(prefix, "thoroughly "); break; /* EN case 3:	Strcat(prefix, "thoroughly "); break; */ // TODO DE
+			case 2:	Strcat(prefix, "stark "); break; /* EN case 2:	Strcat(prefix, "very "); break; */
+			case 3:	Strcat(prefix, "ganz "); break; /* EN case 3:	Strcat(prefix, "thoroughly "); break; */
 		}			
-		Strcat(prefix, is_rustprone(obj) ? "ADJEKTIV_ROSTIG " : "ADJEKTIV_ANGESENGT "); /* EN Strcat(prefix, is_rustprone(obj) ? "rusty " : "burnt "); */
+		Strcat(prefix, oeroded_text[(is_rustprone(obj) ? 0 : 1)][(obj->oeroded != 3 ? 0 : 1)]); /* EN Strcat(prefix, is_rustprone(obj) ? "rusty " : "burnt "); */
 	}
 	if (obj->oeroded2 && !iscrys) {
 		switch (obj->oeroded2) {
-			case 2:	Strcat(prefix, "very "); break; /* EN case 2:	Strcat(prefix, "very "); break; */ // TODO DE
-			case 3:	Strcat(prefix, "thoroughly "); break; /* EN case 3:	Strcat(prefix, "thoroughly "); break; */ // TODO DE
+			case 2:	Strcat(prefix, "stark "); break; /* EN case 2:	Strcat(prefix, "very "); break; */
+			case 3:	Strcat(prefix, "ganz "); break; /* EN case 3:	Strcat(prefix, "thoroughly "); break; */
 		}			
-		Strcat(prefix, is_corrodeable(obj) ? "ADJEKTIV_CORRODED " : /* EN Strcat(prefix, is_corrodeable(obj) ? "corroded " : */
-			"rotted "); /* EN "rotted "); */ // TODO DE
+		Strcat(prefix, /* EN Strcat(prefix, is_corrodeable(obj) ? "corroded " : */
+			oeroded2_text[(is_corrodeable(obj) ? 0 : 1)][(obj->oeroded2 != 3 ? 0 : 1)]); /* EN "rotted "); */
 	}
 	if (obj->rknown && obj->oerodeproof)
 		Strcat(prefix,
@@ -1951,12 +1963,12 @@ boolean from_user;
 			ispoisoned=1;
 		} else if(!strncmpi(bp, "ADJEKTIV_GREASED ",l=17)) { /* EN } else if(!strncmpi(bp, "greased ",l=8)) { */ // TODO DE
 			isgreased=1;
-		} else if (!strncmpi(bp, "very ", l=5)) { /* EN } else if (!strncmpi(bp, "very ", l=5)) { */ // TODO DE
+		} else if (!strncmpi(bp, "sehr ", l=5) || !strncmpi(bp, "stark ", l=6)) { /* EN } else if (!strncmpi(bp, "very ", l=5)) { */
 			/* very rusted very heavy iron ball */
 			very = 1;
-		} else if (!strncmpi(bp, "thoroughly ", l=11)) { /* EN } else if (!strncmpi(bp, "thoroughly ", l=11)) { */ // TODO DE
+		} else if (!strncmpi(bp, "vollstaendig ", l=13) || !strncmpi(bp, "ganz ", l=5)) { /* EN } else if (!strncmpi(bp, "thoroughly ", l=11)) { */
 			very = 2;
-		} else if (!strncmpi(bp, "rusty ", l=6) || /* EN } else if (!strncmpi(bp, "rusty ", l=6) || */ // TODO DE
+		} else if (!strncmpi(bp, "ADJEKTIV_ROSTIG ", l=16) || /* EN } else if (!strncmpi(bp, "rusty ", l=6) || */
 			   !strncmpi(bp, "rusted ", l=7) || /* EN !strncmpi(bp, "rusted ", l=7) || */ // TODO DE
 			   !strncmpi(bp, "burnt ", l=6) || /* EN !strncmpi(bp, "burnt ", l=6) || */ // TODO DE
 			   !strncmpi(bp, "burned ", l=7)) { /* EN !strncmpi(bp, "burned ", l=7)) { */ // TODO DE
@@ -1968,7 +1980,7 @@ boolean from_user;
 			very = 0;
 		} else if (!strncmpi(bp, "halb ADJEKTIV_EATEN ", l=20)) { /* EN } else if (!strncmpi(bp, "half eaten ", l=11)) { */
 			halfeaten = 1;
-		} else if (!strncmpi(bp, "historic ", l=9)) { /* EN } else if (!strncmpi(bp, "historic ", l=9)) { */ // TODO DE
+		} else if (!strncmpi(bp, "ADJEKTIV_ANTIK ", l=15)) { /* EN } else if (!strncmpi(bp, "historic ", l=9)) { */
 			ishistoric = 1;
 		} else if (!strncmpi(bp, "diluted ", l=8)) { /* EN } else if (!strncmpi(bp, "diluted ", l=8)) { */ // TODO DE
 			isdiluted = 1;
@@ -1987,7 +1999,7 @@ boolean from_user;
 		if (p > bp && p[-1] == ' ') p[-1] = 0;
 		else *p = 0;
 		p++;
-		if (!strcmpi(p, "lit)")) { /* EN if (!strcmpi(p, "lit)")) { */ // TODO DE
+		if (!strcmpi(p, "ADJEKTIV_LIT)")) { /* EN if (!strcmpi(p, "lit)")) { */
 		    islit = 1;
 		} else {
 		    spe = atoi(p);
@@ -2903,7 +2915,7 @@ typfnd:
 	    artifact_exists(otmp, ONAME(otmp), FALSE);
 	    obfree(otmp, (struct obj *) 0);
 	    otmp = &zeroobj;
-	    pline("For a moment, you feel %s in your %s, but it disappears!", /* EN pline("For a moment, you feel %s in your %s, but it disappears!", */ // TODO DE
+	    pline("Ganz kurz SUBJECT_IM_SATZ VERB_SPUEREN PRONOMEN_PERSONAL OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV %s, aber es verschwindet wieder!", /* EN pline("For a moment, you feel %s in your %s, but it disappears!", */
 		  something,
 		  makeplural(body_part(HAND)));
 	}

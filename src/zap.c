@@ -4116,7 +4116,7 @@ retry:
 	 */
 	otmp = readobjnam(buf, &nothing, TRUE);
 	if (!otmp) {
-		pline("Nothing fitting that description exists in the game."); /* EN pline("Nothing fitting that description exists in the game."); */ // TODO DE
+		pline("Diese Beschreibung passt zu keinem Objekt, das es in diesem Spiel gibt."); /* EN pline("Nothing fitting that description exists in the game."); */
 	    if (++tries < 5) goto retry;
 	    pline(thats_enough_tries);
 	    otmp = readobjnam((char *)0, (struct obj *)0, TRUE);
