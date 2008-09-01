@@ -3146,7 +3146,7 @@ NOUN_SPIKED_PIT
 	sich ein in meinen schaudernden Verstand. O entsetzliches Begreifen!
 	O wortloser Ekel! - O Grauen über alles Maß! - »Alle andern
 	Schrecken, nur nicht diese!«
-		[ Grube und Pendel von Edgar Allan Poe ]
+		[ "Grube und Pendel" von Edgar Allan Poe ]
 
 pit fiend
 	Pit fiends are among the more powerful of devils, capable of
@@ -4468,12 +4468,23 @@ woodchuck
 long worm tail
 worm tooth
 crysknife
-	[The crysknife] is manufactured in two forms from teeth taken
-	from dead sandworms.  The two forms are "fixed" and "unfixed".
-	An unfixed knife requires proximity to a human body's
-	electrical field to prevent disintegration.  Fixed knives
-	are treated for storage.  All are about 20 centimeters long.
-		[ Dune, by Frank Herbert ]
+#	[The crysknife] is manufactured in two forms from teeth taken
+#	from dead sandworms.  The two forms are "fixed" and "unfixed".
+#	An unfixed knife requires proximity to a human body's
+#	electrical field to prevent disintegration.  Fixed knives
+#	are treated for storage.  All are about 20 centimeters long.
+#		[ Dune, by Frank Herbert ]
+*WORM
+NOUN_LONG_WORM_TAIL
+NOUN_WORM_TOOTH
+NOUN_CRYSKNIFE
+	[Crysmesser] werden aus den Zähnen toter Sandwürmer
+	hergestellt.  Es gibt sie in den Ausführungen "gebunden" und
+	"ungebunden".  Um ein ungebundenes Messer vor seiner Auflösung
+	zu bewahren, muss es in der Nähe des elektrischen Feldes eines
+	menschlichen Körpers getragen werden.  Gebundene Messer sind
+	hingegen lagerfähig.  Sie sind ungefähr 20 Zentimeter lang.
+		[ "Dune - Der Wüstenplanet" von Frank Herbert ]
 wraith
 nazgul
 	Immediately, though everything else remained as before, dim
