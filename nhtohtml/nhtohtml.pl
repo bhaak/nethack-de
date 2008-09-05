@@ -25,9 +25,7 @@ my ($version) = $rev=~ /Revision:\s+(.*?)\s?\$/;
 #and you are welcome to redistribute it under certain conditions.
 #EOF
 
-my $nethome = "$ENV{HOME}/src/nethack-3.4.3";
-my $nethome = "/home/surf/nethack/translation/nethack-de/trunk";
-# my $nethome = "/home/surf/nethack/versions/nethack-3.4.2";
+my $nethome = "$ENV{HOME}/c/nethack-de/trunk/";
 
 
 # Parse monsym.h, which defines the tty characters for the various
@@ -210,7 +208,7 @@ sub process_monster {
   $mon_struct->{COLOR}=~s/HI_ZAP/CLR_BRIGHT_BLUE/;
   
   push @monsters, $mon_struct;
-  # print STDERR "$mon_struct->{NAME} ($symbols{$mon_struct->{SYMBOL}}): $mon_struct->{LEVEL}->{LVL}\n";
+#  print STDERR "$mon_struct->{NAME} ($symbols{$mon_struct->{SYMBOL}}): $mon_struct->{LEVEL}->{LVL}\n";
 $mon_count{$name}++;
 };
 
@@ -369,8 +367,9 @@ while ($m=shift @monsters) {
     $nextprev.=qq(<a href="$nexthtml">&gt;&gt;</a>);
   }
   $nextprev.="</div>";
-  print STDERR "HTML: $htmlname\n";
+#  print STDERR "HTML: htmlname $htmlname\n";
   $print_name=german($m->{NAME});
+#  print STDERR "HTML: print_name: $print_name\n";
 
   # The index entry.
   print INDEX qq(<li><div style="display:inline;color:#$colors{$m->{COLOR}};">$symbols{$m->{SYMBOL}}</div> <a href="$htmlname">$print_name</a></li>\n);
@@ -470,10 +469,7 @@ EOF
   }
 
   # The help file entry, and the footer.
-  #my $entry=lookup_entry($m->{NAME});
-  print STDERR "$m->{NAME}\n";
-  print STDERR "$print_name\n";
-  my $entry=lookup_entry($print_name);
+  my $entry=lookup_entry(substr($m->{NAME},4));
 print HTML <<EOF;
 <hr class="separator1"/>
 <div>$entry</div>
@@ -591,6 +587,7 @@ sub gen_names {
 # Lookup a monster's entry in the help database.
 sub lookup_entry {
   my $name=shift;
+# print STDERR "Suche Datenbank-Eintrag fuer $name\n";
 ENTRY_LOOP:  for $e (@entries) {
     for $pat (@{$e->{TAGS}}) {
 #      print STDERR "Pattern: $pat\n";
@@ -607,13 +604,13 @@ ENTRY_LOOP:  for $e (@entries) {
 # 
 sub german {
   my $name=substr(shift,4);
-  #print STDERR "$name\n";
+#  print STDERR "$name\n";
 
   open GERMAN, "<${nethome}/src/german_vocabulary.c" or die $!;
 
   while ($l=<GERMAN>) {
     if ($l=~/\{"(.*)".*"NOUN_${name}".*nominativ.*n_singular.*ohne/) { 
-      #print STDERR "$1\n";
+      print STDERR "$1\n";
       return $1;
     }
   }
