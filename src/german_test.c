@@ -675,7 +675,7 @@ START_TEST (test_german2meta2) {
 		{"ein rostiges Langschwert", "ARTIKEL_UNBESTIMMTER ADJEKTIV_ROSTIG NOUN_LONG_SWORD"},
 		{"rostiges Langschwert", "ADJEKTIV_ROSTIG NOUN_LONG_SWORD"},
 		{"sehr rostiges Langschwert", "sehr ADJEKTIV_ROSTIG NOUN_LONG_SWORD"},
-		{"ganz verrostetes Langschwert", "sehr ADJEKTIV_VERROSTET NOUN_LONG_SWORD"},
+		{"ganz verrostetes Langschwert", "ganz ADJEKTIV_VERROSTET NOUN_LONG_SWORD"},
 	};
 
 	check_german2meta(text, sizeof(text)/8);

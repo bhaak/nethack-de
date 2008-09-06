@@ -3504,7 +3504,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BITE","Biss","es","Biss","e","maskulin"),
     dekliniere_substantiv("NOUN_BLADE","Klinge","","Klinge","en","feminin"),
     dekliniere_substantiv("NOUN_BOOK","Buch","es","Büch","er","neutrum"),
-    dekliniere_substantiv("NOUN_BOTTLE","Flasche","","Flasche","en","feminin"),
     dekliniere_substantiv("NOUN_BRUDER","Bruder","s","Brüder","","maskulin"),
     dekliniere_adjektivisches_substantiv("NOUN_CANINE","Hundeartig","neutrum"),
     dekliniere_substantiv("NOUN_CHAIN","Kette","","Kette","en","feminin"),

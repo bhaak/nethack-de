@@ -9478,9 +9478,6 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Bücher", "NOUN_BOOKs", "", genitiv|akkusativ|nominativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Büchern", "NOUN_BOOKs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Flasche", "NOUN_BOTTLE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Flaschen", "NOUN_BOTTLEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-
   {"Bruders", "NOUN_BRUDER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Bruder", "NOUN_BRUDER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Brüder", "NOUN_BRUDERs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
