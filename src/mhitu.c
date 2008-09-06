@@ -2327,7 +2327,7 @@ register struct monst *mon;
 		}
 	} else {
 		mon->mspec_used = rnd(100); /* monster is worn out */
-		You("VERB_SCHEINEN es mehr genossen zu haben als OBJECT KASUS_NOMINATIV %s...", /* EN You("seem to have enjoyed it more than %s...", */
+		You("VERB_SCHEINEN es mehr genossen zu haben als OBJECT KASUS_NOMINATIV %s ...", /* EN You("seem to have enjoyed it more than %s...", */
 		    noit_mon_nam(mon));
 		switch (rn2(5)) {
 		case 0: You_feel("raised to your full potential."); /* EN case 0: You_feel("raised to your full potential."); */ // TODO DE

@@ -430,7 +430,7 @@ tele()
 		    char buf[BUFSZ];
 		    if (u.usteed) Sprintf(buf," und %s", mon_nam(u.usteed)); /* EN if (u.usteed) Sprintf(buf," and %s", mon_nam(u.usteed)); */
 #endif
-		    pline("Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL%s teleportieren?", /* EN pline("To what position do you%s want to be teleported?", */
+		    pline("Wohin SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL%s teleportieren?", /* EN pline("To what position do you%s want to be teleported?", */
 #ifdef STEED
 				u.usteed ? buf :
 #endif

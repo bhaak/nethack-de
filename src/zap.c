@@ -2598,7 +2598,7 @@ register struct monst *mtmp;
 	pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"), /* EN pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"), */ // TODO DE
 	      ((cansee(bhitpos.x,bhitpos.y) || canspotmon(mtmp))
 	       && flags.verbose) ?
-	      mon_nam(mtmp) : "NOUN_IT"); /* EN mon_nam(mtmp) : "NOUN_IT"); */ // TODO DE
+	      mon_nam(mtmp) : "NOUN_ETWAS"); /* EN mon_nam(mtmp) : "NOUN_IT"); */
 }
 #endif /*OVL0*/
 #ifdef OVL1

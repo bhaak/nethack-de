@@ -1596,7 +1596,7 @@ lootcont:
 			    goto gotit;	/* two level break */
 gotit:
 		if (coffers) {
-	    verbalize("Thank you for your contribution to reduce the debt."); /* EN verbalize("Thank you for your contribution to reduce the debt."); */ // TODO DE
+	    verbalize("Vielen Dank KASUS_AKKUSATIV für PRONOMEN_POSSESSIV NOUN_BEITRAG zum Schuldenabbau."); /* EN verbalize("Thank you for your contribution to reduce the debt."); */
 		    (void) add_to_container(coffers, goldob);
 		    coffers->owt = weight(coffers);
 		} else {
@@ -1606,7 +1606,7 @@ gotit:
 #ifndef GOLDOBJ
 			mon->mgold += goldob->quan;
 			delobj(goldob);
-			pline("The exchequer accepts your contribution."); /* EN pline("The exchequer accepts your contribution."); */ // TODO DE
+			pline("Der Finanzminister bedankt sich KASUS_AKKUSATIV für PRONOMEN_POSSESSIV NOUN_SPENDE."); /* EN pline("The exchequer accepts your contribution."); */
 		    } else {
 			dropx(goldob);
 		    }
@@ -1615,7 +1615,7 @@ gotit:
 		dropx(goldob);
 #else
 			add_to_minv(mon, goldob);
-			pline("The exchequer accepts your contribution."); /* EN pline("The exchequer accepts your contribution."); */ // TODO DE
+			pline("Der Finanzminister bedankt sich KASUS_AKKUSATIV für PRONOMEN_POSSESSIV NOUN_SPENDE."); /* EN pline("The exchequer accepts your contribution."); */
 		    } else {
 			dropy(goldob);
 		    }
@@ -1696,7 +1696,7 @@ boolean *prev_loot;
     if (mtmp && mtmp != u.usteed && (otmp = which_armor(mtmp, W_SADDLE))) {
 	long unwornmask;
 	if (passed_info) *passed_info = 1;
-	Sprintf(qbuf, "Do you want to remove the saddle from %s?", /* EN Sprintf(qbuf, "Do you want to remove the saddle from %s?", */ // TODO DE
+	Sprintf(qbuf, "SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL OBJECT KASUS_DATIV %s den Sattel abnehmen?", /* EN Sprintf(qbuf, "Do you want to remove the saddle from %s?", */
 		x_monnam(mtmp, ARTICLE_THE, (char *)0, SUPPRESS_SADDLE, FALSE));
 	if ((c = yn_function(qbuf, ynqchars, 'n')) == 'y') {
 		if (nolimbs(youmonst.data)) {

@@ -419,14 +419,14 @@ xchar x, y;
 			   trap->ttyp == SPIKED_PIT) && !Passes_walls) ||
 			 trap->ttyp == WEB)) {
 		if (!trap->tseen) find_trap(trap);
-		You_cant("kick %s that's in a %s!", something, /* EN You_cant("kick %s that's in a %s!", something, */ // TODO DE
-			 Hallucination ? "tizzy" : /* EN Hallucination ? "tizzy" : */ // TODO DE
+		You("VERB_KOENNEN nicht OBJECT %s treten, das NEUES_OBJECT OBJECT KASUS_DATIV in ARTIKEL_UNBESTIMMTER %s steckt!", something, /* EN You_cant("kick %s that's in a %s!", something, */
+			 Hallucination ? "NOUN_ZWANGSJACKE" : /* EN Hallucination ? "tizzy" : */
 			 (trap->ttyp == WEB) ? "NOUN_WEB" : "NOUN_GRUBE"); /* EN (trap->ttyp == WEB) ? "web" : "pit"); */
 		return 1;
 	}
 
 	if(Fumbling && !rn2(3)) {
-		Your("clumsy kick missed."); /* EN Your("clumsy kick missed."); */ // TODO DE
+		Your("ADJEKTIV_PLUMP NOUN_KICK VERB_HIT nicht."); /* EN Your("clumsy kick missed."); */
 		return(1);
 	}
 

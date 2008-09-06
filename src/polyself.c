@@ -502,7 +502,7 @@ int	mntmp;
 	    static const char use_thec[] = "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den Befehl #%s um %s."; /* EN static const char use_thec[] = "Use the command #%s to %s."; */
 	    static const char monsterc[] = "monster";
 	    if (can_breathe(youmonst.data))
-		pline(use_thec,monsterc,"use your breath weapon"); /* EN pline(use_thec,monsterc,"use your breath weapon"); */ // TODO DE
+		pline(use_thec,monsterc,"OBJECT PRONOMEN_POSSESSIV Odem-NOUN_WEAPON zu benutzen"); /* EN pline(use_thec,monsterc,"use your breath weapon"); */
 	    if (attacktype(youmonst.data, AT_SPIT))
 		pline(use_thec,monsterc,"Gift zu speien"); /* EN pline(use_thec,monsterc,"spit venom"); */
 	    if (youmonst.data->mlet == S_NYMPH)

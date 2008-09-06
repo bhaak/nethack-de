@@ -428,7 +428,7 @@ peffects(otmp)
 	case SPE_RESTORE_ABILITY:
 		unkn++;
 		if(otmp->cursed) {
-		    pline("Ulch!  %s mittelmäßig!", this_makes_you_feel); /* EN pline("Ulch!  This makes you feel mediocre!"); */
+		    pline("Örks!  %s mittelmäßig!", this_makes_you_feel); /* EN pline("Ulch!  This makes you feel mediocre!"); */
 		    break;
 		} else {
 		    pline("Wau!  %s %s!", this_makes_you_feel, /* EN pline("Wow!  This makes you feel %s!", */
@@ -716,7 +716,7 @@ peffects(otmp)
 		break;
 	case POT_GAIN_ABILITY:
 		if(otmp->cursed) {
-		    pline("Ulch!  That potion tasted foul!"); /* EN pline("Ulch!  That potion tasted foul!"); */ // TODO DE
+		    pline("Örks!  Dieser Trank schmeckt faulig!"); /* EN pline("Ulch!  That potion tasted foul!"); */
 		    unkn++;
 		} else if (Fixed_abil) {
 		    nothing++;
@@ -1198,7 +1198,7 @@ register struct obj *obj;
 	case POT_GAIN_ABILITY:
 		if(obj->cursed) {
 		    if (!breathless(youmonst.data))
-			pline("Ulch!  Dieser Trank riecht schrecklich!"); /* EN pline("Ulch!  That potion smells terrible!"); */
+			pline("Örks!  Dieser Trank riecht schrecklich!"); /* EN pline("Ulch!  That potion smells terrible!"); */
 		    else if (haseyes(youmonst.data)) {
 			int numeyes = eyecount(youmonst.data);
 			Your("%s VERB_BRENNEN%s!", /* EN Your("%s sting%s!", */

@@ -357,7 +357,7 @@ dig()
 			    lev->typ = DOOR;
 			    lev->doormask = D_NODOOR;
 			}
-			digtxt = "You make an opening in the wall."; /* EN digtxt = "You make an opening in the wall."; */ // TODO DE
+			digtxt = "SUBJECT PRONOMEN_PERSONAL VERB_SCHLAGEN eine Bresche in die Wand."; /* EN digtxt = "You make an opening in the wall."; */
 		} else if(lev->typ == SDOOR) {
 			cvt_sdoor_to_door(lev);	/* ->typ = DOOR */
 			digtxt = "SUBJECT PRONOMEN_PERSONAL VERB_BRECHEN durch eine Geheimtüre!"; /* EN digtxt = "You break through a secret door!"; */
@@ -396,7 +396,7 @@ dig()
 					dpx, dpy, NO_MM_FLAGS);
 			break;
 		    }
-		    if(mtmp) pline_The("debris from your digging comes to life!"); /* EN if(mtmp) pline_The("debris from your digging comes to life!"); */ // TODO DE
+		    if(mtmp) pline("Der Abraum KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_GRABUNG wird lebendig!"); /* EN if(mtmp) pline_The("debris from your digging comes to life!"); */
 		}
 		if(IS_DOOR(lev->typ) && (lev->doormask & D_TRAPPED)) {
 			lev->doormask = D_NODOOR;
@@ -793,7 +793,7 @@ dig_up_grave()
 	    break;
 	case 2:
 	    if (!Blind) pline(Hallucination ? "Alter!  Die lebenden Toten!" : /* EN if (!Blind) pline(Hallucination ? "Dude!  The living dead!" : */
- 			"The grave's owner is very upset!"); /* EN "The grave's owner is very upset!"); */ // TODO DE
+ 			"Der Besitzer des Grabes ist sehr verärgert!"); /* EN "The grave's owner is very upset!"); */
  	    (void) makemon(mkclass(S_ZOMBIE,0), u.ux, u.uy, NO_MM_FLAGS);
 	    break;
 	case 3:
@@ -924,7 +924,7 @@ struct obj *obj;
 			    nomul(-d(2,2));
 			    nomovemsg = "You pull free."; /* EN nomovemsg = "You pull free."; */ // TODO DE
 			} else if (lev->typ == IRONBARS) {
-			    pline("Clang!"); /* EN pline("Clang!"); */ // TODO DE
+			    pline("Klong!"); /* EN pline("Clang!"); */
 			    wake_nearby();
 			} else if (IS_TREE(lev->typ))
 			    You("VERB_BRAUCHEN eine Axt um einen Baum zu fällen."); /* EN You("need an axe to cut down a tree."); */
@@ -1242,7 +1242,7 @@ zap_dig()
 			room->typ = ROOM;
 			unblock_point(zx,zy); /* vision */
 		    } else if (!Blind)
-			pline_The("tree shudders but is unharmed."); /* EN pline_The("tree shudders but is unharmed."); */ // TODO DE
+			pline("Der Baum schaukelt, bleibt aber unbeschädigt."); /* EN pline_The("tree shudders but is unharmed."); */
 		    break;
 		} else if (room->typ == STONE || room->typ == SCORR) {
 		    if (!(room->wall_info & W_NONDIGGABLE)) {

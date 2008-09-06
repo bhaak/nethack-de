@@ -2810,7 +2810,7 @@ char *title;
 	int do_all = (dflags & MINV_ALL) != 0;
 #endif
 
-	Sprintf(tmp,"%s:", genitivattribut_zu_wort(noit_Monnam(mon), /* EN Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)), */
+	Sprintf(tmp,"SATZBEGINN %s:", genitivattribut_zu_wort(noit_Monnam(mon), /* EN Sprintf(tmp,"%s %s:", s_suffix(noit_Monnam(mon)), */
 		do_all ? "NOUN_BESITZTUMs" : "NOUN_BEWAFFNUNG")); /* EN do_all ? "possessions" : "armament"); */
 
 #ifndef GOLDOBJ

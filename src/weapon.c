@@ -61,14 +61,14 @@ STATIC_VAR NEARDATA const short skill_names_indices[P_NUM_SKILLS] = {
 
 /* note: entry [0] isn't used */
 STATIC_VAR NEARDATA const char * const odd_skill_names[] = {
-    "no skill", /* EN "no skill", */ // TODO DE
+    "PRONOMEN_KEIN NOUN_SKILL", /* EN "no skill", */
     "bare hands",		/* use barehands_or_martial[] instead */ /* EN "bare hands",		 */ // TODO DE
     "two weapon combat", /* EN "two weapon combat", */ // TODO DE
-    "riding", /* EN "riding", */ // TODO DE
-    "polearms", /* EN "polearms", */ // TODO DE
-    "saber", /* EN "saber", */ // TODO DE
-    "hammer", /* EN "hammer", */ // TODO DE
-    "whip", /* EN "whip", */ // TODO DE
+    "Reiten", /* EN "riding", */
+    "NOUN_POLEARMs", /* EN "polearms", */
+    "NOUN_SABER", /* EN "saber", */
+    "NOUN_HAMMER", /* EN "hammer", */
+    "NOUN_WHIP", /* EN "whip", */
     "attack spells", /* EN "attack spells", */ // TODO DE
     "healing spells", /* EN "healing spells", */ // TODO DE
     "divination spells", /* EN "divination spells", */ // TODO DE
@@ -969,7 +969,7 @@ enhance_weapon_skill()
 	    }
 
 	    Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" : /* EN Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" : */ // TODO DE
-					   "Current skills:"); /* EN "Current skills:"); */ // TODO DE
+					   "SATZBEGINN ADJEKTIV_DERZEITIG NOUN_SKILLs:"); /* EN "Current skills:"); */
 #ifdef WIZARD
 	    if (wizard && !speedy)
 		Sprintf(eos(buf), "  (%d slot%s available)", /* EN Sprintf(eos(buf), "  (%d slot%s available)", */ // TODO DE

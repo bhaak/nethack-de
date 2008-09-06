@@ -1835,13 +1835,16 @@ create_particular()
 	do {
 	    which = urole.malenum;	/* an arbitrary index into mons[] */
 	    maketame = makepeaceful = makehostile = FALSE;
-	    getlin("Create what kind of monster? [type the name or symbol]", /* EN getlin("Create what kind of monster? [type the name or symbol]", */ // TODO DE
+	    getlin("Welche Art von Monster erzeugen? [NEUER_SATZ MODIFIER_VERB_IMPERATIV VERB_EINGEBEN den Namen oder das Symbol SATZKLAMMER]", /* EN getlin("Create what kind of monster? [type the name or symbol]", */
 		   buf);
 	    bufp = mungspaces(buf);
 	    if (*bufp == '\033') return FALSE;
 #ifdef GERMAN
-	    german2meta(buf, tmp); /* EN str = strcpy(buf, in_str); */
-	    bufp = tmp;
+	    /* damit Monstersymbole nicht umgewandelt werden */
+	    if (strlen(bufp) > 1) {
+	      german2meta(bufp, tmp); /* EN str = strcpy(buf, in_str); */
+	      bufp = tmp;
+	    }
 	    if (!strncmpi(bufp, "ARTIKEL_BESTIMMTER ", 19)) {
 		bufp += 19;
 	    } else if (!strncmpi(bufp, "ARTIKEL_UNBESTIMMTER ", 21)) {

@@ -336,27 +336,26 @@ checkfile(inp, pm, user_typed_name, without_asking)
 #ifdef GERMAN
     german2meta(newstr, tmp_str);
     dbase_str = tmp_str;
-#else
-    (void) lcase(dbase_str);
 #endif
+    (void) lcase(dbase_str);
 
-    if (!strncmp(dbase_str, "NOUN_INNERE OBJECT KASUS_GENITIV ", 33)) /* EN if (!strncmp(dbase_str, "interior of ", 12)) */
+    if (!strncmpi(dbase_str, "NOUN_INNERE OBJECT KASUS_GENITIV ", 33)) /* EN if (!strncmp(dbase_str, "interior of ", 12)) */
 	dbase_str += 12;
-    if (!strncmp(dbase_str, "ARTIKEL_UNBESTIMMTER ", 21)) /* EN if (!strncmp(dbase_str, "a ", 2)) */
+    if (!strncmpi(dbase_str, "ARTIKEL_UNBESTIMMTER ", 21)) /* EN if (!strncmp(dbase_str, "a ", 2)) */
 	dbase_str += 2;
-    else if (!strncmp(dbase_str, "ARTIKEL_UNBESTIMMTER ", 21)) /* EN else if (!strncmp(dbase_str, "an ", 3)) */
+    else if (!strncmpi(dbase_str, "ARTIKEL_UNBESTIMMTER ", 21)) /* EN else if (!strncmp(dbase_str, "an ", 3)) */
 	dbase_str += 3;
-    else if (!strncmp(dbase_str, "ARTIKEL_BESTIMMTER ", 19)) /* EN else if (!strncmp(dbase_str, "the ", 4)) */
+    else if (!strncmpi(dbase_str, "ARTIKEL_BESTIMMTER ", 19)) /* EN else if (!strncmp(dbase_str, "the ", 4)) */
 	dbase_str += 4;
-    if (!strncmp(dbase_str, "ADJEKTIV_TAME ", 14)) /* EN if (!strncmp(dbase_str, "tame ", 5)) */
+    if (!strncmpi(dbase_str, "ADJEKTIV_TAME ", 14)) /* EN if (!strncmp(dbase_str, "tame ", 5)) */
 	dbase_str += 5;
-    else if (!strncmp(dbase_str, "ADJEKTIV_PEACEFUL ", 18)) /* EN else if (!strncmp(dbase_str, "peaceful ", 9)) */
+    else if (!strncmpi(dbase_str, "ADJEKTIV_PEACEFUL ", 18)) /* EN else if (!strncmp(dbase_str, "peaceful ", 9)) */
 	dbase_str += 9;
-    if (!strncmp(dbase_str, "ADJEKTIV_INVISIBLE ", 19)) /* EN if (!strncmp(dbase_str, "invisible ", 10)) */
+    if (!strncmpi(dbase_str, "ADJEKTIV_INVISIBLE ", 19)) /* EN if (!strncmp(dbase_str, "invisible ", 10)) */
 	dbase_str += 10;
-    if (!strncmp(dbase_str, "NOUN_STATUE PARTIKEL_OF ", 24)) /* EN if (!strncmp(dbase_str, "statue of ", 10)) */
+    if (!strncmpi(dbase_str, "NOUN_STATUE PARTIKEL_OF ", 24)) /* EN if (!strncmp(dbase_str, "statue of ", 10)) */
 	dbase_str[6] = '\0';
-    else if (!strncmp(dbase_str, "NOUN_FIGURINE PARTIKEL_OF ", 26)) /* EN else if (!strncmp(dbase_str, "figurine of ", 12)) */
+    else if (!strncmpi(dbase_str, "NOUN_FIGURINE PARTIKEL_OF ", 26)) /* EN else if (!strncmp(dbase_str, "figurine of ", 12)) */
 	dbase_str[8] = '\0';
 
     /* Make sure the name is non-empty. */

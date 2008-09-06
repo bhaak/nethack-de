@@ -3529,7 +3529,7 @@ boolean force;
 				You("VERB_DISARM sie!"); /* EN You("disarm it!"); */
 				otmp->otrapped = 0;
 			    }
-			} else pline("SUBJECT PRONOMEN_DIESER %s was not trapped.", xname(otmp)); /* EN } else pline("That %s was not trapped.", xname(otmp)); */ // TODO DE
+			} else pline("SUBJECT PRONOMEN_DIESER %s war nicht vermint.", xname(otmp)); /* EN } else pline("That %s was not trapped.", xname(otmp)); */
 			return(1);
 		    } else {
 			You("VERB_FINDEN keine Fallen OBJECT KASUS_DATIV an %s.", the(xname(otmp))); /* EN You("find no traps on %s.", the(xname(otmp))); */
@@ -3595,7 +3595,7 @@ boolean force;
 			You("VERB_DISARM sie!"); /* EN You("disarm it!"); */
 			levl[x][y].doormask &= ~D_TRAPPED;
 		    }
-		} else pline("This door was not trapped."); /* EN } else pline("This door was not trapped."); */ // TODO DE
+		} else pline("Diese Türe war nicht vermint."); /* EN } else pline("This door was not trapped."); */
 		return(1);
 	} else {
 		You("VERB_FINDEN keine Fallen an dieser Türe."); /* EN You("find no traps on the door."); */

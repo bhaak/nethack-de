@@ -1832,7 +1832,7 @@ struct obj *otmp;
 	}
 	if (Upolyd && u.umonnum == PM_RUST_MONSTER &&
 	    is_metallic(otmp) && otmp->oerodeproof) {
-		Sprintf(buf, "%s disgusting to you right now. %s", /* EN Sprintf(buf, "%s disgusting to you right now. %s", */ // TODO DE
+		Sprintf(buf, "%s OBJECT für PRONOMEN_PERSONAL gerade extrem widerlich. %s", /* EN Sprintf(buf, "%s disgusting to you right now. %s", */
 			foodsmell, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
@@ -1846,7 +1846,7 @@ struct obj *otmp;
 	    ((material == LEATHER || material == BONE ||
 	      material == DRAGON_HIDE || material == WAX) ||
 	     (cadaver && !vegan(&mons[mnum])))) {
-		Sprintf(buf, "%s foul and unfamiliar to you. %s", /* EN Sprintf(buf, "%s foul and unfamiliar to you. %s", */ // TODO DE
+		Sprintf(buf, "%s OBJECT für PRONOMEN_PERSONAL faulig und unbekannt. %s", /* EN Sprintf(buf, "%s foul and unfamiliar to you. %s", */
 			foodsmell, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
@@ -1855,7 +1855,7 @@ struct obj *otmp;
 	    ((material == LEATHER || material == BONE ||
 	      material == DRAGON_HIDE) ||
 	     (cadaver && !vegetarian(&mons[mnum])))) {
-		Sprintf(buf, "%s unfamiliar to you. %s", /* EN Sprintf(buf, "%s unfamiliar to you. %s", */ // TODO DE
+		Sprintf(buf, "%s OBJECT für PRONOMEN_PERSONAL unbekannt. %s", /* EN Sprintf(buf, "%s unfamiliar to you. %s", */
 			foodsmell, eat_it_anyway);
 		if (yn_function(buf,ynchars,'n')=='n') return 1;
 		else return 2;
@@ -1921,7 +1921,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 		    else
 			otmp = splitobj(otmp, 1L);
 		}
-		pline("Ulch - That %s was rustproofed!", xname(otmp)); /* EN pline("Ulch - That %s was rustproofed!", xname(otmp)); */ // TODO DE
+		pline("Urks - SUBJECT PRONOMEN_DIESER %s war rostfrei!", xname(otmp)); /* EN pline("Ulch - That %s was rustproofed!", xname(otmp)); */
 		/* The regurgitated object's rustproofing is gone now */
 		otmp->oerodeproof = 0;
 		make_stunned(HStun + rn2(10), TRUE);
@@ -2207,7 +2207,7 @@ register int num;
 	     */
 	    if (u.uhunger >= 1500) {
 		if (!victual.eating || (victual.eating && !victual.fullwarn)) {
-		    pline("You're having a hard time getting all of it down."); /* EN pline("You're having a hard time getting all of it down."); */ // TODO DE
+		    pline("SUBJECT PRONOMEN_PERSONAL VERB_HABEN ziemlich Mühe, alles runterzukriegen."); /* EN pline("You're having a hard time getting all of it down."); */
 		    nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_SEIN endlich fertig."; /* EN nomovemsg = "You're finally finished."; */
 		    if (!victual.eating)
 			multi = -2;
@@ -2435,7 +2435,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 		   then the trap would just get eaten on the _next_ turn... */
 		Sprintf(qbuf, "Hier befindet sich eine Bärenfalle (%s); sie essen?", /* EN Sprintf(qbuf, "There is a bear trap here (%s); eat it?", */
 			(u.utrap && u.utraptype == TT_BEARTRAP) ?
-				"holding you" : "armed"); /* EN "holding you" : "armed"); */ // TODO DE
+				"holding you" : "scharf"); /* EN "holding you" : "armed"); */ // TODO DE
 		if ((c = yn_function(qbuf, ynqchars, 'n')) == 'y') {
 		    u.utrap = u.utraptype = 0;
 		    deltrap(ttmp);

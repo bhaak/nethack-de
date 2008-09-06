@@ -3059,7 +3059,7 @@ register boolean croaked;
 	    else if (inside_shop(u.ux, u.uy) == ESHK(shkp)->shoproom)
 		Du_fuehlst_dich("klaustrophobischer als vorher."); /* EN You_feel("more claustrophobic than before."); */
 	    else if (flags.soundok && !rn2(10))
-		Norep("The dungeon acoustics noticeably change."); /* EN Norep("The dungeon acoustics noticeably change."); */ // TODO DE
+		Norep("Die Akustik im Dungeon ändert sich merklich."); /* EN Norep("The dungeon acoustics noticeably change."); */
 	}
 	if (stop_picking)
 		stop_occupation();
@@ -3662,7 +3662,7 @@ register struct obj *first_obj;
     struct monst *shkp = shop_keeper(inside_shop(u.ux, u.uy));
 
     tmpwin = create_nhwindow(NHW_MENU);
-    putstr(tmpwin, 0, "Fine goods for sale:"); /* EN putstr(tmpwin, 0, "Fine goods for sale:"); */ // TODO DE
+    putstr(tmpwin, 0, "Erstklassige Waren zu verkaufen:"); /* EN putstr(tmpwin, 0, "Fine goods for sale:"); */
     putstr(tmpwin, 0, "");
     for (otmp = first_obj; otmp; otmp = otmp->nexthere) {
 	if (otmp->oclass == COIN_CLASS) continue;
@@ -3716,7 +3716,7 @@ long cost;
 		    : (o == AMULET_CLASS || o == RING_CLASS   ||
 		       o == WAND_CLASS   || o == POTION_CLASS ||
 		       o == SCROLL_CLASS || o == SPBOOK_CLASS))
-		    return ", painstakingly developed!"; /* EN return ", painstakingly developed!"; */ // TODO DE
+		    return ", sorgfältigst hergestellt!"; /* EN return ", painstakingly developed!"; */
 		return ", beste Handarbeit!"; /* EN return ", superb craftsmanship!"; */
 	    case 3: return ", beste Qualität."; /* EN case 3: return ", finest quality."; */
 	    case 2: return ", eine exzellente Wahl."; /* EN case 2: return ", an excellent choice."; */
@@ -3735,13 +3735,13 @@ long cost;
 const char *Izchak_speaks[]={
     "SUBJECT %s sagt: 'Diese Einkaufszentren machen mir Kopfschmerzen.'", /* EN "%s says: 'These shopping malls give me a headache.'", */
     "SUBJECT %s sagt: 'Slow down.  Think clearly.'", /* EN "%s says: 'Slow down.  Think clearly.'", */ // TODO DE
-    "SUBJECT %s sagt: 'Immer eins nach dem anderen.'", /* EN "%s says: 'You need to take things one at a time.'", */ // TODO DE
+    "SUBJECT %s sagt: 'Immer eins nach dem anderen.'", /* EN "%s says: 'You need to take things one at a time.'", */
     "SUBJECT %s sagt: 'I don't like poofy coffee... give me Columbian Supremo.'", /* EN "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", */ // TODO DE
     "SUBJECT %s sagt that getting the devteam's agreement on anything is difficult.", /* EN "%s says that getting the devteam's agreement on anything is difficult.", */ // TODO DE
     "SUBJECT %s sagt that he has noticed those who serve their deity will prosper.", /* EN "%s says that he has noticed those who serve their deity will prosper.", */ // TODO DE
     "SUBJECT %s sagt: 'Don't try to steal from me - I have friends in high places!'", /* EN "%s says: 'Don't try to steal from me - I have friends in high places!'", */ // TODO DE
     "SUBJECT %s sagt: 'You may well need something from this shop in the future.'", /* EN "%s says: 'You may well need something from this shop in the future.'", */ // TODO DE
-    "SUBJECT %s comments about the Valley of the Dead as being a gateway." /* EN "%s comments about the Valley of the Dead as being a gateway." */ // TODO DE
+    "SUBJECT %s beschreibt das Tal der Toten als Zugangspforte." /* EN "%s comments about the Valley of the Dead as being a gateway." */
 };
 
 void
@@ -3757,7 +3757,7 @@ struct monst *shkp;
 		   not actually a shk, which could happen if someone
 		   wishes for a shopkeeper statue and then animates it.
 		   (Note: shkname() would be "" in a case like this.) */
-		pline("SUBJECT %s VERB_FRAGEN OBJECT PRONOMEN_PERSONAL, ob NEUER_SATZ SUBJECT PRONOMEN_PERSONAL in letzter Zeit untended Läden gesehen VERB_HABEN.", /* EN pline("%s asks whether you've seen any untended shops recently.", */ // TODO DE
+		pline("SUBJECT %s VERB_FRAGEN OBJECT PRONOMEN_PERSONAL, ob NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL in letzter Zeit aufgegebene Läden gesehen VERB_HABEN.", /* EN pline("%s asks whether you've seen any untended shops recently.", */
 		      Monnam(shkp));
 		/* [Perhaps we ought to check whether this conversation
 		   is taking place inside an untended shop, but a shopless
