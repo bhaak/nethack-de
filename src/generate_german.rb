@@ -1642,6 +1642,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WORM_TOOTH", "Wurmzahn", "es", "Wurmzähn", "e", "maskulin"),
     dekliniere_substantiv("NOUN_CRYSKNIFE", "Crysmesser", "s", "Crysmesser", "", "neutrum"),
     dekliniere_substantiv("NOUN_AXE", "Beil", "es", "Beil", "e", "neutrum"),
+    dekliniere_substantiv("NOUN_AXE", "Axt", "", "Äxt", "e", "feminin"),
     dekliniere_substantiv("NOUN_BATTLE_AXE", "Streitaxt", "", "Streitäxt", "e", "feminin"),
     dekliniere_substantiv("NOUN_SHORT_SWORD", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_ELVEN_SHORT_SWORD", "elbisch", "Kurzschwert", "es", "Kurzschwert", "er", "neutrum"),
@@ -1677,7 +1678,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CLUB", "Keule", "", "Keule", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_RUBBER_HOSE", "Gummiknüppel", "s", "Gummiknüppel", "", "maskulin"),
     dekliniere_substantiv("NOUN_QUARTERSTAFF", "Kampfstab", "es", "Kampfstäb", "e", "maskulin", "s"),
-    dekliniere_substantiv("NOUN_AKLYS", "Hakenspeer", "es", "Hakenspeer", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_AKLYS", "Aklys", "", "Aklys", "fremder", "neutrum"),
     dekliniere_substantiv("NOUN_FLAIL", "Dreschflegel", "s", "Dreschflegel", "", "maskulin"),
     dekliniere_substantiv("NOUN_BULLWHIP", "Peitsche", "", "Peitsche", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_BOW", "Bogen", "s", "Bogen", "", "maskulin"),
@@ -1698,10 +1699,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_THROWING_SPEAR", "Wurfspeer", "es", "Wurfspeer", "e", "maskulin"),
     dekliniere_substantiv("NOUN_RUNED_DAGGER", "Runendolch", "es", "Runendolch", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_CRUDE_DAGGER", "klobig", "Dolch", "es", "Dolch", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_DOUBLE_HEADED_AXE"
+    dekliniere_nominalphrase("NOUN_DOUBLE_HEADED_AXE", "zweischneidig", "Doppelaxt", "", "Doppeläxt", "e", "feminin"),
+    dekliniere_substantiv("NOUN_DOUBLE_HEADED_AXE", "Doppelaxt", "", "Doppeläxt", "e", "feminin"),
     dekliniere_substantiv("NOUN_RUNED_SHORT_SWORD", "Runenkurzschwert", "es", "Runenkurzschwert", "er", "neutrum"),
-    dekliniere_nominalphrase("NOUN_CRUDE_SHORT_SWORD", "klobig", "Kurzschwert", "es", "Kurzschwert", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_BROAD_SHORT_SWORD"
+    dekliniere_nominalphrase("NOUN_CRUDE_SHORT_SWORD", "klobig", "Kurzschwert", "es", "Kurzschwert", "e", "neutrum"),
+    dekliniere_nominalphrase("NOUN_BROAD_SHORT_SWORD", "breit", "Kurzschwert", "es", "Kurzschwert", "e", "neutrum"),
     dekliniere_substantiv("NOUN_CURVED_SWORD", "Krummschwert", "es", "Krummschwert", "er", "neutrum"),
     dekliniere_substantiv("NOUN_RUNED_BROADSWORD", "Runenbreitschwert", "es", "Runenbreitschwert", "er", "neutrum", "s"),
     dekliniere_substantiv("NOUN_SAMURAI_SWORD", "Samuraischwert", "es", "Samuraischwert", "er", "neutrum"),
@@ -1721,7 +1723,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_PRONGED_POLEARM", "lang", "Streithammer", "s", "Streithämmer", "", "maskulin"),
     dekliniere_nominalphrase("NOUN_BEAKED_POLEARM", "spitz", "Streithammer", "s", "Streithämmer", "", "maskulin"),
     dekliniere_substantiv("NOUN_STAFF", "Stock", "es", "Stöck", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_THONGED_CLUB"
+    dekliniere_substantiv("NOUN_THONGED_CLUB", "Riemenknüppel", "s", "Riemenknüppel", "", "maskulin"),
     dekliniere_substantiv("NOUN_RUNED_BOW", "Runenbogen", "s", "Runenbogen", "", "maskulin"),
     dekliniere_nominalphrase("NOUN_CRUDE_BOW", "klobig", "Bogen", "s", "Bogen", "", "maskulin"),
     dekliniere_substantiv("NOUN_LONG_BOW", "Langbogen", "s", "Langbogen", "", "maskulin"),
@@ -1731,13 +1733,14 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ORCISH_HELM", "Orkhelm", "es", "Orkhelm", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_DWARVISH_IRON_HELM", "eisern", "Zwergenhelm", "es", "Zwergenhelm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_FEDORA", "Fedora", "", "Fedora", "fremder", "maskulin"),
-    #dekliniere_substantiv("NOUN_CORNUTHAUM"
-    #dekliniere_substantiv("NOUN_DUNCE_CAP" # Narrenkappe, Eselmütze
+    #dekliniere_substantiv("NOUN_CORNUTHAUM" # Zaubererhut? Etwas lasch
+    dekliniere_substantiv("NOUN_DUNCE_CAP", "Narrenkappe", "", "Narrenkappe", "en", "feminin"), # Narrenkappe, Eselsmütze
     dekliniere_nominalphrase("NOUN_DENTED_POT", "verbeult", "Topf", "es", "Töpf", "e", "maskulin"),
     dekliniere_substantiv("NOUN_HELMET", "Helm", "es", "Helm", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_HELM_OF_BRILLIANCE"
-    #dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT" # Helm der entgegengesetzten Gesinnung
-    #dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY" # Helm der Telepathie
+    #dekliniere_substantiv("NOUN_HELM_OF_BRILLIANCE" # Helm der Genialität
+    dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT", "Helm", "es", "Helm", "e", "maskulin","","des Gesinnungswandel"), # Helm der entgegengesetzten Gesinnung, Helm des Gesinnungswandel
+    dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT", "Wendehalshelm", "es", "Wendehalshelm", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY", "Helm", "es", "Helm", "e", "maskulin","","der Telepathie"),
     dekliniere_substantiv("NOUN_GRAY_DRAGON_SCALE_MAIL", "Graudrachen-Schuppenpanzer", "s", "Graudrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_SILVER_DRAGON_SCALE_MAIL", "Silberdrachen-Schuppenpanzer", "s", "Silberdrachen-Schuppenpanzer", "", "maskulin"),
     dekliniere_substantiv("NOUN_SHIMMERING_DRAGON_SCALE_MAIL", "Glanzdrachen-Schuppenpanzer", "s", "Glanzdrachen-Schuppenpanzer", "", "maskulin"),
@@ -1762,8 +1765,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CRYSTAL_PLATE_MAIL", "Kristallpanzer",  "s", "Kristallpanzer", "", "maskulin"), # Kristallplattenpanzer, kristallener Plattenpanzer, Kristallpanzer
     dekliniere_substantiv("NOUN_BRONZE_PLATE_MAIL", "Bronzepanzer",  "s", "Bronzepanzer", "", "maskulin"),  # Bronzeplattenpanzer, bronzener Plattenpanzer, Bronzepanzer
     dekliniere_substantiv("NOUN_SPLINT_MAIL", "Schienenpanzer",  "s", "Schienenpanzer", "", "maskulin"),
-    # dekliniere_substantiv("NOUN_BANDED_MAIL", "Spangenharnisch",  "s", "Spangenharnisch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_BANDED_MAIL", "Bänderpanzer",  "s", "Bänderpanzer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_BANDED_MAIL", "Spangenharnisch",  "s", "Spangenharnisch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_MITHRIL_COAT", "Zwergen-Mithrilhemd", "es", "Zwergen-Mithrilhemd", "en", "neutrum", "en"),
     dekliniere_substantiv("NOUN_ELVEN_MITHRIL_COAT", "Elben-Mithrilhemd", "es", "Elben-Mithrilhemd", "en", "neutrum", "en"),
     dekliniere_substantiv("NOUN_CHAIN_MAIL", "Kettenhemd", "es", "Kettenhemd", "en", "neutrum", "en"),
@@ -1790,7 +1793,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_CLOAK_OF_DISPLACEMENT" # deplaziert?, verstellt?, disloziert?, verdraengt?, verschoben?, verrueckt?, versetzt, 
     dekliniere_nominalphrase("NOUN_SMALL_SHIELD", "klein", "Schild", "es", "Schild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_SHIELD", "Elbenschild", "es", "Elbenschild", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_URUK_HAI_SHIELD"
+    dekliniere_substantiv("NOUN_URUK_HAI_SHIELD", "Uruk-Hai-Schild", "es", "Uruk-Hai-Schild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ORCISH_SHIELD", "Orkschild", "es", "Orkschild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_LARGE_SHIELD", "Langschild", "es", "Langschild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_ROUNDSHIELD", "Zwergen-Rundschild", "es", "Zwergen-Rundschild", "e", "maskulin"),
@@ -1813,13 +1816,14 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEVITATION_BOOTS", "Flugschuh", "es", "Flugschuh", "e", "maskulin"),
     "",
     "/* Armor, unidentified */",
-    #dekliniere_substantiv("NOUN_LEATHER_HAT"  # Lederhut
-    #dekliniere_substantiv("NOUN_IRON_SKULL_CAP"
+    dekliniere_substantiv("NOUN_LEATHER_HAT", "Lederhut", "es", "Lederhüt", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_IRON_SKULL_CAP", "Eisenkappe", "", "Eisenkappe", "en", "feminin"),
     #dekliniere_substantiv("NOUN_HARD_HAT"
     dekliniere_substantiv("NOUN_SCHLAPPHUT", "Schlapphut", "es", "Schlapphüt", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_CONICAL_HAT"
-    #dekliniere_substantiv("NOUN_PLUMED_HELMET" # Normannenhelm?, Spangenhelm?, Topfhelm?
-    #dekliniere_substantiv("NOUN_ETCHED_HELMET" # Kreuzhelm?, Bronzehelm?, Barbuta?, Eisenhut?
+    dekliniere_substantiv("NOUN_CONICAL_HAT", "Zipfelmütze", "", "Zipfelmütze", "en", "feminin"),
+    "/* Die folgenden vier Helme muessen nur verschieden benannt sein. Der Visierhelm muss der einzige sein, der eine Visier hat, da der gegen Blendangriffe schuetzt. */",
+    dekliniere_substantiv("NOUN_PLUMED_HELMET", "Normannenhelm", "es", "Normannenhelm", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_ETCHED_HELMET", "Perserhelm", "es", "Perserhelm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_CRESTED_HELMET", "Wikingerhelm", "es", "Wikingerhelm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_VISORED_HELMET", "Visierhelm", "es", "Visierhelm", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_CRUDE_CHAIN_MAIL", "klobig", "Kettenhemd", "es", "Kettenhemd", "en", "neutrum", "en"),
@@ -1838,7 +1842,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_WHITE_HANDED_SHIELD"
     #dekliniere_substantiv("NOUN_RED_EYED_SHIELD"
     #dekliniere_substantiv("NOUN_LARGE_ROUND_SHIELD"
-    #dekliniere_substantiv("NOUN_POLISHED_SILVER_SHIELD"
+    dekliniere_nominalphrase("NOUN_POLISHED_SILVER_SHIELD", "poliert", "Silberschild", "es", "Silberschild", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_OLD_GLOVES", "alt", "Handschuh", "es", "Handschuh", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_PADDED_GLOVES", "gefüttert", "Handschuh", "es", "Handschuh", "e", "maskulin"),
     dekliniere_substantiv("NOUN_RIDING_GLOVES", "Reithandschuh", "es", "Reithandschuh", "e", "maskulin"),
@@ -1874,7 +1878,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_TELEPORTATION", "Teleportation", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_WAND_OPENING", "Öffnung", "", "Öffnung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_LOCKING", "Schliessen", "s", "", "", "neutrum"),
-    #dekliniere_substantiv("NOUN_WAND_PROBING", # Prüfung
+    dekliniere_substantiv("NOUN_WAND_PROBING", "Prüfung", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_DIGGING", "Graben", "s", "", "", "neutrum"),
     dekliniere_nominalphrase("NOUN_WAND_MAGIC_MISSILE", "magisch", "Geschoss", "es", "Geschoss", "e", "neutrum"),  # magische Geschosse
     dekliniere_substantiv("NOUN_WAND_FIRE", "Feuer", "s", "Feuer", "", "neutrum"),
@@ -2042,6 +2046,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MAGIC_LAMP", "Wunderlampe", "", "Wunderlampe", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_MAGIC_LAMP", "Zauberlampe", "", "Zauberlampe", "en", "feminin", "n"),
     dekliniere_nominalphrase("NOUN_EXPENSIVE_CAMERA", "teur", "Photoapparat", "es", "Photoapparat", "e", "maskulin", "s"),
+    dekliniere_nominalphrase("NOUN_EXPENSIVE_CAMERA", "teur", "Fotoapparat", "es", "Fotoapparat", "e", "maskulin", "s"),
+    dekliniere_substantiv("NOUN_EXPENSIVE_CAMERA", "Fotoapparat", "es", "Fotoapparat", "e", "maskulin", "s"),
+    dekliniere_substantiv("NOUN_EXPENSIVE_CAMERA", "Photoapparat", "es", "Photoapparat", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_MIRROR","Spiegel","","Spiegel","","maskulin"),
     dekliniere_substantiv("NOUN_CRYSTAL_BALL", "Kristallkugel", "", "Kristallkugel", "en", "feminin"),
     dekliniere_substantiv("NOUN_LENSES", "Kontaktlinse", "", "Kontaktlinse", "en", "feminin", "en"),
@@ -2495,6 +2502,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HELL_HOUND_PUP", "Höllenhundwelpe", "en", "Höllenhundwelpe", "en", "maskulin","e"),
     dekliniere_substantiv("NOUN_HELL_HOUND", "Höllenhund", "es", "Höllenhund", "e", "maskulin","e"),
     dekliniere_substantiv("NOUN_CERBERUS", "Zerberus", "", "Zerberuss", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_CERBERUS", "Kerberus", "", "Kerberuss", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_CERBERUS", "Kerberos", "", "Kerbeross", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GAS_SPORE", "Gasspore", "", "Gasspore", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_FLOATING_EYE", "Schwebäugler", "s", "Schwebäugler", "", "maskulin"),
     dekliniere_substantiv("NOUN_FLOATING_EYE", "Schwebaug", "es", "Schwebaug", "en", "neutrum", "n"), # Schwebäugler?, Schwebäuger?, was mit Ocellus?, nuräeugler, flugäugler, flugauge,
@@ -2523,6 +2532,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MIND_FLAYER", "Gedankendieb", "es", "Gedankendieb", "e", "maskulin", "s"), # Gedankenschinder, Gedankendieb
     dekliniere_substantiv("NOUN_MASTER_MIND_FLAYER", "Gedankenschinder", "s", "Gedankenschinder", "", "maskulin", "s"), # Superhirnschinder, Gedankenschinder
     dekliniere_substantiv("NOUN_MANES", "Mane", "en", "Mane", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_HOMUNCULUS", "Homunkulus", "", "Homunkuli", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_HOMUNCULUS", "Homunculus", "", "Homunculi", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_IMP", "Imp", "", "Imp", "s", "maskulin"),
     dekliniere_substantiv("NOUN_LEMURE", "Lemur", "en", "Lemur", "en", "maskulin"),
@@ -2719,7 +2729,7 @@ def ausgabe_nouns
     [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad dem Pfähler", $dat, $mal, $sg)],
     [unregelmaessiges_wort("NOUN_VLAD_THE_IMPALER", "Vlad den Pfähler", $akk, $mal, $sg)],
     #dekliniere_substantiv("NOUN_BARROW_WIGHT" # Grabunhold? , Wight Gruftschrecken
-    #dekliniere_substantiv("NOUN_WRAITH" # Todesalb
+    #dekliniere_substantiv("NOUN_WRAITH" # Todesalb, Schreckensalb
     dekliniere_substantiv("NOUN_NAZGUL","Nazgûl","","Nazgûl","","maskulin"),
     dekliniere_substantiv("NOUN_XORN","Xorn","","Xorn","","maskulin","en"),
     #dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
@@ -2784,18 +2794,18 @@ def ausgabe_nouns
     dekliniere_eigenname("NOUN_CHARON", "Charon", "maskulin"),
     dekliniere_substantiv("NOUN_GHOST", "Geist", "es", "Geist", "er", "maskulin", "er"),
     dekliniere_substantiv("NOUN_SHADE", "Nachtschatten", "s", "Nachtschatten", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_WATER_DEMON" # Wasserteufelm Wasserdämon
-    #dekliniere_substantiv("NOUN_HORNED_DEVIL" # Hornteufel Malebranche
+    dekliniere_substantiv("NOUN_WATER_DEMON", "Wasserdämon", "s", "Wasserdämon", "en", "maskulin"), # Wasserteufel, Wasserdämon
+    dekliniere_substantiv("NOUN_HORNED_DEVIL", "Hornteufel", "s", "Hornteufel", "", "maskulin"), # Hornteufel Malebranche
     dekliniere_substantiv("NOUN_SUCCUBUS", "Sukkubus", "", "Sukkuben", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_INCUBUS", "Incubus", "", "Incuben", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_ERINYS", "Erinnye", "", "Erinnye", "en", "feminin", "n"),
-    #dekliniere_substantiv("NOUN_BARBED_DEVIL"
-    #dekliniere_substantiv("NOUN_MARILITH" # die Marilith
-    #dekliniere_substantiv("NOUN_VROCK"
-    #dekliniere_substantiv("NOUN_HEZROU" # der Heztou?
-    #dekliniere_substantiv("NOUN_BONE_DEVIL" # Knochenteufel
-    #dekliniere_substantiv("NOUN_ICE_DEVIL"  # Eisteufel Gelugon
-    #dekliniere_substantiv("NOUN_NALFESHNEE"
+    dekliniere_substantiv("NOUN_BARBED_DEVIL", "Dornteufel", "s", "Dornteufel", "", "maskulin"), # Klingenteufel, Stachelteufel, Dornteufel
+    dekliniere_substantiv("NOUN_MARILITH", "Marilith", "", "Marilith", "fremder", "feminin"),
+    dekliniere_substantiv("NOUN_VROCK", "Vrock", "", "Vrock", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_HEZROU","Hezrou", "", "Hezrou", "fremder", "maskulin"),
+    dekliniere_substantiv("NOUN_BONE_DEVIL","Knochenteufel", "s", "Knochenteufel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_ICE_DEVIL","Eisteufel", "s", "Eisteufel", "", "maskulin"),
+    dekliniere_substantiv("NOUN_NALFESHNEE","Nalfeshnee", "", "Nalfeshnee", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_PIT_FIEND", "Grubendämon", "es", "Grubendämon", "en", "maskulin", "en"), # Höllenschlundscheusal, Grubenunhold, Grubendämon, Grubenteufel
     dekliniere_eigenname("NOUN_BALROG","Balrog","maskulin"),
     dekliniere_eigenname("NOUN_JUIBLEX","Juiblex","maskulin"),
@@ -2813,9 +2823,9 @@ def ausgabe_nouns
     dekliniere_eigenname("NOUN_DEATH","Tod","maskulin"),
     dekliniere_eigenname("NOUN_PESTILENCE","Pest","feminin"),
     dekliniere_eigenname("NOUN_FAMINE","Hunger","maskulin"),
-    #dekliniere_substantiv("NOUN_MAIL_DAEMON"
+    dekliniere_substantiv("NOUN_MAIL_DAEMON", "Briefdämon", "s", "Briefdämon", "en", "maskulin"),
     dekliniere_substantiv("NOUN_DJINNI", "Dschinn", "es", "Dschinn", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_SANDESTIN"
+    dekliniere_substantiv("NOUN_SANDESTIN","Sandestin", "", "Sandestin", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_JELLYFISH", "Qualle", "", "Qualle", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_PIRANHA","Piranha","s","Piranha","s","maskulin"),
     dekliniere_substantiv("NOUN_SHARK","Hai","es","Hai","e","maskulin"),
@@ -2830,7 +2840,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CHAMELEON", "Chamäleon", "s", "Chamäleon", "s", "neutrum"),
     dekliniere_substantiv("NOUN_CROCODILE","Krokodil","s","Krokodil","e","neutrum","s"),
     dekliniere_substantiv("NOUN_SALAMANDER", "Salamander", "s", "Salamander", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_LONG_WORM_TAIL"
+    dekliniere_substantiv("NOUN_LONG_WORM_TAIL","Langwurmschwanz","es","Langwurmschwänz","e","maskulin"),
     dekliniere_substantiv("NOUN_ARCHAEOLOGE", "Archäologe", "en", "Archäologe", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_ARCHAEOLOGIN", "Archäologin", "", "Archäologinn", "en", "feminin"),
     dekliniere_substantiv("NOUN_BARBAR", "Barbar", "en", "Barbar", "en", "maskulin", "en"),
@@ -3583,7 +3593,6 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEIB","Leib","es","Leib","er","maskulin"),
     dekliniere_substantiv("NOUN_LEVEL_TELEPORTER","Leveltelepoter","s","","","maskulin"),
     dekliniere_substantiv("NOUN_LICHTBLITZ","Lichtblitz","es","Lichtblitz","e","maskulin"),
-    dekliniere_substantiv("NOUN_LONG_WORM_TAIL","Langwurmschwanz","es","Langwurmschwänz","e","maskulin"),
     dekliniere_nominalphrase("NOUN_LOWERED_DRAWBRIDGE", "heruntergelassen", "Zugbrücke", "", "Zugbrücke", "en", "feminin"),
     dekliniere_substantiv("NOUN_LUNGE","Lunge","","Lunge","en","feminin"),
     dekliniere_substantiv("NOUN_MAEHNE","Mähne","","Mähne","en","feminin"),
