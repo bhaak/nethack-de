@@ -16,13 +16,13 @@
 #define EDITLEVEL	0
 
 #define COPYRIGHT_BANNER_A \
-"NetHack, Copyright 1985-2003"
+"NetHack-De 2005-2008 von Patric Mueller" /* EN "NetHack, Copyright 1985-2003" */
 
 #define COPYRIGHT_BANNER_B \
-"         By Stichting Mathematisch Centrum and M. Stephenson."
+"       Copyright 1985-2003 by Stichting Mathematisch Centrum and M. Stephenson." /* EN "         By Stichting Mathematisch Centrum and M. Stephenson." */
 
 #define COPYRIGHT_BANNER_C \
-"         See license for details."
+"       Nutzungsbedingungen: siehe Lizenz."
 
 /*
  * If two or more successive releases have compatible data files, define
