@@ -285,3 +285,5 @@ release:
 	tar cfz $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION).tar.gz -C $(RELEASEDIR) nethack-de-src-$(RELEASEVERSION)
 	rm -rf $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
 
+
+.PHONY: $(GAME)
