@@ -982,16 +982,16 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	}
 	if (attacks(AD_COLD, otmp)) {
 	    if (realizes_damage)
-		pline_The("ice-cold blade %s %s%c", /* EN pline_The("ice-cold blade %s %s%c", */ // TODO DE
-			!spec_dbon_applies ? "hits" : "freezes", /* EN !spec_dbon_applies ? "hits" : "freezes", */ // TODO DE
+		pline_The("ADJEKTIV_EISKALT NOUN_KLINGE %s OBJECT %s%c", /* EN pline_The("ice-cold blade %s %s%c", */
+			!spec_dbon_applies ? "VERB_HIT" : "freezes", /* EN !spec_dbon_applies ? "hits" : "freezes", */ // TODO DE
 			hittee, !spec_dbon_applies ? '.' : '!');
 	    if (!rn2(4)) (void) destroy_mitem(mdef, POTION_CLASS, AD_COLD);
 	    return realizes_damage;
 	}
 	if (attacks(AD_ELEC, otmp)) {
 	    if (realizes_damage)
-		pline_The("massive hammer hits%s %s%c", /* EN pline_The("massive hammer hits%s %s%c", */ // TODO DE
-			  !spec_dbon_applies ? "" : "!  Lightning strikes", /* EN !spec_dbon_applies ? "" : "!  Lightning strikes", */ // TODO DE
+		pline_The("ADJEKTIV_GEWALTIG NOUN_HAMMER VERB_HIT%s OBJECT %s%c", /* EN pline_The("massive hammer hits%s %s%c", */
+			  !spec_dbon_applies ? "" : "!  Ein Blitzschlag trifft", /* EN !spec_dbon_applies ? "" : "!  Lightning strikes", */
 			  hittee, !spec_dbon_applies ? '.' : '!');
 	    if (!rn2(5)) (void) destroy_mitem(mdef, RING_CLASS, AD_ELEC);
 	    if (!rn2(5)) (void) destroy_mitem(mdef, WAND_CLASS, AD_ELEC);
@@ -1289,7 +1289,7 @@ arti_invoke(obj)
 		num_ok_dungeons++;
 		last_ok_dungeon = i;
 	    }
-	    end_menu(tmpwin, "Open a portal to which dungeon?"); /* EN end_menu(tmpwin, "Open a portal to which dungeon?"); */ // TODO DE
+	    end_menu(tmpwin, "Ein Portal in welchen Dungeon öffnen?"); /* EN end_menu(tmpwin, "Open a portal to which dungeon?"); */
 	    if (num_ok_dungeons > 1) {
 		/* more than one entry; display menu for choices */
 		menu_item *selected;
@@ -1378,7 +1378,7 @@ nothing_special:
 	}
 	switch(oart->inv_prop) {
 	case CONFLICT:
-	    if(on) You_feel("like a rabble-rouser."); /* EN if(on) You_feel("like a rabble-rouser."); */ // TODO DE
+	    if(on) Du_fuehlst_dich("wie ein Aufrührer."); /* EN if(on) You_feel("like a rabble-rouser."); */
 	    else You_feel("the tension decrease around you."); /* EN else You_feel("the tension decrease around you."); */ // TODO DE
 	    break;
 	case LEVITATION:

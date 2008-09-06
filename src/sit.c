@@ -74,7 +74,7 @@ dosit()
 	    if (u.utrap) {
 		exercise(A_WIS, FALSE);	/* you're getting stuck longer */
 		if(u.utraptype == TT_BEARTRAP) {
-		    You_cant("sit down mit KASUS_DATIV PRONOMEN_POSSESSIV %s in KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_BEARTRAP.", body_part(FOOT)); /* EN You_cant("sit down with your %s in the bear trap.", body_part(FOOT)); */ // TODO DE
+		    ("Mit KASUS_DATIV PRONOMEN_POSSESSIV %s in KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_BEARTRAP SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL nicht hinsetzen.", body_part(FOOT)); /* EN You_cant("sit down with your %s in the bear trap.", body_part(FOOT)); */
 		    u.utrap++;
 	        } else if(u.utraptype == TT_PIT) {
 		    if(trap->ttyp == SPIKED_PIT) {
@@ -85,7 +85,7 @@ dosit()
 			You("VERB_SETZEN OBJECT PRONOMEN_PERSONAL in die Grube."); /* EN You("sit down in the pit."); */
 		    u.utrap += rn2(5);
 		} else if(u.utraptype == TT_WEB) {
-		    You("sit in the spider web and get entangled further!"); /* EN You("sit in the spider web and get entangled further!"); */ // TODO DE
+		    You("VERB_SETZEN OBJECT PRONOMEN_PERSONAL ins Spinnenetz und VERB_VERHEDDERN OBJECT PRONOMEN_PERSONAL noch mehr!"); /* EN You("sit in the spider web and get entangled further!"); */
 		    u.utrap += rn1(10, 5);
 		} else if(u.utraptype == TT_LAVA) {
 		    /* Must have fire resistance or they'd be dead already */
@@ -194,7 +194,7 @@ dosit()
 			break;
 		    case 6:
 			if(u.uluck + rn2(5) < 0) {
-			    You_feel("your luck is changing."); /* EN You_feel("your luck is changing."); */ // TODO DE
+			    You("VERB_FUEHLEN, NEUER_SATZ SUBJECT_IM_SATZ wie PRONOMEN_POSSESSIV NOUN_LUCK sich ändert."); /* EN You_feel("your luck is changing."); */
 			    change_luck(1);
 			} else	    makewish();
 			break;
@@ -226,7 +226,7 @@ dosit()
 			if (Luck < 0 || (HSee_invisible & INTRINSIC))  {
 				if (level.flags.nommap) {
 					pline(
-					"A terrible drone fills your head!"); /* EN "A terrible drone fills your head!"); */ // TODO DE
+					"Ein schreckliches Dröhnen erfüllt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_KOPF!"); /* EN "A terrible drone fills your head!"); */
 					make_confused(HConfusion + rnd(30),
 									FALSE);
 				} else {
@@ -259,7 +259,7 @@ dosit()
 			Your("NOUN_VERSTAND verknotet sich zu einer Bretzel!"); /* EN Your("mind turns into a pretzel!"); */
 			make_confused(HConfusion + rn1(7,16),FALSE);
 			break;
-		    default:	impossible("throne effect"); /* EN default:	impossible("throne effect"); */ // TODO DE
+		    default:	impossible("throne effect");
 				break;
 		}
 	    } else {
