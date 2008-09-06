@@ -203,7 +203,9 @@ noun_apple
 	when.
 		[ The Devil's Dictionary, by Ambrose Bierce ]
 archeologist
+noun_archeologist
 * archeologist
+*_archeologist
 noun_archaeologe
 noun_archaeologin
 	Archeology is the search for fact, not truth. [...] 
@@ -242,6 +244,7 @@ arioch
 		[ The Arrow and the Song,
 		  by Henry Wadsworth Longfellow ]
 ashikaga takauji
+noun_ashikaga_takauji
 	Ashikaga Takauji was a daimyo of the Minamoto clan who
 	joined forces with the Go-Daigo to defeat the Hojo armies.
 	Later when Go-Daigo attempted to reduce the powers of the
@@ -348,8 +351,10 @@ noun_banana
 	And Dayna knew he was right.
 		[ The Stand, by Stephen King ]
 barbarian
-noun_barbar
+noun_barbarian
 * barbarian
+*_barbarian
+noun_barbar
 noun_barbarin
 	They dressed alike -- in buckskin boots, leathern breeks and
 	deerskin shirts, with broad girdles that held axes and short
@@ -1701,13 +1706,15 @@ hachi
 		[ Jack and the Beanstalk, from English Fairy Tales,
 		  by Joseph Jacobs ]
 healer
-* healer
-attendant
-doctor
-physician
 noun_healer
+* healer
 *_healer
+attendant
+noun_attendant
+doctor
 doktor
+physician
+noun_physician
 	I swear by Apollo the physician, and Aesculapius, and Health,
 	and All-heal, and all the gods and goddesses, that, according
 	to my ability and judgment, I will keep this Oath and this
@@ -4654,6 +4661,7 @@ vampire bat
 noun_vampire_bat
 vampire lord
 noun_vampire_lord
+noun_vampire_mage
 	The Oxford English Dictionary is quite unequivocal:
 	_vampire_ - "a preternatural being of a malignant nature (in
 	the original and usual form of the belief, a reanimated
@@ -4822,6 +4830,7 @@ wolf
 noun_wolf
 *wolf
 *wolf cub
+*wolf_cub
 	The ancestors of the modern day domestic dog, wolves are
 	powerful muscular animals with bushy tails.  Intelligent,
 	social animals, wolves live in family groups or packs made
@@ -4960,3 +4969,4 @@ zruty
 noun_zruty
 	The zruty are wild and gigantic beings, living in the
 	wildernesses of the Tatra mountains.
+
