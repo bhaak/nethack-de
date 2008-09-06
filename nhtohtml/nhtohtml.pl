@@ -93,13 +93,13 @@ my %attacks =
    AT_HUGS => "Hug",
    AT_SPIT => "Spit",
    AT_ENGL => "Engulf",
-   AT_BREA => "Breath",
+   AT_BREA => "Odem", # AT_BREA => "Breath",
    AT_EXPL => "Explode",
    AT_BOOM => "Explode (when killed)",
    AT_GAZE => "Gaze",
-   AT_TENT => "Tentacles",
-   AT_WEAP => "Weapon",
-   AT_MAGC => "Magic"
+   AT_TENT => "Tentakel", # AT_TENT => "Tentacles",
+   AT_WEAP => "Weapon", # AT_WEAP => "Weapon",
+   AT_MAGC => "Magie" # AT_MAGC => "Magic"
   );
 
 # TODO: Again, parse the damage comments in the header and just fix
@@ -123,7 +123,7 @@ my %damage =
  AD_PLYS=>	" paralysing ",
  AD_DRLI=>	" drain life levels (Vampire) ",
  AD_DREN=>	" drain magic energy ",
- AD_LEGS=>	" legs (xan) ",
+ AD_LEGS=>	" Beine (Xan) ",
  AD_STON=>	" petrifies (Medusa, cockatrice) ",
  AD_STCK=>	" sticks to you (mimic) ",
  AD_SGLD=>	" steals gold (leppie) ",
@@ -150,12 +150,12 @@ my %damage =
  AD_ENCH=>	" remove enchantment (disenchanter) ",
  AD_CORR=>	" corrode armor (black pudding) ",
 
- AD_CLRC=>	" random clerical spell ",
- AD_SPEL=>	" random magic spell ",
- AD_RBRE=>	" random breath weapon ",
+ AD_CLRC=>	" zufälliger clerical spell ",
+ AD_SPEL=>	" zufälliger magic spell ",
+ AD_RBRE=>	" zufällige Odemwaffe ",
 
- AD_SAMU=>	" hits, may steal Amulet (Wizard) ",
- AD_CURS=>	" random curse (ex. gremlin) ",
+ AD_SAMU=>	" schlägt, kann Amulet stehlen (Zauberer) ",
+ AD_CURS=>	" zufälliger Fluch (z.B. Gremlin) ",
 );
 
 # Some monster names appear twice (were-creatures).  We use the
@@ -408,7 +408,7 @@ EOF
 <ul>
 EOF
     for $a (@{$m->{ATK}}) {
-      print HTML "<li>$attacks{$a->{AT}}: $a->{N}d$a->{D} $damage{$a->{AD}} damage</li> \n"
+      print HTML "<li>$attacks{$a->{AT}}: $a->{N}d$a->{D} $damage{$a->{AD}}</li> \n"
     }
     print HTML <<EOF;
 </ul>
@@ -442,7 +442,7 @@ EOF
   if ($m->{MR1}) {
     print HTML <<EOF;
 <div class="resist">
-<h3>Resistances:</h3>
+<h3>Resistenzen:</h3>
 <ul>
 EOF
     for $mr (split /\|/, $m->{MR1}) {
@@ -471,7 +471,7 @@ EOF
   }
 
   # The help file entry, and the footer.
-  my $entry=lookup_entry(substr($m->{NAME},4));
+  my $entry=lookup_entry("NOUN_".substr($m->{NAME},4));
 print HTML <<EOF;
 <hr class="separator"/>
 <div class="entry">$entry</div>
@@ -619,6 +619,7 @@ ENTRY_LOOP:  for $e (@entries) {
       }
     }
   }
+ print STDERR "No database entry found for $name\n";
 }
 
 # 
