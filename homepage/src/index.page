@@ -8,6 +8,11 @@ Auf der "Statusseite":status.html wird der aktuelle Stand der Übersetzung angez
 
 h3. News
 
+h4(#news-2008-09-07). 7. Sep 2008 
+* ca. 75% des generierten Textes übersetzt
+* Codebasis-Update auf 3.4.3
+* Wünschen: keine Unterscheidung zwischen Gross-/Kleinschreibung und Umlauten
+
 h4(#news-2008-06-10). 10. Jun 2008 
 * ca. 60% des generierten Textes übersetzt
 * Bugfixes Win32-GUI
