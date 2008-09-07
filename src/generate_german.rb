@@ -2899,7 +2899,7 @@ def ausgabe_nouns
     #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
     dekliniere_eigenname("NOUN_LORD_SATO","Lord Sato","maskulin"),
     dekliniere_eigenname("NOUN_TWOFLOWER","Zweiblum","maskulin"),
-    dekliniere_eigenname("NOUN_NORN","Norn","feminin"),
+    dekliniere_substantiv("NOUN_NORN","Norne", "", "Norn", "en", "feminin"), 
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $nom, $fem, $sg)],
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $gen, $fem, $sg)],
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $dat, $fem, $sg)],
