@@ -3471,7 +3471,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_INSEL","Insel","","Insel","en","feminin"),
     dekliniere_substantiv("NOUN_CAMELOT","Camelot","","","","neutrum"),
     dekliniere_substantiv("NOUN_ANKH_MORPORK","Ankh-Morpork","","","","maskulin"),
-    dekliniere_substantiv("NOUN_SHRINE_OF_DESTINY","Schrein","es","","e","maskulin",""," des Schicksals"),
+    dekliniere_substantiv("NOUN_SHRINE_OF_DESTINY","Schrein","es","","e","maskulin","","des Schicksals"),
     dekliniere_substantiv("NOUN_DUALI_OASIS","Duali-Oase","","","en","feminin"),
     dekliniere_substantiv("NOUN_CAMP","Lager","s","","","neutrum"),
     dekliniere_substantiv("NOUN_BURG","Burg","","","","neutrum"),
