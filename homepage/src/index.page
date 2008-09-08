@@ -4,27 +4,31 @@ Im Moment ist die Übersetzung noch in Arbeit und deshalb unvollständig.
 
 Auf der "Statusseite":status.html wird der aktuelle Stand der Übersetzung angezeigt.
 
-<hr>
+<hr />
 
 h3. News
 
 h4(#news-2008-09-07). 7. Sep 2008: Alpha-Release NetHack-De 3.4.3-20080907a
+
 * ca. 75% des generierten Textes übersetzt
 * Codebasis-Update auf 3.4.3
 * Wünschen: keine Unterscheidung zwischen Gross-/Kleinschreibung und Umlauten
 
 h4(#news-2008-06-10). 10. Jun 2008: Alpha-Release NetHack-De 3.4.2-20080610a
+
 * ca. 60% des generierten Textes übersetzt
 * Bugfixes Win32-GUI
 * Absturz beim Treten eines gerittenen, schlafenden Pferdes gefixt
 
 h4(#news-2008-03-09). 9. Mär 2008: Alpha-Release NetHack-De 3.4.2-20080309a
+
 * ca. 50% des generierten Textes übersetzt
 * korrekte Behandlung übersetzter Artefakte
 * korrektes Genus für Gottheiten
 * Genitivattribute generalisiert
 
 h4(#news-2007-12-24). 24. Dez 2007: Alpha-Release NetHack-De 3.4.2-20071224a
+
 * ca. 40% des generierten Textes übersetzt
 * Abstürze des Wunschcodes gefixt
 * benannte Monster haben korrektes Geschlecht
@@ -32,10 +36,12 @@ h4(#news-2007-12-24). 24. Dez 2007: Alpha-Release NetHack-De 3.4.2-20071224a
 * Linux-Binary: braucht keine libcheck-Bibliothek mehr
 
 h4(#news-2007-10-11). 11. Okt 2007: Alpha-Release NetHack-De 3.4.2-20071011a
+
 * ca. 30% des generierten Textes übersetzt
 * erste Veröffentlichung des Codes
 
 h4(#news-2007-04-04). 4. Apr 2007: Homepage erstellt
+
 * Sourceforge-Projekt nethack-de angelegt
 * Homepage aufgeschaltet
 

@@ -4,16 +4,16 @@ h3. Linux-Screenshot
 
 h3. NetHack-De-Video
 
-Pause: p <br>
+Pause: p <br />
 Langsamer/schneller abspielen: -/+
 
 <p class="video">
 <applet code="ttyplayer.class" width="800" height="400">
-  <param name="TTYFILE" value="nethack.tty">
-  <param name="SPEED" value="2">
-  <param name="REPEAT" value="true">
-  <param name="TOOLBAR" value="true">
-  <param name="REVERSE-VIDEO" value="true">
+  <param name="TTYFILE" value="nethack.tty" />
+  <param name="SPEED" value="2" />
+  <param name="REPEAT" value="true" />
+  <param name="TOOLBAR" value="true" />
+  <param name="REVERSE-VIDEO" value="true" />
 Zum Abspielen dieses Videos wird Java benötigt.
 </applet>
 </p>
