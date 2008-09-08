@@ -39,7 +39,7 @@ def parseargs()
 	end
 	if ($OPT_rss)
 		$rss = true
-		puts "RSS-Ausgabe"
+		$stderr.puts "RSS-Ausgabe"
 	end
 	if ($OPT_atom)
 		$atom = true
@@ -112,9 +112,9 @@ def update(document, rss)
 			atom_entry.content['type'] = "html"
 
 			atom_entry_link = Atom::Link.new()
-			atom_entry_link['href'] = url_base_link + "changes.html"
+			atom_entry_link['href'] = url_base_link
 			atom_entry.links << atom_entry_link
-			rss_item.link = url_base_link + "changes.html"
+			rss_item.link = url_base_link
 
 			rss_item.guid.isPermaLink = "false"
 			rss_item.guid.content = MD5.new(rss_item.title+updateDatum).hexdigest
@@ -125,7 +125,7 @@ def update(document, rss)
 	end
 
 	if $rss then
-		puts rss.to_s
+		$stdout.puts rss.to_s
 	elsif $atom then
 		REXML::Document.new(feed.to_s).write($stdout,0)
 	end
@@ -133,19 +133,7 @@ end
 
 ######################################################################
 
-# <!DOCTYPE updates SYSTEM "/home/bubi/dtd/homepage_updates.dtd">
-# <updates>
-
-# <update date="02 Aug 2008" title="New: Vilistextum on the Web, Update: Funny RFCs">
-#        <entry url="misc/aprilrfcs.html">added funny rfcs 5241 and 5242</entry>
-#        <entry url="vilistextum/ontheweb.html">Vilistextum on the Web</entry>
-# </update>
-
-# <update date="09 Feb 2008" title="Added: Link to &#187;Carl Grunert - Die Maschine des Theodolus Energios&#171;">
-#        <entry url="buchscans/weitere.html">Added: new link to &#187;Carl Grunert - Die Maschine des Theodolus Energios&#171;</entry>
-# </update>
-
-def createXmlFromNews(news)
+def createXmlFromNewsExample(news)
 	xml = REXML::Document.new
 	updates = REXML::Element.new("updates")
 	update = REXML::Element.new("update")
@@ -162,6 +150,38 @@ def createXmlFromNews(news)
 	return xml
 end
 
+def createXmlFromNews(news)
+	xml = REXML::Document.new
+	updates = REXML::Element.new("updates")
+	update = nil
+	entry = nil
+
+	found_entry = false
+	news.readlines.each {|line|
+		
+		$stderr.puts line
+		case line
+		when /^h4/
+			update = REXML::Element.new("update")
+			update.add_attribute("date",Date.strptime(line[9,10], "%Y-%m-%d"))
+			update.add_attribute("title", line[line.index(": ")+2..-1].strip)
+		when /^\*/
+			entry = REXML::Element.new("entry")
+			entry.text = line[2..-1].strip
+			update.add_element entry
+			found_entry = true
+		when /^$/
+			if (found_entry) then
+				updates.add_element update
+				found_entry = false
+			end
+		end
+	}
+	xml.add_element updates
+
+	return xml
+end
+
 ######################################################################
 
 parseargs()
@@ -169,13 +189,10 @@ parseargs()
 if ARGV.size == 0
 	usage()
 elsif ARGV.size == 1 # input stdin, output stdout
-	$input = File.new(ARGV[0])
-	news = REXML::Document.new($input)
-	#puts ARGV[0]
-	#doc.write $stdout
+	news = File.open(ARGV[0])
 	doc = createXmlFromNews(news)
-	puts doc
-	puts
+	$stderr.puts doc
+	$stderr.puts
 	update(doc, false)
 end
 
