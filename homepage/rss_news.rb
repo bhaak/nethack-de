@@ -39,7 +39,7 @@ def parseargs()
 	end
 	if ($OPT_rss)
 		$rss = true
-		$stderr.puts "RSS-Ausgabe"
+		#$stderr.puts "RSS-Ausgabe"
 	end
 	if ($OPT_atom)
 		$atom = true
@@ -51,14 +51,15 @@ end
 
 def update(document, rss)
 	url_base_link = "http://nethack-de.sourceforge.net/"
+	feed_title = "NetHack-De-Updates"
 
 	feed = Atom::Feed.new()
 	feed_name = "atom.xml"
 
 	rss = RSS::Maker.make("2.0") do |maker|
 	#rss = RSS::Maker.make("0.9")
-	maker.channel.title = "Updates der NetHack-De-Homepage"
-		feed.title = "Updates der NetHack-De-Homepage"
+		maker.channel.title = feed_title
+		feed.title = feed_title
 		maker.channel.link = url_base_link
 		atom_link = Atom::Link.new()
 		atom_link['href'] = url_base_link
@@ -69,8 +70,8 @@ def update(document, rss)
 		atom_link['href'] = url_base_link+feed_name
 		feed.links << atom_link
 
-		maker.channel.description = "Updates der NetHack-De-Homepage"
-		feed.subtitle = "Updates der NetHack-De-Homepage"
+		maker.channel.description = feed_title
+		feed.subtitle = feed_title
 		feed.updated = DateTime.now.to_s
 		feed.id = url_base_link
 
@@ -159,7 +160,7 @@ def createXmlFromNews(news)
 	found_entry = false
 	news.readlines.each {|line|
 		
-		$stderr.puts line
+		#$stderr.puts line
 		case line
 		when /^h4/
 			update = REXML::Element.new("update")
@@ -191,8 +192,8 @@ if ARGV.size == 0
 elsif ARGV.size == 1 # input stdin, output stdout
 	news = File.open(ARGV[0])
 	doc = createXmlFromNews(news)
-	$stderr.puts doc
-	$stderr.puts
+	#$stderr.puts doc
+	#$stderr.puts
 	update(doc, false)
 end
 
