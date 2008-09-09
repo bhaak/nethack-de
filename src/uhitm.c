@@ -1801,7 +1801,7 @@ register struct attack *mattk;
 			newuhs(FALSE);
 			xkilled(mdef,2);
 			if (mdef->mhp > 0) { /* monster lifesaved */
-			    You("hurriedly regurgitate the sizzling in your %s.", /* EN You("hurriedly regurgitate the sizzling in your %s.", */ // TODO DE
+			    You("VERB_REGURGITATE hastig das Brennen OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV %s.", /* EN You("hurriedly regurgitate the sizzling in your %s.", */
 				body_part(STOMACH));
 			} else {
 			    tmp = 1 + (mdef->data->cwt >> 8);
@@ -1904,8 +1904,8 @@ register struct attack *mattk;
 		    if (mdef->mhp <= 0)	/* not lifesaved */
 			return(2);
 		}
-		You("%s %s!", is_animal(youmonst.data) ? "regurgitate" /* EN You("%s %s!", is_animal(youmonst.data) ? "regurgitate" */ // TODO DE
-			: "expel", mon_nam(mdef)); /* EN : "expel", mon_nam(mdef)); */ // TODO DE
+		You("%s %s SATZKLAMMER!", is_animal(youmonst.data) ? "VERB_REGURGITATE" /* EN You("%s %s!", is_animal(youmonst.data) ? "regurgitate" */
+			: "VERB_EXPEL", mon_nam(mdef)); /* EN : "expel", mon_nam(mdef)); */
 		if (Slow_digestion || is_animal(youmonst.data)) {
 		    pline("Offensichtlich VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s nicht.", /* EN pline("Obviously, you didn't like %s taste.", */
 			  genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GESCHMACK")); /* EN s_suffix(mon_nam(mdef))); */

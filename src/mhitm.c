@@ -545,7 +545,7 @@ gulpmm(magr, mdef, mattk)
 	}
 	else {					/* both alive, put them back */
 	    if (cansee(dx, dy))
-		pline("SUBJECT %s VERB_WERDEN herausgewürgt!", Monnam(mdef)); /* EN pline("%s is regurgitated!", Monnam(mdef)); */
+		pline("SUBJECT %s VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT VERB_REGURGITATE!", Monnam(mdef)); /* EN pline("%s is regurgitated!", Monnam(mdef)); */
 
 	    place_monster(magr, ax, ay);
 	    place_monster(mdef, dx, dy);

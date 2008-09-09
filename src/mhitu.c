@@ -230,7 +230,7 @@ boolean message;
 {
 	if (message) {
 		if (is_animal(mdat))
-			You("VERB_WERDEN herausgewürgt!"); /* EN You("get regurgitated!"); */
+			You("VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT VERB_REGURGITATE!"); /* EN You("get regurgitated!"); */
 		else {
 			char blast[40];
 			register int i;
@@ -1802,11 +1802,11 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 	if (tmp) stop_occupation();
 
 	if (touch_petrifies(youmonst.data) && !resists_ston(mtmp)) {
-	    pline("%s very hurriedly %s you!", Monnam(mtmp), /* EN pline("%s very hurriedly %s you!", Monnam(mtmp), */ // TODO DE
-		  is_animal(mtmp->data)? "regurgitates" : "expels"); /* EN is_animal(mtmp->data)? "regurgitates" : "expels"); */ // TODO DE
+	    pline("SUBJECT %s %s OBJECT PRONOMEN_PERSONAL hastig SATZKLAMMER!", Monnam(mtmp), /* EN pline("%s very hurriedly %s you!", Monnam(mtmp), */
+		  is_animal(mtmp->data)? "VERB_REGURGITATE" : "VERB_EXPEL"); /* EN is_animal(mtmp->data)? "regurgitates" : "expels"); */
 	    expels(mtmp, mtmp->data, FALSE);
 	} else if (!u.uswldtim || youmonst.data->msize >= MZ_HUGE) {
-	    You("get %s!", is_animal(mtmp->data)? "regurgitated" : "expelled"); /* EN You("get %s!", is_animal(mtmp->data)? "regurgitated" : "expelled"); */ // TODO DE
+	    You("VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT %s!", is_animal(mtmp->data)? "VERB_REGURGITATE" : "VERB_EXPEL"); /* EN You("get %s!", is_animal(mtmp->data)? "regurgitated" : "expelled"); */
 	    if (flags.verbose && (is_animal(mtmp->data) ||
 		    (dmgtype(mtmp->data, AD_DGST) && Slow_digestion)))
 		pline("Offensichtlich SUBJECT_IM_SATZ VERB_MOEGEN %s OBJECT PRONOMEN_POSSESSIV NOUN_GESCHMACK nicht.", mon_nam(mtmp)); /* EN pline("Obviously %s doesn't like your taste.", mon_nam(mtmp)); */

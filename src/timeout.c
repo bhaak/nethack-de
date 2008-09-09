@@ -77,7 +77,7 @@ vomiting_dialogue()
 }
 
 static NEARDATA const char * const choke_texts[] = {
-	"You find it hard to breathe.", /* EN "You find it hard to breathe.", */ // TODO DE
+	"Das Atmen fällt KASUS_DATIV PRONOMEN_PERSONAL schwer.", /* EN "You find it hard to breathe.", */
 	"SUBJECT PRONOMEN_PERSONAL VERB_SCHNAPPEN nach Luft.", /* EN "You're gasping for air.", */
 	"SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN nicht mehr atmen.", /* EN "You can no longer breathe.", */
 	"SUBJECT PRONOMEN_PERSONAL VERB_LAUFEN %s an.", /* EN "You're turning %s.", */
@@ -88,7 +88,7 @@ static NEARDATA const char * const choke_texts2[] = {
 	"Your %s is becoming constricted.", /* EN "Your %s is becoming constricted.", */ // TODO DE
 	"SUBJECT PRONOMEN_POSSESSIV NOUN_BLUT VERB_ERREICHEN kaum mehr OBJECT PRONOMEN_POSSESSIV NOUN_GEHIRN.", /* EN "Your blood is having trouble reaching your brain.", */
 	"The pressure on your %s increases.", /* EN "The pressure on your %s increases.", */ // TODO DE
-	"Your consciousness is fading.", /* EN "Your consciousness is fading.", */ // TODO DE
+	"SUBJECT PRONOMEN_POSSESSIV NOUN_BEWUSSTSEIN VERB_SCHWINDEN.", /* EN "Your consciousness is fading.", */
 	"SUBJECT PRONOMEN_PERSONAL VERB_ERSTICKEN." /* EN "You suffocate." */
 };
 
@@ -113,10 +113,10 @@ choke_dialogue()
 }
 
 static NEARDATA const char * const slime_texts[] = {
-	"You are turning a little %s.",           /* 5 */ /* EN "You are turning a little %s.",           */ // TODO DE
-	"Your limbs are getting oozy.",              /* 4 */ /* EN "Your limbs are getting oozy.",              */ // TODO DE
-	"Your skin begins to peel away.",            /* 3 */ /* EN "Your skin begins to peel away.",            */ // TODO DE
-	"You are turning into %s.",       /* 2 */ /* EN "You are turning into %s.",       */ // TODO DE
+	"SUBJECT PRONOMEN_PERSONAL VERB_LAUFEN %s an.",           /* 5 */ /* EN "You are turning a little %s.",           */
+	"SUBJECT PRONOMEN_POSSESSIV NOUN_GLIEDs VERB_WERDEN wabbelig.",              /* 4 */ /* EN "Your limbs are getting oozy.",              */
+	"SUBJECT PRONOMEN_POSSESSIV NOUN_HAUT VERB_BEGINNEN sich abzuschälen.",            /* 3 */ /* EN "Your skin begins to peel away.",            */
+	"SUBJECT PRONOMEN_PERSONAL VERB_VERWANDELN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT in %s.",       /* 2 */ /* EN "You are turning into %s.",       */
 	"SUBJECT PRONOMEN_PERSONAL VERB_SEIN OBJECT KASUS_NOMINATIV %s geworden."             /* 1 */ /* EN "You have become %s."             */
 };
 
@@ -514,11 +514,11 @@ long timeout;
 		case OBJ_INVENT:
 		    knows_egg = TRUE; /* true even if you are blind */
 		    if (!cansee_hatchspot)
-			You_feel("%s %s from your pack!", something, /* EN You_feel("%s %s from your pack!", something, */ // TODO DE
-			    locomotion(mon->data, "drop")); /* EN locomotion(mon->data, "drop")); */ // TODO DE
+			You("VERB_BEMERKEN, NEUER_SATZ wie SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_RUCKSACK %s!", something, /* EN You_feel("%s %s from your pack!", something, */
+			    locomotion(mon->data, "VERB_FALLEN")); /* EN locomotion(mon->data, "drop")); */
 		    else
-			You("see %s %s out of your pack!", /* EN You("see %s %s out of your pack!", */ // TODO DE
-			    monnambuf, locomotion(mon->data, "drop")); /* EN monnambuf, locomotion(mon->data, "drop")); */ // TODO DE
+			You("VERB_SEHEN, NEUER_SATZ wie SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_RUCKSACK %s!", /* EN You("see %s %s out of your pack!", */
+			    monnambuf, locomotion(mon->data, "VERB_FALLEN")); /* EN monnambuf, locomotion(mon->data, "drop")); */
 		    if (yours) {
 			pline("%s cries sound like \"%s%s\"", /* EN pline("%s cries sound like \"%s%s\"", */ // TODO DE
 			    siblings ? "Their" : "Its", /* EN siblings ? "Their" : "Its", */ // TODO DE
@@ -541,16 +541,16 @@ long timeout;
 		    if (cansee_hatchspot) {
 			/* egg carring monster might be invisible */
 			if (canseemon(egg->ocarry)) {
-			    Sprintf(carriedby, "%s pack", /* EN Sprintf(carriedby, "%s pack", */ // TODO DE
-				     s_suffix(a_monnam(egg->ocarry))); /* EN s_suffix(a_monnam(egg->ocarry))); */ // TODO DE
+			    Sprintf(carriedby, "%s", /* EN Sprintf(carriedby, "%s pack", */
+				     genitivattribut_zu_wort(a_monnam(egg->ocarry), "NOUN_RUCKSACK")); /* EN s_suffix(a_monnam(egg->ocarry))); */
 			    knows_egg = TRUE;
 			}
 			else if (is_pool(mon->mx, mon->my))
 			    Strcpy(carriedby, "empty water"); /* EN Strcpy(carriedby, "empty water"); */ // TODO DE
 			else
 			    Strcpy(carriedby, "thin air"); /* EN Strcpy(carriedby, "thin air"); */ // TODO DE
-			You("see %s %s out of %s!", monnambuf, /* EN You("see %s %s out of %s!", monnambuf, */ // TODO DE
-			    locomotion(mon->data, "drop"), carriedby); /* EN locomotion(mon->data, "drop"), carriedby); */ // TODO DE
+			You("VERB_SEHEN, NEUER_SATZ wie SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV aus %s %s!", monnambuf, /* EN You("see %s %s out of %s!", monnambuf, */
+			    locomotion(mon->data, "VERB_FALLEN"), carriedby); /* EN locomotion(mon->data, "drop"), carriedby); */
 		    }
 		    break;
 #if 0
@@ -638,7 +638,7 @@ slip_or_trip()
 		name; if not, look for rocks to trip over; trip over
 		anonymous "something" if there aren't any rocks.
 	     */
-	    pronoun = otmp->quan == 1L ? "NOUN_IT" : Hallucination ? "they" : "them"; /* EN pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; */ // TODO DE german_geschlecht(otmp)
+	    pronoun = pronominalisierung(xname(otmp)); /* EN pronoun = otmp->quan == 1L ? "it" : Hallucination ? "they" : "them"; */
 	    what = !otmp->nexthere ? pronoun :
 		  (otmp->dknown || !Blind) ? doname(otmp) :
 		  ((otmp = sobj_at(ROCK, u.ux, u.uy)) == 0 ? something :

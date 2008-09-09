@@ -100,7 +100,7 @@ use_towel(obj)
 		You("VERB_HAVE PRONOMEN_KEIN ADJEKTIV_FREI %s!", body_part(HAND)); /* EN You("have no free %s!", body_part(HAND)); */
 		return 0;
 	} else if (obj->owornmask) {
-		You("cannot use it while you're wearing it!"); /* EN You("cannot use it while you're wearing it!"); */ // TODO DE
+		You("VERB_KOENNEN es nicht benutzen, NEUER_SATZ solange SUBJECT_IM_SATZ PRONOMEN_PERSONAL es VERB_TRAGEN!"); /* EN You("cannot use it while you're wearing it!"); */
 		return 0;
 	} else if (obj->cursed) {
 		long old;
@@ -2123,8 +2123,8 @@ struct obj *obj;
     struct monst *mtmp;
     struct obj *otmp;
     int rx, ry, proficient, res = 0;
-    const char *msg_slipsfree = "The bullwhip slips free."; /* EN const char *msg_slipsfree = "The bullwhip slips free."; */ // TODO DE
-    const char *msg_snap = "Snap!"; /* EN const char *msg_snap = "Snap!"; */ // TODO DE
+    const char *msg_slipsfree = "SUBJECT ARTIKEL_BESTIMMTER NOUN_BULLWHIP VERB_RUTSCHEN ab."; /* EN const char *msg_slipsfree = "The bullwhip slips free."; */
+    const char *msg_snap = "Knall!"; /* EN const char *msg_snap = "Snap!"; */
 
     if (obj != uwep) {
 	if (!wield_tool(obj, "lash")) return 0; /* EN if (!wield_tool(obj, "lash")) return 0; */ // TODO DE
@@ -2147,13 +2147,13 @@ struct obj *obj;
     if (proficient < 0) proficient = 0;
 
     if (u.uswallow && attack(u.ustuck)) {
-	There("is not enough room to flick your bullwhip."); /* EN There("is not enough room to flick your bullwhip."); */ // TODO DE
+	You("VERB_HABEN nicht genug Platz, um OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_BULLWHIP auszuholen."); /* EN There("is not enough room to flick your bullwhip."); */
 
     } else if (Underwater) {
-	There("is too much resistance to flick your bullwhip."); /* EN There("is too much resistance to flick your bullwhip."); */ // TODO DE
+	pline("Es gibt hier zuviel Widerstand um mit der Peitsche zu knallen."); /* EN There("is too much resistance to flick your bullwhip."); */
 
     } else if (u.dz < 0) {
-	You("flick a bug off of the %s.",ceiling(u.ux,u.uy)); /* EN You("flick a bug off of the %s.",ceiling(u.ux,u.uy)); */ // TODO DE
+	You("VERB_SCHNIPPEN eine Fliege OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER %s.",ceiling(u.ux,u.uy)); /* EN You("flick a bug off of the %s.",ceiling(u.ux,u.uy)); */
 
     } else if ((!u.dx && !u.dy) || (u.dz > 0)) {
 	int dam;
@@ -2178,7 +2178,7 @@ struct obj *obj;
 		return 1;
 	    }
 	    if (otmp && proficient) {
-		You("wrap your bullwhip around %s on the %s.", /* EN You("wrap your bullwhip around %s on the %s.", */ // TODO DE
+		You("VERB_WICKELN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP NEUES_OBJECT OBJECT um %s NEUES_OBJECT OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s.", /* EN You("wrap your bullwhip around %s on the %s.", */ /* auf_dem_Boden */
 		    an(singular(otmp, xname)), surface(u.ux, u.uy));
 		if (rnl(6) || pickup_object(otmp, 1L, TRUE) < 1)
 		    pline(msg_slipsfree);
@@ -2238,7 +2238,7 @@ struct obj *obj;
 	    You("VERB_WICKELN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP NEUES_OBJECT OBJECT um %s.", wrapped_what); /* EN You("wrap your bullwhip around %s.", wrapped_what); */
 	    if (proficient && rn2(proficient + 2)) {
 		if (!mtmp || enexto(&cc, rx, ry, youmonst.data)) {
-		    You("yank yourself out of the pit!"); /* EN You("yank yourself out of the pit!"); */ // TODO DE
+		    You("VERB_REISSEN OBJECT PRONOMEN_PERSONAL aus der Grube heraus!"); /* EN You("yank yourself out of the pit!"); */
 		    teleds(cc.x, cc.y, TRUE);
 		    u.utrap = 0;
 		    vision_full_recalc = 1;
@@ -2252,7 +2252,7 @@ struct obj *obj;
     } else if (mtmp) {
 	if (!canspotmon(mtmp) &&
 		!glyph_is_invisible(levl[rx][ry].glyph)) {
-	   pline("Ein Monster ist dort, das SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht sehen VERB_KOENNEN."); /* EN pline("A monster is there that you couldn't see."); */
+	   pline("Dort ist ein Monster, das SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht sehen VERB_KOENNEN."); /* EN pline("A monster is there that you couldn't see."); */
 	   map_invisible(rx, ry);
 	}
 	otmp = MON_WEP(mtmp);	/* can be null */
@@ -2286,7 +2286,7 @@ struct obj *obj;
 		switch (rn2(proficient + 1)) {
 		case 2:
 		    /* to floor near you */
-		    You("yank %s to the %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */ // TODO DE
+		    You("VERB_REISSEN OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV zu %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */
 			surface(u.ux, u.uy)); /* EN onambuf, surface(u.ux, u.uy)); */ /* zu_Boden */
 		    place_object(otmp, u.ux, u.uy);
 		    stackobj(otmp);
@@ -2331,7 +2331,7 @@ struct obj *obj;
 		    break;
 		default:
 		    /* to floor beneath mon */
-		    You("yank %s from %s!", the(onambuf), /* EN You("yank %s from %s %s!", the(onambuf), */ // TODO DE
+		    You("VERB_REISSEN OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV aus %s!", the(onambuf), /* EN You("yank %s from %s %s!", the(onambuf), */
 			genitivattribut_zu_wort(mon_nam(mtmp), mon_hand)); /* EN s_suffix(mon_nam(mtmp)), mon_hand); */
 		    obj_no_longer_held(otmp);
 		    place_object(otmp, mtmp->mx, mtmp->my);
