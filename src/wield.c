@@ -434,7 +434,7 @@ const char *verb;	/* "rub",&c */
 	    if (bimanual(uwep)) hand = makeplural(hand);
 	    if (strstri(what, "NOUN_PAAR ") != 0) more_than_1 = FALSE; /* EN if (strstri(what, "pair of ") != 0) more_than_1 = FALSE; */
 	    pline(
-	     "Da PRONOMEN_POSSESSIV NOUN_WEAPON OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s VERB_KLEBEN, NEUER_SATZ SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL PRONOMEN_DIESER %s nicht %s.", /* EN "Since your weapon is welded to your %s, you cannot %s %s %s.", */
+	     "Da PRONOMEN_POSSESSIV NOUN_WEAPON OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s VERB_KLEBEN, NEUER_SATZ SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL PRONOMEN_DIESER %s nicht MODIFIER_VERB_INFINITIV %s.", /* EN "Since your weapon is welded to your %s, you cannot %s %s %s.", */
 		  hand, xname(obj), verb); /* EN hand, verb, more_than_1 ? "those" : "that", xname(obj)); */
 	} else {
 	    You("VERB_KOENNEN das nicht tun."); /* EN You_cant("do that."); */

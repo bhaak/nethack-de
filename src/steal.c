@@ -547,8 +547,8 @@ boolean verbosely;
 	obj->owornmask = 0L;
     }
     if (verbosely && cansee(omx, omy))
-	pline("%s drops %s.", Monnam(mon), distant_name(obj, doname)); /* EN pline("%s drops %s.", Monnam(mon), distant_name(obj, doname)); */ // TODO DE
-    if (!flooreffects(obj, omx, omy, "fall")) { /* EN if (!flooreffects(obj, omx, omy, "fall")) { */ // TODO DE
+	pline("SUBJECT %s VERB_DROP OBJECT %s SATZKLAMMER.", Monnam(mon), distant_name(obj, doname)); /* EN pline("%s drops %s.", Monnam(mon), distant_name(obj, doname)); */
+    if (!flooreffects(obj, omx, omy, "VERB_FALLEN")) { /* EN if (!flooreffects(obj, omx, omy, "fall")) { */
 	place_object(obj, omx, omy);
 	stackobj(obj);
     }

@@ -610,11 +610,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Dreschflegel", "NOUN_FLAILs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Dreschflegeln", "NOUN_FLAILs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Bullenpeitsche", "NOUN_BULLWHIP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Bullenpeitschen", "NOUN_BULLWHIPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-
   {"Peitsche", "NOUN_BULLWHIP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Peitschen", "NOUN_BULLWHIPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Bullenpeitsche", "NOUN_BULLWHIP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Bullenpeitschen", "NOUN_BULLWHIPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Bogens", "NOUN_BOW", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Bogen", "NOUN_BOW", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7462,8 +7462,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Zweiblum", "NOUN_TWOFLOWER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Zweiblums", "NOUN_TWOFLOWER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Norn", "NOUN_NORN", "", dativ|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Norns", "NOUN_NORN", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Norne", "NOUN_NORN", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Nornen", "NOUN_NORNs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Neferet die Grüne", "NOUN_NEFERET_THE_GREEN", "", nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -9353,8 +9353,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Ankh-Morpork", "NOUN_ANKH_MORPORK", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Schreines  des Schicksals", "NOUN_SHRINE_OF_DESTINY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Schrein  des Schicksals", "NOUN_SHRINE_OF_DESTINY", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schreines des Schicksals", "NOUN_SHRINE_OF_DESTINY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schrein des Schicksals", "NOUN_SHRINE_OF_DESTINY", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Duali-Oase", "NOUN_DUALI_OASIS", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -10400,8 +10400,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Wege", "NOUN_WEGs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Wegen", "NOUN_WEGs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Peitsche", "NOUN_WHIP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Peitschen", "NOUN_WHIPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Lederpeitsche", "NOUN_WHIP", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lederpeitschen", "NOUN_WHIPs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Windes", "NOUN_WIND", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wind", "NOUN_WIND", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

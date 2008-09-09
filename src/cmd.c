@@ -1590,12 +1590,12 @@ struct ext_func_tab extcmdlist[] = {
 
 #if defined(WIZARD)
 static const struct ext_func_tab debug_extcmdlist[] = {
-	{"levelchange", "change experience level", wiz_level_change, TRUE}, /* EN {"levelchange", "change experience level", wiz_level_change, TRUE}, */ // TODO DE
-	{"lightsources", "show mobile light sources", wiz_light_sources, TRUE}, /* EN {"lightsources", "show mobile light sources", wiz_light_sources, TRUE}, */ // TODO DE
+	{"levelchange", "ändere Erfahrungsstufe", wiz_level_change, TRUE}, /* EN {"levelchange", "change experience level", wiz_level_change, TRUE}, */
+	{"lightsources", "zeige mobile Lichtquellen", wiz_light_sources, TRUE}, /* EN {"lightsources", "show mobile light sources", wiz_light_sources, TRUE}, */
 #ifdef DEBUG_MIGRATING_MONS
 	{"migratemons", "migrate n random monsters", wiz_migrate_mons, TRUE}, /* EN +	{"migratemons", "migrate n random monsters", wiz_migrate_mons, TRUE}, */ // TODO DE
 #endif
-	{"monpolycontrol", "control monster polymorphs", wiz_mon_polycontrol, TRUE}, /* EN {"monpolycontrol", "control monster polymorphs", wiz_mon_polycontrol, TRUE}, */ // TODO DE
+	{"monpolycontrol", "kontrolliere Monstertransformationen", wiz_mon_polycontrol, TRUE}, /* EN {"monpolycontrol", "control monster polymorphs", wiz_mon_polycontrol, TRUE}, */
 	{"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, /* EN {"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, */ // TODO DE
 	{"polyself", "Eigentransformation", wiz_polyself, TRUE}, /* EN {"polyself", "polymorph self", wiz_polyself, TRUE}, */ // TODO DE
 #ifdef PORT_DEBUG
@@ -1604,7 +1604,7 @@ static const struct ext_func_tab debug_extcmdlist[] = {
 	{"seenv", "zeige gesehene Vektoren", wiz_show_seenv, TRUE}, /* EN {"seenv", "show seen vectors", wiz_show_seenv, TRUE}, */
 	{"stats", "zeige Speicher-Statistiken", wiz_show_stats, TRUE}, /* EN {"stats", "show memory statistics", wiz_show_stats, TRUE}, */
 	{"timeout", "look at timeout queue", wiz_timeout_queue, TRUE}, /* EN {"timeout", "look at timeout queue", wiz_timeout_queue, TRUE}, */ // TODO DE
-	{"vision", "show vision array", wiz_show_vision, TRUE}, /* EN {"vision", "show vision array", wiz_show_vision, TRUE}, */ // TODO DE
+	{"vision", "zeige Sichtfeld", wiz_show_vision, TRUE}, /* EN {"vision", "show vision array", wiz_show_vision, TRUE}, */
 #ifdef DEBUG
 	{"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE}, /* EN {"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE}, */ // TODO DE
 #endif
@@ -2050,7 +2050,7 @@ register char *cmd;
 	    }
 	    *cp = '\0';
 	    if (!prefix_seen || !iflags.cmdassist ||
-		!help_dir(0, "Invalid direction key!")) /* EN !help_dir(0, "Invalid direction key!")) */ // TODO DE
+		!help_dir(0, "Ungültige Richtungstaste!")) /* EN !help_dir(0, "Invalid direction key!")) */
 		Norep("Unbekannter Befehl '%s'.", expcmd); /* EN Norep("Unknown command '%s'.", expcmd); */
 	}
 	/* didn't move */
@@ -2156,7 +2156,7 @@ const char *s;
 		if(!index(quitchars, dirsym)) {
 		    if (iflags.cmdassist) {
 			did_help = help_dir((s && *s == '^') ? dirsym : 0,
-					    "Invalid direction key!"); /* EN "Invalid direction key!"); */ // TODO DE
+					    "Ungültige Richtungstaste!"); /* EN "Invalid direction key!"); */
 		    }
 		    if (!did_help) pline("Was für eine seltsame Richtung!"); /* EN if (!did_help) pline("What a strange direction!"); */
 		}

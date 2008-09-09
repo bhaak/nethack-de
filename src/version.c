@@ -113,7 +113,7 @@ const char *name;
     minit();		/* ZEROCOMP */
     if (rlen == 0) {
 	if (verbose) {
-	    pline("File \"%s\" is empty?", name); /* EN pline("File \"%s\" is empty?", name); */ // TODO DE
+	    pline("Datei \"%s\" ist leer?", name); /* EN pline("File \"%s\" is empty?", name); */
 	    wait_synch();
 	}
 	return FALSE;
