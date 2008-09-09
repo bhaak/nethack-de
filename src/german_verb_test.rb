@@ -633,13 +633,19 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["brächte", "brächtest", "brächte", "brächten", "brächtet", "brächten"])
   end
 
-	def testEErweiterung
+  def testEErweiterung
     assert_false(Verb.verb("", "sein").e_erweiterung)
     assert_false(Verb.verb("", "haben").e_erweiterung)
     assert(Verb.verb("", "öffnen").e_erweiterung)
     assert(Verb.verb("", "wappnen").e_erweiterung)
     assert(Verb.verb("", "atmen").e_erweiterung)
-	end
+  end
+
+  def testInfinitive
+    assert_equal("sein",Verb.verb("", "sein").infinitiv)
+    assert_equal("aufhören",Verb.verb("", "hören","auf").infinitiv)
+    assert_equal("hinzufügen",Verb.verb("", "fügen","hinzu").infinitiv)
+  end
 
   def checkVerbPraeteritum(verb, formen)
     verb.praeteritum.indikativ

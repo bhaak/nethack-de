@@ -165,6 +165,9 @@ class Verb
     end
   end
 
+  def infinitiv
+    return @praeverb+@infinitiv
+  end
 	def imperativ
 		case infinitiv
 			when "wählen","benutzen"

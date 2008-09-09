@@ -1163,6 +1163,33 @@ START_TEST (test_fugenwort) {
 	check_fugenwort("NOUN_WORM", "Wurm");
 } END_TEST
 
+START_TEST (test_infinitive) {
+	char *text[][2] = {
+		{"MODIFIER_VERB_INFINITIV VERB_SEIN",
+		 "sein"},
+		{"SUBJECT NOUN_PRONOMEN_3P_M_PERSONAL MODIFIER_KONJUNKTIV_II VERB_WERDEN gerne OBJECT KASUS_DATIV mit PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV VERB_GEHEN!",
+		 "Er würde gerne mit dir gehen!"},
+		{"SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV VERB_AUFHOEREN?",
+		 "Möchtest du aufhören?"},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
+
+START_TEST (test_modifier_verb_partizip_perfekt) {
+	char *text[][2] = {
+		{"SUBJECT PRONOMEN_PERSONAL VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT VERB_REGURGITATE!",
+		 "Du wirst herausgewürgt!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT VERB_EXPEL!",
+		 "Du wirst herausgeschleudert!"},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DOG VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT VERB_REGURGITATE!",
+		 "Der Hund wird herausgewürgt!"},
+		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DOG VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT VERB_EXPEL!",
+		 "Der Hund herausgeschleudert!"},
+	};
+
+	check_strings(text, sizeof(text)/8);
+} END_TEST
 //#endif
 
 Suite *test_suite(void)
@@ -1226,6 +1253,9 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_german2meta2);
 	tcase_add_test(tc_core, test_german2meta_ohne_umlaute);
 	tcase_add_test(tc_core, test_german2meta_utf8);
+
+	tcase_add_test(tc_core, test_infinitive);
+	tcase_add_test(tc_core, test_modifier_verb_partizip_perfekt);
 
 	return s;
 }
