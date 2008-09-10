@@ -2026,7 +2026,7 @@ int  typ, fatal;
 	    /* so have "poison arrow", "poison dart", etc... */
 	    plural = (string[strlen(string) - 1] == 's')? 1 : 0;
 	    /* avoid "The" Orcus's sting was poisoned... */
-	    pline("SUBJECT %s%s %s vergiftet!",  !isupper(string[1]) ? "" : "ARTIKEL_BESTIMMTER ", /* EN pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", */ // TODO DE richtiger Eigennamencheck
+	    pline("SUBJECT %s%s %s vergiftet!",  ((strncmp(string, "ARTIKEL_",8)==0) || !isupper(string[1])) ? "" : "ARTIKEL_BESTIMMTER ", /* EN pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", */ /* grep poisoned\( *.c, mthrowu.c:393 */
 			string, plural ? "waren" : "war"); /* EN string, plural ? "were" : "was"); */
 	}
 
