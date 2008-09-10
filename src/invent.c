@@ -1207,7 +1207,7 @@ unsigned *resultflags;
 
 	if (resultflags) *resultflags = 0;
 #ifndef GOLDOBJ
-	allowgold = (u.ugold && !strcmp(word, "drop")) ? 1 : 0; /* EN allowgold = (u.ugold && !strcmp(word, "drop")) ? 1 : 0; */ // TODO DE
+	allowgold = (u.ugold && !strcmp(word, "VERB_DROP")) ? 1 : 0; /* EN allowgold = (u.ugold && !strcmp(word, "drop")) ? 1 : 0; */
 #endif
 	takeoff = ident = allflag = m_seen = FALSE;
 #ifndef GOLDOBJ
@@ -1394,7 +1394,7 @@ register int FDECL((*fn),(OBJ_P)), FDECL((*ckfn),(OBJ_P));
 
 	takeoff = taking_off(word);
 	ident = !strcmp(word, "VERB_IDENTIFY"); /* EN ident = !strcmp(word, "identify"); */
-	nodot = (!strcmp(word, "nodot") || !strcmp(word, "drop") || /* EN nodot = (!strcmp(word, "nodot") || !strcmp(word, "drop") || */ // TODO DE
+	nodot = (!strcmp(word, "nodot") || !strcmp(word, "VERB_DROP") || /* EN nodot = (!strcmp(word, "nodot") || !strcmp(word, "drop") || */
 		 ident || takeoff);
 	ininv = (*objchn == invent);
 	/* Changed so the askchain is interrogated in the order specified.
@@ -2086,7 +2086,7 @@ dotypeinv()
 	    if (oclass == COIN_CLASS) {
 		return doprgold();
 	    } else if (index(types, c) > index(types, '\033')) {
-		You("have no such objects."); /* EN You("have no such objects."); */ // TODO DE
+		You("VERB_HABEN keine derartigen Gegenstände."); /* EN You("have no such objects."); */
 		return 0;
 	    }
 	    this_type = oclass;
@@ -2242,15 +2242,15 @@ boolean picked_some;
 	if (skip_objects) {
 	    if (dfeature) pline(fbuf);
 	    read_engr_at(u.ux, u.uy); /* Eric Backus */
-	    There("are %s%s objects here.", /* EN There("are %s%s objects here.", */ // TODO DE
-		  (obj_cnt <= 10) ? "several" : "many", /* EN (obj_cnt <= 10) ? "several" : "many", */ // TODO DE
-		  picked_some ? " more" : ""); /* EN picked_some ? " more" : ""); */ // TODO DE
+	    pline("Hier liegen %s%s Gegenstände.", /* EN There("are %s%s objects here.", */
+		  (obj_cnt <= 10) ? "einige" : "viele", /* EN (obj_cnt <= 10) ? "several" : "many", */
+		  picked_some ? " weitere" : ""); /* EN picked_some ? " more" : ""); */
 	} else if (!otmp->nexthere) {
 	    /* only one object */
 	    if (dfeature) pline(fbuf);
 	    read_engr_at(u.ux, u.uy); /* Eric Backus */
 #ifdef INVISIBLE_OBJECTS
-	    if (otmp->oinvis && !See_invisible) verb = "feel"; /* EN if (otmp->oinvis && !See_invisible) verb = "feel"; */ // TODO DE
+	    if (otmp->oinvis && !See_invisible) verb = "VERB_FUEHLEN"; /* EN if (otmp->oinvis && !See_invisible) verb = "feel"; */
 #endif
 	    You("%s hier OBJECT %s.", verb, doname(otmp)); /* EN You("%s here %s.", verb, doname(otmp)); */
 	    if (otmp->otyp == CORPSE) feel_cockatrice(otmp, FALSE);
@@ -2622,14 +2622,14 @@ boolean unpaid;
 	else
 	    class_name = names[0];
 
-	len = strlen(class_name) + (unpaid ? sizeof "unpaid_" : sizeof ""); /* EN len = strlen(class_name) + (unpaid ? sizeof "unpaid_" : sizeof ""); */ // TODO DE
+	len = strlen(class_name) + (unpaid ? sizeof "satzbeginn_adjektiv_unbezahlt_" : sizeof ""); /* EN len = strlen(class_name) + (unpaid ? sizeof "unpaid_" : sizeof ""); */
 	if (len > invbufsiz) {
 	    if (invbuf) free((genericptr_t)invbuf);
 	    invbufsiz = len + 10; /* add slop to reduce incremental realloc */
 	    invbuf = (char *) alloc(invbufsiz);
 	}
 	if (unpaid)
-	    Strcat(strcpy(invbuf, "Unpaid "), class_name); /* EN Strcat(strcpy(invbuf, "Unpaid "), class_name); */ // TODO DE
+	    Strcat(strcpy(invbuf, "SATZBEGINN ADJEKTIV_UNBEZAHLT "), class_name); /* EN Strcat(strcpy(invbuf, "Unpaid "), class_name); */
 	else
 	    Strcpy(invbuf, class_name);
 	return invbuf;

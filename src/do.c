@@ -42,7 +42,7 @@ dodrop()
 #endif
 
 	if (*u.ushops) sellobj_state(SELL_DELIBERATE);
-	result = drop(getobj(&drop_types[i], "drop"));
+	result = drop(getobj(&drop_types[i], "VERB_DROP")); /* EN result = drop(getobj(&drop_types[i], "drop")); */
 	if (*u.ushops) sellobj_state(SELL_NORMAL);
 	reset_occupations();
 
@@ -627,7 +627,7 @@ doddrop()
 	add_valid_menu_class(0); /* clear any classes already there */
 	if (*u.ushops) sellobj_state(SELL_DELIBERATE);
 	if (flags.menu_style != MENU_TRADITIONAL ||
-		(result = ggetobj("drop", drop, 0, FALSE, (unsigned *)0)) < -1) /* EN (result = ggetobj("drop", drop, 0, FALSE, (unsigned *)0)) < -1) */ // TODO DE
+		(result = ggetobj("VERB_DROP", drop, 0, FALSE, (unsigned *)0)) < -1) /* EN (result = ggetobj("drop", drop, 0, FALSE, (unsigned *)0)) < -1) */
 	    result = menu_drop(result);
 	if (*u.ushops) sellobj_state(SELL_NORMAL);
 	reset_occupations();
@@ -685,7 +685,7 @@ int retry;
 	unsigned ggoresults = 0;
 	all_categories = FALSE;
 	/* Gather valid classes via traditional NetHack method */
-	i = ggetobj("drop", drop, 0, TRUE, &ggoresults); /* EN i = ggetobj("drop", drop, 0, TRUE, &ggoresults); */ // TODO DE
+	i = ggetobj("VERB_DROP", drop, 0, TRUE, &ggoresults); /* EN i = ggetobj("drop", drop, 0, TRUE, &ggoresults); */
 	if (i == -2) all_categories = TRUE;
 	if (ggoresults & ALL_FINISHED) {
 		n_dropped = i;

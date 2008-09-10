@@ -2192,7 +2192,7 @@ ask_again2:
 				     (one_by_one ? (char *)0 : select),
 				     allflag, out_container,
 				     (int FDECL((*),(OBJ_P)))0,
-				     0, "nodot")) /* EN 0, "nodot")) */ // TODO DE
+				     0, "nodot"))
 			    used = 1;
 		    } else if (menu_on_request < 0) {
 			used |= menu_loot(menu_on_request,

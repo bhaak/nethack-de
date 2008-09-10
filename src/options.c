@@ -252,19 +252,19 @@ static struct Comp_Opt
 	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/ // TODO DE
 	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
 						MENUTYPELEN, SET_IN_GAME },
-	{ "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
-	{ "menu_deselect_page", "deselect all items on this page of a menu", /* EN { "menu_deselect_page", "deselect all items on this page of a menu", */ // TODO DE
+	{ "menu_deselect_all", "alle Einträge eines Menüs deselektieren", 4, SET_IN_FILE }, /* EN { "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_deselect_page", "alle Auswahl dieser Seite deselektieren", /* EN { "menu_deselect_page", "deselect all items on this page of a menu", */ // TODO DE
 						4, SET_IN_FILE },
-	{ "menu_first_page", "jump to the first page in a menu", /* EN { "menu_first_page", "jump to the first page in a menu", */ // TODO DE
+	{ "menu_first_page", "springe zur ersten Seite eines Menüs", /* EN { "menu_first_page", "jump to the first page in a menu", */
 						4, SET_IN_FILE },
-	{ "menu_headings", "bold, inverse, or underline headings", 9, SET_IN_GAME }, /* EN { "menu_headings", "bold, inverse, or underline headings", 9, SET_IN_GAME }, */ // TODO DE
+	{ "menu_headings", "fette, invertierte oder unterstrichene Überschriften", 9, SET_IN_GAME }, /* EN { "menu_headings", "bold, inverse, or underline headings", 9, SET_IN_GAME }, */
 	{ "menu_invert_all", "invert all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_invert_all", "invert all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
 	{ "menu_invert_page", "invert all items on this page of a menu", /* EN { "menu_invert_page", "invert all items on this page of a menu", */ // TODO DE
 						4, SET_IN_FILE },
-	{ "menu_last_page", "jump to the last page in a menu", 4, SET_IN_FILE }, /* EN { "menu_last_page", "jump to the last page in a menu", 4, SET_IN_FILE }, */ // TODO DE
-	{ "menu_next_page", "goto the next menu page", 4, SET_IN_FILE }, /* EN { "menu_next_page", "goto the next menu page", 4, SET_IN_FILE }, */ // TODO DE
-	{ "menu_previous_page", "goto the previous menu page", 4, SET_IN_FILE }, /* EN { "menu_previous_page", "goto the previous menu page", 4, SET_IN_FILE }, */ // TODO DE
-	{ "menu_search", "search for a menu item", 4, SET_IN_FILE }, /* EN { "menu_search", "search for a menu item", 4, SET_IN_FILE }, */ // TODO DE
+	{ "menu_last_page", "springe zur letzten Seite eines Menüs", 4, SET_IN_FILE }, /* EN { "menu_last_page", "jump to the last page in a menu", 4, SET_IN_FILE }, */
+	{ "menu_next_page", "gehe zu der nächsten Menüseite", 4, SET_IN_FILE }, /* EN { "menu_next_page", "goto the next menu page", 4, SET_IN_FILE }, */
+	{ "menu_previous_page", "gehe zu der vorherigen Menüseite", 4, SET_IN_FILE }, /* EN { "menu_previous_page", "goto the previous menu page", 4, SET_IN_FILE }, */
+	{ "menu_search", "suche nach einem Menüeintrag", 4, SET_IN_FILE }, /* EN { "menu_search", "search for a menu item", 4, SET_IN_FILE }, */
 	{ "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
 	{ "menu_select_page", "select all items on this page of a menu", /* EN { "menu_select_page", "select all items on this page of a menu", */ // TODO DE
 						4, SET_IN_FILE },
@@ -311,7 +311,7 @@ static struct Comp_Opt
 						20, DISP_IN_GAME }, /*WC*/
 	{ "scroll_margin", "scroll map when this far from the edge", 20, DISP_IN_GAME }, /*WC*/ /* EN { "scroll_margin", "scroll map when this far from the edge", 20, DISP_IN_GAME }, */ // TODO DE
 #ifdef MSDOS
-	{ "soundcard", "type of sound card to use", 20, SET_IN_FILE }, /* EN { "soundcard", "type of sound card to use", 20, SET_IN_FILE }, */ // TODO DE
+	{ "soundcard", "zu benutzende Soundkarte", 20, SET_IN_FILE }, /* EN { "soundcard", "type of sound card to use", 20, SET_IN_FILE }, */
 #endif
 	{ "suppress_alert", "unterdrückt Warnungen über versionsspezifische Features", /* EN { "suppress_alert", "suppress alerts about version-specific features", */
 						8, SET_IN_GAME },
@@ -325,7 +325,7 @@ static struct Comp_Opt
 	{ "video",    "method of video updating", 20, SET_IN_FILE }, /* EN { "video",    "method of video updating", 20, SET_IN_FILE }, */ // TODO DE
 #endif
 #ifdef VIDEOSHADES
-	{ "videocolors", "color mappings for internal screen routines", /* EN { "videocolors", "color mappings for internal screen routines", */ // TODO DE
+	{ "videocolors", "Farbzuordnungen für die internen Bildschirmroutinen", /* EN { "videocolors", "color mappings for internal screen routines", */
 						40, DISP_IN_GAME },
 	{ "videoshades", "gray shades to map to black/gray/white", /* EN { "videoshades", "gray shades to map to black/gray/white", */ // TODO DE
 						32, DISP_IN_GAME },
@@ -2087,11 +2087,11 @@ goodfruit:
 		else if (!(opts = string_for_env_opt(fullname, opts, FALSE))) {
 			return;
 		}
-		if (!strcmpi(opts,"bold"))
+		if ((!strcmpi(opts,"bold"))||(!strcmpi(opts,"fett"))) /* EN if (!strcmpi(opts,"bold")) */
 			iflags.menu_headings = ATR_BOLD;
-		else if (!strcmpi(opts,"inverse"))
+		else if ((!strcmpi(opts,"inverse"))||(!strcmpi(opts,"invertiert"))) /* EN else if (!strcmpi(opts,"inverse")) */
 			iflags.menu_headings = ATR_INVERSE;
-		else if (!strcmpi(opts,"underline"))
+		else if ((!strcmpi(opts,"underline"))||(!strcmpi(opts,"unterstrichen"))) /* EN else if (!strcmpi(opts,"underline")) */
 			iflags.menu_headings = ATR_ULINE;
 		else
 			badoption(opts);
@@ -2139,7 +2139,7 @@ goodfruit:
 			/* options that don't exist */
 			if (!boolopt[i].addr) {
 			    if (!initial && !negated)
-				pline_The("\"%s\" option is not available.",
+				pline("Die \"%s\"-Option ist nicht verfügbar.", /* EN pline_The("\"%s\" option is not available.", */
 					boolopt[i].name);
 			    return;
 			}
@@ -2767,8 +2767,8 @@ boolean setinitial,setfromfile;
 	destroy_nhwindow(tmpwin);
         retval = TRUE;
     } else if (!strcmp("menu_headings", optname)) {
-	static const char *mhchoices[3] = {"bold", "inverse", "underline"};
-	const char *npletters = "biu";
+	static const char *mhchoices[3] = {"fett", "invertiert", "unterstrichen"}; /* EN static const char *mhchoices[3] = {"bold", "inverse", "underline"}; */
+	const char *npletters = "fiu"; /* EN const char *npletters = "biu"; */
 	menu_item *mode_pick = (menu_item *)0;
 
 	tmpwin = create_nhwindow(NHW_MENU);
@@ -2778,7 +2778,7 @@ boolean setinitial,setfromfile;
 		add_menu(tmpwin, NO_GLYPH, &any, npletters[i], 0,
 			 ATR_NONE, mhchoices[i], MENU_UNSELECTED);
         }
-	end_menu(tmpwin, "How to highlight menu headings:"); /* EN end_menu(tmpwin, "How to highlight menu headings:"); */ // TODO DE
+	end_menu(tmpwin, "Wie sollen die Menü-Überschriften markiert werden:"); /* EN end_menu(tmpwin, "How to highlight menu headings:"); */
 	if (select_menu(tmpwin, PICK_ONE, &mode_pick) > 0) {
 		int mode = mode_pick->item.a_int - 1;
 		switch(mode) {
@@ -3005,9 +3005,9 @@ char *buf;
 		Sprintf(buf, "%s", to_be_done);
 	else if (!strcmp(optname, "menu_headings")) {
 		Sprintf(buf, "%s", (iflags.menu_headings == ATR_BOLD) ?
-			"bold" :   (iflags.menu_headings == ATR_INVERSE) ?
-			"inverse" :   (iflags.menu_headings == ATR_ULINE) ?
-			"underline" : "unknown");
+			"fett" :   (iflags.menu_headings == ATR_INVERSE) ?  /* EN "bold" :   (iflags.menu_headings == ATR_INVERSE) ? */
+			"invertiert" :   (iflags.menu_headings == ATR_ULINE) ?  /* EN "inverse" :   (iflags.menu_headings == ATR_ULINE) ? */
+			"unterstrichen" : "unbekannt"); /* EN "underline" : "unknown"); */
 	}
 	else if (!strcmp(optname, "menu_invert_page"))
 		Sprintf(buf, "%s", to_be_done);
