@@ -170,11 +170,11 @@ dosounds()
 			You("VERB_MERKEN plötzlich, wie widernatürlich ruhig es ist."); /* EN You("suddenly realize it is unnaturally quiet.");*/
 			break;
 		    case 1:
-			pline_The("%s on the back of your %s stands up.", /* EN pline_The("%s on the back of your %s stands up.", */ // TODO DE
-				body_part(HAIR), body_part(NECK));
+			Dir("SUBJECT_IM_SATZ VERB_STEHEN ARTIKEL_BESTIMMTER %s zu Berge.", /* EN pline_The("%s on the back of your %s stands up.", */
+				body_part(HAIR)); /* EN body_part(HAIR), body_part(NECK)); */
 			break;
 		    case 2:
-			pline_The("%s on your %s seems to stand up.", /* EN pline_The("%s on your %s seems to stand up.", */ // TODO DE
+			pline_The("%s OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV %s VERB_STEHEN NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_PERSONAL zu Berge.", /* EN pline_The("%s on your %s seems to stand up.", */
 				body_part(HAIR), body_part(HEAD));
 			break;
 		}

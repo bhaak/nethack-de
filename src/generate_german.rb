@@ -948,6 +948,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_RASSELN","rasseln"),
 		Verb.verb("VERB_REAGIEREN", "reagieren"),
 		Verb.verb("VERB_REFLEKTIEREN", "reflektieren"),
+		Verb.verb("VERB_REGURGITATE","würgen","heraus"),
 		Verb.verb("VERB_REISSEN","reißen"),
 		Verb.verb("VERB_REITEN","reiten"),
 		Verb.verb("VERB_REPARIEREN","reparieren"),

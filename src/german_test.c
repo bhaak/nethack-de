@@ -477,6 +477,8 @@ START_TEST (test_incomplete_sentences) {
 		 "den grünen Reittieren. des roten Hundes."},
 		{"SATZBEGINN KASUS_DATIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_GREEN NOUN_REITTIERs. SATZBEGINN KASUS_GENITIV ARTIKEL_BESTIMMTER ADJEKTIV_FARBE_RED NOUN_DOG.",
 		 "Den grünen Reittieren. Des roten Hundes."},
+		{"NOUN_GRAYSWANDIR [SUBJECT_IM_SATZ ADJEKTIV_LAWFUL NOUN_SILVER_SABER]",
+		 "Grayswandir [rechtschaffener Silbersäbel]"},
 	};
 
 	check_strings(text, sizeof(text)/8);
@@ -1063,6 +1065,8 @@ START_TEST (test_wortzusammensetzungen) {
 		 "Purpurwurm-Ei"},
 		{"MODIFIER_VERB_INFINITIV davon-VERB_LAUFEN",
 		 "davonlaufen"},
+		{"grell-ADJEKTIV_FARBE_BLUE",
+		 "grellblau"},
 	};
 
 	check_strings(text, sizeof(text)/8);

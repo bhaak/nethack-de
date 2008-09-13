@@ -726,13 +726,13 @@ register struct obj	*sobj;
 		/* KMH -- catch underflow */
 		s = sobj->cursed ? -otmp->spe : otmp->spe;
 		if (s > (special_armor ? 5 : 3) && rn2(s)) {
-		Your("%s violently %s%s%s for a while, then %s.", /* EN Your("%s violently %s%s%s for a while, then %s.", */ // TODO DE
+		Your("%s für eine Weile intensiv %s%s%s SATZKLAMMNER, um dann zu MODIFIER_VERB_INFINITIV %s.", /* EN Your("%s violently %s%s%s for a while, then %s.", */
 		     xname(otmp),
-		     otense(otmp, Blind ? "vibrate" : "glow"), /* EN otense(otmp, Blind ? "vibrate" : "glow"), */ // TODO DE
+		     otense(otmp, Blind ? "VERB_VIBRIEREN" : "VERB_LEUCHTEN"), /* EN otense(otmp, Blind ? "vibrate" : "glow"), */
 		     (!Blind && !same_color) ? " " : nul,
 		     (Blind || same_color) ? nul :
 			hcolor(sobj->cursed ? NH_BLACK : NH_SILVER),
-		     otense(otmp, "evaporate")); /* EN otense(otmp, "evaporate")); */ // TODO DE
+		     otense(otmp, "VERB_EVAPORATE")); /* EN otense(otmp, "evaporate")); */
 			if(is_cloak(otmp)) (void) Cloak_off();
 			if(is_boots(otmp)) (void) Boots_off();
 			if(is_helmet(otmp)) (void) Helmet_off();
@@ -894,9 +894,9 @@ register struct obj	*sobj;
 	    }
 	case SCR_BLANK_PAPER:
 	    if (Blind)
-		You("don't remember there being any magic words on this scroll."); /* EN You("don't remember there being any magic words on this scroll."); */ // TODO DE
+		You("VERB_KOENNEN OBJECT PRONOMEN_PERSONAL nicht an magische Zeichen auf dieser Schriftrolle erinnern."); /* EN You("don't remember there being any magic words on this scroll."); */
 	    else
-		pline("This scroll seems to be blank."); /* EN pline("This scroll seems to be blank."); */ // TODO DE
+		pline("Diese Schriftrolle scheint unbeschriftet zu sein."); /* EN pline("This scroll seems to be blank."); */
 	    known = TRUE;
 	    break;
 	case SCR_REMOVE_CURSE:

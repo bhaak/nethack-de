@@ -1138,51 +1138,51 @@ struct monst *mon;
 int part;
 {
 	static NEARDATA const char
-		/* HANDED wird nicht gebraucht */
+		/* DE HANDED wird nicht gebraucht */
 	*humanoid_parts[] = { "NOUN_ARM", "NOUN_EYE", "NOUN_FACE", "NOUN_FINGER", /* EN *humanoid_parts[] = { "arm", "eye", "face", "finger", */
 		"NOUN_FINGERTIP", "NOUN_FOOT", "NOUN_HAND", "handed", "NOUN_HEAD", "NOUN_LEG", /* EN "fingertip", "foot", "hand", "handed", "head", "leg", */
-		"light headed", "neck", "NOUN_SPINE", "toe", "hair", /* EN "light headed", "neck", "spine", "toe", "hair", */ // TODO DE
+		"light headed", "NOUN_HALS", "NOUN_SPINE", "NOUN_ZEHE", "NOUN_HAARs", /* EN "light headed", "neck", "spine", "toe", "hair", */ // TODO DE
 		"NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "blood", "lung", "nose", "stomach"}, */
-	*jelly_parts[] = { "pseudopod", "dark spot", "front", /* EN *jelly_parts[] = { "pseudopod", "dark spot", "front", */ // TODO DE
+	*jelly_parts[] = { "pseudopod", "Dunkel-NOUN_FLECK", "Vorder-NOUN_SEITE", /* EN *jelly_parts[] = { "pseudopod", "dark spot", "front", */ // TODO DE
 		"pseudopod extension", "pseudopod extremity", /* EN "pseudopod extension", "pseudopod extremity", */ // TODO DE
 		"pseudopod root", "grasp", "grasped", "cerebral area", /* EN "pseudopod root", "grasp", "grasped", "cerebral area", */ // TODO DE
 		"lower pseudopod", "viscous", "middle", "surface", /* EN "lower pseudopod", "viscous", "middle", "surface", */ // TODO DE
 		"pseudopod extremity", "ripples", "juices", /* EN "pseudopod extremity", "ripples", "juices", */ // TODO DE
-		"surface", "sensor", "NOUN_STOMACH" }, /* EN "surface", "sensor", "stomach" }, */ // TODO DE
-	*animal_parts[] = { "forelimb", "NOUN_EYE", "NOUN_FACE", "foreclaw", "claw tip", /* EN *animal_parts[] = { "forelimb", "eye", "face", "foreclaw", "claw tip", */ // TODO DE
-		"rear claw", "foreclaw", "clawed", "NOUN_HEAD", "rear limb", /* EN "rear claw", "foreclaw", "clawed", "head", "rear limb", */ // TODO DE
-		"light headed", "neck", "spine", "rear claw tip", /* EN "light headed", "neck", "spine", "rear claw tip", */ // TODO DE
+		"surface", "NOUN_FUEHLERs", "NOUN_STOMACH" }, /* EN "surface", "sensor", "stomach" }, */
+	*animal_parts[] = { "Vorder-NOUN_LAUF", "NOUN_EYE", "NOUN_FACE", "Vorder-NOUN_PFOTE", "NOUN_KLAUE", /* EN *animal_parts[] = { "forelimb", "eye", "face", "foreclaw", "claw tip", */
+		"Hinter-NOUN_PFOTE", "Vorder-NOUN_CLAW", "clawed", "NOUN_HEAD", "Hinter-NOUN_LAUF", /* EN "rear claw", "foreclaw", "clawed", "head", "rear limb", */
+		"light headed", "NOUN_HALS", "NOUN_SPINE", "Hinter-NOUN_KLAUE", /* EN "light headed", "neck", "spine", "rear claw tip", */ // TODO DE
 		"NOUN_FELL", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH" }, /* EN "fur", "blood", "lung", "nose", "stomach" }, */
 	*bird_parts[] = { "NOUN_FLUEGEL", "NOUN_EYE", "NOUN_FACE", "NOUN_FLUEGEL", "NOUN_FLUEGELSPITZE", /* EN *bird_parts[] = { "wing", "eye", "face", "wing", "wing tip", */
-		"NOUN_FOOT", "NOUN_FLUEGEL", "winged", "NOUN_HEAD", "NOUN_LEG", /* EN "foot", "wing", "winged", "head", "leg", */ // TODO DE
-		"light headed", "neck", "spine", "toe", /* EN "light headed", "neck", "spine", "toe", */ // TODO DE
+		"NOUN_FOOT", "NOUN_FLUEGEL", "winged", "NOUN_HEAD", "NOUN_LEG", /* EN "foot", "wing", "winged", "head", "leg", */
+		"light headed", "NOUN_HALS", "NOUN_SPINE", "NOUN_ZEHE", /* EN "light headed", "neck", "spine", "toe", */ // TODO DE
 		"NOUN_FEATHERs", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_SCHNABEL", "NOUN_STOMACH" }, /* EN "feathers", "blood", "lung", "bill", "stomach" }, */
-	*horse_parts[] = { "foreleg", "NOUN_EYE", "NOUN_FACE", "forehoof", "hoof tip", /* EN *horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", */ // TODO DE
-		"rear hoof", "foreclaw", "hooved", "NOUN_HEAD", "Hinter-NOUN_LEG", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */ // TODO DE
-		"light headed", "neck", "backbone", "rear hoof tip", /* EN "light headed", "neck", "backbone", "rear hoof tip", */ // TODO DE
+	*horse_parts[] = { "Vorder-NOUN_LAUF", "NOUN_EYE", "NOUN_FACE", "Vorder-NOUN_HUF", "Huf-NOUN_SPITZE", /* EN *horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", */
+		"Hinter-NOUN_HUF", "Vorder-NOUN_KLAUE", "hooved", "NOUN_HEAD", "Hinter-NOUN_LAUF", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */
+		"light headed", "NOUN_HALS", "NOUN_SPINE", "Hinterhuf-NOUN_SPITZE", /* EN "light headed", "neck", "backbone", "rear hoof tip", */ // TODO DE
 		"NOUN_MAEHNE", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "mane", "blood", "lung", "nose", "stomach"}, */
-	*sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", /* EN *sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", */ // TODO DE
-		"tentacle tip", "lower appendage", "tentacle", "tentacled", /* EN "tentacle tip", "lower appendage", "tentacle", "tentacled", */ // TODO DE
-		"body", "lower tentacle", "rotational", "equator", "body", /* EN "body", "lower tentacle", "rotational", "equator", "body", */ // TODO DE
-		"lower tentacle tip", "cilia", "life force", "retina", /* EN "lower tentacle tip", "cilia", "life force", "retina", */ // TODO DE
-		"olfactory nerve", "interior" }, /* EN "olfactory nerve", "interior" }, */ // TODO DE
+	*sphere_parts[] = { "NOUN_FORTSATZ", "NOUN_SEHNERV", "NOUN_KOERPER", "NOUN_TENTAKEL", /* EN *sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", */
+		"Tentakel-NOUN_SPITZE", "ADJEKTIV_UNTER NOUN_FORTSATZ", "NOUN_TENTAKEL", "tentacled", /* EN "tentacle tip", "lower appendage", "tentacle", "tentacled", */
+		"NOUN_KOERPER", "ADJEKTIV_UNTER NOUN_TENTAKEL", "rotational", "NOUN_AEQUATOR", "NOUN_KOERPER", /* EN "body", "lower tentacle", "rotational", "equator", "body", */ // TODO DE
+		"ADJEKTIV_UNTER Tentakel-NOUN_SPITZE", "NOUN_ZILIEs", "Lebens-NOUN_ENERGIE", "Netz-NOUN_HAUT", /* EN "lower tentacle tip", "cilia", "life force", "retina", */
+		"NOUN_NERVUS_OLFACTORIUS", "Glas-NOUN_KOERPER" }, /* EN "olfactory nerve", "interior" }, */
 	*fungus_parts[] = { "mycelium", "visual area", "front", "hypha", /* EN *fungus_parts[] = { "mycelium", "visual area", "front", "hypha", */ // TODO DE
 		"hypha", "root", "strand", "stranded", "cap area", /* EN "hypha", "root", "strand", "stranded", "cap area", */ // TODO DE
 		"rhizome", "sporulated", "stalk", "root", "rhizome tip", /* EN "rhizome", "sporulated", "stalk", "root", "rhizome tip", */ // TODO DE
 		"spores", "juices", "gill", "gill", "interior" }, /* EN "spores", "juices", "gill", "gill", "interior" }, */ // TODO DE
-	*vortex_parts[] = { "region", "NOUN_EYE", "front", "minor current", /* EN *vortex_parts[] = { "region", "eye", "front", "minor current", */ // TODO DE
-		"minor current", "lower current", "swirl", "swirled", /* EN "minor current", "lower current", "swirl", "swirled", */ // TODO DE
-		"central core", "lower current", "addled", "center", /* EN "central core", "lower current", "addled", "center", */ // TODO DE
-		"currents", "edge", "currents", "life force", /* EN "currents", "edge", "currents", "life force", */ // TODO DE
-		"center", "leading edge", "interior" }, /* EN "center", "leading edge", "interior" }, */ // TODO DE
-	*snake_parts[] = { "vestigial limb", "NOUN_EYE", "NOUN_FACE", "large scale", /* EN *snake_parts[] = { "vestigial limb", "eye", "face", "large scale", */ // TODO DE
-		"large scale tip", "rear region", "scale gap", "scale gapped", /* EN "large scale tip", "rear region", "scale gap", "scale gapped", */ // TODO DE
-		"NOUN_HEAD", "rear region", "light headed", "neck", "length", /* EN "head", "rear region", "light headed", "neck", "length", */ // TODO DE
-		"rear scale", "scales", "NOUN_BLUT", "lung", "forked tongue", "NOUN_STOMACH" }, /* EN "rear scale", "scales", "blood", "lung", "forked tongue", "stomach" }, */ // TODO DE
-	*fish_parts[] = { "fin", "NOUN_EYE", "premaxillary", "pelvic axillary", /* EN *fish_parts[] = { "fin", "eye", "premaxillary", "pelvic axillary", */ // TODO DE
-		"pelvic fin", "anal fin", "pectoral fin", "finned", "NOUN_HEAD", "peduncle", /* EN "pelvic fin", "anal fin", "pectoral fin", "finned", "head", "peduncle", */ // TODO DE
-		"played out", "gills", "dorsal fin", "caudal fin", /* EN "played out", "gills", "dorsal fin", "caudal fin", */ // TODO DE
-		"scales", "NOUN_BLUT", "gill", "nostril", "NOUN_STOMACH" }; /* EN "scales", "blood", "gill", "nostril", "stomach" }; */ // TODO DE
+	*vortex_parts[] = { "NOUN_BEREICH", "NOUN_EYE", "NOUN_FRONT", "Neben-NOUN_STROEMUNG", /* EN *vortex_parts[] = { "region", "eye", "front", "minor current", */
+		"Neben-NOUN_STROEMUNG", "Senk-NOUN_STROEMUNG", "NOUN_STRUDEL", "swirled", /* EN "minor current", "lower current", "swirl", "swirled", */
+		"Zentral-NOUN_BEREICH", "Senk-NOUN_STROEMUNG", "benebelt/turbulent", "NOUN_AUGE", /* EN "central core", "lower current", "addled", "center", */ // TODO DE
+		"NOUN_STROEMUNGs", "NOUN_RAND", "NOUN_STROEMUNGs", "Lebens-NOUN_ENERGIE", /* EN "currents", "edge", "currents", "life force", */
+		"NOUN_ZENTRUM", "Rand-NOUN_KANTE", "NOUN_INNERE" }, /* EN "center", "leading edge", "interior" }, */
+	*snake_parts[] = { "Stummel-NOUN_EXTREMITAET", "NOUN_EYE", "NOUN_FACE", "ADJEKTIV_GROSS NOUN_SCHUPPE", /* EN *snake_parts[] = { "vestigial limb", "eye", "face", "large scale", */
+		"NOUN_SPITZE einer großen Schuppe", "NOUN_HINTERTEIL", "Körper-NOUN_SCHUPPE", "scale gapped", /* EN "large scale tip", "rear region", "scale gap", "scale gapped", */
+		"NOUN_HEAD", "NOUN_HINTERTEIL", "light headed", "NOUN_HALS", "NOUN_LAENGE", /* EN "head", "rear region", "light headed", "neck", "length", */ // TODO DE
+		"Schwanz-NOUN_SCHUPPE", "NOUN_SCHUPPEs", "NOUN_BLUT", "NOUN_LUNGE", "ADJEKTIV_GESPALTEN NOUN_ZUNGE", "NOUN_STOMACH" }, /* EN "rear scale", "scales", "blood", "lung", "forked tongue", "stomach" }, */
+	*fish_parts[] = { "NOUN_FLOSSE", "NOUN_EYE", "NOUN_PRAEMAXILLARE", "Bauch-NOUN_FLOSSE", /* EN *fish_parts[] = { "fin", "eye", "premaxillary", "pelvic axillary", */
+		"Bauchflossen-NOUN_SPITZE", "After-NOUN_FLOSSE", "Brust-NOUN_FLOSSE", "finned", "NOUN_HEAD", "NOUN_SCHWANZSTIEL", /* EN "pelvic fin", "anal fin", "pectoral fin", "finned", "head", "peduncle", */
+		"played out", "NOUN_KIEMEs", "Dorsal-NOUN_FLOSSE", "Schwanz-NOUN_FLOSSE", /* EN "played out", "gills", "dorsal fin", "caudal fin", */ // TODO DE
+		"NOUN_SCHUPPEs", "NOUN_BLUT", "NOUN_KIEME", "NOUN_NASENHOEHLE", "NOUN_STOMACH" }; /* EN "scales", "blood", "gill", "nostril", "stomach" }; */
 	/* claw attacks are overloaded in mons[]; most humanoids with
 	   such attacks should still reference hands rather than claws */
 	static const char not_claws[] = {

@@ -710,7 +710,7 @@ winid tmpwin;		/* supplied by dodiscover() */
 	if (i == 0) putstr(tmpwin, iflags.menu_headings, "Artefakte"); /* EN +	if (i == 0) putstr(tmpwin, iflags.menu_headings, "Artifacts"); */
 	m = artidisco[i];
 	otyp = artilist[m].otyp;
-	Sprintf(buf, "  %s [%s %s]", artiname(m),
+	Sprintf(buf, "  %s [SUBJECT_IM_SATZ %s %s]", artiname(m), /* EN Sprintf(buf, "  %s [%s %s]", artiname(m), */
 		align_str(artilist[m].alignment), simple_typename(otyp));
 	putstr(tmpwin, 0, buf);
     }
@@ -969,10 +969,10 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	/* the four basic attacks: fire, cold, shock and missiles */
 	if (attacks(AD_FIRE, otmp)) {
 	    if (realizes_damage)
-		pline_The("fiery blade %s %s%c", /* EN pline_The("fiery blade %s %s%c", */ // TODO DE
-			!spec_dbon_applies ? "VERB_HIT" : /* EN !spec_dbon_applies ? "hits" : */
+		pline_The("ADJEKTIV_GLUEHEND NOUN_KLINGE %s %s%c", /* EN pline_The("fiery blade %s %s%c", */
+			!spec_dbon_applies ? "VERB_HIT OBJECT" : /* EN !spec_dbon_applies ? "hits" : */
 			(mdef->data == &mons[PM_WATER_ELEMENTAL]) ?
-			"vaporizes part of" : "burns", /* EN "vaporizes part of" : "burns", */ // TODO DE
+			"VERB_VERDAMPFEN einen Teil OBJECT KASUS_GENITIV" : "VERB_VERBRENNEN OBJECT", /* EN "vaporizes part of" : "burns", */
 			hittee, !spec_dbon_applies ? '.' : '!');
 	    if (!rn2(4)) (void) destroy_mitem(mdef, POTION_CLASS, AD_FIRE);
 	    if (!rn2(4)) (void) destroy_mitem(mdef, SCROLL_CLASS, AD_FIRE);
@@ -1021,7 +1021,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	/* reverse from AD&D. */
 	if (spec_ability(otmp, SPFX_BEHEAD)) {
 	    if (otmp->oartifact == ART_TSURUGI_OF_MURAMASA && dieroll == 1) {
-		wepdesc = "The razor-sharp blade"; /* EN wepdesc = "The razor-sharp blade"; */ // TODO DE
+		wepdesc = "ARTIKEL_BESTIMMTER ADJEKTIV_RASIERMESSERSCHARF NOUN_KLINGE"; /* EN wepdesc = "The razor-sharp blade"; */
 		/* not really beheading, but so close, why add another SPFX */
 		if (youattack && u.uswallow && mdef == u.ustuck) {
 		    You("slice %s wide open!", mon_nam(mdef)); /* EN You("slice %s wide open!", mon_nam(mdef)); */ // TODO DE

@@ -522,7 +522,7 @@ drop_uswapwep()
 
 	/* Avoid trashing makeplural's static buffer */
 	Strcpy(str, makeplural(body_part(HAND)));
-	Your("%s from your %s!",  aobjnam(obj, "slip"), str); /* EN Your("%s from your %s!",  aobjnam(obj, "slip"), str); */ // TODO DE
+	Your("%s OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT KASUS_DATIV aus ARTIKEL_BESTIMMTER %s!",  aobjnam(obj, "VERB_RUTSCHEN"), str); /* EN Your("%s from your %s!",  aobjnam(obj, "slip"), str); */
 	dropx(obj);
 }
 
@@ -629,12 +629,12 @@ boolean fade_scrolls;
 	    {
 		if (!Blind) {
 		    if (victim == &youmonst)
-			Your("%s.", aobjnam(target, "VERB_FADE")); /* EN Your("%s.", aobjnam(target, "fade")); */
+			Your("%s.", aobjnam(target, "VERB_VERBLASSEN")); /* EN Your("%s.", aobjnam(target, "fade")); */
 		    else if (vismon)
-			pline("%s's %s.", Monnam(victim), /* EN pline("%s's %s.", Monnam(victim), */ // TODO DE
-			      aobjnam(target, "VERB_FADE")); /* EN aobjnam(target, "fade")); */
+			pline("SUBJECT %s %s.", genitivattribut_zu_wort(Monnam(victim), xname(target)), /* EN pline("%s's %s.", Monnam(victim), */
+			      "VERB_VERBLASSEN"); /* EN aobjnam(target, "fade")); */
 		    else if (visobj)
-			pline_The("%s.", aobjnam(target, "VERB_FADE")); /* EN pline_The("%s.", aobjnam(target, "fade")); */
+			pline_The("%s.", aobjnam(target, "VERB_VERBLASSEN")); /* EN pline_The("%s.", aobjnam(target, "fade")); */
 		}
 		target->otyp = SCR_BLANK_PAPER;
 		target->spe = 0;
@@ -727,15 +727,15 @@ register int amount;
 
 	if (amount < 0 && uwep->oartifact && restrict_name(uwep, ONAME(uwep))) {
 	    if (!Blind)
-		Your("%s %s.", aobjnam(uwep, "faintly glow"), color); /* EN Your("%s %s.", aobjnam(uwep, "faintly glow"), color); */ // TODO DE
+		Your("%s sanft %s.", aobjnam(uwep, "VERB_LEUCHTEN"), color); /* EN Your("%s %s.", aobjnam(uwep, "faintly glow"), color); */
 	    return(1);
 	}
 	/* there is a (soft) upper and lower limit to uwep->spe */
 	if(((uwep->spe > 5 && amount >= 0) || (uwep->spe < -5 && amount < 0))
 								&& rn2(3)) {
 	    if (!Blind)
-	    Your("%s %s for a while and then %s.", /* EN Your("%s %s for a while and then %s.", */ // TODO DE
-		 aobjnam(uwep, "violently glow"), color, /* EN aobjnam(uwep, "violently glow"), color, */ // TODO DE
+	    Your("%s eine Weile lang grell-%s und %s dann.", /* EN Your("%s %s for a while and then %s.", */
+		 aobjnam(uwep, "VERB_LEUCHTEN"), color, /* EN aobjnam(uwep, "violently glow"), color, */
 		 otense(uwep, "evaporate")); /* EN otense(uwep, "evaporate")); */ // TODO DE
 	    else
 		Your("%s.", aobjnam(uwep, "evaporate")); /* EN Your("%s.", aobjnam(uwep, "evaporate")); */ // TODO DE
@@ -744,10 +744,10 @@ register int amount;
 	    return(1);
 	}
 	if (!Blind) {
-	    xtime = (amount*amount == 1) ? "moment" : "while"; /* EN xtime = (amount*amount == 1) ? "moment" : "while"; */ // TODO DE
-	    Your("%s %s for a %s.", /* EN Your("%s %s for a %s.", */ // TODO DE
-		 aobjnam(uwep, amount == 0 ? "violently glow" : "glow"), /* EN aobjnam(uwep, amount == 0 ? "violently glow" : "glow"), */ // TODO DE
-		 color, xtime);
+	    xtime = (amount*amount == 1) ? "einen Moment" : "eine Weile"; /* EN xtime = (amount*amount == 1) ? "moment" : "while"; */
+	    Your("%s %s lang %s.", /* EN Your("%s %s for a %s.", */
+		 aobjnam(uwep, amount == 0 ? "VERB_LEUCHTEN grell" : "VERB_LEUCHTEN"), /* EN aobjnam(uwep, amount == 0 ? "violently glow" : "glow"), */
+		 xtime, color); /* EN color, xtime); */
 	    if (otyp != STRANGE_OBJECT && uwep->known &&
 		    (amount > 0 || (amount < 0 && otmp->bknown)))
 		makeknown(otyp);
