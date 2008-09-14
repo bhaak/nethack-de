@@ -1411,7 +1411,7 @@ proceed:
 	    if (!umoney && !eshkp->credit) {
 #endif
 		You("%s weder Geld noch Guthaben%s%s.", /* EN You("%shave no money or credit%s.", */
-				    stashed_gold ? "VERB_SCHEINEN " : "VERB_HABEN", /* EN stashed_gold ? "seem to " : "", */
+				    stashed_gold ? "VERB_SCHEINEN" : "VERB_HABEN", /* EN stashed_gold ? "seem to " : "", */
 				    paid ? " übrig" : "", stashed_gold ? " zu haben" : ""); /* EN paid ? " left" : ""); */
 		return(0);
 	    }
@@ -1420,8 +1420,8 @@ proceed:
 #else
 	    if ((umoney + eshkp->credit) < cheapest_item(shkp)) {
 #endif
-		You("don't have enough money to buy%s the item%s you picked.", /* EN You("don't have enough money to buy%s the item%s you picked.", */ // TODO DE
-		    eshkp->billct > 1 ? " any of" : "", plur(eshkp->billct)); /* EN eshkp->billct > 1 ? " any of" : "", plur(eshkp->billct)); */ // TODO DE
+		You("VERB_HABEN nicht genug Geld um %s zu kaufen, %s SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausgewählt VERB_HABEN.", /* EN You("don't have enough money to buy%s the item%s you picked.", */
+		    eshkp->billct > 1 ? "irgendeinen der Artikel" : "den Artikel", eshkp->billct > 1 ? "die" : "den"); /* EN eshkp->billct > 1 ? " any of" : "", plur(eshkp->billct)); */
 		if(stashed_gold)
 		    pline("Maybe you have some gold stashed away?"); /* EN pline("Maybe you have some gold stashed away?"); */ // TODO DE
 		return(0);
@@ -1522,7 +1522,7 @@ boolean itemize;
 	if(itemize && umoney + ESHK(shkp)->credit == 0L){
 #endif
 		You("%s weder Geld noch Guthaben übrig%s.", /* EN You("%shave no money or credit left.", */
-			     stashed_gold ? "VERB_SCHEINEN " : "VERB_HABEN ", stashed_gold ? " zu haben" : ""); /* EN stashed_gold ? "seem to " : ""); */
+			     stashed_gold ? "VERB_SCHEINEN" : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN stashed_gold ? "seem to " : ""); */
 		return PAY_BROKE;
 	}
 	/* we may need to temporarily adjust the object, if part of the
@@ -3462,7 +3462,7 @@ boolean cant_mollify;
 	register boolean uinshp = (*u.ushops != '\0');
 	char qbuf[80];
 	register xchar x, y;
-	boolean dugwall = !strcmp(dmgstr, "dig into") || /* wand */ /* EN boolean dugwall = !strcmp(dmgstr, "dig into") ||	 */ // TODO DE
+	boolean dugwall = !strcmp(dmgstr, "zu durchlöchern") || /* wand */ /* EN boolean dugwall = !strcmp(dmgstr, "dig into") ||	 */
 			  !strcmp(dmgstr, "zu beschädigen"); /* pick-axe */ /* EN !strcmp(dmgstr, "damage");	*/
 	struct damage *tmp_dam, *appear_here = 0;
 	/* any number >= (80*80)+(24*24) would do, actually */

@@ -916,7 +916,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 
 	/*** Troubles ***/
 	if (Halluc_resistance)
-		enl_msg("You resist", "", "ed", " hallucinations"); /* EN enl_msg("You resist", "", "ed", " hallucinations"); */ // TODO DE
+		you_are("vor Halluzinationen gefeit"); /* EN enl_msg("You resist", "", "ed", " hallucinations"); */
 	if (final) {
 		if (Hallucination) you_have("Halluzinationen"); /* EN if (Hallucination) you_are("hallucinating"); */
 		if (Stunned) you_are("benommen"); /* EN if (Stunned) you_are("stunned"); */
@@ -972,7 +972,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Clairvoyant) you_are("hellsehend"); /* EN if (Clairvoyant) you_are("clairvoyant"); */
 	if (Infravision) you_have("Infravision"); /* EN if (Infravision) you_have("infravision"); */
 	if (Detect_monsters) you_are("spürst die Anwesenheit von Monstern"); /* EN if (Detect_monsters) you_are("sensing the presence of monsters"); */ // TODO DE
-	if (u.umconf) you_are("going to confuse monsters"); /* EN if (u.umconf) you_are("going to confuse monsters"); */ // TODO DE
+	if (u.umconf) you("VERB_WERDEN Monster verwirren"); /* EN if (u.umconf) you_are("going to confuse monsters"); */
 
 	/*** Appearance and behavior ***/
 	if (Adornment) {
@@ -1542,10 +1542,10 @@ struct ext_func_tab extcmdlist[] = {
 	{"force", "force a lock", doforce, FALSE}, /* EN {"force", "force a lock", doforce, FALSE}, */ // TODO DE
 	{"invoke", "invoke an object's powers", doinvoke, TRUE}, /* EN {"invoke", "invoke an object's powers", doinvoke, TRUE}, */ // TODO DE
 	{"jump", "springe an eine Stelle", dojump, FALSE}, /* EN {"jump", "jump to a location", dojump, FALSE}, */
-	{"loot", "loot a box on the floor", doloot, FALSE}, /* EN {"loot", "loot a box on the floor", doloot, FALSE}, */ // TODO DE
+	{"loot", "plündere einen Behälter auf dem Boden", doloot, FALSE}, /* EN {"loot", "loot a box on the floor", doloot, FALSE}, */
 	{"monster", "use a monster's special ability", domonability, TRUE}, /* EN {"monster", "use a monster's special ability", domonability, TRUE}, */ // TODO DE
 	{"name", "benenne einen Gegenstand oder eine Klasse von Objekten", ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */
-	{"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, /* EN {"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, */ // TODO DE
+	{"offer", "bringe den Göttern ein Opfer dar", dosacrifice, FALSE}, /* EN {"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, */
 	{"pray", "bete zu den Göttern um Hilfe", dopray, TRUE}, /* EN {"pray", "pray to the gods for help", dopray, TRUE}, */
 	{"quit", "verlasse das laufende Spiel ohne zu speichern", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */
 #ifdef STEED

@@ -598,7 +598,7 @@ int ttyp;
 		    if (*u.ushops && madeby_u)
 			shopdig(1); /* shk might snatch pack */
 		    /* handle earlier damage, eg breaking wand of digging */
-		    else if (!madeby_u) pay_for_damage("dig into", TRUE); /* EN else if (!madeby_u) pay_for_damage("dig into", TRUE); */ // TODO DE
+		    else if (!madeby_u) pay_for_damage("zu durchlöchern", TRUE); /* EN else if (!madeby_u) pay_for_damage("dig into", TRUE); */
 
 		    You("VERB_FALLEN durch ..."); /* EN You("fall through..."); */
 		    /* Earlier checks must ensure that the destination
@@ -1281,7 +1281,7 @@ zap_dig()
 	} /* while */
 	tmp_at(DISP_END,0);	/* closing call */
 	if (shopdoor || shopwall)
-	    pay_for_damage(shopdoor ? "zu zerstören" : "dig into", FALSE); /* EN pay_for_damage(shopdoor ? "destroy" : "dig into", FALSE); */ // TODO DE
+	    pay_for_damage(shopdoor ? "zu zerstören" : "zu durchlöchern", FALSE); /* EN pay_for_damage(shopdoor ? "destroy" : "dig into", FALSE); */
 	return;
 }
 

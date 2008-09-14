@@ -873,7 +873,7 @@ mdamagem(magr, mdef, mattk)
 			sleep_monst(mdef, rnd(10), -1)) {
 		    if (vis) {
 			Strcpy(buf, Monnam(mdef));
-			pline("%s is put to sleep by %s.", buf, mon_nam(magr)); /* EN pline("%s is put to sleep by %s.", buf, mon_nam(magr)); */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV von %s in Schlaf versetzt.", buf, mon_nam(magr)); /* EN pline("%s is put to sleep by %s.", buf, mon_nam(magr)); */
 		    }
 		    mdef->mstrategy &= ~STRAT_WAITFORU;
 		    slept_monst(mdef);
@@ -897,7 +897,7 @@ mdamagem(magr, mdef, mattk)
 		    mon_adjust_speed(mdef, -1, (struct obj *)0);
 		    mdef->mstrategy &= ~STRAT_WAITFORU;
 		    if (mdef->mspeed != oldspeed && vis)
-			pline("%s slows down.", Monnam(mdef)); /* EN pline("%s slows down.", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN langsamer.", Monnam(mdef)); /* EN pline("%s slows down.", Monnam(mdef)); */
 		}
 		break;
 	    case AD_CONF:

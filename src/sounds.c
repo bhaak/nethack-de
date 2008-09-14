@@ -186,7 +186,7 @@ dosounds()
 	static const char * const barracks_msg[4] = {
 		"das Schleifen von Schwertern.", /* EN "blades being honed.", */
 		"lautes Schnarchen.", /* EN "loud snoring.", */ 
-		"dice being thrown.", /* EN "dice being thrown.", */ // TODO DE
+		"das Klackern von Würfeln.", /* EN "dice being thrown.", */
 		"Carl von Clausewitz!", /* EN "General MacArthur!", */
 	};
 	int count = 0;
@@ -640,7 +640,7 @@ register struct monst *mtmp;
 	case MS_LAUGH:
 	    {
 		static const char * const laugh_msg[4] = {
-		    "giggles.", "chuckles.", "snickers.", "laughs.", /* EN "giggles.", "chuckles.", "snickers.", "laughs.", */ // TODO DE
+		    "VERB_GIGGELN.", "VERB_GLUCKSEN.", "VERB_KICHERN.", "VERB_LACHEN.", /* EN "giggles.", "chuckles.", "snickers.", "laughs.", */
 		};
 		pline_msg = laugh_msg[rn2(4)];
 	    }

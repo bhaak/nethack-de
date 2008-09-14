@@ -55,9 +55,9 @@ STATIC_DCL boolean FDECL(mon_beside, (int, int));
 /* if you can figure this out, give yourself a hearty pat on the back... */
 #define GOLD_CAPACITY(w,n)	(((w) * -100L) - ((n) + 50L) - 1L)
 
-static const char moderateloadmsg[] = "You have a little trouble lifting Du hast etwas Muehe,"; /* EN static const char moderateloadmsg[] = "You have a little trouble lifting"; */ // TODO DE
-static const char nearloadmsg[] = "You have much trouble lifting, Du hast ziemliche Muehe,"; /* EN static const char nearloadmsg[] = "You have much trouble lifting"; */ // TODO DE
-static const char overloadmsg[] = "You have extreme difficulty lifting Du hast extreme Probleme, "; /* EN static const char overloadmsg[] = "You have extreme difficulty lifting"; */ // TODO DE
+static const char moderateloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN etwas Muehe,"; /* EN static const char moderateloadmsg[] = "You have a little trouble lifting"; */
+static const char nearloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN ziemliche Muehe,"; /* EN static const char nearloadmsg[] = "You have much trouble lifting"; */
+static const char overloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN extreme Probleme, "; /* EN static const char overloadmsg[] = "You have extreme difficulty lifting"; */
 
 /* BUG: this lets you look at cockatrice corpses while blind without
    touching them */
@@ -1186,7 +1186,7 @@ boolean telekinesis;
 			moderateloadmsg);
 		Sprintf(eos(qbuf), " %s aufzuheben. Weitermachen?", /* EN Sprintf(eos(qbuf), " %s. Continue?", */
 			safe_qbuf(qbuf, sizeof(" aufzuheben. Weitermachen?"), /* EN safe_qbuf(qbuf, sizeof(" . Continue?"), */
-				doname(obj), an(simple_typename(obj->otyp)), "Etwas")); /* EN doname(obj), an(simple_typename(obj->otyp)), "something")); */
+				doname(obj), an(simple_typename(obj->otyp)), "etwas")); /* EN doname(obj), an(simple_typename(obj->otyp)), "something")); */
 		obj->quan = savequan;
 		switch (ynq(qbuf)) {
 		case 'q':  result = -1; break;
@@ -1657,8 +1657,8 @@ gotit:
 	if (!underfoot) {
 	    if (container_at(cc.x, cc.y, FALSE)) {
 		if (mtmp) {
-		    You_cant("loot anything %sthere with %s in the way.", /* EN You_cant("loot anything %sthere with %s in the way.", */ // TODO DE
-			    prev_inquiry ? "else " : "", mon_nam(mtmp)); /* EN prev_inquiry ? "else " : "", mon_nam(mtmp)); */ // TODO DE
+		    You("VERB_KOENNEN dort nichts %splündern, solange OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT KASUS_NOMINATIV %s im Weg steht.", /* EN You_cant("loot anything %sthere with %s in the way.", */
+			    prev_inquiry ? "anderes " : "", mon_nam(mtmp)); /* EN prev_inquiry ? "else " : "", mon_nam(mtmp)); */
 		    return timepassed;
 		} else {
 		    You("VERB_MUESSEN neben einem Behälter stehen um ihn zu plündern."); /* EN You("have to be at a container to loot it."); */

@@ -1682,7 +1682,7 @@ dodip()
 				potionbreathe(obj);
 			useup(obj);
 			useup(potion);
-			losehp(rnd(10), "alchemic blast", KILLED_BY_AN); /* EN losehp(rnd(10), "alchemic blast", KILLED_BY_AN); */ // TODO DE
+			losehp(rnd(10), "ADJEKTIV_ALCHEMISTISCHE NOUN_ENTLADUNG", KILLED_BY_AN); /* EN losehp(rnd(10), "alchemic blast", KILLED_BY_AN); */
 			return(1);
 		}
 
@@ -1735,7 +1735,7 @@ dodip()
 	if (potion->otyp == POT_INVISIBILITY && !obj->oinvis) {
 		obj->oinvis = TRUE;
 		if (!Blind) {
-		    if (!See_invisible) pline("Where did %s go?", /* EN if (!See_invisible) pline("Where did %s go?", */ // TODO DE
+		    if (!See_invisible) pline("Wohin ist %s verschwunden?", /* EN if (!See_invisible) pline("Where did %s go?", */
 		    		the(xname(obj)));
 		    else You("notice a little haziness around %s.", /* EN else You("notice a little haziness around %s.", */ // TODO DE
 		    		the(xname(obj)));
@@ -1744,7 +1744,7 @@ dodip()
 	} else if (potion->otyp == POT_SEE_INVISIBLE && obj->oinvis) {
 		obj->oinvis = FALSE;
 		if (!Blind) {
-		    if (!See_invisible) pline("So that's where %s went!", /* EN if (!See_invisible) pline("So that's where %s went!", */ // TODO DE
+		    if (!See_invisible) pline("Dahin ist also %s verschwunden!", /* EN if (!See_invisible) pline("So that's where %s went!", */
 		    		the(xname(obj)));
 		    else pline_The("haziness around %s disappears.", /* EN else pline_The("haziness around %s disappears.", */ // TODO DE
 		    		the(xname(obj)));
@@ -1819,8 +1819,8 @@ dodip()
 	    } else if ((!is_rustprone(obj) && !is_corrodeable(obj)) ||
 			is_ammo(obj) || (!obj->oeroded && !obj->oeroded2)) {
 		/* uses up potion, doesn't set obj->greased */
-		pline("%s %s with an oily sheen.", /* EN pline("%s %s with an oily sheen.", */ // TODO DE
-		      Yname2(obj), otense(obj, "gleam")); /* EN Yname2(obj), otense(obj, "gleam")); */ // TODO DE
+		pline("%s %s in einem öligen Glanz.", /* EN pline("%s %s with an oily sheen.", */
+		      Yname2(obj), otense(obj, "VERB_GLAENZEN")); /* EN Yname2(obj), otense(obj, "gleam")); */
 	    } else {
 		pline("SUBJECT %s %s weniger %s.", /* EN pline("%s %s less %s.", */
 		      Yname2(obj), otense(obj, "VERB_SEIN"), /* EN Yname2(obj), otense(obj, "are"), */

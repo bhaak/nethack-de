@@ -1577,7 +1577,7 @@ register struct attack *mattk;
 			if (m_slips_free(mdef, mattk)) {
 			    tmp = 0;
 			} else {
-			    You("swing yourself around %s!", /* EN You("swing yourself around %s!", */ // TODO DE
+			    You("VERB_UMSCHLINGEN OBJECT %s!", /* EN You("swing yourself around %s!", */
 				  mon_nam(mdef));
 			    u.ustuck = mdef;
 			}
@@ -1609,7 +1609,7 @@ register struct attack *mattk;
 		if (!negated && !mdef->msleeping &&
 			    sleep_monst(mdef, rnd(10), -1)) {
 		    if (!Blind)
-			pline("%s is put to sleep by you!", Monnam(mdef)); /* EN pline("%s is put to sleep by you!", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV von PRONOMEN_PERSONAL in Schlaf versetzt!", Monnam(mdef)); /* EN pline("%s is put to sleep by you!", Monnam(mdef)); */
 		    slept_monst(mdef);
 		}
 		break;
