@@ -1466,7 +1466,7 @@ STATIC_OVL void
 accessory_has_effect(otmp)
 struct obj *otmp;
 {
-	pline("Magie durchströmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_BODY als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER %s VERB_VERDAUEN.", /* EN pline("Magic spreads through your body as you digest the %s.", */
+	pline("Magie durchströmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_BODY, als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER %s VERB_VERDAUEN.", /* EN pline("Magic spreads through your body as you digest the %s.", */
 	    otmp->oclass == RING_CLASS ? "NOUN_RING" : "NOUN_AMULET"); /* EN otmp->oclass == RING_CLASS ? "ring" : "amulet"); */
 }
 

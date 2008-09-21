@@ -1682,7 +1682,7 @@ dodip()
 				potionbreathe(obj);
 			useup(obj);
 			useup(potion);
-			losehp(rnd(10), "ADJEKTIV_ALCHEMISTISCHE NOUN_ENTLADUNG", KILLED_BY_AN); /* EN losehp(rnd(10), "alchemic blast", KILLED_BY_AN); */
+			losehp(rnd(10), "ADJEKTIV_ALCHEMISTISCH NOUN_ENTLADUNG", KILLED_BY_AN); /* EN losehp(rnd(10), "alchemic blast", KILLED_BY_AN); */
 			return(1);
 		}
 

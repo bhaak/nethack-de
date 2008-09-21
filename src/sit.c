@@ -74,7 +74,7 @@ dosit()
 	    if (u.utrap) {
 		exercise(A_WIS, FALSE);	/* you're getting stuck longer */
 		if(u.utraptype == TT_BEARTRAP) {
-		    ("Mit KASUS_DATIV PRONOMEN_POSSESSIV %s in KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_BEARTRAP SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL nicht hinsetzen.", body_part(FOOT)); /* EN You_cant("sit down with your %s in the bear trap.", body_part(FOOT)); */
+		    pline("Mit KASUS_DATIV PRONOMEN_POSSESSIV %s in KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_BEARTRAP SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL nicht hinsetzen.", body_part(FOOT)); /* EN You_cant("sit down with your %s in the bear trap.", body_part(FOOT)); */
 		    u.utrap++;
 	        } else if(u.utraptype == TT_PIT) {
 		    if(trap->ttyp == SPIKED_PIT) {
