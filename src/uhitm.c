@@ -1030,10 +1030,10 @@ int thrown;
 		    else if (barehand_silver_rings == 2)
 			fmt = "SUBJECT PRONOMEN_POSSESSIV ADJEKTIV_FARBE_SILVER NOUN_RINGs VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "Your silver rings sear %s!"; */
 		    else if (silverobj && saved_oname[0]) {
-		    	Sprintf(silverobjbuf, "Your %s%s %s %%s!", /* EN Sprintf(silverobjbuf, "Your %s%s %s %%s!", */ // TODO DE
-		    		strstri(saved_oname, "silver") ?  /* EN strstri(saved_oname, "silver") ? */ // TODO DE
-					"" : "silver ", /* EN "" : "silver ", */ // TODO DE
-				saved_oname, vtense(saved_oname, "sear")); /* EN saved_oname, vtense(saved_oname, "sear")); */ // TODO DE
+		    	Sprintf(silverobjbuf, "SUBJECT PRONOMEN_POSSESSIV %s%s %s %%s!", /* EN Sprintf(silverobjbuf, "Your %s%s %s %%s!", */
+		    		strstri(saved_oname, "silver") ? 
+					"" : "ADJEKTIV_FARBE_SILVER ", /* EN "" : "silver ", */
+				saved_oname, vtense(saved_oname, "VERB_VERSENGEN")); /* EN saved_oname, vtense(saved_oname, "sear")); */
 		    	fmt = silverobjbuf;
 		    } else
 			fmt = "SUBJECT ARTIKEL_BESTIMMTER NOUN_SILBER VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "The silver sears %s!"; */
@@ -1838,7 +1838,7 @@ register struct attack *mattk;
 			return(2);
 		    case AD_PHYS:
 			if (youmonst.data == &mons[PM_FOG_CLOUD]) {
-			    pline("%s is laden with your moisture.", /* EN pline("%s is laden with your moisture.", */ // TODO DE
+			    pline("SUBJECT %s VERB_SEIN von feuchtem Wasserdampf eingehüllt.", /* EN pline("%s is laden with your moisture.", */
 				  Monnam(mdef));
 			    if (amphibious(mdef->data) &&
 				!flaming(mdef->data)) {

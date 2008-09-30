@@ -25,7 +25,7 @@ static const char *random_mesg[] = {
 	"You won't get it up the steps", /* EN "You won't get it up the steps", */ /* Adventure */ // TODO DE
 	"Lasciate ogni speranza o voi ch'entrate.", /* Inferno */
 	"Well Come", /* EN "Well Come", */ /* Prisoner */ // TODO DE
-	"We apologize for the inconvenience.", /* EN "We apologize for the inconvenience.", */ /* So Long... */
+	"Wir entschuldigen uns für die Unannehmlichkeiten.", /* EN "We apologize for the inconvenience.", */ /* So Long... */
 	"See you next Wednesday", /* EN "See you next Wednesday", */ /* Thriller */ // TODO DE
 	"notary sojak", /* EN "notary sojak", */ /* Smokey Stover */ // TODO DE
 	"For a good time call 8?7-5309", /* EN "For a good time call 8?7-5309", */ // TODO DE
@@ -545,7 +545,7 @@ doengrave()
 			surface(u.ux, u.uy));
 		return(0);
 	    } else if (!levl[u.ux][u.uy].disturbed) {
-		You("disturb the undead!"); /* EN You("disturb the undead!"); */ // TODO DE
+		You("VERB_STOEREN die Ruhe der Untoten!"); /* EN You("disturb the undead!"); */
 		levl[u.ux][u.uy].disturbed = 1;
 		(void) makemon(&mons[PM_GHOUL], u.ux, u.uy, NO_MM_FLAGS);
 		exercise(A_WIS, FALSE);

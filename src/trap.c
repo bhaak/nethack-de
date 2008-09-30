@@ -988,7 +988,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETSs", 1, TRUE, &youmonst); /* E
 		}
 		if (webmaker(youmonst.data)) {
 		    if (webmsgok)
-		    	pline(trap->madeby_u ? "You take a walk on your web." /* EN pline(trap->madeby_u ? "You take a walk on your web." */ // TODO DE
+		    	pline(trap->madeby_u ? "SUBJECT VERB_SPAZIEREN OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV NOUN_WEB herum." /* EN pline(trap->madeby_u ? "You take a walk on your web." */
 					 : "Hier ist ARTIKEL_UNBESTIMMTER NOUN_SPIDER_WEB."); /* EN : "There is a spider web here."); */
 		    break;
 		}
@@ -2975,7 +2975,7 @@ drain_en(n)
 register int n;
 {
 	if (!u.uenmax) return;
-	You_feel("your magical energy drain away!"); /* EN You_feel("your magical energy drain away!"); */ // TODO DE
+	You("VERB_SPUEREN, NEUER_SATZ wie OBJECT KASUS_DATIV PRONOMEN_PERSONAL SUBJECT_IM_SATZ PRONOMEN_POSSESSIV ADJEKTIV_MAGISCH NOUN_ENERGIE entzogen wird!"); /* EN You_feel("your magical energy drain away!"); */
 	u.uen -= n;
 	if(u.uen < 0)  {
 		u.uenmax += u.uen;
@@ -3205,7 +3205,7 @@ struct trap *ttmp;
 	   There's no need for a cockatrice test, only the trap is touched */
 	if ((mtmp = m_at(ttmp->tx,ttmp->ty)) != 0) {
 		mtmp->mtrapped = 0;
-		You("remove %s %s from %s.", the_your[ttmp->madeby_u], /* EN You("remove %s %s from %s.", the_your[ttmp->madeby_u], */ // TODO DE
+		You("VERB_ENTFERNEN OBJECT %s %s NEUES_OBJECT OBJECT KASUS_DATIV von %s.", the_your[ttmp->madeby_u], /* EN You("remove %s %s from %s.", the_your[ttmp->madeby_u], */
 			(ttmp->ttyp == BEAR_TRAP) ? "NOUN_BEAR_TRAP" : "NOUN_NETZ", /* EN (ttmp->ttyp == BEAR_TRAP) ? "bear trap" : "webbing", */
 			mon_nam(mtmp));
 		reward_untrap(ttmp, mtmp);
@@ -3435,10 +3435,10 @@ boolean force;
 		Strcpy(the_trap, the(defsyms[trap_to_defsym(ttmp->ttyp)].explanation));
 		if (box_here) {
 			if (ttmp->ttyp == PIT || ttmp->ttyp == SPIKED_PIT) {
-			    You_cant("do much about %s%s.", /* EN You_cant("do much about %s%s.", */ // TODO DE
+			    You("VERB_KOENNEN nicht viel gegen OBJECT %s tun%s.", /* EN You_cant("do much about %s%s.", */
 					the_trap, u.utrap ?
-					" that you're stuck in" : /* EN " that you're stuck in" : */ // TODO DE
-					" while standing on the edge of it"); /* EN " while standing on the edge of it"); */ // TODO DE
+					", in der NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_STECKEN" : /* EN " that you're stuck in" : */
+					", NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL an ihrem Rand VERB_STEHST."); /* EN " while standing on the edge of it"); */
 			    trap_skipped = TRUE;
 			    deal_with_floor_trap = FALSE;
 			} else {
@@ -3622,7 +3622,7 @@ boolean disarm;
 
 	otmp->otrapped = 0;	/* trap is one-shot; clear flag first in case
 				   chest kills you and ends up in bones file */
-	You(disarm ? "set it off!" : "VERB_LOESEN eine Falle aus!"); /* EN You(disarm ? "set it off!" : "trigger a trap!"); */ // TODO DE
+	You(disarm ? "VERB_LOESEN sie aus!" : "VERB_LOESEN eine Falle aus!"); /* EN You(disarm ? "set it off!" : "trigger a trap!"); */
 	display_nhwindow(WIN_MESSAGE, FALSE);
 	if (Luck > -13 && rn2(13+Luck) > 7) {	/* saved by luck */
 	    /* trap went off, but good luck prevents damage */
@@ -3719,8 +3719,8 @@ boolean disarm;
 		case 15:
 		case 14:
 		case 13:
-			You_feel("a needle prick your %s.",body_part(bodypart)); /* EN You_feel("a needle prick your %s.",body_part(bodypart)); */ // TODO DE
-			poisoned("needle", A_CON, "poisoned needle",10); /* EN poisoned("needle", A_CON, "poisoned needle",10); */ // TODO DE
+			Du_spuerst("einen Nadelstich OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s.",body_part(bodypart)); /* EN You_feel("a needle prick your %s.",body_part(bodypart)); */
+			poisoned("NOUN_NADEL", A_CON, "ADJEKTIV_GIFTIG NOUN_NADEL",10); /* EN poisoned("needle", A_CON, "poisoned needle",10); */
 			exercise(A_CON, FALSE);
 			break;
 		case 12:
@@ -3764,7 +3764,7 @@ boolean disarm;
 				rndcolor(), the(xname(obj)));
 			if(!Stunned) {
 			    if (Hallucination)
-				pline("What a groovy feeling!"); /* EN pline("What a groovy feeling!"); */ // TODO DE
+				pline("Was für ein geiles Gefühl!"); /* EN pline("What a groovy feeling!"); */
 			    else if (Blind)
 				You("%s und NEUER_SATZ OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_WERDEN schwindlig ...", /* EN You("%s and get dizzy...", */
 				    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
