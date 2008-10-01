@@ -200,9 +200,9 @@ struct toptenentry *tt;
 	nsb_mung_line(tt->name);
 	nsb_mung_line(tt->death);
 	                   /* Version_ Pts DgnLevs_ Hp___ Died__Born id */
-	(void) fprintf(rfile,"%d %d %d %ld %d %d %d %d %d %d %ld %ld %d ",
+	(void) fprintf(rfile,"%d %d %d-De %ld %d %d %d %d %d %d %ld %ld %d ", /* EN (void) fprintf(rfile,"%d %d %d %ld %d %d %d %d %d %d %ld %ld %d ", */
 #else
-	(void) fprintf(rfile,"%d.%d.%d %ld %d %d %d %d %d %d %ld %ld %d ",
+	(void) fprintf(rfile,"%d.%d.%d-De %ld %d %d %d %d %d %d %ld %ld %d ", /* EN (void) fprintf(rfile,"%d.%d.%d %ld %d %d %d %d %d %d %ld %ld %d ", */
 #endif
 		tt->ver_major, tt->ver_minor, tt->patchlevel,
 		tt->points, tt->deathdnum, tt->deathlev,
