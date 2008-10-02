@@ -168,7 +168,7 @@ def createXmlFromNews(news)
 			update.add_attribute("title", line[line.index(": ")+2..-1].strip)
 		when /^\*/
 			entry = REXML::Element.new("entry")
-			entry.text = line[2..-1].strip
+			entry.text = line[2..-1].strip.gsub(/<\/?[^>]*>/, "") # simple remove HTML, http://codesnippets.joyent.com/posts/show/1354
 			update.add_element entry
 			found_entry = true
 		when /^$/
