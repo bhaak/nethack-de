@@ -112,10 +112,13 @@ def update(document, rss)
 			atom_entry.content = description 
 			atom_entry.content['type'] = "html"
 
+			# HTML-Anker hinzufuegen dem Link hinzufuegen
+			rss_link = url_base_link + (element.attributes['link'] == nil ? "" : element.attributes['link'] )
+
 			atom_entry_link = Atom::Link.new()
-			atom_entry_link['href'] = url_base_link
-			atom_entry.links << atom_entry_link
-			rss_item.link = url_base_link
+			atom_entry_link['href'] = rss_link
+			atom_entry.links << atom_entry_link 
+			rss_item.link = rss_link
 
 			rss_item.guid.isPermaLink = "false"
 			rss_item.guid.content = MD5.new(rss_item.title+updateDatum).hexdigest
@@ -166,6 +169,7 @@ def createXmlFromNews(news)
 			update = REXML::Element.new("update")
 			update.add_attribute("date",Date.strptime(line[9,10], "%Y-%m-%d"))
 			update.add_attribute("title", line[line.index(": ")+2..-1].strip)
+			update.add_attribute("link",line[3,16])
 		when /^\*/
 			entry = REXML::Element.new("entry")
 			entry.text = line[2..-1].strip.gsub(/<\/?[^>]*>/, "") # simple remove HTML, http://codesnippets.joyent.com/posts/show/1354
