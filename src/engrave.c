@@ -868,8 +868,8 @@ doengrave()
 	}
 
 	if (zapwand && (otmp->spe < 0)) {
-	    pline("%s %sturns to dust.", /* EN pline("%s %sturns to dust.", */ // TODO DE
-		  The(xname(otmp)), Blind ? "" : "glows violently, then "); /* EN The(xname(otmp)), Blind ? "" : "glows violently, then "); */ // TODO DE
+	    pline("SUBJECT %s %szerfällt zu Staub.", /* EN pline("%s %sturns to dust.", */
+		  The(xname(otmp)), Blind ? "" : "VERB_LEUCHTEN grell auf und "); /* EN The(xname(otmp)), Blind ? "" : "glows violently, then "); */
 	    if (!IS_GRAVE(levl[u.ux][u.uy].typ))
 		You("are not going to get anywhere trying to write in the %s with your dust.", /* EN You("are not going to get anywhere trying to write in the %s with your dust.", */ // TODO DE
 		    is_ice(u.ux,u.uy) ? "NOUN_SCHNEE" : "NOUN_DUST"); /* EN is_ice(u.ux,u.uy) ? "frost" : "dust"); */
@@ -1264,14 +1264,14 @@ static const char *epitaphs[] = {
 	"Ruhe in Frieden", /* EN "Rest in peace", */
 	"R.I.P.",
 	"Rest In Pieces", /* EN "Rest In Pieces", */ // TODO DE
-	"Note -- there are NO valuable items in this grave", /* EN "Note -- there are NO valuable items in this grave", */ // TODO DE
+	"Hinweis -- Es gibt KEINE wertvollen Sachen in diesem Grab", /* EN "Note -- there are NO valuable items in this grave", */
 	"1994 - 1995. Der langlebigste Hacker von allen", /* EN "1994-1995. The Longest-Lived Hacker Ever", */
 	"Das Grab des unbekannten Hackers", /* EN "The Grave of the Unknown Hacker", */
 	"Wir waren nicht sicher, was es war, aber wir begruben es trotzdem", /* EN "We weren't sure who this was, but we buried him here anyway", */
 	"Fido -- er war ein ganz braver Hund", /* EN "Sparky -- he was a very good dog", */
 	"Beware of Electric Third Rail", /* EN "Beware of Electric Third Rail", */ // TODO DE
 	"Made in Taiwan",
-	"Og friend. Og good dude. Og died. Og now food", /* EN "Og friend. Og good dude. Og died. Og now food", */ // TODO DE
+	"Og Freund. Og guter Kerl. Og stirbt. Og jetzt Essen", /* EN "Og friend. Og good dude. Og died. Og now food", */
 	"Beetlejuice, Beetlejuice, Beetlejuice", /* EN "Beetlejuice Beetlejuice Beetlejuice", */
 	"Look out below!", /* EN "Look out below!", */ // TODO DE
 	"Please don't dig me up. I'm perfectly happy down here. -- Resident", /* EN "Please don't dig me up. I'm perfectly happy down here. -- Resident", */ // TODO DE
