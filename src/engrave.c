@@ -502,7 +502,7 @@ doengrave()
 		return(0);
 	}
 	if (cantwield(youmonst.data)) {
-		You_cant("even hold anything!"); /* EN You_cant("even hold anything!"); */ // TODO DE
+		You("VERB_KOENNEN gar nichts halten!"); /* EN You_cant("even hold anything!"); */
 		return(0);
 	}
 	if (check_capacity((char *)0)) return (0);
@@ -1269,7 +1269,7 @@ static const char *epitaphs[] = {
 	"Das Grab des unbekannten Hackers", /* EN "The Grave of the Unknown Hacker", */
 	"Wir waren nicht sicher, was es war, aber wir begruben es trotzdem", /* EN "We weren't sure who this was, but we buried him here anyway", */
 	"Fido -- er war ein ganz braver Hund", /* EN "Sparky -- he was a very good dog", */
-	"Beware of Electric Third Rail", /* EN "Beware of Electric Third Rail", */ // TODO DE
+	"Übertreten der Gleise verboten", /* EN "Beware of Electric Third Rail", */
 	"Made in Taiwan",
 	"Og Freund. Og guter Kerl. Og stirbt. Og jetzt Essen", /* EN "Og friend. Og good dude. Og died. Og now food", */
 	"Beetlejuice, Beetlejuice, Beetlejuice", /* EN "Beetlejuice Beetlejuice Beetlejuice", */

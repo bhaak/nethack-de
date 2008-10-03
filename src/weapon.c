@@ -69,13 +69,13 @@ STATIC_VAR NEARDATA const char * const odd_skill_names[] = {
     "NOUN_SABER", /* EN "saber", */
     "NOUN_HAMMER", /* EN "hammer", */
     "NOUN_WHIP", /* EN "whip", */
-    "attack spells", /* EN "attack spells", */ // TODO DE
-    "healing spells", /* EN "healing spells", */ // TODO DE
-    "divination spells", /* EN "divination spells", */ // TODO DE
-    "enchantment spells", /* EN "enchantment spells", */ // TODO DE
-    "clerical spells", /* EN "clerical spells", */ // TODO DE
-    "escape spells", /* EN "escape spells", */ // TODO DE
-    "matter spells", /* EN "matter spells", */ // TODO DE
+    "Angriffssprüche", /* EN "attack spells", */
+    "Heilungssprüche", /* EN "healing spells", */
+    "Weissagungssprüche", /* EN "divination spells", */
+    "Verzauberungssprüche", /* EN "enchantment spells", */
+    "Klerikalsprüche", /* EN "clerical spells", */
+    "Fluchtsprüche", /* EN "escape spells", */
+    "Materiesprüche", /* EN "matter spells", */
 };
 /* indexed vis `is_martial() */
 STATIC_VAR NEARDATA const char * const barehands_or_martial[] = {

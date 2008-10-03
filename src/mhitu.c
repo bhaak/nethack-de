@@ -184,11 +184,11 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 		case 0: pline("SUBJECT %s %s wild OBJECT KASUS_DATIV nach PRONOMEN_PERSONAL und VERB_MISS NEUES_OBJECT OBJECT PRONOMEN_PERSONAL!", Monnam(mtmp), /* EN case 0: pline("%s %s wildly and misses!", Monnam(mtmp), */
 			      swings);
 		    break;
-		case 1: pline("%s attacks a spot beside you.", Monnam(mtmp)); /* EN case 1: pline("%s attacks a spot beside you.", Monnam(mtmp)); */ // TODO DE
+		case 1: pline("SUBJECT %s VERB_ANGREIFEN einen Platz OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL SATZKLAMMER.", Monnam(mtmp)); /* EN case 1: pline("%s attacks a spot beside you.", Monnam(mtmp)); */
 		    break;
-		case 2: pline("%s strikes at %s!", Monnam(mtmp), /* EN case 2: pline("%s strikes at %s!", Monnam(mtmp), */ // TODO DE
+		case 2: pline("SUBJECT %s VERB_SCHLAGEN %s!", Monnam(mtmp), /* EN case 2: pline("%s strikes at %s!", Monnam(mtmp), */
 				levl[mtmp->mux][mtmp->muy].typ == WATER
-				    ? "empty water" : "thin air"); /* EN ? "empty water" : "thin air"); */ // TODO DE
+				    ? "ins Wasser" : "in die Luft"); /* EN ? "empty water" : "thin air"); */
 		    break;
 		default:pline("SUBJECT %s %s wild OBJECT KASUS_DATIV nach PRONOMEN_PERSONAL!", Monnam(mtmp), swings); /* EN default:pline("%s %s wildly!", Monnam(mtmp), swings); */
 		    break;
@@ -254,8 +254,8 @@ boolean message;
 							break;
 					}
 				} else
-					Strcpy(blast, " with a squelch"); /* EN Strcpy(blast, " with a squelch"); */ // TODO DE
-				You("get expelled from %s%s!", /* EN You("get expelled from %s%s!", */ // TODO DE
+					Strcpy(blast, " mit einem Rülpser"); /* EN Strcpy(blast, " with a squelch"); */
+				You("VERB_WERDEN OBJECT KASUS_DATIV aus %s%s MODIFIER_VERB_PARTIZIP_PERFEKT VERB_EXPEL!", /* EN You("get expelled from %s%s!", */
 				    mon_nam(mtmp), blast);
 			}
 		}
@@ -1847,7 +1847,7 @@ common:
 
 		if (!not_affected) {
 		    if (ACURR(A_DEX) > rnd(20)) {
-			You("duck some of the blast."); /* EN You("duck some of the blast."); */ // TODO DE
+			You("VERB_VERSUCHEN der Druckwelle auszuweichen."); /* EN You("duck some of the blast."); */
 			tmp = (tmp+1) / 2;
 		    } else {
 		        if (flags.verbose) pline("Die Druckwelle erfasst OBJECT KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN if (flags.verbose) You("get blasted!"); */

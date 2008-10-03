@@ -1108,7 +1108,7 @@ register struct obj *otmp;
 		Your("NOUN_SACRIFICE schwillt an, wird größer und größer und platzt!"); /* EN Your("sacrifice puffs up, swelling bigger and bigger, and pops!"); */
 		break;
 	    case 2:
-		Your("NOUN_SACRIFICE zerfällt in eine Wolke tanzender Funken, die langsam verblassen!"); /* EN Your("sacrifice collapses into a cloud of dancing particles and fades away!"); */
+		Your("NOUN_SACRIFICE zerplatzt in eine Wolke tanzender Funken, die langsam verblassen!"); /* EN Your("sacrifice collapses into a cloud of dancing particles and fades away!"); */
 		break;
 	}
     else if (Blind && u.ualign.type == A_LAWFUL)
