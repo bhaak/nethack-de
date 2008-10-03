@@ -546,11 +546,11 @@ long timeout;
 			    knows_egg = TRUE;
 			}
 			else if (is_pool(mon->mx, mon->my))
-			    Strcpy(carriedby, "empty water"); /* EN Strcpy(carriedby, "empty water"); */ // TODO DE
+			    Strcpy(carriedby, "dem Wasser"); /* EN Strcpy(carriedby, "empty water"); */
 			else
-			    Strcpy(carriedby, "thin air"); /* EN Strcpy(carriedby, "thin air"); */ // TODO DE
+			    Strcpy(carriedby, "dem Nichts"); /* EN Strcpy(carriedby, "thin air"); */
 			You("VERB_SEHEN, NEUER_SATZ wie SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV aus %s %s!", monnambuf, /* EN You("see %s %s out of %s!", monnambuf, */
-			    locomotion(mon->data, "VERB_FALLEN"), carriedby); /* EN locomotion(mon->data, "drop"), carriedby); */
+			    carriedby, locomotion(mon->data, "VERB_FALLEN")); /* EN locomotion(mon->data, "drop"), carriedby); */
 		    }
 		    break;
 #if 0
@@ -799,11 +799,11 @@ long timeout;
 			switch (obj->where) {
 			    case OBJ_INVENT:
 			    case OBJ_MINVENT:
-				pline("%s potion of oil has burnt away.", /* EN pline("%s potion of oil has burnt away.", */ // TODO DE
+				pline("SUBJECT %s NOUN_POTION PARTIKEL_OF NOUN_POT_OIL ist ausgebrannt.", /* EN pline("%s potion of oil has burnt away.", */
 				    whose);
 				break;
 			    case OBJ_FLOOR:
-				You("see a burning potion of oil go out."); /* EN You("see a burning potion of oil go out."); */ // TODO DE
+				You("VERB_SEHEN eine brennende Flasche Öl ausgehen."); /* EN You("see a burning potion of oil go out."); */
 				need_newsym = TRUE;
 				break;
 			}
@@ -841,7 +841,7 @@ long timeout;
 					    whose, xname(obj));
 					break;
 				    case OBJ_FLOOR:
-					You("see %s about to go out.", /* EN You("see %s about to go out.", */ // TODO DE
+					You("VERB_SEHEN OBJECT %s kurz vor dem Ausgehen.", /* EN You("see %s about to go out.", */
 					    an(xname(obj)));
 					break;
 				}

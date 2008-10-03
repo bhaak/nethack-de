@@ -565,20 +565,20 @@ int spellnum;
          * -- message assumes plural monsters seen
          */
 	if (!success)
-	    pline("%s casts at a clump of sticks, but nothing happens.", /* EN pline("%s casts at a clump of sticks, but nothing happens.", */ // TODO DE
+	    pline("SUBJECT %s VERB_BESCHWOEREN einen Haufen Stäbe, aber nichts passiert.", /* EN pline("%s casts at a clump of sticks, but nothing happens.", */
 		Monnam(mtmp));
 	else if (let == S_SNAKE)
-	    pline("%s transforms a clump of sticks into snakes!", /* EN pline("%s transforms a clump of sticks into snakes!", */ // TODO DE
+	    pline("SUBJECT %s VERB_VERWANDELN einen Haufen Stäbe in Schlangen!", /* EN pline("%s transforms a clump of sticks into snakes!", */
 		Monnam(mtmp));
 	else if (Invisible && !perceives(mtmp->data) &&
 				(mtmp->mux != u.ux || mtmp->muy != u.uy))
-	    pline("%s summons insects around a spot near you!", /* EN pline("%s summons insects around a spot near you!", */ // TODO DE
+	    pline("SUBJECT %s VERB_BESCHWOEREN Insekten rings um einen Platz OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL herbei!", /* EN pline("%s summons insects around a spot near you!", */
 		Monnam(mtmp));
 	else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
-	    pline("%s summons insects around your ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE!", /* EN pline("%s summons insects around your displaced image!", */ // TODO DE
+	    pline("SUBJECT %s VERB_BESCHWOEREN Insekten rings OBJECT um PRONOMEN_POSSESSIV ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE herbei!", /* EN pline("%s summons insects around your displaced image!", */
 		Monnam(mtmp));
 	else
-	    pline("%s summons insects!", Monnam(mtmp)); /* EN pline("%s summons insects!", Monnam(mtmp)); */ // TODO DE
+	    pline("SUBJECT %s VERB_BESCHWOEREN Insekten herbei!", Monnam(mtmp)); /* EN pline("%s summons insects!", Monnam(mtmp)); */
 	dmg = 0;
 	break;
       }

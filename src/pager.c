@@ -800,7 +800,7 @@ doidtrap()
 		      !trap->madeby_u ? "" : " by you"); /* EN !trap->madeby_u ? "" : " by you"); */ // TODO DE
 		return 0;
 	    }
-	pline("I can't see a trap there."); /* EN pline("I can't see a trap there."); */ // TODO DE
+	pline("Ich kann da keine Falle erkennen."); /* EN pline("I can't see a trap there."); */
 	return 0;
 }
 
@@ -815,7 +815,7 @@ char *cbuf;
 
 	fp = dlb_fopen(CMDHELPFILE, "r");
 	if (!fp) {
-		pline("Cannot open data file!"); /* EN pline("Cannot open data file!"); */ // TODO DE
+		pline("Kann Datendatei nicht öffnen!"); /* EN pline("Cannot open data file!"); */
 		return 0;
 	}
 
@@ -929,7 +929,7 @@ help_menu(sel)
 		add_menu(tmpwin, NO_GLYPH, &any, 0, 0,
 			ATR_NONE, help_menu_items[i], MENU_UNSELECTED);
 	    }
-	end_menu(tmpwin, "Select one item:"); /* EN end_menu(tmpwin, "Select one item:"); */ // TODO DE
+	end_menu(tmpwin, "Bitte MODIFIER_VERB_IMPERATIV VERB_TREFFEN PRONOMEN_POSSESSIV NOUN_AUSWAHL:"); /* EN end_menu(tmpwin, "Select one item:"); */
 	n = select_menu(tmpwin, PICK_ONE, &selected);
 	destroy_nhwindow(tmpwin);
 	if (n > 0) {

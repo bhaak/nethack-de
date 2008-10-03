@@ -31,7 +31,7 @@ dowatersnakes() /* Fountain of snakes! */
 
     if (!(mvitals[PM_WATER_MOCCASIN].mvflags & G_GONE)) {
 	if (!Blind)
-	    pline("An endless stream of %s pours forth!", /* EN pline("An endless stream of %s pours forth!", */ // TODO DE
+	    pline("Ein endloser Strom von KASUS_DATIV %s quillt hervor!", /* EN pline("An endless stream of %s pours forth!", */
 		  Hallucination ? makeplural(rndmonnam()) : "NOUN_SNAKEs"); /* EN Hallucination ? makeplural(rndmonnam()) : "snakes"); */
 	else
 			You_hear("%s zischen!", something); /* EN You_hear("%s hissing!", something); */
@@ -40,7 +40,7 @@ dowatersnakes() /* Fountain of snakes! */
 			u.ux, u.uy, NO_MM_FLAGS)) && t_at(mtmp->mx, mtmp->my))
 		(void) mintrap(mtmp);
     } else
-	pline_The("fountain bubbles furiously for a moment, then calms."); /* EN pline_The("fountain bubbles furiously for a moment, then calms."); */ // TODO DE
+	pline_The("NOUN_FOUNTAIN sprudelt einen Augenblick lang gewaltig und beruhigt sich wieder."); /* EN pline_The("fountain bubbles furiously for a moment, then calms."); */
 }
 
 STATIC_OVL
@@ -101,7 +101,7 @@ int drinking;
 	    if (drinking)
 		Your("NOUN_DURST VERB_SEIN gestillt."); /* EN Your("thirst is quenched."); */
 	    else
-		pline("Water sprays all over you."); /* EN pline("Water sprays all over you."); */ // TODO DE
+		pline("SUBJECT PRONOMEN_PERSONAL VERB_WERDEN über und über mit Wasser bespritzt."); /* EN pline("Water sprays all over you."); */
 	}
 }
 
@@ -123,7 +123,7 @@ genericptr_t poolcnt;
 		return;
 
 	if (!((*(int *)poolcnt)++))
-	    pline("Water gushes forth from the overflowing fountain!"); /* EN pline("Water gushes forth from the overflowing fountain!"); */ // TODO DE
+	    pline_The("NOUN_FOUNTAIN schwappt über!"); /* EN pline("Water gushes forth from the overflowing fountain!"); */
 
 	/* Put a pool at x, y */
 	levl[x][y].typ = POOL;
@@ -172,7 +172,7 @@ boolean isyou;
 			    }
 			}
 			/* You can see or hear this effect */
-			if(!mtmp) pline_The("flow reduces to a trickle."); /* EN if(!mtmp) pline_The("flow reduces to a trickle."); */ // TODO DE
+			if(!mtmp) pline("Der Strom schrumpft zu einem Rinnsal."); /* EN if(!mtmp) pline_The("flow reduces to a trickle."); */
 			return;
 		}
 #ifdef WIZARD

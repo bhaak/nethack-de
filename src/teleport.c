@@ -717,7 +717,7 @@ level_tele()
 		}
 		if (newlev <= -10) {
 			You("VERB_STEHEN vor der Himmelspforte."); /* EN You("arrive in heaven."); */
-			verbalize("Thou art early, but we'll admit thee."); /* EN verbalize("Thou art early, but we'll admit thee."); */ // TODO DE
+			verbalize("Du bist früh dran. Aber wir lassen dich trotzdem rein."); /* EN verbalize("Thou art early, but we'll admit thee."); */
 			killer_format = NO_KILLER_PREFIX;
 			killer = "kam frühzeitig in den Himmel"; /* EN killer = "went to heaven prematurely"; */
 		} else if (newlev == -7) { /* EN } else if (newlev == -9) { */
@@ -730,14 +730,14 @@ level_tele()
 		if (killer) {
 		    ;		/* arrival in heaven is pending */
 		} else if (Levitation) {
-		    escape_by_flying = "float gently down to earth"; /* EN escape_by_flying = "float gently down to earth"; */ // TODO DE
+		    escape_by_flying = "VERB_GLEITEN sanft zur Erde"; /* EN escape_by_flying = "float gently down to earth"; */
 		} else if (Flying) {
 		    escape_by_flying = "fly down to the ground"; /* EN escape_by_flying = "fly down to the ground"; */ // TODO DE
 		} else {
 		    pline("Blöderweise VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht fliegen."); /* EN pline("Unfortunately, you don't know how to fly."); */
-		    You("VERB_STUERZEN a few thousand feet to your death."); /* EN You("plummet a few thousand feet to your death."); */ // TODO DE
+		    You("VERB_STUERZEN aus schwindelerregender Höhe in den Tod."); /* EN You("plummet a few thousand feet to your death."); */
 		    Sprintf(buf,
-			  "teleportierte out of the dungeon und stürzte zu Tode" /* EN "teleported out of the dungeon and fell to %s death", */ // TODO DE
+			  "teleportierte aus dem Dungeon hinaus und stürzte zu Tode" /* EN "teleported out of the dungeon and fell to %s death", */
 			    ); /* EN uhis()); */
 		    killer = buf;
 		    killer_format = NO_KILLER_PREFIX;
@@ -1273,7 +1273,7 @@ boolean give_feedback;
 
 	if (mtmp->ispriest && *in_rooms(mtmp->mx, mtmp->my, TEMPLE)) {
 	    if (give_feedback)
-		pline("%s resists your magic!", Monnam(mtmp)); /* EN pline("%s resists your magic!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_WIDERSTEHT OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_MAGIE!", Monnam(mtmp)); /* EN pline("%s resists your magic!", Monnam(mtmp)); */
 	    return FALSE;
 	} else if (level.flags.noteleport && u.uswallow && mtmp == u.ustuck) {
 	    if (give_feedback)

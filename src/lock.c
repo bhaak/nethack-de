@@ -480,7 +480,7 @@ doforce()		/* try to force a chest with your weapon */
 		Sprintf(qbuf,"There is %s here, force its lock?", /* EN Sprintf(qbuf,"There is %s here, force its lock?", */ // TODO DE
 			safe_qbuf("", sizeof("There is  here, force its lock?"), /* EN safe_qbuf("", sizeof("There is  here, force its lock?"), */ // TODO DE
 				doname(otmp), an(simple_typename(otmp->otyp)),
-				"a box")); /* EN "a box")); */ // TODO DE
+				"eine Kiste")); /* EN "a box")); */
 
 		c = ynq(qbuf);
 		if(c == 'q') return(0);
@@ -904,19 +904,19 @@ struct obj *otmp;
 	thing = singular(otmp, xname);
 	Blinded = save_Blinded;
 	switch (objects[otmp->otyp].oc_material) {
-	case PAPER:	disposition = "is torn to shreds"; /* EN case PAPER:	disposition = "is torn to shreds"; */ // TODO DE
+	case PAPER:	disposition = "wird zerrissen"; /* EN case PAPER:	disposition = "is torn to shreds"; */
 		break;
-	case WAX:	disposition = "is crushed"; /* EN case WAX:	disposition = "is crushed"; */ // TODO DE
+	case WAX:	disposition = "wird zerquetscht"; /* EN case WAX:	disposition = "is crushed"; */
 		break;
 	case VEGGY:	disposition = "is pulped"; /* EN case VEGGY:	disposition = "is pulped"; */ // TODO DE
 		break;
-	case FLESH:	disposition = "is mashed"; /* EN case FLESH:	disposition = "is mashed"; */ // TODO DE
+	case FLESH:	disposition = "wird zermatscht"; /* EN case FLESH:	disposition = "is mashed"; */
 		break;
-	case GLASS:	disposition = "shatters"; /* EN case GLASS:	disposition = "shatters"; */ // TODO DE
+	case GLASS:	disposition = "zerbricht"; /* EN case GLASS:	disposition = "shatters"; */
 		break;
-	case WOOD:	disposition = "splinters to fragments"; /* EN case WOOD:	disposition = "splinters to fragments"; */ // TODO DE
+	case WOOD:	disposition = "zersplittert"; /* EN case WOOD:	disposition = "splinters to fragments"; */
 		break;
-	default:	disposition = "is destroyed"; /* EN default:	disposition = "is destroyed"; */ // TODO DE
+	default:	disposition = "wird zerstört"; /* EN default:	disposition = "is destroyed"; */
 		break;
 	}
 	pline("SUBJECT %s %s!", An(thing), disposition); /* EN pline("%s %s!", An(thing), disposition); */
