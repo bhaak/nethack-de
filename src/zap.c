@@ -1481,7 +1481,7 @@ struct obj *obj, *otmp;
 			return 0;
 		else {
 #ifdef DEBUG
-			pline("%s for a moment.", Tobjnam(obj, "pulsate")); /* EN pline("%s for a moment.", Tobjnam(obj, "pulsate")); */ // TODO DE
+			pline("SUBJECT %s kurz.", Tobjnam(obj, "VERB_PULSIEREN")); /* EN pline("%s for a moment.", Tobjnam(obj, "pulsate")); */
 #endif
 			obj->bypass = 0;
 		}

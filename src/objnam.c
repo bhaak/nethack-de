@@ -700,12 +700,12 @@ plus:
 			goto plus;
 		if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
 			if (!obj->spe)
-			    Strcpy(tmpbuf, "no"); /* EN Strcpy(tmpbuf, "no"); */ // TODO DE
+			    Strcpy(tmpbuf, "PRONOMEN_KEIN"); /* EN Strcpy(tmpbuf, "no"); */
 			else
 			    Sprintf(tmpbuf, "%d", obj->spe);
-			Sprintf(eos(bp), " (%s candle%s%s)", /* EN Sprintf(eos(bp), " (%s candle%s%s)", */ // TODO DE
+			Sprintf(eos(bp), " (NEUER_SATZ SUBJECT_IM_SATZ %s NOUN_CANDLE%s%s)", /* EN Sprintf(eos(bp), " (%s candle%s%s)", */
 				tmpbuf, plur(obj->spe),
-				!obj->lamplit ? " attached" : ", ADJEKTIV_LIT"); /* EN !obj->lamplit ? " attached" : ", lit"); */ // TODO DE
+				!obj->lamplit ? " befestigt" : ", entzündet"); /* EN !obj->lamplit ? " attached" : ", lit"); */
 			break;
 		} else if (obj->otyp == OIL_LAMP || obj->otyp == MAGIC_LAMP ||
 			obj->otyp == BRASS_LANTERN || Is_candle(obj)) {
@@ -2113,9 +2113,9 @@ boolean from_user;
 	 * Don't check if it's a wand or spellbook.
 	 * (avoid "wand/finger of death" confusion).
 	 */
-	if (!strstri(bp, "wand ") /* EN if (!strstri(bp, "wand ") */ // TODO DE
-	 && !strstri(bp, "spellbook ") /* EN && !strstri(bp, "spellbook ") */ // TODO DE
-	 && !strstri(bp, "finger ")) { /* EN && !strstri(bp, "finger ")) { */ // TODO DE
+	if (!strstri(bp, "NOUN_WAND ") /* EN if (!strstri(bp, "wand ") */
+	 && !strstri(bp, "NOUN_SPELLBOOK ") /* EN && !strstri(bp, "spellbook ") */
+	 && !strstri(bp, "NOUN_FINGER_OF_DEATH ")) { /* EN && !strstri(bp, "finger ")) { */
 	//fprintf(stderr, "readobjnam 6.25 %s\n", bp);
 	    if ((p = strstri(bp, " PARTIKEL_OF ")) != 0 /* EN if ((p = strstri(bp, " of ")) != 0 */
 		&& (mntmp = name_to_mon(p+13)) >= LOW_PM) /* EN && (mntmp = name_to_mon(p+4)) >= LOW_PM) */
@@ -2996,7 +2996,7 @@ struct monst *mtmp;
 		if (mtmp->mappearance == GOLD_PIECE) return "NOUN_GOLD"; /* EN if (mtmp->mappearance == GOLD_PIECE) return "gold"; */
 		return obj_descr[idx].oc_name;
 	}
-	return "whatcha-may-callit"; /* EN return "whatcha-may-callit"; */ // TODO DE
+	return "NOUN_DINGSBUMS"; /* EN return "whatcha-may-callit"; */
 }
 #endif /* OVLB */
 
