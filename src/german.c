@@ -322,11 +322,27 @@ void german2meta(const char *input, char *output)
 	int statuette_gefunden = 0;
 	char str[TBUFSZ];
 	normalisierung(str, input);
+
+	// wenn der String schon vollstaendig tokenisiert ist, nur kopieren
+	int tokenisiert = TRUE;
+	for (i = 0; i < strlen(input); i++) {
+		if ((input[i] >= 'A' && input[i] <= 'Z') ||
+		    (input[i] == '_')) {
+		   	tokenisiert &= TRUE;
+		} else {
+		   	tokenisiert &= FALSE;
+		}
+	}
+	if (tokenisiert) {
+		strcpy(output, input);
+		return;
+	}
 	
 	if (WISH_DEBUG) printf("\ngerman2meta %s\n", input);
 	if (WISH_DEBUG) printf("\ngerman2meta %s\n", str);
 	//printf("str: %s\n",str);
 	//printf("strlen(str): %d\n",strlen(str));
+	i = 0;
 	while (i < strlen(str)) {
 		if (WISH_DEBUG) printf("i:  %d\n",i);
 		if (WISH_DEBUG) printf("1   %s\n",str+i);

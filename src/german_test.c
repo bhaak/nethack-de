@@ -678,6 +678,10 @@ START_TEST (test_german2meta2) {
 		{"rostiges Langschwert", "ADJEKTIV_ROSTIG NOUN_LONG_SWORD"},
 		{"sehr rostiges Langschwert", "sehr ADJEKTIV_ROSTIG NOUN_LONG_SWORD"},
 		{"ganz verrostetes Langschwert", "ganz ADJEKTIV_VERROSTET NOUN_LONG_SWORD"},
+		{"Spüle", "NOUN_SINK"},
+		{"NOUN_GOBLIN", "NOUN_GOBLIN"},
+		{"Wasserelementar", "NOUN_WATER_ELEMENTAL"},
+		{"NOUN_WATER_ELEMENTAL", "NOUN_WATER_ELEMENTAL"},
 	};
 
 	check_german2meta(text, sizeof(text)/8);
