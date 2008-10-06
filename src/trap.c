@@ -3987,7 +3987,7 @@ lava_effects()
 	u.uhp = -1;
 	killer_format = KILLED_BY;
 	killer = lava_killer;
-	You("VERB_VERBRENNEN zu einen Aschehäufchen ..."); /* EN You("burn to a crisp..."); */
+	You("VERB_VERBRENNEN zu einem Aschehäufchen ..."); /* EN You("burn to a crisp..."); */
 	done(BURNING);
 	while (!safe_teleds(TRUE)) {
 		pline("SUBJECT PRONOMEN_PERSONAL VERB_BRENNEN immer noch."); /* EN pline("You're still burning."); */

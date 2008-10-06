@@ -724,7 +724,7 @@ boolean pit_only;
 		/* if any objects were frozen here, they're released now */
 		unearth_objs(u.ux, u.uy);
 
-		pline("Während SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_GRABEN füllt sich das Loch mit KASUS_DATIV %s!", /* EN pline("As you dig, the hole fills with %s!", */
+		pline("Während SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_GRABEN, füllt sich das Loch mit KASUS_DATIV %s!", /* EN pline("As you dig, the hole fills with %s!", */
 		      typ == LAVAPOOL ? "NOUN_LAVA" : "NOUN_WATER"); /* EN typ == LAVAPOOL ? "lava" : "water"); */
 		if (!Levitation && !Flying) {
 		    if (typ == LAVAPOOL)
