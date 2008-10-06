@@ -1069,8 +1069,12 @@ START_TEST (test_wortzusammensetzungen) {
 		 "Purpurwurm-Ei"},
 		{"MODIFIER_VERB_INFINITIV davon-VERB_LAUFEN",
 		 "davonlaufen"},
+		{"MODIFIER_VERB_INFINITIV davon--VERB_LAUFEN",
+		 "davon-laufen"},
 		{"grell-ADJEKTIV_FARBE_BLUE",
 		 "grellblau"},
+		{"grell--ADJEKTIV_FARBE_BLUE",
+		 "grell-blau"},
 	};
 
 	check_strings(text, sizeof(text)/8);

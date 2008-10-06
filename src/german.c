@@ -1191,6 +1191,12 @@ char* german(const char *line) {
 			print_state();
 #endif
 			//finde_naechstes_substantiv(line+pos);
+			/* grell-ADJEKTIV_FARBE_BLUE -> grellblau */
+			int beginning_of_appended_word = strlen(output);
+			if ((beginning_of_appended_word > 1) &&
+			    (output[beginning_of_appended_word-1]=='-')) {
+				output[beginning_of_appended_word-1] = '\0';
+			}
 			if ((c_genus == 0) && (c_numerus == 0) && (c_numerus ==0)) {
 				// alleinstehendes Adjektiv
 				append(output, get_adjektiv(tmp, nominativ, maskulin, n_singular, grundform));
