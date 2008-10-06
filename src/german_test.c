@@ -1197,7 +1197,7 @@ START_TEST (test_modifier_verb_partizip_perfekt) {
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DOG VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT VERB_REGURGITATE!",
 		 "Der Hund wird herausgewürgt!"},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_DOG VERB_WERDEN MODIFIER_VERB_PARTIZIP_PERFEKT VERB_EXPEL!",
-		 "Der Hund herausgeschleudert!"},
+		 "Der Hund wird herausgeschleudert!"},
 	};
 
 	check_strings(text, sizeof(text)/8);

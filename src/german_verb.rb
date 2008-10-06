@@ -179,15 +179,19 @@ class Verb
 			return @praesens_stamm + (@e_erweiterung ? "e" : "") + "t"
 		end
 	end
-  
+
   def endung(endungen)
     return endungen[@person+@numerus*3]
   end
 
   def partizip_praesens
-    return @praesens_stamm + (@e_tilgung ? "nd" : "end")
+    return @praeverb+@praesens_stamm + (@e_tilgung ? "nd" : "end")
   end
 
+  def partizip_perfekt
+    return @praeverb+@partizip_perfekt
+  end
+  
   def singular?
     return @numerus == 0
   end

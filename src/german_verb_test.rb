@@ -601,7 +601,18 @@ class TestVerb < Test::Unit::TestCase
     assert_equal("gesessen", Verb.verb("", "sitzen").partizip_perfekt)
     assert_equal("gemieden", Verb.verb("", "meiden").partizip_perfekt)
     assert_equal("gestiegen", Verb.verb("", "steigen").partizip_perfekt)
-	end
+    assert_equal("herausgewürgt", Verb.verb("", "würgen", "heraus").partizip_perfekt)
+  end
+
+  def testPartizipPraesens
+    assert_equal("schießend", Verb.verb("", "schießen").partizip_praesens)
+    assert_equal("beginnend", Verb.verb("", "beginnen").partizip_praesens)
+    assert_equal("bleibend", Verb.verb("", "bleiben").partizip_praesens)
+    assert_equal("sitzend", Verb.verb("", "sitzen").partizip_praesens)
+    assert_equal("meidend", Verb.verb("", "meiden").partizip_praesens)
+    assert_equal("steigend", Verb.verb("", "steigen").partizip_praesens)
+    assert_equal("herauswürgend", Verb.verb("", "würgen", "heraus").partizip_praesens)
+  end
 
   def testAtmen
     verb = Verb.verb("", "atmen")

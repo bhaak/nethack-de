@@ -1158,6 +1158,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_DESTROY", "zerstören"),
 		Verb.verb("VERB_DISARM","entschärfen"),
 		Verb.verb("VERB_ENGULF","verschlingen"),
+		Verb.verb("VERB_EXPEL","schleudern", "heraus"),
 		Verb.verb("VERB_OFFER", "opfern"),
 		Verb.verb("VERB_OWE","schulden"),
 		Verb.verb("VERB_SACRIFICE", "opfern"),
