@@ -1794,7 +1794,7 @@ aligntyp alignment;
 {
     if (!Hallucination) return align_gname(alignment);
 
-    return rnd_gname(-1);
+    return rnd_gname(ROLE_RANDOM);
 }
 
 /* select a random god based on role if provided */
