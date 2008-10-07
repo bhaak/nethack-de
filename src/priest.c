@@ -285,8 +285,13 @@ char *pname;		/* caller-supplied output buffer */
 				Strcat(pname, "PRIEST "); /* EN Strcat(pname, "priest "); */ /* NOUN_HIGH_PRIEST, NOUN_PRIEST */
 		}
 #ifdef GERMAN
-
-		tmp_gname = halu_gname((int)EPRI(mon)->shralign);
+		/* Astral Call bugfix */
+		if (mon->data == &mons[PM_HIGH_PRIEST] && !Hallucination &&
+		            Is_astralevel(&u.uz) && distu(mon->mx, mon->my) > 2) {
+			tmp_gname = rnd_gname(str2role((char*)urole.name.m));
+		} else {
+		  tmp_gname = halu_gname((int)EPRI(mon)->shralign);
+		}
 		Strcat(pname, gott_weiblich(tmp_gname) ? "der " : "des ");
 		Strcat(pname, tmp_gname);
 #else
