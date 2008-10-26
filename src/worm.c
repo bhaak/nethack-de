@@ -369,7 +369,7 @@ cutworm(worm, x, y, weap)
     /* Sometimes the tail end dies. */
     if (rn2(3) || !(new_wnum = get_wormno())) {
 	if (flags.mon_moving)
-	    pline("Part of the tail of %s is cut off.", mon_nam(worm)); /* EN pline("Part of the tail of %s is cut off.", mon_nam(worm)); */ // TODO DE
+	    pline("Ein Teil des Schwanzes KASUS_GENITIV %s wurde abgeschnitten.", mon_nam(worm)); /* EN pline("Part of the tail of %s is cut off.", mon_nam(worm)); */
 	else
 	You("VERB_SCHNEIDEN einen Teil des Schwanzes OBJECT KASUS_GENITIV %s ab.", mon_nam(worm)); /* EN You("cut part of the tail off of %s.", mon_nam(worm)); */
 	toss_wsegs(new_tail, TRUE);
@@ -403,7 +403,7 @@ cutworm(worm, x, y, weap)
     place_wsegs(new_worm);
 
     if (flags.mon_moving)
-	pline("%s is cut in half.", Monnam(worm)); /* EN pline("%s is cut in half.", Monnam(worm)); */ // TODO DE
+	pline("%s wird entzwei geteilt.", Monnam(worm)); /* EN pline("%s is cut in half.", Monnam(worm)); */
     else
     You("VERB_SCHNEIDEN OBJECT %s entzwei.", mon_nam(worm)); /* EN You("cut %s in half.", mon_nam(worm)); */
 }
