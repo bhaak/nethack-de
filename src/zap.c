@@ -766,9 +766,9 @@ struct monst *mon;
 		++res;
 		if (youseeit) {
 		    if (!once++) Strcpy(owner,
-					(mon == &youmonst) ? "PRONOMEN_POSSESSIV" : /* EN (mon == &youmonst) ? "Your" : */
-					s_suffix(Monnam(mon))); /* EN s_suffix(Monnam(mon))); */ // TODO DE
-		    pline("SUBJECT %s %s VERB_WERDEN plötzlich lebendig!", owner, corpse); /* EN pline("%s %s suddenly comes alive!", owner, corpse); */ // TODO DE
+					(mon == &youmonst) ? "PRONOMEN_POSSESSIV " : /* EN (mon == &youmonst) ? "Your" : */
+					genitivattribut_zu_wort(Monnam(mon), corpse)); /* EN s_suffix(Monnam(mon))); */
+		    pline("SUBJECT %s%s VERB_WERDEN plötzlich lebendig!", owner, (mon == &youmonst) ? corpse : ""); /* EN pline("%s %s suddenly comes alive!", owner, corpse); */
 		} else if (canseemon(mtmp2))
 			pline("SUBJECT %s VERB_ERSCHEINEN plötzlich!", Amonnam(mtmp2)); /* EN pline("%s suddenly appears!", Amonnam(mtmp2)); */ //
 	    }
@@ -3821,10 +3821,10 @@ register struct obj *obj;
  const char * const destroy_strings[] = {	/* also used in trap.c */
 	"freezes and shatters", "freeze and shatter", "shattered potion", /* EN "freezes and shatters", "freeze and shatter", "shattered potion", */ // TODO DE
 	"boils and explodes", "boil and explode", "boiling potion", /* EN "boils and explodes", "boil and explode", "boiling potion", */ // TODO DE
-	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "burning scroll", /* EN "catches fire and burns", "catch fire and burn", "burning scroll", */ // TODO DE
-	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "burning book", /* EN "catches fire and burns", "catch fire and burn", "burning book", */ // TODO DE
+	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "ADJEKTIV_VERBRENNEND NOUN_SCROLL", /* EN "catches fire and burns", "catch fire and burn", "burning scroll", */
+	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "ADJEKTIV_BRENNEND NOUN_BUCH", /* EN "catches fire and burns", "catch fire and burn", "burning book", */
 	"VERB_ZERFALLEN zu Staub und VERB_VERSCHWINDEN", "VERB_ZERFALLEN zu Staub und VERB_VERSCHWINDEN", "", /* EN "turns to dust and vanishes", "turn to dust and vanish", "", */
-	"breaks apart and explodes", "break apart and explode", "ADJEKTIV_EXPLODIEREND NOUN_WAND" /* EN "breaks apart and explodes", "break apart and explode", "exploding wand" */ // TODO DE
+	"VERB_ZERBRECHEN und VERB_EXPLODIEREN", "VERB_ZERBRECHEN und VERB_EXPLODIEREN", "ADJEKTIV_EXPLODIEREND NOUN_WAND" /* EN "breaks apart and explodes", "break apart and explode", "exploding wand" */
 };
 
 void

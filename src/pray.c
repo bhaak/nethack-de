@@ -497,7 +497,7 @@ aligntyp resp_god;
 
 	pline("SATZBEGINN %s lässt sich nicht beirren ...", align_gname(resp_god)); /* EN pline("%s is not deterred...", align_gname(resp_god)); */
 	if (u.uswallow) {
-	    pline("Ein KASUS_AKKUSATIV für PRONOMEN_PERSONAL bestimmter Desintegratorstrahl trifft KASUS_AKKUSATIV %s!", /* EN pline("A wide-angle disintegration beam aimed at you hits %s!", */
+	    pline("Ein KASUS_AKKUSATIV für PRONOMEN_PERSONAL bestimmter, breitgefächerter Desintegratorstrahl trifft KASUS_AKKUSATIV %s!", /* EN pline("A wide-angle disintegration beam aimed at you hits %s!", */
 			mon_nam(u.ustuck));
 	    if (!resists_disint(u.ustuck)) {
 		pline("SUBJECT %s VERB_VERKOHLEN zu einem Brikett!", Monnam(u.ustuck)); /* EN pline("%s fries to a crisp!", Monnam(u.ustuck)); */
@@ -505,7 +505,7 @@ aligntyp resp_god;
 	    } else
 		pline("%s seems unaffected.", Monnam(u.ustuck)); /* EN pline("%s seems unaffected.", Monnam(u.ustuck)); */ // TODO DE
 	} else {
-	    pline("Ein Desintegratorstrahl trifft KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("A wide-angle disintegration beam hits you!"); */
+	    pline("Ein breitgefächerter Desintegratorstrahl trifft KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("A wide-angle disintegration beam hits you!"); */
 
 	    /* disintegrate shield and body armor before disintegrating
 	     * the impudent mortal, like black dragon breath -3.

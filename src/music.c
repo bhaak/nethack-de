@@ -492,7 +492,7 @@ struct obj *instr;
 	if (u.uevent.uheard_tune == 2 && yn("Die Kennmelodie spielen?") == 'y') { /* EN if (u.uevent.uheard_tune == 2 && yn("Play the passtune?") == 'y') { */
 	    Strcpy(buf, tune);
 	} else {
-	    getlin("What tune are you playing? [5 notes, A-G]", buf); /* EN getlin("What tune are you playing? [5 notes, A-G]", buf); */ // TODO DE
+	    getlin("Welche Melodie MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL spielen? [5 Noten, A-G]", buf); /* EN getlin("What tune are you playing? [5 notes, A-G]", buf); */
 	    (void)mungspaces(buf);
 	    /* convert to uppercase and change any "H" to the expected "B" */
 	    for (s = buf; *s; s++) {

@@ -1129,8 +1129,8 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETSs", 1, TRUE, &youmonst); /* E
 					     "ARTIKEL_UNBESTIMMTER NOUN_TRIGGER"); /* EN "a trigger"); */
 		    if (already_seen && rn2(3)) break;
 		    pline("KAABLAMM!!!  SATZBEGINN %s %s%s SATZKLAMMER!", /* EN pline("KAABLAMM!!!  %s %s%s off!", */
-		    	    forcebungle ? "PRONOMEN_POSSESSIV ADJEKTIV_UNGESCHICKT NOUN_VERSUCH VERB_AUSLOESEN" : /* EN forcebungle ? "Your inept attempt sets" : */
-		    	    		  "ARTIKEL_BESTIMMTER NOUN_AIR_CURRENTs VERB_AUSLOESEN", /* EN "The air currents set", */
+		    	    forcebungle ? "PRONOMEN_POSSESSIV ADJEKTIV_UNGESCHICKT NOUN_VERSUCH VERB_AUSLOESEN OBJECT" : /* EN forcebungle ? "Your inept attempt sets" : */
+		    	    		  "ARTIKEL_BESTIMMTER NOUN_AIR_CURRENTs VERB_AUSLOESEN OBJECT", /* EN "The air currents set", */
 			    already_seen ? a_your[trap->madeby_u] : "",
 			    already_seen ? " NOUN_LAND_MINE" : "ihn"); /* EN already_seen ? " land mine" : "it"); */
 		} else {
