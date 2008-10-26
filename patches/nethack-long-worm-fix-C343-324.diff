@@ -15,9 +15,9 @@ diff -uwr nethack-3.4.3/src/worm.c nethack-long-worm-fix-C343-324/src/worm.c
 +    struct wseg *tail;
 +{
 +	if (flags.mon_moving)
-+	    pline("Part of the tail of %s is cut off.", mon_nam(worm));
++	    pline("Ein Teil des Schwanzes KASUS_GENITIV %s wurde abgeschnitten.", mon_nam(worm)); /* EN pline("Part of the tail of %s is cut off.", mon_nam(worm)); */
 +	else
-+	    You("cut part of the tail off of %s.", mon_nam(worm));
++	    You("VERB_SCHNEIDEN einen Teil des Schwanzes OBJECT KASUS_GENITIV %s ab.", mon_nam(worm)); /* EN You("cut part of the tail off of %s.", mon_nam(worm)); */
 +	toss_wsegs(tail, TRUE);
 +	if (worm->mhp > 1) worm->mhp /= 2;
 +}
@@ -30,9 +30,9 @@ diff -uwr nethack-3.4.3/src/worm.c nethack-long-worm-fix-C343-324/src/worm.c
      /* Sometimes the tail end dies. */
      if (rn2(3) || !(new_wnum = get_wormno())) {
 -	if (flags.mon_moving)
--	    pline("Part of the tail of %s is cut off.", mon_nam(worm));
+-	    pline("Ein Teil des Schwanzes KASUS_GENITIV %s wurde abgeschnitten.", mon_nam(worm)); /* EN pline("Part of the tail of %s is cut off.", mon_nam(worm)); */
 -	else
--	    You("cut part of the tail off of %s.", mon_nam(worm));
+-	You("VERB_SCHNEIDEN einen Teil des Schwanzes OBJECT KASUS_GENITIV %s ab.", mon_nam(worm)); /* EN You("cut part of the tail off of %s.", mon_nam(worm)); */
 -	toss_wsegs(new_tail, TRUE);
 -	if (worm->mhp > 1) worm->mhp /= 2;
 +	cutoff(worm, new_tail);
