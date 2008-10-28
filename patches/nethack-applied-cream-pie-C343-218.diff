@@ -1,7 +1,7 @@
 diff -uwr nethack-linux/src/shk.c nethack-applied-cream-pie-C343-218/src/shk.c
 --- nethack-linux/src/shk.c	2008-05-26 19:47:02.000000000 +0200
 +++ nethack-applied-cream-pie-C343-218/src/shk.c	2008-10-27 12:00:12.000000000 +0100
-@@ -833,6 +833,12 @@
+@@ -844,6 +844,12 @@
  #endif
  		}
  	}
