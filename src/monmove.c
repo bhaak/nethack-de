@@ -1128,7 +1128,7 @@ postmov:
 			if (flags.verbose && canseemon(mtmp))
 			    Norep("SUBJECT %s %s OBJECT %s ARTIKEL_BESTIMMTER NOUN_IRON_BARs hindurch.", Monnam(mtmp), /* EN Norep("%s %s %s the iron bars.", Monnam(mtmp), */
 				  /* pluralization fakes verb conjugation */
-				  makeplural(locomotion(ptr, "VERB_GEHEN")), /* EN makeplural(locomotion(ptr, "pass")), */
+				  locomotion(ptr, "VERB_GEHEN"), /* EN makeplural(locomotion(ptr, "pass")), */
 				  passes_walls(ptr) ? "durch KASUS_AKKUSATIV" : "zwischen KASUS_DATIV"); /* EN passes_walls(ptr) ? "through" : "between"); */
 		}
 

@@ -99,7 +99,7 @@ boolean pushing;
 			      what,
 			      fills_up? "VERB_FUELLEN":"VERB_FALLEN"); /* EN  */
 		    } else if (flags.soundok)
-			You_hear("ein %s Pflatschen.", lava ? " zischendes" : ""); /* EN You_hear("a%s splash.", lava ? " sizzling" : ""); */
+			You_hear("ein%s Pflatschen.", lava ? " zischendes" : ""); /* EN You_hear("a%s splash.", lava ? " sizzling" : ""); */
 		    wake_nearto(rx, ry, 40);
 		}
 

@@ -1257,7 +1257,7 @@ int magic; /* 0=Physical, otherwise skill level */
 			You("VERB_HAMPELN etwas herum."); /* EN You("flail around a little."); */
 			return 1;
 		}
-		You("VERB_ZAPPELN nicht genug Bodenhaftung zum Springen."); /* EN You("don't have enough traction to jump."); */
+		You("VERB_HABEN nicht genug Bodenhaftung zum Springen."); /* EN You("don't have enough traction to jump."); */
 		return 0;
 	} else if (!magic && near_capacity() > UNENCUMBERED) {
 		You("VERB_TRAGEN zuviel zum Springen!"); /* EN You("are carrying too much to jump!"); */
