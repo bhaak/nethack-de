@@ -22,11 +22,17 @@ download.page:
   inMenu: true
   orderInfo: 50
 
+links.page:
+  title: Links
+  htmltitle: 'NetHack-De: Links'
+  inMenu: true
+  orderInfo: 60
+
 english.page:
   title: English
   htmltitle: 'NetHack-De: English Summary'
   inMenu: true
-  orderInfo: 60
+  orderInfo: 70
 
 ---
 

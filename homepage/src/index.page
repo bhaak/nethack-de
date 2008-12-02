@@ -2,7 +2,7 @@ NetHack-De ist eine deutsche Übersetzung des Spieles "NetHack":http://www.netha
 
 Im Moment ist die Übersetzung noch in Arbeit und deshalb unvollständig.
 
-Auf der "Statusseite":status.html wird der aktuelle Stand der Übersetzung angezeigt.
+Auf der "Statusseite":status.html kann der aktuelle Stand der Übersetzung eingesehen werden.
 
 <hr />
 
@@ -10,7 +10,7 @@ h3. News
 
 h4(#news-2008-10-01). 1. Okt 2008: NetHack-De online spielen!
 
-* Ab sofort gibt es unter <a href="http://slashem.de/">http://slashem.de/</a> die Möglichkeit, NetHack-De online zu spielen!
+* Ab sofort gibt es unter <a href="http://slashem.de/">http://slashem.de/</a> die Möglichkeit, NetHack-De online zu spielen per <code>ssh nethack@slashem.de</code> mit dem Passwort <code>fed</code>!
 
 h4(#news-2008-09-07). 7. Sep 2008: Alpha-Release NetHack-De 3.4.3-20080907a
 

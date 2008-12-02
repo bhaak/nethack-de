@@ -13,7 +13,8 @@ archiv:
 	echo "Archiv erstellt"
 
 sourceforge: webgen archiv
-	scp $(ARCHIV) bhaak@shell.sourceforge.net:~
-	echo "Archiv nach Sourceforge kopiert"
+	#scp $(ARCHIV) bhaak@shell.sourceforge.net:~
+	scp -r output/* bhaak,nethack-de@web.sourceforge.net:htdocs/
+	echo "Homepage nach Sourceforge kopiert"
 
 .PHONY: webgen archiv sourceforge
