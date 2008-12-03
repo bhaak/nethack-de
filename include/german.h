@@ -70,6 +70,11 @@ extern struct verb_imperativ_struct verben_imperativ[];
 
 extern int ihrzen;
 
+#ifndef TRUE
+# define TRUE    (1)
+# define FALSE   (0)
+#endif
+
 char* german(const char *line);
 void german2meta(const char *str, char *result);
 struct substantiv_oder_adjekiv_struct *get_meta_substantiv_with(const char *wort, char *with);
