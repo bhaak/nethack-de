@@ -942,7 +942,7 @@ pleased(g_align)
 
 	    if (Blind)
 		You("VERB_SPUEREN die Macht von %s.", u_gname()); /* EN You_feel("the power of %s.", u_gname()); */
-	    else Dich("umgibt %s NOUN_AURA.", /* EN else You("are surrounded by %s aura.", */
+	    else Dich("umgibt SUBJECT_IM_SATZ %s NOUN_AURA.", /* EN else You("are surrounded by %s aura.", */
 		     an(hcolor(NH_LIGHT_BLUE)));
 	    for(otmp=invent; otmp; otmp=otmp->nobj) {
 		if (otmp->cursed) {
