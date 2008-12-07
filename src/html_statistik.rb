@@ -16,7 +16,7 @@ def ausgabe(en, de, prozent)
 	end
 end
 
-puts "<style>"
+puts '<style type="text/css">'
 puts "  .nethack table { border-collapse: collapse }"
 puts "  .nethack th, .nethack td {  padding: 0.2em 0.5em 0.2em 0.5em;"
 puts "                              border: 1px solid black }"
