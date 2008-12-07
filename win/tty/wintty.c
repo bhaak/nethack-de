@@ -127,7 +127,7 @@ static char obuf[BUFSIZ];	/* BUFSIZ is defined in stdio.h */
 #endif
 
 static char winpanicstr[] = "Bad window id %d";
-char defmorestr[] = "--More--";
+char defmorestr[] = "--Weiter--"; /* EN char defmorestr[] = "--More--"; */
 
 #ifdef CLIPPING
 # if defined(USE_TILES) && defined(MSDOS)
@@ -2261,7 +2261,7 @@ tty_wait_synch()
     } else {
 	tty_display_nhwindow(WIN_MAP, FALSE);
 	if(ttyDisplay->inmore) {
-	    addtopl("--More--");
+	    addtopl("--Weiter--"); /* EN addtopl("--More--"); */
 	    (void) fflush(stdout);
 	} else if(ttyDisplay->inread > program_state.gameover) {
 	    /* this can only happen if we were reading and got interrupted */
