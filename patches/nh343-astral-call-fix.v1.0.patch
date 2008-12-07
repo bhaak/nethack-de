@@ -1,7 +1,7 @@
 diff -uwr nethack-linux/include/extern.h nethack-astral-call-fix/include/extern.h
 --- nethack-linux/include/extern.h	2008-05-26 19:47:02.000000000 +0200
 +++ nethack-astral-call-fix/include/extern.h	2008-11-13 16:09:16.000000000 +0100
-@@ -1576,6 +1576,7 @@
+@@ -1589,6 +1589,7 @@
  E const char *FDECL(a_gname_at, (XCHAR_P x,XCHAR_P y));
  E const char *FDECL(align_gname, (ALIGNTYP_P));
  E const char *FDECL(halu_gname, (ALIGNTYP_P));
@@ -12,7 +12,7 @@ diff -uwr nethack-linux/include/extern.h nethack-astral-call-fix/include/extern.
 diff -uwr nethack-linux/src/pray.c nethack-astral-call-fix/src/pray.c
 --- nethack-linux/src/pray.c	2008-05-26 19:47:02.000000000 +0200
 +++ nethack-astral-call-fix/src/pray.c	2008-11-13 16:09:16.000000000 +0100
-@@ -1788,12 +1788,21 @@
+@@ -1792,12 +1792,21 @@
  halu_gname(alignment)
  aligntyp alignment;
  {
@@ -40,18 +40,22 @@ diff -uwr nethack-linux/src/pray.c nethack-astral-call-fix/src/pray.c
 diff -uwr nethack-linux/src/priest.c nethack-astral-call-fix/src/priest.c
 --- nethack-linux/src/priest.c	2008-05-26 19:47:02.000000000 +0200
 +++ nethack-astral-call-fix/src/priest.c	2008-11-13 16:33:07.000000000 +0100
-@@ -274,7 +274,14 @@
- 				Strcat(pname, "priest ");
+@@ -285,9 +285,18 @@
+ 				Strcat(pname, "PRIEST "); /* EN Strcat(pname, "priest "); */ /* NOUN_HIGH_PRIEST, NOUN_PRIEST */
  		}
- 		Strcat(pname, "of ");
+ #ifdef GERMAN
 +		/* Astral Call bugfix */
++		int godname_doubtful = FALSE;
 +		if (mon->data == &mons[PM_HIGH_PRIEST] && !Hallucination &&
 +		            Is_astralevel(&u.uz) && distu(mon->mx, mon->my) > 2) {
-+			Strcat(pname, rnd_gname(str2role((char*)urole.name.m)));
-+			Strcat(pname, "?");
++			tmp_gname = rnd_gname(str2role((char*)urole.name.m));
++			godname_doubtful = TRUE;
 +		} else {
- 		Strcat(pname, halu_gname((int)EPRI(mon)->shralign));
+ 		  tmp_gname = halu_gname((int)EPRI(mon)->shralign);
 +		}
- 		return(pname);
- 	}
- 	/* use emin instead of epri */
+ 		Strcat(pname, gott_weiblich(tmp_gname) ? "der " : "des ");
+ 		Strcat(pname, tmp_gname);
++		Strcat(pname, godname_doubtful ? "?" : "");
+ #else
+ 		Strcat(pname, "of ");
+ 		Strcat(pname, halu_gname((int)EPRI(mon)->shralign));

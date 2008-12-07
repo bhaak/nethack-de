@@ -286,14 +286,17 @@ char *pname;		/* caller-supplied output buffer */
 		}
 #ifdef GERMAN
 		/* Astral Call bugfix */
+		int godname_doubtful = FALSE;
 		if (mon->data == &mons[PM_HIGH_PRIEST] && !Hallucination &&
 		            Is_astralevel(&u.uz) && distu(mon->mx, mon->my) > 2) {
 			tmp_gname = rnd_gname(str2role((char*)urole.name.m));
+			godname_doubtful = TRUE;
 		} else {
 		  tmp_gname = halu_gname((int)EPRI(mon)->shralign);
 		}
 		Strcat(pname, gott_weiblich(tmp_gname) ? "der " : "des ");
 		Strcat(pname, tmp_gname);
+		Strcat(pname, godname_doubtful ? "?" : "");
 #else
 		Strcat(pname, "of ");
 		Strcat(pname, halu_gname((int)EPRI(mon)->shralign));
