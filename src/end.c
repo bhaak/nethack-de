@@ -790,7 +790,7 @@ die:
 /* changing kilbuf really changes killer. we do it this way because
    killer is declared a (const char *)
 */
-	if (u.uhave.amulet) Strcat(kilbuf, " (mit dem Amulet)"); /* EN if (u.uhave.amulet) Strcat(kilbuf, " (with the Amulet)"); */
+	if (u.uhave.amulet) Strcat(kilbuf, " (mit dem Amulett)"); /* EN if (u.uhave.amulet) Strcat(kilbuf, " (with the Amulet)"); */
 	else if (how == ESCAPED) {
 	    if (Is_astralevel(&u.uz))	/* offered Amulet to wrong deity */
 		Strcat(kilbuf, " (in himmlisch/überirdisch Blamage/Schande/Schmach/Ungnade)"); /* EN Strcat(kilbuf, " (in celestial disgrace)"); */ // TODO DE
