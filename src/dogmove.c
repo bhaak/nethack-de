@@ -746,7 +746,7 @@ newdogpos:
 		remove_monster(omx, omy);
 		place_monster(mtmp, nix, niy);
 		if (cursemsg[chi] && (cansee(omx,omy) || cansee(nix,niy)))
-			pline("%s moves only reluctantly.", Monnam(mtmp)); /* EN pline("%s moves only reluctantly.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_BEWEGEN sich nur widerwillig.", Monnam(mtmp)); /* EN pline("%s moves only reluctantly.", Monnam(mtmp)); */
 		for (j=MTSZ-1; j>0; j--) mtmp->mtrack[j] = mtmp->mtrack[j-1];
 		mtmp->mtrack[0].x = omx;
 		mtmp->mtrack[0].y = omy;
