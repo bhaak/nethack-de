@@ -1,0 +1,48 @@
+diff -uwr nethack/dat/sokoban.des nethack-randomized-sokoban-prize/dat/sokoban.des
+--- nethack/dat/sokoban.des	2008-05-26 19:47:02.000000000 +0200
++++ nethack-randomized-sokoban-prize/dat/sokoban.des	2008-11-13 14:47:12.000000000 +0100
+@@ -525,7 +525,7 @@
+ DOOR:closed,(17,13)
+ DOOR:closed,(17,15)
+ REGION:(18,10,22,16),lit,"zoo",filled,true
+-OBJECT:'(',"bag of holding",place[0]
++#OBJECT:'(',"bag of holding",place[0]
+ ENGRAVING:place[0],burn,"Elbereth"
+ 
+ 
+@@ -619,5 +619,5 @@
+ DOOR:closed,(17,12)
+ DOOR:closed,(17,14)
+ REGION:(18,09,22,15),lit,"zoo",filled,true
+-OBJECT:'"',"amulet of reflection",place[0]
++#OBJECT:'"',"amulet of reflection",place[0]
+ ENGRAVING:place[0],burn,"Elbereth"
+diff -uwr nethack/src/mkmaze.c nethack-randomized-sokoban-prize/src/mkmaze.c
+--- nethack/src/mkmaze.c	2008-05-26 19:47:02.000000000 +0200
++++ nethack-randomized-sokoban-prize/src/mkmaze.c	2008-11-13 14:47:49.000000000 +0100
+@@ -406,9 +406,24 @@
+     }
+ 
+ 	/* KMH -- Sokoban levels */
+-	if(In_sokoban(&u.uz))
++	if(In_sokoban(&u.uz)) {
+ 		sokoban_detect();
+ 
++		/* randomize Sokoban prize */
++		int x,y;
++		for (x = 1; x < COLNO; x++) {
++			for(y = 1; y < ROWNO; y++) {
++				register struct engr *ep = engr_at(x,y);
++				/* Sokoban top levels have no random, burned engravings */
++				if (ep && ep->engr_txt[0] && ep->engr_type == BURN &&
++				    (!strcmp(ep->engr_txt, "Elbereth"))) {
++						mksobj_at((rn2(2)) ? BAG_OF_HOLDING : AMULET_OF_REFLECTION,
++						          x, y, TRUE, FALSE);
++				}
++			}
++		}
++	}
++
+     /* Still need to add some stuff to level file */
+     if (Is_medusa_level(&u.uz)) {
+ 	struct obj *otmp;
