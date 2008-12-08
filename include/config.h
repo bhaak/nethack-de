@@ -343,7 +343,7 @@ typedef unsigned char	uchar;
 #define EXP_ON_BOTL	/* Show experience on bottom line */
 #define SCORE_ON_BOTL /* added by Gary Erickson (erickson@ucivax) */
 
-/* #define REALTIME_ON_BOTL */  /* Show elapsed time on bottom line.  Note:
+#define REALTIME_ON_BOTL	/* Show elapsed time on bottom line.  Note:
                                  * this breaks savefile compatibility. */
 
 /* The options in this section require the extended logfile support */
