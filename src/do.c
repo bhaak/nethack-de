@@ -1282,7 +1282,7 @@ boolean at_stairs, falling, portal;
 #ifdef MICRO
 		display_nhwindow(WIN_MESSAGE, FALSE);
 #endif
-		You_hear("groans and moans everywhere sind allgegenw‰rtig."); /* EN You_hear("groans and moans everywhere."); */ // TODO DE
+		You_hear("ein allgegenw‰rtiges Heulen und Z‰hneklappern."); /* EN You_hear("groans and moans everywhere."); */
 	    } else pline("Es ist heiﬂ hier.  SUBJECT PRONOMEN_PERSONAL VERB_SMELL Rauch ..."); /* EN } else pline("It is hot here.  You smell smoke..."); */
 	}
 

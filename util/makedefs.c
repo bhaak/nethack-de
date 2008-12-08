@@ -606,7 +606,7 @@ do_date()
 	{
 	struct tm *tm = localtime((time_t *) &clocktim);
 	Fprintf(ofp,"#define AMIGA_VERSION_STRING ");
-	Fprintf(ofp,"\"\\0$VER: NetHack %d.%d.%d (%d.%d.%d)\"\n",
+	Fprintf(ofp,"\"\\0$VER: NetHack-De %d.%d.%d (%d.%d.%d)\"\n", /* EN Fprintf(ofp,"\"\\0$VER: NetHack %d.%d.%d (%d.%d.%d)\"\n", */
 		VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL,
 		tm->tm_mday, tm->tm_mon+1, tm->tm_year+1900);
 	}
@@ -624,172 +624,172 @@ build_savebones_compat_string()
 	unsigned long uver = VERSION_COMPATIBILITY;
 #endif
 	Strcpy(save_bones_compat_buf,
-		"save and bones files accepted from version");
+		"save and bones files accepted from version"); /* EN "save and bones files accepted from version"); */ // TODO DE
 #ifdef VERSION_COMPATIBILITY
-	Sprintf(eos(save_bones_compat_buf), "s %lu.%lu.%lu through %d.%d.%d",
+	Sprintf(eos(save_bones_compat_buf), "s %lu.%lu.%lu through %d.%d.%d", /* EN Sprintf(eos(save_bones_compat_buf), "s %lu.%lu.%lu through %d.%d.%d", */ // TODO DE
 		((uver & 0xFF000000L) >> 24), ((uver & 0x00FF0000L) >> 16),
 		((uver & 0x0000FF00L) >> 8),
 		VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
 #else
-	Sprintf(eos(save_bones_compat_buf), " %d.%d.%d only",
+	Sprintf(eos(save_bones_compat_buf), " %d.%d.%d only", /* EN Sprintf(eos(save_bones_compat_buf), " %d.%d.%d only", */ // TODO DE
 		VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
 #endif
 }
 
 static const char *build_opts[] = {
 #ifdef AMIGA_WBENCH
-		"Amiga WorkBench support",
+		"Amiga WorkBench support", /* EN "Amiga WorkBench support", */ // TODO DE
 #endif
 #ifdef ANSI_DEFAULT
-		"ANSI default terminal",
+		"ANSI default terminal", /* EN "ANSI default terminal", */ // TODO DE
 #endif
 #ifdef AUTOPICKUP_EXCEPTIONS
-		"autopickup_exceptions",
+		"autopickup_exceptions", /* EN "autopickup_exceptions", */ // TODO DE
 #endif
 #ifdef TEXTCOLOR
-		"color",
+		"Farbe", /* EN "color", */
 #endif
 #ifdef COM_COMPL
-		"command line completion",
+		"command line completion", /* EN "command line completion", */ // TODO DE
 #endif
 #ifdef COMPRESS
-		"data file compression",
+		"data file compression", /* EN "data file compression", */ // TODO DE
 #endif
 #ifdef DLB
-		"data librarian",
+		"data librarian", /* EN "data librarian", */ // TODO DE
 #endif
 #ifdef WIZARD
-		"debug mode",
+		"Debug-Modus", /* EN "debug mode", */
 #endif
 #ifdef ELBERETH
 		"Elbereth",
 #endif
 #ifdef EXP_ON_BOTL
-		"experience points on status line",
+		"experience points on status line", /* EN "experience points on status line", */ // TODO DE
 #endif
 #ifdef MFLOPPY
-		"floppy drive support",
+		"floppy drive support", /* EN "floppy drive support", */ // TODO DE
 #endif
 #ifdef GOLDOBJ
-		"gold object in inventories",
+		"gold object in inventories", /* EN "gold object in inventories", */ // TODO DE
 #endif
 #ifdef INSURANCE
-		"insurance files for recovering from crashes",
+		"insurance files for recovering from crashes", /* EN "insurance files for recovering from crashes", */ // TODO DE
 #endif
 #ifdef KOPS
-		"Keystone Kops",
+		"Keystone Kops", /* EN "Keystone Kops", */ // TODO DE
 #endif
 #ifdef HOLD_LOCKFILE_OPEN
-		"exclusive lock on level 0 file",
+		"exclusive lock on level 0 file", /* EN "exclusive lock on level 0 file", */ // TODO DE
 #endif
 #ifdef LOGFILE
-		"log file",
+		"Log-Datei", /* EN "log file", */
 #endif
 #ifdef MAIL
-		"mail daemon",
+		"Briefdämon", /* EN "mail daemon", */
 #endif
 #ifdef GNUDOS
-		"MSDOS protected mode",
+		"MSDOS protected mode", /* EN "MSDOS protected mode", */ // TODO DE
 #endif
 #ifdef NEWS
-		"news file",
+		"news file", /* EN "news file", */ // TODO DE
 #endif
 #ifdef OVERLAY
 # ifdef MOVERLAY
-		"MOVE overlays",
+		"MOVE overlays", /* EN "MOVE overlays", */ // TODO DE
 # else
 #  ifdef VROOMM
-		"VROOMM overlays",
+		"VROOMM overlays", /* EN "VROOMM overlays", */ // TODO DE
 #  else
-		"overlays",
+		"overlays", /* EN "overlays", */ // TODO DE
 #  endif
 # endif
 #endif
 #ifdef REDO
-		"redo command",
+		"redo command", /* EN "redo command", */ // TODO DE
 #endif
 #ifdef REINCARNATION
-		"rogue level",
+		"rogue level", /* EN "rogue level", */ // TODO DE
 #endif
 #ifdef STEED
-		"saddles and riding",
+		"saddles and riding", /* EN "saddles and riding", */ // TODO DE
 #endif
 #ifdef SCORE_ON_BOTL
-		"score on status line",
+		"score on status line", /* EN "score on status line", */ // TODO DE
 #endif
 #ifdef CLIPPING
-		"screen clipping",
+		"screen clipping", /* EN "screen clipping", */ // TODO DE
 #endif
 #ifdef NO_TERMS
 # ifdef MAC
-		"screen control via mactty",
+		"screen control via mactty", /* EN "screen control via mactty", */ // TODO DE
 # endif
 # ifdef SCREEN_BIOS
-		"screen control via BIOS",
+		"screen control via BIOS", /* EN "screen control via BIOS", */ // TODO DE
 # endif
 # ifdef SCREEN_DJGPPFAST
-		"screen control via DJGPP fast",
+		"screen control via DJGPP fast", /* EN "screen control via DJGPP fast", */ // TODO DE
 # endif
 # ifdef SCREEN_VGA
-		"screen control via VGA graphics",
+		"screen control via VGA graphics", /* EN "screen control via VGA graphics", */ // TODO DE
 # endif
 # ifndef MSWIN_GRAPHICS
 #  ifdef WIN32CON
-		"screen control via WIN32 console I/O",
+		"screen control via WIN32 console I/O", /* EN "screen control via WIN32 console I/O", */ // TODO DE
 #  endif
 # endif
 #endif
 #ifdef SEDUCE
-		"seduction",
+		"seduction", /* EN "seduction", */ // TODO DE
 #endif
 #ifdef SHELL
-		"shell command",
+		"shell command", /* EN "shell command", */ // TODO DE
 #endif
 #ifdef SINKS
-		"sinks",
+		"sinks", /* EN "sinks", */ // TODO DE
 #endif
 #ifdef SUSPEND
-		"suspend command",
+		"suspend command", /* EN "suspend command", */ // TODO DE
 #endif
 #ifdef TERMINFO
-		"terminal info library",
+		"terminal info library", /* EN "terminal info library", */ // TODO DE
 #else
 # if defined(TERMLIB) || ((!defined(MICRO) && !defined(WIN32)) && defined(TTY_GRAPHICS))
-		"terminal capability library",
+		"terminal capability library", /* EN "terminal capability library", */ // TODO DE
 # endif
 #endif
 #ifdef TIMED_DELAY
-		"timed wait for display effects",
+		"timed wait for display effects", /* EN "timed wait for display effects", */ // TODO DE
 #endif
 #ifdef TOURIST
-		"tourists",
+		"tourists", /* EN "tourists", */ // TODO DE
 #endif
 #ifdef USER_SOUNDS
 # ifdef USER_SOUNDS_REGEX
-		"user sounds via regular expressions",
+		"user sounds via regular expressions", /* EN "user sounds via regular expressions", */ // TODO DE
 # else
-		"user sounds via pmatch",
+		"user sounds via pmatch", /* EN "user sounds via pmatch", */ // TODO DE
 # endif
 #endif
 #ifdef PREFIXES_IN_USE
-		"variable playground",
+		"variable playground", /* EN "variable playground", */ // TODO DE
 #endif
 #ifdef VISION_TABLES
-		"vision tables",
+		"vision tables", /* EN "vision tables", */ // TODO DE
 #endif
 #ifdef WALLIFIED_MAZE
-		"walled mazes",
+		"walled mazes", /* EN "walled mazes", */ // TODO DE
 #endif
 #ifdef ZEROCOMP
-		"zero-compressed save files",
+		"lauflängenkomprimierte Spielstände", /* EN "zero-compressed save files", */
 #endif
 		save_bones_compat_buf,
-		"basic NetHack features"
+		"NetHack-Standard-Features" /* EN "basic NetHack features" */
 	};
 
 static const char *window_opts[] = {
 #ifdef TTY_GRAPHICS
-		"traditional tty-based graphics",
+		"traditional tty-based graphics", /* EN "traditional tty-based graphics", */ // TODO DE
 #endif
 #ifdef X11_GRAPHICS
 		"X11",
@@ -837,9 +837,9 @@ do_options()
 	build_savebones_compat_string();
 	Fprintf(ofp,
 #ifdef BETA
-		"\n    NetHack version %d.%d.%d [beta]\n",
+		"\n    NetHack-De Version %d.%d.%d [beta]\n", /* EN "\n    NetHack version %d.%d.%d [beta]\n", */
 #else
-		"\n    NetHack version %d.%d.%d\n",
+		"\n    NetHack-De Version %d.%d.%d\n", /* EN "\n    NetHack version %d.%d.%d\n", */
 #endif
 		VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
 
@@ -856,7 +856,7 @@ do_options()
 	    Fprintf(ofp,(i < SIZE(build_opts) - 1) ? "," : "."),  length++;
 	}
 
-	Fprintf(ofp,"\n\nSupported windowing systems:\n");
+	Fprintf(ofp,"\n\nUnterstützte Anzeigesysteme:\n"); /* EN Fprintf(ofp,"\n\nSupported windowing systems:\n"); */
 
 	length = COLNO + 1;	/* force 1st item onto new line */
 	for (i = 0; i < SIZE(window_opts) - 1; i++) {
@@ -868,7 +868,7 @@ do_options()
 	    Fprintf(ofp,"%s", str),  length += strlen(str);
 	    Fprintf(ofp, ","),  length++;
 	}
-	Fprintf(ofp, "\n%swith a default of %s.", indent, DEFAULT_WINDOW_SYS);
+	Fprintf(ofp, "\n%sStandardeinstellung: %s.", indent, DEFAULT_WINDOW_SYS); /* EN Fprintf(ofp, "\n%swith a default of %s.", indent, DEFAULT_WINDOW_SYS); */
 	Fprintf(ofp,"\n\n");
 
 	Fclose(ofp);

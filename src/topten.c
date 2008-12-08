@@ -360,8 +360,7 @@ int how;
 	}
 #endif /* LOGFILE */
 
-	//if (wizard || discover) {
-	if (0) { // TODO DE
+	if (wizard || discover) {
 	    if (how != PANICKED) HUP {
 		char pbuf[BUFSZ];
 		topten_print("");
