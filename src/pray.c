@@ -1291,6 +1291,11 @@ dosacrifice()
 		done(ESCAPED);
 	    } else { /* super big win */
 		adjalign(10);
+
+#ifdef RECORD_ACHIEVE
+                achieve.ascended = 1;
+#endif
+
 pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SONNEN OBJECT PRONOMEN_PERSONAL in göttlichem Lichte ..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */
 		godvoice(altaralign, flags.female ? "Herzlichen Glückwunsch, Sterbliche!" : "Herzlichen Glückwunsch, Sterblicher!"); /* EN godvoice(altaralign, "Congratulations, mortal!"); */
 		display_nhwindow(WIN_MESSAGE, FALSE);

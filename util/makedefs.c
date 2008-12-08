@@ -661,6 +661,9 @@ static const char *build_opts[] = {
 #ifdef WIZARD
 		"Debug-Modus", /* EN "debug mode", */
 #endif
+#ifdef REALTIME_ON_BOTL
+                "vergangene Zeit auf Statuszeile", /* EN "elapsed time on status line", */
+#endif
 #ifdef ELBERETH
 		"Elbereth",
 #endif
@@ -684,6 +687,9 @@ static const char *build_opts[] = {
 #endif
 #ifdef LOGFILE
 		"Log-Datei", /* EN "log file", */
+#endif
+#ifdef XLOGFILE
+                "erweiterte Log-Datei", /* EN "extended log file", */
 #endif
 #ifdef MAIL
 		"Briefdämon", /* EN "mail daemon", */
@@ -782,6 +788,27 @@ static const char *build_opts[] = {
 #endif
 #ifdef ZEROCOMP
 		"lauflängenkomprimierte Spielstände", /* EN "zero-compressed save files", */
+#endif
+#ifdef RECORD_TURNS
+                "record turns in xlogfile", /* EN "record turns in xlogfile", */ // TODO DE
+#endif
+#ifdef RECORD_CONDUCT
+                "record conduct in xlogfile", /* EN "record conduct in xlogfile", */ // TODO DE
+#endif
+#ifdef RECORD_ACHIEVE
+                "record major achievements in xlogfile", /* EN "record major achievements in xlogfile", */ // TODO DE
+#endif
+#ifdef RECORD_REALTIME
+                "record real time in xlogfile", /* EN "record real time in xlogfile", */ // TODO DE
+#endif
+#ifdef RECORD_START_END_TIME
+                "record starting and ending time in xlogfile", /* EN "record starting and ending time in xlogfile", */ // TODO DE
+#endif
+#ifdef RECORD_GENDER0
+                "record initial gender in xlogfile", /* EN "record initial gender in xlogfile", */ // TODO DE
+#endif
+#ifdef RECORD_ALIGN0
+                "record initial alignment in xlogfile", /* EN "record initial alignment in xlogfile", */ // TODO DE
 #endif
 		save_bones_compat_buf,
 		"NetHack-Standard-Features" /* EN "basic NetHack features" */
