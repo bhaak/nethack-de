@@ -2762,6 +2762,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schnapses", "NOUN_POT_BOOZE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schnaps", "NOUN_POT_BOOZE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Schnappses", "NOUN_POT_BOOZE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schnapps", "NOUN_POT_BOOZE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Fusels", "NOUN_POT_BOOZE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fusel", "NOUN_POT_BOOZE", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -3705,6 +3708,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Wegteleportierens", "NOUN_SPE_TELEPORT_AWAY", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wegteleportieren", "NOUN_SPE_TELEPORT_AWAY", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Teleportation", "NOUN_SPE_TELEPORT_AWAY", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Haustierbeschwörung", "NOUN_SPE_CREATE_FAMILIAR", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Haustierbeschwörungen", "NOUN_SPE_CREATE_FAMILIARs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -7440,8 +7445,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Hippokrates", "NOUN_HIPPOCRATES", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hippokrates'", "NOUN_HIPPOCRATES", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"König Karl", "NOUN_KING_ARTHUR", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"König Karls", "NOUN_KING_ARTHUR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"König Artus", "NOUN_KING_ARTHUR", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"König Artus'", "NOUN_KING_ARTHUR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Großmeisters", "NOUN_GRAND_MASTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Großmeister", "NOUN_GRAND_MASTER", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7882,6 +7887,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Helm", "NOUN_HELMET", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Helme", "NOUN_HELMETs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Helmen", "NOUN_HELMETs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Saftes", "NOUN_SAFT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Saft", "NOUN_SAFT", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Säfte", "NOUN_SAFTs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Säften", "NOUN_SAFTs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Schildes", "NOUN_SHIELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schild", "NOUN_SHIELD", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

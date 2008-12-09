@@ -227,7 +227,7 @@ boolean juice;	/* whether or not to append " juice" to the name */
     else
 	fruit_nam = pl_fruit;	/* use it as is */
 
-    Sprintf(buf, "%s%s", makesingular(fruit_nam), juice ? " juice" : ""); /* EN Sprintf(buf, "%s%s", makesingular(fruit_nam), juice ? " juice" : ""); */ // TODO DE
+    Sprintf(buf, "%s%s", makesingular(fruit_nam), juice ? "-NOUN_SAFT" : ""); /* EN Sprintf(buf, "%s%s", makesingular(fruit_nam), juice ? " juice" : ""); */
     return buf;
 }
 

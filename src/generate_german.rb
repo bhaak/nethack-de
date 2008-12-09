@@ -2046,7 +2046,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ICE_BOX", "Eisbox", "", "Eisbox", "en", "feminin"),
     dekliniere_substantiv("NOUN_SACK", "Sack", "es", "Säck", "e", "maskulin"),
     dekliniere_substantiv("NOUN_OILSKIN_SACK","Ölzeugbeutel", "s", "Ölzeugbeutel", "", "maskulin"),  # Wachstuch, Oilskin, Oelzeug, Regenhaut
-    dekliniere_nominalphrase("NOUN_BAG_OF_HOLDING", "Nimmervoll", "Beutel","s","Beutel","","maskulin"),
+    dekliniere_nominalphrase("NOUN_BAG_OF_HOLDING", "Nimmervoll", "Beutel","s","Beutel","","maskulin"), # Beutel der Verstauung
     dekliniere_substantiv("NOUN_BAG_OF_TRICKS", "Trickbeutel", "s", "Trickbeutel","","maskulin"),  # netzhack: Wundertüte
     dekliniere_substantiv("NOUN_SKELETON_KEY", "Passepartout", "s", "Passepartout", "", "maskulin"),
     dekliniere_substantiv("NOUN_SKELETON_KEY", "Generalschlüssel", "s", "Generalschlüssel", "", "maskulin"),
@@ -2186,6 +2186,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_POT_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"), 
     dekliniere_substantiv("NOUN_POT_POLYMORPH", "Polymorphie", "", "", "en", "feminin"), 
     dekliniere_substantiv("NOUN_POT_BOOZE", "Schnaps", "es", "", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_POT_BOOZE", "Schnapps", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_POT_BOOZE", "Fusel", "s", "", "", "maskulin"),
     #dekliniere_substantiv("NOUN_POT_SICKNESS", "Übelkeit", "", "Übelkeit", "en", "feminin"), # Übelkeit ?
     dekliniere_substantiv("NOUN_POT_FRUIT_JUICE", "Fruchtsaft", "es", "", "e", "maskulin"),
@@ -2315,6 +2316,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SPE_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SPE_POLYMORPH", "Polymorphie", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_SPE_TELEPORT_AWAY", "Wegteleportieren", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_SPE_TELEPORT_AWAY", "Teleportation", "", "", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SPE_CREATE_FAMILIAR", "Haustierbeschwörung", "", "Haustierbeschwörung", "en", "feminin"), # ????beschwörung # IMPROVE ME, gefällt mir nicht so gut
     dekliniere_substantiv("NOUN_SPE_CANCELLATION", "Löschung", "", "Löschung", "en", "feminin", "s"),     # Annullierung, Entwertung, Löschung, Widerruf
     dekliniere_substantiv("NOUN_SPE_PROTECTION", "Schutz", "es", "Schutz", "e", "maskulin"),
@@ -2893,7 +2895,7 @@ def ausgabe_nouns
     dekliniere_eigenname("NOUN_EARENDIL","Eärendil","maskulin"),
     dekliniere_eigenname("NOUN_ELWING","Elwing","feminin"),
     dekliniere_eigenname("NOUN_HIPPOCRATES","Hippokrates","maskulin"),
-    dekliniere_eigenname("NOUN_KING_ARTHUR","König Karl","maskulin"),
+    dekliniere_eigenname("NOUN_KING_ARTHUR","König Artus","maskulin"),
     dekliniere_substantiv("NOUN_GRAND_MASTER", "Großmeister", "s", "Großmeister", "", "maskulin"), 
     # dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
     dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin"),
@@ -3048,6 +3050,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GLOVES", "Handschuh", "es", "Handschuh", "e", "maskulin"),
     dekliniere_substantiv("NOUN_CLOAK", "Mantel", "s", "Mäntel", "", "maskulin"),
     dekliniere_substantiv("NOUN_HELMET", "Helm", "es", "Helm", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SAFT", "Saft", "es", "Säft", "e", "maskulin"), 
     dekliniere_substantiv("NOUN_SHIELD", "Schild", "es", "Schild", "e", "maskulin"), 
     #dekliniere_substantiv("NOUN_STONE", "Stein", "es", "Stein", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SWORD", "Schwert", "es", "Schwert", "er", "neutrum"),

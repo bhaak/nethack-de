@@ -572,8 +572,8 @@ peffects(otmp)
 		else
 		    pline(Hallucination ?
 		      "This tastes like 10%% real %s%s all-natural beverage." : /* EN "This tastes like 10%% real %s%s all-natural beverage." : */ // TODO DE
-				"This tastes like %s%s.", /* EN "This tastes like %s%s.", */ // TODO DE
-			  otmp->odiluted ? "reconstituted " : "", /* EN otmp->odiluted ? "reconstituted " : "", */ // TODO DE
+				"Das schmeckt wie %s%s.", /* EN "This tastes like %s%s.", */
+			  otmp->odiluted ? "ADJEKTIV_WIEDERAUFBEREITET " : "", /* EN otmp->odiluted ? "reconstituted " : "", */
 			  fruitname(TRUE));
 		if (otmp->otyp == POT_FRUIT_JUICE) {
 		    u.uhunger += (otmp->odiluted ? 5 : 10) * (2 + bcsign(otmp));
@@ -664,7 +664,7 @@ peffects(otmp)
 	case POT_SICKNESS:
 		pline("Wuah!  Das Zeug schmeckt giftig."); /* EN pline("Yecch!  This stuff tastes like poison."); */
 		if (otmp->blessed) {
-		    pline("(Aber in Wirklichkeit war es leicht abgestandener %s.)", /* EN pline("(But in fact it was mildly stale %s.)", */ // TODO DE
+		    pline("(Aber eigentlich war es nur leicht SUBJECT_IM_SATZ ADJEKTIV_ABGESTANDEN %s.)", /* EN pline("(But in fact it was mildly stale %s.)", */
 			  fruitname(TRUE));
 		    if (!Role_if(PM_HEALER)) {
 			/* NB: blessed otmp->fromsink is not possible */
@@ -673,7 +673,7 @@ peffects(otmp)
 		} else {
 		    if(Poison_resistance)
 			pline(
-			  "(But in fact it was biologically contaminated %s.)", /* EN "(But in fact it was biologically contaminated %s.)", */ // TODO DE
+			  "(Aber eigentlich war es nur biologisch SUBJECT_IM_SATZ ADJEKTIV_KONTAMINIERT %s.)", /* EN "(But in fact it was biologically contaminated %s.)", */
 			      fruitname(TRUE));
 		    if (Role_if(PM_HEALER))
 			pline("Zum Glück VERB_SEIN PRONOMEN_PERSONAL dagegen geimpft."); /* EN pline("Fortunately, you have been immunized."); */
@@ -748,7 +748,7 @@ peffects(otmp)
 			You("VERB_BEWEGEN OBJECT PRONOMEN_PERSONAL plötzlich %sschneller.", /* EN You("are suddenly moving %sfaster.", */
 				Fast ? "" : "viel "); /* EN Fast ? "" : "much "); */
 		else {
-			Your("%s get new energy.", /* EN Your("%s get new energy.", */ // TODO DE
+			Your("%s tanken neue Energie.", /* EN Your("%s get new energy.", */
 				makeplural(body_part(LEG)));
 			unkn++;
 		}
@@ -1586,7 +1586,7 @@ dodip()
 				if (useeit)
 				    pline("SUBJECT %s %s %s.", /* EN pline("%s %s %s.", */
 					  Your_buf,
-					  aobjnam(obj, "softly glow"), /* EN aobjnam(obj, "softly glow"), */ // TODO DE
+					  aobjnam(obj, "VERB_LEUCHTEN schwach"), /* EN aobjnam(obj, "softly glow"), */
 					  hcolor(NH_AMBER));
 				uncurse(obj);
 				obj->bknown=1;
@@ -1599,10 +1599,10 @@ dodip()
 			} else if(!obj->blessed) {
 				if (useeit) {
 				    tmp = hcolor(NH_LIGHT_BLUE);
-				    pline("%s %s with a%s %s aura.", /* EN pline("%s %s with a%s %s aura.", */ // TODO DE
+				    pline("SUBJECT %s %s OBJECT KASUS_DATIV mit ARTIKEL_UNBESTIMMTER %s NOUN_AURA.", /* EN pline("%s %s with a%s %s aura.", */
 					  Your_buf,
-					  aobjnam(obj, "softly glow"), /* EN aobjnam(obj, "softly glow"), */ // TODO DE
-					  index(vowels, *tmp) ? "n" : "", tmp);
+					  aobjnam(obj, "VERB_LEUCHTEN schwach"), /* EN aobjnam(obj, "softly glow"), */
+					  tmp); /* EN index(vowels, *tmp) ? "n" : "", tmp); */
 				}
 				bless(obj);
 				obj->bknown=1;
@@ -1613,7 +1613,7 @@ dodip()
 				if (useeit)
 				    pline("SUBJECT %s %s %s.", /* EN pline("%s %s %s.", */
 					  Your_buf,
-					  aobjnam(obj, "glow"), /* EN aobjnam(obj, "glow"), */ // TODO DE
+					  aobjnam(obj, "VERB_LEUCHTEN"), /* EN aobjnam(obj, "glow"), */
 					  hcolor((const char *)"ADJEKTIV_FARBE_BRAUN")); /* EN hcolor((const char *)"brown")); */
 				unbless(obj);
 				obj->bknown=1;
@@ -1621,10 +1621,10 @@ dodip()
 			} else if(!obj->cursed) {
 				if (useeit) {
 				    tmp = hcolor(NH_BLACK);
-				    pline("%s %s with a%s %s aura.", /* EN pline("%s %s with a%s %s aura.", */ // TODO DE
+				    pline("SUBJECT %s %s OBJECT KASUS_DATIV mit ARTIKEL_UNBESTIMMTER %s NOUN_AURA.", /* EN pline("%s %s with a%s %s aura.", */
 					  Your_buf,
-					  aobjnam(obj, "glow"), /* EN aobjnam(obj, "glow"), */ // TODO DE
-					  index(vowels, *tmp) ? "n" : "", tmp);
+					  aobjnam(obj, "VERB_LEUCHTEN"), /* EN aobjnam(obj, "glow"), */
+					  tmp); /* EN index(vowels, *tmp) ? "n" : "", tmp); */
 				}
 				curse(obj);
 				obj->bknown=1;
