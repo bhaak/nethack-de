@@ -297,7 +297,7 @@ doswapweapon()
 	/* May we attempt this? */
 	multi = 0;
 	if (cantwield(youmonst.data)) {
-		pline("Don't be ridiculous!"); /* EN pline("Don't be ridiculous!"); */ // TODO DE
+		pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SEIN nicht albern!"); /* EN pline("Don't be ridiculous!"); */
 		return(0);
 	}
 	if (welded(uwep)) {
@@ -345,7 +345,7 @@ dowieldquiver()
 
 	/* Because 'Q' used to be quit... */
 	if (flags.suppress_alert < FEATURE_NOTICE_VER(3,3,0))
-		pline("Note: Please use #quit if you wish to exit the game."); /* EN pline("Note: Please use #quit if you wish to exit the game."); */ // TODO DE
+		pline("Hinweis: Please use #quit if you wish to exit the game."); /* EN pline("Note: Please use #quit if you wish to exit the game."); */ // TODO DE
 
 	/* Prompt for a new quiver */
 	if (!(newquiver = getobj(quivee_types, "ready"))) /* EN if (!(newquiver = getobj(quivee_types, "ready"))) */ // TODO DE
@@ -368,8 +368,8 @@ dowieldquiver()
 		return(0);
 	} else if (newquiver == uwep) {
 		/* Prevent accidentally readying the main weapon */
-		pline("%s already being used as a weapon!", /* EN pline("%s already being used as a weapon!", */ // TODO DE
-		      !is_plural(uwep) ? "That is" : "They are"); /* EN !is_plural(uwep) ? "That is" : "They are"); */ // TODO DE
+		pline("%s bereits als Waffe verwendet!", /* EN pline("%s already being used as a weapon!", */
+		      !is_plural(uwep) ? "Das wird" : "Die werden"); /* EN !is_plural(uwep) ? "That is" : "They are"); */
 		return(0);
 	} else if (newquiver->owornmask & (W_ARMOR | W_RING | W_AMUL | W_TOOL
 #ifdef STEED
@@ -479,7 +479,7 @@ can_twoweapon()
 		if (Upolyd)
 		    You("VERB_KOENNEN OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV ADJEKTIV_DERZEITIG NOUN_DASEINSFORM nicht zwei Waffen benutzen."); /* EN You_cant("use two weapons in your current form."); */
 		else
-		    pline("%s aren't able to use two weapons at once.", /* EN pline("%s aren't able to use two weapons at once.", */ // TODO DE
+		    pline("SUBJECT %s VERB_KOENNEN nicht gleichzeitig zwei Waffen benutzen.", /* EN pline("%s aren't able to use two weapons at once.", */
 			  makeplural((flags.female && urole.name.f) ?
 				     urole.name.f : urole.name.m));
 	} else if (!uwep || !uswapwep)
@@ -487,13 +487,13 @@ can_twoweapon()
 			body_part(HAND), (!uwep && !uswapwep) ? "s" : ""); /* EN body_part(HAND), (!uwep && !uswapwep) ? "s are" : " is"); */
 	else if (NOT_WEAPON(uwep) || NOT_WEAPON(uswapwep)) {
 		otmp = NOT_WEAPON(uwep) ? uwep : uswapwep;
-		pline("%s %s.", Yname2(otmp), /* EN pline("%s %s.", Yname2(otmp), */ // TODO DE
-		    is_plural(otmp) ? "aren't weapons" : "isn't a weapon"); /* EN is_plural(otmp) ? "aren't weapons" : "isn't a weapon"); */ // TODO DE
+		pline("SUBJECT %s VERB_SEIN %s.", Yname2(otmp), /* EN pline("%s %s.", Yname2(otmp), */
+		    is_plural(otmp) ? "keine Waffen" : "keine Waffe"); /* EN is_plural(otmp) ? "aren't weapons" : "isn't a weapon"); */
 	} else if (bimanual(uwep) || bimanual(uswapwep)) {
 		otmp = bimanual(uwep) ? uwep : uswapwep;
-		pline("%s isn't one-handed.", Yname2(otmp)); /* EN pline("%s isn't one-handed.", Yname2(otmp)); */ // TODO DE
+		pline("SUBJECT %s ist nicht mit nur einer Hand benutzbar.", Yname2(otmp)); /* EN pline("%s isn't one-handed.", Yname2(otmp)); */
 	} else if (uarms)
-		You_cant("use two weapons while wearing a shield."); /* EN You_cant("use two weapons while wearing a shield."); */ // TODO DE
+		You("VERB_KOENNEN nicht zwei Waffen benutzen, NEUER_SATZ während SUBJECT_IM_SATZ einen Schild VERB_TRAGEN."); /* EN You_cant("use two weapons while wearing a shield."); */
 	else if (uswapwep->oartifact)
 		pline("%s %s being held second to another weapon!", /* EN pline("%s %s being held second to another weapon!", */ // TODO DE
 			Yname2(uswapwep), otense(uswapwep, "resist")); /* EN Yname2(uswapwep), otense(uswapwep, "resist")); */ // TODO DE
@@ -699,8 +699,8 @@ register int amount;
 	if(!uwep || (uwep->oclass != WEAPON_CLASS && !is_weptool(uwep))) {
 		char buf[BUFSZ];
 
-		Sprintf(buf, "Your %s %s.", makeplural(body_part(HAND)), /* EN Sprintf(buf, "Your %s %s.", makeplural(body_part(HAND)), */ // TODO DE
-			(amount >= 0) ? "twitch" : "itch"); /* EN (amount >= 0) ? "twitch" : "itch"); */ // TODO DE
+		Sprintf(buf, "SUBJECT PRONOMEN_POSSESSIV %s %s.", makeplural(body_part(HAND)), /* EN Sprintf(buf, "Your %s %s.", makeplural(body_part(HAND)), */
+			(amount >= 0) ? "VERB_ZUCKEN" : "VERB_JUCKEN"); /* EN (amount >= 0) ? "twitch" : "itch"); */
 		strange_feeling(otmp, buf);
 		exercise(A_DEX, (boolean) (amount >= 0));
 		return(0);
