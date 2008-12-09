@@ -34,6 +34,10 @@ static const char *developers[] = {
 	"Helge", "Ron", "Timo",
 	/* VMS team */
 	"Joshua", "Pat",
+#ifdef GERMAN
+	/* Deutsche Übersetzung */
+	"Bhaak", "Patric",
+#endif
 	""};
 
 

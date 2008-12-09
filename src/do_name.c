@@ -540,6 +540,11 @@ static const char * const ghostnames[] = {
 	"Kay", "Kenny", "Kevin", "Maud", "Michiel", "Mike", "Peter", "Robert",
 	"Ron", "Tom", "Wilmar", "Nick Danger", "Phoenix", "Jiro", "Mizue",
 	"Stephan", "Lance Braccus", "Shadowhawk"
+#ifdef GERMAN
+	, /* from #nethack.de on irc.freenode.net */
+	"Airmack", "Bhaak", "Blackpenguin", "Deki", "Lord Hoto", "Nightwulf",
+	"Peutri", "Robbi", "Rossi", "Schnippi", "Squolly", "Xororand"
+#endif
 };
 
 /* ghost names formerly set by x_monnam(), now by makemon() instead */
