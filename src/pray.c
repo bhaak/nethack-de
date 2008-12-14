@@ -481,7 +481,7 @@ aligntyp resp_god;
 	    } else
 		pline("%s seems unaffected.", Monnam(u.ustuck)); /* EN pline("%s seems unaffected.", Monnam(u.ustuck)); */ // TODO DE
 	} else {
-	    pline("Suddenly, a bolt of lightning strikes you!"); /* EN pline("Suddenly, a bolt of lightning strikes you!"); */ // TODO DE
+	    pline("Plötzlich trifft KASUS_AKKUSATIV PRONOMEN_PERSONAL ein Blitzschlag!"); /* EN pline("Suddenly, a bolt of lightning strikes you!"); */
 	    if (Reflecting) {
 		shieldeff(u.ux, u.uy);
 		if (Blind)
@@ -1435,21 +1435,21 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 
 		    if ((int)u.uluck < 0) change_luck(1);
 		} else {
-		    pline("SUBJECT %s VERB_SCHEINEN %s zu sein.", u_gname(), Hallucination ?  /* EN pline("%s seems %s.", u_gname(), Hallucination ? */
-			  "cosmic (not a new fact)" : "besänftigt"); /* EN "cosmic (not a new fact)" : "mollified"); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHEINEN %s.", u_gname(), Hallucination ?  /* EN pline("%s seems %s.", u_gname(), Hallucination ? */
+			  "übernatürlich zu sein (keine neue Erkenntnis)" : "besänftigt zu sein"); /* EN "cosmic (not a new fact)" : "mollified"); */
 
 		    if ((int)u.uluck < 0) u.uluck = 0;
 		}
 	    } else { /* not satisfied yet */
 		if (Hallucination)
-		    pline_The("gods seem tall."); /* EN pline_The("gods seem tall."); */ // TODO DE
-		else You("have a feeling of inadequacy."); /* EN else You("have a feeling of inadequacy."); */ // TODO DE
+		    pline("Die Götter wirken hochnäsig."); /* EN pline_The("gods seem tall."); */
+		else You("VERB_HABEN ein Gefühl der Unzulänglichkeit."); /* EN else You("have a feeling of inadequacy."); */
 	    }
 	} else if(ugod_is_angry()) {
 	    if(value > MAXVALUE) value = MAXVALUE;
 	    if(value > -u.ualign.record) value = -u.ualign.record;
 	    adjalign(value);
-	    You_feel("partially absolved."); /* EN You_feel("partially absolved."); */ // TODO DE
+	    Du_fuehlst_dich("teilweise OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_SCHULD befreit."); /* EN You_feel("partially absolved."); */
 	} else if (u.ublesscnt > 0) {
 	    u.ublesscnt -=
 		((value * (u.ualign.type == A_CHAOTIC ? 500 : 300)) / MAXVALUE);
@@ -1463,9 +1463,9 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		    if ((int)u.uluck < 0) change_luck(1);
 		} else {
 		    if (Hallucination)
-			pline("Overall, there is a smell of fried onions."); /* EN pline("Overall, there is a smell of fried onions."); */ // TODO DE
+			pline("Irgendwie liegt ein Geruch von angebratenen Zwiebeln in der Luft."); /* EN pline("Overall, there is a smell of fried onions."); */
 		    else
-			You("have a feeling of reconciliation."); /* EN You("have a feeling of reconciliation."); */ // TODO DE
+			You("VERB_HABEN ein Gefühl der Versöhnung."); /* EN You("have a feeling of reconciliation."); */
 		    if ((int)u.uluck < 0) u.uluck = 0;
 		}
 	    }
@@ -1500,8 +1500,8 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		if (Blind)
 		    You("VERB_GLAUBEN, etwas habe OBJECT PRONOMEN_POSSESSIV %s gestreift.", body_part(FOOT)); /* EN You("think %s brushed your %s.",something, body_part(FOOT)); */
 		else You(Hallucination ?
-		    "see crabgrass at your %s.  A funny thing in a dungeon." : /* EN "see crabgrass at your %s.  A funny thing in a dungeon." : */ // TODO DE
-		    "glimpse a four-leaf clover at your %s.", /* EN "glimpse a four-leaf clover at your %s.", */ // TODO DE
+		    "VERB_SEHEN Grünzeug OBJECT KASUS_DATIV unter PRONOMEN_POSSESSIV %s.  Komische Sache in einem Dungeon." : /* EN "see crabgrass at your %s.  A funny thing in a dungeon." : */
+		    "VERB_ENTDECKEN ein vierblättriges Kleeblat OBJECT KASUS_DATIV unter PRONOMEN_POSSESSIV %s.", /* EN "glimpse a four-leaf clover at your %s.", */
 		    makeplural(body_part(FOOT)));
 	    }
 	}

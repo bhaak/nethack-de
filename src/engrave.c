@@ -24,7 +24,7 @@ static const char *random_mesg[] = {
 	"A.S. ->", "<- A.S.", /* Journey to the Center of the Earth */
 	"You won't get it up the steps", /* EN "You won't get it up the steps", */ /* Adventure */ // TODO DE
 	"Lasciate ogni speranza o voi ch'entrate.", /* Inferno */
-	"Well Come", /* EN "Well Come", */ /* Prisoner */ // TODO DE
+	"Willkommen", /* EN "Well Come", */ /* Prisoner */
 	"Wir entschuldigen uns für die Unannehmlichkeiten.", /* EN "We apologize for the inconvenience.", */ /* So Long... */
 	"See you next Wednesday", /* EN "See you next Wednesday", */ /* Thriller */ // TODO DE
 	"notary sojak", /* EN "notary sojak", */ /* Smokey Stover */ // TODO DE
@@ -721,12 +721,12 @@ doengrave()
 			if (!Blind)
 			    Strcpy(post_engr_text,
 				IS_GRAVE(levl[u.ux][u.uy].typ) ?
-				"Chips fly out from the headstone." : /* EN "Chips fly out from the headstone." : */ // TODO DE
+				"Ein paar Steinbrocken platzen vom Grabstein ab." : /* EN "Chips fly out from the headstone." : */
 				is_ice(u.ux,u.uy) ?
-				"Ice chips fly up from the ice surface!" : /* EN "Ice chips fly up from the ice surface!" : */ // TODO DE // TODO DE
-				"Gravel flies up from the floor."); /* EN "Gravel flies up from the floor."); */ // TODO DE
+				"Eissplitter fliegen von der Eisoberfläche hoch!" : /* EN "Ice chips fly up from the ice surface!" : */
+				"Kies fliegt vom Boden hoch."); /* EN "Gravel flies up from the floor."); */
 			else
-			    Strcpy(post_engr_text, "You hear drilling!"); /* EN Strcpy(post_engr_text, "You hear drilling!"); */ // TODO DE
+			    Strcpy(post_engr_text, "SUBJECT PRONOMEN_PERSONAL Gebohre!"); /* EN Strcpy(post_engr_text, "You hear drilling!"); */
 			break;
 
 		    /* type = BURN wands */
@@ -740,7 +740,7 @@ doengrave()
 			}
 			Strcpy(post_engr_text,
 				Blind ? "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN, wie sich der Stab erwärmt." : /* EN Blind ? "You feel the wand heat up." : */
-					"Flames fly from the wand."); /* EN "Flames fly from the wand."); */ // TODO DE
+					"Flammen schießen aus dem Stab."); /* EN "Flames fly from the wand."); */
 			break;
 		    case WAN_LIGHTNING:
 			ptext = TRUE;
@@ -753,7 +753,7 @@ doengrave()
 			}
 			if (!Blind) {
 			    Strcpy(post_engr_text,
-				    "Lightning arcs from the wand."); /* EN "Lightning arcs from the wand."); */ // TODO DE
+				    "Blitze schießen aus dem Stab."); /* EN "Lightning arcs from the wand."); */
 			    doblind = TRUE;
 			} else
 			    Strcpy(post_engr_text, "SUBJECT PRONOMEN_PERSONAL VERB_HEAR Geknacke!"); /* EN Strcpy(post_engr_text, "You hear crackling!"); */
@@ -781,7 +781,7 @@ doengrave()
 	    case TOOL_CLASS:
 		if(otmp == ublindf) {
 		    pline(
-		"That is a bit difficult to engrave with, don't you think?"); /* EN "That is a bit difficult to engrave with, don't you think?"); */ // TODO DE
+		"Damit zu schreiben, ist etwas schwierig, SUBJECT_IM_SATZ VERB_MEINEN PRONOMEN_PERSONAL nicht auch?"); /* EN "That is a bit difficult to engrave with, don't you think?"); */
 		    return(0);
 		}
 		switch (otmp->otyp)  {
@@ -871,7 +871,7 @@ doengrave()
 	    pline("SUBJECT %s %szerfällt zu Staub.", /* EN pline("%s %sturns to dust.", */
 		  The(xname(otmp)), Blind ? "" : "VERB_LEUCHTEN grell auf und "); /* EN The(xname(otmp)), Blind ? "" : "glows violently, then "); */
 	    if (!IS_GRAVE(levl[u.ux][u.uy].typ))
-		You("are not going to get anywhere trying to write in the %s with your dust.", /* EN You("are not going to get anywhere trying to write in the %s with your dust.", */ // TODO DE
+		pline("Der Versuch, KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_DUST KASUS_AKKUSATIV in ARTIKEL_BESTIMMTER %s zu schreiben, ist zum Scheitern verurteilt.", /* EN You("are not going to get anywhere trying to write in the %s with your dust.", */
 		    is_ice(u.ux,u.uy) ? "NOUN_SCHNEE" : "NOUN_DUST"); /* EN is_ice(u.ux,u.uy) ? "frost" : "dust"); */
 	    useup(otmp);
 	    ptext = FALSE;
@@ -1274,8 +1274,8 @@ static const char *epitaphs[] = {
 	"Og Freund. Og guter Kerl. Og stirbt. Og jetzt Essen", /* EN "Og friend. Og good dude. Og died. Og now food", */
 	"Beetlejuice, Beetlejuice, Beetlejuice", /* EN "Beetlejuice Beetlejuice Beetlejuice", */
 	"Look out below!", /* EN "Look out below!", */ // TODO DE
-	"Please don't dig me up. I'm perfectly happy down here. -- Resident", /* EN "Please don't dig me up. I'm perfectly happy down here. -- Resident", */ // TODO DE
-	"Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, fifth lemure on the left", /* EN "Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, fifth lemure on the left", */ // TODO DE
+	"Bitte grabt mich nicht aus. Mir geht's fantastisch hier unten. -- Der Bewohner", /* EN "Please don't dig me up. I'm perfectly happy down here. -- Resident", */
+	"Lieber Postbote, bitte Nachsenden an: Gehennom, Asmodeus' Festung, fünfter Lemure von links", /* EN "Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, fifth lemure on the left", */
 	"Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go", /* EN "Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go", */ // TODO DE
 	"Be careful, or this could happen to you!", /* EN "Be careful, or this could happen to you!", */ // TODO DE
 	"Soon you'll join this fellow in hell! -- the Wizard of Yendor", /* EN "Soon you'll join this fellow in hell! -- the Wizard of Yendor", */ // TODO DE
