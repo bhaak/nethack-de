@@ -214,7 +214,7 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 	    /* monsters may miss especially on water level where
 	       bubbles shake the player here and there */
 	    if (compat)
-		pline("%s reaches towards your distorted image.",Monnam(mtmp)); /* EN pline("%s reaches towards your distorted image.",Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_GREIFEN OBJECT KASUS_DATIV nach PRONOMEN_POSSESSIV ADJEKTIV_VERZERRT NOUN_ABBILD.",Monnam(mtmp)); /* EN pline("%s reaches towards your distorted image.",Monnam(mtmp)); */
 	    else
 		pline("SUBJECT %s wird von den Wasserspiegelungen getäuscht und trifft nicht!",Monnam(mtmp)); /* EN pline("%s is fooled by water reflections and misses!",Monnam(mtmp)); */
 
@@ -1154,7 +1154,7 @@ dopois:
 			u.usteed ||
 #endif
 				    Levitation || Flying) {
-		    pline("%s tries to reach your %s %s!", Monnam(mtmp), /* EN pline("%s tries to reach your %s %s!", Monnam(mtmp), */ // TODO DE
+		    pline("SUBJECT %s VERB_VERSUCHEN OBJECT PRONOMEN_POSSESSIV %s %s zu packen!", Monnam(mtmp), /* EN pline("%s tries to reach your %s %s!", Monnam(mtmp), */
 			  sidestr, body_part(LEG));
 		    dmg = 0;
 		  } else if (mtmp->mcan) {

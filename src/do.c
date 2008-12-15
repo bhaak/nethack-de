@@ -201,9 +201,9 @@ const char *verb;
 		    ((x == u.ux) && (y == u.uy))) {
 		    if (!Underwater) {
 			if (weight(obj) > 9) {
-		    pline("Pflatsch!"); /* EN pline("Splash!"); */
+				pline("Pflatsch!"); /* EN pline("Splash!"); */
 		        } else if (Levitation || Flying) {
-				pline("Plop!"); /* EN pline("Plop!"); */ // TODO DE
+				pline("Blubb!"); /* EN pline("Plop!"); */
 		        }
 		    }
 		    map_background(x, y, 0);
@@ -216,11 +216,11 @@ const char *verb;
 			(t->ttyp==PIT || t->ttyp==SPIKED_PIT)) {
 		/* you escaped a pit and are standing on the precipice */
 		if (Blind && flags.soundok)
-			You_hear("%s %s downwards.", /* EN You_hear("%s %s downwards.", */ // TODO DE
-				The(xname(obj)), otense(obj, "tumble")); /* EN The(xname(obj)), otense(obj, "tumble")); */ // TODO DE
+			You_hear("OBJECT %s runterpurzeln.", /* EN You_hear("%s %s downwards.", */
+				The(xname(obj))); /* EN The(xname(obj)), otense(obj, "tumble")); */
 		else
-			pline("%s %s into %s pit.", /* EN pline("%s %s into %s pit.", */ // TODO DE
-				The(xname(obj)), otense(obj, "tumble"), /* EN The(xname(obj)), otense(obj, "tumble"), */ // TODO DE
+			pline("SUBJECT %s VERB_PURZELN OBJECT in %s NOUN_PIT.", /* EN pline("%s %s into %s pit.", */
+				The(xname(obj)), /* EN The(xname(obj)), otense(obj, "tumble"), */
 				the_your[t->madeby_u]);
 	}
 	return FALSE;
@@ -426,7 +426,7 @@ register const char *word;
 		if (*word) {
 			/* getobj() ignores a count for throwing since that is
 			   implicitly forced to be 1; replicate its kludge... */
-			if (!strcmp(word, "throw") && obj->quan > 1L) /* EN if (!strcmp(word, "throw") && obj->quan > 1L) */ // TODO DE
+			if (!strcmp(word, "werfen") && obj->quan > 1L) /* EN if (!strcmp(word, "throw") && obj->quan > 1L) */
 			    obj->corpsenm = 1;
 			pline("For some reason, you cannot %s%s the stone%s!", /* EN pline("For some reason, you cannot %s%s the stone%s!", */ // TODO DE "Aus irgendeinem Grund VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_GEM_ROCK%s nicht %s!"
 			      word, obj->corpsenm ? " any of" : "", /* EN word, obj->corpsenm ? " any of" : "", */ // TODO DE

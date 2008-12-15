@@ -1661,7 +1661,7 @@ long quan;		/* if non-0, print this quantity, not obj->quan */
 	/* if dot is true, we're doing Iu, otherwise Ix */
 	Sprintf(li, "%c - %-45s %6ld %s",
 		(dot && use_invlet ? obj->invlet : let),
-		(txt ? txt : doname(obj)), cost, currency(cost));
+		(txt ? german(txt) : german(doname(obj))), cost, currency(cost)); /* EN (txt ? txt : doname(obj)), cost, currency(cost)); */
 #ifndef GOLDOBJ
     } else if (obj && obj->oclass == COIN_CLASS) {
 	Sprintf(li, "%ld NOUN_GOLD_PIECE%s%s", obj->quan, plur(obj->quan), /* EN Sprintf(li, "%ld gold piece%s%s", obj->quan, plur(obj->quan), */
@@ -1671,15 +1671,11 @@ long quan;		/* if non-0, print this quantity, not obj->quan */
 	/* ordinary inventory display or pickup message */
 	Sprintf(li, "%c - %s%s",
 		(use_invlet ? obj->invlet : let),
-		(txt ? txt : doname(obj)), (dot ? "." : ""));
+		(txt ? txt : german(doname(obj))), (dot ? "." : "")); /* EN (txt ? txt : doname(obj)), (dot ? "." : "")); */
     }
     if (savequan) obj->quan = savequan;
 
-#ifdef GERMAN
-    return (char*)german(li);
-#else
 		return li;
-#endif
 }
 
 #endif /* OVL1 */

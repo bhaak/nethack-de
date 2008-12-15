@@ -1236,7 +1236,7 @@ proceed:
 #endif
 		    You("%skein Geld%s.", stashed_gold ? "VERB_SCHEINEN " : "VERB_HABEN", stashed_gold ? " zu haben" : ""); /* EN You("%shave no money.", stashed_gold ? "seem to " : ""); */
 		    if(stashed_gold)
-			pline("But you have some gold stashed away."); /* EN pline("But you have some gold stashed away."); */ // TODO DE
+			pline("Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_HALTEN Gold versteckt."); /* EN pline("But you have some gold stashed away."); */
 		} else {
 #ifndef GOLDOBJ
 		    long ugold = u.ugold;
@@ -1255,7 +1255,7 @@ proceed:
 #else
 			pay(umoney, shkp);
 #endif
-			if (stashed_gold) pline("But you have hidden gold!"); /* EN if (stashed_gold) pline("But you have hidden gold!"); */ // TODO DE
+			if (stashed_gold) pline("Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_HABEN noch Gold in den Taschen!"); /* EN if (stashed_gold) pline("But you have hidden gold!"); */
 		    }
 #ifndef GOLDOBJ
 		    if((ugold < ltmp/2L) || (ugold < ltmp && stashed_gold))
@@ -1429,7 +1429,7 @@ proceed:
 		You("VERB_HABEN nicht genug Geld um %s zu kaufen, %s SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausgewählt VERB_HABEN.", /* EN You("don't have enough money to buy%s the item%s you picked.", */
 		    eshkp->billct > 1 ? "irgendeinen der Artikel" : "den Artikel", eshkp->billct > 1 ? "die" : "den"); /* EN eshkp->billct > 1 ? " any of" : "", plur(eshkp->billct)); */
 		if(stashed_gold)
-		    pline("Maybe you have some gold stashed away?"); /* EN pline("Maybe you have some gold stashed away?"); */ // TODO DE
+		    pline("Vielleicht SUBJECT_IM_SATZ VERB_HABEN PRONOMEN_PERSONAL noch etwas Gold in den Taschen?"); /* EN pline("Maybe you have some gold stashed away?"); */
 		return(0);
 	    }
 
@@ -2291,7 +2291,7 @@ speak:
 		Strcat(buf, honored[rn2(4) + u.uevent.udemigod]);
 		if (!is_human(youmonst.data)) Strcat(buf, " NOUN_CREATURE"); /* EN if (!is_human(youmonst.data)) Strcat(buf, " creature"); */
 		else
-		    Strcat(buf, (flags.female) ? " NOUN_DAME" : " NOUN_HERR"); /* EN Strcat(buf, (flags.female) ? " lady" : " sir"); */
+		    Strcat(buf, (flags.female) ? " NOUN_KUNDIN" : " NOUN_KUNDE"); /* EN Strcat(buf, (flags.female) ? " lady" : " sir"); */
 	    }
 	    if(ininv) {
 		long quan = obj->quan;
@@ -2845,11 +2845,11 @@ int mode;		/* 0: deliver count 1: paged */
 	    if (totused) putstr(datawin, 0, "");
 	    totused += eshkp->debit;
 	    buf_p = xprname((struct obj *)0,
-			    "usage charges and/or other fees", /* EN "usage charges and/or other fees", */ // TODO DE
+			    "Nutzungsgebühren und/oder andere Kosten", /* EN "usage charges and/or other fees", */
 			    GOLD_SYM, FALSE, eshkp->debit, 0L);
 	    putstr(datawin, 0, buf_p);
 	}
-	buf_p = xprname((struct obj *)0, "Total:", '*', FALSE, totused, 0L); /* EN buf_p = xprname((struct obj *)0, "Total:", '*', FALSE, totused, 0L); */ // TODO DE
+	buf_p = xprname((struct obj *)0, "Total:", '*', FALSE, totused, 0L);
 	putstr(datawin, 0, "");
 	putstr(datawin, 0, buf_p);
 	display_nhwindow(datawin, FALSE);
@@ -3374,11 +3374,11 @@ register int fall;
 	if (lang == 2) {
 	    if(u.utraptype == TT_PIT)
 		verbalize(
-			"Be careful, %s, or you might fall through the floor.", /* EN "Be careful, %s, or you might fall through the floor.", */ // TODO DE
-			flags.female ? "madam" : "sir"); /* EN flags.female ? "madam" : "sir"); */ // TODO DE
+			"Vorsicht, %s, oder SUBJECT_IM_SATZ PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_KOENNEN durch den Boden fallen.", /* EN "Be careful, %s, or you might fall through the floor.", */
+			plname); /* EN flags.female ? "madam" : "sir"); */
 	    else
-		verbalize("%s, do not damage the floor here!", /* EN verbalize("%s, do not damage the floor here!", */ // TODO DE
-			flags.female ? "Madam" : "Sir"); /* EN flags.female ? "Madam" : "Sir"); */ // TODO DE
+		verbalize("SATZBEGINN %s, MODIFIER_VERB_IMPERATIV VERB_BESCHAEDIGEN nicht den Boden!", /* EN verbalize("%s, do not damage the floor here!", */
+			plname); /* EN flags.female ? "Madam" : "Sir"); */
 	}
 	if (Role_if(PM_KNIGHT)) {
 	    Du_fuehlst_dich("wie ein kleiner Gauner."); /* EN You_feel("like a common thief."); */
@@ -3406,7 +3406,7 @@ register int fall;
 		/* for some reason the shopkeeper can't come next to you */
 		if (distu(shkp->mx, shkp->my) > 2) {
 		    if (lang == 2)
-			pline("%s curses you in anger and frustration!", /* EN pline("%s curses you in anger and frustration!", */ // TODO DE
+			pline("SUBJECT %s VERB_FLUCHTEN zornig und frustriert!", /* EN pline("%s curses you in anger and frustration!", */
 			      shkname(shkp));
 		    rile_shk(shkp);
 		    return;
@@ -3746,7 +3746,7 @@ const char *Izchak_speaks[]={
     "SUBJECT %s sagt that getting the devteam's agreement on anything is difficult.", /* EN "%s says that getting the devteam's agreement on anything is difficult.", */ // TODO DE
     "SUBJECT %s sagt that he has noticed those who serve their deity will prosper.", /* EN "%s says that he has noticed those who serve their deity will prosper.", */ // TODO DE
     "SUBJECT %s sagt: 'Don't try to steal from me - I have friends in high places!'", /* EN "%s says: 'Don't try to steal from me - I have friends in high places!'", */ // TODO DE
-    "SUBJECT %s sagt: 'You may well need something from this shop in the future.'", /* EN "%s says: 'You may well need something from this shop in the future.'", */ // TODO DE
+    "SUBJECT %s sagt: 'Es kann gut sein, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL etwas aus diesem Laden brauchen VERB_WERDEN.'", /* EN "%s says: 'You may well need something from this shop in the future.'", */
     "SUBJECT %s beschreibt das Tal der Toten als Zugangspforte." /* EN "%s comments about the Valley of the Dead as being a gateway." */
 };
 

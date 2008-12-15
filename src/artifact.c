@@ -833,7 +833,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 		if (youmonst.data != old_uasmon)
 		    *dmgptr = 0;    /* rehumanized, so no more damage */
 		if (u.uenmax > 0) {
-		    You("lose magical energy!"); /* EN You("lose magical energy!"); */ // TODO DE
+		    You("VERB_VERLIEREN magische Energie!"); /* EN You("lose magical energy!"); */
 		    u.uenmax--;
 		    if (u.uen > 0) u.uen--;
 		    flags.botl = 1;
@@ -842,7 +842,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 		if (mdef->data == &mons[PM_CLAY_GOLEM])
 		    mdef->mhp = 1;	/* cancelled clay golems will die */
 		if (youattack && attacktype(mdef->data, AT_MAGC)) {
-		    You("absorb magical energy!"); /* EN You("absorb magical energy!"); */ // TODO DE
+		    You("VERB_ABSORBIEREN magische Energie!"); /* EN You("absorb magical energy!"); */
 		    u.uenmax++;
 		    u.uen++;
 		    flags.botl = 1;
@@ -999,9 +999,9 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	}
 	if (attacks(AD_MAGM, otmp)) {
 	    if (realizes_damage)
-		pline_The("imaginary widget hits%s %s%c", /* EN pline_The("imaginary widget hits%s %s%c", */ // TODO DE
+		pline_The("ADJEKTIV_IMAGINAERE NOUN_DINGSBUMS VERB_HIT OBJECT%s %s%c", /* EN pline_The("imaginary widget hits%s %s%c", */
 			  !spec_dbon_applies ? "" :
-				"!  A hail of magic missiles strikes", /* EN "!  A hail of magic missiles strikes", */ // TODO DE
+				"!  Ein Hagel magischer Geschosse trifft", /* EN "!  A hail of magic missiles strikes", */
 			  hittee, !spec_dbon_applies ? '.' : '!');
 	    return realizes_damage;
 	}
@@ -1112,7 +1112,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			*dmgptr = 2 * (Upolyd ? u.mh : u.uhp)
 				  + FATAL_DAMAGE_MODIFIER;
 			pline(behead_msg[rn2(SIZE(behead_msg))],
-			      wepdesc, "you"); /* EN wepdesc, "you"); */ // TODO DE
+			      wepdesc, "PRONOMEN_PERSONAL"); /* EN wepdesc, "you"); */
 			otmp->dknown = TRUE;
 			/* Should amulets fall off? */
 			return TRUE;
@@ -1123,11 +1123,11 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 		if (!youdefend) {
 			if (vis) {
 			    if(otmp->oartifact == ART_STORMBRINGER)
-				pline_The("%s blade draws the life from %s!", /* EN pline_The("%s blade draws the life from %s!", */ // TODO DE
+				pline_The("%s NOUN_KLINGE VERB_SAUGEN OBJECT KASUS_DATIV %s das Leben aus!", /* EN pline_The("%s blade draws the life from %s!", */
 				      hcolor(NH_BLACK),
 				      mon_nam(mdef));
 			    else
-				pline("%s draws the life from %s!", /* EN pline("%s draws the life from %s!", */ // TODO DE
+				pline("%s VERB_SAUGEN OBJECT KASUS_DATIV %s das Leben aus!", /* EN pline("%s draws the life from %s!", */
 				      The(distant_name(otmp, xname)),
 				      mon_nam(mdef));
 			}
@@ -1146,14 +1146,14 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			int oldhpmax = u.uhpmax;
 
 			if (Blind)
-				You_feel("an %s drain your life!", /* EN You_feel("an %s drain your life!", */ // TODO DE
+				You_feel("wie NEUER_SATZ SUBJECT_IM_SATZ ARTIKEL_UNBESTIMMTER %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL Lebenskraft VERB_ENTZIEHEN!", /* EN You_feel("an %s drain your life!", */
 				    otmp->oartifact == ART_STORMBRINGER ?
-				    "unholy blade" : "object"); /* EN "unholy blade" : "object"); */ // TODO DE
+				    "ADJEKTIV_GOTTLOS NOUN_KLINGE" : "NOUN_OBJEKT"); /* EN "unholy blade" : "object"); */
 			else if (otmp->oartifact == ART_STORMBRINGER)
-				pline_The("%s blade drains your life!", /* EN pline_The("%s blade drains your life!", */ // TODO DE
+				pline_The("%s NOUN_KLINGE VERB_ENTZIEHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL Lebenskraft!", /* EN pline_The("%s blade drains your life!", */
 				      hcolor(NH_BLACK));
 			else
-				pline("%s drains your life!", /* EN pline("%s drains your life!", */ // TODO DE
+				pline("SUBJECT %s VERB_ENTZIEHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL Lebenskraft!", /* EN pline("%s drains your life!", */
 				      The(distant_name(otmp, xname)));
 			losexp("Lebensenergieentzug"); /* EN losexp("life drainage"); */
 			if (magr && magr->mhp < magr->mhpmax) {
