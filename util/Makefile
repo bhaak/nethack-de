@@ -89,8 +89,8 @@
 # flags for debugging:
 # CFLAGS = -g -I../include
 
-CFLAGS = -O -I../include -DGERMAN
-LFLAGS =
+CFLAGS = -O -I../include -DGERMAN -g #-fbounds-checking
+LFLAGS = #-fbounds-checking
 
 LIBS =
  
