@@ -1011,7 +1011,7 @@ costly_tin(verb)
 	     costly_spot(tin.tin->ox, tin.tin->oy) &&
 	     !tin.tin->no_charge)
 	    || tin.tin->unpaid)) {
-	    verbalize("You %s it, you bought it!", verb ? verb : "open"); /* EN verbalize("You %s it, you bought it!", verb ? verb : "open"); */ // TODO DE
+	    verbalize("Was SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s, VERB_MUESSEN PRONOMEN_PERSONAL kaufen!", verb ? verb : "VERB_OEFFNEN"); /* EN verbalize("You %s it, you bought it!", verb ? verb : "open"); */
 	    if(tin.tin->quan > 1L) tin.tin = splitobj(tin.tin, 1L);
 	    bill_dummy_object(tin.tin);
 	}
@@ -1037,7 +1037,7 @@ opentin()		/* called during each move whilst opening a tin */
 	if(tin.tin->otrapped ||
 	   (tin.tin->cursed && tin.tin->spe != -1 && !rn2(8))) {
 		b_trapped("NOUN_TIN", 0); /* EN b_trapped("tin", 0); */
-		costly_tin("destroyed"); /* EN costly_tin("destroyed"); */ // TODO DE
+		costly_tin("kaputt VERB_MACHEN"); /* EN costly_tin("destroyed"); */
 		goto use_me;
 	}
         Dir("gelingt es, die Dose zu öffnen."); /* EN You("succeed in opening the tin."); */

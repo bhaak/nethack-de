@@ -575,7 +575,7 @@ int how;
 			HUP {
 			    char pbuf[BUFSZ];
 			    Sprintf(pbuf,
-			  "You didn't beat your previous score of %ld points.", /* EN "You didn't beat your previous score of %ld points.", */ // TODO DE
+			  "SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT PRONOMEN_POSSESSIV ADJEKTIV_AKTUELL NOUN_REKORD von %ld Punkten nicht geschlagen.", /* EN "You didn't beat your previous score of %ld points.", */
 				    t1->points);
 			    topten_print(pbuf);
 			    topten_print("");
@@ -755,9 +755,9 @@ boolean so;
 	    } else if (!strncmp(t1->death, "died of st", 10)) { /* EN } else if (!strncmp(t1->death, "died of st", 10)) { */ // TODO DE
 		Strcat(linebuf, "starved to death"); /* EN Strcat(linebuf, "starved to death"); */ // TODO DE
 		second_line = FALSE;
-	    } else if (!strncmp(t1->death, "choked", 6)) { /* EN } else if (!strncmp(t1->death, "choked", 6)) { */ // TODO DE
-		Sprintf(eos(linebuf), "choked on h%s food", /* EN Sprintf(eos(linebuf), "choked on h%s food", */ // TODO DE
-			(t1->plgend[0] == 'F') ? "er" : "is"); /* EN (t1->plgend[0] == 'F') ? "er" : "is"); */ // TODO DE
+	    } else if (!strncmp(t1->death, "erstickte", 9)) { /* EN } else if (!strncmp(t1->death, "choked", 6)) { */
+		Sprintf(eos(linebuf), "erstickte an %s Essen", /* EN Sprintf(eos(linebuf), "choked on h%s food", */
+			(t1->plgend[0] == 'F') ? "ihrem" : "seinem"); /* EN (t1->plgend[0] == 'F') ? "er" : "is"); */
 	    } else if (!strncmp(t1->death, "poisoned", 8)) { /* EN } else if (!strncmp(t1->death, "poisoned", 8)) { */ // TODO DE
 		Strcat(linebuf, "wurde vergiftet"); /* EN Strcat(linebuf, "was poisoned"); */
 			} else if (!strncmp(t1->death, "crushed", 7)) { /* EN } else if (!strncmp(t1->death, "crushed", 7)) { */ // TODO DE
@@ -782,7 +782,7 @@ boolean so;
 		case -1:
 			arg = "der Erde";	break; /* EN arg = "Earth";	break; */
 		default:
-			arg = "Void";	break; /* EN arg = "Void";	break; */ // TODO DE
+			arg = "des Nichts";	break; /* EN arg = "Void";	break; */
 		}
 		Sprintf(eos(linebuf), fmt, arg);
 	    } else {

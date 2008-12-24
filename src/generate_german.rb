@@ -3483,7 +3483,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CAMP","Lager","s","","","neutrum"),
     dekliniere_substantiv("NOUN_BURG","Burg","","","","neutrum"),
     dekliniere_substantiv("NOUN_MONASTERY","Kloster","s","","","neutrum"),
-    dekliniere_substantiv("NOUN_DRAGONS_LAIR","Drachenhort","es","","e","neutrum"),
+    dekliniere_substantiv("NOUN_DRAGONS_LAIR","Drachenhort","es","","e","maskulin"),
 
     "/* sonstige Substantive */",
     dekliniere_substantiv("NOUN_ACID","Säure","","Säure","en","feminin"),

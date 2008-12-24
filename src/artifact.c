@@ -999,7 +999,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	}
 	if (attacks(AD_MAGM, otmp)) {
 	    if (realizes_damage)
-		pline_The("ADJEKTIV_IMAGINAERE NOUN_DINGSBUMS VERB_HIT OBJECT%s %s%c", /* EN pline_The("imaginary widget hits%s %s%c", */
+		pline_The("ADJEKTIV_IMAGINAER NOUN_DINGSBUMS VERB_HIT OBJECT%s %s%c", /* EN pline_The("imaginary widget hits%s %s%c", */
 			  !spec_dbon_applies ? "" :
 				"!  Ein Hagel magischer Geschosse trifft", /* EN "!  A hail of magic missiles strikes", */
 			  hittee, !spec_dbon_applies ? '.' : '!');

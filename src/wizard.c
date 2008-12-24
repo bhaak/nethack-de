@@ -511,7 +511,7 @@ resurrect()
 	if (mtmp) {
 		mtmp->msleeping = mtmp->mtame = mtmp->mpeaceful = 0;
 		set_malign(mtmp);
-		pline("A voice booms out..."); /* EN pline("A voice booms out..."); */ // TODO DE
+		pline("Eine Stimme donnert ..."); /* EN pline("A voice booms out..."); */
 		verbalize("Du hast also gedacht, du Trottel könntest %s.", verb); /* EN verbalize("So thou thought thou couldst %s me, fool.", verb); */
 	}
 
@@ -529,7 +529,7 @@ intervene()
 	    case 1:	Du_fuehlst_dich("irgendwie nervös."); /* EN case 1:	You_feel("vaguely nervous."); */
 			break;
 	    case 2:	if (!Blind)
-			    You("notice a %s glow surrounding you.", /* EN You("notice a %s glow surrounding you.", */ // TODO DE
+			    You("VERB_BEMERKEN, dass NEUER_SATZ OBJECT PRONOMEN_PERSONAL SUBJECT_IM_SATZ ARTIKEL_UNBESTIMMTER %s NOUN_LEUCHTEN VERB_UMGEBEN.", /* EN You("notice a %s glow surrounding you.", */
 				  hcolor(NH_BLACK));
 			rndcurse();
 			break;
@@ -585,14 +585,14 @@ const char * const random_insult[] = {
 
 const char * const random_malediction[] = {
 	"Hell shall soon claim thy remains,", /* EN "Hell shall soon claim thy remains,", */ // TODO DE
-	"Du bist nur lächerlich, du erbärmlicher kleiner", /* EN "I chortle at thee, thou pathetic", */
+	"Du bist nur lächerlich, du erbärmlicher kleiner", /* EN "I chortle at thee, thou pathetic", */ // TODO DE
 	"Prepare to die, thou", /* EN "Prepare to die, thou", */ // TODO DE
-	"Widerstand ist zwecklos,", /* EN "Resistance is useless,", */ // TODO DE
-	"Ergib dich oder stirb, du", /* EN "Surrender or die, thou", */ // TODO DE
-	"There shall be no mercy, thou", /* EN "There shall be no mercy, thou", */ // TODO DE
+	"Widerstand ist zwecklos,", /* EN "Resistance is useless,", */
+	"Ergib dich oder stirb, du", /* EN "Surrender or die, thou", */
+	"Ich gebe dir kein Pardon, du", /* EN "There shall be no mercy, thou", */
 	"Thou shalt repent of thy cunning,", /* EN "Thou shalt repent of thy cunning,", */ // TODO DE
 	"Du bist nur Ungeziefer für mich,", /* EN "Thou art as a flea to me,", */
-	"Thou art doomed,", /* EN "Thou art doomed,", */ // TODO DE
+	"Du bist verdammt,", /* EN "Thou art doomed,", */
 	"Dein Schicksal ist besiegelt,", /* EN "Thy fate is sealed,", */
 	"Verily, thou shalt be one dead" /* EN "Verily, thou shalt be one dead" */ // TODO DE
 };
@@ -617,7 +617,7 @@ register struct monst	*mtmp;
 		else if (mtmp->mhp < 5 && !rn2(2))	/* Parthian shot */
 		    verbalize(rn2(2) ?
 			      "Ich werde wiederkehren." : /* EN "I shall return." : */
-			      "I'll be back."); /* EN "I'll be back."); */ // TODO DE
+			      "Ich komme wieder."); /* EN "I'll be back."); */
 		else
 		    verbalize("%s %s!",
 			  random_malediction[rn2(SIZE(random_malediction))],
@@ -627,7 +627,7 @@ register struct monst	*mtmp;
 			      QT_ANGELIC);
 	} else {
 	    if (!rn2(5))
-		pline("%s casts aspersions on your ancestry.", Monnam(mtmp)); /* EN pline("%s casts aspersions on your ancestry.", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_BELEIDIGEN OBJECT PRONOMEN_POSSESSIV NOUN_VORFAHRs.", Monnam(mtmp)); /* EN pline("%s casts aspersions on your ancestry.", Monnam(mtmp)); */
 	    else
 	        com_pager(rn2(QTN_DEMONIC) + QT_DEMONIC);
 	}

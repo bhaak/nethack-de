@@ -1004,7 +1004,7 @@ domove()
 			switch (rn2(!u.ustuck->mcanmove ? 8 : 40)) {
 			case 0: case 1: case 2:
 			pull_free:
-			    You("pull free from %s.", mon_nam(u.ustuck)); /* EN You("pull free from %s.", mon_nam(u.ustuck)); */ // TODO DE
+			    You("VERB_REISSEN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT von %s los.", mon_nam(u.ustuck)); /* EN You("pull free from %s.", mon_nam(u.ustuck)); */
 			    u.ustuck = 0;
 			    break;
 			case 3:

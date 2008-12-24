@@ -170,21 +170,21 @@ dig_check(madeby, verbose, x, y)
 
 	if (On_stairs(x, y)) {
 	    if (x == xdnladder || x == xupladder) {
-		if(verbose) pline_The("ladder resists your effort."); /* EN if(verbose) pline_The("ladder resists your effort."); */ // TODO DE
+		if(verbose) pline_The("NOUN_LADDER VERB_HALTEN OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_VERSUCH stand."); /* EN if(verbose) pline_The("ladder resists your effort."); */
 	    } else if(verbose) pline_The("NOUN_STAIRS VERB_SEIN zum %s zu fest.", verb); /* EN } else if(verbose) pline_The("stairs are too hard to %s.", verb); */
 	    return(FALSE);
 	} else if (IS_THRONE(levl[x][y].typ) && madeby != BY_OBJECT) {
-	    if(verbose) pline_The("throne is too hard to break apart."); /* EN if(verbose) pline_The("throne is too hard to break apart."); */ // TODO DE
+	    if(verbose) pline_The("NOUN_THRONE ist zu hart und würde nicht kaputtgehen."); /* EN if(verbose) pline_The("throne is too hard to break apart."); */
 	    return(FALSE);
 	} else if (IS_ALTAR(levl[x][y].typ) && (madeby != BY_OBJECT ||
 				Is_astralevel(&u.uz) || Is_sanctum(&u.uz))) {
-	    if(verbose) pline_The("altar is too hard to break apart."); /* EN if(verbose) pline_The("altar is too hard to break apart."); */ // TODO DE
+	    if(verbose) pline_The("NOUN_ALTAR ist zu hart und würde nicht kaputtgehen."); /* EN if(verbose) pline_The("altar is too hard to break apart."); */
 	    return(FALSE);
 	} else if (Is_airlevel(&u.uz)) {
 	    if(verbose) You("VERB_KOENNEN nicht Luft %s.", lcase(verb)); /* EN if(verbose) You("cannot %s thin air.", verb); */
 	    return(FALSE);
 	} else if (Is_waterlevel(&u.uz)) {
-	    if(verbose) pline_The("water splashes and subsides."); /* EN if(verbose) pline_The("water splashes and subsides."); */ // TODO DE
+	    if(verbose) pline("Das Wasser spritzt und beruhigt sich wieder."); /* EN if(verbose) pline_The("water splashes and subsides."); */
 	    return(FALSE);
 	} else if ((IS_ROCK(levl[x][y].typ) && levl[x][y].typ != SDOOR &&
 		      (levl[x][y].wall_info & W_NONDIGGABLE) != 0)
@@ -736,10 +736,10 @@ boolean pit_only;
 
 	/* the following two are here for the wand of digging */
 	} else if (IS_THRONE(lev->typ)) {
-		pline_The("NOUN_THRONE is too hard to break apart."); /* EN pline_The("throne is too hard to break apart."); */ // TODO DE
+		pline_The("NOUN_THRONE ist zu hart und würde nicht kaputtgehen."); /* EN pline_The("throne is too hard to break apart."); */
 
 	} else if (IS_ALTAR(lev->typ)) {
-		pline_The("altar is too hard to break apart."); /* EN pline_The("altar is too hard to break apart."); */ // TODO DE
+		pline_The("NOUN_ALTAR ist zu hart und würde nicht kaputtgehen."); /* EN pline_The("altar is too hard to break apart."); */
 
 	} else {
 		typ = fillholetyp(u.ux,u.uy);
@@ -922,7 +922,7 @@ struct obj *obj;
 			    /* you ought to be able to let go; tough luck */
 			    /* (maybe `move_into_trap()' would be better) */
 			    nomul(-d(2,2));
-			    nomovemsg = "You pull free."; /* EN nomovemsg = "You pull free."; */ // TODO DE
+			    nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_REISSEN OBJECT PRONOMEN_PERSONAL los."; /* EN nomovemsg = "You pull free."; */
 			} else if (lev->typ == IRONBARS) {
 			    pline("Klong!"); /* EN pline("Clang!"); */
 			    wake_nearby();
@@ -1166,8 +1166,14 @@ zap_dig()
 
 	    if (!is_whirly(mtmp->data)) {
 		if (is_animal(mtmp->data))
-		    You("VERB_DURCHBOHREN %s %s wall!", /* EN You("pierce %s %s wall!", */ // TODO DE
-			s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); /* EN s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); */ // TODO DE
+#ifdef GERMAN
+		{
+		    char tmp[BUFSZ];
+		    strcpy(tmp, german(mbodypart(mtmp, STOMACH)));
+		    strcat(tmp, "-NOUN_WALL");
+#endif
+		    You("VERB_DURCHBOHREN OBJECT %s!", /* EN You("pierce %s %s wall!", */
+			genitivattribut_zu_wort(mon_nam(mtmp), tmp)); } /* EN s_suffix(mon_nam(mtmp)), mbodypart(mtmp, STOMACH)); */
 		mtmp->mhp = 1;		/* almost dead */
 		expels(mtmp, mtmp->data, !is_animal(mtmp->data));
 	    }

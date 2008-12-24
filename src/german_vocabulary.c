@@ -9376,8 +9376,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Klosters", "NOUN_MONASTERY", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kloster", "NOUN_MONASTERY", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Drachenhortes", "NOUN_DRAGONS_LAIR", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Drachenhort", "NOUN_DRAGONS_LAIR", "", dativ|akkusativ|nominativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Drachenhortes", "NOUN_DRAGONS_LAIR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Drachenhort", "NOUN_DRAGONS_LAIR", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   /* sonstige Substantive */
 

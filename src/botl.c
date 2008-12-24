@@ -229,7 +229,7 @@ bot1()
 	} else
 		Sprintf(nb = eos(nb), "St:%-1d ",ACURR(A_STR));
 	Sprintf(nb = eos(nb),
-		"Dx:%-1d Ko:%-1d In:%-1d Wi:%-1d Ch:%-1d", // TODO DE
+		"Ge:%-1d Ko:%-1d In:%-1d We:%-1d Ch:%-1d", /* EN "Dx:%-1d Co:%-1d In:%-1d Wi:%-1d Ch:%-1d", */
 		ACURR(A_DEX), ACURR(A_CON), ACURR(A_INT), ACURR(A_WIS), ACURR(A_CHA));
 	Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotisch" : /* EN Sprintf(nb = eos(nb), (u.ualign.type == A_CHAOTIC) ? "  Chaotic" : */
 			(u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Rechtschaffen"); /* EN (u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Lawful"); */
@@ -296,7 +296,7 @@ bot2()
 		Sprintf(nb = eos(nb), " Erf:%u", u.ulevel); /* EN Sprintf(nb = eos(nb), " Exp:%u", u.ulevel); */
 
 	if(flags.time)
-	    Sprintf(nb = eos(nb), " T:%ld", moves);
+	    Sprintf(nb = eos(nb), " T:%ld", moves); /* EN Sprintf(nb = eos(nb), " T:%ld", moves); */ // TODO DE
 
 #ifdef REALTIME_ON_BOTL
   if(iflags.showrealtime) {

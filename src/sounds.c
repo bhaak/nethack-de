@@ -482,7 +482,7 @@ register struct monst *mtmp;
 				verbl_msg = verbuf;
 		    	} else {
 		    	    Sprintf(verbuf,"%s%s",
-				nightchild ? "Child of the night, " : "", /* EN nightchild ? "Child of the night, " : "", */ // TODO DE
+				nightchild ? "Child of the night, " : "", /* EN nightchild ? "Child of the night, " : "", */ // TODO DE # "Listen to them - the children of the night. What music they make!" (Jonathan Harker's Journal, 5 May, Dracula Chapter 2: in reference to wolves). | Kind|Geschöpf|Wesen|Geschöpfchen|Kindchen|
 				midnight() ?
 					"I can stand this craving no longer!" : /* EN "I can stand this craving no longer!" : */ // TODO DE
 				isnight ?
@@ -500,7 +500,7 @@ register struct monst *mtmp;
 				    "How nice to hear you, child of the night!"); /* EN "How nice to hear you, child of the night!"); */ // TODO DE
 				verbl_msg = verbuf;
 	    		} else
-		    		verbl_msg = "I only drink... potions."; /* EN verbl_msg = "I only drink... potions."; */ // TODO DE
+		    		verbl_msg = "Ich trinke nur ... Zaubertränke."; /* EN verbl_msg = "I only drink... potions."; */
     	        } else {
 			int vampindex;
 	    		static const char * const vampmsg[] = {
@@ -541,7 +541,7 @@ register struct monst *mtmp;
 		wake_nearto(mtmp->mx, mtmp->my, 11*11);
 	    } else
 		pline_msg =
-		     "whispers inaudibly.  All you can make out is \"moon\"."; /* EN "whispers inaudibly.  All you can make out is \"moon\"."; */ // TODO DE
+		     "VERB_ANTWORTEN unverständlich leise.  NEUER_SATZ SUBJECT PRONOMEN_PERSONAL VERB_VERSTEHEN nur \"Mond\"."; /* EN "whispers inaudibly.  All you can make out is \"moon\"."; */
 	    break;
 	case MS_BARK:
 	    if (flags.moonphase == FULL_MOON && night()) {
@@ -634,7 +634,7 @@ register struct monst *mtmp;
 	    break;
 	case MS_BONES:
 	    pline("%s VERB_KLAPPERN laut.", Monnam(mtmp)); /* EN pline("%s rattles noisily.", Monnam(mtmp)); */
-	    You("freeze for a moment."); /* EN You("freeze for a moment."); */ // TODO DE
+	    You("VERB_ERSTARREN für einen Augenblick."); /* EN You("freeze for a moment."); */
 	    nomul(-2);
 	    break;
 	case MS_LAUGH:
@@ -798,15 +798,15 @@ register struct monst *mtmp;
 #else
 	    if (money_cnt(invent))
 #endif
-		verbl_msg = "Please drop that gold and follow me."; /* EN verbl_msg = "Please drop that gold and follow me."; */ // TODO DE
+		verbl_msg = "Bitte MODIFIER_VERB_IMPERATIV VERB_DROP das Gold SATZKLAMMER und VERB_FOLGEN mir."; /* EN verbl_msg = "Please drop that gold and follow me."; */
 	    else
-		verbl_msg = "Please follow me."; /* EN verbl_msg = "Please follow me."; */ // TODO DE
+		verbl_msg = "Bitte MODIFIER_VERB_IMPERATIV VERB_FOLGEN mir."; /* EN verbl_msg = "Please follow me."; */
 	    break;
 	case MS_SOLDIER:
 	    {
 		static const char * const soldier_foe_msg[3] = {
 		    "Widerstand ist zwecklos!", /* EN "Resistance is useless!", */
-		    "You're dog meat!", /* EN "You're dog meat!", */ // TODO DE
+		    "SUBJECT PRONOMEN_PERSONAL VERB_SEIN geliefert!", /* EN "You're dog meat!", */
 		    "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_ERGEBEN OBJECT PRONOMEN_PERSONAL!", /* EN "Surrender!", */
 		},		  * const soldier_pax_msg[3] = {
 		    "Mann, was für 'ne miese Bezahlung wir kriegen!", /* EN "What lousy pay we're getting here!", */
@@ -820,7 +820,7 @@ register struct monst *mtmp;
 	case MS_RIDER:
 	    if (ptr == &mons[PM_DEATH] && !rn2(10))
 		pline_msg = "is busy reading a copy of Sandman #8."; /* EN pline_msg = "is busy reading a copy of Sandman #8."; */ // TODO DE
-	    else verbl_msg = "Für wen hältst du dich eigentlich? Krieg?"; /* EN else verbl_msg = "Who do you think you are, War?"; */
+	    else verbl_msg = (ptr == &mons[PM_DEATH]) ? "FÜR WEN HÄLTST DU DICH EIGENTLICH? KRIEG?" : "Für wen hältst du dich eigentlich? Krieg?"; /* EN else verbl_msg = "Who do you think you are, War?"; */
 	    break;
     }
 
