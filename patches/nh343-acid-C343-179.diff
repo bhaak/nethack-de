@@ -1,7 +1,7 @@
 diff -uwr nethack-linux/include/extern.h nethack-acid-C343-179/include/extern.h
 --- nethack-linux/include/extern.h	2008-05-26 19:47:02.000000000 +0200
 +++ nethack-acid-C343-179/include/extern.h	2008-12-28 22:10:02.000000000 +0100
-@@ -2016,7 +2016,7 @@
+@@ -2033,7 +2033,7 @@
  E void FDECL(fill_pit, (int,int));
  E int FDECL(float_down, (long, long));
  E int FDECL(fire_damage, (struct obj *,BOOLEAN_P,BOOLEAN_P,XCHAR_P,XCHAR_P));
@@ -13,7 +13,7 @@ diff -uwr nethack-linux/include/extern.h nethack-acid-C343-179/include/extern.h
 diff -uwr nethack-linux/src/do.c nethack-acid-C343-179/src/do.c
 --- nethack-linux/src/do.c	2008-05-26 19:47:02.000000000 +0200
 +++ nethack-acid-C343-179/src/do.c	2008-12-28 22:10:02.000000000 +0100
-@@ -208,7 +208,7 @@
+@@ -209,7 +209,7 @@
  		    map_background(x, y, 0);
  		    newsym(x, y);
  		}
@@ -25,7 +25,7 @@ diff -uwr nethack-linux/src/do.c nethack-acid-C343-179/src/do.c
 diff -uwr nethack-linux/src/trap.c nethack-acid-C343-179/src/trap.c
 --- nethack-linux/src/trap.c	2008-05-26 19:47:02.000000000 +0200
 +++ nethack-acid-C343-179/src/trap.c	2008-12-28 23:08:03.000000000 +0100
-@@ -2678,12 +2678,15 @@
+@@ -2688,12 +2688,15 @@
      return retval;
  }
  
@@ -42,15 +42,15 @@ diff -uwr nethack-linux/src/trap.c nethack-acid-C343-179/src/trap.c
  
  	/* Scrolls, spellbooks, potions, weapons and
  	   pieces of armor may get affected by the water */
-@@ -2724,6 +2727,7 @@
+@@ -2734,6 +2737,7 @@
  				/* damage player/monster? */
- 				pline("A potion explodes!");
+ 				pline("SUBJECT ARTIKEL_UNBESTIMMTER NOUN_POTION VERB_EXPLODIEREN!"); /* EN pline("A potion explodes!"); */
  				delobj(obj);
 +				obj_destroyed = (obj == obj_original);
  				continue;
  			} else if (obj->odiluted) {
  				obj->otyp = POT_WATER;
-@@ -2740,7 +2744,9 @@
+@@ -2750,7 +2754,9 @@
  			   (uarmc->cursed && !rn2(3)))
  				obj->oeroded++;
  		}
