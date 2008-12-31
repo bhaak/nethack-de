@@ -1377,11 +1377,11 @@ register struct attack *mattk;
 		    tmp = 0;
 		    break;
 		}
-		if (!Blind) pline("%s is zapped!", Monnam(mdef)); /* EN if (!Blind) pline("%s is zapped!", Monnam(mdef)); */ // TODO DE
+		if (!Blind) pline("SUBJECT %s VERB_KRIEGEN eine gewischt!", Monnam(mdef)); /* EN if (!Blind) pline("%s is zapped!", Monnam(mdef)); */
 		tmp += destroy_mitem(mdef, WAND_CLASS, AD_ELEC);
 		if (resists_elec(mdef)) {
 		    if (!Blind)
-			pline_The("zap doesn't shock %s!", mon_nam(mdef)); /* EN pline_The("zap doesn't shock %s!", mon_nam(mdef)); */ // TODO DE
+			pline("Der Stromschlag kitzelt KASUS_AKKUSATIV %s nur!", mon_nam(mdef)); /* EN pline_The("zap doesn't shock %s!", mon_nam(mdef)); */
 		    golemeffects(mdef, AD_ELEC, tmp);
 		    shieldeff(mdef->mx, mdef->my);
 		    tmp = 0;
@@ -1869,9 +1869,9 @@ register struct attack *mattk;
 			break;
 		    case AD_ELEC:
 			if (rn2(2)) {
-			    pline_The("air around %s crackles with electricity.", mon_nam(mdef)); /* EN pline_The("air around %s crackles with electricity.", mon_nam(mdef)); */ // TODO DE
+			    pline("Die Luft um KASUS_AKKUSATIV %s knistert vor Elektrizität.", mon_nam(mdef)); /* EN pline_The("air around %s crackles with electricity.", mon_nam(mdef)); */
 			    if (resists_elec(mdef)) {
-				pline("%s seems unhurt.", Monnam(mdef)); /* EN pline("%s seems unhurt.", Monnam(mdef)); */ // TODO DE
+				pline("SUBJECT %s VERB_SCHEINEN unverletzt.", Monnam(mdef)); /* EN pline("%s seems unhurt.", Monnam(mdef)); */
 				dam = 0;
 			    }
 			    golemeffects(mdef,(int)mattk->adtyp,dam);

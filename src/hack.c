@@ -1071,9 +1071,9 @@ domove()
 						    && !sensemon(mtmp))
 		    stumble_onto_mimic(mtmp);
 		else if (mtmp->mpeaceful && !Hallucination)
-		    pline("Pardon me, %s.", m_monnam(mtmp)); /* EN pline("Pardon me, %s.", m_monnam(mtmp)); */ // TODO DE
+		    pline("Verzeihung, %s.", m_monnam(mtmp)); /* EN pline("Pardon me, %s.", m_monnam(mtmp)); */
 		else
-		    You("move right into %s.", mon_nam(mtmp)); /* EN You("move right into %s.", mon_nam(mtmp)); */ // TODO DE
+		    You("VERB_LAUFEN geradewegs OBJECT in %s hinein.", mon_nam(mtmp)); /* EN You("move right into %s.", mon_nam(mtmp)); */
 		return;
 	    }
 	    if(flags.forcefight || !mtmp->mundetected || sensemon(mtmp) ||
@@ -1086,7 +1086,7 @@ domove()
 		    } else if (!Upolyd && u.uhp > 1) {
 			u.uhp--;
 		    } else {
-			You("pass out from exertion!"); /* EN You("pass out from exertion!"); */ // TODO DE
+			You("VERB_FALLEN vor Anstrengung in Ohnmacht!"); /* EN You("pass out from exertion!"); */
 			exercise(A_CON, FALSE);
 			fall_asleep(-10, FALSE);
 		    }
@@ -1182,11 +1182,11 @@ domove()
 			if((u.utrap & 0xff) == 0) {
 #ifdef STEED
 			    if (u.usteed)
-				You("lead %s to the edge of the lava.", /* EN You("lead %s to the edge of the lava.", */ // TODO DE
+				You("VERB_FUEHREN OBJECT %s an den Rand der Lava.", /* EN You("lead %s to the edge of the lava.", */
 				    y_monnam(u.usteed));
 			    else
 #endif
-			     You("pull yourself to the edge of the lava."); /* EN You("pull yourself to the edge of the lava."); */ // TODO DE
+			     You("VERB_ZIEHEN OBJECT PRONOMEN_PERSONAL an den Rand der Lava."); /* EN You("pull yourself to the edge of the lava."); */
 			    u.utrap = 0;
 			}
 		    }
@@ -2118,12 +2118,12 @@ maybe_wail()
 	    for (i = 0, powercnt = 0; i < SIZE(powers); ++i)
 		if (u.uprops[powers[i]].intrinsic & INTRINSIC) ++powercnt;
 
-	    pline(powercnt >= 4 ? "%s, all your powers will be lost..." /* EN pline(powercnt >= 4 ? "%s, all your powers will be lost..." */ // TODO DE
+	    pline(powercnt >= 4 ? "SATZBEGINN %s, PRONOMEN_ALLE PRONOMEN_POSSESSIV NOUN_KRAFTs werden dahin sein ..." /* EN pline(powercnt >= 4 ? "%s, all your powers will be lost..." */ /* Gauntlet-Referenz */
 				: "SUBJECT %s, NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_LEBENSKRAFT läuft aus.", who); /* EN : "%s, your life force is running out.", who); */ /* Gauntlet-Referenz */
 	}
     } else {
-	You_hear(u.uhp == 1 ? "the wailing of the Banshee..." /* EN You_hear(u.uhp == 1 ? "the wailing of the Banshee..." */ // TODO DE
-			    : "the howling of the CwnAnnwn..."); /* EN : "the howling of the CwnAnnwn..."); */ // TODO DE
+	 You_hear(u.uhp == 1 ? "das Wehklagen der Banshee ..." /* EN You_hear(u.uhp == 1 ? "the wailing of the Banshee..." */
+			    : "das Heulen der Cwn Annwn ..."); /* EN : "the howling of the CwnAnnwn..."); */ /* Wilde Jagd, keine Namen aus germanischen Sagen? */
     }
 }
 

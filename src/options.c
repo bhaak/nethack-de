@@ -219,8 +219,8 @@ static struct Comp_Opt
 } compopt[] = {
 	{ "align",    "PRONOMEN_POSSESSIV ADJEKTIV_ANFAENGLICH NOUN_ALIGNMENT (ADJEKTIV_LAWFUL, ADJEKTIV_NEUTRAL oder ADJEKTIV_CHAOTIC)", /* EN { "align",    "your starting alignment (lawful, neutral, or chaotic)", */
 						8, DISP_IN_GAME },
-	{ "align_message", "message window alignment", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_message", "message window alignment", 20, DISP_IN_GAME }, 	*/ // TODO DE
-	{ "align_status", "status window alignment", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_status", "status window alignment", 20, DISP_IN_GAME }, 	*/ // TODO DE
+	{ "align_message", "Ausrichtung des Nachrichtenfensters", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_message", "message window alignment", 20, DISP_IN_GAME }, 	*/
+	{ "align_status", "Ausrichtung des Statusfensters", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_status", "status window alignment", 20, DISP_IN_GAME }, 	*/
 	{ "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, /* EN { "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, */ // TODO DE
 	{ "boulder",  "das Symbol für Felsbrocken", /* EN { "boulder",  "the symbol to use for displaying boulders", */
 						1, SET_IN_GAME },
@@ -244,8 +244,8 @@ static struct Comp_Opt
 	{ "font_size_message", "die Grösse der Nachrichtenschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_message", "the size of the message font", 20, DISP_IN_GAME },	*/
 	{ "font_size_status", "die Grösse der Statusschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_status", "the size of the status font", 20, DISP_IN_GAME },	*/
 	{ "font_size_text", "die Grösse der Textschrift", 20, DISP_IN_GAME },	/*WC*/ /* EN { "font_size_text", "the size of the text font", 20, DISP_IN_GAME },	*/
-	{ "font_status", "die Schrift für Statusfenster", 40, DISP_IN_GAME }, /*WC*/ /* EN { "font_status", "the font to use in status window", 40, DISP_IN_GAME }, */
-	{ "font_text", "die Schrift für Textfenster", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	*/
+	{ "font_status", "die Schrift fürs Statusfenster", 40, DISP_IN_GAME }, /*WC*/ /* EN { "font_status", "the font to use in status window", 40, DISP_IN_GAME }, */
+	{ "font_text", "die Schrift fürs Textfenster", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	*/
 	{ "fruit",    "the name of a fruit you enjoy eating", /* EN { "fruit",    "the name of a fruit you enjoy eating", */ // TODO DE
 						PL_FSIZ, SET_IN_GAME },
 	{ "gender",   "your starting gender (male or female)", /* EN { "gender",   "your starting gender (male or female)", */ // TODO DE
@@ -255,21 +255,21 @@ static struct Comp_Opt
 	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/ // TODO DE
 	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
 						MENUTYPELEN, SET_IN_GAME },
-	{ "menu_deselect_all", "alle Einträge eines Menüs deselektieren", 4, SET_IN_FILE }, /* EN { "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
-	{ "menu_deselect_page", "alle Auswahl dieser Seite deselektieren", /* EN { "menu_deselect_page", "deselect all items on this page of a menu", */ // TODO DE
+	{ "menu_deselect_all", "alle Einträge eines Menüs deselektieren", 4, SET_IN_FILE }, /* EN { "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, */
+	{ "menu_deselect_page", "alle Einträge dieser Menüseite deselektieren", /* EN { "menu_deselect_page", "deselect all items on this page of a menu", */
 						4, SET_IN_FILE },
 	{ "menu_first_page", "springe zur ersten Seite eines Menüs", /* EN { "menu_first_page", "jump to the first page in a menu", */
 						4, SET_IN_FILE },
 	{ "menu_headings", "fette, invertierte oder unterstrichene Überschriften", 9, SET_IN_GAME }, /* EN { "menu_headings", "bold, inverse, or underline headings", 9, SET_IN_GAME }, */
-	{ "menu_invert_all", "invert all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_invert_all", "invert all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
-	{ "menu_invert_page", "invert all items on this page of a menu", /* EN { "menu_invert_page", "invert all items on this page of a menu", */ // TODO DE
+	{ "menu_invert_all", "gesamte Auswahl eines Menüs invertieren", 4, SET_IN_FILE }, /* EN { "menu_invert_all", "invert all items in a menu", 4, SET_IN_FILE }, */
+	{ "menu_invert_page", "gesamte Auswahl dieser Menüseite invertieren", /* EN { "menu_invert_page", "invert all items on this page of a menu", */
 						4, SET_IN_FILE },
 	{ "menu_last_page", "springe zur letzten Seite eines Menüs", 4, SET_IN_FILE }, /* EN { "menu_last_page", "jump to the last page in a menu", 4, SET_IN_FILE }, */
 	{ "menu_next_page", "gehe zu der nächsten Menüseite", 4, SET_IN_FILE }, /* EN { "menu_next_page", "goto the next menu page", 4, SET_IN_FILE }, */
 	{ "menu_previous_page", "gehe zu der vorherigen Menüseite", 4, SET_IN_FILE }, /* EN { "menu_previous_page", "goto the previous menu page", 4, SET_IN_FILE }, */
 	{ "menu_search", "suche nach einem Menüeintrag", 4, SET_IN_FILE }, /* EN { "menu_search", "search for a menu item", 4, SET_IN_FILE }, */
-	{ "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, /* EN { "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, */ // TODO DE
-	{ "menu_select_page", "select all items on this page of a menu", /* EN { "menu_select_page", "select all items on this page of a menu", */ // TODO DE
+	{ "menu_select_all", "alles eines Menüs auswählen", 4, SET_IN_FILE }, /* EN { "menu_select_all", "select all items in a menu", 4, SET_IN_FILE }, */
+	{ "menu_select_page", "alles auf dieser Menüseite auswählen", /* EN { "menu_select_page", "select all items on this page of a menu", */
 						4, SET_IN_FILE },
 	{ "monsters", "die für Monster verwendeten Symbole", /* EN { "monsters", "the symbols to use for monsters", */
 						MAXMCLASSES, SET_IN_FILE },

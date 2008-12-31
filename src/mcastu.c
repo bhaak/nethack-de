@@ -603,7 +603,7 @@ int spellnum;
 	    nomul(-1);
 	} else {
 	    if (multi >= 0)
-		You("are frozen in place!"); /* EN You("are frozen in place!"); */ // TODO DE
+		You("VERB_ERSTARREN auf der Stelle!"); /* EN You("are frozen in place!"); */
 	    dmg = 4 + (int)mtmp->m_lev;
 	    if (Half_spell_damage) dmg = (dmg + 1) / 2;
 	    nomul(-dmg);

@@ -7478,6 +7478,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Neferet die Grüne", "NOUN_NEFERET_THE_GREEN", "", akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Mignons des Huhetotl", "NOUN_MINION_OF_HUHETOTL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mignon des Huhetotl", "NOUN_MINION_OF_HUHETOTL", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mignon des Huhetotl", "NOUN_MINION_OF_HUHETOTLs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Mignons von Huhetotl", "NOUN_MINION_OF_HUHETOTL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Mignon von Huhetotl", "NOUN_MINION_OF_HUHETOTL", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Mignon von Huhetotl", "NOUN_MINION_OF_HUHETOTLs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},

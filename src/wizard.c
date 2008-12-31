@@ -563,8 +563,8 @@ const char * const random_insult[] = {
 	"cur", /* EN "cur", */ // TODO DE
 	"Memme", /* EN "dastard", */ /* Feigling, Memme */
 	"Dämonenfutter", /* EN "demon fodder", */
-	"dimwit", /* EN "dimwit", */ // TODO DE
-	"dolt", /* EN "dolt", */ // TODO DE
+	"Dumpfbacke", /* EN "dimwit", */
+	"Tölpel", /* EN "dolt", */
 	"fool", /* EN "fool", */ // TODO DE
 	"footpad", /* EN "footpad", */ // TODO DE
 	"imbecile", /* EN "imbecile", */ // TODO DE

@@ -1482,7 +1482,7 @@ int x, y;
 		pline("Ohne Gliedmaßen VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nichts plündern."); /* EN pline("Without limbs, you cannot loot anything."); */
 		return FALSE;
 	} else if (!freehand()) {
-		pline("Without a free %s, you cannot loot anything.", /* EN pline("Without a free %s, you cannot loot anything.", */ // TODO DE
+		pline("Ohne KASUS_AKKUSATIV ARTIKEL_UNBESTIMMTER %s frei, NEUER_SATZ SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL nichts plündern.", /* EN pline("Without a free %s, you cannot loot anything.", */
 			body_part(HAND));
 		return FALSE;
 	}
@@ -1627,13 +1627,13 @@ gotit:
 	    }
 	}
     } else if (IS_GRAVE(levl[cc.x][cc.y].typ)) {
-	You("need to dig up the grave to effectively loot it..."); /* EN You("need to dig up the grave to effectively loot it..."); */ // TODO DE
+	You("VERB_MUESSEN OBJECT ARTIKEL_BESTIMMTER NOUN_GRAVE ausgraben, um es plündern zu können ..."); /* EN You("need to dig up the grave to effectively loot it..."); */
     }
     /*
      * 3.3.1 introduced directional looting for some things.
      */
     if (c != 'y' && mon_beside(u.ux, u.uy)) {
-	if (!get_adjacent_loc("Loot in what direction?", "Invalid loot location", /* EN if (!get_adjacent_loc("Loot in what direction?", "Invalid loot location", */ // TODO DE
+	if (!get_adjacent_loc("In welche Richtung plündern?", "Ungültiger Plünderplatz", /* EN if (!get_adjacent_loc("Loot in what direction?", "Invalid loot location", */
 			u.ux, u.uy, &cc)) return 0;
 	if (cc.x == u.ux && cc.y == u.uy) {
 	    underfoot = TRUE;
@@ -1642,7 +1642,7 @@ gotit:
 	} else
 	    underfoot = FALSE;
 	if (u.dz < 0) {
-	    You("%s zum Plündern _an_ ARTIKEL_BESTIMMTER %s.", dont_find_anything, /* EN You("%s to loot on the %s.", dont_find_anything, */ // TODO DE
+	    You("%s zum Plündern _an_ ARTIKEL_BESTIMMTER %s.", dont_find_anything, /* EN You("%s to loot on the %s.", dont_find_anything, */
 		ceiling(cc.x, cc.y));
 	    timepassed = 1;
 	    return timepassed;
@@ -1881,7 +1881,7 @@ register struct obj *obj;
 	} else if (Is_mbag(current_container) && mbag_explodes(obj, 0)) {
 		/* explicitly mention what item is triggering the explosion */
 		pline(
-	      "As you put %s inside, you are blasted by a magical explosion!", /* EN "As you put %s inside, you are blasted by a magical explosion!", */ // TODO DE
+	      "Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s hinein-VERB_TUN, NEUER_SATZ SUBJECT_IM_SATZ VERB_WERDEN PRONOMEN_PERSONAL von einer magischen Explosion erfasst!", /* EN "As you put %s inside, you are blasted by a magical explosion!", */
 		      doname(obj));
 		/* did not actually insert obj yet */
 		if (was_unpaid) addtobill(obj, FALSE, FALSE, TRUE);
@@ -2224,7 +2224,7 @@ ask_again2:
 	    return used;
 	}
 	if (flags.menu_style != MENU_FULL) {
-	    Sprintf(qbuf, "MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s reintun?", something); /* EN Sprintf(qbuf, "Do you wish to put %s in?", something); */
+	    Sprintf(qbuf, "SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s reintun?", something); /* EN Sprintf(qbuf, "Do you wish to put %s in?", something); */
 	    Strcpy(pbuf, ynqchars);
 	    if (flags.menu_style == MENU_TRADITIONAL && invent && inv_cnt() > 0)
 		Strcat(pbuf, "m");
@@ -2269,7 +2269,7 @@ ask_again2:
 	    } else {
 		/* traditional code */
 		menu_on_request = 0;
-		if (query_classes(select, &one_by_one, &allflag, "put in", /* EN if (query_classes(select, &one_by_one, &allflag, "put in", */ // TODO DE
+		if (query_classes(select, &one_by_one, &allflag, "reintun", /* EN if (query_classes(select, &one_by_one, &allflag, "put in", */
 				   invent, FALSE,
 #ifndef GOLDOBJ
 				   (u.ugold != 0L),

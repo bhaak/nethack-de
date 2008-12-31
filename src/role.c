@@ -170,7 +170,7 @@ const struct Role roles[] = {
 	{"NOUN_MEISTER",            "NOUN_MEISTERIN"} }, /* EN {"Master",            0} }, */
 	"Shan Lai Ching", "Chih Sung-tzu", "Huan Ti", /* Chinese */
 	"Mon", "ARTIKEL_BESTIMMTER NOUN_MONASTERY von Chan-Sun", /* EN "Mon", "the Monastery of Chan-Sune", */
-	  "ARTIKEL_BESTIMMTER NOUN_MONASTERY der Erdfürsten", /* EN "the Monastery of the Earth-Lord", */
+	  "ARTIKEL_BESTIMMTER NOUN_MONASTERY des Erdfürsten", /* EN "the Monastery of the Earth-Lord", */
 	PM_MONK, NON_PM, NON_PM,
 	PM_GRAND_MASTER, PM_ABBOT, PM_MASTER_KAEN,
 	PM_EARTH_ELEMENTAL, PM_XORN, S_ELEMENTAL, S_XORN,
@@ -342,7 +342,7 @@ const struct Role roles[] = {
 	{"NOUN_KRIEGERPRINZ",    "NOUN_KRIEGERPRINZESSIN"}, /* EN {"Champion",    0}, */
 	{"NOUN_LORD",        "NOUN_LADY"} }, /* EN {"Lord",        "Lady"} }, */
 	"Tyr", "Odin", "Loki", /* Norse */
-	"Val", "ARTIKEL_BESTIMMTER NOUN_SHRINE_OF_DESTINY", "ARTIKEL_BESTIMMTER NOUN_CAVE von Surtur", /* EN "Val", "the Shrine of Destiny", "the cave of Surtur", */
+	"Val", "ARTIKEL_BESTIMMTER NOUN_SHRINE_OF_DESTINY", "ARTIKEL_BESTIMMTER NOUN_CAVE von Surtur", /* EN "Val", "the Shrine of Destiny", "the cave of Surtur", */ /* netzhack: Surtshellir */
 	PM_VALKYRIE, NON_PM, NON_PM /*PM_WINTER_WOLF_CUB*/,
 	PM_NORN, PM_WARRIOR, PM_LORD_SURTUR,
 	PM_FIRE_ANT, PM_FIRE_GIANT, S_ANT, S_GIANT,

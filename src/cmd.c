@@ -903,7 +903,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Cold_resistance) you_are("kälteresistent"); /* EN if (Cold_resistance) you_are("cold resistant"); */
 	if (Sleep_resistance) you_are("schlafresistent"); /* EN if (Sleep_resistance) you_are("sleep resistant"); */
 	if (Disint_resistance) you_are("desintegrationsresistant"); /* EN if (Disint_resistance) you_are("disintegration-resistant"); */
-	if (Shock_resistance) you_are("shock resistant"); /* EN if (Shock_resistance) you_are("shock resistant"); */ // TODO DE
+	if (Shock_resistance) you_are("stromresistent"); /* EN if (Shock_resistance) you_are("shock resistant"); */
 	if (Poison_resistance) you_are("giftresistent"); /* EN if (Poison_resistance) you_are("poison resistant"); */
 	if (Drain_resistance) you_are("lebensentzugsresistent"); /* EN if (Drain_resistance) you_are("level-drain resistant"); */
 	if (Sick_resistance) you_are("immune to sickness"); /* EN if (Sick_resistance) you_are("immune to sickness"); */ // TODO DE
@@ -1539,26 +1539,26 @@ struct ext_func_tab extcmdlist[] = {
 	{"dip", "dip an object into something", dodip, FALSE}, /* EN {"dip", "dip an object into something", dodip, FALSE}, */ // TODO DE
 	{"enhance", "advance or check weapons skills", enhance_weapon_skill, /* EN {"enhance", "advance or check weapons skills", enhance_weapon_skill, */ // TODO DE
 							TRUE},
-	{"force", "force a lock", doforce, FALSE}, /* EN {"force", "force a lock", doforce, FALSE}, */ // TODO DE
+	{"force", "brich ein Schloss auf", doforce, FALSE}, /* EN {"force", "force a lock", doforce, FALSE}, */
 	{"invoke", "invoke an object's powers", doinvoke, TRUE}, /* EN {"invoke", "invoke an object's powers", doinvoke, TRUE}, */ // TODO DE
 	{"jump", "springe an eine Stelle", dojump, FALSE}, /* EN {"jump", "jump to a location", dojump, FALSE}, */
 	{"loot", "plündere einen Behälter auf dem Boden", doloot, FALSE}, /* EN {"loot", "loot a box on the floor", doloot, FALSE}, */
-	{"monster", "use a monster's special ability", domonability, TRUE}, /* EN {"monster", "use a monster's special ability", domonability, TRUE}, */ // TODO DE
+	{"monster", "benutze eine spezielle Monsterfertigkeit", domonability, TRUE}, /* EN {"monster", "use a monster's special ability", domonability, TRUE}, */
 	{"name", "benenne einen Gegenstand oder eine Klasse von Objekten", ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */
 	{"offer", "bringe den Göttern ein Opfer dar", dosacrifice, FALSE}, /* EN {"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, */
 	{"pray", "bete zu den Göttern um Hilfe", dopray, TRUE}, /* EN {"pray", "pray to the gods for help", dopray, TRUE}, */
 	{"quit", "verlasse das laufende Spiel ohne zu speichern", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */
 #ifdef STEED
-	{"ride", "ride (or stop riding) a monster", doride, FALSE}, /* EN {"ride", "ride (or stop riding) a monster", doride, FALSE}, */ // TODO DE
+	{"ride", "reite auf (oder steige ab von) einem Monster", doride, FALSE}, /* EN {"ride", "ride (or stop riding) a monster", doride, FALSE}, */
 #endif
-	{"rub", "rub a lamp or a stone", dorub, FALSE}, /* EN {"rub", "rub a lamp or a stone", dorub, FALSE}, */ // TODO DE
+	{"rub", "reibe eine Lampe oder einen Stein", dorub, FALSE}, /* EN {"rub", "rub a lamp or a stone", dorub, FALSE}, */
 	{"sit", "sit down", dosit, FALSE}, /* EN {"sit", "sit down", dosit, FALSE}, */ // TODO DE
 	{"turn", "turn undead", doturn, TRUE}, /* EN {"turn", "turn undead", doturn, TRUE}, */ // TODO DE
 	{"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, /* EN {"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, */ // TODO DE
 	{"untrap", "etwas entschärfen", dountrap, FALSE}, /* EN {"untrap", "untrap something", dountrap, FALSE}, */
-	{"version", "list compile time options for this version of NetHack", /* EN {"version", "list compile time options for this version of NetHack", */ // TODO DE
+	{"version", "zeige die fest einkompilierten Optionen für diese Version von NetHack", /* EN {"version", "list compile time options for this version of NetHack", */
 		doextversion, TRUE},
-	{"wipe", "wipe off your face", dowipe, FALSE}, /* EN {"wipe", "wipe off your face", dowipe, FALSE}, */ // TODO DE
+	{"wipe", "das Gesicht abwischen", dowipe, FALSE}, /* EN {"wipe", "wipe off your face", dowipe, FALSE}, */
 	{"?", "zeigt diese Liste der erweiterten Befehle", doextlist, TRUE}, /* EN {"?", "get this list of extended commands", doextlist, TRUE}, */
 #if defined(WIZARD)
 	/*
@@ -1593,11 +1593,11 @@ static const struct ext_func_tab debug_extcmdlist[] = {
 	{"levelchange", "ändere Erfahrungsstufe", wiz_level_change, TRUE}, /* EN {"levelchange", "change experience level", wiz_level_change, TRUE}, */
 	{"lightsources", "zeige mobile Lichtquellen", wiz_light_sources, TRUE}, /* EN {"lightsources", "show mobile light sources", wiz_light_sources, TRUE}, */
 #ifdef DEBUG_MIGRATING_MONS
-	{"migratemons", "migrate n random monsters", wiz_migrate_mons, TRUE}, /* EN +	{"migratemons", "migrate n random monsters", wiz_migrate_mons, TRUE}, */ // TODO DE
+	{"migratemons", "migriere n zufällige Monster", wiz_migrate_mons, TRUE}, /* EN +	{"migratemons", "migrate n random monsters", wiz_migrate_mons, TRUE}, */
 #endif
 	{"monpolycontrol", "kontrolliere Monstertransformationen", wiz_mon_polycontrol, TRUE}, /* EN {"monpolycontrol", "control monster polymorphs", wiz_mon_polycontrol, TRUE}, */
 	{"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, /* EN {"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, */ // TODO DE
-	{"polyself", "Eigentransformation", wiz_polyself, TRUE}, /* EN {"polyself", "polymorph self", wiz_polyself, TRUE}, */ // TODO DE
+	{"polyself", "Eigentransformation", wiz_polyself, TRUE}, /* EN {"polyself", "polymorph self", wiz_polyself, TRUE}, */
 #ifdef PORT_DEBUG
 	{"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, /* EN {"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, */ // TODO DE
 #endif
@@ -1608,7 +1608,7 @@ static const struct ext_func_tab debug_extcmdlist[] = {
 #ifdef DEBUG
 	{"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE}, /* EN {"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE}, */ // TODO DE
 #endif
-	{"wmode", "show wall modes", wiz_show_wmodes, TRUE}, /* EN {"wmode", "show wall modes", wiz_show_wmodes, TRUE}, */ // TODO DE
+	{"wmode", "zeige Wandmodus", wiz_show_wmodes, TRUE}, /* EN {"wmode", "show wall modes", wiz_show_wmodes, TRUE}, */
 	{(char *)0, (char *)0, donull, TRUE}
 };
 
@@ -1832,7 +1832,7 @@ wiz_migrate_mons()
 	struct permonst *ptr;
 	struct monst *mtmp;
 	d_level tolevel;
-	getlin("How many random monsters to migrate? [0]", inbuf); /* EN getlin("How many random monsters to migrate? [0]", inbuf); */ // TODO DE
+	getlin("Wieviele zufällige Monster migrieren? [0]", inbuf); /* EN getlin("How many random monsters to migrate? [0]", inbuf); */
 	if (*inbuf == '\033') return 0;
 	mcount = atoi(inbuf);
 	if (mcount < 0 || mcount > (COLNO * ROWNO) || Is_botlevel(&u.uz))

@@ -3749,14 +3749,14 @@ boolean disarm;
 			    dmg = d(4, 4);
 			destroy_item(RING_CLASS, AD_ELEC);
 			destroy_item(WAND_CLASS, AD_ELEC);
-			if (dmg) losehp(dmg, "electric shock", KILLED_BY_AN); /* EN if (dmg) losehp(dmg, "electric shock", KILLED_BY_AN); */ // TODO DE
+			if (dmg) losehp(dmg, "NOUN_STROMSCHLAG", KILLED_BY_AN); /* EN if (dmg) losehp(dmg, "electric shock", KILLED_BY_AN); */
 			break;
 		      }
 		case 5:
 		case 4:
 		case 3:
 			if (!Free_action) {                        
-			pline("Suddenly you are frozen in place!"); /* EN pline("Suddenly you are frozen in place!"); */ // TODO DE
+			pline("Plötzlich SUBJECT_IM_SATZ VERB_ERSTARREN PRONOMEN_PERSONAL auf der Stelle!"); /* EN pline("Suddenly you are frozen in place!"); */
 			nomul(-d(5, 6));
 			exercise(A_DEX, FALSE);
 			nomovemsg = You_can_move_again;

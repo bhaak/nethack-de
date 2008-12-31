@@ -488,7 +488,7 @@ register int pm;
 	    case PM_HOUSECAT:
 	    case PM_LARGE_CAT:
 		if (!CANNIBAL_ALLOWED()) {
-		    You_feel("that eating the %s was a bad idea.", mons[pm].mname); /* EN You_feel("that eating the %s was a bad idea.", mons[pm].mname); */ // TODO DE
+		    You("VERB_MERKEN, dass OBJECT %s zu essen, eine ganz blöde Idee war.", mons[pm].mname); /* EN You_feel("that eating the %s was a bad idea.", mons[pm].mname); */
 		    HAggravate_monster |= FROMOUTSIDE;
 		}
 		break;
@@ -499,7 +499,7 @@ register int pm;
 	    case PM_PESTILENCE:
 	    case PM_FAMINE:
 		{ char buf[BUFSZ];
-		    pline("Eating that is instantly fatal."); /* EN pline("Eating that is instantly fatal."); */ // TODO DE
+		    pline("Diese Nahrungsaufnahme endet sofort tödlich."); /* EN pline("Eating that is instantly fatal."); */
 		    Sprintf(buf, "aß dummerweise KASUS_GENITIV %s Körper", /* EN Sprintf(buf, "unwisely ate the body of %s", */
 			    mons[pm].mname);
 		    killer = buf;
@@ -1170,8 +1170,7 @@ start_tin(otmp)		/* called when starting to open a tin */
 		default:
 			goto no_opener;
 		}
-		/* pline("Mit(tels?) PRONOMEN_POSSESSIV %s VERB_VERSUCHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL die Dose zu öffnen.", */
-								pline("Using your %s you try to open the tin.", /* EN pline("Using your %s you try to open the tin.", */ // TODO DE
+		pline("Mit OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s SUBJECT_IM_SATZ VERB_VERSUCHEN PRONOMEN_PERSONAL die Dose zu öffnen.", /* EN pline("Using your %s you try to open the tin.", */
 			aobjnam(uwep, (char *)0));
 	} else {
 no_opener:
@@ -1207,7 +1206,7 @@ STATIC_OVL int
 rottenfood(obj)
 struct obj *obj;
 {
-	pline("Blecch!  Rotten %s!", foodword(obj)); /* EN pline("Blecch!  Rotten %s!", foodword(obj)); */ // TODO DE
+	pline("Bääh!  SATZBEGINN ADJEKTIV_VERGAMMELT %s!", foodword(obj)); /* EN pline("Blecch!  Rotten %s!", foodword(obj)); */
 	if(!rn2(4)) {
 		if (Hallucination) Du_fuehlst_dich("ziemlich trippig."); /* EN You_feel("rather trippy."); */
 		else Du_fuehlst_dich("ziemlich %s.", body_part(LIGHT_HEADED)); /* EN else You_feel("rather %s.", body_part(LIGHT_HEADED)); */
@@ -1279,7 +1278,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 			if (Sick && (sick_time > Sick))
 			    sick_time = (Sick > 1L) ? Sick - 1L : 1L;
 			if (!uniq)
-			    Sprintf(buf, "rotted %s", corpse_xname(otmp,TRUE)); /* EN Sprintf(buf, "rotted %s", corpse_xname(otmp,TRUE)); */ // TODO DE
+			    Sprintf(buf, "ADJEKTIV_VERGAMMELT %s", corpse_xname(otmp,TRUE)); /* EN Sprintf(buf, "rotted %s", corpse_xname(otmp,TRUE)); */
 			else
 			    Sprintf(buf, "%s%s rotted corpse", /* EN Sprintf(buf, "%s%s rotted corpse", */ // TODO DE
 				    !type_is_pname(&mons[mnum]) ? "the " : "", /* EN !type_is_pname(&mons[mnum]) ? "the " : "", */ // TODO DE
@@ -1712,7 +1711,7 @@ register struct obj *otmp;
 			u.uhp = u.uhpmax;
 		    } else if (u.uhp <= 0) {
 			killer_format = KILLED_BY_AN;
-			killer = "rotten lump of royal jelly"; /* EN killer = "rotten lump of royal jelly"; */ // TODO DE
+			killer = "ADJEKTIV_VERGAMMELT NOUN_LUMP_OF_ROYAL_JELLY"; /* EN killer = "rotten lump of royal jelly"; */
 			done(POISONING);
 		    }
 		}
@@ -1975,7 +1974,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 		(void) rottenfood(otmp);
 
 	    if (otmp->oclass == WEAPON_CLASS && otmp->opoisoned) {
-		pline("Ecch - that must have been poisonous!"); /* EN pline("Ecch - that must have been poisonous!"); */ // TODO DE
+		pline("*Röchel* Das muss giftig gewesen sein!"); /* EN pline("Ecch - that must have been poisonous!"); */
 		if(!Poison_resistance) {
 		    losestr(rnd(4));
 		    losehp(rnd(15), xname(otmp), KILLED_BY_AN);

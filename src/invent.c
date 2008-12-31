@@ -1026,7 +1026,7 @@ register const char *let,*word;
 			    return(struct obj *)0;
 #ifndef GOLDOBJ
 			} else if (!allowgold) {
-				You("are not carrying any gold."); /* EN You("are not carrying any gold."); */ // TODO DE
+				You("VERB_HABEN kein Gold OBJECT KASUS_DATIV bei PRONOMEN_PERSONAL."); /* EN You("are not carrying any gold."); */
 				return(struct obj *)0;
 #endif
 			} 
@@ -1038,7 +1038,7 @@ register const char *let,*word;
 			 * from Larn.
 			 */
 			if(cnt < 0) {
-	pline_The("LRS would be very interested to know you have that much."); /* EN pline_The("LRS would be very interested to know you have that much."); */ // TODO DE
+	pline("Die LRS würde sehr gerne erfahren, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL soviel Gold VERB_BESITZEN."); /* EN pline_The("LRS would be very interested to know you have that much."); */
 				return(struct obj *)0;
 			}
 
@@ -2092,14 +2092,14 @@ dotypeinv()
 	    if (billx)
 		(void) doinvbill(1);
 	    else
-		pline("No used-up objects on your shopping bill."); /* EN pline("No used-up objects on your shopping bill."); */ // TODO DE
+		pline("Auf der Einkaufsliste sind keine aufgebrauchten Objekte."); /* EN pline("No used-up objects on your shopping bill."); */
 	    return 0;
 	}
 	if (c == 'u') {
 	    if (unpaid_count)
 		dounpaid();
 	    else
-		You("are not carrying any unpaid objects."); /* EN You("are not carrying any unpaid objects."); */ // TODO DE
+		You("VERB_HABEN keine unbezahlten Objekte."); /* EN You("are not carrying any unpaid objects."); */
 	    return 0;
 	}
 	if (traditional) {
@@ -2140,7 +2140,7 @@ char *buf;
 	    }
 	    /* override door description for open drawbridge */
 	    if (is_drawbridge_wall(x, y) >= 0)
-		dfeature = "open drawbridge portcullis",  cmap = -1; /* EN dfeature = "open drawbridge portcullis",  cmap = -1; */ // TODO DE
+		dfeature = "ADJEKTIV_GEOEFFNET NOUN_PORTCULLIS",  cmap = -1; /* EN dfeature = "open drawbridge portcullis",  cmap = -1; */
 	} else if (IS_FOUNTAIN(ltyp))
 	    cmap = S_fountain;				/* "fountain" */
 	else if (IS_THRONE(ltyp))
@@ -2234,11 +2234,11 @@ boolean picked_some;
 		boolean drift = Is_airlevel(&u.uz) || Is_waterlevel(&u.uz);
 		if (dfeature && !strncmp(dfeature, "NOUN_ALTAR ", 11)) { /* EN if (dfeature && !strncmp(dfeature, "altar ", 6)) { */
 		    /* don't say "altar" twice, dfeature has more info */
-		    You("try to feel what is here."); /* EN You("try to feel what is here."); */ // TODO DE
+		    You("VERB_VERSUCHEN zu ertasten, was hier liegt."); /* EN You("try to feel what is here."); */
 		} else {
-		    You("try to feel what is %s%s.", /* EN You("try to feel what is %s%s.", */ // TODO DE
-			drift ? "floating here" : "lying here on the ", /* EN drift ? "floating here" : "lying here on the ", */ // TODO DE
-			drift ? ""		: surface(u.ux, u.uy));
+		    You("VERB_VERSUCHEN zu ertasten, was hier %s%s%s.", /* EN You("try to feel what is %s%s.", */
+			drift ? "" : "OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER ", drift ? "" : surface(u.ux, u.uy), /* EN drift ? "floating here" : "lying here on the ", */ // auf_dem_Boden
+			drift ? "herumschwebt" : " liegt"); /* EN drift ? ""		: surface(u.ux, u.uy)); */
 		}
 		if (dfeature && !drift && !strcmp(dfeature, surface(u.ux,u.uy)))
 			dfeature = 0;		/* ice already identifed */
@@ -2620,7 +2620,7 @@ static NEARDATA const char oth_symbols[] = {
 };
 
 static NEARDATA const char *oth_names[] = {
-	"Bagged/Boxed items" /* EN "Bagged/Boxed items" */ // TODO DE
+	"Gegenstände in Säcken oder Kisten" /* EN "Bagged/Boxed items" */
 };
 
 static NEARDATA char *invbuf = (char *)0;
@@ -2726,7 +2726,7 @@ doorganize()	/* inventory organizer by Del Lamb */
 			return(0);
 		}
 		if (let == '@' || !letter(let))
-			pline("Select an inventory slot letter."); /* EN pline("Select an inventory slot letter."); */ // TODO DE
+			pline("Bitte MODIFIER_VERB_IMPERATIV VERB_WAEHLEN einen Inventar-Buchstaben."); /* EN pline("Select an inventory slot letter."); */
 		else
 			break;
 	}

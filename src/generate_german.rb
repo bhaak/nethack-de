@@ -2502,7 +2502,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BLOB", "Klumpen", "s", "Klumpen", "", "maskulin"),
     dekliniere_substantiv("NOUN_GELATINOUS_CUBE", "Gelatinewürfel", "s", "Gelatinewürfel", "", "maskulin"),
     dekliniere_substantiv("NOUN_CHICKATRICE", "Kikatrix", "", "Kikatrices", "fremder", "neutrum"), # Kikatrix? nach Adelung niedersächsisch kiken/küken (angelsächsisch cicen, englisch chicken) für Küchlein (neuhochdeutsch Küken)
-    dekliniere_substantiv("NOUN_COCKATRICE", "Kokatrix", "", "Kokatrices", "fremder", "maskulin"), # Cocatrix? mittelalterliches Latein -> http://www.bartleby.com/61/43/C0444300.html
+    dekliniere_substantiv("NOUN_COCKATRICE", "Kokatrix", "", "Kokatrices", "fremder", "maskulin"), # Cocatrix? mittelalterliches Latein -> http://www.bartleby.com/61/43/C0444300.html Hollaendisch Slangdraak?
     dekliniere_substantiv("NOUN_PYROLISK", "Pyrolisk", "en", "Pyrolisk", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_JACKAL", "Schakal", "s", "Schakal", "e", "maskulin"),
     dekliniere_substantiv("NOUN_FOX","Fuchs","es","Füchs","e","maskulin"),
@@ -2902,14 +2902,15 @@ def ausgabe_nouns
     # dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
     dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin"),
     dekliniere_eigenname("NOUN_ORION", "Orion", "maskulin"),
-    #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES"
-    dekliniere_eigenname("NOUN_LORD_SATO","Lord Sato","maskulin"),
+    #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES" # Koenig der Diebe, Meister der Diebe? # netzhack: Der Meister der Diebesgilde
+    dekliniere_eigenname("NOUN_LORD_SATO","Lord Sato","maskulin"), # Fürst Sato, netzhack: Sato-sama
     dekliniere_eigenname("NOUN_TWOFLOWER","Zweiblum","maskulin"),
     dekliniere_substantiv("NOUN_NORN","Norne", "", "Norn", "en", "feminin"), 
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $nom, $fem, $sg)],
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $gen, $fem, $sg)],
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet der Grünen", $dat, $fem, $sg)],
     [unregelmaessiges_wort("NOUN_NEFERET_THE_GREEN", "Neferet die Grüne", $akk, $fem, $sg)],
+    dekliniere_substantiv("NOUN_MINION_OF_HUHETOTL","Mignon", "s", "Mignon", "", "maskulin","","des Huhetotl"), # netzhack: Lakai des Huetotl
     dekliniere_substantiv("NOUN_MINION_OF_HUHETOTL","Mignon", "s", "Mignon", "", "maskulin","","von Huhetotl"),
     dekliniere_substantiv("NOUN_MINION_OF_HUHETOTL","Mignon", "s", "Mignon", "", "maskulin","","Huhetotls"),
     dekliniere_eigenname("NOUN_THOTH_AMON","Thoth-Amon","maskulin"),
@@ -2923,8 +2924,8 @@ def ausgabe_nouns
     dekliniere_eigenname("NOUN_SCORPIUS","Scorpius","maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_ASSASSIN"
     #dekliniere_substantiv("NOUN_ASHIKAGA_TAKAUJI"
-    dekliniere_eigenname("NOUN_LORD_SURTUR","Lord Surtur","maskulin"),
-    #dekliniere_substantiv("NOUN_DARK_ONE"
+    dekliniere_eigenname("NOUN_LORD_SURTUR","Lord Surtur","maskulin"), # Surtur?
+    #dekliniere_substantiv("NOUN_DARK_ONE" # der Dunkle, der Duestere, der Lichtlose, der Schattenhafte, der Okkulte, netzhack: Finstere
     #dekliniere_substantiv("NOUN_STUDENT"
     #dekliniere_substantiv("NOUN_CHIEFTAIN"
     #dekliniere_substantiv("NOUN_NEANDERTHAL"

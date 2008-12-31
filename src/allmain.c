@@ -199,7 +199,7 @@ moveloop()
 			    } else if (!Upolyd && u.uhp > 1) {
 				u.uhp--;
 			    } else {
-				You("pass out from exertion!"); /* EN You("pass out from exertion!"); */ // TODO DE
+				You("VERB_FALLEN vor Anstrengung in Ohnmacht!"); /* EN You("pass out from exertion!"); */ // TODO DE
 				exercise(A_CON, FALSE);
 				fall_asleep(-10, FALSE);
 			    }

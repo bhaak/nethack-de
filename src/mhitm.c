@@ -766,10 +766,10 @@ mdamagem(magr, mdef, mattk)
 		    tmp = 0;
 		    break;
 		}
-		if (vis) pline("SUBJECT %s gets zapped!", Monnam(mdef)); /* EN if (vis) pline("%s gets zapped!", Monnam(mdef)); */
+		if (vis) pline("SUBJECT %s VERB_KRIEGEN eine gewischt!", Monnam(mdef)); /* EN if (vis) pline("%s gets zapped!", Monnam(mdef)); */
 		tmp += destroy_mitem(mdef, WAND_CLASS, AD_ELEC);
 		if (resists_elec(mdef)) {
-		    if (vis) pline_The("zap doesn't shock %s!", mon_nam(mdef)); /* EN if (vis) pline_The("zap doesn't shock %s!", mon_nam(mdef)); */ // TODO DE
+		    if (vis) pline("Der Stromschlag kitzelt KASUS_AKKUSATIV %s nur!", mon_nam(mdef)); /* EN if (vis) pline_The("zap doesn't shock %s!", mon_nam(mdef)); */
 		    shieldeff(mdef->mx, mdef->my);
 		    golemeffects(mdef, AD_ELEC, tmp);
 		    tmp = 0;

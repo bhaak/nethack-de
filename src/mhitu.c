@@ -201,7 +201,7 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 			compat == 2 ? "einnehmend" : "verführerisch", /* EN compat == 2 ? "engagingly" : "seductively", */
 			Invis ? "ADJEKTIV_UNSICHTBAR, " : ""); /* EN Invis ? "invisible " : ""); */
 	    else
-		pline("%s strikes at your %sADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE and misses you!", /* EN pline("%s strikes at your %sdisplaced image and misses you!", */ // TODO DE
+		pline("SUBJECT %s VERB_SCHLAGEN OBJECT KASUS_DATIV nach PRONOMEN_POSSESSIV %sADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE und VERB_MISS OBJECT PRONOMEN_PERSONAL!", /* EN pline("%s strikes at your %sdisplaced image and misses you!", */
 			/* Note: if you're both invisible and displaced,
 			 * only monsters which see invisible will attack your
 			 * displaced image, since the displaced image is also
@@ -1019,9 +1019,9 @@ hitmu(mtmp, mattk)
 	    case AD_ELEC:
 		hitmsg(mtmp, mattk);
 		if (uncancelled) {
-		    You("get zapped!"); /* EN You("get zapped!"); */ // TODO DE
+		    You("VERB_KRIEGEN eine gewischt!"); /* EN You("get zapped!"); */
 		    if (Shock_resistance) {
-			pline_The("zap doesn't shock you!"); /* EN pline_The("zap doesn't shock you!"); */ // TODO DE
+			pline("Der Stromschlag kitzelt KASUS_AKKUSATIV PRONOMEN_PERSONAL nur!"); /* EN pline_The("zap doesn't shock you!"); */
 			dmg = 0;
 		    }
 		    if((int) mtmp->m_lev > rn2(20))
@@ -1192,7 +1192,7 @@ dopois:
 			    You_hear("ein Husten OBJECT KASUS_DATIV von %s!", mon_nam(mtmp)); /* EN You_hear("a cough from %s!", mon_nam(mtmp)); */
 		    } else {
 			if (flags.soundok)
-			    You_hear("%s!", genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_ZISCHEN")); /* EN You_hear("%s hissing!", s_suffix(mon_nam(mtmp))); */
+			    You_hear("OBJECT %s!", genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_ZISCHEN")); /* EN You_hear("%s hissing!", s_suffix(mon_nam(mtmp))); */
 			if(!rn2(10) ||
 			    (flags.moonphase == NEW_MOON && !have_lizard())) {
  do_stone:
@@ -1667,7 +1667,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		reset_occupations();	/* behave as if you had moved */
 
 		if (u.utrap) {
-			You("are released from the %s!", /* EN You("are released from the %s!", */ // TODO DE
+			You("VERB_KOMMEN OBJECT KASUS_DATIV aus ARTIKEL_BESTIMMTER %s frei!", /* EN You("are released from the %s!", */
 				u.utraptype==TT_WEB ? "NOUN_WEB" : "NOUN_TRAP"); /* EN u.utraptype==TT_WEB ? "web" : "trap"); */
 			u.utrap = 0;
 		}
@@ -1879,9 +1879,9 @@ common:
 		if (!not_affected) {
 		    boolean chg;
 		    if (!Hallucination)
-			You("are caught in a blast of kaleidoscopic light!"); /* EN You("are caught in a blast of kaleidoscopic light!"); */ // TODO DE
+			You("VERB_WERDEN von einer Welle kaleidoskopischen Lichtes überwältigt!"); /* EN You("are caught in a blast of kaleidoscopic light!"); */
 		    chg = make_hallucinated(HHallucination + (long)tmp,FALSE,0L);
-		    You("%s.", chg ? "are freaked out" : "seem unaffected"); /* EN You("%s.", chg ? "are freaked out" : "seem unaffected"); */ // TODO DE
+		    You("%s.", chg ? "VERB_FLIPPEN aus" : "seem unaffected"); /* EN You("%s.", chg ? "are freaked out" : "seem unaffected"); */ // TODO DE
 		}
 		break;
 
@@ -1911,7 +1911,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    pline("SUBJECT %s %s.", Monnam(mtmp), /* EN pline("%s %s.", Monnam(mtmp), */
 			  (mtmp->data == &mons[PM_MEDUSA] && mtmp->mcan) ?
 				"VERB_AUSSEHEN gar nicht so übel SATZKLAMMER." : /* EN "doesn't look all that ugly" : */
-				"gazes ineffectually"); /* EN "gazes ineffectually"); */ // TODO DO
+				"VERB_GAZE ohne Wirkung"); /* EN "gazes ineffectually"); */
 		    break;
 		}
 		if (Reflecting && couldsee(mtmp->mx, mtmp->my) &&
@@ -2432,13 +2432,13 @@ const char *str;
 
 		Sprintf(hairbuf, "let me run my fingers through your %s", /* EN Sprintf(hairbuf, "let me run my fingers through your %s", */ // TODO DE
 			body_part(HAIR));
-		verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_ZIEHEN OBJECT PRONOMEN_POSSESSIV %s aus; %s.", str, /* EN verbalize("Take off your %s; %s.", str, */
-			(obj == uarm)  ? "let's get a little closer" : /* EN (obj == uarm)  ? "let's get a little closer" : */ // TODO DE
+		verbalize("Zieh KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s aus; %s.", str, /* EN verbalize("Take off your %s; %s.", str, */
+			(obj == uarm)  ? "rück' ein bisschen näher" : /* EN (obj == uarm)  ? "let's get a little closer" : */
 			(obj == uarmc || obj == uarms) ? "das ist nur im Weg" : /* EN (obj == uarmc || obj == uarms) ? "it's in the way" : */
 			(obj == uarmf) ? "let me rub your feet" : /* EN (obj == uarmf) ? "let me rub your feet" : */ // TODO DE
-			(obj == uarmg) ? "they're too clumsy" : /* EN (obj == uarmg) ? "they're too clumsy" : */ // TODO DE
+			(obj == uarmg) ? "die sind so klobig" : /* EN (obj == uarmg) ? "they're too clumsy" : */
 #ifdef TOURIST
-			(obj == uarmu) ? "let me massage you" : /* EN (obj == uarmu) ? "let me massage you" : */ // TODO DE
+			(obj == uarmu) ? "lass mich dich massieren" : /* EN (obj == uarmu) ? "let me massage you" : */
 #endif
 			/* obj == uarmh */
 			hairbuf);
