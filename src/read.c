@@ -53,7 +53,7 @@ doread()
 	/* outrumor has its own blindness check */
 	if(scroll->otyp == FORTUNE_COOKIE) {
 	    if(flags.verbose)
-		You("break up the cookie and throw away the pieces."); /* EN You("break up the cookie and throw away the pieces."); */ // TODO DE
+		You("VERB_BRECHEN den Keks auf und VERB_WERFEN die Stücke weg."); /* EN You("break up the cookie and throw away the pieces."); */
 	    outrumor(bcsign(scroll), BY_COOKIE);
 	    if (!Blind) u.uconduct.literate++;
 	    useup(scroll);
@@ -72,7 +72,7 @@ doread()
     "I survived Yendor Military Boot Camp",
     "Ludios Accounting School Intra-Mural Lacrosse Team",
     "Oracle(TM) Fountains 10th Annual Wet T-Shirt Contest",
-    "Hey, black dragon!  Disintegrate THIS!",
+    "Heh, Schwarzdrache!  Desintegrier DAS!", /* EN "Hey, black dragon!  Disintegrate THIS!", */
     "I'm With Stupid -->",
     "Ich bin nicht schuld, ich war für Izchak!", /* EN "Don't blame me, I voted for Izchak!", */
     "Keine Panik",				/* HHGTTG */ /* EN "Don't Panic", */
@@ -693,12 +693,12 @@ register struct obj	*sobj;
 				xname(otmp), otense(otmp, "feel")); /* EN xname(otmp), otense(otmp, "feel")); */ // TODO DE
 			} else {
 			    otmp->rknown = TRUE;
-			    Your("%s %s covered by a %s %s %s!", /* EN Your("%s %s covered by a %s %s %s!", */ // TODO DE
-				xname(otmp), otense(otmp, "are"), /* EN xname(otmp), otense(otmp, "are"), */ // TODO DE
-				sobj->cursed ? "mottled" : "shimmering", /* EN sobj->cursed ? "mottled" : "shimmering", */ // TODO DE
+			    Your("%s %s OBJECT KASUS_DATIV von ARTIKEL_UNBESTIMMTER %s %s %s überzogen!", /* EN Your("%s %s covered by a %s %s %s!", */
+				xname(otmp), otense(otmp, "VERB_WERDEN"), /* EN xname(otmp), otense(otmp, "are"), */
+				sobj->cursed ? "ADJEKTIV_FLECKIG" : "ADJEKTIV_SHIMMERING", /* EN sobj->cursed ? "mottled" : "shimmering", */
 				 hcolor(sobj->cursed ? NH_BLACK : NH_GOLDEN),
-				sobj->cursed ? "glow" : /* EN sobj->cursed ? "glow" : */ // TODO DE
-				  (is_shield(otmp) ? "layer" : "shield")); /* EN (is_shield(otmp) ? "layer" : "shield")); */ // TODO DE
+				sobj->cursed ? "NOUN_LEUCHTEN" : /* EN sobj->cursed ? "glow" : */
+				  (is_shield(otmp) ? "NOUN_SCHICHT" : "NOUN_SHIELD")); /* EN (is_shield(otmp) ? "layer" : "shield")); */
 			}
 			if (otmp->oerodeproof &&
 			    (otmp->oeroded || otmp->oeroded2)) {
@@ -978,11 +978,11 @@ register struct obj	*sobj;
 			    Your("NOUN_WEAPON VERB_ANFUEHLEN sich für einen Moment warm SATZKLAMMER."); /* EN Your("weapon feels warm for a moment."); */
 			} else {
 			    uwep->rknown = TRUE;
-			    Your("%s covered by a %s %s %s!", /* EN Your("%s covered by a %s %s %s!", */ // TODO DE
-				aobjnam(uwep, "are"), /* EN aobjnam(uwep, "are"), */ // TODO DE
-				sobj->cursed ? "mottled" : "shimmering", /* EN sobj->cursed ? "mottled" : "shimmering", */ // TODO DE
+			    Your("%s OBJECT KASUS_DATIV von ARTIKEL_UNBESTIMMTER %s %s %s überzogen!", /* EN Your("%s covered by a %s %s %s!", */
+				aobjnam(uwep, "VERB_WERDEN"), /* EN aobjnam(uwep, "are"), */
+				sobj->cursed ? "ADJEKTIV_FLECKIG" : "ADJEKTIV_SHIMMERING", /* EN sobj->cursed ? "mottled" : "shimmering", */
 				hcolor(sobj->cursed ? NH_PURPLE : NH_GOLDEN),
-				sobj->cursed ? "glow" : "shield"); /* EN sobj->cursed ? "glow" : "shield"); */ // TODO DE
+				sobj->cursed ? "NOUN_LEUCHTEN" : "NOUN_SHIELD"); /* EN sobj->cursed ? "glow" : "shield"); */
 			}
 			if (uwep->oerodeproof && (uwep->oeroded || uwep->oeroded2)) {
 			    uwep->oeroded = uwep->oeroded2 = 0;
@@ -1086,7 +1086,7 @@ register struct obj	*sobj;
 		    if (Hallucination)
 			pline("Wahnsinn!  Moderne Kunst."); /* EN pline("Wow!  Modern art."); */
 		    else
-			Your("%s spins in bewilderment.", body_part(HEAD)); /* EN Your("%s spins in bewilderment.", body_part(HEAD)); */ // TODO DE
+			Your("%s rotiert fassungslos.", body_part(HEAD)); /* EN Your("%s spins in bewilderment.", body_part(HEAD)); */
 		    make_confused(HConfusion + rnd(30), FALSE);
 		    break;
 		}
@@ -1102,7 +1102,7 @@ register struct obj	*sobj;
 		known = TRUE;
 	case SPE_MAGIC_MAPPING:
 		if (level.flags.nommap) {
-		    Your("%s spins als %s den Spruch abblockt!", body_part(HEAD), something); /* EN Your("%s spins as %s blocks the spell!", body_part(HEAD), something); */ // TODO DE
+		    Your("%s rotiert als %s den Spruch abblockt!", body_part(HEAD), something); /* EN Your("%s spins as %s blocks the spell!", body_part(HEAD), something); */
 		    make_confused(HConfusion + rnd(30), FALSE);
 		    break;
 		}
@@ -1154,7 +1154,7 @@ register struct obj	*sobj;
 		    return(1);
 		}
 		if (Underwater)
-			pline_The("water around you vaporizes violently!"); /* EN pline_The("water around you vaporizes violently!"); */ // TODO DE
+			pline("Das Wasser um KASUS_AKKUSATIV PRONOMEN_PERSONAL verdampft in einer heftigen Reaktion!"); /* EN pline_The("water around you vaporizes violently!"); */
 		else {
 		    pline_The("NOUN_SCROLL VERB_AUFGEHEN OBJECT KASUS_DATIV in ARTIKEL_UNBESTIMMTER NOUN_FLAMMENSAEULE SATZKLAMMER!"); /* EN pline_The("scroll erupts in a tower of flame!"); */
 		    burn_away_slime();
@@ -1291,7 +1291,7 @@ register struct obj	*sobj;
 
 		You("have found a scroll of stinking cloud!"); /* EN You("have found a scroll of stinking cloud!"); */ // TODO DE
 		known = TRUE;
-		pline("Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL center the cloud?"); /* EN pline("Where do you want to center the cloud?"); */ // TODO DE
+		pline("Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL die Wolke richten?"); /* EN pline("Where do you want to center the cloud?"); */
 		cc.x = u.ux;
 		cc.y = u.uy;
 		if (getpos(&cc, TRUE, "die gewünschte Position") < 0) { /* EN if (getpos(&cc, TRUE, "the desired position") < 0) { */
@@ -1701,7 +1701,7 @@ int how;
 		u.uhp = -1;
 		if (how & PLAYER) {
 		    killer_format = KILLED_BY;
-		    killer = "genocidal confusion"; /* EN killer = "genocidal confusion"; */ // TODO DE
+		    killer = "ADJEKTIV_GENOZIDIOESE NOUN_CONFUSION"; /* EN killer = "genocidal confusion"; */
 		} else if (how & ONTHRONE) {
 		    /* player selected while on a throne */
 		    killer_format = KILLED_BY_AN;

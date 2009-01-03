@@ -750,7 +750,7 @@ char *buf;
 	/* these are for unarmed combat/martial arts only */
 	case P_MASTER:	     ptr = "Meister";    break; /* EN case P_MASTER:	     ptr = "Master";    break; */
 	case P_GRAND_MASTER: ptr = "Groﬂmeister"; break; /* EN case P_GRAND_MASTER: ptr = "Grand Master"; break; */
-	default:	     ptr = "Unknown";	break;
+	default:	     ptr = "unbekannt";	break; /* EN default:	     ptr = "Unknown";	break; */
     }
     Strcpy(buf, ptr);
     return buf;

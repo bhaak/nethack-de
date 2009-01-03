@@ -948,16 +948,16 @@ dokick()
 		    if(Levitation) goto dumb;
 		    if(rn2(5)) {
 			if(flags.soundok)
-			    pline("Klunk!  The pipes vibrate noisily."); /* EN pline("Klunk!  The pipes vibrate noisily."); */ // TODO DE
-			else pline("Klunk!"); /* EN else pline("Klunk!"); */ // TODO DE
+			    pline("Klonk!  Die Rohre vibrieren hörbar."); /* EN pline("Klunk!  The pipes vibrate noisily."); */
+			else pline("Klonk!"); /* EN else pline("Klunk!"); */
 			exercise(A_DEX, TRUE);
 			return(1);
 		    } else if(!(maploc->looted & S_LPUDDING) && !rn2(3) &&
 			  !(mvitals[PM_BLACK_PUDDING].mvflags & G_GONE)) {
 			if (Blind)
-			    You_hear("a gushing sound."); /* EN You_hear("a gushing sound."); */ // TODO DE
+			    You_hear("ein blubberndes Geräusch."); /* EN You_hear("a gushing sound."); */
 			else
-			    pline("A %s ooze gushes up from the drain!", /* EN pline("A %s ooze gushes up from the drain!", */ // TODO DE
+			    pline("SUBJECT %s NOUN_OOZE blubbert aus dem Ausguss hoch!", /* EN pline("A %s ooze gushes up from the drain!", */
 					 hcolor(NH_BLACK));
 			(void) makemon(&mons[PM_BLACK_PUDDING],
 					 x, y, NO_MM_FLAGS);
@@ -1052,11 +1052,11 @@ dumb:
 		    maploc->doormask = D_NODOOR;
 		    b_trapped("NOUN_DOOR", FOOT); /* EN b_trapped("door", FOOT); */
 		} else if(ACURR(A_STR) > 18 && !rn2(5) && !shopdoor) {
-		    pline("As you kick the door, it shatters to pieces!"); /* EN pline("As you kick the door, it shatters to pieces!"); */ // TODO DE
+		    pline("Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL auf die Türe ein-VERB_TRETEN, zersplittert sie!"); /* EN pline("As you kick the door, it shatters to pieces!"); */
 		    exercise(A_STR, TRUE);
 		    maploc->doormask = D_NODOOR;
 		} else {
-		    pline("As you kick the door, it crashes open!"); /* EN pline("As you kick the door, it crashes open!"); */ // TODO DE
+		    pline("Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL auf die Türe ein-VERB_TRETEN, bricht sie auf!"); /* EN pline("As you kick the door, it crashes open!"); */
 		    exercise(A_STR, TRUE);
 		    maploc->doormask = D_BROKEN;
 		}
@@ -1088,7 +1088,7 @@ dumb:
 	} else {
 	    if (Blind) feel_location(x,y);	/* we know we hit it */
 	    exercise(A_STR, TRUE);
-	    pline("WHAMMM!!!"); /* EN pline("WHAMMM!!!"); */ // TODO DE
+	    pline("RRUMMS!!!"); /* EN pline("WHAMMM!!!"); */
 	    if (in_town(x, y))
 		for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
 		    if (DEADMONSTER(mtmp)) continue;

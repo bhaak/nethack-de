@@ -723,7 +723,7 @@ register struct monst *mtmp;
 		    break;
 #endif
 		default:
-		    pline_msg = "discusses dungeon exploration."; /* EN pline_msg = "discusses dungeon exploration."; */ // TODO DE
+		    pline_msg = "beginnt eine Diskussion über Höhlenforschung."; /* EN pline_msg = "discusses dungeon exploration."; */
 		    break;
 	    }
 	    break;
@@ -743,10 +743,10 @@ register struct monst *mtmp;
 			verbl_msg = "Hallo, Matrose."; /* EN verbl_msg = "Hello, sailor."; */
 			break;
 		case 1:
-			pline_msg = "comes on to you."; /* EN pline_msg = "comes on to you."; */ // TODO DE angraben, anmachen
+			pline_msg = "VERB_GRABEN OBJECT PRONOMEN_PERSONAL an."; /* EN pline_msg = "comes on to you."; */
 			break;
 		default:
-			pline_msg = "cajoles you."; /* EN pline_msg = "cajoles you."; */ // TODO DE // herumkriegen
+			pline_msg = "VERB_BESCHWATZEN OBJECT PRONOMEN_PERSONAL."; /* EN pline_msg = "cajoles you."; */
 	    }
 	    break;
 #ifdef KOPS
@@ -819,7 +819,7 @@ register struct monst *mtmp;
 	    break;
 	case MS_RIDER:
 	    if (ptr == &mons[PM_DEATH] && !rn2(10))
-		pline_msg = "is busy reading a copy of Sandman #8."; /* EN pline_msg = "is busy reading a copy of Sandman #8."; */ // TODO DE
+		pline_msg = "ist damit beschäftigt ein Exemplar von Sandman #8 zu lesen."; /* EN pline_msg = "is busy reading a copy of Sandman #8."; */
 	    else verbl_msg = (ptr == &mons[PM_DEATH]) ? "FÜR WEN HÄLTST DU DICH EIGENTLICH? KRIEG?" : "Für wen hältst du dich eigentlich? Krieg?"; /* EN else verbl_msg = "Who do you think you are, War?"; */
 	    break;
     }

@@ -2546,7 +2546,7 @@ domagictrap()
 						"PRONOMEN_POSSESSIV ADJEKTIV_NAHE NOUN_HEIMAT" : /* EN "your nearby homeland" : */
 						"PRONOMEN_POSSESSIV ADJEKTIV_WEITENTFERNT NOUN_HEIMAT"); /* EN "your distant homeland"); */
 			break;
-	     case 16:   Your("pack shakes violently!"); /* EN case 16:   Your("pack shakes violently!"); */ // TODO DE
+	     case 16:   Your("NOUN_PACK bebt plötzlich heftig!"); /* EN case 16:   Your("pack shakes violently!"); */
 			break;
 	     case 17:	You(Hallucination ?
 				"VERB_SMELL Hamburger." : /* EN "smell hamburgers." : */

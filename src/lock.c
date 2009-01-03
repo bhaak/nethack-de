@@ -713,7 +713,7 @@ register struct obj *obj, *otmp;	/* obj *is* a box */
 	case WAN_LOCKING:
 	case SPE_WIZARD_LOCK:
 	    if (!obj->olocked) {	/* lock it; fix if broken */
-		pline("Klunk!"); /* EN pline("Klunk!"); */ // TODO DE
+		pline("Klack!"); /* EN pline("Klunk!"); */
 		obj->olocked = 1;
 		obj->obroken = 0;
 		res = 1;

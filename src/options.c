@@ -711,7 +711,7 @@ const char *opts;
 	    if (!strncmp(opts, "h", 1) || !strncmp(opts, "?", 1))
 		option_help();
 	    else
-		pline("Bad syntax: %s.  Enter \"?g\" for help.", opts); /* EN pline("Bad syntax: %s.  Enter \"?g\" for help.", opts); */ // TODO DE
+		pline("Syntaxfehler: %s.  Tippe \"?g\" um Hinweise zu bekommen.", opts); /* EN pline("Bad syntax: %s.  Enter \"?g\" for help.", opts); */
 	    return;
 	}
 #ifdef MAC
@@ -719,9 +719,9 @@ const char *opts;
 #endif
 
 	if(from_file)
-	    raw_printf("Bad syntax in OPTIONS in %s: %s.", configfile, opts); /* EN raw_printf("Bad syntax in OPTIONS in %s: %s.", configfile, opts); */ // TODO DE
+	    raw_printf("Syntaxfehler in OPTIONS in %s: %s.", configfile, opts); /* EN raw_printf("Bad syntax in OPTIONS in %s: %s.", configfile, opts); */
 	else
-	    raw_printf("Bad syntax in NETHACKOPTIONS: %s.", opts); /* EN raw_printf("Bad syntax in NETHACKOPTIONS: %s.", opts); */ // TODO DE
+	    raw_printf("Syntaxfehler in NETHACKOPTIONS: %s.", opts); /* EN raw_printf("Bad syntax in NETHACKOPTIONS: %s.", opts); */
 
 	wait_synch();
 }

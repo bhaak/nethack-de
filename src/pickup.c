@@ -902,8 +902,8 @@ int how;			/* type of query */
 		any.a_int = 'A';
 		add_menu(win, NO_GLYPH, &any, invlet, 0, ATR_NONE,
 			(qflags & WORN_TYPES) ?
-			"Auto-select every item being worn" : /* EN "Auto-select every item being worn" : */ // TODO DE
-			"Auto-select every item", MENU_UNSELECTED); /* EN "Auto-select every item", MENU_UNSELECTED); */ // TODO DE
+			"Auto-Auswahl aller getragenen Gegenstände" : /* EN "Auto-select every item being worn" : */
+			"Auto-Auswahl aller Gegenstände", MENU_UNSELECTED); /* EN "Auto-select every item", MENU_UNSELECTED); */
 	}
 	/* items with b/u/c/unknown if there are any */
 	if (do_blessed) {
@@ -1320,8 +1320,8 @@ boolean telekinesis;	/* not picking it up directly by hand */
 		    return -1;
 		}
 	    } else if (is_rider(&mons[obj->corpsenm])) {
-		pline("At your %s, the corpse suddenly moves...", /* EN pline("At your %s, the corpse suddenly moves...", */ // TODO DE
-			telekinesis ? "attempted acquisition" : "touch"); /* EN telekinesis ? "attempted acquisition" : "touch"); */ // TODO DE
+		pline("KASUS_DATIV Bei PRONOMEN_POSSESSIV %s beginnt der Kadaver sich plötzlich zu bewegen ...", /* EN pline("At your %s, the corpse suddenly moves...", */
+			telekinesis ? "Beschaffungs-NOUN_VERSUCH" : "NOUN_BERUEHRUNG"); /* EN telekinesis ? "attempted acquisition" : "touch"); */
 		(void) revive_corpse(obj);
 		exercise(A_WIS, FALSE);
 		return -1;

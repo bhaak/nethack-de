@@ -235,7 +235,7 @@ bot1()
 			(u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Rechtschaffen"); /* EN (u.ualign.type == A_NEUTRAL) ? "  Neutral" : "  Lawful"); */
 #ifdef SCORE_ON_BOTL
 	if (flags.showscore)
-	    Sprintf(nb = eos(nb), " S:%ld", botl_score());
+	    Sprintf(nb = eos(nb), " P:%ld", botl_score()); /* EN Sprintf(nb = eos(nb), " S:%ld", botl_score()); */
 #endif
 	curs(WIN_STATUS, 1, 0);
 	putstr(WIN_STATUS, 0, newbot1);

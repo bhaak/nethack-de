@@ -341,7 +341,7 @@ register struct monst *mtmp;
 		    return(TRUE);
 		} else if ((mtmp->mfrozen || (! mtmp->mcanmove)
 				|| (mtmp->data->mmove == 0)) && rn2(6)) {
-		    pline("%s doesn't seem to move!", Monnam(mtmp)); /* EN pline("%s doesn't seem to move!", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHEINEN sich nicht zu bewegen!", Monnam(mtmp)); /* EN pline("%s doesn't seem to move!", Monnam(mtmp)); */
 		    return(TRUE);
 		} else return(FALSE);
 	    }
@@ -355,7 +355,7 @@ register struct monst *mtmp;
 	if (Upolyd) {
 		/* certain "pacifist" monsters don't attack */
 		if(noattacks(youmonst.data)) {
-			You("have no way to attack monsters physically."); /* EN You("have no way to attack monsters physically."); */ // TODO DE
+			You("VERB_HABEN keine Möglichkeit Monster physisch anzugreifen."); /* EN You("have no way to attack monsters physically."); */
 			mtmp->mstrategy &= ~STRAT_WAITMASK;
 			goto atk_done;
 		}
@@ -2019,7 +2019,7 @@ use_weapon:
 			    if (mon->data == &mons[PM_SHADE] &&
 					!(mattk->aatyp == AT_KICK &&
 					    uarmf && uarmf->blessed)) {
-				Your("attack passes harmlessly through %s.", /* EN Your("attack passes harmlessly through %s.", */ // TODO DE
+				Your("NOUN_ATTACK durch-VERB_DRINGEN OBJECT %s ohne Wirkung.", /* EN Your("attack passes harmlessly through %s.", */
 				    mon_nam(mon));
 				break;
 			    }
@@ -2048,7 +2048,7 @@ use_weapon:
 			dhit = 1;
 			wakeup(mon);
 			if (mon->data == &mons[PM_SHADE])
-			    Your("hug passes harmlessly through %s.", /* EN Your("hug passes harmlessly through %s.", */ // TODO DE
+			    Your("NOUN_UMARMUNG durch-VERB_DRINGEN OBJECT %s ohne Wirkung.", /* EN Your("hug passes harmlessly through %s.", */
 				mon_nam(mon));
 			else if (!sticks(mon->data) && !u.uswallow) {
 			    if (mon==u.ustuck) {
@@ -2266,7 +2266,7 @@ uchar aatyp;
 			break;
 		    }
 		    if(mon->mcansee) {
-			if (ureflects("%s is reflected by your %s.", /* EN if (ureflects("%s gaze is reflected by your %s.", */ // TODO DE
+			if (ureflects("SUBJECT %s wird OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV %s reflektiert.", /* EN if (ureflects("%s gaze is reflected by your %s.", */
 				    genitivattribut_zu_wort(Monnam(mon), "NOUN_GAZE"))) /* EN s_suffix(Monnam(mon)))) */
 			    ;
 			else if (Free_action)
@@ -2332,7 +2332,7 @@ uchar aatyp;
 		    ugolemeffects(AD_ELEC, tmp);
 		    break;
 		}
-		You("are jolted with electricity!"); /* EN You("are jolted with electricity!"); */ // TODO DE
+		You("VERB_BEKOMMEN einen Stromschlag!"); /* EN You("are jolted with electricity!"); */
 		mdamageu(mon, tmp);
 		break;
 	      default:

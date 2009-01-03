@@ -693,7 +693,7 @@ struct obj *obj;
 		pline ("SUBJECT %s VERB_HABEN kein Spiegelbild.", Monnam(mtmp)); /* EN pline ("%s doesn't have a reflection.", Monnam(mtmp)); */
 	} else if(!mtmp->mcan && !mtmp->minvis &&
 					mtmp->data == &mons[PM_MEDUSA]) {
-		if (mon_reflects(mtmp, "The gaze is reflected away by %s!")) /* EN if (mon_reflects(mtmp, "The gaze is reflected away by %s %s!")) */ // TODO DE
+		if (mon_reflects(mtmp, "SUBJECT ARTIKEL_BESTIMMTER NOUN_GAZE VERB_WERDEN OBJECT KASUS_DATIV von %s reflektiert!")) /* EN if (mon_reflects(mtmp, "The gaze is reflected away by %s %s!")) */ // TODO DE
 			return 1;
 		if (vis)
 			pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(mtmp)); /* EN pline("%s is turned to stone!", Monnam(mtmp)); */
@@ -704,7 +704,7 @@ struct obj *obj;
 		int tmp = d((int)mtmp->m_lev, (int)mtmp->data->mattk[0].damd);
 		if (!rn2(4)) tmp = 120;
 		if (vis)
-			pline("%s is frozen by its reflection.", Monnam(mtmp)); /* EN pline("%s is frozen by its reflection.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_ERSTARREN OBJECT durch PRONOMEN_POSSESSIV_SUBJECT NOUN_REFLECTION.", Monnam(mtmp)); /* EN pline("%s is frozen by its reflection.", Monnam(mtmp)); */
 		else You_hear("etwas stehen bleiben."); /* EN else You_hear("%s stop moving.",something); */
 		mtmp->mcanmove = 0;
 		if ( (int) mtmp->mfrozen + tmp > 127)
@@ -991,10 +991,10 @@ register struct obj *otmp;
 
 	    (void) get_obj_location(otmp, &x, &y, 0);
 	    if (otmp->where == OBJ_MINVENT ? cansee(x,y) : !Blind)
-		pline("%s %scandle%s flame%s extinguished.", /* EN pline("%s %scandle%s flame%s extinguished.", */ // TODO DE
+		pline("Das Licht KASUS_DATIV von %s %s%s geht aus.", /* EN pline("%s %scandle%s flame%s extinguished.", */
 		      Shk_Your(buf, otmp),
-		      (candle ? "" : "candelabrum's "), /* EN (candle ? "" : "candelabrum's "), */ // TODO DE
-		      (many ? "s'" : "'s"), (many ? "s are" : " is")); /* EN (many ? "s'" : "'s"), (many ? "s are" : " is")); */ // TODO DE
+		      (candle ? "NOUN_CANDLE" : "NOUN_CANDELABRUM"), /* EN (candle ? "" : "candelabrum's "), */
+		      (candle ? (many ? "s" : "") : "")); /* EN (many ? "s'" : "'s"), (many ? "s are" : " is")); */
 	   end_burn(otmp, TRUE);
 	   return(TRUE);
 	}
@@ -1288,7 +1288,7 @@ int magic; /* 0=Physical, otherwise skill level */
 	}
 #endif
 
-	pline("SUBJECT Wohin VERB_WOLLEN PRONOMEN_PERSONAL springen?"); /* EN pline("Where do you want to jump?"); */
+	pline("SUBJECT Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL springen?"); /* EN pline("Where do you want to jump?"); */
 	cc.x = u.ux;
 	cc.y = u.uy;
 	if (getpos(&cc, TRUE, "die gewünschte Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */
@@ -2346,7 +2346,7 @@ struct obj *obj;
 	    if (mtmp->m_ap_type &&
 		!Protection_from_shape_changers && !sensemon(mtmp))
 		stumble_onto_mimic(mtmp);
-	    else You("flick your bullwhip towards %s.", mon_nam(mtmp)); /* EN else You("flick your bullwhip towards %s.", mon_nam(mtmp)); */ // TODO DE
+	    else You("VERB_SCHLEUDERN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP NEUES_OBJECT OBJECT KASUS_DATIV nach %s.", mon_nam(mtmp)); /* EN else You("flick your bullwhip towards %s.", mon_nam(mtmp)); */
 	    if (proficient) {
 		if (attack(mtmp)) return 1;
 		else pline(msg_snap);
@@ -2355,7 +2355,7 @@ struct obj *obj;
 
     } else if (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)) {
 	    /* it must be air -- water checked above */
-	    You("snap your whip through thin air."); /* EN You("snap your whip through thin air."); */ // TODO DE
+	    You("VERB_KNALLEN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP nur durch die Luft."); /* EN You("snap your whip through thin air."); */
 
     } else {
 	pline(msg_snap);
@@ -2367,7 +2367,7 @@ struct obj *obj;
 
 static const char
 	not_enough_room[] = "Hier gibt es nicht genug Platz um das zu benutzen.", /* EN not_enough_room[] = "There's not enough room here to use that.", */
-	where_to_hit[] = "Where do you want to hit?", /* EN where_to_hit[] = "Where do you want to hit?", */ // TODO DE
+	where_to_hit[] = "SUBJECT Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL schlagen?", /* EN where_to_hit[] = "Where do you want to hit?", */
 	cant_see_spot[] = "won't hit anything if you can't see that spot.", /* EN cant_see_spot[] = "won't hit anything if you can't see that spot.", */ // TODO DE
 	cant_reach[] = "can't reach that spot from here."; /* EN cant_reach[] = "can't reach that spot from here."; */ // TODO DE
 
@@ -2396,7 +2396,7 @@ use_pole (obj)
 	pline(where_to_hit);
 	cc.x = u.ux;
 	cc.y = u.uy;
-	if (getpos(&cc, TRUE, "the spot to hit") < 0) /* EN if (getpos(&cc, TRUE, "the spot to hit") < 0) */ // TODO DE
+	if (getpos(&cc, TRUE, "die zu treffende Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the spot to hit") < 0) */
 	    return 0;	/* user pressed ESC */
 
 	/* Calculate range */
@@ -2502,7 +2502,7 @@ use_grapple (obj)
 	pline(where_to_hit);
 	cc.x = u.ux;
 	cc.y = u.uy;
-	if (getpos(&cc, TRUE, "the spot to hit") < 0) /* EN if (getpos(&cc, TRUE, "the spot to hit") < 0) */ // TODO DE
+	if (getpos(&cc, TRUE, "die zu treffende Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the spot to hit") < 0) */
 	    return 0;	/* user pressed ESC */
 
 	/* Calculate range */
