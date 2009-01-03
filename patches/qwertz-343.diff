@@ -105,7 +105,7 @@ diff -ruX exclude nethack-3.4.3-orig/doc/Guidebook.tex nethack-3.4.3/doc/Guidebo
 diff -ruX exclude nethack-3.4.3-orig/include/decl.h nethack-3.4.3/include/decl.h
 --- nethack-3.4.3-orig/include/decl.h	2003-12-16 08:41:34.000000000 +0100
 +++ nethack-3.4.3/include/decl.h	2003-12-17 10:22:40.000000000 +0100
-@@ -195,7 +195,12 @@
+@@ -203,7 +203,12 @@
  E const char nul[];
  E char lock[];
  
@@ -126,15 +126,15 @@ diff -ruX exclude nethack-3.4.3-orig/include/flag.h nethack-3.4.3/include/flag.h
  	boolean travel1;	/* first travel step */
  	coord	travelcc;	/* coordinates for travel_cache */
 +#ifdef QWERTZ
-+        boolean  qwertz_layout; /* swap y/z for this key layout */
++	boolean  qwertz_layout;	/* swap y/z for this key layout */
 +#endif
- #ifdef WIZARD
- 	boolean  sanity_check;	/* run sanity checks */
- 	boolean  mon_polycontrol;	/* debug: control monster polymorphs */
+ #ifdef SIMPLE_MAIL
+ 	boolean simplemail;	/* simple mail format $NAME:$MESSAGE */
+ #endif
 diff -ruX exclude nethack-3.4.3-orig/src/cmd.c nethack-3.4.3/src/cmd.c
 --- nethack-3.4.3-orig/src/cmd.c	2003-12-16 08:41:34.000000000 +0100
 +++ nethack-3.4.3/src/cmd.c	2003-12-17 10:22:40.000000000 +0100
-@@ -1949,9 +1952,18 @@
+@@ -2007,9 +2010,18 @@
  	} else {
  	    register const struct func_tab *tlist;
  	    int res, NDECL((*func));
@@ -152,7 +152,7 @@ diff -ruX exclude nethack-3.4.3-orig/src/cmd.c nethack-3.4.3/src/cmd.c
 +#endif
  
  		if (u.uburied && !tlist->can_if_buried) {
- 		    You_cant("do that while you are buried!");
+ 		    You("VERB_KOENNEN das nicht tun, solange NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL begraben VERB_SEIN!"); /* EN You_cant("do that while you are buried!"); */
 diff -ruX exclude nethack-3.4.3-orig/src/decl.c nethack-3.4.3/src/decl.c
 --- nethack-3.4.3-orig/src/decl.c	2003-12-16 08:41:34.000000000 +0100
 +++ nethack-3.4.3/src/decl.c	2003-12-17 10:22:40.000000000 +0100
@@ -173,7 +173,7 @@ diff -ruX exclude nethack-3.4.3-orig/src/decl.c nethack-3.4.3/src/decl.c
 diff -ruX exclude nethack-3.4.3-orig/src/options.c nethack-3.4.3/src/options.c
 --- nethack-3.4.3-orig/src/options.c	2003-12-16 08:41:35.000000000 +0100
 +++ nethack-3.4.3/src/options.c	2003-12-17 10:22:40.000000000 +0100
-@@ -148,6 +148,9 @@
+@@ -152,6 +153,9 @@
  	{"prayconfirm", &flags.prayconfirm, TRUE, SET_IN_GAME},
  	{"preload_tiles", &iflags.wc_preload_tiles, TRUE, DISP_IN_GAME},	/*WC*/
  	{"pushweapon", &flags.pushweapon, FALSE, SET_IN_GAME},
@@ -183,7 +183,7 @@ diff -ruX exclude nethack-3.4.3-orig/src/options.c nethack-3.4.3/src/options.c
  #if defined(MICRO) && !defined(AMIGA)
  	{"rawio", &iflags.rawio, FALSE, DISP_IN_GAME},
  #else
-@@ -1114,6 +1117,18 @@
+@@ -1121,6 +1124,18 @@
  		return;
  	}
  
@@ -202,3 +202,15 @@ diff -ruX exclude nethack-3.4.3-orig/src/options.c nethack-3.4.3/src/options.c
  	fullname = "runmode";
  	if (match_optname(opts, fullname, 4, TRUE)) {
  		if (negated) {
+diff -ruX exclude nethack-3.4.3-orig/src/options.c nethack-3.4.3/src/options.c
+--- nethack-3.4.3-orig/include/config.h	2003-12-16 08:41:35.000000000 +0100
++++ nethack-3.4.3-de/include/config.h	2009-01-03 21:54:56.000000000 +0100
+@@ -363,6 +363,8 @@
+ #define RECORD_ALIGN0   /* Record initial alignment in logfile */
+ #endif
+ 
++#define QWERTZ
++
+ /*
+  * Section 5:  EXPERIMENTAL STUFF
+  *

@@ -363,6 +363,8 @@ typedef unsigned char	uchar;
 #define RECORD_ALIGN0   /* Record initial alignment in logfile */
 #endif
 
+#define QWERTZ
+
 /*
  * Section 5:  EXPERIMENTAL STUFF
  *
