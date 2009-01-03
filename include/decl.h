@@ -393,6 +393,10 @@ struct autopickup_exception {
 };
 #endif /* AUTOPICKUP_EXCEPTIONS */
 
+#ifdef SIMPLE_MAIL
+E int mailckfreq;
+#endif
+
 #ifdef RECORD_ACHIEVE
 struct u_achieve {
         Bitfield(get_bell,1);        /* You have obtained the bell of 

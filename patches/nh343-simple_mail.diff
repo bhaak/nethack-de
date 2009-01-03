@@ -1,7 +1,7 @@
 diff -urN orig/nethack-3.4.3/include/decl.h nethack-3.4.3/include/decl.h
 --- orig/nethack-3.4.3/include/decl.h	2003-12-07 15:39:13.000000000 -0800
 +++ nethack-3.4.3/include/decl.h	2004-01-03 15:57:34.000000000 -0800
-@@ -385,6 +385,10 @@
+@@ -393,6 +393,10 @@
  };
  #endif /* AUTOPICKUP_EXCEPTIONS */
  
@@ -9,9 +9,9 @@ diff -urN orig/nethack-3.4.3/include/decl.h nethack-3.4.3/include/decl.h
 +E int mailckfreq;
 +#endif
 +
- #undef E
- 
- #endif /* DECL_H */
+ #ifdef RECORD_ACHIEVE
+ struct u_achieve {
+         Bitfield(get_bell,1);        /* You have obtained the bell of 
 diff -urN orig/nethack-3.4.3/include/flag.h nethack-3.4.3/include/flag.h
 --- orig/nethack-3.4.3/include/flag.h	2003-12-07 15:39:13.000000000 -0800
 +++ nethack-3.4.3/include/flag.h	2004-01-03 15:57:34.000000000 -0800
@@ -112,8 +112,8 @@ diff -urN orig/nethack-3.4.3/src/mail.c nethack-3.4.3/src/mail.c
 +		  fl.l_type = F_UNLCK;
 +		  fcntl (fileno(mb), F_UNLCK, &fl);
 +		  
-+		  pline("There is a%s message on this scroll.",
-+		      seen_one_already ? "nother" : "");
++		  pline("Da steht %seine Nachricht auf der Schriftrolle.", /* EN pline("There is a%s message on this scroll.", */
++		      seen_one_already ? "noch " : ""); /* EN seen_one_already ? "nother" : ""); */
 +		  
 +		  msg = strchr(curline, ':');
 +		  
@@ -123,10 +123,10 @@ diff -urN orig/nethack-3.4.3/src/mail.c nethack-3.4.3/src/mail.c
 +		  *msg = '\0';
 +		  msg++;
 +		  
-+		  pline ("This message is from '%s'.", curline);
++		  pline ("Diese Nachricht ist von '%s'.", curline); /* EN pline ("This message is from '%s'.", curline); */
 +
 +		  msg[strlen(msg) - 1] = '\0'; /* kill newline */
-+		  pline ("It reads: \"%s\".", msg);
++		  pline ("Da steht: \"%s\".", msg); /* EN pline ("It reads: \"%s\".", msg); */
 +
 +		  seen_one_already = TRUE;
 +		  errno = 0;
@@ -168,7 +168,7 @@ diff -urN orig/nethack-3.4.3/src/mail.c nethack-3.4.3/src/mail.c
 +
 +#ifdef SIMPLE_MAIL
 +bail:
-+	pline("It appears to be all gibberish."); /* bail out _professionally_ */
++	pline("Da steht aber nur Kauderwelsch."); /* bail out _professionally_ */ /* EN pline("It appears to be all gibberish."); */ /* DE Churerromanisch, hihi */
 +#endif
  }
  
@@ -188,7 +188,7 @@ diff -urN orig/nethack-3.4.3/src/mail.c nethack-3.4.3/src/mail.c
 diff -urN orig/nethack-3.4.3/sys/unix/unixmain.c nethack-3.4.3/sys/unix/unixmain.c
 --- orig/nethack-3.4.3/sys/unix/unixmain.c	2003-12-07 15:39:13.000000000 -0800
 +++ nethack-3.4.3/sys/unix/unixmain.c	2004-01-03 15:57:34.000000000 -0800
-@@ -54,7 +54,9 @@
+@@ -56,7 +56,9 @@
  	register char *dir;
  #endif
  	boolean exact_username;
@@ -199,7 +199,7 @@ diff -urN orig/nethack-3.4.3/sys/unix/unixmain.c nethack-3.4.3/sys/unix/unixmain
  #if defined(__APPLE__)
  	/* special hack to change working directory to a resource fork when
  	   running from finder --sam */
-@@ -84,6 +86,12 @@
+@@ -86,6 +88,12 @@
  	}
  #endif
  
