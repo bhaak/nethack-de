@@ -1,0 +1,204 @@
+qwertz patch for NetHack 3.4.3 adds option qwertz_layout to swap y/z
+version 0.3 by Stanislav Traykov 20031218. Terms of use: NetHack GPL
+(you need to #define QWERTZ in config.h to activate the patch)
+
+CHANGES:
+v. 0.3: fix cmdchar declaration (M-? commands work now)
+v. 0.2: fix comments & remove global const
+
+diff -ruX exclude nethack-3.4.3-orig/dat/help nethack-3.4.3/dat/help
+--- nethack-3.4.3-orig/dat/help	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/dat/help	2003-12-17 10:22:40.000000000 +0100
+@@ -62,6 +62,8 @@
+                                     case means the Control key, not a caret)
+  >  down                m<dir>:   move without picking up objects
+                         F<dir>:   fight even if you don't sense a monster
++                With the qwertz_layout option, the y and z keys are swapped
++                (this requires option QWERTZ to be set at compile-time).
+                 If the number_pad option is set, the number keys move instead.
+                 Depending on the platform, Shift number (on the numberpad),
+                 Meta number, or Alt number will invoke the YUHJKLBN commands.
+@@ -143,9 +145,9 @@
+         x       Swap wielded and secondary weapons.
+         X       Switch the game to explore (discovery) mode.
+         ^X      Show your attributes.
+-        z       Zap a wand.
+-        Z       Cast a spell.
+-        ^Z      Suspend the game.
++        z       Zap a wand. (y if qwertz_layout is set)
++        Z       Cast a spell. (Y if qwertz_layout is set)
++        ^Z      Suspend the game. (^Y if qwertz_layout is set)
+         :       Look at what is here.
+         ;       Look at what is somewhere else.
+         ,       Pick up some things.
+diff -ruX exclude nethack-3.4.3-orig/dat/hh nethack-3.4.3/dat/hh
+--- nethack-3.4.3-orig/dat/hh	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/dat/hh	2003-12-17 10:22:40.000000000 +0100
+@@ -9,6 +9,8 @@
+                                     case means the Control key, not a caret)
+  >  down                m<dir>:   move without picking up objects/fighting
+                         F<dir>:   fight even if you don't sense a monster
++                With the qwertz_layout option, the y and z keys are swapped
++                (this requires option QWERTZ to be set at compile-time).
+                 If the number_pad option is set, the number keys move instead.
+                 Depending on the platform, Shift number (on the numberpad),
+                 Meta number, or Alt number will invoke the YUHJKLBN commands.
+@@ -21,6 +23,7 @@
+ S       save    save the game (to be continued later) and exit
+ !       sh      escape to some SHELL (if allowed)
+ ^Z      suspend suspend the game (independent of your current suspend char)
++                (^Y if option qwertz_layout is set)
+ O       options set options
+ /       whatis  tell what a map symbol represents
+ \       known   display list of what's been discovered
+@@ -64,8 +67,8 @@
+ w       wield   wield a weapon  (w-  wield nothing)
+ W       wear    put on some armor
+ x       xchange swap wielded and secondary weapons
+-z       zap     zap a wand
+-Z       Zap     cast a spell
++z       zap     zap a wand (y if option qwertz_layout is set)
++Z       Zap     cast a spell (Y if option qwertz_layout is set)
+ <       up      go up the stairs
+ >       down    go down the stairs
+ ^       trap_id identify a previously found trap
+diff -ruX exclude nethack-3.4.3-orig/dat/opthelp nethack-3.4.3/dat/opthelp
+--- nethack-3.4.3-orig/dat/opthelp	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/dat/opthelp	2003-12-17 10:22:40.000000000 +0100
+@@ -77,6 +77,9 @@
+                display effect.  on MSDOS without the termcap
+                lib, whether or not to pause for visual effect.    [TRUE]
+ 
++Boolean option if QWERTZ was set at compile time:
++qwertz_layout  swap the y and z keys                              [FALSE]
++
+ Boolean option if USE_TILES was set at compile time (MSDOS protected mode only):
+ preload_tiles  control whether tiles get pre-loaded into RAM at the
+                start of the game.  Doing so enhances performance
+diff -ruX exclude nethack-3.4.3-orig/doc/Guidebook.mn nethack-3.4.3/doc/Guidebook.mn
+--- nethack-3.4.3-orig/doc/Guidebook.mn	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/doc/Guidebook.mn	2003-12-17 10:22:40.000000000 +0100
+@@ -2054,6 +2054,9 @@
+ .lp pushweapon
+ Using the `w' (wield) command when already wielding
+ something pushes the old item into your alternate weapon slot (default off).
++.lp qwertz_layout
++If QWERTZ was set in config.h at compile-time this option can be used to swap
++the y and z keys. This is useful for some keyboard layouts.
+ .lp race
+ Selects your race (for example, ``race:human'').  Default is random.
+ Cannot be set with the `O' command.
+diff -ruX exclude nethack-3.4.3-orig/doc/Guidebook.tex nethack-3.4.3/doc/Guidebook.tex
+--- nethack-3.4.3-orig/doc/Guidebook.tex	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/doc/Guidebook.tex	2003-12-17 10:22:40.000000000 +0100
+@@ -2516,6 +2516,10 @@
+ Using the `w' (wield) command when already wielding
+ something pushes the old item into your alternate weapon slot (default off).
+ %.Ip
++\item[\ib{qwertz\_layout}]
++If {\tt QWERTZ} was set in {\it config.h} at compile-time this option can be
++used to swap the y and z keys. This is useful for some keyboard layouts.
++%.Ip
+ \item[\ib{race}]
+ Selects your race (for example, ``{\tt race:human}'').  Default is random.
+ Cannot be set with the `{\tt O}' command.
+diff -ruX exclude nethack-3.4.3-orig/include/decl.h nethack-3.4.3/include/decl.h
+--- nethack-3.4.3-orig/include/decl.h	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/include/decl.h	2003-12-17 10:22:40.000000000 +0100
+@@ -195,7 +195,12 @@
+ E const char nul[];
+ E char lock[];
+ 
++#ifdef QWERTZ
++E const char qykbd_dir[], qzkbd_dir[], ndir[];
++E char const *sdir;
++#else
+ E const char sdir[], ndir[];
++#endif
+ E const schar xdir[], ydir[], zdir[];
+ 
+ E NEARDATA schar tbx, tby;		/* set in mthrowu.c */
+diff -ruX exclude nethack-3.4.3-orig/include/flag.h nethack-3.4.3/include/flag.h
+--- nethack-3.4.3-orig/include/flag.h	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/include/flag.h	2003-12-17 10:22:40.000000000 +0100
+@@ -175,6 +175,9 @@
+ 	uchar	bouldersym;	/* symbol for boulder display */
+ 	boolean travel1;	/* first travel step */
+ 	coord	travelcc;	/* coordinates for travel_cache */
++#ifdef QWERTZ
++        boolean  qwertz_layout; /* swap y/z for this key layout */
++#endif
+ #ifdef WIZARD
+ 	boolean  sanity_check;	/* run sanity checks */
+ 	boolean  mon_polycontrol;	/* debug: control monster polymorphs */
+diff -ruX exclude nethack-3.4.3-orig/src/cmd.c nethack-3.4.3/src/cmd.c
+--- nethack-3.4.3-orig/src/cmd.c	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/src/cmd.c	2003-12-17 10:22:40.000000000 +0100
+@@ -1949,9 +1952,18 @@
+ 	} else {
+ 	    register const struct func_tab *tlist;
+ 	    int res, NDECL((*func));
++#ifdef QWERTZ
++            unsigned char cmdchar = *cmd & 0xff;
++#endif
+ 
+ 	    for (tlist = cmdlist; tlist->f_char; tlist++) {
++#ifdef QWERTZ
++                if(C(cmdchar)==C('y') && iflags.qwertz_layout==TRUE)
++                        cmdchar+='z'-'y';
++		if (cmdchar != (tlist->f_char & 0xff)) continue;
++#else
+ 		if ((*cmd & 0xff) != (tlist->f_char & 0xff)) continue;
++#endif
+ 
+ 		if (u.uburied && !tlist->can_if_buried) {
+ 		    You_cant("do that while you are buried!");
+diff -ruX exclude nethack-3.4.3-orig/src/decl.c nethack-3.4.3/src/decl.c
+--- nethack-3.4.3-orig/src/decl.c	2003-12-16 08:41:34.000000000 +0100
++++ nethack-3.4.3/src/decl.c	2003-12-17 10:22:40.000000000 +0100
+@@ -98,7 +98,13 @@
+ NEARDATA struct sinfo program_state;
+ 
+ /* 'rogue'-like direction commands (cmd.c) */
++#ifdef QWERTZ
++const char qykbd_dir[] = "hykulnjb><";       /* qwerty layout */
++const char qzkbd_dir[] = "hzkulnjb><";       /* qwertz layout */
++char const *sdir=qykbd_dir;
++#else
+ const char sdir[] = "hykulnjb><";
++#endif
+ const char ndir[] = "47896321><";	/* number pad mode */
+ const schar xdir[10] = { -1,-1, 0, 1, 1, 1, 0,-1, 0, 0 };
+ const schar ydir[10] = {  0,-1,-1,-1, 0, 1, 1, 1, 0, 0 };
+diff -ruX exclude nethack-3.4.3-orig/src/options.c nethack-3.4.3/src/options.c
+--- nethack-3.4.3-orig/src/options.c	2003-12-16 08:41:35.000000000 +0100
++++ nethack-3.4.3/src/options.c	2003-12-17 10:22:40.000000000 +0100
+@@ -148,6 +148,9 @@
+ 	{"prayconfirm", &flags.prayconfirm, TRUE, SET_IN_GAME},
+ 	{"preload_tiles", &iflags.wc_preload_tiles, TRUE, DISP_IN_GAME},	/*WC*/
+ 	{"pushweapon", &flags.pushweapon, FALSE, SET_IN_GAME},
++#ifdef QWERTZ
++        {"qwertz_layout", &iflags.qwertz_layout, FALSE, SET_IN_GAME},
++#endif
+ #if defined(MICRO) && !defined(AMIGA)
+ 	{"rawio", &iflags.rawio, FALSE, DISP_IN_GAME},
+ #else
+@@ -1114,6 +1117,18 @@
+ 		return;
+ 	}
+ 
++#ifdef QWERTZ
++        fullname = "qwertz_layout";
++        if (match_optname(opts, fullname, 6, FALSE)) {
++                if (negated)
++                        sdir=qykbd_dir;
++                else
++                        sdir=qzkbd_dir;
++                iflags.qwertz_layout=!negated;
++                return;
++        }
++#endif
++
+ 	fullname = "runmode";
+ 	if (match_optname(opts, fullname, 4, TRUE)) {
+ 		if (negated) {
