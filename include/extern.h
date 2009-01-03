@@ -2397,6 +2397,12 @@ E int FDECL(destroy_mitem, (struct monst *,int,int));
 E int FDECL(resist, (struct monst *,CHAR_P,int,int));
 E void NDECL(makewish);
 
+/* ### livelog.c ### */
+E boolean NDECL(livelog_start);
+E void NDECL(livelog_achieve_update);
+E void FDECL(livelog_wish, (char*));
+E int NDECL(doshout);
+
 #endif /* !MAKEDEFS_C && !LEV_LEX_C */
 
 #undef E

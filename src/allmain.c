@@ -593,6 +593,9 @@ boolean new_game;	/* false => restoring an old game */
 		   : "%s %s, ARTIKEL_BESTIMMTER%s %s %s, willkommen zurück zu NetHack!", /* EN : "%s %s, the%s %s %s, welcome back to NetHack!", */
 	  Hello((struct monst *) 0), plname, buf, urace.adj,
 	  (currentgend && urole.name.f) ? urole.name.f : urole.name.m);
+
+    /* Start live reporting */
+	livelog_start();
 }
 
 #ifdef POSITIONBAR

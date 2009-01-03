@@ -1489,6 +1489,7 @@ register struct monst *mtmp;
 #ifdef RECORD_ACHIEVE
         if(mtmp->data == &mons[PM_MEDUSA])
             achieve.killed_medusa = 1;
+			livelog_achieve_update();
 #endif
 
 	if(glyph_is_invisible(levl[mtmp->mx][mtmp->my].glyph))

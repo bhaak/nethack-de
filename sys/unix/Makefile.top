@@ -39,6 +39,9 @@ GAMEDIR  = $(PREFIX)/games/lib/$(GAME)dir
 VARDIR  = $(GAMEDIR)
 SHELLDIR = $(PREFIX)/games
 
+# see include/unixconf.h
+LOCKDIR = $(VARDIR)/state 
+
 # per discussion in Install.X11 and Install.Qt
 VARDATND = 
 # VARDATND = x11tiles NetHack.ad pet_mark.xbm
@@ -235,18 +238,18 @@ install: $(GAME) recover $(VARDAT) dungeon spec_levs
 # not all mkdirs have -p; those that don't will create a -p directory
 	-mkdir -p $(SHELLDIR)
 	-rm -rf $(GAMEDIR) $(VARDIR)
-	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save
+	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
 	-rmdir ./-p
-	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
-	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
-	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
+	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
+	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
+	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
 # set up the game files
 	( $(MAKE) dofiles )
 # set up some additional files
-	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile
-	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile ; \
-			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile ; \
-			chmod $(FILEPERM) perm record logfile xlogfile )
+	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile $(VARDIR)/livelog
+	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile livelog ; \
+			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile livelog ; \
+			chmod $(FILEPERM) perm record logfile xlogfile livelog )
 # and a reminder
 	@echo You may also want to reinstall the man pages via the doc Makefile.
 

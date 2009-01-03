@@ -5,16 +5,16 @@ diff -ru nethack-3.4.3/include/config.h nethack-shout/include/config.h
  #define XLOGFILE "xlogfile" /* even larger logfile */
  #define NEWS "news"		/* the file containing the latest hack news */
  #define PANICLOG "paniclog"	/* log of panic and impossible events */
-+#define LIVELOGFILE "livelog" /* live game progress log file */
++/* #define LIVELOGFILE "livelog" */ /* live game progress log file */
 +
-+#define LIVELOG_SHOUT
++/* #define LIVELOG_SHOUT */
  
  /*
   *	If COMPRESS is defined, it should contain the full path name of your
 diff -ru nethack-3.4.3/include/extern.h nethack-shout/include/extern.h
 --- nethack-3.4.3/include/extern.h	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/include/extern.h	2008-10-14 02:19:40.000000000 +0200
-@@ -2407,6 +2407,12 @@
+@@ -2397,6 +2397,12 @@
  E int FDECL(resist, (struct monst *,CHAR_P,int,int));
  E void NDECL(makewish);
  
@@ -31,7 +31,7 @@ diff -ru nethack-3.4.3/src/allmain.c nethack-shout/src/allmain.c
 --- nethack-3.4.3/src/allmain.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/allmain.c	2008-10-14 02:19:40.000000000 +0200
 @@ -593,6 +593,9 @@
- 		   : "%s %s, the%s %s %s, welcome back to NetHack!",
+ 		   : "%s %s, ARTIKEL_BESTIMMTER%s %s %s, willkommen zurück zu NetHack!", /* EN : "%s %s, the%s %s %s, welcome back to NetHack!", */
  	  Hello((struct monst *) 0), plname, buf, urace.adj,
  	  (currentgend && urole.name.f) ? urole.name.f : urole.name.m);
 +
@@ -43,7 +43,7 @@ diff -ru nethack-3.4.3/src/allmain.c nethack-shout/src/allmain.c
 diff -ru nethack-3.4.3/src/cmd.c nethack-shout/src/cmd.c
 --- nethack-3.4.3/src/cmd.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/cmd.c	2008-10-14 02:19:40.000000000 +0200
-@@ -97,6 +97,11 @@
+@@ -101,6 +101,11 @@
  extern int NDECL(dowieldquiver); /**/
  extern int NDECL(dozap); /**/
  extern int NDECL(doorganize); /**/
@@ -55,20 +55,20 @@ diff -ru nethack-3.4.3/src/cmd.c nethack-shout/src/cmd.c
  #endif /* DUMB */
  
  #ifdef OVL1
-@@ -1877,6 +1882,9 @@
- 	{"ride", "ride (or stop riding) a monster", doride, FALSE},
+@@ -1552,6 +1557,9 @@
+ 	{"ride", "reite auf (oder steige ab von) einem Monster", doride, FALSE}, /* EN {"ride", "ride (or stop riding) a monster", doride, FALSE}, */
  #endif
- 	{"rub", "rub a lamp or a stone", dorub, FALSE},
+ 	{"rub", "reibe eine Lampe oder einen Stein", dorub, FALSE}, /* EN {"rub", "rub a lamp or a stone", dorub, FALSE}, */
 +#ifdef LIVELOG_SHOUT
-+	{"shout", "shout something", doshout, FALSE},
++	{"shout", "shout something", doshout, FALSE}, /* EN +	{"shout", "shout something", doshout, FALSE}, */ // TODO DE
 +#endif
- 	{"sit", "sit down", dosit, FALSE},
- 	{"turn", "turn undead", doturn, TRUE},
- 	{"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE},
+ 	{"sit", "sit down", dosit, FALSE}, /* EN {"sit", "sit down", dosit, FALSE}, */ // TODO DE
+ 	{"turn", "turn undead", doturn, TRUE}, /* EN {"turn", "turn undead", doturn, TRUE}, */ // TODO DE
+ 	{"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, /* EN {"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, */ // TODO DE
 diff -ru nethack-3.4.3/src/do.c nethack-shout/src/do.c
 --- nethack-3.4.3/src/do.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/do.c	2008-10-14 02:19:40.000000000 +0200
-@@ -1286,6 +1286,7 @@
+@@ -1287,6 +1287,7 @@
  
  #ifdef RECORD_ACHIEVE
              achieve.enter_gehennom = 1;
@@ -79,7 +79,7 @@ diff -ru nethack-3.4.3/src/do.c nethack-shout/src/do.c
 diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
 --- nethack-3.4.3/src/invent.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/invent.c	2008-10-14 02:19:40.000000000 +0200
-@@ -260,24 +260,28 @@
+@@ -259,24 +259,28 @@
  		u.uhave.amulet = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_amulet = 1;
@@ -108,7 +108,7 @@ diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
  #endif
  	} else if (obj->oartifact) {
  		if (is_quest_artifact(obj)) {
-@@ -293,11 +297,13 @@
+@@ -292,11 +296,13 @@
          if(obj->otyp == LUCKSTONE && obj->record_achieve_special) {
                  achieve.get_luckstone = 1;
                  obj->record_achieve_special = 0;
@@ -129,8 +129,8 @@ diff -ru nethack-3.4.3/src/Makefile nethack-shout/src/Makefile
  	   rnd.c role.c rumors.c save.c shk.c shknam.c sit.c sounds.c sp_lev.c \
  	   spell.c steal.c steed.c teleport.c timeout.c topten.c track.c trap.c \
  	   u_init.c uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
--	   windows.c wizard.c worm.c worn.c write.c zap.c
-+	   windows.c wizard.c worm.c worn.c write.c zap.c \
+-	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c
++	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c \
 +	   livelog.c
  
  # all operating-system-dependent .c (for dependencies and such)
@@ -138,14 +138,14 @@ diff -ru nethack-3.4.3/src/Makefile nethack-shout/src/Makefile
 @@ -384,7 +385,8 @@
  	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
  	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
- 	wizard.o worm.o worn.o write.o zap.o \
--	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o
+ 	wizard.o worm.o worn.o write.o zap.o german.o german_vocabulary.o \
+-	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o # german_wishing_test.o
 +	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o \
-+	livelog.o
++	livelog.o # german_vocabulary.o
+
  # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
  
- $(GAME):	$(SYSTEM)
-@@ -809,6 +811,7 @@
+@@ -829,6 +831,7 @@
  worn.o: worn.c $(HACK_H)
  write.o: write.c $(HACK_H)
  zap.o: zap.c $(HACK_H)
@@ -167,7 +167,7 @@ diff -ru nethack-3.4.3/src/mklev.c nethack-shout/src/mklev.c
 diff -ru nethack-3.4.3/src/mon.c nethack-shout/src/mon.c
 --- nethack-3.4.3/src/mon.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/mon.c	2008-10-14 02:19:40.000000000 +0200
-@@ -1485,6 +1485,7 @@
+@@ -1489,6 +1489,7 @@
  #ifdef RECORD_ACHIEVE
          if(mtmp->data == &mons[PM_MEDUSA])
              achieve.killed_medusa = 1;
@@ -178,18 +178,18 @@ diff -ru nethack-3.4.3/src/mon.c nethack-shout/src/mon.c
 diff -ru nethack-3.4.3/src/pray.c nethack-shout/src/pray.c
 --- nethack-3.4.3/src/pray.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/pray.c	2008-10-14 02:19:40.000000000 +0200
-@@ -1290,6 +1290,7 @@
+@@ -1294,6 +1294,7 @@
  
  #ifdef RECORD_ACHIEVE
                  achieve.ascended = 1;
 +				livelog_achieve_update();
  #endif
  
- pline("An invisible choir sings, and you are bathed in radiance...");
+ pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SONNEN OBJECT PRONOMEN_PERSONAL in göttlichem Lichte ..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */
 diff -ru nethack-3.4.3/src/zap.c nethack-shout/src/zap.c
 --- nethack-3.4.3/src/zap.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/zap.c	2008-10-14 02:23:44.000000000 +0200
-@@ -4093,6 +4093,7 @@
+@@ -4100,6 +4100,7 @@
  makewish()
  {
  	char buf[BUFSZ];
@@ -197,15 +197,15 @@ diff -ru nethack-3.4.3/src/zap.c nethack-shout/src/zap.c
  	struct obj *otmp, nothing;
  	int tries = 0;
  
-@@ -4100,6 +4101,7 @@
- 	if (flags.verbose) You("may wish for an object.");
+@@ -4107,6 +4108,7 @@
+ 	if (flags.verbose) You("VERB_DUERFEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL etwas wünschen."); /* EN if (flags.verbose) You("may wish for an object."); */
  retry:
- 	getlin("For what do you wish?", buf);
+ 	getlin("Was SUBJECT_IM_SATZ VERB_WUENSCHEN PRONOMEN_PERSONAL OBJECT KASUS_DATIV PRONOMEN_PERSONAL?", buf); /* EN getlin("For what do you wish?", buf); */
 +	Strcpy(rawbuf, buf);
  	if(buf[0] == '\033') buf[0] = 0;
  	/*
  	 *  Note: if they wished for and got a non-object successfully,
-@@ -4117,12 +4119,16 @@
+@@ -4124,12 +4126,16 @@
  	} else if (otmp == &nothing) {
  	    /* explicitly wished for "nothing", presumeably attempting
  	       to retain wishless conduct */
@@ -336,7 +336,7 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +	FILE* livelogfile;
 +	if(lock_file(LIVELOGFILE, SCOREPREFIX, 10)) {
 +		if(!(livelogfile = fopen_datafile(LIVELOGFILE, "a", SCOREPREFIX))) {
-+			raw_print("Cannot open live log file!");
++			pline("Cannot open live log file!");
 +		} else {
 +			fprintf(livelogfile, buffer);
 +			(void) fclose(livelogfile);
@@ -484,7 +484,7 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +	FILE* livelogfile;
 +	if(lock_file(LIVELOGFILE, SCOREPREFIX, 10)) {
 +		if(!(livelogfile = fopen_datafile(LIVELOGFILE, "a", SCOREPREFIX))) {
-+			raw_print("Cannot open live log file!");
++			pline("Cannot open live log file!");
 +		} else {
 +			fprintf(livelogfile, buffer);
 +			(void) fclose(livelogfile);
@@ -563,3 +563,74 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +
 +#endif
 +
+diff -ru nethack-3.4.3/Makefile nethack-shout/Makefile
+--- nethack-3.4.3/Makefile	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/Makefile	2008-10-14 02:19:40.000000000 +0200
+@@ -40,6 +40,9 @@
+ VARDIR  = $(GAMEDIR)
+ SHELLDIR = $(PREFIX)/games
+ 
++# see include/unixconf.h
++LOCKDIR = $(VARDIR)/state 
++
+ # per discussion in Install.X11 and Install.Qt
+ VARDATND = 
+ # VARDATND = x11tiles NetHack.ad pet_mark.xbm
+@@ -236,18 +239,18 @@
+ # not all mkdirs have -p; those that don't will create a -p directory
+ 	-mkdir -p $(SHELLDIR)
+ 	-rm -rf $(GAMEDIR) $(VARDIR)
+-	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save
++	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
+ 	-rmdir ./-p
+-	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
+-	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
+-	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
++	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
++	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
++	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
+ # set up the game files
+ 	( $(MAKE) dofiles )
+ # set up some additional files
+-	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile
+-	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile ; \
+-			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile ; \
+-			chmod $(FILEPERM) perm record logfile xlogfile )
++	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile $(VARDIR)/livelog
++	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile livelog ; \
++			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile livelog ; \
++			chmod $(FILEPERM) perm record logfile xlogfile livelog )
+ # and a reminder
+ 	@echo You may also want to reinstall the man pages via the doc Makefile.
+
+diff -ru nethack-3.4.3/sys/unix/Makefile.src nethack-shout/sys/unix/Makefile.src
+--- nethack-3.4.3/sys/unix/Makefile.src	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/sys/unix/Makefile.src	2008-10-14 02:19:40.000000000 +0200
+@@ -326,7 +326,8 @@
+ 	   rnd.c role.c rumors.c save.c shk.c shknam.c sit.c sounds.c sp_lev.c \
+ 	   spell.c steal.c steed.c teleport.c timeout.c topten.c track.c trap.c \
+ 	   u_init.c uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
+-	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c
++	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c \
++	   livelog.c
+ 
+ # all operating-system-dependent .c (for dependencies and such)
+ SYSCSRC = ../sys/atari/tos.c ../sys/share/pcmain.c ../sys/share/pcsys.c \
+@@ -384,7 +385,8 @@
+ 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
+ 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
+ 	wizard.o worm.o worn.o write.o zap.o german.o german_vocabulary.o \
+-	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o # german_wishing_test.o
++	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o \
++	livelog.o # german_vocabulary.o
+
+ # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
+ 
+@@ -829,6 +831,7 @@
+ worn.o: worn.c $(HACK_H)
+ write.o: write.c $(HACK_H)
+ zap.o: zap.c $(HACK_H)
++livelog.o: livelog.c $(HACK_H)
+ # DEPENDENCIES MUST END AT END OF FILE
+ # IF YOU PUT STUFF HERE IT WILL GO AWAY
+ # see make depend above

@@ -101,6 +101,11 @@ extern int NDECL(dowield); /**/
 extern int NDECL(dowieldquiver); /**/
 extern int NDECL(dozap); /**/
 extern int NDECL(doorganize); /**/
+
+#ifdef LIVELOG_SHOUT
+extern int NDECL(doshout); /**/
+#endif
+
 #endif /* DUMB */
 
 #ifdef OVL1
@@ -1552,6 +1557,9 @@ struct ext_func_tab extcmdlist[] = {
 	{"ride", "reite auf (oder steige ab von) einem Monster", doride, FALSE}, /* EN {"ride", "ride (or stop riding) a monster", doride, FALSE}, */
 #endif
 	{"rub", "reibe eine Lampe oder einen Stein", dorub, FALSE}, /* EN {"rub", "rub a lamp or a stone", dorub, FALSE}, */
+#ifdef LIVELOG_SHOUT
+	{"shout", "shout something", doshout, FALSE}, /* EN +	{"shout", "shout something", doshout, FALSE}, */ // TODO DE
+#endif
 	{"sit", "sit down", dosit, FALSE}, /* EN {"sit", "sit down", dosit, FALSE}, */ // TODO DE
 	{"turn", "turn undead", doturn, TRUE}, /* EN {"turn", "turn undead", doturn, TRUE}, */ // TODO DE
 	{"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, /* EN {"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, */ // TODO DE

@@ -1294,6 +1294,7 @@ dosacrifice()
 
 #ifdef RECORD_ACHIEVE
                 achieve.ascended = 1;
+				livelog_achieve_update();
 #endif
 
 pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SONNEN OBJECT PRONOMEN_PERSONAL in göttlichem Lichte ..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */

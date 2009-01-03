@@ -4100,6 +4100,7 @@ void
 makewish()
 {
 	char buf[BUFSZ];
+	char rawbuf[BUFSZ]; // for exact livelog reporting
 	struct obj *otmp, nothing;
 	int tries = 0;
 
@@ -4107,6 +4108,7 @@ makewish()
 	if (flags.verbose) You("VERB_DUERFEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL etwas wünschen."); /* EN if (flags.verbose) You("may wish for an object."); */
 retry:
 	getlin("Was SUBJECT_IM_SATZ VERB_WUENSCHEN PRONOMEN_PERSONAL OBJECT KASUS_DATIV PRONOMEN_PERSONAL?", buf); /* EN getlin("For what do you wish?", buf); */
+	Strcpy(rawbuf, buf);
 	if(buf[0] == '\033') buf[0] = 0;
 	/*
 	 *  Note: if they wished for and got a non-object successfully,
@@ -4124,11 +4126,15 @@ retry:
 	} else if (otmp == &nothing) {
 	    /* explicitly wished for "nothing", presumeably attempting
 	       to retain wishless conduct */
+		livelog_wish(buf);
 	    return;
 	}
 
 	/* KMH, conduct */
 	u.uconduct.wishes++;
+
+	/* Livelog patch */
+	livelog_wish(rawbuf);
 
 	if (otmp != &zeroobj) {
 	    /* The(aobjnam()) is safe since otmp is unidentified -dlc */
