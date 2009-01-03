@@ -1,0 +1,565 @@
+diff -ru nethack-3.4.3/include/config.h nethack-shout/include/config.h
+--- nethack-3.4.3/include/config.h	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/include/config.h	2008-10-14 02:21:13.000000000 +0200
+@@ -154,6 +154,9 @@
+ #define XLOGFILE "xlogfile" /* even larger logfile */
+ #define NEWS "news"		/* the file containing the latest hack news */
+ #define PANICLOG "paniclog"	/* log of panic and impossible events */
++#define LIVELOGFILE "livelog" /* live game progress log file */
++
++#define LIVELOG_SHOUT
+ 
+ /*
+  *	If COMPRESS is defined, it should contain the full path name of your
+diff -ru nethack-3.4.3/include/extern.h nethack-shout/include/extern.h
+--- nethack-3.4.3/include/extern.h	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/include/extern.h	2008-10-14 02:19:40.000000000 +0200
+@@ -2407,6 +2407,12 @@
+ E int FDECL(resist, (struct monst *,CHAR_P,int,int));
+ E void NDECL(makewish);
+ 
++/* ### livelog.c ### */
++E boolean NDECL(livelog_start);
++E void NDECL(livelog_achieve_update);
++E void FDECL(livelog_wish, (char*));
++E int NDECL(doshout);
++
+ #endif /* !MAKEDEFS_C && !LEV_LEX_C */
+ 
+ #undef E
+diff -ru nethack-3.4.3/src/allmain.c nethack-shout/src/allmain.c
+--- nethack-3.4.3/src/allmain.c	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/allmain.c	2008-10-14 02:19:40.000000000 +0200
+@@ -593,6 +593,9 @@
+ 		   : "%s %s, the%s %s %s, welcome back to NetHack!",
+ 	  Hello((struct monst *) 0), plname, buf, urace.adj,
+ 	  (currentgend && urole.name.f) ? urole.name.f : urole.name.m);
++
++    /* Start live reporting */
++	livelog_start();
+ }
+ 
+ #ifdef POSITIONBAR
+diff -ru nethack-3.4.3/src/cmd.c nethack-shout/src/cmd.c
+--- nethack-3.4.3/src/cmd.c	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/cmd.c	2008-10-14 02:19:40.000000000 +0200
+@@ -97,6 +97,11 @@
+ extern int NDECL(dowieldquiver); /**/
+ extern int NDECL(dozap); /**/
+ extern int NDECL(doorganize); /**/
++
++#ifdef LIVELOG_SHOUT
++extern int NDECL(doshout); /**/
++#endif
++
+ #endif /* DUMB */
+ 
+ #ifdef OVL1
+@@ -1877,6 +1882,9 @@
+ 	{"ride", "ride (or stop riding) a monster", doride, FALSE},
+ #endif
+ 	{"rub", "rub a lamp or a stone", dorub, FALSE},
++#ifdef LIVELOG_SHOUT
++	{"shout", "shout something", doshout, FALSE},
++#endif
+ 	{"sit", "sit down", dosit, FALSE},
+ 	{"turn", "turn undead", doturn, TRUE},
+ 	{"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE},
+diff -ru nethack-3.4.3/src/do.c nethack-shout/src/do.c
+--- nethack-3.4.3/src/do.c	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/do.c	2008-10-14 02:19:40.000000000 +0200
+@@ -1286,6 +1286,7 @@
+ 
+ #ifdef RECORD_ACHIEVE
+             achieve.enter_gehennom = 1;
++			livelog_achieve_update();
+ #endif
+ 	}
+ 
+diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
+--- nethack-3.4.3/src/invent.c	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/invent.c	2008-10-14 02:19:40.000000000 +0200
+@@ -260,24 +260,28 @@
+ 		u.uhave.amulet = 1;
+ #ifdef RECORD_ACHIEVE
+                 achieve.get_amulet = 1;
++				livelog_achieve_update();
+ #endif
+ 	} else if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
+ 		if (u.uhave.menorah) impossible("already have candelabrum?");
+ 		u.uhave.menorah = 1;
+ #ifdef RECORD_ACHIEVE
+                 achieve.get_candelabrum = 1;
++				livelog_achieve_update();
+ #endif
+ 	} else if (obj->otyp == BELL_OF_OPENING) {
+ 		if (u.uhave.bell) impossible("already have silver bell?");
+ 		u.uhave.bell = 1;
+ #ifdef RECORD_ACHIEVE
+                 achieve.get_bell = 1;
++				livelog_achieve_update();
+ #endif
+ 	} else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
+ 		if (u.uhave.book) impossible("already have the book?");
+ 		u.uhave.book = 1;
+ #ifdef RECORD_ACHIEVE
+                 achieve.get_book = 1;
++				livelog_achieve_update();
+ #endif
+ 	} else if (obj->oartifact) {
+ 		if (is_quest_artifact(obj)) {
+@@ -293,11 +297,13 @@
+         if(obj->otyp == LUCKSTONE && obj->record_achieve_special) {
+                 achieve.get_luckstone = 1;
+                 obj->record_achieve_special = 0;
++				livelog_achieve_update();
+         } else if((obj->otyp == AMULET_OF_REFLECTION ||
+                    obj->otyp == BAG_OF_HOLDING) &&
+                   obj->record_achieve_special) {
+                 achieve.finish_sokoban = 1;
+                 obj->record_achieve_special = 0;
++				livelog_achieve_update();
+         }
+ #endif /* RECORD_ACHIEVE */
+ 
+diff -ru nethack-3.4.3/src/Makefile nethack-shout/src/Makefile
+--- nethack-3.4.3/src/Makefile	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/Makefile	2008-10-14 02:19:40.000000000 +0200
+@@ -326,7 +326,8 @@
+ 	   rnd.c role.c rumors.c save.c shk.c shknam.c sit.c sounds.c sp_lev.c \
+ 	   spell.c steal.c steed.c teleport.c timeout.c topten.c track.c trap.c \
+ 	   u_init.c uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
+-	   windows.c wizard.c worm.c worn.c write.c zap.c
++	   windows.c wizard.c worm.c worn.c write.c zap.c \
++	   livelog.c
+ 
+ # all operating-system-dependent .c (for dependencies and such)
+ SYSCSRC = ../sys/atari/tos.c ../sys/share/pcmain.c ../sys/share/pcsys.c \
+@@ -384,7 +385,8 @@
+ 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
+ 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
+ 	wizard.o worm.o worn.o write.o zap.o \
+-	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o
++	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o \
++	livelog.o
+ # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
+ 
+ $(GAME):	$(SYSTEM)
+@@ -809,6 +811,7 @@
+ worn.o: worn.c $(HACK_H)
+ write.o: write.c $(HACK_H)
+ zap.o: zap.c $(HACK_H)
++livelog.o: livelog.c $(HACK_H)
+ # DEPENDENCIES MUST END AT END OF FILE
+ # IF YOU PUT STUFF HERE IT WILL GO AWAY
+ # see make depend above
+diff -ru nethack-3.4.3/src/mklev.c nethack-shout/src/mklev.c
+--- nethack-3.4.3/src/mklev.c	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/mklev.c	2008-10-14 02:19:40.000000000 +0200
+@@ -1465,6 +1465,7 @@
+ 
+ #ifdef RECORD_ACHIEVE
+     achieve.perform_invocation = 1;
++	livelog_achieve_update();
+ #endif
+ }
+ 
+diff -ru nethack-3.4.3/src/mon.c nethack-shout/src/mon.c
+--- nethack-3.4.3/src/mon.c	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/mon.c	2008-10-14 02:19:40.000000000 +0200
+@@ -1485,6 +1485,7 @@
+ #ifdef RECORD_ACHIEVE
+         if(mtmp->data == &mons[PM_MEDUSA])
+             achieve.killed_medusa = 1;
++			livelog_achieve_update();
+ #endif
+ 
+ 	if(glyph_is_invisible(levl[mtmp->mx][mtmp->my].glyph))
+diff -ru nethack-3.4.3/src/pray.c nethack-shout/src/pray.c
+--- nethack-3.4.3/src/pray.c	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/pray.c	2008-10-14 02:19:40.000000000 +0200
+@@ -1290,6 +1290,7 @@
+ 
+ #ifdef RECORD_ACHIEVE
+                 achieve.ascended = 1;
++				livelog_achieve_update();
+ #endif
+ 
+ pline("An invisible choir sings, and you are bathed in radiance...");
+diff -ru nethack-3.4.3/src/zap.c nethack-shout/src/zap.c
+--- nethack-3.4.3/src/zap.c	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/src/zap.c	2008-10-14 02:23:44.000000000 +0200
+@@ -4093,6 +4093,7 @@
+ makewish()
+ {
+ 	char buf[BUFSZ];
++	char rawbuf[BUFSZ]; // for exact livelog reporting
+ 	struct obj *otmp, nothing;
+ 	int tries = 0;
+ 
+@@ -4100,6 +4101,7 @@
+ 	if (flags.verbose) You("may wish for an object.");
+ retry:
+ 	getlin("For what do you wish?", buf);
++	Strcpy(rawbuf, buf);
+ 	if(buf[0] == '\033') buf[0] = 0;
+ 	/*
+ 	 *  Note: if they wished for and got a non-object successfully,
+@@ -4117,12 +4119,16 @@
+ 	} else if (otmp == &nothing) {
+ 	    /* explicitly wished for "nothing", presumeably attempting
+ 	       to retain wishless conduct */
++		livelog_wish(buf);
+ 	    return;
+ 	}
+ 
+ 	/* KMH, conduct */
+ 	u.uconduct.wishes++;
+ 
++	/* Livelog patch */
++	livelog_wish(rawbuf);
++
+ 	if (otmp != &zeroobj) {
+ 	    /* The(aobjnam()) is safe since otmp is unidentified -dlc */
+ 	    (void) hold_another_object(otmp, u.uswallow ?
+diff -ru nethack-3.4.3/sys/unix/Makefile.top nethack-shout/sys/unix/Makefile.top
+--- nethack-3.4.3/sys/unix/Makefile.top	2008-10-14 02:24:16.000000000 +0200
++++ nethack-shout/sys/unix/Makefile.top	2008-10-14 02:19:40.000000000 +0200
+@@ -39,6 +39,9 @@
+ VARDIR  = $(GAMEDIR)
+ SHELLDIR = $(PREFIX)/games
+ 
++# see include/unixconf.h
++LOCKDIR = $(VARDIR)/state 
++
+ # per discussion in Install.X11 and Install.Qt
+ VARDATND = 
+ # VARDATND = x11tiles NetHack.ad pet_mark.xbm
+@@ -235,18 +238,18 @@
+ # not all mkdirs have -p; those that don't will create a -p directory
+ 	-mkdir -p $(SHELLDIR)
+ 	-rm -rf $(GAMEDIR) $(VARDIR)
+-	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save
++	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
+ 	-rmdir ./-p
+-	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
+-	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
+-	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
++	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
++	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
++	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
+ # set up the game files
+ 	( $(MAKE) dofiles )
+ # set up some additional files
+-	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile
+-	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile ; \
+-			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile ; \
+-			chmod $(FILEPERM) perm record logfile xlogfile )
++	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile $(VARDIR)/livelog
++	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile livelog ; \
++			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile livelog ; \
++			chmod $(FILEPERM) perm record logfile xlogfile livelog )
+ # and a reminder
+ 	@echo You may also want to reinstall the man pages via the doc Makefile.
+
+diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
+--- nethack-3.4.3/src/livelog.c	1970-01-01 01:00:00.000000000 +0100
++++ nethack-shout/src/livelog.c	2008-09-24 07:24:15.000000000 +0200
+@@ -0,0 +1,148 @@
++/* Write live game progress changes to a log file 
++ * Needs xlog-v3 patch. */
++
++#include "hack.h"
++
++#ifndef LIVELOGFILE
++#define LIVELOGFILE "livelog"
++#endif
++
++/* Encodes the current xlog "achieve" status to an integer */
++long
++encodeachieve(void)
++{
++  /* Achievement bitfield:
++   * bit  meaning
++   *  0   obtained the Bell of Opening
++   *  1   entered gehennom (by any means)
++   *  2   obtained the Candelabrum of Invocation
++   *  3   obtained the Book of the Dead
++   *  4   performed the invocation ritual
++   *  5   obtained the amulet
++   *  6   entered elemental planes
++   *  7   entered astral plane
++   *  8   ascended (not "escaped in celestial disgrace!")
++   *  9   obtained the luckstone from the Mines
++   *  10  obtained the sokoban prize
++   *  11  killed medusa
++   */
++
++  long r;
++
++  r = 0;
++
++  if(achieve.get_bell)           r |= 1L << 0;
++  if(achieve.enter_gehennom)     r |= 1L << 1;
++  if(achieve.get_candelabrum)    r |= 1L << 2;
++  if(achieve.get_book)           r |= 1L << 3;
++  if(achieve.perform_invocation) r |= 1L << 4;
++  if(achieve.get_amulet)         r |= 1L << 5;
++  if(In_endgame(&u.uz))          r |= 1L << 6;
++  if(Is_astralevel(&u.uz))       r |= 1L << 7;
++  if(achieve.ascended)           r |= 1L << 8;
++  if(achieve.get_luckstone)      r |= 1L << 9;
++  if(achieve.finish_sokoban)     r |= 1L << 10;
++  if(achieve.killed_medusa)      r |= 1L << 11;
++
++  return r;
++}
++
++/* Keep the last xlog "achieve" value to be able to compare */
++long last_achieve_int;
++
++/* Generic buffer for snprintf */
++#define STRBUF_LEN (4096)
++char strbuf[STRBUF_LEN];
++
++/* Open the live log file */
++boolean livelog_start() {
++
++
++	last_achieve_int = encodeachieve();
++
++	return TRUE;
++}
++
++/* Locks the live log file and writes 'buffer' */
++void livelog_write_string(char* buffer) {
++	FILE* livelogfile;
++	if(lock_file(LIVELOGFILE, SCOREPREFIX, 10)) {
++		if(!(livelogfile = fopen_datafile(LIVELOGFILE, "a", SCOREPREFIX))) {
++			raw_print("Cannot open live log file!");
++		} else {
++			fprintf(livelogfile, buffer);
++			(void) fclose(livelogfile);
++		}
++		unlock_file(LIVELOGFILE);
++	}
++}
++
++/* Writes changes in the achieve structure to the live log.
++ * Called from various places in the NetHack source,
++ * usually where xlog's achieve is set. */
++void livelog_achieve_update() {
++	long achieve_int, achieve_diff;
++
++	achieve_int = encodeachieve();
++	achieve_diff = last_achieve_int ^ achieve_int;
++
++	/* livelog_achieve_update is sometimes called when there's
++	 * no actual change. */
++	if(achieve_diff == 0) {
++		return;
++	}
++
++	snprintf(strbuf, STRBUF_LEN,
++		"player=%s:turns=%d:achieve=0x%lx:achieve_diff=0x%lx\n",
++		plname, 
++		moves, 
++		achieve_int,
++		achieve_diff);
++	livelog_write_string(strbuf);
++
++	last_achieve_int = achieve_int;
++}
++
++/* Reports wishes */
++void
++livelog_wish(item)
++char *item;
++{
++	snprintf(strbuf, STRBUF_LEN,
++		"player=%s:turns=%d:wish=%s\n",
++		plname,
++		moves,
++		item);
++	livelog_write_string(strbuf);
++}
++
++/* Shout */
++#ifdef LIVELOG_SHOUT
++
++int 
++doshout()
++{
++	char buf[BUFSZ], qbuf[QBUFSZ];
++	char* p;
++	   
++	Sprintf(qbuf,"Shout what?");
++	getlin(qbuf, buf);
++	
++	You("shout into the void: %s", buf);
++
++	/* filter livelog delimiter */
++	for(p = buf; *p != 0; p++) 
++		if( *p == ':' )
++			*p = ' ';
++
++	snprintf(strbuf, STRBUF_LEN,
++		"player=%s:turns=%d:shout=%s\n",
++		plname,
++		moves,
++		buf);
++	livelog_write_string(strbuf);
++	
++	return 0;
++}
++
++#endif
++/* Write live game progress changes to a log file 
++ * Needs xlog-v3 patch. */
++
++#include "hack.h"
++
++#ifndef LIVELOGFILE
++#define LIVELOGFILE "livelog"
++#endif
++
++/* Encodes the current xlog "achieve" status to an integer */
++long
++encodeachieve(void)
++{
++  /* Achievement bitfield:
++   * bit  meaning
++   *  0   obtained the Bell of Opening
++   *  1   entered gehennom (by any means)
++   *  2   obtained the Candelabrum of Invocation
++   *  3   obtained the Book of the Dead
++   *  4   performed the invocation ritual
++   *  5   obtained the amulet
++   *  6   entered elemental planes
++   *  7   entered astral plane
++   *  8   ascended (not "escaped in celestial disgrace!")
++   *  9   obtained the luckstone from the Mines
++   *  10  obtained the sokoban prize
++   *  11  killed medusa
++   */
++
++  long r;
++
++  r = 0;
++
++  if(achieve.get_bell)           r |= 1L << 0;
++  if(achieve.enter_gehennom)     r |= 1L << 1;
++  if(achieve.get_candelabrum)    r |= 1L << 2;
++  if(achieve.get_book)           r |= 1L << 3;
++  if(achieve.perform_invocation) r |= 1L << 4;
++  if(achieve.get_amulet)         r |= 1L << 5;
++  if(In_endgame(&u.uz))          r |= 1L << 6;
++  if(Is_astralevel(&u.uz))       r |= 1L << 7;
++  if(achieve.ascended)           r |= 1L << 8;
++  if(achieve.get_luckstone)      r |= 1L << 9;
++  if(achieve.finish_sokoban)     r |= 1L << 10;
++  if(achieve.killed_medusa)      r |= 1L << 11;
++
++  return r;
++}
++
++/* Keep the last xlog "achieve" value to be able to compare */
++long last_achieve_int;
++
++/* Generic buffer for snprintf */
++#define STRBUF_LEN (4096)
++char strbuf[STRBUF_LEN];
++
++/* Open the live log file */
++boolean livelog_start() {
++
++
++	last_achieve_int = encodeachieve();
++
++	return TRUE;
++}
++
++/* Locks the live log file and writes 'buffer' */
++void livelog_write_string(char* buffer) {
++	FILE* livelogfile;
++	if(lock_file(LIVELOGFILE, SCOREPREFIX, 10)) {
++		if(!(livelogfile = fopen_datafile(LIVELOGFILE, "a", SCOREPREFIX))) {
++			raw_print("Cannot open live log file!");
++		} else {
++			fprintf(livelogfile, buffer);
++			(void) fclose(livelogfile);
++		}
++		unlock_file(LIVELOGFILE);
++	}
++}
++
++/* Writes changes in the achieve structure to the live log.
++ * Called from various places in the NetHack source,
++ * usually where xlog's achieve is set. */
++void livelog_achieve_update() {
++	long achieve_int, achieve_diff;
++
++	achieve_int = encodeachieve();
++	achieve_diff = last_achieve_int ^ achieve_int;
++
++	/* livelog_achieve_update is sometimes called when there's
++	 * no actual change. */
++	if(achieve_diff == 0) {
++		return;
++	}
++
++	snprintf(strbuf, STRBUF_LEN,
++		"player=%s:turns=%d:achieve=0x%lx:achieve_diff=0x%lx\n",
++		plname, 
++		moves, 
++		achieve_int,
++		achieve_diff);
++	livelog_write_string(strbuf);
++
++	last_achieve_int = achieve_int;
++}
++
++/* Reports wishes */
++void
++livelog_wish(item)
++char *item;
++{
++	snprintf(strbuf, STRBUF_LEN,
++		"player=%s:turns=%d:wish=%s\n",
++		plname,
++		moves,
++		item);
++	livelog_write_string(strbuf);
++}
++
++/* Shout */
++#ifdef LIVELOG_SHOUT
++
++int 
++doshout()
++{
++	char buf[BUFSZ], qbuf[QBUFSZ];
++	char* p;
++	   
++	Sprintf(qbuf,"Shout what?");
++	getlin(qbuf, buf);
++	
++	You("shout into the void: %s", buf);
++
++	/* filter livelog delimiter */
++	for(p = buf; *p != 0; p++) 
++		if( *p == ':' )
++			*p = ' ';
++
++	snprintf(strbuf, STRBUF_LEN,
++		"player=%s:turns=%d:shout=%s\n",
++		plname,
++		moves,
++		buf);
++	livelog_write_string(strbuf);
++	
++	return 0;
++}
++
++#endif
++
