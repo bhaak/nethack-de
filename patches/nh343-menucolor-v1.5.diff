@@ -60,7 +60,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/include/confi
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/include/extern.h nethack-3.4.3-menucolors/include/extern.h
 --- nethack-3.4.3-orig/include/extern.h	2006-08-08 23:07:19.000000000 +0300
 +++ nethack-3.4.3-menucolors/include/extern.h	2005-02-18 18:01:56.000000000 +0200
-@@ -1405,6 +1405,9 @@
+@@ -1408,6 +1408,9 @@
  E int FDECL(add_autopickup_exception, (const char *));
  E void NDECL(free_autopickup_exceptions);
  #endif /* AUTOPICKUP_EXCEPTIONS */
@@ -73,7 +73,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/include/exter
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/include/flag.h nethack-3.4.3-menucolors/include/flag.h
 --- nethack-3.4.3-orig/include/flag.h	2006-08-08 23:07:19.000000000 +0300
 +++ nethack-3.4.3-menucolors/include/flag.h	2005-02-18 18:01:56.000000000 +0200
-@@ -183,6 +183,9 @@
+@@ -189,6 +189,9 @@
  	char prevmsg_window;	/* type of old message window to use */
  	boolean  extmenu;	/* extended commands use menu interface */
  #endif
@@ -84,8 +84,8 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/include/flag.
  	boolean  checkspace;	/* check disk space before writing files */
  				/* (in iflags to allow restore after moving
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/README.menucolor nethack-3.4.3-menucolors/README.menucolor
---- nethack-3.4.3-orig/README.menucolor	1970-01-01 02:00:00.000000000 +0200
-+++ nethack-3.4.3-menucolors/README.menucolor	2006-09-20 23:27:08.000000000 +0300
+--- nethack-3.4.3-orig/doc/README.menucolor	1970-01-01 02:00:00.000000000 +0200
++++ nethack-3.4.3-menucolors/doc/README.menucolor	2006-09-20 23:27:08.000000000 +0300
 @@ -0,0 +1,106 @@
 +
 +   This is version 1.5 of the menucolors patch.
@@ -196,8 +196,8 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/README.menuco
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/decl.c nethack-3.4.3-menucolors/src/decl.c
 --- nethack-3.4.3-orig/src/decl.c	2006-08-08 23:07:19.000000000 +0300
 +++ nethack-3.4.3-menucolors/src/decl.c	2005-02-18 18:01:56.000000000 +0200
-@@ -235,6 +235,10 @@
- 	"white",		/* CLR_WHITE */
+@@ -241,6 +241,10 @@
+ 	"ADJEKTIV_FARBE_WHITE",		/* CLR_WHITE */
  };
  
 +#ifdef MENU_COLOR
@@ -205,8 +205,8 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/decl.c ne
 +#endif
 +
  struct c_common_strings c_common_strings = {
- 	"Nothing happens.",		"That's enough tries!",
- 	"That is a silly thing to %s.",	"shudder for a moment.",
+ 	"Nothing happens.",		"That's enough tries!", /* EN "Nothing happens.",		"That's enough tries!", */ // TODO DE
+ 	"That is a silly thing to %s.",	"shudder for a moment.", /* EN "That is a silly thing to %s.",	"shudder for a moment.", */ // TODO DE
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/files.c nethack-3.4.3-menucolors/src/files.c
 --- nethack-3.4.3-orig/src/files.c	2006-08-08 23:07:19.000000000 +0300
 +++ nethack-3.4.3-menucolors/src/files.c	2005-02-18 18:01:56.000000000 +0200
@@ -224,7 +224,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/files.c n
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/options.c nethack-3.4.3-menucolors/src/options.c
 --- nethack-3.4.3-orig/src/options.c	2006-08-08 23:07:19.000000000 +0300
 +++ nethack-3.4.3-menucolors/src/options.c	2005-02-18 18:01:56.000000000 +0200
-@@ -125,6 +125,15 @@
+@@ -129,6 +129,15 @@
  #else
  	{"mail", (boolean *)0, TRUE, SET_IN_FILE},
  #endif
@@ -240,15 +240,15 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/options.c
  #ifdef WIZARD
  	/* for menu debugging only*/
  	{"menu_tab_sep", &iflags.menu_tab_sep, FALSE, SET_IN_GAME},
-@@ -246,6 +255,7 @@
- 	{ "horsename", "the name of your (first) horse (e.g., horsename:Silver)",
+@@ -256,6 +265,7 @@
+ 	{ "horsename", "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_HORSE (z.B., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */
  						PL_PSIZ, DISP_IN_GAME },
- 	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/
-+	{ "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE },
- 	{ "menustyle", "user interface for object selection",
+ 	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/ // TODO DE
++	{ "menucolor", "Menüfarben einschalten", PL_PSIZ, SET_IN_FILE }, /* EN { "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE }, */
+ 	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
  						MENUTYPELEN, SET_IN_GAME },
- 	{ "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE },
-@@ -964,6 +974,133 @@
+ 	{ "menu_deselect_all", "alle Einträge eines Menüs deselektieren", 4, SET_IN_FILE }, /* EN { "menu_deselect_all", "deselect all items in a menu", 4, SET_IN_FILE }, */
+@@ -974,6 +984,133 @@
  	}
  }
  
@@ -382,7 +382,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/options.c
  void
  parseoptions(opts, tinitial, tfrom_file)
  register char *opts;
-@@ -1133,6 +1270,18 @@
+@@ -1155,6 +1292,18 @@
  		return;
  	}
  
@@ -415,7 +415,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/save.c ne
  /* need to preserve these during save to avoid accessing freed memory */
  static unsigned ustuck_id = 0, usteed_id = 0;
  
-@@ -953,12 +957,34 @@
+@@ -967,12 +971,34 @@
  	return;
  }
  
@@ -453,26 +453,26 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/save.c ne
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/util/makedefs.c nethack-3.4.3-menucolors/util/makedefs.c
 --- nethack-3.4.3-orig/util/makedefs.c	2006-08-08 23:07:20.000000000 +0300
 +++ nethack-3.4.3-menucolors/util/makedefs.c	2005-02-18 18:01:56.000000000 +0200
-@@ -679,6 +679,13 @@
+@@ -694,6 +694,13 @@
  #ifdef MAIL
- 		"mail daemon",
+ 		"Briefdämon", /* EN "mail daemon", */
  #endif
 +#ifdef MENU_COLOR
 +# ifdef MENU_COLOR_REGEX
-+		"menu colors via regular expressions",
++		"Menüfarbe via regulären Ausdrücken", /* EN "menu colors via regular expressions", */
 +# else
-+		"menu colors via pmatch",
++		"Menüfarbe via pmatch", /* EN "menu colors via pmatch", */
 +# endif
 +#endif
  #ifdef GNUDOS
- 		"MSDOS protected mode",
+ 		"MSDOS protected mode", /* EN "MSDOS protected mode", */ // TODO DE
  #endif
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/win/tty/wintty.c nethack-3.4.3-menucolors/win/tty/wintty.c
 --- nethack-3.4.3-orig/win/tty/wintty.c	2006-08-08 23:07:20.000000000 +0300
 +++ nethack-3.4.3-menucolors/win/tty/wintty.c	2005-02-18 18:01:57.000000000 +0200
-@@ -125,6 +125,10 @@
+@@ -129,6 +129,10 @@
  static char winpanicstr[] = "Bad window id %d";
- char defmorestr[] = "--More--";
+ char defmorestr[] = "--Weiter--"; /* EN char defmorestr[] = "--More--"; */
  
 +#ifdef MENU_COLOR
 +extern struct menucoloring *menu_colorings;
@@ -481,7 +481,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/win/tty/wintt
  #ifdef CLIPPING
  # if defined(USE_TILES) && defined(MSDOS)
  boolean clipping = FALSE;	/* clipping on? */
-@@ -1128,6 +1132,32 @@
+@@ -1134,6 +1138,32 @@
      }
  }
  
@@ -514,7 +514,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/win/tty/wintt
  STATIC_OVL void
  process_menu_window(window, cw)
  winid window;
-@@ -1204,6 +1234,10 @@
+@@ -1210,6 +1240,10 @@
  		for (page_lines = 0, curr = page_start;
  			curr != page_end;
  			page_lines++, curr = curr->next) {
@@ -525,7 +525,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/win/tty/wintt
  		    if (curr->selector)
  			*rp++ = curr->selector;
  
-@@ -1219,6 +1253,13 @@
+@@ -1225,6 +1259,13 @@
  		     * actually output the character.  We're faster doing
  		     * this.
  		     */
@@ -539,7 +539,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/win/tty/wintt
  		    term_start_attr(curr->attr);
  		    for (n = 0, cp = curr->str;
  #ifndef WIN32CON
-@@ -1236,6 +1277,12 @@
+@@ -1242,6 +1283,12 @@
  				(void) putchar('#'); /* count selected */
  			} else
  			    (void) putchar(*cp);
