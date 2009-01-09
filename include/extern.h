@@ -2401,10 +2401,14 @@ E int FDECL(resist, (struct monst *,CHAR_P,int,int));
 E void NDECL(makewish);
 
 /* ### livelog.c ### */
+#ifdef LIVELOGFILE
 E boolean NDECL(livelog_start);
 E void NDECL(livelog_achieve_update);
 E void FDECL(livelog_wish, (char*));
+#ifdef LIVELOG_SHOUT
 E int NDECL(doshout);
+#endif
+#endif
 
 #endif /* !MAKEDEFS_C && !LEV_LEX_C */
 

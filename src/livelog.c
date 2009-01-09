@@ -3,9 +3,7 @@
 
 #include "hack.h"
 
-#ifndef LIVELOGFILE
-#define LIVELOGFILE "livelog"
-#endif
+#ifdef LIVELOGFILE
 
 /* Encodes the current xlog "achieve" status to an integer */
 long
@@ -125,10 +123,10 @@ doshout()
 	char buf[BUFSZ], qbuf[QBUFSZ];
 	char* p;
 	   
-	Sprintf(qbuf,"Shout what?");
+	Sprintf(qbuf,"Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL schreien?"); /* EN Sprintf(qbuf,"Shout what?"); */
 	getlin(qbuf, buf);
 	
-	You("shout into the void: %s", buf);
+	You("VERB_SCHREIEN ins Leere: %s", buf); /* EN You("shout into the void: %s", buf); */
 
 	/* filter livelog delimiter */
 	for(p = buf; *p != 0; p++) 
@@ -145,4 +143,6 @@ doshout()
 	return 0;
 }
 
-#endif
+#endif /* LIVELOG_SHOUT */
+
+#endif /* LIVELOGFILE */

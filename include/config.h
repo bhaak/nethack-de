@@ -37,12 +37,16 @@
 
 #include "config1.h"	/* should auto-detect MSDOS, MAC, AMIGA, and WIN32 */
 
+#ifdef AUTOCONF
+# include "autoconf.h"
+#endif
+
 
 /* Windowing systems...
  * Define all of those you want supported in your binary.
  * Some combinations make no sense.  See the installation document.
  */
-#define TTY_GRAPHICS	/* good old tty based graphics */
+/* #define TTY_GRAPHICS */	/* good old tty based graphics */
 /* #define X11_GRAPHICS */	/* X11 interface */
 /* #define QT_GRAPHICS */	/* Qt interface */
 /* #define GNOME_GRAPHICS */	/* Gnome interface */
@@ -151,7 +155,7 @@
 #endif
 
 #define LOGFILE "logfile"	/* larger file for debugging purposes */
-#define XLOGFILE "xlogfile" /* even larger logfile */
+/* #define XLOGFILE "xlogfile" */	/* even larger logfile */
 #define NEWS "news"		/* the file containing the latest hack news */
 #define PANICLOG "paniclog"	/* log of panic and impossible events */
 /* #define LIVELOGFILE "livelog" */ /* live game progress log file */
@@ -171,6 +175,7 @@
  *	compression.
  */
 
+#ifndef AUTOCONF
 #ifdef UNIX
 /* path and file name extension for compression program */
 //#define COMPRESS "/usr/bin/compress"	/* Lempel-Ziv compression */
@@ -190,6 +195,7 @@
  *	for detailed configuration.
  */
 #define DLB /* not supported on all platforms */
+#endif /* AUTOCONF */
 
 /*
  *	Defining INSURANCE slows down level changes, but allows games that
@@ -321,6 +327,7 @@ typedef unsigned char	uchar;
  * complexity of the game but also to the size of the load module.
  */
 
+#ifndef AUTOCONF
 /* dungeon features */
 #define SINKS		/* Kitchen sinks - Janet Walz */
 /* dungeon levels */
@@ -339,15 +346,16 @@ typedef unsigned char	uchar;
 # define CLIPPING	/* allow smaller screens -- ERS */
 #endif
 
-#ifdef REDO
-# define DOAGAIN '\001' /* ^A, the "redo" key used in cmd.c and getline.c */
-#endif
-
 #define EXP_ON_BOTL	/* Show experience on bottom line */
-#define SCORE_ON_BOTL /* added by Gary Erickson (erickson@ucivax) */
+/* #define SCORE_ON_BOTL */	/* added by Gary Erickson (erickson@ucivax) */
 
 #define REALTIME_ON_BOTL	/* Show elapsed time on bottom line.  Note:
                                  * this breaks savefile compatibility. */
+#endif /* AUTOCONF */
+
+#ifdef REDO
+# define DOAGAIN '\001' /* ^A, the "redo" key used in cmd.c and getline.c */
+#endif
 
 /* The options in this section require the extended logfile support */
 #ifdef XLOGFILE
@@ -366,7 +374,6 @@ typedef unsigned char	uchar;
 #define RECORD_ALIGN0   /* Record initial alignment in logfile */
 #endif
 
-#define QWERTZ
 
 /*
  * Section 5:  EXPERIMENTAL STUFF
@@ -377,15 +384,16 @@ typedef unsigned char	uchar;
  */
 
 #if defined(TTY_GRAPHICS) || defined(MSWIN_GRAPHICS)
-# define MENU_COLOR
-# define MENU_COLOR_REGEX
-/*# define MENU_COLOR_REGEX_POSIX */
+# ifdef MENU_COLOR
+#  define MENU_COLOR_REGEX
+/*#   define MENU_COLOR_REGEX_POSIX */
 /* if MENU_COLOR_REGEX is defined, use regular expressions (regex.h,
  * GNU specific functions by default, POSIX functions with
  * MENU_COLOR_REGEX_POSIX).
  * otherwise use pmatch() to match menu color lines.
  * pmatch() provides basic globbing: '*' and '?' wildcards.
  */
+# endif
 #endif
 
 /*#define GOLDOBJ */	/* Gold is kept on obj chains - Helge Hafting */
