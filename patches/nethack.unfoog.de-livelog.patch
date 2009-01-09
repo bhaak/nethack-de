@@ -14,15 +14,19 @@ diff -ru nethack-3.4.3/include/config.h nethack-shout/include/config.h
 diff -ru nethack-3.4.3/include/extern.h nethack-shout/include/extern.h
 --- nethack-3.4.3/include/extern.h	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/include/extern.h	2008-10-14 02:19:40.000000000 +0200
-@@ -2397,6 +2397,12 @@
+@@ -2397,6 +2397,16 @@
  E int FDECL(resist, (struct monst *,CHAR_P,int,int));
  E void NDECL(makewish);
  
 +/* ### livelog.c ### */
++#ifdef LIVELOGFILE
 +E boolean NDECL(livelog_start);
 +E void NDECL(livelog_achieve_update);
 +E void FDECL(livelog_wish, (char*));
++#ifdef LIVELOG_SHOUT
 +E int NDECL(doshout);
++#endif
++#endif
 +
  #endif /* !MAKEDEFS_C && !LEV_LEX_C */
  
@@ -30,13 +34,14 @@ diff -ru nethack-3.4.3/include/extern.h nethack-shout/include/extern.h
 diff -ru nethack-3.4.3/src/allmain.c nethack-shout/src/allmain.c
 --- nethack-3.4.3/src/allmain.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/allmain.c	2008-10-14 02:19:40.000000000 +0200
-@@ -593,6 +593,9 @@
+@@ -593,6 +593,10 @@
  		   : "%s %s, ARTIKEL_BESTIMMTER%s %s %s, willkommen zurück zu NetHack!", /* EN : "%s %s, the%s %s %s, welcome back to NetHack!", */
  	  Hello((struct monst *) 0), plname, buf, urace.adj,
  	  (currentgend && urole.name.f) ? urole.name.f : urole.name.m);
-+
++#ifdef LIVELOGFILE
 +    /* Start live reporting */
 +	livelog_start();
++#endif
  }
  
  #ifdef POSITIONBAR
@@ -122,37 +127,6 @@ diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
          }
  #endif /* RECORD_ACHIEVE */
  
-diff -ru nethack-3.4.3/src/Makefile nethack-shout/src/Makefile
---- nethack-3.4.3/src/Makefile	2008-10-14 02:24:16.000000000 +0200
-+++ nethack-shout/src/Makefile	2008-10-14 02:19:40.000000000 +0200
-@@ -326,7 +326,8 @@
- 	   rnd.c role.c rumors.c save.c shk.c shknam.c sit.c sounds.c sp_lev.c \
- 	   spell.c steal.c steed.c teleport.c timeout.c topten.c track.c trap.c \
- 	   u_init.c uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
--	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c
-+	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c \
-+	   livelog.c
- 
- # all operating-system-dependent .c (for dependencies and such)
- SYSCSRC = ../sys/atari/tos.c ../sys/share/pcmain.c ../sys/share/pcsys.c \
-@@ -384,7 +385,8 @@
- 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
- 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
- 	wizard.o worm.o worn.o write.o zap.o german.o german_vocabulary.o \
--	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o # german_wishing_test.o
-+	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o \
-+	livelog.o # german_vocabulary.o
-
- # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
- 
-@@ -829,6 +831,7 @@
- worn.o: worn.c $(HACK_H)
- write.o: write.c $(HACK_H)
- zap.o: zap.c $(HACK_H)
-+livelog.o: livelog.c $(HACK_H)
- # DEPENDENCIES MUST END AT END OF FILE
- # IF YOU PUT STUFF HERE IT WILL GO AWAY
- # see make depend above
 diff -ru nethack-3.4.3/src/mklev.c nethack-shout/src/mklev.c
 --- nethack-3.4.3/src/mklev.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/mklev.c	2008-10-14 02:19:40.000000000 +0200
@@ -189,27 +163,33 @@ diff -ru nethack-3.4.3/src/pray.c nethack-shout/src/pray.c
 diff -ru nethack-3.4.3/src/zap.c nethack-shout/src/zap.c
 --- nethack-3.4.3/src/zap.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/zap.c	2008-10-14 02:23:44.000000000 +0200
-@@ -4100,6 +4100,7 @@
+@@ -4100,6 +4100,9 @@
  makewish()
  {
  	char buf[BUFSZ];
++#ifdef LIVELOGFILE
 +	char rawbuf[BUFSZ]; // for exact livelog reporting
++#endif
  	struct obj *otmp, nothing;
  	int tries = 0;
  
-@@ -4107,6 +4108,7 @@
+@@ -4109,6 +4110,9 @@
  	if (flags.verbose) You("VERB_DUERFEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL etwas wünschen."); /* EN if (flags.verbose) You("may wish for an object."); */
  retry:
  	getlin("Was SUBJECT_IM_SATZ VERB_WUENSCHEN PRONOMEN_PERSONAL OBJECT KASUS_DATIV PRONOMEN_PERSONAL?", buf); /* EN getlin("For what do you wish?", buf); */
++#ifdef LIVELOGFILE
 +	Strcpy(rawbuf, buf);
++#endif
  	if(buf[0] == '\033') buf[0] = 0;
  	/*
  	 *  Note: if they wished for and got a non-object successfully,
-@@ -4124,12 +4126,16 @@
+@@ -4124,12 +4130,20 @@
  	} else if (otmp == &nothing) {
  	    /* explicitly wished for "nothing", presumeably attempting
  	       to retain wishless conduct */
++#ifdef LIVELOGFILE
 +		livelog_wish(buf);
++#endif
  	    return;
  	}
  
@@ -217,51 +197,13 @@ diff -ru nethack-3.4.3/src/zap.c nethack-shout/src/zap.c
  	u.uconduct.wishes++;
  
 +	/* Livelog patch */
++#ifdef LIVELOGFILE
 +	livelog_wish(rawbuf);
++#endif
 +
  	if (otmp != &zeroobj) {
  	    /* The(aobjnam()) is safe since otmp is unidentified -dlc */
  	    (void) hold_another_object(otmp, u.uswallow ?
-diff -ru nethack-3.4.3/sys/unix/Makefile.top nethack-shout/sys/unix/Makefile.top
---- nethack-3.4.3/sys/unix/Makefile.top	2008-10-14 02:24:16.000000000 +0200
-+++ nethack-shout/sys/unix/Makefile.top	2008-10-14 02:19:40.000000000 +0200
-@@ -39,6 +39,9 @@
- VARDIR  = $(GAMEDIR)
- SHELLDIR = $(PREFIX)/games
- 
-+# see include/unixconf.h
-+LOCKDIR = $(VARDIR)/state 
-+
- # per discussion in Install.X11 and Install.Qt
- VARDATND = 
- # VARDATND = x11tiles NetHack.ad pet_mark.xbm
-@@ -235,18 +238,18 @@
- # not all mkdirs have -p; those that don't will create a -p directory
- 	-mkdir -p $(SHELLDIR)
- 	-rm -rf $(GAMEDIR) $(VARDIR)
--	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save
-+	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
- 	-rmdir ./-p
--	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
--	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
--	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
-+	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
-+	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
-+	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
- # set up the game files
- 	( $(MAKE) dofiles )
- # set up some additional files
--	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile
--	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile ; \
--			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile ; \
--			chmod $(FILEPERM) perm record logfile xlogfile )
-+	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile $(VARDIR)/livelog
-+	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile livelog ; \
-+			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile livelog ; \
-+			chmod $(FILEPERM) perm record logfile xlogfile livelog )
- # and a reminder
- 	@echo You may also want to reinstall the man pages via the doc Makefile.
-
 diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 --- nethack-3.4.3/src/livelog.c	1970-01-01 01:00:00.000000000 +0100
 +++ nethack-shout/src/livelog.c	2008-09-24 07:24:15.000000000 +0200
@@ -271,9 +213,7 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +
 +#include "hack.h"
 +
-+#ifndef LIVELOGFILE
-+#define LIVELOGFILE "livelog"
-+#endif
++#ifdef LIVELOGFILE
 +
 +/* Encodes the current xlog "achieve" status to an integer */
 +long
@@ -393,10 +333,10 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +	char buf[BUFSZ], qbuf[QBUFSZ];
 +	char* p;
 +	   
-+	Sprintf(qbuf,"Shout what?");
++	Sprintf(qbuf,"Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL schreien?"); /* EN Sprintf(qbuf,"Shout what?"); */
 +	getlin(qbuf, buf);
 +	
-+	You("shout into the void: %s", buf);
++	You("VERB_SCHREIEN ins Leere: %s", buf); /* EN You("shout into the void: %s", buf); */
 +
 +	/* filter livelog delimiter */
 +	for(p = buf; *p != 0; p++) 
@@ -413,224 +353,6 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +	return 0;
 +}
 +
-+#endif
-+/* Write live game progress changes to a log file 
-+ * Needs xlog-v3 patch. */
++#endif /* LIVELOG_SHOUT */
 +
-+#include "hack.h"
-+
-+#ifndef LIVELOGFILE
-+#define LIVELOGFILE "livelog"
-+#endif
-+
-+/* Encodes the current xlog "achieve" status to an integer */
-+long
-+encodeachieve(void)
-+{
-+  /* Achievement bitfield:
-+   * bit  meaning
-+   *  0   obtained the Bell of Opening
-+   *  1   entered gehennom (by any means)
-+   *  2   obtained the Candelabrum of Invocation
-+   *  3   obtained the Book of the Dead
-+   *  4   performed the invocation ritual
-+   *  5   obtained the amulet
-+   *  6   entered elemental planes
-+   *  7   entered astral plane
-+   *  8   ascended (not "escaped in celestial disgrace!")
-+   *  9   obtained the luckstone from the Mines
-+   *  10  obtained the sokoban prize
-+   *  11  killed medusa
-+   */
-+
-+  long r;
-+
-+  r = 0;
-+
-+  if(achieve.get_bell)           r |= 1L << 0;
-+  if(achieve.enter_gehennom)     r |= 1L << 1;
-+  if(achieve.get_candelabrum)    r |= 1L << 2;
-+  if(achieve.get_book)           r |= 1L << 3;
-+  if(achieve.perform_invocation) r |= 1L << 4;
-+  if(achieve.get_amulet)         r |= 1L << 5;
-+  if(In_endgame(&u.uz))          r |= 1L << 6;
-+  if(Is_astralevel(&u.uz))       r |= 1L << 7;
-+  if(achieve.ascended)           r |= 1L << 8;
-+  if(achieve.get_luckstone)      r |= 1L << 9;
-+  if(achieve.finish_sokoban)     r |= 1L << 10;
-+  if(achieve.killed_medusa)      r |= 1L << 11;
-+
-+  return r;
-+}
-+
-+/* Keep the last xlog "achieve" value to be able to compare */
-+long last_achieve_int;
-+
-+/* Generic buffer for snprintf */
-+#define STRBUF_LEN (4096)
-+char strbuf[STRBUF_LEN];
-+
-+/* Open the live log file */
-+boolean livelog_start() {
-+
-+
-+	last_achieve_int = encodeachieve();
-+
-+	return TRUE;
-+}
-+
-+/* Locks the live log file and writes 'buffer' */
-+void livelog_write_string(char* buffer) {
-+	FILE* livelogfile;
-+	if(lock_file(LIVELOGFILE, SCOREPREFIX, 10)) {
-+		if(!(livelogfile = fopen_datafile(LIVELOGFILE, "a", SCOREPREFIX))) {
-+			pline("Cannot open live log file!");
-+		} else {
-+			fprintf(livelogfile, buffer);
-+			(void) fclose(livelogfile);
-+		}
-+		unlock_file(LIVELOGFILE);
-+	}
-+}
-+
-+/* Writes changes in the achieve structure to the live log.
-+ * Called from various places in the NetHack source,
-+ * usually where xlog's achieve is set. */
-+void livelog_achieve_update() {
-+	long achieve_int, achieve_diff;
-+
-+	achieve_int = encodeachieve();
-+	achieve_diff = last_achieve_int ^ achieve_int;
-+
-+	/* livelog_achieve_update is sometimes called when there's
-+	 * no actual change. */
-+	if(achieve_diff == 0) {
-+		return;
-+	}
-+
-+	snprintf(strbuf, STRBUF_LEN,
-+		"player=%s:turns=%d:achieve=0x%lx:achieve_diff=0x%lx\n",
-+		plname, 
-+		moves, 
-+		achieve_int,
-+		achieve_diff);
-+	livelog_write_string(strbuf);
-+
-+	last_achieve_int = achieve_int;
-+}
-+
-+/* Reports wishes */
-+void
-+livelog_wish(item)
-+char *item;
-+{
-+	snprintf(strbuf, STRBUF_LEN,
-+		"player=%s:turns=%d:wish=%s\n",
-+		plname,
-+		moves,
-+		item);
-+	livelog_write_string(strbuf);
-+}
-+
-+/* Shout */
-+#ifdef LIVELOG_SHOUT
-+
-+int 
-+doshout()
-+{
-+	char buf[BUFSZ], qbuf[QBUFSZ];
-+	char* p;
-+	   
-+	Sprintf(qbuf,"Shout what?");
-+	getlin(qbuf, buf);
-+	
-+	You("shout into the void: %s", buf);
-+
-+	/* filter livelog delimiter */
-+	for(p = buf; *p != 0; p++) 
-+		if( *p == ':' )
-+			*p = ' ';
-+
-+	snprintf(strbuf, STRBUF_LEN,
-+		"player=%s:turns=%d:shout=%s\n",
-+		plname,
-+		moves,
-+		buf);
-+	livelog_write_string(strbuf);
-+	
-+	return 0;
-+}
-+
-+#endif
-+
-diff -ru nethack-3.4.3/Makefile nethack-shout/Makefile
---- nethack-3.4.3/Makefile	2008-10-14 02:24:16.000000000 +0200
-+++ nethack-shout/Makefile	2008-10-14 02:19:40.000000000 +0200
-@@ -40,6 +40,9 @@
- VARDIR  = $(GAMEDIR)
- SHELLDIR = $(PREFIX)/games
- 
-+# see include/unixconf.h
-+LOCKDIR = $(VARDIR)/state 
-+
- # per discussion in Install.X11 and Install.Qt
- VARDATND = 
- # VARDATND = x11tiles NetHack.ad pet_mark.xbm
-@@ -236,18 +239,18 @@
- # not all mkdirs have -p; those that don't will create a -p directory
- 	-mkdir -p $(SHELLDIR)
- 	-rm -rf $(GAMEDIR) $(VARDIR)
--	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save
-+	-mkdir -p $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
- 	-rmdir ./-p
--	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
--	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
--	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save
-+	-$(CHOWN) $(GAMEUID) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
-+	$(CHGRP) $(GAMEGRP) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
-+	chmod $(DIRPERM) $(GAMEDIR) $(VARDIR) $(VARDIR)/save $(LOCKDIR)
- # set up the game files
- 	( $(MAKE) dofiles )
- # set up some additional files
--	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile
--	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile ; \
--			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile ; \
--			chmod $(FILEPERM) perm record logfile xlogfile )
-+	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile $(VARDIR)/livelog
-+	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile livelog ; \
-+			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile livelog ; \
-+			chmod $(FILEPERM) perm record logfile xlogfile livelog )
- # and a reminder
- 	@echo You may also want to reinstall the man pages via the doc Makefile.
-
-diff -ru nethack-3.4.3/sys/unix/Makefile.src nethack-shout/sys/unix/Makefile.src
---- nethack-3.4.3/sys/unix/Makefile.src	2008-10-14 02:24:16.000000000 +0200
-+++ nethack-shout/sys/unix/Makefile.src	2008-10-14 02:19:40.000000000 +0200
-@@ -326,7 +326,8 @@
- 	   rnd.c role.c rumors.c save.c shk.c shknam.c sit.c sounds.c sp_lev.c \
- 	   spell.c steal.c steed.c teleport.c timeout.c topten.c track.c trap.c \
- 	   u_init.c uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
--	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c
-+	   windows.c wizard.c worm.c worn.c write.c zap.c german.c german_test.c \
-+	   livelog.c
- 
- # all operating-system-dependent .c (for dependencies and such)
- SYSCSRC = ../sys/atari/tos.c ../sys/share/pcmain.c ../sys/share/pcsys.c \
-@@ -384,7 +385,8 @@
- 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
- 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
- 	wizard.o worm.o worn.o write.o zap.o german.o german_vocabulary.o \
--	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o # german_wishing_test.o
-+	$(RANDOBJ) $(SYSOBJ) $(WINOBJ) version.o \
-+	livelog.o # german_vocabulary.o
-
- # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
- 
-@@ -829,6 +831,7 @@
- worn.o: worn.c $(HACK_H)
- write.o: write.c $(HACK_H)
- zap.o: zap.c $(HACK_H)
-+livelog.o: livelog.c $(HACK_H)
- # DEPENDENCIES MUST END AT END OF FILE
- # IF YOU PUT STUFF HERE IT WILL GO AWAY
- # see make depend above
++#endif /* LIVELOGFILE */
