@@ -73,90 +73,110 @@ diff -ru nethack-3.4.3/src/cmd.c nethack-shout/src/cmd.c
 diff -ru nethack-3.4.3/src/do.c nethack-shout/src/do.c
 --- nethack-3.4.3/src/do.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/do.c	2008-10-14 02:19:40.000000000 +0200
-@@ -1287,6 +1287,7 @@
+@@ -1287,6 +1287,9 @@
  
  #ifdef RECORD_ACHIEVE
              achieve.enter_gehennom = 1;
++#ifdef LIVELOG
 +			livelog_achieve_update();
++#endif
  #endif
  	}
  
 diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
 --- nethack-3.4.3/src/invent.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/invent.c	2008-10-14 02:19:40.000000000 +0200
-@@ -259,24 +259,28 @@
+@@ -259,24 +259,36 @@
  		u.uhave.amulet = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_amulet = 1;
++#ifdef LIVELOG
 +				livelog_achieve_update();
++#endif
  #endif
  	} else if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
  		if (u.uhave.menorah) impossible("already have candelabrum?");
  		u.uhave.menorah = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_candelabrum = 1;
++#ifdef LIVELOG
 +				livelog_achieve_update();
++#endif
  #endif
  	} else if (obj->otyp == BELL_OF_OPENING) {
  		if (u.uhave.bell) impossible("already have silver bell?");
  		u.uhave.bell = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_bell = 1;
++#ifdef LIVELOG
 +				livelog_achieve_update();
++#endif
  #endif
  	} else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
  		if (u.uhave.book) impossible("already have the book?");
  		u.uhave.book = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_book = 1;
++#ifdef LIVELOG
 +				livelog_achieve_update();
++#endif
  #endif
  	} else if (obj->oartifact) {
  		if (is_quest_artifact(obj)) {
-@@ -292,11 +296,13 @@
+@@ -292,11 +304,17 @@
          if(obj->otyp == LUCKSTONE && obj->record_achieve_special) {
                  achieve.get_luckstone = 1;
                  obj->record_achieve_special = 0;
++#ifdef LIVELOG
 +				livelog_achieve_update();
++#endif
          } else if((obj->otyp == AMULET_OF_REFLECTION ||
                     obj->otyp == BAG_OF_HOLDING) &&
                    obj->record_achieve_special) {
                  achieve.finish_sokoban = 1;
                  obj->record_achieve_special = 0;
++#ifdef LIVELOG
 +				livelog_achieve_update();
++#endif
          }
  #endif /* RECORD_ACHIEVE */
  
 diff -ru nethack-3.4.3/src/mklev.c nethack-shout/src/mklev.c
 --- nethack-3.4.3/src/mklev.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/mklev.c	2008-10-14 02:19:40.000000000 +0200
-@@ -1465,6 +1465,7 @@
+@@ -1465,6 +1465,9 @@
  
  #ifdef RECORD_ACHIEVE
      achieve.perform_invocation = 1;
++#ifdef LIVELOG
 +	livelog_achieve_update();
++#endif
  #endif
  }
  
 diff -ru nethack-3.4.3/src/mon.c nethack-shout/src/mon.c
 --- nethack-3.4.3/src/mon.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/mon.c	2008-10-14 02:19:40.000000000 +0200
-@@ -1489,6 +1489,7 @@
+@@ -1489,6 +1489,9 @@
  #ifdef RECORD_ACHIEVE
          if(mtmp->data == &mons[PM_MEDUSA])
              achieve.killed_medusa = 1;
++#ifdef LIVELOG
 +			livelog_achieve_update();
++#endif
  #endif
  
  	if(glyph_is_invisible(levl[mtmp->mx][mtmp->my].glyph))
 diff -ru nethack-3.4.3/src/pray.c nethack-shout/src/pray.c
 --- nethack-3.4.3/src/pray.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/pray.c	2008-10-14 02:19:40.000000000 +0200
-@@ -1294,6 +1294,7 @@
+@@ -1294,6 +1294,9 @@
  
  #ifdef RECORD_ACHIEVE
                  achieve.ascended = 1;
++#ifdef LIVELOG
 +				livelog_achieve_update();
++#endif
  #endif
  
  pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SONNEN OBJECT PRONOMEN_PERSONAL in göttlichem Lichte ..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */
