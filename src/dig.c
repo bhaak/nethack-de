@@ -6,6 +6,10 @@
 #include "edog.h"
 /* #define DEBUG */	/* turn on for diagnostics */
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVLB
 
 static NEARDATA boolean did_dig_msg;

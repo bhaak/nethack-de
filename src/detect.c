@@ -860,7 +860,7 @@ struct obj *obj;
 	if (flags.verbose) pline(Never_mind);
 	return;
     }
-    You("VERB_BLICKEN in %s ...", the(xname(obj))); /* EN You("peer into %s...", the(xname(obj))); */
+    You("VERB_BLICKEN OBJECT in %s ...", the(xname(obj))); /* EN You("peer into %s...", the(xname(obj))); */
     nomul(-rnd(10));
     nomovemsg = "";
     if (obj->spe <= 0)

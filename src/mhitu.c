@@ -1942,7 +1942,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		}
 		if (canseemon(mtmp) && couldsee(mtmp->mx, mtmp->my) &&
 		    !Stone_resistance) {
-		    You("VERB_ERWIDERN %s.", genitivattribut_zu_wort(mon_nam(mtmp),"NOUN_BLICK")); /* EN You("meet %s gaze.", s_suffix(mon_nam(mtmp))); */
+		    You("VERB_ERWIDERN OBJECT %s.", genitivattribut_zu_wort(mon_nam(mtmp),"NOUN_BLICK")); /* EN You("meet %s gaze.", s_suffix(mon_nam(mtmp))); */
 		    stop_occupation();
 		    if(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))
 			break;

@@ -1030,7 +1030,7 @@ int thrown;
 		    else if (barehand_silver_rings == 2)
 			fmt = "SUBJECT PRONOMEN_POSSESSIV ADJEKTIV_FARBE_SILVER NOUN_RINGs VERB_VERSENGEN OBJECT %s!"; /* EN fmt = "Your silver rings sear %s!"; */
 		    else if (silverobj && saved_oname[0]) {
-		    	Sprintf(silverobjbuf, "SUBJECT PRONOMEN_POSSESSIV %s%s %s %%s!", /* EN Sprintf(silverobjbuf, "Your %s%s %s %%s!", */
+		    	Sprintf(silverobjbuf, "SUBJECT PRONOMEN_POSSESSIV %s%s %s OBJECT %%s!", /* EN Sprintf(silverobjbuf, "Your %s%s %s %%s!", */
 		    		strstri(saved_oname, "silver") ? 
 					"" : "ADJEKTIV_FARBE_SILVER ", /* EN "" : "silver ", */
 				saved_oname, vtense(saved_oname, "VERB_VERSENGEN")); /* EN saved_oname, vtense(saved_oname, "sear")); */
