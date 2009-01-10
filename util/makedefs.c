@@ -718,6 +718,7 @@ static const char *build_opts[] = {
 #  endif
 # endif
 #endif
+		"pickup thrown objects", /* EN "pickup thrown objects", */ // TODO DE
 #ifdef REDO
 		"redo command", /* EN "redo command", */ // TODO DE
 #endif

@@ -36,7 +36,7 @@ diff -r -X /home/roderick/.diff-exclude -uN base.patchable/dat/opthelp work.pick
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/doc/Guidebook.mn work.pickup_thrown/doc/Guidebook.mn
 --- base.patchable/doc/Guidebook.mn	2003-02-23 09:43:18.000000000 -0500
 +++ work.pickup_thrown/doc/Guidebook.mn	2003-03-18 21:32:18.000000000 -0500
-@@ -1971,6 +1971,12 @@
+@@ -2040,6 +2040,12 @@
  level (Unburdened, Burdened, streSsed, straiNed, overTaxed,
  or overLoaded), you will be asked if you want to continue.
  (Default `S').
@@ -52,7 +52,7 @@ diff -r -X /home/roderick/.diff-exclude -uN base.patchable/doc/Guidebook.mn work
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/doc/Guidebook.tex work.pickup_thrown/doc/Guidebook.tex
 --- base.patchable/doc/Guidebook.tex	2003-02-23 09:43:18.000000000 -0500
 +++ work.pickup_thrown/doc/Guidebook.tex	2003-03-18 21:32:18.000000000 -0500
-@@ -2418,6 +2418,11 @@
+@@ -2502,6 +2502,11 @@
  or overLoaded), you will be asked if you want to continue.
  (Default `S').
  %.lp
@@ -62,54 +62,47 @@ diff -r -X /home/roderick/.diff-exclude -uN base.patchable/doc/Guidebook.tex wor
 +Default is on.
 +%.lp
  \item[\ib{pickup\_types}]
- Specify the object types to be picked up when {\it autopickup\/}
- is on.  Default is all types.
+ Specify the object types to be picked up when ``{\it autopickup\/}'' 
+ is on.  Default is all types.  If your copy of the game has the
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/include/flag.h work.pickup_thrown/include/flag.h
 --- base.patchable/include/flag.h	2003-03-18 17:03:58.000000000 -0500
 +++ work.pickup_thrown/include/flag.h	2003-03-18 21:32:18.000000000 -0500
-@@ -279,6 +279,10 @@
- 	/*
- 	 * compat instance_flags patch point; see $top/README.patchable
- 	 */
-+	boolean pickup_thrown;		/* auto-pickup items you threw */
-+	/*
-+	 * compat instance_flags patch point; see $top/README.patchable
-+	 */
- 	/*
- 	 * compat instance_flags patch point; see $top/README.patchable
- 	 */
+@@ -63,6 +63,7 @@
+ #endif
+ 	boolean  perm_invent;	/* keep full inventories up until dismissed */
+ 	boolean  pickup;	/* whether you pickup or move and look */
++	boolean  pickup_thrown;		/* auto-pickup items you threw */
+ 
+ 	boolean  pushweapon;	/* When wielding, push old weapon into second slot */
+ 	boolean  rest_on_space; /* space means rest */
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/include/obj.h work.pickup_thrown/include/obj.h
 --- base.patchable/include/obj.h	2003-03-18 17:03:58.000000000 -0500
 +++ work.pickup_thrown/include/obj.h	2003-03-18 21:32:18.000000000 -0500
-@@ -91,6 +91,10 @@
- 	/*
- 	 * obj bitfield patch point; see $top/README.patchable
- 	 */
+@@ -91,7 +91,8 @@
+ 
+ 	Bitfield(in_use,1);	/* for magic items before useup items */
+ 	Bitfield(bypass,1);	/* mark this as an object to be skipped by bhito() */
+-	/* 6 free bits */
 +	Bitfield(was_thrown,1); /* thrown by the hero since last picked up */
-+	/*
-+	 * obj bitfield patch point; see $top/README.patchable
-+	 */
- 	/*
- 	 * obj bitfield patch point; see $top/README.patchable
- 	 */
++	/* 5 free bits */
+ 
+ 	int	corpsenm;	/* type of corpse is mons[corpsenm] */
+ #define leashmon  corpsenm	/* gets m_id of attached pet */
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/src/bones.c work.pickup_thrown/src/bones.c
 --- base.patchable/src/bones.c	2003-03-18 21:27:05.000000000 -0500
 +++ work.pickup_thrown/src/bones.c	2003-03-18 21:33:16.000000000 -0500
-@@ -85,6 +85,10 @@
- 			/*
- 			 * resetobjs patch point; see $top/README.patchable
- 			 */
+@@ -82,6 +82,7 @@
+ 			otmp->rknown = 0;
+ 			otmp->invlet = 0;
+ 			otmp->no_charge = 0;
 +			otmp->was_thrown = 0;
-+			/*
-+			 * resetobjs patch point; see $top/README.patchable
-+			 */
- 			/*
- 			 * resetobjs patch point; see $top/README.patchable
- 			 */
+ 
+ 			if (otmp->otyp == SLIME_MOLD) goodfruit(otmp->spe);
+ #ifdef MAIL
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/src/dothrow.c work.pickup_thrown/src/dothrow.c
 --- base.patchable/src/dothrow.c	2003-02-23 09:43:26.000000000 -0500
 +++ work.pickup_thrown/src/dothrow.c	2003-03-18 21:32:18.000000000 -0500
-@@ -851,6 +851,7 @@
+@@ -871,6 +871,7 @@
  	boolean impaired = (Confusion || Stunned || Blind ||
  			   Hallucination || Fumbling);
  
@@ -120,36 +113,44 @@ diff -r -X /home/roderick/.diff-exclude -uN base.patchable/src/dothrow.c work.pi
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/src/options.c work.pickup_thrown/src/options.c
 --- base.patchable/src/options.c	2003-03-18 20:58:07.000000000 -0500
 +++ work.pickup_thrown/src/options.c	2003-03-18 21:32:18.000000000 -0500
-@@ -148,6 +148,7 @@
+@@ -157,6 +157,7 @@
  	{"page_wait", (boolean *)0, FALSE, SET_IN_FILE},
  #endif
  	{"perm_invent", &flags.perm_invent, FALSE, SET_IN_GAME},
-+	{"pickup_thrown", &iflags.pickup_thrown, TRUE, SET_IN_GAME},
++	{"pickup_thrown", &flags.pickup_thrown, TRUE, SET_IN_GAME},
  	{"popup_dialog",  &iflags.wc_popup_dialog, FALSE, SET_IN_GAME},	/*WC*/
  	{"prayconfirm", &flags.prayconfirm, TRUE, SET_IN_GAME},
  	{"preload_tiles", &iflags.wc_preload_tiles, TRUE, DISP_IN_GAME},	/*WC*/
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/src/pickup.c work.pickup_thrown/src/pickup.c
 --- base.patchable/src/pickup.c	2003-02-23 09:43:29.000000000 -0500
 +++ work.pickup_thrown/src/pickup.c	2003-03-18 21:32:18.000000000 -0500
-@@ -599,13 +599,15 @@
+@@ -639,9 +639,11 @@
  
- 	/* first count the number of eligible items */
- 	for (n = 0, curr = olist; curr; curr = FOLLOW(curr, follow))
+ 
+ #ifndef AUTOPICKUP_EXCEPTIONS
 -	    if (!*otypes || index(otypes, curr->oclass))
-+	    if (!*otypes || index(otypes, curr->oclass)
-+		    || (iflags.pickup_thrown && curr->was_thrown))
- 		n++;
- 
- 	if (n) {
++	    if (!*otypes || index(otypes, curr->oclass) ||
++		(flags.pickup_thrown && curr->was_thrown))
+ #else
+ 	    if ((!*otypes || index(otypes, curr->oclass) ||
++		flags.pickup_thrown && curr->was_thrown ||
+ 		 is_autopickup_exception(curr, TRUE)) &&
+ 	    	 !is_autopickup_exception(curr, FALSE))
+ #endif
+@@ -651,9 +653,11 @@
  	    *pick_list = pi = (menu_item *) alloc(sizeof(menu_item) * n);
  	    for (n = 0, curr = olist; curr; curr = FOLLOW(curr, follow))
+ #ifndef AUTOPICKUP_EXCEPTIONS
 -		if (!*otypes || index(otypes, curr->oclass)) {
-+		if (!*otypes || index(otypes, curr->oclass)
-+			|| (iflags.pickup_thrown && curr->was_thrown)) {
- 		    pi[n].item.a_obj = curr;
- 		    pi[n].count = curr->quan;
- 		    n++;
-@@ -1265,6 +1267,7 @@
++		if (!*otypes || index(otypes, curr->oclass) ||
++			(flags.pickup_thrown && curr->was_thrown)) {
+ #else
+ 	    if ((!*otypes || index(otypes, curr->oclass) ||
++			flags.pickup_thrown && curr->was_thrown ||
+ 		 is_autopickup_exception(curr, TRUE)) &&
+ 	    	 !is_autopickup_exception(curr, FALSE)) {
+ #endif
+@@ -1354,6 +1358,7 @@
  	    obj = splitobj(obj, count);
  
  	obj = pick_obj(obj);
@@ -160,14 +161,11 @@ diff -r -X /home/roderick/.diff-exclude -uN base.patchable/src/pickup.c work.pic
 diff -r -X /home/roderick/.diff-exclude -uN base.patchable/util/makedefs.c work.pickup_thrown/util/makedefs.c
 --- base.patchable/util/makedefs.c	2003-03-18 17:05:58.000000000 -0500
 +++ work.pickup_thrown/util/makedefs.c	2003-03-18 21:32:18.000000000 -0500
-@@ -752,6 +752,10 @@
- 		/*
- 		 * patch list patch point; see $top/README.patchable
- 		 */
-+		"patch: pickup_thrown 3.4.1-1",
-+		/*
-+		 * patch list patch point; see $top/README.patchable
-+		 */
- 		/*
- 		 * patch list patch point; see $top/README.patchable
- 		 */
+@@ -718,6 +718,7 @@
+ #  endif
+ # endif
+ #endif
++		"pickup thrown objects", /* EN "pickup thrown objects", */ // TODO DE
+ #ifdef REDO
+ 		"redo command", /* EN "redo command", */ // TODO DE
+ #endif
