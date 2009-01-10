@@ -134,7 +134,7 @@ diff -ruX exclude nethack-3.4.3-orig/include/flag.h nethack-3.4.3/include/flag.h
 diff -ruX exclude nethack-3.4.3-orig/src/cmd.c nethack-3.4.3/src/cmd.c
 --- nethack-3.4.3-orig/src/cmd.c	2003-12-16 08:41:34.000000000 +0100
 +++ nethack-3.4.3/src/cmd.c	2003-12-17 10:22:40.000000000 +0100
-@@ -2007,9 +2010,18 @@
+@@ -2005,9 +2007,18 @@
  	} else {
  	    register const struct func_tab *tlist;
  	    int res, NDECL((*func));
@@ -173,7 +173,7 @@ diff -ruX exclude nethack-3.4.3-orig/src/decl.c nethack-3.4.3/src/decl.c
 diff -ruX exclude nethack-3.4.3-orig/src/options.c nethack-3.4.3/src/options.c
 --- nethack-3.4.3-orig/src/options.c	2003-12-16 08:41:35.000000000 +0100
 +++ nethack-3.4.3/src/options.c	2003-12-17 10:22:40.000000000 +0100
-@@ -152,6 +153,9 @@
+@@ -152,6 +152,9 @@
  	{"prayconfirm", &flags.prayconfirm, TRUE, SET_IN_GAME},
  	{"preload_tiles", &iflags.wc_preload_tiles, TRUE, DISP_IN_GAME},	/*WC*/
  	{"pushweapon", &flags.pushweapon, FALSE, SET_IN_GAME},
@@ -202,15 +202,3 @@ diff -ruX exclude nethack-3.4.3-orig/src/options.c nethack-3.4.3/src/options.c
  	fullname = "runmode";
  	if (match_optname(opts, fullname, 4, TRUE)) {
  		if (negated) {
-diff -ruX exclude nethack-3.4.3-orig/src/options.c nethack-3.4.3/src/options.c
---- nethack-3.4.3-orig/include/config.h	2003-12-16 08:41:35.000000000 +0100
-+++ nethack-3.4.3-de/include/config.h	2009-01-03 21:54:56.000000000 +0100
-@@ -363,6 +363,8 @@
- #define RECORD_ALIGN0   /* Record initial alignment in logfile */
- #endif
- 
-+#define QWERTZ
-+
- /*
-  * Section 5:  EXPERIMENTAL STUFF
-  *

@@ -5,17 +5,16 @@ diff -urN nethack-3.4.3/include/config.h nethack-3.4.3-xlog/include/config.h
  #endif
  
  #define LOGFILE "logfile"	/* larger file for debugging purposes */
-+#define XLOGFILE "xlogfile" /* even larger logfile */
++/* #define XLOGFILE "xlogfile" */	/* even larger logfile */
  #define NEWS "news"		/* the file containing the latest hack news */
  #define PANICLOG "paniclog"	/* log of panic and impossible events */
  
-@@ -342,6 +343,26 @@
+@@ -342,6 +342,26 @@
+ 
  #define EXP_ON_BOTL	/* Show experience on bottom line */
  #define SCORE_ON_BOTL /* added by Gary Erickson (erickson@ucivax) */
- 
 +#define REALTIME_ON_BOTL	/* Show elapsed time on bottom line.  Note:
 +                                 * this breaks savefile compatibility. */
-+
 +/* The options in this section require the extended logfile support */
 +#ifdef XLOGFILE
 +#define RECORD_CONDUCT  /* Record conducts kept in logfile */
@@ -32,6 +31,7 @@ diff -urN nethack-3.4.3/include/config.h nethack-3.4.3-xlog/include/config.h
 +#define RECORD_GENDER0   /* Record initial gender in logfile */
 +#define RECORD_ALIGN0   /* Record initial alignment in logfile */
 +#endif
++
 +
  /*
   * Section 5:  EXPERIMENTAL STUFF
@@ -315,12 +315,12 @@ diff -urN nethack-3.4.3/src/botl.c nethack-3.4.3-xlog/src/botl.c
 @@ -297,6 +297,15 @@
  
  	if(flags.time)
- 	    Sprintf(nb = eos(nb), " T:%ld", moves);
+ 	    Sprintf(nb = eos(nb), " T:%ld", moves); /* EN Sprintf(nb = eos(nb), " T:%ld", moves); */ // TODO DE
 +
 +#ifdef REALTIME_ON_BOTL
 +  if(iflags.showrealtime) {
 +    time_t currenttime = get_realtime();
-+    Sprintf(nb = eos(nb), " %d:%2.2d", currenttime / 3600, 
++    Sprintf(nb = eos(nb), " %ld:%2.2ld", currenttime / 3600, 
 +                                       (currenttime % 3600) / 60);
 +  }
 +#endif
@@ -867,24 +867,6 @@ diff -urN nethack-3.4.3/src/topten.c nethack-3.4.3-xlog/src/topten.c
  /*
   * print selected parts of score list.
   * argc >= 2, with argv[0] untrustworthy (directory names, et al.),
-diff -urN nethack-3.4.3/sys/unix/Makefile.top nethack-3.4.3-xlog/sys/unix/Makefile.top
---- nethack-3.4.3/sys/unix/Makefile.top	2004-12-05 19:49:38.000000000 -0700
-+++ nethack-3.4.3-xlog/sys/unix/Makefile.top	2004-12-05 20:08:03.000000000 -0700
-@@ -243,10 +243,10 @@
- # set up the game files
- 	( $(MAKE) dofiles )
- # set up some additional files
--	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile
--	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile ; \
--			$(CHGRP) $(GAMEGRP) perm record logfile ; \
--			chmod $(FILEPERM) perm record logfile )
-+	touch $(VARDIR)/perm $(VARDIR)/record $(VARDIR)/logfile $(VARDIR)/xlogfile
-+	-( cd $(VARDIR) ; $(CHOWN) $(GAMEUID) perm record logfile xlogfile ; \
-+			$(CHGRP) $(GAMEGRP) perm record logfile xlogfile ; \
-+			chmod $(FILEPERM) perm record logfile xlogfile )
- # and a reminder
- 	@echo You may also want to reinstall the man pages via the doc Makefile.
- 
 diff -urN nethack-3.4.3/util/makedefs.c nethack-3.4.3-xlog/util/makedefs.c
 --- nethack-3.4.3/util/makedefs.c	2004-12-05 19:49:38.000000000 -0700
 +++ nethack-3.4.3-xlog/util/makedefs.c	2006-01-26 11:02:01.000000000 -0700

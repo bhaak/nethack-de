@@ -91,7 +91,7 @@ void livelog_achieve_update() {
 	}
 
 	snprintf(strbuf, STRBUF_LEN,
-		"player=%s:turns=%d:achieve=0x%lx:achieve_diff=0x%lx\n",
+		"player=%s:turns=%ld:achieve=0x%lx:achieve_diff=0x%lx\n",
 		plname, 
 		moves, 
 		achieve_int,
@@ -107,7 +107,7 @@ livelog_wish(item)
 char *item;
 {
 	snprintf(strbuf, STRBUF_LEN,
-		"player=%s:turns=%d:wish=%s\n",
+		"player=%s:turns=%ld:wish=%s\n",
 		plname,
 		moves,
 		item);
@@ -134,7 +134,7 @@ doshout()
 			*p = ' ';
 
 	snprintf(strbuf, STRBUF_LEN,
-		"player=%s:turns=%d:shout=%s\n",
+		"player=%s:turns=%ld:shout=%s\n",
 		plname,
 		moves,
 		buf);

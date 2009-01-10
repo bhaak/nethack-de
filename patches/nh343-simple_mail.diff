@@ -147,7 +147,7 @@ diff -urN orig/nethack-3.4.3/src/mail.c nethack-3.4.3/src/mail.c
  	display_nhwindow(WIN_MESSAGE, FALSE);
  	if(!(mr = nh_getenv("MAILREADER")))
  		mr = DEF_MAILREADER;
-@@ -512,15 +578,21 @@
+@@ -512,15 +579,21 @@
  		(void) execl(mr, mr, (char *)0);
  		terminate(EXIT_FAILURE);
  	}
@@ -173,7 +173,7 @@ diff -urN orig/nethack-3.4.3/src/mail.c nethack-3.4.3/src/mail.c
  }
  
  # endif /* UNIX */
-@@ -587,10 +659,7 @@
+@@ -587,10 +660,7 @@
  	static int laststattime = 0;
  	
  	if(u.uswallow || !flags.biff

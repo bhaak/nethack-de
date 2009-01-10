@@ -2,7 +2,7 @@ diff -ru nethack-3.4.3/include/config.h nethack-shout/include/config.h
 --- nethack-3.4.3/include/config.h	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/include/config.h	2008-10-14 02:21:13.000000000 +0200
 @@ -154,6 +154,9 @@
- #define XLOGFILE "xlogfile" /* even larger logfile */
+ /* #define XLOGFILE "xlogfile" */	/* even larger logfile */
  #define NEWS "news"		/* the file containing the latest hack news */
  #define PANICLOG "paniclog"	/* log of panic and impossible events */
 +/* #define LIVELOGFILE "livelog" */ /* live game progress log file */
@@ -173,7 +173,7 @@ diff -ru nethack-3.4.3/src/zap.c nethack-shout/src/zap.c
  	struct obj *otmp, nothing;
  	int tries = 0;
  
-@@ -4109,6 +4110,9 @@
+@@ -4110,6 +4110,9 @@
  	if (flags.verbose) You("VERB_DUERFEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL etwas wünschen."); /* EN if (flags.verbose) You("may wish for an object."); */
  retry:
  	getlin("Was SUBJECT_IM_SATZ VERB_WUENSCHEN PRONOMEN_PERSONAL OBJECT KASUS_DATIV PRONOMEN_PERSONAL?", buf); /* EN getlin("For what do you wish?", buf); */
@@ -301,7 +301,7 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +	}
 +
 +	snprintf(strbuf, STRBUF_LEN,
-+		"player=%s:turns=%d:achieve=0x%lx:achieve_diff=0x%lx\n",
++		"player=%s:turns=%ld:achieve=0x%lx:achieve_diff=0x%lx\n",
 +		plname, 
 +		moves, 
 +		achieve_int,
@@ -317,7 +317,7 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +char *item;
 +{
 +	snprintf(strbuf, STRBUF_LEN,
-+		"player=%s:turns=%d:wish=%s\n",
++		"player=%s:turns=%ld:wish=%s\n",
 +		plname,
 +		moves,
 +		item);
@@ -344,7 +344,7 @@ diff -Nru nethack-3.4.3/src/livelog.c nethack-shout/src/livelog.c
 +			*p = ' ';
 +
 +	snprintf(strbuf, STRBUF_LEN,
-+		"player=%s:turns=%d:shout=%s\n",
++		"player=%s:turns=%ld:shout=%s\n",
 +		plname,
 +		moves,
 +		buf);

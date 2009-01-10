@@ -38,20 +38,21 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/include/color
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/include/config.h nethack-3.4.3-menucolors/include/config.h
 --- nethack-3.4.3-orig/include/config.h	2006-08-08 23:07:19.000000000 +0300
 +++ nethack-3.4.3-menucolors/include/config.h	2006-09-20 23:25:49.000000000 +0300
-@@ -348,6 +348,18 @@
+@@ -373,6 +373,19 @@
   * bugs left here.
   */
  
 +#if defined(TTY_GRAPHICS) || defined(MSWIN_GRAPHICS)
-+# define MENU_COLOR
-+# define MENU_COLOR_REGEX
-+/*# define MENU_COLOR_REGEX_POSIX */
++# ifdef MENU_COLOR
++#  define MENU_COLOR_REGEX
++/*#   define MENU_COLOR_REGEX_POSIX */
 +/* if MENU_COLOR_REGEX is defined, use regular expressions (regex.h,
 + * GNU specific functions by default, POSIX functions with
 + * MENU_COLOR_REGEX_POSIX).
 + * otherwise use pmatch() to match menu color lines.
 + * pmatch() provides basic globbing: '*' and '?' wildcards.
 + */
++# endif
 +#endif
 +
  /*#define GOLDOBJ */	/* Gold is kept on obj chains - Helge Hafting */
