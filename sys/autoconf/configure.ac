@@ -285,6 +285,16 @@ else
 	AC_DEFINE(TIMED_DELAY, [], [Using msleep])
 fi
 
+dnl  ----- Check for program needed to build Guidebook
+AC_CHECK_PROG(HAVE_NROFF, nroff, "yes", "no")
+AC_CHECK_PROG(HAVE_TBL, tbl, "yes", "no")
+if test "$HAVE_NROFF" != "no" ; then
+if test "$HAVE_NROFF" != "no" ; then
+	AC_SUBST(GUIDEBOOK,[Guidebook])
+	AC_SUBST(GUIDEBOOK_TXT,[Guidebook.txt])
+fi
+fi
+
 
 dnl  ----- Check for compile-time options
 # We use auto for data librarian to avoid breaking the rule that autoconf

@@ -29,7 +29,7 @@ PSCMD = groff -Wall -Tps
 # The following works better with groff-1.18, eg on Linux
 # GUIDECMD = tbl tmac.n Guidebook.mn | nroff -c -Tascii | $(COLCMD)
 # GUIDECMD = tbl tmac.n Guidebook.mn | groff -Wall -mtty-char -Tascii -P-u -P-b 
-GUIDECMD = tbl $(srcdir)/tmac.n $(srcdir)/Guidebook.mn | nroff | $(COLCMD)
+GUIDECMD = tbl $(srcdir)/tmac.n $(srcdir)/Guidebook.mn | nroff -c -Tascii | $(COLCMD)
 
 # the basic guidebook
 Guidebook:	Guidebook.mn
