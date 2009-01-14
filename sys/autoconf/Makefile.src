@@ -31,7 +31,7 @@ CC = @CC@ -DAUTOCONF
 WINDRES = @WINDRES@
 
 CFLAGS = -Wall -DGERMAN -g -I../include -I$(srcdir)/../include @CFLAGS@ #-fbounds-checking #-fprofile-arcs -ftest-coverage
-LFLAGS = @LDFLAGS@ #-fbounds-checking
+LFLAGS = @LFLAGS@ #-fbounds-checking
 
 # Only used for the Gnome interface.
 GNOMEINC=`gnome-config gnome --cflags` -I$(srcdir)/../win/gnome
@@ -122,6 +122,8 @@ WINGEMLIB = -le_gem -lgem
 #
 # libraries for BeOS
 WINBELIB = -lbe
+# libraries for native MS-Windows
+WINMSLIB = -lcomctl32 -lgdi32
 
 WINLIB = @WINLIB@
 
@@ -603,6 +605,70 @@ load_img.o: $(srcdir)/../win/gem/load_img.c ../include/load_img.h
 	$(CC) $(CFLAGS) -c $(srcdir)/../win/gem/load_img.c
 gr_rect.o: $(srcdir)/../win/gem/gr_rect.c ../include/gr_rect.h
 	$(CC) $(CFLAGS) -c $(srcdir)/../win/gem/gr_rect.c
+mswproc.o: $(srcdir)/../win/win32/mswproc.c $(HACK_H) ../include/dlb.h \
+		../include/func_tab.h ../win/win32/winMS.h \
+		../win/win32/mhmap.h ../win/win32/mhstatus.h \
+		../win/win32/mhtext.h ../win/win32/mhmsgwnd.h \
+		../win/win32/mhmenu.h ../win/win32/mhsplash.h \
+		../win/win32/mhmsg.h ../win/win32/mhinput.h \
+		../win/win32/mhaskyn.h ../win/win32/mhdlg.h \
+		../win/win32/mhrip.h ../win/win32/mhmain.h \
+		../win/win32/mhfont.h ../win/win32/resource.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mswproc.c
+winhack.o: $(srcdir)/../win/win32/winhack.c ../win/win32/winMS.h $(HACK_H) \
+		../include/dlb.h ../win/win32/resource.h ../win/win32/mhmain.h \
+		../win/win32/mhmap.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/winhack.c
+mhdlg.o: $(srcdir)/../win/win32/mhdlg.c ../win/win32/winMS.h $(HACK_H) \
+		../include/func_tab.h ../win/win32/resource.h \
+		../win/win32/mhdlg.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhdlg.c
+mhaskyn.o: $(srcdir)/../win/win32/mhaskyn.c ../win/win32/winMS.h \
+		../win/win32/mhaskyn.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhaskyn.c
+mhfont.o: $(srcdir)/../win/win32/mhfont.c ../win/win32/mhfont.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhfont.c
+mhinput.o: $(srcdir)/../win/win32/mhinput.c ../win/win32/winMS.h \
+		../win/win32/mhinput.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhinput.c
+mhmain.o: $(srcdir)/../win/win32/mhmain.c ../win/win32/winMS.h \
+		../include/patchlevel.h ../win/win32/resource.h \
+		../win/win32/mhmsg.h ../win/win32/mhinput.h \
+		../win/win32/mhmain.h ../win/win32/mhmenu.h \
+		../win/win32/mhstatus.h ../win/win32/mhmsgwnd.h \
+		../win/win32/mhmap.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhmain.c
+mhmsgwnd.o: $(srcdir)/../win/win32/mhmsgwnd.c ../win/win32/winMS.h \
+		../win/win32/mhmsgwnd.h ../win/win32/mhmsg.h \
+		../win/win32/mhfont.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhmsgwnd.c
+mhsplash.o: $(srcdir)/../win/win32/mhsplash.c ../win/win32/winMS.h \
+		../win/win32/resource.h ../win/win32/mhsplash.h \
+		../win/win32/mhmsg.h ../win/win32/mhfont.h \
+		../include/patchlevel.h ../include/dlb.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhsplash.c
+mhstatus.o: $(srcdir)/../win/win32/mhstatus.c ../win/win32/winMS.h \
+		../win/win32/mhstatus.h ../win/win32/mhmsg.h \
+		../win/win32/mhfont.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhstatus.c
+mhtext.o: $(srcdir)/../win/win32/mhtext.c ../win/win32/winMS.h \
+		../win/win32/resource.h ../win/win32/mhtext.h \
+		../win/win32/mhmsg.h ../win/win32/mhfont.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhtext.c
+mhmenu.o: $(srcdir)/../win/win32/mhmenu.c ../win/win32/winMS.h \
+		../win/win32/resource.h ../win/win32/mhmenu.h \
+		../win/win32/mhmain.h ../win/win32/mhmsg.h \
+		../win/win32/mhfont.h ../win/win32/mhdlg.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhmenu.c
+mhmap.o: $(srcdir)/../win/win32/mhmap.c ../win/win32/winMS.h \
+		../win/win32/resource.h ../win/win32/mhmap.h \
+		../win/win32/mhmsg.h ../win/win32/mhinput.h \
+		../win/win32/mhfont.h ../include/patchlevel.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhmap.c
+mhrip.o: $(srcdir)/../win/win32/mhrip.c ../win/win32/winMS.h \
+		../win/win32/resource.h ../win/win32/mhrip.h \
+		../win/win32/mhmsg.h ../win/win32/mhfont.h
+	$(CC) $(CFLAGS) $(WINMSCFLAGS) -c $(srcdir)/../win/win32/mhrip.c
 tile.o: tile.c $(HACK_H)
 qt_win.o: $(srcdir)/../win/Qt/qt_win.cpp $(HACK_H) ../include/func_tab.h \
 		../include/dlb.h ../include/date.h ../include/patchlevel.h \

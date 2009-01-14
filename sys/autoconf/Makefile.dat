@@ -46,12 +46,33 @@ beostiles: ../util/tile2beos ../win/share/monsters.txt ../win/share/objects.txt 
 	../util/tile2beos ../win/share/monsters.txt ../win/share/objects.txt \
 				../win/share/other.txt
 
-nhtiles.bmp: ../util/tile2bmp ../win/share/monsters.txt ../win/share/objects.txt \
+tiles.bmp: ../util/tile2bmp ../win/share/monsters.txt ../win/share/objects.txt \
 				../win/share/other.txt
 	../util/tile2bmp $@
 
+mnsel.bmp: ../util/uudecode$(EXEEXT) $(srcdir)/../win/win32/mnsel.uu
+	../util/uudecode $(srcdir)/../win/win32/mnsel.uu
+
+mnselcnt.bmp: ../util/uudecode$(EXEEXT) $(srcdir)/../win/win32/mnselcnt.uu
+	../util/uudecode $(srcdir)/../win/win32/mnselcnt.uu
+
+mnunsel.bmp: ../util/uudecode$(EXEEXT) $(srcdir)/../win/win32/mnunsel.uu
+	../util/uudecode $(srcdir)/../win/win32/mnunsel.uu
+
 NetHack.ad: $(srcdir)/../win/X11/NetHack.ad
 	cp $(srcdir)/../win/X11/NetHack.ad NetHack.ad
+
+rip.bmp: ../util/uudecode$(EXEEXT) $(srcdir)/../win/win32/rip.uu
+	../util/uudecode $(srcdir)/../win/win32/rip.uu
+
+petmark.bmp: ../util/uudecode$(EXEEXT) $(srcdir)/../win/win32/petmark.uu
+	../util/uudecode $(srcdir)/../win/win32/petmark.uu
+
+NetHack.ico: ../util/uudecode$(EXEEXT) $(srcdir)/../sys/winnt/nhico.uu
+	../util/uudecode $(srcdir)/../sys/winnt/nhico.uu
+
+splash.bmp: ../util/uudecode$(EXEEXT) $(srcdir)/../win/win32/splash.uu
+	../util/uudecode $(srcdir)/../win/win32/splash.uu
 
 pet_mark.xbm: $(srcdir)/../win/X11/pet_mark.xbm
 	cp $(srcdir)/../win/X11/pet_mark.xbm pet_mark.xbm
