@@ -278,6 +278,7 @@ AC_CHECK_TYPE(void,,AC_DEFINE(NOVOID, [], [No void type available]))
 dnl  ----- Check for library functions
 AC_CHECK_DECLS([strncmpi, strnicmp], AC_DEFINE(STRNCMPI, [], [Use strncmpi]))
 
+dnl ------ Check needed functions for TIMED_DELAY
 AC_CHECK_FUNC(msleep, cf_result=yes, cf_result=no)
 if test "$cf_result" = no; then
 	AC_CHECK_FUNC(usleep, AC_DEFINE(TIMED_DELAY, [], [Using usleep]), [])
@@ -289,7 +290,7 @@ dnl  ----- Check for program needed to build Guidebook
 AC_CHECK_PROG(HAVE_NROFF, nroff, "yes", "no")
 AC_CHECK_PROG(HAVE_TBL, tbl, "yes", "no")
 if test "$HAVE_NROFF" != "no" ; then
-if test "$HAVE_NROFF" != "no" ; then
+if test "$HAVE_TBL" != "no" ; then
 	AC_SUBST(GUIDEBOOK,[Guidebook])
 	AC_SUBST(GUIDEBOOK_TXT,[Guidebook.txt])
 fi
@@ -392,7 +393,7 @@ AC_ARG_ENABLE([wizmode], AC_HELP_STRING([--enable-wizmode=USER],
 	 if test "$enableval" != yes; then wizard=$enableval;
 	 else wizard="wizard"; fi;
 	else enable_wizmode=no; fi,
-	enable_wizmode=no)
+	enable_wizmode=yes;wizard="wizard")
 if test "$enable_wizmode" != "no" ; then
 	AC_MSG_RESULT([yes (user $wizard)])
 	AC_DEFINE_UNQUOTED([WIZARD], ["$wizard"], [The person allowed to use the -D option])

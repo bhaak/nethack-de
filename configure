@@ -6362,7 +6362,7 @@ fi
 
 
 if test "$HAVE_NROFF" != "no" ; then
-if test "$HAVE_NROFF" != "no" ; then
+if test "$HAVE_TBL" != "no" ; then
 	GUIDEBOOK=Guidebook
 
 	GUIDEBOOK_TXT=Guidebook.txt
@@ -6862,7 +6862,7 @@ if test "${enable_wizmode+set}" = set; then
 	 else wizard="wizard"; fi;
 	else enable_wizmode=no; fi
 else
-  enable_wizmode=no
+  enable_wizmode=yes;wizard="wizard"
 fi
 
 if test "$enable_wizmode" != "no" ; then
