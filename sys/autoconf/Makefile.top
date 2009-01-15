@@ -347,5 +347,19 @@ release:
 	tar cfz $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION).tar.gz -C $(RELEASEDIR) nethack-de-src-$(RELEASEVERSION)
 	rm -rf $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
 
+NETHACK_DE_WIN32_DIR = nethack-de-win32-`pwd | cut -f 4- -d \- | cut -f 1 -d \/`
+win32_release:
+	-cp $(srcdir)/AUTHORS.de  $(GAMEDIR)/AUTHORS.de.txt
+	-cp $(srcdir)/CHANGES.de  $(GAMEDIR)/CHANGES.de.txt
+	-cp $(srcdir)/LIESMICH.de $(GAMEDIR)/LIESMICH.de.txt
+	-cp $(srcdir)/news $(GAMEDIR)/News
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/News
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/defaults.nh
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/license
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/AUTHORS.de.txt
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/CHANGES.de.txt
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/LIESMICH.de.txt
+	-mv $(GAMEDIR) $(NETHACK_DE_WIN32_DIR)
+	cd $(NETHACK_DE_WIN32_DIR) && zip -r $(NETHACK_DE_WIN32_DIR).zip .
 
 .PHONY: $(GAME)
