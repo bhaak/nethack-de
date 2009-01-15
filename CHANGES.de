@@ -1,6 +1,11 @@
-Alpha-Release NetHack-De 3.4.3-200810??a
- - "Astral Call Bug" gefixt
- - Bugfix für C343-218, C343-275, C343-276 und C343-324
+Alpha-Release NetHack-De 3.4.3-20090115a
+ - ca. 80% des generierten Textes übersetzt
+ - "Astral Call Bug" gefixt (SC343-11, SC343-12)
+ - Bugfixes für verschiedene Crashes (C343-19, C343-179, C343-218, C343-268,
+   C343-275, C343-276 und C343-324)
+ - Patches für UI-Verbesserungen eingespielt (pickup_thrown, menucolor,
+   qwertz)
+ - diverse Patches (xlogfile, simple mail, livelog)
 
 Alpha-Release NetHack-De 3.4.3-20080907a
  - ca. 75% des generierten Textes übersetzt

@@ -8,9 +8,17 @@ Auf der "Statusseite":status.html kann der aktuelle Stand der Übersetzung einge
 
 h3. News
 
+h4(#news-2009-01-15). 15. Jan 2009: Alpha-Release NetHack-De 3.4.3-20090115a
+
+* ca. 80% des generierten Textes übersetzt
+* "Astral Call Bug" gefixt (SC343-11, SC343-12)
+* Bugfixes für verschiedene Crashes (C343-19, C343-179, C343-218, C343-268, C343-275, C343-276 und C343-324)
+* Patches für UI-Verbesserungen eingespielt (pickup_thrown, menucolor, qwertz)
+* diverse Patches (xlogfile, simple mail, livelog)
+
 h4(#news-2008-10-01). 1. Okt 2008: NetHack-De online spielen!
 
-* Ab sofort gibt es unter <a href="http://slashem.de/">http://slashem.de/</a> die Möglichkeit, NetHack-De online zu spielen per <code>ssh nethack@slashem.de</code> mit dem Passwort <code>fed</code>!
+* Ab sofort gibt es unter <a href="http://slashem.de/">http://slashem.de/</a> die Möglichkeit, NetHack-De online zu spielen!
 
 h4(#news-2008-09-07). 7. Sep 2008: Alpha-Release NetHack-De 3.4.3-20080907a
 

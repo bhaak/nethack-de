@@ -16,6 +16,12 @@ screenshots.page:
   inMenu: true
   orderInfo: 30
 
+aenderungen.page:
+  title: Änderungen
+  htmltitle: 'NetHack-De: Änderungen'
+  inMenu: true
+  orderInfo: 35
+
 download.page:
   title: Downloads
   htmltitle: 'NetHack-De: Downloads'

@@ -1,0 +1,27 @@
+h3. Änderungen
+
+Im Gegensatz zum Standard-"NetHack":http://www.nethack.org/
+enthält NetHack-De folgende Erweiterungen und Patches:
+
+* Sokoban-Preis wird zufaellig ausgewaehlt
+* Extended Logfile Patch von Aardvark Joe
+* Livelog-Patch von "http://nethack.unfoog.de/":http://nethack.unfoog.de/
+* Menucolor-Patch von Pasi Kallinen
+* Pickup-Thrown-Patch von Roderick Schertler
+* Simple-Mail-Patch fuer dgamelaunch
+* QWERTZ-Patch fuer Tastaturen mit qwertz-Layout
+
+h3. Bugfixes
+
+Die folgenden NetHack-Bugs wurden in NetHack-De behoben:
+
+* C343-19 Dipping acid in a fountain may not destroy the acid.
+* C343-179 If a monster is killed or tamed while over water (or by a drawbridge) while carrying a potion of acid, the game may panic.
+* C343-218 Applying a wielded cream pie can crash the game.
+* C343-268 Used up potion of acid may end up in bones file. 
+* C343-275 If a lit, wielded, candle or potion of oil burns out, the game may crash.
+* C343-276 If a figurine auto-transforms while wielded or worn, the game may crash.
+* C343-324 Cutting a long worm in two will crash the game if the cut takes the worm to 1 HP or if long worms had become extinct.
+* SC343-11 It's possible to easily find the identity of a high priest on the Astral plane.
+* SC343-12 Hero using telepathy can abuse Call on the Astral Plane.
+
