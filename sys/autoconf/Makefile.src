@@ -425,7 +425,7 @@ tags: $(CSOURCES)
 	@( cd ../util ; $(MAKE) tags )
 
 clean:
-	-rm -f *.o nhwin.a $(HACK_H) $(CONFIG_H)
+	-rm -f *.o nhwin.a *.dll $(HACK_H) $(CONFIG_H)
 
 spotless: clean
 	-rm -f a.out core $(GAME) Sys* @EXTRA_UNSHARE@

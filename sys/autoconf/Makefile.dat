@@ -176,6 +176,8 @@ spotless:
 	-rm -f spec_levs quest_levs *.lev $(VARDAT) dungeon dungeon.pdf
 	-rm -f nhdat x11tiles beostiles pet_mark.xbm rip.xpm mapbg.xpm
 	-rm -f rip.img GEM_RSC.RSC title.img nh16.img NetHack.ad
+	-rm -f options guioptions ttyoptions
+	-rm -f rip.bmp mnselcnt.bmp mnunsel.bmp tiles.bmp nethack.ico splash.bmp mnsel.bmp petmark.bmp
 	-rm -f ../win/share/monmag.txt ../win/share/mon32.txt
 	-rm -f ../win/share/objmag.txt ../win/share/obj32.txt
 	-rm -f ../win/share/othmag.txt ../win/share/oth32.txt
