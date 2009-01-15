@@ -416,7 +416,7 @@ spotless: clean
 	-rm -f ../include/lev_comp.h ../include/dgn_comp.h
 	-rm -f ../include/tile.h
 	-rm -f makedefs$(EXEEXT) lev_comp$(EXEEXT) dgn_comp$(EXEEXT) recover$(EXEEXT) dlb$(EXEEXT) uudecode$(EXEEXT)
-	-rm -f gif2txt txt2ppm tile2x11$(EXEEXT) tile2img.ttp xpm2img.ttp tilemap$(EXEEXT)
+	-rm -f gif2txt txt2ppm tile2x11$(EXEEXT) tile2img.ttp xpm2img.ttp tilemap$(EXEEXT) tile2bmp$(EXEEXT)
 	-rm -f Makefile
 
 tileedit: tileedit.cpp $(TEXT_IO)
