@@ -330,7 +330,7 @@ spotless:
 
 DE_FILES = AUTHORS.de CHANGES.de LIESMICH.de news
 RELEASEVERSION = `grep VERSION_STRING include/date.h | cut -f 2 -d \"`
-BINDIR = binary/games/lib/nethack-dedir
+BINDIR = binary/nethackdir
 RELEASEDIR = release-$(RELEASEVERSION)
 #release: install
 release:
@@ -339,9 +339,9 @@ release:
 	mkdir -p $(RELEASEDIR)
 	rm -f $(BINDIR)/News
 	cp $(DE_FILES) $(BINDIR)
-	mv $(BINDIR) binary/games/lib/nethack-de-$(RELEASEVERSION)
-	tar cvfz $(RELEASEDIR)/nethack-de-linux-x86-$(RELEASEVERSION).tar.gz -C binary/games/lib .
-	mv binary/games/lib/nethack-de-$(RELEASEVERSION) $(BINDIR)
+	mv $(BINDIR) binary/nethack-de-$(RELEASEVERSION)
+	tar cvfz $(RELEASEDIR)/nethack-de-linux-x86-$(RELEASEVERSION).tar.gz -C binary nethack-de-$(RELEASEVERSION)
+	mv binary/nethack-de-$(RELEASEVERSION) $(BINDIR)
 	mkdir -p $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
 	cpio -p < release_files $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION)
 	tar cfz $(RELEASEDIR)/nethack-de-src-$(RELEASEVERSION).tar.gz -C $(RELEASEDIR) nethack-de-src-$(RELEASEVERSION)

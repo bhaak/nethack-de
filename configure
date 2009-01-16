@@ -578,7 +578,7 @@ PACKAGE_VERSION='3.4.3'
 PACKAGE_STRING='NETHACK-DE 3.4.3'
 PACKAGE_BUGREPORT='bhaak@gmx.net'
 
-ac_unique_file="Files"
+ac_unique_file="LIESMICH.de"
 # Factoring default headers for most tests.
 ac_includes_default="\
 #include <stdio.h>
@@ -1335,7 +1335,7 @@ Optional Features:
                           Exceptions to autopickup (experimental) (default=no)
   --enable-qwertz         QWERTZ keyboard layout support (default=yes)
   --enable-simple-mail    simple mail dgamelaunch support (default=no)
-  --enable-xlogfile=FILE  More verbose logfile (default=no, default
+  --enable-xlogfile=FILE  More verbose logfile (default=yes, default
                           filename=xlogfile)
   --enable-livelog=FILE   Live game progress logfile (default=no, default
                           filename=livelog)
@@ -5808,12 +5808,12 @@ echo "${ECHO_T}$ac_cv_type_struct_re_pattern_buffer" >&6; }
 if test $ac_cv_type_struct_re_pattern_buffer = yes; then
 
 cat >>confdefs.h <<\_ACEOF
-#define USE_REGEX_MATCH
+#define MENU_COLOR_REGEX
 _ACEOF
 
 
 cat >>confdefs.h <<\_ACEOF
-#define GNU_REGEX
+#define MENU_COLOR_REGEX_GNU
 _ACEOF
 
 
@@ -5877,12 +5877,12 @@ echo "${ECHO_T}$ac_cv_type_regex_t" >&6; }
 if test $ac_cv_type_regex_t = yes; then
 
 cat >>confdefs.h <<\_ACEOF
-#define USE_REGEX_MATCH
+#define MENU_COLOR_REGEX
 _ACEOF
 
 
 cat >>confdefs.h <<\_ACEOF
-#define POSIX_REGEX
+#define MENU_COLOR_REGEX_POSIX
 _ACEOF
 
 

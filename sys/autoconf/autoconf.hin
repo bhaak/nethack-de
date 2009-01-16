@@ -36,9 +36,6 @@
 /* Show experience on bottom line */
 #undef EXP_ON_BOTL
 
-/* GNU regex is available */
-#undef GNU_REGEX
-
 /* Gold is kept on object chains (experimental) */
 #undef GOLDOBJ
 
@@ -104,6 +101,15 @@
 /* TTY graphics menu color */
 #undef MENU_COLOR
 
+/* Use regular expressions */
+#undef MENU_COLOR_REGEX
+
+/* GNU regex is available */
+#undef MENU_COLOR_REGEX_GNU
+
+/* Posix regex is available */
+#undef MENU_COLOR_REGEX_POSIX
+
 /* Microsoft Window's native graphics */
 #undef MSWIN_GRAPHICS
 
@@ -124,9 +130,6 @@
 
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
-
-/* Posix regex is available */
-#undef POSIX_REGEX
 
 /* QWERTZ keyboard layout support */
 #undef QWERTZ
@@ -175,9 +178,6 @@
 
 /* Allow user-defined mapping from messages to sounds) */
 #undef USER_SOUNDS
-
-/* Use regular expressions */
-#undef USE_REGEX_MATCH
 
 /* Fancy mazes */
 #undef WALLIFIED_MAZE

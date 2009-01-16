@@ -120,7 +120,8 @@ YACC     = @YACC@
 # and similar systems, they may differ
 YTABC = y.tab.c
 YTABH = y.tab.h
-LEXYYC = lex.yy.c
+LEXYYC = @LEX_OUTPUT_ROOT@.c
+# LEXYYC = lex.yy.c
 # YTABC = y_tab.c
 # YTABH = y_tab.h
 # LEXYYC = lexyy.c

@@ -5,7 +5,7 @@ dnl and it will cause confusing revision numbers to be included
 dnl in configure if developers forget to check in configure.ac
 dnl before running bootstrap.sh and checking in configure.
 # $Revision: 1.10 $
-AC_CONFIG_SRCDIR(Files)
+AC_CONFIG_SRCDIR(LIESMICH.de)
 AC_SUBST(SRCDIR,[../$srcdir/src])
 AC_CONFIG_AUX_DIR(sys/autoconf)
 
@@ -356,7 +356,7 @@ NETHACK_ARG(simple-mail,[simple mail dgamelaunch support],SIMPLE_MAIL,no)
 #NETHACK_ARG(xlogfile,[More verbose logfile],XLOGFILE,yes)
 AC_MSG_CHECKING([whether to enable xlogfile])
 AC_ARG_ENABLE([xlogfile], AC_HELP_STRING([--enable-xlogfile=FILE],
-	[More verbose logfile (default=no, default filename=xlogfile)]),
+	[More verbose logfile (default=yes, default filename=xlogfile)]),
 	if test "$enableval" != no; then enable_xlogfile=yes;
 	 if test "$enableval" != yes; then xlogfile=$enableval;
 	 else xlogfile="xlogfile"; fi;
