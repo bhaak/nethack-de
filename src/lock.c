@@ -46,15 +46,15 @@ STATIC_OVL const char *
 lock_action()
 {
 	static const char *unlock_actions[] = {
-		/* [0] */	"die Türe aufzuschliessen", /* EN "unlocking the door" */
-		/* [1] */	"die Truhe aufzuschliessen",/* EN "unlocking the chest" */
-		/* [2] */	"die Kiste aufzuschliessen", /* EN "unlocking the box" */
+		/* [0] */	"die Türe aufzuschließen", /* EN "unlocking the door" */
+		/* [1] */	"die Truhe aufzuschließen",/* EN "unlocking the chest" */
+		/* [2] */	"die Kiste aufzuschließen", /* EN "unlocking the box" */
 		/* [3] */	"das Schloss zu knacken" /* "picking the lock" */
 	};
 	static const char *lock_actions[] = {
-		/* [0] */	"die Türe zu verschliessen", /* EN "locking the door" */
-		/* [1] */	"die Truhe zu verschliessen",/* EN "locking the chest" */
-		/* [2] */	"die Kiste zu verschliessen", /* EN "locking the box" */
+		/* [0] */	"die Türe zu verschließen", /* EN "locking the door" */
+		/* [1] */	"die Truhe zu verschließen",/* EN "locking the chest" */
+		/* [2] */	"die Kiste zu verschließen", /* EN "locking the box" */
 		/* [3] */	"unmoegliche Aktion"
 	};
 
@@ -94,7 +94,7 @@ picklock()	/* try to open/close a lock */
 		    pline("Dieser Eingang hat keine Türe."); /* EN pline("This doorway has no door."); */
 		    return((xlock.usedtime = 0));
 		case D_ISOPEN:
-		    You("VERB_KOENNEN keine offenen Türen abschliessen."); /* EN You("cannot lock an open door."); */
+		    You("VERB_KOENNEN keine offenen Türen abschließen."); /* EN You("cannot lock an open door."); */
 		    return((xlock.usedtime = 0));
 		case D_BROKEN:
 		    pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */
@@ -310,8 +310,8 @@ pick_lock(pick) /* pick a lock with a given object */
 		    }
 		    it = 0;
 		    if (otmp->obroken) verb = "reparieren"; /* EN if (otmp->obroken) verb = "fix"; */
-		    else if (!otmp->olocked) verb = "verschliessen", it = 1; /* EN else if (!otmp->olocked) verb = "lock", it = 1; */
-		    else if (picktyp != LOCK_PICK) verb = "aufschliessen", it = 1; /* EN else if (picktyp != LOCK_PICK) verb = "unlock", it = 1; */
+		    else if (!otmp->olocked) verb = "verschließen", it = 1; /* EN else if (!otmp->olocked) verb = "lock", it = 1; */
+		    else if (picktyp != LOCK_PICK) verb = "aufschließen", it = 1; /* EN else if (picktyp != LOCK_PICK) verb = "unlock", it = 1; */
 		    else verb = "knacken"; /* EN else verb = "pick"; */
 		    Sprintf(qbuf, "Hier ist %s, SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL %s %s?", /* EN Sprintf(qbuf, "There is %s here, %s %s?", */
 		    	    safe_qbuf("", sizeof("Hier ist  , SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL ihr Schloss %s?"), /* EN safe_qbuf("", sizeof("There is  here, unlock its lock?"), */
@@ -394,7 +394,7 @@ pick_lock(pick) /* pick a lock with a given object */
 		    pline("Dieser Eingang hat keine Türe."); /* EN pline("This doorway has no door."); */
 		    return(0);
 		case D_ISOPEN:
-		    You("VERB_KOENNEN keine offenen Türen verschliessen."); /* EN You("cannot lock an open door."); */
+		    You("VERB_KOENNEN keine offenen Türen verschließen."); /* EN You("cannot lock an open door."); */
 		    return(0);
 		case D_BROKEN:
 		    pline("Diese Türe ist kaputt."); /* EN pline("This door is broken."); */
@@ -403,7 +403,7 @@ pick_lock(pick) /* pick a lock with a given object */
 #ifdef TOURIST
 		    /* credit cards are only good for unlocking */
 		    if(picktyp == CREDIT_CARD && !(door->doormask & D_LOCKED)) {
-			You("VERB_KOENNEN keine Türe mit einer Kreditkarte abschliessen."); /* EN You_cant("lock a door with a credit card."); */
+			You("VERB_KOENNEN keine Türe mit einer Kreditkarte abschließen."); /* EN You_cant("lock a door with a credit card."); */
 			return(0);
 		    }
 #endif
@@ -616,7 +616,7 @@ doclose()		/* try to close a door */
 	struct monst *mtmp;
 
 	if (nohands(youmonst.data)) {
-	    You("VERB_KOENNEN nichts schliessen - PRONOMEN_PERSONAL VERB_HAVE keine Hände!"); /* EN You_cant("close anything -- you have no hands!"); */
+	    You("VERB_KOENNEN nichts schließen - PRONOMEN_PERSONAL VERB_HAVE keine Hände!"); /* EN You_cant("close anything -- you have no hands!"); */
 	    return 0;
 	}
 
@@ -648,7 +648,7 @@ doclose()		/* try to close a door */
 
 	if(!IS_DOOR(door->typ)) {
 		if (door->typ == DRAWBRIDGE_DOWN)
-		    pline("Es gibt keinen offensichtlichen Weg die Zugbrücke zu schliessen."); /* EN There("is no obvious way to close the drawbridge."); */
+		    pline("Es gibt keinen offensichtlichen Weg die Zugbrücke zu schließen."); /* EN There("is no obvious way to close the drawbridge."); */
 		else
 		    You("%s hier OBJECT PRONOMEN_KEIN NOUN_OBJ_DOOR.", /* EN You("%s no door there.", */
 				Blind ? "VERB_SPUEREN" : "VERB_SEE"); /* EN Blind ? "feel" : "see"); */

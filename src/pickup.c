@@ -2101,7 +2101,7 @@ register int held;
 	}
 	if (obj->olocked) {
 	    pline("SUBJECT %s abgeschlossen zu sein.", Tobjnam(obj, "VERB_SCHEINEN")); /* EN pline("%s to be locked.", Tobjnam(obj, "seem")); */
-	    if (held) You("VERB_MUESSEN sie abstellen um sie aufzuschliessen."); /* EN if (held) You("must put it down to unlock."); */
+	    if (held) You("VERB_MUESSEN sie abstellen um sie aufzuschließen."); /* EN if (held) You("must put it down to unlock."); */
 	    return 0;
 	} else if (obj->otrapped) {
 	    if (held) You("VERB_OPEN OBJECT %s ...", the(xname(obj))); /* EN if (held) You("open %s...", the(xname(obj))); */
@@ -2313,7 +2313,7 @@ boolean put_in;
     int n, i, n_looted = 0;
     boolean all_categories = TRUE, loot_everything = FALSE;
     char buf[BUFSZ];
-    const char *takeout = "rausnehmen", *putin = "reintun"; /* EN const char *takeout = "Take out", *putin = "Put in"; */
+    const char *takeout = "rausnehmen", *putin = "reintun"; /* EN const char *takeout = "Take out", *putin = "Put in"; */ /* entnehmen? verstauen? */
     struct obj *otmp, *otmp2;
     menu_item *pick_list;
     int mflags, res;

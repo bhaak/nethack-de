@@ -9832,8 +9832,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Kälte", "NOUN_KAELTE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Karaffe", "NOUN_KARAFFE", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Karaffen", "NOUN_KARAFFEs", "", dativ|genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Karaffe", "NOUN_KARAFFE", "", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Karaffen", "NOUN_KARAFFEs", "", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Trittes", "NOUN_KICK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Tritt", "NOUN_KICK", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

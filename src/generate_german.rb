@@ -3592,7 +3592,7 @@ def ausgabe_nouns
     dekliniere_adjektivisches_substantiv("NOUN_INNERE","Inner","neutrum"),
     dekliniere_substantiv("NOUN_IRON_BALL", "Eisenkugel", "", "Eisenkugel", "en", "feminin"),
     dekliniere_substantiv("NOUN_KAELTE","Kälte","","","","feminin"),
-    dekliniere_substantiv("NOUN_KARAFFE","Karaffe","","Karaffe","en","maskulin"),
+    dekliniere_substantiv("NOUN_KARAFFE","Karaffe","","Karaffe","en","feminin"),
     dekliniere_substantiv("NOUN_KICK","Tritt","es","Tritt","e","maskulin"),
     dekliniere_substantiv("NOUN_KIEL","Kiel","es","Kiel","e","maskulin"),
     dekliniere_substantiv("NOUN_KLAUE","Klaue","","Klaue","en","feminin"),
