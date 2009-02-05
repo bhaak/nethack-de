@@ -3,13 +3,13 @@ h3. Änderungen
 Im Gegensatz zum Standard-"NetHack":http://www.nethack.org/
 enthält NetHack-De folgende Erweiterungen und Patches:
 
-* Sokoban-Preis wird zufaellig ausgewaehlt
+* Sokoban-Preis wird zufällig ausgewählt
 * Extended Logfile Patch von Aardvark Joe
 * Livelog-Patch von "http://nethack.unfoog.de/":http://nethack.unfoog.de/
 * Menucolor-Patch von Pasi Kallinen
 * Pickup-Thrown-Patch von Roderick Schertler
-* Simple-Mail-Patch fuer dgamelaunch
-* QWERTZ-Patch fuer Tastaturen mit qwertz-Layout
+* Simple-Mail-Patch für dgamelaunch
+* QWERTZ-Patch für Tastaturen mit qwertz-Layout
 
 h3. Bugfixes
 
