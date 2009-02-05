@@ -120,7 +120,7 @@ img {
 ::-moz-selection { background-color: #00cb00; color: #ffffff; }
 
 #logo img {
-  border: 1px red solid;
+  border: 0px red solid;
 }
 #logo {
   text-align: right;
