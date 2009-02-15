@@ -1489,7 +1489,7 @@ register struct monst *mtmp;
 #ifdef RECORD_ACHIEVE
         if(mtmp->data == &mons[PM_MEDUSA])
             achieve.killed_medusa = 1;
-#ifdef LIVELOG
+#ifdef LIVELOGFILE
 			livelog_achieve_update();
 #endif
 #endif

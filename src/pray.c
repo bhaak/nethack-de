@@ -1294,7 +1294,7 @@ dosacrifice()
 
 #ifdef RECORD_ACHIEVE
                 achieve.ascended = 1;
-#ifdef LIVELOG
+#ifdef LIVELOGFILE
 				livelog_achieve_update();
 #endif
 #endif

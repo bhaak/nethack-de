@@ -259,7 +259,7 @@ struct obj *obj;
 		u.uhave.amulet = 1;
 #ifdef RECORD_ACHIEVE
                 achieve.get_amulet = 1;
-#ifdef LIVELOG
+#ifdef LIVELOGFILE
 				livelog_achieve_update();
 #endif
 #endif
@@ -268,7 +268,7 @@ struct obj *obj;
 		u.uhave.menorah = 1;
 #ifdef RECORD_ACHIEVE
                 achieve.get_candelabrum = 1;
-#ifdef LIVELOG
+#ifdef LIVELOGFILE
 				livelog_achieve_update();
 #endif
 #endif
@@ -277,7 +277,7 @@ struct obj *obj;
 		u.uhave.bell = 1;
 #ifdef RECORD_ACHIEVE
                 achieve.get_bell = 1;
-#ifdef LIVELOG
+#ifdef LIVELOGFILE
 				livelog_achieve_update();
 #endif
 #endif
@@ -286,7 +286,7 @@ struct obj *obj;
 		u.uhave.book = 1;
 #ifdef RECORD_ACHIEVE
                 achieve.get_book = 1;
-#ifdef LIVELOG
+#ifdef LIVELOGFILE
 				livelog_achieve_update();
 #endif
 #endif
@@ -304,7 +304,7 @@ struct obj *obj;
         if(obj->otyp == LUCKSTONE && obj->record_achieve_special) {
                 achieve.get_luckstone = 1;
                 obj->record_achieve_special = 0;
-#ifdef LIVELOG
+#ifdef LIVELOGFILE
 				livelog_achieve_update();
 #endif
         } else if((obj->otyp == AMULET_OF_REFLECTION ||
@@ -312,7 +312,7 @@ struct obj *obj;
                   obj->record_achieve_special) {
                 achieve.finish_sokoban = 1;
                 obj->record_achieve_special = 0;
-#ifdef LIVELOG
+#ifdef LIVELOGFILE
 				livelog_achieve_update();
 #endif
         }

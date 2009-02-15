@@ -77,7 +77,7 @@ diff -ru nethack-3.4.3/src/do.c nethack-shout/src/do.c
  
  #ifdef RECORD_ACHIEVE
              achieve.enter_gehennom = 1;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +			livelog_achieve_update();
 +#endif
  #endif
@@ -90,7 +90,7 @@ diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
  		u.uhave.amulet = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_amulet = 1;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +				livelog_achieve_update();
 +#endif
  #endif
@@ -99,7 +99,7 @@ diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
  		u.uhave.menorah = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_candelabrum = 1;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +				livelog_achieve_update();
 +#endif
  #endif
@@ -108,7 +108,7 @@ diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
  		u.uhave.bell = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_bell = 1;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +				livelog_achieve_update();
 +#endif
  #endif
@@ -117,7 +117,7 @@ diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
  		u.uhave.book = 1;
  #ifdef RECORD_ACHIEVE
                  achieve.get_book = 1;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +				livelog_achieve_update();
 +#endif
  #endif
@@ -127,7 +127,7 @@ diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
          if(obj->otyp == LUCKSTONE && obj->record_achieve_special) {
                  achieve.get_luckstone = 1;
                  obj->record_achieve_special = 0;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +				livelog_achieve_update();
 +#endif
          } else if((obj->otyp == AMULET_OF_REFLECTION ||
@@ -135,7 +135,7 @@ diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
                    obj->record_achieve_special) {
                  achieve.finish_sokoban = 1;
                  obj->record_achieve_special = 0;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +				livelog_achieve_update();
 +#endif
          }
@@ -148,7 +148,7 @@ diff -ru nethack-3.4.3/src/mklev.c nethack-shout/src/mklev.c
  
  #ifdef RECORD_ACHIEVE
      achieve.perform_invocation = 1;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +	livelog_achieve_update();
 +#endif
  #endif
@@ -161,7 +161,7 @@ diff -ru nethack-3.4.3/src/mon.c nethack-shout/src/mon.c
  #ifdef RECORD_ACHIEVE
          if(mtmp->data == &mons[PM_MEDUSA])
              achieve.killed_medusa = 1;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +			livelog_achieve_update();
 +#endif
  #endif
@@ -174,7 +174,7 @@ diff -ru nethack-3.4.3/src/pray.c nethack-shout/src/pray.c
  
  #ifdef RECORD_ACHIEVE
                  achieve.ascended = 1;
-+#ifdef LIVELOG
++#ifdef LIVELOGFILE
 +				livelog_achieve_update();
 +#endif
  #endif
