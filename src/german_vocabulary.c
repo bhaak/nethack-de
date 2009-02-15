@@ -1351,6 +1351,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"klobige Ringpanzer", "NOUN_CRUDE_RING_MAILs", "", akkusativ|nominativ, maskulin, n_plural, grundform|ohne},
   {"klobiger Ringpanzer", "NOUN_CRUDE_RING_MAILs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
+  {"Kapuzenmantels", "NOUN_HOODED_CLOAK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kapuzenmantel", "NOUN_HOODED_CLOAK", "", dativ|akkusativ|nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kapuzenmäntel", "NOUN_HOODED_CLOAKs", "", genitiv|akkusativ|nominativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Kapuzenmänteln", "NOUN_HOODED_CLOAKs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Schürze", "NOUN_APRON", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schürzen", "NOUN_APRONs", "n", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -3419,6 +3424,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Monsterverwirrung", "NOUN_SCR_CONFUSE_MONSTER", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Monsterverwirrungen", "NOUN_SCR_CONFUSE_MONSTERs", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Fluchbannung", "NOUN_SCR_REMOVE_CURSE", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Entfluchung", "NOUN_SCR_REMOVE_CURSE", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Monsterbeschwörung", "NOUN_SCR_CREATE_MONSTER", "s", dativ|genitiv|akkusativ|nominativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 

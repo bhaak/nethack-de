@@ -1846,7 +1846,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_CRUDE_RING_MAIL", "klobig", "Ringpanzer", "s", "Ringpanzer", "", "maskulin"),
     #dekliniere_substantiv("NOUN_FADED_PALL"
     #dekliniere_substantiv("NOUN_COARSE_MANTELET"
-    #dekliniere_substantiv("NOUN_HOODED_CLOAK"
+    dekliniere_substantiv("NOUN_HOODED_CLOAK", "Kapuzenmantel", "s", "Kapuzenmäntel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_SLIPPERY_CLOAK"
     dekliniere_substantiv("NOUN_APRON", "Schürze", "", "Schürze", "en", "feminin", "n"),
     #dekliniere_substantiv("NOUN_TATTERED_CAPE"
@@ -2228,27 +2228,28 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_POT_CLEAR","durchsichtig"),
     "",
     "/* Scrolls, identified */",
-    #dekliniere_substantiv("NOUN_SCR_ENCHANT_ARMOR"   # Schriftrolle der verzauberten Rüstung?
+    #dekliniere_substantiv("NOUN_SCR_ENCHANT_ARMOR"   # Schriftrolle der verzauberten Rüstung?, Rüstungsverzauberung, Rüstungszauber
     #dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR"   # Schriftrolle der zerstörten Rüstung?, beschädigten Rüstung?
     dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER", "Monsterverwirrung", "", "Monsterverwirrung", "en", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER"   
-    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE"   # Schriftrolle des gebannten Fluches, des Fluchbannens, der Fluchbannung
-    #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"  # Schriftrolle der verzauberten Waffe?
+    #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER" # Schriftrolle der Monsterfurcht, Monsterschreck(en), Monsterpanik
+    dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE", "Fluchbannung", "", "", "en", "feminin", "s"), # Schriftrolle des gebannten Fluches, des Fluchbannens, der Fluchbannung, Fluchbefreiung, Entfluchung,  netzhack: Entwuenschung
+    dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE", "Entfluchung", "", "", "en", "feminin", "s"),
+    #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"  # Schriftrolle der verzauberten Waffe?, Waffenverzauberung, Waffenzauber
     dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER", "Monsterbeschwörung", "", "", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SCR_TAMING", "Zähmung", "", "Zähmung", "en", "feminin", "s"), # Zähmens, Zähmung
-    dekliniere_substantiv("NOUN_SCR_GENOCIDE", "Genozid", "es", "", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SCR_GENOCIDE", "Genozid", "es", "", "e", "maskulin"), # nicht Ausrottung, da 'extinct' anderweitig Verwendung findet
     dekliniere_substantiv("NOUN_SCR_LIGHT", "Licht", "es", "", "er", "neutrum"), 
     dekliniere_substantiv("NOUN_SCR_TELEPORTATION", "Teleportation", "", "", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SCR_GOLD_DETECTION", "Golderspürung", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_SCR_FOOD_DETECTION", "Nahrungserspürung", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_SCR_IDENTIFY", "Identifizierung", "", "", "en", "feminin", "s"),
-    dekliniere_nominalphrase("NOUN_SCR_MAGIC_MAPPING", "magisch", "Kartieren", "s", "", "", "neutrum"),
-    dekliniere_substantiv("NOUN_SCR_AMNESIA", "Amnesie", "", "", "en", "feminin"),
+    dekliniere_nominalphrase("NOUN_SCR_MAGIC_MAPPING", "magisch", "Kartieren", "s", "", "", "neutrum"), # Magiekartierung?
+    dekliniere_substantiv("NOUN_SCR_AMNESIA", "Amnesie", "", "", "en", "feminin"), # netzhack: Vergessen
     dekliniere_substantiv("NOUN_SCR_FIRE", "Feuer", "s", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_SCR_EARTH", "Erde", "", "", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SCR_PUNISHMENT", "Bestrafung", "", "", "en", "feminin", "s"),
     #dekliniere_substantiv("NOUN_SCR_CHARGING"       # Laden, Ladungs??
-    #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD" # Gaswolke?
+    #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD" # Gaswolke? netzhack: Gestank
     #dekliniere_substantiv("NOUN_SCR_MAIL"
     #dekliniere_substantiv("NOUN_SCR_BLANK_PAPER"
     "",
@@ -2323,7 +2324,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SPE_CANCELLATION", "Löschung", "", "Löschung", "en", "feminin", "s"),     # Annullierung, Entwertung, Löschung, Widerruf
     dekliniere_substantiv("NOUN_SPE_PROTECTION", "Schutz", "es", "Schutz", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SPE_JUMPING", "Springen", "s", "Springen", "", "neutrum"),
-    dekliniere_substantiv("NOUN_SPE_STONE_TO_FLESH", "Stein-zu-Fleisch", "", "", "", "maskulin"),
+    dekliniere_substantiv("NOUN_SPE_STONE_TO_FLESH", "Stein-zu-Fleisch", "", "", "", "maskulin"), # netzhack: Entsteinerung
     dekliniere_substantiv("NOUN_SPE_FLAME_SPHERE", "Flammenkugel", "", "Flammenkugel", "en", "feminin"), # Flammenkugel, Feuerkugel?, Flammensphäre?, Feuersphäre?
     dekliniere_substantiv("NOUN_SPE_FREEZE_SPHERE", "Frostkugel", "", "Frostkugel", "en", "feminin"),    # Frostkugel, Frostsphäre?
     dekliniere_nominalphrase("NOUN_SPE_BLANK_PAPER", "unbeschriftet", "Papier", "es", "Papier", "e", "neutrum"), # leeres Papier, unbeschriftetes Papier # FIX ME
