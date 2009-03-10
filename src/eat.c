@@ -134,7 +134,7 @@ init_uhunger()
 }
 
 static const struct { const char *txt; int nut; } tintxts[] = {
-	{"ADJEKTIV_deep fried",	 60}, /* EN {"deep fried",	 60}, */
+	{"ADJEKTIV_UEBERBACKEN",	 60}, /* EN {"deep fried",	 60}, */
 	{"ADJEKTIV_EINGELEGT",	 40}, /* EN {"pickled",	 40}, */
 	{"soup made from", 20}, /* EN {"soup made from", 20}, */ // TODO DE
 	{"ADJEKTIV_PUERIERT",	500}, /* EN {"pureed",	500}, */
@@ -142,7 +142,7 @@ static const struct { const char *txt; int nut; } tintxts[] = {
 	{"ADJEKTIV_VERGAMMELT",	-50}, /* EN {"rotten",	-50}, */
 #define HOMEMADE_TIN 5
 	{"ADJEKTIV_HAUSGEMACHT",	 50}, /* EN {"homemade",	 50}, */
-	{"ADJEKTIV_stir fried",   80}, /* EN {"stir fried",   80}, */ // TODO DE
+	{"ADJEKTIV_ANGEBRATEN",   80}, /* EN {"stir fried",   80}, */
 	{"ADJEKTIV_KANDIERT",      100}, /* EN {"candied",      100}, */
 	{"ADJEKTIV_GEKOCHT",       50}, /* EN {"boiled",       50}, */ 
 	{"ADJEKTIV_GETROCKNET",        55}, /* EN {"dried",        55}, */
@@ -451,7 +451,7 @@ boolean allowmsg;
 	if (!CANNIBAL_ALLOWED() && your_race(&mons[pm])) {
 		if (allowmsg) {
 		if (Upolyd)
-			You("have a bad feeling deep inside."); /* EN You("have a bad feeling deep inside."); */ // TODO DE
+			You("VERB_HABEN ein ganz schlechtes Gefühl _in_ %s.",body_part(STOMACH)); /* EN You("have a bad feeling deep inside."); */
 		You("Kannibale!  SUBJECT PRONOMEN_PERSONAL VERB_WERDEN das noch bereuen!"); /* EN You("cannibal!  You will regret this!"); */
 		}
 		HAggravate_monster |= FROMOUTSIDE;
@@ -715,9 +715,9 @@ register struct permonst *ptr;
 		debugpline("Trying to give disintegration resistance");
 #endif
 		if(!(HDisint_resistance & FROMOUTSIDE)) {
-			You_feel(Hallucination ?
-			    "totally together, man." : /* EN "totally together, man." : */ // TODO DE
-			    "very firm."); /* EN "very firm."); */ // TODO DE
+			Du_fuehlst_dich(Hallucination ?  /* EN You_feel(Hallucination ? */
+			    "echt ganz dicht, Alter." : /* EN "totally together, man." : */
+			    "sehr stabil."); /* EN "very firm."); */
 			HDisint_resistance |= FROMOUTSIDE;
 		}
 		break;
@@ -727,9 +727,9 @@ register struct permonst *ptr;
 #endif
 		if(!(HShock_resistance & FROMOUTSIDE)) {
 			if (Hallucination)
-				You_feel("grounded in reality."); /* EN You_feel("grounded in reality."); */ // TODO DE
+				Du_fuehlst_dich("eins mit der Erde."); /* EN You_feel("grounded in reality."); */
 			else
-				Your("health currently feels amplified!"); /* EN Your("health currently feels amplified!"); */ // TODO DE
+				Du_fuehlst_dich("voll und ganz geerdet!"); /* EN Your("health currently feels amplified!"); */
 			HShock_resistance |= FROMOUTSIDE;
 		}
 		break;
@@ -758,9 +758,9 @@ register struct permonst *ptr;
 		debugpline("Trying to give teleport control");
 #endif
 		if(!(HTeleport_control & FROMOUTSIDE)) {
-			You_feel(Hallucination ?
-			    "centered in your personal space." : /* EN "centered in your personal space." : */ // TODO DE
-			    "in control of yourself."); /* EN "in control of yourself."); */ // TODO DE
+			Du_fuehlst_dich(Hallucination ?  /* EN You_feel(Hallucination ? */
+			    "in Kontrolle von Raum und Zeit." : /* EN "centered in your personal space." : */
+			    "selbstbeherrscht."); /* EN "in control of yourself."); */
 			HTeleport_control |= FROMOUTSIDE;
 		}
 		break;
@@ -1294,7 +1294,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		losehp(rnd(15), "ADJEKTIV_SAEUREHALTIG NOUN_CORPSE", KILLED_BY_AN); /* EN losehp(rnd(15), "acidic corpse", KILLED_BY_AN); */
 	} else if (poisonous(&mons[mnum]) && rn2(5)) {
 		tp++;
-		pline("Ecch - that must have been poisonous!"); /* EN pline("Ecch - that must have been poisonous!"); */ // TODO DE
+		pline("*Röchel* Das muss giftig gewesen sein!!"); /* EN pline("Ecch - that must have been poisonous!"); */
 		if(!Poison_resistance) {
 			losestr(rnd(4));
 			losehp(rnd(15), "ADJEKTIV_GIFTIG NOUN_CORPSE", KILLED_BY_AN); /* EN losehp(rnd(15), "poisonous corpse", KILLED_BY_AN); */
@@ -1887,7 +1887,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	if (u.uedibility) {
 		int res = edibility_prompts(otmp);
 		if (res) {
-		    Your("%s stops tingling and your sense of smell returns to normal.", /* EN Your("%s stops tingling and your sense of smell returns to normal.", */ // TODO DE
+		    Your("%s VERB_HOEREN auf zu kribbeln und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_POSSESSIV Geruchs-NOUN_SINN normalisiert sich wieder.", /* EN Your("%s stops tingling and your sense of smell returns to normal.", */
 		body_part(NOSE));
 		    u.uedibility = 0;
 		    if (res == 1) return 0;

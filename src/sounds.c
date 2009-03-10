@@ -50,7 +50,7 @@ dosounds()
 	static const char * const fountain_msg[4] = {
 		"plätscherndes Wasser.", /* EN "bubbling water.", */
 		"water falling on coins.", /* EN "water falling on coins.", */ // TODO DE
-		"the splashing of a naiad.", /* EN "the splashing of a naiad.", */ // TODO DE
+		"eine Najade im Wasser planschen.", /* EN "the splashing of a naiad.", */
 		"einen Luftbefeuchter!", /* EN "a soda fountain!", */
 	};
 	You_hear(fountain_msg[rn2(3)+hallu]);
@@ -493,30 +493,30 @@ register struct monst *mtmp;
 		} else if (mtmp->mpeaceful) {
 			if (kindred && isnight) {
 				Sprintf(verbuf, "Good feeding %s!", /* EN Sprintf(verbuf, "Good feeding %s!", */ // TODO DE
-	    				flags.female ? "sister" : "brother"); /* EN flags.female ? "sister" : "brother"); */ // TODO DE
-				verbl_msg = verbuf;
- 			} else if (nightchild && isnight) {
-				Sprintf(verbuf,
-				    "How nice to hear you, child of the night!"); /* EN "How nice to hear you, child of the night!"); */ // TODO DE
-				verbl_msg = verbuf;
-	    		} else
-		    		verbl_msg = "Ich trinke nur ... Zaubertränke."; /* EN verbl_msg = "I only drink... potions."; */
-    	        } else {
-			int vampindex;
-	    		static const char * const vampmsg[] = {
-			       /* These first two (0 and 1) are specially handled below */
-	    			"I vant to suck your %s!", /* EN "I vant to suck your %s!", */ // TODO DE
-	    			"I vill come after %s without regret!", /* EN "I vill come after %s without regret!", */ // TODO DE
-		    	       /* other famous vampire quotes can follow here if desired */
-	    		};
-			if (kindred)
-			    verbl_msg = "This is my hunting ground that you dare to prowl!"; /* EN verbl_msg = "This is my hunting ground that you dare to prowl!"; */ // TODO DE
-			else if (youmonst.data == &mons[PM_SILVER_DRAGON] ||
-				 youmonst.data == &mons[PM_BABY_SILVER_DRAGON]) {
-			    /* Silver dragons are silver in color, not made of silver */
-			    Sprintf(verbuf, "%s! Your silver sheen does not frighten me!", /* EN Sprintf(verbuf, "%s! Your silver sheen does not frighten me!", */ // TODO DE
-					youmonst.data == &mons[PM_SILVER_DRAGON] ?
-					"Fool" : "Young Fool"); /* EN "Fool" : "Young Fool"); */ // TODO DE
+						flags.female ? "sister" : "brother"); /* EN flags.female ? "sister" : "brother"); */ // TODO DE
+					verbl_msg = verbuf;
+				} else if (nightchild && isnight) {
+					Sprintf(verbuf,
+					    "How nice to hear you, child of the night!"); /* EN "How nice to hear you, child of the night!"); */ // TODO DE
+					verbl_msg = verbuf;
+				} else
+					verbl_msg = "Ich trinke nur ... Zaubertränke."; /* EN verbl_msg = "I only drink... potions."; */
+			} else {
+				int vampindex;
+				static const char * const vampmsg[] = {
+				       /* These first two (0 and 1) are specially handled below */
+					"I vant to suck your %s!", /* EN "I vant to suck your %s!", */ // TODO DE
+					"I vill come after %s without regret!", /* EN "I vill come after %s without regret!", */ // TODO DE
+				       /* other famous vampire quotes can follow here if desired */
+				};
+				if (kindred)
+				    verbl_msg = "This is my hunting ground that you dare to prowl!"; /* EN verbl_msg = "This is my hunting ground that you dare to prowl!"; */ // TODO DE
+				else if (youmonst.data == &mons[PM_SILVER_DRAGON] ||
+					 youmonst.data == &mons[PM_BABY_SILVER_DRAGON]) {
+				    /* Silver dragons are silver in color, not made of silver */
+				    Sprintf(verbuf, "%s! SUBJECT PRONOMEN_POSSESSIV Silber-NOUN_GLANZ schreckt mich nicht!", /* EN Sprintf(verbuf, "%s! Your silver sheen does not frighten me!", */
+						youmonst.data == &mons[PM_SILVER_DRAGON] ?
+						"Esel" : "Junger Esel"); /* EN "Fool" : "Young Fool"); */
 			    verbl_msg = verbuf; 
 			} else {
 			    vampindex = rn2(SIZE(vampmsg));
