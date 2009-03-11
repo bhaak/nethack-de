@@ -869,7 +869,7 @@ doup()
 		return(1);
 	}
 	if(ledger_no(&u.uz) == 1) {
-		if (yn("Achtung, es gibt kein Zurück mehr!  Wirklich hinaufgehen?") != 'y') /* EN if (yn("Beware, there will be no return! Still climb?") != 'y') */
+		if (yn("Achtung, es gibt kein Zurück!  Wirklich hinaufgehen?") != 'y') /* EN if (yn("Beware, there will be no return! Still climb?") != 'y') */
 			return(0);
 	}
 	if(!next_to_u()) {

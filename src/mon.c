@@ -1384,7 +1384,7 @@ struct monst *mtmp;
 		/* Nor do you check invisibility, because glowing and disinte- */
 		/* grating amulets are always visible. */
 		if (cansee(mtmp->mx, mtmp->my)) {
-			pline("But wait..."); /* EN pline("But wait..."); */ // TODO DE
+			pline("Aber Moment mal ..."); /* EN pline("But wait..."); */
 			pline("SUBJECT %s beginnt zu leuchten!", /* EN pline("%s medallion begins to glow!", */
 				genitivattribut_zu_wort(Monnam(mtmp), "NOUN_MEDALLION")); /* EN s_suffix(Monnam(mtmp))); */
 			makeknown(AMULET_OF_LIFE_SAVING);

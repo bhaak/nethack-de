@@ -81,19 +81,19 @@ static NEARDATA const char *deaths[] = {		/* the array of death */
 };
 
 static NEARDATA const char *ends[] = {		/* "when you..." */
-	"gestorben", "erstickt", "vergiftet worden", "verhungert", "ertrunken", /* EN "died", "choked", "were poisoned", "starved", "drowned", */ // TODO DE
+	"gestorben", "erstickt", "vergiftet worden", "verhungert", "ertrunken", /* EN "died", "choked", "were poisoned", "starved", "drowned", */
 	"verbrannt", "dissolved in the lava", /* EN "burned", "dissolved in the lava", */ // TODO DE
-	"erschlagen", "turned to stone", "turned into slime", /* EN "were crushed", "turned to stone", "turned into slime", */ // TODO DE
+	"erschlagen", "versteinert", "turned into slime", /* EN "were crushed", "turned to stone", "turned into slime", */ // TODO DE
 	"were genocided", "panicked", "were tricked", /* EN "were genocided", "panicked", "were tricked", */ // TODO DE
-	"aufgegeben", "geflohen", "aufgestiegen" /* EN "quit", "escaped", "ascended" */ // TODO DE
+	"aufgegeben", "geflohen", "aufgestiegen" /* EN "quit", "escaped", "ascended" */
 };
 
 #ifdef GERMAN
 static NEARDATA const char *ends_hilfsverb[] = {		/* "als du <verb> ..." */
 	"VERB_SEIN", "VERB_SEIN", "VERB_SEIN", "VERB_SEIN", "VERB_SEIN",
 	"VERB_SEIN", "dissolved in the lava",
-	"MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "turned to stone", "turned into slime",
-	"were genocided", "panicked", "were tricked",
+	"MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "turned into slime",
+	"were genocided", "panicked", "were tricked", // TODO DE
 	"VERB_HABEN", "VERB_SEIN", "VERB_SEIN"
 };
 #endif
@@ -144,12 +144,12 @@ done2()
 	if(wizard) {
 	    int c;
 # ifdef VMS
-	    const char *tmp = "Enter debugger?";
+	    const char *tmp = "Debugger starten?"; /* EN const char *tmp = "Enter debugger?"; */
 # else
 #  ifdef LATTICE
-	    const char *tmp = "Create SnapShot?";
+	    const char *tmp = "SnapShot erzeugen?"; /* EN const char *tmp = "Create SnapShot?"; */
 #  else
-	    const char *tmp = "Dump core?";
+	    const char *tmp = "Core-Dump erstellen?"; /* EN const char *tmp = "Dump core?"; */
 #  endif
 # endif
 	    if ((c = ynq(tmp)) == 'y') {
@@ -224,7 +224,7 @@ register struct monst *mtmp;
 	if (mtmp->minvis)
 		Strcat(buf, "ADJEKTIV_INVISIBLE "); /* EN Strcat(buf, "invisible "); */ 
 	if (distorted)
-		Strcat(buf, "hallucinogen-distorted "); /* EN Strcat(buf, "hallucinogen-distorted "); */
+		Strcat(buf, "halluzinogen--ADJEKTIV_ENTSTELLT "); /* EN Strcat(buf, "hallucinogen-distorted "); */
 
 	if(mtmp->data == &mons[PM_GHOST]) {
 #ifdef GERMAN
@@ -252,7 +252,7 @@ register struct monst *mtmp;
 		    Sprintf(eos(buf), " PARTIKEL_CALLED %s", NAME(mtmp)); /* EN Sprintf(eos(buf), " called %s", NAME(mtmp)); */
 	}
 
-	if (multi) Strcat(buf, ", while helpless"); /* EN if (multi) Strcat(buf, ", while helpless"); */ // TODO DE
+	if (multi) Strcat(buf, ", wehrlos"); /* EN if (multi) Strcat(buf, ", while helpless"); */ // TODO DE
 	killer = buf;
 	if (mtmp->data->mlet == S_WRAITH)
 		u.ugrave_arise = PM_WRAITH;
@@ -300,20 +300,20 @@ panic VA_DECL(const char *, str)
 #if defined(WIZARD) && !defined(MICRO)
 # if defined(NOTIFY_NETHACK_BUGS)
 	if (!wizard)
-	    raw_printf("Report the following error to \"%s\".",
+	    raw_printf("Bitte melde den folgenden Fehler an \"%s\".", /* EN raw_printf("Report the following error to \"%s\".", */
 			"bhaak@gmx.net"); /* EN "nethack-bugs@nethack.org"); */
 	else if (program_state.something_worth_saving)
 	    raw_print("\nError save file being written.\n");
 # else
 	if (!wizard)
-	    raw_printf("Report error to \"%s\"%s.",
+	    raw_printf("Fehler bitte \"%s\" melden.%s", /* EN raw_printf("Report error to \"%s\"%s.", */
 #  ifdef WIZARD_NAME	/*(KR1ED)*/
 			WIZARD_NAME,
 #  else
 			WIZARD,
 #  endif
 			!program_state.something_worth_saving ? "" :
-			" and it may be possible to rebuild.");
+			" Das Spiel kann vielleicht wiederhergestellt werden."); /* EN " and it may be possible to rebuild."); */
 # endif
 	if (program_state.something_worth_saving) {
 	    set_error_savefile();
@@ -600,7 +600,7 @@ int how;
 
 	if (how < PANICKED) u.umortality++;
 	if (Lifesaved && (how <= GENOCIDED)) {
-		pline("But wait..."); /* EN pline("But wait..."); */ // TODO DE
+		pline("Aber Moment mal ..."); /* EN pline("But wait..."); */
 		makeknown(AMULET_OF_LIFE_SAVING);
 		Your("NOUN_MEDALLION %s!", /* EN Your("medallion %s!", */
 		      !Blind ? "VERB_BEGINNEN zu glühen" : "VERB_FUEHLEN sich warm an"); /* EN !Blind ? "begins to glow" : "feels warm"); */
@@ -850,13 +850,13 @@ die:
 		    mtmp = mtmp->nmon;
 		}
 		if (!done_stopprint) putstr(endwin, 0, pbuf);
-		Strcpy(pbuf, "MODIFIER_VERB_PLURAL "); /* EN pbuf[0] = '\0'; */ // TODO DE naechstes Verb wird grossgeschrieben
+		Strcpy(pbuf, "MODIFIER_VERB_PLURAL "); /* EN pbuf[0] = '\0'; */
 	    } else {
 		if (!done_stopprint) Strcat(pbuf, " ");
 	    }
 	    if (!done_stopprint) {
 		Sprintf(eos(pbuf), "%s mit %ld Punkt%s,", /* EN Sprintf(eos(pbuf), "%s with %ld point%s,", */
-			how==ASCENDED ? "MODIFIER_VERB_PRAETERITUM VERB_BEKOMMEN OBJECT PRONOMEN_POSSESSIV ADJEKTIV_WOHLVERDIENT NOUN_BELOHNUNG" : /* EN how==ASCENDED ? "went to your reward" : */ // TODO DE
+			how==ASCENDED ? "MODIFIER_VERB_PRAETERITUM VERB_BEKOMMEN OBJECT PRONOMEN_POSSESSIV ADJEKTIV_WOHLVERDIENT NOUN_BELOHNUNG" : /* EN how==ASCENDED ? "went to your reward" : */
 					"VERB_SEIN aus dem Dungeon", /* EN "escaped from the dungeon", */ // TODO DE
 			u.urexp, (u.urexp == 1) ? "" : "en"); /* EN u.urexp, plur(u.urexp)); */
 		putstr(endwin, 0, pbuf);
@@ -903,9 +903,12 @@ die:
 	    } else {
 		/* more conventional demise */
 		const char *where = dungeons[u.uz.dnum].dname;
+#ifdef GERMAN
+		char *where_praep = "in";
+#endif
 
-		if (Is_astralevel(&u.uz)) where = "The Astral Plane"; /* EN if (Is_astralevel(&u.uz)) where = "The Astral Plane"; */ // TODO DE
-		Sprintf(pbuf, "SUBJECT PRONOMEN_PERSONAL %s _in_ %s", ends_hilfsverb[how], where); /* EN Sprintf(pbuf, "You %s in %s", ends[how], where); */ // TODO DE
+		if (Is_astralevel(&u.uz)) { where_praep = "auf"; where = "der Astralebene"; } /* EN if (Is_astralevel(&u.uz)) where = "The Astral Plane"; */
+		Sprintf(pbuf, "SUBJECT PRONOMEN_PERSONAL %s %s %s", ends_hilfsverb[how], where_praep, where); /* EN Sprintf(pbuf, "You %s in %s", ends[how], where); */
 		if (!In_endgame(&u.uz) && !Is_knox(&u.uz))
 		    Sprintf(eos(pbuf), " on dungeon level %d", /* EN Sprintf(eos(pbuf), " on dungeon level %d", */ // TODO DE
 			    In_quest(&u.uz) ? dunlev(&u.uz) : depth(&u.uz));
@@ -917,8 +920,8 @@ die:
 	}
 
 	if (!done_stopprint) {
-	    Sprintf(pbuf, "und KASUS_DATIV %ld NOUN_GOLD_PIECE%s, nach %ld %s, %s.", /* EN Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", */
-		    umoney, (umoney == 1) ? "" : "s", moves, (moves == 1) ? "Zug" : "Zügen", ends[how]); /* EN umoney, plur(umoney), moves, plur(moves)); */
+	    Sprintf(pbuf, "und KASUS_DATIV %ld NOUN_GOLD_PIECE%s, nach %ld %s%s%s.", /* EN Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", */
+		    umoney, (umoney == 1) ? "" : "s", moves, (moves == 1) ? "Zug" : "Zügen", (how==ASCENDED) ? "" : ", ", (how==ASCENDED) ? "" : ends[how]); /* EN umoney, plur(umoney), moves, plur(moves)); */
 	    putstr(endwin, 0, pbuf);
 	}
 	if (!done_stopprint) {
