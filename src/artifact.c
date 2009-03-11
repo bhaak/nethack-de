@@ -547,7 +547,7 @@ touch_artifact(obj,mon)
 
     /* can pick it up unless you're totally non-synch'd with the artifact */
     if (badclass && badalign && self_willed) {
-	if (yours) pline("%s your grasp!", Tobjnam(obj, "evade")); /* EN if (yours) pline("%s your grasp!", Tobjnam(obj, "evade")); */ // TODO DE
+	if (yours) pline("SUBJECT %s OBJECT PRONOMEN_POSSESSIV NOUN_GRIFF!", Tobjnam(obj, "VERB_ENTWINDEN")); /* EN if (yours) pline("%s your grasp!", Tobjnam(obj, "evade")); */
 	return 0;
     }
 
@@ -983,7 +983,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	if (attacks(AD_COLD, otmp)) {
 	    if (realizes_damage)
 		pline_The("ADJEKTIV_EISKALT NOUN_KLINGE %s OBJECT %s%c", /* EN pline_The("ice-cold blade %s %s%c", */
-			!spec_dbon_applies ? "VERB_HIT" : "freezes", /* EN !spec_dbon_applies ? "hits" : "freezes", */ // TODO DE
+			!spec_dbon_applies ? "VERB_HIT" : "VERB_VEREISEN", /* EN !spec_dbon_applies ? "hits" : "freezes", */
 			hittee, !spec_dbon_applies ? '.' : '!');
 	    if (!rn2(4)) (void) destroy_mitem(mdef, POTION_CLASS, AD_COLD);
 	    return realizes_damage;

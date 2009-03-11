@@ -94,7 +94,7 @@ register boolean clumsy;
 		mdx = mon->mx + u.dx;
 		mdy = mon->my + u.dy;
 		if(goodpos(mdx, mdy, mon, 0)) {
-			pline("%s reels from the blow.", Monnam(mon)); /* EN pline("%s reels from the blow.", Monnam(mon)); */ // TODO DE
+			pline("SUBJECT %s VERB_TAUMELT von dem Schlag.", Monnam(mon)); /* EN pline("%s reels from the blow.", Monnam(mon)); */
 			if (m_in_out_region(mon, mdx, mdy)) {
 			    remove_monster(mon->mx, mon->my);
 			    newsym(mon->mx, mon->my);
@@ -245,7 +245,7 @@ register struct obj *gold;
 	} else if (!mtmp->mcanmove) {
 		/* too light to do real damage */
 		if (canseemon(mtmp)) {
-		    pline_The("%s harmlessly %s %s.", xname(gold), /* EN pline_The("%s harmlessly %s %s.", xname(gold), */ // TODO DE
+		    pline_The("%s %s OBJECT %s ohne Wirkung.", xname(gold), /* EN pline_The("%s harmlessly %s %s.", xname(gold), */
 			      otense(gold, "VERB_HIT"), mon_nam(mtmp)); /* EN otense(gold, "hit"), mon_nam(mtmp)); */
 		    msg_given = TRUE;
 		}
@@ -537,15 +537,15 @@ xchar x, y;
 	 * from its current position
 	 */
 	if(range < 2 || (isgold && kickobj->quan > 300L)) {
-	    if(!Is_box(kickobj)) pline("Thump!"); /* EN if(!Is_box(kickobj)) pline("Thump!"); */ // TODO DE
+	    if(!Is_box(kickobj)) pline("Bumpf!"); /* EN if(!Is_box(kickobj)) pline("Thump!"); */
 	    return(!rn2(3) || martial());
 	}
 
 	if (kickobj->quan > 1L && !isgold) kickobj = splitobj(kickobj, 1L);
 
 	if (slide && !Blind)
-	    pline("Whee!  %s %s across the %s.", Doname2(kickobj), /* EN pline("Whee!  %s %s across the %s.", Doname2(kickobj), */ // TODO DE
-		  otense(kickobj, "slide"), surface(x,y)); /* EN otense(kickobj, "slide"), surface(x,y)); */ // TODO DE
+	    pline("Huiih!  SUBJECT %s %s OBJECT über ARTIKEL_BESTIMMTER %s.", Doname2(kickobj), /* EN pline("Whee!  %s %s across the %s.", Doname2(kickobj), */
+		  otense(kickobj, "VERB_GLEITEN"), surface(x,y)); /* EN otense(kickobj, "slide"), surface(x,y)); */
 
 	obj_extract_self(kickobj);
 	(void) snuff_candle(kickobj);
@@ -833,9 +833,9 @@ dokick()
 			maploc->doormask = 0; /* don't leave loose ends.. */
 			(void) mkgold((long)rnd(200), x, y);
 			if (Blind)
-			    pline("CRASH!  You destroy it."); /* EN pline("CRASH!  You destroy it."); */ // TODO DE
+			    pline("KRACH!  SUBJECT PRONOMEN_PERSONAL VERB_ZERSTOEREN es."); /* EN pline("CRASH!  You destroy it."); */
 			else {
-			    pline("CRASH!  You destroy the throne."); /* EN pline("CRASH!  You destroy the throne."); */ // TODO DE
+			    pline("KRACH!  SUBJECT PRONOMEN_PERSONAL VERB_ZERSTOEREN den Thron."); /* EN pline("CRASH!  You destroy the throne."); */
 			    newsym(x, y);
 			}
 			exercise(A_DEX, TRUE);
@@ -848,9 +848,9 @@ dokick()
 			    (void) mksobj_at(rnd_class(DILITHIUM_CRYSTAL,
 					LUCKSTONE-1), x, y, FALSE, TRUE);
 			if (Blind)
-			    You("kick %s loose!", something); /* EN You("kick %s loose!", something); */ // TODO DE
+			    Your("NOUN_KICK VERB_LOESEN OBJECT %s!", something); /* EN You("kick %s loose!", something); */
 			else {
-			    You("kick loose some ornamental coins and gems!"); /* EN You("kick loose some ornamental coins and gems!"); */ // TODO DE
+			    Your("NOUN_KICK VERB_LOESEN einige Münzen und Edelsteine!"); /* EN You("kick loose some ornamental coins and gems!"); */
 			    newsym(x, y);
 			}
 			/* prevent endless milking */
@@ -933,7 +933,7 @@ dokick()
 			if ( made )
 			    pline("You've attracted the tree's former occupants!"); /* EN pline("You've attracted the tree's former occupants!"); */ // TODO DE
 			else
-			    You("smell stale honey."); /* EN You("smell stale honey."); */ // TODO DE
+			    You("VERB_SMELL verdorbenen Honig."); /* EN You("smell stale honey."); */
 			maploc->looted |= TREE_SWARM;
 			return(1);
 		    }

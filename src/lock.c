@@ -377,7 +377,7 @@ pick_lock(pick) /* pick a lock with a given object */
 		    verbalize("Keine Schecks, kein Kredit, keine Probleme."); /* EN verbalize("No checks, no credit, no problem."); */
 		else
 #endif
-		    pline("I don't think %s would appreciate that.", mon_nam(mtmp)); /* EN pline("I don't think %s would appreciate that.", mon_nam(mtmp)); */ // TODO DE
+		    pline("Ich glaube nicht, dass %s das goutieren würde.", mon_nam(mtmp)); /* EN pline("I don't think %s would appreciate that.", mon_nam(mtmp)); */
 		return(0);
 	    }
 	    if(!IS_DOOR(door->typ)) {
@@ -560,7 +560,7 @@ doopen()		/* try to open a door */
 	}
 
 	if(verysmall(youmonst.data)) {
-	    pline("You're too small to pull the door open."); /* EN pline("You're too small to pull the door open."); */ // TODO DE
+	    pline("SUBJECT PRONOMEN_PERSONAL VERB_SEIN zu klein um die schwere Türe zu öffnen."); /* EN pline("You're too small to pull the door open."); */
 	    return(0);
 	}
 
@@ -806,13 +806,13 @@ int x, y;
 
 	    switch (door->doormask & ~D_TRAPPED) {
 	    case D_CLOSED:
-		msg = "The door locks!"; /* EN msg = "The door locks!"; */ // TODO DE
+		msg = "Die Türe verriegelt sich!"; /* EN msg = "The door locks!"; */
 		break;
 	    case D_ISOPEN:
-		msg = "The door swings shut, and locks!"; /* EN msg = "The door swings shut, and locks!"; */ // TODO DE
+		msg = "Die Türe schlägt zu und verriegelt sich!"; /* EN msg = "The door swings shut, and locks!"; */
 		break;
 	    case D_BROKEN:
-		msg = "The broken door reassembles and locks!"; /* EN msg = "The broken door reassembles and locks!"; */ // TODO DE
+		msg = "Die kaputte Türe setzt sich wieder zusammen und verriegelt sich!"; /* EN msg = "The broken door reassembles and locks!"; */
 		break;
 	    case D_NODOOR:
 		msg =
@@ -829,7 +829,7 @@ int x, y;
 	case WAN_OPENING:
 	case SPE_KNOCK:
 	    if (door->doormask & D_LOCKED) {
-		msg = "The door unlocks!"; /* EN msg = "The door unlocks!"; */ // TODO DE
+		msg = "Die Türe entriegelt sich!"; /* EN msg = "The door unlocks!"; */
 		door->doormask = D_CLOSED | (door->doormask & D_TRAPPED);
 	    } else res = FALSE;
 	    break;
@@ -854,9 +854,9 @@ int x, y;
 		door->doormask = D_BROKEN;
 		if (flags.verbose) {
 		    if (cansee(x,y))
-			pline_The("door crashes open!"); /* EN pline_The("door crashes open!"); */ // TODO DE
+			pline("Die Türe kracht splitternd auf!"); /* EN pline_The("door crashes open!"); */
 		    else if (flags.soundok)
-			You_hear("a crashing sound."); /* EN You_hear("a crashing sound."); */ // TODO DE
+			You_hear("ein krachendes Geräusch."); /* EN You_hear("a crashing sound."); */
 		}
 		unblock_point(x,y);
 		newsym(x,y);

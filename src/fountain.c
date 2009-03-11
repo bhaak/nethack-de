@@ -66,7 +66,7 @@ dowaterdemon() /* Water demon */
 		(void) mintrap(mtmp);
 	}
     } else
-	pline_The("fountain bubbles furiously for a moment, then calms."); /* EN pline_The("fountain bubbles furiously for a moment, then calms."); */ // TODO DE
+	pline_The("NOUN_FOUNTAIN blubbert heftig einen Augenblick lang und beruhigt sich wieder."); /* EN pline_The("fountain bubbles furiously for a moment, then calms."); */
 }
 
 STATIC_OVL void
@@ -77,7 +77,7 @@ dowaternymph() /* Water Nymph */
 	if(!(mvitals[PM_WATER_NYMPH].mvflags & G_GONE) &&
 	   (mtmp = makemon(&mons[PM_WATER_NYMPH],u.ux,u.uy, NO_MM_FLAGS))) {
 		if (!Blind)
-		   You("attract %s!", a_monnam(mtmp)); /* EN You("attract %s!", a_monnam(mtmp)); */ // TODO DE
+		   You("VERB_ANLOCKEN OBJECT %s SATZKLAMMER!", a_monnam(mtmp)); /* EN You("attract %s!", a_monnam(mtmp)); */
 		else
 		   You_hear("eine verführerische Stimme."); /* EN You_hear("a seductive voice."); */
 		mtmp->msleeping = 0;
@@ -225,14 +225,14 @@ drinkfountain()
 		    if (++i >= A_MAX) i = 0;
 		}
 		display_nhwindow(WIN_MESSAGE, FALSE);
-		pline("A wisp of vapor escapes the fountain..."); /* EN pline("A wisp of vapor escapes the fountain..."); */ // TODO DE
+		pline("Eine Dampffontäne entweicht KASUS_DATIV ARTIKEL_BESTIMMTER NOUN_FOUNTAIN ..."); /* EN pline("A wisp of vapor escapes the fountain..."); */
 		exercise(A_WIS, TRUE);
 		levl[u.ux][u.uy].blessedftn = 0;
 		return;
 	}
 
 	if (fate < 10) {
-		pline_The("cool draught refreshes you."); /* EN pline_The("cool draught refreshes you."); */ // TODO DE
+		pline("Der kühle Schluck erfrischt KASUS_AKKUSATIV PRONOMEN_PERSONAL."); /* EN pline_The("cool draught refreshes you."); */
 		u.uhunger += rnd(10); /* don't choke on water */
 		newuhs(FALSE);
 		if(mgkftn) return;
@@ -260,7 +260,7 @@ drinkfountain()
 			pline_The("NOUN_WATER ist kontaminiert!"); /* EN pline_The("water is contaminated!"); */
 			if (Poison_resistance) {
 			   pline(
-			      "Perhaps it is runoff from the nearby %s farm.", /* EN "Perhaps it is runoff from the nearby %s farm.", */ // TODO DE
+			      "Vielleicht ist es Abwasser von der nahegelegenen %s-Plantage.", /* EN "Perhaps it is runoff from the nearby %s farm.", */
 				 fruitname(FALSE));
 			   losehp(rnd(4),"unrefrigerated sip of juice", /* EN losehp(rnd(4),"unrefrigerated sip of juice", */ // TODO DE
 				KILLED_BY_AN);
@@ -295,14 +295,14 @@ drinkfountain()
 
 			if (Blind) {
 			    if (Invisible) {
-				Du_fuehlst_dich(" durchsichtig."); /* EN You("feel transparent."); */
+				Du_fuehlst_dich("durchsichtig."); /* EN You("feel transparent."); */
 			    } else {
 			    	Du_fuehlst_dich("äusserst selbst-bewusst."); /* EN You("feel very self-conscious."); */
-			    	pline("Then it passes."); /* EN pline("Then it passes."); */ // TODO DE
+			    	pline("Doch das geht vorbei."); /* EN pline("Then it passes."); */
 			    }
 			} else {
 			   You("see an image of someone stalking you."); /* EN You("see an image of someone stalking you."); */ // TODO DE
-			   pline("But it disappears."); /* EN pline("But it disappears."); */ // TODO DE
+			   pline("Aber es verschwindet wieder."); /* EN pline("But it disappears."); */
 			}
 			HSee_invisible |= FROMOUTSIDE;
 			newsym(u.ux,u.uy);
@@ -369,7 +369,7 @@ register struct obj *obj;
 
 		if (u.ualign.type != A_LAWFUL) {
 			/* Ha!  Trying to cheat her. */
-			pline("A freezing mist rises from the water and envelopes the sword."); /* EN pline("A freezing mist rises from the water and envelopes the sword."); */ // TODO DE
+			pline("Ein eiskalter Nebel steigt vom Wasser auf und umhüllt das Schwert."); /* EN pline("A freezing mist rises from the water and envelopes the sword."); */
 			pline_The("NOUN_FOUNTAIN VERB_VERSCHWINDEN!"); /* EN pline_The("fountain disappears!"); */
 			curse(obj);
 			if (obj->spe > -6 && !rn2(3)) obj->spe--;
@@ -414,7 +414,7 @@ register struct obj *obj;
 		case 20: /* Uncurse the item */
 			if(obj->cursed) {
 			    if (!Blind)
-				pline_The("water glows for a moment."); /* EN pline_The("water glows for a moment."); */ // TODO DE
+				pline("Das Wasser glitzert einen kurzen Moment lang."); /* EN pline_The("water glows for a moment."); */
 			    uncurse(obj);
 			} else {
 			    Dich("überkommt ein Gefühl des Verlustes."); /* EN pline("A feeling of loss comes over you."); */
