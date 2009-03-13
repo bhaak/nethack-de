@@ -9568,6 +9568,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Desintegrationsfelder", "NOUN_DESINTEGRATIONFELDs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Desintegrationsfeldern", "NOUN_DESINTEGRATIONFELDs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Dingsbums", "NOUN_DINGSBUMS", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Durstes", "NOUN_DURST", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Durst", "NOUN_DURST", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 

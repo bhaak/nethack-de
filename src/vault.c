@@ -244,7 +244,7 @@ fnd:
 	if (youmonst.m_ap_type == M_AP_OBJECT || u.uundetected) {
 	    if (youmonst.m_ap_type == M_AP_OBJECT &&
 			youmonst.mappearance != GOLD_PIECE)
-	    	verbalize("Hey! Who left that %s in here?", mimic_obj_name(&youmonst)); /* EN verbalize("Hey! Who left that %s in here?", mimic_obj_name(&youmonst)); */ // TODO DE
+	    	verbalize("Heh! Wer hat KASUS_AKKUSATIV PRONOMEN_DIESER %s hier drin liegenlassen?", mimic_obj_name(&youmonst)); /* EN verbalize("Hey! Who left that %s in here?", mimic_obj_name(&youmonst)); */
 	    /* You're mimicking some object or you're hidden. */
 	    pline("Verwirrt VERB_DREHEN SUBJECT_IM_SATZ %s sich um und VERB_GEHEN.", mhe(guard)); /* EN pline("Puzzled, %s turns around and leaves.", mhe(guard)); */
 	    mongone(guard);
@@ -524,7 +524,7 @@ register struct monst *grd;
 		    grd->mpeaceful = 0;
 letknow:
 		    if (!cansee(grd->mx, grd->my) || !mon_visible(grd))
-			You_hear("the shrill sound of a guard's whistle."); /* EN You_hear("the shrill sound of a guard's whistle."); */ // TODO DE
+			You_hear("den schrillen Pfiff der Trillerpfeife der Wache."); /* EN You_hear("the shrill sound of a guard's whistle."); */
 		    else
 			You(um_dist(grd->mx, grd->my, 2) ?
 			    "VERB_SEHEN OBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_WUETEND %s sich nähern." : /* EN "see an angry %s approaching." : */
@@ -532,7 +532,7 @@ letknow:
 			    g_monnam(grd));
 		    return(-1);
 		} else {
-		    verbalize("Well, begone."); /* EN verbalize("Well, begone."); */ // TODO DE
+		    verbalize("Nun gut, hinfort mit KASUS_DATIV PRONOMEN_PERSONAL."); /* EN verbalize("Well, begone."); */
 		    wallify_vault(grd);
 		    egrd->gddone = 1;
 		    goto cleanup;

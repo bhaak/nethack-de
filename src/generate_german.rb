@@ -3527,6 +3527,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_DASEINSFORM","Daseinsform","","Daseinsform","en","feminin"),
     dekliniere_substantiv("NOUN_DEMON", "Dämon", "s", "Dämon", "en", "maskulin"),
     dekliniere_substantiv("NOUN_DESINTEGRATIONFELD","Desintegrationsfeld","es","Desintegrationsfeld","er","neutrum"),
+    dekliniere_substantiv("NOUN_DINGSBUMS","Dingsbums","","","","neutrum"),
     dekliniere_substantiv("NOUN_DURST","Durst","es","","","maskulin"),
     dekliniere_substantiv("NOUN_EIGENSCHAFT","Eigenschaft","","Eigenschaft","en","feminin"),
     dekliniere_substantiv("NOUN_EINGEWEIDE","Eingeweide","s","Eingeweide","","neutrum"),

@@ -131,7 +131,7 @@ cursed_book(bp)
 		take_gold();
 		break;
 	case 4:
-		pline("These runes were just too much to comprehend."); /* EN pline("These runes were just too much to comprehend."); */ // TODO DE
+		pline("Diese Runen waren einfach zu schwer zu verstehen."); /* EN pline("These runes were just too much to comprehend."); */
 		make_confused(HConfusion + rn1(7,16),FALSE);
 		break;
 	case 5:
@@ -665,12 +665,12 @@ cast_protection()
 		const char *hgolden = hcolor(NH_GOLDEN);
 
 		if (u.uspellprot)
-		    pline_The("%s haze around you becomes more dense.", /* EN pline_The("%s haze around you becomes more dense.", */ // TODO DE
+		    pline_The("%s NOUN_HAZE um KASUS_AKKUSATIV PRONOMEN_PERSONAL wird dichter.", /* EN pline_The("%s haze around you becomes more dense.", */
 			      hgolden);
 		else
-		    pline_The("%s around you begins to shimmer with %s haze.", /* EN pline_The("%s around you begins to shimmer with %s haze.", */ // TODO DE
+		    pline_The("%s OBJECT um PRONOMEN_PERSONAL VERB_BEGINNEN NEUES_OBJECT OBJECT KASUS_DATIV in %s NOUN_HAZE zu flirren.", /* EN pline_The("%s around you begins to shimmer with %s haze.", */
 			/*[ what about being inside solid rock while polyd? ]*/
-			(Underwater || Is_waterlevel(&u.uz)) ? "water" : "air", /* EN (Underwater || Is_waterlevel(&u.uz)) ? "water" : "air", */ // TODO DE
+			(Underwater || Is_waterlevel(&u.uz)) ? "NOUN_WATER" : "NOUN_AIR", /* EN (Underwater || Is_waterlevel(&u.uz)) ? "water" : "air", */
 			      an(hgolden));
 	    }
 	    u.uspellprot += gain;
@@ -982,7 +982,7 @@ throwspell()
 	pline("Where do you want to cast the spell?"); /* EN pline("Where do you want to cast the spell?"); */ // TODO DE
 	cc.x = u.ux;
 	cc.y = u.uy;
-	if (getpos(&cc, TRUE, "the desired position") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */ // TODO DE
+	if (getpos(&cc, TRUE, "die gewünschte Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */
 	    return 0;	/* user pressed ESC */
 	/* The number of moves from hero to where the spell drops.*/
 	if (distmin(u.ux, u.uy, cc.x, cc.y) > 10) {

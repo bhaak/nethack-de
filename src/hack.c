@@ -894,7 +894,7 @@ domove()
 		You("don't have enough stamina to move."); /* EN You("don't have enough stamina to move."); */ // TODO DE
 		exercise(A_CON, FALSE);
 	    } else
-		You("collapse under your load."); /* EN You("collapse under your load."); */ // TODO DE
+		You("VERB_BBRECHEN OBJECT KASUS_DATIV unter PRONOMEN_POSSESSIV NOUN_LAST zusammen."); /* EN You("collapse under your load."); */
 	    nomul(0);
 	    return;
 	}
@@ -908,11 +908,11 @@ domove()
 			!Levitation && !Flying) {
 		    switch(rn2(3)) {
 		    case 0:
-			You("tumble in place."); /* EN You("tumble in place."); */ // TODO DE
+			You("VERB_UEBERSCHLAGEN OBJECT PRONOMEN_PERSONAL mehrmals."); /* EN You("tumble in place."); */
 			exercise(A_DEX, FALSE);
 			break;
 		    case 1:
-			You_cant("control your movements very well."); break; /* EN You_cant("control your movements very well."); break; */ // TODO DE
+			You("VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV NOUN_BEWEGUNGs kaum kontrollieren."); break; /* EN You_cant("control your movements very well."); break; */
 		    case 2:
 			pline("It's hard to walk in thin air."); /* EN pline("It's hard to walk in thin air."); */ // TODO DE
 			exercise(A_DEX, TRUE);
@@ -1215,7 +1215,7 @@ domove()
 				  upstart(y_monnam(u.usteed)));
 			else
 #endif
-			You("disentangle yourself."); /* EN You("disentangle yourself."); */ // TODO DE
+			You("VERB_BEFREIEN OBJECT PRONOMEN_PERSONAL mühsam."); /* EN You("disentangle yourself."); */
 		    }
 		} else if (u.utraptype == TT_INFLOOR) {
 		    if(--u.utrap) {
@@ -1451,7 +1451,7 @@ invocation_message()
 	    You_feel("eine seltsame Vibration OBJECT KASUS_DATIV %s.", buf); /* EN You_feel("a strange vibration %s.", buf); */
 	    if (otmp && otmp->spe == 7 && otmp->lamplit)
 		pline("SUBJECT %s %s!", The(xname(otmp)), /* EN pline("%s %s!", The(xname(otmp)), */
-		    Blind ? "throbs palpably" : "glows with a strange light"); /* EN Blind ? "throbs palpably" : "glows with a strange light"); */ // TODO DE
+		    Blind ? "VERB_PULSIEREN spürbar" : "VERB_LEUCHTEN in einem seltsamen Licht"); /* EN Blind ? "throbs palpably" : "glows with a strange light"); */
 	}
 }
 
@@ -1469,7 +1469,7 @@ boolean pick;
 
 		if (!is_pool(u.ux,u.uy)) {
 			if (Is_waterlevel(&u.uz))
-				You("pop into an air bubble."); /* EN You("pop into an air bubble."); */ // TODO DE
+				You("VERB_SCHIESSEN in eine Luftblase."); /* EN You("pop into an air bubble."); */
 			else if (is_lava(u.ux, u.uy))
 				You("VERB_VERLASSEN das Wasser ...");	/* oops! */ /* EN You("leave the water...");	*/
 			else
@@ -1540,12 +1540,12 @@ stillinwater:;
 			else if(uarmh && is_metallic(uarmh))
 			    pline("SUBJECT %s NOUN_HIEB VERB_ABGLEITEN OBJECT von PRONOMEN_POSSESSIV NOUN_HELMET SATZKLAMMER.", mhis(mtmp)); /* EN pline("Its blow glances off your helmet."); */
 			else if (u.uac + 3 <= rnd(20))
-			    You("are almost hit by %s!", /* EN You("are almost hit by %s!", */ // TODO DE
-				x_monnam(mtmp, ARTICLE_A, "falling", 0, TRUE)); /* EN x_monnam(mtmp, ARTICLE_A, "falling", 0, TRUE)); */ // TODO DE
+			    You("VERB_WERDEN beinahe OBJECT KASUS_DATIV von %s getroffen!", /* EN You("are almost hit by %s!", */
+				x_monnam(mtmp, ARTICLE_A, "ADJEKTIV_HERABSTUERZEND", 0, TRUE)); /* EN x_monnam(mtmp, ARTICLE_A, "falling", 0, TRUE)); */
 			else {
 			    int dmg;
-			    You("are hit by %s!", /* EN You("are hit by %s!", */ // TODO DE
-				x_monnam(mtmp, ARTICLE_A, "falling", 0, TRUE)); /* EN x_monnam(mtmp, ARTICLE_A, "falling", 0, TRUE)); */ // TODO DE
+			    You("VERB_WERDEN OBJECT KASUS_DATIV von %s getroffen!", /* EN You("are hit by %s!", */
+				x_monnam(mtmp, ARTICLE_A, "ADJEKTIV_HERABSTUERZEND", 0, TRUE)); /* EN x_monnam(mtmp, ARTICLE_A, "falling", 0, TRUE)); */
 			    dmg = d(4,6);
 			    if(Half_physical_damage) dmg = (dmg+1) / 2;
 			    mdamageu(mtmp, dmg);

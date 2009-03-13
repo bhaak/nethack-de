@@ -228,7 +228,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 		    (uchar)(otmp->otyp == BLINDING_VENOM ? AT_SPIT : AT_WEAP),
 		    otmp)) {
 		if (vis && mtmp->mcansee)
-		    pline("%s is blinded by %s.", Monnam(mtmp), the(xname(otmp))); /* EN pline("%s is blinded by %s.", Monnam(mtmp), the(xname(otmp))); */ // TODO DE
+		    pline("SUBJECT %s VERB_WERDEN OOBJECT KASUS_DATIV %s geblendet.", Monnam(mtmp), the(xname(otmp))); /* EN pline("%s is blinded by %s.", Monnam(mtmp), the(xname(otmp))); */
 		mtmp->mcansee = 0;
 		tmp = (int)mtmp->mblinded + rnd(25) + 20;
 		if (tmp > 127) tmp = 127;
