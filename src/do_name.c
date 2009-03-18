@@ -159,7 +159,7 @@ const char *goal;
 		    msg_given = TRUE;
 		    goto nxtc;
 		} else {
-		    pline("Unknown direction: '%s' (%s).", /* EN pline("Unknown direction: '%s' (%s).", */ // TODO DE
+		    pline("Unbekannte Richtung: '%s' (%s).", /* EN pline("Unknown direction: '%s' (%s).", */
 			  visctrl((char)c),
 			  !force ? "aborted" : /* EN !force ? "aborted" : */ // TODO DE
 			  iflags.num_pad ? "use 2468 or ." : "use hjkl or ."); /* EN iflags.num_pad ? "use 2468 or ." : "use hjkl or ."); */ // TODO DE
@@ -308,7 +308,7 @@ register struct obj *obj;
 		Strcpy(buf, aname);
 
 	if (obj->oartifact) {
-		pline_The("artifact seems to resist the attempt."); /* EN pline_The("artifact seems to resist the attempt."); */ // TODO DE
+		pline_The("NOUN_ARTIFACT VERB_SCHEINEN dem Versuch zu widerstehen."); /* EN pline_The("artifact seems to resist the attempt."); */
 		return;
 	} else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) { /* EN } else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) { */ // TODO DE
 		int n = rn2((int)strlen(buf));
@@ -317,9 +317,9 @@ register struct obj *obj;
 		c1 = lowc(buf[n]);
 		do c2 = 'a' + rn2('z'-'a'); while (c1 == c2);
 		buf[n] = (buf[n] == c1) ? c2 : highc(c2);  /* keep same case */
-		pline("While engraving your %s slips.", body_part(HAND)); /* EN pline("While engraving your %s slips.", body_part(HAND)); */ // TODO DE
+		pline("Beim Einritzen rutscht KASUS_DATIV PRONOMEN_PERSONAL KASUS_NOMINATIV ARTIKEL_BESTIMMTER %s aus.", body_part(HAND)); /* EN pline("While engraving your %s slips.", body_part(HAND)); */
 		display_nhwindow(WIN_MESSAGE, FALSE);
-		You("engrave: \"%s\".",buf); /* EN You("engrave: \"%s\".",buf); */ // TODO DE
+		You("VERB_EINRITZEN \"%s\" SATZKLAMMER.",buf); /* EN You("engrave: \"%s\".",buf); */
 	}
 	obj = oname(obj, buf);
 }
@@ -476,7 +476,7 @@ ddocall()
 			(void) xname(obj);
 
 			if (!obj->dknown) {
-				You("would never recognize another one."); /* EN You("would never recognize another one."); */ // TODO DE
+				You("MODIFIER_KONJUNKTIV_II VERB_WERDEN kein anderes Stück davon erkennen."); /* EN You("would never recognize another one."); */
 				return 0;
 			}
 			docall(obj);
@@ -1072,7 +1072,7 @@ rndcolor()
 {
 	int k = rn2(CLR_MAX);
 	return Hallucination ? hcolor((char *)0) : (k == NO_COLOR) ?
-		"colorless" : c_obj_colors[k]; /* EN "colorless" : c_obj_colors[k]; */ // TODO DE
+		"ADJEKTIV_FARBLOS" : c_obj_colors[k]; /* EN "colorless" : c_obj_colors[k]; */
 }
 
 /* Aliases for road-runner nemesis

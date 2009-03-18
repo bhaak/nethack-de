@@ -239,7 +239,7 @@ boolean forcecontrol;
         if(!Polymorph_control && !forcecontrol && !draconian && !iswere && !isvamp) {
 	    if (rn2(20) > ACURR(A_CON)) {
 		You(shudder_for_moment);
-		losehp(rnd(30), "system shock", KILLED_BY_AN); /* EN losehp(rnd(30), "system shock", KILLED_BY_AN); */ // TODO DE
+		losehp(rnd(30), "Kreislaufversagen", KILLED_BY); /* EN losehp(rnd(30), "system shock", KILLED_BY_AN); */
 		exercise(A_CON, FALSE);
 		return;
 	    }
@@ -417,7 +417,7 @@ int	mntmp;
 	}
 	if (Slimed) {
 	    if (flaming(youmonst.data)) {
-		pline_The("slime burns away!"); /* EN pline_The("slime burns away!"); */ // TODO DE
+		pline("Der Schleim vertrocknet und blättert ab!"); /* EN pline_The("slime burns away!"); */
 		Slimed = 0L;
 		flags.botl = 1;
 	    } else if (mntmp == PM_GREEN_SLIME) {
@@ -489,7 +489,7 @@ int	mntmp;
 	    		!Stone_resistance && rnl(3)) {
 	    	char buf[BUFSZ];
 
-	    	pline("Nicht mehr länger versteinerungsresistent VERB_TOUCH PRONOMEN_PERSONAL %s.", /* EN pline("No longer petrifying-resistant, you touch %s.", */
+	    	pline("Nicht mehr länger versteinerungsresistent SUBJECT_IM_SATZ VERB_TOUCH PRONOMEN_PERSONAL OBJECT %s.", /* EN pline("No longer petrifying-resistant, you touch %s.", */
 	    			mon_nam(u.usteed));
 	    	Sprintf(buf, "riding %s", an(u.usteed->data->mname)); /* EN Sprintf(buf, "riding %s", an(u.usteed->data->mname)); */ // TODO DE
 	    	instapetrify(buf);
@@ -971,7 +971,7 @@ dogaze()
 		    continue;
 		} else if (flags.safe_dog && !Confusion && !Hallucination
 		  && mtmp->mtame) {
-		    You("avoid gazing at %s.", y_monnam(mtmp)); /* EN You("avoid gazing at %s.", y_monnam(mtmp)); */ // TODO DE
+		    You("VERB_VERZICHTEN darauf, OBJECT %s anzustarren.", y_monnam(mtmp)); /* EN You("avoid gazing at %s.", y_monnam(mtmp)); */
 		} else {
 		    if (flags.confirm && mtmp->mpeaceful && !Confusion
 							&& !Hallucination) {
@@ -1037,12 +1037,12 @@ dogaze()
 		    if (!DEADMONSTER(mtmp) &&
 			    (mtmp->data == &mons[PM_MEDUSA]) && !mtmp->mcan) {
 			pline(
-			 "Die wache %s anzustarren ist wirklich keine gute Idee.", /* EN "Gazing at the awake %s is not a very good idea.", */
+			 "SATZBEGINN KASUS_AKKUSATIV ARTIKEL_BESTIMMTER ADJEKTIV_WACH %s anzustarren ist wirklich keine gute Idee.", /* EN "Gazing at the awake %s is not a very good idea.", */
 			    l_monnam(mtmp));
 			/* as if gazing at a sleeping anything is fruitful... */
 			You("VERB_VERSTEINERN ...");
-			killer_format = KILLED_BY;
-			killer = "deliberately meeting Medusa's gaze"; /* EN killer = "deliberately meeting Medusa's gaze"; */ // TODO DE
+			killer_format = NO_KILLER_PREFIX; /* EN killer_format = KILLED_BY; */
+			killer = "erwiderte absichtlich Medusas Blick"; /* EN killer = "deliberately meeting Medusa's gaze"; */
 			done(STONING);
 		    }
 		}

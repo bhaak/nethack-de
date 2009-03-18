@@ -645,9 +645,9 @@ register struct monst *mon;
 				mhis(mon), mon_hand);
 
 			if (obj->otyp == PICK_AXE) {
-			    pline("Since %s weapon%s %s,", /* EN pline("Since %s weapon%s %s,", */ // TODO DE
-				  s_suffix(mon_nam(mon)), /* EN s_suffix(mon_nam(mon)), */ // TODO DE
-				  plur(mw_tmp->quan), welded_buf);
+			    pline("SUBJECT Da %s %s %s,", /* EN pline("Since %s weapon%s %s,", */
+				  genitivattribut_zu_wort(mon_nam(mon), /* EN s_suffix(mon_nam(mon)), */
+				  mw_tmp->quan == 1 ? "NOUN_WEAPON" : "NOUN_WEAPONs"), welded_buf); /* EN plur(mw_tmp->quan), welded_buf); */
 			    pline("%s cannot wield that %s.", /* EN pline("%s cannot wield that %s.", */ // TODO DE
 				mon_nam(mon), xname(obj));
 			} else {
@@ -678,9 +678,9 @@ register struct monst *mon;
 		if (artifact_light(obj) && !obj->lamplit) {
 		    begin_burn(obj, FALSE);
 		    if (canseemon(mon))
-			pline("%s brilliantly in %s %s!", /* EN pline("%s brilliantly in %s %s!", */ // TODO DE
-			    Tobjnam(obj, "glow"), /* EN Tobjnam(obj, "glow"),  */ // TODO DE
-			    s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); */ // TODO DE
+			pline("SUBJECT %s hell OBJECT KASUS_DATIV in %s zu erstrahlen!", /* EN pline("%s brilliantly in %s %s!", */
+			    Tobjnam(obj, "VERB_BEGINNEN"), /* EN Tobjnam(obj, "glow"),  */
+			    genitivattribut_zu_wort(mon_nam(mon), mbodypart(mon,HAND))); /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND)); */
 		}
 		obj->owornmask = W_WEP;
 		return 1;

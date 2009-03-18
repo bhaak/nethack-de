@@ -229,7 +229,7 @@ mattackm(magr, mdef)
 	mdef->mundetected = 0;
 	newsym(mdef->mx, mdef->my);
 	if(canseemon(mdef) && !sensemon(mdef)) {
-	    if (u.usleep) You("dream of %s.", /* if (u.usleep) You("dream of %s.", */ // TODO DE
+	    if (u.usleep) You("VERB_TRAEUMEN OBJECT KASUS_DATIV von %s.", /* if (u.usleep) You("dream of %s.", */
 				(mdef->data->geno & G_UNIQ) ?
 				a_monnam(mdef) : makeplural(m_monnam(mdef)));
 	    else pline("Suddenly, you notice %s.", a_monnam(mdef)); /* else pline("Suddenly, you notice %s.", a_monnam(mdef)); */ // TODO DE
@@ -447,8 +447,8 @@ gazemm(magr, mdef, mattk)
 	char buf[BUFSZ];
 
 	if(vis) {
-		Sprintf(buf,"%s gazes at", Monnam(magr)); /* EN Sprintf(buf,"%s gazes at", Monnam(magr)); */ // TODO DE
-		pline("%s %s...", buf, mon_nam(mdef)); /* EN pline("%s %s...", buf, mon_nam(mdef)); */ // TODO DE
+		Sprintf(buf,"%s VERB_GAZE", Monnam(magr)); /* EN Sprintf(buf,"%s gazes at", Monnam(magr)); */
+		pline("SUBJECT %s OBJECT %s an ...", buf, mon_nam(mdef)); /* EN pline("%s %s...", buf, mon_nam(mdef)); */
 	}
 
 	if (magr->mcan || !magr->mcansee ||
