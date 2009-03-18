@@ -335,7 +335,7 @@ struct version_info {
 #define TBUFSZ		500	/* toplines[] buffer max msg: 3 81char names */ /* EN #define TBUFSZ		300	*/
 				/* plus longest prefix plus a few extra words */
 
-#define PL_NSIZ		32	/* name of player, ghost, shopkeeper */
+#define PL_NSIZ		63	/* name of player, ghost, shopkeeper */ /* EN #define PL_NSIZ		32	*/
 #define PL_CSIZ		32	/* sizeof pl_character */
 #define PL_FSIZ		32	/* fruit name */
 #define PL_PSIZ		63	/* player-given names for pets, other
