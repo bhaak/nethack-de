@@ -3618,7 +3618,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LEBEN","Leben","s","Leben","","neutrum"),
     dekliniere_substantiv("NOUN_LEBENSKRAFT","Lebenskraft","","Lebenskräft","e","feminin"),
     dekliniere_substantiv("NOUN_LEIB","Leib","es","Leib","er","maskulin"),
-    dekliniere_substantiv("NOUN_LEVEL_TELEPORTER","Leveltelepoter","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_LEVEL_TELEPORTER","Levelteleporter","s","","","maskulin"),
     dekliniere_substantiv("NOUN_LICHTBLITZ","Lichtblitz","es","Lichtblitz","e","maskulin"),
     dekliniere_substantiv("NOUN_LOCK", "Schloss", "es", "Schlöss", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_LOWERED_DRAWBRIDGE", "heruntergelassen", "Zugbrücke", "", "Zugbrücke", "en", "feminin"),

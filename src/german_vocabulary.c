@@ -9943,8 +9943,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Leiber", "NOUN_LEIBs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Leibern", "NOUN_LEIBs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Leveltelepoters", "NOUN_LEVEL_TELEPORTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Leveltelepoter", "NOUN_LEVEL_TELEPORTER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Levelteleporters", "NOUN_LEVEL_TELEPORTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Levelteleporter", "NOUN_LEVEL_TELEPORTER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Lichtblitzes", "NOUN_LICHTBLITZ", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lichtblitz", "NOUN_LICHTBLITZ", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

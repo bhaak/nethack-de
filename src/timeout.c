@@ -150,7 +150,7 @@ void
 burn_away_slime()
 {
 	if (Slimed) {
-	    pline_The("slime that covers you is burned away!"); /* EN pline_The("slime that covers you is burned away!"); */ // TODO DE
+	    pline("Der Schleim KASUS_DATIV auf PRONOMEN_PERSONAL vertrocknet und blättert ab!"); /* EN pline_The("slime that covers you is burned away!"); */
 	    Slimed = 0L;
 	    flags.botl = 1;
 	}
@@ -973,8 +973,8 @@ long timeout;
 
 				/* post message */
 				pline(Hallucination ?
-					(many ? "They shriek!" : /* EN (many ? "They shriek!" : */ // TODO DE
-						"It shrieks!") : /* EN "It shrieks!") : */ // TODO DE
+					(many ? "SUBJECT NOUN_PRONOMEN_3P_MFN_PERSONALs VERB_SHRIEK!" : /* EN (many ? "They shriek!" : */
+						"SUBJECT NOUN_IT VERB_SHRIEK!") : /* EN "It shrieks!") : */
 					Blind ? "" :
 					    (many ? "Their flames die." : /* EN (many ? "Their flames die." : */ // TODO DE
 						    "Its flame dies.")); /* EN "Its flame dies.")); */ // TODO DE
@@ -1221,7 +1221,7 @@ do_storms()
 
     if(levl[u.ux][u.uy].typ == CLOUD) {
 	/* inside a cloud during a thunder storm is deafening */
-	pline("Kaboom!!!  Boom!!  Boom!!"); /* EN pline("Kaboom!!!  Boom!!  Boom!!"); */ // TODO DE
+	pline("Kabumm!!!  Bumm!!  Bumm!!"); /* EN pline("Kaboom!!!  Boom!!  Boom!!"); */
 	if(!u.uinvulnerable) {
 	    stop_occupation();
 	    nomul(-3);

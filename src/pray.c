@@ -470,8 +470,8 @@ god_zaps_you(resp_god)
 aligntyp resp_god;
 {
 	if (u.uswallow) {
-	    pline("Suddenly a bolt of lightning comes down at you from the heavens!"); /* EN pline("Suddenly a bolt of lightning comes down at you from the heavens!"); */ // TODO DE
-	    pline("It strikes %s!", mon_nam(u.ustuck)); /* EN pline("It strikes %s!", mon_nam(u.ustuck)); */ // TODO DE
+	    pline("Plötzlich fährt ein Blitz aus dem heiteren Himmel KASUS_AKKUSATIV auf PRONOMEN_PERSONAL hernieder!"); /* EN pline("Suddenly a bolt of lightning comes down at you from the heavens!"); */
+	    pline("Er trifft KASUS_AKKUSATIV %s!", mon_nam(u.ustuck)); /* EN pline("It strikes %s!", mon_nam(u.ustuck)); */
 	    if (!resists_elec(u.ustuck)) {
 		pline("SUBJECT %s VERB_VERKOHLEN zu einem Brikett!", Monnam(u.ustuck)); /* EN pline("%s fries to a crisp!", Monnam(u.ustuck)); */
 		/* Yup, you get experience.  It takes guts to successfully
@@ -579,12 +579,12 @@ aligntyp resp_god;
 	    case 2:
 	    case 3:
 			godvoice(resp_god,(char *)0);
-			pline("\"Thou %s, %s.\"", /* EN pline("\"Thou %s, %s.\"", */ // TODO DE
+			pline("\"Du %s, %s.\"", /* EN pline("\"Thou %s, %s.\"", */
 			    (ugod_is_angry() && resp_god == u.ualign.type)
-				? "hast strayed from the path" : /* EN ? "hast strayed from the path" : */ // TODO DE
-						"art arrogant", /* EN "art arrogant", */ // TODO DE
+				? "bist vom rechten Weg abgekommen" : /* EN ? "hast strayed from the path" : */
+						"bist hochmütig", /* EN "art arrogant", */
 			      youmonst.data->mlet == S_HUMAN ? (flags.female ? "Sterbliche" : "Sterblicher") : "Kreatur"); /* EN youmonst.data->mlet == S_HUMAN ? "mortal" : "creature"); */
-			verbalize("Thou must relearn thy lessons!"); /* EN verbalize("Thou must relearn thy lessons!"); */ // TODO DE
+			verbalize("Du musst deine Lektionen erneut lernen!"); /* EN verbalize("Thou must relearn thy lessons!"); */
 			(void) adjattrib(A_WIS, -1, FALSE);
 			losexp((char *)0);
 			break;
@@ -1370,7 +1370,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		    u.ublessed = 0;
 		    flags.botl = 1;
 
-		    You("have a sudden sense of a new direction."); /* EN You("have a sudden sense of a new direction."); */ // TODO DE
+		    You("VERB_HABEN das plötzliche Gefühl einer neuer Richtung."); /* EN You("have a sudden sense of a new direction."); */
 		    /* Beware, Conversion is costly */
 		    change_luck(-3);
 		    u.ublesscnt += 300;
@@ -1379,7 +1379,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		    u.ugangr += 3;
 		    adjalign(-5);
 		    pline("%s weist KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_SACRIFICE zurück!", a_gname()); /* EN pline("%s rejects your sacrifice!", a_gname()); */
-		    godvoice(altaralign, "Suffer, infidel!"); /* EN godvoice(altaralign, "Suffer, infidel!"); */ // TODO DE
+		    godvoice(altaralign, flags.female ? "Büße, Ungläubige!" : "Büße, Ungläubiger!"); /* EN godvoice(altaralign, "Suffer, infidel!"); */
 		    change_luck(-5);
 		    (void) adjattrib(A_WIS, -2, TRUE);
 		    if (!Inhell) angrygods(u.ualign.type);
@@ -1718,7 +1718,7 @@ doturn()
 		    mtmp->msleeping = 0;
 		    if (Confusion) {
 			if (!once++)
-			    pline("Unfortunately, your voice falters."); /* EN pline("Unfortunately, your voice falters."); */ // TODO DE
+			    pline("Leider versagt PRONOMEN_POSSESSIV NOUN_STIMME."); /* EN pline("Unfortunately, your voice falters."); */
 			mtmp->mflee = 0;
 			mtmp->mfrozen = 0;
 			mtmp->mcanmove = 1;
@@ -1855,7 +1855,7 @@ register int x, y;
     } else {
 	pline("Eine Stimme (ist es vielleicht %s?) flüstert:", /* EN pline("A voice (could it be %s?) whispers:", */
 	      align_gname(altaralign));
-	verbalize("Thou shalt pay, infidel!"); /* EN verbalize("Thou shalt pay, infidel!"); */ // TODO DE
+	verbalize("Das wirst du bezahlen, %s!", flags.female ? "Ungläubige" : "Ungläubiger"); /* EN verbalize("Thou shalt pay, infidel!"); */
 	change_luck(-1);
     }
 }

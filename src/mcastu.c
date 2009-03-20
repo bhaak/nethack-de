@@ -364,7 +364,7 @@ int spellnum;
 	    verbalize("Destroy the thief, my pet%s!", plur(count)); /* EN verbalize("Destroy the thief, my pet%s!", plur(count)); */ // TODO DE
 	else {
 	    const char *mappear =
-		(count == 1) ? "A monster appears" : "Monsters appear"; /* EN (count == 1) ? "A monster appears" : "Monsters appear"; */ // TODO DE
+		(count == 1) ? "Ein Monster erscheint" : "Monster erscheinen"; /* EN (count == 1) ? "A monster appears" : "Monsters appear"; */
 
 	    /* messages not quite right if plural monsters created but
 	       only a single monster is seen */
@@ -374,7 +374,7 @@ int spellnum;
 	    else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
 		pline("%s around your ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE!", mappear); /* EN pline("%s around your displaced image!", mappear); */ // TODO DE
 	    else
-		pline("%s from nowhere!", mappear); /* EN pline("%s from nowhere!", mappear); */ // TODO DE
+		pline("%s aus dem Nichts!", mappear); /* EN pline("%s from nowhere!", mappear); */
 	}
 	dmg = 0;
 	break;
@@ -643,13 +643,13 @@ int spellnum;
 	    dmg = (dmg + 1) / 2;
 	}
 	if (dmg <= 5)
-	    Your("skin itches badly for a moment."); /* EN Your("skin itches badly for a moment."); */ // TODO DE
+	    Your("NOUN_HAUT VERB_JUCKEN einen Moment lang ganz furchtbar."); /* EN Your("skin itches badly for a moment."); */
 	else if (dmg <= 10)
-	    pline("Wounds appear on your body!"); /* EN pline("Wounds appear on your body!"); */ // TODO DE
+	    pline("Wunden erscheinen KASUS_DATIV auf PRONOMEN_POSSESSIV NOUN_KOERPER!"); /* EN pline("Wounds appear on your body!"); */
 	else if (dmg <= 20)
-	    pline("Severe wounds appear on your body!"); /* EN pline("Severe wounds appear on your body!"); */ // TODO DE
+	    pline("Tiefe Wunden erscheinen KASUS_DATIV auf PRONOMEN_POSSESSIV NOUN_KOERPER!"); /* EN pline("Severe wounds appear on your body!"); */
 	else
-	    Your("body is covered with painful wounds!"); /* EN Your("body is covered with painful wounds!"); */ // TODO DE
+	    Your("NOUN_KOERPER ist über und über von schmerzhaften Wunden bedeckt!"); /* EN Your("body is covered with painful wounds!"); */
 	break;
     default:
 	impossible("mcastu: invalid clerical spell (%d)", spellnum);

@@ -246,28 +246,28 @@ dig()
 	    switch(rn2(3)) {
 	    case 0:
 		if(!welded(uwep)) {
-		    You("fumble and drop your %s.", xname(uwep)); /* EN You("fumble and drop your %s.", xname(uwep)); */ // TODO DE
+		    You("VERB_STELLEN OBJECT PRONOMEN_PERSONAL ungeschickt an und VERB_DROP NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV %s SATZKLAMMER.", xname(uwep)); /* EN You("fumble and drop your %s.", xname(uwep)); */
 		    dropx(uwep);
 		} else {
 #ifdef STEED
 		    if (u.usteed)
-			Your("%s %s and %s %s!", /* EN Your("%s %s and %s %s!", */ // TODO DE
+			Your("%s %s SATZKLAMMER und %s OBJECT %s!", /* EN Your("%s %s and %s %s!", */
 			     xname(uwep),
-			     otense(uwep, "bounce"), otense(uwep, "hit"), /* EN otense(uwep, "bounce"), otense(uwep, "hit"), */ // TODO DE
+			     otense(uwep, "VERB_ABPRALLEN"), otense(uwep, "VERB_HIT"), /* EN otense(uwep, "bounce"), otense(uwep, "hit"), */
 			     mon_nam(u.usteed));
 		    else
 #endif
-			pline("Ouch!  Your %s %s and %s you!", /* EN pline("Ouch!  Your %s %s and %s you!", */ // TODO DE
+			pline("Aua!  SUBJECT PRONOMEN_POSSESSIV %s %s SATZKLAMMER und %s OBJECT PRONOMEN_PERSONAL!", /* EN pline("Ouch!  Your %s %s and %s you!", */
 			      xname(uwep),
-			      otense(uwep, "bounce"), otense(uwep, "hit")); /* EN otense(uwep, "bounce"), otense(uwep, "hit")); */ // TODO DE
+			      otense(uwep, "VERB_ABPRALLEN"), otense(uwep, "VERB_HIT")); /* EN otense(uwep, "bounce"), otense(uwep, "hit")); */
 		    set_wounded_legs(RIGHT_SIDE, 5 + rnd(5));
 		}
 		break;
 	    case 1:
-		pline("Bang!  You hit with the broad side of %s!", /* EN pline("Bang!  You hit with the broad side of %s!", */ // TODO DE
+		pline("Bong!  SUBJECT PRONOMEN_PERSONAL VERB_ZUSCHLAGEN mit der flachen Seite OBJECT KASUS_GENITIV %s SATZKLAMMER!", /* EN pline("Bang!  You hit with the broad side of %s!", */
 		      the(xname(uwep)));
 		break;
-	    default: Your("swing misses its mark."); /* EN default: Your("swing misses its mark."); */ // TODO DE
+	    default: Your("ADJEKTIV_SCHWUNGVOLL NOUN_SCHLAG verfehlt sein Ziel."); /* EN default: Your("swing misses its mark."); */
 		break;
 	    }
 	    return(0);
@@ -839,10 +839,10 @@ struct obj *obj;
 	verb = ispick ? "graben" : "hacken"; /* EN verb = ispick ? "dig" : "chop"; */
 
 	if (u.utrap && u.utraptype == TT_WEB) {
-	    pline("%s nicht %s while entangled in a web.", /* EN pline("%s you can't %s while entangled in a web.", */ // TODO DE
+	    pline("Im Netz verheddert SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL %s nicht %s.", /* EN pline("%s you can't %s while entangled in a web.", */
 		  /* res==0 => no prior message;
 		     res==1 => just got "You now wield a pick-axe." message */
-		  !res ? "Leider VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL" : "Aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_KOENNEN", verb); /* EN !res ? "Unfortunately," : "But", verb); */
+		  !res ? "leider" : "aber", verb); /* EN !res ? "Unfortunately," : "But", verb); */
 	    return res;
 	}
 
@@ -939,11 +939,11 @@ struct obj *obj;
 			    boolean vibrate = !rn2(3);
 			    pline("Funken fliegen MODIFIER_NEBENSATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT auf ARTIKEL_BESTIMMTER %s VERB_EINSCHLAGEN.%s", /* EN pline("Sparks fly as you whack the %s.%s", */
 				sobj_at(STATUE, rx, ry) ? "NOUN_STATUE" : "NOUN_BOULDER", /* EN sobj_at(STATUE, rx, ry) ? "statue" : "boulder", */
-				vibrate ? " The axe-handle vibrates violently!" : ""); /* EN vibrate ? " The axe-handle vibrates violently!" : ""); */ // TODO DE
+				vibrate ? " Der Axtgriff vibriert gewaltig!" : ""); /* EN vibrate ? " The axe-handle vibrates violently!" : ""); */
 			    if (vibrate) losehp(2, "axing a hard object", KILLED_BY); /* EN if (vibrate) losehp(2, "axing a hard object", KILLED_BY); */ // TODO DE
 			}
 			else
-			    You("swing your %s through thin air.", /* EN You("swing your %s through thin air.", */ // TODO DE
+			    You("VERB_LASSEN OBJECT PRONOMEN_POSSESSIV %s durch die Luft sausen.", /* EN You("swing your %s through thin air.", */
 				aobjnam(obj, (char *)0));
 		} else {
 			static const char * const d_action[6] = {
@@ -985,7 +985,7 @@ struct obj *obj;
 		}
 	} else if (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz)) {
 		/* it must be air -- water checked above */
-		You("swing your %s through thin air.", aobjnam(obj, (char *)0)); /* EN You("swing your %s through thin air.", aobjnam(obj, (char *)0)); */ // TODO DE
+		You("VERB_LASSEN OBJECT PRONOMEN_POSSESSIV %s durch die Luft sausen.", aobjnam(obj, (char *)0)); /* EN You("swing your %s through thin air.", aobjnam(obj, (char *)0)); */
 	} else if (!can_reach_floor()) {
 		You_cant("reach the %s.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */ // TODO DE
 	} else if (is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy)) {

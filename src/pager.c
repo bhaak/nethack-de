@@ -95,7 +95,7 @@ lookat(x, y, buf, monbuf)
 	if (u.usteed) {
 	    char steedbuf[BUFSZ];
 
-	    Sprintf(steedbuf, ", mounted on %s", y_monnam(u.usteed)); /* EN Sprintf(steedbuf, ", mounted on %s", y_monnam(u.usteed)); */ // TODO DE
+	    Sprintf(steedbuf, ", reitend auf NEUES_OBJECT OBJECT KASUS_DATIV %s", y_monnam(u.usteed)); /* EN Sprintf(steedbuf, ", mounted on %s", y_monnam(u.usteed)); */
 	    /* assert((sizeof buf >= strlen(buf)+strlen(steedbuf)+1); */
 	    Strcat(buf, steedbuf);
 	}
@@ -160,7 +160,7 @@ lookat(x, y, buf, monbuf)
 		/* newsym lets you know of the trap, so mention it here */
 		if (tt == BEAR_TRAP || tt == PIT ||
 			tt == SPIKED_PIT || tt == WEB)
-		    Sprintf(eos(buf), ", trapped in %s", /* EN Sprintf(eos(buf), ", trapped in %s", */ // TODO DE
+		    Sprintf(eos(buf), ", gefangen in NEUES_OBJECT OBJECT KASUS_DATIV %s", /* EN Sprintf(eos(buf), ", trapped in %s", */
 			    an(defsyms[trap_to_defsym(tt)].explanation));
 	    }
 
@@ -200,7 +200,7 @@ lookat(x, y, buf, monbuf)
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
 		    if (useemon && mtmp->minvis) {
-			Strcat(monbuf, "see invisible"); /* EN Strcat(monbuf, "see invisible"); */ // TODO DE
+			Strcat(monbuf, "Enthüllung"); /* EN Strcat(monbuf, "see invisible"); */
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
 		    if ((!mtmp->minvis || See_invisible) &&
@@ -322,7 +322,7 @@ checkfile(inp, pm, user_typed_name, without_asking)
 
     fp = dlb_fopen(DATAFILE, "r");
     if (!fp) {
-	pline("Cannot open data file!"); /* EN pline("Cannot open data file!"); */ // TODO DE
+	pline("Kann Daten-Datei nicht öffnen!"); /* EN pline("Cannot open data file!"); */
 	return;
     }
 
@@ -387,7 +387,7 @@ checkfile(inp, pm, user_typed_name, without_asking)
 	/* skip first record; read second */
 	txt_offset = 0L;
 	if (!dlb_fgets(buf, BUFSZ, fp) || !dlb_fgets(buf, BUFSZ, fp)) {
-	    impossible("can't read 'data' file"); /* EN impossible("can't read 'data' file"); */ // TODO DE
+	    impossible("Kann Datei 'data' nicht lesen"); /* EN impossible("can't read 'data' file"); */
 	    (void) dlb_fclose(fp);
 	    return;
 	} else if (sscanf(buf, "%8lx\n", &txt_offset) < 1 || txt_offset <= 0)
@@ -465,7 +465,7 @@ bad_data_file:	impossible("'data' file in wrong format");
 #define LOOK_VERBOSE		3	/* ':' -- show more info w/o asking */
 
 /* also used by getpos hack in do_name.c */
-const char what_is_an_unknown_object[] = "an unknown object"; /* EN const char what_is_an_unknown_object[] = "an unknown object"; */ // TODO DE
+const char what_is_an_unknown_object[] = "ARTIKEL_UNBESTIMMTER ADJEKTIV_UNKNOWN NOUN_OBJEKT"; /* EN const char what_is_an_unknown_object[] = "an unknown object"; */
 
 STATIC_OVL int
 do_look(quick)
@@ -733,7 +733,7 @@ do_look(quick)
 		    found = 1;	/* we have something to look up */
 		}
 		if (monbuf[0]) {
-		    Sprintf(temp_buf, " [gesehen mittels: %s]", monbuf); /* EN Sprintf(temp_buf, " [seen: %s]", monbuf); */ // TODO DE
+		    Sprintf(temp_buf, " [gesehen mittels: %s]", monbuf); /* EN Sprintf(temp_buf, " [seen: %s]", monbuf); */
 		    (void)strncat(out_str, temp_buf, BUFSZ-strlen(out_str)-1);
 		}
 	    }
@@ -790,14 +790,14 @@ doidtrap()
 			    tt == ROCKTRAP) break;
 		}
 		tt = what_trap(tt);
-		pline("That is %s%s%s.", /* EN pline("That is %s%s%s.", */ // TODO DE
+		pline("Da ist %s%s%s.", /* EN pline("That is %s%s%s.", */
 		      an(defsyms[trap_to_defsym(tt)].explanation),
-		      !trap->madeby_u ? "" : (tt == WEB) ? " woven" : /* EN !trap->madeby_u ? "" : (tt == WEB) ? " woven" : */ // TODO DE
+		      !trap->madeby_u ? "" : (tt == WEB) ? " gesponnen" : /* EN !trap->madeby_u ? "" : (tt == WEB) ? " woven" : */
 			  /* trap doors & spiked pits can't be made by
 			     player, and should be considered at least
 			     as much "set" as "dug" anyway */
-			  (tt == HOLE || tt == PIT) ? " dug" : " set", /* EN (tt == HOLE || tt == PIT) ? " dug" : " set", */ // TODO DE
-		      !trap->madeby_u ? "" : " by you"); /* EN !trap->madeby_u ? "" : " by you"); */ // TODO DE
+			  (tt == HOLE || tt == PIT) ? " gegraben" : " aufgestellt", /* EN (tt == HOLE || tt == PIT) ? " dug" : " set", */
+		      !trap->madeby_u ? "" : " KASUS_DATIV von PRONOMEN_PERSONAL"); /* EN !trap->madeby_u ? "" : " by you"); */
 		return 0;
 	    }
 	pline("Ich kann da keine Falle erkennen."); /* EN pline("I can't see a trap there."); */
