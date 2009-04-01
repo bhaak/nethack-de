@@ -1034,7 +1034,7 @@ boolean ask;
      * includes all dead monsters, not just those killed by the player
      */
     if (ntypes != 0) {
-	c = ask ? yn_function("SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL eine Aufstellung aller bewzungenen Kreaturen sehen?", /* EN c = ask ? yn_function("Do you want an account of creatures vanquished?", */
+	c = ask ? yn_function("SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL eine Aufstellung aller bezwungenen Kreaturen sehen?", /* EN c = ask ? yn_function("Do you want an account of creatures vanquished?", */
 			      ynqchars, defquery) : defquery;
 	if (c == 'q') done_stopprint++;
 	if (c == 'y') {
