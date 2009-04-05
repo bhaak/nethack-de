@@ -6,6 +6,7 @@
 
 #ifdef GERMAN
 # include "german.h"
+# include <ctype.h>
 #endif
 
 /* "an uncursed greased partly eaten guardian naga hatchling [corpse]" */
@@ -220,13 +221,16 @@ fruitname(juice)
 boolean juice;	/* whether or not to append " juice" to the name */
 {
     char *buf = nextobuf();
-    const char *fruit_nam = strstri(pl_fruit, " PARTIKEL_OF ");
+    char *fruit_nam = strstri(pl_fruit, " PARTIKEL_OF "); /* EN const char *fruit_nam = strstri(pl_fruit, " of "); */
 
     if (fruit_nam)
 	fruit_nam += 4;		/* skip past " of " */
     else
 	fruit_nam = pl_fruit;	/* use it as is */
 
+#ifdef GERMAN
+    fruit_nam[0] = toupper(fruit_nam[0]);
+#endif
     Sprintf(buf, "%s%s", makesingular(fruit_nam), juice ? "-NOUN_SAFT" : ""); /* EN Sprintf(buf, "%s%s", makesingular(fruit_nam), juice ? " juice" : ""); */
     return buf;
 }
