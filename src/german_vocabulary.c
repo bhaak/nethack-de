@@ -1019,8 +1019,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schwarzdrachen-Schuppe", "NOUN_BLACK_DRAGON_SCALES", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schwarzdrachen-Schuppen", "NOUN_BLACK_DRAGON_SCALESs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Gründrachen-Schuppe", "NOUN_BLUE_DRAGON_SCALES", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Gründrachen-Schuppen", "NOUN_BLUE_DRAGON_SCALESs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Blaudrachen-Schuppe", "NOUN_BLUE_DRAGON_SCALES", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blaudrachen-Schuppen", "NOUN_BLUE_DRAGON_SCALESs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Gründrachen-Schuppe", "NOUN_GREEN_DRAGON_SCALES", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Gründrachen-Schuppen", "NOUN_GREEN_DRAGON_SCALESs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -1359,10 +1359,40 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schürze", "NOUN_APRON", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schürzen", "NOUN_APRONs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Lumpenumhanges", "NOUN_TATTERED_CAPE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lumpenumhang", "NOUN_TATTERED_CAPE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lumpenumhänge", "NOUN_TATTERED_CAPEs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Lumpenumhängen", "NOUN_TATTERED_CAPEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Opernumhanges", "NOUN_OPERA_CLOAK", "s", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Opernumhang", "NOUN_OPERA_CLOAK", "s", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Opernumhänge", "NOUN_OPERA_CLOAKs", "s", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Opernumhängen", "NOUN_OPERA_CLOAKs", "s", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Zierumhanges", "NOUN_ORNAMENTAL_COPE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zierumhang", "NOUN_ORNAMENTAL_COPE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zierumhänge", "NOUN_ORNAMENTAL_COPEs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Zierumhängen", "NOUN_ORNAMENTAL_COPEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"blau-grünen Schildes", "NOUN_BLUE_AND_GREEN_SHIELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"blau-grüne Schild", "NOUN_BLUE_AND_GREEN_SHIELD", "", nominativ, maskulin, n_singular, bestimmter},
+  {"blau-grüner Schild", "NOUN_BLUE_AND_GREEN_SHIELD", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"blau-grünen Schild", "NOUN_BLUE_AND_GREEN_SHIELD", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"blau-grünem Schild", "NOUN_BLUE_AND_GREEN_SHIELD", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"blau-grünen Schilden", "NOUN_BLUE_AND_GREEN_SHIELDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"blau-grünen Schilde", "NOUN_BLUE_AND_GREEN_SHIELDs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"blau-grüne Schilde", "NOUN_BLUE_AND_GREEN_SHIELDs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"blau-grüner Schilde", "NOUN_BLUE_AND_GREEN_SHIELDs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
+  {"Weißhandschildes", "NOUN_WHITE_HANDED_SHIELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Weißhandschild", "NOUN_WHITE_HANDED_SHIELD", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Weißhandschilde", "NOUN_WHITE_HANDED_SHIELDs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Weißhandschilden", "NOUN_WHITE_HANDED_SHIELDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Rotaugenschildes", "NOUN_RED_EYED_SHIELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rotaugenschild", "NOUN_RED_EYED_SHIELD", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rotaugenschilde", "NOUN_RED_EYED_SHIELDs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Rotaugenschilden", "NOUN_RED_EYED_SHIELDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"polierten Silberschildes", "NOUN_POLISHED_SILVER_SHIELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"polierte Silberschild", "NOUN_POLISHED_SILVER_SHIELD", "", nominativ, maskulin, n_singular, bestimmter},
@@ -1478,6 +1508,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Nichts", "NOUN_WAND_NOTHING", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Kraftstoßes", "NOUN_WAND_STRIKING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kraftstoß", "NOUN_WAND_STRIKING", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kraftstöße", "NOUN_WAND_STRIKINGs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Kraftstößen", "NOUN_WAND_STRIKINGs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Unsichtbarkeit", "NOUN_WAND_MAKE_INVISIBLE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Unsichtbarkeiten", "NOUN_WAND_MAKE_INVISIBLEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -1572,6 +1607,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Schleichens", "NOUN_RING_STEALTH", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schleichen", "NOUN_RING_STEALTH", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Fertigkeitenerhaltung", "NOUN_RING_SUSTAIN_ABILITY", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Fertigkeitenerhaltung", "NOUN_RING_SUSTAIN_ABILITYs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Fertigkeitenerhaltungn", "NOUN_RING_SUSTAIN_ABILITYs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Levitation", "NOUN_RING_LEVITATION", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Levitationen", "NOUN_RING_LEVITATIONs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -2715,6 +2754,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Fertigkeitsgewinne", "NOUN_POT_GAIN_ABILITYs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Fertigkeitsgewinnen", "NOUN_POT_GAIN_ABILITYs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Wiederherstellung", "NOUN_POT_RESTORE_ABILITY", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wiederherstellungen", "NOUN_POT_RESTORE_ABILITYs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Verwirrung", "NOUN_POT_CONFUSION", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Verwirrungen", "NOUN_POT_CONFUSIONs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -2755,6 +2797,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Erleuchtung", "NOUN_POT_ENLIGHTENMENT", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Erleuchtungen", "NOUN_POT_ENLIGHTENMENTs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Kraftgewinns", "NOUN_POT_GAIN_ENERGY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kraftgewinn", "NOUN_POT_GAIN_ENERGY", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kraftgewinne", "NOUN_POT_GAIN_ENERGYs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Kraftgewinnen", "NOUN_POT_GAIN_ENERGYs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Schlafes", "NOUN_POT_SLEEPING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schlaf", "NOUN_POT_SLEEPING", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -3422,12 +3469,15 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   /* Scrolls, identified */
 
+  {"Rüstungszaubers", "NOUN_SCR_ENCHANT_ARMOR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rüstungszauber", "NOUN_SCR_ENCHANT_ARMOR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Rüstungszerstörung", "NOUN_SCR_DESTROY_ARMOR", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Monsterverwirrung", "NOUN_SCR_CONFUSE_MONSTER", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Monsterverwirrungen", "NOUN_SCR_CONFUSE_MONSTERs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Fluchbannung", "NOUN_SCR_REMOVE_CURSE", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-
-  {"Entfluchung", "NOUN_SCR_REMOVE_CURSE", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Monsterbeschwörung", "NOUN_SCR_CREATE_MONSTER", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -6908,6 +6958,16 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Vlad dem Pfähler", "NOUN_VLAD_THE_IMPALER", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Vlad den Pfähler", "NOUN_VLAD_THE_IMPALER", "", akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grabunholdes", "NOUN_BARROW_WIGHT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grabunhold", "NOUN_BARROW_WIGHT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grabunholde", "NOUN_BARROW_WIGHTs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Grabunholden", "NOUN_BARROW_WIGHTs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Todesalbs", "NOUN_WRAITH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Todesalb", "NOUN_WRAITH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Todesalbe", "NOUN_WRAITHs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Todesalben", "NOUN_WRAITHs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Nazgûl", "NOUN_NAZGUL", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Nazgûl", "NOUN_NAZGULs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
