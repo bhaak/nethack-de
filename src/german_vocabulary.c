@@ -1302,6 +1302,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Eisenkappe", "NOUN_IRON_SKULL_CAP", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Eisenkappen", "NOUN_IRON_SKULL_CAPs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Grubenhelmes", "NOUN_HARD_HAT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grubenhelm", "NOUN_HARD_HAT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grubenhelme", "NOUN_HARD_HATs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Grubenhelmen", "NOUN_HARD_HATs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Schlapphutes", "NOUN_SCHLAPPHUT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schlapphut", "NOUN_SCHLAPPHUT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schlapphüte", "NOUN_SCHLAPPHUTs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -2397,6 +2402,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Kristallkugel", "NOUN_CRYSTAL_BALL", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kristallkugeln", "NOUN_CRYSTAL_BALLs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Augenglases", "NOUN_LENSES", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Augenglas", "NOUN_LENSES", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Augengläser", "NOUN_LENSESs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Augengläsern", "NOUN_LENSESs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Kontaktlinse", "NOUN_LENSES", "en", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kontaktlinsen", "NOUN_LENSESs", "en", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -2549,6 +2559,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Kandelaber der Anrufung", "NOUN_CANDELABRUM_OF_INVOCATION", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kandelaber der Anrufung", "NOUN_CANDELABRUM_OF_INVOCATIONs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Kandelabern der Anrufung", "NOUN_CANDELABRUM_OF_INVOCATIONs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Glöckchens der Öffnung", "NOUN_BELL_OF_OPENING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Glöckchen der Öffnung", "NOUN_BELL_OF_OPENING", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Glöckchen der Öffnung", "NOUN_BELL_OF_OPENINGs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
 
   /* Tools, unidentified */
@@ -2795,6 +2809,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"vollständige Heilungen", "NOUN_POT_FULL_HEALINGs", "", nominativ|akkusativ, feminin, n_plural, grundform|ohne},
   {"vollständiger Heilungen", "NOUN_POT_FULL_HEALINGs", "", genitiv, feminin, n_plural, grundform|ohne},
 
+  {"Aufstiegs", "NOUN_POT_GAIN_LEVEL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Aufstieg", "NOUN_POT_GAIN_LEVEL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Aufstiege", "NOUN_POT_GAIN_LEVELs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Aufstiegen", "NOUN_POT_GAIN_LEVELs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Erleuchtung", "NOUN_POT_ENLIGHTENMENT", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Erleuchtungen", "NOUN_POT_ENLIGHTENMENTs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -2819,6 +2838,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Fusels", "NOUN_POT_BOOZE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fusel", "NOUN_POT_BOOZE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Übelkeit", "NOUN_POT_SICKNESS", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Übelkeiten", "NOUN_POT_SICKNESSs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Fruchtsaftes", "NOUN_POT_FRUIT_JUICE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fruchtsaft", "NOUN_POT_FRUIT_JUICE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -3477,7 +3499,13 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Monsterverwirrung", "NOUN_SCR_CONFUSE_MONSTER", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Monsterverwirrungen", "NOUN_SCR_CONFUSE_MONSTERs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Monsterschrecks", "NOUN_SCR_SCARE_MONSTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Monsterschreck", "NOUN_SCR_SCARE_MONSTER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Fluchbannung", "NOUN_SCR_REMOVE_CURSE", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Waffenzaubers", "NOUN_SCR_ENCHANT_WEAPON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Waffenzauber", "NOUN_SCR_ENCHANT_WEAPON", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Monsterbeschwörung", "NOUN_SCR_CREATE_MONSTER", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -3512,6 +3540,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Erde", "NOUN_SCR_EARTH", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Bestrafung", "NOUN_SCR_PUNISHMENT", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Aufladung", "NOUN_SCR_CHARGING", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Aufladungen", "NOUN_SCR_CHARGINGs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Gaswolke", "NOUN_SCR_STINKING_CLOUD", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
 
   /* Scrolls, unidentified */
@@ -6976,6 +7009,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Xorn", "NOUN_XORN", "en", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Xorn", "NOUN_XORNs", "en", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Äffchens", "NOUN_MONKEY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Äffchen", "NOUN_MONKEY", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Äffchen", "NOUN_MONKEYs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Menschenaffe", "NOUN_APE", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Menschenaffen", "NOUN_APE", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Menschenaffen", "NOUN_APEs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -6987,6 +7024,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Yetis", "NOUN_YETI", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Yeti", "NOUN_YETI", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Yetis", "NOUN_YETIs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Blutaffe", "NOUN_CARNIVOROUS_APE", "n", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blutaffen", "NOUN_CARNIVOROUS_APE", "n", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blutaffen", "NOUN_CARNIVOROUS_APEs", "n", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Sasquatch", "NOUN_SASQUATCH", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Sasquatches", "NOUN_SASQUATCHs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},

@@ -1834,7 +1834,7 @@ def ausgabe_nouns
     "/* Armor, unidentified */",
     dekliniere_substantiv("NOUN_LEATHER_HAT", "Lederhut", "es", "Lederhüt", "e", "maskulin"),
     dekliniere_substantiv("NOUN_IRON_SKULL_CAP", "Eisenkappe", "", "Eisenkappe", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_HARD_HAT"
+    dekliniere_substantiv("NOUN_HARD_HAT", "Grubenhelm", "es", "Grubenhelm", "e", "maskulin"), # woertlich: Schutzhelm # Grubenhelm js
     dekliniere_substantiv("NOUN_SCHLAPPHUT", "Schlapphut", "es", "Schlapphüt", "e", "maskulin"),
     dekliniere_substantiv("NOUN_CONICAL_HAT", "Zipfelmütze", "", "Zipfelmütze", "en", "feminin"),
     "/* Die folgenden vier Helme muessen nur verschieden benannt sein. Der Visierhelm muss der einzige sein, der eine Visier hat, da der gegen Blendangriffe schuetzt. */",
@@ -2067,6 +2067,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_EXPENSIVE_CAMERA", "Photoapparat", "es", "Photoapparat", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_MIRROR","Spiegel","","Spiegel","","maskulin"),
     dekliniere_substantiv("NOUN_CRYSTAL_BALL", "Kristallkugel", "", "Kristallkugel", "en", "feminin"),
+    dekliniere_substantiv("NOUN_LENSES", "Augenglas", "es", "Augengläs", "er", "neutrum", ""),
     dekliniere_substantiv("NOUN_LENSES", "Kontaktlinse", "", "Kontaktlinse", "en", "feminin", "en"),
     dekliniere_substantiv("NOUN_BLINDFOLD", "Augenbinde",   "",   "Augenbinde",   "en", "feminin"),
     dekliniere_substantiv("NOUN_TOWEL", "Handtuch", "es", "Handtüch", "er", "neutrum"),
@@ -2107,7 +2108,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_UNICORN_HORN", "Horn", "es", "Hörn", "er", "neutrum","","eines Einhornes"),
     dekliniere_substantiv("NOUN_UNICORN_HORN", "Horn", "es", "Hörn", "er", "neutrum","","eines Einhorns"),
     dekliniere_substantiv("NOUN_CANDELABRUM_OF_INVOCATION", "Kandelaber", "s", "Kandelaber", "", "maskulin","","der Anrufung"),
-    #dekliniere_substantiv("NOUN_BELL_OF_OPENING", 
+    dekliniere_substantiv("NOUN_BELL_OF_OPENING", "Glöckchen", "s", "Glöckchen", "", "neutrum", "", "der Öffnung"),
     "", 
     "/* Tools, unidentified */",
     dekliniere_substantiv("NOUN_BAG","Beutel","s","Beutel","","maskulin"),
@@ -2179,7 +2180,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
     dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständig", "Heilung", "", "Heilung", "en", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_POT_GAIN_LEVEL", "Aufstieg", "s", "Aufstieg", "e", "maskulin"), # Stufenaufstieg, Aufstieg js
+    dekliniere_substantiv("NOUN_POT_GAIN_LEVEL", "Aufstieg", "s", "Aufstieg", "e", "maskulin"), # Stufenaufstieg, Aufstieg js
     dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"), # Erleuchtung, Klarheit?
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION" # Monstererspüren, # Monsterentdecken, Monsterhellsicht Monstergespuer js
     #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"  # Objekterspürung, Objekterspürens
@@ -2190,7 +2191,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_POT_BOOZE", "Schnaps", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_POT_BOOZE", "Schnapps", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_POT_BOOZE", "Fusel", "s", "", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_POT_SICKNESS", "Übelkeit", "", "Übelkeit", "en", "feminin"), # Übelkeit ?
+    dekliniere_substantiv("NOUN_POT_SICKNESS", "Übelkeit", "", "Übelkeit", "en", "feminin"), # Übelkeit ?
     dekliniere_substantiv("NOUN_POT_FRUIT_JUICE", "Fruchtsaft", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_POT_ACID", "Säure", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_POT_OIL", "Öl", "es", "", "e", "neutrum"), # Öl, Brandöl ?
@@ -2231,10 +2232,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCR_ENCHANT_ARMOR", "Rüstungszauber", "s", "", "en", "maskulin"), # Schriftrolle der verzauberten Rüstung?, Rüstungsverzauberung, Rüstungszauber
     dekliniere_substantiv("NOUN_SCR_DESTROY_ARMOR", "Rüstungszerstörung", "", "", "en", "feminin"), # Schriftrolle der zerstörten Rüstung?, beschädigten Rüstung? # js
     dekliniere_substantiv("NOUN_SCR_CONFUSE_MONSTER", "Monsterverwirrung", "", "Monsterverwirrung", "en", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER" # Schriftrolle der Monsterfurcht, Monsterschreck(en), Monsterpanik
+    dekliniere_substantiv("NOUN_SCR_SCARE_MONSTER", "Monsterschreck", "s", "", "en", "maskulin"), # Schriftrolle der Monsterfurcht, Monsterschreck(en), Monsterpanik
     dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE", "Fluchbannung", "", "", "en", "feminin", "s"), # Schriftrolle des gebannten Fluches, des Fluchbannens, der Fluchbannung, Fluchbefreiung, Entfluchung,  netzhack: Entwuenschung
-    #dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE", "Entfluchung", "", "", "en", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON"  # Schriftrolle der verzauberten Waffe?, Waffenverzauberung, Waffenzauber
+    # dekliniere_substantiv("NOUN_SCR_REMOVE_CURSE", "Entfluchung", "", "", "en", "feminin", "s"),
+    dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON", "Waffenzauber", "s", "", "en", "maskulin"),  # Schriftrolle der verzauberten Waffe?, Waffenverzauberung, Waffenzauber
     dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER", "Monsterbeschwörung", "", "", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SCR_TAMING", "Zähmung", "", "Zähmung", "en", "feminin", "s"), # Zähmens, Zähmung
     dekliniere_substantiv("NOUN_SCR_GENOCIDE", "Genozid", "es", "", "e", "maskulin"), # nicht Ausrottung, da 'extinct' anderweitig Verwendung findet
@@ -2248,8 +2249,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCR_FIRE", "Feuer", "s", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_SCR_EARTH", "Erde", "", "", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_SCR_PUNISHMENT", "Bestrafung", "", "", "en", "feminin", "s"),
-    #dekliniere_substantiv("NOUN_SCR_CHARGING", "Aufladung", "", "Aufladung", "en", "feminin"), # Laden, Ladungs?? # Aufladung js
-    #dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD" # Gaswolke? netzhack: Gestank
+    dekliniere_substantiv("NOUN_SCR_CHARGING", "Aufladung", "", "Aufladung", "en", "feminin"), # Laden, Ladungs?? # Aufladung js
+    dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD", "Gaswolke", "", "", "en", "feminin"), # Gaswolke? netzhack: Gestank
     #dekliniere_substantiv("NOUN_SCR_MAIL"
     #dekliniere_substantiv("NOUN_SCR_BLANK_PAPER"
     "",
@@ -2751,11 +2752,11 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WRAITH", "Todesalb", "s", "Todesalb", "e", "maskulin"), # Todesalb, Schreckensalb
     dekliniere_substantiv("NOUN_NAZGUL","Nazgûl","","Nazgûl","","maskulin"),
     dekliniere_substantiv("NOUN_XORN","Xorn","","Xorn","","maskulin","en"),
-    #dekliniere_substantiv("NOUN_MONKEY", "Affe", "en", "Affe", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_MONKEY", "Äffchen", "s", "Äffchen", "", "maskulin"),
     dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"), # einer Menschenaffen stattdessen? Gibbon, Orang-Utan, Gorilla, Schimpanse. Gorilla scheint passend (ist auch der Vetegarischste der Menschenaffen)
     dekliniere_substantiv("NOUN_OWLBEAR", "Eulenbär", "en", "Eulenbär", "en", "maskulin"), # Netzhack: Uhlenbär
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
-    #dekliniere_substantiv("NOUN_CARNIVOROUS_APE" # Blutaffe, Reißzahngorilla js
+    dekliniere_substantiv("NOUN_CARNIVOROUS_APE", "Blutaffe", "en", "Blutaffe", "en", "maskulin", "n"), # Blutaffe, Reißzahngorilla js
     # dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatches", "fremder", "maskulin"),
     dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE", "Koboldszombie", "s", "Koboldszombie", "s", "maskulin"),
