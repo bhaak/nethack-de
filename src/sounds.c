@@ -49,7 +49,7 @@ dosounds()
     if (level.flags.nfountains && !rn2(400)) {
 	static const char * const fountain_msg[4] = {
 		"plätscherndes Wasser.", /* EN "bubbling water.", */
-		"water falling on coins.", /* EN "water falling on coins.", */ // TODO DE
+		"Wasser auf Münzen prasseln.", /* EN "water falling on coins.", */
 		"eine Najade im Wasser planschen.", /* EN "the splashing of a naiad.", */
 		"einen Luftbefeuchter!", /* EN "a soda fountain!", */
 	};
@@ -67,8 +67,8 @@ dosounds()
 #endif
     if (level.flags.has_court && !rn2(200)) {
 	static const char * const throne_msg[4] = {
-		"the tones of courtly conversation.", /* EN "the tones of courtly conversation.", */ // TODO DE
-		"a sceptre pounded in judgment.", /* EN "a sceptre pounded in judgment.", */ // TODO DE
+		"das Geräusch höfischer Konversation.", /* EN "the tones of courtly conversation.", */
+		"das urteilsverkündende Pochen eines Szepters.", /* EN "a sceptre pounded in judgment.", */
 		"Jemand ruft \"Kopf ab!\"", /* EN "Someone shouts \"Off with %s head!\"", */
 		"Königin Berúthiels Katzen!", /* EN "Queen Beruthiel's cats!", */
 	};
@@ -123,7 +123,7 @@ dosounds()
 		    {
 			if (gold_in_vault)
 			    You_hear(!hallu ? "jemanden Geld zählen." : /* EN You_hear(!hallu ? "someone counting money." : */
-				"the quarterback calling the play."); /* EN "the quarterback calling the play."); */ // TODO DE
+				"jemanden in Geld schwimmen."); /* EN "the quarterback calling the play."); */
 			else
 			    You_hear("jemanden suchen."); /* EN You_hear("someone searching."); */
 			break;
@@ -134,7 +134,7 @@ dosounds()
 		    You_hear("die Schritte einer Wache auf Patrouille."); /* EN You_hear("the footsteps of a guard on patrol."); */ 
 		    break;
 		case 2:
-		    You_hear("Mac Moneysac!"); /* EN You_hear("Ebenezer Scrooge!"); */ /* gibt es eine bessere Verkörperung eines unsympatischen Geldsacks? */
+		    You_hear("Mac Moneysac!"); /* EN You_hear("Ebenezer Scrooge!"); */ /* gibt es eine bessere Verkörperung eines unsympathischen Geldsacks? */
 		    break;
 	    }
 	return;
@@ -493,7 +493,7 @@ register struct monst *mtmp;
 		} else if (mtmp->mpeaceful) {
 			if (kindred && isnight) {
 				Sprintf(verbuf, "Good feeding %s!", /* EN Sprintf(verbuf, "Good feeding %s!", */ // TODO DE
-						flags.female ? "sister" : "brother"); /* EN flags.female ? "sister" : "brother"); */ // TODO DE
+						flags.female ? "Schwester" : "Bruder"); /* EN flags.female ? "sister" : "brother"); */
 					verbl_msg = verbuf;
 				} else if (nightchild && isnight) {
 					Sprintf(verbuf,
@@ -707,11 +707,11 @@ register struct monst *mtmp;
 	    else if (likes_magic(ptr))
 		pline_msg = "VERB_SPRECHEN über das Zauberhandwerk."; /* EN pline_msg = "talks about spellcraft."; */
 	    else if (ptr->mlet == S_CENTAUR)
-		pline_msg = "discusses hunting."; /* EN pline_msg = "discusses hunting."; */ // TODO DE
+		pline_msg = "fachsimpelt über die Jagd."; /* EN pline_msg = "discusses hunting."; */
 	    else switch (monsndx(ptr)) {
 		case PM_HOBBIT:
 		    pline_msg = (mtmp->mhpmax - mtmp->mhp >= 10) ?
-				"complains about unpleasant dungeon conditions." /* EN "complains about unpleasant dungeon conditions." */ // TODO DE
+				"VERB_BEKLAGEN sich über die unangenehmen Bedingungen im Dungeon." /* EN "complains about unpleasant dungeon conditions." */
 				: "VERB_FRAGEN OBJECT PRONOMEN_PERSONAL nach dem Einen Ring."; /* EN : "asks you about the One Ring."; */
 		    break;
 		case PM_ARCHEOLOGIST:
@@ -811,7 +811,7 @@ register struct monst *mtmp;
 		},		  * const soldier_pax_msg[3] = {
 		    "Mann, was für 'ne miese Bezahlung wir kriegen!", /* EN "What lousy pay we're getting here!", */
 		    "Den Frass würden nichtmal Orks essen!", /* EN "The food's not fit for Orcs!", */
-				"My feet hurt, I've been on them all day!", /* EN "My feet hurt, I've been on them all day!", */ // TODO DE
+		    "Meine Füße schmerzen, ich bin schon den ganzen Tag auf den Beinen!", /* EN "My feet hurt, I've been on them all day!", */
 		};
 		verbl_msg = mtmp->mpeaceful ? soldier_pax_msg[rn2(3)]
 					    : soldier_foe_msg[rn2(3)];
