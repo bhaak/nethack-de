@@ -397,7 +397,7 @@ giveback:
 	else
 	    You_hear("den Ring die Rohre runterpoltern."); /* EN You_hear("the ring bouncing down the drainpipe."); */
 	if (!rn2(20)) {
-		pline_The("sink backs up, leaving %s.", doname(obj)); /* EN pline_The("sink backs up, leaving %s.", doname(obj)); */ // TODO DE
+		pline("In der Spüle rumort es und %s erscheint wieder im Ausguss.", doname(obj)); /* EN pline_The("sink backs up, leaving %s.", doname(obj)); */
 		obj->in_use = FALSE;
 		dropx(obj);
 	} else
@@ -809,8 +809,8 @@ dodown()
 		return(1);
 	}
 	if (on_level(&valley_level, &u.uz) && !u.uevent.gehennom_entered) {
-		You("VERB_STEHEN vor den Toren Gehennoms."); /* EN You("are standing at the gate to Gehennom."); */ // TODO DE
-		pline("Unspeakable cruelty and harm lurk down there."); /* EN pline("Unspeakable cruelty and harm lurk down there."); */ // TODO DE
+		You("VERB_STEHEN vor den Toren Gehennoms."); /* EN You("are standing at the gate to Gehennom."); */
+		pline("Unaussprechliche Gefahren und Unheil lauern dort unten."); /* EN pline("Unspeakable cruelty and harm lurk down there."); */
 		if (yn("Are you sure you want to enter?") != 'y') /* EN if (yn("Are you sure you want to enter?") != 'y') */ // TODO DE
 			return(0);
 		else pline("So sei es."); /* EN else pline("So be it."); */
@@ -864,7 +864,7 @@ doup()
 	}
 	if(near_capacity() > SLT_ENCUMBER) {
 		/* No levitation check; inv_weight() already allows for it */
-		Your("load is too heavy to climb the %s.", /* EN Your("load is too heavy to climb the %s.", */ // TODO DE
+		Your("NOUN_LAST VERB_SEIN zu schwer um damit OBJECT ARTIKEL_BESTIMMTER %s hinaufzusteigen.", /* EN Your("load is too heavy to climb the %s.", */
 			levl[u.ux][u.uy].typ == STAIRS ? "NOUN_STAIRS" : "NOUN_LADDER"); /* EN levl[u.ux][u.uy].typ == STAIRS ? "stairs" : "ladder"); */
 		return(1);
 	}
@@ -1183,7 +1183,7 @@ boolean at_stairs, falling, portal;
 			dismount_steed(DISMOUNT_FELL);
 		    else
 #endif
-			losehp(rnd(3), "falling downstairs", KILLED_BY); /* EN losehp(rnd(3), "falling downstairs", KILLED_BY); */ // TODO DE
+			losehp(rnd(3), "NOUN_TREPPENSTURZ", KILLED_BY_AN); /* EN losehp(rnd(3), "falling downstairs", KILLED_BY); */
 		    selftouch("Im Fallen VERB_TOUCH PRONOMEN_PERSONAL"); /* EN selftouch("Falling, you"); */
 		} else if (u.dz && at_ladder)
 		    You("VERB_KLETTERN OBJECT ARTIKEL_BESTIMMTER NOUN_LADDER hinunter."); /* EN You("climb down the ladder."); */
@@ -1295,15 +1295,15 @@ boolean at_stairs, falling, portal;
 
 	if (familiar) {
 	    static const char * const fam_msgs[4] = {
-		"You have a sense of deja vu.", /* EN "You have a sense of deja vu.", */ // TODO DE
-		"You feel like you've been here before.", /* EN "You feel like you've been here before.", */ // TODO DE
+		"SUBJECT PRONOMEN_PERSONAL VERB_HABEN gerade ein Déjà-vu.", /* EN "You have a sense of deja vu.", */
+		"SUBJECT PRONOMEN_PERSONAL VERB_HABEN das Gefühl, hier schonmal gewesen zu sein.", /* EN "You feel like you've been here before.", */
 		"Dieser Ort %s vertraut ...", /* EN "This place %s familiar...", */
 		0	/* no message */
 	    };
 	    static const char * const halu_fam_msgs[4] = {
 		"Verschärft!  Alles %s anders.", /* EN "Whoa!  Everything %s different.", */
 		"You are surrounded by twisty little passages, all alike.", /* EN "You are surrounded by twisty little passages, all alike.", */ // TODO DE
-		"Gee, this %s like uncle Conan's place...", /* EN "Gee, this %s like uncle Conan's place...", */ // TODO DE
+		"Hey, das ist ja wie bei Onkel Conan ...", /* EN "Gee, this %s like uncle Conan's place...", */
 		0	/* no message */
 	    };
 	    const char *mesg;
@@ -1542,7 +1542,7 @@ struct obj *corpse;
 			pline("Startled, %s drops %s as it revives!", /* EN pline("Startled, %s drops %s as it revives!", */ // TODO DE
 			      mon_nam(mcarry), an(cname));
 		    else
-			pline("%s suddenly appears!", chewed ?  /* EN pline("%s suddenly appears!", chewed ? */ // TODO DE
+			pline("SUBJECT %s taucht plötzlich auf!", chewed ?  /* EN pline("%s suddenly appears!", chewed ? */
 			      Adjmonnam(mtmp, "ADJEKTIV_ANGEKNABBERT") : Monnam(mtmp)); /* EN Adjmonnam(mtmp, "bite-covered") : Monnam(mtmp)); */
 		}
 		break;
@@ -1564,7 +1564,7 @@ struct obj *corpse;
 		            cansee(mtmp->mx, mtmp->my)) {
 		        char sackname[BUFSZ];
 		        Strcpy(sackname, an(xname(container)));
-			pline("%s escapes from %s!", Amonnam(mtmp), sackname); /* EN pline("%s escapes from %s!", Amonnam(mtmp), sackname); */ // TODO DE
+			pline("SUBJECT %s ent-VERB_STEIGEN OBJECT KASUS_DATIV %s!", Amonnam(mtmp), sackname); /* EN pline("%s escapes from %s!", Amonnam(mtmp), sackname); */
 		}
 		break;
 	    default:

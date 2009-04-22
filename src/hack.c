@@ -894,7 +894,7 @@ domove()
 		You("don't have enough stamina to move."); /* EN You("don't have enough stamina to move."); */ // TODO DE
 		exercise(A_CON, FALSE);
 	    } else
-		You("VERB_BBRECHEN OBJECT KASUS_DATIV unter PRONOMEN_POSSESSIV NOUN_LAST zusammen."); /* EN You("collapse under your load."); */
+		You("VERB_BRECHEN OBJECT KASUS_DATIV unter PRONOMEN_POSSESSIV NOUN_LAST zusammen."); /* EN You("collapse under your load."); */
 	    nomul(0);
 	    return;
 	}
