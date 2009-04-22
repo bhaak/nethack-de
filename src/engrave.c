@@ -27,7 +27,7 @@ static const char *random_mesg[] = {
 	"Willkommen", /* EN "Well Come", */ /* Prisoner */
 	"Wir entschuldigen uns für die Unannehmlichkeiten.", /* EN "We apologize for the inconvenience.", */ /* So Long... */
 	"See you next Wednesday", /* EN "See you next Wednesday", */ /* Thriller */ // TODO DE
-	"notary sojak", /* EN "notary sojak", */ /* Smokey Stover */ // TODO DE
+	"Notary Sojak", /* EN "notary sojak", */ /* Smokey Stover */
 	"For a good time call 8?7-5309", /* EN "For a good time call 8?7-5309", */ // TODO DE
 	"Tiere bitte nicht füttern.", /* EN "Please don't feed the animals.", */ /* Various zoos around the world */
 	"Ein Neger mit Gazelle zagt im Regen nie.", /* A palindrome */ /* EN "Madam, in Eden, I'm Adam.", */
@@ -1039,8 +1039,8 @@ doengrave()
 	if (len == 0 || index(ebuf, '\033')) {
 	    if (zapwand) {
 		if (!Blind)
-		    pline("%s, then %s.", /* EN pline("%s, then %s.", */ // TODO DE
-			  Tobjnam(otmp, "glow"), otense(otmp, "fade")); /* EN Tobjnam(otmp, "glow"), otense(otmp, "fade")); */ // TODO DE
+		    pline("SUBJECT %s und %s wieder.", /* EN pline("%s, then %s.", */
+			  Tobjnam(otmp, "VERB_ERSTRAHLEN"), otense(otmp, "VERB_ERLOESCHEN")); /* EN Tobjnam(otmp, "glow"), otense(otmp, "fade")); */
 		return(1);
 	    } else {
 		pline(Never_mind);
@@ -1134,11 +1134,11 @@ doengrave()
 			if (len > 1) otmp->spe -= len >> 1;
 			else otmp->spe -= 1; /* Prevent infinite grafitti */
 		}
-		if (multi) nomovemsg = "You finish defacing the dungeon."; /* EN if (multi) nomovemsg = "You finish defacing the dungeon."; */ // TODO DE
+		if (multi) nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_SEIN mit der Verschandelung des Dungeons fertig."; /* EN if (multi) nomovemsg = "You finish defacing the dungeon."; */
 		break;
 	    case ENGR_BLOOD:
 		multi = -(len/10);
-		if (multi) nomovemsg = "You finish scrawling."; /* EN if (multi) nomovemsg = "You finish scrawling."; */ // TODO DE
+		if (multi) nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_SEIN mit OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_KRAKELEI fertig."; /* EN if (multi) nomovemsg = "You finish scrawling."; */
 		break;
 	}
 
@@ -1277,18 +1277,18 @@ static const char *epitaphs[] = {
 	"Bitte grabt mich nicht aus. Mir geht's fantastisch hier unten. -- Der Bewohner", /* EN "Please don't dig me up. I'm perfectly happy down here. -- Resident", */
 	"Lieber Postbote, bitte Nachsenden an: Gehennom, Asmodeus' Festung, fünfter Lemure von links", /* EN "Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, fifth lemure on the left", */
 	"Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go", /* EN "Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go", */ // TODO DE
-	"Be careful, or this could happen to you!", /* EN "Be careful, or this could happen to you!", */ // TODO DE
-	"Soon you'll join this fellow in hell! -- the Wizard of Yendor", /* EN "Soon you'll join this fellow in hell! -- the Wizard of Yendor", */ // TODO DE
+	"Pass auf oder Dir passiert dasselbe!", /* EN "Be careful, or this could happen to you!", */
+	"Bald wirst Du diesem Kameraden in der Hölle Gesellschaft leisten! -- der Zauberer von Yendor", /* EN "Soon you'll join this fellow in hell! -- the Wizard of Yendor", */
 	"Warnung! Dieses Grab enthält Giftmüll", /* EN "Caution! This grave contains toxic waste", */
 	"Sum quod eris",
-	"Here lies an Atheist, all dressed up and no place to go", /* EN "Here lies an Atheist, all dressed up and no place to go", */ // TODO DE
+	"Hier liegt ein Atheist, fertig für das Leben nach dem Tod, doch wo soll das stattfinden?", /* EN "Here lies an Atheist, all dressed up and no place to go", */
 	"Hier ruht Ezechiel, Alter 102.  Wen die Götter lieben, der stirbt jung.", /* EN "Here lies Ezekiel, age 102.  The good die young.", */ // TODO DE nicht sehr catchy
 	"Hier ruht mein Weib, Gott sei's gedankt!  Solang sie lebte, war nur Zank.  Geh, Wandrer, gehe flugs von hier; sonst steht sie auf und zankt mit Dir!", /* EN "Here lies my wife: Here let her lie! Now she's at rest and so am I.", */
 	"Here lies Johnny Yeast. Pardon me for not rising.", /* EN "Here lies Johnny Yeast. Pardon me for not rising.", */ // TODO DE
 	"He always lied while on the earth and now he's lying in it", /* EN "He always lied while on the earth and now he's lying in it", */ // TODO DE
-	"I made an ash of myself", /* EN "I made an ash of myself", */ // TODO DE
+	"Ich wollte aber eingeäschert werden!", /* EN "I made an ash of myself", */
 	"Soon ripe. Soon rotten. Soon gone. But not forgotten.", /* EN "Soon ripe. Soon rotten. Soon gone. But not forgotten.", */ // TODO DE
-	"Here lies the body of Jonathan Blake. Stepped on the gas instead of the brake.", /* EN "Here lies the body of Jonathan Blake. Stepped on the gas instead of the brake.", */ // TODO DE
+	"Hier ruht Jonathan Maas. Statt auf die Bremse trat er auf's Gas.", /* EN "Here lies the body of Jonathan Blake. Stepped on the gas instead of the brake.", */
 	"Lass mich in Ruhe!" /* EN "Go away!" */
 };
 
