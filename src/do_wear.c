@@ -66,7 +66,7 @@ off_msg(otmp)
 register struct obj *otmp;
 {
 	if(flags.verbose)
-	    You("were wearing %s.", doname(otmp)); /* EN You("were wearing %s.", doname(otmp)); */ // TODO DE
+	    You("MODIFIER_VERB_PRAETERITUM VERB_HABEN OBJECT %s an.", doname(otmp)); /* EN You("were wearing %s.", doname(otmp)); */
 }
 
 /* for items that involve no delay */
@@ -233,7 +233,7 @@ Cloak_on()
 		}
 		break;
 	case OILSKIN_CLOAK:
-		pline("%s very tightly.", Tobjnam(uarmc, "fit")); /* EN pline("%s very tightly.", Tobjnam(uarmc, "fit")); */ // TODO DE
+		pline("SUBJECT %s ganz eng.", Tobjnam(uarmc, "VERB_SITZEN")); /* EN pline("%s very tightly.", Tobjnam(uarmc, "fit")); */
 		break;
 	/* Alchemy smock gives poison _and_ acid resistance */
 	case ALCHEMY_SMOCK:
@@ -339,7 +339,7 @@ Helmet_on()
 		  ACURR(A_INT) <= (ABASE(A_INT) + ABON(A_INT) + ATEMP(A_INT)) ?
 			     "NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_STEHEN PRONOMEN_PERSONAL in einer Ecke" : "albern"); /* EN "like sitting in a corner" : "giddy"); */
 		} else {
-		    Your("NOUN_VERSTAND oszilliert/flackert kurz."); /* EN Your("mind oscillates briefly."); */ // TODO DE besser?
+		    Your("NOUN_VERSTAND flackert kurz."); /* EN Your("mind oscillates briefly."); */
 		    makeknown(HELM_OF_OPPOSITE_ALIGNMENT);
 		}
 		break;
@@ -1070,13 +1070,13 @@ dotakeoff()
 	if (!armorpieces) {
 	     /* assert( GRAY_DRAGON_SCALES > YELLOW_DRAGON_SCALE_MAIL ); */
 		if (uskin)
-			pline_The("%s merged with your skin!", /* EN pline_The("%s merged with your skin!", */ // TODO DE
+			pline("%s KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_HAUT verwachsen!", /* EN pline_The("%s merged with your skin!", */
 			      uskin->otyp >= GRAY_DRAGON_SCALES ?
-				"dragon scales are" : "dragon scale mail is"); /* EN "dragon scales are" : "dragon scale mail is");*/ // TODO DE
+				"Die Drachenschuppen sind" : "Der Drachenschuppenpanzer ist"); /* EN "dragon scales are" : "dragon scale mail is");*/
 		else
 		    pline("Not wearing any armor.%s", (iflags.cmdassist && /* EN pline("Not wearing any armor.%s", (iflags.cmdassist &&  */ // TODO DE
 				(uleft || uright || uamul || ublindf)) ?
-			  "  Use 'R' command to remove accessories." : ""); /* EN "  Use 'R' command to remove accessories." : ""); */ // TODO DE
+			  "  SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den 'R'-Befehl um Accessories auszuziehen." : ""); /* EN "  Use 'R' command to remove accessories." : ""); */
 		return 0;
 	}
 	if (armorpieces > 1)
@@ -1126,7 +1126,7 @@ doremring()
 			     uarmu ||
 #endif
 			     uarms || uarmh || uarmg || uarmf)) ?
-		      "  Use 'T' command to take off armor." : ""); /* EN "  Use 'T' command to take off armor." : "");*/ // TODO DE
+		      "  SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den 'T'-Befehl um Rüstung abzulegen." : ""); /* EN "  Use 'T' command to take off armor." : "");*/
 		return(0);
 	}
 	if (Accessories != 1) otmp = getobj(accessories, "remove"); /* EN if (Accessories != 1) otmp = getobj(accessories, "remove");*/ // TODO DE
@@ -1286,7 +1286,7 @@ boolean noisy;
 #endif
 	    )) {
 	if (noisy)
-	    You("VERB_KOENNEN das nicht tun, solange NEUER_SATZ your %s.", /* EN You("cannot do that while holding your %s.",*/ // TODO DE
+	    You("VERB_KOENNEN das nicht tun, solange NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV %s VERB_HALTEN.", /* EN You("cannot do that while holding your %s.",*/
 		is_sword(uwep) ? c_sword : c_weapon);
 	return 0;
     }

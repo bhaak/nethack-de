@@ -467,7 +467,7 @@ register struct monst *mtmp;
 	    if (u.ustuck && u.uswallow && u.ustuck == mtmp) {
 	    /* This can happen after a purple worm plucks you off a
 		flying steed while you are over water. */
-		pline("%s sinks as water rushes in and flushes you out.", /* EN pline("%s sinks as water rushes in and flushes you out.", */ // TODO DE
+		pline("SUBJECT %s versinkt, als Wasser hereinschießt und KASUS_AKKUSATIV PRONOMEN_PERSONAL hinausspült.", /* EN pline("%s sinks as water rushes in and flushes you out.", */
 			Monnam(mtmp));
 	    }
 	    mondead(mtmp);
@@ -1526,10 +1526,10 @@ boolean was_swallowed;			/* digestion */
 	    	else tmp = 0;
 		if (was_swallowed && magr) {
 		    if (magr == &youmonst) {
-			There("is an explosion in your %s!", /* EN There("is an explosion in your %s!", */ // TODO DE
+			pline("Es gibt eine Explosion KASUS_DATIV in PRONOMEN_POSSESSIV %s!", /* EN There("is an explosion in your %s!", */
 			      body_part(STOMACH));
-			Sprintf(killer_buf, "%s explosion", /* EN Sprintf(killer_buf, "%s explosion", */ // TODO DE
-				s_suffix(mdat->mname)); /* EN s_suffix(mdat->mname)); */ // TODO DE
+			Sprintf(killer_buf, "%s_EXPLOSION", /* EN Sprintf(killer_buf, "%s explosion", */
+				(mdat->mname)); /* EN s_suffix(mdat->mname)); */
 			if (Half_physical_damage) tmp = (tmp+1) / 2;
 			losehp(tmp, killer_buf, KILLED_BY_AN);
 		    } else {
@@ -1897,7 +1897,7 @@ cleanup:
 	else if (mdat->msound == MS_GUARDIAN) {	/* Bad */
 	    adjalign(-(int)(ALIGNLIM/8));
 	    if (!Hallucination) pline("Das war wahrscheinlich eine schlechte Idee..."); /* EN if (!Hallucination) pline("That was probably a bad idea..."); */
-	    else pline("Whoopsie-daisy!"); /* EN else pline("Whoopsie-daisy!"); */ // TODO DE
+	    else pline("Hoppala!"); /* EN else pline("Whoopsie-daisy!"); */
 	}else if (mtmp->ispriest) {
 		adjalign((p_coaligned(mtmp)) ? -2 : 2);
 		/* cancel divine protection for killing your priest */
