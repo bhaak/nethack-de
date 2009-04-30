@@ -1331,10 +1331,10 @@ int final;
 	else if (!u.uconduct.unvegan)
 	    you_have_X("eine streng vegane Diät befolgt"); /* EN you_have_X("followed a strict vegan diet"); */
 	else if (!u.uconduct.unvegetarian)
-	    you_are("ein Vegetarier"); /* EN you_have_been("vegetarian"); */
+	    you_are("Vegetarier"); /* EN you_have_been("vegetarian"); */
 
 	if (!u.uconduct.gnostic)
-	    you_are("ein Atheist"); /* EN you_have_been("an atheist"); */
+	    you_are("Atheist"); /* EN you_have_been("an atheist"); */
 
 	if (!u.uconduct.weaphit)
 	    you_have_never("mit einer geführten Waffe zugeschlagen"); /* EN you_have_never("hit with a wielded weapon"); */
@@ -1346,10 +1346,10 @@ int final;
 	}
 #endif
 	if (!u.uconduct.killer)
-	    you_are("ein Pazifist"); /* EN you_have_been("a pacifist"); */
+	    you_are("Pazifist"); /* EN you_have_been("a pacifist"); */
 
 	if (!u.uconduct.literate)
-	    you_are("ein Analphabet"); /* EN you_have_been("illiterate"); */
+	    you_are("Analphabet"); /* EN you_have_been("illiterate"); */
 #ifdef WIZARD
 	else if (wizard) {
 	    Sprintf(buf, "%ld-mal etwas gelesen oder eingeritzt", /* EN Sprintf(buf, "read items or engraved %ld time%s", */
