@@ -1583,8 +1583,8 @@ boolean itemize;
 
 	pay(ltmp, shkp);
 	shk_names_obj(shkp, obj, consumed ?
-			"paid for %s at a cost of %ld gold piece%s.%s" : /* EN "paid for %s at a cost of %ld gold piece%s.%s" : */ // TODO DE
-			"bought %s for %ld gold piece%s.%s", ltmp, ""); /* EN "bought %s for %ld gold piece%s.%s", ltmp, ""); */ // TODO DE
+			"VERB_HABEN OBJECT %s zu einem Preis NEUES_OBJECT OBJECT KASUS_DATIV von %ld NOUN_GOLD_PIECE%s bezahlt.%s" : /* EN "paid for %s at a cost of %ld gold piece%s.%s" : */
+			"VERB_HABEN OBJECT %s NEUES_OBJECT OBJECT für %ld NOUN_GOLD_PIECE%s gekauft.%s", ltmp, ""); /* EN "bought %s for %ld gold piece%s.%s", ltmp, ""); */
 	obj->quan = save_quan;		/* restore original count */
 	/* quan => amount just bought, save_quan => remaining unpaid count */
 	if (consumed) {
@@ -2740,7 +2740,7 @@ move_on:
 			    Monnam(shkp), short_funds ? " nur" : "", /* EN Monnam(shkp), short_funds ? " only" : "", */
 			    offer, plur(offer),
 			    (!ltmp && cltmp && only_partially_your_contents) ?
-			     " your items in" : (!ltmp && cltmp) ? " the contents of" : "", /* EN " your items in" : (!ltmp && cltmp) ? " the contents of" : "", */ // TODO DE
+			     " PRONOMEN_POSSESSIV NOUN_GEGENSTANDs NEUES_OBJECT OBJECT KASUS_DATIV in" : (!ltmp && cltmp) ? " ARTIKEL_BESTIMMTER NOUN_INHALT NEUES_OBJECT OBJECT KASUS_GENITIV" : "", /* EN " your items in" : (!ltmp && cltmp) ? " the contents of" : "", */
 			    obj->unpaid ? "ARTIKEL_BESTIMMTER" : "PRONOMEN_POSSESSIV", cxname(obj), /* EN obj->unpaid ? "the" : "your", cxname(obj), */
 			    (obj->quan == 1L &&
 			    !(!ltmp && cltmp && only_partially_your_contents)) ?
@@ -2762,7 +2762,7 @@ move_on:
 			    pay(-offer, shkp);
 			    shk_names_obj(shkp, obj, (sell_how != SELL_NORMAL) ?
 				    (!ltmp && cltmp && only_partially_your_contents) ?
-			    	    "VERB_HABEN einige Artikel  %s für %ld gold pieces%s.%s" : /* EN "sold some items inside %s for %ld gold pieces%s.%s" : */ // TODO DE
+			    	    "VERB_HABEN einige Artikel OBJECT KASUS_DATIV in %s NEUES_OBJECT OBJECT für %ld NOUN_GOLD_PIECE%s verkauft.%s" : /* EN "sold some items inside %s for %ld gold pieces%s.%s" : */
 				    "VERB_HABEN OBJECT %s NEUES_OBJECT OBJECT für %ld NOUN_GOLD_PIECE%s verkauft.%s" : /* EN "sold %s for %ld gold piece%s.%s" : */
 	       "relinquish %s and receive %ld gold piece%s in compensation.%s", /* EN "relinquish %s and receive %ld gold piece%s in compensation.%s", */ // TODO DE
 				    offer, "");
@@ -2914,11 +2914,11 @@ register xchar x, y;
 	    /* if it is the shk's pos, you hit and anger him */
 	    (shkp->mx != x || shkp->my != y)) {
 		if (mnearto(shkp, x, y, TRUE))
-		    verbalize("Out of my way, scum!"); /* EN verbalize("Out of my way, scum!"); */ // TODO DE
+		    verbalize("Aus dem Weg, du Esel!"); /* EN verbalize("Out of my way, scum!"); */
 		if (cansee(x, y)) {
-		    pline("%s nimbly%s catches %s.", /* EN pline("%s nimbly%s catches %s.", */ // TODO DE
+		    pline("SUBJECT %s %sVERB_FANGEN geschickt OBJECT %s.", /* EN pline("%s nimbly%s catches %s.", */
 			  Monnam(shkp),
-			  (x == shkp->mx && y == shkp->my) ? "" : " reaches over and", /* EN (x == shkp->mx && y == shkp->my) ? "" : " reaches over and", */ // TODO DE
+			  (x == shkp->mx && y == shkp->my) ? "" : " VERB_LEHNEN sich rüber und", /* EN (x == shkp->mx && y == shkp->my) ? "" : " reaches over and", */
 			  the(xname(obj)));
 		    if (!canspotmon(shkp))
 			map_invisible(x, y);
@@ -3389,7 +3389,7 @@ register int fall;
 		(ESHK(shkp)->billct || ESHK(shkp)->debit)) {
 	    register struct obj *obj, *obj2;
 	    if (nolimbs(shkp->data)) {
-		grabs = "knocks off"; /* EN grabs = "knocks off"; */ // TODO DE
+		grabs = "VERB_WEGSCHUBSEN"; /* EN grabs = "knocks off"; */
 #if 0
 	       /* This is what should happen, but for balance
 	        * reasons, it isn't currently.

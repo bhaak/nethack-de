@@ -2180,7 +2180,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_POT_HEALING", "Linderung", "", "", "", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_EXTRA_HEALING", "Heilung", "", "Heilung", "en", "feminin", "s"),
     dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständig", "Heilung", "", "Heilung", "en", "feminin", "s"),
-    dekliniere_substantiv("NOUN_POT_GAIN_LEVEL", "Aufstieg", "s", "Aufstieg", "e", "maskulin"), # Stufenaufstieg, Aufstieg js
+    dekliniere_substantiv("NOUN_POT_GAIN_LEVEL", "Aufstieg", "s", "Aufstieg", "e", "maskulin"), # Stufenanstieg # Stufenaufstieg, Aufstieg js
     dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"), # Erleuchtung, Klarheit?
     #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION" # Monstererspüren, # Monsterentdecken, Monsterhellsicht Monstergespuer js
     #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"  # Objekterspürung, Objekterspürens
@@ -3556,6 +3556,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GAS_SPORE_EXPLOSION","Gassporenexplosion","","Gassporenexplosion","en","feminin"),
     dekliniere_substantiv("NOUN_GAUNTLETS", "Panzerhandschuh", "es", "Panzerhandschuh", "e", "maskulin"),
     dekliniere_substantiv("NOUN_GAZE","Blick","es","Blick","e","maskulin"),
+    dekliniere_substantiv("NOUN_GEGENSTAND","Gegenstand","es","Gegenständ","e","maskulin"),
     dekliniere_substantiv("NOUN_GEHIRN","Gehirn","es","Gehirn","e","neutrum"),
     dekliniere_substantiv("NOUN_GEIST","Geist","es","Geist","e","maskulin"),
     dekliniere_substantiv("NOUN_GELD","Geld","es","Geld","er","neutrum"),
@@ -3593,6 +3594,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HORNHAUT", "Hornhaut", "", "Hornhäut", "e", "feminin"),
     dekliniere_substantiv("NOUN_HUMANOID","Humanoider","s","","","maskulin"),
     dekliniere_adjektivisches_substantiv("NOUN_INNERE","Inner","neutrum"),
+    dekliniere_substantiv("NOUN_INHALT", "Inhalt", "es", "Inhalt", "e", "maskulin"),
     dekliniere_substantiv("NOUN_IRON_BALL", "Eisenkugel", "", "Eisenkugel", "en", "feminin"),
     dekliniere_substantiv("NOUN_KAELTE","Kälte","","","","feminin"),
     dekliniere_substantiv("NOUN_KARAFFE","Karaffe","","Karaffe","en","feminin"),

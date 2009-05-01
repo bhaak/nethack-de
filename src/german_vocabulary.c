@@ -9782,6 +9782,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Blicke", "NOUN_GAZEs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Blicken", "NOUN_GAZEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Gegenstandes", "NOUN_GEGENSTAND", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gegenstand", "NOUN_GEGENSTAND", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gegenstände", "NOUN_GEGENSTANDs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Gegenständen", "NOUN_GEGENSTANDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Gehirnes", "NOUN_GEHIRN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Gehirn", "NOUN_GEHIRN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Gehirne", "NOUN_GEHIRNs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -9938,6 +9943,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Innerer", "NOUN_INNEREs", "", genitiv, neutrum, n_plural, ohne},
   {"Inneren", "NOUN_INNEREs", "", dativ, neutrum, n_plural, ohne},
   
+
+  {"Inhaltes", "NOUN_INHALT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Inhalt", "NOUN_INHALT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Inhalte", "NOUN_INHALTs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Inhalten", "NOUN_INHALTs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Eisenkugel", "NOUN_IRON_BALL", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Eisenkugeln", "NOUN_IRON_BALLs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},

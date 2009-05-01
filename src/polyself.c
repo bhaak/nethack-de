@@ -964,7 +964,7 @@ dogaze()
 		if (Invis && !perceives(mtmp->data))
 		    pline("SUBJECT %s VERB_SCHEINEN OBJECT PRONOMEN_POSSESSIV NOUN_GAZE nicht zu bemerken.", Monnam(mtmp)); /* EN pline("%s seems not to notice your gaze.", Monnam(mtmp)); */
 		else if (mtmp->minvis && !See_invisible)
-		    You_cant("see where to gaze at %s.", Monnam(mtmp)); /* EN You_cant("see where to gaze at %s.", Monnam(mtmp)); */ // TODO DE
+		    You_cant("sehen NEUER_SATZ wo SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s anstarren VERB_SOLLEN.", Monnam(mtmp)); /* EN You_cant("see where to gaze at %s.", Monnam(mtmp)); */
 		else if (mtmp->m_ap_type == M_AP_FURNITURE
 			|| mtmp->m_ap_type == M_AP_OBJECT) {
 		    looked--;
@@ -1141,7 +1141,7 @@ int part;
 		/* DE HANDED wird nicht gebraucht */
 	*humanoid_parts[] = { "NOUN_ARM", "NOUN_EYE", "NOUN_FACE", "NOUN_FINGER", /* EN *humanoid_parts[] = { "arm", "eye", "face", "finger", */
 		"NOUN_FINGERTIP", "NOUN_FOOT", "NOUN_HAND", "handed", "NOUN_HEAD", "NOUN_LEG", /* EN "fingertip", "foot", "hand", "handed", "head", "leg", */
-		"light headed", "NOUN_HALS", "NOUN_SPINE", "NOUN_ZEHE", "NOUN_HAARs", /* EN "light headed", "neck", "spine", "toe", "hair", */ // TODO DE
+		"schwindlig", "NOUN_HALS", "NOUN_SPINE", "NOUN_ZEHE", "NOUN_HAARs", /* EN "light headed", "neck", "spine", "toe", "hair", */
 		"NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "blood", "lung", "nose", "stomach"}, */
 	*jelly_parts[] = { "pseudopod", "Dunkel-NOUN_FLECK", "Vorder-NOUN_SEITE", /* EN *jelly_parts[] = { "pseudopod", "dark spot", "front", */ // TODO DE
 		"pseudopod extension", "pseudopod extremity", /* EN "pseudopod extension", "pseudopod extremity", */ // TODO DE
@@ -1151,15 +1151,15 @@ int part;
 		"surface", "NOUN_FUEHLERs", "NOUN_STOMACH" }, /* EN "surface", "sensor", "stomach" }, */
 	*animal_parts[] = { "Vorder-NOUN_LAUF", "NOUN_EYE", "NOUN_FACE", "Vorder-NOUN_PFOTE", "NOUN_KLAUE", /* EN *animal_parts[] = { "forelimb", "eye", "face", "foreclaw", "claw tip", */
 		"Hinter-NOUN_PFOTE", "Vorder-NOUN_CLAW", "clawed", "NOUN_HEAD", "Hinter-NOUN_LAUF", /* EN "rear claw", "foreclaw", "clawed", "head", "rear limb", */
-		"light headed", "NOUN_HALS", "NOUN_SPINE", "Hinter-NOUN_KLAUE", /* EN "light headed", "neck", "spine", "rear claw tip", */ // TODO DE
+		"schwindlig", "NOUN_HALS", "NOUN_SPINE", "Hinter-NOUN_KLAUE", /* EN "light headed", "neck", "spine", "rear claw tip", */
 		"NOUN_FELL", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH" }, /* EN "fur", "blood", "lung", "nose", "stomach" }, */
 	*bird_parts[] = { "NOUN_FLUEGEL", "NOUN_EYE", "NOUN_FACE", "NOUN_FLUEGEL", "NOUN_FLUEGELSPITZE", /* EN *bird_parts[] = { "wing", "eye", "face", "wing", "wing tip", */
 		"NOUN_FOOT", "NOUN_FLUEGEL", "winged", "NOUN_HEAD", "NOUN_LEG", /* EN "foot", "wing", "winged", "head", "leg", */
-		"light headed", "NOUN_HALS", "NOUN_SPINE", "NOUN_ZEHE", /* EN "light headed", "neck", "spine", "toe", */ // TODO DE
+		"schwindlig", "NOUN_HALS", "NOUN_SPINE", "NOUN_ZEHE", /* EN "light headed", "neck", "spine", "toe", */
 		"NOUN_FEATHERs", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_SCHNABEL", "NOUN_STOMACH" }, /* EN "feathers", "blood", "lung", "bill", "stomach" }, */
 	*horse_parts[] = { "Vorder-NOUN_LAUF", "NOUN_EYE", "NOUN_FACE", "Vorder-NOUN_HUF", "Huf-NOUN_SPITZE", /* EN *horse_parts[] = { "foreleg", "eye", "face", "forehoof", "hoof tip", */
 		"Hinter-NOUN_HUF", "Vorder-NOUN_KLAUE", "hooved", "NOUN_HEAD", "Hinter-NOUN_LAUF", /* EN "rear hoof", "foreclaw", "hooved", "head", "rear leg", */
-		"light headed", "NOUN_HALS", "NOUN_SPINE", "Hinterhuf-NOUN_SPITZE", /* EN "light headed", "neck", "backbone", "rear hoof tip", */ // TODO DE
+		"schwindlig", "NOUN_HALS", "NOUN_SPINE", "Hinterhuf-NOUN_SPITZE", /* EN "light headed", "neck", "backbone", "rear hoof tip", */
 		"NOUN_MAEHNE", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "mane", "blood", "lung", "nose", "stomach"}, */
 	*sphere_parts[] = { "NOUN_FORTSATZ", "NOUN_SEHNERV", "NOUN_KOERPER", "NOUN_TENTAKEL", /* EN *sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", */
 		"Tentakel-NOUN_SPITZE", "ADJEKTIV_UNTER NOUN_FORTSATZ", "NOUN_TENTAKEL", "tentacled", /* EN "tentacle tip", "lower appendage", "tentacle", "tentacled", */
@@ -1177,11 +1177,11 @@ int part;
 		"NOUN_ZENTRUM", "Rand-NOUN_KANTE", "NOUN_INNERE" }, /* EN "center", "leading edge", "interior" }, */
 	*snake_parts[] = { "Stummel-NOUN_EXTREMITAET", "NOUN_EYE", "NOUN_FACE", "ADJEKTIV_GROSS NOUN_SCHUPPE", /* EN *snake_parts[] = { "vestigial limb", "eye", "face", "large scale", */
 		"NOUN_SPITZE einer großen Schuppe", "NOUN_HINTERTEIL", "Körper-NOUN_SCHUPPE", "scale gapped", /* EN "large scale tip", "rear region", "scale gap", "scale gapped", */
-		"NOUN_HEAD", "NOUN_HINTERTEIL", "light headed", "NOUN_HALS", "NOUN_LAENGE", /* EN "head", "rear region", "light headed", "neck", "length", */ // TODO DE
+		"NOUN_HEAD", "NOUN_HINTERTEIL", "schwindlig", "NOUN_HALS", "NOUN_LAENGE", /* EN "head", "rear region", "light headed", "neck", "length", */
 		"Schwanz-NOUN_SCHUPPE", "NOUN_SCHUPPEs", "NOUN_BLUT", "NOUN_LUNGE", "ADJEKTIV_GESPALTEN NOUN_ZUNGE", "NOUN_STOMACH" }, /* EN "rear scale", "scales", "blood", "lung", "forked tongue", "stomach" }, */
 	*fish_parts[] = { "NOUN_FLOSSE", "NOUN_EYE", "NOUN_PRAEMAXILLARE", "Bauch-NOUN_FLOSSE", /* EN *fish_parts[] = { "fin", "eye", "premaxillary", "pelvic axillary", */
 		"Bauchflossen-NOUN_SPITZE", "After-NOUN_FLOSSE", "Brust-NOUN_FLOSSE", "finned", "NOUN_HEAD", "NOUN_SCHWANZSTIEL", /* EN "pelvic fin", "anal fin", "pectoral fin", "finned", "head", "peduncle", */
-		"played out", "NOUN_KIEMEs", "Dorsal-NOUN_FLOSSE", "Schwanz-NOUN_FLOSSE", /* EN "played out", "gills", "dorsal fin", "caudal fin", */ // TODO DE
+		"ausgedrillt", "NOUN_KIEMEs", "Dorsal-NOUN_FLOSSE", "Schwanz-NOUN_FLOSSE", /* EN "played out", "gills", "dorsal fin", "caudal fin", */
 		"NOUN_SCHUPPEs", "NOUN_BLUT", "NOUN_KIEME", "NOUN_NASENHOEHLE", "NOUN_STOMACH" }; /* EN "scales", "blood", "gill", "nostril", "stomach" }; */
 	/* claw attacks are overloaded in mons[]; most humanoids with
 	   such attacks should still reference hands rather than claws */
