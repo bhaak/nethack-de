@@ -1760,7 +1760,7 @@ dodip()
 		    Sprintf(buf, "One of %s", the(xname(potion))); /* EN Sprintf(buf, "One of %s", the(xname(potion))); */ // TODO DE
 		else
 		    Strcpy(buf, The(xname(potion)));
-		pline("%s forms a coating on %s.", /* EN pline("%s forms a coating on %s.", */ // TODO DE
+		pline("SUBJECT %s VERB_BILDEN eine Schicht OBJECT KASUS_DATIV auf %s.", /* EN pline("%s forms a coating on %s.", */
 		      buf, the(xname(obj)));
 		obj->opoisoned = TRUE;
 		goto poof;
@@ -1820,7 +1820,7 @@ dodip()
 			is_ammo(obj) || (!obj->oeroded && !obj->oeroded2)) {
 		/* uses up potion, doesn't set obj->greased */
 		pline("%s %s in einem öligen Glanz.", /* EN pline("%s %s with an oily sheen.", */
-		      Yname2(obj), otense(obj, "VERB_GLAENZEN")); /* EN Yname2(obj), otense(obj, "gleam")); */
+		      Yname2(obj), otense(obj, "VERB_SCHIMMERN")); /* EN Yname2(obj), otense(obj, "gleam")); */
 	    } else {
 		pline("SUBJECT %s %s weniger %s.", /* EN pline("%s %s less %s.", */
 		      Yname2(obj), otense(obj, "VERB_SEIN"), /* EN Yname2(obj), otense(obj, "are"), */

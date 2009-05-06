@@ -617,18 +617,18 @@ level_tele()
 			newlevel.dlevel = destlev;
 			if (In_endgame(&newlevel) && !In_endgame(&u.uz)) {
 				Sprintf(buf,
-				    "Destination is earth level"); /* EN "Destination is earth level"); */ // TODO DE
+				    "Ankunftsort ist der Erd-Level"); /* EN "Destination is earth level"); */
 				if (!u.uhave.amulet) {
 					struct obj *obj;
 					obj = mksobj(AMULET_OF_YENDOR,
 							TRUE, FALSE);
 					if (obj) {
 						obj = addinv(obj);
-						Strcat(buf, " with the amulet"); /* EN Strcat(buf, " with the amulet"); */ // TODO DE
+						Strcat(buf, " mit dem Amulett"); /* EN Strcat(buf, " with the amulet"); */
 					}
 				}
 				assign_level(&newlevel, &earth_level);
-				pline("%s.", buf); /* EN pline("%s.", buf); */ // TODO DE
+				pline("%s.", buf);
 			}
 			force_dest = TRUE;
 		    } else return;
@@ -648,13 +648,13 @@ level_tele()
 		    is_silent(youmonst.data) ? "writhe" : "scream"); /* EN is_silent(youmonst.data) ? "writhe" : "scream"); */ // TODO DE
 		display_nhwindow(WIN_MESSAGE, FALSE);
 		You("cease to exist."); /* EN You("cease to exist."); */ // TODO DE
-		if (invent) Your("possessions land on the %s with a thud.", /* EN if (invent) Your("possessions land on the %s with a thud.", */ // TODO DE
+		if (invent) Your("ADJEKTIV_GESAMT NOUN_ZEUGS VERB_LANDEN mit einem kräftigen Plumps OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s.", /* EN if (invent) Your("possessions land on the %s with a thud.", */
 				surface(u.ux, u.uy));
 		killer_format = NO_KILLER_PREFIX;
 		killer = "beging Selbstmord"; /* EN killer = "committed suicide"; */
 		done(DIED);
 		pline("An energized cloud of dust begins to coalesce."); /* EN pline("An energized cloud of dust begins to coalesce."); */ // TODO DE
-		Your("body rematerializes%s.", invent ?  /* EN Your("body rematerializes%s.", invent ? */ // TODO DE
+		Your("NOUN_KOERPER rematerialisiert%s.", invent ?  /* EN Your("body rematerializes%s.", invent ? */
 			", and you gather up all your possessions" : ""); /* EN ", and you gather up all your possessions" : ""); */ // TODO DE
 		return;
 	    }
@@ -725,14 +725,14 @@ level_tele()
 			pline("(Kein Wunder, SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SCHWEBEN im siebten Himmel!) "); /* EN pline("(In fact, you're on Cloud 9!) "); */
 			display_nhwindow(WIN_MESSAGE, FALSE);
 		} else
-			You("are now high above the clouds..."); /* EN You("are now high above the clouds..."); */ // TODO DE
+			You("VERB_SEIN jetzt hoch über den Wolken ..."); /* EN You("are now high above the clouds..."); */
 
 		if (killer) {
 		    ;		/* arrival in heaven is pending */
 		} else if (Levitation) {
 		    escape_by_flying = "VERB_GLEITEN sanft zur Erde"; /* EN escape_by_flying = "float gently down to earth"; */
 		} else if (Flying) {
-		    escape_by_flying = "fly down to the ground"; /* EN escape_by_flying = "fly down to the ground"; */ // TODO DE
+		    escape_by_flying = "VERB_FLIEGEN runter zur Oberfläche"; /* EN escape_by_flying = "fly down to the ground"; */
 		} else {
 		    pline("Blöderweise VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht fliegen."); /* EN pline("Unfortunately, you don't know how to fly."); */
 		    You("VERB_STUERZEN aus schwindelerregender Höhe in den Tod."); /* EN You("plummet a few thousand feet to your death."); */
@@ -754,7 +754,7 @@ level_tele()
 	    done(DIED);
 	    /* can only get here via life-saving (or declining to die in
 	       explore|debug mode); the hero has now left the dungeon... */
-	    escape_by_flying = "find yourself back on the surface"; /* EN escape_by_flying = "find yourself back on the surface"; */ // TODO DE
+	    escape_by_flying = "VERB_FINDEN OBJECT PRONOMEN_PERSONAL auf der Oberfläche wieder"; /* EN escape_by_flying = "find yourself back on the surface"; */
 	    u.uz = lsav;	/* restore u.uz so escape code works */
 	}
 
@@ -1277,7 +1277,7 @@ boolean give_feedback;
 	    return FALSE;
 	} else if (level.flags.noteleport && u.uswallow && mtmp == u.ustuck) {
 	    if (give_feedback)
-		You("are no longer inside %s!", mon_nam(mtmp)); /* EN You("are no longer inside %s!", mon_nam(mtmp)); */ // TODO DE
+		You("VERB_SEIN nicht mehr länger OBJECT KASUS_DATIV in %s drinnen!", mon_nam(mtmp)); /* EN You("are no longer inside %s!", mon_nam(mtmp)); */
 	    unstuck(mtmp);
 	    (void) rloc(mtmp, FALSE);
 	} else if (is_rider(mtmp->data) && rn2(13) &&

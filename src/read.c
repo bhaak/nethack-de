@@ -663,7 +663,7 @@ register struct obj	*sobj;
 	case SCR_MAIL:
 		known = TRUE;
 		if (sobj->spe)
-		    pline("This seems to be junk mail addressed to the finder of the Eye of Larn."); /* EN pline("This seems to be junk mail addressed to the finder of the Eye of Larn."); */ // TODO DE
+		    pline("Das scheint eine Spam-Mail zu sein, adressiert an den Finder des Auges von Larn."); /* EN pline("This seems to be junk mail addressed to the finder of the Eye of Larn."); */
 		/* note to the puzzled: the game Larn actually sends you junk
 		 * mail if you win!
 		 */
@@ -680,7 +680,7 @@ register struct obj	*sobj;
 		if(!otmp) {
 			strange_feeling(sobj,
 					!Blind ? "Your skin glows then fades." : /* EN !Blind ? "Your skin glows then fades." : */ // TODO DE
-					"Your skin feels warm for a moment."); /* EN "Your skin feels warm for a moment."); */ // TODO DE
+					"SUBJECT PRONOMEN_POSSESSIV NOUN_HAUT VERB_FUEHLEN sich für einen Moment warm an."); /* EN "Your skin feels warm for a moment."); */
 			exercise(A_CON, !sobj->cursed);
 			exercise(A_STR, !sobj->cursed);
 			return(1);
@@ -689,8 +689,8 @@ register struct obj	*sobj;
 			otmp->oerodeproof = !(sobj->cursed);
 			if(Blind) {
 			    otmp->rknown = FALSE;
-			    Your("%s %s warm for a moment.", /* EN Your("%s %s warm for a moment.", */ // TODO DE
-				xname(otmp), otense(otmp, "feel")); /* EN xname(otmp), otense(otmp, "feel")); */ // TODO DE
+			    Your("%s %s sich für einen Moment warm an.", /* EN Your("%s %s warm for a moment.", */
+				xname(otmp), otense(otmp, "VERB_FUEHLEN")); /* EN xname(otmp), otense(otmp, "feel")); */
 			} else {
 			    otmp->rknown = TRUE;
 			    Your("%s %s OBJECT KASUS_DATIV von ARTIKEL_UNBESTIMMTER %s %s %s überzogen!", /* EN Your("%s %s covered by a %s %s %s!", */
