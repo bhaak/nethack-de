@@ -4,7 +4,7 @@ dnl Avoid AC_REVISION() because we check configure into CVS
 dnl and it will cause confusing revision numbers to be included
 dnl in configure if developers forget to check in configure.ac
 dnl before running bootstrap.sh and checking in configure.
-# $Revision: 1.10 $
+
 AC_CONFIG_SRCDIR(LIESMICH.de)
 AC_SUBST(SRCDIR,[../$srcdir/src])
 AC_CONFIG_AUX_DIR(sys/autoconf)
@@ -92,6 +92,12 @@ if test $host_os = mingw32; then
 	    NETHACK_AUTO_WIN_DISABLE(tty)
 	fi
     fi
+fi
+
+
+dnl Disable GCC warning: "format not a string literal and no format arguments"
+if test "$GCC" = "yes"; then
+	AX_CHECK_COMPILER_FLAGS(-Wno-format-security, CFLAGS="$CFLAGS -Wno-format-security")
 fi
 
 dnl ------ Common subtypes
@@ -297,6 +303,25 @@ if test "$HAVE_TBL" != "no" ; then
 fi
 fi
 
+if test $host_os != mingw32; then
+  dnl searching for non blocking random device
+  AC_MSG_CHECKING(for pseudo random number device)
+  if test -r "/dev/urandom"; then
+	AC_DEFINE(DEV_RANDOM, ["/dev/urandom"], [Pseudo random number device])
+	AC_MSG_RESULT(/dev/urandom)
+  elif test -r "/dev/random"; then
+	AC_DEFINE(DEV_RANDOM, ["/dev/random"], [Pseudo random number device])
+	AC_MSG_RESULT(/dev/random)
+  else
+	AC_MSG_RESULT(not found);
+  fi
+
+  dnl check for GNU Scientific Library for Mersenne Twister RNG
+  dnl http://www.gnu.org/software/gsl/manual/html_node/Autoconf-Macros.html
+  AC_CHECK_LIB([gsl],[gsl_blas_dgemm],
+		[LFLAGS="$LDFLAGS -lgsl";
+		 AC_DEFINE(USE_MERSENNE_TWISTER, [], [Using Mersenne Twister as RNG])])
+fi
 
 dnl  ----- Check for compile-time options
 # We use auto for data librarian to avoid breaking the rule that autoconf
@@ -328,6 +353,10 @@ NETHACK_ARG(tourist,[Tourist class],TOURIST,yes)
 NETHACK_ARG(redo,[Redo last command],REDO,yes)
 NETHACK_ARG(clipping,[Allow smaller screens],CLIPPING,yes)
 NETHACK_ARG(menu-color,[TTY graphics menu color],MENU_COLOR,yes)
+#if test "$enable_tty_graphics" = yes; then
+#NETHACK_ARG(status-color,[TTY graphics status color],STATUS_COLORS,yes)
+#fi
+#NETHACK_ARG(auto-open,[Open doors by walking into them],AUTO_OPEN,yes)
 NETHACK_ARG(elbereth,[Engraving the E-word repels monsters],ELBERETH,yes)
 # NETHACK_ARG(noartifactwish,[Prevent wishing for special artifacts],
 #  NOARTIFACTWISH,no)
@@ -344,6 +373,8 @@ NETHACK_ARG(realtime-on-botl,[Show elapsed time on bottom line],REALTIME_ON_BOTL
 # NETHACK_ARG(show-dmg,[Display damage reports],SHOW_DMG,yes)
 # NETHACK_ARG(show-weight,[Display object weight],SHOW_WEIGHT,yes)
 # NETHACK_ARG(other-services,[Shopkeeper services],OTHER_SERVICES,yes)
+# NETHACK_ARG(show-born,[Display number of created monsters at the end of game],SHOW_BORN,yes)
+# NETHACK_ARG(show-extinct,[Display extinct monsters at the end of game],SHOW_EXTINCT,yes)
 # NETHACK_ARG(dungeon-growth,[Dungeon growth],DUNGEON_GROWTH,yes)
 #NETHACK_ARG(shout,[Shouting and pet commands (not implemented)],SHOUT,no)
 # NETHACK_ARG(display-layers,[Support transparent tilesets],DISPLAY_LAYERS,yes)
@@ -353,54 +384,20 @@ NETHACK_ARG(autopickup-exceptions,[Exceptions to autopickup (experimental)],
 NETHACK_ARG(qwertz,[QWERTZ keyboard layout support],QWERTZ,yes)
 NETHACK_ARG(simple-mail,[simple mail dgamelaunch support],SIMPLE_MAIL,no)
 
-#NETHACK_ARG(xlogfile,[More verbose logfile],XLOGFILE,yes)
-AC_MSG_CHECKING([whether to enable xlogfile])
-AC_ARG_ENABLE([xlogfile], AC_HELP_STRING([--enable-xlogfile=FILE],
-	[More verbose logfile (default=yes, default filename=xlogfile)]),
-	if test "$enableval" != no; then enable_xlogfile=yes;
-	 if test "$enableval" != yes; then xlogfile=$enableval;
-	 else xlogfile="xlogfile"; fi;
-	else enable_xlogfile=no; fi,
-	enable_xlogfile=yes; xlogfile="xlogfile")
-if test "$enable_xlogfile" != "no" ; then
-	AC_MSG_RESULT([yes (file $xlogfile)])
-	AC_DEFINE_UNQUOTED([XLOGFILE], ["$xlogfile"], [The name of the xlogfile])
-else
-	AC_MSG_RESULT([no])
-fi
+NETHACK_ARG_WITH_PARAM(xlogfile,[More verbose logfile],XLOGFILE,yes,FILE,[xlogfile])
 
-# NETHACK_ARG(livelog,[Live game progress logfile],LIVELOGFILE,no)
-AC_MSG_CHECKING([whether to enable live logfile])
-AC_ARG_ENABLE([livelog], AC_HELP_STRING([--enable-livelog=FILE],
-	[Live game progress logfile (default=no, default filename=livelog)]),
-	if test "$enableval" != no; then enable_livelog=yes;
-	 if test "$enableval" != yes; then livelog=$enableval;
-	 else livelog="livelog"; fi;
-	else enable_livelog=no; fi,
-	enable_livelog=no)
+NETHACK_ARG_WITH_PARAM(livelog,[Live game progress logfile],LIVELOGFILE,no,FILE,[livelog])
 if test "$enable_livelog" != "no" ; then
-	AC_MSG_RESULT([yes (file $livelog)])
-	AC_DEFINE_UNQUOTED([LIVELOGFILE], ["$livelog"], [The name of the live logfile])
-
 	NETHACK_ARG(livelog-shout,[Shoutting into the live game logfile],LIVELOG_SHOUT,no)
-else
-	AC_MSG_RESULT([no])
 fi
 
-AC_MSG_CHECKING([whether to enable wizmode])
-AC_ARG_ENABLE([wizmode], AC_HELP_STRING([--enable-wizmode=USER],
-	[enable wizard mode for the specified user (default=wizard)]),
-	if test "$enableval" != no; then enable_wizmode=yes;
-	 if test "$enableval" != yes; then wizard=$enableval;
-	 else wizard="wizard"; fi;
-	else enable_wizmode=no; fi,
-	enable_wizmode=yes;wizard="wizard")
-if test "$enable_wizmode" != "no" ; then
-	AC_MSG_RESULT([yes (user $wizard)])
-	AC_DEFINE_UNQUOTED([WIZARD], ["$wizard"], [The person allowed to use the -D option])
-else
-	AC_MSG_RESULT([no])
-fi
+#NETHACK_ARG(dump,[Dumping character stats],DUMP_LOG,yes)
+#if test "$enable_dump" != "no" ; then
+#	NETHACK_ARG_WITH_PARAM(dump-file,[Name of character dump file],DUMP_FN,no,FILE,"/tmp/%s.nh")
+#	NETHACK_ARG_WITH_PARAM(dump-messages,[Number of dumped messages],DUMPMSGS,yes,NUMBER,20)
+#fi
+
+NETHACK_ARG_WITH_PARAM(wizmode,[enable wizard mode for the specified user],WIZARD,yes,USER,[wizard])
 
 if test "$CHOWN" != "true"; then
     AC_MSG_CHECKING([for owner of installed files])

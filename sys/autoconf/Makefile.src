@@ -730,6 +730,7 @@ german_wishing.o: $(srcdir)/german_wishing_test.c $(srcdir)/german.h
 hacklib.o: $(srcdir)/hacklib.c $(HACK_H)
 invent.o: $(srcdir)/invent.c $(HACK_H)
 light.o: $(srcdir)/light.c $(HACK_H) ../include/lev.h
+livelog.o: $(srcdir)/livelog.c $(HACK_H)
 lock.o: $(srcdir)/lock.c $(HACK_H)
 mail.o: $(srcdir)/mail.c $(HACK_H) ../include/mail.h
 makemon.o: $(srcdir)/makemon.c $(HACK_H) ../include/epri.h ../include/emin.h \
@@ -813,7 +814,6 @@ worm.o: $(srcdir)/worm.c $(HACK_H) ../include/lev.h
 worn.o: $(srcdir)/worn.c $(HACK_H)
 write.o: $(srcdir)/write.c $(HACK_H)
 zap.o: $(srcdir)/zap.c $(HACK_H)
-livelog.o: $(srcdir)/livelog.c $(HACK_H)
 # DEPENDENCIES MUST END AT END OF FILE
 # IF YOU PUT STUFF HERE IT WILL GO AWAY
 # see make depend above

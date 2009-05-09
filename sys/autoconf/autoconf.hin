@@ -27,6 +27,9 @@
 /* The default windowing system */
 #undef DEFAULT_WINDOW_SYS
 
+/* Pseudo random number device */
+#undef DEV_RANDOM
+
 /* Data librarian */
 #undef DLB
 
@@ -92,7 +95,7 @@
 /* GNU Linux */
 #undef LINUX
 
-/* The name of the live logfile */
+/* Live game progress logfile */
 #undef LIVELOGFILE
 
 /* Shoutting into the live game logfile */
@@ -179,19 +182,22 @@
 /* Allow user-defined mapping from messages to sounds) */
 #undef USER_SOUNDS
 
+/* Using Mersenne Twister as RNG */
+#undef USE_MERSENNE_TWISTER
+
 /* Fancy mazes */
 #undef WALLIFIED_MAZE
 
 /* An MS-Windows system */
 #undef WIN32
 
-/* The person allowed to use the -D option */
+/* enable wizard mode for the specified user */
 #undef WIZARD
 
 /* X11 graphics */
 #undef X11_GRAPHICS
 
-/* The name of the xlogfile */
+/* More verbose logfile */
 #undef XLOGFILE
 
 /* Define to 1 if `lex' declares `yytext' as a `char *' by default, not a
