@@ -3917,6 +3917,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_LEER","leer"),
     dekliniere_adjektiv("ADJEKTIV_LEICHT","leicht"),
     dekliniere_adjektiv("ADJEKTIV_LETZT","letzt"),
+    dekliniere_adjektiv("ADJEKTIV_LIEGEND","liegend"),
     dekliniere_adjektiv("ADJEKTIV_LINK","link"),
     dekliniere_adjektiv("ADJEKTIV_LIT","entzündet"),
     dekliniere_adjektiv("ADJEKTIV_MAGIE_ABSORBIEREND","magie-absorbierend"),

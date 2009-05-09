@@ -8,6 +8,11 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+# include <ctype.h>
+#endif
+
 STATIC_DCL void FDECL(simple_look, (struct obj *,BOOLEAN_P));
 #ifndef GOLDOBJ
 STATIC_DCL boolean FDECL(query_classes, (char *,boolean *,boolean *,
@@ -994,7 +999,7 @@ int *wt_before, *wt_after;
 #endif
     unsigned saveowt;
     const char *verb, *prefx1, *prefx2, *suffx;
-    char obj_nambuf[BUFSZ], where[BUFSZ];
+    char obj_nambuf[BUFSZ], where[BUFSZ], verb_tmp[BUFSZ]; /* EN char obj_nambuf[BUFSZ], where[BUFSZ]; */
 
     savequan = obj->quan;
     saveowt = obj->owt;
@@ -1098,11 +1103,11 @@ int *wt_before, *wt_after;
 	/* some message will be given */
 	Strcpy(obj_nambuf, doname(obj));
 	if (container) {
-	    Sprintf(where, "in %s", the(xname(container))); /* EN Sprintf(where, "in %s", the(xname(container))); */ // TODO DE
-	    verb = "carry"; /* EN verb = "carry"; */ // TODO DE
+	    Sprintf(where, "NEUES_OBJECT OBJECT KASUS_DATIV in %s ", the(xname(container))); /* EN Sprintf(where, "in %s", the(xname(container))); */
+	    verb = "tragen"; /* EN verb = "carry"; */
 	} else {
-	    Strcpy(where, "lying here"); /* EN Strcpy(where, "lying here"); */ // TODO DE
-	    verb = telekinesis ? "acquire" : "lift"; /* EN verb = telekinesis ? "acquire" : "lift"; */ // TODO DE
+	    Strcpy(where, ""); /* EN Strcpy(where, "lying here"); */
+	    verb = telekinesis ? "bekommen" : "aufheben"; /* EN verb = telekinesis ? "acquire" : "lift"; */
 	}
     } else {
 	/* lint supppression */
@@ -1112,28 +1117,34 @@ int *wt_before, *wt_after;
     /* we can carry qq of them */
     if (qq > 0) {
 	if (qq < count)
-	    You("can only %s %s of the %s %s.", /* EN You("can only %s %s of the %s %s.", */ // TODO DE
-		verb, (qq == 1L) ? "one" : "some", obj_nambuf, where); /* EN verb, (qq == 1L) ? "one" : "some", obj_nambuf, where); */ // TODO DE
+	    You("VERB_KOENNEN nur %s OBJECT KASUS_GENITIV ARTIKEL_BESTIMMTER %s %s%s.", /* EN You("can only %s %s of the %s %s.", */
+		(qq == 1L) ? "one" : "einige", obj_nambuf, where, verb); /* EN verb, (qq == 1L) ? "one" : "some", obj_nambuf, where); */ // TODO DE
 	*wt_after = wt;
 	return qq;
     }
 
-    if (!container) Strcpy(where, "here");  /* slightly shorter form */ /* EN if (!container) Strcpy(where, "here");  */ // TODO DE
+    if (!container) Strcpy(where, "hier");  /* slightly shorter form */ /* EN if (!container) Strcpy(where, "here");  */
 #ifndef GOLDOBJ
     if (invent || u.ugold) {
 #else
     if (invent || umoney) {
 #endif
-	prefx1 = "you cannot "; /* EN prefx1 = "you cannot "; */ // TODO DE
-	prefx2 = "";
-	suffx  = " any more"; /* EN suffx  = " any more"; */ // TODO DE
+	prefx1 = "PRONOMEN_PERSONAL VERB_KOENNEN"; /* EN prefx1 = "you cannot "; */
+	prefx2 = "nichts mehr "; /* EN prefx2 = ""; */
+	suffx  = ""; /* EN suffx  = " any more"; */
     } else {
-	prefx1 = (obj->quan == 1L) ? "it " : "even one "; /* EN prefx1 = (obj->quan == 1L) ? "it " : "even one "; */ // TODO DE
-	prefx2 = "is too heavy for you to "; /* EN prefx2 = "is too heavy for you to "; */ // TODO DE
-	suffx  = "";
+	prefx1 = (obj->quan == 1L) ? pronominalisierung(xname(obj)) : "sogar one"; /* EN prefx1 = (obj->quan == 1L) ? "it " : "even one "; */ // TODO DE
+	prefx2 = "VERB_SEIN OBJECT für PRONOMEN_PERSONAL zum "; /* EN prefx2 = "is too heavy for you to "; */
+	suffx  = " zu schwer"; /* EN suffx  = ""; */
+#ifdef GERMAN
+	/* "verb[0] = toupper(verb[0]);" crashes with a segmentation fault */
+	Strcpy(verb_tmp, verb);
+	verb_tmp[0] = toupper(verb[0]);
+	verb = verb_tmp;
+#endif
     }
-    There("%s %s %s, but %s%s%s%s.", /* EN There("%s %s %s, but %s%s%s%s.", */ // TODO DE
-	  otense(obj, "are"), obj_nambuf, where, /* EN otense(obj, "are"), obj_nambuf, where, */ // TODO DE
+    pline("SUBJECT_IM_SATZ Es %s %s %s, NEUER_SATZ SUBJECT_IM_SATZ aber %s %s%s%s.", /* EN There("%s %s %s, but %s%s%s%s.", */
+	  otense(obj, "VERB_LIEGEN"), obj_nambuf, where, /* EN otense(obj, "are"), obj_nambuf, where, */
 	  prefx1, prefx2, verb, suffx);
 
  /* *wt_after = iw; */
