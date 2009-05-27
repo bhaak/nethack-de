@@ -385,7 +385,7 @@ int spellnum;
 	dmg = 0;
 	break;
     case MGC_CURSE_ITEMS:
-	You_feel("as if you need some help."); /* EN You_feel("as if you need some help."); */ // TODO DE
+	You("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL, NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_KOENNEN PRONOMEN_PERSONAL etwas Hilfe brauchen."); /* EN You_feel("as if you need some help."); */
 	rndcurse();
 	dmg = 0;
 	break;
@@ -528,7 +528,7 @@ int spellnum;
 	break;
     }
     case CLC_CURSE_ITEMS:
-	You_feel("as if you need some help."); /* EN You_feel("as if you need some help."); */ // TODO DE
+	You("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL, NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_KOENNEN PRONOMEN_PERSONAL etwas Hilfe brauchen."); /* EN You_feel("as if you need some help."); */
 	rndcurse();
 	dmg = 0;
 	break;
@@ -613,7 +613,7 @@ int spellnum;
     case CLC_CONFUSE_YOU:
 	if (Antimagic) {
 	    shieldeff(u.ux, u.uy);
-	    You_feel("momentarily dizzy."); /* EN You_feel("momentarily dizzy."); */ // TODO DE
+	    Dir_ist("kurz schwindlig."); /* EN You_feel("momentarily dizzy."); */
 	} else {
 	    boolean oldprop = !!Confusion;
 

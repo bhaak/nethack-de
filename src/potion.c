@@ -1039,7 +1039,7 @@ boolean your_fault;
 		if(mon->mhp < mon->mhpmax) {
 		    mon->mhp = mon->mhpmax;
 		    if (canseemon(mon))
-			pline("%s looks sound and hale again.", Monnam(mon)); /* EN pline("%s looks sound and hale again.", Monnam(mon)); */ // TODO DE
+			pline("SUBJECT %s VERB_AUSSEHEN wieder gesund und munter SATZKLAMMER.", Monnam(mon)); /* EN pline("%s looks sound and hale again.", Monnam(mon)); */
 		}
 		break;
 	case POT_SICKNESS:
@@ -1710,7 +1710,7 @@ dodip()
 				break;
 			default:
 				if (!Blind)
-			  pline_The("mixture glows brightly and evaporates."); /* EN pline_The("mixture glows brightly and evaporates."); */ // TODO DE
+			  pline("Das Gemisch leuchtet gleißend hell auf und verdampft."); /* EN pline_The("mixture glows brightly and evaporates."); */
 				useup(obj);
 				useup(potion);
 				return(1);
@@ -1720,10 +1720,10 @@ dodip()
 		obj->odiluted = (obj->otyp != POT_WATER);
 
 		if (obj->otyp == POT_WATER && !Hallucination) {
-			pline_The("mixture bubbles%s.", /* EN pline_The("mixture bubbles%s.", */ // TODO DE die Mixtur, das Gebräu, das Gemisch, 
-				Blind ? "" : ", then clears"); /* EN Blind ? "" : ", then clears"); */ // TODO DE
+			pline("Das Gemisch blubbert%s.", /* EN pline_The("mixture bubbles%s.", */
+				Blind ? "" : " und klärt sich schließlich"); /* EN Blind ? "" : ", then clears"); */
 		} else if (!Blind) {
-			pline_The("mixture looks %s.", /* EN pline_The("mixture looks %s.", */ // TODO DE
+			pline("Das Gemisch sieht %s aus.", /* EN pline_The("mixture looks %s.", */
 				hcolor(OBJ_DESCR(objects[obj->otyp])));
 		}
 
@@ -1737,7 +1737,7 @@ dodip()
 		if (!Blind) {
 		    if (!See_invisible) pline("Wohin ist %s verschwunden?", /* EN if (!See_invisible) pline("Where did %s go?", */
 		    		the(xname(obj)));
-		    else You("notice a little haziness around %s.", /* EN else You("notice a little haziness around %s.", */ // TODO DE
+		    else You("VERB_BEMERKEN eine leichte Unschärfe OBJECT um %s.", /* EN else You("notice a little haziness around %s.", */
 		    		the(xname(obj)));
 		}
 		goto poof;
@@ -1746,7 +1746,7 @@ dodip()
 		if (!Blind) {
 		    if (!See_invisible) pline("Dahin ist also %s verschwunden!", /* EN if (!See_invisible) pline("So that's where %s went!", */
 		    		the(xname(obj)));
-		    else pline_The("haziness around %s disappears.", /* EN else pline_The("haziness around %s disappears.", */ // TODO DE
+		    else pline("Die Unschärfe um KASUS_AKKUSATIV %s verschwindet.", /* EN else pline_The("haziness around %s disappears.", */
 		    		the(xname(obj)));
 		}
 		goto poof;
@@ -1768,7 +1768,7 @@ dodip()
 		      (potion->otyp == POT_HEALING ||
 		       potion->otyp == POT_EXTRA_HEALING ||
 		       potion->otyp == POT_FULL_HEALING)) {
-		pline("A coating wears off %s.", the(xname(obj))); /* EN pline("A coating wears off %s.", the(xname(obj))); */ // TODO DE
+		pline("Die Schicht auf KASUS_DATIV %s verliert sich.", the(xname(obj))); /* EN pline("A coating wears off %s.", the(xname(obj))); */
 		obj->opoisoned = 0;
 		goto poof;
 	    }
@@ -1806,7 +1806,7 @@ dodip()
 		    }
 		}
 	    } else if (potion->cursed) {
-		pline_The("potion spills and covers your %s with oil.", /* EN pline_The("potion spills and covers your %s with oil.", */ // TODO DE
+		You("VERB_VERSCHUETTEN OBJECT ARTIKEL_BESTIMMTER NOUN_POTION und VERB_VERSCHMIEREN NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV %s mit Öl.", /* EN pline_The("potion spills and covers your %s with oil.", */
 			  makeplural(body_part(FINGER)));
 		incr_itimeout(&Glib, d(2,10));
 	    } else if (obj->oclass != WEAPON_CLASS && !is_weptool(obj)) {

@@ -331,7 +331,7 @@ register struct obj *otmp;
 		 !otmp->no_charge)
 		 || otmp->unpaid)) {
 		/* create a dummy duplicate to put on bill */
-		verbalize("You bit it, you bought it!"); /* EN verbalize("You bit it, you bought it!"); */ // TODO DE
+		verbalize("Abgebissen, abgekauft!"); /* EN verbalize("You bit it, you bought it!"); */
 		bill_dummy_object(otmp);
 	    }
 	    otmp->oeaten = (otmp->otyp == CORPSE ?
