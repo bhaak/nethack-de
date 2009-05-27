@@ -10077,6 +10077,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Lunge", "NOUN_LUNGE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lungen", "NOUN_LUNGEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Macht", "NOUN_MACHT", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mächte", "NOUN_MACHTs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Mächten", "NOUN_MACHTs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Mähne", "NOUN_MAEHNE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Mähnen", "NOUN_MAEHNEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 

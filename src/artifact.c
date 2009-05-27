@@ -9,6 +9,11 @@
 #else
 STATIC_DCL struct artifact artilist[];
 #endif
+
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /*
  * Note:  both artilist[] and artiexist[] have a dummy element #0,
  *	  so loops over them should normally start at #1.  The primary
@@ -538,16 +543,16 @@ touch_artifact(obj,mon)
 	char buf[BUFSZ];
 
 	if (!yours) return 0;
-	You("are blasted by %s power!", s_suffix(the(xname(obj)))); /* EN You("are blasted by %s power!", s_suffix(the(xname(obj)))); */ // TODO DE
+	You("VERB_BEKOMMEN OBJECT %s zu spüren!", genitivattribut_zu_wort(the(xname(obj)), "ADJEKTIV_GEWALTIG NOUN_MACHT")); /* EN You("are blasted by %s power!", s_suffix(the(xname(obj)))); */
 	dmg = d((Antimagic ? 2 : 4), (self_willed ? 10 : 4));
-	Sprintf(buf, "touching %s", oart->name); /* EN Sprintf(buf, "touching %s", oart->name); */ // TODO DE
-	losehp(dmg, buf, KILLED_BY);
+	Sprintf(buf, "getötet durch die Berührung KASUS_GENITIV ARTIKEL_BESTIMMTER %s", oart->name); /* EN Sprintf(buf, "touching %s", oart->name); */
+	losehp(dmg, buf, NO_KILLER_PREFIX); /* EN losehp(dmg, buf, KILLED_BY); */
 	exercise(A_WIS, FALSE);
     }
 
     /* can pick it up unless you're totally non-synch'd with the artifact */
     if (badclass && badalign && self_willed) {
-	if (yours) pline("SUBJECT %s OBJECT PRONOMEN_POSSESSIV NOUN_GRIFF!", Tobjnam(obj, "VERB_ENTWINDEN")); /* EN if (yours) pline("%s your grasp!", Tobjnam(obj, "evade")); */
+	if (yours) pline("SUBJECT %s sich OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_GRIFF!", Tobjnam(obj, "VERB_ENTWINDEN")); /* EN if (yours) pline("%s your grasp!", Tobjnam(obj, "evade")); */
 	return 0;
     }
 
@@ -1044,7 +1049,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 				return TRUE;
 			}
 			*dmgptr = 2 * mdef->mhp + FATAL_DAMAGE_MODIFIER;
-			pline("%s cuts %s in half!", wepdesc, mon_nam(mdef)); /* EN pline("%s cuts %s in half!", wepdesc, mon_nam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_SCHNEIDEN OBJECT %s entzwei!", wepdesc, mon_nam(mdef)); /* EN pline("%s cuts %s in half!", wepdesc, mon_nam(mdef)); */
 			otmp->dknown = TRUE;
 			return TRUE;
 		} else {
@@ -1061,7 +1066,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			 * damage does not prevent death.
 			 */
 			*dmgptr = 2 * (Upolyd ? u.mh : u.uhp) + FATAL_DAMAGE_MODIFIER;
-			pline("%s cuts you in half!", wepdesc); /* EN pline("%s cuts you in half!", wepdesc); */ // TODO DE
+			pline("SUBJECT %s VERB_SCHNEIDEN OBJECT PRONOMEN_PERSONAL entzwei!", wepdesc); /* EN pline("%s cuts you in half!", wepdesc); */
 			otmp->dknown = TRUE;
 			return TRUE;
 		}
@@ -1240,7 +1245,7 @@ arti_invoke(obj)
 	    if (epboost > 120) epboost = 120;		/* arbitrary */
 	    else if (epboost < 12) epboost = u.uenmax - u.uen;
 	    if(epboost) {
-		You_feel("re-energized."); /* EN You_feel("re-energized."); */ // TODO DE
+		You_feel("energetisiert."); /* EN You_feel("re-energized."); */
 		u.uen += epboost;
 		flags.botl = 1;
 	    } else
@@ -1345,8 +1350,8 @@ arti_invoke(obj)
 	    } else
 		otmp->quan += rnd(5);
 	    otmp->owt = weight(otmp);
-	    otmp = hold_another_object(otmp, "Suddenly %s out.", /* EN otmp = hold_another_object(otmp, "Suddenly %s out.", */ // TODO DE
-				       aobjnam(otmp, "fall"), (const char *)0); /* EN aobjnam(otmp, "fall"), (const char *)0); */ // TODO DE
+	    otmp = hold_another_object(otmp, "Plötzlich SUBJECT_IM_SATZ VERB_FALLEN %s heraus.", /* EN otmp = hold_another_object(otmp, "Suddenly %s out.", */
+				       aobjnam(otmp, (char *)0), (const char *)0); /* EN aobjnam(otmp, "fall"), (const char *)0); */
 	    break;
 	  }
 	}

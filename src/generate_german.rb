@@ -3626,6 +3626,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_LOCK", "Schloss", "es", "Schlöss", "er", "neutrum"),
     dekliniere_nominalphrase("NOUN_LOWERED_DRAWBRIDGE", "heruntergelassen", "Zugbrücke", "", "Zugbrücke", "en", "feminin"),
     dekliniere_substantiv("NOUN_LUNGE","Lunge","","Lunge","en","feminin"),
+    dekliniere_substantiv("NOUN_MACHT","Macht","","Mächt","e","feminin"),
     dekliniere_substantiv("NOUN_MAEHNE","Mähne","","Mähne","en","feminin"),
     dekliniere_adjektivisches_substantiv("NOUN_MAGENINNERE","Mageninner", "neutrum"),
     dekliniere_nominalphrase("NOUN_MAGIC_PORTAL","magisch","Portal","s","Portal","e","neutrum"),
