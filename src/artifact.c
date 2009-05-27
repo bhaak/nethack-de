@@ -288,14 +288,22 @@ struct obj *obj;
 #ifdef OVLB
 
 boolean
-restrict_name(otmp, name)  /* returns 1 if name is restricted for otmp->otyp */
+restrict_name(otmp, name_orig)  /* EN restrict_name(otmp, name)  */ /* returns 1 if name is restricted for otmp->otyp */
 register struct obj *otmp;
-register const char *name;
+register const char *name_orig; /* EN register const char *name; */
 {
 	register const struct artifact *a;
 	register const char *aname;
+#ifdef GERMAN
+	char tmp_str[BUFSZ];
+	char *name;
+#endif
 
-	if (!*name) return FALSE;
+	if (!*name_orig) return FALSE; /* EN if (!*name) return FALSE; */
+#ifdef GERMAN
+	german2meta(name_orig, tmp_str);
+	name = tmp_str;
+#endif
 	if (!strncmpi(name, "ARTIKEL_BESTIMMTER ", 19)) name += 19; /* EN if (!strncmpi(name, "the ", 4)) name += 4; */
 
 		/* Since almost every artifact is SPFX_RESTR, it doesn't cost

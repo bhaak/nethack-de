@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVLB
 
 STATIC_DCL void FDECL(do_oname, (struct obj *));
@@ -293,6 +297,10 @@ do_oname(obj)
 register struct obj *obj;
 {
 	char buf[BUFSZ], qbuf[QBUFSZ];
+#ifdef GERMAN
+	char tmp_buf[BUFSZ];
+	char *buf_ptr = buf;
+#endif
 	const char *aname;
 	short objtyp;
 
@@ -321,7 +329,15 @@ register struct obj *obj;
 		display_nhwindow(WIN_MESSAGE, FALSE);
 		You("VERB_EINRITZEN \"%s\" SATZKLAMMER.",buf); /* EN You("engrave: \"%s\".",buf); */
 	}
+#ifdef GERMAN
+	else {
+		german2meta(buf, tmp_buf);
+		buf_ptr = tmp_buf;
+	}
+	obj = oname(obj, buf_ptr);
+#else
 	obj = oname(obj, buf);
+#endif
 }
 
 /*
