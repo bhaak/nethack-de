@@ -555,28 +555,28 @@ wizdead()
 const char * const random_insult[] = {
 	"antic", /* EN "antic", */ // TODO DE
 	"Lump", /* EN "blackguard", */ /* Lump, Unhold */
-	"caitiff", /* EN "caitiff", */ // TODO DE
-	"chucklehead", /* EN "chucklehead", */ // TODO DE
+	"Angsthase", /* EN "caitiff", */
+	"Blödian", /* EN "chucklehead", */
 	"coistrel", /* EN "coistrel", */ // TODO DE
-	"craven", /* EN "craven", */ // TODO DE
-	"cretin", /* EN "cretin", */ // TODO DE
-	"cur", /* EN "cur", */ // TODO DE
+	"Hasenfuß", /* EN "craven", */
+	"Kretin", /* EN "cretin", */
+	"Hundesohn", /* EN "cur", */
 	"Memme", /* EN "dastard", */ /* Feigling, Memme */
 	"Dämonenfutter", /* EN "demon fodder", */
 	"Dumpfbacke", /* EN "dimwit", */
 	"Tölpel", /* EN "dolt", */
 	"fool", /* EN "fool", */ // TODO DE
 	"footpad", /* EN "footpad", */ // TODO DE
-	"imbecile", /* EN "imbecile", */ // TODO DE
+	"Schwachkopf", /* EN "imbecile", */
 	"knave", /* EN "knave", */ // TODO DE
 	"maledict", /* EN "maledict", */ // TODO DE
 	"miscreant", /* EN "miscreant", */ // TODO DE
-	"niddering", /* EN "niddering", */ // TODO DE
-	"poltroon", /* EN "poltroon", */ // TODO DE
-	"rattlepate", /* EN "rattlepate", */ // TODO DE
+	"Jammerlappen", /* EN "niddering", */
+	"Waschlappen", /* EN "poltroon", */
+	"Klapperkopf", /* EN "rattlepate", */
 	"reprobate", /* EN "reprobate", */ // TODO DE
-	"scapegrace", /* EN "scapegrace", */ // TODO DE
-	"varlet", /* EN "varlet", */ // TODO DE
+	"Taugenichts", /* EN "scapegrace", */
+	"Halunke", /* EN "varlet", */
 	"villein",	/* (sic.) */ /* EN "villein",	*/ // TODO DE
 	"wittol", /* EN "wittol", */ // TODO DE
 	"Wurm", /* EN "worm", */
