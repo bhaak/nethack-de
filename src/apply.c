@@ -1982,7 +1982,7 @@ struct obj *otmp;
 	int ttyp, tmp;
 	const char *what = (char *)0;
 	char buf[BUFSZ];
-	const char *occutext = "setting the trap"; /* EN const char *occutext = "setting the trap"; */ // TODO DE
+	const char *occutext = "die Falle scharf zu machen"; /* EN const char *occutext = "setting the trap"; */
 
 	if (nohands(youmonst.data))
 	    what = "ohne Hände"; /* EN what = "without hands"; */
@@ -2019,7 +2019,7 @@ struct obj *otmp;
 	ttyp = (otmp->otyp == LAND_MINE) ? LANDMINE : BEAR_TRAP;
 	if (otmp == trapinfo.tobj &&
 		u.ux == trapinfo.tx && u.uy == trapinfo.ty) {
-	    You("resume setting %s %s.", /* EN You("resume setting %s %s.", */ // TODO DE
+	    You("VERB_FAHREN fort OBJECT %s %s scharf zu machen.", /* EN You("resume setting %s %s.", */
 		shk_your(buf, otmp),
 		defsyms[trap_to_defsym(what_trap(ttyp))].explanation);
 	    set_occupation(set_trap, occutext, 0);
@@ -2044,7 +2044,7 @@ struct obj *otmp;
 	    else  chance = (rnl(10) > 5);
 	    You("aren't very skilled at reaching from %s.", /* EN You("aren't very skilled at reaching from %s.", */ // TODO DE
 		mon_nam(u.usteed));
-	    Sprintf(buf, "Continue your attempt to set %s?", /* EN Sprintf(buf, "Continue your attempt to set %s?", */ // TODO DE
+	    Sprintf(buf, "Mit KASUS_DATIV PRONOMEN_POSSESSIV NOUN_VERSUCH, NEUES_OBJECT OBJECT %s scharf zu stellen, fortfahren?", /* EN Sprintf(buf, "Continue your attempt to set %s?", */
 		the(defsyms[trap_to_defsym(what_trap(ttyp))].explanation));
 	    if(yn(buf) == 'y') {
 		if (chance) {
@@ -2067,7 +2067,7 @@ struct obj *otmp;
 	    }
 	}
 #endif
-	You("begin setting %s %s.", /* EN You("begin setting %s %s.", */ // TODO DE
+	You("VERB_BEGINNEN OBJECT %s %s scharf zu machen.", /* EN You("begin setting %s %s.", */
 	    shk_your(buf, otmp),
 	    defsyms[trap_to_defsym(what_trap(ttyp))].explanation);
 	set_occupation(set_trap, occutext, 0);
@@ -2101,14 +2101,14 @@ set_trap()
 		add_damage(u.ux, u.uy, 0L);		/* schedule removal */
 	    }
 	    if (!trapinfo.force_bungle)
-		You("finish arming %s.", /* EN You("finish arming %s.", */ // TODO DE
+		You("VERB_HABEN OBJECT %s scharf gestellt.", /* EN You("finish arming %s.", */
 			the(defsyms[trap_to_defsym(what_trap(ttyp))].explanation));
 	    if (((otmp->cursed || Fumbling) && (rnl(10) > 5)) || trapinfo.force_bungle)
 		dotrap(ttmp,
 			(unsigned)(trapinfo.force_bungle ? FORCEBUNGLE : 0));
 	} else {
 	    /* this shouldn't happen */
-	    Your("trap setting attempt fails."); /* EN Your("trap setting attempt fails."); */ // TODO DE
+	    Your("NOUN_VERSUCH, die Falle scharf zu machen, misslingt."); /* EN Your("trap setting attempt fails."); */
 	}
 	useup(otmp);
 	reset_trapset();
@@ -2127,7 +2127,7 @@ struct obj *obj;
     const char *msg_snap = "Knall!"; /* EN const char *msg_snap = "Snap!"; */
 
     if (obj != uwep) {
-	if (!wield_tool(obj, "lash")) return 0; /* EN if (!wield_tool(obj, "lash")) return 0; */ // TODO DE
+	if (!wield_tool(obj, "ausrollen")) return 0; /* EN if (!wield_tool(obj, "lash")) return 0; */
 	else res = 1;
     }
     if (!getdir((char *)0)) return res;
@@ -2188,7 +2188,7 @@ struct obj *obj;
 	dam = rnd(2) + dbon() + obj->spe;
 	if (dam <= 0) dam = 1;
 	You("VERB_HIT OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_BULLWHIP.", body_part(FOOT)); /* EN You("hit your %s with your bullwhip.", body_part(FOOT)); */
-	Sprintf(buf, "killed %sself with %s bullwhip", uhim(), uhis()); /* EN Sprintf(buf, "killed %sself with %s bullwhip", uhim(), uhis()); */ // TODO DE
+	Sprintf(buf, "tötete sich selbst KASUS_DATIV mit %s NOUN_BULLWHIP", uhis()); /* EN Sprintf(buf, "killed %sself with %s bullwhip", uhim(), uhis()); */
 	losehp(dam, buf, NO_KILLER_PREFIX);
 	flags.botl = 1;
 	return 1;
@@ -2387,7 +2387,7 @@ use_pole (obj)
 	    return (0);
 	}
 	if (obj != uwep) {
-	    if (!wield_tool(obj, "swing")) return(0); /* EN if (!wield_tool(obj, "swing")) return(0); */ // TODO DE
+	    if (!wield_tool(obj, "schwingen")) return(0); /* EN if (!wield_tool(obj, "swing")) return(0); */
 	    else res = 1;
 	}
      /* assert(obj == uwep); */
@@ -2493,7 +2493,7 @@ use_grapple (obj)
 	    return (0);
 	}
 	if (obj != uwep) {
-	    if (!wield_tool(obj, "cast")) return(0); /* EN if (!wield_tool(obj, "cast")) return(0); */ // TODO DE
+	    if (!wield_tool(obj, "auswerfen")) return(0); /* EN if (!wield_tool(obj, "cast")) return(0); */
 	    else res = 1;
 	}
      /* assert(obj == uwep); */
