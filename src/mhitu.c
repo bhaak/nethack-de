@@ -1774,7 +1774,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 				You("VERB_FROESTELN leicht."); /* EN You_feel("mildly chilly."); */
 				ugolemeffects(AD_COLD,tmp);
 				tmp = 0;
-			} else You("are freezing to death!"); /* EN } else You("are freezing to death!"); */ // TODO DE
+			} else You("VERB_SEIN am Erfrieren!"); /* EN } else You("are freezing to death!"); */
 		    } else tmp = 0;
 		    break;
 		case AD_FIRE:

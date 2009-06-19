@@ -611,8 +611,8 @@ register struct obj *obj;
 	 * combining both into one function taking a parameter.
 	 */
 	/* must check opoisoned--someone can have a weirdly-named fruit */
-	if (!strncmp(bp, "ADJEKTIV_POISONED ", 9) && obj->opoisoned) { /* EN if (!strncmp(bp, "poisoned ", 9) && obj->opoisoned) { */
-		bp += 9;
+	if (!strncmp(bp, "ADJEKTIV_POISONED ", 18) && obj->opoisoned) { /* EN if (!strncmp(bp, "poisoned ", 9) && obj->opoisoned) { */
+		bp += 18; /* EN bp += 9; */
 		ispoisoned = TRUE;
 	}
 
@@ -681,7 +681,7 @@ plus:
 		break;
 	case ARMOR_CLASS:
 		if(obj->owornmask & W_ARMOR)
-			Strcat(bp, (obj == uskin) ? " (embedded in your skin)" : /* EN Strcat(bp, (obj == uskin) ? " (embedded in your skin)" : */ // TODO DE
+			Strcat(bp, (obj == uskin) ? german(" (KASUS_DATIV in PRONOMEN_POSSESSIV NOUN_HAUT eingebettet)") : /* EN Strcat(bp, (obj == uskin) ? " (embedded in your skin)" : */
 				" (ADJEKTIV_GETRAGEN)");
 		goto plus;
 	case TOOL_CLASS:
@@ -697,7 +697,7 @@ plus:
 			break;
 		}
 		if (obj->otyp == LEASH && obj->leashmon != 0) {
-			Strcat(bp, " (in use)"); /* EN Strcat(bp, " (in use)"); */ // TODO DE
+			Strcat(bp, " (in Benutzung)"); /* EN Strcat(bp, " (in use)"); */
 			break;
 		}
 		if (is_weptool(obj))
@@ -783,7 +783,7 @@ ring:
 	case CHAIN_CLASS:
 		add_erosion_words(obj, prefix);
 		if(obj->owornmask & W_BALL)
-			Strcat(bp, " (chained to you)"); /* EN Strcat(bp, " (chained to you)"); */ // TODO DE
+			Strcat(bp, german(" (an KASUS_AKKUSATIV PRONOMEN_PERSONAL gekettet)")); /* EN Strcat(bp, " (chained to you)"); */
 			break;
 	}
 
@@ -1973,9 +1973,9 @@ boolean from_user;
 		} else if (!strncmpi(bp, "vollstaendig ", l=13) || !strncmpi(bp, "ganz ", l=5)) { /* EN } else if (!strncmpi(bp, "thoroughly ", l=11)) { */
 			very = 2;
 		} else if (!strncmpi(bp, "ADJEKTIV_ROSTIG ", l=16) || /* EN } else if (!strncmpi(bp, "rusty ", l=6) || */
-			   !strncmpi(bp, "rusted ", l=7) || /* EN !strncmpi(bp, "rusted ", l=7) || */ // TODO DE
-			   !strncmpi(bp, "burnt ", l=6) || /* EN !strncmpi(bp, "burnt ", l=6) || */ // TODO DE
-			   !strncmpi(bp, "burned ", l=7)) { /* EN !strncmpi(bp, "burned ", l=7)) { */ // TODO DE
+			   !strncmpi(bp, "ADJEKTIV_VERROSTET ", l=19) || /* EN !strncmpi(bp, "rusted ", l=7) || */
+			   !strncmpi(bp, "ADJEKTIV_ANGESENGT ", l=19) || /* EN !strncmpi(bp, "burnt ", l=6) || */
+			   !strncmpi(bp, "ADJEKTIV_VERSENGT ", l=18)) { /* EN !strncmpi(bp, "burned ", l=7)) { */
 			eroded = 1 + very;
 			very = 0;
 		} else if (!strncmpi(bp, "ADJEKTIV_CORRODED ", l=18) || /* EN } else if (!strncmpi(bp, "corroded ", l=9) || */
@@ -1988,7 +1988,7 @@ boolean from_user;
 			ishistoric = 1;
 		} else if (!strncmpi(bp, "diluted ", l=8)) { /* EN } else if (!strncmpi(bp, "diluted ", l=8)) { */ // TODO DE
 			isdiluted = 1;
-		} else if(!strncmpi(bp, "empty ", l=6)) { /* EN } else if(!strncmpi(bp, "empty ", l=6)) { */ // TODO DE
+		} else if(!strncmpi(bp, "ADJEKTIV_LEER ", l=14)) { /* EN } else if(!strncmpi(bp, "empty ", l=6)) { */
 			contents = EMPTY;
 		} else { /*pline("wishing, NICHT erkannt: %s",bp);*/ break; }
 		//pline("wishing, erkannt: %s",bp);

@@ -85,9 +85,9 @@ static NEARDATA const char * const choke_texts[] = {
 };
 
 static NEARDATA const char * const choke_texts2[] = {
-	"Your %s is becoming constricted.", /* EN "Your %s is becoming constricted.", */ // TODO DE
+	"SUBJECT PRONOMEN_POSSESSIV %s VERB_WERDEN abgeschnürt.", /* EN "Your %s is becoming constricted.", */
 	"SUBJECT PRONOMEN_POSSESSIV NOUN_BLUT VERB_ERREICHEN kaum mehr OBJECT PRONOMEN_POSSESSIV NOUN_GEHIRN.", /* EN "Your blood is having trouble reaching your brain.", */
-	"The pressure on your %s increases.", /* EN "The pressure on your %s increases.", */ // TODO DE
+	"Der Druck KASUS_AKKUSATIV auf PRONOMEN_POSSESSIV %s wächst.", /* EN "The pressure on your %s increases.", */
 	"SUBJECT PRONOMEN_POSSESSIV NOUN_BEWUSSTSEIN VERB_SCHWINDEN.", /* EN "Your consciousness is fading.", */
 	"SUBJECT PRONOMEN_PERSONAL VERB_ERSTICKEN." /* EN "You suffocate." */
 };

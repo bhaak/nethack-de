@@ -136,8 +136,8 @@ struct obj *wep;	/* uwep for attack(), null for kick_monster() */
 		    !glyph_is_warning(glyph_at(u.ux+u.dx,u.uy+u.dy)) &&
 		    !glyph_is_invisible(levl[u.ux+u.dx][u.uy+u.dy].glyph) &&
 		    !(!Blind && mtmp->mundetected && hides_under(mtmp->data))) {
-		pline("Wait!  There's %s there you can't see!", /* EN pline("Wait!  There's %s there you can't see!", */ // TODO DE
-			something);
+		pline("Moment!  Da ist was, das SUBJECT_IM_SATZ PRONOMEN_PERSONAL nicht sehen MODIFIER_VERB_PRAETERITUM VERB_KOENNEN!" /* EN pline("Wait!  There's %s there you can't see!", */
+			); /* EN something); */
 		map_invisible(u.ux+u.dx, u.uy+u.dy);
 		/* if it was an invisible mimic, treat it as if we stumbled
 		 * onto a visible mimic
@@ -178,9 +178,9 @@ struct obj *wep;	/* uwep for attack(), null for kick_monster() */
 		struct obj *obj;
 
 		if (Blind || (is_pool(mtmp->mx,mtmp->my) && !Underwater))
-		    pline("Wait!  There's a hidden monster there!"); /* EN pline("Wait!  There's a hidden monster there!"); */ // TODO DE
+		    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WARTEN!  NEUER_SATZ Da VERB_VERSTECKEN sich ein Monster!"); /* EN pline("Wait!  There's a hidden monster there!"); */
 		else if ((obj = level.objects[mtmp->mx][mtmp->my]) != 0)
-		    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WARTEN!  NEUER_SATZ Da VERB_VERSTECKEN sich SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV unter %s!", /* EN pline("Wait!  There's %s hiding under %s!", */ // TODO DE CHECK ME
+		    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WARTEN!  NEUER_SATZ Da SUBJECT_IM_SATZ VERB_VERSTECKEN sich %s OBJECT KASUS_DATIV unter %s!", /* EN pline("Wait!  There's %s hiding under %s!", */
 			  an(l_monnam(mtmp)), doname(obj));
 		return TRUE;
 	    }
@@ -361,7 +361,7 @@ register struct monst *mtmp;
 		}
 	}
 
-	if(check_capacity("You cannot fight while so heavily loaded.")) /* EN if(check_capacity("You cannot fight while so heavily loaded.")) */ // TODO DE
+	if(check_capacity("SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN so schwer beladen nicht k‰mpfen.")) /* EN if(check_capacity("You cannot fight while so heavily loaded.")) */
 	    goto atk_done;
 
 	if (u.twoweap && !can_twoweapon())
@@ -767,7 +767,7 @@ int thrown;
 
 			if (touch_petrifies(&mons[obj->corpsenm])) {
 			    /*learn_egg_type(obj->corpsenm);*/
-			    pline("Klatsch! SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT %s NEUES_OBJECT OBJECT mit %s %s NOUN_EGG%s!", /* EN pline("Splat! You hit %s with %s %s egg%s!", */ // TODO DE
+			    pline("Klatsch! SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT %s NEUES_OBJECT OBJECT mit %s %s--NOUN_EGG%s!", /* EN pline("Splat! You hit %s with %s %s egg%s!", */ // TODO DE Fugen-Buchstabe fehlt
 				mon_nam(mon),
 				obj->known ? "ARTIKEL_BESTIMMTER" : cnt > 1L ? "ein paar" : "ARTIKEL_UNBESTIMMTER", /* EN obj->known ? "the" : cnt > 1L ? "some" : "a", */
 				obj->known ? mons[obj->corpsenm].mname : "ADJEKTIV_VERSTEINERND", /* EN obj->known ? mons[obj->corpsenm].mname : "petrifying", */
@@ -1825,8 +1825,8 @@ register struct attack *mattk;
 				nomovemsg = msgbuf;
 			    } else pline("%s", msgbuf);
 			    if (mdef->data == &mons[PM_GREEN_SLIME]) {
-				Sprintf(msgbuf, "%s isn't sitting well with you.", /* EN Sprintf(msgbuf, "%s isn't sitting well with you.", */ // TODO DE
-					The(mdef->data->mname));
+				Sprintf(msgbuf, "SUBJECT %s VERB_SCHLAGEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT auf ARTIKEL_BESTIMMTER %s.", /* EN Sprintf(msgbuf, "%s isn't sitting well with you.", */
+					The(mdef->data->mname), body_part(STOMACH)); /* EN The(mdef->data->mname)); */
 				if (!Unchanging) {
 					Slimed = 5L;
 					flags.botl = 1;
@@ -1843,7 +1843,7 @@ register struct attack *mattk;
 			    if (amphibious(mdef->data) &&
 				!flaming(mdef->data)) {
 				dam = 0;
-				pline("%s seems unharmed.", Monnam(mdef)); /* EN pline("%s seems unharmed.", Monnam(mdef)); */ // TODO DE
+				pline("SUBJECT %s VERB_SCHEINEN unverletzt.", Monnam(mdef)); /* EN pline("%s seems unharmed.", Monnam(mdef)); */
 			    }
 			} else
 			    pline("%s is pummeled with your debris!", /* EN pline("%s is pummeled with your debris!", */ // TODO DE
@@ -1859,7 +1859,7 @@ register struct attack *mattk;
 		    case AD_BLND:
 			if (can_blnd(&youmonst, mdef, mattk->aatyp, (struct obj *)0)) {
 			    if (mdef->mcansee)
-				pline("%s can't see in there!", Monnam(mdef)); /* EN pline("%s can't see in there!", Monnam(mdef)); */ // TODO DE
+				pline("SUBJECT %s VERB_KOENNEN da drinnen nichts sehen!", Monnam(mdef)); /* EN pline("%s can't see in there!", Monnam(mdef)); */
 			    mdef->mcansee = 0;
 			    dam += mdef->mblinded;
 			    if (dam > 127) dam = 127;
@@ -1883,7 +1883,7 @@ register struct attack *mattk;
 				pline("SUBJECT %s VERB_SCHEINEN leicht zu frˆsteln.", Monnam(mdef)); /* EN pline("%s seems mildly chilly.", Monnam(mdef)); */
 				dam = 0;
 			    } else
-				pline("%s is freezing to death!",Monnam(mdef)); /* EN pline("%s is freezing to death!",Monnam(mdef)); */ // TODO DE
+				pline("SUBJECT %s ist am Erfrieren!",Monnam(mdef)); /* EN pline("%s is freezing to death!",Monnam(mdef)); */
 			    golemeffects(mdef,(int)mattk->adtyp,dam);
 			} else dam = 0;
 			break;
@@ -1904,7 +1904,7 @@ register struct attack *mattk;
 		    if (mdef->mhp <= 0)	/* not lifesaved */
 			return(2);
 		}
-		You("%s %s SATZKLAMMER!", is_animal(youmonst.data) ? "VERB_REGURGITATE" /* EN You("%s %s!", is_animal(youmonst.data) ? "regurgitate" */
+		You("%s OBJECT %s SATZKLAMMER!", is_animal(youmonst.data) ? "VERB_REGURGITATE" /* EN You("%s %s!", is_animal(youmonst.data) ? "regurgitate" */
 			: "VERB_EXPEL", mon_nam(mdef)); /* EN : "expel", mon_nam(mdef)); */
 		if (Slow_digestion || is_animal(youmonst.data)) {
 		    pline("Offensichtlich VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s nicht.", /* EN pline("Obviously, you didn't like %s taste.", */
@@ -2019,7 +2019,7 @@ use_weapon:
 			    if (mon->data == &mons[PM_SHADE] &&
 					!(mattk->aatyp == AT_KICK &&
 					    uarmf && uarmf->blessed)) {
-				Your("NOUN_ATTACK durch-VERB_DRINGEN OBJECT %s ohne Wirkung.", /* EN Your("attack passes harmlessly through %s.", */
+				Your("NOUN_ATTACK VERB_DURCHDRINGEN OBJECT %s ohne Wirkung.", /* EN Your("attack passes harmlessly through %s.", */
 				    mon_nam(mon));
 				break;
 			    }
@@ -2048,7 +2048,7 @@ use_weapon:
 			dhit = 1;
 			wakeup(mon);
 			if (mon->data == &mons[PM_SHADE])
-			    Your("NOUN_UMARMUNG durch-VERB_DRINGEN OBJECT %s ohne Wirkung.", /* EN Your("hug passes harmlessly through %s.", */
+			    Your("NOUN_UMARMUNG VERB_DURCHDRINGEN OBJECT %s ohne Wirkung.", /* EN Your("hug passes harmlessly through %s.", */
 				mon_nam(mon));
 			else if (!sticks(mon->data) && !u.uswallow) {
 			    if (mon==u.ustuck) {
@@ -2074,7 +2074,7 @@ use_weapon:
 			if((dhit = (tmp > rnd(20+i)))) {
 				wakeup(mon);
 				if (mon->data == &mons[PM_SHADE])
-				    Your("attempt to surround %s is harmless.", /* EN Your("attempt to surround %s is harmless.", */ // TODO DE
+				    Your("NOUN_VERSUCH, OBJECT %s zu umschlieﬂen, ist harmlos.", /* EN Your("attempt to surround %s is harmless.", */
 					mon_nam(mon));
 				else {
 				    sum[i]= gulpum(mon,mattk);
