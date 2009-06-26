@@ -303,7 +303,7 @@ dofire()
 	if (!uquiver) {
 		if (!flags.autoquiver) {
 			/* Don't automatically fill the quiver */
-			You("VERB_HABEN keine %s bereit!", Hallucination ? "Murmeln" : "Munition"); /* EN You("have no ammunition readied!"); */
+			You("VERB_HABEN keine %s geladen!", Hallucination ? "Murmeln" : "Projektile"); /* EN You("have no ammunition readied!"); */
 			return(dothrow());
 		}
 		autoquiver();

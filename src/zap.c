@@ -1849,7 +1849,7 @@ dozap()
 		return(1);
 	} else if(!(objects[obj->otyp].oc_dir == NODIR) && !getdir((char *)0)) {
 		if (!Blind)
-			pline("%s glows and fades.", The(xname(obj))); /* EN pline("%s glows and fades.", The(xname(obj))); */ // TODO DE
+			pline("SUBJECT %s VERB_ERSTRAHLEN und VERB_ERLOESCHEN wieder.", The(xname(obj))); /* EN pline("%s glows and fades.", The(xname(obj))); */
 		/* make him pay for knowing !NODIR */
 	} else if(!u.dx && !u.dy && !u.dz && !(objects[obj->otyp].oc_dir == NODIR)) {
 	    if ((damage = zapyourself(obj, TRUE)) != 0) {
@@ -2237,7 +2237,7 @@ boolean			youattack, allow_cancel_kill, self_cancel;
 {
 	boolean	youdefend = (mdef == &youmonst);
 	static const char writing_vanishes[] =
-		"Ein Zeichen verschwindet von %s!"; /* EN "Some writing vanishes from %s head!"; */ // TODO DE
+		"Ein Zeichen verschwindet von KASUS_DATIV %s!"; /* EN "Some writing vanishes from %s head!"; */
 	/* static const char your[] = "your"; */	/* should be extern */ /* EN static const char your[] = "your";	*/
 
 	if (youdefend ? (!youattack && Antimagic)
@@ -3366,11 +3366,11 @@ register int dx,dy;
 			if (canseemon(mon)) {
 			    hit(fltxt, mon, ".");
 			    pline("SUBJECT %s VERB_DESINTEGRIEREN.", Monnam(mon)); /* EN pline("%s disintegrates.", Monnam(mon)); */
-			    pline("%s body reintegrates before your %s!", /* EN pline("%s body reintegrates before your %s!", */ // TODO DE
-				  s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
+			    pline("SUBJECT %s VERB_FUEGEN sich OBJECT KASUS_DATIV vor PRONOMEN_POSSESSIV %s wieder zusammen!", /* EN pline("%s body reintegrates before your %s!", */
+				  genitivattribut_zu_wort(Monnam(mon),"NOUN_BODY"), /* EN s_suffix(Monnam(mon)), */
 				  (eyecount(youmonst.data) == 1) ?
 				  	body_part(EYE) : makeplural(body_part(EYE)));
-			    pline("%s resurrects!", Monnam(mon)); /* EN pline("%s resurrects!", Monnam(mon)); */ // TODO DE
+			    pline("SUBJECT %s wieder-VERB_AUFERSTEHEN!", Monnam(mon)); /* EN pline("%s resurrects!", Monnam(mon)); */
 			}
 			mon->mhp = mon->mhpmax;
 			break; /* Out of while loop */
@@ -3381,7 +3381,7 @@ register int dx,dy;
 			    pline("SUBJECT %s VERB_ABSORBIEREN OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_TOEDLICH %s!", Monnam(mon), /* EN pline("%s absorbs the deadly %s!", Monnam(mon), */
 				  type == ZT_BREATH(ZT_DEATH) ?
 					"blast" : "NOUN_RAY"); /* EN "blast" : "ray"); */ // TODO DE
-			    pline("It seems even stronger than before."); /* EN pline("It seems even stronger than before."); */ // TODO DE
+			    pline("SUBJECT %s VERB_ERSCHEINEN sogar stärker als zuvor.", pronominalisierung(Monnam(mon))); /* EN pline("It seems even stronger than before."); */
 			}
 			break; /* Out of while loop */
 		    }

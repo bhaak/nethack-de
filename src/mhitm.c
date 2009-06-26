@@ -1401,7 +1401,7 @@ int mdead;
 		    break;
 		}
 		if(canseemon(magr))
-		    pline("%s is jolted with electricity!", Monnam(magr)); /* EN pline("%s is jolted with electricity!", Monnam(magr)); */ // TODO DE
+		    pline("SUBJECT %s VERB_BEKOMMEN einen Stromschlag!", Monnam(magr)); /* EN pline("%s is jolted with electricity!", Monnam(magr)); */
 		break;
 	    default: tmp = 0;
 		break;

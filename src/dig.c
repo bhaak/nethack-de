@@ -1245,7 +1245,7 @@ zap_dig()
 			room->typ = ROOM;
 			unblock_point(zx,zy); /* vision */
 		    } else if (!Blind)
-			pline_The("wall glows then fades."); /* EN pline_The("wall glows then fades."); */ // TODO DE
+			pline_The("NOUN_WALL VERB_ERSTRAHLEN und VERB_ERLOESCHEN wieder."); /* EN pline_The("wall glows then fades."); */
 		    break;
 		} else if (IS_TREE(room->typ)) { /* check trees before stone */
 		    if (!(room->wall_info & W_NONDIGGABLE)) {
@@ -1259,7 +1259,7 @@ zap_dig()
 			room->typ = CORR;
 			unblock_point(zx,zy); /* vision */
 		    } else if (!Blind)
-			pline_The("rock glows then fades."); /* EN pline_The("rock glows then fades."); */ // TODO DE
+			pline_The("NOUN_FELSEN VERB_ERSTRAHLEN und VERB_ERLOESCHEN wieder."); /* EN pline_The("rock glows then fades."); */
 		    break;
 		}
 	    } else if (IS_ROCK(room->typ)) {

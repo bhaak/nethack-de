@@ -3345,7 +3345,7 @@ struct trap *ttmp;
 
 	/* Will our hero succeed? */
 	if ((uprob = untrap_prob(ttmp)) && !mtmp->msleeping && mtmp->mcanmove) {
-		You("try to reach out your %s, but %s backs away skeptically.", /* EN You("try to reach out your %s, but %s backs away skeptically.", */ // TODO DE
+		You("VERB_VERSUCHEN OBJECT PRONOMEN_POSSESSIV %s auszustrecken, NEUER_SATZ aber %s VERB_WEICHEN skeptisch zur¸ck.", /* EN You("try to reach out your %s, but %s backs away skeptically.", */
 			makeplural(body_part(ARM)),
 			mon_nam(mtmp));
 		return 1;
@@ -3354,7 +3354,7 @@ struct trap *ttmp;
 
 	/* is it a cockatrice?... */
 	if (touch_petrifies(mtmp->data) && !uarmg && !Stone_resistance) {
-		You("VERB_ERGREIFEN OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_GEFANGEN %s NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("grab the trapped %s using your bare %s.", */
+		You("VERB_ERGREIFEN OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_GEFANGEN %s NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("grab the trapped %s using your bare %s.", */
 				mtmp->data->mname, makeplural(body_part(HAND)));
 
 		if (poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))
@@ -3362,7 +3362,7 @@ struct trap *ttmp;
 		else {
 			char kbuf[BUFSZ];
 
-			Sprintf(kbuf, "trying to help %s out of a pit", /* EN Sprintf(kbuf, "trying to help %s out of a pit", */ // TODO DE
+			Sprintf(kbuf, "eines Rettungsversuchs KASUS_GENITIV %s", /* EN Sprintf(kbuf, "trying to help %s out of a pit", */
 					an(mtmp->data->mname));
 			instapetrify(kbuf);
 			return 1;
@@ -3370,7 +3370,7 @@ struct trap *ttmp;
 	}
 	/* need to do cockatrice check first if sleeping or paralyzed */
 	if (uprob) {
-	    You("try to grab %s, but cannot get a firm grasp.", /* EN You("try to grab %s, but cannot get a firm grasp.", */ // TODO DE
+	    You("VERB_VERSUCHEN OBJECT %s zu packen, VERB_FINDEN aber keinen Halt.", /* EN You("try to grab %s, but cannot get a firm grasp.", */
 		mon_nam(mtmp));
 	    if (mtmp->msleeping) {
 		mtmp->msleeping = 0;
@@ -3379,7 +3379,7 @@ struct trap *ttmp;
 	    return 1;
 	}
 
-	You("reach out your %s and grab %s.", /* EN You("reach out your %s and grab %s.", */ // TODO DE
+	You("VERB_STRECKEN OBJECT PRONOMEN_POSSESSIV %s aus und VERB_PACKEN NEUES_OBJECT OBJECT %s.", /* EN You("reach out your %s and grab %s.", */
 	    makeplural(body_part(ARM)), mon_nam(mtmp));
 
 	if (mtmp->msleeping) {
@@ -3636,9 +3636,9 @@ boolean disarm;
 		case 12:
 		case 11:  msg = "ist der Sprengsatz ein Blindg‰nger";  break; /* EN case 11:  msg = "explosive charge is a dud";  break; */
 		case 10:
-		case  9:  msg = "electric charge is grounded";  break; /* EN case  9:  msg = "electric charge is grounded";  break; */ // TODO DE
+		case  9:  msg = "flieﬂt die elektrische Ladung geerdet ab";  break; /* EN case  9:  msg = "electric charge is grounded";  break; */
 		case  8:
-		case  7:  msg = "flame fizzles out";  break; /* EN case  7:  msg = "flame fizzles out";  break; */ // TODO DE
+		case  7:  msg = "flackert die Flamme nur auf";  break; /* EN case  7:  msg = "flame fizzles out";  break; */
 		case  6:
 		case  5:
 		case  4:  msg = "verfehlen KASUS_AKKUSATIV PRONOMEN_PERSONAL die Giftnadeln";  break; /* EN case  4:  msg = "poisoned needle misses";  break; */
@@ -3740,7 +3740,7 @@ boolean disarm;
 		case 6: {
 			int dmg;
 
-			You("are jolted by a surge of electricity!"); /* EN You("are jolted by a surge of electricity!"); */ // TODO DE
+			Dich("durchf‰hrt ein Stromschlag!"); /* EN You("are jolted by a surge of electricity!"); */
 			if(Shock_resistance)  {
 			    shieldeff(u.ux, u.uy);
 			    You("don't seem to be affected."); /* EN You("don't seem to be affected."); */ // TODO DE

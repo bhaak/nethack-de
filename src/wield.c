@@ -357,14 +357,14 @@ dowieldquiver()
 	if (newquiver == &zeroobj) {
 		/* Explicitly nothing */
 		if (uquiver) {
-			You("now have no ammunition readied."); /* EN You("now have no ammunition readied."); */ // TODO DE
+			You("VERB_HABEN jetzt keine Projektile mehr geladen."); /* EN You("now have no ammunition readied."); */
 			setuqwep(newquiver = (struct obj *) 0);
 		} else {
-			You("already have no ammunition readied!"); /* EN You("already have no ammunition readied!"); */ // TODO DE
+			You("VERB_HABEN schon keine Projektile geladen!"); /* EN You("already have no ammunition readied!"); */
 			return(0);
 		}
 	} else if (newquiver == uquiver) {
-		pline("That ammunition is already readied!"); /* EN pline("That ammunition is already readied!"); */ // TODO DE
+		pline("Diese Projektile sind schon geladen!"); /* EN pline("That ammunition is already readied!"); */
 		return(0);
 	} else if (newquiver == uwep) {
 		/* Prevent accidentally readying the main weapon */
@@ -424,7 +424,7 @@ const char *verb;	/* "rub",&c */
 
 	You_cant("%s %s %s while wearing %s.", /* EN You_cant("%s %s %s while wearing %s.", */ // TODO DE
 		 verb, shk_your(yourbuf, obj), what,
-		 more_than_1 ? "them" : "it"); /* EN more_than_1 ? "them" : "it"); */ // TODO DE
+		 pronominalisierung(what)); /* EN more_than_1 ? "them" : "it"); */
 	return FALSE;
     }
     if (welded(uwep)) {
@@ -434,7 +434,7 @@ const char *verb;	/* "rub",&c */
 	    if (bimanual(uwep)) hand = makeplural(hand);
 	    if (strstri(what, "NOUN_PAAR ") != 0) more_than_1 = FALSE; /* EN if (strstri(what, "pair of ") != 0) more_than_1 = FALSE; */
 	    pline(
-	     "Da PRONOMEN_POSSESSIV NOUN_WEAPON OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s VERB_KLEBEN, NEUER_SATZ SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL PRONOMEN_DIESER %s nicht MODIFIER_VERB_INFINITIV %s.", /* EN "Since your weapon is welded to your %s, you cannot %s %s %s.", */
+	     "Da PRONOMEN_POSSESSIV NOUN_WEAPON OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s VERB_KLEBEN, NEUER_SATZ SUBJECT_IM_SATZ VERB_KOENNEN PRONOMEN_PERSONAL OBJECT PRONOMEN_DIESER %s nicht MODIFIER_VERB_INFINITIV %s.", /* EN "Since your weapon is welded to your %s, you cannot %s %s %s.", */
 		  hand, xname(obj), verb); /* EN hand, verb, more_than_1 ? "those" : "that", xname(obj)); */
 	} else {
 	    You("VERB_KOENNEN das nicht tun."); /* EN You_cant("do that."); */
@@ -442,13 +442,13 @@ const char *verb;	/* "rub",&c */
 	return FALSE;
     }
     if (cantwield(youmonst.data)) {
-	You_cant("hold %s strongly enough.", more_than_1 ? "them" : "it"); /* EN You_cant("hold %s strongly enough.", more_than_1 ? "them" : "it"); */ // TODO DE
+	You("VERB_KOENNEN OBJECT %s nicht richtig halten.", pronominalisierung(what)); /* EN You_cant("hold %s strongly enough.", more_than_1 ? "them" : "it"); */
 	return FALSE;
     }
     /* check shield */
     if (uarms && bimanual(obj)) {
-	You("cannot %s a two-handed %s while wearing a shield.", /* EN You("cannot %s a two-handed %s while wearing a shield.", */ // TODO DE
-	    verb, (obj->oclass == WEAPON_CLASS) ? "NOUN_WEAPON" : "NOUN_TOOL"); /* EN verb, (obj->oclass == WEAPON_CLASS) ? "weapon" : "tool"); */
+	You("VERB_KOENNEN OBJECT PRONOMEN_KEIN ADJEKTIV_ZWEIHAENDIG %s MODIFIER_VERB_INFINITIV %s und gleichzeitig einen Schild VERB_TRAGEN.", /* EN You("cannot %s a two-handed %s while wearing a shield.", */
+	    (obj->oclass == WEAPON_CLASS) ? "NOUN_WEAPON" : "NOUN_TOOL", verb); /* EN verb, (obj->oclass == WEAPON_CLASS) ? "weapon" : "tool"); */
 	return FALSE;
     }
     if (uquiver == obj) setuqwep((struct obj *)0);
@@ -493,7 +493,7 @@ can_twoweapon()
 		otmp = bimanual(uwep) ? uwep : uswapwep;
 		pline("SUBJECT %s ist nicht mit nur einer Hand benutzbar.", Yname2(otmp)); /* EN pline("%s isn't one-handed.", Yname2(otmp)); */
 	} else if (uarms)
-		You("VERB_KOENNEN nicht zwei Waffen benutzen, NEUER_SATZ während SUBJECT_IM_SATZ einen Schild VERB_TRAGEN."); /* EN You_cant("use two weapons while wearing a shield."); */
+		You("VERB_KOENNEN nicht zwei Waffen benutzen und gleichzeitig einen Schild tragen."); /* EN You_cant("use two weapons while wearing a shield."); */
 	else if (uswapwep->oartifact)
 		pline("%s %s being held second to another weapon!", /* EN pline("%s %s being held second to another weapon!", */ // TODO DE
 			Yname2(uswapwep), otense(uswapwep, "resist")); /* EN Yname2(uswapwep), otense(uswapwep, "resist")); */ // TODO DE

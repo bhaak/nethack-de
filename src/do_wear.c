@@ -1893,7 +1893,7 @@ do_takeoff()
 	  u.twoweap = FALSE;
 	} else if (taking_off == W_QUIVER) {
 	  setuqwep((struct obj *) 0);
-	  You("no longer have ammunition readied."); /* EN You("no longer have ammunition readied.");*/ // TODO DE
+	  You("VERB_HABEN keine Projektile mehr geladen."); /* EN You("no longer have ammunition readied.");*/
 	} else if (taking_off == WORN_ARMOR) {
 	  otmp = uarm;
 	  if(!cursed(otmp)) (void) Armor_off();
