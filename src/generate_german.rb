@@ -1749,11 +1749,12 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ORCISH_HELM", "Orkhelm", "es", "Orkhelm", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_DWARVISH_IRON_HELM", "eisern", "Zwergenhelm", "es", "Zwergenhelm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_FEDORA", "Fedora", "", "Fedora", "fremder", "maskulin"),
-    #dekliniere_substantiv("NOUN_CORNUTHAUM" # Zaubererhut? Etwas lasch
+    dekliniere_substantiv("NOUN_CORNUTHAUM", "Cornuthaum", "", "Cornuthaum", "fremder", "maskulin"), # Zaubererhut? Etwas lasch
+    dekliniere_substantiv("NOUN_CORNUTHAUM", "Zauberhut", "es", "Zauberhüt", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DUNCE_CAP", "Narrenkappe", "", "Narrenkappe", "en", "feminin"), # Narrenkappe, Eselsmütze
     dekliniere_nominalphrase("NOUN_DENTED_POT", "verbeult", "Topf", "es", "Töpf", "e", "maskulin"),
     dekliniere_substantiv("NOUN_HELMET", "Helm", "es", "Helm", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_HELM_OF_BRILLIANCE" # Helm der Genialität
+    dekliniere_substantiv("NOUN_HELM_OF_BRILLIANCE", "Helm", "es", "Helm", "e", "maskulin","","der Genialität"),
     dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT", "Helm", "es", "Helm", "e", "maskulin","","des Gesinnungswandel"), # Helm der entgegengesetzten Gesinnung, Helm des Gesinnungswandel
     dekliniere_substantiv("NOUN_HELM_OF_OPPOSITE_ALIGNMENT", "Wendehalshelm", "es", "Wendehalshelm", "e", "maskulin"),
     dekliniere_substantiv("NOUN_HELM_OF_TELEPATHY", "Helm", "es", "Helm", "e", "maskulin","","der Telepathie"),
@@ -1813,7 +1814,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ORCISH_SHIELD", "Orkschild", "es", "Orkschild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_LARGE_SHIELD", "Langschild", "es", "Langschild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_DWARVISH_ROUNDSHIELD", "Zwergen-Rundschild", "es", "Zwergen-Rundschild", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_SHIELD_OF_REFLECTION"
+    dekliniere_substantiv("NOUN_SHIELD_OF_REFLECTION", "Schild", "es", "Schild", "e", "maskulin", "", "der Spiegelung"),
+    dekliniere_substantiv("NOUN_SHIELD_OF_REFLECTION", "Schild", "es", "Schild", "e", "maskulin", "", "der Reflektion"),
     dekliniere_substantiv("NOUN_LEATHER_GLOVES", "Lederhandschuh", "es", "Lederhandschuh", "e", "feminin"),
     dekliniere_substantiv("NOUN_GAUNTLETS_OF_FUMBLING", "Handschuh", "es", "Handschuh", "e", "maskulin", "", "der Tolpatschigkeit"), # Ungeschicklichkeit, Fummligkeit, # js des Ungeschicks?
     dekliniere_substantiv("NOUN_GAUNTLETS_OF_FUMBLING", "Handschuh", "es", "Handschuh", "e", "maskulin", "", "der Fummligkeit"),
@@ -1877,8 +1879,8 @@ def ausgabe_nouns
     "/* Wands, identified */",
     dekliniere_substantiv("NOUN_WAND_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),
     #dekliniere_substantiv("NOUN_WAND_SECRET_DOOR_DETECTION", # Geheimtürerspürung?
-    #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monstererschaffung", "", "Monstererschaffung", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterherbeirufung",
+    # dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monstererschaffung", "", "Monstererschaffung", "en", "feminin"),
+    # dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterherbeirufung",
     dekliniere_substantiv("NOUN_WAND_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_WISHING", "Wünschen", "s", "", "", "neutrum"),
@@ -3007,7 +3009,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ORCRIST","Orkrist","","","","neutrum"),
     dekliniere_substantiv("NOUN_ORCRIST","Orcrist","","","","neutrum"),
     dekliniere_substantiv("NOUN_STING","Stich","","","","maskulin"),
-    #dekliniere_substantiv("NOUN_MAGICBANE","Magietöter/Magiebann/Magiebanner?","","","",""), # Magietöter, Magiebann, Magiebanner, Magiestörer, Magiezerstörer
+    dekliniere_substantiv("NOUN_MAGICBANE","Magiebrecher","","","","maskulin"), # Magietöter, Magiebann, Magiebanner, Magiestörer, Magiezerstörer, Magieentkräfter, Magieaufreiber, Magieauslauger, Magieverzehrer, Magiebrecher, Magieberster, Magiekrepierer, Magielazerator, Magienekator; netzhack: Magiefluch; xororand: Magieverderber, Magiezermürber, Magietormentor
     dekliniere_substantiv("NOUN_FROST_BRAND","Frostklinge","","","","feminin"),
     dekliniere_substantiv("NOUN_FROST_BRAND","Frostbrand","es","","","maskulin"),
     dekliniere_substantiv("NOUN_FIRE_BRAND","Flammenklinge","","","","feminin"), # Flammenklinge, Flammenschwert, Feuerklinge, Feuerschwert

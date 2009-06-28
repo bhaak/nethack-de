@@ -915,6 +915,14 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Fedora", "NOUN_FEDORA", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fedora", "NOUN_FEDORAs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Cornuthaum", "NOUN_CORNUTHAUM", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Cornuthaum", "NOUN_CORNUTHAUMs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Zauberhutes", "NOUN_CORNUTHAUM", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zauberhut", "NOUN_CORNUTHAUM", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zauberhüte", "NOUN_CORNUTHAUMs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Zauberhüten", "NOUN_CORNUTHAUMs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Narrenkappe", "NOUN_DUNCE_CAP", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Narrenkappen", "NOUN_DUNCE_CAPs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -932,6 +940,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Helm", "NOUN_HELMET", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Helme", "NOUN_HELMETs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Helmen", "NOUN_HELMETs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Helmes der Genialität", "NOUN_HELM_OF_BRILLIANCE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Helm der Genialität", "NOUN_HELM_OF_BRILLIANCE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Helme der Genialität", "NOUN_HELM_OF_BRILLIANCEs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Helmen der Genialität", "NOUN_HELM_OF_BRILLIANCEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Helmes des Gesinnungswandel", "NOUN_HELM_OF_OPPOSITE_ALIGNMENT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Helm des Gesinnungswandel", "NOUN_HELM_OF_OPPOSITE_ALIGNMENT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -1200,6 +1213,16 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Zwergen-Rundschild", "NOUN_DWARVISH_ROUNDSHIELD", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Zwergen-Rundschilde", "NOUN_DWARVISH_ROUNDSHIELDs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Zwergen-Rundschilden", "NOUN_DWARVISH_ROUNDSHIELDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schildes der Spiegelung", "NOUN_SHIELD_OF_REFLECTION", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schild der Spiegelung", "NOUN_SHIELD_OF_REFLECTION", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schilde der Spiegelung", "NOUN_SHIELD_OF_REFLECTIONs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schilden der Spiegelung", "NOUN_SHIELD_OF_REFLECTIONs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schildes der Reflektion", "NOUN_SHIELD_OF_REFLECTION", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schild der Reflektion", "NOUN_SHIELD_OF_REFLECTION", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schilde der Reflektion", "NOUN_SHIELD_OF_REFLECTIONs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schilden der Reflektion", "NOUN_SHIELD_OF_REFLECTIONs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Lederhandschuhes", "NOUN_LEATHER_GLOVES", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lederhandschuh", "NOUN_LEATHER_GLOVES", "", dativ|nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7858,6 +7881,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Orcrist", "NOUN_ORCRIST", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Stich", "NOUN_STING", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Magiebrecher", "NOUN_MAGICBANE", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Frostklinge", "NOUN_FROST_BRAND", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
