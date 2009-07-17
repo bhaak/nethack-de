@@ -2723,6 +2723,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_OGRE_KING","Ogerkönig","es","Ogerkönig","e","maskulin"),
     dekliniere_nominalphrase("NOUN_GRAY_OOZE", "Grau", "Schlamm", "es", "Schlamm", "e", "maskulin"), # grauer Schleim, Schlick?
     dekliniere_nominalphrase("NOUN_BROWN_PUDDING", "Braun", "Grütze", "", "Grütze", "en", "feminin"),
+    dekliniere_nominalphrase("NOUN_BLACK_PUDDING", "Blutschwarz", "Grütze", "", "Grütze", "en", "feminin"),
     dekliniere_nominalphrase("NOUN_BLACK_PUDDING", "Schwarz", "Grütze", "", "Grütze", "en", "feminin"),
     dekliniere_nominalphrase("NOUN_GREEN_SLIME", "Grün", "Schleim", "es", "Schleim", "e", "maskulin"),
     dekliniere_substantiv("NOUN_QUANTUM_MECHANIC", "Quantenteilchen", "s", "Quantenteilchen", "", "neutrum"),
