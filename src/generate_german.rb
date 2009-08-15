@@ -3795,6 +3795,10 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_FARBE_BRIGHT_BLUE","knallblau"),
     dekliniere_adjektiv("ADJEKTIV_FARBE_BRIGHT_MAGENTA","knallrot"),
     dekliniere_adjektiv("ADJEKTIV_FARBE_BRIGHT_CYAN","blaugrün"),
+    '/* Halluzinierte "Farben" */',
+    dekliniere_adjektiv("ADJEKTIV_FARBE_DREIECKIG","dreieckig"),
+    dekliniere_adjektiv("ADJEKTIV_FARBE_QUADRATISCH","quadratisch"),
+    dekliniere_adjektiv("ADJEKTIV_FARBE_RUND","rund"),
 
     "",
     "/* 'andere' ist eigentlich ein Pronomen, wird aber wie ein Adjektiv dekliniert */",

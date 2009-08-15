@@ -1062,16 +1062,18 @@ roguename() /* Name of a Rogue player */
 #ifdef OVL2
 
 static NEARDATA const char * const hcolors[] = {
-// TODO DE
-	"ultraviolet", "infrared", "bluish-orange",
-	"reddish-green", "dark white", "light black", "sky blue-pink",
-	"salty", "sweet", "sour", "bitter",
-	"striped", "spiral", "swirly", "plaid", "checkered", "argyle",
-	"paisley", "blotchy", "guernsey-spotted", "polka-dotted",
-	"square", "round", "triangular",
-	"cabernet", "sangria", "fuchsia", "wisteria",
-	"lemon-lime", "strawberry-banana", "peppermint",
-	"romantic", "incandescent"
+#ifdef GERMAN
+	"kohlpechraben-ADJEKTIV_FARBE_BLACK", "schloh-ADJEKTIV_FARBE_WHITE", "ADJEKTIV_FARBE_UNBUNT",
+#endif
+	"ADJEKTIV_FARBE_ULTRAVIOLETT", "ADJEKTIV_FARBE_INFRAROT", "bl‰ulich-ADJEKTIV_FARBE_ORANGE", /* EN "ultraviolet", "infrared", "bluish-orange", */
+	"rot-ADJEKTIV_FARBE_GREEN", "dunkel-ADJEKTIV_FARBE_WHITE", "hell-ADJEKTIV_FARBE_BLACK", "himmelblau--ADJEKTIV_FARBE_PINK", /* EN "reddish-green", "dark white", "light black", "sky blue-pink", */
+	"ADJEKTIV_FARBE_SALZIG", "ADJEKTIV_FARBE_SUESS", "ADJEKTIV_FARBE_SAUER", "ADJEKTIV_FARBE_BITTER", "umami" /* EN "salty", "sweet", "sour", "bitter", */
+	"ADJEKTIV_FARBE_GESTREIFT", "ADJEKTIV_FARBE_GEWUNDEN", "ADJEKTIV_FARBE_VERDREHT", "ADJEKTIV_FARBE_GEBLUEMT", "ADJEKTIV_FARBE_KARIERT", /* EN "striped", "spiral", "swirly", "plaid", "checkered", "argyle", */
+	"ADJEKTIV_FARBE_GEFLECKT", "ADJEKTIV_FARBE_GEPUNKTET", /* EN "paisley", "blotchy", "guernsey-spotted", "polka-dotted", */
+	"ADJEKTIV_FARBE_QUADRATISCH", "ADJEKTIV_FARBE_RUND", "ADJEKTIV_FARBE_DREIECKIG", /* EN "square", "round", "triangular", */
+	"preuﬂisch-ADJEKTIV_FARBE_BLUE", "zinnober-ADJEKTIV_FARBE_RED", "indisch-ADJEKTIV_FARBE_YELLOW", "paynes-ADJEKTIV_FARBE_BLUE", /* EN "cabernet", "sangria", "fuchsia", "wisteria", */
+	"zitronen-ADJEKTIV_FARBE_ZITRONIG", "erdbeer--ADJEKTIV_FARBE_BANANIG", "ADJEKTIV_FARBE_PFEFFERMINZIG", /* EN "lemon-lime", "strawberry-banana", "peppermint", */
+	"ADJEKTIV_FARBE_ROMANTISCH", "weiﬂ-ADJEKTIV_GLUEHEND" /* EN "romantic", "incandescent" */
 };
 
 const char *
