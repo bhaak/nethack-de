@@ -500,7 +500,7 @@ long timeout;
 
 	    if (cansee_hatchspot) {
 		Sprintf(monnambuf, "%s%s",
-			siblings ? "some " : "", /* EN siblings ? "some " : "", */ // TODO DE
+			siblings ? "ADJEKTIV_EINIG " : "", /* EN siblings ? "some " : "", */
 			siblings ?
 			makeplural(m_monnam(mon)) : an(m_monnam(mon)));
 		/* we don't learn the egg type here because learning
@@ -520,8 +520,8 @@ long timeout;
 			You("VERB_SEHEN, NEUER_SATZ wie SUBJECT_IM_SATZ %s OBJECT KASUS_DATIV aus PRONOMEN_POSSESSIV NOUN_RUCKSACK %s!", /* EN You("see %s %s out of your pack!", */
 			    monnambuf, locomotion(mon->data, "VERB_FALLEN")); /* EN monnambuf, locomotion(mon->data, "drop")); */
 		    if (yours) {
-			pline("%s cries sound like \"%s%s\"", /* EN pline("%s cries sound like \"%s%s\"", */ // TODO DE
-			    siblings ? "Their" : "Its", /* EN siblings ? "Their" : "Its", */ // TODO DE
+			pline("%s Schreie klingen wie \"%s\"%s", /* EN pline("%s cries sound like \"%s%s\"", */
+			    siblings ? "Ihre" : "Seine", /* EN siblings ? "Their" : "Its", */
 			    flags.female ? "Mama" : "Papa", /* EN flags.female ? "mommy" : "daddy", */
 			    egg->spe ? "." : "?");
 		    } else if (mon->data->mlet == S_DRAGON) {

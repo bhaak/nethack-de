@@ -246,17 +246,17 @@ boolean message;
 					switch (mdat->mattk[i].adtyp) {
 						case AD_ELEC:
 							Strcpy(blast,
-						      " in a shower of sparks"); /* EN " in a shower of sparks"); */ // TODO DE
+						      " mit einem Funkenregen"); /* EN " in a shower of sparks"); */
 							break;
 						case AD_COLD:
 							Strcpy(blast,
-							" in a blast of frost"); /* EN " in a blast of frost"); */ // TODO DE
+							" mit Schneegestöber"); /* EN " in a blast of frost"); */
 							break;
 					}
 				} else
 					Strcpy(blast, " mit einem Rülpser"); /* EN Strcpy(blast, " with a squelch"); */
-				You("VERB_WERDEN OBJECT KASUS_DATIV aus %s%s MODIFIER_VERB_PARTIZIP_PERFEKT VERB_EXPEL!", /* EN You("get expelled from %s%s!", */
-				    mon_nam(mtmp), blast);
+				You("VERB_WERDEN%s OBJECT KASUS_DATIV aus %s MODIFIER_VERB_PARTIZIP_PERFEKT VERB_EXPEL!", /* EN You("get expelled from %s%s!", */
+				    blast, mon_nam(mtmp)); /* EN mon_nam(mtmp), blast); */
 			}
 		}
 	}
@@ -266,7 +266,7 @@ boolean message;
 	spoteffects(TRUE);
 	/* to cover for a case where mtmp is not in a next square */
 	if(um_dist(mtmp->mx,mtmp->my,1))
-		pline("Brrooaa...  You land hard at some distance."); /* EN pline("Brrooaa...  You land hard at some distance."); */ // TODO DE
+		pline("Rüüllppss...  SUBJECT PRONOMEN_PERSONAL VERB_SCHLAGEN etwas weiter weg hart auf."); /* EN pline("Brrooaa...  You land hard at some distance."); */
 }
 
 #endif /* OVLB */
@@ -773,7 +773,7 @@ diseasemu(mdat)
 struct permonst *mdat;
 {
 	if (Sick_resistance) {
-		You_feel("a slight illness."); /* EN You_feel("a slight illness."); */ // TODO DE
+		Du_fuehlst_dich("leicht krank."); /* EN You_feel("a slight illness."); */
 		return FALSE;
 	} else {
 		make_sick(Sick ? Sick/3L + 1L : (long)rn1(ACURR(A_CON), 20),
@@ -1675,7 +1675,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		i = number_leashed();
 		if (i > 0) {
 		    const char *s = (i > 1) ? "NOUN_LEASHs" : "NOUN_LEASH"; /* EN const char *s = (i > 1) ? "leashes" : "leash"; */
-		    pline_The("%s %s loose.", s, vtense(s, "snap")); /* EN pline_The("%s %s loose.", s, vtense(s, "snap")); */ // TODO DE
+		    pline_The("%s %s sich.", s, vtense(s, "VERB_LOESEN")); /* EN pline_The("%s %s loose.", s, vtense(s, "snap")); */
 		    unleash_all();
 		}
 
@@ -1730,7 +1730,7 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 			/* NB: Amphibious includes Breathless */
 			if (Amphibious && !flaming(youmonst.data)) tmp = 0;
 		    } else {
-			You("are pummeled with debris!"); /* EN You("are pummeled with debris!"); */ // TODO DE
+			pline("Schutt und Geröll donnern KASUS_AKKUSATIV auf PRONOMEN_PERSONAL herab!"); /* EN You("are pummeled with debris!"); */
 			exercise(A_STR, FALSE);
 		    }
 		    break;
@@ -2330,7 +2330,7 @@ register struct monst *mon;
 		You("VERB_SCHEINEN es mehr genossen zu haben als OBJECT KASUS_NOMINATIV %s ...", /* EN You("seem to have enjoyed it more than %s...", */
 		    noit_mon_nam(mon));
 		switch (rn2(5)) {
-		case 0: You_feel("raised to your full potential."); /* EN case 0: You_feel("raised to your full potential."); */ // TODO DE
+		case 0: You_feel("voll aufgeladen."); /* EN case 0: You_feel("raised to your full potential."); */
 			exercise(A_CON, TRUE);
 			u.uen = (u.uenmax += rnd(5));
 			break;
@@ -2435,7 +2435,7 @@ const char *str;
 		verbalize("Zieh KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s aus; %s.", str, /* EN verbalize("Take off your %s; %s.", str, */
 			(obj == uarm)  ? "rück' ein bisschen näher" : /* EN (obj == uarm)  ? "let's get a little closer" : */
 			(obj == uarmc || obj == uarms) ? "das ist nur im Weg" : /* EN (obj == uarmc || obj == uarms) ? "it's in the way" : */
-			(obj == uarmf) ? "let me rub your feet" : /* EN (obj == uarmf) ? "let me rub your feet" : */ // TODO DE
+			(obj == uarmf) ? "lass mich deine Füße massieren" : /* EN (obj == uarmf) ? "let me rub your feet" : */
 			(obj == uarmg) ? "die sind so klobig" : /* EN (obj == uarmg) ? "they're too clumsy" : */
 #ifdef TOURIST
 			(obj == uarmu) ? "lass mich dich massieren" : /* EN (obj == uarmu) ? "let me massage you" : */
@@ -2595,7 +2595,7 @@ register struct attack *mattk;
 		    tmp = 0;
 		    break;
 		}
-		pline("SUBJECT %s is jolted with your electricity!", Monnam(mtmp)); /* EN pline("%s is jolted with your electricity!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_BEKOMMEN OBJECT KASUS_DATIV von PRONOMEN_PERSONAL einen Stromschlag!", Monnam(mtmp)); /* EN pline("%s is jolted with your electricity!", Monnam(mtmp)); */
 		break;
 	    default: tmp = 0;
 		break;

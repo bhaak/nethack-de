@@ -2585,8 +2585,8 @@ register const char *force;		/* usually either "." or "!" */
 	if((!cansee(bhitpos.x,bhitpos.y) && !canspotmon(mtmp) &&
 	     !(u.uswallow && mtmp == u.ustuck))
 	   || !flags.verbose)
-	    pline("SUBJECT %s %s OBJECT NOUN_IT.", The(str), vtense(str, "VERB_HIT")); /* EN pline("SUBJECT %s %s OBJECT NOUN_IT.", The(str), vtense(str, "VERB_HIT")); */ // TODO DE
-	else pline("SUBJECT %s %s OBJECT %s%s", The(str), vtense(str, "VERB_HIT"), /* EN else pline("SUBJECT %s %s OBJECT %s%s", The(str), vtense(str, "VERB_HIT"), */ // TODO DE
+	    pline("SUBJECT %s %s etwas.", The(str), vtense(str, "VERB_HIT")); /* EN pline("SUBJECT %s %s OBJECT NOUN_IT.", The(str), vtense(str, "VERB_HIT")); */
+	else pline("SUBJECT %s %s OBJECT %s%s", The(str), vtense(str, "VERB_HIT"), /* EN else pline("SUBJECT %s %s OBJECT %s%s", The(str), vtense(str, "VERB_HIT"), */
 		   mon_nam(mtmp), force);
 }
 
@@ -2595,7 +2595,7 @@ miss(str,mtmp)
 register const char *str;
 register struct monst *mtmp;
 {
-	pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"), /* EN pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"), */ // TODO DE
+	pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"), /* EN pline("SUBJECT %s %s OBJECT %s.", The(str), vtense(str, "VERB_MISS"), */
 	      ((cansee(bhitpos.x,bhitpos.y) || canspotmon(mtmp))
 	       && flags.verbose) ?
 	      mon_nam(mtmp) : "NOUN_ETWAS"); /* EN mon_nam(mtmp) : "NOUN_IT"); */
@@ -3819,7 +3819,7 @@ register struct obj *obj;
 }
 
  const char * const destroy_strings[] = {	/* also used in trap.c */
-	"freezes and shatters", "freeze and shatter", "shattered potion", /* EN "freezes and shatters", "freeze and shatter", "shattered potion", */ // TODO DE
+	"VERB_GEFRIEREN und VERB_ZERSPRINGEN", "VERB_GEFRIEREN und VERB_ZERSPRINGEN", "ADJEKTIV_ZERSPRUNGEN NOUN_POTION", /* EN "freezes and shatters", "freeze and shatter", "shattered potion", */
 	"boils and explodes", "boil and explode", "boiling potion", /* EN "boils and explodes", "boil and explode", "boiling potion", */ // TODO DE
 	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "ADJEKTIV_VERBRENNEND NOUN_SCROLL", /* EN "catches fire and burns", "catch fire and burn", "burning scroll", */
 	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "ADJEKTIV_BRENNEND NOUN_BUCH", /* EN "catches fire and burns", "catch fire and burn", "burning book", */

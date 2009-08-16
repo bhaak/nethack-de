@@ -931,7 +931,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 			if (u.usick_type & SICK_VOMITABLE)
 				you_are("krank wegen einer Lebensmittelvergiftung"); /* EN you_are("sick from food poisoning"); */
 			if (u.usick_type & SICK_NONVOMITABLE)
-				you_are("sick from illness"); /* EN you_are("sick from illness"); */ // TODO DE
+				you_are("krank"); /* EN you_are("sick from illness"); */
 		}
 	}
 	if (Stoned) you_are("am Versteinern"); /* EN if (Stoned) you_are("turning to stone"); */
@@ -1542,7 +1542,7 @@ struct ext_func_tab extcmdlist[] = {
 	{"chat", "sprich mit Jemandem", dotalk, TRUE},	/* converse? */ /* EN {"chat", "talk to someone", dotalk, TRUE},	*/
 	{"conduct", "list which challenges you have adhered to", doconduct, TRUE}, /* EN {"conduct", "list which challenges you have adhered to", doconduct, TRUE}, */ // TODO DE
 	{"dip", "dip an object into something", dodip, FALSE}, /* EN {"dip", "dip an object into something", dodip, FALSE}, */ // TODO DE
-	{"enhance", "advance or check weapons skills", enhance_weapon_skill, /* EN {"enhance", "advance or check weapons skills", enhance_weapon_skill, */ // TODO DE
+	{"enhance", "Waffenfertigkeiten einsehen oder verbessern", enhance_weapon_skill, /* EN {"enhance", "advance or check weapons skills", enhance_weapon_skill, */
 							TRUE},
 	{"force", "brich ein Schloss auf", doforce, FALSE}, /* EN {"force", "force a lock", doforce, FALSE}, */
 	{"invoke", "invoke an object's powers", doinvoke, TRUE}, /* EN {"invoke", "invoke an object's powers", doinvoke, TRUE}, */ // TODO DE
@@ -1558,11 +1558,11 @@ struct ext_func_tab extcmdlist[] = {
 #endif
 	{"rub", "reibe eine Lampe oder einen Stein", dorub, FALSE}, /* EN {"rub", "rub a lamp or a stone", dorub, FALSE}, */
 #ifdef LIVELOG_SHOUT
-	{"shout", "shout something", doshout, FALSE}, /* EN +	{"shout", "shout something", doshout, FALSE}, */ // TODO DE
+	{"shout", "schreie etwas", doshout, FALSE}, /* EN +	{"shout", "shout something", doshout, FALSE}, */
 #endif
-	{"sit", "sit down", dosit, FALSE}, /* EN {"sit", "sit down", dosit, FALSE}, */ // TODO DE
+	{"sit", "setz dich hin", dosit, FALSE}, /* EN {"sit", "sit down", dosit, FALSE}, */
 	{"turn", "turn undead", doturn, TRUE}, /* EN {"turn", "turn undead", doturn, TRUE}, */ // TODO DE
-	{"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, /* EN {"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, */ // TODO DE
+	{"twoweapon", "beidhändigen Kampf beginnen/beenden", dotwoweapon, FALSE}, /* EN {"twoweapon", "toggle two-weapon combat", dotwoweapon, FALSE}, */
 	{"untrap", "etwas entschärfen", dountrap, FALSE}, /* EN {"untrap", "untrap something", dountrap, FALSE}, */
 	{"version", "zeige die fest einkompilierten Optionen für diese Version von NetHack", /* EN {"version", "list compile time options for this version of NetHack", */
 		doextversion, TRUE},
@@ -1604,17 +1604,17 @@ static const struct ext_func_tab debug_extcmdlist[] = {
 	{"migratemons", "migriere n zufällige Monster", wiz_migrate_mons, TRUE}, /* EN +	{"migratemons", "migrate n random monsters", wiz_migrate_mons, TRUE}, */
 #endif
 	{"monpolycontrol", "kontrolliere Monstertransformationen", wiz_mon_polycontrol, TRUE}, /* EN {"monpolycontrol", "control monster polymorphs", wiz_mon_polycontrol, TRUE}, */
-	{"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, /* EN {"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, */ // TODO DE
+	{"panic", "testet Panikroutine (beendet Spiel)", wiz_panic, TRUE}, /* EN {"panic", "test panic routine (fatal to game)", wiz_panic, TRUE}, */
 	{"polyself", "Eigentransformation", wiz_polyself, TRUE}, /* EN {"polyself", "polymorph self", wiz_polyself, TRUE}, */
 #ifdef PORT_DEBUG
-	{"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, /* EN {"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, */ // TODO DE
+	{"portdebug", "Wizard-Port-Debug-Befehl", wiz_port_debug, TRUE}, /* EN {"portdebug", "wizard port debug command", wiz_port_debug, TRUE}, */
 #endif
 	{"seenv", "zeige gesehene Vektoren", wiz_show_seenv, TRUE}, /* EN {"seenv", "show seen vectors", wiz_show_seenv, TRUE}, */
 	{"stats", "zeige Speicher-Statistiken", wiz_show_stats, TRUE}, /* EN {"stats", "show memory statistics", wiz_show_stats, TRUE}, */
-	{"timeout", "look at timeout queue", wiz_timeout_queue, TRUE}, /* EN {"timeout", "look at timeout queue", wiz_timeout_queue, TRUE}, */ // TODO DE
+	{"timeout", "betrachte die Timeout-Warteschlange", wiz_timeout_queue, TRUE}, /* EN {"timeout", "look at timeout queue", wiz_timeout_queue, TRUE}, */
 	{"vision", "zeige Sichtfeld", wiz_show_vision, TRUE}, /* EN {"vision", "show vision array", wiz_show_vision, TRUE}, */
 #ifdef DEBUG
-	{"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE}, /* EN {"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE}, */ // TODO DE
+	{"wizdebug", "Wizard-Debug-Befehl", wiz_debug_cmd, TRUE}, /* EN {"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE}, */
 #endif
 	{"wmode", "zeige Wandmodus", wiz_show_wmodes, TRUE}, /* EN {"wmode", "show wall modes", wiz_show_wmodes, TRUE}, */
 	{(char *)0, (char *)0, donull, TRUE}
@@ -2209,9 +2209,9 @@ const char *msg;
 		    || wizard
 #endif
 	                     )) {
-		Sprintf(buf, "Are you trying to use ^%c%s?", sym, /* EN Sprintf(buf, "Are you trying to use ^%c%s?", sym, */ // TODO DE
+		Sprintf(buf, "SUBJECT VERB_VERSUCHEN PRONOMEN_PERSONAL ^%c%s zu benutzen?", sym, /* EN Sprintf(buf, "Are you trying to use ^%c%s?", sym, */
 			index(wiz_only_list, sym) ? "" :
-			" as specified in the Guidebook"); /* EN " as specified in the Guidebook"); */ // TODO DE
+			", wie im Reiseführer angegeben, "); /* EN " as specified in the Guidebook"); */
 		putstr(win, 0, buf);
 		putstr(win, 0, "");
 		putstr(win, 0, expl);
