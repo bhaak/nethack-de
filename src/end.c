@@ -293,7 +293,7 @@ panic VA_DECL(const char *, str)
 	}
 
 	raw_print(program_state.gameover ?
-		  "Postgame wrapup disrupted." : /* EN "Postgame wrapup disrupted." : */ // TODO DE
+		  "Spielabwicklung wurde unterbrochen." : /* EN "Postgame wrapup disrupted." : */
 		  !program_state.something_worth_saving ?
 		  "Programm-Initialisierung fehlgeschlagen." : /* EN "Program initialization has failed." : */
 		  "Plötzlich stürzt der Dungeon ein."); /* EN "Suddenly, the dungeon collapses."); */
@@ -571,6 +571,9 @@ int how;
 	boolean bones_ok, have_windows = iflags.window_inited;
 	struct obj *corpse = (struct obj *)0;
 	long umoney;
+#ifdef GERMAN
+	char *ends_how = ends[how];
+#endif
 
 	if (how == TRICKED) {
 	    if (killer) {
@@ -799,7 +802,7 @@ die:
 	if (u.uhave.amulet) Strcat(kilbuf, " (mit dem Amulett)"); /* EN if (u.uhave.amulet) Strcat(kilbuf, " (with the Amulet)"); */
 	else if (how == ESCAPED) {
 	    if (Is_astralevel(&u.uz))	/* offered Amulet to wrong deity */
-		Strcat(kilbuf, " (in himmlisch/überirdisch Blamage/Schande/Schmach/Ungnade)"); /* EN Strcat(kilbuf, " (in celestial disgrace)"); */ // TODO DE
+		Strcat(kilbuf, " (in himmlisch/überirdisch/göttlicher Blamage/Schande/Schmach/Ungnade)"); /* EN Strcat(kilbuf, " (in celestial disgrace)"); */ // TODO DE
 	    else if (carrying(FAKE_AMULET_OF_YENDOR))
 		Strcat(kilbuf, " (mit einem gefälschten Amulett)"); /* EN Strcat(kilbuf, " (with a fake Amulet)"); */
 		/* don't bother counting to see whether it should be plural */
@@ -857,7 +860,7 @@ die:
 	    if (!done_stopprint) {
 		Sprintf(eos(pbuf), "%s mit %ld Punkt%s,", /* EN Sprintf(eos(pbuf), "%s with %ld point%s,", */
 			how==ASCENDED ? "MODIFIER_VERB_PRAETERITUM VERB_BEKOMMEN OBJECT PRONOMEN_POSSESSIV ADJEKTIV_WOHLVERDIENT NOUN_BELOHNUNG" : /* EN how==ASCENDED ? "went to your reward" : */
-					"VERB_SEIN aus dem Dungeon", /* EN "escaped from the dungeon", */ // TODO DE
+					"VERB_SEIN aus dem Dungeon", /* EN "escaped from the dungeon", */
 			u.urexp, (u.urexp == 1) ? "" : "en"); /* EN u.urexp, plur(u.urexp)); */
 		putstr(endwin, 0, pbuf);
 	    }
@@ -898,8 +901,11 @@ die:
 	    if (u.uz.dnum == 0 && u.uz.dlevel <= 0) {
 		/* level teleported out of the dungeon; `how' is DIED,
 		   due to falling or to "arriving at heaven prematurely" */
-		Sprintf(pbuf, "You %s beyond the confines of the dungeon", /* EN Sprintf(pbuf, "You %s beyond the confines of the dungeon", */ // TODO DE
-			(u.uz.dlevel < 0) ? "passed away" : ends[how]); /* EN (u.uz.dlevel < 0) ? "passed away" : ends[how]); */ // TODO DE
+		Sprintf(pbuf, "SUBJECT PRONOMEN_PERSONAL %s jenseits der Grenzen des Dungeons", /* EN Sprintf(pbuf, "You %s beyond the confines of the dungeon", */
+			(u.uz.dlevel < 0) ? "VERB_SEIN" : ends_hilfsverb[how]); /* EN (u.uz.dlevel < 0) ? "passed away" : ends[how]); */
+#ifdef GERMAN
+		ends_how = (u.uz.dlevel < 0) ? "sanft entschlafen" : ends_how;
+#endif
 	    } else {
 		/* more conventional demise */
 		const char *where = dungeons[u.uz.dnum].dname;
@@ -910,7 +916,7 @@ die:
 		if (Is_astralevel(&u.uz)) { where_praep = "auf"; where = "der Astralebene"; } /* EN if (Is_astralevel(&u.uz)) where = "The Astral Plane"; */
 		Sprintf(pbuf, "SUBJECT PRONOMEN_PERSONAL %s %s %s", ends_hilfsverb[how], where_praep, where); /* EN Sprintf(pbuf, "You %s in %s", ends[how], where); */
 		if (!In_endgame(&u.uz) && !Is_knox(&u.uz))
-		    Sprintf(eos(pbuf), " on dungeon level %d", /* EN Sprintf(eos(pbuf), " on dungeon level %d", */ // TODO DE
+		    Sprintf(eos(pbuf), " auf Level %d des Dungeons", /* EN Sprintf(eos(pbuf), " on dungeon level %d", */
 			    In_quest(&u.uz) ? dunlev(&u.uz) : depth(&u.uz));
 	    }
 
@@ -921,7 +927,7 @@ die:
 
 	if (!done_stopprint) {
 	    Sprintf(pbuf, "und KASUS_DATIV %ld NOUN_GOLD_PIECE%s, nach %ld %s%s%s.", /* EN Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", */
-		    umoney, (umoney == 1) ? "" : "s", moves, (moves == 1) ? "Zug" : "Zügen", (how==ASCENDED) ? "" : ", ", (how==ASCENDED) ? "" : ends[how]); /* EN umoney, plur(umoney), moves, plur(moves)); */
+		    umoney, (umoney == 1) ? "" : "s", moves, (moves == 1) ? "Zug" : "Zügen", (how==ASCENDED) ? "" : ", ", (how==ASCENDED) ? "" : ends_how); /* EN umoney, plur(umoney), moves, plur(moves)); */
 	    putstr(endwin, 0, pbuf);
 	}
 	if (!done_stopprint) {

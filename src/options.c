@@ -234,7 +234,7 @@ static struct Comp_Opt
 						8, DISP_IN_GAME },
 	{ "align_message", "Ausrichtung des Nachrichtenfensters", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_message", "message window alignment", 20, DISP_IN_GAME }, 	*/
 	{ "align_status", "Ausrichtung des Statusfensters", 20, DISP_IN_GAME }, 	/*WC*/ /* EN { "align_status", "status window alignment", 20, DISP_IN_GAME }, 	*/
-	{ "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, /* EN { "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, */ // TODO DE
+	{ "altkeyhandler", "alternativer Tastaturtreiber", 20, DISP_IN_GAME }, /* EN { "altkeyhandler", "alternate key handler", 20, DISP_IN_GAME }, */
 	{ "boulder",  "das Symbol für Felsbrocken", /* EN { "boulder",  "the symbol to use for displaying boulders", */
 						1, SET_IN_GAME },
 	{ "catname",  "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_CAT (z.B., catname:Shiva)", /* EN { "catname",  "the name of your (first) cat (e.g., catname:Tabby)", */
@@ -244,7 +244,7 @@ static struct Comp_Opt
 						SET_IN_GAME },
 	{ "dogname",  "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_DOG (z.B., dogname:Fido)", /* EN { "dogname",  "the name of your (first) dog (e.g., dogname:Fang)", */
 						PL_PSIZ, DISP_IN_GAME },
-	{ "dungeon",  "the symbols to use in drawing the dungeon map", /* EN { "dungeon",  "the symbols to use in drawing the dungeon map", */ // TODO DE
+	{ "dungeon",  "die für das Zeichnen der Dungeon-Karte zu benutzenden Zeichen", /* EN { "dungeon",  "the symbols to use in drawing the dungeon map", */
 						MAXDCHARS+1, SET_IN_FILE },
 	{ "effects",  "die zu benutzenden Symbole beim Zeichnen von Spezialeffekten", /* EN { "effects",  "the symbols to use in drawing special effects", */
 						MAXECHARS+1, SET_IN_FILE },
@@ -261,11 +261,11 @@ static struct Comp_Opt
 	{ "font_text", "die Schrift fürs Textfenster", 40, DISP_IN_GAME },	/*WC*/ /* EN { "font_text", "the font to use in text windows", 40, DISP_IN_GAME },	*/
 	{ "fruit",    "the name of a fruit you enjoy eating", /* EN { "fruit",    "the name of a fruit you enjoy eating", */ // TODO DE
 						PL_FSIZ, SET_IN_GAME },
-	{ "gender",   "your starting gender (male or female)", /* EN { "gender",   "your starting gender (male or female)", */ // TODO DE
+	{ "gender",   "PRONOMEN_POSSESSIV NOUN_GENDER zu Beginn (männlich oder weiblich)", /* EN { "gender",   "your starting gender (male or female)", */
 						8, DISP_IN_GAME },
 	{ "horsename", "der Name KASUS_GENITIV PRONOMEN_POSSESSIV (ADJEKTIV_ERST) NOUN_HORSE (z.B., horsename:Silver)", /* EN { "horsename", "the name of your (first) horse (e.g., horsename:Silver)", */
 						PL_PSIZ, DISP_IN_GAME },
-	{ "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/ // TODO DE
+	{ "map_mode", "Kartenanzeige-Modus unter Windows", 20, DISP_IN_GAME },	/*WC*/ /* EN { "map_mode", "map display mode under Windows", 20, DISP_IN_GAME },	*/
 	{ "menucolor", "Menüfarben einschalten", PL_PSIZ, SET_IN_FILE }, /* EN { "menucolor", "set menu colors", PL_PSIZ, SET_IN_FILE }, */
 	{ "menustyle", "user interface for object selection", /* EN { "menustyle", "user interface for object selection", */ // TODO DE
 						MENUTYPELEN, SET_IN_GAME },
@@ -302,10 +302,10 @@ static struct Comp_Opt
 	{ "packorder", "die Reihenfolge der Gegenstände im Inventar", /* EN { "packorder", "the inventory order of the items in your pack", */
 						MAXOCLASSES, SET_IN_GAME },
 #ifdef CHANGE_COLOR
-	{ "palette",  "palette (00c/880/-fff is blue/yellow/reverse white)", /* EN { "palette",  "palette (00c/880/-fff is blue/yellow/reverse white)", */ // TODO DE
+	{ "palette",  "Palette (00c/880/-fff ist Blau/Gelb/Weiß invertiert)", /* EN { "palette",  "palette (00c/880/-fff is blue/yellow/reverse white)", */
 						15 , SET_IN_GAME },
 # if defined(MAC)
-	{ "hicolor",  "same as palette, only order is reversed", /* EN { "hicolor",  "same as palette, only order is reversed", */ // TODO DE
+	{ "hicolor",  "wie Palette, jedoch mit umgekehrter Reihenfolge", /* EN { "hicolor",  "same as palette, only order is reversed", */
 						15, SET_IN_FILE },
 # endif
 #endif
@@ -710,9 +710,9 @@ rejectoption(optname)
 const char *optname;
 {
 #ifdef MICRO
-	pline("\"%s\" settable only from %s.", optname, configfile); /* EN pline("\"%s\" settable only from %s.", optname, configfile); */ // TODO DE
+	pline("\"%s\" kann nur in %s gesetzt werden.", optname, configfile); /* EN pline("\"%s\" settable only from %s.", optname, configfile); */
 #else
-	pline("%s can be set only from NETHACKOPTIONS or %s.", optname, /* EN pline("%s can be set only from NETHACKOPTIONS or %s.", optname, */ // TODO DE
+	pline("%s kann nur in NETHACKOPTIONS oder %s gesetzt werden.", optname, /* EN pline("%s can be set only from NETHACKOPTIONS or %s.", optname, */
 			configfile);
 #endif
 }
@@ -1525,7 +1525,7 @@ goodfruit:
 		nmcpy(pl_fruit, op, PL_FSIZ);
 	/* OBJ_NAME(objects[SLIME_MOLD]) won't work after initialization */
 		if (!*pl_fruit)
-		    nmcpy(pl_fruit, "slime mold", PL_FSIZ); /* EN nmcpy(pl_fruit, "slime mold", PL_FSIZ); */ // TODO DE
+		    nmcpy(pl_fruit, "NOUN_SLIME_MOLD", PL_FSIZ); /* EN nmcpy(pl_fruit, "slime mold", PL_FSIZ); */
 		if (!initial)
 		    (void)fruitadd(pl_fruit);
 		/* If initial, then initoptions is allowed to do it instead

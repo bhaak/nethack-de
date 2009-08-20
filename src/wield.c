@@ -345,7 +345,7 @@ dowieldquiver()
 
 	/* Because 'Q' used to be quit... */
 	if (flags.suppress_alert < FEATURE_NOTICE_VER(3,3,0))
-		pline("Hinweis: Please use #quit if you wish to exit the game."); /* EN pline("Note: Please use #quit if you wish to exit the game."); */ // TODO DE
+		pline("Hinweis: Bitte MODIFIER_VERB_IMPERATIV VERB_BENUTZEN #quit, NEUER_SATZ wenn SUBJECT_IM_SATZ PRONOMEN_PERSONAL das Spiel verlassen MODIFIER_KONJUNKTIV_II VERB_MOEGEN."); /* EN pline("Note: Please use #quit if you wish to exit the game."); */
 
 	/* Prompt for a new quiver */
 	if (!(newquiver = getobj(quivee_types, "ready"))) /* EN if (!(newquiver = getobj(quivee_types, "ready"))) */ // TODO DE
@@ -495,8 +495,8 @@ can_twoweapon()
 	} else if (uarms)
 		You("VERB_KOENNEN nicht zwei Waffen benutzen und gleichzeitig einen Schild tragen."); /* EN You_cant("use two weapons while wearing a shield."); */
 	else if (uswapwep->oartifact)
-		pline("%s %s being held second to another weapon!", /* EN pline("%s %s being held second to another weapon!", */ // TODO DE
-			Yname2(uswapwep), otense(uswapwep, "resist")); /* EN Yname2(uswapwep), otense(uswapwep, "resist")); */ // TODO DE
+		pline("SUBJECT %s %s sich die zweite Geige zu spielen!", /* EN pline("%s %s being held second to another weapon!", */
+			Yname2(uswapwep), otense(uswapwep, "VERB_WEIGERN")); /* EN Yname2(uswapwep), otense(uswapwep, "resist")); */
 	else if (!uarmg && !Stone_resistance && (uswapwep->otyp == CORPSE &&
 		    touch_petrifies(&mons[uswapwep->corpsenm]))) {
 		char kbuf[BUFSZ];
@@ -736,9 +736,9 @@ register int amount;
 	    if (!Blind)
 	    Your("%s eine Weile lang grell-%s und %s dann.", /* EN Your("%s %s for a while and then %s.", */
 		 aobjnam(uwep, "VERB_LEUCHTEN"), color, /* EN aobjnam(uwep, "violently glow"), color, */
-		 otense(uwep, "evaporate")); /* EN otense(uwep, "evaporate")); */ // TODO DE
+		 otense(uwep, "VERB_DEMATERIALISIEREN")); /* EN otense(uwep, "evaporate")); */
 	    else
-		Your("%s.", aobjnam(uwep, "evaporate")); /* EN Your("%s.", aobjnam(uwep, "evaporate")); */ // TODO DE
+		Your("%s.", aobjnam(uwep, "VERB_DEMATERIALISIEREN")); /* EN Your("%s.", aobjnam(uwep, "evaporate")); */
 
 	    useupall(uwep);	/* let all of them disappear */
 	    return(1);

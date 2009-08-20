@@ -805,7 +805,7 @@ unsigned trflags;
 		    int dam = u.mhmax;
 
 		    pline("%s OBJECT PRONOMEN_PERSONAL!", A_gush_of_water_hits); /* EN pline("%s you!", A_gush_of_water_hits); */
-		    You("are covered with rust!"); /* EN You("are covered with rust!"); */ // TODO DE
+		    pline("VERB_WERDEN von Rost durchzogen!"); /* EN You("are covered with rust!"); */
 		    if (Half_physical_damage) dam = (dam+1) / 2;
 		    losehp(dam, "rostete dahin", NO_KILLER_PREFIX); /* EN losehp(dam, "rusting away", KILLED_BY); */
 		    break;
@@ -1099,7 +1099,7 @@ glovecheck:		(void) rust_dmg(uarmg, "NOUN_GAUNTLETSs", 1, TRUE, &youmonst); /* E
 		 Sprintf(verbbuf,"%s",
 		    Levitation ? (const char *)"VERB_SCHWEBEN" : /* EN Levitation ? (const char *)"float" : */
 		    locomotion(youmonst.data, "VERB_TRETEN")); /* EN locomotion(youmonst.data, "step")); */
-		You("%s OBJECT in ARTIKEL_UNBESTIMMTER NOUN_POLYMORPH_TRAP!", verbbuf); /* EN You("%s onto a polymorph trap!", verbbuf); */
+		You("%s NEUES_OBJECT OBJECT in ARTIKEL_UNBESTIMMTER NOUN_POLYMORPH_TRAP!", verbbuf); /* EN You("%s onto a polymorph trap!", verbbuf); */
 		if(Antimagic || Unchanging) {
 		    shieldeff(u.ux, u.uy);
 		    Du_fuehlst_dich("kurz anders."); /* EN You_feel("momentarily different."); */
@@ -1263,7 +1263,7 @@ struct obj *otmp;
 			if (!can_saddle(mtmp) || !can_ride(mtmp)) {
 				dismount_steed(DISMOUNT_POLY);
 			} else {
-				You("have to adjust yourself in the saddle on %s.", /* EN You("have to adjust yourself in the saddle on %s.", */ // TODO DE
+				You("VERB_MUESSEN wieder einen guten Halt im Sattel OBJECT KASUS_GENITIV %s finden.", /* EN You("have to adjust yourself in the saddle on %s.", */
 					x_monnam(mtmp,
 					 mtmp->mnamelth ? ARTICLE_NONE : ARTICLE_A,
 				 	 (char *)0, SUPPRESS_SADDLE, FALSE));
@@ -2277,7 +2277,7 @@ float_up()
 			surface(u.ux, u.uy) :
 			mon_nam(u.ustuck));
 	else if (Hallucination)
-		pline("Up, up, and awaaaay!  You're walking on air!"); /* EN pline("Up, up, and awaaaay!  You're walking on air!"); */ // TODO DE
+		pline("Auf und davon!  Kein Luftschloss wird jetzt noch sicher vor KASUS_DATIV PRONOMEN_PERSONAL sein!"); /* EN pline("Up, up, and awaaaay!  You're walking on air!"); */
 	else if(Is_airlevel(&u.uz))
 		You("VERB_KRIEGEN OBJECT PRONOMEN_POSSESSIV NOUN_BEWEGUNGs wieder in Griff."); /* EN You("gain control over your movements."); */
 	else
@@ -2448,7 +2448,7 @@ struct obj *box;	/* null for floor trap */
  */
 
 	if ((box && !carried(box)) ? is_pool(box->ox, box->oy) : Underwater) {
-	    pline("A cascade of steamy bubbles erupts from %s!", /* EN pline("A cascade of steamy bubbles erupts from %s!", */ // TODO DE
+	    pline("Eine Wasserdampf-Fontäne jagt KASUS_DATIV von %s empor!", /* EN pline("A cascade of steamy bubbles erupts from %s!", */
 		    the(box ? xname(box) : surface(u.ux,u.uy)));
 	    if (Fire_resistance) You("VERB_SEIN unversehrt."); /* EN if (Fire_resistance) You("are uninjured."); */
 	    else losehp(rnd(3), "ADJEKTIV_SIEDEND NOUN_WATER", KILLED_BY); /* EN else losehp(rnd(3), "boiling water", KILLED_BY); */
@@ -2675,9 +2675,9 @@ xchar x, y;
 	} else if (is_flammable(obj) && obj->oeroded < MAX_ERODE &&
 		   !(obj->oerodeproof || (obj->blessed && !rnl(4)))) {
 	    if (in_sight) {
-		pline("SUBJECT %s %s%s.", Yname2(obj), otense(obj, "burn"), /* EN pline("%s %s%s.", Yname2(obj), otense(obj, "burn"), */ // TODO DE
-		      obj->oeroded+1 == MAX_ERODE ? " completely" : /* EN obj->oeroded+1 == MAX_ERODE ? " completely" : */ // TODO DE
-		      obj->oeroded ? " further" : ""); /* EN obj->oeroded ? " further" : ""); */ // TODO DE
+		pline("SUBJECT %s %s%s.", Yname2(obj), otense(obj, obj->oeroded+1 == MAX_ERODE ? "VERB_VERBRENNEN" : "VERB_BRENNEN"), /* EN pline("%s %s%s.", Yname2(obj), otense(obj, "burn"), */
+		      obj->oeroded+1 == MAX_ERODE ? " völlig" : /* EN obj->oeroded+1 == MAX_ERODE ? " completely" : */
+		      obj->oeroded ? " weiter" : ""); /* EN obj->oeroded ? " further" : ""); */
 	    }
 	    obj->oeroded++;
 	}
@@ -3303,8 +3303,8 @@ boolean stuff;
 	int wc = weight_cap();
 
 	if (((wt * 2) / wc) >= HVY_ENCUMBER) {
-	    pline("%s is %s for you to lift.", Monnam(mtmp), /* EN pline("%s is %s for you to lift.", Monnam(mtmp), */ // TODO DE
-			stuff ? "carrying too much" : "too heavy"); /* EN stuff ? "carrying too much" : "too heavy"); */ // TODO DE
+	    pline("SUBJECT %s VERB_SEIN OBJECT für PRONOMEN_PERSONAL zum Hochheben %s.", Monnam(mtmp), /* EN pline("%s is %s for you to lift.", Monnam(mtmp), */
+			stuff ? "zu überladen" : "zu schwer"); /* EN stuff ? "carrying too much" : "too heavy"); */
 	    if (!ttmp->madeby_u && !mtmp->mpeaceful && mtmp->mcanmove &&
 		    !mindless(mtmp->data) &&
 		    mtmp->data->mlet != S_HUMAN && rnl(10) < 3) {
@@ -3345,7 +3345,7 @@ struct trap *ttmp;
 
 	/* Will our hero succeed? */
 	if ((uprob = untrap_prob(ttmp)) && !mtmp->msleeping && mtmp->mcanmove) {
-		You("VERB_VERSUCHEN OBJECT PRONOMEN_POSSESSIV %s auszustrecken, NEUER_SATZ aber %s VERB_WEICHEN skeptisch zurück.", /* EN You("try to reach out your %s, but %s backs away skeptically.", */
+		You("VERB_VERSUCHEN OBJECT PRONOMEN_POSSESSIV %s auszustrecken, NEUER_SATZ aber SUBJECT_IM_SATZ %s VERB_WEICHEN skeptisch zurück.", /* EN You("try to reach out your %s, but %s backs away skeptically.", */
 			makeplural(body_part(ARM)),
 			mon_nam(mtmp));
 		return 1;
@@ -3389,7 +3389,7 @@ struct trap *ttmp;
 	    /* After such manhandling, perhaps the effect wears off */
 	    mtmp->mcanmove = 1;
 	    mtmp->mfrozen = 0;
-	    pline("%s stirs.", Monnam(mtmp)); /* EN pline("%s stirs.", Monnam(mtmp)); */ // TODO DE
+	    pline("SUBJECT %s VERB_RUEHREN sich.", Monnam(mtmp)); /* EN pline("%s stirs.", Monnam(mtmp)); */
 	}
 
 	/* is the monster too heavy? */

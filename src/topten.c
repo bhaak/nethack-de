@@ -512,8 +512,8 @@ int how;
 		char pbuf[BUFSZ];
 		topten_print("");
 		Sprintf(pbuf,
-	      "Since you were in %s mode, the score list will not be checked.", /* EN "Since you were in %s mode, the score list will not be checked.", */ // TODO DE
-		    wizard ? "wizard" : "discover"); /* EN wizard ? "wizard" : "discover"); */ // TODO DE
+	      "Since you were in %smodus, the score list will not be checked.", /* EN "Since you were in %s mode, the score list will not be checked.", */ // TODO DE
+		    wizard ? "wizard" : "Erkundungs"); /* EN wizard ? "wizard" : "discover"); */ // TODO DE
 		topten_print(pbuf);
 	    }
 	    goto showwin;
@@ -1067,9 +1067,9 @@ char **argv;
 		    (void) outentry(rank, t1, 0);
 	    }
 	} else {
-	    Sprintf(pbuf, "Cannot find any %sentries for ", /* EN Sprintf(pbuf, "Cannot find any %sentries for ", */ // TODO DE
-				current_ver ? "current " : ""); /* EN current_ver ? "current " : ""); */ // TODO DE
-	    if (playerct < 1) Strcat(pbuf, "you."); /* EN if (playerct < 1) Strcat(pbuf, "you."); */ // TODO DE
+	    Sprintf(pbuf, "Kann keine %sEinträge für ", /* EN Sprintf(pbuf, "Cannot find any %sentries for ", */
+				current_ver ? "aktuellen " : ""); /* EN current_ver ? "current " : ""); */
+	    if (playerct < 1) Strcat(pbuf, "dich finden."); /* EN if (playerct < 1) Strcat(pbuf, "you."); */
 	    else {
 		if (playerct > 1) Strcat(pbuf, "any of "); /* EN if (playerct > 1) Strcat(pbuf, "any of "); */ // TODO DE
 		for (i = 0; i < playerct; i++) {

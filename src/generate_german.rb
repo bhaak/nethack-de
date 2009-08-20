@@ -3860,6 +3860,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_EHRENWERT","ehrenwert"),
     dekliniere_adjektiv("ADJEKTIV_EHRWUERDIG", "ehrwürdig"),
     dekliniere_adjektiv("ADJEKTIV_EIGENE","eigen"),
+    dekliniere_adjektiv("ADJEKTIV_EINIG","einig"),
     dekliniere_adjektiv("ADJEKTIV_EINFACH","einfach"),
     dekliniere_adjektiv("ADJEKTIV_EINGELEGT","eingelegt"),
     dekliniere_adjektiv("ADJEKTIV_EINSTUERZEND","einstürzend"),
