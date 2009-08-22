@@ -841,8 +841,8 @@ boolean gone;
 	case RIN_INVISIBILITY:
 		if (!Invis && !BInvis && !Blind) {
 		    newsym(u.ux,u.uy);
-		    Your("body seems to unfade%s.", /* EN Your("body seems to unfade%s.", */ // TODO DE
-			 See_invisible ? " completely" : ".."); /* EN See_invisible ? " completely" : ".."); */ // TODO DE
+		    Your("NOUN_KOERPER VERB_GEWINNEN%s an Substanz zurück%s.", /* EN Your("body seems to unfade%s.", */
+			 See_invisible ? " vollständig" : "", See_invisible ? "" : " .."); /* EN See_invisible ? " completely" : ".."); */
 		    makeknown(RIN_INVISIBILITY);
 		}
 		break;
@@ -1074,13 +1074,13 @@ dotakeoff()
 			      uskin->otyp >= GRAY_DRAGON_SCALES ?
 				"Die Drachenschuppen sind" : "Der Drachenschuppenpanzer ist"); /* EN "dragon scales are" : "dragon scale mail is");*/
 		else
-		    pline("Not wearing any armor.%s", (iflags.cmdassist && /* EN pline("Not wearing any armor.%s", (iflags.cmdassist &&  */ // TODO DE
+		    You("VERB_TRAGEN gar keine Rüstung.%s", (iflags.cmdassist && /* EN pline("Not wearing any armor.%s", (iflags.cmdassist &&  */
 				(uleft || uright || uamul || ublindf)) ?
 			  "  SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN den 'R'-Befehl um Accessories auszuziehen." : ""); /* EN "  Use 'R' command to remove accessories." : ""); */
 		return 0;
 	}
 	if (armorpieces > 1)
-		otmp = getobj(clothes, "take off"); /* EN otmp = getobj(clothes, "take off");*/ // TODO DE
+		otmp = getobj(clothes, "VERB_AUSZIEHEN"); /* EN otmp = getobj(clothes, "take off");*/
 	if (otmp == 0) return(0);
 	if (!(otmp->owornmask & W_ARMOR)) {
 		You("VERB_TRAGEN das nicht."); /* EN You("are not wearing that."); */
@@ -1427,9 +1427,9 @@ dowear()
 	if (otmp->otyp == HELM_OF_OPPOSITE_ALIGNMENT &&
 			qstart_level.dnum == u.uz.dnum) {	/* in quest */
 		if (u.ualignbase[A_CURRENT] == u.ualignbase[A_ORIGINAL])
-			You("narrowly avoid losing all chance at your goal."); /* EN You("narrowly avoid losing all chance at your goal."); */ // TODO DE
+			You("MODIFIER_KONJUNKTIV_II VERB_HABEN OBJECT PRONOMEN_PERSONAL beinahe aller Möglichkeiten beraubt NEUES_OBJECT OBJECT um PRONOMEN_POSSESSIV NOUN_AUFGABE zu meistern."); /* EN You("narrowly avoid losing all chance at your goal."); */
 		else	/* converted */
-			You("are suddenly overcome with shame and change your mind."); /* EN You("are suddenly overcome with shame and change your mind."); */ // TODO DE
+			You("are suddenly overcome with shame und VERB_UEBERLEGEN es OBJECT KASUS_DATIV PRONOMEN_PERSONAL anders."); /* EN You("are suddenly overcome with shame and change your mind."); */ // TODO DE
 		u.ublessed = 0; /* lose your god's protection */
 		makeknown(otmp->otyp);
 		flags.botl = 1;
@@ -2046,7 +2046,7 @@ doddoremarm()
 
     add_valid_menu_class(0); /* reset */
     if (flags.menu_style != MENU_TRADITIONAL ||
-	    (result = ggetobj("take off", select_off, 0, FALSE, (unsigned *)0)) < -1) /* EN (result = ggetobj("take off", select_off, 0, FALSE, (unsigned *)0)) < -1)*/ // TODO DE
+	    (result = ggetobj("VERB_AUSZIEHEN", select_off, 0, FALSE, (unsigned *)0)) < -1) /* EN (result = ggetobj("take off", select_off, 0, FALSE, (unsigned *)0)) < -1)*/
 	result = menu_remarm(result);
 
     if (takeoff_mask) {
@@ -2077,7 +2077,7 @@ int retry;
 	all_worn_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
 	all_worn_categories = FALSE;
-	n = query_category("What type of things do you want to take off?", /* EN n = query_category("What type of things do you want to take off?",*/ // TODO DE
+	n = query_category("Welche Arten von Sachen SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL ausziehen?", /* EN n = query_category("What type of things do you want to take off?",*/
 			   invent, WORN_TYPES|ALL_TYPES, &pick_list, PICK_ANY);
 	if (!n) return 0;
 	for (i = 0; i < n; i++) {
@@ -2089,11 +2089,11 @@ int retry;
 	free((genericptr_t) pick_list);
     } else if (flags.menu_style == MENU_COMBINATION) {
 	all_worn_categories = FALSE;
-	if (ggetobj("take off", select_off, 0, TRUE, (unsigned *)0) == -2) /* EN if (ggetobj("take off", select_off, 0, TRUE, (unsigned *)0) == -2)*/ // TODO DE
+	if (ggetobj("VERB_AUSZIEHEN", select_off, 0, TRUE, (unsigned *)0) == -2) /* EN if (ggetobj("take off", select_off, 0, TRUE, (unsigned *)0) == -2)*/
 	    all_worn_categories = TRUE;
     }
 
-    n = query_objlist("Was VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausziehen?", invent, /* EN n = query_objlist("What do you want to take off?", invent, */
+    n = query_objlist("Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausziehen?", invent, /* EN n = query_objlist("What do you want to take off?", invent, */
 			SIGNAL_NOMENU|USE_INVLET|INVORDER_SORT,
 			&pick_list, PICK_ANY,
 			all_worn_categories ? is_worn : is_worn_by_type);
@@ -2132,13 +2132,13 @@ register struct obj *atmp;
 #ifdef TOURIST
 	} else if (DESTROY_ARM(uarmu)) {
 		if (donning(otmp)) cancel_don();
-		Your("NOUN_SHIRT zerfällt in kleine Stücke und fällt auseinander!"); /* EN Your("shirt crumbles into tiny threads and falls apart!"); */
+		Your("NOUN_SHIRT zerbröselt in kleine Stücke und fällt auseinander!"); /* EN Your("shirt crumbles into tiny threads and falls apart!"); */
 		(void) Shirt_off();
 		useup(otmp);
 #endif
 	} else if (DESTROY_ARM(uarmh)) {
 		if (donning(otmp)) cancel_don();
-		Your("NOUN_HELMET zerfällt zu Staub und is blown away!"); /* EN Your("helmet turns to dust and is blown away!"); */ // TODO DE
+		Your("NOUN_HELMET zerfällt zu einem Häufchen Staub!"); /* EN Your("helmet turns to dust and is blown away!"); */
 		(void) Helmet_off();
 		useup(otmp);
 	} else if (DESTROY_ARM(uarmg)) {

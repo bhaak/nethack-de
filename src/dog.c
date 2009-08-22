@@ -882,13 +882,13 @@ boolean was_dead;
 	if(!quietly && cansee(mtmp->mx, mtmp->my)) {
 	    if (haseyes(youmonst.data)) {
 		if (haseyes(mtmp->data))
-			pline("%s %s to look you in the %s.", /* EN pline("%s %s to look you in the %s.", */ // TODO DE
+			pline("SUBJECT %s %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT in ARTIKEL_BESTIMMTER %s zu schauen.", /* EN pline("%s %s to look you in the %s.", */
 				Monnam(mtmp),
-				mtmp->mpeaceful ? "seems unable" : /* EN mtmp->mpeaceful ? "seems unable" : */ // TODO DE
-					    "refuses", /* EN "refuses", */ // TODO DE
-				body_part(EYE));
+				mtmp->mpeaceful ? "VERB_SCHEINEN unfähig" : /* EN mtmp->mpeaceful ? "seems unable" : */
+					    "VERB_WEIGERN sich", /* EN "refuses", */
+				(eyecount(youmonst.data) == 1) ?  body_part(EYE) : makeplural(body_part(EYE))); /* EN body_part(EYE)); */
 		else 
-			pline("%s avoids your gaze.", /* EN pline("%s avoids your gaze.", */ // TODO DE
+			pline("SUBJECT %s VERB_MEIDEN OBJECT PRONOMEN_POSSESSIV NOUN_GAZE.", /* EN pline("%s avoids your gaze.", */
 				Monnam(mtmp));
 	    }
 	}

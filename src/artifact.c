@@ -1404,10 +1404,10 @@ nothing_special:
 	    if (BInvis || Blind) goto nothing_special;
 	    newsym(u.ux, u.uy);
 	    if (on)
-		Your("NOUN_BODY VERB_NEHMEN eine %s Durchsichtigkeit an ...", /* EN Your("body takes on a %s transparency...", */
+		Your("NOUN_KOERPER VERB_NEHMEN eine %s Durchsichtigkeit an ...", /* EN Your("body takes on a %s transparency...", */
 		     Hallucination ? "normale" : "seltsame"); /* EN Hallucination ? "normal" : "strange"); */
 	    else
-		Your("body seems to unfade..."); /* EN Your("body seems to unfade..."); */ // TODO DE
+		Your("NOUN_KOERPER VERB_GEWINNEN an Substanz zurück ..."); /* EN Your("body seems to unfade..."); */
 	    break;
 	}
     }
