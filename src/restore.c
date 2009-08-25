@@ -389,7 +389,7 @@ unsigned int *stuckid, *steedid;	/* STEED */
 #endif
 	if(u.uhp <= 0 && (!Upolyd || u.mh <= 0)) {
 	    u.ux = u.uy = 0;	/* affects pline() [hence You()] */
-	    You("were not healthy enough to survive restoration."); /* EN You("were not healthy enough to survive restoration."); */ // TODO DE
+	    You("MODIFIER_VERB_PRAETERITUM VERB_SEIN nicht gesund genug um die Wiederherstellung zu überstehen."); /* EN You("were not healthy enough to survive restoration."); */
 	    /* wiz1_level.dlevel is used by mklev.c to see if lots of stuff is
 	     * uninitialized, so we only have to set it and not the other stuff.
 	     */
@@ -705,9 +705,9 @@ void
 trickery(reason)
 char *reason;
 {
-	pline("Strange, this map is not as I remember it."); /* EN pline("Strange, this map is not as I remember it."); */ // TODO DE
-	pline("Somebody is trying some trickery here..."); /* EN pline("Somebody is trying some trickery here..."); */ // TODO DE
-	pline("This game is void."); /* EN pline("This game is void."); */ // TODO DE
+	pline("Komisch, diese Karte sieht anders aus als in meiner Erinnerung."); /* EN pline("Strange, this map is not as I remember it."); */
+	pline("Jemand versucht hier eine kleine Schummelei ..."); /* EN pline("Somebody is trying some trickery here..."); */
+	pline("Dieses Spiel ist ungültig."); /* EN pline("This game is void."); */
 	killer = reason;
 	done(TRICKED);
 }
@@ -752,10 +752,10 @@ boolean ghostly;
 	    char trickbuf[BUFSZ];
 
 	    if (pid && pid != hpid)
-		Sprintf(trickbuf, "PID (%d) doesn't match saved PID (%d)!", /* EN Sprintf(trickbuf, "PID (%d) doesn't match saved PID (%d)!", */ // TODO DE
+		Sprintf(trickbuf, "PID (%d) passt nicht zur gespeicherten PID (%d)!", /* EN Sprintf(trickbuf, "PID (%d) doesn't match saved PID (%d)!", */
 			hpid, pid);
 	    else
-		Sprintf(trickbuf, "This is level %d, not %d!", dlvl, lev); /* EN Sprintf(trickbuf, "This is level %d, not %d!", dlvl, lev); */ // TODO DE
+		Sprintf(trickbuf, "Das ist Level %d, nicht %d!", dlvl, lev); /* EN Sprintf(trickbuf, "This is level %d, not %d!", dlvl, lev); */
 #ifdef WIZARD
 	    if (wizard) pline(trickbuf);
 #endif

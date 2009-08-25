@@ -573,7 +573,7 @@ drag:
 			 t->ttyp == TRAPDOOR)) ) {
 
 	    if (Levitation) {
-		You_feel("a tug from the iron ball."); /* EN You_feel("a tug from the iron ball."); */ // TODO DE
+		Du_spuerst("einen Ruck OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER NOUN_IRON_BALL."); /* EN You_feel("a tug from the iron ball."); */
 		if (t) t->tseen = 1;
 	    } else {
 		struct monst *victim;
@@ -651,7 +651,7 @@ xchar x, y;
 
     if (x != u.ux || y != u.uy) {
 	struct trap *t;
-	const char *pullmsg = "The ball pulls you out of the %s!"; /* EN const char *pullmsg = "The ball pulls you out of the %s!"; */ // TODO DE
+	const char *pullmsg = "Die Kugel zieht KASUS_AKKUSATIV PRONOMEN_PERSONAL KASUS_DATIV aus ARTIKEL_BESTIMMTER %s heraus!"; /* EN const char *pullmsg = "The ball pulls you out of the %s!"; */
 
 	if (u.utrap && u.utraptype != TT_INFLOOR) {
 	    switch(u.utraptype) {
@@ -660,7 +660,7 @@ xchar x, y;
 		break;
 	    case TT_WEB:
 		pline(pullmsg, "NOUN_WEB"); /* EN pline(pullmsg, "web"); */
-		pline_The("web is destroyed!"); /* EN pline_The("web is destroyed!"); */ // TODO DE
+		pline_The("NOUN_WEB VERB_ZERREISSEN!"); /* EN pline_The("web is destroyed!"); */
 		deltrap(t_at(u.ux,u.uy));
 		break;
 	    case TT_LAVA:
@@ -674,8 +674,8 @@ xchar x, y;
 		if (!u.usteed)
 #endif
 		{
-		    Your("%s %s is severely damaged.", /* EN Your("%s %s is severely damaged.", */ // TODO DE
-					(side == LEFT_SIDE) ? "left" : "right", /* EN (side == LEFT_SIDE) ? "left" : "right", */ // TODO DE
+		    Your("%s %s wurde schwer verletzt.", /* EN Your("%s %s is severely damaged.", */
+					(side == LEFT_SIDE) ? "ADJEKTIV_LINK" : "ADJEKTIV_RECHT", /* EN (side == LEFT_SIDE) ? "left" : "right", */
 					body_part(LEG));
 		    losehp(2, "leg damage from being pulled out of a bear trap", /* EN losehp(2, "leg damage from being pulled out of a bear trap", */ // TODO DE
 					KILLED_BY);
@@ -748,6 +748,13 @@ drag_down()
 {
 	boolean forward;
 	uchar dragchance = 3;
+#ifdef GERMAN
+	char ball_drags_you_downstairs[BUFSZ];
+	char dragged_downstairs_by_an_iron_ball[BUFSZ];
+	const char *stairs = (levl[u.ux][u.uy].typ == LADDER) ? "NOUN_LADDER" : "NOUN_STAIRS";
+	Sprintf(ball_drags_you_downstairs, "NOUN_IRON_BALL VERB_ZIEHEN OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER %s hinunter!", stairs);
+	Sprintf(dragged_downstairs_by_an_iron_ball, "KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s runtergefallen wegen einer Eisenkugel", stairs);
+#endif
 
 	/*
 	 *	Assume that the ball falls forward if:
@@ -765,21 +772,21 @@ drag_down()
 
 	if (forward) {
 		if(rn2(6)) {
-			pline_The("iron ball drags you downstairs!"); /* EN pline_The("iron ball drags you downstairs!"); */ // TODO DE
-			losehp(rnd(6), "dragged downstairs by an iron ball", /* EN losehp(rnd(6), "dragged downstairs by an iron ball", */ // TODO DE
+			pline_The(ball_drags_you_downstairs); /* EN pline_The("iron ball drags you downstairs!"); */
+			losehp(rnd(6), dragged_downstairs_by_an_iron_ball, /* EN losehp(rnd(6), "dragged downstairs by an iron ball", */
 				NO_KILLER_PREFIX);
 			litter();
 		}
 	} else {
 		if(rn2(2)) {
-			pline_The("iron ball smacks into you!"); /* EN pline_The("iron ball smacks into you!"); */ // TODO DE
+			pline_The("NOUN_IRON_BALL VERB_KRACHEN OBJECT in PRONOMEN_PERSONAL rein!"); /* EN pline_The("iron ball smacks into you!"); */
 			losehp(rnd(20), "iron ball collision", KILLED_BY_AN); /* EN losehp(rnd(20), "iron ball collision", KILLED_BY_AN); */ // TODO DE
 			exercise(A_STR, FALSE);
 			dragchance -= 2;
 		}
 		if( (int) dragchance >= rnd(6)) {
-			pline_The("iron ball drags you downstairs!"); /* EN pline_The("iron ball drags you downstairs!"); */ // TODO DE
-			losehp(rnd(3), "dragged downstairs by an iron ball", /* EN losehp(rnd(3), "dragged downstairs by an iron ball", */ // TODO DE
+			pline_The(ball_drags_you_downstairs); /* EN pline_The("iron ball drags you downstairs!"); */
+			losehp(rnd(3), dragged_downstairs_by_an_iron_ball, /* EN losehp(rnd(3), "dragged downstairs by an iron ball", */
 				NO_KILLER_PREFIX);
 			exercise(A_STR, FALSE);
 			litter();

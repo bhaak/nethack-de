@@ -173,7 +173,7 @@ awaken_soldiers()
 		mtmp->mpeaceful = mtmp->msleeping = mtmp->mfrozen = 0;
 		mtmp->mcanmove = 1;
 		if (canseemon(mtmp))
-		    pline("%s is now ready for battle!", Monnam(mtmp)); /* EN pline("%s is now ready for battle!", Monnam(mtmp)); */ // TODO DE
+		    pline("SUBJECT %s VERB_SEIN jetzt kampfbereit!", Monnam(mtmp)); /* EN pline("%s is now ready for battle!", Monnam(mtmp)); */
 		else
 		    Norep("You hear the rattle of battle gear being readied."); /* EN Norep("You hear the rattle of battle gear being readied."); */ // TODO DE
 	    }
@@ -306,9 +306,9 @@ do_pit:		    chasm = maketrap(x,y,PIT);
 			    if (mtmp->mhp > 0)
 				if ((mtmp->mhp -= rnd(6)) <= 0) {
 				    if(!cansee(x,y))
-					pline("It is destroyed!"); /* EN pline("It is destroyed!"); */ // TODO DE
+					pline("Etwas wurde zerstört!"); /* EN pline("It is destroyed!"); */
 				    else {
-					You("destroy %s!", mtmp->mtame ?  /* EN You("destroy %s!", mtmp->mtame ? */ // TODO DE
+					You("VERB_DESTROY OBJECT %s!", mtmp->mtame ?  /* EN You("destroy %s!", mtmp->mtame ? */
 					    x_monnam(mtmp, ARTICLE_THE, "ADJEKTIV_POOR", /* EN x_monnam(mtmp, ARTICLE_THE, "poor", */
 				mtmp->mnamelth ? SUPPRESS_SADDLE : 0, FALSE):
 					    mon_nam(mtmp));
@@ -377,7 +377,7 @@ struct obj *instr;
 #endif /* MAC || AMIGA || VPIX_MUSIC || PCMUSIC */
 
 	if (!do_spec)
-	    pline("What you produce is quite far from music..."); /* EN pline("What you produce is quite far from music..."); */ // TODO DE
+	    pline("Was SUBJECT_IM_SATZ PRONOMEN_PERSONAL da VERB_FABRIZIEREN, ist alles andere, nur nicht Musik ..."); /* EN pline("What you produce is quite far from music..."); */
 	else
 	    You("VERB_SPIELEN OBJECT %s.", the(xname(instr))); /* EN You("start playing %s.", the(xname(instr))); */
 
@@ -386,14 +386,14 @@ struct obj *instr;
 	    if (do_spec && instr->spe > 0) {
 		consume_obj_charge(instr, TRUE);
 
-		You("produce soft music."); /* EN You("produce soft music."); */ // TODO DE
+		You("VERB_ERZEUGEN %s.", Hallucination ? "Fahrstuhlmusik" : "sanfte Klänge"); /* EN You("produce soft music."); */
 		put_monsters_to_sleep(u.ulevel * 5);
 		exercise(A_DEX, TRUE);
 		break;
 	    } /* else FALLTHRU */
 	case WOODEN_FLUTE:		/* May charm snakes */
 	    do_spec &= (rn2(ACURR(A_DEX)) + u.ulevel > 25);
-	    pline("%s.", Tobjnam(instr, do_spec ? "trill" : "toot")); /* EN pline("%s.", Tobjnam(instr, do_spec ? "trill" : "toot")); */ // TODO DE
+	    pline("SUBJECT %s.", Tobjnam(instr, do_spec ? "VERB_TRILLERN" : "VERB_TUTEN")); /* EN pline("%s.", Tobjnam(instr, do_spec ? "trill" : "toot")); */
 	    if (do_spec) charm_snakes(u.ulevel * 3);
 	    exercise(A_DEX, TRUE);
 	    break;
@@ -403,7 +403,7 @@ struct obj *instr;
 		consume_obj_charge(instr, TRUE);
 
 		if (!getdir((char *)0)) {
-		    pline("%s.", Tobjnam(instr, "vibrate")); /* EN pline("%s.", Tobjnam(instr, "vibrate")); */ // TODO DE
+		    pline("SUBJECT %s.", Tobjnam(instr, "VERB_VIBRIEREN")); /* EN pline("%s.", Tobjnam(instr, "vibrate")); */
 		    break;
 		} else if (!u.dx && !u.dy && !u.dz) {
 		    if ((damage = zapyourself(instr, TRUE)) != 0) {
@@ -449,7 +449,7 @@ struct obj *instr;
 		consume_obj_charge(instr, TRUE);
 
 		You("VERB_VERURSACHEN ein gewaltiges Donnern!"); /* EN You("produce a heavy, thunderous rolling!"); */
-		pline_The("gesamte Grotte/Kaverne is shaking around you!"); /* EN pline_The("entire dungeon is shaking around you!"); */ // TODO DE
+		pline_The("ganze Grotte wackelt!"); /* EN pline_The("entire dungeon is shaking around you!"); */
 		do_earthquake((u.ulevel - 1) / 3 + 1);
 		/* shake up monsters in a much larger radius... */
 		awaken_monsters(ROWNO * COLNO);

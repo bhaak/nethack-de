@@ -72,6 +72,9 @@ register struct obj *pen;
 {
 	register struct obj *paper;
 	char namebuf[BUFSZ], *nm, *bp;
+#ifdef GERMAN
+	char tmpbuf[BUFSZ];
+#endif
 	register struct obj *new_obj;
 	int basecost, actualcost;
 	int curseval;
@@ -107,20 +110,26 @@ register struct obj *pen;
 	}
 
 	/* what to write */
-	Sprintf(qbuf, "What type of %s do you want to write?", typeword); /* EN Sprintf(qbuf, "What type of %s do you want to write?", typeword); */ // TODO DE
+	Sprintf(qbuf, "Was KASUS_AKKUSATIV für ARTIKEL_UNBESTIMMTER %s SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL schreiben?", typeword); /* EN Sprintf(qbuf, "What type of %s do you want to write?", typeword); */
 	getlin(qbuf, namebuf);
 	(void)mungspaces(namebuf);	/* remove any excess whitespace */
 	if(namebuf[0] == '\033' || !namebuf[0])
 		return(1);
 	nm = namebuf;
-	if (!strncmpi(nm, "scroll ", 7)) nm += 7; /* EN if (!strncmpi(nm, "scroll ", 7)) nm += 7; */ // TODO DE
-	else if (!strncmpi(nm, "spellbook ", 10)) nm += 10; /* EN else if (!strncmpi(nm, "spellbook ", 10)) nm += 10; */ // TODO DE
-	if (!strncmpi(nm, "of ", 3)) nm += 3; /* EN if (!strncmpi(nm, "of ", 3)) nm += 3; */ // TODO DE
+#ifdef GERMAN
+	german2meta(nm, tmpbuf);
+	nm = tmpbuf;
+#endif
+	if (!strncmpi(nm, "NOUN_SCROLL ", 12)) nm += 12; /* EN if (!strncmpi(nm, "scroll ", 7)) nm += 7; */
+	else if (!strncmpi(nm, "NOUN_SPELLBOOK ", 15)) nm += 15; /* EN else if (!strncmpi(nm, "spellbook ", 10)) nm += 10; */
+	if (!strncmpi(nm, "PARTIKEL_OF ", 12)) nm += 12; /* EN if (!strncmpi(nm, "of ", 3)) nm += 3; */
 
-	if ((bp = strstri(nm, " armour")) != 0) { /* EN if ((bp = strstri(nm, " armour")) != 0) { */ // TODO DE
-		(void)strncpy(bp, " armor ", 7);	/* won't add '\0' */ /* EN (void)strncpy(bp, " armor ", 7);	*/ // TODO DE
+#ifndef GERMAN
+	if ((bp = strstri(nm, " armour")) != 0) {
+		(void)strncpy(bp, " armor ", 7);	/* won't add '\0' */
 		(void)mungspaces(bp + 1);	/* remove the extra space */
 	}
+#endif
 
 	first = bases[(int)paper->oclass];
 	last = bases[(int)paper->oclass + 1] - 1;
@@ -149,7 +158,7 @@ found:
 		pline("Das ist obszön!"); /* EN pline("It's obscene!"); */
 		return 1;
 	} else if (i == SPE_BOOK_OF_THE_DEAD) {
-		pline("No mere dungeon adventurer could write that."); /* EN pline("No mere dungeon adventurer could write that."); */ // TODO DE
+		pline("Kein einfacher Dungeon-Abenteurer könnte das schreiben."); /* EN pline("No mere dungeon adventurer could write that."); */
 		return 1;
 	} else if (by_descr && paper->oclass == SPBOOK_CLASS &&
 		    !objects[i].oc_name_known) {

@@ -582,7 +582,7 @@ int how;
 	    }
 #ifdef WIZARD
 	    if (wizard) {
-		You("are a very tricky wizard, it seems.");
+		You("VERB_SEIN ein sehr findiger Zauberer, wie es scheint."); /* EN You("are a very tricky wizard, it seems."); */
 		return;
 	    }
 #endif
