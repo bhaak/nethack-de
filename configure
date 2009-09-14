@@ -769,6 +769,7 @@ enable_simple_mail
 enable_xlogfile
 enable_livelog
 enable_livelog_shout
+enable_livelog_bones_killer
 enable_wizmode
 with_owner
 with_group
@@ -1449,6 +1450,9 @@ Optional Features:
   --enable-livelog=FILE   Live game progress logfile (default=no, default
                           file=livelog)
   --enable-livelog-shout  Shoutting into the live game logfile (default=no)
+  --enable-livelog-bones-killer
+                          Report killing of ghosts of former player
+                          (default=yes)
   --enable-wizmode=USER   enable wizard mode for the specified user
                           (default=yes, default user=wizard)
 
@@ -7317,6 +7321,25 @@ $as_echo "$enable_livelog_shout" >&6; }
 
 cat >>confdefs.h <<_ACEOF
 #define LIVELOG_SHOUT /**/
+_ACEOF
+
+   fi
+
+	{ $as_echo "$as_me:$LINENO: checking whether to enable livelog-bones-killer" >&5
+$as_echo_n "checking whether to enable livelog-bones-killer... " >&6; }
+   # Check whether --enable-livelog-bones-killer was given.
+if test "${enable_livelog_bones_killer+set}" = set; then
+  enableval=$enable_livelog_bones_killer;
+else
+  enable_livelog_bones_killer="yes"
+fi
+
+   { $as_echo "$as_me:$LINENO: result: $enable_livelog_bones_killer" >&5
+$as_echo "$enable_livelog_bones_killer" >&6; }
+   if test "$enable_livelog_bones_killer" != "no" ; then
+
+cat >>confdefs.h <<_ACEOF
+#define LIVELOG_BONES_KILLER /**/
 _ACEOF
 
    fi

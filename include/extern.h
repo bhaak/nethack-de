@@ -132,6 +132,7 @@ E void NDECL(max_rank_sz);
 E long NDECL(botl_score);
 #endif
 E int FDECL(describe_level, (char *));
+E const char *NDECL(rank);
 E const char *FDECL(rank_of, (int,SHORT_P,BOOLEAN_P));
 E void NDECL(bot);
 
@@ -2408,6 +2409,7 @@ E void FDECL(livelog_wish, (char*));
 #ifdef LIVELOG_SHOUT
 E int NDECL(doshout);
 #endif
+E void FDECL(livelog_shoplifting, (const char*, const char*, long));
 #endif
 
 #endif /* !MAKEDEFS_C && !LEV_LEX_C */

@@ -502,6 +502,11 @@ struct monst *shkp;
 	eshkp->robbed += total;
 	You("VERB_HABEN Ware im Wert von %ld %s gestohlen.", /* EN You("stole %ld %s worth of merchandise.", */
 	    total, currency(total));
+#ifdef LIVELOGFILE
+	livelog_shoplifting(shkname(shkp),
+	                    shtypes[eshkp->shoptype - SHOPBASE].name,
+	                    total);
+#endif
 	if (!Role_if(PM_ROGUE))	/* stealing is unlawful */
 	    adjalign(-sgn(u.ualign.type));
 

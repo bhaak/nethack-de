@@ -3,6 +3,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef LIVELOGFILE
 
 /* Encodes the current xlog "achieve" status to an integer */
@@ -129,7 +133,7 @@ doshout()
 	You("VERB_SCHREIEN ins Leere: %s", buf); /* EN You("shout into the void: %s", buf); */
 
 	/* filter livelog delimiter */
-	for(p = buf; *p != 0; p++) 
+	for (p = buf; *p != 0; p++) 
 		if( *p == ':' )
 			*p = ' ';
 
@@ -144,5 +148,75 @@ doshout()
 }
 
 #endif /* LIVELOG_SHOUT */
+
+#ifdef LIVELOG_BONES_KILLER
+void
+livelog_bones_killed(mtmp)
+struct monst *mtmp;
+{
+	char *name = NAME(mtmp);
+
+	if (name &&
+	    mtmp->former_rank && strlen(mtmp->former_rank) > 0) {
+#ifdef GERMAN
+		char former_rank[BUFSZ];
+		char mname[BUFSZ];
+		Strcpy(former_rank, german(mtmp->former_rank));
+		Strcpy(mname, german(mtmp->data->mname));
+#endif
+		/* $player killed the $bones_monst of $bones_killed the former
+		 * $bones_rank on $turns on dungeon level $dlev! */
+		snprintf(strbuf, STRBUF_LEN,
+				"player=%s:turns=%ld:dlev=%d:"
+				"bones_killed=%s:bones_rank=%s:bones_monst=%s\n",
+				plname,
+				moves,
+				depth(&u.uz),
+				name,
+				former_rank, /* EN mtmp->former_rank, */
+				mname); /* EN mtmp->data->mname); */
+		livelog_write_string(strbuf);
+	} else if ((mtmp->data->geno & G_UNIQ)
+#ifdef BLACKMARKET
+	           || (mtmp->data == &mons[PM_BLACK_MARKETEER])
+#endif
+		  ) {
+		char *n = german(noit_mon_nam(mtmp)); /* EN char *n = noit_mon_nam(mtmp); */
+		/* $player killed a uniq monster */
+		snprintf(strbuf, STRBUF_LEN,
+				"player=%s:turns=%ld:killed_uniq=%s\n",
+				plname,
+				moves,
+				n);
+		livelog_write_string(strbuf);
+	}
+}
+#endif /* LIVELOG_BONES_KILLER */
+
+/** Reports shoplifting */
+void
+livelog_shoplifting(shk_name, shop_name, total)
+const char* shk_name;
+const char* shop_name;
+long total;
+{
+#ifdef GERMAN
+	char shk[BUFSZ];
+	char shop[BUFSZ];
+	Strcpy(shk, german(shk_name));
+	Strcpy(shop, german(shop_name));
+#endif
+	/* shopkeeper: Name of the shopkeeper (e.g. Kopasker)
+	   shop:       Name of the shop (e.g. general store)
+	   shoplifted: Merchandise worth this many Zorkmids was stolen */
+	snprintf(strbuf, STRBUF_LEN,
+		"player=%s:turns=%ld:shopkeeper=%s:shop=%s:shoplifted=%ld\n",
+		plname,
+		moves,
+		shk, /* EN shk_name, */
+		shop, /* EN shop_name, */
+		total);
+	livelog_write_string(strbuf);
+}
 
 #endif /* LIVELOGFILE */

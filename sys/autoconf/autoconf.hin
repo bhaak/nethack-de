@@ -98,6 +98,9 @@
 /* Live game progress logfile */
 #undef LIVELOGFILE
 
+/* Report killing of ghosts of former player */
+#undef LIVELOG_BONES_KILLER
+
 /* Shoutting into the live game logfile */
 #undef LIVELOG_SHOUT
 

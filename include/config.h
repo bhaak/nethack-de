@@ -161,6 +161,8 @@
 /* #define LIVELOGFILE "livelog" */ /* live game progress log file */
 
 /* #define LIVELOG_SHOUT */
+/* #define LIVELOG_BONES_KILLER */ /* Report if a ghost of a former player is
+                                    * killed - Patric Mueller (15 Aug 2009) */
 
 /*
  *	If COMPRESS is defined, it should contain the full path name of your
