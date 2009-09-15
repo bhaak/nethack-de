@@ -5,6 +5,10 @@
 #include "hack.h"
 #include "dlb.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 /*  quest-specific pager routines. */
 
 #include "qtext.h"
@@ -335,6 +339,16 @@ convert_line()
 					continue; /* for */
 				    }
 				    break;
+#ifdef GERMAN
+				/* Genitivform des bestimmten Artikel der Gottheit */
+				case 'g':
+					if (gott_weiblich(cvt_buf)) {
+							Strcpy(cvt_buf, "der");
+					} else {
+							Strcpy(cvt_buf, "des");
+					}
+				    break;
+#endif
 
 				default: --c;	/* undo switch increment */
 				    break;

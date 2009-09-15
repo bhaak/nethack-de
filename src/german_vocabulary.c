@@ -10380,6 +10380,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schuppe", "NOUN_SCALES", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schuppen", "NOUN_SCALESs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Schicksales", "NOUN_SCHICKSAL", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schicksal", "NOUN_SCHICKSAL", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schicksale", "NOUN_SCHICKSALs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schicksalen", "NOUN_SCHICKSALs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Schlangengiftes", "NOUN_SCHLANGENGIFT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schlangengift", "NOUN_SCHLANGENGIFT", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schlangengifte", "NOUN_SCHLANGENGIFTs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -12357,6 +12362,30 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"beissende", "ADJEKTIV_BEISSEND", "", nominativ|akkusativ, feminin|neutrum|maskulin, n_plural, ohne},
   {"beissender", "ADJEKTIV_BEISSEND", "", genitiv, feminin|neutrum|maskulin, n_plural, ohne},
   {"beissenden", "ADJEKTIV_BEISSEND", "", dativ, feminin|neutrum|maskulin, n_plural, ohne},
+  
+
+  {"berufen", "ADJEKTIV_BERUFEN", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},
+  {"berufene", "ADJEKTIV_BERUFEN", "", nominativ, feminin|neutrum|maskulin, n_singular, bestimmter},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"berufene", "ADJEKTIV_BERUFEN", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", dativ|genitiv, feminin|neutrum|maskulin, n_singular, bestimmter},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural, bestimmter},
+  {"berufener", "ADJEKTIV_BERUFEN", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"berufene", "ADJEKTIV_BERUFEN", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
+  {"berufenes", "ADJEKTIV_BERUFEN", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", dativ|genitiv, feminin|neutrum|maskulin, n_singular, unbestimmter},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural, unbestimmter},
+  {"berufener", "ADJEKTIV_BERUFEN", "", nominativ, maskulin, n_singular, ohne},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", akkusativ|genitiv, maskulin, n_singular, ohne},
+  {"berufenem", "ADJEKTIV_BERUFEN", "", dativ, neutrum|maskulin, n_singular, ohne},
+  {"berufenes", "ADJEKTIV_BERUFEN", "", nominativ|akkusativ, neutrum, n_singular, ohne},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", genitiv, neutrum, n_singular, ohne},
+  {"berufene", "ADJEKTIV_BERUFEN", "", nominativ|akkusativ, feminin, n_singular, ohne},
+  {"berufener", "ADJEKTIV_BERUFEN", "", dativ|genitiv, feminin, n_singular, ohne},
+  {"berufene", "ADJEKTIV_BERUFEN", "", nominativ|akkusativ, feminin|neutrum|maskulin, n_plural, ohne},
+  {"berufener", "ADJEKTIV_BERUFEN", "", genitiv, feminin|neutrum|maskulin, n_plural, ohne},
+  {"berufenen", "ADJEKTIV_BERUFEN", "", dativ, feminin|neutrum|maskulin, n_plural, ohne},
   
 
   {"bevorzugt", "ADJEKTIV_BEVORZUGT", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},

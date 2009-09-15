@@ -402,8 +402,8 @@ Mission das Amulett von Yendor für %d wiederzuerlangen?
 #the Wizard and the minions of Moloch.  Now, you must embark on one
 #final adventure.
 "Sei beglückwünscht, %p.  Ich war im Zweifel, ob irgendjemand über
-den Zauberer und die Handlanger des Moloch siegen könnte.  Jetzt
-musst du dich auf ein letztes Abenteuer begeben.
+den Zauberer und die Handlanger des Moloch siegen könnte.  Doch
+jetzt musst du dich auf ein letztes Abenteuer begeben.
 
 #"Take the Amulet, and find your way onto the astral plane.
 #There you must find the altar of %d and sacrifice the
@@ -3461,19 +3461,25 @@ So steht es geschrieben im Buch %d:
 #    and he hid it in the dark cavities of Gehennom, the
 #    Under World, where he now lurks, and bides his time.
     in den dunklen Höhlensystemen von Gehennom, in der
-    Unterwelt, in der er sich jetzt selbst versteckt hält
-    und auf eine günstige Gelegenheit wartet.
+    Unterwelt, in der er sich jetzt selbst versteckt
+    hält und auf eine günstige Gelegenheit wartet.
 
 #Your %G %d seeks to possess the Amulet, and with it
 #to gain deserved ascendance over the other gods.
 SUBJECT PRONOMEN_POSSESSIV %G %d begehrt das Amulett und mit ihm
 die verdiente Vorherrschaft über die übrigen Götter.
 
-You, a newly trained %r, have been heralded
-from birth as the instrument of %d.  You are destined
-to recover the Amulet for your deity, or die in the
-attempt.  Your hour of destiny has come.  For the sake
-of us all:  Go bravely with %d!
+#You, a newly trained %r, have been heralded
+#Du, ein frisch berufener Straßenräuber, wurdest als [...]
+SATZBEGINN PRONOMEN_PERSONAL, OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER frisch ADJEKTIV_BERUFEN %r, MODIFIER_VERB_PRAETERITUM VERB_WERDEN als
+#from birth as the instrument of %d.  You are destined
+Instrument %dg %d auserkoren.  SATZBEGINN PRONOMEN_POSSESSIV NOUN_SCHICKSAL ist es,
+#to recover the Amulet for your deity, or die in the
+das Amulett zu erlangen oder beim Versuch PRONOMEN_POSSESSIV NOUN_LEBEN
+#attempt.  Your hour of destiny has come.  For the sake
+zu lassen.  Das Schicksal ruft!  Für unser aller Wohl:
+#of us all:  Go bravely with %d!
+SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SEIN tapfer im Namen %ds!
 %E
 %Cp - 00002
 #You receive a faint telepathic message from %l:
@@ -3486,10 +3492,12 @@ SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SUCHEN nach einem ...ischen Transporter.
 SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_KOENNEN die letzte Nachricht nicht ganz verstehen.
 %E
 %Cp - 00003
-You again sense %l pleading for help.
+#You again sense %l pleading for help.
+Wiederum spürst du KASUS_GENITIV %l pleading for help. ###
 %E
 %Cp - 00004
-You again sense %l demanding your attendance.
+#You again sense %l demanding your attendance.
+Wiederum spürst du KASUS_GENITIV %l Verlangen nach deiner Anwesenheit.
 %E
 # Completed the quest by returning with artifact, but not carrying
 # the Bell of Opening; quest leader lets you know that it is needed.
@@ -3504,13 +3512,15 @@ befindet, ist unentbehrlich für das Auffinden des Amuletts von Yendor."
 #	Angelic maledictions.
 #
 %Cp - 00010
-"Repent, and thou shalt be saved!"
+#"Repent, and thou shalt be saved!"
+"Bereue und du wirst errettet werden!"
 %E
 %Cp - 00011
 "Thou shalt pay for thine insolence!"
 %E
 %Cp - 00012
-"Very soon, my child, thou shalt meet thy maker."
+#"Very soon, my child, thou shalt meet thy maker."
+"Sehr bald, mein Kind, wirst du vor deinen Schöpfer treten."
 %E
 %Cp - 00013
 "The great %D has sent me to make you pay for your sins!"
@@ -3646,4 +3656,6 @@ Go now!  You are banished from this place.
  s suffix:	return s_suffix(root);
  S suffix:	return s_suffix(capitalized(root));
  t suffix:	return strip_the_prefix(root);
+# GERMAN suffices
+ g suffix to d:	return gott_weiblich(%d) ? "der" : "des"
 %E
