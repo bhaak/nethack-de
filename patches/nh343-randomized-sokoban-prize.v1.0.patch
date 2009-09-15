@@ -20,7 +20,7 @@ diff -uwr nethack/dat/sokoban.des nethack-randomized-sokoban-prize/dat/sokoban.d
 diff -uwr nethack/src/mkmaze.c nethack-randomized-sokoban-prize/src/mkmaze.c
 --- nethack/src/mkmaze.c	2008-05-26 19:47:02.000000000 +0200
 +++ nethack-randomized-sokoban-prize/src/mkmaze.c	2008-11-13 14:47:49.000000000 +0100
-@@ -406,9 +406,24 @@
+@@ -406,9 +406,27 @@
      }
  
  	/* KMH -- Sokoban levels */
@@ -36,8 +36,11 @@ diff -uwr nethack/src/mkmaze.c nethack-randomized-sokoban-prize/src/mkmaze.c
 +				/* Sokoban top levels have no random, burned engravings */
 +				if (ep && ep->engr_txt[0] && ep->engr_type == BURN &&
 +				    (!strcmp(ep->engr_txt, "Elbereth"))) {
-+						mksobj_at((rn2(2)) ? BAG_OF_HOLDING : AMULET_OF_REFLECTION,
++						struct obj *otmp = mksobj_at((rn2(2)) ? BAG_OF_HOLDING : AMULET_OF_REFLECTION,
 +						          x, y, TRUE, FALSE);
++#ifdef RECORD_ACHIEVE
++						if (otmp) otmp->record_achieve_special = 1;
++#endif
 +				}
 +			}
 +		}

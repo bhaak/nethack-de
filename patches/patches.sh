@@ -34,13 +34,14 @@ apply_patch() {
 	echo $1
 	trenner
 
-	patch -d .. $REVERSE --fuzz=0 -p1 --dry-run < $1
+	echo "patch -d $2 $REVERSE --fuzz=0 -p1 --dry-run < $1"
+	patch -d $2 $REVERSE --fuzz=0 -p1 --dry-run < $1
 	if [ $? != 0 ]
 	then
 		die $1 "failed"
 	fi
 
-	patch -d .. $REVERSE --fuzz=0 -p1 --quiet < $1
+	patch -d $2 $REVERSE --fuzz=0 -p1 --quiet < $1
 	echo 
 }
 
@@ -54,5 +55,5 @@ cd $NH_DIR/patches
 
 for i in $PATCHES
 do
-	apply_patch $i
+	apply_patch $i `pwd`/../
 done
