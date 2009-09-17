@@ -94,7 +94,7 @@ register boolean clumsy;
 		mdx = mon->mx + u.dx;
 		mdy = mon->my + u.dy;
 		if(goodpos(mdx, mdy, mon, 0)) {
-			pline("SUBJECT %s VERB_TAUMELT von dem Schlag.", Monnam(mon)); /* EN pline("%s reels from the blow.", Monnam(mon)); */
+			pline("SUBJECT %s VERB_TAUMELN von dem Schlag.", Monnam(mon)); /* EN pline("%s reels from the blow.", Monnam(mon)); */
 			if (m_in_out_region(mon, mdx, mdy)) {
 			    remove_monster(mon->mx, mon->my);
 			    newsym(mon->mx, mon->my);

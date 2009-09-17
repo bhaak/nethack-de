@@ -60,8 +60,8 @@ STATIC_DCL boolean FDECL(mon_beside, (int, int));
 /* if you can figure this out, give yourself a hearty pat on the back... */
 #define GOLD_CAPACITY(w,n)	(((w) * -100L) - ((n) + 50L) - 1L)
 
-static const char moderateloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN etwas Muehe,"; /* EN static const char moderateloadmsg[] = "You have a little trouble lifting"; */
-static const char nearloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN ziemliche Muehe,"; /* EN static const char nearloadmsg[] = "You have much trouble lifting"; */
+static const char moderateloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN etwas Mühe,"; /* EN static const char moderateloadmsg[] = "You have a little trouble lifting"; */
+static const char nearloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN ziemliche Mühe,"; /* EN static const char nearloadmsg[] = "You have much trouble lifting"; */
 static const char overloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN extreme Probleme, "; /* EN static const char overloadmsg[] = "You have extreme difficulty lifting"; */
 
 /* BUG: this lets you look at cockatrice corpses while blind without

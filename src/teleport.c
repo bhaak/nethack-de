@@ -1273,7 +1273,7 @@ boolean give_feedback;
 
 	if (mtmp->ispriest && *in_rooms(mtmp->mx, mtmp->my, TEMPLE)) {
 	    if (give_feedback)
-		pline("SUBJECT %s VERB_WIDERSTEHT OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_MAGIE!", Monnam(mtmp)); /* EN pline("%s resists your magic!", Monnam(mtmp)); */
+		pline("SUBJECT %s VERB_WIDERSTEHEN OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_MAGIE!", Monnam(mtmp)); /* EN pline("%s resists your magic!", Monnam(mtmp)); */
 	    return FALSE;
 	} else if (level.flags.noteleport && u.uswallow && mtmp == u.ustuck) {
 	    if (give_feedback)

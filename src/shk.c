@@ -3411,7 +3411,7 @@ register int fall;
 		/* for some reason the shopkeeper can't come next to you */
 		if (distu(shkp->mx, shkp->my) > 2) {
 		    if (lang == 2)
-			pline("SUBJECT %s VERB_FLUCHTEN zornig und frustriert!", /* EN pline("%s curses you in anger and frustration!", */
+			pline("SUBJECT %s VERB_FLUCHEN zornig und frustriert!", /* EN pline("%s curses you in anger and frustration!", */
 			      shkname(shkp));
 		    rile_shk(shkp);
 		    return;

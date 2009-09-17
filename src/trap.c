@@ -3444,7 +3444,7 @@ boolean force;
 			    You("VERB_KOENNEN nicht viel gegen OBJECT %s tun%s.", /* EN You_cant("do much about %s%s.", */
 					the_trap, u.utrap ?
 					", in der NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_STECKEN" : /* EN " that you're stuck in" : */
-					", NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL an ihrem Rand VERB_STEHST."); /* EN " while standing on the edge of it"); */
+					", NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL an ihrem Rand VERB_STEHEN."); /* EN " while standing on the edge of it"); */
 			    trap_skipped = TRUE;
 			    deal_with_floor_trap = FALSE;
 			} else {
