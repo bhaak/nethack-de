@@ -1044,7 +1044,7 @@ char* german(const char *line) {
 			}
 
 		} else if (strcmp("MODIFIER_CORPSE", tmp)==0) {
-			enum Numerus corpse_numerus;
+			enum Numerus corpse_numerus = n_singular;
 
 		  // erzeugt: Leichnam eines Kobolds / Leichname von Kobolden
 			// wenn keine PRONOMEN_POSSESSIV vor MODIFIER_CORPSE steht,
