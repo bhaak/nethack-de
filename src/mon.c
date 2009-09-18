@@ -1703,10 +1703,10 @@ int how;
 
 	if ((mdef->wormno ? worm_known(mdef) : cansee(mdef->mx, mdef->my))
 		&& fltxt)
-	    pline("%s is %s%s%s!", Monnam(mdef), /* EN pline("%s is %s%s%s!", Monnam(mdef), */ // TODO DE
-			nonliving(mdef->data) ? "destroyed" : "killed", /* EN nonliving(mdef->data) ? "destroyed" : "killed", */ // TODO DE
-		    *fltxt ? " _von_ ARTIKEL_BESTIMMTER " : "", /* EN *fltxt ? " by the " : "", */
-		    fltxt
+	    pline("SUBJECT %s MODIFIER_VERB_PRAETERITUM VERB_WERDEN%s%s%s!", Monnam(mdef), /* EN pline("%s is %s%s%s!", Monnam(mdef), */
+			/* EN nonliving(mdef->data) ? "destroyed" : "killed", */
+		    *fltxt ? " OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER " : "", /* EN *fltxt ? " by the " : "", */ // _von_
+		    fltxt, nonliving(mdef->data) ? " zerstört" : " getötet" /* EN fltxt */
 		 );
 	else
 	    be_sad = (mdef->mtame != 0);

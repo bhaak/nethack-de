@@ -726,7 +726,7 @@ register struct obj	*sobj;
 		/* KMH -- catch underflow */
 		s = sobj->cursed ? -otmp->spe : otmp->spe;
 		if (s > (special_armor ? 5 : 3) && rn2(s)) {
-		Your("%s für eine Weile intensiv %s%s%s SATZKLAMMNER, um dann zu MODIFIER_VERB_INFINITIV %s.", /* EN Your("%s violently %s%s%s for a while, then %s.", */
+		Your("%s für eine Weile intensiv %s%s%s SATZKLAMMER, um dann zu MODIFIER_VERB_INFINITIV %s.", /* EN Your("%s violently %s%s%s for a while, then %s.", */
 		     xname(otmp),
 		     otense(otmp, Blind ? "VERB_VIBRIEREN" : "VERB_LEUCHTEN"), /* EN otense(otmp, Blind ? "vibrate" : "glow"), */
 		     (!Blind && !same_color) ? " " : nul,

@@ -757,8 +757,8 @@ winid tmpwin;		/* supplied by dodiscover() */
 	 */
 #define MB_MAX_DIEROLL		8	/* rolls above this aren't magical */
 static const char * const mb_verb[2][4] = {
-	{ "probe", "stun", "scare", "cancel" }, /* EN { "probe", "stun", "scare", "cancel" }, */ // TODO DE
-	{ "prod", "amaze", "tickle", "purge" }, /* EN { "prod", "amaze", "tickle", "purge" }, */ // TODO DE
+	{ "VERB_SONDIEREN", "VERB_BETAEUBEN", "VERB_ERSCHRECKEN", "cancel" }, /* EN { "probe", "stun", "scare", "cancel" }, */ // TODO DE
+	{ "VERB_STUPSEN", "VERB_ERSTAUNEN", "VERB_KITZELN", "VERB_PUTZEN" }, /* EN { "prod", "amaze", "tickle", "purge" }, */
 };
 #define MB_INDEX_PROBE		0
 #define MB_INDEX_STUN		1

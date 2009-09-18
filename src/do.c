@@ -7,6 +7,10 @@
 #include "hack.h"
 #include "lev.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef SINKS
 # ifdef OVLB
 STATIC_DCL void FDECL(trycall, (struct obj *));
@@ -479,12 +483,14 @@ register struct obj *obj;
 		/* barrier between you and the floor */
 		if(flags.verbose)
 		{
+#ifndef GERMAN
 			char buf[BUFSZ];
 
 			/* doname can call s_suffix, reusing its buffer */
-			Strcpy(buf, s_suffix(mon_nam(u.ustuck))); /* EN Strcpy(buf, s_suffix(mon_nam(u.ustuck))); */ // TODO DE
-			You("VERB_DROP %s _in_ %s %s SATZKLAMMER.", doname(obj), buf, /* EN You("drop %s into %s %s.", doname(obj), buf, */ // TODO DE
-				mbodypart(u.ustuck, STOMACH));
+			Strcpy(buf, s_suffix(mon_nam(u.ustuck)));
+#endif
+			You("VERB_DROP OBJECT %s NEUES_OBJECT OBJECT in %s SATZKLAMMER.", doname(obj), /* EN You("drop %s into %s %s.", doname(obj), buf, */ // _in_
+				genitivattribut_zu_wort(mon_nam(u.ustuck), mbodypart(u.ustuck, STOMACH))); /* EN mbodypart(u.ustuck, STOMACH)); */
 		}
 	} else {
 #ifdef SINKS
@@ -666,7 +672,7 @@ int retry;
 	all_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
 	all_categories = FALSE;
-	n = query_category("Drop what type of items?", /* EN n = query_category("Drop what type of items?", */ // TODO DE
+	n = query_category("Welche Klassen von Gegenständen SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL fallen lassen?", /* EN n = query_category("Drop what type of items?", */
 			invent,
 			UNPAID_TYPES | ALL_TYPES | CHOOSE_ALL |
 			BUC_BLESSED | BUC_CURSED | BUC_UNCURSED | BUC_UNKNOWN,
@@ -811,7 +817,7 @@ dodown()
 	if (on_level(&valley_level, &u.uz) && !u.uevent.gehennom_entered) {
 		You("VERB_STEHEN vor den Toren Gehennoms."); /* EN You("are standing at the gate to Gehennom."); */
 		pline("Unaussprechliche Gefahren und Unheil lauern dort unten."); /* EN pline("Unspeakable cruelty and harm lurk down there."); */
-		if (yn("Are you sure you want to enter?") != 'y') /* EN if (yn("Are you sure you want to enter?") != 'y') */ // TODO DE
+		if (yn("SUBJECT VERB_WOLLEN PRONOMEN_PERSONAL wirklich eintreten?") != 'y') /* EN if (yn("Are you sure you want to enter?") != 'y') */
 			return(0);
 		else pline("So sei es."); /* EN else pline("So be it."); */
 		u.uevent.gehennom_entered = 1;	/* don't ask again */
@@ -912,7 +918,7 @@ currentlevel_rewrite()
 	if (!savelev(fd, ledger_no(&u.uz), COUNT_SAVE)) {
 		(void) close(fd);
 		delete_levelfile(ledger_no(&u.uz));
-		pline("NetHack-De is out of disk space for making levels!"); /* EN pline("NetHack is out of disk space for making levels!"); */ // TODO DE
+		pline("NetHack-De hat keinen Speicherplatz mehr um Level anzulegen!"); /* EN pline("NetHack is out of disk space for making levels!"); */
 		You("VERB_KOENNEN speichern, abbrechen, or weiterspielen."); /* EN You("can save, quit, or continue playing."); */
 		return -1;
 	}
@@ -1550,15 +1556,15 @@ struct obj *corpse;
 	   	if (container_where == OBJ_MINVENT && cansee(mtmp->mx, mtmp->my) &&
 		    mcarry && canseemon(mcarry) && container) {
 		        char sackname[BUFSZ];
-		        Sprintf(sackname, "%s %s", s_suffix(mon_nam(mcarry)), /* EN Sprintf(sackname, "%s %s", s_suffix(mon_nam(mcarry)), */ // TODO DE
-				xname(container)); 
-	   		pline("%s writhes out of %s!", Amonnam(mtmp), sackname); /* EN pline("%s writhes out of %s!", Amonnam(mtmp), sackname); */ // TODO DE
+		        Sprintf(sackname, "%s", genitivattribut_zu_wort(mon_nam(mcarry), /* EN Sprintf(sackname, "%s %s", s_suffix(mon_nam(mcarry)), */
+				xname(container))); /* EN xname(container));  */
+	   		pline("SUBJECT %s ent-VERB_FLEUCHEN OBJECT KASUS_DATIV %s!", Amonnam(mtmp), sackname); /* EN pline("%s writhes out of %s!", Amonnam(mtmp), sackname); */
 	   	} else if (container_where == OBJ_INVENT && container) {
 		        char sackname[BUFSZ];
 		        Strcpy(sackname, an(xname(container)));
-	   		pline("%s %s out of %s in your pack!", /* EN pline("%s %s out of %s in your pack!", */ // TODO DE
+	   		pline("SUBJECT %s ent-%s OBJECT KASUS_DATIV %s NEUES_OBJECT in PRONOMEN_POSSESSIV NOUN_PACK!", /* EN pline("%s %s out of %s in your pack!", */
 	   			Blind ? Something : Amonnam(mtmp),
-				locomotion(mtmp->data,"writhes"), /* EN locomotion(mtmp->data,"writhes"), */ // TODO DE
+				locomotion(mtmp->data,"VERB_FLEUCHEN"), /* EN locomotion(mtmp->data,"writhes"), */
 	   			sackname);
 	   	} else if (container_where == OBJ_FLOOR && container &&
 		            cansee(mtmp->mx, mtmp->my)) {
@@ -1630,7 +1636,7 @@ dowipe()
 	if(u.ucreamed)  {
 		static NEARDATA char buf[39];
 
-		Sprintf(buf, "wiping off your %s", body_part(FACE)); /* EN Sprintf(buf, "wiping off your %s", body_part(FACE)); */ // TODO DE
+		Sprintf(buf, "OBJECT PRONOMEN_POSSESSIV %s zu reinigen", body_part(FACE)); /* EN Sprintf(buf, "wiping off your %s", body_part(FACE)); */
 		set_occupation(wipeoff, buf, 0);
 		/* Not totally correct; what if they change back after now
 		 * but before they're finished wiping?
