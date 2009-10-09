@@ -379,7 +379,7 @@ register struct obj *obj;
 			/* The lady of the lake acts! - Eric Backus */
 			/* Be *REAL* nice */
 	  pline("From the murky depths, a hand reaches up to bless the sword."); /* EN pline("From the murky depths, a hand reaches up to bless the sword."); */ // TODO DE
-			pline("As the hand retreats, the fountain disappears!"); /* EN pline("As the hand retreats, the fountain disappears!"); */ // TODO DE
+			pline("Als sich die Hand zurückzieht, verschwindet ARTIKEL_BESTIMMTER NOUN_FOUNTAIN!"); /* EN pline("As the hand retreats, the fountain disappears!"); */
 			obj = oname(obj, artiname(ART_EXCALIBUR));
 			discover_artifact(ART_EXCALIBUR);
 			bless(obj);
@@ -527,7 +527,7 @@ drinksink()
 			break;
 		case 2: You("VERB_NEHMEN einen Schluck siedend heißen Wassers."); /* EN case 2: You("take a sip of scalding hot water."); */
 			if (Fire_resistance)
-				pline("It seems quite tasty."); /* EN pline("It seems quite tasty."); */ // TODO DE
+				pline("Es schmeckt ganz gut."); /* EN pline("It seems quite tasty."); */
 			else losehp(rnd(6), "sipping boiling water", KILLED_BY); /* EN else losehp(rnd(6), "sipping boiling water", KILLED_BY); */ // TODO DE
 			break;
 		case 3: if (mvitals[PM_SEWER_RAT].mvflags & G_GONE)
@@ -535,9 +535,9 @@ drinksink()
 			else {
 				mtmp = makemon(&mons[PM_SEWER_RAT],
 						u.ux, u.uy, NO_MM_FLAGS);
-				if (mtmp) pline("Eek!  There's %s in the sink!", /* EN if (mtmp) pline("Eek!  There's %s in the sink!", */ // TODO DE
+				if (mtmp) pline("Igitt!  Da ist %s in der Spüle!", /* EN if (mtmp) pline("Eek!  There's %s in the sink!", */
 					(Blind || !canspotmon(mtmp)) ?
-					"something squirmy" : /* EN "something squirmy" : */ // TODO DE
+					"ein Viech" : /* EN "something squirmy" : */
 					a_monnam(mtmp));
 			}
 			break;
@@ -549,8 +549,8 @@ drinksink()
 				}
 			} while(!otmp);
 			otmp->cursed = otmp->blessed = 0;
-			pline("Some %s liquid flows from the faucet.", /* EN pline("Some %s liquid flows from the faucet.", */ // TODO DE
-			      Blind ? "odd" : /* EN Blind ? "odd" : */ // TODO DE
+			pline("Eine %s Flüssigkeit fließt aus dem Wasserhahn.", /* EN pline("Some %s liquid flows from the faucet.", */
+			      Blind ? "merkwürdige" : /* EN Blind ? "odd" : */
 			      hcolor(OBJ_DESCR(objects[otmp->otyp])));
 			otmp->dknown = !(Blind || Hallucination);
 			otmp->quan++; /* Avoid panic upon useup() */
@@ -564,7 +564,7 @@ drinksink()
 			    levl[u.ux][u.uy].looted |= S_LRING;
 			    exercise(A_WIS, TRUE);
 			    newsym(u.ux,u.uy);
-			} else pline("Some dirty water backs up in the drain."); /* EN } else pline("Some dirty water backs up in the drain."); */ // TODO DE
+			} else pline("Es kommt etwas Dreckwasser aus dem Abflussrohr hoch."); /* EN } else pline("Some dirty water backs up in the drain."); */
 			break;
 		case 6: breaksink(u.ux,u.uy);
 			break;
@@ -574,7 +574,7 @@ drinksink()
 					u.ux, u.uy, NO_MM_FLAGS))
 				pline("Aber es beruhigt sich wieder."); /* EN pline("But it quiets down."); */
 			break;
-		case 8: pline("Yuk, this water tastes awful."); /* EN case 8: pline("Yuk, this water tastes awful."); */ // TODO DE
+		case 8: pline("Wrg, dieses Wasser schmeckt ekelhaft."); /* EN case 8: pline("Yuk, this water tastes awful."); */
 			more_experienced(1,0);
 			newexplevel();
 			break;
@@ -589,12 +589,12 @@ drinksink()
 			}
 			break;
 		/* more odd messages --JJB */
-		case 11: You_hear("clanking from the pipes..."); /* EN case 11: You_hear("clanking from the pipes..."); */ // TODO DE
+		case 11: You_hear("es scheppern in den Rohren ..."); /* EN case 11: You_hear("clanking from the pipes..."); */
 			break;
-		case 12: You_hear("snatches of song from among the sewers..."); /* EN case 12: You_hear("snatches of song from among the sewers..."); */ // TODO DE
+		case 12: You_hear("Liedfetzen aus der Kanalisation ..."); /* EN case 12: You_hear("snatches of song from among the sewers..."); */
 			break;
 		case 19: if (Hallucination) {
-		   pline("From the murky drain, a hand reaches up... --upps--"); /* EN pline("From the murky drain, a hand reaches up... --oops--"); */ // TODO DE
+		   pline("Aus dem dunklen Rohr reckt eine Hand empor ... --huch--"); /* EN pline("From the murky drain, a hand reaches up... --oops--"); */
 				break;
 			}
 		default: You("VERB_NEHMEN einen Schluck %s Wassers.", /* EN default: You("take a sip of %s water.", */

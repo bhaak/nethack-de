@@ -224,7 +224,7 @@ castmu(mtmp, mattk, thinks_it_foundyou, foundyou)
 	    pline("SUBJECT %s VERB_WIRKEN einen Zauberspruch gegen %s!", /* EN pline("%s casts a spell at %s!", */
 		canseemon(mtmp) ? Monnam(mtmp) : "NOUN_ETWAS", /* EN canseemon(mtmp) ? Monnam(mtmp) : "Something", */
 		levl[mtmp->mux][mtmp->muy].typ == WATER
-		    ? "leeres Wasser" : "thin air"); /* EN ? "empty water" : "thin air"); */ // TODO DE
+		    ? "leeres Wasser" : "Luft"); /* EN ? "empty water" : "thin air"); */
 	    return(0);
 	}
 
@@ -361,7 +361,7 @@ int spellnum;
 
 	count = nasty(mtmp);	/* summon something nasty */
 	if (mtmp->iswiz)
-	    verbalize("Destroy the thief, my pet%s!", plur(count)); /* EN verbalize("Destroy the thief, my pet%s!", plur(count)); */ // TODO DE
+	    verbalize("Vernichte%s %s, %s!", count==1 ? "" : "t", flags.female ? "die Diebin" : "den Dieb", count==1 ? "mein Kleines" : "meine Kleinen"); /* EN verbalize("Destroy the thief, my pet%s!", plur(count)); */
 	else {
 	    const char *mappear =
 		(count == 1) ? "Ein Monster erscheint" : "Monster erscheinen"; /* EN (count == 1) ? "A monster appears" : "Monsters appear"; */
@@ -380,7 +380,7 @@ int spellnum;
 	break;
     }
     case MGC_AGGRAVATION:
-	You_feel("that monsters are aware of your presence."); /* EN You_feel("that monsters are aware of your presence."); */ // TODO DE
+	You("VERB_SPUEREN, dass die Monster sich OBJECT KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_ANWESENHEIT bewusst sind."); /* EN You_feel("that monsters are aware of your presence."); */
 	aggravate();
 	dmg = 0;
 	break;
@@ -392,7 +392,7 @@ int spellnum;
     case MGC_DESTRY_ARMR:
 	if (Antimagic) {
 	    shieldeff(u.ux, u.uy);
-	    pline("A field of force surrounds you!"); /* EN pline("A field of force surrounds you!"); */ // TODO DE
+	    pline("Ein Kraftfeld umgibt KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("A field of force surrounds you!"); */
 	} else if (!destroy_arm(some_armor(&youmonst))) {
 	    Your("NOUN_HAUT juckt."); /* EN Your("skin itches."); */
 	}
@@ -462,9 +462,9 @@ int spellnum;
 	else if (dmg <= 10)
 	    pline("Ein brennender Schmerz durchfährt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GEHIRN!"); /* EN Your("brain is on fire!"); */
 	else if (dmg <= 20)
-	    Your("%s suddenly aches painfully!", body_part(HEAD)); /* EN Your("%s suddenly aches painfully!", body_part(HEAD)); */ // TODO DE
+	    Your("%s VERB_SCHMERZEN plötzlich schrecklich!", body_part(HEAD)); /* EN Your("%s suddenly aches painfully!", body_part(HEAD)); */
 	else
-	    Your("%s suddenly aches very painfully!", body_part(HEAD)); /* EN Your("%s suddenly aches very painfully!", body_part(HEAD)); */ // TODO DE
+	    Your("%s VERB_SCHMERZEN plötzlich höllisch!", body_part(HEAD)); /* EN Your("%s suddenly aches very painfully!", body_part(HEAD)); */
 	break;
     default:
 	impossible("mcastu: invalid magic spell (%d)", spellnum);

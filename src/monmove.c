@@ -61,7 +61,7 @@ register struct monst *mtmp;
 
 		  pline("SUBJECT %s VERB_SCHREIEN:", Amonnam(mtmp)); /* EN pline("%s yells:", Amonnam(mtmp)); */
 		  if(levl[x][y].looted & D_WARNED) {
-			verbalize("Halt, thief!  You're under arrest!"); /* EN verbalize("Halt, thief!  You're under arrest!"); */ // TODO DE
+			verbalize("Halt, Dieb!  SUBJECT PRONOMEN_PERSONAL VERB_SEIN verhaftet!"); /* EN verbalize("Halt, thief!  You're under arrest!"); */
 			(void) angry_guards(!(flags.soundok));
 		  } else {
 			verbalize("Hey, stop picking that lock!"); /* EN verbalize("Hey, stop picking that lock!"); */ // TODO DE
@@ -383,7 +383,7 @@ register struct monst *mtmp;
 	   mtmp->mpeaceful && !mtmp->mtame && !u.uswallow) {
 		if (mtmp->mux != u.ux || mtmp->muy != u.uy) {
 			pline("%s whispers at thin air.", /* EN pline("%s whispers at thin air.", */ // TODO DE
-			    cansee(mtmp->mux, mtmp->muy) ? Monnam(mtmp) : "It");
+			    cansee(mtmp->mux, mtmp->muy) ? Monnam(mtmp) : "It"); /* EN cansee(mtmp->mux, mtmp->muy) ? Monnam(mtmp) : "It"); */ // TODO DE
 
 			if (is_demon(youmonst.data)) {
 			  /* "Good hunting, brother" */
@@ -1065,7 +1065,7 @@ postmov:
 			    pline("SUBJECT %s %s unter der Türe durch.", Monnam(mtmp), /* EN pline("%s %s under the door.", Monnam(mtmp), */
 				  (ptr == &mons[PM_FOG_CLOUD] ||
 				   ptr == &mons[PM_YELLOW_LIGHT])
-				  ? "flows" : "VERB_SUPPEN"); /* EN ? "flows" : "oozes"); */ // TODO DE
+				  ? "VERB_FLIESSEN" : "VERB_SUPPEN"); /* EN ? "flows" : "oozes"); */
 		    } else if(here->doormask & D_LOCKED && can_unlock) {
 			if(btrapped) {
 			    here->doormask = D_NODOOR;
@@ -1092,9 +1092,9 @@ postmov:
 			} else {
 			    if (flags.verbose) {
 				if (canseeit)
-				     You("VERB_SEE jemanden eine Tür öffnen."); /* EN You("see a door open."); */ // TODO DE
+				     You("VERB_SEE jemanden eine Tür öffnen."); /* EN You("see a door open."); */
 				else if (flags.soundok)
-				     You_hear("jemanden eine Tür öffnen."); /* EN You_hear("a door open."); */ // TODO DE
+				     You_hear("jemanden eine Tür öffnen."); /* EN You_hear("a door open."); */
 			    }
 			    here->doormask = D_ISOPEN;
 			    /* newsym(mtmp->mx, mtmp->my); */  /* done below */
