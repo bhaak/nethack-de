@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # nhtohtml.pl: A script to generate the nethack bestiary for NetHack-De.
-# Copyright (c) 2008 Patric Mueller (bhaak@gmx.net)
+# Copyright (c) 2008-2009 Patric Mueller (bhaak@gmx.net)
 # Copyright (c) 2004 Robert Sim (rob@simra.net)
 #
 # This program is free software; you can redistribute it and/or
@@ -94,11 +94,11 @@ my %attacks =
    AT_SPIT => "Spit",
    AT_ENGL => "Engulf",
    AT_BREA => "Odem", # AT_BREA => "Breath",
-   AT_EXPL => "Explode",
-   AT_BOOM => "Explode (when killed)",
-   AT_GAZE => "Gaze",
+   AT_EXPL => "Explodiert",
+   AT_BOOM => "Explodiert (als Todesfolge)",
+   AT_GAZE => "Blick",
    AT_TENT => "Tentakel", # AT_TENT => "Tentacles",
-   AT_WEAP => "Weapon", # AT_WEAP => "Weapon",
+   AT_WEAP => "Waffe", # AT_WEAP => "Weapon",
    AT_MAGC => "Magie" # AT_MAGC => "Magic"
   );
 
@@ -107,14 +107,14 @@ my %attacks =
 my %damage =
   (
  AD_PHYS=>	" gewöhnlicher Schaden ",
- AD_MAGM=>	" magic missile ",
- AD_FIRE=>	" fire  ",
- AD_COLD=>	" frost ",
- AD_SLEE=>	" sleep ray ",
- AD_DISN=>	" disintegration (death ray) ",
+ AD_MAGM=>	" magische Geschosse ",
+ AD_FIRE=>	" Feuer  ",
+ AD_COLD=>	" Kälte ",
+ AD_SLEE=>	" Schlafstrahl ",
+ AD_DISN=>	" Desintegration (Todesstrahl) ",
  AD_ELEC=>	" shock ",
  AD_DRST=>	" drains strength (poison) ",
- AD_ACID=>	" acid ",
+ AD_ACID=>	" Säure ",
  AD_SPC1=>	" buzz ",
  AD_SPC2=>	" buzz ",
  AD_BLND=>	" blinding (yellow light) ",
@@ -124,25 +124,25 @@ my %damage =
  AD_DRLI=>	" drain life levels (Vampire) ",
  AD_DREN=>	" drain magic energy ",
  AD_LEGS=>	" Beine (Xan) ",
- AD_STON=>	" petrifies (Medusa, cockatrice) ",
+ AD_STON=>	" versteinert Gegner",
  AD_STCK=>	" sticks to you (mimic) ",
- AD_SGLD=>	" steals gold (leppie) ",
+ AD_SGLD=>	" stiehlt Gold ",
  AD_SITM=>	" steals item (nymphs) ",
  AD_SEDU=>	" seduces & steals multiple items ",
- AD_TLPT=>	" teleports you (Quantum Mech.) ",
+ AD_TLPT=>	" teleportiert Spieler ",
  AD_RUST=>	" rusts armour (Rust Monster)",
- AD_CONF=>	" confuses (Umber Hulk) ",
- AD_DGST=>	" digests opponent (trapper, etc.) ",
- AD_HEAL=>	" heals opponent's wounds (nurse) ",
+ AD_CONF=>	" verwirrt ",
+ AD_DGST=>	" verdaut Gegner ",
+ AD_HEAL=>	" heilte gegnerische Wunde (Krankenschwester) ",
  AD_WRAP=>	" special \"stick\" for eel ",
  AD_WERE=>	" confers lycanthropy ",
  AD_DRDX=>	" drains dexterity (quasit) ",
  AD_DRCO=>	" drains constitution ",
- AD_DRIN=>	" drains intelligence (mind flayer) ",
- AD_DISE=>	" confers diseases ",
+ AD_DRIN=>	" drains intelligence ",
+ AD_DISE=>	" überträgt Krankheiten ",
  AD_DCAY=>	" decays organics (brown Pudding) ",
  AD_SSEX=>	" Succubus seduction (extended) ",
- AD_HALU=>	" causes hallucination ",
+ AD_HALU=>	" verursacht Halluzinationen ",
  AD_DETH=>	" for Death only ",
  AD_PEST=>	" for Pestilence only ",
  AD_FAMN=>	" for Famine only ",
@@ -151,7 +151,7 @@ my %damage =
  AD_CORR=>	" corrode armor (black pudding) ",
 
  AD_CLRC=>	" zufälliger clerical spell ",
- AD_SPEL=>	" zufälliger magic spell ",
+ AD_SPEL=>	" zufälliger magischer Zauberspruch ",
  AD_RBRE=>	" zufällige Odemwaffe ",
 
  AD_SAMU=>	" schlägt, kann Amulet stehlen (Zauberer) ",
