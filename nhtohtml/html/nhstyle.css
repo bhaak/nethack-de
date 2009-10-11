@@ -3,9 +3,19 @@ body {
   font-family: arial, sans-serif;
   background: #000000;
   color: #d0d0d0;
-  width: 500px;
+  width: 34em;
   position: relative;
   top: 20%;
+  padding-left: 1em;
+}
+
+table {
+  border-collapse: collapse;
+  margin-left: 1em;
+}
+
+.monster_table td.name {
+  padding-left: 0.5em;
 }
 
 a {
@@ -19,19 +29,27 @@ h1 {
   font-weight: bold;
 }
 
-.separator1 {
+.separator {
   clear: both;
-  height: 4px;
-  color: #ffffff;
-  background-color: #ffffff;
+  height: 0.1em;
+  color: #444;
+  background-color: #444;
   border: 0;
 }
 
+.entry {
+  padding: .75em;
+}
+
 .symbol {
-  font-family:courier;
+  font-family:monospace;
+  background:#111111;
+  padding: 0.1em;
+}
+
+div.symbol {
+  font-size:300%;
   float:right;
-  font-size:40pt;
-  background:#000000;
 }
 
 .attack ul {
