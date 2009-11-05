@@ -2,6 +2,20 @@
 htmltitle: NetHack Poll 2009
 ---
 
+<h3>NetHack Poll 2009</h3>
+
+The intention of this poll is to gather some information about NetHack players,
+both currently active and past players.
+
+It will run through the month of November. Afterwards the results will be
+released to the public.
+
+Please spread the word about this poll to other NetHack playing people you know.
+
+Instead of filling out this form you can also send us an e-mail to <a href="mailto:nethackpoll@gmail.com?subject=NetHack Poll 2009: ">nethackpoll@gmail.com</a>. The questions can also be downloaded as a <a href="nethack_poll.txt">text file</a>.
+
+<hr />
+
 <form method="post" action="http://www.emailmeform.com/fid.php?formid=468005" enctype="multipart/form-data" accept-charset="UTF-8"><table cellpadding="2" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr><td> <div style="" id="mainmsg"> </div></td></tr>
 </table><br><table cellpadding="2" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr valign="top"> <td>What is your age and gender?</td> <td><input type="text" name="FieldData0" size="60"> </td></tr>
 <tr valign="top"> <td>Which country do you live in?</td> <td><input type="text" name="FieldData1" size="60"> </td></tr>
@@ -28,6 +42,13 @@ htmltitle: NetHack Poll 2009
 <tr><td colspan=2 align="center"><br></td></tr>
 
 </table></form>
+
+<dl>
+<dt>Note:</dt>
+<dd>Your e-mail address will not be shared with any third parties. After the
+poll is closed and the final results have been published all replies
+will be deleted.</dd>
+</d>
 
 <hr />
 <p><a href="http://www.emailmeform.com" title="EmailMe Form">EmailMe Form</a> - A free service offering customizable web forms (Contact forms, online Questionnaires and Surveys) and they host it on their server, so it works with any site, regardless of the ability to run scripts.</p>

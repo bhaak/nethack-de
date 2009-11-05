@@ -126,3 +126,20 @@ img {
   text-align: right;
 }
 
+/* NetHack Poll 2009 */
+textarea,
+input
+{
+border: 2px solid #AAA;
+background-color: #111;
+}
+textarea:focus,
+input:focus
+{
+background-color: #222;
+}
+
+.btn
+{
+border: 2px outset #d7b9c9
+}
