@@ -4,8 +4,7 @@ htmltitle: NetHack Poll 2009
 
 <h3>NetHack Poll 2009</h3>
 
-The intention of this poll is to gather some information about NetHack players,
-both currently active and past players.
+The intention of this poll is to gather some information about NetHack players, both currently active and past players for helping us variants developers for design decisions and to get a small insight into the NetHack community as a whole.
 
 It will run through the month of November. Afterwards the results will be
 released to the public.
@@ -17,29 +16,29 @@ Instead of filling out this form you can also send us an e-mail to <a href="mail
 <hr />
 
 <form method="post" action="http://www.emailmeform.com/fid.php?formid=468005" enctype="multipart/form-data" accept-charset="UTF-8"><table cellpadding="2" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr><td> <div style="" id="mainmsg"> </div></td></tr>
-</table><br><table cellpadding="2" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr valign="top"> <td>What is your age and gender?</td> <td><input type="text" name="FieldData0" size="60"> </td></tr>
-<tr valign="top"> <td>Which country do you live in?</td> <td><input type="text" name="FieldData1" size="60"> </td></tr>
+</table><br /><table cellpadding="2" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr valign="top"> <td>What is your age and gender?</td> <td><input type="text" name="FieldData0" size="60" /> </td></tr>
+<tr valign="top"> <td>Which country do you live in?</td> <td><input type="text" name="FieldData1" size="60" /> </td></tr>
 
-<tr valign="top"> <td>Do you play locally, on a server or both?</td> <td><textarea name="FieldData2" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>Do you play Tiles or ASCII or both?</td> <td><textarea name="FieldData3" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>On which Operating Systems or Devices do you play NetHack?</td> <td><textarea name="FieldData4" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>Where did you get your copy of NetHack from?</td> <td><textarea name="FieldData5" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>Do you play a patched NetHack or variants of NetHack?</td> <td><textarea name="FieldData6" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>Which Roguelikes have you played before? (Crawl, ADOM, Angband, etc.)</td> <td><textarea name="FieldData7" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>Where did you learn about NetHack?</td> <td><textarea name="FieldData8" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>And when?</td> <td><textarea name="FieldData9" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>How often did you win NetHack? (If never, you may specify your best game.)</td> <td><textarea name="FieldData10" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>To what extent do you use spoiler for playing NetHack?</td> <td><textarea name="FieldData11" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>If you no longer play NetHack regularly, why and when did you quit?</td> <td><textarea name="FieldData12" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>If you take part in the NetHack DevNull tournament: where did you hear about it?</td> <td><textarea name="FieldData13" cols="60" rows="10"></textarea><br> </td></tr>
+<tr valign="top"> <td>Do you play locally, on a server or both?</td> <td><textarea name="FieldData2" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>Do you play Tiles or ASCII or both?</td> <td><textarea name="FieldData3" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>On which Operating Systems or Devices do you play NetHack?</td> <td><textarea name="FieldData4" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>Where did you get your copy of NetHack from?</td> <td><textarea name="FieldData5" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>Do you play a patched NetHack or variants of NetHack?</td> <td><textarea name="FieldData6" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>Which other Roguelikes have you ever played? (Crawl, ADOM, Angband, etc.)</td> <td><textarea name="FieldData7" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>Where did you learn about NetHack?</td> <td><textarea name="FieldData8" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>And when?</td> <td><textarea name="FieldData9" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>How often did you win NetHack? (If never, you may specify your best game.)</td> <td><textarea name="FieldData10" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>To what extent do you use spoiler for playing NetHack?</td> <td><textarea name="FieldData11" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>If you no longer play NetHack regularly, why and when did you quit?</td> <td><textarea name="FieldData12" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>If you take part in the NetHack DevNull tournament: where did you hear about it?</td> <td><textarea name="FieldData13" cols="60" rows="10"></textarea><br /> </td></tr>
 
-<tr valign="top"> <td>Did you ever recommend NetHack to someone?</td> <td><textarea name="FieldData14" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>Which computer game other than NetHack did you play most in the last three months (August, September, October)?</td> <td><textarea name="FieldData15" cols="60" rows="10"></textarea><br> </td></tr>
-<tr valign="top"> <td>Please specify a valid e-mail address if you would like to receive the results of this poll.</td> <td><input type="text" name="FieldData16" size="60"> </td></tr>
+<tr valign="top"> <td>Did you ever recommend NetHack to someone?</td> <td><textarea name="FieldData14" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>Which computer game other than NetHack did you play most in the last three months (August, September, October)?</td> <td><textarea name="FieldData15" cols="60" rows="10"></textarea><br /> </td></tr>
+<tr valign="top"> <td>Please specify a valid e-mail address if you would like to receive the results of this poll.</td> <td><input type="text" name="FieldData16" size="60" /> </td></tr>
 <tr> <td colspan="2"></td></tr>
 
-<tr> <td> </td> <td align="left"><input type="text" name="hida2" value="" maxlength="100" size="3" style="display : none;"><input type="submit" class="btn" value="Submit answers" name="Submit">    <input type="reset" class="btn" value="  Clear  " name="Clear"></td></tr>
-<tr><td colspan=2 align="center"><br></td></tr>
+<tr> <td> </td> <td align="left"><input type="text" name="hida2" value="" maxlength="100" size="3" style="display : none;" /><input type="submit" class="btn" value="Submit answers" name="Submit" />    <input type="reset" class="btn" value="  Clear  " name="Clear" /></td></tr>
+<tr><td colspan=2 align="center"><br /></td></tr>
 
 </table></form>
 
@@ -48,7 +47,7 @@ Instead of filling out this form you can also send us an e-mail to <a href="mail
 <dd>Your e-mail address will not be shared with any third parties. After the
 poll is closed and the final results have been published all replies
 will be deleted.</dd>
-</d>
+</dl>
 
 <hr />
 <p><a href="http://www.emailmeform.com" title="EmailMe Form">EmailMe Form</a> - A free service offering customizable web forms (Contact forms, online Questionnaires and Surveys) and they host it on their server, so it works with any site, regardless of the ability to run scripts.</p>
