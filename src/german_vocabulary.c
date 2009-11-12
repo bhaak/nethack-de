@@ -7043,9 +7043,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Xorn", "NOUN_XORN", "en", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Xorn", "NOUN_XORNs", "en", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"훓fchens", "NOUN_MONKEY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"훓fchen", "NOUN_MONKEY", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"훓fchen", "NOUN_MONKEYs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"훓fchens", "NOUN_MONKEY", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"훓fchen", "NOUN_MONKEY", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"훓fchen", "NOUN_MONKEYs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Menschenaffe", "NOUN_APE", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Menschenaffen", "NOUN_APE", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

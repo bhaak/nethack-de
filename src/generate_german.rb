@@ -2791,7 +2791,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WRAITH", "Todesalb", "s", "Todesalb", "e", "maskulin"), # Todesalb, Schreckensalb
     dekliniere_substantiv("NOUN_NAZGUL","Nazgûl","","Nazgûl","","maskulin"),
     dekliniere_substantiv("NOUN_XORN","Xorn","","Xorn","","maskulin","en"),
-    dekliniere_substantiv("NOUN_MONKEY", "Äffchen", "s", "Äffchen", "", "maskulin"),
+    dekliniere_substantiv("NOUN_MONKEY", "Äffchen", "s", "Äffchen", "", "neutrum"),
     dekliniere_substantiv("NOUN_APE", "Menschenaffe", "en", "Menschenaffe", "en", "maskulin"), # einer Menschenaffen stattdessen? Gibbon, Orang-Utan, Gorilla, Schimpanse. Gorilla scheint passend (ist auch der Vetegarischste der Menschenaffen)
     dekliniere_substantiv("NOUN_OWLBEAR", "Eulenbär", "en", "Eulenbär", "en", "maskulin"), # Netzhack: Uhlenbär
     dekliniere_substantiv("NOUN_YETI","Yeti","s","Yeti","s","maskulin"),
