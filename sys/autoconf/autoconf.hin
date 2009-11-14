@@ -42,9 +42,6 @@
 /* Gold is kept on object chains (experimental) */
 #undef GOLDOBJ
 
-/* Define to 1 if you have the <curses.h> header file. */
-#undef HAVE_CURSES_H
-
 /* Define to 1 if you have the declaration of `strncmpi', and to 0 if you
    don't. */
 #undef HAVE_DECL_STRNCMPI
@@ -76,9 +73,6 @@
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
-
-/* Define to 1 if you have the <termcap.h> header file. */
-#undef HAVE_TERMCAP_H
 
 /* Define this if you have the tparm function in an included lib. */
 #undef HAVE_TPARM

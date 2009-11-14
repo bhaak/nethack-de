@@ -161,9 +161,8 @@ if test "$enable_tty_graphics" != "no"; then
 		NETHACK_AUTO_WIN_DISABLE(tty)
 	    fi
 	fi
-	dnl  ----- Check for tparm in curses
-	AC_CHECK_HEADERS(curses.h termcap.h)
-	AC_CHECK_LIB(curses, tparm, AC_DEFINE(HAVE_TPARM, 1, [Define this if you have the tparm function in an included lib.]),)
+	dnl  ----- Check for tparm in found termlib
+	AC_CHECK_LIB(${termlib}, tparm, AC_DEFINE(HAVE_TPARM, 1, [Define this if you have the tparm function in an included lib.]),)
 
     fi
 
