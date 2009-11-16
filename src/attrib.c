@@ -32,7 +32,7 @@ const struct innate {
 
 	bar_abil[] = { {	 1, &(HPoison_resistance), "", "" },
 		     {   7, &(HFast), "schnell", "langsam" }, /* EN {   7, &(HFast), "quick", "slow" }, */
-		     {  15, &(HStealth), "schleichend", "" }, /* EN {  15, &(HStealth), "stealthy", "" }, */
+		     {  15, &(HStealth), "unauffällig", "auffällig" }, /* EN {  15, &(HStealth), "stealthy", "" }, */
 		     {	 0, 0, 0, 0 } },
 
 	cav_abil[] = { {	 7, &(HFast), "schnell", "langsam" }, /* EN cav_abil[] = { {	 7, &(HFast), "quick", "slow" }, */
@@ -50,7 +50,7 @@ const struct innate {
 		     {   1, &(HSleep_resistance), "", "" },
 		     {   1, &(HSee_invisible), "", "" },
 		     {   3, &(HPoison_resistance), "gesund", "" }, /* EN {   3, &(HPoison_resistance), "healthy", "" }, */
-		     {   5, &(HStealth), "schleichend", "" }, /* EN {   5, &(HStealth), "stealthy", "" }, */
+		     {   5, &(HStealth), "unauffällig", "auffällig" }, /* EN {   5, &(HStealth), "stealthy", "" }, */
 		     {   7, &(HWarning), "sensibel", "" }, /* EN {   7, &(HWarning), "sensitive", "" }, */
 		     {   9, &(HSearching), "aufmerksam", "unaufmerksam" }, /* EN {   9, &(HSearching), "perceptive", "unaware" }, */
 		     {  11, &(HFire_resistance), "kühl", "wärmer" }, /* EN {  11, &(HFire_resistance), "cool", "warmer" }, */
@@ -64,7 +64,7 @@ const struct innate {
 		     {	 0, 0, 0, 0 } },
 
 	ran_abil[] = { {   1, &(HSearching), "", "" },
-		     {	 7, &(HStealth), "schleichend", "" }, /* EN {	 7, &(HStealth), "stealthy", "" }, */
+		     {	 7, &(HStealth), "unauffällig", "auffällig" }, /* EN {	 7, &(HStealth), "stealthy", "" }, */
 		     {	15, &(HSee_invisible), "", "" },
 		     {	 0, 0, 0, 0 } },
 
@@ -73,7 +73,7 @@ const struct innate {
 		     {	 0, 0, 0, 0 } },
 
 	sam_abil[] = { {	 1, &(HFast), "", "" },
-		     {  15, &(HStealth), "schleichend", "" }, /* EN {  15, &(HStealth), "stealthy", "" }, */
+		     {  15, &(HStealth), "unauffällig", "auffällig" }, /* EN {  15, &(HStealth), "stealthy", "" }, */
 		     {	 0, 0, 0, 0 } },
 
 	tou_abil[] = { {	10, &(HSearching), "aufmerksam", "unaufmerksam" }, /* EN tou_abil[] = { {	10, &(HSearching), "perceptive", "" }, */
