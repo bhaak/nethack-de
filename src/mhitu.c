@@ -2476,7 +2476,7 @@ register struct attack *mattk;
 	switch(olduasmon->mattk[i].adtyp) {
 	    case AD_ACID:
 		if (!rn2(2)) {
-		    pline("SUBJECT %s VERB_WERDEN mit PRONOMEN_POSSESSIV NOUN_ACID vollgespritzt!", Monnam(mtmp)); /* EN pline("%s is splashed by your acid!", Monnam(mtmp)); */
+		    pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_ACID vollgespritzt!", Monnam(mtmp)); /* EN pline("%s is splashed by your acid!", Monnam(mtmp)); */
 		    if (resists_acid(mtmp)) {
 			pline("%s is not affected.", Monnam(mtmp)); /* EN pline("%s is not affected.", Monnam(mtmp)); */ // TODO DE
 			tmp = 0;
