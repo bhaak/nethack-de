@@ -320,7 +320,7 @@ gotobj:
 	    if (ostuck || !can_carry(mtmp, otmp)) {
 		static const char * const how[] = { "VERB_STEHLEN","VERB_PACKEN","VERB_SCHNAPPEN","VERB_NEHMEN" }; /* EN static const char * const how[] = { "steal","snatch","grab","take" }; */
  cant_take:
-		pline("SUBJECT %s VERB_SUCHEN OBJECT PRONOMEN_POSSESSIV %s zu %s aber gibt auf.", /* EN pline("%s tries to %s your %s but gives up.", */
+		pline("SUBJECT %s VERB_VERSUCHEN OBJECT PRONOMEN_POSSESSIV %s zu MODIFIER_VERB_INFINITIV %s, gibt dann aber auf.", /* EN pline("%s tries to %s your %s but gives up.", */
 		      Monnam(mtmp), /* EN Monnam(mtmp), how[rn2(SIZE(how))], */
 		      (otmp->owornmask & W_ARMOR) ? equipname(otmp) :
 		       cxname(otmp),

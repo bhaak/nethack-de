@@ -31,11 +31,11 @@ moveloop()
 	You("VERB_HAVE OBJECT NOUN_LUCK!  Heute Nacht ist Vollmond."); /* EN "are lucky!  Full moon tonight." */
 	change_luck(1);
     } else if(flags.moonphase == NEW_MOON) {
-	pline("Sei vorsichtig!  Heute Nacht ist Neumond."); /* EN "Be careful!  New moon tonight." */
+	pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SEIN vorsichtig!  Heute Nacht ist Neumond."); /* EN "Be careful!  New moon tonight." */
     }
     flags.friday13 = friday_13th();
     if (flags.friday13) {
-	pline("Nimm dich in Acht!  Schlimme Dinge können an einem Freitag den 13. passieren."); /* EN "Watch out!  Bad things can happen on Friday the 13th." */
+	pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_NEHMEN OBJECT PRONOMEN_PERSONAL in Acht!  Schlimme Dinge können an einem Freitag den 13. passieren."); /* EN "Watch out!  Bad things can happen on Friday the 13th." */
 	change_luck(-1);
     }
 
@@ -589,7 +589,7 @@ boolean new_game;	/* false => restoring an old game */
 	     currentgend != flags.initgend))
 	Sprintf(eos(buf), " %s", genders[currentgend].adj);
 
-    pline(new_game ? "%s %s, willkommen zu NetHack!  SUBJECT PRONOMEN_PERSONAL VERB_SEIN OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER%s %s %s." /* EN pline(new_game ? "%s %s, welcome to NetHack!  You are a%s %s %s." */
+    pline(new_game ? "%s %s, willkommen bei NetHack!  SUBJECT PRONOMEN_PERSONAL VERB_SEIN OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER%s %s %s." /* EN pline(new_game ? "%s %s, welcome to NetHack!  You are a%s %s %s." */
 		   : "%s %s, ARTIKEL_BESTIMMTER%s %s %s, willkommen zurück zu NetHack!", /* EN : "%s %s, the%s %s %s, welcome back to NetHack!", */
 	  Hello((struct monst *) 0), plname, buf, urace.adj,
 	  (currentgend && urole.name.f) ? urole.name.f : urole.name.m);
