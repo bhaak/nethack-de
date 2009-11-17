@@ -673,7 +673,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_ABGLEITEN","gleiten","ab"),
 		Verb.verb("VERB_ABLEHNEN", "lehnen", "ab"),
 		Verb.verb("VERB_ABPRALLEN", "prallen", "ab"),
-		Verb.verb("VERB_ABSONDERN","absondern"),
+		Verb.verb("VERB_ABSONDERN","sondern", "ab"),
 		Verb.verb("VERB_ABSORBIEREN","absorbieren"),
 		Verb.verb("VERB_AKTIVIEREN","aktivieren"),
 		Verb.verb("VERB_ANFUEHLEN","fühlen", "an"),
@@ -805,7 +805,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_ERGREIFEN","ergreifen"),
 		Verb.verb("VERB_ERHEBEN","erheben"),
 		Verb.verb("VERB_ERHITZEN","erhitzen"),
-		Verb.verb("VERB_ERINNERN","erinnert"),
+		Verb.verb("VERB_ERINNERN","erinnern"),
 		Verb.verb("VERB_ERLANGEN","erlangen"),
 		Verb.verb("VERB_ERLOESCHEN","erlöschen"),
 		Verb.verb("VERB_ERREICHEN","erreichen"),
@@ -1189,6 +1189,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_ZWAENGEN","zwängen"),
 
 		# englische Bezeichner
+		Verb.verb("VERB_BUTT","schlagen", "aus"),
 		Verb.verb("VERB_CHUCKLE","kichern"),
 		Verb.verb("VERB_CONFUSE","verwirren"),
 		Verb.verb("VERB_CONSUME", "konsumieren"),
