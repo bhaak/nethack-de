@@ -1218,7 +1218,7 @@ struct obj *obj;
 	} else if(!rn2(3)) {
 		const char *what, *where;
 		if (!Blind)
-		    what = "OBJECT KASUS_DATIV PRONOMEN_PERSONAL",  where = "MODIFIER_VERB_DRITTE_PERSON VERB_WERDEN schwarz vor Augen"; /* EN what = "goes",  where = "dark"; */
+		    what = "OBJECT KASUS_DATIV PRONOMEN_PERSONAL",  where = "wird schwarz vor Augen"; /* EN what = "goes",  where = "dark"; */
 		else if (Levitation || Is_airlevel(&u.uz) ||
 			 Is_waterlevel(&u.uz))
 		    what = "SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_VERLIEREN die Kontrolle OBJECT über",  where = "PRONOMEN_PERSONAL"; /* EN what = "you lose control of",  where = "yourself"; */
@@ -2325,7 +2325,7 @@ boolean incr;
 			if(!is_fainted() && multi >= 0 /* %% */) {
 				/* stop what you're doing, then faint */
 				stop_occupation();
-				You("VERB_FAELLEN vor Hunger in Ohnmacht."); /* EN You("faint from lack of food."); */
+				You("VERB_FALLEN vor Hunger in Ohnmacht."); /* EN You("faint from lack of food."); */
 				flags.soundok = 0;
 				nomul(-10+(u.uhunger/10));
 				nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_ERLANGEN wieder das Bewusstsein."; /* EN nomovemsg = "You regain consciousness."; */
