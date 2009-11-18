@@ -83,13 +83,13 @@ STATIC_OVL NEARDATA const char allobj[] = {
 STATIC_OVL boolean force_save_hs = FALSE;
 
 const char *hu_stat[] = {
-	"satt        ", /* EN "Satiated", */
+	"Satt        ", /* EN "Satiated", */
 	"            ", /* EN "        ", */
-	"hungrig     ", /* EN "Hungry  ", */
-	"flau        ", /* EN "Weak    ", */
-	"kollabierend", /* EN "Fainting", */
-	"bewusstlos  ", /* EN "Fainted ", */
-	"verhungert  "  /* EN "Starved "  */
+	"Hungrig     ", /* EN "Hungry  ", */
+	"Flau        ", /* EN "Weak    ", */
+	"Kollabierend", /* EN "Fainting", */
+	"Bewusstlos  ", /* EN "Fainted ", */
+	"Verhungert  "  /* EN "Starved "  */
 };
 
 #endif /* OVLB */

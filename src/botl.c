@@ -14,7 +14,8 @@ extern const char *hu_stat[];	/* defined in eat.c */
 const char * const enc_stat[] = {
 	"",
 //"Burdened", /* EN "Burdened", */ // TODO DE
-	"Belastet", /* EN "Burdened", */ // TODO DE
+//	"Belastet", /* EN "Burdened", */ // TODO DE
+    "Beladen", /* EN "Burdened", */ // TODO DE
 //"Stressed", /* EN "Stressed", */ // TODO DE
 	"Angestrengt", /* EN "Stressed", */ // TODO DE
 //"Gestresst", /* EN "Stressed", */ // TODO DE
@@ -308,17 +309,17 @@ bot2()
 		Sprintf(nb = eos(nb), " ");
 		Strcat(newbot2, hu_stat[u.uhs]);
 	}
-	if(Confusion)	   Sprintf(nb = eos(nb), " konf"); /* EN if(Confusion)	   Sprintf(nb = eos(nb), " Conf"); */
+	if(Confusion)	   Sprintf(nb = eos(nb), " Konf"); /* EN if(Confusion)	   Sprintf(nb = eos(nb), " Conf"); */
 	if(Sick) {
 		if (u.usick_type & SICK_VOMITABLE)
-			   Sprintf(nb = eos(nb), " FoodPois"); /* EN Sprintf(nb = eos(nb), " FoodPois"); */ // TODO DE
+			   Sprintf(nb = eos(nb), " Vergift"); /* EN Sprintf(nb = eos(nb), " FoodPois"); */
 		if (u.usick_type & SICK_NONVOMITABLE)
-			   Sprintf(nb = eos(nb), " krank"); /* EN Sprintf(nb = eos(nb), " Ill"); */
+			   Sprintf(nb = eos(nb), " Krank"); /* EN Sprintf(nb = eos(nb), " Ill"); */
 	}
-	if(Blind)	   Sprintf(nb = eos(nb), " blind"); /* EN if(Blind)	   Sprintf(nb = eos(nb), " Blind"); */
-	if(Stunned)	   Sprintf(nb = eos(nb), " beno"); /* EN if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); */
-	if(Hallucination)  Sprintf(nb = eos(nb), " hallu"); /* EN if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); */ // TODO DE
-	if(Slimed)         Sprintf(nb = eos(nb), " Schleim"); /* EN if(Slimed)         Sprintf(nb = eos(nb), " Slime"); */ // TODO DE
+	if(Blind)	   Sprintf(nb = eos(nb), " Blind"); /* EN if(Blind)	   Sprintf(nb = eos(nb), " Blind"); */
+	if(Stunned)	   Sprintf(nb = eos(nb), " Benom"); /* EN if(Stunned)	   Sprintf(nb = eos(nb), " Stun"); */
+	if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); /* EN if(Hallucination)  Sprintf(nb = eos(nb), " Hallu"); */
+	if(Slimed)         Sprintf(nb = eos(nb), " Schleim"); /* EN if(Slimed)         Sprintf(nb = eos(nb), " Slime"); */
 	if(cap > UNENCUMBERED)
 		Sprintf(nb = eos(nb), " %s", enc_stat[cap]);
 	curs(WIN_STATUS, 1, 1);
