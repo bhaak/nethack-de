@@ -2634,7 +2634,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MASTODON", "Mastodon", "es", "Mastodon", "en", "neutrum"),
     dekliniere_substantiv("NOUN_SEWER_RAT", "Kanalratte", "", "Kanalratte", "en", "feminin", "n"),
     dekliniere_nominalphrase("NOUN_GIANT_RAT", "riesig", "Ratte", "", "Ratte", "en", "feminin", "n"),
-    dekliniere_nominalphrase("NOUN_RABID_RAT", "tollwütig", "Ratte", "", "tollwütig", "en", "feminin", "n"),
+    dekliniere_nominalphrase("NOUN_RABID_RAT", "tollwütig", "Ratte", "", "Ratte", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_WERERAT", "Werratte", "", "Werratte", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_ROCK_MOLE", "Steinbeißer", "s", "Steinbeißer", "", "maskulin"),
     dekliniere_substantiv("NOUN_ROCK_MOLE", "Felsenbeißer", "s", "Felsenbeißer", "", "maskulin"),

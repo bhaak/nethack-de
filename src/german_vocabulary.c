@@ -6347,9 +6347,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"tollwütiger Ratte", "NOUN_RABID_RAT", "", dativ|genitiv, feminin, n_singular, grundform|ohne},
   {"tollwütigen Ratte", "NOUN_RABID_RAT", "", dativ|genitiv, feminin, n_singular, unbestimmter|bestimmter},
   {"tollwütige Ratte", "NOUN_RABID_RAT", "", nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"tollwütigen tollwütigen", "NOUN_RABID_RATs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"tollwütige tollwütigen", "NOUN_RABID_RATs", "", nominativ|akkusativ, feminin, n_plural, grundform|ohne},
-  {"tollwütiger tollwütigen", "NOUN_RABID_RATs", "", genitiv, feminin, n_plural, grundform|ohne},
+  {"tollwütigen Ratten", "NOUN_RABID_RATs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"tollwütige Ratten", "NOUN_RABID_RATs", "", nominativ|akkusativ, feminin, n_plural, grundform|ohne},
+  {"tollwütiger Ratten", "NOUN_RABID_RATs", "", genitiv, feminin, n_plural, grundform|ohne},
 
   {"Werratte", "NOUN_WERERAT", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Werratten", "NOUN_WERERATs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
