@@ -1282,7 +1282,7 @@ static const char *epitaphs[] = {
 	"Warnung! Dieses Grab enthält Giftmüll", /* EN "Caution! This grave contains toxic waste", */
 	"Sum quod eris",
 	"Hier liegt ein Atheist, fertig für das Leben nach dem Tod, doch wo soll das stattfinden?", /* EN "Here lies an Atheist, all dressed up and no place to go", */
-	"Hier ruht Ezechiel, Alter 102.  Wen die Götter lieben, der stirbt jung.", /* EN "Here lies Ezekiel, age 102.  The good die young.", */ // TODO DE nicht sehr catchy
+	"Hier ruht Ezechiel, Alter 102.  Quem di diligunt, adolescens moritur.", /* EN "Here lies Ezekiel, age 102.  The good die young.", */
 	"Hier ruht mein Weib, Gott sei's gedankt!  Solang sie lebte, war nur Zank.  Geh, Wandrer, gehe flugs von hier; sonst steht sie auf und zankt mit Dir!", /* EN "Here lies my wife: Here let her lie! Now she's at rest and so am I.", */
 	"Here lies Johnny Yeast. Pardon me for not rising.", /* EN "Here lies Johnny Yeast. Pardon me for not rising.", */ // TODO DE
 	"He always lied while on the earth and now he's lying in it", /* EN "He always lied while on the earth and now he's lying in it", */ // TODO DE
