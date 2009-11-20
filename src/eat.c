@@ -147,7 +147,7 @@ static const struct { const char *txt; int nut; } tintxts[] = {
 	{"ADJEKTIV_GEKOCHT",       50}, /* EN {"boiled",       50}, */ 
 	{"ADJEKTIV_GETROCKNET",        55}, /* EN {"dried",        55}, */
 #define CHINESE_TIN 10
-	{"ADJEKTIV_SUESS_SAUER",     70}, /* EN {"szechuan",     70}, */
+	{"süß-sauer",     70}, /* EN {"szechuan",     70}, */
 #define FRENCH_FRIED_TIN 11
 	{"ADJEKTIV_FRITTIERT", 40}, /* EN {"french fried", 40}, */
 	{"ADJEKTIV_SAUTIERT",      95}, /* EN {"sauteed",      95}, */
