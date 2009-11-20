@@ -424,8 +424,8 @@ struct monst *grd;
 
 	if(movedgold || fixed) {
 	    if(in_fcorridor(grd, grd->mx, grd->my) || cansee(grd->mx, grd->my))
-		pline_The("%s whispers an incantation.", g_monnam(grd)); /* EN pline_The("%s whispers an incantation.", g_monnam(grd)); */ // TODO DE
-	    else You_hear("a distant chant."); /* EN else You_hear("a distant chant."); */ // TODO DE
+		pline_The("%s spricht leise eine Beschwörung.", g_monnam(grd)); /* EN pline_The("%s whispers an incantation.", g_monnam(grd)); */
+	    else You_hear("einen fernen Sprechchor."); /* EN else You_hear("a distant chant."); */
 	    if(movedgold)
 		pline("Eine geheimnisvolle Macht schiebt das Gold in den Tresorraum."); /* EN pline("A mysterious force moves the gold into the vault."); */
 	    if(fixed)
