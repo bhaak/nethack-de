@@ -214,9 +214,9 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	    mtmp->mhp -= damage;
 	    if (mtmp->mhp < 1) {
 		if (vis || verbose)
-		    pline("%s is %s!", Monnam(mtmp), /* EN pline("%s is %s!", Monnam(mtmp), */ // TODO DE
+		    pline("SUBJECT %s MODIFIER_VERB_PRAETERITUM VERB_WERDEN %s!", Monnam(mtmp), /* EN pline("%s is %s!", Monnam(mtmp), */
 			(nonliving(mtmp->data) || !canspotmon(mtmp))
-			? "destroyed" : "killed"); /* EN ? "destroyed" : "killed"); */ // TODO DE
+			? "zerstört" : "getötet"); /* EN ? "destroyed" : "killed"); */
 		/* don't blame hero for unknown rolling boulder trap */
 		if (!flags.mon_moving &&
 		    (otmp->otyp != BOULDER || range >= 0 || !otmp->otrapped))

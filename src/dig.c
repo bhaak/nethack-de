@@ -832,7 +832,7 @@ struct obj *obj;
 
 	/* Check tool */
 	if (obj != uwep) {
-	    if (!wield_tool(obj, "swing")) return 0; /* EN if (!wield_tool(obj, "swing")) return 0; */ // TODO DE
+	    if (!wield_tool(obj, "VERB_SCHWINGEN")) return 0; /* EN if (!wield_tool(obj, "swing")) return 0; */
 	    else res = 1;
 	}
 	ispick = is_pick(obj);

@@ -1352,7 +1352,7 @@ domove()
 		     * treat a pet!  your god gets angry.
 		     */
 		    if (rn2(4)) {
-			You_feel("guilty about losing your pet like this."); /* EN You_feel("guilty about losing your pet like this."); */ // TODO DE
+			Du_fuehlst_dich("schuldig, PRONOMEN_POSSESSIV Haustier auf diese Weise zu verlieren."); /* EN You_feel("guilty about losing your pet like this."); */
 			u.ugangr++;
 			adjalign(-15);
 		    }
@@ -1533,7 +1533,7 @@ stillinwater:;
 		mtmp->mundetected = mtmp->msleeping = 0;
 		switch(mtmp->data->mlet) {
 		    case S_PIERCER:
-			pline("%s suddenly drops from the %s!", /* EN pline("%s suddenly drops from the %s!", */ // TODO DE
+			pline("SUBJECT %s VERB_FALLEN plötzlich OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER %s!", /* EN pline("%s suddenly drops from the %s!", */
 			      Amonnam(mtmp), ceiling(u.ux,u.uy));
 			if(mtmp->mtame) /* jumps to greet you, not attack */
 			    ;

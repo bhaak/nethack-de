@@ -273,7 +273,7 @@ do_mname()
 	}
 	/* special case similar to the one in lookat() */
 	(void) distant_monnam(mtmp, ARTICLE_THE, buf);
-	Sprintf(qbuf, "What do you want to call %s?", buf); /* EN Sprintf(qbuf, "What do you want to call %s?", buf); */ // TODO DE
+	Sprintf(qbuf, "Wie SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL OBJECT %s MODIFIER_VERB_INFINITIV VERB_BENENNEN?", buf); /* EN Sprintf(qbuf, "What do you want to call %s?", buf); */
 	getlin(qbuf,buf);
 	if(!*buf || *buf == '\033') return(0);
 	/* strip leading and trailing spaces; unnames monster if all spaces */
@@ -304,7 +304,7 @@ register struct obj *obj;
 	const char *aname;
 	short objtyp;
 
-	Sprintf(qbuf, "What do you want to name %s %s?", /* EN Sprintf(qbuf, "What do you want to name %s %s?", */ // TODO DE
+	Sprintf(qbuf, "Wie SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL OBJECT %s %s benamsen?", /* EN Sprintf(qbuf, "What do you want to name %s %s?", */
 		is_plural(obj) ? "PRONOMEN_DIESER" : "PRONOMEN_DIESER", xname(obj)); /* EN is_plural(obj) ? "these" : "this", xname(obj)); */
 	getlin(qbuf, buf);
 	if(!*buf || *buf == '\033')	return;
@@ -477,14 +477,14 @@ ddocall()
 		savech(ch);
 #endif
 		allowall[0] = ALL_CLASSES; allowall[1] = '\0';
-		obj = getobj(allowall, "name");
+		obj = getobj(allowall, "benamsen"); /* EN obj = getobj(allowall, "name"); */
 		if(obj) do_oname(obj);
 		break;
 	default :
 #ifdef REDO
 		savech(ch);
 #endif
-		obj = getobj(callable, "call");
+		obj = getobj(callable, "VERB_BENENNEN"); /* EN obj = getobj(callable, "call"); */
 		if (obj) {
 			/* behave as if examining it in inventory;
 			   this might set dknown if it was picked up
@@ -520,7 +520,7 @@ register struct obj *obj;
 	    Sprintf(qbuf,"Call a stream of %s fluid:", /* EN Sprintf(qbuf,"Call a stream of %s fluid:", */ // TODO DE
 		    OBJ_DESCR(objects[otemp.otyp]));
 	else
-	    Sprintf(qbuf, "Call %s:", an(xname(&otemp)));
+	    Sprintf(qbuf, "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENENNEN %s:", an(xname(&otemp))); /* EN Sprintf(qbuf, "Call %s:", an(xname(&otemp))); */
 	getlin(qbuf, buf);
 	if(!*buf || *buf == '\033')
 		return;

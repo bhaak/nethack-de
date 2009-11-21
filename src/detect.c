@@ -1220,7 +1220,7 @@ register int aflag;
 					 */
 					continue;
 				    } else {
-					You_feel("an unseen monster!"); /* EN You_feel("an unseen monster!"); */ // TODO DE
+					You_feel("ein unsichtbares Monster!"); /* EN You_feel("an unseen monster!"); */
 					map_invisible(x, y);
 				    }
 				} else if (!sensemon(mtmp))

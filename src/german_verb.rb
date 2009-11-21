@@ -385,7 +385,8 @@ class VerbSchwachUnregelmaessig < Verb
   def form
     if praeteritum? && konjunktiv? then
 			case infinitiv
-			when /brennen$/, "kennen"
+			when /brennen$/, "kennen", /nennen$/,
+			     /rennen$/, /senden$/, /wenden$/ # gemischte Flexion
       	return (@praesens_stamm) + "te" + endung(@konjunktiv_endung)
 			end
     	return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
@@ -454,6 +455,8 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "scheinen": v = VerbUnregelmaessig.new("scheinen", "schien", "geschienen")
 	# mit Rueckumlaut
   when /(.*)brennen$/:  v = VerbSchwachUnregelmaessig.new($1+"brennen", $1+"brannte", ge($1)+"brannt")
+		# regelmässig
+  when /(.*)nennen$/:  v = VerbSchwachUnregelmaessig.new($1+"nennen", $1+"nannte", ge($1)+"nannt")
     # e/i-Wechsel
   when "nehmen":  v = Verb_EI_Wechsel.new("nehmen", "nahm", "genommen", "nimm")
   when /(.*)treten/:  v = Verb_EI_Wechsel.new($1+"treten", $1+"trat", ge($1)+"treten", $1+"tritt")

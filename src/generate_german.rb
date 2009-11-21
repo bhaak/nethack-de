@@ -724,6 +724,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_BELEIDIGEN","beleidigen"),
 		Verb.verb("VERB_BELOHNEN","belohnen"),
 		Verb.verb("VERB_BEMERKEN","bemerken"),
+		Verb.verb("VERB_BENENNEN","benennen"),
 		Verb.verb("VERB_BENUTZEN", "benutzen"),
 		Verb.verb("VERB_BEOBACHTEN", "beobachten"),
 		Verb.verb("VERB_BERUEHREN","berühren"),

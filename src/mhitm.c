@@ -945,7 +945,7 @@ mdamagem(magr, mdef, mattk)
 			    if (vis) {
 				pline("Ein Zeichen verschwindet KASUS_DATIV von %s!", /* EN pline("Some writing vanishes from %s head!", */
 				    genitivattribut_zu_wort(mon_nam(mdef), "NOUN_STIRN")); /* EN s_suffix(mon_nam(mdef))); */
-				pline("%s is destroyed!", Monnam(mdef)); /* EN pline("%s is destroyed!", Monnam(mdef)); */ // TODO DE
+				pline("%s ist zerstört!", Monnam(mdef)); /* EN pline("%s is destroyed!", Monnam(mdef)); */
 			    }
 			    mondied(mdef);
 			    if (mdef->mhp > 0) return 0;

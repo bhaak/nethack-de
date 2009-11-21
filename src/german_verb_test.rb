@@ -644,6 +644,21 @@ class TestVerb < Test::Unit::TestCase
     checkVerbPraeteritumKonjunktiv(verb, ["brächte", "brächtest", "brächte", "brächten", "brächtet", "brächten"])
   end
 
+  def testBenennen
+    verb = Verb.verb("", "benennen")
+
+    assert_equal("benennen", verb.infinitiv)
+    assert_equal("benenn", verb.singular.imperativ)
+    assert_equal("benennt", verb.plural.imperativ)
+    assert_equal("benennend", verb.partizip_praesens)
+    assert_equal("benannt", verb.partizip_perfekt)
+
+    checkVerbPraesens(verb, ["benenne", "benennst", "benennt", "benennen", "benennt", "benennen"])
+    checkVerbPraesensKonjunktiv(verb, ["benenne", "benennest", "benenne", "benennen", "benennet", "benennen"])
+    checkVerbPraeteritum(verb, ["benannte", "benanntest", "benannte", "benannten", "benanntet", "benannten"])
+    checkVerbPraeteritumKonjunktiv(verb, ["benennte", "benenntest", "benennte", "benennten", "benenntet", "benennten"])
+  end
+
   def testEErweiterung
     assert_false(Verb.verb("", "sein").e_erweiterung)
     assert_false(Verb.verb("", "haben").e_erweiterung)
