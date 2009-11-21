@@ -861,7 +861,6 @@ register int pm;
 		tmp += 20;
 		if (youmonst.data->mlet != S_MIMIC && !Unchanging) {
 		    char buf[BUFSZ];
-				// Du verfaellst der Versuchung eine Orange zu imitieren.
 		    You("VERB_KOENNEN der Versuchung nicht widerstehen, %s zu imitieren.", /* EN You_cant("resist the temptation to mimic %s.", */
 			Hallucination ? "eine Banane" : "einen Haufen Gold"); /* EN Hallucination ? "an orange" : "a pile of gold"); */
 #ifdef STEED
@@ -870,7 +869,7 @@ register int pm;
 #endif
 		    nomul(-tmp);
 		    Sprintf(buf, Hallucination ?
-			"OBJECT KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_GRAUEN plötzlich davor geschält zu werden und MODIFIER_VERB_ZWEITE_PERSON VERB_IMITIEREN sicherheitshalber wieder NEUES_OBJECT KASUS_AKKUSATIV %s!" : /* EN "You suddenly dread being peeled and mimic %s again!" : */
+			"SATZBEGINN KASUS_DATIV PRONOMEN_PERSONAL graut plötzlich davor geschält zu werden und MODIFIER_VERB_ZWEITE_PERSON VERB_IMITIEREN sicherheitshalber wieder NEUES_OBJECT KASUS_AKKUSATIV %s!" : /* EN "You suddenly dread being peeled and mimic %s again!" : */
 			"SUBJECT PRONOMEN_PERSONAL VERB_IMITIEREN jetzt lieber wieder OBJECT %s.", /* EN "You now prefer mimicking %s again.", */
 			an(Upolyd ? youmonst.data->mname : urace.noun));
 		    eatmbuf = strcpy((char *) alloc(strlen(buf) + 1), buf);
@@ -878,7 +877,7 @@ register int pm;
 		    afternmv = eatmdone;
 		    /* ??? what if this was set before? */
 		    youmonst.m_ap_type = M_AP_OBJECT;
-		    youmonst.mappearance = Hallucination ? ORANGE : GOLD_PIECE;
+		    youmonst.mappearance = Hallucination ? BANANA : GOLD_PIECE; /* EN youmonst.mappearance = Hallucination ? ORANGE : GOLD_PIECE; */
 		    newsym(u.ux,u.uy);
 		    curs_on_u();
 		    /* make gold symbol show up now */
