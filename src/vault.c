@@ -239,7 +239,7 @@ fnd:
 	    pline("Suddenly one of the Vault's %s enters!", /* EN pline("Suddenly one of the Vault's %s enters!", */ // TODO DE
 		  makeplural(g_monnam(guard)));
 	else
-	    pline("Someone else has entered the Vault."); /* EN pline("Someone else has entered the Vault."); */ // TODO DE
+	    pline("Jemand betritt den Tresorraum."); /* EN pline("Someone else has entered the Vault."); */
 	newsym(guard->mx,guard->my);
 	if (youmonst.m_ap_type == M_AP_OBJECT || u.uundetected) {
 	    if (youmonst.m_ap_type == M_AP_OBJECT &&
@@ -282,7 +282,7 @@ fnd:
 #endif
 	    ) {
 	    if (!mvitals[PM_CROESUS].died) {
-		verbalize("Oh, ja, natürlich.  Entschuldigen Sie die Störung."); /* EN verbalize("Oh, yes, of course.  Sorry to have disturbed you."); */
+		verbalize("Oh, ja, natürlich.  Entschuldigt die Störung."); /* EN verbalize("Oh, yes, of course.  Sorry to have disturbed you."); */
 		mongone(guard);
 	    } else {
 		setmangry(guard);
@@ -298,22 +298,22 @@ fnd:
 	verbalize("Ich kenne KASUS_AKKUSATIV PRONOMEN_PERSONAL nicht."); /* EN verbalize("I don't know you."); */
 #ifndef GOLDOBJ
 	if (!u.ugold && !hidden_gold())
-	    verbalize("Please follow me."); /* EN verbalize("Please follow me."); */ // TODO DE
+	    verbalize("Bitte MODIFIER_VERB_IMPERATIV VERB_FOLGEN mir."); /* EN verbalize("Please follow me."); */
 	else {
 	    if (!u.ugold)
-		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_VERSTECKEN Gold vor mir."); /* EN verbalize("You have hidden gold."); */
-	    verbalize("Most likely all your gold was stolen from this vault."); /* EN verbalize("Most likely all your gold was stolen from this vault."); */ // TODO DE
-	    verbalize("Please drop that gold and follow me."); /* EN verbalize("Please drop that gold and follow me."); */ // TODO DE
+		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_VERSTECKEN OBJECT NOUN_GOLD vor mir."); /* EN verbalize("You have hidden gold."); */
+	    verbalize("Höchstwahrscheinlich ist all PRONOMEN_POSSESSIV NOUN_GOLD aus diesem Tresorraum gestohlen worden."); /* EN verbalize("Most likely all your gold was stolen from this vault."); */
+	    verbalize("Bitte MODIFIER_VERB_IMPERATIV VERB_DROP PRONOMEN_POSSESSIV NOUN_GOLD SATZKLAMMER und MODIFIER_VERB_IMPERATIV VERB_FOLGEN mir."); /* EN verbalize("Please drop that gold and follow me."); */
 	}
 #else
         umoney = money_cnt(invent);
 	if (!umoney && !hidden_gold())
-	    verbalize("Please follow me."); /* EN verbalize("Please follow me."); */ // TODO DE
+	    verbalize("Bitte MODIFIER_VERB_IMPERATIV VERB_FOLGEN mir."); /* EN verbalize("Please follow me."); */
 	else {
 	    if (!umoney)
-		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_VERSTECKEN Geld vor mir."); /* EN verbalize("You have hidden money."); */
-	    verbalize("Höchstwahrscheinlich all your money was stolen from this vault."); /* EN verbalize("Most likely all your money was stolen from this vault."); */ // TODO DE
-	    verbalize("Please drop that money and follow me."); /* EN verbalize("Please drop that money and follow me."); */ // TODO DE
+		verbalize("SUBJECT PRONOMEN_PERSONAL VERB_VERSTECKEN NOUN_GELD vor mir."); /* EN verbalize("You have hidden money."); */
+	    verbalize("Höchstwahrscheinlich ist all PRONOMEN_POSSESSIV NOUN_GELD aus diesem Tresorraum gestohlen worden."); /* EN verbalize("Most likely all your money was stolen from this vault."); */
+	    verbalize("Bitte MODIFIER_VERB_IMPERATIV VERB_DROP PRONOMEN_POSSESSIV NOUN_GELD SATZKLAMMER und MODIFIER_VERB_IMPERATIV VERB_FOLGEN mir."); /* EN verbalize("Please drop that money and follow me."); */
 	}
 #endif
 	EGD(guard)->gdx = gx;
@@ -488,16 +488,16 @@ register struct monst *grd;
 	    if(u_in_vault &&
 			(u_carry_gold || um_dist(grd->mx, grd->my, 1))) {
 		if(egrd->warncnt == 3)
-			verbalize("I repeat, %sfollow me!", /* EN verbalize("I repeat, %sfollow me!", */ // TODO DE
+			verbalize("Ich wiederhole, %sMODIFIER_VERB_IMPERATIV VERB_FOLGEN mir!", /* EN verbalize("I repeat, %sfollow me!", */
 				u_carry_gold ? (
 #ifndef GOLDOBJ
 					  !u.ugold ?
-					  "drop that hidden gold and " : /* EN "drop that hidden gold and " : */ // TODO DE
-					  "drop that gold and ") : ""); /* EN "drop that gold and ") : ""); */ // TODO DE
+					  "MODIFIER_VERB_IMPERATIV VERB_DROP ARTIKEL_BESTIMMTER ADJEKTIV_VERSTECKT NOUN_GOLD SATZKLAMMER und " : /* EN "drop that hidden gold and " : */
+					  "MODIFIER_VERB_IMPERATIV VERB_DROP ARTIKEL_BESTIMMTER NOUN_GOLD SATZKLAMMER und ") : ""); /* EN "drop that gold and ") : ""); */
 #else
 					  !umoney ?
-					  "drop that hidden money and " : /* EN "drop that hidden money and " : */ // TODO DE
-					  "drop that money and ") : ""); /* EN "drop that money and ") : ""); */ // TODO DE
+					  "MODIFIER_VERB_IMPERATIV VERB_DROP ARTIKEL_BESTIMMTER ADJEKTIV_VERSTECKT NOUN_GELD SATZKLAMMER und " : /* EN "drop that hidden money and " : */
+					  "MODIFIER_VERB_IMPERATIV VERB_DROP ARTIKEL_BESTIMMTER NOUN_GELD SATZKLAMMER ") : ""); /* EN "drop that money and ") : ""); */
 #endif
 		if(egrd->warncnt == 7) {
 			m = grd->mx;
@@ -559,7 +559,7 @@ letknow:
 		}
 		if(egrd->warncnt < 6) {
 			egrd->warncnt = 6;
-			verbalize("Drop all your gold, scoundrel!"); /* EN verbalize("Drop all your gold, scoundrel!"); */ // TODO DE
+			verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_DROP all PRONOMEN_POSSESSIV NOUN_GOLD SATZKLAMMER, Kanaille!"); /* EN verbalize("Drop all your gold, scoundrel!"); */
 			return(0);
 		} else {
 			verbalize("Sei's drum, Schurke!"); /* EN verbalize("So be it, rogue!"); */
