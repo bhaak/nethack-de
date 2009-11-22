@@ -881,7 +881,7 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 		if (obj->greased || throwing_weapon(obj))
 		    /* BUG: this message is grammatically incorrect if obj has
 		       a plural name; greased gloves or boots for instance. */
-			pline("SUBJECT %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL (es) VERB_WERFEN!", Tobjnam(obj, "VERB_SLIP")); /* EN pline("%s as you throw it!", Tobjnam(obj, "slip")); */ // TODO DE
+			pline("SUBJECT %s OBJECT KASUS_DATIV PRONOMEN_PERSONAL als NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s VERB_WERFEN!", Tobjnam(obj, "VERB_SLIP"), pronominalisierung(xname(obj))); /* EN pline("%s as you throw it!", Tobjnam(obj, "slip")); */
 		else slipok = FALSE;
 	    }
 	    if (slipok) {

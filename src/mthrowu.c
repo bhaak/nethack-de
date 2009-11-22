@@ -291,8 +291,8 @@ m_throw(mon, x, y, dx, dy, range, obj)
 		if(is_ammo(singleobj))
 		    pline("SUBJECT %s VERB_SCHIESSEN daneben!", Monnam(mon)); /* EN pline("%s misfires!", Monnam(mon)); */
 		else
-		    pline("SUBJECT %s OBJECT KASUS_DATIV %s, als NEUER_SATZ SUBJECT_IM_SATZ %s (es) VERB_WERFEN!", /* EN pline("%s as %s throws it!", */ // TODO DE
-			  Tobjnam(singleobj, "VERB_SLIP"), mon_nam(mon), mhe(mon)); /* EN Tobjnam(singleobj, "slip"), mon_nam(mon)); */
+		    pline("SUBJECT %s OBJECT KASUS_DATIV %s, als NEUER_SATZ SUBJECT_IM_SATZ %s OBJECT %s VERB_WERFEN!", /* EN pline("%s as %s throws it!", */
+			  Tobjnam(singleobj, "VERB_SLIP"), mon_nam(mon), mhe(mon), pronominalisierung(xname(obj))); /* EN Tobjnam(singleobj, "slip"), mon_nam(mon)); */
 	    }
 	    dx = rn2(3)-1;
 	    dy = rn2(3)-1;
