@@ -1436,6 +1436,8 @@ const char *token;
 
 	if (token_is_plural(token)) {
 		return "NOUN_PRONOMEN_3P_MFN_PERSONALs";
+	} else if (strncmp("NOUN_PAAR NOUN_", token, 15)==0) {
+		return "NOUN_PRONOMEN_3P_N_PERSONAL";
 	}
 
 	while (worte[i].wort!=NULL) {
