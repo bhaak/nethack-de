@@ -1657,6 +1657,12 @@ register struct monst *mtmp;
 	boolean trapkilled = FALSE;
 	struct permonst *mptr = mtmp->data;
 	struct obj *otmp;
+#ifdef GERMAN
+	char links[BUFSZ];
+	char rechts[BUFSZ];
+	Strcpy(links, "ADJEKTIV_LINK ");
+	Strcpy(rechts, "ADJEKTIV_RECHT ");
+#endif
 
 	if (!trap) {
 	    mtmp->mtrapped = 0;	/* perhaps teleported? */
@@ -1840,8 +1846,8 @@ register struct monst *mtmp;
 			    break;
 			case 1:
 			    if (in_sight)
-				pline("%s OBJECT ADJEKTIV_LINK %s NEUES_OBJECT OBJECT KASUS_GENITIV %s!", A_gush_of_water_hits, /* EN pline("%s %s's left %s!", A_gush_of_water_hits, */
-				    mbodypart(mtmp, ARM), mon_nam(mtmp)); /* EN mon_nam(mtmp), mbodypart(mtmp, ARM)); */
+				pline("%s OBJECT %s!", A_gush_of_water_hits, /* EN pline("%s %s's left %s!", A_gush_of_water_hits, */
+				    genitivattribut_zu_wort(mon_nam(mtmp), strcat(links, mbodypart(mtmp, ARM)))); /* EN mon_nam(mtmp), mbodypart(mtmp, ARM)); */
 			    target = which_armor(mtmp, W_ARMS);
 			    if (rust_dmg(target, "NOUN_SHIELD", 1, TRUE, mtmp)) /* EN if (rust_dmg(target, "shield", 1, TRUE, mtmp)) */
 				break;
@@ -1853,8 +1859,8 @@ glovecheck:		    target = which_armor(mtmp, W_ARMG);
 			    break;
 			case 2:
 			    if (in_sight)
-				pline("%s OBJECT ADJEKTIV_RECHT %s NEUES_OBJECT OBJECT KASUS_GENITIV %s!", A_gush_of_water_hits, /* EN pline("%s %s's right %s!", A_gush_of_water_hits, */
-				    mbodypart(mtmp, ARM), mon_nam(mtmp)); /* EN mon_nam(mtmp), mbodypart(mtmp, ARM)); */
+				pline("%s OBJECT %s!", A_gush_of_water_hits, /* EN pline("%s %s's right %s!", A_gush_of_water_hits, */
+				    genitivattribut_zu_wort(mon_nam(mtmp), strcat(rechts, mbodypart(mtmp, ARM)))); /* EN mon_nam(mtmp), mbodypart(mtmp, ARM)); */
 			    erode_obj(MON_WEP(mtmp), FALSE, TRUE);
 			    goto glovecheck;
 			default:
