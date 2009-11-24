@@ -1,0 +1,24 @@
+Index: win/tty/wintty.c
+===================================================================
+--- nethack-3.4.3/win/tty/wintty.c	(Revision 339)
++++ nethack-meta/win/tty/wintty.c	(Arbeitskopie)
+@@ -2570,6 +2570,7 @@
+ tty_nhgetch()
+ {
+     int i;
++    static int esc = 0;
+ #ifdef UNIX
+     /* kludge alert: Some Unix variants return funny values if getc()
+      * is called, interrupted, and then called again.  There
+@@ -2596,6 +2597,11 @@
+ #else
+     i = tgetch();
+ #endif
++    if (esc) {
++        i |= 0x80;
++        esc = 0;
++    } else if (i == '\033')
++        esc = 1;
+     if (!i) i = '\033'; /* map NUL to ESC since nethack doesn't expect NUL */
+     if (ttyDisplay && ttyDisplay->toplin == 1)
+ 	ttyDisplay->toplin = 2;
