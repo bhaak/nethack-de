@@ -10553,6 +10553,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schwalle", "NOUN_SCHWALLs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Schwallen", "NOUN_SCHWALLs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Schwanzes", "NOUN_SCHWANZ", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwanz", "NOUN_SCHWANZ", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwänze", "NOUN_SCHWANZs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwänzen", "NOUN_SCHWANZs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Schwanzstieles", "NOUN_SCHWANZSTIEL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schwanzstiel", "NOUN_SCHWANZSTIEL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schwanzstiele", "NOUN_SCHWANZSTIELs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},

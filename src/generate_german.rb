@@ -3768,6 +3768,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCHUPPE","Schuppe","","Schuppe","en","feminin"),
     dekliniere_substantiv("NOUN_SCHUPPENRUESTUNG","Schuppenrüstung","","Schuppenrüstung","en","feminin"),
     dekliniere_substantiv("NOUN_SCHWALL","Schwall","es","Schwall","e","maskulin"),
+    dekliniere_substantiv("NOUN_SCHWANZ","Schwanz","es","Schwänz","e","maskulin"),
     dekliniere_substantiv("NOUN_SCHWANZSTIEL","Schwanzstiel","es","Schwanzstiel","e","maskulin"),
     dekliniere_substantiv("NOUN_SCHWESTER","Schwester","","Schwester","en","feminin"),
     dekliniere_substantiv("NOUN_SECRET_DOOR", "Geheimtüre", "", "Geheimtüre", "en", "feminin", "n"),

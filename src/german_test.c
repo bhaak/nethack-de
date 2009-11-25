@@ -1100,6 +1100,11 @@ START_TEST (test_pronominalisierung) {
 	check_pronomen("NOUN_T_SHIRTs", "NOUN_PRONOMEN_3P_MFN_PERSONALs");
 
 	check_pronomen("NOUN_PAAR NOUN_IRON_SHOES", "NOUN_PRONOMEN_3P_N_PERSONAL");
+	check_pronomen("ADJEKTIV_CURSED", "(BUG: Pronominalisierung: kein Substantiv)");
+
+	check_pronomen("NOUN_SPELLBOOK", "NOUN_PRONOMEN_3P_N_PERSONAL");
+	check_pronomen("ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", "NOUN_PRONOMEN_3P_N_PERSONAL");
+	check_pronomen("ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", "NOUN_PRONOMEN_3P_N_PERSONAL");
 } END_TEST
 
 START_TEST (test_pronomen) {

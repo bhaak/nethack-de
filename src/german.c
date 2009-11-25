@@ -1426,13 +1426,18 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 	return buf;
 }
 
-/* Liefert das passende Pronomen zu dem Substantiv token zurück. */
+/* Liefert das passende Pronomen zu dem Substantiv noun_token zurück. */
 char*
-pronominalisierung(token)
-const char *token;
+pronominalisierung(noun_token)
+const char *noun_token;
 {
 	int i=0;
-	enum Genus geschlecht = maskulin;
+	enum Genus geschlecht = 0;
+	const char *token = strstr(noun_token, "NOUN_");
+
+	if (token == NULL) {
+		return "(BUG: Pronominalisierung: kein Substantiv)";
+	}
 
 	if (token_is_plural(token)) {
 		return "NOUN_PRONOMEN_3P_MFN_PERSONALs";
@@ -1451,7 +1456,7 @@ const char *token;
 	case maskulin: return "NOUN_PRONOMEN_3P_M_PERSONAL";
 	case feminin:  return "NOUN_PRONOMEN_3P_F_PERSONAL";
 	case neutrum:  return "NOUN_PRONOMEN_3P_N_PERSONAL";
-	default: return "NOUN_PRONOMEN_3P_M_PERSONAL";
+	default: return "(BUG: Pronominalisierung fehlgeschlagen)";
 	}
 }
 

@@ -1074,7 +1074,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Unchanging) you_can("OBJECT PRONOMEN_POSSESSIV ADJEKTIV_DERZEITIG NOUN_DASEINSFORM nicht ändern"); /* EN if (Unchanging) you_can("not change from your current form"); */
 	if (Fast) you_are(Very_fast ? "sehr schnell" : "schnell"); /* EN if (Fast) you_are(Very_fast ? "very fast" : "fast"); */
 	if (Reflecting) you_have("reflection"); /* EN if (Reflecting) you_have("reflection"); */ // TODO DE
-	if (Free_action) you_have("free action"); /* EN if (Free_action) you_have("free action"); */ // TODO DE
+	if (Free_action) you_have("Bewegungsfreiheit"); /* EN if (Free_action) you_have("free action"); */
 	if (Fixed_abil) you_have("unveränderliche Fertigkeiten"); /* EN if (Fixed_abil) you_have("fixed abilities"); */
 	if (Lifesaved)
 		enl_msg("PRONOMEN_POSSESSIV NOUN_LEBEN ", "wird gerettet werden", "wäre gerettet worden", ""); /* EN enl_msg("Your life ", "will be", "would have been", " saved"); */

@@ -504,7 +504,7 @@ register struct monst *priest;
 	} else {
 	    long offer;
 
-	    pline("SUBJECT %s VERB_BITTEN OBJECT PRONOMEN_PERSONAL um eine Spende für Tempel.", /* EN pline("%s asks you for a contribution for the temple.", */
+	    pline("SUBJECT %s VERB_BITTEN OBJECT PRONOMEN_PERSONAL um eine Spende für den Tempel.", /* EN pline("%s asks you for a contribution for the temple.", */
 			Monnam(priest));
 	    if((offer = bribe(priest)) == 0) {
 		verbalize("Du wirst deine Taten bereuen!"); /* EN verbalize("Thou shalt regret thine action!"); */
