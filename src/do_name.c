@@ -726,6 +726,14 @@ boolean called;
 	if (do_hallu) {
 	    Strcat(buf, rndmonnam());
 	    name_at_start = FALSE;
+#ifdef GERMAN
+	    /* Hallucinated monster names containing the keyword 'UNIQUE'
+	       don't need an article. (jpeg) */
+	    if (strstri(buf, "UNIQUE")) {
+		name_at_start = TRUE;
+		article = ARTICLE_NONE;
+	    }
+#endif
 	} else if (mtmp->mnamelth) {
 	    char *name = NAME(mtmp);
 
@@ -953,71 +961,223 @@ char *outbuf;
     return outbuf;
 }
 
+#if ENGLISH
 static const char * const bogusmons[] = {
-	// TODO DE
-	// Ottifanten
-	// "Horla" /* Guy de Maupassant */
-	// Wolpertinger
-	// eierlegende Wollmilchsau
-	// Elwetritsch
-	// http://de.wikipedia.org/wiki/Liste_der_Fabelwesen#Deutschland_.26_.C3.96sterreich
-	// Unsichtbares rosafarbenes Einhorn http://de.wikipedia.org/wiki/Unsichtbares_rosafarbenes_Einhorn
-	// Blaubär
-	// Natiftoffen ?
-	"jumbo shrimp", "giant pigmy", "gnu", "killer penguin",
-	"giant cockroach", "giant slug", "maggot", "pterodactyl",
-	"tyrannosaurus rex", "basilisk", "beholder", "nightmare",
-	"efreeti", "marid", "rot grub", "bookworm", "master lichen",
-	"shadow", "hologram", "jester", "attorney", "sleazoid",
-	"killer tomato", "amazon", "robot", "battlemech",
-	"rhinovirus", "harpy", "lion-dog", "rat-ant", "Y2K bug",
-						/* misc. */
-	"grue", "Christmas-tree monster", "luck sucker", "paskald",
-	"brogmoid", "dornbeast",		/* Quendor (Zork, &c.) */
-	"Ancient Multi-Hued Dragon", "Evil Iggy",
-						/* Moria */
-	"emu", "kestrel", "xeroc", "venus flytrap",
-						/* Rogue */
-	"creeping coins",			/* Wizardry */
+	/* Translated (or used as-is) below */
+	"giant pigmy", "gnu", "killer penguin", "giant cockroach", "giant slug",
+	"maggot", "pterodactyl", "tyrannosaurus rex", "basilisk", "nightmare",
+	"bookworm", "shadow", "hologram", "jester", "attorney", "killer tomato",
+	"amazon", "robot", "rhinovirus", "harpy",  /* misc */
+	"grue", "Christmas-tree monster",	/* Quendor (Zork, &c.) */
+	"emu", "venus flytrap",			/* Rogue */
 	"hydra", "siren",			/* Greek legend */
 	"killer bunny",				/* Monty Python */
 	"rodent of unusual size",		/* The Princess Bride */
-	"Smokey the bear",	/* "Only you can prevent forest fires!" */
-	"Luggage",				/* Discworld */
 	"Ent",					/* Lord of the Rings */
-	"tangle tree", "nickelpede", "wiggle",	/* Xanth */
 	"white rabbit", "snark",		/* Lewis Carroll */
 	"pushmi-pullyu",			/* Dr. Doolittle */
 	"smurf",				/* The Smurfs */
-	"tribble", "Klingon", "Borg",		/* Star Trek */
+	"Klingon", "Borg",			/* Star Trek */
 	"Ewok",					/* Star Wars */
-	"Totoro",				/* Tonari no Totoro */
-	"ohmu",					/* Nausicaa */
-	"youma",				/* Sailor Moon */
-	"nyaasu",				/* Pokemon (Meowth) */
 	"Godzilla", "King Kong",		/* monster movies */
+	"Terminator",				/* The Terminator */
+	"Dalek",				/* Dr. Who ("Exterminate!") */
+	"Ravenous Bugblatter Beast of Traal",	/* HGttG */
+	"Morgoth",				/* Angband */
+	"mother-in-law",			/* common pest */
+	"Vorlon",				/* Babylon 5 */
+	"Predator",				/* Movie */
+	"Totoro",				/* Tonari no Totoro */
+	"Luggage",				/* Discworld */
+	"Audrey II",				/* Little Shop of Horrors */
+	"youma",				/* Sailor Moon */
+
+	/* Untranslated (unused) */
+	"jumbo shrimp", "beholder", "efreeti", "marid", "rot grub",
+	"master lichen", "sleazoid", "battlemech", "lion-dog", "rat-ant",
+	"Y2K bug",				/* misc. */
+	"luck sucker", "paskald", "brogmoid", "dornbeast",	/* Quendor (Zork, &c.) */
+	"Ancient Multi-Hued Dragon", "Evil Iggy",	/* Moria */
+	"kestrel", "xeroc",			/* Rogue */
+	"creeping coins",			/* Wizardry */
+	"Smokey the bear",			/* "Only you can prevent forest fires!" */
+	"tangle tree", "nickelpede", "wiggle",	/* Xanth */
+	"tribble",				/* Star Trek */
+	"ohmu",					/* Nausicaa */
+	"nyaasu",				/* Pokemon (Meowth) */
 	"earthquake beast",			/* old L of SH */
 	"Invid",				/* Robotech */
-	"Terminator",				/* The Terminator */
 	"boomer",				/* Bubblegum Crisis */
-	"Dalek",				/* Dr. Who ("Exterminate!") */
-	"microscopic space fleet", "Ravenous Bugblatter Beast of Traal",
-						/* HGttG */
+	"microscopic space fleet",		/* HGttG */
 	"teenage mutant ninja turtle",		/* TMNT */
 	"samurai rabbit",			/* Usagi Yojimbo */
 	"aardvark",				/* Cerebus */
-	"Audrey II",				/* Little Shop of Horrors */
 	"witch doctor", "one-eyed one-horned flying purple people eater",
 						/* 50's rock 'n' roll */
 	"Barney the dinosaur",			/* saccharine kiddy TV */
-	"Morgoth",				/* Angband */
-	"Vorlon",				/* Babylon 5 */
-	"questing beast",		/* King Arthur */
-	"Predator",				/* Movie */
-	"mother-in-law",				/* common pest */
-	"Horla" /* Guy de Maupassant */
+	"questing beast",			/* King Arthur */
 };
+#else
+	/* http://de.wikipedia.org/wiki/Liste_der_Fabelwesen#Deutschland_.26_.C3.96sterreich */
 
+	// Blaubär
+	// Natiftoffen ?
+
+#if 0
+	// Eigennamen: "X trifft. Du verfehlst X."
+	// Horla, Godzilla, King Kong, Morgoth
+	// neu: Frankenstein, Loreley, Ötzi, Rübezahl, Grendel,
+	//      Baba Jaga, Väterchen Frost, Pumuckl, Knecht Ruprecht,
+	//      Capricorn  // Tintenherz
+	//      Bernd das Brot, Chili das Schaf  // Chili TV
+	//      Gevatter Tod  // Scheibenwelt
+	//      Homunkoloss  // Die Stadt der träumenden Bücher
+	//      Dr. Caligari, Jack the Ripper, ET
+	//      Herr von Bödefeld  // Sesamstraße
+	
+	// maskulin: "Der X trifft. Du verfehlst den X."
+	// Basilisk, Hofnarr, Riesenpygmäe, Gefräßiger Plapperkäfer (von/aus Traal),
+	// Tyrannosaurus Rex, Killerpinguin, Pterodaktylus, Nachtmahr/Alptraum,
+	// Bücherwurm, Schatten, Roboter, Grue, Schlumpf, (Staats)anwalt, Klingon,
+	// Borg, Ewok, Terminator, Ent, Dalek, Schnatz
+	// neu: Ottifant, Elwetritsch, Wolpertinger, Klammeraffe, weißer Hai,
+	//      Vogone  // Per Anhalter durch die Galaxis
+	//      Eideet  // Moers' Zamonienliteratur
+	//      Schrumpfhörniger Schnarchkackler  // Harry Potter
+	//      Steuerprüfer, GEZ-Fahnder, Großinquisitor, Killerklown,
+	//      Klabautermann, Dodo, Grinch, Sandmann, Mummelratz, Apparatschik,
+	//      Erlkönig, Räuber Hotzenplotz, Sensenmann, Menschenfresser,
+	//      Riesengartenzwerg, Quastenflosser, Säbelzahntiger
+	//      Bi-Ba-Butzemann  // Kinderreim
+	//      Ritter der Kokosnuß  // Monty Python
+	//      Zonk  // Geh aufs Ganze!
+	
+	// femininum: "Die X trifft. Du verfehlst die X."
+	// Killertomate, Amazone, Harpyie, Venusfliegenfalle, Hydra, Sirene,
+	// Schwiegermutter, Riesenkakerlake, Riesenschnecke, Made
+	// neu: eierlegende Wollmilchsau, Leseratte, Riesenwelle, Zahnfee,
+	//      Roggenmuhme, Doppelhelix
+	//      Steinlaus  // Loriot
+	//      kleine Raupe Nimmersatt  // Kinderbuch
+	
+	// neutrum: "Das X trifft. Du verfehlst das X."
+	// Gnu, Hologram, Emu, Nagetier in ungewöhnlichem Format, Rhinovirus,
+	// Weihnachtsbaummonster, weißes Kaninchen, Killerkarnickel,
+	// Stoßmich-Ziehdich
+	// neu: Unsichtbares rosafarbenes Einhorn, Fliegendes Spaghettimonster,
+	//      Faultier, Pantoffeltierchen, UFO, Kartoffelpü-Reh, Mondkalb
+	//      Blumentopferd, Krümelmonster, Sams, Vakuum, Heinzelmännchen,
+	//      Ungeheuer von Loch Ness, Rhinogradentium, Alter Ego, Schnabeltier
+#endif
+
+static const char * const bogusmons[] = {
+	/* names kept or translated from original NetHack */
+	/* proper names */
+	"NOUN_HALLU_UNIQUE_GODZILLA", "NOUN_HALLU_UNIQUE_KING_KONG", /* monster movies */
+	"NOUN_HALLU_UNIQUE_MORGOTH",		/* Angband */
+	"NOUN_HALLU_UNIQUE_AUDREY_II",		/* Little Shop of Horrors */
+	/* other */
+	"NOUN_HALLU_TYRANNOSAURUS_REX", "NOUN_HALLU_PTERODAKTYLUS",
+	"NOUN_HALLU_KILLERPINGUIN", "NOUN_HALLU_NACHTMAHR", "NOUN_HALLU_SCHATTEN",
+	"NOUN_HALLU_ROBOTER", "NOUN_HALLU_TERMINATOR", "NOUN_HALLU_HOFNARR",
+	"NOUN_HALLU_HORLA",			/* Guy de Maupassant */
+	"NOUN_HALLU_GRUE",			/* Zork */
+	"NOUN_HALLU_SCHLUMPF",			/* Die Schlümpfe */
+	"NOUN_HALLU_KLINGON",
+	"NOUN_HALLU_BORG",			/* Star Trek */
+	"NOUN_HALLU_EWOK",			/* Star Wars */
+	"NOUN_HALLU_DALEK",			/* Dr. Who */
+	"NOUN_HALLU_VORLON",			/* Babylon 5 */
+	"NOUN_HALLU_TOTORO",			/* Tonari no Totoro */
+	"NOUN_HALLU_PREDATOR",			/* movie */
+	"NOUN_HALLU_ENT",			/* Herr der Ringe */
+	"NOUN_HALLU_SCHNATZ",			/* translation of 'Snark', Lewis Carroll */
+	"NOUN_HALLU_BASILISK", "NOUN_HALLU_HARPYIE", "NOUN_HALLU_HYDRA",
+	"NOUN_HALLU_SIRENE",			/* Greek stories */
+	"NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFER", /* HGttG */
+	"NOUN_HALLU_EMU",
+	"NOUN_HALLU_VENUSFLIEGENFALLE",		/* Rogue */
+	"NOUN_HALLU_STAATSANWALT",
+	"NOUN_HALLU_SCHWIEGERMUTTER",		/* real-world pests */
+	"NOUN_HALLU_NIUF",			/* Princess Bride */
+	"NOUN_HALLU_STOSSMICH_ZIEHDICH",	/* Dr. Doolittle */
+	"NOUN_HALLU_KILLERKANINCHEN",		/* Monty Python */
+	"NOUN_HALLU_RIESENPYGMAEE",
+	"NOUN_HALLU_KILLERTOMATE",
+	"NOUN_HALLU_AMAZONE",
+	"NOUN_HALLU_RIESENKAKERLAKE",
+	"NOUN_HALLU_GNU",
+	"NOUN_HALLU_HOLOGRAMM",
+	"NOUN_HALLU_RHINOVIRUS",
+	"NOUN_HALLU_WEIHNACHTSBAUMMONSTER",
+	
+	/* new in NetHack-De */
+	/* proper names */
+	"NOUN_HALLU_UNIQUE_FRANKENSTEIN", "NOUN_HALLU_UNIQUE_DR_CALIGARI",
+	"NOUN_HALLU_UNIQUE_ET", "NOUN_HALLU_UNIQUE_LORELEY",
+	"NOUN_HALLU_UNIQUE_RUEBEZAHL", "NOUN_HALLU_UNIQUE_GRENDEL",
+	"NOUN_HALLU_UNIQUE_BABA_JAGA", "NOUN_HALLU_UNIQUE_VAETERCHEN_FROST",
+	"NOUN_HALLU_UNIQUE_OETZI", "NOUN_HALLU_UNIQUE_JACK_THE_RIPPER",
+	"NOUN_HALLU_UNIQUE_KNECHT_RUPRECHT",
+	"NOUN_HALLU_UNIQUE_PUMUCKL",		/* Pumuckl */
+	"NOUN_HALLU_UNIQUE_HERR_VON_BOEDEFELD",
+	"NOUN_HALLU_KRUEMELMONSTER",		/* Sesamstraße */
+	"NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", /* Chili TV */
+	"NOUN_HALLU_UNIQUE_CAPRICORN",		/* Tintenherz */
+	"NOUN_HALLU_UNIQUE_GEVATTER_TOD",	/* Scheibenwelt */
+	"NOUN_HALLU_UNIQUE_HOMUNKOLOSS",	/* Walter Moers */
+	"NOUN_HALLU_UNIQUE_TINKY_WINKY",	/* Teletubbies */
+	"NOUN_HALLU_UNIQUE_PITIPLATSCH",	/* Der Sandmann */
+	/* other */
+	"NOUN_HALLU_STEUERPRUEFER",
+	"NOUN_HALLU_GEZ_FAHNDER",		/* real-world pests */
+	"NOUN_HALLU_GROSSINQUISITOR", "NOUN_HALLU_MENSCHENFRESSER",
+	"NOUN_HALLU_KLABAUTERMANN", "NOUN_HALLU_SENSENMANN",
+	"NOUN_HALLU_RIESENGARTENZWERG", "NOUN_HALLU_WEISSER_HAI",
+	"NOUN_HALLU_KLAMMERAFFE", "NOUN_HALLU_EINARMIGER_BANDIT",
+	"NOUN_HALLU_ELWETRITSCH", "NOUN_HALLU_WOLPERTINGER",
+	"NOUN_HALLU_MUMMELRATZ",
+	"NOUN_HALLU_ROGGENMUHME",		/* German fairytale critters */
+	"NOUN_HALLU_DODO", "NOUN_HALLU_QUASTENFLOSSER",
+	"NOUN_HALLU_SAEBELZAHNTIGER",		/* extinct animals */
+	"NOUN_HALLU_GRINCH",			/* The Grinch */
+	"NOUN_HALLU_APPARATSCHIK",		/* GDR term */
+	"NOUN_HALLU_ERLKOENIG",			/* Goethe */
+	"NOUN_HALLU_RAEUBER_HOTZENPLOTZ",	/* Räuber Hotzenplot */
+	"NOUN_HALLU_BIBABUTZEMANN",		/* children's game */
+	"NOUN_HALLU_RITTER_DER_KOKOSNUSS",	/* Monty Python */
+	"NOUN_HALLU_ZONK",			/* Geh aufs Ganze! */
+	"NOUN_HALLU_OTTIFANT",			/* Otto */
+	"NOUN_HALLU_VOGONE",			/* Per Anhalter durch die Galaxis */
+	"NOUN_HALLU_EIDEET",			/* Walter Moers */
+	"NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLER", /* Harry Potter */
+	"NOUN_HALLU_TRUHE",			/* Scheibenwelt */
+	"NOUN_HALLU_YOUMA",			/* Sailor Moon */
+	"NOUN_HALLU_STEINLAUS",			/* Loriot */
+	"NOUN_HALLU_GRUEFFELO", "NOUN_HALLU_KLEINE_RAUPE_NIMMERSATT",
+	"NOUN_HALLU_SAMS",			/* Kinderbuch */
+	"NOUN_HALLU_BLUMENTOPFERD",		/* Blumentopf-Erde */
+	"NOUN_HALLU_KOPFLOSER_REITER",
+	"NOUN_HALLU_CHIMAERE",
+	"NOUN_HALLU_SANDMANN",
+	"NOUN_HALLU_LESERATTE",
+	"NOUN_HALLU_RIESENWELLE",
+	"NOUN_HALLU_ZAHNFEE",
+	"NOUN_HALLU_DOPPELHELIX",
+	"NOUN_HALLU_EIERLEGENDE_WOLLMILCHSAU",
+	"NOUN_HALLU_FAULTIER",
+	"NOUN_HALLU_PANTOFFELTIERCHEN",
+	"NOUN_HALLU_SCHNABELTIER",
+	"NOUN_HALLU_UFO",
+	"NOUN_HALLU_KARTOFFELPUE_REH",
+	"NOUN_HALLU_MONDKALB",
+	"NOUN_HALLU_TAMAGOCHI",
+	"NOUN_HALLU_MAINZELMAENNCHEN",
+	"NOUN_HALLU_RHINOGRADENTIUM",
+	"NOUN_HALLU_UNGEHEUER_VON_LOCH_NESS",
+	"NOUN_HALLU_UNSICHTBARES_ROSA_EINHORN",	/* http://de.wikipedia.org/wiki/Unsichtbares_rosafarbenes_Einhorn */
+};
+#endif
 
 /* Return a random monster name, for hallucination.
  * KNOWN BUG: May be a proper name (Godzilla, Barney), may not

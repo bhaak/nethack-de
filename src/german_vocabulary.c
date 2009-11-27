@@ -10817,6 +10817,558 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   /* ======================================================= */
 
+  /* Hallucinated monsters */
+
+  /* ======================================================= */
+
+  /* proper names */
+
+  /* pre-existing monsters */
+
+  {"Godzilla", "NOUN_HALLU_UNIQUE_GODZILLA", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Godzillas", "NOUN_HALLU_UNIQUE_GODZILLA", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"King Kong", "NOUN_HALLU_UNIQUE_KING_KONG", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"King Kongs", "NOUN_HALLU_UNIQUE_KING_KONG", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Morgoth", "NOUN_HALLU_UNIQUE_MORGOTH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Morgoths", "NOUN_HALLU_UNIQUE_MORGOTH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Audrey II", "NOUN_HALLU_UNIQUE_AUDREY_II", "", dativ|nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Audrey IIs", "NOUN_HALLU_UNIQUE_AUDREY_II", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  /* monsters newly added for the German version */
+
+  {"Herr von Bödefeld", "NOUN_HALLU_UNIQUE_HERR_VON_BOEDEFELD", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Herrn von Bödefelds", "NOUN_HALLU_UNIQUE_HERR_VON_BOEDEFELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Herrn von Bödefeld", "NOUN_HALLU_UNIQUE_HERR_VON_BOEDEFELD", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Bernd das Brot", "NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "", nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Bernds des Brots", "NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Bernd dem Brot", "NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Chili das Schaf", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Chilis des Schafs", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Chili dem Schaf", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Frankenstein", "NOUN_HALLU_UNIQUE_FRANKENSTEIN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Frankensteins", "NOUN_HALLU_UNIQUE_FRANKENSTEIN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Loreley", "NOUN_HALLU_UNIQUE_LORELEY", "", dativ|nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Loreleys", "NOUN_HALLU_UNIQUE_LORELEY", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ötzi", "NOUN_HALLU_UNIQUE_OETZI", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ötzis", "NOUN_HALLU_UNIQUE_OETZI", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grendel", "NOUN_HALLU_UNIQUE_GRENDEL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grendels", "NOUN_HALLU_UNIQUE_GRENDEL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Rübezahl", "NOUN_HALLU_UNIQUE_RUEBEZAHL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rübezahls", "NOUN_HALLU_UNIQUE_RUEBEZAHL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Baba Jaga", "NOUN_HALLU_UNIQUE_BABA_JAGA", "", dativ|nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Baba Jagas", "NOUN_HALLU_UNIQUE_BABA_JAGA", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Pumuckl", "NOUN_HALLU_UNIQUE_PUMUCKL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pumuckls", "NOUN_HALLU_UNIQUE_PUMUCKL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Capricorn", "NOUN_HALLU_UNIQUE_CAPRICORN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Capricorns", "NOUN_HALLU_UNIQUE_CAPRICORN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Gevatter Tod", "NOUN_HALLU_UNIQUE_GEVATTER_TOD", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gevatter Tods", "NOUN_HALLU_UNIQUE_GEVATTER_TOD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Väterchen Frost", "NOUN_HALLU_UNIQUE_VAETERCHEN_FROST", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Väterchen Frosts", "NOUN_HALLU_UNIQUE_VAETERCHEN_FROST", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Knecht Ruprecht", "NOUN_HALLU_UNIQUE_KNECHT_RUPRECHT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Knecht Ruprechts", "NOUN_HALLU_UNIQUE_KNECHT_RUPRECHT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Homunkoloss", "NOUN_HALLU_UNIQUE_HOMUNKOLOSS", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Homunkoloss'", "NOUN_HALLU_UNIQUE_HOMUNKOLOSS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Dr. Caligari", "NOUN_HALLU_UNIQUE_DR_CALIGARI", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Dr. Caligaris", "NOUN_HALLU_UNIQUE_DR_CALIGARI", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Jack the Ripper", "NOUN_HALLU_UNIQUE_JACK_THE_RIPPER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Jack the Rippers", "NOUN_HALLU_UNIQUE_JACK_THE_RIPPER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"E.T.", "NOUN_HALLU_UNIQUE_ET", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"E.T.s", "NOUN_HALLU_UNIQUE_ET", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Tinky-Winky", "NOUN_HALLU_UNIQUE_TINKY_WINKY", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tinky-Winkys", "NOUN_HALLU_UNIQUE_TINKY_WINKY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Pitiplatsch", "NOUN_HALLU_UNIQUE_PITIPLATSCH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pitiplatschs", "NOUN_HALLU_UNIQUE_PITIPLATSCH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  /* translated pre-existing monsters */
+
+  {"Horla", "NOUN_HALLU_HORLA", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Horlas", "NOUN_HALLU_HORLA", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Tyrannosaurus Rex", "NOUN_HALLU_TYRANNOSAURUS_REX", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tyrannosaurus Rex", "NOUN_HALLU_TYRANNOSAURUS_REXs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Pterodaktylus", "NOUN_HALLU_PTERODAKTYLUS", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pterodaktylen", "NOUN_HALLU_PTERODAKTYLUSs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Killerpinguins", "NOUN_HALLU_KILLERPINGUIN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Killerpinguin", "NOUN_HALLU_KILLERPINGUIN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Killerpinguine", "NOUN_HALLU_KILLERPINGUINs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Killerpinguinen", "NOUN_HALLU_KILLERPINGUINs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Nachtmahrs", "NOUN_HALLU_NACHTMAHR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Nachtmahr", "NOUN_HALLU_NACHTMAHR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Nachtmahre", "NOUN_HALLU_NACHTMAHRs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Nachtmahren", "NOUN_HALLU_NACHTMAHRs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schattens", "NOUN_HALLU_SCHATTEN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schatten", "NOUN_HALLU_SCHATTEN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schatten", "NOUN_HALLU_SCHATTENs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Roboters", "NOUN_HALLU_ROBOTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Roboter", "NOUN_HALLU_ROBOTER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Roboter", "NOUN_HALLU_ROBOTERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Robotern", "NOUN_HALLU_ROBOTERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grues", "NOUN_HALLU_GRUE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grue", "NOUN_HALLU_GRUE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grues", "NOUN_HALLU_GRUEs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schlumpfs", "NOUN_HALLU_SCHLUMPF", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlumpf", "NOUN_HALLU_SCHLUMPF", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlümpfe", "NOUN_HALLU_SCHLUMPFs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schlümpfen", "NOUN_HALLU_SCHLUMPFs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Klingons", "NOUN_HALLU_KLINGON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Klingon", "NOUN_HALLU_KLINGON", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Klingonen", "NOUN_HALLU_KLINGONs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Borgs", "NOUN_HALLU_BORG", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Borg", "NOUN_HALLU_BORG", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Borgs", "NOUN_HALLU_BORGs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ewoks", "NOUN_HALLU_EWOK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ewok", "NOUN_HALLU_EWOK", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ewoks", "NOUN_HALLU_EWOKs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Daleks", "NOUN_HALLU_DALEK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Dalek", "NOUN_HALLU_DALEK", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Daleks", "NOUN_HALLU_DALEKs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Vorlons", "NOUN_HALLU_VORLON", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vorlon", "NOUN_HALLU_VORLON", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vorlons", "NOUN_HALLU_VORLONs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Predators", "NOUN_HALLU_PREDATOR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Predator", "NOUN_HALLU_PREDATOR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Predators", "NOUN_HALLU_PREDATORs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Totoros", "NOUN_HALLU_TOTORO", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Totoro", "NOUN_HALLU_TOTORO", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Totoros", "NOUN_HALLU_TOTOROs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ents", "NOUN_HALLU_ENT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ent", "NOUN_HALLU_ENT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ents", "NOUN_HALLU_ENTs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Staatsanwalts", "NOUN_HALLU_STAATSANWALT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Staatsanwalt", "NOUN_HALLU_STAATSANWALT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Staatsanwälte", "NOUN_HALLU_STAATSANWALTs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Staatsanwälten", "NOUN_HALLU_STAATSANWALTs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Terminators", "NOUN_HALLU_TERMINATOR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Terminator", "NOUN_HALLU_TERMINATOR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Terminatoren", "NOUN_HALLU_TERMINATORs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schnatzes", "NOUN_HALLU_SCHNATZ", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schnatz", "NOUN_HALLU_SCHNATZ", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schnatze", "NOUN_HALLU_SCHNATZs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schnatzen", "NOUN_HALLU_SCHNATZs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Basilisks", "NOUN_HALLU_BASILISK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Basilisk", "NOUN_HALLU_BASILISK", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Basilisken", "NOUN_HALLU_BASILISKs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Hofnarr", "NOUN_HALLU_HOFNARR", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Hofnarren", "NOUN_HALLU_HOFNARR", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Hofnarren", "NOUN_HALLU_HOFNARRs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Youmas", "NOUN_HALLU_YOUMA", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Youma", "NOUN_HALLU_YOUMA", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Youmas", "NOUN_HALLU_YOUMAs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Riesenpygmäe", "NOUN_HALLU_RIESENPYGMAEE", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Riesenpygmäen", "NOUN_HALLU_RIESENPYGMAEE", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Riesenpygmäen", "NOUN_HALLU_RIESENPYGMAEEs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Killertomate", "NOUN_HALLU_KILLERTOMATE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Killertomaten", "NOUN_HALLU_KILLERTOMATEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Amazone", "NOUN_HALLU_AMAZONE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Amazonen", "NOUN_HALLU_AMAZONEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Harpyie", "NOUN_HALLU_HARPYIE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Harpyien", "NOUN_HALLU_HARPYIEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Venusfliegenfalle", "NOUN_HALLU_VENUSFLIEGENFALLE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Venusfliegenfallen", "NOUN_HALLU_VENUSFLIEGENFALLEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Sirene", "NOUN_HALLU_SIRENE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sirenen", "NOUN_HALLU_SIRENEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schwiegermutter", "NOUN_HALLU_SCHWIEGERMUTTER", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwiegermütter", "NOUN_HALLU_SCHWIEGERMUTTERs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwiegermüttern", "NOUN_HALLU_SCHWIEGERMUTTERs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Riesenkakerlake", "NOUN_HALLU_RIESENKAKERLAKE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Riesenkakerlaken", "NOUN_HALLU_RIESENKAKERLAKEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Gnus", "NOUN_HALLU_GNU", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gnu", "NOUN_HALLU_GNU", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gnus", "NOUN_HALLU_GNUs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Hologramms", "NOUN_HALLU_HOLOGRAMM", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Hologramm", "NOUN_HALLU_HOLOGRAMM", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Hologramme", "NOUN_HALLU_HOLOGRAMMs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Hologrammen", "NOUN_HALLU_HOLOGRAMMs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Emus", "NOUN_HALLU_EMU", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Emu", "NOUN_HALLU_EMU", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Emus", "NOUN_HALLU_EMUs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Nagetiers in ungewöhnlichem Format", "NOUN_HALLU_NIUF", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Nagetier in ungewöhnlichem Format", "NOUN_HALLU_NIUF", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Nagetiere in ungewöhnlichem Format", "NOUN_HALLU_NIUFs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Nagetieren in ungewöhnlichem Format", "NOUN_HALLU_NIUFs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Rhinovirus", "NOUN_HALLU_RHINOVIRUS", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rhinoviren", "NOUN_HALLU_RHINOVIRUSs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Weihnachtsbaummonsters", "NOUN_HALLU_WEIHNACHTSBAUMMONSTER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Weihnachtsbaummonster", "NOUN_HALLU_WEIHNACHTSBAUMMONSTER", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Weihnachtsbaummonster", "NOUN_HALLU_WEIHNACHTSBAUMMONSTERs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Weihnachtsbaummonstern", "NOUN_HALLU_WEIHNACHTSBAUMMONSTERs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Killerkaninchens", "NOUN_HALLU_KILLERKANINCHEN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Killerkaninchen", "NOUN_HALLU_KILLERKANINCHEN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Killerkaninchen", "NOUN_HALLU_KILLERKANINCHENs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Stoßmich-Ziehdichs", "NOUN_HALLU_STOSSMICH_ZIEHDICH", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stoßmich-Ziehdich", "NOUN_HALLU_STOSSMICH_ZIEHDICH", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stoßmich-Ziehdichs", "NOUN_HALLU_STOSSMICH_ZIEHDICHs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Gefräßigen Plapperkäfers von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gefräßige Plapperkäfer von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFER", "", nominativ, maskulin, n_singular, bestimmter},
+  {"Gefräßiger Plapperkäfer von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFER", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"Gefräßigen Plapperkäfer von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFER", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gefräßigem Plapperkäfer von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFER", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"Gefräßigen Plapperkäfern von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Gefräßigen Plapperkäfer von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"Gefräßige Plapperkäfer von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFERs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"Gefräßiger Plapperkäfer von Traal", "NOUN_HALLU_GEFRAESSIGER_PLAPPERKAEFERs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
+  {"siebenköpfiger Hydra", "NOUN_HALLU_HYDRA", "", dativ|genitiv, feminin, n_singular, grundform|ohne},
+  {"siebenköpfigen Hydra", "NOUN_HALLU_HYDRA", "", dativ|genitiv, feminin, n_singular, unbestimmter|bestimmter},
+  {"siebenköpfige Hydra", "NOUN_HALLU_HYDRA", "", nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"siebenköpfigen Hydras", "NOUN_HALLU_HYDRAs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"siebenköpfige Hydras", "NOUN_HALLU_HYDRAs", "", nominativ|akkusativ, feminin, n_plural, grundform|ohne},
+  {"siebenköpfiger Hydras", "NOUN_HALLU_HYDRAs", "", genitiv, feminin, n_plural, grundform|ohne},
+
+  {"weißen Kaninchens", "NOUN_HALLU_WEISSES_KANINCHEN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"weiße Kaninchen", "NOUN_HALLU_WEISSES_KANINCHEN", "", nominativ|akkusativ, neutrum, n_singular, bestimmter},
+  {"weißes Kaninchen", "NOUN_HALLU_WEISSES_KANINCHEN", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne},
+  {"weißen Kaninchen", "NOUN_HALLU_WEISSES_KANINCHEN", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
+  {"weißem Kaninchen", "NOUN_HALLU_WEISSES_KANINCHEN", "", dativ, neutrum, n_singular, grundform|ohne},
+  {"weißen Kaninchen", "NOUN_HALLU_WEISSES_KANINCHENs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"weiße Kaninchen", "NOUN_HALLU_WEISSES_KANINCHENs", "", nominativ|akkusativ, neutrum, n_plural, grundform|ohne},
+  {"weißer Kaninchen", "NOUN_HALLU_WEISSES_KANINCHENs", "", genitiv, neutrum, n_plural, grundform|ohne},
+
+  /* monsters newly added for the German version */
+
+  {"Elwetritsches", "NOUN_HALLU_ELWETRITSCH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Elwetritsch", "NOUN_HALLU_ELWETRITSCH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Elwetritsche", "NOUN_HALLU_ELWETRITSCHs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Elwetritschen", "NOUN_HALLU_ELWETRITSCHs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Wolpertingers", "NOUN_HALLU_WOLPERTINGER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wolpertinger", "NOUN_HALLU_WOLPERTINGER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wolpertinger", "NOUN_HALLU_WOLPERTINGERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Wolpertingern", "NOUN_HALLU_WOLPERTINGERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Steuerprüfers", "NOUN_HALLU_STEUERPRUEFER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Steuerprüfer", "NOUN_HALLU_STEUERPRUEFER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Steuerprüfer", "NOUN_HALLU_STEUERPRUEFERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Steuerprüfern", "NOUN_HALLU_STEUERPRUEFERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"GEZ-Fahnders", "NOUN_HALLU_GEZ_FAHNDER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"GEZ-Fahnder", "NOUN_HALLU_GEZ_FAHNDER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"GEZ-Fahnder", "NOUN_HALLU_GEZ_FAHNDERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"GEZ-Fahndern", "NOUN_HALLU_GEZ_FAHNDERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Großinquisitors", "NOUN_HALLU_GROSSINQUISITOR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Großinquisitor", "NOUN_HALLU_GROSSINQUISITOR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Großinquisitoren", "NOUN_HALLU_GROSSINQUISITORs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Klabautermanns", "NOUN_HALLU_KLABAUTERMANN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Klabautermann", "NOUN_HALLU_KLABAUTERMANN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Klabautermänner", "NOUN_HALLU_KLABAUTERMANNs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Klabautermännern", "NOUN_HALLU_KLABAUTERMANNs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Dodos", "NOUN_HALLU_DODO", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Dodo", "NOUN_HALLU_DODO", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Dodos", "NOUN_HALLU_DODOs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grinchs", "NOUN_HALLU_GRINCH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grinch", "NOUN_HALLU_GRINCH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grinchs", "NOUN_HALLU_GRINCHs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Sandmanns", "NOUN_HALLU_SANDMANN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sandmann", "NOUN_HALLU_SANDMANN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sandmänner", "NOUN_HALLU_SANDMANNs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Sandmännern", "NOUN_HALLU_SANDMANNs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Mummelratzes", "NOUN_HALLU_MUMMELRATZ", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mummelratz", "NOUN_HALLU_MUMMELRATZ", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mummelratzen", "NOUN_HALLU_MUMMELRATZs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Apparatschiks", "NOUN_HALLU_APPARATSCHIK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Apparatschik", "NOUN_HALLU_APPARATSCHIK", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Apparatschiks", "NOUN_HALLU_APPARATSCHIKs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Erlkönigs", "NOUN_HALLU_ERLKOENIG", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Erlkönig", "NOUN_HALLU_ERLKOENIG", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Erlkönige", "NOUN_HALLU_ERLKOENIGs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Erlkönigen", "NOUN_HALLU_ERLKOENIGs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Räubers Hotzenplotz", "NOUN_HALLU_RAEUBER_HOTZENPLOTZ", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Räuber Hotzenplotz", "NOUN_HALLU_RAEUBER_HOTZENPLOTZ", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Räuber Hotzenplotz", "NOUN_HALLU_RAEUBER_HOTZENPLOTZs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Räubern Hotzenplotz", "NOUN_HALLU_RAEUBER_HOTZENPLOTZs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Sensenmanns", "NOUN_HALLU_SENSENMANN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sensenmann", "NOUN_HALLU_SENSENMANN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sensenmänner", "NOUN_HALLU_SENSENMANNs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Sensenmännern", "NOUN_HALLU_SENSENMANNs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Menschenfressers", "NOUN_HALLU_MENSCHENFRESSER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Menschenfresser", "NOUN_HALLU_MENSCHENFRESSER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Menschenfresser", "NOUN_HALLU_MENSCHENFRESSERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Menschenfressern", "NOUN_HALLU_MENSCHENFRESSERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Riesengartenzwergs", "NOUN_HALLU_RIESENGARTENZWERG", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Riesengartenzwerg", "NOUN_HALLU_RIESENGARTENZWERG", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Riesengartenzwerge", "NOUN_HALLU_RIESENGARTENZWERGs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Riesengartenzwergen", "NOUN_HALLU_RIESENGARTENZWERGs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Quastenflossers", "NOUN_HALLU_QUASTENFLOSSER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Quastenflosser", "NOUN_HALLU_QUASTENFLOSSER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Quastenflosser", "NOUN_HALLU_QUASTENFLOSSERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Quastenflossern", "NOUN_HALLU_QUASTENFLOSSERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Säbelzahntigers", "NOUN_HALLU_SAEBELZAHNTIGER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Säbelzahntiger", "NOUN_HALLU_SAEBELZAHNTIGER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Säbelzahntigers", "NOUN_HALLU_SAEBELZAHNTIGERs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Bi-Ba-Butzemanns", "NOUN_HALLU_BIBABUTZEMANN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Bi-Ba-Butzemann", "NOUN_HALLU_BIBABUTZEMANN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Bi-Ba-Butzemänner", "NOUN_HALLU_BIBABUTZEMANNs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Bi-Ba-Butzemännern", "NOUN_HALLU_BIBABUTZEMANNs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ritters der Kokosnuss", "NOUN_HALLU_RITTER_DER_KOKOSNUSS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ritter der Kokosnuss", "NOUN_HALLU_RITTER_DER_KOKOSNUSS", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ritter der Kokosnuss", "NOUN_HALLU_RITTER_DER_KOKOSNUSSs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Rittern der Kokosnuss", "NOUN_HALLU_RITTER_DER_KOKOSNUSSs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Zonks", "NOUN_HALLU_ZONK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zonk", "NOUN_HALLU_ZONK", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zonks", "NOUN_HALLU_ZONKs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ottifant", "NOUN_HALLU_OTTIFANT", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ottifanten", "NOUN_HALLU_OTTIFANT", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ottifanten", "NOUN_HALLU_OTTIFANTs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Vogone", "NOUN_HALLU_VOGONE", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vogonen", "NOUN_HALLU_VOGONE", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vogonen", "NOUN_HALLU_VOGONEs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Klammeraffe", "NOUN_HALLU_KLAMMERAFFE", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Klammeraffen", "NOUN_HALLU_KLAMMERAFFE", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Klammeraffen", "NOUN_HALLU_KLAMMERAFFEs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Eideet", "NOUN_HALLU_EIDEET", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Eideeten", "NOUN_HALLU_EIDEET", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Eideeten", "NOUN_HALLU_EIDEETs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grüffelos", "NOUN_HALLU_GRUEFFELO", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grüffelo", "NOUN_HALLU_GRUEFFELO", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grüffelos", "NOUN_HALLU_GRUEFFELOs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Leseratte", "NOUN_HALLU_LESERATTE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Leseratten", "NOUN_HALLU_LESERATTEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Riesenwelle", "NOUN_HALLU_RIESENWELLE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Riesenwellen", "NOUN_HALLU_RIESENWELLEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Zahnfee", "NOUN_HALLU_ZAHNFEE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zahnfeen", "NOUN_HALLU_ZAHNFEEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Roggenmuhme", "NOUN_HALLU_ROGGENMUHME", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Roggenmuhmen", "NOUN_HALLU_ROGGENMUHMEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Doppelhelix", "NOUN_HALLU_DOPPELHELIX", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Doppelhelices", "NOUN_HALLU_DOPPELHELIXs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Steinlaus", "NOUN_HALLU_STEINLAUS", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Steinläuse", "NOUN_HALLU_STEINLAUSs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Steinläusen", "NOUN_HALLU_STEINLAUSs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Truhe", "NOUN_HALLU_TRUHE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Truhen", "NOUN_HALLU_TRUHEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Chimäre", "NOUN_HALLU_CHIMAERE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Chimären", "NOUN_HALLU_CHIMAEREs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Faultiers", "NOUN_HALLU_FAULTIER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Faultier", "NOUN_HALLU_FAULTIER", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Faultiere", "NOUN_HALLU_FAULTIERs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Faultieren", "NOUN_HALLU_FAULTIERs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Pantoffeltierchens", "NOUN_HALLU_PANTOFFELTIERCHEN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pantoffeltierchen", "NOUN_HALLU_PANTOFFELTIERCHEN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pantoffeltierchen", "NOUN_HALLU_PANTOFFELTIERCHENs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"UFOs", "NOUN_HALLU_UFO", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"UFO", "NOUN_HALLU_UFO", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"UFOs", "NOUN_HALLU_UFOs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Kartoffelpü-Rehs", "NOUN_HALLU_KARTOFFELPUE_REH", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kartoffelpü-Reh", "NOUN_HALLU_KARTOFFELPUE_REH", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Kartoffelpü-Rehe", "NOUN_HALLU_KARTOFFELPUE_REHs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Kartoffelpü-Rehen", "NOUN_HALLU_KARTOFFELPUE_REHs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Mondkalbs", "NOUN_HALLU_MONDKALB", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mondkalb", "NOUN_HALLU_MONDKALB", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mondkälber", "NOUN_HALLU_MONDKALBs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Mondkälbern", "NOUN_HALLU_MONDKALBs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Blumentopferds", "NOUN_HALLU_BLUMENTOPFERD", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blumentopferd", "NOUN_HALLU_BLUMENTOPFERD", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blumentopferde", "NOUN_HALLU_BLUMENTOPFERDs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Blumentopferden", "NOUN_HALLU_BLUMENTOPFERDs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Tamagochis", "NOUN_HALLU_TAMAGOCHI", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tamagochi", "NOUN_HALLU_TAMAGOCHI", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tamagochis", "NOUN_HALLU_TAMAGOCHIs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Krümelmonsters", "NOUN_HALLU_KRUEMELMONSTER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Krümelmonster", "NOUN_HALLU_KRUEMELMONSTER", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Krümelmonster", "NOUN_HALLU_KRUEMELMONSTERs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Krümelmonstern", "NOUN_HALLU_KRUEMELMONSTERs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Sams", "NOUN_HALLU_SAMS", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sams", "NOUN_HALLU_SAMSs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Samsn", "NOUN_HALLU_SAMSs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schnabeltiers", "NOUN_HALLU_SCHNABELTIER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schnabeltier", "NOUN_HALLU_SCHNABELTIER", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schnabeltiere", "NOUN_HALLU_SCHNABELTIERs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schnabeltieren", "NOUN_HALLU_SCHNABELTIERs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Mainzelmännchens", "NOUN_HALLU_MAINZELMAENNCHEN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mainzelmännchen", "NOUN_HALLU_MAINZELMAENNCHEN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mainzelmännchen", "NOUN_HALLU_MAINZELMAENNCHENs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Rhinogradentiums", "NOUN_HALLU_RHINOGRADENTIUM", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rhinogradentium", "NOUN_HALLU_RHINOGRADENTIUM", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rhinogradentia", "NOUN_HALLU_RHINOGRADENTIUMs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ungeheuers von Loch Ness", "NOUN_HALLU_UNGEHEUER_VON_LOCH_NESS", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ungeheuer von Loch Ness", "NOUN_HALLU_UNGEHEUER_VON_LOCH_NESS", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ungeheuer von Loch Ness", "NOUN_HALLU_UNGEHEUER_VON_LOCH_NESSs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Ungeheuern von Loch Ness", "NOUN_HALLU_UNGEHEUER_VON_LOCH_NESSs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"weißen Hais", "NOUN_HALLU_WEISSER_HAI", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"weiße Hai", "NOUN_HALLU_WEISSER_HAI", "", nominativ, maskulin, n_singular, bestimmter},
+  {"weißer Hai", "NOUN_HALLU_WEISSER_HAI", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"weißen Hai", "NOUN_HALLU_WEISSER_HAI", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"weißem Hai", "NOUN_HALLU_WEISSER_HAI", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"weißen Haien", "NOUN_HALLU_WEISSER_HAIs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"weißen Haie", "NOUN_HALLU_WEISSER_HAIs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"weiße Haie", "NOUN_HALLU_WEISSER_HAIs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"weißer Haie", "NOUN_HALLU_WEISSER_HAIs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
+  {"kopflosen Reiters", "NOUN_HALLU_KOPFLOSER_REITER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"kopflose Reiter", "NOUN_HALLU_KOPFLOSER_REITER", "", nominativ, maskulin, n_singular, bestimmter},
+  {"kopfloser Reiter", "NOUN_HALLU_KOPFLOSER_REITER", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"kopflosen Reiter", "NOUN_HALLU_KOPFLOSER_REITER", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"kopflosem Reiter", "NOUN_HALLU_KOPFLOSER_REITER", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"kopflosen Reitern", "NOUN_HALLU_KOPFLOSER_REITERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"kopflosen Reiter", "NOUN_HALLU_KOPFLOSER_REITERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"kopflose Reiter", "NOUN_HALLU_KOPFLOSER_REITERs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"kopfloser Reiter", "NOUN_HALLU_KOPFLOSER_REITERs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
+  {"einarmigen Banditen", "NOUN_HALLU_EINARMIGER_BANDIT", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"einarmige Bandit", "NOUN_HALLU_EINARMIGER_BANDIT", "", nominativ, maskulin, n_singular, bestimmter},
+  {"einarmiger Bandit", "NOUN_HALLU_EINARMIGER_BANDIT", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"einarmigem Banditen", "NOUN_HALLU_EINARMIGER_BANDIT", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"einarmigen Banditen", "NOUN_HALLU_EINARMIGER_BANDITs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"einarmige Banditen", "NOUN_HALLU_EINARMIGER_BANDITs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"einarmiger Banditen", "NOUN_HALLU_EINARMIGER_BANDITs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
+  {"Schrumpfhörnigen Schnarchkacklers", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schrumpfhörnige Schnarchkackler", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLER", "", nominativ, maskulin, n_singular, bestimmter},
+  {"Schrumpfhörniger Schnarchkackler", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLER", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"Schrumpfhörnigen Schnarchkackler", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLER", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schrumpfhörnigem Schnarchkackler", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLER", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"Schrumpfhörnigen Schnarchkacklern", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schrumpfhörnigen Schnarchkackler", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"Schrumpfhörnige Schnarchkackler", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLERs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"Schrumpfhörniger Schnarchkackler", "NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLERs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
+  {"eierlegender Wollmilchsau", "NOUN_HALLU_EIERLEGENDE_WOLLMILCHSAU", "", dativ|genitiv, feminin, n_singular, grundform|ohne},
+  {"eierlegenden Wollmilchsau", "NOUN_HALLU_EIERLEGENDE_WOLLMILCHSAU", "", dativ|genitiv, feminin, n_singular, unbestimmter|bestimmter},
+  {"eierlegende Wollmilchsau", "NOUN_HALLU_EIERLEGENDE_WOLLMILCHSAU", "", nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"eierlegenden Wolchmilchsauen", "NOUN_HALLU_EIERLEGENDE_WOLLMILCHSAUs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"eierlegende Wolchmilchsauen", "NOUN_HALLU_EIERLEGENDE_WOLLMILCHSAUs", "", nominativ|akkusativ, feminin, n_plural, grundform|ohne},
+  {"eierlegender Wolchmilchsauen", "NOUN_HALLU_EIERLEGENDE_WOLLMILCHSAUs", "", genitiv, feminin, n_plural, grundform|ohne},
+
+  {"kleiner Raupe Nimmersatt", "NOUN_HALLU_KLEINE_RAUPE_NIMMERSATT", "", dativ|genitiv, feminin, n_singular, grundform|ohne},
+  {"kleinen Raupe Nimmersatt", "NOUN_HALLU_KLEINE_RAUPE_NIMMERSATT", "", dativ|genitiv, feminin, n_singular, unbestimmter|bestimmter},
+  {"kleine Raupe Nimmersatt", "NOUN_HALLU_KLEINE_RAUPE_NIMMERSATT", "", nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"kleinen Raupen Nimmersatt", "NOUN_HALLU_KLEINE_RAUPE_NIMMERSATTs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"kleine Raupen Nimmersatt", "NOUN_HALLU_KLEINE_RAUPE_NIMMERSATTs", "", nominativ|akkusativ, feminin, n_plural, grundform|ohne},
+  {"kleiner Raupen Nimmersatt", "NOUN_HALLU_KLEINE_RAUPE_NIMMERSATTs", "", genitiv, feminin, n_plural, grundform|ohne},
+
+  {"unsichtbaren rosafarbenen Einhorns", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"unsichtbare rosafarbene Einhorn", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORN", "", nominativ|akkusativ, neutrum, n_singular, bestimmter},
+  {"unsichtbares rosafarbenes Einhorn", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORN", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne},
+  {"unsichtbaren rosafarbenen Einhorn", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORN", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
+  {"unsichtbarem rosafarbenem Einhorn", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORN", "", dativ, neutrum, n_singular, grundform|ohne},
+  {"unsichtbaren rosafarbenen Einhörnern", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORNs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"unsichtbaren rosafarbenen Einhörner", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORNs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|bestimmter},
+  {"unsichtbare rosafarbene Einhörner", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORNs", "", nominativ|akkusativ, neutrum, n_plural, grundform|ohne},
+  {"unsichtbarer rosafarbener Einhörner", "NOUN_HALLU_UNSICHTBARES_ROSA_EINHORNs", "", genitiv, neutrum, n_plural, grundform|ohne},
+
+  {"Fliegenden Spaghettimonsters", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Fliegende Spaghettimonster", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTER", "", nominativ|akkusativ, neutrum, n_singular, bestimmter},
+  {"Fliegendes Spaghettimonster", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTER", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne},
+  {"Fliegenden Spaghettimonster", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTER", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
+  {"Fliegendem Spaghettimonster", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTER", "", dativ, neutrum, n_singular, grundform|ohne},
+  {"Fliegenden Spaghettimonstern", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTERs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Fliegenden Spaghettimonster", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTERs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|bestimmter},
+  {"Fliegende Spaghettimonster", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTERs", "", nominativ|akkusativ, neutrum, n_plural, grundform|ohne},
+  {"Fliegender Spaghettimonster", "NOUN_HALLU_FLIEGENDES_SPAGHETTIMONSTERs", "", genitiv, neutrum, n_plural, grundform|ohne},
+
+  /* ======================================================= */
+
   /* Adjektive */
 
   /* ======================================================= */
