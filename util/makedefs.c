@@ -544,7 +544,7 @@ const char *build_date;
     Strcat(subbuf, " Beta");
 #endif
 
-    Sprintf(outbuf, "%s NetHack-De%s Version %s (Katzenhaarallergieresistenz) - last build %s.",
+    Sprintf(outbuf, "%s NetHack-De%s Version %s (Schwarzdrachenwarzenentfernungsmittel) - last build %s.",
 	    PORT_ID, subbuf, version_string(versbuf), build_date);
     return outbuf;
 }
