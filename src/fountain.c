@@ -241,7 +241,7 @@ drinkfountain()
 
 		case 19: /* Self-knowledge */
 
-			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ // TODO DE
+			Du_fuehlst_dich("voller Selbsterkenntnis ..."); /* EN You_feel("self-knowledgeable..."); */
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			enlightenment(0);
 			exercise(A_WIS, TRUE);

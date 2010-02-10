@@ -1802,7 +1802,7 @@ register struct obj *obj;
 			break;
 		case WAN_ENLIGHTENMENT:
 			known = TRUE;
-			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ /* einsichtigt, kenntnisreich; bewandert; fachkundig; fundiert; kennerhaft; klug {adj}, belesen, kennerhaft, kenntnisreich, klug, sachkundig, unterrichtet, bewandert # selbst-erkennend?, selbst-einsichtig?, einsichtig? netzhack: selbstbewusst */ // TODO DE
+			Du_fuehlst_dich("voller Selbsterkenntnis ..."); /* EN You_feel("self-knowledgeable..."); */
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			enlightenment(FALSE);
 			pline("Das Gefühl schwindet."); /* EN pline_The("feeling subsides."); */

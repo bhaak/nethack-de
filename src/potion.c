@@ -531,7 +531,7 @@ peffects(otmp)
 				(void) adjattrib(A_INT, 1, FALSE);
 				(void) adjattrib(A_WIS, 1, FALSE);
 			}
-			You_feel("self-knowledgeable..."); /* EN You_feel("self-knowledgeable..."); */ // TODO DE
+			Du_fuehlst_dich("voller Selbsterkenntnis ..."); /* EN You_feel("self-knowledgeable..."); */
 			display_nhwindow(WIN_MESSAGE, FALSE);
 			enlightenment(0);
 			pline("Das Gefühl lässt nach."); /* EN pline_The("feeling subsides."); */
