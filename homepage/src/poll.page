@@ -4,7 +4,7 @@ htmltitle: NetHack Poll 2009
 
 <h3>NetHack Poll 2009</h3>
 
-The poll was opened in november 2009 and close in february 2010.
+The poll was opened in November 2009 and closed in February 2010.
 
 The results of this poll can be downloaded <a href="nethack_poll_results.txt">here in text form</a>.
 
@@ -19,8 +19,8 @@ Instead of filling out this form you can also send us an e-mail to <a href="mail
 <hr />
 
 <form method="post" action="http://www.emailmeform.com/fid.php?formid=468005" enctype="multipart/form-data" accept-charset="UTF-8"><table cellpadding="2" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr><td> <div style="" id="mainmsg"> </div></td></tr>
-</table><br /><table cellpadding="2" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr valign="top"> <td>What is your age and gender?</td> <td><input type="text" name="FieldData0" size="60" /> </td></tr>
-<tr valign="top"> <td>Which country do you live in?</td> <td><input type="text" name="FieldData1" size="60" /> </td></tr>
+</table><br /><table cellpadding="2" cellspacing="0" border="0" bgcolor="#FFFFFF"><tr valign="top"> <td>What is your age and gender?</td> <td><input disabled="disabled" type="text" name="FieldData0" size="60" /> </td></tr>
+<tr valign="top"> <td>Which country do you live in?</td> <td><input disabled="disabled" type="text" name="FieldData1" size="60" /> </td></tr>
 
 <tr valign="top"> <td>Do you play locally, on a server or both?</td> <td><textarea disabled="disabled" name="FieldData2" cols="60" rows="10"></textarea><br /> </td></tr>
 <tr valign="top"> <td>Do you play Tiles or ASCII or both?</td> <td><textarea disabled="disabled" name="FieldData3" cols="60" rows="10"></textarea><br /> </td></tr>
@@ -37,10 +37,10 @@ Instead of filling out this form you can also send us an e-mail to <a href="mail
 
 <tr valign="top"> <td>Did you ever recommend NetHack to someone?</td> <td><textarea disabled="disabled" name="FieldData14" cols="60" rows="10"></textarea><br /> </td></tr>
 <tr valign="top"> <td>Which computer game other than NetHack did you play most in the last three months (August, September, October)?</td> <td><textarea disabled="disabled" name="FieldData15" cols="60" rows="10"></textarea><br /> </td></tr>
-<tr valign="top"> <td>Please specify a valid e-mail address if you would like to receive the results of this poll.</td> <td><input type="text" name="FieldData16" size="60" /> </td></tr>
+<tr valign="top"> <td>Please specify a valid e-mail address if you would like to receive the results of this poll.</td> <td><input disabled="disabled" type="text" name="FieldData16" size="60" /> </td></tr>
 <tr> <td colspan="2"></td></tr>
 
-<!--<tr> <td> </td> <td align="left"><input type="text" name="hida2" value="" maxlength="100" size="3" style="display : none;" /><input type="submit" class="btn" value="Submit answers" name="Submit" />    <input type="reset" class="btn" value="  Clear  " name="Clear" /></td></tr>-->
+<tr> <td> </td> <td align="left"><input disabled="disabled" type="text" name="hida2" value="" maxlength="100" size="3" style="display : none;" /><input disabled="disabled" type="submit" class="btn" value="Submit answers" name="Submit" />    <input disabled="disabled" type="reset" class="btn" value="  Clear  " name="Clear" /></td></tr>
 <tr><td colspan=2 align="center"><br /></td></tr>
 
 </table></form>
