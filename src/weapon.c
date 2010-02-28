@@ -645,7 +645,7 @@ register struct monst *mon;
 				mhis(mon), mon_hand);
 
 			if (obj->otyp == PICK_AXE) {
-			    pline("SUBJECT Da %s %s %s,", /* EN pline("Since %s weapon%s %s,", */
+			    pline("SUBJECT Da %s %s,", /* EN pline("Since %s weapon%s %s,", */
 				  genitivattribut_zu_wort(mon_nam(mon), /* EN s_suffix(mon_nam(mon)), */
 				  mw_tmp->quan == 1 ? "NOUN_WEAPON" : "NOUN_WEAPONs"), welded_buf); /* EN plur(mw_tmp->quan), welded_buf); */
 			    pline("%s cannot wield that %s.", /* EN pline("%s cannot wield that %s.", */ // TODO DE
@@ -831,9 +831,15 @@ int skill;
     P_SKILL(skill)++;
     u.skill_record[u.skills_advanced++] = skill;
     /* subtly change the advance message to indicate no more advancement */
-    You("are now %s skilled in %s.", /* EN You("are now %s skilled in %s.", */ // TODO DE
-	P_SKILL(skill) >= P_MAX_SKILL(skill) ? "most" : "more", /* EN P_SKILL(skill) >= P_MAX_SKILL(skill) ? "most" : "more", */ // TODO DE
+    You("VERB_SEIN jetzt %s in der Handhabung OBJECT KASUS_DATIV von %s%s.", /* EN You("are now %s skilled in %s.", */ // TODO DE
+	P_SKILL(skill) >= P_MAX_SKILL(skill) ? "am geübtesten" : "geübter", /* EN P_SKILL(skill) >= P_MAX_SKILL(skill) ? "most" : "more", */
+#ifdef GERMAN
+	P_NAME(skill),
+	/* TODO DE: Kampffertigkeiten sind noch ungrammatisch */
+	skill < P_LAST_WEAPON ? "s" : (skill < P_LAST_SPELL) ? "n" : "");
+#else
 	P_NAME(skill));
+#endif
 }
 
 const static struct skill_range {

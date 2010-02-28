@@ -715,7 +715,7 @@ register struct monst *mtmp;
 				: "VERB_FRAGEN OBJECT PRONOMEN_PERSONAL nach dem Einen Ring."; /* EN : "asks you about the One Ring."; */
 		    break;
 		case PM_ARCHEOLOGIST:
-    pline_msg = "describes a recent article in \"Spelunker Today\" magazine."; /* EN pline_msg = "describes a recent article in \"Spelunker Today\" magazine."; */ // TODO DE
+    pline_msg = "redet enthusiastisch über einen Artikel im letzten \"Höhlenforscher\"."; /* EN pline_msg = "describes a recent article in \"Spelunker Today\" magazine."; */
 		    break;
 #ifdef TOURIST
 		case PM_TOURIST:

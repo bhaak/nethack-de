@@ -1063,7 +1063,7 @@ h_filter(line)
     return skip;
 }
 
-static const char *special_oracle[] = {
+static const char *special_oracle[] = { // TODO DE
 	"\"...it is rather disconcerting to be confronted with the",
 	"following theorem from [Baker, Gill, and Solovay, 1975].",
 	"",

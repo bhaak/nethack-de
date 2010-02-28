@@ -789,17 +789,17 @@ ring:
 
 	if((obj->owornmask & W_WEP) && !mrg_to_wielded) {
 		if (obj->quan != 1L) {
-			Strcat(bp, " (geführt)");
+			Strcat(bp, " (geführt)"); /* EN Strcat(bp, " (wielded)"); */
 		} else {
 			const char *hand_s = body_part(HAND);
 
 			if (bimanual(obj)) hand_s = makeplural(hand_s);
-			Sprintf(eos(bp), " (weapon in %s)", hand_s); /* EN Sprintf(eos(bp), " (weapon in %s)", hand_s); */ // TODO DE
+			Sprintf(eos(bp), " (KASUS_DATIV in Waffen-%s geführt)", hand_s); /* EN Sprintf(eos(bp), " (weapon in %s)", hand_s); */
 		}
 	}
 	if(obj->owornmask & W_SWAPWEP) {
 		if (u.twoweap)
-			Sprintf(eos(bp), " (wielded in other %s)", /* EN Sprintf(eos(bp), " (wielded in other %s)", */ // TODO DE
+			Sprintf(eos(bp), " (KASUS_DATIV in Neben-%s geführt)", /* EN Sprintf(eos(bp), " (wielded in other %s)", */
 				body_part(HAND));
 		else
 			Strcat(bp, " (Zweitwaffe; nicht geführt)");
