@@ -1843,7 +1843,7 @@ create_particular()
 	    /* damit Monstersymbole nicht umgewandelt werden */
 	    if (strlen(bufp) > 1) {
 	      german2meta(bufp, tmp); /* EN str = strcpy(buf, in_str); */
-	      bufp = tmp;
+	      bufp = makesingular(tmp); /* entferne Plural-S, falls vorhanden */
 	    }
 	    if (!strncmpi(bufp, "ARTIKEL_BESTIMMTER ", 19)) {
 		bufp += 19;
