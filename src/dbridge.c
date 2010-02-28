@@ -538,7 +538,7 @@ struct entity *etmp;
 
 	if (automiss(etmp) && e_survives_at(etmp, oldx, oldy)) {
 		if (e_inview && (at_portcullis || IS_DRAWBRIDGE(crm->typ)))
-			pline_The("%s passes through %s!", /* EN pline_The("%s passes through %s!", */ // TODO DE
+			pline_The("%s VERB_DURCHDRINGEN OBJECT %s ungehindert!", /* EN pline_The("%s passes through %s!", */
 			      at_portcullis ? "NOUN_PORTCULLIS" : "NOUN_DRAWBRIDGE", /* EN at_portcullis ? "portcullis" : "drawbridge", */
 			      e_nam(etmp));
 		if (is_u(etmp)) spoteffects(FALSE);
@@ -582,8 +582,8 @@ struct entity *etmp;
 #endif
 		} else {
 		    if (e_inview)
-			pline("%s crushed by ARTIKEL_BESTIMMTER ADJEKTIV_FALLEND NOUN_PORTCULLIS!", /* EN pline("%s crushed by the falling portcullis!", */ // TODO DE
-			      E_phrase(etmp, "are")); /* EN E_phrase(etmp, "are")); */ // TODO DE
+			pline("SUBJECT %s OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER ADJEKTIV_FALLEND NOUN_PORTCULLIS zerquetscht!", /* EN pline("%s crushed by the falling portcullis!", */
+			      E_phrase(etmp, "VERB_WERDEN")); /* EN E_phrase(etmp, "are")); */
 		    else if (flags.soundok)
 			You_hear("a crushing sound."); /* EN You_hear("a crushing sound."); */ // TODO DE
 		    e_died(etmp, e_inview? 3 : 2, CRUSHING);
@@ -684,9 +684,9 @@ struct entity *etmp;
 			if (is_u(etmp)) {
 				You("tumble towards the ADJEKTIV_GESCHLOSSEN NOUN_PORTCULLIS!"); /* EN You("tumble towards the closed portcullis!"); */ // TODO DE
 				if (automiss(etmp))
-					You("pass through it!"); /* EN You("pass through it!"); */ // TODO DE
+					You("VERB_DURCHDRINGEN es einfach!"); /* EN You("pass through it!"); */
 				else
-					pline_The("drawbridge closes in..."); /* EN pline_The("drawbridge closes in..."); */ // TODO DE
+					pline_The("NOUN_DRAWBRIDGE VERB_SCHLIESSEN sich ..."); /* EN pline_The("drawbridge closes in..."); */
 			} else
 				pline("SUBJECT %s OBJECT KASUS_DATIV hinter ARTIKEL_UNBESTIMMTER NOUN_DRAWBRIDGE.", /* EN pline("%s behind the drawbridge.", */
 				      E_phrase(etmp, "VERB_VERSCHWINDEN")); /* EN E_phrase(etmp, "disappear")); */
@@ -899,8 +899,8 @@ int x,y;
 		e_inview = e_canseemon(etmp2);
 		if (!automiss(etmp2)) {
 			if (e_inview)
-				pline("%s blown apart by herumfliegende Trümmer.", /* EN pline("%s blown apart by flying debris.", */ // TODO DE
-				      E_phrase(etmp2, "are")); /* EN E_phrase(etmp2, "are")); */ // TODO DE
+				pline("SUBJECT %s von herumfliegenden Trümmerteilen zerfetzt.", /* EN pline("%s blown apart by flying debris.", */
+				      E_phrase(etmp2, "VERB_WERDEN")); /* EN E_phrase(etmp2, "are")); */
 			killer_format = KILLED_BY_AN;
 			killer = "ADJEKTIV_EXPLODIEREND NOUN_DRAWBRIDGE"; /* EN killer = "exploding drawbridge"; */
 			e_died(etmp2, e_inview? 3 : 2, CRUSHING); /*no corpse*/
