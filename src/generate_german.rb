@@ -2809,6 +2809,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_ETTIN_ZOMBIE", "Ettinzombie", "s", "Ettinzombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_GIANT_ZOMBIE", "Riesenzombie", "s", "Riesenzombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_GHOUL", "Ghul", "s", "Ghul", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_SKELETON", "Gerippe", "s", "Gerippe", "", "neutrum"),
     dekliniere_substantiv("NOUN_SKELETON", "Skelett", "es", "Skelett", "e", "neutrum"),
     dekliniere_substantiv("NOUN_STRAW_GOLEM", "Strohgolem", "s", "Strohgolem", "s", "maskulin"),
     dekliniere_substantiv("NOUN_PAPER_GOLEM", "Papiergolem", "s", "Papiergolem", "s", "maskulin"),

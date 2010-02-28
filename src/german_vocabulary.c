@@ -7103,6 +7103,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Ghule", "NOUN_GHOULs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Ghulen", "NOUN_GHOULs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Gerippes", "NOUN_SKELETON", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gerippe", "NOUN_SKELETON", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gerippe", "NOUN_SKELETONs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Gerippen", "NOUN_SKELETONs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Skelettes", "NOUN_SKELETON", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Skelett", "NOUN_SKELETON", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Skelette", "NOUN_SKELETONs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},

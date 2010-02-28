@@ -916,8 +916,8 @@ int x,y;
 		} else {
 			if (e_inview) {
 			    if (!is_u(etmp1) && Hallucination)
-				pline("%s into some heavy metal!", /* EN pline("%s into some heavy metal!", */ // TODO DE
-				      E_phrase(etmp1, "get")); /* EN E_phrase(etmp1, "get")); */ // TODO DE
+				pline("SUBJECT %s völlig von Heavy Metal durchdrungen!", /* EN pline("%s into some heavy metal!", */
+				      E_phrase(etmp1, "VERB_SEIN")); /* EN E_phrase(etmp1, "get")); */
 			    else
 				pline("%s von einem riesigen Metallstück getroffen!", /* EN pline("%s hit by a huge chunk of metal!", */
 				      E_phrase(etmp1, "VERB_WERDEN")); /* EN E_phrase(etmp1, "are")); */
