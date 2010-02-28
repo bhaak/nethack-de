@@ -859,7 +859,7 @@ void
 level_tele_trap(trap)
 struct trap *trap;
 {
-	You("%s OBJECT auf ARTIKEL_UNBESTIMMTER Levelteleporter!", /* EN You("%s onto a level teleport trap!", */
+	You("%s OBJECT auf ARTIKEL_UNBESTIMMTER NOUN_LEVEL_TELEPORTER!", /* EN You("%s onto a level teleport trap!", */
 		      Levitation ? (const char *)"VERB_SCHWEBEN" : /* EN Levitation ? (const char *)"float" : */
 				  locomotion(youmonst.data, "VERB_TRETEN")); /* EN locomotion(youmonst.data, "step")); */
 	if (Antimagic) {

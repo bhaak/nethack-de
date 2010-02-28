@@ -7727,6 +7727,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Feuerfalle", "NOUN_FIRE_TRAP", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Feuerfallen", "NOUN_FIRE_TRAPs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Steinschlagfalle", "NOUN_FALLING_ROCK_TRAP", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Steinschlagfallen", "NOUN_FALLING_ROCK_TRAPs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Golems", "NOUN_GOLEM", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Golem", "NOUN_GOLEM", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Golems", "NOUN_GOLEMs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -10852,13 +10855,13 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Bernd das Brot", "NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "", nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Bernds des Brots", "NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Bernd des Brots", "NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Bernd dem Brot", "NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Chili das Schaf", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Chilis des Schafs", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Chili des Schafs", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Chili dem Schaf", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", dativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
