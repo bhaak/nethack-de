@@ -278,7 +278,7 @@ fnd:
 		|| !strcmpi(buf, "Creosote") /* EN || !strcmpi(buf, "Creosote") */
 #endif
 #ifdef GERMAN
-		|| !strcmpi(buf, "Krösus") 
+		|| !strcmpi(buf, "Krösus") || !strcmpi(buf, "Kroesus")
 #endif
 	    ) {
 	    if (!mvitals[PM_CROESUS].died) {
