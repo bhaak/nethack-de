@@ -974,10 +974,14 @@ START_TEST (test_noun_pseudo) {
 		 "Die arme Kelly!"},
     {"SUBJECT PRONOMEN_PERSONAL VERB_KICK OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_POOR NOUN_PSEUDO_WEIBLICH Kelly!",
 		 "Du trittst die arme Kelly!"},
-		{"SUBJECT NOUN_PSEUDO_MAENNLICH Fido VERB_WERDEN durchsichtig!", 
+    {"SUBJECT NOUN_PSEUDO_MAENNLICH Fido VERB_WERDEN durchsichtig!", 
 		 "Fido wird durchsichtig!"},
     {"SUBJECT PRONOMEN_PERSONAL VERB_KICK OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_POOR NOUN_PSEUDO_MAENNLICH Fido!",
 		 "Du trittst den armen Fido!"},
+    {"SUBJECT ARTIKEL_BESTIMMTER NOUN_PSEUDO_SAECHLICH Dingsbums VERB_WERDEN durchsichtig!", 
+		 "Das Dingsbums wird durchsichtig!"},
+    {"SUBJECT PRONOMEN_PERSONAL VERB_KICK OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_POOR NOUN_PSEUDO_SAECHLICH Dingsbums!",
+		 "Du trittst das arme Dingsbums!"},
 	};
 
 	check_strings(text, sizeof(text)/8);

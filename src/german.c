@@ -720,6 +720,8 @@ int finde_naechstes_subject(const char* text) {
 				c_genus   = maskulin;
 			} else if (strcmp(tmp, "NOUN_PSEUDO_WEIBLICH")==0) {
 				c_genus   = feminin;
+			} else if (strcmp(tmp, "NOUN_PSEUDO_SAECHLICH")==0) {
+				c_genus   = neutrum;
 			}
 			subject_genus   = c_genus;
 			subject_numerus = c_numerus;
@@ -775,6 +777,8 @@ int finde_naechstes_objekt(const char* text) {
 				c_genus   = maskulin;
 			} else if (strcmp(tmp, "NOUN_PSEUDO_WEIBLICH")==0) {
 				c_genus   = feminin;
+			} else if (strcmp(tmp, "NOUN_PSEUDO_SAECHLICH")==0) {
+				c_genus   = neutrum;
 			}
 			do_genus   = c_genus;
 			do_numerus = c_numerus;
