@@ -236,8 +236,8 @@ fnd:
 
 	reset_faint();			/* if fainted - wake up */
 	if (canspotmon(guard))
-	    pline("Suddenly one of the Vault's %s enters!", /* EN pline("Suddenly one of the Vault's %s enters!", */ // TODO DE
-		  makeplural(g_monnam(guard)));
+	    pline("Plötzlich betritt %s den Tresorraum!", /* EN pline("Suddenly one of the Vault's %s enters!", */
+		  einer_der(makeplural(g_monnam(guard)))); /* EN makeplural(g_monnam(guard))); */
 	else
 	    pline("Jemand betritt den Tresorraum."); /* EN pline("Someone else has entered the Vault."); */
 	newsym(guard->mx,guard->my);

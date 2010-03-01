@@ -1430,13 +1430,23 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 	return buf;
 }
 
+/* Liefert Geschlecht von token zurück. */
+enum Genus get_genus(const char* token) {
+	int i=0;
+	while (worte[i].wort!=NULL) {
+		if (strcmp(worte[i].typ, token)==0) {
+			return worte[i].genus;
+		}
+		i++;
+	}
+	return maskulin;
+}
+
 /* Liefert das passende Pronomen zu dem Substantiv noun_token zurück. */
 char*
 pronominalisierung(noun_token)
 const char *noun_token;
 {
-	int i=0;
-	enum Genus geschlecht = 0;
 	const char *token = strstr(noun_token, "NOUN_");
 
 	if (token == NULL) {
@@ -1449,14 +1459,7 @@ const char *noun_token;
 		return "NOUN_PRONOMEN_3P_N_PERSONAL";
 	}
 
-	while (worte[i].wort!=NULL) {
-		if (strcmp(worte[i].typ, token)==0) {
-			geschlecht = worte[i].genus;
-		}
-		i++;
-	}
-
-	switch (geschlecht) {
+	switch (get_genus(token)) {
 	case maskulin: return "NOUN_PRONOMEN_3P_M_PERSONAL";
 	case feminin:  return "NOUN_PRONOMEN_3P_F_PERSONAL";
 	case neutrum:  return "NOUN_PRONOMEN_3P_N_PERSONAL";
@@ -1475,6 +1478,24 @@ const char *token;
 	append(fugenwort_tmp, get_fugenelement(token));
 
 	return fugenwort_tmp;
+}
+
+char einer_der_tmp[TBUFSZ];
+char*
+einer_der(token)
+const char *token;
+{
+	char tmp_token[TBUFSZ];
+	char *geschlecht_token = NULL;
+	enum Genus geschlecht = get_genus(token);
+	switch (geschlecht) {
+		case maskulin: geschlecht_token = "einer"; break;
+		case feminin:  geschlecht_token = "eine";  break;
+		case neutrum:  geschlecht_token = "eines"; break;
+	}
+	snprintf(tmp_token, TBUFSZ, "KASUS_GENITIV ARTIKEL_BESTIMMTER %s", token);
+	snprintf(einer_der_tmp, TBUFSZ, "%s %s", geschlecht_token, german(tmp_token));
+	return einer_der_tmp;
 }
 
 #ifndef NO_HACK_H_INCLUDE
