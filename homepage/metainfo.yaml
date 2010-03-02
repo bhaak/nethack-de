@@ -44,7 +44,7 @@ english.page:
 
 forum.html:
   title: Forum
-  url: http://sourceforge.net/forum/forum.php?forum_id=675972
+  url: http://sourceforge.net/projects/nethack-de/forums/forum/675972
   inMenu: true
   orderInfo: 40
 
