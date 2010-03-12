@@ -15,10 +15,13 @@ html/index.html: nhtohtml.pl
 	./nhtohtml.pl
 
 dist: html
-	mkdir $(DISTDIR)
+	mkdir -p $(DISTDIR)
 	cp -a html nhtohtml.pl Makefile README.txt LICENSE.txt TODO nhtohtml-$(VERSION)
 	tar czvf $(DISTDIR).tar.gz $(DISTDIR)
 	rm -rf $(DISTDIR)
+
+clean:
+	rm -f html/*.html
 
 .PHONY: html dist
 

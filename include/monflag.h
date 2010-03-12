@@ -56,7 +56,7 @@
 #define MR_FIRE		0x01	/* feuerresistent */ /* resists fire */
 #define MR_COLD		0x02	/* kälteresistent */ /* resists cold */
 #define MR_SLEEP	0x04	/* schlafresistent */ /* resists sleep */
-#define MR_DISINT	0x08	/* TODO resists disintegration */ /* resists disintegration */
+#define MR_DISINT	0x08	/* desintegrationsresistent */ /* resists disintegration */
 #define MR_ELEC		0x10	/* stromunempfindlich */ /* resists electricity */
 #define MR_POISON	0x20	/* giftresistent */ /* resists poison */
 #define MR_ACID		0x40	/* säureresistent */ /* resists acid */
@@ -82,15 +82,15 @@
 #define M1_TUNNEL	0x00000020L	/* kann sich durch Gestein graben */ /* can tunnel thru rock */
 #define M1_NEEDPICK	0x00000040L	/* braucht Grabwerkzeug zum Buddeln */ /* needs pick to tunnel */
 #define M1_CONCEAL	0x00000080L	/* versteckt sich unter Gegenständen */ /* hides under objects */
-#define M1_HIDE		0x00000100L	/* TODO mimics, blends in with ceiling */ /* mimics, blends in with ceiling */
+#define M1_HIDE		0x00000100L	/* Imitatoren; versteckt sich an der Decke */ /* mimics, blends in with ceiling */
 #define M1_AMPHIBIOUS	0x00000200L	/* kann unter Wasser überleben */ /* can survive underwater */
 #define M1_BREATHLESS	0x00000400L	/* atmet nicht */ /* doesn't need to breathe */
 #define M1_NOTAKE	0x00000800L	/* kann keine Objekte aufheben */ /* cannot pick up objects */
-#define M1_NOEYES	0x00001000L	/* TODO no eyes to gaze into or blind */ /* no eyes to gaze into or blind */
+#define M1_NOEYES	0x00001000L	/* keine Augen oder blind */ /* no eyes to gaze into or blind */
 #define M1_NOHANDS	0x00002000L	/* hat keine Hände um Dinge zu benutzen */ /* no hands to handle things */
 #define M1_NOLIMBS	0x00006000L	/* keine Arme oder Beine um zu treten oder etwas anzuziehen */ /* no arms/legs to kick/wear on */
 #define M1_NOHEAD	0x00008000L	/* kein Kopf zum Köpfen */ /* no head to behead */
-#define M1_MINDLESS	0x00010000L	/* hat kein Bewusstsein - Golem, Zombie, Pilz */ /* has no mind--golem, zombie, mold */
+#define M1_MINDLESS	0x00010000L	/* hat kein Bewusstsein */ /* has no mind--golem, zombie, mold */
 #define M1_HUMANOID	0x00020000L	/* hat humanoiden Kopf, Arme oder Rumpf */ /* has humanoid head/arms/torso */
 #define M1_ANIMAL	0x00040000L	/* besitzt einen Tierkörper */ /* has animal body */
 #define M1_SLITHY	0x00080000L	/* besitzt einen Schlangenkörper */ /* has serpent body */
@@ -123,7 +123,7 @@
 #define M2_DEMON	0x00000100L	/* ist ein Dämon */ /* is a demon */
 #define M2_MERC		0x00000200L	/* ist eine Wache oder ein Soldat */ /* is a guard or soldier */
 #define M2_LORD		0x00000400L	/* ist ein Fürst */ /* is a lord to its kind */
-#define M2_PRINCE	0x00000800L	/* TODO ist ein */ /* is an overlord to its kind */
+#define M2_PRINCE	0x00000800L	/* ist ein Prinz */ /* is an overlord to its kind */
 #define M2_MINION	0x00001000L	/* ist ein Diener einer Gottheit */ /* is a minion of a deity */
 #define M2_GIANT	0x00002000L	/* ist ein Riese */ /* is a giant */
 #define M2_MALE		0x00010000L	/* immer männlich */ /* always male */

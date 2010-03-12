@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # nhtohtml.pl: A script to generate the nethack bestiary for NetHack-De.
-# Copyright (c) 2008-2009 Patric Mueller (bhaak@gmx.net)
+# Copyright (c) 2008-2010 Patric Mueller (bhaak@gmx.net)
 # Copyright (c) 2004 Robert Sim (rob@simra.net)
 #
 # This program is free software; you can redistribute it and/or
@@ -25,7 +25,7 @@ my ($version) = $rev=~ /Revision:\s+(.*?)\s?\$/;
 #and you are welcome to redistribute it under certain conditions.
 #EOF
 
-my $nethome = "$ENV{HOME}/c/nethack-de/trunk/";
+my $nethome = "../";
 
 
 # Parse monsym.h, which defines the tty characters for the various
@@ -36,6 +36,8 @@ while ($l=<MONSYM>) {
   if ($l=~/DEF_(.*?)\s+'(.)'/) {
     my ($mon,$sym)=($1,$2);
     $sym='@' if $sym =~/\s/; # Ghosts and shades will be colored black.
+    $sym="&amp;" if $sym eq '&'; # generate valid html
+    $sym="'" if $mon eq "GOLEM"; # regexp-bug-fix
     $symbols{$mon}=$sym;
 #    print "$1: $2\n";
   }
@@ -84,15 +86,15 @@ my %colors=
 # TODO: Parse the attacks from the comments in the appropriate header.
 my %attacks = 
   (
-   AT_CLAW => "Claw",
-   AT_BITE => "Bite",
-   AT_KICK => "Kick",
-   AT_BUTT => "Head butt",
-   AT_TUCH => "Touch",
-   AT_STNG => "Sting",
-   AT_HUGS => "Hug",
-   AT_SPIT => "Spit",
-   AT_ENGL => "Engulf",
+   AT_CLAW => "Greifer",
+   AT_BITE => "Biss",
+   AT_KICK => "Tritt",
+   AT_BUTT => "Head butt", # TODO
+   AT_TUCH => "Berührung",
+   AT_STNG => "Stich",
+   AT_HUGS => "Umarmung",
+   AT_SPIT => "Speit",
+   AT_ENGL => "Verschlingen",
    AT_BREA => "Odem", # AT_BREA => "Breath",
    AT_EXPL => "Explodiert",
    AT_BOOM => "Explodiert (als Todesfolge)",
@@ -112,43 +114,43 @@ my %damage =
  AD_COLD=>	" Kälte ",
  AD_SLEE=>	" Schlafstrahl ",
  AD_DISN=>	" Desintegration (Todesstrahl) ",
- AD_ELEC=>	" shock ",
- AD_DRST=>	" drains strength (poison) ",
+ AD_ELEC=>	" Stromschlag ",
+ AD_DRST=>	" schwächt Stärke (Gift) ",
  AD_ACID=>	" Säure ",
- AD_SPC1=>	" buzz ",
- AD_SPC2=>	" buzz ",
- AD_BLND=>	" blinding (yellow light) ",
- AD_STUN=>	" stun ",
- AD_SLOW=>	" slow ",
- AD_PLYS=>	" paralysing ",
- AD_DRLI=>	" drain life levels (Vampire) ",
- AD_DREN=>	" drain magic energy ",
+ AD_SPC1=>	" buzz ", # TODO
+ AD_SPC2=>	" buzz ", # TODO
+ AD_BLND=>	" blendend ",
+ AD_STUN=>	" betäubt ",
+ AD_SLOW=>	" verlangsamt ",
+ AD_PLYS=>	" paralysierend ",
+ AD_DRLI=>	" drain life levels (Vampire) ", # TODO
+ AD_DREN=>	" drain magic energy ", # TODO
  AD_LEGS=>	" Beine (Xan) ",
  AD_STON=>	" versteinert Gegner",
- AD_STCK=>	" sticks to you (mimic) ",
+ AD_STCK=>	" sticks to you (mimic) ", # TODO
  AD_SGLD=>	" stiehlt Gold ",
- AD_SITM=>	" steals item (nymphs) ",
- AD_SEDU=>	" seduces & steals multiple items ",
+ AD_SITM=>	" stiehlt Gegenstand ",
+ AD_SEDU=>	" verführt und stiehlt mehrere Gegenstände ",
  AD_TLPT=>	" teleportiert Spieler ",
- AD_RUST=>	" rusts armour (Rust Monster)",
+ AD_RUST=>	" verrostet Rüstung ",
  AD_CONF=>	" verwirrt ",
  AD_DGST=>	" verdaut Gegner ",
- AD_HEAL=>	" heilte gegnerische Wunde (Krankenschwester) ",
- AD_WRAP=>	" special \"stick\" for eel ",
- AD_WERE=>	" confers lycanthropy ",
- AD_DRDX=>	" drains dexterity (quasit) ",
- AD_DRCO=>	" drains constitution ",
- AD_DRIN=>	" drains intelligence ",
+ AD_HEAL=>	" heilt gegnerische Wunde ",
+ AD_WRAP=>	" special \"stick\" for eel ", # TODO
+ AD_WERE=>	" überträgt Lykanthropie ",
+ AD_DRDX=>	" drains dexterity (quasit) ", # TODO
+ AD_DRCO=>	" drains constitution ", # TODO
+ AD_DRIN=>	" drains intelligence ", # TODO
  AD_DISE=>	" überträgt Krankheiten ",
- AD_DCAY=>	" decays organics (brown Pudding) ",
+ AD_DCAY=>	" decays organics (brown Pudding) ", # TODO
  AD_SSEX=>	" Succubus seduction (extended) ",
  AD_HALU=>	" verursacht Halluzinationen ",
- AD_DETH=>	" for Death only ",
- AD_PEST=>	" for Pestilence only ",
- AD_FAMN=>	" for Famine only ",
- AD_SLIM=>	" turns you into green slime ",
- AD_ENCH=>	" remove enchantment (disenchanter) ",
- AD_CORR=>	" corrode armor (black pudding) ",
+ AD_DETH=>	" nur für Tod ",
+ AD_PEST=>	" nur für Pestilenz ",
+ AD_FAMN=>	" nur für Hunger ",
+ AD_SLIM=>	" turns you into green slime ", # TODO
+ AD_ENCH=>	" remove enchantment (disenchanter) ", # TODO
+ AD_CORR=>	" corrode armor (black pudding) ", # TODO
 
  AD_CLRC=>	" zufälliger clerical spell ",
  AD_SPEL=>	" zufälliger magischer Zauberspruch ",
@@ -286,6 +288,7 @@ while ($l=<DBASE>) {
     # There can be multiple tags per entry.
     push @$tags, $l;
   } else {
+    $l=~s/&/&amp;/g;
     $entry.=$l."<br/>";
   }
 }
@@ -345,10 +348,10 @@ print INDEX <<EOF;
 <head>
 <link rel="stylesheet" href="nhstyle.css" type="text/css"/>
 <meta name="keywords" content="nethack,games,rpg"/>
-<title>Nethacks Bestiarium</title>
+<title>NetHacks Bestiarium</title>
 </head>
 <body>
-<h1>Nethacks Bestiarium</h1>
+<h1>NetHacks Bestiarium</h1>
 <table class="monster_table">
 EOF
 
@@ -372,7 +375,7 @@ while ($m=shift @monsters) {
 #  print STDERR "HTML: print_name: $print_name\n";
 
   # The index entry.
-  print INDEX qq(<tr><td class="symbol" align="center"><span style="color:#$colors{$m->{COLOR}};">$symbols{$m->{SYMBOL}}</span></td><td class="name"><a href="$htmlname">$print_name</a></td>\n);
+  print INDEX qq(<tr><td class="symbol" align="center"><span style="color:#$colors{$m->{COLOR}};">$symbols{$m->{SYMBOL}}</span></td><td class="name"><a href="$htmlname">$print_name</a></td></tr>\n);
 
   # The html file.  I think the symbol stuff is really pretty. :-)
   open HTML, ">html/$htmlname" or die $!;
@@ -424,13 +427,14 @@ EOF
   if ($m->{MR2}) {
     print HTML <<EOF;
 <div class="convey">
-<h3>Conveyances:</h3>
+<h3>Eigenschaftsübertragung:</h3>
 <ul>
 EOF
     for $mr (split /\|/, $m->{MR2}) {
       my $r=$flags{$mr};
-      $r=~s/resists//;
-      $r.=" resistance";
+      $r=~s/ (.*)resistent /\1/;
+      $r.="resistenz";
+      $r=ucfirst($r);
       print HTML "<li>$r</li> ";
 #      print "$mr: $r\n";
     }
@@ -620,6 +624,7 @@ ENTRY_LOOP:  for $e (@entries) {
     }
   }
  print STDERR "No database entry found for $name\n";
+ return "kein Datenbank-Eintrag\n";
 }
 
 # 
