@@ -2837,7 +2837,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GUARD", "Wache", "", "Wache", "en", "feminin"),
     dekliniere_adjektivisches_substantiv("NOUN_PRISONER", "Gefangen", "maskulin"),
     dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orakel", "", "neutrum"),
-    #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
+    dekliniere_nominalphrase("NOUN_ALIGNED_PRIEST", "geweiht", "Priester", "s", "Priester", "", "maskulin"),
     dekliniere_substantiv("NOUN_HIGH_PRIEST", "Hohepriester", "s", "Hohepriester", "", "maskulin"),
     dekliniere_substantiv("NOUN_HIGH_PRIESTESS", "Hohepriesterin", "", "Hohepriesterinn", "en", "feminin","nen"),
     dekliniere_substantiv("NOUN_SOLDIER", "Soldat", "en", "Soldat", "en", "maskulin", "en"),
@@ -2966,25 +2966,25 @@ def ausgabe_nouns
     dekliniere_eigenname("NOUN_MASTER_KAEN", "Meister Kaen", "maskulin"),
     dekliniere_eigenname("NOUN_NALZOK","Nalzok","maskulin"),
     dekliniere_eigenname("NOUN_SCORPIUS","Scorpius","maskulin"),
-    #dekliniere_substantiv("NOUN_MASTER_ASSASSIN"
+    dekliniere_substantiv("NOUN_MASTER_ASSASSIN", "Meister", "s", "", "", "maskulin", "", "der Assassinen"),
     dekliniere_eigenname("NOUN_ASHIKAGA_TAKAUJI", "Ashikaga Takauji", "maskulin"),
     dekliniere_eigenname("NOUN_LORD_SURTUR", "Lord Surtur", "maskulin"), # Surtur?
-    #dekliniere_substantiv("NOUN_DARK_ONE" # der Dunkle, der Duestere, der Lichtlose, der Schattenhafte, der Okkulte, netzhack: Finstere
-    #dekliniere_substantiv("NOUN_STUDENT"
+    dekliniere_substantiv("NOUN_DARK_ONE", "Finstere", "en", "", "en", "maskulin", "en"), # der Dunkle, der Duestere, der Lichtlose, der Schattenhafte, der Okkulte, netzhack: Finstere
+    dekliniere_substantiv("NOUN_STUDENT", "Student", "en", "", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_CHIEFTAIN", "Stammesfürst", "en", "Stammesfürst", "en", "maskulin", "en"),
     dekliniere_eigenname("NOUN_NEANDERTHAL", "Neandertaler", "maskulin"),
     dekliniere_substantiv("NOUN_HIGH_ELF", "Hoch-Elb", "es", "Hoch-Elb", "en", "maskulin", "en"),
     dekliniere_substantiv("NOUN_ATTENDANT", "Pfleger", "s", "", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_PAGE"
-    #dekliniere_substantiv("NOUN_ABBOT"
-    #dekliniere_substantiv("NOUN_ACOLYTE"
-    #dekliniere_substantiv("NOUN_HUNTER"
-    #dekliniere_substantiv("NOUN_THUG"
-    #dekliniere_substantiv("NOUN_NINJA"
-    #dekliniere_substantiv("NOUN_ROSHI"
-    #dekliniere_substantiv("NOUN_GUIDE"
-    #dekliniere_substantiv("NOUN_WARRIOR"
-    #dekliniere_substantiv("NOUN_APPRENTICE"
+    dekliniere_substantiv("NOUN_PAGE", "Page", "en", "", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_ABBOT", "Abt", "es", "", "e", "maskulin"),
+    dekliniere_substantiv("NOUN_ACOLYTE", "Akolyth", "en", "", "en", "maskulin"),
+    dekliniere_substantiv("NOUN_HUNTER", "Jäger", "s", "", "", "maskulin"),
+    dekliniere_substantiv("NOUN_THUG", "Schläger", "s", "", "", "maskulin"),
+    dekliniere_substantiv("NOUN_NINJA", "Ninja", "", "", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_ROSHI", "Roshi", "", "", "", "maskulin"),
+    dekliniere_substantiv("NOUN_GUIDE", "Fremdenführer", "s", "", "", "maskulin"),
+    dekliniere_substantiv("NOUN_WARRIOR", "Krieger", "s", "", "", "maskulin"),
+    dekliniere_substantiv("NOUN_APPRENTICE", "Lehrling", "s", "", "e", "maskulin"),
     "",
     "/* ======================================================= */",
     "/* drawing.c */",

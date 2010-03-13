@@ -7230,6 +7230,16 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Orakel", "NOUN_ORACLEs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Orakeln", "NOUN_ORACLEs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"geweihten Priesters", "NOUN_ALIGNED_PRIEST", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"geweihte Priester", "NOUN_ALIGNED_PRIEST", "", nominativ, maskulin, n_singular, bestimmter},
+  {"geweihter Priester", "NOUN_ALIGNED_PRIEST", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"geweihten Priester", "NOUN_ALIGNED_PRIEST", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"geweihtem Priester", "NOUN_ALIGNED_PRIEST", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"geweihten Priestern", "NOUN_ALIGNED_PRIESTs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"geweihten Priester", "NOUN_ALIGNED_PRIESTs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"geweihte Priester", "NOUN_ALIGNED_PRIESTs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"geweihter Priester", "NOUN_ALIGNED_PRIESTs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
   {"Hohepriesters", "NOUN_HIGH_PRIEST", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hohepriester", "NOUN_HIGH_PRIEST", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hohepriester", "NOUN_HIGH_PRIESTs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -7694,11 +7704,20 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Scorpius", "NOUN_SCORPIUS", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Scorpius'", "NOUN_SCORPIUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Meisters der Assassinen", "NOUN_MASTER_ASSASSIN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Meister der Assassinen", "NOUN_MASTER_ASSASSIN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Ashikaga Takauji", "NOUN_ASHIKAGA_TAKAUJI", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ashikaga Takaujis", "NOUN_ASHIKAGA_TAKAUJI", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Lord Surtur", "NOUN_LORD_SURTUR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lord Surturs", "NOUN_LORD_SURTUR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Finstere", "NOUN_DARK_ONE", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Finsteren", "NOUN_DARK_ONE", "en", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Student", "NOUN_STUDENT", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Studenten", "NOUN_STUDENT", "en", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Stammesfürst", "NOUN_CHIEFTAIN", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Stammesfürsten", "NOUN_CHIEFTAIN", "en", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -7713,6 +7732,34 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   {"Pflegers", "NOUN_ATTENDANT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Pfleger", "NOUN_ATTENDANT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Page", "NOUN_PAGE", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pagen", "NOUN_PAGE", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Abtes", "NOUN_ABBOT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Abt", "NOUN_ABBOT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Akolyth", "NOUN_ACOLYTE", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Akolythen", "NOUN_ACOLYTE", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Jägers", "NOUN_HUNTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Jäger", "NOUN_HUNTER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Schlägers", "NOUN_THUG", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schläger", "NOUN_THUG", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Ninja", "NOUN_NINJA", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Roshi", "NOUN_ROSHI", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Fremdenführers", "NOUN_GUIDE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Fremdenführer", "NOUN_GUIDE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Kriegers", "NOUN_WARRIOR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Krieger", "NOUN_WARRIOR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Lehrlings", "NOUN_APPRENTICE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lehrling", "NOUN_APPRENTICE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
 
   /* ======================================================= */
