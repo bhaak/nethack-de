@@ -7209,6 +7209,22 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Wache", "NOUN_GUARD", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wachen", "NOUN_GUARDs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Gefangen", "NOUN_PRISONER", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural|n_singular, grundform},
+  {"Gefangene", "NOUN_PRISONER", "", nominativ, maskulin, n_singular, bestimmter},
+  {"Gefangenen", "NOUN_PRISONER", "", dativ|akkusativ|genitiv, maskulin, n_singular, bestimmter},
+  {"Gefangenen", "NOUN_PRISONERs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, bestimmter},
+  {"Gefangener", "NOUN_PRISONER", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"Gefangenen", "NOUN_PRISONER", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter},
+  {"Gefangenen", "NOUN_PRISONERs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter},
+  {"Gefangener", "NOUN_PRISONER", "", nominativ, maskulin, n_singular, ohne},
+  {"Gefangenen", "NOUN_PRISONER", "", akkusativ, maskulin, n_singular, ohne},
+  {"Gefangenem", "NOUN_PRISONER", "", dativ, maskulin, n_singular, ohne},
+  {"Gefangenen", "NOUN_PRISONER", "", genitiv, maskulin, n_singular, ohne},
+  {"Gefangene", "NOUN_PRISONERs", "", nominativ|akkusativ, maskulin, n_plural, ohne},
+  {"Gefangenen", "NOUN_PRISONERs", "", dativ, maskulin, n_plural, ohne},
+  {"Gefangener", "NOUN_PRISONERs", "", genitiv, maskulin, n_plural, ohne},
+  
+
   {"Orakels", "NOUN_ORACLE", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Orakel", "NOUN_ORACLE", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Orakel", "NOUN_ORACLEs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -7610,6 +7626,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Orion", "NOUN_ORION", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Orions", "NOUN_ORION", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Königs der Diebe", "NOUN_MASTER_OF_THIEVES", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"König der Diebe", "NOUN_MASTER_OF_THIEVES", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Lord Sato", "NOUN_LORD_SATO", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lord Satos", "NOUN_LORD_SATO", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -7666,14 +7685,34 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Ixoth", "NOUN_IXOTH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ixoths", "NOUN_IXOTH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Meister Kaen", "NOUN_MASTER_KAEN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Meister Kaens", "NOUN_MASTER_KAEN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Nalzok", "NOUN_NALZOK", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Nalzoks", "NOUN_NALZOK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Scorpius", "NOUN_SCORPIUS", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Scorpius'", "NOUN_SCORPIUS", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Ashikaga Takauji", "NOUN_ASHIKAGA_TAKAUJI", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ashikaga Takaujis", "NOUN_ASHIKAGA_TAKAUJI", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Lord Surtur", "NOUN_LORD_SURTUR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Lord Surturs", "NOUN_LORD_SURTUR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Stammesfürst", "NOUN_CHIEFTAIN", "en", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stammesfürsten", "NOUN_CHIEFTAIN", "en", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stammesfürsten", "NOUN_CHIEFTAINs", "en", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Neandertaler", "NOUN_NEANDERTHAL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Neandertalers", "NOUN_NEANDERTHAL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Hoch-Elbes", "NOUN_HIGH_ELF", "en", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Hoch-Elb", "NOUN_HIGH_ELF", "en", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Hoch-Elben", "NOUN_HIGH_ELFs", "en", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Pflegers", "NOUN_ATTENDANT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Pfleger", "NOUN_ATTENDANT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
 
   /* ======================================================= */

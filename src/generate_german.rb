@@ -2835,7 +2835,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SHOPKEEPER", "Ladenbesitzer", "s", "Ladenbesitzer", "", "maskulin"), # Ladenbesitzer, Ladeninhaber, Händler?
     dekliniere_substantiv("NOUN_SHOPKEEPERIN", "Ladenbesitzerin", "", "Ladenbesitzerinn", "en", "feminin", "nen"), 
     dekliniere_substantiv("NOUN_GUARD", "Wache", "", "Wache", "en", "feminin"),
-    #dekliniere_substantiv("NOUN_PRISONER"
+    dekliniere_adjektivisches_substantiv("NOUN_PRISONER", "Gefangen", "maskulin"),
     dekliniere_substantiv("NOUN_ORACLE", "Orakel", "s", "Orakel", "", "neutrum"),
     #dekliniere_substantiv("NOUN_ALIGNED_PRIEST"
     dekliniere_substantiv("NOUN_HIGH_PRIEST", "Hohepriester", "s", "Hohepriester", "", "maskulin"),
@@ -2946,7 +2946,7 @@ def ausgabe_nouns
     # dekliniere_substantiv("NOUN_ARCH_PRIEST", "Erzpriester", "s", "Erzpriester", "", "maskulin),
     dekliniere_substantiv("NOUN_ARCH_PRIEST", "Archipresbyter", "s", "Archipresbyter", "", "maskulin"),
     dekliniere_eigenname("NOUN_ORION", "Orion", "maskulin"),
-    #dekliniere_substantiv("NOUN_MASTER_OF_THIEVES" # Koenig der Diebe, Meister der Diebe? # netzhack: Der Meister der Diebesgilde
+    dekliniere_substantiv("NOUN_MASTER_OF_THIEVES", "König", "s", "", "e", "maskulin","","der Diebe"), # Koenig der Diebe, Meister der Diebe? # netzhack: Der Meister der Diebesgilde
     dekliniere_eigenname("NOUN_LORD_SATO","Lord Sato","maskulin"), # Fürst Sato, netzhack: Sato-sama
     dekliniere_eigenname("NOUN_TWOFLOWER","Zweiblum","maskulin"),
     dekliniere_substantiv("NOUN_NORN","Norne", "", "Norn", "en", "feminin"), 
@@ -2963,18 +2963,18 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CYCLOPS","Zyklop","en","Zyklop","en","maskulin","en"),
     dekliniere_substantiv("NOUN_CYCLOPS","Kyklop","en","Kyklop","en","maskulin","en"),
     dekliniere_eigenname("NOUN_IXOTH","Ixoth","maskulin"),
-    #dekliniere_substantiv("NOUN_MASTER_KAEN"
+    dekliniere_eigenname("NOUN_MASTER_KAEN", "Meister Kaen", "maskulin"),
     dekliniere_eigenname("NOUN_NALZOK","Nalzok","maskulin"),
     dekliniere_eigenname("NOUN_SCORPIUS","Scorpius","maskulin"),
     #dekliniere_substantiv("NOUN_MASTER_ASSASSIN"
-    #dekliniere_substantiv("NOUN_ASHIKAGA_TAKAUJI"
-    dekliniere_eigenname("NOUN_LORD_SURTUR","Lord Surtur","maskulin"), # Surtur?
+    dekliniere_eigenname("NOUN_ASHIKAGA_TAKAUJI", "Ashikaga Takauji", "maskulin"),
+    dekliniere_eigenname("NOUN_LORD_SURTUR", "Lord Surtur", "maskulin"), # Surtur?
     #dekliniere_substantiv("NOUN_DARK_ONE" # der Dunkle, der Duestere, der Lichtlose, der Schattenhafte, der Okkulte, netzhack: Finstere
     #dekliniere_substantiv("NOUN_STUDENT"
-    #dekliniere_substantiv("NOUN_CHIEFTAIN"
-    #dekliniere_substantiv("NOUN_NEANDERTHAL"
-    #dekliniere_substantiv("NOUN_HIGH_ELF"
-    #dekliniere_substantiv("NOUN_ATTENDANT"
+    dekliniere_substantiv("NOUN_CHIEFTAIN", "Stammesfürst", "en", "Stammesfürst", "en", "maskulin", "en"),
+    dekliniere_eigenname("NOUN_NEANDERTHAL", "Neandertaler", "maskulin"),
+    dekliniere_substantiv("NOUN_HIGH_ELF", "Hoch-Elb", "es", "Hoch-Elb", "en", "maskulin", "en"),
+    dekliniere_substantiv("NOUN_ATTENDANT", "Pfleger", "s", "", "", "maskulin"),
     #dekliniere_substantiv("NOUN_PAGE"
     #dekliniere_substantiv("NOUN_ABBOT"
     #dekliniere_substantiv("NOUN_ACOLYTE"
