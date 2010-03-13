@@ -41,6 +41,12 @@ english.page:
   orderInfo: 70
 
 ---
+bestiarium.html:
+  title: Bestiarium
+  htmltitle: 'NetHack-De: Bestiarium'
+  url: nhtohtml/index.html
+  inMenu: true
+  orderInfo: 32
 
 forum.html:
   title: Forum

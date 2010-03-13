@@ -26,3 +26,66 @@ p > img, .video {
 .nethack td.leer, .nethack td.teilweise, .nethack td.vollstaendig {
 	border: 1px solid black;
 }
+
+/* nhtohtml */
+table.monster_table {
+  border-collapse: collapse;
+  margin-left: 1em;
+}
+
+.monster_table td.name {
+  padding-left: 0.5em;
+}
+
+.attribute {
+  font-weight: bold;
+}
+
+.separator {
+  clear: both;
+  height: 0.1em;
+  color: #444;
+  background-color: #444;
+  border: 0;
+}
+
+.entry {
+  padding: .75em;
+}
+
+.symbol {
+  padding: 0.1em;
+}
+
+div.symbol {
+  font-size:300%;
+  background-color: #111;
+  float:right;
+}
+
+.attack ul {
+  margin-top: 0px;
+  padding-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.attack li {
+  font-style: normal;
+}
+
+.resist {
+  float: left;
+/*  position: absolute;
+  top: 0px;
+  left: 0px; */
+}
+
+.convey {
+  position: absolute;
+  top: 0px;
+  left: 250px; 
+}
+
+.flags {
+  clear: both;
+}

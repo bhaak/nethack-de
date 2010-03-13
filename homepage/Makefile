@@ -17,4 +17,8 @@ sourceforge: webgen archiv
 	scp -r output/* bhaak,nethack-de@web.sourceforge.net:htdocs/
 	echo "Homepage nach Sourceforge kopiert"
 
-.PHONY: webgen archiv sourceforge
+bestiarium:
+	(cd ../nhtohtml ; ./nhtohtml.pl)
+	ruby bestiarium.rb
+
+.PHONY: webgen archiv sourceforge bestiarium
