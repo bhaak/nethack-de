@@ -177,6 +177,10 @@ sub process_monster {
   ($sym,$lvl,$gen,$atk,$siz,$mr1,$mr2,$flg1,$flg2,$flg3,$col) = 
     $the_mon=~/MON\(NAM_.*,S_(.*?),LVL\((.*?)\),\(?(.*?)\)?,A\((.*)\),SIZ\((.*)\),(.*?),(.*?),(.*?),(.*?),(.*?),(.*?)\),$/;
   $col= "NO_COLOR" if ($name eq "NAM_GHOST" || $name eq "NAM_SHADE");
+  # workaround for inconsistency in naming
+  $name= "NAM_ARCHAEOLOGE" if ($name eq "NAM_ARCHEOLOGIST");
+  $name= "NAM_BARBAR" if ($name eq "NAM_BARBARIAN");
+  $name= "NAM_HEILER" if ($name eq "NAM_HEALER");
   my $mon_struct=
     {
      NAME => $name,
@@ -636,7 +640,7 @@ sub german {
 
   while ($l=<GERMAN>) {
     if ($l=~/\{"(.*)".*"NOUN_${name}".*nominativ.*n_singular.*ohne/) { 
-      print STDERR "$1\n";
+      # print STDERR "$1\n";
       return $1;
     }
   }
