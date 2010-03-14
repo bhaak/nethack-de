@@ -136,7 +136,7 @@ struct obj *wep;
 	    /* Prevent wielding cockatrice when not wearing gloves --KAA */
 	    char kbuf[BUFSZ];
 
-	    You("wield the %s corpse in your bare %s.", /* EN You("wield the %s corpse in your bare %s.", */ // TODO DE
+	    You("VERB_NEHMEN OBJECT OBJECT MODIFIER_CORPSE ARTIKEL_BESTIMMTER %s NOUN_CORPSE NEUES_OBJECT OBJECT in PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("wield the %s corpse in your bare %s.", */
 		mons[wep->corpsenm].mname, makeplural(body_part(HAND)));
 	    Sprintf(kbuf, "%s corpse", an(mons[wep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[wep->corpsenm].mname)); */ // TODO DE
 	    instapetrify(kbuf);
@@ -251,7 +251,7 @@ dowield()
 		/* Cancelled */
 		return (0);
 	else if (wep == uwep) {
-	    You("are already wielding that!"); /* EN You("are already wielding that!"); */ // TODO DE
+	    You("VERB_HABEN das schon OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s!", bimanual(wep) ? makeplural(body_part(HAND)) : body_part(HAND)); /* EN You("are already wielding that!"); */
 	    if (is_weptool(wep)) unweapon = FALSE;	/* [see setuwep()] */
 		return (0);
 	} else if (welded(uwep)) {
@@ -273,7 +273,7 @@ dowield()
 			| W_SADDLE
 #endif
 			)) {
-		You("cannot wield that!"); /* EN You("cannot wield that!"); */ // TODO DE
+		You("VERB_KOENNEN das nicht als Waffe benutzen!"); /* EN You("cannot wield that!"); */
 		return (0);
 	}
 
@@ -457,7 +457,7 @@ const char *verb;	/* "rub",&c */
 	/* doswapweapon might fail */
 	if (uswapwep == obj) return FALSE;
     } else {
-	You("now wield %s.", doname(obj)); /* EN You("now wield %s.", doname(obj)); */ // TODO DE
+	You("VERB_FUEHREN jetzt OBJECT %s.", doname(obj)); /* EN You("now wield %s.", doname(obj)); */
 	setuwep(obj);
     }
     if (uwep != obj) return FALSE;	/* rewielded old object after dying */
@@ -501,7 +501,7 @@ can_twoweapon()
 		    touch_petrifies(&mons[uswapwep->corpsenm]))) {
 		char kbuf[BUFSZ];
 
-		You("wield the %s corpse with your bare %s.", /* EN You("wield the %s corpse with your bare %s.", */ // TODO DE
+		You("VERB_NEHMEN OBJECT OBJECT MODIFIER_CORPSE ARTIKEL_BESTIMMTER %s NOUN_CORPSE NEUES_OBJECT OBJECT in PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("wield the %s corpse with your bare %s.", */
 		    mons[uswapwep->corpsenm].mname, body_part(HAND));
 		Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); */ // TODO DE
 		instapetrify(kbuf);

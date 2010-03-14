@@ -648,14 +648,14 @@ register struct monst *mon;
 			    pline("SUBJECT Da %s %s,", /* EN pline("Since %s weapon%s %s,", */
 				  genitivattribut_zu_wort(mon_nam(mon), /* EN s_suffix(mon_nam(mon)), */
 				  mw_tmp->quan == 1 ? "NOUN_WEAPON" : "NOUN_WEAPONs"), welded_buf); /* EN plur(mw_tmp->quan), welded_buf); */
-			    pline("%s cannot wield that %s.", /* EN pline("%s cannot wield that %s.", */ // TODO DE
+			    pline("kann sich SUBJECT_IM_SATZ %s nicht OBJECT KASUS_DATIV mit %s bewaffnen.", /* EN pline("%s cannot wield that %s.", */
 				mon_nam(mon), xname(obj));
 			} else {
-			    pline("%s tries to wield %s.", Monnam(mon), /* EN pline("%s tries to wield %s.", Monnam(mon), */ // TODO DE
+			    pline("SUBJECT %s VERB_VERSUCHEN sich OBJECT KASUS_DATIV mit %s bewaffnen.", Monnam(mon), /* EN pline("%s tries to wield %s.", Monnam(mon), */
 				doname(obj));
-			    pline("%s %s %s!", /* EN pline("%s %s %s!", */ // TODO DE
-				  s_suffix(Monnam(mon)), /* EN s_suffix(Monnam(mon)), */ // TODO DE
-				  xname(mw_tmp), welded_buf);
+			    pline("SUBJECT %s %s %s!", /* EN pline("%s %s %s!", */
+				  genitivattribut_zu_wort(mon_nam(mon), /* EN s_suffix(Monnam(mon)), */
+				  xname(mw_tmp)), welded_buf); /* EN xname(mw_tmp), welded_buf); */
 			}
 			mw_tmp->bknown = 1;
 		    }
@@ -666,7 +666,7 @@ register struct monst *mon;
 		setmnotwielded(mon, mw_tmp);
 		mon->weapon_check = NEED_WEAPON;
 		if (canseemon(mon)) {
-		    pline("%s wields %s!", Monnam(mon), doname(obj)); /* EN pline("%s wields %s!", Monnam(mon), doname(obj)); */ // TODO DE
+		    pline("SUBJECT %s VERB_BEWAFFNEN sich OBJECT KASUS_DATIV mit %s!", Monnam(mon), doname(obj)); /* EN pline("%s wields %s!", Monnam(mon), doname(obj)); */
 		    if (obj->cursed && obj->otyp != CORPSE) {
 			pline("SUBJECT %s %s OBJECT KASUS_DATIV an %s fest!", /* EN pline("%s %s to %s %s!", */
 			    Tobjnam(obj, "VERB_KLEBEN"), /* EN Tobjnam(obj, "weld"), */

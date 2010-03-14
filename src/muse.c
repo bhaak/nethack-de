@@ -1836,7 +1836,7 @@ skipmsg:
 			      The_whip, the_weapon);
 			return 1;
 		    }
-		    pline("%s wraps around %s you're wielding!", /* EN pline("%s wraps around %s you're wielding!", */ // TODO DE
+		    pline("SUBJECT %s VERB_WICKELN sich OBJECT um %s!", /* EN pline("%s wraps around %s you're wielding!", */
 			  The_whip, the_weapon);
 		    if (welded(obj)) {
 			pline("SUBJECT %s VERB_KLEBEN OBJECT KASUS_DATIV an PRONOMEN_POSSESSIV %s%c", /* EN pline("%s welded to your %s%c", */
@@ -1846,7 +1846,7 @@ skipmsg:
 			where_to = 0;
 		    }
 		    if (!where_to) {
-			pline_The("whip slips free.");  /* not `The_whip' */ /* EN pline_The("whip slips free.");  */ // TODO DE
+			pline_The("NOUN_WHIP VERB_RUTSCHEN ab.");  /* not `The_whip' */ /* EN pline_The("whip slips free.");  */
 			return 1;
 		    } else if (where_to == 3 && hates_silver(mtmp->data) &&
 			    objects[obj->otyp].oc_material == SILVER) {

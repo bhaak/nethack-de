@@ -2102,7 +2102,7 @@ int retry;
 	    (void) select_off(pick_list[i].item.a_obj);
 	free((genericptr_t) pick_list);
     } else if (n < 0 && flags.menu_style != MENU_COMBINATION) {
-	There("is nothing else you can remove or unwield."); /* EN There("is nothing else you can remove or unwield.");*/ // TODO DE
+	pline("Es gibt nichts mehr, was SUBJECT_IM_SATZ PRONOMEN_PERSONAL ausziehen oder ablegen MODIFIER_KONJUNKTIV_II VERB_KOENNEN."); /* EN There("is nothing else you can remove or unwield.");*/
     }
     return 0;
 }
