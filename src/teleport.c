@@ -589,10 +589,10 @@ level_tele()
 	    do {
 		if (++trycnt == 2) {
 #ifdef WIZARD
-			if (wizard) Strcat(qbuf, " [type a number or ? for a menu]"); /* EN if (wizard) Strcat(qbuf, " [type a number or ? for a menu]"); */ // TODO DE
+			if (wizard) Strcat(qbuf, " [NEUER_SATZ MODIFIER_VERB_IMPERATIV VERB_EINGEBEN eine Zahl SATZKLAMMER oder ? zur Anzeige eines Menü]"); /* EN if (wizard) Strcat(qbuf, " [type a number or ? for a menu]"); */
 			else
 #endif
-			Strcat(qbuf, " [type a number]"); /* EN Strcat(qbuf, " [type a number]"); */ // TODO DE
+			Strcat(qbuf, " [NEUER_SATZ MODIFIER_VERB_IMPERATIV VERB_EINGEBEN eine Zahl SATZKLAMMER]"); /* EN Strcat(qbuf, " [type a number]"); */
 		}
 		getlin(qbuf, buf);
 		if (!strcmp(buf,"\033")) {	/* cancelled */
@@ -643,17 +643,17 @@ level_tele()
 	    if (newlev == 0) {
 		if (trycnt >= 10)
 		    goto random_levtport;
-		if (ynq("Go to Nowhere.  Are you sure?") != 'y') return; /* EN if (ynq("Go to Nowhere.  Are you sure?") != 'y') return; */ // TODO DE
-		You("%s in agony as your body begins to warp...", /* EN You("%s in agony as your body begins to warp...", */ // TODO DE
-		    is_silent(youmonst.data) ? "writhe" : "scream"); /* EN is_silent(youmonst.data) ? "writhe" : "scream"); */ // TODO DE
+		if (ynq("Nach Nirgendwo springen.  SUBJECT VERB_SEIN PRONOMEN_PERSONAL sicher?") != 'y') return; /* EN if (ynq("Go to Nowhere.  Are you sure?") != 'y') return; */
+		You("%s vor Schmerzen, NEUER_SATZ als SUBJECT_IM_SATZ PRONOMEN_POSSESSIV NOUN_KOERPER sich zu verformen beginnt ...", /* EN You("%s in agony as your body begins to warp...", */
+		    is_silent(youmonst.data) ? "VERB_WINDEN OBJECT PRONOMEN_PERSONAL" : "VERB_SCHREIEN"); /* EN is_silent(youmonst.data) ? "writhe" : "scream"); */
 		display_nhwindow(WIN_MESSAGE, FALSE);
-		You("cease to exist."); /* EN You("cease to exist."); */ // TODO DE
+		You("VERB_HOEREN auf zu existieren."); /* EN You("cease to exist."); */
 		if (invent) Your("ADJEKTIV_GESAMT NOUN_ZEUGS VERB_LANDEN mit einem kräftigen Plumps OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s.", /* EN if (invent) Your("possessions land on the %s with a thud.", */
 				surface(u.ux, u.uy));
 		killer_format = NO_KILLER_PREFIX;
 		killer = "beging Selbstmord"; /* EN killer = "committed suicide"; */
 		done(DIED);
-		pline("An energized cloud of dust begins to coalesce."); /* EN pline("An energized cloud of dust begins to coalesce."); */ // TODO DE
+		pline("Eine energiegeladene Wolke aus Staub beginnt sich zu verdichten."); /* EN pline("An energized cloud of dust begins to coalesce."); */
 		Your("NOUN_KOERPER rematerialisiert%s.", invent ?  /* EN Your("body rematerializes%s.", invent ? */
 			", and you gather up all your possessions" : ""); /* EN ", and you gather up all your possessions" : ""); */ // TODO DE
 		return;
@@ -1109,8 +1109,8 @@ int in_sight;
 		    assign_level(&tolevel, &valley_level);
 		} else if (Is_botlevel(&u.uz)) {
 		    if (in_sight && trap->tseen)
-			pline("%s avoids the %s.", Monnam(mtmp), /* EN pline("%s avoids the %s.", Monnam(mtmp), */ // TODO DE
-			(tt == HOLE) ? "hole" : "trap"); /* EN (tt == HOLE) ? "hole" : "trap"); */ // TODO DE
+			pline("SUBJECT %s VERB_ENTGEHEN %s.", Monnam(mtmp), /* EN pline("%s avoids the %s.", Monnam(mtmp), */
+			(tt == HOLE) ? "dem Loch" : "der Falle"); /* EN (tt == HOLE) ? "hole" : "trap"); */
 		    return 0;
 		} else {
 		    get_level(&tolevel, depth(&u.uz) + 1);

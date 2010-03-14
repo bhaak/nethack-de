@@ -1142,6 +1142,10 @@ char* german(const char *line) {
 				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
 				// Flüssigkeiten in Flaschen haben nur Singularform 
 				c_numerus = n_singular;
+#ifndef NO_HACK_H_INCLUDE
+			} else if (strncmp("NOUN_PLAYER_STERBLICHER", tmp, 23)==0) {
+				append(output, flags.female ? "Sterbliche" : "Sterblicher");
+#endif
 			} else {
 				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
 #if DEBUG

@@ -487,7 +487,7 @@ aligntyp resp_god;
 		if (Blind)
 		    pline("For some reason you're unaffected."); /* EN pline("For some reason you're unaffected."); */ // TODO DE
 		else
-		    (void) ureflects("%s reflects from your %s.", "It"); /* EN (void) ureflects("%s reflects from your %s.", "It"); */ // TODO DE
+		    (void) ureflects("SUBJECT %s VERB_REFLEKTIEREN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV %s.", "NOUN_IT"); /* EN (void) ureflects("%s reflects from your %s.", "It"); */
 	    } else if (Shock_resistance) {
 		shieldeff(u.ux, u.uy);
 		pline("It seems not to affect you."); /* EN pline("It seems not to affect you."); */ // TODO DE
@@ -666,7 +666,7 @@ gcrownu()
 	u.uevent.uhand_of_elbereth = 2;
 	in_hand = (uwep && uwep->oartifact == ART_VORPAL_BLADE);
 	already_exists = exist_artifact(LONG_SWORD, artiname(ART_VORPAL_BLADE));
-	verbalize("Du sollst mein Bote/Gesandter des Ausgleichs sein!"); /* EN verbalize("Thou shalt be my Envoy of Balance!"); */ // TODO DE
+	verbalize("Du sollst mein Gesandter des Ausgleichs sein!"); /* EN verbalize("Thou shalt be my Envoy of Balance!"); */
 	break;
     case A_CHAOTIC:
 	u.uevent.uhand_of_elbereth = 3;
@@ -869,7 +869,7 @@ pleased(g_align)
 		    if (!Blind)
 			Your("%s %s%s.", aobjnam(uwep, "VERB_LEUCHTEN schwach"), /* EN Your("%s %s%s.", aobjnam(uwep, "softly glow"), */
 			     hcolor(NH_AMBER), repair_buf);
-		    else You_feel("the power of %s over your %s.", /* EN else You_feel("the power of %s over your %s.", */ // TODO DE
+		    else Du_spuerst("die Macht von %s OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV %s.", /* EN else You_feel("the power of %s over your %s.", */
 			u_gname(), xname(uwep));
 		    *repair_buf = '\0';
 		} else if (!uwep->blessed) {
@@ -879,7 +879,7 @@ pleased(g_align)
 			Your("%s mit OBJECT KASUS_DATIV %s NOUN_AURA%s.", /* EN Your("%s with %s aura%s.", */ 
 			     aobjnam(uwep, "VERB_LEUCHTEN schwach"), /* EN aobjnam(uwep, "softly glow"), */
 			     an(hcolor(NH_LIGHT_BLUE)), repair_buf);
-		    else You_feel("the blessing of %s over your %s.", /* EN else You_feel("the blessing of %s over your %s.", */ // TODO DE
+		    else Du_spuerst("den Segen von %s OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV %s.", /* EN else You_feel("the blessing of %s over your %s.", */
 			u_gname(), xname(uwep));
 		    *repair_buf = '\0';
 		}
@@ -1303,7 +1303,7 @@ pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_S
 		godvoice(altaralign, flags.female ? "Herzlichen Glückwunsch, Sterbliche!" : "Herzlichen Glückwunsch, Sterblicher!"); /* EN godvoice(altaralign, "Congratulations, mortal!"); */
 		display_nhwindow(WIN_MESSAGE, FALSE);
 verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /* EN verbalize("In return for thy service, I grant thee the gift of Immortality!"); */
-		You("ascend to the status of NOUN_HALB%s ...", /* EN You("ascend to the status of Demigod%s...", */ // TODO DE check Metamorphosen, wirst erhoben?
+		You("VERB_WERDEN in den Stand eines NOUN_HALB%s erhoben ...", /* EN You("ascend to the status of Demigod%s...", */
 		    flags.female ? "GOTT" : "GOETTIN"); /* EN flags.female ? "dess" : ""); */
 		done(ASCENDED);
 	    }
@@ -1341,7 +1341,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 	 */
 	You("VERB_SPUEREN, dass die Luft um OBJECT PRONOMEN_PERSONAL sich auflädt ..."); /* EN You_feel("the air around you grow charged..."); */
 	pline("Plötzlich SUBJECT_IM_SATZ VERB_BEMERKEN PRONOMEN_PERSONAL, dass NEUER_SATZ PRONOMEN_PERSONAL %s aufgefallen VERB_SEIN ...", a_gname()); /* EN pline("Suddenly, you realize that %s has noticed you...", a_gname()); */
-	godvoice(altaralign, "So, mortal!  You dare desecrate my High Temple!"); /* EN godvoice(altaralign, "So, mortal!  You dare desecrate my High Temple!"); */ // TODO DE
+	godvoice(altaralign, "So, NOUN_PLAYER_STERBLICHER!  Du wagst es meinen Hochtempel zu entweihen!"); /* EN godvoice(altaralign, "So, mortal!  You dare desecrate my High Temple!"); */
 	/* Throw everything we have at the player */
 	god_zaps_you(altaralign);
     } else if (value < 0) { /* I don't think the gods are gonna like this... */
@@ -1460,7 +1460,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 	    if(u.ublesscnt != saved_cnt) {
 		if (u.ublesscnt) {
 		    if (Hallucination)
-			You("VERB_BEGREIFEN, dass die Götter nicht  the gods are not like you and I."); /* EN You("realize that the gods are not like you and I."); */ // TODO DE
+			You("VERB_BEGREIFEN, dass die Götter nicht wie PRONOMEN_PERSONAL und ich sind."); /* EN You("realize that the gods are not like you and I."); */
 		    else
 			pline("Hoffnung regt sich in KASUS_DATIV PRONOMEN_PERSONAL."); /* EN You("have a hopeful feeling."); */
 		    if ((int)u.uluck < 0) change_luck(1);
@@ -1615,8 +1615,8 @@ prayer_done()		/* M. Stephenson (1.0.3b) */
 	godvoice(alignment,
 		 alignment == A_LAWFUL ?
 		 "Vile creature, thou durst call upon me?" : /* EN "Vile creature, thou durst call upon me?" : */ // TODO DE
-		 "Walk no more, perversion of nature!"); /* EN "Walk no more, perversion of nature!"); */ // TODO DE
-	You_feel("like you are falling apart."); /* EN You_feel("like you are falling apart."); */ // TODO DE
+		 "Wandle nicht länger, perversion of nature!"); /* EN "Walk no more, perversion of nature!"); */ // TODO DE
+	You("VERB_HABEN das Gefühl auseinanderzufallen."); /* EN You_feel("like you are falling apart."); */
 	/* KMH -- Gods have mastery over unchanging */
 	rehumanize();
 	losehp(rnd(20), "residual undead turning effect", KILLED_BY_AN); /* EN losehp(rnd(20), "residual undead turning effect", KILLED_BY_AN); */ // TODO DE
@@ -1850,7 +1850,7 @@ register int x, y;
     aligntyp altaralign = a_align(x,y);
 
     if(!strcmp(align_gname(altaralign), u_gname())) {
-	godvoice(altaralign, "Wie kannst du es wagen meinen Altar zu entweihen!!"); /* EN godvoice(altaralign, "How darest thou desecrate my altar!"); */
+	godvoice(altaralign, "Wie kannst du es wagen meinen Altar zu entweihen!"); /* EN godvoice(altaralign, "How darest thou desecrate my altar!"); */
 	(void) adjattrib(A_WIS, -1, FALSE);
     } else {
 	pline("Eine Stimme (ist es vielleicht %s?) flüstert:", /* EN pline("A voice (could it be %s?) whispers:", */
