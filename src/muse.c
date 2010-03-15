@@ -1863,8 +1863,8 @@ skipmsg:
 			    place_object(obj, mtmp->mx, mtmp->my);
 			    break;
 			case 2:		/* onto floor beneath you */
-			    pline("SUBJECT %s VERB_REISSEN OBJECT %s to the %s!", Monnam(mtmp), /* EN pline("%s yanks %s to the %s!", Monnam(mtmp), */ // TODO DE zu_Boden
-				  the_weapon, surface(u.ux, u.uy));
+			    pline("SUBJECT %s VERB_REISSEN OBJECT %s %s!", Monnam(mtmp), /* EN pline("%s yanks %s to the %s!", Monnam(mtmp), */
+				  the_weapon, zu_Boden(u.ux, u.uy)); /* EN the_weapon, surface(u.ux, u.uy)); */
 			    dropy(obj);
 			    break;
 			case 3:		/* into mon's inventory */

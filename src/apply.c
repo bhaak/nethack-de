@@ -2286,8 +2286,8 @@ struct obj *obj;
 		switch (rn2(proficient + 1)) {
 		case 2:
 		    /* to floor near you */
-		    You("VERB_REISSEN OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV zu %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */
-			surface(u.ux, u.uy)); /* EN onambuf, surface(u.ux, u.uy)); */ /* zu_Boden */
+		    You("VERB_REISSEN OBJECT %s %s!", genitivattribut_zu_wort(mon_nam(mtmp), onambuf), /* EN You("yank %s %s to the %s!", s_suffix(mon_nam(mtmp)), */
+			zu_Boden(u.ux, u.uy)); /* EN onambuf, surface(u.ux, u.uy)); */
 		    place_object(otmp, u.ux, u.uy);
 		    stackobj(otmp);
 		    break;
@@ -2584,7 +2584,7 @@ use_grapple (obj)
 	    if (IS_AIR(levl[cc.x][cc.y].typ) || is_pool(cc.x, cc.y))
 		pline_The("NOUN_HAKEN VERB_PFLUEGEN OBJECT durch ARTIKEL_BESTIMMTER %s.", surface(cc.x, cc.y)); /* EN pline_The("hook slices through the %s.", surface(cc.x, cc.y)); */
 	    else {
-		You("VERB_WERDEN zu %s gerissen!", surface(cc.x, cc.y)); /* EN You("are yanked toward the %s!", surface(cc.x, cc.y)); */ /* zu_Boden */
+		You("VERB_WERDEN %s gerissen!", zu_Boden(cc.x, cc.y)); /* EN You("are yanked toward the %s!", surface(cc.x, cc.y)); */
 		hurtle(sgn(cc.x-u.ux), sgn(cc.y-u.uy), 1, FALSE);
 		spoteffects(TRUE);
 	    }

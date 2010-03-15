@@ -2125,8 +2125,8 @@ register struct obj *atmp;
 		useup(otmp);
 	} else if (DESTROY_ARM(uarm)) {
 		if (donning(otmp)) cancel_don();
-		Your("NOUN_ARMOR zerfällt zu Staub und fällt zu %s!", /* EN Your("armor turns to dust and falls to the %s!",*/ // TODO DE zu_Boden
-			surface(u.ux,u.uy));
+		Your("NOUN_ARMOR zerfällt zu Staub und fällt %s!", /* EN Your("armor turns to dust and falls to the %s!",*/
+			zu_Boden(u.ux,u.uy)); /* EN surface(u.ux,u.uy)); */
 		(void) Armor_gone();
 		useup(otmp);
 #ifdef TOURIST

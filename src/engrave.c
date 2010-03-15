@@ -180,6 +180,42 @@ register int x, y;
 	    return "NOUN_GROUND"; /* EN return "ground"; */
 }
 
+#ifdef GERMAN
+const char *
+zu_Boden(x, y)
+register int x, y;
+{
+	const char *floor = german(surface(x, y));
+	if (!strcmp(floor, "Mageninneres")) {
+		return "ins Mageninnere";
+	} else if (!strcmp(floor, "Luft")) {
+		return "in die Luft";
+	} else if (!strcmp(floor, "Grund")) {
+		return "auf den Grund";
+	} else if (!strcmp(floor, "Wasser")) {
+		return "aufs Wasser";
+	} else if (!strcmp(floor, "Eis")) {
+		return "aufs Eis";
+	} else if (!strcmp(floor, "Lava")) {
+		return "auf die Lava";
+	} else if (!strcmp(floor, "Brücke")) {
+		return "auf die Brücke";
+	} else if (!strcmp(floor, "Altar")) {
+		return "auf den Altar";
+	} else if (!strcmp(floor, "Grabstein")) {
+		return "auf den Grabstein";
+	} else if (!strcmp(floor, "Springbrunnen")) {
+		return "auf den Springbrunnen";
+	} else if (!strcmp(floor, "Boden")) {
+		return "zu Boden";
+	} else if (!strcmp(floor, "Erde")) {
+		return "zur Erde";
+	}
+	impossible("zu_Boden: \"%s\" ist unbekannte Bodenart!", floor);
+	return floor;
+}
+#endif
+
 const char *
 ceiling(x, y)
 register int x, y;
@@ -332,7 +368,7 @@ register int x,y;
 		}
 		break;
 	    default:
-		impossible("%s is written in a very strange way.", /* EN impossible("%s is written in a very strange way.", */
+		impossible("%s ist auf sehr seltsame Art geschrieben.", /* EN impossible("%s is written in a very strange way.", */
 				Something);
 		sensed = 1;
 	    }

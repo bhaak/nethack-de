@@ -2394,8 +2394,8 @@ long hmask, emask;     /* might cancel timeout */
 			      "VERB_SCHLAGEN auf dem Boden auf"); /* EN "hit the ground"); */
 		    else {
 			if (!sokoban_trap)
-			    You("VERB_SINKEN sanft zu %s.", /* EN You("float gently to the %s.", */ /* zu_Boden */
-				surface(u.ux, u.uy));
+			    You("VERB_SINKEN sanft %s.", /* EN You("float gently to the %s.", */ /* zu_Boden */
+				zu_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 			else {
 			    /* Justification elsewhere for Sokoban traps
 			     * is based on air currents. This is
