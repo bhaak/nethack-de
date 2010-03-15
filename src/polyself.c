@@ -658,7 +658,7 @@ break_armor()
 	}
 	if ((otmp = uarmh) != 0) {
 	    if (donning(otmp)) cancel_don();
-	    Your("NOUN_HELMET VERB_FALLEN OBJECT %s!", zu_Boden(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */
+	    Your("NOUN_HELMET VERB_FALLEN %s!", zu_Boden(u.ux, u.uy)); /* EN Your("helmet falls to the %s!", surface(u.ux, u.uy)); */
 	    (void) Helmet_off();
 	    dropx(otmp);
 	}

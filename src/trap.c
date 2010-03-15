@@ -2277,10 +2277,10 @@ float_up()
 		spoteffects(TRUE);
 	else if(u.uswallow)
 		You(is_animal(u.ustuck->data) ?
-			"VERB_HEBEN OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER %s ab."  : /* EN "float away from the %s."  : */
+			"VERB_HEBEN %s ab."  : /* EN "float away from the %s."  : */
 			"VERB_SCHWEBEN OBJECT KASUS_DATIV in %s hoch.", /* EN "spiral up into %s.", */
 		    is_animal(u.ustuck->data) ?
-			surface(u.ux, u.uy) :
+			vom_Boden(u.ux, u.uy) : /* EN surface(u.ux, u.uy) : */
 			mon_nam(u.ustuck));
 	else if (Hallucination)
 		pline("Auf und davon!  Kein Luftschloss wird jetzt noch sicher vor KASUS_DATIV PRONOMEN_PERSONAL sein!"); /* EN pline("Up, up, and awaaaay!  You're walking on air!"); */
@@ -2454,8 +2454,8 @@ struct obj *box;	/* null for floor trap */
  */
 
 	if ((box && !carried(box)) ? is_pool(box->ox, box->oy) : Underwater) {
-	    pline("Eine Wasserdampf-Fontäne jagt KASUS_DATIV von %s empor!", /* EN pline("A cascade of steamy bubbles erupts from %s!", */
-		    the(box ? xname(box) : surface(u.ux,u.uy)));
+	    pline("Eine Wasserdampf-Fontäne jagt %s empor!", /* EN pline("A cascade of steamy bubbles erupts from %s!", */
+		    the(box ? xname(box) : vom_Boden(u.ux,u.uy))); /* EN the(box ? xname(box) : surface(u.ux,u.uy))); */
 	    if (Fire_resistance) You("VERB_SEIN unversehrt."); /* EN if (Fire_resistance) You("are uninjured."); */
 	    else losehp(rnd(3), "ADJEKTIV_SIEDEND NOUN_WATER", KILLED_BY); /* EN else losehp(rnd(3), "boiling water", KILLED_BY); */
 	    return;

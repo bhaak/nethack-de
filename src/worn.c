@@ -705,8 +705,8 @@ boolean polyspot;
 		    /* flimsy test for horns matches polyself handling */
 		    (handless_or_tiny || !is_flimsy(otmp))) {
 		if (vis)
-		    pline("SUBJECT %s VERB_FALLEN OBJECT _auf_ ARTIKEL_BESTIMMTER %s!", /* EN pline("%s helmet falls to the %s!", */
-			  genitivattribut_zu_wort(Monnam(mon),"NOUN_HELMET"), surface(mon->mx, mon->my)); /* EN s_suffix(Monnam(mon)), surface(mon->mx, mon->my)); */
+		    pline("SUBJECT %s VERB_FALLEN %s!", /* EN pline("%s helmet falls to the %s!", */
+			  genitivattribut_zu_wort(Monnam(mon),"NOUN_HELMET"), auf_den_Boden(mon->mx, mon->my)); /* EN s_suffix(Monnam(mon)), surface(mon->mx, mon->my)); */
 		else
 		    You_hear("ein Scheppern."); /* EN You_hear("a clank."); */
 		if (polyspot) bypass_obj(otmp);

@@ -1222,11 +1222,11 @@ struct obj *obj;
 			 Is_waterlevel(&u.uz))
 		    what = "SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_VERLIEREN die Kontrolle OBJECT über",  where = "PRONOMEN_PERSONAL"; /* EN what = "you lose control of",  where = "yourself"; */
 		else
-		    what = "SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_KNALLEN auf OBJECT ARTIKEL_BESTIMMTER", where = /* EN what = "you slap against the", where = */
+		    what = "SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_KNALLEN ", where = /* EN what = "you slap against the", where = */
 #ifdef STEED
 			   (u.usteed) ? "NOUN_SADDLE" : /* EN (u.usteed) ? "saddle" : */
 #endif
-			   surface(u.ux,u.uy);
+			   auf_den_Boden(u.ux,u.uy); /* EN surface(u.ux,u.uy); */
 		pline("Alles dreht sich und %s %s.", what, where); /* EN pline_The("world spins and %s %s.", what, where); */
 		flags.soundok = 0;
 		nomul(-rnd(10));

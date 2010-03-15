@@ -1338,9 +1338,9 @@ boolean noisy;
 	    if (u.utraptype == TT_BEARTRAP) {
 		if (noisy) Your("%s ist gefangen!", body_part(FOOT)); /* EN if (noisy) Your("%s is trapped!", body_part(FOOT)); */
 	    } else {
-		if (noisy) Your("%s VERB_SEIN in KASUS_DATIV ARTIKEL_BESTIMMTER %s eingeklemmt!", /* EN if (noisy) Your("%s are stuck in the %s!", */
+		if (noisy) Your("%s VERB_SEIN %s eingeklemmt!", /* EN if (noisy) Your("%s are stuck in the %s!", */
 				makeplural(body_part(FOOT)),
-				surface(u.ux, u.uy));
+				im_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 	    }
 	    err++;
 	} else
@@ -1814,8 +1814,8 @@ register struct obj *otmp;
 			  body_part(FOOT));
 		return 0;
 	    } else if (u.utrap && u.utraptype == TT_INFLOOR) {
-		You("VERB_STECKEN _in_ OBJECT KASUS_DATIV ARTIKEL_BESTIMMTER %s fest und VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s nicht rausziehen.", /* EN You("are stuck in the %s, and cannot pull your %s out.", */
-		    surface(u.ux, u.uy), makeplural(body_part(FOOT)));
+		You("VERB_STECKEN %s fest und VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s nicht rausziehen.", /* EN You("are stuck in the %s, and cannot pull your %s out.", */
+		    im_Boden(u.ux, u.uy), makeplural(body_part(FOOT))); /* EN surface(u.ux, u.uy), makeplural(body_part(FOOT))); */
 		return 0;
 	    }
 	}

@@ -284,6 +284,74 @@ register int x, y;
 }
 
 const char *
+in_den_Boden(x, y)
+register int x, y;
+{
+	const char *floor = german(surface(x, y));
+	if (!strcmp(floor, "Mageninneres")) {
+		return "ins Mageninnere";
+	} else if (!strcmp(floor, "Luft")) {
+		return "in die Luft";
+	} else if (!strcmp(floor, "Grund")) {
+		return "in den Grund";
+	} else if (!strcmp(floor, "Wasser")) {
+		return "ins Wasser";
+	} else if (!strcmp(floor, "Eis")) {
+		return "ins Eis";
+	} else if (!strcmp(floor, "Lava")) {
+		return "in die Lava";
+	} else if (!strcmp(floor, "Brücke")) {
+		return "in die Brücke";
+	} else if (!strcmp(floor, "Altar")) {
+		return "in den Altar";
+	} else if (!strcmp(floor, "Grabstein")) {
+		return "in den Grabstein";
+	} else if (!strcmp(floor, "Springbrunnen")) {
+		return "in den Springbrunnen";
+	} else if (!strcmp(floor, "Boden")) {
+		return "in den Boden";
+	} else if (!strcmp(floor, "Erde")) {
+		return "in die Erde";
+	}
+	impossible("in_den_Boden: \"%s\" ist unbekannte Bodenart!", floor);
+	return floor;
+}
+
+const char *
+im_Boden(x, y)
+register int x, y;
+{
+	const char *floor = german(surface(x, y));
+	if (!strcmp(floor, "Mageninneres")) {
+		return "im Mageninneren";
+	} else if (!strcmp(floor, "Luft")) {
+		return "in der Luft";
+	} else if (!strcmp(floor, "Grund")) {
+		return "im Grund";
+	} else if (!strcmp(floor, "Wasser")) {
+		return "im Wasser";
+	} else if (!strcmp(floor, "Eis")) {
+		return "im Eis";
+	} else if (!strcmp(floor, "Lava")) {
+		return "in der Lava";
+	} else if (!strcmp(floor, "Brücke")) {
+		return "in der Brücke";
+	} else if (!strcmp(floor, "Altar")) {
+		return "im Altar";
+	} else if (!strcmp(floor, "Grabstein")) {
+		return "im Grabstein";
+	} else if (!strcmp(floor, "Springbrunnen")) {
+		return "im Springbrunnen";
+	} else if (!strcmp(floor, "Boden")) {
+		return "im Boden";
+	} else if (!strcmp(floor, "Erde")) {
+		return "in der Erde";
+	}
+	impossible("im_Boden: \"%s\" ist unbekannte Bodenart!", floor);
+	return floor;
+}
+
+const char *
 vom_Boden(x, y)
 register int x, y;
 {
@@ -439,24 +507,24 @@ register int x,y;
 	    case HEADSTONE:
 		if (!Blind || can_reach_floor()) {
 			sensed = 1;
-			pline("SUBJECT %s ist hier in KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s eingeritzt.", /* EN pline("%s is engraved here on the %s.", */
+			pline("SUBJECT %s ist hier %s eingeritzt.", /* EN pline("%s is engraved here on the %s.", */
 				Something,
-				surface(x,y));
+				in_den_Boden(x,y)); /* EN surface(x,y)); */
 		}
 		break;
 	    case BURN:
 		if (!Blind || can_reach_floor()) {
 			sensed = 1;
-			pline("Hier wurden Worte KASUS_AKKUSATIV _in_ ARTIKEL_BESTIMMTER %s %s.", /* EN pline("Some text has been %s into the %s here.", */
-				surface(x,y), /* EN is_ice(x,y) ? "melted" : "burned", */
+			pline("Hier wurden Worte KASUS_AKKUSATIV %s %s.", /* EN pline("Some text has been %s into the %s here.", */
+				in_den_Boden(x,y), /* EN is_ice(x,y) ? "melted" : "burned", */
 				is_ice(x,y) ? "eingeschmolzen" : "eingebrannt"); /* EN surface(x,y)); */
 		}
 		break;
 	    case MARK:
 		if(!Blind) {
 			sensed = 1;
-			pline("Hier findet sich Graffiti auf KASUS_DATIV ARTIKEL_BESTIMMTER %s.", /* EN pline("There's some graffiti on the %s here.", */
-				surface(x,y));
+			pline("Hier befindet sich Graffiti auf KASUS_DATIV ARTIKEL_BESTIMMTER %s.", /* EN pline("There's some graffiti on the %s here.", */
+				auf_dem_Boden(x,y)); /* EN surface(x,y)); */
 		}
 		break;
 	    case ENGR_BLOOD:
@@ -679,8 +747,8 @@ doengrave()
 	}
 	if (IS_GRAVE(levl[u.ux][u.uy].typ)) {
 	    if (otmp == &zeroobj) { /* using only finger */
-		You("MODIFIER_KONJUNKTIV_II VERB_WERDEN nur einen kleinen Fleck OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s hinterlassen.", /* EN You("would only make a small smudge on the %s.", */
-			surface(u.ux, u.uy));
+		You("MODIFIER_KONJUNKTIV_II VERB_WERDEN nur einen kleinen Fleck %s hinterlassen.", /* EN You("would only make a small smudge on the %s.", */
+			auf_dem_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 		return(0);
 	    } else if (!levl[u.ux][u.uy].disturbed) {
 		You("VERB_STOEREN die Ruhe der Untoten!"); /* EN You("disturb the undead!"); */
@@ -775,15 +843,15 @@ doengrave()
 		    case WAN_SLOW_MONSTER:
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s wuselt langsamer!", /* EN "The bugs on the %s slow down!", */
-				   surface(u.ux, u.uy));
+				   "Das Ungeziefer %s wuselt langsamer!", /* EN "The bugs on the %s slow down!", */
+				   auf_dem_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 			}
 			break;
 		    case WAN_SPEED_MONSTER:
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s wuselt schneller!", /* EN "The bugs on the %s speed up!", */
-				   surface(u.ux, u.uy));
+				   "Das Ungeziefer %s wuselt schneller!", /* EN "The bugs on the %s speed up!", */
+				   auf_dem_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 			}
 			break;
 		    case WAN_POLYMORPH:
@@ -817,8 +885,8 @@ doengrave()
 		    case WAN_DEATH:
 			if (!Blind) {
 			   Sprintf(post_engr_text,
-				   "Das Ungeziefer auf KASUS_DATIV ARTIKEL_BESTIMMTER %s bleiben stehen!", /* EN "The bugs on the %s stop moving!", */
-				   surface(u.ux, u.uy));
+				   "Das Ungeziefer %s bleiben stehen!", /* EN "The bugs on the %s stop moving!", */
+				   auf_dem_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 			}
 			break;
 
@@ -832,16 +900,16 @@ doengrave()
 		    case WAN_MAKE_INVISIBLE:
 			if (oep && oep->engr_type != HEADSTONE) {
 			    if (!Blind)
-				pline("Die Inschrift auf KASUS_DATIV ARTIKEL_BESTIMMTER %s verschwindet!", /* EN pline_The("engraving on the %s vanishes!", */
-					surface(u.ux,u.uy));
+				pline("Die Inschrift %s verschwindet!", /* EN pline_The("engraving on the %s vanishes!", */
+					auf_dem_Boden(u.ux,u.uy)); /* EN surface(u.ux,u.uy)); */
 			    dengr = TRUE;
 			}
 			break;
 		    case WAN_TELEPORTATION:
 			if (oep && oep->engr_type != HEADSTONE) {
 			    if (!Blind)
-				pline("Die Inschrift auf KASUS_DATIV ARTIKEL_BESTIMMTER %s verschwindet!", /* EN pline_The("engraving on the %s vanishes!", */
-					surface(u.ux,u.uy));
+				pline("Die Inschrift %s verschwindet!", /* EN pline_The("engraving on the %s vanishes!", */
+					auf_dem_Boden(u.ux,u.uy)); /* EN surface(u.ux,u.uy)); */
 			    teleengr = TRUE;
 			}
 			break;
@@ -1060,7 +1128,7 @@ doengrave()
 		} else
 		    if ( (type == DUST) || (type == MARK) || (type == ENGR_BLOOD) ) {
 			You(
-			 "VERB_KOENNEN die Kritzelei, die hier OBJECT in ARTIKEL_BESTIMMTER %s %s ist, nicht wegwischen.", surface(u.ux,u.uy), /* EN "cannot wipe out the message that is %s the %s here.", */
+			 "VERB_KOENNEN die Kritzelei, die hier %s %s ist, nicht wegwischen.", in_den_Boden(u.ux,u.uy), /* EN "cannot wipe out the message that is %s the %s here.", */
 			 oep->engr_type == BURN ?
 			   (is_ice(u.ux,u.uy) ? "eingeschmolzen" : "eingebrannt") : /* EN (is_ice(u.ux,u.uy) ? "melted into" : "burned into") : */
 			   "eingeritzt"); /* EN "engraved in", surface(u.ux,u.uy)); */

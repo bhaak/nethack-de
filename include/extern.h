@@ -570,6 +570,8 @@ E const char *FDECL(surface, (int,int));
 E const char *FDECL(zu_Boden, (int,int));
 E const char *FDECL(auf_dem_Boden, (int,int));
 E const char *FDECL(auf_den_Boden, (int,int));
+E const char *FDECL(in_den_Boden, (int,int));
+E const char *FDECL(im_Boden, (int,int));
 E const char *FDECL(vom_Boden, (int,int));
 #endif
 E const char *FDECL(ceiling, (int,int));

@@ -648,8 +648,8 @@ level_tele()
 		    is_silent(youmonst.data) ? "VERB_WINDEN OBJECT PRONOMEN_PERSONAL" : "VERB_SCHREIEN"); /* EN is_silent(youmonst.data) ? "writhe" : "scream"); */
 		display_nhwindow(WIN_MESSAGE, FALSE);
 		You("VERB_HOEREN auf zu existieren."); /* EN You("cease to exist."); */
-		if (invent) Your("ADJEKTIV_GESAMT NOUN_ZEUGS VERB_LANDEN mit einem kräftigen Plumps OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s.", /* EN if (invent) Your("possessions land on the %s with a thud.", */
-				surface(u.ux, u.uy));
+		if (invent) Your("ADJEKTIV_GESAMT NOUN_ZEUGS VERB_LANDEN mit einem kräftigen Plumps %s.", /* EN if (invent) Your("possessions land on the %s with a thud.", */
+				auf_dem_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 		killer_format = NO_KILLER_PREFIX;
 		killer = "beging Selbstmord"; /* EN killer = "committed suicide"; */
 		done(DIED);

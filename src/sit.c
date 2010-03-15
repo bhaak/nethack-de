@@ -303,7 +303,7 @@ dosit()
 	} else if (u.uswallow)
 		pline("Hier gibt es keine Sitzmöglichkeiten!"); /* EN There("are no seats in here!"); */
 	else
-		pline("Spass daran, auf KASUS_DATIV ARTIKEL_BESTIMMTER %s zu sitzen?", surface(u.ux,u.uy)); /* EN pline("Having fun sitting on the %s?", surface(u.ux,u.uy)); */
+		pline("Spass daran, %s zu sitzen?", auf_dem_Boden(u.ux,u.uy)); /* EN pline("Having fun sitting on the %s?", surface(u.ux,u.uy)); */
 	return(1);
 }
 

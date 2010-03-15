@@ -170,13 +170,13 @@ moverock()
 			pline("Kablank!  SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN OBJECT %s nicht mehr.", /* EN pline("Kerplunk!  You no longer feel %s.", */
 				the(xname(otmp)));
 		    else
-			pline("SUBJECT %s%s und %s OBJECT ARTIKEL_UNBESTIMMTER %s NEUES_OBJECT OBJECT KASUS_DATIV in ARTIKEL_BESTIMMTER %s!", /* EN pline("%s%s and %s a %s in the %s!", */
+			pline("SUBJECT %s%s und %s OBJECT ARTIKEL_UNBESTIMMTER %s %s!", /* EN pline("%s%s and %s a %s in the %s!", */
 			  Tobjnam(otmp,
 			   (ttmp->ttyp == TRAPDOOR) ? "VERB_AKTIVIEREN" : "VERB_FALLEN"), /* EN (ttmp->ttyp == TRAPDOOR) ? "trigger" : "fall"), */
 			  (ttmp->ttyp == TRAPDOOR) ? nul : " runter", /* EN (ttmp->ttyp == TRAPDOOR) ? nul : " into", */
 			  otense(otmp, "VERB_VERSCHLIESSEN"), /* EN otense(otmp, "plug"), */
 			  (ttmp->ttyp == TRAPDOOR) ? "NOUN_TRAP_DOOR" : "NOUN_LOCH", /* EN (ttmp->ttyp == TRAPDOOR) ? "trap door" : "hole", */
-			  surface(rx, ry));
+			  im_Boden(rx, ry)); /* EN surface(rx, ry)); */
 		    deltrap(ttmp);
 		    delobj(otmp);
 		    bury_objs(rx, ry);
@@ -1105,7 +1105,7 @@ domove()
 	    (glyph_is_invisible(levl[x][y].glyph) && !flags.nopick)) {
 		boolean expl = (Upolyd && attacktype(youmonst.data, AT_EXPL));
 	    	char buf[BUFSZ];
-		Sprintf(buf,"ARTIKEL_UNBESTIMMTER ADJEKTIV_LEER NOUN_PLATZ NEUES_OBJECT OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s", surface(x,y)); /* EN Sprintf(buf,"a vacant spot on the %s", surface(x,y)); */
+		Sprintf(buf,"ARTIKEL_UNBESTIMMTER ADJEKTIV_LEER NOUN_PLATZ %s", auf_dem_Boden(x,y)); /* EN Sprintf(buf,"a vacant spot on the %s", surface(x,y)); */
 		You("%s %s SATZKLAMMER.", /* EN You("%s %s.", */
 		    expl ? "VERB_ENTGEGENEXPLODIEREN OBJECT KASUS_DATIV" : "VERB_ANGREIFEN OBJECT", /* EN expl ? "explode at" : "attack", */
 		    !Underwater ? "ARTIKEL_BESTIMMTER NOUN_AIR" : /* EN !Underwater ? "thin air" : */
@@ -1220,16 +1220,16 @@ domove()
 		} else if (u.utraptype == TT_INFLOOR) {
 		    if(--u.utrap) {
 			if(flags.verbose) {
-			    predicament = "VERB_STECKEN OBJECT KASUS_DATIV _in_ ARTIKEL_BESTIMMTER"; /* EN predicament = "stuck in the"; */
+			    predicament = "VERB_STECKEN"; /* EN predicament = "stuck in the"; */
 #ifdef STEED
 			    if (u.usteed)
 				Norep("SUBJECT %s %s %s fest.", /* EN Norep("%s is %s %s.", */
 				      upstart(y_monnam(u.usteed)),
-				      predicament, surface(u.ux, u.uy));
+				      predicament, im_Boden(u.ux, u.uy)); /* EN predicament, surface(u.ux, u.uy)); */
 			    else
 #endif
 			    Norep("SUBJECT PRONOMEN_PERSONAL %s %s fest.", predicament, /* EN Norep("You are %s %s.", predicament, */
-				  surface(u.ux, u.uy));
+				  im_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 			}
 		    } else {
 #ifdef STEED

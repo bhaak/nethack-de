@@ -669,8 +669,8 @@ mon_tele:
 		if (!ttmp) return 2;
 		seetrap(ttmp);
 		if (vis) {
-		    pline("SUBJECT %s VERB_HABEN ein Loch OBJECT in ARTIKEL_BESTIMMTER %s gemacht.", Monnam(mtmp), /* EN pline("%s has made a hole in the %s.", Monnam(mtmp), */
-				surface(mtmp->mx, mtmp->my));
+		    pline("SUBJECT %s VERB_HABEN ein Loch %s gemacht.", Monnam(mtmp), /* EN pline("%s has made a hole in the %s.", Monnam(mtmp), */
+				in_den_Boden(mtmp->mx, mtmp->my)); /* EN surface(mtmp->mx, mtmp->my)); */
 		    pline("SUBJECT %s %s hindurch ...", Monnam(mtmp), /* EN pline("%s %s through...", Monnam(mtmp), */
 			  is_flyer(mtmp->data) ? "VERB_TAUCHEN" : "VERB_FALLEN"); /* EN is_flyer(mtmp->data) ? "dives" : "falls"); */
 		} else if (flags.soundok)

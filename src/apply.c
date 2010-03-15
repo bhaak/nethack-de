@@ -258,7 +258,7 @@ use_stethoscope(obj)
 		else if (Is_stronghold(&u.uz))
 		    You_hear("prasselnden Höllenfeuer."); /* EN You_hear("the crackling of hellfire."); */
 		else
-		    pline_The("%s VERB_SCHEINEN OBJECT KASUS_DATIV gesund genug.", surface(u.ux,u.uy)); /* EN pline_The("%s seems healthy enough.", surface(u.ux,u.uy)); */
+		    pline_The("%s VERB_SCHEINEN gesund genug.", surface(u.ux,u.uy)); /* EN pline_The("%s seems healthy enough.", surface(u.ux,u.uy)); */
 		return res;
 	} else if (obj->cursed && !rn2(2)) {
 		You_hear("OBJECT PRONOMEN_POSSESSIV NOUN_HERZSCHLAG."); /* EN You_hear("your heart beat."); */
