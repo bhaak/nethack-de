@@ -1271,6 +1271,11 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		} else {
 			char buf[BUFSZ];
 			long sick_time;
+#ifdef GERMAN
+			char mon_name[BUFSZ];
+			Sprintf(mon_name, "%s%s", !type_is_pname(&mons[mnum]) ? "ARTIKEL_BESTIMMTER " : "", mons[mnum].mname);
+#endif
+			
 
 			sick_time = (long) rn1(10, 10);
 			/* make sure new ill doesn't result in improvement */
@@ -1279,9 +1284,9 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 			if (!uniq)
 			    Sprintf(buf, "ADJEKTIV_VERGAMMELT %s", corpse_xname(otmp,TRUE)); /* EN Sprintf(buf, "rotted %s", corpse_xname(otmp,TRUE)); */
 			else
-			    Sprintf(buf, "%s%s rotted corpse", /* EN Sprintf(buf, "%s%s rotted corpse", */ // TODO DE
-				    !type_is_pname(&mons[mnum]) ? "the " : "", /* EN !type_is_pname(&mons[mnum]) ? "the " : "", */ // TODO DE
-				    s_suffix(mons[mnum].mname)); /* EN s_suffix(mons[mnum].mname)); */ // TODO DE
+			    Sprintf(buf, "%s", /* EN Sprintf(buf, "%s%s rotted corpse", */
+				    /* EN !type_is_pname(&mons[mnum]) ? "the " : "", */
+				    genitivattribut_zu_wort(mon_name, "ADJEKTIV_VERGAMMELT NOUN_CORPSE")); /* EN s_suffix(mons[mnum].mname)); */
 			make_sick(sick_time, buf, TRUE, SICK_VOMITABLE);
 		}
 		if (carried(otmp)) useup(otmp);
@@ -1606,7 +1611,7 @@ eatspecial() /* called after eating non-food */
 	register struct obj *otmp = victual.piece;
 
 	/* lesshungry wants an occupation to handle choke messages correctly */
-	set_occupation(eatfood, "eating non-food", 0); /* EN set_occupation(eatfood, "eating non-food", 0); */ // TODO DE
+	set_occupation(eatfood, "Nicht-Lebensmittel zu essen", 0); /* EN set_occupation(eatfood, "eating non-food", 0); */
 	lesshungry(victual.nmod);
 	occupation = 0;
 	victual.piece = (struct obj *)0;
@@ -1658,10 +1663,10 @@ eatspecial() /* called after eating non-food */
 /* NOTE: the order of these words exactly corresponds to the
    order of oc_material values #define'd in objclass.h. */
 static const char *foodwords[] = {
-	"meal", "liquid", "wax", "food", "meat", /* EN "meal", "liquid", "wax", "food", "meat", */ // TODO DE
-	"paper", "cloth", "leather", "wood", "bone", "scale", /* EN "paper", "cloth", "leather", "wood", "bone", "scale", */ // TODO DE
-	"metal", "metal", "metal", "silver", "gold", "platinum", "mithril", /* EN "metal", "metal", "metal", "silver", "gold", "platinum", "mithril", */ // TODO DE
-	"plastic", "glass", "rich food", "stone" /* EN "plastic", "glass", "rich food", "stone" */ // TODO DE
+	"NOUN_MAHL", "NOUN_FLUESSIGKEIT", "NOUN_WACHS", "NOUN_ESSEN", "NOUN_FLEISCH", /* EN "meal", "liquid", "wax", "food", "meat", */
+	"NOUN_PAPIER", "NOUN_CLOTH", "NOUN_LEDER", "NOUN_HOLZ", "NOUN_KNOCHEN", "NOUN_SCHUPPEs", /* EN "paper", "cloth", "leather", "wood", "bone", "scale", */
+	"NOUN_METALL", "NOUN_METALL", "NOUN_METALL", "NOUN_SILBER", "NOUN_GOLD", "NOUN_PLATIN", "NOUN_MITHRIL", /* EN "metal", "metal", "metal", "silver", "gold", "platinum", "mithril", */
+	"NOUN_PLASTIK", "NOUN_GLAS", "NOUN_RICH_FOOD", "NOUN_GEM_ROCK" /* EN "plastic", "glass", "rich food", "stone" */
 };
 
 STATIC_OVL const char *

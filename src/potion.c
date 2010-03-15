@@ -507,7 +507,7 @@ peffects(otmp)
 		unkn++;
 		pline("Uff!  Das schmeckt wie %s%s!", /* EN pline("Ooph!  This tastes like %s%s!", */
 		      otmp->odiluted ? "verwässertes " : "", /* EN otmp->odiluted ? "watered down " : "", */
-		      Hallucination ? "dandelion wine" : "Feuerwasser"); /* EN Hallucination ? "dandelion wine" : "liquid fire"); */ // TODO DE
+		      Hallucination ? "Löwenzahnwein" : "Feuerwasser"); /* EN Hallucination ? "dandelion wine" : "liquid fire"); */
 		if (!otmp->blessed)
 		    make_confused(itimeout_incr(HConfusion, d(3,8)), FALSE);
 		/* the whiskey makes us feel better */

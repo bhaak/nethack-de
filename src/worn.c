@@ -647,10 +647,10 @@ boolean polyspot;
 	} else if (sliparm(mdat)) {
 	    if ((otmp = which_armor(mon, W_ARM)) != 0) {
 		if (vis)
-		    pline("%s falls around %s!", /* EN pline("%s armor falls around %s!", */ // TODO DE
+		    pline("%s VERB_FALLEN OBJECT KASUS_DATIV von %s ab!", /* EN pline("%s armor falls around %s!", */
 				 genitivattribut_zu_wort(Monnam(mon),"NOUN_ARMOR"), pronoun); /* EN s_suffix(Monnam(mon)), pronoun); */
 		else
-		    You_hear("a thud."); /* EN You_hear("a thud."); */ // TODO DE
+		    You_hear("ein Plumpsen."); /* EN You_hear("a thud."); */
 		if (polyspot) bypass_obj(otmp);
 		m_lose_armor(mon, otmp);
 	    }
@@ -660,7 +660,7 @@ boolean polyspot;
 			pline("%s %s falls, unsupported!", /* EN pline("%s %s falls, unsupported!", */ // TODO DE
 				     s_suffix(Monnam(mon)), cloak_simple_name(otmp)); /* EN s_suffix(Monnam(mon)), cloak_simple_name(otmp)); */ // TODO DE
 		    else
-			pline("%s shrinks out of %s %s!", Monnam(mon), /* EN pline("%s shrinks out of %s %s!", Monnam(mon), */ // TODO DE
+			pline("SUBJECT %s VERB_SCHRUMPFEN OBJECT KASUS_DATIV aus %s %s!", Monnam(mon), /* EN pline("%s shrinks out of %s %s!", Monnam(mon), */
 						ppronoun, cloak_simple_name(otmp));
 		}
 		if (polyspot) bypass_obj(otmp);
@@ -670,10 +670,10 @@ boolean polyspot;
 	    if ((otmp = which_armor(mon, W_ARMU)) != 0) {
 		if (vis) {
 		    if (sliparm(mon->data))
-			pline("%s seeps right through %s shirt!", /* EN pline("%s seeps right through %s shirt!", */ // TODO DE
+			pline("SUBJECT %s VERB_STROEMEN OBJECT durch %s NOUN_SHIRT!", /* EN pline("%s seeps right through %s shirt!", */
 					Monnam(mon), ppronoun);
 		    else
-			pline("%s becomes much too small for %s shirt!", /* EN pline("%s becomes much too small for %s shirt!", */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN zu klein OBJECT für %s NOUN_SHIRT!", /* EN pline("%s becomes much too small for %s shirt!", */
 					Monnam(mon), ppronoun);
 		}
 		if (polyspot) bypass_obj(otmp);
@@ -685,14 +685,14 @@ boolean polyspot;
 	    /* [caller needs to handle weapon checks] */
 	    if ((otmp = which_armor(mon, W_ARMG)) != 0) {
 		if (vis)
-		    pline("%s drops %s gloves%s!", Monnam(mon), ppronoun, /* EN pline("%s drops %s gloves%s!", Monnam(mon), ppronoun, */ // TODO DE
-					MON_WEP(mon) ? " and weapon" : ""); /* EN MON_WEP(mon) ? " and weapon" : ""); */ // TODO DE
+		    pline("SUBJECT %s VERB_DROP OBJECT %s NOUN_GLOVESs%s SATZKLAMMER!", Monnam(mon), ppronoun, /* EN pline("%s drops %s gloves%s!", Monnam(mon), ppronoun, */
+					MON_WEP(mon) ? " und NEUES_OBJECT OBJECT NOUN_WEAPON" : ""); /* EN MON_WEP(mon) ? " and weapon" : ""); */
 		if (polyspot) bypass_obj(otmp);
 		m_lose_armor(mon, otmp);
 	    }
 	    if ((otmp = which_armor(mon, W_ARMS)) != 0) {
 		if (vis)
-		    pline("%s can no longer hold %s shield!", Monnam(mon), /* EN pline("%s can no longer hold %s shield!", Monnam(mon), */ // TODO DE
+		    pline("SUBJECT %s VERB_KOENNEN OBJECT %s NOUN_SHIELD nicht mehr halten!", Monnam(mon), /* EN pline("%s can no longer hold %s shield!", Monnam(mon), */
 								ppronoun);
 		else
 		    You_hear("ein Scheppern."); /* EN You_hear("a clank."); */
@@ -717,11 +717,11 @@ boolean polyspot;
 	    if ((otmp = which_armor(mon, W_ARMF)) != 0) {
 		if (vis) {
 		    if (is_whirly(mon->data))
-			pline("%s fall away!", /* EN pline("%s boots fall away!", */ // TODO DE
+			pline("SUBJECT %s VERB_FALLEN runter!", /* EN pline("%s boots fall away!", */
 				       genitivattribut_zu_wort(Monnam(mon),"NOUN_BOOTSs")); /* EN s_suffix(Monnam(mon))); */
-		    else pline("%s %s off %s feet!", /* EN else pline("%s boots %s off %s feet!", */ // TODO DE
+		    else pline("SUBJECT %s %s OBJECT KASUS_DATIV von %s NOUN_FOOTs!", /* EN else pline("%s boots %s off %s feet!", */
 			genitivattribut_zu_wort(Monnam(mon),"NOUN_BOOTSs"), /* EN s_suffix(Monnam(mon)), */
-			verysmall(mdat) ? "slide" : "are pushed", ppronoun); /* EN verysmall(mdat) ? "slide" : "are pushed", ppronoun); */ // TODO DE
+			verysmall(mdat) ? "VERB_RUTSCHEN" : "VERB_PLATZEN", ppronoun); /* EN verysmall(mdat) ? "slide" : "are pushed", ppronoun); */
 		}
 		if (polyspot) bypass_obj(otmp);
 		m_lose_armor(mon, otmp);
@@ -739,7 +739,7 @@ boolean polyspot;
 		goto noride;
 	} else if (mon == u.usteed && !can_ride(mon)) {
 	noride:
-	    You("can no longer ride %s.", mon_nam(mon)); /* EN You("can no longer ride %s.", mon_nam(mon)); */ // TODO DE
+	    You("VERB_KOENNEN nicht mehr OBJECT KASUS_DATIV auf %s reiten.", mon_nam(mon)); /* EN You("can no longer ride %s.", mon_nam(mon)); */
 	    if (touch_petrifies(u.usteed->data) &&
 			!Stone_resistance && rnl(3)) {
 		char buf[BUFSZ];

@@ -9623,6 +9623,52 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Drachenhortes", "NOUN_DRAGONS_LAIR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Drachenhort", "NOUN_DRAGONS_LAIR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  /* Material-Substantive */
+
+  {"Stoffes", "NOUN_CLOTH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stoff", "NOUN_CLOTH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Flüssigkeit", "NOUN_FLUESSIGKEIT", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Glases", "NOUN_GLAS", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Glas", "NOUN_GLAS", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Holzes", "NOUN_HOLZ", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Holz", "NOUN_HOLZ", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Leders", "NOUN_LEDER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Leder", "NOUN_LEDER", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Metalles", "NOUN_METALL", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Metall", "NOUN_METALL", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Mithrils", "NOUN_MITHRIL", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mithril", "NOUN_MITHRIL", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Papieres", "NOUN_PAPIER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Papier", "NOUN_PAPIER", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Plastiks", "NOUN_PLASTIK", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Plastik", "NOUN_PLASTIK", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Platins", "NOUN_PLATIN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Platin", "NOUN_PLATIN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"reichhaltigen Mahles", "NOUN_RICH_FOOD", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"reichhaltige Mahl", "NOUN_RICH_FOOD", "", nominativ|akkusativ, neutrum, n_singular, bestimmter},
+  {"reichhaltiges Mahl", "NOUN_RICH_FOOD", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne},
+  {"reichhaltigen Mahl", "NOUN_RICH_FOOD", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
+  {"reichhaltigem Mahl", "NOUN_RICH_FOOD", "", dativ, neutrum, n_singular, grundform|ohne},
+  {"reichhaltigen Mahlen", "NOUN_RICH_FOODs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"reichhaltigen Mahle", "NOUN_RICH_FOODs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|bestimmter},
+  {"reichhaltige Mahle", "NOUN_RICH_FOODs", "", nominativ|akkusativ, neutrum, n_plural, grundform|ohne},
+  {"reichhaltiger Mahle", "NOUN_RICH_FOODs", "", genitiv, neutrum, n_plural, grundform|ohne},
+
+  {"Schuppe", "NOUN_SCHUPPE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Wachses", "NOUN_WACHS", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wachs", "NOUN_WACHS", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   /* sonstige Substantive */
 
   {"Hundeartig", "NOUN_CANINE", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural|n_singular, grundform},
@@ -17683,6 +17729,7 @@ struct verb_infinitiv_struct verben_infinitiv[] = {
   {"einschlagen", "VERB_EINSCHLAGEN"},
   {"einschmelzen", "VERB_EINSCHMELZEN"},
   {"einsetzen", "VERB_EINSETZEN"},
+  {"eintreten", "VERB_EINTRETEN"},
   {"empfangen", "VERB_EMPFANGEN"},
   {"emporsteigen", "VERB_EMPORSTEIGEN"},
   {"entdecken", "VERB_ENTDECKEN"},
@@ -18274,6 +18321,7 @@ struct verb_imperativ_struct verben_imperativ[] = {
   {"schlag", "schlagt", "ein", "VERB_EINSCHLAGEN"},
   {"schmilz", "schmelzt", "ein", "VERB_EINSCHMELZEN"},
   {"setz", "setzt", "ein", "VERB_EINSETZEN"},
+  {"tritt", "tretet", "ein", "VERB_EINTRETEN"},
   {"empfang", "empfangt", "", "VERB_EMPFANGEN"},
   {"steig", "steigt", "empor", "VERB_EMPORSTEIGEN"},
   {"entdeck", "entdeckt", "", "VERB_ENTDECKEN"},
@@ -18865,6 +18913,7 @@ struct verb_partizip_struct verben_partizip[] = {
   {"einschlagend", "eingeschlagen", "VERB_EINSCHLAGEN"},
   {"einschmelzend", "eingeschmolzen", "VERB_EINSCHMELZEN"},
   {"einsetzend", "eingesetzt", "VERB_EINSETZEN"},
+  {"eintretend", "eingetreten", "VERB_EINTRETEN"},
   {"empfangend", "empfangen", "VERB_EMPFANGEN"},
   {"emporsteigend", "emporgestiegen", "VERB_EMPORSTEIGEN"},
   {"entdeckend", "entdeckt", "VERB_ENTDECKEN"},
@@ -21150,6 +21199,18 @@ struct verb_struct verben[] = {
   {"setzte", "VERB_EINSETZEN", "ein", drittePerson, n_singular, konjunktiv_ii, akkusativ},
   {"setztet", "VERB_EINSETZEN", "ein", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
   {"setzten", "VERB_EINSETZEN", "ein", drittePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"trittst", "VERB_EINTRETEN", "ein", zweitePerson, n_singular, praesens, akkusativ},
+  {"tritt", "VERB_EINTRETEN", "ein", drittePerson, n_singular, praesens, akkusativ},
+  {"tretet", "VERB_EINTRETEN", "ein", zweitePerson, n_plural, praesens, akkusativ},
+  {"treten", "VERB_EINTRETEN", "ein", drittePerson, n_plural, praesens, akkusativ},
+  {"tratst", "VERB_EINTRETEN", "ein", zweitePerson, n_singular, praeteritum, akkusativ},
+  {"trat", "VERB_EINTRETEN", "ein", drittePerson, n_singular, praeteritum, akkusativ},
+  {"tratet", "VERB_EINTRETEN", "ein", zweitePerson, n_plural, praeteritum, akkusativ},
+  {"traten", "VERB_EINTRETEN", "ein", drittePerson, n_plural, praeteritum, akkusativ},
+  {"trätest", "VERB_EINTRETEN", "ein", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"träte", "VERB_EINTRETEN", "ein", drittePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"trätet", "VERB_EINTRETEN", "ein", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"träten", "VERB_EINTRETEN", "ein", drittePerson, n_plural, konjunktiv_ii, akkusativ},
   {"empfängst", "VERB_EMPFANGEN", "", zweitePerson, n_singular, praesens, akkusativ},
   {"empfängt", "VERB_EMPFANGEN", "", drittePerson, n_singular, praesens, akkusativ},
   {"empfangt", "VERB_EMPFANGEN", "", zweitePerson, n_plural, praesens, akkusativ},

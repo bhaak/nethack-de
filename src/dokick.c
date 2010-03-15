@@ -790,11 +790,11 @@ dokick()
 		if(maploc->typ == SDOOR) {
 		    if(!Levitation && rn2(30) < avrg_attrib) {
 			cvt_sdoor_to_door(maploc);	/* ->typ = DOOR */
-			pline("Krach!  SUBJECT %s eine Geheimtür!", /* EN pline("Crash!  %s a secret door!", */
+			pline("Krach!  SUBJECT %s eine Geheimtür SATZKLAMMER!", /* EN pline("Crash!  %s a secret door!", */
 			      /* don't "kick open" when it's locked
 				 unless it also happens to be trapped */
 			(maploc->doormask & (D_LOCKED|D_TRAPPED)) == D_LOCKED ?
-			      "Your kick uncovers" : "PRONOMEN_PERSONAL VERB_KICK open"); /* EN "Your kick uncovers" : "You kick open"); */ // TODO DE
+			      "SUBJECT PRONOMEN_PERSONAL NOUN_KICK enttarnt" : "PRONOMEN_PERSONAL VERB_KICK VERB_EINTRETEN"); /* EN "Your kick uncovers" : "You kick open"); */
 			exercise(A_DEX, TRUE);
 			if(maploc->doormask & D_TRAPPED) {
 			    maploc->doormask = D_NODOOR;
@@ -814,7 +814,7 @@ dokick()
 		}
 		if(maploc->typ == SCORR) {
 		    if(!Levitation && rn2(30) < avrg_attrib) {
-			pline("Crash!  You kick open a secret passage!"); /* EN pline("Crash!  You kick open a secret passage!"); */ // TODO DE
+			pline("Krach!  SUBJECT PRONOMEN_PERSONAL VERB_EINTRETEN OBJECT ARTIKEL_UNBESTIMMTER Geheim-NOUN_PASSAGE SATZKLAMMER!"); /* EN pline("Crash!  You kick open a secret passage!"); */
 			exercise(A_DEX, TRUE);
 			maploc->typ = CORR;
 			if (Blind)
@@ -931,7 +931,7 @@ dokick()
 				made++;
 			}
 			if ( made )
-			    pline("You've attracted the tree's former occupants!"); /* EN pline("You've attracted the tree's former occupants!"); */ // TODO DE
+			    pline("SUBJECT PRONOMEN_PERSONAL VERB_HABEN die früheren Bewohner des Baums angelockt!"); /* EN pline("You've attracted the tree's former occupants!"); */
 			else
 			    You("VERB_SMELL verdorbenen Honig."); /* EN You("smell stale honey."); */
 			maploc->looted |= TREE_SWARM;
@@ -968,8 +968,8 @@ dokick()
 		    } else if(!(maploc->looted & S_LDWASHER) && !rn2(3) &&
 			      !(mvitals[washerndx].mvflags & G_GONE)) {
 			/* can't resist... */
-			pline("%s returns!", (Blind ? Something : /* EN pline("%s returns!", (Blind ? Something : */ // TODO DE
-							"The dish washer")); /* EN "The dish washer")); */ // TODO DE
+			pline("%s kommt zurück!", (Blind ? Something : /* EN pline("%s returns!", (Blind ? Something : */
+							"Der Tellerwäscher")); /* EN "The dish washer")); */
 			if (makemon(&mons[washerndx], x, y, NO_MM_FLAGS))
 			    newsym(x,y);
 			maploc->looted |= S_LDWASHER;
