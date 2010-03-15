@@ -2254,8 +2254,8 @@ boolean picked_some;
 		    /* don't say "altar" twice, dfeature has more info */
 		    You("VERB_VERSUCHEN zu ertasten, was hier liegt."); /* EN You("try to feel what is here."); */
 		} else {
-		    You("VERB_VERSUCHEN zu ertasten, was hier %s%s%s.", /* EN You("try to feel what is %s%s.", */
-			drift ? "" : "OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER ", drift ? "" : surface(u.ux, u.uy), /* EN drift ? "floating here" : "lying here on the ", */ // auf_dem_Boden
+		    You("VERB_VERSUCHEN zu ertasten, was hier %s%s.", /* EN You("try to feel what is %s%s.", */
+			drift ? "" : auf_dem_Boden(u.ux, u.uy), /* EN drift ? "floating here" : "lying here on the ", */
 			drift ? "herumschwebt" : " liegt"); /* EN drift ? ""		: surface(u.ux, u.uy)); */
 		}
 		if (dfeature && !drift && !strcmp(dfeature, surface(u.ux,u.uy)))

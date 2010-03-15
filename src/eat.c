@@ -1928,8 +1928,8 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 		/* The regurgitated object's rustproofing is gone now */
 		otmp->oerodeproof = 0;
 		make_stunned(HStun + rn2(10), TRUE);
-		You("VERB_SPUCKEN OBJECT %s auf ARTIKEL_BESTIMMTER %s.", the(xname(otmp)), /* EN You("spit %s out onto the %s.", the(xname(otmp)), */ /* auf_den_Boden */
-			surface(u.ux, u.uy));
+		You("VERB_SPUCKEN OBJECT %s %s.", the(xname(otmp)), /* EN You("spit %s out onto the %s.", the(xname(otmp)), */
+			auf_den_Boden(u.ux, u.uy)); /* EN surface(u.ux, u.uy)); */
 		if (carried(otmp)) {
 			freeinv(otmp);
 			dropy(otmp);

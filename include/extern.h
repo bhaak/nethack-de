@@ -566,6 +566,12 @@ E char *FDECL(random_engraving, (char *));
 E void FDECL(wipeout_text, (char *,int,unsigned));
 E boolean NDECL(can_reach_floor);
 E const char *FDECL(surface, (int,int));
+#ifdef GERMAN
+E const char *FDECL(zu_Boden, (int,int));
+E const char *FDECL(auf_dem_Boden, (int,int));
+E const char *FDECL(auf_den_Boden, (int,int));
+E const char *FDECL(vom_Boden, (int,int));
+#endif
 E const char *FDECL(ceiling, (int,int));
 E struct engr *FDECL(engr_at, (XCHAR_P,XCHAR_P));
 #ifdef ELBERETH

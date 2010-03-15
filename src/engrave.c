@@ -214,6 +214,108 @@ register int x, y;
 	impossible("zu_Boden: \"%s\" ist unbekannte Bodenart!", floor);
 	return floor;
 }
+
+const char *
+auf_dem_Boden(x, y)
+register int x, y;
+{
+	const char *floor = german(surface(x, y));
+	if (!strcmp(floor, "Mageninneres")) {
+		return "im Mageninneren";
+	} else if (!strcmp(floor, "Luft")) {
+		return "in der Luft";
+	} else if (!strcmp(floor, "Grund")) {
+		return "auf dem Grund";
+	} else if (!strcmp(floor, "Wasser")) {
+		return "auf dem Wasser";
+	} else if (!strcmp(floor, "Eis")) {
+		return "auf dem Eis";
+	} else if (!strcmp(floor, "Lava")) {
+		return "auf der Lava";
+	} else if (!strcmp(floor, "Brücke")) {
+		return "auf der Brücke";
+	} else if (!strcmp(floor, "Altar")) {
+		return "auf dem Altar";
+	} else if (!strcmp(floor, "Grabstein")) {
+		return "auf dem Grabstein";
+	} else if (!strcmp(floor, "Springbrunnen")) {
+		return "auf dem Springbrunnen";
+	} else if (!strcmp(floor, "Boden")) {
+		return "am Boden";
+	} else if (!strcmp(floor, "Erde")) {
+		return "auf der Erde";
+	}
+	impossible("auf_dem_Boden: \"%s\" ist unbekannte Bodenart!", floor);
+	return floor;
+}
+
+const char *
+auf_den_Boden(x, y)
+register int x, y;
+{
+	const char *floor = german(surface(x, y));
+	if (!strcmp(floor, "Mageninneres")) {
+		return "ins Mageninneren";
+	} else if (!strcmp(floor, "Luft")) {
+		return "in die Luft";
+	} else if (!strcmp(floor, "Grund")) {
+		return "auf den Grund";
+	} else if (!strcmp(floor, "Wasser")) {
+		return "aufs Wasser";
+	} else if (!strcmp(floor, "Eis")) {
+		return "aufs Eis";
+	} else if (!strcmp(floor, "Lava")) {
+		return "auf die Lava";
+	} else if (!strcmp(floor, "Brücke")) {
+		return "auf die Brücke";
+	} else if (!strcmp(floor, "Altar")) {
+		return "auf den Altar";
+	} else if (!strcmp(floor, "Grabstein")) {
+		return "auf den Grabstein";
+	} else if (!strcmp(floor, "Springbrunnen")) {
+		return "auf den Springbrunnen";
+	} else if (!strcmp(floor, "Boden")) {
+		return "auf den Boden";
+	} else if (!strcmp(floor, "Erde")) {
+		return "auf die Erde";
+	}
+	impossible("auf_den_Boden: \"%s\" ist unbekannte Bodenart!", floor);
+	return floor;
+}
+
+const char *
+vom_Boden(x, y)
+register int x, y;
+{
+	const char *floor = german(surface(x, y));
+	if (!strcmp(floor, "Mageninneres")) {
+		return "aus dem Mageninneren";
+	} else if (!strcmp(floor, "Luft")) {
+		return "aus der Luft";
+	} else if (!strcmp(floor, "Grund")) {
+		return "vom Grund";
+	} else if (!strcmp(floor, "Wasser")) {
+		return "vom Wasser";
+	} else if (!strcmp(floor, "Eis")) {
+		return "vom Eis";
+	} else if (!strcmp(floor, "Lava")) {
+		return "von der Lava";
+	} else if (!strcmp(floor, "Brücke")) {
+		return "von der Brücke";
+	} else if (!strcmp(floor, "Altar")) {
+		return "vom Altar";
+	} else if (!strcmp(floor, "Grabstein")) {
+		return "vom Grabstein";
+	} else if (!strcmp(floor, "Springbrunnen")) {
+		return "vom Springbrunnen";
+	} else if (!strcmp(floor, "Boden")) {
+		return "vom Boden";
+	} else if (!strcmp(floor, "Erde")) {
+		return "von der Erde";
+	}
+	impossible("vom_Boden: \"%s\" ist unbekannte Bodenart!", floor);
+	return floor;
+}
 #endif
 
 const char *

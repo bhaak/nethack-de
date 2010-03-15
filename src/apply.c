@@ -2178,8 +2178,8 @@ struct obj *obj;
 		return 1;
 	    }
 	    if (otmp && proficient) {
-		You("VERB_WICKELN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP NEUES_OBJECT OBJECT um %s NEUES_OBJECT OBJECT KASUS_DATIV auf ARTIKEL_BESTIMMTER %s.", /* EN You("wrap your bullwhip around %s on the %s.", */ /* auf_dem_Boden */
-		    an(singular(otmp, xname)), surface(u.ux, u.uy));
+		You("VERB_WICKELN OBJECT PRONOMEN_POSSESSIV NOUN_BULLWHIP NEUES_OBJECT OBJECT um %s %s.", /* EN You("wrap your bullwhip around %s on the %s.", */
+		    an(singular(otmp, xname)), auf_dem_Boden(u.ux, u.uy)); /* EN an(singular(otmp, xname)), surface(u.ux, u.uy)); */
 		if (rnl(6) || pickup_object(otmp, 1L, TRUE) < 1)
 		    pline(msg_slipsfree);
 		return 1;
@@ -2533,7 +2533,7 @@ use_grapple (obj)
 	    any.a_int = 1;	/* use index+1 (cant use 0) as identifier */
 	    start_menu(tmpwin);
 	    any.a_int++;
-	    Sprintf(buf, "einen Gegenstand KASUS_DATIV auf ARTIKEL_BESTIMMTER %s", surface(cc.x, cc.y)); /* EN Sprintf(buf, "an object on the %s", surface(cc.x, cc.y)); */ // auf_dem_Boden
+	    Sprintf(buf, "einen Gegenstand %s", auf_dem_Boden(cc.x, cc.y)); /* EN Sprintf(buf, "an object on the %s", surface(cc.x, cc.y)); */
 	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE,
 			 buf, MENU_UNSELECTED);
 	    any.a_int++;
@@ -2559,7 +2559,7 @@ use_grapple (obj)
 	    break;
 	case 1:	/* Object */
 	    if ((otmp = level.objects[cc.x][cc.y]) != 0) {
-		You("VERB_ANGELN OBJECT KASUS_DATIV PRONOMEN_PERSONAL einen Gegenstand NEUES_OBJECT OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER %s!", surface(cc.x, cc.y)); /* EN You("snag an object from the %s!", surface(cc.x, cc.y)); */ // vom_Boden
+		You("VERB_ANGELN OBJECT KASUS_DATIV PRONOMEN_PERSONAL einen Gegenstand %s!", vom_Boden(cc.x, cc.y)); /* EN You("snag an object from the %s!", surface(cc.x, cc.y)); */
 		(void) pickup_object(otmp, 1L, FALSE);
 		/* If pickup fails, leave it alone */
 		newsym(cc.x, cc.y);
