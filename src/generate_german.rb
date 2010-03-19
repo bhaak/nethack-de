@@ -3895,6 +3895,8 @@ def ausgabe_nouns
     dekliniere_eigenname("NOUN_HALLU_UNIQUE_ET", "E.T.", "maskulin"),
     dekliniere_eigenname("NOUN_HALLU_UNIQUE_TINKY_WINKY", "Tinky-Winky", "maskulin"),
     dekliniere_eigenname("NOUN_HALLU_UNIQUE_PITIPLATSCH", "Pitiplatsch", "maskulin"),
+    dekliniere_eigenname("NOUN_HALLU_UNIQUE_SEIFENSTEIN", "Seifenstein", "maskulin"),
+    dekliniere_eigenname("NOUN_HALLU_UNIQUE_VORMAERZ", "Vormärz", "maskulin"),
 
     "/* translated pre-existing monsters */",
     dekliniere_eigenname("NOUN_HALLU_HORLA", "Horla", "maskulin"),

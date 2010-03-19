@@ -11048,6 +11048,12 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Pitiplatsch", "NOUN_HALLU_UNIQUE_PITIPLATSCH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Pitiplatschs", "NOUN_HALLU_UNIQUE_PITIPLATSCH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Seifenstein", "NOUN_HALLU_UNIQUE_SEIFENSTEIN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Seifensteins", "NOUN_HALLU_UNIQUE_SEIFENSTEIN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Vormärz", "NOUN_HALLU_UNIQUE_VORMAERZ", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Vormärz'", "NOUN_HALLU_UNIQUE_VORMAERZ", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   /* translated pre-existing monsters */
 
   {"Horla", "NOUN_HALLU_HORLA", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

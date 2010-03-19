@@ -1146,6 +1146,8 @@ static const char * const bogusmons[] = {
 	"NOUN_HALLU_UNIQUE_HOMUNKOLOSS",	/* Walter Moers */
 	"NOUN_HALLU_UNIQUE_TINKY_WINKY",	/* Teletubbies */
 	"NOUN_HALLU_UNIQUE_PITIPLATSCH",	/* Der Sandmann */
+	"NOUN_HALLU_UNIQUE_SEIFENSTEIN",
+	"NOUN_HALLU_UNIQUE_VORMAERZ",		/* Wir sind Kaiser */
 	/* other */
 	"NOUN_HALLU_STEUERPRUEFER",
 	"NOUN_HALLU_GEZ_FAHNDER",		/* real-world pests */
