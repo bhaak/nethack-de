@@ -7356,7 +7356,7 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Balrogs", "NOUN_BALROG", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Juiblex", "NOUN_JUIBLEX", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Juiblexs", "NOUN_JUIBLEX", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Juiblex'", "NOUN_JUIBLEX", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Yeenoghu", "NOUN_YEENOGHU", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Yeenoghus", "NOUN_YEENOGHU", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

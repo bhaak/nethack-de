@@ -287,7 +287,7 @@ def dekliniere_eigenname(bezeichner, singularstamm="", geschlecht="")
 
   namen = []
   namen << unregelmaessiges_wort(bezeichner, singularstamm, [$nom,$akk,$dat], geschlecht, $sg)
-  if singularstamm[-1..-1] == 's' then
+  if ['s','x','z'].include?(singularstamm[-1..-1]) then
     namen << unregelmaessiges_wort(bezeichner, singularstamm+"'", [$gen], geschlecht, $sg)
   else
     namen << unregelmaessiges_wort(bezeichner, singularstamm+"s", [$gen], geschlecht, $sg)
