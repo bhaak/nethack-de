@@ -748,7 +748,7 @@ register struct obj	*sobj;
 		if (s >= 0 && otmp->otyp >= GRAY_DRAGON_SCALES &&
 					otmp->otyp <= YELLOW_DRAGON_SCALES) {
 			/* dragon scales get turned into dragon scale mail */
-			Your("%s merges and hardens!", xname(otmp)); /* EN Your("%s merges and hardens!", xname(otmp)); */ // TODO DE
+			Your("%s VERB_VEREINIGEN und VERB_VERHAERTEN sich!", xname(otmp)); /* EN Your("%s merges and hardens!", xname(otmp)); */
 			setworn((struct obj *)0, W_ARM);
 			/* assumes same order */
 			otmp->otyp = GRAY_DRAGON_SCALE_MAIL +
@@ -883,13 +883,13 @@ register struct obj	*sobj;
 		    }
 		}
 		if(!ct)
-		      You_hear("%s in the distance.", /* EN You_hear("%s in the distance.", */ // TODO DE
-						 (confused || sobj->cursed) ? "sad wailing" : /* EN (confused || sobj->cursed) ? "sad wailing" : */ // TODO DE
-							"maniacal laughter"); /* EN "maniacal laughter"); */ // TODO DE
+		      You_hear("%s in einiger Entfernung.", /* EN You_hear("%s in the distance.", */
+						 (confused || sobj->cursed) ? "Trauergeheule" : /* EN (confused || sobj->cursed) ? "sad wailing" : */
+							"irres Gelächter"); /* EN "maniacal laughter"); */
 		else if(sobj->otyp == SCR_SCARE_MONSTER)
-			You_hear("%s close by.", /* EN You_hear("%s close by.", */ // TODO DE
-				  (confused || sobj->cursed) ? "sad wailing" : /* EN (confused || sobj->cursed) ? "sad wailing" : */ // TODO DE
-						 "maniacal laughter"); /* EN "maniacal laughter"); */ // TODO DE
+			You_hear("%s in der Nähe.", /* EN You_hear("%s close by.", */
+				  (confused || sobj->cursed) ? "Trauergeheule" : /* EN (confused || sobj->cursed) ? "sad wailing" : */
+						 "irres Gelächter"); /* EN "maniacal laughter"); */
 		break;
 	    }
 	case SCR_BLANK_PAPER:
@@ -1066,7 +1066,7 @@ register struct obj	*sobj;
 		return(1);
 	case SCR_CHARGING:
 		if (confused) {
-		    You_feel("charged up!"); /* EN You_feel("charged up!"); */ // TODO DE
+		    Du_fuehlst_dich("aufgeladen!"); /* EN You_feel("charged up!"); */
 		    if (u.uen < u.uenmax)
 			u.uen = u.uenmax;
 		    else
@@ -1075,7 +1075,7 @@ register struct obj	*sobj;
 		    break;
 		}
 		known = TRUE;
-		pline("This is a charging scroll."); /* EN pline("This is a charging scroll."); */ // TODO DE
+		pline("Das ist ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_CHARGING."); /* EN pline("This is a charging scroll."); */
 		otmp = getobj(all_count, "charge"); /* EN otmp = getobj(all_count, "charge"); */ // TODO DE
 		if (!otmp) break;
 		recharge(otmp, sobj->cursed ? -1 : (sobj->blessed ? 1 : 0));
@@ -1289,7 +1289,7 @@ register struct obj	*sobj;
 	case SCR_STINKING_CLOUD: {
 	        coord cc;
 
-		You("have found a scroll of stinking cloud!"); /* EN You("have found a scroll of stinking cloud!"); */ // TODO DE
+		You("VERB_HABEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_STINKING_CLOUD gefunden!"); /* EN You("have found a scroll of stinking cloud!"); */
 		known = TRUE;
 		pline("Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL die Wolke richten?"); /* EN pline("Where do you want to center the cloud?"); */
 		cc.x = u.ux;

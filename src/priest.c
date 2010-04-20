@@ -370,14 +370,14 @@ register int roomno;
 		       the endgame; for the Sanctum, the next message names
 		       Moloch so suppress the "of Moloch" for him here too */
 		    if (sanctum && !Hallucination) priest->ispriest = 0;
-		    pline("%s intones:", /* EN pline("%s intones:", */ // TODO DE
-			canseemon(priest) ? Monnam(priest) : "A nearby voice"); /* EN canseemon(priest) ? Monnam(priest) : "A nearby voice"); */ // TODO DE
+		    pline("SUBJECT %s intoniert:", /* EN pline("%s intones:", */
+			canseemon(priest) ? Monnam(priest) : "Eine nahe Stimme"); /* EN canseemon(priest) ? Monnam(priest) : "A nearby voice"); */
 		    priest->ispriest = save_priest;
 		}
 		msg2 = 0;
 		if(sanctum && Is_sanctum(&u.uz)) {
 		    if(priest->mpeaceful) {
-			msg1 = "Infidel, you have entered Moloch's Sanctum!"; /* EN msg1 = "Infidel, you have entered Moloch's Sanctum!"; */ // TODO DE
+			msg1 = "PLAYER_INFIDEL, du hast Molochs Allerheiligstes betreten!"; /* EN msg1 = "Infidel, you have entered Moloch's Sanctum!"; */
 			msg2 = "Hinfort!"; /* EN msg2 = "Be gone!"; */
 			priest->mpeaceful = 0;
 			set_malign(priest);
@@ -396,15 +396,15 @@ register int roomno;
 		    /* !tended -> !shrined */
 		    if (!shrined || !p_coaligned(priest) ||
 			    u.ualign.record <= ALGN_SINNED)
-			You("VERB_HAVE ein%s Gefühl des forbidding feeling...", /* EN You("have a%s forbidding feeling...", */ // TODO DE
+			You("VERB_VERSPUEREN ein%s Gefühl der Bedrohung ...", /* EN You("have a%s forbidding feeling...", */
 				(!shrined) ? "" : " seltsames"); /* EN (!shrined) ? "" : " strange"); */ 
 		    else You("VERB_SEIN von einem seltsamen Gefühl der Ruhe und des Friedens erfüllt."); /* EN else You("experience a strange sense of peace."); */
 		}
 	    } else {
 		switch(rn2(3)) {
 		  case 0: You("have an eerie feeling..."); break; /* EN case 0: You("have an eerie feeling..."); break; */ // TODO DE
-		  case 1: You_feel("like you are being watched."); break; /* EN case 1: You_feel("like you are being watched."); break; */ // TODO DE
-		  default: pline("A shiver runs down your %s.", /* EN default: pline("A shiver runs down your %s.", */ // TODO DE
+		  case 1: Du_fuehlst_dich("beobachtet."); break; /* EN case 1: You_feel("like you are being watched."); break; */
+		  default: pline("Ein Schauer läuft OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER %s hinunter.", /* EN default: pline("A shiver runs down your %s.", */
 			body_part(SPINE)); break;
 		}
 		if(!rn2(5)) {
@@ -413,14 +413,14 @@ register int roomno;
 		    if(!(mtmp = makemon(&mons[PM_GHOST],u.ux,u.uy,NO_MM_FLAGS)))
 			return;
 		    if (!Blind || sensemon(mtmp))
-		    pline("An enormous ghost appears next to you!"); /* EN pline("An enormous ghost appears next to you!"); */ // TODO DE
+		    pline("SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_RIESIG NOUN_GHOST VERB_ERSCHEINEN OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL!"); /* EN pline("An enormous ghost appears next to you!"); */
 		    else You("sense a presence close by!"); /* EN else You("sense a presence close by!"); */ // TODO DE
 		    mtmp->mpeaceful = 0;
 		    set_malign(mtmp);
 		    if(flags.verbose)
-			You("are frightened to death, and unable to move."); /* EN You("are frightened to death, and unable to move."); */ // TODO DE
+			You("VERB_SEIN zu Tode erschrocken und unfähig, OBJECT PRONOMEN_PERSONAL zu rühren."); /* EN You("are frightened to death, and unable to move."); */
 		    nomul(-3);
-		    nomovemsg = "You regain your composure."; /* EN nomovemsg = "You regain your composure."; */ // TODO DE
+		    nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_GEWINNEN OBJECT PRONOMEN_POSSESSIV NOUN_FASSUNG zurück."; /* EN nomovemsg = "You regain your composure."; */
 	       }
 	   }
        }
@@ -672,15 +672,15 @@ struct monst *priest;
 
 	switch(rn2(3)) {
 	case 0:
-	    pline("%s roars in anger:  \"Thou shalt suffer!\"", /* EN pline("%s roars in anger:  \"Thou shalt suffer!\"", */ // TODO DE
+	    pline("%s brüllt wutentbrannt:  \"Dafür wirst du büssen!\"", /* EN pline("%s roars in anger:  \"Thou shalt suffer!\"", */
 			a_gname_at(ax, ay));
 	    break;
 	case 1:
-	    pline("SUBJECT %s booms:  \"How darest thou harm my servant!\"", /* EN pline("%s voice booms:  \"How darest thou harm my servant!\"", */ // TODO DE
+	    pline("SUBJECT %s VERB_DONNERN:  \"Wie kannst du es wagen, meine Diener anzugreifen!\"", /* EN pline("%s voice booms:  \"How darest thou harm my servant!\"", */
 			genitivattribut_zu_wort(a_gname_at(ax, ay), "NOUN_STIMME")); /* EN s_suffix(a_gname_at(ax, ay))); */
 	    break;
 	default:
-	    pline("%s roars:  \"Thou dost profane my shrine!\"", /* EN pline("%s roars:  \"Thou dost profane my shrine!\"", */ // TODO DE
+	    pline("%s brüllt:  \"Meinen Schrein entweihst du!\"", /* EN pline("%s roars:  \"Thou dost profane my shrine!\"", */
 			a_gname_at(ax, ay));
 	    break;
 	}

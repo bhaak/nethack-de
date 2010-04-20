@@ -872,16 +872,15 @@ dowhatdoes()
 
 /* data for help_menu() */
 static const char *help_menu_items[] = {
-// TODO DE
-/* 0*/	"Long description of the game and commands.",
-/* 1*/	"List of game commands.",
-/* 2*/	"Concise history of NetHack.",
-/* 3*/	"Info on a character in the game display.",
-/* 4*/	"Info on what a given key does.",
-/* 5*/	"List of game options.",
-/* 6*/	"Longer explanation of game options.",
-/* 7*/	"List of extended commands.",
-/* 8*/	"The NetHack license.",
+/* 0*/	"Long description of the game and commands.", /* EN "Long description of the game and commands.", */ // TODO DE
+/* 1*/	"List of game commands.", /* EN "List of game commands.", */ // TODO DE
+/* 2*/	"Concise history of NetHack.", /* EN "Concise history of NetHack.", */ // TODO DE
+/* 3*/	"Info on a character in the game display.", /* EN "Info on a character in the game display.", */ // TODO DE
+/* 4*/	"Info on what a given key does.", /* EN "Info on what a given key does.", */ // TODO DE
+/* 5*/	"Liste der Spiel-Optionen.", /* EN "List of game options.", */
+/* 6*/	"Longer explanation of game options.", /* EN "Longer explanation of game options.", */ // TODO DE
+/* 7*/	"Liste der erweiterten Befehle.", /* EN "List of extended commands.", */
+/* 8*/	"Die NetHack-Lizenz.", /* EN "The NetHack license.", */
 #ifdef PORT_HELP
 	"%s-specific help and commands.",
 #define PORT_HELP_ID 100
@@ -890,7 +889,7 @@ static const char *help_menu_items[] = {
 #define WIZHLP_SLOT 9
 #endif
 #ifdef WIZARD
-	"List of wizard-mode commands.",
+	"List of wizard-mode commands.", /* EN "List of wizard-mode commands.", */ // TODO DE
 #endif
 	"",
 	(char *)0

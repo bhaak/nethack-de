@@ -305,6 +305,17 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Edelsteinen", "NOUN_GEMs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
 
+  {"merkwürdigen Objektes", "NOUN_STRANGE_OBJECT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"merkwürdige Objekt", "NOUN_STRANGE_OBJECT", "", nominativ|akkusativ, neutrum, n_singular, bestimmter},
+  {"merkwürdiges Objekt", "NOUN_STRANGE_OBJECT", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne},
+  {"merkwürdigen Objekt", "NOUN_STRANGE_OBJECT", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
+  {"merkwürdigem Objekt", "NOUN_STRANGE_OBJECT", "", dativ, neutrum, n_singular, grundform|ohne},
+  {"merkwürdigen Objekten", "NOUN_STRANGE_OBJECTs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"merkwürdigen Objekte", "NOUN_STRANGE_OBJECTs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|bestimmter},
+  {"merkwürdige Objekte", "NOUN_STRANGE_OBJECTs", "", nominativ|akkusativ, neutrum, n_plural, grundform|ohne},
+  {"merkwürdiger Objekte", "NOUN_STRANGE_OBJECTs", "", genitiv, neutrum, n_plural, grundform|ohne},
+
+
   /* Weapons, identified */
 
   {"Pfeiles", "NOUN_ARROW", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -1379,6 +1390,26 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"klobige Ringpanzer", "NOUN_CRUDE_RING_MAILs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
   {"klobiger Ringpanzer", "NOUN_CRUDE_RING_MAILs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
+  {"ausgeblichenen Mantels", "NOUN_FADED_PALL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"ausgeblichene Mantel", "NOUN_FADED_PALL", "", nominativ, maskulin, n_singular, bestimmter},
+  {"ausgeblichener Mantel", "NOUN_FADED_PALL", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"ausgeblichenen Mantel", "NOUN_FADED_PALL", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"ausgeblichenem Mantel", "NOUN_FADED_PALL", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"ausgeblichenen Mänteln", "NOUN_FADED_PALLs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"ausgeblichenen Mäntel", "NOUN_FADED_PALLs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"ausgeblichene Mäntel", "NOUN_FADED_PALLs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"ausgeblichener Mäntel", "NOUN_FADED_PALLs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
+  {"groben Überwurfes", "NOUN_COARSE_MANTELET", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"grobe Überwurf", "NOUN_COARSE_MANTELET", "", nominativ, maskulin, n_singular, bestimmter},
+  {"grober Überwurf", "NOUN_COARSE_MANTELET", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"groben Überwurf", "NOUN_COARSE_MANTELET", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"grobem Überwurf", "NOUN_COARSE_MANTELET", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"groben Überwürfen", "NOUN_COARSE_MANTELETs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"groben Überwürfe", "NOUN_COARSE_MANTELETs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"grobe Überwürfe", "NOUN_COARSE_MANTELETs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"grober Überwürfe", "NOUN_COARSE_MANTELETs", "", genitiv, maskulin, n_plural, grundform|ohne},
+
   {"Kapuzenmantels", "NOUN_HOODED_CLOAK", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kapuzenmantel", "NOUN_HOODED_CLOAK", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kapuzenmäntel", "NOUN_HOODED_CLOAKs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -1402,6 +1433,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Zierumhänge", "NOUN_ORNAMENTAL_COPEs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Zierumhängen", "NOUN_ORNAMENTAL_COPEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Stückes Stoff", "NOUN_PIECE_OF_CLOTH", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stück Stoff", "NOUN_PIECE_OF_CLOTH", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stücke Stoff", "NOUN_PIECE_OF_CLOTHs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Stücken Stoff", "NOUN_PIECE_OF_CLOTHs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"blau-grünen Schildes", "NOUN_BLUE_AND_GREEN_SHIELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"blau-grüne Schild", "NOUN_BLUE_AND_GREEN_SHIELD", "", nominativ, maskulin, n_singular, bestimmter},
   {"blau-grüner Schild", "NOUN_BLUE_AND_GREEN_SHIELD", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
@@ -1421,6 +1457,16 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Rotaugenschild", "NOUN_RED_EYED_SHIELD", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Rotaugenschilde", "NOUN_RED_EYED_SHIELDs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Rotaugenschilden", "NOUN_RED_EYED_SHIELDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"großen Rundschildes", "NOUN_LARGE_ROUND_SHIELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"große Rundschild", "NOUN_LARGE_ROUND_SHIELD", "", nominativ, maskulin, n_singular, bestimmter},
+  {"großer Rundschild", "NOUN_LARGE_ROUND_SHIELD", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne},
+  {"großen Rundschild", "NOUN_LARGE_ROUND_SHIELD", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"großem Rundschild", "NOUN_LARGE_ROUND_SHIELD", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"großen Rundschilden", "NOUN_LARGE_ROUND_SHIELDs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"großen Rundschilde", "NOUN_LARGE_ROUND_SHIELDs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"große Rundschilde", "NOUN_LARGE_ROUND_SHIELDs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"großer Rundschilde", "NOUN_LARGE_ROUND_SHIELDs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
   {"polierten Silberschildes", "NOUN_POLISHED_SILVER_SHIELD", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"polierte Silberschild", "NOUN_POLISHED_SILVER_SHIELD", "", nominativ, maskulin, n_singular, bestimmter},

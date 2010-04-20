@@ -138,7 +138,7 @@ use_saddle(otmp)
 
 	/* Make the attempt */
 	if (rn2(100) < chance) {
-	    You("put the saddle on %s.", mon_nam(mtmp)); /* EN You("put the saddle on %s.", mon_nam(mtmp)); */ // TODO DE
+	    You("VERB_SATTELN OBJECT %s.", mon_nam(mtmp)); /* EN You("put the saddle on %s.", mon_nam(mtmp)); */
 	    if (otmp->owornmask) remove_worn_item(otmp, FALSE);
 	    freeinv(otmp);
 	    /* mpickobj may free otmp it if merges, but we have already
@@ -204,7 +204,7 @@ mount_steed(mtmp, force)
 
 	/* Is the player in the right form? */
 	if (Hallucination && !force) {
-	    pline("Maybe you should find a designated driver."); /* EN pline("Maybe you should find a designated driver."); */ // TODO DE
+	    pline("SUBJECT Vielleicht VERB_SOLLEN PRONOMEN_PERSONAL OBJECT KASUS_DATIV PRONOMEN_PERSONAL einen Sprudeldepp suchen."); /* EN pline("Maybe you should find a designated driver."); */
 	    return (FALSE);
 	}
 	/* While riding Wounded_legs refers to the steed's,
@@ -250,7 +250,7 @@ mount_steed(mtmp, force)
 	    if (Punished || !(u.uswallow || u.ustuck || u.utrap))
 		You("are unable to swing your %s over.", body_part(LEG)); /* EN You("are unable to swing your %s over.", body_part(LEG));  */ // TODO DE
 	    else
-		You("are stuck here for now."); /* EN You("are stuck here for now."); */ // TODO DE
+		You("VERB_STECKEN hier erstmal fest."); /* EN You("are stuck here for now."); */
 	    return (FALSE);
 	}
 

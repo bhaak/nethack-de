@@ -1107,6 +1107,15 @@ char* german(const char *line) {
 
 		} else if (strncmp("NOUN_PSEUDO_", tmp, 12)==0) {
 				insert_char = 0;
+#ifndef NO_HACK_H_INCLUDE
+		} else if (strncmp("PLAYER_", tmp, 7)==0) {
+			insert_char = 1;
+			if (strncmp("PLAYER_STERBLICHER", tmp, 18)==0) {
+				append(output, flags.female ? "Sterbliche" : "Sterblicher");
+			} else if (strncmp("PLAYER_INFIDEL", tmp, 14)==0) {
+				append(output, flags.female ? "Ungläubige" : "Ungläubiger");
+			}
+#endif
 		} else if (strncmp("NOUN_", tmp, 5)==0) {
 #if DEBUG
 			printf("token nach NOUN_: %s -%s- %d\n",tmp,tmp2, strncmp("NOUN_CORPSE", tmp2,11));
@@ -1142,10 +1151,6 @@ char* german(const char *line) {
 				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
 				// Flüssigkeiten in Flaschen haben nur Singularform 
 				c_numerus = n_singular;
-#ifndef NO_HACK_H_INCLUDE
-			} else if (strncmp("NOUN_PLAYER_STERBLICHER", tmp, 23)==0) {
-				append(output, flags.female ? "Sterbliche" : "Sterblicher");
-#endif
 			} else {
 				append(output, get_substantiv(tmp, c_casus, c_numerus, c_artikel));
 #if DEBUG

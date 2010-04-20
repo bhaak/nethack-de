@@ -1341,7 +1341,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 	 */
 	You("VERB_SPUEREN, dass die Luft um OBJECT PRONOMEN_PERSONAL sich auflädt ..."); /* EN You_feel("the air around you grow charged..."); */
 	pline("Plötzlich SUBJECT_IM_SATZ VERB_BEMERKEN PRONOMEN_PERSONAL, dass NEUER_SATZ PRONOMEN_PERSONAL %s aufgefallen VERB_SEIN ...", a_gname()); /* EN pline("Suddenly, you realize that %s has noticed you...", a_gname()); */
-	godvoice(altaralign, "So, NOUN_PLAYER_STERBLICHER!  Du wagst es meinen Hochtempel zu entweihen!"); /* EN godvoice(altaralign, "So, mortal!  You dare desecrate my High Temple!"); */
+	godvoice(altaralign, "So, PLAYER_STERBLICHER!  Du wagst es meinen Hochtempel zu entweihen!"); /* EN godvoice(altaralign, "So, mortal!  You dare desecrate my High Temple!"); */
 	/* Throw everything we have at the player */
 	god_zaps_you(altaralign);
     } else if (value < 0) { /* I don't think the gods are gonna like this... */

@@ -322,7 +322,7 @@ ghost_from_bottle()
 	if(flags.verbose)
 	    You("VERB_SEIN zu Tode erschrocken und starr vor Angst."); /* EN You("are frightened to death, and unable to move."); */
 	nomul(-3);
-	nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_GEWINNEN OBJECT PRONOMEN_PERSONAL NOUN_FASSUNG zurück."; /* EN nomovemsg = "You regain your composure."; */
+	nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_GEWINNEN OBJECT PRONOMEN_POSSESSIV NOUN_FASSUNG zurück."; /* EN nomovemsg = "You regain your composure."; */
 }
 
 /* "Quaffing is like drinking, except you spill more."  -- Terry Pratchett

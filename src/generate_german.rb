@@ -1669,6 +1669,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GEM",       "Schmuckstein",   "es", "Schmuckstein",   "e",  "maskulin"),
     dekliniere_substantiv("NOUN_GEM",       "Edelstein",   "es", "Edelstein",   "e",  "maskulin"),
     "",
+    dekliniere_nominalphrase("NOUN_STRANGE_OBJECT", "merkwürdig", "Objekt", "es", "Objekt", "e", "neutrum"),
+    "",
     "/* Weapons, identified */",
     dekliniere_substantiv("NOUN_ARROW", "Pfeil", "es", "Pfeil", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_ARROW", "Elbenpfeil", "es", "Elbenpfeil", "e", "maskulin"),
@@ -1886,20 +1888,20 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_VISORED_HELMET", "Visierhelm", "es", "Visierhelm", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_CRUDE_CHAIN_MAIL", "klobig", "Kettenhemd", "es", "Kettenhemd", "en", "neutrum", "en"),
     dekliniere_nominalphrase("NOUN_CRUDE_RING_MAIL", "klobig", "Ringpanzer", "s", "Ringpanzer", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_FADED_PALL" # Ausgeblichener Mantel js
-    #dekliniere_substantiv("NOUN_COARSE_MANTELET" # Grober Überwurf js
+    dekliniere_nominalphrase("NOUN_FADED_PALL", "ausgeblichen", "Mantel", "s", "Mäntel", "", "maskulin"), # Ausgeblichener Mantel js
+    dekliniere_nominalphrase("NOUN_COARSE_MANTELET", "grob", "Überwurf", "es", "Überwürf", "e", "maskulin"), # Grober Überwurf js
     dekliniere_substantiv("NOUN_HOODED_CLOAK", "Kapuzenmantel", "s", "Kapuzenmäntel", "", "maskulin"),
     #dekliniere_substantiv("NOUN_SLIPPERY_CLOAK"
     dekliniere_substantiv("NOUN_APRON", "Schürze", "", "Schürze", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_TATTERED_CAPE", "Lumpenumhang", "es", "Lumpenumhäng", "e", "maskulin"), # js
     dekliniere_substantiv("NOUN_OPERA_CLOAK", "Opernumhang", "es", "Opernumhäng", "e", "maskulin", "s"),
     dekliniere_substantiv("NOUN_ORNAMENTAL_COPE", "Zierumhang", "es", "Zierumhäng", "e", "maskulin"), # js
-    #dekliniere_substantiv("NOUN_PIECE_OF_CLOTH" # ein Stueck Stoff, ein Stueck Tuch
+    dekliniere_substantiv("NOUN_PIECE_OF_CLOTH", "Stück", "es", "Stück", "e", "neutrum", "", "Stoff"), # ein Stueck Stoff, ein Stueck Tuch
     dekliniere_nominalphrase("NOUN_BLUE_AND_GREEN_SHIELD", ["blau-grün"], "Schild", "es", "Schild", "e", "maskulin"),
     # dekliniere_nominalphrase("NOUN_BLUE_AND_GREEN_SHIELD", ["blau", "und grün"], "Schild", "es", "Schild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_WHITE_HANDED_SHIELD", "Weißhandschild", "es", "Weißhandschild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_RED_EYED_SHIELD", "Rotaugenschild", "es", "Rotaugenschild", "e", "maskulin"),
-    #dekliniere_substantiv("NOUN_LARGE_ROUND_SHIELD"
+    dekliniere_nominalphrase("NOUN_LARGE_ROUND_SHIELD", "groß", "Rundschild", "es", "Rundschild", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_POLISHED_SILVER_SHIELD", "poliert", "Silberschild", "es", "Silberschild", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_OLD_GLOVES", "alt", "Handschuh", "es", "Handschuh", "e", "maskulin"),
     dekliniere_nominalphrase("NOUN_PADDED_GLOVES", "gefüttert", "Handschuh", "es", "Handschuh", "e", "maskulin"),
