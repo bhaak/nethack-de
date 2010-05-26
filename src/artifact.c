@@ -1037,7 +1037,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 		wepdesc = "ARTIKEL_BESTIMMTER ADJEKTIV_RASIERMESSERSCHARF NOUN_KLINGE"; /* EN wepdesc = "The razor-sharp blade"; */
 		/* not really beheading, but so close, why add another SPFX */
 		if (youattack && u.uswallow && mdef == u.ustuck) {
-		    You("slice %s wide open!", mon_nam(mdef)); /* EN You("slice %s wide open!", mon_nam(mdef)); */ // TODO DE
+		    You("VERB_SCHLITZEN OBJECT %s weit auf!", mon_nam(mdef)); /* EN You("slice %s wide open!", mon_nam(mdef)); */
 		    *dmgptr = 2 * mdef->mhp + FATAL_DAMAGE_MODIFIER;
 		    return TRUE;
 		}
@@ -1048,10 +1048,10 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 
 			if (bigmonst(mdef->data)) {
 				if (youattack)
-					You("slice deeply into %s!", /* EN You("slice deeply into %s!", */ // TODO DE
+					You("VERB_SCHNEIDEN tief OBJECT in %s hinein!", /* EN You("slice deeply into %s!", */
 						mon_nam(mdef));
 				else if (vis)
-					pline("%s cuts deeply into %s!", /* EN pline("%s cuts deeply into %s!", */ // TODO DE
+					pline("SUBJECT %s VERB_SCHNEIDEN tief OBJECT in %s hinein!", /* EN pline("%s cuts deeply into %s!", */
 					      Monnam(magr), hittee);
 				*dmgptr *= 2;
 				return TRUE;
@@ -1062,7 +1062,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			return TRUE;
 		} else {
 			if (bigmonst(youmonst.data)) {
-				pline("%s cuts deeply into you!", /* EN pline("%s cuts deeply into you!", */ // TODO DE
+				pline("SUBJECT %s VERB_SCHNEIDEN tief OBJECT in PRONOMEN_PERSONAL hinein!", /* EN pline("%s cuts deeply into you!", */
 				      magr ? Monnam(magr) : wepdesc);
 				*dmgptr *= 2;
 				return TRUE;
@@ -1100,9 +1100,9 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 				return ((boolean)(youattack || vis));
 			}
 			if (noncorporeal(mdef->data) || amorphous(mdef->data)) {
-				pline("%s slices through %s %s.", wepdesc, /* EN pline("%s slices through %s %s.", wepdesc, */ // TODO DE
-				      s_suffix(mon_nam(mdef)), /* EN s_suffix(mon_nam(mdef)), */ // TODO DE
-				      mbodypart(mdef,NECK));
+				pline("SUBJECT %s VERB_GLEITEN OBJECT durch %s.", wepdesc, /* EN pline("%s slices through %s %s.", wepdesc, */
+				      genitivattribut_zu_wort(mon_nam(mdef), /* EN s_suffix(mon_nam(mdef)), */
+				      mbodypart(mdef,NECK))); /* EN mbodypart(mdef,NECK)); */
 				return TRUE;
 			}
 			*dmgptr = 2 * mdef->mhp + FATAL_DAMAGE_MODIFIER;
@@ -1118,7 +1118,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 				return TRUE;
 			}
 			if (noncorporeal(youmonst.data) || amorphous(youmonst.data)) {
-				pline("%s slices through your %s.", /* EN pline("%s slices through your %s.", */ // TODO DE
+				pline("SUBJECT %s VERB_GLEITEN OBJECT durch PRONOMEN_POSSESSIV %s.", /* EN pline("%s slices through your %s.", */
 				      wepdesc, body_part(NECK));
 				return TRUE;
 			}
@@ -1386,13 +1386,13 @@ arti_invoke(obj)
 nothing_special:
 	    /* you had the property from some other source too */
 	    if (carried(obj))
-		You_feel("a surge of power, but nothing seems to happen."); /* EN You_feel("a surge of power, but nothing seems to happen."); */ // TODO DE
+		Du_spuerst("einen Energieschub, aber nichts weiter scheint zu geschehen."); /* EN You_feel("a surge of power, but nothing seems to happen."); */
 	    return 1;
 	}
 	switch(oart->inv_prop) {
 	case CONFLICT:
 	    if(on) Du_fuehlst_dich("wie ein Aufrührer."); /* EN if(on) You_feel("like a rabble-rouser."); */
-	    else You_feel("the tension decrease around you."); /* EN else You_feel("the tension decrease around you."); */ // TODO DE
+	    else You("VERB_SPUEREN, wie die Spannung OBJECT um PRONOMEN_PERSONAL herum geringer wird."); /* EN else You_feel("the tension decrease around you."); */
 	    break;
 	case LEVITATION:
 	    if(on) {

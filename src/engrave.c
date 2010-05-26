@@ -1469,7 +1469,7 @@ struct engr *ep;
 static const char *epitaphs[] = {
 	"Ruhe in Frieden", /* EN "Rest in peace", */
 	"R.I.P.",
-	"Rest In Pieces", /* EN "Rest In Pieces", */ // TODO DE
+	"Muhe in Frieden", /* EN "Rest In Pieces", */
 	"Hinweis -- Es gibt KEINE wertvollen Sachen in diesem Grab", /* EN "Note -- there are NO valuable items in this grave", */
 	"1994 - 1995. Der langlebigste Hacker von allen", /* EN "1994-1995. The Longest-Lived Hacker Ever", */
 	"Das Grab des unbekannten Hackers", /* EN "The Grave of the Unknown Hacker", */
@@ -1479,7 +1479,7 @@ static const char *epitaphs[] = {
 	"Made in Taiwan",
 	"Og Freund. Og guter Kerl. Og stirbt. Og jetzt Essen", /* EN "Og friend. Og good dude. Og died. Og now food", */
 	"Beetlejuice, Beetlejuice, Beetlejuice", /* EN "Beetlejuice Beetlejuice Beetlejuice", */
-	"Look out below!", /* EN "Look out below!", */ // TODO DE
+	"Achtung, unter dir!", /* EN "Look out below!", */
 	"Bitte grabt mich nicht aus. Mir geht's fantastisch hier unten. -- Der Bewohner", /* EN "Please don't dig me up. I'm perfectly happy down here. -- Resident", */
 	"Lieber Postbote, bitte Nachsenden an: Gehennom, Asmodeus' Festung, fünfter Lemure von links", /* EN "Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, fifth lemure on the left", */
 	"Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go", /* EN "Mary had a little lamb/Its fleece was white as snow/When Mary was in trouble/The lamb was first to go", */ // TODO DE

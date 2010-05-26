@@ -247,7 +247,7 @@ dosounds()
 	if (mtmp && (hallu || !canseemon(mtmp))) {
 	    static const char * const ora_msg[5] = {
 		    "das Rauschen des Windes.",		/* Jupiter at Dodona */ /* EN "a strange wind.",		*/
-		    "convulsive ravings.",	/* Apollo at Delphi */ /* EN "convulsive ravings.",	 */ // TODO DE
+		    "ekstatische Weissagungen.",	/* Apollo at Delphi */ /* EN "convulsive ravings.",	 */
 		    "schnarchende Schlangen.",		/* AEsculapius at Epidaurus */ /* EN "snoring snakes.",		 */
 		    "someone say \"No more woodchucks!\"", /* EN "someone say \"No more woodchucks!\"", */ // TODO DE
 		    "a loud ZOT!"		/* both rec.humor.oracle */ /* EN "a loud ZOT!"		*/ // TODO DE
@@ -481,13 +481,13 @@ register struct monst *mtmp;
 					isnight ? "!" : ".  Warum ruhen wir nicht?"); /* EN isnight ? "!" : ".  Why do we not rest?"); */
 				verbl_msg = verbuf;
 		    	} else {
-		    	    Sprintf(verbuf,"%s%s",
-				nightchild ? "Child of the night, " : "", /* EN nightchild ? "Child of the night, " : "", */ // TODO DE # "Listen to them - the children of the night. What music they make!" (Jonathan Harker's Journal, 5 May, Dracula Chapter 2: in reference to wolves). | Kind|Geschöpf|Wesen|Geschöpfchen|Kindchen|
+		    	    Sprintf(verbuf,"SATZBEGINN %s%s", /* EN Sprintf(verbuf,"%s%s", */
+				nightchild ? "Geschöpf der Nacht, " : "", /* EN nightchild ? "Child of the night, " : "", */
 				midnight() ?
-					"I can stand this craving no longer!" : /* EN "I can stand this craving no longer!" : */ // TODO DE
+					"ich kann diesem Verlangen nicht länger widerstehen!" : /* EN "I can stand this craving no longer!" : */
 				isnight ?
 					"I beg you, help me satisfy this growing craving!" : /* EN "I beg you, help me satisfy this growing craving!" : */ // TODO DE
-					"I find myself growing a little weary."); /* EN "I find myself growing a little weary."); */ // TODO DE
+					"ich fühle mich etwas ermattet."); /* EN "I find myself growing a little weary."); */
 				verbl_msg = verbuf;
 			}
 		} else if (mtmp->mpeaceful) {
@@ -535,9 +535,9 @@ register struct monst *mtmp;
 	    break;
 	case MS_WERE:
 	    if (flags.moonphase == FULL_MOON && (night() ^ !rn2(13))) {
-		pline("%s throws back %s head and lets out a blood curdling %s!", /* EN pline("%s throws back %s head and lets out a blood curdling %s!", */ // TODO DE
+		pline("SUBJECT %s VERB_WERFEN OBJECT %s head and lets out einen markerschütternd%s!", /* EN pline("%s throws back %s head and lets out a blood curdling %s!", */ // TODO DE
 		      Monnam(mtmp), mhis(mtmp),
-		      ptr == &mons[PM_HUMAN_WERERAT] ? "Schrei" : "Heulen"); /* EN ptr == &mons[PM_HUMAN_WERERAT] ? "shriek" : "howl"); */
+		      ptr == &mons[PM_HUMAN_WERERAT] ? "en Schrei" : "es Heulen"); /* EN ptr == &mons[PM_HUMAN_WERERAT] ? "shriek" : "howl"); */
 		wake_nearto(mtmp->mx, mtmp->my, 11*11);
 	    } else
 		pline_msg =
