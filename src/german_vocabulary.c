@@ -6959,6 +6959,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Braune Grützen", "NOUN_BROWN_PUDDINGs", "", nominativ|akkusativ, feminin, n_plural, grundform|ohne},
   {"Brauner Grützen", "NOUN_BROWN_PUDDINGs", "", genitiv, feminin, n_plural, grundform|ohne},
 
+  {"Braunpuddings", "NOUN_BROWN_PUDDING", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Braunpudding", "NOUN_BROWN_PUDDING", "", dativ|nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Braunpuddinge", "NOUN_BROWN_PUDDINGs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Braunpuddingen", "NOUN_BROWN_PUDDINGs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Blutschwarzer Grütze", "NOUN_BLACK_PUDDING", "", dativ|genitiv, feminin, n_singular, grundform|ohne},
   {"Blutschwarzen Grütze", "NOUN_BLACK_PUDDING", "", dativ|genitiv, feminin, n_singular, unbestimmter|bestimmter},
   {"Blutschwarze Grütze", "NOUN_BLACK_PUDDING", "", nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -6972,6 +6977,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schwarzen Grützen", "NOUN_BLACK_PUDDINGs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Schwarze Grützen", "NOUN_BLACK_PUDDINGs", "", nominativ|akkusativ, feminin, n_plural, grundform|ohne},
   {"Schwarzer Grützen", "NOUN_BLACK_PUDDINGs", "", genitiv, feminin, n_plural, grundform|ohne},
+
+  {"Schwarzpuddings", "NOUN_BLACK_PUDDING", "", genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarzpudding", "NOUN_BLACK_PUDDING", "", dativ|nominativ|akkusativ, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarzpuddinge", "NOUN_BLACK_PUDDINGs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarzpuddingen", "NOUN_BLACK_PUDDINGs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Grünen Schleimes", "NOUN_GREEN_SLIME", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Grüne Schleim", "NOUN_GREEN_SLIME", "", nominativ, maskulin, n_singular, bestimmter},
@@ -8065,6 +8075,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Trolltöter", "NOUN_TROLLSBANE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Vorpahlklinge", "NOUN_VORPAL_BLADE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Vorpalklinge", "NOUN_VORPAL_BLADE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Schnippelschnippes", "NOUN_SNICKERSNEE", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schnippelschnipp", "NOUN_SNICKERSNEE", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},

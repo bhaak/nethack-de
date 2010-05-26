@@ -2764,8 +2764,10 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_OGRE_KING","Ogerkönig","es","Ogerkönig","e","maskulin"),
     dekliniere_nominalphrase("NOUN_GRAY_OOZE", "Grau", "Schlamm", "es", "Schlamm", "e", "maskulin"), # grauer Schleim, Schlick?
     dekliniere_nominalphrase("NOUN_BROWN_PUDDING", "Braun", "Grütze", "", "Grütze", "en", "feminin"),
+    dekliniere_substantiv("NOUN_BROWN_PUDDING", "Braunpudding", "s", "Braunpudding", "e", "feminin"), 
     dekliniere_nominalphrase("NOUN_BLACK_PUDDING", "Blutschwarz", "Grütze", "", "Grütze", "en", "feminin"),
     dekliniere_nominalphrase("NOUN_BLACK_PUDDING", "Schwarz", "Grütze", "", "Grütze", "en", "feminin"),
+    dekliniere_substantiv("NOUN_BLACK_PUDDING", "Schwarzpudding", "s", "Schwarzpudding", "e", "feminin"), 
     dekliniere_nominalphrase("NOUN_GREEN_SLIME", "Grün", "Schleim", "es", "Schleim", "e", "maskulin"),
     dekliniere_substantiv("NOUN_QUANTUM_MECHANIC", "Quantenteilchen", "s", "Quantenteilchen", "", "neutrum"),
     dekliniere_substantiv("NOUN_RUST_MONSTER", "Rostmonster", "s", "Rostmonster", "", "neutrum"),
@@ -3066,6 +3068,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_OGRESMASHER","Ogermantscher","","","","maskulin"),
     dekliniere_substantiv("NOUN_TROLLSBANE","Trolltöter","s","","","maskulin"),
     dekliniere_substantiv("NOUN_VORPAL_BLADE","Vorpahlklinge","","","","feminin"),
+    dekliniere_substantiv("NOUN_VORPAL_BLADE","Vorpalklinge","","","","feminin"),
     dekliniere_substantiv("NOUN_SNICKERSNEE","Schnippelschnipp","es","","","neutrum"), # EAV
     dekliniere_substantiv("NOUN_SNICKERSNEE","Snickersnee","","","","neutrum"),
     dekliniere_substantiv("NOUN_SUNSWORD","Sonnenschwert","es","","","neutrum"),
