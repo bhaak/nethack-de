@@ -1406,7 +1406,7 @@ register struct obj *obj;
 	    else {
 		pline("SATZBEGINN KASUS_AKKUSATIV %s eindosen ohne Handschuhe zu tragen ist ein verhängnisvoller Fehler ...", /* EN pline("Tinning %s without wearing gloves is a fatal mistake...", */
 			an(mons[corpse->corpsenm].mname));
-		Sprintf(kbuf, "versuchte ohne Handschuhe KASUS_AKKUSATIV %s einzudosen", /* EN Sprintf(kbuf, "trying to tin %s without gloves", */
+		Sprintf(kbuf, "beim Eindosen KASUS_GENITIV %s ohne Handschuhe", /* EN Sprintf(kbuf, "trying to tin %s without gloves", */
 			an(mons[corpse->corpsenm].mname));
 	    }
 	    instapetrify(kbuf);
@@ -2323,7 +2323,10 @@ struct obj *obj;
 
 			Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", /* EN Sprintf(kbuf, "%s corpse", */
 				an(mons[otmp->corpsenm].mname));
-			pline("KASUS_AKKUSATIV %s zu berühren ist ein fataler Fehler.", kbuf); /* EN pline("Snatching %s is a fatal mistake.", kbuf); */
+			pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren ist ein fataler Fehler.", kbuf); /* EN pline("Snatching %s is a fatal mistake.", kbuf); */
+#ifdef GERMAN
+			Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(obj, TRUE)));
+#endif
 			instapetrify(kbuf);
 		    }
 		    otmp = hold_another_object(otmp, "SUBJECT VERB_DROP %s SATZKLAMMER!", /* EN otmp = hold_another_object(otmp, "You drop %s!", */

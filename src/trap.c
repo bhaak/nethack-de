@@ -2223,7 +2223,7 @@ const char *arg;
 			&& !Stone_resistance) {
 		pline(touch_sentence, arg, /* EN pline("%s touch the %s corpse.", arg, */
 		        mons[uwep->corpsenm].mname);
-		Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[uwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uwep->corpsenm].mname)); */
+		Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(uwep, TRUE))); /* EN Sprintf(kbuf, "%s corpse", an(mons[uwep->corpsenm].mname)); */
 		instapetrify(kbuf);
 	}
 	/* Or your secondary weapon, if wielded */
@@ -2231,7 +2231,7 @@ const char *arg;
 			touch_petrifies(&mons[uswapwep->corpsenm]) && !Stone_resistance){
 		pline(touch_sentence, arg, /* EN pline("%s touch the %s corpse.", arg, */
 		        mons[uswapwep->corpsenm].mname);
-		Sprintf(kbuf, "MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[uswapwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); */
+		Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(uswapwep, TRUE))); /* EN Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); */
 		instapetrify(kbuf);
 	}
 }
@@ -3368,7 +3368,7 @@ struct trap *ttmp;
 		else {
 			char kbuf[BUFSZ];
 
-			Sprintf(kbuf, "eines Rettungsversuchs KASUS_GENITIV %s", /* EN Sprintf(kbuf, "trying to help %s out of a pit", */
+			Sprintf(kbuf, "bei einem Rettungsversuch KASUS_GENITIV %s", /* EN Sprintf(kbuf, "trying to help %s out of a pit", */
 					an(mtmp->data->mname));
 			instapetrify(kbuf);
 			return 1;

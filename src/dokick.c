@@ -434,13 +434,13 @@ xchar x, y;
 			&& !Stone_resistance && !uarmf) {
 	    char kbuf[BUFSZ];
 
-	    You("VERB_KICK OBJECT ARTIKEL_BESTIMMTER %s mit NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("kick the %s with your bare %s.", */
+	    You("VERB_KICK OBJECT ARTIKEL_BESTIMMTER %s mit NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("kick the %s with your bare %s.", */
 		corpse_xname(kickobj, TRUE), makeplural(body_part(FOOT)));
 	    if (!(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
 		You("VERB_VERSTEINERN ..."); /* EN You("turn to stone..."); */
 		killer_format = KILLED_BY;
 		/* KMH -- otmp should be kickobj */
-		Sprintf(kbuf, "Tretens KASUS_GENITIV %s ohne Stiefel", /* EN Sprintf(kbuf, "kicking %s without boots", */
+		Sprintf(kbuf, "wegen Tretens KASUS_GENITIV %s ohne Stiefel", /* EN Sprintf(kbuf, "kicking %s without boots", */
 			an(corpse_xname(kickobj, TRUE)));
 		killer = kbuf;
 		done(STONING);

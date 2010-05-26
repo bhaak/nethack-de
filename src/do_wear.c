@@ -451,7 +451,7 @@ Gloves_off()
 
 	You("VERB_NEHMEN OBJECT %s in KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("wield the %s in your bare %s.", */
 	    corpse_xname(uwep, TRUE), makeplural(body_part(HAND)));
-	Strcpy(kbuf, an(corpse_xname(uwep, TRUE)));
+	Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(uwep, TRUE))); /* EN Strcpy(kbuf, an(corpse_xname(uwep, TRUE))); */
 	instapetrify(kbuf);
 	uwepgone();  /* life-saved still doesn't allow touching cockatrice */
     }
@@ -464,7 +464,7 @@ Gloves_off()
 	You("VERB_NEHMEN OBJECT %s in KASUS_AKKUSATIV PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("wield the %s in your bare %s.", */
 	    corpse_xname(uswapwep, TRUE), body_part(HAND));
 
-	Strcpy(kbuf, an(corpse_xname(uswapwep, TRUE)));
+	Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(uswapwep, TRUE))); /* EN Strcpy(kbuf, an(corpse_xname(uswapwep, TRUE))); */
 	instapetrify(kbuf);
 	uswapwepgone();	/* lifesaved still doesn't allow touching cockatrice */
     }

@@ -1261,7 +1261,7 @@ struct attack *mattk;
 		    touch_petrifies(&mons[otmp->corpsenm]) && !uarmg) {
 		char kbuf[BUFSZ];
 
-		Sprintf(kbuf, "stolen %s corpse", mons[otmp->corpsenm].mname); /* EN Sprintf(kbuf, "stolen %s corpse", mons[otmp->corpsenm].mname); */ // TODO DE
+		Sprintf(kbuf, "wegen KASUS_GENITIV ARTIKEL_UNBESTIMMTER ADJEKTIV_GESTOHLEN %s", corpse_xname(otmp, TRUE)); /* EN Sprintf(kbuf, "stolen %s corpse", mons[otmp->corpsenm].mname); */
 		instapetrify(kbuf);
 		break;		/* stop the theft even if hero survives */
 	    }
@@ -1914,7 +1914,7 @@ register struct attack *mattk;
 		char kbuf[BUFSZ];
 
 		You("VERB_BITE OBJECT in %s.", mon_nam(mdef)); /* EN You("bite into %s.", mon_nam(mdef)); */
-		Sprintf(kbuf, "swallowing %s whole", an(mdef->data->mname)); /* EN Sprintf(kbuf, "swallowing %s whole", an(mdef->data->mname)); */ // TODO DE
+		Sprintf(kbuf, "beim Verschlingen KASUS_GENITIV ARTIKEL_UNBESTIMMTER ADJEKTIV_GANZ %s", mdef->data->mname); /* EN Sprintf(kbuf, "swallowing %s whole", an(mdef->data->mname)); */
 		instapetrify(kbuf);
 	    }
 	}

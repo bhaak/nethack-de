@@ -1331,6 +1331,9 @@ boolean telekinesis;	/* not picking it up directly by hand */
 
 			Strcpy(kbuf, an(corpse_xname(obj, TRUE)));
 			pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */
+#ifdef GERMAN
+			Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(obj, TRUE)));
+#endif
 			instapetrify(kbuf);
 		    return -1;
 		}
@@ -1845,7 +1848,10 @@ register struct obj *obj;
 		    char kbuf[BUFSZ];
 
 		    Strcpy(kbuf, an(corpse_xname(obj, TRUE)));
-				pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren, ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */
+		    pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren, ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */
+#ifdef GERMAN
+		    Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(obj, TRUE)));
+#endif
 		    instapetrify(kbuf);
 		    return -1;
 		}
@@ -1969,6 +1975,9 @@ register struct obj *obj;
 
 		    Strcpy(kbuf, an(corpse_xname(obj, TRUE)));
 		    pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren, ist ein fataler Fehler.", kbuf); /* EN pline("Touching %s is a fatal mistake.", kbuf); */
+#ifdef GERMAN
+		    Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(obj, TRUE)));
+#endif
 		    instapetrify(kbuf);
 		    return -1;
 		}

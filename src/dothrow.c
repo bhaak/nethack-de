@@ -100,7 +100,7 @@ int shotlimit;
 		    touch_petrifies(&mons[obj->corpsenm]))) {
 		You("VERB_WERFEN OBJECT ARTIKEL_BESTIMMTER MODIFIER_CORPSE %s NOUN_CORPSE NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("throw the %s corpse with your bare %s.", */
 		    mons[obj->corpsenm].mname, body_part(HAND));
-		Sprintf(killer_buf, "MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[obj->corpsenm].mname)); /* EN Sprintf(killer_buf, "%s corpse", an(mons[obj->corpsenm].mname)); */
+		Sprintf(killer_buf, "wegen KASUS_GENITIV ARTIKEL_UNBESTIMMTER MODIFIER_CORPSE %s NOUN_CORPSE", an(mons[obj->corpsenm].mname)); /* EN Sprintf(killer_buf, "%s corpse", an(mons[obj->corpsenm].mname)); */
 		instapetrify(killer_buf);
 	}
 	if (welded(obj)) {
@@ -815,7 +815,7 @@ boolean hitsroof;
 		    !(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
  petrify:
 		killer_format = KILLED_BY;
-		killer = "Grundschul-NOUN_PHYSIK";	/* "what goes up..." */ /* EN killer = "elementary physics";	*/
+		killer = "durch Grundschul-NOUN_PHYSIK";	/* "what goes up..." */ /* EN killer = "elementary physics";	*/
 		You("VERB_VERSTEINERN."); /* EN You("turn to stone."); */
 		if (obj) dropy(obj);	/* bypass most of hitfloor() */
 		done(STONING);

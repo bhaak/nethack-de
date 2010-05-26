@@ -491,7 +491,7 @@ int	mntmp;
 
 	    	pline("Nicht mehr länger versteinerungsresistent SUBJECT_IM_SATZ VERB_TOUCH PRONOMEN_PERSONAL OBJECT %s.", /* EN pline("No longer petrifying-resistant, you touch %s.", */
 	    			mon_nam(u.usteed));
-	    	Sprintf(buf, "riding %s", an(u.usteed->data->mname)); /* EN Sprintf(buf, "riding %s", an(u.usteed->data->mname)); */ // TODO DE
+	    	Sprintf(buf, "beim Reiten KASUS_GENITIV %s", an(u.usteed->data->mname)); /* EN Sprintf(buf, "riding %s", an(u.usteed->data->mname)); */
 	    	instapetrify(buf);
  	    }
 	    if (!can_ride(u.usteed)) dismount_steed(DISMOUNT_POLY);

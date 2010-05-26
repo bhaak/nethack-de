@@ -94,7 +94,7 @@ NEARDATA const char * const killed_by_prefix[] = {
 // TODO DE
 	"getötet KASUS_DATIV von ", "erstickte KASUS_DATIV an ", "vergiftet KASUS_AKKUSATIV durch ", "starb KASUS_AKKUSATIV ARTIKEL_BESTIMMTER ", "ertrank KASUS_DATIV in ", /* EN  "killed by ", "choked on ", "poisoned by ", "died of ", "drowned in ", */
 
-	"verbrannte durch KASUS_AKKUSATIV ", "aufgelöst in KASUS_DATIV ", "erschlagen von KASUS_DATIV ", "versteinerte wegen KASUS_GENITIV ", /* EN "burned by ", "dissolved in ", "crushed to death by ", "petrified by ", */
+	"verbrannte durch KASUS_AKKUSATIV ", "aufgelöst in KASUS_DATIV ", "erschlagen von KASUS_DATIV ", "versteinerte ", /* EN "burned by ", "dissolved in ", "crushed to death by ", "petrified by ", */
 	"verschleimte durch KASUS_AKKUSATIV ", "getötet von KASUS_DATIV ", "", "", "", "", "" /* EN "turned to slime by ", "killed by ", "", "", "", "", "" */
 };
 

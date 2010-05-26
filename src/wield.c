@@ -138,7 +138,7 @@ struct obj *wep;
 
 	    You("VERB_NEHMEN OBJECT OBJECT MODIFIER_CORPSE ARTIKEL_BESTIMMTER %s NOUN_CORPSE NEUES_OBJECT OBJECT in PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("wield the %s corpse in your bare %s.", */
 		mons[wep->corpsenm].mname, makeplural(body_part(HAND)));
-	    Sprintf(kbuf, "%s corpse", an(mons[wep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[wep->corpsenm].mname)); */ // TODO DE
+	    Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(wep, TRUE))); /* EN Sprintf(kbuf, "%s corpse", an(mons[wep->corpsenm].mname)); */
 	    instapetrify(kbuf);
 	} else if (uarms && bimanual(wep))
 	    You("VERB_KOENNEN OBJECT PRONOMEN_KEIN ADJEKTIV_ZWEIHAENDISCH %s führen und gleichzeitig einen Schild tragen.", /* EN You("cannot wield a two-handed %s while wearing a shield.", */
@@ -503,7 +503,7 @@ can_twoweapon()
 
 		You("VERB_NEHMEN OBJECT OBJECT MODIFIER_CORPSE ARTIKEL_BESTIMMTER %s NOUN_CORPSE NEUES_OBJECT OBJECT in PRONOMEN_POSSESSIV ADJEKTIV_BARE %s.", /* EN You("wield the %s corpse with your bare %s.", */
 		    mons[uswapwep->corpsenm].mname, body_part(HAND));
-		Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); */ // TODO DE
+		Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(uswapwep, TRUE))); /* EN Sprintf(kbuf, "%s corpse", an(mons[uswapwep->corpsenm].mname)); */
 		instapetrify(kbuf);
 	} else if (Glib || uswapwep->cursed) {
 		if (!Glib)

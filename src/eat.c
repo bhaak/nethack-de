@@ -469,7 +469,7 @@ register int pm;
 	if (touch_petrifies(&mons[pm]) || pm == PM_MEDUSA) {
 	    if (!Stone_resistance &&
 		!(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
-		Sprintf(killer_buf, "tasting %s meat", mons[pm].mname); /* EN Sprintf(killer_buf, "tasting %s meat", mons[pm].mname); */ // TODO DE
+		Sprintf(killer_buf, "aufgrund einer %s-NOUN_FLEISCH-Verkostung", mons[pm].mname); /* EN Sprintf(killer_buf, "tasting %s meat", mons[pm].mname); */
 		killer_format = KILLED_BY;
 		killer = killer_buf;
 		You("VERB_VERSTEINERN."); /* EN You("turn to stone."); */

@@ -84,7 +84,7 @@ use_saddle(otmp)
 
 	    You("VERB_TOUCH OBJECT %s.", mon_nam(mtmp)); /* EN You("touch %s.", mon_nam(mtmp)); */
  	    if (!(poly_when_stoned(youmonst.data) && polymon(PM_STONE_GOLEM))) {
-		Sprintf(kbuf, "attempting to saddle %s", an(mtmp->data->mname)); /* EN Sprintf(kbuf, "attempting to saddle %s", an(mtmp->data->mname)); */ // TODO DE
+		Sprintf(kbuf, "beim Versuch OBJECT %s zu satteln", an(mtmp->data->mname)); /* EN Sprintf(kbuf, "attempting to saddle %s", an(mtmp->data->mname)); */
 		instapetrify(kbuf);
  	    }
 	}
@@ -265,7 +265,7 @@ mount_steed(mtmp, force)
 	    char kbuf[BUFSZ];
 
 	    You("VERB_TOUCH OBJECT %s.", mon_nam(mtmp)); /* EN You("touch %s.", mon_nam(mtmp)); */
-	    Sprintf(kbuf, "attempting to ride %s", an(mtmp->data->mname)); /* EN Sprintf(kbuf, "attempting to ride %s", an(mtmp->data->mname)); */ // TODO DE
+	    Sprintf(kbuf, "beim Versuch OBJECT %s zu besteigen", an(mtmp->data->mname)); /* EN Sprintf(kbuf, "attempting to ride %s", an(mtmp->data->mname)); */
 	    instapetrify(kbuf);
 	}
 	if (!mtmp->mtame || mtmp->isminion) {
