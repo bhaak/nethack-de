@@ -383,7 +383,11 @@ void german2meta(const char *input, char *output)
 					if (WISH_DEBUG) printf("ADJEKTIV_ 8 %s\n", wort->typ);
 				}
 			} else if (wand_gefunden) {
-				if ((strncmp("NOUN_", wort->typ, 4)==0)){
+				if ((strncmp("NOUN_PLATIN", wort->typ, 11)==0)){
+					/* Workaround fuer "Zauberstab aus Platin" */
+					wort = get_meta_substantiv_with(str+i, "MADE_OF_WAND");
+					if (WISH_DEBUG) printf("NOUN_WAND_ 1 %s\n", wort->typ);
+				} else if ((strncmp("NOUN_", wort->typ, 4)==0)){
 					wort = get_meta_substantiv_with(str+i, "NOUN_WAND_");
 					if (WISH_DEBUG) printf("NOUN_WAND_ 1 %s\n", wort->typ);
 				}
