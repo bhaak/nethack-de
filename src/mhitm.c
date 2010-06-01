@@ -232,7 +232,7 @@ mattackm(magr, mdef)
 	    if (u.usleep) You("VERB_TRAEUMEN OBJECT KASUS_DATIV von %s.", /* if (u.usleep) You("dream of %s.", */
 				(mdef->data->geno & G_UNIQ) ?
 				a_monnam(mdef) : makeplural(m_monnam(mdef)));
-	    else pline("Suddenly, you notice %s.", a_monnam(mdef)); /* else pline("Suddenly, you notice %s.", a_monnam(mdef)); */ // TODO DE
+	    else pline("Plötzlich SUBJECT_IM_SATZ VERB_BEMERKEN PRONOMEN_PERSONAL OBJECT %s.", a_monnam(mdef)); /* else pline("Suddenly, you notice %s.", a_monnam(mdef)); */
 	}
     }
 
@@ -501,7 +501,7 @@ gulpmm(magr, mdef, mattk)
 	if (mdef->data->msize >= MZ_HUGE) return MM_MISS;
 
 	if (vis) {
-		Sprintf(buf,"SUBJECT %s swallows", Monnam(magr)); /* EN Sprintf(buf,"%s swallows", Monnam(magr)); */ // TODO DE
+		Sprintf(buf,"SUBJECT %s VERB_VERSCHLINGEN OBJECT", Monnam(magr)); /* EN Sprintf(buf,"%s swallows", Monnam(magr)); */
 		pline("%s %s.", buf, mon_nam(mdef));
 	}
 	for (obj = mdef->minvent; obj; obj = obj->nobj)
@@ -724,7 +724,7 @@ mdamagem(magr, mdef, mattk)
 			  on_fire(mdef->data, mattk));
 		if (pd == &mons[PM_STRAW_GOLEM] ||
 		    pd == &mons[PM_PAPER_GOLEM]) {
-			if (vis) pline("%s burns completely!", Monnam(mdef)); /* EN if (vis) pline("%s burns completely!", Monnam(mdef)); */ // TODO DE
+			if (vis) pline("SUBJECT %s VERB_VERBRENNEN völlig!", Monnam(mdef)); /* EN if (vis) pline("%s burns completely!", Monnam(mdef)); */
 			mondied(mdef);
 			if (mdef->mhp > 0) return 0;
 			else if (mdef->mtame && !vis)
@@ -736,7 +736,7 @@ mdamagem(magr, mdef, mattk)
 		tmp += destroy_mitem(mdef, SPBOOK_CLASS, AD_FIRE);
 		if (resists_fire(mdef)) {
 		    if (vis)
-			pline_The("fire doesn't seem to burn %s!", /* EN pline_The("fire doesn't seem to burn %s!", */ // TODO DE
+			pline_The("NOUN_FEUER VERB_SCHEINEN OBJECT %s nicht zu verbrennen!", /* EN pline_The("fire doesn't seem to burn %s!", */
 								mon_nam(mdef));
 		    shieldeff(mdef->mx, mdef->my);
 		    golemeffects(mdef, AD_FIRE, tmp);
@@ -984,7 +984,7 @@ mdamagem(magr, mdef, mattk)
 		mdef->mstrategy &= ~STRAT_WAITFORU;
 		if (vis) {
 		    Strcpy(buf, Monnam(magr));
-		    pline("%s steals some gold from %s.", buf, mon_nam(mdef)); /* EN pline("%s steals some gold from %s.", buf, mon_nam(mdef)); */ // TODO DE
+		    pline("SUBJECT %s VERB_STEHLEN etwas Gold OBJECT KASUS_DATIV von %s.", buf, mon_nam(mdef)); /* EN pline("%s steals some gold from %s.", buf, mon_nam(mdef)); */
 		}
 		if (!tele_restrict(magr)) {
 		    (void) rloc(magr, FALSE);
@@ -1043,7 +1043,7 @@ mdamagem(magr, mdef, mattk)
 			(void) add_to_minv(magr, otmp);
 			if (vis) {
 				Strcpy(buf, Monnam(magr));
-				pline("%s steals %s from %s!", buf, /* EN pline("%s steals %s from %s!", buf, */ // TODO DE
+				pline("SUBJECT %s VERB_STEHLEN OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV von %s!", buf, /* EN pline("%s steals %s from %s!", buf, */
 				    onambuf, mdefnambuf);
 			}
 			possibly_unwield(mdef, FALSE);

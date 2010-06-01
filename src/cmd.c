@@ -938,7 +938,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Slimed) you_are("am Verschleimen"); /* EN if (Slimed) you_are("turning into slime"); */
 	if (Strangled) you((u.uburied) ? "VERB_SEIN begraben" : "VERB_WERDEN stranguliert"); /* EN if (Strangled) you_are((u.uburied) ? "buried" : "being strangled"); */
 	if (Glib) {
-		Sprintf(buf, "ADJEKTIV_FETTIG %s", makeplural(body_part(FINGER))); /* EN Sprintf(buf, "slippery %s", makeplural(body_part(FINGER))); */
+		Sprintf(buf, "OBJECT ADJEKTIV_FETTIG %s", makeplural(body_part(FINGER))); /* EN Sprintf(buf, "slippery %s", makeplural(body_part(FINGER))); */
 		you_have(buf);
 	}
 	if (Fumbling) you_are("ein Trampel"); /* EN if (Fumbling) enl_msg("You fumble", "", "d", ""); */

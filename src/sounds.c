@@ -486,7 +486,7 @@ register struct monst *mtmp;
 				midnight() ?
 					"ich kann diesem Verlangen nicht länger widerstehen!" : /* EN "I can stand this craving no longer!" : */
 				isnight ?
-					"I beg you, help me satisfy this growing craving!" : /* EN "I beg you, help me satisfy this growing craving!" : */ // TODO DE
+					"ich bitte KASUS_AKKUSATIV PRONOMEN_PERSONAL, NEUER_SATZ MODIFIER_VERB_IMPERATIV VERB_HELFEN mir, dieses wachsende Verlangen zu stillen!" : /* EN "I beg you, help me satisfy this growing craving!" : */
 					"ich fühle mich etwas ermattet."); /* EN "I find myself growing a little weary."); */
 				verbl_msg = verbuf;
 			}
@@ -510,7 +510,7 @@ register struct monst *mtmp;
 				       /* other famous vampire quotes can follow here if desired */
 				};
 				if (kindred)
-				    verbl_msg = "This is my hunting ground that you dare to prowl!"; /* EN verbl_msg = "This is my hunting ground that you dare to prowl!"; */ // TODO DE
+				    verbl_msg = "Das ist mein Jagdrevier, in dem SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL herumzutreiben VERB_WAGEN!"; /* EN verbl_msg = "This is my hunting ground that you dare to prowl!"; */
 				else if (youmonst.data == &mons[PM_SILVER_DRAGON] ||
 					 youmonst.data == &mons[PM_BABY_SILVER_DRAGON]) {
 				    /* Silver dragons are silver in color, not made of silver */
@@ -535,9 +535,9 @@ register struct monst *mtmp;
 	    break;
 	case MS_WERE:
 	    if (flags.moonphase == FULL_MOON && (night() ^ !rn2(13))) {
-		pline("SUBJECT %s VERB_WERFEN OBJECT %s head and lets out einen markerschütternd%s!", /* EN pline("%s throws back %s head and lets out a blood curdling %s!", */ // TODO DE
-		      Monnam(mtmp), mhis(mtmp),
-		      ptr == &mons[PM_HUMAN_WERERAT] ? "en Schrei" : "es Heulen"); /* EN ptr == &mons[PM_HUMAN_WERERAT] ? "shriek" : "howl"); */
+		pline("SUBJECT %s VERB_WERFEN OBJECT PRONOMEN_POSSESSIV_SUBJECT %s zurück und VERB_LASSEN %s los!", /* EN pline("%s throws back %s head and lets out a blood curdling %s!", */
+		      Monnam(mtmp), mbodypart(mtmp, HEAD), /* EN Monnam(mtmp), mhis(mtmp), */
+		      ptr == &mons[PM_HUMAN_WERERAT] ? "einen markerschütternden Schrei" : "ein markerschütterndes Heulen"); /* EN ptr == &mons[PM_HUMAN_WERERAT] ? "shriek" : "howl"); */
 		wake_nearto(mtmp->mx, mtmp->my, 11*11);
 	    } else
 		pline_msg =

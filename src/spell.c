@@ -730,7 +730,7 @@ boolean atme;
 	 */
 	if (spellknow(spell) <= 0) {
 	    Your("NOUN_KNOWLEDGE dieses Spruches VERB_SEIN verzerrt."); /* EN Your("knowledge of this spell is twisted."); */
-	    pline("It invokes nightmarish images alptraumhafte Bilder in your mind..."); /* EN pline("It invokes nightmarish images in your mind..."); */ // TODO DE
+	    pline("Es beschwört alptraumhafte Bilder in deinem Verstand herauf ..."); /* EN pline("It invokes nightmarish images in your mind..."); */
 	    spell_backfire(spell);
 	    return(0);
 	} else if (spellknow(spell) <= 100) {

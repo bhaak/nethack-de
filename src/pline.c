@@ -9,6 +9,10 @@
 #include "edog.h"
 #endif
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVLB
 
 static boolean no_repeat = FALSE;
@@ -424,7 +428,7 @@ register struct monst *mtmp;
 	else if (mtmp->mfrozen)	  Strcat(info, ", paralyzed");
 #else
 	else if (mtmp->mfrozen || !mtmp->mcanmove)
-				  Strcat(info, ", can't move"); /* EN Strcat(info, ", can't move"); */ // TODO DE
+				  Strcat(info, ", bewegungsunfähig"); /* EN Strcat(info, ", can't move"); */
 #endif
 				  /* [arbitrary reason why it isn't moving] */
 	else if (mtmp->mstrategy & STRAT_WAITMASK)
@@ -435,7 +439,7 @@ register struct monst *mtmp;
 					mtmp->mspeed == MFAST ? ", schnell" : /* EN mtmp->mspeed == MFAST ? ", fast" : */
 					mtmp->mspeed == MSLOW ? ", langsam" : /* EN mtmp->mspeed == MSLOW ? ", slow" : */
 					", ???? Geschwindigkeit"); /* EN ", ???? speed"); */
-	if (mtmp->mundetected)	  Strcat(info, ", verborgen"); /* EN if (mtmp->mundetected)	  Strcat(info, ", concealed"); */ // TODO DE
+	if (mtmp->mundetected)	  Strcat(info, ", verborgen"); /* EN if (mtmp->mundetected)	  Strcat(info, ", concealed"); */
 	if (mtmp->minvis)	  Strcat(info, ", unsichtbar"); /* EN if (mtmp->minvis)	  Strcat(info, ", invisible"); */
 	if (mtmp == u.ustuck)	  Strcat(info, 
 			(sticks(youmonst.data)) ? ", held by you" : /* EN (sticks(youmonst.data)) ? ", held by you" : */ // TODO DE
@@ -468,7 +472,7 @@ register struct monst *mtmp;
 void
 ustatusline()
 {
-	char info[BUFSZ];
+	char info[BUFSZ], buf[BUFSZ]; /* EN char info[BUFSZ]; */
 
 	info[0] = '\0';
 	if (Sick) {
@@ -484,9 +488,9 @@ ustatusline()
 		Strcat(info, " sterbend");
 #endif
 	}
-	if (Stoned)		Strcat(info, ", solidifying"); /* EN if (Stoned)		Strcat(info, ", solidifying"); */ // TODO DE
-	if (Slimed)		Strcat(info, ", becoming slimy"); /* EN if (Slimed)		Strcat(info, ", becoming slimy"); */ // TODO DE
-	if (Strangled)		Strcat(info, ", being strangled"); /* EN if (Strangled)		Strcat(info, ", being strangled"); */ // TODO DE
+	if (Stoned)		Strcat(info, ", verfestigend"); /* EN if (Stoned)		Strcat(info, ", solidifying"); */
+	if (Slimed)		Strcat(info, ", verschleimend"); /* EN if (Slimed)		Strcat(info, ", becoming slimy"); */
+	if (Strangled)		Strcat(info, ", gewürgt"); /* EN if (Strangled)		Strcat(info, ", being strangled"); */
 	if (Vomiting)		Strcat(info, ", nauseated"); /* !"nauseous" */ /* EN if (Vomiting)		Strcat(info, ", nauseated"); */ // TODO DE
 	if (Confusion)		Strcat(info, ", verwirrt"); /* EN if (Confusion)		Strcat(info, ", confused"); */
 	if (Blind) {
@@ -506,10 +510,10 @@ ustatusline()
 	    const char *what = body_part(LEG);
 	    if ((Wounded_legs & BOTH_SIDES) == BOTH_SIDES)
 		what = makeplural(what);
-				Sprintf(eos(info), ", ADJEKTIV_VERLETZT %s", what); /* EN Sprintf(eos(info), ", injured %s", what); */ // TODO DE
+				Sprintf(buf, ", ADJEKTIV_VERLETZT %s", what); Sprintf(eos(info), "%s", german(buf)); /* EN Sprintf(eos(info), ", injured %s", what); */
 	}
-	if (Glib)		Sprintf(eos(info), ", ADJEKTIV_SLIPPERY %s", /* EN if (Glib)		Sprintf(eos(info), ", slippery %s", */
-					makeplural(body_part(HAND)));
+	if (Glib) {		Sprintf(buf, ", ADJEKTIV_FETTIG %s", /* EN if (Glib)		Sprintf(eos(info), ", slippery %s", */
+					makeplural(body_part(HAND))); Sprintf(eos(info), "%s", german(buf)); } /* EN makeplural(body_part(HAND))); */
 	if (u.utrap)		Strcat(info, ", trapped"); /* EN if (u.utrap)		Strcat(info, ", trapped"); */ // TODO DE
 	if (Fast)		Strcat(info, Very_fast ?
 						", sehr schnell" : ", schnell"); /* EN ", very fast" : ", fast"); */
