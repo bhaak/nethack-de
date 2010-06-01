@@ -1424,6 +1424,10 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 	if(!strcmp(attribut, "NOUN_IT")) {
 		strcat(buf, "PRONOMEN_SEIN "); /* sein Wort */
 		strcat(buf, wort);
+	} else if (!strncmp(attribut, "PRONOMEN_POSSESSIV", 18)) {
+		strcat(buf, attribut);
+		strcat(buf, " ");
+		strcat(buf, wort); /* dein/Euer Wort */
 	} else if (!strncmp(attribut, "ARTIKEL_", 8)) {
 		strcat(buf, "ARTIKEL_BESTIMMTER ");
 		strcat(buf, wort);

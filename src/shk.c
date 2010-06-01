@@ -4101,7 +4101,7 @@ char *buf;
 struct obj *obj;
 {
 	if (obj->where == OBJ_MINVENT)
-	    return strcpy(buf, s_suffix(mon_nam(obj->ocarry)));
+	    return strcpy(buf, mon_nam(obj->ocarry)); /* EN return strcpy(buf, s_suffix(mon_nam(obj->ocarry))); */
 	return (char *)0;
 }
 

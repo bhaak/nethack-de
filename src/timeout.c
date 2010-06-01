@@ -897,16 +897,29 @@ long timeout;
 			    switch (obj->where) {
 				case OBJ_INVENT:
 				case OBJ_MINVENT:
-				    pline("%s %scandle%s getting short.", /* EN pline("%s %scandle%s getting short.", */ // TODO DE
+#ifdef GERMAN
+				    pline("SUBJECT %s%s VERB_SEIN erkennbar kurz geworden.",
+					genitivattribut_zu_wort(whose, many ? "NOUN_CANDLEs" : "NOUN_CANDLE"),
+					menorah ? " am Kandelaber" : "");
+#else
+				    pline("%s %scandle%s getting short.",
 					whose,
-					menorah ? "candelabrum's " : "", /* EN menorah ? "candelabrum's " : "", */ // TODO DE
-					many ? "s are" : " is"); /* EN many ? "s are" : " is"); */ // TODO DE
+					menorah ? "candelabrum's " : "",
+					many ? "s are" : " is");
+#endif
 				    break;
 				case OBJ_FLOOR:
-				    You("see %scandle%s getting short.", /* EN You("see %scandle%s getting short.", */ // TODO DE
-					    menorah ? "a candelabrum's " : /* EN menorah ? "a candelabrum's " : */ // TODO DE
-						many ? "some " : "a ", /* EN many ? "some " : "a ", */ // TODO DE
+#ifdef GERMAN
+				    You("VERB_SEHEN OBJECT %s NOUN_CANDLE%s%s erkennbar kurz werden.",
+					    many ? "PRONOMEN_MEHRERE" : "ARTIKEL_UNBESTIMMTER",
+					    many ? "s" : "",
+					    menorah ? " am Kandelaber" : "");
+#else
+				    You("see %scandle%s getting short.",
+					    menorah ? "am Kandelaber " :
+						many ? "some " : "a ",
 					    many ? "s" : "");
+#endif
 				    break;
 			    }
 			break;
@@ -916,20 +929,34 @@ long timeout;
 			    switch (obj->where) {
 				case OBJ_INVENT:
 				case OBJ_MINVENT:
+#ifdef GERMAN
 				    pline(
-					"%s %scandle%s flame%s flicker%s low!", /* EN "%s %scandle%s flame%s flicker%s low!", */ // TODO DE
+					"SUBJECT %s %sVERB_BRENNEN schwächer!",
+					    genitivattribut_zu_wort(whose, many ? "NOUN_CANDLEs" : "NOUN_CANDLE"),
+					    menorah ? "am Kandelaber " : "");
+#else
+				    pline(
+					"%s %scandle%s flame%s flicker%s low!",
 					    whose,
-					    menorah ? "candelabrum's " : "", /* EN menorah ? "candelabrum's " : "", */ // TODO DE
+					    menorah ? "candelabrum's " : "",
 					    many ? "s'" : "'s",
 					    many ? "s" : "",
 					    many ? "" : "s");
+#endif
 				    break;
 				case OBJ_FLOOR:
-				    You("see %scandle%s flame%s flicker low!", /* EN You("see %scandle%s flame%s flicker low!", */ // TODO DE
-					    menorah ? "a candelabrum's " : /* EN menorah ? "a candelabrum's " : */ // TODO DE
+#ifdef GERMAN
+				    You("VERB_SEHEN OBJECT %s%s schwächer brennen!",
+					    many ? "PRONOMEN_MEHRERE NOUN_CANDLEs" :
+						"ARTIKEL_UNBESTIMMTER NOUN_CANDLE",
+					    menorah ? " am Kandelaber" : "");
+#else
+				    You("see %scandle%s flame%s flicker low!",
+					    menorah ? "a candelabrum's " :
 						many ? "some " : "a ",
 					    many ? "s'" : "'s",
 					    many ? "s" : "");
+#endif
 				    break;
 			    }
 			break;
@@ -941,12 +968,17 @@ long timeout;
 				switch (obj->where) {
 				    case OBJ_INVENT:
 				    case OBJ_MINVENT:
-					pline("%s candelabrum's flame%s.", /* EN pline("%s candelabrum's flame%s.", */ // TODO DE
+#ifdef GERMAN
+					pline("SUBJECT %s am Kandelaber VERB_AUSGEHEN SATZKLAMMER.",
+					    genitivattribut_zu_wort(whose, many ? "NOUN_CANDLEs" : "NOUN_CANDLE"));
+#else
+					pline("%s candelabrum's flame%s.",
 					    whose,
-					    many ? "s die" : " dies"); /* EN many ? "s die" : " dies"); */ // TODO DE
+					    many ? "s die" : " dies");
+#endif
 					break;
 				    case OBJ_FLOOR:
-					You("see a candelabrum's flame%s die.", /* EN You("see a candelabrum's flame%s die.", */ // TODO DE
+					You("VERB_SEHEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_CANDLE%s am Kandelaber ausgehen.", /* EN You("see a candelabrum's flame%s die.", */
 						many ? "s" : "");
 					break;
 				}
@@ -954,18 +986,23 @@ long timeout;
 				switch (obj->where) {
 				    case OBJ_INVENT:
 				    case OBJ_MINVENT:
-					pline("SUBJECT %s %s %s consumed!", /* EN pline("%s %s %s consumed!", */ // TODO DE
+#ifdef GERMAN
+					pline("SUBJECT %s VERB_BRENNEN ganz runter!",
+					    genitivattribut_zu_wort(whose, xname(obj)));
+#else
+					pline("%s %s %s consumed!",
 					    whose,
 					    xname(obj),
-					    many ? "are" : "is"); /* EN many ? "are" : "is"); */ // TODO DE
+					    many ? "are" : "is");
+#endif
 					break;
 				    case OBJ_FLOOR:
 					/*
 					You see some wax candles consumed!
 					You see a wax candle consumed!
 					*/
-					You("see %s%s consumed!", /* EN You("see %s%s consumed!", */ // TODO DE
-					    many ? "some " : "", /* EN many ? "some " : "", */ // TODO DE
+					You("VERB_SEHEN OBJECT %s%s ganz runterbrennen!", /* EN You("see %s%s consumed!", */
+					    many ? "PRONOMEN_MEHRERE " : "", /* EN many ? "some " : "", */
 					    many ? xname(obj):an(xname(obj)));
 					need_newsym = TRUE;
 					break;
@@ -976,8 +1013,8 @@ long timeout;
 					(many ? "SUBJECT NOUN_PRONOMEN_3P_MFN_PERSONALs VERB_SHRIEK!" : /* EN (many ? "They shriek!" : */
 						"SUBJECT NOUN_IT VERB_SHRIEK!") : /* EN "It shrieks!") : */
 					Blind ? "" :
-					    (many ? "Their flames die." : /* EN (many ? "Their flames die." : */ // TODO DE
-						    "Its flame dies.")); /* EN "Its flame dies.")); */ // TODO DE
+					    (many ? "Ihre Flammen gehen aus." : /* EN (many ? "Their flames die." : */
+						    "Ihre Flamme geht aus.")); /* EN "Its flame dies.")); */
 			    }
 			}
 			end_burn(obj, FALSE);
