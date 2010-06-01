@@ -406,6 +406,10 @@ void german2meta(const char *input, char *output)
 					wort = get_meta_substantiv_with(str+i, "NOUN_RING_");
 					if (WISH_DEBUG) printf("NOUN_RING_ 1 %s\n", wort->typ);
 				}
+			} else if ((strncmp("ADJEKTIV_GANZ", wort->typ, 13)==0)){
+				/* Workaround für flektiert und unflektiert gebrauchte Adjektive,
+				 * die den Wunschcode durcheinanderbringen würden. */
+				wort = NULL;
 			}
 		}
 

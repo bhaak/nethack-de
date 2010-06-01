@@ -692,6 +692,7 @@ START_TEST (test_german2meta2) {
 		{"ein rostiges Langschwert", "ARTIKEL_UNBESTIMMTER ADJEKTIV_ROSTIG NOUN_LONG_SWORD"},
 		{"rostiges Langschwert", "ADJEKTIV_ROSTIG NOUN_LONG_SWORD"},
 		{"sehr rostiges Langschwert", "sehr ADJEKTIV_ROSTIG NOUN_LONG_SWORD"},
+		{"ganz", "ganz"},
 		{"ganz verrostetes Langschwert", "ganz ADJEKTIV_VERROSTET NOUN_LONG_SWORD"},
 		{"Spüle", "NOUN_SINK"},
 		{"NOUN_GOBLIN", "NOUN_GOBLIN"},
