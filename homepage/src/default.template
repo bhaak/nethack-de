@@ -20,8 +20,20 @@
     <div id="container">
 
       <div id="titel">
+
+<div class="flattr">
+<script type="text/javascript">
+	var flattr_url = 'http://nethack-de.sourceforge.net/';
+	var flattr_btn='compact';
+</script>
+<script src="http://api.flattr.com/button/load.js" type="text/javascript"></script>
+<noscript>
+<a href="http://flattr.com/thing/7079/NetHack-in-deutscher-%C3%9Cbersetzung" target="_blank"><img src="http://api.flattr.com/button/button-compact-static-100x17.png" alt='Flattr this' title="Flattr this" border="0"></a>
+</noscript>
+</div>
+
         <h1>NetHack-De</h1>
-        <!--<h2>Subtitel</h2>-->
+
       </div>
 
       <div id="menu">

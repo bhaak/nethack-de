@@ -37,6 +37,20 @@ p {
 	padding-left: 1.66ex;
 }
 
+.flattr {
+	float: right;
+	background-color: #00cb00; /* zwerggruen */
+	padding-top: 0.15em;
+	padding-right: 0.15em;
+}
+.flattr * {
+	background-color: #00cb00; /* zwerggruen */
+}
+.flattr img {
+	border: 0px solid black;
+}
+
+
 /* Menu */
 #menu ul {
 	font-size: 100%;
