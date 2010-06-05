@@ -593,7 +593,7 @@ wiz_mon_polycontrol()
 {
     iflags.mon_polycontrol = !iflags.mon_polycontrol;
     pline("Monstertransformationskontrolle ist %s.", /* EN pline("Monster polymorph control is %s.", */
-	  iflags.mon_polycontrol ? "ein" : "aus"); /* EN iflags.mon_polycontrol ? "on" : "off"); */
+	  iflags.mon_polycontrol ? "eingeschaltet" : "ausgeschaltet"); /* EN iflags.mon_polycontrol ? "on" : "off"); */
     return 0;
 }
 

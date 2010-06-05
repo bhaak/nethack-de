@@ -636,17 +636,17 @@ int mode;
 	/* Move at a diagonal. */
 	if (In_sokoban(&u.uz)) {
 	    if (mode == DO_MOVE)
-		You("cannot pass that way."); /* EN You("cannot pass that way."); */ // TODO DE
+		You("VERB_KOENNEN da nicht durch."); /* EN You("cannot pass that way."); */
 	    return FALSE;
 	}
 	if (bigmonst(youmonst.data)) {
 	    if (mode == DO_MOVE)
-		Your("body is too large to fit through."); /* EN Your("body is too large to fit through."); */ // TODO DE
+		Your("NOUN_KOERPER ist zu groß um da hindurchzupassen."); /* EN Your("body is too large to fit through."); */
 	    return FALSE;
 	}
 	if (invent && (inv_weight() + weight_cap() > 600)) {
 	    if (mode == DO_MOVE)
-		You("are carrying too much to get through."); /* EN You("are carrying too much to get through."); */ // TODO DE
+		You("VERB_TRAGEN zu viel um da hindurchzupassen."); /* EN You("are carrying too much to get through."); */
 	    return FALSE;
 	}
     }
@@ -891,7 +891,7 @@ domove()
 			: (u.uhp < 10 && u.uhp != u.uhpmax))))
 	   && !Is_airlevel(&u.uz)) {
 	    if(wtcap < OVERLOADED) {
-		You("don't have enough stamina to move."); /* EN You("don't have enough stamina to move."); */ // TODO DE
+		Dir("fehlt die Kraft, OBJECT PRONOMEN_PERSONAL zu bewegen."); /* EN You("don't have enough stamina to move."); */
 		exercise(A_CON, FALSE);
 	    } else
 		You("VERB_BRECHEN OBJECT KASUS_DATIV unter PRONOMEN_POSSESSIV NOUN_LAST zusammen."); /* EN You("collapse under your load."); */
@@ -914,7 +914,7 @@ domove()
 		    case 1:
 			You("VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV NOUN_BEWEGUNGs kaum kontrollieren."); break; /* EN You_cant("control your movements very well."); break; */
 		    case 2:
-			pline("It's hard to walk in thin air."); /* EN pline("It's hard to walk in thin air."); */ // TODO DE
+			pline("Es ist nicht leicht, auf Luft zu laufen."); /* EN pline("It's hard to walk in thin air."); */
 			exercise(A_DEX, TRUE);
 			break;
 		    }
@@ -1018,7 +1018,7 @@ domove()
 			    if (u.ustuck->mtame &&
 				!Conflict && !u.ustuck->mconf)
 				goto pull_free;
-			    You("cannot escape from %s!", mon_nam(u.ustuck)); /* EN You("cannot escape from %s!", mon_nam(u.ustuck)); */ // TODO DE
+			    You("VERB_KOENNEN OBJECT KASUS_DATIV %s nicht entfliehen!", mon_nam(u.ustuck)); /* EN You("cannot escape from %s!", mon_nam(u.ustuck)); */
 			    nomul(0);
 			    return;
 			}
@@ -1234,11 +1234,11 @@ domove()
 		    } else {
 #ifdef STEED
 			if (u.usteed)
-			    pline("%s finally wiggles free.", /* EN pline("%s finally wiggles free.", */ // TODO DE
+			    pline("SUBJECT %s VERB_WINDEN sich endlich frei.", /* EN pline("%s finally wiggles free.", */
 				  upstart(y_monnam(u.usteed)));
 			else
 #endif
-			You("finally wiggle free."); /* EN You("finally wiggle free."); */ // TODO DE
+			You("VERB_WINDEN OBJECT PRONOMEN_PERSONAL endlich frei."); /* EN You("finally wiggle free."); */
 		    }
 		} else {
 		    if(flags.verbose) {
@@ -1553,7 +1553,7 @@ stillinwater:;
 			break;
 		    default:	/* monster surprises you. */
 			if(mtmp->mtame)
-			    pline("%s jumps near you from the %s.", /* EN pline("%s jumps near you from the %s.", */ // TODO DE
+			    pline("SUBJECT %s VERB_SPRINGEN OBJECT neben PRONOMEN_PERSONAL NEUES_OBJECT OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER %s herab.", /* EN pline("%s jumps near you from the %s.", */
 					Amonnam(mtmp), ceiling(u.ux,u.uy));
 			else if(mtmp->mpeaceful) {
 				You("VERB_UEBERRASCHEN OBJECT %s!", /* EN You("surprise %s!", */
@@ -1757,7 +1757,7 @@ register boolean newlev;
 		    You("VERB_BETRETEN einen prunkvollen Thronsaal!"); /* EN You("enter an opulent throne room!"); */
 		    break;
 		case LEPREHALL:
-		    You("VERB_BETRETEN a leprechaun hall!"); /* EN You("enter a leprechaun hall!"); */ // TODO DE
+		    You("VERB_BETRETEN eine Halle voller Leprechauns!"); /* EN You("enter a leprechaun hall!"); */
 		    break;
 		case MORGUE:
 		    if(midnight()) {
@@ -1770,7 +1770,7 @@ register boolean newlev;
 		    You("VERB_BETRETEN einen riesigen Bienenstock!"); /* EN You("enter a giant beehive!"); */
 		    break;
 		case COCKNEST:
-		    You("enter a disgusting nest!"); /* EN You("enter a disgusting nest!"); */ // TODO DE
+		    You("VERB_BETRETEN ein widerliches Nest!"); /* EN You("enter a disgusting nest!"); */
 		    break;
 		case ANTHOLE:
 		    You("VERB_BETRETEN einen Ameisenbau!"); /* EN You("enter an anthole!"); */

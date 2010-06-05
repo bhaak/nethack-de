@@ -254,7 +254,7 @@ char *buf;
 		Sprintf(buf, "Zuhause %d ", dunlev(&u.uz)); /* EN Sprintf(buf, "Home %d ", dunlev(&u.uz)); */
 	else if (In_endgame(&u.uz))
 		Sprintf(buf,
-			Is_astralevel(&u.uz) ? "Astralebene " : "End Game "); /* EN Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); */ // TODO DE
+			Is_astralevel(&u.uz) ? "Astralebene " : "Schlussphase "); /* EN Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); */
 	else {
 		/* ports with more room may expand this one */
 		Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz)); /* EN Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz)); */ // TODO DE
@@ -295,7 +295,7 @@ bot2()
 		Sprintf(nb = eos(nb), " Erf:%u", u.ulevel); /* EN Sprintf(nb = eos(nb), " Exp:%u", u.ulevel); */
 
 	if(flags.time)
-	    Sprintf(nb = eos(nb), " T:%ld", moves); /* EN Sprintf(nb = eos(nb), " T:%ld", moves); */ // TODO DE
+	    Sprintf(nb = eos(nb), " Z:%ld", moves); /* EN Sprintf(nb = eos(nb), " T:%ld", moves); */
 
 #ifdef REALTIME_ON_BOTL
   if(iflags.showrealtime) {

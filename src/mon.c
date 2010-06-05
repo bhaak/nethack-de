@@ -2014,7 +2014,7 @@ boolean move_other;	/* make sure mtmp gets to x, y! so move m_at(x, y) */
 static const char *poiseff[] = {
 	"PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL schwächer", "PRONOMEN_POSSESSIV NOUN_GEHIRN steht in Flammen", /* EN " feel weaker", "r brain is on fire", */
 	"Your judgement is impaired", "Your muscles won't obey you", /* EN "r judgement is impaired", "r muscles won't obey you", */ // TODO DE
-	"KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN verdammt übel", "You break out in hives" /* EN " feel very sick", " break out in hives" */ // TODO DE
+	"KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN verdammt übel", "PRONOMEN_PERSONAL VERB_BEKOMMEN einen juckenden Hautausschlag" /* EN " feel very sick", " break out in hives" */
 };
 
 void
@@ -2378,7 +2378,7 @@ struct monst *mon;
 		int tries = 0;
 		do {
 			Sprintf(pprompt,
-				"KASUS_AKKUSATIV %s in welche Art Monster transformieren? [Namen eingeben]", /* EN "Change %s into what kind of monster? [type the name]", */
+				"SATZBEGINN KASUS_AKKUSATIV %s in welche Art Monster transformieren? [Namen eingeben]", /* EN "Change %s into what kind of monster? [type the name]", */
 				mon_nam(mon));
 			getlin(pprompt,buf);
 			mndx = name_to_mon(buf);
@@ -2512,9 +2512,9 @@ boolean msg;		/* "The oldmon turns into a newmon!" */
 				if (!noncorporeal(mdat) && !amorphous(mdat) &&
 				    !is_whirly(mdat) &&
 				    (mdat != &mons[PM_YELLOW_LIGHT])) {
-					You("break out of %s%s!", mon_nam(mtmp), /* EN You("break out of %s%s!", mon_nam(mtmp), */ // TODO DE
+					You("VERB_BRECHEN aus OBJECT KASUS_DATIV %s heraus!", /* EN You("break out of %s%s!", mon_nam(mtmp), */
 					    (is_animal(mdat)?
-					    "'s stomach" : "")); /* EN "'s stomach" : "")); */ // TODO DE
+					    genitivattribut_zu_wort(mon_nam(mtmp), "NOUN_STOMACH") : mon_nam(mtmp))); /* EN "'s stomach" : "")); */
 					mtmp->mhp = 1;  /* almost dead */
 				}
 				expels(mtmp, olddata, FALSE);
@@ -2546,8 +2546,8 @@ boolean msg;		/* "The oldmon turns into a newmon!" */
 	if (msg) {
 	    uchar save_mnamelth = mtmp->mnamelth;
 	    mtmp->mnamelth = 0;
-	    pline("%s turns into %s!", oldname, /* EN pline("%s turns into %s!", oldname, */ // TODO DE
-		  mdat == &mons[PM_GREEN_SLIME] ? "slime" : /* EN mdat == &mons[PM_GREEN_SLIME] ? "slime" : */ // TODO DE
+	    pline("SUBJECT %s VERB_VERWANDELN sich OBJECT in %s!", oldname, /* EN pline("%s turns into %s!", oldname, */
+		  mdat == &mons[PM_GREEN_SLIME] ? "Schleim" : /* EN mdat == &mons[PM_GREEN_SLIME] ? "slime" : */
 		  x_monnam(mtmp, ARTICLE_A, (char*)0, SUPPRESS_SADDLE, FALSE));
 	    mtmp->mnamelth = save_mnamelth;
 	}
@@ -2781,13 +2781,13 @@ register boolean silent;
 		if(slct) pline_The("NOUN_GUARD%s VERB_AUFWACHEN SATZKLAMMER!", /* EN if(slct) pline_The("guard%s wake%s up!", */
 				 slct > 1 ? "s" : ""); /* EN slct > 1 ? "s" : "", slct == 1 ? "s" : ""); */
 		if(nct || sct) {
-			if(nct) pline_The("guard%s get%s angry!", /* EN if(nct) pline_The("guard%s get%s angry!", */ // TODO DE
-				nct == 1 ? "" : "s", nct == 1 ? "s" : "");
+			if(nct) pline_The("NOUN_GUARD%s VERB_WERDEN wütend!", /* EN if(nct) pline_The("guard%s get%s angry!", */
+				nct == 1 ? "" : "s"); /* EN nct == 1 ? "" : "s", nct == 1 ? "s" : ""); */
 			else if(!Blind)
-				You("see %sangry guard%s approaching!", /* EN You("see %sangry guard%s approaching!", */ // TODO DE
-				  sct == 1 ? "an " : "", sct > 1 ? "s" : "");
+				You("VERB_SEHEN OBJECT %sADJEKTIV_WUETEND NOUN_GUARD%s sich nähern!", /* EN You("see %sangry guard%s approaching!", */
+				  sct == 1 ? "ARTIKEL_UNBESTIMMTER " : "", sct > 1 ? "s" : ""); /* EN sct == 1 ? "an " : "", sct > 1 ? "s" : ""); */
 		} else if(flags.soundok)
-			You_hear("the shrill sound of a guard's whistle."); /* EN You_hear("the shrill sound of a guard's whistle."); */ // TODO DE
+			You_hear("den schrillen Pfiff der Trillerpfeife der Wache."); /* EN You_hear("the shrill sound of a guard's whistle."); */
 	    }
 	    return(TRUE);
 	}
