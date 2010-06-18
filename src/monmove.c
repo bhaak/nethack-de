@@ -382,8 +382,8 @@ register struct monst *mtmp;
 	if(nearby && mdat->msound == MS_BRIBE &&
 	   mtmp->mpeaceful && !mtmp->mtame && !u.uswallow) {
 		if (mtmp->mux != u.ux || mtmp->muy != u.uy) {
-			pline("%s whispers at thin air.", /* EN pline("%s whispers at thin air.", */ // TODO DE
-			    cansee(mtmp->mux, mtmp->muy) ? Monnam(mtmp) : "It"); /* EN cansee(mtmp->mux, mtmp->muy) ? Monnam(mtmp) : "It"); */ // TODO DE
+			pline("SUBJECT %s flüstert vor sich hin.", /* EN pline("%s whispers at thin air.", */
+			    cansee(mtmp->mux, mtmp->muy) ? Monnam(mtmp) : "NOUN_JEMAND"); /* EN cansee(mtmp->mux, mtmp->muy) ? Monnam(mtmp) : "It"); */
 
 			if (is_demon(youmonst.data)) {
 			  /* "Good hunting, brother" */
@@ -408,24 +408,24 @@ register struct monst *mtmp;
 		if (canseemon(mtmp))
 			pline("SUBJECT %s VERB_KONZENTRIEREN sich.", Monnam(mtmp)); /* EN pline("%s concentrates.", Monnam(mtmp)); */
 		if (distu(mtmp->mx, mtmp->my) > BOLT_LIM * BOLT_LIM) {
-			You("sense a faint wave of psychic energy."); /* EN You("sense a faint wave of psychic energy."); */ // TODO DE
+			Du_spuerst("eine sanfte Woge psionischer Energie."); /* EN You("sense a faint wave of psychic energy."); */
 			goto toofar;
 		}
-		pline("A wave of psychic energy pours over you!"); /* EN pline("A wave of psychic energy pours over you!"); */ // TODO DE
+		pline("Eine Woge psionischer Energie überströmt KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("A wave of psychic energy pours over you!"); */
 		if (mtmp->mpeaceful &&
 		    (!Conflict || resist(mtmp, RING_CLASS, 0, 0)))
-			pline("It feels quite soothing."); /* EN pline("It feels quite soothing."); */ // TODO DE
+			pline("Fühlt sich ganz angenehm aus."); /* EN pline("It feels quite soothing."); */
 		else {
 			register boolean m_sen = sensemon(mtmp);
 
 			if (m_sen || (Blind_telepat && rn2(2)) || !rn2(10)) {
 				int dmg;
-				pline("It locks on to your %s!", /* EN pline("It locks on to your %s!", */ // TODO DE
-					m_sen ? "telepathy" : /* EN m_sen ? "telepathy" : */ // TODO DE
-					Blind_telepat ? "latent telepathy" : "mind"); /* EN Blind_telepat ? "latent telepathy" : "mind"); */ // TODO DE
+				pline("Etwas peilt KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s an!", /* EN pline("It locks on to your %s!", */
+					m_sen ? "NOUN_TELEPATHIE" : /* EN m_sen ? "telepathy" : */
+					Blind_telepat ? "ADJEKTIV_LATENT NOUN_TELEPATHIE" : "NOUN_VERSTAND"); /* EN Blind_telepat ? "latent telepathy" : "mind"); */
 				dmg = rnd(15);
 				if (Half_spell_damage) dmg = (dmg+1) / 2;
-				losehp(dmg, "psychic blast", KILLED_BY_AN); /* EN losehp(dmg, "psychic blast", KILLED_BY_AN); */ // TODO DE
+				losehp(dmg, "ADJEKTIV_PSIONISCH NOUN_SCHLAG", KILLED_BY_AN); /* EN losehp(dmg, "psychic blast", KILLED_BY_AN); */
 			}
 		}
 		for(m2=fmon; m2; m2 = nmon) {
@@ -437,7 +437,7 @@ register struct monst *mtmp;
 			if ((telepathic(m2->data) &&
 			    (rn2(2) || m2->mblinded)) || !rn2(10)) {
 				if (cansee(m2->mx, m2->my))
-				    pline("It locks on to %s.", mon_nam(m2)); /* EN pline("It locks on to %s.", mon_nam(m2)); */ // TODO DE
+				    pline("Etwas peilt KASUS_AKKUSATIV %s an.", mon_nam(m2)); /* EN pline("It locks on to %s.", mon_nam(m2)); */
 				m2->mhp -= rnd(15);
 				if (m2->mhp <= 0)
 				    monkilled(m2, "", AD_DRIN);
@@ -1110,9 +1110,9 @@ postmov:
 			} else {
 			    if (flags.verbose) {
 				if (canseeit)
-				    You("see a door crash open."); /* EN You("see a door crash open."); */ // TODO DE
+				    You("VERB_SEHEN eine Türe aufbrechen."); /* EN You("see a door crash open."); */
 				else if (flags.soundok)
-				    You_hear("a door crash open."); /* EN You_hear("a door crash open."); */ // TODO DE
+				    You_hear("eine Türe aufbrechen."); /* EN You_hear("a door crash open."); */
 			    }
 			    if (here->doormask & D_LOCKED && !rn2(2))
 				    here->doormask = D_NODOOR;

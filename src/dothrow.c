@@ -823,7 +823,7 @@ boolean hitsroof;
 	    }
 	}
 	hitfloor(obj);
-	losehp(dmg, "falling object", KILLED_BY_AN); /* EN losehp(dmg, "falling object", KILLED_BY_AN); */ // TODO DE
+	losehp(dmg, "ADJEKTIV_FALLEND NOUN_GEGENSTAND", KILLED_BY_AN); /* EN losehp(dmg, "falling object", KILLED_BY_AN); */
     }
     return TRUE;
 }
@@ -1046,9 +1046,9 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 				  makeplural(body_part(FOOT)));
 			} else {
 			    dmg += rnd(3);
-			    pline(Blind ? "%s your %s!" : /* EN pline(Blind ? "%s your %s!" : */ // TODO DE
-					"%s back toward you, hitting your %s!", /* EN "%s back toward you, hitting your %s!", */ // TODO DE
-				  Tobjnam(obj, Blind ? "hit" : "fly"), /* EN Tobjnam(obj, Blind ? "hit" : "fly"), */ // TODO DE
+			    pline(Blind ? "SUBJECT %s OBJECT PRONOMEN_POSSESSIV %s!" : /* EN pline(Blind ? "%s your %s!" : */
+					"SUBJECT %s OBJECT KASUS_DATIV zu PRONOMEN_PERSONAL zurück und VERB_TREFFEN NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV %s!", /* EN "%s back toward you, hitting your %s!", */
+				  Tobjnam(obj, Blind ? "VERB_TREFFEN" : "VERB_KEHREN"), /* EN Tobjnam(obj, Blind ? "hit" : "fly"), */
 				  body_part(ARM));
 			    (void) artifact_hit((struct monst *)0,
 						&youmonst, obj, &dmg, 0);

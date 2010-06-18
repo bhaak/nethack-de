@@ -716,7 +716,7 @@ rehumanize()
 	/* You can't revert back while unchanging */
 	if (Unchanging && (u.mh < 1)) {
 		killer_format = NO_KILLER_PREFIX;
-		killer = "killed while stuck in creature form"; /* EN killer = "killed while stuck in creature form"; */ // TODO DE
+		killer = "in Kreaturgestalt feststeckend getötet"; /* EN killer = "killed while stuck in creature form"; */
 		done(DIED);
 	}
 
@@ -727,7 +727,7 @@ rehumanize()
 	if (u.uhp < 1) {
 	    char kbuf[256];
 
-	    Sprintf(kbuf, "reverting to unhealthy %s form", urace.adj); /* EN Sprintf(kbuf, "reverting to unhealthy %s form", urace.adj); */ // TODO DE
+	    Sprintf(kbuf, "Rückkehr zu lebensunfähiger %s NOUN_GESTALT", urace.adj); /* EN Sprintf(kbuf, "reverting to unhealthy %s form", urace.adj); */
 	    killer_format = KILLED_BY;
 	    killer = kbuf;
 	    done(DIED);
@@ -1084,7 +1084,7 @@ domindblast()
 	flags.botl = 1;
 
 	You("VERB_KONZENTRIEREN OBJECT PRONOMEN_PERSONAL."); /* EN You("concentrate."); */
-	You("VERB_VERSTROEMEN eine Woge psychischer Energie."); /* EN pline("A wave of psychic energy pours out."); */
+	You("VERB_VERSTROEMEN eine Woge psionischer Energie."); /* EN pline("A wave of psychic energy pours out."); */
 	for(mtmp=fmon; mtmp; mtmp = nmon) {
 		int u_sen;
 
