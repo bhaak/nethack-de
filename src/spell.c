@@ -92,7 +92,7 @@ STATIC_DCL int FDECL(isqrt, (int));
 #define uarmfbon 2 /* All metal interferes to some degree */
 
 /* since the spellbook itself doesn't blow up, don't say just "explodes" */
-static const char explodes[] = "radiates explosive energy"; /* EN static const char explodes[] = "radiates explosive energy"; */ // TODO DE
+static const char explodes[] = "radiates explosive energy";
 
 /* convert a letter into a number in the range 0..51, or -1 if not a letter */
 STATIC_OVL int
@@ -164,11 +164,11 @@ cursed_book(bp)
 	case 6:
 		if(Antimagic) {
 		    shieldeff(u.ux, u.uy);
-		    pline_The("NOUN_BOOK %s, aber NEUER_SATZ PRONOMEN_PERSONAL VERB_SEIN unverletzt!", explodes); /* EN pline_The("book %s, but you are unharmed!", explodes); */
+		    pline_The("NOUN_BOOK emittiert schädliche Strahlung, aber NEUER_SATZ PRONOMEN_PERSONAL VERB_BLEIBEN unverletzt!"); /* EN pline_The("book %s, but you are unharmed!", explodes); */
 		} else {
-		    pline("SATZBEGINN Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL das Buch VERB_READ, %s es OBJECT KASUS_DATIV in PRONOMEN_POSSESSIV %s!", /* EN pline("As you read the book, it %s in your %s!", */ // TODO DE passendes explodes
-			  explodes, body_part(FACE));
-		    losehp(2*rnd(10)+5, "ADJEKTIV_EXPLODIEREND NOUN_RUNE", KILLED_BY_AN); /* EN losehp(2*rnd(10)+5, "exploding rune", KILLED_BY_AN); */
+		    pline("SATZBEGINN Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL das Buch VERB_READ, emittiert es schädliche Strahlung direkt OBJECT in PRONOMEN_POSSESSIV %s!", /* EN pline("As you read the book, it %s in your %s!", */
+			  body_part(FACE)); /* EN explodes, body_part(FACE)); */
+		    losehp(2*rnd(10)+5, "ADJEKTIV_STRAHLEND NOUN_RUNE", KILLED_BY_AN); /* EN losehp(2*rnd(10)+5, "exploding rune", KILLED_BY_AN); */
 		}
 		return TRUE;
 	default:
@@ -995,7 +995,7 @@ throwspell()
 	    u.dy = 0;
 	    return 1;
 	} else if (!cansee(cc.x, cc.y) || IS_STWALL(levl[cc.x][cc.y].typ)) {
-	    Your("mind fails to lock onto that location!"); /* EN Your("mind fails to lock onto that location!"); */ // TODO DE
+	    Your("NOUN_VERSTAND kann diese Stelle nicht anpeilen!"); /* EN Your("mind fails to lock onto that location!"); */
 	    return 0;
 	} else {
 	    u.dx=cc.x;

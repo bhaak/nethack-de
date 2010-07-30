@@ -343,8 +343,8 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			    You("accept %s in the spirit in which it was intended.", /* EN You("accept %s gift in the spirit in which it was intended.", */ // TODO DE
 				genitivattribut_zu_wort(mon_nam(mon), "NOUN_GIFT")); /* EN s_suffix(mon_nam(mon))); */
 			    (void)hold_another_object(singleobj,
-				"You catch, but drop, %s.", xname(singleobj), /* EN "You catch, but drop, %s.", xname(singleobj), */ // TODO DE
-				"SUBJECT VERB_FANGEN:"); /* EN "You catch:"); */
+				"SUBJECT PRONOMEN_PERSONAL VERB_FANGEN, VERB_DROP OBJECT ARTIKEL_BESTIMMTER %s aber wieder SATZKLAMMER.", xname(singleobj), /* EN "You catch, but drop, %s.", xname(singleobj), */
+				"SUBJECT PRONOMEN_PERSONAL VERB_FANGEN:"); /* EN "You catch:"); */
 			}
 			break;
 		    }
@@ -398,7 +398,7 @@ m_throw(mon, x, y, dx, dy, range, obj)
 					AT_SPIT : AT_WEAP), singleobj)) {
 			blindinc = rnd(25);
 			if(singleobj->otyp == CREAM_PIE) {
-			    if(!Blind) pline("Yecch!  You've been creamed."); /* EN if(!Blind) pline("Yecch!  You've been creamed."); */ // TODO DE
+			    if(!Blind) pline("Igittiggit!  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_WERDEN eingesaut."); /* EN if(!Blind) pline("Yecch!  You've been creamed."); */
 			    else pline("SUBJECT PRONOMEN_PERSONAL VERB_HABEN %s Klebriges OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV ADJEKTIV_GESAMT %s.", /* EN else pline("There's %s sticky all over your %s.", */
 				       something,
 				       body_part(FACE));
@@ -811,13 +811,13 @@ int whodidit;	/* 1==hero, 0=other, -1==just check whether it'll pass thru */
 	    *obj_p = otmp = 0;		/* object is now gone */
 	    /* breakage makes its own noises */
 	else if (obj_type == BOULDER || obj_type == HEAVY_IRON_BALL)
-	    pline("Whang!"); /* EN pline("Whang!"); */ // TODO DE
+	    pline("Dong!"); /* EN pline("Whang!"); */
 	else if (otmp->oclass == COIN_CLASS ||
 		objects[obj_type].oc_material == GOLD ||
 		objects[obj_type].oc_material == SILVER)
-	    pline("Clink!"); /* EN pline("Clink!"); */ // TODO DE
+	    pline("Klink!"); /* EN pline("Clink!"); */
 	else
-	    pline("Clonk!"); /* EN pline("Clonk!"); */ // TODO DE
+	    pline("Klonk!"); /* EN pline("Clonk!"); */
     }
 
     return hits;

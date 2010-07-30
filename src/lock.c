@@ -748,8 +748,8 @@ int x, y;
 	boolean res = TRUE;
 	int loudness = 0;
 	const char *msg = (const char *)0;
-	const char *dustcloud = "A cloud of dust"; /* EN const char *dustcloud = "A cloud of dust"; */ // TODO DE
-	const char *quickly_dissipates = "quickly dissipates"; /* EN const char *quickly_dissipates = "quickly dissipates"; */ // TODO DE
+	const char *dustcloud = "Eine Staubwolke"; /* EN const char *dustcloud = "A cloud of dust"; */
+	const char *quickly_dissipates = "verflüchtigt sich schnell wieder"; /* EN const char *quickly_dissipates = "quickly dissipates"; */
 	
 	if (door->typ == SDOOR) {
 	    switch (otmp->otyp) {
@@ -778,17 +778,17 @@ int x, y;
 	    if (Is_rogue_level(&u.uz)) {
 	    	boolean vis = cansee(x,y);
 		/* Can't have real locking in Rogue, so just hide doorway */
-		if (vis) pline("%s springs up in the older, more primitive doorway.", /* EN if (vis) pline("%s springs up in the older, more primitive doorway.", */ // TODO DE
+		if (vis) pline("%s quillt im älteren, primitiven Durchgang empor.", /* EN if (vis) pline("%s springs up in the older, more primitive doorway.", */
 			dustcloud);
 		else
 			You_hear("ein Rauschen."); /* EN You_hear("a swoosh."); */
 		if (obstructed(x,y)) {
-			if (vis) pline_The("cloud %s.",quickly_dissipates); /* EN if (vis) pline_The("cloud %s.",quickly_dissipates); */ // TODO DE
+			if (vis) pline("Die Wolke %s.",quickly_dissipates); /* EN if (vis) pline_The("cloud %s.",quickly_dissipates); */
 			return FALSE;
 		}
 		block_point(x, y);
 		door->typ = SDOOR;
-		if (vis) pline_The("NOUN_DOORWAY VERB_VERSCHWINDEN!"); /* EN if (vis) pline_The("doorway vanishes!"); */
+		if (vis) pline("Der Durchgang verschwindet!"); /* EN if (vis) pline_The("doorway vanishes!"); */
 		newsym(x,y);
 		return TRUE;
 	    }
@@ -799,7 +799,7 @@ int x, y;
 	    if (t_at(x,y)) {
 		/* maketrap() clears doormask, so it should be NODOOR */
 		pline(
-		"%s springs up in the doorway, but %s.", /* EN "%s springs up in the doorway, but %s.", */ // TODO DE
+		"%s quillt im Durchgang empor, aber %s.", /* EN "%s springs up in the doorway, but %s.", */
 		dustcloud, quickly_dissipates);
 		return FALSE;
 	    }
@@ -816,7 +816,7 @@ int x, y;
 		break;
 	    case D_NODOOR:
 		msg =
-		"A cloud of dust springs up and assembles itself into a door!"; /* EN "A cloud of dust springs up and assembles itself into a door!"; */ // TODO DE
+		"Eine Staubwolke quillt empor und verdichtet sich zu einer Türe!"; /* EN "A cloud of dust springs up and assembles itself into a door!"; */
 		break;
 	    default:
 		res = FALSE;
@@ -906,11 +906,11 @@ struct obj *otmp;
 	switch (objects[otmp->otyp].oc_material) {
 	case PAPER:	disposition = "wird zerrissen"; /* EN case PAPER:	disposition = "is torn to shreds"; */
 		break;
-	case WAX:	disposition = "wird zerquetscht"; /* EN case WAX:	disposition = "is crushed"; */
+	case WAX:	disposition = "wird zerdrückt"; /* EN case WAX:	disposition = "is crushed"; */
 		break;
-	case VEGGY:	disposition = "is pulped"; /* EN case VEGGY:	disposition = "is pulped"; */ // TODO DE
+	case VEGGY:	disposition = "wird zermatscht"; /* EN case VEGGY:	disposition = "is pulped"; */
 		break;
-	case FLESH:	disposition = "wird zermatscht"; /* EN case FLESH:	disposition = "is mashed"; */
+	case FLESH:	disposition = "wird zerquetscht"; /* EN case FLESH:	disposition = "is mashed"; */
 		break;
 	case GLASS:	disposition = "zerbricht"; /* EN case GLASS:	disposition = "shatters"; */
 		break;
