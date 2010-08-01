@@ -246,24 +246,24 @@ int expltype;
 				pline("SUBJECT %s %s!", /* EN pline("%s gets %s!", */
 				      Monnam(u.ustuck),
 				      (adtyp == AD_FIRE) ? "bekommt Sodbrennen" : /* EN (adtyp == AD_FIRE) ? "heartburn" : */
-				      (adtyp == AD_COLD) ? "bekommt kühl" : /* EN (adtyp == AD_COLD) ? "chilly" : */ // TODO DE
+				      (adtyp == AD_COLD) ? "hat Gefrierbrand" : /* EN (adtyp == AD_COLD) ? "chilly" : */
 				      (adtyp == AD_DISN) ? ((olet == WAND_CLASS) ?
-				       "irradiated by pure energy" : "wird perforiert") : /* EN "irradiated by pure energy" : "perforated") : */ // TODO DE
+				       "wird mit reiner Energie bestrahlt" : "wird perforiert") : /* EN "irradiated by pure energy" : "perforated") : */
 				      (adtyp == AD_ELEC) ? "shocked" : /* EN (adtyp == AD_ELEC) ? "shocked" : */ // TODO DE
-				      (adtyp == AD_DRST) ? "wird vergiftet" : /* EN (adtyp == AD_DRST) ? "poisoned" : */ // TODO DE
-				      (adtyp == AD_ACID) ? "bekommt einen verstimmten Magen" : /* EN (adtyp == AD_ACID) ? "an upset stomach" : */
+				      (adtyp == AD_DRST) ? "wird vergiftet" : /* EN (adtyp == AD_DRST) ? "poisoned" : */
+				      (adtyp == AD_ACID) ? "hat eine Magenverstimmung" : /* EN (adtyp == AD_ACID) ? "an upset stomach" : */
 				       "wird gegrillt"); /* EN "fried"); */
 			else
 				pline("SUBJECT %s %s!", /* EN pline("%s gets slightly %s!", */
 				      Monnam(u.ustuck),
-				      (adtyp == AD_FIRE) ? "wird leicht gebraten" : /* EN (adtyp == AD_FIRE) ? "toasted" : */
-				      (adtyp == AD_COLD) ? "bekommt etwas kühl" : /* EN (adtyp == AD_COLD) ? "chilly" : */
+				      (adtyp == AD_FIRE) ? "wird leicht angebraten" : /* EN (adtyp == AD_FIRE) ? "toasted" : */
+				      (adtyp == AD_COLD) ? "hat ein bisschen Gefrierbrand" : /* EN (adtyp == AD_COLD) ? "chilly" : */
 				      (adtyp == AD_DISN) ? ((olet == WAND_CLASS) ?
-				       "overwhelmed by pure energy" : "wird etwas perforiert") : /* EN "overwhelmed by pure energy" : "perforated") : */ // TODO DE
+				       "von reiner Energie überwältigt" : "wird etwas perforiert") : /* EN "overwhelmed by pure energy" : "perforated") : */
 				      (adtyp == AD_ELEC) ? "shocked" : /* EN (adtyp == AD_ELEC) ? "shocked" : */ // TODO DE
-				      (adtyp == AD_DRST) ? "wird leicht betäubt" : /* EN (adtyp == AD_DRST) ? "intoxicated" : */ // TODO DE
-				      (adtyp == AD_ACID) ? "wird leicht verbrannt" : /* EN (adtyp == AD_ACID) ? "burned" : */ // TODO DE
-							 "wird leicht gegrillt"); /* EN "fried"); */
+				      (adtyp == AD_DRST) ? "wird ein wenig betäubt" : /* EN (adtyp == AD_DRST) ? "intoxicated" : */
+				      (adtyp == AD_ACID) ? "wird ein wenig verbrannt" : /* EN (adtyp == AD_ACID) ? "burned" : */
+							 "wird ein wenig gegrillt"); /* EN "fried"); */
 		} else if (cansee(i+x-1, j+y-1)) {
 		    if(mtmp->m_ap_type) seemimic(mtmp);
 		    pline("SUBJECT ARTIKEL_BESTIMMTER %s VERB_ERFASSEN OBJECT %s!", str, Monnam(mtmp)); /* EN pline("%s is caught in the %s!", Monnam(mtmp), str); */

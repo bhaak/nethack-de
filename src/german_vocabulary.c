@@ -3584,6 +3584,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Genozides", "NOUN_SCR_GENOCIDE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Genozid", "NOUN_SCR_GENOCIDE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Ausrottung", "NOUN_SCR_GENOCIDE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
   {"Lichtes", "NOUN_SCR_LIGHT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Licht", "NOUN_SCR_LIGHT", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 

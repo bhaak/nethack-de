@@ -633,7 +633,7 @@ mon_tele:
 			nlev = random_teleport_level();
 			if (nlev == depth(&u.uz)) {
 			    if (vismon)
-				pline("%s shudders for a moment.", /* EN pline("%s shudders for a moment.", */ // TODO DE
+				pline("SUBJECT %s VERB_ERSCHAUDERN für einen Moment.", /* EN pline("%s shudders for a moment.", */
 								Monnam(mtmp));
 			    return 2;
 			}

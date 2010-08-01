@@ -2281,7 +2281,8 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCR_ENCHANT_WEAPON", "Waffenzauber", "s", "", "en", "maskulin"),  # Schriftrolle der verzauberten Waffe?, Waffenverzauberung, Waffenzauber
     dekliniere_substantiv("NOUN_SCR_CREATE_MONSTER", "Monsterbeschwörung", "", "", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SCR_TAMING", "Zähmung", "", "Zähmung", "en", "feminin", "s"), # Zähmens, Zähmung
-    dekliniere_substantiv("NOUN_SCR_GENOCIDE", "Genozid", "es", "", "e", "maskulin"), # nicht Ausrottung, da 'extinct' anderweitig Verwendung findet
+    dekliniere_substantiv("NOUN_SCR_GENOCIDE", "Genozid", "es", "", "e", "maskulin"), # genocide -> Genozid/Ausrottung, extinct -> ausgestorben
+    dekliniere_substantiv("NOUN_SCR_GENOCIDE", "Ausrottung", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_SCR_LIGHT", "Licht", "es", "", "er", "neutrum"), 
     dekliniere_substantiv("NOUN_SCR_TELEPORTATION", "Teleportation", "", "", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_SCR_GOLD_DETECTION", "Golderspürung", "", "", "", "feminin"),

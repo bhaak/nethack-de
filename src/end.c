@@ -84,7 +84,7 @@ static NEARDATA const char *ends[] = {		/* "when you..." */
 	"gestorben", "erstickt", "vergiftet worden", "verhungert", "ertrunken", /* EN "died", "choked", "were poisoned", "starved", "drowned", */
 	"verbrannt", "dissolved in the lava", /* EN "burned", "dissolved in the lava", */ // TODO DE
 	"erschlagen", "versteinert", "turned into slime", /* EN "were crushed", "turned to stone", "turned into slime", */ // TODO DE
-	"were genocided", "panicked", "were tricked", /* EN "were genocided", "panicked", "were tricked", */ // TODO DE
+	"ausgerottet", "panicked", "were tricked", /* EN "were genocided", "panicked", "were tricked", */ // TODO DE
 	"aufgegeben", "geflohen", "aufgestiegen" /* EN "quit", "escaped", "ascended" */
 };
 
@@ -93,7 +93,7 @@ static NEARDATA const char *ends_hilfsverb[] = {		/* "als du <verb> ..." */
 	"VERB_SEIN", "VERB_SEIN", "VERB_SEIN", "VERB_SEIN", "VERB_SEIN",
 	"VERB_SEIN", "dissolved in the lava",
 	"MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "turned into slime",
-	"were genocided", "panicked", "were tricked", // TODO DE
+	"MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "panicked", "were tricked", // TODO DE
 	"VERB_HABEN", "VERB_SEIN", "VERB_SEIN"
 };
 #endif
@@ -616,7 +616,7 @@ int how;
 		if(u.uhpmax <= 0) u.uhpmax = 10;	/* arbitrary */
 		savelife(how);
 		if (how == GENOCIDED)
-			pline("Unfortunately you are still genocided..."); /* EN pline("Unfortunately you are still genocided..."); */ // TODO DE
+			pline("Leider VERB_SEIN PRONOMEN_PERSONAL immer noch ausgerottet ..."); /* EN pline("Unfortunately you are still genocided..."); */
 		else {
 			killer = 0;
 			killer_format = 0;
@@ -1082,7 +1082,7 @@ boolean ask;
 	     */
 	    if (ntypes > 1) {
 		putstr(klwin, 0, "");
-		Sprintf(buf, "%ld Kreaturen bezwungen.", total_killed); /* EN Sprintf(buf, "%ld creatures vanquished.", total_killed); */
+		Sprintf(buf, "%ld Kreatur%s bezwungen.", total_killed, (total_killed > 1) ? "en" : ""); /* EN Sprintf(buf, "%ld creatures vanquished.", total_killed); */
 		putstr(klwin, 0, buf);
 	    }
 	    display_nhwindow(klwin, TRUE);
@@ -1118,12 +1118,12 @@ boolean ask;
 
     /* genocided species list */
     if (ngenocided != 0) {
-	c = ask ? yn_function("Do you want a list of species genocided?", /* EN c = ask ? yn_function("Do you want a list of species genocided?", */ // TODO DE
+	c = ask ? yn_function("SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL eine Liste aller ausgerotteten Arten sehen?", /* EN c = ask ? yn_function("Do you want a list of species genocided?", */
 			      ynqchars, defquery) : defquery;
 	if (c == 'q') done_stopprint++;
 	if (c == 'y') {
 	    klwin = create_nhwindow(NHW_MENU);
-	    putstr(klwin, 0, "Genocided species:"); /* EN putstr(klwin, 0, "Genocided species:"); */ // TODO DE
+	    putstr(klwin, 0, "Ausgerottete Arten:"); /* EN putstr(klwin, 0, "Genocided species:"); */
 	    putstr(klwin, 0, "");
 
 	    for (i = LOW_PM; i < NUMMONS; i++)
@@ -1138,7 +1138,7 @@ boolean ask;
 		}
 
 	    putstr(klwin, 0, "");
-	    Sprintf(buf, "%d species genocided.", ngenocided); /* EN Sprintf(buf, "%d species genocided.", ngenocided); */ // TODO DE
+	    Sprintf(buf, "%d Art%s ausgerottet.", ngenocided, (ngenocided > 1) ? "en" : ""); /* EN Sprintf(buf, "%d species genocided.", ngenocided); */
 	    putstr(klwin, 0, buf);
 
 	    display_nhwindow(klwin, TRUE);

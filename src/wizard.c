@@ -553,7 +553,7 @@ wizdead()
 }
 
 const char * const random_insult[] = {
-	"antic", /* EN "antic", */ // TODO DE
+	"Dämlack", /* EN "antic", */
 	"Lump", /* EN "blackguard", */ /* Lump, Unhold */
 	"Angsthase", /* EN "caitiff", */
 	"Blödian", /* EN "chucklehead", */
@@ -611,8 +611,8 @@ register struct monst	*mtmp;
 			  random_insult[rn2(SIZE(random_insult))]);
 		else if (u.uhp < 5 && !rn2(2))	/* Panic */
 		    verbalize(rn2(2) ?
-			  "Even now thy life force ebbs, %s!" : /* EN "Even now thy life force ebbs, %s!" : */ // TODO DE
-			  "Savor thy breath, %s, it be thy last!", /* EN "Savor thy breath, %s, it be thy last!", */ // TODO DE
+			  "Fürchte deine schwindende Lebenskraft, %s!" : /* EN "Even now thy life force ebbs, %s!" : */
+			  "Genieß diesen Atemzug, %s, es wird dein letzter sein!", /* EN "Savor thy breath, %s, it be thy last!", */
 			  random_insult[rn2(SIZE(random_insult))]);
 		else if (mtmp->mhp < 5 && !rn2(2))	/* Parthian shot */
 		    verbalize(rn2(2) ?

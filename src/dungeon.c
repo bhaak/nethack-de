@@ -1696,7 +1696,7 @@ xchar *rdgn;
 	menu_item *selected;
 	int idx;
 
-	end_menu(win, "Level teleport to where:"); /* EN end_menu(win, "Level teleport to where:"); */ // TODO DE
+	end_menu(win, "Levelteleport nach:"); /* EN end_menu(win, "Level teleport to where:"); */
 	n = select_menu(win, PICK_ONE, &selected);
 	destroy_nhwindow(win);
 	if (n > 0) {
@@ -1714,7 +1714,7 @@ xchar *rdgn;
     /* I hate searching for the invocation pos while debugging. -dean */
     if (Invocation_lev(&u.uz)) {
 	putstr(win, 0, "");
-	Sprintf(buf, "Invocation position @ (%d,%d), hero @ (%d,%d)", /* EN Sprintf(buf, "Invocation position @ (%d,%d), hero @ (%d,%d)", */ // TODO DE
+	Sprintf(buf, "Beschwörungsposition @ (%d,%d), Held @ (%d,%d)", /* EN Sprintf(buf, "Invocation position @ (%d,%d), hero @ (%d,%d)", */
 		inv_pos.x, inv_pos.y, u.ux, u.uy);
 	putstr(win, 0, buf);
     }

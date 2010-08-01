@@ -1405,7 +1405,7 @@ struct monst *mtmp;
 		mtmp->mhp = mtmp->mhpmax;
 		if (mvitals[monsndx(mtmp->data)].mvflags & G_GENOD) {
 			if (cansee(mtmp->mx, mtmp->my))
-			    pline("Unfortunately %s is still genocided...", /* EN pline("Unfortunately %s is still genocided...", */ // TODO DE
+			    pline("Leider ist %s immer noch ausgerottet ...", /* EN pline("Unfortunately %s is still genocided...", */
 				mon_nam(mtmp));
 		} else
 			return;
