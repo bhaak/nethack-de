@@ -830,7 +830,7 @@ register struct obj	*sobj;
 					); /* EN Blind ? nul : hcolor(NH_PURPLE)); */
 			make_confused(HConfusion + rnd(100),FALSE);
 		    } else {
-			pline("ARTIKEL_UNBESTIMMTER %s%s VERB_UMGEBEN OBJECT PRONOMEN_POSSESSIV %s.", /* EN pline("A %s%s surrounds your %s.", */
+			pline("SUBJECT ARTIKEL_UNBESTIMMTER %s%s VERB_UMGEBEN OBJECT PRONOMEN_POSSESSIV %s.", /* EN pline("A %s%s surrounds your %s.", */
 			    Blind ? nul : hcolor(NH_RED),
 			    Blind ? "ADJEKTIV_SCHWACH NOUN_SUMMEN" : " NOUN_LEUCHTEN", /* EN Blind ? "faint buzz" : " glow", */
 			    body_part(HEAD));
@@ -853,9 +853,9 @@ register struct obj	*sobj;
 				makeplural(body_part(HAND)),
 				u.umconf ? "noch stärker" : "sehr stark"); /* EN u.umconf ? "even more" : "very"); */
 			else
-			    Your("%s VERB_LEUCHTEN a%s brilliant %s.", /* EN Your("%s glow a%s brilliant %s.", */ // TODO DE
+			    Your("%s VERB_LEUCHTEN OBJECT KASUS_DATIV in ARTIKEL_UNBESTIMMTER%s ADJEKTIV_BRILLIANT %s NOUN_LICHT.", /* EN Your("%s glow a%s brilliant %s.", */
 				makeplural(body_part(HAND)),
-				u.umconf ? "n even more" : "", /* EN u.umconf ? "n even more" : "", */ // TODO DE
+				u.umconf ? " noch intensiveren" : "", /* EN u.umconf ? "n even more" : "", */
 				hcolor(NH_RED));
 			/* after a while, repeated uses become less effective */
 			if (u.umconf >= 40)

@@ -3745,12 +3745,12 @@ long cost;
 /* First 4 supplied by Ronen and Tamar, remainder by development team */
 const char *Izchak_speaks[]={
     "SUBJECT %s sagt: 'Diese Einkaufszentren machen mir Kopfschmerzen.'", /* EN "%s says: 'These shopping malls give me a headache.'", */
-    "SUBJECT %s sagt: 'Slow down.  Think clearly.'", /* EN "%s says: 'Slow down.  Think clearly.'", */ // TODO DE
+    "SUBJECT %s sagt: 'NEUER_SATZ SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_MACHEN langsam.  SATZBEGINN VERB_DENKEN immer in Ruhe nach.'", /* EN "%s says: 'Slow down.  Think clearly.'", */
     "SUBJECT %s sagt: 'Immer eins nach dem anderen.'", /* EN "%s says: 'You need to take things one at a time.'", */
-    "SUBJECT %s sagt: 'I don't like poofy coffee... give me Columbian Supremo.'", /* EN "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", */ // TODO DE
-    "SUBJECT %s sagt that getting the devteam's agreement on anything is difficult.", /* EN "%s says that getting the devteam's agreement on anything is difficult.", */ // TODO DE
-    "SUBJECT %s sagt that he has noticed those who serve their deity will prosper.", /* EN "%s says that he has noticed those who serve their deity will prosper.", */ // TODO DE
-    "SUBJECT %s sagt: 'Don't try to steal from me - I have friends in high places!'", /* EN "%s says: 'Don't try to steal from me - I have friends in high places!'", */ // TODO DE
+    "SUBJECT %s sagt: 'Ich mag keinen laschen Kaffee ... gebt mir Colombia Supremo.'", /* EN "%s says: 'I don't like poofy coffee... give me Columbian Supremo.'", */
+    "SUBJECT %s sagt, es sei schwierig, eine Einigung des DevTeams zu irgendeinem Thema zu bekommen.", /* EN "%s says that getting the devteam's agreement on anything is difficult.", */
+    "SUBJECT %s sagt, er habe bemerkt, dass gottesfürchtige Abenteurer erfolgreicher seien.", /* EN "%s says that he has noticed those who serve their deity will prosper.", */
+    "SUBJECT %s sagt: 'NEUER_SATZ SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_VERSUCHEN nicht, mit zu beklauen - Ich habe einflussreiche Freunde!'", /* EN "%s says: 'Don't try to steal from me - I have friends in high places!'", */
     "SUBJECT %s sagt: 'Es kann gut sein, dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL etwas aus diesem Laden brauchen VERB_WERDEN.'", /* EN "%s says: 'You may well need something from this shop in the future.'", */
     "SUBJECT %s beschreibt das Tal der Toten als Zugangspforte." /* EN "%s comments about the Valley of the Dead as being a gateway." */
 };

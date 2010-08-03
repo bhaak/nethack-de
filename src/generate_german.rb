@@ -4127,6 +4127,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_BLIND","blind"),
     dekliniere_adjektiv("ADJEKTIV_BLUTRUENSTIG","blutrünstig"),
     dekliniere_adjektiv("ADJEKTIV_BRENNEND","brennend"),
+    dekliniere_adjektiv("ADJEKTIV_BRILLIANT","brilliant"),
     dekliniere_adjektiv("ADJEKTIV_CARNIVOROUS","fleischfressend"),
     dekliniere_adjektiv("ADJEKTIV_CORRODED","korrodiert"),
     dekliniere_adjektiv("ADJEKTIV_DERZEITIG","derzeitig"),
