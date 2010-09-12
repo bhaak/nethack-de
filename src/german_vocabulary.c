@@ -2772,7 +2772,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Karotte", "NOUN_CARROT", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Karotten", "NOUN_CARROTs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  /* IMPROVE ME: don't really like "Zweig" */
+  {"Wolfswurzzweiges", "NOUN_SPRIG_OF_WOLFSBANE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wolfswurzzweig", "NOUN_SPRIG_OF_WOLFSBANE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Wolfswurzzweige", "NOUN_SPRIG_OF_WOLFSBANEs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Wolfswurzzweigen", "NOUN_SPRIG_OF_WOLFSBANEs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Wolfseisenhutzweiges", "NOUN_SPRIG_OF_WOLFSBANE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wolfseisenhutzweig", "NOUN_SPRIG_OF_WOLFSBANE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -6321,6 +6324,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Ork", "NOUN_ORC", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Orks", "NOUN_ORCs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Bergorks", "NOUN_HILL_ORC", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Bergork", "NOUN_HILL_ORC", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Bergorks", "NOUN_HILL_ORCs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Hügelorks", "NOUN_HILL_ORC", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hügelork", "NOUN_HILL_ORC", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hügelorks", "NOUN_HILL_ORCs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -6796,6 +6803,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Steinriesen", "NOUN_STONE_GIANT", "n", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Steinriesen", "NOUN_STONE_GIANTs", "n", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Bergriese", "NOUN_HILL_GIANT", "n", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Bergriesen", "NOUN_HILL_GIANT", "n", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Bergriesen", "NOUN_HILL_GIANTs", "n", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Hügelriese", "NOUN_HILL_GIANT", "n", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hügelriesen", "NOUN_HILL_GIANT", "n", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hügelriesen", "NOUN_HILL_GIANTs", "n", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -6870,8 +6881,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Erzliechname", "NOUN_ARCH_LICHs", "en", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Erzliechnamen", "NOUN_ARCH_LICHs", "en", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Koboldsmumie", "NOUN_KOBOLD_MUMMY", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Koboldsmumien", "NOUN_KOBOLD_MUMMYs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Koboldmumie", "NOUN_KOBOLD_MUMMY", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Koboldmumien", "NOUN_KOBOLD_MUMMYs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Gnomenmumie", "NOUN_GNOME_MUMMY", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Gnomenmumien", "NOUN_GNOME_MUMMYs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -7124,9 +7135,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Sasquatch", "NOUN_SASQUATCH", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Sasquatches", "NOUN_SASQUATCHs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Koboldszombies", "NOUN_KOBOLD_ZOMBIE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Koboldszombie", "NOUN_KOBOLD_ZOMBIE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Koboldszombies", "NOUN_KOBOLD_ZOMBIEs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Koboldzombies", "NOUN_KOBOLD_ZOMBIE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Koboldzombie", "NOUN_KOBOLD_ZOMBIE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Koboldzombies", "NOUN_KOBOLD_ZOMBIEs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Gnomenzombies", "NOUN_GNOME_ZOMBIE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Gnomenzombie", "NOUN_GNOME_ZOMBIE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},

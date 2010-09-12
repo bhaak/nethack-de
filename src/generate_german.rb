@@ -2192,7 +2192,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MELON","Melone","","Melone","en","feminin"),
     dekliniere_substantiv("NOUN_BANANA","Banane","","Banane","en","feminin"),
     dekliniere_substantiv("NOUN_CARROT","Karotte","","Karotte","en","feminin"),
-    "/* IMPROVE ME: don't really like \"Zweig\" */",
+    dekliniere_substantiv("NOUN_SPRIG_OF_WOLFSBANE","Wolfswurzzweig","es","Wolfswurzzweig","e","maskulin"),
     dekliniere_substantiv("NOUN_SPRIG_OF_WOLFSBANE","Wolfseisenhutzweig","es","Wolfseisenhutzweig","e","maskulin"),
     dekliniere_substantiv("NOUN_CLOVE_OF_GARLIC","Knoblauchzehe","","Knoblauchzehe","en","feminin"),
     dekliniere_substantiv("NOUN_SLIME_MOLD","Schleimpilz","es","Schleimpilz","e","maskulin"),
@@ -2622,6 +2622,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GOBLIN", "Goblin", "s", "Goblin", "", "maskulin"),
     dekliniere_substantiv("NOUN_HOBGOBLIN", "Hobgoblin", "s", "Hobgoblin", "", "maskulin"),
     dekliniere_substantiv("NOUN_ORC","Ork","s","Ork","s","maskulin"),
+    dekliniere_substantiv("NOUN_HILL_ORC","Bergork","s","Bergork","s","maskulin"),
     dekliniere_substantiv("NOUN_HILL_ORC","Hügelork","s","Hügelork","s","maskulin"),
     dekliniere_substantiv("NOUN_MORDOR_ORC","Mordorork","s","Mordorork","s","maskulin"),
     dekliniere_substantiv("NOUN_URUK_HAI","Uruk-Hai","","Uruk-Hai","fremder","maskulin"),
@@ -2726,6 +2727,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_GNOME_KING","Gnomenkönig","es","Gnomenkönig","e","maskulin"),
     dekliniere_substantiv("NOUN_GIANT",       "Riese", "en", "Riese", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_STONE_GIANT", "Steinriese", "en", "Steinriese", "en", "maskulin", "n"),
+    dekliniere_substantiv("NOUN_HILL_GIANT",  "Bergriese", "en", "Bergriese", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_HILL_GIANT",  "Hügelriese", "en", "Hügelriese", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_FIRE_GIANT",  "Feuerriese", "en", "Feuerriese", "en", "maskulin", "n"),
     dekliniere_substantiv("NOUN_FROST_GIANT", "Frostriese", "en", "Frostriese", "en", "maskulin", "n"),
@@ -2744,7 +2746,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_DEMILICH", "Halbliechnam", "s", "Halbliechnam", "e", "maskulin", "en"), # Demiliechnam?, Halbliechnam?
     dekliniere_substantiv("NOUN_MASTER_LICH", "Meisterliechnam", "s", "Meisterliechnam", "e", "maskulin", "en"), # Meisterliechnam
     dekliniere_substantiv("NOUN_ARCH_LICH", "Erzliechnam", "s", "Erzliechnam", "e", "maskulin", "en"),
-    dekliniere_substantiv("NOUN_KOBOLD_MUMMY", "Koboldsmumie", "", "Koboldsmumie", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_KOBOLD_MUMMY", "Koboldmumie", "", "Koboldmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_GNOME_MUMMY", "Gnomenmumie", "", "Gnomenmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_ORC_MUMMY", "Orkmumie", "", "Orkmumie", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_DWARF_MUMMY", "Zwergenmumie", "", "Zwergenmumie", "en", "feminin", "n"),
@@ -2807,7 +2809,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CARNIVOROUS_APE", "Blutaffe", "en", "Blutaffe", "en", "maskulin", "n"), # Blutaffe, Reißzahngorilla js
     # dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatch", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SASQUATCH", "Sasquatch", "", "Sasquatches", "fremder", "maskulin"),
-    dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE", "Koboldszombie", "s", "Koboldszombie", "s", "maskulin"),
+    dekliniere_substantiv("NOUN_KOBOLD_ZOMBIE", "Koboldzombie", "s", "Koboldzombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_GNOME_ZOMBIE", "Gnomenzombie", "s", "Gnomenzombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_ORC_ZOMBIE", "Orkzombie", "s", "Orkzombie", "s", "maskulin"),
     dekliniere_substantiv("NOUN_DWARF_ZOMBIE", "Zwergenzombie", "s", "Zwergenzombie", "s", "maskulin"),
