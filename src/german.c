@@ -282,17 +282,27 @@ char *normalisierung(char *output, const char *input) {
 		case 'é': output[j] = 'e'; break;
 		case 'Û':
 		case 'û': output[j] = 'u'; break;
-		// UTF-8
-		case 'Ã': 
+		/* fake UTF-8 support */
+		case 'Ã':
 			if (i+1 < strlen(input)) {
 				switch (input[++i]) {
+				/* ä */
 				case '\x84':
 				case '¤': output[j++] = 'a'; output[j] = 'e'; break;
+				/* ö */
 				case '\x96':
 				case '¶': output[j++] = 'o'; output[j] = 'e'; break;
+				/* ü */
 				case '\x9C':
 				case '¼': output[j++] = 'u'; output[j] = 'e'; break;
+				/* ß */
 				case '\x9F': output[j++] = 's'; output[j] = 's'; break;
+				/* é */
+				case '\x89':
+				case '©': output[j] = 'e'; break;
+				/* û */
+				case '\x9b':
+				case '»': output[j] = 'u'; break;
 				default: output[j] = ' ';
 				}
 			} else {

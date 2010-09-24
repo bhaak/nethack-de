@@ -744,10 +744,11 @@ START_TEST (test_german2meta_utf8) {
 		{"wertloses rotes GlasstÃ¼ck", "NOUN_GEM_RED_GLASS"},
 		{"WERTLOSES ROTES GLASST" "Ã\x9C" "CK", "NOUN_GEM_RED_GLASS"},
 		{"StoÃ\x9FspieÃ\x9F", "NOUN_HILTED_POLEARM"},
-		//{"Stück Gelée Royale", "NOUN_LUMP_OF_ROYAL_JELLY"},
-		//{"Rothé", "NOUN_ROTHEs"},
-		//{"Mûmak", "NOUN_MUMAK"},
-		//{"Nazgûl", "NOUN_NAZGULs"},
+		{"StÃ¼ck GelÃ©e Royale", "NOUN_LUMP_OF_ROYAL_JELLY"},
+		{"ROTHÃ‰", "NOUN_ROTHEs"},
+		{"MÃ»mak", "NOUN_MUMAK"},
+		{"MÃ›MAK", "NOUN_MUMAK"},
+		{"NazgÃ»l", "NOUN_NAZGULs"},
 	};
 
 	check_german2meta(text, sizeof(text)/8);
