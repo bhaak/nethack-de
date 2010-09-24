@@ -512,7 +512,7 @@ mattacku(mtmp)
 
 			if (flags.soundok) {
 				pline("SUBJECT %s %s!", Something, /* EN pline("%s %s!", Something, */
-					makeplural(growl_sound(mtmp)));
+					growl_sound(mtmp)); /* EN makeplural(growl_sound(mtmp))); */
 				from_nowhere = "";
 			} else from_nowhere = " aus dem Nichts"; /* EN } else from_nowhere = " from nowhere"; */
 			if (numhelp > 0) {
@@ -2573,7 +2573,7 @@ register struct attack *mattk;
 		if (!mtmp->mstun) {
 		    mtmp->mstun = 1;
 		    pline("SUBJECT %s %s.", Monnam(mtmp), /* EN pline("%s %s.", Monnam(mtmp), */
-			  makeplural(stagger(mtmp->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mtmp->data, "stagger"))); */
+			  stagger(mtmp->data, "VERB_STAGGER")); /* EN makeplural(stagger(mtmp->data, "stagger"))); */
 		}
 		tmp = 0;
 		break;

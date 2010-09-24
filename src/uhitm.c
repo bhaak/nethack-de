@@ -979,7 +979,7 @@ int thrown;
 			!bigmonst(mdat) && !thick_skinned(mdat)) {
 		if (canspotmon(mon))
 		    pline("SUBJECT %s %s OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV ADJEKTIV_KRAFTVOLL NOUN_SCHLAG!", Monnam(mon), /* EN pline("%s %s from your powerful strike!", Monnam(mon), */
-			  makeplural(stagger(mon->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mon->data, "stagger"))); */
+			  stagger(mon->data, "VERB_STAGGER")); /* EN makeplural(stagger(mon->data, "stagger"))); */
 		/* avoid migrating a dead monster */
 		if (mon->mhp > tmp) {
 		    mhurtle(mon, u.dx, u.dy, 1);
@@ -1302,7 +1302,7 @@ register struct attack *mattk;
 	    case AD_STUN:
 		if(!Blind)
 		    pline("SUBJECT %s %s einen Moment lang.", Monnam(mdef), /* EN pline("%s %s for a moment.", Monnam(mdef), */
-			  makeplural(stagger(mdef->data, "VERB_STAGGER"))); /* EN makeplural(stagger(mdef->data, "stagger"))); */
+			  stagger(mdef->data, "VERB_STAGGER")); /* EN makeplural(stagger(mdef->data, "stagger"))); */
 		mdef->mstun = 1;
 		goto physical;
 	    case AD_LEGS:
