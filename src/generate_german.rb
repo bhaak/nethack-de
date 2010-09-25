@@ -741,6 +741,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_BETEN", "beten"),
 		Verb.verb("VERB_BETRACHTEN","betrachten"),
 		Verb.verb("VERB_BETRETEN","betreten"),
+		Verb.verb("VERB_BEWAFFNEN", "bewaffnen"),
 		Verb.verb("VERB_BEWEGEN", "bewegen"),
 		Verb.verb("VERB_BEWUNDERN","bewundern"),
 		Verb.verb("VERB_BEZAHLEN","bezahlen"),
