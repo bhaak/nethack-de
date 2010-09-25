@@ -232,7 +232,7 @@ register struct edog *edog;
 		else if (couldsee(mtmp->mx, mtmp->my))
 		    beg(mtmp);
 		else
-		    You("VERB_MACHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL Sorgen über NEUES_OBJECT OBJECT %s.", y_monnam(mtmp)); /* EN You_feel("worried about %s.", y_monnam(mtmp)); */
+		    You("VERB_MACHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL Sorgen um NEUES_OBJECT OBJECT %s.", y_monnam(mtmp)); /* EN You_feel("worried about %s.", y_monnam(mtmp)); */
 		stop_occupation();
 	    } else if (monstermoves > edog->hungrytime + 750 || mtmp->mhp < 1) {
  dog_died:
