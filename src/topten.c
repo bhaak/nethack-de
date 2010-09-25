@@ -611,11 +611,11 @@ int how;
 #endif	/* UPDATE_RECORD_IN_PLACE */
 		if(!done_stopprint) if(rank0 > 0){
 		    if(rank0 <= 10)
-			topten_print("SUBJECT PRONOMEN_PERSONAL VERB_HABEN es unter die besten Zehn geschafft!"); /* EN topten_print("You made the top ten list!"); */
+			topten_print(german("SUBJECT PRONOMEN_PERSONAL VERB_HABEN es unter die besten Zehn geschafft!")); /* EN topten_print("You made the top ten list!"); */
 		    else {
 			char pbuf[BUFSZ];
 			Sprintf(pbuf,
-			  "SUBJECT PRONOMEN_PERSONAL VERB_HABEN den %d%s Platz unter den %d Besten erreicht.", /* EN "You reached the %d%s place on the top %d list.", */
+			  german("SUBJECT PRONOMEN_PERSONAL VERB_HABEN den %d%s Platz unter den %d Besten erreicht."), /* EN "You reached the %d%s place on the top %d list.", */
 				rank0, ordin(rank0), ENTRYMAX);
 			topten_print(pbuf);
 		    }
