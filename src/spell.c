@@ -576,7 +576,7 @@ getspell(spell_no)
 		    You("VERB_KENNEN OBJECT diesen Spruch nicht."); /* EN You("don't know that spell."); */
 	    }
 	}
-	return dospellmenu("Choose which spell to cast", /* EN return dospellmenu("Choose which spell to cast", */ // TODO DE
+	return dospellmenu("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WAEHLEN den zu zaubernden Spruch", /* EN return dospellmenu("Choose which spell to cast", */ // TODO DE
 			   SPELLMENU_CAST, spell_no);
 }
 
