@@ -523,7 +523,7 @@ register int x,y;
 	    case MARK:
 		if(!Blind) {
 			sensed = 1;
-			pline("Hier befindet sich Graffiti auf KASUS_DATIV ARTIKEL_BESTIMMTER %s.", /* EN pline("There's some graffiti on the %s here.", */
+			pline("Hier befindet sich Graffiti %s.", /* EN pline("There's some graffiti on the %s here.", */
 				auf_dem_Boden(x,y)); /* EN surface(x,y)); */
 		}
 		break;
