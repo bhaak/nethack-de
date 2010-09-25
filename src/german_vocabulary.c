@@ -1,7 +1,5 @@
 
 
-/* Diese Datei wird automatisch durch generate_german.rb erzeugt. */
-
 #include "german.h"
 /*
 enum Casus   { nominativ=1, genitiv=2, dativ=4, akkusativ=8 };
@@ -1573,9 +1571,6 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Lichter", "NOUN_WAND_LIGHTs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Lichtern", "NOUN_WAND_LIGHTs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Geheimtürfindung", "NOUN_WAND_SECRET_DOOR_DETECTION", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Geheimtürfindungen", "NOUN_WAND_SECRET_DOOR_DETECTIONs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-
   {"Erleuchtung", "NOUN_WAND_ENLIGHTENMENT", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Erleuchtungen", "NOUN_WAND_ENLIGHTENMENTs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
@@ -1617,8 +1612,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Öffnung", "NOUN_WAND_OPENING", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Öffnungen", "NOUN_WAND_OPENINGs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Schließens", "NOUN_WAND_LOCKING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Schließen", "NOUN_WAND_LOCKING", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schliessens", "NOUN_WAND_LOCKING", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schliessen", "NOUN_WAND_LOCKING", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Prüfung", "NOUN_WAND_PROBING", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -2894,12 +2889,6 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Erleuchtung", "NOUN_POT_ENLIGHTENMENT", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Erleuchtungen", "NOUN_POT_ENLIGHTENMENTs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Monstererspürung", "NOUN_POT_MONSTER_DETECTION", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Monstererspürungen", "NOUN_POT_MONSTER_DETECTIONs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-
-  {"Objekterspürung", "NOUN_POT_OBJECT_DETECTION", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Objekterspürungen", "NOUN_POT_OBJECT_DETECTIONs", "s", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-
   {"Kraftgewinns", "NOUN_POT_GAIN_ENERGY", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kraftgewinn", "NOUN_POT_GAIN_ENERGY", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kraftgewinne", "NOUN_POT_GAIN_ENERGYs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -3630,15 +3619,6 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Aufladungen", "NOUN_SCR_CHARGINGs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Gaswolke", "NOUN_SCR_STINKING_CLOUD", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-
-  {"Briefes", "NOUN_SCR_MAIL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Brief", "NOUN_SCR_MAIL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-
-  {"unbeschriebenen Blattes", "NOUN_SCR_BLANK_PAPER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"unbeschriebene Blatt", "NOUN_SCR_BLANK_PAPER", "", nominativ|akkusativ, neutrum, n_singular, bestimmter},
-  {"unbeschriebenes Blatt", "NOUN_SCR_BLANK_PAPER", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne},
-  {"unbeschriebenen Blatt", "NOUN_SCR_BLANK_PAPER", "", dativ, neutrum, n_singular, unbestimmter|bestimmter},
-  {"unbeschriebenem Blatt", "NOUN_SCR_BLANK_PAPER", "", dativ, neutrum, n_singular, grundform|ohne},
 
 
   /* Scrolls, unidentified */
@@ -17876,7 +17856,6 @@ struct verb_infinitiv_struct verben_infinitiv[] = {
   {"beten", "VERB_BETEN"},
   {"betrachten", "VERB_BETRACHTEN"},
   {"betreten", "VERB_BETRETEN"},
-  {"bewaffnen", "VERB_BEWAFFNEN"},
   {"bewegen", "VERB_BEWEGEN"},
   {"bewundern", "VERB_BEWUNDERN"},
   {"bezahlen", "VERB_BEZAHLEN"},
@@ -18470,7 +18449,6 @@ struct verb_imperativ_struct verben_imperativ[] = {
   {"bete", "betet", "", "VERB_BETEN"},
   {"betrachte", "betrachtet", "", "VERB_BETRACHTEN"},
   {"betritt", "betretet", "", "VERB_BETRETEN"},
-  {"bewaffne", "bewaffnet", "", "VERB_BEWAFFNEN"},
   {"beweg", "bewegt", "", "VERB_BEWEGEN"},
   {"bewundere", "bewundert", "", "VERB_BEWUNDERN"},
   {"bezahl", "bezahlt", "", "VERB_BEZAHLEN"},
@@ -19064,7 +19042,6 @@ struct verb_partizip_struct verben_partizip[] = {
   {"betend", "gebetet", "VERB_BETEN"},
   {"betrachtend", "betrachtet", "VERB_BETRACHTEN"},
   {"betretend", "betreten", "VERB_BETRETEN"},
-  {"bewaffnend", "bewaffnet", "VERB_BEWAFFNEN"},
   {"bewegend", "bewogen", "VERB_BEWEGEN"},
   {"bewundernd", "bewundert", "VERB_BEWUNDERN"},
   {"bezahlend", "bezahlt", "VERB_BEZAHLEN"},
@@ -20846,18 +20823,6 @@ struct verb_struct verben[] = {
   {"beträte", "VERB_BETRETEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
   {"beträtet", "VERB_BETRETEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
   {"beträten", "VERB_BETRETEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
-  {"bewaffnest", "VERB_BEWAFFNEN", "", zweitePerson, n_singular, praesens, akkusativ},
-  {"bewaffnet", "VERB_BEWAFFNEN", "", drittePerson, n_singular, praesens, akkusativ},
-  {"bewaffnet", "VERB_BEWAFFNEN", "", zweitePerson, n_plural, praesens, akkusativ},
-  {"bewaffnen", "VERB_BEWAFFNEN", "", drittePerson, n_plural, praesens, akkusativ},
-  {"bewaffnetest", "VERB_BEWAFFNEN", "", zweitePerson, n_singular, praeteritum, akkusativ},
-  {"bewaffnete", "VERB_BEWAFFNEN", "", drittePerson, n_singular, praeteritum, akkusativ},
-  {"bewaffnetet", "VERB_BEWAFFNEN", "", zweitePerson, n_plural, praeteritum, akkusativ},
-  {"bewaffneten", "VERB_BEWAFFNEN", "", drittePerson, n_plural, praeteritum, akkusativ},
-  {"bewaffnetest", "VERB_BEWAFFNEN", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
-  {"bewaffnete", "VERB_BEWAFFNEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
-  {"bewaffnetet", "VERB_BEWAFFNEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
-  {"bewaffneten", "VERB_BEWAFFNEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
   {"bewegst", "VERB_BEWEGEN", "", zweitePerson, n_singular, praesens, akkusativ},
   {"bewegt", "VERB_BEWEGEN", "", drittePerson, n_singular, praesens, akkusativ},
   {"bewegt", "VERB_BEWEGEN", "", zweitePerson, n_plural, praesens, akkusativ},
