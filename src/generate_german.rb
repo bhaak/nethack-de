@@ -27,6 +27,8 @@ $unbestimmter = "unbestimmter"
 def ausgabe_definitions
   defs = "
 
+/* Diese Datei wird automatisch durch generate_german.rb erzeugt. */
+
 #include \"german.h\"
 /*
 enum Casus   { nominativ=1, genitiv=2, dativ=4, akkusativ=8 };
@@ -1921,7 +1923,7 @@ def ausgabe_nouns
     "",
     "/* Wands, identified */",
     dekliniere_substantiv("NOUN_WAND_LIGHT", "Licht", "es", "Licht", "er", "neutrum"),
-    #dekliniere_substantiv("NOUN_WAND_SECRET_DOOR_DETECTION", # Geheimtürerspürung? Geheimtürfindung netzhack Türfindung
+    dekliniere_substantiv("NOUN_WAND_SECRET_DOOR_DETECTION", "Geheimtürfindung", "", "Geheimtürfindung", "en", "feminin", "s"), # Geheimtürerspürung? Geheimtürfindung netzhack Türfindung
     dekliniere_substantiv("NOUN_WAND_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_WAND_CREATE_MONSTER", "Monsterbeschwörung", "", "Monsterbeschwörung", "en", "feminin"), # Monstererschaffung, Monsterherbeirufung
     dekliniere_substantiv("NOUN_WAND_WISHING", "Wünschen", "s", "", "", "neutrum"),
@@ -1936,7 +1938,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_WAND_CANCELLATION", "Löschung", "", "Löschung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_WAND_TELEPORTATION", "Teleportation", "", "", "", "feminin"),
     dekliniere_substantiv("NOUN_WAND_OPENING", "Öffnung", "", "Öffnung", "en", "feminin"),
-    dekliniere_substantiv("NOUN_WAND_LOCKING", "Schliessen", "s", "", "", "neutrum"),
+    dekliniere_substantiv("NOUN_WAND_LOCKING", "Schließen", "s", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_WAND_PROBING", "Prüfung", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_WAND_DIGGING", "Graben", "s", "", "", "neutrum"),
     dekliniere_nominalphrase("NOUN_WAND_MAGIC_MISSILE", "magisch", "Geschoss", "es", "Geschoss", "e", "neutrum"),  # magische Geschosse
@@ -2225,8 +2227,8 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_POT_FULL_HEALING", "vollständig", "Heilung", "", "Heilung", "en", "feminin", "s"),
     dekliniere_substantiv("NOUN_POT_GAIN_LEVEL", "Aufstieg", "s", "Aufstieg", "e", "maskulin"), # Stufenanstieg # Stufenaufstieg, Aufstieg js
     dekliniere_substantiv("NOUN_POT_ENLIGHTENMENT", "Erleuchtung", "", "Erleuchtung", "en", "feminin", "s"), # Erleuchtung, Klarheit?
-    #dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION" # Monstererspüren, # Monsterentdecken, Monsterhellsicht Monstergespuer js
-    #dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION"  # Objekterspürung, Objekterspürens
+    dekliniere_substantiv("NOUN_POT_MONSTER_DETECTION", "Monstererspürung", "", "Monstererspürung", "en", "feminin", "s"), # Monstererspüren, # Monsterentdecken, Monsterhellsicht Monstergespuer js
+    dekliniere_substantiv("NOUN_POT_OBJECT_DETECTION", "Objekterspürung", "", "Objekterspürung", "en", "feminin", "s"), # Monstererspüren, # Monsterentdecken, Monsterhellsicht Monstergespuer js
     dekliniere_substantiv("NOUN_POT_GAIN_ENERGY", "Kraftgewinn", "s", "Kraftgewinn", "e", "maskulin"), # Energiegewinn?, Energiezunahme?, Energiegewinnung? # js
     dekliniere_substantiv("NOUN_POT_SLEEPING", "Schlaf", "es", "", "e", "maskulin"),
     dekliniere_substantiv("NOUN_POT_POLYMORPH", "Transformation", "", "Transformation", "en", "feminin", "s"), 
@@ -2296,7 +2298,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCR_CHARGING", "Aufladung", "", "Aufladung", "en", "feminin"), # Laden, Ladungs?? # Aufladung js
     dekliniere_substantiv("NOUN_SCR_STINKING_CLOUD", "Gaswolke", "", "", "en", "feminin"), # Gaswolke? netzhack: Gestank
     #dekliniere_substantiv("NOUN_SCR_MAIL"
+    dekliniere_substantiv("NOUN_SCR_MAIL", "Brief", "es", "", "e", "maskulin"),
     #dekliniere_substantiv("NOUN_SCR_BLANK_PAPER"
+    dekliniere_nominalphrase("NOUN_SCR_BLANK_PAPER", "unbeschrieben", "Blatt", "es", "", "", "neutrum"),
     "",
     "/* Scrolls, unidentified */",
     dekliniere_substantiv("NOUN_SCR_ZELGO_MER", "ZELGO MER", "", "ZELGO MER", "fremder", "maskulin"),
