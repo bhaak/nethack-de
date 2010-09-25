@@ -1662,7 +1662,7 @@ dodip()
 		if (obj->otyp != save_otyp) {
 			makeknown(POT_POLYMORPH);
 			useup(potion);
-			prinv((char *)0, obj, 0L);
+			prinv((char *)0, obj, 0L, (char *)0);
 			return 1;
 		} else {
 			pline("Nichts scheint zu passieren."); /* EN pline("Nothing seems to happen."); */

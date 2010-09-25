@@ -1912,7 +1912,7 @@ struct obj *tstone;
 		    (Role_if(PM_ARCHEOLOGIST) || Race_if(PM_GNOME))))) {
 	    makeknown(TOUCHSTONE);
 	    makeknown(obj->otyp);
-	    prinv((char *)0, obj, 0L);
+	    prinv((char *)0, obj, 0L, (char *)0);
 	    return;
 	} else {
 	    /* either a ring or the touchstone was not effective */

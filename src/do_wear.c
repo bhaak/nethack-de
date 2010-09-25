@@ -1588,7 +1588,7 @@ doputon()
 		return(1);
 	}
 	if (is_worn(otmp))
-	    prinv((char *)0, otmp, 0L);
+	    prinv((char *)0, otmp, 0L, (char *)0);
 	return(1);
 }
 

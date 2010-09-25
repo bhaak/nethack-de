@@ -2247,7 +2247,7 @@ register struct monst *mon;
 		    setworn(ring, LEFT_RING);
 		} else impossible("ring replacement");
 		Ring_on(ring);
-		prinv((char *)0, ring, 0L);
+		prinv((char *)0, ring, 0L, (char *)0);
 	    }
 	}
 

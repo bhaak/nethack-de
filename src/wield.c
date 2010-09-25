@@ -169,7 +169,7 @@ struct obj *wep;
 		 */
 		long dummy = wep->owornmask;
 		wep->owornmask |= W_WEP;
-		prinv((char *)0, wep, 0L);
+		prinv((char *)0, wep, 0L, (char *)0);
 		wep->owornmask = dummy;
 	    }
 	    setuwep(wep);
@@ -320,7 +320,7 @@ doswapweapon()
 	else {
 		setuswapwep(oldwep);
 		if (uswapwep)
-			prinv((char *)0, uswapwep, 0L);
+			prinv((char *)0, uswapwep, 0L, (char *)0);
 		else
 			You("VERB_HABEN keine Zweitwaffe parat."); /* EN You("have no secondary weapon readied."); */
 	}
@@ -391,7 +391,7 @@ dowieldquiver()
 		/* Okay to put in quiver; print it */
 		dummy = newquiver->owornmask;
 		newquiver->owornmask |= W_QUIVER;
-		prinv((char *)0, newquiver, 0L);
+		prinv((char *)0, newquiver, 0L, (char *)0);
 		newquiver->owornmask = dummy;
 	}
 

@@ -479,7 +479,7 @@ const char *drop_fmt, *drop_arg, *hold_msg;
 			    ammo_and_launcher(obj, uwep) ||
 			    ammo_and_launcher(obj, uswapwep)))
 		    setuqwep(obj);
-		if (hold_msg || drop_fmt) prinv(hold_msg, obj, oquan);
+		if (hold_msg || drop_fmt) prinv(hold_msg, obj, oquan, (char *)0);
 	    }
 	}
 	return obj;
@@ -1537,7 +1537,7 @@ identify(otmp)
 struct obj *otmp;
 {
     fully_identify_obj(otmp);
-    prinv((char *)0, otmp, 0L);
+    prinv((char *)0, otmp, 0L, (char *)0);
     return 1;
 }
 
@@ -1634,15 +1634,18 @@ register struct obj *obj;
  * the current quantity.
  */
 void
-prinv(prefix, obj, quan)
+prinv(prefix, obj, quan, suffix)
 const char *prefix;
 register struct obj *obj;
 long quan;
+const char *suffix;
 {
 	if (!prefix) prefix = "";
-	pline("%s%s%s",
+	if (!suffix) suffix = "";
+	pline("%s%s%s%s%s.",
 	      prefix, *prefix ? " " : "",
-	      xprname(obj, (char *)0, obj_to_let(obj), TRUE, 0L, quan));
+	      xprname(obj, (char *)0, obj_to_let(obj), FALSE, 0L, quan),
+          *suffix ? " " : "", suffix);
 }
 
 #endif /* OVL2 */
@@ -2480,8 +2483,8 @@ doprwep()
     if (!uwep) {
 	You("VERB_SEIN jetzt unbewaffnet."); /* EN You("are empty %s.", body_part(HANDED)); */
     } else {
-	prinv((char *)0, uwep, 0L);
-	if (u.twoweap) prinv((char *)0, uswapwep, 0L);
+	prinv((char *)0, uwep, 0L, (char *)0);
+	if (u.twoweap) prinv((char *)0, uswapwep, 0L, (char *)0);
     }
     return 0;
 }
@@ -2537,7 +2540,7 @@ dopramulet()
 	if (!uamul)
 		You("VERB_TRAGEN gar kein Amulett."); /* EN You("are not wearing an amulet."); */
 	else
-		prinv((char *)0, uamul, 0L);
+		prinv((char *)0, uamul, 0L, (char *)0);
 	return 0;
 }
 
@@ -2779,7 +2782,7 @@ doorganize()	/* inventory organizer by Del Lamb */
 	invent = obj;
 	reorder_invent();
 
-	prinv(adj_type, obj, 0L);
+	prinv(adj_type, obj, 0L, (char *)0);
 	update_inventory();
 	return(0);
 }

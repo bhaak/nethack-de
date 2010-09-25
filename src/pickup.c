@@ -60,9 +60,9 @@ STATIC_DCL boolean FDECL(mon_beside, (int, int));
 /* if you can figure this out, give yourself a hearty pat on the back... */
 #define GOLD_CAPACITY(w,n)	(((w) * -100L) - ((n) + 50L) - 1L)
 
-static const char moderateloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN etwas Mühe, OBJECT "; /* EN static const char moderateloadmsg[] = "You have a little trouble lifting"; */
-static const char nearloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN ziemliche Mühe, OBJECT "; /* EN static const char nearloadmsg[] = "You have much trouble lifting"; */
-static const char overloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN extreme Probleme, OBJECT "; /* EN static const char overloadmsg[] = "You have extreme difficulty lifting"; */
+static const char moderateloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN etwas Mühe, OBJECT"; /* EN static const char moderateloadmsg[] = "You have a little trouble lifting"; */
+static const char nearloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN ziemliche Mühe, OBJECT"; /* EN static const char nearloadmsg[] = "You have much trouble lifting"; */
+static const char overloadmsg[] = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN extreme Probleme, OBJECT"; /* EN static const char overloadmsg[] = "You have extreme difficulty lifting"; */
 
 /* BUG: this lets you look at cockatrice corpses while blind without
    touching them */
@@ -1305,12 +1305,12 @@ boolean telekinesis;	/* not picking it up directly by hand */
 	    } else {
 		u.ugold += count;
 		if ((nearload = near_capacity()) != 0)
-		    pline("%s %ld NOUN_GOLD_PIECE%s aufzuheben.", /* EN pline("%s %ld gold piece%s.", */
+		    pline(" %s %ld NOUN_GOLD_PIECE%s aufzuheben.", /* EN pline("%s %ld gold piece%s.", */
 			  nearload < MOD_ENCUMBER ?
 			  moderateloadmsg : nearloadmsg,
 			  count, plur(count));
 		else
-		    prinv((char *) 0, obj, count);
+		    prinv((char *) 0, obj, count, (char *)0);
 		costly_gold(obj->ox, obj->oy, count);
 		if (count == obj->quan)
 		    delobj(obj);
@@ -1377,7 +1377,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 	if (uwep && uwep == obj) mrg_to_wielded = TRUE;
 	nearload = near_capacity();
 	prinv(nearload == SLT_ENCUMBER ? moderateloadmsg : (char *) 0, // TODO DE
-	      obj, count);
+	      obj, count, nearload == SLT_ENCUMBER ? "aufzuheben" : (char *)0);
 	mrg_to_wielded = FALSE;
 	return 1;
 }
@@ -2017,7 +2017,7 @@ register struct obj *obj;
 	      (loadlev < MOD_ENCUMBER ?
 	       "You have a little trouble removing" : /* EN "You have a little trouble removing" : */ // TODO DE
 	       "You have much trouble removing") : (char *)0, /* EN "You have much trouble removing") : (char *)0, */ // TODO DE
-	      otmp, count);
+	      otmp, count, (char *)0);
 
 	if (is_gold) {
 #ifndef GOLDOBJ

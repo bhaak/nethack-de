@@ -312,7 +312,7 @@ dofire()
 			return(dothrow());
 		} else {
 			You("VERB_FUELLEN OBJECT PRONOMEN_POSSESSIV NOUN_QUIVER:"); /* EN You("fill your quiver:"); */
-			prinv((char *)0, uquiver, 0L);
+			prinv((char *)0, uquiver, 0L, (char *)0);
 		}
 	}
 
