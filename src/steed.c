@@ -149,7 +149,7 @@ use_saddle(otmp)
 	    otmp->leashmon = mtmp->m_id;
 	    update_mon_intrinsics(mtmp, otmp, TRUE, FALSE);
 	} else
-	    pline("%s resists!", Monnam(mtmp)); /* EN pline("%s resists!", Monnam(mtmp)); */ // TODO DE
+	    pline("SUBJECT %s VERB_WIDERSTEHEN!", Monnam(mtmp)); /* EN pline("%s resists!", Monnam(mtmp)); */
 	return 1;
 }
 
@@ -284,8 +284,8 @@ mount_steed(mtmp, force)
 	if (!force && !Role_if(PM_KNIGHT) && !(--mtmp->mtame)) {
 	    /* no longer tame */
 	    newsym(mtmp->mx, mtmp->my);
-	    pline("%s resists%s!", Monnam(mtmp), /* EN pline("%s resists%s!", Monnam(mtmp), */ // TODO DE
-		  mtmp->mleashed ? " and its leash comes off" : ""); /* EN mtmp->mleashed ? " and its leash comes off" : ""); */ // TODO DE
+	    pline("SUBJECT %s VERB_WIDERSTEHEN%s!", Monnam(mtmp), /* EN pline("%s resists%s!", Monnam(mtmp), */
+		  mtmp->mleashed ? " und seine Leine löst sich" : ""); /* EN mtmp->mleashed ? " and its leash comes off" : ""); */ // TODO DE
 	    if (mtmp->mleashed) m_unleash(mtmp, FALSE);
 	    return (FALSE);
 	}

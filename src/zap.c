@@ -4081,7 +4081,7 @@ int damage, tell;
 	if (resisted) {
 	    if (tell) {
 		shieldeff(mtmp->mx, mtmp->my);
-		pline("%s resists!", Monnam(mtmp)); /* EN pline("%s resists!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_WIDERSTEHEN!", Monnam(mtmp)); /* EN pline("%s resists!", Monnam(mtmp)); */
 	    }
 	    damage = (damage + 1) / 2;
 	}
