@@ -134,15 +134,15 @@ const struct Role roles[] = {
 	10, 3,-3, 2, 10, A_WIS, SPE_CURE_SICKNESS,   -4
 },
 {	{"NOUN_KNIGHT", 0}, { /* EN {	{"Knight", 0}, { */
-	{"Gallant",     0}, /* EN {"Gallant",     0}, */ // TODO DE
-	{"Esquire",     0}, /* EN {"Esquire",     0}, */ // TODO DE
-	{"Bachelor",    0}, /* EN {"Bachelor",    0}, */ // TODO DE
-	{"Sergeant",    0}, /* EN {"Sergeant",    0}, */ // TODO DE
-	{"Knight",      0}, /* EN {"Knight",      0}, */ // TODO DE
-	{"Banneret",    0}, /* EN {"Banneret",    0}, */ // TODO DE
-	{"Chevalier",   "Chevaliere"}, /* EN {"Chevalier",   "Chevaliere"}, */ // TODO DE
-	{"Seignieur",   "Dame"}, /* EN {"Seignieur",   "Dame"}, */ // TODO DE
-	{"Paladin",     0} }, /* EN {"Paladin",     0} }, */ // TODO DE
+	{"NOUN_KAMMERHERR",  "NOUN_HOFDAME"}, /* EN {"Gallant",     0}, */ // TODO DE
+	{"NOUN_EDLER",       "NOUN_EDLE"}, /* EN {"Esquire",     0}, */ // TODO DE
+	{"NOUN_JUNKER",      "NOUN_JUNKFRAU"}, /* EN {"Bachelor",    0}, */ // TODO DE
+	{"NOUN_KAVALIER",    "NOUN_KAVALIERIN"}, /* EN {"Sergeant",    0}, */ // TODO DE
+	{"NOUN_RITTER",      "NOUN_DAME"}, /* EN {"Knight",      0}, */ // TODO DE
+	{"NOUN_BANNERHERR",  "NOUN_BANNERFRAU"}, /* EN {"Banneret",    0}, */ // TODO DE
+	{"NOUN_EDELMANN",    "NOUN_EDELFRAU"}, /* EN {"Chevalier",   "Chevaliere"}, */ // TODO DE
+	{"NOUN_FREIHERR",    "NOUN_FREIFRAU"}, /* EN {"Seignieur",   "Dame"}, */ // TODO DE
+	{"NOUN_PALADIN",     0} }, /* EN {"Paladin",     0} }, */ // TODO DE
 	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
 	"Kni", "NOUN_CAMELOT", "ARTIKEL_BESTIMMTER NOUN_INSEL aus Glas", /* EN "Kni", "Camelot Castle", "the Isle of Glass", */
 	PM_KNIGHT, NON_PM, PM_PONY,

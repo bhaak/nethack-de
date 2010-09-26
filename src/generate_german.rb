@@ -3362,8 +3362,25 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CHIRURGEON","Medikus","","Medizi","fremder","maskulin"),
     dekliniere_substantiv("NOUN_CHIRURGEONIN","Medika","","Medika","fremder","feminin"),
 
-	 "/* Paladin */",
-	 # "NOUN_KNIGHT"
+    "/* Paladin */",
+    # "NOUN_KNIGHT"
+    dekliniere_substantiv("NOUN_KAMMERHERR","Kammerherr","en","Kammerherr","en","maskulin"),
+    dekliniere_substantiv("NOUN_HOFDAME","Hofdame","","Hofdame","en","feminin"),
+    dekliniere_adjektivisches_substantiv("NOUN_EDLER","Edl","maskulin"),
+    dekliniere_adjektivisches_substantiv("NOUN_EDLE","Edl","feminin"),
+    dekliniere_substantiv("NOUN_JUNKER","Junker","s","Junker","","maskulin"),
+    dekliniere_substantiv("NOUN_JUNKFRAU","Junkfrau","","Junkfrau","en","feminin"),
+    dekliniere_substantiv("NOUN_KAVALIER","Kavalier","s","Kavalier","e","maskulin"),
+    dekliniere_substantiv("NOUN_KAVALIERIN","Kavalierin","","Kavalierinn","en","feminin"),
+    dekliniere_substantiv("NOUN_RITTER","Ritter","s","Ritter","","maskulin"),
+    dekliniere_substantiv("NOUN_DAME","Dame","","Dame","en","feminin"),
+    dekliniere_substantiv("NOUN_BANNERHERR","Bannerherr","en","Bannerherr","en","maskulin"),
+    dekliniere_substantiv("NOUN_BANNERFRAU","Bannerfrau","","Bannerfrau","en","feminin"),
+    dekliniere_substantiv("NOUN_EDELMANN","Edelmann","s","Edelmänn","er","maskulin"),
+    dekliniere_substantiv("NOUN_EDELFRAU","Edelfrau","","Edelfrau","en","feminin"),
+    dekliniere_substantiv("NOUN_FREIHERR","Freiherr","en","Freiherr","en","maskulin"),
+    dekliniere_substantiv("NOUN_FREIFRAU","Freifrau","","Freifrau","en","feminin"),
+    dekliniere_substantiv("NOUN_PALADIN","Paladin","s","Paladin","e","maskulin"),
 
     "/* Mönch */",
     # "NOUN_MOENCH"
