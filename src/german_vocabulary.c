@@ -10346,6 +10346,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Hämmer", "NOUN_HAMMERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Hämmern", "NOUN_HAMMERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Handbreit", "NOUN_HANDBREIT", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Handbreiten", "NOUN_HANDBREITs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Handlung", "NOUN_HANDLUNG", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Handlungen", "NOUN_HANDLUNGs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 

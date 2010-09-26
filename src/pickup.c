@@ -1305,7 +1305,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 	    } else {
 		u.ugold += count;
 		if ((nearload = near_capacity()) != 0)
-		    pline(" %s %ld NOUN_GOLD_PIECE%s aufzuheben.", /* EN pline("%s %ld gold piece%s.", */
+		    pline("%s %ld NOUN_GOLD_PIECE%s aufzuheben.", /* EN pline("%s %ld gold piece%s.", */
 			  nearload < MOD_ENCUMBER ?
 			  moderateloadmsg : nearloadmsg,
 			  count, plur(count));
@@ -1430,27 +1430,27 @@ encumber_msg()
 
     if(oldcap < newcap) {
 	switch(newcap) {
-	case 1: Your("movements are slowed slightly because of your load."); /* EN case 1: Your("movements are slowed slightly because of your load."); */ // TODO DE
+	case 1: Your("OBJECT NUMERUS_PLURAL NOUN_BEWEGUNG MODIFIER_VERB_PLURAL VERB_SEIN durch NEUES_OBJECT KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_LAST etwas verlangsamt."); /* EN case 1: Your("movements are slowed slightly by your load."); */ // TODO DE
 		break;
-	case 2: You("rebalance your load.  Movement is difficult."); /* EN case 2: You("rebalance your load.  Movement is difficult."); */ // TODO DE
+	case 2: You("VERB_BRINGEN OBJECT KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_LAST ins Gleichgewicht.  SUBJECT_IM_SATZ NUMERUS_PLURAL PRONOMEN_POSSESSIV NOUN_BEWEGUNG MODIFIER_VERB_PLURAL VERB_SEIN erschwert."); /* EN case 2: You("rebalance your load.  Movement is difficult."); */ // TODO DE
 		break;
-	case 3: You("%s under your heavy load.  Movement is very hard.", /* EN case 3: You("%s under your heavy load.  Movement is very hard.", */ // TODO DE
+	case 3: You("%s unter OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_SCHWER NOUN_LAST.  SUBJECT_IM_SATZ Jede NOUN_BEWEGUNG VERB_FALLEN KASUS_DATIV PRONOMEN_PERSONAL schwer.", /* EN case 3: You("%s under your heavy load.  Movement is very hard.", */ // TODO DE
 		    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
 		break;
-	default: You("%s move a handspan with this load!", /* EN default: You("%s move a handspan with this load!", */ // TODO DE
-		     newcap == 4 ? "can barely" : "can't even"); /* EN newcap == 4 ? "can barely" : "can't even"); */ // TODO DE
+	default: You("VERB_KOENNEN OBJECT PRONOMEN_PERSONAL mit NEUES_OBJECT KASUS_DATIV PRONOMEN_DIESER NOUN_LAST %s NEUES_OBJECT_KASUS NOUN_HANDBREIT weit MODIFIER_VERB_INFINITIV VERB_BEWEGEN!", /* EN default: You("%s move a handspan with this load!", */ // TODO DE
+		     newcap == 4 ? "gerade mal eine" : "keine"); /* EN newcap == 4 ? "can barely" : "can't even"); */ // TODO DE
 		break;
 	}
 	flags.botl = 1;
     } else if(oldcap > newcap) {
 	switch(newcap) {
-	case 0: Your("movements are now unencumbered."); /* EN case 0: Your("movements are now unencumbered."); */ // TODO DE
+	case 0: Your("OBJECT NUMERUS_PLURAL NOUN_BEWEGUNG MODIFIER_VERB_PLURAL VERB_SEIN jetzt unbelastet."); /* EN case 0: Your("movements are now unencumbered."); */ // TODO DE
 		break;
-	case 1: Your("movements are only slowed slightly by your load."); /* EN case 1: Your("movements are only slowed slightly by your load."); */ // TODO DE
+	case 1: Your("OBJECT NUMERUS_PLURAL NOUN_BEWEGUNG MODIFIER_VERB_PLURAL VERB_SEIN durch NEUES_OBJECT KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_LAST nur noch leicht verlangsamt."); /* EN case 1: Your("movements are only slowed slightly by your load."); */ // TODO DE
 		break;
-	case 2: You("rebalance your load.  Movement is still difficult."); /* EN case 2: You("rebalance your load.  Movement is still difficult."); */ // TODO DE
+	case 2: You("VERB_BRINGEN OBJECT KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_LAST ins Gleichgewicht.  SUBJECT_IM_SATZ NUMERUS_PLURAL NUMERUS_PLURAL NOUN_BEWEGUNG MODIFIER_VERB_PLURAL VERB_SEIN immer noch erschwert."); /* EN case 2: You("rebalance your load.  Movement is still difficult."); */ // TODO DE
 		break;
-	case 3: You("%s under your load.  Movement is still very hard.", /* EN case 3: You("%s under your load.  Movement is still very hard.", */ // TODO DE
+	case 3: You("%s unter OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_SCHWER NOUN_LAST.  SUBJECT_IM_SATZ Jede NOUN_BEWEGUNG VERB_FALLEN KASUS_DATIV PRONOMEN_PERSONAL immer noch schwer.", /* EN case 3: You("%s under your load.  Movement is still very hard.", */ // TODO DE
 		    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
 		break;
 	}

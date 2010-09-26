@@ -3687,6 +3687,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_HALBGOTT","Halbgott","es","Halbgött","er","maskulin"),
     dekliniere_substantiv("NOUN_HALLE", "Halle", "", "Halle", "en", "feminin"),
     dekliniere_substantiv("NOUN_HAMMER","Hammer", "s", "Hämmer", "", "maskulin"),
+    dekliniere_substantiv("NOUN_HANDBREIT","Handbreit","","Handbreit","en","feminin"),
     dekliniere_substantiv("NOUN_HANDLUNG","Handlung","","Handlung","en","feminin"),
     dekliniere_substantiv("NOUN_HAND_DES_TODES", "Hand", "", "Händ", "e", "feminin", "", "des Todes"),
     dekliniere_substantiv("NOUN_HAZE","Nebel","s","Nebel","","maskulin"),
