@@ -1147,7 +1147,7 @@ int in_sight;
 	    }
 
 	    if (in_sight) {
-		pline("Plötzlich VERB_VERSCHWINDEN SUBJECT_IM_SATZ %s aus OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_SIGHT.", mon_nam(mtmp)); /* EN pline("Suddenly, %s disappears out of sight.", mon_nam(mtmp)); */ // TODO DE
+		pline("Plötzlich VERB_VERSCHWINDEN SUBJECT_IM_SATZ %s aus OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_SIGHT.", mon_nam(mtmp)); /* EN pline("Suddenly, %s disappears out of sight.", mon_nam(mtmp)); */
 		seetrap(trap);
 	    }
 	    migrate_to_level(mtmp, ledger_no(&tolevel),
