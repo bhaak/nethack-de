@@ -669,6 +669,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_YELL","brüllen"),
 		Verb.verb("VERB_SLIP","entgleiten"),
 		Verb.verb("VERB_STAGGER","torkeln"),
+		Verb.verb("VERB_DIP","tauchen","ein"),
 
 		# deutsche Bezeichner
 		Verb.verb("VERB_ABBRECHEN","brechen","ab"),

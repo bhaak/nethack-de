@@ -1542,19 +1542,19 @@ dodip()
 	char qbuf[QBUFSZ], Your_buf[BUFSZ];
 
 	allowall[0] = ALL_CLASSES; allowall[1] = '\0';
-	if(!(obj = getobj(allowall, "dip"))) /* EN if(!(obj = getobj(allowall, "dip"))) */ // TODO DE
+	if(!(obj = getobj(allowall, "VERB_DIP"))) /* EN if(!(obj = getobj(allowall, "dip"))) */ // TODO DE
 		return(0);
 
 	here = levl[u.ux][u.uy].typ;
 	/* Is there a fountain to dip into here? */
 	if (IS_FOUNTAIN(here)) {
-		if(yn("Dip it into the fountain?") == 'y') { /* EN if(yn("Dip it into the fountain?") == 'y') { */ // TODO DE
+		if(yn("In OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_FOUNTAIN MODIFIER_VERB_INFINITIV VERB_DIP?") == 'y') { /* EN if(yn("Dip it into the fountain?") == 'y') { */ // TODO DE
 			dipfountain(obj);
 			return(1);
 		}
 	} else if (is_pool(u.ux,u.uy)) {
 		tmp = waterbody_name(u.ux,u.uy);
-		Sprintf(qbuf, "Dip it into the %s?", tmp); /* EN Sprintf(qbuf, "Dip it into the %s?", tmp); */ // TODO DE
+		Sprintf(qbuf, "In OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s MODIFIER_VERB_INFINITIV VERB_DIP?", tmp); /* EN Sprintf(qbuf, "Dip it into the %s?", tmp); */ // TODO DE
 		if (yn(qbuf) == 'y') {
 		    if (Levitation) {
 			floating_above(tmp);
