@@ -10829,6 +10829,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Ladendecke", "NOUN_SHOPS_CEILING", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ladendecken", "NOUN_SHOPS_CEILINGs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Sichtfelds", "NOUN_SIGHT", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sichtfeld", "NOUN_SIGHT", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Sichtfelder", "NOUN_SIGHTs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Sichtfeldern", "NOUN_SIGHTs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Silbers", "NOUN_SILBER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Silber", "NOUN_SILBER", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 

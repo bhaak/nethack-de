@@ -3812,6 +3812,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SHIRT","Hemd","es","Hemd","en","neutrum"),
     dekliniere_substantiv("NOUN_SHOP","Laden","s","Läden","","maskulin"),
     dekliniere_substantiv("NOUN_SHOPS_CEILING","Ladendecke","","Ladendecke","en","feminin"),
+    dekliniere_substantiv("NOUN_SIGHT","Sichtfeld","s","Sichtfeld","er","neutrum"),    
     dekliniere_substantiv("NOUN_SILBER","Silber","s","","","neutrum"),
     dekliniere_substantiv("NOUN_SINN","Sinn","es","Sinn","e","maskulin"),
     dekliniere_substantiv("NOUN_SKILL", "Fertigkeit", "", "Fertigkeit", "en", "feminin"),
