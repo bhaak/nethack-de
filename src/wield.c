@@ -247,7 +247,7 @@ dowield()
 	}
 
 	/* Prompt for a new weapon */
-	if (!(wep = getobj(wield_objs, "wield"))) /* EN if (!(wep = getobj(wield_objs, "wield"))) */ // TODO DE
+	if (!(wep = getobj(wield_objs, "als Waffe verwenden"))) /* EN if (!(wep = getobj(wield_objs, "wield"))) */ // TODO DE
 		/* Cancelled */
 		return (0);
 	else if (wep == uwep) {
@@ -348,7 +348,7 @@ dowieldquiver()
 		pline("Hinweis: Bitte MODIFIER_VERB_IMPERATIV VERB_BENUTZEN #quit, NEUER_SATZ wenn SUBJECT_IM_SATZ PRONOMEN_PERSONAL das Spiel verlassen MODIFIER_KONJUNKTIV_II VERB_MOEGEN."); /* EN pline("Note: Please use #quit if you wish to exit the game."); */
 
 	/* Prompt for a new quiver */
-	if (!(newquiver = getobj(quivee_types, "ready"))) /* EN if (!(newquiver = getobj(quivee_types, "ready"))) */ // TODO DE
+	if (!(newquiver = getobj(quivee_types, "in den Köcher tun"))) /* EN if (!(newquiver = getobj(quivee_types, "ready"))) */ // TODO DE
 		/* Cancelled */
 		return (0);
 
@@ -413,7 +413,7 @@ const char *verb;	/* "rub",&c */
 
     if (obj == uwep) return TRUE;   /* nothing to do if already wielding it */
 
-    if (!verb) verb = "wield"; /* EN if (!verb) verb = "wield"; */ // TODO DE
+    if (!verb) verb = "in die Hand nehmen"; /* EN if (!verb) verb = "wield"; */ // TODO DE
     what = xname(obj);
     more_than_1 = (obj->quan > 1L ||
 		   strstri(what, "NOUN_PAAR ") != 0 || /* EN strstri(what, "pair of ") != 0 || */

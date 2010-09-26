@@ -2804,7 +2804,7 @@ doapply()
 	if (carrying(CREAM_PIE) || carrying(EUCALYPTUS_LEAF))
 		add_class(class_list, FOOD_CLASS);
 
-	obj = getobj(class_list, "use or apply"); /* EN obj = getobj(class_list, "use or apply"); */ // TODO DE
+	obj = getobj(class_list, "benutzen"); /* EN obj = getobj(class_list, "use or apply"); */ // TODO DE
 	if(!obj) return 0;
 
 	if (obj->oartifact && !touch_artifact(obj, &youmonst))

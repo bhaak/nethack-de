@@ -933,7 +933,7 @@ register const char *let,*word;
 		|| (!strncmp(word, "rub on the stone", 16) && /* EN || (!strncmp(word, "rub on the stone", 16) && */ // TODO DE
 		    *let == GEM_CLASS &&	/* using known touchstone */
 		    otmp->dknown && objects[otyp].oc_name_known)
-		|| ((!strcmp(word, "use or apply") || /* EN || ((!strcmp(word, "use or apply") || */ // TODO DE
+		|| ((!strcmp(word, "benutzen") || /* EN || ((!strcmp(word, "use or apply") || */ // TODO DE
 			!strcmp(word, "entschärfen")) && /* EN !strcmp(word, "untrap with")) && */
 		     /* Picks, axes, pole-weapons, bullwhips */
 		    ((otmp->oclass == WEAPON_CLASS && !is_pick(otmp) &&
@@ -2715,7 +2715,7 @@ doorganize()	/* inventory organizer by Del Lamb */
 	if (!flags.invlet_constant) reassign();
 	/* get a pointer to the object the user wants to organize */
 	allowall[0] = ALL_CLASSES; allowall[1] = '\0';
-	if (!(obj = getobj(allowall,"adjust"))) return(0); /* EN if (!(obj = getobj(allowall,"adjust"))) return(0); */ // TODO DE
+	if (!(obj = getobj(allowall,"anpassen"))) return(0); /* EN if (!(obj = getobj(allowall,"adjust"))) return(0); */ // TODO DE
 
 	/* initialize the list with all upper and lower case letters */
 	for (let = 'a', ix = 0;  let <= 'z';) alphabet[ix++] = let++;

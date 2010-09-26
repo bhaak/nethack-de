@@ -1268,7 +1268,7 @@ arti_invoke(obj)
 	    break;
 	  }
 	case CHARGE_OBJ: {
-	    struct obj *otmp = getobj(recharge_type, "charge"); /* EN struct obj *otmp = getobj(recharge_type, "charge"); */ // TODO DE
+	    struct obj *otmp = getobj(recharge_type, "aufladen"); /* EN struct obj *otmp = getobj(recharge_type, "charge"); */ // TODO DE
 	    boolean b_effect;
 
 	    if (!otmp) {

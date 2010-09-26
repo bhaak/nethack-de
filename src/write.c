@@ -94,7 +94,7 @@ register struct obj *pen;
 	}
 
 	/* get paper to write on */
-	paper = getobj(write_on,"write on"); /* EN paper = getobj(write_on,"write on"); */ // TODO DE
+	paper = getobj(write_on, "beschriften"); /* EN paper = getobj(write_on,"write on"); */ // TODO DE
 	if(!paper)
 		return(0);
 	typeword = (paper->oclass == SPBOOK_CLASS) ? "NOUN_SPELLBOOK" : "NOUN_SCROLL"; /* EN typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll"; */

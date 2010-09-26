@@ -1076,7 +1076,7 @@ register struct obj	*sobj;
 		}
 		known = TRUE;
 		pline("Das ist ARTIKEL_UNBESTIMMTER NOUN_SCROLL PARTIKEL_OF NOUN_SCR_CHARGING."); /* EN pline("This is a charging scroll."); */
-		otmp = getobj(all_count, "charge"); /* EN otmp = getobj(all_count, "charge"); */ // TODO DE
+		otmp = getobj(all_count, "aufladen"); /* EN otmp = getobj(all_count, "charge"); */ // TODO DE
 		if (!otmp) break;
 		recharge(otmp, sobj->cursed ? -1 : (sobj->blessed ? 1 : 0));
 		break;

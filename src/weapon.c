@@ -653,9 +653,9 @@ register struct monst *mon;
 			} else {
 			    pline("SUBJECT %s VERB_VERSUCHEN sich OBJECT KASUS_DATIV mit %s bewaffnen.", Monnam(mon), /* EN pline("%s tries to wield %s.", Monnam(mon), */
 				doname(obj));
-			    pline("SUBJECT %s %s %s!", /* EN pline("%s %s %s!", */
-				  genitivattribut_zu_wort(mon_nam(mon), /* EN s_suffix(Monnam(mon)), */
-				  xname(mw_tmp)), welded_buf); /* EN xname(mw_tmp), welded_buf); */
+			    pline("SUBJECT %s %s!", /* EN pline("%s %s %s!", */
+				  genitivattribut_zu_wort(mon_nam(mon), xname(mw_tmp)), /* EN s_suffix(Monnam(mon)), */
+				  welded_buf); /* EN xname(mw_tmp), welded_buf); */
 			}
 			mw_tmp->bknown = 1;
 		    }
