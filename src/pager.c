@@ -195,7 +195,7 @@ lookat(x, y, buf, monbuf)
 
 		if (ways_seen > 1 || !normal) {
 		    if (normal) {
-			Strcat(monbuf, "normales Sehen "); /* EN Strcat(monbuf, "normal vision"); */
+			Strcat(monbuf, "normales Sehen"); /* EN Strcat(monbuf, "normal vision"); */
 			/* can't actually be 1 yet here */
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
