@@ -1504,7 +1504,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		    You("VERB_GLAUBEN, etwas habe OBJECT PRONOMEN_POSSESSIV %s gestreift.", body_part(FOOT)); /* EN You("think %s brushed your %s.",something, body_part(FOOT)); */
 		else You(Hallucination ?
 		    "VERB_SEHEN Grünzeug OBJECT KASUS_DATIV unter PRONOMEN_POSSESSIV %s.  Komische Sache in einem Dungeon." : /* EN "see crabgrass at your %s.  A funny thing in a dungeon." : */
-		    "VERB_ENTDECKEN ein vierblättriges Kleeblatt OBJECT zu KASUS_DATIV PRONOMEN_POSSESSIV %s.", /* EN "glimpse a four-leaf clover at your %s.", */
+		    "VERB_ENTDECKEN ein vierblättriges Kleeblatt OBJECT KASUS_DATIV %s PRONOMEN_POSSESSIV %s.", (Upolyd && (!humanoid(youmonst.data))) ? "unter" : "zu", /* EN "glimpse a four-leaf clover at your %s.", */
 		    makeplural(body_part(FOOT)));
 	    }
 	}
