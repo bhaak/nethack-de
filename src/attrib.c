@@ -428,8 +428,8 @@ exerchk()
 				    "MODIFIER_VERB_PRAETERITUM VERB_SEIN nicht aufmerksam genug."); /* EN "haven't been paying attention."); */
 				break;
 		    case A_DEX: You((mod_val >0) ?
-				    "must have been working on your reflexes." : /* EN "must have been working on your reflexes." : */ // TODO DE
-				    "haven't been working on reflexes lately."); /* EN "haven't been working on reflexes lately."); */ // TODO DE
+				    "VERB_MUESSEN an OBJECT KASUS_DATIV NUMERUS_PLURAL PRONOMEN_POSSESSIV NOUN_REFLEX gearbeitet haben." : /* EN "must have been working on your reflexes." : */ // TODO DE
+				    "VERB_HABEN in letzter Zeit nicht an OBJECT NUMERUS_PLURAL PRONOMEN_POSSESSIV NOUN_REFLEX gearbeitet."); /* EN "haven't been working on reflexes lately."); */ // TODO DE
 				break;
 		    case A_CON: You((mod_val >0) ?
 				    "VERB_MUESSEN sehr gesundheitsbewusst leben." : /* EN "must be leading a healthy life-style." : */

@@ -10702,6 +10702,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Spiegelbilder", "NOUN_REFLECTIONs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Spiegelbildern", "NOUN_REFLECTIONs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Reflexes", "NOUN_REFLEX", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Reflex", "NOUN_REFLEX", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Reflexe", "NOUN_REFLEXs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Reflexen", "NOUN_REFLEXs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Reittieres", "NOUN_REITTIER", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Reittier", "NOUN_REITTIER", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Reittiere", "NOUN_REITTIERs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},

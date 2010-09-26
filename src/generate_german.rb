@@ -3781,6 +3781,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RAUCH","Rauch","s","","","maskulin"),
     dekliniere_substantiv("NOUN_RECHNUNG","Rechnung","","Rechnung","en","feminin"),
     dekliniere_substantiv("NOUN_REFLECTION", "Spiegelbild", "es", "Spiegelbild", "er", "neutrum"),
+    dekliniere_substantiv("NOUN_REFLEX", "Reflex", "es", "Reflex", "e", "maskulin"), 
     dekliniere_substantiv("NOUN_REITTIER", "Reittier", "es", "Reittier", "e", "neutrum"),
     dekliniere_substantiv("NOUN_REITUNFALL","Reitunfall","es","Reitunfäll","e","maskulin"),
     dekliniere_substantiv("NOUN_REKORD","Rekord","es","Rekord","e","maskulin"),
