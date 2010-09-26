@@ -9108,36 +9108,6 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Hofdame", "NOUN_HOFDAME", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hofdamen", "NOUN_HOFDAMEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Edl", "NOUN_EDLER", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural|n_singular, grundform},
-  {"Edle", "NOUN_EDLER", "", nominativ, maskulin, n_singular, bestimmter},
-  {"Edlen", "NOUN_EDLER", "", dativ|akkusativ|genitiv, maskulin, n_singular, bestimmter},
-  {"Edlen", "NOUN_EDLERs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, bestimmter},
-  {"Edler", "NOUN_EDLER", "", nominativ, maskulin, n_singular, unbestimmter},
-  {"Edlen", "NOUN_EDLER", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter},
-  {"Edlen", "NOUN_EDLERs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter},
-  {"Edler", "NOUN_EDLER", "", nominativ, maskulin, n_singular, ohne},
-  {"Edlen", "NOUN_EDLER", "", akkusativ, maskulin, n_singular, ohne},
-  {"Edlem", "NOUN_EDLER", "", dativ, maskulin, n_singular, ohne},
-  {"Edlen", "NOUN_EDLER", "", genitiv, maskulin, n_singular, ohne},
-  {"Edle", "NOUN_EDLERs", "", nominativ|akkusativ, maskulin, n_plural, ohne},
-  {"Edlen", "NOUN_EDLERs", "", dativ, maskulin, n_plural, ohne},
-  {"Edler", "NOUN_EDLERs", "", genitiv, maskulin, n_plural, ohne},
-  
-
-  {"Edl", "NOUN_EDLE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural|n_singular, grundform},
-  {"Edle", "NOUN_EDLE", "", nominativ|akkusativ, feminin, n_singular, bestimmter},
-  {"Edlen", "NOUN_EDLE", "", dativ|genitiv, feminin, n_singular, bestimmter},
-  {"Edlen", "NOUN_EDLEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, bestimmter},
-  {"Edle", "NOUN_EDLE", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
-  {"Edlen", "NOUN_EDLE", "", dativ|genitiv, feminin, n_singular, unbestimmter},
-  {"Edlen", "NOUN_EDLEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter},
-  {"Edle", "NOUN_EDLE", "", nominativ|akkusativ, feminin, n_singular, ohne},
-  {"Edler", "NOUN_EDLE", "", dativ|genitiv, feminin, n_singular, ohne},
-  {"Edle", "NOUN_EDLEs", "", nominativ|akkusativ, feminin, n_plural, ohne},
-  {"Edlen", "NOUN_EDLEs", "", dativ, feminin, n_plural, ohne},
-  {"Edler", "NOUN_EDLEs", "", genitiv, feminin, n_plural, ohne},
-  
-
   {"Junkers", "NOUN_JUNKER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Junker", "NOUN_JUNKER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Junker", "NOUN_JUNKERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -9154,6 +9124,14 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Kavalierin", "NOUN_KAVALIERIN", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Kavalierinnen", "NOUN_KAVALIERINs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Edelmanns", "NOUN_EDELMANN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Edelmann", "NOUN_EDELMANN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Edelmänner", "NOUN_EDELMANNs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Edelmännern", "NOUN_EDELMANNs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Edelfrau", "NOUN_EDELFRAU", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Edelfrauen", "NOUN_EDELFRAUs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Ritters", "NOUN_RITTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ritter", "NOUN_RITTER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Ritter", "NOUN_RITTERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -9169,13 +9147,13 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Bannerfrau", "NOUN_BANNERFRAU", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Bannerfrauen", "NOUN_BANNERFRAUs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Edelmanns", "NOUN_EDELMANN", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Edelmann", "NOUN_EDELMANN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Edelmänner", "NOUN_EDELMANNs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
-  {"Edelmännern", "NOUN_EDELMANNs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Ordensritters", "NOUN_ORDENSRITTER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ordensritter", "NOUN_ORDENSRITTER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ordensritter", "NOUN_ORDENSRITTERs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Ordensrittern", "NOUN_ORDENSRITTERs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Edelfrau", "NOUN_EDELFRAU", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Edelfrauen", "NOUN_EDELFRAUs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Ordensritterin", "NOUN_ORDENSRITTERIN", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ordensritterinnen", "NOUN_ORDENSRITTERINs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Freiherr", "NOUN_FREIHERR", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Freiherren", "NOUN_FREIHERR", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
