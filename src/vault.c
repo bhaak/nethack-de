@@ -263,7 +263,7 @@ fnd:
 	if (multi > 0) { nomul(0); unmul((char *)0); }
 	trycount = 5;
 	do {
-	    getlin("\"Hallo Fremder, wer SUBJECT_IM_SATZ VERB_SEIN PRONOMEN_PERSONAL?\" -", buf); /* EN getlin("\"Hello stranger, who are you?\" -", buf); */
+	    getlin("\"Hallo PLAYER_FREMDER, wer SUBJECT_IM_SATZ VERB_SEIN PRONOMEN_PERSONAL?\" -", buf); /* EN getlin("\"Hello stranger, who are you?\" -", buf); */
 	    (void) mungspaces(buf);
 	} while (!letter(buf[0]) && --trycount > 0);
 
@@ -502,7 +502,7 @@ register struct monst *grd;
 		if(egrd->warncnt == 7) {
 			m = grd->mx;
 			n = grd->my;
-			verbalize("Ich hab dich Gauner gewarnt!"); /* EN verbalize("You've been warned, knave!"); */
+			verbalize("Ich hab dich PLAYER_GAUNER gewarnt!"); /* EN verbalize("You've been warned, knave!"); */
 			mnexto(grd);
 			levl[m][n].typ = egrd->fakecorr[0].ftyp;
 			newsym(m,n);
@@ -562,7 +562,7 @@ letknow:
 			verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_DROP all PRONOMEN_POSSESSIV NOUN_GOLD SATZKLAMMER, Kanaille!"); /* EN verbalize("Drop all your gold, scoundrel!"); */
 			return(0);
 		} else {
-			verbalize("Sei's drum, Schurke!"); /* EN verbalize("So be it, rogue!"); */
+			verbalize("Sei's drum, PLAYER_SCHURKE!"); /* EN verbalize("So be it, rogue!"); */
 			grd->mpeaceful = 0;
 			return(-1);
 		}
