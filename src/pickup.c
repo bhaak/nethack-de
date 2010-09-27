@@ -1448,7 +1448,7 @@ encumber_msg()
 		break;
 	case 1: Your("NOUN_BEWEGUNGs VERB_SEIN durch OBJECT PRONOMEN_POSSESSIV NOUN_LAST nur noch leicht verlangsamt."); /* EN case 1: Your("movements are only slowed slightly by your load."); */
 		break;
-	case 2: You("VERB_BRINGEN OBJECT PRONOMEN_POSSESSIV NOUN_LAST ins Gleichgewicht.  NEUER_SATZZ SUBJECT PRONOMEN_POSSESSIV NOUN_BEWEGUNGs VERB_SEIN immer noch erschwert."); /* EN case 2: You("rebalance your load.  Movement is still difficult."); */
+	case 2: You("VERB_BRINGEN OBJECT PRONOMEN_POSSESSIV NOUN_LAST ins Gleichgewicht.  NEUER_SATZ SUBJECT PRONOMEN_POSSESSIV NOUN_BEWEGUNGs VERB_SEIN immer noch erschwert."); /* EN case 2: You("rebalance your load.  Movement is still difficult."); */
 		break;
 	case 3: You("%s unter OBJECT KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_SCHWER NOUN_LAST.  NEUER_SATZ SUBJECT Jede NOUN_BEWEGUNG VERB_FALLEN KASUS_DATIV PRONOMEN_PERSONAL immer noch schwer.", /* EN case 3: You("%s under your load.  Movement is still very hard.", */
 		    stagger(youmonst.data, "VERB_STAGGER")); /* EN stagger(youmonst.data, "stagger")); */
