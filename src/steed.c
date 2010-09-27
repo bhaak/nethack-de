@@ -317,7 +317,7 @@ mount_steed(mtmp, force)
 		pline("%s slips away from you.", Monnam(mtmp)); /* EN pline("%s slips away from you.", Monnam(mtmp)); */ // TODO DE
 		return FALSE;
 	    }
-	    You("slip while trying to get on %s.", mon_nam(mtmp)); /* EN You("slip while trying to get on %s.", mon_nam(mtmp)); */ // TODO DE
+	    pline("Beim Versuch, auf OBJECT KASUS_AKKUSATIV %s aufzusteigen, VERB_ABRUTSCHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL SATZKLAMMER!", mon_nam(mtmp)); /* EN You("slip while trying to get on %s.", mon_nam(mtmp)); */ // TODO DE
 
 	    Sprintf(buf, "slipped while mounting %s", /* EN Sprintf(buf, "slipped while mounting %s", */ // TODO DE
 		    /* "a saddled mumak" or "a saddled pony called Dobbin" */
@@ -333,7 +333,7 @@ mount_steed(mtmp, force)
 	    if (Levitation && !is_floater(ptr) && !is_flyer(ptr))
 	    	/* Must have Lev_at_will at this point */
 	    	pline("%s magically floats up!", Monnam(mtmp)); /* EN pline("%s magically floats up!", Monnam(mtmp)); */ // TODO DE
-	    You("VERB_MOUNT OBJECT %s.", mon_nam(mtmp)); /* EN You("mount %s.", mon_nam(mtmp)); */
+	    You("VERB_SCHWINGEN OBJECT PRONOMEN_PERSONAL in NEUES_OBJEKT KASUS_AKKUSATIV %s.", genitivattribut_zu_wort(Monnam(mtmp), "NOUN_SADDLE")); /* EN You("mount %s.", mon_nam(mtmp)); */
 	}
 	/* setuwep handles polearms differently when you're mounted */
 	if (uwep && is_pole(uwep)) unweapon = FALSE;
@@ -519,8 +519,9 @@ dismount_steed(reason)
 		    return;
 		}
 		if (!mtmp->mnamelth) {
-			pline("SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_GEHEN durch die Höhle auf nem/ner %s ohne Namen.", /* EN pline("You've been through the dungeon on %s with no name.", */ // TODO DE  du gingst durch die Wueste aufm Pferd ohne Namen
-				an(mtmp->data->mname));
+            // Was soll's, die Anspielung geht eh flöten; dafür jetzt: "durch die Hölle gehen" -JPEG
+			pline("SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_GEHEN durch die Höhle auf OBJECT KASUS_DATIV ARTIKEL_UNBESTIMMTER ADJEKTIV_NAMENLOS %s.", /* EN pline("You've been through the dungeon on %s with no name.", */ // TODO DE  du gingst durch die Wueste aufm Pferd ohne Namen
+				  x_monnam(mtmp, ARTICLE_NONE, (char *)0, SUPPRESS_SADDLE, FALSE)); // an(mtmp->data->mname));
 			if (Hallucination)
 				pline("Es war schön, nicht mehr im Regen zu sein."); /* EN pline("It felt good to get out of the rain."); */
 		} else
