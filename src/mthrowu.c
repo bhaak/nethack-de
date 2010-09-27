@@ -82,7 +82,7 @@ const char *name;	/* if null, then format `obj' */
 		if (is_acid && Acid_resistance)
 			pline("It doesn't seem to hurt you."); /* EN pline("It doesn't seem to hurt you."); */ // TODO DE
 		else {
-			if (is_acid) pline("It burns!"); /* EN if (is_acid) pline("It burns!"); */ // TODO DE
+			if (is_acid) pline("Das brennt!"); /* EN if (is_acid) pline("It burns!"); */
 			if (Half_physical_damage) dam = (dam+1) / 2;
 			losehp(dam, knm, kprefix);
 			exercise(A_STR, FALSE);
@@ -161,7 +161,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	if (tmp < rnd(20)) {
 	    if (!ismimic) {
 		if (vis) miss(distant_name(otmp, mshot_xname), mtmp);
-		else if (verbose) pline("It is missed."); /* EN else if (verbose) pline("It is missed."); */ // TODO DE
+		else if (verbose) pline("Etwas wird verfehlt."); /* EN else if (verbose) pline("It is missed."); */ // TODO DE
 	    }
 	    if (!range) { /* Last position; object drops */
 		(void) drop_throw(otmp, 0, mtmp->mx, mtmp->my);
