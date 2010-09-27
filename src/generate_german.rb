@@ -850,6 +850,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_FLIEHEN","fliehen"),
 		Verb.verb("VERB_FLIPPEN","flippen"),
 		Verb.verb("VERB_FLEUCHEN", "fleuchen"),
+		Verb.verb("VERB_FLIESSEN", "fließen"),
 		Verb.verb("VERB_FLUCHEN", "fluchen"),
 		Verb.verb("VERB_FLUESTERN","flüstern"),
 		Verb.verb("VERB_FOLGEN","folgen"),
