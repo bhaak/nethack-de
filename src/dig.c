@@ -344,7 +344,9 @@ dig()
 			    lev->typ = ROOM;
 			    if (!rn2(5)) (void) rnd_treefruit_at(dpx, dpy);
 			} else {
-			    digtxt = "You succeed in cutting away some rock."; /* EN digtxt = "You succeed in cutting away some rock."; */ // TODO DE
+                if (!digging.quiet)
+                    Dir("VERB_GELINGEN es, etwas vom Felsgestein abzuschlagen."); /* EN digtxt = "You succeed in cutting away some rock."; */ // TODO DE
+				digtxt = (char *)0;
 			    lev->typ = CORR;
 			}
 		} else if(IS_WALL(lev->typ)) {
