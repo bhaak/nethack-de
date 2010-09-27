@@ -889,7 +889,7 @@ struct obj *obj;
 		if(Levitation)
 			Dir("VERB_FEHLEN die nötige Hebelwirkung."); /* EN You("don't have enough leverage."); */
 		else
-			You_cant("reach the %s.",ceiling(u.ux,u.uy)); /* EN You_cant("reach the %s.",ceiling(u.ux,u.uy)); */ // TODO DE
+			pline("SUBJECT PRONOMEN_PERSONAL VERB_CAN OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s nicht erreichen.",ceiling(u.ux,u.uy)); /* EN You_cant("reach the %s.",ceiling(u.ux,u.uy)); */
 	} else if(!u.dx && !u.dy && !u.dz) {
 		char buf[BUFSZ];
 		int dam;
