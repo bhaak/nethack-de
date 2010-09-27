@@ -1204,6 +1204,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_CONSUME", "konsumieren"),
 		Verb.verb("VERB_CONTAIN","enthalten"),
 		Verb.verb("VERB_CORRODE", "korrodieren"),
+        Verb.verb("VERB_DECIDE", "beschließen"),
 		Verb.verb("VERB_DESTROY", "zerstören"),
 		Verb.verb("VERB_DISARM","entschärfen"),
 		Verb.verb("VERB_ENGULF","verschlingen"),

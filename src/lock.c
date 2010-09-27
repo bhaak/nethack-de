@@ -4,6 +4,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_PTR int NDECL(picklock);
 STATIC_PTR int NDECL(forcelock);
 
@@ -208,7 +212,7 @@ forcelock()	/* try to force a locked chest */
 	    if (costly)
 		loss += stolen_value(xlock.box, u.ux, u.uy,
 					     (boolean)shkp->mpeaceful, TRUE);
-	    if(loss) You("owe %ld %s for objects destroyed.", loss, currency(loss)); /* EN if(loss) You("owe %ld %s for objects destroyed.", loss, currency(loss)); */ // TODO DE
+	    if(loss) You("VERB_OWE %ld %s für zerstörte Gegenstände.", loss, currency(loss)); /* EN if(loss) You("owe %ld %s for objects destroyed.", loss, currency(loss)); */ // TODO DE
 	    delobj(xlock.box);
 	}
 	exercise((xlock.picktyp) ? A_DEX : A_STR, TRUE);
@@ -356,7 +360,7 @@ pick_lock(pick) /* pick a lock with a given object */
 		}
 	    if (c != 'y') {
 		if (!count)
-		    There("doesn't seem to be any sort of lock here."); /* EN There("doesn't seem to be any sort of lock here."); */ // TODO DE
+		    pline("Es scheint hier keinerlei Schloss zu geben."); /* EN There("doesn't seem to be any sort of lock here."); */ // TODO DE
 		return(0);		/* decided against all boxes */
 	    }
 	} else {			/* pick the lock in a door */
@@ -473,12 +477,12 @@ doforce()		/* try to force a chest with your weapon */
 	for(otmp = level.objects[u.ux][u.uy]; otmp; otmp = otmp->nexthere)
 	    if(Is_box(otmp)) {
 		if (otmp->obroken || !otmp->olocked) {
-		    There("is %s here, but its lock is already %s.", /* EN There("is %s here, but its lock is already %s.", */ // TODO DE
-			  doname(otmp), otmp->obroken ? "broken" : "unlocked"); /* EN doname(otmp), otmp->obroken ? "broken" : "unlocked"); */ // TODO DE
+		    pline("Hier ist %s, aber das Schloss ist bereits %s.", /* EN There("is %s here, but its lock is already %s.", */ // TODO DE
+			  doname(otmp), otmp->obroken ? "aufgebrochen" : "aufgesperrt"); /* EN doname(otmp), otmp->obroken ? "broken" : "unlocked"); */ // TODO DE
 		    continue;
 		}
-		Sprintf(qbuf,"There is %s here, force its lock?", /* EN Sprintf(qbuf,"There is %s here, force its lock?", */ // TODO DE
-			safe_qbuf("", sizeof("There is  here, force its lock?"), /* EN safe_qbuf("", sizeof("There is  here, force its lock?"), */ // TODO DE
+		Sprintf(qbuf,"Hier ist %s, SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL ihr Schloss aufbrechen?", /* EN Sprintf(qbuf,"There is %s here, force its lock?", */ // TODO DE
+			safe_qbuf("", sizeof(german("Hier ist , SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL ihr Schloss aufbrechen?")), /* EN safe_qbuf("", sizeof("There is  here, force its lock?"), */ // TODO DE
 				doname(otmp), an(simple_typename(otmp->otyp)),
 				"eine Kiste")); /* EN "a box")); */
 
@@ -498,7 +502,7 @@ doforce()		/* try to force a chest with your weapon */
 	    }
 
 	if(xlock.box)	set_occupation(forcelock, "das Schloss aufzubrechen", 0); /* EN if(xlock.box)	set_occupation(forcelock, "forcing the lock", 0); */
-	else		You("decide not to force the issue."); /* EN else		You("decide not to force the issue."); */
+	else		You("VERB_DECIDE, doch nichts zu forcieren."); /* EN else		You("decide not to force the issue."); */
 	return(1);
 }
 
