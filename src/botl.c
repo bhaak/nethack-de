@@ -13,18 +13,13 @@ extern const char *hu_stat[];	/* defined in eat.c */
 
 const char * const enc_stat[] = {
 	"",
-//"Burdened", /* EN "Burdened", */ // TODO DE
 //	"Belastet", /* EN "Burdened", */ // TODO DE
     "Beladen", /* EN "Burdened", */ // TODO DE
-//"Stressed", /* EN "Stressed", */ // TODO DE
 	"Angestrengt", /* EN "Stressed", */ // TODO DE
 //"Gestresst", /* EN "Stressed", */ // TODO DE
-//"Strained", /* EN "Strained", */ // TODO DE
 	"Strapaziert", /* EN "Strained", */ // TODO DE
-//"Overtaxed", /* EN "Overtaxed", */ // TODO DE
 //"Überfordert", /* EN "Overtaxed", */ // TODO DE
 	"Überlastet", /* EN "Overtaxed", */ // TODO DE
-//"Overloaded" /* EN "Overloaded" */ // TODO DE
 	"Überladen" /* EN "Overloaded" */ // TODO DE
 };
 
