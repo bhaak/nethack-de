@@ -10635,6 +10635,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Mine", "NOUN_MINE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Minen", "NOUN_MINEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Geschosses", "NOUN_MISSILE", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Geschoss", "NOUN_MISSILE", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Geschosse", "NOUN_MISSILEs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Geschossen", "NOUN_MISSILEs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Burggrabens", "NOUN_MOAT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Burggraben", "NOUN_MOAT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Burggräben", "NOUN_MOATs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},

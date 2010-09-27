@@ -3768,6 +3768,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MARKER", "Füller", "s", "Füller", "", "maskulin"),
     dekliniere_substantiv("NOUN_MAUL","Maul","es","Mäul","er","neutrum"),
     dekliniere_substantiv("NOUN_MINE", "Mine", "", "Mine", "en", "feminin"),
+    dekliniere_substantiv("NOUN_MISSILE", "Geschoss", "es", "Geschoss", "e", "neutrum"),
     dekliniere_substantiv("NOUN_MOAT","Burggraben","s","Burggräben","","maskulin"), # Burggraben, Wassergraben
     dekliniere_substantiv("NOUN_MONSTER","Monster","s","Monster","","neutrum"),
     dekliniere_substantiv("NOUN_MUELL","Müll","s","","","maskulin"),
