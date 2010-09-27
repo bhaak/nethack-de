@@ -429,7 +429,7 @@ exerchk()
 				break;
 		    case A_DEX: You((mod_val >0) ?
 				    "VERB_MUESSEN an OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_REFLEXs gearbeitet haben." : /* EN "must have been working on your reflexes." : */
-				    "VERB_HABEN in letzter Zeit nicht an OBJECT PRONOMEN_POSSESSIV NOUN_REFLEXs gearbeitet."); /* EN "haven't been working on reflexes lately."); */
+				    "VERB_HABEN in letzter Zeit nicht an OBJECT KASUS_DATIV PRONOMEN_POSSESSIV NOUN_REFLEXs gearbeitet."); /* EN "haven't been working on reflexes lately."); */
 				break;
 		    case A_CON: You((mod_val >0) ?
 				    "VERB_MUESSEN sehr gesundheitsbewusst leben." : /* EN "must be leading a healthy life-style." : */
