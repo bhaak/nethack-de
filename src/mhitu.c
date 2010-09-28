@@ -1850,7 +1850,7 @@ common:
 			You("VERB_VERSUCHEN der Druckwelle auszuweichen."); /* EN You("duck some of the blast."); */
 			tmp = (tmp+1) / 2;
 		    } else {
-		        if (flags.verbose) pline("Die Druckwelle erfasst OBJECT KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN if (flags.verbose) You("get blasted!"); */
+		        if (flags.verbose) pline("Die Druckwelle erfasst KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN if (flags.verbose) You("get blasted!"); */
 		    }
 		    if (mattk->adtyp == AD_FIRE) burn_away_slime();
 		    if (Half_physical_damage) tmp = (tmp+1) / 2;

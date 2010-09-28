@@ -499,7 +499,7 @@ register int x,y;
 	    case DUST:
 		if(!Blind) {
 			sensed = 1;
-			pline("SUBJECT %s VERB_SEIN hier in OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s geschrieben.", Something, /* EN pline("%s is written here in the %s.", Something, */
+			pline("SUBJECT %s VERB_SEIN hier in OBJECT ARTIKEL_BESTIMMTER %s geschrieben.", Something, /* EN pline("%s is written here in the %s.", Something, */
 				is_ice(x,y) ? "NOUN_SCHNEE" : "NOUN_DUST"); /* EN is_ice(x,y) ? "frost" : "dust"); */
 		}
 		break;

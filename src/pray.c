@@ -627,8 +627,8 @@ at_your_feet(str)
 	if (Blind) str = Something;
 	if (u.uswallow) {
 	    /* barrier between you and the floor */
-	    pline("SUBJECT %s %s in OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s OBJECT KASUS_GENITIV ARTIKEL_BESTIMMTER %s.", str, vtense(str, "VERB_FALLEN"), /* EN pline("%s %s into %s %s.", str, vtense(str, "drop"), */
-			mbodypart(u.ustuck, STOMACH), mon_nam(u.ustuck)); /* EN s_suffix(mon_nam(u.ustuck)), mbodypart(u.ustuck, STOMACH)); */
+	    pline("SUBJECT %s %s OBJECT in %s.", str, vtense(str, "VERB_FALLEN"), /* EN pline("%s %s into %s %s.", str, vtense(str, "drop"), */
+			genitivattribut_zu_wort(mon_nam(u.ustuck), mbodypart(u.ustuck, STOMACH))); /* EN s_suffix(mon_nam(u.ustuck)), mbodypart(u.ustuck, STOMACH)); */
 	} else {
 	    pline("SUBJECT %s %s OBJECT %s KASUS_DATIV PRONOMEN_POSSESSIV %s!", str, /* EN pline("%s %s %s your %s!", str, */
 		  Blind ? "VERB_LANDEN" : vtense(str, "VERB_ERSCHEINEN"), /* EN Blind ? "lands" : vtense(str, "appear"), */

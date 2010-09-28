@@ -317,7 +317,7 @@ mount_steed(mtmp, force)
 		pline("%s slips away from you.", Monnam(mtmp)); /* EN pline("%s slips away from you.", Monnam(mtmp)); */ // TODO DE
 		return FALSE;
 	    }
-	    pline("Beim Versuch, auf OBJECT KASUS_AKKUSATIV %s aufzusteigen, VERB_ABRUTSCHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL SATZKLAMMER!", mon_nam(mtmp)); /* EN You("slip while trying to get on %s.", mon_nam(mtmp)); */ // TODO DE
+	    pline("Beim Versuch, auf OBJECT %s aufzusteigen, VERB_ABRUTSCHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL SATZKLAMMER!", mon_nam(mtmp)); /* EN You("slip while trying to get on %s.", mon_nam(mtmp)); */
 
 	    Sprintf(buf, "slipped while mounting %s", /* EN Sprintf(buf, "slipped while mounting %s", */ // TODO DE
 		    /* "a saddled mumak" or "a saddled pony called Dobbin" */

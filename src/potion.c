@@ -1548,13 +1548,13 @@ dodip()
 	here = levl[u.ux][u.uy].typ;
 	/* Is there a fountain to dip into here? */
 	if (IS_FOUNTAIN(here)) {
-		if(yn("In OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER NOUN_FOUNTAIN MODIFIER_VERB_INFINITIV VERB_DIP?") == 'y') { /* EN if(yn("Dip it into the fountain?") == 'y') { */ // TODO DE
+		if(yn("In OBJECT ARTIKEL_BESTIMMTER NOUN_FOUNTAIN MODIFIER_VERB_INFINITIV VERB_DIP?") == 'y') { /* EN if(yn("Dip it into the fountain?") == 'y') { */ // TODO DE
 			dipfountain(obj);
 			return(1);
 		}
 	} else if (is_pool(u.ux,u.uy)) {
 		tmp = waterbody_name(u.ux,u.uy);
-		Sprintf(qbuf, "In OBJECT KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s MODIFIER_VERB_INFINITIV VERB_DIP?", tmp); /* EN Sprintf(qbuf, "Dip it into the %s?", tmp); */ // TODO DE
+		Sprintf(qbuf, "In OBJECT ARTIKEL_BESTIMMTER %s MODIFIER_VERB_INFINITIV VERB_DIP?", tmp); /* EN Sprintf(qbuf, "Dip it into the %s?", tmp); */ // TODO DE
 		if (yn(qbuf) == 'y') {
 		    if (Levitation) {
 			floating_above(tmp);

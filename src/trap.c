@@ -2976,7 +2976,7 @@ drown()
 	}
 	if (u.uinwater) {
 	    u.uinwater = 0;
-	    You("VERB_BEFINDEN OBJECT KASUS_AKKUSATIV wieder %s.", Is_waterlevel(&u.uz) ?  /* EN You("find yourself back %s.", Is_waterlevel(&u.uz) ? */
+	    You("VERB_BEFINDEN OBJECT PRONOMEN_PERSONAL wieder %s.", Is_waterlevel(&u.uz) ?  /* EN You("find yourself back %s.", Is_waterlevel(&u.uz) ? */
 		"in einer Luftblase" : "an Land"); /* EN "in an air bubble" : "on land"); */
 	}
 	return(TRUE);

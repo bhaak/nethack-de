@@ -2230,7 +2230,7 @@ uchar aatyp;
 	    /* wrath of gods for attacking Oracle */
 	    if(Antimagic) {
 		shieldeff(u.ux, u.uy);
-		pline("Ein Hagel magischer Geschosse verfehlt OBJECT KASUS_AKKUSATIV PRONOMEN_PERSONAL knapp!"); /* EN pline("A hail of magic missiles narrowly misses you!"); */ // TODO DE
+		pline("Ein Hagel magischer Geschosse verfehlt KASUS_AKKUSATIV PRONOMEN_PERSONAL knapp!"); /* EN pline("A hail of magic missiles narrowly misses you!"); */
 	    } else {
 		You("are hit by magic missiles appearing from thin air!"); /* EN You("are hit by magic missiles appearing from thin air!"); */ // TODO DE
 		mdamageu(mon, tmp);
