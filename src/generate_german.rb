@@ -1859,7 +1859,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_CLOAK_OF_PROTECTION", "Umhang", "es", "Umhäng", "e", "maskulin", "s", "des Schutzes"),
     dekliniere_substantiv("NOUN_CLOAK_OF_INVISIBILITY", "Umhang", "es", "Umhäng", "e", "maskulin", "s", "der Unsichtbarkeit"),
     dekliniere_substantiv("NOUN_CLOAK_OF_MAGIC_RESISTANCE", "Umhang", "es", "Umhäng", "e", "maskulin", "s", "der Magieresistenz"),
-    #dekliniere_substantiv("NOUN_CLOAK_OF_DISPLACEMENT" # deplaziert?, verstellt?, disloziert?, verdraengt?, verschoben?, verrueckt?, versetzt, 
+#    dekliniere_substantiv("NOUN_CLOAK_OF_DISPLACEMENT", "Umhang", "es", "Umhäng", "e", "maskulin", "s", "der Verlagerung"), # Deplatzierung, Dislokation, Verdrängung, Verschiebung, Verrückung, Versatz, Verlagerung, Verwerfung, Verzerrung, 
     dekliniere_nominalphrase("NOUN_SMALL_SHIELD", "klein", "Schild", "es", "Schild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_ELVEN_SHIELD", "Elbenschild", "es", "Elbenschild", "e", "maskulin"),
     dekliniere_substantiv("NOUN_URUK_HAI_SHIELD", "Uruk-Hai-Schild", "es", "Uruk-Hai-Schild", "e", "maskulin"),
@@ -1901,7 +1901,7 @@ def ausgabe_nouns
     dekliniere_nominalphrase("NOUN_FADED_PALL", "ausgeblichen", "Mantel", "s", "Mäntel", "", "maskulin"), # Ausgeblichener Mantel js
     dekliniere_nominalphrase("NOUN_COARSE_MANTELET", "grob", "Überwurf", "es", "Überwürf", "e", "maskulin"), # Grober Überwurf js
     dekliniere_substantiv("NOUN_HOODED_CLOAK", "Kapuzenmantel", "s", "Kapuzenmäntel", "", "maskulin"),
-    #dekliniere_substantiv("NOUN_SLIPPERY_CLOAK"
+    #dekliniere_nominalphrase("NOUN_SLIPPERY_CLOAK", "glitschig", "Umhang", "s", "Umhäng", "e", "maskulin"), # glibberig, schlüpfrig, rutschig, aalglatt, ölig
     dekliniere_substantiv("NOUN_APRON", "Schürze", "", "Schürze", "en", "feminin", "n"),
     dekliniere_substantiv("NOUN_TATTERED_CAPE", "Lumpenumhang", "es", "Lumpenumhäng", "e", "maskulin"), # js
     dekliniere_substantiv("NOUN_OPERA_CLOAK", "Opernumhang", "es", "Opernumhäng", "e", "maskulin", "s"),
