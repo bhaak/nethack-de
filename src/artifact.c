@@ -757,7 +757,7 @@ winid tmpwin;		/* supplied by dodiscover() */
 	 */
 #define MB_MAX_DIEROLL		8	/* rolls above this aren't magical */
 static const char * const mb_verb[2][4] = {
-	{ "VERB_SONDIEREN", "VERB_BETAEUBEN", "VERB_ERSCHRECKEN", "cancel" }, /* EN { "probe", "stun", "scare", "cancel" }, */ // TODO DE
+	{ "VERB_SONDIEREN", "VERB_BETAEUBEN", "VERB_ERSCHRECKEN", "VERB_CANCEL" }, /* EN { "probe", "stun", "scare", "cancel" }, */ // TODO DE
 	{ "VERB_STUPSEN", "VERB_ERSTAUNEN", "VERB_KITZELN", "VERB_PUTZEN" }, /* EN { "prod", "amaze", "tickle", "purge" }, */
 };
 #define MB_INDEX_PROBE		0
@@ -822,7 +822,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
     verb = mb_verb[!!Hallucination][attack_indx];
     if (youattack || youdefend || vis) {
 	result = TRUE;
-	pline_The("ADJEKTIV_MAGIE_ABSORBIEREND NOUN_KLINGE %s %s!", /* EN pline_The("magic-absorbing blade %s %s!", */
+	pline_The("ADJEKTIV_MAGIE_ABSORBIEREND NOUN_KLINGE %s OBJECT %s!", /* EN pline_The("magic-absorbing blade %s %s!", */
 		  vtense((const char *)0, verb), hittee);
 	/* assume probing has some sort of noticeable feedback
 	   even if it is being done by one monster to another */
@@ -891,7 +891,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 
     case MB_INDEX_PROBE:
 	if (youattack && (mb->spe == 0 || !rn2(3 * abs(mb->spe)))) {
-	    pline_The("%s ist aufschlussreich.", verb); /* EN pline_The("%s is insightful.", verb); */
+	    pline("Das MODIFIER_VERB_INFINITIV %s ist aufschlussreich.", verb); /* EN pline_The("%s is insightful.", verb); */ // TODO DE: substantiviertes Verb!
 	    /* pre-damage status */
 	    probe_monster(mdef);
 	}

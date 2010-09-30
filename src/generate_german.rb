@@ -670,7 +670,8 @@ def ausgabe_verbs
 		Verb.verb("VERB_SLIP","entgleiten"),
 		Verb.verb("VERB_STAGGER","torkeln"),
 		Verb.verb("VERB_DIP","tauchen","ein"),
-
+        Verb.verb("VERB_CANCEL", "löschen"), # canceln, annullieren, entwerten, streichen
+        
 		# deutsche Bezeichner
 		Verb.verb("VERB_ABBRECHEN","brechen","ab"),
 		Verb.verb("VERB_ABGLEITEN","gleiten","ab"),
