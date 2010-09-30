@@ -589,7 +589,7 @@ drinksink()
 			}
 			break;
 		/* more odd messages --JJB */
-		case 11: You_hear("es scheppern in den Rohren ..."); /* EN case 11: You_hear("clanking from the pipes..."); */
+		case 11: You_hear("es in den Rohren scheppern ..."); /* EN case 11: You_hear("clanking from the pipes..."); */
 			break;
 		case 12: You_hear("Liedfetzen aus der Kanalisation ..."); /* EN case 12: You_hear("snatches of song from among the sewers..."); */
 			break;
