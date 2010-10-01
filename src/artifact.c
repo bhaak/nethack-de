@@ -918,7 +918,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
     if (youattack || youdefend || vis) {
 	(void) upstart(hittee);	/* capitalize */
 	if (resisted) {
-	    pline("%s %s!", hittee, vtense(hittee, "resist")); /* EN pline("%s %s!", hittee, vtense(hittee, "resist")); */ // TODO DE
+	    pline("SATZBEGINN %s %s!", hittee, vtense(hittee, "VERB_WIDERSTEHEN")); /* EN pline("%s %s!", hittee, vtense(hittee, "resist")); */ // TODO DE
 	    shieldeff(youdefend ? u.ux : mdef->mx,
 		      youdefend ? u.uy : mdef->my);
 	}
