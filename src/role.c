@@ -134,7 +134,7 @@ const struct Role roles[] = {
 	10, 3,-3, 2, 10, A_WIS, SPE_CURE_SICKNESS,   -4
 },
 {	{"NOUN_KNIGHT", 0}, { /* EN {	{"Knight", 0}, { */
-	{"NOUN_KAMMERHERR",   "NOUN_HOFDAME"}, /* EN {"Gallant",     0}, */
+	{"NOUN_GALLANT",      "NOUN_GALLANT_IN"}, /* EN {"Gallant",     0}, */
 	{"NOUN_JUNKER",       "NOUN_JUNKFRAU"}, /* EN {"Esquire",     0}, */
 	{"NOUN_KAVALIER",     "NOUN_KAVALIERIN"}, /* EN {"Bachelor",    0}, */
 	{"NOUN_EDELMANN",     "NOUN_EDELFRAU"}, /* EN {"Sergeant",    0}, */

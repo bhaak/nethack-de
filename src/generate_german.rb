@@ -3370,8 +3370,8 @@ def ausgabe_nouns
 
     "/* Paladin */",
     # "NOUN_KNIGHT"
-    dekliniere_substantiv("NOUN_KAMMERHERR","Kammerherr","en","Kammerherr","en","maskulin"),
-    dekliniere_substantiv("NOUN_HOFDAME","Hofdame","","Hofdame","en","feminin"),
+    dekliniere_adjektivisches_substantiv("NOUN_GALLANT","Edelmütig","maskulin"),
+    dekliniere_adjektivisches_substantiv("NOUN_GALLANT_IN","Edelmütig","feminin"),
     dekliniere_substantiv("NOUN_JUNKER","Junker","s","Junker","","maskulin"),
     dekliniere_substantiv("NOUN_JUNKFRAU","Junkfrau","","Junkfrau","en","feminin"),
     dekliniere_substantiv("NOUN_KAVALIER","Kavalier","s","Kavalier","e","maskulin"),
