@@ -11007,6 +11007,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Stürze", "NOUN_STURZs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Stürzen", "NOUN_STURZs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Rüstung", "NOUN_SUIT", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rüstungen", "NOUN_SUITs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Summens", "NOUN_SUMMEN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Summen", "NOUN_SUMMEN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 

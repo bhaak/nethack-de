@@ -1199,7 +1199,7 @@ register struct obj *otmp;
 			afternmv = Boots_off;
 		     }
 		else {
-			nomovemsg = "You finish taking off your suit."; /* EN nomovemsg = "You finish taking off your suit.";*/ // TODO DE
+			nomovemsg = "SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT PRONOMEN_POSSESSIV NOUN_SUIT ausgezogen."; /* EN nomovemsg = "You finish taking off your suit.";*/ // TODO DE
 			afternmv = Armor_off;
 		}
 	} else {

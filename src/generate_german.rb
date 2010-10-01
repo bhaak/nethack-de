@@ -3858,6 +3858,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_STROMSCHLAG","Stromschlag","es","Stromschläg","e","maskulin"),
     dekliniere_substantiv("NOUN_STRUDEL","Strudel","s","Strudel","","maskulin"),
     dekliniere_substantiv("NOUN_STURZ","Sturz","es","Stürz","e","feminin"),
+    dekliniere_substantiv("NOUN_SUIT","Rüstung","","Rüstung","en","feminin"),    
     dekliniere_substantiv("NOUN_SUMMEN","Summen","s","","","neutrum"),
     dekliniere_substantiv("NOUN_SWAMP","Sumpf","es","Sümpf","e","maskulin"),
     dekliniere_substantiv("NOUN_TEIL","Teil","es","Teil","e","maskulin"),
