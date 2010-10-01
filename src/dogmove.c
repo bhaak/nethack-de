@@ -228,7 +228,7 @@ register struct edog *edog;
 		    mtmp->mhp = mtmp->mhpmax;
 		if (mtmp->mhp < 1) goto dog_died;
 		if (cansee(mtmp->mx, mtmp->my))
-		    pline("%s is confused from hunger.", Monnam(mtmp)); /* EN pline("%s is confused from hunger.", Monnam(mtmp)); */ // TODO DE
+		    pline("%s ist verwirrt vor Hunger.", Monnam(mtmp)); /* EN pline("%s is confused from hunger.", Monnam(mtmp)); */
 		else if (couldsee(mtmp->mx, mtmp->my))
 		    beg(mtmp);
 		else
@@ -552,8 +552,8 @@ register int after;	/* this is extra fast monster movement */
 		 * it disappears, angrily, and sends in some nasties
 		 */
 		if (canspotmon(mtmp)) {
-		    pline("%s rebukes you, saying:", Monnam(mtmp)); /* EN pline("%s rebukes you, saying:", Monnam(mtmp)); */ // TODO DE
-		    verbalize("Since you desire conflict, have some more!"); /* EN verbalize("Since you desire conflict, have some more!"); */ // TODO DE
+		    pline("%s weist OBJECT PRONOMEN_PERSONAL zurecht und sagt:", Monnam(mtmp)); /* EN pline("%s rebukes you, saying:", Monnam(mtmp)); */ // TODO DE r¸gen, tadeln, ermahnen
+		    verbalize("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL Konflikt VERB_BEGEHREN, VERB_KOENNEN SUBJECT PRONOMEN_PERSONAL noch mehr davon haben!"); /* EN verbalize("Since you desire conflict, have some more!"); */ // TODO DE
 		}
 		mongone(mtmp);
 		i = rnd(4);
@@ -715,7 +715,7 @@ newdogpos:
 
 		if (info[chi] & ALLOW_U) {
 			if (mtmp->mleashed) { /* play it safe */
-				pline("%s breaks loose of %s leash!", /* EN pline("%s breaks loose of %s leash!", */ // TODO DE
+				pline("%s reiﬂt sich von %s Leine los!", /* EN pline("%s breaks loose of %s leash!", */ // TODO DE
 				      Monnam(mtmp), mhis(mtmp));
 				m_unleash(mtmp, FALSE);
 			}
