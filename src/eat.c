@@ -136,7 +136,8 @@ init_uhunger()
 static const struct { const char *txt; int nut; } tintxts[] = {
 	{"ADJEKTIV_UEBERBACKEN",	 60}, /* EN {"deep fried",	 60}, */
 	{"ADJEKTIV_EINGELEGT",	 40}, /* EN {"pickled",	 40}, */
-	{"soup made from", 20}, /* EN {"soup made from", 20}, */ // TODO DE
+#define SOUP_TIN 2    
+	{"suppe", 20}, /* EN {"soup made from", 20}, */ // TODO DE
 	{"ADJEKTIV_PUERIERT",	500}, /* EN {"pureed",	500}, */
 #define ROTTEN_TIN 4
 	{"ADJEKTIV_VERGAMMELT",	-50}, /* EN {"rotten",	-50}, */
@@ -1064,7 +1065,7 @@ opentin()		/* called during each move whilst opening a tin */
 		    which = type_is_pname(&mons[tin.tin->corpsenm]) ? 1 : 2;
 	    }
 	    /* EN if (which == 0) what = makeplural(what); */
-	    pline("Es riecht nach %s%s.", (which == 2) ? "ARTIKEL_BESTIMMTER " : "", what); /* EN pline("It smells like %s%s.", (which == 2) ? "the " : "", what); */
+	    pline("Es riecht nach KASUS_DATIV %s%s.", (which == 2) ? "ARTIKEL_BESTIMMTER " : "", what); /* EN pline("It smells like %s%s.", (which == 2) ? "the " : "", what); */
 	    if (yn("Essen?") == 'n') { /* EN if (yn("Eat it?") == 'n') { */
 		if (!Hallucination) tin.tin->dknown = tin.tin->known = TRUE;
 		if (flags.verbose) You("VERB_ENTSORGEN die offene Dose."); /* EN if (flags.verbose) You("discard the open tin."); */
@@ -1075,8 +1076,21 @@ opentin()		/* called during each move whilst opening a tin */
 	    victual.piece = (struct obj *)0;
 	    victual.fullwarn = victual.eating = victual.doreset = FALSE;
 
-	    You("VERB_CONSUME OBJECT %s %s.", (r == CHINESE_TIN) ? mons[tin.tin->corpsenm].mname : tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */
-			(r != CHINESE_TIN) ? mons[tin.tin->corpsenm].mname : tintxts[r].txt); /* EN mons[tin.tin->corpsenm].mname); */
+        if (r == CHINESE_TIN)
+        {
+            You("VERB_CONSUME OBJECT %s %s.", mons[tin.tin->corpsenm].mname,
+			    tintxts[r].txt);
+        }
+        else if (r == SOUP_TIN)
+        {
+            You("VERB_CONSUME OBJECT %s%s.", fugenwort(mons[tin.tin->corpsenm].mname),
+			    tintxts[r].txt);
+        }
+        else
+        {
+            You("VERB_CONSUME OBJECT %s %s.", tintxts[r].txt, /* EN You("consume %s %s.", tintxts[r].txt, */
+                mons[tin.tin->corpsenm].mname); /* EN mons[tin.tin->corpsenm].mname); */
+        }
 
 	    /* KMH, conduct */
 	    u.uconduct.food++;
