@@ -208,8 +208,8 @@ dosounds()
     }
     if (level.flags.has_zoo && !rn2(200)) {
 	static const char * const zoo_msg[3] = {
-		"einen Ton wie von einem Elefanten auf der Erdnuss.", /* EN "a sound reminiscent of an elephant stepping on a peanut.", */
-		"einen Ton wie das Heulen eines Seehundes.", /* EN "a sound reminiscent of a seal barking.", */
+		"ein Geräusch wie von einem Elefanten, der eine Erdnuss zertritt.", /* EN "a sound reminiscent of an elephant stepping on a peanut.", */
+		"ein Geräusch wie das Heulen eines Seehundes.", /* EN "a sound reminiscent of a seal barking.", */
 		"Doktor Dolittle!", /* EN "Doctor Doolittle!", */
 	};
 	for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
@@ -535,7 +535,7 @@ register struct monst *mtmp;
 	    break;
 	case MS_WERE:
 	    if (flags.moonphase == FULL_MOON && (night() ^ !rn2(13))) {
-		pline("SUBJECT %s VERB_WERFEN OBJECT PRONOMEN_POSSESSIV_SUBJECT %s zurück und VERB_LASSEN %s los!", /* EN pline("%s throws back %s head and lets out a blood curdling %s!", */
+		pline("SUBJECT %s VERB_WERFEN OBJECT PRONOMEN_POSSESSIV_SUBJECT %s zurück und VERB_STOSSEN %s aus!", /* EN pline("%s throws back %s head and lets out a blood curdling %s!", */
 		      Monnam(mtmp), mbodypart(mtmp, HEAD), /* EN Monnam(mtmp), mhis(mtmp), */
 		      ptr == &mons[PM_HUMAN_WERERAT] ? "einen markerschütternden Schrei" : "ein markerschütterndes Heulen"); /* EN ptr == &mons[PM_HUMAN_WERERAT] ? "shriek" : "howl"); */
 		wake_nearto(mtmp->mx, mtmp->my, 11*11);
@@ -575,7 +575,7 @@ register struct monst *mtmp;
 		break;
 	    } /* else FALLTHRU */
 	case MS_GROWL:
-	    pline_msg = mtmp->mpeaceful ? "VERB_SNARL die Zähne." : "VERB_ROAR!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "growls!"; */
+	    pline_msg = mtmp->mpeaceful ? "VERB_SNARL die Zähne." : "VERB_GROWL!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "growls!"; */
 	    break;
 	case MS_ROAR:
 	    pline_msg = mtmp->mpeaceful ? "VERB_SNARL die Zähne." : "VERB_ROAR!"; /* EN pline_msg = mtmp->mpeaceful ? "snarls." : "roars!"; */
@@ -656,7 +656,7 @@ register struct monst *mtmp;
 		    pline_msg = "gluckst."; /* EN pline_msg = "gurgles."; */
 		else
 		    verbl_msg = "Ich bin frei!"; /* EN verbl_msg = "I'm free!"; */
-	    } else verbl_msg = "This will teach you not to disturb me!"; /* EN } else verbl_msg = "This will teach you not to disturb me!"; */ // TODO DE
+	    } else verbl_msg = "Das wird OBJECT PRONOMEN_PERSONAL lehren, mich nicht zu stören!"; /* EN } else verbl_msg = "This will teach you not to disturb me!"; */ // TODO DE
 	    break;
 	case MS_BOAST:	/* giants */
 	    if (!mtmp->mpeaceful) {
@@ -790,7 +790,7 @@ register struct monst *mtmp;
 	    else if (uarmu)
 		verbl_msg = "Ziehen Sie bitte Ihr Hemd aus."; /* EN verbl_msg = "Take off your shirt, please."; */
 #endif
-	    else verbl_msg = "Entspannen, das wird gar nicht weh tun."; /* EN else verbl_msg = "Relax, this won't hurt a bit."; */
+	    else verbl_msg = "Entspannen Sie sich, das wird überhaupt nicht weh tun."; /* EN else verbl_msg = "Relax, this won't hurt a bit."; */
 	    break;
 	case MS_GUARD:
 #ifndef GOLDOBJ
@@ -810,7 +810,7 @@ register struct monst *mtmp;
 		    "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_ERGEBEN OBJECT PRONOMEN_PERSONAL!", /* EN "Surrender!", */
 		},		  * const soldier_pax_msg[3] = {
 		    "Mann, was für 'ne miese Bezahlung wir kriegen!", /* EN "What lousy pay we're getting here!", */
-		    "Den Frass würden nichtmal Orks essen!", /* EN "The food's not fit for Orcs!", */
+		    "Den Fraß würden nicht mal Orks essen!", /* EN "The food's not fit for Orcs!", */
 		    "Meine Füße schmerzen, ich bin schon den ganzen Tag auf den Beinen!", /* EN "My feet hurt, I've been on them all day!", */
 		};
 		verbl_msg = mtmp->mpeaceful ? soldier_pax_msg[rn2(3)]
