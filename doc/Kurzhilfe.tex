@@ -1,0 +1,640 @@
+\documentclass[a4paper,11pt]{scrartcl}
+%\documentstyle[titlepage]{article}
+\usepackage{ngerman}
+\usepackage{multicol}
+\usepackage[isolatin]{inputenc}
+\usepackage{eurosym}
+\usepackage{amssymb} 
+
+\textheight 220mm
+\textwidth 160mm
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\topmargin 0mm
+
+\newcommand{\nd}{\noindent}
+\setlength{\parindent}{0pt}
+
+\newcommand{\tb}[1]{\tt #1 \hfill}
+\newcommand{\bb}[1]{\bf #1 \hfill}
+\newcommand{\ib}[1]{\it #1 \hfill}
+
+\newcommand{\blist}[1]
+{\begin{list}{$\bullet$}
+    {\leftmargin 30mm \topsep 2mm \partopsep 0mm \parsep 0mm \itemsep 1mm
+     \labelwidth 28mm \labelsep 2mm
+     #1}}
+
+\newcommand{\elist}{\end{list}}
+\newcommand{\NetHack}{{\it NetHack\/ }}
+
+% this will make \tt underscores look better, but requires that
+% math subscripts will never be used in this document
+\catcode`\_=12
+
+\begin{document}
+%
+% input file: guidebook.mn
+% $Revision: 1.61.2.19 $ $Date: 2003/12/03 03:00:50 $
+%
+%.ds h0 "
+%.ds h1 %.ds h2 \%
+%.ds f0 "
+
+%.mt
+\title{\LARGE Kurzhilfe für \textit{NetHack-de}}
+
+%.au
+\author{(basierend auf dem \textit{Guidebook} für \NetHack 3.4\\ 
+         von Eric S. Raymond \\
+         sowie der {\it NetzHack}-Übersetzung desselben)}
+\date{Oktober 2010}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+%.hn 1
+\section{Einleitung}
+
+\textbf{TODO}
+
+\bigskip
+
+%.pg
+
+%.hn 1
+\section{Erläuterung des Bildschirms}
+
+Wenn du noch nie \NetHack oder ein anderes {\it Roguelike} gespielt hast, wird der Bildschirm zunächst etwas ungewohnt aussehen. Im folgenden werden alle Symbole und Abkürzungen erklärt.
+
+Abbildung 1 zeigt beispielhaft, wie der Bildschirm während einer {\it NetHack}-Sitzung aussehen könnte. Die tatsächliche Darstellung ist abhängig von deinem Betriebssystem sowie den verwendeten Optionen.
+
+\vbox{
+\begin{verbatim}
+        Du triffst die Fledermaus.  Die Fledermaus beißt!--Weiter--
+
+                ------
+                |....|    ----------
+                |.<..|####...@...$.|
+                |....-#   |...B....+
+                |....|    |.d......|
+                ------    -------|--
+
+
+
+        Spieler der Wanderer     St:12 Ge:7 Ko:18 In:11 We:9 Ch:15  Neutral
+        Dlvl:1  $:97  TP:9(12) Ma:3(3) RK:10 Erf:1/19 Z:257 Flau
+\end{verbatim}
+\begin{center}
+Abbildung 1
+\end{center}
+}
+
+%.hn 2
+\subsection{Die Statuszeilen (unterer Bildschirmrand)}
+
+%.pg
+Die untersten zwei Zeilen versammeln, dicht gedrängt, einiges an wichtiger Information zu deiner Spielfigur.
+Im folgenden wird erklärt, was die verschiedenen Status-Einträge bedeuten:
+
+%.lp
+\blist{}
+\item[\bb{Rang}]
+Name und Rang deines Charakters. Letzterer basiert auf dem Erfahrungslevel.
+%.lp
+\item[\bb{Attribute}]
+Es gibt sechs grundlegende Attribute, die ja nach Klasse und Rasse der 
+Spielfigur varieren können und das Spielgeschehen beeinflussen.
+
+Deine \textbf{Stärke} beeinflusst, wieviel Schaden du im Kampf austeilst und wieviel Gewicht du tragen kannst. \\
+Deine \textbf{Geschicklichkeit} beeinflusst deine Chancen, im Kampf zu treffen, Fallen auszuweichen sowie die Erfolgswahrscheinlichkeit im Umgang mit diversen Gegenständen. \\
+Deine \textbf{Konstitution} beeinflusst deine Fähigkeit, dich von Verletzungen zu erholen. \\
+Deine \textbf{Intelligenz} beeinflusst deine Erfolgsraten im Zaubern und Lernen von Zaubersprüchen. \\
+Deine \textbf{Weisheit} beeinflusst dein Mana (magische Energie). \\
+Dein \textbf{Charisma} beeinflusst die Preise, die Ladenbesitzer von dir fordern. \\
+
+\item[\bb{Gesinnung}]
+%
+{\it Lawful} (gesetzestreu), {\it Neutral\/} oder {\it Chaotic} (anarchistisch). Gesetzestreu wird oft mit "`gut"' und Chaotisch mit "`böse"' gleichgesetzt, aber legal und ethisch sind nicht immer das gleiche.\\
+Deine Gesinnung beeinflusst, wie Monster auf dich reagieren. Monster der gleichen Gesinnung haben eine größere Wahrscheinlichkeit, dir wohlgesinnt zu sein, während für Monster der entgegengesetzten Gesinnung das umgekehrte gilt.\\
+Entsprechend deiner Gesinnung bist du Anhänger eines von drei Göttern, zu dem du in Notsituationen beten (`{\tt \#pray}' oder `{\tt Alt-p}') kannst.
+%.lp
+\item[\bb{Dungeon Level}]
+Wie tief im Dungeon du dich befindest. Du beginnst auf Level eins und die Zahl erhöht sich, je tiefer du dich in den Dungeon begibst. Einige Level sind speziell und werden durch einen Namen anstatt einer Zahl gekennzeichnet. Das Amulett von Yendor
+soll sich irgendwo unterhalb des zwanzigsten Levels befinden.
+%.lp
+\item[\bb{Gold}]
+Die Anzahl an Goldstücken, die du offen mit dir herumträgst. In Behältern verstecktes Gold wird dabei nicht mitgezählt.
+%.lp
+\item[\bb{Trefferpunkte}]
+Deine aktuellen und maximalen Trefferpunkte. Diese zeigen an, wieviel (zusätzlichen) Schaden du einstecken kannst, ehe du stirbst. Du kannst Trefferpunkte zurückerlangen, indem du dich ausruhst (oder zumindest eine Zeitlang nicht kämpfst) oder auch mit Hilfe einiger magischer Gegenstände oder Zaubersprüche.
+%.lp
+\item[\bb{Mana}]
+Die Menge an magischer Energie, die dir zum Zaubern zu Verfügung steht. Auch dein Mana regeneriert sich im Laufe der Zeit.
+%.lp
+\item[\bb{Rüstungsklasse}]
+Ein Maß der Wirksamkeit, mit der deine Rüstung Schläge abwehrt, wobei du um so besser geschützt bist, je kleiner deine Rüstungsklasse ist. Ein unbekleideter Mensch hat eine Rüstungsklasse von 10. Es ist durchaus möglich, eine negative Rüstungsklasse zu erreichen.
+%.lp
+\item[\bb{Erfahrung}]
+Dein aktuelles Erfahrungslevel und deine Erfahrungspunkte. Mit jedem gewonnenen Kampf erhältst du zusätzliche Erfahrungspunkte, wodurch sich von Zeit zu Zeit auch dein Erfahrungslevel erhöht. Je erfahrener du bist, um so besser kannst du Angriffen widerstehen und auch selbst besser kämpfen.
+%.lp
+\item[\bb{Zeit}]
+Die Anzahl der Züge, die bisher vergangen sind.
+%.lp
+\item[\bb{Status}]
+Dein aktueller Hunger-Status, welcher von {\it Satt\/} über {\it Flau\/} bis {\it Kollabierend} reicht.  Wenn dein Hungerstatus normal ist, wird er nicht angezeigt. \\
+Zusätzliche Markierungen werden angezeigt, wenn du entsprechend beeinträchtigt bist:
+{\it Konf\/} wenn du verwirrt bist, {\it Gift\/} für eine Lebensmittelvergiftung, {\it Krank\/}, {\it Blind\/}, 
+{\it Benom\/} wenn du benommen bist, oder {\it Hallu\/} wenn du halluzinierst.
+\elist
+
+%.hn 2
+\subsection{Spielmeldungen (oberer Bildschirmrand)}
+
+%.pg
+Die oberste Zeile des Bildschirms ist für Meldungen reserviert, die sich bildlich nicht darstellen lassen.
+Wenn du ein ``{\tt --Weiter--}'' in dieser Zeile siehst, bedeutet das, dass eine oder mehrere weitere Meldungen folgen,
+aber \NetHack sicherstellen möchte, dass du sie alle in Ruhe der Reihe nach lesen kannst. Um die nächste Meldung zu lesen, drücke die Leertaste. Mit `{\tt Strg-P}' kannst du auf kürzlich angezeigte Meldungen zurückgreifen, um sie noch einmal zu lesen.
+
+%.hn 2
+\subsection{Erklärung der Symbole: die Karte}
+
+%.pg
+Der restliche Bildschirm umfasst die Karte des Levels, soweit du es bisher erforscht hast.
+Jedes Zeichen auf dem Bildschirm symbolisiert ein Lebewesen oder ein unbewegtes Objekt.
+
+\medskip
+Zunächst einmal gibt es alles, was da kreucht und fleucht:
+
+\blist{}
+\item[\tb{@}]
+Deine Spielfigur (möglicherweise blinkend) oder ein menschliches Monster.
+\item[\tb{a-zA-Z {\rm und} :;'\&}]
+Buchstaben und einige andere Symbole repräsentieren die zahlreichen Bewohner des Dungeons.
+Vorsicht, sie können gemein und bösartig sein. Manche erweisen sich aber auch als hilfreich. \\
+Du kannst Monster angreifen, indem du in sie hineinläufst oder sie von ferne attackieren 
+(z.B. Werfen mit `{\tt t}' oder `{\tt f}', Zaubern mit `{\tt Z}', \ldots)
+Du kannst sie aber auch ansprechen (`{\tt \#chat}'). \\
+Ein Sonderfall ist das Haustier (ein kleiner Hund, ein Kätzchen oder ein Pony), mit dem jeder 
+Abenteurer das Spiel beginnt. Dein Haustier wird dir folgen und versuchen, dich im Kampf zu 
+beschützen.
+%.lp
+\item[\tb{I}]
+Dieses Zeichen markiert den zuletzt bekannten Aufenthaltsort eines unsichtbaren oder sonstwie nicht sichtbaren Monsters, wobei zu beachten ist, daß das Monster sich seitdem fortbewegt haben kann.
+\elist
+
+\medskip
+Dann diverse feste Bestandteile der Räume und des Dungeons:
+
+\blist{}
+\item[\tb{- {\rm und} |}]
+Die Wände eines Raumes, eine offene Tür, oder auch ein Grab ({\tt |}). \\
+Eine Tür lässt sich mittels `{\tt c}' schließen.
+%.lp
+\item[\tb{.}]
+Der Boden eines Raumes, Eis oder ein türloser Durchgang.
+%.lp
+\item[\tb{\#}]
+Meistens ein Gang. Seltener Gitterstäbe, ein Baum, eine Spüle oder eine Zugbrücke.
+%.lp
+\item[\tb{>}]
+Treppe abwärts: ein Weg zum nächsten Level. \\
+Du kannst diese Treppe benutzen, indem du `{\tt >}' eingibst.
+%.lp
+\item[\tb{<}]
+Treppe aufwärts: ein Weg zum vorherigen Level. \\
+Du kannst diese Treppe benutzen, indem du `{\tt <}' eingibst.
+%.lp
+\item[\tb{+}]
+Ein geschlossene Tür. \\
+Öffnen der Tür mit `{\tt o}'.
+%.lp
+\item[\tb{_}]
+Ein Altar. \\
+Hier kannst mit `{\tt d}' oder `{\tt D}' Gegenstände ablegen und mit `{\tt \#offer}' oder `{\tt Alt-o}' Leichname opfern.
+%.lp
+\item[\tb{\^}]
+Eine Falle, sofern du sie bereits entdeckt hast. \\
+Du kannst versuchen, sie mit `{\tt \#untrap}' oder `{\tt Alt-u}' zu entschärfen.
+%.lp
+\item[\tb{\{}]
+Ein Springbrunnen. \\
+Daraus trinken mit `{\tt q}', etwas eintauchen mit `{\tt \#dip}' oder `{\tt Alt-d}'.
+%.lp
+\item[\tb{\}}]
+Ein Wassertümpel oder -graben, oder auch flüssige Lava.
+%.lp
+\item[\tb{$\backslash$}]
+Ein prunkvoller Thron. \\
+Mit `{\tt \#sit}' oder `{\tt Alt-s}' kannst du dich darauf setzen. Ob das allerdings eine gute Idee ist?
+\elist
+
+\medskip
+Und natürlich haufenweise Gegenstände, die du alle mit `{\tt ,}' aufheben und mit `{\tt d}' oder `{\tt D}' wieder ablegen kannst. Mit `{\tt i}' oder `{\tt I}' kannst du alle Gegenstände auflisten, die du zur Zeit mit dir herumträgst.
+
+\blist{}
+\item[\tb{\$}]
+Ein Haufen Gold.
+%.lp
+\item[\tb{)}]
+Eine Waffe. \\
+Du kannst sie mit `{\tt w}' in die Hand nehmen oder mit `{\tt t}' oder `{\tt f}' werfen.
+%.lp
+\item[\tb{[}]
+Eine Rüstung oder ein anderes Kleidungsstück. \\
+Du kannst sie bzw. es mit `{\tt W}' anziehen.
+%.lp
+\item[\tb{\%}]
+Etwas Essbares, einschließlich Leichnamen. Nicht notwendigerweise gut für dich. \\
+Mit `{\tt e}' kannst du essen, Leichname kannst du außerdem auf Altaren opfern (`{\tt \#offer}' oder `{\tt Alt-o}').
+%.lp
+\item[\tb{?}]
+Eine Schriftrolle. \\
+Du kannst sie mit `{\tt r}' lesen.
+%.lp
+\item[\tb{+}]
+Ein Zauberbuch. \\
+Du kannst es mit `{\tt r}' lesen, um den darin enthaltenen Spruch zu lernen - vorausgesetzt, er ist nicht zu schwer für dich. Einen erlernten Zauberspruch kannst du dann mit `{\tt Z}' zaubern.
+\item[\tb{/}]
+Ein Zauberstab. \\
+Du kannst ihn mit `{\tt z}' anwenden oder auch mit `{\tt E}' etwas in den Boden schreiben.
+%.lp
+\item[\tb{=}]
+Ein Ring. \\
+Du kannst ihn mit `{\tt P}' anstecken.
+%.lp
+\item[\tb{!}]
+Ein Zaubertrank. \\
+Du kannst ihn mit `{\tt q}' trinken.
+%.lp
+\item[\tb{(}]
+Ein Werkzeug oder anderer nützlicher Gegenstand, z.B. Schlüssel, Lampe, Kiste \ldots\\
+Du kannst es bzw. ihn mit `{\tt a}' benutzen.
+%.lp
+\item[\tb{\"}]
+Ein Amulett.\\
+Du kannst es mit `{\tt P}' anlegen.
+%.lp
+\item[\tb{*}]
+Ein Stein oder ein (möglicherweise wertvoller) Schmuckstein.
+%.lp
+\item[\tb{`}]
+Ein Felsbrocken oder eine Statue. \\
+Felsbrocken kannst du im Allgemeinen durch die Gegend schieben, Statuen kannst du aufheben, was jedoch meist nicht viel bringt.
+\elist
+
+%.pg
+Du brauchst diese Symbole und ihre Bedeutungen nicht auswendig zu lernen; stattdessen kannst du mit dem `{\tt /}' Befehl jederzeit nachfragen, was ein bestimmtes Zeichen bedeutet.
+
+%.hn 1
+\section{Die wichtigsten Befehle}
+
+In \NetHack werden Befehle über die Tastatur eingegeben, wobei im Allgemeinen ein einzelner Tastendruck einen Befehl auslöst, gelegentlich aber auch Tastenkombinationen erforderlich sind. In jedem Fall ist die Groß- und Kleinschreibung relevant, d.h. `{\tt a}' und `{\tt A}' sind zwei vollkommen unterschiedliche Befehle. \\
+Aufgrund der Komplexität dieses Spiels reichen die Buchstaben allein nicht aus, so dass es noch eine Liste {\it erweiterter Befehle} gibt, die mittels des Spezialbefehls `{\tt \#}' eingegeben werden können. Die meisten davon sind allerdings alternativ auch über die {\tt Alt}-Taste zu erreichen. Wenn der {\it Ziffernblock} aktiviert ist, können einige weitere auch direkt über einen Tastendruck ausgeführt werden.
+
+Wenn du einem Befehl eine Anzahl voranstellst, wird dieser Befehl so oft ausgeführt, z.B. kannst du mit `{\tt 50s}' fünfzig Züge lang suchen, wobei du unterbrochen wirst, sobald etwas Wichtiges passiert. Wenn der {\it Ziffernblock\/} aktiviert ist, musst du zusätzlich ein `{\tt n}' voranstellen, müsstest also stattdessen `{\tt n50s}' eintippen. Befehle, für die Wiederholungen keinen Sinn ergeben, ignorieren sie einfach. Um einen eben eingegebenen Befehl zu wiederholen, kannst du `{\tt Ctrl-A}' verwenden. Mittels der `{\tt Esc}'-Taste kannst die Eingabe eines Präfix oder einer Anzahl abbrechen.
+
+\subsection{Bewegung und Nahkampf}
+
+Du kannst deine Spielfigur mittels der Pfeiltasten oder des Ziffernblocks (sofern vorhanden) bewegen. Außerdem werden die sogenannten {\it vi}-Tasten (`{\tt hjklyubn}') unterstützt. Eine diagonale Bewegung braucht genauso lange wie ein Schritt in horizontale oder vertikale Richtung, so dass du im Allgemeinen weniger Züge benötigst, wenn du dich diagonal entlang bewegst.\\
+Führt deine Bewegung dich auf ein Feld, in dem sich bereits ein Monster befindet, so zählt dies als Angriff, wobei \NetHack bei sichtbaren friedlichen Monstern vorher nachfragt, ob du das wirklich möchtest.
+
+\blist{}
+\item[\tb{[hjklyubn]}]
+Gehe einen Schritt in die angegebene Richtung (siehe Abbildung 2).  Falls sich dort ein nicht-zahmes Monster befindet, zählt dies als Angriff mit deiner aktuellen Waffe; mit einem zahmen Monster kannst du auf diese Weise die Plätze tauschen.
+%.sd
+\begin{center}
+\begin{tabular}{cc}
+\verb+   y  k  u   + & \verb+   7  8  9   +\\
+\verb+    \ | /    + & \verb+    \ | /    +\\
+\verb+   h- . -l   + & \verb+   4- . -6   +\\
+\verb+    / | \    + & \verb+    / | \    +\\
+\verb+   b  j  n   + & \verb+   1  2  3   +\\
+                     & (bei aktiviertem {\it Ziffernblock\/})
+\end{tabular}
+\end{center}
+%.ed
+\begin{center}
+Abbildung 2
+\end{center}
+%.lp
+\item[\tb{[HJKLYUBN]}]
+Lauf in die entsprechende Richtung, bis du auf ein Hindernis oder einen Gegenstand triffst.
+%.lp
+\item[\tb{<}]
+Eine Treppe oder Leiter zum darüberliegenden Level hinaufsteigen. 
+%.lp
+\item[\tb{>}]
+Eine Treppe oder Leiter zum nächsten tieferliegenden Level hinabsteigen.
+%.lp
+\item[\tb{_}]
+Reise mittels eines kürzester-Weg-Algorithmus zu einem Ort auf der Karte. Der kürzeste Weg wird über die Wege und Räume der Karte berechnet, die dem Helden bekannt sind (z.B. sichtbar oder bereits betreten). Wenn es keinen bekannten Pfad gibt, wird ein Pfad geraten. 
+%.lp
+\item[\tb{.}]
+Ausruhen, tue einen Zug lang gar nichts. Alternativ kannst du die Zeit auch mit `{\tt s}'uchen verbringen.
+\elist
+
+\subsection{Metabefehle}
+
+\blist{}
+\item[\tb{?}]
+Englischsprachiges Hilfsmenü.
+%.lp
+\item[\tb{Ctrl-A}]
+Wiederhole den vorigen Befehl.
+%.lp
+\item[\tb{\#adjust {\rm oder} Alt-a}]
+Anpassen der Buchstaben der Gegenstände in deinem Inventar, z.B. kannst du auf die Weise deine Hauptwaffe auf den Buchstaben {\it a} legen oder vermeiden, dass etwas Essbares auf dem Buchstaben {\it e} liegt.
+%.lp
+\item[\tb{O}]
+Verändere Optionen, siehe dort.
+%.lp
+\item[\tb{Ctrl-P}]
+Wiederhole vorige Meldung. Weitere {\tt 'Ctrl-P'}s wiederholen frühere Meldungen.
+Dieses Verhalten kann mittels der {\tt msg-window} Option angepasst werden.
+%.lp
+\item[\tb{\#quit {\rm oder} Alt-q}]
+Das Spiel ohne zu speichern beenden.
+%.lp
+\item[\tb{Ctrl-R}]
+Aktualisiere die Bildschirm-Darstellung. Hilfreich, wenn eine Fehlermeldung oder ähnliches die Karte verdeckt.
+%.lp
+\item[\tb{S}]
+Spiel speichern (und beenden). Das Spiel wird beim nächsten Mal automatisch wieder hergestellt, wenn du den
+Namen deiner Spielfigur eingibst. 
+%.lp
+\item[\tb{X}]
+Startet den Erkundungs-Modus, in dem du nicht stirbst, aber das Spiel dafür auch nicht in der Bestenliste auftaucht.
+%.lp
+\item[\tb{\^{}X}]
+Zeigt Name, Klasse, Rasse, Geschlecht und Gesinnung der Figur an, sowie die Namen der verschiedenen Gottheiten im Spiel. 
+%.lp
+\item[\tb{:}]
+Zeigt an, was sich in dem Feld befindet, in dem du gerade stehst.
+%.lp
+\item[\tb{;}]
+Gibt an, was ein sichtbares Zeichen darstellt.
+\item[\tb{+}]
+Listet die Zaubersprüche auf, die die Figur kennt. Mit diesem Befehl kann auch die Reihenfolge der Sprüche verändert werden. Diese werden in einem Menu angezeigt, und sobald einer ausgewählt wurde, fordert das System dazu auf, einen weiteren Spruch zu wählen, mit dem der Platz getauscht werden soll. 
+%.lp
+\elist
+
+\subsection{Verwenden von Gegenständen}
+
+\blist{}
+\item[\tb{a}]
+Benutze ein Werkzeug oder anderen Gegenstand (Spitzhacke, Schlüssel, \ldots). (Englisch {\it apply}.)
+%.lp
+\item[\tb{A}]
+Ausziehen eines oder mehrerer deiner Kleidungsstücke oder Accessoires.\\
+Nutze `{\tt T}' (englisch {\it take off}) um nur ein Kleidungsstück auszuziehen
+oder `{\tt R}' (englisch {\it remove}) um nur ein Accessoire zu entfernen.
+%.lp
+\item[\tb{d}]
+Etwas ablegen. (Englisch {\it drop}.)\\
+{\tt d7a} --- lege sieben Exemplare des Gegenstandes {\it a} ab.
+%.lp
+\item[\tb{D}]
+Mehrere Dinge ablegen, die du aus einem Menü auswählen kannst.
+%.lp
+\item[\tb{e}]
+Iss etwas. (Englisch {\it eat}.)
+%.lp
+\item[\tb{f}]
+Wirf bzw. schieß eines oder mehrere der Wurfgeschosse in deinem Köcher, wobei die Anzahl von deiner Fertigkeit in der entsprechenden Waffe abhängt. (Englisch {\it fire}.)\\
+Du kannst deinen Köcher mittels des `{\tt Q}'-Befehls füllen oder das Spiel etwas passendes auswählen lassen, wenn die {\it autoquiver\/}-Option gesetzt ist.
+%.lp
+\item[\tb{i}]
+Zeigt dein Inventar an (alles, was du trägst).
+%.lp
+\item[\tb{I}]
+Zeigt dein Inventar in Form eines Menüs an, wobei neben den angezeigten Buchstaben auch die Symbole der Objektgruppen akzeptiert werden, so dass du z.B. mit `{\tt I\%}' alle deine Lebensmittel oder mittels `{\tt I+}' alle deine Zauberbücher auflisten kannst.
+%.lp
+\item[\tb{p}]
+Bezahle deine Einkaufsrechnung. (Englisch {\it pay}.)
+%.lp
+\item[\tb{P}]
+Lege einen Ring oder anderes Accessoire an. (Englisch {\it put on}.)
+%.lp
+\item[\tb{q}]
+Trink etwas, z.B. einen Zaubertrank. (Englisch {\it quaff}.)
+%.lp
+\item[\tb{Q}]
+Wähle einen Gegenstand, den du in deinen Köcher legen möchtest. (Englisch {\it quiver}.)\\
+Du kannst dieses Objekt dann mittels `{\tt f}' werfen.
+%.lp
+\item[\tb{r}]
+Lies eine Schriftrolle oder ein Zauberbuch. (Englisch {\it read}.)
+%.lp
+\item[\tb{R}]
+Lege ein Accessoire an, z.B. Ring, Amulett, etc. (Englisch {\it remove}.)
+%.lp
+\item[\tb{t}]
+Wirf einen Gegenstand oder schieß ein Projektil mittels z.B. eines Bogens. (Englisch {\it throw}.)
+%.lp
+\item[\tb{T}]
+Ausziehen eines Kleidungsstücks. (Englisch {\it take off}.)
+%.lp
+\item[\tb{w}]
+Nimm eine Waffe zur Hand. (Englisch {\it wield}.)\\
+%.sd
+%.si
+{\tt w-} --- Keine Waffe führen: die bloßen Hände benutzen. 
+%.ei
+%.ed
+%.lp
+\item[\tb{W}]
+Zieh dir ein Kleidungsstück an. (Englisch {\it wear}.)
+%.lp
+\item[\tb{x}]
+Tauscht die geführte Waffe und die alternative Waffe. Letztere wird als Zweitwaffe in einem Zwei-Waffen-Kampf verwendet. (Englisch {\it exchange}.)\\
+Beachte: Wenn der Platzhalter für die Alternativ-Waffe leer ist, wird trotzdem ein Tausch durchgeführt, d.h. man hat hinterher leere Hände.
+%.lp
+\item[\tb{z}]
+Benutze einen Zauberstab. (Englisch {\it zap}.) \\
+Um ihn auf dich selbst zu richten, gib `{\tt .}' an.
+%.lp
+\item[\tb{,}]
+Etwas aufheben. Ist die {\tt menustyle}-Option auf {\it full} eingestellt, kannst du die Gegenstände aus einem Menü auswählen.
+%.lp
+\item[\tb{@}]
+Schalte die {\tt autopickup}-Option an oder aus, d.h. ob du (bestimmte) Gegenstände automatisch aufheben willst oder nicht.
+%.lp
+\item[\tb{)}]
+Gibt an, welche Waffe du zur Zeit führst.
+%.lp
+\item[\tb{[}]
+Gibt an, welche Kleidung du zur Zeit trägst.
+%.lp
+\item[\tb{=}]
+Gibt an, welche Ringe du zur Zeit trägst.
+%.lp
+\item[\tb{\"}]
+Gibt an, welches Amulett du zur Zeit trägst.
+%.lp
+\item[\tb{(}]
+Gibt an, welches Werkzeug du zur Zeit in der Hand hast.
+%.lp
+\item[\tb{*}]
+Gibt an, welche Ausrüstung du zur Zeit verwendest; fasst die vorhergehenden fünf typspezifischen Befehle in einem zusammen.
+%.lp
+\item[\tb{$\backslash$}]
+Zeigt an, welche Arten von Gegenstände du bereits identifiziert hast.
+%.lp
+\item[\tb{\#dip {\rm oder} Alt-d}]
+Tauche einen Gegenstand in etwas ein.
+%.lp
+\item[\tb{\#enhance {\rm oder} Alt-e}]
+Verbessere deine Waffen- oder Zauberfertigkeiten.\\
+Erfordert Erfahrung und Training in der entsprechenden Fertigkeit. Welche Fertigkeiten überhaupt verfügbar sind, hängt von deiner Klasse ab.
+%.lp
+\item[\tb{\#force {\rm oder} Alt-f}]
+Ein Schloss aufbrechen.
+%.lp
+\item[\tb{\#invoke {\rm oder} Alt-i}]
+Die speziellen Kräfte eines Objektes beschwören. Interessant für bestimmte magische Artefakte.
+%.lp
+\item[\tb{\#name {\rm oder} Alt-n}]
+Benamse einen Gegenstand oder benenne alle Gegenstände dieser Art.
+%.lp
+\item[\tb{\#offer {\rm oder} Alt-o}]
+Den Göttern ein Opfer darbringen. 
+%.lp
+\item[\tb{\#rub {\rm oder} Alt-r}]
+Reibe eine Lampe oder einen Stein.
+%.lp
+\item[\tb{\#twoweapon {\rm oder} Alt-2}]
+Zwei-Waffen-Kampf-Option ein- oder ausschalten. Beachte, daß nur für dieses Manöver geeignete Waffen verwendet werden. Ansonsten schaltet sich die Option automatisch ab. 
+%.lp
+\item[\tb{\#untrap}]
+Eine Falle entschärfen (Falle, Tür, Kiste).
+\elist
+
+\subsection{Interaktion mit deiner Umgebung}
+
+\blist{}
+\item[\tb{c}]
+Eine Tür schließen.
+%.lp
+\item[\tb{C}]
+Einem Monster einen Namen geben. 
+%.lp
+\item[\tb{\#chat {\rm oder} Alt-c}]
+Mit jemandem sprechen. 
+%.lp
+\item[\tb{Ctrl-D}]
+Gegen etwas treten (üblicherweise eine Tür).
+%.lp
+\hyphenation{Elbereth}		%override the deduced syllable breaks
+\item[\tb{E}]
+Eine Botschaft in den Boden einritzen. Die meisten Monster werden von einem Handgemenge absehen, wenn man den Namen Elbereth in den Boden ritzt (allerdings wird die Schrift unleserlich, sobald du dich bewegst und angreifst); dies ist oft nützlich, um einem eine Verschnaufpause zu geben.\\
+%.sd
+%.si
+{\tt E-} --- Mit den Fingern in den Staub schreiben. 
+%.ei
+%.ed
+%.Ip
+\item[\tb{\#jump {\rm oder} Alt-j}]
+An einen anderen Ort springen. \\
+Ritter besitzen die Fähigkeit, im Rösselsprung (L-förmig) zu springen. Andere Charaktere können mit Hilfe von Magie das Springen erlernen.
+%.lp
+\item[\tb{\#loot {\rm oder} Alt-l}]
+Einen Behälter auf dem Boden plündern oder den Sattel eines nebenstehenden Pferdes abnehmen.
+%.lp
+\item[\tb{o}]
+Eine Tür öffnen.
+%.lp
+\item[\tb{\#offer {\rm oder} Alt-a}]
+Den Göttern ein Opfer darbringen. 
+%.lp
+\item[\tb{p}]
+Deine Einkaufsrechnung bezahlen.
+%.lp
+\item[\tb{\#pray}]
+Die Götter um Hilfe anflehen. 
+%.lp
+\item[\tb{\#ride {\rm oder} Alt-r}]
+Auf ein Reittier aufsitzen oder von einem Reittier absitzen. 
+%.lp
+\item[\tb{s}]
+Nach Geheimtüren oder Fallen suchen. Im Allgemeinen sind mehrere Versuche nötig um etwas zu finden. 
+%.lp
+\item[\tb{\#sit {\rm oder} Alt-s}]
+Sich hinsetzen.
+%.lp
+\item[\tb{<}]
+Eine Treppe oder Leiter zum darüberliegenden Level hinaufsteigen. 
+%.lp
+\item[\tb{>}]
+Eine Treppe oder Leiter zum nächsten tieferliegenden Level hinabsteigen.
+\elist
+
+\subsection{Sonstige Befehle}
+
+\blist{}
+\item[\tb{\#conduct {\rm oder} Alt-c}]
+Listet die Herausforderungen, denen du bisher treu geblieben bist. 
+%.lp
+\item[\tb{\#monster {\rm oder} Alt-m}]
+Die speziellen Fähigkeiten eines Monsters nutzen (während du dich in Monstergestalt befindest). 
+%.lp
+\item[\tb{Ctrl-T}]
+Teleportiere, falls du die Fähigkeit dazu hast.
+%.lp
+\item[\tb{\#turn {\rm oder} Alt-t}]
+Untote abwenden, falls du die Fähigkeit dazu hast. 
+%.lp
+\item[\tb{v}]
+Versionsnummer anzeigen lassen. 
+%.lp
+\item[\tb{V}]
+Englischsprachige Entwicklungsgeschichte des Spieles anzeigen lassen. 
+%.lp
+\item[\tb{\#version {\rm oder} Alt-v}]
+Zeigt Kompilier-Optionen dieser {\it NetHack}-Version an. 
+%.lp
+\item[\tb{\#wipe {\rm oder} Alt-w}]
+Das Gesicht abwischen. 
+%.lp
+\item[\tb{\^{}}]
+Gibt die Art einer Falle an, von der du bereits weißt.
+\elist
+
+\subsection{Nachfragen/Eingabeaufforderung}
+
+Zu vielen Befehlen musst du zusätzlich einen Gegenstand oder eine Richtung angeben.
+Dabei gibt es einige unterschiedliche Grundformen der Nachfragen. In jedem Fall 
+kannst du mittels `{\tt Esc}' den Befehl abbrechen.
+
+\blist{}
+\item[\tb{Was möchtest du benutzen? [bk-mFT oder ?*]}]
+Hierbei kannst du direkt mit einem der vorgeschlagenen Buchstaben antworten. Du kannst 
+aber auch mittels `{\tt ?}' eine Auflistung dieser Gegenstände anfordern oder mittels
+`{\tt *}' auch eine Auflistung aller Gegenstände erhalten, falls du etwas wirklich
+Ungewöhnliches für diesen Befehl einsetzen willst.
+%.lp
+\item[\tb{In welche Richtung? }]
+Für Befehle, die sich (auch) auf Nachbarfelder auswirken können, wird eine Richtung benötigt. 
+Neben einer der acht Kompassrichtungen kannst du auch `{\tt .}' für dein eigenes Feld sowie 
+`{\tt <}' (unter dir) bzw. `{\tt >}' (über dir) angeben.
+%.lp
+\item[\tb{Willst du wirklich beten? [jn] (n)}]
+Bei einigen besonders riskanten Aktionen fragt \NetHack vorher nach, um Tippfehler
+abzumildern. Hierbei werden alle Antwortmöglichkeiten in {\it eckigen} Klammern
+sowie die Standardantwort bei Drücken der Leertaste in {\it runden} Klammern angezeigt.
+Bei letzterer handelt es sich in den allermeisten Fällen um das sichere {\it Nein}.
+%.lp
+\item[\tb{Wohin möchtest du reisen? }]
+Hier ist ein Ort auf der Karte gefragt, den du mittels des Cursors auswählen kannst. Sobald du in dem gewünschten Feld angekommen bist, bestätige deine Wahl mit `{\tt .}'
+%.lp
+\item[\tb{Wie möchtet Ihr diesen sprudelnden Trank benamsen? }]
+Hier ist eine Freitexteingabe gefordert, die abschließend mit der Eingabetaste zu bestätigen ist. Ein bestehender Name wird durch den neuen Eintrag ersetzt bzw. wenn die Eingabe lediglich aus einem oder mehreren Leerzeichen besteht, ohne Ersetzung aufgehoben.
+\elist
+
+\section{Die wichtigsten Optionen}
+
+\textbf{TODO}
+
+\end{document}
