@@ -15,9 +15,9 @@ diff -uwr nethack-3.4.3/src/worm.c nethack-long-worm-fix-C343-324/src/worm.c
 +    struct wseg *tail;
 +{
 +	if (flags.mon_moving)
-+	    pline("Ein Teil des Schwanzes KASUS_GENITIV %s wurde abgeschnitten.", mon_nam(worm)); /* EN pline("Part of the tail of %s is cut off.", mon_nam(worm)); */
++	    pline("Ein Teil KASUS_GENITIV %s wurde abgeschnitten.", genitivattribut_zu_wort(mon_nam(worm), "NOUN_SCHWANZ")); /* EN pline("Part of the tail of %s is cut off.", mon_nam(worm)); */
 +	else
-+	    You("VERB_SCHNEIDEN einen Teil des Schwanzes OBJECT KASUS_GENITIV %s ab.", mon_nam(worm)); /* EN You("cut part of the tail off of %s.", mon_nam(worm)); */
++	    You("VERB_SCHNEIDEN einen Teil OBJECT KASUS_GENITIV %s ab.", genitivattribut_zu_wort(mon_nam(worm), "NOUN_SCHWANZ")); /* EN You("cut part of the tail off of %s.", mon_nam(worm)); */
 +	toss_wsegs(tail, TRUE);
 +	if (worm->mhp > 1) worm->mhp /= 2;
 +}
