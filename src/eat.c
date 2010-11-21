@@ -91,6 +91,17 @@ const char *hu_stat[] = {
 	"Bewusstlos  ", /* EN "Fainted ", */
 	"Verhungert  "  /* EN "Starved "  */
 };
+#ifdef GERMAN
+const char *hu_en_stat[] = {
+	"Satiated",
+	"        ",
+	"Hungry  ",
+	"Weak    ",
+	"Fainting",
+	"Fainted ",
+	"Starved "
+};
+#endif
 
 #endif /* OVLB */
 #ifdef OVL1

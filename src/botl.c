@@ -13,15 +13,23 @@ extern const char *hu_stat[];	/* defined in eat.c */
 
 const char * const enc_stat[] = {
 	"",
-//	"Belastet", /* EN "Burdened", */ // TODO DE
-    "Beladen", /* EN "Burdened", */ // TODO DE
-	"Angestrengt", /* EN "Stressed", */ // TODO DE
-//"Gestresst", /* EN "Stressed", */ // TODO DE
-	"Strapaziert", /* EN "Strained", */ // TODO DE
-//"Überfordert", /* EN "Overtaxed", */ // TODO DE
-	"Überlastet", /* EN "Overtaxed", */ // TODO DE
-	"Überladen" /* EN "Overloaded" */ // TODO DE
+	"Beladen", /* EN "Burdened", */
+	"Angestrengt", /* EN "Stressed", */
+	"Strapaziert", /* EN "Strained", */
+	"Überlastet", /* EN "Overtaxed", */
+	"Überladen" /* EN "Overloaded" */
 };
+#ifdef GERMAN
+extern const char *hu_en_stat[];	/* defined in eat.c */
+const char * const enc_en_stat[] = {
+	"",
+	"Burdened",
+	"Stressed",
+	"Strained",
+	"Overtaxed",
+	"Overloaded"
+};
+#endif
 
 STATIC_DCL void NDECL(bot1);
 STATIC_DCL void NDECL(bot2);
