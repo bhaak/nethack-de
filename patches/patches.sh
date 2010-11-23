@@ -16,6 +16,7 @@ nh343-menucolor-v1.5.diff
 nethack-autoconf-20081120.patch
 nethack-3.4.1-pickup_thrown.1.diff
 alt_as_meta.diff
+unnethack-353-statuscolors.diff
 "
 
 NH_DIR=/tmp/patches_nethack$$

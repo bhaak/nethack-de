@@ -7,6 +7,7 @@ enthält NetHack-De folgende Erweiterungen und Patches:
 * Extended Logfile Patch von Aardvark Joe
 * Livelog-Patch von "http://nethack.unfoog.de/":http://nethack.unfoog.de/
 * Menucolor-Patch von Pasi Kallinen
+* Statuscolor-Patch (von Shachaf & Oren Ben-Kiki)
 * Pickup-Thrown-Patch von Roderick Schertler
 * Simple-Mail-Patch für dgamelaunch
 * QWERTZ-Patch für Tastaturen mit qwertz-Layout
