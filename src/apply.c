@@ -390,7 +390,7 @@ boolean feedback;
 
 	if (feedback) {
 	    if (canseemon(mtmp))
-		pline("SUBJECT %s VERB_LOSREISSEN OBJECT KASUS_DATIV von %s NOUN_LEASH!", Monnam(mtmp), mhis(mtmp)); /* EN pline("%s pulls free of %s leash!", Monnam(mtmp), mhis(mtmp)); */
+		pline("SUBJECT %s VERB_LOSREISSEN sich OBJECT KASUS_DATIV von %s NOUN_LEASH SATZKLAMMER!", Monnam(mtmp), mhis(mtmp)); /* EN pline("%s pulls free of %s leash!", Monnam(mtmp), mhis(mtmp)); */
 	    else
 		Your("NOUN_LEASH VERB_WERDEN schlaff."); /* EN Your("leash falls slack."); */
 	}
