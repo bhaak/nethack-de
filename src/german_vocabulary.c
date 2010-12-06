@@ -11550,6 +11550,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Klammeraffen", "NOUN_HALLU_KLAMMERAFFE", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Klammeraffen", "NOUN_HALLU_KLAMMERAFFEs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Stollentrolles", "NOUN_STOLLENTROLL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stollentroll", "NOUN_STOLLENTROLL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stollentrolle", "NOUN_STOLLENTROLLs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Stollentrollen", "NOUN_STOLLENTROLLs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Eideet", "NOUN_HALLU_EIDEET", "", nominativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Eideeten", "NOUN_HALLU_EIDEET", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Eideeten", "NOUN_HALLU_EIDEETs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -11557,6 +11562,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Grüffelos", "NOUN_HALLU_GRUEFFELO", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Grüffelo", "NOUN_HALLU_GRUEFFELO", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Grüffelos", "NOUN_HALLU_GRUEFFELOs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Stollentrolles", "NOUN_HALLU_STOLLENTROLL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stollentroll", "NOUN_HALLU_STOLLENTROLL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stollentrolle", "NOUN_HALLU_STOLLENTROLLs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Stollentrollen", "NOUN_HALLU_STOLLENTROLLs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Leseratte", "NOUN_HALLU_LESERATTE", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Leseratten", "NOUN_HALLU_LESERATTEs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -12593,6 +12603,30 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"dreieckige", "ADJEKTIV_FARBE_DREIECKIG", "", nominativ|akkusativ, feminin|neutrum|maskulin, n_plural, ohne},
   {"dreieckiger", "ADJEKTIV_FARBE_DREIECKIG", "", genitiv, feminin|neutrum|maskulin, n_plural, ohne},
   {"dreieckigen", "ADJEKTIV_FARBE_DREIECKIG", "", dativ, feminin|neutrum|maskulin, n_plural, ohne},
+  
+
+  {"farbig", "ADJEKTIV_FARBE_FARBIG", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},
+  {"farbige", "ADJEKTIV_FARBE_FARBIG", "", nominativ, feminin|neutrum|maskulin, n_singular, bestimmter},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"farbige", "ADJEKTIV_FARBE_FARBIG", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", dativ|genitiv, feminin|neutrum|maskulin, n_singular, bestimmter},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural, bestimmter},
+  {"farbiger", "ADJEKTIV_FARBE_FARBIG", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"farbige", "ADJEKTIV_FARBE_FARBIG", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
+  {"farbiges", "ADJEKTIV_FARBE_FARBIG", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", dativ|genitiv, feminin|neutrum|maskulin, n_singular, unbestimmter},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural, unbestimmter},
+  {"farbiger", "ADJEKTIV_FARBE_FARBIG", "", nominativ, maskulin, n_singular, ohne},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", akkusativ|genitiv, maskulin, n_singular, ohne},
+  {"farbigem", "ADJEKTIV_FARBE_FARBIG", "", dativ, neutrum|maskulin, n_singular, ohne},
+  {"farbiges", "ADJEKTIV_FARBE_FARBIG", "", nominativ|akkusativ, neutrum, n_singular, ohne},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", genitiv, neutrum, n_singular, ohne},
+  {"farbige", "ADJEKTIV_FARBE_FARBIG", "", nominativ|akkusativ, feminin, n_singular, ohne},
+  {"farbiger", "ADJEKTIV_FARBE_FARBIG", "", dativ|genitiv, feminin, n_singular, ohne},
+  {"farbige", "ADJEKTIV_FARBE_FARBIG", "", nominativ|akkusativ, feminin|neutrum|maskulin, n_plural, ohne},
+  {"farbiger", "ADJEKTIV_FARBE_FARBIG", "", genitiv, feminin|neutrum|maskulin, n_plural, ohne},
+  {"farbigen", "ADJEKTIV_FARBE_FARBIG", "", dativ, feminin|neutrum|maskulin, n_plural, ohne},
   
 
   {"geblümt", "ADJEKTIV_FARBE_GEBLUEMT", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},

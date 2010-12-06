@@ -1169,6 +1169,7 @@ static const char * const bogusmons[] = {
 	"NOUN_HALLU_ZONK",			/* Geh aufs Ganze! */
 	"NOUN_HALLU_OTTIFANT",			/* Otto */
 	"NOUN_HALLU_VOGONE",			/* Per Anhalter durch die Galaxis */
+	"NOUN_HALLU_STOLLENTROLL",
 	"NOUN_HALLU_EIDEET",			/* Walter Moers */
 	"NOUN_HALLU_SCHRUMPFHOERNIGER_SCHNARCHKACKLER", /* Harry Potter */
 	"NOUN_HALLU_TRUHE",			/* Scheibenwelt */
@@ -1244,6 +1245,7 @@ roguename() /* Name of a Rogue player */
 static NEARDATA const char * const hcolors[] = {
 #ifdef GERMAN
 	"kohlpechraben-ADJEKTIV_FARBE_BLACK", "schloh-ADJEKTIV_FARBE_WHITE", "ADJEKTIV_FARBE_UNBUNT",
+	"oxydschmelzpunkt-ADJEKTIV_FARBE_FARBIG", /* Isogramm */
 #endif
 	"ADJEKTIV_FARBE_ULTRAVIOLETT", "ADJEKTIV_FARBE_INFRAROT", "bläulich-ADJEKTIV_FARBE_ORANGE", /* EN "ultraviolet", "infrared", "bluish-orange", */
 	"rot-ADJEKTIV_FARBE_GREEN", "dunkel-ADJEKTIV_FARBE_WHITE", "hell-ADJEKTIV_FARBE_BLACK", "himmelblau--ADJEKTIV_FARBE_PINK", /* EN "reddish-green", "dark white", "light black", "sky blue-pink", */
