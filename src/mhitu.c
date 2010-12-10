@@ -1536,7 +1536,7 @@ dopois:
 		    dmg = 0;
 		} else if (Unchanging ||
 				youmonst.data == &mons[PM_GREEN_SLIME]) {
-		    You("are unaffected."); /* EN You("are unaffected."); */ // TODO DE
+		    pline("Aber es macht KASUS_AKKUSATIV PRONOMEN_PERSONAL nichts aus."); /* EN You("are unaffected."); */
 		    dmg = 0;
 		} else if (!Slimed) {
 		    Du_fuehlst_dich("nicht so gut."); /* EN You("don't feel very well."); */
@@ -1881,7 +1881,7 @@ common:
 		    if (!Hallucination)
 			You("VERB_WERDEN von einer Welle kaleidoskopischen Lichtes überwältigt!"); /* EN You("are caught in a blast of kaleidoscopic light!"); */
 		    chg = make_hallucinated(HHallucination + (long)tmp,FALSE,0L);
-		    You("%s.", chg ? "VERB_FLIPPEN aus" : "seem unaffected"); /* EN You("%s.", chg ? "are freaked out" : "seem unaffected"); */ // TODO DE
+		    You("%s.", chg ? "VERB_FLIPPEN aus" : "VERB_SCHEINEN davon unbeeinflusst zu sein"); /* EN You("%s.", chg ? "are freaked out" : "seem unaffected"); */
 		}
 		break;
 
@@ -1889,7 +1889,7 @@ common:
 		break;
 	}
 	if (not_affected) {
-	    You("seem unaffected by it."); /* EN You("seem unaffected by it."); */ // TODO DE
+	    You("VERB_SCHEINEN dadurch unbeeinträchtigt zu sein."); /* EN You("seem unaffected by it."); */
 	    ugolemeffects((int)mattk->adtyp, tmp);
 	}
     }
@@ -2087,7 +2087,7 @@ register struct obj *obj;
 	    (is_acid ? obj->oeroded2 : obj->oeroded) < MAX_ERODE) {
 		if (obj->greased || obj->oerodeproof || (obj->blessed && rn2(3))) {
 		    if (vis)
-			pline("Somehow, %s is not affected.", /* EN pline("Somehow, %s weapon is not affected.", */ // TODO DE
+			pline("Irgendwie VERB_SEIN SUBJECT_IM_SATZ %s unbeschädigt geblieben.", /* EN pline("Somehow, %s weapon is not affected.", */
 						genitivattribut_zu_wort(mon_nam(mon), "NOUN_WEAPON")); /* EN s_suffix(mon_nam(mon))); */
 		    if (obj->greased && !rn2(2)) obj->greased = 0;
 		} else {
@@ -2478,7 +2478,7 @@ register struct attack *mattk;
 		if (!rn2(2)) {
 		    pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_ACID vollgespritzt!", Monnam(mtmp)); /* EN pline("%s is splashed by your acid!", Monnam(mtmp)); */
 		    if (resists_acid(mtmp)) {
-			pline("%s is not affected.", Monnam(mtmp)); /* EN pline("%s is not affected.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_SEIN unversehrt.", Monnam(mtmp)); /* EN pline("%s is not affected.", Monnam(mtmp)); */
 			tmp = 0;
 		    }
 		} else tmp = 0;

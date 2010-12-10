@@ -810,8 +810,8 @@ struct obj *obj;
 		make_blinded(Blinded + rnd(100),FALSE);
 		if (!Blind) Your(vision_clears);
 	    } else {
-		pline("SUBJECT %s OBJECT PRONOMEN_POSSESSIV NOUN_SEHKRAFT.", Tobjnam(obj, "VERB_ANGREIFEN")); /* EN pline("%s your vision.", Tobjnam(obj, "assault")); */
-		You("are unaffected!"); /* EN You("are unaffected!"); */ // TODO DE
+		pline("SUBJECT %s OBJECT PRONOMEN_POSSESSIV NOUN_SEHKRAFT SATZKLAMMER.", Tobjnam(obj, "VERB_ANGREIFEN")); /* EN pline("%s your vision.", Tobjnam(obj, "assault")); */
+		pline("Aber der Angriff ist wirkungslos!"); /* EN You("are unaffected!"); */
 	    }
 	    break;
 	case 4 : pline("SUBJECT %s VERB_BRINGEN OBJECT PRONOMEN_PERSONAL um den Verstand!", Tobjnam(obj, 0)); /* EN case 4 : pline("%s your mind!", Tobjnam(obj, "zap")); */ /* verdunkelte deinen Verstand / bringt dich um den Verstand */

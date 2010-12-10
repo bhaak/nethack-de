@@ -1003,7 +1003,7 @@ ouch:
 		    exercise(A_STR, FALSE);
 		    if (Blind) feel_location(x,y); /* we know we hit it */
 		    if (is_drawbridge_wall(x,y) >= 0) {
-			pline_The("drawbridge is unaffected."); /* EN pline_The("drawbridge is unaffected."); */ // TODO DE
+			pline("Die Zugbrücke hat nicht einmal eine Delle."); /* EN pline_The("drawbridge is unaffected."); */
 			/* update maploc to refer to the drawbridge */
 			(void) find_drawbridge(&x,&y);
 			maploc = &levl[x][y];

@@ -204,7 +204,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	    if (otmp->otyp == ACID_VENOM && cansee(mtmp->mx,mtmp->my)) {
 		if (resists_acid(mtmp)) {
 		    if (vis || verbose)
-			pline("%s is unaffected.", Monnam(mtmp)); /* EN pline("%s is unaffected.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_SEIN unversehrt.", Monnam(mtmp)); /* EN pline("%s is unaffected.", Monnam(mtmp)); */
 		    damage = 0;
 		} else {
 		    if (vis) pline_The("acid burns %s!", mon_nam(mtmp)); /* EN if (vis) pline_The("acid burns %s!", mon_nam(mtmp)); */ // TODO DE

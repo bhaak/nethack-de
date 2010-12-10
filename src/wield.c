@@ -643,10 +643,10 @@ boolean fade_scrolls;
 		(acid_dmg ? !is_corrodeable(target) : !is_rustprone(target))) {
 	    if (flags.verbose || !(target->oerodeproof && target->rknown)) {
 		if (victim == &youmonst)
-		    Your("%s not affected.", aobjnam(target, "are")); /* EN Your("%s not affected.", aobjnam(target, "are")); */ // TODO DE
+		    Your("%s unbeschädigt.", aobjnam(target, "VERB_SEIN")); /* EN Your("%s not affected.", aobjnam(target, "are")); */
 		else if (vismon)
-		    pline("%s's %s not affected.", Monnam(victim), /* EN pline("%s's %s not affected.", Monnam(victim), */ // TODO DE
-			aobjnam(target, "are")); /* EN aobjnam(target, "are")); */ // TODO DE
+		    pline("SUBJECT %s VERB_SEIN unbeschädigt.", genitivattribut_zu_wort(Monnam(victim), /* EN pline("%s's %s not affected.", Monnam(victim), */
+			aobjnam(target, (char *)0))); /* EN aobjnam(target, "are")); */
 		/* no message if not carried */
 	    }
 	    if (target->oerodeproof) target->rknown = TRUE;
@@ -656,9 +656,9 @@ boolean fade_scrolls;
 		    erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */
 		    erosion ? " weiter" : ""); /* EN erosion ? " further" : ""); */
 	    else if (vismon)
-		pline("%s's %s%s!", Monnam(victim), /* EN pline("%s's %s%s!", Monnam(victim), */ // TODO DE
-		    aobjnam(target, acid_dmg ? "VERB_CORRODE" : "VERB_ROSTEN"), /* EN aobjnam(target, acid_dmg ? "corrode" : "rust"), */
-		    erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */ // TODO DE
+		pline("SUBJECT %s %s%s!", genitivattribut_zu_wort(Monnam(victim), /* EN pline("%s's %s%s!", Monnam(victim), */
+		    aobjnam(target, (char *)0)), acid_dmg ? "VERB_CORRODE" : "VERB_ROSTEN", /* EN aobjnam(target, acid_dmg ? "corrode" : "rust"), */
+		    erosion+1 == MAX_ERODE ? " völlig" : /* EN erosion+1 == MAX_ERODE ? " completely" : */
 		    erosion ? " weiter" : ""); /* EN erosion ? " further" : ""); */
 	    else if (visobj)
 		pline_The("%s%s!",

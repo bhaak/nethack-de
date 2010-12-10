@@ -158,9 +158,9 @@ struct monst *victim;
 	if (!vulnerable) {
 	    if (flags.verbose) {
 		if (victim == &youmonst)
-		    Your("%s %s not affected.", ostr, vtense(ostr, "VERB_SEIN")); /* EN Your("%s %s not affected.", ostr, vtense(ostr, "are")); */ // TODO DE
+		    Your("%s %s unbeschädigt.", ostr, vtense(ostr, "VERB_SEIN")); /* EN Your("%s %s not affected.", ostr, vtense(ostr, "are")); */
 		else if (vismon)
-			pline("SUBJECT ARTIKEL_BESTIMMTER %s KASUS_GENITIV %s %s not affected. Rost 2", ostr, mon_nam(victim), /* EN pline("%s's %s %s not affected.", Monnam(victim), ostr, */ // TODO DE
+			pline("SUBJECT %s %s unbeschädigt.", genitivattribut_zu_wort(mon_nam(victim), ostr), /* EN pline("%s's %s %s not affected.", Monnam(victim), ostr, */
 			  vtense(ostr, "VERB_SEIN")); /* EN vtense(ostr, "are")); */
 	    }
 	} else if (erosion < MAX_ERODE) {
@@ -169,11 +169,11 @@ struct monst *victim;
 	    } else if (otmp->oerodeproof || (otmp->blessed && !rnl(4))) {
 		if (flags.verbose) {
 		    if (victim == &youmonst)
-			pline("Somehow, your %s %s not affected. Rost 3", /* EN pline("Somehow, your %s %s not affected.", */ // TODO DE
-			      ostr, vtense(ostr, "VERB_SEIN")); /* EN ostr, vtense(ostr, "are")); */
+			pline("Irgendwie VERB_SEIN SUBJECT_IM_SATZ PRONOMEN_POSSESSIV %s unbeschädigt geblieben.", /* EN pline("Somehow, your %s %s not affected.", */
+			      ostr); /* EN ostr, vtense(ostr, "are")); */
 		    else if (vismon)
-			pline("Somehow, %s's %s %s not affected. Rost 4", /* EN pline("Somehow, %s's %s %s not affected.", */ // TODO DE
-			      mon_nam(victim), ostr, vtense(ostr, "VERB_SEIN")); /* EN mon_nam(victim), ostr, vtense(ostr, "are")); */
+			pline("Irgendwie VERB_SEIN SUBJECT_IM_SATZ %s unbeschädigt geblieben.", /* EN pline("Somehow, %s's %s %s not affected.", */
+			      genitivattribut_zu_wort(mon_nam(victim), ostr)); /* EN mon_nam(victim), ostr, vtense(ostr, "are")); */
 		}
 	    } else {
 		if (victim == &youmonst)
@@ -3749,7 +3749,7 @@ boolean disarm;
 			Dich("durchfährt ein Stromschlag!"); /* EN You("are jolted by a surge of electricity!"); */
 			if(Shock_resistance)  {
 			    shieldeff(u.ux, u.uy);
-			    You("don't seem to be affected."); /* EN You("don't seem to be affected."); */ // TODO DE
+			    pline("Aber er scheint KASUS_DATIV PRONOMEN_PERSONAL nichts anzuhaben."); /* EN You("don't seem to be affected."); */
 			    dmg = 0;
 			} else
 			    dmg = d(4, 4);

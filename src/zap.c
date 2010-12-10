@@ -90,7 +90,7 @@ const char * const flash_types[] = {	/* also used in buzzmu(mcastu.c) */
 	"",
 
 	// TODO DE
-	// Detonation, Druckwelle, Entladung, Explosion, Luftdruck, schlagende Wetter, Sprengung, Verpuffung
+	// Detonation, Druckwelle, Entladung, Explosion, Luftdruck, schlagende Wetter, Sprengung, Verpuffung, Wolke
 	// x-attacke, x-angriff
 	"blast of missiles",	/* Dragon breath equivalents 20-29*/ /* EN "blast of missiles",	*/
 	"blast of fire", /* EN "blast of fire", */ // Feuerdetonation?
@@ -3145,11 +3145,11 @@ xchar sx, sy;
 #endif
 	    } else if (nonliving(youmonst.data) || is_demon(youmonst.data)) {
 		shieldeff(sx, sy);
-		You("seem unaffected."); /* EN You("seem unaffected."); */ // TODO DE
+		pline("Aber er scheint dir nichts anhaben zu können."); /* EN You("seem unaffected."); */
 		break;
 	    } else if (Antimagic) {
 		shieldeff(sx, sy);
-		You("aren't affected."); /* EN You("aren't affected."); */ // TODO DE
+		pline("Aber er kann dir nichts anhaben."); /* EN You("aren't affected."); */
 		break;
 	    }
 	    killer_format = KILLED_BY_AN;
@@ -3161,7 +3161,7 @@ xchar sx, sy;
 	case ZT_LIGHTNING:
 	    if (Shock_resistance) {
 		shieldeff(sx, sy);
-		You("aren't affected."); /* EN You("aren't affected."); */ // TODO DE
+		pline("Aber er kann dir nichts anhaben."); /* EN You("aren't affected."); */
 		ugolemeffects(AD_ELEC, d(nd, 6));
 	    } else {
 		dam = d(nd, 6);

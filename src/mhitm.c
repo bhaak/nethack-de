@@ -1241,7 +1241,7 @@ register struct obj *obj;
 	    (is_acid ? obj->oeroded2 : obj->oeroded) < MAX_ERODE) {
 		if (obj->greased || obj->oerodeproof || (obj->blessed && rn2(3))) {
 		    if (cansee(mdef->mx, mdef->my) && flags.verbose)
-			pline("SUBJECT %s is not affected.", /* EN pline("%s weapon is not affected.", */ // TODO DE
+			pline("SUBJECT %s VERB_SEIN unbeschädigt geblieben.", /* EN pline("%s weapon is not affected.", */
 			                 genitivattribut_zu_wort(Monnam(magr),"NOUN_WEAPON")); /* EN s_suffix(Monnam(magr))); */
 		    if (obj->greased && !rn2(2)) obj->greased = 0;
 		} else {
@@ -1308,7 +1308,7 @@ int mdead;
 			      buf, genitivattribut_zu_wort(mon_nam(mdef), "NOUN_ACID")); /* EN buf, s_suffix(mon_nam(mdef))); */
 		    if (resists_acid(magr)) {
 			if(canseemon(magr))
-			    pline("%s is not affected.", Monnam(magr)); /* EN pline("%s is not affected.", Monnam(magr)); */ // TODO DE
+			    pline("SUBJECT %s VERB_SEIN unversehrt.", Monnam(magr)); /* EN pline("%s is not affected.", Monnam(magr)); */
 			tmp = 0;
 		    }
 		} else tmp = 0;

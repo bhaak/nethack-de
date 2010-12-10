@@ -1327,7 +1327,7 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		if(!Poison_resistance) {
 			losestr(rnd(4));
 			losehp(rnd(15), "ADJEKTIV_GIFTIG NOUN_CORPSE", KILLED_BY_AN); /* EN losehp(rnd(15), "poisonous corpse", KILLED_BY_AN); */
-		} else	You("seem unaffected by the poison."); /* EN } else	You("seem unaffected by the poison."); */ // TODO DE
+		} else	pline("Das Gift scheint bei KASUS_DATIV PRONOMEN_PERSONAL nicht wirksam zu sein."); /* EN } else	You("seem unaffected by the poison."); */
 	/* now any corpse left too long will make you mildly ill */
 	} else if ((rotted > 5L || (rotted > 3L && rn2(5)))
 					&& !Sick_resistance) {
@@ -2008,7 +2008,7 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 		    losestr(rnd(4));
 		    losehp(rnd(15), xname(otmp), KILLED_BY_AN);
 		} else
-		    You("seem unaffected by the poison."); /* EN You("seem unaffected by the poison."); */ // TODO DE
+		    pline("Das Gift scheint bei KASUS_DATIV PRONOMEN_PERSONAL nicht wirksam zu sein."); /* EN You("seem unaffected by the poison."); */
 	    } else if (!otmp->cursed)
 		pline("SUBJECT PRONOMEN_DIESER %s VERB_SCHMECKEN köstlich!", /* EN pline("This %s is delicious!", */
 		      otmp->oclass == COIN_CLASS ? foodword(otmp) :

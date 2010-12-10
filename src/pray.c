@@ -479,18 +479,18 @@ aligntyp resp_god;
 		 */
 		xkilled(u.ustuck, 0);
 	    } else
-		pline("%s seems unaffected.", Monnam(u.ustuck)); /* EN pline("%s seems unaffected.", Monnam(u.ustuck)); */ // TODO DE
+		pline("SUBJECT %s VERB_SCHEINEN unverletzt zu sein.", Monnam(u.ustuck)); /* EN pline("%s seems unaffected.", Monnam(u.ustuck)); */
 	} else {
 	    pline("Plötzlich trifft KASUS_AKKUSATIV PRONOMEN_PERSONAL ein Blitzschlag!"); /* EN pline("Suddenly, a bolt of lightning strikes you!"); */
 	    if (Reflecting) {
 		shieldeff(u.ux, u.uy);
 		if (Blind)
-		    pline("For some reason you're unaffected."); /* EN pline("For some reason you're unaffected."); */ // TODO DE
+		    pline("Aus irgendeinem Grund trifft er KASUS_AKKUSATIV PRONOMEN_PERSONAL nicht."); /* EN pline("For some reason you're unaffected."); */
 		else
 		    (void) ureflects("SUBJECT %s VERB_REFLEKTIEREN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV %s.", "NOUN_IT"); /* EN (void) ureflects("%s reflects from your %s.", "It"); */
 	    } else if (Shock_resistance) {
 		shieldeff(u.ux, u.uy);
-		pline("It seems not to affect you."); /* EN pline("It seems not to affect you."); */ // TODO DE
+		pline("Er scheint KASUS_DATIV PRONOMEN_PERSONAL nichts anzuhaben."); /* EN pline("It seems not to affect you."); */
 	    } else
 		fry_by_god(resp_god);
 	}
@@ -503,7 +503,7 @@ aligntyp resp_god;
 		pline("SUBJECT %s VERB_VERKOHLEN zu einem Brikett!", Monnam(u.ustuck)); /* EN pline("%s fries to a crisp!", Monnam(u.ustuck)); */
 		xkilled(u.ustuck, 2); /* no corpse */
 	    } else
-		pline("%s seems unaffected.", Monnam(u.ustuck)); /* EN pline("%s seems unaffected.", Monnam(u.ustuck)); */ // TODO DE
+		pline("SUBJECT %s VERB_SCHEINEN unverletzt zu sein.", Monnam(u.ustuck)); /* EN pline("%s seems unaffected.", Monnam(u.ustuck)); */
 	} else {
 	    pline("Ein breitgefächerter Desintegratorstrahl trifft KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("A wide-angle disintegration beam hits you!"); */
 

@@ -1681,7 +1681,7 @@ register struct attack *mattk;
 		break;
 	    case AD_HALU:
 		if (haseyes(mdef->data) && mdef->mcansee) {
-		    pline("%s is affected by your flash of light!", /* EN pline("%s is affected by your flash of light!", */ // TODO DE
+		    pline("SUBJECT %s VERB_SEIN OBJECT durch PRONOMEN_POSSESSIV NOUN_LICHTBLITZ beeinträchtigt!", /* EN pline("%s is affected by your flash of light!", */
 			  Monnam(mdef));
 		    mdef->mconf = 1;
 		}
