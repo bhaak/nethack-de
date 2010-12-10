@@ -602,8 +602,8 @@ boolean polyspot;
 	struct permonst *mdat = mon->data;
 	boolean vis = cansee(mon->mx, mon->my);
 	boolean handless_or_tiny = (nohands(mdat) || verysmall(mdat));
-	const char *pronoun = mhim(mon),
-			*ppronoun = mhis(mon);
+	const char *pronoun = pronominalisierung(Monnam(mon)), /* EN const char *pronoun = mhim(mon), */
+			*ppronoun = mhis(mon); /* EN *ppronoun = mhis(mon); */ // TODO DE possessivpronominalisierung
 
 	if (breakarm(mdat)) {
 	    if ((otmp = which_armor(mon, W_ARM)) != 0) {
@@ -647,7 +647,7 @@ boolean polyspot;
 	} else if (sliparm(mdat)) {
 	    if ((otmp = which_armor(mon, W_ARM)) != 0) {
 		if (vis)
-		    pline("%s VERB_FALLEN OBJECT KASUS_DATIV von %s ab!", /* EN pline("%s armor falls around %s!", */
+		    pline("SUBJECT %s VERB_FALLEN OBJECT KASUS_DATIV von %s ab!", /* EN pline("%s armor falls around %s!", */
 				 genitivattribut_zu_wort(Monnam(mon),"NOUN_ARMOR"), pronoun); /* EN s_suffix(Monnam(mon)), pronoun); */
 		else
 		    You_hear("ein Plumpsen."); /* EN You_hear("a thud."); */

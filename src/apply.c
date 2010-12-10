@@ -271,7 +271,7 @@ use_stethoscope(obj)
 	}
 	rx = u.ux + u.dx; ry = u.uy + u.dy;
 	if (!isok(rx,ry)) {
-		You_hear("ein schwaches Tippgeräusch."); /* EN You_hear("a faint typing noise."); */
+		You_hear("ein leises Tippgeräusch."); /* EN You_hear("a faint typing noise."); */
 		return 0;
 	}
 	if ((mtmp = m_at(rx,ry)) != 0) {
