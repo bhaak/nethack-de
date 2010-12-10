@@ -3145,11 +3145,11 @@ xchar sx, sy;
 #endif
 	    } else if (nonliving(youmonst.data) || is_demon(youmonst.data)) {
 		shieldeff(sx, sy);
-		pline("Aber er scheint dir nichts anhaben zu können."); /* EN You("seem unaffected."); */
+		pline("Aber er scheint KASUS_DATIV PRONOMEN_PERSONAL nichts anhaben zu können."); /* EN You("seem unaffected."); */
 		break;
 	    } else if (Antimagic) {
 		shieldeff(sx, sy);
-		pline("Aber er kann dir nichts anhaben."); /* EN You("aren't affected."); */
+		pline("Aber er kann KASUS_DATIV PRONOMEN_PERSONAL nichts anhaben."); /* EN You("aren't affected."); */
 		break;
 	    }
 	    killer_format = KILLED_BY_AN;
@@ -3161,7 +3161,7 @@ xchar sx, sy;
 	case ZT_LIGHTNING:
 	    if (Shock_resistance) {
 		shieldeff(sx, sy);
-		pline("Aber er kann dir nichts anhaben."); /* EN You("aren't affected."); */
+		pline("Aber er kann KASUS_DATIV PRONOMEN_PERSONAL nichts anhaben."); /* EN You("aren't affected."); */
 		ugolemeffects(AD_ELEC, d(nd, 6));
 	    } else {
 		dam = d(nd, 6);
