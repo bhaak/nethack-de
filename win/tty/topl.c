@@ -183,7 +183,11 @@ more()
 
 	if(ttyDisplay->toplin) {
 		tty_curs(BASE_WINDOW, cw->curx+1, cw->cury);
+#ifdef GERMAN
+		if(cw->curx >= CO - defmorestrlen) topl_putsym('\n');
+#else
 		if(cw->curx >= CO - 8) topl_putsym('\n');
+#endif
 	}
 
 	if(flags.standout)
@@ -224,7 +228,11 @@ update_topl(bp)
 	n0 = strlen(bp);
 	if ((ttyDisplay->toplin == 1 || (cw->flags & WIN_STOP)) &&
 	    cw->cury == 0 &&
+#ifdef GERMAN
+	    n0 + (int)strlen(toplines) + 3 < CO-defmorestrlen &&  /* room for --More-- */
+#else
 	    n0 + (int)strlen(toplines) + 3 < CO-8 &&  /* room for --More-- */
+#endif
 	    (notdied = strncmp(bp, "You die", 7))) {
 		Strcat(toplines, "  ");
 		Strcat(toplines, bp);
