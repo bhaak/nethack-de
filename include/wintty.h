@@ -86,7 +86,7 @@ extern struct WinDesc *wins[MAXWIN];
 extern struct DisplayDesc *ttyDisplay;	/* the tty display descriptor */
 
 extern char morc;		/* last character typed to xwaitforspace */
-extern char defmorestr[];	/* default --more-- prompt */
+extern const char defmorestr[];	/* default --more-- prompt */ /* EN extern char defmorestr[]; */
 #ifdef GERMAN
 extern int defmorestrlen;	/* length of default --more-- prompt */
 #endif

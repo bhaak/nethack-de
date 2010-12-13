@@ -127,10 +127,7 @@ static char obuf[BUFSIZ];	/* BUFSIZ is defined in stdio.h */
 #endif
 
 static char winpanicstr[] = "Bad window id %d";
-char defmorestr[] = "--Weiter--"; /* EN char defmorestr[] = "--More--"; */
-#ifdef GERMAN
-int defmorestrlen = 10;
-#endif
+const char defmorestr[] = "--Weiter--"; /* EN char defmorestr[] = "--More--"; */
 
 #ifdef MENU_COLOR
 extern struct menucoloring *menu_colorings;
