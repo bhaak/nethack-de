@@ -3370,8 +3370,8 @@ def ausgabe_nouns
 
     "/* Paladin */",
     # "NOUN_KNIGHT"
-    dekliniere_adjektivisches_substantiv("NOUN_GALLANT","Edelmütig","maskulin"),
-    dekliniere_adjektivisches_substantiv("NOUN_GALLANT_IN","Edelmütig","feminin"),
+    dekliniere_substantiv("NOUN_GALLANT","Schildträger","s","Schildträger","","maskulin"),
+    dekliniere_substantiv("NOUN_GALLANT_IN","Schildträgerin","","Schildträgerinn","en","feminin"),
     dekliniere_substantiv("NOUN_JUNKER","Junker","s","Junker","","maskulin"),
     dekliniere_substantiv("NOUN_JUNKFRAU","Junkfrau","","Junkfrau","en","feminin"),
     dekliniere_substantiv("NOUN_KAVALIER","Kavalier","s","Kavalier","e","maskulin"),
@@ -3387,6 +3387,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_FREIHERR","Freiherr","en","Freiherr","en","maskulin"),
     dekliniere_substantiv("NOUN_FREIFRAU","Freifrau","","Freifrau","en","feminin"),
     dekliniere_substantiv("NOUN_PALADIN","Paladin","s","Paladin","e","maskulin"),
+    dekliniere_substantiv("NOUN_PALADIN_IN","Paladin","","Paladin","e","feminin"),
 
     "/* Mönch */",
     # "NOUN_MOENCH"

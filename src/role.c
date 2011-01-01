@@ -142,7 +142,7 @@ const struct Role roles[] = {
 	{"NOUN_BANNERHERR",   "NOUN_BANNERFRAU"}, /* EN {"Banneret",    0}, */
 	{"NOUN_ORDENSRITTER", "NOUN_ORDENSRITTERIN"}, /* EN {"Chevalier",   "Chevaliere"}, */
 	{"NOUN_FREIHERR",     "NOUN_FREIFRAU"}, /* EN {"Seignieur",   "Dame"}, */
-	{"NOUN_PALADIN",      0} }, /* EN {"Paladin",     0} }, */
+	{"NOUN_PALADIN",      "NOUN_PALADIN_IN"} }, /* EN {"Paladin",     0} }, */
 	"Lugh", "_Brigit", "Manannan Mac Lir", /* Celtic */
 	"Kni", "NOUN_CAMELOT", "ARTIKEL_BESTIMMTER NOUN_INSEL aus Glas", /* EN "Kni", "Camelot Castle", "the Isle of Glass", */
 	PM_KNIGHT, NON_PM, PM_PONY,

@@ -9101,35 +9101,13 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   /* Paladin */
 
-  {"Edelmütig", "NOUN_GALLANT", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural|n_singular, grundform},
-  {"Edelmütige", "NOUN_GALLANT", "", nominativ, maskulin, n_singular, bestimmter},
-  {"Edelmütigen", "NOUN_GALLANT", "", dativ|akkusativ|genitiv, maskulin, n_singular, bestimmter},
-  {"Edelmütigen", "NOUN_GALLANTs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, bestimmter},
-  {"Edelmütiger", "NOUN_GALLANT", "", nominativ, maskulin, n_singular, unbestimmter},
-  {"Edelmütigen", "NOUN_GALLANT", "", dativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter},
-  {"Edelmütigen", "NOUN_GALLANTs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter},
-  {"Edelmütiger", "NOUN_GALLANT", "", nominativ, maskulin, n_singular, ohne},
-  {"Edelmütigen", "NOUN_GALLANT", "", akkusativ, maskulin, n_singular, ohne},
-  {"Edelmütigem", "NOUN_GALLANT", "", dativ, maskulin, n_singular, ohne},
-  {"Edelmütigen", "NOUN_GALLANT", "", genitiv, maskulin, n_singular, ohne},
-  {"Edelmütige", "NOUN_GALLANTs", "", nominativ|akkusativ, maskulin, n_plural, ohne},
-  {"Edelmütigen", "NOUN_GALLANTs", "", dativ, maskulin, n_plural, ohne},
-  {"Edelmütiger", "NOUN_GALLANTs", "", genitiv, maskulin, n_plural, ohne},
-  
+  {"Schildträgers", "NOUN_GALLANT", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schildträger", "NOUN_GALLANT", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schildträger", "NOUN_GALLANTs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schildträgern", "NOUN_GALLANTs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Edelmütig", "NOUN_GALLANT_IN", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural|n_singular, grundform},
-  {"Edelmütige", "NOUN_GALLANT_IN", "", nominativ|akkusativ, feminin, n_singular, bestimmter},
-  {"Edelmütigen", "NOUN_GALLANT_IN", "", dativ|genitiv, feminin, n_singular, bestimmter},
-  {"Edelmütigen", "NOUN_GALLANT_INs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, bestimmter},
-  {"Edelmütige", "NOUN_GALLANT_IN", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
-  {"Edelmütigen", "NOUN_GALLANT_IN", "", dativ|genitiv, feminin, n_singular, unbestimmter},
-  {"Edelmütigen", "NOUN_GALLANT_INs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter},
-  {"Edelmütige", "NOUN_GALLANT_IN", "", nominativ|akkusativ, feminin, n_singular, ohne},
-  {"Edelmütiger", "NOUN_GALLANT_IN", "", dativ|genitiv, feminin, n_singular, ohne},
-  {"Edelmütige", "NOUN_GALLANT_INs", "", nominativ|akkusativ, feminin, n_plural, ohne},
-  {"Edelmütigen", "NOUN_GALLANT_INs", "", dativ, feminin, n_plural, ohne},
-  {"Edelmütiger", "NOUN_GALLANT_INs", "", genitiv, feminin, n_plural, ohne},
-  
+  {"Schildträgerin", "NOUN_GALLANT_IN", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schildträgerinnen", "NOUN_GALLANT_INs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Junkers", "NOUN_JUNKER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Junker", "NOUN_JUNKER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -9189,6 +9167,10 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Paladin", "NOUN_PALADIN", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Paladine", "NOUN_PALADINs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Paladinen", "NOUN_PALADINs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Paladin", "NOUN_PALADIN_IN", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Paladine", "NOUN_PALADIN_INs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Paladinen", "NOUN_PALADIN_INs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   /* Mönch */
 
