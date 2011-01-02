@@ -161,7 +161,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	if (tmp < rnd(20)) {
 	    if (!ismimic) {
 		if (vis) miss(distant_name(otmp, mshot_xname), mtmp);
-		else if (verbose) pline("Etwas wird verfehlt."); /* EN else if (verbose) pline("It is missed."); */ // TODO DE
+		else if (verbose) pline("Etwas wird verfehlt."); /* EN else if (verbose) pline("It is missed."); */
 	    }
 	    if (!range) { /* Last position; object drops */
 		(void) drop_throw(otmp, 0, mtmp->mx, mtmp->my);

@@ -442,7 +442,7 @@ boolean message;
 		if (message) pline(nomovemsg);
 		nomovemsg = 0;
 	} else if (message)
-		You("VERB_BEENDEN das Essen OBJECT KASUS_GENITIV %s.", food_xname(victual.piece, TRUE)); /* EN You("finish eating %s.", food_xname(victual.piece, TRUE)); */ // TODO DE
+		You("VERB_BEENDEN das Verspeisen OBJECT KASUS_GENITIV %s.", food_xname(victual.piece, TRUE)); /* EN You("finish eating %s.", food_xname(victual.piece, TRUE)); */
 
 	if(victual.piece->otyp == CORPSE)
 		cpostfx(victual.piece->corpsenm);

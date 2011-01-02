@@ -1130,8 +1130,8 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Lederpanzer", "NOUN_LEATHER_ARMORs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Lederpanzern", "NOUN_LEATHER_ARMORs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Lederjacke", "NOUN_LEATHER_JACKET", "en", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
-  {"Lederjacken", "NOUN_LEATHER_JACKETs", "en", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Lederjacke", "NOUN_LEATHER_JACKET", "en", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Lederjacken", "NOUN_LEATHER_JACKETs", "en", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"Hawaiihemdes", "NOUN_HAWAIIAN_SHIRT", "en", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Hawaiihemd", "NOUN_HAWAIIAN_SHIRT", "en", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},

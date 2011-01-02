@@ -4147,7 +4147,7 @@ retry:
 	if (otmp != &zeroobj) {
 	    /* The(aobjnam()) is safe since otmp is unidentified -dlc */
 	    (void) hold_another_object(otmp, u.uswallow ?
-				       "NOUN_OOPS!  %s auﬂer Reichweite!" : /* EN "Oops!  %s out of your reach!" : */
+				       "NOUN_OOPS!  SUBJECT %s auﬂer Reichweite!" : /* EN "Oops!  %s out of your reach!" : */
 				       (Is_airlevel(&u.uz) ||
 					Is_waterlevel(&u.uz) ||
 					levl[u.ux][u.uy].typ < IRONBARS ||

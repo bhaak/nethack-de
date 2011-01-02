@@ -231,7 +231,7 @@ dosounds()
 		!index(u.ushops, ROOM_INDEX(sroom) + ROOMOFFSET)) {
 	    static const char * const shop_msg[3] = {
 		    "jemanden Ladendiebe verfluchen.", /* EN "someone cursing shoplifters.", */
-		    "den Klang einer Registrierkasse.", /* EN "the chime of a cash register.", */
+		    "das Klingeln einer Registrierkasse.", /* EN "the chime of a cash register.", */
 		    "den Sommerschlussverkauf!", /* EN "Neiman and Marcus arguing!", */
 	    };
 	    You_hear(shop_msg[rn2(2)+hallu]);

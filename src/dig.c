@@ -344,9 +344,7 @@ dig()
 			    lev->typ = ROOM;
 			    if (!rn2(5)) (void) rnd_treefruit_at(dpx, dpy);
 			} else {
-                if (!digging.quiet)
-                    Dir("VERB_GELINGEN es, etwas vom Felsgestein abzuschlagen."); /* EN digtxt = "You succeed in cutting away some rock."; */ // TODO DE
-				digtxt = (char *)0;
+			    digtxt = "SATZBEGINN KASUS_DATIV PRONOMEN_PERSONAL gelingt es, etwas vom Felsgestein abzuschlagen."; /* EN digtxt = "You succeed in cutting away some rock."; */
 			    lev->typ = CORR;
 			}
 		} else if(IS_WALL(lev->typ)) {

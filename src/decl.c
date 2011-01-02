@@ -248,7 +248,7 @@ struct menucoloring *menu_colorings = 0;
 struct c_common_strings c_common_strings = {
 	"Nichts passiert.",		"Das waren genug Versuche!", /* EN "Nothing happens.",		"That's enough tries!", */
 	"Das zu MODIFIER_VERB_INFINITIV %s wäre albern.",	"VERB_ERSCHAUDERN für einen Moment.", /* EN "That is a silly thing to %s.",	"shudder for a moment.", */
-	"etwas", "NOUN_ETWAS", "SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN OBJECT PRONOMEN_PERSONAL wieder bewegen.", "Dann eben nicht.", /* EN "etwas", "NOUN_ETWAS", "You can move again.", "Never mind.", */ // TODO DE
+	"etwas", "NOUN_ETWAS", "SUBJECT PRONOMEN_PERSONAL VERB_KOENNEN OBJECT PRONOMEN_PERSONAL wieder bewegen.", "Dann eben nicht.", /* EN "etwas", "NOUN_ETWAS", "You can move again.", "Never mind.", */
 	"vision quickly clears.", {"ARTIKEL_BESTIMMTER", "PRONOMEN_POSSESSIV"} /* EN "vision quickly clears.", {"the", "your"} */ // TODO DE
 };
 
