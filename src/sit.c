@@ -79,7 +79,7 @@ dosit()
 	        } else if(u.utraptype == TT_PIT) {
 		    if(trap->ttyp == SPIKED_PIT) {
 			You("VERB_SETZEN OBJECT PRONOMEN_PERSONAL auf einen Stachel.  Aua!"); /* EN You("sit down on a spike.  Ouch!"); */
-			losehp(1, "sitting on an iron spike", KILLED_BY); /* EN losehp(1, "sitting on an iron spike", KILLED_BY); */ // TODO DE
+			losehp(1, "durch Sitzen auf einen Eisenstachel", KILLED_WITHOUT_PREPOSITION); /* EN losehp(1, "sitting on an iron spike", KILLED_BY); */
 			exercise(A_STR, FALSE);
 		    } else
 			You("VERB_SETZEN OBJECT PRONOMEN_PERSONAL in die Grube."); /* EN You("sit down in the pit."); */
@@ -91,7 +91,7 @@ dosit()
 		    /* Must have fire resistance or they'd be dead already */
 		    You("VERB_SITZEN in der Lava!"); /* EN You("sit in the lava!"); */
 		    u.utrap += rnd(4);
-		    losehp(d(2,10), "Sitzen in Lava", KILLED_BY); /* EN losehp(d(2,10), "sitting in lava", KILLED_BY); */
+		    losehp(d(2,10), "durch Sitzen in Lava", KILLED_WITHOUT_PREPOSITION); /* EN losehp(d(2,10), "sitting in lava", KILLED_BY); */
 		} else if(u.utraptype == TT_INFLOOR) {
 		    You("VERB_CAN OBJECT PRONOMEN_PERSONAL nicht richtig hinsetzen!"); /* EN You_cant("maneuver to sit!"); */
 		    u.utrap++;
@@ -146,7 +146,7 @@ dosit()
 	    }
 	    pline_The("NOUN_LAVA VERB_VERBRENNEN OBJECT PRONOMEN_PERSONAL!"); /* EN pline_The("lava burns you!"); */
 	    losehp(d((Fire_resistance ? 2 : 10), 10),
-		   "sitting on lava", KILLED_BY); /* EN "sitting on lava", KILLED_BY); */ // TODO DE
+		   "durch Sitzen auf Lava", KILLED_WITHOUT_PREPOSITION); /* EN "sitting on lava", KILLED_BY); */
 
 	} else if (is_ice(u.ux, u.uy)) {
 

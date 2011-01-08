@@ -97,6 +97,14 @@ NEARDATA const char * const killed_by_prefix[] = {
 	"verbrannte durch KASUS_AKKUSATIV ", "aufgelöst in KASUS_DATIV ", "erschlagen von KASUS_DATIV ", "versteinerte ", /* EN "burned by ", "dissolved in ", "crushed to death by ", "petrified by ", */
 	"verschleimte durch KASUS_AKKUSATIV ", "getötet von KASUS_DATIV ", "", "", "", "", "" /* EN "turned to slime by ", "killed by ", "", "", "", "", "" */
 };
+#ifdef GERMAN
+NEARDATA const char * const killed_prefix[] = {
+	"getötet ", "erstickte ", "vergiftet ", "starb ", "ertrank ",
+
+	"verbrannte ", "aufgelöst ", "erschlagen ", "versteinerte ",
+	"verschleimte ", "getötet ", "", "", "", "", ""
+};
+#endif
 
 static winid toptenwin = WIN_ERR;
 
@@ -456,6 +464,12 @@ int how;
 		case NO_KILLER_PREFIX:
 			Strcpy(tmpbuf, killer); /* EN (void) strncat(t0->death, killer, DTHSZ); */
 			break;
+#ifdef GERMAN
+		case KILLED_WITHOUT_PREPOSITION:
+			Strcpy(tmpbuf, killed_prefix[how]);
+			Strcat(tmpbuf, killer);
+			break;
+#endif
 	}
 #ifdef GERMAN
 	strncat(t0->death, german(tmpbuf), DTHSZ);

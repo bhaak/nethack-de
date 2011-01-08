@@ -99,6 +99,9 @@ static NEARDATA const char *ends_hilfsverb[] = {		/* "als du <verb> ..." */
 #endif
 
 extern const char * const killed_by_prefix[];	/* from topten.c */
+#ifdef GERMAN
+extern const char * const killed_prefix[];	/* from topten.c */
+#endif
 
 /*ARGSUSED*/
 void
@@ -572,7 +575,7 @@ int how;
 	struct obj *corpse = (struct obj *)0;
 	long umoney;
 #ifdef GERMAN
-	char *ends_how = ends[how];
+	const char *ends_how = ends[how];
 #endif
 
 	if (how == TRICKED) {
@@ -701,7 +704,7 @@ die:
 				       u.ux, u.uy, plname);
 		Sprintf(pbuf, "%s, %s%s", plname, /* EN Sprintf(pbuf, "%s, %s%s", plname, */ // TODO DE
 			killer_format == NO_KILLER_PREFIX ? "" :
-			killed_by_prefix[how],
+			killer_format == KILLED_WITHOUT_PREPOSITION ? killed_prefix[how] : killed_by_prefix[how], /* EN killed_by_prefix[how], */
 			killer_format == KILLED_BY_AN ? an(killer) : killer);
 		make_grave(u.ux, u.uy, pbuf);
 	    }

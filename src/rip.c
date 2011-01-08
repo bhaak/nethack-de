@@ -10,6 +10,9 @@
 STATIC_DCL void FDECL(center, (int, char *));
 
 extern const char * const killed_by_prefix[];	/* from topten.c */
+#ifdef GERMAN
+extern const char * const killed_prefix[];	/* from topten.c */
+#endif
 
 #if defined(TTY_GRAPHICS) || defined(X11_GRAPHICS) || defined(GEM_GRAPHICS) || defined(MSWIN_GRAPHICS)
 # define TEXT_TOMBSTONE
@@ -133,6 +136,12 @@ int how;
 		case NO_KILLER_PREFIX:
 			Strcpy(buf, killer);
 			break;
+#ifdef GERMAN
+		case KILLED_WITHOUT_PREPOSITION:
+			Strcpy(buf, killed_prefix[how]);
+			Strcat(buf, killer);
+			break;
+#endif
 	}
 
 	/* Put death type on stone */

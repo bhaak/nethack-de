@@ -185,6 +185,9 @@ E NEARDATA char *save_cm;
 #define KILLED_BY_AN	 0
 #define KILLED_BY	 1
 #define NO_KILLER_PREFIX 2
+#ifdef GERMAN
+#define KILLED_WITHOUT_PREPOSITION 3
+#endif
 E NEARDATA int killer_format;
 E const char *killer;
 E const char *delayed_killer;
