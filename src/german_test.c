@@ -1234,6 +1234,26 @@ START_TEST (test_modifier_verb_partizip_perfekt) {
 } END_TEST
 //#endif
 
+#define BUFSIZE 300
+void check_german_the(const char* token, const char* erwartete_ausgabe) {
+	char buf[BUFSIZE];
+	char *result;
+	int insert_the = german_the(token);
+	if (insert_the) {
+		snprintf(buf, BUFSIZE, "ARTIKEL_BESTIMMTER %s", token);
+	} else {
+		strcpy(buf, token);
+	}
+	result = german(buf);
+
+	fail_unless((strcmp(result, erwartete_ausgabe)==0),
+		"\nFalsches Result von german_the(\"%s\"): \"%s\" erwartet, \"%s\" erhalten",
+		token, erwartete_ausgabe, german(buf));
+}
+START_TEST (test_german_the) {
+	check_german_the("NOUN_EXCALIBUR", "Excalibur");
+} END_TEST
+
 Suite *test_suite(void)
 {
 	Suite *s = suite_create("all tests");
@@ -1298,6 +1318,7 @@ Suite *test_suite(void)
 
 	tcase_add_test(tc_core, test_infinitive);
 	tcase_add_test(tc_core, test_modifier_verb_partizip_perfekt);
+	tcase_add_test(tc_core, test_german_the);
 
 	return s;
 }

@@ -1535,6 +1535,14 @@ const char *token;
 	return einer_der_tmp;
 }
 
+/* Liefert TRUE zurueck, wenn das Token mit dem bestimmten Artikel benutzt werden sollte. */
+int
+german_the(token)
+const char *token;
+{
+	return FALSE;
+}
+
 #ifndef NO_HACK_H_INCLUDE
 /* Liefert TRUE zurueck, wenn der Gott namens name weiblich ist. */
 int

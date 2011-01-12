@@ -1013,7 +1013,7 @@ const char *str;
 	if (!strncmpi(str, "ARTIKEL_BESTIMMTER ", 19)) {
 		insert_the = FALSE;
 	} else {
-		insert_the = TRUE; // TO DO german_the
+		insert_the = german_the(str);
 	}
 #else
 	if (!strncmpi(str, "ARTIKEL_BESTIMMTER ", 19)) {
