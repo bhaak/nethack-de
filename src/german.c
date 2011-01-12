@@ -1540,7 +1540,33 @@ int
 german_the(token)
 const char *token;
 {
-	return FALSE;
+	if (strncmp("NOUN_THE_", token, 9)==0) {
+		/* Artefakte mit Artikel */
+		return TRUE;
+	} else if ((strcmp("NOUN_EXCALIBUR", token)==0) ||
+			(strcmp("NOUN_STORMBRINGER", token)==0) ||
+			(strcmp("NOUN_MJOLLNIR", token)==0) ||
+			(strcmp("NOUN_CLEAVER", token)==0) ||
+			(strcmp("NOUN_GRIMTOOTH", token)==0) ||
+			(strcmp("NOUN_ORCRIST", token)==0) ||
+			(strcmp("NOUN_STING", token)==0) ||
+			(strcmp("NOUN_MAGICBANE", token)==0) ||
+			(strcmp("NOUN_FROST_BRAND", token)==0) ||
+			(strcmp("NOUN_FIRE_BRAND", token)==0) ||
+			(strcmp("NOUN_DRAGONBANE", token)==0) ||
+			(strcmp("NOUN_DEMONBANE", token)==0) ||
+			(strcmp("NOUN_WEREBANE", token)==0) ||
+			(strcmp("NOUN_GRAYSWANDIR", token)==0) ||
+			(strcmp("NOUN_GIANTSLAYER", token)==0) ||
+			(strcmp("NOUN_OGRESMASHER", token)==0) ||
+			(strcmp("NOUN_TROLLSBANE", token)==0) ||
+			(strcmp("NOUN_VORPAL_BLADE", token)==0) ||
+			(strcmp("NOUN_SNICKERSNEE", token)==0) ||
+			(strcmp("NOUN_SNICKERSNEE", token)==0) ||
+			(strcmp("NOUN_SUNSWORD", token)==0)) {
+		return FALSE;
+	}
+	return TRUE;
 }
 
 #ifndef NO_HACK_H_INCLUDE

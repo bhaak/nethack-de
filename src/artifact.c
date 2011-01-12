@@ -553,7 +553,7 @@ touch_artifact(obj,mon)
 	if (!yours) return 0;
 	You("VERB_BEKOMMEN OBJECT %s zu spüren!", genitivattribut_zu_wort(the(xname(obj)), "ADJEKTIV_GEWALTIG NOUN_MACHT")); /* EN You("are blasted by %s power!", s_suffix(the(xname(obj)))); */
 	dmg = d((Antimagic ? 2 : 4), (self_willed ? 10 : 4));
-	Sprintf(buf, "getötet durch die Berührung KASUS_GENITIV ARTIKEL_BESTIMMTER %s", oart->name); /* EN Sprintf(buf, "touching %s", oart->name); */
+	Sprintf(buf, "getötet durch die Berührung KASUS_GENITIV %s", the(oart->name)); /* EN Sprintf(buf, "touching %s", oart->name); */
 	losehp(dmg, buf, NO_KILLER_PREFIX); /* EN losehp(dmg, buf, KILLED_BY); */
 	exercise(A_WIS, FALSE);
     }
