@@ -1543,6 +1543,11 @@ const char *token;
 	if (strncmp("NOUN_THE_", token, 9)==0) {
 		/* Artefakte mit Artikel */
 		return TRUE;
+	} else if ((strcmp("NOUN_FROST_BRAND", token)==0) ||
+			(strcmp("NOUN_FIRE_BRAND", token)==0) ||
+			(strcmp("NOUN_VORPAL_BLADE", token)==0) ||
+			(strcmp("NOUN_SUNSWORD", token)==0)) {
+		return TRUE;
 	} else if ((strcmp("NOUN_EXCALIBUR", token)==0) ||
 			(strcmp("NOUN_STORMBRINGER", token)==0) ||
 			(strcmp("NOUN_MJOLLNIR", token)==0) ||
@@ -1561,7 +1566,6 @@ const char *token;
 			(strcmp("NOUN_OGRESMASHER", token)==0) ||
 			(strcmp("NOUN_TROLLSBANE", token)==0) ||
 			(strcmp("NOUN_VORPAL_BLADE", token)==0) ||
-			(strcmp("NOUN_SNICKERSNEE", token)==0) ||
 			(strcmp("NOUN_SNICKERSNEE", token)==0) ||
 			(strcmp("NOUN_SUNSWORD", token)==0)) {
 		return FALSE;
