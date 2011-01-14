@@ -500,7 +500,11 @@ register struct obj *obj;
 	if (obj->quan != 1L) Strcpy(buf, makeplural(buf));
 
 	if (obj->onamelth && obj->dknown) {
-		Strcat(buf, " PARTIKEL_NAMED ");
+		Strcat(buf, " PARTIKEL_NAMED "); /* EN Strcat(buf, " named "); */
+#ifdef GERMAN
+		Strcat(buf, german(ONAME(obj)));
+	} else {
+#endif
 nameit:
 		Strcat(buf, ONAME(obj));
 	}

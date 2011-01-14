@@ -460,6 +460,10 @@ START_TEST (test_complete_sentences4) {
 		 SUBJECT PRONOMEN_PERSONAL VERB_OWE OBJECT KASUS_DATIV NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_BLACK_UNICORN nichts.
 		 Du schuldest Tirebolu der unsichtbaren schwarzen Einhorne nichts.
 		 */
+		{"KASUS_GENITIV NOUN_EXCALIBUR",
+		 "Excaliburs"},
+		{"KASUS_GENITIV ARTIKEL_BESTIMMTER NOUN_LONG_SWORD PARTIKEL_NAMED Excalibur",
+		 "des Langschwertes namens Excalibur"},
 	};
 
 	check_strings(text, sizeof(text)/8);

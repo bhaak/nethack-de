@@ -3061,16 +3061,16 @@ def ausgabe_nouns
     "/* ========== */",
     "/* Artefakte  */",
     "/* ========== */",
-    dekliniere_substantiv("NOUN_EXCALIBUR","Excalibur","","","","neutrum"),
+    dekliniere_substantiv("NOUN_EXCALIBUR","Excalibur","s","","","neutrum"),
     dekliniere_substantiv("NOUN_STORMBRINGER","Sturmbringer","s","","","maskulin"),
-    dekliniere_substantiv("NOUN_MJOLLNIR","Mjöllnir","","","","maskulin"),
-    dekliniere_substantiv("NOUN_MJOLLNIR","Mjölnir","","","","maskulin"),
+    dekliniere_substantiv("NOUN_MJOLLNIR","Mjöllnir","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_MJOLLNIR","Mjölnir","s","","","maskulin"),
     dekliniere_substantiv("NOUN_CLEAVER","Fleischspalter","s","","","maskulin"), # Fleicherbeil, Hackbeil, Fleischspalter
     dekliniere_substantiv("NOUN_GRIMTOOTH","Grimmzahn","es","","","maskulin"),
-    dekliniere_substantiv("NOUN_ORCRIST","Orkrist","","","","neutrum"),
-    dekliniere_substantiv("NOUN_ORCRIST","Orcrist","","","","neutrum"),
-    dekliniere_substantiv("NOUN_STING","Stich","","","","maskulin"),
-    dekliniere_substantiv("NOUN_MAGICBANE","Magiebrecher","","","","maskulin"), # Magietöter, Magiebann, Magiebanner, Magiestörer, Magiezerstörer, Magieentkräfter, Magieaufreiber, Magieauslauger, Magieverzehrer, Magiebrecher, Magieberster, Magiekrepierer, Magielazerator, Magienekator; netzhack: Magiefluch; xororand: Magieverderber, Magiezermürber, Magietormentor
+    dekliniere_substantiv("NOUN_ORCRIST","Orkrist","s","","","neutrum"),
+    dekliniere_substantiv("NOUN_ORCRIST","Orcrist","s","","","neutrum"),
+    dekliniere_substantiv("NOUN_STING","Stich","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_MAGICBANE","Magiebrecher","s","","","maskulin"), # Magietöter, Magiebann, Magiebanner, Magiestörer, Magiezerstörer, Magieentkräfter, Magieaufreiber, Magieauslauger, Magieverzehrer, Magiebrecher, Magieberster, Magiekrepierer, Magielazerator, Magienekator; netzhack: Magiefluch; xororand: Magieverderber, Magiezermürber, Magietormentor
     dekliniere_substantiv("NOUN_FROST_BRAND","Frostklinge","","","","feminin"),
     dekliniere_substantiv("NOUN_FROST_BRAND","Frostbrand","es","","","maskulin"),
     dekliniere_substantiv("NOUN_FIRE_BRAND","Flammenklinge","","","","feminin"), # Flammenklinge, Flammenschwert, Feuerklinge, Feuerschwert
@@ -3078,9 +3078,9 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_DRAGONBANE","Drachentöter","s","","","maskulin"),
     dekliniere_substantiv("NOUN_DEMONBANE","Dämonentöter","s","","","maskulin"),
     dekliniere_substantiv("NOUN_WEREBANE","Wertöter","s","","","maskulin"),
-    dekliniere_substantiv("NOUN_GRAYSWANDIR","Grayswandir","","","","neutrum"),
+    dekliniere_substantiv("NOUN_GRAYSWANDIR","Grayswandir","s","","","neutrum"),
     dekliniere_substantiv("NOUN_GIANTSLAYER","Riesenschlächter","s","","","maskulin"), # Riesenschlächter, Riesenjäger
-    dekliniere_substantiv("NOUN_OGRESMASHER","Ogermantscher","","","","maskulin"),
+    dekliniere_substantiv("NOUN_OGRESMASHER","Ogermantscher","s","","","maskulin"),
     dekliniere_substantiv("NOUN_TROLLSBANE","Trolltöter","s","","","maskulin"),
     dekliniere_substantiv("NOUN_VORPAL_BLADE","Vorpahlklinge","","","","feminin"),
     dekliniere_substantiv("NOUN_VORPAL_BLADE","Vorpalklinge","","","","feminin"),

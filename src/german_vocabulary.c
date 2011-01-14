@@ -8055,14 +8055,17 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
   /* ========== */
 
-  {"Excalibur", "NOUN_EXCALIBUR", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Excaliburs", "NOUN_EXCALIBUR", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Excalibur", "NOUN_EXCALIBUR", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Sturmbringers", "NOUN_STORMBRINGER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Sturmbringer", "NOUN_STORMBRINGER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Mjöllnir", "NOUN_MJOLLNIR", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mjöllnirs", "NOUN_MJOLLNIR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mjöllnir", "NOUN_MJOLLNIR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Mjölnir", "NOUN_MJOLLNIR", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mjölnirs", "NOUN_MJOLLNIR", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Mjölnir", "NOUN_MJOLLNIR", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Fleischspalters", "NOUN_CLEAVER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Fleischspalter", "NOUN_CLEAVER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
@@ -8070,13 +8073,17 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Grimmzahnes", "NOUN_GRIMTOOTH", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Grimmzahn", "NOUN_GRIMTOOTH", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Orkrist", "NOUN_ORCRIST", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orkrists", "NOUN_ORCRIST", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orkrist", "NOUN_ORCRIST", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Orcrist", "NOUN_ORCRIST", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orcrists", "NOUN_ORCRIST", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orcrist", "NOUN_ORCRIST", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Stich", "NOUN_STING", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stichs", "NOUN_STING", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Stich", "NOUN_STING", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Magiebrecher", "NOUN_MAGICBANE", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Magiebrechers", "NOUN_MAGICBANE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Magiebrecher", "NOUN_MAGICBANE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Frostklinge", "NOUN_FROST_BRAND", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
@@ -8097,12 +8104,14 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Wertöters", "NOUN_WEREBANE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Wertöter", "NOUN_WEREBANE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Grayswandir", "NOUN_GRAYSWANDIR", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grayswandirs", "NOUN_GRAYSWANDIR", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grayswandir", "NOUN_GRAYSWANDIR", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Riesenschlächters", "NOUN_GIANTSLAYER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Riesenschlächter", "NOUN_GIANTSLAYER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
-  {"Ogermantscher", "NOUN_OGRESMASHER", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ogermantschers", "NOUN_OGRESMASHER", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Ogermantscher", "NOUN_OGRESMASHER", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
 
   {"Trolltöters", "NOUN_TROLLSBANE", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Trolltöter", "NOUN_TROLLSBANE", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
