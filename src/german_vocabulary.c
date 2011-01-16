@@ -10837,6 +10837,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Schuppe", "NOUN_SCALES", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schuppen", "NOUN_SCALESs", "n", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Schädels", "NOUN_SCHAEDEL", "", genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schädel", "NOUN_SCHAEDEL", "", dativ|nominativ|akkusativ, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schädel", "NOUN_SCHAEDELs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schädeln", "NOUN_SCHAEDELs", "", dativ, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Schicht", "NOUN_SCHICHT", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Schichten", "NOUN_SCHICHTs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
 

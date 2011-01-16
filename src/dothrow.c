@@ -502,9 +502,9 @@ hurtle_step(arg, x, y)
 	    boolean too_much = (invent && (inv_weight() + weight_cap() > 600));
 	    /* Move at a diagonal. */
 	    if (bigmonst(youmonst.data) || too_much) {
-		You("%sget forcefully wedged into a crevice.", /* EN You("%sget forcefully wedged into a crevice.", */ // TODO DE
+		You("%sVERB_WERDEN gewaltsam in eine Felsspalte gequetscht.", /* EN You("%sget forcefully wedged into a crevice.", */
 			too_much ? "and all your belongings " : ""); /* EN too_much ? "and all your belongings " : ""); */ // TODO DE
-		losehp(rnd(2+*range), "wedging into a narrow crevice", KILLED_BY); /* EN losehp(rnd(2+*range), "wedging into a narrow crevice", KILLED_BY); */ // TODO DE
+		losehp(rnd(2+*range), "wurde in eine enge Felsspalte gequetscht", NO_KILLER_PREFIX); /* EN losehp(rnd(2+*range), "wedging into a narrow crevice", KILLED_BY); */
 		return FALSE;
 	    }
 	}

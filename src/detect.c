@@ -820,7 +820,7 @@ struct obj *obj;
 	case 5 : pline("SUBJECT %s!", Tobjnam(obj, "VERB_EXPLODIEREN")); /* EN case 5 : pline("%s!", Tobjnam(obj, "explode")); */
 	    useup(obj);
 	    obj = 0;	/* it's gone */
-	    losehp(rnd(30), "ADJEKTIV_EXPLODIERT NOUN_CRYSTAL_BALL", KILLED_BY_AN); /* EN losehp(rnd(30), "exploding crystal ball", KILLED_BY_AN); */
+	    losehp(rnd(30), "KASUS_AKKUSATIV durch ARTIKEL_UNBESTIMMTER ADJEKTIV_EXPLODIEREND NOUN_CRYSTAL_BALL", KILLED_WITHOUT_PREPOSITION); /* EN losehp(rnd(30), "exploding crystal ball", KILLED_BY_AN); */
 	    break;
 	}
 	if (obj) consume_obj_charge(obj, TRUE);

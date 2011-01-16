@@ -1619,7 +1619,7 @@ prayer_done()		/* M. Stephenson (1.0.3b) */
 	You("VERB_HABEN das Gefühl auseinanderzufallen."); /* EN You_feel("like you are falling apart."); */
 	/* KMH -- Gods have mastery over unchanging */
 	rehumanize();
-	losehp(rnd(20), "residual undead turning effect", KILLED_BY_AN); /* EN losehp(rnd(20), "residual undead turning effect", KILLED_BY_AN); */ // TODO DE
+	losehp(rnd(20), "der Nachwirkung einer Untotenwandlung", KILLED_BY); /* EN losehp(rnd(20), "residual undead turning effect", KILLED_BY_AN); */
 	exercise(A_CON, FALSE);
 	return(1);
     }

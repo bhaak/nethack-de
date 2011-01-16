@@ -319,7 +319,7 @@ mount_steed(mtmp, force)
 	    }
 	    pline("Beim Versuch, auf OBJECT %s aufzusteigen, VERB_ABRUTSCHEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL SATZKLAMMER!", mon_nam(mtmp)); /* EN You("slip while trying to get on %s.", mon_nam(mtmp)); */
 
-	    Sprintf(buf, "slipped while mounting %s", /* EN Sprintf(buf, "slipped while mounting %s", */ // TODO DE
+	    Sprintf(buf, "beim Besteigen KASUS_GENITIV %s ausgerutscht", /* EN Sprintf(buf, "slipped while mounting %s", */
 		    /* "a saddled mumak" or "a saddled pony called Dobbin" */
 		    x_monnam(mtmp, ARTICLE_A, (char *)0,
 			SUPPRESS_IT|SUPPRESS_INVISIBLE|SUPPRESS_HALLUCINATION,
@@ -489,7 +489,7 @@ dismount_steed(reason)
 	    case DISMOUNT_FELL:
 		You("%s OBJECT KASUS_DATIV _von_ %s%s!", verb, mon_nam(mtmp), partizip); /* EN You("%s off of %s!", verb, mon_nam(mtmp)); */
 		if (!have_spot) have_spot = landing_spot(&cc,reason,1);
-		losehp(rn1(10,10), "NOUN_REITUNFALL", KILLED_BY_AN); /* EN losehp(rn1(10,10), "riding accident", KILLED_BY_AN); */
+		losehp(rn1(10,10), "bei einem Reitunfall", KILLED_WITHOUT_PREPOSITION); /* EN losehp(rn1(10,10), "riding accident", KILLED_BY_AN); */
 		set_wounded_legs(BOTH_SIDES, (int)HWounded_legs + rn1(5,5));
 		repair_leg_damage = FALSE;
 		break;

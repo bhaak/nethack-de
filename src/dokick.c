@@ -615,7 +615,7 @@ char *buf;
 	else if (maploc->typ == LADDER) what = "ARTIKEL_UNBESTIMMTER NOUN_LADDER"; /* EN else if (maploc->typ == LADDER) what = "a ladder"; */
 	else if (maploc->typ == IRONBARS) what = "ARTIKEL_UNBESTIMMTER NOUN_IRON_BAR"; /* EN else if (maploc->typ == IRONBARS) what = "an iron bar"; */ 
 	else what = "von etwas Seltsamen"; /* EN else what = "something weird"; */
-	return strcat(strcpy(buf, "Tretens KASUS_GENITIV "), what); /* EN return strcat(strcpy(buf, "kicking "), what); */
+	return strcat(strcpy(buf, "durch Tretens KASUS_GENITIV "), what); /* EN return strcat(strcpy(buf, "kicking "), what); */
 }
 
 int
@@ -1010,7 +1010,7 @@ ouch:
 		    }
 		    if(!rn2(3)) set_wounded_legs(RIGHT_SIDE, 5 + rnd(5));
 		    losehp(rnd(ACURR(A_CON) > 15 ? 3 : 5), kickstr(buf),
-			KILLED_BY);
+			KILLED_WITHOUT_PREPOSITION); /* EN KILLED_BY); */
 		    if(Is_airlevel(&u.uz) || Levitation)
 			hurtle(-u.dx, -u.dy, rn1(2,4), TRUE); /* assume it's heavy */
 		    return(1);

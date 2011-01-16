@@ -2321,7 +2321,7 @@ register struct monst *mon;
 			        exercise(A_STR, FALSE);
 				tmp = rn1(10, 6);
 				if(Half_physical_damage) tmp = (tmp+1) / 2;
-				losehp(tmp, "NOUN_ERSCHOEPFUNG", KILLED_BY); /* EN losehp(tmp, "exhaustion", KILLED_BY); */
+				losehp(tmp, "aufgrund Erschöpfung", KILLED_WITHOUT_PREPOSITION); /* EN losehp(tmp, "exhaustion", KILLED_BY); */
 				break;
 			}
 		}

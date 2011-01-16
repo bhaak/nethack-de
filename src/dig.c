@@ -940,7 +940,7 @@ struct obj *obj;
 			    pline("Funken fliegen MODIFIER_NEBENSATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT auf ARTIKEL_BESTIMMTER %s VERB_EINSCHLAGEN.%s", /* EN pline("Sparks fly as you whack the %s.%s", */
 				sobj_at(STATUE, rx, ry) ? "NOUN_STATUE" : "NOUN_BOULDER", /* EN sobj_at(STATUE, rx, ry) ? "statue" : "boulder", */
 				vibrate ? " Der Axtgriff vibriert gewaltig!" : ""); /* EN vibrate ? " The axe-handle vibrates violently!" : ""); */
-			    if (vibrate) losehp(2, "axing a hard object", KILLED_BY); /* EN if (vibrate) losehp(2, "axing a hard object", KILLED_BY); */ // TODO DE
+			    if (vibrate) losehp(2, "vom Bearbeiten eines harten Objektes", KILLED_WITHOUT_PREPOSITION); /* EN if (vibrate) losehp(2, "axing a hard object", KILLED_BY); */
 			}
 			else
 			    You("VERB_LASSEN OBJECT PRONOMEN_POSSESSIV %s durch die Luft sausen.", /* EN You("swing your %s through thin air.", */

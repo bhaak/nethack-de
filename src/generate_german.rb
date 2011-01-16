@@ -3817,6 +3817,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RUNE","Rune","","Rune","en","feminin"),
     dekliniere_substantiv("NOUN_SABER", "Säbel", "s", "Säbel", "", "maskulin"),
     dekliniere_substantiv("NOUN_SCALES", "Schuppe", "", "Schuppe", "en", "feminin", "n"),
+    dekliniere_substantiv("NOUN_SCHAEDEL","Schädel","s","Schädel","","maskulin"),
     dekliniere_substantiv("NOUN_SCHICHT","Schicht","","Schicht","en","feminin"),
     dekliniere_substantiv("NOUN_SCHICKSAL","Schicksal","es","Schicksal","e","neutrum"),
     dekliniere_substantiv("NOUN_SCHLANGENGIFT","Schlangengift","es","Schlangengift","e","neutrum"),

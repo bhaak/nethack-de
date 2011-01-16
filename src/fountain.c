@@ -262,8 +262,8 @@ drinkfountain()
 			   pline(
 			      "Vielleicht ist es Abwasser von der nahegelegenen %s-Plantage.", /* EN "Perhaps it is runoff from the nearby %s farm.", */
 				 fruitname(FALSE));
-			   losehp(rnd(4),"unrefrigerated sip of juice", /* EN losehp(rnd(4),"unrefrigerated sip of juice", */ // TODO DE
-				KILLED_BY_AN);
+			   losehp(rnd(4),"durch einen Schluck ungekühlten Fruchtsaftes", /* EN losehp(rnd(4),"unrefrigerated sip of juice", */
+				KILLED_WITHOUT_PREPOSITION); /* EN KILLED_BY_AN); */
 			   break;
 			}
 			losestr(rn1(4,3));
@@ -528,7 +528,7 @@ drinksink()
 		case 2: You("VERB_NEHMEN einen Schluck siedend heißen Wassers."); /* EN case 2: You("take a sip of scalding hot water."); */
 			if (Fire_resistance)
 				pline("Es schmeckt ganz gut."); /* EN pline("It seems quite tasty."); */
-			else losehp(rnd(6), "sipping boiling water", KILLED_BY); /* EN else losehp(rnd(6), "sipping boiling water", KILLED_BY); */ // TODO DE
+			else losehp(rnd(6), "einem Schluck kochendheißen Wassers", KILLED_BY); /* EN else losehp(rnd(6), "sipping boiling water", KILLED_BY); */
 			break;
 		case 3: if (mvitals[PM_SEWER_RAT].mvflags & G_GONE)
 				pline_The("NOUN_SINK VERB_SEIN ziemlich dreckig."); /* EN pline_The("sink seems quite dirty."); */

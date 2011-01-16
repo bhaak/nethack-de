@@ -28,6 +28,9 @@ ballfall()
 			freeinv(uball);
 	}
 	if(gets_hit){
+#ifdef GERMAN
+		char buf[BUFSZ];
+#endif
 		int dmg = rn1(7,25);
 		pline_The("NOUN_IRON_BALL VERB_FALLEN OBJECT auf PRONOMEN_POSSESSIV %s.", /* EN pline_The("iron ball falls on your %s.", */
 			body_part(HEAD));
@@ -38,7 +41,10 @@ ballfall()
 		    } else if (flags.verbose)
 			Your("%s VERB_SCHUETZEN OBJECT PRONOMEN_PERSONAL nicht.", xname(uarmh)); /* EN Your("%s does not protect you.", xname(uarmh)); */
 		}
-		losehp(dmg, "crunched in the head by an iron ball", /* EN losehp(dmg, "crunched in the head by an iron ball", */ // TODO DE
+#ifdef GERMAN
+		Sprintf(buf, "eine Eisenkugel zerschmetterte KASUS_AKKUSATIV %s NOUN_SCHAEDEL", uhis());
+#endif
+		losehp(dmg, buf, /* EN losehp(dmg, "crunched in the head by an iron ball", */
 			NO_KILLER_PREFIX);
 	}
 }
@@ -677,8 +683,8 @@ xchar x, y;
 		    Your("%s %s wurde schwer verletzt.", /* EN Your("%s %s is severely damaged.", */
 					(side == LEFT_SIDE) ? "ADJEKTIV_LINK" : "ADJEKTIV_RECHT", /* EN (side == LEFT_SIDE) ? "left" : "right", */
 					body_part(LEG));
-		    losehp(2, "leg damage from being pulled out of a bear trap", /* EN losehp(2, "leg damage from being pulled out of a bear trap", */ // TODO DE
-					KILLED_BY);
+		    losehp(2, "erlag einer B‰renfallenbefreiungsaktionsbeinverletzung", /* EN losehp(2, "leg damage from being pulled out of a bear trap", */
+					NO_KILLER_PREFIX); /* EN KILLED_BY); */
 		}
 		break;
 	      }
@@ -780,7 +786,7 @@ drag_down()
 	} else {
 		if(rn2(2)) {
 			pline_The("NOUN_IRON_BALL VERB_KRACHEN OBJECT in PRONOMEN_PERSONAL rein!"); /* EN pline_The("iron ball smacks into you!"); */
-			losehp(rnd(20), "iron ball collision", KILLED_BY_AN); /* EN losehp(rnd(20), "iron ball collision", KILLED_BY_AN); */ // TODO DE
+			losehp(rnd(20), "durch einen Zusammenstoﬂ mit einer Eisenkugel", KILLED_WITHOUT_PREPOSITION); /* EN losehp(rnd(20), "iron ball collision", KILLED_BY_AN); */
 			exercise(A_STR, FALSE);
 			dragchance -= 2;
 		}

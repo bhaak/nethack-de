@@ -239,7 +239,7 @@ boolean forcecontrol;
         if(!Polymorph_control && !forcecontrol && !draconian && !iswere && !isvamp) {
 	    if (rn2(20) > ACURR(A_CON)) {
 		You(shudder_for_moment);
-		losehp(rnd(30), "Kreislaufversagen", KILLED_BY); /* EN losehp(rnd(30), "system shock", KILLED_BY_AN); */
+		losehp(rnd(30), "durch Kreislaufversagen", KILLED_WITHOUT_PREPOSITION); /* EN losehp(rnd(30), "system shock", KILLED_BY_AN); */
 		exercise(A_CON, FALSE);
 		return;
 	    }

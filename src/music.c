@@ -408,8 +408,8 @@ struct obj *instr;
 		} else if (!u.dx && !u.dy && !u.dz) {
 		    if ((damage = zapyourself(instr, TRUE)) != 0) {
 			char buf[BUFSZ];
-			Sprintf(buf, "using a magical horn on %sself", uhim()); /* EN Sprintf(buf, "using a magical horn on %sself", uhim()); */ // TODO DE
-			losehp(damage, buf, KILLED_BY);
+			Sprintf(buf, "richtete ein magisches Horn gegen sich selbst"); /* EN Sprintf(buf, "using a magical horn on %sself", uhim()); */
+			losehp(damage, buf, NO_KILLER_PREFIX); /* losehp(damage, buf, KILLED_BY); */
 		    }
 		} else {
 		    buzz((instr->otyp == FROST_HORN) ? AD_COLD-1 : AD_FIRE-1,
