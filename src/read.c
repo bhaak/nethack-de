@@ -679,7 +679,7 @@ register struct obj	*sobj;
 		otmp = some_armor(&youmonst);
 		if(!otmp) {
 			strange_feeling(sobj,
-					!Blind ? "Your skin glows then fades." : /* EN !Blind ? "Your skin glows then fades." : */ // TODO DE
+					!Blind ? "SUBJECT PRONOMEN_POSSESSIV NOUN_HAUT VERB_LEUCHTEN auf und VERB_ERLOESCHEN wieder." : /* EN !Blind ? "Your skin glows then fades." : */
 					"SUBJECT PRONOMEN_POSSESSIV NOUN_HAUT VERB_FUEHLEN sich für einen Moment warm an."); /* EN "Your skin feels warm for a moment."); */
 			exercise(A_CON, !sobj->cursed);
 			exercise(A_STR, !sobj->cursed);
@@ -904,14 +904,14 @@ register struct obj	*sobj;
 	    {	register struct obj *obj;
 		if(confused)
 		    if (Hallucination)
-			You_feel("the power of the Force against you!"); /* EN You_feel("the power of the Force against you!"); */ // TODO DE
+			You_feel("die Kraft der Macht gegen OBJECT PRONOMEN_PERSONAL!"); /* EN You_feel("the power of the Force against you!"); */
 		    else
-			You_feel("like you need some help."); /* EN You_feel("like you need some help."); */ // TODO DE
+			You("VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL, NEUER_SATZ als SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_KOENNEN PRONOMEN_PERSONAL etwas Hilfe brauchen."); /* EN You_feel("like you need some help."); */
 		else
 		    if (Hallucination)
-			You_feel("in touch with the Universal Oneness."); /* EN You_feel("in touch with the Universal Oneness."); */ // TODO DE
+			Du_fuehlst_dich("im Einklang mit der uranfänglichen Einheit."); /* EN You_feel("in touch with the Universal Oneness."); */
 		    else
-			You_feel("like someone is helping you."); /* EN You_feel("like someone is helping you."); */ // TODO DE
+			You("VERB_HABEN das Gefühl als würde OBJECT KASUS_DATIV PRONOMEN_PERSONAL jemand helfen."); /* EN You_feel("like someone is helping you."); */
 
 		if (sobj->cursed) {
 		    pline_The("NOUN_SCROLL löst sich auf."); /* EN pline_The("scroll disintegrates."); */

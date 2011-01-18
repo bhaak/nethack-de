@@ -249,7 +249,7 @@ int expltype;
 				      (adtyp == AD_COLD) ? "hat Gefrierbrand" : /* EN (adtyp == AD_COLD) ? "chilly" : */
 				      (adtyp == AD_DISN) ? ((olet == WAND_CLASS) ?
 				       "wird mit reiner Energie bestrahlt" : "wird perforiert") : /* EN "irradiated by pure energy" : "perforated") : */
-				      (adtyp == AD_ELEC) ? "shocked" : /* EN (adtyp == AD_ELEC) ? "shocked" : */ // TODO DE
+				      (adtyp == AD_ELEC) ? "bekommt einen Stromschlag" : /* EN (adtyp == AD_ELEC) ? "shocked" : */
 				      (adtyp == AD_DRST) ? "wird vergiftet" : /* EN (adtyp == AD_DRST) ? "poisoned" : */
 				      (adtyp == AD_ACID) ? "hat eine Magenverstimmung" : /* EN (adtyp == AD_ACID) ? "an upset stomach" : */
 				       "wird gegrillt"); /* EN "fried"); */
@@ -260,7 +260,7 @@ int expltype;
 				      (adtyp == AD_COLD) ? "hat ein bisschen Gefrierbrand" : /* EN (adtyp == AD_COLD) ? "chilly" : */
 				      (adtyp == AD_DISN) ? ((olet == WAND_CLASS) ?
 				       "von reiner Energie überwältigt" : "wird etwas perforiert") : /* EN "overwhelmed by pure energy" : "perforated") : */
-				      (adtyp == AD_ELEC) ? "shocked" : /* EN (adtyp == AD_ELEC) ? "shocked" : */ // TODO DE
+				      (adtyp == AD_ELEC) ? "bekommt einen kleinen Stromschlag" : /* EN (adtyp == AD_ELEC) ? "shocked" : */
 				      (adtyp == AD_DRST) ? "wird ein wenig betäubt" : /* EN (adtyp == AD_DRST) ? "intoxicated" : */
 				      (adtyp == AD_ACID) ? "wird ein wenig verbrannt" : /* EN (adtyp == AD_ACID) ? "burned" : */
 							 "wird ein wenig gegrillt"); /* EN "fried"); */

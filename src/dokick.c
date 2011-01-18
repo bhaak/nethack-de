@@ -23,7 +23,7 @@ STATIC_DCL void FDECL(drop_to, (coord *,SCHAR_P));
 
 static NEARDATA struct obj *kickobj;
 
-static const char kick_passes_thru[] = "kick passes harmlessly through"; /* EN static const char kick_passes_thru[] = "kick passes harmlessly through"; */ // TODO DE
+static const char kick_passes_thru[] = "NOUN_KICK VERB_GLEITEN schadlos"; /* EN static const char kick_passes_thru[] = "kick passes harmlessly through"; */
 
 STATIC_OVL void
 kickdmg(mon, clumsy)
@@ -54,7 +54,7 @@ register boolean clumsy;
 	    blessed_foot_damage = 1;
 
 	if (mon->data == &mons[PM_SHADE] && !blessed_foot_damage) {
-	    pline_The("%s.", kick_passes_thru);
+	    pline_The("%s hindurch.", kick_passes_thru); /* EN pline_The("%s.", kick_passes_thru); */
 	    /* doesn't exercise skill or abuse alignment or frighten pet,
 	       and shades have no passive counterattack */
 	    return;
@@ -151,7 +151,7 @@ register xchar x, y;
 			(!uarmf || !uarmf->blessed)) {
 		    /* doesn't matter whether it would have hit or missed,
 		       and shades have no passive counterattack */
-		    Your("%s %s.", kick_passes_thru, mon_nam(mon));
+		    Your("%s OBJECT durch %s.", kick_passes_thru, mon_nam(mon));
 		    break;	/* skip any additional kicks */
 		} else if (tmp > rnd(20)) {
 		    You("VERB_KICK OBJECT %s.", mon_nam(mon)); /* EN You("kick %s.", mon_nam(mon)); */
@@ -169,7 +169,7 @@ register xchar x, y;
 
 	if(Levitation && !rn2(3) && verysmall(mon->data) &&
 	   !is_flyer(mon->data)) {
-		pline("Floating in the air, you miss wildly!"); /* EN pline("Floating in the air, you miss wildly!"); */ // TODO DE
+		pline("SUBJECT So schwebend VERB_TREFFEN PRONOMEN_PERSONAL weit daneben!"); /* EN pline("Floating in the air, you miss wildly!"); */
 		exercise(A_DEX, FALSE);
 		(void) passive(mon, FALSE, 1, AT_KICK);
 		return;
@@ -655,10 +655,10 @@ dokick()
 		     bp, (wl == BOTH_SIDES) ? "VERB_SEIN" : "VERB_SEIN"); /* EN bp, (wl == BOTH_SIDES) ? "are" : "is"); */
 		no_kick = TRUE;
 	} else if (near_capacity() > SLT_ENCUMBER) {
-		Your("load is too heavy to balance yourself for a kick."); /* EN Your("load is too heavy to balance yourself for a kick."); */ // TODO DE
+		Your("NOUN_LAST ist zu schwer um die Balance bei einem Tritt zu halten."); /* EN Your("load is too heavy to balance yourself for a kick."); */
 		no_kick = TRUE;
 	} else if (youmonst.data->mlet == S_LIZARD) {
-		Your("legs cannot kick effectively."); /* EN Your("legs cannot kick effectively."); */ // TODO DE
+		pline("SUBJECT PRONOMEN_POSSESSIV NOUN_LEGs können nicht gut treten."); /* EN Your("legs cannot kick effectively."); */
 		no_kick = TRUE;
 	} else if (u.uinwater && !rn2(2)) {
 		Your("NOUN_ZEITLUPENTRITT VERB_HIT überhaupt nichts."); /* EN Your("slow motion kick doesn't hit anything."); */
@@ -666,7 +666,7 @@ dokick()
 	} else if (u.utrap) {
 		switch (u.utraptype) {
 		    case TT_PIT:
-			pline("There's not enough room to kick down here."); /* EN pline("There's not enough room to kick down here."); */ // TODO DE
+			pline("Hier unten SUBJECT_IM_SATZ VERB_HABEN PRONOMEN_PERSONAL nicht genug Platz zum Treten."); /* EN pline("There's not enough room to kick down here."); */
 			break;
 		    case TT_WEB:
 		    case TT_BEARTRAP:
@@ -720,7 +720,7 @@ dokick()
 		if (isok(xx,yy) && !IS_ROCK(levl[xx][yy].typ) &&
 			!IS_DOOR(levl[xx][yy].typ) &&
 			(!Is_airlevel(&u.uz) || !OBJ_AT(xx,yy))) {
-		    You("have nothing to brace yourself against."); /* EN You("have nothing to brace yourself against."); */ // TODO DE
+		    You("VERB_KOENNEN OBJECT PRONOMEN_PERSONAL an nichts abstützen."); /* EN You("have nothing to brace yourself against."); */
 		    return(0);
 		}
 	}
@@ -976,9 +976,9 @@ dokick()
 			exercise(A_DEX, TRUE);
 			return(1);
 		    } else if(!rn2(3)) {
-			pline("Flupp!  %s.", (Blind ?  /* EN pline("Flupp!  %s.", (Blind ? */ // TODO DE
-				      "You hear a sloshing sound" : /* EN "You hear a sloshing sound" : */ // TODO DE
-				      "Muddy waste pops up from the drain")); /* EN "Muddy waste pops up from the drain")); */ // TODO DE
+			pline("Flupp!  %s.", (Blind ?
+				      "SUBJECT PRONOMEN_PERSONAL VERB_HOEREN ein Schwappen" : /* EN "You hear a sloshing sound" : */
+				      "Dreckiger Schlamm schwappt aus dem Abfluss hoch")); /* EN "Muddy waste pops up from the drain")); */
 			if(!(maploc->looted & S_LRING)) { /* once per sink */
 			    if (!Blind)
 				You("VERB_SEHEN mittendrin einen Ring glitzern."); /* EN You("see a ring shining in its midst."); */
@@ -1103,7 +1103,7 @@ dumb:
 			    verbalize("Halt, Wandale!  Du bist verhaftet!"); /* EN verbalize("Halt, vandal!  You're under arrest!"); */
 			    (void) angry_guards(FALSE);
 			} else {
-			    verbalize("Hey, stop damaging that door!"); /* EN verbalize("Hey, stop damaging that door!"); */ // TODO DE
+			    verbalize("Hey, MODIFIER_VERB_IMPERATIV VERB_HOEREN damit auf, die Türe zu beschädigen!"); /* EN verbalize("Hey, stop damaging that door!"); */
 			    levl[x][y].looted |= D_WARNED;
 			}
 			break;
@@ -1241,14 +1241,14 @@ xchar x, y, dlev;
 
 	if(costly && shkp && price) {
 		if(ESHK(shkp)->robbed > robbed) {
-		    You("removed %ld %s worth of goods!", price, currency(price)); /* EN You("removed %ld %s worth of goods!", price, currency(price)); */ // TODO DE
+		    You("VERB_HABEN Ware im Wert von OBJECT %ld %s verschwinden lassen!", price, currency(price)); /* EN You("removed %ld %s worth of goods!", price, currency(price)); */
 		    if(cansee(shkp->mx, shkp->my)) {
 			if(ESHK(shkp)->customer[0] == 0)
 			    (void) strncpy(ESHK(shkp)->customer,
 					   plname, PL_NSIZ);
 			if(angry)
 			    pline("SUBJECT %s tobt!", Monnam(shkp)); /* EN pline("%s is infuriated!", Monnam(shkp)); */
-			else pline("\"%s, SUBJECT_IM_SATZ VERB_SEIN %s!\"", plname, flags.female ? "eine Diebin" : "ein Dieb"); /* EN else pline("\"%s, you are a thief!\"", plname); */
+			else pline("\"%s, SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SEIN %s!\"", plname, flags.female ? "eine Diebin" : "ein Dieb"); /* EN else pline("\"%s, you are a thief!\"", plname); */
 		    } else  You_hear("einen Schrei, \"Dieb!\""); /* EN } else  You_hear("a scream, \"Thief!\""); */
 		    hot_pursuit(shkp);
 		    (void) angry_guards(FALSE);
@@ -1256,7 +1256,7 @@ xchar x, y, dlev;
 		}
 		if(ESHK(shkp)->debit > debit) {
 		    long amt = (ESHK(shkp)->debit - debit);
-		    You("owe %s %ld %s for goods lost.", /* EN You("owe %s %ld %s for goods lost.", */ // TODO DE
+		    You("VERB_OWE OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s für seine Verluste.", /* EN You("owe %s %ld %s for goods lost.", */
 			Monnam(shkp),
 			amt, currency(amt));
 		}
