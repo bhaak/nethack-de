@@ -93,6 +93,16 @@ START_TEST (test_wishing) {
 	//fail_if(&obj != &nothing);
 
 	if (1) {
+	strcpy(buf, "Ringpanzer");
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	typ = obj->otyp;
+	ocl = &objects[typ];
+	dn = OBJ_NAME(*ocl);
+	fail_unless(obj->oclass == ARMOR_CLASS);
+	fail_unless(obj->quan == 1);
+	fail_unless(strcmp("NOUN_RING_MAIL", dn)==0);
+
 	strcpy(buf, "ein Ring der Transformation");
 	obj = readobjnam(buf, &nothing, TRUE);
 	fail_if(obj == NULL);

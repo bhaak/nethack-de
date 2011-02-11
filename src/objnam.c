@@ -2282,15 +2282,15 @@ boolean from_user;
 
 	/* Search for class names: XXXXX potion, scroll of XXXXX.  Avoid */
 	/* false hits on, e.g., rings for "ring mail". */
-	if(strncmpi(bp, "enchant ", 8) &&
-	   strncmpi(bp, "destroy ", 8) &&
-	   strncmpi(bp, "food detection", 14) &&
-	   strncmpi(bp, "ring mail", 9) &&
-	   strncmpi(bp, "studded leather arm", 19) &&
-	   strncmpi(bp, "leather arm", 11) &&
-	   strncmpi(bp, "tooled horn", 11) &&
-	   strncmpi(bp, "food ration", 11) &&
-	   strncmpi(bp, "meat ring", 9)
+	if(strncmpi(bp, "NOUN_SCR_ENCHANT_", 17) && /* EN if(strncmpi(bp, "enchant ", 8) && */
+	   strncmpi(bp, "NOUN_SCR_DESTROY_", 17) && /* EN strncmpi(bp, "destroy ", 8) && */
+	   strncmpi(bp, "NOUN_SCR_FOOD_DETECTION", 23) && /* EN strncmpi(bp, "food detection", 14) && */
+	   strncmpi(bp, "NOUN_RING_MAIL", 14) && /* EN strncmpi(bp, "ring mail", 9) && */
+	   strncmpi(bp, "NOUN_STUDDED_LEATHER_ARM", 24) && /* EN strncmpi(bp, "studded leather arm", 19) && */
+	   strncmpi(bp, "NOUN_LEATHER_ARM", 16) && /* EN strncmpi(bp, "leather arm", 11) && */
+	   strncmpi(bp, "NOUN_TOOLED_HORN", 16) && /* EN strncmpi(bp, "tooled horn", 11) && */
+	   strncmpi(bp, "NOUN_FOOD_RATION", 16) && /* EN strncmpi(bp, "food ration", 11) && */
+	   strncmpi(bp, "NOUN_MEAT_RING", 14) /* EN strncmpi(bp, "meat ring", 9) */
 	)
 	for (i = 0; i < (int)(sizeof wrpsym); i++) {
 		register int j = strlen(wrp[i]);
