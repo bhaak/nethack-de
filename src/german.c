@@ -348,8 +348,8 @@ void german2meta(const char *input, char *output)
 		return;
 	}
 	
-	if (WISH_DEBUG) printf("\ngerman2meta %s\n", input);
-	if (WISH_DEBUG) printf("\ngerman2meta %s\n", str);
+	if (WISH_DEBUG) printf("\ngerman2meta input: %s\n", input);
+	if (WISH_DEBUG) printf("\ngerman2meta str:   %s\n", str);
 	//printf("str: %s\n",str);
 	//printf("strlen(str): %d\n",strlen(str));
 	i = 0;
@@ -487,7 +487,7 @@ void german2meta(const char *input, char *output)
 				strcat(output, wort->typ);
 				/* NOUN_SCR_* immer im Singular zurückliefern */
 				if (output[strlen(output)-1] == 's') { output[strlen(output)-1] = '\0'; }
-				i = i + strlen(wort->wort);
+				i = i + strlen(normalisierung(normalisiert, wort->wort));
 			} else {
 				if (WISH_DEBUG) printf("4.5 i: %d\n",i);
 				if (WISH_DEBUG) printf("4.5 wort->wort: %s\n",wort->wort);

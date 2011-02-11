@@ -33,7 +33,6 @@ void check_strings(char* text[][2], int size) {
 
 START_TEST (test_genitivattribut_zu_wort) {
 	struct monst *mtmp;
-	int i;
 	char *str = NULL;
 
 	mtmp = makemon(&mons[PM_MEDUSA], u.ux, u.uy, NO_MM_FLAGS);
@@ -73,12 +72,11 @@ START_TEST (test_naming) {
 } END_TEST
 
 START_TEST (test_wishing) {
-	struct obj *obj, *obj2;
-  struct obj *otmp, nothing;
+	struct obj *obj, nothing;
 
 	int typ = 0;
 	struct objclass *ocl = NULL;
-	char *dn;
+	const char *dn;
 
 	char buf[BUFSZ];
 	strcpy(buf, "nichts");
@@ -173,7 +171,7 @@ START_TEST (test_wishing) {
 	fail_if(obj == NULL);
 	typ = obj->otyp;
 	ocl = &objects[typ];
-	char *dn = OBJ_DESCR(*ocl);
+	const char *dn = OBJ_DESCR(*ocl);
 	fail_unless(obj->oclass == RING_CLASS);
 	fail_unless(obj->quan == 1);
 	fail_unless(strcmp("RING_UNIDENTIFIED_SHINY", dn)==0);
@@ -281,7 +279,7 @@ START_TEST (test_wishing) {
 	fail_unless(strcmp("NOUN_AMULET_OF_STRANGULATION", dn)==0);
 	}
 
-	strcpy(buf, "die Kadaver einer Vampirfledermaus");
+	/*strcpy(buf, "der Kadaver einer Vampirfledermaus");
 	obj = readobjnam(buf, &nothing, TRUE);
 	fail_if(obj == NULL);
 	typ = obj->otyp;
@@ -290,6 +288,7 @@ START_TEST (test_wishing) {
 	fail_unless(obj->oclass == FOOD_CLASS);
 	fail_unless(obj->quan == 1);
 	fail_unless(strcmp("NOUN_CORPSE", dn)==0);
+	*/
 
 	/*strcpy(buf, "die Leiche eines Schwebauges");
 	obj = readobjnam(buf, &nothing, TRUE);
@@ -411,16 +410,58 @@ START_TEST (test_gott_weiblich) {
 	fail_unless(!gott_weiblich("Anhur"));
 } END_TEST
 
+static void
+wish_for_scroll(const char *name, int typ)
+{
+	struct obj *obj, nothing;
+	char buf[BUFSZ];
+	strcpy(buf, name);
+	obj = readobjnam(buf, &nothing, TRUE);
+	fail_if(obj == NULL);
+	fail_unless(obj->oclass == SCROLL_CLASS, "Objektklasse %d statt Schriftrolle bekommen mit '%s'", obj->oclass, name);
+	fail_unless(typ == obj->otyp, "Schriftrolle '%s' bekommen statt '%s'", OBJ_NAME(objects[obj->otyp]), name);
+}
+
+START_TEST (test_wishing_schriftrollen) {
+	wish_for_scroll("Schriftrolle des Rüstungszaubers", SCR_ENCHANT_ARMOR);
+	wish_for_scroll("Schriftrolle der Rüstungszerstörung", SCR_DESTROY_ARMOR);
+	wish_for_scroll("Schriftrolle der Monsterverwirrung", SCR_CONFUSE_MONSTER);
+	wish_for_scroll("Schriftrolle des Monsterschrecks", SCR_SCARE_MONSTER);
+	wish_for_scroll("Schriftrolle der Fluchbannung", SCR_REMOVE_CURSE);
+	wish_for_scroll("Schriftrolle des Waffenzaubers", SCR_ENCHANT_WEAPON);
+	wish_for_scroll("Schriftrolle der Monsterbeschwörung", SCR_CREATE_MONSTER);
+	wish_for_scroll("Schriftrolle der Zähmung", SCR_TAMING);
+	wish_for_scroll("Schriftrolle des Genozides", SCR_GENOCIDE);
+	wish_for_scroll("Schriftrolle der Ausrottung", SCR_GENOCIDE);
+	wish_for_scroll("Schriftrolle des Lichtes", SCR_LIGHT);
+	wish_for_scroll("Schriftrolle der Teleportation", SCR_TELEPORTATION);
+	wish_for_scroll("Schriftrolle der Golderspürung", SCR_GOLD_DETECTION);
+	wish_for_scroll("Schriftrolle der Nahrungserspürung", SCR_FOOD_DETECTION);
+	wish_for_scroll("Schriftrolle der Identifizierung", SCR_IDENTIFY);
+	wish_for_scroll("Schriftrolle des magischen Kartierens", SCR_MAGIC_MAPPING);
+	wish_for_scroll("Schriftrolle der Amnesie", SCR_AMNESIA);
+	wish_for_scroll("Schriftrolle des Feuers", SCR_FIRE);
+	wish_for_scroll("Schriftrolle der Erde", SCR_EARTH);
+	wish_for_scroll("Schriftrolle der Bestrafung", SCR_PUNISHMENT);
+	wish_for_scroll("Schriftrolle der Aufladung", SCR_CHARGING);
+	wish_for_scroll("Schriftrolle der Gaswolke", SCR_STINKING_CLOUD);
+	wish_for_scroll("Schriftrolle des Briefes", SCR_MAIL);
+	wish_for_scroll("Schriftrolle des unbeschriebenen Blattes", SCR_BLANK_PAPER);
+} END_TEST
+
+
 Suite *test_suite(void)
 {
-  Suite *s = suite_create("all tests");
-  TCase *tc_core = tcase_create("Nethack");
+	Suite *s = suite_create("all tests");
+	TCase *tc_core = tcase_create("Nethack");
 
-  suite_add_tcase (s, tc_core);
+	suite_add_tcase (s, tc_core);
+	tcase_set_timeout(tc_core, 20);
 	tcase_add_test(tc_core, test_wishing);
 	tcase_add_test(tc_core, test_gott_weiblich);
 	tcase_add_test(tc_core, test_naming);
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
+	tcase_add_test(tc_core, test_wishing_schriftrollen);
 
   return s;
 }
