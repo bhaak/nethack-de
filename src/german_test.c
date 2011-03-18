@@ -1134,6 +1134,32 @@ START_TEST (test_pronominalisierung) {
 	check_pronomen("ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", "NOUN_PRONOMEN_3P_N_PERSONAL");
 } END_TEST
 
+
+void check_relativpronomen(const char* substantiv, const char* pronomen) {
+
+	fail_unless((strcmp(pronomen, relativpronomen(substantiv))==0),
+		"\nRelativpronomen nicht gefunden:\nSubstantiv: >%s<\nPronomen: >%s<\nerwartet: >%s<\n",
+		substantiv, relativpronomen(substantiv), pronomen);
+}
+
+START_TEST (test_relativpronomen) {
+	check_relativpronomen("NOUN_RING",    "der");
+	check_relativpronomen("NOUN_FLASCHE", "die");
+	check_relativpronomen("NOUN_T_SHIRT", "das");
+
+	check_relativpronomen("NOUN_RINGs",    "die");
+	check_relativpronomen("NOUN_FLASCHEs", "die");
+	check_relativpronomen("NOUN_T_SHIRTs", "die");
+
+	check_relativpronomen("NOUN_PAAR NOUN_IRON_SHOES", "das");
+	check_relativpronomen("ADJEKTIV_CURSED", "(BUG: Relativpronomen: kein Substantiv gefunden)");
+
+	check_relativpronomen("NOUN_SPELLBOOK", "das");
+	check_relativpronomen("ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", "das");
+	check_relativpronomen("ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", "das");
+} END_TEST
+
+
 START_TEST (test_pronomen) {
 	char *text[][2] = {
 		{"SUBJECT NOUN_PRONOMEN_3P_M_PERSONAL VERB_HIT OBJECT NOUN_PRONOMEN_3P_M_PERSONAL!",
@@ -1346,6 +1372,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_wortzusammensetzungen);
 	
 	tcase_add_test(tc_core, test_pronominalisierung);
+	tcase_add_test(tc_core, test_relativpronomen);
 	tcase_add_test(tc_core, test_pronomen);
 	tcase_add_test(tc_core, test_fugenwort);
 	tcase_add_test(tc_core, test_normalisierung);

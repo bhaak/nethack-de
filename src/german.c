@@ -1509,7 +1509,24 @@ char*
 relativpronomen(noun_token)
 const char *noun_token;
 {
-	return "(BUG: Relativpronomen nicht gefunden)";
+	const char *token = strstr(noun_token, "NOUN_");
+
+	if (token == NULL) {
+		return "(BUG: Relativpronomen: kein Substantiv gefunden)";
+	}
+
+	if (token_is_plural(token)) {
+		return "die";
+	} else if (strncmp("NOUN_PAAR NOUN_", token, 15)==0) {
+		return "das";
+	}
+
+	switch (get_genus(token)) {
+		case maskulin: return "der";
+		case feminin:  return "die";
+		case neutrum:  return "das";
+		default: return "(BUG: Relativpronomen fehlgeschlagen)";
+	}
 }
 
 char fugenwort_tmp[TBUFSZ];
