@@ -1504,6 +1504,14 @@ const char *noun_token;
 	}
 }
 
+/* Liefert das passende Relativpronomen zu dem Substantiv noun_token zurück. */
+char*
+relativpronomen(noun_token)
+const char *noun_token;
+{
+	return "(BUG: Relativpronomen nicht gefunden)";
+}
+
 char fugenwort_tmp[TBUFSZ];
 /* Liefert für eine Kompositumbildung bearbeitete Substantiv zu token zurück. */
 char*

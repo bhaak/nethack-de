@@ -774,7 +774,7 @@ buzzmu(mtmp, mattk)		/* monster uses spell (ranged) */
 	    nomul(0);
 	    if(mattk->adtyp && (mattk->adtyp < 11)) { /* no cf unsigned >0 */
 		if(canseemon(mtmp))
-		    pline("%s zaps you with a %s!", Monnam(mtmp), /* EN pline("%s zaps you with a %s!", Monnam(mtmp), */ // TODO DE
+		    pline("SUBJECT %s VERB_SCHLEUDERN OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT ARTIKEL_UNBESTIMMTER %s entgegen!", Monnam(mtmp), /* EN pline("%s zaps you with a %s!", Monnam(mtmp), */
 			  flash_types[ad_to_typ(mattk->adtyp)]);
 		buzz(-ad_to_typ(mattk->adtyp), (int)mattk->damn,
 		     mtmp->mx, mtmp->my, sgn(tbx), sgn(tby));

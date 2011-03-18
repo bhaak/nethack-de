@@ -822,7 +822,9 @@ register const char *let,*word;
 #ifdef GERMAN
 	char fragewort[BUFSZ];
 
-	if ((!strcmp(word, "schreiben")) || (!strcmp(word, "entschärfen"))) {
+	if ((!strcmp(word, "schreiben")) ||
+	    (!strcmp(word, "entschärfen")) ||
+	    (!strcmp(word, "zaubern"))) {
 		Strcpy(fragewort, "Womit");
 	} else {
 		Strcpy(fragewort, "Was");

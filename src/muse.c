@@ -131,9 +131,12 @@ struct obj *obj;
 	    int dam = d(obj->spe+2, 6);
 
 	    if (flags.soundok) {
-		if (vis) pline("%s zaps %s, which suddenly explodes!", /* EN if (vis) pline("%s zaps %s, which suddenly explodes!", */ // TODO DE
-			Monnam(mon), an(xname(obj)));
-		else You_hear("a zap and an explosion in the distance."); /* EN else You_hear("a zap and an explosion in the distance."); */ // TODO DE
+#ifdef GERMAN
+		const char *objname = xname(obj);
+#endif
+		if (vis) pline("SUBJECT %s VERB_BENUTZEN OBJECT %s, %s plötzlich explodiert!", /* EN if (vis) pline("%s zaps %s, which suddenly explodes!", */
+			Monnam(mon), an(objname), relativpronomen(objname)); /* EN Monnam(mon), an(xname(obj))); */
+		else You_hear("einen Stabzauber und eine ferne Explosion."); /* EN else You_hear("a zap and an explosion in the distance."); */
 	    }
 	    m_useup(mon, obj);
 	    if (mon->mhp <= dam) {
@@ -155,14 +158,14 @@ boolean self;
 {
 	if (!canseemon(mtmp)) {
 		if (flags.soundok)
-			You_hear("a %s zap.", /* EN You_hear("a %s zap.", */ // TODO DE
+			You_hear("einen %s Stabzauber.", /* EN You_hear("a %s zap.", */
 					(distu(mtmp->mx,mtmp->my) <= (BOLT_LIM+1)*(BOLT_LIM+1)) ?
-					"nearby" : "distant"); /* EN "nearby" : "distant"); */ // TODO DE
+					"nahen" : "entfernten"); /* EN "nearby" : "distant"); */
 	} else if (self)
-		pline("%s zaps %sself with %s!", /* EN pline("%s zaps %sself with %s!", */ // TODO DE
-		      Monnam(mtmp), mhim(mtmp), doname(otmp));
+		pline("SUBJECT %s VERB_BENUTZEN OBJECT %s auf sich selbst!", /* EN pline("%s zaps %sself with %s!", */
+		      Monnam(mtmp), doname(otmp)); /* EN Monnam(mtmp), mhim(mtmp), doname(otmp)); */
 	else {
-		pline("%s zaps %s!", Monnam(mtmp), an(xname(otmp))); /* EN pline("%s zaps %s!", Monnam(mtmp), an(xname(otmp))); */ // TODO DE
+		pline("SUBJECT %s VERB_BENUTZEN OBJECT %s!", Monnam(mtmp), an(xname(otmp))); /* EN pline("%s zaps %s!", Monnam(mtmp), an(xname(otmp))); */
 		stop_occupation();
 	}
 }

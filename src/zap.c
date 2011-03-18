@@ -1836,7 +1836,7 @@ dozap()
 	int	damage;
 
 	if(check_capacity((char *)0)) return(0);
-	obj = getobj(zap_syms, "zap"); /* EN obj = getobj(zap_syms, "zap"); */ // TODO DE
+	obj = getobj(zap_syms, "zaubern"); /* EN obj = getobj(zap_syms, "zap"); */
 	if(!obj) return(0);
 
 	check_unpaid(obj);
@@ -1911,7 +1911,7 @@ boolean ordinary;
 			exercise(A_CON, FALSE);
 		    } else {
 			shieldeff(u.ux, u.uy);
-			You("zap yourself, but seem unharmed aber folgenlos."); /* EN You("zap yourself, but seem unharmed."); */ // TODO DE
+			You("VERB_WIRKEN einen Stabzauber OBJECT auf PRONOMEN_PERSONAL selbst, aber er bleibt folgenlos."); /* EN You("zap yourself, but seem unharmed."); */
 			ugolemeffects(AD_ELEC, d(12,6));
 		    }
 		    destroy_item(WAND_CLASS, AD_ELEC);
@@ -3299,6 +3299,7 @@ register int dx,dy;
     if(u.uswallow) {
 	register int tmp;
 
+	/* kann in Vanilla nur Cold oder MM sein */
 	if(type < 0) return;
 	tmp = zhitm(u.ustuck, type, nd, &otmp);
 	if(!u.ustuck)	u.uswallow = 0;

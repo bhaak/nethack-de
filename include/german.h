@@ -88,5 +88,6 @@ char* pronominalisierung(const char *token);
 char* fugenwort(const char *token);
 char* einer_der(const char *token);
 int german_the(const char *token);
+char* relativpronomen(const char *token);
 
 #endif /* !_GERMAN_H */

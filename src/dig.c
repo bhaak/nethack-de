@@ -1252,7 +1252,7 @@ zap_dig()
 			room->typ = ROOM;
 			unblock_point(zx,zy); /* vision */
 		    } else if (!Blind)
-			pline("Der Baum schaukelt, bleibt aber unbeschädigt."); /* EN pline_The("tree shudders but is unharmed."); */
+			pline("Der Baum schaukelt, ist aber nicht beschädigt."); /* EN pline_The("tree shudders but is unharmed."); */
 		    break;
 		} else if (room->typ == STONE || room->typ == SCORR) {
 		    if (!(room->wall_info & W_NONDIGGABLE)) {
