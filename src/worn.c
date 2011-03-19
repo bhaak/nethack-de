@@ -745,7 +745,7 @@ boolean polyspot;
 		char buf[BUFSZ];
 
 		You("VERB_TOUCH OBJECT %s.", mon_nam(u.usteed)); /* EN You("touch %s.", mon_nam(u.usteed)); */
-		Sprintf(buf, "falling off %s", /* EN Sprintf(buf, "falling off %s", */ // TODO DE
+		Sprintf(buf, "beim Fallen KASUS_DATIV von %s", /* EN Sprintf(buf, "falling off %s", */
 				an(u.usteed->data->mname));
 		instapetrify(buf);
 	    }

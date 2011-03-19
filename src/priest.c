@@ -169,7 +169,7 @@ register struct monst *priest;
 	   (Conflict && !resist(priest, RING_CLASS, 0, 0))) {
 		if(monnear(priest, u.ux, u.uy)) {
 			if(Displaced)
-				Your("ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE doesn't fool %s!", /* EN Your("displaced image doesn't fool %s!", */ // TODO DE
+				Your("ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE VERB_KOENNEN OBJECT %s nicht narren!", /* EN Your("displaced image doesn't fool %s!", */
 					mon_nam(priest));
 			(void) mattacku(priest);
 			return(0);
@@ -402,7 +402,7 @@ register int roomno;
 		}
 	    } else {
 		switch(rn2(3)) {
-		  case 0: You("have an eerie feeling..."); break; /* EN case 0: You("have an eerie feeling..."); break; */ // TODO DE
+		  case 0: You("VERB_HABEN eine gespenstisches Gefühl ..."); break; /* EN case 0: You("have an eerie feeling..."); break; */
 		  case 1: Du_fuehlst_dich("beobachtet."); break; /* EN case 1: You_feel("like you are being watched."); break; */
 		  default: pline("Ein Schauer läuft OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER %s hinunter.", /* EN default: pline("A shiver runs down your %s.", */
 			body_part(SPINE)); break;
@@ -414,7 +414,7 @@ register int roomno;
 			return;
 		    if (!Blind || sensemon(mtmp))
 		    pline("SUBJECT ARTIKEL_UNBESTIMMTER ADJEKTIV_RIESIG NOUN_GHOST VERB_ERSCHEINEN OBJECT KASUS_DATIV neben PRONOMEN_PERSONAL!"); /* EN pline("An enormous ghost appears next to you!"); */
-		    else You("sense a presence close by!"); /* EN else You("sense a presence close by!"); */ // TODO DE
+		    else Du_spuerst("ganz nah eine besondere Präsenz!"); /* EN else You("sense a presence close by!"); */
 		    mtmp->mpeaceful = 0;
 		    set_malign(mtmp);
 		    if(flags.verbose)
@@ -447,9 +447,9 @@ register struct monst *priest;
 	if(!histemple_at(priest,priest->mx,priest->my) ||
 		 !priest->mpeaceful || !priest->mcanmove || priest->msleeping) {
 	    static const char *cranky_msg[3] = {
-		"Thou wouldst have words, eh?  I'll give thee a word or two!", /* EN "Thou wouldst have words, eh?  I'll give thee a word or two!", */ // TODO DE
-		"Talk?  Here is what I have to say!", /* EN "Talk?  Here is what I have to say!", */ // TODO DE
-		"Pilgrim, I would speak no longer with thee." /* EN "Pilgrim, I would speak no longer with thee." */ // TODO DE
+		"SUBJECT PRONOMEN_PERSONAL VERB_WOLLEN Worte wechseln, he?  Ich gebe KASUS_DATIV PRONOMEN_PERSONAL ein paar Worte!", /* EN "Thou wouldst have words, eh?  I'll give thee a word or two!", */
+		"Reden?  DAS habe ich zu sagen!", /* EN "Talk?  Here is what I have to say!", */
+		"PLAYER_PILGER, ich will nicht mehr länger KASUS_DATIV mit PRONOMEN_PERSONAL sprechen." /* EN "Pilgrim, I would speak no longer with thee." */
 	    };
 
 	    if(!priest->mcanmove || priest->msleeping) {

@@ -79,7 +79,7 @@ boolean complain;
 #endif
 	  ) {
 	    if (complain)
-		pline("Version mismatch for file \"%s\".", filename); /* EN pline("Version mismatch for file \"%s\".", filename); */ // TODO DE
+		pline("Inkompatible Version bei Datei \"%s\".", filename); /* EN pline("Version mismatch for file \"%s\".", filename); */
 	    return FALSE;
 	} else if (
 #ifndef IGNORED_FEATURES
@@ -91,7 +91,7 @@ boolean complain;
 		   version_data->entity_count != VERSION_SANITY1 ||
 		   version_data->struct_sizes != VERSION_SANITY2) {
 	    if (complain)
-		pline("Configuration incompatibility for file \"%s\".", /* EN pline("Configuration incompatibility for file \"%s\".", */ // TODO DE
+		pline("Konfiguration inkompatibel mit Datei \"%s\".", /* EN pline("Configuration incompatibility for file \"%s\".", */
 		      filename);
 	    return FALSE;
 	}

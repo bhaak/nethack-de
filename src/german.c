@@ -1138,6 +1138,8 @@ char* german(const char *line) {
 				append(output, flags.female ? "Schurkin" : "Schurke");
 			} else if (strncmp("PLAYER_GAUNER", tmp, 13)==0) {
 				append(output, flags.female ? "Gaunerin" : "Gauner");
+			} else if (strncmp("PLAYER_PILGER", tmp, 13)==0) {
+				append(output, flags.female ? "Pilgerin" : "Pilger");
 			}
 #endif
 		} else if (strncmp("NOUN_", tmp, 5)==0) {

@@ -108,7 +108,7 @@ boolean quietly;
 		mtmp->mtame = 0;	/* not tame after all */
 		if (chance == 2) { /* hostile (cursed figurine) */
 		    if (!quietly)
-		       You("get a bad feeling about this."); /* EN You("get a bad feeling about this."); */ // TODO DE
+		       You("VERB_HABEN dabei ein ganz schlechtes Gefühl."); /* EN You("get a bad feeling about this."); */
 		    mtmp->mpeaceful = 0;
 		    set_malign(mtmp);
 		}
@@ -535,7 +535,7 @@ boolean pets_only;	/* true for ascension or final escape */
 			stay_behind = TRUE;
 		} else if (mtmp->mtame && mtmp->mtrapped) {
 			if (canseemon(mtmp))
-			    pline("%s is still trapped.", Monnam(mtmp)); /* EN pline("%s is still trapped.", Monnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s ist immer noch gefangen.", Monnam(mtmp)); /* EN pline("%s is still trapped.", Monnam(mtmp)); */
 			stay_behind = TRUE;
 		}
 #ifdef STEED

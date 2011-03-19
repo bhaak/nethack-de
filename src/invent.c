@@ -2353,12 +2353,12 @@ boolean force_touch;
 
 	if (will_feel_cockatrice(otmp, force_touch)) {
 	    if(poly_when_stoned(youmonst.data))
-			You("touched the %s corpse with your bare %s.", /* EN You("touched the %s corpse with your bare %s.", */ // TODO DE
-				mons[otmp->corpsenm].mname, makeplural(body_part(HAND)));
+			You("VERB_HABEN OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV ADJEKTIV_BARE %s berührt.", /* EN You("touched the %s corpse with your bare %s.", */
+				the(corpse_xname(otmp, TRUE)), makeplural(body_part(HAND))); /* EN mons[otmp->corpsenm].mname, makeplural(body_part(HAND))); */
 	    else
-			pline("Touching the %s corpse is a fatal mistake...", /* EN pline("Touching the %s corpse is a fatal mistake...", */ // TODO DE
-				mons[otmp->corpsenm].mname);
-		Sprintf(kbuf, "%s corpse", an(mons[otmp->corpsenm].mname)); /* EN Sprintf(kbuf, "%s corpse", an(mons[otmp->corpsenm].mname)); */ // TODO DE
+			pline("SATZBEGINN KASUS_AKKUSATIV %s zu berühren ist ein fataler Fehler ...", /* EN pline("Touching the %s corpse is a fatal mistake...", */
+				the(corpse_xname(otmp, TRUE))); /* EN mons[otmp->corpsenm].mname); */
+		Sprintf(kbuf, "wegen KASUS_GENITIV %s", an(corpse_xname(otmp, TRUE))); /* EN Sprintf(kbuf, "%s corpse", an(mons[otmp->corpsenm].mname)); */
 		instapetrify(kbuf);
 	}
 }
