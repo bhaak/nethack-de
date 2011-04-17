@@ -4,7 +4,7 @@
  # These must agree with the definitions in unixconf.h
  
  # Defs. for non file areas support.
--GAMEDIR  = $(PREFIX)/nethackdir
+-GAMEDIR  = $(PREFIX)/nethackdedir
 +GAMEDIR  = /var/games/nethack-de
  VARDIR = $(GAMEDIR)
  FILE_AREA_VAR = $(VARDIR)
