@@ -1,0 +1,11 @@
+--- ../sys/autoconf/Makefile.top
++++ ../sys/autoconf/Makefile.top
+@@ -45,7 +45,7 @@
+ # These must agree with the definitions in unixconf.h
+ 
+ # Defs. for non file areas support.
+-GAMEDIR  = $(PREFIX)/nethackdir
++GAMEDIR  = /var/games/nethack-de
+ VARDIR = $(GAMEDIR)
+ FILE_AREA_VAR = $(VARDIR)
+ FILE_AREA_SAVE = $(VARDIR)/save

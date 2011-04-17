@@ -1,0 +1,13 @@
+Source: nethack-de
+Section: games
+Priority: extra
+Maintainer: Patric Mueller <bhaak@gmx.net>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, flex, bison, libncurses5-dev
+Standards-Version: 3.8.4
+Homepage: http://nethack-de.sourceforge.net/
+
+Package: nethack-de
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: NetHack-De is a translation of NetHack into German.
+ NetHack-De is a translation of the single player dungeon exploration game NetHack into German.
