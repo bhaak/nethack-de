@@ -402,7 +402,7 @@ register int roomno;
 		}
 	    } else {
 		switch(rn2(3)) {
-		  case 0: You("VERB_HABEN eine gespenstisches Gefühl ..."); break; /* EN case 0: You("have an eerie feeling..."); break; */
+		  case 0: You("VERB_HABEN ein gespenstisches Gefühl ..."); break; /* EN case 0: You("have an eerie feeling..."); break; */
 		  case 1: Du_fuehlst_dich("beobachtet."); break; /* EN case 1: You_feel("like you are being watched."); break; */
 		  default: pline("Ein Schauer läuft OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT ARTIKEL_BESTIMMTER %s hinunter.", /* EN default: pline("A shiver runs down your %s.", */
 			body_part(SPINE)); break;

@@ -1115,6 +1115,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_VERHASPELN","verhaspeln"),
 		Verb.verb("VERB_VERHEDDERN","verheddern"),
 		Verb.verb("VERB_VERHUNGERN","verhungern"),
+		Verb.verb("VERB_VERINNERLICHEN","verinnerlichen"),
 		Verb.verb("VERB_VERKOHLEN","verkohlen"),
 		Verb.verb("VERB_VERKUENDEN","verkünden"),
 		Verb.verb("VERB_VERLANGEN","verlangen"),

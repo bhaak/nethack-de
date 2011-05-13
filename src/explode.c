@@ -60,7 +60,7 @@ int expltype;
 	    adtyp = AD_PHYS;
 	} else
 	switch (abs(type) % 10) {
-		case 0: str = "magical blast"; /* EN case 0: str = "magical blast"; */ // TODO DE
+		case 0: str = "NOUN_MAGIEEXPLOSION"; /* EN case 0: str = "magical blast"; */
 			adtyp = AD_MAGM;
 			break;
 		case 1: str =   olet == BURNING_OIL ?	"ADJEKTIV_BRENNEND NOUN_POT_OIL" : /* EN case 1: str =   olet == BURNING_OIL ?	"burning oil" : */
@@ -68,20 +68,20 @@ int expltype;
 							"NOUN_FIREBALL"; /* EN "fireball"; */
 			adtyp = AD_FIRE;
 			break;
-		case 2: str = "ball of cold"; /* EN case 2: str = "ball of cold"; */ // TODO DE
+		case 2: str = "NOUN_EISSTURM"; /* EN case 2: str = "ball of cold"; */
 			adtyp = AD_COLD;
 			break;
 		case 4: str =  (olet == WAND_CLASS) ? "NOUN_TODESFELD" : /* EN case 4: str =  (olet == WAND_CLASS) ? "death field" : */
 							"NOUN_DESINTEGRATIONFELD"; /* EN "disintegration field"; */
 			adtyp = AD_DISN;
 			break;
-		case 5: str = "ball of lightning"; /* EN case 5: str = "ball of lightning"; */ // TODO DE
+		case 5: str = "NOUN_BLITZGEWITTER"; /* EN case 5: str = "ball of lightning"; */
 			adtyp = AD_ELEC;
 			break;
 		case 6: str = "NOUN_GIFTGASWOLKE"; /* EN case 6: str = "poison gas cloud"; */
 			adtyp = AD_DRST;
 			break;
-		case 7: str = "splash of acid"; /* EN case 7: str = "splash of acid"; */ // TODO DE
+		case 7: str = "NOUN_SAEUREWOLKE"; /* EN case 7: str = "splash of acid"; */
 			adtyp = AD_ACID;
 			break;
 		default: impossible("explosion base type %d?", type); return;
@@ -345,8 +345,8 @@ int expltype;
 			    killer_format = KILLED_BY_AN;
 			} else if (type >= 0 && olet != SCROLL_CLASS) {
 			    killer_format = NO_KILLER_PREFIX;
-			    Sprintf(killer_buf, "caught %sself in %s own %s", /* EN Sprintf(killer_buf, "caught %sself in %s own %s", */ // TODO DE
-				    uhim(), uhis(), str);
+			    Sprintf(killer_buf, "wurde von KASUS_DATIV %s ADJEKTIV_EIGENE %s erfasst", /* EN Sprintf(killer_buf, "caught %sself in %s own %s", */
+				    uhis(), str); /* EN uhim(), uhis(), str); */
 			} else if (!strncmpi(str,"NOUN_FLAMMENSAEULE", 18) || /* EN } else if (!strncmpi(str,"tower of flame", 8) || */
 				   !strncmpi(str,"NOUN_FIREBALL", 13)) { /* EN !strncmpi(str,"fireball", 8)) { */
 			    killer_format = KILLED_BY_AN;

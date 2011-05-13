@@ -373,11 +373,11 @@ moveloop()
 		u.utrap -= 1<<8;
 		if(u.utrap < 1<<8) {
 		    killer_format = KILLED_BY;
-		    killer = "ADJEKTIV_FLUESSIG NOUN_LAVA"; /* EN killer = "molten lava"; */ // TODO DE
-		    You("sink below the surface and die."); /* EN You("sink below the surface and die."); */ // TODO DE
+		    killer = "ADJEKTIV_FLUESSIG NOUN_LAVA"; /* EN killer = "molten lava"; */
+		    You("VERB_SINKEN unter die Oberfläche und VERB_STERBEN."); /* EN You("sink below the surface and die."); */
 		    done(DISSOLVED);
 		} else if(didmove && !u.umoved) {
-		    Norep("You sink deeper into the lava."); /* EN Norep("You sink deeper into the lava."); */ // TODO DE
+		    Norep("SUBJECT PRONOMEN_PERSONAL VERB_SINKEN tiefer in die Lava."); /* EN Norep("You sink deeper into the lava."); */
 		    u.utrap += rnd(4);
 		}
 	    }

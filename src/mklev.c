@@ -1392,7 +1392,7 @@ struct mkroom *croom;
 	} while (occupied(m.x, m.y) || bydoor(m.x, m.y));
 
 	/* Put a grave at m.x, m.y */
-	make_grave(m.x, m.y, dobell ? "Saved by the bell!" : (char *) 0); /* EN make_grave(m.x, m.y, dobell ? "Saved by the bell!" : (char *) 0); */ // TODO DE
+	make_grave(m.x, m.y, dobell ? "Wem die Stunde schlägt" : (char *) 0); /* EN make_grave(m.x, m.y, dobell ? "Saved by the bell!" : (char *) 0); */
 
 	/* Possibly fill it with objects */
 	if (!rn2(3)) (void) mkgold(0L, m.x, m.y);
@@ -1430,8 +1430,8 @@ mkinvokearea()
     xchar ymin = inv_pos.y, ymax = inv_pos.y;
     register xchar i;
 
-    pline_The("floor shakes violently under you!"); /* EN pline_The("floor shakes violently under you!"); */ // TODO DE
-    pline_The("walls around you begin to bend and crumble!"); /* EN pline_The("walls around you begin to bend and crumble!"); */ // TODO DE
+    pline("Der Boden KASUS_DATIV unter PRONOMEN_PERSONAL bebt gewaltig!"); /* EN pline_The("floor shakes violently under you!"); */
+    pline("Die Wände beginnen zu wackeln und stürzen ein!"); /* EN pline_The("walls around you begin to bend and crumble!"); */
     display_nhwindow(WIN_MESSAGE, TRUE);
 
     mkinvpos(xmin, ymin, 0);		/* middle, before placing stairs */
@@ -1458,7 +1458,7 @@ mkinvokearea()
 	delay_output();
     }
 
-    You("are standing at the top of a stairwell leading down!"); /* EN You("are standing at the top of a stairwell leading down!"); */ // TODO DE
+    You("VERB_STEHEN an einem Treppenschacht, der tief in den Untergrund führt!"); /* EN You("are standing at the top of a stairwell leading down!"); */
     mkstairs(u.ux, u.uy, 0, (struct mkroom *)0); /* down */
     newsym(u.ux, u.uy);
     vision_full_recalc = 1;	/* everything changed */

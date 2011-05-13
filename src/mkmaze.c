@@ -1169,7 +1169,7 @@ xchar x,y;
 	schar ltyp;
 
 	if (!isok(x,y))
-		return "drink";		/* should never happen */ /* EN return "drink"; */ // TODO DE
+		return "NOUN_FLUESSIGKEIT";		/* should never happen */ /* EN return "drink"; */
 	lev = &levl[x][y];
 	ltyp = lev->typ;
 

@@ -118,7 +118,7 @@ boolean quietly;
 	    } else
 #endif /* GOLDOBJ */
 	    if (otmp->in_use) {
-		if (!quietly) pline("Finishing off %s...", xname(otmp)); /* EN if (!quietly) pline("Finishing off %s...", xname(otmp)); */ // TODO DE
+		if (!quietly) pline("Verbrauche %s ...", xname(otmp)); /* EN if (!quietly) pline("Finishing off %s...", xname(otmp)); */
 		useup(otmp);
 	    }
 	}
@@ -367,7 +367,7 @@ unsigned int *stuckid, *steedid;	/* STEED */
 	if (uid != getuid()) {		/* strange ... */
 	    /* for wizard mode, issue a reminder; for others, treat it
 	       as an attempt to cheat and refuse to restore this file */
-	    pline("Saved game was not yours."); /* EN pline("Saved game was not yours."); */ // TODO DE
+	    pline("Der gespeicherte Spielstand gehört nicht KASUS_DATIV PRONOMEN_PERSONAL."); /* EN pline("Saved game was not yours."); */
 #ifdef WIZARD
 	    if (!wizard)
 #endif
@@ -510,7 +510,7 @@ xchar ltmp;
 		/* The savelev can't proceed because the size required
 		 * is greater than the available disk space.
 		 */
-		pline("Not enough space on `%s' to restore your game.", /* EN pline("Not enough space on `%s' to restore your game.", */ // TODO DE
+		pline("Nicht genug Speicherplatz auf \"%s\" um KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GAME zu laden.", /* EN pline("Not enough space on `%s' to restore your game.", */
 			levels);
 
 		/* Remove levels and bones that may have been created.
@@ -1099,13 +1099,13 @@ register unsigned int len;
 	rlen = read(fd, buf, (unsigned) len);
 	if((unsigned)rlen != len){
 #endif
-		pline("Read %d instead of %u bytes.", rlen, len); /* EN pline("Read %d instead of %u bytes.", rlen, len); */ // TODO DE
+		pline("Nur %d Bytes gelesen anstatt erwarteter %u Bytes.", rlen, len); /* EN pline("Read %d instead of %u bytes.", rlen, len); */
 		if(restoring) {
 			(void) close(fd);
 			(void) delete_savefile();
-			error("Error restoring old game.");
+			error("Fehler beim Laden eines alten Spieles."); /* EN error("Error restoring old game."); */
 		}
-		panic("Error reading level file.");
+		panic("Fehler beim Lesen einer Level-Datei."); /* EN panic("Error reading level file."); */
 	}
 }
 #endif /* ZEROCOMP */

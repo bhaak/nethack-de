@@ -213,7 +213,7 @@ struct obj *corpse;
 		if (wizard) {
 		    if (yn("Bones-Datei existiert bereits.  Ersetzen?") == 'y') { /* EN if (yn("Bones file already exists.  Replace it?") == 'y') { */
 			if (delete_bonesfile(&u.uz)) goto make_bones;
-			else pline("Cannot unlink old bones."); /* EN else pline("Cannot unlink old bones."); */ // TODO DE
+			else pline("Kann alte Bones-Datei nicht löschen."); /* EN else pline("Cannot unlink old bones."); */
 		    }
 		}
 #endif

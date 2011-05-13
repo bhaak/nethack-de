@@ -343,7 +343,7 @@ register struct obj	*sobj;
 	return !stale;
     } else if (!ct) {
 	known = TRUE;
-	You("%s %s nearby.", sobj ? "smell" : "sense", what); /* EN You("%s %s nearby.", sobj ? "smell" : "sense", what); */ // TODO DE
+	You("%s %s ganz in der N‰he.", sobj ? "VERB_RIECHEN" : "VERB_SPUEREN", what); /* EN You("%s %s nearby.", sobj ? "smell" : "sense", what); */
 	if (sobj && sobj->blessed) {
 		if (!u.uedibility) pline("SUBJECT PRONOMEN_POSSESSIV %s beginnt zu kribbeln.", body_part(NOSE)); /* EN if (!u.uedibility) pline("Your %s starts to tingle.", body_part(NOSE)); */
 		u.uedibility = 1;
@@ -379,7 +379,7 @@ register struct obj	*sobj;
 	    } else
 		Your("%s kribbelt und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SMELL OBJECT %s.", body_part(NOSE), what); /* EN Your("%s tingles and you smell %s.", body_part(NOSE), what); */
 	}
-	else You("sense %s.", what); /* EN else You("sense %s.", what); */ // TODO DE
+	else You("VERB_SPUEREN OBJECT %s.", what); /* EN else You("sense %s.", what); */
 	display_nhwindow(WIN_MAP, TRUE);
 	exercise(A_WIS, TRUE);
 	docrt();
@@ -432,7 +432,7 @@ int		class;		/* an object class, 0 for all */
 	Strcpy(stuff, something);
     else
     	Strcpy(stuff, class ? oclass_names[class] : "NOUN_OBJECTs"); /* EN Strcpy(stuff, class ? oclass_names[class] : "objects"); */
-    if (boulder && class != ROCK_CLASS) Strcat(stuff, " and/or large stones"); /* EN if (boulder && class != ROCK_CLASS) Strcat(stuff, " and/or large stones"); */ // TODO DE
+    if (boulder && class != ROCK_CLASS) Strcat(stuff, " und/oder Gesteinsbrocken"); /* EN if (boulder && class != ROCK_CLASS) Strcat(stuff, " and/or large stones"); */
 
     if (do_dknown) for(obj = invent; obj; obj = obj->nobj) do_dknown_of(obj);
 
@@ -473,11 +473,11 @@ int		class;		/* an object class, 0 for all */
     if (!clear_stale_map(!class ? ALL_CLASSES : class, 0) && !ct) {
 	if (!ctu) {
 	    if (detector)
-		strange_feeling(detector, "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN, dass in der N‰he etwas fehlt."); /* EN strange_feeling(detector, "You feel a lack of something."); */
+		strange_feeling(detector, "SUBJECT PRONOMEN_PERSONAL VERB_SPUEREN, dass da etwas fehlt."); /* EN strange_feeling(detector, "You feel a lack of something."); */
 	    return 1;
 	}
 
-	You("sense %s nearby.", stuff); /* EN You("sense %s nearby.", stuff); */ // TODO DE
+	You("VERB_SPUEREN OBJECT %s in der N‰he.", stuff); /* EN You("sense %s nearby.", stuff); */
 	return 0;
     }
 
@@ -602,7 +602,7 @@ int mclass;			/* monster class, 0 for all */
     if (!mcnt) {
 	if (otmp)
 	    strange_feeling(otmp, Hallucination ?
-			    "You get the heebie jeebies." : /* EN "You get the heebie jeebies." : */ // TODO DE
+			    "SATZBEGINN OBJECT PRONOMEN_PERSONAL packt das kalte Grausen." : /* EN "You get the heebie jeebies." : */
 			    "SUBJECT PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL bedroht."); /* EN "You feel threatened."); */
 	return 1;
     } else {
@@ -800,7 +800,7 @@ struct obj *obj;
     oops = (rnd(20) > ACURR(A_INT) || obj->cursed);
     if (oops && (obj->spe > 0)) {
 	switch (rnd(obj->oartifact ? 4 : 5)) {
-	case 1 : pline("%s too much to comprehend!", Tobjnam(obj, "are")); /* EN case 1 : pline("%s too much to comprehend!", Tobjnam(obj, "are")); */ // TODO DE
+	case 1 : pline("SUBJECT %s VERB_SEIN OBJECT KASUS_DATIV PRONOMEN_PERSONAL unbegreiflich!", The(xname(obj))); /* EN case 1 : pline("%s too much to comprehend!", Tobjnam(obj, "are")); */
 	    break;
 	case 2 : pline("SUBJECT %s OBJECT PRONOMEN_PERSONAL!", Tobjnam(obj, "VERB_CONFUSE")); /* EN case 2 : pline("%s you!", Tobjnam(obj, "confuse")); */
 	    make_confused(HConfusion + rnd(100),FALSE);
@@ -832,7 +832,7 @@ struct obj *obj;
 	    pline("SUBJECT PRONOMEN_PERSONAL VERB_SEE nichts als OBJECT irre %s NOUN_DUNST.", hcolor((char *)0)); /* EN pline("All you see is funky %s haze.", hcolor((char *)0)); */
 	} else {
 	    switch(rnd(6)) {
-	    case 1 : You("grok some groovy globs of incandescent lava."); /* EN case 1 : You("grok some groovy globs of incandescent lava."); */ // TODO DE
+	    case 1 : You("VERB_VERINNERLICHEN die strukturelle Essenz gleiﬂender Lavablasen."); /* EN case 1 : You("grok some groovy globs of incandescent lava."); */
 		break;
 	    case 2 : pline("Wahnsinn!  Psychedelische Farben, %s!", /* EN case 2 : pline("Whoa!  Psychedelic colors, %s!", */
 			   poly_gender() == 1 ? "Torte" : "Alter"); /* EN poly_gender() == 1 ? "babe" : "dude"); */
