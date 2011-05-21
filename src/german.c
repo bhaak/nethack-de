@@ -1531,6 +1531,29 @@ const char *noun_token;
 	}
 }
 
+/* Liefert das passende Indefinitpronomen zu dem Substantiv noun_token im Akkusativ zurück. */
+char*
+indefinitpronomen_eines(noun_token)
+const char *noun_token;
+{
+	const char *token = strstr(noun_token, "NOUN_");
+
+	if (token == NULL) {
+		return "(BUG: Indefinitpronomen: kein Substantiv gefunden)";
+	}
+
+	if (strncmp("NOUN_PAAR NOUN_", token, 15)==0) {
+		return "es";
+	}
+
+	switch (get_genus(token)) {
+		case maskulin: return "einen";
+		case feminin:  return "eine";
+		case neutrum:  return "eines";
+		default: return "(BUG: Indefinitpronomen fehlgeschlagen)";
+	}
+}
+
 char fugenwort_tmp[TBUFSZ];
 /* Liefert für eine Kompositumbildung bearbeitete Substantiv zu token zurück. */
 char*

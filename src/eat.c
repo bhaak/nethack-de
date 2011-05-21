@@ -1790,8 +1790,8 @@ struct obj *otmp;
 
 	Strcpy(foodsmell, Tobjnam(otmp, "VERB_SMELL")); /* EN Strcpy(foodsmell, Tobjnam(otmp, "smell")); */
 	Strcpy(it_or_they, pronominalisierung(xname(otmp))); /* EN Strcpy(it_or_they, (otmp->quan == 1L) ? "it" : "they"); */
-	Sprintf(eat_it_anyway, "Trotzdem %sessen?", /* EN Sprintf(eat_it_anyway, "Eat %s anyway?", */
-		(otmp->quan == 1L) ? "" : "eines"); /* EN (otmp->quan == 1L) ? "it" : "one"); */
+	Sprintf(eat_it_anyway, (otmp->quan == 1L) ? "SATZBEGINN KASUS_AKKUSATIV %s trotzdem essen?" : "Trotzdem %s essen?", /* EN Sprintf(eat_it_anyway, "Eat %s anyway?", */
+		(otmp->quan == 1L) ? it_or_they : indefinitpronomen_eines(xname(otmp))); /* EN (otmp->quan == 1L) ? "it" : "one"); */
 
 	if (cadaver || otmp->otyp == EGG || otmp->otyp == TIN) {
 		/* These checks must match those in eatcorpse() */
@@ -2497,7 +2497,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 			Sprintf(qbuf, "Hier %s %s; NEUER_SATZ KASUS_AKKUSATIV %s MODIFIER_VERB_INFINITIV %s?", /* EN Sprintf(qbuf, "There %s %s here; %s %s?", */
 				otense(otmp, "VERB_LIEGEN"), /* EN otense(otmp, "are"), */
 				doname(otmp), /* EN doname(otmp), verb, */
-				(otmp->quan == 1L) ? pronominalisierung(xname(otmp)) : "eines", verb); /* EN (otmp->quan == 1L) ? "it" : "one"); */ // TODO DE "eines" ist nicht gut genug
+				(otmp->quan == 1L) ? pronominalisierung(xname(otmp)) : indefinitpronomen_eines(xname(otmp)), verb); /* EN (otmp->quan == 1L) ? "it" : "one"); */
 			if((c = yn_function(qbuf,ynqchars,'n')) == 'y')
 				return(otmp);
 			else if(c == 'q')

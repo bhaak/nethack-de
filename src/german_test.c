@@ -1160,6 +1160,31 @@ START_TEST (test_relativpronomen) {
 } END_TEST
 
 
+void check_indefinitpronomen(const char* substantiv, const char* pronomen) {
+
+	fail_unless((strcmp(pronomen, indefinitpronomen_eines(substantiv))==0),
+		"\nIndefinitpronomen nicht gefunden:\nSubstantiv: >%s<\nPronomen: >%s<\nerwartet: >%s<\n",
+		substantiv, indefinitpronomen_eines(substantiv), pronomen);
+}
+
+START_TEST (test_indefinitpronomen) {
+	check_indefinitpronomen("NOUN_RING",    "einen");
+	check_indefinitpronomen("NOUN_FLASCHE", "eine");
+	check_indefinitpronomen("NOUN_T_SHIRT", "eines");
+
+	check_indefinitpronomen("NOUN_RINGs",    "einen");
+	check_indefinitpronomen("NOUN_FLASCHEs", "eine");
+	check_indefinitpronomen("NOUN_T_SHIRTs", "eines");
+
+	check_indefinitpronomen("NOUN_PAAR NOUN_IRON_SHOES", "es");
+	check_indefinitpronomen("ADJEKTIV_CURSED", "(BUG: Indefinitpronomen: kein Substantiv gefunden)");
+
+	check_indefinitpronomen("NOUN_SPELLBOOK", "eines");
+	check_indefinitpronomen("ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", "eines");
+	check_indefinitpronomen("ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", "eines");
+} END_TEST
+
+
 START_TEST (test_pronomen) {
 	char *text[][2] = {
 		{"SUBJECT NOUN_PRONOMEN_3P_M_PERSONAL VERB_HIT OBJECT NOUN_PRONOMEN_3P_M_PERSONAL!",
@@ -1373,6 +1398,7 @@ Suite *test_suite(void)
 	
 	tcase_add_test(tc_core, test_pronominalisierung);
 	tcase_add_test(tc_core, test_relativpronomen);
+	tcase_add_test(tc_core, test_indefinitpronomen);
 	tcase_add_test(tc_core, test_pronomen);
 	tcase_add_test(tc_core, test_fugenwort);
 	tcase_add_test(tc_core, test_normalisierung);
