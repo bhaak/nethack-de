@@ -270,13 +270,13 @@ char c;
 			break;
 	    case 'D':	str = align_gname(A_LAWFUL);
 			break;
-	    case 'C':	str = "chaotic"; /* EN case 'C':	str = "chaotic"; */ // TODO DE
+	    case 'C':	str = "ADJEKTIV_CHAOTIC"; /* EN case 'C':	str = "chaotic"; */
 			break;
-	    case 'N':	str = "neutral"; /* EN case 'N':	str = "neutral"; */ // TODO DE
+	    case 'N':	str = "ADJEKTIV_NEUTRAL"; /* EN case 'N':	str = "neutral"; */
 			break;
-	    case 'L':	str = "lawful"; /* EN case 'L':	str = "lawful"; */ // TODO DE
+	    case 'L':	str = "ADJEKTIV_LAWFUL"; /* EN case 'L':	str = "lawful"; */
 			break;
-	    case 'x':	str = Blind ? "sense" : "see"; /* EN case 'x':	str = Blind ? "sense" : "see"; */ // TODO DE
+	    case 'x':	str = Blind ? "VERB_SPUEREN" : "VERB_SEHEN"; /* EN case 'x':	str = Blind ? "sense" : "see"; */
 			break;
 	    case 'Z':	str = dungeons[0].dname;
 			break;

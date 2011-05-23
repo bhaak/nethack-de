@@ -1550,7 +1550,6 @@ static void FDECL(error4, (int,int,int,int,int,int));
 
 static int bad_count[MAX_TYPE]; /* count of positions flagged as bad */
 static const char *type_names[MAX_TYPE] = {
-// TODO DE
 	"STONE",	"VWALL",	"HWALL",	"TLCORNER",
 	"TRCORNER",	"BLCORNER",	"BRCORNER",	"CROSSWALL",
 	"TUWALL",	"TDWALL",	"TLWALL",	"TRWALL",

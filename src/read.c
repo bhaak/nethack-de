@@ -65,9 +65,9 @@ doread()
     "I explored the Dungeons of Doom and all I got was this lousy T-shirt!",
     "Is that Mjollnir in your pocket or are you just happy to see me?",
     "It's not the size of your sword, it's how #enhance'd you are with it.",
-    "Madame Elvira's House O' Succubi Lifetime Customer",
-    "Madame Elvira's House O' Succubi Employee of the Month",
-    "Ludios Vault Guards Do It In Small, Dark Rooms",
+    "Madame Elviras House O' Succubi - Kunde auf Lebenszeit", /* EN "Madame Elvira's House O' Succubi Lifetime Customer", */
+    "Madame Elviras House O' Succubi - Mitarbeiter des Monats", /* EN "Madame Elvira's House O' Succubi Employee of the Month", */
+    "Ludios' Tresorwachen tun es in kleinen, dunklen Räumen", /* EN "Ludios Vault Guards Do It In Small, Dark Rooms", */
     "Yendor Military Soldiers Do It In Large Groups",
     "I survived Yendor Military Boot Camp",
     "Ludios Accounting School Intra-Mural Lacrosse Team",

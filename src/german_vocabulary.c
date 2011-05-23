@@ -11142,6 +11142,9 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Zischen", "NOUN_ZISCHEN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Zischen", "NOUN_ZISCHENs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
+  {"Zorkmid", "NOUN_ZORKMID", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Zorkmid", "NOUN_ZORKMIDs", "", dativ|nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
   {"Zukunft", "NOUN_ZUKUNFT", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
   {"Zukünfte", "NOUN_ZUKUNFTs", "", nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
   {"Zukünften", "NOUN_ZUKUNFTs", "", dativ, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
@@ -12022,6 +12025,79 @@ struct substantiv_oder_adjekiv_struct worte[] = {
 
 
   /* Farbennamen */
+
+  {"Schwarzs", "NOUN_FARBE_BLACK", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarz", "NOUN_FARBE_BLACK", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarz", "NOUN_FARBE_BLACKs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Schwarzn", "NOUN_FARBE_BLACKs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Rots", "NOUN_FARBE_RED", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rot", "NOUN_FARBE_RED", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Rot", "NOUN_FARBE_REDs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Rotn", "NOUN_FARBE_REDs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Grüns", "NOUN_FARBE_GREEN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grün", "NOUN_FARBE_GREEN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grün", "NOUN_FARBE_GREENs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Brauns", "NOUN_FARBE_BROWN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Braun", "NOUN_FARBE_BROWN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Braun", "NOUN_FARBE_BROWNs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Blaus", "NOUN_FARBE_BLUE", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blau", "NOUN_FARBE_BLUE", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blau", "NOUN_FARBE_BLUEs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Blaun", "NOUN_FARBE_BLUEs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Tiefrots", "NOUN_FARBE_MAGENTA", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tiefrot", "NOUN_FARBE_MAGENTA", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Tiefrot", "NOUN_FARBE_MAGENTAs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Tiefrotn", "NOUN_FARBE_MAGENTAs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Türkiss", "NOUN_FARBE_CYAN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Türkis", "NOUN_FARBE_CYAN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Türkis", "NOUN_FARBE_CYANs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Türkisn", "NOUN_FARBE_CYANs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Graus", "NOUN_FARBE_GRAY", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grau", "NOUN_FARBE_GRAY", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Grau", "NOUN_FARBE_GRAYs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Graun", "NOUN_FARBE_GRAYs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Durchsichtigkeit", "NOUN_FARBE_TRANSPARENT", "", dativ|nominativ|akkusativ|genitiv, feminin, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Durchsichtigkeiten", "NOUN_FARBE_TRANSPARENTs", "", dativ|nominativ|akkusativ|genitiv, feminin, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Oranges", "NOUN_FARBE_ORANGE", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orange", "NOUN_FARBE_ORANGE", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Orange", "NOUN_FARBE_ORANGEs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Orangen", "NOUN_FARBE_ORANGEs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Knallgrüns", "NOUN_FARBE_BRIGHT_GREEN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Knallgrün", "NOUN_FARBE_BRIGHT_GREEN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Knallgrün", "NOUN_FARBE_BRIGHT_GREENs", "", dativ|nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Gelbs", "NOUN_FARBE_YELLOW", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gelb", "NOUN_FARBE_YELLOW", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Gelb", "NOUN_FARBE_YELLOWs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Gelbn", "NOUN_FARBE_YELLOWs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Blaus", "NOUN_FARBE_BRIGHT_BLUE", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blau", "NOUN_FARBE_BRIGHT_BLUE", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blau", "NOUN_FARBE_BRIGHT_BLUEs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Blaun", "NOUN_FARBE_BRIGHT_BLUEs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Knallrots", "NOUN_FARBE_BRIGHT_MAGENTA", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Knallrot", "NOUN_FARBE_BRIGHT_MAGENTA", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Knallrot", "NOUN_FARBE_BRIGHT_MAGENTAs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Knallrotn", "NOUN_FARBE_BRIGHT_MAGENTAs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Blaugrüns", "NOUN_FARBE_BRIGHT_CYAN", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Blaugrün", "NOUN_FARBE_BRIGHT_CYAN", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+
+  {"Weißs", "NOUN_FARBE_WHITE", "", genitiv, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Weiß", "NOUN_FARBE_WHITE", "", dativ|nominativ|akkusativ, neutrum, n_singular, unbestimmter|grundform|ohne|bestimmter},
+  {"Weiß", "NOUN_FARBE_WHITEs", "", nominativ|akkusativ|genitiv, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
+  {"Weißn", "NOUN_FARBE_WHITEs", "", dativ, neutrum, n_plural, unbestimmter|grundform|ohne|bestimmter},
 
   {"schwarz", "ADJEKTIV_FARBE_BLACK", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},
   {"schwarze", "ADJEKTIV_FARBE_BLACK", "", nominativ, feminin|neutrum|maskulin, n_singular, bestimmter},
@@ -14490,6 +14566,30 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"entzündeten", "ADJEKTIV_ENTZUENDET", "", dativ, feminin|neutrum|maskulin, n_plural, ohne},
   
 
+  {"erspürt", "ADJEKTIV_ERSPUERT", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},
+  {"erspürte", "ADJEKTIV_ERSPUERT", "", nominativ, feminin|neutrum|maskulin, n_singular, bestimmter},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"erspürte", "ADJEKTIV_ERSPUERT", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", dativ|genitiv, feminin|neutrum|maskulin, n_singular, bestimmter},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural, bestimmter},
+  {"erspürter", "ADJEKTIV_ERSPUERT", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"erspürte", "ADJEKTIV_ERSPUERT", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
+  {"erspürtes", "ADJEKTIV_ERSPUERT", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", dativ|genitiv, feminin|neutrum|maskulin, n_singular, unbestimmter},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural, unbestimmter},
+  {"erspürter", "ADJEKTIV_ERSPUERT", "", nominativ, maskulin, n_singular, ohne},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", akkusativ|genitiv, maskulin, n_singular, ohne},
+  {"erspürtem", "ADJEKTIV_ERSPUERT", "", dativ, neutrum|maskulin, n_singular, ohne},
+  {"erspürtes", "ADJEKTIV_ERSPUERT", "", nominativ|akkusativ, neutrum, n_singular, ohne},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", genitiv, neutrum, n_singular, ohne},
+  {"erspürte", "ADJEKTIV_ERSPUERT", "", nominativ|akkusativ, feminin, n_singular, ohne},
+  {"erspürter", "ADJEKTIV_ERSPUERT", "", dativ|genitiv, feminin, n_singular, ohne},
+  {"erspürte", "ADJEKTIV_ERSPUERT", "", nominativ|akkusativ, feminin|neutrum|maskulin, n_plural, ohne},
+  {"erspürter", "ADJEKTIV_ERSPUERT", "", genitiv, feminin|neutrum|maskulin, n_plural, ohne},
+  {"erspürten", "ADJEKTIV_ERSPUERT", "", dativ, feminin|neutrum|maskulin, n_plural, ohne},
+  
+
   {"erst", "ADJEKTIV_ERST", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},
   {"erste", "ADJEKTIV_ERST", "", nominativ, feminin|neutrum|maskulin, n_singular, bestimmter},
   {"ersten", "ADJEKTIV_ERST", "", akkusativ, maskulin, n_singular, bestimmter},
@@ -15784,6 +15884,30 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"kontaminierte", "ADJEKTIV_KONTAMINIERT", "", nominativ|akkusativ, feminin|neutrum|maskulin, n_plural, ohne},
   {"kontaminierter", "ADJEKTIV_KONTAMINIERT", "", genitiv, feminin|neutrum|maskulin, n_plural, ohne},
   {"kontaminierten", "ADJEKTIV_KONTAMINIERT", "", dativ, feminin|neutrum|maskulin, n_plural, ohne},
+  
+
+  {"kräftiger", "ADJEKTIV_KRAEFTIGER", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},
+  {"kräftigere", "ADJEKTIV_KRAEFTIGER", "", nominativ, feminin|neutrum|maskulin, n_singular, bestimmter},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"kräftigere", "ADJEKTIV_KRAEFTIGER", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", dativ|genitiv, feminin|neutrum|maskulin, n_singular, bestimmter},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural, bestimmter},
+  {"kräftigerer", "ADJEKTIV_KRAEFTIGER", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"kräftigere", "ADJEKTIV_KRAEFTIGER", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
+  {"kräftigeres", "ADJEKTIV_KRAEFTIGER", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", dativ|genitiv, feminin|neutrum|maskulin, n_singular, unbestimmter},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural, unbestimmter},
+  {"kräftigerer", "ADJEKTIV_KRAEFTIGER", "", nominativ, maskulin, n_singular, ohne},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", akkusativ|genitiv, maskulin, n_singular, ohne},
+  {"kräftigerem", "ADJEKTIV_KRAEFTIGER", "", dativ, neutrum|maskulin, n_singular, ohne},
+  {"kräftigeres", "ADJEKTIV_KRAEFTIGER", "", nominativ|akkusativ, neutrum, n_singular, ohne},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", genitiv, neutrum, n_singular, ohne},
+  {"kräftigere", "ADJEKTIV_KRAEFTIGER", "", nominativ|akkusativ, feminin, n_singular, ohne},
+  {"kräftigerer", "ADJEKTIV_KRAEFTIGER", "", dativ|genitiv, feminin, n_singular, ohne},
+  {"kräftigere", "ADJEKTIV_KRAEFTIGER", "", nominativ|akkusativ, feminin|neutrum|maskulin, n_plural, ohne},
+  {"kräftigerer", "ADJEKTIV_KRAEFTIGER", "", genitiv, feminin|neutrum|maskulin, n_plural, ohne},
+  {"kräftigeren", "ADJEKTIV_KRAEFTIGER", "", dativ, feminin|neutrum|maskulin, n_plural, ohne},
   
 
   {"kraftlos", "ADJEKTIV_KRAFTLOS", "", dativ|nominativ|akkusativ|genitiv, feminin|neutrum|maskulin, n_plural|n_singular, grundform},

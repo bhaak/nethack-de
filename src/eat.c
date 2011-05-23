@@ -257,7 +257,7 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 	if (Breathless || (!Strangled && !rn2(20))) {
 		/* choking by eating AoS doesn't involve stuffing yourself */
 		if (food && food->otyp == AMULET_OF_STRANGULATION) {
-			You("choke, but recover your composure."); /* EN You("choke, but recover your composure."); */ // TODO DE
+			You("VERB_GLAUBEN zu ersticken, aber das ist nur Einbildung."); /* EN You("choke, but recover your composure."); */
 			return;
 		}
 		You("VERB_UEBERFRESSEN OBJECT PRONOMEN_PERSONAL und VERB_KOTZEN dann ausgiebig."); /* EN You("stuff yourself and then vomit voluminously."); */
@@ -1086,7 +1086,6 @@ opentin()		/* called during each move whilst opening a tin */
 	    /* in case stop_occupation() was called on previous meal */
 	    victual.piece = (struct obj *)0;
 	    victual.fullwarn = victual.eating = victual.doreset = FALSE;
-
         if (r == CHINESE_TIN)
         {
             You("VERB_CONSUME OBJECT %s %s.", mons[tin.tin->corpsenm].mname,
@@ -1424,7 +1423,7 @@ struct obj *otmp;
 		if (carnivorous(youmonst.data) && !humanoid(youmonst.data))
 		    pline("SUBJECT PRONOMEN_DIESER NOUN_TRIPE_RATION war überraschend gut!"); /* EN pline("That tripe ration was surprisingly good!"); */
 		else if (maybe_polyd(is_orc(youmonst.data), Race_if(PM_ORC)))
-		    pline(Hallucination ? "Tastes great! Less filling!" : /* EN pline(Hallucination ? "Tastes great! Less filling!" : */ // TODO DE
+		    pline(Hallucination ? "Klasse Sättigungsbeilage!" : /* EN pline(Hallucination ? "Tastes great! Less filling!" : */
 			  "Hmm, NOUN_TRIPE_RATION ... nicht schlecht!"); /* EN "Mmm, tripe... not bad!"); */
 		else {
 		    pline("*würg* Hundefutter!"); /* EN pline("Yak - dog food!"); */
@@ -1666,7 +1665,7 @@ eatspecial() /* called after eating non-food */
 	if ((otmp->otyp == TRIDENT) && !otmp->cursed)
 	{
 		pline(Hallucination ? "Von führenden Zahnärzten empfohlen." : /* EN pline(Hallucination ? "Four out of five dentists agree." : */
-				"That was pure chewing satisfaction!"); /* EN "That was pure chewing satisfaction!"); */ // TODO DE
+				"Genau das Richtige für die strapazierten Beißerchen!"); /* EN "That was pure chewing satisfaction!"); */
 		exercise(A_WIS, TRUE);
 	}
 	if ((otmp->otyp == FLINT) && !otmp->cursed)
@@ -2463,7 +2462,7 @@ floorfood(verb,corpsecheck)	/* get food from floor or pack */
 		   then the trap would just get eaten on the _next_ turn... */
 		Sprintf(qbuf, "Hier befindet sich eine Bärenfalle (%s); sie essen?", /* EN Sprintf(qbuf, "There is a bear trap here (%s); eat it?", */
 			(u.utrap && u.utraptype == TT_BEARTRAP) ?
-				"holding you" : "scharf"); /* EN "holding you" : "armed"); */ // TODO DE
+				"ausgelöst" : "scharf"); /* EN "holding you" : "armed"); */
 		if ((c = yn_function(qbuf, ynqchars, 'n')) == 'y') {
 		    u.utrap = u.utraptype = 0;
 		    deltrap(ttmp);

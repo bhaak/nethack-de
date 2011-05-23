@@ -666,6 +666,16 @@ long amount;
 	else return "Zorkmid"; /* EN else return "zorkmids"; */
 }
 
+#ifdef GERMAN
+const char *
+currency_token(amount)
+long amount;
+{
+	if (amount == 1L) return "NOUN_ZORKMID";
+	else return "NOUN_ZORKMIDs";
+}
+#endif
+
 boolean
 have_lizard()
 {

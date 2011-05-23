@@ -552,8 +552,8 @@ register int after;	/* this is extra fast monster movement */
 		 * it disappears, angrily, and sends in some nasties
 		 */
 		if (canspotmon(mtmp)) {
-		    pline("%s weist OBJECT PRONOMEN_PERSONAL zurecht und sagt:", Monnam(mtmp)); /* EN pline("%s rebukes you, saying:", Monnam(mtmp)); */ // TODO DE r¸gen, tadeln, ermahnen
-		    verbalize("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL Konflikt VERB_BEGEHREN, VERB_KOENNEN SUBJECT PRONOMEN_PERSONAL noch mehr davon haben!"); /* EN verbalize("Since you desire conflict, have some more!"); */ // TODO DE
+		    pline("SUBJECT %s weist OBJECT PRONOMEN_PERSONAL zurecht und sagt:", Monnam(mtmp)); /* EN pline("%s rebukes you, saying:", Monnam(mtmp)); */
+		    verbalize("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL Konflikt VERB_BEGEHREN, VERB_KOENNEN SUBJECT PRONOMEN_PERSONAL noch mehr davon haben!"); /* EN verbalize("Since you desire conflict, have some more!"); */
 		}
 		mongone(mtmp);
 		i = rnd(4);
@@ -715,8 +715,8 @@ newdogpos:
 
 		if (info[chi] & ALLOW_U) {
 			if (mtmp->mleashed) { /* play it safe */
-				pline("%s reiﬂt sich von %s Leine los!", /* EN pline("%s breaks loose of %s leash!", */ // TODO DE
-				      Monnam(mtmp), mhis(mtmp));
+				pline("SUBJECT %s VERB_LOSREISSEN sich OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV_SUBJECT NOUN_LEASH SATZKLAMMER!", /* EN pline("%s breaks loose of %s leash!", */
+				      Monnam(mtmp)); /* EN Monnam(mtmp), mhis(mtmp)); */
 				m_unleash(mtmp, FALSE);
 			}
 			(void) mattacku(mtmp);

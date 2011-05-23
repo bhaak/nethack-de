@@ -463,7 +463,7 @@ dotele()
 
 	if (trap) {
 		if (trap->once) {
-			pline("This is a vault teleport, nur einmaliger Gebrauch."); /* EN pline("This is a vault teleport, usable once only."); */
+			pline("Das ist ein Tresorraumteleporter, nur einmal benutzbar."); /* EN pline("This is a vault teleport, usable once only."); */
 			if (yn("Reinspringen?") == 'n') /* EN if (yn("Jump in?") == 'n') */
 				trap = 0;
 			else {

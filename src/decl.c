@@ -240,6 +240,27 @@ const char *c_obj_colors[] = {
 	"ADJEKTIV_FARBE_BRIGHT_CYAN",		/* CLR_BRIGHT_CYAN */
 	"ADJEKTIV_FARBE_WHITE",		/* CLR_WHITE */
 };
+#ifdef GERMAN
+/* Farbsubstantive, muss dieselbe Reihenfolge haben wie c_obj_colors */
+const char *de_noun_obj_colors[] = {
+	"NOUN_FARBE_BLACK",		/* CLR_BLACK */
+	"NOUN_FARBE_RED",		/* CLR_RED */
+	"NOUN_FARBE_GREEN",		/* CLR_GREEN */
+	"NOUN_FARBE_BROWN",		/* CLR_BROWN */
+	"NOUN_FARBE_BLUE",		/* CLR_BLUE */
+	"NOUN_FARBE_MAGENTA",		/* CLR_MAGENTA */
+	"NOUN_FARBE_CYAN",		/* CLR_CYAN */
+	"NOUN_FARBE_GRAY",		/* CLR_GRAY */
+	"NOUN_FARBE_TRANSPARENT",	/* no_color */
+	"NOUN_FARBE_ORANGE",		/* CLR_ORANGE */
+	"NOUN_FARBE_BRIGHT_GREEN",	/* CLR_BRIGHT_GREEN */
+	"NOUN_FARBE_YELLOW",		/* CLR_YELLOW */
+	"NOUN_FARBE_BRIGHT_BLUE",	/* CLR_BRIGHT_BLUE */
+	"NOUN_FARBE_BRIGHT_MAGENTA",	/* CLR_BRIGHT_MAGENTA */
+	"NOUN_FARBE_BRIGHT_CYAN",	/* CLR_BRIGHT_CYAN */
+	"NOUN_FARBE_WHITE",		/* CLR_WHITE */
+};
+#endif
 
 #ifdef MENU_COLOR
 struct menucoloring *menu_colorings = 0;

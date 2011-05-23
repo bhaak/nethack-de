@@ -828,6 +828,9 @@ E int FDECL(count_unpaid, (struct obj *));
 E int FDECL(count_buc, (struct obj *,int));
 E void FDECL(carry_obj_effects, (struct obj *));
 E const char *FDECL(currency, (long));
+#ifdef GERMAN
+E const char *FDECL(currency_token, (long));
+#endif
 E void FDECL(silly_thing, (const char *,struct obj *));
 
 /* ### ioctl.c ### */

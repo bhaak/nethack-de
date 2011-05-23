@@ -1390,7 +1390,7 @@ struct monst *mtmp;
 			makeknown(AMULET_OF_LIFE_SAVING);
 			if (attacktype(mtmp->data, AT_EXPL)
 			    || attacktype(mtmp->data, AT_BOOM))
-				pline("%s reconstitutes!", Monnam(mtmp)); /* EN pline("%s reconstitutes!", Monnam(mtmp)); */ // TODO DE
+				pline("SUBJECT %s reintegriert sich wieder!", Monnam(mtmp)); /* EN pline("%s reconstitutes!", Monnam(mtmp)); */
 			else
 				pline("SUBJECT %s VERB_AUSSEHEN viel besser SATZKLAMMER!", Monnam(mtmp)); /* EN pline("%s looks much better!", Monnam(mtmp)); */
 			pline_The("NOUN_MEDALLION zerfällt zu Staub!"); /* EN pline_The("medallion crumbles to dust!"); */
@@ -1538,7 +1538,7 @@ boolean was_swallowed;			/* digestion */
 			if (magr->mhp < 1) mondied(magr);
 			if (magr->mhp < 1) { /* maybe lifesaved */
 			    if (canspotmon(magr))
-				pline("%s rips open!", Monnam(magr)); /* EN pline("%s rips open!", Monnam(magr)); */ // TODO DE
+				pline("SUBJECT %s VERB_REISSEN es auseinander!", Monnam(magr)); /* EN pline("%s rips open!", Monnam(magr)); */
 			} else if (canseemon(magr))
 			    pline("SUBJECT %s scheint eine Magenverstimmung zu haben.", /* EN pline("%s seems to have indigestion.", */
 				  Monnam(magr));
@@ -1935,7 +1935,7 @@ mon_to_stone(mtmp)
 		pline("Jetzt ist es KASUS_NOMINATIV %s.", an(mtmp->data->mname)); /* EN pline("Now it's %s.", an(mtmp->data->mname)); */
 	} else {
 	    if(canseemon(mtmp))
-		pline("... and returns to normal."); /* EN pline("... and returns to normal."); */ // TODO DE
+		pline("und wird wieder normal."); /* EN pline("... and returns to normal."); */
 	}
     } else
 	impossible("Can't polystone %s!", a_monnam(mtmp));
@@ -2821,9 +2821,9 @@ short otyp;
 		break;
 	    case M_AP_OBJECT:
 		if (otyp == SPE_HEALING || otyp == SPE_EXTRA_HEALING) {
-		    pline("%s seems a more vivid %s than before.", /* EN pline("%s seems a more vivid %s than before.", */ // TODO DE
+		    pline("SUBJECT %s erscheint OBJECT KASUS_DATIV in ARTIKEL_UNBESTIMMTER ADJEKTIV_KRAEFTIGER %s als vorher.", /* EN pline("%s seems a more vivid %s than before.", */
 				The(simple_typename(ap)),
-				c_obj_colors[objects[ap].oc_color]);
+				de_noun_obj_colors[objects[ap].oc_color]); /* EN c_obj_colors[objects[ap].oc_color]); */
 		}
 		break;
 	}

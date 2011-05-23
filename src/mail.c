@@ -112,7 +112,7 @@ getmailstatus()
 	}
 	if(stat(mailbox, &omstat)){
 #  ifdef PERMANENT_MAILBOX
-		pline("Cannot get status of MAIL=\"%s\".", mailbox);
+		pline("Kann Status von MAIL=\"%s\" nicht ermitteln.", mailbox); /* EN pline("Cannot get status of MAIL=\"%s\".", mailbox); */
 		mailbox = 0;
 #  else
 		omstat.st_mtime = 0;
@@ -444,14 +444,14 @@ readmail(otmp)
 struct obj *otmp;
 {
     static char *junk[] = {
-    "Please disregard previous letter.", /* EN "Please disregard previous letter.", */ // TODO DE
+    "Bitte ignoriert den vorherigen Brief.", /* EN "Please disregard previous letter.", */
     "Willkommen zu NetHack-De.", /* EN "Welcome to NetHack.", */
 #ifdef AMIGA
     "Only Amiga makes it possible.", /* EN "Only Amiga makes it possible.", */ // TODO DE
     "CATS have all the answers.", /* EN "CATS have all the answers.", */ // TODO DE
 #endif
     "Fehlerberichte bitte an <bhaak@gmx.net>.", /* EN "Report bugs to <devteam@nethack.org>.", */ // CHECK ME jedes Auftreten von  @nethack.org
-    "Invitation: Visit the NetHack web site at http://www.nethack.org!" /* EN "Invitation: Visit the NetHack web site at http://www.nethack.org!" */ // TODO DE
+    "Einladung: Besucht die NetHack-De-Webseite auf http://nethack-de.sf.net!" /* EN "Invitation: Visit the NetHack web site at http://www.nethack.org!" */
     };
 
     if (Blind) {
@@ -482,7 +482,7 @@ ckmailstatus()
 	laststattime = moves;
 	if(stat(mailbox, &nmstat)){
 #  ifdef PERMANENT_MAILBOX
-		pline("Cannot get status of MAIL=\"%s\" anymore.", mailbox); /* EN pline("Cannot get status of MAIL=\"%s\" anymore.", mailbox); */ // TODO DE
+		pline("Kann Status von MAIL=\"%s\" nicht ermitteln.", mailbox); /* EN pline("Cannot get status of MAIL=\"%s\" anymore.", mailbox); */
 		mailbox = 0;
 #  else
 		nmstat.st_mtime = 0;

@@ -301,7 +301,7 @@ drinkfountain()
 			    	pline("Doch das geht vorbei."); /* EN pline("Then it passes."); */
 			    }
 			} else {
-			   You("see an image of someone stalking you."); /* EN You("see an image of someone stalking you."); */ // TODO DE
+			   You("VERB_SEHEN die Umrisse eines heimlichen Verfolgers."); /* EN You("see an image of someone stalking you."); */
 			   pline("Aber es verschwindet wieder."); /* EN pline("But it disappears."); */
 			}
 			HSee_invisible |= FROMOUTSIDE;
@@ -438,11 +438,11 @@ register struct obj *obj;
 			dogushforth(FALSE);
 			break;
 		case 26: /* Strange feeling */
-			pline("A strange tingling runs up your %s.", /* EN pline("A strange tingling runs up your %s.", */ // TODO DE
+			pline("Ein seltsames Kribbeln läuft KASUS_DATIV PRONOMEN_PERSONAL KASUS_DATIV PRONOMEN_POSSESSIV %s entlang.", /* EN pline("A strange tingling runs up your %s.", */
 							body_part(ARM));
 			break;
 		case 27: /* Strange feeling */
-			You_feel("a sudden chill."); /* EN You_feel("a sudden chill."); */ // TODO DE
+			Dir("VERB_SEIN plötzlich kühl."); /* EN You_feel("a sudden chill."); */
 			break;
 		case 28: /* Strange feeling */
 			Dich("VERB_UEBERMANNEN die Lust nach einem Bad."); /* EN pline("An urge to take a bath overwhelms you."); */
@@ -502,7 +502,7 @@ breaksink(x,y)
 int x, y;
 {
     if(cansee(x,y) || (x == u.ux && y == u.uy))
-	pline_The("pipes break!  Water spurts out!"); /* EN pline_The("pipes break!  Water spurts out!"); */ // TODO DE
+	pline("Die Rohre bersten!  Wasser spritzt heraus!"); /* EN pline_The("pipes break!  Water spurts out!"); */
     level.flags.nsinks--;
     levl[x][y].doormask = 0;
     levl[x][y].typ = FOUNTAIN;

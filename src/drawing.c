@@ -46,12 +46,12 @@ const char def_oc_syms[MAXOCLASSES] = {
 	VENOM_SYM
 };
 
-const char invisexplain[] = "remembered, unseen, creature"; // TODO DE
+const char invisexplain[] = "vormals irgendwie ADJEKTIV_ERSPUERT NOUN_CREATURE"; /* EN const char invisexplain[] = "remembered, unseen, creature"; */
 
 /* Object descriptions.  Used in do_look(). */
 const char * const objexplain[] = {	/* these match def_oc_syms, above */
 /* 0*/	0,
-	"strange object",
+	"NOUN_STRANGE_OBJECT",
 	"NOUN_WEAPON",
 	"NOUN_SUIT oder NOUN_PIECE_OF_ARMOR",
 	"NOUN_RING",

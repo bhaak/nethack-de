@@ -761,13 +761,13 @@ paygd()
 #endif
 
 	if (u.uinvault) {
-	    Your("%ld %s goes into the Magic Memory Vault.", /* EN Your("%ld %s goes into the Magic Memory Vault.", */ // TODO DE
+	    Your("%ld %s VERB_LANDEN in Krösus' Schatzkammer.", /* EN Your("%ld %s goes into the Magic Memory Vault.", */
 #ifndef GOLDOBJ
 		u.ugold,
-		currency(u.ugold));
+		currency_token(u.ugold)); /* EN currency(u.ugold)); */
 #else
 		umoney,
-		currency(umoney));
+		currency_token(umoney)); /* EN currency(umoney)); */
 #endif
 	    gx = u.ux;
 	    gy = u.uy;
@@ -777,11 +777,11 @@ paygd()
 		return;
 	    }
 	    mnexto(grd);
-	    pline("%s remits your gold to the vault.", Monnam(grd)); /* EN pline("%s remits your gold to the vault.", Monnam(grd)); */ // TODO DE
+	    pline("SUBJECT %s VERB_LEGEN OBJECT PRONOMEN_POSSESSIV NOUN_GOLD in den Tresorraum zurück.", Monnam(grd)); /* EN pline("%s remits your gold to the vault.", Monnam(grd)); */
 	    gx = rooms[EGD(grd)->vroom].lx + rn2(2);
 	    gy = rooms[EGD(grd)->vroom].ly + rn2(2);
 	    Sprintf(buf,
-		"To Croesus: here's the gold recovered from %s the %s.", /* EN "To Croesus: here's the gold recovered from %s the %s.", */ // TODO DE
+		"An Krösus: hier ist das KASUS_DATIV von %s ARTIKEL_BESTIMMTER %s gestohlene Gold.", /* EN "To Croesus: here's the gold recovered from %s the %s.", */
 		plname, mons[u.umonster].mname);
 	    make_grave(gx, gy, buf);
 	}

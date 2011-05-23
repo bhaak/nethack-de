@@ -363,7 +363,7 @@ char *buf;
 			Is_astralevel(&u.uz) ? "Astralebene " : "Schlussphase "); /* EN Is_astralevel(&u.uz) ? "Astral Plane " : "End Game "); */
 	else {
 		/* ports with more room may expand this one */
-		Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz)); /* EN Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz)); */ // TODO DE
+		Sprintf(buf, "Dlvl:%-2d ", depth(&u.uz));
 		ret = 0;
 	}
 	return ret;

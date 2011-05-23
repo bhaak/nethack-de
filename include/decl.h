@@ -303,6 +303,9 @@ E NEARDATA struct c_color_names {
 
 /* The names of the colors used for gems, etc. */
 E const char *c_obj_colors[];
+#if GERMAN
+E const char *de_noun_obj_colors[];
+#endif
 
 E struct c_common_strings {
     const char	*const c_nothing_happens, *const c_thats_enough_tries,

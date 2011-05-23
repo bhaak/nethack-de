@@ -804,7 +804,7 @@ boolean ghostly;
 	if ((int) mvitals[mndx].born >= lim && !(mons[mndx].geno & G_NOGEN) &&
 		!(mvitals[mndx].mvflags & G_EXTINCT)) {
 #if defined(DEBUG) && defined(WIZARD)
-		if (wizard) pline("Automatically extinguished %s.", /* EN if (wizard) pline("Automatically extinguished %s.", */ // TODO DE
+		if (wizard) pline("Automatisch KASUS_AKKUSATIV %s ausgelöscht.", /* EN if (wizard) pline("Automatically extinguished %s.", */
 					makeplural(mons[mndx].mname));
 #endif
 		mvitals[mndx].mvflags |= G_EXTINCT;
@@ -1455,9 +1455,9 @@ struct monst *mtmp, *victim;
 	    ptr = &mons[newtype];
 	    if (mvitals[newtype].mvflags & G_GENOD) {	/* allow G_EXTINCT */
 		if (sensemon(mtmp))
-		    pline("As %s grows up into %s, %s %s!", mon_nam(mtmp), /* EN pline("As %s grows up into %s, %s %s!", mon_nam(mtmp), */ // TODO DE
-			an(ptr->mname), mhe(mtmp),
-			nonliving(ptr) ? "VERB_VERGEHEN" : "VERB_STERBEN"); /* EN nonliving(ptr) ? "expires" : "dies"); */
+		    pline("SUBJECT Als %s OBJECT KASUS_DATIV zu %s VERB_WERDEN, NEUER_SATZ SUBJECT_IM_SATZ %s %s!", mon_nam(mtmp), /* EN pline("As %s grows up into %s, %s %s!", mon_nam(mtmp), */
+			an(ptr->mname), /* EN an(ptr->mname), mhe(mtmp), */
+			nonliving(ptr) ? "VERB_VERGEHEN" : "VERB_STERBEN", mhe(mtmp)); /* EN nonliving(ptr) ? "expires" : "dies"); */
 		set_mon_data(mtmp, ptr, -1);	/* keep mvitals[] accurate */
 		mondied(mtmp);
 		return (struct permonst *)0;
