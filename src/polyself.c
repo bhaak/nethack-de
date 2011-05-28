@@ -816,7 +816,7 @@ dospinweb()
 			if (i == NATTK)
 			       impossible("Swallower has no engulfing attack?");
 			else {
-				char sweep[30];
+				char sweep[40]; /* EN char sweep[30]; */
 
 				sweep[0] = '\0';
 				switch(u.ustuck->data->mattk[i].adtyp) {
