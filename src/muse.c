@@ -773,7 +773,7 @@ mon_tele:
 			if (mon_has_special(mtmp))
 				return 0;
 			if (vismon)
-			    pline("%s escapes the dungeon!", Monnam(mtmp)); /* EN pline("%s escapes the dungeon!", Monnam(mtmp)); */ // TODO DE
+			    pline("SUBJECT %s entkommt aus dem Dungeon!", Monnam(mtmp)); /* EN pline("%s escapes the dungeon!", Monnam(mtmp)); */
 			mongone(mtmp);
 			return 2;
 		}
@@ -781,7 +781,7 @@ mon_tele:
 		if (Inhell && mon_has_amulet(mtmp) && !rn2(4) &&
 			(dunlev(&u.uz) < dunlevs_in_dungeon(&u.uz) - 3)) {
 		    if (vismon) pline(
-     "As %s climbs the stairs, umgibt %s kurz eine geheimnisvolle Kraft ...", /* EN "As %s climbs the stairs, a mysterious force momentarily surrounds %s...", */ // TODO DE
+     "Als KASUS_NOMINATIV %s die Stufen hochsteigt, umgibt KASUS_AKKUSATIV %s kurz eine geheimnisvolle Kraft ...", /* EN "As %s climbs the stairs, a mysterious force momentarily surrounds %s...", */
 				     mon_nam(mtmp), mhim(mtmp));
 		    /* simpler than for the player; this will usually be
 		       the Wizard and he'll immediately go right to the
@@ -1832,7 +1832,7 @@ skipmsg:
 		    if (bimanual(obj)) hand = makeplural(hand);
 
 		    if (vismon)
-			pline("SUBJECT %s VERB_SCHWINGEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_BULLWHIP towards your %s!", /* EN pline("%s flicks a bullwhip towards your %s!", */ // TODO DE
+			pline("SUBJECT %s VERB_SCHLEUDERN OBJECT ARTIKEL_UNBESTIMMTER NOUN_BULLWHIP NEUES_OBJECT OBJECT KASUS_DATIV nach PRONOMEN_POSSESSIV %s!", /* EN pline("%s flicks a bullwhip towards your %s!", */
 			      Monnam(mtmp), hand);
 		    if (obj->otyp == HEAVY_IRON_BALL) {
 			pline("SUBJECT %s VERB_KOENNEN sich nicht OBJECT um %s wickeln.", /* EN pline("%s fails to wrap around %s.", */

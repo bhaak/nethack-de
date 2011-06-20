@@ -671,13 +671,13 @@ struct monst *mtmp;
     else return(mtmp->data);
 }
 
-static const char *levitate[4]	= { "float", "Float", "VERB_EIERN", "VERB_EIERN" }; /* EN static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; */ // TODO DE
-static const char *flys[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "flutter", "Flutter" }; /* EN static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" }; */ // TODO DE
-static const char *flyl[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "stagger", "Stagger" }; /* EN static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" }; */ // TODO DE
+static const char *levitate[4]	= { "VERB_SCHWEBEN", "VERB_SCHWEBEN", "VERB_EIERN", "VERB_EIERN" }; /* EN static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; */
+static const char *flys[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "VERB_FLATTERN", "VERB_FLATTERN" }; /* EN static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" }; */
+static const char *flyl[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "VERB_STAGGER", "VERB_STAGGER" }; /* EN static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" }; */
 static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; /* EN static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; */ // TODO DE krauchen?
-static const char *ooze[4]	= { "VERB_SUPPEN", "VERB_SUPPEN", "tremble", "Tremble" }; /* EN static const char *ooze[4]	= { "ooze", "Ooze", "tremble", "Tremble" }; */ // TODO DE
-static const char *immobile[4]	= { "VERB_WACKELN", "VERB_WACKELN", "pulsate", "Pulsate" }; /* EN static const char *immobile[4]	= { "wiggle", "Wiggle", "pulsate", "Pulsate" }; */ // TODO DE
-static const char *crawl[4]	= { "VERB_KRIECHEN", "VERB_KRIECHEN", "falter", "Falter" }; /* EN static const char *crawl[4]	= { "crawl", "Crawl", "falter", "Falter" }; */ // TODO DE
+static const char *ooze[4]	= { "VERB_SUPPEN", "VERB_SUPPEN", "VERB_ZITTERN", "VERB_ZITTERN" }; /* EN static const char *ooze[4]	= { "ooze", "Ooze", "tremble", "Tremble" }; */
+static const char *immobile[4]	= { "VERB_WACKELN", "VERB_WACKELN", "VERB_PULSIEREN", "VERB_PULSIEREN" }; /* EN static const char *immobile[4]	= { "wiggle", "Wiggle", "pulsate", "Pulsate" }; */
+static const char *crawl[4]	= { "VERB_KRIECHEN", "VERB_KRIECHEN", "VERB_WANKEN", "VERB_WANKEN" }; /* EN static const char *crawl[4]	= { "crawl", "Crawl", "falter", "Falter" }; */
 
 const char *
 locomotion(ptr, def)

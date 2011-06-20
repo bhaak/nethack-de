@@ -364,7 +364,7 @@ dowieldquiver()
 			return(0);
 		}
 	} else if (newquiver == uquiver) {
-		pline("Diese Projektile sind schon geladen!"); /* EN pline("That ammunition is already readied!"); */
+		pline("%s schon geladen!", !is_plural(uquiver) ? "Dieses Projektil ist" : "Diese Projektile sind"); /* EN pline("That ammunition is already readied!"); */
 		return(0);
 	} else if (newquiver == uwep) {
 		/* Prevent accidentally readying the main weapon */
@@ -376,7 +376,7 @@ dowieldquiver()
 			| W_SADDLE
 #endif
 			)) {
-		You("cannot ready that!"); /* EN You("cannot ready that!"); */ // TODO DE
+		pline("SUBJECT Das VERB_KOENNEN PRONOMEN_PERSONAL nicht als Projektil verwenden!"); /* EN You("cannot ready that!"); */
 		return (0);
 	} else {
 		long dummy;
