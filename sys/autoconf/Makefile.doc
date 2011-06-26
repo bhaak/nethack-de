@@ -92,9 +92,15 @@ recover.txt	: recover.6
 dlb.txt		: dlb.6
 	nroff -man dlb.6 | $(COLCMD) > dlb.txt
 
+Kurzhilfe.pdf: Kurzhilfe.tex
+	pdflatex Kurzhilfe.tex && pdflatex Kurzhilfe.tex
+
+Kurzhilfe.html: Kurzhilfe.tex
+	htlatex Kurzhilfe.tex Kurzhilfe
 
 clean:
 	-rm -f Guidebook.aux Guidebook.log
+	-rm -f Kurzhilfe.4ct Kurzhilfe.4tc Kurzhilfe.aux Kurzhilfe.css Kurzhilfe.dvi Kurzhilfe.html Kurzhilfe.idv Kurzhilfe.lg Kurzhilfe.log Kurzhilfe.out Kurzhilfe.pdf Kurzhilfe.tmp Kurzhilfe.toc Kurzhilfe.xref texput.log
 
 spotless: clean
 	-rm -f Guidebook Guidebook.ps Guidebook.dvi
