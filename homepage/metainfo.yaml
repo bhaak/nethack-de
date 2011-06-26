@@ -4,6 +4,12 @@ index.page:
   inMenu: true
   orderInfo: 10
 
+dokumentation.page:
+  title: Doku
+  htmltitle: 'NetHack-De: Dokumentation'
+  inMenu: true
+  orderInfo: 15
+
 status.page:
   title: Status
   htmltitle: 'NetHack-De: Status'
