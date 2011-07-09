@@ -581,7 +581,7 @@ int ttyp;
 
 	    if (at_u) {
 		if (!u.ustuck && !wont_fall && !next_to_u()) {
-		    You("are jerked back by your pet!"); /* EN You("are jerked back by your pet!"); */ // TODO DE
+		    You("VERB_WERDEN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_PET zurückgerissen!"); /* EN You("are jerked back by your pet!"); */
 		    wont_fall = TRUE;
 		}
 
@@ -665,7 +665,7 @@ boolean pit_only;
 		pline_The("%s hier ist zum Graben zu hart.", surface(u.ux,u.uy)); /* EN pline_The("%s here is too hard to dig in.", surface(u.ux,u.uy)); */
 
 	} else if (is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy)) {
-		pline_The("%s sloshes furiously for a moment, then subsides.", /* EN pline_The("%s sloshes furiously for a moment, then subsides.", */ // TODO DE
+		pline_The("%s spritzt einen Augenblick lang gewaltig herum.", /* EN pline_The("%s sloshes furiously for a moment, then subsides.", */
 			is_lava(u.ux, u.uy) ? "NOUN_LAVA" : "NOUN_WATER"); /* EN is_lava(u.ux, u.uy) ? "lava" : "water"); */
 		wake_nearby();	/* splashing */
 
@@ -688,14 +688,14 @@ boolean pit_only;
 	} else if ((boulder_here = sobj_at(BOULDER, u.ux, u.uy)) != 0) {
 		if (ttmp && (ttmp->ttyp == PIT || ttmp->ttyp == SPIKED_PIT) &&
 		    rn2(2)) {
-			pline_The("boulder settles into the pit."); /* EN pline_The("boulder settles into the pit."); */ // TODO DE
+			pline_The("NOUN_BOULDER VERB_RUTSCHEN OBJECT in ARTIKEL_BESTIMMTER NOUN_PIT."); /* EN pline_The("boulder settles into the pit."); */
 			ttmp->ttyp = PIT;	 /* crush spikes */
 		} else {
 			/*
 			 * digging makes a hole, but the boulder immediately
 			 * fills it.  Final outcome:  no hole, no boulder.
 			 */
-			pline("KADOOM! The boulder falls in!"); /* EN pline("KADOOM! The boulder falls in!"); */ // TODO DE
+			pline("KABUMM! SUBJECT ARTIKEL_BESTIMMTER NOUN_BOULDER VERB_FALLEN hinein!"); /* EN pline("KADOOM! The boulder falls in!"); */
 			(void) delfloortrap(ttmp);
 		}
 		delobj(boulder_here);
@@ -777,7 +777,7 @@ dig_up_grave()
 	    Du_fuehlst_dich("wie ein elender Grabräuber!"); /* EN You_feel("like a despicable grave-robber!"); */
 	} else if (Role_if(PM_SAMURAI)) {
 	    adjalign(-sgn(u.ualign.type));
-	    You("disturb the honorable dead!"); /* EN You("disturb the honorable dead!"); */ // TODO DE
+	    You("VERB_STOEREN die Grabesruhe der ehrenwerten Toten!"); /* EN You("disturb the honorable dead!"); */
 	} else if ((u.ualign.type == A_LAWFUL) && (u.ualign.record > -10)) {
 	    adjalign(-sgn(u.ualign.type));
 	    You("VERB_HAVE die Unverletzlichkeit dieses Grabes missachtet!"); /* EN You("have violated the sanctity of this grave!"); */
@@ -801,8 +801,8 @@ dig_up_grave()
  	    (void) makemon(mkclass(S_ZOMBIE,0), u.ux, u.uy, NO_MM_FLAGS);
 	    break;
 	case 3:
-	    if (!Blind) pline(Hallucination ? "I want my mummy!" : /* EN if (!Blind) pline(Hallucination ? "I want my mummy!" : */ // TODO DE
- 			"You've disturbed a tomb!"); /* EN "You've disturbed a tomb!"); */ // TODO DE
+	    if (!Blind) pline(Hallucination ? "Endlich VERB_KOENNEN PRONOMEN_PERSONAL einige Worte mit einer Mumie wechseln!" : /* EN if (!Blind) pline(Hallucination ? "I want my mummy!" : */
+ 			"SUBJECT PRONOMEN_PERSONAL VERB_HABEN die Grabesruhe gestört!"); /* EN "You've disturbed a tomb!"); */
  	    (void) makemon(mkclass(S_MUMMY,0), u.ux, u.uy, NO_MM_FLAGS);
 	    break;
 	default:
@@ -905,7 +905,7 @@ struct obj *obj;
 		rx = u.ux + u.dx;
 		ry = u.uy + u.dy;
 		if(!isok(rx, ry)) {
-			pline("Clash!"); /* EN pline("Clash!"); */ // TODO DE
+			pline("Döing!"); /* EN pline("Clash!"); */
 			return(1);
 		}
 		lev = &levl[rx][ry];
@@ -947,7 +947,7 @@ struct obj *obj;
 				aobjnam(obj, (char *)0));
 		} else {
 			static const char * const d_action[6] = {
-						"swinging", /* EN "swinging", */ // TODO DE
+						"PRONOMEN_POSSESSIV NOUN_GRABWERKZEUG anzusetzen", /* EN "swinging", */
 						"zu graben", /* EN "digging", */
 						"die Statue zu zerkleinern", /* EN "chipping the statue", */
 						"den Felsbrocken zu spalten", /* EN "hitting the boulder", */
@@ -987,7 +987,7 @@ struct obj *obj;
 		/* it must be air -- water checked above */
 		You("VERB_LASSEN OBJECT PRONOMEN_POSSESSIV %s durch die Luft sausen.", aobjnam(obj, (char *)0)); /* EN You("swing your %s through thin air.", aobjnam(obj, (char *)0)); */
 	} else if (!can_reach_floor()) {
-		You_cant("reach the %s.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */ // TODO DE
+		You("VERB_KOENNEN OBJECT ARTIKEL_BESTIMMTER %s nicht erreichen.", surface(u.ux,u.uy)); /* EN You_cant("reach the %s.", surface(u.ux,u.uy)); */
 	} else if (is_pool(u.ux, u.uy) || is_lava(u.ux, u.uy)) {
 		/* Monsters which swim also happen not to be able to dig */
 		You("VERB_KOENNEN nicht lange genug unter %s bleiben.", /* EN You("cannot stay under%s long enough.", */
@@ -1442,9 +1442,9 @@ long timeout;	/* unused */
 	} else if (in_invent) {
 	    if (flags.verbose) {
 		char *cname = corpse_xname(obj, FALSE);
-		Your("%s%s %s away%c", /* EN Your("%s%s %s away%c", */ // TODO DE
+		Your("%s%s VERB_SEIN unbrauchbar verrottet%c", /* EN Your("%s%s %s away%c", */
 		     obj == uwep ? "als Waffe ADJEKTIV_GEFUEHRT " : nul, cname, /* EN obj == uwep ? "wielded " : nul, cname, */
-		     otense(obj, "rot"), obj == uwep ? '!' : '.'); /* EN otense(obj, "rot"), obj == uwep ? '!' : '.'); */ // TODO DE
+		     obj == uwep ? '!' : '.'); /* EN otense(obj, "rot"), obj == uwep ? '!' : '.'); */
 	    }
 	    if (obj == uwep) {
 		uwepgone();	/* now bare handed */

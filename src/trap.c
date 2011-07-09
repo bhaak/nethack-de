@@ -363,7 +363,7 @@ boolean td;	/* td == TRUE : trap door or hole */
 	} else if (youmonst.data->msize >= MZ_HUGE) {
 	    dont_fall = "VERB_PASSEN nicht durch."; /* EN dont_fall = "don't fit through."; */
 	} else if (!next_to_u()) {
-	    dont_fall = "are jerked back by your pet!"; /* EN dont_fall = "are jerked back by your pet!"; */ // TODO DE
+	    dont_fall = "VERB_WERDEN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV NOUN_PET zurückgerissen!"; /* EN dont_fall = "are jerked back by your pet!"; */
 	}
 	if (dont_fall) {
 	    You(dont_fall);

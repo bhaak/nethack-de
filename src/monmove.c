@@ -64,7 +64,7 @@ register struct monst *mtmp;
 			verbalize("Halt, Dieb!  SUBJECT PRONOMEN_PERSONAL VERB_SEIN verhaftet!"); /* EN verbalize("Halt, thief!  You're under arrest!"); */
 			(void) angry_guards(!(flags.soundok));
 		  } else {
-			verbalize("Hey, stop picking that lock!"); /* EN verbalize("Hey, stop picking that lock!"); */ // TODO DE
+			verbalize("Heh, MODIFIER_VERB_IMPERATIV VERB_HOEREN auf, an dem Schloss rumzufummeln!"); /* EN verbalize("Hey, stop picking that lock!"); */
 			levl[x][y].looted |=  D_WARNED;
 		  }
 		  stop_occupation();
@@ -578,7 +578,7 @@ itsstuck(mtmp)
 register struct monst *mtmp;
 {
 	if (sticks(youmonst.data) && mtmp==u.ustuck && !u.uswallow) {
-		pline("%s cannot escape from you!", Monnam(mtmp)); /* EN pline("%s cannot escape from you!", Monnam(mtmp)); */ // TODO DE
+		pline("SUBJECT %s VERB_KOENNEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL nicht entfliehen!", Monnam(mtmp)); /* EN pline("%s cannot escape from you!", Monnam(mtmp)); */
 		return(TRUE);
 	}
 	return(FALSE);
@@ -1075,9 +1075,9 @@ postmov:
 			} else {
 			    if (flags.verbose) {
 				if (canseeit)
-				   You("see a door unlock and open."); /* EN You("see a door unlock and open."); */ // TODO DE
+				   You("VERB_SEHEN, wie eine Türe entriegelt und geöffnet wird."); /* EN You("see a door unlock and open."); */
 				else if (flags.soundok)
-				   You_hear("a door unlock and open."); /* EN You_hear("a door unlock and open."); */ // TODO DE
+				   Du_hoerst_wie("eine Türe entriegelt und geöffnet wird."); /* EN You_hear("a door unlock and open."); */
 			    }
 			    here->doormask = D_ISOPEN;
 			    /* newsym(mtmp->mx, mtmp->my); */

@@ -1526,6 +1526,9 @@ E void VDECL(Your, (const char *,...)) PRINTF_F(1,2);
 E void VDECL(You_feel, (const char *,...)) PRINTF_F(1,2);
 E void VDECL(You_cant, (const char *,...)) PRINTF_F(1,2);
 E void VDECL(You_hear, (const char *,...)) PRINTF_F(1,2);
+#ifdef GERMAN
+E void VDECL(Du_hoerst_wie, (const char *,...)) PRINTF_F(1,2);
+#endif
 E void VDECL(pline_The, (const char *,...)) PRINTF_F(1,2);
 E void VDECL(There, (const char *,...)) PRINTF_F(1,2);
 E void VDECL(verbalize, (const char *,...)) PRINTF_F(1,2);

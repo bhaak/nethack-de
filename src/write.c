@@ -3,6 +3,10 @@
 
 #include "hack.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 STATIC_DCL int FDECL(cost,(struct obj *));
 
 /*
@@ -94,7 +98,7 @@ register struct obj *pen;
 	}
 
 	/* get paper to write on */
-	paper = getobj(write_on, "beschriften"); /* EN paper = getobj(write_on,"write on"); */ // TODO DE
+	paper = getobj(write_on, "beschriften"); /* EN paper = getobj(write_on,"write on"); */
 	if(!paper)
 		return(0);
 	typeword = (paper->oclass == SPBOOK_CLASS) ? "NOUN_SPELLBOOK" : "NOUN_SCROLL"; /* EN typeword = (paper->oclass == SPBOOK_CLASS) ? "spellbook" : "scroll"; */
@@ -164,7 +168,7 @@ found:
 		    !objects[i].oc_name_known) {
 		/* can't write unknown spellbooks by description */
 		pline(
-		  "Unfortunately you don't have enough information to go on."); /* EN "Unfortunately you don't have enough information to go on."); */ // TODO DE
+		  "SUBJECT Leider VERB_BESITZEN PRONOMEN_PERSONAL nicht das Wissen um das zu schreiben."); /* EN "Unfortunately you don't have enough information to go on."); */
 		return 1;
 	}
 
@@ -212,7 +216,7 @@ found:
 	if(!(objects[new_obj->otyp].oc_name_known) &&
 	   !(objects[new_obj->otyp].oc_uname) &&
 	   (rnl(Role_if(PM_WIZARD) ? 3 : 15))) {
-		You("%s to write that!", by_descr ? "fail" : "don't know how"); /* EN You("%s to write that!", by_descr ? "fail" : "don't know how"); */ // TODO DE
+		You("%s!", by_descr ? "VERB_SCHAFFEN es nicht, das zu schreiben" : "VERB_WISSEN nicht, wie PRONOMEN_PERSONAL das schreiben VERB_SOLLEN"); /* EN You("%s to write that!", by_descr ? "fail" : "don't know how"); */
 		/* scrolls disappear, spellbooks don't */
 		if (paper->oclass == SPBOOK_CLASS) {
 			You(
@@ -220,7 +224,7 @@ found:
 			update_inventory();	/* pen charges */
 		} else {
 			if (by_descr) {
-			    Strcpy(namebuf, OBJ_DESCR(objects[new_obj->otyp]));
+			    Strcpy(namebuf, german(OBJ_DESCR(objects[new_obj->otyp]))); /* EN Strcpy(namebuf, OBJ_DESCR(objects[new_obj->otyp])); */
 			    wipeout_text(namebuf, (6+MAXULEV - u.ulevel)/6, 0);
 			} else
 			    Sprintf(namebuf, "%s war hier!", plname); /* EN Sprintf(namebuf, "%s was here!", plname); */
@@ -237,7 +241,7 @@ found:
 	/* success */
 	if (new_obj->oclass == SPBOOK_CLASS) {
 		/* acknowledge the change in the object's description... */
-		pline_The("spellbook warps strangely, then turns %s.", /* EN pline_The("spellbook warps strangely, then turns %s.", */ // TODO DE
+		pline_The("NOUN_SPELLBOOK bäumt sich auf und wird MODIFIER_ADJEKTIV_ADVERBIAL %s.", /* EN pline_The("spellbook warps strangely, then turns %s.", */
 		      OBJ_DESCR(objects[new_obj->otyp]));
 	}
 	new_obj->blessed = (curseval > 0);
@@ -245,8 +249,11 @@ found:
 #ifdef MAIL
 	if (new_obj->otyp == SCR_MAIL) new_obj->spe = 1;
 #endif
-	new_obj = hold_another_object(new_obj, "Oops!  %s out of your grasp!", /* EN new_obj = hold_another_object(new_obj, "Oops!  %s out of your grasp!", */ // TODO DE
-					       The(aobjnam(new_obj, "slip")), /* EN The(aobjnam(new_obj, "slip")), */ // TODO DE
+#ifdef GERMAN
+	Sprintf(tmpbuf, "NOUN_OOPS!  SUBJECT %%s OBJECT KASUS_DATIV PRONOMEN_POSSESSIV %s!", makeplural(body_part(HAND)));
+#endif
+	new_obj = hold_another_object(new_obj, tmpbuf, /* EN new_obj = hold_another_object(new_obj, "Oops!  %s out of your grasp!", */
+					       The(aobjnam(new_obj, "VERB_ENTGLEITEN")), /* EN The(aobjnam(new_obj, "slip")), */
 					       (const char *)0);
 	return(1);
 }

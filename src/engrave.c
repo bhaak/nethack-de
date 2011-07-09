@@ -241,7 +241,7 @@ register int x, y;
 	} else if (!strcmp(floor, "Springbrunnen")) {
 		return "auf dem Springbrunnen";
 	} else if (!strcmp(floor, "Boden")) {
-		return "am Boden";
+		return "auf dem Boden";
 	} else if (!strcmp(floor, "Erde")) {
 		return "auf der Erde";
 	}

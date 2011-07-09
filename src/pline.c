@@ -298,6 +298,22 @@ You_hear VA_DECL(const char *,line)
 	vpline(strcat(tmp, line), VA_ARGS);
 	VA_END();
 }
+#ifdef GERMAN
+void
+Du_hoerst_wie VA_DECL(const char *,line)
+	char *tmp;
+	VA_START(line);
+	VA_INIT(line, const char *);
+	if (Underwater)
+		YouPrefix(tmp, "Nur schwach VERB_HEAR SUBJECT_IM_SATZ PRONOMEN_PERSONAL, wie ", line); /* EN YouPrefix(tmp, "You barely hear ", line); */
+	else if (u.usleep)
+		YouPrefix(tmp, "Im Traum VERB_HEAR SUBJECT_IM_SATZ PRONOMEN_PERSONAL, wie ", line); /* EN YouPrefix(tmp, "You dream that you hear ", line); */
+	else
+		YouPrefix(tmp, "SUBJECT PRONOMEN_PERSONAL VERB_HEAR, wie ", line); /* EN YouPrefix(tmp, "You hear ", line); */
+	vpline(strcat(tmp, line), VA_ARGS);
+	VA_END();
+}
+#endif
 
 /*VARARGS1*/
 void

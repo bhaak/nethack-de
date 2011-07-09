@@ -268,24 +268,24 @@ castmu(mtmp, mattk, thinks_it_foundyou, foundyou)
 	switch (mattk->adtyp) {
 
 	    case AD_FIRE:
-		pline("You're enveloped in flames."); /* EN pline("You're enveloped in flames."); */ // TODO DE
+		You("VERB_WERDEN von Flammen eingehüllt."); /* EN pline("You're enveloped in flames."); */
 		if(Fire_resistance) {
 			shieldeff(u.ux, u.uy);
-			pline("But you resist the effects."); /* EN pline("But you resist the effects."); */ // TODO DE
+			pline("Aber es zeigt bei KASUS_DATIV PRONOMEN_PERSONAL keine Wirkung."); /* EN pline("But you resist the effects."); */
 			dmg = 0;
 		}
 		burn_away_slime();
 		break;
 	    case AD_COLD:
-		pline("You're covered in frost."); /* EN pline("You're covered in frost."); */ // TODO DE
+		You("VERB_WERDEN von Eis eingehüllt."); /* EN pline("You're covered in frost."); */
 		if(Cold_resistance) {
 			shieldeff(u.ux, u.uy);
-			pline("But you resist the effects."); /* EN pline("But you resist the effects."); */ // TODO DE
+			pline("Aber es zeigt bei KASUS_DATIV PRONOMEN_PERSONAL keine Wirkung."); /* EN pline("But you resist the effects."); */
 			dmg = 0;
 		}
 		break;
 	    case AD_MAGM:
-		You("are hit by a shower of missiles!"); /* EN You("are hit by a shower of missiles!"); */ // TODO DE
+		You("VERB_WERDEN von einem Hagel OBJECT KASUS_GENITIV NOUN_MAGIC_MISSILEs getroffen!"); /* EN You("are hit by a shower of missiles!"); */
 		if(Antimagic) {
 			shieldeff(u.ux, u.uy);
 			pline_The("NOUN_MISSILEs VERB_ABPRALLEN SATZKLAMMER!"); /* EN pline_The("missiles bounce off!"); */
@@ -349,7 +349,7 @@ int spellnum;
 	break;
     case MGC_CLONE_WIZ:
 	if (mtmp->iswiz && flags.no_of_wizards == 1) {
-	    pline("Double Trouble..."); /* EN pline("Double Trouble..."); */ // TODO DE
+	    pline("Klon-Angriff ..."); /* EN pline("Double Trouble..."); */
 	    clonewiz();
 	    dmg = 0;
 	} else
@@ -370,9 +370,9 @@ int spellnum;
 	       only a single monster is seen */
 	    if (Invisible && !perceives(mtmp->data) &&
 				    (mtmp->mux != u.ux || mtmp->muy != u.uy))
-		pline("%s around a spot near you!", mappear); /* EN pline("%s around a spot near you!", mappear); */ // TODO DE
+		pline("%s neben KASUS_DATIV PRONOMEN_PERSONAL!", mappear); /* EN pline("%s around a spot near you!", mappear); */
 	    else if (Displaced && (mtmp->mux != u.ux || mtmp->muy != u.uy))
-		pline("%s around your ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE!", mappear); /* EN pline("%s around your displaced image!", mappear); */ // TODO DE
+		pline("%s neben KASUS_DATIV PRONOMEN_POSSESSIV ADJEKTIV_DISPLACED NOUN_DISPLACEDIMAGE!", mappear); /* EN pline("%s around your displaced image!", mappear); */
 	    else
 		pline("%s aus dem Nichts!", mappear); /* EN pline("%s from nowhere!", mappear); */
 	}
@@ -490,12 +490,12 @@ int spellnum;
     switch (spellnum) {
     case CLC_GEYSER:
 	/* this is physical damage, not magical damage */
-	pline("A sudden geyser slams into you from nowhere!"); /* EN pline("A sudden geyser slams into you from nowhere!"); */ // TODO DE
+	pline("Ein plötzlich ausbrechender Geysir trifft KASUS_AKKUSATIV PRONOMEN_PERSONAL völlig unerwartet!"); /* EN pline("A sudden geyser slams into you from nowhere!"); */
 	dmg = d(8, 6);
 	if (Half_physical_damage) dmg = (dmg + 1) / 2;
 	break;
     case CLC_FIRE_PILLAR:
-	pline("A pillar of fire strikes all around you!"); /* EN pline("A pillar of fire strikes all around you!"); */ // TODO DE
+	pline("Flammen brechen KASUS_DATIV unter PRONOMEN_PERSONAL hervor!"); /* EN pline("A pillar of fire strikes all around you!"); */
 	if (Fire_resistance) {
 	    shieldeff(u.ux, u.uy);
 	    dmg = 0;
@@ -513,7 +513,7 @@ int spellnum;
     {
 	boolean reflects;
 
-	pline("A bolt of lightning strikes down at you from above!"); /* EN pline("A bolt of lightning strikes down at you from above!"); */ // TODO DE
+	pline("Ein Blitzschlag trifft KASUS_AKKUSATIV PRONOMEN_PERSONAL aus heiterem Himmel!"); /* EN pline("A bolt of lightning strikes down at you from above!"); */
 	reflects = ureflects("Er wird von KASUS_DATIV PRONOMEN_POSSESSIV %s%s abgelenkt.", ""); /* EN reflects = ureflects("It bounces off your %s%s.", ""); */
 	if (reflects || Shock_resistance) {
 	    shieldeff(u.ux, u.uy);
@@ -586,7 +586,7 @@ int spellnum;
 	/* note: resists_blnd() doesn't apply here */
 	if (!Blinded) {
 	    int num_eyes = eyecount(youmonst.data);
-	    pline("Scales cover your %s!", /* EN pline("Scales cover your %s!", */ // TODO DE
+	    pline("Schuppen bedecken KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s!", /* EN pline("Scales cover your %s!", */
 		  (num_eyes == 1) ?
 		  body_part(EYE) : makeplural(body_part(EYE)));
 	    make_blinded(Half_spell_damage ? 100L : 200L, FALSE);

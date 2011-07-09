@@ -126,10 +126,10 @@ boolean talk;
 	mon = makemon(&mons[mnum], u.ux, u.uy, NO_MM_FLAGS);
     if (mon) {
 	if (talk) {
-	    pline_The("voice of %s booms:", align_gname(alignment)); /* EN pline_The("voice of %s booms:", align_gname(alignment)); */ // TODO DE
-	    verbalize("Thou shalt pay for thy indiscretion!"); /* EN verbalize("Thou shalt pay for thy indiscretion!"); */ // TODO DE
+	    pline_The("NOUN_STIMME von %s dröhnt:", align_gname(alignment)); /* EN pline_The("voice of %s booms:", align_gname(alignment)); */
+	    verbalize("Für diese Unverschämtheit wirst du bezahlen!"); /* EN verbalize("Thou shalt pay for thy indiscretion!"); */
 	    if (!Blind)
-		pline("%s appears before you.", Amonnam(mon)); /* EN pline("%s appears before you.", Amonnam(mon)); */ // TODO DE
+		pline("SUBJECT %s VERB_ERSCHEINEN OBJECT KASUS_DATIV vor PRONOMEN_PERSONAL.", Amonnam(mon)); /* EN pline("%s appears before you.", Amonnam(mon)); */
 	}
 	mon->mpeaceful = FALSE;
 	/* don't call set_malign(); player was naughty */
@@ -145,7 +145,7 @@ register struct monst *mtmp;
 	long cash, demand, offer;
 
 	if (uwep && uwep->oartifact == ART_EXCALIBUR) {
-	    pline("%s looks very angry.", Amonnam(mtmp)); /* EN pline("%s looks very angry.", Amonnam(mtmp)); */ // TODO DE
+	    pline("SUBJECT %s VERB_SEHEN sehr sauer aus.", Amonnam(mtmp)); /* EN pline("%s looks very angry.", Amonnam(mtmp)); */
 	    mtmp->mpeaceful = mtmp->mtame = 0;
 	    set_malign(mtmp);
 	    newsym(mtmp->mx, mtmp->my);
@@ -155,12 +155,12 @@ register struct monst *mtmp;
 	/* Slight advantage given. */
 	if (is_dprince(mtmp->data) && mtmp->minvis) {
 	    mtmp->minvis = mtmp->perminvis = 0;
-	    if (!Blind) pline("%s appears before you.", Amonnam(mtmp)); /* EN if (!Blind) pline("%s appears before you.", Amonnam(mtmp)); */ // TODO DE
+	    if (!Blind) pline("SUBJECT %s VERB_ERSCHEINEN OBJECT KASUS_DATIV vor PRONOMEN_PERSONAL.", Amonnam(mtmp)); /* EN if (!Blind) pline("%s appears before you.", Amonnam(mtmp)); */
 	    newsym(mtmp->mx,mtmp->my);
 	}
 	if (youmonst.data->mlet == S_DEMON) {	/* Won't blackmail their own. */
-	    pline("%s says, \"Good hunting, %s.\"", /* EN pline("%s says, \"Good hunting, %s.\"", */ // TODO DE
-		  Amonnam(mtmp), flags.female ? "Sister" : "Brother"); /* EN Amonnam(mtmp), flags.female ? "Sister" : "Brother"); */ // TODO DE
+	    pline("SUBJECT %s sagt: \"Gute Jagd, %s.\"", /* EN pline("%s says, \"Good hunting, %s.\"", */
+		  Amonnam(mtmp), flags.female ? "Schwester" : "Bruder"); /* EN Amonnam(mtmp), flags.female ? "Sister" : "Brother"); */
 	    if (!tele_restrict(mtmp)) (void) rloc(mtmp, FALSE);
 	    return(1);
 	}
@@ -183,14 +183,14 @@ register struct monst *mtmp;
 	    if (mon_has_amulet(mtmp))
 		demand = cash + (long)rn1(1000,40);
 
-	    pline("SUBJECT %s VERB_VERLANGEN OBJECT %ld %s for safe passage.", /* EN pline("%s demands %ld %s for safe passage.", */ // TODO DE
+	    pline("SUBJECT %s VERB_VERLANGEN OBJECT %ld %s für freies Geleit.", /* EN pline("%s demands %ld %s for safe passage.", */
 		  Amonnam(mtmp), demand, currency(demand));
 
 	    if ((offer = bribe(mtmp)) >= demand) {
-		pline("%s vanishes, laughing about cowardly mortals.", /* EN pline("%s vanishes, laughing about cowardly mortals.", */ // TODO DE
+		pline("SUBJECT %s VERB_VERSCHWINDEN, lauthals lachend über die feigen Sterblichen.", /* EN pline("%s vanishes, laughing about cowardly mortals.", */
 		      Amonnam(mtmp));
 	    } else if (offer > 0L && (long)rnd(40) > (demand - offer)) {
-		pline("%s scowls at you menacingly, then vanishes.", /* EN pline("%s scowls at you menacingly, then vanishes.", */ // TODO DE
+		pline("SUBJECT %s VERB_BLICKEN OBJECT PRONOMEN_PERSONAL finster an und VERB_VERSCHWINDEN dann.", /* EN pline("%s scowls at you menacingly, then vanishes.", */
 		      Amonnam(mtmp));
 	    } else {
 		pline("SUBJECT %s VERB_WERDEN wütend ...", Amonnam(mtmp)); /* EN pline("%s gets angry...", Amonnam(mtmp)); */
@@ -213,13 +213,13 @@ struct monst *mtmp;
 	long umoney = money_cnt(invent);
 #endif
 
-	getlin("How much will you offer?", buf); /* EN getlin("How much will you offer?", buf); */ // TODO DE
+	getlin("Wie viel SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL anbieten?", buf); /* EN getlin("How much will you offer?", buf); */
 	if (sscanf(buf, "%ld", &offer) != 1) offer = 0L;
 
 	/*Michael Paddon -- fix for negative offer to monster*/
 	/*JAR880815 - */
 	if (offer < 0L) {
-		You("try to shortchange %s, but fumble.", /* EN You("try to shortchange %s, but fumble.", */ // TODO DE
+		You("VERB_VERSUCHEN OBJECT %s übers Ohr zu hauen, VERB_SCHAFFEN es aber nicht.", /* EN You("try to shortchange %s, but fumble.", */
 			mon_nam(mtmp));
 		return 0L;
 	} else if (offer == 0L) {

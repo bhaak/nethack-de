@@ -17,7 +17,7 @@ ballfall()
 	gets_hit = (((uball->ox != u.ux) || (uball->oy != u.uy)) &&
 		    ((uwep == uball)? FALSE : (boolean)rn2(5)));
 	if (carried(uball)) {
-		pline("Startled, you drop the iron ball."); /* EN pline("Startled, you drop the iron ball."); */ // TODO DE
+		pline("SUBJECT Vor Schreck VERB_LASSEN PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_IRON_BALL fallen."); /* EN pline("Startled, you drop the iron ball."); */
 		if (uwep == uball)
 			setuwep((struct obj *)0);
 		if (uswapwep == uball)
@@ -584,7 +584,7 @@ drag:
 	    } else {
 		struct monst *victim;
 
-		You("are jerked back by the iron ball!"); /* EN You("are jerked back by the iron ball!"); */ // TODO DE
+		You("VERB_WERDEN OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER NOUN_IRON_BALL zurückgerissen!"); /* EN You("are jerked back by the iron ball!"); */
 		if ((victim = m_at(uchain->ox, uchain->oy)) != 0) {
 		    int tmp;
 

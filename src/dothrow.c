@@ -82,7 +82,7 @@ int shotlimit;
 	if(!canletgo(obj,"werfen")) /* EN if(!canletgo(obj,"throw")) */
 		return(0);
 	if (obj->oartifact == ART_MJOLLNIR && obj != uwep) {
-	    pline("%s must be wielded before it can be thrown.", /* EN pline("%s must be wielded before it can be thrown.", */ // TODO DE
+	    pline("SUBJECT %s VERB_MUESSEN als Waffe ADJEKTIV_GEFUEHRT werden, bevor er geworfen werden kann.", /* EN pline("%s must be wielded before it can be thrown.", */
 		The(xname(obj)));
 		return(0);
 	}
@@ -208,7 +208,7 @@ dothrow()
 	multi = 0;		/* reset; it's been used up */
 
 	if (notake(youmonst.data)) {
-	    You("are physically incapable of throwing anything."); /* EN You("are physically incapable of throwing anything."); */ // TODO DE
+	    You("VERB_SEIN physisch nicht in der Lage irgendetwas zu werfen."); /* EN You("are physically incapable of throwing anything."); */
 	    return 0;
 	}
 
@@ -295,7 +295,7 @@ dofire()
 	int shotlimit;
 
 	if (notake(youmonst.data)) {
-	    You("are physically incapable of doing that."); /* EN You("are physically incapable of doing that."); */ // TODO DE
+	    You("VERB_SEIN physisch nicht in der Lage das zu tun."); /* EN You("are physically incapable of doing that."); */
 	    return 0;
 	}
 
@@ -459,7 +459,7 @@ hurtle_step(arg, x, y)
     struct trap *ttmp;
     
     if (!isok(x,y)) {
-	You_feel("the spirits holding you back."); /* EN You_feel("the spirits holding you back."); */ // TODO DE
+	You("VERB_FUEHLEN, wie OBJECT PRONOMEN_PERSONAL die Grenze des Universums abbremst."); /* EN You_feel("the spirits holding you back."); */
 	return FALSE;
     } else if (!in_out_region(x, y)) {
 	return FALSE;
@@ -502,8 +502,8 @@ hurtle_step(arg, x, y)
 	    boolean too_much = (invent && (inv_weight() + weight_cap() > 600));
 	    /* Move at a diagonal. */
 	    if (bigmonst(youmonst.data) || too_much) {
-		You("%sVERB_WERDEN gewaltsam in eine Felsspalte gequetscht.", /* EN You("%sget forcefully wedged into a crevice.", */
-			too_much ? "and all your belongings " : ""); /* EN too_much ? "and all your belongings " : ""); */ // TODO DE
+		You("VERB_WERDEN%s schmerzhaft in eine Felsspalte gequetscht.", /* EN You("%sget forcefully wedged into a crevice.", */
+			too_much ? " OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV ADJEKTIV_GESAMT NOUN_HABE" : ""); /* EN too_much ? "and all your belongings " : ""); */
 		losehp(rnd(2+*range), "wurde in eine enge Felsspalte gequetscht", NO_KILLER_PREFIX); /* EN losehp(rnd(2+*range), "wedging into a narrow crevice", KILLED_BY); */
 		return FALSE;
 	    }
@@ -768,7 +768,7 @@ boolean hitsroof;
 		goto petrify;
 	case CREAM_PIE:
 	case BLINDING_VENOM:
-		pline("You've got it all over your %s!", body_part(FACE)); /* EN pline("You've got it all over your %s!", body_part(FACE)); */ // TODO DE
+		pline("Du hast es OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV ADJEKTIV_GESAMT %s!", body_part(FACE)); /* EN pline("You've got it all over your %s!", body_part(FACE)); */
 		if (blindinc) {
 		    if (otyp == BLINDING_VENOM && !Blind)
 			pline("Es blendet KASUS_AKKUSATIV PRONOMEN_PERSONAL!"); /* EN pline("It blinds you!"); */
@@ -898,7 +898,7 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 	     : (u.uhp < 10 && u.uhp != u.uhpmax)) &&
 	    obj->owt > (unsigned)((Upolyd ? u.mh : u.uhp) * 2) &&
 	    !Is_airlevel(&u.uz)) {
-	    You("have so little stamina, %s drops from your grasp.", /* EN You("have so little stamina, %s drops from your grasp.", */ // TODO DE
+	    You("VERB_HABEN so wenig Kraft, dass OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUER_SATZ SUBJECT_IM_SATZ %s herunter-VERB_FALLEN.", /* EN You("have so little stamina, %s drops from your grasp.", */
 		the(xname(obj)));
 	    exercise(A_CON, FALSE);
 	    u.dx = u.dy = 0;
@@ -1079,7 +1079,7 @@ boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 		obj_no_longer_held(obj);
 		if (mon && mon->isshk && is_pick(obj)) {
 		    if (cansee(bhitpos.x, bhitpos.y))
-			pline("%s snatches up %s.", /* EN pline("%s snatches up %s.", */ // TODO DE
+			pline("SUBJECT %s VERB_SCHNAPPEN sich OBJECT %s.", /* EN pline("%s snatches up %s.", */
 			      Monnam(mon), the(xname(obj)));
 		    if(*u.ushops)
 			check_shop_obj(obj, bhitpos.x, bhitpos.y, FALSE);
@@ -1408,7 +1408,7 @@ register struct obj   *obj;
 	    }
 	    pline("SUBJECT %s OBJECT KASUS_DATIV in %s.", /* EN pline("%s into %s %s.", */
 		Tobjnam(obj, "VERB_VERSCHWINDEN"), /* EN Tobjnam(obj, "vanish"), s_suffix(mon_nam(mon)), */
-		genitivattribut_zu_wort(mon_nam(mon), is_whirly(u.ustuck->data) ? "NOUN_STROEMUNGs" : "NOUN_EINGEWEIDEs")); /* EN is_animal(u.ustuck->data) ? "entrails" : "currents"); */ // TODO DE currents: besser?
+		genitivattribut_zu_wort(mon_nam(mon), is_whirly(u.ustuck->data) ? "NOUN_STROEMUNGs" : "NOUN_EINGEWEIDEs")); /* EN is_animal(u.ustuck->data) ? "entrails" : "currents"); */
 	} else {
 	    tmiss(obj, mon);
 	}

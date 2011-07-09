@@ -529,7 +529,7 @@ dotele()
 	    }
 
 	    if (check_capacity(
-			"Your concentration falters from carrying so much.")) /* EN "Your concentration falters from carrying so much.")) */ // TODO DE
+			"SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_PERSONAL fehlt dazu die nötige Konzentration, NEUER_SATZ weil SUBJECT_IM_SATZ PRONOMEN_PERSONAL zuviel VERB_TRAGEN.")) /* EN "Your concentration falters from carrying so much.")) */
 		return 1;
 
 	    if (castit) {
@@ -585,7 +585,7 @@ level_tele()
 	    char qbuf[BUFSZ];
 	    int trycnt = 0;
 
-	    Strcpy(qbuf, "To what level do you want to teleport?"); /* EN Strcpy(qbuf, "To what level do you want to teleport?"); */ // TODO DE
+	    Strcpy(qbuf, "SUBJECT Auf welchen Level MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL teleportieren?"); /* EN Strcpy(qbuf, "To what level do you want to teleport?"); */
 	    do {
 		if (++trycnt == 2) {
 #ifdef WIZARD
@@ -655,7 +655,7 @@ level_tele()
 		done(DIED);
 		pline("Eine energiegeladene Wolke aus Staub beginnt sich zu verdichten."); /* EN pline("An energized cloud of dust begins to coalesce."); */
 		Your("NOUN_KOERPER rematerialisiert%s.", invent ?  /* EN Your("body rematerializes%s.", invent ? */
-			", and you gather up all your possessions" : ""); /* EN ", and you gather up all your possessions" : ""); */ // TODO DE
+			" und NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_AUFHEBEN OBJECT PRONOMEN_POSSESSIV ADJEKTIV_GANZ NOUN_PLUNDER wieder SATZKLAMMER" : ""); /* EN ", and you gather up all your possessions" : ""); */
 		return;
 	    }
 
@@ -694,7 +694,7 @@ level_tele()
 	    int llimit = dunlevs_in_dungeon(&u.uz);
 
 	    if (newlev >= 0 || newlev <= -llimit) {
-		You_cant("get there from here."); /* EN You_cant("get there from here."); */ // TODO DE
+		pline("SUBJECT Von hier VERB_KOENNEN PRONOMEN_PERSONAL nicht dorthin."); /* EN You_cant("get there from here."); */
 		return;
 	    }
 	    newlevel.dnum = u.uz.dnum;
@@ -827,13 +827,13 @@ register struct trap *ttmp;
 	 * next level, and thus losing the game
 	 */
 	if (In_endgame(&u.uz) && !u.uhave.amulet) {
-	    You_feel("dizzy for a moment, but nothing happens..."); /* EN You_feel("dizzy for a moment, but nothing happens..."); */ // TODO DE
+	    Du_fuehlst_dich("kurz schwindlig, aber nichts passiert ..."); /* EN You_feel("dizzy for a moment, but nothing happens..."); */
 	    return;
 	}
 
 	target_level = ttmp->dst;
 	schedule_goto(&target_level, FALSE, FALSE, 1,
-		      "You feel dizzy for a moment, but the sensation passes.", /* EN "You feel dizzy for a moment, but the sensation passes.", */ // TODO DE
+		      "SUBJECT PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL kurz schwindlig, aber das Gefühl vergeht wieder.", /* EN "You feel dizzy for a moment, but the sensation passes.", */
 		      (char *)0);
 }
 
@@ -1119,7 +1119,7 @@ int in_sight;
 		if (In_endgame(&u.uz) &&
 		    (mon_has_amulet(mtmp) || is_home_elemental(mptr))) {
 		    if (in_sight && mptr->mlet != S_ELEMENTAL) {
-			pline("%s seems to shimmer for a moment.", /* EN pline("%s seems to shimmer for a moment.", */ // TODO DE
+			pline("SUBJECT %s VERB_SCHEINEN einen Moment zu flirren.", /* EN pline("%s seems to shimmer for a moment.", */
 							Monnam(mtmp));
 			seetrap(trap);
 		    }
@@ -1140,7 +1140,7 @@ int in_sight;
 		nlev = random_teleport_level();
 		if (nlev == depth(&u.uz)) {
 		    if (in_sight)
-			pline("%s shudders for a moment.", Monnam(mtmp)); /* EN pline("%s shudders for a moment.", Monnam(mtmp)); */ // TODO DE
+			pline("SUBJECT %s VERB_ERSCHAUDERN für einen Moment.", Monnam(mtmp)); /* EN pline("%s shudders for a moment.", Monnam(mtmp)); */
 		    return 0;
 		}
 		get_level(&tolevel, nlev);
