@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Tool um die Patches in NetHack-De einzufügen und zu entfernen
+# Tool um die Patches in NetHack-De einzufügen und zu entfernen,
+# damit man theoretisch auf ein Vanilla NetHack zurueckgehen koennte
 
 PATCHES="
 nethack-applied-cream-pie-C343-218.diff

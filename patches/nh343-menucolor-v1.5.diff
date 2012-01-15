@@ -197,9 +197,9 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/README.menuco
 diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/decl.c nethack-3.4.3-menucolors/src/decl.c
 --- nethack-3.4.3-orig/src/decl.c	2006-08-08 23:07:19.000000000 +0300
 +++ nethack-3.4.3-menucolors/src/decl.c	2005-02-18 18:01:56.000000000 +0200
-@@ -241,6 +241,10 @@
- 	"ADJEKTIV_FARBE_WHITE",		/* CLR_WHITE */
+@@ -262,6 +262,10 @@
  };
+ #endif
  
 +#ifdef MENU_COLOR
 +struct menucoloring *menu_colorings = 0;
@@ -473,7 +473,7 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/win/tty/wintt
 +++ nethack-3.4.3-menucolors/win/tty/wintty.c	2005-02-18 18:01:57.000000000 +0200
 @@ -129,6 +129,10 @@
  static char winpanicstr[] = "Bad window id %d";
- char defmorestr[] = "--Weiter--"; /* EN char defmorestr[] = "--More--"; */
+ const char defmorestr[] = "--Weiter--"; /* EN char defmorestr[] = "--More--"; */
  
 +#ifdef MENU_COLOR
 +extern struct menucoloring *menu_colorings;
