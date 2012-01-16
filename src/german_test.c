@@ -4,16 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-//#include "hack.h"
-//#include "extern.h"
-//#include "decl.h"
-//#include "config.h"
-//#include "obj.h"
-//#include "objclass.h"
-//#include "prop.h"
-//#include "skills.h"
-
 #include "german.h"
+
+#define SIZE2(x) (int)(sizeof(x) / sizeof(x[0]))
 
 void check_strings(char* text[][2], int size) {
 	int i;
@@ -46,7 +39,7 @@ START_TEST (test_tincontent)
 										 //"d - eine verfluchte Dose mit Fleisch vom grossen Hunde."} // TODO
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 }
 END_TEST
 
@@ -62,7 +55,7 @@ START_TEST (test_linking_elements) {
 		{"X - ARTIKEL_UNBESTIMMTER NOUN_RING_UNIDENTIFIED_ENGAGEMENT NOUN_RING",
 		 "X - ein Verlobungsring"}};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 #endif
 
@@ -80,7 +73,7 @@ START_TEST (test_rings) {
 		 "e - ein verfluchter Tigeraugenring"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_wands) {
@@ -99,7 +92,7 @@ START_TEST (test_wands) {
 		 "Dieser Zauberstab aus Iridium ist ein Zauberstab des Feuers!"},
 	};
 		
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_spellbooks) {
@@ -111,7 +104,7 @@ START_TEST (test_spellbooks) {
 		{"K - ARTIKEL_UNBESTIMMTER ADJEKTIV_WAND_CURVED NOUN_WAND",
 		 "K - ein gebogener Zauberstab"}};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_identified_spellbooks) {
@@ -162,7 +155,7 @@ START_TEST (test_identified_spellbooks) {
 		{"ARTIKEL_BESTIMMTER NOUN_SPE_BOOK_OF_THE_DEAD",        "das Buch der Toten"}
 	};
 	
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 
@@ -220,7 +213,7 @@ START_TEST (test_corpses) {
 		 "Medusas halb verspeister Kadaver!"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_potions) {
@@ -271,7 +264,7 @@ START_TEST (test_potions) {
      "v - eine Flasche Satanswasser"}
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_called_named_labeled) {
@@ -283,7 +276,7 @@ START_TEST (test_called_named_labeled) {
 		{"c - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_SACK PARTIKEL_NAMED Necessaire",
 		 "c - ein nicht verfluchter Sack namens Necessaire"}};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_complete_sentences) {
@@ -322,7 +315,7 @@ START_TEST (test_complete_sentences) {
      "Dir gelingt es, die Dose zu öffnen."},
   };
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_complete_sentences2) {
@@ -361,7 +354,7 @@ START_TEST (test_complete_sentences2) {
 		 "Es juckt dich stark unter deinen Mumienbinden."},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
  
 
@@ -428,7 +421,7 @@ START_TEST (test_complete_sentences3) {
 		 "Während du gräbst, füllt sich das Loch mit Hund!"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 
@@ -466,7 +459,7 @@ START_TEST (test_complete_sentences4) {
 		 "des Langschwertes namens Excalibur"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_incomplete_sentences) {
@@ -485,7 +478,7 @@ START_TEST (test_incomplete_sentences) {
 		 "Grayswandir [rechtschaffener Silbersäbel]"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 
@@ -499,7 +492,7 @@ START_TEST (test_hoeren) {
 		 "Du hörst einen Wolf den Mond anheulen."},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_passiv) {
@@ -507,7 +500,7 @@ START_TEST (test_passiv) {
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_FOX VERB_PASSIV_DESTROY!", 
 		 "Der Fuchs VERB_PASSIV_DESTROY!"}};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_level_sounds) {
@@ -517,7 +510,7 @@ START_TEST (test_level_sounds) {
 		{"SUBJECT PRONOMEN_PERSONAL VERB_HEAR gedämpfte Geräusche.",
 		 "Du hörst gedämpfte Geräusche."}};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_verbs) {
@@ -544,7 +537,7 @@ START_TEST (test_verbs) {
 		 "Hier ist niemand, den du um Rat fragen könntest."},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_tools) {
@@ -554,7 +547,7 @@ START_TEST (test_tools) {
 		{"SUBJECT ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD",
 		 "Eine Augenbinde"}};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 
@@ -565,7 +558,7 @@ START_TEST (test_statues) {
 		{"b - ARTIKEL_UNBESTIMMTER ADJEKTIV_UNCURSED NOUN_FIGURINE PARTIKEL_OF ARTIKEL_UNBESTIMMTER NOUN_DINGO",
 		 "b - eine nicht verfluchte Statuette eines Dingos"}};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 /* copy from invent.c */
@@ -593,7 +586,7 @@ START_TEST (test_inventory_names) {
 		{names[14], "Felsbrocken, Statuen"}
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 //#endif
 
@@ -672,7 +665,7 @@ START_TEST (test_german2meta) {
 		//{"Leichen von Vampirfledermäusen", "MODIFIER_CORPSE PARTIKEL_VON NOUN_VAMPIRE_BATs NOUN_CORPSE"},
 	};
 
-	check_german2meta(text, sizeof(text)/8);
+	check_german2meta(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_german2meta2) {
@@ -705,7 +698,7 @@ START_TEST (test_german2meta2) {
 		{"NOUN_WATER_ELEMENTAL", "NOUN_WATER_ELEMENTAL"},
 	};
 
-	check_german2meta(text, sizeof(text)/8);
+	check_german2meta(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_german2meta_ohne_umlaute) {
@@ -737,7 +730,7 @@ START_TEST (test_german2meta_ohne_umlaute) {
 		{"ring des schleichens", "NOUN_RING PARTIKEL_OF NOUN_RING_STEALTH"},
 	};
 
-	check_german2meta(text, sizeof(text)/8);
+	check_german2meta(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_german2meta_utf8) {
@@ -756,7 +749,7 @@ START_TEST (test_german2meta_utf8) {
 		{"NazgÃ»l", "NOUN_NAZGULs"},
 	};
 
-	check_german2meta(text, sizeof(text)/8);
+	check_german2meta(text, SIZE2(text));
 } END_TEST
 
 
@@ -793,7 +786,7 @@ START_TEST (test_normalisierung) {
 		{"Nazgûl", "nazgul"},
 	};
 
-	check_normalisierung(text, sizeof(text)/8);
+	check_normalisierung(text, SIZE2(text));
 } END_TEST
 
 //#if 0
@@ -805,7 +798,7 @@ START_TEST (test_casus_and_modifier) {
 		 "Deiner einer"}
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_possessiv) {
@@ -824,7 +817,7 @@ START_TEST (test_possessiv) {
 		 "Die Elbenmumie ignoriert ihr Spiegelbild."},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_nominal_phrasen) {
@@ -842,7 +835,7 @@ START_TEST (test_nominal_phrasen) {
 		{"PRONOMEN_ALLE NOUN_VIOLET_FUNGUSs ausgelöscht", "alle violetten Pilze ausgelöscht"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_scrolls) {
@@ -863,7 +856,7 @@ START_TEST (test_scrolls) {
 		 "r - 3 Schriftrollen \"LIES MICH\"."}
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_gems) {
@@ -877,7 +870,7 @@ START_TEST (test_gems) {
     // {"S - ARTIKEL_UNBESTIMMTER NOUN_GEM_ROCK", "S - ein Stein"} // TODO
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 
@@ -937,7 +930,7 @@ START_TEST (test_paar) {
 
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_satzklammer) {
@@ -952,7 +945,7 @@ START_TEST (test_satzklammer) {
 		 "Du bist, hier ein Nebensatz."},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 
@@ -1005,7 +998,7 @@ START_TEST (test_noun_pseudo) {
 		 "Du trittst das arme Dingsbums!"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_shopkeeper) {
@@ -1020,7 +1013,7 @@ START_TEST (test_shopkeeper) {
 		 "getötet von Y-Fenni, dem Ladenbesitzer"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_genitivattribut_zu_wort) {
@@ -1049,7 +1042,7 @@ START_TEST (test_genitivattribut_zu_wort) {
 		 "Cahersiveen des unsichtbaren Ladenbesitzers NOUN_GEHIRN"},
 	};
 
-	for (i=0; i<sizeof(text)/8; i++) {
+	for (i=0; i<SIZE2(text); i++) {
 		ret = genitivattribut_zu_wort(text[i][0], "NOUN_GEHIRN");
 		fail_unless((strcmp(ret, text[i][1])==0),
 								"failed\nto convert: >%s<\nconverted:  >%s<\nexpected:   >%s<\n",
@@ -1072,7 +1065,7 @@ START_TEST (test_modifier_verb_imperativ) {
 		 "Was möchtest du?"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_wortzusammensetzungen) {
@@ -1105,7 +1098,7 @@ START_TEST (test_wortzusammensetzungen) {
 		 "grell-blau"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 
@@ -1204,7 +1197,7 @@ START_TEST (test_pronomen) {
 		 "Sie treffen es!"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 void check_fugenwort(const char* token, const char* wort) {
@@ -1271,7 +1264,7 @@ START_TEST (test_infinitive) {
 		 "Möchtest du aufhören?"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 
 START_TEST (test_modifier_verb_partizip_perfekt) {
@@ -1286,7 +1279,7 @@ START_TEST (test_modifier_verb_partizip_perfekt) {
 		 "Der Hund wird herausgeschleudert!"},
 	};
 
-	check_strings(text, sizeof(text)/8);
+	check_strings(text, SIZE2(text));
 } END_TEST
 //#endif
 
