@@ -493,7 +493,9 @@ bot2()
 #endif
 	curs(WIN_STATUS, 1, 1);
 	putstr(WIN_STATUS, 0, newbot2);
+#ifdef STATUS_COLORS
 	flags.botlx = save_botlx;
+#endif
 }
 
 void
