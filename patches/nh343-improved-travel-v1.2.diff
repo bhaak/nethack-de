@@ -1,0 +1,55 @@
+This patch improves the prompt when NetHack asks the player to specify
+a location.
+
+In vanilla NetHack you can let the cursor directly jump to stairs by
+pressing '>' or '<', to fountains by '{', to altars by '_', etc.
+
+But only if the location isn't covered by objects and for sinks and
+grave this mechanism doesn't work as '|' and '#' also matches for
+walls and corridors.
+
+This is mainly an issue if your using the travel command '_' to quickly
+navigate through the dungeon.
+
+With this patch NetHack also finds dungeon features hidden by objects
+and corridors and walls are never selected as target locations.
+
+Bug reports can be directed to:
+http://apps.sf.net/trac/unnethack/newticket
+
+Patric Mueller <bhaak@gmx.net>
+
+diff -uwr nethack-linux/src/do_name.c nethack-travel-improved/src/do_name.c
+--- nethack-linux/src/do_name.c	2008-05-26 19:47:02.000000000 +0200
++++ nethack-travel-improved/src/do_name.c	2010-02-17 21:39:09.000000000 +0100
+@@ -142,9 +142,28 @@
+ 			    lo_x = (pass == 0 && ty == lo_y) ? cx + 1 : 1;
+ 			    hi_x = (pass == 1 && ty == hi_y) ? cx : COLNO - 1;
+ 			    for (tx = lo_x; tx <= hi_x; tx++) {
+-				k = levl[tx][ty].glyph;
++				/* look at dungeon feature, not at user-visible glyph */
++				k = back_to_glyph(tx,ty);
++				/* uninteresting background glyph */
+ 				if (glyph_is_cmap(k) &&
+-					matching[glyph_to_cmap(k)]) {
++				    (IS_DOOR(levl[tx][ty].typ) || /* monsters mimicking a door */
++				     glyph_to_cmap(k) == S_room ||
++				     glyph_to_cmap(k) == S_corr ||
++				     glyph_to_cmap(k) == S_litcorr)) {
++					/* what the user remembers to be at tx,ty */
++					k = glyph_at(tx, ty);
++				}
++				/* TODO: - open doors are only matched with '-' */
++				/* should remembered or seen items be matched? */
++				if (glyph_is_cmap(k) &&
++					matching[glyph_to_cmap(k)] &&
++					levl[tx][ty].seenv && /* only if already seen */
++					(!IS_WALL(levl[tx][ty].typ) &&
++					 (levl[tx][ty].typ != SDOOR) &&
++					 glyph_to_cmap(k) != S_room &&
++					 glyph_to_cmap(k) != S_corr &&
++					 glyph_to_cmap(k) != S_litcorr)
++				    ) {
+ 				    cx = tx,  cy = ty;
+ 				    if (msg_given) {
+ 					clear_nhwindow(WIN_MESSAGE);

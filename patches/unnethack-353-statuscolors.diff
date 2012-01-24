@@ -365,7 +365,7 @@ diff -Nuwr --exclude .svn nethack-de/src/botl.c statuscolors/src/botl.c
  	if (Upolyd)
  		Sprintf(nb = eos(nb), " HD:%d", mons[u.umonnum].mlevel);
  #ifdef EXP_ON_BOTL
-@@ -308,25 +435,65 @@
+@@ -308,25 +435,67 @@
    }
  #endif
  
@@ -438,7 +438,9 @@ diff -Nuwr --exclude .svn nethack-de/src/botl.c statuscolors/src/botl.c
 +#endif
  	curs(WIN_STATUS, 1, 1);
  	putstr(WIN_STATUS, 0, newbot2);
++#ifdef STATUS_COLORS
 +	flags.botlx = save_botlx;
++#endif
  }
  
  void

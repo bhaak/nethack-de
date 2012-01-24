@@ -150,11 +150,12 @@ const char *goal;
 				k = back_to_glyph(tx,ty);
 				/* uninteresting background glyph */
 				if (glyph_is_cmap(k) &&
-				    (glyph_to_cmap(k) == S_room ||
+				    (IS_DOOR(levl[tx][ty].typ) || /* monsters mimicking a door */
+				     glyph_to_cmap(k) == S_room ||
 				     glyph_to_cmap(k) == S_corr ||
 				     glyph_to_cmap(k) == S_litcorr)) {
 					/* what the user remembers to be at tx,ty */
-				k = levl[tx][ty].glyph;
+					k = glyph_at(tx, ty);
 				}
 				/* TODO: - open doors are only matched with '-' */
 				/* should remembered or seen items be matched? */
