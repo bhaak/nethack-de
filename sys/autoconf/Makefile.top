@@ -359,6 +359,8 @@ win32_release:
 	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/AUTHORS.de.txt
 	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/CHANGES.de.txt
 	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/LIESMICH.de.txt
+	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/Guidebook.txt
+	( cd doc ; $(MAKE) Kurzhilfe.pdf ; cp Kurzhilfe.pdf $(GAMEDIR)/)
 	-mv $(GAMEDIR) $(NETHACK_DE_WIN32_DIR)
 	cd $(NETHACK_DE_WIN32_DIR) && zip -r $(NETHACK_DE_WIN32_DIR).zip .
 
