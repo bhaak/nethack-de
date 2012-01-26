@@ -353,6 +353,7 @@ win32_release:
 	-cp $(srcdir)/CHANGES.de  $(GAMEDIR)/CHANGES.de.txt
 	-cp $(srcdir)/LIESMICH.de $(GAMEDIR)/LIESMICH.de.txt
 	-cp $(srcdir)/news $(GAMEDIR)/News
+	-cp dat/*.ttf $(GAMEDIR)/
 	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/News
 	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/defaults.nh
 	vim -c "set fileformat=dos" -c w -c q $(GAMEDIR)/license
