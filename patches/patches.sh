@@ -7,7 +7,6 @@ PATCHES="
 nethack-applied-cream-pie-C343-218.diff
 nethack-long-worm-fix-C343-324.diff
 nh343-astral-call-fix.v1.0.patch
-nh343-randomized-sokoban-prize.v1.0.patch
 xlog-v3.patch 
 nh343-acid-C343-179.diff
 nh343-simple_mail.diff

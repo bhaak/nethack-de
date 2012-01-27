@@ -3,7 +3,6 @@ h3. Änderungen
 Im Gegensatz zum Standard-"NetHack":http://www.nethack.org/
 enthält NetHack-De folgende Erweiterungen und Patches:
 
-* Sokoban-Preis wird zufällig ausgewählt
 * Extended Logfile Patch von Aardvark Joe
 * Livelog-Patch von "http://nethack.unfoog.de/":http://nethack.unfoog.de/
 * Menucolor-Patch von Pasi Kallinen
