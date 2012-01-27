@@ -8,6 +8,14 @@ Auf der "Statusseite":status.html kann der aktuelle Stand der Übersetzung einge
 
 h3. News
 
+h4(#news-2012-01-27). 27. Jan 2012: Alpha-Release NetHack-De 3.4.3-20120127a
+* ca. 93% des generierten Textes übersetzt
+* zusätzliche Halluzinationsmonster und Halluzinationsfarben
+* Patch fuer zufaelligen Sokoban-Preis entfernt
+* Debian-Paket
+* Neue Patches: travel improved, statuscolors, alt_as_meta
+* Bugfixes
+
 h4(#news-2011-06-26). 26. Jun 2011: NetHack-De-Kurzhilfe
 * Johanna Ploog hat eine "deutschsprachige Kurzhilfe für NetHack-De":dokumentation.html erstellt,
   die die Befehle und die Bedienung von NetHack-De beschreibt.

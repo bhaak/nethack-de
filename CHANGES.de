@@ -1,3 +1,27 @@
+Alpha-Release NetHack-De 3.4.3-20120127a
+ - ca. 93% des generierten Textes übersetzt
+   * alle Monsternamen übersetzt
+   * Umbenennung: Schwarze Grütze -> Blutschwarze Grütze
+   * Grabsteininschriften verbessert
+   * Übersetzung halluzinierter Monster
+   * Intro-Text komplett uebersetzt
+
+ - zusätzliche Halluzinationsmonster und Halluzinationsfarben
+ - Patch fuer zufaelligen Sokoban-Preis entfernt
+
+ - Debian-Paket
+ - DESTDIR-Support in Makefile
+
+ - Neue Patches:
+   * Travel-improved-Patch 1.2
+   * verbesserter Statuscolor-Patch aus UnNetHack
+   * alt-Taste als Modifier fuer erweiterte Kommandos (von Plagman)
+
+ - Bugfixes:
+   * Crash bei zu langen Player-Character-Monster-Namen
+   * Crash in german_test auf 64-Bit-Maschinen
+   * Fehlerhaftes Parsen der record-Datei
+
 Alpha-Release NetHack-De 3.4.3-20090115a
  - ca. 80% des generierten Textes übersetzt
  - "Astral Call Bug" gefixt (SC343-11, SC343-12)
