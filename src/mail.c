@@ -415,7 +415,7 @@ go_back:
     /* deliver some classes of messages even if no daemon ever shows up */
 give_up:
     if (!message_seen && info->message_typ == MSG_OTHER)
-	pline("Hark!  \"%s.\"", info->display_txt); /* EN pline("Hark!  \"%s.\"", info->display_txt); */ // TODO DE
+	pline("Höre!  \"%s.\"", info->display_txt); /* EN pline("Hark!  \"%s.\"", info->display_txt); */
 }
 
 # if !defined(UNIX) && !defined(VMS) && !defined(LAN_MAIL)

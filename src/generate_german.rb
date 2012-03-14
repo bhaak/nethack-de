@@ -3587,6 +3587,17 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SCHUPPE","Schuppe","","","en","feminin"),
     dekliniere_substantiv("NOUN_WACHS","Wachs","es","","e","neutrum"),
 
+    "/* blast of foo */",
+    dekliniere_substantiv("NOUN_ODEM","Odem","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_BLAST_OF_MISSILES","Geschossodem","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_BLAST_OF_FIRE","Feuerodem","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_BLAST_OF_FROST","Eisodem","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_BLAST_OF_SLEEP_GAS","Schlafgasodem","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_BLAST_OF_DISINTEGRATION","Desintegrationsodem","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_BLAST_OF_LIGHTNING","Blitzodem","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_BLAST_OF_POISON_GAS","Giftgasodem","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_BLAST_OF_ACID","Säureodem","s","","","maskulin"),
+
     "/* sonstige Substantive */",
     dekliniere_adjektivisches_substantiv("NOUN_CANINE","Hundeartig","neutrum"),
     dekliniere_adjektivisches_substantiv("NOUN_FELINE","Katzenartig","neutrum"),
@@ -3776,6 +3787,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_MOAT","Burggraben","s","Burggräben","","maskulin"), # Burggraben, Wassergraben
     dekliniere_substantiv("NOUN_MONSTER","Monster","s","Monster","","neutrum"),
     dekliniere_substantiv("NOUN_MUELL","Müll","s","","","maskulin"),
+    dekliniere_substantiv("NOUN_MUSKEL","Muskel","s","Muskel","en","maskulin"),
     dekliniere_substantiv("NOUN_NADEL","Nadel","","Nadel","en","feminin"),
     dekliniere_substantiv("NOUN_NASE","Nase","","Nase","en","feminin"),
     dekliniere_substantiv("NOUN_NASENHOEHLE","Nasenhöhle","","Nasenhöhle","en","feminin"),

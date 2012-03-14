@@ -2013,7 +2013,7 @@ boolean move_other;	/* make sure mtmp gets to x, y! so move m_at(x, y) */
 
 static const char *poiseff[] = {
 	"PRONOMEN_PERSONAL VERB_FUEHLEN OBJECT PRONOMEN_PERSONAL schwächer", "PRONOMEN_POSSESSIV NOUN_GEHIRN steht in Flammen", /* EN " feel weaker", "r brain is on fire", */
-	"Your judgement is impaired", "Your muscles won't obey you", /* EN "r judgement is impaired", "r muscles won't obey you", */ // TODO DE
+	"PRONOMEN_POSSESSIV NOUN_REFLEXs sind beeinträchtigt", "PRONOMEN_POSSESSIV NOUN_MUSKELs verkrampfen sich", /* EN "r judgement is impaired", "r muscles won't obey you", */
 	"KASUS_DATIV PRONOMEN_PERSONAL MODIFIER_VERB_DRITTE_PERSON VERB_SEIN verdammt übel", "PRONOMEN_PERSONAL VERB_BEKOMMEN einen juckenden Hautausschlag" /* EN " feel very sick", " break out in hives" */
 };
 
@@ -2034,7 +2034,7 @@ int  typ, fatal;
 	boolean thrown_weapon = (fatal < 0);
 
 	if (thrown_weapon) fatal = -fatal;
-	if(strcmp(string, "blast") && !thrown_weapon) { /* EN if(strcmp(string, "blast") && !thrown_weapon) { */ // TODO DE
+	if(strcmp(string, "NOUN_GASWOLKE") && !thrown_weapon) { /* EN if(strcmp(string, "blast") && !thrown_weapon) { */
 	    /* 'blast' has already given a 'poison gas' message */
 	    /* so have "poison arrow", "poison dart", etc... */
 	    plural = (string[strlen(string) - 1] == 's')? 1 : 0;
@@ -2044,8 +2044,8 @@ int  typ, fatal;
 	}
 
 	if(Poison_resistance) {
-		if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); /* EN if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); */ // TODO DE
-		pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV _bei_ PRONOMEN_PERSONAL nicht zu wirken."); /* EN pline_The("poison doesn't seem to affect you."); */
+		if(!strcmp(string, "NOUN_GASWOLKE")) shieldeff(u.ux, u.uy); /* EN if(!strcmp(string, "blast")) shieldeff(u.ux, u.uy); */
+		pline_The("NOUN_POISON VERB_SCHEINEN OBJECT KASUS_DATIV bei PRONOMEN_PERSONAL nicht zu wirken."); /* EN pline_The("poison doesn't seem to affect you."); */
 		return;
 	}
 	/* suppress killer prefix if it already has one */

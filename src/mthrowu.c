@@ -28,7 +28,7 @@ STATIC_OVL NEARDATA const char *breathwep[] = {
 				"Feuer", /* EN "fire", */
 				"Eis", /* EN "frost", */
 				"Schlafgas", /* EN "sleep gas", */
-				"a disintegration blast", /* EN "a disintegration blast", */ // TODO DE
+				"ARTIKEL_UNBESTIMMTER NOUN_BLAST_OF_DISINTEGRATION", /* EN "a disintegration blast", */
 				"Blitze", /* EN "lightning", */
 				"Giftgas", /* EN "poison gas", */
 				"Säure", /* EN "acid", */
@@ -684,7 +684,7 @@ breamu(mtmp, mattk)			/* monster breathes at you (ranged) */
 		if((typ >= AD_MAGM) && (typ <= AD_ACID)) {
 
 		    if(canseemon(mtmp))
-			pline("SUBJECT %s VERB_SPEIEN %s!", Monnam(mtmp), /* EN pline("%s breathes %s!", Monnam(mtmp), */
+			pline("SUBJECT %s VERB_SPEIEN OBJECT %s!", Monnam(mtmp), /* EN pline("%s breathes %s!", Monnam(mtmp), */
 			      breathwep[typ-1]);
 		    buzz((int) (-20 - (typ-1)), (int)mattk->damn,
 			 mtmp->mx, mtmp->my, sgn(tbx), sgn(tby));

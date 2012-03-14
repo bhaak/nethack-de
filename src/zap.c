@@ -89,17 +89,14 @@ const char * const flash_types[] = {	/* also used in buzzmu(mcastu.c) */
 	"",
 	"",
 
-	// TODO DE
-	// Detonation, Druckwelle, Entladung, Explosion, Luftdruck, schlagende Wetter, Sprengung, Verpuffung, Wolke
-	// x-attacke, x-angriff
-	"blast of missiles",	/* Dragon breath equivalents 20-29*/ /* EN "blast of missiles",	*/
-	"blast of fire", /* EN "blast of fire", */ // Feuerdetonation?
-	"blast of frost", /* EN "blast of frost", */ // Eisdetonation
-	"blast of sleep gas", /* EN "blast of sleep gas", */ // Schlafgasexplosion?
-	"blast of disintegration", /* EN "blast of disintegration", */
-	"blast of lightning", /* EN "blast of lightning", */ // Blitzentladung
-	"blast of poison gas", /* EN "blast of poison gas", */ // Giftgasexplosion
-	"blast of acid", /* EN "blast of acid", */ // Säureentladung? Säureangriff?, Säuredusche?
+	"NOUN_BLAST_OF_MISSILES",	/* Dragon breath equivalents 20-29*/ /* EN "blast of missiles",	*/
+	"NOUN_BLAST_OF_FIRE", /* EN "blast of fire", */
+	"NOUN_BLAST_OF_FROST", /* EN "blast of frost", */
+	"NOUN_BLAST_OF_SLEEP_GAS", /* EN "blast of sleep gas", */
+	"NOUN_BLAST_OF_DISINTEGRATION", /* EN "blast of disintegration", */
+	"NOUN_BLAST_OF_LIGHTNING", /* EN "blast of lightning", */
+	"NOUN_BLAST_OF_POISON_GAS", /* EN "blast of poison gas", */
+	"NOUN_BLAST_OF_ACID", /* EN "blast of acid", */
 	"",
 	""
 };
@@ -3171,7 +3168,7 @@ xchar sx, sy;
 	    if (!rn2(3)) destroy_item(RING_CLASS, AD_ELEC);
 	    break;
 	case ZT_POISON_GAS:
-	    poisoned("blast", A_DEX, "poisoned blast", 15); /* EN poisoned("blast", A_DEX, "poisoned blast", 15); */ // TODO DE
+	    poisoned("NOUN_GASWOLKE", A_DEX, "ADJEKTIV_POISONED NOUN_ODEM", 15); /* EN poisoned("blast", A_DEX, "poisoned blast", 15); */
 	    break;
 	case ZT_ACID:
 	    if (Acid_resistance) {
@@ -3381,7 +3378,7 @@ register int dx,dy;
 			    hit(fltxt, mon, ".");
 			    pline("SUBJECT %s VERB_ABSORBIEREN OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_TOEDLICH %s!", Monnam(mon), /* EN pline("%s absorbs the deadly %s!", Monnam(mon), */
 				  type == ZT_BREATH(ZT_DEATH) ?
-					"blast" : "NOUN_RAY"); /* EN "blast" : "ray"); */ // TODO DE
+					"NOUN_ODEM" : "NOUN_RAY"); /* EN "blast" : "ray"); */
 			    pline("SUBJECT %s VERB_ERSCHEINEN sogar stärker als zuvor.", pronominalisierung(Monnam(mon))); /* EN pline("It seems even stronger than before."); */
 			}
 			break; /* Out of while loop */
@@ -3714,7 +3711,7 @@ boolean *shopdamage;
 			      (type < 0) ? "ARTIKEL_BESTIMMTER" : "PRONOMEN_POSSESSIV", /* EN (type < 0) ? "the" : "your", */
 						abs(type) < ZT_SPELL(0) ? "NOUN_BOLT" : /* EN abs(type) < ZT_SPELL(0) ? "bolt" : */
 			      abs(type) < ZT_BREATH(0) ? "NOUN_SPELL" : /* EN abs(type) < ZT_BREATH(0) ? "spell" : */
-						"blast"); /* EN "blast"); */ // TODO DE
+						"NOUN_ODEM"); /* EN "blast"); */
 		    } else You_feel("Erschütterungen."); /* EN } else You_feel("vibrations."); */
 		    break;
 		}
