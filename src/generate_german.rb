@@ -1,6 +1,16 @@
+#!/usr/bin/env ruby
+# coding: iso-8859-1
+
 require 'set'
 
-require 'german_verb'
+require './german_verb'
+
+# 
+class String
+	def each
+		yield self
+	end
+end
 
 # use the genitive-e ("des Zauberbuches" vs. "des Zauberbuchs"
 $genitiv_e = true;
