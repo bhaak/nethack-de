@@ -18,6 +18,7 @@ nethack-3.4.1-pickup_thrown.1.diff
 alt_as_meta.diff
 unnethack-353-statuscolors.diff
 nh343-improved-travel-v1.2.diff
+unnethack_book_of_the_dead_r1036.diff
 "
 
 NH_DIR=/tmp/patches_nethack$$

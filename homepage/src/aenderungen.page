@@ -24,4 +24,5 @@ Die folgenden NetHack-Bugs wurden in NetHack-De behoben:
 * C343-324 Cutting a long worm in two will crash the game if the cut takes the worm to 1 HP or if long worms had become extinct.
 * SC343-11 It's possible to easily find the identity of a high priest on the Astral plane.
 * SC343-12 Hero using telepathy can abuse Call on the Astral Plane.
+* Das Buch der Toten kann nicht mehr durch Lava zerstört werden, wenn der Spieler ohne Feuerresistenz in Lava fällt.
 

@@ -3970,6 +3970,14 @@ lava_effects()
 	for(obj = invent; obj; obj = obj2) {
 	    obj2 = obj->nobj;
 	    if(is_organic(obj) && !obj->oerodeproof) {
+		/* prevent the Book of the Dead from being destroyed when
+		 * the player falls into lava. */
+		if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
+			if (!Blind && usurvive)
+				pline("SUBJECT %s VERB_LEUCHTEN seltsam %s, bleibt aber ganz.", /* EN pline("%s glows a strange %s, but remains intact.", */
+						The(xname(obj)), hcolor("ADJEKTIV_FARBE_DARK_RED")); /* EN The(xname(obj)), hcolor("dark red")); */
+			continue;
+		}
 		if(obj->owornmask) {
 		    if (usurvive)
 			Your("%s in Flammen SATZKLAMMER!", aobjnam(obj, "VERB_AUFGEHEN")); /* EN Your("%s into flame!", aobjnam(obj, "burst")); */
