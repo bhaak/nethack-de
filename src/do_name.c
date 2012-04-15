@@ -747,8 +747,8 @@ boolean called;
 	    name_at_start = FALSE;
 #ifdef GERMAN
 	    /* Hallucinated monster names containing the keyword 'UNIQUE'
-	       don't need an article. (jpeg) */
-	    if (strstri(buf, "UNIQUE")) {
+	       don't need an article (jpeg) unless they have adjectives. */
+	    if (strstri(buf, "UNIQUE") && !has_adjectives) {
 		name_at_start = TRUE;
 		article = ARTICLE_NONE;
 	    }
