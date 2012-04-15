@@ -11272,11 +11272,11 @@ Although not referring to the exactly same rank. */
 
   {"Bernd dem Brot", "NOUN_HALLU_UNIQUE_BERND_DAS_BROT", "", dativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
-  {"Chili das Schaf", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", nominativ|akkusativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Chili das Schaf", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", nominativ|akkusativ, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
-  {"Chili des Schafs", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Chili des Schafs", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
-  {"Chili dem Schaf", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", dativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Chili dem Schaf", "NOUN_HALLU_UNIQUE_CHILI_DAS_SCHAF", "", dativ, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
   {"Frankenstein", "NOUN_HALLU_UNIQUE_FRANKENSTEIN", "", nominativ|akkusativ|dativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Frankensteins", "NOUN_HALLU_UNIQUE_FRANKENSTEIN", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -11334,6 +11334,17 @@ Although not referring to the exactly same rank. */
 
   {"Vormärz", "NOUN_HALLU_UNIQUE_VORMAERZ", "", nominativ|akkusativ|dativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Vormärz'", "NOUN_HALLU_UNIQUE_VORMAERZ", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Beutolomäus", "NOUN_HALLU_UNIQUE_BEUTOLOMAEUS", "", nominativ|akkusativ|dativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Beutolomäus'", "NOUN_HALLU_UNIQUE_BEUTOLOMAEUS", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Irrenhaus der Dritte", "NOUN_HALLU_UNIQUE_IRRENHAUS_DER_DRITTE", "", nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Irrenhaus des Dritten", "NOUN_HALLU_UNIQUE_IRRENHAUS_DER_DRITTE", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Irrenhaus dem Dritten", "NOUN_HALLU_UNIQUE_IRRENHAUS_DER_DRITTE", "", dativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Irrenhaus den Dritten", "NOUN_HALLU_UNIQUE_IRRENHAUS_DER_DRITTE", "", akkusativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
   /* translated pre-existing monsters */
 

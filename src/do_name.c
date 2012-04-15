@@ -1149,6 +1149,8 @@ static const char * const bogusmons[] = {
 	"NOUN_HALLU_UNIQUE_PITIPLATSCH",	/* Der Sandmann */
 	"NOUN_HALLU_UNIQUE_SEIFENSTEIN",
 	"NOUN_HALLU_UNIQUE_VORMAERZ",		/* Wir sind Kaiser */
+	"NOUN_HALLU_UNIQUE_BEUTOLOMAEUS",
+	"NOUN_HALLU_UNIQUE_IRRENHAUS_DER_DRITTE", /* http://www.youtube.com/user/Irrenhaus3 */
 	/* other */
 	"NOUN_HALLU_STEUERPRUEFER",
 	"NOUN_HALLU_GEZ_FAHNDER",		/* real-world pests */
