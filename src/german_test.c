@@ -1413,6 +1413,7 @@ int main(int argc, char *argv[]) {
   	int nf;
   	Suite *s = test_suite();
   	SRunner *sr = srunner_create(s);
+	srunner_set_xml(sr, "german_test_check_testsuite.xml");
   	srunner_run_all(sr, CK_VERBOSE);
   	//srunner_run_all(sr, CK_NORMAL);
   	nf = srunner_ntests_failed(sr);
