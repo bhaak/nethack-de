@@ -1337,6 +1337,33 @@ START_TEST (test_german_the) {
 	check_german_the("NOUN_THE_EYE_OF_THE_AETHIOPICA", "das Auge der Aethiopica");
 } END_TEST
 
+void check_genus_von(const char* substantiv, enum Genus genus) {
+
+	fail_unless(genus == genus_von(substantiv),
+		"\nGenus nicht gefunden:\nSubstantiv: >%s<\nGenus:    >%d<\nerwartet: >%d<\n",
+		substantiv, genus_von(substantiv), genus);
+}
+
+START_TEST (test_genus_von) {
+	check_genus_von("NOUN_RING",    maskulin);
+	check_genus_von("NOUN_FLASCHE", feminin);
+	check_genus_von("NOUN_T_SHIRT", neutrum);
+
+	check_genus_von("NOUN_RINGs",    maskulin);
+	check_genus_von("NOUN_FLASCHEs", feminin);
+	check_genus_von("NOUN_T_SHIRTs", neutrum);
+
+	// fallback ist "maskulin"
+	check_genus_von("ADJEKTIV_CURSED", maskulin);
+
+	check_genus_von("NOUN_PAAR NOUN_IRON_SHOES", neutrum);
+
+	check_genus_von("NOUN_SPELLBOOK", neutrum);
+	check_genus_von("NOUN_SPELLBOOK PARTIKEL_OF NOUN_SPE_INVISIBILITY", neutrum);
+	check_genus_von("ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", neutrum);
+	check_genus_von("ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", neutrum);
+} END_TEST
+
 Suite *test_suite(void)
 {
 	Suite *s = suite_create("all tests");
@@ -1404,6 +1431,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_infinitive);
 	tcase_add_test(tc_core, test_modifier_verb_partizip_perfekt);
 	tcase_add_test(tc_core, test_german_the);
+	tcase_add_test(tc_core, test_genus_von);
 
 	return s;
 }

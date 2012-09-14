@@ -1470,8 +1470,22 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 }
 
 /* Liefert Geschlecht von token zurück. */
-enum Genus get_genus(const char* token) {
+enum Genus genus_von(const char* noun_token) {
 	int i=0;
+	const char *token_start = strstr(noun_token, "NOUN_");
+	char *token_end = NULL;
+	char token[TBUFSZ];
+
+	/* kein Substantiv gefunden */
+	if (!token_start) { return maskulin; }
+
+	/* finde erstes Substantiv des Strings */
+	strcpy(token, token_start);
+	if ((token_end = strstr(token, " "))) {
+		*token_end = '\0';
+	}
+
+	/* finde Genus von token */
 	while (worte[i].wort!=NULL) {
 		if (strcmp(worte[i].typ, token)==0) {
 			return worte[i].genus;
@@ -1498,7 +1512,7 @@ const char *noun_token;
 		return "NOUN_PRONOMEN_3P_N_PERSONAL";
 	}
 
-	switch (get_genus(token)) {
+	switch (genus_von(token)) {
 	case maskulin: return "NOUN_PRONOMEN_3P_M_PERSONAL";
 	case feminin:  return "NOUN_PRONOMEN_3P_F_PERSONAL";
 	case neutrum:  return "NOUN_PRONOMEN_3P_N_PERSONAL";
@@ -1523,7 +1537,7 @@ const char *noun_token;
 		return "das";
 	}
 
-	switch (get_genus(token)) {
+	switch (genus_von(token)) {
 		case maskulin: return "der";
 		case feminin:  return "die";
 		case neutrum:  return "das";
@@ -1546,7 +1560,7 @@ const char *noun_token;
 		return "es";
 	}
 
-	switch (get_genus(token)) {
+	switch (genus_von(token)) {
 		case maskulin: return "einen";
 		case feminin:  return "eine";
 		case neutrum:  return "eines";
@@ -1574,7 +1588,7 @@ const char *token;
 {
 	char tmp_token[TBUFSZ];
 	char *geschlecht_token = NULL;
-	enum Genus geschlecht = get_genus(token);
+	enum Genus geschlecht = genus_von(token);
 	switch (geschlecht) {
 		case maskulin: geschlecht_token = "einer"; break;
 		case feminin:  geschlecht_token = "eine";  break;
