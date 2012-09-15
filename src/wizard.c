@@ -552,12 +552,12 @@ wizdead()
 	}
 }
 
-const char * const random_insult[] = {
+const char * const random_insult_male[] = { /* EN const char * const random_insult[] = { */
 	"Dämlack", /* EN "antic", */
 	"Lump", /* EN "blackguard", */ /* Lump, Unhold */
 	"Angsthase", /* EN "caitiff", */
 	"Blödian", /* EN "chucklehead", */
-	"coistrel", /* EN "coistrel", */ // TODO DE
+	"Fußabtreter", /* EN "coistrel", */
 	"Hasenfuß", /* EN "craven", */
 	"Kretin", /* EN "cretin", */
 	"Hundesohn", /* EN "cur", */
@@ -565,36 +565,69 @@ const char * const random_insult[] = {
 	"Dämonenfutter", /* EN "demon fodder", */
 	"Dumpfbacke", /* EN "dimwit", */
 	"Tölpel", /* EN "dolt", */
-	"fool", /* EN "fool", */ // TODO DE
-	"footpad", /* EN "footpad", */ // TODO DE
+	"Narr", /* EN "fool", */
+	"Bandit", /* EN "footpad", */
 	"Schwachkopf", /* EN "imbecile", */
-	"knave", /* EN "knave", */ // TODO DE
-	"maledict", /* EN "maledict", */ // TODO DE
-	"miscreant", /* EN "miscreant", */ // TODO DE
+	"Schurke", /* EN "knave", */
+	"Verfluchter", /* EN "maledict", */
+	"Missgeburt", /* EN "miscreant", */
 	"Jammerlappen", /* EN "niddering", */
 	"Waschlappen", /* EN "poltroon", */
 	"Klapperkopf", /* EN "rattlepate", */
-	"reprobate", /* EN "reprobate", */ // TODO DE
+	"Verdammter", /* EN "reprobate", */
 	"Taugenichts", /* EN "scapegrace", */
 	"Halunke", /* EN "varlet", */
-	"villein",	/* (sic.) */ /* EN "villein",	*/ // TODO DE
-	"wittol", /* EN "wittol", */ // TODO DE
+	"Sklave",	/* (sic.) */ /* EN "villein",	*/
+	"Hahnrei", /* EN "wittol", */
 	"Wurm", /* EN "worm", */
-	"wretch", /* EN "wretch", */ // TODO DE
+	"Wicht", /* EN "wretch", */
 };
 
+#ifdef GERMAN
+const char * const random_insult_female[] = {
+	"Dämlack", /* EN "antic", */
+	"Lump", /* EN "blackguard", */ /* Lump, Unhold */
+	"Angsthase", /* EN "caitiff", */
+	"Blödian", /* EN "chucklehead", */
+	"Fußabtreter", /* EN "coistrel", */
+	"Hasenfuß", /* EN "craven", */
+	"Kretin", /* EN "cretin", */
+	"Hundesohn", /* EN "cur", */
+	"Memme", /* EN "dastard", */ /* Feigling, Memme */
+	"Dämonenfutter", /* EN "demon fodder", */
+	"Dumpfbacke", /* EN "dimwit", */
+	"Tölpel", /* EN "dolt", */
+	"Närrin", /* EN "fool", */
+	"Banditin", /* EN "footpad", */
+	"Schwachkopf", /* EN "imbecile", */
+	"Schurkin", /* EN "knave", */
+	"Verfluchte", /* EN "maledict", */
+	"Missgeburt", /* EN "miscreant", */
+	"Jammerlappen", /* EN "niddering", */
+	"Waschlappen", /* EN "poltroon", */
+	"Klapperkopf", /* EN "rattlepate", */
+	"Verdammte", /* EN "reprobate", */
+	"Taugenichts", /* EN "scapegrace", */
+	"Halunke", /* EN "varlet", */
+	"Sklavin",	/* (sic.) */ /* EN "villein",	*/
+	"Hahnrei", /* EN "wittol", */
+	"Wurm", /* EN "worm", */
+	"Wicht", /* EN "wretch", */
+};
+#endif
+
 const char * const random_malediction[] = {
-	"Hell shall soon claim thy remains,", /* EN "Hell shall soon claim thy remains,", */ // TODO DE
-	"Du bist nur lächerlich, du erbärmlicher kleiner", /* EN "I chortle at thee, thou pathetic", */ // TODO DE
-	"Prepare to die, thou", /* EN "Prepare to die, thou", */ // TODO DE
+	"Die Hölle wartet schon auf deine Überreste,", /* EN "Hell shall soon claim thy remains,", */
+	"Du bist nur lächerlich, du", /* EN "I chortle at thee, thou pathetic", */
+	"Du blickst bereits dem Tode ins Auge,", /* EN "Prepare to die, thou", */
 	"Widerstand ist zwecklos,", /* EN "Resistance is useless,", */
 	"Ergib dich oder stirb, du", /* EN "Surrender or die, thou", */
 	"Ich gebe dir kein Pardon, du", /* EN "There shall be no mercy, thou", */
-	"Thou shalt repent of thy cunning,", /* EN "Thou shalt repent of thy cunning,", */ // TODO DE
+	"Du wirst deine hinterlistigen Taten noch bereuen,", /* EN "Thou shalt repent of thy cunning,", */
 	"Du bist nur Ungeziefer für mich,", /* EN "Thou art as a flea to me,", */
 	"Du bist verdammt,", /* EN "Thou art doomed,", */
 	"Dein Schicksal ist besiegelt,", /* EN "Thy fate is sealed,", */
-	"Verily, thou shalt be one dead" /* EN "Verily, thou shalt be one dead" */ // TODO DE
+	"Wahrlich, bald bist du tot," /* EN "Verily, thou shalt be one dead" */
 };
 
 /* Insult or intimidate the player */
@@ -602,6 +635,13 @@ void
 cuss(mtmp)
 register struct monst	*mtmp;
 {
+#ifdef GERMAN
+	const char * random_insult[SIZE(random_insult_male)];
+
+	memcpy(random_insult,
+	       (flags.female) ? random_insult_female : random_insult_male,
+	       sizeof(random_insult));
+#endif
 	if (mtmp->iswiz) {
 	    if (!rn2(5))  /* typical bad guy action */
 		pline("SUBJECT %s VERB_LACHEN teuflisch.", Monnam(mtmp)); /* EN pline("%s laughs fiendishly.", Monnam(mtmp)); */
