@@ -19,6 +19,7 @@ alt_as_meta.diff
 unnethack-353-statuscolors.diff
 nh343-improved-travel-v1.2.diff
 unnethack_book_of_the_dead_r1036.diff
+nh343-security-options-parsing.diff
 "
 
 NH_DIR=/tmp/patches_nethack$$
