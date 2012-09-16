@@ -912,7 +912,7 @@ register const char *let,*word;
 		|| (!strcmp(word, "wield") && /* EN || (!strcmp(word, "wield") && */ // TODO DE
 		    (otmp->owornmask & W_WEP))
 #endif
-		|| (!strcmp(word, "ready") && /* EN || (!strcmp(word, "ready") && */ // TODO DE
+		|| (!strcmp(word, "in den Köcher tun") && /* EN || (!strcmp(word, "ready") && */
 		    (otmp == uwep || (otmp == uswapwep && u.twoweap)))
 		    ) {
 			foo--;

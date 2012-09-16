@@ -578,7 +578,7 @@ register char *enterstring;
 		      s_suffix(shkname(shkp)),
 		      shtypes[rt - SHOPBASE].name);
 	} else if (eshkp->robbed) {
-	    pline("%s mutters imprecations against shoplifters.", shkname(shkp)); /* EN pline("%s mutters imprecations against shoplifters.", shkname(shkp)); */ // TODO DE
+	    pline("SUBJECT %s stößt Verwünschungen gegen Ladendiebe aus.", shkname(shkp)); /* EN pline("%s mutters imprecations against shoplifters.", shkname(shkp)); */
 	} else {
 	    verbalize("%s, %s!  Herzlich willkommen%s in %s %s!", /* EN verbalize("%s, %s!  Welcome%s to %s %s!", */
 		      Hello(shkp), plname,
@@ -1561,9 +1561,9 @@ boolean itemize;
 		buy = PAY_SKIP;		/* don't want to buy */
 	    } else if (quan < bp->bquan && !consumed) { /* partly used goods */
 		obj->quan = bp->bquan - save_quan;	/* used up amount */
-		verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV %s OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_ANDERE %s before buying %s.", /* EN verbalize("%s for the other %s before buying %s.", */ // TODO DE
+		verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV %s OBJECT ARTIKEL_BESTIMMTER ADJEKTIV_ANDERE %s vor dem Kauf NEUES_OBJECT OBJECT KASUS_DATIV von %s.", /* EN verbalize("%s for the other %s before buying %s.", */
 			  ANGRY(shkp) ? "VERB_BEZAHLEN" : "Bitte VERB_BEZAHLEN", xname(obj), /* EN ANGRY(shkp) ? "Pay" : "Please pay", xname(obj), */
-			  save_quan > 1L ? "these" : "this one"); /* EN save_quan > 1L ? "these" : "this one"); */ // TODO DE
+			  save_quan > 1L ? "diesen" : ((genus_von(xname(obj))==feminin) ? "dieser" : "diesem")); /* EN save_quan > 1L ? "these" : "this one"); */
 		buy = PAY_SKIP;		/* shk won't sell */
 	    }
 	}
@@ -2629,7 +2629,7 @@ xchar x, y;
 		if((eshkp->robbed -= offer < 0L))
 			eshkp->robbed = 0L;
 		if(offer) verbalize(
-  "Thank you for your contribution to restock this recently plundered shop."); /* EN "Thank you for your contribution to restock this recently plundered shop."); */ // TODO DE
+  "Vielen Dank für KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_BEITRAG zur finanziellen Gesundung dieses kürzlich ausgeraubten Ladens."); /* EN "Thank you for your contribution to restock this recently plundered shop."); */
 		subfrombill(obj, shkp);
 		return;
 	}
@@ -2769,7 +2769,7 @@ move_on:
 				    (!ltmp && cltmp && only_partially_your_contents) ?
 			    	    "VERB_HABEN einige Artikel OBJECT KASUS_DATIV in %s NEUES_OBJECT OBJECT für %ld NOUN_GOLD_PIECE%s verkauft.%s" : /* EN "sold some items inside %s for %ld gold pieces%s.%s" : */
 				    "VERB_HABEN OBJECT %s NEUES_OBJECT OBJECT für %ld NOUN_GOLD_PIECE%s verkauft.%s" : /* EN "sold %s for %ld gold piece%s.%s" : */
-	       "relinquish %s and receive %ld gold piece%s in compensation.%s", /* EN "relinquish %s and receive %ld gold piece%s in compensation.%s", */ // TODO DE
+	       "VERB_VERZICHTEN OBJECT auf %s und VERB_ERHALTEN NEUES_OBJECT OBJECT %ld NOUN_GOLD_PIECE%s als Entschädigung.%s", /* EN "relinquish %s and receive %ld gold piece%s in compensation.%s", */
 				    offer, "");
 			    break;
 		 default:   impossible("invalid sell response");
@@ -3471,7 +3471,7 @@ boolean cant_mollify;
 	register struct monst *shkp = (struct monst *)0;
 	char shops_affected[5];
 	register boolean uinshp = (*u.ushops != '\0');
-	char qbuf[80];
+	char qbuf[TBUFSZ]; /* EN char qbuf[80]; */
 	register xchar x, y;
 	boolean dugwall = !strcmp(dmgstr, "zu durchlöchern") || /* wand */ /* EN boolean dugwall = !strcmp(dmgstr, "dig into") ||	 */
 			  !strcmp(dmgstr, "zu beschädigen"); /* pick-axe */ /* EN !strcmp(dmgstr, "damage");	*/
@@ -3597,7 +3597,7 @@ getcad:
 	}
 
 	if (Invis) Your("NOUN_UNSICHTBARKEIT VERB_TAEUSCHEN OBJECT %s nicht!", shkname(shkp)); /* EN if (Invis) Your("invisibility does not fool %s!", shkname(shkp)); */
-	Sprintf(qbuf,"\"Cad!  You did %ld %s worth of damage!\"  Pay? ", /* EN Sprintf(qbuf,"\"Cad!  You did %ld %s worth of damage!\"  Pay? ", */ // TODO DE
+	Sprintf(qbuf,"\"Verdammt!  SUBJECT PRONOMEN_PERSONAL VERB_HABEN einen Schaden von %ld %s angerichtet!\"  Bezahlen? ", /* EN Sprintf(qbuf,"\"Cad!  You did %ld %s worth of damage!\"  Pay? ", */
 		 cost_of_damage, currency(cost_of_damage));
 	if(yn(qbuf) != 'n') {
 		cost_of_damage = check_credit(cost_of_damage, shkp);
@@ -3608,13 +3608,13 @@ getcad:
                 money2mon(shkp, cost_of_damage);
 #endif
 		flags.botl = 1;
-		pline("Mollified, %s accepts your restitution.", /* EN pline("Mollified, %s accepts your restitution.", */ // TODO DE
+		pline("SUBJECT %s VERB_AKZEPTIEREN OBJECT PRONOMEN_POSSESSIV NOUN_ENTSCHAEDIGUNG.", /* EN pline("Mollified, %s accepts your restitution.", */
 			shkname(shkp));
 		/* move shk back to his home loc */
 		home_shk(shkp, FALSE);
 		pacify_shk(shkp);
 	} else {
-		verbalize("Oh ja!  SUBJECT PRONOMEN_PERSONAL VERB_WERDEN bezahlen!"); /* EN verbalize("Oh, yes!  You'll pay!"); */
+		verbalize("Oh doch!  SUBJECT PRONOMEN_PERSONAL VERB_WERDEN bezahlen!"); /* EN verbalize("Oh, yes!  You'll pay!"); */
 		hot_pursuit(shkp);
 		adjalign(-sgn(u.ualign.type));
 	}
@@ -3799,7 +3799,7 @@ struct monst *shkp;
 		      shkname(shkp), mhim(shkp),
 		      eshk->debit, currency(eshk->debit));
 	else if (eshk->credit)
-		pline("SUBJECT %s encourages you to use your %ld %s of credit.", /* EN pline("%s encourages you to use your %ld %s of credit.", */ // TODO DE
+		pline("SUBJECT %s ermutigt OBJECT PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_POSSESSIV NOUN_GUTHABEN von %ld %s auszugeben.", /* EN pline("%s encourages you to use your %ld %s of credit.", */
 		      shkname(shkp), eshk->credit, currency(eshk->credit));
 	else if (eshk->robbed)
 		pline("SUBJECT %s beklagt sich über einen kürzlich geschehenen Raubüberfall.", shkname(shkp)); /* EN pline("%s complains about a recent robbery.", shkname(shkp)); */
@@ -3928,7 +3928,7 @@ boolean altusage;
 	    arg1 = rn2(2) ? "Das ist kein öffentlicher Lesesaal!  " : ""; /* EN arg1 = rn2(2) ? "This is no free library, cad!  " : ""; */
 	    arg2 = ESHK(shkp)->debit > 0L ? " weitere" : ""; /* EN arg2 = ESHK(shkp)->debit > 0L ? " an additional" : ""; */
 	} else if (otmp->otyp == POT_OIL) {
-	    fmt = "%s%sNEUER_SATZ Das kostet KASUS_AKKUSATIV PRONOMEN_PERSONAL %ld %s (Yendorian Fuel Tax/Benzinsteuer/Mineralölsteuer)."; /* EN fmt = "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."; */ // TODO DE
+	    fmt = "%s%sNEUER_SATZ SUBJECT_IM_SATZ Dafür VERB_ZAHLEN PRONOMEN_PERSONAL mir %ld %s yendorianische Mineralölsteuer."; /* EN fmt = "%s%sThat will cost you %ld %s (Yendorian Fuel Tax)."; */
 	} else {
 	    fmt = "%s%s%ld %s Nutzungsgebühr."; /* EN fmt = "%s%sUsage fee, %ld %s."; */
 	    if (!rn2(3)) arg1 = "Hey!  "; /* EN if (!rn2(3)) arg1 = "Hey!  "; */

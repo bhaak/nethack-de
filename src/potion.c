@@ -130,7 +130,7 @@ int type;
 		if (talk) Du_fuehlst_dich("ein wenig besser."); /* EN if (talk) You_feel("somewhat better."); */
 		set_itimeout(&Sick, Sick * 2); /* approximation */
 	    } else {
-		if (talk) pline("What a relief!"); /* EN if (talk) pline("What a relief!"); */ // TODO DE
+		if (talk) pline("Gott sei Dank!"); /* EN if (talk) pline("What a relief!"); */
 		Sick = 0L;		/* set_itimeout(&Sick, 0L) */
 	    }
 	    flags.botl = TRUE;
@@ -571,7 +571,7 @@ peffects(otmp)
 			  Hallucination ? "überreif" : "vergammelt"); /* EN Hallucination ? "overripe" : "rotten"); */
 		else
 		    pline(Hallucination ?
-		      "This tastes like 10%% real %s%s all-natural beverage." : /* EN "This tastes like 10%% real %s%s all-natural beverage." : */ // TODO DE
+		      "Das schmeckt wie 10%% echt ADJEKTIV_NATUERLICH %s%s." : /* EN "This tastes like 10%% real %s%s all-natural beverage." : */
 				"Das schmeckt wie %s%s.", /* EN "This tastes like %s%s.", */
 			  otmp->odiluted ? "ADJEKTIV_WIEDERAUFBEREITET " : "", /* EN otmp->odiluted ? "reconstituted " : "", */
 			  fruitname(TRUE));

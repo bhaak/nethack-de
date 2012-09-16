@@ -1154,7 +1154,7 @@ boolean at_stairs, falling, portal;
 		}
 		/* Remove bug which crashes with levitation/punishment  KAA */
 		if (Punished && !Levitation) {
-			pline("With great effort you climb the %s.", /* EN pline("With great effort you climb the %s.", */ // TODO DE
+			pline("Mit großer Mühe SUBJECT_IM_SATZ VERB_HINAUFSTEIGEN PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER %s SATZKLAMMER.", /* EN pline("With great effort you climb the %s.", */
 				at_ladder ? "NOUN_LADDER" : "NOUN_STAIRS"); /* EN at_ladder ? "ladder" : "stairs"); */
 		} else if (at_ladder)
 		    You("VERB_HINAUFSTEIGEN OBJECT ARTIKEL_BESTIMMTER NOUN_LADDER SATZKLAMMER."); /* EN You("climb up the ladder."); */

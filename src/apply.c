@@ -97,7 +97,7 @@ use_towel(obj)
 	struct obj *obj;
 {
 	if(!freehand()) {
-		You("VERB_HAVE PRONOMEN_KEIN ADJEKTIV_FREI %s!", body_part(HAND)); /* EN You("have no free %s!", body_part(HAND)); */
+		You("VERB_HAVE OBJECT PRONOMEN_KEIN ADJEKTIV_FREI %s!", body_part(HAND)); /* EN You("have no free %s!", body_part(HAND)); */
 		return 0;
 	} else if (obj->owornmask) {
 		You("VERB_KOENNEN es nicht benutzen, NEUER_SATZ solange SUBJECT_IM_SATZ PRONOMEN_PERSONAL es VERB_TRAGEN!"); /* EN You("cannot use it while you're wearing it!"); */
@@ -1882,8 +1882,8 @@ struct obj *tstone;
 	else if (Hallucination)
 	    pline("Mann eh, schau dir die hübschen Scherben an."); /* EN pline("Oh, wow, look at the pretty shards."); */
 	else
-	    pline("A sharp crack shatters %s%s.", /* EN pline("A sharp crack shatters %s%s.", */ // TODO DE
-		  (obj->quan > 1) ? "one of " : "", the(xname(obj))); /* EN (obj->quan > 1) ? "one of " : "", the(xname(obj))); */ // TODO DE
+	    pline("Mit einem lauten Knacken zerbricht %s.", /* EN pline("A sharp crack shatters %s%s.", */
+		  (obj->quan > 1) ? einer_der(xname(obj)) : the(xname(obj))); /* EN (obj->quan > 1) ? "one of " : "", the(xname(obj))); */
 #ifndef GOLDOBJ
      /* assert(obj != &goldobj); */
 #endif
@@ -2458,8 +2458,8 @@ struct obj *obj;
 		You("VERB_MACHEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL eine Gesichtspackung."); /* EN You("give yourself a facial."); */
 	else
 		pline("SUBJECT PRONOMEN_PERSONAL VERB_STECKEN OBJECT PRONOMEN_POSSESSIV %s NEUES_OBJECT OBJECT in %s%s.", body_part(FACE), /* EN pline("You immerse your %s in %s%s.", body_part(FACE), */
-			several ? "one of " : "", /* EN several ? "one of " : "", */ // TODO DE
-			several ? makeplural(the(xname(obj))) : the(xname(obj)));
+			several ? einer_der(makeplural(xname(obj))) : "", /* EN several ? "one of " : "", */
+			several ? "" : the(xname(obj))); /* EN several ? makeplural(the(xname(obj))) : the(xname(obj))); */
 	if(can_blnd((struct monst*)0, &youmonst, AT_WEAP, obj)) {
 		int blindinc = rnd(25);
 		u.ucreamed += blindinc;

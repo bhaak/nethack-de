@@ -10143,6 +10143,10 @@ Although not referring to the exactly same rank. */
   {"Auswahl", "NOUN_AUSWAHL", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Auswahlen", "NOUN_AUSWAHLs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Axopodiums", "NOUN_AXOPODIUM", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Axopodium", "NOUN_AXOPODIUM", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Axopodien", "NOUN_AXOPODIUMs", "", akkusativ|nominativ|dativ|genitiv, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Strahles", "NOUN_BEAM", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Strahl", "NOUN_BEAM", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Strahlen", "NOUN_BEAMs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -10278,6 +10282,9 @@ Although not referring to the exactly same rank. */
   {"Entladung", "NOUN_ENTLADUNG", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Entladungen", "NOUN_ENTLADUNGs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Entschädigung", "NOUN_ENTSCHAEDIGUNG", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Entschädigungen", "NOUN_ENTSCHAEDIGUNGs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Erstwaffe", "NOUN_ERSTWAFFE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Erstwaffen", "NOUN_ERSTWAFFEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
@@ -10308,6 +10315,9 @@ Although not referring to the exactly same rank. */
   {"Fläschchens", "NOUN_FLAESCHCHEN", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Fläschchen", "NOUN_FLAESCHCHEN", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Fläschchen", "NOUN_FLAESCHCHENs", "", akkusativ|nominativ|dativ|genitiv, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Flagelle", "NOUN_FLAGELLE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Flagellen", "NOUN_FLAGELLEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Flakons", "NOUN_FLAKON", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Flakon", "NOUN_FLAKON", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -10524,6 +10534,11 @@ Although not referring to the exactly same rank. */
   {"Hilfe", "NOUN_HILFE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Hilfen", "NOUN_HILFEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Hirnareals", "NOUN_HIRNAREAL", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Hirnareal", "NOUN_HIRNAREAL", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Hirnareale", "NOUN_HIRNAREALs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Hirnarealen", "NOUN_HIRNAREALs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Hornhaut", "NOUN_HORNHAUT", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Hornhäute", "NOUN_HORNHAUTs", "", genitiv|nominativ|akkusativ, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Hornhäuten", "NOUN_HORNHAUTs", "", dativ, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -10535,6 +10550,9 @@ Although not referring to the exactly same rank. */
 
   {"Humanoiders", "NOUN_HUMANOID", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Humanoider", "NOUN_HUMANOID", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Hyphe", "NOUN_HYPHE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Hyphen", "NOUN_HYPHEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Inhaltes", "NOUN_INHALT", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Inhalt", "NOUN_INHALT", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -10636,6 +10654,9 @@ Although not referring to the exactly same rank. */
   {"Länge", "NOUN_LAENGE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Längen", "NOUN_LAENGEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Lamelle", "NOUN_LAMELLE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Lamellen", "NOUN_LAMELLEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Laterne", "NOUN_LANTERN", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Laternen", "NOUN_LANTERNs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
@@ -10722,6 +10743,13 @@ Although not referring to the exactly same rank. */
   {"Geschosse", "NOUN_MISSILEs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Geschossen", "NOUN_MISSILEs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Mitochondriums", "NOUN_MITOCHONDRIUM", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Mitochondrium", "NOUN_MITOCHONDRIUM", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Mitochondrien", "NOUN_MITOCHONDRIUMs", "", akkusativ|nominativ|dativ|genitiv, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Mitte", "NOUN_MITTE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Mitten", "NOUN_MITTEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Burggrabens", "NOUN_MOAT", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Burggraben", "NOUN_MOAT", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Burggräben", "NOUN_MOATs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -10738,6 +10766,10 @@ Although not referring to the exactly same rank. */
   {"Muskel", "NOUN_MUSKEL", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Muskeln", "NOUN_MUSKELs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Myzeliums", "NOUN_MYZELIUM", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Myzelium", "NOUN_MYZELIUM", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Myzelien", "NOUN_MYZELIUMs", "", akkusativ|nominativ|dativ|genitiv, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Nadel", "NOUN_NADEL", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Nadeln", "NOUN_NADELs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
@@ -10753,6 +10785,9 @@ Although not referring to the exactly same rank. */
   {"Netz", "NOUN_NETZ", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Netze", "NOUN_NETZs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Netzen", "NOUN_NETZs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Oberfläche", "NOUN_OBERFLAECHE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Oberflächen", "NOUN_OBERFLAECHEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Schlammes", "NOUN_OOZE", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Schlamm", "NOUN_OOZE", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -10785,6 +10820,10 @@ Although not referring to the exactly same rank. */
 
   {"Phiole", "NOUN_PHIOLE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Phiolen", "NOUN_PHIOLEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Photorezeptors", "NOUN_PHOTOREZEPTOR", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Photorezeptor", "NOUN_PHOTOREZEPTOR", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Photorezeptoren", "NOUN_PHOTOREZEPTORs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Physik", "NOUN_PHYSIK", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
@@ -10836,6 +10875,10 @@ Although not referring to the exactly same rank. */
 
   {"Position", "NOUN_POSITION", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Positionen", "NOUN_POSITIONs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Pseudopodiums", "NOUN_PSEUDOPODIUM", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Pseudopodium", "NOUN_PSEUDOPODIUM", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Pseudopodien", "NOUN_PSEUDOPODIUMs", "", akkusativ|nominativ|dativ|genitiv, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Praemaxillare", "NOUN_PRAEMAXILLARE", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
@@ -10896,6 +10939,14 @@ Although not referring to the exactly same rank. */
   {"Resultat", "NOUN_RESULTAT", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Resultate", "NOUN_RESULTATs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Resultaten", "NOUN_RESULTATs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Rhizoms", "NOUN_RHIZOM", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Rhizom", "NOUN_RHIZOM", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Rhizome", "NOUN_RHIZOMs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Rhizomen", "NOUN_RHIZOMs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Rhizomorphe", "NOUN_RHIZOMORPHE", "n", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Rhizomorphen", "NOUN_RHIZOMORPHEs", "n", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Rucksacks", "NOUN_RUCKSACK", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Rucksack", "NOUN_RUCKSACK", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -11041,6 +11092,9 @@ Although not referring to the exactly same rank. */
   {"Spitze", "NOUN_SPITZE", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Spitzen", "NOUN_SPITZEs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Spore", "NOUN_SPORE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Sporen", "NOUN_SPOREs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Stacheles", "NOUN_STACHEL", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Stachel", "NOUN_STACHEL", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Stacheln", "NOUN_STACHELs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -11054,6 +11108,11 @@ Although not referring to the exactly same rank. */
 
   {"Statuenfalle", "NOUN_STATUE_TRAP", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Statuenfallen", "NOUN_STATUE_TRAPs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Stieles", "NOUN_STIEL", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Stiel", "NOUN_STIEL", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Stiele", "NOUN_STIELs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Stielen", "NOUN_STIELs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Stirn", "NOUN_STIRN", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
@@ -11202,6 +11261,9 @@ Although not referring to the exactly same rank. */
   {"Binde", "NOUN_WRAPPING", "en", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Binden", "NOUN_WRAPPINGs", "en", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Wurzel", "NOUN_WURZEL", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Wurzeln", "NOUN_WURZELs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Zahnes", "NOUN_ZAHN", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Zahn", "NOUN_ZAHN", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Zähne", "NOUN_ZAHNs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -11235,6 +11297,9 @@ Although not referring to the exactly same rank. */
 
   {"Zwangsjacke", "NOUN_ZWANGSJACKE", "en", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Zwangsjacken", "NOUN_ZWANGSJACKEs", "en", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Zytoplasma", "NOUN_ZYTOPLASMA", "", akkusativ|nominativ|dativ|genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Zytoplasmaen", "NOUN_ZYTOPLASMAs", "", akkusativ|nominativ|dativ|genitiv, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   /* ======================================================= */
 
@@ -16369,6 +16434,30 @@ Although not referring to the exactly same rank. */
   {"nachgewachsenen", "ADJEKTIV_NACHGEWACHSEN", "", dativ, maskulin|feminin|neutrum, n_plural, ohne},
   
 
+  {"natürlich", "ADJEKTIV_NATUERLICH", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_singular|n_plural, grundform},
+  {"natürliche", "ADJEKTIV_NATUERLICH", "", nominativ, maskulin|feminin|neutrum, n_singular, bestimmter},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"natürliche", "ADJEKTIV_NATUERLICH", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", genitiv|dativ, maskulin|feminin|neutrum, n_singular, bestimmter},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_plural, bestimmter},
+  {"natürlicher", "ADJEKTIV_NATUERLICH", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"natürliche", "ADJEKTIV_NATUERLICH", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
+  {"natürliches", "ADJEKTIV_NATUERLICH", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", genitiv|dativ, maskulin|feminin|neutrum, n_singular, unbestimmter},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_plural, unbestimmter},
+  {"natürlicher", "ADJEKTIV_NATUERLICH", "", nominativ, maskulin, n_singular, ohne},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", akkusativ|genitiv, maskulin, n_singular, ohne},
+  {"natürlichem", "ADJEKTIV_NATUERLICH", "", dativ, maskulin|neutrum, n_singular, ohne},
+  {"natürliches", "ADJEKTIV_NATUERLICH", "", nominativ|akkusativ, neutrum, n_singular, ohne},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", genitiv, neutrum, n_singular, ohne},
+  {"natürliche", "ADJEKTIV_NATUERLICH", "", nominativ|akkusativ, feminin, n_singular, ohne},
+  {"natürlicher", "ADJEKTIV_NATUERLICH", "", genitiv|dativ, feminin, n_singular, ohne},
+  {"natürliche", "ADJEKTIV_NATUERLICH", "", nominativ|akkusativ, maskulin|feminin|neutrum, n_plural, ohne},
+  {"natürlicher", "ADJEKTIV_NATUERLICH", "", genitiv, maskulin|feminin|neutrum, n_plural, ohne},
+  {"natürlichen", "ADJEKTIV_NATUERLICH", "", dativ, maskulin|feminin|neutrum, n_plural, ohne},
+  
+
   {"namenlos", "ADJEKTIV_NAMENLOS", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_singular|n_plural, grundform},
   {"namenlose", "ADJEKTIV_NAMENLOS", "", nominativ, maskulin|feminin|neutrum, n_singular, bestimmter},
   {"namenlosen", "ADJEKTIV_NAMENLOS", "", akkusativ, maskulin, n_singular, bestimmter},
@@ -18260,6 +18349,7 @@ struct verb_infinitiv_struct verben_infinitiv[] = {
   {"ausstrecken", "VERB_AUSSTRECKEN"},
   {"ausweichen", "VERB_AUSWEICHEN"},
   {"ausziehen", "VERB_AUSZIEHEN"},
+  {"akzeptieren", "VERB_AKZEPTIEREN"},
   {"bearbeiten", "VERB_BEARBEITEN"},
   {"beenden", "VERB_BEENDEN"},
   {"befestigen", "VERB_BEFESTIGEN"},
@@ -18358,6 +18448,7 @@ struct verb_infinitiv_struct verben_infinitiv[] = {
   {"erfassen", "VERB_ERFASSEN"},
   {"ergeben", "VERB_ERGEBEN"},
   {"ergreifen", "VERB_ERGREIFEN"},
+  {"erhalten", "VERB_ERHALTEN"},
   {"erheben", "VERB_ERHEBEN"},
   {"erhitzen", "VERB_ERHITZEN"},
   {"erinnern", "VERB_ERINNERN"},
@@ -18622,6 +18713,7 @@ struct verb_infinitiv_struct verben_infinitiv[] = {
   {"taumeln", "VERB_TAUMELN"},
   {"teilen", "VERB_TEILEN"},
   {"teleportieren", "VERB_TELEPORTIEREN"},
+  {"tippen", "VERB_TIPPEN"},
   {"tjostieren", "VERB_TJOSTIEREN"},
   {"trällern", "VERB_TRAELLERN"},
   {"tränen", "VERB_TRAENEN"},
@@ -18709,6 +18801,7 @@ struct verb_infinitiv_struct verben_infinitiv[] = {
   {"wackeln", "VERB_WACKELN"},
   {"wählen", "VERB_WAEHLEN"},
   {"wagen", "VERB_WAGEN"},
+  {"wanken", "VERB_WANKEN"},
   {"warten", "VERB_WARTEN"},
   {"wechseln", "VERB_WECHSELN"},
   {"wecken", "VERB_WECKEN"},
@@ -18862,6 +18955,7 @@ struct verb_imperativ_struct verben_imperativ[] = {
   {"streck", "streckt", "aus", "VERB_AUSSTRECKEN"},
   {"weich", "weicht", "aus", "VERB_AUSWEICHEN"},
   {"zieh", "zieht", "aus", "VERB_AUSZIEHEN"},
+  {"akzeptier", "akzeptiert", "", "VERB_AKZEPTIEREN"},
   {"bearbeite", "bearbeitet", "", "VERB_BEARBEITEN"},
   {"beende", "beendet", "", "VERB_BEENDEN"},
   {"befestig", "befestigt", "", "VERB_BEFESTIGEN"},
@@ -18960,6 +19054,7 @@ struct verb_imperativ_struct verben_imperativ[] = {
   {"erfass", "erfasst", "", "VERB_ERFASSEN"},
   {"ergib", "ergebt", "", "VERB_ERGEBEN"},
   {"ergreif", "ergreift", "", "VERB_ERGREIFEN"},
+  {"erhalte", "erhaltet", "", "VERB_ERHALTEN"},
   {"erheb", "erhebt", "", "VERB_ERHEBEN"},
   {"erhitz", "erhitzt", "", "VERB_ERHITZEN"},
   {"erinnere", "erinnert", "", "VERB_ERINNERN"},
@@ -19224,6 +19319,7 @@ struct verb_imperativ_struct verben_imperativ[] = {
   {"taumele", "taumelt", "", "VERB_TAUMELN"},
   {"teil", "teilt", "", "VERB_TEILEN"},
   {"teleportier", "teleportiert", "", "VERB_TELEPORTIEREN"},
+  {"tipp", "tippt", "", "VERB_TIPPEN"},
   {"tjostier", "tjostiert", "", "VERB_TJOSTIEREN"},
   {"trällere", "trällert", "", "VERB_TRAELLERN"},
   {"trän", "tränt", "", "VERB_TRAENEN"},
@@ -19311,6 +19407,7 @@ struct verb_imperativ_struct verben_imperativ[] = {
   {"wackele", "wackelt", "", "VERB_WACKELN"},
   {"wähle", "wählt", "", "VERB_WAEHLEN"},
   {"wag", "wagt", "", "VERB_WAGEN"},
+  {"wank", "wankt", "", "VERB_WANKEN"},
   {"warte", "wartet", "", "VERB_WARTEN"},
   {"wechsele", "wechselt", "", "VERB_WECHSELN"},
   {"weck", "weckt", "", "VERB_WECKEN"},
@@ -19464,6 +19561,7 @@ struct verb_partizip_struct verben_partizip[] = {
   {"ausstreckend", "ausgestreckt", "VERB_AUSSTRECKEN"},
   {"ausweichend", "ausgewichen", "VERB_AUSWEICHEN"},
   {"ausziehend", "ausgezogen", "VERB_AUSZIEHEN"},
+  {"akzeptierend", "akzeptiert", "VERB_AKZEPTIEREN"},
   {"bearbeitend", "bearbeitet", "VERB_BEARBEITEN"},
   {"beendend", "beendet", "VERB_BEENDEN"},
   {"befestigend", "befestigt", "VERB_BEFESTIGEN"},
@@ -19562,6 +19660,7 @@ struct verb_partizip_struct verben_partizip[] = {
   {"erfassend", "erfasst", "VERB_ERFASSEN"},
   {"ergebend", "ergeben", "VERB_ERGEBEN"},
   {"ergreifend", "ergriffen", "VERB_ERGREIFEN"},
+  {"erhaltend", "erhalten", "VERB_ERHALTEN"},
   {"erhebend", "erhoben", "VERB_ERHEBEN"},
   {"erhitzend", "erhitzt", "VERB_ERHITZEN"},
   {"erinnernd", "erinnert", "VERB_ERINNERN"},
@@ -19826,6 +19925,7 @@ struct verb_partizip_struct verben_partizip[] = {
   {"taumelnd", "getaumelt", "VERB_TAUMELN"},
   {"teilend", "geteilt", "VERB_TEILEN"},
   {"teleportierend", "teleportiert", "VERB_TELEPORTIEREN"},
+  {"tippend", "getippt", "VERB_TIPPEN"},
   {"tjostierend", "tjostiert", "VERB_TJOSTIEREN"},
   {"trällernd", "geträllert", "VERB_TRAELLERN"},
   {"tränend", "getränt", "VERB_TRAENEN"},
@@ -19913,6 +20013,7 @@ struct verb_partizip_struct verben_partizip[] = {
   {"wackelnd", "gewackelt", "VERB_WACKELN"},
   {"wählend", "gewählt", "VERB_WAEHLEN"},
   {"wagend", "gewagt", "VERB_WAGEN"},
+  {"wankend", "gewankt", "VERB_WANKEN"},
   {"wartend", "gewartet", "VERB_WARTEN"},
   {"wechselnd", "gewechselt", "VERB_WECHSELN"},
   {"weckend", "geweckt", "VERB_WECKEN"},
@@ -20946,6 +21047,18 @@ struct verb_struct verben[] = {
   {"zöge", "VERB_AUSZIEHEN", "aus", drittePerson, n_singular, konjunktiv_ii, akkusativ},
   {"zöget", "VERB_AUSZIEHEN", "aus", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
   {"zögen", "VERB_AUSZIEHEN", "aus", drittePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"akzeptierst", "VERB_AKZEPTIEREN", "", zweitePerson, n_singular, praesens, akkusativ},
+  {"akzeptiert", "VERB_AKZEPTIEREN", "", drittePerson, n_singular, praesens, akkusativ},
+  {"akzeptiert", "VERB_AKZEPTIEREN", "", zweitePerson, n_plural, praesens, akkusativ},
+  {"akzeptieren", "VERB_AKZEPTIEREN", "", drittePerson, n_plural, praesens, akkusativ},
+  {"akzeptiertest", "VERB_AKZEPTIEREN", "", zweitePerson, n_singular, praeteritum, akkusativ},
+  {"akzeptierte", "VERB_AKZEPTIEREN", "", drittePerson, n_singular, praeteritum, akkusativ},
+  {"akzeptiertet", "VERB_AKZEPTIEREN", "", zweitePerson, n_plural, praeteritum, akkusativ},
+  {"akzeptierten", "VERB_AKZEPTIEREN", "", drittePerson, n_plural, praeteritum, akkusativ},
+  {"akzeptiertest", "VERB_AKZEPTIEREN", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"akzeptierte", "VERB_AKZEPTIEREN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"akzeptiertet", "VERB_AKZEPTIEREN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"akzeptierten", "VERB_AKZEPTIEREN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
   {"bearbeitest", "VERB_BEARBEITEN", "", zweitePerson, n_singular, praesens, akkusativ},
   {"bearbeitet", "VERB_BEARBEITEN", "", drittePerson, n_singular, praesens, akkusativ},
   {"bearbeitet", "VERB_BEARBEITEN", "", zweitePerson, n_plural, praesens, akkusativ},
@@ -22122,6 +22235,18 @@ struct verb_struct verben[] = {
   {"ergriffe", "VERB_ERGREIFEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
   {"ergriffet", "VERB_ERGREIFEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
   {"ergriffen", "VERB_ERGREIFEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"erhältst", "VERB_ERHALTEN", "", zweitePerson, n_singular, praesens, akkusativ},
+  {"erhält", "VERB_ERHALTEN", "", drittePerson, n_singular, praesens, akkusativ},
+  {"erhaltet", "VERB_ERHALTEN", "", zweitePerson, n_plural, praesens, akkusativ},
+  {"erhalten", "VERB_ERHALTEN", "", drittePerson, n_plural, praesens, akkusativ},
+  {"erhieltst", "VERB_ERHALTEN", "", zweitePerson, n_singular, praeteritum, akkusativ},
+  {"erhielt", "VERB_ERHALTEN", "", drittePerson, n_singular, praeteritum, akkusativ},
+  {"erhieltet", "VERB_ERHALTEN", "", zweitePerson, n_plural, praeteritum, akkusativ},
+  {"erhielten", "VERB_ERHALTEN", "", drittePerson, n_plural, praeteritum, akkusativ},
+  {"erhieltest", "VERB_ERHALTEN", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"erhielte", "VERB_ERHALTEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"erhieltet", "VERB_ERHALTEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"erhielten", "VERB_ERHALTEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
   {"erhebst", "VERB_ERHEBEN", "", zweitePerson, n_singular, praesens, akkusativ},
   {"erhebt", "VERB_ERHEBEN", "", drittePerson, n_singular, praesens, akkusativ},
   {"erhebt", "VERB_ERHEBEN", "", zweitePerson, n_plural, praesens, akkusativ},
@@ -25290,6 +25415,18 @@ struct verb_struct verben[] = {
   {"teleportierte", "VERB_TELEPORTIEREN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
   {"teleportiertet", "VERB_TELEPORTIEREN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
   {"teleportierten", "VERB_TELEPORTIEREN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"tippst", "VERB_TIPPEN", "", zweitePerson, n_singular, praesens, akkusativ},
+  {"tippt", "VERB_TIPPEN", "", drittePerson, n_singular, praesens, akkusativ},
+  {"tippt", "VERB_TIPPEN", "", zweitePerson, n_plural, praesens, akkusativ},
+  {"tippen", "VERB_TIPPEN", "", drittePerson, n_plural, praesens, akkusativ},
+  {"tipptest", "VERB_TIPPEN", "", zweitePerson, n_singular, praeteritum, akkusativ},
+  {"tippte", "VERB_TIPPEN", "", drittePerson, n_singular, praeteritum, akkusativ},
+  {"tipptet", "VERB_TIPPEN", "", zweitePerson, n_plural, praeteritum, akkusativ},
+  {"tippten", "VERB_TIPPEN", "", drittePerson, n_plural, praeteritum, akkusativ},
+  {"tipptest", "VERB_TIPPEN", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"tippte", "VERB_TIPPEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"tipptet", "VERB_TIPPEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"tippten", "VERB_TIPPEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
   {"tjostierst", "VERB_TJOSTIEREN", "", zweitePerson, n_singular, praesens, akkusativ},
   {"tjostiert", "VERB_TJOSTIEREN", "", drittePerson, n_singular, praesens, akkusativ},
   {"tjostiert", "VERB_TJOSTIEREN", "", zweitePerson, n_plural, praesens, akkusativ},
@@ -26334,6 +26471,18 @@ struct verb_struct verben[] = {
   {"wagte", "VERB_WAGEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
   {"wagtet", "VERB_WAGEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
   {"wagten", "VERB_WAGEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"wankst", "VERB_WANKEN", "", zweitePerson, n_singular, praesens, akkusativ},
+  {"wankt", "VERB_WANKEN", "", drittePerson, n_singular, praesens, akkusativ},
+  {"wankt", "VERB_WANKEN", "", zweitePerson, n_plural, praesens, akkusativ},
+  {"wanken", "VERB_WANKEN", "", drittePerson, n_plural, praesens, akkusativ},
+  {"wanktest", "VERB_WANKEN", "", zweitePerson, n_singular, praeteritum, akkusativ},
+  {"wankte", "VERB_WANKEN", "", drittePerson, n_singular, praeteritum, akkusativ},
+  {"wanktet", "VERB_WANKEN", "", zweitePerson, n_plural, praeteritum, akkusativ},
+  {"wankten", "VERB_WANKEN", "", drittePerson, n_plural, praeteritum, akkusativ},
+  {"wanktest", "VERB_WANKEN", "", zweitePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"wankte", "VERB_WANKEN", "", drittePerson, n_singular, konjunktiv_ii, akkusativ},
+  {"wanktet", "VERB_WANKEN", "", zweitePerson, n_plural, konjunktiv_ii, akkusativ},
+  {"wankten", "VERB_WANKEN", "", drittePerson, n_plural, konjunktiv_ii, akkusativ},
   {"wartest", "VERB_WARTEN", "", zweitePerson, n_singular, praesens, akkusativ},
   {"wartet", "VERB_WARTEN", "", drittePerson, n_singular, praesens, akkusativ},
   {"wartet", "VERB_WARTEN", "", zweitePerson, n_plural, praesens, akkusativ},

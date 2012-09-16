@@ -348,7 +348,7 @@ dowieldquiver()
 		pline("Hinweis: Bitte MODIFIER_VERB_IMPERATIV VERB_BENUTZEN #quit, NEUER_SATZ wenn SUBJECT_IM_SATZ PRONOMEN_PERSONAL das Spiel verlassen MODIFIER_KONJUNKTIV_II VERB_MOEGEN."); /* EN pline("Note: Please use #quit if you wish to exit the game."); */
 
 	/* Prompt for a new quiver */
-	if (!(newquiver = getobj(quivee_types, "in den Köcher tun"))) /* EN if (!(newquiver = getobj(quivee_types, "ready"))) */ // TODO DE
+	if (!(newquiver = getobj(quivee_types, "in den Köcher tun"))) /* EN if (!(newquiver = getobj(quivee_types, "ready"))) */
 		/* Cancelled */
 		return (0);
 

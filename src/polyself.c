@@ -1143,12 +1143,12 @@ int part;
 		"NOUN_FINGERTIP", "NOUN_FOOT", "NOUN_HAND", "handed", "NOUN_HEAD", "NOUN_LEG", /* EN "fingertip", "foot", "hand", "handed", "head", "leg", */
 		"schwindlig", "NOUN_HALS", "NOUN_SPINE", "NOUN_ZEHE", "NOUN_HAARs", /* EN "light headed", "neck", "spine", "toe", "hair", */
 		"NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "blood", "lung", "nose", "stomach"}, */
-	*jelly_parts[] = { "pseudopod", "Dunkel-NOUN_FLECK", "Vorder-NOUN_SEITE", /* EN *jelly_parts[] = { "pseudopod", "dark spot", "front", */ // TODO DE
-		"pseudopod extension", "pseudopod extremity", /* EN "pseudopod extension", "pseudopod extremity", */ // TODO DE
-		"pseudopod root", "grasp", "grasped", "cerebral area", /* EN "pseudopod root", "grasp", "grasped", "cerebral area", */ // TODO DE
-		"lower pseudopod", "viscous", "middle", "surface", /* EN "lower pseudopod", "viscous", "middle", "surface", */ // TODO DE
-		"pseudopod extremity", "ripples", "juices", /* EN "pseudopod extremity", "ripples", "juices", */ // TODO DE
-		"surface", "NOUN_FUEHLERs", "NOUN_STOMACH" }, /* EN "surface", "sensor", "stomach" }, */
+	*jelly_parts[] = { "NOUN_PSEUDOPODIUM", "Dunkel-NOUN_FLECK", "Vorder-NOUN_SEITE", /* EN *jelly_parts[] = { "pseudopod", "dark spot", "front", */
+		"Pseudopodium-NOUN_EXTREMITAET", "Pseudopodiumextremität-NOUN_SPITZE", /* EN "pseudopod extension", "pseudopod extremity", */
+		"Pseudopodiums-NOUN_SPITZE", "NOUN_AXOPODIUM", "grasped", "NOUN_HIRNAREAL", /* EN "pseudopod root", "grasp", "grasped", "cerebral area", */
+		"ADJEKTIV_UNTER NOUN_PSEUDOPODIUM", "seimig", "NOUN_MITTE", "NOUN_OBERFLAECHE", /* EN "lower pseudopod", "viscous", "middle", "surface", */
+		"Pseudopodiums-NOUN_SPITZE", "NOUN_FLAGELLEs", "NOUN_SAFTs", /* EN "pseudopod extremity", "ripples", "juices", */
+		"NOUN_MITOCHONDRIUM", "NOUN_FUEHLERs", "NOUN_ZYTOPLASMA" }, /* EN "surface", "sensor", "stomach" }, */
 	*animal_parts[] = { "Vorder-NOUN_LAUF", "NOUN_EYE", "NOUN_FACE", "Vorder-NOUN_PFOTE", "NOUN_KLAUE", /* EN *animal_parts[] = { "forelimb", "eye", "face", "foreclaw", "claw tip", */
 		"Hinter-NOUN_PFOTE", "Vorder-NOUN_CLAW", "clawed", "NOUN_HEAD", "Hinter-NOUN_LAUF", /* EN "rear claw", "foreclaw", "clawed", "head", "rear limb", */
 		"schwindlig", "NOUN_HALS", "NOUN_SPINE", "Hinter-NOUN_KLAUE", /* EN "light headed", "neck", "spine", "rear claw tip", */
@@ -1163,16 +1163,16 @@ int part;
 		"NOUN_MAEHNE", "NOUN_BLUT", "NOUN_LUNGE", "NOUN_NASE", "NOUN_STOMACH"}, /* EN "mane", "blood", "lung", "nose", "stomach"}, */
 	*sphere_parts[] = { "NOUN_FORTSATZ", "NOUN_SEHNERV", "NOUN_KOERPER", "NOUN_TENTAKEL", /* EN *sphere_parts[] = { "appendage", "optic nerve", "body", "tentacle", */
 		"Tentakel-NOUN_SPITZE", "ADJEKTIV_UNTER NOUN_FORTSATZ", "NOUN_TENTAKEL", "tentacled", /* EN "tentacle tip", "lower appendage", "tentacle", "tentacled", */
-		"NOUN_KOERPER", "ADJEKTIV_UNTER NOUN_TENTAKEL", "rotational", "NOUN_AEQUATOR", "NOUN_KOERPER", /* EN "body", "lower tentacle", "rotational", "equator", "body", */ // TODO DE
+		"NOUN_KOERPER", "ADJEKTIV_UNTER NOUN_TENTAKEL", "rotierend", "NOUN_AEQUATOR", "NOUN_KOERPER", /* EN "body", "lower tentacle", "rotational", "equator", "body", */
 		"ADJEKTIV_UNTER Tentakel-NOUN_SPITZE", "NOUN_ZILIEs", "Lebens-NOUN_ENERGIE", "Netz-NOUN_HAUT", /* EN "lower tentacle tip", "cilia", "life force", "retina", */
 		"NOUN_NERVUS_OLFACTORIUS", "Glas-NOUN_KOERPER" }, /* EN "olfactory nerve", "interior" }, */
-	*fungus_parts[] = { "mycelium", "visual area", "front", "hypha", /* EN *fungus_parts[] = { "mycelium", "visual area", "front", "hypha", */ // TODO DE
-		"hypha", "root", "strand", "stranded", "cap area", /* EN "hypha", "root", "strand", "stranded", "cap area", */ // TODO DE
-		"rhizome", "sporulated", "stalk", "root", "rhizome tip", /* EN "rhizome", "sporulated", "stalk", "root", "rhizome tip", */ // TODO DE
-		"spores", "juices", "gill", "gill", "interior" }, /* EN "spores", "juices", "gill", "gill", "interior" }, */ // TODO DE
+	*fungus_parts[] = { "NOUN_MYZELIUM", "NOUN_PHOTOREZEPTOR", "Vorder-NOUN_SEITE", "NOUN_HYPHE", /* EN *fungus_parts[] = { "mycelium", "visual area", "front", "hypha", */
+		"NOUN_HYPHE", "NOUN_RHIZOMORPHE", "NOUN_MYZELIUM", "stranded", "Ober-NOUN_SEITE", /* EN "hypha", "root", "strand", "stranded", "cap area", */
+		"NOUN_RHIZOM", "sporuliert", "NOUN_STIEL", "NOUN_RHIZOM", "Rhizom-NOUN_SPITZE", /* EN "rhizome", "sporulated", "stalk", "root", "rhizome tip", */
+		"NOUN_SPOREs", "NOUN_SAFTs", "NOUN_LAMELLE", "NOUN_LAMELLE", "NOUN_INNERE" }, /* EN "spores", "juices", "gill", "gill", "interior" }, */
 	*vortex_parts[] = { "NOUN_BEREICH", "NOUN_EYE", "NOUN_FRONT", "Neben-NOUN_STROEMUNG", /* EN *vortex_parts[] = { "region", "eye", "front", "minor current", */
 		"Neben-NOUN_STROEMUNG", "Senk-NOUN_STROEMUNG", "NOUN_STRUDEL", "swirled", /* EN "minor current", "lower current", "swirl", "swirled", */
-		"Zentral-NOUN_BEREICH", "Senk-NOUN_STROEMUNG", "benebelt/turbulent", "NOUN_AUGE", /* EN "central core", "lower current", "addled", "center", */ // TODO DE
+		"Zentral-NOUN_BEREICH", "Senk-NOUN_STROEMUNG", "turbulent", "NOUN_AUGE", /* EN "central core", "lower current", "addled", "center", */
 		"NOUN_STROEMUNGs", "NOUN_RAND", "NOUN_STROEMUNGs", "Lebens-NOUN_ENERGIE", /* EN "currents", "edge", "currents", "life force", */
 		"NOUN_ZENTRUM", "Rand-NOUN_KANTE", "NOUN_INNERE" }, /* EN "center", "leading edge", "interior" }, */
 	*snake_parts[] = { "Stummel-NOUN_EXTREMITAET", "NOUN_EYE", "NOUN_FACE", "ADJEKTIV_GROSS NOUN_SCHUPPE", /* EN *snake_parts[] = { "vestigial limb", "eye", "face", "large scale", */

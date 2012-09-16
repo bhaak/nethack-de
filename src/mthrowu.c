@@ -207,8 +207,8 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 			pline("SUBJECT %s VERB_SEIN unversehrt.", Monnam(mtmp)); /* EN pline("%s is unaffected.", Monnam(mtmp)); */
 		    damage = 0;
 		} else {
-		    if (vis) pline_The("acid burns %s!", mon_nam(mtmp)); /* EN if (vis) pline_The("acid burns %s!", mon_nam(mtmp)); */ // TODO DE
-		    else if (verbose) pline("It is burned!"); /* EN else if (verbose) pline("It is burned!"); */ // TODO DE
+		    if (vis) pline_The("NOUN_ACID VERB_VERAETZEN OBJECT %s!", mon_nam(mtmp)); /* EN if (vis) pline_The("acid burns %s!", mon_nam(mtmp)); */
+		    else if (verbose) pline("Etwas wird verätzt!"); /* EN else if (verbose) pline("It is burned!"); */
 		}
 	    }
 	    mtmp->mhp -= damage;

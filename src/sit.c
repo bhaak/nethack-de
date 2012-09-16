@@ -89,7 +89,7 @@ dosit()
 		    u.utrap += rn1(10, 5);
 		} else if(u.utraptype == TT_LAVA) {
 		    /* Must have fire resistance or they'd be dead already */
-		    You("VERB_SITZEN in der Lava!"); /* EN You("sit in the lava!"); */
+		    You("VERB_SETZEN OBJECT PRONOMEN_PERSONAL in die Lava!"); /* EN You("sit in the lava!"); */
 		    u.utrap += rnd(4);
 		    losehp(d(2,10), "durch Sitzen in Lava", KILLED_WITHOUT_PREPOSITION); /* EN losehp(d(2,10), "sitting in lava", KILLED_BY); */
 		} else if(u.utraptype == TT_INFLOOR) {
@@ -102,7 +102,7 @@ dosit()
 	    }
 	} else if(Underwater || Is_waterlevel(&u.uz)) {
 	    if (Is_waterlevel(&u.uz))
-		There("are no cushions floating nearby."); /* EN There("are no cushions floating nearby."); */ // TODO DE
+		pline("Hier gibt es keine Sitzkissen."); /* EN There("are no cushions floating nearby."); */
 	    else
 		You("VERB_SETZEN OBJECT PRONOMEN_PERSONAL auf den schlammigen Untergrund."); /* EN You("sit down on the muddy bottom."); */
 	} else if(is_pool(u.ux, u.uy)) {
@@ -204,7 +204,7 @@ dosit()
 
 			pline("Eine Stimme ertönt:"); /* EN pline("A voice echoes:"); */
 			verbalize("Thy audience hath been summoned, %s!", /* EN verbalize("Thy audience hath been summoned, %s!", */ // TODO DE
-				  flags.female ? "Dame" : "Sire"); /* EN flags.female ? "Dame" : "Sire"); */ // TODO DE
+				  flags.female ? "Gebieterin" : "Gebieter"); /* EN flags.female ? "Dame" : "Sire"); */
 			while(cnt--)
 			    (void) makemon(courtmon(), u.ux, u.uy, NO_MM_FLAGS);
 			break;
@@ -212,7 +212,7 @@ dosit()
 		    case 8:
 			pline("Eine Stimme ertönt:"); /* EN pline("A voice echoes:"); */
 			verbalize("By thy Imperious order, %s...", /* EN verbalize("By thy Imperious order, %s...", */ // TODO DE
-				  flags.female ? "Dame" : "Sire"); /* EN flags.female ? "Dame" : "Sire"); */ // TODO DE
+				  flags.female ? "Gebieterin" : "Gebieter"); /* EN flags.female ? "Dame" : "Sire"); */
 			do_genocide(5);	/* REALLY|ONTHRONE, see do_genocide() */
 			break;
 		    case 9:
@@ -249,7 +249,7 @@ dosit()
 			}
 			break;
 		    case 12:
-			You("are granted an insight!"); /* EN You("are granted an insight!"); */ // TODO DE
+			Dir_wird("eine Einsicht gewährt!"); /* EN You("are granted an insight!"); */
 			if (invent) {
 			    /* rn2(5) agrees w/seffects() */
 			    identify_pack(rn2(5));
@@ -419,8 +419,8 @@ attrcurse()			/* remove a random INTRINSIC ability */
 		}
 	case 7 : if (HSee_invisible & INTRINSIC) {
 			HSee_invisible &= ~INTRINSIC;
-			You("%s!", Hallucination ? "tawt you taw a puttie tat" /* EN You("%s!", Hallucination ? "tawt you taw a puttie tat" */ // TODO DE
-						: "thought you saw something"); /* EN : "thought you saw something"); */ // TODO DE
+			You("MODIFIER_VERB_PRAETERITUM VERB_DENKEN, NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL MODIFIER_KONJUNKTIV_II VERB_HABEN %s!", Hallucination ? "eine Miezekatze gesehen" /* EN You("%s!", Hallucination ? "tawt you taw a puttie tat" */
+						: "etwas gesehen"); /* EN : "thought you saw something"); */
 			break;
 		}
 	case 8 : if (HFast & INTRINSIC) {

@@ -25,19 +25,19 @@ const char *goal;
     boolean doing_what_is;
     winid tmpwin = create_nhwindow(NHW_MENU);
 
-    Sprintf(sbuf, "Use [%s] to move the cursor to %s.", /* EN Sprintf(sbuf, "Use [%s] to move the cursor to %s.", */ // TODO DE
+    Sprintf(sbuf, "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN [%s] um den Cursor OBJECT KASUS_DATIV zu %s zu steuern.", /* EN Sprintf(sbuf, "Use [%s] to move the cursor to %s.", */
 	    iflags.num_pad ? "2468" : "hjkl", goal);
     putstr(tmpwin, 0, sbuf);
-    putstr(tmpwin, 0, "Use [HJKL] to move the cursor 8 units at a time."); /* EN putstr(tmpwin, 0, "Use [HJKL] to move the cursor 8 units at a time."); */ // TODO DE
-    putstr(tmpwin, 0, "Or enter a background symbol (ex. <)."); /* EN putstr(tmpwin, 0, "Or enter a background symbol (ex. <)."); */ // TODO DE
+    putstr(tmpwin, 0, "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENUTZEN [HJKL] um jeweils 8 Felder zu springen."); /* EN putstr(tmpwin, 0, "Use [HJKL] to move the cursor 8 units at a time."); */
+    putstr(tmpwin, 0, "Oder MODIFIER_VERB_IMPERATIV VERB_DRUECKEN ein Hintergrund-Symbol (z.B. <)."); /* EN putstr(tmpwin, 0, "Or enter a background symbol (ex. <)."); */
     /* disgusting hack; the alternate selection characters work for any
        getpos call, but they only matter for dowhatis (and doquickwhatis) */
     doing_what_is = (goal == what_is_an_unknown_object);
-    Sprintf(sbuf, "Type a .%s when you are at the right place.", /* EN Sprintf(sbuf, "Type a .%s when you are at the right place.", */ // TODO DE
-            doing_what_is ? " or , or ; or :" : ""); /* EN doing_what_is ? " or , or ; or :" : ""); */ // TODO DE
+    Sprintf(sbuf, "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_DRUECKEN ein .%s wenn die gewünschte Stelle ausgewählt ist.", /* EN Sprintf(sbuf, "Type a .%s when you are at the right place.", */
+            doing_what_is ? " oder , oder ; oder :" : ""); /* EN doing_what_is ? " or , or ; or :" : ""); */
     putstr(tmpwin, 0, sbuf);
     if (!force)
-	putstr(tmpwin, 0, "Type Space or Escape when you're done."); /* EN putstr(tmpwin, 0, "Type Space or Escape when you're done."); */ // TODO DE
+	putstr(tmpwin, 0, "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_DRUECKEN die Leertaste oder Escape um abzubrechen."); /* EN putstr(tmpwin, 0, "Type Space or Escape when you're done."); */
     putstr(tmpwin, 0, "");
     display_nhwindow(tmpwin, TRUE);
     destroy_nhwindow(tmpwin);
@@ -59,7 +59,7 @@ const char *goal;
     if(iflags.num_pad) sdp = ndir; else sdp = sdir;	/* DICE workaround */
 
     if (flags.verbose) {
-	pline("(For instructions type a ?)"); /* EN pline("(For instructions type a ?)"); */ // TODO DE
+	pline("(Für Hinweise, MODIFIER_VERB_IMPERATIV VERB_DRUECKEN ?)"); /* EN pline("(For instructions type a ?)"); */
 	msg_given = TRUE;
     }
     cx = cc->x;
@@ -178,14 +178,14 @@ const char *goal;
 			    }	/* column */
 			}	/* row */
 		    }		/* pass */
-		    pline("Can't find dungeon feature '%c'.", c); /* EN pline("Can't find dungeon feature '%c'.", c); */ // TODO DE
+		    pline("Kann Kartensymbol '%c' nicht finden.", c); /* EN pline("Can't find dungeon feature '%c'.", c); */
 		    msg_given = TRUE;
 		    goto nxtc;
 		} else {
-		    pline("Unbekannte Richtung: '%s' (%s).", /* EN pline("Unknown direction: '%s' (%s).", */
+		    pline("Unbekannte Richtung: '%s' (MODIFIER_VERB_IMPERATIV %s).", /* EN pline("Unknown direction: '%s' (%s).", */
 			  visctrl((char)c),
-			  !force ? "aborted" : /* EN !force ? "aborted" : */ // TODO DE
-			  iflags.num_pad ? "use 2468 or ." : "use hjkl or ."); /* EN iflags.num_pad ? "use 2468 or ." : "use hjkl or ."); */ // TODO DE
+			  !force ? "abgebrochen" : /* EN !force ? "aborted" : */
+			  iflags.num_pad ? "VERB_BENUTZEN 2468 or ." : "VERB_BENUTZEN hjkl or ."); /* EN iflags.num_pad ? "use 2468 or ." : "use hjkl or ."); */
 		    msg_given = TRUE;
 		} /* k => matching */
 	    } /* !quitchars */
@@ -259,7 +259,7 @@ do_mname()
 	}
 	cc.x = u.ux;
 	cc.y = u.uy;
-	if (getpos(&cc, FALSE, "the monster you want to name") < 0 || /* EN if (getpos(&cc, FALSE, "the monster you want to name") < 0 || */ // TODO DE
+	if (getpos(&cc, FALSE, "dem zu benennenden Monster") < 0 || /* EN if (getpos(&cc, FALSE, "the monster you want to name") < 0 || */
 			(cx = cc.x) < 0)
 		return 0;
 	cy = cc.y;
@@ -536,7 +536,7 @@ register struct obj *obj;
 	otemp.oxlth = 0;
 	if (objects[otemp.otyp].oc_class == POTION_CLASS && otemp.fromsink)
 	    /* kludge, meaning it's sink water */
-	    Sprintf(qbuf,"Call a stream of %s fluid:", /* EN Sprintf(qbuf,"Call a stream of %s fluid:", */ // TODO DE
+	    Sprintf(qbuf,"SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENENNEN OBJECT ARTIKEL_UNBESTIMMTER %s NOUN_FLUESSIGKEIT:", /* EN Sprintf(qbuf,"Call a stream of %s fluid:", */
 		    OBJ_DESCR(objects[otemp.otyp]));
 	else
 	    Sprintf(qbuf, "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_BENENNEN %s:", an(xname(&otemp))); /* EN Sprintf(qbuf, "Call %s:", an(xname(&otemp))); */

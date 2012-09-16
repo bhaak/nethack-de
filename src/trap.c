@@ -3121,7 +3121,7 @@ boolean force_failure;
 	    if ((invent && (inv_weight() + weight_cap() > 600)) ||
 		bigmonst(youmonst.data)) {
 		/* don't allow untrap if they can't get thru to it */
-		You("are unable to reach the %s!", /* EN You("are unable to reach the %s!", */ // TODO DE
+		You("VERB_KOENNEN OBJECT ARTIKEL_BESTIMMTER %s nicht erreichen!", /* EN You("are unable to reach the %s!", */
 		    defsyms[trap_to_defsym(ttype)].explanation);
 		return 0;
 	    }
@@ -3134,7 +3134,7 @@ boolean force_failure;
 				mon_nam(u.usteed));
 		else
 #endif
-		You("are unable to reach the %s!", /* EN You("are unable to reach the %s!", */ // TODO DE
+		You("VERB_KOENNEN OBJECT ARTIKEL_BESTIMMTER %s nicht erreichen!", /* EN You("are unable to reach the %s!", */
 			defsyms[trap_to_defsym(ttype)].explanation);
 		return 0;
 	}

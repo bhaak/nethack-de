@@ -1891,8 +1891,8 @@ STATIC_OVL void
 you_aggravate(mtmp)
 struct monst *mtmp;
 {
-	pline("For some reason, %s presence is known to you.", /* EN pline("For some reason, %s presence is known to you.", */ // TODO DE
-		s_suffix(noit_mon_nam(mtmp))); /* EN s_suffix(noit_mon_nam(mtmp))); */ // TODO DE
+	pline("SUBJECT_IM_SATZ Aus irgendeinem Grund VERB_SEIN PRONOMEN_PERSONAL OBJECT KASUS_DATIV PRONOMEN_PERSONAL NEUES_OBJECT OBJECT KASUS_GENITIV %s bewusst.", /* EN pline("For some reason, %s presence is known to you.", */
+		genitivattribut_zu_wort(noit_mon_nam(mtmp),"NOUN_ANWESENHEIT")); /* EN s_suffix(noit_mon_nam(mtmp))); */
 	cls();
 #ifdef CLIPPING
 	cliparound(mtmp->mx, mtmp->my);
@@ -1905,7 +1905,7 @@ struct monst *mtmp;
 	if (unconscious()) {
 		multi = -1;
 		nomovemsg =
-		      "Aggravated, you are jolted into full consciousness."; /* EN "Aggravated, you are jolted into full consciousness."; */ // TODO DE
+		      "Aggravated, you are jolted into full consciousness ."; /* EN "Aggravated, you are jolted into full consciousness."; */ // TODO DE angestachelt/einfach aggressiv/der hafer sticht [...] reißt dich aus der Bewusslosigkeit 
 	}
 	newsym(mtmp->mx,mtmp->my);
 	if (!canspotmon(mtmp))
