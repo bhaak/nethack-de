@@ -1293,11 +1293,15 @@ boolean at_stairs, falling, portal;
 
 #ifdef RECORD_ACHIEVE
             achieve.enter_gehennom = 1;
-#ifdef LIVELOGFILE
-			livelog_achieve_update();
-#endif
 #endif
 	}
+
+#ifdef RECORD_ACHIEVE
+#ifdef LIVELOGFILE
+	/* check for level change achievements */
+	livelog_achieve_update();
+#endif
+#endif
 
 	if (familiar) {
 	    static const char * const fam_msgs[4] = {

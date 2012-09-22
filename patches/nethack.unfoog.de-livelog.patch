@@ -76,16 +76,20 @@ diff -ru nethack-3.4.3/src/cmd.c nethack-shout/src/cmd.c
 diff -ru nethack-3.4.3/src/do.c nethack-shout/src/do.c
 --- nethack-3.4.3/src/do.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/do.c	2008-10-14 02:19:40.000000000 +0200
-@@ -1287,6 +1287,9 @@
- 
- #ifdef RECORD_ACHIEVE
+@@ -1287,6 +1287,13 @@
              achieve.enter_gehennom = 1;
-+#ifdef LIVELOGFILE
-+			livelog_achieve_update();
-+#endif
  #endif
- 	}
+	}
++
++#ifdef RECORD_ACHIEVE
++#ifdef LIVELOGFILE
++	/* check for level change achievements */
++	livelog_achieve_update();
++#endif
++#endif
  
+ 	if (familiar) {
+ 	    static const char * const fam_msgs[4] = {
 diff -ru nethack-3.4.3/src/invent.c nethack-shout/src/invent.c
 --- nethack-3.4.3/src/invent.c	2008-10-14 02:24:16.000000000 +0200
 +++ nethack-shout/src/invent.c	2008-10-14 02:19:40.000000000 +0200
