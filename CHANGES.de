@@ -2,6 +2,9 @@ Alpha-Release NetHack-De 3.4.3-2012XXXXa
  - Livelog-Bugfix: zeitnahe Meldung, wenn Spieler Astral- oder
    Elementarebenen erreicht
 
+ - Neue Patches:
+   * Menü beim 'C'-Kommando (von NAO)
+
 Alpha-Release NetHack-De 3.4.3-20120127a
  - ca. 93% des generierten Textes übersetzt
    * alle Monsternamen übersetzt

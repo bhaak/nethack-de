@@ -1293,6 +1293,94 @@ minimal_enlightenment()
 	return (n != -1);
 }
 
+int
+do_naming(typ)
+int typ;
+{
+	winid win;
+	anything any;
+	menu_item *pick_list = NULL;
+	int n;
+	register struct obj *obj;
+	char allowall[2];
+	static NEARDATA const char callable[] = {
+		SCROLL_CLASS, POTION_CLASS, WAND_CLASS, RING_CLASS, AMULET_CLASS,
+		GEM_CLASS, SPBOOK_CLASS, ARMOR_CLASS, TOOL_CLASS, 0 };
+
+	if (!typ) {
+		any.a_void = 0;
+		win = create_nhwindow(NHW_MENU);
+		start_menu(win);
+
+		/* the accelerator keys are chosen to be compatible with NAO and
+		 * where possible similar to AceHack's keys. That explains the
+		 * choice for the group accelerators. */
+		any.a_int = 1;
+		add_menu(win, NO_GLYPH, &any, 'a', 'C', ATR_NONE, "Ein Monster benennen", MENU_UNSELECTED); /* EN add_menu(win, NO_GLYPH, &any, 'a', 'C', ATR_NONE, "Name a monster", MENU_UNSELECTED); */
+
+		any.a_int = 2;
+		add_menu(win, NO_GLYPH, &any, 'b', 'y', ATR_NONE, "Einen einzelnen Gegenstand benamsen", MENU_UNSELECTED); /* EN add_menu(win, NO_GLYPH, &any, 'b', 'y', ATR_NONE, "Name an individual item", MENU_UNSELECTED); */
+
+		any.a_int = 3;
+		add_menu(win, NO_GLYPH, &any, 'c', 'n', ATR_NONE, "Alle Gegenstände eines Typs benennen", MENU_UNSELECTED); /* EN add_menu(win, NO_GLYPH, &any, 'c', 'n', ATR_NONE, "Name all items of a certain type", MENU_UNSELECTED); */
+
+		any.a_int = 0;
+		add_menu(win, NO_GLYPH, &any, 0, 'q', ATR_NONE, "", MENU_UNSELECTED);
+
+		end_menu(win, "Was MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL tun?"); /* EN end_menu(win, "What do you wish to name?"); */
+		n = select_menu(win, PICK_ONE, &pick_list);
+		destroy_nhwindow(win);
+
+		if (pick_list) {
+			n = (pick_list[0].item.a_int - 1);
+			free((genericptr_t) pick_list);
+		} else return 0;
+	} else {
+		n = (typ - 1);
+	}
+	switch (n) {
+		default: break;
+		case 0: do_mname(); break;
+			/* cases 1 & 2 duplicated from ddocall() */
+		case 1:
+			allowall[0] = ALL_CLASSES; allowall[1] = '\0';
+			obj = getobj(allowall, "benamsen"); /* EN obj = getobj(allowall, "name"); */
+			if(obj) do_oname(obj);
+			break;
+		case 2:
+			obj = getobj(callable, "VERB_BENENNEN"); /* EN obj = getobj(callable, "call"); */
+			if (obj) {
+				/* behave as if examining it in inventory;
+				   this might set dknown if it was picked up
+				   while blind and the hero can now see */
+				(void) xname(obj);
+
+				if (!obj->dknown) {
+					You("MODIFIER_KONJUNKTIV_II VERB_WERDEN kein anderes Stück davon erkennen."); /* EN You("would never recognize another one."); */
+					return 0;
+				}
+				docall(obj);
+			}
+			break;
+	}
+	return 0;
+}
+
+int
+do_naming_mname()
+{
+	if (iflags.old_C_behaviour) return do_naming(1);
+	return do_naming(0);
+}
+
+int
+do_naming_ddocall()
+{
+	return do_naming(0);
+}
+
+
+
 STATIC_PTR int
 doattributes()
 {
@@ -1446,7 +1534,7 @@ static const struct func_tab cmdlist[] = {
 	{M('a'), TRUE, doorganize},
 /*	'b', 'B' : go sw */
 	{'c', FALSE, doclose},
-	{'C', TRUE, do_mname},
+	{'C', TRUE, do_naming_mname},
 	{M('c'), TRUE, dotalk},
 	{'d', FALSE, dodrop},
 	{'D', FALSE, doddrop},
@@ -1549,7 +1637,7 @@ struct ext_func_tab extcmdlist[] = {
 	{"jump", "springe an eine Stelle", dojump, FALSE}, /* EN {"jump", "jump to a location", dojump, FALSE}, */
 	{"loot", "plündere einen Behälter auf dem Boden", doloot, FALSE}, /* EN {"loot", "loot a box on the floor", doloot, FALSE}, */
 	{"monster", "benutze eine spezielle Monsterfertigkeit", domonability, TRUE}, /* EN {"monster", "use a monster's special ability", domonability, TRUE}, */
-	{"name", "benenne einen Gegenstand oder eine Klasse von Objekten", ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */
+	{"name", "benenne einen Gegenstand oder eine Klasse von Objekten", do_naming_ddocall, TRUE}, /* EN {"name", "name an item or type of object", ddocall, TRUE}, */
 	{"offer", "bringe den Göttern ein Opfer dar", dosacrifice, FALSE}, /* EN {"offer", "offer a sacrifice to the gods", dosacrifice, FALSE}, */
 	{"pray", "bete zu den Göttern um Hilfe", dopray, TRUE}, /* EN {"pray", "pray to the gods for help", dopray, TRUE}, */
 	{"quit", "verlasse das laufende Spiel ohne zu speichern", done2, TRUE}, /* EN {"quit", "exit without saving current game", done2, TRUE}, */
