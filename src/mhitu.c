@@ -1920,15 +1920,15 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		    boolean useeit = canseemon(mtmp);
 
 		    if (useeit)
-		    	(void) ureflects("%s is reflected by your %s.", /* EN (void) ureflects("%s gaze is reflected by your %s.", */ // TODO DE
+		    	(void) ureflects("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV %s reflektiert!", /* EN (void) ureflects("%s gaze is reflected by your %s.", */
 		    			genitivattribut_zu_wort(Monnam(mtmp), "NOUN_GAZE")); /* EN s_suffix(Monnam(mtmp))); */
 		    if (mon_reflects(mtmp, !useeit ? (char *)0 :
-		    			"The gaze is reflected away by %s!")) /* EN "The gaze is reflected away by %s %s!")) */ // TODO DE
+		    			"SUBJECT ARTIKEL_BESTIMMTER NOUN_GAZE VERB_WERDEN OBJECT KASUS_DATIV von %s reflektiert!")) /* EN "The gaze is reflected away by %s %s!")) */
 		    	    break;
 			if (!m_canseeu(mtmp)) { /* probably you're invisible */
 			if (useeit)
 			    pline(
-		      "SUBJECT %s VERB_SCHEINEN gar nicht zu bemerken, dass %s gaze was reflected.", /* EN "%s doesn't seem to notice that %s gaze was reflected.", */ // TODO DE
+		      "SUBJECT %s VERB_SCHEINEN gar nicht zu bemerken, NEUER_SATZ dass SUBJECT_IM_SATZ %s NOUN_GAZE reflektiert MODIFIER_VERB_PRAETERITUM VERB_WERDEN.", /* EN "%s doesn't seem to notice that %s gaze was reflected.", */
 				  Monnam(mtmp), mhis(mtmp));
 			    break;
 			}
@@ -2540,7 +2540,7 @@ register struct attack *mattk;
 							youmonst.data->mname);
 		        else {
 			    if (mon_reflects(mtmp,
-					    "Your gaze is reflected by %s.")) /* EN "Your gaze is reflected by %s %s.")) */ // TODO DE
+					    "SUBJECT PRONOMEN_POSSESSIV NOUN_GAZE VERB_WERDEN OBJECT KASUS_DATIV von %s reflektiert.")) /* EN "Your gaze is reflected by %s %s.")) */
 				return 1;
 			    pline("SUBJECT %s VERB_ERSTARREN OBJECT durch PRONOMEN_POSSESSIV NOUN_GAZE!", Monnam(mtmp)); /* EN pline("%s is frozen by your gaze!", Monnam(mtmp)); */
 			    mtmp->mcanmove = 0;

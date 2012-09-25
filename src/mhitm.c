@@ -461,17 +461,17 @@ gazemm(magr, mdef, mattk)
 	if (magr->data == &mons[PM_MEDUSA] && mon_reflects(mdef, (char *)0)) {
 	    if (canseemon(mdef))
 		(void) mon_reflects(mdef,
-				    "The gaze is reflected away by %s."); /* EN "The gaze is reflected away by %s %s."); */ // TODO DE
+				    "SUBJECT ARTIKEL_BESTIMMTER NOUN_GAZE VERB_WERDEN OBJECT KASUS_DATIV von %s reflektiert."); /* EN "The gaze is reflected away by %s %s."); */
 	    if (mdef->mcansee) {
 		if (mon_reflects(magr, (char *)0)) {
 		    if (canseemon(magr))
 			(void) mon_reflects(magr,
-					"The gaze is reflected away by %s."); /* EN "The gaze is reflected away by %s %s."); */ // TODO DE
+					"SUBJECT ARTIKEL_BESTIMMTER NOUN_GAZE VERB_WERDEN OBJECT KASUS_DATIV von %s reflektiert."); /* EN "The gaze is reflected away by %s %s."); */
 		    return (MM_MISS);
 		}
 		if (mdef->minvis && !perceives(magr->data)) {
 		    if (canseemon(magr)) {
-			pline("%s doesn't seem to notice that %s gaze was reflected.", /* EN pline("%s doesn't seem to notice that %s gaze was reflected.", */ // TODO DE
+			pline("SUBJECT %s VERB_SCHEINEN gar nicht zu bemerken, NEUER_SATZ dass SUBJECT_IM_SATZ %s NOUN_GAZE reflektiert MODIFIER_VERB_PRAETERITUM VERB_WERDEN.", /* EN pline("%s doesn't seem to notice that %s gaze was reflected.", */
 			      Monnam(magr), mhis(magr));
 		    }
 		    return (MM_MISS);
@@ -1332,7 +1332,7 @@ int mdead;
 		    if (!rn2(4)) tmp = 127;
 		    if (magr->mcansee && haseyes(madat) && mdef->mcansee &&
 			(perceives(madat) || !mdef->minvis)) {
-			Sprintf(buf, "%s gaze is reflected by %%s.", /* EN Sprintf(buf, "%s gaze is reflected by %%s %%s.", */ // TODO DE
+			Sprintf(buf, "SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV von %%s reflektiert.", /* EN Sprintf(buf, "%s gaze is reflected by %%s %%s.", */
 				genitivattribut_zu_wort(mon_nam(mdef), "NOUN_GAZE")); /* EN s_suffix(mon_nam(mdef))); */
 			if (mon_reflects(magr,
 					 canseemon(magr) ? buf : (char *)0))

@@ -2609,7 +2609,7 @@ xchar x, y;
 		} else obj->no_charge = 1;
 
 		if(!unpaid && (sell_how != SELL_DONTSELL))
-		    pline("SUBJECT %s scheint nicht interessiert zu sein.", Monnam(shkp)); /* EN pline("%s seems uninterested.", Monnam(shkp)); */
+		    pline("SUBJECT %s scheint daran nicht interessiert zu sein.", Monnam(shkp)); /* EN pline("%s seems uninterested.", Monnam(shkp)); */
 		return;
 	}
 
@@ -2677,8 +2677,8 @@ move_on:
 	   || (obj->oclass == FOOD_CLASS && obj->oeaten)
 	   || (Is_candle(obj) &&
 		   obj->age < 20L * (long)objects[obj->otyp].oc_cost)) {
-		pline("SUBJECT %s scheint %s nicht interessiert zu sein.", Monnam(shkp), /* EN pline("%s seems uninterested%s.", Monnam(shkp), */
-			cgold ? " am Rest" : ""); /* EN cgold ? " in the rest" : ""); */
+		pline("SUBJECT %s scheint%s nicht interessiert zu sein.", Monnam(shkp), /* EN pline("%s seems uninterested%s.", Monnam(shkp), */
+			cgold ? " am Rest" : " daran"); /* EN cgold ? " in the rest" : ""); */
 		if (container)
 		    dropped_container(obj, shkp, FALSE);
 		obj->no_charge = 1;
@@ -4090,7 +4090,7 @@ struct obj *obj;
 	    (obj->unpaid ||
 	     (obj->where==OBJ_FLOOR && !obj->no_charge && costly_spot(x,y)))) {
 	    shkp = shop_keeper(inside_shop(x, y));
-	    return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "ARTIKEL_BESTIMMTER"); /* EN return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "the"); */
+	    return strcpy(buf, shkp ? german(s_suffix(shkname(shkp))) : "ARTIKEL_BESTIMMTER"); /* EN return strcpy(buf, shkp ? s_suffix(shkname(shkp)) : "the"); */
 	}
 	return (char *)0;
 }

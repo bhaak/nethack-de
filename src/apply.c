@@ -693,7 +693,7 @@ struct obj *obj;
 		pline ("SUBJECT %s VERB_HABEN kein Spiegelbild.", Monnam(mtmp)); /* EN pline ("%s doesn't have a reflection.", Monnam(mtmp)); */
 	} else if(!mtmp->mcan && !mtmp->minvis &&
 					mtmp->data == &mons[PM_MEDUSA]) {
-		if (mon_reflects(mtmp, "SUBJECT ARTIKEL_BESTIMMTER NOUN_GAZE VERB_WERDEN OBJECT KASUS_DATIV von %s reflektiert!")) /* EN if (mon_reflects(mtmp, "The gaze is reflected away by %s %s!")) */ // TODO DE
+		if (mon_reflects(mtmp, "SUBJECT ARTIKEL_BESTIMMTER NOUN_GAZE VERB_WERDEN OBJECT KASUS_DATIV von %s reflektiert!")) /* EN if (mon_reflects(mtmp, "The gaze is reflected away by %s %s!")) */
 			return 1;
 		if (vis)
 			pline("SUBJECT %s VERB_VERSTEINERN!", Monnam(mtmp)); /* EN pline("%s is turned to stone!", Monnam(mtmp)); */
