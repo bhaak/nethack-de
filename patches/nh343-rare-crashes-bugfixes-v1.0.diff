@@ -1,0 +1,78 @@
+This patch fixes several probably rare crashes in NetHack due to null pointers
+returned by makemon():
+
+ - if makemon creates a group of monster and one of the calls to makemon()
+   in m_initgrp() fails
+ - while creating the Medusa level a temporary monster creation (needed
+   for creating a statue) can fail
+ - in cloneu() if creating a cloned monster of yourself fails
+
+diff -uwr '--exclude=date.h' '--exclude=makedefs' '--exclude=nethack' '--exclude=Makefile' '--exclude=README.patch' nethack-linux/src/makemon.c nethack-rare-crashes-bugfixes/src/makemon.c
+--- nethack-linux/src/makemon.c	2008-05-26 19:47:02.000000000 +0200
++++ nethack-rare-crashes-bugfixes/src/makemon.c	2012-10-12 11:37:51.000000000 +0200
+@@ -131,9 +131,11 @@
+ 		 */
+ 		if (enexto(&mm, mm.x, mm.y, mtmp->data)) {
+ 		    mon = makemon(mtmp->data, mm.x, mm.y, NO_MM_FLAGS);
++		    if (mon) {
+ 		    mon->mpeaceful = FALSE;
+ 		    mon->mavenge = 0;
+ 		    set_malign(mon);
++		    }
+ 		    /* Undo the second peace_minded() check in makemon(); if the
+ 		     * monster turned out to be peaceful the first time we
+ 		     * didn't create it at all; we don't want a second check.
+diff -uwr '--exclude=date.h' '--exclude=makedefs' '--exclude=nethack' '--exclude=Makefile' '--exclude=README.patch' nethack-linux/src/mhitu.c nethack-rare-crashes-bugfixes/src/mhitu.c
+--- nethack-linux/src/mhitu.c	2008-05-26 19:47:02.000000000 +0200
++++ nethack-rare-crashes-bugfixes/src/mhitu.c	2012-10-12 11:37:51.000000000 +0200
+@@ -2625,6 +2625,7 @@
+ 	if (u.mh <= 1) return(struct monst *)0;
+ 	if (mvitals[mndx].mvflags & G_EXTINCT) return(struct monst *)0;
+ 	mon = makemon(youmonst.data, u.ux, u.uy, NO_MINVENT|MM_EDOG);
++	if (mon) {
+ 	mon = christen_monst(mon, plname);
+ 	initedog(mon);
+ 	mon->m_lev = youmonst.data->mlevel;
+@@ -2632,6 +2633,7 @@
+ 	mon->mhp = u.mh / 2;
+ 	u.mh -= mon->mhp;
+ 	flags.botl = 1;
++	}
+ 	return(mon);
+ }
+ 
+diff -uwr '--exclude=date.h' '--exclude=makedefs' '--exclude=nethack' '--exclude=Makefile' '--exclude=README.patch' nethack-linux/src/sp_lev.c nethack-rare-crashes-bugfixes/src/sp_lev.c
+--- nethack-linux/src/sp_lev.c	2008-05-26 19:47:02.000000000 +0200
++++ nethack-rare-crashes-bugfixes/src/sp_lev.c	2012-10-12 11:37:51.000000000 +0200
+@@ -1010,17 +1010,22 @@
+ 	    struct monst *was;
+ 	    struct obj *obj;
+ 	    int wastyp;
++	    int i=0; /* prevent endless loop in case makemon always fails */
+ 
+ 	    /* Named random statues are of player types, and aren't stone-
+ 	     * resistant (if they were, we'd have to reset the name as well as
+ 	     * setting corpsenm).
+ 	     */
+-	    for (wastyp = otmp->corpsenm; ; wastyp = rndmonnum()) {
++	    for (wastyp = otmp->corpsenm; i < 1000 ; i++) {
+ 		/* makemon without rndmonst() might create a group */
+ 		was = makemon(&mons[wastyp], 0, 0, NO_MM_FLAGS);
++		if (was) {
+ 		if (!resists_ston(was)) break;
+ 		mongone(was);
+ 	    }
++		wastyp = rndmonnum();
++	    }
++	    if (was) {
+ 	    otmp->corpsenm = wastyp;
+ 	    while(was->minvent) {
+ 		obj = was->minvent;
+@@ -1031,6 +1036,7 @@
+ 	    otmp->owt = weight(otmp);
+ 	    mongone(was);
+ 	}
++	}
+ 
+ #ifdef RECORD_ACHIEVE
+         /* Nasty hack here: try to determine if this is the Mines or Sokoban
