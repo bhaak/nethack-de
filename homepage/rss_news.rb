@@ -1,9 +1,12 @@
 #!/usr/bin/ruby
 
-# Copyright (c) 2008 Patric Müller
+# Copyright (c) 2008-2012 Patric Müller
 # bhaak@gmx.net
 #
 # Released under the GNU GPL version 2 - http://www.gnu.org/copyleft/gpl.html
+
+require 'rubygems'
+require "bundler/setup"
 
 require 'parsearg.rb'
 
