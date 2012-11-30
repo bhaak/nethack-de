@@ -1007,9 +1007,9 @@ hitmu(mtmp, mattk)
 	    case AD_COLD:
 		hitmsg(mtmp, mattk);
 		if (uncancelled) {
-		    pline("You're covered in frost!"); /* EN pline("You're covered in frost!"); */ // TODO DE
+		    pline("SUBJECT PRONOMEN_PERSONAL VERB_WERDEN von Eis eingehüllt!"); /* EN pline("You're covered in frost!"); */
 		    if (Cold_resistance) {
-			pline_The("frost doesn't seem cold!"); /* EN pline_The("frost doesn't seem cold!"); */ // TODO DE
+			pline_The("NOUN_KAELTE VERB_SCHEINEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL nichts auszumachen!"); /* EN pline_The("frost doesn't seem cold!"); */
 			dmg = 0;
 		    }
 		    if((int) mtmp->m_lev > rn2(20))
@@ -1458,10 +1458,10 @@ dopois:
 		hitmsg(mtmp, mattk);
 		if (!mtmp->mcan && !rn2(3))
 		    if (Acid_resistance) {
-			pline("You're covered in acid, but it seems harmless."); /* EN pline("You're covered in acid, but it seems harmless."); */ // TODO DE
+			pline("SUBJECT PRONOMEN_PERSONAL VERB_WERDEN OBJECT KASUS_DATIV mit NOUN_SAEURE vollgespritzt, aber sie ist ohne Wirkung."); /* EN pline("You're covered in acid, but it seems harmless."); */
 			dmg = 0;
 		    } else {
-			pline("You're covered in acid!	It burns!"); /* EN pline("You're covered in acid!	It burns!"); */ // TODO DE
+			pline("SUBJECT PRONOMEN_PERSONAL VERB_WERDEN OBJECT KASUS_DATIV mit NOUN_SAEURE vollgespritzt!	Das brennt!"); /* EN pline("You're covered in acid!	It burns!"); */
 			exercise(A_STR, FALSE);
 		    }
 		else		dmg = 0;
@@ -1736,11 +1736,11 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 		    break;
 		case AD_ACID:
 		    if (Acid_resistance) {
-			You("are covered with a seemingly harmless goo."); /* EN You("are covered with a seemingly harmless goo."); */ // TODO DE
+			You("VERB_WERDEN OBJECT KASUS_DATIV mit unschädlicher NOUN_SAEURE vollgespritzt."); /* EN You("are covered with a seemingly harmless goo."); */
 			tmp = 0;
 		    } else {
 		      if (Hallucination) pline("Autsch!  SUBJECT PRONOMEN_PERSONAL MODIFIER_VERB_PRAETERITUM VERB_WERDEN verschleimt!"); /* EN if (Hallucination) pline("Ouch!  You've been slimed!"); */
-		      else You("are covered in slime!  It burns!"); /* EN else You("are covered in slime!  It burns!"); */ // TODO DE
+		      else You("VERB_WERDEN OBJECT KASUS_DATIV mit NOUN_SAEURE vollgespritzt!  Das brennt!"); /* EN else You("are covered in slime!  It burns!"); */
 		      exercise(A_STR, FALSE);
 		    }
 		    break;

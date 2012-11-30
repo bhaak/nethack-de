@@ -750,10 +750,10 @@ mdamagem(magr, mdef, mattk)
 		    tmp = 0;
 		    break;
 		}
-		if (vis) pline("%s is covered in frost!", Monnam(mdef)); /* EN if (vis) pline("%s is covered in frost!", Monnam(mdef)); */ // TODO DE
+		if (vis) pline("SUBJECT %s VERB_WERDEN von Eis eingehüllt!", Monnam(mdef)); /* EN if (vis) pline("%s is covered in frost!", Monnam(mdef)); */
 		if (resists_cold(mdef)) {
 		    if (vis)
-			pline_The("frost doesn't seem to chill %s!", /* EN pline_The("frost doesn't seem to chill %s!", */ // TODO DE
+			pline_The("NOUN_KAELTE VERB_SCHEINEN OBJECT KASUS_DATIV %s nichts auszumachen!", /* EN pline_The("frost doesn't seem to chill %s!", */
 								mon_nam(mdef));
 		    shieldeff(mdef->mx, mdef->my);
 		    golemeffects(mdef, AD_COLD, tmp);
@@ -784,12 +784,12 @@ mdamagem(magr, mdef, mattk)
 		}
 		if (resists_acid(mdef)) {
 		    if (vis)
-			pline("%s is covered in acid, but it seems harmless.", /* EN pline("%s is covered in acid, but it seems harmless.", */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV mit NOUN_SAEURE vollgespritzt, aber sie zeigt keine Wirkung.", /* EN pline("%s is covered in acid, but it seems harmless.", */
 			      Monnam(mdef));
 		    tmp = 0;
 		} else if (vis) {
-		    pline("%s is covered in acid!", Monnam(mdef)); /* EN pline("%s is covered in acid!", Monnam(mdef)); */ // TODO DE
-		    pline("It burns %s!", mon_nam(mdef)); /* EN pline("It burns %s!", mon_nam(mdef)); */ // TODO DE
+		    pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV mit NOUN_SAEURE vollgespritzt!", Monnam(mdef)); /* EN pline("%s is covered in acid!", Monnam(mdef)); */
+		    pline("Sie verätzt KASUS_AKKUSATIV %s!", mon_nam(mdef)); /* EN pline("It burns %s!", mon_nam(mdef)); */
 		}
 		if (!rn2(30)) erode_armor(mdef, TRUE);
 		if (!rn2(6)) erode_obj(MON_WEP(mdef), TRUE, TRUE);

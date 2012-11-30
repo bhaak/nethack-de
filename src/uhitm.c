@@ -767,10 +767,10 @@ int thrown;
 
 			if (touch_petrifies(&mons[obj->corpsenm])) {
 			    /*learn_egg_type(obj->corpsenm);*/
-			    pline("Klatsch! SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT %s NEUES_OBJECT OBJECT mit %s %s--NOUN_EGG%s!", /* EN pline("Splat! You hit %s with %s %s egg%s!", */ // TODO DE Fugen-Buchstabe fehlt
+			    pline("Klatsch! SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT %s NEUES_OBJECT OBJECT KASUS_DATIV mit %s %s%sNOUN_EGG%s!", /* EN pline("Splat! You hit %s with %s %s egg%s!", */ // TODO DE Fugen-Buchstabe fehlt
 				mon_nam(mon),
 				obj->known ? "ARTIKEL_BESTIMMTER" : cnt > 1L ? "ein paar" : "ARTIKEL_UNBESTIMMTER", /* EN obj->known ? "the" : cnt > 1L ? "some" : "a", */
-				obj->known ? mons[obj->corpsenm].mname : "ADJEKTIV_VERSTEINERND", /* EN obj->known ? mons[obj->corpsenm].mname : "petrifying", */
+				obj->known ? mons[obj->corpsenm].mname : "ADJEKTIV_VERSTEINERND", obj->known ? "--" : " ",  /* EN obj->known ? mons[obj->corpsenm].mname : "petrifying", */
 				plur(cnt));
 			    obj->known = 1;	/* (not much point...) */
 			    useup_eggs(obj);
@@ -1362,11 +1362,11 @@ register struct attack *mattk;
 		    tmp = 0;
 		    break;
 		}
-		if (!Blind) pline("%s is covered in frost!", Monnam(mdef)); /* EN if (!Blind) pline("%s is covered in frost!", Monnam(mdef)); */ // TODO DE
+		if (!Blind) pline("SUBJECT %s VERB_WERDEN von Eis eingehüllt!", Monnam(mdef)); /* EN if (!Blind) pline("%s is covered in frost!", Monnam(mdef)); */
 		if (resists_cold(mdef)) {
 		    shieldeff(mdef->mx, mdef->my);
 		    if (!Blind)
-			pline_The("NOUN_KAELTE VERB_KUEHLEN OBJECT %s nicht!", mon_nam(mdef)); /* EN pline_The("frost doesn't chill %s!", mon_nam(mdef)); */
+			pline_The("NOUN_KAELTE VERB_MACHEN OBJECT KASUS_DATIV %s nichts aus!", mon_nam(mdef)); /* EN pline_The("frost doesn't chill %s!", mon_nam(mdef)); */
 		    golemeffects(mdef, AD_COLD, tmp);
 		    tmp = 0;
 		}
@@ -1850,9 +1850,9 @@ register struct attack *mattk;
 				  Monnam(mdef));
 			break;
 		    case AD_ACID:
-			pline("%s is covered with your goo!", Monnam(mdef)); /* EN pline("%s is covered with your goo!", Monnam(mdef)); */ // TODO DE
+			pline("SUBJECT %s VERB_WERDEN OBJECT KASUS_DATIV mit PRONOMEN_POSSESSIV NOUN_SAEURE ein!", Monnam(mdef)); /* EN pline("%s is covered with your goo!", Monnam(mdef)); */
 			if (resists_acid(mdef)) {
-			    pline("It seems harmless to %s.", mon_nam(mdef)); /* EN pline("It seems harmless to %s.", mon_nam(mdef)); */ // TODO DE
+			    pline("Sie zeigt KASUS_DATIV bei %s keine Wirkung.", mon_nam(mdef)); /* EN pline("It seems harmless to %s.", mon_nam(mdef)); */
 			    dam = 0;
 			}
 			break;
