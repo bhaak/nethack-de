@@ -3612,6 +3612,13 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BLAST_OF_POISON_GAS","Giftgasodem","s","","","maskulin"),
     dekliniere_substantiv("NOUN_BLAST_OF_ACID","Säureodem","s","","","maskulin"),
 
+
+    "/* Dungeon-Namen */",
+    dekliniere_nominalphrase("NOUN_DUNGEON_THE_GNOMISH_MINES", "Gnomsch", "Mine", "", "Mine", "en", "feminin"), # koennte besser sein
+    dekliniere_substantiv("NOUN_DUNGEON_THE_QUEST","Queste","","","en","feminin"),
+    dekliniere_substantiv("NOUN_DUNGEON_VLADS_TOWER","Vlads Turm","s","","e","maskulin"),
+    dekliniere_substantiv("NOUN_DUNGEON_THE_ELEMENTAL_PLANES","Elementarebene","","Elementarebene","en","feminin"),
+
     "/* sonstige Substantive */",
     dekliniere_adjektivisches_substantiv("NOUN_CANINE","Hundeartig","neutrum"),
     dekliniere_adjektivisches_substantiv("NOUN_FELINE","Katzenartig","neutrum"),

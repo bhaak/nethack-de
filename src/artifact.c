@@ -1298,7 +1298,7 @@ arti_invoke(obj)
 		if (!dungeons[i].dunlev_ureached) continue;
 		any.a_int = i+1;
 		add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE,
-			 dungeons[i].dname, MENU_UNSELECTED);
+			 german_branch_name(dungeons[i].dname), MENU_UNSELECTED); /* EN dungeons[i].dname, MENU_UNSELECTED); */
 		num_ok_dungeons++;
 		last_ok_dungeon = i;
 	    }

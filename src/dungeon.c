@@ -6,6 +6,10 @@
 #include "dgn_file.h"
 #include "dlb.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 #ifdef OVL1
 
 #define DUNGEON_FILE	"dungeon"
@@ -609,7 +613,6 @@ struct level_map {
 	const char *lev_name;
 	d_level *lev_spec;
 } level_map[] = {
-	// TODO DE ?
 	{ "air",	&air_level },
 	{ "asmodeus",	&asmodeus_level },
 	{ "astral",	&astral_level },
@@ -881,10 +884,10 @@ init_dungeons()		/* initialize the "dungeon" structs */
 /*
  *	I hate hardwiring these names. :-(
  */
-	quest_dnum = dname_to_dnum("The Quest"); /* EN quest_dnum = dname_to_dnum("The Quest"); */ // TODO DE
-	sokoban_dnum = dname_to_dnum("Sokoban"); /* EN sokoban_dnum = dname_to_dnum("Sokoban"); */ // TODO DE
-	mines_dnum = dname_to_dnum("The Gnomish Mines"); /* EN mines_dnum = dname_to_dnum("The Gnomish Mines"); */ // TODO DE
-	tower_dnum = dname_to_dnum("Vlad's Tower"); /* EN tower_dnum = dname_to_dnum("Vlad's Tower"); */ // TODO DE
+	quest_dnum = dname_to_dnum("The Quest");
+	sokoban_dnum = dname_to_dnum("Sokoban");
+	mines_dnum = dname_to_dnum("The Gnomish Mines");
+	tower_dnum = dname_to_dnum("Vlad's Tower");
 
 	/* one special fixup for dummy surface level */
 	if ((x = find_level("dummy")) != 0) {
@@ -943,7 +946,7 @@ boolean noquest;
 
 	for(i = 0; i < n_dgns; i++) {
 	    if((tmp.dlevel = dungeons[i].dunlev_ureached) == 0) continue;
-	    if(!strcmp(dungeons[i].dname, "The Quest") && noquest) continue; /* EN if(!strcmp(dungeons[i].dname, "The Quest") && noquest) continue; */ // TODO DE
+	    if(!strcmp(dungeons[i].dname, "The Quest") && noquest) continue;
 
 	    tmp.dnum = i;
 	    if(depth(&tmp) > ret) ret = depth(&tmp);
@@ -1570,9 +1573,9 @@ print_branch(win, dnum, lower_bound, upper_bound, bymenu, lchoices)
     for (br = branches; br; br = br->next) {
 	if (br->end1.dnum == dnum && lower_bound < br->end1.dlevel &&
 					br->end1.dlevel <= upper_bound) {
-	    Sprintf(buf,"   %s nach %s: %d", /* EN Sprintf(buf,"   %s to %s: %d", */
+	    Sprintf(buf,"   %s OBJECT KASUS_DATIV nach %s: %d", /* EN Sprintf(buf,"   %s to %s: %d", */
 		    br_string(br->type),
-		    dungeons[br->end2.dnum].dname,
+		    german_branch_name(dungeons[br->end2.dnum].dname), /* EN dungeons[br->end2.dnum].dname, */
 		    depth(&br->end1));
 	    if (bymenu) {
 		lchoices->lev[lchoices->idx] = br->end1.dlevel;
@@ -1617,10 +1620,10 @@ xchar *rdgn;
     for (i = 0, dptr = dungeons; i < n_dgns; i++, dptr++) {
 	nlev = dptr->num_dunlevs;
 	if (nlev > 1)
-	    Sprintf(buf, "%s: levels %d to %d", dptr->dname, dptr->depth_start, /* EN Sprintf(buf, "%s: levels %d to %d", dptr->dname, dptr->depth_start, */ // TODO DE
+	    Sprintf(buf, "SUBJECT %s: Level %d bis %d", german_branch_name(dptr->dname), dptr->depth_start, /* EN Sprintf(buf, "%s: levels %d to %d", dptr->dname, dptr->depth_start, */
 						dptr->depth_start + nlev - 1);
 	else
-	    Sprintf(buf, "%s: level %d", dptr->dname, dptr->depth_start); /* EN Sprintf(buf, "%s: level %d", dptr->dname, dptr->depth_start); */ // TODO DE
+	    Sprintf(buf, "SUBJECT %s: Level %d", german_branch_name(dptr->dname), dptr->depth_start); /* EN Sprintf(buf, "%s: level %d", dptr->dname, dptr->depth_start); */
 
 	/* Most entrances are uninteresting. */
 	if (dptr->entry_lev != 1) {
@@ -1685,7 +1688,7 @@ xchar *rdgn;
 		}
 		first = FALSE;
 	    }
-	    Sprintf(buf, "   %s nach %s", /* EN Sprintf(buf, "   %s to %s", */
+	    Sprintf(buf, "   %s OBJECT KASUS_DATIV nach %s", /* EN Sprintf(buf, "   %s to %s", */ // verbesserungswuerdig
 			br_string(br->type), dungeons[br->end2.dnum].dname);
 	    if (!bymenu)
 		putstr(win, 0, buf);

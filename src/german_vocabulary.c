@@ -9908,6 +9908,23 @@ Although not referring to the exactly same rank. */
   {"Säureodems", "NOUN_BLAST_OF_ACID", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Säureodem", "NOUN_BLAST_OF_ACID", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
 
+  /* Dungeon-Namen */
+
+  {"Gnomscher Mine", "NOUN_DUNGEON_THE_GNOMISH_MINES", "", genitiv|dativ, feminin, n_singular, ohne|grundform},
+  {"Gnomschen Mine", "NOUN_DUNGEON_THE_GNOMISH_MINES", "", genitiv|dativ, feminin, n_singular, unbestimmter|bestimmter},
+  {"Gnomsche Mine", "NOUN_DUNGEON_THE_GNOMISH_MINES", "", akkusativ|nominativ, feminin, n_singular, grundform|ohne|bestimmter|unbestimmter},
+  {"Gnomschen Minen", "NOUN_DUNGEON_THE_GNOMISH_MINESs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, bestimmter|ohne|unbestimmter|grundform},
+  {"Gnomsche Minen", "NOUN_DUNGEON_THE_GNOMISH_MINESs", "", akkusativ|nominativ, feminin, n_plural, grundform|ohne},
+  {"Gnomscher Minen", "NOUN_DUNGEON_THE_GNOMISH_MINESs", "", genitiv, feminin, n_plural, grundform|ohne},
+
+  {"Queste", "NOUN_DUNGEON_THE_QUEST", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Vlads Turms", "NOUN_DUNGEON_VLADS_TOWER", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Vlads Turm", "NOUN_DUNGEON_VLADS_TOWER", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Elementarebene", "NOUN_DUNGEON_THE_ELEMENTAL_PLANES", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Elementarebenen", "NOUN_DUNGEON_THE_ELEMENTAL_PLANESs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   /* sonstige Substantive */
 
   {"Hundeartig", "NOUN_CANINE", "", nominativ|genitiv|dativ|akkusativ, neutrum, n_singular|n_plural, grundform},

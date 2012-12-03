@@ -91,5 +91,6 @@ int german_the(const char *token);
 char* relativpronomen(const char *token);
 char* indefinitpronomen_eines(const char *token);
 enum Genus genus_von(const char *token);
+const char * german_branch_name(const char *);
 
 #endif /* !_GERMAN_H */

@@ -1646,7 +1646,6 @@ const char *name;
 	const char *treffer;
 	int i;
 
-	//for (i = 0; i < SIZE(roles)-1; i++) {
 	for (i = 0; validrole(i); i++) {
 		if ((roles[i].lgod != 0) && (treffer=strstr(roles[i].lgod, name))) { return (*roles[i].lgod == '_'); }
 		else if ((roles[i].lgod != 0) && (treffer=strstr(roles[i].ngod, name))) { return (*roles[i].ngod == '_'); }
@@ -1656,6 +1655,27 @@ const char *name;
 	return FALSE;
 }
 #endif
+
+/*** Liefert den deutschen Begriff fuer einen Dungeon-Branch zurueck. */
+const char *
+german_branch_name(branch_name)
+const char *branch_name;
+{
+	if (strcmp("The Dungeons of Doom", branch_name)==0) {
+		return branch_name; // TODO DE
+	} else if (strcmp("The Quest", branch_name)==0) {
+		return "ARTIKEL_BESTIMMTER NOUN_DUNGEON_THE_QUEST";
+	} else if (strcmp("The Gnomish Mines", branch_name)==0) {
+		return "ARTIKEL_BESTIMMTER NOUN_DUNGEON_THE_GNOMISH_MINESs";
+	} else if (strcmp("Vlad's Tower", branch_name)==0) {
+		return "NOUN_DUNGEON_VLADS_TOWER";
+	} else if (strcmp("The Elemental Planes", branch_name)==0) {
+		return "ARTIKEL_BESTIMMTER NOUN_DUNGEON_THE_ELEMENTAL_PLANESs";
+	}
+
+	/* wenn nicht erkannt, liefere Input ungemappt zurueck */
+	return branch_name;
+}
 
 /*
 [x] Leichname werden noch falsch behandelt.

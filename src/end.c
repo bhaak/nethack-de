@@ -911,9 +911,9 @@ die:
 #endif
 	    } else {
 		/* more conventional demise */
-		const char *where = dungeons[u.uz.dnum].dname;
+		const char *where = german_branch_name(dungeons[u.uz.dnum].dname); /* EN const char *where = dungeons[u.uz.dnum].dname; */
 #ifdef GERMAN
-		char *where_praep = "in";
+		char *where_praep = "OBJECT KASUS_DATIV in";
 #endif
 
 		if (Is_astralevel(&u.uz)) { where_praep = "auf"; where = "der Astralebene"; } /* EN if (Is_astralevel(&u.uz)) where = "The Astral Plane"; */

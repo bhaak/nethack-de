@@ -800,9 +800,9 @@ boolean so;
 		}
 		Sprintf(eos(linebuf), fmt, arg);
 	    } else {
-		Sprintf(eos(linebuf), " in %s", dungeons[t1->deathdnum].dname); /* EN Sprintf(eos(linebuf), " in %s", dungeons[t1->deathdnum].dname); */ // TODO DE
+		Sprintf(eos(linebuf), " OBJECT KASUS_DATIV in %s", german_branch_name(dungeons[t1->deathdnum].dname)); /* EN Sprintf(eos(linebuf), " in %s", dungeons[t1->deathdnum].dname); */
 		if (t1->deathdnum != knox_level.dnum)
-		    Sprintf(eos(linebuf), " on level %d", t1->deathlev); /* EN Sprintf(eos(linebuf), " on level %d", t1->deathlev); */ // TODO DE
+		    Sprintf(eos(linebuf), " auf Level %d", t1->deathlev); /* EN Sprintf(eos(linebuf), " on level %d", t1->deathlev); */
 		if (t1->deathlev != t1->maxlvl)
 		    Sprintf(eos(linebuf), " [Max %d]", t1->maxlvl); /* EN Sprintf(eos(linebuf), " [max %d]", t1->maxlvl); */
 	    }
