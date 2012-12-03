@@ -18,7 +18,7 @@ STATIC_DCL boolean FDECL(landing_spot, (coord *, int, int));
 void
 rider_cant_reach()
 {
-     You("aren't skilled enough to reach from %s.", y_monnam(u.usteed)); /* EN You("aren't skilled enough to reach from %s.", y_monnam(u.usteed)); */ // TODO DE
+     You("VERB_SEIN noch zu ungelenk um das OBJECT KASUS_DATIV von %s aus zu tun.", y_monnam(u.usteed)); /* EN You("aren't skilled enough to reach from %s.", y_monnam(u.usteed)); */
 }
 
 /*** Putting the saddle on ***/

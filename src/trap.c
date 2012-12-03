@@ -2351,10 +2351,10 @@ long hmask, emask;     /* might cancel timeout */
 	if(!Flying) {
 		if (!u.uswallow && u.ustuck) {
 			if (sticks(youmonst.data))
-				You("aren't able to maintain your hold on %s.", /* EN You("aren't able to maintain your hold on %s.", */ // TODO DE
+				You("VERB_KOENNEN OBJECT %s nicht mehr festhalten.", /* EN You("aren't able to maintain your hold on %s.", */
 					mon_nam(u.ustuck));
 			else
-				pline("Startled, %s can no longer hold you!", /* EN pline("Startled, %s can no longer hold you!", */ // TODO DE
+				pline("SUBJECT Vor Schreck VERB_LASSEN %s OBJECT PRONOMEN_PERSONAL los!", /* EN pline("Startled, %s can no longer hold you!", */
 					mon_nam(u.ustuck));
 			u.ustuck = 0;
 		}
@@ -2878,9 +2878,9 @@ drown()
 	if (inpool_ok) return(FALSE);
 
 	if ((i = number_leashed()) > 0) {
-		pline_The("leash%s slip%s loose.", /* EN pline_The("leash%s slip%s loose.", */ // TODO DE
-			(i > 1) ? "es" : "",
-			(i > 1) ? "" : "s");
+		pline_The("NOUN_LEASH%s VERB_LOESEN sich.", /* EN pline_The("leash%s slip%s loose.", */
+			(i > 1) ? "s" : "" /* EN (i > 1) ? "es" : "", */
+			); /* EN (i > 1) ? "" : "s"); */
 		unleash_all();
 	}
 
@@ -3001,7 +3001,7 @@ int
 dountrap()	/* disarm a trap */
 {
 	if (near_capacity() >= HVY_ENCUMBER) {
-	    pline("You're too strained to do that."); /* EN pline("You're too strained to do that."); */ // TODO DE
+	    pline("SUBJECT PRONOMEN_PERSONAL VERB_SEIN zu überladen um das zu tun."); /* EN pline("You're too strained to do that."); */
 	    return 0;
 	}
 	if ((nohands(youmonst.data) && !webmaker(youmonst.data)) || !youmonst.data->mmove) {
@@ -3130,7 +3130,7 @@ boolean force_failure;
 	if (!can_reach_floor()) {
 #ifdef STEED
 		if (u.usteed && P_SKILL(P_RIDING) < P_BASIC)
-			You("aren't skilled enough to reach from %s.", /* EN You("aren't skilled enough to reach from %s.", */ // TODO DE
+			You("VERB_SEIN noch zu ungelenk um das OBJECT KASUS_DATIV von %s aus zu tun.", /* EN You("aren't skilled enough to reach from %s.", */
 				mon_nam(u.usteed));
 		else
 #endif
@@ -3468,8 +3468,8 @@ boolean force;
 		}
 		if (deal_with_floor_trap) {
 		    if (u.utrap) {
-			You("cannot deal with %s while trapped%s!", the_trap, /* EN You("cannot deal with %s while trapped%s!", the_trap, */ // TODO DE
-				(x == u.ux && y == u.uy) ? " in it" : ""); /* EN (x == u.ux && y == u.uy) ? " in it" : ""); */ // TODO DE
+			You("VERB_KOENNEN OBJECT PRONOMEN_PERSONAL nicht NEUES_OBJECT OBJECT um %s kümmern, NEUER_SATZ SUBJECT_IM_SATZ solange PRONOMEN_PERSONAL%s gefangen VERB_SEIN!", the_trap, /* EN You("cannot deal with %s while trapped%s!", the_trap, */
+				(x == u.ux && y == u.uy) ? " darin" : ""); /* EN (x == u.ux && y == u.uy) ? " in it" : ""); */
 			return 1;
 		    }
 		    switch(ttmp->ttyp) {
@@ -3514,7 +3514,7 @@ boolean force;
 		    }
 #ifdef STEED
 		    if (u.usteed && P_SKILL(P_RIDING) < P_BASIC) {
-			You("aren't skilled enough to reach from %s.", /* EN You("aren't skilled enough to reach from %s.", */ // TODO DE
+			You("VERB_SEIN noch zu ungelenk um das OBJECT KASUS_DATIV von %s aus zu tun.", /* EN You("aren't skilled enough to reach from %s.", */
 				mon_nam(u.usteed));
 			return(0);
 		    }

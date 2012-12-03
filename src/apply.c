@@ -2042,7 +2042,7 @@ struct obj *otmp;
 
 	    if (Fumbling || otmp->cursed) chance = (rnl(10) > 3);
 	    else  chance = (rnl(10) > 5);
-	    You("aren't very skilled at reaching from %s.", /* EN You("aren't very skilled at reaching from %s.", */ // TODO DE
+	    You("VERB_SEIN nicht sehr gut darin, das OBJECT KASUS_DATIV von %s aus zu tun.", /* EN You("aren't very skilled at reaching from %s.", */
 		mon_nam(u.usteed));
 	    Sprintf(buf, "Mit KASUS_DATIV PRONOMEN_POSSESSIV NOUN_VERSUCH, NEUES_OBJECT OBJECT %s scharf zu stellen, fortfahren?", /* EN Sprintf(buf, "Continue your attempt to set %s?", */
 		the(defsyms[trap_to_defsym(what_trap(ttyp))].explanation));

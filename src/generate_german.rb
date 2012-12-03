@@ -855,6 +855,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_FAHREN","fahren"),
 		Verb.verb("VERB_FANGEN", "fangen"),
 		Verb.verb("VERB_FEHLEN","fehlen"),
+		Verb.verb("VERB_FESTHALTEN","halten","fest"),
 		Verb.verb("VERB_FESTSAUGEN","saugen","fest"),
 		Verb.verb("VERB_FINDEN","finden"),
 		Verb.verb("VERB_FLACKERN","flackern"),

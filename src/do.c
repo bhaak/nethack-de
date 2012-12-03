@@ -1549,7 +1549,7 @@ struct obj *corpse;
 	    case OBJ_MINVENT:		/* probably a nymph's */
 		if (cansee(mtmp->mx, mtmp->my)) {
 		    if (canseemon(mcarry))
-			pline("Startled, %s drops %s as it revives!", /* EN pline("Startled, %s drops %s as it revives!", */ // TODO DE
+			pline("SUBJECT Vor Schreck VERB_LASSEN %s OBJECT %s fallen, als er wiederaufersteht!", /* EN pline("Startled, %s drops %s as it revives!", */
 			      mon_nam(mcarry), an(cname));
 		    else
 			pline("SUBJECT %s taucht plötzlich auf!", chewed ?  /* EN pline("%s suddenly appears!", chewed ? */

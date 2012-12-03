@@ -601,16 +601,17 @@ register int fd;
 # else
 	clear_nhwindow(WIN_MAP);
 # endif
+	abort();
 	clear_nhwindow(WIN_MESSAGE);
-	You("return to level %d in %s%s.", /* EN You("return to level %d in %s%s.", */ // TODO DE
+	You("VERB_KEHREN zum Level %d in %s%s.", /* EN You("return to level %d in %s%s.", */
 		depth(&u.uz), dungeons[u.uz.dnum].dname,
-		flags.debug ? " while in debug mode" : /* EN flags.debug ? " while in debug mode" : */ // TODO DE
-		flags.explore ? " while in explore mode" : ""); /* EN flags.explore ? " while in explore mode" : ""); */ // TODO DE
+		flags.debug ? " im Debugmodus" : /* EN flags.debug ? " while in debug mode" : */
+		flags.explore ? " im Erkundungsmodus" : ""); /* EN flags.explore ? " while in explore mode" : ""); */
 	curs(WIN_MAP, 1, 1);
 	dotcnt = 0;
 	dotrow = 2;
 	if (strncmpi("X11", windowprocs.name, 3))
-    	  putstr(WIN_MAP, 0, "Restoring:"); /* EN putstr(WIN_MAP, 0, "Restoring:"); */ // TODO DE
+    	  putstr(WIN_MAP, 0, "Laden:"); /* EN putstr(WIN_MAP, 0, "Restoring:"); */
 #endif
 	while(1) {
 #ifdef ZEROCOMP

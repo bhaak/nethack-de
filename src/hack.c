@@ -271,7 +271,7 @@ moverock()
 	    if (throws_rocks(youmonst.data)) {
 #ifdef STEED
 		if (u.usteed && P_SKILL(P_RIDING) < P_BASIC) {
-		    You("aren't skilled enough to %s %s from %s.", /* EN You("aren't skilled enough to %s %s from %s.", */ // TODO DE
+		    You("VERB_SEIN noch zu ungelenk um OBJECT %2$s NEUES_OBJECT OBJECT KASUS_DATIV von %3$s aus %1$s.", /* EN You("aren't skilled enough to %s %s from %s.", */
 			(flags.pickup && !In_sokoban(&u.uz))
 			    ? "aufzuheben" : "beiseitezuschieben", /* EN ? "pick up" : "push aside", */
 			the(xname(otmp)), y_monnam(u.usteed));
@@ -989,7 +989,7 @@ domove()
 			/* When polymorphed into a sticking monster,
 			 * u.ustuck means it's stuck to you, not you to it.
 			 */
-			You("VERB_LASSEN %s los.", mon_nam(u.ustuck)); /* EN You("release %s.", mon_nam(u.ustuck)); */
+			You("VERB_LASSEN OBJECT %s los.", mon_nam(u.ustuck)); /* EN You("release %s.", mon_nam(u.ustuck)); */
 			u.ustuck = 0;
 		    } else {
 			/* If holder is asleep or paralyzed:
@@ -1163,7 +1163,7 @@ domove()
 			else
 #endif
 			Norep( (Hallucination && !rn2(5)) ?
-				"You've fallen, and you can't get up." : /* EN "You've fallen, and you can't get up." : */ // TODO DE
+				"Die Grube hält dich fest!" : /* EN "You've fallen, and you can't get up." : */
 				"SUBJECT PRONOMEN_PERSONAL VERB_STECKEN immer noch in einer Grube." ); /* EN "You are still in a pit." ); */
 		    }
 		} else if (u.utraptype == TT_LAVA) {
@@ -1761,8 +1761,8 @@ register boolean newlev;
 		    break;
 		case MORGUE:
 		    if(midnight()) {
-			const char *run = locomotion(youmonst.data, "Run"); /* EN const char *run = locomotion(youmonst.data, "Run"); */ // TODO DE
-			pline("SUBJECT MODIFIER_VERB_IMPERATIV %s away!  %s away!", run, run); /* EN pline("%s away!  %s away!", run, run); */ // TODO DE
+			const char *run = locomotion(youmonst.data, "VERB_LAUFEN"); /* EN const char *run = locomotion(youmonst.data, "Run"); */
+			pline("SUBJECT MODIFIER_VERB_IMPERATIV %s weg!  SUBJECT MODIFIER_VERB_IMPERATIV %s weg!", run, run); /* EN pline("%s away!  %s away!", run, run); */
 		    } else
 			You("VERB_HABEN ein ungutes Gefühl ..."); /* EN You("have an uncanny feeling..."); */
 		    break;
@@ -1887,7 +1887,7 @@ dopickup()
 	if (!can_reach_floor()) {
 #ifdef STEED
 		if (u.usteed && P_SKILL(P_RIDING) < P_BASIC)
-		    You("aren't skilled enough to reach from %s.", /* EN You("aren't skilled enough to reach from %s.", */ // TODO DE
+		    You("VERB_SEIN noch zu ungelenk um das OBJECT KASUS_DATIV von %s aus tun.", /* EN You("aren't skilled enough to reach from %s.", */
 			y_monnam(u.usteed));
 		else
 #endif
@@ -1903,7 +1903,7 @@ dopickup()
 		 */
 		if ((traphere->ttyp == PIT || traphere->ttyp == SPIKED_PIT) &&
 		     (!u.utrap || (u.utrap && u.utraptype != TT_PIT))) {
-			You("cannot reach the bottom of the pit."); /* EN You("cannot reach the bottom of the pit."); */ // TODO DE
+			You("VERB_KOENNEN den Grund der Grube nicht erreichen."); /* EN You("cannot reach the bottom of the pit."); */
 			return(0);
 		}
 	}

@@ -1029,10 +1029,13 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 #endif
 	    you_are(buf);
 	} else if (u.ustuck) {
-	    Sprintf(buf, "%s %s",
-		    (Upolyd && sticks(youmonst.data)) ? "holding" : "held by", /* EN (Upolyd && sticks(youmonst.data)) ? "holding" : "held by", */ // TODO DE
+	    Sprintf(buf, "%1$s %3$s%2$s SATZKLAMMER", /* EN Sprintf(buf, "%s %s", */
+		    (Upolyd && sticks(youmonst.data)) ? "VERB_FESTHALTEN OBJECT" : "VERB_WERDEN OBJECT KASUS_DATIV von ", /* EN (Upolyd && sticks(youmonst.data)) ? "holding" : "held by", */
+#ifdef GERMAN
+		    (Upolyd && sticks(youmonst.data)) ? "" : " festgehalten",
+#endif
 		    a_monnam(u.ustuck));
-	    you_are(buf);
+	    you(buf); /* EN you_are(buf); */
 	}
 
 	/*** Physical attributes ***/
