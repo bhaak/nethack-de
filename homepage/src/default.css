@@ -4,7 +4,7 @@ html, body {
 }
 
 a:link    { color: #5a5dff; } /* trankblau */
-a:visited { color: #0000ff; } /* wasserblau */
+a:visited { color: #0033ff; } /* aufgehelltes wasserblau */
 a:hover   { color: #ce00ce; } /* teleporterviolett */
 
 p {
@@ -78,7 +78,7 @@ p {
 	padding: 11px 10px 10px;
 	font-variant: small-caps;
 
-	color: #0000ff; /* wasserblau */
+	color: #0033ff; /* aufgehelltes wasserblau */
 	background-color: #131336; /* dunkles trankblau */
 	text-decoration: none;
 }
@@ -118,7 +118,7 @@ img {
 }
 
 .hellblau { color: #00cbce; }
-.wasserblau { color: #0000ff; }
+.wasserblau { color: #0033ff; } /* aufgehelltes wasserblau */
 .tuerbraun { color: #cecb00; }
 .trankblau { color: #5a5dff; }
 .edelsteinrot { color: #ce0000; }
