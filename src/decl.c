@@ -275,11 +275,12 @@ struct c_common_strings c_common_strings = {
 
 /* NOTE: the order of these words exactly corresponds to the
    order of oc_material values #define'd in objclass.h. */
+/* DE nur CLOTH, IRON und LEATHER werden wirklich gebraucht (in trap.c) */
 const char *materialnm[] = {
-	"mysterious", "liquid", "wax", "organic", "flesh", /* EN "mysterious", "liquid", "wax", "organic", "flesh", */ // TODO DE
-	"paper", "cloth", "leather", "wooden", "bone", "dragonhide", /* EN "paper", "cloth", "leather", "wooden", "bone", "dragonhide", */ // TODO DE
-	"iron", "metal", "copper", "silver", "gold", "platinum", "mithril", /* EN "iron", "metal", "copper", "silver", "gold", "platinum", "mithril", */ // TODO DE
-	"plastic", "glass", "gemstone", "stone" /* EN "plastic", "glass", "gemstone", "stone" */ // TODO DE
+	"ADJEKTIV_RAETSELHAFT", "ADJEKTIV_FLUESSIG", "ADJEKTIV_WAECHSERN", "ADJEKTIV_ORGANISCH", "ADJEKTIV_FLEISCHERN", /* EN "mysterious", "liquid", "wax", "organic", "flesh", */
+	"ADJEKTIV_PAPIEREN", "ADJEKTIV_STOFFIG", "ADJEKTIV_LEDERN", "ADJEKTIV_HOELZERN", "ADJEKTIV_KNOECHERN", "ADJEKTIV_DRACHENHAEUTIG", /* EN "paper", "cloth", "leather", "wooden", "bone", "dragonhide", */
+	"ADJEKTIV_EISERN", "ADJEKTIV_METALLEN", "ADJEKTIV_KUPFERN", "ADJEKTIV_SILBERN", "ADJEKTIV_GOLDEN", "ADJEKTIV_PLATINERN", "ADJEKTIV_MITHRILERN", /* EN "iron", "metal", "copper", "silver", "gold", "platinum", "mithril", */
+	"ADJEKTIV_KUNSTSTOFFIG", "ADJEKTIV_GLAESERN", "ADJEKTIV_EDELSTEINERN", "ADJEKTIV_STEINERN" /* EN "plastic", "glass", "gemstone", "stone" */
 };
 
 /* Vision */
