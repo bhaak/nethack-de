@@ -4303,10 +4303,8 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_GEWORFEN","geworfen"),
     dekliniere_adjektiv("ADJEKTIV_GIFTGETRAENKT","giftgetränkt"),
     dekliniere_adjektiv("ADJEKTIV_GIFTIG","giftig"),
-    dekliniere_adjektiv("ADJEKTIV_GLAESERN","gläsern"),
     dekliniere_adjektiv("ADJEKTIV_GLUEHEND","glühend"),
     dekliniere_adjektiv("ADJEKTIV_GNAEDIG", "gnädig"),
-    dekliniere_adjektiv("ADJEKTIV_GOLDEN","golden"),
     dekliniere_adjektiv("ADJEKTIV_GOTTLOS","gottlos"),
     dekliniere_adjektiv("ADJEKTIV_GREASED","gefettet"),
     dekliniere_adjektiv("ADJEKTIV_GROSS","groß"),
@@ -4333,7 +4331,6 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_KUPFERN", "kupfern"),
     dekliniere_adjektiv("ADJEKTIV_LATENT", "latent"),
     dekliniere_adjektiv("ADJEKTIV_LECKER","lecker"),
-    dekliniere_adjektiv("ADJEKTIV_LEDERN","ledern"),
     dekliniere_adjektiv("ADJEKTIV_LEER","leer"),
     dekliniere_adjektiv("ADJEKTIV_LEICHT","leicht"),
     dekliniere_adjektiv("ADJEKTIV_LETZT","letzt"),
@@ -4378,7 +4375,6 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_SCHWUNGVOLL", "schwungvoll"),
     dekliniere_adjektiv("ADJEKTIV_SELTSAM","seltsam"),
     dekliniere_adjektiv("ADJEKTIV_SIEDEND", "siedend"),
-    dekliniere_adjektiv("ADJEKTIV_SILBERN", "silbern"),
     dekliniere_adjektiv("ADJEKTIV_SOLCH","solch"),
     dekliniere_adjektiv("ADJEKTIV_SPEZIELL", "speziell"),
     dekliniere_adjektiv("ADJEKTIV_STATTLICH", "stattlich"),
@@ -4422,6 +4418,10 @@ def ausgabe_nouns
 
     dekliniere_adjektiv("ADJEKTIV_FARBE_BRAUN","braun"),
     dekliniere_adjektiv("ADJEKTIV_FARBE_DARK_RED","dunkelrot"),
+    dekliniere_adjektiv("ADJEKTIV_FARBE_GOLDEN","golden"),
+    dekliniere_adjektiv("ADJEKTIV_FARBE_SILBERN", "silbern"),
+    dekliniere_adjektiv("ADJEKTIV_FARBE_GLAESERN", "gläsern"),
+    dekliniere_adjektiv("ADJEKTIV_FARBE_LEDERN","ledern"),
 
     "",
   ].each { |n|
