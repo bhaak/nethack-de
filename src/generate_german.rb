@@ -4420,8 +4420,8 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_FARBE_DARK_RED","dunkelrot"),
     dekliniere_adjektiv("ADJEKTIV_FARBE_GOLDEN","golden"),
     dekliniere_adjektiv("ADJEKTIV_FARBE_SILBERN", "silbern"),
-    dekliniere_adjektiv("ADJEKTIV_FARBE_GLAESERN", "gläsern"),
-    dekliniere_adjektiv("ADJEKTIV_FARBE_LEDERN","ledern"),
+    dekliniere_adjektiv("ADJEKTIV_ART_GLAESERN", "gläsern"),
+    dekliniere_adjektiv("ADJEKTIV_ART_LEDERN","ledern"),
 
     "",
   ].each { |n|

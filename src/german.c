@@ -366,6 +366,7 @@ void german2meta(const char *input, char *output)
 			if (WISH_DEBUG) printf("2.5 ring_gefunden: %d wand_gefunden: %d potion_gefunden: %d spellbook_gefunden: %d scroll_gefunden:%d\n",
 			                      ring_gefunden, wand_gefunden, potion_gefunden, spellbook_gefunden, scroll_gefunden);
 			if ((strncmp("ADJEKTIV_SPE_", wort->typ, 13)==0) ||
+					(strncmp("ADJEKTIV_ART_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_POT_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_GEM_", wort->typ, 13)==0) ||
 					(strncmp("ADJEKTIV_WAND_", wort->typ, 14)==0) ||

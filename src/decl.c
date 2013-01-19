@@ -278,9 +278,9 @@ struct c_common_strings c_common_strings = {
 /* DE nur CLOTH, IRON und LEATHER werden wirklich gebraucht (in trap.c) */
 const char *materialnm[] = {
 	"ADJEKTIV_RAETSELHAFT", "ADJEKTIV_FLUESSIG", "ADJEKTIV_WAECHSERN", "ADJEKTIV_ORGANISCH", "ADJEKTIV_FLEISCHERN", /* EN "mysterious", "liquid", "wax", "organic", "flesh", */
-	"ADJEKTIV_PAPIEREN", "ADJEKTIV_STOFFIG", "ADJEKTIV_LEDERN", "ADJEKTIV_HOELZERN", "ADJEKTIV_KNOECHERN", "ADJEKTIV_DRACHENHAEUTIG", /* EN "paper", "cloth", "leather", "wooden", "bone", "dragonhide", */
-	"ADJEKTIV_EISERN", "ADJEKTIV_METALLEN", "ADJEKTIV_KUPFERN", "ADJEKTIV_SILBERN", "ADJEKTIV_GOLDEN", "ADJEKTIV_PLATINERN", "ADJEKTIV_MITHRILERN", /* EN "iron", "metal", "copper", "silver", "gold", "platinum", "mithril", */
-	"ADJEKTIV_KUNSTSTOFFIG", "ADJEKTIV_GLAESERN", "ADJEKTIV_EDELSTEINERN", "ADJEKTIV_STEINERN" /* EN "plastic", "glass", "gemstone", "stone" */
+	"ADJEKTIV_PAPIEREN", "ADJEKTIV_STOFFIG", "ADJEKTIV_ART_LEDERN", "ADJEKTIV_HOELZERN", "ADJEKTIV_KNOECHERN", "ADJEKTIV_DRACHENHAEUTIG", /* EN "paper", "cloth", "leather", "wooden", "bone", "dragonhide", */
+	"ADJEKTIV_EISERN", "ADJEKTIV_METALLEN", "ADJEKTIV_KUPFERN", "ADJEKTIV_FARBE_SILBERN", "ADJEKTIV_FARBE_GOLDEN", "ADJEKTIV_PLATINERN", "ADJEKTIV_MITHRILERN", /* EN "iron", "metal", "copper", "silver", "gold", "platinum", "mithril", */
+	"ADJEKTIV_KUNSTSTOFFIG", "ADJEKTIV_ART_GLAESERN", "ADJEKTIV_EDELSTEINERN", "ADJEKTIV_STEINERN" /* EN "plastic", "glass", "gemstone", "stone" */
 };
 
 /* Vision */

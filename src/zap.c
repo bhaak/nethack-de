@@ -1108,7 +1108,7 @@ create_polymon(obj, okind)
 	    break;
 	case LEATHER:
 	    pm_index = PM_LEATHER_GOLEM;
-	    material = "ADJEKTIV_LEDERN "; /* EN material = "leather "; */
+	    material = "ADJEKTIV_ART_LEDERN "; /* EN material = "leather "; */
 	    break;
 	case CLOTH:
 	    pm_index = PM_ROPE_GOLEM;
@@ -1120,11 +1120,11 @@ create_polymon(obj, okind)
 	    break;
 	case GOLD:
 	    pm_index = PM_GOLD_GOLEM;
-	    material = "ADJEKTIV_GOLDEN "; /* EN material = "gold "; */
+	    material = "ADJEKTIV_FARBE_GOLDEN "; /* EN material = "gold "; */
 	    break;
 	case GLASS:
 	    pm_index = PM_GLASS_GOLEM;
-	    material = "ADJEKTIV_GLAESERN "; /* EN material = "glassy "; */
+	    material = "ADJEKTIV_ART_GLAESERN "; /* EN material = "glassy "; */
 	    break;
 	case PAPER:
 	    pm_index = PM_PAPER_GOLEM;
