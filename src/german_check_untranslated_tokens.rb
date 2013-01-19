@@ -487,7 +487,9 @@ t = t.flatten.reject {|e|
   regexp.match(e)
 }
 
-#puts "Anzahl ", (t.flatten - translated).uniq.sort
 puts (t.flatten - translated).sort.uniq
-#puts "Anzahl ", t.flatten.uniq.length
-puts "Anzahl ", (t.flatten - translated).uniq.length
+
+untranslated_tokens = (t.flatten - translated).uniq.length
+puts untranslated_tokens
+
+exit untranslated_tokens
