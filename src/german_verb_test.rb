@@ -1,19 +1,10 @@
+#!/usr/bin/env ruby
+# encoding: iso-8859-1
 
-require 'test/unit' 
-require 'german_verb' 
-
-# from 'watir/testUnitAddons'
-module Test::Unit::Assertions
-	def assert_false(boolean, message=nil)
-		_wrap_assertion do
-			assert_block("assert should not be called with a block.") { !block_given? }
-			assert_block(build_message(message, "<?> is not false.", boolean)) { !boolean }
-		end
-	end
-end # module test
+require 'test/unit'
+require './german_verb'
 
 class TestVerb < Test::Unit::TestCase
-  @output_levels = Test::Unit::UI::VERBOSE
 
   def testPrintVerb
     verb = Verb.verb("","empfangen")
@@ -660,8 +651,8 @@ class TestVerb < Test::Unit::TestCase
   end
 
   def testEErweiterung
-    assert_false(Verb.verb("", "sein").e_erweiterung)
-    assert_false(Verb.verb("", "haben").e_erweiterung)
+    assert !(Verb.verb("", "sein").e_erweiterung)
+    assert !(Verb.verb("", "haben").e_erweiterung)
     assert(Verb.verb("", "öffnen").e_erweiterung)
     assert(Verb.verb("", "wappnen").e_erweiterung)
     assert(Verb.verb("", "atmen").e_erweiterung)

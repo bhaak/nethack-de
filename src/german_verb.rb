@@ -353,6 +353,36 @@ class VerbWerden < VerbUnregelmaessig
   end
 end
 
+class VerbTun < VerbUnregelmaessig
+  def initialize()
+    super("tun", "tat", "getan")
+    @infinitiv = "tun"
+  end
+
+  def imperativ
+    if singular? then
+      return "tu"
+    else
+      return "tut"
+    end
+  end
+
+  def partizip_praesens
+    return "tuend"
+  end
+
+  def form
+    if praesens? && indikativ? then
+      return ["tue", "tust", "tut", "tun", "tut", "tun"][personNummer]
+    elsif praesens? && konjunktiv? then
+      return ["tue", "tuest", "tue", "tuen", "tuet", "tuen"][personNummer]
+    elsif praeteritum? && indikativ? then
+      return ["tat", "tatest", "tat", "taten", "tatet", "taten"][personNummer]
+    end
+    return super
+  end
+end
+
 class VerbModal < Verb
   def form
     if praesens? && indikativ? && singular? then
@@ -451,6 +481,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "werden" then   v = VerbWerden.new
   when "sein" then     v = VerbSein.new
   when "haben" then    v = VerbHaben.new
+  when "tun" then      v = VerbTun.new
   when "denken" then   v = VerbSchwachUnregelmaessig.new("denken", "dachte", "gedacht")
   when "gehen" then    v = VerbUnregelmaessig.new("gehen", "ging", "gegangen")
   when "heißen" then   v = VerbUnregelmaessig.new("heißen", "hieß", "geheißen")
