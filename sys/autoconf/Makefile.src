@@ -427,6 +427,8 @@ tags: $(CSOURCES)
 clean:
 	-rm -f *.o nhwin.a *.dll $(HACK_H) $(CONFIG_H)
 
+distclean: spotless
+
 spotless: clean
 	-rm -f a.out core $(GAME) Sys* @EXTRA_UNSHARE@
 	-rm -f ../include/date.h ../include/onames.h ../include/pm.h
