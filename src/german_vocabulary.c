@@ -10168,6 +10168,9 @@ Although not referring to the exactly same rank. */
   {"Strahl", "NOUN_BEAM", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Strahlen", "NOUN_BEAMs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Bedeckung", "NOUN_BEDECKUNG", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Bedeckungen", "NOUN_BEDECKUNGs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Befehles", "NOUN_BEFEHL", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Befehl", "NOUN_BEFEHL", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Befehle", "NOUN_BEFEHLs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -10184,10 +10187,10 @@ Although not referring to the exactly same rank. */
   {"Belohnung", "NOUN_BELOHNUNG", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Belohnungen", "NOUN_BELOHNUNGs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
-  {"Bereiches", "NOUN_BEREICH", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
-  {"Bereich", "NOUN_BEREICH", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
-  {"Bereiche", "NOUN_BEREICHs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
-  {"Bereichen", "NOUN_BEREICHs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Bereiches", "NOUN_BEREICH", "s", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Bereich", "NOUN_BEREICH", "s", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Bereiche", "NOUN_BEREICHs", "s", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Bereichen", "NOUN_BEREICHs", "s", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Berührung", "NOUN_BERUEHRUNG", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Berührungen", "NOUN_BERUEHRUNGs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -10218,6 +10221,11 @@ Although not referring to the exactly same rank. */
 
   {"Klinge", "NOUN_BLADE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Klingen", "NOUN_BLADEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Blitzgewitters", "NOUN_BLITZGEWITTER", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Blitzgewitter", "NOUN_BLITZGEWITTER", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Blitzgewitter", "NOUN_BLITZGEWITTERs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Blitzgewittern", "NOUN_BLITZGEWITTERs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Buches", "NOUN_BOOK", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Buch", "NOUN_BOOK", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -10289,6 +10297,11 @@ Although not referring to the exactly same rank. */
   {"Einkäufe", "NOUN_EINKAUFs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Einkäufen", "NOUN_EINKAUFs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Eissturmes", "NOUN_EISSTURM", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Eissturm", "NOUN_EISSTURM", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Eisstürme", "NOUN_EISSTURMs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Eisstürmen", "NOUN_EISSTURMs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Ellbogens", "NOUN_ELLBOGEN", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Ellbogen", "NOUN_ELLBOGEN", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Ellbogen", "NOUN_ELLBOGENs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -10328,6 +10341,9 @@ Although not referring to the exactly same rank. */
   {"Fell", "NOUN_FELL", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Felle", "NOUN_FELLs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Fellen", "NOUN_FELLs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Felsen", "NOUN_FELSEN", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Felsen", "NOUN_FELSENs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Fläschchens", "NOUN_FLAESCHCHEN", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Fläschchen", "NOUN_FLAESCHCHEN", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -10551,10 +10567,10 @@ Although not referring to the exactly same rank. */
   {"Hilfe", "NOUN_HILFE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Hilfen", "NOUN_HILFEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
-  {"Hirnareals", "NOUN_HIRNAREAL", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
-  {"Hirnareal", "NOUN_HIRNAREAL", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
-  {"Hirnareale", "NOUN_HIRNAREALs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
-  {"Hirnarealen", "NOUN_HIRNAREALs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Hirnareals", "NOUN_HIRNAREAL", "s", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Hirnareal", "NOUN_HIRNAREAL", "s", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Hirnareale", "NOUN_HIRNAREALs", "s", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Hirnarealen", "NOUN_HIRNAREALs", "s", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Hornhaut", "NOUN_HORNHAUT", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Hornhäute", "NOUN_HORNHAUTs", "", genitiv|nominativ|akkusativ, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -10983,6 +10999,9 @@ Although not referring to the exactly same rank. */
   {"Säbel", "NOUN_SABERs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Säbeln", "NOUN_SABERs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Säurewolke", "NOUN_SAEUREWOLKE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Säurewolken", "NOUN_SAEUREWOLKEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Schuppe", "NOUN_SCALES", "n", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Schuppen", "NOUN_SCALESs", "n", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
@@ -11051,8 +11070,8 @@ Although not referring to the exactly same rank. */
   {"Sehnerv", "NOUN_SEHNERV", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Sehnerven", "NOUN_SEHNERVs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
-  {"Seite", "NOUN_SEITE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
-  {"Seiten", "NOUN_SEITEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Seite", "NOUN_SEITE", "n", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Seiten", "NOUN_SEITEs", "n", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Selbstgenozides", "NOUN_SELF_GENOCIDE", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Selbstgenozid", "NOUN_SELF_GENOCIDE", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},

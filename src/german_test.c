@@ -1258,6 +1258,9 @@ START_TEST (test_fugenwort) {
 	check_fugenwort("NOUN_ANT", "Ameisen");
 	check_fugenwort("NOUN_DRAGON", "Drachen");
 	check_fugenwort("NOUN_WORM", "Wurm");
+
+	check_fugenwort("NOUN_SEITE", "Seiten");
+	check_fugenwort("Ober-NOUN_SEITE", "Oberseiten");
 } END_TEST
 
 START_TEST (test_infinitive) {

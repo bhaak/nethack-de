@@ -1570,14 +1570,29 @@ const char *noun_token;
 }
 
 char fugenwort_tmp[TBUFSZ];
-/* Liefert für eine Kompositumbildung bearbeitete Substantiv zu token zurück. */
+/* Liefert das für eine Kompositumbildung umgewandelte Substantiv zu token zurück.
+ *
+ * Beispiel: fugenwort("NOUN_CROCODILE") liefert "Krokodils" (z.B. fuer
+ * Krokodilstraenen). */
 char*
 fugenwort(token)
 const char *token;
 {
+	/* Suche Bindestrich, fuer token wie "Ober-NOUN_SEITE". */
+	char *pos = strstr(token, "-");
+	if (pos == NULL) {
+		/* Kein Bindestrich in token gefunden */
+		pos = token;
+	} else {
+		/* Bindestrich ueberspringen, der Rest ist ein
+		 * vollstaendiges Token. */
+		pos++;
+	}
+	/* Rueckgabestring zusammenbauen */
 	strcpy(fugenwort_tmp, "");
-	append(fugenwort_tmp, get_wort(token, nominativ, maskulin|feminin|neutrum, n_singular, ohne));
-	append(fugenwort_tmp, get_fugenelement(token));
+	append(fugenwort_tmp, german(token));
+	/* Fugenelement fuer das Token suchen */
+	append(fugenwort_tmp, get_fugenelement(pos));
 
 	return fugenwort_tmp;
 }
