@@ -119,7 +119,7 @@ lookat(x, y, buf, monbuf)
 			(how & 2) ? "Telepathie" : "", /* EN (how & 2) ? "telepathy" : "", */
 			/* add comma if detect and (infrav or telep or both) */
 			((how & 7) > 4) ? ", " : "",
-			(how & 4) ? "monster detection" : ""); /* EN (how & 4) ? "monster detection" : ""); */ // TODO DE
+			(how & 4) ? german("NOUN_POT_MONSTER_DETECTION") : ""); /* EN (how & 4) ? "monster detection" : ""); */
 	}
     } else if (u.uswallow) {
 	/* all locations when swallowed other than the hero are the monster */
@@ -149,7 +149,7 @@ lookat(x, y, buf, monbuf)
 		    name);
 	    if (u.ustuck == mtmp)
 		Strcat(buf, (Upolyd && sticks(youmonst.data)) ?
-			", being held" : ", holding you"); /* EN ", being held" : ", holding you"); */ // TODO DE
+			", wird festgehalten" : german(", hält KASUS_AKKUSATIV PRONOMEN_PERSONAL fest")); /* EN ", being held" : ", holding you"); */
 	    if (mtmp->mleashed)
 		Strcat(buf, ", leashed to you"); /* EN Strcat(buf, ", leashed to you"); */ // TODO DE
 
@@ -219,7 +219,7 @@ lookat(x, y, buf, monbuf)
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
 		    if (Detect_monsters) {
-			Strcat(monbuf, "monster detection"); /* EN Strcat(monbuf, "monster detection"); */ // TODO DE
+			Strcat(monbuf, german("NOUN_POT_MONSTER_DETECTION")); /* EN Strcat(monbuf, "monster detection"); */
 			if (ways_seen-- > 1) Strcat(monbuf, ", ");
 		    }
 		    if (MATCH_WARN_OF_MON(mtmp)) {
@@ -750,7 +750,7 @@ do_look(quick)
 		checkfile(temp_buf, pm, FALSE, (boolean)(ans == LOOK_VERBOSE));
 	    }
 	} else {
-	    pline("I've never heard of such things."); /* EN pline("I've never heard of such things."); */ // TODO DE
+	    pline("Ich habe noch nie von sowas gehört."); /* EN pline("I've never heard of such things."); */
 	}
 
     } while (from_screen && !quick && ans != LOOK_ONCE);

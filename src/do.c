@@ -809,9 +809,9 @@ dodown()
 	}
 	}
 	if(u.ustuck) {
-		You("VERB_SEIN %s und VERB_KOENNEN nicht runtergehen.", /* EN You("are %s, and cannot go down.", */
-			!u.uswallow ? "being held" : is_animal(u.ustuck->data) ?  /* EN !u.uswallow ? "being held" : is_animal(u.ustuck->data) ? */ // TODO DE
-			"verschluckt" : "verschlungen"); /* EN "swallowed" : "engulfed"); */
+		You("%s und VERB_KOENNEN nicht runtergehen.", /* EN You("are %s, and cannot go down.", */
+			!u.uswallow ? "VERB_WERDEN festgehalten" : is_animal(u.ustuck->data) ?  /* EN !u.uswallow ? "being held" : is_animal(u.ustuck->data) ? */
+			"VERB_SEIN verschluckt" : "VERB_SEIN verschlungen"); /* EN "swallowed" : "engulfed"); */
 		return(1);
 	}
 	if (on_level(&valley_level, &u.uz) && !u.uevent.gehennom_entered) {
@@ -863,9 +863,9 @@ doup()
 	} else
 #endif
 	if(u.ustuck) {
-		You("VERB_SEIN %s und VERB_KOENNEN nicht hinaufgehen.", /* EN You("are %s, and cannot go up.", */
-			!u.uswallow ? "being held" : is_animal(u.ustuck->data) ?  /* EN !u.uswallow ? "being held" : is_animal(u.ustuck->data) ? */ // TODO DE
-			"verschluckt" : "verschlungen"); /* EN "swallowed" : "engulfed"); */
+		You("%s und VERB_KOENNEN nicht hinaufgehen.", /* EN You("are %s, and cannot go up.", */
+			!u.uswallow ? "VERB_WERDEN festgehalten" : is_animal(u.ustuck->data) ?  /* EN !u.uswallow ? "being held" : is_animal(u.ustuck->data) ? */
+			"VERB_SEIN verschluckt" : "VERB_SEIN verschlungen"); /* EN "swallowed" : "engulfed"); */
 		return(1);
 	}
 	if(near_capacity() > SLT_ENCUMBER) {

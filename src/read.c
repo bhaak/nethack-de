@@ -732,7 +732,7 @@ register struct obj	*sobj;
 		     (!Blind && !same_color) ? " " : nul,
 		     (Blind || same_color) ? nul :
 			hcolor(sobj->cursed ? NH_BLACK : NH_SILVER),
-		     otense(otmp, "VERB_EVAPORATE")); /* EN otense(otmp, "evaporate")); */
+		     otense(otmp, "VERB_DEMATERIALISIEREN")); /* EN otense(otmp, "evaporate")); */
 			if(is_cloak(otmp)) (void) Cloak_off();
 			if(is_boots(otmp)) (void) Boots_off();
 			if(is_helmet(otmp)) (void) Helmet_off();

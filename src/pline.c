@@ -458,11 +458,11 @@ register struct monst *mtmp;
 	if (mtmp->mundetected)	  Strcat(info, ", verborgen"); /* EN if (mtmp->mundetected)	  Strcat(info, ", concealed"); */
 	if (mtmp->minvis)	  Strcat(info, ", unsichtbar"); /* EN if (mtmp->minvis)	  Strcat(info, ", invisible"); */
 	if (mtmp == u.ustuck)	  Strcat(info, 
-			(sticks(youmonst.data)) ? ", held by you" : /* EN (sticks(youmonst.data)) ? ", held by you" : */ // TODO DE
+			(sticks(youmonst.data)) ? german(", von KASUS_DATIV PRONOMEN_PERSONAL festgehalten") : /* EN (sticks(youmonst.data)) ? ", held by you" : */
 				u.uswallow ? (is_animal(u.ustuck->data) ?
 				", swallowed you" : /* EN ", swallowed you" : */ // TODO DE
 				", engulfed you") : /* EN ", engulfed you") : */ // TODO DE
-				", holding you"); /* EN ", holding you"); */ // TODO DE
+				german(", hält KASUS_AKKUSATIV PRONOMEN_PERSONAL fest")); /* EN ", holding you"); */
 #ifdef STEED
 	if (mtmp == u.usteed)	  Strcat(info, ", carrying you"); /* EN if (mtmp == u.usteed)	  Strcat(info, ", carrying you"); */ // TODO DE
 #endif
@@ -530,17 +530,23 @@ ustatusline()
 	}
 	if (Glib) {		Sprintf(buf, ", ADJEKTIV_FETTIG %s", /* EN if (Glib)		Sprintf(eos(info), ", slippery %s", */
 					makeplural(body_part(HAND))); Sprintf(eos(info), "%s", german(buf)); } /* EN makeplural(body_part(HAND))); */
-	if (u.utrap)		Strcat(info, ", trapped"); /* EN if (u.utrap)		Strcat(info, ", trapped"); */ // TODO DE
+	if (u.utrap)		Strcat(info, ", gefangen"); /* EN if (u.utrap)		Strcat(info, ", trapped"); */
 	if (Fast)		Strcat(info, Very_fast ?
 						", sehr schnell" : ", schnell"); /* EN ", very fast" : ", fast"); */
 	if (u.uundetected)	Strcat(info, ", verborgen"); /* EN if (u.uundetected)	Strcat(info, ", concealed"); */
 	if (Invis)		Strcat(info, ", unsichtbar"); /* EN if (Invis)		Strcat(info, ", invisible"); */
 	if (u.ustuck) {
 	    if (sticks(youmonst.data))
-		Strcat(info, ", holding "); /* EN Strcat(info, ", holding "); */ // TODO DE
+		Strcpy(buf, ", hält KASUS_AKKUSATIV "); /* EN Strcat(info, ", holding "); */
 	    else
-		Strcat(info, ", held by "); /* EN Strcat(info, ", held by "); */ // TODO DE
-	    Strcat(info, mon_nam(u.ustuck));
+		Strcpy(buf, ", wird KASUS_DATIV von "); /* EN Strcat(info, ", held by "); */
+	    Strcat(buf, mon_nam(u.ustuck)); /* EN Strcat(info, mon_nam(u.ustuck)); */
+#ifdef GERMAN
+	    if (!sticks(youmonst.data)) {
+		Strcat(buf, " festgehalten");
+	    }
+	    Strcat(info, german(buf));
+#endif
 	}
 
 	pline("Status von %s (%s%s):  Stufe %d  TP %d(%d)  RK %d%s.", /* EN pline("Status of %s (%s%s):  Level %d  HP %d(%d)  AC %d%s.", */

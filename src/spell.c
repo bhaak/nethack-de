@@ -561,7 +561,7 @@ getspell(spell_no)
 	    else Sprintf(lets, "a-zA-%c", 'A' + nspells - 27);
 
 	    for(;;)  {
-		Sprintf(qbuf, "Cast which spell? [%s ?]", lets); /* EN Sprintf(qbuf, "Cast which spell? [%s ?]", lets); */ // TODO DE
+		Sprintf(qbuf, "Welchen Zauberspruch wirken? [%s ?]", lets); /* EN Sprintf(qbuf, "Cast which spell? [%s ?]", lets); */
 		if ((ilet = yn_function(qbuf, (char *)0, '\0')) == '?')
 		    break;
 
@@ -576,7 +576,7 @@ getspell(spell_no)
 		    You("VERB_KENNEN OBJECT diesen Spruch nicht."); /* EN You("don't know that spell."); */
 	    }
 	}
-	return dospellmenu("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WAEHLEN den zu zaubernden Spruch", /* EN return dospellmenu("Choose which spell to cast", */ // TODO DE
+	return dospellmenu("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WAEHLEN den zu zaubernden Spruch", /* EN return dospellmenu("Choose which spell to cast", */
 			   SPELLMENU_CAST, spell_no);
 }
 
@@ -741,10 +741,10 @@ boolean atme;
 	energy = (spellev(spell) * 5);    /* 5 <= energy <= 35 */
 
 	if (u.uhunger <= 10 && spellid(spell) != SPE_DETECT_FOOD) {
-		You("are too hungry to cast that spell."); /* EN You("are too hungry to cast that spell."); */ // TODO DE
+		You("VERB_SEIN zu hungrig um diesen Zauberspruch zu wirken."); /* EN You("are too hungry to cast that spell."); */
 		return(0);
 	} else if (ACURR(A_STR) < 4)  {
-		You("lack the strength to cast spells."); /* EN You("lack the strength to cast spells."); */ // TODO DE
+		Dir("fehlt die Kraft um Zaubersprüche zu wirken."); /* EN You("lack the strength to cast spells."); */
 		return(0);
 	} else if(check_capacity(
 		"Your concentration falters while carrying so much stuff.")) { /* EN "Your concentration falters while carrying so much stuff.")) { */ // TODO DE
