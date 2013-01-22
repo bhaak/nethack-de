@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-# Copyright (c) 2008-2012 Patric Müller
+# Copyright (c) 2008-2013 Patric Müller
 # bhaak@gmx.net
 #
 # Released under the GNU GPL version 2 - http://www.gnu.org/copyleft/gpl.html
