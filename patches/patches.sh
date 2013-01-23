@@ -22,6 +22,7 @@ unnethack_book_of_the_dead_r1036.diff
 nh343-security-options-parsing.diff
 nh343-nao-c-menu.diff
 nh343-rare-crashes-bugfixes-v1.0.diff
+unnethack-hitpointbar.diff
 "
 
 NH_DIR=/tmp/patches_nethack$$

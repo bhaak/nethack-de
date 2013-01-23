@@ -105,6 +105,7 @@ static struct Bool_Opt
 	{"fullscreen", &iflags.wc2_fullscreen, FALSE, SET_IN_FILE},
 	{"help", &flags.help, TRUE, SET_IN_GAME},
 	{"hilite_pet",    &iflags.wc_hilite_pet, FALSE, SET_IN_GAME},	/*WC*/
+	{"hitpointbar", &iflags.hitpointbar, TRUE, SET_IN_GAME},
 #ifdef ASCIIGRAPH
 	{"IBMgraphics", &iflags.IBMgraphics, FALSE, SET_IN_GAME},
 #else
@@ -217,7 +218,7 @@ static struct Bool_Opt
 #ifdef WIN32CON
 	{"use_inverse",   &iflags.wc_inverse, TRUE, SET_IN_GAME},		/*WC*/
 #else
-	{"use_inverse",   &iflags.wc_inverse, FALSE, SET_IN_GAME},		/*WC*/
+	{"use_inverse",   &iflags.wc_inverse, TRUE, SET_IN_GAME},		/*WC*/
 #endif
 	{"verbose", &flags.verbose, TRUE, SET_IN_GAME},
 	{"wraptext", &iflags.wc2_wraptext, FALSE, SET_IN_GAME},
@@ -2732,6 +2733,8 @@ doset()
 	int indexoffset, startpass, endpass;
 	boolean setinitial = FALSE, fromfile = FALSE;
 	int biggest_name = 0;
+	boolean istty = !strncmpi(windowprocs.name, "tty", 3);
+	boolean ismswin = !strncmpi(windowprocs.name, "mswin", 5);
 
 	tmpwin = create_nhwindow(NHW_MENU);
 	start_menu(tmpwin);
@@ -2751,6 +2754,20 @@ doset()
 		    if (bool_p == &iflags.sanity_check && !wizard) continue;
 		    if (bool_p == &iflags.menu_tab_sep && !wizard) continue;
 #endif
+		    /* hide options that are useless in tty*/
+		    if (istty) {
+			    if (bool_p == &flags.perm_invent) continue;
+			    if (bool_p == &iflags.wc_popup_dialog) continue;
+		    } else {
+			    /* only implemented for tty */
+			    if (bool_p == &iflags.hitpointbar) continue;
+		    }
+		    if (ismswin) {
+			    if (bool_p == &iflags.use_inverse) continue;
+			    /* nobody would want to disable these in mswin */
+			    if (bool_p == &iflags.hilite_pet) continue;
+		    }
+
 		    if (is_wc_option(boolopt[i].name) &&
 			!wc_supported(boolopt[i].name)) continue;
 		    if (is_wc2_option(boolopt[i].name) &&

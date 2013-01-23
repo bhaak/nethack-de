@@ -74,33 +74,39 @@ void
 start_color_option(color_option)
 struct color_option color_option;
 {
+#ifdef TTY_GRAPHICS
 	int i;
 	if (color_option.color != NO_COLOR)
 		term_start_color(color_option.color);
 	for (i = 0; (1 << i) <= color_option.attr_bits; ++i)
 		if (i != ATR_NONE && color_option.attr_bits & (1 << i))
 			term_start_attr(i);
+#endif  /* TTY_GRAPHICS */
 }
 
 void
 end_color_option(color_option)
 struct color_option color_option;
 {
+#ifdef TTY_GRAPHICS
 	int i;
 	if (color_option.color != NO_COLOR)
 		term_end_color();
 	for (i = 0; (1 << i) <= color_option.attr_bits; ++i)
 		if (i != ATR_NONE && color_option.attr_bits & (1 << i))
 			term_end_attr(i);
+#endif  /* TTY_GRAPHICS */
 }
 
+static
 void
-apply_color_option(color_option, newbot2)
+apply_color_option(color_option, newbot2, statusline)
 struct color_option color_option;
 const char *newbot2;
+int statusline; /* apply color on this statusline: 1 or 2 */
 {
-	if (!iflags.use_status_colors) return;
-	curs(WIN_STATUS, 1, 1);
+	if (!iflags.use_status_colors || !iflags.use_color) return;
+	curs(WIN_STATUS, 1, statusline-1);
 	start_color_option(color_option);
 	putstr(WIN_STATUS, 0, newbot2);
 	end_color_option(color_option);
@@ -282,14 +288,26 @@ STATIC_OVL void
 bot1()
 {
 	char newbot1[MAXCO];
-	register char *nb;
-	register int i,j;
+	char *nb;
+	int i=0,j;
 #if defined(STATUS_COLORS) && defined(TEXTCOLOR)
 	int save_botlx = flags.botlx;
 #endif
 
-	Strcpy(newbot1, plname);
-	if('a' <= newbot1[0] && newbot1[0] <= 'z') newbot1[0] += 'A'-'a';
+	Strcpy(newbot1, "");
+#if defined(STATUS_COLORS) && defined(TEXTCOLOR)
+	if (iflags.hitpointbar) {
+		flags.botlx = 0;
+		curs(WIN_STATUS, 1, 0);
+		putstr(WIN_STATUS, 0, newbot1);
+		Strcat(newbot1, "[");
+		i = 1; /* don't overwrite the string in front */
+		curs(WIN_STATUS, 1, 0);
+		putstr(WIN_STATUS, 0, newbot1);
+	}
+#endif
+	Strcat(newbot1, plname);
+	if('a' <= newbot1[i] && newbot1[i] <= 'z') newbot1[i] += 'A'-'a';
 	newbot1[10] = 0;
 	Sprintf(nb = eos(newbot1)," ARTIKEL_BESTIMMTER "); /* EN Sprintf(nb = eos(newbot1)," the "); */
 
@@ -307,23 +325,52 @@ bot1()
 		}
 		Sprintf(nb = eos(nb), mbot);
 #else
-		Sprintf(nb = eos(nb), mbot);
+		Sprintf(nb = eos(nb), "%s", mbot);
 		Strcpy(newbot1, german(newbot1));
 		nb = eos(newbot1);
 #endif
 	} else
-		Sprintf(nb = eos(nb), rank());
+		Sprintf(nb = eos(nb), "%s", rank());
 #ifdef GERMAN
 		Strcpy(newbot1, german(newbot1));
 		nb = eos(newbot1);
 #endif
 
+#if defined(STATUS_COLORS) && defined(TEXTCOLOR)
+	if (iflags.hitpointbar) {
+		int bar_length = strlen(newbot1)-1;
+		char tmp[MAXCO];
+		char *p = tmp;
+		/* filledbar >= 0 and < MAXCO */
+		int hp = (uhp() < 0) ? 0 : uhp();
+		int filledbar = hp * bar_length / uhpmax();
+		if (filledbar >= MAXCO) { filledbar = MAXCO-1; }
+		Strcpy(tmp, newbot1);
+		p++;
+
+		/* draw hp bar */
+		if (iflags.use_inverse) term_start_attr(ATR_INVERSE);
+		p[filledbar] = '\0';
+		if (iflags.use_color) {
+			/* draw in color mode */
+			apply_color_option(percentage_color_of(uhp(), uhpmax(), hp_colors), tmp, 1);
+		} else {
+			/* draw in inverse mode */
+			curs(WIN_STATUS, 1, 0);
+			putstr(WIN_STATUS, 0, tmp);
+		}
+		term_end_color();
+		if (iflags.use_inverse) term_end_attr(ATR_INVERSE);
+
+		Strcat(newbot1, "]");
+	}
+#endif
+
 	Sprintf(nb = eos(nb),"  ");
 	i = mrank_sz; /* */ /* EN i = mrank_sz + 15; */
 	j = (nb + 2) - newbot1; /* aka strlen(newbot1) but less computation */
-	// printf("newbot1: %s- i: %d; j: %d", newbot1, i, j); // REMOVE ME
 	if((i - j) > 0)
-		Sprintf(nb = eos(nb),"%*s", i-j, "#");	/* pad with spaces */ // REMOVE ME  d.h. -> #
+		Sprintf(nb = eos(nb),"%*s", i-j, " ");	/* pad with spaces */
 	if (ACURR(A_STR) > 18) {
 		if (ACURR(A_STR) > STR18(100))
 		    Sprintf(nb = eos(nb),"St:%2d ",ACURR(A_STR)-100);
@@ -344,6 +391,7 @@ bot1()
 #endif
 	curs(WIN_STATUS, 1, 0);
 	putstr(WIN_STATUS, 0, newbot1);
+	flags.botlx = save_botlx;
 }
 
 /* provide the name of the current level for display by various ports */
@@ -400,7 +448,7 @@ bot2()
 	flags.botlx = 0;
 
 	Sprintf(nb = eos(nb), "%d(%d)", hp, hpmax);
-	apply_color_option(percentage_color_of(hp, hpmax, hp_colors), newbot2);
+	apply_color_option(percentage_color_of(hp, hpmax, hp_colors), newbot2, 2);
 #else
 	Sprintf(nb = eos(nb), " HP:%d(%d)", hp, hpmax);
 #endif
@@ -410,7 +458,7 @@ bot2()
 	putstr(WIN_STATUS, 0, newbot2);
 
 	Sprintf(nb = eos(nb), "%d(%d)", u.uen, u.uenmax);
-	apply_color_option(percentage_color_of(u.uen, u.uenmax, pw_colors), newbot2);
+	apply_color_option(percentage_color_of(u.uen, u.uenmax, pw_colors), newbot2, 2);
 #else
 	Sprintf(nb = eos(nb), " Pw:%d(%d)", u.uen, u.uenmax);
 #endif
@@ -493,9 +541,7 @@ bot2()
 #endif
 	curs(WIN_STATUS, 1, 1);
 	putstr(WIN_STATUS, 0, newbot2);
-#ifdef STATUS_COLORS
 	flags.botlx = save_botlx;
-#endif
 }
 
 void
