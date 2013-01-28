@@ -1,0 +1,148 @@
+Index: src/objnam.c
+===================================================================
+--- a/src/objnam.c	(revision 1130)
++++ b/src/objnam.c	(working copy)
+@@ -597,9 +597,10 @@
+ 		       is_flammable(obj) ? "ADJEKTIV_FIREPROOF " : ""); /* EN is_flammable(obj) ? "fireproof " : ""); */
+ }
+ 
+-char *
+-doname(obj)
++static char *
++doname_base(obj, with_price)
+ register struct obj *obj;
++boolean with_price;
+ {
+ 	boolean ispoisoned = FALSE;
+ 	char prefix[PREFIX];
+@@ -821,6 +822,11 @@
+ 			quotedprice += contained_cost(obj, shkp, 0L, FALSE, TRUE);
+ 		Sprintf(eos(bp), " (unbezahlt, %ld %s)", /* EN Sprintf(eos(bp), " (unpaid, %ld %s)", */
+ 			quotedprice, currency(quotedprice));
++	} else if (with_price) {
++		long price = get_cost_of_shop_item(obj);
++		if (price > 0) {
++			Sprintf(eos(bp), " (%ld %s)", price, currency(price));
++		}
+ 	}
+ #ifndef GERMAN
+ 	if (!strncmp(prefix, "a ", 2) &&
+@@ -840,6 +846,22 @@
+ #endif /* OVL0 */
+ #ifdef OVLB
+ 
++/** Wrapper function for vanilla behaviour. */
++char *
++doname(obj)
++register struct obj *obj;
++{
++	return doname_base(obj, FALSE);
++}
++
++/** Name of object including price. */
++char *
++doname_with_price(obj)
++register struct obj *obj;
++{
++	return doname_base(obj, TRUE);
++}
++
+ /* used from invent.c */
+ boolean
+ not_fully_identified(otmp)
+Index: src/shk.c
+===================================================================
+--- a/src/shk.c	(revision 1130)
++++ b/src/shk.c	(working copy)
+@@ -1863,6 +1863,36 @@
+ #endif /*OVLB*/
+ #ifdef OVL3
+ 
++/** Returns the price of an arbitrary item in the shop.
++ * Returns 0 if the item doesn't belong to a shopkeeper. */
++long
++get_cost_of_shop_item(obj)
++register struct obj *obj;
++{
++	struct monst *shkp;
++	xchar x, y;
++	int cost=0;
++
++	if (get_obj_location(obj, &x, &y, 0) &&
++	    (obj->unpaid ||
++	     (obj->where==OBJ_FLOOR && !obj->no_charge && costly_spot(x,y)))) {
++
++		if (!(shkp = shop_keeper(*in_rooms(x, y, SHOPBASE)))) return 0;
++		if (!inhishop(shkp)) return 0;
++		if (!costly_spot(x, y))	return 0;
++		if (!*u.ushops) return 0;
++
++		if (obj->oclass != COIN_CLASS) {
++			cost = (obj == uball || obj == uchain) ? 0L :
++			         obj->quan * get_cost(obj, shkp);
++			if (Has_contents(obj)) {
++				cost += contained_cost(obj, shkp, 0L, FALSE, FALSE);
++			}
++		}
++	}
++	return cost;
++}
++
+ /* calculate the value that the shk will charge for [one of] an object */
+ STATIC_OVL long
+ get_cost(obj, shkp)
+Index: src/pickup.c
+===================================================================
+--- a/src/pickup.c	(revision 1130)
++++ b/src/pickup.c	(working copy)
+@@ -761,7 +761,7 @@
+ 		    add_menu(win, obj_to_glyph(curr), &any,
+ 			    qflags & USE_INVLET ? curr->invlet : 0,
+ 			    def_oc_syms[(int)objects[curr->otyp].oc_class],
+-			    ATR_NONE, doname(curr), MENU_UNSELECTED);
++			    ATR_NONE, doname_with_price(curr), MENU_UNSELECTED);
+ 		}
+ 	    }
+ 	    pack++;
+Index: src/invent.c
+===================================================================
+--- a/src/invent.c	(revision 1130)
++++ b/src/invent.c	(working copy)
+@@ -2306,7 +2306,7 @@
+ #ifdef INVISIBLE_OBJECTS
+ 	    if (otmp->oinvis && !See_invisible) verb = "VERB_FUEHLEN"; /* EN if (otmp->oinvis && !See_invisible) verb = "feel"; */
+ #endif
+-	    You("%s hier OBJECT %s.", verb, doname(otmp)); /* EN You("%s here %s.", verb, doname(otmp)); */
++	    You("%s hier OBJECT %s.", verb, doname_with_price(otmp)); /* EN You("%s here %s.", verb, doname(otmp)); */
+ 	    if (otmp->otyp == CORPSE) feel_cockatrice(otmp, FALSE);
+ 	} else {
+ 	    display_nhwindow(WIN_MESSAGE, FALSE);
+@@ -2326,7 +2326,7 @@
+ 			putstr(tmpwin, 0, buf);
+ 			break;
+ 		}
+-		putstr(tmpwin, 0, doname(otmp));
++		putstr(tmpwin, 0, doname_with_price(otmp));
+ 	    }
+ 	    display_nhwindow(tmpwin, TRUE);
+ 	    destroy_nhwindow(tmpwin);
+Index: include/extern.h
+===================================================================
+--- a/include/extern.h	(revision 1130)
++++ b/include/extern.h	(working copy)
+@@ -1375,6 +1375,7 @@
+ E char *FDECL(mshot_xname, (struct obj *));
+ E boolean FDECL(the_unique_obj, (struct obj *obj));
+ E char *FDECL(doname, (struct obj *));
++E char *FDECL(doname_with_price, (struct obj *));
+ E boolean FDECL(not_fully_identified, (struct obj *));
+ E char *FDECL(corpse_xname, (struct obj *,BOOLEAN_P));
+ E char *FDECL(cxname, (struct obj *));
+@@ -1864,6 +1865,7 @@
+ E void FDECL(check_unpaid_usage, (struct obj *,BOOLEAN_P));
+ E void FDECL(check_unpaid, (struct obj *));
+ E void FDECL(costly_gold, (XCHAR_P,XCHAR_P,long));
++E long FDECL(get_cost_of_shop_item, (struct obj *));
+ E boolean FDECL(block_door, (XCHAR_P,XCHAR_P));
+ E boolean FDECL(block_entry, (XCHAR_P,XCHAR_P));
+ E char *FDECL(shk_your, (char *,struct obj *));
