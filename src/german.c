@@ -15,6 +15,7 @@
 
 
 char *this_makes_you_feel = "Dadurch VERB_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL";
+enum Output_Encoding german_output_encoding = OUTPUT_LATIN1;
 
 //#define DEBUG 1
 #define WISH_DEBUG 0
@@ -317,6 +318,34 @@ char *normalisierung(char *output, const char *input) {
 	return output;
 }
 
+char ascii_output[TBUFSZ*2];
+
+/** Konvertiert Umlaute und Sonderzeichen eines Strings nach ASCII.
+ * Gross-/Kleinschreibung bleibt unveraendert. */
+char *ascii_normalisierung(const char *input) {
+	char *output = ascii_output;
+	int i=0, j=0;
+	for (i=0; i < strlen(input); i++) {
+		switch (input[i]) {
+		case 'Ä': output[j++] = 'A'; output[j] = 'e'; break;
+		case 'ä': output[j++] = 'a'; output[j] = 'e'; break;
+		case 'Ö': output[j++] = 'O'; output[j] = 'e'; break;
+		case 'ö': output[j++] = 'o'; output[j] = 'e'; break;
+		case 'Ü': output[j++] = 'U'; output[j] = 'e'; break;
+		case 'ü': output[j++] = 'u'; output[j] = 'e'; break;
+		case 'ß': output[j++] = 's'; output[j] = 's'; break;
+		case 'É': output[j] = 'E'; break;
+		case 'é': output[j] = 'e'; break;
+		case 'Û': output[j] = 'U'; break;
+		case 'û': output[j] = 'u'; break;
+		default: output[j] = input[i];
+		}
+		j++;
+	}
+	output[j] = '\0';
+	return output;
+}
+
 /* translates a german string to meta*/
 void german2meta(const char *input, char *output)
 {
@@ -589,6 +618,7 @@ const char* get_verb(const char* verb, enum Person p, enum Numerus n, enum Tempu
 const char* get_wort(const char* typ, enum Casus c, enum Genus g, enum Numerus n, enum Artikel a) {
 	int i=0;
 	int len=strlen(typ);
+	// entferne Plural-Bezeichner, wenn vorhanden
 	// NOUN_FOXs -> NOUN_FOX
 	// NOUN_FOX  -> NOUN_FOX
 	if (typ[len]=='s') { len--; }
@@ -1393,6 +1423,10 @@ char* german(const char *line) {
 	fprintf(file, "%s\n",output);
 	fclose(file);
 
+	if (german_output_encoding == OUTPUT_ASCII) {
+		return ascii_normalisierung(output);
+	}
+
 	return (char *)output;
 }
 
@@ -1582,7 +1616,7 @@ const char *token;
 	char *pos = strstr(token, "-");
 	if (pos == NULL) {
 		/* Kein Bindestrich in token gefunden */
-		pos = token;
+		pos = (char *)token;
 	} else {
 		/* Bindestrich ueberspringen, der Rest ist ein
 		 * vollstaendiges Token. */

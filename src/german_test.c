@@ -1373,6 +1373,25 @@ START_TEST (test_genus_von) {
 	check_genus_von("ARTIKEL_UNBESTIMMTER ADJEKTIV_SPE_THIN NOUN_SPELLBOOK", neutrum);
 } END_TEST
 
+START_TEST (test_ascii_ausgabe)
+{
+	char *text[][2] = {
+		{"3 NOUN_POTIONs",
+		 "3 Traenke"},
+		{"NOUN_MJOLLNIR",
+		 "Mjoellnir"},
+		{"Überflieger",
+		 "Ueberflieger"},
+		{"Trantüte",
+		 "Trantuete"},
+	};
+
+	german_output_encoding = OUTPUT_ASCII;
+	check_strings(text, SIZE2(text));
+	german_output_encoding = OUTPUT_LATIN1;
+}
+END_TEST
+
 Suite *test_suite(void)
 {
 	Suite *s = suite_create("all tests");
@@ -1441,6 +1460,7 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_modifier_verb_partizip_perfekt);
 	tcase_add_test(tc_core, test_german_the);
 	tcase_add_test(tc_core, test_genus_von);
+	tcase_add_test(tc_core, test_ascii_ausgabe);
 
 	return s;
 }

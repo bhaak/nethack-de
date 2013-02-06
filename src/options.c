@@ -361,6 +361,9 @@ static struct Comp_Opt
 	{ "windowcolors",  "die Vordergrund-/Hintergrundfarben der Fenster",	/*WC*/ /* EN { "windowcolors",  "the foreground/background colors of windows",	*/
 						80, DISP_IN_GAME },
 	{ "windowtype", "windowing system to use", WINTYPELEN, DISP_IN_GAME }, /* EN { "windowtype", "windowing system to use", WINTYPELEN, DISP_IN_GAME }, */ // TODO DE
+#ifdef GERMAN
+	{ "Zeichensatz", "Zeichenkodierung des ausgegebenen Textes", 8, SET_IN_GAME },
+#endif
 	{ (char *)0, (char *)0, 0, 0 }
 };
 
@@ -1283,6 +1286,30 @@ char *str;
 }
 #endif /* MENU_COLOR */
 
+#ifdef GERMAN
+static void
+set_output_encoding(enum Output_Encoding encoding)
+{
+	switch (encoding) {
+			case OUTPUT_ASCII:
+				german_output_encoding = OUTPUT_ASCII;
+				iflags.output_encoding = OUTPUT_ASCII;
+				break;
+
+			case OUTPUT_LATIN1:
+				german_output_encoding = OUTPUT_LATIN1;
+				iflags.output_encoding = OUTPUT_LATIN1;
+				break;
+
+			case OUTPUT_UTF8:
+			default:
+				german_output_encoding = OUTPUT_LATIN1;
+				iflags.output_encoding = OUTPUT_UTF8;
+				break;
+	}
+}
+#endif
+
 void
 parseoptions(opts, tinitial, tfrom_file)
 register char *opts;
@@ -1463,6 +1490,38 @@ boolean tinitial, tfrom_file;
 		}
 		return;
 	}
+
+#ifdef GERMAN
+	fullname = "zeichensatz";
+	// default value
+	set_output_encoding(OUTPUT_UTF8);
+	if (match_optname(opts, fullname, 3, TRUE)) {
+		if (negated) {
+			bad_negation(fullname, FALSE);
+		} else if ((op = string_for_opt(opts, FALSE)) != 0) {
+			if (!strncmpi(op, "ascii", strlen(op))) {
+				set_output_encoding(OUTPUT_ASCII);
+				german_output_encoding = OUTPUT_ASCII;
+				iflags.output_encoding = OUTPUT_ASCII;
+
+			} else if (!strncmpi(op, "latin1", strlen(op)) ||
+			           !strncmpi(op, "iso-8859-1", strlen(op))) {
+				set_output_encoding(OUTPUT_LATIN1);
+				german_output_encoding = OUTPUT_LATIN1;
+				iflags.output_encoding = OUTPUT_LATIN1;
+
+			} else if (!strncmpi(op, "utf-8", strlen(op))) {
+				set_output_encoding(OUTPUT_UTF8);
+				german_output_encoding = OUTPUT_LATIN1;
+				iflags.output_encoding = OUTPUT_UTF8;
+
+			} else {
+				badoption(opts);
+			}
+			return;
+		}
+	}
+#endif
 
 	/* menucolor:"regex_string"=color */
 	fullname = "menucolor";
@@ -2618,6 +2677,9 @@ static NEARDATA const char *runmodes[] = {
 	"teleport", "run", "walk", "crawl"
 };
 
+static const char *output_encodings[3] =
+	{"ASCII", "ISO-8859-1", "UTF-8"};
+
 /*
  * Convert the given string of object classes to a string of default object
  * symbols.
@@ -3245,6 +3307,38 @@ ape_again:
 	}
 	retval = TRUE;
 #endif /* AUTOPICKUP_EXCEPTIONS */
+#ifdef GERMAN
+    } else if (!strcmp("Zeichensatz", optname)) {
+	const char *letters = "abc";
+	menu_item *pick = (menu_item *)0;
+
+        tmpwin = create_nhwindow(NHW_MENU);
+	start_menu(tmpwin);
+	for (i = 0; i < SIZE(output_encodings); i++) {
+		any.a_int = i + 1;
+		add_menu(tmpwin, NO_GLYPH, &any, letters[i], 0,
+			 ATR_NONE, output_encodings[i], MENU_UNSELECTED);
+        }
+	end_menu(tmpwin, "Zeichensatz auswählen:");
+	if (select_menu(tmpwin, PICK_ONE, &pick) > 0) {
+		int zeichensatz = pick->item.a_int - 1;
+		switch(zeichensatz) {
+			case 0:
+				set_output_encoding(OUTPUT_ASCII);
+				break;
+			case 1:
+				set_output_encoding(OUTPUT_LATIN1);
+				break;
+			default:
+			case 2:
+				set_output_encoding(OUTPUT_UTF8);
+				break;
+		}
+		free((genericptr_t)pick);
+	}
+	destroy_nhwindow(tmpwin);
+	retval = TRUE;
+#endif
     }
     return retval;
 }
@@ -3503,6 +3597,10 @@ char *buf;
 			iflags.wc_backgrnd_status  ? iflags.wc_backgrnd_status : defbrief,
 			iflags.wc_foregrnd_text    ? iflags.wc_foregrnd_text : defbrief,
 			iflags.wc_backgrnd_text    ? iflags.wc_backgrnd_text : defbrief);
+#ifdef GERMAN
+	else if (!strcmp(optname, "Zeichensatz"))
+		Sprintf(buf, "%s", output_encodings[iflags.output_encoding]);
+#endif
 #ifdef PREFIXES_IN_USE
 	else {
 	    for (i = 0; i < PREFIX_COUNT; ++i)

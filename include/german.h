@@ -2,6 +2,9 @@
 #define _GERMAN_H
 #include <stddef.h>
 
+enum Output_Encoding { OUTPUT_ASCII=0, OUTPUT_LATIN1=1, OUTPUT_UTF8=2 };
+enum Output_Encoding german_output_encoding;
+
 char *this_makes_you_feel;
 
 enum Casus   { nominativ=1, genitiv=2, dativ=4, akkusativ=8 };
