@@ -380,12 +380,12 @@ diff -Nurd --exclude-from=diff_ignore_files.txt nethack-3.4.3-orig/src/options.c
 +}
 +#endif /* MENU_COLOR */
 +
- void
- parseoptions(opts, tinitial, tfrom_file)
- register char *opts;
+ #ifdef GERMAN
+ static void
+ set_output_encoding(enum Output_Encoding encoding)
 @@ -1155,6 +1292,18 @@
- 		return;
  	}
+ #endif
  
 +	/* menucolor:"regex_string"=color */
 +	fullname = "menucolor";
