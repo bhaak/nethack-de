@@ -16,6 +16,11 @@
 #include "tcap.h"
 #endif
 
+#ifdef GERMAN
+// Braucht es, ansonsten gibt es Linker-Fehler beim erzeugen von lev_comp
+void set_output_encoding(int i) {}
+#endif
+
 #ifdef MAC
 # if defined(__SC__) || defined(__MRC__)
 #  define MPWTOOL

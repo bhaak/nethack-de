@@ -292,6 +292,8 @@ else
 	AC_DEFINE(TIMED_DELAY, [], [Using msleep])
 fi
 
+AC_CHECK_FUNCS(setlocale)
+
 dnl  ----- Check for program needed to build Guidebook
 AC_CHECK_PROG(HAVE_NROFF, nroff, "yes", "no")
 AC_CHECK_PROG(HAVE_TBL, tbl, "yes", "no")

@@ -1,0 +1,1208 @@
+Index: src/objects.c
+===================================================================
+--- a/src/objects.c	(revision 1132)
++++ b/src/objects.c	(working copy)
+@@ -57,7 +57,7 @@
+ # define BITS(nmkn,mrg,uskn,ctnr,mgc,chrg,uniq,nwsh,big,tuf,dir,sub,mtrl) \
+ 	nmkn,mrg,uskn,0,mgc,chrg,uniq,nwsh,big,tuf,dir,mtrl,sub /* SCO ODT 1.1 cpp fodder */
+ # define OBJECT(obj,bits,prp,sym,prob,dly,wt,cost,sdam,ldam,oc1,oc2,nut,color) \
+-	{0, 0, (char *)0, bits, prp, sym, dly, COLOR_FIELD(color) \
++	{0, 0, (char *)0, bits, prp, sym, 0, dly, COLOR_FIELD(color) \
+ 	 prob, wt, cost, sdam, ldam, oc1, oc2, nut}
+ # ifndef lint
+ #  define HARDGEM(n) (n >= 8)
+Index: src/options.c
+===================================================================
+--- a/src/options.c	(revision 1132)
++++ b/src/options.c	(working copy)
+@@ -14,11 +14,16 @@
+ #include "tcap.h"
+ #include <ctype.h>
+ #endif
++#include <errno.h>
+ 
+ #ifdef GERMAN
+ # include "german.h"
+ #endif
+ 
++#ifdef HAVE_SETLOCALE
++#include <locale.h>
++#endif
++
+ #define WINTYPELEN 16
+ 
+ #ifdef DEFAULT_WC_TILED_MAP
+@@ -215,6 +220,11 @@
+ 	{"tombstone",&flags.tombstone, TRUE, SET_IN_GAME},
+ 	{"toptenwin",&flags.toptenwin, FALSE, SET_IN_GAME},
+ 	{"travel", &iflags.travelcmd, TRUE, SET_IN_GAME},
++#ifdef UTF8_GLYPHS
++	{"UTF8graphics", &iflags.UTF8graphics, FALSE, SET_IN_GAME},
++#else
++	{"UTF8graphics", (boolean *)0, FALSE, SET_IN_FILE},
++#endif
+ #ifdef WIN32CON
+ 	{"use_inverse",   &iflags.wc_inverse, TRUE, SET_IN_GAME},		/*WC*/
+ #else
+@@ -573,6 +583,7 @@
+ 	for (i = 0; i < NUM_DISCLOSURE_OPTIONS; i++)
+ 		flags.end_disclose[i] = DISCLOSE_PROMPT_DEFAULT_NO;
+ 	switch_graphics(ASCII_GRAPHICS);	/* set default characters */
++	set_output_encoding(OUTPUT_LATIN1);
+ #if defined(UNIX) && defined(TTY_GRAPHICS)
+ 	/*
+ 	 * Set defaults for some options depending on what we can
+@@ -597,6 +608,15 @@
+ 	    index(AS, '\016') && index(AE, '\017')) {
+ 		switch_graphics(DEC_GRAPHICS);
+ 	}
++#  ifdef HAVE_SETLOCALE
++	/* try to detect if a utf-8 locale is supported */
++	if (setlocale(LC_ALL, "") &&
++	    (opts = setlocale(LC_CTYPE, NULL)) &&
++	    ((strstri(opts, "utf8") != 0) || (strstri(opts, "utf-8") != 0))) {
++		switch_graphics(UTF8_GRAPHICS);
++		set_output_encoding(OUTPUT_UTF8);
++	}
++#  endif
+ # endif
+ #endif /* UNIX || VMS */
+ 
+@@ -849,7 +869,7 @@
+ const char *optype;
+ int maxlen, offset;
+ {
+-	uchar translate[MAXPCHARS+1];
++	glyph_t translate[MAXPCHARS+1];
+ 	int length, i;
+ 
+ 	if (!(opts = string_for_env_opt(optype, opts, FALSE)))
+@@ -860,7 +880,7 @@
+ 	if (length > maxlen) length = maxlen;
+ 	/* match the form obtained from PC configuration files */
+ 	for (i = 0; i < length; i++)
+-		translate[i] = (uchar) opts[i];
++		translate[i] = (glyph_t) opts[i];
+ 	assign_graphics(translate, length, maxlen, offset);
+ }
+ 
+@@ -1286,9 +1306,205 @@
+ }
+ #endif /* MENU_COLOR */
+ 
++/* parse '"monster name":color' and change monster info accordingly */
++boolean
++parse_monster_color(str)
++char *str;
++{
++	int i, c = NO_COLOR;
++	char *tmps, *cs = strchr(str, ':');
++	char buf[BUFSZ];
++	int monster;
++
++	if (!str) return FALSE;
++
++	strncpy(buf, str, BUFSZ);
++	cs = strchr(buf, ':');
++	if (!cs) return FALSE;
++
++	tmps = cs;
++	tmps++;
++	/* skip whitespace at start of string */
++	while (*tmps && isspace(*tmps)) tmps++;
++
++	/* determine color */
++	for (i = 0; i < SIZE(colornames); i++)
++		if (strstri(tmps, colornames[i].name) == tmps) {
++			c = colornames[i].color;
++			break;
++		}
++	if ((i == SIZE(colornames)) && (*tmps >= '0' && *tmps <='9'))
++		c = atoi(tmps);
++
++	if (c > 15) return FALSE;
++
++	/* determine monster name */
++	*cs = '\0';
++	tmps = buf;
++	if ((*tmps == '"') || (*tmps == '\'')) {
++		cs--;
++		while (isspace(*cs)) cs--;
++		if (*cs == *tmps) {
++			*cs = '\0';
++			tmps++;
++		}
++	}
++
++	monster = name_to_mon(tmps);
++	if (monster > -1) {
++		mons[monster].mcolor = c;
++		return TRUE;
++	} else {
++		return FALSE;
++	}
++}
++
++/** Split up a string that matches name:value or 'name':value and
++ * return name and value separately. */
++static boolean
++parse_extended_option(str, option_name, option_value)
++const char *str;
++char *option_name;	/**< Output string buffer for option name */
++char *option_value;	/**< Output string buffer for option value */
++{
++	int i;
++	char *tmps, *cs;
++	char buf[BUFSZ];
++
++	if (!str) return FALSE;
++
++	strncpy(buf, str, BUFSZ);
++
++	/* remove comment*/
++	cs = strrchr(buf, '#');
++	if (cs) *cs = '\0';
++
++	/* trim whitespace at end of string */
++	i = strlen(buf)-1;
++	while (i>=0 && isspace(buf[i])) {
++		buf[i--] = '\0';
++	}
++
++	/* extract value */
++	cs = strchr(buf, ':');
++	if (!cs) return FALSE;
++
++	tmps = cs;
++	tmps++;
++	/* skip whitespace at start of string */
++	while (*tmps && isspace(*tmps)) tmps++;
++
++	strncpy(option_value, tmps, BUFSZ);
++
++	/* extract option name */
++	*cs = '\0';
++	tmps = buf;
++	if ((*tmps == '"') || (*tmps == '\'')) {
++		cs--;
++		while (isspace(*cs)) cs--;
++		if (*cs == *tmps) {
++			*cs = '\0';
++			tmps++;
++		}
++	}
++
++	strncpy(option_name, tmps, BUFSZ);
++
++	return TRUE;
++}
++
++/** Parse a string as Unicode codepoint and return the numerical codepoint.
++ * Valid codepoints are decimal numbers or U+FFFF and 0xFFFF for hexadecimal
++ * values. */
++static int
++parse_codepoint(codepoint)
++char *codepoint;
++{
++	char *ptr, *endptr;
++	int num=0, base;
++	
++	/* parse codepoint */
++	if (!strncmpi(codepoint, "u+", 2) ||
++	    !strncmpi(codepoint, "0x", 2)) {
++		/* hexadecimal */
++		ptr = &codepoint[2];
++		base = 16;
++	} else {
++		/* decimal */
++		ptr = &codepoint[0];
++		base = 10;
++	}
++	errno = 0;
++	num = strtol(ptr, &endptr, base);
++	if (errno != 0 || *endptr != 0 || endptr == ptr) {
++		return FALSE;
++	}
++	return num;
++}
++
++/** Parse '"monster name":unicode_codepoint' and change symbol in
++ * monster list. */
++boolean
++parse_monster_symbol(str)
++const char *str;
++{
++	char monster[BUFSZ];
++	char codepoint[BUFSZ];
++	int i, num=0;
++
++	if (!parse_extended_option(str, monster, codepoint)) {
++		return FALSE;
++	}
++
++	num = parse_codepoint(codepoint);
++	if (num < 0) {
++		return FALSE;
++	}
++
++	/* find monster */
++	for (i=0; mons[i].mlet != 0; i++) {
++		if (!strcmpi(monster, mons[i].mname)) {
++			mons[i].unicode_codepoint = num;
++			return TRUE;
++		}
++	}
++	
++	return FALSE;
++}
++
++/** Parse '"dungeon feature":unicode_codepoint' and change symbol in
++ * UTF8graphics. */
++boolean
++parse_symbol(str)
++const char *str;
++{
++	char feature[BUFSZ];
++	char codepoint[BUFSZ];
++	int i, num;
++
++	if (!parse_extended_option(str, feature, codepoint)) {
++		return FALSE;
++	}
++
++	num = parse_codepoint(codepoint);
++	if (num < 0) {
++		return FALSE;
++	}
++
++	/* find dungeon feature */
++	for (i=0; i < MAXPCHARS; i++) {
++		if (!strcmpi(feature, defsyms[i].explanation)) {
++			assign_utf8graphics_symbol(i, num);
++			return TRUE;
++		}
++	}
++	
++	return FALSE;
++}
++
+ #ifdef GERMAN
+-static void
+-set_output_encoding(enum Output_Encoding encoding)
++void
++set_output_encoding(int encoding)
+ {
+ 	switch (encoding) {
+ 			case OUTPUT_ASCII:
+@@ -2573,6 +2787,9 @@
+ # ifdef MAC_GRAPHICS_ENV
+ 				 || (boolopt[i].addr) == &iflags.MACgraphics
+ # endif
++# ifdef UTF8_GLYPHS
++				 || (boolopt[i].addr) == &iflags.UTF8graphics
++# endif
+ 				) {
+ # ifdef REINCARNATION
+ 			    if (!initial && Is_rogue_level(&u.uz))
+@@ -2594,6 +2811,11 @@
+ 				switch_graphics(iflags.MACgraphics ?
+ 						MAC_GRAPHICS : ASCII_GRAPHICS);
+ # endif
++# ifdef UTF8_GLYPHS
++			    if ((boolopt[i].addr) == &iflags.UTF8graphics)
++				switch_graphics(iflags.UTF8graphics ?
++						UTF8_GRAPHICS : ASCII_GRAPHICS);
++# endif
+ # ifdef REINCARNATION
+ 			    if (!initial && Is_rogue_level(&u.uz))
+ 				assign_rogue_graphics(TRUE);
+Index: src/mapglyph.c
+===================================================================
+--- a/src/mapglyph.c	(revision 1132)
++++ b/src/mapglyph.c	(working copy)
+@@ -57,18 +57,48 @@
+ # endif
+ #endif
+ 
++/** Returns the correct monster glyph.
++ *  Returns a Unicode codepoint in UTF8graphics and an ASCII character otherwise. */
++static glyph_t
++get_monsym(glyph)
++int glyph;
++{
++	if (iflags.UTF8graphics &&
++	    mons[glyph].unicode_codepoint) {
++		/* only return a Unicode codepoint when there is one configured */
++		return mons[glyph].unicode_codepoint;
++	} else {
++		return monsyms[(int)mons[glyph].mlet];
++	}
++}
++
++/** Returns the correct object glyph.
++ *  Returns a Unicode codepoint in UTF8graphics and an ASCII character otherwise. */
++static glyph_t
++get_objsym(glyph)
++int glyph;
++{
++	if (iflags.UTF8graphics &&
++	    objects[glyph].unicode_codepoint) {
++		/* only return a Unicode codepoint when there is one configured */
++		return objects[glyph].unicode_codepoint;
++	} else {
++		return oc_syms[(int)objects[glyph].oc_class];
++	}
++}
++
+ /*ARGSUSED*/
+ void
+ mapglyph(glyph, ochar, ocolor, ospecial, x, y)
+ int glyph, *ocolor, x, y;
+-int *ochar;
++glyph_t *ochar;
+ unsigned *ospecial;
+ {
+ 	register int offset;
+ #if defined(TEXTCOLOR) || defined(ROGUE_COLOR)
+ 	int color = NO_COLOR;
+ #endif
+-	uchar ch;
++	glyph_t ch;
+ 	unsigned special = 0;
+ 
+     /*
+@@ -87,7 +117,7 @@
+ 	    warn_color(offset);
+     } else if ((offset = (glyph - GLYPH_SWALLOW_OFF)) >= 0) {	/* swallow */
+ 	/* see swallow_to_glyph() in display.c */
+-	ch = (uchar) showsyms[S_sw_tl + (offset & 0x7)];
++	ch = showsyms[S_sw_tl + (offset & 0x7)];
+ #ifdef ROGUE_COLOR
+ 	if (HAS_ROGUE_IBM_GRAPHICS && iflags.use_color)
+ 	    color = NO_COLOR;
+@@ -133,7 +163,7 @@
+ 	    cmap_color(offset);
+     } else if ((offset = (glyph - GLYPH_OBJ_OFF)) >= 0) {	/* object */
+ 	if (offset == BOULDER && iflags.bouldersym) ch = iflags.bouldersym;
+-	else ch = oc_syms[(int)objects[offset].oc_class];
++	else ch = get_objsym(offset);
+ #ifdef ROGUE_COLOR
+ 	if (HAS_ROGUE_IBM_GRAPHICS && iflags.use_color) {
+ 	    switch(objects[offset].oc_class) {
+@@ -145,7 +175,7 @@
+ #endif
+ 	    obj_color(offset);
+     } else if ((offset = (glyph - GLYPH_RIDDEN_OFF)) >= 0) {	/* mon ridden */
+-	ch = monsyms[(int)mons[offset].mlet];
++	ch = get_monsym(offset);
+ #ifdef ROGUE_COLOR
+ 	if (HAS_ROGUE_IBM_GRAPHICS)
+ 	    /* This currently implies that the hero is here -- monsters */
+@@ -157,7 +187,7 @@
+ 	    mon_color(offset);
+ 	    special |= MG_RIDDEN;
+     } else if ((offset = (glyph - GLYPH_BODY_OFF)) >= 0) {	/* a corpse */
+-	ch = oc_syms[(int)objects[CORPSE].oc_class];
++	ch = get_objsym(CORPSE);
+ #ifdef ROGUE_COLOR
+ 	if (HAS_ROGUE_IBM_GRAPHICS && iflags.use_color)
+ 	    color = CLR_RED;
+@@ -166,7 +196,7 @@
+ 	    mon_color(offset);
+ 	    special |= MG_CORPSE;
+     } else if ((offset = (glyph - GLYPH_DETECT_OFF)) >= 0) {	/* mon detect */
+-	ch = monsyms[(int)mons[offset].mlet];
++	ch = get_monsym(offset);
+ #ifdef ROGUE_COLOR
+ 	if (HAS_ROGUE_IBM_GRAPHICS)
+ 	    color = NO_COLOR;	/* no need to check iflags.use_color */
+@@ -186,7 +216,7 @@
+ 	    invis_color(offset);
+ 	    special |= MG_INVIS;
+     } else if ((offset = (glyph - GLYPH_PET_OFF)) >= 0) {	/* a pet */
+-	ch = monsyms[(int)mons[offset].mlet];
++	ch = get_monsym(offset);
+ #ifdef ROGUE_COLOR
+ 	if (HAS_ROGUE_IBM_GRAPHICS)
+ 	    color = NO_COLOR;	/* no need to check iflags.use_color */
+@@ -195,7 +225,7 @@
+ 	    pet_color(offset);
+ 	    special |= MG_PET;
+     } else {							/* a monster */
+-	ch = monsyms[(int)mons[glyph].mlet];
++	ch = get_monsym(glyph);
+ #ifdef ROGUE_COLOR
+ 	if (HAS_ROGUE_IBM_GRAPHICS && iflags.use_color) {
+ 	    if (x == u.ux && y == u.uy)
+@@ -230,7 +260,7 @@
+ 	color = NO_COLOR;
+ #endif
+ 
+-    *ochar = (int)ch;
++    *ochar = ch;
+     *ospecial = special;
+ #ifdef TEXTCOLOR
+     *ocolor = color;
+Index: src/monst.c
+===================================================================
+--- a/src/monst.c	(revision 1132)
++++ b/src/monst.c	(working copy)
+@@ -59,7 +59,7 @@
+  *	symbol color (C(x) macro)
+  */
+ #define MON(nam,sym,lvl,gen,atk,siz,mr1,mr2,flg1,flg2,flg3,col) \
+-	   {nam,sym,lvl,gen,atk,siz,mr1,mr2,flg1,flg2,flg3,C(col)}
++	   {nam,sym,0,lvl,gen,atk,siz,mr1,mr2,flg1,flg2,flg3,C(col)}
+ /* LVL() and SIZ() collect several fields to cut down on # of args for MON() */
+ #define LVL(lvl,mov,ac,mr,aln) lvl,mov,ac,mr,aln
+ #define SIZ(wt,nut,pxl,snd,siz) wt,nut,pxl,snd,siz
+Index: src/pager.c
+===================================================================
+--- a/src/pager.c	(revision 1132)
++++ b/src/pager.c	(working copy)
+@@ -475,16 +475,18 @@
+     const char *x_str, *firstmatch = 0;
+     struct permonst *pm = 0;
+     int     i, ans = 0;
+-    int     sym;		/* typed symbol or converted glyph */
++    glyph_t sym;		/* typed symbol or converted glyph */
+     int	    found;		/* count of matching syms found */
+     coord   cc;			/* screen pos of unknown glyph */
+     boolean save_verbose;	/* saved value of flags.verbose */
+     boolean from_screen;	/* question from the screen */
++    boolean force_defsyms;	/* force using glyphs from defsyms[].sym */
+     boolean need_to_look;	/* need to get explan. from glyph */
+     boolean hit_trap;		/* true if found trap explanation */
+     int skipped_venom;		/* non-zero if we ignored "splash of venom" */
+     static const char *mon_interior = "ARTIKEL_BESTIMMTER NOUN_INNERE eines Monsters"; /* EN static const char *mon_interior = "the interior of a monster"; */
+ 
++    force_defsyms = FALSE;
+     if (quick) {
+ 	from_screen = TRUE;	/* yes, we want to use the cursor */
+     } else {
+@@ -542,7 +544,14 @@
+ 	    /* Convert the glyph at the selected position to a symbol. */
+ 	    glyph = glyph_at(cc.x,cc.y);
+ 	    if (glyph_is_cmap(glyph)) {
+-		sym = showsyms[glyph_to_cmap(glyph)];
++		if (iflags.UTF8graphics) {
++			/* Temporary workaround as UnNetHack can't yet
++			 * display UTF-8 glyphs on the topline */
++			force_defsyms = TRUE;
++			sym = defsyms[glyph_to_cmap(glyph)].sym;
++		} else {
++			sym = showsyms[glyph_to_cmap(glyph)];
++		}
+ 	    } else if (glyph_is_trap(glyph)) {
+ 		sym = showsyms[trap_to_defsym(glyph_to_trap(glyph))];
+ 	    } else if (glyph_is_object(glyph)) {
+@@ -643,7 +652,7 @@
+ 	/* Now check for graphics symbols */
+ 	for (hit_trap = FALSE, i = 0; i < MAXPCHARS; i++) {
+ 	    x_str = defsyms[i].explanation;
+-	    if (sym == (from_screen ? showsyms[i] : defsyms[i].sym) && *x_str) {
++	    if (sym == (force_defsyms ? defsyms[i].sym : (from_screen ? showsyms[i] : defsyms[i].sym)) && *x_str) {
+ 		/* avoid "an air", "a water", or "a floor of a room" */
+ 		int article = (i == S_room) ? 2 :		/* 2=>"the" */
+ 			      !(strcmp(x_str, "NOUN_AIR") == 0 ||	/* 1=>"an"  */ /* EN !(strcmp(x_str, "air") == 0 || */
+Index: src/unicode.c
+===================================================================
+--- a/src/unicode.c	(revision 0)
++++ b/src/unicode.c	(working copy)
+@@ -0,0 +1,220 @@
++/*	SCCS Id: @(#)end.c	3.5	2011/01/19	*/
++/* Copyright (c) Patric Mueller.			*/
++/* NetHack may be freely redistributed.  See license for details. */
++
++#include "hack.h"
++
++/** CP437 to Unicode mapping according to the Unicode Consortium
++ * http://unicode.org/Public/MAPPINGS/VENDORS/MICSFT/PC/CP437.TXT */
++static glyph_t cp437_to_unicode[] = {
++	0x00c7, /* LATIN CAPITAL LETTER C WITH CEDILLA */
++	0x00fc, /* LATIN SMALL LETTER U WITH DIAERESIS */
++	0x00e9, /* LATIN SMALL LETTER E WITH ACUTE */
++	0x00e2, /* LATIN SMALL LETTER A WITH CIRCUMFLEX */
++	0x00e4, /* LATIN SMALL LETTER A WITH DIAERESIS */
++	0x00e0, /* LATIN SMALL LETTER A WITH GRAVE */
++	0x00e5, /* LATIN SMALL LETTER A WITH RING ABOVE */
++	0x00e7, /* LATIN SMALL LETTER C WITH CEDILLA */
++	0x00ea, /* LATIN SMALL LETTER E WITH CIRCUMFLEX */
++	0x00eb, /* LATIN SMALL LETTER E WITH DIAERESIS */
++	0x00e8, /* LATIN SMALL LETTER E WITH GRAVE */
++	0x00ef, /* LATIN SMALL LETTER I WITH DIAERESIS */
++	0x00ee, /* LATIN SMALL LETTER I WITH CIRCUMFLEX */
++	0x00ec, /* LATIN SMALL LETTER I WITH GRAVE */
++	0x00c4, /* LATIN CAPITAL LETTER A WITH DIAERESIS */
++	0x00c5, /* LATIN CAPITAL LETTER A WITH RING ABOVE */
++	0x00c9, /* LATIN CAPITAL LETTER E WITH ACUTE */
++	0x00e6, /* LATIN SMALL LIGATURE AE */
++	0x00c6, /* LATIN CAPITAL LIGATURE AE */
++	0x00f4, /* LATIN SMALL LETTER O WITH CIRCUMFLEX */
++	0x00f6, /* LATIN SMALL LETTER O WITH DIAERESIS */
++	0x00f2, /* LATIN SMALL LETTER O WITH GRAVE */
++	0x00fb, /* LATIN SMALL LETTER U WITH CIRCUMFLEX */
++	0x00f9, /* LATIN SMALL LETTER U WITH GRAVE */
++	0x00ff, /* LATIN SMALL LETTER Y WITH DIAERESIS */
++	0x00d6, /* LATIN CAPITAL LETTER O WITH DIAERESIS */
++	0x00dc, /* LATIN CAPITAL LETTER U WITH DIAERESIS */
++	0x00a2, /* CENT SIGN */
++	0x00a3, /* POUND SIGN */
++	0x00a5, /* YEN SIGN */
++	0x20a7, /* PESETA SIGN */
++	0x0192, /* LATIN SMALL LETTER F WITH HOOK */
++	0x00e1, /* LATIN SMALL LETTER A WITH ACUTE */
++	0x00ed, /* LATIN SMALL LETTER I WITH ACUTE */
++	0x00f3, /* LATIN SMALL LETTER O WITH ACUTE */
++	0x00fa, /* LATIN SMALL LETTER U WITH ACUTE */
++	0x00f1, /* LATIN SMALL LETTER N WITH TILDE */
++	0x00d1, /* LATIN CAPITAL LETTER N WITH TILDE */
++	0x00aa, /* FEMININE ORDINAL INDICATOR */
++	0x00ba, /* MASCULINE ORDINAL INDICATOR */
++	0x00bf, /* INVERTED QUESTION MARK */
++	0x2310, /* REVERSED NOT SIGN */
++	0x00ac, /* NOT SIGN */
++	0x00bd, /* VULGAR FRACTION ONE HALF */
++	0x00bc, /* VULGAR FRACTION ONE QUARTER */
++	0x00a1, /* INVERTED EXCLAMATION MARK */
++	0x00ab, /* LEFT-POINTING DOUBLE ANGLE QUOTATION MARK */
++	0x00bb, /* RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK */
++	0x2591, /* LIGHT SHADE */
++	0x2592, /* MEDIUM SHADE */
++	0x2593, /* DARK SHADE */
++	0x2502, /* BOX DRAWINGS LIGHT VERTICAL */
++	0x2524, /* BOX DRAWINGS LIGHT VERTICAL AND LEFT */
++	0x2561, /* BOX DRAWINGS VERTICAL SINGLE AND LEFT DOUBLE */
++	0x2562, /* BOX DRAWINGS VERTICAL DOUBLE AND LEFT SINGLE */
++	0x2556, /* BOX DRAWINGS DOWN DOUBLE AND LEFT SINGLE */
++	0x2555, /* BOX DRAWINGS DOWN SINGLE AND LEFT DOUBLE */
++	0x2563, /* BOX DRAWINGS DOUBLE VERTICAL AND LEFT */
++	0x2551, /* BOX DRAWINGS DOUBLE VERTICAL */
++	0x2557, /* BOX DRAWINGS DOUBLE DOWN AND LEFT */
++	0x255d, /* BOX DRAWINGS DOUBLE UP AND LEFT */
++	0x255c, /* BOX DRAWINGS UP DOUBLE AND LEFT SINGLE */
++	0x255b, /* BOX DRAWINGS UP SINGLE AND LEFT DOUBLE */
++	0x2510, /* BOX DRAWINGS LIGHT DOWN AND LEFT */
++	0x2514, /* BOX DRAWINGS LIGHT UP AND RIGHT */
++	0x2534, /* BOX DRAWINGS LIGHT UP AND HORIZONTAL */
++	0x252c, /* BOX DRAWINGS LIGHT DOWN AND HORIZONTAL */
++	0x251c, /* BOX DRAWINGS LIGHT VERTICAL AND RIGHT */
++	0x2500, /* BOX DRAWINGS LIGHT HORIZONTAL */
++	0x253c, /* BOX DRAWINGS LIGHT VERTICAL AND HORIZONTAL */
++	0x255e, /* BOX DRAWINGS VERTICAL SINGLE AND RIGHT DOUBLE */
++	0x255f, /* BOX DRAWINGS VERTICAL DOUBLE AND RIGHT SINGLE */
++	0x255a, /* BOX DRAWINGS DOUBLE UP AND RIGHT */
++	0x2554, /* BOX DRAWINGS DOUBLE DOWN AND RIGHT */
++	0x2569, /* BOX DRAWINGS DOUBLE UP AND HORIZONTAL */
++	0x2566, /* BOX DRAWINGS DOUBLE DOWN AND HORIZONTAL */
++	0x2560, /* BOX DRAWINGS DOUBLE VERTICAL AND RIGHT */
++	0x2550, /* BOX DRAWINGS DOUBLE HORIZONTAL */
++	0x256c, /* BOX DRAWINGS DOUBLE VERTICAL AND HORIZONTAL */
++	0x2567, /* BOX DRAWINGS UP SINGLE AND HORIZONTAL DOUBLE */
++	0x2568, /* BOX DRAWINGS UP DOUBLE AND HORIZONTAL SINGLE */
++	0x2564, /* BOX DRAWINGS DOWN SINGLE AND HORIZONTAL DOUBLE */
++	0x2565, /* BOX DRAWINGS DOWN DOUBLE AND HORIZONTAL SINGLE */
++	0x2559, /* BOX DRAWINGS UP DOUBLE AND RIGHT SINGLE */
++	0x2558, /* BOX DRAWINGS UP SINGLE AND RIGHT DOUBLE */
++	0x2552, /* BOX DRAWINGS DOWN SINGLE AND RIGHT DOUBLE */
++	0x2553, /* BOX DRAWINGS DOWN DOUBLE AND RIGHT SINGLE */
++	0x256b, /* BOX DRAWINGS VERTICAL DOUBLE AND HORIZONTAL SINGLE */
++	0x256a, /* BOX DRAWINGS VERTICAL SINGLE AND HORIZONTAL DOUBLE */
++	0x2518, /* BOX DRAWINGS LIGHT UP AND LEFT */
++	0x250c, /* BOX DRAWINGS LIGHT DOWN AND RIGHT */
++	0x2588, /* FULL BLOCK */
++	0x2584, /* LOWER HALF BLOCK */
++	0x258c, /* LEFT HALF BLOCK */
++	0x2590, /* RIGHT HALF BLOCK */
++	0x2580, /* UPPER HALF BLOCK */
++	0x03b1, /* GREEK SMALL LETTER ALPHA */
++	0x00df, /* LATIN SMALL LETTER SHARP S */
++	0x0393, /* GREEK CAPITAL LETTER GAMMA */
++	0x03c0, /* GREEK SMALL LETTER PI */
++	0x03a3, /* GREEK CAPITAL LETTER SIGMA */
++	0x03c3, /* GREEK SMALL LETTER SIGMA */
++	0x00b5, /* MICRO SIGN */
++	0x03c4, /* GREEK SMALL LETTER TAU */
++	0x03a6, /* GREEK CAPITAL LETTER PHI */
++	0x0398, /* GREEK CAPITAL LETTER THETA */
++	0x03a9, /* GREEK CAPITAL LETTER OMEGA */
++	0x03b4, /* GREEK SMALL LETTER DELTA */
++	0x221e, /* INFINITY */
++	0x03c6, /* GREEK SMALL LETTER PHI */
++	0x03b5, /* GREEK SMALL LETTER EPSILON */
++	0x2229, /* INTERSECTION */
++	0x2261, /* IDENTICAL TO */
++	0x00b1, /* PLUS-MINUS SIGN */
++	0x2265, /* GREATER-THAN OR EQUAL TO */
++	0x2264, /* LESS-THAN OR EQUAL TO */
++	0x2320, /* TOP HALF INTEGRAL */
++	0x2321, /* BOTTOM HALF INTEGRAL */
++	0x00f7, /* DIVISION SIGN */
++	0x2248, /* ALMOST EQUAL TO */
++	0x00b0, /* DEGREE SIGN */
++	0x2219, /* BULLET OPERATOR */
++	0x00b7, /* MIDDLE DOT */
++	0x221a, /* SQUARE ROOT */
++	0x207f, /* SUPERSCRIPT LATIN SMALL LETTER N */
++	0x00b2, /* SUPERSCRIPT TWO */
++	0x25a0, /* BLACK SQUARE */
++	0x00a0, /* NO-BREAK SPACE */
++};
++
++/* DEC Special Graphic Character Set aka VT 100 graphics.
++ * Only the last 32 characters are significantly different from ASCII
++ * http://support.attachmate.com/techdocs/1184.html */
++static glyph_t dec_graphics_to_unicode[] = {
++	0x25c6, /* BLACK DIAMOND */
++	0x2592, /* MEDIUM SHADE */
++	0x0009, /* CHARACTER TABULATION */
++	0x000c, /* FORM FEED */
++	0x000d, /* CARRIAGE RETURN */
++	0x000a, /* LINE FEED */
++	0x00b0, /* DEGREE SIGN */
++	0x00b1, /* PLUS-MINUS SIGN */
++	0x000a, /* NEW LINE (=LINE FEED) */
++	0x000b, /* LINE TABULATION */
++	0x2518, /* BOX DRAWINGS LIGHT UP AND LEFT */
++	0x2510, /* BOX DRAWINGS LIGHT DOWN AND LEFT */
++	0x250c, /* BOX DRAWINGS LIGHT DOWN AND RIGHT */
++	0x2514, /* BOX DRAWINGS LIGHT UP AND RIGHT */
++	0x253c, /* BOX DRAWINGS LIGHT VERTICAL AND HORIZONTAL */
++	0x00a0, /*_NO-BREAK SPACE */
++	0x00a0, /*_NO-BREAK SPACE */
++	0x2500, /* BOX DRAWINGS LIGHT HORIZONTAL */
++	0x00a0, /*_NO-BREAK SPACE */
++	0x00a0, /*_NO-BREAK SPACE */
++	0x251c, /* BOX DRAWINGS LIGHT VERTICAL AND RIGHT */
++	0x2524, /* BOX DRAWINGS LIGHT VERTICAL AND LEFT */
++	0x2534, /* BOX DRAWINGS LIGHT UP AND HORIZONTAL */
++	0x252c, /* BOX DRAWINGS LIGHT DOWN AND HORIZONTAL */
++	0x2502, /* BOX DRAWINGS LIGHT VERTICAL */
++	0x2264, /* LESS-THAN OR EQUAL TO */
++	0x2265, /* GREATER-THAN OR EQUAL TO */
++	0x03c0, /* GREEK SMALL LETTER PI */
++	0x2260, /* NOT EQUAL TO */
++	0x00a3, /* POUND SIGN */
++	0x00b7, /* MIDDLE DOT */
++	0x00a0, /*_NO-BREAK SPACE */
++};
++
++/** Returns unicode codepoint of character according to selected graphics mode. */
++glyph_t
++get_unicode_codepoint(int ch)
++{
++	if (ch <= 0xFF) {
++		if (ch < 0x80) {
++			return ch;
++		} else if (iflags.IBMgraphics) {
++			return cp437_to_unicode[ch-0x80];
++		} else if (iflags.DECgraphics && ch >= 0xE0) {
++			return dec_graphics_to_unicode[ch-0xE0];
++		}
++	}
++	return ch;
++}
++
++#ifdef UTF8_GLYPHS
++/** Prints a Unicode codepoint as UTF-8 encoded byte sequence.
++ * Originally from Ray Chason's Unicode proof of concept patch. */
++int
++pututf8char(glyph_t c)
++{
++  if (c < 0x80) {
++    putchar(c);
++  } else if(c < 0x800) {
++    putchar(0xC0 | (c>>6));
++    putchar(0x80 | (c & 0x3F));
++  } else if (c < 0x10000) {
++    putchar(0xE0 | (c>>12));
++    putchar(0x80 | (c>>6 & 0x3F));
++    putchar(0x80 | (c & 0x3F));
++  } else if (c < 0x200000) {
++    putchar(0xF0 | (c>>18));
++    putchar(0x80 | (c>>12 & 0x3F));
++    putchar(0x80 | (c>>6 & 0x3F));
++    putchar(0x80 | (c & 0x3F));
++  }
++
++  return 0;
++}
++#endif
++
++/*unicode.c*/
+Index: src/drawing.c
+===================================================================
+--- a/src/drawing.c	(revision 1132)
++++ b/src/drawing.c	(working copy)
+@@ -5,6 +5,12 @@
+ #include "hack.h"
+ #include "tcap.h"
+ 
++#ifdef GERMAN
++# include "german.h"
++#else
++void set_output_encoding(int i) {}
++#endif
++
+ /* Relevent header information in rm.h and objclass.h. */
+ 
+ #ifdef C
+@@ -20,7 +26,7 @@
+ #define g_FILLER(symbol) 0
+ 
+ uchar oc_syms[MAXOCLASSES] = DUMMY; /* the current object  display symbols */
+-uchar showsyms[MAXPCHARS]  = DUMMY; /* the current feature display symbols */
++glyph_t showsyms[MAXPCHARS]  = DUMMY; /* the current feature display symbols */
+ uchar monsyms[MAXMCLASSES] = DUMMY; /* the current monster display symbols */
+ uchar warnsyms[WARNCOUNT]  = DUMMY;  /* the current warning display symbols */
+ 
+@@ -314,7 +320,7 @@
+ void NDECL((*ibmgraphics_mode_callback)) = 0;	/* set in tty_start_screen() */
+ #endif /* PC9800 */
+ 
+-static uchar ibm_graphics[MAXPCHARS] = {
++static glyph_t ibm_graphics[MAXPCHARS] = {
+ /* 0*/	g_FILLER(S_stone),
+ 	0xb3,	/* S_vwall:	meta-3, vertical rule */
+ 	0xc4,	/* S_hwall:	meta-D, horizontal rule */
+@@ -413,7 +419,7 @@
+ #ifdef TERMLIB
+ void NDECL((*decgraphics_mode_callback)) = 0;  /* set in tty_start_screen() */
+ 
+-static uchar dec_graphics[MAXPCHARS] = {
++static glyph_t dec_graphics[MAXPCHARS] = {
+ /* 0*/	g_FILLER(S_stone),
+ 	0xf8,	/* S_vwall:	meta-x, vertical rule */
+ 	0xf1,	/* S_hwall:	meta-q, horizontal rule */
+@@ -510,7 +516,7 @@
+ #endif  /* TERMLIB */
+ 
+ #ifdef MAC_GRAPHICS_ENV
+-static uchar mac_graphics[MAXPCHARS] = {
++static glyph_t mac_graphics[MAXPCHARS] = {
+ /* 0*/	g_FILLER(S_stone),
+ 	0xba,	/* S_vwall */
+ 	0xcd,	/* S_hwall */
+@@ -606,6 +612,105 @@
+ };
+ #endif	/* MAC_GRAPHICS_ENV */
+ 
++#ifdef UTF8_GLYPHS
++/* Probably best to only use characters from this list
++ * http://en.wikipedia.org/wiki/WGL4 */
++static glyph_t utf8_graphics[MAXPCHARS] = {
++/* 0*/	g_FILLER(S_stone),
++	0x2502,	/* S_vwall:	BOX DRAWINGS LIGHT VERTICAL */
++	0x2500,	/* S_hwall:	BOX DRAWINGS LIGHT HORIZONTAL */
++	0x250c,	/* S_tlcorn:	BOX DRAWINGS LIGHT DOWN AND RIGHT */
++	0x2510,	/* S_trcorn:	BOX DRAWINGS LIGHT DOWN AND LEFT */
++	0x2514,	/* S_blcorn:	BOX DRAWINGS LIGHT UP AND RIGHT */
++	0x2518,	/* S_brcorn:	BOX DRAWINGS LIGHT UP AND LEFT */
++	0x253c,	/* S_crwall:	BOX DRAWINGS LIGHT VERTICAL AND HORIZONTAL */
++	0x2534,	/* S_tuwall:	BOX DRAWINGS LIGHT UP AND HORIZONTAL */
++	0x252c,	/* S_tdwall:	BOX DRAWINGS LIGHT DOWN AND HORIZONTAL */
++	0x2524,	/* S_tlwall:	BOX DRAWINGS LIGHT VERTICAL AND LEFT */
++	0x251c,	/* S_trwall:	BOX DRAWINGS LIGHT VERTICAL AND RIGHT */
++	0x00b7,	/* S_ndoor:	MIDDLE DOT */
++	0x2592,	/* S_vodoor:	MEDIUM SHADE */
++	0x2592,	/* S_hodoor:	MEDIUM SHADE */
++	g_FILLER(S_vcdoor),
++	g_FILLER(S_hcdoor),
++	0x2261,	/* S_bars:	IDENTICAL TO */
++	0x03a8,	/* S_tree:	GREEK CAPITAL LETTER PSI */
++	0x00b7,	/* S_room:	MIDDLE DOT */
++	g_FILLER(S_corr),
++	g_FILLER(S_litcorr),
++	g_FILLER(S_upstair),
++	g_FILLER(S_dnstair),
++	0x2264,	/* S_upladder:	LESS-THAN OR EQUAL TO */
++	0x2265,	/* S_dnladder:	GREATER-THAN OR EQUAL TO */
++	0x03A9,	/* S_altar:	GREEK CAPITAL LETTER OMEGA */
++	0x2020,	/* S_grave:	DAGGER */
++	g_FILLER(S_throne),
++	g_FILLER(S_sink),
++	0x00b6,	/* S_fountain:	PILCROW SIGN */
++	0x224b,	/* S_pool:	TRIPLE TILDE */
++	0x00b7,	/* S_ice:	MIDDLE DOT */
++	0x224b,	/* S_lava:	TRIPLE TILDE */
++	0x00b7,	/* S_vodbridge:	MIDDLE DOT */
++	0x00b7,	/* S_hodbridge:	MIDDLE DOT */
++	g_FILLER(S_vcdbridge),
++	g_FILLER(S_hcdbridge),
++	g_FILLER(S_air),
++	g_FILLER(S_cloud),
++	0x2248,	/* S_water:	ALMOST EQUAL TO */
++	g_FILLER(S_arrow_trap),
++	g_FILLER(S_dart_trap),
++	g_FILLER(S_falling_rock_trap),
++	g_FILLER(S_squeaky_board),
++	g_FILLER(S_bear_trap),
++	g_FILLER(S_land_mine),
++	g_FILLER(S_rolling_boulder_trap),
++	g_FILLER(S_sleeping_gas_trap),
++	g_FILLER(S_rust_trap),
++	g_FILLER(S_fire_trap),
++	g_FILLER(S_pit),
++	g_FILLER(S_spiked_pit),
++	g_FILLER(S_hole),
++	g_FILLER(S_trap_door),
++	g_FILLER(S_teleportation_trap),
++	g_FILLER(S_level_teleporter),
++	g_FILLER(S_magic_portal),
++	0x00A4,	/* S_web:	CURRENCY SIGN */
++	g_FILLER(S_statue_trap),
++	g_FILLER(S_magic_trap),
++	g_FILLER(S_anti_magic_trap),
++	g_FILLER(S_polymorph_trap),
++	0x2502,	/* S_vbeam:	BOX DRAWINGS LIGHT VERTICAL */
++	0x2500,	/* S_hbeam:	BOX DRAWINGS LIGHT HORIZONTAL */
++	g_FILLER(S_lslant),
++	g_FILLER(S_rslant),
++	g_FILLER(S_digbeam),
++	g_FILLER(S_flashbeam),
++	g_FILLER(S_boomleft),
++	g_FILLER(S_boomright),
++	g_FILLER(S_ss1),
++	g_FILLER(S_ss2),
++	g_FILLER(S_ss3),
++	g_FILLER(S_ss4),
++	g_FILLER(S_sw_tl),
++	0x2594,	/* S_sw_tc:	UPPER ONE EIGHTH BLOCK */
++	g_FILLER(S_sw_tr),
++	0x258f,	/* S_sw_ml:	LEFT ONE EIGHTH BLOCK */
++	0x2595,	/* S_sw_mr:	RIGHT ONE EIGHTH BLOCK */
++	g_FILLER(S_sw_bl),
++	0x2581,	/* S_sw_bc:	LOWER ONE EIGHTH BLOCK */
++	g_FILLER(S_sw_br),
++	g_FILLER(S_explode1),
++	0x2594,	/* S_explode2:	UPPER ONE EIGHTH BLOCK */
++	g_FILLER(S_explode3),
++	0x258f,	/* S_explode4:	LEFT ONE EIGHTH BLOCK */
++	g_FILLER(S_explode5),
++	0x2595,	/* S_explode6:	RIGHT ONE EIGHTH BLOCK */
++	g_FILLER(S_explode7),
++	0x2581,	/* S_explode8:	LOWER ONE EIGHTH BLOCK */
++	g_FILLER(S_explode9)
++};
++#endif
++
+ #ifdef PC9800
+ void NDECL((*ascgraphics_mode_callback)) = 0;	/* set in tty_start_screen() */
+ #endif
+@@ -641,7 +746,7 @@
+ 
+ void
+ assign_graphics(graph_chars, glth, maxlen, offset)
+-register uchar *graph_chars;
++register glyph_t *graph_chars;
+ int glth, maxlen, offset;
+ {
+     register int i;
+@@ -655,10 +760,13 @@
+ switch_graphics(gr_set_flag)
+ int gr_set_flag;
+ {
++    iflags.IBMgraphics = FALSE;
++    iflags.DECgraphics = FALSE;
++    iflags.UTF8graphics = FALSE;
+     switch (gr_set_flag) {
+ 	default:
+ 	case ASCII_GRAPHICS:
+-	    assign_graphics((uchar *)0, 0, MAXPCHARS, 0);
++	    assign_graphics((glyph_t *)0, 0, MAXPCHARS, 0);
+ #ifdef PC9800
+ 	    if (ascgraphics_mode_callback) (*ascgraphics_mode_callback)();
+ #endif
+@@ -696,10 +804,33 @@
+ 	    assign_graphics(mac_graphics, SIZE(mac_graphics), MAXPCHARS, 0);
+ 	    break;
+ #endif
++#ifdef UTF8_GLYPHS
++	case UTF8_GRAPHICS:
++	    if (iflags.output_encoding == OUTPUT_LATIN1) { set_output_encoding(OUTPUT_UTF8); }
++	    assign_graphics(utf8_graphics, SIZE(utf8_graphics), MAXPCHARS, 0);
++	    iflags.UTF8graphics = TRUE;
++	    break;
++#endif
+ 	}
+     return;
+ }
+ 
++/** Change the UTF8graphics symbol at position with codepoint "value". */
++void
++assign_utf8graphics_symbol(position, value)
++int position;
++glyph_t value;
++{
++#ifdef UTF8_GLYPHS
++	if (position < MAXPCHARS) {
++		utf8_graphics[position] = value;
++		/* need to update showsym */
++		if (iflags.UTF8graphics) {
++			switch_graphics(UTF8_GRAPHICS);
++		}
++	}
++#endif
++}
+ 
+ #ifdef REINCARNATION
+ 
+@@ -707,10 +838,10 @@
+  * saved display symbols for objects & features.
+  */
+ static uchar save_oc_syms[MAXOCLASSES] = DUMMY;
+-static uchar save_showsyms[MAXPCHARS]  = DUMMY;
++static glyph_t save_showsyms[MAXPCHARS]  = DUMMY;
+ static uchar save_monsyms[MAXPCHARS]   = DUMMY;
+ 
+-static const uchar r_oc_syms[MAXOCLASSES] = {
++static const glyph_t r_oc_syms[MAXOCLASSES] = {
+ /* 0*/	'\0',
+ 	ILLOBJ_SYM,
+ 	WEAPON_SYM,
+Index: include/rm.h
+===================================================================
+--- a/include/rm.h	(revision 1132)
++++ b/include/rm.h	(working copy)
+@@ -224,7 +224,7 @@
+ };
+ 
+ extern const struct symdef defsyms[MAXPCHARS];	/* defaults */
+-extern uchar showsyms[MAXPCHARS];
++extern glyph_t showsyms[MAXPCHARS];
+ extern const struct symdef def_warnsyms[WARNCOUNT];
+ 
+ /*
+@@ -234,6 +234,7 @@
+ #define IBM_GRAPHICS	1	/* PC graphic characters */
+ #define DEC_GRAPHICS	2	/* VT100 line drawing characters */
+ #define MAC_GRAPHICS	3	/* Macintosh drawing characters */
++#define UTF8_GRAPHICS	4	/* UTF8 characters */
+ 
+ /*
+  * The 5 possible states of doors
+Index: include/objclass.h
+===================================================================
+--- a/include/objclass.h	(revision 1132)
++++ b/include/objclass.h	(working copy)
+@@ -90,6 +90,7 @@
+ 
+ 	uchar	oc_oprop;		/* property (invis, &c.) conveyed */
+ 	char	oc_class;		/* object class */
++	glyph_t	unicode_codepoint;	/* unicode codepoint for utf8graphics */
+ 	schar	oc_delay;		/* delay when using such an object */
+ 	uchar	oc_color;		/* color of the object */
+ 
+Index: include/extern.h
+===================================================================
+--- a/include/extern.h	(revision 1132)
++++ b/include/extern.h	(working copy)
+@@ -459,11 +459,12 @@
+ E int FDECL(def_char_to_objclass, (CHAR_P));
+ E int FDECL(def_char_to_monclass, (CHAR_P));
+ #if !defined(MAKEDEFS_C) && !defined(LEV_LEX_C)
+-E void FDECL(assign_graphics, (uchar *,int,int,int));
++E void FDECL(assign_graphics, (glyph_t *,int,int,int));
+ E void FDECL(switch_graphics, (int));
+ #ifdef REINCARNATION
+ E void FDECL(assign_rogue_graphics, (BOOLEAN_P));
+ #endif
++E void FDECL(assign_utf8graphics_symbol, (int, glyph_t));
+ 
+ /* ### dungeon.c ### */
+ 
+@@ -960,7 +961,7 @@
+ 
+ /* ### mapglyph.c ### */
+ 
+-E void FDECL(mapglyph, (int, int *, int *, unsigned *, int, int));
++E void FDECL(mapglyph, (int, glyph_t *, int *, unsigned *, int, int));
+ 
+ /* ### mcastu.c ### */
+ 
+@@ -1427,6 +1428,7 @@
+ #ifdef MENU_COLOR
+ E boolean FDECL(add_menu_coloring, (char *));
+ #endif /* MENU_COLOR */
++E void FDECL(set_output_encoding, (int));
+ 
+ /* ### pager.c ### */
+ 
+@@ -2439,6 +2441,10 @@
+ 
+ #endif /* !MAKEDEFS_C && !LEV_LEX_C */
+ 
++/* ### unicode.c ### */
++E glyph_t FDECL(get_unicode_codepoint, (int));
++E int FDECL(pututf8char, (glyph_t));
++
+ #undef E
+ 
+ #endif /* EXTERN_H */
+Index: include/config.h
+===================================================================
+--- a/include/config.h	(revision 1132)
++++ b/include/config.h	(working copy)
+@@ -290,6 +290,24 @@
+ typedef unsigned char	uchar;
+ #endif
+ 
++/* Type used for outputting DECgraphics and IBMgraphics characters into
++ * HTML dumps or for holding unicode codepoints. */
++#if HAVE_INTTYPES_H
++# include <inttypes.h>
++#else
++# if HAVE_STDINT_H
++#  include <stdint.h>
++# endif
++#endif
++#ifdef UINT32_MAX
++typedef uint32_t glyph_t;
++#else
++/* Fallback that should work on most systems */
++typedef long glyph_t;
++#endif
++
++#define UTF8_GLYPHS
++
+ /*
+  * Various structures have the option of using bitfields to save space.
+  * If your C compiler handles bitfields well (e.g., it can initialize structs
+Index: include/permonst.h
+===================================================================
+--- a/include/permonst.h	(revision 1132)
++++ b/include/permonst.h	(working copy)
+@@ -41,6 +41,7 @@
+ struct permonst {
+ 	const char	*mname;			/* full name */
+ 	char		mlet;			/* symbol */
++	glyph_t		unicode_codepoint;	/* unicode codepoint for utf8graphics */
+ 	schar		mlevel,			/* base monster level */
+ 			mmove,			/* move speed */
+ 			ac,			/* (base) armor class */
+Index: include/flag.h
+===================================================================
+--- a/include/flag.h	(revision 1132)
++++ b/include/flag.h	(working copy)
+@@ -160,6 +160,7 @@
+ 	boolean  DECgraphics;	/* use DEC VT-xxx extended character set */
+ 	boolean  echo;		/* 1 to echo characters */
+ 	boolean  IBMgraphics;	/* use IBM extended character set */
++	boolean  UTF8graphics;	/* use UTF-8 characters */
+ 	int      output_encoding;	/* Encoding of output messages */
+ 	unsigned msg_history;	/* hint: # of top lines to save */
+ 	boolean  num_pad;	/* use numbers for movement commands */
+Index: win/tty/topl.c
+===================================================================
+--- a/win/tty/topl.c	(revision 1132)
++++ b/win/tty/topl.c	(working copy)
+@@ -15,7 +15,7 @@
+ #endif
+ 
+ STATIC_DCL void FDECL(redotoplin, (const char*));
+-STATIC_DCL void FDECL(topl_putsym, (CHAR_P));
++STATIC_DCL void FDECL(topl_putsym, (glyph_t));
+ STATIC_DCL void NDECL(remember_topl);
+ STATIC_DCL void FDECL(removetopl, (int));
+ 
+@@ -269,7 +269,7 @@
+ STATIC_OVL
+ void
+ topl_putsym(c)
+-		 char c;
++		 glyph_t c;
+ {
+ 	register struct WinDesc *cw = wins[WIN_MESSAGE];
+ 
+@@ -303,7 +303,7 @@
+ 	cw->curx = ttyDisplay->curx;
+ 	if(cw->curx == 0) cl_end();
+ #ifndef WIN32CON
+-	(void) putchar(c);
++	(void) pututf8char((unsigned char)c);
+ #endif
+ }
+ 
+Index: win/tty/wintty.c
+===================================================================
+--- a/win/tty/wintty.c	(revision 1132)
++++ b/win/tty/wintty.c	(working copy)
+@@ -1282,7 +1282,7 @@
+ 			    else
+ 				(void) putchar('#'); /* count selected */
+ 			} else
+-			    (void) putchar(*cp);
++			    (void) pututf8char((unsigned char)*cp);
+ #ifdef MENU_COLOR
+ 		   if (iflags.use_menu_color && menucolr) {
+ 		       if (color != NO_COLOR) term_end_color();
+@@ -1523,7 +1523,7 @@
+ 		    *cp && (int) ttyDisplay->curx < (int) ttyDisplay->cols;
+ 		    cp++, ttyDisplay->curx++)
+ #endif
+-		(void) putchar(*cp);
++		(void) pututf8char(*cp);
+ 	    term_end_attr(attr);
+ 	}
+     }
+@@ -1762,7 +1762,15 @@
+     case NHW_MAP:
+     case NHW_BASE:
+ 	tty_curs(window, x, y);
++#ifdef UTF8_GLYPHS
++	if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
++		pututf8char((unsigned char)ch);
++	} else {
++		(void) putchar(ch);
++	}
++#else
+ 	(void) putchar(ch);
++#endif
+ 	ttyDisplay->curx++;
+ 	cw->curx++;
+ 	break;
+@@ -1887,7 +1895,11 @@
+ 		cw->cury++;
+ 		tty_curs(window, cw->curx+1, cw->cury);
+ 	    }
+-	    (void) putchar(*str);
++	    if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
++		    pututf8char(*str);
++	    } else {
++		    (void) putchar(*str);
++	    }
+ 	    str++;
+ 	    ttyDisplay->curx++;
+ 	}
+@@ -2517,7 +2529,15 @@
+       xputg(glyph,ch,special);
+     else
+ #endif
++#ifdef UTF8_GLYPHS
++	if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
++		pututf8char(get_unicode_codepoint(ch));
++	} else {
++		g_putch(ch);	/* print the character */
++	}
++#else
+ 	g_putch(ch);		/* print the character */
++#endif
+ 
+     if (reverse_on) {
+     	term_end_attr(ATR_INVERSE);
+Index: util/lev_main.c
+===================================================================
+--- a/util/lev_main.c	(revision 1132)
++++ b/util/lev_main.c	(working copy)
+@@ -16,6 +16,11 @@
+ #include "tcap.h"
+ #endif
+ 
++#ifdef GERMAN
++// Braucht es, ansonsten gibt es Linker-Fehler beim erzeugen von lev_comp
++void set_output_encoding(int i) {}
++#endif
++
+ #ifdef MAC
+ # if defined(__SC__) || defined(__MRC__)
+ #  define MPWTOOL

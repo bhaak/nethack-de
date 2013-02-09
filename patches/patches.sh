@@ -24,6 +24,7 @@ nh343-nao-c-menu.diff
 nh343-rare-crashes-bugfixes-v1.0.diff
 unnethack-hitpointbar.diff
 unnethack-show_item_prices.diff
+utf8graphics.diff
 "
 
 NH_DIR=/tmp/patches_nethack$$

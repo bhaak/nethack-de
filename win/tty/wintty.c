@@ -1282,7 +1282,7 @@ struct WinDesc *cw;
 			    else
 				(void) putchar('#'); /* count selected */
 			} else
-			    (void) putchar(*cp);
+			    (void) pututf8char((unsigned char)*cp);
 #ifdef MENU_COLOR
 		   if (iflags.use_menu_color && menucolr) {
 		       if (color != NO_COLOR) term_end_color();
@@ -1523,7 +1523,7 @@ struct WinDesc *cw;
 		    *cp && (int) ttyDisplay->curx < (int) ttyDisplay->cols;
 		    cp++, ttyDisplay->curx++)
 #endif
-		(void) putchar(*cp);
+		(void) pututf8char(*cp);
 	    term_end_attr(attr);
 	}
     }
@@ -1762,7 +1762,15 @@ tty_putsym(window, x, y, ch)
     case NHW_MAP:
     case NHW_BASE:
 	tty_curs(window, x, y);
+#ifdef UTF8_GLYPHS
+	if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
+		pututf8char((unsigned char)ch);
+	} else {
+		(void) putchar(ch);
+	}
+#else
 	(void) putchar(ch);
+#endif
 	ttyDisplay->curx++;
 	cw->curx++;
 	break;
@@ -1887,7 +1895,11 @@ tty_putstr(window, attr, str)
 		cw->cury++;
 		tty_curs(window, cw->curx+1, cw->cury);
 	    }
-	    (void) putchar(*str);
+	    if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
+		    pututf8char(*str);
+	    } else {
+		    (void) putchar(*str);
+	    }
 	    str++;
 	    ttyDisplay->curx++;
 	}
@@ -2517,7 +2529,15 @@ tty_print_glyph(window, x, y, glyph)
       xputg(glyph,ch,special);
     else
 #endif
+#ifdef UTF8_GLYPHS
+	if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
+		pututf8char(get_unicode_codepoint(ch));
+	} else {
+		g_putch(ch);	/* print the character */
+	}
+#else
 	g_putch(ch);		/* print the character */
+#endif
 
     if (reverse_on) {
     	term_end_attr(ATR_INVERSE);
