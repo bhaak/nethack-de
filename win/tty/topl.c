@@ -10,6 +10,10 @@
 #include "wintty.h"
 #include <ctype.h>
 
+#ifdef GERMAN
+#include "german.h"
+#endif
+
 #ifndef C	/* this matches src/cmd.c */
 #define C(c)	(0x1f & (c))
 #endif
@@ -303,7 +307,15 @@ topl_putsym(c)
 	cw->curx = ttyDisplay->curx;
 	if(cw->curx == 0) cl_end();
 #ifndef WIN32CON
-	(void) pututf8char((unsigned char)c);
+#ifdef UTF8_GLYPHS
+	if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
+		pututf8char((unsigned char)c);
+	} else {
+		(void) putchar(c);
+	}
+#else
+	(void) putchar(ch);
+#endif
 #endif
 }
 

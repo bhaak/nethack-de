@@ -1282,7 +1282,15 @@ struct WinDesc *cw;
 			    else
 				(void) putchar('#'); /* count selected */
 			} else
-			    (void) pututf8char((unsigned char)*cp);
+#ifdef UTF8_GLYPHS
+			  if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
+				  pututf8char((unsigned char)*cp);
+			  } else {
+				  (void) putchar(*cp);
+			  }
+#else
+			  (void) putchar(*cp);
+#endif
 #ifdef MENU_COLOR
 		   if (iflags.use_menu_color && menucolr) {
 		       if (color != NO_COLOR) term_end_color();
@@ -1523,7 +1531,15 @@ struct WinDesc *cw;
 		    *cp && (int) ttyDisplay->curx < (int) ttyDisplay->cols;
 		    cp++, ttyDisplay->curx++)
 #endif
-		(void) pututf8char(*cp);
+#ifdef UTF8_GLYPHS
+		if (iflags.UTF8graphics || (iflags.output_encoding == OUTPUT_UTF8)) {
+			pututf8char((unsigned char)*cp);
+		} else {
+			(void) putchar(*cp);
+		}
+#else
+		(void) putchar(*cp);
+#endif
 	    term_end_attr(attr);
 	}
     }
