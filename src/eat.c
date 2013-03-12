@@ -281,6 +281,13 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 				    if (!type_is_pname(&mons[food->corpsenm]))
 				    /* EN killer = the(killer); */
 				    killer_format = KILLED_BY;
+#ifdef GERMAN
+				} else if (obj_is_pname(food) || the_unique_obj(food)) { 
+					/* the() will prefix appropriately with 
+					 * "the" or no article at all */ 
+					killer = the(killer); 
+					killer_format = KILLED_BY; 
+#endif
 				}
 			}
 		} else {
