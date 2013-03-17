@@ -196,6 +196,9 @@ extern struct Race urace;
 
 /*** Unified structure specifying gender information ***/
 struct Gender {
+#ifdef GERMAN
+	const char *adj_en;	/* Englisches Gender-Adjektiv */
+#endif
 	const char *adj;	/* male/female/neuter */
 	const char *he;		/* he/she/it */
 	const char *him;	/* him/her/it */

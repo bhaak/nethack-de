@@ -494,19 +494,24 @@ struct Race urace =
 
 /* Table of all genders */
 const struct Gender genders[] = {
-// TODO DE
-	{"ADJEKTIV_MAENNLICH",	"NOUN_PRONOMEN_3P_M_PERSONAL",
-						"NOUN_PRONOMEN_3P_M_PERSONAL", /* EN "him", */
+#ifndef GERMAN
+	{"male",	"he",	"him",	"his",	"Mal",	ROLE_MALE},
+	{"female",	"she",	"her",	"her",	"Fem",	ROLE_FEMALE},
+	{"neuter",	"it",	"it",	"its",	"Ntr",	ROLE_NEUTER}
+#else
+	{"male", "ADJEKTIV_MAENNLICH", "NOUN_PRONOMEN_3P_M_PERSONAL",
+						"NOUN_PRONOMEN_3P_M_PERSONAL",
 						"PRONOMEN_3P_MN_POSSESSIV",
 						"Mal",	ROLE_MALE},
-	{"ADJEKTIV_WEIBLICH",	"NOUN_PRONOMEN_3P_F_PERSONAL",
-							"NOUN_PRONOMEN_3P_F_PERSONAL", /* EN "her", */
+	{"female", "ADJEKTIV_WEIBLICH", "NOUN_PRONOMEN_3P_F_PERSONAL",
+							"NOUN_PRONOMEN_3P_F_PERSONAL",
 							"PRONOMEN_3P_F_POSSESSIV",
 							"Fem",	ROLE_FEMALE},
-	{"ADJEKTIV_SAECHLICH",	"NOUN_PRONOMEN_3P_N_PERSONAL",
-							"NOUN_PRONOMEN_3P_N_PERSONAL", /* EN "its", */
+	{"neuter", "ADJEKTIV_SAECHLICH", "NOUN_PRONOMEN_3P_N_PERSONAL",
+							"NOUN_PRONOMEN_3P_N_PERSONAL",
 							"PRONOMEN_3P_MN_POSSESSIV",
 							"Ntr",	ROLE_NEUTER}
+#endif
 };
 
 /* Table of all alignments */
@@ -689,6 +694,10 @@ str2gend(str)
 	len = strlen(str);
 	for (i = 0; i < ROLE_GENDERS; i++) {
 	    /* Does it match the adjective? */
+#ifdef GERMAN
+	    if (!strncmpi(str, genders[i].adj_en, len))
+		return i;
+#endif
 	    if (!strncmpi(str, genders[i].adj, len))
 		return i;
 	    /* Or the filecode? */

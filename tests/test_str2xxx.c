@@ -7,8 +7,9 @@ START_TEST (test_str2gend) {
 	fail_unless(str2gend("ADJEKTIV_WEIBLICH") == 1);
 	fail_unless(str2gend("mal") == 0);
 	fail_unless(str2gend("fem") == 1);
-	//fail_if(str2gend("male") == 0);
-	//fail_if(str2gend("female") == 1);
+
+	fail_unless(str2gend("male") == 0);
+	fail_unless(str2gend("female") == 1);
 } END_TEST
 
 Suite *test_suite(void)
