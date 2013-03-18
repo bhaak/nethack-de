@@ -48,6 +48,47 @@ START_TEST (test_gott_weiblich) {
 	fail_unless(!gott_weiblich("Anhur"));
 } END_TEST
 
+START_TEST (test_gott_genitiv) {
+	fail_unless(!strcmp("des Quetzalcoatl", gott_genitiv("Quetzalcoatl")));
+	fail_unless(!strcmp("des Camaxtli", gott_genitiv("Camaxtli")));
+	fail_unless(!strcmp("des Huhetotl", gott_genitiv("Huhetotl")));
+	fail_unless(!strcmp("des Mitra", gott_genitiv("Mitra")));
+	fail_unless(!strcmp("des Crom", gott_genitiv("Crom")));
+	fail_unless(!strcmp("des Set", gott_genitiv("Set")));
+	fail_unless(!strcmp("des Anu", gott_genitiv("Anu")));
+	fail_unless(!strcmp("der Ishtar", gott_genitiv("Ishtar")));
+	fail_unless(!strcmp("des Anshar", gott_genitiv("Anshar")));
+	fail_unless(!strcmp("der Athena", gott_genitiv("Athena")));
+	fail_unless(!strcmp("des Hermes", gott_genitiv("Hermes")));
+	fail_unless(!strcmp("des Poseidon", gott_genitiv("Poseidon")));
+	fail_unless(!strcmp("des Lugh", gott_genitiv("Lugh")));
+	fail_unless(!strcmp("der Brigit", gott_genitiv("Brigit")));
+	fail_unless(!strcmp("des Manannan Mac Lir", gott_genitiv("Manannan Mac Lir")));
+	fail_unless(!strcmp("des Shan Lai Ching", gott_genitiv("Shan Lai Ching")));
+	fail_unless(!strcmp("des Chih Sung-tzu", gott_genitiv("Chih Sung-tzu")));
+	fail_unless(!strcmp("des Huan Ti", gott_genitiv("Huan Ti")));
+	fail_unless(!strcmp("des Issek", gott_genitiv("Issek")));
+	fail_unless(!strcmp("des Mog", gott_genitiv("Mog")));
+	fail_unless(!strcmp("des Kos", gott_genitiv("Kos")));
+	fail_unless(!strcmp("des Mercury", gott_genitiv("Mercury")));
+	fail_unless(!strcmp("der Venus", gott_genitiv("Venus")));
+	fail_unless(!strcmp("des Mars", gott_genitiv("Mars")));
+	fail_unless(!strcmp("der Amaterasu Omikami", gott_genitiv("Amaterasu Omikami")));
+	fail_unless(!strcmp("des Raijin", gott_genitiv("Raijin")));
+	fail_unless(!strcmp("des Susanowo", gott_genitiv("Susanowo")));
+	fail_unless(!strcmp("des Offler", gott_genitiv("Offler")));
+	fail_unless(!strcmp("des Tyr", gott_genitiv("Tyr")));
+	fail_unless(!strcmp("des Odin", gott_genitiv("Odin")));
+	fail_unless(!strcmp("des Loki", gott_genitiv("Loki")));
+	fail_unless(!strcmp("des Ptah", gott_genitiv("Ptah")));
+	fail_unless(!strcmp("des Thoth", gott_genitiv("Thoth")));
+	fail_unless(!strcmp("des Anhur", gott_genitiv("Anhur")));
+	/* Spezialfaelle */
+	fail_unless(!strcmp("der Lady", gott_genitiv("The Lady")));
+	fail_unless(!strcmp("der Lady", gott_genitiv("ARTIKEL_BESTIMMTER NOUN_LADY")));
+	// fail_unless(!strcmp("des Blinden Io", gott_genitiv("Blind Io"))); // TODO
+} END_TEST
+
 Suite *test_suite(void)
 {
 	Suite *s = suite_create("gott_weiblich");
@@ -56,6 +97,7 @@ Suite *test_suite(void)
 	suite_add_tcase (s, tc_core);
 	tcase_set_timeout(tc_core, 20);
 	tcase_add_test(tc_core, test_gott_weiblich);
+	tcase_add_test(tc_core, test_gott_genitiv);
 
   return s;
 }

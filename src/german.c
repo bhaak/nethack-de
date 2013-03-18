@@ -1704,6 +1704,23 @@ const char *name;
     
 	return FALSE;
 }
+
+char gott_genitiv_tmp[BUFSZ];
+/* Liefert den  Gott namens
+ * name im Genitiv zurück. */
+const char *
+gott_genitiv(name)
+const char *name;
+{
+	if (!strcmp(name, "ARTIKEL_BESTIMMTER NOUN_LADY") ||
+		!strcmp(name, "The Lady")) {
+		return "der Lady";
+	} else {
+		strcpy(gott_genitiv_tmp, gott_weiblich(name) ? "der " : "des ");
+		strcat(gott_genitiv_tmp, name);
+		return gott_genitiv_tmp;
+	}
+}
 #endif
 
 /*** Liefert den deutschen Begriff fuer einen Dungeon-Branch zurueck. */

@@ -2189,7 +2189,7 @@ char *buf;
 	    cmap = S_sink;				/* "sink" */
 #endif
 	else if (IS_ALTAR(ltyp)) {
-	    Sprintf(altbuf, "NOUN_ALTAR %s %s (%s)", gott_weiblich(a_gname())?"der":"des", a_gname(), /* EN Sprintf(altbuf, "altar to %s (%s)", a_gname(), */
+	    Sprintf(altbuf, "NOUN_ALTAR %s (%s)", gott_genitiv(a_gname()), /* EN Sprintf(altbuf, "altar to %s (%s)", a_gname(), */
 		    align_str(Amask2align(lev->altarmask & ~AM_SHRINE)));
 	    dfeature = altbuf;
 	} else if ((x == xupstair && y == yupstair) ||

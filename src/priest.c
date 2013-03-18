@@ -294,8 +294,7 @@ char *pname;		/* caller-supplied output buffer */
 		} else {
 		  tmp_gname = halu_gname((int)EPRI(mon)->shralign);
 		}
-		Strcat(pname, gott_weiblich(tmp_gname) ? "der " : "des ");
-		Strcat(pname, tmp_gname);
+		Strcat(pname, gott_genitiv(tmp_gname));
 		Strcat(pname, godname_doubtful ? "?" : "");
 #else
 		Strcat(pname, "of ");

@@ -329,7 +329,16 @@ convert_line()
 
 					/* append possessive suffix */
 				case 'S': cvt_buf[0] = highc(cvt_buf[0]);
-				case 's': Strcpy(cvt_buf, s_suffix(cvt_buf)); /* EN case 's': Strcpy(cvt_buf, s_suffix(cvt_buf)); */ // TODO DE
+#ifndef GERMAN
+				case 's': Strcpy(cvt_buf, s_suffix(cvt_buf));
+#else
+				case 's':
+					if (!strncmpi(cvt_buf, "ARTIKEL_BESTIMMTER NOUN_LADY", 28)) {
+						/* do nothing */
+					} else {
+						Strcpy(cvt_buf, s_suffix(cvt_buf));
+					}
+#endif
 				    break;
 
 					/* strip any "the" prefix */
@@ -342,10 +351,12 @@ convert_line()
 #ifdef GERMAN
 				/* Genitivform des bestimmten Artikel der Gottheit */
 				case 'g':
-					if (gott_weiblich(cvt_buf)) {
-							Strcpy(cvt_buf, "der");
+					if (!strncmpi(cvt_buf, "ARTIKEL_BESTIMMTER NOUN_LADY", 28)) {
+						Strcpy(cvt_buf, "");
+					} else if (gott_weiblich(cvt_buf)) {
+							Strcpy(cvt_buf, "der ");
 					} else {
-							Strcpy(cvt_buf, "des");
+							Strcpy(cvt_buf, "des ");
 					}
 				    break;
 #endif

@@ -2,6 +2,7 @@ Alpha-Release NetHack-De 3.4.3-2013XXXXa
  - ca. 95% des generierten Textes übersetzt
  - Livelog-Bugfix: zeitnahe Meldung, wenn Spieler Astral- oder
    Elementarebenen erreicht
+ - korrekt gebeugte Bezeichnungen fuer "die Lady"
 
  - Neue Patches:
    * Menü beim 'C'-Kommando (von NAO)

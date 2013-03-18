@@ -3448,7 +3448,7 @@ experienced before, so be prepared!
 #
 %Cc - 00001
 # It is written in the Book of %d:
-So steht es geschrieben im Buch %d:
+So steht es geschrieben im Buch KASUS_GENITIV %d:
 
 #    After the Creation, the cruel god Moloch rebelled
 #    against the authority of Marduk the Creator.
@@ -3473,13 +3473,13 @@ die verdiente Vorherrschaft über die übrigen Götter.
 #Du, ein frisch berufener Straßenräuber, wurdest als [...]
 SATZBEGINN PRONOMEN_PERSONAL, OBJECT KASUS_NOMINATIV ARTIKEL_UNBESTIMMTER frisch ADJEKTIV_BERUFEN %r, MODIFIER_VERB_PRAETERITUM VERB_WERDEN als
 #from birth as the instrument of %d.  You are destined
-Instrument %dg %d auserkoren.  SATZBEGINN PRONOMEN_POSSESSIV NOUN_SCHICKSAL ist es,
+Instrument KASUS_GENITIV %dg%d auserkoren.  SUBJECT PRONOMEN_POSSESSIV NOUN_SCHICKSAL ist es,
 #to recover the Amulet for your deity, or die in the
 das Amulett zu erlangen oder beim Versuch PRONOMEN_POSSESSIV NOUN_LEBEN
 #attempt.  Your hour of destiny has come.  For the sake
 zu lassen.  Das Schicksal ruft!  Für unser aller Wohl:
 #of us all:  Go bravely with %d!
-SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SEIN tapfer im Namen %ds!
+SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SEIN tapfer im Namen KASUS_GENITIV %ds!
 %E
 %Cp - 00002
 #You receive a faint telepathic message from %l:
