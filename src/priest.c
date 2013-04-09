@@ -671,7 +671,7 @@ struct monst *priest;
 
 	switch(rn2(3)) {
 	case 0:
-	    pline("%s brüllt wutentbrannt:  \"Dafür wirst du büssen!\"", /* EN pline("%s roars in anger:  \"Thou shalt suffer!\"", */
+	    pline("SUBJECT %s brüllt wutentbrannt:  \"Dafür wirst du büssen!\"", /* EN pline("%s roars in anger:  \"Thou shalt suffer!\"", */
 			a_gname_at(ax, ay));
 	    break;
 	case 1:
@@ -679,7 +679,7 @@ struct monst *priest;
 			genitivattribut_zu_wort(a_gname_at(ax, ay), "NOUN_STIMME")); /* EN s_suffix(a_gname_at(ax, ay))); */
 	    break;
 	default:
-	    pline("%s brüllt:  \"Meinen Schrein entweihst du!\"", /* EN pline("%s roars:  \"Thou dost profane my shrine!\"", */
+	    pline("SUBJECT %s brüllt:  \"Meinen Schrein entweihst du!\"", /* EN pline("%s roars:  \"Thou dost profane my shrine!\"", */
 			a_gname_at(ax, ay));
 	    break;
 	}

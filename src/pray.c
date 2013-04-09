@@ -1072,8 +1072,21 @@ godvoice(g_align, words)
     else
 	words = "";
 
-    pline_The("NOUN_STIMME von %s %s: %s%s%s", align_gname(g_align), /* EN pline_The("voice of %s %s: %s%s%s", align_gname(g_align), */
+#ifdef GERMAN
+    const char *god_name = align_gname(g_align);
+    if (strncmp(god_name, "ARTIKEL_BESTIMMTER", 18)==0) {
+	/* Die Stimme der Lady ... */
+        pline_The("NOUN_STIMME KASUS_GENITIV %s %s: %s%s%s", god_name,
+			godvoices[rn2(SIZE(godvoices))], quot, words, quot);
+    } else {
+	/* Die Stimme von Offler ... */
+        pline_The("NOUN_STIMME von %s %s: %s%s%s", god_name, // TODO DE Genitiv-Form?
+			godvoices[rn2(SIZE(godvoices))], quot, words, quot);
+    }
+#else
+    pline_The("voice of %s %s: %s%s%s", align_gname(g_align),
 	  godvoices[rn2(SIZE(godvoices))], quot, words, quot);
+#endif
 }
 
 STATIC_OVL void
@@ -1277,12 +1290,12 @@ dosacrifice()
 	    u.uevent.ascended = 1;
 	    if(carried(otmp)) useup(otmp); /* well, it's gone now */
 	    else useupf(otmp, 1L);
-	    You("VERB_OFFER %s OBJECT ARTIKEL_BESTIMMTER NOUN_AMULET_OF_YENDOR ...", a_gname()); /* EN You("offer the Amulet of Yendor to %s...", a_gname()); */
+	    You("VERB_OFFER OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT OBJECT ARTIKEL_BESTIMMTER NOUN_AMULET_OF_YENDOR ...", a_gname()); /* EN You("offer the Amulet of Yendor to %s...", a_gname()); */
 	    if (u.ualign.type != altaralign) {
 		/* And the opposing team picks you up and
 		   carries you off on their shoulders */
 		adjalign(-99);
-		pline("%s nimmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GESCHENK an und erlangt die Herrschaft über %s ...", /* EN pline("%s accepts your gift, and gains dominion over %s...", */
+		pline("SATZBEGINN %s nimmt KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GESCHENK an und erlangt die Herrschaft über KASUS_AKKUSATIV %s ...", /* EN pline("%s accepts your gift, and gains dominion over %s...", */
 		      a_gname(), u_gname());
 		pline("%s tobt ...", u_gname()); /* EN pline("%s is enraged...", u_gname()); */
 		pline("Zum Glück erlaubt %s KASUS_DATIV PRONOMEN_PERSONAL weiterzuleben ...", a_gname()); /* EN pline("Fortunately, %s permits you to live...", a_gname()); */
@@ -1300,11 +1313,11 @@ dosacrifice()
 #endif
 
 pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SONNEN OBJECT PRONOMEN_PERSONAL in göttlichem Lichte ..."); /* EN pline("An invisible choir sings, and you are bathed in radiance..."); */
-		godvoice(altaralign, flags.female ? "Herzlichen Glückwunsch, Sterbliche!" : "Herzlichen Glückwunsch, Sterblicher!"); /* EN godvoice(altaralign, "Congratulations, mortal!"); */
+		godvoice(altaralign, "Herzlichen Glückwunsch, PLAYER_STERBLICHER!"); /* EN godvoice(altaralign, "Congratulations, mortal!"); */
 		display_nhwindow(WIN_MESSAGE, FALSE);
 verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /* EN verbalize("In return for thy service, I grant thee the gift of Immortality!"); */
 		You("VERB_WERDEN in den Stand OBJECT KASUS_GENITIV ARTIKEL_UNBESTIMMTER NOUN_HALB%s erhoben ...", /* EN You("ascend to the status of Demigod%s...", */
-		    flags.female ? "GOTT" : "GOETTIN"); /* EN flags.female ? "dess" : ""); */
+		    flags.female ? "GOETTIN" : "GOTT"); /* EN flags.female ? "dess" : ""); */
 		done(ASCENDED);
 	    }
 	}
@@ -1340,7 +1353,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 	 * gets the god who owns it truely pissed off.
 	 */
 	You("VERB_SPUEREN, dass die Luft um OBJECT PRONOMEN_PERSONAL sich auflädt ..."); /* EN You_feel("the air around you grow charged..."); */
-	pline("Plötzlich SUBJECT_IM_SATZ VERB_BEMERKEN PRONOMEN_PERSONAL, dass NEUER_SATZ PRONOMEN_PERSONAL %s aufgefallen VERB_SEIN ...", a_gname()); /* EN pline("Suddenly, you realize that %s has noticed you...", a_gname()); */
+	pline("Plötzlich SUBJECT_IM_SATZ VERB_BEMERKEN PRONOMEN_PERSONAL, dass NEUER_SATZ PRONOMEN_PERSONAL KASUS_DATIV %s aufgefallen VERB_SEIN ...", a_gname()); /* EN pline("Suddenly, you realize that %s has noticed you...", a_gname()); */
 	godvoice(altaralign, "So, PLAYER_STERBLICHER!  Du wagst es meinen Hochtempel zu entweihen!"); /* EN godvoice(altaralign, "So, mortal!  You dare desecrate my High Temple!"); */
 	/* Throw everything we have at the player */
 	god_zaps_you(altaralign);
@@ -1358,9 +1371,9 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 	    if (ugod_is_angry() || (altaralign == A_NONE && Inhell)) {
 		if(u.ualignbase[A_CURRENT] == u.ualignbase[A_ORIGINAL] &&
 		   altaralign != A_NONE) {
-		    You("VERB_HABEN das starke Gefühl, dass %s erzürnt ist ...", u_gname()); /* EN You("have a strong feeling that %s is angry...", u_gname()); */ //
+		    You("VERB_HABEN das starke Gefühl, dass KASUS_NOMINATIV %s erzürnt ist ...", u_gname()); /* EN You("have a strong feeling that %s is angry...", u_gname()); */
 		    consume_offering(otmp);
-		    pline("%s akzeptiert KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GEFOLGSCHAFT.", a_gname()); /* EN pline("%s accepts your allegiance.", a_gname()); */
+		    pline("SATZBEGINN %s akzeptiert KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_GEFOLGSCHAFT.", a_gname()); /* EN pline("%s accepts your allegiance.", a_gname()); */
 
 		    /* The player wears a helm of opposite alignment? */
 		    if (uarmh && uarmh->otyp == HELM_OF_OPPOSITE_ALIGNMENT)
@@ -1378,7 +1391,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		} else {
 		    u.ugangr += 3;
 		    adjalign(-5);
-		    pline("%s weist KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_SACRIFICE zurück!", a_gname()); /* EN pline("%s rejects your sacrifice!", a_gname()); */
+		    pline("SATZBEGINN %s weist KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_SACRIFICE zurück!", a_gname()); /* EN pline("%s rejects your sacrifice!", a_gname()); */
 		    godvoice(altaralign, flags.female ? "Büße, Ungläubige!" : "Büße, Ungläubiger!"); /* EN godvoice(altaralign, "Suffer, infidel!"); */
 		    change_luck(-5);
 		    (void) adjattrib(A_WIS, -2, TRUE);
@@ -1387,11 +1400,11 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		return(1);
 	    } else {
 		consume_offering(otmp);
-		You("VERB_SPUEREN einen Konflikt zwischen %s und %s.", /* EN You("sense a conflict between %s and %s.", */
+		You("VERB_SPUEREN einen Konflikt zwischen OBJECT KASUS_DATIV %s und KASUS_DATIV %s.", /* EN You("sense a conflict between %s and %s.", */ // TODO DE check wenn zwischen der Lady und dem Blinden Io
 		    u_gname(), a_gname());
 		if (rn2(8 + u.ulevel) > 5) {
 		    struct monst *pri;
-		    You("VERB_FUEHLEN, dass die Macht von %s wächst.", u_gname()); /* EN You_feel("the power of %s increase.", u_gname()); */
+		    You("VERB_FUEHLEN, dass die Macht KASUS_DATIV von %s wächst.", u_gname()); /* EN You_feel("the power of %s increase.", u_gname()); */
 		    exercise(A_WIS, TRUE);
 		    change_luck(1);
 		    /* Yes, this is supposed to be &=, not |= */
@@ -1413,7 +1426,7 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		       !p_coaligned(pri))
 			angry_priest();
 		} else {
-		    pline("Bedauerlicherweise SUBJECT_IM_SATZ VERB_FUEHLEN PRONOMEN_PERSONAL, wie die Macht von %s schrumpft.", /* EN pline("Unluckily, you feel the power of %s decrease.", */
+		    pline("Bedauerlicherweise SUBJECT_IM_SATZ VERB_FUEHLEN PRONOMEN_PERSONAL, wie die Macht KASUS_DATIV von %s schrumpft.", /* EN pline("Unluckily, you feel the power of %s decrease.", */
 			  u_gname());
 		    change_luck(-1);
 		    exercise(A_WIS, FALSE);
@@ -1791,6 +1804,11 @@ aligntyp alignment;
 			gnam = "someone"; break;
     }
     if (*gnam == '_') ++gnam;
+#ifdef GERMAN
+    if (!strcmp(gnam, "The Lady")) {
+       gnam = "ARTIKEL_BESTIMMTER NOUN_LADY";
+    }
+#endif
     return gnam;
 }
 
@@ -1823,6 +1841,11 @@ int role;
     }
     if (!gnam) gnam = Moloch;
     if (*gnam == '_') ++gnam;
+#ifdef GERMAN
+    if (!strcmp(gnam, "The Lady")) {
+       gnam = "ARTIKEL_BESTIMMTER NOUN_LADY";
+    }
+#endif
     return gnam;
 }
 
