@@ -86,7 +86,50 @@ START_TEST (test_gott_genitiv) {
 	/* Spezialfaelle */
 	fail_unless(!strcmp("der Lady", gott_genitiv("The Lady")));
 	fail_unless(!strcmp("der Lady", gott_genitiv("ARTIKEL_BESTIMMTER NOUN_LADY")));
-	// fail_unless(!strcmp("des Blinden Io", gott_genitiv("Blind Io"))); // TODO
+	fail_unless(!strcmp("des Blinden Io", von_gott("Blind Io")));
+	fail_unless(!strcmp("des Blinden Io", von_gott("ARTIKEL_BESTIMMTER NOUN_BLIND_IO")));
+} END_TEST
+
+START_TEST (test_von_gott) {
+	fail_unless(!strcmp("von Quetzalcoatl", von_gott("Quetzalcoatl")));
+	fail_unless(!strcmp("von Camaxtli", von_gott("Camaxtli")));
+	fail_unless(!strcmp("von Huhetotl", von_gott("Huhetotl")));
+	fail_unless(!strcmp("von Mitra", von_gott("Mitra")));
+	fail_unless(!strcmp("von Crom", von_gott("Crom")));
+	fail_unless(!strcmp("von Set", von_gott("Set")));
+	fail_unless(!strcmp("von Anu", von_gott("Anu")));
+	fail_unless(!strcmp("der Ishtar", von_gott("Ishtar")));
+	fail_unless(!strcmp("von Anshar", von_gott("Anshar")));
+	fail_unless(!strcmp("der Athena", von_gott("Athena")));
+	fail_unless(!strcmp("von Hermes", von_gott("Hermes")));
+	fail_unless(!strcmp("von Poseidon", von_gott("Poseidon")));
+	fail_unless(!strcmp("von Lugh", von_gott("Lugh")));
+	fail_unless(!strcmp("der Brigit", von_gott("Brigit")));
+	fail_unless(!strcmp("von Manannan Mac Lir", von_gott("Manannan Mac Lir")));
+	fail_unless(!strcmp("von Shan Lai Ching", von_gott("Shan Lai Ching")));
+	fail_unless(!strcmp("von Chih Sung-tzu", von_gott("Chih Sung-tzu")));
+	fail_unless(!strcmp("von Huan Ti", von_gott("Huan Ti")));
+	fail_unless(!strcmp("von Issek", von_gott("Issek")));
+	fail_unless(!strcmp("von Mog", von_gott("Mog")));
+	fail_unless(!strcmp("von Kos", von_gott("Kos")));
+	fail_unless(!strcmp("von Mercury", von_gott("Mercury")));
+	fail_unless(!strcmp("der Venus", von_gott("Venus")));
+	fail_unless(!strcmp("von Mars", von_gott("Mars")));
+	fail_unless(!strcmp("der Amaterasu Omikami", von_gott("Amaterasu Omikami")));
+	fail_unless(!strcmp("von Raijin", von_gott("Raijin")));
+	fail_unless(!strcmp("von Susanowo", von_gott("Susanowo")));
+	fail_unless(!strcmp("von Offler", von_gott("Offler")));
+	fail_unless(!strcmp("von Tyr", von_gott("Tyr")));
+	fail_unless(!strcmp("von Odin", von_gott("Odin")));
+	fail_unless(!strcmp("von Loki", von_gott("Loki")));
+	fail_unless(!strcmp("von Ptah", von_gott("Ptah")));
+	fail_unless(!strcmp("von Thoth", von_gott("Thoth")));
+	fail_unless(!strcmp("von Anhur", von_gott("Anhur")));
+	/* Spezialfaelle */
+	fail_unless(!strcmp("der Lady", von_gott("The Lady")));
+	fail_unless(!strcmp("der Lady", von_gott("ARTIKEL_BESTIMMTER NOUN_LADY")));
+	fail_unless(!strcmp("des Blinden Io", von_gott("Blind Io")));
+	fail_unless(!strcmp("des Blinden Io", von_gott("ARTIKEL_BESTIMMTER NOUN_BLIND_IO")));
 } END_TEST
 
 Suite *test_suite(void)
@@ -98,6 +141,7 @@ Suite *test_suite(void)
 	tcase_set_timeout(tc_core, 20);
 	tcase_add_test(tc_core, test_gott_weiblich);
 	tcase_add_test(tc_core, test_gott_genitiv);
+	tcase_add_test(tc_core, test_von_gott);
 
   return s;
 }

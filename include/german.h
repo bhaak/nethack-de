@@ -87,6 +87,7 @@ char *normalisierung(char *output, const char *input);
 
 int gott_weiblich(const char *name);
 const char *gott_genitiv(const char *name);
+const char *von_gott(const char *name);
 
 char* pronominalisierung(const char *token);
 char* fugenwort(const char *token);

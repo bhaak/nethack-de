@@ -1706,8 +1706,7 @@ const char *name;
 }
 
 char gott_genitiv_tmp[BUFSZ];
-/* Liefert den  Gott namens
- * name im Genitiv zurück. */
+/* Liefert den Gott namens name im Genitiv zurück. */
 const char *
 gott_genitiv(name)
 const char *name;
@@ -1715,10 +1714,32 @@ const char *name;
 	if (!strcmp(name, "ARTIKEL_BESTIMMTER NOUN_LADY") ||
 		!strcmp(name, "The Lady")) {
 		return "der Lady";
+	} else if (!strcmp(name, "ARTIKEL_BESTIMMTER NOUN_BLIND_IO") ||
+		!strcmp(name, "Blind Io")) {
+		return "des Blinden Io";
 	} else {
 		strcpy(gott_genitiv_tmp, gott_weiblich(name) ? "der " : "des ");
 		strcat(gott_genitiv_tmp, name);
 		return gott_genitiv_tmp;
+	}
+}
+
+char von_gott_tmp[BUFSZ];
+/* Liefert die stilistisch bevorzugte Form des generischen "von Gott" zurück. */
+const char *
+von_gott(name)
+const char *name;
+{
+	if (!strcmp(name, "ARTIKEL_BESTIMMTER NOUN_LADY") ||
+		!strcmp(name, "The Lady")) {
+		return "der Lady";
+	} else if (!strcmp(name, "ARTIKEL_BESTIMMTER NOUN_BLIND_IO") ||
+		!strcmp(name, "Blind Io")) {
+		return "des Blinden Io";
+	} else {
+		strcpy(von_gott_tmp, gott_weiblich(name) ? "der " : "von ");
+		strcat(von_gott_tmp, name);
+		return von_gott_tmp;
 	}
 }
 #endif
