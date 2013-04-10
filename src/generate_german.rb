@@ -3677,6 +3677,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BEWUSSTSEIN","Bewusstsein","s","","","neutrum"),
     dekliniere_substantiv("NOUN_BITE","Biss","es","Biss","e","maskulin"),
     dekliniere_substantiv("NOUN_BLADE","Klinge","","Klinge","en","feminin"),
+    dekliniere_nominalphrase("NOUN_BLIND_IO", "Blind", "Io", "", "", "", "maskulin"),
     dekliniere_substantiv("NOUN_BLITZGEWITTER","Blitzgewitter","s","Blitzgewitter","","neutrum"),
     dekliniere_substantiv("NOUN_BOOK","Buch","es","Büch","er","neutrum"),
     dekliniere_substantiv("NOUN_BRUDER","Bruder","s","Brüder","","maskulin"),

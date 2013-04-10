@@ -10222,6 +10222,11 @@ Although not referring to the exactly same rank. */
   {"Klinge", "NOUN_BLADE", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Klingen", "NOUN_BLADEs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Blinden Io", "NOUN_BLIND_IO", "", genitiv|akkusativ|dativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Blinde Io", "NOUN_BLIND_IO", "", nominativ, maskulin, n_singular, bestimmter},
+  {"Blinder Io", "NOUN_BLIND_IO", "", nominativ, maskulin, n_singular, grundform|ohne|unbestimmter},
+  {"Blindem Io", "NOUN_BLIND_IO", "", dativ, maskulin, n_singular, grundform|ohne},
+
   {"Blitzgewitters", "NOUN_BLITZGEWITTER", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Blitzgewitter", "NOUN_BLITZGEWITTER", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Blitzgewitter", "NOUN_BLITZGEWITTERs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},

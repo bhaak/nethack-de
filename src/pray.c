@@ -546,8 +546,8 @@ aligntyp resp_god;
 	char killerbuf[64];
 
 	You("VERB_VERKOHLEN zu einem Brikett."); /* EN You("fry to a crisp."); */
-	killer_format = KILLED_BY;
-	Sprintf(killerbuf, "der Zorn von %s", align_gname(resp_god)); /* EN Sprintf(killerbuf, "the wrath of %s", align_gname(resp_god)); */
+	killer_format = KILLED_WITHOUT_PREPOSITION; /* EN killer_format = KILLED_BY; */
+	Sprintf(killerbuf, "durch den Zorn %s", von_gott(align_gname(resp_god))); /* EN Sprintf(killerbuf, "the wrath of %s", align_gname(resp_god)); */
 	killer = killerbuf;
 	done(DIED);
 }
@@ -573,7 +573,7 @@ aligntyp resp_god;
 
 	switch (rn2(maxanger)) {
 	    case 0:
-	    case 1:	You("VERB_FUEHLEN, dass %s %s ist.", align_gname(resp_god), /* EN case 1:	You_feel("that %s is %s.", align_gname(resp_god), */
+	    case 1:	You("VERB_FUEHLEN, dass KASUS_NOMINATIV %s %s ist.", align_gname(resp_god), /* EN case 1:	You_feel("that %s is %s.", align_gname(resp_god), */
 			    Hallucination ? "entmutigt" : "ungehalten"); /* EN Hallucination ? "bummed" : "displeased"); */
 			break;
 	    case 2:
@@ -795,7 +795,7 @@ pleased(g_align)
 	int trouble = in_trouble();	/* what's your worst difficulty? */
 	int pat_on_head = 0, kick_on_butt;
 
-	You("VERB_SPUEREN, dass %s %s.", align_gname(g_align), /* EN You_feel("that %s is %s.", align_gname(g_align), */
+	You("VERB_SPUEREN, dass KASUS_NOMINATIV %s %s.", align_gname(g_align), /* EN You_feel("that %s is %s.", align_gname(g_align), */
 	    u.ualign.record >= DEVOUT ?
 	    Hallucination ? "sich wie ein Honigkuchenpferd freut" : "höchst erfreut ist" : /* EN Hallucination ? "pleased as punch" : "well-pleased" : */
 	    u.ualign.record >= STRIDENT ?
@@ -869,8 +869,8 @@ pleased(g_align)
 		    if (!Blind)
 			Your("%s %s%s.", aobjnam(uwep, "VERB_LEUCHTEN schwach"), /* EN Your("%s %s%s.", aobjnam(uwep, "softly glow"), */
 			     hcolor(NH_AMBER), repair_buf);
-		    else Du_spuerst("die Macht von %s OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV %s.", /* EN else You_feel("the power of %s over your %s.", */
-			u_gname(), xname(uwep));
+		    else Du_spuerst("die Macht %s OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV %s.", /* EN else You_feel("the power of %s over your %s.", */
+			von_gott(u_gname()), xname(uwep)); /* EN u_gname(), xname(uwep)); */
 		    *repair_buf = '\0';
 		} else if (!uwep->blessed) {
 		    bless(uwep);
@@ -879,8 +879,8 @@ pleased(g_align)
 			Your("%s mit OBJECT KASUS_DATIV %s NOUN_AURA%s.", /* EN Your("%s with %s aura%s.", */ 
 			     aobjnam(uwep, "VERB_LEUCHTEN schwach"), /* EN aobjnam(uwep, "softly glow"), */
 			     an(hcolor(NH_LIGHT_BLUE)), repair_buf);
-		    else Du_spuerst("den Segen von %s OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV %s.", /* EN else You_feel("the blessing of %s over your %s.", */
-			u_gname(), xname(uwep));
+		    else Du_spuerst("den Segen %s OBJECT KASUS_DATIV auf PRONOMEN_POSSESSIV %s.", /* EN else You_feel("the blessing of %s over your %s.", */
+			von_gott(u_gname()), xname(uwep)); /* EN u_gname(), xname(uwep)); */
 		    *repair_buf = '\0';
 		}
 
@@ -941,7 +941,7 @@ pleased(g_align)
 	    int any = 0;
 
 	    if (Blind)
-		You("VERB_SPUEREN die Macht von %s.", u_gname()); /* EN You_feel("the power of %s.", u_gname()); */
+		You("VERB_SPUEREN die Macht %s.", von_gott(u_gname())); /* EN You_feel("the power of %s.", u_gname()); */
 	    else Dich("umgibt SUBJECT_IM_SATZ %s NOUN_AURA.", /* EN else You("are surrounded by %s aura.", */
 		     an(hcolor(NH_LIGHT_BLUE)));
 	    for(otmp=invent; otmp; otmp=otmp->nobj) {
@@ -1072,21 +1072,8 @@ godvoice(g_align, words)
     else
 	words = "";
 
-#ifdef GERMAN
-    const char *god_name = align_gname(g_align);
-    if (strncmp(god_name, "ARTIKEL_BESTIMMTER", 18)==0) {
-	/* Die Stimme der Lady ... */
-        pline_The("NOUN_STIMME KASUS_GENITIV %s %s: %s%s%s", god_name,
-			godvoices[rn2(SIZE(godvoices))], quot, words, quot);
-    } else {
-	/* Die Stimme von Offler ... */
-        pline_The("NOUN_STIMME von %s %s: %s%s%s", god_name, // TODO DE Genitiv-Form?
-			godvoices[rn2(SIZE(godvoices))], quot, words, quot);
-    }
-#else
-    pline_The("voice of %s %s: %s%s%s", align_gname(g_align),
+    pline_The("NOUN_STIMME %s %s: %s%s%s", von_gott(align_gname(g_align)), /* EN pline_The("voice of %s %s: %s%s%s", align_gname(g_align), */
 	  godvoices[rn2(SIZE(godvoices))], quot, words, quot);
-#endif
 }
 
 STATIC_OVL void
@@ -1400,11 +1387,11 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		return(1);
 	    } else {
 		consume_offering(otmp);
-		You("VERB_SPUEREN einen Konflikt zwischen OBJECT KASUS_DATIV %s und KASUS_DATIV %s.", /* EN You("sense a conflict between %s and %s.", */ // TODO DE check wenn zwischen der Lady und dem Blinden Io
+		You("VERB_SPUEREN einen Konflikt zwischen OBJECT KASUS_DATIV %s und KASUS_DATIV %s.", /* EN You("sense a conflict between %s and %s.", */
 		    u_gname(), a_gname());
 		if (rn2(8 + u.ulevel) > 5) {
 		    struct monst *pri;
-		    You("VERB_FUEHLEN, dass die Macht KASUS_DATIV von %s wächst.", u_gname()); /* EN You_feel("the power of %s increase.", u_gname()); */
+		    You("VERB_FUEHLEN, dass die Macht KASUS_DATIV %s wächst.", von_gott(u_gname())); /* EN You_feel("the power of %s increase.", u_gname()); */
 		    exercise(A_WIS, TRUE);
 		    change_luck(1);
 		    /* Yes, this is supposed to be &=, not |= */
@@ -1426,8 +1413,8 @@ verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /*
 		       !p_coaligned(pri))
 			angry_priest();
 		} else {
-		    pline("Bedauerlicherweise SUBJECT_IM_SATZ VERB_FUEHLEN PRONOMEN_PERSONAL, wie die Macht KASUS_DATIV von %s schrumpft.", /* EN pline("Unluckily, you feel the power of %s decrease.", */
-			  u_gname());
+		    pline("Bedauerlicherweise SUBJECT_IM_SATZ VERB_FUEHLEN PRONOMEN_PERSONAL, wie die Macht KASUS_DATIV %s schrumpft.", /* EN pline("Unluckily, you feel the power of %s decrease.", */
+			  von_gott(u_gname())); /* EN u_gname()); */
 		    change_luck(-1);
 		    exercise(A_WIS, FALSE);
 		    if (rnl(u.ulevel) > 6 && u.ualign.record > 0 &&
@@ -1544,7 +1531,7 @@ boolean praying;	/* false means no messages should be given */
     }
 
     if (praying)
-	You("VERB_BETEN zu %s.", align_gname(p_aligntyp)); /* EN You("begin praying to %s.", align_gname(p_aligntyp)); */
+	You("VERB_BETEN KASUS_DATIV zu %s.", align_gname(p_aligntyp)); /* EN You("begin praying to %s.", align_gname(p_aligntyp)); */
 
     if (u.ualign.type && u.ualign.type == -p_aligntyp)
 	alignment = -u.ualign.record;		/* Opposite alignment altar */
@@ -1637,7 +1624,7 @@ prayer_done()		/* M. Stephenson (1.0.3b) */
 	return(1);
     }
     if (Inhell) {
-	pline("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL in _Gehennom_ VERB_SEIN, NEUER_SATZ wird %s KASUS_DATIV PRONOMEN_PERSONAL nicht helfen.", /* EN pline("Since you are in Gehennom, %s won't help you.", */
+	pline("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL in Gehennom VERB_SEIN, NEUER_SATZ wird KASUS_NOMINATIV %s KASUS_DATIV PRONOMEN_PERSONAL nicht helfen.", /* EN pline("Since you are in Gehennom, %s won't help you.", */
 	      align_gname(alignment));
 	/* haltingly aligned is least likely to anger */
 	if (u.ualign.record <= 0 || rnl(u.ualign.record))
@@ -1700,18 +1687,18 @@ doturn()
 		    (is_demon(youmonst.data) || is_undead(youmonst.data))) ||
 				u.ugangr > 6 /* "Die, mortal!" */) {
 
-		pline("Aus irgendeinem Grund scheint %s KASUS_AKKUSATIV PRONOMEN_PERSONAL zu ignorieren.", u_gname()); /* EN pline("For some reason, %s seems to ignore you.", u_gname()); */
+		pline("Aus irgendeinem Grund scheint KASUS_NOMINATIV %s KASUS_AKKUSATIV PRONOMEN_PERSONAL zu ignorieren.", u_gname()); /* EN pline("For some reason, %s seems to ignore you.", u_gname()); */
 		aggravate();
 		exercise(A_WIS, FALSE);
 		return(0);
 	}
 
 	if (Inhell) {
-	    pline("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL in _Gehennom_ VERB_SEIN, NEUER_SATZ wird %s KASUS_DATIV PRONOMEN_PERSONAL nicht helfen.", u_gname()); /* EN pline("Since you are in Gehennom, %s won't help you.", u_gname()); */
+	    pline("Da SUBJECT_IM_SATZ PRONOMEN_PERSONAL in Gehennom VERB_SEIN, NEUER_SATZ wird KASUS_NOMINATIV %s KASUS_DATIV PRONOMEN_PERSONAL nicht helfen.", u_gname()); /* EN pline("Since you are in Gehennom, %s won't help you.", u_gname()); */
 	    aggravate();
 	    return(0);
 	}
-	pline("Calling upon %s, you chant an arcane formula.", u_gname()); /* EN pline("Calling upon %s, you chant an arcane formula.", u_gname()); */ // TODO DE
+	pline("Mit einem arkanen Spruch SUBJECT_IM_SATZ VERB_RUFEN PRONOMEN_PERSONAL KASUS_AKKUSATIV %s an.", u_gname()); /* EN pline("Calling upon %s, you chant an arcane formula.", u_gname()); */
 	exercise(A_WIS, TRUE);
 
 	/* note: does not perform unturn_dead() on victims' inventories */
@@ -1807,6 +1794,8 @@ aligntyp alignment;
 #ifdef GERMAN
     if (!strcmp(gnam, "The Lady")) {
        gnam = "ARTIKEL_BESTIMMTER NOUN_LADY";
+    } else if (!strcmp(gnam, "Blind Io")) {
+       gnam = "ARTIKEL_BESTIMMTER NOUN_BLIND_IO";
     }
 #endif
     return gnam;
@@ -1844,6 +1833,8 @@ int role;
 #ifdef GERMAN
     if (!strcmp(gnam, "The Lady")) {
        gnam = "ARTIKEL_BESTIMMTER NOUN_LADY";
+    } else if (!strcmp(gnam, "Blind Io")) {
+       gnam = "ARTIKEL_BESTIMMTER NOUN_BLIND_IO";
     }
 #endif
     return gnam;
