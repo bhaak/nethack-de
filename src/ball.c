@@ -561,8 +561,8 @@ boolean allow_drag;
 drag:
 
 	if (near_capacity() > SLT_ENCUMBER && dist2(x, y, u.ux, u.uy) <= 2) {
-	    You("cannot %sdrag the heavy iron ball.", /* EN You("cannot %sdrag the heavy iron ball.", */ // TODO DE
-			    invent ? "carry all that and also " : ""); /* EN invent ? "carry all that and also " : ""); */ // TODO DE
+	    You("VERB_KOENNEN nicht %sOBJECT ARTIKEL_BESTIMMTER ADJEKTIV_SCHWER NOUN_IRON_BALL ziehen.", /* EN You("cannot %sdrag the heavy iron ball.", */
+			    invent ? "all das tragen und noch dazu " : ""); /* EN invent ? "carry all that and also " : ""); */
 	    nomul(0);
 	    return FALSE;
 	}
@@ -774,7 +774,7 @@ drag_down()
 	forward = carried(uball) && (uwep == uball || !uwep || !rn2(3));
 
 	if (carried(uball))
-		You("lose your grip on the iron ball."); /* EN You("lose your grip on the iron ball."); */ // TODO DE
+		You("VERB_VERLIEREN den Halt OBJECT KASUS_AKKUSATIV über ARTIKEL_BESTIMMTER NOUN_IRON_BALL"); /* EN You("lose your grip on the iron ball."); */
 
 	if (forward) {
 		if(rn2(6)) {

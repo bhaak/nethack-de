@@ -66,11 +66,11 @@ const char *name;	/* if null, then format `obj' */
 	is_acid = (obj && obj->otyp == ACID_VENOM);
 
 	if(u.uac + tlev <= rnd(20)) {
-		if(Blind || !flags.verbose) pline("It misses."); /* EN if(Blind || !flags.verbose) pline("It misses."); */ // TODO DE
+		if(Blind || !flags.verbose) pline("SUBJECT NOUN_IT VERB_MISS OBJECT PRONOMEN_PERSONAL."); /* EN if(Blind || !flags.verbose) pline("It misses."); */
 		else Dich("SUBJECT_IM_SATZ VERB_TREFFEN beinahe %s.", onm); /* EN else You("are almost hit by %s.", onm); */
 		return(0);
 	} else {
-		if(Blind || !flags.verbose) You("are hit!"); /* EN if(Blind || !flags.verbose) You("are hit!"); */ // TODO DE
+		if(Blind || !flags.verbose) You("VERB_WERDEN getroffen!"); /* EN if(Blind || !flags.verbose) You("are hit!"); */
 		else pline("SUBJECT %s VERB_HIT OBJECT PRONOMEN_PERSONAL%s", onm, exclam(dam)); /* EN else You("are hit by %s%s", onm, exclam(dam)); */
 
 		if (obj && objects[obj->otyp].oc_material == SILVER
@@ -80,7 +80,7 @@ const char *name;	/* if null, then format `obj' */
 			exercise(A_CON, FALSE);
 		}
 		if (is_acid && Acid_resistance)
-			pline("It doesn't seem to hurt you."); /* EN pline("It doesn't seem to hurt you."); */ // TODO DE
+			pline("Sie scheint KASUS_AKKUSATIV PRONOMEN_PERSONAL nicht zu verletzen."); /* EN pline("It doesn't seem to hurt you."); */
 		else {
 			if (is_acid) pline("Das brennt!"); /* EN if (is_acid) pline("It burns!"); */
 			if (Half_physical_damage) dam = (dam+1) / 2;
@@ -180,7 +180,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 	    if (ismimic) seemimic(mtmp);
 	    mtmp->msleeping = 0;
 	    if (vis) hit(distant_name(otmp,mshot_xname), mtmp, exclam(damage));
-	    else if (verbose) pline("SUBJECT %s is hit%s", Monnam(mtmp), exclam(damage)); /* EN else if (verbose) pline("%s is hit%s", Monnam(mtmp), exclam(damage)); */ // TODO DE
+	    else if (verbose) pline("SUBJECT %s VERB_WERDEN getroffen%s", Monnam(mtmp), exclam(damage)); /* EN else if (verbose) pline("%s is hit%s", Monnam(mtmp), exclam(damage)); */
 
 	    if (otmp->opoisoned && is_poisonable(otmp)) {
 		if (resists_poison(mtmp)) {
@@ -340,8 +340,8 @@ m_throw(mon, x, y, dx, dy, range, obj)
 			    makeknown(singleobj->otyp);
 			    dropy(singleobj);
 			} else {
-			    You("accept %s in the spirit in which it was intended.", /* EN You("accept %s gift in the spirit in which it was intended.", */ // TODO DE
-				genitivattribut_zu_wort(mon_nam(mon), "NOUN_GIFT")); /* EN s_suffix(mon_nam(mon))); */
+			    You("VERB_NEHMEN OBJECT %s dankbar an NEUES_OBJECT OBJECT PRONOMEN_PERSONAL.", /* EN You("accept %s gift in the spirit in which it was intended.", */
+				genitivattribut_zu_wort(mon_nam(mon), "NOUN_GESCHENK")); /* EN s_suffix(mon_nam(mon))); */
 			    (void)hold_another_object(singleobj,
 				"SUBJECT PRONOMEN_PERSONAL VERB_FANGEN, VERB_DROP OBJECT ARTIKEL_BESTIMMTER %s aber wieder SATZKLAMMER.", xname(singleobj), /* EN "You catch, but drop, %s.", xname(singleobj), */
 				"SUBJECT PRONOMEN_PERSONAL VERB_FANGEN:"); /* EN "You catch:"); */

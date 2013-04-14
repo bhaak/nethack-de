@@ -175,7 +175,7 @@ wildmiss(mtmp, mattk)		/* monster attacked your displaced image */
 		mattk->aatyp == AT_KICK ? "VERB_TRETEN" : /* EN mattk->aatyp == AT_KICK ? "kicks" : */
 		(mattk->aatyp == AT_STNG ||
 		 mattk->aatyp == AT_BUTT ||
-		 nolimbs(mtmp->data)) ? "lunges" : "swings"; /* EN nolimbs(mtmp->data)) ? "lunges" : "swings"; */ // TODO DE
+		 nolimbs(mtmp->data)) ? "VERB_SPRINGEN" : "VERB_SCHLAGEN"; /* EN nolimbs(mtmp->data)) ? "lunges" : "swings"; */
 
 	    if (compat)
 		pline("SUBJECT %s VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL zu berühren, VERB_MISS OBJECT PRONOMEN_PERSONAL aber!", Monnam(mtmp)); /* EN pline("%s tries to touch you and misses!", Monnam(mtmp)); */
@@ -1297,7 +1297,7 @@ dopois:
 			pline("SUBJECT %s VERB_VERSUCHEN OBJECT PRONOMEN_PERSONAL zu %s, NEUER_SATZ aber SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_SCHEINEN %s.", /* EN pline("%s tries to %s you, but you seem %s.", */
 			    Adjmonnam(mtmp, "ADJEKTIV_UNATTRAKTIV"), /* EN Adjmonnam(mtmp, "plain"), */
 			    flags.female ? "MODIFIER_VERB_INFINITIV VERB_BEZIRZEN" : "VERB_SEDUCE", /* EN flags.female ? "charm" : "seduce", */
-			    flags.female ? "unaffected" : "kein Interesse zu haben"); /* EN flags.female ? "unaffected" : "uninterested"); */ // TODO DE
+			    flags.female ? "unbeeindruckt" : "kein Interesse zu haben"); /* EN flags.female ? "unaffected" : "uninterested"); */
 		    }
 		    if(rn2(3)) {
 			if (!tele_restrict(mtmp)) (void) rloc(mtmp, FALSE);
@@ -1425,7 +1425,7 @@ dopois:
 		} else {
 		    if (Role_if(PM_HEALER)) {
 			if (flags.soundok && !(moves % 5))
-		      verbalize("Doc, I can't help you unless you cooperate."); /* EN verbalize("Doc, I can't help you unless you cooperate."); */ // TODO DE
+		      verbalize("Dok, Ich kann Ihnen nicht helfen, wenn Sie nicht kooperieren."); /* EN verbalize("Doc, I can't help you unless you cooperate."); */
 			dmg = 0;
 		    } else hitmsg(mtmp, mattk);
 		}
@@ -2430,7 +2430,7 @@ const char *str;
 	} else {
 		char hairbuf[BUFSZ];
 
-		Sprintf(hairbuf, "let me run my fingers through your %s", /* EN Sprintf(hairbuf, "let me run my fingers through your %s", */ // TODO DE
+		Sprintf(hairbuf, "lass mich durch KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s streichen", /* EN Sprintf(hairbuf, "let me run my fingers through your %s", */
 			body_part(HAIR));
 		verbalize("Zieh KASUS_AKKUSATIV ARTIKEL_BESTIMMTER %s aus; %s.", str, /* EN verbalize("Take off your %s; %s.", str, */
 			(obj == uarm)  ? "rück' ein bisschen näher" : /* EN (obj == uarm)  ? "let's get a little closer" : */

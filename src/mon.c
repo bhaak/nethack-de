@@ -2039,8 +2039,8 @@ int  typ, fatal;
 	    /* so have "poison arrow", "poison dart", etc... */
 	    plural = (string[strlen(string) - 1] == 's')? 1 : 0;
 	    /* avoid "The" Orcus's sting was poisoned... */
-	    pline("SUBJECT %s%s %s vergiftet!",  ((strncmp(string, "ARTIKEL_",8)==0) || !isupper(string[1])) ? "" : "ARTIKEL_BESTIMMTER ", /* EN pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", */ /* grep poisoned\( *.c, mthrowu.c:393 */
-			string, plural ? "waren" : "war"); /* EN string, plural ? "were" : "was"); */
+	    pline("SUBJECT %s%s MODIFIER_VERB_PRAETERITUM VERB_SEIN vergiftet!",  ((strncmp(string, "ARTIKEL_",8)==0) || !isupper(string[1])) ? "" : "ARTIKEL_BESTIMMTER ", /* EN pline("%s%s %s poisoned!", isupper(*string) ? "" : "The ", */ /* grep poisoned\( *.c, mthrowu.c:393 */
+			string); /* EN string, plural ? "were" : "was"); */
 	}
 
 	if(Poison_resistance) {
@@ -2049,7 +2049,7 @@ int  typ, fatal;
 		return;
 	}
 	/* suppress killer prefix if it already has one */
-	if ((i = name_to_mon(pname)) >= LOW_PM && mons[i].geno & G_UNIQ) { // TODO DE check ist das richtiger Eigennamencheck
+	if ((i = name_to_mon(pname)) >= LOW_PM && mons[i].geno & G_UNIQ) {
 	    kprefix = KILLED_BY;
 	    if (!type_is_pname(&mons[i])) pname = the(pname);
 	} else if (!strncmpi(pname, "ARTIKEL_BESTIMMTER ", 19) || /* EN } else if (!strncmpi(pname, "the ", 4) || */

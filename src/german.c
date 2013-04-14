@@ -59,6 +59,7 @@ enum Partizip verb_partizip = 0;
 enum Casus  verb_do_casus = 0;
 int verb_infinitiv = 0;
 int verb_imperativ = 0;
+int verb_substantiviert = 0;
 
 /* c_ => current state */
 enum Casus   c_casus = 0;
@@ -564,7 +565,7 @@ const char* get_verb(const char* verb, enum Person p, enum Numerus n, enum Tempu
 #ifdef DEBUG
 	printf("%s %d %d", verb, p, n);
 #endif
-	if (verb_infinitiv) {
+	if (verb_infinitiv || verb_substantiviert) {
 		// Infinitiv
 		while (verben_infinitiv[i].typ != NULL) {
 			if (strcmp(verben_infinitiv[i].typ, verb)==0) {
@@ -876,6 +877,7 @@ void clear_verb() {
 	verb_partizip=0;
 	verb_infinitiv=0;
 	verb_imperativ=0;
+	verb_substantiviert=0;
 
 	verb_tempus_modus = praesens;
 }
@@ -1251,6 +1253,10 @@ char* german(const char *line) {
 			    (output[beginning_of_appended_word-1]=='-')) {
 				output[beginning_of_appended_word-1] = '\0';
 			}
+			if (verb_substantiviert) {
+				/* Hack fuer substantivierte Verben */
+				beginning_of_sentence = 1;
+			}
 			append(output, get_verb(tmp, subject_person, subject_numerus, verb_tempus_modus));
 			c_artikel = grundform; // für prädikativen bzw adverbialen Gebrauch nötig "Das Pferd ist gesattelt."
 
@@ -1359,6 +1365,7 @@ char* german(const char *line) {
 			else if (strcmp("MODIFIER_KONJUNKTIV_II", tmp)==0) { verb_tempus_modus = konjunktiv_ii; }
 			else if (strcmp("MODIFIER_VERB_INFINITIV", tmp)==0) { verb_infinitiv = 1; }
 			else if (strcmp("MODIFIER_VERB_IMPERATIV", tmp)==0) { verb_imperativ = 1; }
+			else if (strcmp("MODIFIER_VERB_SUBSTANTIVIERT", tmp)==0) { verb_substantiviert = 1; }
 			else if (strcmp("MODIFIER_EIGENNAME", tmp)==0) { }
 
 			else if (strcmp("MODIFIER_ADJEKTIV_ADVERBIAL", tmp)==0) { c_artikel = grundform; }
@@ -1477,6 +1484,12 @@ genitivattribut_zu_wort(attribut, wort)		/* return a name converted to possessiv
 	if(!strcmp(attribut, "NOUN_IT")) {
 		strcat(buf, "PRONOMEN_SEIN "); /* sein Wort */
 		strcat(buf, wort);
+	} else if (!strncmp(attribut, "PRONOMEN_POSSESSIV ", 19)) {
+		strcat(buf, "ARTIKEL_BESTIMMTER ");
+		strcat(buf, wort);
+		strcat(tmp, " KASUS_GENITIV ");
+		strcat(tmp, attribut);
+		strcat(buf, german(tmp)); /* das Wort deines/Eures Attributes */
 	} else if (!strncmp(attribut, "PRONOMEN_POSSESSIV", 18)) {
 		strcat(buf, attribut);
 		strcat(buf, " ");

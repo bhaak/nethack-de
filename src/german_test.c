@@ -533,6 +533,8 @@ START_TEST (test_verbs) {
 		 "Du lässt 2 blauglänzende Tränke fallen."},
 		{"SUBJECT ARTIKEL_BESTIMMTER NOUN_OBJ_DOOR VERB_OPEN SATZKLAMMER.",
 		 "Die Türe geht auf."},
+		{"SUBJECT Das MODIFIER_VERB_SUBSTANTIVIERT VERB_FOTOGRAFIEREN ist ein Hobby.",
+		 "Das Fotografieren ist ein Hobby."},
 		{"Hier ist niemand, den SUBJECT_IM_SATZ PRONOMEN_PERSONAL um Rat fragen MODIFIER_KONJUNKTIV_II VERB_KOENNEN.",
 		 "Hier ist niemand, den du um Rat fragen könntest."},
 	};

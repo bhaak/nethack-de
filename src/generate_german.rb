@@ -4351,6 +4351,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_LIT","entzündet"),
     dekliniere_adjektiv("ADJEKTIV_MAGIE_ABSORBIEREND","magie-absorbierend"),
     dekliniere_adjektiv("ADJEKTIV_MAGISCH","magisch"),
+    dekliniere_adjektiv("ADJEKTIV_MARKIERT","markiert"),
     dekliniere_adjektiv("ADJEKTIV_METALLEN","metallen"),
     dekliniere_adjektiv("ADJEKTIV_MINERALISCH","mineralisch"),
     dekliniere_adjektiv("ADJEKTIV_MITHRILERN", "mithrilern"),

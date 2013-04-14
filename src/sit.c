@@ -5,6 +5,10 @@
 #include "hack.h"
 #include "artifact.h"
 
+#ifdef GERMAN
+# include "german.h"
+#endif
+
 void
 take_gold()
 {
@@ -203,7 +207,7 @@ dosit()
 			register int cnt = rnd(10);
 
 			pline("Eine Stimme ertönt:"); /* EN pline("A voice echoes:"); */
-			verbalize("Thy audience hath been summoned, %s!", /* EN verbalize("Thy audience hath been summoned, %s!", */ // TODO DE
+			verbalize("Euer Auditorium erwartet Euch bereits, %s!", /* EN verbalize("Thy audience hath been summoned, %s!", */
 				  flags.female ? "Gebieterin" : "Gebieter"); /* EN flags.female ? "Dame" : "Sire"); */
 			while(cnt--)
 			    (void) makemon(courtmon(), u.ux, u.uy, NO_MM_FLAGS);
@@ -211,13 +215,13 @@ dosit()
 			}
 		    case 8:
 			pline("Eine Stimme ertönt:"); /* EN pline("A voice echoes:"); */
-			verbalize("By thy Imperious order, %s...", /* EN verbalize("By thy Imperious order, %s...", */ // TODO DE
+			verbalize("Wie es Euch beliebt, %s...", /* EN verbalize("By thy Imperious order, %s...", */
 				  flags.female ? "Gebieterin" : "Gebieter"); /* EN flags.female ? "Dame" : "Sire"); */
 			do_genocide(5);	/* REALLY|ONTHRONE, see do_genocide() */
 			break;
 		    case 9:
 			pline("Eine Stimme ertönt:"); /* EN pline("A voice echoes:"); */
-	verbalize("Sei verflucht for sitting upon this most holy throne!"); /* EN verbalize("A curse upon thee for sitting upon this most holy throne!"); */ // TODO DE
+	verbalize("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_SEIN verflucht dafür, NEUER_SATZ dass SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL auf diesem allerheiligsten Thron niedergelassen VERB_HABEN!"); /* EN verbalize("A curse upon thee for sitting upon this most holy throne!"); */
 			if (Luck > 0)  {
 			    make_blinded(Blinded + rn1(100,250),TRUE);
 			} else	    rndcurse();
@@ -349,7 +353,7 @@ rndcurse()			/* curse a few inventory items at random! */
 
 		if(otmp->oartifact && spec_ability(otmp, SPFX_INTEL) &&
 		   rn2(10) < 8) {
-		    pline("%s!", Tobjnam(otmp, "resist")); /* EN pline("%s!", Tobjnam(otmp, "resist")); */ // TODO DE
+		    pline("%s!", Tobjnam(otmp, "VERB_WIDERSTEHEN")); /* EN pline("%s!", Tobjnam(otmp, "resist")); */
 		    continue;
 		}
 
@@ -371,9 +375,9 @@ rndcurse()			/* curse a few inventory items at random! */
 	    else
 		curse(otmp);
 	    if (!Blind) {
-		pline("%s %s %s.", /* EN pline("%s %s %s.", */ // TODO DE
-		      s_suffix(upstart(y_monnam(u.usteed))), /* EN s_suffix(upstart(y_monnam(u.usteed))), */ // TODO DE
-		      aobjnam(otmp, "glow"), /* EN aobjnam(otmp, "glow"), */ // TODO DE
+		pline("SUBJECT %s %s %s.", /* EN pline("%s %s %s.", */
+		      genitivattribut_zu_wort(y_monnam(u.usteed), /* EN s_suffix(upstart(y_monnam(u.usteed))), */
+		      cxname(otmp)), "VERB_LEUCHTEN", /* EN aobjnam(otmp, "glow"), */
 		      hcolor(otmp->cursed ? NH_BLACK : (const char *)"ADJEKTIV_FARBE_BRAUN")); /* EN hcolor(otmp->cursed ? NH_BLACK : (const char *)"brown")); */
 		otmp->bknown = TRUE;
 	    }

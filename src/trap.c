@@ -2548,7 +2548,7 @@ domagictrap()
 			else
 			    You("VERB_HABEN plötzlich %s nach OBJECT KASUS_GENITIV %s.", /* EN You("suddenly yearn for %s.", */
 				Hallucination ? "Sehnsucht" : "Heimweh", Hallucination ? "Westerland" : /* EN Hallucination ? "Cleveland" : */
-			    (In_quest(&u.uz) || at_dgn_entrance("The Quest")) ?  /* EN (In_quest(&u.uz) || at_dgn_entrance("The Quest")) ? */ // TODO DE
+			    (In_quest(&u.uz) || at_dgn_entrance("The Quest")) ?
 						"PRONOMEN_POSSESSIV ADJEKTIV_NAHE NOUN_HEIMAT" : /* EN "your nearby homeland" : */
 						"PRONOMEN_POSSESSIV ADJEKTIV_WEITENTFERNT NOUN_HEIMAT"); /* EN "your distant homeland"); */
 			break;

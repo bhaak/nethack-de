@@ -591,7 +591,7 @@ int how;
 			    Sprintf(pbuf,
 			  "SUBJECT PRONOMEN_PERSONAL VERB_HABEN OBJECT PRONOMEN_POSSESSIV ADJEKTIV_AKTUELL NOUN_REKORD von %ld Punkten nicht geschlagen.", /* EN "You didn't beat your previous score of %ld points.", */
 				    t1->points);
-			    topten_print(pbuf);
+			    topten_print(german(pbuf)); /* EN topten_print(pbuf); */
 			    topten_print("");
 			}
 		    }

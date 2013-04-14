@@ -432,9 +432,9 @@ register const char *word;
 			   implicitly forced to be 1; replicate its kludge... */
 			if (!strcmp(word, "werfen") && obj->quan > 1L) /* EN if (!strcmp(word, "throw") && obj->quan > 1L) */
 			    obj->corpsenm = 1;
-			pline("For some reason, you cannot %s%s the stone%s!", /* EN pline("For some reason, you cannot %s%s the stone%s!", */ // TODO DE "Aus irgendeinem Grund VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT ARTIKEL_BESTIMMTER NOUN_GEM_ROCK%s nicht %s!"
-			      word, obj->corpsenm ? " any of" : "", /* EN word, obj->corpsenm ? " any of" : "", */ // TODO DE
-			      plur(obj->quan));
+			pline("Aus irgendeinem Grund VERB_KOENNEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s %s!", /* EN pline("For some reason, you cannot %s%s the stone%s!", */
+			      obj->quan == 1 ? "den Stein nicht" : "keinen der Steine", /* EN word, obj->corpsenm ? " any of" : "", */
+			      word); /* EN plur(obj->quan)); */
 		}
 		obj->corpsenm = 0;		/* reset */
 		obj->bknown = 1;
@@ -442,7 +442,7 @@ register const char *word;
 	}
 	if (obj->otyp == LEASH && obj->leashmon != 0) {
 		if (*word)
-			pline_The("NOUN_LEASH is around your %s.", /* EN pline_The("leash is tied around your %s.", */ // TODO DE
+			pline_The("NOUN_LEASH VERB_SEIN OBJECT um PRONOMEN_POSSESSIV %s gewickelt.", /* EN pline_The("leash is tied around your %s.", */
 					body_part(HAND));
 		return(FALSE);
 	}
@@ -1312,7 +1312,7 @@ boolean at_stairs, falling, portal;
 	    };
 	    static const char * const halu_fam_msgs[4] = {
 		"Verschärft!  Alles %s anders.", /* EN "Whoa!  Everything %s different.", */
-		"You are surrounded by twisty little passages, all alike.", /* EN "You are surrounded by twisty little passages, all alike.", */ // TODO DE
+		"SUBJECT PRONOMEN_PERSONAL VERB_SEIN umgeben von kleinen, gewundenen Gängen, alle genau gleich.", /* EN "You are surrounded by twisty little passages, all alike.", */
 		"Hey, das ist ja wie bei Onkel Conan ...", /* EN "Gee, this %s like uncle Conan's place...", */
 		0	/* no message */
 	    };
@@ -1342,7 +1342,7 @@ boolean at_stairs, falling, portal;
 		pline("Die Hitze und der Rauch sind verschwunden."); /* EN pline_The("heat and smoke are gone."); */
 
 	/* the message from your quest leader */
-	if (!In_quest(&u.uz0) && at_dgn_entrance("The Quest") && /* EN if (!In_quest(&u.uz0) && at_dgn_entrance("The Quest") && */ // TODO DE
+	if (!In_quest(&u.uz0) && at_dgn_entrance("The Quest") &&
 		!(u.uevent.qexpelled || u.uevent.qcompleted || quest_status.leader_is_dead)) {
 
 		if (u.uevent.qcalled) {

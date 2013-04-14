@@ -335,7 +335,7 @@ register struct obj *obj;
 	if (obj->oartifact) {
 		pline_The("NOUN_ARTIFACT VERB_SCHEINEN dem Versuch zu widerstehen."); /* EN pline_The("artifact seems to resist the attempt."); */
 		return;
-	} else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) { /* EN } else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) { */ // TODO DE
+	} else if (restrict_name(obj, buf) || exist_artifact(obj->otyp, buf)) {
 		int n = rn2((int)strlen(buf));
 		register char c1, c2;
 
@@ -567,7 +567,6 @@ register struct obj *obj;
 static const char * const ghostnames[] = {
 	/* these names should have length < PL_NSIZ */
 	/* Capitalize the names for aesthetics -dgk */
-	// TODO DE?
 	"Adri", "Andries", "Andreas", "Bert", "David", "Dirk", "Emile",
 	"Frans", "Fred", "Greg", "Hether", "Jay", "John", "Jon", "Karnov",
 	"Kay", "Kenny", "Kevin", "Maud", "Michiel", "Mike", "Peter", "Robert",
@@ -1250,7 +1249,7 @@ static NEARDATA const char * const hcolors[] = {
 #endif
 	"ADJEKTIV_FARBE_ULTRAVIOLETT", "ADJEKTIV_FARBE_INFRAROT", "bläulich-ADJEKTIV_FARBE_ORANGE", /* EN "ultraviolet", "infrared", "bluish-orange", */
 	"rot-ADJEKTIV_FARBE_GREEN", "dunkel-ADJEKTIV_FARBE_WHITE", "hell-ADJEKTIV_FARBE_BLACK", "himmelblau--ADJEKTIV_FARBE_PINK", /* EN "reddish-green", "dark white", "light black", "sky blue-pink", */
-	"ADJEKTIV_FARBE_SALZIG", "ADJEKTIV_FARBE_SUESS", "ADJEKTIV_FARBE_SAUER", "ADJEKTIV_FARBE_BITTER", "umami" /* EN "salty", "sweet", "sour", "bitter", */
+	"ADJEKTIV_FARBE_SALZIG", "ADJEKTIV_FARBE_SUESS", "ADJEKTIV_FARBE_SAUER", "ADJEKTIV_FARBE_BITTER", "umami", /* EN "salty", "sweet", "sour", "bitter", */
 	"ADJEKTIV_FARBE_GESTREIFT", "ADJEKTIV_FARBE_GEWUNDEN", "ADJEKTIV_FARBE_VERDREHT", "ADJEKTIV_FARBE_GEBLUEMT", "ADJEKTIV_FARBE_KARIERT", /* EN "striped", "spiral", "swirly", "plaid", "checkered", "argyle", */
 	"ADJEKTIV_FARBE_GEFLECKT", "ADJEKTIV_FARBE_GEPUNKTET", /* EN "paisley", "blotchy", "guernsey-spotted", "polka-dotted", */
 	"ADJEKTIV_FARBE_QUADRATISCH", "ADJEKTIV_FARBE_RUND", "ADJEKTIV_FARBE_DREIECKIG", /* EN "square", "round", "triangular", */
@@ -1279,7 +1278,6 @@ rndcolor()
 /* Aliases for road-runner nemesis
  */
 static const char * const coynames[] = {
-// TODO DE
 	"Carnivorous Vulgaris","Road-Runnerus Digestus",
 	"Eatibus Anythingus"  ,"Famishus-Famishus",
 	"Eatibus Almost Anythingus","Eatius Birdius",

@@ -891,7 +891,7 @@ char *hittee;			/* target's name: "you" or mon_nam(mdef) */
 
     case MB_INDEX_PROBE:
 	if (youattack && (mb->spe == 0 || !rn2(3 * abs(mb->spe)))) {
-	    pline("Das MODIFIER_VERB_INFINITIV %s ist aufschlussreich.", verb); /* EN pline_The("%s is insightful.", verb); */ // TODO DE: substantiviertes Verb!
+	    pline("Das MODIFIER_VERB_SUBSTANTIVIERT %s ist aufschlussreich.", verb); /* EN pline_The("%s is insightful.", verb); */
 	    /* pre-damage status */
 	    probe_monster(mdef);
 	}

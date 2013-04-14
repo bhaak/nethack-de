@@ -62,8 +62,8 @@ STATIC_VAR NEARDATA const short skill_names_indices[P_NUM_SKILLS] = {
 /* note: entry [0] isn't used */
 STATIC_VAR NEARDATA const char * const odd_skill_names[] = {
     "PRONOMEN_KEIN NOUN_SKILL", /* EN "no skill", */
-    "bare hands",		/* use barehands_or_martial[] instead */ /* EN "bare hands",		 */ // TODO DE
-    "two weapon combat", /* EN "two weapon combat", */ // TODO DE
+    "ADJEKTIV_BARE NOUN_HANDs",		/* use barehands_or_martial[] instead */ /* EN "bare hands",		 */
+    "Zwei-Waffen-Kampf", /* EN "two weapon combat", */
     "Reiten", /* EN "riding", */
     "NOUN_POLEARMs", /* EN "polearms", */
     "NOUN_SABER", /* EN "saber", */
@@ -79,7 +79,7 @@ STATIC_VAR NEARDATA const char * const odd_skill_names[] = {
 };
 /* indexed vis `is_martial() */
 STATIC_VAR NEARDATA const char * const barehands_or_martial[] = {
-    "bare handed combat", "martial arts" /* EN "bare handed combat", "martial arts" */ // TODO DE
+    "waffenloser Kampf", "Kampfkünste" /* EN "bare handed combat", "martial arts" */
 };
 
 STATIC_OVL void
@@ -831,12 +831,14 @@ int skill;
     P_SKILL(skill)++;
     u.skill_record[u.skills_advanced++] = skill;
     /* subtly change the advance message to indicate no more advancement */
-    You("VERB_SEIN jetzt %s in der Handhabung OBJECT KASUS_DATIV von %s%s.", /* EN You("are now %s skilled in %s.", */ // TODO DE
+    You("VERB_SEIN jetzt %s %s%s%s.", /* EN You("are now %s skilled in %s.", */
 	P_SKILL(skill) >= P_MAX_SKILL(skill) ? "am geübtesten" : "geübter", /* EN P_SKILL(skill) >= P_MAX_SKILL(skill) ? "most" : "more", */
 #ifdef GERMAN
-	P_NAME(skill),
-	/* TODO DE: Kampffertigkeiten sind noch ungrammatisch */
-	skill < P_LAST_WEAPON ? "s" : (skill < P_LAST_SPELL) ? "n" : "");
+	skill == P_BARE_HANDED_COMBAT ? "im waffenlosen Kampf" :
+	 skill >= P_FIRST_H_TO_H ? "im " : "in der Handhabung OBJECT KASUS_DATIV von ",
+	skill == P_BARE_HANDED_COMBAT ? "" : P_NAME(skill),
+	/* an Waffen und Zaubersprueche korrekte Pluralform anhaengen */
+	skill <= P_LAST_WEAPON ? "s" : (skill <= P_LAST_SPELL) ? "n" : "");
 #else
 	P_NAME(skill));
 #endif
@@ -846,9 +848,9 @@ const static struct skill_range {
 	short first, last;
 	const char *name;
 } skill_ranges[] = {
-    { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Kampf-NOUN_SKILLs" }, /* EN { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Fighting Skills" }, */
-    { P_FIRST_WEAPON, P_LAST_WEAPON, "Waffen-NOUN_SKILLs" }, /* EN { P_FIRST_WEAPON, P_LAST_WEAPON, "Weapon Skills" }, */
-    { P_FIRST_SPELL,  P_LAST_SPELL,  "Zauber-NOUN_SKILLs" }, /* EN { P_FIRST_SPELL,  P_LAST_SPELL,  "Spellcasting Skills" }, */
+    { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Kampf" }, /* EN { P_FIRST_H_TO_H, P_LAST_H_TO_H, "Fighting Skills" }, */
+    { P_FIRST_WEAPON, P_LAST_WEAPON, "Waffen" }, /* EN { P_FIRST_WEAPON, P_LAST_WEAPON, "Weapon Skills" }, */
+    { P_FIRST_SPELL,  P_LAST_SPELL,  "Zauber" }, /* EN { P_FIRST_SPELL,  P_LAST_SPELL,  "Spellcasting Skills" }, */
 };
 
 /*
@@ -897,17 +899,17 @@ enhance_weapon_skill()
 		any.a_void = 0;
 		if (eventually_advance > 0) {
 		    Sprintf(buf,
-			    "(Skill%s flagged by \"*\" may be enhanced %s.)", /* EN "(Skill%s flagged by \"*\" may be enhanced %s.)", */ // TODO DE
+			    "(SUBJECT ARTIKEL_BESTIMMTER mit \"*\" ADJEKTIV_MARKIERT NOUN_SKILL%s VERB_KOENNEN verbessert werden, %s.)", /* EN "(Skill%s flagged by \"*\" may be enhanced %s.)", */
 			    plur(eventually_advance),
 			    (u.ulevel < MAXULEV) ?
-				"when you're more experienced" : /* EN "when you're more experienced" : */ // TODO DE
-				"if skill slots become available"); /* EN "if skill slots become available"); */ // TODO DE
+				"wenn NEUER_SATZ SUBJECT_IM_SATZ PRONOMEN_PERSONAL erfahrener VERB_SEIN" : /* EN "when you're more experienced" : */
+				"wenn Plätze frei werden"); /* EN "if skill slots become available"); */
 		    add_menu(win, NO_GLYPH, &any, 0, 0, ATR_NONE,
 			     buf, MENU_UNSELECTED);
 		}
 		if (maxxed_cnt > 0) {
 		    Sprintf(buf,
-		  "(Skill%s flagged by \"#\" cannot be enhanced any further.)", /* EN "(Skill%s flagged by \"#\" cannot be enhanced any further.)", */ // TODO DE
+		  "(SUBJECT ARTIKEL_BESTIMMTER mit \"#\" ADJEKTIV_MARKIERT NOUN_SKILL%s VERB_KOENNEN nicht weiter verbessert werden.)", /* EN "(Skill%s flagged by \"#\" cannot be enhanced any further.)", */
 			    plur(maxxed_cnt));
 		    add_menu(win, NO_GLYPH, &any, 0, 0, ATR_NONE,
 			     buf, MENU_UNSELECTED);
@@ -974,11 +976,11 @@ enhance_weapon_skill()
 			 buf, MENU_UNSELECTED);
 	    }
 
-	    Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" : /* EN Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" : */ // TODO DE
+	    Strcpy(buf, (to_advance > 0) ? "SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WAEHLEN OBJECT ARTIKEL_UNBESTIMMTER NOUN_SKILL, die verbessert werden soll:" : /* EN Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" : */
 					   "SATZBEGINN ADJEKTIV_DERZEITIG NOUN_SKILLs:"); /* EN "Current skills:"); */
 #ifdef WIZARD
 	    if (wizard && !speedy)
-		Sprintf(eos(buf), "  (%d slot%s available)", /* EN Sprintf(eos(buf), "  (%d slot%s available)", */ // TODO DE
+		Sprintf(eos(buf), "  (KASUS_NOMINATIV %d Fertigkeiten-NOUN_PLATZ%s verfügbar)", /* EN Sprintf(eos(buf), "  (%d slot%s available)", */
 			u.weapon_slots, plur(u.weapon_slots));
 #endif
 	    end_menu(win, buf);
@@ -1317,9 +1319,9 @@ register struct obj *obj;
     if (artifact_light(obj) && obj->lamplit) {
 	end_burn(obj, FALSE);
 	if (canseemon(mon))
-	    pline("%s in %s %s %s glowing.", The(xname(obj)), /* EN pline("%s in %s %s %s glowing.", The(xname(obj)), */ // TODO DE
-		  s_suffix(mon_nam(mon)), mbodypart(mon,HAND), /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND), */ // TODO DE
-		  otense(obj, "stop")); /* EN otense(obj, "stop")); */ // TODO DE
+	    pline("SUBJECT %s in %s %s zu leuchten SATZKLAMMER.", The(xname(obj)), /* EN pline("%s in %s %s %s glowing.", The(xname(obj)), */
+		  genitivattribut_zu_wort(mon_nam(mon), mbodypart(mon,HAND)), /* EN s_suffix(mon_nam(mon)), mbodypart(mon,HAND), */
+		  otense(obj, "VERB_AUFHOEREN")); /* EN otense(obj, "stop")); */
     }
     obj->owornmask &= ~W_WEP;
 }
