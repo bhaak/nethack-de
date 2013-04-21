@@ -674,10 +674,13 @@ struct monst *mtmp;
 static const char *levitate[4]	= { "VERB_SCHWEBEN", "VERB_SCHWEBEN", "VERB_EIERN", "VERB_EIERN" }; /* EN static const char *levitate[4]	= { "float", "Float", "wobble", "Wobble" }; */
 static const char *flys[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "VERB_FLATTERN", "VERB_FLATTERN" }; /* EN static const char *flys[4]	= { "fly", "Fly", "flutter", "Flutter" }; */
 static const char *flyl[4]	= { "VERB_FLIEGEN", "VERB_FLIEGEN", "VERB_STAGGER", "VERB_STAGGER" }; /* EN static const char *flyl[4]	= { "fly", "Fly", "stagger", "Stagger" }; */
-static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; /* EN static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; */ // TODO DE krauchen?
+static const char *slither[4]	= { "VERB_KRIECHEN", "VERB_KRIECHEN", "VERB_WANKEN", "VERB_WANKEN" }; /* EN static const char *slither[4]	= { "slither", "Slither", "falter", "Falter" }; */
 static const char *ooze[4]	= { "VERB_SUPPEN", "VERB_SUPPEN", "VERB_ZITTERN", "VERB_ZITTERN" }; /* EN static const char *ooze[4]	= { "ooze", "Ooze", "tremble", "Tremble" }; */
 static const char *immobile[4]	= { "VERB_WACKELN", "VERB_WACKELN", "VERB_PULSIEREN", "VERB_PULSIEREN" }; /* EN static const char *immobile[4]	= { "wiggle", "Wiggle", "pulsate", "Pulsate" }; */
 static const char *crawl[4]	= { "VERB_KRIECHEN", "VERB_KRIECHEN", "VERB_WANKEN", "VERB_WANKEN" }; /* EN static const char *crawl[4]	= { "crawl", "Crawl", "falter", "Falter" }; */
+#ifdef GERMAN
+static const char *snaky[4]	= { "VERB_SCHLAENGELN", "VERB_SCHLAENGELN", "VERB_WANKEN", "VERB_WANKEN" };
+#endif
 
 const char *
 locomotion(ptr, def)
@@ -691,9 +694,7 @@ const char *def;
 		(is_flyer(ptr) && ptr->msize <= MZ_SMALL) ? flys[capitalize] :
 		(is_flyer(ptr) && ptr->msize > MZ_SMALL)  ? flyl[capitalize] :
 #ifdef GERMAN
-		// KAPUTT 
- //"eine neue Fortbewegungsart fuer Schlangen einbauen" : schlängeln // TODO DE
- //is_amphibious_animal(ptr) ? amphibious[capitalize] // TODO DE
+		is_snaky(ptr)   ? snaky[capitalize] :
 #endif
 		slithy(ptr)     ? slither[capitalize] :
 		amorphous(ptr)  ? ooze[capitalize] :

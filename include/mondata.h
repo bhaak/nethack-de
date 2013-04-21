@@ -58,6 +58,10 @@
 #define humanoid(ptr)		(((ptr)->mflags1 & M1_HUMANOID) != 0L)
 #define is_animal(ptr)		(((ptr)->mflags1 & M1_ANIMAL) != 0L)
 #define slithy(ptr)		(((ptr)->mflags1 & M1_SLITHY) != 0L)
+#ifdef GERMAN
+#define is_snaky(ptr)		((ptr)->mlet == S_SNAKE || \
+				 (ptr)->mlet == S_NAGA)
+#endif
 #define is_wooden(ptr)		((ptr) == &mons[PM_WOOD_GOLEM])
 #define thick_skinned(ptr)	(((ptr)->mflags1 & M1_THICK_HIDE) != 0L)
 #define lays_eggs(ptr)		(((ptr)->mflags1 & M1_OVIPAROUS) != 0L)
