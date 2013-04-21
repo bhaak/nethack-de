@@ -909,7 +909,7 @@ register const char *let,*word;
 		     (otmp->owornmask & (W_ARMOR | W_RING | W_AMUL | W_TOOL)))
 							/* already worn */
 #if 0	/* 3.4.1 -- include currently wielded weapon among the choices */
-		|| (!strcmp(word, "wield") && /* EN || (!strcmp(word, "wield") && */ // TODO DE
+		|| (!strcmp(word, "wield") &&
 		    (otmp->owornmask & W_WEP))
 #endif
 		|| (!strcmp(word, "in den Köcher tun") && /* EN || (!strcmp(word, "ready") && */
@@ -926,7 +926,7 @@ register const char *let,*word;
 		    ((otmp->oclass == FOOD_CLASS && otmp->otyp != MEAT_RING) ||
 		    (otmp->oclass == TOOL_CLASS &&
 		     otyp != BLINDFOLD && otyp != TOWEL && otyp != LENSES)))
-		|| (!strcmp(word, "wield") && /* EN || (!strcmp(word, "wield") && */ // TODO DE
+		|| (((!strcmp(word, "als Waffe verwenden")) || (!strcmp(word, "in die Hand nehmen"))) && /* EN || (!strcmp(word, "wield") && */
 		    (otmp->oclass == TOOL_CLASS && !is_weptool(otmp)))
 		|| (!strcmp(word, "VERB_ESSEN") && !is_edible(otmp)) /* EN || (!strcmp(word, "eat") && !is_edible(otmp)) */
 		|| (!strcmp(word, "VERB_SACRIFICE") && /* EN || (!strcmp(word, "sacrifice") && */
@@ -942,7 +942,7 @@ register const char *let,*word;
 		      otyp != OIL_LAMP && otyp != MAGIC_LAMP &&
 		      otyp != BRASS_LANTERN) ||
 		     (otmp->oclass == GEM_CLASS && !is_graystone(otmp))))
-		|| (!strncmp(word, "rub on the stone", 16) && /* EN || (!strncmp(word, "rub on the stone", 16) && */ // TODO DE
+		|| ((!strncmp(word, "auf dem Stein reiben", 20) || !strncmp(word, "auf den Steinen reiben", 22)) && /* EN || (!strncmp(word, "rub on the stone", 16) && */
 		    *let == GEM_CLASS &&	/* using known touchstone */
 		    otmp->dknown && objects[otyp].oc_name_known)
 		|| ((!strcmp(word, "benutzen") || /* EN || ((!strcmp(word, "use or apply") || */ // TODO DE

@@ -1120,7 +1120,7 @@ register struct obj *otmp;
 			if (zap_oseen) makeknown(WAN_STRIKING);
 			if (Antimagic) {
 			    shieldeff(u.ux, u.uy);
-			    pline("Boing!"); /* EN pline("Boing!"); */ // TODO DE
+			    pline("Boing!"); /* EN pline("Boing!"); */
 			} else if (rnd(20) < 10 + u.uac) {
 			    pline_The("NOUN_WAND VERB_HIT OBJECT PRONOMEN_PERSONAL!"); /* EN pline_The("wand hits you!"); */
 			    tmp = d(2,12);
@@ -1131,7 +1131,7 @@ register struct obj *otmp;
 			nomul(0);
 		} else if (resists_magm(mtmp)) {
 			shieldeff(mtmp->mx, mtmp->my);
-			pline("Boing!"); /* EN pline("Boing!"); */ // TODO DE
+			pline("Boing!"); /* EN pline("Boing!"); */
 		} else if (rnd(20) < 10+find_mac(mtmp)) {
 			tmp = d(2,12);
 			hit("NOUN_WAND", mtmp, exclam(tmp)); /* EN hit("wand", mtmp, exclam(tmp)); */

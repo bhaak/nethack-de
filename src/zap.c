@@ -1889,7 +1889,7 @@ boolean ordinary;
 		case SPE_FORCE_BOLT:
 		    if(Antimagic) {
 			shieldeff(u.ux, u.uy);
-			pline("Boing!"); /* EN pline("Boing!"); */ // IMPROVE ME?
+			pline("Boing!"); /* EN pline("Boing!"); */
 		    } else {
 			if (ordinary) {
 			    You("VERB_VERLETZEN OBJECT PRONOMEN_PERSONAL selbst!"); /* EN You("bash yourself!"); */

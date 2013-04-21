@@ -247,7 +247,7 @@ dowield()
 	}
 
 	/* Prompt for a new weapon */
-	if (!(wep = getobj(wield_objs, "als Waffe verwenden"))) /* EN if (!(wep = getobj(wield_objs, "wield"))) */ // TODO DE
+	if (!(wep = getobj(wield_objs, "als Waffe verwenden"))) /* EN if (!(wep = getobj(wield_objs, "wield"))) */
 		/* Cancelled */
 		return (0);
 	else if (wep == uwep) {
@@ -413,17 +413,17 @@ const char *verb;	/* "rub",&c */
 
     if (obj == uwep) return TRUE;   /* nothing to do if already wielding it */
 
-    if (!verb) verb = "in die Hand nehmen"; /* EN if (!verb) verb = "wield"; */ // TODO DE
+    if (!verb) verb = "in die Hand nehmen"; /* EN if (!verb) verb = "wield"; */
     what = xname(obj);
     more_than_1 = (obj->quan > 1L ||
 		   strstri(what, "NOUN_PAAR ") != 0 || /* EN strstri(what, "pair of ") != 0 || */
-		   strstri(what, "s of ") != 0); /* EN strstri(what, "s of ") != 0); */ // TODO DE
+		   strstri(what, "S_OF_") != 0); /* EN strstri(what, "s of ") != 0); */
 
     if (obj->owornmask & (W_ARMOR|W_RING|W_AMUL|W_TOOL)) {
 	char yourbuf[BUFSZ];
 
-	You_cant("%s %s %s while wearing %s.", /* EN You_cant("%s %s %s while wearing %s.", */ // TODO DE
-		 verb, shk_your(yourbuf, obj), what,
+	You_cant("OBJECT %s MODIFIER_VERB_INFINITIV %s %s und KASUS_AKKUSATIV %s gleichzeitig tragen.", /* EN You_cant("%s %s %s while wearing %s.", */
+		 shk_your(yourbuf, obj), what, verb, /* EN verb, shk_your(yourbuf, obj), what, */
 		 pronominalisierung(what)); /* EN more_than_1 ? "them" : "it"); */
 	return FALSE;
     }

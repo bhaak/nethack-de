@@ -1563,7 +1563,7 @@ xchar x, y;
 	branch *br;
 	schar u_depth;
 
-	br = dungeon_branch("Fort Ludios"); /* EN br = dungeon_branch("Fort Ludios"); */ // TODO DE
+	br = dungeon_branch("Fort Ludios"); /* EN br = dungeon_branch("Fort Ludios"); */
 	if (on_level(&knox_level, &br->end1)) {
 	    source = &br->end2;
 	} else {

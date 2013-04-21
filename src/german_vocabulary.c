@@ -10420,6 +10420,11 @@ Although not referring to the exactly same rank. */
   {"Blicke", "NOUN_GAZEs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Blicken", "NOUN_GAZEs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Zahnrades", "NOUN_GEAR", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Zahnrad", "NOUN_GEAR", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Zahnräder", "NOUN_GEARs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Zahnrädern", "NOUN_GEARs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Gegenstandes", "NOUN_GEGENSTAND", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Gegenstand", "NOUN_GEGENSTAND", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Gegenstände", "NOUN_GEGENSTANDs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -11242,6 +11247,11 @@ Although not referring to the exactly same rank. */
 
   {"Auslösemechanismus", "NOUN_TRIGGER", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Auslösemechanismen", "NOUN_TRIGGERs", "", akkusativ|nominativ|dativ|genitiv, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Gesperres", "NOUN_TUMBLER", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Gesperre", "NOUN_TUMBLER", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Gesperre", "NOUN_TUMBLERs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Gesperren", "NOUN_TUMBLERs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Überanstrengung", "NOUN_UEBERANSTRENGUNG", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Überanstrengungen", "NOUN_UEBERANSTRENGUNGs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},

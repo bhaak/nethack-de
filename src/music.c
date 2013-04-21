@@ -175,7 +175,7 @@ awaken_soldiers()
 		if (canseemon(mtmp))
 		    pline("SUBJECT %s VERB_SEIN jetzt kampfbereit!", Monnam(mtmp)); /* EN pline("%s is now ready for battle!", Monnam(mtmp)); */
 		else
-		    Norep("You hear the rattle of battle gear being readied."); /* EN Norep("You hear the rattle of battle gear being readied."); */ // TODO DE
+		    Norep("SUBJECT PRONOMEN_PERSONAL VERB_HOEREN Waffengeklirr und Kriegsgeschrei."); /* EN Norep("You hear the rattle of battle gear being readied."); */
 	    }
 	    mtmp = mtmp->nmon;
 	}
@@ -236,7 +236,7 @@ int force;
 		if (mtmp->mundetected && is_hider(mtmp->data)) {
 		    mtmp->mundetected = 0;
 		    if (cansee(x,y))
-			pline("%s is shaken loose from the ceiling!", /* EN pline("%s is shaken loose from the ceiling!", */ // TODO DE
+			pline("SUBJECT %s VERB_LOESEN sich von der Decke!", /* EN pline("%s is shaken loose from the ceiling!", */
 							    Amonnam(mtmp));
 		    else
 			You_hear("ein dumpfes Geräusch."); /* EN You_hear("a thumping sound."); */
@@ -419,12 +419,12 @@ struct obj *instr;
 		break;
 	    } /* else FALLTHRU */
 	case TOOLED_HORN:		/* Awaken or scare monsters */
-	    You("VERB_ERZEUGEN a frightful, grave sound."); /* EN You("produce a frightful, grave sound."); */ // TODO DE
+	    You("VERB_ERZEUGEN einen furchteinflößenden, tiefen Ton."); /* EN You("produce a frightful, grave sound."); */
 	    awaken_monsters(u.ulevel * 30);
 	    exercise(A_WIS, FALSE);
 	    break;
 	case BUGLE:			/* Awaken & attract soldiers */
-	    You("extract a loud noise from %s.", the(xname(instr))); /* EN You("extract a loud noise from %s.", the(xname(instr))); */ // TODO DE
+	    You("VERB_ENTLOCKEN OBJECT KASUS_DATIV %s einen ohrenbetäubenden Misston.", the(xname(instr))); /* EN You("extract a loud noise from %s.", the(xname(instr))); */
 	    awaken_soldiers();
 	    exercise(A_WIS, FALSE);
 	    break;
@@ -505,7 +505,7 @@ struct obj *instr;
 		if (*s == 'H') *s = 'B';
 	    }
 	}
-	You("extract a strange sound from %s!", the(xname(instr))); /* EN You("extract a strange sound from %s!", the(xname(instr))); */ // TODO DE
+	You("VERB_ENTLOCKEN OBJECT KASUS_DATIV %s einen seltsamen Ton!", the(xname(instr))); /* EN You("extract a strange sound from %s!", the(xname(instr))); */
 #ifdef UNIX386MUSIC
 	/* if user is at the console, play through the console speaker */
 	if (atconsole())
@@ -589,13 +589,13 @@ struct obj *instr;
 			}
 		    if(tumblers)
 			if(gears)
-			    You_hear("%d tumbler%s click and %d gear%s turn.", /* EN You_hear("%d tumbler%s click and %d gear%s turn.", */ // TODO DE
+			    You_hear("OBJECT %d NOUN_TUMBLER%s einrasten und NEUES_OBJECT OBJECT %d NOUN_GEAR%s sich drehen.", /* EN You_hear("%d tumbler%s click and %d gear%s turn.", */
 				tumblers, plur(tumblers), gears, plur(gears));
 			else
-			    You_hear("%d tumbler%s click.", /* EN You_hear("%d tumbler%s click.", */ // TODO DE
+			    You_hear("OBJECT %d NOUN_TUMBLER%s einrasten.", /* EN You_hear("%d tumbler%s click.", */
 				tumblers, plur(tumblers));
 		    else if(gears) {
-			You_hear("%d gear%s turn.", gears, plur(gears)); /* EN You_hear("%d gear%s turn.", gears, plur(gears)); */ // TODO DE
+			You_hear("OBJECT %d NOUN_GEAR%s sich drehen.", gears, plur(gears)); /* EN You_hear("%d gear%s turn.", gears, plur(gears)); */
 			/* could only get `gears == 5' by playing five
 			   correct notes followed by excess; otherwise,
 			   tune would have matched above */
