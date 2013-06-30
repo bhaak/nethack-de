@@ -245,7 +245,7 @@ register struct monst *mtmp;
 /*	attacking peaceful creatures is bad for the samurai's giri */
 	if (Role_if(PM_SAMURAI) && mtmp->mpeaceful &&
 	    u.ualign.record > -10) {
-	    You("dishonorably attack the innocent!"); /* EN You("dishonorably attack the innocent!"); */ // TODO DE
+	    You("VERB_AUSFUEHREN einen unehrenhaften Angriff auf Unschuldige SATZKLAMMER!"); /* EN You("dishonorably attack the innocent!"); */
 	    adjalign(-1);
 	}
 
@@ -590,10 +590,27 @@ int thrown;
 		    if (!thrown && obj == uwep && obj->otyp == BOOMERANG &&
 			    rnl(4) == 4-1) {
 			boolean more_than_1 = (obj->quan > 1L);
-
-			pline("As you hit %s, %s%s %s breaks into splinters.", /* EN pline("As you hit %s, %s%s %s breaks into splinters.", */ // TODO DE
-			      mon_nam(mon), more_than_1 ? "one of " : "", /* EN mon_nam(mon), more_than_1 ? "one of " : "", */ // TODO DE
+#ifdef GERMAN
+			char bumerang[BUFSZ];
+			if (more_than_1) {
+				if (strncmp("PRONOMEN_", shk_your(yourbuf, obj), 9)==0) {
+					/* einer deiner Bumerange */
+					Sprintf(bumerang, "NOUN_PSEUDO_MAENNLICH einer KASUS_GENITIV %s %s", yourbuf, xname(obj));
+				} else {
+					/* einer von Asidonhopos Bumerangen */
+					Sprintf(bumerang, "NOUN_PSEUDO_MAENNLICH einer KASUS_DATIV von %s %s", yourbuf, xname(obj));
+				}
+			} else {
+				/* dein oder Asidonhopos Bumerang */
+				Sprintf(bumerang, "%s %s", shk_your(yourbuf, obj), xname(obj));
+			}
+			pline("Als SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT %s VERB_HIT, NEUER_SATZ SUBJECT_IM_SATZ VERB_ZERSPLITTERN %s.",
+			      mon_nam(mon), bumerang);
+#else
+			pline("As you hit %s, %s%s %s breaks into splinters.",
+			      mon_nam(mon), more_than_1 ? "one of " : "",
 			      shk_your(yourbuf, obj), xname(obj));
+#endif
 			if (!more_than_1) uwepgone();	/* set unweapon */
 			useup(obj);
 			if (!more_than_1) obj = (struct obj *) 0;
@@ -608,7 +625,7 @@ int thrown;
 		    if (!valid_weapon_attack || mon == u.ustuck || u.twoweap) {
 			;	/* no special bonuses */
 		    } else if (mon->mflee && Role_if(PM_ROGUE) && !Upolyd) {
-			You("strike %s from behind!", mon_nam(mon)); /* EN You("strike %s from behind!", mon_nam(mon)); */ // TODO DE
+			You("VERB_HABEN hinterrücks OBJECT %s angegriffen!", mon_nam(mon)); /* EN You("strike %s from behind!", mon_nam(mon)); */
 			tmp += rnd(u.ulevel);
 			hittxt = TRUE;
 		    } else if (dieroll == 2 && obj == uwep &&
@@ -915,10 +932,10 @@ int thrown;
 	    int nopoison = (10 - (obj->owt/10));            
 	    if(nopoison < 2) nopoison = 2;
 	    if Role_if(PM_SAMURAI) {
-		You("dishonorably use a poisoned weapon!"); /* EN You("dishonorably use a poisoned weapon!"); */ // TODO DE
+		pline("Unehrenhaft SUBJECT_IM_SATZ VERB_BENUTZEN PRONOMEN_PERSONAL eine vergiftete Waffe!"); /* EN You("dishonorably use a poisoned weapon!"); */
 		adjalign(-sgn(u.ualign.type));
 	    } else if ((u.ualign.type == A_LAWFUL) && (u.ualign.record > -10)) {
-		pline("Wegen der Verwendung einer vergifteten Waffe SUBJECT_IM_SATZ VERB_FUEHLEN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL wie ein elender Feigling."); /* EN You_feel("like an evil coward for using a poisoned weapon."); */
+		pline("Wegen der vergifteten Waffe SUBJECT_IM_SATZ VERB_FUEHLEN PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL wie ein elender Feigling."); /* EN You_feel("like an evil coward for using a poisoned weapon."); */
 		adjalign(-1);
 	    }
 	    if (obj && !rn2(nopoison)) {
@@ -1707,7 +1724,7 @@ common:
 		    if (is_golem(mdef->data))
 			golemeffects(mdef, (int)mattk->adtyp, tmp);
 		    else
-			pline_The("blast doesn't seem to affect %s.", /* EN pline_The("blast doesn't seem to affect %s.", */ // TODO DE
+			pline("Die Druckwelle scheint KASUS_DATIV %s nichts anzuhaben.", /* EN pline_The("blast doesn't seem to affect %s.", */
 				mon_nam(mdef));
 		}
 		break;
@@ -1846,7 +1863,7 @@ register struct attack *mattk;
 				pline("SUBJECT %s VERB_SCHEINEN unverletzt.", Monnam(mdef)); /* EN pline("%s seems unharmed.", Monnam(mdef)); */
 			    }
 			} else
-			    pline("%s is pummeled with your debris!", /* EN pline("%s is pummeled with your debris!", */ // TODO DE
+			    pline("SUBJECT %s VERB_WERDEN unter KASUS_DATIV PRONOMEN_POSSESSIV Schutt und Geröll begraben!", /* EN pline("%s is pummeled with your debris!", */
 				  Monnam(mdef));
 			break;
 		    case AD_ACID:
@@ -2232,7 +2249,7 @@ uchar aatyp;
 		shieldeff(u.ux, u.uy);
 		pline("Ein Hagel magischer Geschosse verfehlt KASUS_AKKUSATIV PRONOMEN_PERSONAL knapp!"); /* EN pline("A hail of magic missiles narrowly misses you!"); */
 	    } else {
-		You("are hit by magic missiles appearing from thin air!"); /* EN You("are hit by magic missiles appearing from thin air!"); */ // TODO DE
+		You("VERB_WERDEN aus heiterem Himmel von magischen Geschossen getroffen!"); /* EN You("are hit by magic missiles appearing from thin air!"); */
 		mdamageu(mon, tmp);
 	    }
 	    break;
