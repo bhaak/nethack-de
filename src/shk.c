@@ -2743,10 +2743,10 @@ move_on:
 
 		if (c == 'y') {
 		    shk_names_obj(shkp, obj, (sell_how != SELL_NORMAL) ?
-			    "traded %s for %ld zorkmid%s in %scredit." : /* EN "traded %s for %ld zorkmid%s in %scredit." : */ // TODO DE
-			"relinquish %s and acquire %ld zorkmid%s in %scredit.", /* EN "relinquish %s and acquire %ld zorkmid%s in %scredit.", */ // TODO DE
+			    "VERB_TAUSCHEN OBJECT %s NEUES_OBJECT OBJECT gegen %ld NOUN_ZORKMID%s NEUES_OBJECT OBJECT KASUS_DATIV an %sNOUN_GUTHABEN." : /* EN "traded %s for %ld zorkmid%s in %scredit." : */
+			"VERB_VERZICHTEN OBJECT auf %s und VERB_BEKOMMEN NEUES_OBJECT OBJECT %ld NOUN_ZORKMID%s NEUES_OBJECT OBJECT KASUS_DATIV an %sNOUN_GUTHABEN.", /* EN "relinquish %s and acquire %ld zorkmid%s in %scredit.", */
 			    tmpcr,
-			    (eshkp->credit > 0L) ? "additional " : ""); /* EN (eshkp->credit > 0L) ? "additional " : ""); */ // TODO DE
+			    (eshkp->credit > 0L) ? "ADJEKTIV_ZUSAETZLICH " : ""); /* EN (eshkp->credit > 0L) ? "additional " : ""); */
 		    eshkp->credit += tmpcr;
 		    subfrombill(obj, shkp);
 		} else {
@@ -4039,8 +4039,8 @@ register xchar x, y;
 	    && shkp->mcanmove && !shkp->msleeping
 	    && (ESHK(shkp)->debit || ESHK(shkp)->billct ||
 		ESHK(shkp)->robbed)) {
-		pline("SUBJECT %s%s VERB_VERSPERREN OBJECT KASUS_DATIV PRONOMEN_PERSONAL den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
-				Invis ? " erahnen/wahrnehmen senses your motion und" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
+		pline("SUBJECT %s%s VERB_VERSPERREN NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_PERSONAL den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
+				Invis ? " VERB_ERAHNEN OBJECT PRONOMEN_POSSESSIV NOUN_BEWEGUNGs und" : ""); /* EN Invis ? " senses your motion and" : ""); */
 		return(TRUE);
 	}
 	return(FALSE);
@@ -4078,8 +4078,8 @@ register xchar x, y;
 			|| u.usteed
 #endif
 	  )) {
-		pline("SUBJECT %s%s VERB_VERSPERREN OBJECT KASUS_DATIV PRONOMEN_PERSONAL den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
-				Invis ? " senses your motion and" : ""); /* EN Invis ? " senses your motion and" : ""); */ // TODO DE
+		pline("SUBJECT %s%s VERB_VERSPERREN NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_PERSONAL den Weg!", shkname(shkp), /* EN pline("%s%s blocks your way!", shkname(shkp), */
+				Invis ? " VERB_ERAHNEN OBJECT PRONOMEN_POSSESSIV NOUN_BEWEGUNGs und" : ""); /* EN Invis ? " senses your motion and" : ""); */
 		return(TRUE);
 	}
 	return(FALSE);

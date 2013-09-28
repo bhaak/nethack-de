@@ -1091,10 +1091,10 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 		if (!youdefend) {
 			if (!has_head(mdef->data) || notonhead || u.uswallow) {
 				if (youattack)
-					pline("Somehow, you miss %s wildly.", /* EN pline("Somehow, you miss %s wildly.", */ // TODO DE
+					pline("SUBJECT Seltsamerweise VERB_MISS PRONOMEN_PERSONAL OBJECT %s deutlich.", /* EN pline("Somehow, you miss %s wildly.", */
 						mon_nam(mdef));
 				else if (vis)
-					pline("Somehow, %s misses wildly.", /* EN pline("Somehow, %s misses wildly.", */ // TODO DE
+					pline("SUBJECT Seltsamerweise VERB_MISS %s OBJECT PRONOMEN_PERSONAL deutlich.", /* EN pline("Somehow, %s misses wildly.", */
 						mon_nam(magr));
 				*dmgptr = 0;
 				return ((boolean)(youattack || vis));
@@ -1112,7 +1112,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			return TRUE;
 		} else {
 			if (!has_head(youmonst.data)) {
-				pline("Somehow, %s misses you wildly.", /* EN pline("Somehow, %s misses you wildly.", */ // TODO DE
+				pline("SUBJECT Seltsamerweise VERB_MISS %s OBJECT PRONOMEN_PERSONAL deutlich.", /* EN pline("Somehow, %s misses you wildly.", */
 				      magr ? mon_nam(magr) : wepdesc);
 				*dmgptr = 0;
 				return TRUE;
@@ -1334,7 +1334,7 @@ arti_invoke(obj)
 	       newlev.dnum == u.uz.dnum) {
 		Du_fuehlst_dich("kurz sehr desorientiert."); /* EN You_feel("very disoriented for a moment."); */
 	    } else {
-		if(!Blind) You("are surrounded by a shimmering sphere!"); /* EN if(!Blind) You("are surrounded by a shimmering sphere!"); */ // TODO DE
+		if(!Blind) pline("SUBJECT PRONOMEN_PERSONAL VERB_WERDEN in gleißendes Licht gehüllt!"); /* EN if(!Blind) You("are surrounded by a shimmering sphere!"); */
 		else Du_fuehlst_dich("kurz schwerelos."); /* EN else You_feel("weightless for a moment."); */
 		goto_level(&newlev, FALSE, FALSE, FALSE);
 	    }

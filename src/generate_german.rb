@@ -820,6 +820,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_ENTWINDEN","entwinden"),
 		Verb.verb("VERB_ENTZIEHEN","entziehen"),
 		Verb.verb("VERB_ENTZUENDEN","entzünden"),
+		Verb.verb("VERB_ERAHNEN","erahnen"),
 		Verb.verb("VERB_ERFASSEN","erfassen"),
 		Verb.verb("VERB_ERGEBEN","ergeben"),
 		Verb.verb("VERB_ERGREIFEN","ergreifen"),
@@ -1088,6 +1089,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_SUPPEN","suppen"),
 		Verb.verb("VERB_TAEUSCHEN","täuschen"),
 		Verb.verb("VERB_TAUCHEN","tauchen"),
+		Verb.verb("VERB_TAUSCHEN","tauschen"),
 		Verb.verb("VERB_TAUMELN","taumeln"),
 		Verb.verb("VERB_TEILEN","teilen"),
 		Verb.verb("VERB_TELEPORTIEREN","teleportieren"),
@@ -2399,7 +2401,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_SPE_POLYMORPH", "Polymorphie", "", "", "en", "feminin"),
     dekliniere_substantiv("NOUN_SPE_TELEPORT_AWAY", "Wegteleportieren", "s", "", "", "neutrum"),
     dekliniere_substantiv("NOUN_SPE_TELEPORT_AWAY", "Teleportation", "", "", "en", "feminin", "s"),
-    dekliniere_substantiv("NOUN_SPE_CREATE_FAMILIAR", "Haustierbeschwörung", "", "Haustierbeschwörung", "en", "feminin"), # ????beschwörung # IMPROVE ME, gefällt mir nicht so gut
+    dekliniere_substantiv("NOUN_SPE_CREATE_FAMILIAR", "Haustierbeschwörung", "", "Haustierbeschwörung", "en", "feminin"), # ????beschwörung # IMPROVE ME, gefällt mir nicht so gut (Gefährte?)
     dekliniere_substantiv("NOUN_SPE_CANCELLATION", "Löschung", "", "Löschung", "en", "feminin", "s"),     # Annullierung, Entwertung, Löschung, Widerruf
     dekliniere_substantiv("NOUN_SPE_PROTECTION", "Schutz", "es", "Schutz", "e", "maskulin"),
     dekliniere_substantiv("NOUN_SPE_JUMPING", "Springen", "s", "Springen", "", "neutrum"),
@@ -4428,6 +4430,7 @@ def ausgabe_nouns
     dekliniere_adjektiv("ADJEKTIV_WUETEND","wütend"),
     dekliniere_adjektiv("ADJEKTIV_ZERSPRUNGEN", "zersprungen"),
     dekliniere_adjektiv("ADJEKTIV_ZUSCHNAPPEND", "zuschnappend"),
+    dekliniere_adjektiv("ADJEKTIV_ZUSAETZLICH", "zusätzlich"),
     dekliniere_adjektiv("ADJEKTIV_ZWEIHAENDIG", "zweihändig"),
     dekliniere_adjektiv("ADJEKTIV_ZWEIHAENDISCH","zweihändisch"),
 
