@@ -10192,6 +10192,9 @@ Although not referring to the exactly same rank. */
   {"Bereiche", "NOUN_BEREICHs", "s", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Bereichen", "NOUN_BEREICHs", "s", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Bemühung", "NOUN_BEMUEHUNG", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Bemühungen", "NOUN_BEMUEHUNGs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"Berührung", "NOUN_BERUEHRUNG", "", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Berührungen", "NOUN_BERUEHRUNGs", "", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 

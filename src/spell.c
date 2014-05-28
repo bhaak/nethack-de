@@ -402,7 +402,7 @@ register struct obj *spellbook;
 		    /* handle the sequence: start reading, get interrupted,
 		       have book become erased somehow, resume reading it */
 		    booktype != SPE_BLANK_PAPER) {
-		You("continue your efforts to memorize den Spruch zu memorieren/dir einzuprägen."); /* EN You("continue your efforts to memorize the spell."); */ // TODO DE
+		You("VERB_SETZEN OBJECT PRONOMEN_POSSESSIV NOUN_BEMUEHUNGs fort, NEUES_OBJECT OBJECT KASUS_DATIV PRONOMEN_PERSONAL den Spruch einzuprägen."); /* EN You("continue your efforts to memorize the spell."); */
 	} else {
 		/* KMH -- Simplified this code */
 		if (booktype == SPE_BLANK_PAPER) {
@@ -750,7 +750,7 @@ boolean atme;
 		"Your concentration falters while carrying so much stuff.")) { /* EN "Your concentration falters while carrying so much stuff.")) { */ // TODO DE
 	    return (1);
 	} else if (!freehand()) {
-		Your("arms are not free to cast!"); /* EN Your("arms are not free to cast!"); */ // TODO DE
+		You("VERB_HABEN OBJECT PRONOMEN_KEIN %s frei zum Zaubern!", body_part(HAND)); /* EN Your("arms are not free to cast!"); */
 		return (0);
 	}
 
@@ -979,17 +979,17 @@ throwspell()
 	    pline("SATZBEGINN MODIFIER_VERB_IMPERATIV VERB_WARTEN lieber, bis die Sonne rauskommt."); return 0; /* EN You("had better wait for the sun to come out."); return 0; */
 	}
 
-	pline("Where do you want to cast the spell?"); /* EN pline("Where do you want to cast the spell?"); */ // TODO DE
+	pline("Wohin MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL diesen Spruch richten?"); /* EN pline("Where do you want to cast the spell?"); */
 	cc.x = u.ux;
 	cc.y = u.uy;
 	if (getpos(&cc, TRUE, "die gewünschte Stelle") < 0) /* EN if (getpos(&cc, TRUE, "the desired position") < 0) */
 	    return 0;	/* user pressed ESC */
 	/* The number of moves from hero to where the spell drops.*/
 	if (distmin(u.ux, u.uy, cc.x, cc.y) > 10) {
-	    pline_The("spell dissipates over the distance!"); /* EN pline_The("spell dissipates over the distance!"); */ // TODO DE
+	    pline("Der Spruch verliert seine Wirkung über diese Entfernung!"); /* EN pline_The("spell dissipates over the distance!"); */
 	    return 0;
 	} else if (u.uswallow) {
-	    pline_The("spell is cut short!"); /* EN pline_The("spell is cut short!"); */ // TODO DE
+	    pline("Der Spruch kommt nicht weit!"); /* EN pline_The("spell is cut short!"); */
 	    exercise(A_WIS, FALSE); /* What were you THINKING! */
 	    u.dx = 0;
 	    u.dy = 0;

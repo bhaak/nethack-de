@@ -3671,6 +3671,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_BEITRAG","Beitrag","es","Beiträg","e","maskulin"),
     dekliniere_substantiv("NOUN_BELOHNUNG", "Belohnung", "", "Belohnung", "en", "feminin", ""),
     dekliniere_substantiv("NOUN_BEREICH","Bereich","es","Bereich","e","maskulin", "s"),
+    dekliniere_substantiv("NOUN_BEMUEHUNG","Bemühung","","Bemühung","en","feminin"),
     dekliniere_substantiv("NOUN_BERUEHRUNG","Berührung","","Berührung","en","feminin"),
     dekliniere_substantiv("NOUN_BESITZTUM","Besitztum","s","Besitztüm","er","neutrum"),
     dekliniere_substantiv("NOUN_BESUCH","Besuch","es","Besuch","e","maskulin"),
