@@ -733,6 +733,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_BEGEHREN", "begehren"),
 		Verb.verb("VERB_BEGINNEN","beginnen"),
 		Verb.verb("VERB_BEGREIFEN","begreifen"),
+		Verb.verb("VERB_BEHERRSCHEN","beherrschen"),
 		Verb.verb("VERB_BEHINDERN","behindern"),
 		Verb.verb("VERB_BEISEITESCHIEBEN","schieben","beiseite"),
 		Verb.verb("VERB_BEISSEN","beiﬂen"),

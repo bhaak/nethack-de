@@ -308,7 +308,7 @@ register int trouble;
 		    losestr(-1);
 		    /* fall into... */
 	    case TROUBLE_HUNGRY:
-		    Your("%s feels content.", body_part(STOMACH)); /* EN Your("%s feels content.", body_part(STOMACH)); */ // TODO DE
+		    Your("%s fühlt sich gesättigt an.", body_part(STOMACH)); /* EN Your("%s feels content.", body_part(STOMACH)); */
 		    init_uhunger();
 		    flags.botl = 1;
 		    break;
@@ -534,7 +534,7 @@ aligntyp resp_god;
 		summon_minion(resp_god, FALSE);
 		summon_minion(resp_god, FALSE);
 		summon_minion(resp_god, FALSE);
-		verbalize("Zerstört KASUS_AKKUSATIV %s, my servants!", uhim()); /* EN verbalize("Destroy %s, my servants!", uhim()); */ // TODO DE
+		verbalize("Zerstört KASUS_AKKUSATIV %s, meine treuen Diener!", uhim()); /* EN verbalize("Destroy %s, my servants!", uhim()); */
 	    }
 	}
 }
@@ -1614,8 +1614,8 @@ prayer_done()		/* M. Stephenson (1.0.3b) */
     if(p_type == -1) {
 	godvoice(alignment,
 		 alignment == A_LAWFUL ?
-		 "Vile creature, thou durst call upon me?" : /* EN "Vile creature, thou durst call upon me?" : */ // TODO DE
-		 "Wandle nicht länger, perversion of nature!"); /* EN "Walk no more, perversion of nature!"); */ // TODO DE
+		 "Widerwärtige Kreatur, du wagst es mich anzurufen?" : /* EN "Vile creature, thou durst call upon me?" : */
+		 "Wandle nicht länger, widernatürliche Kreatur!"); /* EN "Walk no more, perversion of nature!"); */
 	You("VERB_HABEN das Gefühl auseinanderzufallen."); /* EN You_feel("like you are falling apart."); */
 	/* KMH -- Gods have mastery over unchanging */
 	rehumanize();
@@ -1678,7 +1678,7 @@ doturn()
 			    return spelleffects(sp_no, TRUE);
 		}
 
-		You("don't know how to turn undead!"); /* EN You("don't know how to turn undead!"); */ // TODO DE
+		You("VERB_BEHERRSCHEN die Untotenwandlung nicht!"); /* EN You("don't know how to turn undead!"); */
 		return(0);
 	}
 	u.uconduct.gnostic++;
