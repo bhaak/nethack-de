@@ -566,8 +566,8 @@ struct entity *etmp;
 		}
 	} else {
 		if (crm->typ == DRAWBRIDGE_DOWN) {
-			pline("%s crushed underneath the drawbridge.", /* EN pline("%s crushed underneath the drawbridge.", */ // TODO DE
-			      E_phrase(etmp, "are"));		  /* no jump */
+			pline("SUBJECT %s OBJECT KASUS_DATIV von ARTIKEL_BESTIMMTER NOUN_DRAWBRIDGE erschlagen.", /* EN pline("%s crushed underneath the drawbridge.", */
+			      E_phrase(etmp, "VERB_WERDEN"));		  /* no jump */ /* EN E_phrase(etmp, "are")); */
 			e_died(etmp, e_inview? 3 : 2, CRUSHING);/* no corpse */
 			return;   /* Note: Beyond this point, we know we're  */
 		}		  /* not at an opened drawbridge, since all  */
@@ -758,9 +758,9 @@ int x,y;
 	x2 = x; y2 = y;
 	get_wall_for_db(&x2,&y2);
 	if (cansee(x,y) || cansee(x2,y2))
-		You("see a drawbridge %s up!", /* EN You("see a drawbridge %s up!", */ // TODO DE
+		You("VERB_SEHEN, wie SUBJECT_IM_SATZ ARTIKEL_UNBESTIMMTER NOUN_DRAWBRIDGE %s!", /* EN You("see a drawbridge %s up!", */
 		    (((u.ux == x || u.uy == y) && !Underwater) ||
-		     distu(x2,y2) < distu(x,y)) ? "coming" : "going"); /* EN distu(x2,y2) < distu(x,y)) ? "coming" : "going"); */ // TODO DE
+		     distu(x2,y2) < distu(x,y)) ? "hochgezogen wird" : "hochgeht"); /* EN distu(x2,y2) < distu(x,y)) ? "coming" : "going"); */
 	lev1->typ = DRAWBRIDGE_UP;
 	lev2 = &levl[x2][y2];
 	lev2->typ = DBWALL;
@@ -810,8 +810,8 @@ int x,y;
 	x2 = x; y2 = y;
 	get_wall_for_db(&x2,&y2);
 	if (cansee(x,y) || cansee(x2,y2))
-		You("see a drawbridge %s down!", /* EN You("see a drawbridge %s down!", */ // TODO DE
-		    (distu(x2,y2) < distu(x,y)) ? "going" : "coming"); /* EN (distu(x2,y2) < distu(x,y)) ? "going" : "coming"); */ // TODO DE
+		You("VERB_SEHEN, wie SUBJECT_IM_SATZ ARTIKEL_UNBESTIMMTER NOUN_DRAWBRIDGE %s!", /* EN You("see a drawbridge %s down!", */
+		    (distu(x2,y2) < distu(x,y)) ? "runtergelassen wird" : "runterkommt"); /* EN (distu(x2,y2) < distu(x,y)) ? "going" : "coming"); */
 	lev1->typ = DRAWBRIDGE_DOWN;
 	lev2 = &levl[x2][y2];
 	lev2->typ = DOOR;
