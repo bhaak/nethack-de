@@ -163,7 +163,7 @@ void curses_update_stats(boolean redraw)
     /* Player name and title */
     strcpy(buf, plname);
     if ('a' <= buf[0] && buf[0] <= 'z') buf[0] += 'A'-'a';
-    strcat(buf, " the ");
+    strcat(buf, " ARTIKEL_BESTIMMTER ");
     if (u.mtimedone) {
         char mname[BUFSZ];
         int k = 0;
@@ -186,7 +186,7 @@ void curses_update_stats(boolean redraw)
         prevname.highlight_turns = 5;
         prevname.highlight_color = HIGHLIGHT_COLOR;
         free(prevname.txt);
-        prevname.txt = curses_copy_of(buf);
+        prevname.txt = curses_copy_of(german(buf));
         if ((labels == COMPACT_LABELS) && (u.ulevel > 1))
         {
             curses_puts(MESSAGE_WIN, A_NORMAL, "You are now known as");
@@ -1699,12 +1699,13 @@ void curses_decrement_highlight()
 static void init_stats()
 {
     char buf[BUFSZ];
+    char tmpbuf[BUFSZ];
     int count;
 
     /* Player name and title */
     strcpy(buf, plname);
     if ('a' <= buf[0] && buf[0] <= 'z') buf[0] += 'A'-'a';
-    strcat(buf, " the ");
+    strcat(buf, " ARTIKEL_BESTIMMTER ");
     if (u.mtimedone) {
         char mname[BUFSZ];
         int k = 0;
@@ -1723,7 +1724,7 @@ static void init_stats()
         strcat(buf, rank_of(u.ulevel, pl_character[0], flags.female));
     }
 
-    prevname.txt = curses_copy_of(buf);
+    prevname.txt = curses_copy_of(german(buf));
     prevname.display = TRUE;
     prevname.highlight_turns = 0;
     prevname.label = NULL;

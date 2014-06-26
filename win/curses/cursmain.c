@@ -328,7 +328,9 @@ Attributes
 void curses_putstr(winid wid, int attr, const char *text)
 {
     int curses_attr = curses_convert_attr(attr);
-    
+
+    char tmpstr[TBUFSZ];
+    text = (char *)german(strcpy(tmpstr, text));
     /* We need to convert NetHack attributes to curses attributes */
     curses_puts(wid, curses_attr, text);
 }
@@ -387,6 +389,9 @@ void curses_add_menu(winid wid, int glyph, const ANY_P * identifier,
 		const char *str, BOOLEAN_P presel)
 {
     int curses_attr = curses_convert_attr(attr);
+
+    char tmpstr[TBUFSZ];
+    str = (char *)german(strcpy(tmpstr, str));
 
     curses_add_nhmenu_item(wid, identifier, accelerator, group_accel,
      curses_attr, str, presel);
