@@ -16,10 +16,13 @@
 compile '*' do
   if item[:extension] == 'css'
     # don’t filter stylesheets
+  elsif item[:extension] == 'erb'
+    filter :erb
+    layout 'default'
   elsif item.binary?
     # don’t filter binary items
   else
-    filter :erb
+    filter :redcloth
     layout 'default'
   end
 end
@@ -31,9 +34,15 @@ route '*' do
   elsif item.binary?
     # Write item with identifier /foo/ to /foo.ext
     item.identifier.chop + '.' + item[:extension]
-  else
-    # Write item with identifier /foo/ to /foo/index.html
+  elsif item[:filename] == 'content/index.textile'
     item.identifier + 'index.html'
+  elsif item[:extension] == 'erb'
+    item.identifier.chop + '.html'
+  elsif item[:extension] == 'textile'
+    # Write item with identifier /foo/ to /foo.html
+    item.identifier.chop + '.html'
+  else
+    raise "Unbekanntes #{item.inspect}"
   end
 end
 

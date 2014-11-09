@@ -1,0 +1,7 @@
+---
+title: Dokumentation
+---
+
+"Deutschsprachige NetHack-De-Kurzhilfe":http://nethack-de.sf.net/nethack-de-kurzhilfe.html ("pdf":http://nethack-de.sf.net/nethack-de-kurzhilfe.pdf)
+
+"Guidebook":http://nethack.org/v343/Guidebook.html Englische Originaldokumentation

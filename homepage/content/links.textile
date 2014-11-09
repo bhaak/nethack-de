@@ -1,3 +1,6 @@
+---
+title: Links
+---
 h2. NetHack
 
 * "NetHack-De Sourceforge-Projektseite":http://sourceforge.net/projects/nethack-de/

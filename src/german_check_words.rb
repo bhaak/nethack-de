@@ -1,4 +1,7 @@
 #!/usr/bin/ruby
+# encoding: iso-8859-1
+Encoding.default_internal = Encoding::ISO_8859_1
+Encoding.default_external = Encoding::ISO_8859_1
 
 $htmloutput = ARGV.include? "html"
 

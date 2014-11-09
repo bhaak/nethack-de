@@ -1,10 +1,11 @@
 ARCHIV = archiv/nethack-hp-`date +%Y%m%d`.tar.gz
 
-webgen:
-	webgen -V 2
-	cp nethack-de.ico output/favicon.ico
+nanoc:
+	nanoc
+	xmllint --noout output/*.html
+	nanoc check ilinks
 	rm -f output/nethack-de-updates.rss
-	./rss_news.rb --rss src/index.page > output/nethack-de-updates.rss
+	./rss_news.rb --rss content/index.textile > output/nethack-de-updates.rss
 	find output -type f | xargs chmod 644
 	find output -type d | xargs chmod 755
 
@@ -12,7 +13,7 @@ archiv:
 	tar cvfz $(ARCHIV) -C output .
 	echo "Archiv erstellt"
 
-sourceforge: webgen archiv
+sourceforge: nanoc archiv
 	#scp $(ARCHIV) bhaak@shell.sourceforge.net:~
 	scp -r output/* bhaak,nethack-de@web.sourceforge.net:htdocs/
 	echo "Homepage nach Sourceforge kopiert"
@@ -27,4 +28,4 @@ kurzhilfe:
 	cp ../doc/Kurzhilfe.html output/nethack-de-kurzhilfe.html
 	cp ../doc/Kurzhilfe.css output/
 
-.PHONY: webgen archiv sourceforge bestiarium kurzhilfe
+.PHONY: nanoc archiv sourceforge bestiarium kurzhilfe

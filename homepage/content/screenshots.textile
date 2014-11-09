@@ -1,3 +1,6 @@
+---
+title: Screenshots
+---
 h3. Linux
 
 !{width:70%}nethack_inventory.png(Screenshot NetHack-De Inventar)!:nethack_inventory.png

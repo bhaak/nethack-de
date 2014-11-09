@@ -157,3 +157,8 @@ background-color: #222;
 {
 border: 2px outset #d7b9c9
 }
+
+.caps {
+	color: inherit;
+	background-color: inherit;
+}

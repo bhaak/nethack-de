@@ -30,6 +30,8 @@ doc/*.toc
 
 homepage/output
 homepage/nethack-hp.tar.gz
+homepage/content/nhtohtml
+homepage/tmp
 
 include/autoconf.h
 include/date.h
