@@ -4,7 +4,7 @@ title: Download
 
 Pakete für Windows und Linux und der Quellkode von NetHack-De können von "Sourceforge":http://sourceforge.net/projects/nethack-de/files/nethack-de/ runtergeladen werden.
 
-Auf Sourceforge ist auch das 
-"Subversion-Repository":http://sourceforge.net/svn/?group_id=191550 
+Auf GitHub ist auch das
+"Git-Repository":https://github.com/bhaak/nethack-de
 mit dem aktuellen Quellkode abrufbar.
 
