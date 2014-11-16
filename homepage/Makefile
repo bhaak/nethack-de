@@ -9,6 +9,8 @@ nanoc:
 	find output -type f | xargs chmod 644
 	find output -type d | xargs chmod 755
 
+all: clean bestiarium nanoc
+
 archiv:
 	tar cvfz $(ARCHIV) -C output .
 	echo "Archiv erstellt"
@@ -27,5 +29,8 @@ kurzhilfe:
 	cp ../doc/Kurzhilfe.pdf output/nethack-de-kurzhilfe.pdf
 	cp ../doc/Kurzhilfe.html output/nethack-de-kurzhilfe.html
 	cp ../doc/Kurzhilfe.css output/
+
+clean:
+	rm -rf output tmp
 
 .PHONY: nanoc archiv sourceforge bestiarium kurzhilfe

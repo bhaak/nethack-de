@@ -34,7 +34,8 @@ route '*' do
   elsif item.binary?
     # Write item with identifier /foo/ to /foo.ext
     item.identifier.chop + '.' + item[:extension]
-  elsif item[:filename] == 'content/index.textile'
+  elsif item[:filename].end_with?('/index.textile') ||
+        item[:filename].end_with?('/index.erb')
     item.identifier + 'index.html'
   elsif item[:extension] == 'erb'
     item.identifier.chop + '.html'

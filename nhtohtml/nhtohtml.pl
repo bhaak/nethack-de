@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # nhtohtml.pl: A script to generate the nethack bestiary for NetHack-De.
-# Copyright (c) 2008-2010 Patric Mueller (bhaak@gmx.net)
+# Copyright (c) 2008-2014 Patric Mueller (bhaak@gmx.net)
 # Copyright (c) 2004 Robert Sim (rob@simra.net)
 #
 # This program is free software; you can redistribute it and/or
@@ -486,7 +486,7 @@ print HTML <<EOF;
 <hr class="separator"/>
 <div>$nextprev<br/>
 <p>Erzeugt mit nhtohtml $version. Author: <a href="http://www.cs.ubc.ca/~simra/">Robert Sim</a><br/>
-Angepasst für <a href="http://nethack-de.sourceforge.net/">NetHack-De</a> von <a href="http://bhaak.dyndns.org/">Patric Mueller</a>.
+Angepasst für <a href="http://nethack-de.sourceforge.net/">NetHack-De</a> von <a href="http://bhaak.net/">Patric Mueller</a>.
 </p>
 </div>
 </body>
@@ -500,7 +500,7 @@ EOF
 print INDEX <<EOF;
 </table>
 <p>Erzeugt mit nhtohtml $version. Author: <a href="http://www.cs.ubc.ca/~simra/">Robert Sim</a><br/>
-Angepasst für <a href="http://nethack-de.sourceforge.net/">NetHack-De</a> von <a href="http://bhaak.dyndns.org/">Patric Mueller</a>.
+Angepasst für <a href="http://nethack-de.sourceforge.net/">NetHack-De</a> von <a href="http://bhaak.net/">Patric Mueller</a>.
 </p>
 </body>
 </html>
