@@ -172,6 +172,7 @@ my @monsters;
 sub process_monster {
   my $the_mon=shift;
   ($name) = $the_mon=~/\s+MON\((NAM_.*?),/;
+  ($english_name) = $the_mon=~/\s+MON\(NAM_.*?, "(.*?)",/;
   $the_mon=~s/\s//g;
   $the_mon=~s/\/\*.*?\*\///g;
   ($sym,$lvl,$gen,$atk,$siz,$mr1,$mr2,$flg1,$flg2,$flg3,$col) = 
@@ -185,6 +186,7 @@ sub process_monster {
     {
      NAME => $name,
      SYMBOL => $sym,
+     ENGLISH_NAME => $english_name,
      LEVEL => parse_level($lvl),
      GEN => $gen,
      ATK => parse_attack($atk),
@@ -376,6 +378,9 @@ while ($m=shift @monsters) {
   $nextprev.="</div>";
 #  print STDERR "HTML: htmlname $htmlname\n";
   $print_name=german($m->{NAME});
+  $english_name=$m->{ENGLISH_NAME};
+  $english_name_escaped=$m->{ENGLISH_NAME};
+  $english_name_escaped=~s/ /_/g;
 #  print STDERR "HTML: print_name: $print_name\n";
 
   # The index entry.
@@ -397,7 +402,7 @@ while ($m=shift @monsters) {
 <body>
 $nextprev
 <div class="symbol" style="color:#$colors{$m->{COLOR}};">$symbols{$m->{SYMBOL}}</div>
-<h1>$print_name</h1>
+<h1>$print_name (<a href="http://nethackwiki.com/wiki/$english_name_escaped">$english_name</a>)</h1>
 <hr class="separator"/>
 <h2>Level $m->{LEVEL}->{LVL}</h2> 
 <table> 
