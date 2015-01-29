@@ -328,6 +328,10 @@ spotless:
 	( cd doc ; $(MAKE) spotless )
 	-rm -f Makefile include/autoconf.h include/win32api.h
 
+test: $(GAME)
+	(cd src && make test) && (cd tests && make check)
+
+
 DE_FILES = AUTHORS.de CHANGES.de LIESMICH.de news
 RELEASEVERSION = `grep VERSION_STRING include/date.h | cut -f 2 -d \"`
 BINDIR = binary/nethackdir
