@@ -1,0 +1,15 @@
+language: c
+
+sudo: false
+cache: ccache
+
+addons:
+  apt:
+    packages:
+      - check
+
+notifications:
+  irc:
+    channels: "chat.freenode.net##unnethack"
+    use_notice: true
+    skip_join: true

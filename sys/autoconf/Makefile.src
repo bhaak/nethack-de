@@ -438,7 +438,7 @@ spotless: clean
 	-rm -f Makefile
 
 test: german_test german_vocabulary.c
-	german_test
+	./german_test
 
 depend: ../sys/autoconf/depend.awk \
 		$(SYSCSRC) $(WINCSRC) $(WINCXXSRC) $(GENCSRC) $(HACKCSRC)
