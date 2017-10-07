@@ -390,7 +390,7 @@ struct obj *obj;
 		You("VERB_HABEN eine Schaden von %ld %s verursacht!", loss, currency(loss)); /* EN You("caused %ld %s worth of damage!", loss, currency(loss)); */
 		make_angry_shk(shkp, x, y);
 	    } else {
-		You("VERB_OWE OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s für beschädigte Ware.", /* EN You("owe %s %ld %s for objects destroyed.", */
+		You("VERB_OWE OBJECT KASUS_DATIV %s NEUES_OBJECT OBJECT %ld %s für beschädigte Waren.", /* EN You("owe %s %ld %s for objects destroyed.", */
 		    mon_nam(shkp), loss, currency(loss));
 	    }
 	}
@@ -1241,7 +1241,7 @@ xchar x, y, dlev;
 
 	if(costly && shkp && price) {
 		if(ESHK(shkp)->robbed > robbed) {
-		    You("VERB_HABEN Ware im Wert von OBJECT %ld %s verschwinden lassen!", price, currency(price)); /* EN You("removed %ld %s worth of goods!", price, currency(price)); */
+		    You("VERB_HABEN Waren im Wert von OBJECT %ld %s verschwinden lassen!", price, currency(price)); /* EN You("removed %ld %s worth of goods!", price, currency(price)); */
 		    if(cansee(shkp->mx, shkp->my)) {
 			if(ESHK(shkp)->customer[0] == 0)
 			    (void) strncpy(ESHK(shkp)->customer,

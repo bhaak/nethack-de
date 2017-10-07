@@ -500,7 +500,7 @@ struct monst *shkp;
 
 	/* by this point, we know an actual robbery has taken place */
 	eshkp->robbed += total;
-	You("VERB_HABEN Ware im Wert von %ld %s gestohlen.", /* EN You("stole %ld %s worth of merchandise.", */
+	You("VERB_HABEN Waren im Wert von %ld %s gestohlen.", /* EN You("stole %ld %s worth of merchandise.", */
 	    total, currency(total));
 #ifdef LIVELOGFILE
 	livelog_shoplifting(shkname(shkp),
@@ -1365,8 +1365,8 @@ proceed:
 		    if(loan == dtmp)
 			Strcat(sbuf, "für im Laden aufgehobenes Gold."); /* EN Strcat(sbuf, "you picked up in the store."); */
 		    else Strcat(sbuf,
-			   "für im Laden aufgehobenes Gold und die Benutzung der Ware."); /* EN "for gold picked up and the use of merchandise."); */
-		} else Strcat(sbuf, "für die Benutzung der Ware."); /* EN } else Strcat(sbuf, "for the use of merchandise."); */
+			   "für im Laden aufgehobenes Gold und die Benutzung von Waren."); /* EN "for gold picked up and the use of merchandise."); */
+		} else Strcat(sbuf, "für die Benutzung von Waren."); /* EN } else Strcat(sbuf, "for the use of merchandise."); */
 		pline(sbuf);
 #ifndef GOLDOBJ
 		if (u.ugold + eshkp->credit < dtmp) {

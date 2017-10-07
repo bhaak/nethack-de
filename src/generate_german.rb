@@ -748,6 +748,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_BERUEHREN","berühren"),
 		Verb.verb("VERB_BERUHIGEN", "beruhigen"),
 		Verb.verb("VERB_BESCHAEDIGEN","beschädigen"),
+		Verb.verb("VERB_BESCHREIBEN","beschreiben"),
 		Verb.verb("VERB_BESCHWATZEN","beschwatzen"),
 		Verb.verb("VERB_BESCHWEREN","beschweren"),
 		Verb.verb("VERB_BESCHWOEREN","beschwören"),
@@ -1994,7 +1995,7 @@ def ausgabe_nouns
     dekliniere_substantiv("NOUN_RING_SUSTAIN_ABILITY", "Fertigkeitenerhaltung", "", "Fertigkeitenerhaltung", "", "feminin"), # js
     dekliniere_substantiv("NOUN_RING_LEVITATION", "Levitation", "", "Levitation", "en", "feminin"),
     dekliniere_substantiv("NOUN_RING_HUNGER", "Hungern", "s", "", "", "neutrum"),
-    dekliniere_substantiv("NOUN_RING_AGGRAVATE_MONSTER", "Monsterreizung", "", "Monsterreizung", "en", "feminin"), # ?Monsterreizung, Monsternanziehung?
+    dekliniere_substantiv("NOUN_RING_AGGRAVATE_MONSTER", "Monsterreizung", "", "Monsterreizung", "en", "feminin"), # ?Monsterreizung, Monsternanziehung?, Monsterzorn
     dekliniere_substantiv("NOUN_RING_CONFLICT", "Konflikt", "es", "Konflikt", "e", "maskulin"),
     dekliniere_substantiv("NOUN_RING_WARNING", "Vorwarnung", "", "Vorwarnung", "en", "feminin"), # Warnung, Vorwarnung?
     dekliniere_substantiv("NOUN_RING_POISON_RESISTANCE", "Giftresistenz", "", "Giftresistenz", "en", "feminin"),

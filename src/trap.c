@@ -3708,7 +3708,7 @@ boolean disarm;
 			  exercise(A_STR, FALSE);
 			  if(costly && loss) {
 			      if(insider)
-			      You("VERB_OWE OBJECT %ld %s für beschädigte Ware.", /* EN You("owe %ld %s for objects destroyed.", */
+			      You("VERB_OWE OBJECT %ld %s für beschädigte Waren.", /* EN You("owe %ld %s for objects destroyed.", */
 							loss, currency(loss));
 			      else {
 				  You("VERB_HABEN eine Schaden von %ld %s verursacht!", /* EN You("caused %ld %s worth of damage!", */

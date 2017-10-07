@@ -212,7 +212,7 @@ forcelock()	/* try to force a locked chest */
 	    if (costly)
 		loss += stolen_value(xlock.box, u.ux, u.uy,
 					     (boolean)shkp->mpeaceful, TRUE);
-	    if(loss) You("VERB_OWE %ld %s für zerstörte Gegenstände.", loss, currency(loss)); /* EN if(loss) You("owe %ld %s for objects destroyed.", loss, currency(loss)); */ // TODO DE
+	    if(loss) You("VERB_OWE OBJECT %ld %s für zerstörte Waren.", loss, currency(loss)); /* EN if(loss) You("owe %ld %s for objects destroyed.", loss, currency(loss)); */
 	    delobj(xlock.box);
 	}
 	exercise((xlock.picktyp) ? A_DEX : A_STR, TRUE);
@@ -284,7 +284,7 @@ pick_lock(pick) /* pick a lock with a given object */
 	}
 	ch = 0;		/* lint suppression */
 
-	if(!get_adjacent_loc((char *)0, "Invalid location!", u.ux, u.uy, &cc)) return 0; /* EN if(!get_adjacent_loc((char *)0, "Invalid location!", u.ux, u.uy, &cc)) return 0; */ // TODO DE
+	if(!get_adjacent_loc((char *)0, "Ungültige Stelle!", u.ux, u.uy, &cc)) return 0; /* EN if(!get_adjacent_loc((char *)0, "Invalid location!", u.ux, u.uy, &cc)) return 0; */
 	if (cc.x == u.ux && cc.y == u.uy) {	/* pick lock on a container */
 	    const char *verb;
 	    boolean it;
@@ -309,7 +309,7 @@ pick_lock(pick) /* pick a lock with a given object */
 		if (Is_box(otmp)) {
 		    ++count;
 		    if (!can_reach_floor()) {
-			You_cant("reach %s from up here.", the(xname(otmp))); /* EN You_cant("reach %s from up here.", the(xname(otmp))); */ // TODO DE
+			You_cant("OBJECT %s von hier oben aus erreichen.", the(xname(otmp))); /* EN You_cant("reach %s from up here.", the(xname(otmp))); */
 			return 0;
 		    }
 		    it = 0;
@@ -360,14 +360,14 @@ pick_lock(pick) /* pick a lock with a given object */
 		}
 	    if (c != 'y') {
 		if (!count)
-		    pline("Es scheint hier keinerlei Schloss zu geben."); /* EN There("doesn't seem to be any sort of lock here."); */ // TODO DE
+		    pline("Es scheint hier keinerlei Art von Schloss zu geben."); /* EN There("doesn't seem to be any sort of lock here."); */
 		return(0);		/* decided against all boxes */
 	    }
 	} else {			/* pick the lock in a door */
 	    struct monst *mtmp;
 
 	    if (u.utrap && u.utraptype == TT_PIT) {
-		You_cant("reach over the edge of the pit."); /* EN You_cant("reach over the edge of the pit."); */ // TODO DE
+		You_cant("über die Grubenkante hinaus greifen."); /* EN You_cant("reach over the edge of the pit."); */
 		return(0);
 	    }
 
@@ -477,8 +477,8 @@ doforce()		/* try to force a chest with your weapon */
 	for(otmp = level.objects[u.ux][u.uy]; otmp; otmp = otmp->nexthere)
 	    if(Is_box(otmp)) {
 		if (otmp->obroken || !otmp->olocked) {
-		    pline("Hier ist %s, aber das Schloss ist bereits %s.", /* EN There("is %s here, but its lock is already %s.", */ // TODO DE
-			  doname(otmp), otmp->obroken ? "aufgebrochen" : "aufgesperrt"); /* EN doname(otmp), otmp->obroken ? "broken" : "unlocked"); */ // TODO DE
+		    pline("Hier ist %s, aber das Schloss ist bereits %s.", /* EN There("is %s here, but its lock is already %s.", */
+			  doname(otmp), otmp->obroken ? "aufgebrochen" : "aufgesperrt"); /* EN doname(otmp), otmp->obroken ? "broken" : "unlocked"); */
 		    continue;
 		}
 		Sprintf(qbuf,"Hier ist %s, SUBJECT_IM_SATZ MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL ihr Schloss aufbrechen?", /* EN Sprintf(qbuf,"There is %s here, force its lock?", */ // TODO DE
@@ -519,7 +519,7 @@ doopen()		/* try to open a door */
 	}
 
 	if (u.utrap && u.utraptype == TT_PIT) {
-	    You_cant("reach over the edge of the pit."); /* EN You_cant("reach over the edge of the pit."); */
+	    You_cant("über die Grubenkante hinaus greifen."); /* EN You_cant("reach over the edge of the pit."); */
 	    return 0;
 	}
 
@@ -625,7 +625,7 @@ doclose()		/* try to close a door */
 	}
 
 	if (u.utrap && u.utraptype == TT_PIT) {
-	    You_cant("reach over the edge of the pit."); /* EN You_cant("reach over the edge of the pit."); */ // TODO DE
+	    You_cant("über die Grubenkante hinaus greifen."); /* EN You_cant("reach over the edge of the pit."); */
 	    return 0;
 	}
 

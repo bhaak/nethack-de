@@ -249,8 +249,8 @@ dosounds()
 		    "das Rauschen des Windes.",		/* Jupiter at Dodona */ /* EN "a strange wind.",		*/
 		    "ekstatische Weissagungen.",	/* Apollo at Delphi */ /* EN "convulsive ravings.",	 */
 		    "schnarchende Schlangen.",		/* AEsculapius at Epidaurus */ /* EN "snoring snakes.",		 */
-		    "someone say \"No more woodchucks!\"", /* EN "someone say \"No more woodchucks!\"", */ // TODO DE
-		    "a loud ZOT!"		/* both rec.humor.oracle */ /* EN "a loud ZOT!"		*/ // TODO DE
+		    "jemanden sagen: \"Keine Murmeltiere mehr!\"", /* EN "someone say \"No more woodchucks!\"", */
+		    "ein lautes ZOT!"		/* both rec.humor.oracle */ /* EN "a loud ZOT!" */
 	    };
 	    You_hear(ora_msg[rn2(3)+hallu*2]);
 	}
@@ -492,12 +492,12 @@ register struct monst *mtmp;
 			}
 		} else if (mtmp->mpeaceful) {
 			if (kindred && isnight) {
-				Sprintf(verbuf, "Good feeding %s!", /* EN Sprintf(verbuf, "Good feeding %s!", */ // TODO DE
+				Sprintf(verbuf, "Wünsche, wohl zu speisen, %s!", /* EN Sprintf(verbuf, "Good feeding %s!", */
 						flags.female ? "Schwester" : "Bruder"); /* EN flags.female ? "sister" : "brother"); */
 					verbl_msg = verbuf;
 				} else if (nightchild && isnight) {
 					Sprintf(verbuf,
-					    "How nice to hear you, child of the night!"); /* EN "How nice to hear you, child of the night!"); */ // TODO DE
+					    "Wie schön KASUS_AKKUSATIV PRONOMEN_POSSESSIV NOUN_STIMME zu hören, Geschöpf der Nacht!"); /* EN "How nice to hear you, child of the night!"); */
 					verbl_msg = verbuf;
 				} else
 					verbl_msg = "Ich trinke nur ... Zaubertränke."; /* EN verbl_msg = "I only drink... potions."; */
@@ -505,8 +505,8 @@ register struct monst *mtmp;
 				int vampindex;
 				static const char * const vampmsg[] = {
 				       /* These first two (0 and 1) are specially handled below */
-					"I vant to suck your %s!", /* EN "I vant to suck your %s!", */ // TODO DE
-					"I vill come after %s without regret!", /* EN "I vill come after %s without regret!", */ // TODO DE
+					"Ich will KASUS_AKKUSATIV PRONOMEN_POSSESSIV %s aussaugen!", /* EN "I vant to suck your %s!", */
+					"Ich werde KASUS_AKKUSATIV %s jagen und zur Strecke bringen!", /* EN "I vill come after %s without regret!", */
 				       /* other famous vampire quotes can follow here if desired */
 				};
 				if (kindred)
@@ -599,8 +599,8 @@ register struct monst *mtmp;
 	    break;
 #ifdef GERMAN
 	case MS_GNOME:
-		  if (In_mines(&u.uz) && (!rn2(6))) {
-					verbl_msg = "Häsch mer amol en Stutz?"; /* Gnome of Zurich */ // TODO DE
+		  if (In_mines(&u.uz) && (!rn2(20))) {
+					verbl_msg = "Häsch mer amol en Stutz?"; /* Gnome of Zurich */
 					break;
 			}
 	    /* fall through */
@@ -656,7 +656,7 @@ register struct monst *mtmp;
 		    pline_msg = "gluckst."; /* EN pline_msg = "gurgles."; */
 		else
 		    verbl_msg = "Ich bin frei!"; /* EN verbl_msg = "I'm free!"; */
-	    } else verbl_msg = "Das wird OBJECT PRONOMEN_PERSONAL lehren, mich nicht zu stören!"; /* EN } else verbl_msg = "This will teach you not to disturb me!"; */ // TODO DE
+	    } else verbl_msg = "Das wird OBJECT PRONOMEN_PERSONAL lehren, mich zu stören!"; /* EN } else verbl_msg = "This will teach you not to disturb me!"; */
 	    break;
 	case MS_BOAST:	/* giants */
 	    if (!mtmp->mpeaceful) {
@@ -752,11 +752,11 @@ register struct monst *mtmp;
 #ifdef KOPS
 	case MS_ARREST:
 	    if (mtmp->mpeaceful)
-		verbalize("Just the facts, %s.", /* EN verbalize("Just the facts, %s.", */ // TODO DE
-		      flags.female ? "Ma'am" : "Sir"); /* EN flags.female ? "Ma'am" : "Sir"); */ // TODO DE
+		verbalize("SUBJECT MODIFIER_VERB_IMPERATIV VERB_BESCHREIBEN bitte den Tathergang, %s.", /* EN verbalize("Just the facts, %s.", */
+		      flags.female ? "werte Dame" : "werter Herr"); /* EN flags.female ? "Ma'am" : "Sir"); */
 	    else {
 		static const char * const arrest_msg[3] = {
-		    "Alles was Sie sagen, kann gegen Sie verwendet werden.", /* EN "Anything you say can be used against you.", */
+		    "Alles, was Sie sagen, kann gegen Sie verwendet werden.", /* EN "Anything you say can be used against you.", */
 		    "SUBJECT PRONOMEN_PERSONAL VERB_SEIN verhaftet!", /* EN "You're under arrest!", */
 				"Halt! Im Namen des Gesetzes!", /* EN "Stop in the name of the Law!", */
 		};

@@ -2154,7 +2154,7 @@ register int held;
 	}
 
 	if (loss)	/* magic bag lost some shop goods */
-	    You("VERB_OWE %ld %s für verlorene Ware.", loss, currency(loss)); /* EN You("owe %ld %s for lost merchandise.", loss, currency(loss)); */
+	    You("VERB_OWE OBJECT %ld %s für verlorene Waren.", loss, currency(loss)); /* EN You("owe %ld %s for lost merchandise.", loss, currency(loss)); */
 	obj->owt = weight(obj);	/* in case any items were lost */
 
 	if (!cnt)

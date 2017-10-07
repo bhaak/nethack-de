@@ -907,7 +907,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (Fire_resistance) you_are("feuerresistent"); /* EN if (Fire_resistance) you_are("fire resistant"); */
 	if (Cold_resistance) you_are("kälteresistent"); /* EN if (Cold_resistance) you_are("cold resistant"); */
 	if (Sleep_resistance) you_are("schlafresistent"); /* EN if (Sleep_resistance) you_are("sleep resistant"); */
-	if (Disint_resistance) you_are("desintegrationsresistant"); /* EN if (Disint_resistance) you_are("disintegration-resistant"); */
+	if (Disint_resistance) you_are("desintegrationsresistent"); /* EN if (Disint_resistance) you_are("disintegration-resistant"); */
 	if (Shock_resistance) you_are("stromresistent"); /* EN if (Shock_resistance) you_are("shock resistant"); */
 	if (Poison_resistance) you_are("giftresistent"); /* EN if (Poison_resistance) you_are("poison resistant"); */
 	if (Drain_resistance) you_are("lebensentzugsresistent"); /* EN if (Drain_resistance) you_are("level-drain resistant"); */
