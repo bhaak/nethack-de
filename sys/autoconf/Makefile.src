@@ -729,7 +729,7 @@ german_vocabulary.c: $(srcdir)/generate_german.rb $(srcdir)/german_verb.rb
 german_vocabulary.o: $(srcdir)/german_vocabulary.c $(srcdir)/../include/german.h
 german.o: $(srcdir)/german.c german_vocabulary.o $(srcdir)/../include/german.h
 testgerman.o: $(srcdir)/german.c german_vocabulary.o $(srcdir)/../include/german.h
-	$(CC) -Wall $(CFLAGS) -DWISH_DEBUG -DNO_HACK_H_INCLUDE -c -o testgerman.o $(srcdir)/german.c
+	$(CC) -Wall $(CFLAGS) -DNO_HACK_H_INCLUDE -c -o testgerman.o $(srcdir)/german.c
 german_test: $(srcdir)/german_test.c testgerman.o german_vocabulary.o $(srcdir)/../include/german.h
 	$(CC) -Wall $(CFLAGS) -DNO_HACK_H_INCLUDE $(srcdir)/german_test.c -lcheck -o german_test testgerman.o german_vocabulary.o
 german_wishing.o: $(srcdir)/german_wishing_test.c $(srcdir)/german.h

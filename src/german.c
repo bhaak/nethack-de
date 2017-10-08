@@ -17,8 +17,9 @@
 char *this_makes_you_feel = "Dadurch VERB_FUEHLEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_PERSONAL";
 enum Output_Encoding german_output_encoding = OUTPUT_LATIN1;
 
-//#define DEBUG 1
-#define WISH_DEBUG 0
+#ifndef WISH_DEBUG
+# define WISH_DEBUG 0
+#endif
 
 #ifdef LINT
 # define Static		/* pacify lint */
@@ -1327,15 +1328,19 @@ char* german(const char *line) {
 				}
 			}
 
-		} else if (strncmp("NEUES_OBJECT", tmp, 6)==0) {
+		} else if (strncmp("NEUES_OBJECT", tmp, 12)==0) {
 			insert_char = 0;
 			clear_object();
-		} else if (strncmp("NEUER_SATZ", tmp, 6)==0) {
+		} else if (strncmp("NEUER_SATZ", tmp, 12)==0) {
 			insert_char = 0;
 			
 			clear_subject();
 			clear_object();
 			clear_verb();
+		} else if (strncmp("NEUES_SUBSTANTIV", tmp, 16)==0) {
+			/* neue Nominalphrase mit demselben Kasus */
+			insert_char = 0;
+			finde_naechstes_substantiv(line+pos);
 		} else if (strncmp("KASUS_", tmp, 6)==0) {
 			insert_char = 0;
 

@@ -1011,14 +1011,20 @@ START_TEST (test_noun_pseudo) {
 
 START_TEST (test_shopkeeper) {
 	char *text[][2] = {
-    {"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_SHOPKEEPERIN!",
+		{"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_WEIBLICH Tirebolu NEUES_SUBSTANTIV ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_SHOPKEEPERIN!",
 		 "Du triffst Tirebolu die unsichtbare Ladenbesitzerin!"},
-    {"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_SHOPKEEPER!",
+		{"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_MAENNLICH Tirebolu NEUES_SUBSTANTIV ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_SHOPKEEPER!",
 		 "Du triffst Tirebolu den unsichtbaren Ladenbesitzer!"},
-    {"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_WEIBLICH Tirebolu ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_TROLL!",
-		 "Du triffst Tirebolu den unsichtbaren Trolle!"},
-    {"getötet KASUS_DATIV von NOUN_PSEUDO_WEIBLICH Y-Fenni, ARTIKEL_BESTIMMTER NOUN_SHOPKEEPER",
-		 "getötet von Y-Fenni, dem Ladenbesitzer"},
+		/* Ladenbesitzer ist in ein anderes Monster transformiert */
+		{"SUBJECT NOUN_PSEUDO_WEIBLICH Tirebolu NEUES_SUBSTANTIV ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_TROLL VERB_HIT!",
+		 "Tirebolu der unsichtbare Troll trifft!"},
+		{"SUBJECT PRONOMEN_PERSONAL VERB_HIT OBJECT NOUN_PSEUDO_WEIBLICH Tirebolu NEUES_SUBSTANTIV ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_TROLL!",
+		 "Du triffst Tirebolu den unsichtbaren Troll!"},
+		/* getötet von einem Ladenbesitzer */
+		{"getötet KASUS_DATIV von NOUN_PSEUDO_WEIBLICH Y-Fenni, NEUES_SUBSTANTIV ARTIKEL_BESTIMMTER NOUN_SHOPKEEPERIN",
+		 "getötet von Y-Fenni, der Ladenbesitzerin"},
+		{"getötet KASUS_DATIV von NOUN_PSEUDO_WEIBLICH Y-Fenni, NEUES_SUBSTANTIV ARTIKEL_BESTIMMTER ADJEKTIV_INVISIBLE NOUN_TROLL",
+		 "getötet von Y-Fenni, dem unsichtbaren Troll"},
 	};
 
 	check_strings(text, SIZE2(text));
@@ -1412,27 +1418,27 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_statues);
 	tcase_add_test(tc_core, test_verbs);
 	//tcase_add_test(tc_core, test_linking_elements);
-	
+
 	tcase_add_test(tc_core, test_wands);
 	tcase_add_test(tc_core, test_spellbooks);
 	tcase_add_test(tc_core, test_potions);
 	tcase_add_test(tc_core, test_called_named_labeled);
-	
+
 	tcase_add_test(tc_core, test_level_sounds);
 	tcase_add_test(tc_core, test_tools);
 	tcase_add_test(tc_core, test_passiv);
 	tcase_add_test(tc_core, test_complete_sentences);
-	
+
 	tcase_add_test(tc_core, test_complete_sentences2);
 	tcase_add_test(tc_core, test_complete_sentences3);
 	tcase_add_test(tc_core, test_complete_sentences4);
 	tcase_add_test(tc_core, test_tincontent);
-	
+
 	tcase_add_test(tc_core, test_inventory_names);
 	tcase_add_test(tc_core, test_casus_and_modifier);
 	tcase_add_test(tc_core, test_rings);
 	tcase_add_test(tc_core, test_scrolls);
-	
+
 	tcase_add_test(tc_core, test_gems);
 	tcase_add_test(tc_core, test_paar);
 	tcase_add_test(tc_core, test_hoeren);
@@ -1443,11 +1449,11 @@ Suite *test_suite(void)
 	tcase_add_test(tc_core, test_possessiv);
 	tcase_add_test(tc_core, test_noun_pseudo);
 
-	//tcase_add_test(tc_core, test_shopkeeper); TODO
+	tcase_add_test(tc_core, test_shopkeeper);
 	tcase_add_test(tc_core, test_genitivattribut_zu_wort);
 	tcase_add_test(tc_core, test_modifier_verb_imperativ);
 	tcase_add_test(tc_core, test_wortzusammensetzungen);
-	
+
 	tcase_add_test(tc_core, test_pronominalisierung);
 	tcase_add_test(tc_core, test_relativpronomen);
 	tcase_add_test(tc_core, test_indefinitpronomen);

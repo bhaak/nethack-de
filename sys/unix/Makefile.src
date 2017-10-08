@@ -745,7 +745,7 @@ german_vocabulary.c: generate_german.rb german_verb.rb
 german_vocabulary.o: german_vocabulary.c ../include/german.h
 german.o: german.c german_vocabulary.o ../include/german.h
 german_test: german_test.c german.o german_vocabulary.o ../include/german.h
-	$(CC) -Wall $(CFLAGS) -DWISH_DEBUG -DNO_HACK_H_INCLUDE -c -o german.o german.c
+	$(CC) -Wall $(CFLAGS) -DNO_HACK_H_INCLUDE -c -o german.o german.c
 	$(CC) -Wall $(CFLAGS) -DNO_HACK_H_INCLUDE german_test.c -lcheck -o german_test german.o german_vocabulary.o
 german_wishing.o: german_wishing_test.c german.h
 
