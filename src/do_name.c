@@ -712,12 +712,12 @@ boolean called;
 	    Strcat(buf, shkname(mtmp));
 	    if (mdat == &mons[PM_SHOPKEEPER] && !do_invis)
 		return buf;
-	    Strcat(buf, " ARTIKEL_BESTIMMTER "); /* EN Strcat(buf, " the "); */
+	    Strcat(buf, " NEUES_SUBSTANTIV ARTIKEL_BESTIMMTER "); /* EN Strcat(buf, " the "); */
 	    if (do_invis) 
 		Strcat(buf, "ADJEKTIV_INVISIBLE "); /* EN Strcat(buf, "invisible "); */
 	    Strcat(buf, mdat->mname);
 #ifdef GERMAN
-	    if (mtmp->female) { Strcat(buf, "IN"); }
+	    if (mtmp->female && (mdat == &mons[PM_SHOPKEEPER])) { Strcat(buf, "IN"); }
 #endif
 	    return buf;
 	}

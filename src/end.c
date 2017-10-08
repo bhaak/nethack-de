@@ -241,8 +241,8 @@ register struct monst *mtmp;
 		if (mtmp->mnamelth) Sprintf(eos(buf), " %s", s_suffix(NAME(mtmp)));
 #endif
 	} else if(mtmp->isshk) {
-		Sprintf(eos(buf), "%s%s, ARTIKEL_BESTIMMTER NOUN_SHOPKEEPER%s", /* EN Sprintf(eos(buf), "%s %s, the shopkeeper", */
-			(mtmp->female ? "" : ""), shkname(mtmp), (mtmp->female ? "IN" : "")); /* EN (mtmp->female ? "Ms." : "Mr."), shkname(mtmp)); */
+		Sprintf(eos(buf), "%s, ARTIKEL_BESTIMMTER NOUN_SHOPKEEPER%s", /* EN Sprintf(eos(buf), "%s %s, the shopkeeper", */
+			shkname(mtmp), (mtmp->female ? "IN" : "")); /* EN (mtmp->female ? "Ms." : "Mr."), shkname(mtmp)); */
 		killer_format = KILLED_BY;
 	} else if (mtmp->ispriest || mtmp->isminion) {
 		/* m_monnam() suppresses "the" prefix plus "invisible", and
