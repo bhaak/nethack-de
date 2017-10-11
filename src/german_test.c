@@ -1040,8 +1040,6 @@ START_TEST (test_genitivattribut_zu_wort) {
 		 "ARTIKEL_BESTIMMTER NOUN_GEHIRN des Hundes"},
 		{"PRONOMEN_POSSESSIV",
 		 "PRONOMEN_POSSESSIV NOUN_GEHIRN"},
-		{"NOUN_IT",
-		 "PRONOMEN_SEIN NOUN_GEHIRN"},
 		{"NOUN_MEDUSA",
 		 "Medusas NOUN_GEHIRN"},
 		{"NOUN_PSEUDO_MAENNLICH Izchak",
@@ -1209,6 +1207,11 @@ START_TEST (test_pronomen) {
 		 "Sie treffen sie!"},
 		{"SUBJECT NOUN_PRONOMEN_3P_MFN_PERSONALs VERB_HIT OBJECT NOUN_PRONOMEN_3P_N_PERSONAL!",
 		 "Sie treffen es!"},
+
+		{"NUMERUS_SINGULAR MODIFIER_VERB_SINGULAR PRONOMEN_EINER KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_SWORDs VERB_HIT",
+		 "eines deiner Schwerter trifft"},
+		{"PRONOMEN_MEHRERE KASUS_GENITIV PRONOMEN_POSSESSIV NOUN_SWORDs VERB_HIT",
+		 "mehrere deiner Schwerter treffen"},
 	};
 
 	check_strings(text, SIZE2(text));

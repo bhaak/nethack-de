@@ -1903,7 +1903,7 @@ boolean ordinary;
 		case WAN_LIGHTNING:
 		    makeknown(WAN_LIGHTNING);
 		    if (!Shock_resistance) {
-					You("shock yourself!"); /* EN You("shock yourself!"); */ // TODO DE
+			You("VERB_VERPASSEN OBJECT KASUS_DATIV PRONOMEN_PERSONAL einen Stromschlag!"); /* EN You("shock yourself!"); */
 			damage = d(12,6);
 			exercise(A_CON, FALSE);
 		    } else {
@@ -2304,7 +2304,7 @@ struct obj *obj;	/* wand or spell */
 	ttmp = t_at(x, y); /* trap if there is one */
 
 	switch (obj->otyp) {
-	case WAN_PROBING: // TODO DE Untersuchung
+	case WAN_PROBING:
 	    ptmp = 0;
 	    if (u.dz < 0) {
 				You("VERB_SONDIEREN OBJECT ARTIKEL_BESTIMMTER %s.", ceiling(x,y)); /* EN You("probe towards the %s.", ceiling(x,y)); */
@@ -2325,7 +2325,7 @@ struct obj *obj;	/* wand or spell */
 			/* can't use the stairs down to quest level 2 until
 			   leader "unlocks" them; give feedback if you try */
 			on_level(&u.uz, &qstart_level) && !ok_to_quest()) {
-				pline("Eine Welle scheint kurz die Treppe zu durchlaufen."); /* EN pline_The("stairs seem to ripple momentarily."); */
+				pline("Eine Erschütterung scheint kurz die Treppe zu durchlaufen."); /* EN pline_The("stairs seem to ripple momentarily."); */
 		disclose = TRUE;
 	    }
 	    break;
@@ -3350,9 +3350,13 @@ register int dx,dy;
 	    if (zap_hit(find_mac(mon), spell_type)) {
 		if (mon_reflects(mon, (char *)0)) {
 		    if(cansee(mon->mx,mon->my)) {
+			char buf[BUFSZ];
 			hit(fltxt, mon, exclam(0));
 			shieldeff(mon->mx, mon->my);
-			(void) mon_reflects(mon, "But it reflects from %s!"); /* EN (void) mon_reflects(mon, "But it reflects from %s %s!"); */ // TODO DE
+#ifdef GERMAN
+			Sprintf(buf, "Aber %s reflektiert KASUS_DATIV von %%s!", pronominalisierung(fltxt));
+#endif
+			(void) mon_reflects(mon, buf); /* EN (void) mon_reflects(mon, "But it reflects from %s %s!"); */
 		    }
 		    dx = -dx;
 		    dy = -dy;
@@ -3453,7 +3457,7 @@ register int dx,dy;
 		pline("SUBJECT %s VERB_HIT OBJECT PRONOMEN_PERSONAL!", The(fltxt)); /* EN pline("%s hits you!", The(fltxt)); */
 		if (Reflecting) {
 		    if (!Blind) {
-		    	(void) ureflects("Aber SUBJECT_IM_SATZ %s VERB_REFLEKTIEREN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV %s!", "NOUN_IT"); /* EN (void) ureflects("But %s reflects from your %s!", "it"); */
+		    	(void) ureflects("Aber SUBJECT_IM_SATZ %s VERB_REFLEKTIEREN OBJECT KASUS_DATIV von PRONOMEN_POSSESSIV %s!", pronominalisierung(fltxt)); /* EN (void) ureflects("But %s reflects from your %s!", "it"); */
 		    } else
 			pline("Aus irgendeinem Grund VERB_SEIN SUBJECT_IM_SATZ NOUN_IT nicht betroffen."); /* EN pline("For some reason you are not affected."); */
 		    dx = -dx;
@@ -3818,7 +3822,7 @@ register struct obj *obj;
 
  const char * const destroy_strings[] = {	/* also used in trap.c */
 	"VERB_GEFRIEREN und VERB_ZERSPRINGEN", "VERB_GEFRIEREN und VERB_ZERSPRINGEN", "ADJEKTIV_ZERSPRUNGEN NOUN_POTION", /* EN "freezes and shatters", "freeze and shatter", "shattered potion", */
-	"boils and explodes", "boil and explode", "boiling potion", /* EN "boils and explodes", "boil and explode", "boiling potion", */ // TODO DE
+	"VERB_SIEDEN und VERB_EXPLODIEREN", "VERB_SIEDEN und VERB_EXPLODIEREN", "ADJEKTIV_SIEDEND NOUN_POTION", /* EN "boils and explodes", "boil and explode", "boiling potion", */
 	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "ADJEKTIV_VERBRENNEND NOUN_SCROLL", /* EN "catches fire and burns", "catch fire and burn", "burning scroll", */
 	"VERB_FANGEN Feuer und VERB_VERBRENNEN", "VERB_FANGEN Feuer und VERB_VERBRENNEN", "ADJEKTIV_BRENNEND NOUN_BUCH", /* EN "catches fire and burns", "catch fire and burn", "burning book", */
 	"VERB_ZERFALLEN zu Staub und VERB_VERSCHWINDEN", "VERB_ZERFALLEN zu Staub und VERB_VERSCHWINDEN", "", /* EN "turns to dust and vanishes", "turn to dust and vanish", "", */
@@ -3917,7 +3921,7 @@ register int osym, dmgtyp;
 
 		if(!cnt) continue;
 		if(cnt == quan)	mult = "PRONOMEN_POSSESSIV"; /* EN if(cnt == quan)	mult = "Your"; */
-		else	mult = (cnt == 1L) ? "One of your" : "Some of your"; /* EN else	mult = (cnt == 1L) ? "One of your" : "Some of your"; */ // TODO DE
+		else	mult = (cnt == 1L) ? "NUMERUS_SINGULAR MODIFIER_VERB_SINGULAR PRONOMEN_EINER KASUS_GENITIV PRONOMEN_POSSESSIV" : "PRONOMEN_MEHRERE KASUS_GENITIV PRONOMEN_POSSESSIV"; /* EN else	mult = (cnt == 1L) ? "One of your" : "Some of your"; */
 		pline("SUBJECT %s %s %s!", mult, xname(obj), /* EN pline("%s %s %s!", mult, xname(obj), */
 			(cnt > 1L) ? destroy_strings[dindx*3 + 1]
 				  : destroy_strings[dindx*3]);

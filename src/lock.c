@@ -159,10 +159,8 @@ forcelock()	/* try to force a locked chest */
 		/* for a +0 weapon, probability that it survives an unsuccessful
 		 * attempt to force the lock is (.992)^50 = .67
 		 */
-		pline("SUBJECT %s %s VERB_ZERBRECHEN!", /* EN pline("%s %s broke!", */
-		      (uwep->quan > 1L) ? "One of your" : "PRONOMEN_POSSESSIV", xname(uwep)); /* EN (uwep->quan > 1L) ? "One of your" : "Your", xname(uwep)); */ // TODO DE
-		/*pline("%sour %s broke!",
-			(uwep->quan > 1L) ? "One of y" : "Y", xname(uwep));*/
+		pline("SUBJECT %s %s VERB_ZERBRECHEN!", /* EN pline("%sour %s broke!", */
+		      (uwep->quan > 1L) ? "NUMERUS_SINGULAR MODIFIER_VERB_SINGULAR PRONOMEN_EINER KASUS_GENITIV PRONOMEN_POSSESSIV" : "PRONOMEN_POSSESSIV", xname(uwep)); /* EN (uwep->quan > 1L) ? "One of y" : "Y", xname(uwep)); */
 		useup(uwep);
 		You("VERB_GEBEN den Versuch auf, das Schloss aufzubrechen."); /* EN You("give up your attempt to force the lock."); */
 		exercise(A_DEX, TRUE);
