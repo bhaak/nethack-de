@@ -1,19 +1,19 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 require 'date'
 
 def ausgabe(en, de, prozent)
 
-	if (prozent.to_i >= 100) then
-	  puts '<td class="vollstaendig" colspan="10"></td>'
-	elsif (prozent.to_i == 0) then
-	  puts '<td class="leer" colspan="10"></td>'
-	else
-	  if (prozent.to_i / 10 > 0) then
-		  puts '<td class="teilweise" colspan="'+(prozent.to_i / 10).to_s+'"></td>'
-		end
-		puts '<td class="leer" colspan="'+(10 -(prozent.to_i / 10)).to_s+'"></td>'
-	end
+  if (prozent.to_i >= 100) then
+    puts '<td class="vollstaendig" colspan="10"></td>'
+  elsif (prozent.to_i == 0) then
+    puts '<td class="leer" colspan="10"></td>'
+  else
+    if (prozent.to_i / 10 > 0) then
+      puts '<td class="teilweise" colspan="'+(prozent.to_i / 10).to_s+'"></td>'
+    end
+    puts '<td class="leer" colspan="'+(10-(prozent.to_i / 10)).to_s+'"></td>'
+  end
 end
 
 puts '<style type="text/css">'
@@ -42,26 +42,26 @@ puts '    <th title="already translated (in percent)">%</th>'
 10.times { puts '    <th class="balken"></th>' }
 puts '  </tr>'
 files.sort.each {|c|
-	en_cnt = IO.popen('grep \ EN\  '+c+' | wc -l').readlines.join.strip
-	de_cnt = IO.popen('grep TODO\ DE '+c+' | wc -l').readlines.join.strip
-	if en_cnt.to_i > 0 then
-					#print c +" "+en_cnt+" "+de_cnt+" "#+(de_cnt.to_i/en_cnt.to_i)
-					puts '<tr>'
-					puts '<td align="left">'+c+'</td>'
-					puts '<td align="right">'+en_cnt+'</td>'
-					puts '<td align="right">'+de_cnt+'</td>'
-					if de_cnt.to_i > en_cnt.to_i then
-						de_cnt = en_cnt
-					end
-					prozent = sprintf("%.2f", ((en_cnt.to_i-de_cnt.to_i)*100.00/en_cnt.to_i))
-					#puts prozent
-					puts '<td align="right">'+prozent+'</td>'
-					ausgabe(en_cnt, de_cnt, prozent)
-					puts '</tr>'
-					en += en_cnt.to_i
-					de += de_cnt.to_i
-					i += 1
-	end
+  en_cnt = IO.popen('grep \ EN\  '+c+' | wc -l').readlines.join.strip
+  de_cnt = IO.popen('grep TODO\ DE '+c+' | wc -l').readlines.join.strip
+  if en_cnt.to_i > 0 then
+          #print c +" "+en_cnt+" "+de_cnt+" "#+(de_cnt.to_i/en_cnt.to_i)
+          puts '<tr>'
+          puts '<td align="left">'+c+'</td>'
+          puts '<td align="right">'+en_cnt+'</td>'
+          puts '<td align="right">'+de_cnt+'</td>'
+          if de_cnt.to_i > en_cnt.to_i then
+            de_cnt = en_cnt
+          end
+          prozent = sprintf("%.2f", ((en_cnt.to_i-de_cnt.to_i)*100.00/en_cnt.to_i))
+          #puts prozent
+          puts '<td align="right">'+prozent+'</td>'
+          ausgabe(en_cnt, de_cnt, prozent)
+          puts '</tr>'
+          en += en_cnt.to_i
+          de += de_cnt.to_i
+          i += 1
+  end
 }
 
 #puts "total files: "+files.size.to_s

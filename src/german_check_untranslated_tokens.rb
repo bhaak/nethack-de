@@ -1,12 +1,9 @@
-#!/usr/bin/ruby
-
-file1 = File.readlines("mon-de.h")
-file2 = File.readlines("obj-de.h")
-
-lines = file1.concat file2
+#!/usr/bin/env ruby
+Encoding.default_internal = Encoding::ISO_8859_1
+Encoding.default_external = Encoding::ISO_8859_1
 
 translated = []
-File.open("german_vocabulary.c") { |german| 
+File.open("german_vocabulary.c") { |german|
   translated = german.readlines.collect { |l|
     if l =~ /\{"[^"]*", "([A-Z0-9_]+)"/ then
       $1
@@ -14,17 +11,16 @@ File.open("german_vocabulary.c") { |german|
   }.uniq
 }
 
-
 t = []
 files = []
 if ARGV.length == 0 then
-	files = %w{allmain.c alloc.c apply.c artifact.c attrib.c ball.c bones.c botl.c cmd.c dbridge.c decl.c detect.c dig.c display.c dlb.c do.c do_name.c do_wear.c dog.c dogmove.c dokick.c dothrow.c drawing.c dungeon.c eat.c end.c engrave.c exper.c explode.c extralev.c files.c fountain.c hack.c hacklib.c invent.c light.c lock.c mail.c makemon.c mapglyph.c mcastu.c mhitm.c mhitu.c minion.c mklev.c mkmap.c mkmaze.c mkobj.c mkroom.c mon.c mondata.c monmove.c monst.c monstr.c mplayer.c mthrowu.c muse.c music.c o_init.c objects.c objnam.c options.c pager.c pickup.c pline.c polyself.c potion.c pray.c priest.c quest.c questpgr.c read.c rect.c region.c restore.c rip.c rnd.c role.c rumors.c save.c shk.c shknam.c sit.c sounds.c sp_lev.c spell.c steal.c steed.c teleport.c timeout.c topten.c track.c trap.c u_init.c uhitm.c vault.c version.c vis_tab.c vision.c weapon.c were.c wield.c windows.c wizard.c worm.c worn.c write.c zap.c}
+  files = Dir.glob("*.c") - %w{german.c german_test.c german_vocabulary.c german_wishing_test.c}
 else
-	files = ARGV
+  files = ARGV
 end
 
 files.each { |f|
-  File.open(f) { |file| 
+  File.open(f) { |file|
     tmp = file.readlines.collect {|l|
       l.scan(/"[^"]*[A-Z][A-Z0-9_]+[^"]*"/)
       #l.scan(/.*[A-Z][A-Z0-9_].*/) # fuer dat/quest.txt
@@ -59,6 +55,7 @@ terme = [
 "ARTICLE_YOUR",
 "ARTIKEL_",
 "ASCENDED",
+"ASCII",
 "AT",
 "AT386",
 "ATR_BOLD",
@@ -202,6 +199,7 @@ terme = [
 "INTRINSIC",
 "IS_ROCK",
 "IS_TREE",
+"ISO",
 "KAABLAMM",
 "KABOOM",
 "KABUMM",
@@ -261,6 +259,7 @@ terme = [
 "MODIFIER_VERB_PLURAL",
 "MODIFIER_VERB_PRAETERITUM",
 "MODIFIER_VERB_SINGULAR",
+"MODIFIER_VERB_SUBSTANTIVIERT",
 "MODIFIER_VERB_ZWEITE_PERSON",
 "MONSTERS",
 "MON_WEP",
@@ -405,6 +404,7 @@ terme = [
 "RUHE",
 "RUMMS",
 "RRUMMS",
+"S_OF_",
 "SATZBEGINN",
 "SATZKLAMMER",
 "SAVE",
@@ -473,6 +473,8 @@ terme = [
 "TT_INFLOOR",
 "TUWALL",
 "UNIQUE",
+"UTF",
+"UTF8",
 "VA_ARGS",
 "VEGGY",
 "VER",

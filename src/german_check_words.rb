@@ -1,5 +1,4 @@
-#!/usr/bin/ruby
-# encoding: iso-8859-1
+#!/usr/bin/env ruby
 Encoding.default_internal = Encoding::ISO_8859_1
 Encoding.default_external = Encoding::ISO_8859_1
 
@@ -24,7 +23,7 @@ count = 0
 lines.each { |line|
   if line =~ /\#define.*NAM_.*(".*")/ then
     if not translated.include? $1 then
-      puts $1+' nicht übersetzt!' unless htmlOutput
+      puts $1+' nicht uebersetzt!' unless htmlOutput
       count += 1
     end
   end
@@ -41,9 +40,9 @@ if htmlOutput then
 else
   puts
   puts "Gesamtzahl:            "+sprintf("%4d", lines.size.to_s)
-  puts "Nicht übersetzte Wort: "+sprintf("%4d", count.to_s)
-  puts "Übersetzte Worte:      "+sprintf("%4d", lines.size-count)
-  puts "Prozentual übersetzt:  "+sprintf("%2g", (lines.size-count)*100.0/lines.size)
+  puts "Nicht uebersetzte Wort: "+sprintf("%4d", count.to_s)
+  puts "Uebersetzte Worte:      "+sprintf("%4d", lines.size-count)
+  puts "Prozentual uebersetzt:  "+sprintf("%2g", (lines.size-count)*100.0/lines.size)
 end
 
 end
