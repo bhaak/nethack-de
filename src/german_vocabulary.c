@@ -1208,6 +1208,11 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Umhänge der Magieresistenz", "NOUN_CLOAK_OF_MAGIC_RESISTANCEs", "s", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Umhängen der Magieresistenz", "NOUN_CLOAK_OF_MAGIC_RESISTANCEs", "s", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
+  {"Umhanges der Dislokation", "NOUN_CLOAK_OF_DISPLACEMENT", "s", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Umhang der Dislokation", "NOUN_CLOAK_OF_DISPLACEMENT", "s", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Umhänge der Dislokation", "NOUN_CLOAK_OF_DISPLACEMENTs", "s", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Umhängen der Dislokation", "NOUN_CLOAK_OF_DISPLACEMENTs", "s", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
   {"kleinen Schildes", "NOUN_SMALL_SHIELD", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"kleine Schild", "NOUN_SMALL_SHIELD", "", nominativ, maskulin, n_singular, bestimmter},
   {"kleiner Schild", "NOUN_SMALL_SHIELD", "", nominativ, maskulin, n_singular, unbestimmter|ohne|grundform},
@@ -1433,6 +1438,16 @@ struct substantiv_oder_adjekiv_struct worte[] = {
   {"Kapuzenmantel", "NOUN_HOODED_CLOAK", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Kapuzenmäntel", "NOUN_HOODED_CLOAKs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Kapuzenmänteln", "NOUN_HOODED_CLOAKs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+
+  {"rutschigen Umhangs", "NOUN_SLIPPERY_CLOAK", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"rutschige Umhang", "NOUN_SLIPPERY_CLOAK", "", nominativ, maskulin, n_singular, bestimmter},
+  {"rutschiger Umhang", "NOUN_SLIPPERY_CLOAK", "", nominativ, maskulin, n_singular, unbestimmter|ohne|grundform},
+  {"rutschigen Umhang", "NOUN_SLIPPERY_CLOAK", "", dativ|akkusativ, maskulin, n_singular, unbestimmter|bestimmter|grundform|ohne},
+  {"rutschigem Umhang", "NOUN_SLIPPERY_CLOAK", "", dativ, maskulin, n_singular, grundform|ohne},
+  {"rutschigen Umhängen", "NOUN_SLIPPERY_CLOAKs", "", dativ, maskulin, n_plural, bestimmter|unbestimmter|grundform|ohne},
+  {"rutschigen Umhänge", "NOUN_SLIPPERY_CLOAKs", "", nominativ|akkusativ|genitiv, maskulin, n_plural, unbestimmter|bestimmter},
+  {"rutschige Umhänge", "NOUN_SLIPPERY_CLOAKs", "", nominativ|akkusativ, maskulin, n_plural, grundform|ohne},
+  {"rutschiger Umhänge", "NOUN_SLIPPERY_CLOAKs", "", genitiv, maskulin, n_plural, grundform|ohne},
 
   {"Schürze", "NOUN_APRON", "n", akkusativ|nominativ|dativ|genitiv, feminin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Schürzen", "NOUN_APRONs", "n", akkusativ|nominativ|dativ|genitiv, feminin, n_plural, ohne|bestimmter|unbestimmter|grundform},
@@ -8265,10 +8280,10 @@ Although not referring to the exactly same rank. */
   {"Handschuhe", "NOUN_GLOVESs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
   {"Handschuhen", "NOUN_GLOVESs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
-  {"Mantels", "NOUN_CLOAK", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
-  {"Mantel", "NOUN_CLOAK", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
-  {"Mäntel", "NOUN_CLOAKs", "", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
-  {"Mänteln", "NOUN_CLOAKs", "", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Umhanges", "NOUN_CLOAK", "s", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Umhang", "NOUN_CLOAK", "s", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Umhänge", "NOUN_CLOAKs", "s", genitiv|nominativ|akkusativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Umhängen", "NOUN_CLOAKs", "s", dativ, maskulin, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Helmes", "NOUN_HELMET", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Helm", "NOUN_HELMET", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -10300,6 +10315,11 @@ Although not referring to the exactly same rank. */
   {"Desintegrationsfeldern", "NOUN_DESINTEGRATIONFELDs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Dingsbums", "NOUN_DINGSBUMS", "", akkusativ|nominativ|dativ|genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+
+  {"Abbildes", "NOUN_DISPLACEDIMAGE", "", genitiv, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Abbild", "NOUN_DISPLACEDIMAGE", "", akkusativ|dativ|nominativ, neutrum, n_singular, ohne|bestimmter|unbestimmter|grundform},
+  {"Abbilder", "NOUN_DISPLACEDIMAGEs", "", genitiv|nominativ|akkusativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
+  {"Abbildern", "NOUN_DISPLACEDIMAGEs", "", dativ, neutrum, n_plural, ohne|bestimmter|unbestimmter|grundform},
 
   {"Durstes", "NOUN_DURST", "", genitiv, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
   {"Durst", "NOUN_DURST", "", akkusativ|dativ|nominativ, maskulin, n_singular, ohne|bestimmter|unbestimmter|grundform},
@@ -14484,6 +14504,30 @@ Although not referring to the exactly same rank. */
   {"derzeitigen", "ADJEKTIV_DERZEITIG", "", dativ, maskulin|feminin|neutrum, n_plural, ohne},
   
 
+  {"disloziert", "ADJEKTIV_DISPLACED", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_singular|n_plural, grundform},
+  {"dislozierte", "ADJEKTIV_DISPLACED", "", nominativ, maskulin|feminin|neutrum, n_singular, bestimmter},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"dislozierte", "ADJEKTIV_DISPLACED", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", genitiv|dativ, maskulin|feminin|neutrum, n_singular, bestimmter},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_plural, bestimmter},
+  {"dislozierter", "ADJEKTIV_DISPLACED", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"dislozierte", "ADJEKTIV_DISPLACED", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
+  {"disloziertes", "ADJEKTIV_DISPLACED", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", genitiv|dativ, maskulin|feminin|neutrum, n_singular, unbestimmter},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_plural, unbestimmter},
+  {"dislozierter", "ADJEKTIV_DISPLACED", "", nominativ, maskulin, n_singular, ohne},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", akkusativ|genitiv, maskulin, n_singular, ohne},
+  {"disloziertem", "ADJEKTIV_DISPLACED", "", dativ, maskulin|neutrum, n_singular, ohne},
+  {"disloziertes", "ADJEKTIV_DISPLACED", "", nominativ|akkusativ, neutrum, n_singular, ohne},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", genitiv, neutrum, n_singular, ohne},
+  {"dislozierte", "ADJEKTIV_DISPLACED", "", nominativ|akkusativ, feminin, n_singular, ohne},
+  {"dislozierter", "ADJEKTIV_DISPLACED", "", genitiv|dativ, feminin, n_singular, ohne},
+  {"dislozierte", "ADJEKTIV_DISPLACED", "", nominativ|akkusativ, maskulin|feminin|neutrum, n_plural, ohne},
+  {"dislozierter", "ADJEKTIV_DISPLACED", "", genitiv, maskulin|feminin|neutrum, n_plural, ohne},
+  {"dislozierten", "ADJEKTIV_DISPLACED", "", dativ, maskulin|feminin|neutrum, n_plural, ohne},
+  
+
   {"drachenhäutig", "ADJEKTIV_DRACHENHAEUTIG", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_singular|n_plural, grundform},
   {"drachenhäutige", "ADJEKTIV_DRACHENHAEUTIG", "", nominativ, maskulin|feminin|neutrum, n_singular, bestimmter},
   {"drachenhäutigen", "ADJEKTIV_DRACHENHAEUTIG", "", akkusativ, maskulin, n_singular, bestimmter},
@@ -17506,6 +17550,30 @@ Although not referring to the exactly same rank. */
   {"siedende", "ADJEKTIV_SIEDEND", "", nominativ|akkusativ, maskulin|feminin|neutrum, n_plural, ohne},
   {"siedender", "ADJEKTIV_SIEDEND", "", genitiv, maskulin|feminin|neutrum, n_plural, ohne},
   {"siedenden", "ADJEKTIV_SIEDEND", "", dativ, maskulin|feminin|neutrum, n_plural, ohne},
+  
+
+  {"rutschig", "ADJEKTIV_SLIPPERY", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_singular|n_plural, grundform},
+  {"rutschige", "ADJEKTIV_SLIPPERY", "", nominativ, maskulin|feminin|neutrum, n_singular, bestimmter},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", akkusativ, maskulin, n_singular, bestimmter},
+  {"rutschige", "ADJEKTIV_SLIPPERY", "", akkusativ, feminin|neutrum, n_singular, bestimmter},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", genitiv|dativ, maskulin|feminin|neutrum, n_singular, bestimmter},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_plural, bestimmter},
+  {"rutschiger", "ADJEKTIV_SLIPPERY", "", nominativ, maskulin, n_singular, unbestimmter},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", akkusativ, maskulin, n_singular, unbestimmter},
+  {"rutschige", "ADJEKTIV_SLIPPERY", "", nominativ|akkusativ, feminin, n_singular, unbestimmter},
+  {"rutschiges", "ADJEKTIV_SLIPPERY", "", nominativ|akkusativ, neutrum, n_singular, unbestimmter},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", genitiv|dativ, maskulin|feminin|neutrum, n_singular, unbestimmter},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_plural, unbestimmter},
+  {"rutschiger", "ADJEKTIV_SLIPPERY", "", nominativ, maskulin, n_singular, ohne},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", akkusativ|genitiv, maskulin, n_singular, ohne},
+  {"rutschigem", "ADJEKTIV_SLIPPERY", "", dativ, maskulin|neutrum, n_singular, ohne},
+  {"rutschiges", "ADJEKTIV_SLIPPERY", "", nominativ|akkusativ, neutrum, n_singular, ohne},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", genitiv, neutrum, n_singular, ohne},
+  {"rutschige", "ADJEKTIV_SLIPPERY", "", nominativ|akkusativ, feminin, n_singular, ohne},
+  {"rutschiger", "ADJEKTIV_SLIPPERY", "", genitiv|dativ, feminin, n_singular, ohne},
+  {"rutschige", "ADJEKTIV_SLIPPERY", "", nominativ|akkusativ, maskulin|feminin|neutrum, n_plural, ohne},
+  {"rutschiger", "ADJEKTIV_SLIPPERY", "", genitiv, maskulin|feminin|neutrum, n_plural, ohne},
+  {"rutschigen", "ADJEKTIV_SLIPPERY", "", dativ, maskulin|feminin|neutrum, n_plural, ohne},
   
 
   {"solch", "ADJEKTIV_SOLCH", "", nominativ|genitiv|dativ|akkusativ, maskulin|feminin|neutrum, n_singular|n_plural, grundform},
