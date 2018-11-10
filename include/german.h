@@ -48,6 +48,7 @@ struct verb_struct {
 
 struct verb_infinitiv_struct {
 	const char *verb;
+	const char *zu;
 	const char *typ;
 };
 

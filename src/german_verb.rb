@@ -1,32 +1,21 @@
 #!/usr/bin/env ruby
 # coding: iso-8859-1
 
-# TODO
 # Besonderheiten http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Texte/Besonderheiten.html
-#
-# [ ] Trennbare Verben
-# [X] e-Erweiterung
-# [ ] e-Tilgung
-# [ ] e-Tilgung im Konjunktiv II
-# [X] e/i-Wechsel
-# [X] Partizip mit/ohne ge-
-# [X] s-Verschmelzung
-# [X] Umlaut im Pr‰sens
-# [X] Ablaut in Stammformen
 
 class Verb
   attr_reader :infinitiv, :e_erweiterung, :partizip_perfekt
   attr_accessor :kennung, :praeverb
   attr_accessor :umlaut # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Listen/Umlaut-Irreg-Pres.html
-  
+
   def initialize(stamm, praeteritum_stamm="", partizip_perfekt="")
     if stamm[-2..-1] == "en" then
       @infinitiv = stamm
       stamm = stamm[0..-3]
     elsif stamm[-3..-1] == "ern" or stamm[-3..-1] == "eln"
-			@infinitiv = stamm
-			stamm = stamm[0..-2]
-			@e_tilgung = true
+      @infinitiv = stamm
+      stamm = stamm[0..-2]
+      @e_tilgung = true
     else
       @infinitiv = stamm + "en"
     end
@@ -38,7 +27,7 @@ class Verb
     elsif praeteritum_stamm[-1..-1] == 'e' && praeteritum_stamm[-2..-1] != 'ie' then
       @praeteritum_stamm = praeteritum_stamm[0..-2]
     elsif praeteritum_stamm == "" then
-			@praeteritum_stamm = stamm
+      @praeteritum_stamm = stamm
     else
       @praeteritum_stamm = praeteritum_stamm
     end
@@ -55,13 +44,13 @@ class Verb
       @partizip_perfekt = "ge" + stamm + (@e_erweiterung ? "e" : "") + "t"
     end
 
-		if @e_tilgung then
-			@praesens_endung =    ["e", "st", "t", "n", "t", "n"]
-		else
-		  @praesens_endung =    ["e", "st", "t", "en", "t", "en"]
-		end
-  	@praeteritum_endung = ["",  "st", "",  "n", "t", "n"]
-		@konjunktiv_endung =  ["",  "st", "",  "n", "t", "n"]
+    if @e_tilgung then
+      @praesens_endung =    ["e", "st", "t", "n", "t", "n"]
+    else
+      @praesens_endung =    ["e", "st", "t", "en", "t", "en"]
+    end
+    @praeteritum_endung = ["",  "st", "",  "n", "t", "n"]
+    @konjunktiv_endung =  ["",  "st", "",  "n", "t", "n"]
 
     @tempus  = :praesens  # praesens, praeteritum, perfekt, plusquamperfekt, futur, futur ii
     @modus   = :indikativ # indikativ, konjunktiv, imperativ
@@ -76,12 +65,12 @@ class Verb
   def e_erweiterung?(stamm)
     #puts "Stamm: "+stamm+"-"
     if stamm[-1..-1]=='t' or stamm[-1..-1]=='d' then
-		  return true
-    # verschlusslaut oder reibelaut + m oder n
-		elsif stamm[-1..-1]=='m' or stamm[-1..-1]=='n' then
-		  if ['tm','fn','pn'].include?(stamm[-2..-1]) then # TODO
-			  e_erweiterung = true
-			end
+      return true
+      # verschlusslaut oder reibelaut + m oder n
+    elsif stamm[-1..-1]=='m' or stamm[-1..-1]=='n' then
+      if ['tm','fn','pn'].include?(stamm[-2..-1]) then # TODO
+        @e_erweiterung = true
+      end
     else
       return false
     end
@@ -143,25 +132,25 @@ class Verb
   end
 
   def s_verschmelzung?(stamm)
-      return zweitePerson? && singular? && ['s', 'ﬂ', 'x', 'z'].include?(stamm[-1..-1])
+    return zweitePerson? && singular? && ['s', 'ﬂ', 'x', 'z'].include?(stamm[-1..-1])
   end
 
-	def form
-	  e_erweiterung = @e_erweiterung ? "e" : ""
-		if @tempus==:praesens && @modus==:indikativ then
+  def form
+    e_erweiterung = @e_erweiterung ? "e" : ""
+    if @tempus==:praesens && @modus==:indikativ then
       if s_verschmelzung?(@praesens_stamm) then
-				return @praesens_stamm + 't'
-			elsif zweitePerson? || (singular? && drittePerson?) then
-				return @praesens_stamm + (@e_erweiterung ? "e" : "") + endung(@praesens_endung)
-			else
-				return @praesens_stamm + endung(@praesens_endung)
-			end	
+        return @praesens_stamm + 't'
+      elsif zweitePerson? || (singular? && drittePerson?) then
+        return @praesens_stamm + (@e_erweiterung ? "e" : "") + endung(@praesens_endung)
+      else
+        return @praesens_stamm + endung(@praesens_endung)
+      end	
     elsif @tempus==:praesens && @modus==:konjunktiv then
-			if @e_tilgung && ((singular? && zweitePerson?) or plural?) then
-      	return @praesens_stamm + endung(@konjunktiv_endung)
-			else
-      	return @praesens_stamm + "e" + endung(@konjunktiv_endung)
-			end
+      if @e_tilgung && ((singular? && zweitePerson?) or plural?) then
+        return @praesens_stamm + endung(@konjunktiv_endung)
+      else
+        return @praesens_stamm + "e" + endung(@konjunktiv_endung)
+      end
     elsif @tempus==:praeteritum then
       return @praeteritum_stamm + e_erweiterung + "te" + endung(@praeteritum_endung)
     end
@@ -170,17 +159,26 @@ class Verb
   def infinitiv
     return @praeverb+@infinitiv
   end
-	def imperativ
-		case infinitiv
-			when "w‰hlen","benutzen"
-				return @praesens_stamm+"e"
-		end
-		if singular? then
-			return @praesens_stamm + (@e_erweiterung ? "e" : "") + (@e_tilgung ? "e" : "")
-		else
-			return @praesens_stamm + (@e_erweiterung ? "e" : "") + "t"
-		end
-	end
+
+  def infinitiv_zu
+    if @praeverb != ''
+      "#{@praeverb}zu#{@infinitiv}"
+    else
+      "zu #{@infinitiv}"
+    end
+  end
+
+  def imperativ
+    case infinitiv
+    when "w‰hlen","benutzen"
+      return @praesens_stamm+"e"
+    end
+    if singular? then
+      return @praesens_stamm + (@e_erweiterung ? "e" : "") + (@e_tilgung ? "e" : "")
+    else
+      return @praesens_stamm + (@e_erweiterung ? "e" : "") + "t"
+    end
+  end
 
   def endung(endungen)
     return endungen[@person+@numerus*3]
@@ -193,7 +191,7 @@ class Verb
   def partizip_perfekt
     return @praeverb+@partizip_perfekt
   end
-  
+
   def singular?
     return @numerus == 0
   end
@@ -216,7 +214,7 @@ class Verb
     return @tempus==:praeteritum
   end
   def indikativ?
-      return @modus==:indikativ
+    return @modus==:indikativ
   end
   def konjunktiv?
     return @modus==:konjunktiv
@@ -224,10 +222,10 @@ class Verb
 
   def Verb.umlaute(stamm)
     case stamm
-      when "lauf" then return "l‰uf"
-      when "aﬂ" then return "‰ﬂ"
+    when "lauf" then return "l‰uf"
+    when "aﬂ" then return "‰ﬂ"
     end
-      
+
     vokal = stamm.match(/[aou][^aeiou]/)
     umlaut = ""
     case vokal.to_s[0..0]
@@ -245,7 +243,7 @@ class VerbUnregelmaessig < Verb
 
   def initialize(stamm, praeteritum_stamm=stamm, perfekt_stamm=stamm)
     super(stamm, praeteritum_stamm, perfekt_stamm)
-  	@praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
+    @praeteritum_endung = ["",  "st", "",  "en", "t", "en"]
 
     case @praesens_stamm
     when /back$/, /blas$/, /brat$/, /fahr$/, /fall$/, /fang$/, /grab$/,
@@ -259,20 +257,20 @@ class VerbUnregelmaessig < Verb
     e_erweiterung = @e_erweiterung ? "e" : ""
     if praesens? && indikativ? && singular? && (zweitePerson? || drittePerson?) then
       if s_verschmelzung?(@praesens_stamm) then
-				if umlaut then
-					return Verb.umlaute(@praesens_stamm) + 't'
-				else
-					return @praesens_stamm + 't'
-				end
+        if umlaut then
+          return Verb.umlaute(@praesens_stamm) + 't'
+        else
+          return @praesens_stamm + 't'
+        end
       end
 
       if umlaut then
-			  # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Listen/e-Erweiterung-except.html
-				if (zweitePerson?) then 
-        	return Verb.umlaute(@praesens_stamm) + endung(@praesens_endung)
-				else
-        	return Verb.umlaute(@praesens_stamm) + (@praesens_stamm[-1..-1] == 't' ? "" : endung(@praesens_endung))
-				end
+        # http://www.canoo.net/services/OnlineGrammar/InflectionRules/FRegeln-V/Listen/e-Erweiterung-except.html
+        if (zweitePerson?) then 
+          return Verb.umlaute(@praesens_stamm) + endung(@praesens_endung)
+        else
+          return Verb.umlaute(@praesens_stamm) + (@praesens_stamm[-1..-1] == 't' ? "" : endung(@praesens_endung))
+        end
       else
         return @praesens_stamm + e_erweiterung + endung(@praesens_endung)
       end
@@ -280,8 +278,8 @@ class VerbUnregelmaessig < Verb
       if plural? && zweitePerson? then
         return @praeteritum_stamm + e_erweiterung + endung(@praeteritum_endung)
       elsif (plural? && (erstePerson? || drittePerson?)) &&  # Paragraph 19 der Rechtschreibreform
-						(@praeteritum_stamm[-2..-1] == "ie" || @praeteritum_stamm[-2..-1] == "ee") then
-				return @praeteritum_stamm[0..-2] + endung(@praeteritum_endung)
+        (@praeteritum_stamm[-2..-1] == "ie" || @praeteritum_stamm[-2..-1] == "ee") then
+        return @praeteritum_stamm[0..-2] + endung(@praeteritum_endung)
       elsif s_verschmelzung?(@praeteritum_stamm) then
         return @praeteritum_stamm + 'est'
         # return @praeteritum_stamm + 't' # auch mˆglich
@@ -289,8 +287,8 @@ class VerbUnregelmaessig < Verb
         return @praeteritum_stamm + endung(@praeteritum_endung)
       end
     elsif praeteritum? && konjunktiv? then
-			return Verb.umlaute(@praeteritum_stamm) + "e" + endung(@konjunktiv_endung)
-		end
+      return Verb.umlaute(@praeteritum_stamm) + "e" + endung(@konjunktiv_endung)
+    end
     return super
   end
 end
@@ -416,12 +414,12 @@ end
 class VerbSchwachUnregelmaessig < Verb
   def form
     if praeteritum? && konjunktiv? then
-			case infinitiv
-			when /brennen$/, "kennen", /nennen$/,
-			     /rennen$/, /senden$/, /wenden$/ # gemischte Flexion
-      	return (@praesens_stamm) + "te" + endung(@konjunktiv_endung)
-			end
-    	return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
+      case infinitiv
+      when /brennen$/, "kennen", /nennen$/,
+        /rennen$/, /senden$/, /wenden$/ # gemischte Flexion
+        return (@praesens_stamm) + "te" + endung(@konjunktiv_endung)
+      end
+      return Verb.umlaute(@praeteritum_stamm) + "te" + endung(@konjunktiv_endung)
     end
     return super
   end
@@ -436,7 +434,7 @@ class Verb_EI_Wechsel < VerbUnregelmaessig
 
   def form
     if praesens? && indikativ? && singular? && zweitePerson? then
-			return @ei_wechsel_stamm + (s_verschmelzung?(@ei_wechsel_stamm) ? "t" : "st")
+      return @ei_wechsel_stamm + (s_verschmelzung?(@ei_wechsel_stamm) ? "t" : "st")
     elsif praesens? && indikativ? && singular? && drittePerson? then
       return @ei_wechsel_stamm + (@ei_wechsel_stamm[-1..-1]=='t' ? "" : "t")
     end
@@ -460,7 +458,7 @@ class Verb_Konjunktiv_II < Verb_EI_Wechsel
 
   def form
     if praeteritum? && konjunktiv? then
-				return @konjunktiv_ii_stamm + "e" + endung(@konjunktiv_endung)
+      return @konjunktiv_ii_stamm + "e" + endung(@konjunktiv_endung)
     end
     return super
   end
@@ -474,10 +472,10 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   v = nil
 
   case infinitiv
-	# regelm‰ssige Verben
+    # regelm‰ssige Verben
   when /(.*)blassen$/ then v = Verb.new($1+"blassen", $1+"blasste", ge($1)+"blasst")
   when /(.*)breiten$/ then v = Verb.new($1+"breiten", $1+"breite", ge($1)+"breitet")
-	# unregelm‰ssige Verben
+    # unregelm‰ssige Verben
   when "werden" then   v = VerbWerden.new
   when "sein" then     v = VerbSein.new
   when "haben" then    v = VerbHaben.new
@@ -486,9 +484,9 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "gehen" then    v = VerbUnregelmaessig.new("gehen", "ging", "gegangen")
   when "heiﬂen" then   v = VerbUnregelmaessig.new("heiﬂen", "hieﬂ", "geheiﬂen")
   when "scheinen" then v = VerbUnregelmaessig.new("scheinen", "schien", "geschienen")
-	# mit Rueckumlaut
+    # mit Rueckumlaut
   when /(.*)brennen$/ then  v = VerbSchwachUnregelmaessig.new($1+"brennen", $1+"brannte", ge($1)+"brannt")
-		# regelm‰ssig
+    # regelm‰ssig
   when /(.*)nennen$/ then  v = VerbSchwachUnregelmaessig.new($1+"nennen", $1+"nannte", ge($1)+"nannt")
     # e/i-Wechsel
   when "nehmen" then  v = Verb_EI_Wechsel.new("nehmen", "nahm", "genommen", "nimm")
@@ -526,7 +524,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)sinken/ then v = VerbUnregelmaessig.new($1+"sinken", $1+"sank", ge($1)+"sunken")
   when /(.*)trinken/ then v = VerbUnregelmaessig.new($1+"trinken", $1+"trank", ge($1)+"trunken")
   when /(.*)winden/ then v = VerbUnregelmaessig.new($1+"winden", $1+"wand", ge($1)+"wunden")
-		#  e a o
+    #  e a o
   when "helfen" then v = Verb_Konjunktiv_II.new("helfen", "half", "geholfen", "hilf", "h¸lf")
   when "werfen" then v = Verb_Konjunktiv_II.new("werfen", "warf", "geworfen", "wirf", "w¸rf")
   when /(.*)sterben$/ then v = Verb_Konjunktiv_II.new($1+"sterben", $1+"starb", ge($1)+"storben", $1+"stirb", $1+"st¸rb")
@@ -534,9 +532,9 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when "sprechen" then v = Verb_EI_Wechsel.new("sprechen", "sprach", "gesprochen", "sprich")
   when /(.*)stechen$/ then v = Verb_EI_Wechsel.new($1+"stechen", $1+"stach", ge($1)+"stochen", $1+"stich")
   when "stehlen" then v = Verb_Konjunktiv_II.new("stehlen", "stahl", "gestohlen", "stiehl", "stˆhl")
-		#  e a a
+    #  e a a
   when /(.*)stehen/ then v = Verb_Konjunktiv_II.new($1+"stehen", $1+"stand", ge($1)+"standen", $1+"steh", $1+"st¸nd")
-		#  e o o
+    #  e o o
   when "bewegen" then v = VerbUnregelmaessig.new("bewegen", "bewog", "bewogen")
   when /(.*)heben$/ then  v = VerbUnregelmaessig.new($1+"heben", $1+"hob", ge($1)+"hoben")
   when /(.*)quellen$/ then v = Verb_Konjunktiv_II.new($1+"quellen", $1+"quoll", ge($1)+"quollen", $1+"quill", $1+"quˆll")
@@ -572,7 +570,7 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)fallen$/ then v = VerbUnregelmaessig.new($1+"fallen", $1+"fiel", ge($1)+"fallen")
   when /(.*)halten$/ then v = VerbUnregelmaessig.new($1+"halten", $1+"hielt", ge($1)+"halten")
   when /(.*)schlafen$/ then v = VerbUnregelmaessig.new($1+"schlafen", $1+"schlief", ge($1)+"schlafen")
-		# ie o o
+    # ie o o
   when /(.*)bieten$/ then v = VerbUnregelmaessig.new($1+"bieten", $1+"bot", ge($1)+"boten")
   when /(.*)fliehen$/ then v = VerbUnregelmaessig.new($1+"fliehen", $1+"floh", ge($1)+"flohen")
   when "fliegen" then v = VerbUnregelmaessig.new("fliegen", "flog", "geflogen")
@@ -585,20 +583,20 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)schlieﬂen$/ then v = VerbUnregelmaessig.new($1+"schlieﬂen", $1+"schloss", ge($1)+"schlossen")
   when "wiegen" then v = VerbUnregelmaessig.new("wiegen", "wog", "gewogen")
   when /(.*)ziehen$/ then v = VerbUnregelmaessig.new($1+"ziehen", $1+"zog", ge($1)+"zogen")
-		# i a o
+    # i a o
   when /(.*)ginnen$/ then v = VerbUnregelmaessig.new($1+"ginnen", $1+"gann", ge($1)+"gonnen")
   when /(.*)spinnen$/ then v = VerbUnregelmaessig.new($1+"spinnen", $1+"spann", ge($1)+"sponnen")
   when /(.*)winnen$/ then v = VerbUnregelmaessig.new($1+"winnen", $1+"wann", ge($1)+"wonnen")
-		# i a e
+    # i a e
   when /(.*)bitten$/ then v = VerbUnregelmaessig.new($1+"bitten", $1+"bat", ge($1)+"beten")
   when /(.*)sitzen$/ then v = VerbUnregelmaessig.new($1+"sitzen", $1+"saﬂ", ge($1)+"sessen")
-		# o a o
+    # o a o
   when /(.*)kommen$/ then v = VerbUnregelmaessig.new($1+"kommen", $1+"kam", ge($1)+"kommen")
-		# u ie u
+    # u ie u
   when /(.*)rufen$/ then v = VerbUnregelmaessig.new($1+"rufen", $1+"rief", ge($1)+"rufen")
-		# o ie o
+    # o ie o
   when /(.*)stoﬂen$/ then v = VerbUnregelmaessig.new($1+"stoﬂen", $1+"stieﬂ", ge($1)+"stˆﬂen")
-		# regelm‰ssig ohne ge
+    # regelm‰ssig ohne ge
   when "durchleben" then v = Verb.new("durchleben", "durchlebte", "durchlebt")
   when "erfassen" then v = Verb.new("erfassen", "erfasste", "erfasst")
   when /(.*)(fessel)n$/ then v = Verb.new($1+$2+"n", $1+$2+"te", ge($1)+$2+"t")
@@ -609,28 +607,28 @@ def Verb.verb(kennung, infinitiv, praeverb="")
   when /(.*)(w‰rm)en$/ then v = Verb.new($1+$2+"en", $1+$2+"te", ge($1)+$2+"t")
   when /(.*)(wider)n$/ then v = Verb.new($1+$2+"n", $1+$2+"te", ge($1)+$2+"t")
   when /(.*)(z¸nd)en$/ then v = Verb.new($1+$2+"en", $1+$2+"te", ge($1)+$2+"t")
-  #when /(.*)fluchen$/ then v = Verb.new($1+"fluchen", $1+"fluchte", ge($1)+"flucht")
-  #when /(.*)haupten$/ then v = Verb.new($1+"haupten", $1+"hauptete", ge($1)+"hauptet")
-  #when /(.*)kratzen$/ then v = Verb.new($1+"kratzen", $1+"kratzte", ge($1)+"kratzt")
-  #when /(.*)langen$/ then v = Verb.new($1+"langen", $1+"langte", ge($1)+"langt")
-  #when /(.*)letzen$/ then v = Verb.new($1+"letzen", $1+"letzte", ge($1)+"letzt")
-  #when /(.*)setzen$/ then v = Verb.new($1+"setzen", $1+"setzte", ge($1)+"setzt")
-  #when /(.*)st‰rken$/ then v = Verb.new($1+"st‰rken", $1+"st‰rkte", ge($1)+"st‰rkt")
-  #when /(.*)stopfen$/ then v = Verb.new($1+"stopfen", $1+"stopfte", ge($1)+"stopft")
-  #when /(.*)sperren$/ then v = Verb.new($1+"sperren", $1+"sperrte", ge($1)+"sperrt")
-  #when /(.*)wecken$/ then v = Verb.new($1+"wecken", $1+"weckte", ge($1)+"weckt")
+    #when /(.*)fluchen$/ then v = Verb.new($1+"fluchen", $1+"fluchte", ge($1)+"flucht")
+    #when /(.*)haupten$/ then v = Verb.new($1+"haupten", $1+"hauptete", ge($1)+"hauptet")
+    #when /(.*)kratzen$/ then v = Verb.new($1+"kratzen", $1+"kratzte", ge($1)+"kratzt")
+    #when /(.*)langen$/ then v = Verb.new($1+"langen", $1+"langte", ge($1)+"langt")
+    #when /(.*)letzen$/ then v = Verb.new($1+"letzen", $1+"letzte", ge($1)+"letzt")
+    #when /(.*)setzen$/ then v = Verb.new($1+"setzen", $1+"setzte", ge($1)+"setzt")
+    #when /(.*)st‰rken$/ then v = Verb.new($1+"st‰rken", $1+"st‰rkte", ge($1)+"st‰rkt")
+    #when /(.*)stopfen$/ then v = Verb.new($1+"stopfen", $1+"stopfte", ge($1)+"stopft")
+    #when /(.*)sperren$/ then v = Verb.new($1+"sperren", $1+"sperrte", ge($1)+"sperrt")
+    #when /(.*)wecken$/ then v = Verb.new($1+"wecken", $1+"weckte", ge($1)+"weckt")
 
   else
     # regelmaessige Verben
     v = Verb.new(infinitiv)
   end
-    
+
   v.praeverb = praeverb
   v.kennung = kennung
   v
 end
 
 def ge(vorsilbe)
-	return  (vorsilbe == "" ? "ge" : vorsilbe)
+  return  (vorsilbe == "" ? "ge" : vorsilbe)
 end
-  
+

@@ -701,6 +701,7 @@ def ausgabe_verbs
 		Verb.verb("VERB_ANPEILEN", "peilen", "an"),
 		Verb.verb("VERB_ANPEITSCHEN","peitschen","an"),
 		Verb.verb("VERB_ANTWORTEN","antworten"),
+		Verb.verb("VERB_ANZIEHEN","ziehen","an"),
 		Verb.verb("VERB_AUFBRECHEN","brechen","auf"),
 		Verb.verb("VERB_AUFERSTEHEN", "auferstehen"),
 		Verb.verb("VERB_AUFGEHEN","gehen","auf"),
@@ -1266,8 +1267,8 @@ def ausgabe_verbs
 	]
 
 	puts "\nstruct verb_infinitiv_struct verben_infinitiv[] = {"
-	verben.each {|v| puts '  {"'+v.infinitiv+'", "'+v.kennung+'"},' }
-	puts "  {NULL, NULL}\n};"
+	verben.each {|v| puts '  {"'+v.infinitiv+'", "'+v.infinitiv_zu+'", "'+v.kennung+'"},' }
+	puts "  {NULL, NULL, NULL}\n};"
 
 	puts "\nstruct verb_imperativ_struct verben_imperativ[] = {"
 	verben.each {|v|

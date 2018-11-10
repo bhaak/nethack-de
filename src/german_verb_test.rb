@@ -664,6 +664,12 @@ class TestVerb < Test::Unit::TestCase
     assert_equal("hinzufügen",Verb.verb("", "fügen","hinzu").infinitiv)
   end
 
+  def testInfinitivZu
+    assert_equal("zu sein",      Verb.verb("", "sein").infinitiv_zu)
+    assert_equal("aufzuhören",   Verb.verb("", "hören", "auf").infinitiv_zu)
+    assert_equal("hinzuzufügen", Verb.verb("", "fügen", "hinzu").infinitiv_zu)
+  end
+
   def checkVerbPraeteritum(verb, formen)
     verb.praeteritum.indikativ
     checkVerbFormen(verb, formen)

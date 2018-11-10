@@ -1282,6 +1282,10 @@ START_TEST (test_infinitive) {
 		 "Er würde gerne mit dir gehen!"},
 		{"SUBJECT MODIFIER_KONJUNKTIV_II VERB_MOEGEN PRONOMEN_PERSONAL MODIFIER_VERB_INFINITIV VERB_AUFHOEREN?",
 		 "Möchtest du aufhören?"},
+		{"Dorthin MODIFIER_VERB_INFINITIV_ZU VERB_GEHEN ist gefährlich.",
+		 "Dorthin zu gehen ist gefährlich."},
+		{"Das MODIFIER_VERB_INFINITIV_ZU VERB_ANZIEHEN wäre albern.",
+		 "Das anzuziehen wäre albern."},
 	};
 
 	check_strings(text, SIZE2(text));
@@ -1485,8 +1489,7 @@ int main(int argc, char *argv[]) {
 		Suite *s = test_suite();
 		SRunner *sr = srunner_create(s);
 		srunner_set_xml(sr, "german_test_check_testsuite.xml");
-		srunner_run_all(sr, CK_VERBOSE);
-		//srunner_run_all(sr, CK_NORMAL);
+		srunner_run_all(sr, CK_NORMAL);
 		nf = srunner_ntests_failed(sr);
 		srunner_free(sr);
 		return (nf == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
