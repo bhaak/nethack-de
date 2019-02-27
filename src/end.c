@@ -73,17 +73,17 @@ extern void FDECL(nethack_exit,(int));
  * The order of these needs to match the macros in hack.h.
  */
 static NEARDATA const char *deaths[] = {		/* the array of death */
-	"died", "choked", "poisoned", "starvation", "drowning", /* EN "died", "choked", "poisoned", "starvation", "drowning", */ // TODO DE
-	"burning", "dissolving under the heat and pressure", /* EN "burning", "dissolving under the heat and pressure", */ // TODO DE
-	"crushed", "turned to stone", "turned into slime", /* EN "crushed", "turned to stone", "turned into slime", */ // TODO DE
-	"genocided", "panic", "trickery", /* EN "genocided", "panic", "trickery", */ // TODO DE
-	"quit", "escaped", "ascended" /* EN "quit", "escaped", "ascended" */ // TODO DE
+	"died", "choked", "poisoned", "starvation", "drowning",
+	"burning", "dissolving under the heat and pressure",
+	"crushed", "turned to stone", "turned into slime",
+	"genocided", "panic", "trickery",
+	"quit", "escaped", "ascended"
 };
 
 static NEARDATA const char *ends[] = {		/* "when you..." */
 	"gestorben", "erstickt", "vergiftet worden", "verhungert", "ertrunken", /* EN "died", "choked", "were poisoned", "starved", "drowned", */
-	"verbrannt", "dissolved in the lava", /* EN "burned", "dissolved in the lava", */ // TODO DE
-	"erschlagen", "versteinert", "turned into slime", /* EN "were crushed", "turned to stone", "turned into slime", */ // TODO DE
+	"verbrannt", "in Lava aufgelöst", /* EN "burned", "dissolved in the lava", */
+	"erschlagen", "versteinert", "verschleimte", /* EN "were crushed", "turned to stone", "turned into slime", */
 	"ausgerottet", "panicked", "were tricked", /* EN "were genocided", "panicked", "were tricked", */ // TODO DE
 	"aufgegeben", "geflohen", "aufgestiegen" /* EN "quit", "escaped", "ascended" */
 };
@@ -91,8 +91,8 @@ static NEARDATA const char *ends[] = {		/* "when you..." */
 #ifdef GERMAN
 static NEARDATA const char *ends_hilfsverb[] = {		/* "als du <verb> ..." */
 	"VERB_SEIN", "VERB_SEIN", "VERB_SEIN", "VERB_SEIN", "VERB_SEIN",
-	"VERB_SEIN", "dissolved in the lava",
-	"MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "turned into slime",
+	"VERB_SEIN", "MODIFIER_VERB_PRAETERITUM VERB_WERDEN",
+	"MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "MODIFIER_VERB_PRAETERITUM VERB_WERDEN",
 	"MODIFIER_VERB_PRAETERITUM VERB_WERDEN", "panicked", "were tricked", // TODO DE
 	"VERB_HABEN", "VERB_SEIN", "VERB_SEIN"
 };
@@ -390,7 +390,7 @@ boolean taken;
 	if (invent) {
 	    if(taken)
 		Sprintf(qbuf,"SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL wissen, NEUER_SATZ was SUBJECT_IM_SATZ PRONOMEN_PERSONAL hattest, NEUER_SATZ als SUBJECT_IM_SATZ PRONOMEN_PERSONAL %s?", /* EN Sprintf(qbuf,"Do you want to see what you had when you %s?", */
-			(how == QUIT) ? "abgebrochen VERB_HABEN" : "gestorben VERB_SEIN"); /* EN (how == QUIT) ? "quit" : "died"); */
+			(how == QUIT) ? "aufgegeben VERB_HABEN" : "gestorben VERB_SEIN"); /* EN (how == QUIT) ? "quit" : "died"); */
 	    else
 		Strcpy(qbuf,"SATZBEGINN MODIFIER_KONJUNKTIV_II VERB_MOEGEN SUBJECT_IM_SATZ PRONOMEN_PERSONAL OBJECT PRONOMEN_POSSESSIV NOUN_HABE identifiziert haben?"); /* EN Strcpy(qbuf,"Do you want your possessions identified?"); */
 
@@ -714,9 +714,12 @@ die:
 		killer_format = NO_KILLER_PREFIX;
 		if (u.uhp < 1) {
 			how = DIED;
+#ifdef GERMAN
+			ends_how = ends[how];
+#endif
 			u.umortality++;	/* skipped above when how==QUIT */
 			/* note that killer is pointing at kilbuf */
-			Strcpy(kilbuf, "quit while already on Charon's boat"); /* EN Strcpy(kilbuf, "quit while already on Charon's boat"); */ // TODO DE
+			Strcpy(kilbuf, "hat gerade noch auf Charons Fähre aufgegeben"); /* EN Strcpy(kilbuf, "quit while already on Charon's boat"); */
 		}
 	}
 	if (how == ESCAPED || how == PANICKED)

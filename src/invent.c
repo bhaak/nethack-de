@@ -794,7 +794,7 @@ STATIC_OVL boolean
 putting_on(action)
 const char *action;
 {
-    return !strcmp(action, "VERB_TRAGEN") || !strcmp(action, "put on"); /* EN return !strcmp(action, "wear") || !strcmp(action, "put on"); */ // TODO DE
+    return !strcmp(action, "VERB_TRAGEN") || !strcmp(action, "VERB_ANZIEHEN"); /* EN return !strcmp(action, "wear") || !strcmp(action, "put on"); */
 }
 
 /*
@@ -1005,7 +1005,7 @@ register const char *let,*word;
 #else
 	if(!foo && !allowall && !allownone) {
 #endif
-		You("VERB_HABEN nichts %szu MODIFIER_VERB_INFINITIV %s.", /* EN You("don't have anything %sto %s.", */
+		You("VERB_HABEN nichts %sMODIFIER_VERB_INFINITIV_ZU %s.", /* EN You("don't have anything %sto %s.", */
 			foox ? "anderes " : "", word); /* EN foox ? "else " : "", word); */
 		return((struct obj *)0);
 	}
@@ -1173,15 +1173,15 @@ struct obj *otmp;
 	if (ocls == ARMOR_CLASS) {
 	    if (!strcmp(word, "put on")) /* EN if (!strcmp(word, "put on")) */ // TODO DE
 		s1 = "W", s2 = "zu tragen", s3 = ""; /* EN s1 = "W", s2 = "wear", s3 = ""; */
-	    else if (!strcmp(word, "remove")) /* EN else if (!strcmp(word, "remove")) */ // TODO DE
+	    else if (!strcmp(word, "ausziehen")) /* EN else if (!strcmp(word, "remove")) */ // TODO DE
 		s1 = "T", s2 = "take", s3 = " off"; /* EN s1 = "T", s2 = "take", s3 = " off"; */ // TODO DE
 	} else if ((ocls == RING_CLASS || otyp == MEAT_RING) ||
 		ocls == AMULET_CLASS ||
 		(otyp == BLINDFOLD || otyp == TOWEL || otyp == LENSES)) {
 	    if (!strcmp(word, "VERB_TRAGEN")) /* EN if (!strcmp(word, "wear")) */
-		s1 = "P", s2 = "anzuziehen", s3 = ""; /* EN s1 = "P", s2 = "put", s3 = " on"; */ // TODO DE
-	    else if (!strcmp(word, "take off")) /* EN else if (!strcmp(word, "take off")) */ // TODO DE
-		s1 = "R", s2 = "remove", s3 = ""; /* EN s1 = "R", s2 = "remove", s3 = ""; */ // TODO DE
+		s1 = "P", s2 = "anzuziehen", s3 = ""; /* EN s1 = "P", s2 = "put", s3 = " on"; */
+	    else if (!strcmp(word, "VERB_AUSZIEHEN")) /* EN else if (!strcmp(word, "take off")) */
+		s1 = "R", s2 = "auszuziehen", s3 = ""; /* EN s1 = "R", s2 = "remove", s3 = ""; */
 	}
 	if (s1) {
 	    what = "das"; /* EN what = "that"; */
@@ -1270,7 +1270,7 @@ unsigned *resultflags;
 #else
 	if(!invent){
 #endif
-		You("VERB_HABEN nichts zu MODIFIER_VERB_INFINITIV %s.", word); /* EN You("have nothing to %s.", word); */
+		You("VERB_HABEN nichts MODIFIER_VERB_INFINITIV_ZU %s.", word); /* EN You("have nothing to %s.", word); */
 		return(0);
 	}
 	add_valid_menu_class(0);	/* reset */

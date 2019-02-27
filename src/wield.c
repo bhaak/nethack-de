@@ -322,7 +322,7 @@ doswapweapon()
 		if (uswapwep)
 			prinv((char *)0, uswapwep, 0L, (char *)0);
 		else
-			You("VERB_HABEN keine Zweitwaffe parat."); /* EN You("have no secondary weapon readied."); */
+			You("VERB_HABEN keine Zweitwaffe in Bereitschaft."); /* EN You("have no secondary weapon readied."); */
 	}
 
 	if (u.twoweap && !can_twoweapon())

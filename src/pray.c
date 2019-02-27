@@ -1303,7 +1303,7 @@ pline("Ein unsichtbarer Chor ertönt und SUBJECT_IM_SATZ PRONOMEN_PERSONAL VERB_S
 		godvoice(altaralign, "Herzlichen Glückwunsch, PLAYER_STERBLICHER!"); /* EN godvoice(altaralign, "Congratulations, mortal!"); */
 		display_nhwindow(WIN_MESSAGE, FALSE);
 verbalize("Als Dank für deine Dienste schenke ich dir die Unsterblichkeit!"); /* EN verbalize("In return for thy service, I grant thee the gift of Immortality!"); */
-		You("VERB_WERDEN in den Stand OBJECT KASUS_GENITIV ARTIKEL_UNBESTIMMTER NOUN_HALB%s erhoben ...", /* EN You("ascend to the status of Demigod%s...", */
+		You("VERB_WERDEN in den Rang OBJECT KASUS_GENITIV ARTIKEL_UNBESTIMMTER NOUN_HALB%s erhoben ...", /* EN You("ascend to the status of Demigod%s...", */
 		    flags.female ? "GOETTIN" : "GOTT"); /* EN flags.female ? "dess" : ""); */
 		done(ASCENDED);
 	    }

@@ -312,7 +312,7 @@ boolean forcecontrol;
 		newman();
 	else if(!polymon(mntmp)) return;
 
-	if (!uarmg) selftouch("Nicht mehr länger versteinerungsresistent SUBJECT_IM_SATZ VERB_TOUCH PRONOMEN_PERSONAL "); /* EN if (!uarmg) selftouch("No longer petrify-resistant, you"); */
+	if (!uarmg) selftouch("Nicht mehr länger versteinerungsresistent SUBJECT_IM_SATZ VERB_TOUCH PRONOMEN_PERSONAL"); /* EN if (!uarmg) selftouch("No longer petrify-resistant, you"); */
 
  made_change:
 	new_light = Upolyd ? emits_light(youmonst.data) : 0;

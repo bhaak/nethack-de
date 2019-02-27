@@ -1429,7 +1429,7 @@ dowear()
 		if (u.ualignbase[A_CURRENT] == u.ualignbase[A_ORIGINAL])
 			You("MODIFIER_KONJUNKTIV_II VERB_HABEN OBJECT PRONOMEN_PERSONAL beinahe aller Möglichkeiten beraubt NEUES_OBJECT OBJECT um PRONOMEN_POSSESSIV NOUN_AUFGABE zu meistern."); /* EN You("narrowly avoid losing all chance at your goal."); */
 		else	/* converted */
-			You("are suddenly overcome with shame und VERB_UEBERLEGEN es OBJECT KASUS_DATIV PRONOMEN_PERSONAL anders."); /* EN You("are suddenly overcome with shame and change your mind."); */ // TODO DE
+			You("VERB_WERDEN plötzlich von Scham übermannt und VERB_UEBERLEGEN es OBJECT KASUS_DATIV PRONOMEN_PERSONAL anders."); /* EN You("are suddenly overcome with shame and change your mind."); */
 		u.ublessed = 0; /* lose your god's protection */
 		makeknown(otmp->otyp);
 		flags.botl = 1;
@@ -1477,7 +1477,7 @@ doputon()
 			ublindf->otyp==LENSES ? "NOUN_LENSESs" : "ARTIKEL_UNBESTIMMTER NOUN_BLINDFOLD"); /* EN ublindf->otyp==LENSES ? "some lense" : "a blindfold"); */
 		return(0);
 	}
-	otmp = getobj(accessories, "put on"); /* EN otmp = getobj(accessories, "put on");*/ // TODO DE
+	otmp = getobj(accessories, "VERB_ANZIEHEN"); /* EN otmp = getobj(accessories, "put on");*/
 	if(!otmp) return(0);
 	if(otmp->owornmask & (W_RING | W_AMUL | W_TOOL)) {
 		already_wearing(c_that_);
@@ -1797,7 +1797,7 @@ register struct obj *otmp;
 	/* special glove checks */
 	if (otmp == uarmg) {
 	    if (welded(uwep)) {
-		You("are unable to take off your %s while wielding that %s.", /* EN You("are unable to take off your %s while wielding that %s.",*/ // TODO DE
+		You("VERB_KOENNEN OBJECT PRONOMEN_POSSESSIV %s nicht ausziehen, NEUER_SATZ während SUBJECT_IM_SATZ PRONOMEN_PERSONAL NEUES_OBJECT OBJECT PRONOMEN_DIESER %s VERB_FUEHREN.", /* EN You("are unable to take off your %s while wielding that %s.",*/
 		    c_gloves, is_sword(uwep) ? c_sword : c_weapon);
 		uwep->bknown = TRUE;
 		return 0;
@@ -1889,7 +1889,7 @@ do_takeoff()
 	  }
 	} else if (taking_off == W_SWAPWEP) {
 	  setuswapwep((struct obj *) 0);
-	  You("no longer have a second weapon readied."); /* EN You("no longer have a second weapon readied.");*/ // TODO DE
+	  You("VERB_HABEN keine Zweitwaffe mehr in Bereitschaft."); /* EN You("no longer have a second weapon readied.");*/
 	  u.twoweap = FALSE;
 	} else if (taking_off == W_QUIVER) {
 	  setuqwep((struct obj *) 0);

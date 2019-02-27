@@ -460,11 +460,11 @@ register struct monst *mtmp;
 	if (mtmp == u.ustuck)	  Strcat(info, 
 			(sticks(youmonst.data)) ? german(", von KASUS_DATIV PRONOMEN_PERSONAL festgehalten") : /* EN (sticks(youmonst.data)) ? ", held by you" : */
 				u.uswallow ? (is_animal(u.ustuck->data) ?
-				", swallowed you" : /* EN ", swallowed you" : */ // TODO DE
-				", engulfed you") : /* EN ", engulfed you") : */ // TODO DE
+				", hat KASUS_AKKUSATIV PRONOMEN_PERSONAL verschlungen" : /* EN ", swallowed you" : */
+				", hält KASUS_AKKUSATIV PRONOMEN_PERSONAL umhüllt") : /* EN ", engulfed you") : */
 				german(", hält KASUS_AKKUSATIV PRONOMEN_PERSONAL fest")); /* EN ", holding you"); */
 #ifdef STEED
-	if (mtmp == u.usteed)	  Strcat(info, ", carrying you"); /* EN if (mtmp == u.usteed)	  Strcat(info, ", carrying you"); */ // TODO DE
+	if (mtmp == u.usteed)	  Strcat(info, ", trägt KASUS_AKKUSATIV PRONOMEN_PERSONAL"); /* EN if (mtmp == u.usteed)	  Strcat(info, ", carrying you"); */
 #endif
 
 	/* avoid "Status of the invisible newt ..., invisible" */
@@ -474,7 +474,7 @@ register struct monst *mtmp;
 
 	pline("Status %s %s (%s):  Stufe %d  TP %d(%d)  RK %d%s.", /* EN pline("Status of %s (%s):  Level %d  HP %d(%d)  AC %d%s.", */
 #ifdef GERMAN
-		(strncmp(monnambuf,"ARTIKEL_",8)==0) ? "KASUS_GENITIV" : "KASUS_DATIV von",
+		((strncmp(monnambuf,"ARTIKEL_",8)==0) ? "KASUS_GENITIV" : "KASUS_DATIV von"),
 #endif
 		monnambuf,
 		align_str(alignment),
@@ -492,31 +492,33 @@ ustatusline()
 
 	info[0] = '\0';
 	if (Sick) {
-		Strcat(info, ", an"); /* EN Strcat(info, ", dying from"); */
+		Strcat(info, ", am Sterben wegen"); /* EN Strcat(info, ", dying from"); */
 		if (u.usick_type & SICK_VOMITABLE)
 			Strcat(info, " Lebensmittelvergiftung"); /* EN Strcat(info, " food poisoning"); */
 		if (u.usick_type & SICK_NONVOMITABLE) {
 			if (u.usick_type & SICK_VOMITABLE)
 				Strcat(info, " und"); /* EN Strcat(info, " and"); */
-			Strcat(info, " Krankheit"); /* EN Strcat(info, " illness"); */ // TODO DE
+			Strcat(info, " Krankheit"); /* EN Strcat(info, " illness"); */
 		}
-#ifdef GERMAN
-		Strcat(info, " sterbend");
-#endif
 	}
 	if (Stoned)		Strcat(info, ", verfestigend"); /* EN if (Stoned)		Strcat(info, ", solidifying"); */
 	if (Slimed)		Strcat(info, ", verschleimend"); /* EN if (Slimed)		Strcat(info, ", becoming slimy"); */
 	if (Strangled)		Strcat(info, ", gewürgt"); /* EN if (Strangled)		Strcat(info, ", being strangled"); */
-	if (Vomiting)		Strcat(info, ", nauseated"); /* !"nauseous" */ /* EN if (Vomiting)		Strcat(info, ", nauseated"); */ // TODO DE
+	if (Vomiting)		Strcat(info, ", angeekelt"); /* !"nauseous" */ /* EN if (Vomiting)		Strcat(info, ", nauseated"); */
 	if (Confusion)		Strcat(info, ", verwirrt"); /* EN if (Confusion)		Strcat(info, ", confused"); */
 	if (Blind) {
 	    Strcat(info, ", blind"); /* EN Strcat(info, ", blind"); */
 	    if (u.ucreamed) {
 		if ((long)u.ucreamed < Blinded || Blindfolded
 						|| !haseyes(youmonst.data))
-		    Strcat(info, ", cover"); /* EN Strcat(info, ", cover"); */ // TODO DE
-		Strcat(info, "ed von klebrigem Zeugs"); /* EN Strcat(info, "ed by sticky goop"); */ // TODO DE
+		    Strcat(info, ", bedeckt von"); /* EN Strcat(info, ", cover"); */
+#ifdef GERMAN
+        else
+            Strcat(info, " wegen"); /* EN Strcat(info, ", cover"); */
+#endif
+		Strcat(info, " klebrigem Zeugs"); /* EN Strcat(info, "ed by sticky goop"); */
 	    }	/* note: "goop" == "glop"; variation is intentional */
+
 	}
 	if (Stunned)		Strcat(info, ", benommen"); /* EN if (Stunned)		Strcat(info, ", stunned"); */
 #ifdef STEED
