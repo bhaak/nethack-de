@@ -144,29 +144,18 @@ if test "$enable_tty_graphics" != "no"; then
 	WINLIB="${WINLIB} \$(WINTTYLIB)"
 	AC_DEFINE(TTY_GRAPHICS, [], [Console output])
     else
-	# For TTY, determine the termlib
-	# Check for termlib before termcap because Solaris termcap needs libucb.
-	TERMLIB_VARIANTS="ncurses curses termlib termcap terminfo"
-	for termlib in ${TERMLIB_VARIANTS}; do
-	    AC_CHECK_LIB(${termlib}, tgetent,
-	      [WINTTYLIB="-l${termlib}"
-	      WINSRC="${WINSRC} \$(WINTTYSRC)"
-	      WINOBJ="${WINOBJ} \$(WINTTYOBJ)"
-	      WINLIB="${WINLIB} \$(WINTTYLIB)"
-	      AC_DEFINE(TTY_GRAPHICS, [], [Console output])
-	      break])
-	done
-	if test -z "$termlib"; then
-	    if test "$enable_tty_graphics" = yes; then
-		AC_MSG_ERROR([Can't find tgetent (needed for tty graphics)])
-	    else
-		AC_MSG_WARN([Can't enable tty graphics (no tgetent)])
-		NETHACK_AUTO_WIN_DISABLE(tty)
-	    fi
-	fi
-	dnl  ----- Check for tparm in found termlib
-	AC_CHECK_LIB(${termlib}, tparm, AC_DEFINE(HAVE_TPARM, 1, [Define this if you have the tparm function in an included lib.]),)
-
+      dnl -- Check for tparm in curses
+      LIBS=
+      AC_CHECK_HEADERS(ncurses.h curses.h termcap.h)
+      AC_SEARCH_LIBS([tparm], [ncurses curses tinfo], AC_DEFINE(HAVE_TPARM, 1, [Define this if you have the tparm function in an included lib.]))
+      TERMLIB_VARIANTS="ncurses curses tinfo termlib termcap terminfo"
+      AC_SEARCH_LIBS([has_colors], ${TERMLIB_VARIANTS},
+                   [WINTTYLIB="${LIBS}"
+                    WINSRC="${WINSRC} \$(WINTTYSRC)"
+                    WINOBJ="${WINOBJ} \$(WINTTYOBJ)"
+                    WINLIB="${WINLIB} \$(WINTTYLIB)"
+                    AC_DEFINE(TTY_GRAPHICS, [], [Console output])],
+                    AC_MSG_ERROR([Can't find working curses library (needed for tty graphics)]))
     fi
 
     OPTIONS_FILE="options"
