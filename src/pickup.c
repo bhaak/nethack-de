@@ -1117,8 +1117,8 @@ int *wt_before, *wt_after;
     /* we can carry qq of them */
     if (qq > 0) {
 	if (qq < count)
-	    You("VERB_KOENNEN nur %s OBJECT KASUS_GENITIV ARTIKEL_BESTIMMTER %s %s%s.", /* EN You("can only %s %s of the %s %s.", */
-		(qq == 1L) ? "one" : "einige", obj_nambuf, where, verb); /* EN verb, (qq == 1L) ? "one" : "some", obj_nambuf, where); */ // TODO DE
+		You("VERB_KOENNEN nur %s OBJECT KASUS_GENITIV ARTIKEL_BESTIMMTER %s %s%s.", /* EN You("can only %s %s of the %s %s.", */
+		(qq == 1L) ? indefinitpronomen_eines(obj_nambuf) : "einige", obj_nambuf, where, verb); /* EN verb, (qq == 1L) ? "one" : "some", obj_nambuf, where); */
 	*wt_after = wt;
 	return qq;
     }

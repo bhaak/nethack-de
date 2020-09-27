@@ -526,9 +526,9 @@ int how;
 		char pbuf[BUFSZ];
 		topten_print("");
 		Sprintf(pbuf,
-	      "Since you were in %smodus, the score list will not be checked.", /* EN "Since you were in %s mode, the score list will not be checked.", */ // TODO DE
-		    wizard ? "wizard" : "Erkundungs"); /* EN wizard ? "wizard" : "discover"); */ // TODO DE
-		topten_print(pbuf);
+	      "SUBJECT Da PRONOMEN_PERSONAL im %smodus MODIFIER_VERB_PRAETERITUM VERB_SEIN, wird die Highscore-Liste nicht geprüft.", /* EN "Since you were in %s mode, the score list will not be checked.", */
+		    wizard ? "Zauberer" : "Erkundungs"); /* EN wizard ? "wizard" : "discover"); */
+		topten_print(german(pbuf)); /* EN topten_print(pbuf); */
 	    }
 	    goto showwin;
 	}
@@ -750,33 +750,33 @@ boolean so;
 		Sprintf(eos(linebuf), "-%s ", t1->plalign);
 	else
 		Strcat(linebuf, " ");
-	if (!strncmp("escaped", t1->death, 7)) { /* EN if (!strncmp("escaped", t1->death, 7)) { */ // TODO DE
-	    Sprintf(eos(linebuf), "escaped the dungeon %s[max level %d]", /* EN Sprintf(eos(linebuf), "escaped the dungeon %s[max level %d]", */ // TODO DE
+	if (!strncmp("escaped", t1->death, 7)) {
+	    Sprintf(eos(linebuf), "ist dem Dungeon %s entflohen [max. Level %d]", /* EN Sprintf(eos(linebuf), "escaped the dungeon %s[max level %d]", */
 		    !strncmp(" (", t1->death + 7, 2) ? t1->death + 7 + 2 : "",
 		    t1->maxlvl);
 	    /* fixup for closing paren in "escaped... with...Amulet)[max..." */
 	    if ((bp = index(linebuf, ')')) != 0)
 		*bp = (t1->deathdnum == astral_level.dnum) ? '\0' : ' ';
 	    second_line = FALSE;
-	} else if (!strncmp("ascended", t1->death, 8)) { /* EN } else if (!strncmp("ascended", t1->death, 8)) { */ // TODO DE
-	    Sprintf(eos(linebuf), "ascended to demigod%s-hood", /* EN Sprintf(eos(linebuf), "ascended to demigod%s-hood", */ // TODO DE
-		    (t1->plgend[0] == 'F') ? "dess" : ""); /* EN (t1->plgend[0] == 'F') ? "dess" : ""); */ // TODO DE
+	} else if (!strncmp("ascended", t1->death, 8)) {
+	    Sprintf(eos(linebuf), "aufgestiegen in den Rang %s", /* EN Sprintf(eos(linebuf), "ascended to demigod%s-hood", */
+		    (t1->plgend[0] == 'F') ? "einer Göttin" : "eines Gottes"); /* EN (t1->plgend[0] == 'F') ? "dess" : ""); */
 	    second_line = FALSE;
 	} else {
-	    if (!strncmp(t1->death, "quit", 4)) { /* EN if (!strncmp(t1->death, "quit", 4)) { */ // TODO DE
-		Strcat(linebuf, "quit"); /* EN Strcat(linebuf, "quit"); */ // TODO DE
+	    if (!strncmp(t1->death, "quit", 4)) {
+		Strcat(linebuf, "aufgegeben"); /* EN Strcat(linebuf, "quit"); */
 		second_line = FALSE;
-	    } else if (!strncmp(t1->death, "died of st", 10)) { /* EN } else if (!strncmp(t1->death, "died of st", 10)) { */ // TODO DE
-		Strcat(linebuf, "starved to death"); /* EN Strcat(linebuf, "starved to death"); */ // TODO DE
+	    } else if (!strncmp(t1->death, "died of st", 10)) { /* EN } else if (!strncmp(t1->death, "died of st", 10)) { */
+		Strcat(linebuf, "verhungerte"); /* EN Strcat(linebuf, "starved to death"); */
 		second_line = FALSE;
-	    } else if (!strncmp(t1->death, "erstickte", 9)) { /* EN } else if (!strncmp(t1->death, "choked", 6)) { */
+	    } else if (!strncmp(t1->death, "choked", 6)) {
 		Sprintf(eos(linebuf), "erstickte an %s Essen", /* EN Sprintf(eos(linebuf), "choked on h%s food", */
 			(t1->plgend[0] == 'F') ? "ihrem" : "seinem"); /* EN (t1->plgend[0] == 'F') ? "er" : "is"); */
-	    } else if (!strncmp(t1->death, "poisoned", 8)) { /* EN } else if (!strncmp(t1->death, "poisoned", 8)) { */ // TODO DE
+	    } else if (!strncmp(t1->death, "poisoned", 8)) {
 		Strcat(linebuf, "wurde vergiftet"); /* EN Strcat(linebuf, "was poisoned"); */
-			} else if (!strncmp(t1->death, "crushed", 7)) { /* EN } else if (!strncmp(t1->death, "crushed", 7)) { */ // TODO DE
-		Strcat(linebuf, "was crushed to death"); /* EN Strcat(linebuf, "was crushed to death"); */ // TODO DE
-	    } else if (!strncmp(t1->death, "petrified by ", 13)) { /* EN } else if (!strncmp(t1->death, "petrified by ", 13)) { */ // TODO DE
+			} else if (!strncmp(t1->death, "crushed", 7)) {
+		Strcat(linebuf, "wurde zu Tode gequetscht"); /* EN Strcat(linebuf, "was crushed to death"); */
+	    } else if (!strncmp(t1->death, "petrified by ", 13)) {
 		Strcat(linebuf, "versteinerte"); /* EN Strcat(linebuf, "turned to stone"); */
 	    } else Strcat(linebuf, "starb"); /* EN } else Strcat(linebuf, "died"); */
 
@@ -808,7 +808,7 @@ boolean so;
 	    }
 
 	    /* kludge for "quit while already on Charon's boat" */
-	    if (!strncmp(t1->death, "quit ", 5)) /* EN if (!strncmp(t1->death, "quit ", 5)) */ // TODO DE
+	    if (!strncmp(t1->death, "quit ", 5))
 		Strcat(linebuf, t1->death + 4);
 	}
 	Strcat(linebuf, ".");
@@ -1081,11 +1081,14 @@ char **argv;
 		    (void) outentry(rank, t1, 0);
 	    }
 	} else {
-	    Sprintf(pbuf, "Kann keine %sEinträge für ", /* EN Sprintf(pbuf, "Cannot find any %sentries for ", */
+	    Sprintf(pbuf, "Kann keine %sEinträge ", /* EN Sprintf(pbuf, "Cannot find any %sentries for ", */
 				current_ver ? "aktuellen " : ""); /* EN current_ver ? "current " : ""); */
-	    if (playerct < 1) Strcat(pbuf, "dich finden."); /* EN if (playerct < 1) Strcat(pbuf, "you."); */
+	    if (playerct < 1) Strcat(pbuf, "für dich finden."); /* EN if (playerct < 1) Strcat(pbuf, "you."); */
 	    else {
-		if (playerct > 1) Strcat(pbuf, "any of "); /* EN if (playerct > 1) Strcat(pbuf, "any of "); */ // TODO DE
+#ifdef GERMAN
+			if (playerct == 1) Strcat(pbuf, "finden für den Spieler ");
+#endif
+		if (playerct > 1) Strcat(pbuf, "finden für die Spieler "); /* EN if (playerct > 1) Strcat(pbuf, "any of "); */
 		for (i = 0; i < playerct; i++) {
 		    /* stop printing players if there are too many to fit */
 		    if (strlen(pbuf) + strlen(players[i]) + 2 >= BUFSZ) {

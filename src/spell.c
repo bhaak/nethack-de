@@ -143,10 +143,10 @@ cursed_book(bp)
 			if (uarmg->greased) {
 			    grease_protect(uarmg, "NOUN_GLOVESs", &youmonst); /* EN grease_protect(uarmg, "gloves", &youmonst); */
 			} else {
-			    Your("NOUN_GLOVESs corrode%s!", /* EN Your("gloves corrode%s!", */
+			    Your("NOUN_GLOVESs VERB_CORRODE%s!", /* EN Your("gloves corrode%s!", */
 				 uarmg->oeroded2+1 == MAX_ERODE ?
-				 " completely" : uarmg->oeroded2 ?  /* EN " completely" : uarmg->oeroded2 ? */ // TODO DE
-				 " further" : ""); /* EN " further" : ""); */ // TODO DE
+				 " vollständig" : uarmg->oeroded2 ?  /* EN " completely" : uarmg->oeroded2 ? */
+				 " noch weiter" : ""); /* EN " further" : ""); */
 			    uarmg->oeroded2++;
 			}
 		    } else
@@ -747,7 +747,7 @@ boolean atme;
 		Dir("fehlt die Kraft um Zaubersprüche zu wirken."); /* EN You("lack the strength to cast spells."); */
 		return(0);
 	} else if(check_capacity(
-		"Your concentration falters while carrying so much stuff.")) { /* EN "Your concentration falters while carrying so much stuff.")) { */ // TODO DE
+		"SATZBEGINN OBJECT KASUS_DATIV PRONOMEN_PERSONAL fehlt dazu die nötige Konzentration, NEUER_SATZ weil SUBJECT_IM_SATZ PRONOMEN_PERSONAL zuviel VERB_TRAGEN.")) { /* EN "Your concentration falters while carrying so much stuff.")) { */
 	    return (1);
 	} else if (!freehand()) {
 		You("VERB_HABEN OBJECT PRONOMEN_KEIN %s frei zum Zaubern!", body_part(HAND)); /* EN Your("arms are not free to cast!"); */
@@ -1074,9 +1074,9 @@ int *spell_no;
 	 * in the window-ports (say via a tab character).
 	 */
 	if (!iflags.menu_tab_sep)
-		Sprintf(buf, "%-33s     Stufe  %-12s Fail", "    Name", "Kategorie"); /* EN Sprintf(buf, "%-20s     Level  %-12s Fail", "    Name", "Category"); */ // TODO DE
+		Sprintf(buf, "%-33s     Stufe  %-12s Fehlschlag", "    Name", "Kategorie"); /* EN Sprintf(buf, "%-20s     Level  %-12s Fail", "    Name", "Category"); */
 	else
-		Sprintf(buf, "Name\tStufe\tKategorie\tFail"); /* EN Sprintf(buf, "Name\tLevel\tCategory\tFail"); */ // TODO DE
+		Sprintf(buf, "Name\tStufe\tKategorie\tFehlschlag"); /* EN Sprintf(buf, "Name\tLevel\tCategory\tFail"); */
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
 	for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
 		Sprintf(buf, iflags.menu_tab_sep ?
