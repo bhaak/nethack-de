@@ -100,6 +100,9 @@ if test "$GCC" = "yes"; then
 	AX_CHECK_COMPILER_FLAGS(-Wno-format-security, CFLAGS="$CFLAGS -Wno-format-security")
 fi
 
+dnl clang defaults to UTF-8 without any possibility to set source encoding
+AX_CHECK_COMPILER_FLAGS(-Wno-invalid-source-encoding, CFLAGS="$CFLAGS -Wno-invalid-source-encoding")
+
 dnl ------ Common subtypes
 case $host_os in
      *cygwin* )		AC_DEFINE(CYGWIN32,[],[Unix on win32]);;
